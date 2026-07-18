@@ -1,0 +1,6 @@
+# Витяги сесій — похідний артефакт (регенерується extract.py), синк через Dropbox
+.dev/.sessions/
+# Драфти промптів та ideas-inbox — сирий голос, не для історії (T95)
+.dev/.drafts/
+__pycache__/
+.idea/
