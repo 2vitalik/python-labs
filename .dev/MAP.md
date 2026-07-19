@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T31** · тікетів: 30 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T32** · тікетів: 31 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -36,5 +36,6 @@
 | — | [T26](.t/T26-Q--roadmap-open-questions.md) | ❓ | roadmap-open-questions | Глобальні питання: MVP, таймлайн, предмети | 🔴 ⬜ |
 | tasks | [T27](tasks/.t/T27-P--v3-csv-schema.md) | 💡 | v3-csv-schema | Єдина CSV-структура даних v3 (Coda + Notion) | 🟢 ⬜ |
 | tasks | [T28](tasks/.t/T28-Q--v3-csv-questions.md) | ❓ | v3-csv-questions | Питання по конвертації даних у v3 | 🟢 🟩 |
-| tasks | [T29](tasks/.t/T29-C--v2-data-anomalies.md) | 🔆 | v2-data-anomalies | Аномалії у даних v2 — розбір | 🟢 ⬜ |
+| tasks | [T29](tasks/.t/T29-C--v2-data-anomalies.md) | 🔆 | v2-data-anomalies | Аномалії у даних v2 — розбір | 🟢 🟩 |
 | tasks | [T30](tasks/.t/T30-Q--v3-anomaly-fixes.md) | ❓ | v3-anomaly-fixes | Чи виправляти аномалії при конвертації у v3 | 🔴 ⬜ |
+| tasks | [T31](tasks/.t/T31--v3-conversion/plan.md) | ⚙️ | v3-conversion | Конвертація даних v2 → v3 (єдина CSV-схема) — план | 🟢 🟩 |
