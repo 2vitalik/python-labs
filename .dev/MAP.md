@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T32** · тікетів: 31 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T38** · тікетів: 37 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -39,3 +39,9 @@
 | tasks | [T29](tasks/.t/T29-C--v2-data-anomalies.md) | 🔆 | v2-data-anomalies | Аномалії у даних v2 — розбір | 🟢 🟩 |
 | tasks | [T30](tasks/.t/T30-Q--v3-anomaly-fixes.md) | ❓ | v3-anomaly-fixes | Чи виправляти аномалії при конвертації у v3 | 🔴 ⬜ |
 | tasks | [T31](tasks/.t/T31--v3-conversion/plan.md) | ⚙️ | v3-conversion | Конвертація даних v2 → v3 (єдина CSV-схема) — план | 🟢 🟩 |
+| games | [T32](games/.t/T32-C--grid-games-catalog.md) | 🔆 | grid-games-catalog | Каталог ігор-кандидатів на клітинному полі | 🟢 ⬜ |
+| tasks | [T33](tasks/.t/T33-B--task-taxonomy.md) | 🧠 | task-taxonomy | Таксономія тасків з нуля: фасети замість дерева | 🟢 ⬜ |
+| games | [T34](games/.t/T34-P--game-spec-model.md) | 💡 | game-spec-model | Декларативна модель гри: елементи, правила, win-lose | 🟢 ⬜ |
+| — | [T35](.t/T35-B--unexpected-ideas.md) | 🧠 | unexpected-ideas | Несподівані ідеї навколо каталогу, ігор і спеки | 🟢 ⬜ |
+| games | [T36](games/.t/T36-Q--games-catalog-questions.md) | ❓ | games-catalog-questions | Питання по каталогу ігор-кандидатів | 🔴 ⬜ |
+| tasks | [T37](tasks/.t/T37-Q--taxonomy-questions.md) | ❓ | taxonomy-questions | Питання по таксономії і міграції каталогу | 🔴 ⬜ |
