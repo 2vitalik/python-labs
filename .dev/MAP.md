@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T27** · тікетів: 26 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T29** · тікетів: 28 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -34,3 +34,5 @@
 | journal | [T24](journal/.t/T24-Q--journal-open-questions.md) | ❓ | journal-open-questions | Питання щодо журналу | 🔴 ⬜ |
 | — | [T25](.t/T25-B--mvp-strategy.md) | 🧠 | mvp-strategy | MVP і черговість побудови | 🟢 ⬜ |
 | — | [T26](.t/T26-Q--roadmap-open-questions.md) | ❓ | roadmap-open-questions | Глобальні питання: MVP, таймлайн, предмети | 🔴 ⬜ |
+| tasks | [T27](tasks/.t/T27-P--v3-csv-schema.md) | 💡 | v3-csv-schema | Єдина CSV-структура даних v3 (Coda + Notion) | 🟢 ⬜ |
+| tasks | [T28](tasks/.t/T28-Q--v3-csv-questions.md) | ❓ | v3-csv-questions | Питання по конвертації даних у v3 | 🔴 ⬜ |
