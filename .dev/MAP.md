@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T38** · тікетів: 37 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T41** · тікетів: 40 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -45,3 +45,6 @@
 | — | [T35](.t/T35-B--unexpected-ideas.md) | 🧠 | unexpected-ideas | Несподівані ідеї навколо каталогу, ігор і спеки | 🟢 ⬜ |
 | games | [T36](games/.t/T36-Q--games-catalog-questions.md) | ❓ | games-catalog-questions | Питання по каталогу ігор-кандидатів | 🔴 ⬜ |
 | tasks | [T37](tasks/.t/T37-Q--taxonomy-questions.md) | ❓ | taxonomy-questions | Питання по таксономії і міграції каталогу | 🔴 ⬜ |
+| .rounds | [T38](.rounds/.t/T38-R--auth-mvp-readback.md) | ✔️ | auth-mvp-readback | Рідбек: мікро-MVP авторизації, перегляд стеку | 🟢 ⬜ |
+| platform | [T39](platform/.t/T39-B--stack-rethink.md) | 🧠 | stack-rethink | Перегляд стеку під Mongo + план мікро-MVP авторизації | 🟢 ⬜ |
+| platform | [T40](platform/.t/T40-Q--auth-mvp-questions.md) | ❓ | auth-mvp-questions | Питання щодо мікро-MVP авторизації | 🔴 ⬜ |

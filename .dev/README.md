@@ -16,8 +16,10 @@
 ## Стан
 
 - Фаза: думання/проєктування; рішень ще нема — все чекає відповідей на Q-тікети (🔴 у MAP).
-- Пріоритет відповідей: [T26](.t/T26-Q--roadmap-open-questions.md) → [T08](grading/.t/T08-Q--grading-open-questions.md) → [T06](tasks/.t/T06-Q--tasks-open-questions.md) → [T22](platform/.t/T22-Q--platform-open-questions.md) → [T16](github/.t/T16-Q--github-open-questions.md), решта — як зайде.
+- Вирішено стартувати «чергу 0.5» перед контентним MVP: мікро-застосунок «сторінка + Google OAuth лише @nure.ua» ([T38](.rounds/.t/T38-R--auth-mvp-readback.md), [T39](platform/.t/T39-B--stack-rethink.md)).
+- Пріоритет відповідей: [T40](platform/.t/T40-Q--auth-mvp-questions.md) → [T26](.t/T26-Q--roadmap-open-questions.md) → [T08](grading/.t/T08-Q--grading-open-questions.md) → [T06](tasks/.t/T06-Q--tasks-open-questions.md) → [T22](platform/.t/T22-Q--platform-open-questions.md) → [T16](github/.t/T16-Q--github-open-questions.md), решта — як зайде.
 
 ## Наступний крок
 
-- Vitalik відповідає `>`-ами на Q-тікети (насамперед T26) і збирає старі Coda/Notion-матеріали (T26 Q5); я розношу відповіді, поглиблюю вузли.
+- Vitalik відповідає на [T40](platform/.t/T40-Q--auth-mvp-questions.md) (мікро-MVP авторизації) → задача-тека з `plan.md` і перший код.
+- Паралельно: `>`-відповіді на решту Q-тікетів (насамперед T26) і збір старих Coda/Notion-матеріалів (T26 Q5).
