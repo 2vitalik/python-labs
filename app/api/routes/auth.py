@@ -22,7 +22,7 @@ oauth.register(
 @router.get("/login")
 async def login(request: Request):
     redirect_uri = request.url_for("callback")
-    return await oauth.google.authorize_redirect(request, redirect_uri, hd=NURE_DOMAIN)
+    return await oauth.google.authorize_redirect(request, redirect_uri, hd=NURE_DOMAIN, prompt="select_account")
 
 
 @router.get("/callback")

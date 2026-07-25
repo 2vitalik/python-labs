@@ -9,7 +9,7 @@
 
 ## Реалізовано
 
-- ✅ Мікро-MVP «сторінка + вхід» — код готовий і працює локально: `app/api/` (FastAPI + Beanie + Authlib) + `app/vue/` (Vue 3 + Bootstrap 5); dev-цикл перевірено · [T44](.t/T44--auth-mvp/report.md)
+- ✅ Мікро-MVP «сторінка + вхід» — працює: `app/api/` (FastAPI + Beanie + Authlib) + `app/vue/` (Vue 3 + Bootstrap 5); **реальний Google-вхід підтверджено Vitalik-ом 2026-07-26**; `prompt=select_account` — вибір акаунта щоразу (спільні лаб-компи) · [T44](.t/T44--auth-mvp/report.md)
 - Робоча назва UI — «Python Labs» ([T46](.t/T46-Q--pre-code-questions.md) Q1; фінальна — T22 Q5); dev-вхід через `FAKE_USER_EMAIL` (кнопка лише в dev-режимі Vite) · [T46](.t/T46-Q--pre-code-questions.md) Q2
 - Запуск: `app/README.md` (uv + npm); PyCharm Pro покроково — [T47](.t/T47-C--pycharm-setup.md); працювати завжди через http://localhost:5173
 
@@ -35,9 +35,8 @@
 
 ## Відкрите
 
-- Реальний Google-вхід не перевірений: чекає кредів у `app/api/.env` за [T43](.t/T43-C--gcp-oauth-setup.md).
 - [T22](.t/T22-Q--platform-open-questions.md) Q2–Q5: VPS (що за сервер), ролі поза статусами, ШІ-бюджет, назва/домен.
 
 ## Наступний крок
 
-- Vitalik вписує `GOOGLE_CLIENT_ID`/`GOOGLE_CLIENT_SECRET`/`ADMIN_EMAILS` у `app/api/.env` → перевірка справжнього входу @nure.ua; далі — черга 1 за [T25](../.t/T25-B--mvp-strategy.md).
+- Мікро-MVP закрито повністю → черга 1 за [T25](../.t/T25-B--mvp-strategy.md): каталог завдань (залежить від відповідей на [T37](../tasks/.t/T37-Q--taxonomy-questions.md)/[T06](../tasks/.t/T06-Q--tasks-open-questions.md)).
