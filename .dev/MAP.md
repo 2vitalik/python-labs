@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T41** · тікетів: 40 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T45** · тікетів: 44 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -47,4 +47,8 @@
 | tasks | [T37](tasks/.t/T37-Q--taxonomy-questions.md) | ❓ | taxonomy-questions | Питання по таксономії і міграції каталогу | 🔴 ⬜ |
 | .rounds | [T38](.rounds/.t/T38-R--auth-mvp-readback.md) | ✔️ | auth-mvp-readback | Рідбек: мікро-MVP авторизації, перегляд стеку | 🟢 ⬜ |
 | platform | [T39](platform/.t/T39-B--stack-rethink.md) | 🧠 | stack-rethink | Перегляд стеку під Mongo + план мікро-MVP авторизації | 🟢 ⬜ |
-| platform | [T40](platform/.t/T40-Q--auth-mvp-questions.md) | ❓ | auth-mvp-questions | Питання щодо мікро-MVP авторизації | 🔴 ⬜ |
+| platform | [T40](platform/.t/T40-Q--auth-mvp-questions.md) | ❓ | auth-mvp-questions | Питання щодо мікро-MVP авторизації | 🟢 🟩 |
+| .rounds | [T41](.rounds/.t/T41-R--auth-mvp-decisions.md) | ✔️ | auth-mvp-decisions | Рідбек рішень T40: стек затверджено | 🟢 🟩 |
+| platform | [T42](platform/.t/T42-C--beanie-vs-alternatives.md) | 🔆 | beanie-vs-alternatives | Beanie проти альтернатив (T40 Q1) | 🟢 ⬜ |
+| platform | [T43](platform/.t/T43-C--gcp-oauth-setup.md) | 🔆 | gcp-oauth-setup | Покрокова інструкція: Google OAuth-клієнт | 🟢 ⬜ |
+| platform | [T44](platform/.t/T44--auth-mvp/plan.md) | ⚙️ | auth-mvp | Мікро-MVP: сторінка + Google OAuth — план | 🟢 ⬜ |
