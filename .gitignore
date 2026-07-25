@@ -4,3 +4,7 @@
 .dev/.drafts/
 __pycache__/
 .idea/
+.env
+.venv/
+node_modules/
+app/vue/dist/

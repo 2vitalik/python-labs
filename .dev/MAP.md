@@ -51,6 +51,6 @@
 | .rounds | [T41](.rounds/.t/T41-R--auth-mvp-decisions.md) | ✔️ | auth-mvp-decisions | Рідбек рішень T40: стек затверджено | 🟢 🟩 |
 | platform | [T42](platform/.t/T42-C--beanie-vs-alternatives.md) | 🔆 | beanie-vs-alternatives | Beanie проти альтернатив (T40 Q1) | 🟢 ⬜ |
 | platform | [T43](platform/.t/T43-C--gcp-oauth-setup.md) | 🔆 | gcp-oauth-setup | Покрокова інструкція: Google OAuth-клієнт | 🟢 ⬜ |
-| platform | [T44](platform/.t/T44--auth-mvp/plan.md) | ⚙️ | auth-mvp | Мікро-MVP: сторінка + Google OAuth — план | 🟢 ⬜ |
-| platform | [T45](platform/.t/T45-P--app-skeleton.md) | 💡 | app-skeleton | Каркас мікро-MVP: файли і зміст | 🟢 ⬜ |
-| platform | [T46](platform/.t/T46-Q--pre-code-questions.md) | ❓ | pre-code-questions | Дрібні уточнення перед першим кодом | 🔴 ⬜ |
+| platform | [T44](platform/.t/T44--auth-mvp/plan.md) | ⚙️ | auth-mvp | Мікро-MVP: сторінка + Google OAuth — план | 🟢 🟩 |
+| platform | [T45](platform/.t/T45-P--app-skeleton.md) | 💡 | app-skeleton | Каркас мікро-MVP: файли і зміст | 🟢 🟩 |
+| platform | [T46](platform/.t/T46-Q--pre-code-questions.md) | ❓ | pre-code-questions | Дрібні уточнення перед першим кодом | 🟢 🟩 |

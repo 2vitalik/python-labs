@@ -3,9 +3,15 @@
 Реалізаційний вузол: бекенд, БД, фронтенд, авторизація, ролі, фонові задачі, ШІ-інтеграція, VPS. Обслуговує всі інші вузли.
 
 Шапка:
-- Оновлено: 2026-07-25
-- Інтегровано: [T40](.t/T40-Q--auth-mvp-questions.md) / [T41](../.rounds/.t/T41-R--auth-mvp-decisions.md) (стек і рамки мікро-MVP)
+- Оновлено: 2026-07-26
+- Інтегровано: [T40](.t/T40-Q--auth-mvp-questions.md) / [T41](../.rounds/.t/T41-R--auth-mvp-decisions.md) (стек і рамки), [T45](.t/T45-P--app-skeleton.md) (каркас), [T46](.t/T46-Q--pre-code-questions.md) (назва, dev-вхід, PyCharm Pro), [T44](.t/T44--auth-mvp/report.md) (реалізація)
 - Не інтегровано: —
+
+## Реалізовано
+
+- ✅ Мікро-MVP «сторінка + вхід» — код готовий і працює локально: `app/api/` (FastAPI + Beanie + Authlib) + `app/vue/` (Vue 3 + Bootstrap 5); dev-цикл перевірено · [T44](.t/T44--auth-mvp/report.md)
+- Робоча назва UI — «Python Labs» ([T46](.t/T46-Q--pre-code-questions.md) Q1; фінальна — T22 Q5); dev-вхід через `FAKE_USER_EMAIL` (кнопка лише в dev-режимі Vite) · [T46](.t/T46-Q--pre-code-questions.md) Q2
+- Запуск: `app/README.md` (uv + npm; PyCharm Pro: FastAPI-конфіг + npm-конфіг + Compound)
 
 ## Стек (затверджено, T40 Q1)
 
@@ -22,20 +28,16 @@
 - Код живе в цьому репо: `app/` з теками `api/` (FastAPI) і `vue/` (SPA) — імена з чату 2026-07-25 · [T41](../.rounds/.t/T41-R--auth-mvp-decisions.md), [T45](.t/T45-P--app-skeleton.md)
 - Стани користувача з першого дня: анонім → `pending` → `student` / `admin` · [T39](.t/T39-B--stack-rethink.md)
 
-## Не реалізовано
-
-- ⬜ Мікро-MVP «сторінка + вхід» — задача [T44](.t/T44--auth-mvp/plan.md): план готовий, детальний каркас файлів — [T45](.t/T45-P--app-skeleton.md) (чекає ок), код не стартував.
-
 ## Відкладене
 
-- Деплой (VPS без docker: systemd + Caddy, домен, HTTPS, Publish OAuth-апки) — окремим кроком після мікро-MVP · [T40](.t/T40-Q--auth-mvp-questions.md) Q5.
+- Деплой (VPS без docker: systemd + Caddy, домен, HTTPS, Publish OAuth-апки, віддача `dist/` статикою) — окремим кроком після мікро-MVP · [T40](.t/T40-Q--auth-mvp-questions.md) Q5.
+- Виключення `.venv`/`node_modules` із синку Dropbox (шум + зайві релоади) — рішення за Vitalik · [T44](.t/T44--auth-mvp/report.md).
 
 ## Відкрите
 
-- Ок/правки по каркасу [T45](.t/T45-P--app-skeleton.md) і відповіді [T46](.t/T46-Q--pre-code-questions.md) (назва, dev-вхід, PyCharm-версія).
-- Секрети Google за [T43](.t/T43-C--gcp-oauth-setup.md) → `app/api/.env` (не блокують код — лише перевірку реального входу).
+- Реальний Google-вхід не перевірений: чекає кредів у `app/api/.env` за [T43](.t/T43-C--gcp-oauth-setup.md).
 - [T22](.t/T22-Q--platform-open-questions.md) Q2–Q5: VPS (що за сервер), ролі поза статусами, ШІ-бюджет, назва/домен.
 
 ## Наступний крок
 
-- Vitalik: ок/правки [T45](.t/T45-P--app-skeleton.md) + відповіді [T46](.t/T46-Q--pre-code-questions.md) → я кодую [T44](.t/T44--auth-mvp/plan.md) (секрети можуть доїхати пізніше).
+- Vitalik вписує `GOOGLE_CLIENT_ID`/`GOOGLE_CLIENT_SECRET`/`ADMIN_EMAILS` у `app/api/.env` → перевірка справжнього входу @nure.ua; далі — черга 1 за [T25](../.t/T25-B--mvp-strategy.md).

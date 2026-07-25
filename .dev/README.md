@@ -15,10 +15,10 @@
 
 ## Стан
 
-- Фаза: перше затверджене рішення проєкту — стек ([T41](.rounds/.t/T41-R--auth-mvp-decisions.md)): FastAPI + MongoDB + Vue 3 + Bootstrap 5; «черга 0.5» — мікро-MVP «сторінка + Google OAuth лише @nure.ua», план готовий ([T44](platform/.t/T44--auth-mvp/plan.md)).
+- Фаза: **перший код працює** — мікро-MVP «сторінка + Google OAuth лише @nure.ua» реалізовано в `app/` ([T44](platform/.t/T44--auth-mvp/report.md)); стек затверджено ([T41](.rounds/.t/T41-R--auth-mvp-decisions.md)): FastAPI + MongoDB (Beanie) + Vue 3 + Bootstrap 5.
 - Решта вузлів — думання; чекають Q-відповідей (🔴 у MAP). Пріоритет: [T26](.t/T26-Q--roadmap-open-questions.md) → [T08](grading/.t/T08-Q--grading-open-questions.md) → [T06](tasks/.t/T06-Q--tasks-open-questions.md) → [T22](platform/.t/T22-Q--platform-open-questions.md) → [T16](github/.t/T16-Q--github-open-questions.md), решта — як зайде.
 
 ## Наступний крок
 
-- Vitalik: ок щодо Beanie ([T42](platform/.t/T42-C--beanie-vs-alternatives.md)) + Google-секрети за інструкцією [T43](platform/.t/T43-C--gcp-oauth-setup.md) → я кодую мікро-MVP за [T44](platform/.t/T44--auth-mvp/plan.md).
+- Vitalik: Google-креди в `app/api/.env` ([T43](platform/.t/T43-C--gcp-oauth-setup.md)) → перевірка справжнього входу; далі — черга 1 за [T25](.t/T25-B--mvp-strategy.md) (каталог завдань).
 - Паралельно: `>`-відповіді на решту Q-тікетів (насамперед T26) і збір старих Coda/Notion-матеріалів (T26 Q5).
