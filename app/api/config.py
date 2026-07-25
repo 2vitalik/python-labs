@@ -3,7 +3,7 @@ from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
     mongo_uri: str = "mongodb://localhost:27017"
-    db_name: str = "labs"
+    db_name: str = "python_labs"
     google_client_id: str = ""
     google_client_secret: str = ""
     session_secret: str
