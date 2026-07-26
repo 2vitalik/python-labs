@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T48** · тікетів: 47 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T49** · тікетів: 48 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -55,3 +55,4 @@
 | platform | [T45](platform/.t/T45-P--app-skeleton.md) | 💡 | app-skeleton | Каркас мікро-MVP: файли і зміст | 🟢 🟩 |
 | platform | [T46](platform/.t/T46-Q--pre-code-questions.md) | ❓ | pre-code-questions | Дрібні уточнення перед першим кодом | 🟢 🟩 |
 | platform | [T47](platform/.t/T47-C--pycharm-setup.md) | 🔆 | pycharm-setup | PyCharm: покрокове налаштування запуску | 🟢 ⬜ |
+| github | [T48](github/.t/T48-C--collaborator-access.md) | 🔆 | collaborator-access | Доступ через колаборатора: механіка й авторизація | 🟢 ⬜ |
