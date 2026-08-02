@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T49** · тікетів: 48 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T54** · тікетів: 53 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -56,3 +56,8 @@
 | platform | [T46](platform/.t/T46-Q--pre-code-questions.md) | ❓ | pre-code-questions | Дрібні уточнення перед першим кодом | 🟢 🟩 |
 | platform | [T47](platform/.t/T47-C--pycharm-setup.md) | 🔆 | pycharm-setup | PyCharm: покрокове налаштування запуску | 🟢 ⬜ |
 | github | [T48](github/.t/T48-C--collaborator-access.md) | 🔆 | collaborator-access | Доступ через колаборатора: механіка й авторизація | 🟢 ⬜ |
+| games | [T49](games/.t/T49-B--game-classes.md) | 🧠 | game-classes | Розширення простору ігор: класи за актором і осі опису | 🟢 ⬜ |
+| tasks | [T50](tasks/.t/T50-B--kb-task-groups.md) | 🧠 | kb-task-groups | Групи завдань бази знань: узагальнення таксономії | 🟢 ⬜ |
+| — | [T51](.t/T51-P--kb-structure.md) | 💡 | kb-structure | База знань контенту: структура data/kb і формат файлів | 🟢 ⬜ |
+| — | [T52](.t/T52-Q--kb-questions.md) | ❓ | kb-questions | Питання по базі знань: структура, формат, старт | 🔴 ⬜ |
+| games | [T53](games/.t/T53-Q--game-classes-questions.md) | ❓ | game-classes-questions | Питання по нових класах ігор | 🔴 ⬜ |
