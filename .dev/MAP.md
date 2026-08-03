@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T55** · тікетів: 54 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T61** · тікетів: 60 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -62,3 +62,9 @@
 | — | [T52](.t/T52-Q--kb-questions.md) | ❓ | kb-questions | Питання по базі знань: структура, формат, старт | 🟢 ⬜ |
 | games | [T53](games/.t/T53-Q--game-classes-questions.md) | ❓ | game-classes-questions | Питання по нових класах ігор | 🟢 🟩 |
 | .rounds | [T54](.rounds/.t/T54-R--kb-round-decisions.md) | ✔️ | kb-round-decisions | Рішення по базі знань: wiki, класи, стартове наповнення | 🟢 🟩 |
+| .rounds | [T55](.rounds/.t/T55-R--profile-round-readback.md) | ✔️ | profile-round-readback | Раунд «сторінка профілю» — readback вводу | 🟢 ⬜ |
+| platform | [T56](platform/.t/T56-P--profile-pages-design.md) | 💡 | profile-pages-design | Дизайн сторінок: профіль студента + студенти (адмін) | 🟢 ⬜ |
+| platform | [T57](platform/.t/T57-B--history-storage.md) | 🧠 | history-storage | Історичність даних: варіанти зберігання | 🟢 ⬜ |
+| tgbot | [T58](tgbot/.t/T58-C--tg-link-binding.md) | 🔆 | tg-link-binding | Привʼязка Telegram через deep link бота | 🟢 ⬜ |
+| platform | [T59](platform/.t/T59-C--data-model-sketch.md) | 🔆 | data-model-sketch | Модель даних на загал: колекції майбутньої системи | 🟢 ⬜ |
+| platform | [T60](platform/.t/T60-Q--profile-questions.md) | ❓ | profile-questions | Питання щодо сторінки профілю | 🔴 ⬜ |
