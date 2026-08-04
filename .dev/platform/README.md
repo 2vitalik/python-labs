@@ -12,7 +12,8 @@
 - ✅ Мікро-MVP «сторінка + вхід» — працює: `app/api/` (FastAPI + Beanie + Authlib) + `app/vue/` (Vue 3 + Bootstrap 5); **реальний Google-вхід підтверджено Vitalik-ом 2026-07-26**; `prompt=select_account` — вибір акаунта щоразу (спільні лаб-компи) · [T44](.t/T44--auth-mvp/report.md)
 - Робоча назва UI — «Python Labs» ([T46](.t/T46-Q--pre-code-questions.md) Q1; фінальна — T22 Q5); dev-вхід через `FAKE_USER_EMAIL` (кнопка лише в dev-режимі Vite) · [T46](.t/T46-Q--pre-code-questions.md) Q2
 - Запуск: `app/README.md` (uv + npm); PyCharm Pro покроково — [T47](.t/T47-C--pycharm-setup.md); працювати завжди через http://localhost:5173
-- ✅ **Профіль v1** (2026-08-04, [T64](.t/T64--profile-v1/report.md)): `/profile` — картки ПІБ/GitHub/Telegram з інструкціями (приватний єдиний репо → розшарити на `2vitalik`) і кнопкою «Привʼязати бота»; `/students` (адмін) — таблиця «хто що вніс» + textarea-імпорт списку групи (формат ЦІСТ, `data/students/cist.txt`: група з шапки, пошта регекспом, ПІБ tab-полем); `/students/:id` — та сама форма + група/статус · рішення [T60](.t/T60-Q--profile-questions.md)/[T61](../.rounds/.t/T61-R--profile-decisions.md)
+- ✅ **Профіль v1** (2026-08-04, [T64](.t/T64--profile-v1/report.md)): `/profile` — картки ПІБ/GitHub/Telegram з інструкціями (приватний єдиний репо → розшарити на `2vitalik`) і кнопкою «Привʼязати бота»; `/students` (адмін) — таблиця «хто що вніс» + textarea-імпорт формату ЦІСТ (`data/students/cist.txt`); `/students/:id` — та сама форма + група/статус · рішення [T60](.t/T60-Q--profile-questions.md)/[T61](../.rounds/.t/T61-R--profile-decisions.md)
+- Імпорт (фікс 2026-08-04): багатогруповий — шапки «Список групи …» перемикають поточну групу; повторний імпорт **оновлює** наявних по пошті (група — завжди, ПІБ — лише в порожні поля: самоперейменування студента важливіше за ЦІСТ), внесене в профілі не чіпається; звіт «додано/оновлено/без змін»
 
 ## Дані
 
@@ -42,10 +43,10 @@
 
 ## Відкрите
 
-- [T63](.t/T63-Q--css-framework-choice.md) — Bootstrap чи Tailwind (порівняння з прикладами — [T62](.t/T62-C--css-frameworks.md)); v1 йде на Bootstrap, Tailwind означав би міграцію ~5 vue-файлів.
 - [T22](.t/T22-Q--platform-open-questions.md) Q2–Q5: VPS (що за сервер), ролі поза статусами, ШІ-бюджет, назва/домен.
+- ~~[T63](.t/T63-Q--css-framework-choice.md) CSS-фреймворк~~ — вирішено в чаті 2026-08-04 після порівняння [T62](.t/T62-C--css-frameworks.md): **лишаємось на Bootstrap 5**.
 
 ## Наступний крок
 
-- Vitalik: клік-тест профілю v1 у браузері (реальний вхід) + відповідь на [T63](.t/T63-Q--css-framework-choice.md); хвости — у [T64](.t/T64--profile-v1/report.md).
+- Vitalik: повторний імпорт `cist.txt` на живій базі (розкладе всіх по правильних групах); хвости — у [T64](.t/T64--profile-v1/report.md).
 - Далі черга 1 за [T25](../.t/T25-B--mvp-strategy.md): каталог завдань (залежить від відповідей на [T37](../tasks/.t/T37-Q--taxonomy-questions.md)/[T06](../tasks/.t/T06-Q--tasks-open-questions.md)).

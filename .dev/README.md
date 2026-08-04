@@ -20,7 +20,7 @@
 
 ## Наступний крок
 
-- Профіль v1 реалізовано (2026-08-04, [T64](platform/.t/T64--profile-v1/report.md)) → Vitalik: клік-тест у браузері + відповідь на [T63](platform/.t/T63-Q--css-framework-choice.md) (Bootstrap vs Tailwind, порівняння — [T62](platform/.t/T62-C--css-frameworks.md)).
+- Профіль v1 працює (2026-08-04, [T64](platform/.t/T64--profile-v1/report.md)); CSS — Bootstrap 5 остаточно (чат після [T62](platform/.t/T62-C--css-frameworks.md)); імпорт багатогруповий з оновленням наявних → Vitalik: повторний імпорт `cist.txt` на живій базі.
 - Далі черга 1 за [T25](.t/T25-B--mvp-strategy.md): каталог завдань; для нього потрібні відповіді на [T37](tasks/.t/T37-Q--taxonomy-questions.md) і [T06](tasks/.t/T06-Q--tasks-open-questions.md).
 - База знань **`data/wiki/`** створена і наповнена чернетками (2026-08-03, рішення — [T54](.rounds/.t/T54-R--kb-round-decisions.md)): `games/` — 17 ігор у 4 класах, `tasks/` — 6 зон + вся v3-сировина в staging; далі — правки Vitalik і поступове зведення сировини.
 - Паралельно: `>`-відповіді на решту Q-тікетів (насамперед T26) і збір старих Coda/Notion-матеріалів (T26 Q5).

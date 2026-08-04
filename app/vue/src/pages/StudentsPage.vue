@@ -18,7 +18,7 @@ async function load() {
 
 async function runImport() {
   const r = await importStudents(importText.value)
-  importResult.value = `Додано: ${r.added}, вже були: ${r.skipped}` + (r.group ? ` · група ${r.group}` : '')
+  importResult.value = `Додано: ${r.added} · оновлено: ${r.updated} · без змін: ${r.unchanged}`
   importText.value = ''
   await load()
 }
@@ -35,7 +35,7 @@ onMounted(load)
 
     <div v-if="showImport" class="card mb-3">
       <div class="card-body">
-        <label class="form-label">Встав список групи (як у ЦІСТ: ПІБ, номер залікової, пошта)</label>
+        <label class="form-label">Встав списки груп як у ЦІСТ (шапки «Список групи …» перемикають групу; наявні студенти оновлюються, внесене ними не чіпається)</label>
         <textarea v-model="importText" class="form-control font-monospace" rows="8"></textarea>
         <button class="btn btn-primary btn-sm mt-2" :disabled="!importText.trim()" @click="runImport">
           Імпортувати
