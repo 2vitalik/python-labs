@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T61** · тікетів: 60 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T65** · тікетів: 64 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -63,8 +63,12 @@
 | games | [T53](games/.t/T53-Q--game-classes-questions.md) | ❓ | game-classes-questions | Питання по нових класах ігор | 🟢 🟩 |
 | .rounds | [T54](.rounds/.t/T54-R--kb-round-decisions.md) | ✔️ | kb-round-decisions | Рішення по базі знань: wiki, класи, стартове наповнення | 🟢 🟩 |
 | .rounds | [T55](.rounds/.t/T55-R--profile-round-readback.md) | ✔️ | profile-round-readback | Раунд «сторінка профілю» — readback вводу | 🟢 ⬜ |
-| platform | [T56](platform/.t/T56-P--profile-pages-design.md) | 💡 | profile-pages-design | Дизайн сторінок: профіль студента + студенти (адмін) | 🟢 ⬜ |
-| platform | [T57](platform/.t/T57-B--history-storage.md) | 🧠 | history-storage | Історичність даних: варіанти зберігання | 🟢 ⬜ |
-| tgbot | [T58](tgbot/.t/T58-C--tg-link-binding.md) | 🔆 | tg-link-binding | Привʼязка Telegram через deep link бота | 🟢 ⬜ |
-| platform | [T59](platform/.t/T59-C--data-model-sketch.md) | 🔆 | data-model-sketch | Модель даних на загал: колекції майбутньої системи | 🟢 ⬜ |
-| platform | [T60](platform/.t/T60-Q--profile-questions.md) | ❓ | profile-questions | Питання щодо сторінки профілю | 🔴 ⬜ |
+| platform | [T56](platform/.t/T56-P--profile-pages-design.md) | 💡 | profile-pages-design | Дизайн сторінок: профіль студента + студенти (адмін) | 🟢 🟩 |
+| platform | [T57](platform/.t/T57-B--history-storage.md) | 🧠 | history-storage | Історичність даних: варіанти зберігання | 🟢 🟩 |
+| tgbot | [T58](tgbot/.t/T58-C--tg-link-binding.md) | 🔆 | tg-link-binding | Привʼязка Telegram через deep link бота | 🟢 🟩 |
+| platform | [T59](platform/.t/T59-C--data-model-sketch.md) | 🔆 | data-model-sketch | Модель даних на загал: колекції майбутньої системи | 🟢 🟩 |
+| platform | [T60](platform/.t/T60-Q--profile-questions.md) | ❓ | profile-questions | Питання щодо сторінки профілю | 🔴 🟩 |
+| .rounds | [T61](.rounds/.t/T61-R--profile-decisions.md) | ✔️ | profile-decisions | Рішення по T60: профіль v1 | 🟢 🟩 |
+| platform | [T62](platform/.t/T62-C--css-frameworks.md) | 🔆 | css-frameworks | Bootstrap 5 vs Tailwind: порівняння з прикладами | 🟢 ⬜ |
+| platform | [T63](platform/.t/T63-Q--css-framework-choice.md) | ❓ | css-framework-choice | Вибір CSS-фреймворка | 🔴 ⬜ |
+| platform | [T64](platform/.t/T64--profile-v1/plan.md) | ⚙️ | profile-v1 | Профіль студента v1: сторінки, історія, імпорт — план | 🟢 🟩 |

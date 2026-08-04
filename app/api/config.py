@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     session_secret: str
     admin_emails: str = ""
     fake_user_email: str = ""
+    tg_bot_name: str = ""
 
     model_config = {"env_file": ".env"}
 

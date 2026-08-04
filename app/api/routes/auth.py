@@ -3,6 +3,7 @@ from fastapi import APIRouter, Request
 from starlette.responses import RedirectResponse
 
 from config import settings
+from models.history import record_new
 from models.user import Status, User
 
 NURE_DOMAIN = "nure.ua"
@@ -54,9 +55,16 @@ async def dev_login(request: Request):
 
 async def upsert_user(info: dict):
     email = info["email"]
-    user = await User.find_one(User.email == email) or User(email=email)
+    user = await User.find_one(User.email == email)
+    is_new = user is None
+    user = user or User(email=email)
     user.name = info.get("name", "")
     user.picture = info.get("picture", "")
+    if not user.last_name and not user.first_name:  # prefill empty names from Google claims
+        user.last_name = info.get("family_name", "")
+        user.first_name = info.get("given_name", "")
     if email in settings.admin_list:
         user.status = Status.admin
     await user.save()
+    if is_new:
+        await record_new(user, actor=email)

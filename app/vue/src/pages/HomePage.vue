@@ -20,6 +20,7 @@ const statusText = {
     <template v-if="user">
       <p class="lead">Привіт, {{ user.name || user.email }}!</p>
       <p>{{ statusText[user.status] }}</p>
+      <RouterLink v-if="user.status !== 'pending'" to="/profile" class="btn btn-primary">Мій профіль</RouterLink>
     </template>
     <template v-else>
       <p class="lead">Це майбутня система для лабораторних робіт з Python.</p>
