@@ -10,6 +10,12 @@ const isDev = import.meta.env.DEV
       <RouterLink class="navbar-brand" to="/">Python Labs</RouterLink>
       <ul class="navbar-nav me-auto">
         <li v-if="user && user.status !== 'pending'" class="nav-item">
+          <RouterLink class="nav-link" to="/games">Ігри</RouterLink>
+        </li>
+        <li v-if="user && user.status !== 'pending'" class="nav-item">
+          <RouterLink class="nav-link" to="/tasks">Завдання</RouterLink>
+        </li>
+        <li v-if="user && user.status !== 'pending'" class="nav-item">
           <RouterLink class="nav-link" to="/profile">Профіль</RouterLink>
         </li>
         <li v-if="user?.status === 'admin'" class="nav-item">

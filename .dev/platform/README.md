@@ -3,9 +3,9 @@
 Реалізаційний вузол: бекенд, БД, фронтенд, авторизація, ролі, фонові задачі, ШІ-інтеграція, VPS. Обслуговує всі інші вузли.
 
 Шапка:
-- Оновлено: 2026-08-04
-- Інтегровано: [T40](.t/T40-Q--auth-mvp-questions.md) / [T41](../.rounds/.t/T41-R--auth-mvp-decisions.md) (стек і рамки), [T45](.t/T45-P--app-skeleton.md) (каркас), [T46](.t/T46-Q--pre-code-questions.md) (назва, dev-вхід, PyCharm Pro), [T44](.t/T44--auth-mvp/report.md) (auth-реалізація), [T56](.t/T56-P--profile-pages-design.md)/[T57](.t/T57-B--history-storage.md)/[T59](.t/T59-C--data-model-sketch.md) + рішення [T60](.t/T60-Q--profile-questions.md)/[T61](../.rounds/.t/T61-R--profile-decisions.md) (профіль v1), [T64](.t/T64--profile-v1/report.md) (реалізація профілю)
-- Не інтегровано: раунд каталогу — [T66](.t/T66-B--catalog-storage.md) (зберігання) · [T67](.t/T67-B--catalog-ui.md) (подача) · [T68](.t/T68-P--catalog-v1-design.md) (пропозиція v1) — чекають відповідей [T69](.t/T69-Q--catalog-v1-questions.md)
+- Оновлено: 2026-08-05
+- Інтегровано: [T40](.t/T40-Q--auth-mvp-questions.md) / [T41](../.rounds/.t/T41-R--auth-mvp-decisions.md) (стек і рамки), [T45](.t/T45-P--app-skeleton.md) (каркас), [T46](.t/T46-Q--pre-code-questions.md) (назва, dev-вхід, PyCharm Pro), [T44](.t/T44--auth-mvp/report.md) (auth-реалізація), [T56](.t/T56-P--profile-pages-design.md)/[T57](.t/T57-B--history-storage.md)/[T59](.t/T59-C--data-model-sketch.md) + рішення [T60](.t/T60-Q--profile-questions.md)/[T61](../.rounds/.t/T61-R--profile-decisions.md) (профіль v1), [T64](.t/T64--profile-v1/report.md) (реалізація профілю), [T66](.t/T66-B--catalog-storage.md)/[T67](.t/T67-B--catalog-ui.md)/[T68](.t/T68-P--catalog-v1-design.md) + рішення [T69](.t/T69-Q--catalog-v1-questions.md)/[T70](../.rounds/.t/T70-R--catalog-decisions.md) (каталог v1), [T71](.t/T71--catalog-v1/report.md) (реалізація каталогу)
+- Не інтегровано: —
 
 ## Реалізовано
 
@@ -14,12 +14,14 @@
 - Запуск: `app/README.md` (uv + npm); PyCharm Pro покроково — [T47](.t/T47-C--pycharm-setup.md); працювати завжди через http://localhost:5173
 - ✅ **Профіль v1** (2026-08-04, [T64](.t/T64--profile-v1/report.md)): `/profile` — картки ПІБ/GitHub/Telegram з інструкціями (приватний єдиний репо → розшарити на `2vitalik`) і кнопкою «Привʼязати бота»; `/students` (адмін) — таблиця «хто що вніс» + textarea-імпорт формату ЦІСТ (`data/students/cist.txt`); `/students/:id` — та сама форма + група/статус · рішення [T60](.t/T60-Q--profile-questions.md)/[T61](../.rounds/.t/T61-R--profile-decisions.md)
 - Імпорт (фікс 2026-08-04): багатогруповий — шапки «Список групи …» перемикають поточну групу; повторний імпорт **оновлює** наявних по пошті (група — завжди, ПІБ — лише в порожні поля: самоперейменування студента важливіше за ЦІСТ), внесене в профілі не чіпається; звіт «додано/оновлено/без змін»
+- ✅ **Каталог v1** (2026-08-05, [T71](.t/T71--catalog-v1/report.md)): `/games` — галерея з чіпами класів; `/games/:slug` — осі бейджами, markdown-опис, «Завдання гри»; `/tasks` — дерево зон з лічильниками + стрічка карток з розгортанням + пошук/чіпи (стан у query-URL → шерні лінки); адмін-форми create/edit для ігор і завдань; сид з wiki: **17 ігор + 162 завдання** (7 сімей, 16 золотих); export/import YAML-знімка `data/catalog/` — `catalog_io.py` · рішення [T70](../.rounds/.t/T70-R--catalog-decisions.md)
 
 ## Дані
 
 - `users`: ПІБ трьома полями (префіл з Google-клеймів лише в порожні), `group` рядком, `github` — одне поле-URL (старі значення видно в історії), `tg_username` + `tg_token`/`tg_chat_id` (механіка привʼязки — [T58](../tgbot/.t/T58-C--tg-link-binding.md)) · [T61](../.rounds/.t/T61-R--profile-decisions.md)
 - **Історія змін** — одна глобальна колекція `history` з диффами `{coll, doc_id, actor, at, {поле: old→new}}` ([T57](.t/T57-B--history-storage.md), варіант a): `record()` у PUT-роутах + `record_new()` при створенні; покриває всі майбутні колекції тим самим хелпером; сторінка перегляду — потім
-- Ескіз майбутніх колекцій (reports, defenses, remarks, coins-журнал, surveys…) — [T59](.t/T59-C--data-model-sketch.md); зараз існують лише `users` + `history`
+- `games` + `tasks` — каталог ([T68](.t/T68-P--catalog-v1-design.md)): дім зона/підзона (константа `zones.py` — дзеркало `data/wiki/tasks/_map.md`), теги (`algo` = ⭐), застосовність `games` ([] = універсальне), ціна `coin`+`amount` (довідково до рішень grading), `max_count` (1 / N / 0=∞), `variants` (сімʼї), статуси draft/active/archived (draft бачить лише адмін, DELETE нема); правки — через `record()`; знімок — `data/catalog/*.yaml`
+- Ескіз майбутніх колекцій (reports, defenses, remarks, coins-журнал, surveys…) — [T59](.t/T59-C--data-model-sketch.md); зараз існують `users` + `history` + `games` + `tasks`
 
 ## Стек (затверджено, T40 Q1)
 
@@ -43,11 +45,11 @@
 
 ## Відкрите
 
-- [T69](.t/T69-Q--catalog-v1-questions.md) Q1–Q7 — раунд каталогу: зберігання, подача, ціни, повторюваність, сид, статуси, редагування (+ передумови [T37](../tasks/.t/T37-Q--taxonomy-questions.md) Q1/Q3 і [T06](../tasks/.t/T06-Q--tasks-open-questions.md) Q2).
 - [T22](.t/T22-Q--platform-open-questions.md) Q2–Q5: VPS (що за сервер), ролі поза статусами, ШІ-бюджет, назва/домен.
 - ~~[T63](.t/T63-Q--css-framework-choice.md) CSS-фреймворк~~ — вирішено в чаті 2026-08-04 після порівняння [T62](.t/T62-C--css-frameworks.md): **лишаємось на Bootstrap 5**.
 
 ## Наступний крок
 
 - Vitalik: повторний імпорт `cist.txt` на живій базі (розкладе всіх по правильних групах); хвости — у [T64](.t/T64--profile-v1/report.md).
-- Раунд «Каталог v1» спроєктовано (2026-08-04): рамки — [T65](../.rounds/.t/T65-R--catalog-round-readback.md), брейншторми — [T66](.t/T66-B--catalog-storage.md)/[T67](.t/T67-B--catalog-ui.md), пропозиція — [T68](.t/T68-P--catalog-v1-design.md); Vitalik: відповіді на [T69](.t/T69-Q--catalog-v1-questions.md) + [T37](../tasks/.t/T37-Q--taxonomy-questions.md)/[T06](../tasks/.t/T06-Q--tasks-open-questions.md) → реалізація за порядком із T68.
+- Каталог v1 реалізовано і засіяно (2026-08-05, [T71](.t/T71--catalog-v1/report.md)); Vitalik: клік-тест на http://localhost:5173 (Ігри / Завдання) + ревізія чернеток — ціни/статуси в адмінці, пачкові правки через YAML+import.
+- Далі за [T25](../.t/T25-B--mvp-strategy.md): кабінет студента — вибір завдань і заявки ([reports](../reports/README.md), чекає рішень [T10](../reports/.t/T10-Q--reports-open-questions.md)).

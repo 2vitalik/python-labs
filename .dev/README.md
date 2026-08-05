@@ -15,12 +15,13 @@
 
 ## Стан
 
-- Фаза: **перший код працює** — мікро-MVP «сторінка + Google OAuth лише @nure.ua» ([T44](platform/.t/T44--auth-mvp/report.md)) + **профіль v1** ([T64](platform/.t/T64--profile-v1/report.md)): `/profile` (ПІБ, GitHub, Telegram-привʼязка), `/students` з імпортом груп, історія змін у колекції `history`; стек затверджено ([T41](.rounds/.t/T41-R--auth-mvp-decisions.md)): FastAPI + MongoDB (Beanie) + Vue 3 + Bootstrap 5.
+- Фаза: **перший код працює** — мікро-MVP «сторінка + Google OAuth лише @nure.ua» ([T44](platform/.t/T44--auth-mvp/report.md)) + **профіль v1** ([T64](platform/.t/T64--profile-v1/report.md)) + **каталог v1** ([T71](platform/.t/T71--catalog-v1/report.md)): `/games` + `/tasks` з деревом зон, пошуком і адмін-формами, сид 17 ігор + 162 завдання з wiki; стек затверджено ([T41](.rounds/.t/T41-R--auth-mvp-decisions.md)): FastAPI + MongoDB (Beanie) + Vue 3 + Bootstrap 5.
 - Решта вузлів — думання; чекають Q-відповідей (🔴 у MAP). Пріоритет: [T26](.t/T26-Q--roadmap-open-questions.md) → [T08](grading/.t/T08-Q--grading-open-questions.md) → [T06](tasks/.t/T06-Q--tasks-open-questions.md) → [T22](platform/.t/T22-Q--platform-open-questions.md) → [T16](github/.t/T16-Q--github-open-questions.md), решта — як зайде.
 
 ## Наступний крок
 
 - Профіль v1 працює (2026-08-04, [T64](platform/.t/T64--profile-v1/report.md)); CSS — Bootstrap 5 остаточно (чат після [T62](platform/.t/T62-C--css-frameworks.md)); імпорт багатогруповий з оновленням наявних → Vitalik: повторний імпорт `cist.txt` на живій базі.
-- Черга 1 стартувала проєктуванням (2026-08-04): раунд «Каталог v1: ігри + завдання» — рамки [T65](.rounds/.t/T65-R--catalog-round-readback.md), брейншторми зберігання/подачі [T66](platform/.t/T66-B--catalog-storage.md)/[T67](platform/.t/T67-B--catalog-ui.md), пропозиція [T68](platform/.t/T68-P--catalog-v1-design.md); Vitalik: відповіді на [T69](platform/.t/T69-Q--catalog-v1-questions.md) + передумови [T37](tasks/.t/T37-Q--taxonomy-questions.md)/[T06](tasks/.t/T06-Q--tasks-open-questions.md) → реалізація.
+- **Каталог v1 реалізовано** (2026-08-05, [T71](platform/.t/T71--catalog-v1/report.md)) за рішеннями [T70](.rounds/.t/T70-R--catalog-decisions.md): таксономія-фасети прийнята, сид залито; Vitalik: клік-тест + ревізія чернеток (ціни/статуси).
+- Далі за [T25](.t/T25-B--mvp-strategy.md): кабінет студента — вибір завдань і заявки ([T10](reports/.t/T10-Q--reports-open-questions.md)); паралельно — міграція v3 у каталог за командою (T37 Q4).
 - База знань **`data/wiki/`** створена і наповнена чернетками (2026-08-03, рішення — [T54](.rounds/.t/T54-R--kb-round-decisions.md)): `games/` — 17 ігор у 4 класах, `tasks/` — 6 зон + вся v3-сировина в staging; далі — правки Vitalik і поступове зведення сировини.
 - Паралельно: `>`-відповіді на решту Q-тікетів (насамперед T26) і збір старих Coda/Notion-матеріалів (T26 Q5).

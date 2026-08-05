@@ -1,0 +1,60 @@
+import { computed } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+
+import { tasks, zones } from './catalog.js'
+
+// tolerant search over the RU/UA/EN mixed corpus: case + и/і + е/є folded
+const norm = (s) => String(s).toLowerCase().replace(/и/g, 'і').replace(/є/g, 'е')
+
+export function useTaskFilter() {
+  const route = useRoute()
+  const router = useRouter()
+
+  const f = computed(() => ({
+    q: route.query.q || '', game: route.query.game || '', algo: route.query.algo === '1',
+    zone: route.query.zone || '', sub: route.query.sub || '',
+  }))
+
+  function set(patch) {
+    const q = { ...route.query, ...patch }
+    for (const k in q) if (!q[k]) delete q[k]
+    router.replace({ query: q })
+  }
+
+  function matches(t) {
+    if (f.value.game && t.games.length && !t.games.includes(f.value.game)) return false
+    if (f.value.algo && !t.tags.includes('algo')) return false
+    if (!f.value.q) return true
+    const hay = norm([t.title, t.slug, t.description, ...t.tags, ...t.variants.map((v) => v.title)].join(' '))
+    return hay.includes(norm(f.value.q))
+  }
+
+  // everything except the zone filter — so the tree shows where matches live
+  const found = computed(() => tasks.value.filter(matches))
+
+  const counts = computed(() => {
+    const c = { '': found.value.length }
+    for (const t of found.value) {
+      c[t.zone] = (c[t.zone] || 0) + 1
+      c[`${t.zone}/${t.subzone}`] = (c[`${t.zone}/${t.subzone}`] || 0) + 1
+    }
+    return c
+  })
+
+  const grouped = computed(() => {
+    const out = []
+    for (const [zk, z] of Object.entries(zones.value)) {
+      if (f.value.zone && zk !== f.value.zone) continue
+      const subs = []
+      for (const [sk, title] of Object.entries(z.subzones)) {
+        if (f.value.sub && sk !== f.value.sub) continue
+        const list = found.value.filter((t) => t.zone === zk && t.subzone === sk)
+        if (list.length) subs.push({ key: sk, title, list })
+      }
+      if (subs.length) out.push({ key: zk, title: z.title, subs })
+    }
+    return out
+  })
+
+  return { f, set, counts, grouped }
+}

@@ -1,0 +1,1884 @@
+- slug: logic-render-split
+  title: Розділення логіки і рендера
+  description: Двіжок не знає, консоль це чи GUI (вимога спільного двіжка).
+  zone: code
+  subzone: architecture
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: dual-frontends
+  title: Два фронтенди на одному двіжку
+  description: Консоль + GUI перемикаються.
+  zone: code
+  subzone: architecture
+  coin: silver
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: state-as-data
+  title: Стан гри як дані
+  description: Серіалізований стан (основа збережень і replay).
+  zone: code
+  subzone: architecture
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: game-loop
+  title: Цикл tick/update/render
+  description: Явний ігровий цикл.
+  zone: code
+  subzone: architecture
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 40
+- slug: commit-history
+  title: Історія комітів
+  description: Осмислені повідомлення, без сміття в репо.
+  zone: code
+  subzone: git
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: project-readme
+  title: README проєкту
+  description: Як запустити, керування, скриншоти.
+  zone: code
+  subzone: git
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: version-tags
+  title: Теги версій
+  description: Зріз на кожну лабораторну.
+  zone: code
+  subzone: git
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: requirements-pyproject
+  title: Requirements/pyproject
+  description: Відтворюване середовище.
+  zone: code
+  subzone: packaging
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: single-command-run
+  title: Запуск однією командою
+  description: python -m game без танців.
+  zone: code
+  subzone: packaging
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: exe-build
+  title: Збірка в exe
+  description: pyinstaller для демонстрації без Python.
+  zone: code
+  subzone: packaging
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: typing-mypy
+  title: Типізація
+  description: Анотації + перевірка mypy.
+  zone: code
+  subzone: python
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: dataclass-entities
+  title: Dataclass-сутності
+  description: Моделі елементів поля.
+  zone: code
+  subzone: python
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: generators-iterators
+  title: Генератори та ітератори
+  description: Обхід поля, хвилі.
+  zone: code
+  subzone: python
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: custom-exceptions
+  title: Виключення
+  description: Власні класи помилок, охайна обробка.
+  zone: code
+  subzone: python
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 40
+- slug: std-collections
+  title: Стандартні колекції
+  description: deque для тіла змійки, heapq для A*.
+  zone: code
+  subzone: python
+  games:
+  - snake
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 50
+- slug: unit-tests
+  title: Юніт-тести логіки
+  description: Рух, взаємодії, перемога без рендера.
+  zone: code
+  subzone: tests
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: fixture-level-tests
+  title: Тест на рівнях-фікстурах
+  description: Мапа з очікуваним результатом.
+  zone: code
+  subzone: tests
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: property-tests
+  title: Property-тести
+  description: Генератор завжди видає розвʼязне.
+  zone: code
+  subzone: tests
+  tags:
+  - algo
+  games:
+  - paper-puzzles
+  coin: gold
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: projectile-shot
+  title: Постріл
+  description: Снаряд як сутність, летить по прямій.
+  zone: entities
+  subzone: combat
+  games:
+  - battle-city
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: shoot-modes
+  title: Режими стрільби
+  description: 'Сімʼя: вперед / черга / дріб / cooldown.'
+  zone: entities
+  subzone: combat
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  variants:
+  - slug: shoot-forward
+    title: Вперед
+    coin: tin
+    amount: 1
+  - slug: shoot-burst
+    title: Черга
+    coin: tin
+    amount: 1
+  - slug: shoot-spread
+    title: Дріб
+    coin: tin
+    amount: 1
+  - slug: shoot-cooldown
+    title: Cooldown
+    coin: tin
+    amount: 1
+  status: draft
+  order: 20
+- slug: projectile-collision
+  title: Зіткнення снарядів
+  description: Анігіляція чи проліт.
+  zone: entities
+  subzone: combat
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: blast-wave
+  title: Вибухова хвиля
+  description: Хрест на N клітин.
+  zone: entities
+  subzone: combat
+  games:
+  - bomberman
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 40
+- slug: chain-detonation
+  title: Ланцюгова детонація
+  description: Вибух підриває сусідні бомби.
+  zone: entities
+  subzone: combat
+  games:
+  - bomberman
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 50
+- slug: piece-capture
+  title: Взяття фігури
+  description: Зняття з поля при ході на зайняту клітину.
+  zone: entities
+  subzone: combat
+  games:
+  - chess
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 60
+- slug: melee-vs-ranged
+  title: Атака впритул проти дистанційної
+  description: Правила по типу ворога.
+  zone: entities
+  subzone: combat
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 70
+- slug: touch-death
+  title: Смерть від дотику
+  description: Ворог/пастка вбиває.
+  zone: entities
+  subzone: death
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: environment-death
+  title: Смерть від середовища
+  description: Вода без колоди, вибух, камінь згори.
+  zone: entities
+  subzone: death
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: respawn
+  title: Респавн
+  description: Повернення після смерті (дім привидів, checkpoint).
+  zone: entities
+  subzone: death
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: timed-despawn
+  title: Зникнення за часом
+  description: Тимчасові предмети і платформи.
+  zone: entities
+  subzone: death
+  games:
+  - frogger
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 40
+- slug: death-animation
+  title: Анімація смерті
+  description: Ефект перед зникненням.
+  zone: entities
+  subzone: death
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 50
+- slug: item-pickup
+  title: Збирання
+  description: Предмет зникає, ефект гравцеві.
+  zone: entities
+  subzone: interact
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: interaction-table
+  title: Таблиця взаємодій
+  description: «Що стається, коли X наступає на Y» як дані.
+  zone: entities
+  subzone: interact
+  coin: silver
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: key-and-door
+  title: Ключ і двері
+  description: Сімʼя способів відкриття.
+  zone: entities
+  subzone: interact
+  games:
+  - maze
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: teleport
+  title: Телепорт
+  description: Парні портали.
+  zone: entities
+  subzone: interact
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  variants:
+  - slug: teleport-pair
+    title: Парні портали
+    coin: bronze
+    amount: 1
+  - slug: teleport-one-way
+    title: Односторонні
+    coin: tin
+    amount: 1
+  - slug: teleport-cooldown
+    title: З cooldown
+    coin: tin
+    amount: 1
+  - slug: teleport-random-exit
+    title: Випадковий вихід
+    coin: tin
+    amount: 1
+  status: draft
+  order: 40
+- slug: floor-types
+  title: Типи підлоги
+  description: Лід (ковзання), вода (потрібні ласти), вогонь (Chip's Challenge).
+  zone: entities
+  subzone: interact
+  coin: silver
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 50
+- slug: stick-together
+  title: Злипання
+  description: Сутності зчіплюються при контакті і рухаються разом (Sokobond).
+  zone: entities
+  subzone: interact
+  coin: silver
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 60
+- slug: cell-transform
+  title: Трансформація
+  description: Клітина-перетворювач змінює тип обʼєкта (Emerald Mine).
+  zone: entities
+  subzone: interact
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 70
+- slug: impassable-cells
+  title: Непрохідні клітини
+  description: Стіни для всіх або для типу сутності.
+  zone: entities
+  subzone: legality
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: piece-move-patterns
+  title: Патерни ходів фігур
+  description: Кінь/тура/слон як правила на сітці.
+  zone: entities
+  subzone: legality
+  games:
+  - chess
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: legal-move-highlight
+  title: Підсвітка легальних ходів
+  description: Показати дозволені клітини обраної фігури.
+  zone: entities
+  subzone: legality
+  games:
+  - chess
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: no-move-into-check
+  title: Заборона ходу під шах
+  description: Хід, що підставляє короля, недопустимий.
+  zone: entities
+  subzone: legality
+  tags:
+  - algo
+  games:
+  - chess
+  coin: gold
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 40
+- slug: tile-merge
+  title: Злиття однакових
+  description: Плитки обʼєднуються за правилом.
+  zone: entities
+  subzone: legality
+  games:
+  - '2048'
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 50
+- slug: push-object
+  title: Штовхання
+  description: Обʼєкт зсувається, якщо за ним вільно.
+  zone: entities
+  subzone: legality
+  games:
+  - sokoban
+  - boulder-dash
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 60
+- slug: move-by-input
+  title: Рух за вводом
+  description: 4 напрямки; ввід керує переміщенням аватара.
+  zone: entities
+  subzone: move
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  variants:
+  - slug: move-4dir
+    title: 4 напрямки
+    coin: bronze
+    amount: 1
+  - slug: move-8dir
+    title: 8 напрямків (діагоналі)
+    coin: bronze
+    amount: 1
+  - slug: move-auto
+    title: Автоматичний рух, ввід змінює напрям
+    coin: bronze
+    amount: 1
+  status: draft
+  order: 10
+- slug: inertia-slide
+  title: Інерція
+  description: Ковзання до упору.
+  zone: entities
+  subzone: move
+  games:
+  - inertia
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: gravity-fall
+  title: Гравітація
+  description: Падіння без опори.
+  zone: entities
+  subzone: move
+  games:
+  - lode-runner
+  - boulder-dash
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: enemy-patrol
+  title: Патрулювання
+  description: Ворог туди-сюди / по маршруту.
+  zone: entities
+  subzone: move
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 40
+- slug: random-walk
+  title: Випадкове блукання
+  description: З забороною розвороту на місці.
+  zone: entities
+  subzone: move
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 50
+- slug: chase-player
+  title: Погоня за гравцем
+  description: Жадібна (крок у бік цілі).
+  zone: entities
+  subzone: move
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  variants:
+  - slug: chase-greedy
+    title: Жадібна (крок у бік цілі)
+    coin: bronze
+    amount: 1
+  - slug: chase-bfs
+    title: Пошук шляху BFS/A*
+    coin: gold
+    amount: 1
+  - slug: chase-double-move
+    title: Два ходи ворога на один хід гравця (Theseus)
+    coin: bronze
+    amount: 1
+  status: draft
+  order: 60
+- slug: pattern-automaton
+  title: Патерн-автомат
+  description: Жорсткий цикл ходів (слайм квадратом, скелет через такт).
+  zone: entities
+  subzone: move
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 70
+- slug: row-conveyor
+  title: Конвеєрний рух ряду
+  description: Вся смуга зсувається разом.
+  zone: entities
+  subzone: move
+  games:
+  - frogger
+  - pvz-lite
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 80
+- slug: body-queue
+  title: Тіло-черга
+  description: Хвіст повторює шлях голови.
+  zone: entities
+  subzone: move
+  games:
+  - snake
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 90
+- slug: spawn-random-cell
+  title: Спавн у випадковій клітині
+  description: З перевіркою, що клітина вільна.
+  zone: entities
+  subzone: spawn
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: spawn-schedule
+  title: Спавн за розкладом
+  description: Кожні N тіків / за подією.
+  zone: entities
+  subzone: spawn
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: spawn-points
+  title: Точки спавну
+  description: Фіксовані місця рівня (дім привидів).
+  zone: entities
+  subzone: spawn
+  games:
+  - pac-man
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: spawn-animation
+  title: Поява з анімацією
+  description: Сутність «проявляється» кілька тіків.
+  zone: entities
+  subzone: spawn
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 40
+- slug: hp-damage
+  title: HP і шкода
+  description: Замість миттєвої смерті.
+  zone: entities
+  subzone: state
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: inventory
+  title: Інвентар
+  description: Предмети з застосуванням.
+  zone: entities
+  subzone: state
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  variants:
+  - slug: inventory-items
+    title: Предмети з застосуванням
+    coin: bronze
+    amount: 1
+  - slug: inventory-limit
+    title: Ліміт місткості
+    coin: silver
+    amount: 1
+  - slug: inventory-duration
+    title: Час дії
+    coin: bronze
+    amount: 1
+  status: draft
+  order: 20
+- slug: temporary-modes
+  title: Тимчасові режими
+  description: Сила після енерджайзера, щит, переляк ворогів.
+  zone: entities
+  subzone: state
+  games:
+  - pac-man
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: speed-per-type
+  title: Швидкість за типом
+  description: Різний темп сутностей (тіки через раз).
+  zone: entities
+  subzone: state
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 40
+- slug: multi-cell-size
+  title: Розмір понад клітину
+  description: Обʼєкт 1×2/2×2, рух уздовж осі (Rush Hour).
+  zone: entities
+  subzone: state
+  tags:
+  - algo
+  coin: gold
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 50
+- slug: orientation-state
+  title: Орієнтація як стан
+  description: Обʼєкт перекочується, боки різні (Sausage Roll).
+  zone: entities
+  subzone: state
+  tags:
+  - algo
+  coin: gold
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 60
+- slug: markup-validity
+  title: Валідність розмітки
+  description: Конфлікти рядка/стовпця/регіону.
+  zone: game-logic
+  subzone: constraints
+  games:
+  - paper-puzzles
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: completion-detection
+  title: Виявлення завершення
+  description: Всі обмеження виконані.
+  zone: game-logic
+  subzone: constraints
+  games:
+  - paper-puzzles
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: check-stalemate
+  title: Шах / пат
+  description: Виявлення загрози і безвиході.
+  zone: game-logic
+  subzone: constraints
+  tags:
+  - algo
+  games:
+  - chess
+  coin: gold
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: deadlock-detection
+  title: Виявлення deadlock
+  description: Ящик у глухому куті.
+  zone: game-logic
+  subzone: constraints
+  tags:
+  - algo
+  games:
+  - sokoban
+  coin: gold
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 40
+- slug: difficulty-levels
+  title: Рівні складності
+  description: Розмір поля, кількість мін/ворогів.
+  zone: game-logic
+  subzone: difficulty
+  games:
+  - minesweeper
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: cheat-codes
+  title: Чіт-коди
+  description: Безсмертя, відкриття рівнів (для демонстрації і налагодження).
+  zone: game-logic
+  subzone: difficulty
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: game-pause
+  title: Пауза
+  description: Заморозка тіків.
+  zone: game-logic
+  subzone: difficulty
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: round-currency
+  title: Валюта в раунді
+  description: 'Сонця/монети: генерація і витрати.'
+  zone: game-logic
+  subzone: economy
+  games:
+  - pvz-lite
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: shop-between-levels
+  title: Магазин між рівнями
+  description: Покупка апгрейдів.
+  zone: game-logic
+  subzone: economy
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: in-round-upgrades
+  title: Апгрейди в раунді
+  description: Радіус вибуху, кількість бомб.
+  zone: game-logic
+  subzone: economy
+  games:
+  - bomberman
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: player-death
+  title: Смерть гравця
+  description: З варіантом кількох життів.
+  zone: game-logic
+  subzone: lose
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: time-out
+  title: Вичерпано час
+  description: Таймер рівня.
+  zone: game-logic
+  subzone: lose
+  games:
+  - bomberman
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: enemy-reached-base
+  title: Ворог дійшов до краю/бази
+  zone: game-logic
+  subzone: lose
+  games:
+  - pvz-lite
+  - battle-city
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: no-moves-left
+  title: Нема ходів
+  description: Глухий кут.
+  zone: game-logic
+  subzone: lose
+  games:
+  - '2048'
+  - sokoban
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 40
+- slug: wrong-mark-lose
+  title: Помилкова розмітка
+  description: Поразка при невірно заповненій клітині (режим «like paper»).
+  zone: game-logic
+  subzone: lose
+  games:
+  - paper-puzzles
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 50
+- slug: hot-seat
+  title: Hot-seat на двох
+  description: Черга ходів за однією клавіатурою.
+  zone: game-logic
+  subzone: opponent
+  games:
+  - chess
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: turn-enforcement
+  title: Заборона позачергового ходу
+  description: Контроль сторони.
+  zone: game-logic
+  subzone: opponent
+  games:
+  - chess
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: move-timer
+  title: Таймер ходу / шаховий годинник
+  zone: game-logic
+  subzone: opponent
+  games:
+  - chess
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: ai-opponent
+  title: AI-суперник
+  description: 'Сімʼя за силою: випадковий → жадібний → minimax.'
+  zone: game-logic
+  subzone: opponent
+  games:
+  - chess
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  variants:
+  - slug: ai-random
+    title: Випадковий
+    coin: tin
+    amount: 1
+  - slug: ai-greedy
+    title: Жадібний
+    coin: bronze
+    amount: 1
+  - slug: ai-minimax
+    title: Minimax
+    coin: gold
+    amount: 1
+  status: draft
+  order: 40
+- slug: realtime-ai
+  title: AI в реальному часі
+  description: Виживання проти Tron-змійки.
+  zone: game-logic
+  subzone: opponent
+  tags:
+  - algo
+  games:
+  - snake
+  coin: gold
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 50
+- slug: save-game
+  title: Збереження гри
+  description: Продовжити пізніше.
+  zone: game-logic
+  subzone: save
+  coin: silver
+  amount: 1.0
+  max_count: 1
+  variants:
+  - slug: save-single-slot
+    title: Один слот
+    coin: silver
+    amount: 1
+  - slug: save-multi-slot
+    title: Кілька слотів
+    coin: silver
+    amount: 1
+  - slug: save-autosave
+    title: Автосейв
+    coin: silver
+    amount: 1
+  status: draft
+  order: 10
+- slug: save-progress
+  title: Збереження рекордів і прогресу
+  description: Між сесіями.
+  zone: game-logic
+  subzone: save
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: event-points
+  title: Очки за події
+  description: Таблиця вартостей дій.
+  zone: game-logic
+  subzone: score
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: combo-multiplier
+  title: Комбо-серії
+  description: Множник за неперервність (Mr. Do!).
+  zone: game-logic
+  subzone: score
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: time-bonus
+  title: Бонус за час
+  description: Швидше = більше.
+  zone: game-logic
+  subzone: score
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: score-records
+  title: Рекорди
+  description: Локальна таблиця найкращих.
+  zone: game-logic
+  subzone: score
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 40
+- slug: enemy-waves
+  title: Хвилі ворогів
+  description: Розклад появи, фінальна хвиля.
+  zone: game-logic
+  subzone: waves
+  games:
+  - pvz-lite
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: reinforcements
+  title: Підкріплення
+  description: +1 ворог за знищеного.
+  zone: game-logic
+  subzone: waves
+  games:
+  - battle-city
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: progress-acceleration
+  title: Прискорення прогресу
+  description: Темп росте з рівнем/довжиною.
+  zone: game-logic
+  subzone: waves
+  games:
+  - snake
+  - pac-man
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: collect-all
+  title: Зібрати все
+  description: Точки/призи/золото.
+  zone: game-logic
+  subzone: win
+  games:
+  - pac-man
+  - lode-runner
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: collect-quota
+  title: Зібрати квоту
+  description: N алмазів відкривають вихід.
+  zone: game-logic
+  subzone: win
+  games:
+  - boulder-dash
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: reach-exit
+  title: Дійти до фінішу
+  description: Клітина виходу.
+  zone: game-logic
+  subzone: win
+  games:
+  - maze
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: destroy-all-enemies
+  title: Знищити всіх ворогів
+  zone: game-logic
+  subzone: win
+  games:
+  - battle-city
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 40
+- slug: all-on-targets
+  title: Усі обʼєкти на цілях
+  zone: game-logic
+  subzone: win
+  games:
+  - sokoban
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 50
+- slug: satisfy-constraints
+  title: Задовольнити всі обмеження
+  description: Пазл розвʼязано.
+  zone: game-logic
+  subzone: win
+  games:
+  - paper-puzzles
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 60
+- slug: checkmate
+  title: Мат
+  description: Король суперника без порятунку.
+  zone: game-logic
+  subzone: win
+  tags:
+  - algo
+  games:
+  - chess
+  coin: gold
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 70
+- slug: movement-animation
+  title: Анімація руху
+  description: Плавний зсув між клітинами (GUI).
+  zone: interface
+  subzone: graphics
+  games:
+  - '2048'
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: event-effects
+  title: Ефекти подій
+  description: Вибух, збирання, відкриття дверей.
+  zone: interface
+  subzone: graphics
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: idle-animation
+  title: Анімація очікування
+  description: «Дихання» спрайтів на місці.
+  zone: interface
+  subzone: graphics
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: particles
+  title: Частинки
+  description: Прості системи часток на подіях.
+  zone: interface
+  subzone: graphics
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 40
+- slug: status-panel
+  title: Панель стану
+  description: Життя, рахунок, час, запас бомб/щитів.
+  zone: interface
+  subzone: hud
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: goal-counter
+  title: Лічильник цілей
+  description: Скільки лишилось зібрати/знищити.
+  zone: interface
+  subzone: hud
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: mode-indicator
+  title: Індикатор режиму
+  description: Енерджайзер активний, чий хід.
+  zone: interface
+  subzone: hud
+  games:
+  - pac-man
+  - chess
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: telegraphed-intents
+  title: Телеграфовані наміри
+  description: Показати наступний хід ворога (Into the Breach).
+  zone: interface
+  subzone: hud
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 40
+- slug: keyboard-controls
+  title: Керування клавіатурою
+  description: Рух, дії, перепризначення клавіш.
+  zone: interface
+  subzone: input
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: cell-click
+  title: Клік по клітині
+  description: Базова курсорна дія.
+  zone: interface
+  subzone: input
+  games:
+  - minesweeper
+  - pvz-lite
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: hover-highlight
+  title: Виділення і наведення
+  description: Підсвітка клітини під курсором.
+  zone: interface
+  subzone: input
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: drag-drop-piece
+  title: Drag-n-drop фігури
+  description: Перетягнути на легальну клітину.
+  zone: interface
+  subzone: input
+  games:
+  - chess
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 40
+- slug: pencil-marks
+  title: Олівцеві нотатки
+  description: 'Pencil marks: кандидати в клітині.'
+  zone: interface
+  subzone: input
+  games:
+  - paper-puzzles
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 50
+- slug: chord-click
+  title: Акорд-клік
+  description: Комбінована дія на числі.
+  zone: interface
+  subzone: input
+  games:
+  - minesweeper
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 60
+- slug: swipe-gestures
+  title: Жести-свайпи
+  description: Хід свайпом (тач/мобільний варіант).
+  zone: interface
+  subzone: input
+  games:
+  - '2048'
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 70
+- slug: main-menu
+  title: Головне меню
+  description: Нова гра, продовжити, вихід.
+  zone: interface
+  subzone: menus
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: pause-menu
+  title: Пауза-меню
+  description: З продовженням і рестартом.
+  zone: interface
+  subzone: menus
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: confirm-dialog
+  title: Діалог підтвердження
+  description: Вихід без збереження.
+  zone: interface
+  subzone: menus
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: end-screen
+  title: Екран перемоги/поразки
+  description: З підсумком і переходом далі.
+  zone: interface
+  subzone: menus
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 40
+- slug: console-render
+  title: Консольний рендер
+  description: Поле символами/емодзі, перемальовка кадру.
+  zone: interface
+  subzone: render
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: gui-render
+  title: GUI-рендер
+  description: Те саме поле спрайтами; спільний двіжок із консоллю.
+  zone: interface
+  subzone: render
+  coin: silver
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: field-scaling
+  title: Масштабування поля
+  description: Розмір під вікно, скрол великих мап.
+  zone: interface
+  subzone: render
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: player-camera
+  title: Камера за гравцем
+  description: Вʼюпорт менший за мапу.
+  zone: interface
+  subzone: render
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 40
+- slug: minimap-radar
+  title: Мінімапа/радар
+  description: Огляд великої мапи або невидимих ворогів.
+  zone: interface
+  subzone: render
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 50
+- slug: leaderboard
+  title: Таблиця рекордів
+  description: Топ-N з іменами.
+  zone: interface
+  subzone: results
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: profile-stats
+  title: Статистика профілю
+  description: Партії, перемоги, найкращий час.
+  zone: interface
+  subzone: results
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: replay
+  title: Replay
+  description: Перегляд запису проходження.
+  zone: interface
+  subzone: results
+  coin: silver
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: game-settings
+  title: Налаштування гри
+  description: Складність, розмір поля, звук; збереження між сесіями.
+  zone: interface
+  subzone: settings
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: theme-select
+  title: Вибір теми
+  description: Набори символів/спрайтів.
+  zone: interface
+  subzone: settings
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: sound-effects
+  title: Звукові ефекти подій
+  description: Кроки, постріл, збирання.
+  zone: interface
+  subzone: sound
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: background-music
+  title: Фонова музика
+  description: З вимикачем у налаштуваннях.
+  zone: interface
+  subzone: sound
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: sound-warnings
+  title: Звукові попередження
+  description: Таймер добігає, шах.
+  zone: interface
+  subzone: sound
+  games:
+  - chess
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: level-bank
+  title: Банк рівнів із прогресом
+  description: Список «розвʼязано / ні».
+  zone: levels
+  subzone: bank
+  games:
+  - paper-puzzles
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: daily-puzzle
+  title: Щоденний пазл
+  description: Рівень дня з фіксованим seed.
+  zone: levels
+  subzone: bank
+  games:
+  - paper-puzzles
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: level-rating
+  title: Рейтинг рівнів
+  description: Сортування за складністю в банку.
+  zone: levels
+  subzone: bank
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: in-game-editor
+  title: Редактор у грі
+  description: Розстановка елементів курсором, збереження у файл.
+  zone: levels
+  subzone: editor
+  coin: silver
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: editor-map-check
+  title: Перевірка мапи редактором
+  description: Не дає зберегти непрохідне.
+  zone: levels
+  subzone: editor
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: level-exchange
+  title: Обмін рівнями
+  description: Експорт/імпорт файла іншому студенту.
+  zone: levels
+  subzone: editor
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: level-from-txt
+  title: Рівень із txt-файла
+  description: Символьна мапа, парсер.
+  zone: levels
+  subzone: format
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: import-open-formats
+  title: Імпорт відкритих форматів
+  description: .xsb, судоку-стрічки, формати Tatham.
+  zone: levels
+  subzone: format
+  games:
+  - sokoban
+  - paper-puzzles
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: map-validation
+  title: Валідація мапи
+  description: Зрозуміла помилка на битому файлі.
+  zone: levels
+  subzone: format
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: level-metadata
+  title: Метадані рівня
+  description: Назва, автор, складність у заголовку файла.
+  zone: levels
+  subzone: format
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 40
+- slug: maze-generation
+  title: Генерація лабіринту
+  description: Прохідний лабіринт (DFS/Прима).
+  zone: levels
+  subzone: generation
+  tags:
+  - algo
+  games:
+  - maze
+  coin: gold
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: mines-after-first-click
+  title: Розкидання мін після першого кліку
+  description: Перший клік завжди безпечний.
+  zone: levels
+  subzone: generation
+  games:
+  - minesweeper
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: dungeon-generation
+  title: Генерація підземель
+  description: Кімнати + коридори (роглайк).
+  zone: levels
+  subzone: generation
+  tags:
+  - algo
+  coin: gold
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: unique-puzzle-generation
+  title: Генерація пазла з унікальним розвʼязком
+  description: Головне золото пазл-гілки.
+  zone: levels
+  subzone: generation
+  tags:
+  - algo
+  games:
+  - paper-puzzles
+  coin: gold
+  amount: 2.0
+  max_count: 1
+  status: draft
+  order: 40
+- slug: infinite-field
+  title: Нескінченне поле вперед
+  description: Генерація на льоту (Crossy Road).
+  zone: levels
+  subzone: generation
+  tags:
+  - algo
+  games:
+  - frogger
+  coin: gold
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 50
+- slug: difficulty-rating
+  title: Оцінка складності згенерованого
+  description: Рейтинг за технікою розвʼязання.
+  zone: levels
+  subzone: generation
+  tags:
+  - algo
+  games:
+  - paper-puzzles
+  coin: gold
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 60
+- slug: sequential-levels
+  title: Кілька рівнів послідовно
+  description: Перехід після перемоги.
+  zone: levels
+  subzone: progression
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: level-unlock
+  title: Розблокування
+  description: Наступний відкривається після попереднього.
+  zone: levels
+  subzone: progression
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: level-select
+  title: Вибір рівня
+  description: Меню зі списком і статусом.
+  zone: levels
+  subzone: progression
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: checkpoint
+  title: Checkpoint
+  description: Продовження з середини після смерті.
+  zone: levels
+  subzone: progression
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 40
+- slug: reachability-check
+  title: Перевірка досяжності
+  description: Чи існує шлях до всіх цілей (flood fill / BFS).
+  zone: levels
+  subzone: solvability
+  tags:
+  - algo
+  coin: gold
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: level-solver
+  title: Розвʼязувач
+  description: Авторозвʼязання рівня (Sokoban, судоку).
+  zone: levels
+  subzone: solvability
+  tags:
+  - algo
+  games:
+  - sokoban
+  - paper-puzzles
+  coin: gold
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: unsolvable-states
+  title: Виявлення нерозвʼязних станів
+  description: Deadlock під час гри.
+  zone: levels
+  subzone: solvability
+  tags:
+  - algo
+  games:
+  - sokoban
+  coin: gold
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: player-guide
+  title: Інструкція гравця
+  description: Правила і керування.
+  zone: support
+  subzone: docs
+  coin: wood
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: architecture-doc
+  title: Опис архітектури
+  description: Схема модулів для захисту.
+  zone: support
+  subzone: docs
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: dev-log
+  title: Журнал розробки
+  description: Короткий devlog по тижнях.
+  zone: support
+  subzone: docs
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: game-page
+  title: Сторінка гри
+  description: Опис, скриншоти, посилання на репозиторій.
+  zone: support
+  subzone: sites
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 10
+- slug: video-channel
+  title: Канал/плейліст
+  description: Зібрані демки по лабораторних.
+  zone: support
+  subzone: sites
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: itchio-publish
+  title: Itch.io-публікація
+  description: Гра, доступна для запуску іншим.
+  zone: support
+  subzone: sites
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30
+- slug: feature-demo
+  title: Демка фічі
+  description: Короткий запис однієї можливості до захисту.
+  zone: support
+  subzone: video
+  coin: tin
+  amount: 1.0
+  max_count: 0
+  status: draft
+  order: 10
+- slug: game-trailer
+  title: Трейлер гри
+  description: Зведене відео з монтажем.
+  zone: support
+  subzone: video
+  coin: bronze
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 20
+- slug: demo-effects
+  title: Ефекти демки
+  description: Титри, прискорення, зум на момент.
+  zone: support
+  subzone: video
+  coin: tin
+  amount: 1.0
+  max_count: 1
+  status: draft
+  order: 30

@@ -48,6 +48,7 @@ dependencies = [
     { name = "fastapi", extra = ["standard"] },
     { name = "itsdangerous" },
     { name = "pydantic-settings" },
+    { name = "pyyaml" },
 ]
 
 [package.metadata]
@@ -57,6 +58,7 @@ requires-dist = [
     { name = "fastapi", extras = ["standard"] },
     { name = "itsdangerous" },
     { name = "pydantic-settings" },
+    { name = "pyyaml", specifier = ">=6.0.3" },
 ]
 
 [[package]]

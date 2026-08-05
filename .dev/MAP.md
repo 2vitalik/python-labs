@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T70** · тікетів: 69 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T72** · тікетів: 71 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -13,7 +13,7 @@
 | games | [T03](games/.t/T03-C--grid-games-concept.md) | 🔆 | grid-games-concept | Концепція ігор на клітинному полі | 🟢 ⬜ |
 | games | [T04](games/.t/T04-Q--games-open-questions.md) | ❓ | games-open-questions | Питання щодо ігор і варіантів | 🔴 ⬜ |
 | tasks | [T05](tasks/.t/T05-C--task-catalog-concept.md) | 🔆 | task-catalog-concept | Каталог завдань-цеглинок | 🟢 ⬜ |
-| tasks | [T06](tasks/.t/T06-Q--tasks-open-questions.md) | ❓ | tasks-open-questions | Питання щодо каталогу завдань | 🔴 ⬜ |
+| tasks | [T06](tasks/.t/T06-Q--tasks-open-questions.md) | ❓ | tasks-open-questions | Питання щодо каталогу завдань | 🟢 🟩 |
 | grading | [T07](grading/.t/T07-C--coins-system.md) | 🔆 | coins-system | Система монеток і шкала оцінок | 🟢 ⬜ |
 | grading | [T08](grading/.t/T08-Q--grading-open-questions.md) | ❓ | grading-open-questions | Питання щодо оцінювання | 🔴 ⬜ |
 | reports | [T09](reports/.t/T09-C--reports-concept.md) | 🔆 | reports-concept | Звіти студентів у вебсистемі | 🟢 ⬜ |
@@ -40,11 +40,11 @@
 | tasks | [T30](tasks/.t/T30-Q--v3-anomaly-fixes.md) | ❓ | v3-anomaly-fixes | Чи виправляти аномалії при конвертації у v3 | 🔴 ⬜ |
 | tasks | [T31](tasks/.t/T31--v3-conversion/plan.md) | ⚙️ | v3-conversion | Конвертація даних v2 → v3 (єдина CSV-схема) — план | 🟢 🟩 |
 | games | [T32](games/.t/T32-C--grid-games-catalog.md) | 🔆 | grid-games-catalog | Каталог ігор-кандидатів на клітинному полі | 🟢 ⬜ |
-| tasks | [T33](tasks/.t/T33-B--task-taxonomy.md) | 🧠 | task-taxonomy | Таксономія тасків з нуля: фасети замість дерева | 🟢 ⬜ |
+| tasks | [T33](tasks/.t/T33-B--task-taxonomy.md) | 🧠 | task-taxonomy | Таксономія тасків з нуля: фасети замість дерева | 🟢 🟩 |
 | games | [T34](games/.t/T34-P--game-spec-model.md) | 💡 | game-spec-model | Декларативна модель гри: елементи, правила, win-lose | 🟢 ⬜ |
 | — | [T35](.t/T35-B--unexpected-ideas.md) | 🧠 | unexpected-ideas | Несподівані ідеї навколо каталогу, ігор і спеки | 🟢 ⬜ |
 | games | [T36](games/.t/T36-Q--games-catalog-questions.md) | ❓ | games-catalog-questions | Питання по каталогу ігор-кандидатів | 🔴 ⬜ |
-| tasks | [T37](tasks/.t/T37-Q--taxonomy-questions.md) | ❓ | taxonomy-questions | Питання по таксономії і міграції каталогу | 🔴 ⬜ |
+| tasks | [T37](tasks/.t/T37-Q--taxonomy-questions.md) | ❓ | taxonomy-questions | Питання по таксономії і міграції каталогу | 🟢 🟩 |
 | .rounds | [T38](.rounds/.t/T38-R--auth-mvp-readback.md) | ✔️ | auth-mvp-readback | Рідбек: мікро-MVP авторизації, перегляд стеку | 🟢 ⬜ |
 | platform | [T39](platform/.t/T39-B--stack-rethink.md) | 🧠 | stack-rethink | Перегляд стеку під Mongo + план мікро-MVP авторизації | 🟢 ⬜ |
 | platform | [T40](platform/.t/T40-Q--auth-mvp-questions.md) | ❓ | auth-mvp-questions | Питання щодо мікро-MVP авторизації | 🟢 🟩 |
@@ -57,7 +57,7 @@
 | platform | [T47](platform/.t/T47-C--pycharm-setup.md) | 🔆 | pycharm-setup | PyCharm: покрокове налаштування запуску | 🟢 ⬜ |
 | github | [T48](github/.t/T48-C--collaborator-access.md) | 🔆 | collaborator-access | Доступ через колаборатора: механіка й авторизація | 🟢 ⬜ |
 | games | [T49](games/.t/T49-B--game-classes.md) | 🧠 | game-classes | Розширення простору ігор: класи за актором і осі опису | 🟢 🟩 |
-| tasks | [T50](tasks/.t/T50-B--kb-task-groups.md) | 🧠 | kb-task-groups | Групи завдань бази знань: узагальнення таксономії | 🟢 ⬜ |
+| tasks | [T50](tasks/.t/T50-B--kb-task-groups.md) | 🧠 | kb-task-groups | Групи завдань бази знань: узагальнення таксономії | 🟢 🟩 |
 | — | [T51](.t/T51-P--kb-structure.md) | 💡 | kb-structure | База знань контенту: структура data/kb і формат файлів | 🟢 ⬜ |
 | — | [T52](.t/T52-Q--kb-questions.md) | ❓ | kb-questions | Питання по базі знань: структура, формат, старт | 🟢 ⬜ |
 | games | [T53](games/.t/T53-Q--game-classes-questions.md) | ❓ | game-classes-questions | Питання по нових класах ігор | 🟢 🟩 |
@@ -73,7 +73,9 @@
 | platform | [T63](platform/.t/T63-Q--css-framework-choice.md) | ❓ | css-framework-choice | Вибір CSS-фреймворка | 🔴 ⬜ |
 | platform | [T64](platform/.t/T64--profile-v1/plan.md) | ⚙️ | profile-v1 | Профіль студента v1: сторінки, історія, імпорт — план | 🟢 🟩 |
 | .rounds | [T65](.rounds/.t/T65-R--catalog-round-readback.md) | ✔️ | catalog-round-readback | Рамки раунду «Каталог v1: ігри + завдання» | 🟢 ⬜ |
-| platform | [T66](platform/.t/T66-B--catalog-storage.md) | 🧠 | catalog-storage | Зберігання каталогу: БД, файли чи гібрид | 🟢 ⬜ |
-| platform | [T67](platform/.t/T67-B--catalog-ui.md) | 🧠 | catalog-ui | Подача каталогу: навігація, пошук, редагування | 🟢 ⬜ |
-| platform | [T68](platform/.t/T68-P--catalog-v1-design.md) | 💡 | catalog-v1-design | Каталог v1: модель, API, сторінки, сид | 🟢 ⬜ |
-| platform | [T69](platform/.t/T69-Q--catalog-v1-questions.md) | ❓ | catalog-v1-questions | Питання по каталогу v1 | 🔴 ⬜ |
+| platform | [T66](platform/.t/T66-B--catalog-storage.md) | 🧠 | catalog-storage | Зберігання каталогу: БД, файли чи гібрид | 🟢 🟩 |
+| platform | [T67](platform/.t/T67-B--catalog-ui.md) | 🧠 | catalog-ui | Подача каталогу: навігація, пошук, редагування | 🟢 🟩 |
+| platform | [T68](platform/.t/T68-P--catalog-v1-design.md) | 💡 | catalog-v1-design | Каталог v1: модель, API, сторінки, сид | 🟢 🟩 |
+| platform | [T69](platform/.t/T69-Q--catalog-v1-questions.md) | ❓ | catalog-v1-questions | Питання по каталогу v1 | 🟢 🟩 |
+| .rounds | [T70](.rounds/.t/T70-R--catalog-decisions.md) | ✔️ | catalog-decisions | Рішення по каталогу v1 — відповіді T69/T37/T06 | 🟢 🟩 |
+| platform | [T71](platform/.t/T71--catalog-v1/plan.md) | ⚙️ | catalog-v1 | Каталог v1: реалізація — план | 🟢 🟩 |

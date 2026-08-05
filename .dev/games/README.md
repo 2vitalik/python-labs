@@ -3,7 +3,7 @@
 Формат робіт студентів: ігри на клітинному полі за мотивами класики. Сусіди: завдання-цеглинки — [tasks](../tasks/README.md), ціни — [grading](../grading/README.md).
 
 Шапка:
-- Оновлено: 2026-08-04
+- Оновлено: 2026-08-05
 - Інтегровано: [T49](.t/T49-B--game-classes.md) + [T53](.t/T53-Q--game-classes-questions.md) (класи ігор — рішення [T54](../.rounds/.t/T54-R--kb-round-decisions.md))
 - Не інтегровано: [T03](.t/T03-C--grid-games-concept.md) (аналіз концепції) · [T32](.t/T32-C--grid-games-catalog.md) (ресерч-каталог ігор-кандидатів) · [T34](.t/T34-P--game-spec-model.md) (spec-модель гри) — чекає реакції.
 
@@ -29,5 +29,5 @@
 
 ## Наступний крок
 
-- Vitalik: пройтись по чернетках `data/wiki/games/` (правки — прямо у файли або в «Сире»); відповіді на [T04](.t/T04-Q--games-open-questions.md) і [T36](.t/T36-Q--games-catalog-questions.md) — фінальний список ігор-прикладів.
-- Веб-каталог v1 ([T68](../platform/.t/T68-P--catalog-v1-design.md), 2026-08-04) сидитиме ігри прямо з `data/wiki/games/` (осі, ядро, статуси) — правки чернеток автоматично покращать стартове наповнення.
+- Каталог ігор живе в вебі (2026-08-05, [T71](../platform/.t/T71--catalog-v1/report.md)): всі 17 ігор засіяно з wiki — девʼятка `active`, шортліст+парасолі `draft`; далі правки — в адмінці `/games` або пачкою через `data/catalog/games.yaml`; wiki лишається чернеткою-лором ([T66](../platform/.t/T66-B--catalog-storage.md)).
+- Vitalik: відповіді на [T04](.t/T04-Q--games-open-questions.md) і [T36](.t/T36-Q--games-catalog-questions.md) — фінальний список ігор-прикладів (зокрема статуси шортліста в каталозі).

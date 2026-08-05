@@ -5,7 +5,7 @@ from starlette.middleware.sessions import SessionMiddleware
 
 from config import settings
 from db import init_db
-from routes import auth, me, profile, students
+from routes import auth, games, me, profile, students, tasks, taxonomy
 
 
 @asynccontextmanager
@@ -20,3 +20,6 @@ app.include_router(auth.router)
 app.include_router(me.router)
 app.include_router(profile.router)
 app.include_router(students.router)
+app.include_router(games.router)
+app.include_router(tasks.router)
+app.include_router(taxonomy.router)

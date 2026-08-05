@@ -8,4 +8,5 @@ dependencies = [
     "authlib",
     "pydantic-settings",
     "itsdangerous",
+    "pyyaml>=6.0.3",
 ]
