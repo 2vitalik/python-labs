@@ -21,6 +21,6 @@
 ## Наступний крок
 
 - Профіль v1 працює (2026-08-04, [T64](platform/.t/T64--profile-v1/report.md)); CSS — Bootstrap 5 остаточно (чат після [T62](platform/.t/T62-C--css-frameworks.md)); імпорт багатогруповий з оновленням наявних → Vitalik: повторний імпорт `cist.txt` на живій базі.
-- Далі черга 1 за [T25](.t/T25-B--mvp-strategy.md): каталог завдань; для нього потрібні відповіді на [T37](tasks/.t/T37-Q--taxonomy-questions.md) і [T06](tasks/.t/T06-Q--tasks-open-questions.md).
+- Черга 1 стартувала проєктуванням (2026-08-04): раунд «Каталог v1: ігри + завдання» — рамки [T65](.rounds/.t/T65-R--catalog-round-readback.md), брейншторми зберігання/подачі [T66](platform/.t/T66-B--catalog-storage.md)/[T67](platform/.t/T67-B--catalog-ui.md), пропозиція [T68](platform/.t/T68-P--catalog-v1-design.md); Vitalik: відповіді на [T69](platform/.t/T69-Q--catalog-v1-questions.md) + передумови [T37](tasks/.t/T37-Q--taxonomy-questions.md)/[T06](tasks/.t/T06-Q--tasks-open-questions.md) → реалізація.
 - База знань **`data/wiki/`** створена і наповнена чернетками (2026-08-03, рішення — [T54](.rounds/.t/T54-R--kb-round-decisions.md)): `games/` — 17 ігор у 4 класах, `tasks/` — 6 зон + вся v3-сировина в staging; далі — правки Vitalik і поступове зведення сировини.
 - Паралельно: `>`-відповіді на решту Q-тікетів (насамперед T26) і збір старих Coda/Notion-матеріалів (T26 Q5).

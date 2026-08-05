@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T65** · тікетів: 64 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T70** · тікетів: 69 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -72,3 +72,8 @@
 | platform | [T62](platform/.t/T62-C--css-frameworks.md) | 🔆 | css-frameworks | Bootstrap 5 vs Tailwind: порівняння з прикладами | 🟢 ⬜ |
 | platform | [T63](platform/.t/T63-Q--css-framework-choice.md) | ❓ | css-framework-choice | Вибір CSS-фреймворка | 🔴 ⬜ |
 | platform | [T64](platform/.t/T64--profile-v1/plan.md) | ⚙️ | profile-v1 | Профіль студента v1: сторінки, історія, імпорт — план | 🟢 🟩 |
+| .rounds | [T65](.rounds/.t/T65-R--catalog-round-readback.md) | ✔️ | catalog-round-readback | Рамки раунду «Каталог v1: ігри + завдання» | 🟢 ⬜ |
+| platform | [T66](platform/.t/T66-B--catalog-storage.md) | 🧠 | catalog-storage | Зберігання каталогу: БД, файли чи гібрид | 🟢 ⬜ |
+| platform | [T67](platform/.t/T67-B--catalog-ui.md) | 🧠 | catalog-ui | Подача каталогу: навігація, пошук, редагування | 🟢 ⬜ |
+| platform | [T68](platform/.t/T68-P--catalog-v1-design.md) | 💡 | catalog-v1-design | Каталог v1: модель, API, сторінки, сид | 🟢 ⬜ |
+| platform | [T69](platform/.t/T69-Q--catalog-v1-questions.md) | ❓ | catalog-v1-questions | Питання по каталогу v1 | 🔴 ⬜ |

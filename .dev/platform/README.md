@@ -5,7 +5,7 @@
 Шапка:
 - Оновлено: 2026-08-04
 - Інтегровано: [T40](.t/T40-Q--auth-mvp-questions.md) / [T41](../.rounds/.t/T41-R--auth-mvp-decisions.md) (стек і рамки), [T45](.t/T45-P--app-skeleton.md) (каркас), [T46](.t/T46-Q--pre-code-questions.md) (назва, dev-вхід, PyCharm Pro), [T44](.t/T44--auth-mvp/report.md) (auth-реалізація), [T56](.t/T56-P--profile-pages-design.md)/[T57](.t/T57-B--history-storage.md)/[T59](.t/T59-C--data-model-sketch.md) + рішення [T60](.t/T60-Q--profile-questions.md)/[T61](../.rounds/.t/T61-R--profile-decisions.md) (профіль v1), [T64](.t/T64--profile-v1/report.md) (реалізація профілю)
-- Не інтегровано: —
+- Не інтегровано: раунд каталогу — [T66](.t/T66-B--catalog-storage.md) (зберігання) · [T67](.t/T67-B--catalog-ui.md) (подача) · [T68](.t/T68-P--catalog-v1-design.md) (пропозиція v1) — чекають відповідей [T69](.t/T69-Q--catalog-v1-questions.md)
 
 ## Реалізовано
 
@@ -43,10 +43,11 @@
 
 ## Відкрите
 
+- [T69](.t/T69-Q--catalog-v1-questions.md) Q1–Q7 — раунд каталогу: зберігання, подача, ціни, повторюваність, сид, статуси, редагування (+ передумови [T37](../tasks/.t/T37-Q--taxonomy-questions.md) Q1/Q3 і [T06](../tasks/.t/T06-Q--tasks-open-questions.md) Q2).
 - [T22](.t/T22-Q--platform-open-questions.md) Q2–Q5: VPS (що за сервер), ролі поза статусами, ШІ-бюджет, назва/домен.
 - ~~[T63](.t/T63-Q--css-framework-choice.md) CSS-фреймворк~~ — вирішено в чаті 2026-08-04 після порівняння [T62](.t/T62-C--css-frameworks.md): **лишаємось на Bootstrap 5**.
 
 ## Наступний крок
 
 - Vitalik: повторний імпорт `cist.txt` на живій базі (розкладе всіх по правильних групах); хвости — у [T64](.t/T64--profile-v1/report.md).
-- Далі черга 1 за [T25](../.t/T25-B--mvp-strategy.md): каталог завдань (залежить від відповідей на [T37](../tasks/.t/T37-Q--taxonomy-questions.md)/[T06](../tasks/.t/T06-Q--tasks-open-questions.md)).
+- Раунд «Каталог v1» спроєктовано (2026-08-04): рамки — [T65](../.rounds/.t/T65-R--catalog-round-readback.md), брейншторми — [T66](.t/T66-B--catalog-storage.md)/[T67](.t/T67-B--catalog-ui.md), пропозиція — [T68](.t/T68-P--catalog-v1-design.md); Vitalik: відповіді на [T69](.t/T69-Q--catalog-v1-questions.md) + [T37](../tasks/.t/T37-Q--taxonomy-questions.md)/[T06](../tasks/.t/T06-Q--tasks-open-questions.md) → реалізація за порядком із T68.
