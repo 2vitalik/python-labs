@@ -46,12 +46,12 @@ export function useTaskFilter() {
     for (const [zk, z] of Object.entries(zones.value)) {
       if (f.value.zone && zk !== f.value.zone) continue
       const subs = []
-      for (const [sk, title] of Object.entries(z.subzones)) {
-        if (f.value.sub && sk !== f.value.sub) continue
+      Object.entries(z.subzones).forEach(([sk, [title, icon]], i) => {
+        if (f.value.sub && sk !== f.value.sub) return
         const list = found.value.filter((t) => t.zone === zk && t.subzone === sk)
-        if (list.length) subs.push({ key: sk, title, list })
-      }
-      if (subs.length) out.push({ key: zk, title: z.title, subs })
+        if (list.length) subs.push({ key: sk, title, icon, i, list })
+      })
+      if (subs.length) out.push({ key: zk, title: z.title, icon: z.icon, color: z.color, subs })
     }
     return out
   })

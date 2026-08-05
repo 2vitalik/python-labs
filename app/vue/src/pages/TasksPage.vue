@@ -2,8 +2,8 @@
 import { computed, onMounted } from 'vue'
 
 import TaskCard from '../components/TaskCard.vue'
-import ZoneTree from '../components/ZoneTree.vue'
-import { games, loadCatalog, zones } from '../catalog.js'
+import ZoneNav from '../components/ZoneNav.vue'
+import { games, loadCatalog, subStyle, zones } from '../catalog.js'
 import { useTaskFilter } from '../taskFilter.js'
 import { user } from '../user.js'
 
@@ -15,47 +15,49 @@ onMounted(loadCatalog)
 
 <template>
   <div v-if="user && user.status !== 'pending'">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-      <h1 class="h3 mb-0">Завдання <span class="text-secondary fs-6">({{ shown }})</span></h1>
-      <RouterLink v-if="user.status === 'admin'" to="/tasks/new" class="btn btn-outline-primary btn-sm">➕ Нове завдання</RouterLink>
+    <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+      <h1 class="h3 mb-0 me-2">Завдання <span class="text-secondary fs-6">({{ shown }})</span></h1>
+      <input :value="f.q" class="form-control form-control-sm w-auto flex-grow-1" style="max-width: 22rem"
+             placeholder="Пошук: назва, опис, теги…" @input="set({ q: $event.target.value })">
+      <select :value="f.game" class="form-select form-select-sm w-auto" @change="set({ game: $event.target.value })">
+        <option value="">Всі ігри</option>
+        <option v-for="g in games" :key="g.slug" :value="g.slug">{{ g.icon }} {{ g.title }}</option>
+      </select>
+      <div class="form-check">
+        <input id="algo" class="form-check-input" type="checkbox" :checked="f.algo"
+               @change="set({ algo: $event.target.checked ? '1' : '' })">
+        <label class="form-check-label" for="algo">⭐ алгоритмічні</label>
+      </div>
+      <RouterLink v-if="user.status === 'admin'" to="/tasks/new" class="btn btn-outline-primary btn-sm ms-auto">➕ Нове завдання</RouterLink>
     </div>
 
-    <div class="row g-2 mb-3">
-      <div class="col-md-5">
-        <input :value="f.q" class="form-control" placeholder="Пошук: назва, опис, теги…"
-               @input="set({ q: $event.target.value })">
-      </div>
-      <div class="col-md-4">
-        <select :value="f.game" class="form-select" @change="set({ game: $event.target.value })">
-          <option value="">Всі ігри</option>
-          <option v-for="g in games" :key="g.slug" :value="g.slug">{{ g.icon }} {{ g.title }}</option>
-        </select>
-      </div>
-      <div class="col-md-3 d-flex align-items-center">
-        <div class="form-check">
-          <input id="algo" class="form-check-input" type="checkbox" :checked="f.algo"
-                 @change="set({ algo: $event.target.checked ? '1' : '' })">
-          <label class="form-check-label" for="algo">⭐ алгоритмічні</label>
+    <ZoneNav :zones="zones" :counts="counts" :zone="f.zone" :sub="f.sub"
+             @select="(z, s) => set({ zone: z, sub: s })" />
+
+    <p v-if="!shown" class="text-secondary mt-3">Нічого не знайдено — спробуй інші слова чи зніми фільтри.</p>
+    <section v-for="z in grouped" :key="z.key" class="mb-4">
+      <h2 v-if="!f.zone" class="h6 zone-head" :style="{ '--zc': z.color }">{{ z.icon }} {{ z.title }}</h2>
+      <div class="task-cols">
+        <div v-for="s in z.subs" :key="s.key" class="task-group" :style="subStyle(z.color, s.i)">
+          <div class="group-head">{{ s.icon }} {{ s.title }} <span class="opacity-50">{{ s.list.length }}</span></div>
+          <TaskCard v-for="t in s.list" :key="t.id" :task="t" />
         </div>
       </div>
-    </div>
-
-    <div class="row g-3">
-      <div class="col-md-4 col-lg-3">
-        <ZoneTree :zones="zones" :counts="counts" :zone="f.zone" :sub="f.sub"
-                  @select="(z, s) => set({ zone: z, sub: s })" />
-      </div>
-      <div class="col-md-8 col-lg-9">
-        <p v-if="!shown" class="text-secondary mt-3">Нічого не знайдено — спробуй інші слова чи зніми фільтри.</p>
-        <section v-for="z in grouped" :key="z.key" class="mb-3">
-          <h2 class="h5">{{ z.title }}</h2>
-          <div v-for="s in z.subs" :key="s.key" class="mb-3">
-            <div class="text-secondary small fw-semibold mb-1">{{ s.title }}</div>
-            <TaskCard v-for="t in s.list" :key="t.id" :task="t" />
-          </div>
-        </section>
-      </div>
-    </div>
+    </section>
   </div>
   <p v-else class="text-center mt-5">Каталог доступний після входу і підтвердження.</p>
 </template>
+
+<style scoped>
+.zone-head {
+  color: var(--zc); font-weight: 700;
+  border-bottom: 2px solid color-mix(in srgb, var(--zc) 30%, #fff);
+  padding-bottom: .25rem; margin-bottom: .75rem;
+}
+.task-cols { columns: 20rem; column-gap: 1.5rem; }
+.task-group {
+  break-inside: avoid; margin-bottom: 1rem; padding-left: .5rem;
+  border-left: 3px solid color-mix(in srgb, var(--sc) 55%, #fff);
+}
+.group-head { font-size: .85rem; font-weight: 600; color: var(--sc); margin-bottom: .25rem; }
+</style>

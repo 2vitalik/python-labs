@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T72** · тікетів: 71 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T75** · тікетів: 74 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -79,3 +79,6 @@
 | platform | [T69](platform/.t/T69-Q--catalog-v1-questions.md) | ❓ | catalog-v1-questions | Питання по каталогу v1 | 🟢 🟩 |
 | .rounds | [T70](.rounds/.t/T70-R--catalog-decisions.md) | ✔️ | catalog-decisions | Рішення по каталогу v1 — відповіді T69/T37/T06 | 🟢 🟩 |
 | platform | [T71](platform/.t/T71--catalog-v1/plan.md) | ⚙️ | catalog-v1 | Каталог v1: реалізація — план | 🟢 🟩 |
+| platform | [T72](platform/.t/T72-B--catalog-columns.md) | 🧠 | catalog-columns | Багатоколонкова стрічка каталогу: підходи | 🟢 🟩 |
+| tasks | [T73](tasks/.t/T73-C--task-families.md) | 🔆 | task-families | Сімейства завдань: концепт і ціни | 🟢 ⬜ |
+| platform | [T74](platform/.t/T74-Q--catalog-visuals.md) | ❓ | catalog-visuals | Візуал каталогу: іконки, кольори, монетки | 🔴 ⬜ |

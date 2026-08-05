@@ -36,13 +36,13 @@ const subzones = computed(() => zones.value[form.value.zone]?.subzones || {})
           <div class="col-md-4">
             <label class="form-label">Зона</label>
             <select v-model="form.zone" class="form-select" required @change="form.subzone = ''">
-              <option v-for="(z, k) in zones" :key="k" :value="k">{{ z.title }}</option>
+              <option v-for="(z, k) in zones" :key="k" :value="k">{{ z.icon }} {{ z.title }}</option>
             </select>
           </div>
           <div class="col-md-4">
             <label class="form-label">Підзона</label>
             <select v-model="form.subzone" class="form-select" required>
-              <option v-for="(label, k) in subzones" :key="k" :value="k">{{ label }}</option>
+              <option v-for="(st, k) in subzones" :key="k" :value="k">{{ st[1] }} {{ st[0] }}</option>
             </select>
           </div>
           <div class="col-md-4">

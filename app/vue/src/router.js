@@ -21,7 +21,7 @@ export default createRouter({
     { path: '/games/new', component: GameEditPage },
     { path: '/games/:slug', component: GamePage },
     { path: '/games/:slug/edit', component: GameEditPage },
-    { path: '/tasks', component: TasksPage },
+    { path: '/tasks', component: TasksPage, meta: { wide: true } },
     { path: '/tasks/new', component: TaskEditPage },
     { path: '/tasks/:slug/edit', component: TaskEditPage },
   ],

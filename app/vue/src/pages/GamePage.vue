@@ -38,7 +38,7 @@ onMounted(loadCatalog)
 
     <h2 class="h5">Завдання гри <span class="text-secondary fs-6">({{ gameTasks.length }})</span></h2>
     <div v-for="(list, z) in byZone" :key="z" class="mb-3">
-      <div class="text-secondary small fw-semibold mb-1">{{ zones[z]?.title || z }}</div>
+      <div class="text-secondary small fw-semibold mb-1">{{ zones[z]?.icon }} {{ zones[z]?.title || z }}</div>
       <ul class="list-unstyled mb-0">
         <li v-for="t in list" :key="t.id" class="d-flex gap-2 py-1 border-bottom">
           <span>{{ t.title }}</span>
