@@ -8,23 +8,28 @@ import Md from './Md.vue'
 
 const props = defineProps({ task: Object })
 const open = ref(false)
-// family header shows the set of variant coins instead of the card's reference coin
-const famCoins = computed(() => Object.keys(COINS).filter((c) => props.task.variants.some((v) => v.coin === c)))
+// family shows the min–max range of its variants' coins instead of the card's reference coin
+const famRange = computed(() => {
+  const present = Object.keys(COINS).filter((c) => props.task.variants.some((v) => v.coin === c))
+  if (!present.length) return ''
+  const [lo, hi] = [present[0], present.at(-1)]
+  return lo === hi ? COINS[lo] : `${COINS[lo]}–${COINS[hi]}`
+})
 </script>
 
 <template>
   <div class="border rounded mb-1 task" :class="{ stack: task.variants.length, ['st-' + task.status]: true }">
-    <div class="d-flex align-items-center gap-2 px-2 py-1" role="button" @click="open = !open">
-      <span class="title">{{ task.title }}</span>
-      <span v-if="task.tags.includes('algo')" title="алгоритмічне — золото">⭐</span>
-      <span v-if="task.max_count !== 1" title="можна зараховувати кілька разів">🔁</span>
-      <span v-if="user?.status === 'admin' && task.status !== 'active'"
-            class="badge text-bg-light border text-secondary fw-normal">{{ STATUSES[task.status] }}</span>
-      <span v-if="task.variants.length" class="badge text-bg-primary ms-auto" title="сімʼя: кілька варіантів, кожен зі своєю ціною">×{{ task.variants.length }}</span>
-      <span v-if="task.variants.length" class="text-nowrap" title="монетки варіантів">
-        <span v-for="c in famCoins" :key="c">{{ COINS[c] }}</span>
+    <div class="d-flex align-items-start gap-2 px-2 py-1" role="button" @click="open = !open">
+      <span class="title me-auto">
+        {{ task.title }}
+        <span v-if="task.tags.includes('algo')" title="алгоритмічне — золото">⭐</span>
+        <span v-if="task.max_count !== 1" title="можна зараховувати кілька разів">🔁</span>
+        <span v-if="task.variants.length" class="text-secondary small" title="сімʼя: кілька варіантів, кожен зі своєю ціною">×{{ task.variants.length }}</span>
+        <span v-if="user?.status === 'admin' && task.status !== 'active'"
+              class="badge text-bg-light border text-secondary fw-normal">{{ STATUSES[task.status] }}</span>
       </span>
-      <CoinBadge v-else class="ms-auto" :coin="task.coin" :amount="task.amount" />
+      <span v-if="task.variants.length" class="text-nowrap" title="діапазон цін варіантів">{{ famRange }}</span>
+      <CoinBadge v-else :coin="task.coin" :amount="task.amount" />
     </div>
 
     <div v-if="open" class="px-2 py-2 border-top bg-body-tertiary rounded-bottom">
@@ -34,12 +39,13 @@ const famCoins = computed(() => Object.keys(COINS).filter((c) => props.task.vari
         <span>{{ v.title }}</span>
         <CoinBadge class="ms-auto" :coin="v.coin" :amount="v.amount" />
       </div>
-      <div class="d-flex gap-2 flex-wrap align-items-center small mt-2">
+      <div v-if="task.max_count !== 1 || task.games.length || user?.status === 'admin'"
+           class="d-flex gap-2 flex-wrap align-items-center small mt-2">
         <span v-if="task.max_count === 0" class="text-secondary">без ліміту повторів</span>
         <span v-else-if="task.max_count > 1" class="text-secondary">до {{ task.max_count }} разів</span>
         <span v-for="g in task.games" :key="g" class="badge text-bg-light border text-dark">{{ g }}</span>
-        <span v-if="!task.games.length" class="text-secondary">універсальне</span>
-        <RouterLink v-if="user?.status === 'admin'" :to="`/tasks/${task.slug}/edit`" class="ms-auto">✏️ Редагувати</RouterLink>
+        <RouterLink v-if="user?.status === 'admin'" :to="`/tasks/${task.slug}/edit`"
+                    class="ms-auto text-decoration-none" title="Редагувати">✏️</RouterLink>
       </div>
     </div>
   </div>

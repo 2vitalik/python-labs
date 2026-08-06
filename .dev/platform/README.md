@@ -3,9 +3,9 @@
 Реалізаційний вузол: бекенд, БД, фронтенд, авторизація, ролі, фонові задачі, ШІ-інтеграція, VPS. Обслуговує всі інші вузли.
 
 Шапка:
-- Оновлено: 2026-08-05
-- Інтегровано: [T40](.t/T40-Q--auth-mvp-questions.md) / [T41](../.rounds/.t/T41-R--auth-mvp-decisions.md) (стек і рамки), [T45](.t/T45-P--app-skeleton.md) (каркас), [T46](.t/T46-Q--pre-code-questions.md) (назва, dev-вхід, PyCharm Pro), [T44](.t/T44--auth-mvp/report.md) (auth-реалізація), [T56](.t/T56-P--profile-pages-design.md)/[T57](.t/T57-B--history-storage.md)/[T59](.t/T59-C--data-model-sketch.md) + рішення [T60](.t/T60-Q--profile-questions.md)/[T61](../.rounds/.t/T61-R--profile-decisions.md) (профіль v1), [T64](.t/T64--profile-v1/report.md) (реалізація профілю), [T66](.t/T66-B--catalog-storage.md)/[T67](.t/T67-B--catalog-ui.md)/[T68](.t/T68-P--catalog-v1-design.md) + рішення [T69](.t/T69-Q--catalog-v1-questions.md)/[T70](../.rounds/.t/T70-R--catalog-decisions.md) (каталог v1), [T71](.t/T71--catalog-v1/report.md) (реалізація каталогу), [T72](.t/T72-B--catalog-columns.md) (багатоколонкова стрічка)
-- Не інтегровано: [T74](.t/T74-Q--catalog-visuals.md) (візуал каталогу — дефолти стоять, чекають підтвердження)
+- Оновлено: 2026-08-06
+- Інтегровано: [T40](.t/T40-Q--auth-mvp-questions.md) / [T41](../.rounds/.t/T41-R--auth-mvp-decisions.md) (стек і рамки), [T45](.t/T45-P--app-skeleton.md) (каркас), [T46](.t/T46-Q--pre-code-questions.md) (назва, dev-вхід, PyCharm Pro), [T44](.t/T44--auth-mvp/report.md) (auth-реалізація), [T56](.t/T56-P--profile-pages-design.md)/[T57](.t/T57-B--history-storage.md)/[T59](.t/T59-C--data-model-sketch.md) + рішення [T60](.t/T60-Q--profile-questions.md)/[T61](../.rounds/.t/T61-R--profile-decisions.md) (профіль v1), [T64](.t/T64--profile-v1/report.md) (реалізація профілю), [T66](.t/T66-B--catalog-storage.md)/[T67](.t/T67-B--catalog-ui.md)/[T68](.t/T68-P--catalog-v1-design.md) + рішення [T69](.t/T69-Q--catalog-v1-questions.md)/[T70](../.rounds/.t/T70-R--catalog-decisions.md) (каталог v1), [T71](.t/T71--catalog-v1/report.md) (реалізація каталогу), [T72](.t/T72-B--catalog-columns.md)/[T75](.t/T75-C--masonry-layouts.md) (розкладка стрічки), відповіді [T74](.t/T74-Q--catalog-visuals.md) (монетки, хʼю-відтінки)
+- Не інтегровано: [T77](.t/T77-P--yaml-tree-format.md) (людяний YAML — чекає «ок»), [T78](.t/T78-Q--catalog-ui2.md) (зони/кольори/плюсик — чекає відповідей)
 
 ## Реалізовано
 
@@ -15,7 +15,8 @@
 - ✅ **Профіль v1** (2026-08-04, [T64](.t/T64--profile-v1/report.md)): `/profile` — картки ПІБ/GitHub/Telegram з інструкціями (приватний єдиний репо → розшарити на `2vitalik`) і кнопкою «Привʼязати бота»; `/students` (адмін) — таблиця «хто що вніс» + textarea-імпорт формату ЦІСТ (`data/students/cist.txt`); `/students/:id` — та сама форма + група/статус · рішення [T60](.t/T60-Q--profile-questions.md)/[T61](../.rounds/.t/T61-R--profile-decisions.md)
 - Імпорт (фікс 2026-08-04): багатогруповий — шапки «Список групи …» перемикають поточну групу; повторний імпорт **оновлює** наявних по пошті (група — завжди, ПІБ — лише в порожні поля: самоперейменування студента важливіше за ЦІСТ), внесене в профілі не чіпається; звіт «додано/оновлено/без змін»
 - ✅ **Каталог v1** (2026-08-05, [T71](.t/T71--catalog-v1/report.md)): `/games` — галерея з чіпами класів; `/games/:slug` — осі бейджами, markdown-опис, «Завдання гри»; `/tasks` — дерево зон з лічильниками + стрічка карток з розгортанням + пошук/чіпи (стан у query-URL → шерні лінки); адмін-форми create/edit для ігор і завдань; сид з wiki: **17 ігор + 162 завдання** (7 сімей, 16 золотих); export/import YAML-знімка `data/catalog/` — `catalog_io.py` · рішення [T70](../.rounds/.t/T70-R--catalog-decisions.md)
-- **UI-ітерація каталогу** (2026-08-05, чат): `/tasks` — верхня дворядкова навігація зон/підзон замість лівого дерева, багатоколонкова стрічка на всю ширину ([T72](.t/T72-B--catalog-columns.md)); іконки зон/підзон + кольори зон з відтінками підзон у `zones.py` (підтвердження — [T74](.t/T74-Q--catalog-visuals.md)); монетки 🥇🥈🥉🌿🔵; сімʼї-«стопки» з монетками варіантів ([T73](../tasks/.t/T73-C--task-families.md)), чернетки приглушені
+- **UI-ітерація каталогу** (2026-08-05, чат): `/tasks` — верхня дворядкова навігація зон/підзон замість лівого дерева, стрічка колонками на всю ширину ([T72](.t/T72-B--catalog-columns.md)); іконки зон/підзон + кольори зон у `zones.py`; сімʼї-«стопки» ([T73](../tasks/.t/T73-C--task-families.md)), чернетки приглушені
+- **UI-ітерація 2** (2026-08-06, відповіді T74 + чат): masonry-розкладка без залежностей ([T75](.t/T75-C--masonry-layouts.md)); монетки 👑🥇🥈🥉📎🌱 (корона замість «золото×2»); відтінки підзон — сусідні хʼю; сімʼя: сірий ×N + діапазон «📎–🥇»; **гостьовий перегляд** `/games`+`/tasks` (GET публічні, лише active); сторінка гри — той самий каталог (`TaskCatalog.vue`), фільтр «🌍 Універсальні»; «＋» нового завдання в шапці підзони з префілом; майстерня кольорів `/colors`
 
 ## Дані
 
@@ -46,12 +47,12 @@
 
 ## Відкрите
 
-- [T74](.t/T74-Q--catalog-visuals.md): візуал каталогу — монетки, кольори/іконки зон і підзон, відтінки, `coin` у сімей (6 питань; дефолти вже в коді).
+- [T78](.t/T78-Q--catalog-ui2.md): зони (аналіз — [T76](../tasks/.t/T76-B--zones-rethink.md)), вибір кольорів із `/colors`, формат YAML ([T77](.t/T77-P--yaml-tree-format.md)), кнопка «＋», іконки підзон (перенос T74 Q4).
 - [T22](.t/T22-Q--platform-open-questions.md) Q2–Q5: VPS (що за сервер), ролі поза статусами, ШІ-бюджет, назва/домен.
 - ~~[T63](.t/T63-Q--css-framework-choice.md) CSS-фреймворк~~ — вирішено в чаті 2026-08-04 після порівняння [T62](.t/T62-C--css-frameworks.md): **лишаємось на Bootstrap 5**.
 
 ## Наступний крок
 
 - Vitalik: повторний імпорт `cist.txt` на живій базі (розкладе всіх по правильних групах); хвости — у [T64](.t/T64--profile-v1/report.md).
-- Каталог v1 реалізовано і засіяно (2026-08-05, [T71](.t/T71--catalog-v1/report.md)) + UI-ітерація (колонки/іконки/кольори, [T72](.t/T72-B--catalog-columns.md)); Vitalik: клік-тест на http://localhost:5173 (Ігри / Завдання), відповіді [T74](.t/T74-Q--catalog-visuals.md) + ревізія чернеток — ціни/статуси в адмінці, пачкові правки через YAML+import.
+- Каталог v1 (2026-08-05, [T71](.t/T71--catalog-v1/report.md)) + дві UI-ітерації (2026-08-06: masonry, корона, гостьовий доступ); Vitalik: клік-тест http://localhost:5173/tasks і `/colors`, відповіді [T78](.t/T78-Q--catalog-ui2.md) + ревізія чернеток (ціни/статуси; гість зараз бачить 0 завдань — усе draft).
 - Далі за [T25](../.t/T25-B--mvp-strategy.md): кабінет студента — вибір завдань і заявки ([reports](../reports/README.md), чекає рішень [T10](../reports/.t/T10-Q--reports-open-questions.md)).

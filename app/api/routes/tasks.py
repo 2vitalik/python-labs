@@ -2,7 +2,7 @@ from beanie import PydanticObjectId
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
-from deps import active_user, admin_user
+from deps import admin_user, current_user
 from models.history import record, record_new
 from models.task import Task
 from models.user import Status, User
@@ -50,9 +50,9 @@ def clean(data: TaskIn) -> dict:
 
 
 @router.get("")
-async def list_tasks(user: User = Depends(active_user)):
+async def list_tasks(user: User | None = Depends(current_user)):
     tasks = await Task.find_all().sort("zone", "subzone", "order", "slug").to_list()
-    if user.status != Status.admin:
+    if not user or user.status != Status.admin:  # guests see the catalog too, active only
         tasks = [t for t in tasks if t.status == "active"]
     return [t.api() for t in tasks]
 

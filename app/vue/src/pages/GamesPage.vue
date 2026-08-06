@@ -12,10 +12,10 @@ onMounted(loadCatalog)
 </script>
 
 <template>
-  <div v-if="user && user.status !== 'pending'">
+  <div>
     <div class="d-flex justify-content-between align-items-center mb-3">
       <h1 class="h3 mb-0">Ігри <span class="text-secondary fs-6">({{ shown.length }})</span></h1>
-      <RouterLink v-if="user.status === 'admin'" to="/games/new" class="btn btn-outline-primary btn-sm">➕ Нова гра</RouterLink>
+      <RouterLink v-if="user?.status === 'admin'" to="/games/new" class="btn btn-outline-primary btn-sm">➕ Нова гра</RouterLink>
     </div>
 
     <div class="mb-3 d-flex gap-2 flex-wrap">
@@ -28,5 +28,4 @@ onMounted(loadCatalog)
       <div v-for="g in shown" :key="g.id" class="col-md-6 col-lg-4"><GameCard :game="g" /></div>
     </div>
   </div>
-  <p v-else class="text-center mt-5">Каталог доступний після входу і підтвердження.</p>
 </template>

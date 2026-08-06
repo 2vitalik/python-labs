@@ -1678,8 +1678,8 @@
   - algo
   games:
   - paper-puzzles
-  coin: gold
-  amount: 2.0
+  coin: crown
+  amount: 1.0
   max_count: 1
   status: draft
   order: 40

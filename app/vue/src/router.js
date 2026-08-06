@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+import ColorsPage from './pages/ColorsPage.vue'
 import GameEditPage from './pages/GameEditPage.vue'
 import GamePage from './pages/GamePage.vue'
 import GamesPage from './pages/GamesPage.vue'
@@ -19,7 +20,8 @@ export default createRouter({
     { path: '/students/:id', component: StudentEditPage },
     { path: '/games', component: GamesPage },
     { path: '/games/new', component: GameEditPage },
-    { path: '/games/:slug', component: GamePage },
+    { path: '/games/:slug', component: GamePage, meta: { wide: true } },
+    { path: '/colors', component: ColorsPage },
     { path: '/games/:slug/edit', component: GameEditPage },
     { path: '/tasks', component: TasksPage, meta: { wide: true } },
     { path: '/tasks/new', component: TaskEditPage },

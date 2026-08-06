@@ -6,12 +6,12 @@ import { tasks, zones } from './catalog.js'
 // tolerant search over the RU/UA/EN mixed corpus: case + и/і + е/є folded
 const norm = (s) => String(s).toLowerCase().replace(/и/g, 'і').replace(/є/g, 'е')
 
-export function useTaskFilter() {
+export function useTaskFilter(fixedGame = '') {
   const route = useRoute()
   const router = useRouter()
 
   const f = computed(() => ({
-    q: route.query.q || '', game: route.query.game || '', algo: route.query.algo === '1',
+    q: route.query.q || '', game: fixedGame || route.query.game || '', algo: route.query.algo === '1',
     zone: route.query.zone || '', sub: route.query.sub || '',
   }))
 
@@ -22,7 +22,8 @@ export function useTaskFilter() {
   }
 
   function matches(t) {
-    if (f.value.game && t.games.length && !t.games.includes(f.value.game)) return false
+    if (f.value.game === 'universal') { if (t.games.length) return false }
+    else if (f.value.game && !t.games.includes(f.value.game)) return false
     if (f.value.algo && !t.tags.includes('algo')) return false
     if (!f.value.q) return true
     const hay = norm([t.title, t.slug, t.description, ...t.tags, ...t.variants.map((v) => v.title)].join(' '))

@@ -2,7 +2,7 @@ from beanie import PydanticObjectId
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
-from deps import active_user, admin_user
+from deps import admin_user, current_user
 from models.game import Game
 from models.history import record, record_new
 from models.user import Status, User
@@ -36,9 +36,9 @@ def clean(data: GameIn) -> dict:
 
 
 @router.get("")
-async def list_games(user: User = Depends(active_user)):
+async def list_games(user: User | None = Depends(current_user)):
     games = await Game.find_all().sort("order", "slug").to_list()
-    if user.status != Status.admin:
+    if not user or user.status != Status.admin:  # guests see the catalog too, active only
         games = [g for g in games if g.status == "active"]
     return [g.api() for g in games]
 
