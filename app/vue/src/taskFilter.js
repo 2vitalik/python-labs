@@ -1,7 +1,7 @@
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
-import { tasks, zones } from './catalog.js'
+import { kidsOf, tasks, zones } from './catalog.js'
 
 // tolerant search over the RU/UA/EN mixed corpus: case + и/і + е/є folded
 const norm = (s) => String(s).toLowerCase().replace(/и/g, 'і').replace(/є/g, 'е')
@@ -26,12 +26,13 @@ export function useTaskFilter(fixedGame = '') {
     else if (f.value.game && !t.games.includes(f.value.game)) return false
     if (f.value.algo && !t.tags.includes('algo')) return false
     if (!f.value.q) return true
-    const hay = norm([t.title, t.slug, t.description, ...t.tags, ...t.variants.map((v) => v.title)].join(' '))
+    const kids = kidsOf.value[t.slug] || []
+    const hay = norm([t.title, t.slug, t.description, ...t.tags, ...kids.map((k) => `${k.title} ${k.description}`)].join(' '))
     return hay.includes(norm(f.value.q))
   }
 
-  // everything except the zone filter — so the tree shows where matches live
-  const found = computed(() => tasks.value.filter(matches))
+  // roots only (a family counts as one card); everything except the zone filter — so the nav shows where matches live
+  const found = computed(() => tasks.value.filter((t) => !t.parent && matches(t)))
 
   const counts = computed(() => {
     const c = { '': found.value.length }

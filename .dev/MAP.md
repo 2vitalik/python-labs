@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T79** · тікетів: 78 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T81** · тікетів: 80 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -84,5 +84,7 @@
 | platform | [T74](platform/.t/T74-Q--catalog-visuals.md) | ❓ | catalog-visuals | Візуал каталогу: іконки, кольори, монетки | 🔴 🟩 |
 | platform | [T75](platform/.t/T75-C--masonry-layouts.md) | 🔆 | masonry-layouts | Розкладки стрічки: masonry і альтернативи | 🟢 🟩 |
 | tasks | [T76](tasks/.t/T76-B--zones-rethink.md) | 🧠 | zones-rethink | Зони: сутності vs логіка, варіанти розбиття | 🟢 ⬜ |
-| platform | [T77](platform/.t/T77-P--yaml-tree-format.md) | 💡 | yaml-tree-format | Людяний YAML: дерево зон з рядками-завданнями | 🟢 ⬜ |
-| platform | [T78](platform/.t/T78-Q--catalog-ui2.md) | ❓ | catalog-ui2 | Питання UI-ітерації 2: зони, кольори, YAML, плюсик | 🔴 ⬜ |
+| platform | [T77](platform/.t/T77-P--yaml-tree-format.md) | 💡 | yaml-tree-format | Людяний YAML: дерево зон з рядками-завданнями | 🟢 🟩 |
+| platform | [T78](platform/.t/T78-Q--catalog-ui2.md) | ❓ | catalog-ui2 | Питання UI-ітерації 2: зони, кольори, YAML, плюсик | 🟢 🟩 |
+| platform | [T79](platform/.t/T79-C--family-v2.md) | 🔆 | family-v2 | Сімʼї v2: батько-діти, міграція, YAML v2 | 🟢 🟩 |
+| platform | [T80](platform/.t/T80-B--colors-plan.md) | 🧠 | colors-plan | Кольори v2: ємність сімейств і розкладка зон | 🟢 ⬜ |

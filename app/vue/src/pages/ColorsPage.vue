@@ -31,6 +31,7 @@ const copy = (label, css) => { navigator.clipboard?.writeText(css); copied.value
   <h1 class="h3">Кольори <span class="text-secondary fs-6">майстерня палітри зон і підзон</span></h1>
   <p class="text-secondary">Клік по плитці копіює css-значення. У відповідях достатньо коду: сімейство — буква (<b>G</b>),
     варіація — буква+номер (<b>G h2</b>), готовий набір — <b>К2</b>. {{ copied ? `Скопійовано: ${copied}` : '' }}</p>
+  <p class="small text-secondary">Конкретна пропозиція розкладки зон/підзон — на <RouterLink to="/colors2">/colors2</RouterLink>.</p>
 
   <h2 class="h5 mt-4">Готові набори для 6 зон</h2>
   <div v-for="c in COMBOS" :key="c.code" class="d-flex align-items-center gap-2 mb-2">

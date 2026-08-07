@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+import Colors2Page from './pages/Colors2Page.vue'
 import ColorsPage from './pages/ColorsPage.vue'
 import GameEditPage from './pages/GameEditPage.vue'
 import GamePage from './pages/GamePage.vue'
@@ -22,6 +23,7 @@ export default createRouter({
     { path: '/games/new', component: GameEditPage },
     { path: '/games/:slug', component: GamePage, meta: { wide: true } },
     { path: '/colors', component: ColorsPage },
+    { path: '/colors2', component: Colors2Page },
     { path: '/games/:slug/edit', component: GameEditPage },
     { path: '/tasks', component: TasksPage, meta: { wide: true } },
     { path: '/tasks/new', component: TaskEditPage },

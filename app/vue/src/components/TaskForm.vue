@@ -49,6 +49,10 @@ const subzones = computed(() => zones.value[form.value.zone]?.subzones || {})
             <label class="form-label">Ігри (slug через кому)</label>
             <input v-model="form.games" class="form-control font-monospace" placeholder="порожнє = універсальне">
           </div>
+          <div class="col-md-4">
+            <label class="form-label">Батько (slug сімʼї)</label>
+            <input v-model="form.parent" class="form-control font-monospace" placeholder="порожнє = звичайне завдання">
+          </div>
         </div>
         <label class="form-label mt-3">Опис (markdown): що зробити і що я перевіряю</label>
         <textarea v-model="form.description" class="form-control" rows="4"></textarea>
@@ -80,27 +84,6 @@ const subzones = computed(() => zones.value[form.value.zone]?.subzones || {})
           </div>
         </div>
         <div class="form-text mt-2">Макс. зарахувань: 1 — одноразове · N — стільки разів · 0 — без ліміту (кожен рівень окремо).</div>
-      </div>
-    </div>
-
-    <div class="card mb-3">
-      <div class="card-header">Варіанти (сімʼя)</div>
-      <div class="card-body">
-        <div v-for="(v, i) in form.variants" :key="i" class="row g-2 mb-2">
-          <div class="col-md-3"><input v-model="v.slug" class="form-control form-control-sm font-monospace" placeholder="slug"></div>
-          <div class="col-md-5"><input v-model="v.title" class="form-control form-control-sm" placeholder="назва варіанта"></div>
-          <div class="col-md-2">
-            <select v-model="v.coin" class="form-select form-select-sm">
-              <option value="">—</option>
-              <option v-for="(e, k) in COINS" :key="k" :value="k">{{ e }}</option>
-            </select>
-          </div>
-          <div class="col-md-1"><input v-model.number="v.amount" type="number" step="0.5" min="0" class="form-control form-control-sm"></div>
-          <div class="col-md-1"><button type="button" class="btn btn-sm btn-outline-danger" @click="form.variants.splice(i, 1)">✕</button></div>
-        </div>
-        <button type="button" class="btn btn-outline-secondary btn-sm"
-                @click="form.variants.push({ slug: '', title: '', coin: '', amount: 1 })">➕ Варіант</button>
-        <div class="form-text mt-2">Порожньо — просте завдання. Перший варіант — базовий; його ціну дублюй у картці.</div>
       </div>
     </div>
 

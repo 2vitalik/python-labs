@@ -49,6 +49,6 @@ const columns = computed(() => {
 .task-group { padding-left: .5rem; border-left: 3px solid var(--sc); }
 .group-head { font-size: .85rem; font-weight: 600; color: var(--sc); margin-bottom: .25rem; }
 .count { font-weight: 400; opacity: .55; font-size: .85em; }
-.add { color: var(--sc); opacity: .4; }
+.add { color: var(--sc); opacity: .65; font-size: 1.15rem; font-weight: 700; line-height: 1; }
 .add:hover { opacity: 1; }
 </style>

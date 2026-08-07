@@ -11,7 +11,7 @@ const route = useRoute()
 const router = useRouter()
 const form = reactive({
   slug: '', title: '', description: '', zone: route.query.zone || 'entities', subzone: route.query.sub || '',
-  tags: '', games: '', coin: '', amount: 1, max_count: 1, variants: [], status: 'draft', order: 0,
+  tags: '', games: '', coin: '', amount: 1, max_count: 1, parent: route.query.parent || '', status: 'draft', order: 0,
 })
 const id = ref('')
 const saved = ref(false)
@@ -25,15 +25,13 @@ onMounted(async () => {
   id.value = t.id
   for (const k in form) {
     if (k === 'tags' || k === 'games') form[k] = t[k].join(', ')
-    else if (k === 'variants') form[k] = t.variants.map((v) => ({ ...v }))
     else form[k] = t[k]
   }
 })
 
 async function save() {
   error.value = ''
-  const payload = { ...form, tags: csv(form.tags), games: csv(form.games),
-                    variants: form.variants.filter((v) => v.slug && v.title) }
+  const payload = { ...form, tags: csv(form.tags), games: csv(form.games) }
   try {
     const t = id.value ? await putTask(id.value, payload) : await postTask(payload)
     id.value = t.id

@@ -1,10 +1,15 @@
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 import { getGames, getTasks, getZones } from './api.js'
 
 export const zones = ref({})
 export const games = ref([])
 export const tasks = ref([])
+export const kidsOf = computed(() => {
+  const m = {}
+  for (const t of tasks.value) if (t.parent) (m[t.parent] ??= []).push(t)
+  return m
+})
 
 export const KLASSES = { avatar: 'аватарна', cursor: 'курсорна', figure: 'фігурна', puzzle: 'пазли-розмітки' }
 export const AXES = { field: 'Поле', time: 'Час', opponent: 'Суперник', info: 'Інформація', random: 'Випадковість', goal: 'Мета' }
