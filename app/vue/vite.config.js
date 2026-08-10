@@ -4,9 +4,11 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [vue()],
   server: {
+    port: 5030, // project #3 in the cross-project port scheme (dev-md-rules/DEV.md)
+    strictPort: true,
     proxy: {
-      // keep Host = localhost:5173 so the OAuth redirect_uri matches GCP
-      '/api': { target: 'http://127.0.0.1:8000', changeOrigin: false },
+      // keep Host = localhost:5030 so the OAuth redirect_uri matches GCP
+      '/api': { target: 'http://127.0.0.1:8030', changeOrigin: false },
     },
   },
 })
