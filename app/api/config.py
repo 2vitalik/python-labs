@@ -10,6 +10,7 @@ class Settings(BaseSettings):
     admin_emails: str = ""
     fake_user_email: str = ""
     tg_bot_name: str = ""
+    uploads_dir: str = ""  # empty = app/api/uploads
 
     model_config = {"env_file": ".env"}
 

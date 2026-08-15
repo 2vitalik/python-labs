@@ -32,3 +32,11 @@ async def record_new(doc: Document, actor: str):
     data = doc.model_dump(exclude={"id", "created_at"})
     changes = {k: {"old": None, "new": v} for k, v in data.items() if v}
     await Change(coll=doc.Settings.name, doc_id=doc.id, actor=actor, changes=changes).insert()
+
+
+async def record_delete(doc: Document, actor: str):
+    """Log document deletion: every non-empty field as new=None, then delete."""
+    data = doc.model_dump(exclude={"id", "created_at"})
+    changes = {k: {"old": v, "new": None} for k, v in data.items() if v}
+    await Change(coll=doc.Settings.name, doc_id=doc.id, actor=actor, changes=changes).insert()
+    await doc.delete()

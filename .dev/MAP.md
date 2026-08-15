@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T90** · тікетів: 89 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T92** · тікетів: 91 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -96,4 +96,6 @@
 | games | [T86](games/.t/T86-Q--mechanics-questions.md) | ❓ | mechanics-questions | Питання по формалізації механік | 🟢 ⬜ |
 | .rounds | [T87](.rounds/.t/T87-R--game-round-decisions.md) | ✔️ | game-round-decisions | Рішення раунду «опис гри»: відповіді T84+T86 | 🟢 ⬜ |
 | tasks | [T88](tasks/.t/T88--catalog-objects-seed/plan.md) | ⚙️ | catalog-objects-seed | Сид чернеток: елементи налаштувань, типи вікон, редактор, магазин | 🟢 🟩 |
-| platform | [T89](platform/.t/T89-Q--my-game-questions.md) | ❓ | my-game-questions | Концептуальні питання до «Моєї гри» v1 | 🔴 ⬜ |
+| platform | [T89](platform/.t/T89-Q--my-game-questions.md) | ❓ | my-game-questions | Концептуальні питання до «Моєї гри» v1 | 🟢 🟩 |
+| platform | [T90](platform/.t/T90-P--my-game-v1-design.md) | 💡 | my-game-v1-design | Дизайн «Моєї гри» v1: моделі, API, сторінки | 🟢 🟩 |
+| platform | [T91](platform/.t/T91--my-game-backend/plan.md) | ⚙️ | my-game-backend | Бекенд «Моєї гри» v1: Work, обʼєкти, заявки, скриншоти | 🟢 🟩 |
