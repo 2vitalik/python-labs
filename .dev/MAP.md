@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T92** · тікетів: 91 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T93** · тікетів: 92 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -99,3 +99,4 @@
 | platform | [T89](platform/.t/T89-Q--my-game-questions.md) | ❓ | my-game-questions | Концептуальні питання до «Моєї гри» v1 | 🟢 🟩 |
 | platform | [T90](platform/.t/T90-P--my-game-v1-design.md) | 💡 | my-game-v1-design | Дизайн «Моєї гри» v1: моделі, API, сторінки | 🟢 🟩 |
 | platform | [T91](platform/.t/T91--my-game-backend/plan.md) | ⚙️ | my-game-backend | Бекенд «Моєї гри» v1: Work, обʼєкти, заявки, скриншоти | 🟢 🟩 |
+| platform | [T92](platform/.t/T92-Q--naming-urls.md) | ❓ | naming-urls | Q: імена моделей і URL-схема «Моєї гри» | 🔴 ⬜ |
