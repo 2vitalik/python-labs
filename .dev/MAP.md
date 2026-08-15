@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T82** · тікетів: 81 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T87** · тікетів: 86 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -88,4 +88,9 @@
 | platform | [T78](platform/.t/T78-Q--catalog-ui2.md) | ❓ | catalog-ui2 | Питання UI-ітерації 2: зони, кольори, YAML, плюсик | 🟢 🟩 |
 | platform | [T79](platform/.t/T79-C--family-v2.md) | 🔆 | family-v2 | Сімʼї v2: батько-діти, міграція, YAML v2 | 🟢 🟩 |
 | platform | [T80](platform/.t/T80-B--colors-plan.md) | 🧠 | colors-plan | Кольори v2: ємність сімейств і розкладка зон | 🟢 ⬜ |
-| platform | [T81](platform/.t/T81-C--dev-ports.md) | 🔆 | dev-ports | Порти дев-серверів: крос-проєктна схема, python-labs = №3 | 🟢 ⬜ |
+| platform | [T81](platform/.t/T81-C--dev-ports.md) | 🔆 | dev-ports | Порти дев-серверів: крос-проєктна схема, python-labs = №3 | 🟢 🟩 |
+| .rounds | [T82](.rounds/.t/T82-R--game-desc-braindump.md) | ✔️ | game-desc-braindump | Брейндамп: опис гри студента — вікна, меню, механіки, докази | 🟢 ⬜ |
+| reports | [T83](reports/.t/T83-B--game-objects-model.md) | 🧠 | game-objects-model | Обʼєкти гри як якорі заявок: вікна, меню, докази | 🟢 ⬜ |
+| reports | [T84](reports/.t/T84-Q--game-objects-questions.md) | ❓ | game-objects-questions | Питання по обʼєктній моделі заявок | 🔴 ⬜ |
+| games | [T85](games/.t/T85-B--mechanics-formalization.md) | 🧠 | mechanics-formalization | Формалізація механік: рівні формальності замість мови правил | 🟢 ⬜ |
+| games | [T86](games/.t/T86-Q--mechanics-questions.md) | ❓ | mechanics-questions | Питання по формалізації механік | 🔴 ⬜ |

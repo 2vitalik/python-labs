@@ -20,6 +20,7 @@
 
 ## Наступний крок
 
+- **Раунд «опис гри студента»** (2026-08-15, брейндамп — [T82](.rounds/.t/T82-R--game-desc-braindump.md)): пропозиції — обʼєктна модель заявок [T83](reports/.t/T83-B--game-objects-model.md) + драбина механік [T85](games/.t/T85-B--mechanics-formalization.md) → Vitalik: відповіді на [T84](reports/.t/T84-Q--game-objects-questions.md) (відкривають реалізацію «Моєї гри» v1) і [T86](games/.t/T86-Q--mechanics-questions.md).
 - Профіль v1 працює (2026-08-04, [T64](platform/.t/T64--profile-v1/report.md)); CSS — Bootstrap 5 остаточно (чат після [T62](platform/.t/T62-C--css-frameworks.md)); імпорт багатогруповий з оновленням наявних → Vitalik: повторний імпорт `cist.txt` на живій базі.
 - **Каталог v1 реалізовано** (2026-08-05, [T71](platform/.t/T71--catalog-v1/report.md)) за рішеннями [T70](.rounds/.t/T70-R--catalog-decisions.md): таксономія-фасети прийнята, сид залито; Vitalik: клік-тест + ревізія чернеток (ціни/статуси).
 - Далі за [T25](.t/T25-B--mvp-strategy.md): кабінет студента — вибір завдань і заявки ([T10](reports/.t/T10-Q--reports-open-questions.md)); паралельно — міграція v3 у каталог за командою (T37 Q4).
