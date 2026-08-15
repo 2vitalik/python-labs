@@ -3,8 +3,8 @@
 Серце системи: розширюваний каталог завдань (елементи, фічі, інтерфейс, рівні, алгоритмічні), з якого студенти набирають монетки. Сусіди: ігри/механіки — [games](../games/README.md), принципи цін — [grading](../grading/README.md), заявки — [reports](../reports/README.md).
 
 Шапка:
-- Оновлено: 2026-08-05
-- Інтегровано: [T28](.t/T28-Q--v3-csv-questions.md) (рішення по v3-конвертації) · [T29](.t/T29-C--v2-data-anomalies.md) · [T31](.t/T31--v3-conversion/report.md) (v3 готово) · [T33](.t/T33-B--task-taxonomy.md)+[T50](.t/T50-B--kb-task-groups.md) з рішеннями [T37](.t/T37-Q--taxonomy-questions.md)/[T06](.t/T06-Q--tasks-open-questions.md)/[T70](../.rounds/.t/T70-R--catalog-decisions.md) (таксономія прийнята, каталог у вебі)
+- Оновлено: 2026-08-15
+- Інтегровано: [T28](.t/T28-Q--v3-csv-questions.md) (рішення по v3-конвертації) · [T29](.t/T29-C--v2-data-anomalies.md) · [T31](.t/T31--v3-conversion/report.md) (v3 готово) · [T33](.t/T33-B--task-taxonomy.md)+[T50](.t/T50-B--kb-task-groups.md) з рішеннями [T37](.t/T37-Q--taxonomy-questions.md)/[T06](.t/T06-Q--tasks-open-questions.md)/[T70](../.rounds/.t/T70-R--catalog-decisions.md) (таксономія прийнята, каталог у вебі) · [T88](.t/T88--catalog-objects-seed/report.md) (сид обʼєктного раунду: 209 карток, тег `window`)
 - Не інтегровано: [T05](.t/T05-C--task-catalog-concept.md) (хвости: версіонування-снапшоти цін, рекалібрація за статистикою, пайплайн ідей студентів)
 
 ## Таксономія (прийнято, [T37](.t/T37-Q--taxonomy-questions.md)/[T70](../.rounds/.t/T70-R--catalog-decisions.md)) · [T33](.t/T33-B--task-taxonomy.md)
@@ -35,8 +35,13 @@
 - Деградуючі ціни повторів (перші N — повна ціна, далі менша; анти-грінд) — обовʼязковий напрям з [T70](../.rounds/.t/T70-R--catalog-decisions.md), модель — разом із [grading](../grading/README.md) [T08](../grading/.t/T08-Q--grading-open-questions.md).
 - [T30](.t/T30-Q--v3-anomaly-fixes.md) знято: аномалії виправлені руками у v2, слоти лишились порожні — відповідати не треба.
 
+## Канал правок YAML
+
+- Правки пачкою: `data/catalog/tasks.yaml` → `uv run python catalog_io.py import` (upsert по slug); export ↔ import раундтрип-стабільний.
+- ⚠️ Ручні рядки з `#тегами` — лише в лапках: голий `#` у YAML починає коментар і мовчки відрізає хвіст рядка (пригода — [T88](.t/T88--catalog-objects-seed/report.md)); export сам квотить, ризик тільки в ручних дописуваннях.
+
 ## Наступний крок
 
-- Каталог живе в вебі (2026-08-05, [T71](../platform/.t/T71--catalog-v1/report.md)): 162 картки-чернетки з wiki-ядра з орієнтовними цінами → Vitalik: ревізія (ціни/статуси/активація) в адмінці або пачкою через `data/catalog/tasks.yaml` + import.
+- Каталог живе в вебі (2026-08-05, [T71](../platform/.t/T71--catalog-v1/report.md)): тепер **209 карток, 10 сімей** (сид обʼєктного раунду 2026-08-15 — [T88](.t/T88--catalog-objects-seed/report.md): типи вікон з тегом `window`, сімʼя елементів налаштувань, діти редактора/магазину) → Vitalik: ревізія (ціни/статуси/активація) в адмінці або пачкою через YAML; окремо — controls-remap проти keyboard-controls і чи робити end-screen сімʼєю win/lose.
 - Vitalik: закомітити доправки v2 + `data/v3/`, `data/scripts/`, `data/wiki/` і новий `data/catalog/`.
 - Зведення сировини: поступово розносити `data/wiki/tasks/_v3-raw.md` по зон-файлах (я, порціями; зведене видаляється зі staging).

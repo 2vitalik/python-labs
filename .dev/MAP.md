@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T87** · тікетів: 86 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T90** · тікетів: 89 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -23,7 +23,7 @@
 | remarks | [T13](remarks/.t/T13-C--remarks-concept.md) | 🔆 | remarks-concept | Система зауважень | 🟢 ⬜ |
 | remarks | [T14](remarks/.t/T14-Q--remarks-open-questions.md) | ❓ | remarks-open-questions | Питання щодо зауважень | 🔴 ⬜ |
 | github | [T15](github/.t/T15-C--github-integration.md) | 🔆 | github-integration | Інтеграція з git/GitHub | 🟢 ⬜ |
-| github | [T16](github/.t/T16-Q--github-open-questions.md) | ❓ | github-open-questions | Питання щодо git-інтеграції | 🔴 ⬜ |
+| github | [T16](github/.t/T16-Q--github-open-questions.md) | ❓ | github-open-questions | Питання щодо git-інтеграції | 🟢 ⬜ |
 | coursework | [T17](coursework/.t/T17-C--coursework-standards.md) | 🔆 | coursework-standards | Курсові та ДСТУ-оформлення | 🟢 ⬜ |
 | coursework | [T18](coursework/.t/T18-Q--coursework-open-questions.md) | ❓ | coursework-open-questions | Питання щодо курсових | 🔴 ⬜ |
 | tgbot | [T19](tgbot/.t/T19-C--tgbot-concept.md) | 🔆 | tgbot-concept | Telegram-бот і опитування | 🟢 ⬜ |
@@ -91,6 +91,9 @@
 | platform | [T81](platform/.t/T81-C--dev-ports.md) | 🔆 | dev-ports | Порти дев-серверів: крос-проєктна схема, python-labs = №3 | 🟢 🟩 |
 | .rounds | [T82](.rounds/.t/T82-R--game-desc-braindump.md) | ✔️ | game-desc-braindump | Брейндамп: опис гри студента — вікна, меню, механіки, докази | 🟢 ⬜ |
 | reports | [T83](reports/.t/T83-B--game-objects-model.md) | 🧠 | game-objects-model | Обʼєкти гри як якорі заявок: вікна, меню, докази | 🟢 ⬜ |
-| reports | [T84](reports/.t/T84-Q--game-objects-questions.md) | ❓ | game-objects-questions | Питання по обʼєктній моделі заявок | 🔴 ⬜ |
+| reports | [T84](reports/.t/T84-Q--game-objects-questions.md) | ❓ | game-objects-questions | Питання по обʼєктній моделі заявок | 🟢 ⬜ |
 | games | [T85](games/.t/T85-B--mechanics-formalization.md) | 🧠 | mechanics-formalization | Формалізація механік: рівні формальності замість мови правил | 🟢 ⬜ |
-| games | [T86](games/.t/T86-Q--mechanics-questions.md) | ❓ | mechanics-questions | Питання по формалізації механік | 🔴 ⬜ |
+| games | [T86](games/.t/T86-Q--mechanics-questions.md) | ❓ | mechanics-questions | Питання по формалізації механік | 🟢 ⬜ |
+| .rounds | [T87](.rounds/.t/T87-R--game-round-decisions.md) | ✔️ | game-round-decisions | Рішення раунду «опис гри»: відповіді T84+T86 | 🟢 ⬜ |
+| tasks | [T88](tasks/.t/T88--catalog-objects-seed/plan.md) | ⚙️ | catalog-objects-seed | Сид чернеток: елементи налаштувань, типи вікон, редактор, магазин | 🟢 🟩 |
+| platform | [T89](platform/.t/T89-Q--my-game-questions.md) | ❓ | my-game-questions | Концептуальні питання до «Моєї гри» v1 | 🔴 ⬜ |
