@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T94** · тікетів: 93 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T95** · тікетів: 94 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -101,3 +101,4 @@
 | platform | [T91](platform/.t/T91--my-game-backend/plan.md) | ⚙️ | my-game-backend | Бекенд «Моєї гри» v1: Work, обʼєкти, заявки, скриншоти | 🟢 🟩 |
 | platform | [T92](platform/.t/T92-Q--naming-urls.md) | ❓ | naming-urls | Q: імена моделей і URL-схема «Моєї гри» | 🔴 🟩 |
 | platform | [T93](platform/.t/T93--my-game-front/plan.md) | ⚙️ | my-game-front | Plan: етап C — перейменування за T92 + фронт «Моєї гри» | 🟢 🟩 |
+| platform | [T94](platform/.t/T94--passport-graph/plan.md) | ⚙️ | passport-graph | Plan: етап D — граф переходів і фініш паспорта | 🟢 🟩 |

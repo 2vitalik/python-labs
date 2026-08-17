@@ -4,6 +4,7 @@ import { computed, onMounted, ref } from 'vue'
 import { getMyGame, getStudentGame, postClaim, postPart } from '../api.js'
 import ClaimPicker from '../components/ClaimPicker.vue'
 import ClaimRow from '../components/ClaimRow.vue'
+import GameGraph from '../components/GameGraph.vue'
 import Md from '../components/Md.vue'
 import MenuCard from '../components/MenuCard.vue'
 import MyGameForm from '../components/MyGameForm.vue'
@@ -72,6 +73,7 @@ async function addWindow() {
 }
 const addMenu = () => run(() => postPart({ kind: 'menu', title: 'Нове меню' }))
 const addGameClaim = (task) => run(() => postClaim({ task }))
+const scrollTo = (id) => document.getElementById(`p-${id}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
 
 onMounted(() => Promise.all([loadCatalog(), reload()]))
 </script>
@@ -102,7 +104,7 @@ onMounted(() => Promise.all([loadCatalog(), reload()]))
 
       <h2 class="h5 mt-4">Вікна <span class="count">({{ windows.length }})</span></h2>
       <div class="row g-3">
-        <div v-for="p in windows" :key="p.id" class="col-md-6">
+        <div v-for="p in windows" :id="`p-${p.id}`" :key="p.id" class="col-md-6">
           <WindowCard :part="p" :claims="claimsOf(p.id)" :game-claims="gameClaims" :info="info" @changed="reload" />
         </div>
       </div>
@@ -126,6 +128,15 @@ onMounted(() => Promise.all([loadCatalog(), reload()]))
                   :claims="claimsOf(p.id)" :info="info" @changed="reload" />
       </div>
       <button class="btn btn-outline-primary btn-sm mt-2" @click="addMenu">＋ меню</button>
+
+      <template v-if="windows.length">
+        <h2 class="h5 mt-4">Карта переходів</h2>
+        <div class="card">
+          <div class="card-body p-2">
+            <GameGraph :windows="windows" :menus="menus" @pick="scrollTo" />
+          </div>
+        </div>
+      </template>
 
       <h2 class="h5 mt-4">Заявки рівня гри <span class="count">({{ gameClaims.length }})</span></h2>
       <p class="text-secondary small mb-2">Механіки й функції, не привʼязані до конкретного вікна.</p>

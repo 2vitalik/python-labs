@@ -4,12 +4,14 @@ import { useRoute } from 'vue-router'
 
 import { getStudentGame } from '../api.js'
 import CoinBadge from '../components/CoinBadge.vue'
+import GameGraph from '../components/GameGraph.vue'
 import Md from '../components/Md.vue'
-import { games, loadCatalog } from '../catalog.js'
+import { COINS, games, loadCatalog } from '../catalog.js'
 
 const nick = useRoute().params.nick
 const data = ref(null)
 const missing = ref(false)
+const COIN_ORDER = ['crown', 'gold', 'silver', 'bronze', 'tin', 'wood']
 
 const windows = computed(() => data.value.parts.filter((p) => p.kind === 'window'))
 const menus = computed(() => data.value.parts.filter((p) => p.kind === 'menu'))
@@ -18,6 +20,16 @@ const gameClaims = computed(() => data.value.claims.filter((c) => !c.part))
 const partById = (id) => data.value.parts.find((p) => p.id === id)
 const card = (slug) => data.value.tasks[slug]
 const baseTitle = computed(() => games.value.find((g) => g.slug === data.value.game.base_game)?.title)
+// claimed coins by type — informational, no grading math yet
+const coinSum = computed(() => {
+  const n = {}
+  for (const c of data.value.claims) {
+    const t = card(c.task)
+    if (t?.coin) n[t.coin] = (n[t.coin] || 0) + (t.amount || 1)
+  }
+  return COIN_ORDER.filter((k) => n[k]).map((k) => ({ coin: k, n: n[k] }))
+})
+const scrollTo = (id) => document.getElementById(`p-${id}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
 
 onMounted(async () => {
   loadCatalog()
@@ -48,13 +60,27 @@ onMounted(async () => {
         <img v-if="data.student.picture" :src="data.student.picture" class="rounded-circle" width="28" height="28" :alt="data.student.name">
         <span>{{ data.student.name }}</span>
         <span v-if="data.student.group" class="small">· {{ data.student.group }}</span>
-        <span class="small ms-auto">вікон: {{ windows.length }} · меню: {{ menus.length }} · заявок: {{ data.claims.length }}</span>
+        <span class="small ms-auto">
+          вікон: {{ windows.length }} · меню: {{ menus.length }} · заявок: {{ data.claims.length }}
+          <span v-if="coinSum.length" title="Заявлено монеток — довідково, без зарахування">
+            · <span v-for="c in coinSum" :key="c.coin" class="text-nowrap"> {{ COINS[c.coin] }}×{{ c.n }}</span>
+          </span>
+        </span>
       </div>
       <Md v-if="data.game.description" :text="data.game.description" class="mb-4" />
 
+      <template v-if="windows.length">
+        <h2 class="h5">Карта переходів</h2>
+        <div class="card mb-4">
+          <div class="card-body p-2">
+            <GameGraph :windows="windows" :menus="menus" @pick="scrollTo" />
+          </div>
+        </div>
+      </template>
+
       <h2 v-if="windows.length" class="h5">Вікна</h2>
       <div class="row g-3 mb-4">
-        <div v-for="p in windows" :key="p.id" class="col-md-6">
+        <div v-for="p in windows" :id="`p-${p.id}`" :key="p.id" class="col-md-6">
           <div class="card h-100">
             <div class="card-body vstack gap-2">
               <div class="d-flex align-items-center gap-2">
