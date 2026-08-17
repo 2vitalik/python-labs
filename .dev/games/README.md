@@ -3,9 +3,9 @@
 Формат робіт студентів: ігри на клітинному полі за мотивами класики. Сусіди: завдання-цеглинки — [tasks](../tasks/README.md), ціни — [grading](../grading/README.md).
 
 Шапка:
-- Оновлено: 2026-08-15
+- Оновлено: 2026-08-17
 - Інтегровано: [T49](.t/T49-B--game-classes.md) + [T53](.t/T53-Q--game-classes-questions.md) (класи ігор — рішення [T54](../.rounds/.t/T54-R--kb-round-decisions.md))
-- Не інтегровано: [T03](.t/T03-C--grid-games-concept.md) (аналіз концепції) · [T32](.t/T32-C--grid-games-catalog.md) (ресерч-каталог ігор-кандидатів) · [T34](.t/T34-P--game-spec-model.md) (spec-модель гри) — чекає реакції · [T85](.t/T85-B--mechanics-formalization.md) (драбина формальності механік 0→1→2 без DSL; таблиця взаємодій; сімʼї для редактора/магазину).
+- Не інтегровано: [T03](.t/T03-C--grid-games-concept.md) (аналіз концепції) · [T32](.t/T32-C--grid-games-catalog.md) (ресерч-каталог ігор-кандидатів) · [T34](.t/T34-P--game-spec-model.md) (spec-модель гри) — чекає реакції · [T85](.t/T85-B--mechanics-formalization.md) + [T95](.t/T95-B--mechanics-deep-dive.md) (драбина формальності механік: пропозиція + глибокий прохід на Танчиках — чекає рішень [T97](.t/T97-Q--mechanics-session-questions.md)).
 
 ## Матеріали
 
@@ -26,9 +26,10 @@
 
 - Всі питання вузла — [T04](.t/T04-Q--games-open-questions.md): список ігор, формат для Python, консоль+GUI, генератор варіантів, свої ігри, GUI-технологія.
 - По каталогу кандидатів — [T36](.t/T36-Q--games-catalog-questions.md): розширення девʼятки, real-time проти покроковості, курсорна гілка, донори механік.
-- По формалізації механік — відповіді отримано ([T87](../.rounds/.t/T87-R--game-round-decisions.md)): **драбина формальності — окрема сесія-обговорення** (T86 Q1c; напрям «без DSL» не затверджено), таблиця взаємодій — так після сутностей, слоти — спершу приклади на 2–3 картках, сімʼї редактора/магазину засіяно ([T88](../tasks/.t/T88--catalog-objects-seed/report.md)); пропозиція — [T85](.t/T85-B--mechanics-formalization.md).
+- По формалізації механік — **сесія відбулась 2026-08-17** (запит T86 Q1c): глибокий прохід драбини 0→1→2(→2.5)→3 на наскрізних Танчиках з чесними цінами рівнів — [T95](.t/T95-B--mechanics-deep-dive.md); модель реалізації (сутності `Part kind=entity`+`role`, `Task.slots`+`Claim.params`, таблиця взаємодій `Interaction` зі словником наслідків, кроки E1–E4) — [T96](../platform/.t/T96-P--entities-slots-model.md); рішення за Vitalik — [T97](.t/T97-Q--mechanics-session-questions.md) (драбина, сутності зараз, монетки за рядки таблиці, словник role, тіки/секунди). Раніше: таблиця взаємодій — так після сутностей (T86 Q2a), слоти — приклади спершу (Q3a), сімʼї редактора/магазину засіяно ([T88](../tasks/.t/T88--catalog-objects-seed/report.md)).
 
 ## Наступний крок
 
 - Каталог ігор живе в вебі (2026-08-05, [T71](../platform/.t/T71--catalog-v1/report.md)): всі 17 ігор засіяно з wiki — девʼятка `active`, шортліст+парасолі `draft`; далі правки — в адмінці `/games` або пачкою через `data/catalog/games.yaml`; wiki лишається чернеткою-лором ([T66](../platform/.t/T66-B--catalog-storage.md)).
+- Vitalik: відповіді на [T97](.t/T97-Q--mechanics-session-questions.md) (сесія механік) → далі E1 «сутності в Моїй грі» ([T96](../platform/.t/T96-P--entities-slots-model.md)).
 - Vitalik: відповіді на [T04](.t/T04-Q--games-open-questions.md) і [T36](.t/T36-Q--games-catalog-questions.md) — фінальний список ігор-прикладів (зокрема статуси шортліста в каталозі).

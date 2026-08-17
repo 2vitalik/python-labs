@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T95** · тікетів: 94 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T98** · тікетів: 97 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -102,3 +102,6 @@
 | platform | [T92](platform/.t/T92-Q--naming-urls.md) | ❓ | naming-urls | Q: імена моделей і URL-схема «Моєї гри» | 🔴 🟩 |
 | platform | [T93](platform/.t/T93--my-game-front/plan.md) | ⚙️ | my-game-front | Plan: етап C — перейменування за T92 + фронт «Моєї гри» | 🟢 🟩 |
 | platform | [T94](platform/.t/T94--passport-graph/plan.md) | ⚙️ | passport-graph | Plan: етап D — граф переходів і фініш паспорта | 🟢 🟩 |
+| games | [T95](games/.t/T95-B--mechanics-deep-dive.md) | 🧠 | mechanics-deep-dive | Механіки: глибокий розбір драбини на Танчиках | 🟢 ⬜ |
+| platform | [T96](platform/.t/T96-P--entities-slots-model.md) | 💡 | entities-slots-model | Сутності, слоти, таблиця взаємодій — модель v1 | 🟢 ⬜ |
+| games | [T97](games/.t/T97-Q--mechanics-session-questions.md) | ❓ | mechanics-session-questions | Питання сесії механік | 🔴 ⬜ |
