@@ -9,7 +9,7 @@ from pathlib import Path
 import yaml
 
 from db import init_db
-from models.game import Game
+from models.base_game import BaseGame
 from models.task import Task
 from taskline import parse_line, render_line
 from zones import ZONES
@@ -30,7 +30,7 @@ def task_node(t) -> dict | str:  # dict fallback for multi-line descriptions
 
 async def export():
     CATALOG.mkdir(parents=True, exist_ok=True)
-    games = await Game.find_all().sort("order", "slug").to_list()
+    games = await BaseGame.find_all().sort("order", "slug").to_list()
     (CATALOG / "games.yaml").write_text(yaml.safe_dump([dump(g) for g in games], allow_unicode=True, sort_keys=False, width=120))
     tasks = await Task.find_all().sort("zone", "subzone", "order", "slug").to_list()
     kids = {}
@@ -91,7 +91,7 @@ async def upsert(model, rows) -> None:
 
 
 async def import_():
-    await upsert(Game, yaml.safe_load((CATALOG / "games.yaml").read_text()) or [])
+    await upsert(BaseGame, yaml.safe_load((CATALOG / "games.yaml").read_text()) or [])
     await upsert(Task, task_rows())
 
 

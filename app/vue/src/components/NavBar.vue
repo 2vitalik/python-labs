@@ -1,7 +1,10 @@
 <script setup>
+import { computed } from 'vue'
+
 import { user } from '../user.js'
 
 const isDev = import.meta.env.DEV
+const active = computed(() => user.value && user.value.status !== 'pending')
 </script>
 
 <template>
@@ -15,11 +18,14 @@ const isDev = import.meta.env.DEV
         <li class="nav-item">
           <RouterLink class="nav-link" to="/tasks">Завдання</RouterLink>
         </li>
-        <li v-if="user && user.status !== 'pending'" class="nav-item">
-          <RouterLink class="nav-link" to="/profile">Профіль</RouterLink>
-        </li>
-        <li v-if="user?.status === 'admin'" class="nav-item">
+        <li v-if="active" class="nav-item">
           <RouterLink class="nav-link" to="/students">Студенти</RouterLink>
+        </li>
+        <li v-if="active" class="nav-item">
+          <RouterLink class="nav-link" to="/my/game">Моя гра</RouterLink>
+        </li>
+        <li v-if="active" class="nav-item">
+          <RouterLink class="nav-link" to="/profile">Профіль</RouterLink>
         </li>
       </ul>
       <div class="d-flex align-items-center gap-2">

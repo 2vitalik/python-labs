@@ -6,8 +6,10 @@ import GameEditPage from './pages/GameEditPage.vue'
 import GamePage from './pages/GamePage.vue'
 import GamesPage from './pages/GamesPage.vue'
 import HomePage from './pages/HomePage.vue'
+import MyGamePage from './pages/MyGamePage.vue'
 import ProfilePage from './pages/ProfilePage.vue'
 import StudentEditPage from './pages/StudentEditPage.vue'
+import StudentGamePage from './pages/StudentGamePage.vue'
 import StudentsPage from './pages/StudentsPage.vue'
 import TaskEditPage from './pages/TaskEditPage.vue'
 import TasksPage from './pages/TasksPage.vue'
@@ -17,8 +19,10 @@ export default createRouter({
   routes: [
     { path: '/', component: HomePage },
     { path: '/profile', component: ProfilePage },
+    { path: '/my/game', component: MyGamePage },
     { path: '/students', component: StudentsPage },
-    { path: '/students/:id', component: StudentEditPage },
+    { path: '/students/:nick', component: StudentGamePage },
+    { path: '/students/:nick/edit', component: StudentEditPage },
     { path: '/games', component: GamesPage },
     { path: '/games/new', component: GameEditPage },
     { path: '/games/:slug', component: GamePage, meta: { wide: true } },

@@ -1,6 +1,5 @@
 import re
 
-from beanie import PydanticObjectId
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
@@ -43,23 +42,17 @@ def parse_students(text: str) -> list[dict]:
     return rows
 
 
-@router.get("")
-async def list_students(admin: User = Depends(admin_user)):
-    users = await User.find(User.status != Status.admin).sort("group", "last_name").to_list()
-    return [u.api() for u in users]
-
-
-@router.get("/{id}")
-async def get_student(id: PydanticObjectId, admin: User = Depends(admin_user)):
-    user = await User.get(id)
+@router.get("/{nick}")
+async def get_student(nick: str, admin: User = Depends(admin_user)):
+    user = await User.by_nick(nick)
     if not user:
         raise HTTPException(404)
     return user.api()
 
 
-@router.put("/{id}")
-async def update_student(id: PydanticObjectId, data: StudentIn, admin: User = Depends(admin_user)):
-    user = await User.get(id)
+@router.put("/{nick}")
+async def update_student(nick: str, data: StudentIn, admin: User = Depends(admin_user)):
+    user = await User.by_nick(nick)
     if not user:
         raise HTTPException(404)
     await record(user, clean(data), actor=admin.email)

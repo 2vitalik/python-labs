@@ -1,3 +1,4 @@
+import re
 from datetime import datetime, timezone
 from enum import Enum
 from typing import Annotated
@@ -13,7 +14,7 @@ class Status(str, Enum):
 
 
 class User(Document):
-    email: Annotated[str, Indexed(unique=True)]
+    email: Annotated[str, Indexed(unique=True)]  # nick = local part, unique (single domain)
     name: str = ""
     picture: str = ""
     status: Status = Status.pending
@@ -30,9 +31,18 @@ class User(Document):
     class Settings:
         name = "users"
 
+    @property
+    def nick(self) -> str:
+        return self.email.split("@")[0]
+
+    @classmethod
+    async def by_nick(cls, nick: str) -> "User | None":
+        return await cls.find_one({"email": {"$regex": f"^{re.escape(nick)}@"}})
+
     def api(self) -> dict:
         return {
-            "id": str(self.id), "email": self.email, "name": self.name, "picture": self.picture,
+            "id": str(self.id), "email": self.email, "nick": self.nick,
+            "name": self.name, "picture": self.picture,
             "status": self.status, "last_name": self.last_name, "first_name": self.first_name,
             "patronymic": self.patronymic, "group": self.group, "github": self.github,
             "tg_username": self.tg_username, "tg_linked": self.tg_chat_id is not None,

@@ -7,7 +7,7 @@ from starlette.middleware.sessions import SessionMiddleware
 import uploads
 from config import settings
 from db import init_db
-from routes import auth, games, me, profile, students, tasks, taxonomy, work_claims, work_objects, works
+from routes import auth, games, me, my_claims, my_game, my_parts, profile, student_games, students, tasks, taxonomy
 
 
 @asynccontextmanager
@@ -22,11 +22,12 @@ app.include_router(auth.router)
 app.include_router(me.router)
 app.include_router(profile.router)
 app.include_router(students.router)
+app.include_router(student_games.router)
 app.include_router(games.router)
 app.include_router(tasks.router)
 app.include_router(taxonomy.router)
-app.include_router(works.router)
-app.include_router(work_objects.router)
-app.include_router(work_claims.router)
+app.include_router(my_game.router)
+app.include_router(my_parts.router)
+app.include_router(my_claims.router)
 uploads.ROOT.mkdir(parents=True, exist_ok=True)
 app.mount("/api/uploads", StaticFiles(directory=uploads.ROOT), name="uploads")

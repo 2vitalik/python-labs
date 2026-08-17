@@ -8,7 +8,8 @@ __pycache__/
 .venv/
 node_modules/
 app/vue/dist/
-# Скриншоти студентських робіт — живуть поза git (синк Dropbox)
+# Скриншоти студентських робіт — живуть поза git (синк Dropbox); .trash — кошик видалених
 app/api/uploads/
+app/api/uploads.trash/
 
 *.hid.*

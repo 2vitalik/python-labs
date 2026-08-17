@@ -3,7 +3,7 @@ import { onMounted, reactive, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 import { postGame, putGame } from '../api.js'
-import GameForm from '../components/GameForm.vue'
+import BaseGameForm from '../components/BaseGameForm.vue'
 import { games, loadCatalog } from '../catalog.js'
 import { user } from '../user.js'
 
@@ -42,7 +42,7 @@ async function save() {
     <RouterLink :to="id ? `/games/${form.slug}` : '/games'" class="d-inline-block mb-2">← Назад</RouterLink>
     <h1 class="h3 mb-4">{{ id ? `Гра: ${form.title}` : 'Нова гра' }}</h1>
 
-    <GameForm v-model="form" @save="save" />
+    <BaseGameForm v-model="form" @save="save" />
 
     <div v-if="saved" class="alert alert-success mt-3">Збережено ✓</div>
     <div v-if="error" class="alert alert-danger mt-3">{{ error }}</div>

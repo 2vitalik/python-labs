@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T93** · тікетів: 92 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T94** · тікетів: 93 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -15,7 +15,7 @@
 | tasks | [T05](tasks/.t/T05-C--task-catalog-concept.md) | 🔆 | task-catalog-concept | Каталог завдань-цеглинок | 🟢 ⬜ |
 | tasks | [T06](tasks/.t/T06-Q--tasks-open-questions.md) | ❓ | tasks-open-questions | Питання щодо каталогу завдань | 🟢 🟩 |
 | grading | [T07](grading/.t/T07-C--coins-system.md) | 🔆 | coins-system | Система монеток і шкала оцінок | 🟢 ⬜ |
-| grading | [T08](grading/.t/T08-Q--grading-open-questions.md) | ❓ | grading-open-questions | Питання щодо оцінювання | 🔴 ⬜ |
+| grading | [T08](grading/.t/T08-Q--grading-open-questions.md) | ❓ | grading-open-questions | Питання щодо оцінювання | 🔴 🟩 |
 | reports | [T09](reports/.t/T09-C--reports-concept.md) | 🔆 | reports-concept | Звіти студентів у вебсистемі | 🟢 ⬜ |
 | reports | [T10](reports/.t/T10-Q--reports-open-questions.md) | ❓ | reports-open-questions | Питання щодо звітів | 🔴 ⬜ |
 | defense | [T11](defense/.t/T11-C--defense-concept.md) | 🔆 | defense-concept | Захисти: планування і регламент | 🟢 ⬜ |
@@ -99,4 +99,5 @@
 | platform | [T89](platform/.t/T89-Q--my-game-questions.md) | ❓ | my-game-questions | Концептуальні питання до «Моєї гри» v1 | 🟢 🟩 |
 | platform | [T90](platform/.t/T90-P--my-game-v1-design.md) | 💡 | my-game-v1-design | Дизайн «Моєї гри» v1: моделі, API, сторінки | 🟢 🟩 |
 | platform | [T91](platform/.t/T91--my-game-backend/plan.md) | ⚙️ | my-game-backend | Бекенд «Моєї гри» v1: Work, обʼєкти, заявки, скриншоти | 🟢 🟩 |
-| platform | [T92](platform/.t/T92-Q--naming-urls.md) | ❓ | naming-urls | Q: імена моделей і URL-схема «Моєї гри» | 🔴 ⬜ |
+| platform | [T92](platform/.t/T92-Q--naming-urls.md) | ❓ | naming-urls | Q: імена моделей і URL-схема «Моєї гри» | 🔴 🟩 |
+| platform | [T93](platform/.t/T93--my-game-front/plan.md) | ⚙️ | my-game-front | Plan: етап C — перейменування за T92 + фронт «Моєї гри» | 🟢 🟩 |

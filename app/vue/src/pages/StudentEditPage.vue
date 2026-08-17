@@ -6,7 +6,7 @@ import { getStudent, putStudent } from '../api.js'
 import ProfileForm from '../components/ProfileForm.vue'
 import { user } from '../user.js'
 
-const id = useRoute().params.id
+const nick = useRoute().params.nick
 const student = ref(null)
 const form = reactive({
   last_name: '', first_name: '', patronymic: '', github: '',
@@ -16,14 +16,14 @@ const saved = ref(false)
 const error = ref('')
 
 onMounted(async () => {
-  student.value = await getStudent(id)
+  student.value = await getStudent(nick)
   for (const k in form) form[k] = student.value[k]
 })
 
 async function save() {
   error.value = ''
   try {
-    student.value = await putStudent(id, form)
+    student.value = await putStudent(nick, form)
     saved.value = true
     setTimeout(() => (saved.value = false), 2000)
   } catch (e) {

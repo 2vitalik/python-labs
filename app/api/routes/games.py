@@ -3,7 +3,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
 from deps import admin_user, current_user
-from models.game import Game
+from models.base_game import BaseGame
 from models.history import record, record_new
 from models.user import Status, User
 from zones import KLASSES, STATUSES
@@ -37,7 +37,7 @@ def clean(data: GameIn) -> dict:
 
 @router.get("")
 async def list_games(user: User | None = Depends(current_user)):
-    games = await Game.find_all().sort("order", "slug").to_list()
+    games = await BaseGame.find_all().sort("order", "slug").to_list()
     if not user or user.status != Status.admin:  # guests see the catalog too, active only
         games = [g for g in games if g.status == "active"]
     return [g.api() for g in games]
@@ -46,9 +46,9 @@ async def list_games(user: User | None = Depends(current_user)):
 @router.post("")
 async def create_game(data: GameIn, admin: User = Depends(admin_user)):
     d = clean(data)
-    if await Game.find_one(Game.slug == d["slug"]):
+    if await BaseGame.find_one(BaseGame.slug == d["slug"]):
         raise HTTPException(422, "Гра з таким slug уже існує.")
-    game = Game(**d)
+    game = BaseGame(**d)
     await game.insert()
     await record_new(game, actor=admin.email)
     return game.api()
@@ -56,11 +56,11 @@ async def create_game(data: GameIn, admin: User = Depends(admin_user)):
 
 @router.put("/{id}")
 async def update_game(id: PydanticObjectId, data: GameIn, admin: User = Depends(admin_user)):
-    game = await Game.get(id)
+    game = await BaseGame.get(id)
     if not game:
         raise HTTPException(404)
     d = clean(data)
-    other = await Game.find_one(Game.slug == d["slug"])
+    other = await BaseGame.find_one(BaseGame.slug == d["slug"])
     if other and other.id != game.id:
         raise HTTPException(422, "Гра з таким slug уже існує.")
     await record(game, d, actor=admin.email)

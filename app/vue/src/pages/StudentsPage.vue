@@ -1,19 +1,26 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
 import { getStudents, importStudents } from '../api.js'
 import { user } from '../user.js'
 
 const students = ref([])
+const denied = ref(false)
+const view = ref('cards')
 const showImport = ref(false)
 const importText = ref('')
 const importResult = ref('')
 
-const fio = (s) => [s.last_name, s.first_name, s.patronymic].filter(Boolean).join(' ') || '—'
+const isAdmin = computed(() => user.value?.status === 'admin')
+const fio = (s) => s.name || s.nick
 const repoName = (url) => url.replace('https://github.com/', '')
 
 async function load() {
-  students.value = await getStudents()
+  try {
+    students.value = await getStudents()
+  } catch {
+    denied.value = true
+  }
 }
 
 async function runImport() {
@@ -27,10 +34,15 @@ onMounted(load)
 </script>
 
 <template>
-  <div v-if="user?.status === 'admin'">
-    <div class="d-flex justify-content-between align-items-center mb-3">
+  <p v-if="denied" class="text-center mt-5">Сторінка для учасників курсу — увійди з поштою @nure.ua.</p>
+  <div v-else>
+    <div class="d-flex align-items-center gap-2 mb-3">
       <h1 class="h3 mb-0">Студенти <span class="text-secondary fs-6">({{ students.length }})</span></h1>
-      <button class="btn btn-outline-primary btn-sm" @click="showImport = !showImport">Додати студентів</button>
+      <div v-if="isAdmin" class="btn-group btn-group-sm ms-2">
+        <button class="btn" :class="view === 'cards' ? 'btn-primary' : 'btn-outline-secondary'" @click="view = 'cards'">Картки</button>
+        <button class="btn" :class="view === 'table' ? 'btn-primary' : 'btn-outline-secondary'" @click="view = 'table'">Таблиця</button>
+      </div>
+      <button v-if="isAdmin" class="btn btn-outline-primary btn-sm ms-auto" @click="showImport = !showImport">Додати студентів</button>
     </div>
 
     <div v-if="showImport" class="card mb-3">
@@ -44,15 +56,41 @@ onMounted(load)
     </div>
     <div v-if="importResult" class="alert alert-success">{{ importResult }}</div>
 
-    <table class="table table-hover align-middle">
+    <div v-if="view === 'cards'" class="row g-3">
+      <div v-for="s in students" :key="s.nick" class="col-md-6 col-lg-4">
+        <RouterLink :to="`/students/${s.nick}`" class="card h-100 text-decoration-none text-body">
+          <img v-if="s.game.cover" :src="s.game.cover" class="card-img-top object-fit-cover cover">
+          <div class="card-body">
+            <div class="d-flex align-items-center gap-2">
+              <img v-if="s.picture" :src="s.picture" class="rounded-circle" width="28" height="28" :alt="fio(s)">
+              <span class="fw-semibold">{{ fio(s) }}</span>
+              <span v-if="s.status === 'admin'" class="badge text-bg-secondary fw-normal">викладач</span>
+              <span v-else-if="s.status === 'pending'" class="badge text-bg-warning fw-normal">очікує</span>
+              <span class="text-secondary small ms-auto">{{ s.group }}</span>
+            </div>
+            <div v-if="s.game.id" class="mt-1">
+              🎮 {{ s.game.title }}
+              <div class="text-secondary small">вікон: {{ s.game.windows }} · меню: {{ s.game.menus }} · заявок: {{ s.game.claims }}</div>
+            </div>
+            <div v-else class="text-secondary mt-1">Гра ще не створена</div>
+          </div>
+        </RouterLink>
+      </div>
+    </div>
+
+    <table v-else class="table table-hover align-middle">
       <thead>
-        <tr><th>ПІБ</th><th>Пошта</th><th>Група</th><th>GitHub</th><th>Telegram</th><th>Статус</th></tr>
+        <tr><th>ПІБ</th><th>Пошта</th><th>Група</th><th>Гра</th><th>GitHub</th><th>Telegram</th><th>Статус</th></tr>
       </thead>
       <tbody>
-        <tr v-for="s in students" :key="s.id" role="button" @click="$router.push(`/students/${s.id}`)">
+        <tr v-for="s in students" :key="s.nick" role="button" @click="$router.push(`/students/${s.nick}/edit`)">
           <td>{{ fio(s) }}</td>
           <td>{{ s.email }}</td>
           <td>{{ s.group || '—' }}</td>
+          <td>
+            <RouterLink v-if="s.game.id" :to="`/students/${s.nick}`" @click.stop>{{ s.game.title }}</RouterLink>
+            <span v-else class="text-secondary">—</span>
+          </td>
           <td>
             <a v-if="s.github" :href="s.github" target="_blank" @click.stop>{{ repoName(s.github) }}</a>
             <span v-else class="text-secondary">—</span>
@@ -66,5 +104,8 @@ onMounted(load)
       </tbody>
     </table>
   </div>
-  <p v-else class="text-center mt-5">Сторінка доступна лише викладачу.</p>
 </template>
+
+<style scoped>
+.cover { height: 140px; }
+</style>
