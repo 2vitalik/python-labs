@@ -2,10 +2,12 @@
 
 Формат робіт студентів: ігри на клітинному полі за мотивами класики. Сусіди: завдання-цеглинки — [tasks](../tasks/README.md), ціни — [grading](../grading/README.md).
 
+**Дальня мета вузла — лудопедія** (мрія Vitalik, 2026-08-17): єдина мова опису ігрового розмаїття світу без синтаксису — словник (картки) + морфологія (сутності+слоти) + граматика (речення КОЛИ→ЯКЩО→ТО) + корпус (приклади з реальних ігор, осі варіацій); той самий апарат описує і референсні ігри з YouTube, і роботи студентів · [T98](.t/T98-B--ludopedia.md).
+
 Шапка:
 - Оновлено: 2026-08-17
 - Інтегровано: [T49](.t/T49-B--game-classes.md) + [T53](.t/T53-Q--game-classes-questions.md) (класи ігор — рішення [T54](../.rounds/.t/T54-R--kb-round-decisions.md))
-- Не інтегровано: [T03](.t/T03-C--grid-games-concept.md) (аналіз концепції) · [T32](.t/T32-C--grid-games-catalog.md) (ресерч-каталог ігор-кандидатів) · [T34](.t/T34-P--game-spec-model.md) (spec-модель гри) — чекає реакції · [T85](.t/T85-B--mechanics-formalization.md) + [T95](.t/T95-B--mechanics-deep-dive.md) (драбина формальності механік: пропозиція + глибокий прохід на Танчиках — чекає рішень [T97](.t/T97-Q--mechanics-session-questions.md)).
+- Не інтегровано: [T03](.t/T03-C--grid-games-concept.md) (аналіз концепції) · [T32](.t/T32-C--grid-games-catalog.md) (ресерч-каталог ігор-кандидатів) · [T34](.t/T34-P--game-spec-model.md) (spec-модель гри) — чекає реакції · [T85](.t/T85-B--mechanics-formalization.md) + [T95](.t/T95-B--mechanics-deep-dive.md) (драбина формальності механік — чекає [T97](.t/T97-Q--mechanics-session-questions.md)) · [T98](.t/T98-B--ludopedia.md) (лудопедія: north star + мапа Д0–Д6 — чекає [T99](.t/T99-Q--ludopedia-questions.md)).
 
 ## Матеріали
 
@@ -32,4 +34,5 @@
 
 - Каталог ігор живе в вебі (2026-08-05, [T71](../platform/.t/T71--catalog-v1/report.md)): всі 17 ігор засіяно з wiki — девʼятка `active`, шортліст+парасолі `draft`; далі правки — в адмінці `/games` або пачкою через `data/catalog/games.yaml`; wiki лишається чернеткою-лором ([T66](../platform/.t/T66-B--catalog-storage.md)).
 - Vitalik: відповіді на [T97](.t/T97-Q--mechanics-session-questions.md) (сесія механік) → далі E1 «сутності в Моїй грі» ([T96](../platform/.t/T96-P--entities-slots-model.md)).
+- Vitalik: відповіді на [T99](.t/T99-Q--ludopedia-questions.md) (лудопедія: readback, ядро, речення замість таблиці, перший крок мрії, студенти-співавтори).
 - Vitalik: відповіді на [T04](.t/T04-Q--games-open-questions.md) і [T36](.t/T36-Q--games-catalog-questions.md) — фінальний список ігор-прикладів (зокрема статуси шортліста в каталозі).

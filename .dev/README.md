@@ -15,6 +15,8 @@
 
 ## Стан
 
+- **Дальня мета — лудопедія** (мрія Vitalik, 2026-08-17): єдина мова опису ігрового розмаїття без синтаксису; north star і мапа — [T98](games/.t/T98-B--ludopedia.md), рішення — [T99](games/.t/T99-Q--ludopedia-questions.md). Система лабораторних — перший мешканець цієї мови.
+
 - Фаза: **перший код працює** — мікро-MVP «сторінка + Google OAuth лише @nure.ua» ([T44](platform/.t/T44--auth-mvp/report.md)) + **профіль v1** ([T64](platform/.t/T64--profile-v1/report.md)) + **каталог v1** ([T71](platform/.t/T71--catalog-v1/report.md)): `/games` + `/tasks` з деревом зон, пошуком і адмін-формами, сид 17 ігор + 162 завдання з wiki; стек затверджено ([T41](.rounds/.t/T41-R--auth-mvp-decisions.md)): FastAPI + MongoDB (Beanie) + Vue 3 + Bootstrap 5.
 - Решта вузлів — думання; чекають Q-відповідей (🔴 у MAP). Пріоритет: [T26](.t/T26-Q--roadmap-open-questions.md) → [T08](grading/.t/T08-Q--grading-open-questions.md) → [T06](tasks/.t/T06-Q--tasks-open-questions.md) → [T22](platform/.t/T22-Q--platform-open-questions.md) → [T16](github/.t/T16-Q--github-open-questions.md), решта — як зайде.
 
