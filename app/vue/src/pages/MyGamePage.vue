@@ -4,26 +4,32 @@ import { computed, onMounted, ref } from 'vue'
 import { getMyGame, getStudentGame, postClaim, postPart } from '../api.js'
 import ClaimPicker from '../components/ClaimPicker.vue'
 import ClaimRow from '../components/ClaimRow.vue'
+import EntityCard from '../components/EntityCard.vue'
 import GameGraph from '../components/GameGraph.vue'
 import Md from '../components/Md.vue'
 import MenuCard from '../components/MenuCard.vue'
 import MyGameForm from '../components/MyGameForm.vue'
+import RuleRow from '../components/RuleRow.vue'
 import WindowCard from '../components/WindowCard.vue'
-import { games, loadCatalog, tasks } from '../catalog.js'
+import { ROLES, games, loadCatalog, tasks } from '../catalog.js'
 
 const game = ref(null)
 const parts = ref([])
 const claims = ref([])
+const rules = ref([])
 const loaded = ref(false)
 const denied = ref(false)
 const editGame = ref(false)
 const newWin = ref(null)
+const newEnt = ref(null)
+const newRule = ref(false)
 const error = ref('')
 
 const infoMap = computed(() => Object.fromEntries(tasks.value.map((t) => [t.slug, t])))
 const info = (slug) => infoMap.value[slug]
 const windows = computed(() => parts.value.filter((p) => p.kind === 'window'))
 const menus = computed(() => parts.value.filter((p) => p.kind === 'menu'))
+const entities = computed(() => parts.value.filter((p) => p.kind === 'entity'))
 const windowTypes = computed(() => tasks.value.filter((t) => t.tags.includes('window')))
 const gameClaims = computed(() => claims.value.filter((c) => !c.part))
 const claimsOf = (id) => claims.value.filter((c) => c.part === id)
@@ -42,6 +48,7 @@ async function reload() {
     const full = await getStudentGame(nick.value)
     parts.value = full.parts
     claims.value = full.claims
+    rules.value = full.rules
   }
   loaded.value = true
 }
@@ -73,6 +80,17 @@ async function addWindow() {
 }
 const addMenu = () => run(() => postPart({ kind: 'menu', title: 'Нове меню' }))
 const addGameClaim = (task) => run(() => postClaim({ task }))
+async function addEntity() {
+  error.value = ''
+  try {
+    await postPart({ kind: 'entity', ...newEnt.value })
+    newEnt.value = null
+    await reload()
+  } catch (e) {
+    error.value = e.message
+  }
+}
+const onRuleSaved = () => { newRule.value = false; reload() }
 const scrollTo = (id) => document.getElementById(`p-${id}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
 
 onMounted(() => Promise.all([loadCatalog(), reload()]))
@@ -137,6 +155,35 @@ onMounted(() => Promise.all([loadCatalog(), reload()]))
           </div>
         </div>
       </template>
+
+      <h2 class="h5 mt-4">Сутності <span class="count">({{ entities.length }})</span></h2>
+      <p class="text-secondary small mb-2">Мешканці ігрового поля: гравець, вороги, предмети, стіни. Механіки заявляються прямо на сутності.</p>
+      <div class="row g-3">
+        <div v-for="p in entities" :id="`p-${p.id}`" :key="p.id" class="col-md-6">
+          <EntityCard :part="p" :claims="claimsOf(p.id)" :info="info" @changed="reload" />
+        </div>
+      </div>
+      <div v-if="newEnt" class="card mt-3">
+        <div class="card-body d-flex gap-2 flex-wrap align-items-center">
+          <select v-model="newEnt.role" class="form-select w-auto">
+            <option value="">Роль…</option>
+            <option v-for="(r, k) in ROLES" :key="k" :value="k">{{ r.icon }} {{ r.label }}</option>
+          </select>
+          <input v-model="newEnt.title" class="form-control w-auto flex-grow-1" placeholder="Назва сутності (Гравець, Ворожий танк…)">
+          <button class="btn btn-primary" :disabled="!newEnt.role || !newEnt.title.trim()" @click="addEntity">Додати</button>
+          <button class="btn btn-outline-secondary" @click="newEnt = null">✕</button>
+        </div>
+      </div>
+      <button v-else class="btn btn-outline-primary btn-sm mt-3" @click="newEnt = { role: '', title: '' }">＋ сутність</button>
+
+      <h2 class="h5 mt-4">Правила <span class="count">({{ rules.length }})</span></h2>
+      <p class="text-secondary small mb-2">Правило — речення «КОЛИ → ТО»: контакт сутностей чи таймер, і що стається.</p>
+      <div class="vstack gap-1">
+        <RuleRow v-for="r in rules" :key="r.id" :rule="r" :parts="parts" editable @changed="reload" />
+        <RuleRow v-if="newRule" :rule="null" :parts="parts" editable @changed="onRuleSaved" @cancel="newRule = false" />
+      </div>
+      <button v-if="!newRule" class="btn btn-outline-primary btn-sm mt-2" :disabled="!entities.length"
+              :title="entities.length ? '' : 'Спершу додай сутності'" @click="newRule = true">＋ правило</button>
 
       <h2 class="h5 mt-4">Заявки рівня гри <span class="count">({{ gameClaims.length }})</span></h2>
       <p class="text-secondary small mb-2">Механіки й функції, не привʼязані до конкретного вікна.</p>

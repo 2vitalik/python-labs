@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 
 from deps import active_user
 from models.game import Claim, Game, Part
+from models.rule import Rule
 from models.task import Task
 from models.user import Status, User
 
@@ -28,7 +29,9 @@ async def game_summary(game: Game | None) -> dict:
     shots = [s for p in parts for s in p.screenshots]
     return game.api() | {
         "windows": sum(p.kind == "window" for p in parts), "menus": sum(p.kind == "menu" for p in parts),
+        "entities": sum(p.kind == "entity" for p in parts),
         "claims": await Claim.find(Claim.game == game.id).count(),
+        "rules": await Rule.find(Rule.game == game.id).count(),
         "cover": f"/api/uploads/{game.id}/{shots[0]}" if shots else "",
     }
 
@@ -58,10 +61,12 @@ async def student_game(nick: str, user: User = Depends(active_user)):
         raise HTTPException(404, "Гра не знайдена.")
     parts = await Part.find(Part.game == game.id).sort("order", "created_at").to_list()
     claims = await Claim.find(Claim.game == game.id).sort("created_at").to_list()
+    rules = await Rule.find(Rule.game == game.id).sort("created_at").to_list()
     slugs = {p.task for p in parts if p.task} | {c.task for c in claims} | \
             {i["task"] for p in parts for i in p.items if i.get("task")}
     return {
         "game": game.api(), "student": person(owner),
         "parts": [p.api() for p in parts], "claims": [c.api() for c in claims],
+        "rules": [r.api() for r in rules],
         "tasks": await task_index(slugs), "mine": game.owner == user.email,
     }

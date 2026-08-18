@@ -110,7 +110,45 @@ with TestClient(main.app) as c:
     check("cascade: file left original dir", not (Path(os.environ["UPLOADS_DIR"]) / gid / shot).is_file())
     check("cascade: file in trash", (uploads.TRASH / gid / shot).is_file())
 
+    r = c.post("/api/my/game/parts", json={"kind": "entity", "title": "Гравець", "role": "player"})
+    check("entity create", r.status_code == 200 and r.json()["role"] == "player", r.text)
+    player = r.json()["id"]
+    check("entity bad role → 422",
+          c.post("/api/my/game/parts", json={"kind": "entity", "title": "Бос", "role": "boss"}).status_code == 422)
+    enemy = c.post("/api/my/game/parts", json={"kind": "entity", "title": "Ворожий танк", "role": "enemy"}).json()["id"]
+    check("claim on entity", c.post("/api/my/claims", json={"task": "status-panel", "part": player}).status_code == 200)
+
+    r = c.post("/api/my/game/rules", json={"when": {"kind": "contact", "a": player, "b": enemy},
+                                           "then": [{"kind": "damage", "n": 1}, {"kind": "disappear_b"}]})
+    check("rule contact create", r.status_code == 200, r.text)
+    check("rule non-entity side → 422",
+          c.post("/api/my/game/rules", json={"when": {"kind": "contact", "a": player, "b": menu},
+                                             "then": [{"kind": "win"}]}).status_code == 422)
+    check("rule unknown effect → 422",
+          c.post("/api/my/game/rules", json={"when": {"kind": "timer", "every": 5},
+                                             "then": [{"kind": "explode"}]}).status_code == 422)
+    r = c.post("/api/my/game/rules", json={"when": {"kind": "timer", "every": 20},
+                                           "then": [{"kind": "spawn", "part": enemy}], "note": "хвилі ворогів"})
+    check("rule timer+spawn create", r.status_code == 200, r.text)
+    r = c.get("/api/students/stud/game").json()
+    check("passport: rules present", len(r["rules"]) == 2 and r["rules"][0]["when"]["kind"] == "contact")
+    check("entity delete", c.delete(f"/api/my/game/parts/{enemy}").status_code == 200)
+    r = c.get("/api/students/stud/game").json()
+    check("cascade: entity rules gone", r["rules"] == [] and any(p["id"] == player for p in r["parts"]))
+
+    r = c.post("/api/refs", json={"url": "https://youtu.be/dQw4w9WgXcQ", "note": "патерн погоні"})
+    check("ref create", r.status_code == 200, r.text)
+    ref = r.json()["id"]
+    check("ref bad url → 422", c.post("/api/refs", json={"url": "просто текст"}).status_code == 422)
+    r = c.get("/api/refs").json()
+    check("refs list: author nick + mine", r[0]["author"] == "stud" and r[0]["mine"] is True)
+
+    login(c, "stud2@nure.ua", "student")
+    check("foreign ref edit → 403",
+          c.put(f"/api/refs/{ref}", json={"url": "https://x.com"}).status_code == 403)
+
     login(c, "admin@nure.ua", "admin")
+    check("admin: delete any ref", c.delete(f"/api/refs/{ref}").status_code == 200)
     r = c.post("/api/my/game", json={"title": "Демо викладача", "base_custom": "Своя гра-прикладка"})
     check("admin: own game, custom base", r.status_code == 200, r.text)
     r = c.post("/api/my/game/parts", json={"kind": "window", "task": "settings-window", "title": "Налаштування"})
@@ -123,8 +161,12 @@ with TestClient(main.app) as c:
     check("admin: student by nick", c.get("/api/students/stud").json()["email"] == "stud@nure.ua")
     r = c.put("/api/students/stud", json={"last_name": "Тест", "group": "ПЗПІ-25-1"})
     check("admin: edit by nick", r.status_code == 200 and r.json()["group"] == "ПЗПІ-25-1", r.text)
+    r = c.get("/api/students").json()
+    stud_row = next(s for s in r if s["nick"] == "stud")
+    check("gallery: entity/rule counters", stud_row["game"]["entities"] == 1 and stud_row["game"]["rules"] == 0)
     check("history recorded", mongo[DB].history.count_documents({"coll": "student_games"}) >= 2)
     check("cascade deletes logged", mongo[DB].history.count_documents({"coll": "claims", "changes.task.new": None}) >= 1)
+    check("rules history: 2 creates + 2 cascade deletes", mongo[DB].history.count_documents({"coll": "rules"}) == 4)
 
 ok = sum(1 for _, p in results if p)
 print(f"\n{ok}/{len(results)} PASS")

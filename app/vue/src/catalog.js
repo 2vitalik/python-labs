@@ -18,6 +18,13 @@ export const COIN_NAMES = { wood: 'деревʼяна', tin: 'оловʼяна',
 export const STATUSES = { draft: 'чернетка', active: 'активне', archived: 'архів' }
 // window element → game-level function it implies (my-game editor suggestions)
 export const PAIRS = { 'volume-control': 'sound-volume', 'music-toggle': 'background-music' }
+export const ROLES = {
+  player: { icon: '🧍', label: 'гравець' },
+  enemy: { icon: '👾', label: 'ворог' },
+  object: { icon: '📦', label: 'обʼєкт' },
+  pickup: { icon: '💎', label: 'бонус' },
+  static: { icon: '🧱', label: 'статика' },
+}
 
 const hsl = (hex) => { // #rrggbb → [h, s, l]
   const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)

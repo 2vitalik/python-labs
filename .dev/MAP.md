@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T100** · тікетів: 99 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T103** · тікетів: 102 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -103,7 +103,10 @@
 | platform | [T93](platform/.t/T93--my-game-front/plan.md) | ⚙️ | my-game-front | Plan: етап C — перейменування за T92 + фронт «Моєї гри» | 🟢 🟩 |
 | platform | [T94](platform/.t/T94--passport-graph/plan.md) | ⚙️ | passport-graph | Plan: етап D — граф переходів і фініш паспорта | 🟢 🟩 |
 | games | [T95](games/.t/T95-B--mechanics-deep-dive.md) | 🧠 | mechanics-deep-dive | Механіки: глибокий розбір драбини на Танчиках | 🟢 ⬜ |
-| platform | [T96](platform/.t/T96-P--entities-slots-model.md) | 💡 | entities-slots-model | Сутності, слоти, таблиця взаємодій — модель v1 | 🟢 ⬜ |
+| platform | [T96](platform/.t/T96-P--entities-slots-model.md) | 💡 | entities-slots-model | Сутності, слоти, таблиця взаємодій — модель v1 | 🟢 🟩 |
 | games | [T97](games/.t/T97-Q--mechanics-session-questions.md) | ❓ | mechanics-session-questions | Питання сесії механік | 🔴 ⬜ |
-| games | [T98](games/.t/T98-B--ludopedia.md) | 🧠 | ludopedia | Лудопедія: єдина мова опису ігор без синтаксису | 🟢 ⬜ |
+| games | [T98](games/.t/T98-B--ludopedia.md) | 🧠 | ludopedia | Лудопедія: єдина мова опису ігор без синтаксису | 🟢 🟩 |
 | games | [T99](games/.t/T99-Q--ludopedia-questions.md) | ❓ | ludopedia-questions | Питання по лудопедії | 🔴 ⬜ |
+| .rounds | [T100](.rounds/.t/T100-R--ludopedia-kickoff.md) | ✔️ | ludopedia-kickoff | Старт будівництва лудопедії | 🟢 🟩 |
+| platform | [T101](platform/.t/T101--ludopedia-core/plan.md) | ⚙️ | ludopedia-core | Лудопедія: сутності, правила, знахідки — план | 🟢 🟩 |
+| games | [T102](games/.t/T102-Q--ludopedia-build-questions.md) | ❓ | ludopedia-build-questions | Питання по першому шматку лудопедії | 🔴 ⬜ |

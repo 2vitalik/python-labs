@@ -8,6 +8,7 @@ import GamesPage from './pages/GamesPage.vue'
 import HomePage from './pages/HomePage.vue'
 import MyGamePage from './pages/MyGamePage.vue'
 import ProfilePage from './pages/ProfilePage.vue'
+import RefsPage from './pages/RefsPage.vue'
 import StudentEditPage from './pages/StudentEditPage.vue'
 import StudentGamePage from './pages/StudentGamePage.vue'
 import StudentsPage from './pages/StudentsPage.vue'
@@ -23,6 +24,7 @@ export default createRouter({
     { path: '/students', component: StudentsPage },
     { path: '/students/:nick', component: StudentGamePage },
     { path: '/students/:nick/edit', component: StudentEditPage },
+    { path: '/refs', component: RefsPage },
     { path: '/games', component: GamesPage },
     { path: '/games/new', component: GameEditPage },
     { path: '/games/:slug', component: GamePage, meta: { wide: true } },

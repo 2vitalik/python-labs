@@ -22,6 +22,9 @@ const active = computed(() => user.value && user.value.status !== 'pending')
           <RouterLink class="nav-link" to="/students">Студенти</RouterLink>
         </li>
         <li v-if="active" class="nav-item">
+          <RouterLink class="nav-link" to="/refs">Знахідки</RouterLink>
+        </li>
+        <li v-if="active" class="nav-item">
           <RouterLink class="nav-link" to="/my/game">Моя гра</RouterLink>
         </li>
         <li v-if="active" class="nav-item">

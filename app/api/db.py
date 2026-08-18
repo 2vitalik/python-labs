@@ -5,6 +5,8 @@ from config import settings
 from models.base_game import BaseGame
 from models.game import Claim, Game, Part
 from models.history import Change
+from models.ref import Ref
+from models.rule import Rule
 from models.task import Task
 from models.user import User
 
@@ -12,4 +14,4 @@ from models.user import User
 async def init_db():
     client = AsyncMongoClient(settings.mongo_uri)
     await init_beanie(client[settings.db_name],
-                      document_models=[User, Change, BaseGame, Task, Game, Part, Claim])
+                      document_models=[User, Change, BaseGame, Task, Game, Part, Claim, Rule, Ref])

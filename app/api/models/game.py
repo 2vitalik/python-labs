@@ -27,9 +27,10 @@ class Game(Document):
 
 class Part(Document):
     game: Annotated[PydanticObjectId, Indexed()]
-    kind: str  # window | menu
+    kind: str  # window | menu | entity
     title: str
     task: str = ""  # window type: catalog task slug tagged "window"
+    role: str = ""  # entity: player | enemy | object | pickup | static
     description: str = ""
     screenshots: list[str] = []  # file names under uploads/<game-id>/
     window: str = ""  # menu: id of the host window part
@@ -43,9 +44,9 @@ class Part(Document):
     def api(self) -> dict:
         return {
             "id": str(self.id), "game": str(self.game), "kind": self.kind, "title": self.title,
-            "task": self.task, "description": self.description, "screenshots": self.screenshots,
-            "window": self.window, "items": self.items, "order": self.order,
-            "created_at": self.created_at.isoformat(),
+            "task": self.task, "role": self.role, "description": self.description,
+            "screenshots": self.screenshots, "window": self.window, "items": self.items,
+            "order": self.order, "created_at": self.created_at.isoformat(),
         }
 
 

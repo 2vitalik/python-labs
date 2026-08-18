@@ -6,6 +6,7 @@ import uploads
 from deps import active_user
 from models.game import Claim, Game, Part
 from models.history import record, record_delete, record_new
+from models.rule import ROLES, Rule
 from models.task import Task
 from models.user import Status, User
 from routes.my_game import my_game
@@ -14,9 +15,10 @@ router = APIRouter(prefix="/api/my/game/parts")
 
 
 class PartIn(BaseModel):
-    kind: str = ""  # window | menu; fixed after creation
+    kind: str = ""  # window | menu | entity; fixed after creation
     title: str
     task: str = ""  # window type: catalog slug tagged "window"
+    role: str = ""  # entity role from the ROLES dictionary
     description: str = ""
     window: str = ""  # menu: host window part id
     items: list[dict] = []
@@ -63,9 +65,14 @@ async def clean_menu(data: PartIn, game: Game) -> dict:
     return {"window": data.window, "items": items}
 
 
+def check_role(role: str) -> None:
+    if role not in ROLES:
+        raise HTTPException(422, "Роль сутності — зі словника.")
+
+
 @router.post("")
 async def create_part(data: PartIn, game: Game = Depends(my_game), user: User = Depends(active_user)):
-    if data.kind not in ("window", "menu"):
+    if data.kind not in ("window", "menu", "entity"):
         raise HTTPException(422, "Невідомий тип обʼєкта.")
     d = {"game": game.id, "kind": data.kind, "title": data.title.strip(),
          "description": data.description, "order": data.order}
@@ -74,6 +81,9 @@ async def create_part(data: PartIn, game: Game = Depends(my_game), user: User = 
     if data.kind == "window":
         await check_window_type(data.task, user)
         d["task"] = data.task
+    elif data.kind == "entity":
+        check_role(data.role)
+        d["role"] = data.role
     else:
         d |= await clean_menu(data, game)
     part = Part(**d)
@@ -95,6 +105,9 @@ async def update_part(id: PydanticObjectId, data: PartIn, game: Game = Depends(m
         raise HTTPException(422, "Назва — обовʼязкова.")
     if part.kind == "menu":
         d |= await clean_menu(data, game)
+    elif part.kind == "entity":
+        check_role(data.role)
+        d["role"] = data.role
     await record(part, d, actor=user.email)
     return part.api()
 
@@ -104,6 +117,9 @@ async def delete_part(id: PydanticObjectId, game: Game = Depends(my_game), user:
     part = await get_part(id, game)
     for claim in await Claim.find(Claim.game == game.id, Claim.part == str(part.id)).to_list():
         await record_delete(claim, actor=user.email)
+    for rule in await Rule.find(Rule.game == game.id).to_list():  # a sentence loses its subject
+        if rule.uses(str(part.id)):
+            await record_delete(rule, actor=user.email)
     for name in part.screenshots:
         uploads.drop_shot(str(game.id), name)
     if part.kind == "window":  # strip dangling references from menus

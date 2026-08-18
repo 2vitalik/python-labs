@@ -6,7 +6,8 @@ import { getStudentGame } from '../api.js'
 import CoinBadge from '../components/CoinBadge.vue'
 import GameGraph from '../components/GameGraph.vue'
 import Md from '../components/Md.vue'
-import { COINS, games, loadCatalog } from '../catalog.js'
+import RuleRow from '../components/RuleRow.vue'
+import { COINS, ROLES, games, loadCatalog } from '../catalog.js'
 
 const nick = useRoute().params.nick
 const data = ref(null)
@@ -15,6 +16,7 @@ const COIN_ORDER = ['crown', 'gold', 'silver', 'bronze', 'tin', 'wood']
 
 const windows = computed(() => data.value.parts.filter((p) => p.kind === 'window'))
 const menus = computed(() => data.value.parts.filter((p) => p.kind === 'menu'))
+const entities = computed(() => data.value.parts.filter((p) => p.kind === 'entity'))
 const claimsOf = (id) => data.value.claims.filter((c) => c.part === id && c.task !== partById(id)?.task)
 const gameClaims = computed(() => data.value.claims.filter((c) => !c.part))
 const partById = (id) => data.value.parts.find((p) => p.id === id)
@@ -61,7 +63,8 @@ onMounted(async () => {
         <span>{{ data.student.name }}</span>
         <span v-if="data.student.group" class="small">· {{ data.student.group }}</span>
         <span class="small ms-auto">
-          вікон: {{ windows.length }} · меню: {{ menus.length }} · заявок: {{ data.claims.length }}
+          вікон: {{ windows.length }} · меню: {{ menus.length }} · сутностей: {{ entities.length }} ·
+          правил: {{ data.rules.length }} · заявок: {{ data.claims.length }}
           <span v-if="coinSum.length" title="Заявлено монеток — довідково, без зарахування">
             · <span v-for="c in coinSum" :key="c.coin" class="text-nowrap"> {{ COINS[c.coin] }}×{{ c.n }}</span>
           </span>
@@ -132,6 +135,38 @@ onMounted(async () => {
             </div>
           </div>
         </div>
+      </div>
+
+      <h2 v-if="entities.length" class="h5">Сутності</h2>
+      <div v-if="entities.length" class="row g-3 mb-4">
+        <div v-for="p in entities" :key="p.id" class="col-md-6">
+          <div class="card h-100">
+            <div class="card-body vstack gap-2">
+              <div class="d-flex align-items-center gap-2">
+                <span class="fw-semibold">{{ ROLES[p.role]?.icon }} {{ p.title }}</span>
+                <span class="badge text-bg-light border text-secondary fw-normal">{{ ROLES[p.role]?.label || p.role }}</span>
+              </div>
+              <div v-if="p.description" class="text-secondary small">{{ p.description }}</div>
+              <div v-if="p.screenshots.length" class="d-flex flex-wrap gap-2">
+                <a v-for="s in p.screenshots" :key="s" :href="`/api/uploads/${p.game}/${s}`" target="_blank">
+                  <img :src="`/api/uploads/${p.game}/${s}`" class="rounded border shot">
+                </a>
+              </div>
+              <div v-if="claimsOf(p.id).length" class="d-flex flex-wrap gap-1">
+                <span v-for="c in claimsOf(p.id)" :key="c.id" :title="c.note"
+                      class="badge rounded-pill text-bg-light border text-dark fw-normal">
+                  <CoinBadge :coin="card(c.task)?.coin" :amount="card(c.task)?.amount" /> {{ card(c.task)?.title || c.task }}
+                  <a v-if="c.link" :href="c.link" target="_blank" class="text-decoration-none">🔗</a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 v-if="data.rules.length" class="h5">Правила</h2>
+      <div v-if="data.rules.length" class="vstack gap-1 mb-4">
+        <RuleRow v-for="r in data.rules" :key="r.id" :rule="r" :parts="data.parts" />
       </div>
 
       <h2 v-if="gameClaims.length" class="h5">Заявки рівня гри</h2>
