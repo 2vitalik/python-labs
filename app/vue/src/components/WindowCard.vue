@@ -32,7 +32,8 @@ async function run(fn) {
 }
 const save = () => run(async () => { await putPart(props.part.id, form); edit.value = false })
 const remove = () => run(() => deletePart(props.part.id))
-const addClaim = (task, part = props.part.id) => run(() => postClaim({ task, part }))
+const addClaim = (task, params) => run(() => postClaim({ task, part: props.part.id, params }))
+const addHint = (task) => run(() => postClaim({ task }))  // game-level, no params
 </script>
 
 <template>
@@ -64,7 +65,7 @@ const addClaim = (task, part = props.part.id) => run(() => postClaim({ task, par
       <ClaimPicker placeholder="＋ елемент чи заявка на цьому вікні…" @pick="addClaim" />
       <div v-for="slug in hints" :key="slug" class="small text-secondary">
         💡 Є елемент — заяви й функцію
-        <a href="#" @click.prevent="addClaim(slug, '')">«{{ info(slug)?.title || slug }}»</a> (рівень гри)
+        <a href="#" @click.prevent="addHint(slug)">«{{ info(slug)?.title || slug }}»</a> (рівень гри)
       </div>
       <div v-if="error" class="text-danger small">{{ error }}</div>
     </div>

@@ -25,7 +25,7 @@ async function run(fn) {
 }
 const save = () => run(async () => { await putPart(props.part.id, form); edit.value = false })
 const remove = () => run(() => deletePart(props.part.id))
-const addClaim = (task) => run(() => postClaim({ task, part: props.part.id }))
+const addClaim = (task, params) => run(() => postClaim({ task, part: props.part.id, params }))
 </script>
 
 <template>

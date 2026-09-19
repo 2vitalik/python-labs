@@ -22,8 +22,8 @@ def dump(doc, exclude=("id", "created_at")) -> dict:
     return {k: v for k, v in d.items() if not (v == "" or v == [] or v == {})}
 
 
-def task_node(t) -> dict | str:  # dict fallback for multi-line descriptions
-    if "\n" in t.description:
+def task_node(t) -> dict | str:  # dict fallback for multi-line descriptions and slot specs
+    if "\n" in t.description or t.slots:
         return dump(t, exclude=("id", "created_at", "slug", "zone", "subzone", "order", "parent"))
     return render_line(t)
 

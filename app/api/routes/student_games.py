@@ -12,7 +12,7 @@ router = APIRouter(prefix="/api/students")
 async def task_index(slugs: set[str]) -> dict:
     """Minimal card info for rendering claims/parts, drafts included (viewer may not see them in the catalog)."""
     tasks = await Task.find({"slug": {"$in": list(slugs)}}).to_list()
-    return {t.slug: {"title": t.title, "coin": t.coin, "amount": t.amount,
+    return {t.slug: {"title": t.title, "coin": t.coin, "amount": t.amount, "slots": t.slots,
                      "zone": t.zone, "subzone": t.subzone, "status": t.status} for t in tasks}
 
 

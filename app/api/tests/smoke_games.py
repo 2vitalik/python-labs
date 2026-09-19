@@ -136,6 +136,21 @@ with TestClient(main.app) as c:
     r = c.get("/api/students/stud/game").json()
     check("cascade: entity rules gone", r["rules"] == [] and any(p["id"] == player for p in r["parts"]))
 
+    r = c.post("/api/my/claims", json={"task": "spawn-schedule", "params": {"every": 20, "max_alive": 4}})
+    check("claim with params", r.status_code == 200 and r.json()["params"] == {"every": 20, "max_alive": 4}, r.text)
+    spawn_claim = r.json()["id"]
+    check("params: missing required → 422", c.post("/api/my/claims", json={"task": "collect-quota"}).status_code == 422)
+    check("params: wrong type → 422",
+          c.post("/api/my/claims", json={"task": "time-out", "params": {"limit": "довго"}}).status_code == 422)
+    check("params: unknown key → 422",
+          c.post("/api/my/claims", json={"task": "event-points", "params": {"x": 1}}).status_code == 422)
+    r = c.put(f"/api/my/claims/{spawn_claim}", json={"params": {"every": 30}})
+    check("params update", r.status_code == 200 and r.json()["params"] == {"every": 30}, r.text)
+    r = c.get("/api/students/stud/game").json()
+    check("passport: slots on card + params on claim",
+          r["tasks"]["spawn-schedule"]["slots"][0]["key"] == "every"
+          and next(cl for cl in r["claims"] if cl["task"] == "spawn-schedule")["params"] == {"every": 30})
+
     r = c.post("/api/refs", json={"url": "https://youtu.be/dQw4w9WgXcQ", "note": "патерн погоні"})
     check("ref create", r.status_code == 200, r.text)
     ref = r.json()["id"]
@@ -153,6 +168,14 @@ with TestClient(main.app) as c:
     check("admin: own game, custom base", r.status_code == 200, r.text)
     r = c.post("/api/my/game/parts", json={"kind": "window", "task": "settings-window", "title": "Налаштування"})
     check("admin: draft type allowed", r.status_code == 200, r.text)
+    check("params: choice not in options → 422",
+          c.post("/api/my/claims", json={"task": "maze-generation", "params": {"algo": "bfs"}}).status_code == 422)
+    check("params: choice ok",
+          c.post("/api/my/claims", json={"task": "maze-generation", "params": {"algo": "dfs"}}).status_code == 200)
+    check("params: bool not bool → 422",
+          c.post("/api/my/claims", json={"task": "enemy-waves", "params": {"waves": 5, "final_wave": "так"}}).status_code == 422)
+    check("params: bool ok",
+          c.post("/api/my/claims", json={"task": "enemy-waves", "params": {"waves": 5, "final_wave": True}}).status_code == 200)
     r = c.get("/api/students").json()
     check("admin gallery: emails + pending visible", any(s.get("email") for s in r)
           and any(s["nick"] == "waiting" for s in r))

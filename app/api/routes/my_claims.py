@@ -16,8 +16,35 @@ router = APIRouter(prefix="/api/my/claims")
 class ClaimIn(BaseModel):
     task: str = ""
     part: str = ""
+    params: dict = {}
     note: str = ""
     link: str = ""
+
+
+def clean_params(task: Task, params: dict) -> dict:
+    specs = {s["key"]: s for s in task.slots}
+    if unknown := set(params) - set(specs):
+        raise HTTPException(422, f"Картка не має параметра «{unknown.pop()}».")
+    out = {}
+    for key, s in specs.items():
+        v = params.get(key)
+        if isinstance(v, str):
+            v = v.strip()
+        if v is None or v == "":
+            if s.get("required"):
+                raise HTTPException(422, f"Потрібен параметр «{s['label']}».")
+            continue
+        kind = s.get("type", "int")
+        if kind == "int" and (not isinstance(v, int) or isinstance(v, bool)):
+            raise HTTPException(422, f"«{s['label']}» — число.")
+        if kind == "bool" and not isinstance(v, bool):
+            raise HTTPException(422, f"«{s['label']}» — так/ні.")
+        if kind == "choice" and v not in s.get("options", []):
+            raise HTTPException(422, f"«{s['label']}» — зі списку варіантів.")
+        if kind == "text" and not isinstance(v, str):
+            raise HTTPException(422, f"«{s['label']}» — текст.")
+        out[key] = v
+    return out
 
 
 async def get_claim(id: PydanticObjectId, game: Game) -> Claim:
@@ -38,7 +65,7 @@ async def create_claim(data: ClaimIn, game: Game = Depends(my_game), user: User 
         raise HTTPException(422, "Обʼєкт не знайдено.")
     if await Claim.find_one(Claim.game == game.id, Claim.task == data.task, Claim.part == data.part):
         raise HTTPException(409, "Така заявка вже є.")
-    claim = Claim(game=game.id, task=data.task, part=data.part,
+    claim = Claim(game=game.id, task=data.task, part=data.part, params=clean_params(task, data.params),
                   note=data.note.strip(), link=data.link.strip())
     await claim.insert()
     await record_new(claim, actor=user.email)
@@ -49,7 +76,11 @@ async def create_claim(data: ClaimIn, game: Game = Depends(my_game), user: User 
 async def update_claim(id: PydanticObjectId, data: ClaimIn, game: Game = Depends(my_game),
                        user: User = Depends(active_user)):
     claim = await get_claim(id, game)
-    await record(claim, {"note": data.note.strip(), "link": data.link.strip()}, actor=user.email)
+    task = await Task.find_one(Task.slug == claim.task)
+    patch = {"note": data.note.strip(), "link": data.link.strip()}
+    if task:  # card gone from the catalog → params frozen as claimed
+        patch["params"] = clean_params(task, data.params)
+    await record(claim, patch, actor=user.email)
     return claim.api()
 
 

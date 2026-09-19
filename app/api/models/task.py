@@ -17,6 +17,7 @@ class Task(Document):
     amount: float = 1
     max_count: int = 1  # 1 = once · N = N times · 0 = unlimited (extra levels etc.)
     parent: str = ""  # slug of the family card; children are full tasks, one level deep
+    slots: list[dict] = []  # claim param specs {key, label, type: int|choice|bool|text, options?, unit?, required?}
     status: str = "draft"  # draft | active | archived
     order: int = 0  # manual order within subzone
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
@@ -29,5 +30,5 @@ class Task(Document):
             "id": str(self.id), "slug": self.slug, "title": self.title, "description": self.description,
             "zone": self.zone, "subzone": self.subzone, "tags": self.tags, "games": self.games,
             "coin": self.coin, "amount": self.amount, "max_count": self.max_count,
-            "parent": self.parent, "status": self.status, "order": self.order,
+            "parent": self.parent, "slots": self.slots, "status": self.status, "order": self.order,
         }

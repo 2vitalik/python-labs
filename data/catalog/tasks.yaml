@@ -4,19 +4,102 @@ entities:
   - shoot-modes: '📎 Режими стрільби ✍️ — Сімʼя: вперед / черга / дріб / cooldown.'
     children:
     - shoot-forward: 📎 Вперед ✍️
-    - shoot-burst: 📎 Черга ✍️
-    - shoot-spread: 📎 Дріб ✍️
-    - shoot-cooldown: 📎 Cooldown ✍️
+    - shoot-burst:
+        title: Черга
+        coin: tin
+        amount: 1.0
+        max_count: 1
+        slots:
+        - key: shots
+          label: Снарядів у черзі
+          type: int
+          required: true
+        status: draft
+    - shoot-spread:
+        title: Дріб
+        coin: tin
+        amount: 1.0
+        max_count: 1
+        slots:
+        - key: rays
+          label: Напрямків
+          type: int
+          required: true
+        status: draft
+    - shoot-cooldown:
+        title: Cooldown
+        coin: tin
+        amount: 1.0
+        max_count: 1
+        slots:
+        - key: cooldown
+          label: Cooldown
+          type: int
+          unit: тіків
+          required: true
+        status: draft
   - projectile-collision: 📎 Зіткнення снарядів ✍️ — Анігіляція чи проліт.
-  - blast-wave: 🥉 Вибухова хвиля [bomberman] ✍️ — Хрест на N клітин.
-  - chain-detonation: 🥉 Ланцюгова детонація [bomberman] ✍️ — Вибух підриває сусідні бомби.
+  - blast-wave:
+      title: Вибухова хвиля
+      description: Хрест на N клітин.
+      games:
+      - bomberman
+      coin: bronze
+      amount: 1.0
+      max_count: 1
+      slots:
+      - key: radius
+        label: Радіус
+        type: int
+        unit: клітин
+        required: true
+      status: draft
+  - chain-detonation:
+      title: Ланцюгова детонація
+      description: Вибух підриває сусідні бомби.
+      games:
+      - bomberman
+      coin: bronze
+      amount: 1.0
+      max_count: 1
+      slots:
+      - key: delay
+        label: Затримка
+        type: int
+        unit: тіків
+      status: draft
   - piece-capture: 📎 Взяття фігури [chess] ✍️ — Зняття з поля при ході на зайняту клітину.
   - melee-vs-ranged: 🥉 Атака впритул проти дистанційної ✍️ — Правила по типу ворога.
   death:
   - touch-death: 🌱 Смерть від дотику ✍️ — Ворог/пастка вбиває.
   - environment-death: 📎 Смерть від середовища ✍️ — Вода без колоди, вибух, камінь згори.
-  - respawn: 📎 Респавн ✍️ — Повернення після смерті (дім привидів, checkpoint).
-  - timed-despawn: 🌱 Зникнення за часом [frogger] ✍️ — Тимчасові предмети і платформи.
+  - respawn:
+      title: Респавн
+      description: Повернення після смерті (дім привидів, checkpoint).
+      coin: tin
+      amount: 1.0
+      max_count: 1
+      slots:
+      - key: delay
+        label: Затримка
+        type: int
+        unit: тіків
+      status: draft
+  - timed-despawn:
+      title: Зникнення за часом
+      description: Тимчасові предмети і платформи.
+      games:
+      - frogger
+      coin: wood
+      amount: 1.0
+      max_count: 1
+      slots:
+      - key: lifetime
+        label: Живе
+        type: int
+        unit: тіків
+        required: true
+      status: draft
   - death-animation: 📎 Анімація смерті ✍️ — Ефект перед зникненням.
   interact:
   - item-pickup: 📎 Збирання ✍️ — Предмет зникає, ефект гравцеві.
@@ -53,22 +136,98 @@ entities:
     - chase-greedy: 🥉 Жадібна (крок у бік цілі)
     - chase-bfs: 🥇 Пошук шляху BFS/A*
     - chase-double-move: 🥉 Два ходи ворога на один хід гравця (Theseus)
-  - pattern-automaton: 🥉 Патерн-автомат ✍️ — Жорсткий цикл ходів (слайм квадратом, скелет через такт).
+  - pattern-automaton:
+      title: Патерн-автомат
+      description: Жорсткий цикл ходів (слайм квадратом, скелет через такт).
+      coin: bronze
+      amount: 1.0
+      max_count: 1
+      slots:
+      - key: pattern
+        label: Цикл ходів
+        type: text
+        required: true
+      status: draft
   - row-conveyor: 🥉 Конвеєрний рух ряду [frogger, pvz-lite] ✍️ — Вся смуга зсувається разом.
   - body-queue: 🥉 Тіло-черга [snake] — Хвіст повторює шлях голови.
   spawn:
   - spawn-random-cell: 🌱 Спавн у випадковій клітині — З перевіркою, що клітина вільна.
-  - spawn-schedule: 📎 Спавн за розкладом — Кожні N тіків / за подією.
+  - spawn-schedule:
+      title: Спавн за розкладом
+      description: Кожні N тіків / за подією.
+      coin: tin
+      amount: 1.0
+      max_count: 1
+      slots:
+      - key: every
+        label: Кожні
+        type: int
+        unit: тіків
+        required: true
+      - key: max_alive
+        label: Макс. на полі
+        type: int
+      status: active
   - spawn-points: 🌱 Точки спавну [pac-man] — Фіксовані місця рівня (дім привидів).
   - spawn-animation: 📎 Поява з анімацією ✍️ — Сутність «проявляється» кілька тіків.
   state:
-  - hp-damage: 📎 HP і шкода ✍️ — Замість миттєвої смерті.
+  - hp-damage:
+      title: HP і шкода
+      description: Замість миттєвої смерті.
+      coin: tin
+      amount: 1.0
+      max_count: 1
+      slots:
+      - key: hp
+        label: HP
+        type: int
+        required: true
+      - key: who
+        label: Кого
+        type: text
+      status: draft
   - inventory: 🥉 Інвентар ✍️ — Предмети з застосуванням.
     children:
     - inventory-items: 🥉 Предмети з застосуванням ✍️
-    - inventory-limit: 🥈 Ліміт місткості ✍️
-    - inventory-duration: 🥉 Час дії ✍️
-  - temporary-modes: 🥉 Тимчасові режими [pac-man] ✍️ — Сила після енерджайзера, щит, переляк ворогів.
+    - inventory-limit:
+        title: Ліміт місткості
+        coin: silver
+        amount: 1.0
+        max_count: 1
+        slots:
+        - key: capacity
+          label: Місткість
+          type: int
+          unit: предметів
+          required: true
+        status: draft
+    - inventory-duration:
+        title: Час дії
+        coin: bronze
+        amount: 1.0
+        max_count: 1
+        slots:
+        - key: duration
+          label: Час дії
+          type: int
+          unit: тіків
+          required: true
+        status: draft
+  - temporary-modes:
+      title: Тимчасові режими
+      description: Сила після енерджайзера, щит, переляк ворогів.
+      games:
+      - pac-man
+      coin: bronze
+      amount: 1.0
+      max_count: 1
+      slots:
+      - key: duration
+        label: Тривалість
+        type: int
+        unit: тіків
+        required: true
+      status: draft
   - speed-per-type: 📎 Швидкість за типом ✍️ — Різний темп сутностей (тіки через раз).
   - multi-cell-size: 🥇 Розмір понад клітину ⭐ ✍️ — Обʼєкт 1×2/2×2, рух уздовж осі (Rush Hour).
   - orientation-state: 🥇 Орієнтація як стан ⭐ ✍️ — Обʼєкт перекочується, боки різні (Sausage Roll).
@@ -92,20 +251,70 @@ game-logic:
     - shop-buyback: 📎 Продаж назад ✍️ — Повернути куплене за частину ціни.
   - in-round-upgrades: 📎 Апгрейди в раунді [bomberman] ✍️ — Радіус вибуху, кількість бомб.
   lose:
-  - player-death: 🌱 Смерть гравця — З варіантом кількох життів.
-  - time-out: 🌱 Вичерпано час [bomberman] — Таймер рівня.
+  - player-death:
+      title: Смерть гравця
+      description: З варіантом кількох життів.
+      coin: wood
+      amount: 1.0
+      max_count: 1
+      slots:
+      - key: lives
+        label: Життів
+        type: int
+      status: active
+  - time-out:
+      title: Вичерпано час
+      description: Таймер рівня.
+      games:
+      - bomberman
+      coin: wood
+      amount: 1.0
+      max_count: 1
+      slots:
+      - key: limit
+        label: Ліміт
+        type: int
+        unit: секунд
+        required: true
+      status: active
   - enemy-reached-base: 🌱 Ворог дійшов до краю/бази [pvz-lite, battle-city] ✍️
   - no-moves-left: 📎 Нема ходів [2048, sokoban] — Глухий кут.
   - wrong-mark-lose: 📎 Помилкова розмітка [paper-puzzles] ✍️ — Поразка при невірно заповненій клітині (режим «like paper»).
   opponent:
   - hot-seat: 📎 Hot-seat на двох [chess] ✍️ — Черга ходів за однією клавіатурою.
   - turn-enforcement: 🌱 Заборона позачергового ходу [chess] ✍️ — Контроль сторони.
-  - move-timer: 📎 Таймер ходу / шаховий годинник [chess] ✍️
+  - move-timer:
+      title: Таймер ходу / шаховий годинник
+      games:
+      - chess
+      coin: tin
+      amount: 1.0
+      max_count: 1
+      slots:
+      - key: per_move
+        label: На хід
+        type: int
+        unit: секунд
+        required: true
+      status: draft
   - ai-opponent: '📎 AI-суперник [chess] ✍️ — Сімʼя за силою: випадковий → жадібний → minimax.'
     children:
     - ai-random: 📎 Випадковий [chess] ✍️
     - ai-greedy: 🥉 Жадібний [chess] ✍️
-    - ai-minimax: 🥇 Minimax [chess] ✍️
+    - ai-minimax:
+        title: Minimax
+        games:
+        - chess
+        coin: gold
+        amount: 1.0
+        max_count: 1
+        slots:
+        - key: depth
+          label: Глибина
+          type: int
+          unit: ходів
+          required: true
+        status: draft
   - realtime-ai: 🥇 AI в реальному часі [snake] ⭐ ✍️ — Виживання проти Tron-змійки.
   save:
   - save-game: 🥈 Збереження гри — Продовжити пізніше.
@@ -120,12 +329,41 @@ game-logic:
   - time-bonus: 🌱 Бонус за час — Швидше = більше.
   - score-records: 📎 Рекорди — Локальна таблиця найкращих.
   waves:
-  - enemy-waves: 🥉 Хвилі ворогів [pvz-lite] ✍️ — Розклад появи, фінальна хвиля.
+  - enemy-waves:
+      title: Хвилі ворогів
+      description: Розклад появи, фінальна хвиля.
+      games:
+      - pvz-lite
+      coin: bronze
+      amount: 1.0
+      max_count: 1
+      slots:
+      - key: waves
+        label: Хвиль
+        type: int
+        required: true
+      - key: final_wave
+        label: Фінальна хвиля
+        type: bool
+      status: draft
   - reinforcements: 🌱 Підкріплення [battle-city] ✍️ — +1 ворог за знищеного.
   - progress-acceleration: 🌱 Прискорення прогресу [snake, pac-man] ✍️ — Темп росте з рівнем/довжиною.
   win:
   - collect-all: 🌱 Зібрати все [pac-man, lode-runner] — Точки/призи/золото.
-  - collect-quota: 🌱 Зібрати квоту [boulder-dash] — N алмазів відкривають вихід.
+  - collect-quota:
+      title: Зібрати квоту
+      description: N алмазів відкривають вихід.
+      games:
+      - boulder-dash
+      coin: wood
+      amount: 1.0
+      max_count: 1
+      slots:
+      - key: quota
+        label: Квота
+        type: int
+        required: true
+      status: active
   - reach-exit: 🌱 Дійти до фінішу [maze] — Клітина виходу.
   - destroy-all-enemies: 🌱 Знищити всіх ворогів [battle-city]
   - all-on-targets: 🌱 Усі обʼєкти на цілях [sokoban] ✍️
@@ -152,7 +390,24 @@ levels:
   - map-validation: 📎 Валідація мапи ✍️ — Зрозуміла помилка на битому файлі.
   - level-metadata: 🌱 Метадані рівня — Назва, автор, складність у заголовку файла.
   generation:
-  - maze-generation: 🥇 Генерація лабіринту [maze] ⭐ ✍️ — Прохідний лабіринт (DFS/Прима).
+  - maze-generation:
+      title: Генерація лабіринту
+      description: Прохідний лабіринт (DFS/Прима).
+      tags:
+      - algo
+      games:
+      - maze
+      coin: gold
+      amount: 1.0
+      max_count: 1
+      slots:
+      - key: algo
+        label: Алгоритм
+        type: choice
+        options:
+        - dfs
+        - prim
+      status: draft
   - mines-after-first-click: 📎 Розкидання мін після першого кліку [minesweeper] ✍️ — Перший клік завжди безпечний.
   - dungeon-generation: 🥇 Генерація підземель ⭐ ✍️ — Кімнати + коридори (роглайк).
   - unique-puzzle-generation: 👑 Генерація пазла з унікальним розвʼязком [paper-puzzles] ⭐ ✍️ — Головне золото пазл-гілки.

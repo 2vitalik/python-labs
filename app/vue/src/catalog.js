@@ -26,6 +26,15 @@ export const ROLES = {
   static: { icon: '🧱', label: 'статика' },
 }
 
+// claim params as text: "Кожні 20 тіків · Фінальна хвиля"
+export function paramsText(card, params) {
+  if (!card?.slots?.length || !params) return ''
+  return card.slots
+    .filter((s) => params[s.key] || params[s.key] === 0)
+    .map((s) => (s.type === 'bool' ? s.label : `${s.label} ${params[s.key]}${s.unit ? ` ${s.unit}` : ''}`))
+    .join(' · ')
+}
+
 const hsl = (hex) => { // #rrggbb → [h, s, l]
   const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)
   const max = Math.max(r, g, b), min = Math.min(r, g, b), d = max - min, l = (max + min) / 2

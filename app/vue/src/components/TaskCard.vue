@@ -40,6 +40,9 @@ const range = computed(() => {
         <RouterLink v-if="user?.status === 'admin'" :to="`/tasks/${task.slug}/edit`"
                     class="ms-auto text-decoration-none" title="Редагувати">✏️</RouterLink>
       </div>
+      <div v-if="task.slots?.length" class="small text-secondary mb-2" title="параметри, які вказуються в заявці">
+        ⚙️ {{ task.slots.map((s) => s.label + (s.unit ? ` (${s.unit})` : '')).join(' · ') }}
+      </div>
       <TaskCard v-for="k in kids" :key="k.id" :task="k" />
       <div v-if="task.max_count !== 1 || task.games.length"
            class="d-flex gap-2 flex-wrap align-items-center small mt-2">

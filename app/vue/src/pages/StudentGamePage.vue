@@ -7,7 +7,7 @@ import CoinBadge from '../components/CoinBadge.vue'
 import GameGraph from '../components/GameGraph.vue'
 import Md from '../components/Md.vue'
 import RuleRow from '../components/RuleRow.vue'
-import { COINS, ROLES, games, loadCatalog } from '../catalog.js'
+import { COINS, ROLES, games, loadCatalog, paramsText } from '../catalog.js'
 
 const nick = useRoute().params.nick
 const data = ref(null)
@@ -21,6 +21,7 @@ const claimsOf = (id) => data.value.claims.filter((c) => c.part === id && c.task
 const gameClaims = computed(() => data.value.claims.filter((c) => !c.part))
 const partById = (id) => data.value.parts.find((p) => p.id === id)
 const card = (slug) => data.value.tasks[slug]
+const ptext = (c) => paramsText(card(c.task), c.params)
 const baseTitle = computed(() => games.value.find((g) => g.slug === data.value.game.base_game)?.title)
 // claimed coins by type — informational, no grading math yet
 const coinSum = computed(() => {
@@ -102,6 +103,7 @@ onMounted(async () => {
                 <span v-for="c in claimsOf(p.id)" :key="c.id" :title="c.note"
                       class="badge rounded-pill text-bg-light border text-dark fw-normal">
                   <CoinBadge :coin="card(c.task)?.coin" :amount="card(c.task)?.amount" /> {{ card(c.task)?.title || c.task }}
+                  <span v-if="ptext(c)" class="text-secondary">· {{ ptext(c) }}</span>
                   <a v-if="c.link" :href="c.link" target="_blank" class="text-decoration-none">🔗</a>
                 </span>
               </div>
@@ -156,6 +158,7 @@ onMounted(async () => {
                 <span v-for="c in claimsOf(p.id)" :key="c.id" :title="c.note"
                       class="badge rounded-pill text-bg-light border text-dark fw-normal">
                   <CoinBadge :coin="card(c.task)?.coin" :amount="card(c.task)?.amount" /> {{ card(c.task)?.title || c.task }}
+                  <span v-if="ptext(c)" class="text-secondary">· {{ ptext(c) }}</span>
                   <a v-if="c.link" :href="c.link" target="_blank" class="text-decoration-none">🔗</a>
                 </span>
               </div>
@@ -174,6 +177,7 @@ onMounted(async () => {
         <span v-for="c in gameClaims" :key="c.id" :title="c.note"
               class="badge rounded-pill text-bg-light border text-dark fw-normal">
           <CoinBadge :coin="card(c.task)?.coin" :amount="card(c.task)?.amount" /> {{ card(c.task)?.title || c.task }}
+          <span v-if="ptext(c)" class="text-secondary">· {{ ptext(c) }}</span>
           <a v-if="c.link" :href="c.link" target="_blank" class="text-decoration-none">🔗</a>
         </span>
       </div>

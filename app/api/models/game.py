@@ -54,6 +54,7 @@ class Claim(Document):
     game: Annotated[PydanticObjectId, Indexed()]
     task: str  # catalog task slug
     part: str = ""  # Part id; "" = game-level claim
+    params: dict = {}  # values for the card's slots {key: value}
     note: str = ""
     link: str = ""  # GitHub link (commit-pin normalization — later phase)
     status: str = "claimed"  # lifecycle grows with reports node (T10)
@@ -65,6 +66,6 @@ class Claim(Document):
     def api(self) -> dict:
         return {
             "id": str(self.id), "game": str(self.game), "task": self.task, "part": self.part,
-            "note": self.note, "link": self.link, "status": self.status,
+            "params": self.params, "note": self.note, "link": self.link, "status": self.status,
             "created_at": self.created_at.isoformat(),
         }

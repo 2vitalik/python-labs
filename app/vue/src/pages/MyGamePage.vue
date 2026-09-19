@@ -79,7 +79,7 @@ async function addWindow() {
   }
 }
 const addMenu = () => run(() => postPart({ kind: 'menu', title: 'Нове меню' }))
-const addGameClaim = (task) => run(() => postClaim({ task }))
+const addGameClaim = (task, params) => run(() => postClaim({ task, params }))
 async function addEntity() {
   error.value = ''
   try {

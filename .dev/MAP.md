@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T103** · тікетів: 102 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T105** · тікетів: 104 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -110,3 +110,5 @@
 | .rounds | [T100](.rounds/.t/T100-R--ludopedia-kickoff.md) | ✔️ | ludopedia-kickoff | Старт будівництва лудопедії | 🟢 🟩 |
 | platform | [T101](platform/.t/T101--ludopedia-core/plan.md) | ⚙️ | ludopedia-core | Лудопедія: сутності, правила, знахідки — план | 🟢 🟩 |
 | games | [T102](games/.t/T102-Q--ludopedia-build-questions.md) | ❓ | ludopedia-build-questions | Питання по першому шматку лудопедії | 🔴 ⬜ |
+| platform | [T103](platform/.t/T103--ludopedia-slots/plan.md) | ⚙️ | ludopedia-slots | Лудопедія: слоти параметрів (E2) + топ-20 (E4) — план | 🟢 🟩 |
+| games | [T104](games/.t/T104-C--ludopedia-d3-d6.md) | 🔆 | ludopedia-d3-d6 | Лудопедія: що таке Д3–Д6 людською мовою | 🟢 🟩 |
