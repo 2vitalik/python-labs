@@ -1,8 +1,9 @@
 import re
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 from pydantic import BaseModel
 
+from bot import alerts
 from deps import active_user
 from models.history import record
 from models.user import User
@@ -30,6 +31,7 @@ def clean(data: BaseModel) -> dict:
 
 
 @router.put("/api/profile")
-async def update_profile(data: ProfileIn, user: User = Depends(active_user)):
-    await record(user, clean(data), actor=user.email)
+async def update_profile(data: ProfileIn, tasks: BackgroundTasks, user: User = Depends(active_user)):
+    changes = await record(user, clean(data), actor=user.email)
+    tasks.add_task(alerts.profile, user, changes)
     return user.api()

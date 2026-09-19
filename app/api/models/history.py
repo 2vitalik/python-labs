@@ -16,15 +16,16 @@ class Change(Document):
         indexes = ["coll", "doc_id"]
 
 
-async def record(doc: Document, data: dict, actor: str):
-    """Apply `data` to `doc`, saving a diff of what actually changed."""
+async def record(doc: Document, data: dict, actor: str) -> dict:
+    """Apply `data` to `doc`, saving a diff of what actually changed; returns that diff."""
     changes = {k: {"old": getattr(doc, k), "new": v} for k, v in data.items() if getattr(doc, k) != v}
     if not changes:
-        return
+        return {}
     for k, v in data.items():
         setattr(doc, k, v)
     await doc.save()
     await Change(coll=doc.Settings.name, doc_id=doc.id, actor=actor, changes=changes).insert()
+    return changes
 
 
 async def record_new(doc: Document, actor: str):

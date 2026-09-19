@@ -1,7 +1,8 @@
 import secrets
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, BackgroundTasks, Depends
 
+from bot import alerts
 from config import settings
 from deps import active_user, current_user
 from models.history import record
@@ -26,7 +27,8 @@ async def me(user: User | None = Depends(current_user)):
 
 
 @router.delete("/api/me/telegram")
-async def unlink_telegram(user: User = Depends(active_user)):
+async def unlink_telegram(tasks: BackgroundTasks, user: User = Depends(active_user)):
     user.tg_token = ""  # rotate: me_data mints a new one, so the old link is dead
-    await record(user, {"tg_chat_id": None, "tg_username": ""}, actor=user.email)
+    changes = await record(user, {"tg_chat_id": None, "tg_username": ""}, actor=user.email)
+    tasks.add_task(alerts.profile, user, changes)
     return await me_data(user)

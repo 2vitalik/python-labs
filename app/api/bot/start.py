@@ -1,4 +1,4 @@
-from aiogram import Router
+from aiogram import F, Router
 from aiogram.filters import CommandObject, CommandStart
 from aiogram.types import Message
 
@@ -7,6 +7,7 @@ from bot.link import bind, by_token, sync
 from models.user import User
 
 router = Router()
+router.message.filter(F.chat.type == "private")  # in groups the bot only listens to /here
 
 
 @router.message.outer_middleware()

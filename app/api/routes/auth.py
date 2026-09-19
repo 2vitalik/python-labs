@@ -1,7 +1,8 @@
 from authlib.integrations.starlette_client import OAuth
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, BackgroundTasks, Request
 from starlette.responses import RedirectResponse
 
+from bot import alerts
 from config import settings
 from models.history import record_new
 from models.user import Status, User
@@ -27,14 +28,14 @@ async def login(request: Request):
 
 
 @router.get("/callback")
-async def callback(request: Request):
+async def callback(request: Request, tasks: BackgroundTasks):
     token = await oauth.google.authorize_access_token(request)
     info = token["userinfo"]
     if not info.get("email_verified"):
         return RedirectResponse("/?error=verify")
     if info.get("hd") != NURE_DOMAIN and info["email"] not in settings.admin_list:
         return RedirectResponse("/?error=domain")
-    await upsert_user(info)
+    await upsert_user(info, tasks)
     request.session["email"] = info["email"]
     return RedirectResponse("/")
 
@@ -46,14 +47,14 @@ async def logout(request: Request):
 
 
 @router.get("/dev-login")
-async def dev_login(request: Request):
+async def dev_login(request: Request, tasks: BackgroundTasks):
     if settings.fake_user_email:
-        await upsert_user({"email": settings.fake_user_email, "name": "Dev User"})
+        await upsert_user({"email": settings.fake_user_email, "name": "Dev User"}, tasks)
         request.session["email"] = settings.fake_user_email
     return RedirectResponse("/")
 
 
-async def upsert_user(info: dict):
+async def upsert_user(info: dict, tasks: BackgroundTasks):
     email = info["email"]
     user = await User.find_one(User.email == email)
     is_new = user is None
@@ -68,3 +69,4 @@ async def upsert_user(info: dict):
     await user.save()
     if is_new:
         await record_new(user, actor=email)
+        tasks.add_task(alerts.signed_in, user)

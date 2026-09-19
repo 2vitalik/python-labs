@@ -3,10 +3,10 @@ import asyncio
 import logging
 import sys
 
-from aiogram import Bot, Dispatcher
-from aiogram.client.default import DefaultBotProperties
+from aiogram import Dispatcher
 
-from bot.start import router
+from bot import here, start
+from bot.notify import bot
 from config import settings
 from db import init_db
 
@@ -14,11 +14,11 @@ from db import init_db
 async def main():
     logging.basicConfig(level=logging.INFO)
     await init_db()
-    bot = Bot(settings.tg_bot_token, default=DefaultBotProperties(parse_mode="HTML"))
     dp = Dispatcher()
-    dp.include_router(router)
-    logging.info("polling as @%s", (await bot.get_me()).username)
-    await dp.start_polling(bot)
+    dp.include_router(here.router)  # before start: its fallback would swallow /here in private chats
+    dp.include_router(start.router)
+    logging.info("polling as @%s", (await bot().get_me()).username)
+    await dp.start_polling(bot())
 
 
 if not settings.tg_bot_token:

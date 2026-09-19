@@ -22,8 +22,8 @@
 
 ## Telegram-бот
 
-Живе в `app/api/bot/` — та сама база, моделі й `.env`, що й API (тому не окремий пакет). Поки що пустишка: `/start` + привʼязка акаунта deep link-ом з профілю.
+Живе в `app/api/bot/` — та сама база, моделі й `.env`, що й API (тому не окремий пакет). Уміє: `/start` + привʼязка акаунта deep link-ом з профілю; адмін-алерти про зміни профілів студентів — без налаштувань особисто адмінам, що привʼязали бота, або в групу/гілку форуму після `/here change` там (`/here` — статус, `/here all`, `/here off`). Алерти шле сам API (той самий `TG_BOT_TOKEN`), запущений бот для них не потрібен.
 
 - токен від BotFather → `TG_BOT_TOKEN` у `app/api/.env`;
 - запуск: `cd app/api && uv run python -m bot` (long polling, вебхук не потрібен);
-- смоук без Telegram: `DB_NAME=python_labs_smoke uv run python tests/smoke_bot.py`.
+- смоуки без Telegram: `DB_NAME=python_labs_smoke uv run python tests/smoke_bot.py` (привʼязка) і `… tests/smoke_notify.py` (алерти, `/here`).
