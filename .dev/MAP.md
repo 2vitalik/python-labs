@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T109** · тікетів: 108 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T111** · тікетів: 110 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -114,5 +114,7 @@
 | games | [T104](games/.t/T104-C--ludopedia-d3-d6.md) | 🔆 | ludopedia-d3-d6 | Лудопедія: що таке Д3–Д6 людською мовою | 🟢 🟩 |
 | platform | [T105](platform/.t/T105-Q--access-lock.md) | ❓ | access-lock | Питання по тимчасовому замку сторінок | 🔴 ⬜ |
 | tgbot | [T106](tgbot/.t/T106--tgbot-stub/plan.md) | ⚙️ | tgbot-stub | Telegram-бот: пустишка на aiogram — план | 🟢 🟩 |
-| tgbot | [T107](tgbot/.t/T107-Q--tg-username-field.md) | ❓ | tg-username-field | Поле Telegram-нікнейму після привʼязки бота | 🔴 ⬜ |
-| platform | [T108](platform/.t/T108-Q--profile-polish.md) | ❓ | profile-polish | Ідеї для сторінки профілю | 🟢 ⬜ |
+| tgbot | [T107](tgbot/.t/T107-Q--tg-username-field.md) | ❓ | tg-username-field | Поле Telegram-нікнейму після привʼязки бота | 🟢 🟩 |
+| platform | [T108](platform/.t/T108-Q--profile-polish.md) | ❓ | profile-polish | Ідеї для сторінки профілю | 🔴 ⬜ |
+| tgbot | [T109](tgbot/.t/T109-C--bot-message-style.md) | 🔆 | bot-message-style | Стиль повідомлень бота | 🟢 🟩 |
+| tgbot | [T110](tgbot/.t/T110-Q--bot-link-edge-cases.md) | ❓ | bot-link-edge-cases | Привʼязка бота: помилкові випадки, відвʼязка в боті | 🔴 ⬜ |

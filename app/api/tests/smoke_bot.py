@@ -40,37 +40,47 @@ async def run():
                       tg_token="tok123", tg_username="typed").insert()
 
     msg, replies = fake()
-    await start(msg)
-    check("/start: hint to profile", "профіль" in replies[0])
+    await start(msg, user=None)
+    check("/start unlinked: intro with profile link + button", "/profile" in replies[0] and "Привʼязати бота" in replies[0])
 
     msg, replies = fake()
     await start_link(msg, SimpleNamespace(args="nope"))
-    check("unknown token: hint, nothing saved", "профіль" in replies[0] and (await User.get(user.id)).tg_chat_id is None)
+    check("unknown token: 'stale link' + steps, nothing saved",
+          "Не впізнаю" in replies[0] and "/profile" in replies[0] and (await User.get(user.id)).tg_chat_id is None)
 
     msg, replies = fake()
     await start_link(msg, SimpleNamespace(args="tok123"))
     u = await User.get(user.id)
-    check("known token: greets by first name", replies[0].startswith("Привіт, Вася"), replies[0])
+    check("known token: greets by first name + recorded", replies[0] == "👋 Привіт, Вася!\n✔️ Дякую, записав тебе)", replies[0])
     check("chat_id + real username saved", u.tg_chat_id == 42 and u.tg_username == "vasya_tg")
     check("history recorded by tgbot", mongo[DB].history.count_documents({"actor": "tgbot", "changes.tg_chat_id.new": 42}) == 1)
+
+    msg, replies = fake()
+    await start_link(msg, SimpleNamespace(args="tok123"))
+    check("same chat again: 'already recorded'", "вже було записано" in replies[0], replies[0])
+
+    msg, replies = fake()
+    await sync_username(lambda m, d: start(m, **d), msg, {})
+    check("bare /start in linked chat: 'already recorded'", "вже було записано" in replies[0], replies[0])
 
     msg, replies = fake(chat_id=43, username="")
     await start_link(msg, SimpleNamespace(args="tok123"))
     u = await User.get(user.id)
     check("re-link without @username: new chat_id, nick erased", u.tg_chat_id == 43 and u.tg_username == "")
+    check("re-link reply: 'other Telegram' + no-username hint", "🔁" in replies[0] and "юзернейму" in replies[0], replies[0])
 
     msg, replies = fake(chat_id=43, username="vasya_new")
-    await sync_username(lambda m, _: fallback(m), msg, {})
+    await sync_username(lambda m, d: fallback(m, **d), msg, {})
     u = await User.get(user.id)
-    check("any message: username change tracked", u.tg_username == "vasya_new" and "/start" in replies[0])
+    check("any message: username change tracked, 'more soon'", u.tg_username == "vasya_new" and "далі буде" in replies[0])
 
     msg, replies = fake(chat_id=43, username="")
-    await sync_username(lambda m, _: fallback(m), msg, {})
+    await sync_username(lambda m, d: fallback(m, **d), msg, {})
     check("@username removed in Telegram: erased", (await User.get(user.id)).tg_username == "")
 
     msg, replies = fake(chat_id=99, username="stranger")
-    await sync_username(lambda m, _: fallback(m), msg, {})
-    check("unlinked chat: nothing touched, /start hint", "/start" in replies[0]
+    await sync_username(lambda m, d: fallback(m, **d), msg, {})
+    check("unlinked chat: nothing touched, intro", "Привʼязати бота" in replies[0]
           and mongo[DB].users.count_documents({"tg_username": "stranger"}) == 0)
 
 asyncio.run(run())

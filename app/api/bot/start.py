@@ -2,33 +2,35 @@ from aiogram import Router
 from aiogram.filters import CommandObject, CommandStart
 from aiogram.types import Message
 
-from bot.link import bind, sync
+from bot import texts
+from bot.link import bind, by_token, sync
+from models.user import User
 
 router = Router()
-
-LINK_HINT = "Відкрий свій профіль на сайті й натисни «Привʼязати бота»."
 
 
 @router.message.outer_middleware()
 async def sync_username(handler, message: Message, data):
-    await sync(message.chat.id, message.from_user.username or "")
+    data["user"] = await sync(message.chat.id, message.from_user.username or "")
     return await handler(message, data)
 
 
 @router.message(CommandStart(deep_link=True))
 async def start_link(message: Message, command: CommandObject):
-    user = await bind(command.args, message.chat.id, message.from_user.username or "")
+    user = await by_token(command.args)
     if not user:
-        await message.answer("Не знаю такого посилання. " + LINK_HINT)
+        await message.answer(texts.UNKNOWN)
         return
-    await message.answer(f"Привіт, {user.first_name or user.name or user.nick}! Записав тебе ✅")
+    prev_chat = user.tg_chat_id
+    await bind(user, message.chat.id, message.from_user.username or "")
+    await message.answer(texts.recorded(user, prev_chat))
 
 
 @router.message(CommandStart(deep_link=False))
-async def start(message: Message):
-    await message.answer("Привіт! Я бот Python Labs. " + LINK_HINT)
+async def start(message: Message, user: User | None):
+    await message.answer(texts.recorded(user, user.tg_chat_id) if user else texts.INTRO)
 
 
 @router.message()
-async def fallback(message: Message):
-    await message.answer("Поки що вмію лише /start, далі буде 🙂")
+async def fallback(message: Message, user: User | None):
+    await message.answer(texts.MORE_SOON if user else texts.INTRO)

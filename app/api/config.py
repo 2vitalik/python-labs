@@ -11,6 +11,7 @@ class Settings(BaseSettings):
     fake_user_email: str = ""
     tg_bot_name: str = ""
     tg_bot_token: str = ""  # from BotFather; empty = bot refuses to start
+    site_url: str = "http://localhost:5030"  # public address for links in bot messages
     uploads_dir: str = ""  # empty = app/api/uploads
 
     model_config = {"env_file": ".env"}
