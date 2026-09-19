@@ -35,9 +35,9 @@ const form = defineModel({ type: Object, required: true })
                placeholder="https://github.com/username/python-labs">
         <div v-if="hints" class="form-text mt-2">
           <ul class="mb-0 ps-3">
-            <li>Репозиторій має бути <b>приватним</b>.</li>
+            <li>Репозиторій має бути <b>приватним</b>. Назва на ваш розусуд.</li>
             <li><b>Єдиний</b> на всі лаби — це один великий проєкт, без папок Lab1/Lab2.</li>
-            <li>Розшар його на викладача: Settings → Collaborators → <code>2vitalik</code>.</li>
+            <li><b>Розшар</b> його на викладача: Settings → Collaborators → <code>2vitalik</code>.</li>
           </ul>
         </div>
       </div>
