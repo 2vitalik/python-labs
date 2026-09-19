@@ -4,6 +4,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [vue()],
   server: {
+    host: '127.0.0.1', // not `localhost`: Node binds it to ::1 only, and Telegram won't link localhost URLs
     port: 5030, // project #3 in the cross-project port scheme (dev-md-rules/DEV.md)
     strictPort: true,
     proxy: {

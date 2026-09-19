@@ -5,7 +5,7 @@ from aiogram import html
 from config import settings
 from models.user import User
 
-STEPS = (f'🌐 відкрий <b><a href="{settings.site_url}/profile">свій профіль</a></b> на сайті\n'
+STEPS = (f'🌐 відкрий <b><a href="{settings.site_url}/profile">свій профіль</a></b> на <a href="{settings.site_url}">сайті</a>\n'
          "✅ й натисни <b>«Привʼязати бота»</b>")
 INTRO = "👋 Привіт!\n🤖 Я бот <b>Python Labs</b>\n\n➕ <i>Якщо ти студент цього курсу:</i>\n" + STEPS
 UNKNOWN = "👋 Привіт!\n❌ Не впізнаю це посилання — мабуть, застаріле\n\n" + STEPS
