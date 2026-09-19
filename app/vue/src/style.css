@@ -1,0 +1,4 @@
+/* Bootstrap 5.3 placeholders are nearly as dark as text; keep them clearly lighter */
+.form-control::placeholder {
+  color: var(--bs-gray-500);
+}
