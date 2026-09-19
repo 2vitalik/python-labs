@@ -1,5 +1,5 @@
 <script setup>
-defineProps({ hints: Boolean, admin: Boolean })
+defineProps({ hints: Boolean, admin: Boolean, dirty: Boolean, saved: Boolean, error: String })
 defineEmits(['save'])
 const form = defineModel({ type: Object, required: true })
 </script>
@@ -79,6 +79,18 @@ const form = defineModel({ type: Object, required: true })
       </div>
     </div>
 
-    <button class="btn btn-primary">Зберегти</button>
+    <div class="d-flex align-items-center gap-3">
+      <button class="btn btn-primary" :disabled="!dirty">Зберегти</button>
+      <Transition name="saved">
+        <span v-if="saved" class="text-success small">✓ Збережено</span>
+      </Transition>
+      <span v-if="error" class="text-danger small">{{ error }}</span>
+    </div>
   </form>
 </template>
+
+<style scoped>
+.saved-enter-active { transition: opacity .2s; }
+.saved-leave-active { transition: opacity .6s; }
+.saved-enter-from, .saved-leave-to { opacity: 0; }
+</style>
