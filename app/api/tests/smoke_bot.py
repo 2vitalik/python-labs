@@ -12,7 +12,7 @@ DB = os.environ["DB_NAME"]
 assert DB.endswith("_smoke"), "refuse to run on a non-smoke DB"
 mongo = MongoClient()
 mongo.drop_database(DB)
-from bot.start import fallback, start, start_link  # noqa: E402
+from bot.start import fallback, start, start_link, sync_username  # noqa: E402
 from db import init_db  # noqa: E402
 from models.user import Status, User  # noqa: E402
 
@@ -59,9 +59,15 @@ async def run():
     u = await User.get(user.id)
     check("re-link: new chat_id, username kept", u.tg_chat_id == 43 and u.tg_username == "vasya_tg")
 
-    msg, replies = fake()
-    await fallback(msg)
-    check("other text: /start hint", "/start" in replies[0])
+    msg, replies = fake(chat_id=43, username="vasya_new")
+    await sync_username(lambda m, _: fallback(m), msg, {})
+    u = await User.get(user.id)
+    check("any message: username change tracked", u.tg_username == "vasya_new" and "/start" in replies[0])
+
+    msg, replies = fake(chat_id=99)
+    await sync_username(lambda m, _: fallback(m), msg, {})
+    check("unlinked chat: nothing touched, /start hint", "/start" in replies[0]
+          and mongo[DB].users.count_documents({"tg_username": "vasya_tg"}) == 0)
 
 
 asyncio.run(run())

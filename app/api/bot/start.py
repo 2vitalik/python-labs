@@ -2,11 +2,17 @@ from aiogram import Router
 from aiogram.filters import CommandObject, CommandStart
 from aiogram.types import Message
 
-from bot.link import bind
+from bot.link import bind, sync
 
 router = Router()
 
 LINK_HINT = "Відкрий свій профіль на сайті й натисни «Привʼязати бота»."
+
+
+@router.message.outer_middleware()
+async def sync_username(handler, message: Message, data):
+    await sync(message.chat.id, message.from_user.username or "")
+    return await handler(message, data)
 
 
 @router.message(CommandStart(deep_link=True))

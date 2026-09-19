@@ -12,3 +12,10 @@ async def bind(token: str, chat_id: int, username: str) -> User | None:
         data["tg_username"] = username
     await record(user, data, actor="tgbot")
     return user
+
+
+async def sync(chat_id: int, username: str) -> None:
+    """@username can change any time: refresh it on every message from a linked chat."""
+    user = await User.find_one(User.tg_chat_id == chat_id)
+    if user and username:  # same rule as bind(): no @username → keep what we have
+        await record(user, {"tg_username": username}, actor="tgbot")

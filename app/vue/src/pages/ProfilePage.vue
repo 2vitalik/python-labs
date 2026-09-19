@@ -1,7 +1,7 @@
 <script setup>
-import { reactive, ref, watch } from 'vue'
+import { onUnmounted, reactive, ref, watch } from 'vue'
 
-import { putProfile } from '../api.js'
+import { getMe, putProfile, unlinkTelegram } from '../api.js'
 import ProfileForm from '../components/ProfileForm.vue'
 import { user } from '../user.js'
 
@@ -12,6 +12,25 @@ const error = ref('')
 watch(user, (u) => {
   if (u) for (const k in form) form[k] = u[k]
 }, { immediate: true })
+
+function apply(u) {  // patch in place: replacing user.value would reset the form
+  Object.assign(user.value, u)
+  form.tg_username = u.tg_username
+}
+
+let poll
+function watchLink() {  // student went to Telegram: poll until the bot writes chat_id, up to 3 min
+  let left = 90
+  clearInterval(poll)
+  poll = setInterval(async () => {
+    const u = await getMe().catch(() => null)
+    if (u?.tg_linked) apply(u)
+    if (u?.tg_linked || !--left) clearInterval(poll)
+  }, 2000)
+}
+onUnmounted(() => clearInterval(poll))
+
+const unlink = async () => apply(await unlinkTelegram())
 
 async function save() {
   error.value = ''
@@ -33,13 +52,17 @@ async function save() {
     <ProfileForm v-model="form" hints @save="save">
       <template #telegram>
         <div class="mt-3">
-          <span v-if="user.tg_linked" class="badge text-bg-success">✅ Бот привʼязаний</span>
+          <template v-if="user.tg_linked">
+            <span class="badge text-bg-success">✅ Бот привʼязаний</span>
+            <a href="#" class="ms-2 small text-secondary" @click.prevent="unlink">відвʼязати</a>
+          </template>
           <template v-else-if="user.tg_link">
-            <a :href="user.tg_link" target="_blank" class="btn btn-outline-primary btn-sm">
+            <a :href="user.tg_link" target="_blank" class="btn btn-outline-primary btn-sm" @click="watchLink">
               Привʼязати бота
             </a>
             <div class="form-text mt-2">
-              Натисни кнопку і в чаті з ботом натисни <b>Start</b> — він упізнає тебе і привʼяже акаунт.
+              Кнопка відкриє чат з ботом і передасть йому код привʼязки: у новому чаті — після натискання <b>Start</b>,
+              у знайомому — одразу. Бот відповість «Записав тебе ✅», а сторінка помітить це сама.
             </div>
           </template>
         </div>
