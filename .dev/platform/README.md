@@ -64,7 +64,7 @@
 
 ## Наступний крок
 
-- Vitalik: додати в GCP нові redirect URI (`http://localhost:5030/api/auth/callback` + `http://localhost:8030/...`) — кроки в [T81](.t/T81-C--dev-ports.md); без цього Google-вхід у деві на нових портах не працюватиме (dev-вхід не залежить). Заодно — `--port 8030` у PyCharm-конфігурації FastAPI.
+- Vitalik: додати в GCP нові redirect URI (`http://localhost:5030/api/auth/callback` + `http://localhost:8030/...`, а з 2026-09-20 ще `http://127.0.0.1:5030/api/auth/callback` — хост посилань із бота в деві, інакше `redirect_uri_mismatch`) — кроки в [T81](.t/T81-C--dev-ports.md); без цього Google-вхід у деві на нових портах не працюватиме (dev-вхід не залежить). Заодно — `--port 8030` у PyCharm-конфігурації FastAPI.
 - Vitalik: повторний імпорт `cist.txt` на живій базі (розкладе всіх по правильних групах); хвости — у [T64](.t/T64--profile-v1/report.md).
 - Каталог v1 (2026-08-05, [T71](.t/T71--catalog-v1/report.md)) + три ітерації (2026-08-06: masonry, корона, гостьовий доступ, сімʼї v2, YAML v2, 74 активні); Vitalik: клік-тест http://localhost:5030/tasks + вибір палітри на `/colors2` ([T80](.t/T80-B--colors-plan.md)) + ревізія решти чернеток (111 draft) — тепер зручно пачкою в `data/catalog/tasks.yaml` (прибрати ✍️ = активувати) + import.
 - **Пілот «Моя гра»: етапи A–D закрито** ([T91](.t/T91--my-game-backend/report.md) + [T93](.t/T93--my-game-front/report.md) + [T94](.t/T94--passport-graph/report.md)) → Vitalik: великий клік-тест (граф зʼявляється, коли меню мають хост і цілі) + активувати `window`-картки після ревізії.
