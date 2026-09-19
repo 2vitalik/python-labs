@@ -1,10 +1,17 @@
 <script setup>
 import { computed } from 'vue'
+import { useRouter } from 'vue-router'
 
-import { user } from '../user.js'
+import { canAccess, user } from '../user.js'
 
 const isDev = import.meta.env.DEV
-const active = computed(() => user.value && user.value.status !== 'pending')
+const router = useRouter()
+const links = [
+  ['/games', 'Ігри'], ['/tasks', 'Завдання'], ['/students', 'Студенти'],
+  ['/refs', 'Знахідки'], ['/my/game', 'Моя гра'], ['/profile', 'Профіль'],
+]
+// menu follows route access, so a page and its link open together
+const visible = computed(() => links.filter(([to]) => canAccess(router.resolve(to).meta.access)))
 </script>
 
 <template>
@@ -12,23 +19,8 @@ const active = computed(() => user.value && user.value.status !== 'pending')
     <div class="container">
       <RouterLink class="navbar-brand" to="/">Python Labs</RouterLink>
       <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <RouterLink class="nav-link" to="/games">Ігри</RouterLink>
-        </li>
-        <li class="nav-item">
-          <RouterLink class="nav-link" to="/tasks">Завдання</RouterLink>
-        </li>
-        <li v-if="active" class="nav-item">
-          <RouterLink class="nav-link" to="/students">Студенти</RouterLink>
-        </li>
-        <li v-if="active" class="nav-item">
-          <RouterLink class="nav-link" to="/refs">Знахідки</RouterLink>
-        </li>
-        <li v-if="active" class="nav-item">
-          <RouterLink class="nav-link" to="/my/game">Моя гра</RouterLink>
-        </li>
-        <li v-if="active" class="nav-item">
-          <RouterLink class="nav-link" to="/profile">Профіль</RouterLink>
+        <li v-for="[to, text] in visible" :key="to" class="nav-item">
+          <RouterLink class="nav-link" :to="to">{{ text }}</RouterLink>
         </li>
       </ul>
       <div class="d-flex align-items-center gap-2">
