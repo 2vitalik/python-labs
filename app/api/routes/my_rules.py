@@ -1,7 +1,8 @@
 from beanie import PydanticObjectId
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 from pydantic import BaseModel
 
+from bot import game_alerts
 from deps import active_user
 from models.game import Game, Part
 from models.history import record, record_delete, record_new
@@ -73,10 +74,12 @@ async def get_rule(id: PydanticObjectId, game: Game) -> Rule:
 
 
 @router.post("")
-async def create_rule(data: RuleIn, game: Game = Depends(my_game), user: User = Depends(active_user)):
+async def create_rule(data: RuleIn, tasks: BackgroundTasks, game: Game = Depends(my_game),
+                      user: User = Depends(active_user)):
     rule = Rule(game=game.id, **await clean(data, game))
     await rule.insert()
     await record_new(rule, actor=user.email)
+    tasks.add_task(game_alerts.rule, user, rule, 0)
     return rule.api()
 
 
@@ -89,7 +92,9 @@ async def update_rule(id: PydanticObjectId, data: RuleIn, game: Game = Depends(m
 
 
 @router.delete("/{id}")
-async def delete_rule(id: PydanticObjectId, game: Game = Depends(my_game), user: User = Depends(active_user)):
+async def delete_rule(id: PydanticObjectId, tasks: BackgroundTasks, game: Game = Depends(my_game),
+                      user: User = Depends(active_user)):
     rule = await get_rule(id, game)
     await record_delete(rule, actor=user.email)
+    tasks.add_task(game_alerts.rule, user, rule, 2)
     return {"ok": True}

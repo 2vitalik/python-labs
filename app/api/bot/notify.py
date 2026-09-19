@@ -13,9 +13,20 @@ from models.user import Status, User
 KINDS = {
     "fill": "🟢 нові дані в профілі",
     "change": "🟠 зміни й видалення в профілі",
-    "login": "👋 нові входи на сайт",
+    "login": "👋 перші входи на сайт",
+    "claim": "🎯 заявки на картки",
+    "game": "🧩 гра студента: картка, обʼєкти, правила",
+    "error": "💥 помилки API і бота",
+    "digest": "📊 ранковий дайджест профілів",
 }
+MUTED = 0  # Route.chat_id for "nowhere" (/mute)
 log = logging.getLogger(__name__)
+
+
+def label(kind: str) -> str:
+    """'🟢 fill · нові дані в профілі' — the key is what /here takes."""
+    emoji, desc = KINDS[kind].split(" ", 1)
+    return f"{emoji} {kind} · {desc}"
 
 
 @cache
@@ -27,6 +38,8 @@ async def send(kind: str, text: str) -> None:
     if not settings.tg_bot_token:
         return
     route = await Route.find_one(Route.kind == kind)
+    if route and route.chat_id == MUTED:
+        return
     if route:
         try:
             await bot().send_message(route.chat_id, text, message_thread_id=route.thread_id)

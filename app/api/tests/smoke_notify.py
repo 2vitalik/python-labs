@@ -14,6 +14,7 @@ MongoClient().drop_database(DB)
 from aiogram.exceptions import TelegramAPIError  # noqa: E402
 
 from bot import alerts, notify  # noqa: E402
+from bot.notify import KINDS  # noqa: E402
 from bot.here import here, is_admin  # noqa: E402
 from bot.link import bind  # noqa: E402
 from config import settings  # noqa: E402
@@ -77,9 +78,9 @@ async def run():
 
     m, replies = msg(-100, 1, thread=7, title="Labs")
     check("is_admin: by tg_chat_id + status", await is_admin(m))
-    await here(m, SimpleNamespace(args="change"))
+    await here(m, SimpleNamespace(command="here", args="change"))
     check("/here change → confirms with the kind label",
-          replies[0] == "✔️ Сюди йтимуть:\n🟠 зміни й видалення в профілі", replies[0])
+          replies[0] == "✔️ Сюди йтимуть:\n🟠 change · зміни й видалення в профілі", replies[0])
 
     await alerts.profile(vasya, await record(vasya, {"first_name": "Вася"}, actor=vasya.email))
     chat, thread, text = last()
@@ -113,15 +114,16 @@ async def run():
           text.startswith("🔴") and "🤖 Бот: відвʼязано" in text and "@vasya_tg</a> → ✖️" in text, text)
 
     m, replies = msg(-100, 1, thread=7, title="Labs")
-    await here(m, SimpleNamespace(args=None))
+    await here(m, SimpleNamespace(command="here", args=None))
     check("/here status in the topic: change → тут, rest → особисто, hint",
-          "🟠 зміни й видалення в профілі → тут" in replies[0] and "🟢 нові дані в профілі → <i>особисто адмінам</i>" in replies[0]
-          and replies[0].endswith("☝️ /here fill · change · login · all · off"), replies[0])
+          "🟠 change · зміни й видалення в профілі → тут" in replies[0]
+          and "🟢 fill · нові дані в профілі → <i>особисто адмінам</i>" in replies[0]
+          and replies[0].endswith("☝️ /here <види> · /here all · /here off · /mute <види>"), replies[0])
 
     m, replies = msg(1, 1)
-    await here(m, SimpleNamespace(args=""))
+    await here(m, SimpleNamespace(command="here", args=""))
     check("/here status elsewhere shows the bound title", "→ <b>Labs › #7</b>" in replies[0], replies[0])
-    await here(m, SimpleNamespace(args="bogus"))
+    await here(m, SimpleNamespace(command="here", args="bogus"))
     check("unknown kind → ❌ + hint", replies[-1].startswith("❌ Не знаю «bogus»\n☝️ /here"), replies[-1])
 
     broken.add(-100)
@@ -131,19 +133,33 @@ async def run():
           chat == 1 and text.startswith("⚠️ Не доставив у <b>Labs › #7</b>: chat not found\n\n🟠"), text)
     broken.clear()
 
-    await here(m, SimpleNamespace(args="all"))
-    check("/here all → three kinds bound to the private chat", replies[-1].count("\n") == 3 and await Route.count() == 3)
-    await here(m, SimpleNamespace(args="off"))
+    await here(m, SimpleNamespace(command="here", args="all"))
+    check("/here all → every kind bound to the private chat", replies[-1].count("\n") == len(KINDS) and await Route.count() == len(KINDS))
+    await here(m, SimpleNamespace(command="here", args="off"))
     check("/here off → routes gone", replies[-1] == "✔️ Сюди більше нічого не йтиме" and await Route.count() == 0)
-    await here(m, SimpleNamespace(args="off"))
+    await here(m, SimpleNamespace(command="here", args="off"))
     check("/here off again → nothing was bound", replies[-1].startswith("☝️"))
 
     newbie = await User(email="new@nure.ua", name="New Person").insert()
     await alerts.signed_in(newbie)
     text = last()[2]
-    check("new sign-in → 👋 + edit link + email + pending hint",
-          text.startswith('👋 Новий вхід · <b><a href="http://localhost:5030/students/new/edit">New Person</a></b>\n📧 new@nure.ua\n☝️')
+    check("unknown sign-in → 👋 + edit link + email + pending hint",
+          text.startswith('👋 Перший вхід · <b><a href="http://localhost:5030/students/new/edit">New Person</a></b>\n📧 new@nure.ua\n☝️')
           and "очікує" in text, text)
+
+    m, replies = msg(1, 1)
+    await here(m, SimpleNamespace(args="game", command="mute"))
+    check("/mute game → 🔇 + label", replies[-1] == "🔇 Вимкнено:\n🧩 game · гра студента: картка, обʼєкти, правила", replies[-1])
+    n = len(sent)
+    await notify.send("game", "x")
+    await here(m, SimpleNamespace(args=None, command="here"))
+    check("muted kind: nothing sent, status says 🔇",
+          len(sent) == n and "🧩 game · гра студента: картка, обʼєкти, правила → 🔇 вимкнено" in replies[-1])
+    await here(m, SimpleNamespace(args="game", command="here"))
+    await notify.send("game", "x")
+    check("/here game again → unmuted, goes here", len(sent) == n + 1 and last()[0] == 1)
+    await here(m, SimpleNamespace(args="off", command="mute"))
+    check("/mute off → unknown kind, nothing unbound", replies[-1].startswith("❌") and await Route.count() == 1)
 
     m, _ = msg(42, 42)
     check("student is not admin", not await is_admin(m))

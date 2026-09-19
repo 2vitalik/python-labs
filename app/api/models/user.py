@@ -26,6 +26,7 @@ class User(Document):
     tg_username: str = ""
     tg_token: str = ""
     tg_chat_id: int | None = None
+    seen_at: datetime | None = None  # last sign-in; None = never been on the site
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
     class Settings:

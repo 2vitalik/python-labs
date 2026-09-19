@@ -1,8 +1,9 @@
 from beanie import PydanticObjectId
-from fastapi import APIRouter, Depends, HTTPException, UploadFile
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, UploadFile
 from pydantic import BaseModel
 
 import uploads
+from bot import game_alerts
 from deps import active_user
 from models.game import Claim, Game, Part
 from models.history import record, record_delete, record_new
@@ -71,7 +72,8 @@ def check_role(role: str) -> None:
 
 
 @router.post("")
-async def create_part(data: PartIn, game: Game = Depends(my_game), user: User = Depends(active_user)):
+async def create_part(data: PartIn, tasks: BackgroundTasks, game: Game = Depends(my_game),
+                      user: User = Depends(active_user)):
     if data.kind not in ("window", "menu", "entity"):
         raise HTTPException(422, "Невідомий тип обʼєкта.")
     d = {"game": game.id, "kind": data.kind, "title": data.title.strip(),
@@ -89,6 +91,7 @@ async def create_part(data: PartIn, game: Game = Depends(my_game), user: User = 
     part = Part(**d)
     await part.insert()
     await record_new(part, actor=user.email)
+    tasks.add_task(game_alerts.part, user, part, 0)
     if data.kind == "window":  # a window claims its type card automatically
         claim = Claim(game=game.id, task=data.task, part=str(part.id))
         await claim.insert()
@@ -113,7 +116,8 @@ async def update_part(id: PydanticObjectId, data: PartIn, game: Game = Depends(m
 
 
 @router.delete("/{id}")
-async def delete_part(id: PydanticObjectId, game: Game = Depends(my_game), user: User = Depends(active_user)):
+async def delete_part(id: PydanticObjectId, tasks: BackgroundTasks, game: Game = Depends(my_game),
+                      user: User = Depends(active_user)):
     part = await get_part(id, game)
     for claim in await Claim.find(Claim.game == game.id, Claim.part == str(part.id)).to_list():
         await record_delete(claim, actor=user.email)
@@ -132,6 +136,7 @@ async def delete_part(id: PydanticObjectId, game: Game = Depends(my_game), user:
             if patch:
                 await record(menu, patch, actor=user.email)
     await record_delete(part, actor=user.email)
+    tasks.add_task(game_alerts.part, user, part, 2)
     return {"ok": True}
 
 

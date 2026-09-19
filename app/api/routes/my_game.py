@@ -1,6 +1,7 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 from pydantic import BaseModel
 
+from bot import game_alerts
 from deps import active_user
 from models.base_game import BaseGame
 from models.game import Game
@@ -44,16 +45,19 @@ async def get_my_game(user: User = Depends(active_user)):
 
 
 @router.post("")
-async def create_game(data: GameIn, user: User = Depends(active_user)):
+async def create_game(data: GameIn, tasks: BackgroundTasks, user: User = Depends(active_user)):
     if await Game.find_one(Game.owner == user.email):
         raise HTTPException(409, "Гра вже створена — вона в тебе одна.")
     game = Game(owner=user.email, **await clean(data))
     await game.insert()
     await record_new(game, actor=user.email)
+    tasks.add_task(game_alerts.game, user, game)
     return game.api()
 
 
 @router.put("")
-async def update_game(data: GameIn, game: Game = Depends(my_game), user: User = Depends(active_user)):
-    await record(game, await clean(data), actor=user.email)
+async def update_game(data: GameIn, tasks: BackgroundTasks, game: Game = Depends(my_game),
+                      user: User = Depends(active_user)):
+    if changes := await record(game, await clean(data), actor=user.email):
+        tasks.add_task(game_alerts.game, user, game, changes)
     return game.api()

@@ -1,7 +1,8 @@
 from beanie import PydanticObjectId
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 from pydantic import BaseModel
 
+from bot import game_alerts
 from deps import active_user
 from models.game import Claim, Game
 from models.history import record, record_delete, record_new
@@ -55,7 +56,8 @@ async def get_claim(id: PydanticObjectId, game: Game) -> Claim:
 
 
 @router.post("")
-async def create_claim(data: ClaimIn, game: Game = Depends(my_game), user: User = Depends(active_user)):
+async def create_claim(data: ClaimIn, tasks: BackgroundTasks, game: Game = Depends(my_game),
+                       user: User = Depends(active_user)):
     task = await Task.find_one(Task.slug == data.task)
     if not task or task.status == "archived":
         raise HTTPException(422, "Немає такої картки в каталозі.")
@@ -69,23 +71,27 @@ async def create_claim(data: ClaimIn, game: Game = Depends(my_game), user: User 
                   note=data.note.strip(), link=data.link.strip())
     await claim.insert()
     await record_new(claim, actor=user.email)
+    tasks.add_task(game_alerts.claim, user, claim, 0)
     return claim.api()
 
 
 @router.put("/{id}")
-async def update_claim(id: PydanticObjectId, data: ClaimIn, game: Game = Depends(my_game),
+async def update_claim(id: PydanticObjectId, data: ClaimIn, tasks: BackgroundTasks, game: Game = Depends(my_game),
                        user: User = Depends(active_user)):
     claim = await get_claim(id, game)
     task = await Task.find_one(Task.slug == claim.task)
     patch = {"note": data.note.strip(), "link": data.link.strip()}
     if task:  # card gone from the catalog → params frozen as claimed
         patch["params"] = clean_params(task, data.params)
-    await record(claim, patch, actor=user.email)
+    if changes := await record(claim, patch, actor=user.email):
+        tasks.add_task(game_alerts.claim, user, claim, 1, changes)
     return claim.api()
 
 
 @router.delete("/{id}")
-async def delete_claim(id: PydanticObjectId, game: Game = Depends(my_game), user: User = Depends(active_user)):
+async def delete_claim(id: PydanticObjectId, tasks: BackgroundTasks, game: Game = Depends(my_game),
+                       user: User = Depends(active_user)):
     claim = await get_claim(id, game)
     await record_delete(claim, actor=user.email)
+    tasks.add_task(game_alerts.claim, user, claim, 2)
     return {"ok": True}

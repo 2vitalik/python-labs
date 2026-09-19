@@ -1,4 +1,4 @@
-"""What admins hear about (T111), in the T109 style: header = the worst change, one line per changed field."""
+"""Alerts about people (T111, T113) in the T109 style: header = the worst change, one line per changed field."""
 from aiogram import html
 
 from bot import notify
@@ -22,6 +22,10 @@ def level(old, new) -> int:
 
 def arrow(lvl: int, old, new, fmt=html.quote) -> str:
     return fmt(new) if lvl == 0 else f"{fmt(old)} → {fmt(new) if new else '✖️'}"
+
+
+def event(lvl: int, subject: str, user: User, rows: list[str]) -> str:
+    return "\n".join([f"{MARK[lvl]} {subject} · {who(user)}", *rows])
 
 
 def gh(url: str) -> str:
@@ -56,13 +60,13 @@ async def profile(user: User, changes: dict) -> None:
     if not (out := rows(user, changes)):
         return
     lvl = max(r[1] for r in out)
-    text = "\n".join([f"{MARK[lvl]} Профіль · {who(user)}", *(f"{label}: {val}" for label, _, val in out)])
-    await notify.send("fill" if lvl == 0 else "change", text)
+    await notify.send("fill" if lvl == 0 else "change", event(lvl, "Профіль", user, [f"{k}: {v}" for k, _, v in out]))
 
 
 async def signed_in(user: User) -> None:
-    """Someone we did not import signed in for the first time."""
-    lines = [f"👋 Новий вхід · {who(user, '/edit')}", f"📧 {html.quote(user.email)}"]
-    if user.status == Status.pending:
-        lines.append("☝️ Не було в списках — статус «очікує»")
+    """First sign-in ever: an imported student showed up, or someone unknown (pending) who needs a look."""
+    pending = user.status == Status.pending
+    lines = [f"👋 Перший вхід · {who(user, '/edit' if pending else '')}"]
+    if pending:
+        lines += [f"📧 {html.quote(user.email)}", "☝️ Не було в списках — статус «очікує»"]
     await notify.send("login", "\n".join(lines))

@@ -1,3 +1,5 @@
+from datetime import datetime, timezone
+
 from authlib.integrations.starlette_client import OAuth
 from fastapi import APIRouter, BackgroundTasks, Request
 from starlette.responses import RedirectResponse
@@ -59,6 +61,8 @@ async def upsert_user(info: dict, tasks: BackgroundTasks):
     user = await User.find_one(User.email == email)
     is_new = user is None
     user = user or User(email=email)
+    first = user.seen_at is None
+    user.seen_at = datetime.now(timezone.utc)
     user.name = info.get("name", "")
     user.picture = info.get("picture", "")
     if not user.last_name and not user.first_name:  # prefill empty names from Google claims
@@ -69,4 +73,5 @@ async def upsert_user(info: dict, tasks: BackgroundTasks):
     await user.save()
     if is_new:
         await record_new(user, actor=email)
+    if first:
         tasks.add_task(alerts.signed_in, user)

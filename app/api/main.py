@@ -5,6 +5,7 @@ from fastapi.staticfiles import StaticFiles
 from starlette.middleware.sessions import SessionMiddleware
 
 import uploads
+from bot import errors
 from config import settings
 from db import init_db
 from routes import (auth, games, me, my_claims, my_game, my_parts, my_rules, profile, refs,
@@ -18,6 +19,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="Python Labs", lifespan=lifespan)
+app.add_exception_handler(Exception, errors.api_handler)
 app.add_middleware(SessionMiddleware, secret_key=settings.session_secret)
 app.include_router(auth.router)
 app.include_router(me.router)

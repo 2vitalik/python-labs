@@ -22,8 +22,8 @@
 
 ## Telegram-бот
 
-Живе в `app/api/bot/` — та сама база, моделі й `.env`, що й API (тому не окремий пакет). Уміє: `/start` + привʼязка акаунта deep link-ом з профілю; адмін-алерти про зміни профілів студентів — без налаштувань особисто адмінам, що привʼязали бота, або в групу/гілку форуму після `/here change` там (`/here` — статус, `/here all`, `/here off`). Алерти шле сам API (той самий `TG_BOT_TOKEN`), запущений бот для них не потрібен.
+Живе в `app/api/bot/` — та сама база, моделі й `.env`, що й API (тому не окремий пакет). Уміє: `/start` + привʼязка акаунта deep link-ом з профілю; адмін-алерти (профілі, перші входи, заявки, гра студента, помилки API/бота) — без налаштувань особисто адмінам, що привʼязали бота, або в групу/гілку форуму після `/here change` там (`/here` — статус із ключами видів, `/here all`, `/here off`, `/mute game` — вимкнути вид). Алерти шле сам API (той самий `TG_BOT_TOKEN`), запущений бот потрібен лише для `/here` і ранкового дайджесту профілів (09:00 Київ).
 
 - токен від BotFather → `TG_BOT_TOKEN` у `app/api/.env`;
 - запуск: `cd app/api && uv run python -m bot` (long polling, вебхук не потрібен);
-- смоуки без Telegram: `DB_NAME=python_labs_smoke uv run python tests/smoke_bot.py` (привʼязка) і `… tests/smoke_notify.py` (алерти, `/here`).
+- смоуки без Telegram: `DB_NAME=python_labs_smoke uv run python tests/smoke_bot.py` (привʼязка), `… tests/smoke_notify.py` (алерти профілю, `/here`, `/mute`), `… tests/smoke_events.py` (заявки, гра, помилки, дайджест, перший вхід).
