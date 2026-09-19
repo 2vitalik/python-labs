@@ -23,7 +23,7 @@ const form = defineModel({ type: Object, required: true })
             <input v-model="form.patronymic" class="form-control">
           </div>
         </div>
-        <div v-if="hints" class="form-text mt-2">Українською, як у заліковці.</div>
+        <div v-if="hints" class="form-text mt-2">Українською, як у заліковці</div>
       </div>
     </div>
 
@@ -35,9 +35,9 @@ const form = defineModel({ type: Object, required: true })
                placeholder="https://github.com/username/python-labs">
         <div v-if="hints" class="form-text mt-2">
           <ul class="mb-0 ps-3">
-            <li>Репозиторій має бути <b>приватним</b>. Назва на ваш розусуд.</li>
-            <li><b>Єдиний</b> на всі лаби — це один великий проєкт, без папок Lab1/Lab2.</li>
-            <li><b>Розшар</b> його на викладача: Settings → Collaborators → <code>2vitalik</code>.</li>
+            <li>Репозиторій має бути <b>приватним</b>, назву оберіть самостійно</li>
+            <li><b>Єдиний</b> на всі лаби — це один великий проєкт, без папок Lab1/Lab2</li>
+            <li><b>Розшар</b> його на викладача: Settings → Collaborators → <code>2vitalik</code></li>
           </ul>
         </div>
       </div>
@@ -52,7 +52,10 @@ const form = defineModel({ type: Object, required: true })
           <input v-model="form.tg_username" class="form-control" placeholder="username">
         </div>
         <div v-if="hints" class="form-text mt-2">
-          Свій нік дивись у Telegram: Налаштування → Імʼя користувача (username). Якщо ніка ще нема — створи там само.
+          <ul class="mb-0 ps-3">
+            <li>Свій нік дивись у Telegram: Налаштування → Імʼя користувача (username)</li>
+            <li>Якщо ніка ще нема — створи там само</li>
+          </ul>
         </div>
         <slot name="telegram" />
       </div>
