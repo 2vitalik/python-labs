@@ -12,3 +12,6 @@ export function canAccess(access) {
   if (access === 'active') return !!status && status !== 'pending'
   return true
 }
+
+// `?next=` must stay a same-site path (mirrors safe_path() in the API)
+export const safeNext = (p) => (typeof p === 'string' && /^\/(?![/\\])/.test(p) ? p : '/')

@@ -1,9 +1,6 @@
 <script setup>
-import { useRoute } from 'vue-router'
-
 import { user } from '../user.js'
 
-const error = useRoute().query.error
 const statusText = {
   pending: 'Ти в списку. Доступ до курсу надає викладач.',
   student: 'Ти студент курсу.',
@@ -14,9 +11,6 @@ const statusText = {
 <template>
   <div class="col-lg-8 mx-auto text-center mt-5">
     <h1 class="mb-4">Python Labs</h1>
-    <div v-if="error === 'domain'" class="alert alert-warning">
-      Вхід можливий лише з поштою <b>@nure.ua</b>.
-    </div>
     <template v-if="user">
       <p class="lead">Привіт, {{ user.name || user.email }}!</p>
       <p>{{ statusText[user.status] }}</p>

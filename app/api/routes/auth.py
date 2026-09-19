@@ -1,5 +1,7 @@
 from datetime import datetime, timezone
+from urllib.parse import quote
 
+from authlib.integrations.base_client import OAuthError
 from authlib.integrations.starlette_client import OAuth
 from fastapi import APIRouter, BackgroundTasks, Request
 from starlette.responses import RedirectResponse
@@ -24,22 +26,27 @@ oauth.register(
 
 
 @router.get("/login")
-async def login(request: Request):
+async def login(request: Request, next: str = "/"):
+    request.session["next"] = safe_path(next)  # SPA state doesn't survive the Google round-trip
     redirect_uri = request.url_for("callback")
     return await oauth.google.authorize_redirect(request, redirect_uri, hd=NURE_DOMAIN, prompt="select_account")
 
 
 @router.get("/callback")
 async def callback(request: Request, tasks: BackgroundTasks):
-    token = await oauth.google.authorize_access_token(request)
+    next = request.session.pop("next", "/")
+    try:
+        token = await oauth.google.authorize_access_token(request)
+    except OAuthError:  # cancelled at Google or stale state: back to the form, not a 500
+        return to_login("oauth", next)
     info = token["userinfo"]
     if not info.get("email_verified"):
-        return RedirectResponse("/?error=verify")
+        return to_login("verify", next)
     if info.get("hd") != NURE_DOMAIN and info["email"] not in settings.admin_list:
-        return RedirectResponse("/?error=domain")
+        return to_login("domain", next)
     await upsert_user(info, tasks)
     request.session["email"] = info["email"]
-    return RedirectResponse("/")
+    return RedirectResponse(next)
 
 
 @router.get("/logout")
@@ -49,11 +56,20 @@ async def logout(request: Request):
 
 
 @router.get("/dev-login")
-async def dev_login(request: Request, tasks: BackgroundTasks):
+async def dev_login(request: Request, tasks: BackgroundTasks, next: str = "/"):
     if settings.fake_user_email:
         await upsert_user({"email": settings.fake_user_email, "name": "Dev User"}, tasks)
         request.session["email"] = settings.fake_user_email
-    return RedirectResponse("/")
+    return RedirectResponse(safe_path(next))
+
+
+def safe_path(path: str) -> str:
+    """Same-site paths only, so `?next=` can't bounce users to a foreign host."""
+    return path if path.startswith("/") and path[1:2] not in ("/", "\\") else "/"
+
+
+def to_login(error: str, next: str) -> RedirectResponse:
+    return RedirectResponse(f"/login?error={error}&next={quote(next)}")
 
 
 async def upsert_user(info: dict, tasks: BackgroundTasks):

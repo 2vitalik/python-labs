@@ -36,7 +36,7 @@ def login(c, email, status):
 
 
 with TestClient(main.app) as c:
-    check("guest: /students → 403", c.get("/api/students").status_code == 403)
+    check("guest: /students → 401", c.get("/api/students").status_code == 401)
 
     login(c, "waiting@nure.ua", "pending")  # stays pending: gallery visibility check below
     check("pending: POST /my/game → 403", c.post("/api/my/game", json={"title": "x", "base_custom": "y"}).status_code == 403)

@@ -9,12 +9,16 @@ async def current_user(request: Request) -> User | None:
 
 
 async def active_user(user: User | None = Depends(current_user)) -> User:
-    if not user or user.status == Status.pending:
-        raise HTTPException(403)
-    return user
+    return allow(user, user and user.status != Status.pending)
 
 
 async def admin_user(user: User | None = Depends(current_user)) -> User:
-    if not user or user.status != Status.admin:
+    return allow(user, user and user.status == Status.admin)
+
+
+def allow(user: User | None, ok) -> User:
+    if not user:
+        raise HTTPException(401)  # guest: the SPA sends them to /login and back
+    if not ok:
         raise HTTPException(403)
     return user

@@ -6,6 +6,7 @@ import GameEditPage from './pages/GameEditPage.vue'
 import GamePage from './pages/GamePage.vue'
 import GamesPage from './pages/GamesPage.vue'
 import HomePage from './pages/HomePage.vue'
+import LoginPage from './pages/LoginPage.vue'
 import MyGamePage from './pages/MyGamePage.vue'
 import ProfilePage from './pages/ProfilePage.vue'
 import RefsPage from './pages/RefsPage.vue'
@@ -14,13 +15,14 @@ import StudentGamePage from './pages/StudentGamePage.vue'
 import StudentsPage from './pages/StudentsPage.vue'
 import TaskEditPage from './pages/TaskEditPage.vue'
 import TasksPage from './pages/TasksPage.vue'
-import { canAccess, userLoaded } from './user.js'
+import { canAccess, safeNext, user, userLoaded } from './user.js'
 
 // for now students get only the profile; everything else stays admin-only until reopened page by page
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: '/', component: HomePage },
+    { path: '/login', component: LoginPage },
     { path: '/profile', component: ProfilePage, meta: { access: 'active' } },
     { path: '/my/game', component: MyGamePage, meta: { access: 'admin' } },
     { path: '/students', component: StudentsPage, meta: { access: 'admin' } },
@@ -41,7 +43,11 @@ const router = createRouter({
 
 router.beforeEach(async (to) => {
   await userLoaded
-  if (!canAccess(to.meta.access)) return '/'
+  if (to.path === '/login') {  // nothing to ask: go where they were heading
+    const next = safeNext(to.query.next)
+    return user.value && canAccess(router.resolve(next).meta.access) ? next : true
+  }
+  if (!canAccess(to.meta.access)) return { path: '/login', query: { next: to.fullPath } }
 })
 
 export default router

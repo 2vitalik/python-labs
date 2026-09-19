@@ -16,7 +16,8 @@
 
 - бекенд: `cd app/api && uv run fastapi dev --port 8030` → http://localhost:8030
 - фронт: `cd app/vue && npm run dev` → **http://localhost:5030** (відкривати цю адресу)
-- дев-вхід без Google: кнопка «Dev-вхід» у шапці (працює, якщо в `.env` заданий `FAKE_USER_EMAIL`)
+- дев-вхід без Google: кнопка «Dev-вхід» у шапці (працює, якщо в `.env` заданий `FAKE_USER_EMAIL`); закрита сторінка без входу веде на `/login?next=…` і повертає туди після входу
+- смоуки API (без Google): `cd app/api && DB_NAME=python_labs_smoke uv run python tests/smoke_auth.py` (вхід, `?next=`, 401/403), `… UPLOADS_DIR=/tmp/pl-smoke uv run python tests/smoke_games.py` (гра, заявки, знахідки)
 
 У PyCharm (Pro): run-конфігурація FastAPI (`app/api/main.py`, в Uvicorn options — `--port 8030`) + npm-конфігурація `dev` (`app/vue/package.json`) + Compound «app» — запуск обох однією кнопкою.
 

@@ -1,10 +1,11 @@
 <script setup>
 import { computed } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 import { canAccess, user } from '../user.js'
 
 const isDev = import.meta.env.DEV
+const route = useRoute()
 const router = useRouter()
 const links = [
   ['/games', 'Ігри'], ['/tasks', 'Завдання'], ['/students', 'Студенти'],
@@ -12,6 +13,8 @@ const links = [
 ]
 // menu follows route access, so a page and its link open together
 const visible = computed(() => links.filter(([to]) => canAccess(router.resolve(to).meta.access)))
+// sign-in buttons bring the user back to the page they were on
+const next = computed(() => `?next=${encodeURIComponent(route.fullPath)}`)
 </script>
 
 <template>
@@ -30,8 +33,8 @@ const visible = computed(() => links.filter(([to]) => canAccess(router.resolve(t
           <a class="btn btn-outline-secondary btn-sm" href="/api/auth/logout">Вийти</a>
         </template>
         <template v-else>
-          <a v-if="isDev" class="btn btn-outline-secondary btn-sm" href="/api/auth/dev-login">Dev-вхід</a>
-          <a class="btn btn-primary btn-sm" href="/api/auth/login">Увійти з Google</a>
+          <a v-if="isDev" class="btn btn-outline-secondary btn-sm" :href="'/api/auth/dev-login' + next">Dev-вхід</a>
+          <a class="btn btn-primary btn-sm" :href="'/api/auth/login' + next">Увійти з Google</a>
         </template>
       </div>
     </div>

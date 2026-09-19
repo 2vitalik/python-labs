@@ -1,4 +1,8 @@
 async function handle(res) {
+  if (res.status === 401) {  // session gone mid-work: sign in and come back here
+    location.assign(`/login?error=session&next=${encodeURIComponent(location.pathname + location.search)}`)
+    throw new Error('Потрібен вхід')
+  }
   const data = res.status === 204 ? null : await res.json()
   if (!res.ok) throw new Error(data?.detail || `Помилка ${res.status}`)
   return data
