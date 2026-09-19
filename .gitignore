@@ -13,3 +13,6 @@ app/api/uploads/
 app/api/uploads.trash/
 
 *.hid.*
+
+.DS_Store
+.claude/settings.local.json
