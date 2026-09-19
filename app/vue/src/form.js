@@ -1,4 +1,7 @@
-import { computed, reactive, ref } from 'vue'
+import { computed, onUnmounted, reactive, ref, watch } from 'vue'
+import { onBeforeRouteLeave } from 'vue-router'
+
+const LEAVE = 'Є незбережені зміни. Піти без збереження?'
 
 // editable form + snapshot of what the server holds: dirty = they differ, fill() resets both
 export function useForm(fields) {
@@ -24,6 +27,14 @@ export function useForm(fields) {
       error.value = e.message
     }
   }
+
+  watch(form, () => (error.value = ''))  // a stale error next to the button reads as "still wrong"
+
+  // unsaved edits: confirm on in-app navigation, browser's own dialog on close/reload
+  onBeforeRouteLeave(() => !dirty.value || confirm(LEAVE))
+  const unload = (e) => dirty.value && e.preventDefault()
+  window.addEventListener('beforeunload', unload)
+  onUnmounted(() => window.removeEventListener('beforeunload', unload))
 
   return { form, dirty, saved, error, fill, save }
 }

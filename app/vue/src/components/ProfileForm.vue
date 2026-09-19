@@ -12,26 +12,30 @@ const form = defineModel({ type: Object, required: true })
         <div class="row g-3">
           <div class="col-md-4">
             <label class="form-label">Прізвище</label>
-            <input v-model="form.last_name" class="form-control" required>
+            <input v-model="form.last_name" class="form-control" autocomplete="off" required>
           </div>
           <div class="col-md-4">
             <label class="form-label">Імʼя</label>
-            <input v-model="form.first_name" class="form-control" required>
+            <input v-model="form.first_name" class="form-control" autocomplete="off" required>
           </div>
           <div class="col-md-4">
             <label class="form-label">По батькові</label>
-            <input v-model="form.patronymic" class="form-control">
+            <input v-model="form.patronymic" class="form-control" autocomplete="off">
           </div>
         </div>
-        <div v-if="hints" class="form-text mt-2">Українською, як у заліковці</div>
+        <div v-if="hints && !(form.last_name && form.first_name)" class="form-text mt-2">Українською, як у заліковці</div>
       </div>
     </div>
 
     <div class="card mb-3">
       <div class="card-header">GitHub</div>
       <div class="card-body">
-        <label class="form-label">Посилання на репозиторій</label>
+        <div class="d-flex">
+          <label class="form-label">Посилання на репозиторій</label>
+          <a v-if="form.github" :href="form.github" target="_blank" class="ms-auto small">відкрити ↗</a>
+        </div>
         <input v-model="form.github" class="form-control" type="url"
+               pattern="https://github\.com/[\w.\-]+/[\w.\-]+/?" title="https://github.com/користувач/репозиторій"
                placeholder="https://github.com/username/python-labs">
         <div v-if="hints" class="form-text mt-2">
           <ul class="mb-0 ps-3">
@@ -51,7 +55,7 @@ const form = defineModel({ type: Object, required: true })
           <span class="input-group-text">@</span>
           <input v-model="form.tg_username" class="form-control" placeholder="username">
         </div>
-        <div v-if="hints" class="form-text mt-2">
+        <div v-if="hints && !form.tg_username" class="form-text mt-2">
           <ul class="mb-0 ps-3">
             <li>Свій нік дивись у Telegram: Налаштування → Імʼя користувача (username)</li>
             <li>Якщо ніка ще нема — створи там само</li>

@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router'
 
 import { getStudent, putStudent } from '../api.js'
 import ProfileForm from '../components/ProfileForm.vue'
+import UserHead from '../components/UserHead.vue'
 import { useForm } from '../form.js'
 import { user } from '../user.js'
 
@@ -22,8 +23,7 @@ const submit = () => save(async (f) => (student.value = await putStudent(nick, f
 <template>
   <div v-if="user?.status === 'admin' && student" class="col-lg-8 mx-auto">
     <RouterLink to="/students" class="d-inline-block mb-2">← До списку</RouterLink>
-    <h1 class="h3 mb-1">{{ student.last_name }} {{ student.first_name }}</h1>
-    <p class="text-secondary mb-4">{{ student.email }}</p>
+    <UserHead :user="student" />
 
     <ProfileForm v-model="form" admin :dirty :saved :error @save="submit" />
   </div>

@@ -3,6 +3,7 @@ import { onUnmounted, watch } from 'vue'
 
 import { getMe, putProfile, unlinkTelegram } from '../api.js'
 import ProfileForm from '../components/ProfileForm.vue'
+import UserHead from '../components/UserHead.vue'
 import { useForm } from '../form.js'
 import { user } from '../user.js'
 
@@ -40,8 +41,7 @@ const submit = () => save(async (f) => {
 
 <template>
   <div v-if="user && user.status !== 'pending'" class="col-lg-8 mx-auto">
-    <h1 class="h3 mb-1">Мій профіль</h1>
-    <p class="text-secondary mb-4">{{ user.email }}</p>
+    <UserHead :user title="Мій профіль" />
 
     <ProfileForm v-model="form" hints :dirty :saved :error @save="submit">
       <template #telegram>
