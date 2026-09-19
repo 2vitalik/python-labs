@@ -113,4 +113,4 @@
 | platform | [T103](platform/.t/T103--ludopedia-slots/plan.md) | ⚙️ | ludopedia-slots | Лудопедія: слоти параметрів (E2) + топ-20 (E4) — план | 🟢 🟩 |
 | games | [T104](games/.t/T104-C--ludopedia-d3-d6.md) | 🔆 | ludopedia-d3-d6 | Лудопедія: що таке Д3–Д6 людською мовою | 🟢 🟩 |
 | platform | [T105](platform/.t/T105-Q--access-lock.md) | ❓ | access-lock | Питання по тимчасовому замку сторінок | 🔴 ⬜ |
-| tgbot | [T106](tgbot/.t/T106--tgbot-stub/plan.md) | ⚙️ | tgbot-stub | Telegram-бот: пустишка на aiogram — план | 🟢 ⬜ |
+| tgbot | [T106](tgbot/.t/T106--tgbot-stub/plan.md) | ⚙️ | tgbot-stub | Telegram-бот: пустишка на aiogram — план | 🟢 🟩 |

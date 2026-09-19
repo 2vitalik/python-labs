@@ -19,3 +19,11 @@
 - дев-вхід без Google: кнопка «Dev-вхід» у шапці (працює, якщо в `.env` заданий `FAKE_USER_EMAIL`)
 
 У PyCharm (Pro): run-конфігурація FastAPI (`app/api/main.py`, в Uvicorn options — `--port 8030`) + npm-конфігурація `dev` (`app/vue/package.json`) + Compound «app» — запуск обох однією кнопкою.
+
+## Telegram-бот
+
+Живе в `app/api/bot/` — та сама база, моделі й `.env`, що й API (тому не окремий пакет). Поки що пустишка: `/start` + привʼязка акаунта deep link-ом з профілю.
+
+- токен від BotFather → `TG_BOT_TOKEN` у `app/api/.env`;
+- запуск: `cd app/api && uv run python -m bot` (long polling, вебхук не потрібен);
+- смоук без Telegram: `DB_NAME=python_labs_smoke uv run python tests/smoke_bot.py`.

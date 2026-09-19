@@ -9,4 +9,5 @@ dependencies = [
     "pydantic-settings",
     "itsdangerous",
     "pyyaml>=6.0.3",
+    "aiogram>=3.31.0",
 ]
