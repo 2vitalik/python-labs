@@ -8,7 +8,7 @@ import uploads
 from bot import errors
 from config import settings
 from db import init_db
-from routes import (auth, games, me, my_claims, my_game, my_parts, my_rules, profile, refs,
+from routes import (auth, games, guide, me, my_claims, my_game, my_parts, my_rules, profile, refs,
                     student_games, students, tasks, taxonomy)
 
 
@@ -34,5 +34,6 @@ app.include_router(my_parts.router)
 app.include_router(my_claims.router)
 app.include_router(my_rules.router)
 app.include_router(refs.router)
+app.include_router(guide.router)
 uploads.ROOT.mkdir(parents=True, exist_ok=True)
 app.mount("/api/uploads", StaticFiles(directory=uploads.ROOT), name="uploads")

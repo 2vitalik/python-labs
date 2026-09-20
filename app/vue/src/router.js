@@ -5,6 +5,8 @@ import ColorsPage from './pages/ColorsPage.vue'
 import GameEditPage from './pages/GameEditPage.vue'
 import GamePage from './pages/GamePage.vue'
 import GamesPage from './pages/GamesPage.vue'
+import GuideAllPage from './pages/GuideAllPage.vue'
+import GuidePage from './pages/GuidePage.vue'
 import HomePage from './pages/HomePage.vue'
 import LoginPage from './pages/LoginPage.vue'
 import MyGamePage from './pages/MyGamePage.vue'
@@ -15,13 +17,17 @@ import StudentGamePage from './pages/StudentGamePage.vue'
 import StudentsPage from './pages/StudentsPage.vue'
 import TaskEditPage from './pages/TaskEditPage.vue'
 import TasksPage from './pages/TasksPage.vue'
+import { SECTIONS } from './guide.js'
 import { canAccess, safeNext, user, userLoaded } from './user.js'
 
-// for now students get only the profile; everything else stays admin-only until reopened page by page
+// the guide is public; students get only the profile, everything else stays admin-only until reopened page by page
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: '/', component: HomePage },
+    ...SECTIONS.filter((s) => s.page).map((s) => ({ path: s.path, component: GuidePage, meta: { slug: s.slug } })),
+    { path: '/labs/:n', component: GuidePage },
+    { path: '/guide', component: GuideAllPage },
     { path: '/login', component: LoginPage },
     { path: '/profile', component: ProfilePage, meta: { access: 'active' } },
     { path: '/my/game', component: MyGamePage, meta: { access: 'admin' } },
@@ -29,16 +35,21 @@ const router = createRouter({
     { path: '/students/:nick', component: StudentGamePage, meta: { access: 'admin' } },
     { path: '/students/:nick/edit', component: StudentEditPage, meta: { access: 'admin' } },
     { path: '/refs', component: RefsPage, meta: { access: 'admin' } },
-    { path: '/games', component: GamesPage, meta: { access: 'admin' } },
+    { path: '/games', component: GamesPage },  // guide text for all, the catalog itself is admin-only inside
     { path: '/games/new', component: GameEditPage, meta: { access: 'admin' } },
     { path: '/games/:slug', component: GamePage, meta: { access: 'admin', wide: true } },
     { path: '/games/:slug/edit', component: GameEditPage, meta: { access: 'admin' } },
     { path: '/colors', component: ColorsPage, meta: { access: 'admin' } },
     { path: '/colors2', component: Colors2Page, meta: { access: 'admin' } },
-    { path: '/tasks', component: TasksPage, meta: { access: 'admin', wide: true } },
+    { path: '/tasks', component: TasksPage, meta: { wide: true } },
     { path: '/tasks/new', component: TaskEditPage, meta: { access: 'admin' } },
     { path: '/tasks/:slug/edit', component: TaskEditPage, meta: { access: 'admin' } },
   ],
+  scrollBehavior(to, from, saved) {
+    if (saved) return saved
+    if (!to.hash) return { top: 0 }
+    // hash: the guide page scrolls to the anchor itself once its text has loaded (anchors.js)
+  },
 })
 
 router.beforeEach(async (to) => {
