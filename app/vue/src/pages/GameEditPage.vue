@@ -1,6 +1,8 @@
 <script setup>
-import { onMounted, reactive, ref } from 'vue'
+import { computed, onMounted, reactive, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+
+import Crumbs from '../components/Crumbs.vue'
 
 import { postGame, putGame } from '../api.js'
 import BaseGameForm from '../components/BaseGameForm.vue'
@@ -11,6 +13,7 @@ const route = useRoute()
 const router = useRouter()
 const form = reactive({ slug: '', title: '', icon: '', klass: '', axes: {}, summary: '', description: '', status: 'draft', order: 0 })
 const id = ref('')
+const crumbs = computed(() => [['/games', 'Ігри'], ...(id.value ? [[`/games/${form.slug}`, form.title], 'Редагування'] : ['Нова гра'])])
 const saved = ref(false)
 const error = ref('')
 
@@ -38,8 +41,8 @@ async function save() {
 </script>
 
 <template>
-  <div v-if="user?.status === 'admin'" class="col-lg-8 mx-auto">
-    <RouterLink :to="id ? `/games/${form.slug}` : '/games'" class="d-inline-block mb-2">← Назад</RouterLink>
+  <div v-if="user?.status === 'admin'">
+    <Crumbs :items="crumbs" />
     <h1 class="h3 mb-4">{{ id ? `Гра: ${form.title}` : 'Нова гра' }}</h1>
 
     <BaseGameForm v-model="form" @save="save" />

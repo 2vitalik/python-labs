@@ -5,6 +5,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { SECTIONS } from '../guide.js'
 import { useNavFit } from '../navFit.js'
 import { canAccess, user } from '../user.js'
+import IconHome from './IconHome.vue'
 import NavUser from './NavUser.vue'
 
 const route = useRoute()
@@ -18,7 +19,8 @@ const visible = computed(() => links.filter(([to]) => canAccess(router.resolve(t
 const { bar, list, more, fit, stage, layout } = useNavFit(visible)
 const row = computed(() => visible.value.slice(0, fit.value))
 const rest = computed(() => visible.value.slice(fit.value))
-const restActive = computed(() => rest.value.some(([to]) => route.path.startsWith(to)))
+const isActive = (to) => route.path === to || route.path.startsWith(to + '/')  // /labs/1 lights «Лаби»
+const restActive = computed(() => rest.value.some(([to]) => isActive(to)))
 
 const open = ref(false)
 const close = (e) => (!e || !more.value?.contains(e.target)) && (open.value = false)
@@ -33,18 +35,18 @@ onUnmounted(() => document.removeEventListener('click', close))
     <div class="page d-flex align-items-center">
       <RouterLink class="navbar-brand d-flex align-items-center" to="/" title="Python Labs">
         <template v-if="stage < 2">Python Labs</template>
-        <svg v-else width="20" height="20" viewBox="0 0 16 16" fill="currentColor" aria-label="Python Labs">
-          <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5"/>
-        </svg>
+        <IconHome v-else :size="20" />
       </RouterLink>
       <ul ref="list" class="navbar-nav">
         <li v-for="[to, text] in row" :key="to" class="nav-item">
-          <RouterLink class="nav-link" :to="to">{{ text }}</RouterLink>
+          <RouterLink class="nav-link" :class="{ active: isActive(to) }" :to="to">{{ text }}</RouterLink>
         </li>
         <li ref="more" class="nav-item dropdown" :class="{ 'invisible position-absolute': !rest.length }">
           <a class="nav-link dropdown-toggle" :class="{ active: restActive }" href="#" @click.prevent="open = !open">Ще</a>
           <ul class="dropdown-menu dropdown-menu-end" :class="{ show: open }">
-            <li v-for="[to, text] in rest" :key="to"><RouterLink class="dropdown-item" :to="to">{{ text }}</RouterLink></li>
+            <li v-for="[to, text] in rest" :key="to">
+              <RouterLink class="dropdown-item" :class="{ active: isActive(to) }" :to="to">{{ text }}</RouterLink>
+            </li>
           </ul>
         </li>
       </ul>
@@ -58,5 +60,8 @@ onUnmounted(() => document.removeEventListener('click', close))
 /* the row takes the free width; links never shrink or wrap — the fit is computed in navFit.js */
 .navbar-nav { flex: 1 1 0; min-width: 0; }
 .nav-item { flex-shrink: 0; white-space: nowrap; }
-.nav-link { padding-left: .45rem; padding-right: .45rem; }
+.nav-link { padding-left: .45rem; padding-right: .45rem; position: relative; }
+/* current page: a bar under the word (::before — ::after is the «Ще» caret); colour and weight stay, so navFit's widths hold */
+.nav-link.active::before { content: ''; position: absolute; left: .45rem; right: .45rem; bottom: .2rem; height: 2px;
+                          border-radius: 1px; background: var(--bs-primary); }
 </style>

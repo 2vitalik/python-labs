@@ -1,6 +1,8 @@
 <script setup>
-import { onMounted, reactive, ref } from 'vue'
+import { computed, onMounted, reactive, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+
+import Crumbs from '../components/Crumbs.vue'
 
 import { postTask, putTask } from '../api.js'
 import TaskForm from '../components/TaskForm.vue'
@@ -14,6 +16,7 @@ const form = reactive({
   tags: '', games: '', coin: '', amount: 1, max_count: 1, parent: route.query.parent || '', status: 'draft', order: 0,
 })
 const id = ref('')
+const crumbs = computed(() => [[`/tasks?zone=${form.zone}`, 'Таски'], id.value ? 'Редагування' : 'Нове завдання'])
 const saved = ref(false)
 const error = ref('')
 const csv = (s) => s.split(',').map((x) => x.trim()).filter(Boolean)
@@ -46,8 +49,8 @@ async function save() {
 </script>
 
 <template>
-  <div v-if="user?.status === 'admin'" class="col-lg-8 mx-auto">
-    <RouterLink :to="`/tasks?zone=${form.zone}`" class="d-inline-block mb-2">← До каталогу</RouterLink>
+  <div v-if="user?.status === 'admin'">
+    <Crumbs :items="crumbs" />
     <h1 class="h3 mb-4">{{ id ? `Завдання: ${form.title}` : 'Нове завдання' }}</h1>
 
     <TaskForm v-model="form" @save="save" />

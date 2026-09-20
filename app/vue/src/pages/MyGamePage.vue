@@ -4,6 +4,7 @@ import { computed, onMounted, ref } from 'vue'
 import { getMyGame, getStudentGame, postClaim, postPart } from '../api.js'
 import ClaimPicker from '../components/ClaimPicker.vue'
 import ClaimRow from '../components/ClaimRow.vue'
+import Crumbs from '../components/Crumbs.vue'
 import EntityCard from '../components/EntityCard.vue'
 import GameGraph from '../components/GameGraph.vue'
 import Md from '../components/Md.vue'
@@ -97,7 +98,8 @@ onMounted(() => Promise.all([loadCatalog(), reload()]))
 </script>
 
 <template>
-  <div class="col-lg-10 mx-auto">
+  <div>
+    <Crumbs :items="['Моя гра']" />
     <p v-if="denied" class="text-center mt-5">Сторінка для учасників курсу — увійди з поштою @nure.ua.</p>
 
     <template v-else-if="loaded && !game">

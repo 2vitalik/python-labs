@@ -2,6 +2,7 @@
 import { onMounted, reactive, ref } from 'vue'
 
 import { deleteRef, getRefs, postRef, putRef } from '../api.js'
+import Crumbs from '../components/Crumbs.vue'
 import { user } from '../user.js'
 
 const refs = ref([])
@@ -42,7 +43,8 @@ onMounted(load)
 </script>
 
 <template>
-  <div class="col-lg-8 mx-auto">
+  <div>
+    <Crumbs :items="['Знахідки']" />
     <p v-if="denied" class="text-center mt-5">Сторінка для учасників курсу — увійди з поштою @nure.ua.</p>
     <template v-else>
       <h1 class="h3 mb-1">Знахідки</h1>

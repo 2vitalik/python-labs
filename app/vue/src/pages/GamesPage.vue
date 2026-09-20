@@ -2,6 +2,7 @@
 import { computed, onMounted, ref } from 'vue'
 
 import GameCard from '../components/GameCard.vue'
+import Crumbs from '../components/Crumbs.vue'
 import GuideHead from '../components/GuideHead.vue'
 import { games, KLASSES, loadCatalog } from '../catalog.js'
 import { user } from '../user.js'
@@ -15,6 +16,7 @@ onMounted(() => admin.value && loadCatalog())
 
 <template>
   <div>
+    <Crumbs :items="['Ігри']" />
     <GuideHead slug="game" stub="Каталог базових ігор відкриється тут незабаром. Поки що — варіанти перелічені вище; вибір обговорюємо на парі або в чаті." />
     <template v-if="admin">
       <div class="d-flex justify-content-between align-items-center mb-3">

@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
+import Crumbs from '../components/Crumbs.vue'
 import { safeNext, user } from '../user.js'
 
 const route = useRoute()
@@ -17,7 +18,8 @@ const errorText = {
 </script>
 
 <template>
-  <div class="text-center mt-5">
+  <div class="text-center mt-4">
+    <Crumbs :items="['Вхід']" class="text-start" />
     <div v-if="errorText[route.query.error]" class="alert alert-warning">{{ errorText[route.query.error] }}</div>
     <template v-if="!user">
       <h1 class="h3 mb-3">Потрібен вхід</h1>

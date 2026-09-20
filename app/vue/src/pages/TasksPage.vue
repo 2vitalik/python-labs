@@ -1,6 +1,7 @@
 <script setup>
 import { computed, onMounted } from 'vue'
 
+import Crumbs from '../components/Crumbs.vue'
 import GuideHead from '../components/GuideHead.vue'
 import TaskCatalog from '../components/TaskCatalog.vue'
 import { games, loadCatalog } from '../catalog.js'
@@ -16,6 +17,7 @@ onMounted(() => admin.value && loadCatalog())
 
 <template>
   <div>
+    <Crumbs :items="['Таски']" />
     <GuideHead slug="tasks" stub="Каталог завдань із цінами відкриється тут незабаром — до першої лаби." />
     <template v-if="admin">
       <div class="d-flex flex-wrap align-items-center gap-2 mb-3">

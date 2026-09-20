@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 
+import Crumbs from '../components/Crumbs.vue'
 // palette workshop: pick zone base colors and a subzone-variation principle by code (e.g. "G h2")
 const FAMILIES = [
   { code: 'R', name: 'червоний', h: 4 }, { code: 'O', name: 'помаранчевий', h: 27 },
@@ -28,6 +29,7 @@ const copy = (label, css) => { navigator.clipboard?.writeText(css); copied.value
 </script>
 
 <template>
+  <Crumbs :items="['Кольори']" />
   <h1 class="h3">Кольори <span class="text-secondary fs-6">майстерня палітри зон і підзон</span></h1>
   <p class="text-secondary">Клік по плитці копіює css-значення. У відповідях достатньо коду: сімейство — буква (<b>G</b>),
     варіація — буква+номер (<b>G h2</b>), готовий набір — <b>К2</b>. {{ copied ? `Скопійовано: ${copied}` : '' }}</p>

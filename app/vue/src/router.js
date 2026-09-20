@@ -37,7 +37,7 @@ const router = createRouter({
     { path: '/refs', component: RefsPage, meta: { access: 'admin' } },
     { path: '/games', component: GamesPage },  // guide text for all, the catalog itself is admin-only inside
     { path: '/games/new', component: GameEditPage, meta: { access: 'admin' } },
-    { path: '/games/:slug', component: GamePage, meta: { access: 'admin', wide: true } },
+    { path: '/games/:slug', component: GamePage, meta: { access: 'admin' } },
     { path: '/games/:slug/edit', component: GameEditPage, meta: { access: 'admin' } },
     { path: '/colors', component: ColorsPage, meta: { access: 'admin' } },
     { path: '/colors2', component: Colors2Page, meta: { access: 'admin' } },

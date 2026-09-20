@@ -3,6 +3,7 @@ import { computed, onMounted, ref } from 'vue'
 
 import { getStudents, importStudents } from '../api.js'
 import Avatar from '../components/Avatar.vue'
+import Crumbs from '../components/Crumbs.vue'
 import { user } from '../user.js'
 
 const students = ref([])
@@ -37,6 +38,7 @@ onMounted(load)
 <template>
   <p v-if="denied" class="text-center mt-5">Сторінка для учасників курсу — увійди з поштою @nure.ua.</p>
   <div v-else>
+    <Crumbs :items="['Студи']" />
     <div class="d-flex align-items-center gap-2 mb-3">
       <h1 class="h3 mb-0">Студенти <span class="text-secondary fs-6">({{ students.length }})</span></h1>
       <div v-if="isAdmin" class="btn-group btn-group-sm ms-2">

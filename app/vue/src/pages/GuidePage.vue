@@ -4,8 +4,9 @@ import { useRoute, useRouter } from 'vue-router'
 
 import { flash, guideClick } from '../anchors.js'
 import { getGuidePage } from '../api.js'
+import Crumbs from '../components/Crumbs.vue'
 import GuideText from '../components/GuideText.vue'
-import { LABS, loadGuide, pages } from '../guide.js'
+import { ALL, LABS, loadGuide, pages } from '../guide.js'
 import { tocOf } from '../md.js'
 
 const route = useRoute()
@@ -18,6 +19,7 @@ const lab = computed(() => LABS.find((l) => l.slug === slug.value))
 const prev = computed(() => lab.value && LABS[lab.value.n - 2])
 const next = computed(() => lab.value && LABS[lab.value.n])
 const title = (l) => pages.value[l.slug]?.title || `Лаба ${l.n}`
+const crumbs = computed(() => (lab.value ? [['/labs', 'Лаби'], `Лаба ${lab.value.n}`] : [ALL.find((s) => s.slug === slug.value)?.nav]))
 const updated = computed(() => page.value && new Date(page.value.updated).toLocaleDateString('uk-UA'))
 
 async function load() {
@@ -32,6 +34,7 @@ loadGuide()
 </script>
 
 <template>
+  <Crumbs :items="crumbs" />
   <div v-if="page === false" class="text-center text-secondary mt-5">Такої сторінки нема.</div>
   <div v-else-if="page">
     <h1 class="h2 mb-3">{{ page.title }}</h1>
@@ -41,7 +44,7 @@ loadGuide()
       <RouterLink to="/labs" class="text-secondary">Усі лаби</RouterLink>
       <RouterLink v-if="next" :to="next.path" class="text-end">{{ title(next) }} →</RouterLink><span v-else></span>
     </nav>
-    <p class="text-secondary small mt-4 mb-0">Оновлено {{ updated }}</p>
+    <p class="text-body-tertiary small text-end mt-4 mb-0">Оновлено {{ updated }}</p>
     <nav v-if="toc.length > 1" class="toc" @click="guideClick($event, router)">
       <div class="text-uppercase fw-semibold mb-1">Зміст</div>
       <a v-for="h in toc" :key="h.id" :href="'#' + h.id" class="d-block text-decoration-none text-secondary"

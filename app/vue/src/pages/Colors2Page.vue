@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 
+import Crumbs from '../components/Crumbs.vue'
 import { loadCatalog, zones } from '../catalog.js'
 
 // proposal П1: zone = a RANGE of one color family; neighbour zones get neighbour families,
@@ -33,6 +34,7 @@ onMounted(loadCatalog)
 </script>
 
 <template>
+  <Crumbs :items="['Кольори v2']" />
   <h1 class="h3">Кольори v2 <span class="text-secondary fs-6">пропозиція П1: зона = діапазон сімейства</span></h1>
   <p class="text-secondary mb-1">Принципи: сусідні зони — сусідні сімейства (Логіка↔Рівні на межі синього/фіолетового);
     межові підзони беруть крайні відтінки; Код — сірий; Супровід — фуксія, якої нема ніде більше.

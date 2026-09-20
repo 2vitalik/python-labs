@@ -10,7 +10,7 @@ export const SECTIONS = [
   { slug: 'score', path: '/score', nav: 'Бали', page: true },
   { slug: 'howto', path: '/howto', nav: 'Здача', page: true },
 ]
-export const CHANGES = { slug: 'changes', path: '/changes', page: true }  // not in the menu: linked from the home page
+export const CHANGES = { slug: 'changes', path: '/changes', nav: 'Що змінилось', page: true }  // not in the menu: linked from the home page
 export const LABS = [1, 2, 3, 4, 5].map((n) => ({ slug: `lab${n}`, path: `/labs/${n}`, n }))
 export const ALL = [...SECTIONS.flatMap((s) => (s.slug === 'labs' ? [s, ...LABS] : [s])), CHANGES]  // /guide page order
 

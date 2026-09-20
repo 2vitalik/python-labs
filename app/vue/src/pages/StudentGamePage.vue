@@ -5,6 +5,7 @@ import { useRoute } from 'vue-router'
 import { getStudentGame } from '../api.js'
 import Avatar from '../components/Avatar.vue'
 import CoinBadge from '../components/CoinBadge.vue'
+import Crumbs from '../components/Crumbs.vue'
 import GameGraph from '../components/GameGraph.vue'
 import Md from '../components/Md.vue'
 import RuleRow from '../components/RuleRow.vue'
@@ -46,8 +47,8 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="col-lg-10 mx-auto">
-    <RouterLink to="/students" class="d-inline-block mb-2">← До студентів</RouterLink>
+  <div>
+    <Crumbs :items="[['/students', 'Студи'], data?.student.name || nick]" />
     <p v-if="missing" class="text-center mt-5 text-secondary">Гра ще не створена або сторінка недоступна.</p>
 
     <template v-else-if="data">

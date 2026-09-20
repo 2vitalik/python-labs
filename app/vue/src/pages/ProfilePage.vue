@@ -2,6 +2,7 @@
 import { onUnmounted, watch } from 'vue'
 
 import { getMe, putProfile, unlinkTelegram } from '../api.js'
+import Crumbs from '../components/Crumbs.vue'
 import ProfileForm from '../components/ProfileForm.vue'
 import UserHead from '../components/UserHead.vue'
 import { useForm } from '../form.js'
@@ -40,7 +41,8 @@ const submit = () => save(async (f) => {
 </script>
 
 <template>
-  <div v-if="user && user.status !== 'pending'" class="col-lg-8 mx-auto">
+  <div v-if="user && user.status !== 'pending'">
+    <Crumbs :items="['Профіль']" />
     <UserHead :user title="Мій профіль" />
 
     <ProfileForm v-model="form" hints :dirty :saved :error @save="submit">
