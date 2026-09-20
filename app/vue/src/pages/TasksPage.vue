@@ -32,7 +32,8 @@ onMounted(() => admin.value && loadCatalog())
                  @change="set({ algo: $event.target.checked ? '1' : '' })">
           <label class="form-check-label" for="algo">⭐ алгоритмічні</label>
         </div>
-        <RouterLink to="/tasks/new" class="btn btn-outline-primary btn-sm ms-auto">➕ Нове завдання</RouterLink>
+        <RouterLink to="/refs" class="btn btn-outline-secondary btn-sm ms-auto">💡 Знахідки</RouterLink>
+        <RouterLink to="/tasks/new" class="btn btn-outline-primary btn-sm">➕ Нове завдання</RouterLink>
       </div>
 
       <TaskCatalog />

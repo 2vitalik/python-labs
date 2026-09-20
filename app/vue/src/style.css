@@ -1,3 +1,7 @@
+/* one page width for every page and the menu; change it here (tools/wide pages use container-fluid instead) */
+:root { --page-max: 52rem; }
+.page { width: 100%; max-width: var(--page-max); margin: 0 auto; padding: 0 1rem; }
+
 /* Bootstrap 5.3 placeholders are nearly as dark as text; keep them clearly lighter */
 .form-control::placeholder {
   color: var(--bs-gray-500);

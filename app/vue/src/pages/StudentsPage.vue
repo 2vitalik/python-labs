@@ -2,6 +2,7 @@
 import { computed, onMounted, ref } from 'vue'
 
 import { getStudents, importStudents } from '../api.js'
+import Avatar from '../components/Avatar.vue'
 import { user } from '../user.js'
 
 const students = ref([])
@@ -62,7 +63,7 @@ onMounted(load)
           <img v-if="s.game.cover" :src="s.game.cover" class="card-img-top object-fit-cover cover">
           <div class="card-body">
             <div class="d-flex align-items-center gap-2">
-              <img v-if="s.picture" :src="s.picture" class="rounded-circle" width="28" height="28" :alt="fio(s)">
+              <Avatar :user="s" :size="28" />
               <span class="fw-semibold">{{ fio(s) }}</span>
               <span v-if="s.status === 'admin'" class="badge text-bg-secondary fw-normal">викладач</span>
               <span v-else-if="s.status === 'pending'" class="badge text-bg-warning fw-normal">очікує</span>

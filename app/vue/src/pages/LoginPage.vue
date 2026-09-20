@@ -17,7 +17,7 @@ const errorText = {
 </script>
 
 <template>
-  <div class="col-lg-6 mx-auto text-center mt-5">
+  <div class="text-center mt-5">
     <div v-if="errorText[route.query.error]" class="alert alert-warning">{{ errorText[route.query.error] }}</div>
     <template v-if="!user">
       <h1 class="h3 mb-3">Потрібен вхід</h1>

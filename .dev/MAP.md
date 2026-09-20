@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T118** · тікетів: 117 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T121** · тікетів: 120 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -125,3 +125,6 @@
 | — | [T115](.t/T115-P--guide-on-site.md) | 💡 | guide-on-site | Методичка на сайті: розділи, сторінки, редагування | 🟢 ⬜ |
 | — | [T116](.t/T116-Q--guide-questions.md) | ❓ | guide-questions | Питання по методичці на сайті | 🔴 ⬜ |
 | — | [T117](.t/T117--guide-v1/plan.md) | ⚙️ | guide-v1 | Методичка на сайті v1: сторінки, якорі, домашня — план | 🟢 ⬜ |
+| platform | [T118](platform/.t/T118--nav-width-polish/plan.md) | ⚙️ | nav-width-polish | Меню коротше з «Ще», єдина ширина сторінки, тексти в стилі Notion — план | 🟢 ⬜ |
+| platform | [T119](platform/.t/T119-Q--nav-naming-questions.md) | ❓ | nav-naming-questions | Питання по меню й ширині: назва «Здача», ширина 52rem, зміст | 🟢 ⬜ |
+| platform | [T120](platform/.t/T120-C--avatar-glitch.md) | 🔆 | avatar-glitch | Аватар Google інколи не вантажиться — розбір і захист | 🟢 ⬜ |

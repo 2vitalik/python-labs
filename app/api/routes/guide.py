@@ -8,7 +8,7 @@ from fastapi import APIRouter, HTTPException
 
 router = APIRouter(prefix="/api/guide")
 ROOT = Path(__file__).resolve().parents[3] / "data" / "guide"
-MORE = "<!-- more -->"  # above it — the brief for the home page, below — the rest of the page
+MORE = "<!-- more -->"  # optional: above it — a short `brief` for listings; pages render brief + body together
 _cache: dict[str, tuple[float, dict]] = {}
 
 

@@ -19,7 +19,10 @@ onMounted(() => admin.value && loadCatalog())
     <template v-if="admin">
       <div class="d-flex justify-content-between align-items-center mb-3">
         <h1 class="h3 mb-0">Ігри <span class="text-secondary fs-6">({{ shown.length }})</span></h1>
-        <RouterLink to="/games/new" class="btn btn-outline-primary btn-sm">➕ Нова гра</RouterLink>
+        <div class="d-flex gap-2">
+          <RouterLink to="/refs" class="btn btn-outline-secondary btn-sm">💡 Знахідки</RouterLink>
+          <RouterLink to="/games/new" class="btn btn-outline-primary btn-sm">➕ Нова гра</RouterLink>
+        </div>
       </div>
 
       <div class="mb-3 d-flex gap-2 flex-wrap">

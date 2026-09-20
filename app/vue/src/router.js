@@ -17,7 +17,7 @@ import StudentGamePage from './pages/StudentGamePage.vue'
 import StudentsPage from './pages/StudentsPage.vue'
 import TaskEditPage from './pages/TaskEditPage.vue'
 import TasksPage from './pages/TasksPage.vue'
-import { SECTIONS } from './guide.js'
+import { CHANGES, SECTIONS } from './guide.js'
 import { canAccess, safeNext, user, userLoaded } from './user.js'
 
 // the guide is public; students get only the profile, everything else stays admin-only until reopened page by page
@@ -25,7 +25,7 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: '/', component: HomePage },
-    ...SECTIONS.filter((s) => s.page).map((s) => ({ path: s.path, component: GuidePage, meta: { slug: s.slug } })),
+    ...[...SECTIONS, CHANGES].filter((s) => s.page).map((s) => ({ path: s.path, component: GuidePage, meta: { slug: s.slug } })),
     { path: '/labs/:n', component: GuidePage },
     { path: '/guide', component: GuideAllPage },
     { path: '/login', component: LoginPage },

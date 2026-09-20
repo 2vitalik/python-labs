@@ -28,7 +28,7 @@ getGuidePage(props.slug).then(async (p) => {
       <summary class="text-secondary">{{ page.title }} — текст методички</summary>
       <GuideText :text="text" class="mt-2 mb-4" />
     </details>
-    <div v-else class="mx-auto" style="max-width: 52rem">
+    <div v-else>
       <h1 class="h2 mb-3">{{ page.title }}</h1>
       <GuideText :text="text" />
       <div class="alert alert-light border mt-4">🚧 {{ stub }}</div>

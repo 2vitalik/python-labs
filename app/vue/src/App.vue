@@ -8,7 +8,7 @@ const route = useRoute()
 
 <template>
   <NavBar />
-  <main class="py-4" :class="route.meta.wide ? 'container-fluid px-4' : 'container'">
+  <main class="py-4" :class="route.meta.wide ? 'container-fluid px-4' : 'page'">
     <RouterView />
   </main>
 </template>

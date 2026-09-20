@@ -18,7 +18,7 @@ onMounted(loadCatalog)
 
 <template>
   <div v-if="game">
-    <div class="col-lg-8 mx-auto">
+    <div class="page px-0">
       <RouterLink to="/games" class="d-inline-block mb-2">← До ігор</RouterLink>
       <div class="d-flex align-items-center gap-2 mb-1">
         <span class="fs-2">{{ game.icon }}</span>

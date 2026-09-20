@@ -3,6 +3,7 @@ import { computed, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 import { getStudentGame } from '../api.js'
+import Avatar from '../components/Avatar.vue'
 import CoinBadge from '../components/CoinBadge.vue'
 import GameGraph from '../components/GameGraph.vue'
 import Md from '../components/Md.vue'
@@ -60,7 +61,7 @@ onMounted(async () => {
         <RouterLink v-if="data.mine" to="/my/game" class="ms-auto small">✏️ Редагувати в «Моїй грі»</RouterLink>
       </div>
       <div class="d-flex align-items-center gap-2 text-secondary mb-3">
-        <img v-if="data.student.picture" :src="data.student.picture" class="rounded-circle" width="28" height="28" :alt="data.student.name">
+        <Avatar :user="data.student" :size="28" />
         <span>{{ data.student.name }}</span>
         <span v-if="data.student.group" class="small">· {{ data.student.group }}</span>
         <span class="small ms-auto">
