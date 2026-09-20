@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T115** · тікетів: 114 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T117** · тікетів: 116 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -122,3 +122,5 @@
 | tgbot | [T112](tgbot/.t/T112-Q--bot-alerts-questions.md) | ❓ | bot-alerts-questions | Адмін-алерти: види, назви, що ще слати | 🔴 ⬜ |
 | tgbot | [T113](tgbot/.t/T113--bot-alerts-2/plan.md) | ⚙️ | bot-alerts-2 | Алерти, друга хвиля: заявки, гра, помилки, дайджест, перший вхід, /mute — план | 🟢 🟩 |
 | platform | [T114](platform/.t/T114--login-next/plan.md) | ⚙️ | login-next | Сторінка входу з поверненням на цільову сторінку — план | 🟢 🟩 |
+| — | [T115](.t/T115-P--guide-on-site.md) | 💡 | guide-on-site | Методичка на сайті: розділи, сторінки, редагування | 🟢 ⬜ |
+| — | [T116](.t/T116-Q--guide-questions.md) | ❓ | guide-questions | Питання по методичці на сайті | 🔴 ⬜ |
