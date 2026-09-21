@@ -8,6 +8,7 @@ from starlette.responses import RedirectResponse
 
 from bot import alerts
 from config import settings
+from models.activity import Activity
 from models.history import record_new
 from models.user import Status, User
 
@@ -77,8 +78,9 @@ async def upsert_user(info: dict, tasks: BackgroundTasks):
     user = await User.find_one(User.email == email)
     is_new = user is None
     user = user or User(email=email)
-    first = user.seen_at is None
-    user.seen_at = datetime.now(timezone.utc)
+    first = user.first_seen_at is None
+    user.last_seen_at = datetime.now(timezone.utc)
+    user.first_seen_at = user.first_seen_at or user.last_seen_at
     user.name = info.get("name", "")
     user.picture = info.get("picture", "")
     if not user.last_name and not user.first_name:  # prefill empty names from Google claims
@@ -87,6 +89,7 @@ async def upsert_user(info: dict, tasks: BackgroundTasks):
     if email in settings.admin_list:
         user.status = Status.admin
     await user.save()
+    await Activity(user=email, kind="login").insert()
     if is_new:
         await record_new(user, actor=email)
     if first:

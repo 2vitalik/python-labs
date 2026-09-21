@@ -14,12 +14,14 @@ const game = computed(() => games.value.find((g) => g.slug === slug))
 const { grouped } = useTaskFilter(slug)
 const shown = computed(() => grouped.value.reduce((n, z) => n + z.subs.reduce((m, s) => m + s.list.length, 0), 0))
 
+const SHOW_TASKS = false  // «Завдання гри» hidden until the catalog has enough per-game cards (T125 п. 44)
+
 onMounted(loadCatalog)
 </script>
 
 <template>
   <div v-if="game">
-    <Crumbs :items="[['/games', 'Ігри'], game.title]" />
+    <Crumbs :items="[['/method', 'Методичка'], ['/games', 'Ігри'], game.title]" />
     <div class="d-flex align-items-center gap-2 mb-1">
       <span class="fs-2">{{ game.icon }}</span>
       <h1 class="h3 mb-0">{{ game.title }}</h1>
@@ -34,9 +36,11 @@ onMounted(loadCatalog)
     </p>
     <Md :text="game.description" class="mb-4" />
 
-    <h2 id="catalog" class="h5">Завдання гри <span class="count fs-6">({{ shown }})</span></h2>
-    <p class="text-secondary small">Лише специфічні для цієї гри; універсальні — у <RouterLink to="/tasks?game=universal">каталозі</RouterLink>.</p>
-    <TaskCatalog :game="slug" />
+    <template v-if="SHOW_TASKS">
+      <h2 id="catalog" class="h5">Завдання гри <span class="count fs-6">({{ shown }})</span></h2>
+      <p class="text-secondary small">Лише специфічні для цієї гри; універсальні — у <RouterLink to="/tasks?game=universal">каталозі</RouterLink>.</p>
+      <TaskCatalog :game="slug" />
+    </template>
   </div>
   <p v-else class="text-center mt-5 text-secondary">Гру не знайдено або каталог ще вантажиться…</p>
 </template>

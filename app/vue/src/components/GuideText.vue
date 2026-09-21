@@ -30,6 +30,9 @@ watch(html, lightHash, { flush: 'post' })
 .guide h2 { font-size: 1.35rem; margin-top: 1.75rem; }
 .guide h3 { font-size: 1.1rem; margin-top: 1.25rem; }
 .guide h2, .guide h3, .guide h4, .guide li, .guide p, .guide tr { scroll-margin-top: 1rem; }
+/* Notion-like: the bullet sits about where a paragraph starts, a nested bullet under its parent's text */
+.guide ul { padding-left: 1.25rem; }
+.guide ol { padding-left: 1.5rem; }
 .guide li { margin-bottom: .2rem; }
 .guide li > p { margin-bottom: .25rem; }
 .guide .anchor { position: absolute; }

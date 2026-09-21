@@ -13,7 +13,7 @@ const route = useRoute()
 const router = useRouter()
 const form = reactive({ slug: '', title: '', icon: '', klass: '', axes: {}, summary: '', description: '', status: 'draft', order: 0 })
 const id = ref('')
-const crumbs = computed(() => [['/games', 'Ігри'], ...(id.value ? [[`/games/${form.slug}`, form.title], 'Редагування'] : ['Нова гра'])])
+const crumbs = computed(() => [['/method', 'Методичка'], ['/games', 'Ігри'], ...(id.value ? [[`/games/${form.slug}`, form.title], 'Редагування'] : ['Нова гра'])])
 const saved = ref(false)
 const error = ref('')
 

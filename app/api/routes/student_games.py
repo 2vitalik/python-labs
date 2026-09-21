@@ -49,7 +49,7 @@ async def list_students(user: User = Depends(active_user)):
         if user.status == Status.admin:
             row |= {"email": u.email, "github": u.github,
                     "tg_username": u.tg_username, "tg_linked": u.tg_chat_id is not None,
-                    "seen": u.seen_at is not None}
+                    "seen": u.first_seen_at is not None}
         out.append(row)
     return out
 

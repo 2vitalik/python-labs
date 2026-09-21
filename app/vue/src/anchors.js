@@ -22,6 +22,8 @@ export function flash(id) {
   return true
 }
 
+export const toTop = () => window.scrollTo({ top: 0, behavior: reduced() ? 'auto' : 'smooth' })
+
 export async function copyLink(a) {
   const url = location.origin + location.pathname + a.getAttribute('href')
   try { await navigator.clipboard.writeText(url) } catch { return }

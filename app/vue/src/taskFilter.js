@@ -1,10 +1,25 @@
-import { computed } from 'vue'
+import { computed, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 import { kidsOf, tasks, zones } from './catalog.js'
 
 // tolerant search over the RU/UA/EN mixed corpus: case + и/і + е/є folded
-const norm = (s) => String(s).toLowerCase().replace(/и/g, 'і').replace(/є/g, 'е')
+export const norm = (s) => String(s).toLowerCase().replace(/и/g, 'і').replace(/є/g, 'е')
+const esc = (s) => s.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]))
+
+// every match of q wrapped in <mark>; norm() keeps the length, so indices from the folded copy apply to the original
+export function hl(text, q, escape = esc) {
+  text = String(text ?? '')
+  const n = norm(text), nq = norm(q || '')
+  let out = '', i = 0, j
+  while (nq && (j = n.indexOf(nq, i)) >= 0) {
+    out += escape(text.slice(i, j)) + '<mark>' + escape(text.slice(j, j + nq.length)) + '</mark>'
+    i = j + nq.length
+  }
+  return out + escape(text.slice(i))
+}
+// the same over rendered html: only the text between tags (already escaped by the renderer)
+export const markHtml = (html, q) => (q ? html.split(/(<[^>]+>)/).map((s) => (s.startsWith('<') ? s : hl(s, q, (t) => t))).join('') : html)
 
 export function useTaskFilter(fixedGame = '') {
   const route = useRoute()
@@ -15,11 +30,13 @@ export function useTaskFilter(fixedGame = '') {
     zone: route.query.zone || '', sub: route.query.sub || '',
   }))
 
-  function set(patch) {
+  async function set(patch) {
     const q = { ...route.query, ...patch }
     for (const k in q) if (!q[k]) delete q[k]
-    router.replace({ query: q })
-    if ('zone' in patch) document.getElementById('catalog')?.scrollIntoView()  // guide block above: keep the catalog head on top
+    await router.replace({ query: q })
+    if (!('zone' in patch)) return
+    await nextTick()  // scroll once the new list is in the DOM: a shorter list would clamp the position back down
+    document.getElementById('catalog')?.scrollIntoView()  // guide block above: keep the catalog head on top
   }
 
   function matches(t) {

@@ -25,6 +25,7 @@ async function upload(url, file) {
 export const getMe = () => request('/api/me')
 export const putProfile = (data) => request('/api/profile', 'PUT', data)
 export const unlinkTelegram = () => request('/api/me/telegram', 'DELETE')
+export const postView = (path) => request('/api/me/view', 'POST', { path })
 export const getStudents = () => request('/api/students')
 export const getStudent = (nick) => request(`/api/students/${nick}`)
 export const putStudent = (nick, data) => request(`/api/students/${nick}`, 'PUT', data)

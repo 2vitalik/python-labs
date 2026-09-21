@@ -2,6 +2,7 @@ from beanie import init_beanie
 from pymongo import AsyncMongoClient
 
 from config import settings
+from models.activity import Activity
 from models.base_game import BaseGame
 from models.game import Claim, Game, Part
 from models.history import Change
@@ -15,4 +16,4 @@ from models.user import User
 async def init_db():
     client = AsyncMongoClient(settings.mongo_uri)
     await init_beanie(client[settings.db_name],
-                      document_models=[User, Change, Route, BaseGame, Task, Game, Part, Claim, Rule, Ref])
+                      document_models=[User, Change, Route, BaseGame, Task, Game, Part, Claim, Rule, Ref, Activity])

@@ -2,8 +2,11 @@
 import { marked } from 'marked'
 import { computed } from 'vue'
 
-const props = defineProps({ text: String })
-const html = computed(() => marked.parse(props.text || ''))
+import { markHtml } from '../taskFilter.js'
+
+// `q` — search words to highlight in the rendered text
+const props = defineProps({ text: String, q: { type: String, default: '' } })
+const html = computed(() => markHtml(marked.parse(props.text || ''), props.q))
 </script>
 
 <template>

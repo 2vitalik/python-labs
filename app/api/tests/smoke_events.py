@@ -96,7 +96,7 @@ async def run():
     await upsert_user({"email": vasya.email, "name": "Vasyl P"}, tasks)
     await tasks()
     check("imported student's first sign-in → 👋 Перший вхід, no pending hint",
-          last() == f"👋 Перший вхід · {head}" and (await User.get(vasya.id)).seen_at is not None, last())
+          last() == f"👋 Перший вхід · {head}" and (await User.get(vasya.id)).first_seen_at is not None, last())
     n = len(sent)
     tasks = BackgroundTasks()
     await upsert_user({"email": vasya.email, "name": "Vasyl P"}, tasks)

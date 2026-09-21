@@ -38,29 +38,33 @@ onMounted(() => admin.value && loadCatalog())
       <GuideHead slug="tasks" stub="Каталог завдань із цінами відкриється тут незабаром — до першої лаби." @toc="guideToc = $event" />
     </div>
     <template v-if="admin">
-      <div id="catalog" class="d-flex flex-wrap align-items-center gap-2 mb-3">
-        <h1 class="h3 mb-0 me-2">Завдання <span class="count fs-6">({{ shown }})</span></h1>
-        <input :value="f.q" class="form-control form-control-sm w-auto flex-grow-1" style="max-width: 22rem"
-               placeholder="Пошук: назва, опис, теги…" @input="set({ q: $event.target.value })">
-        <select :value="f.game" class="form-select form-select-sm w-auto" @change="set({ game: $event.target.value })">
-          <option value="">Всі ігри</option>
-          <option value="universal">🌍 Універсальні</option>
-          <option v-for="g in games" :key="g.slug" :value="g.slug">{{ g.icon }} {{ g.title }}</option>
-        </select>
-        <div class="form-check">
-          <input id="algo" class="form-check-input" type="checkbox" :checked="f.algo"
-                 @change="set({ algo: $event.target.checked ? '1' : '' })">
-          <label class="form-check-label" for="algo">⭐ алгоритмічні</label>
+      <!-- min-height: a zone click scrolls the head to the top even when the filtered list is short -->
+      <div class="catalog-area">
+        <div id="catalog" class="d-flex flex-wrap align-items-center gap-2 mb-2">
+          <h1 class="h3 mb-0 me-auto">Завдання <span class="count fs-6">({{ shown }})</span></h1>
+          <RouterLink to="/refs" class="btn btn-outline-secondary btn-sm">💡 Знахідки</RouterLink>
+          <RouterLink to="/tasks/new" class="btn btn-outline-primary btn-sm">➕ Нове завдання</RouterLink>
+          <button type="button" class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center px-2"
+                  :title="wide ? 'Назад у колонку сторінки' : 'Каталог на всю ширину'" @click="toggleWide">
+            <IconArrows :out="!wide" />
+          </button>
         </div>
-        <RouterLink to="/refs" class="btn btn-outline-secondary btn-sm ms-auto">💡 Знахідки</RouterLink>
-        <RouterLink to="/tasks/new" class="btn btn-outline-primary btn-sm">➕ Нове завдання</RouterLink>
-        <button type="button" class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center px-2"
-                :title="wide ? 'Назад у колонку сторінки' : 'Каталог на всю ширину'" @click="toggleWide">
-          <IconArrows :out="!wide" />
-        </button>
+        <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+          <input :value="f.q" class="form-control form-control-sm w-auto flex-grow-1" style="max-width: 28rem"
+                 placeholder="Пошук: назва, опис, теги…" @input="set({ q: $event.target.value })">
+          <select :value="f.game" class="form-select form-select-sm w-auto" @change="set({ game: $event.target.value })">
+            <option value="">Всі ігри</option>
+            <option value="universal">🌍 Універсальні</option>
+            <option v-for="g in games" :key="g.slug" :value="g.slug">{{ g.icon }} {{ g.title }}</option>
+          </select>
+          <div class="form-check">
+            <input id="algo" class="form-check-input" type="checkbox" :checked="f.algo"
+                   @change="set({ algo: $event.target.checked ? '1' : '' })">
+            <label class="form-check-label" for="algo">⭐ алгоритмічні</label>
+          </div>
+        </div>
+        <TaskCatalog />
       </div>
-
-      <TaskCatalog />
     </template>
     <Toc v-if="!wideOn" :items="toc" />
   </div>
@@ -69,6 +73,7 @@ onMounted(() => admin.value && loadCatalog())
 <style scoped>
 .count { font-weight: 400; opacity: .55; }
 #catalog { scroll-margin-top: 1rem; }
+.catalog-area { min-height: 100vh; }
 /* the page column without its side padding (the wide container has its own) */
 .column { max-width: calc(var(--page-max) - 2rem); margin: 0 auto; }
 </style>

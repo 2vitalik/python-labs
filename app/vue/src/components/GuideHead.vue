@@ -31,7 +31,7 @@ getGuidePage(props.slug).then((p) => (page.value = p))
 
 <template>
   <template v-if="page">
-    <details v-if="admin" class="border rounded px-3 py-2 mb-4" :open="open" @toggle="remember">
+    <details v-if="admin" class="border rounded px-3 py-2" :class="open ? 'mb-4' : 'mb-3'" :open="open" @toggle="remember">
       <summary class="d-flex align-items-center gap-2 text-secondary">
         <span>{{ page.title }} — текст методички</span>
         <span class="ms-auto small d-flex align-items-center gap-1" :class="open ? 'text-primary' : 'text-secondary'">

@@ -16,7 +16,7 @@ const form = reactive({
   tags: '', games: '', coin: '', amount: 1, max_count: 1, parent: route.query.parent || '', status: 'draft', order: 0,
 })
 const id = ref('')
-const crumbs = computed(() => [[`/tasks?zone=${form.zone}`, 'Таски'], id.value ? 'Редагування' : 'Нове завдання'])
+const crumbs = computed(() => [['/method', 'Методичка'], [`/tasks?zone=${form.zone}`, 'Таски'], id.value ? 'Редагування' : 'Нове завдання'])
 const saved = ref(false)
 const error = ref('')
 const csv = (s) => s.split(',').map((x) => x.trim()).filter(Boolean)

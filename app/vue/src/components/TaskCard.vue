@@ -1,13 +1,17 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 
 import { COINS, kidsOf, STATUSES } from '../catalog.js'
+import { hl, norm } from '../taskFilter.js'
 import { user } from '../user.js'
 import CoinBadge from './CoinBadge.vue'
 import Md from './Md.vue'
 
 const props = defineProps({ task: Object })
 const open = ref(false)
+const route = useRoute()
+const q = computed(() => route.query.q || '')
 const kids = computed(() => kidsOf.value[props.task.slug] || [])
 // family shows the min‥max range of its children's coins instead of the card's reference coin
 const range = computed(() => {
@@ -15,13 +19,15 @@ const range = computed(() => {
   if (!present.length) return []
   return present.length === 1 || present[0] === present.at(-1) ? [present[0]] : [present[0], present.at(-1)]
 })
+// the search hit is somewhere inside (description, children): open so it is visible
+watch(q, (v) => { if (v && !norm(props.task.title).includes(norm(v))) open.value = true }, { immediate: true })
 </script>
 
 <template>
   <div class="border rounded mb-1 task" :class="{ stack: kids.length, ['st-' + task.status]: true }">
     <div class="d-flex align-items-start gap-2 px-2 py-1" role="button" @click="open = !open">
       <span class="title me-auto">
-        {{ task.title }}
+        <span v-html="hl(task.title, q)"></span>
         <span v-if="task.tags.includes('algo')" class="ms-1" title="алгоритмічне — золото">⭐</span>
         <span v-if="task.max_count !== 1" class="ms-1" title="можна зараховувати кілька разів">🔁</span>
         <span v-if="user?.status === 'admin' && task.status !== 'active'"
@@ -36,7 +42,7 @@ const range = computed(() => {
 
     <div v-if="open" class="px-2 py-2 border-top rounded-bottom" :class="kids.length ? 'bg-body' : 'bg-body-tertiary'">
       <div v-if="task.description || user?.status === 'admin'" class="d-flex align-items-start gap-2 mb-2">
-        <Md v-if="task.description" :text="task.description" class="small flex-grow-1" />
+        <Md v-if="task.description" :text="task.description" :q="q" class="small flex-grow-1" />
         <RouterLink v-if="user?.status === 'admin'" :to="`/tasks/${task.slug}/edit`"
                     class="ms-auto text-decoration-none" title="Редагувати">✏️</RouterLink>
       </div>
