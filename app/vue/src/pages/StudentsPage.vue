@@ -1,21 +1,26 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue'
+import { useRoute } from 'vue-router'
 
 import { getStudents, importStudents } from '../api.js'
 import Avatar from '../components/Avatar.vue'
 import Crumbs from '../components/Crumbs.vue'
+import StudentsTable from '../components/StudentsTable.vue'
 import { user } from '../user.js'
 
+const route = useRoute()
 const students = ref([])
 const denied = ref(false)
-const view = ref('cards')
+const view = ref('table')
 const showImport = ref(false)
 const importText = ref('')
 const importResult = ref('')
 
 const isAdmin = computed(() => user.value?.status === 'admin')
+const group = computed(() => route.query.group || '')  // one group as its own sub-page
+const shown = computed(() => (group.value ? students.value.filter((s) => s.group === group.value) : students.value))
+const crumbs = computed(() => (group.value ? [['/students', 'Студи'], group.value] : ['Студи']))
 const fio = (s) => s.name || s.nick
-const repoName = (url) => url.replace('https://github.com/', '')
 
 async function load() {
   try {
@@ -38,12 +43,12 @@ onMounted(load)
 <template>
   <p v-if="denied" class="text-center mt-5">Сторінка для учасників курсу — увійди з поштою @nure.ua.</p>
   <div v-else>
-    <Crumbs :items="['Студи']" />
+    <Crumbs :items="crumbs" />
     <div class="d-flex align-items-center gap-2 mb-3">
-      <h1 class="h3 mb-0">Студенти <span class="text-secondary fs-6">({{ students.length }})</span></h1>
+      <h1 class="h3 mb-0">Студенти <span class="text-secondary fs-6">{{ group }} ({{ shown.length }})</span></h1>
       <div v-if="isAdmin" class="btn-group btn-group-sm ms-2">
-        <button class="btn" :class="view === 'cards' ? 'btn-primary' : 'btn-outline-secondary'" @click="view = 'cards'">Картки</button>
         <button class="btn" :class="view === 'table' ? 'btn-primary' : 'btn-outline-secondary'" @click="view = 'table'">Таблиця</button>
+        <button class="btn" :class="view === 'cards' ? 'btn-primary' : 'btn-outline-secondary'" @click="view = 'cards'">Картки</button>
       </div>
       <button v-if="isAdmin" class="btn btn-outline-primary btn-sm ms-auto" @click="showImport = !showImport">Додати студентів</button>
     </div>
@@ -59,8 +64,9 @@ onMounted(load)
     </div>
     <div v-if="importResult" class="alert alert-success">{{ importResult }}</div>
 
-    <div v-if="view === 'cards'" class="row g-3">
-      <div v-for="s in students" :key="s.nick" class="col-md-6 col-lg-4">
+    <StudentsTable v-if="isAdmin && view === 'table'" :students="shown" />
+    <div v-else class="row g-3">
+      <div v-for="s in shown" :key="s.nick" class="col-md-6 col-lg-4">
         <RouterLink :to="`/students/${s.nick}`" class="card h-100 text-decoration-none text-body">
           <img v-if="s.game.cover" :src="s.game.cover" class="card-img-top object-fit-cover cover">
           <div class="card-body">
@@ -80,32 +86,6 @@ onMounted(load)
         </RouterLink>
       </div>
     </div>
-
-    <table v-else class="table table-hover align-middle">
-      <thead>
-        <tr><th>ПІБ</th><th>Пошта</th><th>Група</th><th>Гра</th><th>GitHub</th><th>Telegram</th><th>Статус</th></tr>
-      </thead>
-      <tbody>
-        <tr v-for="s in students" :key="s.nick" role="button" @click="$router.push(`/students/${s.nick}/edit`)">
-          <td>{{ fio(s) }}</td>
-          <td>{{ s.email }}</td>
-          <td>{{ s.group || '—' }}</td>
-          <td>
-            <RouterLink v-if="s.game.id" :to="`/students/${s.nick}`" @click.stop>{{ s.game.title }}</RouterLink>
-            <span v-else class="text-secondary">—</span>
-          </td>
-          <td>
-            <a v-if="s.github" :href="s.github" target="_blank" @click.stop>{{ repoName(s.github) }}</a>
-            <span v-else class="text-secondary">—</span>
-          </td>
-          <td>
-            <span v-if="s.tg_username">@{{ s.tg_username }} <span v-if="s.tg_linked">✅</span></span>
-            <span v-else class="text-secondary">—</span>
-          </td>
-          <td><span class="badge" :class="s.status === 'student' ? 'text-bg-primary' : 'text-bg-secondary'">{{ s.status }}</span></td>
-        </tr>
-      </tbody>
-    </table>
   </div>
 </template>
 

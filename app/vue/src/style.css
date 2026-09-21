@@ -6,3 +6,9 @@
 .form-control::placeholder {
   color: var(--bs-gray-500);
 }
+
+/* small framed icon button («↗» open separately, «🔗» copy link) — reads as its own control next to a title */
+.ibtn { display: inline-flex; align-items: center; justify-content: center; width: 1.5rem; height: 1.5rem; flex-shrink: 0;
+        border: 1px solid var(--bs-border-color); border-radius: .25rem; color: var(--bs-secondary-color);
+        text-decoration: none; font-size: .75rem; line-height: 1; }
+.ibtn:hover { color: var(--bs-body-color); border-color: var(--bs-secondary-color); background: var(--bs-tertiary-bg); }

@@ -20,7 +20,7 @@ onMounted(() => admin.value && loadCatalog())
     <Crumbs :items="['Таски']" />
     <GuideHead slug="tasks" stub="Каталог завдань із цінами відкриється тут незабаром — до першої лаби." />
     <template v-if="admin">
-      <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+      <div id="catalog" class="d-flex flex-wrap align-items-center gap-2 mb-3">
         <h1 class="h3 mb-0 me-2">Завдання <span class="count fs-6">({{ shown }})</span></h1>
         <input :value="f.q" class="form-control form-control-sm w-auto flex-grow-1" style="max-width: 22rem"
                placeholder="Пошук: назва, опис, теги…" @input="set({ q: $event.target.value })">
@@ -45,4 +45,5 @@ onMounted(() => admin.value && loadCatalog())
 
 <style scoped>
 .count { font-weight: 400; opacity: .55; }
+#catalog { scroll-margin-top: 1rem; }
 </style>

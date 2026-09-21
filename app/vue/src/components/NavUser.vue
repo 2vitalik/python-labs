@@ -2,13 +2,14 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
-import { user } from '../user.js'
+import { canAccess, user } from '../user.js'
 import Avatar from './Avatar.vue'
 
-// right side of the menu: avatar · name · «Вийти», or the sign-in buttons; `stage` comes from useNavFit
+// right side of the menu: avatar · name (both lead to the profile) · «Вийти», or the sign-in buttons; `stage` comes from useNavFit
 defineProps({ stage: Number })
 const isDev = import.meta.env.DEV
 const route = useRoute()
+const profile = computed(() => (canAccess('active') ? '/profile' : null))  // pending: nothing to open yet
 // sign-in buttons bring the user back to the page they were on
 const next = computed(() => `?next=${encodeURIComponent(route.fullPath)}`)
 </script>
@@ -16,8 +17,10 @@ const next = computed(() => `?next=${encodeURIComponent(route.fullPath)}`)
 <template>
   <div class="d-flex align-items-center gap-2 ms-2 flex-shrink-0 text-nowrap">
     <template v-if="user">
-      <Avatar :user />
-      <span v-if="stage < 1">{{ user.name || user.email }}</span>
+      <component :is="profile ? 'RouterLink' : 'span'" :to="profile" class="d-flex align-items-center gap-2 text-reset text-decoration-none" title="Профіль">
+        <Avatar :user />
+        <span v-if="stage < 1">{{ user.name || user.email }}</span>
+      </component>
       <a class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center" href="/api/auth/logout" title="Вийти">
         <template v-if="stage < 2">Вийти</template>
         <svg v-else width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-label="Вийти">

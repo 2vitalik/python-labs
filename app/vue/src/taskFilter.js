@@ -19,6 +19,7 @@ export function useTaskFilter(fixedGame = '') {
     const q = { ...route.query, ...patch }
     for (const k in q) if (!q[k]) delete q[k]
     router.replace({ query: q })
+    if ('zone' in patch) document.getElementById('catalog')?.scrollIntoView()  // guide block above: keep the catalog head on top
   }
 
   function matches(t) {

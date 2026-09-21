@@ -50,7 +50,10 @@ const form = defineModel({ type: Object, required: true })
     <div class="card mb-3">
       <div class="card-header">Telegram</div>
       <div class="card-body">
-        <label class="form-label">Нікнейм</label>
+        <div class="d-flex">
+          <label class="form-label">Нікнейм</label>
+          <a v-if="form.tg_username" :href="`https://t.me/${form.tg_username}`" target="_blank" class="ms-auto small">відкрити ↗</a>
+        </div>
         <div class="input-group">
           <span class="input-group-text">@</span>
           <input v-model="form.tg_username" class="form-control" placeholder="username">

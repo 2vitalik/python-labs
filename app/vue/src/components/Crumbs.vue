@@ -7,7 +7,7 @@ defineProps({ items: { type: Array, default: () => [] } })
 
 <template>
   <nav aria-label="Шлях">
-    <ol class="breadcrumb small mb-2">
+    <ol class="breadcrumb small">
       <li class="breadcrumb-item"><RouterLink to="/" title="Головна"><IconHome :size="14" /></RouterLink></li>
       <li v-for="(item, i) in items" :key="i" class="breadcrumb-item" :class="{ active: !Array.isArray(item) }">
         <RouterLink v-if="Array.isArray(item)" :to="item[0]">{{ item[1] }}</RouterLink>
@@ -18,7 +18,8 @@ defineProps({ items: { type: Array, default: () => [] } })
 </template>
 
 <style scoped>
-.breadcrumb { --bs-breadcrumb-divider: '›'; }
+/* closer to the menu than the page's own top padding, with air before the h1 */
+.breadcrumb { --bs-breadcrumb-divider: '›'; margin: -.6rem 0 1rem; }
 .breadcrumb a { color: var(--bs-secondary-color); text-decoration: none; }
 .breadcrumb a:hover { color: var(--bs-body-color); }
 .breadcrumb svg { vertical-align: -.125em; }

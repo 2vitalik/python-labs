@@ -34,7 +34,7 @@ onMounted(loadCatalog)
     </p>
     <Md :text="game.description" class="mb-4" />
 
-    <h2 class="h5">Завдання гри <span class="count fs-6">({{ shown }})</span></h2>
+    <h2 id="catalog" class="h5">Завдання гри <span class="count fs-6">({{ shown }})</span></h2>
     <p class="text-secondary small">Лише специфічні для цієї гри; універсальні — у <RouterLink to="/tasks?game=universal">каталозі</RouterLink>.</p>
     <TaskCatalog :game="slug" />
   </div>
@@ -43,4 +43,5 @@ onMounted(loadCatalog)
 
 <style scoped>
 .count { font-weight: 400; opacity: .55; }
+#catalog { scroll-margin-top: 1rem; }
 </style>

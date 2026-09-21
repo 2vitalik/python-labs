@@ -1,21 +1,31 @@
 <script setup>
-import { computed } from 'vue'
-import { useRouter } from 'vue-router'
+import { computed, onMounted, ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
-import { guideClick } from '../anchors.js'
+import { flash, guideClick } from '../anchors.js'
 import { renderMd } from '../md.js'
 
 const props = defineProps({ text: String, prefix: { type: String, default: '' } })
+const route = useRoute()
 const router = useRouter()
+const root = ref()
 const html = computed(() => renderMd(props.text, props.prefix))
+
+// the #target may live in this text: light it once the html is in the DOM (page load, section change)
+function lightHash() {
+  const el = route.hash && document.getElementById(route.hash.slice(1))
+  if (el && root.value.contains(el)) flash(el.id)
+}
+onMounted(lightHash)
+watch(html, lightHash, { flush: 'post' })
 </script>
 
 <template>
-  <div class="guide" v-html="html" @click="guideClick($event, router)"></div>
+  <div ref="root" class="guide" v-html="html" @click="guideClick($event, router)"></div>
 </template>
 
 <style>
-/* global: v-html content and the JS-added .flash class live outside scoped styles */
+/* global: v-html content lives outside scoped styles; .flash is JS-added and may land on a section outside .guide (/all) */
 .guide > :last-child { margin-bottom: 0; }
 .guide h2 { font-size: 1.35rem; margin-top: 1.75rem; }
 .guide h3 { font-size: 1.1rem; margin-top: 1.25rem; }
@@ -26,16 +36,18 @@ const html = computed(() => renderMd(props.text, props.prefix))
 .guide .link { text-decoration: none; font-size: .7em; opacity: 0; margin-left: .1rem; transition: opacity .15s; }
 .guide h1:hover .link, .guide h2:hover .link, .guide h3:hover .link, .guide h4:hover .link, .guide .link:focus { opacity: .6; }
 .guide blockquote { border-left: 4px solid var(--bs-border-color); padding: .25rem 1rem; color: var(--bs-secondary-color); }
-.guide blockquote.callout { border-color: var(--bs-info-border-subtle); background: var(--bs-info-bg-subtle); color: inherit; border-radius: .375rem; }
+/* callout: a paler yellow than the flash, so a flashed callout still lights up */
+.guide blockquote.callout { border-color: var(--bs-warning-border-subtle); color: inherit; border-radius: .375rem;
+                            background: color-mix(in srgb, var(--bs-warning-bg-subtle) 55%, var(--bs-body-bg)); }
 .guide .table-responsive { margin-bottom: 1rem; }
 .guide table { margin-bottom: 0; }
-.guide .flash { animation: guide-flash 2.5s ease-out; border-radius: .25rem; }
+.flash { animation: guide-flash 2.5s ease-out; border-radius: .25rem; }
 @keyframes guide-flash {
   0%, 45% { background-color: var(--bs-warning-bg-subtle); box-shadow: -.6rem 0 0 var(--bs-warning-bg-subtle), .4rem 0 0 var(--bs-warning-bg-subtle); }
   100% { background-color: transparent; box-shadow: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .guide .flash { animation: none; background-color: var(--bs-warning-bg-subtle); }
+  .flash { animation: none; background-color: var(--bs-warning-bg-subtle); }
 }
 @media print { .navbar, .guide .link, .toc { display: none !important; } }
 </style>

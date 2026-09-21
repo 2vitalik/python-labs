@@ -1,5 +1,5 @@
 <script setup>
-import { onUnmounted, watch } from 'vue'
+import { onUnmounted, ref, watch } from 'vue'
 
 import { getMe, putProfile, unlinkTelegram } from '../api.js'
 import Crumbs from '../components/Crumbs.vue'
@@ -31,7 +31,8 @@ function watchLink() {  // student went to Telegram: poll until the bot writes c
 }
 onUnmounted(() => clearInterval(poll))
 
-const unlink = async () => apply(await unlinkTelegram())
+const asking = ref(false)  // «відвʼязати» is one tap away from a thumb: ask first
+const unlink = async () => { asking.value = false; apply(await unlinkTelegram()) }
 
 const submit = () => save(async (f) => {
   const u = await putProfile(f)
@@ -50,7 +51,12 @@ const submit = () => save(async (f) => {
         <div class="mt-3">
           <template v-if="user.tg_linked">
             <span class="badge text-bg-success">✅ Бот привʼязаний</span>
-            <a href="#" class="ms-2 small text-secondary" @click.prevent="unlink">відвʼязати</a>
+            <template v-if="asking">
+              <span class="ms-2 small">Відвʼязати бота?</span>
+              <button type="button" class="btn btn-outline-danger btn-sm ms-2" @click="unlink">Так, відвʼязати</button>
+              <a href="#" class="ms-2 small text-secondary" @click.prevent="asking = false">ні</a>
+            </template>
+            <a v-else href="#" class="ms-2 small text-secondary" @click.prevent="asking = true">відвʼязати</a>
           </template>
           <template v-else-if="user.tg_link">
             <a :href="user.tg_link" target="_blank" class="btn btn-outline-primary btn-sm" @click="watchLink">
