@@ -33,10 +33,7 @@ onUnmounted(() => document.removeEventListener('click', close))
 <template>
   <nav ref="bar" class="navbar navbar-expand bg-body-tertiary border-bottom">
     <div class="page d-flex align-items-center">
-      <RouterLink class="navbar-brand d-flex align-items-center" to="/" title="Python Labs">
-        <template v-if="stage < 2">Python Labs</template>
-        <IconHome v-else :size="20" />
-      </RouterLink>
+      <RouterLink class="navbar-brand d-flex align-items-center" to="/" title="Python Labs"><IconHome :size="20" /></RouterLink>
       <ul ref="list" class="navbar-nav">
         <li v-for="[to, text] in row" :key="to" class="nav-item">
           <RouterLink class="nav-link" :class="{ active: isActive(to) }" :to="to">{{ text }}</RouterLink>

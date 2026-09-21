@@ -13,6 +13,7 @@ export function flash(id) {
     for (let n = block.nextElementSibling; n && !(HEADING.test(n.tagName) && n.tagName <= block.tagName); n = n.nextElementSibling) targets.push(n)
   }
   block.scrollIntoView({ block: 'start', behavior: reduced() ? 'auto' : 'smooth' })
+  if (el.closest('.noflash')) return true  // catalog zones, the /method contents box: scroll only, the colour would cover a whole block
   clearTimeout(timer)
   document.querySelectorAll('.flash').forEach((t) => t.classList.remove('flash'))
   void block.offsetWidth  // restart the animation when the same target is hit twice
@@ -33,13 +34,14 @@ export function guideClick(e, router) {
   const a = e.target.closest('a')
   if (!a || e.metaKey || e.ctrlKey || a.target === '_blank') return
   const href = a.getAttribute('href') || ''
+  const query = router.currentRoute.value.query  // a hash-only location would drop the catalog's ?filters
   if (a.classList.contains('link')) {
     e.preventDefault()
-    router.replace({ hash: href })
+    router.replace({ query, hash: href })
     copyLink(a)
   } else if (href.startsWith('#')) {
     e.preventDefault()
-    router.push({ hash: href })
+    router.push({ query, hash: href })
     flash(href.slice(1))
   } else if (href.startsWith('/')) {
     e.preventDefault()

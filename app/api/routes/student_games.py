@@ -48,7 +48,8 @@ async def list_students(user: User = Depends(active_user)):
         row = person(u) | {"game": await game_summary(games.get(u.email))}
         if user.status == Status.admin:
             row |= {"email": u.email, "github": u.github,
-                    "tg_username": u.tg_username, "tg_linked": u.tg_chat_id is not None}
+                    "tg_username": u.tg_username, "tg_linked": u.tg_chat_id is not None,
+                    "seen": u.seen_at is not None}
         out.append(row)
     return out
 

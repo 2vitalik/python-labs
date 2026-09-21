@@ -16,7 +16,7 @@ const shown = computed(() => grouped.value.reduce((n, z) => n + z.subs.reduce((m
            @select="(z, s) => set({ zone: z, sub: s })" />
 
   <p v-if="!shown" class="text-secondary mt-3">Нічого не знайдено — спробуй інші слова чи зніми фільтри.</p>
-  <section v-for="z in grouped" :key="z.key" class="mb-4">
+  <section v-for="z in grouped" :id="'zone-' + z.key" :key="z.key" class="zone noflash mb-4">
     <h2 v-if="!f.zone" class="h6 zone-head" :style="{ '--zc': z.color }">
       {{ z.icon }} {{ z.title }} <span class="count">{{ counts[z.key] || 0 }}</span>
     </h2>
@@ -25,6 +25,7 @@ const shown = computed(() => grouped.value.reduce((n, z) => n + z.subs.reduce((m
 </template>
 
 <style scoped>
+.zone { scroll-margin-top: 1rem; }
 .zone-head {
   color: var(--zc); font-weight: 700;
   border-bottom: 2px solid color-mix(in srgb, var(--zc) 30%, #fff);

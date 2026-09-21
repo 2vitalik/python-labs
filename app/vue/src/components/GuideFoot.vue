@@ -8,11 +8,11 @@ const fmt = (d) => new Date(d).toLocaleDateString('uk-UA')
   <div class="foot small mt-4 text-end">
     <div v-if="updated" class="text-body-tertiary">Оновлено {{ fmt(updated) }}</div>
     <slot />
-    <div class="mt-1"><RouterLink to="/all">📖 Уся методичка</RouterLink></div>
+    <div class="mt-1"><RouterLink to="/method">📖 Уся методичка</RouterLink></div>
   </div>
 </template>
 
 <style scoped>
-.foot a { color: var(--bs-secondary-color); text-decoration: none; }
-.foot a:hover { text-decoration: underline; }
+.foot a, .foot :slotted(a) { color: var(--bs-secondary-color); text-decoration: none; }
+.foot a:hover, .foot :slotted(a:hover) { text-decoration: underline; }
 </style>

@@ -5,10 +5,10 @@ import ColorsPage from './pages/ColorsPage.vue'
 import GameEditPage from './pages/GameEditPage.vue'
 import GamePage from './pages/GamePage.vue'
 import GamesPage from './pages/GamesPage.vue'
-import GuideAllPage from './pages/GuideAllPage.vue'
 import GuidePage from './pages/GuidePage.vue'
 import HomePage from './pages/HomePage.vue'
 import LoginPage from './pages/LoginPage.vue'
+import MethodPage from './pages/MethodPage.vue'
 import MyGamePage from './pages/MyGamePage.vue'
 import ProfilePage from './pages/ProfilePage.vue'
 import RefsPage from './pages/RefsPage.vue'
@@ -27,7 +27,7 @@ const router = createRouter({
     { path: '/', component: HomePage },
     ...[...SECTIONS, CHANGES].filter((s) => s.page).map((s) => ({ path: s.path, component: GuidePage, meta: { slug: s.slug } })),
     { path: '/labs/:n', component: GuidePage },
-    { path: '/all', component: GuideAllPage },
+    { path: '/method', component: MethodPage },
     { path: '/login', component: LoginPage },
     { path: '/profile', component: ProfilePage, meta: { access: 'active' } },
     { path: '/my/game', component: MyGamePage, meta: { access: 'admin' } },

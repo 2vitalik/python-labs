@@ -1,13 +1,13 @@
 import { nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 
-// priority menu: one row always. When it gets tight — first the user name goes, then the brand and «Вийти»
-// shrink to icons, and only then trailing links move into the «Ще» dropdown (never a hamburger)
+// priority menu: one row always. When it gets tight — first the user name goes, then «Вийти» shrinks to an icon
+// (the brand is always the 🏠 icon), and only then trailing links move into the «Ще» dropdown (never a hamburger)
 export function useNavFit(items) {
   const bar = ref()   // <nav>
   const list = ref()  // <ul> with the links + the «Ще» item, which is measured but may be absent from flow
   const more = ref()  // «Ще» <li>
   const fit = ref(items.value.length)  // how many links stay in the row
-  const stage = ref(0)  // 0 full · 1 no user name · 2 icons instead of brand and «Вийти»
+  const stage = ref(0)  // 0 full · 1 no user name · 2 icon instead of «Вийти», short sign-in button
   let busy = false
 
   async function layout() {

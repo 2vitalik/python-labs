@@ -25,18 +25,20 @@ Promise.all(ALL.map((s) => getGuidePage(s.slug))).then(async (list) => {
     <Crumbs :items="['Методичка']" />
     <h1 class="h2">Методичка</h1>
     <p class="text-secondary">Усі розділи на одній сторінці — для пошуку (Ctrl+F) і друку.</p>
-    <!-- contents: anchors down this page; ↗ opens the section as its own page (both go through guideClick) -->
-    <nav v-if="items.length" class="toc border rounded px-3 py-2 mb-4" @click="guideClick($event, router)">
-      <div v-for="s in items" :key="s.slug" class="d-flex align-items-center gap-3" :class="{ 'ps-4': s.n }">
+    <!-- contents: ↗ opens the section as its own page, the title is an anchor down this page (both go through guideClick);
+         «↑» on the section titles comes back here (#toc, noflash — scroll only) -->
+    <nav v-if="items.length" id="toc" class="toc noflash border rounded px-3 py-2 mb-4" @click="guideClick($event, router)">
+      <div v-for="s in items" :key="s.slug" class="d-flex align-items-center gap-2" :class="{ 'ps-4': s.n }">
+        <a :href="s.path" class="ibtn" title="Відкрити розділ окремою сторінкою">↗</a>
         <a :href="'#' + s.slug" class="text-decoration-none">{{ s.title }}</a>
-        <a :href="s.path" class="ibtn ms-auto" title="Відкрити окремою сторінкою">↗</a>
       </div>
     </nav>
     <section v-for="s in items" :id="s.slug" :key="s.slug" class="mt-5">
       <h2 class="d-flex align-items-center gap-2 border-bottom pb-2" @click="guideClick($event, router)">
+        <a :href="s.path" class="ibtn" title="Відкрити розділ окремою сторінкою">↗</a>
         <span>{{ s.title }}</span>
         <a :href="'#' + s.slug" class="ibtn link ms-auto" title="Скопіювати посилання">🔗</a>
-        <a :href="s.path" class="ibtn" title="Відкрити окремою сторінкою">↗</a>
+        <a href="#toc" class="ibtn" title="Наверх, до змісту">↑</a>
       </h2>
       <GuideText :text="s.text" :prefix="s.slug" />
     </section>
@@ -44,6 +46,7 @@ Promise.all(ALL.map((s) => getGuidePage(s.slug))).then(async (list) => {
 </template>
 
 <style scoped>
-.toc { width: fit-content; min-width: 20rem; font-size: .875rem; line-height: 1.35; }
-.toc > div { padding: .15rem 0; }
+.toc { width: fit-content; min-width: 20rem; font-size: .875rem; line-height: 1.35; scroll-margin-top: 1rem; }
+.toc > div { padding: .1rem 0; }
+.toc .ibtn { width: 1.3rem; height: 1.3rem; }
 </style>

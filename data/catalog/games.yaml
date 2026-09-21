@@ -149,7 +149,7 @@
   order: 3
 - slug: lode-runner
   title: Lode Runner
-  icon: 🪙
+  icon: 🪜
   klass: avatar
   axes:
     field: квадрат

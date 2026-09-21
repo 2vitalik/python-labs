@@ -12,7 +12,7 @@ export const SECTIONS = [
 ]
 export const CHANGES = { slug: 'changes', path: '/changes', nav: 'Що змінилось', page: true }  // not in the menu: linked from the home page
 export const LABS = [1, 2, 3, 4, 5].map((n) => ({ slug: `lab${n}`, path: `/labs/${n}`, n }))
-export const ALL = [...SECTIONS.flatMap((s) => (s.slug === 'labs' ? [s, ...LABS] : [s])), CHANGES]  // /all page order
+export const ALL = [...SECTIONS.flatMap((s) => (s.slug === 'labs' ? [s, ...LABS] : [s])), CHANGES]  // /method page order
 
 export const pages = ref({})  // slug → {title, brief, updated}; bodies come per page
 let loading

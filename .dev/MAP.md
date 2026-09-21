@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T124** · тікетів: 123 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T125** · тікетів: 124 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -131,3 +131,4 @@
 | platform | [T121](platform/.t/T121--nav-crumbs-polish/plan.md) | ⚙️ | nav-crumbs-polish | Крихти замість «Назад», активний пункт меню, дрібне шліфування — план | 🟢 🟩 |
 | platform | [T122](platform/.t/T122--guide-students-polish/plan.md) | ⚙️ | guide-students-polish | Уся методичка, студи, каталог, бот: 20 правок після клік-тесту T121 — план | 🟢 🟩 |
 | platform | [T123](platform/.t/T123-Q--polish-choices.md) | ❓ | polish-choices | Іконка «Що змінилось», URL усієї методички, підпис «＋ таск» | 🔴 ⬜ |
+| platform | [T124](platform/.t/T124--ui-polish-3/plan.md) | ⚙️ | ui-polish-3 | Методичка /method, зміст справа, широкі Таски, студи: 27 правок — план | 🟢 ⬜ |

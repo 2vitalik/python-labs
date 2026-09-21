@@ -35,7 +35,8 @@ watch(html, lightHash, { flush: 'post' })
 .guide .anchor { position: absolute; }
 .guide .link { text-decoration: none; font-size: .7em; opacity: 0; margin-left: .1rem; transition: opacity .15s; }
 .guide h1:hover .link, .guide h2:hover .link, .guide h3:hover .link, .guide h4:hover .link, .guide .link:focus { opacity: .6; }
-.guide blockquote { border-left: 4px solid var(--bs-border-color); padding: .25rem 1rem; color: var(--bs-secondary-color); }
+.guide blockquote { border-left: 4px solid var(--bs-border-color); padding: .5rem 1rem; color: var(--bs-secondary-color); }
+.guide blockquote > :last-child { margin-bottom: 0; }  /* the paragraph's own margin made the bottom gap bigger than the top */
 /* callout: a paler yellow than the flash, so a flashed callout still lights up */
 .guide blockquote.callout { border-color: var(--bs-warning-border-subtle); color: inherit; border-radius: .375rem;
                             background: color-mix(in srgb, var(--bs-warning-bg-subtle) 55%, var(--bs-body-bg)); }
