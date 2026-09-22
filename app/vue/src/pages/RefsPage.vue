@@ -3,6 +3,7 @@ import { computed, onMounted, reactive, ref } from 'vue'
 
 import { deleteRef, getRefs, postRef } from '../api.js'
 import Crumbs from '../components/Crumbs.vue'
+import GrowArea from '../components/GrowArea.vue'
 import RefCard from '../components/RefCard.vue'
 
 // one stream of finds (links) and ideas (no url); an idea may hang under a find (`parent`) and shows indented below it
@@ -15,6 +16,7 @@ const form = reactive({ url: '', note: '' })
 const ideaFor = ref('')  // find id the mini-form under a card belongs to
 const ideaNote = ref('')
 const canAdd = computed(() => form.url.trim() || form.note.trim())
+const hot = (e, fn) => (e.metaKey || e.ctrlKey) && fn()  // ⌘/Ctrl+Enter submits, plain Enter is a new line
 
 const shown = computed(() => {  // [find, ideas under it][]; the ideas filter lists every idea flat
   const ids = new Set(refs.value.map((r) => r.id))
@@ -62,10 +64,13 @@ onMounted(load)
         Своя ідея без лінка — теж сюди. Розбір і розкладання по картках каталогу — потім.</p>
 
       <div class="card mb-3">
-        <div class="card-body d-flex gap-2 flex-wrap">
-          <input v-model="form.url" class="form-control w-auto flex-grow-1" placeholder="https://… (порожнє = ідея)">
-          <input v-model="form.note" class="form-control w-auto flex-grow-1" placeholder="Що тут крутого? — або сама ідея">
-          <button class="btn btn-primary" :disabled="!canAdd" @click="add">{{ form.url.trim() ? 'Кинути лінк' : 'Записати ідею' }}</button>
+        <div class="card-body vstack gap-2" @keydown.enter="hot($event, add)">
+          <input v-model="form.url" class="form-control" placeholder="https://… (порожнє = ідея)">
+          <div class="d-flex gap-2 align-items-start">
+            <GrowArea v-model="form.note" class="form-control" placeholder="Що тут крутого? — або сама ідея" />
+            <button class="btn btn-primary text-nowrap" :disabled="!canAdd" title="⌘/Ctrl+Enter" @click="add">
+              {{ form.url.trim() ? 'Кинути лінк' : 'Записати ідею' }}</button>
+          </div>
         </div>
       </div>
       <div v-if="error" class="alert alert-danger">{{ error }}</div>
@@ -77,9 +82,9 @@ onMounted(load)
       <div class="vstack gap-2">
         <template v-for="[r, kids] in shown" :key="r.id">
           <RefCard :r @changed="load" @remove="remove(r)" @idea="ideaFor = r.id" />
-          <div v-if="ideaFor === r.id" class="ms-4 d-flex gap-2">
-            <input v-model="ideaNote" class="form-control form-control-sm" placeholder="Ідея до цієї знахідки" @keyup.enter="addIdea">
-            <button class="btn btn-primary btn-sm" :disabled="!ideaNote.trim()" @click="addIdea">Записати</button>
+          <div v-if="ideaFor === r.id" class="ms-4 d-flex gap-2 align-items-start" @keydown.enter="hot($event, addIdea)">
+            <GrowArea v-model="ideaNote" class="form-control form-control-sm" placeholder="Ідея до цієї знахідки" />
+            <button class="btn btn-primary btn-sm" :disabled="!ideaNote.trim()" title="⌘/Ctrl+Enter" @click="addIdea">Записати</button>
             <button class="btn btn-outline-secondary btn-sm" @click="ideaFor = ''">✕</button>
           </div>
           <RefCard v-for="k in kids" :key="k.id" :r="k" class="ms-4" @changed="load" @remove="remove(k)" />

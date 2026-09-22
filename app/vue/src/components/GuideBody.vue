@@ -27,7 +27,7 @@ async function saved(p) {
 <template>
   <div>
     <div v-if="admin && tools" class="tools small text-end">
-      <a href="#" @click.prevent="edit('')">✏️ сторінку</a> ·
+      <a href="#" @click.prevent="edit('')">✏️ редагувати</a> ·
       <RouterLink :to="{ path: '/method/history', query: { slug: page.slug } }">🕘 історія</RouterLink>
     </div>
     <GuideEditor v-if="editing !== null" ref="editor" :key="editing" :page :id="editing" :prefix

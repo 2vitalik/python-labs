@@ -42,7 +42,7 @@ onMounted(() => admin.value && loadCatalog())
       <div class="catalog-area">
         <div id="catalog" class="d-flex flex-wrap align-items-center gap-2 mb-2">
           <h1 class="h3 mb-0 me-auto">Завдання <span class="count fs-6">({{ shown }})</span></h1>
-          <RouterLink to="/refs" class="btn btn-outline-secondary btn-sm">💡 Знахідки</RouterLink>
+          <RouterLink to="/ideas" class="btn btn-outline-secondary btn-sm">💡 Знахідки</RouterLink>
           <RouterLink to="/tasks/new" class="btn btn-outline-primary btn-sm">➕ Нове завдання</RouterLink>
           <button type="button" class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center px-2"
                   :title="wide ? 'Назад у колонку сторінки' : 'Каталог на всю ширину'" @click="toggleWide">

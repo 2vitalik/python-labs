@@ -47,6 +47,7 @@ onBeforeRouteLeave(() => !dirty.value || confirm(LEAVE))
 const unload = (e) => dirty.value && e.preventDefault()
 onMounted(() => {
   window.addEventListener('beforeunload', unload)
+  area.value.setSelectionRange(0, 0)  // Chrome would put the caret, and the scroll, at the end
   area.value.focus()
 })
 onUnmounted(() => window.removeEventListener('beforeunload', unload))
