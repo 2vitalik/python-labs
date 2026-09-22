@@ -8,6 +8,7 @@ import uploads
 from bot import errors
 from config import settings
 from db import init_db
+from guide_io import seed
 from routes import (auth, games, guide, me, my_claims, my_game, my_parts, my_rules, profile, refs,
                     student_games, students, tasks, taxonomy)
 
@@ -15,6 +16,7 @@ from routes import (auth, games, guide, me, my_claims, my_game, my_parts, my_rul
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await init_db()
+    await seed()  # guide pages from data/guide/ on the first run
     yield
 
 

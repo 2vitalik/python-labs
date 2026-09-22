@@ -5,11 +5,20 @@ import { useRoute, useRouter } from 'vue-router'
 import { flash, guideClick } from '../anchors.js'
 import { renderMd } from '../md.js'
 
-const props = defineProps({ text: String, prefix: { type: String, default: '' } })
+const props = defineProps({ text: String, prefix: { type: String, default: '' }, editable: Boolean })
+const emit = defineEmits(['edit'])
 const route = useRoute()
 const router = useRouter()
 const root = ref()
-const html = computed(() => renderMd(props.text, props.prefix))
+const html = computed(() => renderMd(props.text, props.prefix, props.editable))
+
+// ✏️ on a heading (admin) opens the editor for that section; everything else is guideClick's
+function click(e) {
+  const edit = e.target.closest('a.edit')
+  if (!edit) return guideClick(e, router)
+  e.preventDefault()
+  emit('edit', edit.dataset.id)
+}
 
 // the #target may live in this text: light it once the html is in the DOM (page load, section change)
 function lightHash() {
@@ -21,7 +30,7 @@ watch(html, lightHash, { flush: 'post' })
 </script>
 
 <template>
-  <div ref="root" class="guide" v-html="html" @click="guideClick($event, router)"></div>
+  <div ref="root" class="guide" v-html="html" @click="click"></div>
 </template>
 
 <style>
@@ -36,14 +45,24 @@ watch(html, lightHash, { flush: 'post' })
 .guide li { margin-bottom: .2rem; }
 .guide li > p { margin-bottom: .25rem; }
 .guide .anchor { position: absolute; }
-.guide .link { text-decoration: none; font-size: .7em; opacity: 0; margin-left: .1rem; transition: opacity .15s; }
-.guide h1:hover .link, .guide h2:hover .link, .guide h3:hover .link, .guide h4:hover .link, .guide .link:focus { opacity: .6; }
+.guide .link, .guide .edit { text-decoration: none; font-size: .7em; opacity: 0; margin-left: .1rem; transition: opacity .15s; }
+.guide :is(h1, h2, h3, h4):hover :is(.link, .edit), .guide :is(.link, .edit):focus { opacity: .6; }
 .guide blockquote { border-left: 4px solid var(--bs-border-color); padding: .5rem 1rem; color: var(--bs-secondary-color); }
 .guide blockquote > :last-child { margin-bottom: 0; }  /* the paragraph's own margin made the bottom gap bigger than the top */
 /* callout: a paler yellow than the flash, so a flashed callout still lights up */
 .guide blockquote.callout { border-color: var(--bs-warning-border-subtle); color: inherit; border-radius: .375rem;
                             background: color-mix(in srgb, var(--bs-warning-bg-subtle) 55%, var(--bs-body-bg)); }
 .guide .table-responsive { margin-bottom: 1rem; }
+/* ```field: cells sized by CSS, so the grid lines up whatever emoji font the OS has; [x] = just moved, (x) = effect */
+.guide .field { width: fit-content; max-width: 100%; overflow-x: auto; margin-bottom: 1rem; padding: .35rem; line-height: 1;
+                border: 1px solid var(--bs-border-color); border-radius: .375rem; background: var(--bs-tertiary-bg); }
+.guide .field > div { display: flex; }
+.guide .field .c { display: inline-flex; align-items: center; justify-content: center; width: 1.7em; height: 1.7em; flex-shrink: 0; }
+.guide .field .mark-a { box-shadow: inset 0 0 0 2px var(--bs-primary); border-radius: .3rem; }
+.guide .field .mark-b { box-shadow: inset 0 0 0 2px var(--bs-warning); border-radius: .3rem; }
+.guide details { border: 1px solid var(--bs-border-color); border-radius: .375rem; padding: .5rem 1rem; margin-bottom: 1rem; }
+.guide summary { cursor: pointer; }
+.guide details[open] > summary { margin-bottom: .75rem; }
 .guide table { margin-bottom: 0; }
 .flash { animation: guide-flash 2.5s ease-out; border-radius: .25rem; }
 @keyframes guide-flash {

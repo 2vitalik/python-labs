@@ -14,13 +14,16 @@ class RefIn(BaseModel):
     url: str = ""
     title: str = ""
     note: str = ""
+    parent: str = ""
 
 
 def clean(data: RefIn) -> dict:
-    url = data.url.strip()
-    if not url.startswith(("http://", "https://")):
+    url, title, note = data.url.strip(), data.title.strip(), data.note.strip()
+    if url and not url.startswith(("http://", "https://")):
         raise HTTPException(422, "Посилання починається з http(s)://")
-    return {"url": url, "title": data.title.strip(), "note": data.note.strip()}
+    if not url and not (title or note):
+        raise HTTPException(422, "Ідея порожня — напиши хоч рядок")
+    return {"url": url, "title": title, "note": note, "kind": "link" if url else "idea", "parent": data.parent.strip()}
 
 
 async def own_ref(id: PydanticObjectId, user: User) -> Ref:

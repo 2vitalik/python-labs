@@ -9,7 +9,7 @@ import Avatar from './Avatar.vue'
 defineProps({ stage: Number })
 const isDev = import.meta.env.DEV
 const route = useRoute()
-const profile = computed(() => (canAccess('active') ? '/profile' : null))  // pending: nothing to open yet
+const profile = computed(() => (canAccess('active') ? '/my/profile' : null))  // pending: nothing to open yet
 // sign-in buttons bring the user back to the page they were on
 const next = computed(() => `?next=${encodeURIComponent(route.fullPath)}`)
 </script>

@@ -6,6 +6,7 @@ import GameEditPage from './pages/GameEditPage.vue'
 import GamePage from './pages/GamePage.vue'
 import GamesPage from './pages/GamesPage.vue'
 import GuidePage from './pages/GuidePage.vue'
+import HistoryPage from './pages/HistoryPage.vue'
 import HomePage from './pages/HomePage.vue'
 import LoginPage from './pages/LoginPage.vue'
 import MethodPage from './pages/MethodPage.vue'
@@ -28,8 +29,10 @@ const router = createRouter({
     ...[...SECTIONS, CHANGES].filter((s) => s.page).map((s) => ({ path: s.path, component: GuidePage, meta: { slug: s.slug } })),
     { path: '/labs/:n', component: GuidePage },
     { path: '/method', component: MethodPage },
+    { path: '/method/history', component: HistoryPage, meta: { access: 'admin' } },
     { path: '/login', component: LoginPage },
-    { path: '/profile', component: ProfilePage, meta: { access: 'active' } },
+    { path: '/my/profile', component: ProfilePage, meta: { access: 'active' } },
+    { path: '/profile', redirect: '/my/profile' },  // old links in bot messages and the guide
     { path: '/my/game', component: MyGamePage, meta: { access: 'admin' } },
     { path: '/students', component: StudentsPage, meta: { access: 'admin' } },
     { path: '/students/:nick', component: StudentGamePage, meta: { access: 'admin' } },

@@ -5,6 +5,7 @@ import { getGuidePage } from '../api.js'
 import { load, save } from '../local.js'
 import { tocOf } from '../md.js'
 import { user } from '../user.js'
+import GuideBody from './GuideBody.vue'
 import GuideFoot from './GuideFoot.vue'
 import GuideText from './GuideText.vue'
 import IconChevron from './IconChevron.vue'
@@ -16,7 +17,7 @@ const props = defineProps({ slug: String, stub: String })
 const emit = defineEmits(['toc'])
 const page = ref(null)
 const admin = computed(() => user.value?.status === 'admin')
-const text = computed(() => (page.value ? `${page.value.brief}\n\n${page.value.body}` : ''))
+const text = computed(() => page.value?.body || '')
 
 const key = `guide-head:${props.slug}`
 const open = ref(load(key) !== '0')
@@ -38,7 +39,7 @@ getGuidePage(props.slug).then((p) => (page.value = p))
           {{ open ? 'згорнути' : 'розгорнути' }} <IconChevron :dir="open ? 'up' : 'down'" />
         </span>
       </summary>
-      <GuideText :text="text" class="mt-3 mb-2" />
+      <GuideBody v-model:page="page" class="mt-3 mb-2" />
     </details>
     <div v-else>
       <h1 class="h2 mb-3">{{ page.title }}</h1>

@@ -5,8 +5,10 @@ from pydantic import Field
 
 
 class Ref(Document):
-    """Reference inbox item: a game find from YouTube/web, sorted into the corpus later (T98 Д2-Д3)."""
-    url: str
+    """Reference inbox item: a game find from the web, or an idea (no url), sorted into the corpus later (T98 Д2-Д3)."""
+    url: str = ""
+    kind: str = "link"  # link | idea
+    parent: str = ""  # idea under a find: that ref's id
     title: str = ""
     note: str = ""
     author: str  # user email
@@ -20,6 +22,7 @@ class Ref(Document):
     def api(self) -> dict:
         return {
             "id": str(self.id), "url": self.url, "title": self.title, "note": self.note,
+            "kind": self.kind, "parent": self.parent,
             "author": self.author.split("@")[0], "status": self.status, "task": self.task,
             "created_at": self.created_at.isoformat(),
         }

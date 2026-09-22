@@ -41,12 +41,12 @@ async def run():
 
     msg, replies = fake()
     await start(msg, user=None)
-    check("/start unlinked: intro with profile link + button", "/profile" in replies[0] and "Привʼязати бота" in replies[0])
+    check("/start unlinked: intro with profile link + button", "/my/profile" in replies[0] and "Привʼязати бота" in replies[0])
 
     msg, replies = fake()
     await start_link(msg, SimpleNamespace(args="nope"))
     check("unknown token: 'stale link' + steps, nothing saved",
-          "Не впізнаю" in replies[0] and "/profile" in replies[0] and (await User.get(user.id)).tg_chat_id is None)
+          "Не впізнаю" in replies[0] and "/my/profile" in replies[0] and (await User.get(user.id)).tg_chat_id is None)
 
     msg, replies = fake()
     await start_link(msg, SimpleNamespace(args="tok123"))

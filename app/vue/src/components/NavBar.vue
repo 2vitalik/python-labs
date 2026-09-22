@@ -12,7 +12,7 @@ const route = useRoute()
 const router = useRouter()
 const links = [
   ...SECTIONS.map((s) => [s.path, s.nav]),
-  ['/students', 'Студи'], ['/my/game', 'Моя гра'], ['/profile', 'Профіль'],
+  ['/students', 'Студи'], ['/my/game', 'Моя гра'], ['/my/profile', 'Профіль'],
 ]
 // menu follows route access, so a page and its link open together
 const visible = computed(() => links.filter(([to]) => canAccess(router.resolve(to).meta.access)))

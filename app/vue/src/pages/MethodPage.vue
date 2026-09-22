@@ -5,7 +5,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { flash, guideClick, toTop } from '../anchors.js'
 import { getGuidePage } from '../api.js'
 import Crumbs from '../components/Crumbs.vue'
-import GuideText from '../components/GuideText.vue'
+import GuideBody from '../components/GuideBody.vue'
 import Toc from '../components/Toc.vue'
 import { ALL } from '../guide.js'
 
@@ -16,7 +16,7 @@ const items = ref([])
 const toc = computed(() => items.value.map((s) => ({ id: s.slug, text: s.title, depth: s.n ? 3 : 2 })))
 
 Promise.all(ALL.map((s) => getGuidePage(s.slug))).then(async (list) => {
-  items.value = list.map((p, i) => ({ ...ALL[i], ...p, text: `${p.brief}\n\n${p.body}` }))
+  items.value = list.map((p, i) => ({ ...ALL[i], ...p }))
   await nextTick()
   if (route.hash) flash(route.hash.slice(1))  // section-level targets (#labs) sit outside GuideText
 })
@@ -34,14 +34,14 @@ Promise.all(ALL.map((s) => getGuidePage(s.slug))).then(async (list) => {
         <a :href="'#' + s.slug" class="text-decoration-none">{{ s.title }}</a>
       </div>
     </nav>
-    <section v-for="s in items" :id="s.slug" :key="s.slug" class="mt-5">
+    <section v-for="(s, i) in items" :id="s.slug" :key="s.slug" class="mt-5">
       <h2 class="d-flex align-items-center gap-2 border-bottom pb-2" @click="guideClick($event, router)">
         <a :href="s.path" class="ibtn" title="Відкрити розділ окремою сторінкою">↗</a>
         <span>{{ s.title }}</span>
         <a :href="'#' + s.slug" class="ibtn link ms-auto" title="Скопіювати посилання">🔗</a>
         <a href="#" class="ibtn" title="Наверх" @click.stop.prevent="toTop">↑</a>
       </h2>
-      <GuideText :text="s.text" :prefix="s.slug" />
+      <GuideBody :page="s" :prefix="s.slug" :tools="false" @update:page="items[i] = { ...s, ...$event }" />
     </section>
     <Toc :items="toc" />
   </div>

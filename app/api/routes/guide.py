@@ -1,40 +1,89 @@
-"""Course guide pages: data/guide/<slug>.md → {title, brief, body}. Files in git are the truth for now;
-an on-site editor may replace them later behind the same contract (T115 §4)."""
-import re
+"""Course guide pages: markdown in Mongo (`guide`), edited on the site by admins (T126); every save goes to
+`history` with a note, and a note also lands in the «Що змінилось» draft page until published."""
 from datetime import date
-from pathlib import Path
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Depends, HTTPException
+from pydantic import BaseModel
+
+from deps import admin_user, current_user
+from models.guide import DRAFT, Guide, save
+from models.history import Change
+from models.user import Status, User
 
 router = APIRouter(prefix="/api/guide")
-ROOT = Path(__file__).resolve().parents[3] / "data" / "guide"
-MORE = "<!-- more -->"  # optional: above it — a short `brief` for listings; pages render brief + body together
-_cache: dict[str, tuple[float, dict]] = {}
 
 
-def load(slug: str) -> dict | None:
-    path = ROOT / f"{slug}.md"
-    if not re.fullmatch(r"[a-z0-9-]+", slug) or not path.is_file():
-        return None
-    mtime = path.stat().st_mtime
-    if slug not in _cache or _cache[slug][0] != mtime:
-        title, _, rest = path.read_text().partition("\n")
-        brief, _, body = rest.partition(MORE)
-        page = {"slug": slug, "title": title.lstrip("# ").strip(), "brief": brief.strip(), "body": body.strip(),
-                "updated": date.fromtimestamp(mtime).isoformat()}
-        _cache[slug] = (mtime, page)
-    return _cache[slug][1]
+class PageIn(BaseModel):
+    title: str
+    body: str
+    rev: int
+    note: str = ""  # one line for the changes draft; empty = silent edit
+    section: str = ""  # heading of the edited part, named in the draft line
+
+
+class LineIn(BaseModel):
+    line: str
+
+
+async def page(slug: str) -> Guide:
+    g = await Guide.find_one(Guide.slug == slug)
+    if not g:
+        raise HTTPException(404)
+    return g
 
 
 @router.get("")
 async def list_pages():
-    pages = (load(p.stem) for p in sorted(ROOT.glob("*.md")) if p.stem.islower())  # README is not a page
-    return [{k: v for k, v in page.items() if k != "body"} for page in pages if page]
+    pages = await Guide.find(Guide.slug != DRAFT).to_list()
+    return [{"slug": g.slug, "title": g.title, "updated": g.updated_at.isoformat()} for g in pages]
+
+
+@router.get("/history")
+async def history(slug: str = "", user: User = Depends(admin_user)):
+    pages = {g.id: g for g in await Guide.find_all().to_list()}
+    query = {"coll": "guide"} | ({"doc_id": (await page(slug)).id} if slug else {})
+    out = []
+    for c in await Change.find(query).sort("-at").limit(200).to_list():
+        if g := pages.get(c.doc_id):
+            body, title = c.changes.get("body", {}), c.changes.get("title", {})
+            out.append({"id": str(c.id), "at": c.at.isoformat(), "actor": c.actor.split("@")[0], "note": c.note,
+                        "slug": g.slug, "title": g.title, "old": body.get("old"), "new": body.get("new"),
+                        "old_title": title.get("old"), "new_title": title.get("new")})
+    return out
 
 
 @router.get("/{slug}")
-async def get_page(slug: str):
-    page = load(slug)
-    if not page:
+async def get_page(slug: str, user: User | None = Depends(current_user)):
+    if slug == DRAFT and (not user or user.status != Status.admin):
         raise HTTPException(404)
-    return page
+    return (await page(slug)).api()
+
+
+@router.put("/{slug}")
+async def put_page(slug: str, data: PageIn, user: User = Depends(admin_user)):
+    g = await page(slug)
+    if data.rev != g.rev:
+        raise HTTPException(409, "Сторінку вже змінили в іншій вкладці — перезавантаж і повтори правку")
+    note = data.note.strip()
+    if await save(g, data.title.strip(), data.body.strip(), user.email, note) and note and slug != DRAFT:
+        where = g.title + (f" › {data.section.strip()}" if data.section.strip() else "")
+        await add_draft(f"- **{date.today().isoformat()}** — {where}: {note}", user.email)
+    return g.api()
+
+
+async def add_draft(line: str, actor: str):
+    d = await Guide.find_one(Guide.slug == DRAFT)
+    d = d or await Guide(slug=DRAFT, title="Чернетка «Що змінилось»", body="", updated_by=actor).insert()
+    await save(d, d.title, f"{line}\n{d.body}".strip(), actor)
+
+
+@router.post("/changes/publish")
+async def publish(data: LineIn, user: User = Depends(admin_user)):
+    """Move one draft line into the public «Що змінилось» — newest first, above the earlier entries."""
+    d, c = await page(DRAFT), await page("changes")
+    lines = c.body.split("\n")
+    at = next((i for i, l in enumerate(lines) if l.startswith("- ")), None)
+    lines[at:at] = [data.line] if at is not None else ["", data.line]
+    await save(c, c.title, "\n".join(lines), user.email)
+    await save(d, d.title, "\n".join(l for l in d.body.split("\n") if l != data.line), user.email)
+    return c.api()

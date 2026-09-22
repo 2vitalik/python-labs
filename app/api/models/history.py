@@ -10,13 +10,14 @@ class Change(Document):
     actor: str  # email of who made the change
     at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     changes: dict  # {field: {"old": ..., "new": ...}}
+    note: str = ""  # editor's one line on what changed (guide pages)
 
     class Settings:
         name = "history"
         indexes = ["coll", "doc_id"]
 
 
-async def record(doc: Document, data: dict, actor: str) -> dict:
+async def record(doc: Document, data: dict, actor: str, note: str = "") -> dict:
     """Apply `data` to `doc`, saving a diff of what actually changed; returns that diff."""
     changes = {k: {"old": getattr(doc, k), "new": v} for k, v in data.items() if getattr(doc, k) != v}
     if not changes:
@@ -24,7 +25,7 @@ async def record(doc: Document, data: dict, actor: str) -> dict:
     for k, v in data.items():
         setattr(doc, k, v)
     await doc.save()
-    await Change(coll=doc.Settings.name, doc_id=doc.id, actor=actor, changes=changes).insert()
+    await Change(coll=doc.Settings.name, doc_id=doc.id, actor=actor, changes=changes, note=note).insert()
     return changes
 
 

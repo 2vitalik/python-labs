@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T128** · тікетів: 127 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T129** · тікетів: 128 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -133,5 +133,6 @@
 | platform | [T123](platform/.t/T123-Q--polish-choices.md) | ❓ | polish-choices | Іконка «Що змінилось», URL усієї методички, підпис «＋ таск» | 🔴 ⬜ |
 | platform | [T124](platform/.t/T124--ui-polish-3/plan.md) | ⚙️ | ui-polish-3 | Методичка /method, зміст справа, широкі Таски, студи: 27 правок — план | 🟢 🟩 |
 | platform | [T125](platform/.t/T125--ui-polish-4/plan.md) | ⚙️ | ui-polish-4 | Зміст на /method, активність студентів, підсвітка пошуку, Ігри: 24 пункти — план | 🟢 🟩 |
-| platform | [T126](platform/.t/T126-P--guide-editor-v1.md) | 💡 | guide-editor-v1 | Редактор методички v1: розділи, історія правок, «Що змінилось», приклади полів | 🟢 ⬜ |
-| platform | [T127](platform/.t/T127-Q--editor-refs-choices.md) | ❓ | editor-refs-choices | Редактор методички, приклади полів емодзі, ідеї в знахідках — вибори | 🔴 ⬜ |
+| platform | [T126](platform/.t/T126-P--guide-editor-v1.md) | 💡 | guide-editor-v1 | Редактор методички v1: розділи, історія правок, «Що змінилось», приклади полів | 🟢 🟩 |
+| platform | [T127](platform/.t/T127-Q--editor-refs-choices.md) | ❓ | editor-refs-choices | Редактор методички, приклади полів емодзі, ідеї в знахідках — вибори | 🔴 🟩 |
+| platform | [T128](platform/.t/T128--guide-editor-v1/plan.md) | ⚙️ | guide-editor-v1 | Редактор методички v1: правки на сайті, історія, чернетка «Що змінилось», поля-клітинки, ідеї в знахідках — план | 🟢 🟩 |
