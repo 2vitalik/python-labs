@@ -21,12 +21,17 @@ from models.note import Note  # noqa: E402
 from models.user import Status, User  # noqa: E402
 
 settings.tg_bot_token = "fake"
-sent, deleted, results = [], [], []
+sent, deleted, reacted, results = [], [], [], []
 
 
 class FakeBot:
     async def send_message(self, chat_id, text, message_thread_id=None):
         sent.append((chat_id, text))
+
+    async def set_message_reaction(self, chat_id, message_id, reaction):
+        if chat_id == -200:
+            raise TelegramAPIError(method=None, message="reactions are disabled")
+        reacted.append((chat_id, message_id, reaction[0].emoji))
 
     async def delete_business_messages(self, business_connection_id, message_ids):
         if business_connection_id == "broken":
@@ -42,13 +47,13 @@ def check(name, cond, extra=""):
     print(("PASS " if cond else "FAIL ") + name + (f" · {extra}" if extra and not cond else ""))
 
 
-def fake(chat_id=42, user_id=7, chat_type="private", conn=None, reply=None):
+def fake(chat_id=42, user_id=7, chat_type="private", conn=None, reply=None, ephemeral=None):
     answers = []
 
     async def answer(t, **kw):
         answers.append((t, kw))
     m = SimpleNamespace(chat=SimpleNamespace(id=chat_id, type=chat_type), from_user=SimpleNamespace(id=user_id, username="vitalik"),
-                        business_connection_id=conn, message_id=5, reply_to_message=reply, answer=answer)
+                        business_connection_id=conn, message_id=5, reply_to_message=reply, answer=answer, ephemeral_message_id=ephemeral)
     return m, answers
 
 
@@ -95,17 +100,23 @@ async def run():
     check("empty /note: hint alert, nothing saved", alert() == notes.HINT and await Note.count() == 4)
 
     reply = SimpleNamespace(from_user=SimpleNamespace(id=42), forum_topic_created=None)
-    m, answers = fake(chat_id=-100, chat_type="supergroup", reply=reply)
+    m, answers = fake(chat_id=-100, chat_type="supergroup", reply=reply, ephemeral=9)
     await notes.note(m, cmd("hide", "запізнився"), admin)
     n = await Note.find_one(Note.text == "запізнився")
-    check("forum, reply to the student: source forum, linked, hidden", n.source == "forum" and n.user == "vasya@nure.ua" and n.hidden)
-    check("forum: ephemeral ✔️ to the teacher only", answers[0][0] == "✔️ Записав" and answers[0][1]["ephemeral_message_parameters"].receiver_user_id == 7)
+    check("forum, ephemeral /hide as a reply: source forum, linked, hidden", n.source == "forum" and n.user == "vasya@nure.ua" and n.hidden)
+    check("ephemeral command: no reaction, ephemeral ✔️ to the teacher only",
+          not reacted and answers[0][0] == "✔️ Записав" and answers[0][1]["ephemeral_message_parameters"].receiver_user_id == 7)
 
     topic = SimpleNamespace(from_user=SimpleNamespace(id=7), forum_topic_created=object())
     m, answers = fake(chat_id=-100, chat_type="supergroup", reply=topic)
     await notes.note(m, cmd("note", "@vasya_tg без ноута"), admin)
     n = await Note.find_one(Note.text == "без ноута")
     check("forum, topic message with @username: student found, text without the nick", n is not None and n.user == "vasya@nure.ua" and not n.hidden)
+    check("visible /note in the forum: ✍ reaction on the command, no text", reacted == [(-100, 5, "✍")] and not answers)
+
+    m, answers = fake(chat_id=-200, chat_type="supergroup", reply=topic)
+    await notes.note(m, cmd("note", "vasya реакції вимкнені"), admin)
+    check("reactions off in the group: ephemeral ✔️ instead", answers[0][0] == "✔️ Записав" and "ephemeral_message_parameters" in answers[0][1])
 
     m, answers = fake(chat_id=-100, chat_type="supergroup", reply=topic)
     await notes.note(m, cmd("note", "nobody текст"), admin)
@@ -114,7 +125,7 @@ async def run():
     m, answers = fake(chat_id=7)
     await notes.note(m, cmd("note", "vasya здав"), admin)
     n = await Note.find_one(Note.text == "здав")
-    check("bot's own chat: nick by email, source bot, plain ✔️", n.source == "bot" and n.user == "vasya@nure.ua" and answers[0] == ("✔️ Записав", {}))
+    check("bot's own chat: nick by email, source bot, ✍ reaction", n.source == "bot" and n.user == "vasya@nure.ua" and reacted[-1] == (7, 5, "✍") and not answers)
 
     rights = SimpleNamespace(can_reply=False, can_read_messages=False, can_delete_sent_messages=False, can_delete_all_messages=True)
     await notes.connected(SimpleNamespace(is_enabled=True, user=SimpleNamespace(username="vitalik"), rights=rights))

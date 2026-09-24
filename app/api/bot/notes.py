@@ -3,7 +3,7 @@
 from aiogram import Router, html
 from aiogram.exceptions import TelegramAPIError
 from aiogram.filters import Command, CommandObject
-from aiogram.types import BusinessConnection, EphemeralMessageParameters, Message
+from aiogram.types import BusinessConnection, EphemeralMessageParameters, Message, ReactionTypeEmoji
 
 from bot import notify
 from bot.alerts import who
@@ -47,6 +47,17 @@ async def ack(message: Message, text: str) -> None:
         await message.answer(text, ephemeral_message_parameters=EphemeralMessageParameters(receiver_user_id=message.from_user.id))
 
 
+async def done(message: Message) -> None:
+    """✍ on the command itself; an ephemeral command has nothing to react to, a group may have reactions off."""
+    if not message.ephemeral_message_id:
+        try:
+            await notify.bot().set_message_reaction(message.chat.id, message.message_id, [ReactionTypeEmoji(emoji="✍")])
+            return
+        except TelegramAPIError:
+            pass
+    await ack(message, "✔️ Записав")
+
+
 @router.message()
 @router.business_message()
 async def note(message: Message, command: CommandObject, admin: User):
@@ -65,8 +76,8 @@ async def note(message: Message, command: CommandObject, admin: User):
         except TelegramAPIError as e:  # no «delete all messages» right
             lines.append(f"⚠️ Команду з чату не прибрав: {html.quote(e.message)}")
     await notify.send("note", "\n".join(lines))
-    if not business:
-        await ack(message, "✔️ Записав")
+    if not business:  # in a student's chat the bot can neither react nor edit: the alert is the confirmation
+        await done(message)
 
 
 @router.business_connection()
