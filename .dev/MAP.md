@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T135** · тікетів: 134 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T136** · тікетів: 135 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -142,3 +142,4 @@
 | tgbot | [T132](tgbot/.t/T132--chat-automation-notes/plan.md) | ⚙️ | chat-automation-notes | Chat Automation, нотатки /note, ефемерні команди, Guest Mode — план | 🟢 🟩 |
 | tgbot | [T133](tgbot/.t/T133-Q--notes-choices.md) | ❓ | notes-choices | Нотатки: видимий варіант, де показувати, рядок про збереження | 🔴 🟩 |
 | tgbot | [T134](tgbot/.t/T134--notes-commands/plan.md) | ⚙️ | notes-commands | Нотатки: /note видима, /hide тиха, guest-згадка — план | 🟢 🟩 |
+| tgbot | [T135](tgbot/.t/T135--notes-simplify/plan.md) | ⚙️ | notes-simplify | Нотатки лише для викладача: /note лишається, /hide зникає — план | 🟢 🟩 |

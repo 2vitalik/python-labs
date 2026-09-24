@@ -23,8 +23,8 @@ async def main():
     dp.include_router(notes.router)
     dp.include_router(start.router)
     dp.include_router(log.router)  # edits and deletions: nobody else handles them
-    await bot().set_my_commands([BotCommand(command=c, description=d, is_ephemeral=True) for c, d in notes.COMMANDS.items()],
-                                scope=BotCommandScopeAllChatAdministrators())  # in groups only the sender and the bot see them
+    await bot().set_my_commands([BotCommand(command=c, description=d, is_ephemeral=c == "hide") for c, d in notes.COMMANDS.items()],
+                                scope=BotCommandScopeAllChatAdministrators())  # ephemeral: only the sender and the bot see it
     daily = asyncio.create_task(digest.loop())
     logging.info("polling as @%s", (await bot().get_me()).username)
     try:
