@@ -1,18 +1,22 @@
-"""/note — teacher's note about a student (T132): hidden via Chat Automation (the command is taken out of the chat),
-ephemeral in the forum, plain in the bot's own chat; «📝 …» written to a student = a note the student saw too."""
-from aiogram import F, Router, html
+"""/note and /hide — teacher's notes about a student (T132, T134): /note the student sees, /hide is only ours.
+From a student's chat (Chat Automation) the command is taken out of the chat; in the forum both are ephemeral."""
+import re
+
+from aiogram import Router, html
 from aiogram.exceptions import TelegramAPIError
 from aiogram.filters import Command, CommandObject
-from aiogram.types import BusinessConnection, EphemeralMessageParameters, Message
+from aiogram.types import BusinessConnection, Message
 
 from bot import notify
 from bot.alerts import who
+from bot.note_show import ack, show, target
 from models.note import Note
 from models.user import Status, User
 
 router = Router()
-HINT = "☝️ /note <текст> у чаті зі студентом · у форумі — відповіддю на його повідомлення або /note <нік> <текст>"
+HINT = "☝️ /note <текст> — студент побачить · /hide <текст> — лише тобі\n☝️ у форумі й у чаті з ботом — відповіддю або /note <нік> <текст>"
 RIGHTS = ("can_reply", "can_read_messages", "can_delete_sent_messages", "can_delete_all_messages")
+COMMANDS = {"note": "нотатка, яку студент побачить", "hide": "нотатка лише тобі"}
 
 
 async def as_admin(message: Message) -> dict | bool:
@@ -21,59 +25,41 @@ async def as_admin(message: Message) -> dict | bool:
     return {"admin": admin} if admin else False
 
 
-router.message.filter(Command("note"), as_admin)
-router.business_message.filter(as_admin)
+def guest_command(message: Message) -> dict | bool:
+    """A guest mention carries the command after the @bot: «@python_nure_bot /note текст»."""
+    m = re.search(r"/(note|hide)\b\s*(.*)", message.text or "", re.S)
+    return {"command": CommandObject(prefix="/", command=m[1], args=m[2].strip())} if m else False
 
 
-async def save(student: User | None, tg_id: int | None, text: str, admin: User, visible: bool, source: str) -> None:
-    await Note(user=student.email if student else "", tg_id=tg_id, text=text, by=admin.email, visible=visible, source=source).insert()
-    target = who(student) if student else f"<i>не привʼязаний</i> · tg {tg_id}"
-    await notify.send("note", f"📝 Нотатка · {target}\n{'👁' if visible else '🙈'} {html.quote(text)}")
-
-
-async def ack(message: Message, text: str) -> None:
-    """In groups the answer is ephemeral — only the teacher sees it."""
-    if message.chat.type == "private":
-        await message.answer(text)
-    else:
-        await message.answer(text, ephemeral_message_parameters=EphemeralMessageParameters(receiver_user_id=message.from_user.id))
-
-
-@router.business_message(Command("note"))
-async def hidden(message: Message, command: CommandObject, admin: User):
-    """/note in a student's chat: keep the note, take the command out of the chat before the student reads it."""
-    if command.args:
-        await save(await User.find_one(User.tg_chat_id == message.chat.id), message.chat.id, command.args, admin, False, "private")
-    else:
-        await notify.send("note", HINT)
-    try:
-        await notify.bot().delete_business_messages(business_connection_id=message.business_connection_id, message_ids=[message.message_id])
-    except TelegramAPIError as e:  # no «delete all messages» right
-        await notify.send("note", f"⚠️ Команду з чату не прибрав: {html.quote(e.message)}")
-
-
-@router.business_message(F.text.startswith("📝"))
-async def seen(message: Message, admin: User):
-    await save(await User.find_one(User.tg_chat_id == message.chat.id), message.chat.id,
-               message.text.removeprefix("📝").strip(), admin, True, "private")
+router.message.filter(Command(*COMMANDS), as_admin)
+router.business_message.filter(Command(*COMMANDS), as_admin)
+router.guest_message.filter(guest_command, as_admin)
 
 
 @router.message()
+@router.business_message()
+@router.guest_message()
 async def note(message: Message, command: CommandObject, admin: User):
-    """/note in the forum (ephemeral) or in the bot's own chat: the student is the replied-to sender or the first word."""
-    text, reply = command.args or "", message.reply_to_message
-    if reply and reply.from_user and not reply.forum_topic_created:  # a topic message «replies» to the topic itself
-        student, tg_id = await User.find_one(User.tg_chat_id == reply.from_user.id), reply.from_user.id
-    else:
-        nick, _, text = text.partition(" ")
-        nick = nick.lstrip("@")
-        student = (await User.by_nick(nick) or await User.find_one(User.tg_username == nick)) if nick else None
-        tg_id = student.tg_chat_id if student else None
-    if not (student or tg_id) or not text.strip():
-        await ack(message, HINT)
+    business = message.business_connection_id
+    student, tg_id, text = await target(message, command.args or "")
+    if not (student or tg_id) or not (text := text.strip()):
+        await (notify.send("note", HINT) if business else ack(message, HINT))
         return
-    await save(student, tg_id, text.strip(), admin, False, "forum" if message.chat.type != "private" else "bot")
-    await ack(message, "✔️ Записав")
+    visible = command.command == "note"
+    shown = await show(message, student, text, admin) if visible else ""
+    source = "private" if business else "guest" if message.guest_query_id else "forum" if message.chat.type != "private" else "bot"
+    await Note(user=student.email if student else "", tg_id=tg_id, text=text, by=admin.email, visible=visible, shown=shown, source=source).insert()
+    lines = [f"📝 Нотатка · {who(student) if student else f'<i>не привʼязаний</i> · tg {tg_id}'}", f"{'👁' if visible else '🙈'} {html.quote(text)}"]
+    if visible:
+        lines.append(f"📍 {shown}" if shown else "⚠️ Не показав: студент не привʼязав бота")
+    if business and (shown or not visible):  # the command must not stay in the student's chat
+        try:
+            await notify.bot().delete_business_messages(business_connection_id=business, message_ids=[message.message_id])
+        except TelegramAPIError as e:  # no «delete all messages» right
+            lines.append(f"⚠️ Команду з чату не прибрав: {html.quote(e.message)}")
+    await notify.send("note", "\n".join(lines))
+    if not business and not message.guest_query_id:
+        await ack(message, "✔️ Записав" + (f" · {shown}" if shown else "\n⚠️ Студент не привʼязав бота — не показав" if visible else ""))
 
 
 @router.business_connection()
