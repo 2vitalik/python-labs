@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T129** · тікетів: 128 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T132** · тікетів: 131 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -136,3 +136,6 @@
 | platform | [T126](platform/.t/T126-P--guide-editor-v1.md) | 💡 | guide-editor-v1 | Редактор методички v1: розділи, історія правок, «Що змінилось», приклади полів | 🟢 🟩 |
 | platform | [T127](platform/.t/T127-Q--editor-refs-choices.md) | ❓ | editor-refs-choices | Редактор методички, приклади полів емодзі, ідеї в знахідках — вибори | 🔴 🟩 |
 | platform | [T128](platform/.t/T128--guide-editor-v1/plan.md) | ⚙️ | guide-editor-v1 | Редактор методички v1: правки на сайті, історія, чернетка «Що змінилось», поля-клітинки, ідеї в знахідках — план | 🟢 🟩 |
+| tgbot | [T129](tgbot/.t/T129-Q--bot-message-log.md) | ❓ | bot-message-log | Журнал повідомлень бота: що зберігати і як | 🔴 🟩 |
+| tgbot | [T130](tgbot/.t/T130-C--signal-from-private-chat.md) | 🔆 | signal-from-private-chat | Сигнал боту з приватного чату: Chat Automation, Guest Bots, ефемерні команди | 🟢 ⬜ |
+| tgbot | [T131](tgbot/.t/T131-Q--message-log-2.md) | ❓ | message-log-2 | Журнал повідомлень 2: форум потоку, приватні чати, команди | 🔴 🟩 |

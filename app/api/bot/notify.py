@@ -1,11 +1,14 @@
 """Admin alerts (T111): a kind goes to the chat/topic bound with /here; unbound — to every admin's private chat."""
 import logging
+from contextvars import ContextVar
 from functools import cache
 
 from aiogram import Bot, html
 from aiogram.client.default import DefaultBotProperties
 from aiogram.exceptions import TelegramAPIError
+from aiogram.methods import SendMessage
 
+from bot import log
 from config import settings
 from models.notify import Route
 from models.user import Status, User
@@ -20,7 +23,8 @@ KINDS = {
     "digest": "📊 ранковий дайджест профілів",
 }
 MUTED = 0  # Route.chat_id for "nowhere" (/mute)
-log = logging.getLogger(__name__)
+kind_var: ContextVar[str] = ContextVar("kind", default="reply")  # what send() is sending, for the outgoing log
+logger = logging.getLogger(__name__)
 
 
 def label(kind: str) -> str:
@@ -29,14 +33,32 @@ def label(kind: str) -> str:
     return f"{emoji} {kind} · {desc}"
 
 
+async def outgoing(make_request, bot: Bot, method):
+    """Session middleware of the shared Bot: every sent message → `messages`, from the bot and the API alike."""
+    result = await make_request(bot, method)
+    if isinstance(method, SendMessage):
+        await log.save(result, "out", kind_var.get())
+    return result
+
+
 @cache
 def bot() -> Bot:
-    return Bot(settings.tg_bot_token, default=DefaultBotProperties(parse_mode="HTML", link_preview_is_disabled=True))
+    b = Bot(settings.tg_bot_token, default=DefaultBotProperties(parse_mode="HTML", link_preview_is_disabled=True))
+    b.session.middleware(outgoing)
+    return b
 
 
 async def send(kind: str, text: str) -> None:
     if not settings.tg_bot_token:
         return
+    token = kind_var.set(kind)
+    try:
+        await deliver(kind, text)
+    finally:
+        kind_var.reset(token)
+
+
+async def deliver(kind: str, text: str) -> None:
     route = await Route.find_one(Route.kind == kind)
     if route and route.chat_id == MUTED:
         return
@@ -50,4 +72,4 @@ async def send(kind: str, text: str) -> None:
         try:
             await bot().send_message(admin.tg_chat_id, text)
         except TelegramAPIError as e:
-            log.warning("alert to %s failed: %s", admin.email, e.message)
+            logger.warning("alert to %s failed: %s", admin.email, e.message)
