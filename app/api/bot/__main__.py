@@ -4,8 +4,9 @@ import logging
 import sys
 
 from aiogram import Dispatcher
+from aiogram.types import BotCommand, BotCommandScopeAllChatAdministrators
 
-from bot import digest, errors, here, log, start
+from bot import digest, errors, here, log, notes, start
 from bot.notify import bot
 from config import settings
 from db import init_db
@@ -16,10 +17,14 @@ async def main():
     await init_db()
     dp = Dispatcher()
     dp.errors.register(errors.bot_handler)
-    dp.message.outer_middleware(log.incoming)
-    dp.include_router(here.router)  # before start: its fallback would swallow /here in private chats
+    for observer in (dp.message, dp.business_message, dp.guest_message):
+        observer.outer_middleware(log.incoming)
+    dp.include_router(here.router)  # admin commands before start: its fallback would swallow them in private chats
+    dp.include_router(notes.router)
     dp.include_router(start.router)
-    dp.include_router(log.router)  # edited messages: nobody else handles them
+    dp.include_router(log.router)  # edits and deletions: nobody else handles them
+    await bot().set_my_commands([BotCommand(command="note", description="нотатка про студента", is_ephemeral=True)],
+                                scope=BotCommandScopeAllChatAdministrators())  # in groups only the sender and the bot see it
     daily = asyncio.create_task(digest.loop())
     logging.info("polling as @%s", (await bot().get_me()).username)
     try:

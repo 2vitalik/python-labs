@@ -1,6 +1,6 @@
 from aiogram import F, Router
 from aiogram.filters import CommandObject, CommandStart
-from aiogram.types import Message
+from aiogram.types import InlineQueryResultArticle, InputTextMessageContent, LinkPreviewOptions, Message
 
 from bot import texts
 from bot.link import bind, by_token, sync
@@ -35,3 +35,10 @@ async def start(message: Message, user: User | None):
 @router.message()
 async def fallback(message: Message, user: User | None):
     await message.answer(texts.MORE_SOON if user else texts.INTRO)
+
+
+@router.guest_message()
+async def guest(message: Message):
+    """@mentioned in a chat the bot is not in (Guest Mode): one visible reply — the intro."""
+    content = InputTextMessageContent(message_text=texts.INTRO, parse_mode="HTML", link_preview_options=LinkPreviewOptions(is_disabled=True))
+    await message.answer_guest_query(InlineQueryResultArticle(id="intro", title="Python Labs", input_message_content=content))

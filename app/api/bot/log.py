@@ -2,7 +2,7 @@
 from datetime import datetime, timezone
 
 from aiogram import Router
-from aiogram.types import Message
+from aiogram.types import BusinessMessagesDeleted, Message
 
 from models.message import TgMessage
 from models.user import User
@@ -39,5 +39,13 @@ async def incoming(handler, message: Message, data):
 
 
 @router.edited_message()
+@router.edited_business_message()
 async def edited(message: Message):
     await save(message, "in", kind="edit")
+
+
+@router.deleted_business_messages()
+async def deleted(event: BusinessMessagesDeleted):
+    """Only Chat Automation chats report deletions; groups never do."""
+    await TgMessage.insert_many([TgMessage(dir="in", chat_id=event.chat.id, chat_type=event.chat.type, message_id=m, kind="deleted")
+                                 for m in event.message_ids])
