@@ -1,14 +1,16 @@
 """Course guide pages: markdown in Mongo (`guide`), edited on the site by admins (T126); every save goes to
-`history` with a note, and a note also lands in the «Що змінилось» draft page until published."""
+`history` with a note, and a note also lands in the «Що змінилось» draft page until published.
+Reading is admin-only too while the guide is unfinished (T136): to reopen, `current_user` on the two GETs and
+404 for DRAFT to non-admins."""
 from datetime import date
 
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
-from deps import admin_user, current_user
+from deps import admin_user
 from models.guide import DRAFT, Guide, save
 from models.history import Change
-from models.user import Status, User
+from models.user import User
 
 router = APIRouter(prefix="/api/guide")
 
@@ -33,7 +35,7 @@ async def page(slug: str) -> Guide:
 
 
 @router.get("")
-async def list_pages():
+async def list_pages(user: User = Depends(admin_user)):
     pages = await Guide.find(Guide.slug != DRAFT).to_list()
     return [{"slug": g.slug, "title": g.title, "updated": g.updated_at.isoformat()} for g in pages]
 
@@ -53,9 +55,7 @@ async def history(slug: str = "", user: User = Depends(admin_user)):
 
 
 @router.get("/{slug}")
-async def get_page(slug: str, user: User | None = Depends(current_user)):
-    if slug == DRAFT and (not user or user.status != Status.admin):
-        raise HTTPException(404)
+async def get_page(slug: str, user: User = Depends(admin_user)):
     return (await page(slug)).api()
 
 

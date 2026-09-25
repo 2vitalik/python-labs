@@ -21,14 +21,15 @@ import TasksPage from './pages/TasksPage.vue'
 import { CHANGES, SECTIONS } from './guide.js'
 import { canAccess, safeNext, user, userLoaded } from './user.js'
 
-// the guide is public; students get only the profile, everything else stays admin-only until reopened page by page
+// the guide is unfinished, so it is admin-only for now (T136; drop `hidden` to reopen); students get only the profile
+const hidden = { access: 'admin' }
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: '/', component: HomePage },
-    ...[...SECTIONS, CHANGES].filter((s) => s.page).map((s) => ({ path: s.path, component: GuidePage, meta: { slug: s.slug } })),
-    { path: '/labs/:n', component: GuidePage },
-    { path: '/method', component: MethodPage },
+    ...[...SECTIONS, CHANGES].filter((s) => s.page).map((s) => ({ path: s.path, component: GuidePage, meta: { slug: s.slug, ...hidden } })),
+    { path: '/labs/:n', component: GuidePage, meta: hidden },
+    { path: '/method', component: MethodPage, meta: hidden },
     { path: '/method/history', component: HistoryPage, meta: { access: 'admin' } },
     { path: '/login', component: LoginPage },
     { path: '/my/profile', component: ProfilePage, meta: { access: 'active' } },
@@ -39,13 +40,13 @@ const router = createRouter({
     { path: '/students/:nick/edit', component: StudentEditPage, meta: { access: 'admin' } },
     { path: '/ideas', component: RefsPage, meta: { access: 'admin' } },
     { path: '/refs', redirect: '/ideas' },
-    { path: '/games', component: GamesPage },  // guide text for all, the catalog itself is admin-only inside
+    { path: '/games', component: GamesPage, meta: hidden },  // guide text + catalog; the catalog stays admin-only inside once the guide reopens (T116 Q13)
     { path: '/games/new', component: GameEditPage, meta: { access: 'admin' } },
     { path: '/games/:slug', component: GamePage, meta: { access: 'admin', filters: true } },
     { path: '/games/:slug/edit', component: GameEditPage, meta: { access: 'admin' } },
     { path: '/colors', component: ColorsPage, meta: { access: 'admin' } },
     { path: '/colors2', component: Colors2Page, meta: { access: 'admin' } },
-    { path: '/tasks', component: TasksPage, meta: { wide: true, filters: true } },
+    { path: '/tasks', component: TasksPage, meta: { wide: true, filters: true, ...hidden } },
     { path: '/tasks/new', component: TaskEditPage, meta: { access: 'admin' } },
     { path: '/tasks/:slug/edit', component: TaskEditPage, meta: { access: 'admin' } },
   ],

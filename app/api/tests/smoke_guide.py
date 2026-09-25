@@ -41,6 +41,13 @@ def io(root, cmd):
 
 
 with TestClient(main.app) as c:
+    check("guest: list and page 401 — the guide is closed (T136)",
+          c.get("/api/guide").status_code == 401 and c.get("/api/guide/game").status_code == 401)
+    login(c, "stud@nure.ua", "student")
+    check("student: list, page, draft, history 403",
+          all(c.get(f"/api/guide{p}").status_code == 403 for p in ("", "/game", "/changes-draft", "/history")))
+
+    login(c, "admin@nure.ua", "admin")
     pages = c.get("/api/guide").json()
     check("seed: pages from data/guide, no draft", len(pages) >= 10 and all(p["slug"] != "changes-draft" for p in pages))
     check("seed logged", mongo[DB].history.count_documents({"coll": "guide", "actor": "seed"}) == len(pages))
@@ -48,11 +55,10 @@ with TestClient(main.app) as c:
     check("page: title/body/rev 0", g["title"].endswith("Ігри") and g["rev"] == 0 and "## " in g["body"])
     edit = {"title": g["title"], "body": g["body"].replace("## Своя гра", "## Своя гра 2"), "rev": 0,
             "note": "уточнив своє", "section": "Своя гра"}
-    check("guest: draft 404, PUT 401",
-          c.get("/api/guide/changes-draft").status_code == 404 and c.put("/api/guide/game", json=edit).status_code == 401)
+    c.cookies.clear()
+    check("guest: PUT 401", c.put("/api/guide/game", json=edit).status_code == 401)
     login(c, "stud@nure.ua", "student")
-    check("student: PUT 403, history 403",
-          c.put("/api/guide/game", json=edit).status_code == 403 and c.get("/api/guide/history").status_code == 403)
+    check("student: PUT 403", c.put("/api/guide/game", json=edit).status_code == 403)
 
     login(c, "admin@nure.ua", "admin")
     r = c.put("/api/guide/game", json=edit)
