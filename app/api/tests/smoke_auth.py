@@ -1,10 +1,10 @@
-"""Smoke: `?next=` round-trip via dev-login, safe_path, 401 vs 403, activity rows (login ua/ip, api calls). Run from app/api:
+"""Smoke: `?next=` round-trip via dev-login, safe_path, 401 vs 403, activity rows (login ua/ip, api calls), /api/health. Run from app/api:
 DB_NAME=python_labs_smoke uv run python tests/smoke_auth.py"""
 import os
 import sys
 
 sys.path.insert(0, os.getcwd())
-from pymongo import MongoClient  # noqa: E402
+from pymongo import AsyncMongoClient, MongoClient  # noqa: E402
 
 DB = os.environ["DB_NAME"]
 assert DB.endswith("_smoke"), "refuse to run on a non-smoke DB"
@@ -15,6 +15,7 @@ from fastapi.testclient import TestClient  # noqa: E402
 
 import main  # noqa: E402
 from config import settings  # noqa: E402
+from routes import health  # noqa: E402
 from routes.auth import safe_path  # noqa: E402
 
 results = []
@@ -31,6 +32,7 @@ for path, want in [("/students/vasya", "/students/vasya"), ("/tasks?zone=ui&q=x"
 
 settings.fake_user_email = "dev@nure.ua"
 with TestClient(main.app, follow_redirects=False) as c:
+    check("guest: /api/health → 200 ok", c.get("/api/health").json() == {"ok": True})
     check("guest: /students → 401", c.get("/api/students").status_code == 401)
     check("guest: /my/game → 401", c.get("/api/my/game").status_code == 401)
 
@@ -63,6 +65,9 @@ with TestClient(main.app, follow_redirects=False) as c:
 
     check("logout → /", c.get("/api/auth/logout").headers["location"] == "/")
     check("logged out", c.get("/api/me").json() is None)
+
+    health.mongo = AsyncMongoClient("mongodb://127.0.0.1:9", serverSelectionTimeoutMS=100)  # nobody listens there
+    check("health without db → 503", c.get("/api/health").status_code == 503)
 
 failed = [n for n, ok in results if not ok]
 print(f"\n{len(results) - len(failed)}/{len(results)} passed")

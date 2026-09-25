@@ -11,7 +11,7 @@ from config import settings
 from db import init_db
 from guide_io import seed
 from models.activity import Activity, client
-from routes import (auth, games, guide, me, my_claims, my_game, my_parts, my_rules, profile, refs,
+from routes import (auth, games, guide, health, me, my_claims, my_game, my_parts, my_rules, profile, refs,
                     student_games, students, tasks, taxonomy)
 
 
@@ -41,6 +41,7 @@ async def footprint(request: Request, call_next):
 
 
 app.add_middleware(SessionMiddleware, secret_key=settings.session_secret)  # added last = outermost: the session is set before footprint()
+app.include_router(health.router)
 app.include_router(auth.router)
 app.include_router(me.router)
 app.include_router(profile.router)

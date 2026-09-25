@@ -16,7 +16,9 @@ from models.task import Task
 from models.user import User
 
 
+mongo = AsyncMongoClient(settings.mongo_uri)  # connects lazily, so it is safe to build at import
+
+
 async def init_db():
-    client = AsyncMongoClient(settings.mongo_uri)
-    await init_beanie(client[settings.db_name],
+    await init_beanie(mongo[settings.db_name],
                       document_models=[User, Change, Route, BaseGame, Task, Game, Part, Claim, Rule, Ref, Activity, Guide, TgMessage, Note])

@@ -56,6 +56,7 @@
 ## Відкладене
 
 - Деплой (VPS без docker: systemd + Caddy, домен, HTTPS, Publish OAuth-апки, віддача `dist/` статикою) — окремим кроком після мікро-MVP · [T40](.t/T40-Q--auth-mvp-questions.md) Q5.
+- Для деплою вже є health-ручка (2026-09-25): `GET /api/health` — `ping` Mongo, 503 без бази; це `HEALTH` web-юніта в маніфесті vps-infra, зовні Caddy віддає на ній 404.
 - ~~Виключення `.venv`/`node_modules` із синку Dropbox~~ — знято: Vitalik свідомо синхронізує все (чат 2026-07-26).
 
 ## Відкрите
