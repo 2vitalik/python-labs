@@ -8,7 +8,7 @@ from starlette.responses import RedirectResponse
 
 from bot import alerts
 from config import settings
-from models.activity import Activity
+from models.activity import Activity, client
 from models.history import record_new
 from models.user import Status, User
 
@@ -71,12 +71,6 @@ def safe_path(path: str) -> str:
 
 def to_login(error: str, next: str) -> RedirectResponse:
     return RedirectResponse(f"/login?error={error}&next={quote(next)}")
-
-
-def client(request: Request) -> dict:
-    """User-agent and IP for the login row (T139): phone or desktop, from where; behind a proxy the real IP is in X-Forwarded-For."""
-    ip = request.headers.get("x-forwarded-for", "").split(",")[0].strip() or (request.client.host if request.client else "")
-    return {"ua": request.headers.get("user-agent", "")[:200], "ip": ip}
 
 
 async def upsert_user(info: dict, tasks: BackgroundTasks, request: Request):

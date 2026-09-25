@@ -10,7 +10,7 @@ from bot import errors
 from config import settings
 from db import init_db
 from guide_io import seed
-from models.activity import Activity
+from models.activity import Activity, client
 from routes import (auth, games, guide, me, my_claims, my_game, my_parts, my_rules, profile, refs,
                     student_games, students, tasks, taxonomy)
 
@@ -36,7 +36,7 @@ async def footprint(request: Request, call_next):
     email = request.session.get("email")
     if email and path.startswith("/api/") and not path.startswith(("/api/auth/", "/api/uploads/")) and (method, path) not in QUIET:
         await Activity(user=email, kind="api", method=method, path=path + (f"?{request.url.query}" if request.url.query else ""),
-                       status=response.status_code, ms=int((perf_counter() - t) * 1000)).insert()
+                       status=response.status_code, ms=int((perf_counter() - t) * 1000), **client(request)).insert()
     return response
 
 

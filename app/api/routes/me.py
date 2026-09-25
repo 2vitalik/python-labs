@@ -2,13 +2,13 @@ import secrets
 
 from datetime import datetime, timezone
 
-from fastapi import APIRouter, BackgroundTasks, Depends
+from fastapi import APIRouter, BackgroundTasks, Depends, Request
 from pydantic import BaseModel
 
 from bot import alerts
 from config import settings
 from deps import active_user, current_user
-from models.activity import Activity
+from models.activity import Activity, client
 from models.history import record
 from models.user import Status, User
 
@@ -35,11 +35,11 @@ class ViewIn(BaseModel):
 
 
 @router.post("/api/me/view", status_code=204)
-async def view(data: ViewIn, user: User = Depends(current_user)):
+async def view(data: ViewIn, request: Request, user: User = Depends(current_user)):
     """The SPA reports every page it opens for a signed-in user (App.vue); guests are not tracked."""
     if not user:
         return
-    await Activity(user=user.email, kind="view", path=data.path[:200]).insert()
+    await Activity(user=user.email, kind="view", path=data.path[:200], **client(request)).insert()
     user.last_seen_at = datetime.now(timezone.utc)
     await user.save()
 

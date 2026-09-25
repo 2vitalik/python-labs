@@ -49,7 +49,11 @@ with TestClient(main.app, follow_redirects=False) as c:
     check("api rows: the two 403s only — not the guest 401s, /api/me or /api/auth", sorted(a["path"] for a in api) == ["/api/my/game", "/api/students"]
           and all(a["status"] == 403 and a["method"] == "GET" and a["ms"] >= 0 for a in api), api)
     c.get("/api/students", params={"group": "x"})
-    check("api row keeps the query", acts(kind="api", path="/api/students?group=x") != [])
+    row = acts(kind="api", path="/api/students?group=x")
+    check("api row keeps the query and carries ua + ip", row != [] and row[0]["ua"] == "testclient" and row[0]["ip"] == "testclient")
+    c.post("/api/me/view", json={"path": "/tasks"}, headers={"x-forwarded-for": "5.6.7.8", "user-agent": "Mozilla/5.0 (iPhone)"})
+    row = acts(kind="view")
+    check("view row: page + ua + proxied ip", row != [] and row[-1]["path"] == "/tasks" and row[-1]["ua"] == "Mozilla/5.0 (iPhone)" and row[-1]["ip"] == "5.6.7.8", row)
     c.get("/api/auth/dev-login", headers={"x-forwarded-for": "1.2.3.4, 10.0.0.1"})
     check("login behind a proxy: first X-Forwarded-For ip", acts(kind="login")[-1]["ip"] == "1.2.3.4")
 
