@@ -26,6 +26,7 @@ class User(Document):
     tg_username: str = ""
     tg_token: str = ""
     tg_chat_id: int | None = None
+    tg_linked_at: datetime | None = None  # when this chat was linked; None once unlinked
     first_seen_at: datetime | None = None  # first sign-in; None = never been on the site
     last_seen_at: datetime | None = None  # last sign-in or page view
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
@@ -47,5 +48,5 @@ class User(Document):
             "name": self.name, "picture": self.picture,
             "status": self.status, "last_name": self.last_name, "first_name": self.first_name,
             "patronymic": self.patronymic, "group": self.group, "github": self.github,
-            "tg_username": self.tg_username, "tg_linked": self.tg_chat_id is not None,
+            "tg_username": self.tg_username, "tg_linked": self.tg_chat_id is not None, "tg_linked_at": self.tg_linked_at,
         }

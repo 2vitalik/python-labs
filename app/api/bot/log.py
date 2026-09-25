@@ -2,7 +2,8 @@
 from datetime import datetime, timezone
 
 from aiogram import Router
-from aiogram.types import BusinessMessagesDeleted, Message
+from aiogram.types import BusinessMessagesDeleted, ChatJoinRequest, ChatMemberUpdated, Message, MessageReactionUpdated, ReactionType
+from aiogram.types import User as TgUser
 
 from models.message import TgMessage
 from models.user import User
@@ -28,8 +29,23 @@ async def save(message: Message, dir: str, kind: str = "") -> None:
                     from_id=sender.id if sender else None, username=(sender.username if sender else None) or "",
                     user=await email(sender.id if sender else message.chat.id),
                     text=message.text or message.caption or "", content_type=message.content_type,
-                    file_id=media_id(message), message_id=message.message_id, kind=kind,
+                    file_id=media_id(message), message_id=message.message_id, kind=kind, raw=dump(message) if dir == "in" else {},
                     at=datetime.fromtimestamp(message.edit_date, timezone.utc) if message.edit_date else message.date).insert()
+
+
+def dump(event) -> dict:
+    return event.model_dump(mode="json", exclude_none=True)
+
+
+async def event_row(event, who: TgUser | None, **fields) -> None:
+    """Non-message updates share the journal: the affected user is the sender, the whole update goes to `raw`."""
+    await TgMessage(dir="in", chat_id=event.chat.id, chat_type=event.chat.type, from_id=who.id if who else None,
+                    username=(who.username if who else None) or "", user=await email(who.id) if who else "", at=event.date,
+                    raw=dump(event), **fields).insert()
+
+
+def emoji(r: ReactionType) -> str:
+    return r.emoji if r.type == "emoji" else f"custom:{r.custom_emoji_id}" if r.type == "custom_emoji" else "⭐"
 
 
 async def incoming(handler, message: Message, data):
@@ -42,6 +58,29 @@ async def incoming(handler, message: Message, data):
 @router.edited_business_message()
 async def edited(message: Message):
     await save(message, "in", kind="edit")
+
+
+@router.chat_member()
+@router.my_chat_member()
+async def member(event: ChatMemberUpdated):
+    """Joins, leaves, kicks, promotions in the forum (admin bots get them for everyone); my_chat_member — the bot's own status."""
+    new = event.new_chat_member
+    via = f" · {event.invite_link.name or event.invite_link.invite_link}" if event.invite_link else ""
+    by = f" · by {event.from_user.id}" if event.from_user.id != new.user.id else ""
+    await event_row(event, new.user, text=f"{event.old_chat_member.status.value} → {new.status.value}{via}{by}", content_type="chat_member",
+                    kind="member")
+
+
+@router.chat_join_request()
+async def join_request(event: ChatJoinRequest):
+    await event_row(event, event.from_user, text=event.bio or "", content_type="join_request", kind="member")
+
+
+@router.message_reaction()
+async def reaction(event: MessageReactionUpdated):
+    """Who reacted with what; empty text = reaction removed; anonymous admins react as actor_chat."""
+    await event_row(event, event.user, message_id=event.message_id, text=" ".join(map(emoji, event.new_reaction)), content_type="reaction",
+                    kind="reaction")
 
 
 @router.deleted_business_messages()

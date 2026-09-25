@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T138** · тікетів: 137 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T140** · тікетів: 139 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -145,3 +145,5 @@
 | tgbot | [T135](tgbot/.t/T135--notes-simplify/plan.md) | ⚙️ | notes-simplify | Нотатки лише для викладача: /note лишається, /hide зникає — план | 🟢 🟩 |
 | — | [T136](.t/T136--guide-hidden/plan.md) | ⚙️ | guide-hidden | Методичка закрита від студентів до завершення — план | 🟢 ⬜ |
 | tgbot | [T137](tgbot/.t/T137-Q--bot-always-on.md) | ❓ | bot-always-on | Постійний процес бота і /start bizChat | 🔴 ⬜ |
+| tgbot | [T138](tgbot/.t/T138--tg-footprint/plan.md) | ⚙️ | tg-footprint | Слід студента в Telegram: членство, реакції, raw, дата привʼязки — план | 🟢 🟩 |
+| tgbot | [T139](tgbot/.t/T139-Q--activity-more.md) | ❓ | activity-more | Збирати все: що ще варто і як | 🔴 ⬜ |

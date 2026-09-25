@@ -52,7 +52,7 @@ async def run():
     await start_link(msg, SimpleNamespace(args="tok123"))
     u = await User.get(user.id)
     check("known token: greets by first name + recorded", replies[0] == "👋 Привіт, Вася!\n✔️ Дякую, записав тебе)", replies[0])
-    check("chat_id + real username saved", u.tg_chat_id == 42 and u.tg_username == "vasya_tg")
+    check("chat_id + real username + link date saved", u.tg_chat_id == 42 and u.tg_username == "vasya_tg" and u.tg_linked_at is not None)
     check("history recorded by tgbot", mongo[DB].history.count_documents({"actor": "tgbot", "changes.tg_chat_id.new": 42}) == 1)
 
     msg, replies = fake()

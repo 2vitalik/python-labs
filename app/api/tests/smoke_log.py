@@ -13,7 +13,8 @@ DB = os.environ["DB_NAME"]
 assert DB.endswith("_smoke"), "refuse to run on a non-smoke DB"
 MongoClient().drop_database(DB)
 from aiogram.methods import SendChatAction, SendMessage  # noqa: E402
-from aiogram.types import Chat, Message, PhotoSize  # noqa: E402
+from aiogram.types import (Chat, ChatJoinRequest, ChatMemberLeft, ChatMemberMember, ChatMemberUpdated, Message,  # noqa: E402
+                           MessageReactionUpdated, PhotoSize, ReactionTypeEmoji)
 from aiogram.types import User as TgUser  # noqa: E402
 
 from bot import log, notify  # noqa: E402
@@ -82,14 +83,36 @@ async def run():
     check("Chat Automation: chat_type=business, chat is the student, sender the teacher",
           row.chat_type == "business" and row.chat_id == 42 and row.from_id == 7 and row.user == "admin@nure.ua")
 
+    check("incoming keeps the raw Telegram object", row.raw.get("text") == "привіт" and row.raw.get("business_connection_id") == "conn")
+
+    vasya = TgUser(id=42, is_bot=False, first_name="Вася", username="vasya_tg")
+    forum = Chat(id=-100, type="supergroup")
+    await log.member(ChatMemberUpdated(chat=forum, from_user=vasya, date=NOW, old_chat_member=ChatMemberLeft(user=vasya),
+                                       new_chat_member=ChatMemberMember(user=vasya)))
+    row = await TgMessage.find_one(TgMessage.kind == "member")
+    check("forum join: kind=member, 'left → member', linked user, raw", row.text == "left → member" and row.from_id == 42
+          and row.user == "vasya@nure.ua" and row.content_type == "chat_member" and row.raw["new_chat_member"]["status"] == "member")
+
+    await log.join_request(ChatJoinRequest(chat=forum, from_user=vasya, user_chat_id=42, date=NOW, bio="ПЗПІ-25-1"))
+    row = await TgMessage.find_one(TgMessage.content_type == "join_request")
+    check("join request: kind=member, bio as text", row.kind == "member" and row.text == "ПЗПІ-25-1" and row.from_id == 42)
+
+    await log.reaction(MessageReactionUpdated(chat=forum, message_id=4, date=NOW, user=vasya, old_reaction=[],
+                                              new_reaction=[ReactionTypeEmoji(emoji="👍"), ReactionTypeEmoji(emoji="🔥")]))
+    row = await TgMessage.find_one(TgMessage.kind == "reaction")
+    check("reaction: kind=reaction on message 4, emojis as text, linked user", row.message_id == 4 and row.text == "👍 🔥" and row.user == "vasya@nure.ua")
+
+    await log.reaction(MessageReactionUpdated(chat=forum, message_id=4, date=NOW, user=vasya, old_reaction=[ReactionTypeEmoji(emoji="👍")], new_reaction=[]))
+    check("reaction removed: second row with empty text", await TgMessage.find(TgMessage.kind == "reaction", TgMessage.text == "").count() == 1)
+
     await log.edited(msg(text="/start edited", edit_date=int(NOW.timestamp())))
     check("edited: second row for the same message_id, kind=edit",
           await TgMessage.find(TgMessage.message_id == 1, TgMessage.kind == "edit").count() == 1)
 
     await notify.outgoing(make_request, None, SendMessage(chat_id=42, text="👋 Привіт"))
     row = await TgMessage.find_one(TgMessage.text == "👋 Привіт")
-    check("outgoing reply: dir=out, kind=reply, email of the chat's user, no from_id",
-          row.dir == "out" and row.kind == "reply" and row.user == "vasya@nure.ua" and row.from_id is None and row.message_id == 10)
+    check("outgoing reply: dir=out, kind=reply, email of the chat's user, no from_id, no raw",
+          row.dir == "out" and row.kind == "reply" and row.user == "vasya@nure.ua" and row.from_id is None and row.message_id == 10 and row.raw == {})
 
     settings.tg_bot_token = "fake"
     notify.bot = lambda: FakeBot()
@@ -99,7 +122,7 @@ async def run():
     check("kind resets after send()", notify.kind_var.get() == "reply")
 
     await notify.outgoing(make_request, None, SendChatAction(chat_id=42, action="typing"))
-    check("non-message request: not logged", await TgMessage.count() == 8)
+    check("non-message request: not logged", await TgMessage.count() == 12)
 
 asyncio.run(run())
 ok = sum(results)

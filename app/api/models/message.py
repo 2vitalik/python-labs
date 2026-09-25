@@ -5,7 +5,8 @@ from pydantic import Field
 
 
 class TgMessage(Document):
-    """Every Telegram message the bot saw or sent (T129): student chats, the stream forum, admin alerts."""
+    """Every Telegram message the bot saw or sent (T129): student chats, the stream forum, admin alerts —
+    plus forum membership and reactions (T138), so one collection holds a student's whole Telegram footprint."""
     dir: str  # in · out
     chat_id: int
     chat_type: str = "private"  # private · business (teacher's chat with a student via Chat Automation) · group · supergroup
@@ -14,10 +15,11 @@ class TgMessage(Document):
     username: str = ""
     user: str = ""  # email behind from_id (in) or chat_id (out); "" = not linked
     text: str = ""  # text or media caption
-    content_type: str = "text"
+    content_type: str = "text"  # Telegram's, or chat_member · join_request · reaction for non-message events
     file_id: str = ""  # media; the file itself can be fetched later via getFile
     message_id: int = 0
-    kind: str = ""  # out: alert kind from KINDS or "reply"; in: "edit" for edited messages
+    kind: str = ""  # out: alert kind from KINDS or "reply"; in: edit · deleted · member · reaction
+    raw: dict = {}  # in: the whole Telegram object, for whatever analysis comes later
     at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
     class Settings:

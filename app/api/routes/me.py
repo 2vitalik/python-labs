@@ -47,6 +47,7 @@ async def view(data: ViewIn, user: User = Depends(current_user)):
 @router.delete("/api/me/telegram")
 async def unlink_telegram(tasks: BackgroundTasks, user: User = Depends(active_user)):
     user.tg_token = ""  # rotate: me_data mints a new one, so the old link is dead
+    user.tg_linked_at = None
     changes = await record(user, {"tg_chat_id": None, "tg_username": ""}, actor=user.email)
     tasks.add_task(alerts.profile, user, changes)
     return await me_data(user)
