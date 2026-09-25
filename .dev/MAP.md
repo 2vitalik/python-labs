@@ -144,6 +144,6 @@
 | tgbot | [T134](tgbot/.t/T134--notes-commands/plan.md) | ⚙️ | notes-commands | Нотатки: /note видима, /hide тиха, guest-згадка — план | 🟢 🟩 |
 | tgbot | [T135](tgbot/.t/T135--notes-simplify/plan.md) | ⚙️ | notes-simplify | Нотатки лише для викладача: /note лишається, /hide зникає — план | 🟢 🟩 |
 | — | [T136](.t/T136--guide-hidden/plan.md) | ⚙️ | guide-hidden | Методичка закрита від студентів до завершення — план | 🟢 ⬜ |
-| tgbot | [T137](tgbot/.t/T137-Q--bot-always-on.md) | ❓ | bot-always-on | Постійний процес бота і /start bizChat | 🔴 ⬜ |
+| tgbot | [T137](tgbot/.t/T137-Q--bot-always-on.md) | ❓ | bot-always-on | Постійний процес бота і /start bizChat | 🔴 🟩 |
 | tgbot | [T138](tgbot/.t/T138--tg-footprint/plan.md) | ⚙️ | tg-footprint | Слід студента в Telegram: членство, реакції, raw, дата привʼязки — план | 🟢 🟩 |
-| tgbot | [T139](tgbot/.t/T139-Q--activity-more.md) | ❓ | activity-more | Збирати все: що ще варто і як | 🔴 ⬜ |
+| tgbot | [T139](tgbot/.t/T139-Q--activity-more.md) | ❓ | activity-more | Збирати все: що ще варто і як | 🔴 🟩 |

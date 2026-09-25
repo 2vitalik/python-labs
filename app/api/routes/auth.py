@@ -45,7 +45,7 @@ async def callback(request: Request, tasks: BackgroundTasks):
         return to_login("verify", next)
     if info.get("hd") != NURE_DOMAIN and info["email"] not in settings.admin_list:
         return to_login("domain", next)
-    await upsert_user(info, tasks)
+    await upsert_user(info, tasks, request)
     request.session["email"] = info["email"]
     return RedirectResponse(next)
 
@@ -59,7 +59,7 @@ async def logout(request: Request):
 @router.get("/dev-login")
 async def dev_login(request: Request, tasks: BackgroundTasks, next: str = "/"):
     if settings.fake_user_email:
-        await upsert_user({"email": settings.fake_user_email, "name": "Dev User"}, tasks)
+        await upsert_user({"email": settings.fake_user_email, "name": "Dev User"}, tasks, request)
         request.session["email"] = settings.fake_user_email
     return RedirectResponse(safe_path(next))
 
@@ -73,7 +73,13 @@ def to_login(error: str, next: str) -> RedirectResponse:
     return RedirectResponse(f"/login?error={error}&next={quote(next)}")
 
 
-async def upsert_user(info: dict, tasks: BackgroundTasks):
+def client(request: Request) -> dict:
+    """User-agent and IP for the login row (T139): phone or desktop, from where; behind a proxy the real IP is in X-Forwarded-For."""
+    ip = request.headers.get("x-forwarded-for", "").split(",")[0].strip() or (request.client.host if request.client else "")
+    return {"ua": request.headers.get("user-agent", "")[:200], "ip": ip}
+
+
+async def upsert_user(info: dict, tasks: BackgroundTasks, request: Request):
     email = info["email"]
     user = await User.find_one(User.email == email)
     is_new = user is None
@@ -89,7 +95,7 @@ async def upsert_user(info: dict, tasks: BackgroundTasks):
     if email in settings.admin_list:
         user.status = Status.admin
     await user.save()
-    await Activity(user=email, kind="login").insert()
+    await Activity(user=email, kind="login", **client(request)).insert()
     if is_new:
         await record_new(user, actor=email)
     if first:

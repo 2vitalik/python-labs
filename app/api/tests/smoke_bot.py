@@ -83,6 +83,17 @@ async def run():
     check("unlinked chat: nothing touched, intro", "Привʼязати бота" in replies[0]
           and mongo[DB].users.count_documents({"tg_username": "stranger"}) == 0)
 
+    admin = await User(email="admin@nure.ua", status=Status.admin, tg_chat_id=7).insert()
+    msg, replies = fake(chat_id=7, username="teacher")
+    await start_link(msg, SimpleNamespace(args="bizChat43"), user=admin)
+    check("/start bizChat<id> from an admin: student card + note commands", "🎓" in replies[0] and "Вася" in replies[0] and "/note" in replies[0], replies[0])
+    msg, replies = fake(chat_id=7, username="teacher")
+    await start_link(msg, SimpleNamespace(args="bizChat555"), user=admin)
+    check("bizChat with an unlinked id: 'not linked yet' + commands", "ще не привʼязав" in replies[0] and "/hide" in replies[0])
+    msg, replies = fake(chat_id=43, username="vasya_new")
+    await start_link(msg, SimpleNamespace(args="bizChat43"), user=await User.get(user.id))
+    check("bizChat from a student: treated as a stale link", "Не впізнаю" in replies[0])
+
 asyncio.run(run())
 ok = sum(1 for _, p in results if p)
 print(f"\n{ok}/{len(results)} PASS")

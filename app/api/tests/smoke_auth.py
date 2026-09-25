@@ -1,4 +1,4 @@
-"""Smoke: `?next=` round-trip via dev-login, safe_path, 401 vs 403. Run from app/api:
+"""Smoke: `?next=` round-trip via dev-login, safe_path, 401 vs 403, activity rows (login ua/ip, api calls). Run from app/api:
 DB_NAME=python_labs_smoke uv run python tests/smoke_auth.py"""
 import os
 import sys
@@ -40,6 +40,18 @@ with TestClient(main.app, follow_redirects=False) as c:
     check("session set", c.get("/api/me").json()["email"] == "dev@nure.ua")
     check("pending: /students → 403", c.get("/api/students").status_code == 403)
     check("pending: /my/game → 403", c.get("/api/my/game").status_code == 403)
+
+    def acts(**q):
+        return list(mongo[DB].activity.find(q))
+    login = acts(kind="login")[0]
+    check("login row: user-agent + ip", login["ua"] == "testclient" and login["ip"] == "testclient", login)
+    api = acts(kind="api")
+    check("api rows: the two 403s only — not the guest 401s, /api/me or /api/auth", sorted(a["path"] for a in api) == ["/api/my/game", "/api/students"]
+          and all(a["status"] == 403 and a["method"] == "GET" and a["ms"] >= 0 for a in api), api)
+    c.get("/api/students", params={"group": "x"})
+    check("api row keeps the query", acts(kind="api", path="/api/students?group=x") != [])
+    c.get("/api/auth/dev-login", headers={"x-forwarded-for": "1.2.3.4, 10.0.0.1"})
+    check("login behind a proxy: first X-Forwarded-For ip", acts(kind="login")[-1]["ip"] == "1.2.3.4")
 
     r = c.get("/api/auth/dev-login", params={"next": "https://evil.com"})
     check("dev-login foreign next → /", r.headers["location"] == "/", r.headers.get("location"))
