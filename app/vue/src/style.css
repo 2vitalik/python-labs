@@ -27,7 +27,14 @@
   0%, 45% { background-color: var(--flash-bg); border-color: var(--bs-warning-border-subtle); box-shadow: 0 0 0 .25rem var(--bs-warning-bg-subtle); }
   100% { background-color: var(--bs-card-bg); border-color: var(--bs-card-border-color); box-shadow: none; }
 }
+/* the lit card's button gets a ring of its own: a deeper yellow, so it stands out on the pale fill */
+.card.flash .btn { --btn-ring: 0 0 0 .25rem color-mix(in srgb, var(--bs-warning) 45%, transparent); animation: btn-flash 2.5s ease-out; }
+@keyframes btn-flash {
+  0%, 45% { box-shadow: var(--btn-ring); }
+  100% { box-shadow: none; }
+}
 @media (prefers-reduced-motion: reduce) {
   .flash { animation: none; background-color: var(--bs-warning-bg-subtle); }
   .card.flash { background-color: var(--flash-bg); border-color: var(--bs-warning-border-subtle); }
+  .card.flash .btn { box-shadow: var(--btn-ring); }
 }
