@@ -24,7 +24,7 @@ if (admin.value) {
 
 <template>
   <div>
-    <div class="d-flex flex-wrap justify-content-between align-items-baseline gap-2 mb-3">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
       <h1 class="mb-0">{{ home?.title || 'Python Labs' }}</h1>
       <div v-if="user" class="d-flex flex-wrap align-items-center gap-2 small">
         <span>Привіт, {{ firstName }}!</span>
