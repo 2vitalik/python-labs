@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# bin/hooks/pre-push — a push of main also publishes branch www (bin/www)
+#   enable once per clone: git config core.hooksPath bin/hooks
+# stdin, one line per ref: <local ref> <local sha> <remote ref> <remote sha>
+set -euo pipefail
+
+while read -r _local sha remote _old; do
+  [ "$remote" = refs/heads/main ] || continue
+  bin/www "$sha" </dev/null
+done
