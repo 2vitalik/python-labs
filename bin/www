@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# bin/www [commit] — build the SPA from a commit's tree (default HEAD)
+#   into a temp dir; the working tree is never used.
+# Later: commit dist/ as an orphan and force-push branch www.
+set -euo pipefail
+
+cd "$(git rev-parse --show-toplevel)"
+sha=$(git rev-parse --verify "${1:-HEAD}^{commit}")
+
+say() { echo "www: $*"; }
+
+tmp=$(mktemp -d)
+trap 'rm -rf "$tmp"' EXIT
+
+git archive "$sha:app/vue" | tar -x -C "$tmp"
+ln -s "$PWD/app/vue/node_modules" "$tmp/node_modules"
+
+say "build ${sha:0:7} in $tmp"
+(cd "$tmp" && npm run build)
+
+files=$(find "$tmp/dist" -type f | wc -l | tr -d ' ')
+say "dist: $files files, $(du -sh "$tmp/dist" | cut -f1)"
+ls "$tmp/dist/assets"
