@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 # bin/www [commit] — build the SPA from a commit's tree (default HEAD)
-#   into a temp dir; the working tree is never used.
-# Later: commit dist/ as an orphan and force-push branch www.
+#   in a temp dir; commit dist/ as a parentless commit (subject = sha).
+# Next: force-push that commit as branch www.
 set -euo pipefail
 
 cd "$(git rev-parse --show-toplevel)"
 sha=$(git rev-parse --verify "${1:-HEAD}^{commit}")
+git_dir=$(git rev-parse --absolute-git-dir)
 
 say() { echo "www: $*"; }
 
@@ -18,6 +19,10 @@ ln -s "$PWD/app/vue/node_modules" "$tmp/node_modules"
 say "build ${sha:0:7} in $tmp"
 (cd "$tmp" && npm run build)
 
-files=$(find "$tmp/dist" -type f | wc -l | tr -d ' ')
-say "dist: $files files, $(du -sh "$tmp/dist" | cut -f1)"
-ls "$tmp/dist/assets"
+(cd "$tmp/dist" && GIT_INDEX_FILE=$tmp/index \
+  git --git-dir="$git_dir" --work-tree=. add -A)
+tree=$(GIT_INDEX_FILE=$tmp/index git write-tree)
+commit=$(git commit-tree "$tree" -m "$sha")
+
+say "commit ${commit:0:7} (tree ${tree:0:7}) = dist of ${sha:0:7}"
+git show --stat --format='%h %s · parents: [%p]' "$commit"
