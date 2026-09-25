@@ -7,7 +7,7 @@ import { user } from '../user.js'
 const active = computed(() => !!user.value && user.value.status !== 'pending')
 const steps = computed(() => [
   { done: !!user.value, text: 'Увійти з поштою @nure.ua' },
-  { done: !!user.value?.tg_linked, text: 'Привʼязати Telegram-бота — кнопка в профілі', to: active.value ? '/my/profile' : null },
+  { done: !!user.value?.tg_linked, text: 'Привʼязати Telegram-бота — кнопка в профілі', to: active.value ? '/my/profile#telegram' : null },
 ])
 </script>
 

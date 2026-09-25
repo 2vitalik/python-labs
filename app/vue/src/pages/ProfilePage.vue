@@ -1,6 +1,8 @@
 <script setup>
-import { onUnmounted, ref, watch } from 'vue'
+import { onMounted, onUnmounted, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 
+import { flash } from '../anchors.js'
 import { getMe, putProfile, unlinkTelegram } from '../api.js'
 import Crumbs from '../components/Crumbs.vue'
 import ProfileForm from '../components/ProfileForm.vue'
@@ -13,6 +15,8 @@ const { form, dirty, saved, error, fill, save } = useForm({
 })
 
 watch(user, (u) => u && fill(u), { immediate: true })
+const route = useRoute()
+onMounted(() => route.hash && flash(route.hash.slice(1)))  // /my/profile#telegram from the home steps and the bot: light the card
 
 function apply(u) {  // patch in place: replacing user.value would reset the form
   Object.assign(user.value, u)

@@ -6,7 +6,7 @@ const form = defineModel({ type: Object, required: true })
 
 <template>
   <form @submit.prevent="$emit('save')">
-    <div class="card mb-3">
+    <div id="name" class="card mb-3">
       <div class="card-header">ПІБ</div>
       <div class="card-body">
         <div class="row g-3">
@@ -27,7 +27,7 @@ const form = defineModel({ type: Object, required: true })
       </div>
     </div>
 
-    <div class="card mb-3">
+    <div id="github" class="card mb-3">
       <div class="card-header">GitHub</div>
       <div class="card-body">
         <div class="d-flex">
@@ -47,7 +47,7 @@ const form = defineModel({ type: Object, required: true })
       </div>
     </div>
 
-    <div class="card mb-3">
+    <div id="telegram" class="card mb-3">
       <div class="card-header">Telegram</div>
       <div class="card-body">
         <div class="d-flex">
