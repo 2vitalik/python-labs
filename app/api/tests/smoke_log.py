@@ -77,6 +77,11 @@ async def run():
     row = await TgMessage.find_one(TgMessage.message_id == 4)
     check("forum topic: chat_type + thread_id, sender still linked", row.chat_type == "supergroup" and row.thread_id == 5 and row.user == "vasya@nure.ua")
 
+    await log.incoming(handler, msg(chat_id=42, user_id=7, message_id=5, text="привіт", business_connection_id="conn"), {})
+    row = await TgMessage.find_one(TgMessage.message_id == 5)
+    check("Chat Automation: chat_type=business, chat is the student, sender the teacher",
+          row.chat_type == "business" and row.chat_id == 42 and row.from_id == 7 and row.user == "admin@nure.ua")
+
     await log.edited(msg(text="/start edited", edit_date=int(NOW.timestamp())))
     check("edited: second row for the same message_id, kind=edit",
           await TgMessage.find(TgMessage.message_id == 1, TgMessage.kind == "edit").count() == 1)
@@ -94,7 +99,7 @@ async def run():
     check("kind resets after send()", notify.kind_var.get() == "reply")
 
     await notify.outgoing(make_request, None, SendChatAction(chat_id=42, action="typing"))
-    check("non-message request: not logged", await TgMessage.count() == 7)
+    check("non-message request: not logged", await TgMessage.count() == 8)
 
 asyncio.run(run())
 ok = sum(results)

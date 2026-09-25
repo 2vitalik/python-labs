@@ -23,7 +23,7 @@ async def email(tg_id: int | None) -> str:
 
 async def save(message: Message, dir: str, kind: str = "") -> None:
     sender = message.from_user if dir == "in" else None  # outgoing: the sender is the bot itself
-    await TgMessage(dir=dir, chat_id=message.chat.id, chat_type=message.chat.type,
+    await TgMessage(dir=dir, chat_id=message.chat.id, chat_type="business" if message.business_connection_id else message.chat.type,
                     thread_id=message.message_thread_id if message.is_topic_message else None,
                     from_id=sender.id if sender else None, username=(sender.username if sender else None) or "",
                     user=await email(sender.id if sender else message.chat.id),
@@ -47,5 +47,5 @@ async def edited(message: Message):
 @router.deleted_business_messages()
 async def deleted(event: BusinessMessagesDeleted):
     """Only Chat Automation chats report deletions; groups never do."""
-    await TgMessage.insert_many([TgMessage(dir="in", chat_id=event.chat.id, chat_type=event.chat.type, message_id=m, kind="deleted")
+    await TgMessage.insert_many([TgMessage(dir="in", chat_id=event.chat.id, chat_type="business", message_id=m, kind="deleted")
                                  for m in event.message_ids])

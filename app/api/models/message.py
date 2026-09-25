@@ -8,9 +8,9 @@ class TgMessage(Document):
     """Every Telegram message the bot saw or sent (T129): student chats, the stream forum, admin alerts."""
     dir: str  # in · out
     chat_id: int
-    chat_type: str = "private"  # private · group · supergroup
+    chat_type: str = "private"  # private · business (teacher's chat with a student via Chat Automation) · group · supergroup
     thread_id: int | None = None  # forum topic
-    from_id: int | None = None  # Telegram user id of the sender; None for the bot's own messages
+    from_id: int | None = None  # sender; None for the bot's own messages. business: chat_id is the student, from_id whoever wrote
     username: str = ""
     user: str = ""  # email behind from_id (in) or chat_id (out); "" = not linked
     text: str = ""  # text or media caption

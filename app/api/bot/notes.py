@@ -11,9 +11,13 @@ from models.note import Note
 from models.user import Status, User
 
 router = Router()
-HINT = "☝️ /note <текст> — лишається в чаті · /hide <текст> — зникає\n☝️ у форумі й у чаті з ботом — відповіддю або /note <нік> <текст>"
+HINT = html.quote("☝️ /note <текст> — лишається в чаті · /hide <текст> — зникає\n☝️ у форумі й у чаті з ботом — відповіддю або /note <нік> <текст>")
 RIGHTS = ("can_reply", "can_read_messages", "can_delete_sent_messages", "can_delete_all_messages")
 COMMANDS = {"note": "нотатка про студента", "hide": "нотатка, що зникає з чату"}  # hide is registered as ephemeral
+
+
+def rights(conn: BusinessConnection) -> str:
+    return ", ".join(r for r in RIGHTS if conn.rights and getattr(conn.rights, r)) or "—"
 
 
 async def as_admin(message: Message) -> dict | bool:
@@ -73,8 +77,12 @@ async def note(message: Message, command: CommandObject, admin: User):
     if business and hidden:
         try:
             await notify.bot().delete_business_messages(business_connection_id=business, message_ids=[message.message_id])
-        except TelegramAPIError as e:  # no «delete all messages» right
+        except TelegramAPIError as e:
             lines.append(f"⚠️ Команду з чату не прибрав: {html.quote(e.message)}")
+            conn = await notify.bot().get_business_connection(business)
+            lines.append(f"🔑 {rights(conn)}")
+            if not (conn.rights and conn.rights.can_delete_all_messages):
+                lines.append("☝️ увімкни «Delete all messages» у Business → Chatbots")
     await notify.send("note", "\n".join(lines))
     if not business:  # in a student's chat the bot can neither react nor edit: the alert is the confirmation
         await done(message)
@@ -82,6 +90,5 @@ async def note(message: Message, command: CommandObject, admin: User):
 
 @router.business_connection()
 async def connected(event: BusinessConnection):
-    on = [r for r in RIGHTS if event.rights and getattr(event.rights, r)]
     state = "підключено" if event.is_enabled else "відключено"
-    await notify.send("note", f"🤖 Chat Automation · {state} · @{html.quote(event.user.username or '')}\n🔑 {', '.join(on) or '—'}")
+    await notify.send("note", f"🤖 Chat Automation · {state} · @{html.quote(event.user.username or '')}\n🔑 {rights(event)}")

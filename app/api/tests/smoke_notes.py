@@ -33,6 +33,9 @@ class FakeBot:
             raise TelegramAPIError(method=None, message="reactions are disabled")
         reacted.append((chat_id, message_id, reaction[0].emoji))
 
+    async def get_business_connection(self, business_connection_id):
+        return SimpleNamespace(rights=SimpleNamespace(can_reply=True, can_read_messages=True, can_delete_sent_messages=False, can_delete_all_messages=False))
+
     async def delete_business_messages(self, business_connection_id, message_ids):
         if business_connection_id == "broken":
             raise TelegramAPIError(method=None, message="not enough rights")
@@ -88,7 +91,8 @@ async def run():
 
     m, _ = fake(conn="broken")
     await notes.note(m, cmd("hide", "x"), admin)
-    check("delete failed: note kept, ⚠️ line in the alert", await Note.find_one(Note.text == "x") is not None and "⚠️ Команду з чату не прибрав" in alert())
+    check("delete failed: note kept, ⚠️ + rights + hint in the alert", await Note.find_one(Note.text == "x") is not None
+          and "⚠️ Команду з чату не прибрав" in alert() and "🔑 can_reply, can_read_messages" in alert() and "☝️ увімкни «Delete all messages»" in alert())
 
     m, _ = fake(chat_id=99, conn="c1")
     await notes.note(m, cmd("note", "чужий"), admin)
@@ -98,6 +102,7 @@ async def run():
     m, _ = fake(conn="c1")
     await notes.note(m, cmd("note", ""), admin)
     check("empty /note: hint alert, nothing saved", alert() == notes.HINT and await Note.count() == 4)
+    check("hint is HTML-safe: <текст> escaped", "<" not in notes.HINT and "&lt;текст&gt;" in notes.HINT)
 
     reply = SimpleNamespace(from_user=SimpleNamespace(id=42), forum_topic_created=None)
     m, answers = fake(chat_id=-100, chat_type="supergroup", reply=reply, ephemeral=9)
