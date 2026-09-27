@@ -31,7 +31,7 @@ const rowClass = (s) => ({ 'table-warning': s.status === 'pending', 'table-info'
   </div>
   <table class="table align-middle">
     <thead>
-      <tr><th>ПІБ</th><th class="text-center">Гра</th><th class="text-center">GitHub</th><th class="text-center">Telegram</th></tr>
+      <tr><th>ПІБ</th><th>Гра</th><th>GitHub</th><th>Telegram</th></tr>
     </thead>
     <tbody v-for="g in groups" :key="g.name">
       <tr class="table-light" role="button" @click="toggle(g.name)">
@@ -72,6 +72,7 @@ const rowClass = (s) => ({ 'table-warning': s.status === 'pending', 'table-info'
 /* room on the left for the row numbers, which sit outside the table */
 table { width: calc(100% - 1.5rem); margin-left: 1.5rem; }
 td, th { padding: .3rem .5rem; }
+thead th + th, .student td + td { text-align: center; }
 tbody { counter-reset: n; }
 .student td:first-child { position: relative; }
 .student td:first-child::before { counter-increment: n; content: counter(n); position: absolute; right: 100%; top: .3rem;
@@ -81,7 +82,7 @@ tbody { counter-reset: n; }
 .name { color: inherit; text-decoration: none; }
 .name:hover { text-decoration: underline; }
 .email { color: var(--bs-tertiary-color); line-height: 1.2; }
-.dash { text-align: center; color: var(--bs-tertiary-color); }
+.dash { color: var(--bs-tertiary-color); }
 /* the cell colour is Bootstrap's own variable, plain `color` on the row would not reach it */
 .ghost { --bs-table-color: var(--bs-tertiary-color); }
 .ghost .name, .ghost a { color: inherit; }
