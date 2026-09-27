@@ -11,6 +11,7 @@ import HomePage from './pages/HomePage.vue'
 import LoginPage from './pages/LoginPage.vue'
 import MethodPage from './pages/MethodPage.vue'
 import MyGamePage from './pages/MyGamePage.vue'
+import NotFoundPage from './pages/NotFoundPage.vue'
 import ProfilePage from './pages/ProfilePage.vue'
 import RefsPage from './pages/RefsPage.vue'
 import StudentEditPage from './pages/StudentEditPage.vue'
@@ -49,6 +50,7 @@ const router = createRouter({
     { path: '/tasks', component: TasksPage, meta: { wide: true, filters: true, ...hidden } },
     { path: '/tasks/new', component: TaskEditPage, meta: { access: 'admin' } },
     { path: '/tasks/:slug/edit', component: TaskEditPage, meta: { access: 'admin' } },
+    { path: '/:pathMatch(.*)*', component: NotFoundPage },  // the server answers any path with index.html, so 404 is ours to show
   ],
   scrollBehavior(to, from, saved) {
     if (saved) return saved

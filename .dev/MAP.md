@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T142** · тікетів: 141 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T144** · тікетів: 143 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -148,4 +148,6 @@
 | tgbot | [T138](tgbot/.t/T138--tg-footprint/plan.md) | ⚙️ | tg-footprint | Слід студента в Telegram: членство, реакції, raw, дата привʼязки — план | 🟢 🟩 |
 | tgbot | [T139](tgbot/.t/T139-Q--activity-more.md) | ❓ | activity-more | Збирати все: що ще варто і як | 🔴 🟩 |
 | platform | [T140](platform/.t/T140-C--www-branch-hook.md) | 🔆 | www-branch-hook | Статика для VPS: bin/www збирає з коміту, pre-push-хук публікує гілку www | 🟢 🟩 |
-| platform | [T141](platform/.t/T141-C--env-secret-uploads.md) | 🔆 | env-secret-uploads | SESSION_SECRET і UPLOADS_DIR: навіщо і звідки на VPS | 🟢 ⬜ |
+| platform | [T141](platform/.t/T141-C--env-secret-uploads.md) | 🔆 | env-secret-uploads | SESSION_SECRET і UPLOADS_DIR: навіщо і звідки на VPS | 🟢 🟩 |
+| platform | [T142](platform/.t/T142-C--errors-today.md) | 🔆 | errors-today | 404, 500 і куди йдуть помилки: як є і що можна | 🟢 🟩 |
+| platform | [T143](platform/.t/T143-Q--errors-choices.md) | ❓ | errors-choices | Помилки: що робимо далі | 🔴 ⬜ |
