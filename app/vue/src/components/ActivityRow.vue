@@ -23,9 +23,9 @@ const status = computed(() => (r.value.status >= 500 ? 'text-bg-danger' : r.valu
     </span>
     <span class="icon">{{ icon }}</span>
     <div class="what">
-      <template v-if="r.src === 'login'">вхід <small class="text-secondary">{{ device(r.ua) }} · {{ r.ip }}</small></template>
+      <template v-if="r.src === 'login'">вхід <small class="text-secondary">{{ [device(r.ua), r.ip].filter(Boolean).join(' · ') }}</small></template>
       <template v-else-if="r.src === 'view'">
-        <RouterLink :to="r.path">{{ r.path }}</RouterLink> <small class="text-secondary" :title="`${r.ua}\n${r.ip}`">{{ device(r.ua) }}</small>
+        <RouterLink :to="r.path">{{ r.path }}</RouterLink> <small v-if="r.ua" class="text-secondary" :title="`${r.ua}\n${r.ip}`">{{ device(r.ua) }}</small>
       </template>
       <template v-else-if="r.src === 'api' || r.src === 'fail'">
         <code>{{ r.method }} {{ r.path }}</code> <span class="badge fw-normal" :class="status">{{ r.status }}</span>

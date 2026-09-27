@@ -27,8 +27,9 @@ const BROWSERS = [['Telegram', /Telegram/], ['Edge', /Edg/], ['Opera', /OPR/], [
 const SYSTEMS = [['Android', /Android/], ['iOS', /iPhone|iPad/], ['Windows', /Windows/], ['macOS', /Mac OS X/], ['Linux', /Linux/]]
 const first = (list, ua) => list.find(([, re]) => re.test(ua))?.[0]
 
-// «📱 Chrome · Android» out of a user-agent; an unknown one is shown as it is
-export function device(ua = '') {
+// «📱 Chrome · Android» out of a user-agent; an unknown one is shown as it is, rows older than the field have none
+export function device(ua) {
+  if (!ua) return ''
   const names = [first(BROWSERS, ua), first(SYSTEMS, ua)].filter(Boolean)
   return `${/Mobi|Android|iPhone|iPad/.test(ua) ? '📱' : '💻'} ${names.join(' · ') || ua.slice(0, 40)}`
 }
