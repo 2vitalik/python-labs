@@ -10,10 +10,12 @@ import GameGraph from '../components/GameGraph.vue'
 import Md from '../components/Md.vue'
 import RuleRow from '../components/RuleRow.vue'
 import { COINS, ROLES, games, loadCatalog, paramsText } from '../catalog.js'
+import { useTitle } from '../title.js'
 import { user } from '../user.js'
 
 const nick = useRoute().params.nick
 const data = ref(null)
+useTitle(() => data.value?.student.name)
 const missing = ref(false)
 const COIN_ORDER = ['crown', 'gold', 'silver', 'bronze', 'tin', 'wood']
 

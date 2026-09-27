@@ -6,6 +6,7 @@ import { getStudents, importStudents } from '../api.js'
 import Avatar from '../components/Avatar.vue'
 import Crumbs from '../components/Crumbs.vue'
 import StudentsTable from '../components/StudentsTable.vue'
+import { useTitle } from '../title.js'
 import { user } from '../user.js'
 
 const route = useRoute()
@@ -21,6 +22,7 @@ const group = computed(() => route.query.group || '')  // one group as its own s
 const shown = computed(() => (group.value ? students.value.filter((s) => s.group === group.value) : students.value))
 const crumbs = computed(() => (group.value ? [['/students', 'Студи'], group.value] : ['Студи']))
 const fio = (s) => s.name || s.nick
+useTitle(() => group.value && `Студенти ${group.value}`)
 
 async function load() {
   try {

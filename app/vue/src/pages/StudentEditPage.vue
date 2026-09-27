@@ -7,11 +7,13 @@ import Crumbs from '../components/Crumbs.vue'
 import ProfileForm from '../components/ProfileForm.vue'
 import UserHead from '../components/UserHead.vue'
 import { useForm } from '../form.js'
+import { useTitle } from '../title.js'
 import { lookAs, user } from '../user.js'
 
 const nick = useRoute().params.nick
 const student = ref(null)
 const fio = () => `${student.value.last_name} ${student.value.first_name}`.trim() || student.value.name || nick
+useTitle(() => student.value && `Студент: ${fio()}`)
 const { form, dirty, saved, error, fill, save } = useForm({
   last_name: '', first_name: '', patronymic: '', github: '',
   tg_username: '', group: '', status: 'student', test: false,

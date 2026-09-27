@@ -6,10 +6,12 @@ import { flash } from './anchors.js'
 import { postView } from './api.js'
 import NavBar from './components/NavBar.vue'
 import ViewBar from './components/ViewBar.vue'
+import { watchTitle } from './title.js'
 import { user } from './user.js'
 import { wideOn } from './wide.js'
 
 const route = useRoute()
+watchTitle(route)
 // footprint for the activity map: every page a signed-in user opens (after the guards, so `user` is known)
 useRouter().afterEach((to) => user.value && postView(to.fullPath).catch(() => {}))
 const wide = computed(() => route.meta.wide && wideOn.value)  // /tasks catalog on the whole window: the admin's remembered choice

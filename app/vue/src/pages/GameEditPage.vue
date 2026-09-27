@@ -7,12 +7,14 @@ import Crumbs from '../components/Crumbs.vue'
 import { postGame, putGame } from '../api.js'
 import BaseGameForm from '../components/BaseGameForm.vue'
 import { games, loadCatalog } from '../catalog.js'
+import { useTitle } from '../title.js'
 import { user } from '../user.js'
 
 const route = useRoute()
 const router = useRouter()
 const form = reactive({ slug: '', title: '', icon: '', klass: '', axes: {}, summary: '', description: '', status: 'draft', order: 0 })
 const id = ref('')
+useTitle(() => id.value && `Гра: ${form.title}`)
 const crumbs = computed(() => [['/method', 'Методичка'], ['/games', 'Ігри'], ...(id.value ? [[`/games/${form.slug}`, form.title], 'Редагування'] : ['Нова гра'])])
 const saved = ref(false)
 const error = ref('')

@@ -7,6 +7,7 @@ import Crumbs from '../components/Crumbs.vue'
 import { postTask, putTask } from '../api.js'
 import TaskForm from '../components/TaskForm.vue'
 import { loadCatalog, tasks } from '../catalog.js'
+import { useTitle } from '../title.js'
 import { user } from '../user.js'
 
 const route = useRoute()
@@ -16,6 +17,7 @@ const form = reactive({
   tags: '', games: '', coin: '', amount: 1, max_count: 1, parent: route.query.parent || '', status: 'draft', order: 0,
 })
 const id = ref('')
+useTitle(() => id.value && `Завдання: ${form.title}`)
 const crumbs = computed(() => [['/method', 'Методичка'], [`/tasks?zone=${form.zone}`, 'Таски'], id.value ? 'Редагування' : 'Нове завдання'])
 const saved = ref(false)
 const error = ref('')

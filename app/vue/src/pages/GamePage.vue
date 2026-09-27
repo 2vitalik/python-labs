@@ -7,10 +7,12 @@ import Md from '../components/Md.vue'
 import TaskCatalog from '../components/TaskCatalog.vue'
 import { AXES, games, KLASSES, loadCatalog, STATUSES } from '../catalog.js'
 import { useTaskFilter } from '../taskFilter.js'
+import { useTitle } from '../title.js'
 import { user } from '../user.js'
 
 const slug = useRoute().params.slug
 const game = computed(() => games.value.find((g) => g.slug === slug))
+useTitle(() => game.value?.title)
 const { grouped } = useTaskFilter(slug)
 const shown = computed(() => grouped.value.reduce((n, z) => n + z.subs.reduce((m, s) => m + s.list.length, 0), 0))
 

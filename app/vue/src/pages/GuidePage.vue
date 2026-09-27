@@ -10,12 +10,14 @@ import GuideFoot from '../components/GuideFoot.vue'
 import Toc from '../components/Toc.vue'
 import { ALL, LABS, loadGuide, pages } from '../guide.js'
 import { tocOf } from '../md.js'
+import { useTitle } from '../title.js'
 import { user } from '../user.js'
 
 const route = useRoute()
 const page = ref(null)  // null = loading, false = 404
 const slug = computed(() => route.meta.slug || `lab${route.params.n}`)
 const toc = computed(() => tocOf(page.value?.body))
+useTitle(() => page.value?.title)
 const admin = computed(() => user.value?.status === 'admin')
 const lab = computed(() => LABS.find((l) => l.slug === slug.value))
 const prev = computed(() => lab.value && LABS[lab.value.n - 2])

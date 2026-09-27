@@ -6,11 +6,13 @@ import { CHIPS } from '../activity.js'
 import ActivityFeed from '../components/ActivityFeed.vue'
 import ActivityPeople from '../components/ActivityPeople.vue'
 import Crumbs from '../components/Crumbs.vue'
+import { useTitle } from '../title.js'
 
 // everything the site and the bot track, for the teacher (T146). The state lives in the URL, so a view can be bookmarked:
 // ?tab=people · ?user=<nick> · ?show=site,tg (chips, when not the default set) · ?days=30 · ?staff=1
 const route = useRoute()
 const router = useRouter()
+useTitle(() => route.query.user && `Активність: ${route.query.user}`)
 const DEFAULT = CHIPS.filter((c) => c.on).map((c) => c.key)
 const tab = computed(() => (route.query.tab === 'people' && !route.query.user ? 'people' : 'feed'))
 const staff = computed(() => route.query.staff === '1')
