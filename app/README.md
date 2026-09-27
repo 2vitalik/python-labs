@@ -17,7 +17,8 @@
 - бекенд: `cd app/api && uv run fastapi dev --port 8030` → http://localhost:8030
 - фронт: `cd app/vue && npm run dev` → **http://localhost:5030** (відкривати цю адресу)
 - дев-вхід без Google: кнопка «Dev-вхід» у шапці (працює, якщо в `.env` заданий `FAKE_USER_EMAIL`); закрита сторінка без входу веде на `/login?next=…` і повертає туди після входу
-- смоуки API (без Google): `cd app/api && DB_NAME=python_labs_smoke uv run python tests/smoke_auth.py` (вхід, `?next=`, 401/403), `… UPLOADS_DIR=/tmp/pl-smoke uv run python tests/smoke_games.py` (гра, заявки, знахідки), `… tests/smoke_guide.py` (методичка: PUT/409, історія, чернетка, export/import, ідеї), `… tests/smoke_activity.py` (сторінка активності: стрічка, люди, журнал подій, рядок 500)
+- «Очима студента»: студент із галочкою «Тестовий студент» (`/students/<нік>/edit`) отримує кнопку 👁 — адмін дивиться сайт як він, «Повернутись» у жовтій смужці; на сервері це заміна dev-входу
+- смоуки API (без Google): `cd app/api && DB_NAME=python_labs_smoke uv run python tests/smoke_auth.py` (вхід, `?next=`, 401/403), `… UPLOADS_DIR=/tmp/pl-smoke uv run python tests/smoke_games.py` (гра, заявки, знахідки), `… tests/smoke_guide.py` (методичка: PUT/409, історія, чернетка, export/import, ідеї), `… tests/smoke_activity.py` (сторінка активності: стрічка, люди, журнал подій, рядок 500), `… tests/smoke_view_as.py` («Очима студента»: хто може, чиї права, чий слід)
 
 У PyCharm (Pro): run-конфігурація FastAPI (`app/api/main.py`, в Uvicorn options — `--port 8030`) + npm-конфігурація `dev` (`app/vue/package.json`) + Compound «app» — запуск обох однією кнопкою.
 

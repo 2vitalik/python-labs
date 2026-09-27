@@ -7,7 +7,7 @@ from pydantic import BaseModel
 
 from bot import alerts
 from config import settings
-from deps import active_user, current_user
+from deps import active_user, current_user, real_user
 from models.activity import Activity, client
 from models.history import record
 from models.user import Status, User
@@ -26,8 +26,8 @@ async def me_data(user: User) -> dict:
 
 
 @router.get("/api/me")
-async def me(user: User | None = Depends(current_user)):
-    return await me_data(user) if user else None
+async def me(request: Request, user: User | None = Depends(current_user)):
+    return await me_data(user) | {"viewing": "as" in request.session} if user else None
 
 
 class ViewIn(BaseModel):
@@ -35,7 +35,7 @@ class ViewIn(BaseModel):
 
 
 @router.post("/api/me/view", status_code=204)
-async def view(data: ViewIn, request: Request, user: User = Depends(current_user)):
+async def view(data: ViewIn, request: Request, user: User = Depends(real_user)):
     """The SPA reports every page it opens for a signed-in user (App.vue); guests are not tracked."""
     if not user:
         return

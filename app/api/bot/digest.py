@@ -19,7 +19,7 @@ GAPS = (
 
 async def text() -> str | None:
     """None when every student is complete — then nothing is sent."""
-    students = await User.find(User.status == Status.student).to_list()
+    students = await User.find(User.status == Status.student, User.test != True).to_list()  # noqa: E712 — `$ne`: rows from before the flag lack it
     groups: dict[str, list[User]] = {}
     for s in students:
         groups.setdefault(s.group or "без групи", []).append(s)

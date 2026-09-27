@@ -19,7 +19,7 @@ async def task_index(slugs: set[str]) -> dict:
 def person(u: User) -> dict:
     full = " ".join(x for x in (u.last_name, u.first_name) if x)
     return {"nick": u.nick, "name": full or u.name, "group": u.group,
-            "picture": u.picture, "status": u.status}
+            "picture": u.picture, "status": u.status, "test": u.test}
 
 
 async def game_summary(game: Game | None) -> dict:
@@ -40,8 +40,9 @@ async def game_summary(game: Game | None) -> dict:
 async def list_students(user: User = Depends(active_user)):
     """Gallery for everyone active; admin extras let the same page host the admin table."""
     users = await User.find_all().sort("group", "last_name").to_list()
+    users.sort(key=lambda u: u.test)  # stable: test students go last
     if user.status != Status.admin:
-        users = [u for u in users if u.status != Status.pending]
+        users = [u for u in users if u.status != Status.pending and (not u.test or u.email == user.email)]
     games = {g.owner: g for g in await Game.find_all().to_list()}
     out = []
     for u in users:

@@ -1,9 +1,13 @@
 import { ref } from 'vue'
 
-import { getMe } from './api.js'
+import { getMe, stopViewAs, viewAs } from './api.js'
 
 export const user = ref(null)
 export const userLoaded = getMe().then((u) => (user.value = u)).catch(() => {})  // API down → stay a guest
+
+// «Очима студента»: the whole site answers as to a test student; the reload drops what was loaded for the admin
+export const lookAs = (nick) => viewAs(nick).then(() => location.assign('/'))
+export const lookBack = () => stopViewAs().then(() => location.assign('/students'))
 
 // route access: 'admin' | 'active' (student or admin) | undefined = public
 export function canAccess(access) {

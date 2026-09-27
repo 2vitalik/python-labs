@@ -12,7 +12,7 @@ from db import init_db
 from guide_io import seed
 from models.activity import Activity, client
 from routes import (activity, auth, games, guide, health, me, my_claims, my_game, my_parts, my_rules, profile, refs,
-                    student_games, students, tasks, taxonomy)
+                    student_games, students, tasks, taxonomy, view_as)
 
 
 @asynccontextmanager
@@ -49,6 +49,7 @@ app.add_middleware(SessionMiddleware, secret_key=settings.session_secret)  # add
 app.include_router(health.router)
 app.include_router(auth.router)
 app.include_router(me.router)
+app.include_router(view_as.router)
 app.include_router(profile.router)
 app.include_router(students.router)
 app.include_router(student_games.router)

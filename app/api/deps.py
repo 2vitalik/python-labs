@@ -3,8 +3,14 @@ from fastapi import Depends, HTTPException, Request
 from models.user import Status, User
 
 
-async def current_user(request: Request) -> User | None:
+async def real_user(request: Request) -> User | None:
+    """Who has signed in — the footprint is theirs even while they look as a test student."""
     email = request.session.get("email")
+    return await User.find_one(User.email == email) if email else None
+
+
+async def current_user(request: Request) -> User | None:
+    email = request.session.get("as") or request.session.get("email")  # `as` — «Очима студента» (routes/view_as.py)
     return await User.find_one(User.email == email) if email else None
 
 

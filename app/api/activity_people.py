@@ -51,7 +51,7 @@ async def people(days: int, staff: bool) -> dict:
         if (t or u.first_seen_at) and (staff or u.status != Status.admin):
             rows.append(person(u) | {"tg_linked": u.tg_chat_id is not None, "last": t["last"] if t else aware(u.last_seen_at or u.first_seen_at),
                                      "n": dict(t["n"]) if t else {}, "days": [t["days"][d] if t else 0 for d in spark]})
-    students = [u for u in users if u.status == Status.student]
+    students = [u for u in users if u.status == Status.student and not u.test]
     return {"rows": sorted(rows, key=lambda r: r["last"], reverse=True), "spark": spark,
             "total": {"students": len(students), "seen": sum(1 for u in students if u.first_seen_at),
                       "linked": sum(1 for u in students if u.tg_chat_id is not None)}}

@@ -5,6 +5,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { flash } from './anchors.js'
 import { postView } from './api.js'
 import NavBar from './components/NavBar.vue'
+import ViewBar from './components/ViewBar.vue'
 import { user } from './user.js'
 import { wideOn } from './wide.js'
 
@@ -17,6 +18,7 @@ watch(() => route.hash, (h) => h && flash(h.slice(1)))  // #target changed on a 
 
 <template>
   <NavBar />
+  <ViewBar v-if="user?.viewing" />
   <main class="py-4" :class="wide ? 'container-fluid px-4' : 'page'">
     <RouterView />
   </main>

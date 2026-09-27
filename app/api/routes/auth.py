@@ -46,6 +46,7 @@ async def callback(request: Request, tasks: BackgroundTasks):
     if info.get("hd") != NURE_DOMAIN and info["email"] not in settings.admin_list:
         return to_login("domain", next)
     await upsert_user(info, tasks, request)
+    request.session.clear()  # a new sign-in ends «Очима студента» too
     request.session["email"] = info["email"]
     return RedirectResponse(next)
 
@@ -60,6 +61,7 @@ async def logout(request: Request):
 async def dev_login(request: Request, tasks: BackgroundTasks, next: str = "/"):
     if settings.fake_user_email:
         await upsert_user({"email": settings.fake_user_email, "name": "Dev User"}, tasks, request)
+        request.session.clear()
         request.session["email"] = settings.fake_user_email
     return RedirectResponse(safe_path(next))
 

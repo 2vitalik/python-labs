@@ -17,6 +17,7 @@ router = APIRouter(prefix="/api/students")
 class StudentIn(ProfileIn):
     group: str = ""
     status: Status = Status.student
+    test: bool = False
 
 
 class ImportIn(BaseModel):

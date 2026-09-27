@@ -22,6 +22,7 @@ class User(Document):
     first_name: str = ""
     patronymic: str = ""
     group: str = ""
+    test: bool = False  # made up for «Очима студента» (T144): no Google account behind it, left out of digests and totals
     github: str = ""
     tg_username: str = ""
     tg_token: str = ""
@@ -47,6 +48,6 @@ class User(Document):
             "id": str(self.id), "email": self.email, "nick": self.nick,
             "name": self.name, "picture": self.picture,
             "status": self.status, "last_name": self.last_name, "first_name": self.first_name,
-            "patronymic": self.patronymic, "group": self.group, "github": self.github,
+            "patronymic": self.patronymic, "group": self.group, "test": self.test, "github": self.github,
             "tg_username": self.tg_username, "tg_linked": self.tg_chat_id is not None, "tg_linked_at": self.tg_linked_at,
         }

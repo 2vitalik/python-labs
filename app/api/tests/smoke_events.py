@@ -129,6 +129,7 @@ async def run():
     await User(email="full@nure.ua", status=Status.student, group="ПЗПІ-25-2", last_name="A", first_name="B",
                github="https://github.com/a/b", tg_chat_id=5).insert()
     await User(email="lazy@nure.ua", status=Status.student, group="ПЗПІ-25-2").insert()
+    await User(email="test.student@nure.ua", status=Status.student, group="TEST", test=True).insert()  # not counted
     text = await digest.text()
     check("digest: counts per group, complete group hides its zeros",
           text == "📊 Профілі не заповнені · студентів: 3\n👥 ПЗПІ-25-1 · 🐙 1 · 🤖 1\n👥 ПЗПІ-25-2 · 🪪 1 · 🐙 1 · 🤖 1"

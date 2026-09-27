@@ -83,6 +83,13 @@ const form = defineModel({ type: Object, required: true })
             <option value="admin">admin</option>
           </select>
         </div>
+        <div class="col-12">
+          <div class="form-check">
+            <input id="test" v-model="form.test" class="form-check-input" type="checkbox">
+            <label for="test" class="form-check-label">Тестовий студент</label>
+          </div>
+          <div class="form-text">Вигаданий, для «Очима студента»: поза дайджестом і підсумками, у списку — внизу</div>
+        </div>
       </div>
     </div>
 

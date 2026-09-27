@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T148** · тікетів: 147 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T149** · тікетів: 148 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -151,7 +151,8 @@
 | platform | [T141](platform/.t/T141-C--env-secret-uploads.md) | 🔆 | env-secret-uploads | SESSION_SECRET і UPLOADS_DIR: навіщо і звідки на VPS | 🟢 🟩 |
 | platform | [T142](platform/.t/T142-C--errors-today.md) | 🔆 | errors-today | 404, 500 і куди йдуть помилки: як є і що можна | 🟢 🟩 |
 | platform | [T143](platform/.t/T143-Q--errors-choices.md) | ❓ | errors-choices | Помилки: що робимо далі | 🔴 ⬜ |
-| platform | [T144](platform/.t/T144-B--view-as-student.md) | 🧠 | view-as-student | Дивитись сайт очима студента на сервері: варіанти | 🟢 ⬜ |
-| platform | [T145](platform/.t/T145-Q--view-as-student-choices.md) | ❓ | view-as-student-choices | Очима студента — вибори | 🔴 ⬜ |
+| platform | [T144](platform/.t/T144-B--view-as-student.md) | 🧠 | view-as-student | Дивитись сайт очима студента на сервері: варіанти | 🟢 🟩 |
+| platform | [T145](platform/.t/T145-Q--view-as-student-choices.md) | ❓ | view-as-student-choices | Очима студента — вибори | 🔴 🟩 |
 | platform | [T146](platform/.t/T146--activity-page/plan.md) | ⚙️ | activity-page | Активність: сторінка адміна, журнал подій — план | 🟢 🟩 |
 | platform | [T147](platform/.t/T147-Q--activity-choices.md) | ❓ | activity-choices | Активність: вибори після першої версії | 🔴 ⬜ |
+| platform | [T148](platform/.t/T148--view-as-student/plan.md) | ⚙️ | view-as-student | Очима студента: тестовий студент і перегляд від його імені — план | 🟢 🟩 |

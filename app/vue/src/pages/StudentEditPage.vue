@@ -7,14 +7,14 @@ import Crumbs from '../components/Crumbs.vue'
 import ProfileForm from '../components/ProfileForm.vue'
 import UserHead from '../components/UserHead.vue'
 import { useForm } from '../form.js'
-import { user } from '../user.js'
+import { lookAs, user } from '../user.js'
 
 const nick = useRoute().params.nick
 const student = ref(null)
 const fio = () => `${student.value.last_name} ${student.value.first_name}`.trim() || student.value.name || nick
 const { form, dirty, saved, error, fill, save } = useForm({
   last_name: '', first_name: '', patronymic: '', github: '',
-  tg_username: '', group: '', status: 'student',
+  tg_username: '', group: '', status: 'student', test: false,
 })
 
 onMounted(async () => fill(student.value = await getStudent(nick)))
@@ -25,6 +25,7 @@ const submit = () => save(async (f) => (student.value = await putStudent(nick, f
 <template>
   <div v-if="user?.status === 'admin' && student">
     <Crumbs :items="[['/students', 'Студи'], [`/students/${nick}`, fio()], 'Редагування']">
+      <button v-if="student.test" class="btn btn-outline-secondary btn-sm ms-auto" @click="lookAs(nick)">👁 Очима студента</button>
       <RouterLink :to="{ path: '/activity', query: { user: nick } }" class="btn btn-outline-secondary btn-sm">📈 Активність</RouterLink>
     </Crumbs>
     <UserHead :user="student" />

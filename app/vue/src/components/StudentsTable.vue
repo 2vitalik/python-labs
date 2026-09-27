@@ -2,6 +2,7 @@
 import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
+import { lookAs } from '../user.js'
 import IconChevron from './IconChevron.vue'
 
 // admin table: a header row per group folds it; «↗» shows that group alone (?group=, crumb on the page);
@@ -13,7 +14,8 @@ const folded = ref(new Set())
 const groups = computed(() => {
   const by = new Map()
   for (const s of props.students) by.set(s.group, [...(by.get(s.group) || []), s])
-  return [...by].sort(([a], [b]) => (a === '') - (b === '') || a.localeCompare(b)).map(([name, list]) => ({ name, list }))
+  return [...by].map(([name, list]) => ({ name, list, test: list.every((s) => s.test) }))  // test students' groups go last
+    .sort((a, b) => a.test - b.test || (a.name === '') - (b.name === '') || a.name.localeCompare(b.name))
 })
 const toggle = (name) => (folded.value.has(name) ? folded.value.delete(name) : folded.value.add(name))
 const foldAll = (yes) => (folded.value = new Set(yes ? groups.value.map((g) => g.name) : []))
@@ -46,6 +48,7 @@ const rowClass = (s) => ({ 'table-warning': s.status === 'pending', 'table-info'
             <RouterLink :to="`/students/${s.nick}/edit`" class="name">{{ fio(s) }}</RouterLink>
             <span v-if="s.status === 'admin'" class="badge text-bg-secondary fw-normal ms-1">викладач</span>
             <span v-else-if="s.status === 'pending'" class="badge text-bg-warning fw-normal ms-1">очікує</span>
+            <a v-if="s.test" href="#" class="ibtn ms-1" title="Очима студента" @click.prevent="lookAs(s.nick)">👁</a>
             <div class="email small">{{ s.email }}</div>
           </td>
           <td v-if="s.game.id"><RouterLink :to="`/students/${s.nick}`">{{ s.game.title }}</RouterLink></td>
