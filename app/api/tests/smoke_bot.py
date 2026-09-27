@@ -24,13 +24,14 @@ def check(name, cond, extra=""):
     print(("PASS " if cond else "FAIL ") + name + (f" · {extra}" if extra and not cond else ""))
 
 
-def fake(chat_id=42, username="vasya_tg"):
+def fake(chat_id=42, username="vasya_tg", text="привіт <3"):
     """Message stand-in: only what handlers touch, replies captured."""
     replies = []
 
     async def answer(text):
         replies.append(text)
-    msg = SimpleNamespace(chat=SimpleNamespace(id=chat_id), from_user=SimpleNamespace(username=username), answer=answer)
+    msg = SimpleNamespace(chat=SimpleNamespace(id=chat_id), from_user=SimpleNamespace(id=chat_id, username=username), answer=answer,
+                          text=text, caption=None, content_type="text" if text else "sticker")
     return msg, replies
 
 
@@ -73,6 +74,9 @@ async def run():
     await sync_username(lambda m, d: fallback(m, **d), msg, {})
     u = await User.get(user.id)
     check("any message: username change tracked, 'more soon'", u.tg_username == "vasya_new" and "далі буде" in replies[0])
+    ev = mongo[DB].events.find_one({"kind": "msg"})
+    check("…and the teacher gets a copy: event `msg` about the student, text quoted",
+          ev and ev["user"] == "vasya@nure.ua" and ev["text"].startswith("💬 Боту · <b><a href=") and ev["text"].endswith("\nпривіт &lt;3"), ev)
 
     msg, replies = fake(chat_id=43, username="")
     await sync_username(lambda m, d: fallback(m, **d), msg, {})
@@ -82,6 +86,11 @@ async def run():
     await sync_username(lambda m, d: fallback(m, **d), msg, {})
     check("unlinked chat: nothing touched, intro", "Привʼязати бота" in replies[0]
           and mongo[DB].users.count_documents({"tg_username": "stranger"}) == 0)
+    ev = mongo[DB].events.find_one({"kind": "msg", "user": ""})
+    check("a stranger's message: event `msg` with the @username", ev and ev["text"] == "💬 Боту · <i>не привʼязаний</i> · @stranger\nпривіт &lt;3", ev)
+    msg, replies = fake(chat_id=98, username="", text=None)
+    await sync_username(lambda m, d: fallback(m, **d), msg, {})
+    check("no @username, no text: tg id + content type", mongo[DB].events.find_one({"text": "💬 Боту · <i>не привʼязаний</i> · tg 98\n<i>sticker</i>"}))
 
     admin = await User(email="admin@nure.ua", status=Status.admin, tg_chat_id=7).insert()
     msg, replies = fake(chat_id=7, username="teacher")
@@ -93,6 +102,10 @@ async def run():
     msg, replies = fake(chat_id=43, username="vasya_new")
     await start_link(msg, SimpleNamespace(args="bizChat43"), user=await User.get(user.id))
     check("bizChat from a student: treated as a stale link", "Не впізнаю" in replies[0])
+    n = mongo[DB].events.count_documents({})
+    msg, replies = fake(chat_id=7, username="teacher")
+    await fallback(msg, user=admin)
+    check("the teacher's own message: answered, no event", replies and mongo[DB].events.count_documents({}) == n)
 
 asyncio.run(run())
 ok = sum(1 for _, p in results if p)

@@ -31,7 +31,7 @@ async def claim(user: User, c: Claim, lvl: int, changes: dict | None = None) -> 
         if key in (changes or {}):
             old, new = changes[key]["old"], changes[key]["new"]
             rows.append(f"{label}: {arrow(level(old, new), old, new, fmt)}")
-    await notify.send("claim", event(lvl, "Заявка", user, rows))
+    await notify.send("claim", event(lvl, "Заявка", user, rows), user.email)
 
 
 async def game(user: User, g: Game, changes: dict | None = None) -> None:
@@ -47,11 +47,11 @@ async def game(user: User, g: Game, changes: dict | None = None) -> None:
                 lvl = max(lvl, lvl_k)
                 rows.append(f"{label}: {'змінено' if key == 'description' and lvl_k == 1 else arrow(lvl_k, old, new)}")
     if rows:
-        await notify.send("game", event(lvl, "Гра", user, rows))
+        await notify.send("game", event(lvl, "Гра", user, rows), user.email)
 
 
 async def part(user: User, p: Part, lvl: int) -> None:
-    await notify.send("game", event(lvl, "Гра", user, [f"🧩 {PART[p.kind]} «{html.quote(p.title)}»{gone(lvl)}"]))
+    await notify.send("game", event(lvl, "Гра", user, [f"🧩 {PART[p.kind]} «{html.quote(p.title)}»{gone(lvl)}"]), user.email)
 
 
 def sentence(r: Rule, name: dict[str, str]) -> str:
@@ -74,4 +74,4 @@ def sentence(r: Rule, name: dict[str, str]) -> str:
 
 async def rule(user: User, r: Rule, lvl: int) -> None:
     name = {str(p.id): p.title for p in await Part.find(Part.game == r.game).to_list()}
-    await notify.send("game", event(lvl, "Гра", user, [f"📜 {sentence(r, name)}{gone(lvl)}"]))
+    await notify.send("game", event(lvl, "Гра", user, [f"📜 {sentence(r, name)}{gone(lvl)}"]), user.email)

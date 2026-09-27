@@ -11,7 +11,7 @@ from config import settings
 from db import init_db
 from guide_io import seed
 from models.activity import Activity, client
-from routes import (auth, games, guide, health, me, my_claims, my_game, my_parts, my_rules, profile, refs,
+from routes import (activity, auth, games, guide, health, me, my_claims, my_game, my_parts, my_rules, profile, refs,
                     student_games, students, tasks, taxonomy)
 
 
@@ -25,19 +25,24 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="Python Labs", lifespan=lifespan)
 app.add_exception_handler(Exception, errors.api_handler)
 QUIET = {("GET", "/api/me"), ("POST", "/api/me/view")}  # session probe and page views: they have their own rows
+SILENT = ("/api/auth/", "/api/uploads/", "/api/activity")  # the activity page polls, its own calls would flood what it shows
 
 
 @app.middleware("http")
 async def footprint(request: Request, call_next):
     """Every API call of a signed-in user → `activity` kind=api (T139): what they did inside a page, not just that they opened it."""
     t = perf_counter()
-    response = await call_next(request)
-    path, method = request.url.path, request.method
-    email = request.session.get("email")
-    if email and path.startswith("/api/") and not path.startswith(("/api/auth/", "/api/uploads/")) and (method, path) not in QUIET:
-        await Activity(user=email, kind="api", method=method, path=path + (f"?{request.url.query}" if request.url.query else ""),
-                       status=response.status_code, ms=int((perf_counter() - t) * 1000), **client(request)).insert()
-    return response
+    status = 500  # a crash gets here as an exception, not as a response
+    try:
+        response = await call_next(request)
+        status = response.status_code
+        return response
+    finally:
+        path, method = request.url.path, request.method
+        email = request.session.get("email")
+        if email and path.startswith("/api/") and not path.startswith(SILENT) and (method, path) not in QUIET:
+            await Activity(user=email, kind="api", method=method, path=path + (f"?{request.url.query}" if request.url.query else ""),
+                           status=status, ms=int((perf_counter() - t) * 1000), **client(request)).insert()
 
 
 app.add_middleware(SessionMiddleware, secret_key=settings.session_secret)  # added last = outermost: the session is set before footprint()
@@ -56,5 +61,6 @@ app.include_router(my_claims.router)
 app.include_router(my_rules.router)
 app.include_router(refs.router)
 app.include_router(guide.router)
+app.include_router(activity.router)
 uploads.ROOT.mkdir(parents=True, exist_ok=True)
 app.mount("/api/uploads", StaticFiles(directory=uploads.ROOT), name="uploads")

@@ -10,6 +10,7 @@ import GameGraph from '../components/GameGraph.vue'
 import Md from '../components/Md.vue'
 import RuleRow from '../components/RuleRow.vue'
 import { COINS, ROLES, games, loadCatalog, paramsText } from '../catalog.js'
+import { user } from '../user.js'
 
 const nick = useRoute().params.nick
 const data = ref(null)
@@ -48,7 +49,9 @@ onMounted(async () => {
 
 <template>
   <div>
-    <Crumbs :items="[['/students', 'Студи'], data?.student.name || nick]" />
+    <Crumbs :items="[['/students', 'Студи'], data?.student.name || nick]">
+      <RouterLink v-if="user?.status === 'admin'" :to="{ path: '/activity', query: { user: nick } }" class="btn btn-outline-secondary btn-sm">📈 Активність</RouterLink>
+    </Crumbs>
     <p v-if="missing" class="text-center mt-5 text-secondary">Гра ще не створена або сторінка недоступна.</p>
 
     <template v-else-if="data">

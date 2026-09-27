@@ -16,6 +16,12 @@ async function request(url, method = 'GET', body) {
   }))
 }
 
+// `?a=1&b=2` out of an object; empty, false and undefined values are left out, 0 stays
+function query(params) {
+  const q = new URLSearchParams(Object.entries(params).filter(([, v]) => v !== undefined && v !== '' && v !== false)).toString()
+  return q && `?${q}`
+}
+
 async function upload(url, file) {
   const fd = new FormData()
   fd.append('file', file)
@@ -31,6 +37,8 @@ export const getStudent = (nick) => request(`/api/students/${nick}`)
 export const putStudent = (nick, data) => request(`/api/students/${nick}`, 'PUT', data)
 export const importStudents = (text) => request('/api/students/import', 'POST', { text })
 export const getStudentGame = (nick) => request(`/api/students/${nick}/game`)
+export const getActivity = (params) => request(`/api/activity${query(params)}`)
+export const getActivityPeople = (params) => request(`/api/activity/people${query(params)}`)
 export const getZones = () => request('/api/zones')
 export const getGames = () => request('/api/games')
 export const getTasks = () => request('/api/tasks')

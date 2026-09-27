@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+import ActivityPage from './pages/ActivityPage.vue'
 import Colors2Page from './pages/Colors2Page.vue'
 import ColorsPage from './pages/ColorsPage.vue'
 import GameEditPage from './pages/GameEditPage.vue'
@@ -39,6 +40,7 @@ const router = createRouter({
     { path: '/students', component: StudentsPage, meta: { access: 'admin' } },
     { path: '/students/:nick', component: StudentGamePage, meta: { access: 'admin' } },
     { path: '/students/:nick/edit', component: StudentEditPage, meta: { access: 'admin' } },
+    { path: '/activity', component: ActivityPage, meta: { access: 'admin', filters: true } },
     { path: '/ideas', component: RefsPage, meta: { access: 'admin' } },
     { path: '/refs', redirect: '/ideas' },
     { path: '/games', component: GamesPage, meta: hidden },  // guide text + catalog; the catalog stays admin-only inside once the guide reopens (T116 Q13)

@@ -24,7 +24,9 @@ const submit = () => save(async (f) => (student.value = await putStudent(nick, f
 
 <template>
   <div v-if="user?.status === 'admin' && student">
-    <Crumbs :items="[['/students', 'Студи'], [`/students/${nick}`, fio()], 'Редагування']" />
+    <Crumbs :items="[['/students', 'Студи'], [`/students/${nick}`, fio()], 'Редагування']">
+      <RouterLink :to="{ path: '/activity', query: { user: nick } }" class="btn btn-outline-secondary btn-sm">📈 Активність</RouterLink>
+    </Crumbs>
     <UserHead :user="student" />
 
     <ProfileForm v-model="form" admin :dirty :saved :error @save="submit" />

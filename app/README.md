@@ -17,7 +17,7 @@
 - бекенд: `cd app/api && uv run fastapi dev --port 8030` → http://localhost:8030
 - фронт: `cd app/vue && npm run dev` → **http://localhost:5030** (відкривати цю адресу)
 - дев-вхід без Google: кнопка «Dev-вхід» у шапці (працює, якщо в `.env` заданий `FAKE_USER_EMAIL`); закрита сторінка без входу веде на `/login?next=…` і повертає туди після входу
-- смоуки API (без Google): `cd app/api && DB_NAME=python_labs_smoke uv run python tests/smoke_auth.py` (вхід, `?next=`, 401/403), `… UPLOADS_DIR=/tmp/pl-smoke uv run python tests/smoke_games.py` (гра, заявки, знахідки), `… tests/smoke_guide.py` (методичка: PUT/409, історія, чернетка, export/import, ідеї)
+- смоуки API (без Google): `cd app/api && DB_NAME=python_labs_smoke uv run python tests/smoke_auth.py` (вхід, `?next=`, 401/403), `… UPLOADS_DIR=/tmp/pl-smoke uv run python tests/smoke_games.py` (гра, заявки, знахідки), `… tests/smoke_guide.py` (методичка: PUT/409, історія, чернетка, export/import, ідеї), `… tests/smoke_activity.py` (сторінка активності: стрічка, люди, журнал подій, рядок 500)
 
 У PyCharm (Pro): run-конфігурація FastAPI (`app/api/main.py`, в Uvicorn options — `--port 8030`) + npm-конфігурація `dev` (`app/vue/package.json`) + Compound «app» — запуск обох однією кнопкою.
 
@@ -25,9 +25,13 @@
 
 Публічні сторінки для студентів (`/labs` + `/labs/1…5`, `/score`, `/howto`, `/method` — усе однією сторінкою; `/games` і `/tasks` — текст розділу всім, каталог поки лише адміну) рендерять Markdown із Mongo-колекції `guide` через `GET /api/guide/{slug}`; домашня — лід + «Як влаштований курс». **Правка — на сайті** (адмін: ✏️ біля заголовка або «✏️ сторінку», нотатка «що змінив» → чернетка на `/changes`, історія з diff і відкатом — `/method/history`; [T128](../.dev/platform/.t/T128--guide-editor-v1/report.md)); файли `data/guide/*.md` ([конвенції](../data/guide/README.md)) — seed при першому старті і знімок: `cd api && uv run python guide_io.py export|import`. Якорі `{#id}` → `/score#79`: «🔗» біля заголовка копіює лінк, ціль підсвічується. Список розділів і маршрути — `vue/src/guide.js`; рендер — `md.js`, скрол/спалах — `anchors.js`. Звіт — [T117](../.dev/.t/T117--guide-v1/report.md).
 
+## Активність
+
+`/activity` (меню «Актив», лише адмін) — усе, що збирають сайт і бот: стрічка входів, переглядів, змін даних, Telegram, нотаток і збоїв (чіпи джерел, «і викладачі», `?user=<нік>` — одна людина) та вкладка «Люди» з лічильниками за період і стовпчиками за 14 днів. Оновлюється сама. Бек — `api/activity_feed.py` (злиття журналів), `api/activity_people.py` (лічильники), `api/routes/activity.py`; фронт — `vue/src/pages/ActivityPage.vue`, `components/Activity*.vue`, `activity.js`. Звіт — [T146](../.dev/platform/.t/T146--activity-page/report.md).
+
 ## Telegram-бот
 
-Живе в `app/api/bot/` — та сама база, моделі й `.env`, що й API (тому не окремий пакет). Інструкція користування — [api/bot/README.md](api/bot/README.md). Уміє: `/start` + привʼязка акаунта deep link-ом з профілю; адмін-алерти (профілі, перші входи, заявки, гра студента, помилки API/бота) — без налаштувань особисто адмінам, що привʼязали бота, або в групу/гілку форуму після `/here change` там (`/here` — статус із ключами видів, `/here all`, `/here off`, `/mute game` — вимкнути вид). Алерти шле сам API (той самий `TG_BOT_TOKEN`), запущений бот потрібен лише для `/here` і ранкового дайджесту профілів (09:00 Київ).
+Живе в `app/api/bot/` — та сама база, моделі й `.env`, що й API (тому не окремий пакет). Інструкція користування — [api/bot/README.md](api/bot/README.md). Уміє: `/start` + привʼязка акаунта deep link-ом з профілю; адмін-алерти (профілі, перші входи, заявки, гра студента, повідомлення боту, помилки API/бота; кожен спершу лягає в колекцію `events`, тож лишається в базі, навіть коли Telegram його не отримав) — без налаштувань особисто адмінам, що привʼязали бота, або в групу/гілку форуму після `/here change` там (`/here` — статус із ключами видів, `/here all`, `/here off`, `/mute game` — вимкнути вид). Алерти шле сам API (той самий `TG_BOT_TOKEN`), запущений бот потрібен лише для `/here` і ранкового дайджесту профілів (09:00 Київ).
 
 - токен від BotFather → `TG_BOT_TOKEN` у `app/api/.env`;
 - запуск: `cd app/api && uv run python -m bot` (long polling, вебхук не потрібен);

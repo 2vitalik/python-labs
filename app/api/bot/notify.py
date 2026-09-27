@@ -10,6 +10,7 @@ from aiogram.methods import SendMessage
 
 from bot import log
 from config import settings
+from models.event import Event
 from models.notify import Route
 from models.user import Status, User
 
@@ -20,6 +21,7 @@ KINDS = {
     "claim": "🎯 заявки на картки",
     "game": "🧩 гра студента: картка, обʼєкти, правила",
     "note": "📝 нотатки про студентів, Chat Automation",
+    "msg": "💬 повідомлення боту від студентів",
     "error": "💥 помилки API і бота",
     "digest": "📊 ранковий дайджест профілів",
 }
@@ -49,28 +51,35 @@ def bot() -> Bot:
     return b
 
 
-async def send(kind: str, text: str) -> None:
+async def send(kind: str, text: str, user: str = "") -> None:
+    """`user` — email of whom the event is about. The event lands in `events` first: Telegram may get nothing."""
+    event = await Event(kind=kind, text=text, user=user).insert()
     if not settings.tg_bot_token:
         return
     token = kind_var.set(kind)
     try:
-        await deliver(kind, text)
+        if await deliver(kind, text):
+            await event.set({Event.sent: True})
     finally:
         kind_var.reset(token)
 
 
-async def deliver(kind: str, text: str) -> None:
+async def deliver(kind: str, text: str) -> bool:
+    """True once somebody got it."""
     route = await Route.find_one(Route.kind == kind)
     if route and route.chat_id == MUTED:
-        return
+        return False
     if route:
         try:
             await bot().send_message(route.chat_id, text, message_thread_id=route.thread_id)
-            return
+            return True
         except TelegramAPIError as e:  # kicked from the group, topic closed… — tell the admins instead
             text = f"⚠️ Не доставив у <b>{html.quote(route.title)}</b>: {html.quote(e.message)}\n\n{text}"
+    got = False
     for admin in await User.find({"status": Status.admin, "tg_chat_id": {"$ne": None}}).to_list():
         try:
             await bot().send_message(admin.tg_chat_id, text)
+            got = True
         except TelegramAPIError as e:
             logger.warning("alert to %s failed: %s", admin.email, e.message)
+    return got

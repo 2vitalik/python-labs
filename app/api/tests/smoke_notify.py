@@ -24,6 +24,7 @@ from models.notify import Route  # noqa: E402
 from models.user import Status, User  # noqa: E402
 
 settings.tg_bot_token = "fake"
+settings.site_url = "http://localhost:5030"  # not the one from .env
 sent, results, broken = [], [], set()
 
 

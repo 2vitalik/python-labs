@@ -14,7 +14,7 @@ class Change(Document):
 
     class Settings:
         name = "history"
-        indexes = ["coll", "doc_id"]
+        indexes = ["coll", "doc_id", "actor", "at"]
 
 
 async def record(doc: Document, data: dict, actor: str, note: str = "") -> dict:

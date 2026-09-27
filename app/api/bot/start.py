@@ -4,7 +4,7 @@ from aiogram.types import InlineQueryResultArticle, InputTextMessageContent, Lin
 
 from aiogram import html
 
-from bot import texts
+from bot import notify, texts
 from bot.alerts import who
 from bot.link import bind, by_token, sync
 from bot.notes import HINT
@@ -50,6 +50,11 @@ async def start(message: Message, user: User | None):
 @router.message()
 async def fallback(message: Message, user: User | None):
     await message.answer(texts.MORE_SOON if user else texts.INTRO)
+    if not (user and user.status == Status.admin):  # nobody but the bot sees this chat, so the teacher gets a copy
+        tg = message.from_user
+        sender = who(user) if user else f"<i>не привʼязаний</i> · {'@' + html.quote(tg.username) if tg.username else f'tg {tg.id}'}"
+        body = html.quote(message.text or message.caption or "") or f"<i>{message.content_type}</i>"
+        await notify.send("msg", f"💬 Боту · {sender}\n{body}", user.email if user else "")
 
 
 @router.guest_message()

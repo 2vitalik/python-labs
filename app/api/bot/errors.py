@@ -10,6 +10,7 @@ from starlette.background import BackgroundTask
 from starlette.responses import JSONResponse
 
 from bot import notify
+from bot.log import email as linked_email
 
 log = logging.getLogger(__name__)
 
@@ -32,7 +33,7 @@ async def api_handler(request: Request, exc: Exception) -> JSONResponse:
     if email:
         head += f" · {html.quote(email.split('@')[0])}"
     text = "\n".join([head, *describe(exc)])
-    return JSONResponse({"detail": "Internal Server Error"}, 500, background=BackgroundTask(notify.send, "error", text))
+    return JSONResponse({"detail": "Internal Server Error"}, 500, background=BackgroundTask(notify.send, "error", text, email))
 
 
 async def bot_handler(event: ErrorEvent) -> bool:
@@ -41,5 +42,6 @@ async def bot_handler(event: ErrorEvent) -> bool:
     head = f"💥 Бот · {event.update.event_type}"
     if msg and msg.from_user and msg.from_user.username:
         head += f" · @{html.quote(msg.from_user.username)}"
-    await notify.send("error", "\n".join([head, *describe(event.exception)]))
+    sender = await linked_email(msg.from_user.id) if msg and msg.from_user else ""
+    await notify.send("error", "\n".join([head, *describe(event.exception)]), sender)
     return True

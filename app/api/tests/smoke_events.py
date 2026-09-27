@@ -24,6 +24,7 @@ from models.user import Status, User  # noqa: E402
 from routes.auth import upsert_user  # noqa: E402
 
 settings.tg_bot_token = "fake"
+settings.site_url = "http://localhost:5030"  # not the one from .env
 sent, results = [], []
 
 
@@ -42,6 +43,9 @@ def check(name, cond, extra=""):
 
 def last():
     return sent[-1][1] if sent else ""
+
+
+browser = SimpleNamespace(headers={"user-agent": "smoke"}, client=None)  # what upsert_user reads from a request
 
 
 async def run():
@@ -93,17 +97,17 @@ async def run():
     check("claim deleted, card gone → slug + ✖️", last() == f"🔴 Заявка · {head}\n🎯 gone-card → ✖️", last())
 
     tasks = BackgroundTasks()
-    await upsert_user({"email": vasya.email, "name": "Vasyl P"}, tasks)
+    await upsert_user({"email": vasya.email, "name": "Vasyl P"}, tasks, browser)
     await tasks()
     check("imported student's first sign-in → 👋 Перший вхід, no pending hint",
           last() == f"👋 Перший вхід · {head}" and (await User.get(vasya.id)).first_seen_at is not None, last())
     n = len(sent)
     tasks = BackgroundTasks()
-    await upsert_user({"email": vasya.email, "name": "Vasyl P"}, tasks)
+    await upsert_user({"email": vasya.email, "name": "Vasyl P"}, tasks, browser)
     await tasks()
     check("second sign-in → silent", len(sent) == n)
     tasks = BackgroundTasks()
-    await upsert_user({"email": "who@nure.ua", "name": "Who Dis"}, tasks)
+    await upsert_user({"email": "who@nure.ua", "name": "Who Dis"}, tasks, browser)
     await tasks()
     check("unknown sign-in → pending hint + edit link", "students/who/edit" in last() and "очікує" in last(), last())
 
@@ -118,7 +122,7 @@ async def run():
           resp.status_code == 500
           and last().startswith("💥 API · PUT /api/x · vasya\n❗ ValueError: boom\n📍 tests/smoke_events.py:"), last())
     ev = SimpleNamespace(update=SimpleNamespace(update_id=7, event_type="message",
-                                                message=SimpleNamespace(from_user=SimpleNamespace(username="vasya_tg"))), exception=exc)
+                                                message=SimpleNamespace(from_user=SimpleNamespace(id=42, username="vasya_tg"))), exception=exc)
     check("bot error → handled, 💥 Бот · message · @nick",
           await errors.bot_handler(ev) is True and last().startswith("💥 Бот · message · @vasya_tg\n❗ ValueError: boom"), last())
 

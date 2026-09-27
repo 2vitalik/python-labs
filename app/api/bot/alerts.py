@@ -60,7 +60,7 @@ async def profile(user: User, changes: dict) -> None:
     if not (out := rows(user, changes)):
         return
     lvl = max(r[1] for r in out)
-    await notify.send("fill" if lvl == 0 else "change", event(lvl, "Профіль", user, [f"{k}: {v}" for k, _, v in out]))
+    await notify.send("fill" if lvl == 0 else "change", event(lvl, "Профіль", user, [f"{k}: {v}" for k, _, v in out]), user.email)
 
 
 async def signed_in(user: User) -> None:
@@ -69,4 +69,4 @@ async def signed_in(user: User) -> None:
     lines = [f"👋 Перший вхід · {who(user, '/edit' if pending else '')}"]
     if pending:
         lines += [f"📧 {html.quote(user.email)}", "☝️ Не було в списках — статус «очікує»"]
-    await notify.send("login", "\n".join(lines))
+    await notify.send("login", "\n".join(lines), user.email)

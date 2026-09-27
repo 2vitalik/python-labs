@@ -83,7 +83,7 @@ async def note(message: Message, command: CommandObject, admin: User):
             lines.append(f"🔑 {rights(conn)}")
             if not (conn.rights and conn.rights.can_delete_all_messages):
                 lines.append("☝️ увімкни «Delete all messages» у Business → Chatbots")
-    await notify.send("note", "\n".join(lines))
+    await notify.send("note", "\n".join(lines), student.email if student else "")
     if not business:  # in a student's chat the bot can neither react nor edit: the alert is the confirmation
         await done(message)
 

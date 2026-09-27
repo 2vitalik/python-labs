@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T146** · тікетів: 145 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T148** · тікетів: 147 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -153,3 +153,5 @@
 | platform | [T143](platform/.t/T143-Q--errors-choices.md) | ❓ | errors-choices | Помилки: що робимо далі | 🔴 ⬜ |
 | platform | [T144](platform/.t/T144-B--view-as-student.md) | 🧠 | view-as-student | Дивитись сайт очима студента на сервері: варіанти | 🟢 ⬜ |
 | platform | [T145](platform/.t/T145-Q--view-as-student-choices.md) | ❓ | view-as-student-choices | Очима студента — вибори | 🔴 ⬜ |
+| platform | [T146](platform/.t/T146--activity-page/plan.md) | ⚙️ | activity-page | Активність: сторінка адміна, журнал подій — план | 🟢 🟩 |
+| platform | [T147](platform/.t/T147-Q--activity-choices.md) | ❓ | activity-choices | Активність: вибори після першої версії | 🔴 ⬜ |
