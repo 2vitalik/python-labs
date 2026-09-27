@@ -20,7 +20,7 @@ const groups = computed(() => {
 const toggle = (name) => (folded.value.has(name) ? folded.value.delete(name) : folded.value.add(name))
 const foldAll = (yes) => (folded.value = new Set(yes ? groups.value.map((g) => g.name) : []))
 const fio = (s) => s.name || s.nick
-const repoName = (url) => url.replace('https://github.com/', '')
+const repo = (url) => url.replace('https://github.com/', '').split('/')  // [owner, name] — the API keeps exactly this shape
 const rowClass = (s) => ({ 'table-warning': s.status === 'pending', 'table-info': s.status === 'admin', ghost: !s.seen })
 </script>
 
@@ -53,7 +53,9 @@ const rowClass = (s) => ({ 'table-warning': s.status === 'pending', 'table-info'
           </td>
           <td v-if="s.game.id"><RouterLink :to="`/students/${s.nick}`">{{ s.game.title }}</RouterLink></td>
           <td v-else class="dash">—</td>
-          <td v-if="s.github"><a :href="s.github" target="_blank">{{ repoName(s.github) }}</a></td>
+          <td v-if="s.github">
+            <a :href="s.github" target="_blank" class="repo">{{ repo(s.github)[0] }}<span class="small">{{ repo(s.github)[1] }}</span></a>
+          </td>
           <td v-else class="dash">—</td>
           <td v-if="s.tg_username || s.tg_linked">
             <a v-if="s.tg_username" :href="`https://t.me/${s.tg_username}`" target="_blank">@{{ s.tg_username }}</a>
@@ -82,6 +84,8 @@ tbody { counter-reset: n; }
 .name { color: inherit; text-decoration: none; }
 .name:hover { text-decoration: underline; }
 .email { color: var(--bs-tertiary-color); line-height: 1.2; }
+.repo { white-space: nowrap; }
+.repo span { display: block; line-height: 1.2; }
 .dash { color: var(--bs-tertiary-color); }
 /* the cell colour is Bootstrap's own variable, plain `color` on the row would not reach it */
 .ghost { --bs-table-color: var(--bs-tertiary-color); }
