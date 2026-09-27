@@ -8,8 +8,8 @@ const heading = computed(() => props.title
   || `${props.user.last_name} ${props.user.first_name}`.trim() || props.user.name || props.user.nick)
 const checks = computed(() => [
   ['ПІБ', props.user.last_name && props.user.first_name],
-  ['GitHub', props.user.github],
   ['Telegram', props.user.tg_linked],
+  ['GitHub', props.user.github],
 ])
 </script>
 

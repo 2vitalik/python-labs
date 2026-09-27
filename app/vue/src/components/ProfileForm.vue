@@ -27,26 +27,6 @@ const form = defineModel({ type: Object, required: true })
       </div>
     </div>
 
-    <div id="github" class="card mb-3">
-      <div class="card-header">GitHub</div>
-      <div class="card-body">
-        <div class="d-flex">
-          <label class="form-label">Посилання на репозиторій</label>
-          <a v-if="form.github" :href="form.github" target="_blank" class="ms-auto small">відкрити ↗</a>
-        </div>
-        <input v-model="form.github" class="form-control" type="url"
-               pattern="https://github\.com/[\w.\-]+/[\w.\-]+/?" title="https://github.com/користувач/репозиторій"
-               placeholder="https://github.com/username/python-labs">
-        <div v-if="hints" class="form-text mt-2">
-          <ul class="mb-0 ps-3">
-            <li>Репозиторій має бути <b>приватним</b>, назву оберіть самостійно</li>
-            <li><b>Єдиний</b> на всі лаби — це один великий проєкт, без папок Lab1/Lab2</li>
-            <li><b>Розшар</b> його на викладача: Settings → Collaborators → <code>2vitalik</code></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
     <div id="telegram" class="card mb-3">
       <div class="card-header">Telegram</div>
       <div class="card-body">
@@ -65,6 +45,26 @@ const form = defineModel({ type: Object, required: true })
           </ul>
         </div>
         <slot name="telegram" />
+      </div>
+    </div>
+
+    <div id="github" class="card mb-3">
+      <div class="card-header">GitHub</div>
+      <div class="card-body">
+        <div class="d-flex">
+          <label class="form-label">Посилання на репозиторій</label>
+          <a v-if="form.github" :href="form.github" target="_blank" class="ms-auto small">відкрити ↗</a>
+        </div>
+        <input v-model="form.github" class="form-control" type="url"
+               pattern="https://github\.com/[\w.\-]+/[\w.\-]+/?" title="https://github.com/користувач/репозиторій"
+               placeholder="https://github.com/username/python-labs">
+        <div v-if="hints" class="form-text mt-2">
+          <ul class="mb-0 ps-3">
+            <li>Репозиторій має бути <b>приватним</b>, назву оберіть самостійно</li>
+            <li><b>Єдиний</b> на всі лаби — це один великий проєкт, без папок Lab1/Lab2</li>
+            <li><b>Розшар</b> його на викладача: Settings → Collaborators → <code>2vitalik</code></li>
+          </ul>
+        </div>
       </div>
     </div>
 
