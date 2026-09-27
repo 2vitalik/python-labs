@@ -34,7 +34,8 @@ async def save(message: Message, dir: str, kind: str = "") -> None:
 
 
 def dump(event) -> dict:
-    return event.model_dump(mode="json", exclude_none=True)
+    """Only what Telegram sent: aiogram's own defaults include `Default` placeholders that JSON can't take."""
+    return event.model_dump(mode="json", exclude_unset=True)
 
 
 async def event_row(event, who: TgUser | None, **fields) -> None:
@@ -67,7 +68,7 @@ async def member(event: ChatMemberUpdated):
     new = event.new_chat_member
     via = f" · {event.invite_link.name or event.invite_link.invite_link}" if event.invite_link else ""
     by = f" · by {event.from_user.id}" if event.from_user.id != new.user.id else ""
-    await event_row(event, new.user, text=f"{event.old_chat_member.status.value} → {new.status.value}{via}{by}", content_type="chat_member",
+    await event_row(event, new.user, text=f"{event.old_chat_member.status} → {new.status}{via}{by}", content_type="chat_member",
                     kind="member")
 
 

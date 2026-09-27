@@ -13,8 +13,8 @@ DB = os.environ["DB_NAME"]
 assert DB.endswith("_smoke"), "refuse to run on a non-smoke DB"
 MongoClient().drop_database(DB)
 from aiogram.methods import SendChatAction, SendMessage  # noqa: E402
-from aiogram.types import (Chat, ChatJoinRequest, ChatMemberLeft, ChatMemberMember, ChatMemberUpdated, Message,  # noqa: E402
-                           MessageReactionUpdated, PhotoSize, ReactionTypeEmoji)
+from aiogram.types import (Chat, ChatJoinRequest, ChatMemberUpdated, Message, MessageReactionUpdated, PhotoSize,  # noqa: E402
+                           ReactionTypeEmoji)
 from aiogram.types import User as TgUser  # noqa: E402
 
 from bot import log, notify  # noqa: E402
@@ -24,7 +24,14 @@ from models.message import TgMessage  # noqa: E402
 from models.user import Status, User  # noqa: E402
 
 NOW = datetime(2026, 9, 24, 12, 0, tzinfo=timezone.utc)
+VASYA = {"id": 42, "is_bot": False, "first_name": "Вася", "username": "vasya_tg"}
+FORUM = {"id": -100, "type": "supergroup"}
 results, handled, ids = [], [], count(10)
+
+
+def parsed(cls, **data):
+    """As Telegram delivers it: enums arrive as plain strings, unsent fields keep aiogram's defaults."""
+    return cls.model_validate({"date": int(NOW.timestamp()), **data})
 
 
 def check(name, cond, extra=""):
@@ -85,10 +92,15 @@ async def run():
 
     check("incoming keeps the raw Telegram object", row.raw.get("text") == "привіт" and row.raw.get("business_connection_id") == "conn")
 
-    vasya = TgUser(id=42, is_bot=False, first_name="Вася", username="vasya_tg")
-    forum = Chat(id=-100, type="supergroup")
-    await log.member(ChatMemberUpdated(chat=forum, from_user=vasya, date=NOW, old_chat_member=ChatMemberLeft(user=vasya),
-                                       new_chat_member=ChatMemberMember(user=vasya)))
+    link = "https://nure.ua"
+    await log.incoming(handler, parsed(Message, message_id=6, chat={"id": 42, "type": "private"}, from_user=VASYA, text=link,
+                                       link_preview_options={"url": link}), {})
+    row = await TgMessage.find_one(TgMessage.message_id == 6)
+    check("link: saved, raw holds only what Telegram sent", row and row.raw["link_preview_options"] == {"url": link})
+
+    vasya, forum = TgUser(**VASYA), Chat(**FORUM)
+    await log.member(parsed(ChatMemberUpdated, chat=FORUM, from_user=VASYA, old_chat_member={"status": "left", "user": VASYA},
+                            new_chat_member={"status": "member", "user": VASYA}))
     row = await TgMessage.find_one(TgMessage.kind == "member")
     check("forum join: kind=member, 'left → member', linked user, raw", row.text == "left → member" and row.from_id == 42
           and row.user == "vasya@nure.ua" and row.content_type == "chat_member" and row.raw["new_chat_member"]["status"] == "member")
@@ -122,7 +134,7 @@ async def run():
     check("kind resets after send()", notify.kind_var.get() == "reply")
 
     await notify.outgoing(make_request, None, SendChatAction(chat_id=42, action="typing"))
-    check("non-message request: not logged", await TgMessage.count() == 12)
+    check("non-message request: not logged", await TgMessage.count() == 13)
 
 asyncio.run(run())
 ok = sum(results)
