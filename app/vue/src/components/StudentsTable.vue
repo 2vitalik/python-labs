@@ -2,6 +2,7 @@
 import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
+import { byGroup } from '../studentFilter.js'
 import { lookAs } from '../user.js'
 import IconChevron from './IconChevron.vue'
 
@@ -11,12 +12,7 @@ import IconChevron from './IconChevron.vue'
 const props = defineProps({ students: Array })
 const route = useRoute()
 const folded = ref(new Set())
-const groups = computed(() => {
-  const by = new Map()
-  for (const s of props.students) by.set(s.group, [...(by.get(s.group) || []), s])
-  return [...by].map(([name, list]) => ({ name, list, test: list.every((s) => s.test) }))  // test students' groups go last
-    .sort((a, b) => a.test - b.test || (a.name === '') - (b.name === '') || a.name.localeCompare(b.name))
-})
+const groups = computed(() => byGroup(props.students))
 const toggle = (name) => (folded.value.has(name) ? folded.value.delete(name) : folded.value.add(name))
 const foldAll = (yes) => (folded.value = new Set(yes ? groups.value.map((g) => g.name) : []))
 const fio = (s) => s.name || s.nick
@@ -38,7 +34,7 @@ const rowClass = (s) => ({ 'table-warning': s.status === 'pending', 'table-info'
         <th colspan="4" class="fw-semibold">
           <span class="caret text-secondary"><IconChevron :dir="folded.has(g.name) ? 'right' : 'down'" :size="12" /></span>
           {{ g.name || 'Без групи' }} <span class="count">{{ g.list.length }}</span>
-          <RouterLink v-if="g.name && !route.query.group" :to="{ query: { group: g.name } }" class="ibtn ms-2"
+          <RouterLink v-if="g.name && !route.query.group" :to="{ query: { ...route.query, group: g.name } }" class="ibtn ms-2"
                       title="Лише ця група" @click.stop>↗</RouterLink>
         </th>
       </tr>

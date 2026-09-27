@@ -1,15 +1,15 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue'
-import { useRoute } from 'vue-router'
 
 import { getStudents, importStudents } from '../api.js'
 import Avatar from '../components/Avatar.vue'
 import Crumbs from '../components/Crumbs.vue'
+import StudentFilters from '../components/StudentFilters.vue'
 import StudentsTable from '../components/StudentsTable.vue'
+import { useStudentFilter } from '../studentFilter.js'
 import { useTitle } from '../title.js'
 import { user } from '../user.js'
 
-const route = useRoute()
 const students = ref([])
 const denied = ref(false)
 const view = ref('table')
@@ -18,8 +18,8 @@ const importText = ref('')
 const importResult = ref('')
 
 const isAdmin = computed(() => user.value?.status === 'admin')
-const group = computed(() => route.query.group || '')  // one group as its own sub-page
-const shown = computed(() => (group.value ? students.value.filter((s) => s.group === group.value) : students.value))
+const { shown, picked, active } = useStudentFilter(students)
+const group = computed(() => picked.value.join(', '))  // picked groups read as a sub-page: crumb + title
 const crumbs = computed(() => (group.value ? [['/students', 'Студи'], group.value] : ['Студи']))
 const fio = (s) => s.name || s.nick
 useTitle(() => group.value && `Студенти ${group.value}`)
@@ -47,7 +47,7 @@ onMounted(load)
   <div v-else>
     <Crumbs :items="crumbs" />
     <div class="d-flex align-items-center gap-2 mb-3">
-      <h1 class="h3 mb-0">Студенти <span class="text-secondary fs-6">{{ group }} ({{ shown.length }})</span></h1>
+      <h1 class="h3 mb-0">Студенти <span class="text-secondary fs-6">{{ group }} ({{ shown.length }}{{ active ? ` з ${students.length}` : '' }})</span></h1>
       <div v-if="isAdmin" class="btn-group btn-group-sm ms-2">
         <button class="btn" :class="view === 'table' ? 'btn-primary' : 'btn-outline-secondary'" @click="view = 'table'">Таблиця</button>
         <button class="btn" :class="view === 'cards' ? 'btn-primary' : 'btn-outline-secondary'" @click="view = 'cards'">Картки</button>
@@ -66,7 +66,9 @@ onMounted(load)
     </div>
     <div v-if="importResult" class="alert alert-success">{{ importResult }}</div>
 
-    <StudentsTable v-if="isAdmin && view === 'table'" :students="shown" />
+    <StudentFilters v-if="isAdmin" :students="students" />
+    <p v-if="active && !shown.length" class="text-secondary">Під ці фільтри ніхто не підходить.</p>
+    <StudentsTable v-else-if="isAdmin && view === 'table'" :students="shown" />
     <div v-else class="row g-3">
       <div v-for="s in shown" :key="s.nick" class="col-md-6 col-lg-4">
         <RouterLink :to="`/students/${s.nick}`" class="card h-100 text-decoration-none text-body">
