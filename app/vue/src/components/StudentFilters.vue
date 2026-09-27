@@ -10,13 +10,13 @@ const look = (on, n) => (on ? 'btn-secondary' : ['btn-outline-secondary', { 'opa
 
 <template>
   <div class="d-flex flex-wrap gap-1 mb-2">
-    <button v-for="g in groups" :key="g.key" type="button" class="btn btn-sm" :class="look(g.on, g.n)"
-            @click="toggleGroup(g.key)">{{ g.name }} <span class="count">{{ g.n }}</span></button>
+    <button v-for="g in groups" :key="g.key" type="button" class="btn btn-sm" :class="look(g.on, g.n)" :title="g.name"
+            @click="toggleGroup(g.key)">{{ g.text }} <span class="count">{{ g.n }}</span></button>
   </div>
   <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
     <div v-for="f in facets" :key="f.key" class="btn-group btn-group-sm" :title="f.title">
       <button v-for="v in ['1', '0']" :key="v" type="button" class="btn" :class="look(f.value === v, f.n[v])"
-              @click="toggleFacet(f.key, v)">{{ v === '1' ? f.yes : f.no }} <span class="count">{{ f.n[v] }}</span></button>
+              @click="toggleFacet(f.key, v)">{{ v === '1' ? f.text : 'ні' }} <span class="count">{{ f.n[v] }}</span></button>
     </div>
     <a v-if="active" href="#" class="small text-secondary" @click.prevent="reset">скинути</a>
   </div>

@@ -5,13 +5,15 @@ import { useRoute, useRouter } from 'vue-router'
 // ?group=A,B — only these groups (NONE = «no group») · ?seen=1 / ?gh=0 … — only those who have it / who don't
 const NONE = '-'
 const FACETS = [
-  { key: 'seen', yes: '🔑 зайшли', no: 'ні', title: 'Вхід на сайт', has: (s) => s.seen },
-  { key: 'game', yes: '🎮 гра', no: 'без', title: 'Гра створена', has: (s) => s.game.id },
-  { key: 'gh', yes: 'GitHub', no: 'без', title: 'GitHub-репозиторій', has: (s) => s.github },
-  { key: 'nick', yes: '✈️ нік', no: 'без', title: 'Нікнейм у Telegram', has: (s) => s.tg_username },
-  { key: 'bot', yes: '🤖 бот', no: 'без', title: 'Бот привʼязаний', has: (s) => s.tg_linked },
+  { key: 'seen', text: '🔑 вхід', title: 'Вхід на сайт', has: (s) => s.seen },
+  { key: 'game', text: '🎮 гра', title: 'Гра створена', has: (s) => s.game.id },
+  { key: 'gh', text: '🐙 git', title: 'GitHub-репозиторій', has: (s) => s.github },
+  { key: 'nick', text: '✈️ нік', title: 'Нікнейм у Telegram', has: (s) => s.tg_username },
+  { key: 'bot', text: '🤖 бот', title: 'Бот привʼязаний', has: (s) => s.tg_linked },
 ]
 const label = (key) => (key === NONE ? 'Без групи' : key)
+// on a chip: «ПЗПІ-25-1» → «25-1», «ПЗПІи-25-1» → «25-1и», no group → «—»
+const short = (key) => (key === NONE ? '—' : key.replace(/^\p{Lu}+(\p{Ll}*)-(.+)$/u, '$2$1'))
 
 // groups of test students go last, «no group» right before them
 export function byGroup(students) {
@@ -34,7 +36,7 @@ export function useStudentFilter(students) {
   const active = computed(() => keys.value.length > 0 || FACETS.some((f) => route.query[f.key]))
   const groups = computed(() => byGroup(toValue(students)).map(({ name, list }) => {
     const key = name || NONE
-    return { key, name: label(key), on: keys.value.includes(key), n: list.filter((s) => fits(s)).length }
+    return { key, name: label(key), text: short(key), on: keys.value.includes(key), n: list.filter((s) => fits(s)).length }
   }))
   const facets = computed(() => FACETS.map((f) => {
     const list = toValue(students).filter((s) => inGroup(s) && fits(s, f.key))
