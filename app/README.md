@@ -30,6 +30,8 @@
 
 `/activity` (меню «Актив», лише адмін) — усе, що збирають сайт і бот: стрічка входів, переглядів, змін даних, Telegram, нотаток і збоїв (чіпи джерел, «і викладачі», `?user=<нік>` — одна людина) та вкладка «Люди» з лічильниками за період і стовпчиками за 14 днів. Оновлюється сама. Бек — `api/activity_feed.py` (злиття журналів), `api/activity_people.py` (лічильники), `api/routes/activity.py`; фронт — `vue/src/pages/ActivityPage.vue`, `components/Activity*.vue`, `activity.js`. Звіт — [T146](../.dev/platform/.t/T146--activity-page/report.md).
 
+Telegram-рядки й нотатки, записані до привʼязки бота, не мають пошти — людину за Telegram id знаходить читання (`api/activity_link.py`), у базі нічого не дописується. Звіт — [T150](../.dev/platform/.t/T150--tg-link-on-read/report.md).
+
 ## Помилки
 
 - Відповідь API розбирає `vue/src/http.js`: помилка несе `status` і людський текст; нема відповіді — `status = 0` і прапорець `down` → банер `DownBar.vue`.

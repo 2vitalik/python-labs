@@ -169,6 +169,33 @@ with TestClient(main.app, raise_server_exceptions=False) as c:
     rows = c.get("/api/activity/people", params={"days": 0, "staff": 1}).json()["rows"]
     check("people days=0 staff=1: all time, the teacher too", {r["nick"] for r in rows} == {"vasya", "admin"}, rows)
 
+    # T150: rows written before the chat was linked have no email — the person is found when they are read
+    db.users.update_one({"email": PETRO}, {"$set": {"tg_chat_id": 77, "first_seen_at": now}})  # linked after everything below
+    late = [tg("питання у форумі", ago(minutes=3), chat_id=-100, from_id=77, chat_type="supergroup", username="petro_tg"),
+            tg("👍", ago(minutes=3), chat_id=-100, from_id=77, chat_type="supergroup", kind="reaction", content_type="reaction"),
+            tg("спершу привʼяжи бота", ago(minutes=2), chat_id=77, dir="out", from_id=None, kind="reply"),
+            tg("/start", ago(minutes=2), chat_id=1, from_id=1),  # the teacher, before linking
+            tg("колишній акаунт", ago(minutes=2), VASYA, chat_id=-100, from_id=77, chat_type="supergroup")]  # 77 was Vasya's then
+    db.messages.insert_many(late)
+    db.notes.insert_one({"user": "", "tg_id": 77, "text": "питав про дедлайн", "by": ADMIN, "hidden": False, "source": "forum", "at": ago(minutes=1)})
+    rows = feed(c)["rows"]
+    check("late link: forum line, reaction, the bot's reply and the note are the student's",
+          all(has(rows, text=t, user=PETRO) for t in ("питання у форумі", "👍", "спершу привʼяжи бота", "питав про дедлайн")), rows[:6])
+    check("late link: the email in the row wins, a stranger stays a stranger, the teacher stays hidden",
+          has(rows, text="колишній акаунт", user=VASYA) and has(rows, text="хто тут", user="") and not has(rows, text="/start"))
+    check("late link: staff=1 shows the teacher's line as theirs", has(feed(c, staff=1)["rows"], text="/start", user=ADMIN))
+    one = feed(c, user="petro")
+    check("late link: one person — all of theirs, nobody else's, the name is known",
+          {r["text"] for r in one["rows"]} == {"питання у форумі", "👍", "спершу привʼяжи бота", "питав про дедлайн"}
+          and one["people"][PETRO]["nick"] == "petro", one["rows"])
+    check("late link: the other person's feed is as it was", not has(feed(c, user="vasya")["rows"], user=PETRO))
+    p = {r["nick"]: r for r in c.get("/api/activity/people").json()["rows"]}
+    check("late link: people count the lines before linking", p["petro"]["n"] == {"tg": 2} and p["petro"]["days"][-1] == 2
+          and p["vasya"]["n"]["tg"] == 2, p["petro"])
+    db.users.update_one({"email": PETRO}, {"$set": {"tg_chat_id": None}})
+    check("late link: unlinked — a stranger again, the base was never touched", has(feed(c)["rows"], text="питання у форумі", user="")
+          and db.messages.count_documents({"user": PETRO}) == db.notes.count_documents({"user": PETRO}) == 0)
+
     check("the page's own polling leaves no footprint", db.activity.count_documents({"path": {"$regex": "^/api/activity"}}) == 0)
 
 ok = sum(results)

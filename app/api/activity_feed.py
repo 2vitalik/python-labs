@@ -3,6 +3,7 @@ from datetime import datetime
 
 from bson.codec_options import CodecOptions
 
+from activity_link import tg_id, unlinked
 from bot.notify import KINDS
 from config import settings
 from db import mongo
@@ -42,17 +43,21 @@ def brief(value) -> str:
     return "" if value is None else str(value)[:200]
 
 
-def about(src: str, person: User) -> dict:
+def about(src: str, person: User, link: dict[int, str]) -> dict:
     """One person's rows: their own, plus edits of their profile by others and both sides of their Telegram chat."""
     if src == "edit":
         return {"$or": [{"actor": person.email}, {"coll": "users", "doc_id": person.id}]}
-    if src == "tg" and person.tg_chat_id:
-        return {"$or": [{"user": person.email}, {"chat_id": person.tg_chat_id}]}
-    return {"user": person.email}
+    chat = [{"chat_id": person.tg_chat_id}] if src == "tg" and person.tg_chat_id else []
+    return {"$or": [{"user": person.email}, *chat, *unlinked(src, [person.email], link)]}
 
 
-def row(src: str, doc: dict) -> dict:
-    out = {"id": str(doc["_id"]), "src": src, "at": doc["at"], "user": doc.get(SOURCES[src][2], "")}
+def others(src: str, hide: list[str], link: dict[int, str]) -> dict:
+    late = unlinked(src, hide, link)
+    return {SOURCES[src][2]: {"$nin": hide}} | ({"$nor": late} if late else {})
+
+
+def row(src: str, doc: dict, link: dict[int, str]) -> dict:
+    out = {"id": str(doc["_id"]), "src": src, "at": doc["at"], "user": doc.get(SOURCES[src][2]) or link.get(tg_id(doc), "")}
     out |= {k: doc.get(k) for k in FIELDS[src]}
     if src == "edit":
         out["doc"] = str(doc["doc_id"])
@@ -60,14 +65,15 @@ def row(src: str, doc: dict) -> dict:
     return out
 
 
-async def feed(sources: list[str], person: User | None, hide: list[str], before: datetime | None, limit: int) -> list[dict]:
-    """`hide` — emails to leave out (the staff); one person's feed hides nobody."""
+async def feed(sources: list[str], person: User | None, hide: list[str], link: dict[int, str], before: datetime | None,
+               limit: int) -> list[dict]:
+    """`hide` — emails to leave out (the staff); one person's feed hides nobody. `link` — Telegram id → email, as linked now."""
     rows = []
     for src in sources:
-        name, own, who = SOURCES[src]
-        query = [own, about(src, person) if person else {who: {"$nin": hide}}]
+        name, own, _ = SOURCES[src]
+        query = [own, about(src, person, link) if person else others(src, hide, link)]
         if before:
             query.append({"at": {"$lt": before}})
         async for doc in journal(name).find({"$and": query}, {"raw": 0}).sort("at", -1).limit(limit):
-            rows.append(row(src, doc))
+            rows.append(row(src, doc, link))
     return sorted(rows, key=lambda r: (r["at"], r["id"]), reverse=True)[:limit]  # ids grow with time: same moment — later written first

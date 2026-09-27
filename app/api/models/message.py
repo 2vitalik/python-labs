@@ -13,7 +13,7 @@ class TgMessage(Document):
     thread_id: int | None = None  # forum topic
     from_id: int | None = None  # sender; None for the bot's own messages. business: chat_id is the student, from_id whoever wrote
     username: str = ""
-    user: str = ""  # email behind from_id (in) or chat_id (out); "" = not linked
+    user: str = ""  # email behind from_id (in) or chat_id (out); "" = not linked then — the site finds the person when reading (T150)
     text: str = ""  # text or media caption
     content_type: str = "text"  # Telegram's, or chat_member · join_request · reaction for non-message events
     file_id: str = ""  # media; the file itself can be fetched later via getFile
@@ -24,4 +24,4 @@ class TgMessage(Document):
 
     class Settings:
         name = "messages"
-        indexes = ["user", "chat_id", "at"]
+        indexes = ["user", "chat_id", "from_id", "at"]

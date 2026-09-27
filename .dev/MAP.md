@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T150** · тікетів: 149 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T151** · тікетів: 150 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -157,3 +157,4 @@
 | platform | [T147](platform/.t/T147-Q--activity-choices.md) | ❓ | activity-choices | Активність: вибори після першої версії | 🔴 ⬜ |
 | platform | [T148](platform/.t/T148--view-as-student/plan.md) | ⚙️ | view-as-student | Очима студента: тестовий студент і перегляд від його імені — план | 🟢 🟩 |
 | platform | [T149](platform/.t/T149--errors-pack/plan.md) | ⚙️ | errors-pack | Помилки: екран у фронті, 404 з параметром, колекція errors, помилки фронту в бота — план | 🟢 🟩 |
+| platform | [T150](platform/.t/T150--tg-link-on-read/plan.md) | ⚙️ | tg-link-on-read | Активність: Telegram-рядки до привʼязки — за студентом — план | 🟢 ⬜ |

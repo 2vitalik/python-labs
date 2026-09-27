@@ -3,6 +3,7 @@ from datetime import datetime
 from fastapi import APIRouter, Depends, HTTPException, Query
 
 from activity_feed import SOURCES, feed
+from activity_link import links
 from activity_people import people
 from deps import admin_user
 from models.user import Status, User
@@ -24,7 +25,7 @@ async def get_feed(user: str = "", src: str = "", before: datetime | None = None
     sources = [s for s in src.split(",") if s in SOURCES] or DEFAULT
     if "api" in sources:
         sources = [s for s in sources if s != "fail"]  # already among all the calls
-    rows = await feed(sources, one, hide, before, limit)
+    rows = await feed(sources, one, hide, links(users), before, limit)
     by_id = {str(u.id): u.email for u in users}
     for r in rows:
         if r["src"] == "edit" and r["coll"] == "users":

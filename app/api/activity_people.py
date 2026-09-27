@@ -4,6 +4,7 @@ from datetime import date, datetime, time, timedelta, timezone
 from zoneinfo import ZoneInfo
 
 from activity_feed import SOURCES, journal
+from activity_link import links
 from models.user import Status, User
 from routes.student_games import person
 
@@ -22,7 +23,7 @@ def aware(at: datetime | None) -> datetime | None:
     return at.replace(tzinfo=timezone.utc) if at else None
 
 
-async def tally(days: int) -> dict[str, dict]:
+async def tally(days: int, link: dict[int, str]) -> dict[str, dict]:
     """email → n: rows per source over `days` (0 = all time) · days: rows per day · last: the newest row."""
     period = set(last_days(days))
     span = last_days(max(days, SPARK))[0] if days else None
@@ -30,9 +31,11 @@ async def tally(days: int) -> dict[str, dict]:
     day = {"$dateToString": {"format": "%Y-%m-%d", "date": "$at", "timezone": TZ.key}}
     out = {}
     for src, (name, own, who) in COUNTED.items():
-        group = {"_id": {"who": f"${who}", "day": day}, "n": {"$sum": 1}, "last": {"$max": "$at"}}
+        # `from_id` — Telegram rows only: whose they are when written before the chat was linked (T150)
+        group = {"_id": {"who": f"${who}", "tg": "$from_id", "day": day}, "n": {"$sum": 1}, "last": {"$max": "$at"}}
         async for g in await journal(name).aggregate([{"$match": own | match}, {"$group": group}]):
-            p = out.setdefault(g["_id"]["who"], {"n": Counter(), "days": Counter(), "last": g["last"]})
+            email = g["_id"]["who"] or link.get(g["_id"].get("tg"), "")
+            p = out.setdefault(email, {"n": Counter(), "days": Counter(), "last": g["last"]})
             if not days or g["_id"]["day"] in period:
                 p["n"][src] += g["n"]
             if src != "api":  # a page view is one action; the API calls behind it are not three more
@@ -43,8 +46,8 @@ async def tally(days: int) -> dict[str, dict]:
 
 async def people(days: int, staff: bool) -> dict:
     """Everyone who has ever shown up, the most recent first; `total` — how far the students are with signing in."""
-    found, spark = await tally(days), last_days(SPARK)
     users = await User.find_all().to_list()
+    found, spark = await tally(days, links(users)), last_days(SPARK)
     rows = []
     for u in users:
         t = found.get(u.email)
