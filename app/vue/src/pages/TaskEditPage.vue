@@ -7,6 +7,7 @@ import Crumbs from '../components/Crumbs.vue'
 import { postTask, putTask } from '../api.js'
 import TaskForm from '../components/TaskForm.vue'
 import { loadCatalog, tasks } from '../catalog.js'
+import { problem } from '../problem.js'
 import { useTitle } from '../title.js'
 import { user } from '../user.js'
 
@@ -26,6 +27,7 @@ const csv = (s) => s.split(',').map((x) => x.trim()).filter(Boolean)
 onMounted(async () => {
   await loadCatalog()
   const t = tasks.value.find((x) => x.slug === route.params.slug)
+  if (!t && route.params.slug) problem.value = 'lost'
   if (!t) return
   id.value = t.id
   for (const k in form) {

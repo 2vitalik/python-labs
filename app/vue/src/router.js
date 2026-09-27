@@ -21,6 +21,7 @@ import StudentsPage from './pages/StudentsPage.vue'
 import TaskEditPage from './pages/TaskEditPage.vue'
 import TasksPage from './pages/TasksPage.vue'
 import { CHANGES, SECTIONS } from './guide.js'
+import { down } from './http.js'
 import { canAccess, safeNext, user, userLoaded } from './user.js'
 
 // the guide is unfinished, so it is admin-only for now (T136; drop `hidden` to reopen); students get only the profile
@@ -64,6 +65,7 @@ const router = createRouter({
 
 router.beforeEach(async (to) => {
   await userLoaded
+  if (down.value && !user.value) return true  // the API is silent: the app shows the banner, not «Потрібен вхід»
   if (to.path === '/login') {  // nothing to ask: go where they were heading
     const next = safeNext(to.query.next)
     return user.value && canAccess(router.resolve(next).meta.access) ? next : true

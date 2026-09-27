@@ -19,7 +19,6 @@ const parts = ref([])
 const claims = ref([])
 const rules = ref([])
 const loaded = ref(false)
-const denied = ref(false)
 const editGame = ref(false)
 const newWin = ref(null)
 const newEnt = ref(null)
@@ -38,13 +37,7 @@ const nick = computed(() => game.value?.owner.split('@')[0])
 const baseTitle = computed(() => games.value.find((g) => g.slug === game.value?.base_game)?.title)
 
 async function reload() {
-  try {
-    game.value = await getMyGame()
-  } catch {
-    denied.value = true
-    loaded.value = true
-    return
-  }
+  game.value = await getMyGame()
   if (game.value) {
     const full = await getStudentGame(nick.value)
     parts.value = full.parts
@@ -100,9 +93,7 @@ onMounted(() => Promise.all([loadCatalog(), reload()]))
 <template>
   <div>
     <Crumbs :items="['Моя гра']" />
-    <p v-if="denied" class="text-center mt-5">Сторінка для учасників курсу — увійди з поштою @nure.ua.</p>
-
-    <template v-else-if="loaded && !game">
+    <template v-if="loaded && !game">
       <h1 class="h3 mb-2">Моя гра</h1>
       <p class="text-secondary">Створи свою гру — а далі описуй її вікна, меню і заявляй виконані картки з каталогу.</p>
       <MyGameForm @saved="onSaved" />

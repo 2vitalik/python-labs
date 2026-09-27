@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
+import { down } from '../http.js'
 import { canAccess, user } from '../user.js'
 import Avatar from './Avatar.vue'
 
@@ -29,7 +30,7 @@ const next = computed(() => `?next=${encodeURIComponent(route.fullPath)}`)
         </svg>
       </a>
     </template>
-    <template v-else>
+    <template v-else-if="!down">  <!-- signing in goes through the API -->
       <a v-if="isDev && stage < 2" class="btn btn-outline-secondary btn-sm" :href="'/api/auth/dev-login' + next">Dev-вхід</a>
       <a class="btn btn-primary btn-sm" :href="'/api/auth/login' + next">{{ stage < 2 ? 'Увійти з Google' : 'Увійти' }}</a>
     </template>

@@ -10,10 +10,12 @@ export const CHIPS = [
   { key: 'tg', icon: '✈️', text: 'Telegram', src: ['tg'], on: true },
   { key: 'note', icon: '📝', text: 'Нотатки', src: ['note'], on: true },
   { key: 'fail', icon: '⚠️', text: 'Збої', src: ['fail'], on: true, title: 'API-виклики, що скінчились помилкою: 4xx і 5xx' },
+  { key: 'error', icon: '💥', text: 'Помилки', src: ['error'], on: true, title: 'Необроблені помилки сайту, API і бота — з повним traceback' },
   { key: 'event', icon: '🔔', text: 'Алерти', src: ['event'], on: false, title: 'Важливі події — те, що бот шле в Telegram' },
   { key: 'api', icon: '⚙️', text: 'API', src: ['api'], on: false, title: 'Усі API-виклики' },
 ]
-export const ICONS = { login: '🔑', view: '👁', api: '⚙️', fail: '⚠️', edit: '✏️', event: '🔔' }
+export const ICONS = { login: '🔑', view: '👁', api: '⚙️', fail: '⚠️', edit: '✏️', event: '🔔', error: '💥' }
+export const ERRORS = { api: 'API', bot: 'бот', front: 'сайт' }
 export const COLLS = {
   users: 'профіль', student_games: 'гра', game_parts: 'обʼєкт гри', claims: 'заявка', rules: 'правило',
   guide: 'методичка', tasks: 'картка каталогу', games: 'гра каталогу', refs: 'ідея',

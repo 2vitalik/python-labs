@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 
-import { CHATS, COLLS, ICONS, TG_KINDS, clock, device, plain } from '../activity.js'
+import { CHATS, COLLS, ERRORS, ICONS, TG_KINDS, clock, device, plain } from '../activity.js'
 
 // one feed row: time · whom it is about · icon of the journal · what happened; `one` — email of a one-person feed, which needs no name column
 const props = defineProps({ row: { type: Object, required: true }, people: { type: Object, required: true }, one: String })
@@ -47,6 +47,15 @@ const status = computed(() => (r.value.status >= 500 ? 'text-bg-danger' : r.valu
         <span v-if="one && r.user && r.user !== one" class="small text-secondary ms-1">{{ name(r.user) }}:</span>
         <span class="text ms-1">{{ r.text || (r.content_type === 'text' ? '' : `[${r.content_type}]`) }}</span>
       </template>
+      <template v-else-if="r.src === 'error'">
+        <span class="badge text-bg-danger fw-normal">{{ ERRORS[r.source] }}</span> <code>{{ r.method }} {{ r.path }}</code>
+        <small v-if="r.ua" class="text-secondary ms-1" :title="`${r.ua}\n${r.ip}`">{{ device(r.ua) }}</small>
+        <details class="small">
+          <summary>{{ r.title }}</summary>
+          <div v-if="r.where" class="text-secondary">{{ r.where }}</div>
+          <pre class="trace">{{ r.trace }}</pre>
+        </details>
+      </template>
       <template v-else-if="r.src === 'event'">
         <span class="text">{{ plain(r.text) }}</span>
         <span v-if="!r.sent" class="badge text-bg-warning fw-normal ms-1" title="Вид вимкнено, нема токена або Telegram не прийняв">не в Telegram</span>
@@ -66,4 +75,5 @@ const status = computed(() => (r.value.status >= 500 ? 'text-bg-danger' : r.valu
 .what { flex: 1 1 0; min-width: 0; overflow-wrap: anywhere; }
 .text { white-space: pre-wrap; }
 code { color: inherit; }
+.trace { white-space: pre-wrap; margin: .25rem 0 0; }
 </style>

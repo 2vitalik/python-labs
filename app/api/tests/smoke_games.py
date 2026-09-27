@@ -62,6 +62,9 @@ with TestClient(main.app) as c:
     check("auto-claim of window type", [cl["task"] for cl in r.json()["claims"]] == ["main-menu"])
     check("claims enriched with card info", r.json()["tasks"]["main-menu"]["coin"] == "tin")
     check("unknown nick → 404", c.get("/api/students/nobody/game").status_code == 404)
+    r = c.get("/api/students/waiting/game")
+    check("a student without a game → the student, game: null", r.status_code == 200 and r.json()["game"] is None
+          and r.json()["student"]["nick"] == "waiting", r.text)
 
     r = c.post("/api/my/game/parts", json={"kind": "menu", "title": "Меню старту", "window": win,
                                            "items": [{"title": "Нова гра", "window": win},

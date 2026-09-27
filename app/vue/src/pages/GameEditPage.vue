@@ -7,6 +7,7 @@ import Crumbs from '../components/Crumbs.vue'
 import { postGame, putGame } from '../api.js'
 import BaseGameForm from '../components/BaseGameForm.vue'
 import { games, loadCatalog } from '../catalog.js'
+import { problem } from '../problem.js'
 import { useTitle } from '../title.js'
 import { user } from '../user.js'
 
@@ -22,6 +23,7 @@ const error = ref('')
 onMounted(async () => {
   await loadCatalog()
   const g = games.value.find((x) => x.slug === route.params.slug)
+  if (!g && route.params.slug) problem.value = 'lost'
   if (!g) return
   id.value = g.id
   for (const k in form) form[k] = k === 'axes' ? { ...g.axes } : g[k]

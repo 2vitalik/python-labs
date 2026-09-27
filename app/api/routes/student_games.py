@@ -58,9 +58,11 @@ async def list_students(user: User = Depends(active_user)):
 @router.get("/{nick}/game")
 async def student_game(nick: str, user: User = Depends(active_user)):
     owner = await User.by_nick(nick)
-    game = owner and await Game.find_one(Game.owner == owner.email)
+    if not owner:
+        raise HTTPException(404)
+    game = await Game.find_one(Game.owner == owner.email)
     if not game:
-        raise HTTPException(404, "Гра не знайдена.")
+        return {"student": person(owner), "game": None}  # the student is there, the game is yet to come
     parts = await Part.find(Part.game == game.id).sort("order", "created_at").to_list()
     claims = await Claim.find(Claim.game == game.id).sort("created_at").to_list()
     rules = await Rule.find(Rule.game == game.id).sort("created_at").to_list()

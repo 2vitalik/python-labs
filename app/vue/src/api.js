@@ -1,37 +1,10 @@
-async function handle(res) {
-  if (res.status === 401) {  // session gone mid-work: sign in and come back here
-    location.assign(`/login?error=session&next=${encodeURIComponent(location.pathname + location.search)}`)
-    throw new Error('Потрібен вхід')
-  }
-  const data = res.status === 204 ? null : await res.json()
-  if (!res.ok) throw new Error(data?.detail || `Помилка ${res.status}`)
-  return data
-}
-
-async function request(url, method = 'GET', body) {
-  return handle(await fetch(url, {
-    method,
-    headers: body ? { 'Content-Type': 'application/json' } : {},
-    body: body ? JSON.stringify(body) : undefined,
-  }))
-}
-
-// `?a=1&b=2` out of an object; empty, false and undefined values are left out, 0 stays
-function query(params) {
-  const q = new URLSearchParams(Object.entries(params).filter(([, v]) => v !== undefined && v !== '' && v !== false)).toString()
-  return q && `?${q}`
-}
-
-async function upload(url, file) {
-  const fd = new FormData()
-  fd.append('file', file)
-  return handle(await fetch(url, { method: 'POST', body: fd }))
-}
+import { query, request, upload } from './http.js'
 
 export const getMe = () => request('/api/me')
 export const putProfile = (data) => request('/api/profile', 'PUT', data)
 export const unlinkTelegram = () => request('/api/me/telegram', 'DELETE')
 export const postView = (path) => request('/api/me/view', 'POST', { path })
+export const postError = (data) => request('/api/errors', 'POST', data)
 export const viewAs = (nick) => request(`/api/me/as/${nick}`, 'POST')
 export const stopViewAs = () => request('/api/me/as', 'DELETE')
 export const getStudents = () => request('/api/students')

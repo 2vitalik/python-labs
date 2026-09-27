@@ -1,4 +1,4 @@
-"""One feed over every journal (T146): site footprint, edits, Telegram, alerts, notes — newest first."""
+"""One feed over every journal (T146): site footprint, edits, Telegram, alerts, errors, notes — newest first."""
 from datetime import datetime
 
 from bson.codec_options import CodecOptions
@@ -17,6 +17,7 @@ SOURCES = {
     "edit": ("history", {}, "actor"),
     "tg": ("messages", {"kind": {"$nin": list(KINDS)}}, "user"),  # sent alerts are in `events` already
     "event": ("events", {}, "user"),
+    "error": ("errors", {}, "user"),
     "note": ("notes", {}, "user"),
 }
 FIELDS = {
@@ -27,6 +28,7 @@ FIELDS = {
     "edit": ("coll", "note"),
     "tg": ("dir", "kind", "chat_type", "thread_id", "from_id", "username", "text", "content_type"),
     "event": ("kind", "text", "sent"),
+    "error": ("source", "title", "trace", "method", "path", "where", "ua", "ip"),
     "note": ("text", "by", "hidden", "source", "tg_id"),
 }
 AWARE = CodecOptions(tz_aware=True)  # Mongo returns UTC without a zone, and the browser would read that as local time

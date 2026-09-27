@@ -120,7 +120,7 @@ with TestClient(main.app, raise_server_exceptions=False) as c:
     check("feed by default: no staff, no seed, no plain API calls, no alerts or their copies from `messages`",
           not has(rows, user=ADMIN) and not has(rows, user="seed") and not has(rows, src="api") and not has(rows, src="event")
           and not has(rows, text="🟢 Профіль"))
-    check("feed by default: the journals + failed calls", {r["src"] for r in rows} == {"login", "view", "edit", "tg", "note", "fail"}
+    check("feed by default: the journals + failed calls + errors", {r["src"] for r in rows} == {"login", "view", "edit", "tg", "note", "fail", "error"}
           and {r["path"] for r in has(rows, src="fail")} == {"/api/boom"}, {r["src"] for r in rows})
     rows = feed(c, src="event")["rows"]
     check("src=event: alerts as sent, delivered or not", has(rows, kind="login", user=VASYA, sent=True) and has(rows, text="🧩 muted", sent=False))

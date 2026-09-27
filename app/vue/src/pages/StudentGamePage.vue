@@ -16,7 +16,6 @@ import { user } from '../user.js'
 const nick = useRoute().params.nick
 const data = ref(null)
 useTitle(() => data.value?.student.name)
-const missing = ref(false)
 const COIN_ORDER = ['crown', 'gold', 'silver', 'bronze', 'tin', 'wood']
 
 const windows = computed(() => data.value.parts.filter((p) => p.kind === 'window'))
@@ -41,11 +40,7 @@ const scrollTo = (id) => document.getElementById(`p-${id}`)?.scrollIntoView({ be
 
 onMounted(async () => {
   loadCatalog()
-  try {
-    data.value = await getStudentGame(nick)
-  } catch {
-    missing.value = true
-  }
+  data.value = await getStudentGame(nick)
 })
 </script>
 
@@ -54,7 +49,7 @@ onMounted(async () => {
     <Crumbs :items="[['/students', 'Студи'], data?.student.name || nick]">
       <RouterLink v-if="user?.status === 'admin'" :to="{ path: '/activity', query: { user: nick } }" class="btn btn-outline-secondary btn-sm">📈 Активність</RouterLink>
     </Crumbs>
-    <p v-if="missing" class="text-center mt-5 text-secondary">Гра ще не створена або сторінка недоступна.</p>
+    <p v-if="data && !data.game" class="text-center mt-5 text-secondary">Гра ще не створена.</p>
 
     <template v-else-if="data">
       <div class="d-flex align-items-center gap-2 mb-1">

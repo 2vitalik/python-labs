@@ -11,7 +11,7 @@ from config import settings
 from db import init_db
 from guide_io import seed
 from models.activity import Activity, client
-from routes import (activity, auth, games, guide, health, me, my_claims, my_game, my_parts, my_rules, profile, refs,
+from routes import (activity, auth, front_errors, games, guide, health, me, my_claims, my_game, my_parts, my_rules, profile, refs,
                     student_games, students, tasks, taxonomy, view_as)
 
 
@@ -63,5 +63,6 @@ app.include_router(my_rules.router)
 app.include_router(refs.router)
 app.include_router(guide.router)
 app.include_router(activity.router)
+app.include_router(front_errors.router)
 uploads.ROOT.mkdir(parents=True, exist_ok=True)
 app.mount("/api/uploads", StaticFiles(directory=uploads.ROOT), name="uploads")

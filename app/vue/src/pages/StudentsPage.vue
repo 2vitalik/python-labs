@@ -11,7 +11,6 @@ import { useTitle } from '../title.js'
 import { user } from '../user.js'
 
 const students = ref([])
-const denied = ref(false)
 const view = ref('table')
 const showImport = ref(false)
 const importText = ref('')
@@ -25,11 +24,7 @@ const fio = (s) => s.name || s.nick
 useTitle(() => group.value && `Студенти ${group.value}`)
 
 async function load() {
-  try {
-    students.value = await getStudents()
-  } catch {
-    denied.value = true
-  }
+  students.value = await getStudents()
 }
 
 async function runImport() {
@@ -43,8 +38,7 @@ onMounted(load)
 </script>
 
 <template>
-  <p v-if="denied" class="text-center mt-5">Сторінка для учасників курсу — увійди з поштою @nure.ua.</p>
-  <div v-else>
+  <div>
     <Crumbs :items="crumbs" />
     <div class="d-flex align-items-center gap-2 mb-3">
       <h1 class="h3 mb-0">Студенти <span class="text-secondary fs-6">{{ group }} ({{ shown.length }}{{ active ? ` з ${students.length}` : '' }})</span></h1>

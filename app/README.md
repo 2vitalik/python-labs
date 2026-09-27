@@ -18,7 +18,7 @@
 - фронт: `cd app/vue && npm run dev` → **http://localhost:5030** (відкривати цю адресу)
 - дев-вхід без Google: кнопка «Dev-вхід» у шапці (працює, якщо в `.env` заданий `FAKE_USER_EMAIL`); закрита сторінка без входу веде на `/login?next=…` і повертає туди після входу
 - «Очима студента»: студент із галочкою «Тестовий студент» (`/students/<нік>/edit`) отримує кнопку 👁 — адмін дивиться сайт як він, «Повернутись» у жовтій смужці; на сервері це заміна dev-входу
-- смоуки API (без Google): `cd app/api && DB_NAME=python_labs_smoke uv run python tests/smoke_auth.py` (вхід, `?next=`, 401/403), `… UPLOADS_DIR=/tmp/pl-smoke uv run python tests/smoke_games.py` (гра, заявки, знахідки), `… tests/smoke_guide.py` (методичка: PUT/409, історія, чернетка, export/import, ідеї), `… tests/smoke_activity.py` (сторінка активності: стрічка, люди, журнал подій, рядок 500), `… tests/smoke_view_as.py` («Очима студента»: хто може, чиї права, чий слід)
+- смоуки API (без Google): `cd app/api && DB_NAME=python_labs_smoke uv run python tests/smoke_auth.py` (вхід, `?next=`, 401/403), `… UPLOADS_DIR=/tmp/pl-smoke uv run python tests/smoke_games.py` (гра, заявки, знахідки), `… tests/smoke_guide.py` (методичка: PUT/409, історія, чернетка, export/import, ідеї), `… tests/smoke_activity.py` (сторінка активності: стрічка, люди, журнал подій, рядок 500), `… tests/smoke_view_as.py` («Очима студента»: хто може, чиї права, чий слід), `… tests/smoke_errors.py` (колекція `errors`: API, бот, помилки фронту з лімітами, стрічка)
 
 У PyCharm (Pro): run-конфігурація FastAPI (`app/api/main.py`, в Uvicorn options — `--port 8030`) + npm-конфігурація `dev` (`app/vue/package.json`) + Compound «app» — запуск обох однією кнопкою.
 
@@ -30,9 +30,16 @@
 
 `/activity` (меню «Актив», лише адмін) — усе, що збирають сайт і бот: стрічка входів, переглядів, змін даних, Telegram, нотаток і збоїв (чіпи джерел, «і викладачі», `?user=<нік>` — одна людина) та вкладка «Люди» з лічильниками за період і стовпчиками за 14 днів. Оновлюється сама. Бек — `api/activity_feed.py` (злиття журналів), `api/activity_people.py` (лічильники), `api/routes/activity.py`; фронт — `vue/src/pages/ActivityPage.vue`, `components/Activity*.vue`, `activity.js`. Звіт — [T146](../.dev/platform/.t/T146--activity-page/report.md).
 
+## Помилки
+
+- Відповідь API розбирає `vue/src/http.js`: помилка несе `status` і людський текст; нема відповіді — `status = 0` і прапорець `down` → банер `DownBar.vue`.
+- Помилку, яку сторінка не зловила, бере `report()` у `vue/src/problem.js`: 404 → сторінка 404 замість відкритої, решта → блок `Oops.vue` над нею. Тому завантаження даних у сторінці — без `try`: ловити варто лише те, для чого є свій текст поруч із кнопкою.
+- Необроблені помилки API, бота і фронту лягають у колекцію `errors` (`api/models/error.py`) з повним traceback і йдуть алертом `error`; фронт шле свої на `POST /api/errors` (`api/routes/front_errors.py`). Дивитись — `/activity`, чіп «💥 Помилки».
+- Звіт — [T149](../.dev/platform/.t/T149--errors-pack/report.md).
+
 ## Telegram-бот
 
-Живе в `app/api/bot/` — та сама база, моделі й `.env`, що й API (тому не окремий пакет). Інструкція користування — [api/bot/README.md](api/bot/README.md). Уміє: `/start` + привʼязка акаунта deep link-ом з профілю; адмін-алерти (профілі, перші входи, заявки, гра студента, повідомлення боту, помилки API/бота; кожен спершу лягає в колекцію `events`, тож лишається в базі, навіть коли Telegram його не отримав) — без налаштувань особисто адмінам, що привʼязали бота, або в групу/гілку форуму після `/here change` там (`/here` — статус із ключами видів, `/here all`, `/here off`, `/mute game` — вимкнути вид). Алерти шле сам API (той самий `TG_BOT_TOKEN`), запущений бот потрібен лише для `/here` і ранкового дайджесту профілів (09:00 Київ).
+Живе в `app/api/bot/` — та сама база, моделі й `.env`, що й API (тому не окремий пакет). Інструкція користування — [api/bot/README.md](api/bot/README.md). Уміє: `/start` + привʼязка акаунта deep link-ом з профілю; адмін-алерти (профілі, перші входи, заявки, гра студента, повідомлення боту, помилки сайту/API/бота; кожен спершу лягає в колекцію `events`, тож лишається в базі, навіть коли Telegram його не отримав) — без налаштувань особисто адмінам, що привʼязали бота, або в групу/гілку форуму після `/here change` там (`/here` — статус із ключами видів, `/here all`, `/here off`, `/mute game` — вимкнути вид). Алерти шле сам API (той самий `TG_BOT_TOKEN`), запущений бот потрібен лише для `/here` і ранкового дайджесту профілів (09:00 Київ).
 
 - токен від BotFather → `TG_BOT_TOKEN` у `app/api/.env`;
 - запуск: `cd app/api && uv run python -m bot` (long polling, вебхук не потрібен);

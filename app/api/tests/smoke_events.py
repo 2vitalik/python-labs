@@ -115,7 +115,8 @@ async def run():
         raise ValueError("boom\nsecond line")
     except ValueError as e:
         exc = e
-    req = SimpleNamespace(method="PUT", url=SimpleNamespace(path="/api/x"), scope={"session": {"email": vasya.email}})
+    req = SimpleNamespace(method="PUT", url=SimpleNamespace(path="/api/x", query=""), scope={"session": {"email": vasya.email}},
+                          headers={}, client=None)
     resp = await errors.api_handler(req, exc)
     await resp.background()
     check("API error → 500 + 💥 head with nick, ❗ first line, 📍 our frame",

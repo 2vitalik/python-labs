@@ -6,6 +6,7 @@ import Crumbs from '../components/Crumbs.vue'
 import Md from '../components/Md.vue'
 import TaskCatalog from '../components/TaskCatalog.vue'
 import { AXES, games, KLASSES, loadCatalog, STATUSES } from '../catalog.js'
+import { problem } from '../problem.js'
 import { useTaskFilter } from '../taskFilter.js'
 import { useTitle } from '../title.js'
 import { user } from '../user.js'
@@ -18,7 +19,10 @@ const shown = computed(() => grouped.value.reduce((n, z) => n + z.subs.reduce((m
 
 const SHOW_TASKS = false  // «Завдання гри» hidden until the catalog has enough per-game cards (T125 п. 44)
 
-onMounted(loadCatalog)
+onMounted(async () => {
+  await loadCatalog()
+  if (!game.value) problem.value = 'lost'
+})
 </script>
 
 <template>
@@ -44,7 +48,6 @@ onMounted(loadCatalog)
       <TaskCatalog :game="slug" />
     </template>
   </div>
-  <p v-else class="text-center mt-5 text-secondary">Гру не знайдено або каталог ще вантажиться…</p>
 </template>
 
 <style scoped>

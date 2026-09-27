@@ -2,8 +2,11 @@
 import { useRoute } from 'vue-router'
 
 import Crumbs from '../components/Crumbs.vue'
+import { useTitle } from '../title.js'
 
+// an unknown URL, or a known one whose data the API does not have (problem.js) — then the route's own title would lie
 const route = useRoute()
+useTitle('Такої сторінки нема')
 </script>
 
 <template>

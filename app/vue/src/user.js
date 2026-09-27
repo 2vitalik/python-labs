@@ -1,9 +1,11 @@
 import { ref } from 'vue'
 
 import { getMe, stopViewAs, viewAs } from './api.js'
+import { down } from './http.js'
 
 export const user = ref(null)
-export const userLoaded = getMe().then((u) => (user.value = u)).catch(() => {})  // API down → stay a guest
+// a guest gets `null`, so any failure means nobody knows who is looking: the banner, not the guest's site
+export const userLoaded = getMe().then((u) => (user.value = u), () => (down.value = true))
 
 // «Очима студента»: the whole site answers as to a test student; the reload drops what was loaded for the admin
 export const lookAs = (nick) => viewAs(nick).then(() => location.assign('/'))

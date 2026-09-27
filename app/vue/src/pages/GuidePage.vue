@@ -14,7 +14,7 @@ import { useTitle } from '../title.js'
 import { user } from '../user.js'
 
 const route = useRoute()
-const page = ref(null)  // null = loading, false = 404
+const page = ref(null)
 const slug = computed(() => route.meta.slug || `lab${route.params.n}`)
 const toc = computed(() => tocOf(page.value?.body))
 useTitle(() => page.value?.title)
@@ -28,7 +28,7 @@ const crumbs = computed(() => [['/method', 'Методичка'],
 
 async function load() {
   page.value = null
-  try { page.value = await getGuidePage(slug.value) } catch { page.value = false }
+  page.value = await getGuidePage(slug.value)
 }
 watch(slug, load, { immediate: true })
 loadGuide()
@@ -36,8 +36,7 @@ loadGuide()
 
 <template>
   <Crumbs :items="crumbs" />
-  <div v-if="page === false" class="text-center text-secondary mt-5">Такої сторінки нема.</div>
-  <div v-else-if="page">
+  <div v-if="page">
     <h1 class="h2 mb-3">{{ page.title }}</h1>
     <ChangesDraft v-if="slug === 'changes' && admin" @published="load" />
     <GuideBody v-model:page="page" />

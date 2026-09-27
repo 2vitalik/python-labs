@@ -9,7 +9,6 @@ import RefCard from '../components/RefCard.vue'
 // one stream of finds (links) and ideas (no url); an idea may hang under a find (`parent`) and shows indented below it
 const FILTERS = { all: 'усе', link: '🔗 лінки', idea: '💡 ідеї' }
 const refs = ref([])
-const denied = ref(false)
 const error = ref('')
 const filter = ref('all')
 const form = reactive({ url: '', note: '' })
@@ -26,11 +25,7 @@ const shown = computed(() => {  // [find, ideas under it][]; the ideas filter li
 })
 
 async function load() {
-  try {
-    refs.value = await getRefs()
-  } catch {
-    denied.value = true
-  }
+  refs.value = await getRefs()
 }
 async function run(fn) {
   error.value = ''
@@ -57,40 +52,37 @@ onMounted(load)
 <template>
   <div>
     <Crumbs :items="['Знахідки']" />
-    <p v-if="denied" class="text-center mt-5">Сторінка для учасників курсу — увійди з поштою @nure.ua.</p>
-    <template v-else>
-      <h1 class="h3 mb-1">Знахідки</h1>
-      <p class="text-secondary">Побачив круту гру, механіку чи ідею — відео, стаття, сайт, сама гра — кинь лінк сюди, поки не загубився.
-        Своя ідея без лінка — теж сюди. Розбір і розкладання по картках каталогу — потім.</p>
+    <h1 class="h3 mb-1">Знахідки</h1>
+    <p class="text-secondary">Побачив круту гру, механіку чи ідею — відео, стаття, сайт, сама гра — кинь лінк сюди, поки не загубився.
+      Своя ідея без лінка — теж сюди. Розбір і розкладання по картках каталогу — потім.</p>
 
-      <div class="card mb-3">
-        <div class="card-body vstack gap-2" @keydown.enter="hot($event, add)">
-          <input v-model="form.url" class="form-control" placeholder="https://… (порожнє = ідея)">
-          <div class="d-flex gap-2 align-items-start">
-            <GrowArea v-model="form.note" class="form-control" placeholder="Що тут крутого? — або сама ідея" />
-            <button class="btn btn-primary text-nowrap" :disabled="!canAdd" title="⌘/Ctrl+Enter" @click="add">
-              {{ form.url.trim() ? 'Кинути лінк' : 'Записати ідею' }}</button>
-          </div>
+    <div class="card mb-3">
+      <div class="card-body vstack gap-2" @keydown.enter="hot($event, add)">
+        <input v-model="form.url" class="form-control" placeholder="https://… (порожнє = ідея)">
+        <div class="d-flex gap-2 align-items-start">
+          <GrowArea v-model="form.note" class="form-control" placeholder="Що тут крутого? — або сама ідея" />
+          <button class="btn btn-primary text-nowrap" :disabled="!canAdd" title="⌘/Ctrl+Enter" @click="add">
+            {{ form.url.trim() ? 'Кинути лінк' : 'Записати ідею' }}</button>
         </div>
       </div>
-      <div v-if="error" class="alert alert-danger">{{ error }}</div>
-      <div class="d-flex gap-2 mb-3">
-        <button v-for="(t, k) in FILTERS" :key="k" class="btn btn-sm" :class="filter === k ? 'btn-secondary' : 'btn-outline-secondary'"
-                @click="filter = k">{{ t }}</button>
-      </div>
+    </div>
+    <div v-if="error" class="alert alert-danger">{{ error }}</div>
+    <div class="d-flex gap-2 mb-3">
+      <button v-for="(t, k) in FILTERS" :key="k" class="btn btn-sm" :class="filter === k ? 'btn-secondary' : 'btn-outline-secondary'"
+              @click="filter = k">{{ t }}</button>
+    </div>
 
-      <div class="vstack gap-2">
-        <template v-for="[r, kids] in shown" :key="r.id">
-          <RefCard :r @changed="load" @remove="remove(r)" @idea="ideaFor = r.id" />
-          <div v-if="ideaFor === r.id" class="ms-4 d-flex gap-2 align-items-start" @keydown.enter="hot($event, addIdea)">
-            <GrowArea v-model="ideaNote" class="form-control form-control-sm" placeholder="Ідея до цієї знахідки" />
-            <button class="btn btn-primary btn-sm" :disabled="!ideaNote.trim()" title="⌘/Ctrl+Enter" @click="addIdea">Записати</button>
-            <button class="btn btn-outline-secondary btn-sm" @click="ideaFor = ''">✕</button>
-          </div>
-          <RefCard v-for="k in kids" :key="k.id" :r="k" class="ms-4" @changed="load" @remove="remove(k)" />
-        </template>
-      </div>
-      <p v-if="!shown.length" class="text-secondary text-center mt-4">Поки порожньо — кинь перший лінк 🙂</p>
-    </template>
+    <div class="vstack gap-2">
+      <template v-for="[r, kids] in shown" :key="r.id">
+        <RefCard :r @changed="load" @remove="remove(r)" @idea="ideaFor = r.id" />
+        <div v-if="ideaFor === r.id" class="ms-4 d-flex gap-2 align-items-start" @keydown.enter="hot($event, addIdea)">
+          <GrowArea v-model="ideaNote" class="form-control form-control-sm" placeholder="Ідея до цієї знахідки" />
+          <button class="btn btn-primary btn-sm" :disabled="!ideaNote.trim()" title="⌘/Ctrl+Enter" @click="addIdea">Записати</button>
+          <button class="btn btn-outline-secondary btn-sm" @click="ideaFor = ''">✕</button>
+        </div>
+        <RefCard v-for="k in kids" :key="k.id" :r="k" class="ms-4" @changed="load" @remove="remove(k)" />
+      </template>
+    </div>
+    <p v-if="!shown.length" class="text-secondary text-center mt-4">Поки порожньо — кинь перший лінк 🙂</p>
   </div>
 </template>
