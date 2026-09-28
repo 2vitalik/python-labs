@@ -1,7 +1,6 @@
 <script setup>
-import { computed, ref, watch } from 'vue'
+import { computed, nextTick, ref, watch } from 'vue'
 
-import { toTop } from '../anchors.js'
 import { getGuidePage } from '../api.js'
 import { load, save } from '../local.js'
 import { tocOf } from '../md.js'
@@ -30,10 +29,15 @@ function remember(e) {
 watch([text, open, admin], () => emit('toc', open.value || !admin.value ? tocOf(text.value) : []), { immediate: true })
 
 const low = ref(load(`${key}:low`) === '1')
-function move() {
+const link = ref()
+const moved = ref(false)
+// the view follows the block: the link just clicked stays on screen, ready to take the move back
+async function move() {
   low.value = !low.value
   save(`${key}:low`, low.value ? '1' : '0')
-  toTop()
+  moved.value = true
+  await nextTick()
+  link.value.scrollIntoView({ block: 'center' })
 }
 watch(low, () => emit('low', low.value), { immediate: true })
 
@@ -44,7 +48,8 @@ getGuidePage(props.slug).then((p) => (page.value = p))
   <template v-if="page">
     <!-- Teleport moves the block without remounting it: an open editor survives the move -->
     <Teleport v-if="admin" defer to="#guide-low" :disabled="!low">
-      <details class="border rounded px-3 py-2" :class="low ? 'mt-4' : open ? 'mb-4' : 'mb-3'" :open="open" @toggle="remember">
+      <details class="rounded px-3 py-2" :class="[low ? 'mt-4' : open ? 'mb-4' : 'mb-3', { moved }]" :open="open"
+               @toggle="remember" @animationend.self="moved = false">
         <summary class="d-flex align-items-center gap-2 text-secondary">
           <span>{{ page.title }} — текст методички</span>
           <span class="ms-auto small d-flex align-items-center gap-1" :class="open ? 'text-primary' : 'text-secondary'">
@@ -53,7 +58,7 @@ getGuidePage(props.slug).then((p) => (page.value = p))
         </summary>
         <GuideBody v-model:page="page" class="mt-3 mb-2" />
         <div class="move small text-end mb-1">
-          <a href="#" @click.prevent="move">{{ low ? '↑ перенести вгору' : '↓ перенести вниз' }}</a>
+          <a ref="link" href="#" @click.prevent="move">{{ low ? '↑ перенести вгору' : '↓ перенести вниз' }}</a>
         </div>
       </details>
     </Teleport>
@@ -67,6 +72,13 @@ getGuidePage(props.slug).then((p) => (page.value = p))
 </template>
 
 <style scoped>
+details { border: 1px solid var(--bs-border-color); }  /* not .border: its !important would beat the glow */
+/* just moved: lights up like a flashed card (style.css) — a pale fill and a ring */
+.moved { animation: moved 2.5s ease-out; }
+@keyframes moved {
+  0%, 45% { background-color: color-mix(in srgb, var(--bs-warning-bg-subtle) 50%, var(--bs-body-bg));
+            border-color: var(--bs-warning-border-subtle); box-shadow: 0 0 0 .25rem var(--bs-warning-bg-subtle); }
+}
 summary { cursor: pointer; list-style: none; }
 summary::-webkit-details-marker { display: none; }
 .move a { color: var(--bs-tertiary-color); text-decoration: none; }
