@@ -6,16 +6,18 @@ import { load, save } from './local.js'
 // The first paint is public/theme-boot.js's, with the same rule
 const KEY = 'theme'
 const device = matchMedia('(prefers-color-scheme: dark)')
-export const MODES = { light: 'Світла', dark: 'Темна', auto: 'Як на пристрої' }
-export const mode = ref(load(KEY) in MODES ? load(KEY) : 'auto')
+const scheme = (dark) => (dark ? 'dark' : 'light')
+const saved = load(KEY)
+export const mode = ref(saved === 'light' || saved === 'dark' ? saved : 'auto')
 
-function apply() {
-  const dark = mode.value === 'auto' ? device.matches : mode.value === 'dark'
-  document.documentElement.dataset.bsTheme = dark ? 'dark' : 'light'
-}
-export function setMode(m) {
-  mode.value = m
-  save(KEY, m)
+const shown = () => (mode.value === 'auto' ? scheme(device.matches) : mode.value)
+const apply = () => (document.documentElement.dataset.bsTheme = shown())
+
+// every click turns the page over; a turn back to the device's scheme means following the device again
+export function toggleTheme() {
+  const next = scheme(shown() !== 'dark')
+  mode.value = next === scheme(device.matches) ? 'auto' : next
+  save(KEY, mode.value)
   apply()
 }
 device.addEventListener('change', apply)  // night mode on a schedule: an `auto` page follows at once
