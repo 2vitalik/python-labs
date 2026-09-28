@@ -16,7 +16,8 @@ export function headingId(raw) {
   return [m ? m[1] : slugify(plain), plain]
 }
 
-// headings outside fenced code with their line ranges: a section runs to the next heading of the same or higher level
+// headings outside fenced code with their line ranges: a section runs to the next heading of the same or higher level;
+// `<!--` right above a heading opens a draft of that section, so it goes with it
 export function sections(text) {
   const lines = (text || '').split('\n')
   const out = []
@@ -26,7 +27,7 @@ export function sections(text) {
     const m = !fence && l.match(/^(#{1,6})\s+(.*)$/)
     if (m) {
       const [id, title] = headingId(m[2])
-      out.push({ id, title, depth: m[1].length, from: i })
+      out.push({ id, title, depth: m[1].length, from: lines[i - 1]?.trim() === '<!--' ? i - 1 : i })
     }
   })
   out.forEach((h, i) => (h.to = out.slice(i + 1).find((n) => n.depth <= h.depth)?.from ?? lines.length))

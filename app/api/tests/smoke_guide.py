@@ -1,5 +1,6 @@
-"""Smoke: guide pages in Mongo — seed from files, admin PUT with rev/409, history with notes, «Що змінилось» draft
-and publish, export/import round trip in a temp dir, ideas in refs. Run from app/api:
+"""Smoke: guide pages in Mongo — seed from files, reading without drafts for everyone but the admin (T157),
+admin PUT with rev/409, history with notes, «Що змінилось» draft and publish, export/import round trip in a temp dir,
+every page closed into drafts, ideas in refs. Run from app/api:
 DB_NAME=python_labs_smoke uv run python tests/smoke_guide.py"""
 import os
 import subprocess
@@ -19,6 +20,7 @@ from fastapi.testclient import TestClient  # noqa: E402
 
 import main  # noqa: E402
 from config import settings  # noqa: E402
+from drafts import closed  # noqa: E402
 
 results = []
 IO = ("import asyncio, pathlib, sys, guide_io\nfrom db import init_db\nguide_io.ROOT = pathlib.Path(sys.argv[1])\n"
@@ -41,13 +43,19 @@ def io(root, cmd):
 
 
 with TestClient(main.app) as c:
-    check("guest: list and page 401 — the guide is closed (T136)",
-          c.get("/api/guide").status_code == 401 and c.get("/api/guide/game").status_code == 401)
+    home = c.get("/api/guide/home").json()
+    check("guest: page without drafts", "<!--" not in home["body"] and "тільки від 80" not in home["body"] and "public" not in home, home)
+    check("guest: list, nothing empty", all(p["empty"] is False for p in c.get("/api/guide").json()))
+    check("guest: draft page 404, history 401",
+          c.get("/api/guide/changes-draft").status_code == 404 and c.get("/api/guide/history").status_code == 401)
     login(c, "stud@nure.ua", "student")
-    check("student: list, page, draft, history 403",
-          all(c.get(f"/api/guide{p}").status_code == 403 for p in ("", "/game", "/changes-draft", "/history")))
+    check("student: the same page; draft page 404, history 403", c.get("/api/guide/home").json() == home
+          and c.get("/api/guide/changes-draft").status_code == 404 and c.get("/api/guide/history").status_code == 403)
 
     login(c, "admin@nure.ua", "admin")
+    full = c.get("/api/guide/home").json()
+    check("admin: drafts in `body`, the students' text in `public`",
+          "<!-- Бали лише ростуть" in full["body"] and full["public"] == home["body"], full)
     pages = c.get("/api/guide").json()
     check("seed: pages from data/guide, no draft", len(pages) >= 10 and all(p["slug"] != "changes-draft" for p in pages))
     check("seed logged", mongo[DB].history.count_documents({"coll": "guide", "actor": "seed"}) == len(pages))
@@ -73,10 +81,20 @@ with TestClient(main.app) as c:
           h[0]["note"] == "уточнив своє" and h[0]["old"] == g["body"] and h[0]["new"] == edit["body"] and h[0]["actor"] == "admin")
     check("history all: seeds + the edit + the draft line", len(c.get("/api/guide/history").json()) == len(pages) + 2)
 
+    ch = c.get("/api/guide/changes").json()
+    lead, _, entries = ch["body"].partition("\n\n")
+    r = c.put("/api/guide/changes", json={"title": ch["title"], "body": f"{lead}\n\n<!--\n{entries}\n-->\n\n- <!-- пункт -->\n- кінець <!-- слово -->", "rev": 0})
+    check("drafts: whole lines, a list item, words in a line", r.json()["public"] == f"{lead}\n\n- кінець", r.json()["public"])
+    lab5 = c.get("/api/guide/lab5").json()
+    c.put("/api/guide/lab5", json={"title": lab5["title"], "body": f"<!--\n{lab5['body']}", "rev": 0})
+    check("drafts: an unclosed one runs to the end, the page is empty in the list",
+          [p["slug"] for p in c.get("/api/guide").json() if p["empty"]] == ["lab5"])
+
     line = d["body"].split("\n")[0]
     r = c.post("/api/guide/changes/publish", json={"line": line})
     body = r.json()["body"]
-    check("publish: line above earlier entries", r.status_code == 200 and body.index(line) < body.index("- **2026-09-20**"), r.text)
+    check("publish: line above earlier entries and their draft", r.status_code == 200
+          and body.index(line) < body.index("<!--") < body.index("- **2026-09-20**") and line in r.json()["public"], r.text)
     check("publish: draft emptied", c.get("/api/guide/changes-draft").json()["body"] == "")
 
     root = Path(tempfile.mkdtemp())
@@ -96,6 +114,16 @@ with TestClient(main.app) as c:
     link = c.post("/api/refs", json={"url": "https://x.com", "note": "лінк"}).json()["id"]
     r = c.post("/api/refs", json={"note": "під лінком", "parent": link}).json()
     check("idea under a find", r["parent"] == link and r["kind"] == "idea")
+
+    login(c, "admin@nure.ua", "admin")
+    old = [c.get(f"/api/guide/{p['slug']}").json() for p in pages]
+    new = [c.put(f"/api/guide/{b['slug']}", json={"title": b["title"], "body": closed(b["body"]), "rev": b["rev"]}).json() for b in old]
+    check("closed: every page whole in drafts, section by section", all(b["public"] == "" for b in new)
+          and all(b["body"].count("<!--") == b["body"].count("-->") == b["body"].count("\n## ") + 1 for b in new))
+    check("closed: twice changes nothing", all(closed(b["body"]) == b["body"] for b in new))
+    c.cookies.clear()
+    check("closed: a guest gets the titles and no text", all(p["empty"] for p in c.get("/api/guide").json())
+          and c.get("/api/guide/game").json()["body"] == "")
 
 ok = sum(1 for _, p in results if p)
 print(f"\n{ok}/{len(results)} PASS")

@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T157** · тікетів: 156 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T159** · тікетів: 158 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -164,3 +164,5 @@
 | platform | [T154](platform/.t/T154-Q--agent-guide-choices.md) | ❓ | agent-guide-choices | Доступ агента до методички: вибори | 🔴 🟩 |
 | platform | [T155](platform/.t/T155--agent-catalog-snapshot/plan.md) | ⚙️ | agent-catalog-snapshot | Агент: каталог і знімок сайту в git — план | 🟢 🟩 |
 | platform | [T156](platform/.t/T156--card-history/plan.md) | ⚙️ | card-history | Історія правок тасків та ігор із відкатом — план | 🟢 🟩 |
+| platform | [T157](platform/.t/T157--guide-drafts/plan.md) | ⚙️ | guide-drafts | Чернетки в методичці: що бачать студенти — план | 🟢 🟩 |
+| platform | [T158](platform/.t/T158-Q--guide-drafts-choices.md) | ❓ | guide-drafts-choices | Чернетки в методичці: вибори | 🔴 ⬜ |

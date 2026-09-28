@@ -2,6 +2,7 @@
 import { computed, nextTick, ref, watch } from 'vue'
 
 import { getGuidePage } from '../api.js'
+import { textOf } from '../drafts.js'
 import { load, save } from '../local.js'
 import { tocOf } from '../md.js'
 import { user } from '../user.js'
@@ -18,7 +19,7 @@ const props = defineProps({ slug: String, stub: String })
 const emit = defineEmits(['toc', 'low'])
 const page = ref(null)
 const admin = computed(() => user.value?.status === 'admin')
-const text = computed(() => page.value?.body || '')
+const text = computed(() => textOf(page.value))
 
 const key = `guide-head:${props.slug}`
 const open = ref(load(key) !== '0')
@@ -64,8 +65,11 @@ getGuidePage(props.slug).then((p) => (page.value = p))
     </Teleport>
     <div v-else>
       <h1 class="h2 mb-3">{{ page.title }}</h1>
-      <GuideText :text="text" />
-      <div class="alert alert-light border mt-4">🚧 {{ stub }}</div>
+      <template v-if="text">
+        <GuideText :text="text" />
+        <div class="alert alert-light border mt-4">🚧 {{ stub }}</div>
+      </template>
+      <p v-else class="text-secondary">🚧 Розділ ще готується</p>
       <GuideFoot />
     </div>
   </template>

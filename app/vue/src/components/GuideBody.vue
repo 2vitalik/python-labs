@@ -1,15 +1,18 @@
 <script setup>
 import { computed, nextTick, ref } from 'vue'
 
+import { hasDrafts, textOf } from '../drafts.js'
 import { user } from '../user.js'
+import DraftsToggle from './DraftsToggle.vue'
 import GuideEditor from './GuideEditor.vue'
 import GuideText from './GuideText.vue'
 
 // guide text with its admin tools: ✏️ on headings (renderMd) and «сторінку» open one inline editor at a time;
-// the saved page comes back through v-model:page
+// the saved page comes back through v-model:page. The admin's text is with drafts or without (drafts.js)
 const props = defineProps({ page: Object, prefix: { type: String, default: '' }, tools: { type: Boolean, default: true } })
 const emit = defineEmits(['update:page'])
 const admin = computed(() => user.value?.status === 'admin')
+const text = computed(() => textOf(props.page))
 const editing = ref(null)  // null · '' = whole page · heading id
 const editor = ref()
 
@@ -27,12 +30,14 @@ async function saved(p) {
 <template>
   <div>
     <div v-if="admin && tools" class="tools small text-end">
+      <template v-if="hasDrafts(page)"><DraftsToggle /> · </template>
       <a href="#" @click.prevent="edit('')">✏️ редагувати</a> ·
       <RouterLink :to="{ path: '/method/history', query: { slug: page.slug } }">🕘 історія</RouterLink>
     </div>
     <GuideEditor v-if="editing !== null" ref="editor" :key="editing" :page :id="editing" :prefix
                  @saved="saved" @close="editing = null" />
-    <GuideText :text="page.body" :prefix :editable="admin" @edit="edit" />
+    <GuideText v-if="text" :text :prefix :editable="admin" @edit="edit" />
+    <p v-else class="text-secondary">🚧 Розділ ще готується</p>
   </div>
 </template>
 

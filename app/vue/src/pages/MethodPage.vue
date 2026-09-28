@@ -5,18 +5,23 @@ import { useRoute, useRouter } from 'vue-router'
 import { flash, guideClick, toTop } from '../anchors.js'
 import { getGuidePage } from '../api.js'
 import Crumbs from '../components/Crumbs.vue'
+import DraftsToggle from '../components/DraftsToggle.vue'
 import GuideBody from '../components/GuideBody.vue'
 import Toc from '../components/Toc.vue'
+import { hasDrafts } from '../drafts.js'
 import { ALL } from '../guide.js'
+import { user } from '../user.js'
 
-// the whole guide on one page — Ctrl+F and printing; ids get the section prefix (#score-79)
+// the whole guide on one page — Ctrl+F and printing; ids get the section prefix (#score-79);
+// a student gets the sections that have something to read
 const route = useRoute()
 const router = useRouter()
 const items = ref([])
+const admin = computed(() => user.value?.status === 'admin')
 const toc = computed(() => items.value.map((s) => ({ id: s.slug, text: s.title, depth: s.n ? 3 : 2 })))
 
 Promise.all(ALL.map((s) => getGuidePage(s.slug))).then(async (list) => {
-  items.value = list.map((p, i) => ({ ...ALL[i], ...p }))
+  items.value = list.map((p, i) => ({ ...ALL[i], ...p })).filter((s) => admin.value || s.body)
   await nextTick()
   if (route.hash) flash(route.hash.slice(1))  // section-level targets (#labs) sit outside GuideText
 })
@@ -26,7 +31,10 @@ Promise.all(ALL.map((s) => getGuidePage(s.slug))).then(async (list) => {
   <div>
     <Crumbs :items="['Методичка']" />
     <h1 class="h2">Методичка</h1>
-    <p class="text-secondary">Усі розділи на одній сторінці — для пошуку (Ctrl+F) і друку.</p>
+    <p class="text-secondary">
+      Усі розділи на одній сторінці — для пошуку (Ctrl+F) і друку.
+      <span v-if="admin && items.some(hasDrafts)" class="small float-end"><DraftsToggle class="text-reset text-decoration-none" /></span>
+    </p>
     <!-- contents: ↗ opens the section as its own page, the title is an anchor down this page (both go through guideClick) -->
     <nav v-if="items.length" class="toc border rounded px-3 py-2 mb-4" @click="guideClick($event, router)">
       <div v-for="s in items" :key="s.slug" class="d-flex align-items-center gap-2" :class="{ 'ps-4': s.n }">

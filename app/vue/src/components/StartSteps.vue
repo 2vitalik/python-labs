@@ -3,7 +3,7 @@ import { computed } from 'vue'
 
 import { user } from '../user.js'
 
-// home page while the guide is closed (T136): what a student can already do — sign in, link the bot
+// home page while its guide text is all in drafts (T136, T157): what a student can already do — sign in, link the bot
 const active = computed(() => !!user.value && user.value.status !== 'pending')
 const steps = computed(() => [
   { done: !!user.value, text: 'Увійти з поштою @nure.ua' },

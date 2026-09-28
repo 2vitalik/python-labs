@@ -4,6 +4,7 @@ from typing import Annotated
 from beanie import Document, Indexed
 from pydantic import Field
 
+from drafts import public
 from models.history import record, stamp
 
 DRAFT = "changes-draft"  # admin-only page: «Що змінилось» draft fed by edit notes (T126 §5b)
@@ -21,9 +22,11 @@ class Guide(Document):
     class Settings:
         name = "guide"
 
-    def api(self) -> dict:
-        return {"slug": self.slug, "title": self.title, "body": self.body, "rev": self.rev,
-                "updated": stamp(self.updated_at), "updated_by": self.updated_by.split("@")[0]}
+    def api(self, full: bool = True) -> dict:
+        """`full` — for who edits: the text with its drafts, and `public` beside it — what the rest get as `body`."""
+        text = public(self.body)
+        return {"slug": self.slug, "title": self.title, "body": self.body if full else text, "rev": self.rev,
+                "updated": stamp(self.updated_at), "updated_by": self.updated_by.split("@")[0]} | ({"public": text} if full else {})
 
 
 async def save(g: Guide, title: str, body: str, actor: str, note: str = "") -> bool:

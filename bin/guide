@@ -5,14 +5,18 @@
   bin/guide [-t dev] pull [slug…]                           no slug = every page
   bin/guide [-t dev] push <slug> -m "що змінив" [-s "Розділ"]
   bin/guide [-t dev] snap [--to <dir>]                      every page → data/guide/, for git
+  bin/guide [-t dev] close                                  every page whole into drafts (T157) — once, before students get in
 
-A page is .site/<target>/guide/<slug>.md: `# title`, a blank line, the body. No -t = prod, and a push there ends
-with a snap. The token's name on the server is who the site's history shows."""
+A page is .site/<target>/guide/<slug>.md: `# title`, a blank line, the body. No -t = prod, and a push or a close there
+ends with a snap. The token's name on the server is who the site's history shows."""
 import argparse
 import sys
 from pathlib import Path
 
 from siteapi import ROOT, SNAP, call, file, keep, pull, snap, taken
+
+sys.path.insert(0, str(ROOT / "app" / "api"))
+from drafts import closed  # noqa: E402
 
 
 def text(page: dict) -> str:
@@ -35,10 +39,18 @@ def push(to: str, slug: str, note: str, section: str):
     print(f"{slug}: rev {was['rev']} → {page['rev']} · {page['updated_by']}" if page["rev"] != was["rev"] else f"{slug}: без змін")
 
 
+def close(to: str):
+    """Plain saves, so it works on a site that does not know drafts yet: close first, deploy after."""
+    for g in call(to, "GET", "/guide"):
+        page = call(to, "GET", f"/guide/{g['slug']}")
+        new = call(to, "PUT", f"/guide/{g['slug']}", {"title": page["title"], "body": closed(page["body"]), "rev": page["rev"]})
+        print(f"{g['slug']}: {'закрито' if new['rev'] != page['rev'] else 'без змін'}")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("-t", "--target", default=SNAP)
-    parser.add_argument("cmd", choices=["ls", "pull", "push", "snap"])
+    parser.add_argument("cmd", choices=["ls", "pull", "push", "snap", "close"])
     parser.add_argument("slugs", nargs="*")
     parser.add_argument("-m", "--note", default="")
     parser.add_argument("-s", "--section", default="")
@@ -53,10 +65,13 @@ def main():
             print(f"{pull(a.target, 'guide', page, text).relative_to(ROOT)} · rev {page['rev']}")
     elif a.cmd == "snap":
         snapshot(a.target, a.to)
-    elif len(a.slugs) != 1:
+    elif a.cmd == "push" and len(a.slugs) != 1:
         sys.exit("push — одна сторінка за раз")
     else:
-        push(a.target, a.slugs[0], a.note, a.section)
+        if a.cmd == "close":
+            close(a.target)
+        else:
+            push(a.target, a.slugs[0], a.note, a.section)
         if a.target == SNAP:
             snapshot(a.target, a.to)
 

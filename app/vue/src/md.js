@@ -1,10 +1,11 @@
 import { Marked } from 'marked'
 
+import { markDrafts } from './drafts.js'
 import { fieldHtml } from './field.js'
 import { ANCHOR, headingId } from './headings.js'
 
 // guide markdown: `{#id}` anchors, 🔗 (+ ✏️ for the editor) on headings, emoji callouts, ```field grids,
-// responsive tables, external links in new tabs
+// responsive tables, external links in new tabs, `<!-- drafts -->` marked
 const SPAN = /<span id="([\w-]+)" class="anchor"><\/span>\s*/
 const isEmoji = (html) => /^<p>\s*\p{Extended_Pictographic}/u.test(html)
 
@@ -45,14 +46,14 @@ const md = new Marked({
 export function renderMd(text, idPrefix = '', edit = false) {
   prefix = idPrefix
   editable = edit
-  const src = (text || '').replace(ANCHOR, (_, id) => `<span id="${withPrefix(id)}" class="anchor"></span>`)
+  const src = markDrafts(text || '').replace(ANCHOR, (_, id) => `<span id="${withPrefix(id)}" class="anchor"></span>`)
   return md.parse(src).replace(/<table>/g, '<div class="table-responsive"><table class="table table-sm">')
     .replace(/<\/table>/g, '</table></div>')
 }
 
 // [{depth, id, text}] for h2/h3 — the page's table of contents
 export function tocOf(text, idPrefix = '') {
-  return md.lexer(text || '').filter((t) => t.type === 'heading' && t.depth <= 3).map((t) => {
+  return md.lexer(markDrafts(text || '')).filter((t) => t.type === 'heading' && t.depth <= 3).map((t) => {
     const [id, plain] = headingId(t.text)
     return { depth: t.depth, id: idPrefix ? `${idPrefix}-${id}` : id, text: plain }
   })

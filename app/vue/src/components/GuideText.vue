@@ -53,6 +53,12 @@ watch(html, lightHash, { flush: 'post' })
 .guide blockquote.callout { border-color: var(--bs-warning-border-subtle); color: inherit; border-radius: .375rem;
                             background: color-mix(in srgb, var(--bs-warning-bg-subtle) 55%, var(--bs-body-bg)); }
 .guide .table-responsive { margin-bottom: 1rem; }
+/* drafts (drafts.js), seen by the admin only: a dashed edge and a pale fill — the text itself stays as readable */
+.guide .draft { background: color-mix(in srgb, var(--bs-info-bg-subtle) 45%, var(--bs-body-bg)); }
+.guide div.draft { margin-bottom: 1rem; padding: .5rem .75rem; border-left: 3px dashed var(--bs-info-border-subtle); border-radius: .25rem; }
+.guide div.draft > :first-child { margin-top: 0; }
+.guide div.draft > :last-child { margin-bottom: 0; }
+.guide span.draft { border-bottom: 1px dashed var(--bs-info-border-subtle); }
 /* ```field: cells sized by CSS, so the grid lines up whatever emoji font the OS has; [x] = just moved, (x) = effect */
 .guide .field { width: fit-content; max-width: 100%; overflow-x: auto; margin-bottom: 1rem; padding: .35rem; line-height: 1;
                 border: 1px solid var(--bs-border-color); border-radius: .375rem; background: var(--bs-tertiary-bg); }

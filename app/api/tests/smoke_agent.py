@@ -36,10 +36,12 @@ def login(c, email, status):
 with TestClient(main.app) as c:
     bad = ("Bearer nope", "Bearer ", "Bearer", "Basic tok-claude", "tok-claude", "")
     check("no token, wrong, empty, not Bearer → 401",
-          all(c.get("/api/guide", headers={"Authorization": h}).status_code == 401 for h in bad))
+          all(c.get("/api/guide/history", headers={"Authorization": h}).status_code == 401 for h in bad))
+    check("… and the page as a guest gets it: no drafts", "public" not in c.get("/api/guide/game", headers={"Authorization": bad[0]}).json())
     check("token: list, page, history", all(c.get(f"/api/guide{p}", headers=CLAUDE).status_code == 200 for p in ("", "/game", "/history")))
 
     g = c.get("/api/guide/game", headers=CLAUDE).json()
+    check("token: the text with drafts", "public" in g)
     edit = {"title": g["title"], "body": g["body"] + "\n\nрядок агента", "rev": g["rev"], "note": "додав рядок", "section": "Кінець"}
     r = c.put("/api/guide/game", json=edit, headers=CLAUDE)
     check("PUT: rev 1, updated by claude", r.status_code == 200 and r.json()["rev"] == 1 and r.json()["updated_by"] == "claude", r.text)
@@ -83,8 +85,9 @@ with TestClient(main.app) as c:
     login(c, "stud@nure.ua", "student")
     check("student: no card edits, no snapshot", c.post("/api/tasks", json=card | {"slug": "y"}).status_code == 403
           and c.get("/api/catalog/snapshot").status_code == 403)
-    check("student's session: 403 as before", c.get("/api/guide/game").status_code == 403)
-    check("student with a token: the agent", c.get("/api/guide/game", headers=CLAUDE).status_code == 200)
+    check("student's session: no drafts, no history", "public" not in c.get("/api/guide/game").json()
+          and c.get("/api/guide/history").status_code == 403)
+    check("student with a token: the agent", "public" in c.get("/api/guide/game", headers=CLAUDE).json())
     login(c, "admin@nure.ua", "admin")
     g = c.get("/api/guide/game").json()
     r = c.put("/api/guide/game", json={"title": g["title"], "body": g["body"] + "!", "rev": g["rev"]})
@@ -95,8 +98,8 @@ with TestClient(main.app) as c:
 
     c.cookies.clear()
     settings.agent_tokens = ""
-    check("no tokens configured → 401", c.get("/api/guide", headers=CLAUDE).status_code == 401)
-    check("… and an empty token too", c.get("/api/guide", headers={"Authorization": "Bearer "}).status_code == 401)
+    check("no tokens configured → 401", c.get("/api/guide/history", headers=CLAUDE).status_code == 401)
+    check("… and an empty token too", c.get("/api/guide/history", headers={"Authorization": "Bearer "}).status_code == 401)
 
 ok = sum(1 for _, p in results if p)
 print(f"\n{ok}/{len(results)} PASS")

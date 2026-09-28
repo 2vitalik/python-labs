@@ -3,6 +3,7 @@ import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { onBeforeRouteLeave } from 'vue-router'
 
 import { putGuidePage } from '../api.js'
+import { inDraft } from '../drafts.js'
 import { section, sliceSection, spliceSection } from '../headings.js'
 import GuideText from './GuideText.vue'
 
@@ -15,6 +16,8 @@ const LEAVE = 'Є незбережені зміни. Піти без збере�
 const sec = computed(() => (props.id ? section(props.page.body, props.id) : null))
 const start = props.id ? sliceSection(props.page.body, props.id) : props.page.body
 const draft = ref(start)
+// a section cut out of a draft has no `<!--` of its own: the preview gets one
+const lead = sec.value && inDraft(props.page.body.split('\n').slice(0, sec.value.from).join('\n')) ? '<!--\n' : ''
 const title = ref(props.page.title)
 const note = ref('')
 const error = ref('')
@@ -64,7 +67,7 @@ defineExpose({ dirty })
       <input v-if="!id" v-model="title" class="form-control form-control-sm mb-2" placeholder="Назва сторінки">
       <div class="split">
         <textarea ref="area" v-model="draft" class="form-control font-monospace" :rows="rows" spellcheck="false"></textarea>
-        <div class="preview border rounded px-3 py-2"><GuideText :text="draft" :prefix /></div>
+        <div class="preview border rounded px-3 py-2"><GuideText :text="lead + draft" :prefix /></div>
       </div>
       <div class="d-flex flex-wrap align-items-center gap-2 mt-2">
         <input v-model="note" class="form-control form-control-sm flex-grow-1 w-auto"

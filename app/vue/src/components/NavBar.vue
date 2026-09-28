@@ -2,7 +2,7 @@
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
-import { SECTIONS } from '../guide.js'
+import { LABS, loadGuide, pages, SECTIONS } from '../guide.js'
 import { useNavFit } from '../navFit.js'
 import { canAccess, user } from '../user.js'
 import IconHome from './IconHome.vue'
@@ -11,11 +11,15 @@ import NavUser from './NavUser.vue'
 const route = useRoute()
 const router = useRouter()
 const links = [
-  ...SECTIONS.map((s) => [s.path, s.nav]),
+  ...SECTIONS.map((s) => [s.path, s.nav, s.slug]),
   ['/students', 'Студи'], ['/activity', 'Актив'], ['/my/game', 'Моя гра'], ['/my/profile', 'Профіль'],
 ]
-// menu follows route access, so a page and its link open together
-const visible = computed(() => links.filter(([to]) => canAccess(router.resolve(to).meta.access)))
+// menu follows route access, so a page and its link open together;
+// a guide section all in drafts stays out of a student's menu («Лаби» — until any lab has something to read)
+const has = (slug) => pages.value[slug]?.empty === false
+const ready = (slug) => !slug || user.value?.status === 'admin' || has(slug) || (slug === 'labs' && LABS.some((l) => has(l.slug)))
+const visible = computed(() => links.filter(([to, , slug]) => canAccess(router.resolve(to).meta.access) && ready(slug)))
+loadGuide()
 const { bar, list, more, fit, stage, layout } = useNavFit(visible)
 const row = computed(() => visible.value.slice(0, fit.value))
 const rest = computed(() => visible.value.slice(fit.value))

@@ -8,6 +8,7 @@ import Crumbs from '../components/Crumbs.vue'
 import GuideBody from '../components/GuideBody.vue'
 import GuideFoot from '../components/GuideFoot.vue'
 import Toc from '../components/Toc.vue'
+import { textOf } from '../drafts.js'
 import { ALL, LABS, loadGuide, pages } from '../guide.js'
 import { tocOf } from '../md.js'
 import { useTitle } from '../title.js'
@@ -16,12 +17,15 @@ import { user } from '../user.js'
 const route = useRoute()
 const page = ref(null)
 const slug = computed(() => route.meta.slug || `lab${route.params.n}`)
-const toc = computed(() => tocOf(page.value?.body))
+const toc = computed(() => tocOf(textOf(page.value)))
 useTitle(() => page.value?.title)
 const admin = computed(() => user.value?.status === 'admin')
 const lab = computed(() => LABS.find((l) => l.slug === slug.value))
-const prev = computed(() => lab.value && LABS[lab.value.n - 2])
-const next = computed(() => lab.value && LABS[lab.value.n])
+// a student's way from lab to lab skips those still in drafts
+const labs = computed(() => LABS.filter((l) => admin.value || l === lab.value || pages.value[l.slug]?.empty === false))
+const at = computed(() => labs.value.indexOf(lab.value))
+const prev = computed(() => lab.value && labs.value[at.value - 1])
+const next = computed(() => lab.value && labs.value[at.value + 1])
 const title = (l) => pages.value[l.slug]?.title || `Лаба ${l.n}`
 const crumbs = computed(() => [['/method', 'Методичка'],
   ...(lab.value ? [['/labs', 'Лаби'], `Лаба ${lab.value.n}`] : [ALL.find((s) => s.slug === slug.value)?.nav])])
