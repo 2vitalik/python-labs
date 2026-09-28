@@ -1,0 +1,83 @@
+"""Smoke: AI agents in the guide (T153) — a token opens the guide routes and nothing else, the edit is the agent's
+in history, the footprint is kept, no token configured = no way in. Run from app/api:
+DB_NAME=python_labs_smoke uv run python tests/smoke_agent.py"""
+import os
+import sys
+
+sys.path.insert(0, os.getcwd())
+from pymongo import MongoClient  # noqa: E402
+
+DB = os.environ["DB_NAME"]
+assert DB.endswith("_smoke"), "refuse to run on a non-smoke DB"
+mongo = MongoClient()
+mongo.drop_database(DB)
+
+from fastapi.testclient import TestClient  # noqa: E402
+
+import main  # noqa: E402
+from config import settings  # noqa: E402
+
+results = []
+settings.agent_tokens = "claude:tok-claude, codex:tok-codex, nobody:"
+CLAUDE, CODEX = ({"Authorization": f"Bearer tok-{n}"} for n in ("claude", "codex"))
+
+
+def check(name, cond, extra=""):
+    results.append((name, bool(cond)))
+    print(("PASS " if cond else "FAIL ") + name + (f" · {extra}" if extra and not cond else ""))
+
+
+def login(c, email, status):
+    settings.fake_user_email = email
+    c.get("/api/auth/dev-login")
+    mongo[DB].users.update_one({"email": email}, {"$set": {"status": status}})
+
+
+with TestClient(main.app) as c:
+    bad = ("Bearer nope", "Bearer ", "Bearer", "Basic tok-claude", "tok-claude", "")
+    check("no token, wrong, empty, not Bearer → 401",
+          all(c.get("/api/guide", headers={"Authorization": h}).status_code == 401 for h in bad))
+    check("token: list, page, history", all(c.get(f"/api/guide{p}", headers=CLAUDE).status_code == 200 for p in ("", "/game", "/history")))
+
+    g = c.get("/api/guide/game", headers=CLAUDE).json()
+    edit = {"title": g["title"], "body": g["body"] + "\n\nрядок агента", "rev": g["rev"], "note": "додав рядок", "section": "Кінець"}
+    r = c.put("/api/guide/game", json=edit, headers=CLAUDE)
+    check("PUT: rev 1, updated by claude", r.status_code == 200 and r.json()["rev"] == 1 and r.json()["updated_by"] == "claude", r.text)
+    check("stale rev → 409", c.put("/api/guide/game", json=edit, headers=CLAUDE).status_code == 409)
+    h = c.get("/api/guide/history?slug=game", headers=CLAUDE).json()[0]
+    check("history: actor claude, note, old → new", h["actor"] == "claude" and h["note"] == "додав рядок" and h["old"] == g["body"])
+    check("history row keeps the full name", mongo[DB].history.count_documents({"coll": "guide", "actor": "claude@agent"}) == 2)
+    d = c.get("/api/guide/changes-draft", headers=CLAUDE).json()
+    check("draft line from the note", "Ігри › Кінець: додав рядок" in d["body"], d["body"])
+    r = c.put("/api/guide/lab1", json={"title": "Лаба 1", "body": "текст codex", "rev": 0}, headers=CODEX)
+    check("second agent: its own name", r.status_code == 200 and r.json()["updated_by"] == "codex", r.text)
+
+    closed = [c.get(p, headers=CLAUDE).status_code for p in ("/api/students", "/api/activity", "/api/refs", "/api/my/game")]
+    check("token opens nothing but the guide", closed == [401] * 4, closed)
+    r = c.post("/api/guide/changes/publish", json={"line": d["body"].split("\n")[0]}, headers=CLAUDE)
+    check("publish stays the admin's", r.status_code == 401 and "додав рядок" in c.get("/api/guide/changes-draft", headers=CLAUDE).json()["body"])
+    check("no agent in users", mongo[DB].users.count_documents({"email": {"$regex": "@agent$"}}) == 0)
+    rows = list(mongo[DB].activity.find({"user": "claude@agent", "kind": "api"}))
+    check("footprint: the agent's calls, the PUT among them",
+          any(a["method"] == "PUT" and a["path"] == "/api/guide/game" and a["status"] == 200 for a in rows), len(rows))
+    check("footprint: a wrong token leaves no row", mongo[DB].activity.count_documents({"user": ""}) == 0)
+
+    login(c, "stud@nure.ua", "student")
+    check("student's session: 403 as before", c.get("/api/guide/game").status_code == 403)
+    check("student with a token: the agent", c.get("/api/guide/game", headers=CLAUDE).status_code == 200)
+    login(c, "admin@nure.ua", "admin")
+    g = c.get("/api/guide/game").json()
+    r = c.put("/api/guide/game", json={"title": g["title"], "body": g["body"] + "!", "rev": g["rev"]})
+    check("admin's session edits as before", r.status_code == 200 and r.json()["updated_by"] == "admin", r.text)
+    who = lambda q: {r["user"] for r in c.get(f"/api/activity?src=edit{q}").json()["rows"]}  # noqa: E731
+    check("activity: agents hidden with the staff", not who("") & {"claude@agent", "codex@agent"}, who(""))
+    check("activity: shown with «і викладачі»", {"claude@agent", "codex@agent"} <= who("&staff=true"), who("&staff=true"))
+
+    c.cookies.clear()
+    settings.agent_tokens = ""
+    check("no tokens configured → 401", c.get("/api/guide", headers=CLAUDE).status_code == 401)
+    check("… and an empty token too", c.get("/api/guide", headers={"Authorization": "Bearer "}).status_code == 401)
+
+ok = sum(1 for _, p in results if p)
+print(f"\n{ok}/{len(results)} PASS")
+sys.exit(0 if ok == len(results) else 1)

@@ -13,12 +13,19 @@ class Settings(BaseSettings):
     tg_bot_token: str = ""  # from BotFather; empty = bot refuses to start
     site_url: str = "http://127.0.0.1:5030"  # links in bot messages; Telegram won't link `localhost`
     uploads_dir: str = ""  # empty = app/api/uploads
+    agent_tokens: str = ""  # `name:token,…` — AI agents that edit the guide (deps.editor_user); empty = no such way in
 
     model_config = {"env_file": ".env"}
 
     @property
     def admin_list(self) -> list[str]:
         return [e.strip() for e in self.admin_emails.split(",") if e.strip()]
+
+    @property
+    def agents(self) -> dict[str, str]:
+        """token → the agent's email; an empty token opens nothing."""
+        pairs = (p.strip().partition(":") for p in self.agent_tokens.split(","))
+        return {token: f"{name}@agent" for name, _, token in pairs if name and token}
 
 
 settings = Settings()

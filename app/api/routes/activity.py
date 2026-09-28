@@ -5,6 +5,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from activity_feed import SOURCES, feed
 from activity_link import links
 from activity_people import people
+from config import settings
 from deps import admin_user
 from models.user import Status, User
 from routes.student_games import person
@@ -21,7 +22,7 @@ async def get_feed(user: str = "", src: str = "", before: datetime | None = None
     one = next((u for u in users if u.nick == user), None)
     if user and not one:
         raise HTTPException(404)
-    hide = [] if staff else ["seed", *(u.email for u in users if u.status == Status.admin)]
+    hide = [] if staff else ["seed", *settings.agents.values(), *(u.email for u in users if u.status == Status.admin)]
     sources = [s for s in src.split(",") if s in SOURCES] or DEFAULT
     if "api" in sources:
         sources = [s for s in sources if s != "fail"]  # already among all the calls

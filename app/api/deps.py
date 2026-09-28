@@ -1,5 +1,8 @@
+from secrets import compare_digest
+
 from fastapi import Depends, HTTPException, Request
 
+from config import settings
 from models.user import Status, User
 
 
@@ -20,6 +23,22 @@ async def active_user(user: User | None = Depends(current_user)) -> User:
 
 async def admin_user(user: User | None = Depends(current_user)) -> User:
     return allow(user, user and user.status == Status.admin)
+
+
+def agent(request: Request) -> User | None:
+    """An AI agent by `Authorization: Bearer <token>` (T153): no row in `users`, the email is its name in `history`."""
+    kind, _, token = request.headers.get("authorization", "").partition(" ")
+    sent = token.strip().encode() if kind.lower() == "bearer" else b""
+    email = next((e for t, e in settings.agents.items() if compare_digest(t.encode(), sent)), None)
+    if not email:
+        return None
+    request.state.agent = email  # for footprint() in main.py: the session is empty
+    return User(email=email, name=email.split("@")[0], status=Status.admin)
+
+
+async def editor_user(request: Request, user: User | None = Depends(current_user)) -> User:
+    """Who edits the guide: admins and AI agents. The token opens only the routes that ask for this."""
+    return agent(request) or allow(user, user and user.status == Status.admin)
 
 
 def allow(user: User | None, ok) -> User:

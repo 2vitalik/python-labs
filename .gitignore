@@ -16,3 +16,5 @@ app/api/uploads.trash/
 
 .DS_Store
 .claude/settings.local.json
+# Робочі копії сторінок методички й токени агента (bin/guide, T153)
+.guide/

@@ -1,5 +1,6 @@
-"""Course guide pages: markdown in Mongo (`guide`), edited on the site by admins (T126); every save goes to
-`history` with a note, and a note also lands in the «Що змінилось» draft page until published.
+"""Course guide pages: markdown in Mongo (`guide`), edited on the site by admins (T126) and by AI agents with a token
+(T153, `bin/guide`); every save goes to `history` with a note, and a note also lands in the «Що змінилось» draft page
+until published — by an admin only.
 Reading is admin-only too while the guide is unfinished (T136): to reopen, `current_user` on the two GETs and
 404 for DRAFT to non-admins."""
 from datetime import date
@@ -7,7 +8,7 @@ from datetime import date
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
-from deps import admin_user
+from deps import admin_user, editor_user
 from models.guide import DRAFT, Guide, save
 from models.history import Change
 from models.user import User
@@ -35,13 +36,13 @@ async def page(slug: str) -> Guide:
 
 
 @router.get("")
-async def list_pages(user: User = Depends(admin_user)):
+async def list_pages(user: User = Depends(editor_user)):
     pages = await Guide.find(Guide.slug != DRAFT).to_list()
     return [{"slug": g.slug, "title": g.title, "updated": g.updated_at.isoformat()} for g in pages]
 
 
 @router.get("/history")
-async def history(slug: str = "", user: User = Depends(admin_user)):
+async def history(slug: str = "", user: User = Depends(editor_user)):
     pages = {g.id: g for g in await Guide.find_all().to_list()}
     query = {"coll": "guide"} | ({"doc_id": (await page(slug)).id} if slug else {})
     out = []
@@ -55,12 +56,12 @@ async def history(slug: str = "", user: User = Depends(admin_user)):
 
 
 @router.get("/{slug}")
-async def get_page(slug: str, user: User = Depends(admin_user)):
+async def get_page(slug: str, user: User = Depends(editor_user)):
     return (await page(slug)).api()
 
 
 @router.put("/{slug}")
-async def put_page(slug: str, data: PageIn, user: User = Depends(admin_user)):
+async def put_page(slug: str, data: PageIn, user: User = Depends(editor_user)):
     g = await page(slug)
     if data.rev != g.rev:
         raise HTTPException(409, "Сторінку вже змінили в іншій вкладці — перезавантаж і повтори правку")

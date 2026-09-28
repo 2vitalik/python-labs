@@ -39,7 +39,7 @@ async def footprint(request: Request, call_next):
         return response
     finally:
         path, method = request.url.path, request.method
-        email = request.session.get("email")
+        email = request.session.get("email") or getattr(request.state, "agent", "")
         if email and path.startswith("/api/") and not path.startswith(SILENT) and (method, path) not in QUIET:
             await Activity(user=email, kind="api", method=method, path=path + (f"?{request.url.query}" if request.url.query else ""),
                            status=status, ms=int((perf_counter() - t) * 1000), **client(request)).insert()
