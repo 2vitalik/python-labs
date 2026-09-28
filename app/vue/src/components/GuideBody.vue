@@ -37,7 +37,8 @@ async function saved(p) {
 </template>
 
 <style scoped>
-.tools { margin-bottom: -.25rem; }
+/* midway between the heading above and the text; the text stays where it was */
+.tools { margin: -.625rem 0 .375rem; }
 .tools a { color: var(--bs-tertiary-color); text-decoration: none; }
 .tools a:hover { color: var(--bs-body-color); }
 </style>
