@@ -14,6 +14,8 @@ const FACETS = [
 const label = (key) => (key === NONE ? 'Без групи' : key)
 // on a chip: «ПЗПІ-25-1» → «25-1», «ПЗПІи-25-1» → «25-1и», no group → «—»
 const short = (key) => (key === NONE ? '—' : key.replace(/^\p{Lu}+(\p{Ll}*)-(.+)$/u, '$2$1'))
+// «ПЗПІ-25-3» → «ПЗПІ-25»: the regular groups of a year share the «25-*» chip; «-0» and «ПЗПІи» stay out of it
+const year = (key) => key.match(/^(\p{Lu}+-\d+)-[1-9]\d*$/u)?.[1]
 
 // groups of test students go last, «no group» right before them
 export function byGroup(students) {
@@ -32,12 +34,25 @@ export function useStudentFilter(students) {
   const fits = (s, skip) => FACETS.every((f) => f.key === skip || !route.query[f.key] || !!f.has(s) === (route.query[f.key] === '1'))
 
   const shown = computed(() => toValue(students).filter((s) => inGroup(s) && fits(s)))
-  const picked = computed(() => keys.value.map(label))
   const active = computed(() => keys.value.length > 0 || FACETS.some((f) => route.query[f.key]))
-  const groups = computed(() => byGroup(toValue(students)).map(({ name, list }) => {
-    const key = name || NONE
-    return { key, name: label(key), text: short(key), on: keys.value.includes(key), n: list.filter((s) => fits(s)).length }
-  }))
+  // a chip stands for one group or, «25-*», for a whole year of them; pressed = every group of it is picked
+  const chip = (list, text, name) => ({
+    text, name, keys: list.map((g) => g.key), on: list.every((g) => keys.value.includes(g.key)), n: list.reduce((n, g) => n + g.n, 0),
+  })
+  const groups = computed(() => {
+    const all = byGroup(toValue(students)).map(({ name, list }) => ({ key: name || NONE, n: list.filter((s) => fits(s)).length }))
+    const years = {}
+    for (const g of all) if (year(g.key)) (years[year(g.key)] ||= []).push(g)
+    const wild = Object.entries(years).filter(([, list]) => list.length > 1)
+      .map(([key, list]) => chip(list, `${short(key)}-*`, `${list[0].key} … ${list.at(-1).key}`))
+    return [...wild, ...all.map((g) => chip([g], short(g.key), label(g.key)))]
+  })
+  // for the crumb and the title: a whole year reads as one name; several names go short, or the heading wraps
+  const picked = computed(() => {
+    const wild = groups.value.filter((g) => g.on && g.keys.length > 1)
+    const list = groups.value.filter((g) => g.on && !wild.some((w) => w !== g && w.keys.includes(g.keys[0])))
+    return list.map((g) => (list.length > 1 ? g.text : g.name))
+  })
   const facets = computed(() => FACETS.map((f) => {
     const list = toValue(students).filter((s) => inGroup(s) && fits(s, f.key))
     const yes = list.filter((s) => f.has(s)).length
@@ -45,7 +60,7 @@ export function useStudentFilter(students) {
   }))
 
   const set = (patch) => router.replace({ query: { ...route.query, ...patch } })
-  const toggleGroup = (key) => set({ group: (keys.value.includes(key) ? keys.value.filter((k) => k !== key) : [...keys.value, key]).join() || undefined })
+  const toggleGroup = (g) => set({ group: (g.on ? keys.value.filter((k) => !g.keys.includes(k)) : [...new Set([...keys.value, ...g.keys])]).join() || undefined })
   const toggleFacet = (key, v) => set({ [key]: route.query[key] === v ? undefined : v })
   const reset = () => set(Object.fromEntries(['group', ...FACETS.map((f) => f.key)].map((k) => [k, undefined])))
 

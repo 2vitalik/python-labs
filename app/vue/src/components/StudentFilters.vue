@@ -10,8 +10,8 @@ const look = (on, n) => (on ? 'btn-secondary' : ['btn-outline-secondary', { 'opa
 
 <template>
   <div class="d-flex flex-wrap gap-1 mb-2">
-    <button v-for="g in groups" :key="g.key" type="button" class="btn btn-sm" :class="look(g.on, g.n)" :title="g.name"
-            @click="toggleGroup(g.key)">{{ g.text }} <span class="count">{{ g.n }}</span></button>
+    <button v-for="g in groups" :key="g.name" type="button" class="btn btn-sm" :class="look(g.on, g.n)" :title="g.name"
+            @click="toggleGroup(g)">{{ g.text }} <span class="count">{{ g.n }}</span></button>
   </div>
   <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
     <div v-for="f in facets" :key="f.key" class="btn-group btn-group-sm" :title="f.title">
