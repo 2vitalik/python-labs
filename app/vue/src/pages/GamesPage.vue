@@ -26,8 +26,9 @@ onMounted(() => admin.value && loadCatalog())
     </Crumbs>
     <GuideHead slug="game" stub="Каталог базових ігор відкриється тут незабаром. Поки що — варіанти перелічені вище; вибір обговорюємо на парі або в чаті."
                @toc="toc = $event" />
-    <template v-if="admin">
-      <div class="d-flex justify-content-between align-items-center mb-3">
+    <!-- min-height: #catalog scrolls to the top even before the cards are loaded -->
+    <div v-if="admin" class="catalog-area">
+      <div id="catalog" class="d-flex justify-content-between align-items-center mb-3">
         <h1 class="h3 mb-0">Ігри <span class="text-secondary fs-6">({{ shown.length }})</span></h1>
         <div class="d-flex gap-2">
           <RouterLink to="/ideas" class="btn btn-outline-secondary btn-sm">💡 Знахідки</RouterLink>
@@ -45,8 +46,13 @@ onMounted(() => admin.value && loadCatalog())
       <div class="row g-3">
         <div v-for="g in shown" :key="g.id" class="col-md-6 col-lg-4"><GameCard :game="g" /></div>
       </div>
-    </template>
+    </div>
     <div id="guide-low"></div>
     <Toc :items="toc" />
   </div>
 </template>
+
+<style scoped>
+#catalog { scroll-margin-top: 1rem; }
+.catalog-area { min-height: 100vh; }
+</style>

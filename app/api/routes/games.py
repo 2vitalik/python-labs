@@ -19,6 +19,7 @@ class GameIn(BaseModel):
     axes: dict = {}
     summary: str = ""
     description: str = ""
+    examples: str = ""
     status: str = "draft"
     order: int = 0
 

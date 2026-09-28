@@ -1,6 +1,8 @@
 <script setup>
 import { computed, nextTick, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 
+import { flash } from '../anchors.js'
 import { getGuidePage } from '../api.js'
 import { textOf } from '../drafts.js'
 import { load, save } from '../local.js'
@@ -42,7 +44,14 @@ async function move() {
 }
 watch(low, () => emit('low', low.value), { immediate: true })
 
-getGuidePage(props.slug).then((p) => (page.value = p))
+// #catalog is the page's own target under this text (its closing link, also followed from /method):
+// the place it will keep is known only once the text is drawn
+const route = useRoute()
+getGuidePage(props.slug).then(async (p) => {
+  page.value = p
+  await nextTick()
+  if (route.hash === '#catalog') flash('catalog')
+})
 </script>
 
 <template>
@@ -66,7 +75,7 @@ getGuidePage(props.slug).then((p) => (page.value = p))
     <div v-else>
       <h1 class="h2 mb-3">{{ page.title }}</h1>
       <GuideText :text="text" />
-      <div class="alert alert-light border mt-4">🚧 {{ stub }}</div>
+      <div id="catalog" class="alert alert-light border mt-4">🚧 {{ stub }}</div>
       <GuideFoot />
     </div>
   </template>

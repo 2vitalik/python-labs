@@ -13,7 +13,7 @@ import { user } from '../user.js'
 
 const route = useRoute()
 const router = useRouter()
-const form = reactive({ slug: '', title: '', icon: '', klass: '', axes: {}, summary: '', description: '', status: 'draft', order: 0 })
+const form = reactive({ slug: '', title: '', icon: '', klass: '', axes: {}, summary: '', description: '', examples: '', status: 'draft', order: 0 })
 const id = ref('')
 useTitle(() => id.value && `Гра: ${form.title}`)
 const crumbs = computed(() => [['/method', 'Методичка'], ['/games', 'Ігри'], ...(id.value ? [[`/games/${form.slug}`, form.title], 'Редагування'] : ['Нова гра'])])

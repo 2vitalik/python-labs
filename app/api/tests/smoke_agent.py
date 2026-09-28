@@ -5,6 +5,7 @@ import os
 import sys
 
 sys.path.insert(0, os.getcwd())
+import yaml  # noqa: E402
 from pymongo import MongoClient  # noqa: E402
 
 DB = os.environ["DB_NAME"]
@@ -73,11 +74,20 @@ with TestClient(main.app) as c:
     check("catalog: history names the agents", [x["actor"] for x in h] == ["claude@agent", "codex@agent"]
           and h[1]["changes"]["coin"] == {"old": "tin", "new": "silver"}, h)
     check("catalog: a bad card → 422", c.post("/api/tasks", json=card | {"slug": "x", "zone": "nope"}, headers=CLAUDE).status_code == 422)
-    r = c.post("/api/games", json={"slug": "agent-game", "title": "Гра агента", "description": "рядок 1\n\nрядок 2"}, headers=CLAUDE)
+    grid = "Хід гравця\n\n```field\n⬛ ▫️ ⬛\n⬛[😎]⬛\n⬛(✨)⬛\n```"
+    game = {"slug": "agent-game", "title": "Гра агента", "description": "рядок 1\n\nрядок 2", "examples": grid}
+    r = c.post("/api/games", json=game, headers=CLAUDE)
     check("catalog: games too", r.status_code == 200 and mongo[DB].history.count_documents({"coll": "games", "actor": "claude@agent"}) == 1, r.text)
+    check("game: examples kept and listed", r.json()["examples"] == grid and c.get("/api/games", headers=CLAUDE).json()[0]["examples"] == grid)
+    r = c.put(f"/api/games/{r.json()['id']}", json=game | {"examples": grid + "\n\nДалі"}, headers=CLAUDE)
+    h = mongo[DB].history.find_one({"coll": "games", "changes.examples.old": grid})
+    check("game: an edit of examples alone is in history", r.status_code == 200 and h and list(h["changes"]) == ["examples"], h)
     y = c.get("/api/catalog/snapshot", headers=CLAUDE)
     check("snapshot: both files, the cards in them", y.status_code == 200 and set(y.json()) == {"games.yaml", "tasks.yaml"}
           and "agent-card: 🥈 Картка агента" in y.json()["tasks.yaml"] and "slug: agent-game" in y.json()["games.yaml"], y.text[:300])
+    games = y.json()["games.yaml"]
+    check("snapshot: texts line by line, read back the same", "  examples: |-\n    Хід гравця\n\n    ```field\n    ⬛ ▫️ ⬛\n    ⬛[😎]⬛\n" in games
+          and yaml.safe_load(games)[0]["examples"] == grid + "\n\nДалі", games)
     check("snapshot: not for a guest", c.get("/api/catalog/snapshot").status_code == 401)
 
     login(c, "stud@nure.ua", "student")

@@ -14,6 +14,7 @@ class BaseGame(Document):
     axes: dict = {}  # {field, time, opponent, info, random, goal} — UA labels
     summary: str = ""
     description: str = ""  # markdown
+    examples: str = ""  # markdown the guide way: game situations step by step, ```field grids
     status: str = "draft"  # draft | active | archived
     order: int = 0
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
@@ -25,5 +26,5 @@ class BaseGame(Document):
         return {
             "id": str(self.id), "slug": self.slug, "title": self.title, "icon": self.icon,
             "klass": self.klass, "axes": self.axes, "summary": self.summary,
-            "description": self.description, "status": self.status, "order": self.order,
+            "description": self.description, "examples": self.examples, "status": self.status, "order": self.order,
         }

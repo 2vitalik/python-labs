@@ -18,6 +18,13 @@ from zones import ZONES
 CATALOG = Path(__file__).resolve().parents[2] / "data" / "catalog"
 
 
+class Dumper(yaml.SafeDumper):
+    """Texts of several lines go as literal blocks `|`: a field grid reads in the snapshot as it does in the text."""
+
+
+Dumper.add_representer(str, lambda d, s: d.represent_scalar("tag:yaml.org,2002:str", s, style="|" if "\n" in s else None))
+
+
 def dump(doc, exclude=("id", "created_at")) -> dict:
     d = doc.model_dump(exclude=set(exclude))
     return {k: v for k, v in d.items() if not (v == "" or v == [] or v == {})}
@@ -46,8 +53,8 @@ async def render() -> dict[str, str]:
             entry["children"] = [{k.slug: task_node(k)} for k in kids[t.slug]]
         tree.setdefault(t.zone, {}).setdefault(t.subzone, []).append(entry)
     tree = {z: tree[z] for z in ZONES if z in tree}
-    return {"games.yaml": yaml.safe_dump([dump(g) for g in games], allow_unicode=True, sort_keys=False, width=120),
-            "tasks.yaml": yaml.safe_dump(tree, allow_unicode=True, sort_keys=False, width=200)}
+    return {"games.yaml": yaml.dump([dump(g) for g in games], Dumper=Dumper, allow_unicode=True, sort_keys=False, width=120),
+            "tasks.yaml": yaml.dump(tree, Dumper=Dumper, allow_unicode=True, sort_keys=False, width=200)}
 
 
 async def export():

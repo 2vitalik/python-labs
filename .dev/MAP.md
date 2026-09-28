@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T160** · тікетів: 159 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T161** · тікетів: 160 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -167,3 +167,4 @@
 | platform | [T157](platform/.t/T157--guide-drafts/plan.md) | ⚙️ | guide-drafts | Чернетки в методичці: що бачать студенти — план | 🟢 🟩 |
 | platform | [T158](platform/.t/T158-Q--guide-drafts-choices.md) | ❓ | guide-drafts-choices | Чернетки в методичці: вибори | 🔴 ⬜ |
 | platform | [T159](platform/.t/T159--guide-closed-again/plan.md) | ⚙️ | guide-closed-again | Методичка знову закрита, чернетки — адміну — план | 🟢 🟩 |
+| platform | [T160](platform/.t/T160--examples-in-games/plan.md) | ⚙️ | examples-in-games | Приклади ігрових ситуацій — у грі — план | 🟢 ⬜ |

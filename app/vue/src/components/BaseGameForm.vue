@@ -1,5 +1,6 @@
 <script setup>
 import { AXES, KLASSES, STATUSES } from '../catalog.js'
+import MdArea from './MdArea.vue'
 
 const form = defineModel({ type: Object })
 defineEmits(['save'])
@@ -63,8 +64,15 @@ defineEmits(['save'])
       <div class="card-body">
         <label class="form-label">Один рядок суті (для картки в галереї)</label>
         <input v-model="form.summary" class="form-control mb-3">
-        <label class="form-label">Повний опис (markdown)</label>
-        <textarea v-model="form.description" class="form-control font-monospace" rows="14"></textarea>
+        <MdArea v-model="form.description" label="Повний опис (markdown)" />
+      </div>
+    </div>
+
+    <div class="card mb-3">
+      <div class="card-header">Приклади ігрових ситуацій</div>
+      <div class="card-body">
+        <MdArea v-model="form.examples" label="Легенда і хід гри крок за кроком (markdown)" :rows="20" />
+        <div class="form-text mt-2">Поле — блок <code>```field</code>: емодзі через пробіл, <code>[😎]</code> — хто щойно зробив хід, <code>(✨)</code> — що змінилось.</div>
       </div>
     </div>
 

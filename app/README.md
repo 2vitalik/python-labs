@@ -28,6 +28,8 @@
 
 **Правка агентом** ([T153](../.dev/platform/.t/T153--agent-guide-access/report.md), [T155](../.dev/platform/.t/T155--agent-catalog-snapshot/report.md)): ШІ-агент править сторінки методички й картки каталогу через те саме API, вхід — токен у заголовку `Authorization: Bearer …`; токени — `AGENT_TOKENS=claude:<токен>,codex:<токен>` в `api/.env`, імʼя — автор в історії. Решту сайту токен не відкриває. Скрипти без залежностей: `bin/guide` (`ls` · `pull [slug…]` · `push <slug> -m "що змінив" [-s "Розділ"]` · `snap`) і `bin/catalog` (`ls tasks|games [текст]` · `pull` · `push [tasks/<slug> …]` · `snap`); без `-t` — сервер, `-t dev` — дев; адреси й токени — `.site/.env`, робочі копії — `.site/<ціль>/` (поза git). `snap` знімає сайт у `data/guide/` і `data/catalog/` — це знімок для git; після `push` на сервер він робиться сам. Смоук: `… tests/smoke_agent.py`.
 
+**Приклади ігрових ситуацій** ([T160](../.dev/platform/.t/T160--examples-in-games/report.md)): поле `examples` гри — Markdown методички з блоками ` ```field `; сторінка гри малює опис і приклади через `GuideText`, форма гри показує превʼю (`MdArea.vue`); у файлі гри для `bin/catalog` приклади йдуть після рядка `=== examples ===`.
+
 **Історія тасків та ігор** ([T156](../.dev/platform/.t/T156--card-history/report.md)): `/tasks/history` і `/games/history` (адмін) — кожна правка з «було → стало» по полях і відкатом ↩; `?slug=` — один запис. Бек — `api/routes/card_history.py`, фронт — `vue/src/pages/CardHistoryPage.vue`, `components/CardChange.vue`, `cardFields.js`. Імпорт із YAML теж пише в історію. Смоук: `… tests/smoke_card_history.py`.
 
 ## Активність

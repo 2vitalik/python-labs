@@ -8,7 +8,8 @@
   bin/catalog [-t dev] log tasks|games [slug]        the edits, newest first, each with its id
   bin/catalog [-t dev] undo tasks|games <id>         the fields of that edit back to what they were
 
-A card is .site/<target>/<kind>/<slug>.md: a line `field: JSON value` per field, a blank line, the description.
+A card is .site/<target>/<kind>/<slug>.md: a line `field: JSON value` per field, a blank line, the description;
+a game with examples goes on with the line `=== examples ===` between blank lines and the examples.
 A new file becomes a new card only when named. No -t = prod, and a push there ends with a snap."""
 import argparse
 import json
@@ -19,12 +20,14 @@ from pathlib import Path
 from siteapi import HOME, ROOT, SNAP, call, file, keep, pull, snap, taken
 
 KINDS = ("tasks", "games")
-BESIDE = ("id", "slug", "description", "slots")  # the file name, the body, and what the card forms do not edit
+BESIDE = ("id", "slug", "description", "examples", "slots")  # the file name, the body, and what the card forms do not edit
+PART = "\n\n=== examples ===\n\n"  # in a game's body: the description before it, the examples after
 
 
 def text(card: dict) -> str:
     head = "\n".join(f"{k}: {json.dumps(v, ensure_ascii=False)}" for k, v in card.items() if k not in BESIDE)
-    return f"{head}\n\n{card['description']}\n"
+    body = card["description"] + (PART + card["examples"] if card.get("examples") else "")
+    return f"{head}\n\n{body}\n"
 
 
 def read(path: Path) -> dict:
@@ -33,7 +36,10 @@ def read(path: Path) -> dict:
         fields = {k.strip(): json.loads(v) for k, _, v in (l.partition(":") for l in head.splitlines() if l.strip())}
     except ValueError as e:
         sys.exit(f"{path}: значення поля — не JSON · {e}")
-    return fields | {"slug": path.stem, "description": body.strip()}
+    card = fields | {"slug": path.stem, "description": body.removesuffix("\n")}  # the text as it came: an edit changes only what was edited
+    if path.parent.name == "games":
+        card["description"], _, card["examples"] = card["description"].partition(PART)
+    return card
 
 
 def changed(to: str) -> list[str]:
