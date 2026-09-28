@@ -11,7 +11,7 @@ const initial = computed(() =>
 
 <template>
   <img v-if="user.picture && !failed" :src="user.picture" class="rounded-circle flex-shrink-0" :width="size" :height="size"
-       :alt="user.name" referrerpolicy="no-referrer" @error="failed = true">
+       :alt="user.name" referrerpolicy="no-referrer" loading="lazy" @error="failed = true">
   <span v-else class="rounded-circle flex-shrink-0 bg-secondary-subtle text-secondary d-inline-flex align-items-center justify-content-center fw-semibold"
         :style="{ width: size + 'px', height: size + 'px', fontSize: size * 0.45 + 'px' }">{{ initial }}</span>
 </template>

@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router'
 
 import { byGroup } from '../studentFilter.js'
 import { lookAs } from '../user.js'
+import Avatar from './Avatar.vue'
 import IconChevron from './IconChevron.vue'
 
 // admin table: a header row per group folds it; «↗» shows that group alone (?group=, crumb on the page);
@@ -41,11 +42,16 @@ const rowClass = (s) => ({ 'table-warning': s.status === 'pending', 'table-info'
       <template v-if="!folded.has(g.name)">
         <tr v-for="s in g.list" :key="s.nick" class="student" :class="rowClass(s)" :title="s.seen ? null : 'Ще не заходив на сайт'">
           <td>
-            <RouterLink :to="`/students/${s.nick}/edit`" class="name">{{ fio(s) }}</RouterLink>
-            <span v-if="s.status === 'admin'" class="badge text-bg-secondary fw-normal ms-1">викладач</span>
-            <span v-else-if="s.status === 'pending'" class="badge text-bg-warning fw-normal ms-1">очікує</span>
-            <a v-if="s.test" href="#" class="ibtn ms-1" title="Очима студента" @click.prevent="lookAs(s.nick)">👁</a>
-            <div class="email small">{{ s.email }}</div>
+            <div class="d-flex align-items-center gap-2">
+              <Avatar :user="s" :size="32" />
+              <div>
+                <RouterLink :to="`/students/${s.nick}/edit`" class="name">{{ fio(s) }}</RouterLink>
+                <span v-if="s.status === 'admin'" class="badge text-bg-secondary fw-normal ms-1">викладач</span>
+                <span v-else-if="s.status === 'pending'" class="badge text-bg-warning fw-normal ms-1">очікує</span>
+                <a v-if="s.test" href="#" class="ibtn ms-1" title="Очима студента" @click.prevent="lookAs(s.nick)">👁</a>
+                <div class="email small">{{ s.email }}</div>
+              </div>
+            </div>
           </td>
           <td v-if="s.game.id"><RouterLink :to="`/students/${s.nick}`">{{ s.game.title }}</RouterLink></td>
           <td v-else class="dash">—</td>

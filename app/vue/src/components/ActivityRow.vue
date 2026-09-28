@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 
 import { CHATS, COLLS, ERRORS, ICONS, TG_KINDS, clock, device, plain } from '../activity.js'
+import Avatar from './Avatar.vue'
 
 // one feed row: time · whom it is about · icon of the journal · what happened; `one` — email of a one-person feed, which needs no name column
 const props = defineProps({ row: { type: Object, required: true }, people: { type: Object, required: true }, one: String })
@@ -17,9 +18,10 @@ const status = computed(() => (r.value.status >= 500 ? 'text-bg-danger' : r.valu
 <template>
   <div class="arow d-flex gap-2 py-1 border-bottom">
     <span class="time text-secondary">{{ clock(r.at) }}</span>
-    <span v-if="!one" class="who text-truncate">
-      <RouterLink v-if="who" :to="{ query: { user: who.nick } }" :title="`Лише ${who.name || who.nick}`">{{ who.name || who.nick }}</RouterLink>
-      <span v-else class="text-secondary">{{ stranger }}</span>
+    <span v-if="!one" class="who d-flex gap-1">
+      <Avatar v-if="who" :user="who" :size="18" class="ava" />
+      <RouterLink v-if="who" :to="{ query: { user: who.nick } }" class="text-truncate" :title="`Лише ${who.name || who.nick}`">{{ who.name || who.nick }}</RouterLink>
+      <span v-else class="stranger text-secondary text-truncate">{{ stranger }}</span>
     </span>
     <span class="icon">{{ icon }}</span>
     <div class="what">
@@ -68,9 +70,11 @@ const status = computed(() => (r.value.status >= 500 ? 'text-bg-danger' : r.valu
 <style scoped>
 .arow { font-size: .9rem; line-height: 1.35; }
 .time { flex: 0 0 4.2rem; font-variant-numeric: tabular-nums; font-size: .8rem; padding-top: .1rem; }
-.who { flex: 0 0 9.5rem; }
+.who { flex: 0 0 11rem; min-width: 0; align-items: flex-start; }
 .who a { color: inherit; text-decoration: none; }
 .who a:hover { text-decoration: underline; }
+.ava { margin-top: .1rem; }
+.stranger { padding-left: calc(18px + .25rem); }  /* no avatar: the name stays in line with the others */
 .icon { flex: 0 0 1.3rem; text-align: center; }
 .what { flex: 1 1 0; min-width: 0; overflow-wrap: anywhere; }
 .text { white-space: pre-wrap; }
