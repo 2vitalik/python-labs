@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T151** · тікетів: 150 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T153** · тікетів: 152 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -158,3 +158,5 @@
 | platform | [T148](platform/.t/T148--view-as-student/plan.md) | ⚙️ | view-as-student | Очима студента: тестовий студент і перегляд від його імені — план | 🟢 🟩 |
 | platform | [T149](platform/.t/T149--errors-pack/plan.md) | ⚙️ | errors-pack | Помилки: екран у фронті, 404 з параметром, колекція errors, помилки фронту в бота — план | 🟢 🟩 |
 | platform | [T150](platform/.t/T150--tg-link-on-read/plan.md) | ⚙️ | tg-link-on-read | Активність: Telegram-рядки до привʼязки — за студентом — план | 🟢 ⬜ |
+| platform | [T151](platform/.t/T151-P--examples-in-games.md) | 💡 | examples-in-games | Приклади ігрових ситуацій — у картках ігор | 🟢 ⬜ |
+| platform | [T152](platform/.t/T152-Q--examples-in-games-choices.md) | ❓ | examples-in-games-choices | Приклади в іграх — вибори | 🔴 ⬜ |
