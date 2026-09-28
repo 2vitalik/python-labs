@@ -37,8 +37,8 @@ async function saved(p) {
 </template>
 
 <style scoped>
-/* midway between the heading above and the text; the text stays where it was */
-.tools { margin: -.625rem 0 .375rem; }
+/* optically midway between the heading above and the text: the full-width line below pulls harder than the short heading */
+.tools { margin: -.75rem 0 .5rem; }
 .tools a { color: var(--bs-tertiary-color); text-decoration: none; }
 .tools a:hover { color: var(--bs-body-color); }
 </style>
