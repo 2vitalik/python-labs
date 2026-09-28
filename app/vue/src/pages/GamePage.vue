@@ -34,6 +34,8 @@ onMounted(async () => {
       <span v-if="game.status !== 'active'" class="badge text-bg-light border text-secondary fw-normal">{{ STATUSES[game.status] }}</span>
       <RouterLink v-if="user?.status === 'admin'" :to="`/games/${game.slug}/edit`"
                   class="ms-auto text-decoration-none" title="Редагувати">✏️</RouterLink>
+      <RouterLink v-if="user?.status === 'admin'" :to="`/games/history?slug=${game.slug}`"
+                  class="text-decoration-none" title="Історія правок">🕘</RouterLink>
     </div>
     <p class="text-secondary">{{ game.summary }}</p>
     <p class="d-flex gap-2 flex-wrap">

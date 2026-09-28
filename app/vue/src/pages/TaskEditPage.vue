@@ -55,7 +55,10 @@ async function save() {
 <template>
   <div v-if="user?.status === 'admin'">
     <Crumbs :items="crumbs" />
-    <h1 class="h3 mb-4">{{ id ? `Завдання: ${form.title}` : 'Нове завдання' }}</h1>
+    <div class="d-flex align-items-baseline gap-3 mb-4">
+      <h1 class="h3 mb-0 me-auto">{{ id ? `Завдання: ${form.title}` : 'Нове завдання' }}</h1>
+      <RouterLink v-if="id" :to="`/tasks/history?slug=${route.params.slug}`" class="small text-decoration-none">🕘 історія</RouterLink>
+    </div>
 
     <TaskForm v-model="form" @save="save" />
 

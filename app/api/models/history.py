@@ -17,6 +17,11 @@ class Change(Document):
         indexes = ["coll", "doc_id", "actor", "at"]
 
 
+def stamp(at: datetime) -> str:
+    """ISO with the zone: Mongo returns UTC without one, and the browser reads that as local time."""
+    return at.replace(tzinfo=timezone.utc).isoformat()
+
+
 async def record(doc: Document, data: dict, actor: str, note: str = "") -> dict:
     """Apply `data` to `doc`, saving a diff of what actually changed; returns that diff."""
     changes = {k: {"old": getattr(doc, k), "new": v} for k, v in data.items() if getattr(doc, k) != v}

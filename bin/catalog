@@ -5,6 +5,8 @@
   bin/catalog [-t dev] pull                          every card of both kinds
   bin/catalog [-t dev] push [tasks/<slug> …]         the named cards; none = every changed one
   bin/catalog [-t dev] snap [--to <dir>]             games.yaml + tasks.yaml → data/catalog/, for git
+  bin/catalog [-t dev] log tasks|games [slug]        the edits, newest first, each with its id
+  bin/catalog [-t dev] undo tasks|games <id>         the fields of that edit back to what they were
 
 A card is .site/<target>/<kind>/<slug>.md: a line `field: JSON value` per field, a blank line, the description.
 A new file becomes a new card only when named. No -t = prod, and a push there ends with a snap."""
@@ -55,17 +57,27 @@ def push(to: str, names: list[str]):
         print(f"{name}: " + ("створено" if not was else "без змін" if new == was else "змінено"))
 
 
+def kind_of(names: list[str]) -> str:
+    if not names or names[0] not in KINDS:
+        sys.exit("після команди — tasks або games")
+    return names[0]
+
+
+def log(to: str, kind: str, slug: str):
+    for e in call(to, "GET", f"/catalog/history/{kind}" + (f"?slug={slug}" if slug else "")):
+        what = "створено" if e["created"] else " · ".join(f"{k}: {str(v['old'])[:40]!r} → {str(v['new'])[:40]!r}" for k, v in e["changes"].items())
+        print(f"{e['id']}  {e['at'][:16]}  {e['actor']:<8} {e['slug']}  {what}" + (f"  ({e['note']})" if e["note"] else ""))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("-t", "--target", default=SNAP)
-    parser.add_argument("cmd", choices=["ls", "pull", "push", "snap"])
+    parser.add_argument("cmd", choices=["ls", "pull", "push", "snap", "log", "undo"])
     parser.add_argument("names", nargs="*")
     parser.add_argument("--to", type=Path, default=ROOT / "data" / "catalog")
     a = parser.parse_args()
     if a.cmd == "ls":
-        kind, find = (a.names + ["", ""])[0], " ".join(a.names[1:]).lower()
-        if kind not in KINDS:
-            sys.exit("ls tasks або ls games")
+        kind, find = kind_of(a.names), " ".join(a.names[1:]).lower()
         for c in call(a.target, "GET", f"/{kind}"):
             if find in json.dumps(c, ensure_ascii=False).lower():
                 print(f"{c['slug']:<28} {c['status']:<9} {c.get('coin') or c.get('klass') or '—':<8} {c['title']}")
@@ -77,6 +89,13 @@ def main():
             print(f"{kind}: {len(cards)} → {(HOME / a.target / kind).relative_to(ROOT)}")
     elif a.cmd == "snap":
         snap(a.to, call(a.target, "GET", "/catalog/snapshot"))
+    elif a.cmd == "log":
+        log(a.target, kind_of(a.names), "".join(a.names[1:2]))
+    elif a.cmd == "undo":
+        card = call(a.target, "POST", f"/catalog/history/{kind_of(a.names)}/{''.join(a.names[1:2]) or 'x'}/revert")
+        print(f"{a.names[0]}/{card['slug']}: відкочено → {pull(a.target, a.names[0], card, text).relative_to(ROOT)}")
+        if a.target == SNAP:
+            snap(a.to, call(a.target, "GET", "/catalog/snapshot"))
     else:
         names = a.names or changed(a.target)
         push(a.target, names)

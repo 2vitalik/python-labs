@@ -1,5 +1,5 @@
 """Catalog snapshot: Mongo ↔ data/catalog/*.yaml. Truth lives in Mongo; YAML is a git-diffable
-snapshot and the bulk-edit channel (upsert by slug). games.yaml — flat dicts; tasks.yaml — a tree
+snapshot and the bulk-edit channel (upsert by slug, logged in `history` as `import`). games.yaml — flat dicts; tasks.yaml — a tree
 zone → subzone → one-line tasks (taskline.py), file position = order, family children nested.
 Usage: uv run python catalog_io.py export|import"""
 import asyncio
@@ -10,6 +10,7 @@ import yaml
 
 from db import init_db
 from models.base_game import BaseGame
+from models.history import record, record_new
 from models.task import Task
 from taskline import parse_line, render_line
 from zones import ZONES
@@ -82,14 +83,11 @@ async def upsert(model, rows) -> None:
     for row in rows:
         doc = await model.find_one(model.slug == row["slug"])
         if not doc:
-            await model(**row).insert()
+            doc = model(**row)
+            await doc.insert()
+            await record_new(doc, actor="import")
             added += 1
-            continue
-        patch = {k: v for k, v in row.items() if getattr(doc, k) != v}
-        for k, v in patch.items():
-            setattr(doc, k, v)
-        if patch:
-            await doc.save()
+        elif await record(doc, row, actor="import"):
             updated += 1
         else:
             same += 1

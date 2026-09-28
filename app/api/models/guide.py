@@ -4,7 +4,7 @@ from typing import Annotated
 from beanie import Document, Indexed
 from pydantic import Field
 
-from models.history import record
+from models.history import record, stamp
 
 DRAFT = "changes-draft"  # admin-only page: «Що змінилось» draft fed by edit notes (T126 §5b)
 
@@ -23,7 +23,7 @@ class Guide(Document):
 
     def api(self) -> dict:
         return {"slug": self.slug, "title": self.title, "body": self.body, "rev": self.rev,
-                "updated": self.updated_at.isoformat(), "updated_by": self.updated_by.split("@")[0]}
+                "updated": stamp(self.updated_at), "updated_by": self.updated_by.split("@")[0]}
 
 
 async def save(g: Guide, title: str, body: str, actor: str, note: str = "") -> bool:

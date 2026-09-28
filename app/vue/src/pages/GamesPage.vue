@@ -31,6 +31,7 @@ onMounted(() => admin.value && loadCatalog())
         <h1 class="h3 mb-0">Ігри <span class="text-secondary fs-6">({{ shown.length }})</span></h1>
         <div class="d-flex gap-2">
           <RouterLink to="/ideas" class="btn btn-outline-secondary btn-sm">💡 Знахідки</RouterLink>
+          <RouterLink to="/games/history" class="btn btn-outline-secondary btn-sm">🕘 Історія</RouterLink>
           <RouterLink to="/games/new" class="btn btn-outline-primary btn-sm">➕ Нова гра</RouterLink>
         </div>
       </div>

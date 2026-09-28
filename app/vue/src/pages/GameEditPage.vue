@@ -47,7 +47,10 @@ async function save() {
 <template>
   <div v-if="user?.status === 'admin'">
     <Crumbs :items="crumbs" />
-    <h1 class="h3 mb-4">{{ id ? `Гра: ${form.title}` : 'Нова гра' }}</h1>
+    <div class="d-flex align-items-baseline gap-3 mb-4">
+      <h1 class="h3 mb-0 me-auto">{{ id ? `Гра: ${form.title}` : 'Нова гра' }}</h1>
+      <RouterLink v-if="id" :to="`/games/history?slug=${route.params.slug}`" class="small text-decoration-none">🕘 історія</RouterLink>
+    </div>
 
     <BaseGameForm v-model="form" @save="save" />
 

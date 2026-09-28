@@ -10,7 +10,7 @@ from pydantic import BaseModel
 
 from deps import admin_user, editor_user
 from models.guide import DRAFT, Guide, save
-from models.history import Change
+from models.history import Change, stamp
 from models.user import User
 
 router = APIRouter(prefix="/api/guide")
@@ -38,7 +38,7 @@ async def page(slug: str) -> Guide:
 @router.get("")
 async def list_pages(user: User = Depends(editor_user)):
     pages = await Guide.find(Guide.slug != DRAFT).to_list()
-    return [{"slug": g.slug, "title": g.title, "updated": g.updated_at.isoformat()} for g in pages]
+    return [{"slug": g.slug, "title": g.title, "updated": stamp(g.updated_at)} for g in pages]
 
 
 @router.get("/history")
@@ -49,7 +49,7 @@ async def history(slug: str = "", user: User = Depends(editor_user)):
     for c in await Change.find(query).sort("-at").limit(200).to_list():
         if g := pages.get(c.doc_id):
             body, title = c.changes.get("body", {}), c.changes.get("title", {})
-            out.append({"id": str(c.id), "at": c.at.isoformat(), "actor": c.actor.split("@")[0], "note": c.note,
+            out.append({"id": str(c.id), "at": stamp(c.at), "actor": c.actor.split("@")[0], "note": c.note,
                         "slug": g.slug, "title": g.title, "old": body.get("old"), "new": body.get("new"),
                         "old_title": title.get("old"), "new_title": title.get("new")})
     return out

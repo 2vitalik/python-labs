@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T156** · тікетів: 155 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T157** · тікетів: 156 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -163,3 +163,4 @@
 | platform | [T153](platform/.t/T153--agent-guide-access/plan.md) | ⚙️ | agent-guide-access | Методичка: доступ для ШІ-агента — план | 🟢 🟩 |
 | platform | [T154](platform/.t/T154-Q--agent-guide-choices.md) | ❓ | agent-guide-choices | Доступ агента до методички: вибори | 🔴 🟩 |
 | platform | [T155](platform/.t/T155--agent-catalog-snapshot/plan.md) | ⚙️ | agent-catalog-snapshot | Агент: каталог і знімок сайту в git — план | 🟢 🟩 |
+| platform | [T156](platform/.t/T156--card-history/plan.md) | ⚙️ | card-history | Історія правок тасків та ігор із відкатом — план | 🟢 🟩 |
