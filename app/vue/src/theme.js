@@ -2,18 +2,20 @@ import { ref } from 'vue'
 
 import { load, save } from './local.js'
 
-// light or dark page; the first value comes from public/theme-boot.js: the choice saved in this browser, else the system's
+// page theme: `auto` follows the device, `light` / `dark` are a choice; remembered in this browser.
+// The first paint is public/theme-boot.js's, with the same rule
 const KEY = 'theme'
-const root = document.documentElement
-export const dark = ref(root.dataset.bsTheme === 'dark')
+const device = matchMedia('(prefers-color-scheme: dark)')
+export const MODES = { light: 'Світла', dark: 'Темна', auto: 'Як на пристрої' }
+export const mode = ref(load(KEY) in MODES ? load(KEY) : 'auto')
 
-function set(on) {
-  dark.value = on
-  root.dataset.bsTheme = on ? 'dark' : 'light'
+function apply() {
+  const dark = mode.value === 'auto' ? device.matches : mode.value === 'dark'
+  document.documentElement.dataset.bsTheme = dark ? 'dark' : 'light'
 }
-export function toggleTheme() {
-  set(!dark.value)
-  save(KEY, root.dataset.bsTheme)
+export function setMode(m) {
+  mode.value = m
+  save(KEY, m)
+  apply()
 }
-// nothing chosen here yet — the page keeps following the system (night mode on a schedule)
-matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => load(KEY) || set(e.matches))
+device.addEventListener('change', apply)  // night mode on a schedule: an `auto` page follows at once

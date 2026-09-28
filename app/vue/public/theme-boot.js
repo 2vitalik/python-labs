@@ -3,6 +3,7 @@
 {
   let theme
   try { theme = localStorage.getItem('theme') } catch { /* storage blocked */ }
-  theme ||= matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  // 'auto' or nothing saved — as on the device; the same rule is in src/theme.js
+  if (theme !== 'light' && theme !== 'dark') theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
   document.documentElement.dataset.bsTheme = theme
 }
