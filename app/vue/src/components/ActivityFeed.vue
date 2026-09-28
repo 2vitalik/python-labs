@@ -14,7 +14,8 @@ const one = ref('')
 const more = ref(false)
 const loaded = ref(false)
 const error = ref('')
-const params = computed(() => ({ user: props.nick, src: props.src, staff: props.staff }))
+// no chips — `none`: the person's heading stays without rows; an empty `src` would bring the default set
+const params = computed(() => ({ user: props.nick, src: props.src || 'none', staff: props.staff }))
 const person = computed(() => people.value[one.value])
 const days = computed(() => {
   const out = []
@@ -68,7 +69,7 @@ usePolling(load, 15)
     <h2 class="day">{{ d.title }} <span class="fw-normal">· {{ d.rows.length }}</span></h2>
     <ActivityRow v-for="r in d.rows" :key="r.id" :row="r" :people :one />
   </section>
-  <p v-if="loaded && !rows.length && !error" class="text-secondary text-center mt-4">Тут поки тихо.</p>
+  <p v-if="loaded && !rows.length && !error" class="text-secondary text-center mt-4">{{ src ? 'Тут поки тихо.' : 'Оберіть, що показувати.' }}</p>
   <div v-if="more" class="text-center">
     <button class="btn btn-outline-secondary btn-sm" @click="load({ before: rows.at(-1).at })">Показати ще</button>
   </div>

@@ -46,8 +46,7 @@ const toggle = (key) => show(CHIPS.map((c) => c.key).filter((k) => shown.value.i
                 :title="c.title" @click="toggle(c.key)">{{ c.icon }} {{ c.text }}</button>
         <a v-if="src" href="#" class="small text-secondary ms-1" @click.prevent="show([])">скинути</a>
       </div>
-      <ActivityFeed v-if="src" :nick="route.query.user" :src :staff />
-      <p v-else class="text-secondary text-center mt-4">Оберіть, що показувати.</p>
+      <ActivityFeed :nick="route.query.user" :src :staff />
     </template>
   </div>
 </template>

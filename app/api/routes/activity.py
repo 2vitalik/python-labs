@@ -17,13 +17,14 @@ DEFAULT = [s for s in SOURCES if s not in ("api", "event")]  # on request: every
 @router.get("")
 async def get_feed(user: str = "", src: str = "", before: datetime | None = None, limit: int = Query(100, ge=1, le=500),
                    staff: bool = False, admin: User = Depends(admin_user)):
-    """Newest first. `user` — a nick, `src` — sources by comma, `before` — `at` of the last row seen, for the next page."""
+    """Newest first. `user` — a nick, `src` — sources by comma, `before` — `at` of the last row seen, for the next page.
+    A `src` with no known source (`none`) — no rows, only who the person is."""
     users = await User.find_all().to_list()
     one = next((u for u in users if u.nick == user), None)
     if user and not one:
         raise HTTPException(404)
     hide = [] if staff else ["seed", *settings.agents.values(), *(u.email for u in users if u.status == Status.admin)]
-    sources = [s for s in src.split(",") if s in SOURCES] or DEFAULT
+    sources = [s for s in src.split(",") if s in SOURCES] if src else DEFAULT
     if "api" in sources:
         sources = [s for s in sources if s != "fail"]  # already among all the calls
     rows = await feed(sources, one, hide, links(users), before, limit)

@@ -145,6 +145,9 @@ with TestClient(main.app, raise_server_exceptions=False) as c:
           has(rows, text="здай лабу", user=ADMIN) and has(rows, src="edit", user=ADMIN, about=VASYA) and not has(rows, text="хто тут"))
     check("one person: who it is + people behind the rows", one["one"] == VASYA and one["people"][VASYA]["name"] == "Пупкін Василь"
           and one["people"][VASYA]["nick"] == "vasya" and ADMIN in one["people"])
+    none = feed(c, user="vasya", src="none")
+    check("src=none: no rows, the person stays", none["rows"] == [] and not none["more"] and none["one"] == VASYA
+          and list(none["people"]) == [VASYA], none)
     check("unknown nick → 404", c.get("/api/activity", params={"user": "nobody"}).status_code == 404)
 
     first = feed(c, limit=3)
