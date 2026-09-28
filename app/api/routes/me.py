@@ -15,9 +15,10 @@ from models.user import Status, User
 router = APIRouter()
 
 
-async def me_data(user: User) -> dict:
+async def me_data(user: User, link: bool = True) -> dict:
+    """`link=False` — a real student seen by an admin: their bot link would bind the admin's Telegram to them."""
     data = user.api()
-    if user.status != Status.pending and settings.tg_bot_name:
+    if link and user.status != Status.pending and settings.tg_bot_name:
         if not user.tg_token:
             user.tg_token = secrets.token_urlsafe(16)
             await user.save()
@@ -27,7 +28,8 @@ async def me_data(user: User) -> dict:
 
 @router.get("/api/me")
 async def me(request: Request, user: User | None = Depends(current_user)):
-    return await me_data(user) | {"viewing": "as" in request.session} if user else None
+    viewing = "as" in request.session
+    return await me_data(user, link=user.test or not viewing) | {"viewing": viewing} if user else None
 
 
 class ViewIn(BaseModel):

@@ -11,7 +11,7 @@ import Md from '../components/Md.vue'
 import RuleRow from '../components/RuleRow.vue'
 import { COINS, ROLES, games, loadCatalog, paramsText } from '../catalog.js'
 import { useTitle } from '../title.js'
-import { user } from '../user.js'
+import { lookAs, user } from '../user.js'
 
 const nick = useRoute().params.nick
 const data = ref(null)
@@ -47,6 +47,8 @@ onMounted(async () => {
 <template>
   <div>
     <Crumbs :items="[['/students', 'Студи'], data?.student.name || nick]">
+      <button v-if="user?.status === 'admin' && data && data.student.status !== 'admin'" class="btn btn-outline-secondary btn-sm ms-auto"
+              :title="data.student.test ? null : 'Лише перегляд'" @click="lookAs(nick)">👁 Очима студента</button>
       <RouterLink v-if="user?.status === 'admin'" :to="{ path: '/activity', query: { user: nick } }" class="btn btn-outline-secondary btn-sm">📈 Активність</RouterLink>
     </Crumbs>
     <p v-if="data && !data.game" class="text-center mt-5 text-secondary">Гра ще не створена.</p>

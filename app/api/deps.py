@@ -7,14 +7,20 @@ from models.user import Status, User
 
 
 async def real_user(request: Request) -> User | None:
-    """Who has signed in — the footprint is theirs even while they look as a test student."""
+    """Who has signed in — the footprint is theirs even while they look as a student."""
     email = request.session.get("email")
     return await User.find_one(User.email == email) if email else None
 
 
 async def current_user(request: Request) -> User | None:
-    email = request.session.get("as") or request.session.get("email")  # `as` — «Очима студента» (routes/view_as.py)
-    return await User.find_one(User.email == email) if email else None
+    """`as` in the session — «Очима студента» (routes/view_as.py): the admin gets that student's pages and rights.
+    A test student can be edited, a real one is for looking only."""
+    viewed = request.session.get("as")
+    email = viewed or request.session.get("email")
+    user = await User.find_one(User.email == email) if email else None
+    if viewed and user and not user.test and request.method != "GET":
+        raise HTTPException(403, "Лише перегляд: ти дивишся очима студента")
+    return user
 
 
 async def active_user(user: User | None = Depends(current_user)) -> User:
