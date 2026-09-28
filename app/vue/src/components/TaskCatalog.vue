@@ -28,8 +28,9 @@ const shown = computed(() => grouped.value.reduce((n, z) => n + z.subs.reduce((m
 .zone { scroll-margin-top: 1rem; }
 .zone-head {
   color: var(--zc); font-weight: 700;
-  border-bottom: 2px solid color-mix(in srgb, var(--zc) 30%, #fff);
+  border-bottom: 2px solid color-mix(in srgb, var(--zc) 30%, var(--bs-body-bg));
   padding-bottom: .25rem; margin-bottom: .75rem;
 }
+[data-bs-theme=dark] .zone-head { color: color-mix(in srgb, var(--zc) 60%, #fff); }
 .count { font-weight: 400; opacity: .55; font-size: .85em; }
 </style>

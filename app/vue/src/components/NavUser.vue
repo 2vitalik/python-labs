@@ -5,8 +5,9 @@ import { useRoute } from 'vue-router'
 import { down } from '../http.js'
 import { canAccess, user } from '../user.js'
 import Avatar from './Avatar.vue'
+import ThemeSwitch from './ThemeSwitch.vue'
 
-// right side of the menu: avatar · name (both lead to the profile) · «Вийти», or the sign-in buttons; `stage` comes from useNavFit
+// right side of the menu: theme switch · avatar · name (both lead to the profile) · «Вийти», or the sign-in buttons; `stage` comes from useNavFit
 defineProps({ stage: Number })
 const isDev = import.meta.env.DEV
 const route = useRoute()
@@ -17,6 +18,7 @@ const next = computed(() => `?next=${encodeURIComponent(route.fullPath)}`)
 
 <template>
   <div class="d-flex align-items-center gap-2 ms-2 flex-shrink-0 text-nowrap">
+    <ThemeSwitch />
     <template v-if="user">
       <component :is="profile ? 'RouterLink' : 'span'" :to="profile" class="d-flex align-items-center gap-2 text-reset text-decoration-none" title="Профіль">
         <Avatar :user />

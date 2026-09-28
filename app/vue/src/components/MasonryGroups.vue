@@ -51,4 +51,5 @@ const columns = computed(() => {
 .count { font-weight: 400; opacity: .55; font-size: .85em; }
 .add { color: var(--sc); opacity: .6; font-size: .8rem; font-weight: 600; }
 .add:hover { opacity: 1; }
+[data-bs-theme=dark] .group-head, [data-bs-theme=dark] .add { color: color-mix(in srgb, var(--sc) 60%, #fff); }
 </style>

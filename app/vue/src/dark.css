@@ -1,0 +1,14 @@
+/* dark theme (data-bs-theme on <html>, theme.js): what Bootstrap does not switch by itself.
+   Its «light» helpers and fixed greys keep the colours of a white page — here they take the theme's own */
+[data-bs-theme=dark] .text-bg-light { color: var(--bs-body-color) !important; background-color: var(--bs-tertiary-bg) !important; }
+/* after text-bg-light: a badge with both keeps its own text colour */
+[data-bs-theme=dark] .text-dark { color: var(--bs-body-color) !important; }
+[data-bs-theme=dark] .text-secondary { color: var(--bs-secondary-color) !important; }
+[data-bs-theme=dark] .btn-outline-secondary { --bs-btn-color: var(--bs-secondary-color); }
+[data-bs-theme=dark] .form-control::placeholder { color: var(--bs-gray-600); }
+
+[data-bs-theme=dark] :is(.table-light, .table-warning, .table-info) { --bs-table-color: var(--bs-body-color);
+                                                                       --bs-table-border-color: var(--bs-border-color); }
+[data-bs-theme=dark] .table-light { --bs-table-bg: var(--bs-tertiary-bg); }
+[data-bs-theme=dark] .table-warning { --bs-table-bg: var(--bs-warning-bg-subtle); }
+[data-bs-theme=dark] .table-info { --bs-table-bg: var(--bs-info-bg-subtle); }

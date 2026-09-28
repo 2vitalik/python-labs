@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import './style.css'
+import './dark.css'
 
 import { createApp } from 'vue'
 

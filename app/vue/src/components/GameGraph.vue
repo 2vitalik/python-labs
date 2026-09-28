@@ -79,7 +79,7 @@ const graph = computed(() => {
           <text :x="e.lx" :y="e.ly" text-anchor="middle" class="lbl">{{ e.label }}</text>
         </g>
         <g v-for="(p, id) in graph.pos" :key="id" role="button" @click="emit('pick', id)">
-          <rect :x="p.x" :y="p.y" :width="W" :height="H" rx="8" fill="#fff" stroke="#ced4da" />
+          <rect :x="p.x" :y="p.y" :width="W" :height="H" rx="8" class="win" />
           <image v-if="p.win.screenshots[0]" :href="`/api/uploads/${p.win.game}/${p.win.screenshots[0]}`"
                  :x="p.x + 5" :y="p.y + 5" :width="W - 10" :height="THUMB" preserveAspectRatio="xMidYMid slice" />
           <text :x="p.x + W / 2" :y="p.y + (p.win.screenshots[0] ? H - 12 : H / 2 + 4)"
@@ -94,6 +94,8 @@ const graph = computed(() => {
 </template>
 
 <style scoped>
-.ttl { font-size: .8rem; font-weight: 600; fill: #212529; }
-.lbl { font-size: .7rem; fill: #868e96; paint-order: stroke; stroke: #fff; stroke-width: 3px; }
+.win { fill: var(--bs-body-bg); stroke: #ced4da; }
+[data-bs-theme=dark] .win { stroke: var(--bs-border-color); }
+.ttl { font-size: .8rem; font-weight: 600; fill: var(--bs-body-color); }
+.lbl { font-size: .7rem; fill: #868e96; paint-order: stroke; stroke: var(--bs-body-bg); stroke-width: 3px; }
 </style>
