@@ -17,13 +17,16 @@ const admin = computed(() => user.value?.status === 'admin')
 const myGame = computed(() => canAccess(router.resolve('/my/game').meta.access))
 const { f, set, grouped } = useTaskFilter()
 const shown = computed(() => grouped.value.reduce((n, z) => n + z.subs.reduce((m, s) => m + s.list.length, 0), 0))
-// side contents: the guide text's headings while it is open, then the zones on screen
+// side contents in page order: the guide text's headings while it is open and the zones on screen
 const guideToc = ref([])
-const toc = computed(() => [
-  ...guideToc.value,
-  ...(guideToc.value.length && grouped.value.length ? [{ label: 'Завдання' }] : []),
-  ...grouped.value.map((z) => ({ id: `zone-${z.key}`, text: `${z.icon} ${z.title}`, depth: 2 })),
-])
+const low = ref(false)
+const toc = computed(() => {
+  const zones = grouped.value.map((z) => ({ id: `zone-${z.key}`, text: `${z.icon} ${z.title}`, depth: 2 }))
+  const both = guideToc.value.length && zones.length
+  return low.value
+    ? [...zones, ...(both ? [{ label: 'Методичка' }] : []), ...guideToc.value]
+    : [...guideToc.value, ...(both ? [{ label: 'Завдання' }] : []), ...zones]
+})
 
 onMounted(() => admin.value && loadCatalog())
 </script>
@@ -35,7 +38,8 @@ onMounted(() => admin.value && loadCatalog())
       <Crumbs :items="[['/method', 'Методичка'], 'Таски']">
         <RouterLink v-if="myGame" to="/my/game" class="btn btn-outline-primary btn-sm">Моя гра</RouterLink>
       </Crumbs>
-      <GuideHead slug="tasks" stub="Каталог завдань із цінами відкриється тут незабаром — до першої лаби." @toc="guideToc = $event" />
+      <GuideHead slug="tasks" stub="Каталог завдань із цінами відкриється тут незабаром — до першої лаби."
+                 @toc="guideToc = $event" @low="low = $event" />
     </div>
     <template v-if="admin">
       <!-- min-height: a zone click scrolls the head to the top even when the filtered list is short -->
@@ -66,6 +70,7 @@ onMounted(() => admin.value && loadCatalog())
         <TaskCatalog />
       </div>
     </template>
+    <div id="guide-low" :class="{ column: wideOn }"></div>
     <Toc v-if="!wideOn" :items="toc" />
   </div>
 </template>

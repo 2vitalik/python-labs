@@ -45,6 +45,7 @@ onMounted(() => admin.value && loadCatalog())
         <div v-for="g in shown" :key="g.id" class="col-md-6 col-lg-4"><GameCard :game="g" /></div>
       </div>
     </template>
+    <div id="guide-low"></div>
     <Toc :items="toc" />
   </div>
 </template>
