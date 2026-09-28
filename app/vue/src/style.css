@@ -13,6 +13,9 @@
         text-decoration: none; font-size: .75rem; line-height: 1; }
 .ibtn:hover { color: var(--bs-body-color); border-color: var(--bs-secondary-color); background: var(--bs-tertiary-bg); }
 
+/* a filter chip that is off: Bootstrap fills an outline button on hover, and one just switched off would still look pressed */
+.chip.btn-outline-secondary { --bs-btn-hover-color: var(--bs-btn-color); --bs-btn-hover-bg: var(--bs-tertiary-bg); }
+
 /* #anchor target lit by anchors.js flash(): guide text spills the colour past its edges, a form card keeps its frame and gets a ring */
 .flash { animation: guide-flash 2.5s ease-out; border-radius: .25rem; }
 @keyframes guide-flash {

@@ -42,7 +42,7 @@ const toggle = (key) => show(CHIPS.map((c) => c.key).filter((k) => shown.value.i
     <ActivityPeople v-if="tab === 'people'" :days="Number(route.query.days ?? 7)" :staff />
     <template v-else>
       <div class="d-flex flex-wrap align-items-center gap-1 mb-3">
-        <button v-for="c in CHIPS" :key="c.key" class="btn btn-sm" :class="shown.includes(c.key) ? 'btn-secondary' : 'btn-outline-secondary'"
+        <button v-for="c in CHIPS" :key="c.key" class="btn btn-sm chip" :class="shown.includes(c.key) ? 'btn-secondary' : 'btn-outline-secondary'"
                 :title="c.title" @click="toggle(c.key)">{{ c.icon }} {{ c.text }}</button>
         <a v-if="src" href="#" class="small text-secondary ms-1" @click.prevent="show([])">скинути</a>
       </div>
