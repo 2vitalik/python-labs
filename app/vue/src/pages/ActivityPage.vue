@@ -9,7 +9,7 @@ import Crumbs from '../components/Crumbs.vue'
 import { useTitle } from '../title.js'
 
 // everything the site and the bot track, for the teacher (T146). The state lives in the URL, so a view can be bookmarked:
-// ?tab=people · ?user=<nick> · ?show=site,tg (chips, when not the default set) · ?days=30 · ?staff=1
+// ?tab=people · ?user=<nick> · ?show=site,tg (chips, when not the default set; `none` — all off) · ?days=30 · ?staff=1
 const route = useRoute()
 const router = useRouter()
 useTitle(() => route.query.user && `Активність: ${route.query.user}`)
@@ -20,10 +20,9 @@ const shown = computed(() => (route.query.show ? route.query.show.split(',') : D
 const src = computed(() => CHIPS.filter((c) => shown.value.includes(c.key)).flatMap((c) => c.src).join(','))
 const set = (patch) => router.replace({ query: { ...route.query, ...patch } })
 
-function toggle(key) {
-  const keys = CHIPS.map((c) => c.key).filter((k) => shown.value.includes(k) !== (k === key))
-  if (keys.length) set({ show: keys.join() === DEFAULT.join() ? undefined : keys.join() })  // the last chip stays on: an empty set means nothing
-}
+// `none` — every chip is off: an empty `show` would read as the default set
+const show = (keys) => set({ show: keys.join() === DEFAULT.join() ? undefined : keys.join() || 'none' })
+const toggle = (key) => show(CHIPS.map((c) => c.key).filter((k) => shown.value.includes(k) !== (k === key)))
 </script>
 
 <template>
@@ -42,11 +41,13 @@ function toggle(key) {
     </div>
     <ActivityPeople v-if="tab === 'people'" :days="Number(route.query.days ?? 7)" :staff />
     <template v-else>
-      <div class="d-flex flex-wrap gap-1 mb-3">
+      <div class="d-flex flex-wrap align-items-center gap-1 mb-3">
         <button v-for="c in CHIPS" :key="c.key" class="btn btn-sm" :class="shown.includes(c.key) ? 'btn-secondary' : 'btn-outline-secondary'"
                 :title="c.title" @click="toggle(c.key)">{{ c.icon }} {{ c.text }}</button>
+        <a v-if="src" href="#" class="small text-secondary ms-1" @click.prevent="show([])">скинути</a>
       </div>
-      <ActivityFeed :nick="route.query.user" :src :staff />
+      <ActivityFeed v-if="src" :nick="route.query.user" :src :staff />
+      <p v-else class="text-secondary text-center mt-4">Оберіть, що показувати.</p>
     </template>
   </div>
 </template>
