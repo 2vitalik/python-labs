@@ -1,101 +1,64 @@
 #!/usr/bin/env python3
-"""bin/guide — guide pages of the site as local files, the way in for AI agents (T153).
+"""bin/guide — guide pages of the site as local files, the way in for AI agents (T153, T155).
 
-  bin/guide [-t prod] ls
-  bin/guide [-t prod] pull [slug…]                          no slug = every page
-  bin/guide [-t prod] push <slug> -m "що змінив" [-s "Розділ"]
+  bin/guide [-t dev] ls
+  bin/guide [-t dev] pull [slug…]                           no slug = every page
+  bin/guide [-t dev] push <slug> -m "що змінив" [-s "Розділ"]
+  bin/guide [-t dev] snap [--to <dir>]                      every page → data/guide/, for git
 
-A page is .guide/<target>/<slug>.md: `# title`, a blank line, the body. Targets live in .guide/.env:
-DEV_URL, DEV_TOKEN, PROD_URL, PROD_TOKEN. The token's name on the server is who the site's history shows."""
+A page is .site/<target>/guide/<slug>.md: `# title`, a blank line, the body. No -t = prod, and a push there ends
+with a snap. The token's name on the server is who the site's history shows."""
 import argparse
-import json
 import sys
 from pathlib import Path
-from urllib.error import HTTPError, URLError
-from urllib.request import Request, urlopen
 
-HOME = Path(__file__).resolve().parents[1] / ".guide"
-
-
-def target(name: str) -> tuple[str, str]:
-    env = HOME / ".env"
-    lines = env.read_text().splitlines() if env.exists() else []
-    keys = dict(l.split("=", 1) for l in lines if "=" in l and not l.startswith("#"))
-    url, token = (keys.get(f"{name.upper()}_{k}", "").strip() for k in ("URL", "TOKEN"))
-    if not url or not token:
-        sys.exit(f"guide: нема {name.upper()}_URL або {name.upper()}_TOKEN у {env}")
-    return url.rstrip("/"), token
-
-
-def call(to: str, method: str, path: str, data: dict | None = None):
-    url, token = target(to)
-    request = Request(f"{url}/api/guide{path}", method=method, data=json.dumps(data).encode() if data else None,
-                      headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"})
-    try:
-        with urlopen(request) as response:
-            return json.load(response)
-    except HTTPError as e:
-        sys.exit(f"guide: {e.code} · {e.read().decode()[:300]}")
-    except URLError as e:
-        sys.exit(f"guide: {url} не відповідає · {e.reason}")
+from siteapi import ROOT, SNAP, call, file, keep, pull, snap, taken
 
 
 def text(page: dict) -> str:
     return f"# {page['title']}\n\n{page['body']}\n"
 
 
-def taken(home: Path, slug: str) -> dict | None:
-    """The page as it came from the site: its rev goes back with a push, so a later edit there → 409."""
-    path = home / ".taken" / f"{slug}.json"
-    return json.loads(path.read_text()) if path.exists() else None
+def snapshot(to: str, folder: Path):
+    pages = [call(to, "GET", f"/guide/{g['slug']}") for g in call(to, "GET", "/guide")]
+    snap(folder, {f"{p['slug']}.md": text(p) for p in pages})
 
 
-def keep(home: Path, page: dict) -> Path:
-    (home / ".taken").mkdir(parents=True, exist_ok=True)
-    (home / ".taken" / f"{page['slug']}.json").write_text(json.dumps(page, ensure_ascii=False))
-    path = home / f"{page['slug']}.md"
-    path.write_text(text(page))
-    return path
-
-
-def pull(to: str, home: Path, slug: str):
-    page, was, path = call(to, "GET", f"/{slug}"), taken(home, slug), home / f"{slug}.md"
-    if was and path.exists() and path.read_text() not in (text(was), text(page)):
-        path.rename(path.with_suffix(".mine.md"))  # edits that were never sent are not written over
-        print(f"{slug}: незбережені правки → {slug}.mine.md")
-    print(f"{keep(home, page).relative_to(HOME.parent)} · rev {page['rev']}")
-
-
-def push(to: str, home: Path, slug: str, note: str, section: str):
-    was, path = taken(home, slug), home / f"{slug}.md"
+def push(to: str, slug: str, note: str, section: str):
+    was, path = taken(to, "guide", slug), file(to, "guide", slug)
     if not was or not path.exists():
-        sys.exit(f"guide: спершу pull {slug}")
+        sys.exit(f"спершу pull {slug}")
     title, _, body = path.read_text().partition("\n")
-    page = call(to, "PUT", f"/{slug}", {"title": title.lstrip("# ").strip(), "body": body.strip(), "rev": was["rev"],
-                                        "note": note, "section": section})
-    keep(home, page)
+    page = call(to, "PUT", f"/guide/{slug}", {"title": title.lstrip("# ").strip(), "body": body.strip(), "rev": was["rev"],
+                                              "note": note, "section": section})
+    keep(to, "guide", page, text(page))
     print(f"{slug}: rev {was['rev']} → {page['rev']} · {page['updated_by']}" if page["rev"] != was["rev"] else f"{slug}: без змін")
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("-t", "--target", default="dev")
-    parser.add_argument("cmd", choices=["ls", "pull", "push"])
+    parser.add_argument("-t", "--target", default=SNAP)
+    parser.add_argument("cmd", choices=["ls", "pull", "push", "snap"])
     parser.add_argument("slugs", nargs="*")
     parser.add_argument("-m", "--note", default="")
     parser.add_argument("-s", "--section", default="")
+    parser.add_argument("--to", type=Path, default=ROOT / "data" / "guide")
     a = parser.parse_args()
-    home = HOME / a.target
     if a.cmd == "ls":
-        for g in call(a.target, "GET", ""):
+        for g in call(a.target, "GET", "/guide"):
             print(f"{g['slug']:<16} {g['updated'][:10]}  {g['title']}")
     elif a.cmd == "pull":
-        for slug in a.slugs or [g["slug"] for g in call(a.target, "GET", "")]:
-            pull(a.target, home, slug)
+        for slug in a.slugs or [g["slug"] for g in call(a.target, "GET", "/guide")]:
+            page = call(a.target, "GET", f"/guide/{slug}")
+            print(f"{pull(a.target, 'guide', page, text).relative_to(ROOT)} · rev {page['rev']}")
+    elif a.cmd == "snap":
+        snapshot(a.target, a.to)
     elif len(a.slugs) != 1:
-        sys.exit("guide: push — одна сторінка за раз")
+        sys.exit("push — одна сторінка за раз")
     else:
-        push(a.target, home, a.slugs[0], a.note, a.section)
+        push(a.target, a.slugs[0], a.note, a.section)
+        if a.target == SNAP:
+            snapshot(a.target, a.to)
 
 
 if __name__ == "__main__":

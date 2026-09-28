@@ -1,5 +1,5 @@
-"""Smoke: AI agents in the guide (T153) — a token opens the guide routes and nothing else, the edit is the agent's
-in history, the footprint is kept, no token configured = no way in. Run from app/api:
+"""Smoke: AI agents in the guide (T153) and the catalog (T155) — a token opens these routes and nothing else, the edit
+is the agent's in history, the footprint is kept, no token configured = no way in. Run from app/api:
 DB_NAME=python_labs_smoke uv run python tests/smoke_agent.py"""
 import os
 import sys
@@ -53,7 +53,7 @@ with TestClient(main.app) as c:
     check("second agent: its own name", r.status_code == 200 and r.json()["updated_by"] == "codex", r.text)
 
     closed = [c.get(p, headers=CLAUDE).status_code for p in ("/api/students", "/api/activity", "/api/refs", "/api/my/game")]
-    check("token opens nothing but the guide", closed == [401] * 4, closed)
+    check("token opens nothing but the guide and the catalog", closed == [401] * 4, closed)
     r = c.post("/api/guide/changes/publish", json={"line": d["body"].split("\n")[0]}, headers=CLAUDE)
     check("publish stays the admin's", r.status_code == 401 and "додав рядок" in c.get("/api/guide/changes-draft", headers=CLAUDE).json()["body"])
     check("no agent in users", mongo[DB].users.count_documents({"email": {"$regex": "@agent$"}}) == 0)
@@ -62,7 +62,27 @@ with TestClient(main.app) as c:
           any(a["method"] == "PUT" and a["path"] == "/api/guide/game" and a["status"] == 200 for a in rows), len(rows))
     check("footprint: a wrong token leaves no row", mongo[DB].activity.count_documents({"user": ""}) == 0)
 
+    card = {"slug": "agent-card", "title": "Картка агента", "zone": "code", "subzone": "git", "coin": "tin"}
+    r = c.post("/api/tasks", json=card, headers=CLAUDE)
+    check("catalog: the agent adds a card, a draft", r.status_code == 200 and r.json()["status"] == "draft", r.text)
+    slugs = lambda headers: [t["slug"] for t in c.get("/api/tasks", headers=headers).json()]  # noqa: E731
+    check("catalog: the agent sees drafts, a guest does not", "agent-card" in slugs(CLAUDE) and "agent-card" not in slugs({}))
+    r = c.put(f"/api/tasks/{r.json()['id']}", json=card | {"coin": "silver", "status": "active"}, headers=CODEX)
+    check("catalog: the agent edits a card", r.status_code == 200 and r.json()["coin"] == "silver", r.text)
+    h = list(mongo[DB].history.find({"coll": "tasks"}).sort("at", 1))
+    check("catalog: history names the agents", [x["actor"] for x in h] == ["claude@agent", "codex@agent"]
+          and h[1]["changes"]["coin"] == {"old": "tin", "new": "silver"}, h)
+    check("catalog: a bad card → 422", c.post("/api/tasks", json=card | {"slug": "x", "zone": "nope"}, headers=CLAUDE).status_code == 422)
+    r = c.post("/api/games", json={"slug": "agent-game", "title": "Гра агента", "description": "рядок 1\n\nрядок 2"}, headers=CLAUDE)
+    check("catalog: games too", r.status_code == 200 and mongo[DB].history.count_documents({"coll": "games", "actor": "claude@agent"}) == 1, r.text)
+    y = c.get("/api/catalog/snapshot", headers=CLAUDE)
+    check("snapshot: both files, the cards in them", y.status_code == 200 and set(y.json()) == {"games.yaml", "tasks.yaml"}
+          and "agent-card: 🥈 Картка агента" in y.json()["tasks.yaml"] and "slug: agent-game" in y.json()["games.yaml"], y.text[:300])
+    check("snapshot: not for a guest", c.get("/api/catalog/snapshot").status_code == 401)
+
     login(c, "stud@nure.ua", "student")
+    check("student: no card edits, no snapshot", c.post("/api/tasks", json=card | {"slug": "y"}).status_code == 403
+          and c.get("/api/catalog/snapshot").status_code == 403)
     check("student's session: 403 as before", c.get("/api/guide/game").status_code == 403)
     check("student with a token: the agent", c.get("/api/guide/game", headers=CLAUDE).status_code == 200)
     login(c, "admin@nure.ua", "admin")

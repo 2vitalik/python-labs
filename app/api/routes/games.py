@@ -2,7 +2,7 @@ from beanie import PydanticObjectId
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
-from deps import admin_user, current_user
+from deps import editor_user, viewer
 from models.base_game import BaseGame
 from models.history import record, record_new
 from models.user import Status, User
@@ -36,7 +36,7 @@ def clean(data: GameIn) -> dict:
 
 
 @router.get("")
-async def list_games(user: User | None = Depends(current_user)):
+async def list_games(user: User | None = Depends(viewer)):
     games = await BaseGame.find_all().sort("order", "slug").to_list()
     if not user or user.status != Status.admin:  # guests see the catalog too, active only
         games = [g for g in games if g.status == "active"]
@@ -44,7 +44,7 @@ async def list_games(user: User | None = Depends(current_user)):
 
 
 @router.post("")
-async def create_game(data: GameIn, admin: User = Depends(admin_user)):
+async def create_game(data: GameIn, admin: User = Depends(editor_user)):
     d = clean(data)
     if await BaseGame.find_one(BaseGame.slug == d["slug"]):
         raise HTTPException(422, "Гра з таким slug уже існує.")
@@ -55,7 +55,7 @@ async def create_game(data: GameIn, admin: User = Depends(admin_user)):
 
 
 @router.put("/{id}")
-async def update_game(id: PydanticObjectId, data: GameIn, admin: User = Depends(admin_user)):
+async def update_game(id: PydanticObjectId, data: GameIn, admin: User = Depends(editor_user)):
     game = await BaseGame.get(id)
     if not game:
         raise HTTPException(404)

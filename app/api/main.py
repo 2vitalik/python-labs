@@ -11,7 +11,7 @@ from config import settings
 from db import init_db
 from guide_io import seed
 from models.activity import Activity, client
-from routes import (activity, auth, front_errors, games, guide, health, me, my_claims, my_game, my_parts, my_rules, profile, refs,
+from routes import (activity, auth, catalog, front_errors, games, guide, health, me, my_claims, my_game, my_parts, my_rules, profile, refs,
                     student_games, students, tasks, taxonomy, view_as)
 
 
@@ -56,6 +56,7 @@ app.include_router(student_games.router)
 app.include_router(games.router)
 app.include_router(tasks.router)
 app.include_router(taxonomy.router)
+app.include_router(catalog.router)
 app.include_router(my_game.router)
 app.include_router(my_parts.router)
 app.include_router(my_claims.router)

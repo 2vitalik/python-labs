@@ -28,10 +28,9 @@ def task_node(t) -> dict | str:  # dict fallback for multi-line descriptions and
     return render_line(t)
 
 
-async def export():
-    CATALOG.mkdir(parents=True, exist_ok=True)
+async def render() -> dict[str, str]:
+    """File name → its YAML: the catalog as it is in Mongo."""
     games = await BaseGame.find_all().sort("order", "slug").to_list()
-    (CATALOG / "games.yaml").write_text(yaml.safe_dump([dump(g) for g in games], allow_unicode=True, sort_keys=False, width=120))
     tasks = await Task.find_all().sort("zone", "subzone", "order", "slug").to_list()
     kids = {}
     for t in tasks:
@@ -46,8 +45,15 @@ async def export():
             entry["children"] = [{k.slug: task_node(k)} for k in kids[t.slug]]
         tree.setdefault(t.zone, {}).setdefault(t.subzone, []).append(entry)
     tree = {z: tree[z] for z in ZONES if z in tree}
-    (CATALOG / "tasks.yaml").write_text(yaml.safe_dump(tree, allow_unicode=True, sort_keys=False, width=200))
-    print(f"games.yaml: {len(games)} · tasks.yaml: {len(tasks)} ({len(kids)} сімей)")
+    return {"games.yaml": yaml.safe_dump([dump(g) for g in games], allow_unicode=True, sort_keys=False, width=120),
+            "tasks.yaml": yaml.safe_dump(tree, allow_unicode=True, sort_keys=False, width=200)}
+
+
+async def export():
+    CATALOG.mkdir(parents=True, exist_ok=True)
+    for name, text in (await render()).items():
+        (CATALOG / name).write_text(text)
+        print(f"{name}: {len(text.splitlines())} рядків → {CATALOG}")
 
 
 def task_rows() -> list[dict]:

@@ -2,7 +2,7 @@ from beanie import PydanticObjectId
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
-from deps import admin_user, current_user
+from deps import editor_user, viewer
 from models.history import record, record_new
 from models.task import Task
 from models.user import Status, User
@@ -46,7 +46,7 @@ async def clean(data: TaskIn) -> dict:
 
 
 @router.get("")
-async def list_tasks(user: User | None = Depends(current_user)):
+async def list_tasks(user: User | None = Depends(viewer)):
     tasks = await Task.find_all().sort("zone", "subzone", "order", "slug").to_list()
     if not user or user.status != Status.admin:  # guests see the catalog too, active only
         tasks = [t for t in tasks if t.status == "active"]
@@ -54,7 +54,7 @@ async def list_tasks(user: User | None = Depends(current_user)):
 
 
 @router.post("")
-async def create_task(data: TaskIn, admin: User = Depends(admin_user)):
+async def create_task(data: TaskIn, admin: User = Depends(editor_user)):
     d = await clean(data)
     if await Task.find_one(Task.slug == d["slug"]):
         raise HTTPException(422, "Завдання з таким slug уже існує.")
@@ -65,7 +65,7 @@ async def create_task(data: TaskIn, admin: User = Depends(admin_user)):
 
 
 @router.put("/{id}")
-async def update_task(id: PydanticObjectId, data: TaskIn, admin: User = Depends(admin_user)):
+async def update_task(id: PydanticObjectId, data: TaskIn, admin: User = Depends(editor_user)):
     task = await Task.get(id)
     if not task:
         raise HTTPException(404)

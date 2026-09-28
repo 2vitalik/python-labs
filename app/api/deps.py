@@ -37,8 +37,13 @@ def agent(request: Request) -> User | None:
 
 
 async def editor_user(request: Request, user: User | None = Depends(current_user)) -> User:
-    """Who edits the guide: admins and AI agents. The token opens only the routes that ask for this."""
+    """Who edits the guide and the catalog: admins and AI agents. The token opens only the routes that ask for this."""
     return agent(request) or allow(user, user and user.status == Status.admin)
+
+
+async def viewer(request: Request, user: User | None = Depends(current_user)) -> User | None:
+    """Whom the open lists of the catalog answer: an agent sees what an admin does."""
+    return agent(request) or user
 
 
 def allow(user: User | None, ok) -> User:

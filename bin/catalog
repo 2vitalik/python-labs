@@ -1,0 +1,90 @@
+#!/usr/bin/env python3
+"""bin/catalog — catalog cards of the site as local files, the way in for AI agents (T155).
+
+  bin/catalog [-t dev] ls tasks|games [text]
+  bin/catalog [-t dev] pull                          every card of both kinds
+  bin/catalog [-t dev] push [tasks/<slug> …]         the named cards; none = every changed one
+  bin/catalog [-t dev] snap [--to <dir>]             games.yaml + tasks.yaml → data/catalog/, for git
+
+A card is .site/<target>/<kind>/<slug>.md: a line `field: JSON value` per field, a blank line, the description.
+A new file becomes a new card only when named. No -t = prod, and a push there ends with a snap."""
+import argparse
+import json
+import re
+import sys
+from pathlib import Path
+
+from siteapi import HOME, ROOT, SNAP, call, file, keep, pull, snap, taken
+
+KINDS = ("tasks", "games")
+BESIDE = ("id", "slug", "description", "slots")  # the file name, the body, and what the card forms do not edit
+
+
+def text(card: dict) -> str:
+    head = "\n".join(f"{k}: {json.dumps(v, ensure_ascii=False)}" for k, v in card.items() if k not in BESIDE)
+    return f"{head}\n\n{card['description']}\n"
+
+
+def read(path: Path) -> dict:
+    head, _, body = path.read_text().partition("\n\n")
+    try:
+        fields = {k.strip(): json.loads(v) for k, _, v in (l.partition(":") for l in head.splitlines() if l.strip())}
+    except ValueError as e:
+        sys.exit(f"{path}: значення поля — не JSON · {e}")
+    return fields | {"slug": path.stem, "description": body.strip()}
+
+
+def changed(to: str) -> list[str]:
+    """Cards whose files differ from what came from the site."""
+    paths = [p for kind in KINDS for p in sorted((HOME / to / kind).glob("*.md"))]
+    return [f"{p.parent.name}/{p.stem}" for p in paths if (was := taken(to, p.parent.name, p.stem)) and p.read_text() != text(was)]
+
+
+def push(to: str, names: list[str]):
+    site = {kind: {c["slug"]: c for c in call(to, "GET", f"/{kind}")} for kind in KINDS}
+    for name in names:
+        kind, _, slug = name.partition("/")
+        if kind not in KINDS or not re.fullmatch(r"[a-z0-9-]+", slug) or not file(to, kind, slug).exists():
+            sys.exit(f"{name}: нема такого файла картки — tasks/<slug> або games/<slug>")
+        was, now = taken(to, kind, slug), site[kind].get(slug)
+        if now != was:
+            sys.exit(f"{name}: на сайті вже інше — спершу pull")
+        card = read(file(to, kind, slug))
+        new = call(to, "PUT", f"/{kind}/{was['id']}", card) if was else call(to, "POST", f"/{kind}", card)
+        keep(to, kind, new, text(new))
+        print(f"{name}: " + ("створено" if not was else "без змін" if new == was else "змінено"))
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("-t", "--target", default=SNAP)
+    parser.add_argument("cmd", choices=["ls", "pull", "push", "snap"])
+    parser.add_argument("names", nargs="*")
+    parser.add_argument("--to", type=Path, default=ROOT / "data" / "catalog")
+    a = parser.parse_args()
+    if a.cmd == "ls":
+        kind, find = (a.names + ["", ""])[0], " ".join(a.names[1:]).lower()
+        if kind not in KINDS:
+            sys.exit("ls tasks або ls games")
+        for c in call(a.target, "GET", f"/{kind}"):
+            if find in json.dumps(c, ensure_ascii=False).lower():
+                print(f"{c['slug']:<28} {c['status']:<9} {c.get('coin') or c.get('klass') or '—':<8} {c['title']}")
+    elif a.cmd == "pull":
+        for kind in KINDS:
+            cards = call(a.target, "GET", f"/{kind}")
+            for card in cards:
+                pull(a.target, kind, card, text)
+            print(f"{kind}: {len(cards)} → {(HOME / a.target / kind).relative_to(ROOT)}")
+    elif a.cmd == "snap":
+        snap(a.to, call(a.target, "GET", "/catalog/snapshot"))
+    else:
+        names = a.names or changed(a.target)
+        push(a.target, names)
+        if names and a.target == SNAP:
+            snap(a.to, call(a.target, "GET", "/catalog/snapshot"))
+        if not names:
+            print("нема змінених карток")
+
+
+if __name__ == "__main__":
+    main()
