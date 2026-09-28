@@ -15,9 +15,11 @@ const home = ref(null)
 const can = (path) => canAccess(router.resolve(path).meta.access)
 const firstName = computed(() => user.value.first_name || user.value.name?.split(' ')[0] || user.value.email)
 
-// the home text is part of the guide; while all of it is in drafts, guests and students get the sign-up steps (T136, T157)
-getGuidePage('home').then((p) => (home.value = p))
-loadGuide()
+// the home text is part of the guide, so guests and students get the sign-up steps instead (T136)
+if (admin.value) {
+  getGuidePage('home').then((p) => (home.value = p))
+  loadGuide()
+}
 </script>
 
 <template>
@@ -30,12 +32,12 @@ loadGuide()
         <RouterLink v-if="can('/my/game')" to="/my/game" class="btn btn-outline-primary btn-sm">Моя гра</RouterLink>
       </div>
     </div>
-    <template v-if="home && (admin || home.body)">
+    <template v-if="home">
       <GuideBody v-model:page="home" />
       <GuideFoot>
-        <div v-if="admin || pages.changes?.empty === false"><RouterLink to="/changes">{{ pages.changes?.title || 'Що змінилось' }}</RouterLink></div>
+        <div><RouterLink to="/changes">{{ pages.changes?.title || 'Що змінилось' }}</RouterLink></div>
       </GuideFoot>
     </template>
-    <StartSteps v-else-if="home" />
+    <StartSteps v-else-if="!admin" />
   </div>
 </template>

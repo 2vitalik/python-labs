@@ -65,11 +65,8 @@ getGuidePage(props.slug).then((p) => (page.value = p))
     </Teleport>
     <div v-else>
       <h1 class="h2 mb-3">{{ page.title }}</h1>
-      <template v-if="text">
-        <GuideText :text="text" />
-        <div class="alert alert-light border mt-4">🚧 {{ stub }}</div>
-      </template>
-      <p v-else class="text-secondary">🚧 Розділ ще готується</p>
+      <GuideText :text="text" />
+      <div class="alert alert-light border mt-4">🚧 {{ stub }}</div>
       <GuideFoot />
     </div>
   </template>

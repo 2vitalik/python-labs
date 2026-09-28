@@ -37,7 +37,7 @@ async function saved(p) {
     <GuideEditor v-if="editing !== null" ref="editor" :key="editing" :page :id="editing" :prefix
                  @saved="saved" @close="editing = null" />
     <GuideText v-if="text" :text :prefix :editable="admin" @edit="edit" />
-    <p v-else class="text-secondary">🚧 Розділ ще готується</p>
+    <p v-else class="text-secondary">Без чернеток тут порожньо</p>
   </div>
 </template>
 

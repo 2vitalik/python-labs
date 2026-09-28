@@ -25,14 +25,15 @@ import { CHANGES, SECTIONS } from './guide.js'
 import { down } from './http.js'
 import { canAccess, safeNext, user, userLoaded } from './user.js'
 
-// the guide is open to everyone: what is not ready stays in drafts, and those the API keeps to the admin (T157)
+// the guide is unfinished, so it is admin-only for now (T136; drop `hidden` to reopen); students get only the profile
+const hidden = { access: 'admin' }
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: '/', component: HomePage },
-    ...[...SECTIONS, CHANGES].filter((s) => s.page).map((s) => ({ path: s.path, component: GuidePage, meta: { title: s.nav, slug: s.slug } })),
-    { path: '/labs/:n', component: GuidePage, meta: { title: 'Лаби' } },
-    { path: '/method', component: MethodPage, meta: { title: 'Методичка' } },
+    ...[...SECTIONS, CHANGES].filter((s) => s.page).map((s) => ({ path: s.path, component: GuidePage, meta: { title: s.nav, slug: s.slug, ...hidden } })),
+    { path: '/labs/:n', component: GuidePage, meta: { title: 'Лаби', ...hidden } },
+    { path: '/method', component: MethodPage, meta: { title: 'Методичка', ...hidden } },
     { path: '/method/history', component: HistoryPage, meta: { title: 'Історія правок', access: 'admin' } },
     { path: '/login', component: LoginPage, meta: { title: 'Вхід' } },
     { path: '/my/profile', component: ProfilePage, meta: { title: 'Профіль', access: 'active' } },
@@ -44,14 +45,14 @@ const router = createRouter({
     { path: '/activity', component: ActivityPage, meta: { title: 'Активність', access: 'admin', filters: true } },
     { path: '/ideas', component: RefsPage, meta: { title: 'Знахідки', access: 'admin' } },
     { path: '/refs', redirect: '/ideas' },
-    { path: '/games', component: GamesPage, meta: { title: 'Ігри' } },  // guide text + catalog; the catalog stays admin-only inside (T116 Q13)
+    { path: '/games', component: GamesPage, meta: { title: 'Ігри', ...hidden } },  // guide text + catalog; the catalog stays admin-only inside once the guide reopens (T116 Q13)
     { path: '/games/history', component: CardHistoryPage, meta: { title: 'Історія ігор', kind: 'games', access: 'admin' } },
     { path: '/games/new', component: GameEditPage, meta: { title: 'Нова гра', access: 'admin' } },
     { path: '/games/:slug', component: GamePage, meta: { title: 'Ігри', access: 'admin', filters: true } },
     { path: '/games/:slug/edit', component: GameEditPage, meta: { title: 'Ігри', access: 'admin' } },
     { path: '/colors', component: ColorsPage, meta: { title: 'Кольори', access: 'admin' } },
     { path: '/colors2', component: Colors2Page, meta: { title: 'Кольори v2', access: 'admin' } },
-    { path: '/tasks', component: TasksPage, meta: { title: 'Таски', wide: true, filters: true } },
+    { path: '/tasks', component: TasksPage, meta: { title: 'Таски', wide: true, filters: true, ...hidden } },
     { path: '/tasks/history', component: CardHistoryPage, meta: { title: 'Історія завдань', kind: 'tasks', access: 'admin' } },
     { path: '/tasks/new', component: TaskEditPage, meta: { title: 'Нове завдання', access: 'admin' } },
     { path: '/tasks/:slug/edit', component: TaskEditPage, meta: { title: 'Таски', access: 'admin' } },

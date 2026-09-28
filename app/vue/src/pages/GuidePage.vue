@@ -21,11 +21,8 @@ const toc = computed(() => tocOf(textOf(page.value)))
 useTitle(() => page.value?.title)
 const admin = computed(() => user.value?.status === 'admin')
 const lab = computed(() => LABS.find((l) => l.slug === slug.value))
-// a student's way from lab to lab skips those still in drafts
-const labs = computed(() => LABS.filter((l) => admin.value || l === lab.value || pages.value[l.slug]?.empty === false))
-const at = computed(() => labs.value.indexOf(lab.value))
-const prev = computed(() => lab.value && labs.value[at.value - 1])
-const next = computed(() => lab.value && labs.value[at.value + 1])
+const prev = computed(() => lab.value && LABS[lab.value.n - 2])
+const next = computed(() => lab.value && LABS[lab.value.n])
 const title = (l) => pages.value[l.slug]?.title || `Лаба ${l.n}`
 const crumbs = computed(() => [['/method', 'Методичка'],
   ...(lab.value ? [['/labs', 'Лаби'], `Лаба ${lab.value.n}`] : [ALL.find((s) => s.slug === slug.value)?.nav])])

@@ -1,17 +1,17 @@
 """Course guide pages: markdown in Mongo (`guide`), edited on the site by admins (T126) and by AI agents with a token
 (T153, `bin/guide`); every save goes to `history` with a note, and a note also lands in the «Що змінилось» draft page
 until published — by an admin only.
-Reading is open to everyone, without the drafts (T157, drafts.py): those come only to who edits."""
+Reading is admin-only too while the guide is unfinished (T136): to reopen, `current_user` on the two GETs,
+404 for DRAFT and `public` as the body to non-admins (T157, drafts.py)."""
 from datetime import date
 
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
-from deps import admin_user, editor_user, viewer
-from drafts import public
+from deps import admin_user, editor_user
 from models.guide import DRAFT, Guide, save
 from models.history import Change, stamp
-from models.user import Status, User
+from models.user import User
 
 router = APIRouter(prefix="/api/guide")
 
@@ -36,10 +36,9 @@ async def page(slug: str) -> Guide:
 
 
 @router.get("")
-async def list_pages():
-    """`empty` — nothing but drafts: the menu keeps such a section from students."""
+async def list_pages(user: User = Depends(editor_user)):
     pages = await Guide.find(Guide.slug != DRAFT).to_list()
-    return [{"slug": g.slug, "title": g.title, "updated": stamp(g.updated_at), "empty": not public(g.body)} for g in pages]
+    return [{"slug": g.slug, "title": g.title, "updated": stamp(g.updated_at)} for g in pages]
 
 
 @router.get("/history")
@@ -57,11 +56,8 @@ async def history(slug: str = "", user: User = Depends(editor_user)):
 
 
 @router.get("/{slug}")
-async def get_page(slug: str, user: User | None = Depends(viewer)):
-    full = bool(user) and user.status == Status.admin
-    if slug == DRAFT and not full:
-        raise HTTPException(404)
-    return (await page(slug)).api(full)
+async def get_page(slug: str, user: User = Depends(editor_user)):
+    return (await page(slug)).api()
 
 
 @router.put("/{slug}")
@@ -87,7 +83,7 @@ async def publish(data: LineIn, user: User = Depends(admin_user)):
     """Move one draft line into the public «Що змінилось» — newest first, above the earlier entries."""
     d, c = await page(DRAFT), await page("changes")
     lines = c.body.split("\n")
-    at = next((i for i, l in enumerate(lines) if l.startswith(("- ", "<!--"))), None)  # above a draft too: the line is for students
+    at = next((i for i, l in enumerate(lines) if l.startswith(("- ", "<!--"))), None)  # above a draft too
     lines[at:at] = [data.line] if at is not None else ["", data.line]
     await save(c, c.title, "\n".join(lines), user.email)
     await save(d, d.title, "\n".join(l for l in d.body.split("\n") if l != data.line), user.email)
