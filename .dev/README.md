@@ -12,8 +12,11 @@
 - Курсові: [coursework](coursework/README.md).
 - Інтеграції: [github](github/README.md) · [tgbot](tgbot/README.md).
 - Реалізація: [platform](platform/README.md).
+- Другий сайт у цьому репо: [ods](ods/README.md) — ods.labs.in.ua, курс «Основи Data Science».
 
 ## Стан
+
+- **Репо стає домом кількох сайтів** (2026-09-29, рішення — [T164](.rounds/.t/T164-R--ods-kickoff.md), пропозиція — [T163](platform/.t/T163-P--core-and-sites.md)): спільне ядро `core/` + сайт python в `app/` + `sites/ods/`; на сервері сайти окремі — своя база, гілка деплою, бот. Коду ядра й ods ще нема. **Контент ODS переїхав** із `Nure/data-science/` ([T165](ods/.t/T165--ods-move/report.md)): 15 лекцій і 5 лаб у `sites/ods/data/`, оригінали pptx/docx — `sites/ods/orig/` поза git, версії лаб для викладача — `*.hid.*` поза git. **Агентові:** нічого з розвʼязків лаб ODS — ні в git, ні в `.dev`: репо може стати публічним.
 
 - **Дальня мета — лудопедія** (мрія Vitalik, 2026-08-17): єдина мова опису ігрового розмаїття без синтаксису; north star і мапа — [T98](games/.t/T98-B--ludopedia.md). Система лабораторних — перший мешканець цієї мови. **Будівництво йде, Д0–Д2 / E1–E4 закрито** (2026-08-18…19, [T100](.rounds/.t/T100-R--ludopedia-kickoff.md) → [T101](platform/.t/T101--ludopedia-core/report.md) + [T103](platform/.t/T103--ludopedia-slots/report.md)): сутності + правила-речення «КОЛИ→ТО» + інбокс знахідок `/refs` + слоти параметрів у заявках живі в пілоті; питання — [T102](games/.t/T102-Q--ludopedia-build-questions.md), пояснення Д3–Д6 — [T104](games/.t/T104-C--ludopedia-d3-d6.md).
 
@@ -28,6 +31,7 @@
 
 ## Наступний крок
 
+- **ODS і спільне ядро** (2026-09-29, [T165](ods/.t/T165--ods-move/report.md)): Vitalik — відповіді на [T166](ods/.t/T166-Q--ods-base-questions.md) (насамперед Q1 — порядок робіт і Q7 — особисті дані в лекції 1, до першого коміту контенту), коміт переїзду. Далі за Q1 «a»: винести платформу в `core/` (M) → базовий ods на ядрі (M, модель Opus 5.5).
 - **Приклади в іграх** (2026-09-29, [T160](platform/.t/T160--examples-in-games/report.md)): приклади ігрових ситуацій усіх девʼяти базових ігор живуть в іграх — у деві й на сервері. Vitalik — коміт, клік-тест сторінок ігор на сервері.
 - **Чернетки в методичці** (2026-09-28, [T157](platform/.t/T157--guide-drafts/report.md) + [T159](platform/.t/T159--guide-closed-again/report.md)): Vitalik — коміт T159 (до нього не пушити: у `3efadf1` методичка відкрита), клік-тест чернеток у деві, деплой; вибори [T158](platform/.t/T158-Q--guide-drafts-choices.md) Q1, Q4, Q6, Q7.
 - **Історія тасків та ігор** (2026-09-28, [T156](platform/.t/T156--card-history/report.md)): Vitalik — коміт і клік-тест сторінок історії.

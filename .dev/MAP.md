@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T162** · тікетів: 161 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T167** · тікетів: 166 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -169,3 +169,8 @@
 | platform | [T159](platform/.t/T159--guide-closed-again/plan.md) | ⚙️ | guide-closed-again | Методичка знову закрита, чернетки — адміну — план | 🟢 🟩 |
 | platform | [T160](platform/.t/T160--examples-in-games/plan.md) | ⚙️ | examples-in-games | Приклади ігрових ситуацій — у грі — план | 🟢 ⬜ |
 | platform | [T161](platform/.t/T161--view-as-readonly/plan.md) | ⚙️ | view-as-readonly | Очима справжнього студента: лише перегляд — план | 🟢 🟩 |
+| ods | [T162](ods/.t/T162-S--ods-content-conversion.md) | 📝 | ods-content-conversion | Контент ODS: конвертація docx і pptx у markdown | 🟢 🟩 |
+| platform | [T163](platform/.t/T163-P--core-and-sites.md) | 💡 | core-and-sites | Один репо: спільне ядро й сайти | 🟢 ⬜ |
+| .rounds | [T164](.rounds/.t/T164-R--ods-kickoff.md) | ✔️ | ods-kickoff | Старт ODS: один репо, переїзд у python-labs | 🟢 🟩 |
+| ods | [T165](ods/.t/T165--ods-move/plan.md) | ⚙️ | ods-move | Переїзд data-science у python-labs — план | 🟢 🟩 |
+| ods | [T166](ods/.t/T166-Q--ods-base-questions.md) | ❓ | ods-base-questions | Базовий ODS: питання перед кодом | 🔴 ⬜ |

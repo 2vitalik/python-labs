@@ -18,3 +18,9 @@ app/api/uploads.trash/
 .claude/settings.local.json
 # Робочі копії даних сайту й токени агента (bin/guide, bin/catalog; T153, T155)
 .site/
+# ODS: оригінали pptx/docx — важкі, docx для викладача з розвʼязками (T165)
+sites/ods/data/
+sites/ods/orig/
+# ODS: версії лаб для викладача йдуть як *.hid.*; це страховка, якщо інфікс забули
+sites/ods/data/labs/**/*teacher*
+sites/ods/data/labs/**/*correction*
