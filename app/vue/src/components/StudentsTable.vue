@@ -79,8 +79,8 @@ td, th { padding: .3rem .5rem; }
 thead th + th, .student td + td { text-align: center; }
 tbody { counter-reset: n; }
 .student td:first-child { position: relative; }
-.student td:first-child::before { counter-increment: n; content: counter(n); position: absolute; right: 100%; top: .3rem;
-                                  margin-right: .5rem; line-height: 1.5rem; font-size: .75rem; color: var(--bs-tertiary-color); }
+.student td:first-child::before { counter-increment: n; content: counter(n); position: absolute; right: 100%; top: 50%;
+                                  transform: translateY(-50%); margin-right: .5rem; font-size: .75rem; color: var(--bs-tertiary-color); }
 .caret { display: inline-block; width: 1rem; }
 .count { font-weight: 400; opacity: .55; font-size: .85em; }
 .name { color: inherit; text-decoration: none; }
