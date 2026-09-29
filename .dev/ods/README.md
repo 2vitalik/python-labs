@@ -4,8 +4,8 @@
 
 Шапка:
 - Оновлено: 2026-09-29
-- Інтегровано: [T162](.t/T162-S--ods-content-conversion.md) (звідки контент і як його конвертовано), [T164](../.rounds/.t/T164-R--ods-kickoff.md) (рішення зі старту), [T165](.t/T165--ods-move/report.md) (переїзд із data-science), [T166](.t/T166-Q--ods-base-questions.md) / [T168](../.rounds/.t/T168-R--ods-base-decisions.md) (рішення перед кодом), [T163](../platform/.t/T163-P--core-and-sites.md) + [T167](../platform/.t/T167--core-extract/report.md) (ядро винесено)
-- Не інтегровано: —
+- Інтегровано: [T162](.t/T162-S--ods-content-conversion.md) (звідки контент і як його конвертовано), [T164](../.rounds/.t/T164-R--ods-kickoff.md) (рішення зі старту), [T165](.t/T165--ods-move/report.md) (переїзд із data-science), [T166](.t/T166-Q--ods-base-questions.md) / [T168](../.rounds/.t/T168-R--ods-base-decisions.md) (рішення перед кодом), [T163](../platform/.t/T163-P--core-and-sites.md) + [T167](../platform/.t/T167--core-extract/report.md) (ядро винесено), [T170](.t/T170--ods-base/report.md) (базовий сайт)
+- Не інтегровано: [T171](.t/T171-Q--ods-base-choices.md) (вибори базового сайту: Q1–Q4 за «a», мовчання = як у коді; Q5 — до деплою)
 
 ## Рішення
 
@@ -29,6 +29,18 @@
   - репо лишається `python-labs`.
 - **Сайт складається на ядрі** за [core/README.md](../../core/README.md): `sites/ods/api/` — `site.env`, `db.py`, `main.py`, `bot/`; `sites/ods/vue/` — `site.js`, `router.js`, `main.js`.
 
+## Реалізовано
+
+- ✅ **Базовий сайт на ядрі** (2026-09-29, [T170](.t/T170--ods-base/report.md)), поки лише локально:
+  - `sites/ods/api/` — `site.env` (база `ods`, `GUIDE_READERS=active`, cookie `ods_session`), `main.py`, `db.py`, `bot/`, колекція `media`, `content_io.py`, смоук;
+  - `sites/ods/vue/` — Лекції, Лаби, сторінка лекції текстом або слайдами (`?slide=N`, ← →, F), формули KaTeX (`math.js`);
+  - лекції й лаби — сторінки методички ядра: `lec01…lec15`, `lab1…lab5`; редактор, історія й чернетки — з ядра;
+  - картинки — у Mongo, `GET /api/media/<слаг>/<файл>`; у md на диску посилання лишаються `img/…`;
+  - читають студенти, яких підтвердив викладач, і адміни; гість іде на вхід;
+  - імпорт: `uv run python content_io.py` у `sites/ods/api`; `*.hid.*` пропускає, повторний запуск без змін нічого не пише;
+  - дев: API 8035, фронт 5035 — запас проєкту №3; запуск API — `--reload-dir . --reload-dir ../../../core/api`;
+  - з md лекції 1 прибрано контакти й фото (T166 Q7 «b»).
+
 ## Де що лежить
 
 ```text
@@ -41,7 +53,7 @@ sites/ods/
 └── orig/                 # поза git: pptx/, docx/
 ```
 
-- Коду сайту ще нема: `sites/ods/api/` і `sites/ods/vue/` зʼявляться з базовим варіантом.
+- Код сайту — `sites/ods/api/` і `sites/ods/vue/`, у git; дані — лише `sites/ods/data/`, поза git.
 - Опис формату md — у README поруч із даними: [лекції](../../sites/ods/data/lectures/README.md), [лаби](../../sites/ods/data/labs/README.md).
 
 ## Правила роботи з контентом
@@ -53,13 +65,12 @@ sites/ods/
 
 ## Не реалізовано
 
-- ⬜ Базовий сайт: вхід, сторінки лекцій і лаб, слайди.
-- ⬜ Позначки слайдів проти чернеток: правило з T166 Q3 — у `core/api/core/drafts.py` і `core/ui/drafts.js`, інакше сервер виріже позначки разом із чернетками.
-- ⬜ Venv: `UV_PROJECT_ENVIRONMENT` один на репо, а `pyproject.toml` у сайтів різні · хвіст [T167](../platform/.t/T167--core-extract/report.md).
+- ⬜ Контент на сервері: імпорт читає диск — [T171](.t/T171-Q--ods-base-choices.md) Q5.
+- ⬜ Бот наживо: токен від BotFather, нік у `.env`.
+- ⬜ Вхід через Google: адреса ods в OAuth-клієнті.
 - ⬜ `bin/www` і гілка статики для другого сайту.
-- ⬜ Рендер формул LaTeX: у python-labs його нема, а в лекціях і лабах формули всюди.
 - ⬜ Маніфест застосунку у vps-infra, гілка деплою, гілка статики.
-- ⬜ Порт у реєстрі дев-серверів: ods ще не має номера.
+- ⬜ Venv спільний: `uv.lock` сайтів зараз однакові за пакетами; розійдуться — `--inexact` або окремий venv.
 
 ## Відкладене
 
@@ -69,8 +80,8 @@ sites/ods/
 
 ## Відкрите
 
-- Нічого: на [T166](.t/T166-Q--ods-base-questions.md) відповіді дано.
+- [T171](.t/T171-Q--ods-base-choices.md): де живуть лекції й картинки, GitHub у профілі, назви лаб, як контент потрапляє на сервер.
 
 ## Наступний крок
 
-- Базовий ods на ядрі (M, Opus 5.5) — окремим запитом Vitalik. Перед імпортом лекції 1 в базу — прибрати з md особисті дані (T166 Q7).
+- **Базовий сайт є локально** (2026-09-29, [T170](.t/T170--ods-base/report.md)): Vitalik — подивитися на 5035, відповіді на [T171](.t/T171-Q--ods-base-choices.md). Далі — деплой ods (M): маніфест vps-infra, гілки, `bin/www` для двох сайтів, контент на сервер, OAuth, бот.

@@ -1,0 +1,10 @@
+[project]
+name = "ods-api"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "labs-core",
+]
+
+[tool.uv.sources]
+labs-core = { path = "../../../core/api", editable = true }

@@ -3,7 +3,8 @@ import { ref } from 'vue'
 import { load, save } from './local.js'
 
 // drafts in guide text (T157): `<!-- … -->` is the admin's notes and unfinished parts. The API sends both texts:
-// `body` with the drafts and `public` without them (drafts.py). Which one the admin looks at is remembered in this browser
+// `body` with the drafts and `public` without them (drafts.py). Which one the admin looks at is remembered in this browser.
+// `<!-- слайд N -->` is not a draft: a slide's border in a lecture, left to the renderer as an invisible comment
 const KEY = 'guide-drafts'
 export const shown = ref(load(KEY) !== '0')
 export function toggleDrafts() {
@@ -12,13 +13,13 @@ export function toggleDrafts() {
 }
 
 export const textOf = (page) => (shown.value ? page?.body : page?.public) || ''
-export const hasDrafts = (page) => !!page?.body?.includes('<!--')
+export const hasDrafts = (page) => /<!--(?!\s*слайд\s)/.test(page?.body || '')
 // is the text right after `before` inside a draft
 export const inDraft = (before) => before.lastIndexOf('<!--') > before.lastIndexOf('-->')
 
 // for the renderer: a draft that takes whole lines becomes a block, one inside a line — a span;
 // an unclosed draft runs to the end of the text
-const DRAFT = /<!--([\s\S]*?)(?:-->|$)/g
+const DRAFT = /<!--(?!\s*слайд\s)([\s\S]*?)(?:-->|$)/g
 export const markDrafts = (text) => text.replace(DRAFT, (all, body, at) => {
   if (!body.trim()) return ''
   const pad = text.slice(text.lastIndexOf('\n', at - 1) + 1, at)

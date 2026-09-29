@@ -42,6 +42,9 @@ const md = new Marked({
   },
 })
 
+// a site's own syntax on top, e.g. formulas: md.use() takes marked extensions
+export const useMd = (...ext) => md.use(...ext)
+
 // `{#id}` → id on the heading itself, or an invisible span inside a list item / paragraph
 export function renderMd(text, idPrefix = '', edit = false) {
   prefix = idPrefix

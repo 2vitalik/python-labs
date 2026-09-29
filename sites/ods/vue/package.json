@@ -1,0 +1,20 @@
+{
+  "name": "ods-vue",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "katex": "^0.16.22",
+    "marked": "^18.0.9",
+    "vue": "^3.5.40",
+    "vue-router": "^5.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.8",
+    "vite": "^8.1.5"
+  }
+}

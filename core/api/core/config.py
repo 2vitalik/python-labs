@@ -9,12 +9,14 @@ class Settings(BaseSettings):
     google_client_id: str = ""
     google_client_secret: str = ""
     session_secret: str
+    session_cookie: str = "session"  # own name per site: on one host (127.0.0.1 in dev) cookies ignore the port
     admin_emails: str = ""
     fake_user_email: str = ""
     tg_bot_name: str = ""
     tg_bot_token: str = ""  # from BotFather; empty = bot refuses to start
     site_url: str = "http://127.0.0.1:5000"  # links in bot messages; Telegram won't link `localhost`
     guide_dir: str = "data/guide"  # the guide's seed and snapshot, *.md
+    guide_readers: str = "admin"  # who reads the guide: admin — while it is unfinished (T136) · active — students too, without drafts
     uploads_dir: str = ""  # files people upload; what they are and the default folder — the site's
     agent_tokens: str = ""  # `name:token,…` — AI agents that edit the site's texts (deps.editor_user); empty = no such way in
 

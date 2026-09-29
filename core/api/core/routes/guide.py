@@ -1,17 +1,18 @@
 """Course guide pages: markdown in Mongo (`guide`), edited on the site by admins (T126) and by AI agents with a token
 (T153, `bin/guide`); every save goes to `history` with a note, and a note also lands in the «Що змінилось» draft page
 until published — by an admin only.
-Reading is admin-only too while the guide is unfinished (T136): to reopen, `current_user` on the two GETs,
-404 for DRAFT and `public` as the body to non-admins (T157, drafts.py)."""
+Who reads is the site's `guide_readers`: admins and agents only while the guide is unfinished (T136), or students too —
+they get `public` as the body and 404 for DRAFT (T157, drafts.py)."""
 from datetime import date
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request
 from pydantic import BaseModel
 
-from core.deps import admin_user, editor_user
+from core.config import settings
+from core.deps import admin_user, agent, allow, current_user, editor_user
 from core.models.guide import DRAFT, Guide, save
 from core.models.history import Change, stamp
-from core.models.user import User
+from core.models.user import Status, User
 
 router = APIRouter(prefix="/api/guide")
 
@@ -35,8 +36,14 @@ async def page(slug: str) -> Guide:
     return g
 
 
+async def reader(request: Request, user: User | None = Depends(current_user)) -> User:
+    if settings.guide_readers == "active":
+        return agent(request) or allow(user, user and user.status != Status.pending)
+    return await editor_user(request, user)
+
+
 @router.get("")
-async def list_pages(user: User = Depends(editor_user)):
+async def list_pages(user: User = Depends(reader)):
     pages = await Guide.find(Guide.slug != DRAFT).to_list()
     return [{"slug": g.slug, "title": g.title, "updated": stamp(g.updated_at)} for g in pages]
 
@@ -56,8 +63,13 @@ async def history(slug: str = "", user: User = Depends(editor_user)):
 
 
 @router.get("/{slug}")
-async def get_page(slug: str, user: User = Depends(editor_user)):
-    return (await page(slug)).api()
+async def get_page(slug: str, user: User = Depends(reader)):
+    if user.status == Status.admin:
+        return (await page(slug)).api()
+    if slug == DRAFT:
+        raise HTTPException(404)
+    data = (await page(slug)).api()
+    return data | {"body": data["public"]}
 
 
 @router.put("/{slug}")

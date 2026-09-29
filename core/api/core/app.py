@@ -44,7 +44,8 @@ def create_app(routers=(), models=()) -> FastAPI:
     app = FastAPI(title=settings.site_name, lifespan=lifespan)
     app.add_exception_handler(Exception, errors.api_handler)
     app.middleware("http")(footprint)
-    app.add_middleware(SessionMiddleware, secret_key=settings.session_secret)  # added last = outermost: the session is set before footprint()
+    # added last = outermost: the session is set before footprint()
+    app.add_middleware(SessionMiddleware, secret_key=settings.session_secret, session_cookie=settings.session_cookie)
     for router in (*ROUTERS, *routers):
         app.include_router(router)
     return app

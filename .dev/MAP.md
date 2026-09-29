@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T170** · тікетів: 169 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T172** · тікетів: 171 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -177,3 +177,5 @@
 | platform | [T167](platform/.t/T167--core-extract/plan.md) | ⚙️ | core-extract | Винос платформи в core — план | 🟢 🟩 |
 | .rounds | [T168](.rounds/.t/T168-R--ods-base-decisions.md) | ✔️ | ods-base-decisions | Базовий ODS: рішення з T166 | 🟢 🟩 |
 | platform | [T169](platform/.t/T169-Q--core-pilot-choices.md) | ❓ | core-pilot-choices | Ядро: вибори пілота | 🔴 ⬜ |
+| ods | [T170](ods/.t/T170--ods-base/plan.md) | ⚙️ | ods-base | Базовий ods на ядрі — план | 🟢 🟩 |
+| ods | [T171](ods/.t/T171-Q--ods-base-choices.md) | ❓ | ods-base-choices | Базовий ods: вибори й хвости | 🔴 ⬜ |
