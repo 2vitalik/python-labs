@@ -9,14 +9,12 @@ const device = matchMedia('(prefers-color-scheme: dark)')
 const own = () => (device.matches ? 'dark' : 'light')  // the device's scheme
 const saved = load(KEY)
 export const mode = ref(saved === 'light' || saved === 'dark' ? saved : 'auto')
-export const shown = ref()  // what the page wears now
 
 function apply() {
-  shown.value = mode.value === 'auto' ? own() : mode.value
-  document.documentElement.dataset.bsTheme = shown.value
+  document.documentElement.dataset.bsTheme = mode.value === 'auto' ? own() : mode.value
 }
-// clicks go round three modes: auto → the other scheme → the device's scheme → auto;
-// the page turns over on every click but the last one
+// clicks go round three modes: auto → the other scheme → the device's scheme → auto.
+// `auto` comes after the scheme the device has: that click unpins the page and leaves it as it looks
 export function nextTheme() {
   if (mode.value === 'auto') mode.value = own() === 'dark' ? 'light' : 'dark'
   else mode.value = mode.value === own() ? 'auto' : own()

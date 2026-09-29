@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 
-import { mode, nextTheme, shown } from '../theme.js'
+import { mode, nextTheme } from '../theme.js'
 import IconTheme from './IconTheme.vue'
 
 // like the flash button of a phone camera: clicks go round three modes, the icon and a note shown for a moment
@@ -21,7 +21,7 @@ function click() {
   <!-- the note answers a click only: shown under the cursor as well, it would never leave after one -->
   <button type="button" class="btn btn-sm border-0 p-1 d-inline-flex text-body-secondary position-relative" :class="{ lit }"
           :title="`Тема: ${NOTES[mode].toLowerCase()}`" @click="click" @mouseleave="lit = false">
-    <IconTheme :dark="shown === 'dark'" :auto="mode === 'auto'" />
+    <IconTheme :mode="mode" />
     <span class="note" aria-hidden="true">{{ NOTES[mode] }}</span>
   </button>
 </template>
