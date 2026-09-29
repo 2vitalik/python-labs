@@ -15,8 +15,12 @@ const slug = useRoute().params.slug
 const game = computed(() => games.value.find((g) => g.slug === slug))
 useTitle(() => game.value?.title)
 // one text for the guide's renderer: it draws the field grids of the examples
-const EXAMPLES = '## Приклади ігрових ситуацій {#examples}\n\nСиня рамка — хто щойно зробив хід, жовта — що змінилось на полі.'
-const text = computed(() => [game.value.description, game.value.examples && `${EXAMPLES}\n\n${game.value.examples}`].filter(Boolean).join('\n\n'))
+const FRAMED = /```field[^`]*[[(]/  // a grid with a marked cell: only then the frames need explaining
+function examples({ examples: e }) {
+  const frames = FRAMED.test(e) ? ['Синя рамка — хто щойно зробив хід, жовта — що змінилось на полі.'] : []
+  return e && ['## Приклади ігрових ситуацій {#examples}', ...frames, e].join('\n\n')
+}
+const text = computed(() => [game.value.description, examples(game.value)].filter(Boolean).join('\n\n'))
 const { grouped } = useTaskFilter(slug)
 const shown = computed(() => grouped.value.reduce((n, z) => n + z.subs.reduce((m, s) => m + s.list.length, 0), 0))
 
