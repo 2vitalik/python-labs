@@ -2,10 +2,10 @@ from beanie import PydanticObjectId
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
-from deps import editor_user, viewer
+from core.deps import editor_user, viewer
+from core.models.history import record, record_new
+from core.models.user import Status, User
 from models.base_game import BaseGame
-from models.history import record, record_new
-from models.user import Status, User
 from zones import KLASSES, STATUSES
 
 router = APIRouter(prefix="/api/games")

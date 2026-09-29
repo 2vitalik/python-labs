@@ -2,11 +2,11 @@ from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 from pydantic import BaseModel
 
 from bot import game_alerts
-from deps import active_user
+from core.deps import active_user
+from core.models.history import record, record_new
+from core.models.user import User
 from models.base_game import BaseGame
 from models.game import Game
-from models.history import record, record_new
-from models.user import User
 
 router = APIRouter(prefix="/api/my/game")
 

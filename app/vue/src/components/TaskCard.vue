@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router'
 
 import { COINS, kidsOf, STATUSES } from '../catalog.js'
 import { hl, norm } from '../taskFilter.js'
-import { user } from '../user.js'
+import { user } from '@core/user.js'
 import CoinBadge from './CoinBadge.vue'
 import Md from './Md.vue'
 

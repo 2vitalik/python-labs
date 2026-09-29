@@ -3,11 +3,11 @@ import { computed, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 import GameCard from '../components/GameCard.vue'
-import Crumbs from '../components/Crumbs.vue'
+import Crumbs from '@core/components/Crumbs.vue'
 import GuideHead from '../components/GuideHead.vue'
-import Toc from '../components/Toc.vue'
+import Toc from '@core/components/Toc.vue'
 import { games, KLASSES, loadCatalog } from '../catalog.js'
-import { canAccess, user } from '../user.js'
+import { canAccess, user } from '@core/user.js'
 
 const router = useRouter()
 const admin = computed(() => user.value?.status === 'admin')

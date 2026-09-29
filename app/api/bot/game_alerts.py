@@ -2,12 +2,12 @@
 from aiogram import html
 from beanie import PydanticObjectId
 
-from bot import notify
-from bot.alerts import arrow, event, level
+from core.bot import notify
+from core.bot.alerts import arrow, event, level
+from core.models.user import User
 from models.game import Claim, Game, Part
 from models.rule import Rule
 from models.task import Task
-from models.user import User
 
 PART = {"window": "вікно", "menu": "меню", "entity": "сутність"}
 CARD = {"title": "🏷 Назва", "base_game": "🕹 Основа", "base_custom": "🕹 Основа (своя)", "description": "📄 Опис"}

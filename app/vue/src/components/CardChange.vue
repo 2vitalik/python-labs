@@ -1,6 +1,6 @@
 <script setup>
 import { FIELDS, long, show } from '../cardFields.js'
-import Diff from './Diff.vue'
+import Diff from '@core/components/Diff.vue'
 
 // one edit of a task or a game, field by field: short values as «було → стало», texts as a line diff
 defineProps({ changes: { type: Object, required: true } })

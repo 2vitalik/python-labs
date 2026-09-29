@@ -12,9 +12,9 @@ DB = os.environ["DB_NAME"]
 assert DB.endswith("_smoke"), "refuse to run on a non-smoke DB"
 mongo = MongoClient()
 mongo.drop_database(DB)
-from bot.start import fallback, start, start_link, sync_username  # noqa: E402
+from core.bot.start import fallback, start, start_link, sync_username  # noqa: E402
+from core.models.user import Status, User  # noqa: E402
 from db import init_db  # noqa: E402
-from models.user import Status, User  # noqa: E402
 
 results = []
 

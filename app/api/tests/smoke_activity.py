@@ -16,9 +16,9 @@ from aiogram.exceptions import TelegramAPIError  # noqa: E402
 from fastapi.testclient import TestClient  # noqa: E402
 
 import main  # noqa: E402
-from activity_people import TZ  # noqa: E402
-from bot import notify  # noqa: E402
-from config import settings  # noqa: E402
+from core.activity_people import TZ  # noqa: E402
+from core.bot import notify  # noqa: E402
+from core.config import settings  # noqa: E402
 
 ADMIN, VASYA, PETRO = "admin@nure.ua", "vasya@nure.ua", "petro@nure.ua"
 settings.admin_emails, settings.tg_bot_token = ADMIN, "fake"

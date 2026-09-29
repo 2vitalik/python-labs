@@ -2,7 +2,7 @@
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
 import { subStyle } from '../catalog.js'
-import { user } from '../user.js'
+import { user } from '@core/user.js'
 import TaskCard from './TaskCard.vue'
 
 const props = defineProps({ zone: String, color: String, subs: Array })

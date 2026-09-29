@@ -17,11 +17,11 @@ from aiogram.types import (Chat, ChatJoinRequest, ChatMemberUpdated, Message, Me
                            ReactionTypeEmoji)
 from aiogram.types import User as TgUser  # noqa: E402
 
-from bot import log, notify  # noqa: E402
-from config import settings  # noqa: E402
+from core.bot import log, notify  # noqa: E402
+from core.config import settings  # noqa: E402
+from core.models.message import TgMessage  # noqa: E402
+from core.models.user import Status, User  # noqa: E402
 from db import init_db  # noqa: E402
-from models.message import TgMessage  # noqa: E402
-from models.user import Status, User  # noqa: E402
 
 NOW = datetime(2026, 9, 24, 12, 0, tzinfo=timezone.utc)
 VASYA = {"id": 42, "is_bot": False, "first_name": "Вася", "username": "vasya_tg"}

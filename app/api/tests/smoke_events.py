@@ -13,15 +13,16 @@ assert DB.endswith("_smoke"), "refuse to run on a non-smoke DB"
 MongoClient().drop_database(DB)
 from starlette.background import BackgroundTasks  # noqa: E402
 
-from bot import digest, errors, game_alerts, notify  # noqa: E402
-from config import settings  # noqa: E402
+from bot import game_alerts  # noqa: E402
+from core.bot import digest, errors, notify  # noqa: E402
+from core.config import settings  # noqa: E402
+from core.models.history import record  # noqa: E402
+from core.models.user import Status, User  # noqa: E402
+from core.routes.auth import upsert_user  # noqa: E402
 from db import init_db  # noqa: E402
 from models.game import Claim, Game, Part  # noqa: E402
-from models.history import record  # noqa: E402
 from models.rule import Rule  # noqa: E402
 from models.task import Task  # noqa: E402
-from models.user import Status, User  # noqa: E402
-from routes.auth import upsert_user  # noqa: E402
 
 settings.tg_bot_token = "fake"
 settings.site_url = "http://localhost:5030"  # not the one from .env

@@ -1,0 +1,63 @@
+# core — платформа, спільна для всіх сайтів
+
+Усе, що не знає про ігри чи лекції: вхід, люди, бот, активність, помилки, методичка, оформлення. Сайт — тонка тека поруч: `app/` (python), згодом `sites/ods/`. Чому так — [T163](../.dev/platform/.t/T163-P--core-and-sites.md), як виносили — [T167](../.dev/platform/.t/T167--core-extract/report.md).
+
+- `api/` — Python-пакет `core`; сайт бере його залежністю за шляхом.
+- `ui/` — вихідні файли Vue; сайт бачить їх через alias `@core`.
+
+## Три правила
+
+1. Ядро не знає про сайти: жодного `if site == 'ods'`. Відмінність — параметр, слот або код сайту.
+2. Є сумнів — код лишається в сайті. У ядро переїжджає те, що знадобилося вдруге.
+3. Перед пушем проходять смоук-тести всіх сайтів.
+
+Залежність іде в один бік: сайт імпортує ядро, ядро сайт — ніколи.
+
+## Що всередині
+
+| Частина | Бекенд `api/core/` | Фронт `ui/` |
+|:--------|:-------------------|:------------|
+| Вхід, сесія, ролі, «очима студента», токен агента | `routes/auth.py`, `routes/me.py`, `routes/view_as.py`, `deps.py` | `user.js`, `router.js`, `pages/LoginPage.vue`, `ViewBar.vue` |
+| Профіль і студенти | `models/user.py`, `routes/profile.py`, `routes/students.py` | `pages/ProfilePage.vue`, `pages/Student*.vue`, `studentFilter.js` |
+| Бот | `bot/` | — |
+| Активність, події, помилки | `activity_*.py`, `routes/activity.py`, `routes/front_errors.py`, `models/` | `pages/ActivityPage.vue`, `activity.js`, `problem.js`, `http.js` |
+| Історія правок | `models/history.py` | `diff.js`, `components/Diff.vue` |
+| Методичка | `models/guide.py`, `routes/guide.py`, `guide_io.py`, `drafts.py` | `pages/GuidePage.vue`, `MethodPage.vue`, `HistoryPage.vue`, `components/Guide*.vue`, `md.js` |
+| Оформлення | — | `App.vue`, `NavBar.vue`, `Crumbs.vue`, `theme.js`, `style.css`, `dark.css` |
+
+## Сайт на ядрі: бекенд
+
+Тека сайту — та, з якої запускається все: там `.env`, `main.py`, `bot/`.
+
+| Файл сайту | Що в ньому |
+|:-----------|:-----------|
+| `pyproject.toml` | залежність `labs-core` за шляхом, editable |
+| `site.env` | сталі сайту, в git: `SITE_NAME`, `DB_NAME`, `SITE_URL`, `GUIDE_DIR` |
+| `.env` | секрети й значення цієї машини; читається після `site.env` |
+| `db.py` | `MODELS` — власні документи, `init_db()` |
+| `main.py` | `app = create_app(models=MODELS, routers=[…])` |
+| `bot/__init__.py` | власні види алертів: `notify.add({...}, after="login")` |
+| `bot/__main__.py` | `run(init_db)`; запуск — `python -m bot` |
+
+- Налаштування — один екземпляр `core.config.settings`. Власні модулі сайту лишаються пласкими: `from models.game import Game`.
+- Рядок студента в списку `/api/students` сайт доповнює через `students.EXTRAS`.
+- Сторінка `/students/<нік>` — за сайтом: на неї ведуть алерти бота й крихти.
+
+## Сайт на ядрі: фронт
+
+| Файл сайту | Що в ньому |
+|:-----------|:-----------|
+| `vite.config.js` | alias `@core`, `dedupe`, `fs.allow` — як у `app/vue` |
+| `src/site.js` | паспорт сайту: назва, меню, сторінки методички, власні колонки студентів |
+| `src/router.js` | усі маршрути явним списком, сторінки ядра серед них: `makeRouter([…])` |
+| `src/main.js` | `start(site, router)` |
+| `src/api.js` | власні виклики API |
+
+- Поля паспорта описано в `ui/site.js`.
+- `site` заповнюється в `start()`. Ядро читає його у функціях і компонентах, а не на верхньому рівні модуля: там він ще порожній.
+- `public/` у кожного сайту своя: іконки й `theme-boot.js`.
+
+## Перевірка
+
+- Смоуки поки лежать у `app/api/tests/`: більшість перевіряє платформу разом з іграми.
+- Після правки ядра — усі смоуки сайту і збірка фронту: `cd app/vue && npm run build`.

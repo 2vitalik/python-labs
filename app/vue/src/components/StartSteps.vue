@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 
-import { user } from '../user.js'
+import { user } from '@core/user.js'
 
 // home page while the guide is closed (T136): what a student can already do — sign in, link the bot
 const active = computed(() => !!user.value && user.value.status !== 'pending')

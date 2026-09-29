@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# bin/www [commit] — build the SPA from a commit's tree (default HEAD)
+# bin/www [commit] — build the SPA from a commit's tree (default HEAD):
+#   app/vue with the platform it imports, core/ui;
 #   in a temp dir, commit dist/ as a parentless commit (subject = sha)
 #   and force-push it as branch www: the branch is always one commit.
 set -euo pipefail
@@ -13,13 +14,15 @@ say() { echo "www: $*"; }
 tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT
 
-git archive "$sha:app/vue" | tar -x -C "$tmp"
-ln -s "$PWD/app/vue/node_modules" "$tmp/node_modules"
+paths=(app/vue)
+git cat-file -e "$sha:core/ui" 2>/dev/null && paths+=(core/ui)  # a commit older than core/ has none
+git archive "$sha" "${paths[@]}" | tar -x -C "$tmp"
+ln -s "$PWD/app/vue/node_modules" "$tmp/app/vue/node_modules"
 
 say "build ${sha:0:7} in $tmp"
-(cd "$tmp" && npm run build)
+(cd "$tmp/app/vue" && npm run build)
 
-(cd "$tmp/dist" && GIT_INDEX_FILE=$tmp/index \
+(cd "$tmp/app/vue/dist" && GIT_INDEX_FILE=$tmp/index \
   git --git-dir="$git_dir" --work-tree=. add -A)
 
 tree=$(GIT_INDEX_FILE=$tmp/index git write-tree)

@@ -8,9 +8,9 @@ from pathlib import Path
 
 import yaml
 
+from core.models.history import record, record_new
 from db import init_db
 from models.base_game import BaseGame
-from models.history import record, record_new
 from models.task import Task
 from taskline import parse_line, render_line
 from zones import ZONES

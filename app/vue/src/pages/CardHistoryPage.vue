@@ -6,7 +6,7 @@ import { getCardHistory, revertCard } from '../api.js'
 import { FIELDS } from '../cardFields.js'
 import { loadCatalog } from '../catalog.js'
 import CardChange from '../components/CardChange.vue'
-import Crumbs from '../components/Crumbs.vue'
+import Crumbs from '@core/components/Crumbs.vue'
 
 // every edit of every task or game, newest first (?slug= narrows to one); ↩ puts the old values back as a new edit
 const KINDS = {

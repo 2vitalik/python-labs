@@ -1,6 +1,6 @@
 <script setup>
 import { AXES, KLASSES, STATUSES } from '../catalog.js'
-import MdArea from './MdArea.vue'
+import MdArea from '@core/components/MdArea.vue'
 
 const form = defineModel({ type: Object })
 defineEmits(['save'])

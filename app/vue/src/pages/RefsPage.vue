@@ -2,8 +2,8 @@
 import { computed, onMounted, reactive, ref } from 'vue'
 
 import { deleteRef, getRefs, postRef } from '../api.js'
-import Crumbs from '../components/Crumbs.vue'
-import GrowArea from '../components/GrowArea.vue'
+import Crumbs from '@core/components/Crumbs.vue'
+import GrowArea from '@core/components/GrowArea.vue'
 import RefCard from '../components/RefCard.vue'
 
 // one stream of finds (links) and ideas (no url); an idea may hang under a find (`parent`) and shows indented below it

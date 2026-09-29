@@ -18,7 +18,7 @@ from fastapi.testclient import TestClient  # noqa: E402
 
 import main  # noqa: E402
 import uploads  # noqa: E402
-from config import settings  # noqa: E402
+from core.config import settings  # noqa: E402
 
 PNG = b"\x89PNG\r\n\x1a\n" + b"0" * 100
 results = []

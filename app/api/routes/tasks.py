@@ -2,10 +2,10 @@ from beanie import PydanticObjectId
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
-from deps import editor_user, viewer
-from models.history import record, record_new
+from core.deps import editor_user, viewer
+from core.models.history import record, record_new
+from core.models.user import Status, User
 from models.task import Task
-from models.user import Status, User
 from zones import COINS, STATUSES, ZONES
 
 router = APIRouter(prefix="/api/tasks")

@@ -2,8 +2,8 @@
 import { computed, reactive, ref } from 'vue'
 
 import { putRef } from '../api.js'
-import { user } from '../user.js'
-import GrowArea from './GrowArea.vue'
+import { user } from '@core/user.js'
+import GrowArea from '@core/components/GrowArea.vue'
 
 // one find (link with a YouTube thumb) or idea (💡, no url); edits inline, ideas can hang under a link
 const props = defineProps({ r: Object })

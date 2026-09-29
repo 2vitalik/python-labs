@@ -2,10 +2,10 @@ from beanie import PydanticObjectId
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
-from deps import active_user
-from models.history import record, record_delete, record_new
+from core.deps import active_user
+from core.models.history import record, record_delete, record_new
+from core.models.user import Status, User
 from models.ref import Ref
-from models.user import Status, User
 
 router = APIRouter(prefix="/api/refs")
 

@@ -5,7 +5,7 @@ from uuid import uuid4
 
 from fastapi import HTTPException, UploadFile
 
-from config import settings
+from core.config import settings
 
 ROOT = Path(settings.uploads_dir) if settings.uploads_dir else Path(__file__).parent / "uploads"
 TRASH = ROOT.parent / (ROOT.name + ".trash")

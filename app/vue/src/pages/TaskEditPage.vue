@@ -2,14 +2,14 @@
 import { computed, onMounted, reactive, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
-import Crumbs from '../components/Crumbs.vue'
+import Crumbs from '@core/components/Crumbs.vue'
 
 import { postTask, putTask } from '../api.js'
 import TaskForm from '../components/TaskForm.vue'
 import { loadCatalog, tasks } from '../catalog.js'
-import { problem } from '../problem.js'
-import { useTitle } from '../title.js'
-import { user } from '../user.js'
+import { problem } from '@core/problem.js'
+import { useTitle } from '@core/title.js'
+import { user } from '@core/user.js'
 
 const route = useRoute()
 const router = useRouter()

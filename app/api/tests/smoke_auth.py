@@ -14,9 +14,9 @@ mongo.drop_database(DB)
 from fastapi.testclient import TestClient  # noqa: E402
 
 import main  # noqa: E402
-from config import settings  # noqa: E402
-from routes import health  # noqa: E402
-from routes.auth import safe_path  # noqa: E402
+from core.config import settings  # noqa: E402
+from core.routes import health  # noqa: E402
+from core.routes.auth import safe_path  # noqa: E402
 
 results = []
 

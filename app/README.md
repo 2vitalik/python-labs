@@ -3,6 +3,8 @@
 - `api/` — FastAPI-бекенд (uv, MongoDB/Beanie, Google OAuth)
 - `vue/` — Vue 3 SPA (Vite, Bootstrap 5)
 
+Сайт стоїть на спільному ядрі [`core/`](../core/README.md): вхід, люди, бот, активність, помилки, методичка, оформлення — там. Тут — ігри: каталог, «Моя гра», заявки, правила, знахідки — і реєстри сайту: `api/main.py`, `api/db.py`, `api/site.env`, `vue/src/site.js`, `vue/src/router.js`. Нижче шляхи `core/…` — від кореня репо, `api/…` і `vue/…` — від `app/`.
+
 ## Перший запуск
 
 1. локальний `mongod` має працювати;
@@ -14,17 +16,17 @@
 
 Порти — №3 у крос-проєктній схемі (`dev-md-rules/DEV.md`): API 8030, фронт 5030.
 
-- бекенд: `cd app/api && uv run fastapi dev --port 8030` → http://localhost:8030
+- бекенд: `cd app/api && uv run fastapi dev --port 8030 --reload-dir . --reload-dir ../../core/api` → http://localhost:8030 (без `--reload-dir` правки ядра сервер не помічає)
 - фронт: `cd app/vue && npm run dev` → **http://localhost:5030** (відкривати цю адресу)
 - дев-вхід без Google: кнопка «Dev-вхід» у шапці (працює, якщо в `.env` заданий `FAKE_USER_EMAIL`); закрита сторінка без входу веде на `/login?next=…` і повертає туди після входу
 - «Очима студента»: кнопка 👁 на сторінках студента — адмін дивиться сайт як він, «Повернутись» у жовтій смужці; справжній студент — лише перегляд (запис → 403), студент із галочкою «Тестовий студент» (`/students/<нік>/edit`) — з повним доступом; на сервері це заміна dev-входу
 - смоуки API (без Google): `cd app/api && DB_NAME=python_labs_smoke uv run python tests/smoke_auth.py` (вхід, `?next=`, 401/403), `… UPLOADS_DIR=/tmp/pl-smoke uv run python tests/smoke_games.py` (гра, заявки, знахідки), `… tests/smoke_guide.py` (методичка: PUT/409, історія, чернетки в тексті, чернетка «Що змінилось», export/import, ідеї), `… tests/smoke_activity.py` (сторінка активності: стрічка, люди, журнал подій, рядок 500), `… tests/smoke_view_as.py` («Очима студента»: хто може, чиї права, чий слід), `… tests/smoke_errors.py` (колекція `errors`: API, бот, помилки фронту з лімітами, стрічка)
 
-У PyCharm (Pro): run-конфігурація FastAPI (`app/api/main.py`, в Uvicorn options — `--port 8030`) + npm-конфігурація `dev` (`app/vue/package.json`) + Compound «app» — запуск обох однією кнопкою.
+У PyCharm (Pro): run-конфігурація FastAPI (`app/api/main.py`, в Uvicorn options — `--port 8030 --reload-dir . --reload-dir ../../core/api`) + npm-конфігурація `dev` (`app/vue/package.json`) + Compound «app» — запуск обох однією кнопкою.
 
 ## Методичка
 
-Публічні сторінки для студентів (`/labs` + `/labs/1…5`, `/score`, `/howto`, `/method` — усе однією сторінкою; `/games` і `/tasks` — текст розділу всім, каталог поки лише адміну) рендерять Markdown із Mongo-колекції `guide` через `GET /api/guide/{slug}`; домашня — лід + «Як влаштований курс». **Правка — на сайті** (адмін: ✏️ біля заголовка або «✏️ сторінку», нотатка «що змінив» → чернетка на `/changes`, історія з diff і відкатом — `/method/history`; [T128](../.dev/platform/.t/T128--guide-editor-v1/report.md)); файли `data/guide/*.md` ([конвенції](../data/guide/README.md)) — seed при першому старті і знімок: `cd api && uv run python guide_io.py export|import`. **Чернетки** ([T157](../.dev/platform/.t/T157--guide-drafts/report.md), [T159](../.dev/platform/.t/T159--guide-closed-again/report.md)): `<!-- … -->` у тексті — нотатки й неготове; адмін бачить їх виділеними й перемикає «👁 з чернетками / 🙈 без чернеток» (`vue/src/drafts.js`); текст без чернеток рахує сервер (`api/drafts.py`, поле `public`). Методичка закрита від студентів цілком (T136). Якорі `{#id}` → `/score#79`: «🔗» біля заголовка копіює лінк, ціль підсвічується. Список розділів і маршрути — `vue/src/guide.js`; рендер — `md.js`, скрол/спалах — `anchors.js`. Звіт — [T117](../.dev/.t/T117--guide-v1/report.md).
+Публічні сторінки для студентів (`/labs` + `/labs/1…5`, `/score`, `/howto`, `/method` — усе однією сторінкою; `/games` і `/tasks` — текст розділу всім, каталог поки лише адміну) рендерять Markdown із Mongo-колекції `guide` через `GET /api/guide/{slug}`; домашня — лід + «Як влаштований курс». **Правка — на сайті** (адмін: ✏️ біля заголовка або «✏️ сторінку», нотатка «що змінив» → чернетка на `/changes`, історія з diff і відкатом — `/method/history`; [T128](../.dev/platform/.t/T128--guide-editor-v1/report.md)); файли `data/guide/*.md` ([конвенції](../data/guide/README.md)) — seed при першому старті і знімок: `cd api && uv run python -m core.guide_io export|import`; тека — `GUIDE_DIR` у `api/site.env`. **Чернетки** ([T157](../.dev/platform/.t/T157--guide-drafts/report.md), [T159](../.dev/platform/.t/T159--guide-closed-again/report.md)): `<!-- … -->` у тексті — нотатки й неготове; адмін бачить їх виділеними й перемикає «👁 з чернетками / 🙈 без чернеток» (`core/ui/drafts.js`); текст без чернеток рахує сервер (`core/api/core/drafts.py`, поле `public`). Методичка закрита від студентів цілком (T136). Якорі `{#id}` → `/score#79`: «🔗» біля заголовка копіює лінк, ціль підсвічується. Список розділів — `vue/src/site.js`, маршрути — `vue/src/router.js`; рендер — `core/ui/md.js`, скрол/спалах — `core/ui/anchors.js`. Звіт — [T117](../.dev/.t/T117--guide-v1/report.md).
 
 **Правка агентом** ([T153](../.dev/platform/.t/T153--agent-guide-access/report.md), [T155](../.dev/platform/.t/T155--agent-catalog-snapshot/report.md)): ШІ-агент править сторінки методички й картки каталогу через те саме API, вхід — токен у заголовку `Authorization: Bearer …`; токени — `AGENT_TOKENS=claude:<токен>,codex:<токен>` в `api/.env`, імʼя — автор в історії. Решту сайту токен не відкриває. Скрипти без залежностей: `bin/guide` (`ls` · `pull [slug…]` · `push <slug> -m "що змінив" [-s "Розділ"]` · `snap`) і `bin/catalog` (`ls tasks|games [текст]` · `pull` · `push [tasks/<slug> …]` · `snap`); без `-t` — сервер, `-t dev` — дев; адреси й токени — `.site/.env`, робочі копії — `.site/<ціль>/` (поза git). `snap` знімає сайт у `data/guide/` і `data/catalog/` — це знімок для git; після `push` на сервер він робиться сам. Смоук: `… tests/smoke_agent.py`.
 
@@ -34,20 +36,20 @@
 
 ## Активність
 
-`/activity` (меню «Актив», лише адмін) — усе, що збирають сайт і бот: стрічка входів, переглядів, змін даних, Telegram, нотаток і збоїв (чіпи джерел, «і викладачі», `?user=<нік>` — одна людина) та вкладка «Люди» з лічильниками за період і стовпчиками за 14 днів. Оновлюється сама. Бек — `api/activity_feed.py` (злиття журналів), `api/activity_people.py` (лічильники), `api/routes/activity.py`; фронт — `vue/src/pages/ActivityPage.vue`, `components/Activity*.vue`, `activity.js`. Звіт — [T146](../.dev/platform/.t/T146--activity-page/report.md).
+`/activity` (меню «Актив», лише адмін) — усе, що збирають сайт і бот: стрічка входів, переглядів, змін даних, Telegram, нотаток і збоїв (чіпи джерел, «і викладачі», `?user=<нік>` — одна людина) та вкладка «Люди» з лічильниками за період і стовпчиками за 14 днів. Оновлюється сама. Бек — `core/api/core/activity_feed.py` (злиття журналів), `activity_people.py` (лічильники), `routes/activity.py`; фронт — `core/ui/pages/ActivityPage.vue`, `components/Activity*.vue`, `activity.js`. Назви власних колекцій сайту для стрічки — `colls` у `vue/src/site.js`. Звіт — [T146](../.dev/platform/.t/T146--activity-page/report.md).
 
-Telegram-рядки й нотатки, записані до привʼязки бота, не мають пошти — людину за Telegram id знаходить читання (`api/activity_link.py`), у базі нічого не дописується. Звіт — [T150](../.dev/platform/.t/T150--tg-link-on-read/report.md).
+Telegram-рядки й нотатки, записані до привʼязки бота, не мають пошти — людину за Telegram id знаходить читання (`core/api/core/activity_link.py`), у базі нічого не дописується. Звіт — [T150](../.dev/platform/.t/T150--tg-link-on-read/report.md).
 
 ## Помилки
 
-- Відповідь API розбирає `vue/src/http.js`: помилка несе `status` і людський текст; нема відповіді — `status = 0` і прапорець `down` → банер `DownBar.vue`.
-- Помилку, яку сторінка не зловила, бере `report()` у `vue/src/problem.js`: 404 → сторінка 404 замість відкритої, решта → блок `Oops.vue` над нею. Тому завантаження даних у сторінці — без `try`: ловити варто лише те, для чого є свій текст поруч із кнопкою.
-- Необроблені помилки API, бота і фронту лягають у колекцію `errors` (`api/models/error.py`) з повним traceback і йдуть алертом `error`; фронт шле свої на `POST /api/errors` (`api/routes/front_errors.py`). Дивитись — `/activity`, чіп «💥 Помилки».
+- Відповідь API розбирає `core/ui/http.js`: помилка несе `status` і людський текст; нема відповіді — `status = 0` і прапорець `down` → банер `DownBar.vue`.
+- Помилку, яку сторінка не зловила, бере `report()` у `core/ui/problem.js`: 404 → сторінка 404 замість відкритої, решта → блок `Oops.vue` над нею. Тому завантаження даних у сторінці — без `try`: ловити варто лише те, для чого є свій текст поруч із кнопкою.
+- Необроблені помилки API, бота і фронту лягають у колекцію `errors` (`core/api/core/models/error.py`) з повним traceback і йдуть алертом `error`; фронт шле свої на `POST /api/errors` (`core/api/core/routes/front_errors.py`). Дивитись — `/activity`, чіп «💥 Помилки».
 - Звіт — [T149](../.dev/platform/.t/T149--errors-pack/report.md).
 
 ## Telegram-бот
 
-Живе в `app/api/bot/` — та сама база, моделі й `.env`, що й API (тому не окремий пакет). Інструкція користування — [api/bot/README.md](api/bot/README.md). Уміє: `/start` + привʼязка акаунта deep link-ом з профілю; адмін-алерти (профілі, перші входи, заявки, гра студента, повідомлення боту, помилки сайту/API/бота; кожен спершу лягає в колекцію `events`, тож лишається в базі, навіть коли Telegram його не отримав) — без налаштувань особисто адмінам, що привʼязали бота, або в групу/гілку форуму після `/here change` там (`/here` — статус із ключами видів, `/here all`, `/here off`, `/mute game` — вимкнути вид). Алерти шле сам API (той самий `TG_BOT_TOKEN`), запущений бот потрібен лише для `/here` і ранкового дайджесту профілів (09:00 Київ).
+Код бота — `core/api/core/bot/`; у сайті, в `app/api/bot/`, — запуск (`__main__.py`), види алертів сайту (`__init__.py`) й алерти про гру (`game_alerts.py`). Та сама база, моделі й `.env`, що й API. Інструкція користування — [api/bot/README.md](api/bot/README.md). Уміє: `/start` + привʼязка акаунта deep link-ом з профілю; адмін-алерти (профілі, перші входи, заявки, гра студента, повідомлення боту, помилки сайту/API/бота; кожен спершу лягає в колекцію `events`, тож лишається в базі, навіть коли Telegram його не отримав) — без налаштувань особисто адмінам, що привʼязали бота, або в групу/гілку форуму після `/here change` там (`/here` — статус із ключами видів, `/here all`, `/here off`, `/mute game` — вимкнути вид). Алерти шле сам API (той самий `TG_BOT_TOKEN`), запущений бот потрібен лише для `/here` і ранкового дайджесту профілів (09:00 Київ).
 
 - токен від BotFather → `TG_BOT_TOKEN` у `app/api/.env`;
 - запуск: `cd app/api && uv run python -m bot` (long polling, вебхук не потрібен);

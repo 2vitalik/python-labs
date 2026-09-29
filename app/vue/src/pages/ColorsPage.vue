@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 
-import Crumbs from '../components/Crumbs.vue'
+import Crumbs from '@core/components/Crumbs.vue'
 // palette workshop: pick zone base colors and a subzone-variation principle by code (e.g. "G h2")
 const FAMILIES = [
   { code: 'R', name: 'червоний', h: 4 }, { code: 'O', name: 'помаранчевий', h: 27 },

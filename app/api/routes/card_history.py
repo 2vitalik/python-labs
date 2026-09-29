@@ -6,11 +6,11 @@ from zoneinfo import ZoneInfo
 from beanie import PydanticObjectId
 from fastapi import APIRouter, Depends, HTTPException
 
-from deps import editor_user
+from core.deps import editor_user
+from core.models.history import Change, record, stamp
+from core.models.user import User
 from models.base_game import BaseGame
-from models.history import Change, record, stamp
 from models.task import Task
-from models.user import User
 
 router = APIRouter(prefix="/api/catalog/history")
 KINDS = {"tasks": Task, "games": BaseGame}

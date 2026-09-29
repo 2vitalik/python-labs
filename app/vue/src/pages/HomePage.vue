@@ -2,12 +2,12 @@
 import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-import { getGuidePage } from '../api.js'
-import GuideBody from '../components/GuideBody.vue'
-import GuideFoot from '../components/GuideFoot.vue'
+import { getGuidePage } from '@core/api.js'
+import GuideBody from '@core/components/GuideBody.vue'
+import GuideFoot from '@core/components/GuideFoot.vue'
 import StartSteps from '../components/StartSteps.vue'
-import { loadGuide, pages } from '../guide.js'
-import { canAccess, user } from '../user.js'
+import { loadGuide, pages } from '@core/guide.js'
+import { canAccess, user } from '@core/user.js'
 
 const router = useRouter()
 const admin = computed(() => user.value?.status === 'admin')

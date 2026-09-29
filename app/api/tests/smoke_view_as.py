@@ -14,7 +14,7 @@ db = MongoClient()[DB]
 from fastapi.testclient import TestClient  # noqa: E402
 
 import main  # noqa: E402
-from config import settings  # noqa: E402
+from core.config import settings  # noqa: E402
 
 ADMIN, TEST, VASYA, PETRO = "admin@nure.ua", "test.student@nure.ua", "vasya@nure.ua", "petro@nure.ua"
 settings.admin_emails, settings.tg_bot_token, settings.tg_bot_name = ADMIN, "", "smoke_bot"  # no token: nothing leaves for Telegram

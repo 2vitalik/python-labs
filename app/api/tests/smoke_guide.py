@@ -18,10 +18,10 @@ mongo.drop_database(DB)
 from fastapi.testclient import TestClient  # noqa: E402
 
 import main  # noqa: E402
-from config import settings  # noqa: E402
+from core.config import settings  # noqa: E402
 
 results = []
-IO = ("import asyncio, pathlib, sys, guide_io\nfrom db import init_db\nguide_io.ROOT = pathlib.Path(sys.argv[1])\n"
+IO = ("import asyncio, pathlib, sys\nfrom core import guide_io\nfrom db import init_db\nguide_io.ROOT = pathlib.Path(sys.argv[1])\n"
       "async def go():\n    await init_db()\n    await getattr(guide_io, sys.argv[2])()\nasyncio.run(go())")
 
 

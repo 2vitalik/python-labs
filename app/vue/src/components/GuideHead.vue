@@ -2,16 +2,16 @@
 import { computed, nextTick, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
-import { flash } from '../anchors.js'
-import { getGuidePage } from '../api.js'
-import { textOf } from '../drafts.js'
-import { load, save } from '../local.js'
-import { tocOf } from '../md.js'
-import { user } from '../user.js'
-import GuideBody from './GuideBody.vue'
-import GuideFoot from './GuideFoot.vue'
-import GuideText from './GuideText.vue'
-import IconChevron from './IconChevron.vue'
+import { flash } from '@core/anchors.js'
+import { getGuidePage } from '@core/api.js'
+import GuideBody from '@core/components/GuideBody.vue'
+import GuideFoot from '@core/components/GuideFoot.vue'
+import GuideText from '@core/components/GuideText.vue'
+import IconChevron from '@core/components/IconChevron.vue'
+import { textOf } from '@core/drafts.js'
+import { load, save } from '@core/local.js'
+import { tocOf } from '@core/md.js'
+import { user } from '@core/user.js'
 
 // guide section on top of a catalog page: the whole text for guests and students (the catalog itself
 // stays admin-only until it is ready — T116 Q13); above the catalog — a framed block that folds and remembers it,

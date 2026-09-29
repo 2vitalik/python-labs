@@ -3,11 +3,11 @@ from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 from pydantic import BaseModel
 
 from bot import game_alerts
-from deps import active_user
+from core.deps import active_user
+from core.models.history import record, record_delete, record_new
+from core.models.user import Status, User
 from models.game import Claim, Game
-from models.history import record, record_delete, record_new
 from models.task import Task
-from models.user import Status, User
 from routes.my_game import my_game
 from routes.my_parts import part_of
 

@@ -2,8 +2,8 @@
 from fastapi import APIRouter, Depends
 
 from catalog_io import render
-from deps import editor_user
-from models.user import User
+from core.deps import editor_user
+from core.models.user import User
 
 router = APIRouter(prefix="/api/catalog")
 

@@ -2,15 +2,15 @@
 import { computed, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-import Crumbs from '../components/Crumbs.vue'
+import Crumbs from '@core/components/Crumbs.vue'
 import GuideHead from '../components/GuideHead.vue'
-import IconArrows from '../components/IconArrows.vue'
+import IconArrows from '@core/components/IconArrows.vue'
 import TaskCatalog from '../components/TaskCatalog.vue'
-import Toc from '../components/Toc.vue'
+import Toc from '@core/components/Toc.vue'
 import { games, loadCatalog } from '../catalog.js'
 import { useTaskFilter } from '../taskFilter.js'
-import { canAccess, user } from '../user.js'
-import { toggleWide, wide, wideOn } from '../wide.js'
+import { canAccess, user } from '@core/user.js'
+import { toggleWide, wide, wideOn } from '@core/wide.js'
 
 const router = useRouter()
 const admin = computed(() => user.value?.status === 'admin')

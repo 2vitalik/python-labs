@@ -3,15 +3,15 @@ import { computed, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 import { getStudentGame } from '../api.js'
-import Avatar from '../components/Avatar.vue'
+import Avatar from '@core/components/Avatar.vue'
 import CoinBadge from '../components/CoinBadge.vue'
-import Crumbs from '../components/Crumbs.vue'
+import Crumbs from '@core/components/Crumbs.vue'
 import GameGraph from '../components/GameGraph.vue'
 import Md from '../components/Md.vue'
 import RuleRow from '../components/RuleRow.vue'
 import { COINS, ROLES, games, loadCatalog, paramsText } from '../catalog.js'
-import { useTitle } from '../title.js'
-import { lookAs, user } from '../user.js'
+import { useTitle } from '@core/title.js'
+import { lookAs, user } from '@core/user.js'
 
 const nick = useRoute().params.nick
 const data = ref(null)

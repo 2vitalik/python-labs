@@ -14,8 +14,8 @@ db = MongoClient()[DB]
 from fastapi.testclient import TestClient  # noqa: E402
 
 import main  # noqa: E402
-from bot import errors, notify  # noqa: E402
-from config import settings  # noqa: E402
+from core.bot import errors, notify  # noqa: E402
+from core.config import settings  # noqa: E402
 
 ADMIN, VASYA, TEST = "admin@nure.ua", "vasya@nure.ua", "test.student@nure.ua"
 settings.admin_emails, settings.tg_bot_token = ADMIN, "fake"

@@ -1,0 +1,59 @@
+import re
+from datetime import datetime, timezone
+from enum import Enum
+from typing import Annotated
+
+from beanie import Document, Indexed
+from pydantic import Field
+
+
+class Status(str, Enum):
+    pending = "pending"
+    student = "student"
+    admin = "admin"
+
+
+class User(Document):
+    email: Annotated[str, Indexed(unique=True)]  # nick = local part, unique (single domain)
+    name: str = ""
+    picture: str = ""
+    status: Status = Status.pending
+    last_name: str = ""
+    first_name: str = ""
+    patronymic: str = ""
+    group: str = ""
+    test: bool = False  # made up for «Очима студента» (T144): no Google account behind it, left out of digests and totals
+    github: str = ""
+    tg_username: str = ""
+    tg_token: str = ""
+    tg_chat_id: int | None = None
+    tg_linked_at: datetime | None = None  # when this chat was linked; None once unlinked
+    first_seen_at: datetime | None = None  # first sign-in; None = never been on the site
+    last_seen_at: datetime | None = None  # last sign-in or page view
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+    class Settings:
+        name = "users"
+
+    @property
+    def nick(self) -> str:
+        return self.email.split("@")[0]
+
+    @classmethod
+    async def by_nick(cls, nick: str) -> "User | None":
+        return await cls.find_one({"email": {"$regex": f"^{re.escape(nick)}@"}})
+
+    def person(self) -> dict:
+        """The short card: a row in a list, a name next to an event."""
+        full = " ".join(x for x in (self.last_name, self.first_name) if x)
+        return {"nick": self.nick, "name": full or self.name, "group": self.group,
+                "picture": self.picture, "status": self.status, "test": self.test}
+
+    def api(self) -> dict:
+        return {
+            "id": str(self.id), "email": self.email, "nick": self.nick,
+            "name": self.name, "picture": self.picture,
+            "status": self.status, "last_name": self.last_name, "first_name": self.first_name,
+            "patronymic": self.patronymic, "group": self.group, "test": self.test, "github": self.github,
+            "tg_username": self.tg_username, "tg_linked": self.tg_chat_id is not None, "tg_linked_at": self.tg_linked_at,
+        }

@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 
-import Crumbs from '../components/Crumbs.vue'
+import Crumbs from '@core/components/Crumbs.vue'
 import { loadCatalog, zones } from '../catalog.js'
 
 // proposal П1: zone = a RANGE of one color family; neighbour zones get neighbour families,

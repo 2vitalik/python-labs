@@ -13,12 +13,12 @@ assert DB.endswith("_smoke"), "refuse to run on a non-smoke DB"
 MongoClient().drop_database(DB)
 from aiogram.exceptions import TelegramAPIError  # noqa: E402
 
-from bot import log, notes, notify  # noqa: E402
-from config import settings  # noqa: E402
+from core.bot import log, notes, notify  # noqa: E402
+from core.config import settings  # noqa: E402
+from core.models.message import TgMessage  # noqa: E402
+from core.models.note import Note  # noqa: E402
+from core.models.user import Status, User  # noqa: E402
 from db import init_db  # noqa: E402
-from models.message import TgMessage  # noqa: E402
-from models.note import Note  # noqa: E402
-from models.user import Status, User  # noqa: E402
 
 settings.tg_bot_token = "fake"
 sent, deleted, reacted, results = [], [], [], []

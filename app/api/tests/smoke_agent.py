@@ -16,7 +16,7 @@ mongo.drop_database(DB)
 from fastapi.testclient import TestClient  # noqa: E402
 
 import main  # noqa: E402
-from config import settings  # noqa: E402
+from core.config import settings  # noqa: E402
 
 results = []
 settings.agent_tokens = "claude:tok-claude, codex:tok-codex, nobody:"

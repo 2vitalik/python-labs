@@ -2,14 +2,14 @@
 import { computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 
-import Crumbs from '../components/Crumbs.vue'
-import GuideText from '../components/GuideText.vue'
+import Crumbs from '@core/components/Crumbs.vue'
+import GuideText from '@core/components/GuideText.vue'
 import TaskCatalog from '../components/TaskCatalog.vue'
 import { AXES, games, KLASSES, loadCatalog, STATUSES } from '../catalog.js'
-import { problem } from '../problem.js'
+import { problem } from '@core/problem.js'
 import { useTaskFilter } from '../taskFilter.js'
-import { useTitle } from '../title.js'
-import { user } from '../user.js'
+import { useTitle } from '@core/title.js'
+import { user } from '@core/user.js'
 
 const slug = useRoute().params.slug
 const game = computed(() => games.value.find((g) => g.slug === slug))
