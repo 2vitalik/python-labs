@@ -19,7 +19,7 @@ from aiogram.types import Poll as TgPoll  # noqa: E402
 from aiogram.types import User as TgUser  # noqa: E402
 
 from core import polls_replay  # noqa: E402
-from core.bot import chats, notify, polls  # noqa: E402
+from core.bot import chats, notify, polls, spot  # noqa: E402
 from core.bot.run import build  # noqa: E402
 from core.models.message import TgMessage  # noqa: E402
 from core.models.poll import Option, Poll  # noqa: E402
@@ -145,6 +145,17 @@ async def run():
     r = await chats.seen(handler, forum_msg(14, thread=5), {})
     chats.note = broken
     check("noting a place fails: the message still goes on", r == "ok" and len(handled) == 7)
+
+    deleted, said = [], []
+
+    class FakeBot:
+        async def delete_message(self, chat_id, message_id):
+            deleted.append((chat_id, message_id))
+    spot.bot, spot.ack = FakeBot, lambda m, text: said.append(text) or asyncio.sleep(0)
+    await chats.seen(lambda m, data: spot.poll(m), forum_msg(15, thread=7, reply=topic), {})
+    check("/poll in a topic: the place noted, the command deleted, the answer names the topic",
+          await TgChat.find_one(TgChat.chat_id == -100, TgChat.thread_id == 7) and deleted == [(-100, 15)] and "25-1 пари" in said[-1],
+          (deleted, said))
 
     async def make_request(bot, method):
         return Message(message_id=99, date=NOW, chat=FORUM, poll=tg_poll(0, [0, 0]), from_user=TgUser(id=1, is_bot=True, first_name="bot"))
