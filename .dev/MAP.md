@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T172** · тікетів: 171 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T174** · тікетів: 173 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -179,3 +179,5 @@
 | platform | [T169](platform/.t/T169-Q--core-pilot-choices.md) | ❓ | core-pilot-choices | Ядро: вибори пілота | 🔴 ⬜ |
 | ods | [T170](ods/.t/T170--ods-base/plan.md) | ⚙️ | ods-base | Базовий ods на ядрі — план | 🟢 🟩 |
 | ods | [T171](ods/.t/T171-Q--ods-base-choices.md) | ❓ | ods-base-choices | Базовий ods: вибори й хвости | 🔴 ⬜ |
+| ods | [T172](ods/.t/T172-C--ods-labs-review.md) | 🔆 | ods-labs-review | Лаби ODS: оцінка й напрями змін | 🟢 ⬜ |
+| ods | [T173](ods/.t/T173-Q--ods-labs-direction.md) | ❓ | ods-labs-direction | Лаби ODS: куди рухатися | 🟢 ⬜ |
