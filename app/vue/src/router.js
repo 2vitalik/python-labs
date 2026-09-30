@@ -4,6 +4,11 @@ import HistoryPage from '@core/pages/HistoryPage.vue'
 import LoginPage from '@core/pages/LoginPage.vue'
 import MethodPage from '@core/pages/MethodPage.vue'
 import NotFoundPage from '@core/pages/NotFoundPage.vue'
+import PollEditPage from '@core/pages/PollEditPage.vue'
+import PollMatrixPage from '@core/pages/PollMatrixPage.vue'
+import PollPage from '@core/pages/PollPage.vue'
+import PollTemplatesPage from '@core/pages/PollTemplatesPage.vue'
+import PollsPage from '@core/pages/PollsPage.vue'
 import ProfilePage from '@core/pages/ProfilePage.vue'
 import StudentEditPage from '@core/pages/StudentEditPage.vue'
 import StudentsPage from '@core/pages/StudentsPage.vue'
@@ -40,6 +45,12 @@ export default makeRouter([
   { path: '/students/:nick', component: StudentGamePage, meta: { title: 'Студенти', access: 'admin' } },
   { path: '/students/:nick/edit', component: StudentEditPage, meta: { title: 'Студенти', access: 'admin' } },
   { path: '/activity', component: ActivityPage, meta: { title: 'Активність', access: 'admin', filters: true } },
+  { path: '/polls', component: PollsPage, meta: { title: 'Опитування', access: 'admin', filters: true } },
+  { path: '/polls/new', component: PollEditPage, meta: { title: 'Нове опитування', access: 'admin' } },
+  { path: '/polls/templates', component: PollTemplatesPage, meta: { title: 'Шаблони опитувань', access: 'admin' } },
+  { path: '/polls/matrix', component: PollMatrixPage, meta: { title: 'Хто як відповідав', access: 'admin', wide: true, filters: true } },
+  { path: '/polls/:id', component: PollPage, meta: { title: 'Опитування', access: 'admin' } },
+  { path: '/polls/:id/edit', component: PollEditPage, meta: { title: 'Опитування', access: 'admin' } },
   { path: '/ideas', component: RefsPage, meta: { title: 'Знахідки', access: 'admin' } },
   { path: '/refs', redirect: '/ideas' },
   { path: '/games', component: GamesPage, meta: { title: 'Ігри', ...hidden } },  // guide text + catalog; the catalog stays admin-only inside once the guide reopens (T116 Q13)

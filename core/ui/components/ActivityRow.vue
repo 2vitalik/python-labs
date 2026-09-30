@@ -48,7 +48,12 @@ const status = computed(() => (r.value.status >= 500 ? 'text-bg-danger' : r.valu
         <span class="badge text-bg-light border fw-normal">{{ CHATS[r.chat_type] || r.chat_type }}</span>
         <span v-if="TG_KINDS[r.kind]" class="badge text-bg-light border fw-normal ms-1">{{ TG_KINDS[r.kind] }}</span>
         <span v-if="one && r.user && r.user !== one" class="small text-secondary ms-1">{{ name(r.user) }}:</span>
+        <span v-if="r.content_type === 'poll'" class="badge text-bg-light border fw-normal ms-1">опитування</span>
         <span class="text ms-1">{{ r.text || (r.content_type === 'text' ? '' : `[${r.content_type}]`) }}</span>
+      </template>
+      <template v-else-if="r.src === 'vote'">
+        <span class="badge text-bg-light border fw-normal">голос</span>
+        <span class="text ms-1">{{ r.text || (r.option_ids.length ? `варіант ${r.option_ids.map((i) => i + 1).join(', ')}` : '↩︎ голос відкликано') }}</span>
       </template>
       <template v-else-if="r.src === 'error'">
         <span class="badge text-bg-danger fw-normal">{{ ERRORS[r.source] }}</span> <code>{{ r.method }} {{ r.path }}</code>

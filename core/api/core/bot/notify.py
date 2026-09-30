@@ -6,7 +6,7 @@ from functools import cache
 from aiogram import Bot, html
 from aiogram.client.default import DefaultBotProperties
 from aiogram.exceptions import TelegramAPIError
-from aiogram.methods import SendMessage
+from aiogram.methods import SendMessage, SendPoll
 
 from core.bot import log
 from core.config import settings
@@ -20,6 +20,7 @@ KINDS = {  # the platform's; a site puts its own in with add()
     "login": "👋 перші входи на сайт",
     "note": "📝 нотатки про студентів, Chat Automation",
     "msg": "💬 повідомлення боту від студентів",
+    "poll": "🗳 опитування: не надіслано, голоси розходяться з Telegram",
     "error": "💥 помилки сайту, API і бота",
     "digest": "📊 ранковий дайджест профілів",
 }
@@ -45,7 +46,7 @@ def label(kind: str) -> str:
 async def outgoing(make_request, bot: Bot, method):
     """Session middleware of the shared Bot: every sent message → `messages`, from the bot and the API alike."""
     result = await make_request(bot, method)
-    if isinstance(method, SendMessage):
+    if isinstance(method, (SendMessage, SendPoll)):
         await log.save(result, "out", kind_var.get())
     return result
 

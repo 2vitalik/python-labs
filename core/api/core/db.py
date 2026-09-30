@@ -10,9 +10,12 @@ from core.models.history import Change
 from core.models.message import TgMessage
 from core.models.note import Note
 from core.models.notify import Route
+from core.models.poll import Poll, PollTemplate
+from core.models.poll_send import PollSend
 from core.models.user import User
+from core.models.vote import TgChat, Vote
 
-MODELS = [User, Change, Route, Activity, Guide, TgMessage, Note, Event, Error]
+MODELS = [User, Change, Route, Activity, Guide, TgMessage, Note, Event, Error, PollTemplate, Poll, PollSend, Vote, TgChat]
 mongo = AsyncMongoClient(settings.mongo_uri)  # connects lazily, so it is safe to build at import
 
 

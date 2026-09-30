@@ -12,6 +12,8 @@ sites/ods/vue/dist/
 # Скриншоти студентських робіт — живуть поза git (синк Dropbox); .trash — кошик видалених
 app/api/uploads/
 app/api/uploads.trash/
+# Страховий журнал оновлень опитувань (бот пише до Mongo; відновлення — core.polls_replay, T176)
+logs/
 
 *.hid.*
 

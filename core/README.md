@@ -23,6 +23,7 @@
 | Активність, події, помилки | `activity_*.py`, `routes/activity.py`, `routes/front_errors.py`, `models/` | `pages/ActivityPage.vue`, `activity.js`, `problem.js`, `http.js` |
 | Історія правок | `models/history.py` | `diff.js`, `components/Diff.vue` |
 | Методичка | `models/guide.py`, `routes/guide.py`, `guide_io.py`, `drafts.py` | `pages/GuidePage.vue`, `MethodPage.vue`, `HistoryPage.vue`, `components/Guide*.vue`, `md.js` |
+| Опитування в Telegram | `models/poll.py`, `poll_send.py`, `vote.py`, `polls_*.py`, `routes/poll*.py`, `bot/polls.py`, `bot/chats.py` | `pages/Poll*.vue`, `components/Poll*.vue`, `TagInput.vue`, `polls.js` |
 | Оформлення | — | `App.vue`, `NavBar.vue`, `Crumbs.vue`, `theme.js`, `style.css`, `dark.css` |
 
 ## Сайт на ядрі: бекенд

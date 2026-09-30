@@ -10,7 +10,7 @@ from core.models.user import Status, User
 TZ = ZoneInfo("Europe/Kyiv")  # a day is the teacher's day, not UTC's
 SPARK = 14
 # what people do themselves; of Telegram — only what they wrote, not the bot's replies
-COUNTED = {k: SOURCES[k] for k in ("login", "view", "api", "edit")} | {"tg": ("messages", {"dir": "in"}, "user")}
+COUNTED = {k: SOURCES[k] for k in ("login", "view", "api", "edit", "vote")} | {"tg": ("messages", {"dir": "in"}, "user")}
 
 
 def last_days(n: int) -> list[str]:
@@ -30,8 +30,9 @@ async def tally(days: int, link: dict[int, str]) -> dict[str, dict]:
     day = {"$dateToString": {"format": "%Y-%m-%d", "date": "$at", "timezone": TZ.key}}
     out = {}
     for src, (name, own, who) in COUNTED.items():
-        # `from_id` — Telegram rows only: whose they are when written before the chat was linked (T150)
-        group = {"_id": {"who": f"${who}", "tg": "$from_id", "day": day}, "n": {"$sum": 1}, "last": {"$max": "$at"}}
+        # the Telegram id — messages and votes only: whose they are when written before the chat was linked (T150)
+        tg = {"$ifNull": ["$from_id", "$tg_id"]}
+        group = {"_id": {"who": f"${who}", "tg": tg, "day": day}, "n": {"$sum": 1}, "last": {"$max": "$at"}}
         async for g in await journal(name).aggregate([{"$match": own | match}, {"$group": group}]):
             email = g["_id"]["who"] or link.get(g["_id"].get("tg"), "")
             p = out.setdefault(email, {"n": Counter(), "days": Counter(), "last": g["last"]})

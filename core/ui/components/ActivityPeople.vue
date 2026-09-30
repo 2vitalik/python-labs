@@ -11,7 +11,7 @@ const props = defineProps({ days: Number, staff: Boolean })
 const data = ref(null)
 const error = ref('')
 const COLS = [['login', '🔑', 'Входи'], ['view', '👁', 'Перегляди сторінок'], ['edit', '✏️', 'Зміни даних'],
-              ['tg', '💬', 'Повідомлення, реакції, вступи в Telegram'], ['api', '⚙️', 'API-виклики']]
+              ['tg', '💬', 'Повідомлення, реакції, вступи в Telegram'], ['vote', '🗳', 'Голоси в опитуваннях'], ['api', '⚙️', 'API-виклики']]
 const max = computed(() => Math.max(1, ...data.value.rows.flatMap((p) => p.days)))
 const tiles = computed(() => {
   const t = data.value.total

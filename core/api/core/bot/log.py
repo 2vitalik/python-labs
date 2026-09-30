@@ -28,7 +28,7 @@ async def save(message: Message, dir: str, kind: str = "") -> None:
                     thread_id=message.message_thread_id if message.is_topic_message else None,
                     from_id=sender.id if sender else None, username=(sender.username if sender else None) or "",
                     user=await email(sender.id if sender else message.chat.id),
-                    text=message.text or message.caption or "", content_type=message.content_type,
+                    text=message.text or message.caption or (message.poll.question if message.poll else ""), content_type=message.content_type,
                     file_id=media_id(message), message_id=message.message_id, kind=kind, raw=dump(message) if dir == "in" else {},
                     at=datetime.fromtimestamp(message.edit_date, timezone.utc) if message.edit_date else message.date).insert()
 

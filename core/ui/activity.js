@@ -7,16 +7,16 @@ import { onMounted, onUnmounted } from 'vue'
 export const CHIPS = [
   { key: 'site', icon: '🌐', text: 'Сайт', src: ['login', 'view'], on: true },
   { key: 'edit', icon: '✏️', text: 'Зміни', src: ['edit'], on: true },
-  { key: 'tg', icon: '✈️', text: 'Telegram', src: ['tg'], on: true },
+  { key: 'tg', icon: '✈️', text: 'Telegram', src: ['tg', 'vote'], on: true, title: 'Повідомлення, реакції, вступи й голоси в опитуваннях' },
   { key: 'note', icon: '📝', text: 'Нотатки', src: ['note'], on: true },
   { key: 'fail', icon: '⚠️', text: 'Збої', src: ['fail'], on: true, title: 'API-виклики, що скінчились помилкою: 4xx і 5xx' },
   { key: 'error', icon: '💥', text: 'Помилки', src: ['error'], on: true, title: 'Необроблені помилки сайту, API і бота — з повним traceback' },
   { key: 'event', icon: '🔔', text: 'Алерти', src: ['event'], on: false, title: 'Важливі події — те, що бот шле в Telegram' },
   { key: 'api', icon: '⚙️', text: 'API', src: ['api'], on: false, title: 'Усі API-виклики' },
 ]
-export const ICONS = { login: '🔑', view: '👁', api: '⚙️', fail: '⚠️', edit: '✏️', event: '🔔', error: '💥' }
+export const ICONS = { login: '🔑', view: '👁', api: '⚙️', fail: '⚠️', edit: '✏️', event: '🔔', error: '💥', vote: '🗳' }
 export const ERRORS = { api: 'API', bot: 'бот', front: 'сайт' }
-export const COLLS = { users: 'профіль', guide: 'методичка' }  // the site's own — site.colls
+export const COLLS = { users: 'профіль', guide: 'методичка', polls: 'опитування', poll_templates: 'шаблон опитування' }  // the site's own — site.colls
 export const CHATS = { private: 'бот', business: 'особистий чат', group: 'група', supergroup: 'форум' }
 export const TG_KINDS = { edit: 'правка', deleted: 'видалено', member: 'членство', reaction: 'реакція' }
 export const PERIODS = [[1, 'сьогодні'], [7, '7 днів'], [30, '30 днів'], [0, 'весь час']]

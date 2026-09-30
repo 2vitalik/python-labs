@@ -181,6 +181,6 @@
 | ods | [T171](ods/.t/T171-Q--ods-base-choices.md) | ❓ | ods-base-choices | Базовий ods: вибори й хвости | 🔴 ⬜ |
 | ods | [T172](ods/.t/T172-C--ods-labs-review.md) | 🔆 | ods-labs-review | Лаби ODS: оцінка й напрями змін | 🟢 ⬜ |
 | ods | [T173](ods/.t/T173-Q--ods-labs-direction.md) | ❓ | ods-labs-direction | Лаби ODS: куди рухатися | 🔴 ⬜ |
-| tgbot | [T174](tgbot/.t/T174-P--polls-design.md) | 💡 | polls-design | Опитування v1: дизайн — моделі, надійність, API, сторінки | 🟢 ⬜ |
+| tgbot | [T174](tgbot/.t/T174-P--polls-design.md) | 💡 | polls-design | Опитування v1: дизайн — моделі, надійність, API, сторінки | 🟢 🟩 |
 | tgbot | [T175](tgbot/.t/T175-Q--polls-questions.md) | ❓ | polls-questions | Опитування v1: відкриті вибори | 🔴 ⬜ |
-| tgbot | [T176](tgbot/.t/T176--polls-v1/plan.md) | ⚙️ | polls-v1 | Опитування v1 — шаблони, відправлення, збір голосів, таблиця — план | 🟢 ⬜ |
+| tgbot | [T176](tgbot/.t/T176--polls-v1/plan.md) | ⚙️ | polls-v1 | Опитування v1 — шаблони, відправлення, збір голосів, таблиця — план | 🟢 🟩 |

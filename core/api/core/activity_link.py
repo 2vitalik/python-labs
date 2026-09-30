@@ -6,6 +6,7 @@ from core.models.user import User
 BY_TG = {
     "tg": lambda ids: [{"from_id": {"$in": ids}}, {"dir": "out", "chat_id": {"$in": ids}}],
     "note": lambda ids: [{"tg_id": {"$in": ids}}],
+    "vote": lambda ids: [{"tg_id": {"$in": ids}}],
 }
 
 
@@ -14,7 +15,7 @@ def links(users: list[User]) -> dict[int, str]:
 
 
 def tg_id(doc: dict) -> int | None:
-    """A note's student, the sender of an incoming message, the chat of an outgoing one."""
+    """A note's student or a voter, the sender of an incoming message, the chat of an outgoing one."""
     return doc.get("tg_id") or doc.get("from_id") or (doc.get("chat_id") if doc.get("dir") == "out" else None)
 
 

@@ -9,12 +9,16 @@ from core.config import settings
 from core.db import init_db
 from core.guide_io import seed
 from core.models.activity import Activity, client
-from core.routes import activity, auth, front_errors, guide, health, me, profile, students, view_as
+from core.routes import (activity, auth, front_errors, guide, health, me, poll_actions, poll_chats, poll_results, poll_templates, polls,
+                         profile, students, view_as)
 
 ROUTERS = [health.router, auth.router, me.router, view_as.router, profile.router, students.router, guide.router, activity.router,
-           front_errors.router]
+           front_errors.router,
+           # /api/polls/<word> before /api/polls/{id}: the path matches first, the id's type is checked after
+           poll_templates.router, poll_chats.router, poll_results.router, polls.router, poll_actions.router]
 QUIET = {("GET", "/api/me"), ("POST", "/api/me/view")}  # session probe and page views: they have their own rows
 SILENT = ("/api/auth/", "/api/uploads/", "/api/activity")  # the activity page polls, its own calls would flood what it shows
+POLLED = ("/api/polls",)  # poll pages refresh themselves every few seconds: their reads would flood it too; the page view has its own row
 
 
 async def footprint(request: Request, call_next):
@@ -28,7 +32,8 @@ async def footprint(request: Request, call_next):
     finally:
         path, method = request.url.path, request.method
         email = request.session.get("email") or getattr(request.state, "agent", "")
-        if email and path.startswith("/api/") and not path.startswith(SILENT) and (method, path) not in QUIET:
+        if email and path.startswith("/api/") and not path.startswith(SILENT) and (method, path) not in QUIET \
+                and not (method == "GET" and path.startswith(POLLED)):
             await Activity(user=email, kind="api", method=method, path=path + (f"?{request.url.query}" if request.url.query else ""),
                            status=status, ms=int((perf_counter() - t) * 1000), **client(request)).insert()
 
