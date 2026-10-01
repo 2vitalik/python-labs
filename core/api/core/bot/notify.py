@@ -23,6 +23,7 @@ KINDS = {  # the platform's; a site puts its own in with add()
     "poll": "🗳 опитування: не надіслано, голоси розходяться з Telegram",
     "error": "💥 помилки сайту, API і бота",
     "digest": "📊 ранковий дайджест профілів",
+    "start": "🚀 бот запустився (деплой, перезапуск)",
 }
 MUTED = 0  # Route.chat_id for "nowhere" (/mute)
 kind_var: ContextVar[str] = ContextVar("kind", default="reply")  # what send() is sending, for the outgoing log

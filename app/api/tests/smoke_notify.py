@@ -15,6 +15,7 @@ from aiogram.exceptions import TelegramAPIError  # noqa: E402
 
 import bot  # noqa: E402, F401 — the site's alert kinds
 from core.bot import alerts, notify  # noqa: E402
+from core.bot import run as run_bot  # noqa: E402
 from core.bot.here import here, is_admin  # noqa: E402
 from core.bot.link import bind  # noqa: E402
 from core.bot.notify import KINDS  # noqa: E402
@@ -165,6 +166,14 @@ async def run():
 
     m, _ = msg(42, 42)
     check("student is not admin", not await is_admin(m))
+
+    await run_bot.started("labs_bot")
+    chat, _, text = last()
+    check("bot start → 🚀 to the admin privately, with the commit", chat == 1 and text.startswith("🚀 Бот запустився · @labs_bot\n🔖 "), text)
+    notify.bot = None  # anything but Telegram breaks
+    await run_bot.started("labs_bot")
+    notify.bot = lambda: FakeBot()
+    check("start alert fails → the bot goes on", True)
 
     settings.tg_bot_token = ""
     n = len(sent)
