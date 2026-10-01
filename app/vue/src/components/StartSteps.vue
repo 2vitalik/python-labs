@@ -1,13 +1,17 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
+import { getMyWeek } from '@core/api.js'
 import { user } from '@core/user.js'
 
-// home page while the guide is closed (T136): what a student can already do — sign in, link the bot
+// home page while the guide is closed (T136): what a student can already do — sign in, link the bot, mark their week (T177)
 const active = computed(() => !!user.value && user.value.status !== 'pending')
+const week = ref(null)
+if (active.value) getMyWeek().then((w) => (week.value = w), () => {})
 const steps = computed(() => [
   { done: !!user.value, text: 'Увійти з поштою @nure.ua' },
   { done: !!user.value?.tg_linked, text: 'Привʼязати Telegram-бота — кнопка в профілі', to: active.value ? '/my/profile#telegram' : null },
+  { done: !!week.value?.done_at, text: 'Позначити свій тиждень — коли можеш бути на спільній парі', to: active.value ? '/my/week' : null },
 ])
 </script>
 
@@ -15,7 +19,7 @@ const steps = computed(() => [
   <div>
     <p>👾 Лабораторні з Python — одна гра на весь семестр</p>
     <div class="alert alert-light border">🚧 Методичка ще пишеться й відкриється тут пізніше</div>
-    <p class="mb-2 fw-bold">Поки що — реєстрація:</p>
+    <p class="mb-2 fw-bold">Поки що — три кроки:</p>
     <ol class="steps">
       <li v-for="s in steps" :key="s.text" :class="{ 'text-secondary': s.done }">
         <span class="me-2">{{ s.done ? '✅' : '⬜' }}</span>

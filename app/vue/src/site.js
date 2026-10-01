@@ -17,7 +17,7 @@ export default {
   name: 'Python Labs',
   links: [
     ...SECTIONS.map((s) => [s.path, s.nav]),
-    ['/students', 'Студи'], ['/activity', 'Актив'], ['/polls', 'Опитування'], ['/my/game', 'Моя гра'], ['/my/profile', 'Профіль'],
+    ['/students', 'Студи'], ['/activity', 'Актив'], ['/polls', 'Опитування'], ['/my/game', 'Моя гра'], ['/week', 'Тиждень'], ['/my/profile', 'Профіль'],
   ],
   guide: [...SECTIONS.flatMap((s) => (s.slug === 'labs' ? [s, ...LABS] : [s])), CHANGES],
   colls: {

@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 from beanie import Document, PydanticObjectId
 from pydantic import Field
 
-from core.models.poll import when
+from core.models.history import when
 
 
 class PollSend(Document):

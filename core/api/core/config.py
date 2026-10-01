@@ -19,6 +19,8 @@ class Settings(BaseSettings):
     guide_readers: str = "admin"  # who reads the guide: admin — while it is unfinished (T136) · active — students too, without drafts
     uploads_dir: str = ""  # files people upload; what they are and the default folder — the site's
     agent_tokens: str = ""  # `name:token,…` — AI agents that edit the site's texts (deps.editor_user); empty = no such way in
+    week_hours: str = "15-23"  # «Мій тиждень» (T177): the hours of the grid, from-to
+    week_days: int = 6  # …and its days, counted from Monday
 
     model_config = {"env_file": ("site.env", ".env"), "extra": "ignore"}
 

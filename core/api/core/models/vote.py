@@ -4,7 +4,7 @@ from beanie import Document, PydanticObjectId
 from pydantic import Field
 from pymongo import IndexModel
 
-from core.models.poll import when
+from core.models.history import when
 
 
 class Vote(Document):

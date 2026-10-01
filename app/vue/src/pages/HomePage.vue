@@ -29,6 +29,7 @@ if (admin.value) {
       <div v-if="user" class="d-flex flex-wrap align-items-center gap-2 small">
         <span>Привіт, {{ firstName }}!</span>
         <RouterLink v-if="can('/my/profile')" to="/my/profile" class="btn btn-outline-primary btn-sm">Профіль</RouterLink>
+        <RouterLink v-if="can('/my/week')" to="/my/week" class="btn btn-outline-primary btn-sm">Мій тиждень</RouterLink>
         <RouterLink v-if="can('/my/game')" to="/my/game" class="btn btn-outline-primary btn-sm">Моя гра</RouterLink>
       </div>
     </div>

@@ -22,6 +22,10 @@ def stamp(at: datetime) -> str:
     return at.replace(tzinfo=timezone.utc).isoformat()
 
 
+def when(at: datetime | None) -> str | None:
+    return stamp(at) if at else None
+
+
 async def record(doc: Document, data: dict, actor: str, note: str = "") -> dict:
     """Apply `data` to `doc`, saving a diff of what actually changed; returns that diff."""
     changes = {k: {"old": getattr(doc, k), "new": v} for k, v in data.items() if getattr(doc, k) != v}

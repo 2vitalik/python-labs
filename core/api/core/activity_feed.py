@@ -8,6 +8,8 @@ from core.bot.notify import KINDS
 from core.config import settings
 from core.db import mongo
 from core.models.user import User
+from core.models.week import Mark
+from core.week_marks import words
 
 # feed source → its collection, its rows there, the field with the person's email
 SOURCES = {
@@ -47,8 +49,11 @@ def own(src: str) -> dict:
     return {"kind": {"$nin": list(KINDS)}} if src == "tg" else SOURCES[src][1]
 
 
-def brief(value) -> str:
-    return "" if value is None else str(value)[:200]
+WORDS = {("weeks", "marks"): lambda marks: words([Mark(**m) for m in marks])}  # a field that reads better in words than as stored
+
+
+def brief(coll: str, field: str, value) -> str:
+    return "" if value is None else WORDS.get((coll, field), str)(value)[:200]
 
 
 def about(src: str, person: User, link: dict[int, str]) -> dict:
@@ -69,7 +74,8 @@ def row(src: str, doc: dict, link: dict[int, str]) -> dict:
     out |= {k: doc.get(k) for k in FIELDS[src]}
     if src == "edit":
         out["doc"] = str(doc["doc_id"])
-        out["changes"] = [{"field": k, "old": brief(v.get("old")), "new": brief(v.get("new"))} for k, v in doc["changes"].items()]
+        out["changes"] = [{"field": k, "old": brief(doc["coll"], k, v.get("old")), "new": brief(doc["coll"], k, v.get("new"))}
+                          for k, v in doc["changes"].items()]
     return out
 
 

@@ -85,6 +85,7 @@ Telegram дозволяє підключити бота до власного а
 | `note` 📝 | нотатка про студента (`/note` 📝, `/hide` 🙈), підключення Chat Automation | текст нотатки · 🔑 права |
 | `msg` 💬 | хтось написав боту в приватний чат (не `/start`, не адмін); незнайомець — з `@username` або tg id | текст повідомлення |
 | `poll` 🗳 | опитування не надіслано в чат (бота вигнали, нема прав); при закритті лічильник Telegram розійшовся з голосами в базі | 📍 місце · ❌ причина · ⚠️ Telegram N, у нас M |
+| `week` 🗓 | студент натиснув «Готово» на сторінці «Мій тиждень» — раз на людину; пізніші правки — лише в історії | 🔴 причина: дні й години · 🟡 · 🟢 · 💬 коментар |
 | `error` 💥 | необроблена помилка сайту, API або бота (4xx — ні); та сама помилка сайту — раз на 10 хв | ❗ тип: текст · 📍 файл:рядок функція, для сайту — компонент |
 | `digest` 📊 | щодня о 09:00 (Київ): по групах, скільки без ПІБ, GitHub, бота; усе заповнено — тиша | 👥 група · 🪪 n · 🐙 n · 🤖 n |
 | `start` 🚀 | бот запустився — деплой пройшов або перезапуск; вимкнути — `/mute start` | 🚀 @бот · 🔖 коміт, з якого запущено (якщо є git) |
@@ -142,5 +143,6 @@ Telegram дозволяє підключити бота до власного а
 - `notes.py` — `/note` і `/hide` (чат зі студентом · форум · чат з ботом), алерт про підключення Chat Automation; `models/note.py` — `Note`.
 - `polls.py` — голоси (`poll_answer` → `votes`), лічильники Telegram (`poll`), копія на диску; `chats.py` — місця для опитувань (`tg_chats`); відправлення й закриття — `core/polls_send.py` (з API), читання — `polls_read.py`, `polls_view.py`, відновлення — `polls_replay.py`; моделі — `models/poll.py`, `poll_send.py`, `vote.py`.
 - `alerts.py` (профіль, перший вхід), `game_alerts.py` (заявки, гра), `errors.py` (+ `models/error.py`), `digest.py` — тексти й обробники; хуки у `routes/profile|me|auth|my_*.py`; помилки сайту приймає `routes/front_errors.py`.
-- Смоуки без Telegram: `DB_NAME=python_labs_smoke uv run python tests/smoke_bot.py` · `smoke_notify.py` · `smoke_events.py` · `smoke_log.py` · `smoke_notes.py` · `smoke_activity.py` · `smoke_errors.py` · `smoke_polls.py` · `smoke_polls_api.py`.
-- Тікети: T58 (привʼязка), T106 (пустишка), T109 (стиль), T111 (алерти, `/here`), T113 (заявки, гра, помилки, дайджест, `/mute`), T129 (журнал), T130 (сигнал із приватного чату), T132 (Chat Automation), T134, T135 (`/note` · `/hide`), T138 (членство, реакції, `raw`), T146 (журнал подій, `msg`, показ на сайті), T149 (журнал помилок, помилки сайту), T174 + T176 (опитування).
+- `week.py` — алерт «тиждень позначено» (`week`); шле API з `routes/my_week.py`, слова для позначок — `core/week_marks.py`.
+- Смоуки без Telegram: `DB_NAME=python_labs_smoke uv run python tests/smoke_bot.py` · `smoke_notify.py` · `smoke_events.py` · `smoke_log.py` · `smoke_notes.py` · `smoke_activity.py` · `smoke_errors.py` · `smoke_polls.py` · `smoke_polls_api.py` · `smoke_week.py`.
+- Тікети: T58 (привʼязка), T106 (пустишка), T109 (стиль), T111 (алерти, `/here`), T113 (заявки, гра, помилки, дайджест, `/mute`), T129 (журнал), T130 (сигнал із приватного чату), T132 (Chat Automation), T134, T135 (`/note` · `/hide`), T138 (членство, реакції, `raw`), T146 (журнал подій, `msg`, показ на сайті), T149 (журнал помилок, помилки сайту), T174 + T176 (опитування), T177 + T179 (тиждень студента).

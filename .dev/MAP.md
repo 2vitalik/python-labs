@@ -184,6 +184,6 @@
 | tgbot | [T174](tgbot/.t/T174-P--polls-design.md) | 💡 | polls-design | Опитування v1: дизайн — моделі, надійність, API, сторінки | 🟢 🟩 |
 | tgbot | [T175](tgbot/.t/T175-Q--polls-questions.md) | ❓ | polls-questions | Опитування v1: відкриті вибори | 🔴 ⬜ |
 | tgbot | [T176](tgbot/.t/T176--polls-v1/plan.md) | ⚙️ | polls-v1 | Опитування v1 — шаблони, відправлення, збір голосів, таблиця — план | 🟢 🟩 |
-| schedule | [T177](schedule/.t/T177-P--week-design.md) | 💡 | week-design | Тиждень студента v1: дизайн — сторінка, сховище, зведення | 🟢 ⬜ |
+| schedule | [T177](schedule/.t/T177-P--week-design.md) | 💡 | week-design | Тиждень студента v1: дизайн — сторінка, сховище, зведення | 🟢 🟩 |
 | schedule | [T178](schedule/.t/T178-Q--week-questions.md) | ❓ | week-questions | Тиждень студента v1: відкриті вибори | 🔴 ⬜ |
-| schedule | [T179](schedule/.t/T179--week-v1/plan.md) | ⚙️ | week-v1 | Тиждень студента v1 — сторінка, API, зведення — план | 🟢 ⬜ |
+| schedule | [T179](schedule/.t/T179--week-v1/plan.md) | ⚙️ | week-v1 | Тиждень студента v1 — сторінка, API, зведення — план | 🟢 🟩 |

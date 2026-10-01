@@ -3,11 +3,7 @@ from datetime import datetime, timezone
 from beanie import Document, PydanticObjectId
 from pydantic import BaseModel, Field
 
-from core.models.history import stamp
-
-
-def when(at: datetime | None) -> str | None:
-    return stamp(at) if at else None
+from core.models.history import when
 
 
 class Option(BaseModel):

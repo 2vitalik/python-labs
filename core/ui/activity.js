@@ -16,7 +16,7 @@ export const CHIPS = [
 ]
 export const ICONS = { login: '🔑', view: '👁', api: '⚙️', fail: '⚠️', edit: '✏️', event: '🔔', error: '💥', vote: '🗳' }
 export const ERRORS = { api: 'API', bot: 'бот', front: 'сайт' }
-export const COLLS = { users: 'профіль', guide: 'методичка', polls: 'опитування', poll_templates: 'шаблон опитування' }  // the site's own — site.colls
+export const COLLS = { users: 'профіль', guide: 'методичка', polls: 'опитування', poll_templates: 'шаблон опитування', weeks: 'тиждень' }  // the site's own — site.colls
 export const CHATS = { private: 'бот', business: 'особистий чат', group: 'група', supergroup: 'форум' }
 export const TG_KINDS = { edit: 'правка', deleted: 'видалено', member: 'членство', reaction: 'реакція' }
 export const PERIODS = [[1, 'сьогодні'], [7, '7 днів'], [30, '30 днів'], [0, 'весь час']]

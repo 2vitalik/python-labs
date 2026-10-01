@@ -3,6 +3,7 @@ import GuidePage from '@core/pages/GuidePage.vue'
 import HistoryPage from '@core/pages/HistoryPage.vue'
 import LoginPage from '@core/pages/LoginPage.vue'
 import MethodPage from '@core/pages/MethodPage.vue'
+import MyWeekPage from '@core/pages/MyWeekPage.vue'
 import NotFoundPage from '@core/pages/NotFoundPage.vue'
 import PollEditPage from '@core/pages/PollEditPage.vue'
 import PollMatrixPage from '@core/pages/PollMatrixPage.vue'
@@ -12,6 +13,7 @@ import PollsPage from '@core/pages/PollsPage.vue'
 import ProfilePage from '@core/pages/ProfilePage.vue'
 import StudentEditPage from '@core/pages/StudentEditPage.vue'
 import StudentsPage from '@core/pages/StudentsPage.vue'
+import WeekPage from '@core/pages/WeekPage.vue'
 import { makeRouter } from '@core/router.js'
 
 import CardHistoryPage from './pages/CardHistoryPage.vue'
@@ -41,6 +43,8 @@ export default makeRouter([
   { path: '/my/profile', component: ProfilePage, meta: { title: 'Профіль', access: 'active' } },
   { path: '/profile', redirect: '/my/profile' },  // old links in bot messages and the guide
   { path: '/my/game', component: MyGamePage, meta: { title: 'Моя гра', access: 'admin' } },
+  { path: '/my/week', component: MyWeekPage, meta: { title: 'Мій тиждень', access: 'active' } },
+  { path: '/week', component: WeekPage, meta: { title: 'Тиждень', access: 'active', filters: true } },  // a student's own week, the teacher's summary
   { path: '/students', component: StudentsPage, meta: { title: 'Студенти', access: 'admin' } },
   { path: '/students/:nick', component: StudentGamePage, meta: { title: 'Студенти', access: 'admin' } },
   { path: '/students/:nick/edit', component: StudentEditPage, meta: { title: 'Студенти', access: 'admin' } },

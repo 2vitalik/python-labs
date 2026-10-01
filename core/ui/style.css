@@ -41,3 +41,15 @@
   .card.flash { background-color: var(--flash-bg); border-color: var(--bs-warning-border-subtle); }
   .card.flash .btn { box-shadow: var(--btn-ring); }
 }
+
+/* «Мій тиждень» (T177): a slot's three kinds — soft tones over the page's own background, so they follow the theme */
+:root { --week-no: color-mix(in srgb, var(--bs-danger) 30%, var(--bs-body-bg));
+        --week-meh: color-mix(in srgb, var(--bs-warning) 40%, var(--bs-body-bg));
+        --week-ok: color-mix(in srgb, var(--bs-success) 30%, var(--bs-body-bg)); }
+/* a count of people in a slot's tone: «3» on red — three can't */
+.week-n { display: inline-block; min-width: 1.9rem; padding: 0 .35rem; border-radius: .25rem; text-align: center; font-variant-numeric: tabular-nums;
+          color: var(--bs-body-color); }
+.week-n.no { background: var(--week-no); }
+.week-n.meh { background: var(--week-meh); }
+.week-n.ok { background: var(--week-ok); }
+.week-n.zero { opacity: .45; }
