@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T180** · тікетів: 179 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T182** · тікетів: 181 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -187,3 +187,5 @@
 | schedule | [T177](schedule/.t/T177-P--week-design.md) | 💡 | week-design | Тиждень студента v1: дизайн — сторінка, сховище, зведення | 🟢 🟩 |
 | schedule | [T178](schedule/.t/T178-Q--week-questions.md) | ❓ | week-questions | Тиждень студента v1: відкриті вибори | 🔴 ⬜ |
 | schedule | [T179](schedule/.t/T179--week-v1/plan.md) | ⚙️ | week-v1 | Тиждень студента v1 — сторінка, API, зведення — план | 🟢 🟩 |
+| ods | [T180](ods/.t/T180-P--ods-deploy-plan.md) | 💡 | ods-deploy-plan | Деплой ods: що готово, що пофіксити, план | 🟢 🟩 |
+| ods | [T181](ods/.t/T181-Q--ods-deploy-choices.md) | ❓ | ods-deploy-choices | Деплой ods: вибори | 🔴 ⬜ |

@@ -3,9 +3,9 @@
 Вузол другого сайту в цьому репо. Курс — «Основи Data Science». Сайт схожий на python.labs.in.ua за дизайном і побудовою, але без ігор: лекції, слайди, лабораторні. Сусіди: [platform](../platform/README.md) — спільне ядро, з якого сайт складається.
 
 Шапка:
-- Оновлено: 2026-09-30
-- Інтегровано: [T162](.t/T162-S--ods-content-conversion.md) (звідки контент і як його конвертовано), [T164](../.rounds/.t/T164-R--ods-kickoff.md) (рішення зі старту), [T165](.t/T165--ods-move/report.md) (переїзд із data-science), [T166](.t/T166-Q--ods-base-questions.md) / [T168](../.rounds/.t/T168-R--ods-base-decisions.md) (рішення перед кодом), [T163](../platform/.t/T163-P--core-and-sites.md) + [T167](../platform/.t/T167--core-extract/report.md) (ядро винесено), [T170](.t/T170--ods-base/report.md) (базовий сайт)
-- Не інтегровано: [T171](.t/T171-Q--ods-base-choices.md) (вибори базового сайту: Q1–Q4 за «a», мовчання = як у коді; Q5 — до деплою), [T172](.t/T172-C--ods-labs-review.md) / [T173](.t/T173-Q--ods-labs-direction.md) (оцінка лаб і куди їх розвивати)
+- Оновлено: 2026-10-01
+- Інтегровано: [T162](.t/T162-S--ods-content-conversion.md) (звідки контент і як його конвертовано), [T164](../.rounds/.t/T164-R--ods-kickoff.md) (рішення зі старту), [T165](.t/T165--ods-move/report.md) (переїзд із data-science), [T166](.t/T166-Q--ods-base-questions.md) / [T168](../.rounds/.t/T168-R--ods-base-decisions.md) (рішення перед кодом), [T163](../platform/.t/T163-P--core-and-sites.md) + [T167](../platform/.t/T167--core-extract/report.md) (ядро винесено), [T170](.t/T170--ods-base/report.md) (базовий сайт), [T180](.t/T180-P--ods-deploy-plan.md) (деплой: що перевірено, `bin/www` для двох сайтів, план)
+- Не інтегровано: [T171](.t/T171-Q--ods-base-choices.md) (вибори базового сайту: Q1–Q4 за «a», мовчання = як у коді; Q5 — до деплою), [T172](.t/T172-C--ods-labs-review.md) / [T173](.t/T173-Q--ods-labs-direction.md) (оцінка лаб і куди їх розвивати), [T181](.t/T181-Q--ods-deploy-choices.md) (вибори деплою: план іде за «a»)
 
 ## Рішення
 
@@ -40,6 +40,21 @@
   - імпорт: `uv run python content_io.py` у `sites/ods/api`; `*.hid.*` пропускає, повторний запуск без змін нічого не пише;
   - дев: API 8035, фронт 5035 — запас проєкту №3; запуск API — `--reload-dir . --reload-dir ../../../core/api`;
   - з md лекції 1 прибрано контакти й фото (T166 Q7 «b»).
+- ✅ **Статика ods збирається в гілку `www-ods`** (2026-10-01, [T180](.t/T180-P--ods-deploy-plan.md)):
+  - `bin/www ods [коміт]` — фронт `sites/ods/vue` разом із `core/ui`;
+  - хук `pre-push` робить це на push у гілку `ods`;
+  - оновити сайт — `git push origin main:ods`; push у `main` ods не чіпає.
+
+## Деплой: що перевірено
+
+Сервер ще не чіпали; план і чернетка маніфесту — [T180](.t/T180-P--ods-deploy-plan.md).
+
+- `vv` і `deploy` у vps-infra міняти не треба: ods — ще одна тека маніфесту з тим самим `REPO`.
+- DNS: `ods.labs.in.ua` уже веде на vv3 — wildcard `*.labs.in.ua`.
+- `deploy` звіряє гілку статики з гілкою коду за назвами з маніфесту: пара `ods`/`www-ods` працює як `main`/`www`.
+- Сайт стартує з чистого чекауту на Python 3.12 без `.env` і без `sites/ods/data`; смоук 10/10.
+- Адреса для OAuth-клієнта Google: `https://ods.labs.in.ua/api/auth/callback`.
+- Імена за планом: застосунок `ods-labs`, база `ods_labs`, порт 8035, гілки `ods` і `www-ods` · [T181](.t/T181-Q--ods-deploy-choices.md) Q2.
 
 ## Де що лежить
 
@@ -65,12 +80,20 @@ sites/ods/
 
 ## Не реалізовано
 
-- ⬜ Контент на сервері: імпорт читає диск — [T171](.t/T171-Q--ods-base-choices.md) Q5.
-- ⬜ Бот наживо: токен від BotFather, нік у `.env`.
-- ⬜ Вхід через Google: адреса ods в OAuth-клієнті.
-- ⬜ `bin/www` і гілка статики для другого сайту.
-- ⬜ Маніфест застосунку у vps-infra, гілка деплою, гілка статики.
-- ⬜ Venv спільний: `uv.lock` сайтів зараз однакові за пакетами; розійдуться — `--inexact` або окремий venv.
+Деплой — блоки [T180](.t/T180-P--ods-deploy-plan.md):
+
+- ⬜ Бот наживо: бот у BotFather, нік і токен — у `shared/env` на сервері.
+- ⬜ Вхід через Google: OAuth-клієнт з адресою ods.
+- ⬜ Гілки `ods` і `www-ods` на GitHub: `git push origin main:ods` — до `vv repo init`.
+- ⬜ Маніфест `apps/ods-labs` у vps-infra: чернетка в T180, перевірена `vv`.
+- ⬜ Контент на сервері: `vv db push ods-labs vv3 --from ods` до першого старту · [T181](.t/T181-Q--ods-deploy-choices.md) Q4, [T171](.t/T171-Q--ods-base-choices.md) Q5.
+- ⬜ Перед переносом бази — прибрати з локальної `ods` дев-користувача: він там адмін, а статус на сервері лишився б.
+- ⬜ Памʼять vv3: 1.9 GiB, ods додасть ≈ 375M; виміряти `free -m` до й після.
+- ⬜ Доступ агента до ods на сервері: токен і заборона `bin/guide snap` для цілі не `prod` · T181 Q5.
+
+Інше:
+
+- ⬜ Venv у деві спільний: `uv.lock` сайтів зараз однакові за пакетами; розійдуться — `--inexact` або окремий venv. На сервері venv у кожного сайту свій.
 
 ## Відкладене
 
@@ -82,7 +105,9 @@ sites/ods/
 
 - [T173](.t/T173-Q--ods-labs-direction.md): лаби — обсяг змін цього семестру, лаба на гіпотези й кореляцію, позиція лектора, розклад, формат здачі; аналіз — [T172](.t/T172-C--ods-labs-review.md): лаби вузькі, ядро курсу (лекції 6–12) без лаб, один варіант на всіх.
 - [T171](.t/T171-Q--ods-base-choices.md): де живуть лекції й картинки, GitHub у профілі, назви лаб, як контент потрапляє на сервер.
+- [T181](.t/T181-Q--ods-deploy-choices.md): як ods отримує оновлення, імена, OAuth-клієнт, перенос контенту, доступ агента; окремо — страховий файл опитувань python на сервері.
 
 ## Наступний крок
 
-- **Базовий сайт є локально** (2026-09-29, [T170](.t/T170--ods-base/report.md)): Vitalik — подивитися на 5035, відповіді на [T171](.t/T171-Q--ods-base-choices.md). Далі — деплой ods (M): маніфест vps-infra, гілки, `bin/www` для двох сайтів, контент на сервер, OAuth, бот.
+- **Деплой ods — план готовий** (2026-10-01, [T180](.t/T180-P--ods-deploy-plan.md), вибори — [T181](.t/T181-Q--ods-deploy-choices.md)): Vitalik — коміт `bin/www` і хука, `git push`; бот у BotFather; OAuth-клієнт Google; `git push origin main:ods`. Далі — сесія у vps-infra: блоки 1–6 плану (M).
+- **Базовий сайт є локально** (2026-09-29, [T170](.t/T170--ods-base/report.md)): Vitalik — подивитися на 5035, відповіді на [T171](.t/T171-Q--ods-base-choices.md).

@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
-# bin/hooks/pre-push — a push of main also publishes branch www (bin/www)
+# bin/hooks/pre-push — a push of a site's deploy branch also publishes its static branch (bin/www):
+#   main → python (www) · ods → ods (www-ods)
 #   enable once per clone: git config core.hooksPath bin/hooks
 # stdin, one line per ref: <local ref> <local sha> <remote ref> <remote sha>
 set -euo pipefail
 
 while read -r _local sha remote _old; do
-  [ "$remote" = refs/heads/main ] || continue
-  bin/www "$sha" </dev/null
+  case "$remote" in
+    refs/heads/main) site=python ;;
+    refs/heads/ods) site=ods ;;
+    *) continue ;;
+  esac
+  bin/www "$site" "$sha" </dev/null
 done
