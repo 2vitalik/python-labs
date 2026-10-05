@@ -1,5 +1,4 @@
 import { slots, startOf, toCells } from './week.js'
-import { REASONS, emojiOf } from './weekWhy.js'
 
 // the stream's week (T177): everyone's marks laid over one grid — who is in the way of a class at a given hour
 
@@ -26,19 +25,30 @@ export function worst(col, r0, r1) {
   return w
 }
 
-// every start of a class `len` minutes long, with how many people say what to it; `mine` — the teacher's own cells
-export function windows(laid, frame, len, mine) {
+// every start of a class `len` minutes long: its day, first row and how many rows it takes
+export function starts(frame, len) {
   const n = Math.ceil(len / frame.step)
   const out = []
   for (let day = 0; day < frame.days; day++) {
-    for (let r0 = 0; r0 + n <= slots(frame); r0++) {
-      const start = startOf(frame, r0)
-      const w = { day, r0, n, start, end: start + len, no: 0, meh: 0, free: 0, ok: 0, mine: mine ? worst(mine[day], r0, r0 + n) : 'free' }
-      for (const { cells } of laid) w[worst(cells[day], r0, r0 + n)]++
-      out.push(w)
-    }
+    for (let r0 = 0; r0 + n <= slots(frame); r0++) out.push({ day, r0, n, start: startOf(frame, r0), end: startOf(frame, r0) + len })
   }
   return out
+}
+
+// …each with how many people say what to it; `mine` — the teacher's own cells; `by` — who can't, by group.
+// `est` — how many of the whole stream can't, had everyone marked: a group that marked little counts by its own share
+export function windows(laid, frame, len, mine, groups = []) {
+  return starts(frame, len).map((w) => {
+    const out = { ...w, no: 0, meh: 0, free: 0, ok: 0, by: {}, mine: mine ? worst(mine[w.day], w.r0, w.r0 + w.n) : 'free' }
+    for (const { s, cells } of laid) {
+      const kind = worst(cells[w.day], w.r0, w.r0 + w.n)
+      out[kind]++
+      if (kind === 'no') out.by[s.group] = (out.by[s.group] || 0) + 1
+    }
+    const share = (g) => (g.list.length ? out.by[g.name] || 0 : out.no) / (g.list.length || laid.length || 1)
+    out.est = groups.reduce((n, g) => n + g.size * share(g), 0)
+    return out
+  })
 }
 
 const better = (a, b) => a.no - b.no || a.meh - b.meh || b.ok - a.ok || a.day - b.day || a.start - b.start
@@ -62,14 +72,3 @@ export function who(laid, w) {
   return out
 }
 
-// …and by reason, the commonest first: a chip's emoji names the group, a typed reason goes under ✏️
-export function byReason(people) {
-  const groups = new Map()
-  for (const p of people) {
-    const why = p.marks[0].why.trim()
-    const emoji = emojiOf(why)
-    const title = REASONS.find((r) => emoji && r.includes(emoji)) || emoji || (why ? '✏️ своя причина' : '❓ без причини')
-    groups.set(title, [...(groups.get(title) || []), p])
-  }
-  return [...groups].sort((a, b) => b[1].length - a[1].length)
-}

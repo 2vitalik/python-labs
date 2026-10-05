@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 
 import { DAYS, box, hm, startOf } from '../week.js'
 import WeekGrid from './WeekGrid.vue'
@@ -10,6 +11,7 @@ import WeekGrid from './WeekGrid.vue'
 const props = defineProps({ frame: { type: Object, required: true }, counts: { type: Array, required: true }, layer: { type: String, required: true },
                             mine: Array, picked: Object })
 defineEmits(['pick'])
+const route = useRoute()
 const TONE = { no: 'danger', meh: 'warning', ok: 'success' }
 const top = computed(() => Math.max(1, ...props.counts.flat().map((c) => c[props.layer])))  // the deepest tone is the fullest slot
 const n = (day, row) => props.counts[day][row]?.[props.layer]
@@ -23,6 +25,7 @@ function look(day, row) {
 
 <template>
   <WeekGrid :frame :look @pick="(day, row) => $emit('pick', day, row)">
+    <template #day="{ day }"><RouterLink :to="{ path: `/week/${day + 1}`, query: route.query }" class="link-body-emphasis">{{ DAYS[day] }}</RouterLink></template>
     <template #default="{ day, row }">{{ n(day, row) && n(day, row) !== n(day, row - 1) ? n(day, row) : '' }}</template>
     <template #over>
       <div v-if="picked" class="picked" :style="box(frame, { d0: picked.day, d1: picked.day, r0: picked.r0, r1: picked.r0 + picked.n - 1 })"></div>

@@ -193,6 +193,6 @@
 | lessons | [T183](lessons/.t/T183-Q--lessons-questions.md) | ❓ | lessons-questions | Заняття й транскрипти: вибори | 🔴 ⬜ |
 | lessons | [T184](lessons/.t/T184--transcript-pilot/plan.md) | ⚙️ | transcript-pilot | Пілот: злиття чотирьох транскриптів заняття 1 — план | 🟢 🟩 |
 | lessons | [T185](lessons/.t/T185-C--transcript-sources.md) | 🔆 | transcript-sources | Чотири сервіси транскрибування: порівняння на занятті 1 | 🟢 🟩 |
-| schedule | [T186](schedule/.t/T186-P--week-strips-design.md) | 💡 | week-strips-design | Тиждень потоку v2: смужки студентів, сторінка дня, підказки — дизайн | 🟢 ⬜ |
-| schedule | [T187](schedule/.t/T187-Q--week-strips-choices.md) | ❓ | week-strips-choices | Тиждень потоку v2: відкриті вибори | 🔴 ⬜ |
-| schedule | [T188](schedule/.t/T188--week-strips/plan.md) | ⚙️ | week-strips | Тиждень потоку v2 — смужки студентів, сторінка дня, підказки — план | 🟢 ⬜ |
+| schedule | [T186](schedule/.t/T186-P--week-strips-design.md) | 💡 | week-strips-design | Тиждень потоку v2: смужки студентів, сторінка дня, підказки — дизайн | 🟢 🟩 |
+| schedule | [T187](schedule/.t/T187-Q--week-strips-choices.md) | ❓ | week-strips-choices | Тиждень потоку v2: відкриті вибори | 🔴 🟩 |
+| schedule | [T188](schedule/.t/T188--week-strips/plan.md) | ⚙️ | week-strips | Тиждень потоку v2 — смужки студентів, сторінка дня, підказки — план | 🟢 🟩 |

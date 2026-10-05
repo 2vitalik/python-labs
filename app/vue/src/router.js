@@ -44,7 +44,8 @@ export default makeRouter([
   { path: '/profile', redirect: '/my/profile' },  // old links in bot messages and the guide
   { path: '/my/game', component: MyGamePage, meta: { title: 'Моя гра', access: 'admin' } },
   { path: '/my/week', component: MyWeekPage, meta: { title: 'Мій тиждень', access: 'active' } },
-  { path: '/week', component: WeekPage, meta: { title: 'Тиждень', access: 'active', filters: true } },  // a student's own week, the teacher's summary
+  // a student's own week; the teacher's summary on the whole window, /week/3 — one day of it (T186)
+  { path: '/week/:day(\\d)?', component: WeekPage, meta: { title: 'Тиждень', access: 'active', filters: true, stay: true, wide: 'admin' } },
   { path: '/students', component: StudentsPage, meta: { title: 'Студенти', access: 'admin' } },
   { path: '/students/:nick', component: StudentGamePage, meta: { title: 'Студенти', access: 'admin' } },
   { path: '/students/:nick/edit', component: StudentEditPage, meta: { title: 'Студенти', access: 'admin' } },

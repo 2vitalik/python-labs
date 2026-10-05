@@ -53,3 +53,7 @@
 .week-n.meh { background: var(--week-meh); }
 .week-n.ok { background: var(--week-ok); }
 .week-n.zero { opacity: .45; }
+/* /week strips (T186): a mark a few pixels wide needs a deeper tone than a cell does */
+:root { --strip-no: color-mix(in srgb, var(--bs-danger) 66%, var(--bs-body-bg));
+        --strip-meh: color-mix(in srgb, var(--bs-warning) 75%, var(--bs-body-bg));
+        --strip-ok: color-mix(in srgb, var(--bs-success) 60%, var(--bs-body-bg)); }

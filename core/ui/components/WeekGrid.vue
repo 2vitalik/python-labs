@@ -4,7 +4,7 @@ import { computed, ref } from 'vue'
 import { DAYS, hm, slots, startOf } from '../week.js'
 
 // the week as a grid: a column a day, a row a slot, the hours on the left. Whoever uses it says how a cell looks —
-// `look(day, row)` gives its class and style — and what is in it (the default slot); `over` lies above the cells
+// `look(day, row)` gives its class and style — and what is in it (the default slot); `over` lies above the cells, `day` — a day's name
 const props = defineProps({ frame: { type: Object, required: true }, look: { type: Function, default: () => null } })
 defineEmits(['pick'])
 const cells = ref()
@@ -19,7 +19,7 @@ function line(row) {
 
 <template>
   <div class="week" :style="{ '--days': frame.days }">
-    <div class="days"><span v-for="d in frame.days" :key="d">{{ DAYS[d - 1] }}</span></div>
+    <div class="days"><span v-for="d in frame.days" :key="d"><slot name="day" :day="d - 1">{{ DAYS[d - 1] }}</slot></span></div>
     <div class="d-flex">
       <div class="hours"><span v-for="h in hours" :key="h">{{ h }}</span></div>
       <div ref="cells" class="cells">

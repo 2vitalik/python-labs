@@ -22,7 +22,8 @@ useRouter().afterEach((to, from) => {
   // footprint for the activity map: every page a signed-in user opens (after the guards, so `user` is known)
   if (user.value) postView(to.fullPath).catch(() => {})
 })
-const wide = computed(() => route.meta.wide && wideOn.value)  // a meta.wide page on the whole window: the admin's remembered choice
+// a meta.wide page on the whole window: the admin's remembered choice; 'admin' — always, for the admin (/week, T186)
+const wide = computed(() => (route.meta.wide === 'admin' ? user.value?.status === 'admin' : route.meta.wide && wideOn.value))
 watch(() => route.hash, (h) => h && flash(h.slice(1)))  // #target changed on a loaded page; page load is GuideText's job
 </script>
 

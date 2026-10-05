@@ -1,6 +1,7 @@
 // «Мій тиждень» (T177): the grid and what is marked on it. The API keeps marks — runs of slots of one kind within a day;
 // the page paints cells. `frame` is the grid as the API gives it: days, from, to, step — in minutes
 export const DAYS = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Нд']
+export const DAY_NAMES = ['Понеділок', 'Вівторок', 'Середа', 'Четвер', 'Пʼятниця', 'Субота', 'Неділя']
 // kind → the tool's name, and what it says in full
 export const KINDS = { no: ['Не можу', 'Не можу — з причиною'], meh: ['Незручно', 'Можу, але незручно'], ok: ['Найкраще', 'Найзручніший час'] }
 

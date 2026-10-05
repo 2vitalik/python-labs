@@ -1,84 +1,74 @@
 <script setup>
-import { computed, ref } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { computed, ref, watchEffect } from 'vue'
 
-import { usePolling } from '../activity.js'
-import { getWeeks } from '../api.js'
 import Crumbs from '../components/Crumbs.vue'
+import WeekBar from '../components/WeekBar.vue'
+import WeekDayNav from '../components/WeekDayNav.vue'
 import WeekHeat from '../components/WeekHeat.vue'
 import WeekPairs from '../components/WeekPairs.vue'
+import WeekPicked from '../components/WeekPicked.vue'
 import WeekProgress from '../components/WeekProgress.vue'
+import WeekStrips from '../components/WeekStrips.vue'
+import WeekStuck from '../components/WeekStuck.vue'
+import WeekWhys from '../components/WeekWhys.vue'
 import WeekWindows from '../components/WeekWindows.vue'
-import { useStudentFilter } from '../studentFilter.js'
+import { problem } from '../problem.js'
+import { useTitle } from '../title.js'
 import { user } from '../user.js'
-import { toCells } from '../week.js'
-import { lay, stateOf, tally, windows } from '../weekSum.js'
+import { DAY_NAMES } from '../week.js'
+import { stateOf } from '../weekSum.js'
+import { useWeekView } from '../weekView.js'
 import MyWeekPage from './MyWeekPage.vue'
 
-// the stream's week (T177). A student sees their own week here; the teacher — everyone's weeks over one grid:
-// where a class would hit the fewest people, and who exactly. The view lives in the URL: ?group=A,B (as on /students) · ?layer= · ?len= (minutes)
-const route = useRoute()
-const router = useRouter()
+// the stream's week (T177, T186). A student sees their own week here; the teacher — everyone's: each person a strip, group by group,
+// on the whole window, or one day of it on /week/3. What it counts and where the view is kept — weekView.js
 const admin = user.value?.status === 'admin'
-const LAYERS = { no: 'Не можуть', meh: 'Незручно', ok: 'Найкраще' }
-const data = ref(null)
-const error = ref('')
-const at = ref(null)  // the window looked at: its day and first row
-const set = (patch) => router.replace({ query: { ...route.query, ...patch } })
-
-const { shown, groups, toggleGroup } = useStudentFilter(() => data.value?.students || [])
+const { data, error, frame, day, demo, chips, toggleGroup, shown, len, view, layer, sort, soft, withStuck, skip,
+        mine, laid, groups, total, counts, list, busy, free, tops, stuckOnes, windowAt, picked, pick } = admin ? useWeekView() : {}
+const lit = ref(null)  // the reason whose chip the pointer is over
+const strips = computed(() => day.value !== null || view.value === 'strips')
+const days = computed(() => (day.value === null ? [...Array(frame.value.days).keys()] : [day.value]))
 const NONE = '-'  // «no group» among a chip's keys, as studentFilter.js counts it
 const done = (g) => data.value.students.filter((s) => g.keys.includes(s.group || NONE) && stateOf(s) === 'done').length
-const layer = computed(() => (route.query.layer in LAYERS ? route.query.layer : 'no'))
-const len = computed({ get: () => Number(route.query.len) || 90, set: (v) => set({ len: v === 90 ? undefined : v }) })
-
-const laid = computed(() => lay(shown.value, data.value.frame))
-const counts = computed(() => tally(laid.value, data.value.frame))
-const mine = computed(() => data.value.me && toCells(data.value.me.marks, data.value.frame))
-const list = computed(() => windows(laid.value, data.value.frame, len.value, mine.value))
-// a start chosen on the map near the end of the day is the last class that still fits
-const picked = computed(() => at.value && list.value.find((w) => w.day === at.value.day && w.r0 === Math.min(at.value.r0, list.value.at(-1).r0)))
-
-async function load() {
-  try {
-    data.value = await getWeeks()
-    error.value = ''
-  } catch (e) {
-    error.value = e.message
-  }
-}
 if (admin) {
-  load()
-  usePolling(load, 30)  // the numbers grow while the stream fills its weeks in
+  useTitle(() => (day.value === null ? '' : `${DAY_NAMES[day.value]} · Тиждень потоку`))
+  watchEffect(() => {
+    if (frame.value && day.value !== null && !(day.value >= 0 && day.value < frame.value.days)) problem.value = 'lost'
+  })
 }
 </script>
 
 <template>
   <MyWeekPage v-if="!admin" />
   <div v-else>
-    <Crumbs :items="['Тиждень потоку']" />
+    <Crumbs :items="day === null ? ['Тиждень потоку'] : [[{ path: '/week', query: $route.query }, 'Тиждень потоку'], DAY_NAMES[day]]" />
     <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
-      <h1 class="h3 mb-0 me-auto">Тиждень потоку</h1>
+      <h1 class="h3 mb-0 me-auto">{{ day === null ? 'Тиждень потоку' : DAY_NAMES[day] }}</h1>
+      <WeekDayNav v-if="day !== null && frame" :day :days="frame.days" />
       <RouterLink to="/my/week" class="btn btn-outline-secondary btn-sm">🗓 Мій тиждень</RouterLink>
     </div>
     <div v-if="error" class="alert alert-danger">{{ error }}</div>
+    <div v-if="demo" class="alert alert-warning py-2">🧪 Вигадані дані: так сторінка виглядатиме, коли позначать {{ demo }} % потоку ·
+      <RouterLink :to="{ query: { ...$route.query, demo: undefined } }">до справжніх</RouterLink></div>
     <template v-if="data">
       <div class="d-flex flex-wrap gap-1 mb-2">
-        <button v-for="g in groups" :key="g.name" type="button" class="btn btn-sm chip" :class="g.on ? 'btn-secondary' : 'btn-outline-secondary'"
+        <button v-for="g in chips" :key="g.name" type="button" class="btn btn-sm chip" :class="g.on ? 'btn-secondary' : 'btn-outline-secondary'"
                 :title="`${g.name}: заповнили ${done(g)} з ${g.n}`" @click="toggleGroup(g)">{{ g.text }} <span class="count">{{ done(g) }}/{{ g.n }}</span></button>
       </div>
-      <WeekProgress :students="shown" />
-      <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
-        <div class="btn-group btn-group-sm">
-          <button v-for="(text, key) in LAYERS" :key="key" type="button" class="btn" :class="key === layer ? 'btn-secondary' : 'btn-outline-secondary'"
-                  @click="set({ layer: key === 'no' ? undefined : key })">{{ text }}</button>
+      <WeekBar v-model:view="view" v-model:len="len" v-model:sort="sort" v-model:layer="layer" :roomy="day !== null" :busy />
+      <WeekWhys v-model:soft="soft" v-model:lit="lit" :laid />
+      <WeekStrips v-if="strips" class="mb-4" :frame :days :groups :counts :tops :window-at="windowAt"
+                  :total :mine :picked :lit :roomy="day !== null" @pick="pick" />
+      <WeekHeat v-else class="mb-4" :frame :counts :layer :mine :picked @pick="pick" />
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <WeekWindows v-model:skip="skip" :free :tops :len :picked :total :busy :empty="!laid.length" @pick="(w) => pick(w.day, w.r0)" />
+          <WeekStuck v-model="withStuck" :people="stuckOnes" />
+          <WeekProgress :students="shown" />
         </div>
-        <span class="small text-secondary">у клітинці — скільки людей із {{ laid.length }} ·
-          {{ data.me ? 'заштриховано — ти не можеш' : 'познач у «Мій тиждень» свої години — їх буде викреслено' }}</span>
+        <div class="col-lg-6"><WeekPicked :w="picked" :laid :groups :total @close="pick(null)" /></div>
       </div>
-      <WeekHeat class="mb-4" :frame="data.frame" :counts :layer :mine :picked @pick="(day, r0) => (at = { day, r0 })" />
-      <WeekWindows v-model:len="len" :list :laid :picked @pick="(w) => (at = w && { day: w.day, r0: w.r0 })" />
-      <WeekPairs :list :laid :len />
+      <WeekPairs v-if="day === null" :list :laid :len />
     </template>
   </div>
 </template>

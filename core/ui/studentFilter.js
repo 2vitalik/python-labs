@@ -14,7 +14,7 @@ const REST = [
 ]
 const label = (key) => (key === NONE ? 'Без групи' : key)
 // on a chip: «ПЗПІ-25-1» → «25-1», «ПЗПІи-25-1» → «25-1и», no group → «—»
-const short = (key) => (key === NONE ? '—' : key.replace(/^\p{Lu}+(\p{Ll}*)-(.+)$/u, '$2$1'))
+export const short = (key) => (key === NONE ? '—' : key.replace(/^\p{Lu}+(\p{Ll}*)-(.+)$/u, '$2$1'))
 // «ПЗПІ-25-3» → «ПЗПІ-25»: the regular groups of a year share the «25-*» chip; «-0» and «ПЗПІи» stay out of it
 const year = (key) => key.match(/^(\p{Lu}+-\d+)-[1-9]\d*$/u)?.[1]
 

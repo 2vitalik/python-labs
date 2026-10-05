@@ -12,6 +12,7 @@ export function makeRouter(routes) {
       if (saved) return saved
       if (to.hash) return  // the guide text scrolls to the anchor itself once it has loaded (anchors.js)
       if (to.path === from.path && to.meta.filters) return  // ?query filters keep the position
+      if (to.meta.stay && to.matched[0] === from.matched[0]) return  // another param of the same page: /week/3 → /week/4
       return { top: 0 }
     },
   })

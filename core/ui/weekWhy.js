@@ -2,6 +2,9 @@
 const seg = new Intl.Segmenter('uk', { granularity: 'grapheme' })
 
 export const REASONS = ['🏫 пара за розкладом', '💼 робота', '🏋️ тренування', '📚 інші заняття', '🚌 дорога', '👨‍👩‍👧 сімʼя']
+// what a «не можу» says on /week (T186): the chips it names, «своя причина» for typed words, «без причини» for none
+export const CATS = [...REASONS, '✏️ своя причина', '❓ без причини']
+const OWN = REASONS.length
 
 // the reason's first emoji stands for it on the grid and sorts people on /week; a typed reason may have none
 export const emojiOf = (why) => [...seg.segment(why)].find((g) => /\p{Extended_Pictographic}/u.test(g.segment))?.segment || ''
@@ -20,4 +23,21 @@ export function reds(marks) {
     by.set(key, [...(by.get(key) || []), m])
   }
   return [...by.values()]
+}
+
+// «🏫 пара за розкладом, 🚌 дорога» → [0, 4] · «гурток» → [OWN] · «» → [OWN + 1]
+export function cats(why) {
+  const parts = why.split(',').map((p) => p.trim()).filter(Boolean)
+  if (!parts.length) return [OWN + 1]
+  return [...new Set(parts.map((p) => REASONS.findIndex((r) => p.includes(emojiOf(r)))).map((i) => (i < 0 ? OWN : i)))]
+}
+
+// who can't come, by reason, the commonest first: under the first one their mark names, as the chips count them
+export function byReason(people) {
+  const groups = new Map()
+  for (const p of people) {
+    const title = CATS[cats(p.marks[0].why)[0]]
+    groups.set(title, [...(groups.get(title) || []), p])
+  }
+  return [...groups].sort((a, b) => b[1].length - a[1].length)
 }

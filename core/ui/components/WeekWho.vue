@@ -1,14 +1,15 @@
 <script setup>
 import { byGroup } from '../studentFilter.js'
 import { DAYS, span } from '../week.js'
-import { byReason } from '../weekSum.js'
+import { byReason, emojiOf } from '../weekWhy.js'
 import CopyNicks from './CopyNicks.vue'
 
 // who is in the way of the window looked at. Those who can't — by reason, and within it by group: a class by the timetable
-// takes a whole group at once; a person's own words follow their name. Those who would rather not — by name.
-// `found` — who() of weekSum.js
+// takes a whole group at once; a person's own words follow their name. Those who would rather not — by name, and the emoji
+// of a reason the teacher counts as «незручно» (T186) next to it. `found` — who() of weekSum.js
 defineProps({ found: { type: Object, required: true } })
 const said = (p, title) => p.marks.map((m) => m.why.trim()).filter((why) => why && why !== title).join('; ')
+const eased = (p) => [...new Set(p.marks.filter((m) => m.soft).map((m) => emojiOf(m.why) || '✏️'))].join('')
 const hint = (p) => [p.tg_username && `@${p.tg_username}`, ...p.marks.map((m) => `${DAYS[m.day]} ${span(m)} ${m.why}`)].filter(Boolean).join('\n')
 </script>
 
@@ -24,7 +25,7 @@ const hint = (p) => [p.tg_username && `@${p.tg_username}`, ...p.marks.map((m) =>
     </div>
     <div v-if="found.meh.length">
       <b>Незручно</b> <span class="text-secondary">{{ found.meh.length }}</span>:
-      <template v-for="(p, i) in found.meh" :key="p.nick">{{ i ? ', ' : '' }}<RouterLink :to="`/activity?user=${p.nick}`" :title="hint(p)">{{ p.name || p.nick }}</RouterLink></template>
+      <template v-for="(p, i) in found.meh" :key="p.nick">{{ i ? ', ' : '' }}<RouterLink :to="`/activity?user=${p.nick}`" :title="hint(p)">{{ p.name || p.nick }}</RouterLink>{{ eased(p) && ` ${eased(p)}` }}</template>
     </div>
   </div>
 </template>
