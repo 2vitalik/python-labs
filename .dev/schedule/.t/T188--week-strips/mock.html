@@ -1,0 +1,235 @@
+<!doctype html>
+<!-- Макет до T186 / T188: «Тиждень потоку v2» на вигаданому потоці. Еталон вигляду й поведінки; код одноразовий. -->
+<html lang="uk">
+<meta charset="utf-8">
+<title>Тиждень потоку v2 — макет смужок (вигадані дані)</title>
+<style>
+:root { --bg: #fff; --fg: #212529; --muted: #6c757d; --line: #dee2e6; --no: #e4727d; --meh: #ffd24a; --ok: #6fb694; --primary: #0d6efd; --slot: 14px; }
+@media (prefers-color-scheme: dark) { :root { --bg: #212529; --fg: #dee2e6; --muted: #adb5bd; --line: #495057; --no: #b0434f; --meh: #b8921c; --ok: #2f7a58; } }
+body { margin: 0; padding: 16px 24px; background: var(--bg); color: var(--fg); font: 14px/1.4 system-ui, sans-serif; }
+h1 { font-size: 22px; margin: 0 0 8px; } a { color: inherit; }
+.bar { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; margin-bottom: 8px; font-size: 13px; color: var(--muted); }
+.chip { padding: 1px 8px; border: 1px solid var(--line); border-radius: 12px; cursor: pointer; color: var(--fg); user-select: none; }
+.chip.on { background: var(--fg); color: var(--bg); } .chip.soft { text-decoration: line-through; opacity: .6; }
+.grid { display: flex; user-select: none; }
+.hours { flex: 0 0 38px; padding-top: var(--head); font-size: 11px; color: var(--muted); text-align: right; padding-right: 6px; }
+.hours span { display: block; height: calc(var(--slot) * 4); transform: translateY(-7px); }
+.day { flex: 1 1 0; min-width: 0; margin-left: 10px; }
+.day > a { display: block; text-align: center; font-weight: 600; font-size: 13px; text-decoration: none; }
+.day > a:hover { text-decoration: underline; }
+.labels, .body { display: flex; }
+.labels { height: var(--labels); align-items: flex-end; font-size: 10px; color: var(--muted); }
+.labels .sum, .labels .tops { border: 0; background: none; }
+.sum { flex: 0 0 22px; font-size: 10px; text-align: center; }
+.sum b { display: block; height: var(--slot); line-height: var(--slot); font-weight: 400; }
+.tops { flex: 0 0 9px; position: relative; }
+.tops i { position: absolute; left: 2px; width: 5px; border-radius: 3px; background: var(--primary); color: #fff; font: 700 8px/1 system-ui; }
+.cluster { display: flex; min-width: 0; margin-right: var(--gap); position: relative; }
+.labels .cluster { justify-content: center; overflow: hidden; white-space: nowrap; }
+.body { position: relative; height: calc(var(--slot) * var(--rows)); }
+.body .cluster { background: color-mix(in srgb, var(--fg) 4%, var(--bg)); outline: 1px solid var(--line); }
+.col { flex: 1 1 0; min-width: 0; position: relative; }
+.roomy .col { box-shadow: inset -1px 0 0 var(--bg); }
+.col i { position: absolute; left: 0; right: 0; font: 11px/1 system-ui; text-align: center; overflow: hidden; }
+.col i.no { background: var(--no); } .col i.meh { background: var(--meh); } .col i.ok { background: var(--ok); }
+.col i.soft { background: repeating-linear-gradient(135deg, var(--meh) 0 3px, var(--no) 3px 5px); }
+.grid[data-lit] .col i:not(.lit) { opacity: .15; }
+.col.me::after { content: ''; position: absolute; inset: 0 -1px; border: 1px solid var(--fg); z-index: 2; pointer-events: none; }
+.lines { position: absolute; inset: 0; pointer-events: none; z-index: 1;
+         background: linear-gradient(color-mix(in srgb, var(--fg) 22%, transparent) 1px, transparent 1px) 0 0 / 100% calc(var(--slot) * 4); }
+.busy { position: absolute; left: 0; right: 0; pointer-events: none; z-index: 1;
+        background: repeating-linear-gradient(135deg, transparent 0 5px, color-mix(in srgb, var(--fg) 30%, transparent) 5px 6px); }
+.band { position: absolute; left: 22px; right: 0; border: 2px solid var(--primary); border-radius: 3px; pointer-events: none; z-index: 3; box-sizing: border-box; }
+.band.hover { border-style: dashed; border-width: 1px; }
+.names { display: flex; height: 76px; } .names .col { writing-mode: vertical-rl; transform: rotate(180deg); font-size: 11px; line-height: 1; overflow: hidden; white-space: nowrap; display: flex; align-items: center; }
+#tip { position: fixed; z-index: 9; max-width: 330px; padding: 8px 10px; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 4px 16px #0003; font-size: 12.5px; pointer-events: none; display: none; }
+#tip hr { border: 0; border-top: 1px solid var(--line); margin: 6px 0; } #tip .m { color: var(--muted); }
+.n { display: inline-block; min-width: 22px; padding: 0 4px; border-radius: 4px; text-align: center; }
+.n.no { background: var(--no); } .n.meh { background: var(--meh); } .n.ok { background: var(--ok); }
+#under { display: flex; gap: 32px; margin-top: 14px; font-size: 13px; } #under > div { flex: 1; } #under h2 { font-size: 16px; margin: 0 0 6px; }
+#under .row { padding: 3px 6px; border-bottom: 1px solid var(--line); cursor: pointer; } #under .row.on { box-shadow: inset 2px 0 0 var(--primary); background: color-mix(in srgb, var(--fg) 6%, var(--bg)); }
+</style>
+<body>
+<h1 id="h1"></h1>
+<div class="bar" id="bar"></div>
+<div class="bar" id="whys"></div>
+<div class="grid" id="grid"></div>
+<div id="under"><div id="list"></div><div id="who"></div></div>
+<div id="tip"></div>
+<script>
+// ---- the grid and a made-up stream: 107 students in six groups, about half have marked their week
+const frame = { days: 6, from: 900, to: 1380, step: 15 }
+const ROWS = (frame.to - frame.from) / frame.step
+const DAYS = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'], FULL = ['Понеділок', 'Вівторок', 'Середа', 'Четвер', 'Пʼятниця', 'Субота']
+const REASONS = ['🏫 пара за розкладом', '💼 робота', '🏋️ тренування', '📚 інші заняття', '🚌 дорога', '👨‍👩‍👧 сімʼя']
+const hm = (min) => `${Math.floor(min / 60)}:${String(min % 60).padStart(2, '0')}`
+const at = (row) => frame.from + row * frame.step
+function rng(seed) { return () => { seed = (seed + 0x6D2B79F5) | 0; let t = Math.imul(seed ^ (seed >>> 15), 1 | seed); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296 } }
+function demo() {
+  const r = rng(11), pick = (a) => a[Math.floor(r() * a.length)], chance = (p) => r() < p
+  const LAST = ['Шевченко', 'Бондар', 'Ткаченко', 'Коваль', 'Мельник', 'Кравець', 'Олійник', 'Поліщук', 'Савчук', 'Руденко', 'Мороз', 'Лисенко', 'Гнатюк', 'Дорошенко', 'Зінченко', 'Карпенко', 'Павленко', 'Сидоренко', 'Тимошенко', 'Яковенко']
+  const FIRST = ['Андрій', 'Олена', 'Максим', 'Ірина', 'Денис', 'Софія', 'Артем', 'Марія', 'Богдан', 'Анна', 'Назар', 'Дарʼя']
+  const students = []
+  ;[22, 16, 18, 23, 11, 17].forEach((n, g) => {
+    const pairs = []  // the group's timetable inside the grid: the whole group is at a class
+    for (let d = 0; d < 5; d++) if (chance(.55)) pairs.push([d, chance(.65) ? 900 : 1005])
+    for (let i = 0; i < n; i++) {
+      const s = { nick: `s${g + 1}-${i}`, name: `${pick(LAST)} ${pick(FIRST)}`, group: `ПЗПІ-25-${g + 1}`, week: null }
+      students.push(s)
+      if (!chance([.62, .5, .45, .42, .3, .55][g])) continue
+      const cells = Array.from({ length: 6 }, () => Array(ROWS).fill(null))
+      const put = (day, start, end, kind, why = '') => { for (let t = Math.max(start, frame.from); t < Math.min(end, frame.to); t += 15) cells[day][(t - frame.from) / 15] ||= { kind, why } }
+      if (chance(.04)) for (let d = 0; d < 6; d++) put(d, 900, 1380, 'no', '💼 робота')  // never free
+      for (const [d, start] of pairs) if (chance(.9)) { put(d, start, start + 90, 'no', REASONS[0]); if (chance(.25)) put(d, start + 90, start + 135, 'no', REASONS[4]) }
+      if (chance(.15)) { const from = pick([900, 1080]); for (let d = 0; d < 5; d++) if (chance(.8)) put(d, from, from + 240, 'no', REASONS[1]) }
+      if (chance(.3)) { const from = pick([1020, 1080, 1110, 1140]); for (const d of [pick([0, 1]), pick([2, 3]), pick([4, 5])]) if (chance(.8)) put(d, from, from + 90, 'no', REASONS[2]) }
+      if (chance(.1)) put(pick([1, 3, 5]), 1080, 1170, 'no', pick([REASONS[3], REASONS[5], 'гурток з малювання']))
+      if (chance(.35)) for (let d = 0; d < 6; d++) if (chance(.8)) put(d, pick([1260, 1290, 1320]), 1380, 'meh')
+      if (chance(.2)) put(5, 900, 1380, 'meh')
+      if (chance(.35)) for (const d of [pick([0, 1, 2]), pick([3, 4])]) put(d, 1110, 1230, 'ok')
+      const marks = []
+      cells.forEach((col, day) => col.forEach((c, row) => {
+        const last = marks.at(-1)
+        if (!c) return
+        if (last?.day === day && last.end === at(row) && last.kind === c.kind && last.why === c.why) last.end += 15
+        else marks.push({ day, start: at(row), end: at(row) + 15, ...c })
+      }))
+      s.week = { marks, comment: chance(.1) ? 'можу лише онлайн' : '', done_at: chance(.9) ? 'x' : null }
+    }
+  })
+  return { frame, students, me: { marks: [{ day: 1, start: 900, end: 1080, kind: 'no', why: 'пари' }, { day: 3, start: 900, end: 1005, kind: 'no', why: 'пари' }] } }
+}
+
+// ---- the sums: the same as weekSum.js counts today
+const data = demo()
+const RANK = { ok: 0, free: 1, meh: 2, no: 3 }
+const toCells = (marks) => { const c = Array.from({ length: 6 }, () => Array(ROWS).fill(null)); for (const m of marks) for (let t = m.start; t < m.end; t += 15) c[m.day][(t - frame.from) / 15] = m; return c }
+const cat = (why) => { const i = REASONS.findIndex((x) => why.includes(x.split(' ')[0])); return i >= 0 ? i : why ? 6 : 7 }  // 6 — own words, 7 — none
+const state = { len: 90, day: null, soft: new Set(), pin: null, hover: null }
+for (const [k, v] of new URLSearchParams(location.hash.slice(1))) { if (k === 'day') state.day = +v; if (k === 'pin') state.pin = v.split(',').map(Number); if (k === 'hover') state.hover = v.split(',').map(Number); if (k === 'soft') state.soft = new Set(v.split(',').map(Number)); if (k === 'lit') state.lit = +v }
+const busy = (s) => s.week.marks.reduce((n, m) => n + (m.kind === 'no' ? m.end - m.start : 0), 0)
+const groups = [...new Set(data.students.map((s) => s.group))].map((name) => {
+  const all = data.students.filter((s) => s.group === name)
+  return { name, size: all.length, list: all.filter((s) => s.week).sort((a, b) => busy(b) - busy(a) || a.name.localeCompare(b.name)) }
+})
+const laid = groups.flatMap((g) => g.list)
+const kindOf = (m) => (m && m.kind === 'no' && state.soft.has(cat(m.why)) ? 'meh' : m?.kind || 'free')
+function recount() {
+  for (const s of laid) s.cells = toCells(s.week.marks)
+  state.mine = toCells(data.me.marks)
+}
+const worst = (col, r0, n) => { let w = 'ok'; for (let r = r0; r < r0 + n; r++) if (RANK[kindOf(col[r])] > RANK[w]) w = kindOf(col[r]); return w }
+function windowAt(day, r0) {
+  const n = Math.ceil(state.len / 15), w = { day, r0: Math.min(r0, ROWS - n), n, no: 0, meh: 0, free: 0, ok: 0, by: {}, est: 0 }
+  for (const g of groups) {
+    const no = g.list.filter((s) => worst(s.cells[day], w.r0, n) === 'no').length
+    if (no) w.by[g.name] = `${no} з ${g.list.length}`
+    w.est += g.list.length ? (g.size * no) / g.list.length : 0
+  }
+  for (const s of laid) w[worst(s.cells[day], w.r0, n)]++
+  w.mine = worst(state.mine[day], w.r0, n)
+  return w
+}
+const name = (w) => `${DAYS[w.day]} ${hm(at(w.r0))}–${hm(at(w.r0) + state.len)}`
+function tops(count) {
+  const all = [], out = []
+  for (let d = 0; d < 6; d++) for (let r = 0; r + Math.ceil(state.len / 15) <= ROWS; r++) all.push(windowAt(d, r))
+  for (const w of all.filter((w) => w.mine !== 'no').sort((a, b) => a.no - b.no || a.meh - b.meh || b.ok - a.ok)) {
+    if (out.length < count && !out.some((o) => o.day === w.day && Math.abs(o.r0 - w.r0) < w.n)) out.push(w)
+  }
+  return out
+}
+
+// ---- the picture
+const el = (tag, cls, html = '') => { const e = document.createElement(tag); e.className = cls; e.innerHTML = html; return e }
+function draw() {
+  recount()
+  const roomy = state.day !== null, days = roomy ? [state.day] : [0, 1, 2, 3, 4, 5], best = tops(5)
+  document.documentElement.style.setProperty('--slot', roomy ? '19px' : '14px')
+  h1.innerHTML = roomy ? `<a href="#">Тиждень потоку</a> › ${FULL[state.day]} <span style="font-size:13px;font-weight:400">${DAYS.map((d, i) => `<a href="#day=${i}" style="margin-left:8px;${i === state.day ? 'font-weight:700' : ''}">${d}</a>`).join('')}</span>` : 'Тиждень потоку <span style="font-size:13px;font-weight:400;color:var(--muted)">макет · вигадані дані</span>'
+  bar.innerHTML = `✅ позначили <b style="color:var(--fg)">${laid.length}</b> зі ${data.students.length} · ` + groups.map((g) => `<span class="chip">${g.name.slice(5)} <span style="opacity:.6">${g.list.length}/${g.size}</span></span>`).join('') +
+    ` · пара <span class="chip on">1:30</span> · <span class="n no">не можу</span> <span class="n meh">незручно</span> <span class="n ok">найкраще</span> порожнє — можу · ①–⑤ найкращі вікна`
+  whys.innerHTML = 'причини «не можу»: ' + [...REASONS, '✏️ своє'].map((t, i) => {
+    const n = laid.filter((s) => s.week.marks.some((m) => m.kind === 'no' && cat(m.why) === i)).length
+    return `<span class="chip ${state.soft.has(i) ? 'soft' : ''}" data-why="${i}">${t} · ${n}</span>`
+  }).join('') + ' <span>наведи — підсвітити · клік — «вважати незручним»</span>'
+  grid.className = `grid ${roomy ? 'roomy' : ''}`
+  grid.style.cssText = `--rows:${ROWS}; --gap:${roomy ? 8 : 4}px; --labels:${roomy ? 18 : 14}px; --head:${roomy ? 18 + 76 : 14 + 18}px`
+  if (state.lit !== undefined) grid.dataset.lit = state.lit; else delete grid.dataset.lit
+  grid.replaceChildren(el('div', 'hours', Array.from({ length: 9 }, (_, i) => `<span>${15 + i}:00</span>`).join('')))
+  for (const d of days) {
+    const day = el('div', 'day', roomy ? '' : `<a href="#day=${d}" title="Відкрити день">${DAYS[d]}</a>`)
+    const labels = el('div', 'labels', '<div class="sum">Σ</div><div class="tops"></div>'), body = el('div', 'body'), names = el('div', 'names', '<div class="sum"></div><div class="tops"></div>')
+    const sum = el('div', 'sum'), marksTop = el('div', 'tops')
+    const top = Math.max(1, ...laid.map(() => 0), ...Array.from({ length: ROWS }, (_, r) => laid.filter((s) => kindOf(s.cells[d][r]) === 'no').length))
+    for (let r = 0; r < ROWS; r++) {
+      const n = laid.filter((s) => kindOf(s.cells[d][r]) === 'no').length, was = r && laid.filter((s) => kindOf(s.cells[d][r - 1]) === 'no').length
+      const b = el('b', '', n && n !== was ? n : '')
+      b.style.background = n ? `color-mix(in srgb, var(--no) ${Math.round(15 + 85 * n / top)}%, var(--bg))` : ''
+      sum.append(b)
+    }
+    best.forEach((w, k) => { if (w.day === d) { const i = el('i', '', k + 1); i.style.cssText = `top:calc(var(--slot)*${w.r0});height:calc(var(--slot)*${w.n})`; i.title = name(w); marksTop.append(i) } })
+    body.append(sum, marksTop)
+    for (const g of groups) {
+      const label = el('div', 'cluster', roomy ? `${g.name} · ${g.list.length} з ${g.size}` : g.name.slice(8)), cl = el('div', 'cluster'), nm = el('div', 'cluster')
+      for (const e of [label, cl, nm]) e.style.flex = `${g.list.length} 1 0`
+      label.title = `${g.name}: позначили ${g.list.length} з ${g.size}`
+      for (const s of g.list) {
+        const col = el('div', `col ${state.hover && laid[state.hover[2]] === s ? 'me' : ''}`)
+        col.dataset.i = laid.indexOf(s); col.dataset.day = d
+        for (const m of s.week.marks.filter((m) => m.day === d)) {
+          const soft = m.kind === 'no' && state.soft.has(cat(m.why))
+          const i = el('i', `${m.kind} ${soft ? 'soft' : ''} ${m.kind === 'no' && cat(m.why) === state.lit ? 'lit' : ''}`, roomy && m.kind === 'no' ? (cat(m.why) === 6 ? '✏️' : m.why.split(' ')[0]) : '')
+          i.style.cssText = `top:calc(var(--slot)*${(m.start - frame.from) / 15});height:calc(var(--slot)*${(m.end - m.start) / 15})`
+          col.append(i)
+        }
+        cl.append(col)
+        nm.append(el('div', 'col', `${s.name.split(' ')[0]} ${s.name.split(' ')[1][0]}.${s.week.comment ? ' 💬' : ''}${s.week.done_at ? '' : ' ✍️'}`))
+      }
+      labels.append(label); body.append(cl); names.append(nm)
+    }
+    body.append(el('div', 'lines'))
+    let r0 = null
+    for (let r = 0; r <= ROWS; r++) {
+      const on = r < ROWS && state.mine[d][r]?.kind === 'no'
+      if (on && r0 === null) r0 = r
+      if (!on && r0 !== null) { const b = el('div', 'busy'); b.style.cssText = `top:calc(var(--slot)*${r0});height:calc(var(--slot)*${r - r0})`; b.title = 'ти не можеш'; body.append(b); r0 = null }
+    }
+    for (const [kind, w] of [['', state.pin], ['hover', state.hover]]) if (w && w[0] === d) {
+      const n = Math.ceil(state.len / 15), b = el('div', `band ${kind}`)
+      b.style.cssText = `top:calc(var(--slot)*${Math.min(w[1], ROWS - n)});height:calc(var(--slot)*${n})`
+      body.append(b)
+    }
+    day.append(labels, ...(roomy ? [names] : []), body)
+    grid.append(day)
+  }
+  list.innerHTML = '<h2>Коли поставити пару</h2>' + tops(8).map((w, k) => `<div class="row ${state.pin && state.pin[0] === w.day && state.pin[1] === w.r0 ? 'on' : ''}" data-pin="${w.day},${w.r0}">${k < 5 ? '①②③④⑤'[k] : '·'} <b>${name(w)}</b> <span class="n no">${w.no}</span> <span class="n meh">${w.meh}</span> <span class="n ok">${w.ok}</span> вільні ${w.free} <span class="m" style="color:var(--muted)" title="якби позначили всі">≈ ${Math.round(w.est)} зі ${data.students.length}</span></div>`).join('')
+  const p = state.pin && windowAt(...state.pin)
+  who.innerHTML = p ? `<h2>${name(p)} — хто саме</h2><div>${tipWindow(p)}</div>` + [...REASONS, '✏️ своя причина'].map((t, c) => {
+    const people = laid.filter((s) => s.week.marks.some((m) => m.day === p.day && m.kind === 'no' && !state.soft.has(cat(m.why)) && cat(m.why) === c && m.start < at(p.r0) + state.len && m.end > at(p.r0)))
+    return people.length ? `<div style="margin-top:6px"><b>${t}</b> ${people.length}<br>${people.map((s) => `${s.name} <span style="color:var(--muted)">${s.group.slice(5)}</span>`).join(', ')}</div>` : ''
+  }).join('') : '<h2>Хто саме</h2><span style="color:var(--muted)">Клік по сітці або по рядку — закріпити вікно й побачити, хто не може і чому.</span>'
+}
+const tipWindow = (w) => `<b>${name(w)}</b>${w.mine === 'no' ? ' · <span style="color:var(--no)">ти не можеш</span>' : ''}<br><span class="n no">${w.no}</span> <span class="n meh">${w.meh}</span> <span class="n ok">${w.ok}</span> вільні ${w.free} <span class="m">≈ ${Math.round(w.est)} зі ${data.students.length}, якби позначили всі</span>` +
+  (w.no ? `<br><span class="m">не можуть: ${Object.entries(w.by).map(([g, n]) => `${g.slice(5)} — ${n}`).join(' · ')}</span>` : '')
+function showTip(x, y) {
+  const [d, r, i] = state.hover, s = laid[i]
+  tip.innerHTML = tipWindow(windowAt(d, r)) + (s ? `<hr><b>${s.name}</b> · ${s.group}${s.week.done_at ? '' : ' ✍️'}<br>` +
+    (s.week.marks.filter((m) => m.day === d).map((m) => `<span class="n ${m.kind}">${hm(m.start)}–${hm(m.end)}</span> ${m.why}`).join('<br>') || '<span class="m">цього дня може будь-коли</span>') +
+    (s.week.comment ? `<br>💬 ${s.week.comment}` : '') : '')
+  tip.style.display = 'block'
+  tip.style.left = `${Math.min(x + 14, innerWidth - tip.offsetWidth - 8)}px`
+  tip.style.top = `${Math.min(y + 14, innerHeight - tip.offsetHeight - 8)}px`
+}
+const hit = (e) => { const body = e.target.closest('.body'); if (!body) return null; const col = e.target.closest('.col'), box = body.getBoundingClientRect(); const d = +(col || body.querySelector('.col')).dataset.day; return [d, Math.max(0, Math.min(ROWS - 1, Math.floor((e.clientY - box.top) / (box.height / ROWS)))), col ? +col.dataset.i : -1] }
+grid.onpointermove = (e) => { const h = hit(e); if (String(h) !== String(state.hover)) { state.hover = h; draw() } if (h) showTip(e.clientX, e.clientY); else tip.style.display = 'none' }
+grid.onpointerleave = () => { state.hover = null; tip.style.display = 'none'; draw() }
+grid.onclick = (e) => { const h = hit(e); if (h) { state.pin = state.pin && state.pin[0] === h[0] && state.pin[1] === h[1] ? null : h.slice(0, 2); draw() } }
+list.onclick = (e) => { const row = e.target.closest('[data-pin]'); if (row) { state.pin = row.dataset.pin.split(',').map(Number); draw() } }
+whys.onpointerover = (e) => { const c = e.target.closest('[data-why]'); state.lit = c ? +c.dataset.why : undefined; if (c) grid.dataset.lit = state.lit; else delete grid.dataset.lit; grid.querySelectorAll('.col i').forEach((i) => i.classList.remove('lit')); if (c) draw() }
+whys.onpointerleave = () => { state.lit = undefined; draw() }
+whys.onclick = (e) => { const c = e.target.closest('[data-why]'); if (c) { const i = +c.dataset.why; state.soft.has(i) ? state.soft.delete(i) : state.soft.add(i); draw() } }
+onhashchange = () => { state.day = new URLSearchParams(location.hash.slice(1)).has('day') ? +new URLSearchParams(location.hash.slice(1)).get('day') : null; draw() }
+draw()
+if (state.hover) { const c = grid.querySelector(`.col[data-day="${state.hover[0]}"][data-i="${state.hover[2]}"]`).getBoundingClientRect(); showTip(c.left + 4, c.top + (state.hover[1] + 1) * c.height / ROWS) }
+</script>

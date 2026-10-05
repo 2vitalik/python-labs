@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T186** · тікетів: 185 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T189** · тікетів: 188 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -193,3 +193,6 @@
 | lessons | [T183](lessons/.t/T183-Q--lessons-questions.md) | ❓ | lessons-questions | Заняття й транскрипти: вибори | 🔴 ⬜ |
 | lessons | [T184](lessons/.t/T184--transcript-pilot/plan.md) | ⚙️ | transcript-pilot | Пілот: злиття чотирьох транскриптів заняття 1 — план | 🟢 🟩 |
 | lessons | [T185](lessons/.t/T185-C--transcript-sources.md) | 🔆 | transcript-sources | Чотири сервіси транскрибування: порівняння на занятті 1 | 🟢 🟩 |
+| schedule | [T186](schedule/.t/T186-P--week-strips-design.md) | 💡 | week-strips-design | Тиждень потоку v2: смужки студентів, сторінка дня, підказки — дизайн | 🟢 ⬜ |
+| schedule | [T187](schedule/.t/T187-Q--week-strips-choices.md) | ❓ | week-strips-choices | Тиждень потоку v2: відкриті вибори | 🔴 ⬜ |
+| schedule | [T188](schedule/.t/T188--week-strips/plan.md) | ⚙️ | week-strips | Тиждень потоку v2 — смужки студентів, сторінка дня, підказки — план | 🟢 ⬜ |
