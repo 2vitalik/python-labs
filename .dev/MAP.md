@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T182** · тікетів: 181 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T186** · тікетів: 185 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -189,3 +189,7 @@
 | schedule | [T179](schedule/.t/T179--week-v1/plan.md) | ⚙️ | week-v1 | Тиждень студента v1 — сторінка, API, зведення — план | 🟢 🟩 |
 | ods | [T180](ods/.t/T180-P--ods-deploy-plan.md) | 💡 | ods-deploy-plan | Деплой ods: що готово, що пофіксити, план | 🟢 🟩 |
 | ods | [T181](ods/.t/T181-Q--ods-deploy-choices.md) | ❓ | ods-deploy-choices | Деплой ods: вибори | 🔴 ⬜ |
+| lessons | [T182](lessons/.t/T182-P--lessons-design.md) | 💡 | lessons-design | Заняття на сайті: записи, транскрипти, конспекти — дизайн | 🟢 🟩 |
+| lessons | [T183](lessons/.t/T183-Q--lessons-questions.md) | ❓ | lessons-questions | Заняття й транскрипти: вибори | 🔴 ⬜ |
+| lessons | [T184](lessons/.t/T184--transcript-pilot/plan.md) | ⚙️ | transcript-pilot | Пілот: злиття чотирьох транскриптів заняття 1 — план | 🟢 🟩 |
+| lessons | [T185](lessons/.t/T185-C--transcript-sources.md) | 🔆 | transcript-sources | Чотири сервіси транскрибування: порівняння на занятті 1 | 🟢 🟩 |
