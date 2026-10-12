@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T189** · тікетів: 188 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T197** · тікетів: 196 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -179,7 +179,7 @@
 | platform | [T169](platform/.t/T169-Q--core-pilot-choices.md) | ❓ | core-pilot-choices | Ядро: вибори пілота | 🔴 ⬜ |
 | ods | [T170](ods/.t/T170--ods-base/plan.md) | ⚙️ | ods-base | Базовий ods на ядрі — план | 🟢 🟩 |
 | ods | [T171](ods/.t/T171-Q--ods-base-choices.md) | ❓ | ods-base-choices | Базовий ods: вибори й хвости | 🔴 ⬜ |
-| ods | [T172](ods/.t/T172-C--ods-labs-review.md) | 🔆 | ods-labs-review | Лаби ODS: оцінка й напрями змін | 🟢 ⬜ |
+| ods | [T172](ods/.t/T172-C--ods-labs-review.md) | 🔆 | ods-labs-review | Лаби ODS: оцінка й напрями змін | 🟢 🟩 |
 | ods | [T173](ods/.t/T173-Q--ods-labs-direction.md) | ❓ | ods-labs-direction | Лаби ODS: куди рухатися | 🔴 ⬜ |
 | tgbot | [T174](tgbot/.t/T174-P--polls-design.md) | 💡 | polls-design | Опитування v1: дизайн — моделі, надійність, API, сторінки | 🟢 🟩 |
 | tgbot | [T175](tgbot/.t/T175-Q--polls-questions.md) | ❓ | polls-questions | Опитування v1: відкриті вибори | 🔴 ⬜ |
@@ -196,3 +196,11 @@
 | schedule | [T186](schedule/.t/T186-P--week-strips-design.md) | 💡 | week-strips-design | Тиждень потоку v2: смужки студентів, сторінка дня, підказки — дизайн | 🟢 🟩 |
 | schedule | [T187](schedule/.t/T187-Q--week-strips-choices.md) | ❓ | week-strips-choices | Тиждень потоку v2: відкриті вибори | 🔴 🟩 |
 | schedule | [T188](schedule/.t/T188--week-strips/plan.md) | ⚙️ | week-strips | Тиждень потоку v2 — смужки студентів, сторінка дня, підказки — план | 🟢 🟩 |
+| .rounds | [T189](.rounds/.t/T189-R--ods-lab1-direction.md) | ✔️ | ods-lab1-direction | ODS, лаба 1: напрям від Vitalik | 🟢 🟩 |
+| ods | [T190](ods/.t/T190-P--ods-lab1-plan.md) | 💡 | ods-lab1-plan | ODS, нова лаба 1: план кроків | 🟢 🟩 |
+| ods | [T191](ods/.t/T191--ods-lab1-build/plan.md) | ⚙️ | ods-lab1-build | ODS, нова лаба 1: чернетка, генератор, ноутбук — план | 🟢 🟩 |
+| ods | [T192](ods/.t/T192-C--ods-lab-levels.md) | 🔆 | ods-lab-levels | ODS: рівні оцінки й формати захисту лаб | 🟢 ⬜ |
+| ods | [T193](ods/.t/T193-C--ods-lab-ai.md) | 🔆 | ods-lab-ai | ODS: ШІ в лабах — чи можна перевірити й чи варто | 🟢 ⬜ |
+| ods | [T194](ods/.t/T194-Q--ods-lab1-questions.md) | ❓ | ods-lab1-questions | ODS, нова лаба 1: питання | 🔴 ⬜ |
+| ods | [T195](ods/.t/T195--ods-lab1-learn/plan.md) | ⚙️ | ods-lab1-learn | ODS, нова лаба 1: пояснення лаби для викладача (learn/) — план | 🟢 🟩 |
+| ods | [T196](ods/.t/T196--ods-lab1-basics/plan.md) | ⚙️ | ods-lab1-basics | ODS, нова лаба 1: пояснення з нуля й інфографіка (learn/basics/) — план | 🟢 🟩 |
