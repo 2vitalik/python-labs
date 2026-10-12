@@ -11,7 +11,9 @@ import { tocOf } from '@core/md.js'
 import { problem } from '@core/problem.js'
 import { site } from '@core/site.js'
 import { useTitle } from '@core/title.js'
+import { user } from '@core/user.js'
 
+import { getLabs } from '../api.js'
 import Slides from '../components/Slides.vue'
 import { KINDS } from '../site.js'
 import { slidesOf } from '../slides.js'
@@ -25,6 +27,9 @@ const doc = computed(() => list.value.find((s) => String(s.n) === route.params.n
 const prev = computed(() => list.value[list.value.indexOf(doc.value) - 1])
 const next = computed(() => list.value[list.value.indexOf(doc.value) + 1])
 const page = ref(null)
+const labs = ref([])  // labs with cards on the site (T200): «Моя лаба» for everyone, «Результати» for the teacher
+const admin = computed(() => user.value?.status === 'admin')
+const hasMy = computed(() => kind.value === 'labs' && labs.value.some((l) => l.n === doc.value?.n))
 const slides = computed(() => slidesOf(textOf(page.value)))
 const plain = (text) => text.replace(/\$([^$]+)\$/g, (_, tex) => tex.replace(/[{}\\]/g, ''))  // the contents are text: $R^{2}$ → R^2
 const toc = computed(() => tocOf(textOf(page.value)).map((h) => ({ ...h, text: plain(h.text) })))
@@ -35,9 +40,11 @@ const slide = computed({
 const fmt = (d) => new Date(d).toLocaleDateString('uk-UA')
 useTitle(() => page.value?.title)
 
+let labsLoad
 async function load() {
   page.value = null
   if (!doc.value) return (problem.value = 'lost')
+  if (kind.value === 'labs') labs.value = await (labsLoad ??= getLabs())
   page.value = await getGuidePage(doc.value.slug)
 }
 watch(doc, load, { immediate: true })
@@ -45,9 +52,15 @@ watch(doc, load, { immediate: true })
 
 <template>
   <Crumbs :items="[[`/${kind}`, KINDS[kind]], doc?.nav]">
-    <div v-if="slides.length > 1" class="btn-group btn-group-sm">
-      <button class="btn btn-outline-secondary" :class="{ active: slide === null }" @click="slide = null">Текст</button>
-      <button class="btn btn-outline-secondary" :class="{ active: slide !== null }" @click="slide = slide ?? slides[0].n">Слайди</button>
+    <div class="d-flex gap-2">
+      <div v-if="slides.length > 1" class="btn-group btn-group-sm">
+        <button class="btn btn-outline-secondary" :class="{ active: slide === null }" @click="slide = null">Текст</button>
+        <button class="btn btn-outline-secondary" :class="{ active: slide !== null }" @click="slide = slide ?? slides[0].n">Слайди</button>
+      </div>
+      <div v-if="hasMy" class="btn-group btn-group-sm">
+        <RouterLink :to="`/labs/${doc.n}/my`" class="btn btn-outline-primary">Моя лаба</RouterLink>
+        <RouterLink v-if="admin" :to="`/labs/${doc.n}/results`" class="btn btn-outline-secondary">Результати</RouterLink>
+      </div>
     </div>
   </Crumbs>
   <div v-if="page">

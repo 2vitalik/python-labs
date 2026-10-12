@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T213** · тікетів: 210 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T213** · тікетів: 212 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -207,6 +207,8 @@
 | .rounds | [T197](.rounds/.t/T197-R--ods-labs-wave-direction.md) | ✔️ | ods-labs-wave-direction | ODS: лаби 1–5, сайт і Marimo — напрям від Vitalik | 🟢 🟩 |
 | ods | [T198](ods/.t/T198--ods-lab1-review/plan.md) | ⚙️ | ods-lab1-review | ODS, лаба 1: перевірка перед видачею — план | 🟢 🟩 |
 | ods | [T199](ods/.t/T199-C--ods-marimo.md) | 🔆 | ods-marimo | ODS: Jupyter, Marimo чи сайт — порівняння | 🟢 🟩 |
+| ods | [T200](ods/.t/T200-P--ods-my-lab-design.md) | 💡 | ods-my-lab-design | ODS: сторінка «Моя лаба» — дизайн | 🟢 🟩 |
+| ods | [T201](ods/.t/T201--ods-my-lab-build/plan.md) | ⚙️ | ods-my-lab-build | ODS: сторінка «Моя лаба» — збірка — план | 🟢 🟩 |
 | ods | [T202](ods/.t/T202-P--ods-lab2-plan.md) | 💡 | ods-lab2-plan | ODS, нова лаба 2: план | 🟢 🟩 |
 | ods | [T203](ods/.t/T203--ods-lab2-build/plan.md) | ⚙️ | ods-lab2-build | ODS, нова лаба 2: чернетка, генератор, ноутбук — план | 🟢 🟩 |
 | ods | [T204](ods/.t/T204-P--ods-lab3-plan.md) | 💡 | ods-lab3-plan | ODS, нова лаба 3: план | 🟢 ⬜ |

@@ -10,6 +10,8 @@ import { makeRouter } from '@core/router.js'
 import DocPage from './pages/DocPage.vue'
 import DocsPage from './pages/DocsPage.vue'
 import HomePage from './pages/HomePage.vue'
+import LabResultsPage from './pages/LabResultsPage.vue'
+import MyLabPage from './pages/MyLabPage.vue'
 
 // lectures and labs are for signed-in NURE students (T166 Q4)
 const docs = (kind, title) => [
@@ -21,6 +23,8 @@ export default makeRouter([
   { path: '/', component: HomePage },
   ...docs('lectures', 'Лекції'),
   ...docs('labs', 'Лаби'),
+  { path: '/labs/:n/my', component: MyLabPage, meta: { title: 'Моя лаба', access: 'active' } },
+  { path: '/labs/:n/results', component: LabResultsPage, meta: { title: 'Результати', access: 'admin' } },
   { path: '/method/history', component: HistoryPage, meta: { title: 'Історія правок', access: 'admin' } },
   { path: '/login', component: LoginPage, meta: { title: 'Вхід' } },
   { path: '/my/profile', component: ProfilePage, meta: { title: 'Профіль', access: 'active' } },
