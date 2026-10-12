@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T197** · тікетів: 196 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T213** · тікетів: 210 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -204,3 +204,17 @@
 | ods | [T194](ods/.t/T194-Q--ods-lab1-questions.md) | ❓ | ods-lab1-questions | ODS, нова лаба 1: питання | 🔴 ⬜ |
 | ods | [T195](ods/.t/T195--ods-lab1-learn/plan.md) | ⚙️ | ods-lab1-learn | ODS, нова лаба 1: пояснення лаби для викладача (learn/) — план | 🟢 🟩 |
 | ods | [T196](ods/.t/T196--ods-lab1-basics/plan.md) | ⚙️ | ods-lab1-basics | ODS, нова лаба 1: пояснення з нуля й інфографіка (learn/basics/) — план | 🟢 🟩 |
+| .rounds | [T197](.rounds/.t/T197-R--ods-labs-wave-direction.md) | ✔️ | ods-labs-wave-direction | ODS: лаби 1–5, сайт і Marimo — напрям від Vitalik | 🟢 🟩 |
+| ods | [T198](ods/.t/T198--ods-lab1-review/plan.md) | ⚙️ | ods-lab1-review | ODS, лаба 1: перевірка перед видачею — план | 🟢 🟩 |
+| ods | [T199](ods/.t/T199-C--ods-marimo.md) | 🔆 | ods-marimo | ODS: Jupyter, Marimo чи сайт — порівняння | 🟢 🟩 |
+| ods | [T202](ods/.t/T202-P--ods-lab2-plan.md) | 💡 | ods-lab2-plan | ODS, нова лаба 2: план | 🟢 🟩 |
+| ods | [T203](ods/.t/T203--ods-lab2-build/plan.md) | ⚙️ | ods-lab2-build | ODS, нова лаба 2: чернетка, генератор, ноутбук — план | 🟢 🟩 |
+| ods | [T204](ods/.t/T204-P--ods-lab3-plan.md) | 💡 | ods-lab3-plan | ODS, нова лаба 3: план | 🟢 ⬜ |
+| ods | [T205](ods/.t/T205-P--ods-lab4-plan.md) | 💡 | ods-lab4-plan | ODS, нова лаба 4: план | 🟢 ⬜ |
+| ods | [T206](ods/.t/T206-P--ods-lab5-plan.md) | 💡 | ods-lab5-plan | ODS, нова лаба 5: план | 🟢 ⬜ |
+| ods | [T207](ods/.t/T207-Q--ods-labs-wave-questions.md) | ❓ | ods-labs-wave-questions | ODS: лаби 1–5, сайт, marimo — питання | 🔴 ⬜ |
+| ods | [T208](ods/.t/T208--ods-lab1-marimo/plan.md) | ⚙️ | ods-lab1-marimo | ODS, лаба 1: варіант для marimo — план | 🟢 🟩 |
+| ods | [T209](ods/.t/T209--ods-lab2-learn/plan.md) | ⚙️ | ods-lab2-learn | ODS, нова лаба 2: пояснення для викладача (learn/, basics/) — план | 🟢 🟩 |
+| ods | [T210](ods/.t/T210--ods-lab3-build/plan.md) | ⚙️ | ods-lab3-build | ODS, нова лаба 3: чернетка, генератор, ноутбук — план | 🟢 🟩 |
+| ods | [T211](ods/.t/T211--ods-lab4-build/plan.md) | ⚙️ | ods-lab4-build | ODS, нова лаба 4: чернетка, генератор, ноутбук — план | 🟢 🟩 |
+| ods | [T212](ods/.t/T212--ods-lab5-build/plan.md) | ⚙️ | ods-lab5-build | ODS, нова лаба 5: чернетка, генератор, ноутбук — план | 🟢 🟩 |
