@@ -5,22 +5,17 @@ import { useRoute } from 'vue-router'
 import { flash } from '@core/anchors.js'
 import { getGuidePage } from '@core/api.js'
 import GuideBody from '@core/components/GuideBody.vue'
-import GuideFoot from '@core/components/GuideFoot.vue'
-import GuideText from '@core/components/GuideText.vue'
 import IconChevron from '@core/components/IconChevron.vue'
 import { textOf } from '@core/drafts.js'
 import { load, save } from '@core/local.js'
 import { tocOf } from '@core/md.js'
-import { user } from '@core/user.js'
 
-// guide section on top of a catalog page: the whole text for guests and students (the catalog itself
-// stays admin-only until it is ready — T116 Q13); above the catalog — a framed block that folds and remembers it,
-// or, moved down, sits under the catalog in the page's #guide-low (remembered too).
+// guide section on top of a catalog page, open to everyone with the catalog (T213): a framed block that folds
+// and remembers it, or, moved down, sits under the catalog in the page's #guide-low (remembered too).
 // `toc` = the text's headings while it is on screen, for the page's side contents; `low` = the block is under the catalog
-const props = defineProps({ slug: String, stub: String })
+const props = defineProps({ slug: String })
 const emit = defineEmits(['toc', 'low'])
 const page = ref(null)
-const admin = computed(() => user.value?.status === 'admin')
 const text = computed(() => textOf(page.value))
 
 const key = `guide-head:${props.slug}`
@@ -29,7 +24,7 @@ function remember(e) {
   open.value = e.target.open
   save(key, open.value ? '1' : '0')
 }
-watch([text, open, admin], () => emit('toc', open.value || !admin.value ? tocOf(text.value) : []), { immediate: true })
+watch([text, open], () => emit('toc', open.value ? tocOf(text.value) : []), { immediate: true })
 
 const low = ref(load(`${key}:low`) === '1')
 const link = ref()
@@ -55,30 +50,22 @@ getGuidePage(props.slug).then(async (p) => {
 </script>
 
 <template>
-  <template v-if="page">
-    <!-- Teleport moves the block without remounting it: an open editor survives the move -->
-    <Teleport v-if="admin" defer to="#guide-low" :disabled="!low">
-      <details class="rounded px-3 py-2" :class="[low ? 'mt-4' : open ? 'mb-4' : 'mb-3', { moved }]" :open="open"
-               @toggle="remember" @animationend.self="moved = false">
-        <summary class="d-flex align-items-center gap-2 text-secondary">
-          <span>{{ page.title }} — текст методички</span>
-          <span class="ms-auto small d-flex align-items-center gap-1" :class="open ? 'text-primary' : 'text-secondary'">
-            {{ open ? 'згорнути' : 'розгорнути' }} <IconChevron :dir="open ? 'up' : 'down'" />
-          </span>
-        </summary>
-        <GuideBody v-model:page="page" class="mt-3 mb-2" />
-        <div class="move small text-end mb-1">
-          <a ref="link" href="#" @click.prevent="move">{{ low ? '↑ перенести вгору' : '↓ перенести вниз' }}</a>
-        </div>
-      </details>
-    </Teleport>
-    <div v-else>
-      <h1 class="h2 mb-3">{{ page.title }}</h1>
-      <GuideText :text="text" />
-      <div id="catalog" class="alert alert-light border mt-4">🚧 {{ stub }}</div>
-      <GuideFoot />
-    </div>
-  </template>
+  <!-- Teleport moves the block without remounting it: an open editor survives the move -->
+  <Teleport v-if="page" defer to="#guide-low" :disabled="!low">
+    <details class="rounded px-3 py-2" :class="[low ? 'mt-4' : open ? 'mb-4' : 'mb-3', { moved }]" :open="open"
+             @toggle="remember" @animationend.self="moved = false">
+      <summary class="d-flex align-items-center gap-2 text-secondary">
+        <span>{{ page.title }} — текст методички</span>
+        <span class="ms-auto small d-flex align-items-center gap-1" :class="open ? 'text-primary' : 'text-secondary'">
+          {{ open ? 'згорнути' : 'розгорнути' }} <IconChevron :dir="open ? 'up' : 'down'" />
+        </span>
+      </summary>
+      <GuideBody v-model:page="page" class="mt-3 mb-2" />
+      <div class="move small text-end mb-1">
+        <a ref="link" href="#" @click.prevent="move">{{ low ? '↑ перенести вгору' : '↓ перенести вниз' }}</a>
+      </div>
+    </details>
+  </Teleport>
 </template>
 
 <style scoped>

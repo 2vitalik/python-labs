@@ -12,11 +12,12 @@ import { canAccess, user } from '@core/user.js'
 const router = useRouter()
 const admin = computed(() => user.value?.status === 'admin')
 const myGame = computed(() => canAccess(router.resolve('/my/game').meta.access))  // at hand: on a phone the menu hides it in «Ще»
+const ideas = computed(() => canAccess(router.resolve('/ideas').meta.access))
 const klass = ref('')
 const shown = computed(() => games.value.filter((g) => !klass.value || g.klass === klass.value))
 const toc = ref([])
 
-onMounted(() => admin.value && loadCatalog())
+onMounted(loadCatalog)
 </script>
 
 <template>
@@ -24,16 +25,17 @@ onMounted(() => admin.value && loadCatalog())
     <Crumbs :items="[['/method', 'Методичка'], 'Ігри']">
       <RouterLink v-if="myGame" to="/my/game" class="btn btn-outline-primary btn-sm">Моя гра</RouterLink>
     </Crumbs>
-    <GuideHead slug="game" stub="Каталог базових ігор відкриється тут незабаром. Поки що — варіанти перелічені вище; вибір обговорюємо на парі або в чаті."
-               @toc="toc = $event" />
+    <GuideHead slug="game" @toc="toc = $event" />
     <!-- min-height: #catalog scrolls to the top even before the cards are loaded -->
-    <div v-if="admin" class="catalog-area">
+    <div class="catalog-area">
       <div id="catalog" class="d-flex justify-content-between align-items-center mb-3">
         <h1 class="h3 mb-0">Ігри <span class="text-secondary fs-6">({{ shown.length }})</span></h1>
         <div class="d-flex gap-2">
-          <RouterLink to="/ideas" class="btn btn-outline-secondary btn-sm">💡 Знахідки</RouterLink>
-          <RouterLink to="/games/history" class="btn btn-outline-secondary btn-sm">🕘 Історія</RouterLink>
-          <RouterLink to="/games/new" class="btn btn-outline-primary btn-sm">➕ Нова гра</RouterLink>
+          <RouterLink v-if="ideas" to="/ideas" class="btn btn-outline-secondary btn-sm">💡 Знахідки</RouterLink>
+          <template v-if="admin">
+            <RouterLink to="/games/history" class="btn btn-outline-secondary btn-sm">🕘 Історія</RouterLink>
+            <RouterLink to="/games/new" class="btn btn-outline-primary btn-sm">➕ Нова гра</RouterLink>
+          </template>
         </div>
       </div>
 

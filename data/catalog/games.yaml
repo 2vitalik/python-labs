@@ -972,7 +972,7 @@
     ## Джерела
 
     - [Вікіпедія](https://en.wikipedia.org/wiki/Sokoban) · формат рівнів [.xsb](http://www.sokobano.de/wiki/index.php?title=Level_format).
-  status: draft
+  status: active
   order: 11
 - slug: snake
   title: Snake
@@ -1007,7 +1007,7 @@
     ## Джерела
 
     - [Вікіпедія](https://en.wikipedia.org/wiki/Snake_(video_game_genre)).
-  status: draft
+  status: active
   order: 12
 - slug: minesweeper
   title: Minesweeper
@@ -1042,7 +1042,7 @@
     ## Джерела
 
     - [Вікіпедія](https://en.wikipedia.org/wiki/Minesweeper_(video_game)) · [Tatham Mines](https://www.chiark.greenend.org.uk/~sgtatham/puzzles/js/mines.html).
-  status: draft
+  status: active
   order: 13
 - slug: '2048'
   title: '2048'
@@ -1078,7 +1078,7 @@
     ## Джерела
 
     - [Вікіпедія](https://en.wikipedia.org/wiki/2048_(video_game)).
-  status: draft
+  status: active
   order: 14
 - slug: pvz-lite
   title: PvZ-лайт
@@ -1113,7 +1113,7 @@
     ## Джерела
 
     - [Вікіпедія](https://en.wikipedia.org/wiki/Plants_vs._Zombies_(video_game)).
-  status: draft
+  status: active
   order: 15
 - slug: frogger
   title: Frogger
@@ -1147,7 +1147,7 @@
     ## Джерела
 
     - [Вікіпедія](https://en.wikipedia.org/wiki/Frogger).
-  status: draft
+  status: active
   order: 16
 - slug: chess
   title: Шахи та варіації
@@ -1187,7 +1187,7 @@
     ## Джерела
 
     - [Chess variants](https://en.wikipedia.org/wiki/List_of_chess_variants) — невичерпне джерело правил-варіацій.
-  status: draft
+  status: active
   order: 17
 - slug: paper-puzzles
   title: Паперові пазли
@@ -1228,5 +1228,5 @@
     ## Джерела
 
     - [Simon Tatham's Portable Puzzle Collection](https://www.chiark.greenend.org.uk/~sgtatham/puzzles/) — 40 ігор із генераторами, еталон гілки.
-  status: draft
+  status: active
   order: 18

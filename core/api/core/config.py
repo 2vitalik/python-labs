@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     tg_bot_token: str = ""  # from BotFather; empty = bot refuses to start
     site_url: str = "http://127.0.0.1:5000"  # links in bot messages; Telegram won't link `localhost`
     guide_dir: str = "data/guide"  # the guide's seed and snapshot, *.md
-    guide_readers: str = "admin"  # who reads the guide: admin — while it is unfinished (T136) · active — students too, without drafts
+    guide_readers: str = "admin"  # who reads the guide: admin — while it is unfinished (T136) · active — students too · all — anyone (T214); drafts stay the admin's
     uploads_dir: str = ""  # files people upload; what they are and the default folder — the site's
     agent_tokens: str = ""  # `name:token,…` — AI agents that edit the site's texts (deps.editor_user); empty = no such way in
     week_hours: str = "15-23"  # «Мій тиждень» (T177): the hours of the grid, from-to

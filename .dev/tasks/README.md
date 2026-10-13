@@ -42,6 +42,6 @@
 
 ## Наступний крок
 
-- Каталог живе в вебі (2026-08-05, [T71](../platform/.t/T71--catalog-v1/report.md)): тепер **209 карток, 10 сімей** (сид обʼєктного раунду 2026-08-15 — [T88](.t/T88--catalog-objects-seed/report.md): типи вікон з тегом `window`, сімʼя елементів налаштувань, діти редактора/магазину) → Vitalik: ревізія (ціни/статуси/активація) в адмінці або пачкою через YAML; окремо — controls-remap проти keyboard-controls і чи робити end-screen сімʼєю win/lose.
+- Каталог живе в вебі (2026-08-05, [T71](../platform/.t/T71--catalog-v1/report.md)): тепер **209 карток, 10 сімей** (сид обʼєктного раунду 2026-08-15 — [T88](.t/T88--catalog-objects-seed/report.md): типи вікон з тегом `window`, сімʼя елементів налаштувань, діти редактора/магазину) → Vitalik: ревізія (ціни/статуси/активація) в адмінці або пачкою через YAML; **з 2026-10-13 усі 209 `active`, каталог відкритий усім, і гостю** ([T213](../platform/.t/T213--guide-open-catalog/report.md)); окремо — controls-remap проти keyboard-controls і чи робити end-screen сімʼєю win/lose.
 - Vitalik: закомітити доправки v2 + `data/v3/`, `data/scripts/`, `data/wiki/` і новий `data/catalog/`.
 - Зведення сировини: поступово розносити `data/wiki/tasks/_v3-raw.md` по зон-файлах (я, порціями; зведене видаляється зі staging).

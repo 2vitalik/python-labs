@@ -1,8 +1,8 @@
 """Course guide pages: markdown in Mongo (`guide`), edited on the site by admins (T126) and by AI agents with a token
 (T153, `bin/guide`); every save goes to `history` with a note, and a note also lands in the «Що змінилось» draft page
 until published — by an admin only.
-Who reads is the site's `guide_readers`: admins and agents only while the guide is unfinished (T136), or students too —
-they get `public` as the body and 404 for DRAFT (T157, drafts.py)."""
+Who reads is the site's `guide_readers`: admins and agents only while the guide is unfinished (T136), students too (`active`),
+or anyone, a guest too (`all`, T214); a non-admin gets `public` as the body and 404 for DRAFT (T157, drafts.py)."""
 from datetime import date
 
 from fastapi import APIRouter, Depends, HTTPException, Request
@@ -36,14 +36,16 @@ async def page(slug: str) -> Guide:
     return g
 
 
-async def reader(request: Request, user: User | None = Depends(current_user)) -> User:
+async def reader(request: Request, user: User | None = Depends(current_user)) -> User | None:
+    if settings.guide_readers == "all":
+        return agent(request) or user
     if settings.guide_readers == "active":
         return agent(request) or allow(user, user and user.status != Status.pending)
     return await editor_user(request, user)
 
 
 @router.get("")
-async def list_pages(user: User = Depends(reader)):
+async def list_pages(user: User | None = Depends(reader)):
     pages = await Guide.find(Guide.slug != DRAFT).to_list()
     return [{"slug": g.slug, "title": g.title, "updated": stamp(g.updated_at)} for g in pages]
 
@@ -63,8 +65,8 @@ async def history(slug: str = "", user: User = Depends(editor_user)):
 
 
 @router.get("/{slug}")
-async def get_page(slug: str, user: User = Depends(reader)):
-    if user.status == Status.admin:
+async def get_page(slug: str, user: User | None = Depends(reader)):
+    if user and user.status == Status.admin:
         return (await page(slug)).api()
     if slug == DRAFT:
         raise HTTPException(404)

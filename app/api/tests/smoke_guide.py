@@ -41,11 +41,14 @@ def io(root, cmd):
 
 
 with TestClient(main.app) as c:
-    check("guest: list and page 401 — the guide is closed (T136)",
-          c.get("/api/guide").status_code == 401 and c.get("/api/guide/game").status_code == 401)
+    r = c.get("/api/guide/labs")
+    check("guest: the guide is open (T214), body = public", c.get("/api/guide").status_code == 200
+          and r.status_code == 200 and r.json()["body"] == r.json()["public"], r.text)
+    check("guest: draft page 404, history 401",
+          c.get("/api/guide/changes-draft").status_code == 404 and c.get("/api/guide/history").status_code == 401)
     login(c, "stud@nure.ua", "student")
-    check("student: list, page, draft, history 403",
-          all(c.get(f"/api/guide{p}").status_code == 403 for p in ("", "/game", "/changes-draft", "/history")))
+    check("student: list and page 200, draft page 404, history 403",
+          [c.get(f"/api/guide{p}").status_code for p in ("", "/labs", "/changes-draft", "/history")] == [200, 200, 404, 403])
 
     login(c, "admin@nure.ua", "admin")
     home = c.get("/api/guide/home").json()
@@ -56,7 +59,7 @@ with TestClient(main.app) as c:
     check("seed logged", mongo[DB].history.count_documents({"coll": "guide", "actor": "seed"}) == len(pages))
     g = c.get("/api/guide/game").json()
     check("page: title/body/rev 0", g["title"].endswith("Ігри") and g["rev"] == 0 and "## " in g["body"])
-    edit = {"title": g["title"], "body": g["body"].replace("## Своя гра", "## Своя гра 2"), "rev": 0,
+    edit = {"title": g["title"], "body": g["body"].replace("## Своя гра", "## Своя гра 2") + "\n\n<!-- нотатка -->", "rev": 0,
             "note": "уточнив своє", "section": "Своя гра"}
     c.cookies.clear()
     check("guest: PUT 401", c.put("/api/guide/game", json=edit).status_code == 401)
@@ -67,6 +70,10 @@ with TestClient(main.app) as c:
     r = c.put("/api/guide/game", json=edit)
     check("PUT: rev 1 + new body", r.status_code == 200 and r.json()["rev"] == 1 and "Своя гра 2" in r.json()["body"], r.text)
     check("stale rev → 409", c.put("/api/guide/game", json=edit).status_code == 409)
+    c.cookies.clear()
+    g2 = c.get("/api/guide/game").json()
+    check("guest: the open page without the draft", "Своя гра 2" in g2["body"] and "нотатка" not in g2["body"], g2["body"])
+    login(c, "admin@nure.ua", "admin")
     r = c.put("/api/guide/game", json=edit | {"rev": 1, "note": "нічого"})
     check("same text: no new rev, no draft line", r.json()["rev"] == 1 and "нічого" not in c.get("/api/guide/changes-draft").json()["body"])
     d = c.get("/api/guide/changes-draft").json()
