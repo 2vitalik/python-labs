@@ -62,7 +62,7 @@ with TestClient(main.app) as c:
     check("viewing: the test student has the bot link", "start=" in me.get("tg_link", ""), me)
     check("viewing: admin pages → 403", c.get("/api/students/vasya").status_code == c.get("/api/activity").status_code == 403)
     check("viewing: start again → 403", c.post("/api/me/as/test.student").status_code == 403)
-    check("viewing: the gallery is the student's — with themselves", nicks(c) == ["admin", "petro", "test.student", "vasya"], nicks(c))
+    check("viewing: the gallery is the student's — with themselves, without the teacher", nicks(c) == ["petro", "test.student", "vasya"], nicks(c))
 
     r = c.put("/api/profile", json={"last_name": "Тестовий", "first_name": "Студент", "github": "https://github.com/test/labs"})
     check("viewing: the profile saved is the student's", r.status_code == 200 and db.users.find_one({"email": TEST})["github"].endswith("test/labs"))

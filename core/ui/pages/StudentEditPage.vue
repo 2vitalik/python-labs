@@ -7,6 +7,7 @@ import Crumbs from '../components/Crumbs.vue'
 import ProfileForm from '../components/ProfileForm.vue'
 import UserHead from '../components/UserHead.vue'
 import { useForm } from '../form.js'
+import { studentsCrumbs } from '../students.js'
 import { useTitle } from '../title.js'
 import { lookAs, user } from '../user.js'
 
@@ -26,7 +27,7 @@ const submit = () => save(async (f) => (student.value = await putStudent(nick, f
 
 <template>
   <div v-if="user?.status === 'admin' && student">
-    <Crumbs :items="[['/students', 'Студи'], [`/students/${nick}`, fio()], 'Редагування']">
+    <Crumbs :items="studentsCrumbs([`/students/${nick}`, fio()], 'Редагування')">
       <button v-if="student.status !== 'admin'" class="btn btn-outline-secondary btn-sm ms-auto"
               :title="student.test ? null : 'Лише перегляд'" @click="lookAs(nick)">👁 Очима студента</button>
       <RouterLink :to="{ path: '/activity', query: { user: nick } }" class="btn btn-outline-secondary btn-sm">📈 Активність</RouterLink>

@@ -2,6 +2,7 @@ import { computed, toValue } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 import { site } from './site.js'
+import { user } from './user.js'
 
 // filters of /students; the state lives in the URL, so a slice can be bookmarked:
 // ?group=A,B — only these groups (NONE = «no group») · ?seen=1 / ?gh=0 … — only those who have it / who don't
@@ -27,7 +28,8 @@ export function byGroup(students) {
 }
 
 export function useStudentFilter(students) {
-  const FACETS = [SEEN, ...site.students.facets, ...REST]  // the site's own go after «вхід»
+  // the site's own go after «вхід»; the pairs are the admin's — a student's rows carry none of those fields, the group chips are all they get
+  const FACETS = user.value?.status === 'admin' ? [SEEN, ...site.students.facets, ...REST] : []
   const route = useRoute()
   const router = useRouter()
   const keys = computed(() => (route.query.group ? String(route.query.group).split(',') : []))

@@ -4,23 +4,26 @@ import { useRoute } from 'vue-router'
 
 import { site } from '../site.js'
 import { byGroup } from '../studentFilter.js'
-import { lookAs } from '../user.js'
+import { lookAs, user } from '../user.js'
 import Avatar from './Avatar.vue'
 import IconChevron from './IconChevron.vue'
 
-// admin table: a header row per group folds it; the site's own columns (site.students.cols) go after the name; «↗» shows that group alone (?group=, crumb on the page);
-// the name opens the profile; a row stands out when something is off — not a student, or never signed in;
-// Telegram shows what is missing, not what is there: 🚫 = no bot yet (though signed in), «без нікнейма» = bot without a handle
+// a header row per group folds it; the site's own columns (site.students.cols) go after the name; «↗» shows that group alone (?group=, crumb on the page).
+// The admin's table: the name opens the profile form, a row stands out when something is off — not a student, or never signed in;
+// Telegram shows what is missing, not what is there: 🚫 = no bot yet (though signed in), «без нікнейма» = bot without a handle.
+// A student's: the name and the site's columns only — no email, GitHub or Telegram (the API sends none), the name opens the student's page
 const props = defineProps({ students: Array })
 const cols = site.students.cols
 const route = useRoute()
+const admin = computed(() => user.value?.status === 'admin')
 const folded = ref(new Set())
 const groups = computed(() => byGroup(props.students))
 const toggle = (name) => (folded.value.has(name) ? folded.value.delete(name) : folded.value.add(name))
 const foldAll = (yes) => (folded.value = new Set(yes ? groups.value.map((g) => g.name) : []))
 const fio = (s) => s.name || s.nick
+const nameTo = (s) => (admin.value ? `/students/${s.nick}/edit` : `/students/${s.nick}`)
 const repo = (url) => url.replace('https://github.com/', '').split('/')  // [owner, name] — the API keeps exactly this shape
-const rowClass = (s) => ({ 'table-warning': s.status === 'pending', 'table-info': s.status === 'admin', ghost: !s.seen })
+const rowClass = (s) => ({ 'table-warning': s.status === 'pending', 'table-info': s.status === 'admin', ghost: s.seen === false })
 </script>
 
 <template>
@@ -30,11 +33,14 @@ const rowClass = (s) => ({ 'table-warning': s.status === 'pending', 'table-info'
   </div>
   <table class="table align-middle">
     <thead>
-      <tr><th>ПІБ</th><th v-for="c in cols" :key="c.title">{{ c.title }}</th><th>GitHub</th><th>Telegram</th></tr>
+      <tr>
+        <th>ПІБ</th><th v-for="c in cols" :key="c.title">{{ c.title }}</th>
+        <template v-if="admin"><th>GitHub</th><th>Telegram</th></template>
+      </tr>
     </thead>
     <tbody v-for="g in groups" :key="g.name">
       <tr class="table-light" role="button" @click="toggle(g.name)">
-        <th :colspan="3 + cols.length" class="fw-semibold">
+        <th :colspan="(admin ? 3 : 1) + cols.length" class="fw-semibold">
           <span class="caret text-secondary"><IconChevron :dir="folded.has(g.name) ? 'right' : 'down'" :size="12" /></span>
           {{ g.name || 'Без групи' }} <span class="count">{{ g.list.length }}</span>
           <RouterLink v-if="g.name && !route.query.group" :to="{ query: { ...route.query, group: g.name } }" class="ibtn ms-2"
@@ -42,16 +48,16 @@ const rowClass = (s) => ({ 'table-warning': s.status === 'pending', 'table-info'
         </th>
       </tr>
       <template v-if="!folded.has(g.name)">
-        <tr v-for="s in g.list" :key="s.nick" class="student" :class="rowClass(s)" :title="s.seen ? null : 'Ще не заходив на сайт'">
+        <tr v-for="s in g.list" :key="s.nick" class="student" :class="rowClass(s)" :title="s.seen === false ? 'Ще не заходив на сайт' : null">
           <td>
             <div class="d-flex align-items-center gap-2">
               <Avatar :user="s" :size="32" />
               <div>
-                <RouterLink :to="`/students/${s.nick}/edit`" class="name">{{ fio(s) }}</RouterLink>
+                <RouterLink :to="nameTo(s)" class="name">{{ fio(s) }}</RouterLink>
                 <span v-if="s.status === 'admin'" class="badge text-bg-secondary fw-normal ms-1">викладач</span>
                 <span v-else-if="s.status === 'pending'" class="badge text-bg-warning fw-normal ms-1">очікує</span>
-                <a v-if="s.test" href="#" class="ibtn ms-1" title="Очима студента" @click.prevent="lookAs(s.nick)">👁</a>
-                <div class="email small">{{ s.email }}</div>
+                <a v-if="admin && s.test" href="#" class="ibtn ms-1" title="Очима студента" @click.prevent="lookAs(s.nick)">👁</a>
+                <div v-if="admin" class="email small">{{ s.email }}</div>
               </div>
             </div>
           </td>
@@ -59,17 +65,19 @@ const rowClass = (s) => ({ 'table-warning': s.status === 'pending', 'table-info'
             <td v-if="c.text(s)"><RouterLink :to="c.to(s)">{{ c.text(s) }}</RouterLink></td>
             <td v-else class="dash">—</td>
           </template>
-          <td v-if="s.github">
-            <a :href="s.github" target="_blank" class="repo">{{ repo(s.github)[0] }}<span class="small">{{ repo(s.github)[1] }}</span></a>
-          </td>
-          <td v-else class="dash">—</td>
-          <td v-if="s.tg_username || s.tg_linked">
-            <a v-if="s.tg_username" :href="`https://t.me/${s.tg_username}`" target="_blank">@{{ s.tg_username }}</a>
-            <i v-else class="text-body-tertiary">без нікнейма</i>
-            <span v-if="!s.tg_linked" title="Бот не привʼязаний"> 🚫</span>
-          </td>
-          <td v-else-if="s.seen" class="dash"><span title="Бот не привʼязаний">🚫</span></td>
-          <td v-else class="dash">—</td>
+          <template v-if="admin">
+            <td v-if="s.github">
+              <a :href="s.github" target="_blank" class="repo">{{ repo(s.github)[0] }}<span class="small">{{ repo(s.github)[1] }}</span></a>
+            </td>
+            <td v-else class="dash">—</td>
+            <td v-if="s.tg_username || s.tg_linked">
+              <a v-if="s.tg_username" :href="`https://t.me/${s.tg_username}`" target="_blank">@{{ s.tg_username }}</a>
+              <i v-else class="text-body-tertiary">без нікнейма</i>
+              <span v-if="!s.tg_linked" title="Бот не привʼязаний"> 🚫</span>
+            </td>
+            <td v-else-if="s.seen" class="dash"><span title="Бот не привʼязаний">🚫</span></td>
+            <td v-else class="dash">—</td>
+          </template>
         </tr>
       </template>
     </tbody>

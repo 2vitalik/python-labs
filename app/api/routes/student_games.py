@@ -43,7 +43,7 @@ students.EXTRAS.append(games)
 @router.get("/{nick}/game")
 async def student_game(nick: str, user: User = Depends(active_user)):
     owner = await User.by_nick(nick)
-    if not owner:
+    if not owner or not students.can_see(user, owner):  # whom the list hides, the page hides too
         raise HTTPException(404)
     game = await Game.find_one(Game.owner == owner.email)
     if not game:

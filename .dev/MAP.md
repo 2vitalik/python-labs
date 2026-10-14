@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T216** · тікетів: 215 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T218** · тікетів: 217 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -222,4 +222,6 @@
 | ods | [T212](ods/.t/T212--ods-lab5-build/plan.md) | ⚙️ | ods-lab5-build | ODS, нова лаба 5: чернетка, генератор, ноутбук — план | 🟢 🟩 |
 | platform | [T213](platform/.t/T213--guide-open-catalog/plan.md) | ⚙️ | guide-open-catalog | Ігри й таски відкриті всім, каталог без чернеток — план | 🟢 🟩 |
 | platform | [T214](platform/.t/T214--guide-open-all/plan.md) | ⚙️ | guide-open-all | Уся методичка відкрита всім — план | 🟢 🟩 |
-| platform | [T215](platform/.t/T215-Q--ideas-links.md) | ❓ | ideas-links | Знахідки й посилання на закриті сторінки: вибори | 🟢 ⬜ |
+| platform | [T215](platform/.t/T215-Q--ideas-links.md) | ❓ | ideas-links | Знахідки й посилання на закриті сторінки: вибори | 🔴 ⬜ |
+| platform | [T216](platform/.t/T216--my-game-open/plan.md) | ⚙️ | my-game-open | «Моя гра» студентам: вибір гри, галерея «Ігри студентів» — план | 🟢 ⬜ |
+| platform | [T217](platform/.t/T217-Q--my-game-open-questions.md) | ❓ | my-game-open-questions | «Моя гра» студентам: вибори | 🔴 ⬜ |

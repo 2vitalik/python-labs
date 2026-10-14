@@ -17,7 +17,7 @@ export default {
   name: 'Python Labs',
   links: [
     ...SECTIONS.map((s) => [s.path, s.nav]),
-    ['/students', 'Студи'], ['/activity', 'Актив'], ['/polls', 'Polls'], ['/my/game', 'Моя гра'], ['/week', 'Week'], ['/my/profile', 'Профіль'],
+    ['/students', 'Студи', 'admin'], ['/activity', 'Актив'],  // a student reaches /students as «Ігри студентів» from the games catalog ['/polls', 'Polls'], ['/my/game', 'Моя гра'], ['/week', 'Week'], ['/my/profile', 'Профіль'],
   ],
   guide: [...SECTIONS.flatMap((s) => (s.slug === 'labs' ? [s, ...LABS] : [s])), CHANGES],
   colls: {
@@ -37,5 +37,7 @@ export default {
     cols: [{ title: 'Гра', text: (s) => s.game.title, to: (s) => `/students/${s.nick}` }],
     facets: [{ key: 'game', text: '🎮 гра', title: 'Гра створена', has: (s) => s.game.id }],
     cards: StudentCards,
+    inGallery: (s) => s.game.id,  // the gallery is of games: no card without one
+    asStudent: { title: 'Ігри студентів', crumbs: [['/method', 'Методичка'], ['/games', 'Ігри']] },
   },
 }

@@ -44,13 +44,17 @@ def parse_students(text: str) -> list[dict]:
     return rows
 
 
+def can_see(viewer: User, u: User) -> bool:
+    """Whom a student's lists show: fellow students — not the teacher, the waiting, or the test ones (unless that is themselves)."""
+    return viewer.status == Status.admin or (u.status == Status.student and (not u.test or u.email == viewer.email))
+
+
 @router.get("")
 async def list_students(user: User = Depends(active_user)):
-    """Gallery for everyone active; admin extras let the same page host the admin table."""
+    """The admin's full list; a student's slice of it (can_see) as `person()` rows — the same page hosts both."""
     users = await User.find_all().sort("group", "last_name").to_list()
     users.sort(key=lambda u: u.test)  # stable: test students go last
-    if user.status != Status.admin:
-        users = [u for u in users if u.status != Status.pending and (not u.test or u.email == user.email)]
+    users = [u for u in users if can_see(user, u)]
     rows = {u.email: u.person() for u in users}
     for extra in EXTRAS:
         for email, more in (await extra(users)).items():

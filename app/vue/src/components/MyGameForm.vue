@@ -1,55 +1,68 @@
 <script setup>
-import { reactive, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 
-import { postMyGame, putMyGame } from '../api.js'
+import GrowArea from '@core/components/GrowArea.vue'
 import { games } from '../catalog.js'
 
-const props = defineProps({ game: Object })
-const emit = defineEmits(['saved'])
-const form = reactive({
-  title: props.game?.title || '',
-  base_game: props.game?.base_game || '',
-  base_custom: props.game?.base_custom || '',
-  description: props.game?.description || '',
-})
-const error = ref('')
-
-async function save() {
-  error.value = ''
-  try {
-    emit('saved', await (props.game ? putMyGame(form) : postMyGame(form)))
-  } catch (e) {
-    error.value = e.message
-  }
-}
+// the profile's way (ProfileForm): a card per field, hints while it is empty, «Зберегти» only once something changed.
+// The base is a row of chips — the catalog's games and «своя»; the latter is pressed by hand, not by an empty base_game,
+// so a new game starts with nothing pressed
+defineProps({ dirty: Boolean, saved: Boolean, error: String, fresh: Boolean })
+defineEmits(['save'])
+const form = defineModel({ type: Object, required: true })
+const custom = ref(false)
+watch(() => form.value.base_custom, (v) => v && !form.value.base_game && (custom.value = true))
+const pick = (slug) => { form.value.base_game = slug; custom.value = !slug }
+const chosen = computed(() => games.value.find((g) => g.slug === form.value.base_game))
 </script>
 
 <template>
-  <form class="card" @submit.prevent="save">
-    <div class="card-body vstack gap-3">
-      <div>
-        <label class="form-label">Назва гри</label>
-        <input v-model="form.title" class="form-control" placeholder="Наприклад: Танчики делюкс">
-      </div>
-      <div class="row g-3">
-        <div class="col-md-6">
-          <label class="form-label">Гра-основа з каталогу</label>
-          <select v-model="form.base_game" class="form-select">
-            <option value="">— своя основа —</option>
-            <option v-for="g in games" :key="g.slug" :value="g.slug">{{ g.icon }} {{ g.title }}</option>
-          </select>
+  <form @submit.prevent="$emit('save')">
+    <div id="base" class="card mb-3">
+      <div class="card-header">Основа</div>
+      <div class="card-body">
+        <div class="d-flex flex-wrap gap-1">
+          <button v-for="g in games" :key="g.slug" type="button" class="btn btn-sm chip"
+                  :class="form.base_game === g.slug ? 'btn-primary' : 'btn-outline-secondary'" @click="pick(g.slug)">{{ g.icon }} {{ g.title }}</button>
+          <button type="button" class="btn btn-sm chip" :class="custom ? 'btn-primary' : 'btn-outline-secondary'" @click="pick('')">✨ своя</button>
         </div>
-        <div v-if="!form.base_game" class="col-md-6">
-          <label class="form-label">Своя основа</label>
-          <input v-model="form.base_custom" class="form-control" placeholder="Опиши гру кількома словами">
+        <input v-if="custom" v-model="form.base_custom" class="form-control mt-2" placeholder="Кількома словами: що за гра" required>
+        <div class="form-text mt-2">
+          <template v-if="chosen">Про основу — на її сторінці: <RouterLink :to="`/games/${chosen.slug}`">{{ chosen.title }} ↗</RouterLink></template>
+          <template v-else-if="custom">Своя — теж на клітинковому полі; викладач подивиться і, може, додасть її в каталог</template>
+          <template v-else>Одна з ігор каталогу — або своя</template>
         </div>
       </div>
-      <div>
-        <label class="form-label">Опис <span class="text-secondary small">(markdown)</span></label>
-        <textarea v-model="form.description" class="form-control" rows="4"></textarea>
+    </div>
+
+    <div id="title" class="card mb-3">
+      <div class="card-header">Назва</div>
+      <div class="card-body">
+        <input v-model="form.title" class="form-control" placeholder="Наприклад: Танчики делюкс" autocomplete="off" required>
+        <div v-if="!form.title" class="form-text mt-2">Своя назва проєкту, не назва основи</div>
       </div>
-      <div v-if="error" class="alert alert-danger mb-0">{{ error }}</div>
-      <div><button class="btn btn-primary">{{ game ? 'Зберегти' : 'Створити гру' }}</button></div>
+    </div>
+
+    <div id="description" class="card mb-3">
+      <div class="card-header">Опис</div>
+      <div class="card-body">
+        <GrowArea v-model="form.description" class="form-control" placeholder="Що за гра і чим відрізнятиметься від основи" />
+        <div v-if="!form.description" class="form-text mt-2">Не обовʼязково зараз — допишеш, коли задум устоїться. Markdown можна</div>
+      </div>
+    </div>
+
+    <div class="d-flex align-items-center gap-3">
+      <button class="btn btn-primary" :disabled="!dirty">{{ fresh ? 'Створити гру' : 'Зберегти' }}</button>
+      <Transition name="saved">
+        <span v-if="saved" class="text-success small">✓ Збережено</span>
+      </Transition>
+      <span v-if="error" class="text-danger small">{{ error }}</span>
     </div>
   </form>
 </template>
+
+<style scoped>
+.saved-enter-active { transition: opacity .2s; }
+.saved-leave-active { transition: opacity .6s; }
+.saved-enter-from, .saved-leave-to { opacity: 0; }
+</style>

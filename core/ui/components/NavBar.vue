@@ -10,8 +10,8 @@ import NavUser from './NavUser.vue'
 
 const route = useRoute()
 const router = useRouter()
-// menu follows route access, so a page and its link open together
-const visible = computed(() => site.links.filter(([to]) => canAccess(router.resolve(to).meta.access)))
+// menu follows route access, so a page and its link open together; a link with its own access is narrower than its page
+const visible = computed(() => site.links.filter(([to, , access]) => canAccess(access ?? router.resolve(to).meta.access)))
 const { bar, list, more, fit, stage, layout } = useNavFit(visible)
 const row = computed(() => visible.value.slice(0, fit.value))
 const rest = computed(() => visible.value.slice(fit.value))

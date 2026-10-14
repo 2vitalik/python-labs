@@ -64,9 +64,7 @@ with TestClient(main.app) as c:
     check("auto-claim of window type", [cl["task"] for cl in r.json()["claims"]] == ["main-menu"])
     check("claims enriched with card info", r.json()["tasks"]["main-menu"]["coin"] == "tin")
     check("unknown nick → 404", c.get("/api/students/nobody/game").status_code == 404)
-    r = c.get("/api/students/waiting/game")
-    check("a student without a game → the student, game: null", r.status_code == 200 and r.json()["game"] is None
-          and r.json()["student"]["nick"] == "waiting", r.text)
+    check("a pending student is not a student's to see → 404", c.get("/api/students/waiting/game").status_code == 404)
 
     r = c.post("/api/my/game/parts", json={"kind": "menu", "title": "Меню старту", "window": win,
                                            "items": [{"title": "Нова гра", "window": win},
@@ -190,6 +188,9 @@ with TestClient(main.app) as c:
     check("gallery: 2 games", sum(1 for s in r if s["game"]) == 2)
     check("passport of another: mine=false", c.get("/api/students/stud/game").json()["mine"] is False)
     check("admin: student by nick", c.get("/api/students/stud").json()["email"] == "stud@nure.ua")
+    r = c.get("/api/students/waiting/game")
+    check("a student without a game → the student, game: null", r.status_code == 200 and r.json()["game"] is None
+          and r.json()["student"]["nick"] == "waiting", r.text)
     r = c.put("/api/students/stud", json={"last_name": "Тест", "group": "ПЗПІ-25-1"})
     check("admin: edit by nick", r.status_code == 200 and r.json()["group"] == "ПЗПІ-25-1", r.text)
     r = c.get("/api/students").json()
@@ -198,6 +199,11 @@ with TestClient(main.app) as c:
     check("history recorded", mongo[DB].history.count_documents({"coll": "student_games"}) >= 2)
     check("cascade deletes logged", mongo[DB].history.count_documents({"coll": "claims", "changes.task.new": None}) >= 1)
     check("rules history: 2 creates + 2 cascade deletes", mongo[DB].history.count_documents({"coll": "rules"}) == 4)
+
+    login(c, "stud@nure.ua", "student")  # the teacher's game is not a student's to see (T216)
+    r = c.get("/api/students").json()
+    check("student gallery: no teacher, no pending", {s["nick"] for s in r} == {"stud", "stud2"}, [s["nick"] for s in r])
+    check("student: the teacher's passport → 404", c.get("/api/students/admin/game").status_code == 404)
 
 ok = sum(1 for _, p in results if p)
 print(f"\n{ok}/{len(results)} PASS")

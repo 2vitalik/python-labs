@@ -13,6 +13,7 @@ const router = useRouter()
 const admin = computed(() => user.value?.status === 'admin')
 const myGame = computed(() => canAccess(router.resolve('/my/game').meta.access))  // at hand: on a phone the menu hides it in «Ще»
 const ideas = computed(() => canAccess(router.resolve('/ideas').meta.access))
+const students = computed(() => canAccess(router.resolve('/students').meta.access))  // who picked what: the gallery of students' games
 const klass = ref('')
 const shown = computed(() => games.value.filter((g) => !klass.value || g.klass === klass.value))
 const toc = ref([])
@@ -31,6 +32,7 @@ onMounted(loadCatalog)
       <div id="catalog" class="d-flex justify-content-between align-items-center mb-3">
         <h1 class="h3 mb-0">Ігри <span class="text-secondary fs-6">({{ shown.length }})</span></h1>
         <div class="d-flex gap-2">
+          <RouterLink v-if="students" to="/students?view=cards" class="btn btn-outline-secondary btn-sm">🎮 Ігри студентів</RouterLink>
           <RouterLink v-if="ideas" to="/ideas" class="btn btn-outline-secondary btn-sm">💡 Знахідки</RouterLink>
           <template v-if="admin">
             <RouterLink to="/games/history" class="btn btn-outline-secondary btn-sm">🕘 Історія</RouterLink>

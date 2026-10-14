@@ -39,12 +39,13 @@ export default makeRouter([
   { path: '/login', component: LoginPage, meta: { title: 'Вхід' } },
   { path: '/my/profile', component: ProfilePage, meta: { title: 'Профіль', access: 'active' } },
   { path: '/profile', redirect: '/my/profile' },  // old links in bot messages and the guide
-  { path: '/my/game', component: MyGamePage, meta: { title: 'Моя гра', access: 'admin' } },
+  { path: '/my/game', component: MyGamePage, meta: { title: 'Моя гра', access: 'active' } },  // a student picks their game here; its insides stay the admin's for now (T216)
   { path: '/my/week', component: MyWeekPage, meta: { title: 'Мій тиждень', access: 'active' } },
   // a student's own week; the teacher's summary on the whole window, /week/3 — one day of it (T186)
   { path: '/week/:day(\\d)?', component: WeekPage, meta: { title: 'Тиждень', access: 'active', filters: true, stay: true, wide: 'admin' } },
-  { path: '/students', component: StudentsPage, meta: { title: 'Студенти', access: 'admin' } },
-  { path: '/students/:nick', component: StudentGamePage, meta: { title: 'Студенти', access: 'admin' } },
+  // a student sees the slice of these two the API gives them: «Ігри студентів» (site.js students.asStudent)
+  { path: '/students', component: StudentsPage, meta: { title: 'Студенти', access: 'active' } },
+  { path: '/students/:nick', component: StudentGamePage, meta: { title: 'Студенти', access: 'active' } },
   { path: '/students/:nick/edit', component: StudentEditPage, meta: { title: 'Студенти', access: 'admin' } },
   { path: '/activity', component: ActivityPage, meta: { title: 'Активність', access: 'admin', filters: true } },
   { path: '/polls', component: PollsPage, meta: { title: 'Опитування', access: 'admin', filters: true } },

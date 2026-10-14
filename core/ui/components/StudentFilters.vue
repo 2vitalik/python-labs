@@ -13,7 +13,7 @@ const look = (on, n) => (on ? 'btn-secondary' : ['btn-outline-secondary', { 'opa
     <button v-for="g in groups" :key="g.name" type="button" class="btn btn-sm chip" :class="look(g.on, g.n)" :title="g.name"
             @click="toggleGroup(g)">{{ g.text }} <span class="count">{{ g.n }}</span></button>
   </div>
-  <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+  <div v-if="facets.length || active" class="d-flex flex-wrap align-items-center gap-2 mb-3">
     <div v-for="f in facets" :key="f.key" class="btn-group btn-group-sm" :title="f.title">
       <button v-for="v in ['1', '0']" :key="v" type="button" class="btn chip" :class="look(f.value === v, f.n[v])"
               @click="toggleFacet(f.key, v)">{{ v === '1' ? f.text : 'ні' }} <span class="count">{{ f.n[v] }}</span></button>

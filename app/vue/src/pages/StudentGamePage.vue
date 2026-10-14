@@ -3,19 +3,23 @@ import { computed, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 import { getStudentGame } from '../api.js'
-import Avatar from '@core/components/Avatar.vue'
 import CoinBadge from '../components/CoinBadge.vue'
 import Crumbs from '@core/components/Crumbs.vue'
 import GameGraph from '../components/GameGraph.vue'
+import GameHead from '../components/GameHead.vue'
 import Md from '../components/Md.vue'
 import RuleRow from '../components/RuleRow.vue'
-import { COINS, ROLES, games, loadCatalog, paramsText } from '../catalog.js'
+import { COINS, ROLES, loadCatalog, paramsText } from '../catalog.js'
+import { studentsCrumbs } from '@core/students.js'
 import { useTitle } from '@core/title.js'
 import { lookAs, user } from '@core/user.js'
 
+// a student's game as others see it: the head and the description for everyone; the insides — map, windows, menus,
+// entities, rules, claims — the admin's only while the mechanism is hidden from students (T216)
 const nick = useRoute().params.nick
 const data = ref(null)
 useTitle(() => data.value?.student.name)
+const full = computed(() => user.value?.status === 'admin')
 const COIN_ORDER = ['crown', 'gold', 'silver', 'bronze', 'tin', 'wood']
 
 const windows = computed(() => data.value.parts.filter((p) => p.kind === 'window'))
@@ -26,7 +30,6 @@ const gameClaims = computed(() => data.value.claims.filter((c) => !c.part))
 const partById = (id) => data.value.parts.find((p) => p.id === id)
 const card = (slug) => data.value.tasks[slug]
 const ptext = (c) => paramsText(card(c.task), c.params)
-const baseTitle = computed(() => games.value.find((g) => g.slug === data.value.game.base_game)?.title)
 // claimed coins by type — informational, no grading math yet
 const coinSum = computed(() => {
   const n = {}
@@ -46,36 +49,28 @@ onMounted(async () => {
 
 <template>
   <div>
-    <Crumbs :items="[['/students', 'Студи'], data?.student.name || nick]">
-      <button v-if="user?.status === 'admin' && data && data.student.status !== 'admin'" class="btn btn-outline-secondary btn-sm ms-auto"
+    <Crumbs :items="studentsCrumbs(data?.student.name || nick)">
+      <button v-if="full && data && data.student.status !== 'admin'" class="btn btn-outline-secondary btn-sm ms-auto"
               :title="data.student.test ? null : 'Лише перегляд'" @click="lookAs(nick)">👁 Очима студента</button>
-      <RouterLink v-if="user?.status === 'admin'" :to="{ path: '/activity', query: { user: nick } }" class="btn btn-outline-secondary btn-sm">📈 Активність</RouterLink>
+      <RouterLink v-if="full" :to="{ path: '/activity', query: { user: nick } }" class="btn btn-outline-secondary btn-sm">📈 Активність</RouterLink>
     </Crumbs>
-    <p v-if="data && !data.game" class="text-center mt-5 text-secondary">Гра ще не створена.</p>
+    <p v-if="data && !data.game" class="text-center mt-5 text-secondary">Гру ще не обрано.</p>
 
     <template v-else-if="data">
-      <div class="d-flex align-items-center gap-2 mb-1">
-        <h1 class="h3 mb-0">🎮 {{ data.game.title }}</h1>
-        <span class="badge text-bg-light border text-secondary fw-normal">
-          основа:
-          <RouterLink v-if="data.game.base_game" :to="`/games/${data.game.base_game}`">{{ baseTitle || data.game.base_game }}</RouterLink>
-          <template v-else>{{ data.game.base_custom }}</template>
-        </span>
+      <GameHead :game="data.game" :student="data.student">
         <RouterLink v-if="data.mine" to="/my/game" class="ms-auto small">✏️ Редагувати в «Моїй грі»</RouterLink>
-      </div>
-      <div class="d-flex align-items-center gap-2 text-secondary mb-3">
-        <Avatar :user="data.student" :size="28" />
-        <span>{{ data.student.name }}</span>
-        <span v-if="data.student.group" class="small">· {{ data.student.group }}</span>
-        <span class="small ms-auto">
-          вікон: {{ windows.length }} · меню: {{ menus.length }} · сутностей: {{ entities.length }} ·
-          правил: {{ data.rules.length }} · заявок: {{ data.claims.length }}
-          <span v-if="coinSum.length" title="Заявлено монеток — довідково, без зарахування">
-            · <span v-for="c in coinSum" :key="c.coin" class="text-nowrap"> {{ COINS[c.coin] }}×{{ c.n }}</span>
-          </span>
-        </span>
-      </div>
+      </GameHead>
       <Md v-if="data.game.description" :text="data.game.description" class="mb-4" />
+    </template>
+
+    <template v-if="data?.game && full">
+      <p class="text-secondary small">
+        вікон: {{ windows.length }} · меню: {{ menus.length }} · сутностей: {{ entities.length }} ·
+        правил: {{ data.rules.length }} · заявок: {{ data.claims.length }}
+        <span v-if="coinSum.length" title="Заявлено монеток — довідково, без зарахування">
+          · <span v-for="c in coinSum" :key="c.coin" class="text-nowrap"> {{ COINS[c.coin] }}×{{ c.n }}</span>
+        </span>
+      </p>
 
       <template v-if="windows.length">
         <h2 class="h5">Карта переходів</h2>
