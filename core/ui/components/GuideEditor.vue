@@ -9,7 +9,8 @@ import GuideText from './GuideText.vue'
 
 // inline editor for one section (`id` = heading id in the page's own text) or the whole page (id '');
 // lands under the heading via Teleport into the slot renderMd emits, or in place for the whole page
-const props = defineProps({ page: Object, id: { type: String, default: '' }, prefix: { type: String, default: '' } })
+// `put(slug, data)` — where the text goes: the guide by default, a lesson's text on its page (T218); `notitle` — the text has no title of its own
+const props = defineProps({ page: Object, id: { type: String, default: '' }, prefix: { type: String, default: '' }, put: Function, notitle: Boolean, view: Function })
 const emit = defineEmits(['saved', 'close'])
 const LEAVE = 'Є незбережені зміни. Піти без збереження?'
 
@@ -34,7 +35,7 @@ async function save() {
   const body = props.id ? spliceSection(props.page.body, props.id, draft.value) : draft.value
   try {
     const data = { title: title.value, body, rev: props.page.rev, note: note.value, section: sec.value?.title || '' }
-    emit('saved', await putGuidePage(props.page.slug, data))
+    emit('saved', await (props.put || putGuidePage)(props.page.slug, data))
   } catch (e) {
     error.value = e.message
   }
@@ -64,10 +65,10 @@ defineExpose({ dirty })
         <span>✏️ {{ sec ? sec.title : 'Уся сторінка' }}</span>
         <span class="ms-auto d-none d-md-inline">⌘/Ctrl+Enter — зберегти · Esc — скасувати</span>
       </div>
-      <input v-if="!id" v-model="title" class="form-control form-control-sm mb-2" placeholder="Назва сторінки">
+      <input v-if="!id && !notitle" v-model="title" class="form-control form-control-sm mb-2" placeholder="Назва сторінки">
       <div class="split">
         <textarea ref="area" v-model="draft" class="form-control font-monospace" :rows="rows" spellcheck="false"></textarea>
-        <div class="preview border rounded px-3 py-2"><GuideText :text="lead + draft" :prefix /></div>
+        <div class="preview border rounded px-3 py-2"><GuideText :text="(view || ((t) => t))(lead + draft)" :prefix /></div>
       </div>
       <div class="d-flex flex-wrap align-items-center gap-2 mt-2">
         <input v-model="note" class="form-control form-control-sm flex-grow-1 w-auto"

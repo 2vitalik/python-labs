@@ -25,6 +25,7 @@ class User(Document):
     test: bool = False  # made up for «Очима студента» (T144): no Google account behind it, left out of digests and totals
     github: str = ""
     tg_username: str = ""
+    aliases: list[str] = []  # names this person shows in Zoom: a transcript's speaker → this student (lesson_people.py)
     tg_token: str = ""
     tg_chat_id: int | None = None
     tg_linked_at: datetime | None = None  # when this chat was linked; None once unlinked
@@ -55,5 +56,5 @@ class User(Document):
             "name": self.name, "picture": self.picture,
             "status": self.status, "last_name": self.last_name, "first_name": self.first_name,
             "patronymic": self.patronymic, "group": self.group, "test": self.test, "github": self.github,
-            "tg_username": self.tg_username, "tg_linked": self.tg_chat_id is not None, "tg_linked_at": self.tg_linked_at,
+            "tg_username": self.tg_username, "aliases": self.aliases, "tg_linked": self.tg_chat_id is not None, "tg_linked_at": self.tg_linked_at,
         }

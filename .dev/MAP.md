@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T218** · тікетів: 217 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T223** · тікетів: 222 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -225,3 +225,8 @@
 | platform | [T215](platform/.t/T215-Q--ideas-links.md) | ❓ | ideas-links | Знахідки й посилання на закриті сторінки: вибори | 🔴 ⬜ |
 | platform | [T216](platform/.t/T216--my-game-open/plan.md) | ⚙️ | my-game-open | «Моя гра» студентам: вибір гри, галерея «Ігри студентів» — план | 🟢 ⬜ |
 | platform | [T217](platform/.t/T217-Q--my-game-open-questions.md) | ❓ | my-game-open-questions | «Моя гра» студентам: вибори | 🔴 ⬜ |
+| lessons | [T218](lessons/.t/T218--lessons-v1/plan.md) | ⚙️ | lessons-v1 | Заняття на сайті v1: моделі, API, сторінки, bin/lesson — план | 🟢 🟩 |
+| lessons | [T219](lessons/.t/T219-P--lessons-brief-v2.md) | 💡 | lessons-brief-v2 | Заняття на сайті: дельта брифу 2026-10-14 — види, посилання, файли, аватарки | 🟢 🟩 |
+| lessons | [T220](lessons/.t/T220-Q--lessons-v1-questions.md) | ❓ | lessons-v1-questions | Заняття v1: вибори | 🔴 ⬜ |
+| lessons | [T221](lessons/.t/T221-C--zoom-attendance.md) | 🔆 | zoom-attendance | Відвідування із Zoom: що дає API, як автоматизувати | 🟢 🟩 |
+| lessons | [T222](lessons/.t/T222--zoom-attendance-v1/plan.md) | ⚙️ | zoom-attendance-v1 | Відвідування із Zoom v1: забір, звʼязка зі студентами, сторінки — план | 🟢 ⬜ |

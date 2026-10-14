@@ -17,7 +17,7 @@ const fio = () => `${student.value.last_name} ${student.value.first_name}`.trim(
 useTitle(() => student.value && `Студент: ${fio()}`)
 const { form, dirty, saved, error, fill, save } = useForm({
   last_name: '', first_name: '', patronymic: '', github: '',
-  tg_username: '', group: '', status: 'student', test: false,
+  tg_username: '', group: '', status: 'student', test: false, aliases: [],
 })
 
 onMounted(async () => fill(student.value = await getStudent(nick)))

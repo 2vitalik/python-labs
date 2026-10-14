@@ -1,5 +1,6 @@
 <script setup>
 import { site } from '../site.js'
+import TagInput from './TagInput.vue'
 
 defineProps({ hints: Boolean, admin: Boolean, dirty: Boolean, saved: Boolean, error: String })
 defineEmits(['save'])
@@ -89,6 +90,11 @@ const form = defineModel({ type: Object, required: true })
             <label for="test" class="form-check-label">Тестовий студент</label>
           </div>
           <div class="form-text">Вигаданий, для «Очима студента»: поза дайджестом і підсумками, у списку — внизу</div>
+        </div>
+        <div class="col-12">
+          <label class="form-label">Імена в Zoom</label>
+          <TagInput v-model="form.aliases" :hash="false" />
+          <div class="form-text">Як ця людина підписана в Zoom — у транскриптах занять її репліки отримають аватарку й посилання сюди</div>
         </div>
       </div>
     </div>

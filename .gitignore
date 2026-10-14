@@ -29,3 +29,4 @@ sites/ods/data/labs/**/*teacher*
 sites/ods/data/labs/**/*correction*
 # Записи занять: транскрипти з іменами студентів — на диску й у Mongo, не в git (.dev/lessons)
 sites/ods/transcripts/
+data/transcripts/

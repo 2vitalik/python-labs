@@ -16,7 +16,7 @@ const LABS = [1, 2, 3, 4, 5].map((n) => ({ slug: `lab${n}`, path: `/labs/${n}`, 
 export default {
   name: 'Python Labs',
   links: [
-    ...SECTIONS.map((s) => [s.path, s.nav]),
+    ...SECTIONS.map((s) => [s.path, s.nav]), ['/lessons', 'Заняття'],
     ['/students', 'Студи', 'admin'], ['/activity', 'Актив'],  // a student reaches /students as «Ігри студентів» from the games catalog ['/polls', 'Polls'], ['/my/game', 'Моя гра'], ['/week', 'Week'], ['/my/profile', 'Профіль'],
   ],
   guide: [...SECTIONS.flatMap((s) => (s.slug === 'labs' ? [s, ...LABS] : [s])), CHANGES],

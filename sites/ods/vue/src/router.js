@@ -1,5 +1,8 @@
 import ActivityPage from '@core/pages/ActivityPage.vue'
 import HistoryPage from '@core/pages/HistoryPage.vue'
+import LessonEditPage from '@core/pages/LessonEditPage.vue'
+import LessonPage from '@core/pages/LessonPage.vue'
+import LessonsPage from '@core/pages/LessonsPage.vue'
 import LoginPage from '@core/pages/LoginPage.vue'
 import NotFoundPage from '@core/pages/NotFoundPage.vue'
 import ProfilePage from '@core/pages/ProfilePage.vue'
@@ -25,6 +28,10 @@ export default makeRouter([
   ...docs('labs', 'Лаби'),
   { path: '/labs/:n/my', component: MyLabPage, meta: { title: 'Моя лаба', access: 'active' } },
   { path: '/labs/:n/results', component: LabResultsPage, meta: { title: 'Результати', access: 'admin' } },
+  { path: '/lessons', component: LessonsPage, meta: { title: 'Заняття', access: 'active', filters: true } },
+  { path: '/lessons/new', component: LessonEditPage, meta: { title: 'Нове заняття', access: 'admin' } },
+  { path: '/lessons/:slug', component: LessonPage, meta: { title: 'Заняття', access: 'active' } },
+  { path: '/lessons/:slug/edit', component: LessonEditPage, meta: { title: 'Заняття', access: 'admin' } },
   { path: '/method/history', component: HistoryPage, meta: { title: 'Історія правок', access: 'admin' } },
   { path: '/login', component: LoginPage, meta: { title: 'Вхід' } },
   { path: '/my/profile', component: ProfilePage, meta: { title: 'Профіль', access: 'active' } },

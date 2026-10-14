@@ -9,10 +9,12 @@ import GuideText from './GuideText.vue'
 
 // guide text with its admin tools: ✏️ on headings (renderMd) and «сторінку» open one inline editor at a time;
 // the saved page comes back through v-model:page. The admin's text is with drafts or without (drafts.js)
-const props = defineProps({ page: Object, prefix: { type: String, default: '' }, tools: { type: Boolean, default: true } })
+// `view` — the text as shown (not as edited): a lesson's summary without its h1; `put` — where the editor saves; `history` '' = no such page
+const props = defineProps({ page: Object, prefix: { type: String, default: '' }, tools: { type: Boolean, default: true }, view: Function,
+                            put: Function, history: { type: String, default: '/method/history' }, placeholder: String })
 const emit = defineEmits(['update:page'])
 const admin = computed(() => user.value?.status === 'admin')
-const text = computed(() => textOf(props.page))
+const text = computed(() => (props.view || ((t) => t))(textOf(props.page)))
 const editing = ref(null)  // null · '' = whole page · heading id
 const editor = ref()
 
@@ -31,13 +33,13 @@ async function saved(p) {
   <div>
     <div v-if="admin && tools" class="tools small text-end">
       <template v-if="hasDrafts(page)"><DraftsToggle /> · </template>
-      <a href="#" @click.prevent="edit('')">✏️ редагувати</a> ·
-      <RouterLink :to="{ path: '/method/history', query: { slug: page.slug } }">🕘 історія</RouterLink>
+      <a href="#" @click.prevent="edit('')">✏️ редагувати</a>
+      <template v-if="history"> · <RouterLink :to="{ path: history, query: { slug: page.slug } }">🕘 історія</RouterLink></template>
     </div>
-    <GuideEditor v-if="editing !== null" ref="editor" :key="editing" :page :id="editing" :prefix
+    <GuideEditor v-if="editing !== null" ref="editor" :key="editing" :page :id="editing" :prefix :put :notitle="!history" :view
                  @saved="saved" @close="editing = null" />
     <GuideText v-if="text" :text :prefix :editable="admin" @edit="edit" />
-    <p v-else class="text-secondary">{{ admin ? 'Без чернеток тут порожньо' : '🚧 Розділ ще готується' }}</p>
+    <p v-else class="text-secondary">{{ placeholder || (admin ? 'Без чернеток тут порожньо' : '🚧 Розділ ще готується') }}</p>
   </div>
 </template>
 

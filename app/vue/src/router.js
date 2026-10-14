@@ -1,6 +1,9 @@
 import ActivityPage from '@core/pages/ActivityPage.vue'
 import GuidePage from '@core/pages/GuidePage.vue'
 import HistoryPage from '@core/pages/HistoryPage.vue'
+import LessonEditPage from '@core/pages/LessonEditPage.vue'
+import LessonPage from '@core/pages/LessonPage.vue'
+import LessonsPage from '@core/pages/LessonsPage.vue'
 import LoginPage from '@core/pages/LoginPage.vue'
 import MethodPage from '@core/pages/MethodPage.vue'
 import MyWeekPage from '@core/pages/MyWeekPage.vue'
@@ -41,6 +44,11 @@ export default makeRouter([
   { path: '/profile', redirect: '/my/profile' },  // old links in bot messages and the guide
   { path: '/my/game', component: MyGamePage, meta: { title: 'Моя гра', access: 'active' } },  // a student picks their game here; its insides stay the admin's for now (T216)
   { path: '/my/week', component: MyWeekPage, meta: { title: 'Мій тиждень', access: 'active' } },
+  // meetings with their transcripts: signed-in students read what is published (T218)
+  { path: '/lessons', component: LessonsPage, meta: { title: 'Заняття', access: 'active', filters: true } },
+  { path: '/lessons/new', component: LessonEditPage, meta: { title: 'Нове заняття', access: 'admin' } },
+  { path: '/lessons/:slug', component: LessonPage, meta: { title: 'Заняття', access: 'active' } },
+  { path: '/lessons/:slug/edit', component: LessonEditPage, meta: { title: 'Заняття', access: 'admin' } },
   // a student's own week; the teacher's summary on the whole window, /week/3 — one day of it (T186)
   { path: '/week/:day(\\d)?', component: WeekPage, meta: { title: 'Тиждень', access: 'active', filters: true, stay: true, wide: 'admin' } },
   // a student sees the slice of these two the API gives them: «Ігри студентів» (site.js students.asStudent)

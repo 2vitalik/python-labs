@@ -1,0 +1,141 @@
+#!/usr/bin/env python3
+"""bin/lesson — lessons of the site as a folder on disk, the way in for AI agents (T218).
+
+  bin/lesson [-t dev] ls
+  bin/lesson [-t dev] new <slug> [--title …] [--date РРРР-ММ-ДД] [--time 18:35–20:10] [--groups A,B]
+  bin/lesson [-t dev] pull <slug>                 site → data/transcripts/<slug>/: meta.yml, context.md, transcript.md,
+                                                  summary.md, notes.md, raw/ (one file per service, chat.txt among them)
+  bin/lesson [-t dev] push <slug> [-m "що змінив"] [--force]   the folder → site: texts and meta that differ, raw files the site lacks
+  bin/lesson [-t dev] attach <slug> <file…>       files for students (what the class worked with)
+  bin/lesson [-t dev] publish <slug> | hide <slug>
+
+The folder is the one the /lesson skill works in (.claude/skills/lesson). No -t = prod. Nothing here goes to git:
+data/transcripts/ is ignored (names of students). The token's name on the server is who the site's history shows."""
+import argparse
+import json
+import mimetypes
+import os
+import re
+import sys
+from pathlib import Path
+from urllib.request import Request, urlopen
+from uuid import uuid4
+
+import yaml
+
+from siteapi import HOME, ROOT, SNAP, call, target
+
+FOLDER = Path(os.environ.get("LESSONS_DIR", ROOT / "data" / "transcripts"))  # another site keeps its folder elsewhere (ods)
+TEXTS = {"context": "context.md", "transcript": "transcript.md", "summary": "summary.md", "notes": "notes.md"}
+META = ("title", "date", "time", "groups", "links", "video_start")
+SKILL_KINDS = {"pz": "practice", "lab": "lab", "lec": "lecture", "cons": "consult", "x": "other"}
+
+
+def rel(d: Path) -> str:
+    return str(d.relative_to(ROOT)) if d.is_relative_to(ROOT) else str(d)
+
+
+def taken_path(to: str, slug: str) -> Path:
+    return HOME / to / ".taken" / "lessons" / f"{slug}.json"
+
+
+def keep(to: str, data: dict):
+    path = taken_path(to, data["slug"])
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps({k: v for k, v in data.items() if k not in ("sources", "roster")}, ensure_ascii=False))
+
+
+def upload(to: str, slug: str, path: Path, role: str) -> dict:
+    url, token = target(to)
+    b = uuid4().hex
+    head = (f'--{b}\r\nContent-Disposition: form-data; name="role"\r\n\r\n{role}\r\n--{b}\r\n'
+            f'Content-Disposition: form-data; name="file"; filename="{path.name}"\r\n'
+            f'Content-Type: {mimetypes.guess_type(path.name)[0] or "application/octet-stream"}\r\n\r\n').encode()
+    request = Request(f"{url}/api/lessons/{slug}/files", method="POST", data=head + path.read_bytes() + f"\r\n--{b}--\r\n".encode(),
+                      headers={"Authorization": f"Bearer {token}", "Content-Type": f"multipart/form-data; boundary={b}"})
+    with urlopen(request) as response:
+        return json.load(response)
+
+
+def pull(to: str, slug: str):
+    b = call(to, "GET", f"/lessons/{slug}/bundle")
+    d = FOLDER / slug
+    (d / "raw").mkdir(parents=True, exist_ok=True)
+    meta = {"course": to, "lesson": b["n"], "kind": SKILL_KINDS.get(b["kind"], "other"), **{k: b[k] for k in META},
+            "teacher": "Віталій", "roster": b["roster"]}
+    (d / "meta.yml").write_text(yaml.safe_dump(meta, allow_unicode=True, sort_keys=False))
+    for key, name in TEXTS.items():
+        if b[key]:
+            (d / name).write_text(b[key].rstrip("\n") + "\n")
+    for s in b["sources"]:
+        (d / "raw" / s["name"]).write_text(s["text"])
+    keep(to, b)
+    print(f"{rel(d)}: rev {b['rev']} · {len(b['sources'])} сирих · "
+          + " · ".join(name for key, name in TEXTS.items() if b[key]))
+
+
+def push(to: str, slug: str, note: str, force: bool):
+    d = FOLDER / slug
+    if not d.is_dir():
+        sys.exit(f"нема теки {rel(d)}")
+    cur = call(to, "GET", f"/lessons/{slug}")
+    was = json.loads(taken_path(to, slug).read_text()) if taken_path(to, slug).exists() else None
+    if was and was["rev"] != cur["rev"] and not force:
+        sys.exit(f"на сайті вже rev {cur['rev']}, тягнув rev {was['rev']} — спершу pull (або --force, щоб перекрити)")
+    have = {f["name"]: f for f in cur["files"] if f["role"] == "source"}
+    for p in sorted((d / "raw").glob("*")) if (d / "raw").is_dir() else []:
+        if p.is_file() and not p.name.startswith(".") and (p.name not in have or have[p.name]["size"] != p.stat().st_size):
+            print(f"raw/{p.name}: {upload(to, slug, p, 'source')['words']} слів ↑")
+    cur = call(to, "GET", f"/lessons/{slug}")  # a chat upload bumps the rev
+    patch = {"rev": cur["rev"], "note": note}
+    for key, name in TEXTS.items():
+        if (d / name).exists() and (d / name).read_text().strip() != cur.get(key, "").strip():
+            patch[key] = (d / name).read_text().strip()
+    meta = yaml.safe_load((d / "meta.yml").read_text()) if (d / "meta.yml").exists() else {}
+    patch |= {k: meta[k] for k in META if k in meta and meta[k] != cur[k]}
+    if len(patch) > 2:
+        cur = call(to, "PUT", f"/lessons/{slug}", patch)
+        print(f"{slug}: rev {was['rev'] if was else '?'} → {cur['rev']} · {', '.join(k for k in patch if k not in ('rev', 'note'))}")
+    else:
+        print(f"{slug}: без змін")
+    keep(to, cur)
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("-t", "--target", default=SNAP)
+    parser.add_argument("cmd", choices=["ls", "new", "pull", "push", "attach", "publish", "hide"])
+    parser.add_argument("args", nargs="*")
+    parser.add_argument("-m", "--note", default="")
+    parser.add_argument("--force", action="store_true")
+    for k in ("title", "date", "time", "groups"):
+        parser.add_argument(f"--{k}", default="")
+    a = parser.parse_args()
+    slug = a.args[0] if a.args else ""
+    if a.cmd == "ls":
+        for l in call(a.target, "GET", "/lessons"):
+            marks = "".join(m for k, m in (("summary", "📝"), ("transcript", "🗣"), ("chat", "💬")) if l["has"][k]) + ("📎" if l["has"]["files"] else "")
+            print(f"{l['slug']:<7} {l['date'] or '----------'}  {l['label']:<9} {'' if l['published'] else '(чернетка) '}{l['title']}  {marks}")
+    elif not slug:
+        sys.exit("потрібен slug заняття: pz1, lab2…")
+    elif a.cmd == "new":
+        m = re.fullmatch(r"([a-z]+)(\d+)", slug) or sys.exit("slug — вид і номер: pz1, lab2, lec3, cons1, x1")
+        l = call(a.target, "POST", "/lessons", {"kind": m[1], "n": int(m[2]), "title": a.title, "date": a.date, "time": a.time,
+                                                "groups": [g.strip() for g in a.groups.split(",") if g.strip()]})
+        print(f"{l['slug']}: {l['label']} · {l['title'] or 'без назви'} — чернетка; далі pull / push")
+    elif a.cmd == "pull":
+        pull(a.target, slug)
+    elif a.cmd == "push":
+        push(a.target, slug, a.note, a.force)
+    elif a.cmd == "attach":
+        for p in a.args[1:]:
+            f = upload(a.target, slug, Path(p), "file")
+            print(f"{f['name']}: {f['size'] // 1024} КБ ↑")
+    else:
+        cur = call(a.target, "GET", f"/lessons/{slug}")
+        call(a.target, "PUT", f"/lessons/{slug}", {"rev": cur["rev"], "published": a.cmd == "publish"})
+        print(f"{slug}: {'показано студентам' if a.cmd == 'publish' else 'сховано'}")
+
+
+if __name__ == "__main__":
+    main()

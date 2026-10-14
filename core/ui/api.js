@@ -1,4 +1,4 @@
-import { query, request } from './http.js'
+import { query, request, upload } from './http.js'
 
 export const getMe = () => request('/api/me')
 export const putProfile = (data) => request('/api/profile', 'PUT', data)
@@ -37,3 +37,11 @@ export const putPollTemplate = (id, data) => request(`/api/polls/templates/${id}
 export const deletePollTemplate = (id) => request(`/api/polls/templates/${id}`, 'DELETE')
 export const getPollChats = () => request('/api/polls/chats')
 export const putPollChat = (id, data) => request(`/api/polls/chats/${id}`, 'PUT', data)
+export const getLessons = () => request('/api/lessons')
+export const getLesson = (slug) => request(`/api/lessons/${slug}`)
+export const postLesson = (data) => request('/api/lessons', 'POST', data)
+export const putLesson = (slug, data) => request(`/api/lessons/${slug}`, 'PUT', data)
+export const deleteLesson = (slug) => request(`/api/lessons/${slug}`, 'DELETE')
+export const postLessonAlias = (slug, data) => request(`/api/lessons/${slug}/alias`, 'POST', data)
+export const uploadLessonFile = (slug, file, role) => upload(`/api/lessons/${slug}/files`, file, { role })
+export const deleteLessonFile = (slug, id) => request(`/api/lessons/${slug}/files/${id}`, 'DELETE')

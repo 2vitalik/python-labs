@@ -19,6 +19,7 @@ class StudentIn(ProfileIn):
     group: str = ""
     status: Status = Status.student
     test: bool = False
+    aliases: list[str] = []
 
 
 class ImportIn(BaseModel):
@@ -80,7 +81,8 @@ async def update_student(nick: str, data: StudentIn, admin: User = Depends(admin
     user = await User.by_nick(nick)
     if not user:
         raise HTTPException(404)
-    await record(user, clean(data), actor=admin.email)
+    fields = clean(data) | {"aliases": [a.strip() for a in data.aliases if a.strip()]}
+    await record(user, fields, actor=admin.email)
     return user.api()
 
 

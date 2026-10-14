@@ -4,7 +4,7 @@ import { computed, ref, useId } from 'vue'
 // tags as chips: Enter, a comma or leaving the field adds what was typed, a hint from `known` adds itself when picked;
 // Backspace in the empty field takes the last chip off
 const tags = defineModel({ type: Array, default: () => [] })
-const props = defineProps({ known: { type: Array, default: () => [] }, disabled: Boolean })
+const props = defineProps({ known: { type: Array, default: () => [] }, disabled: Boolean, hash: { type: Boolean, default: true } })
 const id = useId()
 const text = ref('')
 const input = ref()
@@ -31,9 +31,9 @@ const remove = (tag) => (tags.value = tags.value.filter((t) => t !== tag))
 <template>
   <div class="form-control tags d-flex flex-wrap align-items-center gap-1" :class="{ disabled }" @click="input.focus()">
     <span v-for="t in tags" :key="t" class="badge text-bg-light border fw-normal d-inline-flex align-items-center gap-1">
-      #{{ t }}<button v-if="!disabled" type="button" class="btn-close" :aria-label="`Прибрати ${t}`" @click.stop="remove(t)"></button>
+      {{ hash ? '#' : '' }}{{ t }}<button v-if="!disabled" type="button" class="btn-close" :aria-label="`Прибрати ${t}`" @click.stop="remove(t)"></button>
     </span>
-    <input ref="input" v-model="text" :list="id" :disabled class="border-0 bg-transparent flex-grow-1" :placeholder="tags.length ? '' : 'тег і Enter'"
+    <input ref="input" v-model="text" :list="id" :disabled class="border-0 bg-transparent flex-grow-1" :placeholder="tags.length ? '' : hash ? 'тег і Enter' : 'і Enter'"
            @keydown="key" @blur="add" @input="picked">
     <datalist :id><option v-for="t in hints" :key="t" :value="t" /></datalist>
   </div>

@@ -47,8 +47,9 @@ export function query(params) {
   return q && `?${q}`
 }
 
-export function upload(url, file) {
+export function upload(url, file, fields = {}) {
   const fd = new FormData()
   fd.append('file', file)
+  for (const [k, v] of Object.entries(fields)) fd.append(k, v)
   return send(url, { method: 'POST', body: fd })
 }
