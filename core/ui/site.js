@@ -2,7 +2,7 @@
 // read it inside functions and components, never at the top of a module
 export const site = {
   name: '',  // the tab title «<page> · name», the hint of the home link
-  links: [],  // the menu: [path, text], or [path, text, access] when the entry is narrower than the page (a page students reach another way)
+  links: [],  // the menu: [path, text, access?, bold?]; access — when the entry is narrower than the page (a page students reach another way)
   guide: [],  // guide pages in the order of /method: { slug, path, nav }; `n` — a lab's number
   colls: {},  // /activity: what an edit in the site's own collection is called — { claims: 'заявка' }
   profile: {

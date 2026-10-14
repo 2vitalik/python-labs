@@ -31,14 +31,14 @@ onUnmounted(() => document.removeEventListener('click', close))
     <div class="page d-flex align-items-center">
       <RouterLink class="navbar-brand d-flex align-items-center" to="/" :title="site.name"><IconHome :size="20" /></RouterLink>
       <ul ref="list" class="navbar-nav">
-        <li v-for="[to, text] in row" :key="to" class="nav-item">
-          <RouterLink class="nav-link" :class="{ active: isActive(to) }" :to="to">{{ text }}</RouterLink>
+        <li v-for="[to, text, , bold] in row" :key="to" class="nav-item">
+          <RouterLink class="nav-link" :class="{ active: isActive(to), 'fw-bold': bold }" :to="to">{{ text }}</RouterLink>
         </li>
         <li ref="more" class="nav-item dropdown" :class="{ 'invisible position-absolute': !rest.length }">
           <a class="nav-link dropdown-toggle" :class="{ active: restActive }" href="#" @click.prevent="open = !open">Ще</a>
           <ul class="dropdown-menu dropdown-menu-end" :class="{ show: open }">
-            <li v-for="[to, text] in rest" :key="to">
-              <RouterLink class="dropdown-item" :class="{ active: isActive(to) }" :to="to">{{ text }}</RouterLink>
+            <li v-for="[to, text, , bold] in rest" :key="to">
+              <RouterLink class="dropdown-item" :class="{ active: isActive(to), 'fw-bold': bold }" :to="to">{{ text }}</RouterLink>
             </li>
           </ul>
         </li>
