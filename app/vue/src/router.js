@@ -46,10 +46,10 @@ export default makeRouter([
   { path: '/my/game', component: MyGamePage, meta: { title: 'Моя гра', access: 'active' } },  // a student picks their game here; its insides stay the admin's for now (T216)
   { path: '/my/week', component: MyWeekPage, meta: { title: 'Мій тиждень', access: 'active' } },
   // meetings with their transcripts: signed-in students read what is published (T218)
-  { path: '/lessons', component: LessonsPage, meta: { title: 'Заняття', access: 'active', filters: true } },
-  { path: '/lessons/new', component: LessonEditPage, meta: { title: 'Нове заняття', access: 'admin' } },
-  { path: '/lessons/:slug', component: LessonPage, meta: { title: 'Заняття', access: 'active' } },
-  { path: '/lessons/:slug/edit', component: LessonEditPage, meta: { title: 'Заняття', access: 'admin' } },
+  { path: '/lessons', component: LessonsPage, meta: { title: 'Пари', access: 'active', filters: true } },
+  { path: '/lessons/new', component: LessonEditPage, meta: { title: 'Нова пара', access: 'admin' } },
+  { path: '/lessons/:slug', component: LessonPage, meta: { title: 'Пари', access: 'active' } },
+  { path: '/lessons/:slug/edit', component: LessonEditPage, meta: { title: 'Пари', access: 'admin' } },
   { path: '/attendance', component: AttendancePage, meta: { title: 'Відвідування', access: 'admin', wide: true, filters: true } },  // students × lessons, from Zoom (T222)
   // a student's own week; the teacher's summary on the whole window, /week/3 — one day of it (T186)
   { path: '/week/:day(\\d)?', component: WeekPage, meta: { title: 'Тиждень', access: 'active', filters: true, stay: true, wide: 'admin' } },

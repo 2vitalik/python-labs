@@ -20,7 +20,7 @@ const label = ref('')
 const groups = ref([])
 const error = ref('')
 const busy = ref(false)
-useTitle(() => (slug.value ? `${label.value}: редагування` : 'Нове заняття'))
+useTitle(() => (slug.value ? `${label.value}: редагування` : 'Нова пара'))
 const addLink = () => form.links.push({ label: '', url: '' })
 
 onMounted(async () => {
@@ -59,8 +59,8 @@ async function remove() {
 
 <template>
   <div v-if="user?.status === 'admin'">
-    <Crumbs :items="[['/lessons', 'Заняття'], ...(slug ? [[`/lessons/${slug}`, label], 'Редагування'] : ['Нове'])]" />
-    <h1 class="h3 mb-3">{{ slug ? `${label}: редагування` : 'Нове заняття' }}</h1>
+    <Crumbs :items="[['/lessons', 'Пари'], ...(slug ? [[`/lessons/${slug}`, label], 'Редагування'] : ['Нове'])]" />
+    <h1 class="h3 mb-3">{{ slug ? `${label}: редагування` : 'Нова пара' }}</h1>
     <form @submit.prevent="save">
       <div class="row g-3">
         <div class="col-6 col-md-3">

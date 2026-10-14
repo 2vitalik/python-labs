@@ -71,8 +71,8 @@ watch(() => route.hash, (h) => lesson.value && hash(h))  // a save replaces `les
 
 <template>
   <div v-if="lesson">
-    <Crumbs :items="[['/lessons', 'Заняття'], lesson.label]">
-      <RouterLink v-if="admin" :to="`/lessons/${slug}/edit`" class="btn btn-outline-secondary btn-sm ms-auto">✏️ Заняття</RouterLink>
+    <Crumbs :items="[['/lessons', 'Пари'], lesson.label]">
+      <RouterLink v-if="admin" :to="`/lessons/${slug}/edit`" class="btn btn-outline-secondary btn-sm ms-auto">✏️ Пара</RouterLink>
     </Crumbs>
     <h1 class="h2 mb-1">{{ heading }}</h1>
     <LessonHead :lesson />

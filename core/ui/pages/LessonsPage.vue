@@ -22,13 +22,13 @@ onMounted(async () => (all.value = await getLessons()))
 </script>
 
 <template>
-  <Crumbs :items="['Заняття']">
+  <Crumbs :items="['Пари']">
     <div v-if="admin" class="d-flex gap-2 ms-auto">
       <RouterLink to="/attendance" class="btn btn-outline-secondary btn-sm">👥 Відвідування</RouterLink>
-      <RouterLink to="/lessons/new" class="btn btn-outline-primary btn-sm">＋ Заняття</RouterLink>
+      <RouterLink to="/lessons/new" class="btn btn-outline-primary btn-sm">＋ Пара</RouterLink>
     </div>
   </Crumbs>
-  <h1 class="h2 mb-3">Заняття</h1>
+  <h1 class="h2 mb-3">Пари</h1>
   <div v-if="kinds.length > 1" class="d-flex flex-wrap gap-1 mb-3">
     <button class="btn btn-sm chip" :class="kind ? 'btn-outline-secondary' : 'btn-secondary'" @click="pick('')">Усі</button>
     <button v-for="k in kinds" :key="k" class="btn btn-sm chip" :class="kind === k ? 'btn-secondary' : 'btn-outline-secondary'" @click="pick(k)">

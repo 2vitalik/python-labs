@@ -37,7 +37,7 @@ onMounted(async () => {
 
 <template>
   <div>
-    <Crumbs :items="[['/lessons', 'Заняття'], 'Відвідування']" />
+    <Crumbs :items="[['/lessons', 'Пари'], 'Відвідування']" />
     <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
       <h1 class="h3 mb-0">Відвідування</h1>
       <span v-if="shown" class="text-secondary">{{ shown.lessons.length }} занять · {{ shown.rows.length }} студентів</span>
