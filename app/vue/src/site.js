@@ -17,7 +17,8 @@ export default {
   name: 'Python Labs',
   links: [
     ...SECTIONS.map((s) => [s.path, s.nav]), ['/lessons', 'Заняття'],
-    ['/students', 'Студи', 'admin'], ['/activity', 'Актив'],  // a student reaches /students as «Ігри студентів» from the games catalog ['/polls', 'Polls'], ['/my/game', 'Моя гра'], ['/week', 'Week'], ['/my/profile', 'Профіль'],
+    ['/students', 'Студи', 'admin'], ['/activity', 'Актив'],  // a student reaches /students as «Ігри студентів» from the games catalog
+    ['/polls', 'Polls'], ['/my/game', 'Моя гра'], ['/week', 'Week'], ['/my/profile', 'Профіль'],
   ],
   guide: [...SECTIONS.flatMap((s) => (s.slug === 'labs' ? [s, ...LABS] : [s])), CHANGES],
   colls: {
