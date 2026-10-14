@@ -12,6 +12,7 @@ import IconChevron from '../components/IconChevron.vue'
 import LessonChat from '../components/LessonChat.vue'
 import LessonHead from '../components/LessonHead.vue'
 import LessonSources from '../components/LessonSources.vue'
+import LessonWho from '../components/LessonWho.vue'
 import Toc from '../components/Toc.vue'
 import Transcript from '../components/Transcript.vue'
 import { parseTranscript, stats, summaryView, withInfo } from '../lesson.js'
@@ -100,6 +101,7 @@ watch(() => route.hash, (h) => lesson.value && hash(h))  // a save replaces `les
       <Toc :items="toc" />
     </section>
 
+    <LessonWho v-if="lesson.zoom.uuid || admin" :lesson :admin @changed="load" />
     <LessonChat v-if="lesson.chat" :text="lesson.chat" />
     <details v-if="admin && lesson.notes" class="mt-4 small">
       <summary class="text-secondary">🗒 Нотатки злиття (лише тобі)</summary>

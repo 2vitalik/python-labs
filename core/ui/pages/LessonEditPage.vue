@@ -14,7 +14,7 @@ import { user } from '../user.js'
 const route = useRoute()
 const router = useRouter()
 const slug = computed(() => route.params.slug || '')
-const form = reactive({ kind: 'pz', n: '', date: '', time: '', title: '', groups: [], links: [], video_start: '', context: '', published: false })
+const form = reactive({ kind: 'pz', n: '', date: '', time: '', title: '', groups: [], links: [], video_start: '', meeting: '', context: '', published: false })
 const rev = ref(0)
 const label = ref('')
 const groups = ref([])
@@ -29,7 +29,7 @@ onMounted(async () => {
   try {
     const l = await getLesson(slug.value)
     Object.assign(form, { kind: l.kind, n: l.n, date: l.date, time: l.time, title: l.title, groups: l.groups, links: l.links.map((x) => ({ ...x })),
-                          video_start: l.video_start, context: l.context, published: l.published })
+                          video_start: l.video_start, meeting: l.meeting, context: l.context, published: l.published })
     rev.value = l.rev
     label.value = l.label
     if (!form.links.length) addLink()
@@ -104,6 +104,11 @@ async function remove() {
           <div class="form-text">Час за годинником, коли почалось відео: клік по часу репліки відкриє це місце (YouTube)</div>
         </div>
         <div class="col-md-8">
+          <label class="form-label">Зустріч Zoom</label>
+          <input v-model="form.meeting" class="form-control" placeholder="ID зустрічі з посилання (цифри) або UUID одного проведення">
+          <div class="form-text">«Оновити із Zoom» на сторінці заняття забере, хто був і скільки; за датою заняття знайдеться потрібне проведення</div>
+        </div>
+        <div class="col-12">
           <label class="form-label">Контекст для конспекту</label>
           <textarea v-model="form.context" class="form-control" rows="3" placeholder="що підкреслити, що пропустити — для /lesson summary"></textarea>
         </div>

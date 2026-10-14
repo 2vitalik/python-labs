@@ -102,7 +102,7 @@ with TestClient(main.app) as c:
           and "%D0%9B%D0%B0%D0%B1%D0%B0.pdf" in r.headers["content-disposition"], r.headers.get("content-disposition"))
     rows = c.get("/api/lessons").json()
     check("list: admin sees drafts, newest first, has.files", [r["slug"] for r in rows] == ["pz1", "pz2", "lab1"]
-          and rows[0]["has"] == {"summary": False, "transcript": True, "chat": True, "files": 1}, rows)
+          and rows[0]["has"] == {"summary": False, "transcript": True, "chat": True, "zoom": False, "files": 1}, rows)
     check("full: 3 files for the admin", len(c.get("/api/lessons/pz1").json()["files"]) == 3)
 
     login(c, "stud@nure.ua", "student")

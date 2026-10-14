@@ -17,13 +17,16 @@ const kind = computed(() => route.query.kind || '')
 const rows = computed(() => all.value.filter((l) => !kind.value || l.kind === kind.value))
 const pick = (k) => router.replace({ query: k ? { kind: k } : {} })
 const marks = (l) => [l.has.summary && ['📝', 'конспект'], l.has.transcript && ['🗣', 'транскрипт'], l.links.length && ['🎬', 'посилання'],
-                      l.has.files && ['📎', 'файли']].filter(Boolean)
+                      l.has.files && ['📎', 'файли'], l.has.zoom && ['👥', 'відвідування']].filter(Boolean)
 onMounted(async () => (all.value = await getLessons()))
 </script>
 
 <template>
   <Crumbs :items="['Заняття']">
-    <RouterLink v-if="admin" to="/lessons/new" class="btn btn-outline-primary btn-sm ms-auto">＋ Заняття</RouterLink>
+    <div v-if="admin" class="d-flex gap-2 ms-auto">
+      <RouterLink to="/attendance" class="btn btn-outline-secondary btn-sm">👥 Відвідування</RouterLink>
+      <RouterLink to="/lessons/new" class="btn btn-outline-primary btn-sm">＋ Заняття</RouterLink>
+    </div>
   </Crumbs>
   <h1 class="h2 mb-3">Заняття</h1>
   <div v-if="kinds.length > 1" class="d-flex flex-wrap gap-1 mb-3">

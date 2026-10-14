@@ -3,6 +3,7 @@ from pymongo import AsyncMongoClient
 
 from core.config import settings
 from core.models.activity import Activity
+from core.models.attendance import Attendance
 from core.models.error import Error
 from core.models.event import Event
 from core.models.guide import Guide
@@ -18,7 +19,7 @@ from core.models.user import User
 from core.models.vote import TgChat, Vote
 from core.models.week import Week
 
-MODELS = [User, Change, Route, Activity, Guide, TgMessage, Note, Event, Error, PollTemplate, Poll, PollSend, Vote, TgChat, Week, Lesson, LessonFile]
+MODELS = [User, Change, Route, Activity, Guide, TgMessage, Note, Event, Error, PollTemplate, Poll, PollSend, Vote, TgChat, Week, Lesson, LessonFile, Attendance]
 mongo = AsyncMongoClient(settings.mongo_uri)  # connects lazily, so it is safe to build at import
 
 

@@ -3,6 +3,7 @@ const LINE = /^\*\*([^*]+)\*\*(?: · (\d{1,2}:\d{2}))? — (.+)$/
 const HEAD = /^## (.+?)(?: · (\d{1,2}:\d{2}))?$/
 const NOTE = /^\*\[(.+)\]\*$/
 const CHAT = /^(\d\d:\d\d:\d\d)\s+From\s+(.+?)\s+to\s+(.+?):\s*(.*)$/
+const CHAT_CLOUD = /^(\d\d:\d\d:\d\d)\t([^\t]+?):\t?(.*)$/  // the cloud recording's chat file: no «From … to»
 
 export const KINDS = { pz: 'ПЗ', lab: 'Лаба', lec: 'Лекція', cons: 'Консультація', x: 'Зустріч' }
 export const KINDS_MANY = { pz: 'ПЗ', lab: 'Лаби', lec: 'Лекції', cons: 'Консультації', x: 'Зустрічі' }
@@ -63,13 +64,18 @@ export const fmtDate = (iso, long = false) => (iso ? new Date(`${iso}T00:00:00`)
   long ? { day: 'numeric', month: 'long', year: 'numeric' } : { day: 'numeric', month: 'short' }) : '')
 export const fmtSize = (n) => (n < 1024 ? `${n} Б` : n < 2 ** 20 ? `${Math.round(n / 1024)} КБ` : `${(n / 2 ** 20).toFixed(1)} МБ`)
 export const fmtWords = (n) => (n >= 1000 ? `${(n / 1000).toFixed(1).replace('.0', '')} тис. слів` : `${n} слів`)
+export function fmtDur(seconds) {  // minutes first, so 2 год 59.6 хв never reads «2 год 60 хв»
+  const m = Math.round(seconds / 60)
+  return m < 1 ? '< 1 хв' : m < 60 ? `${m} хв` : `${Math.floor(m / 60)} год ${m % 60} хв`
+}
 
 // Zoom's saved chat: «HH:MM:SS From Who to Everyone:» then the message on the same or the next (tab-indented) lines
 export function parseChat(text) {
   const rows = []
   for (const line of (text || '').split('\n')) {
-    const m = line.match(CHAT)
+    let m = line.match(CHAT)
     if (m) rows.push({ time: m[1].slice(0, 5), who: m[2], to: m[3] === 'Everyone' ? '' : m[3], text: m[4] })
+    else if ((m = line.match(CHAT_CLOUD))) rows.push({ time: m[1].slice(0, 5), who: m[2], to: '', text: m[3] })
     else if (rows.length && line.trim()) rows[rows.length - 1].text = `${rows[rows.length - 1].text}\n${line.trim()}`.trim()
     else if (line.trim()) rows.push({ time: '', who: '', to: '', text: line.trim() })
   }

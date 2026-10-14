@@ -19,6 +19,7 @@ class LessonIn(BaseModel):
     links: list[Link] = []
     video_start: str = ""
     context: str = ""
+    meeting: str = ""
     published: bool = False
 
 
@@ -37,6 +38,7 @@ class LessonPatch(BaseModel):
     summary: str | None = None
     notes: str | None = None
     chat: str | None = None
+    meeting: str | None = None
     published: bool | None = None
 
 

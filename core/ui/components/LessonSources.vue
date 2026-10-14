@@ -83,7 +83,8 @@ onMounted(async () => (students.value = (await getStudents()).filter((s) => s.st
           <pre class="mb-0 text-body-secondary">bin/lesson pull {{ lesson.slug }}
 /lesson merge data/transcripts/{{ lesson.slug }}
 /lesson summary data/transcripts/{{ lesson.slug }}
-bin/lesson push {{ lesson.slug }} -m "…"</pre>
+bin/lesson push {{ lesson.slug }} -m "…"
+bin/zoom pull {{ lesson.slug }} [--meeting ID] [--sources]</pre>
         </div>
       </div>
     </div>

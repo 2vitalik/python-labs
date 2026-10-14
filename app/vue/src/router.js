@@ -1,4 +1,5 @@
 import ActivityPage from '@core/pages/ActivityPage.vue'
+import AttendancePage from '@core/pages/AttendancePage.vue'
 import GuidePage from '@core/pages/GuidePage.vue'
 import HistoryPage from '@core/pages/HistoryPage.vue'
 import LessonEditPage from '@core/pages/LessonEditPage.vue'
@@ -49,6 +50,7 @@ export default makeRouter([
   { path: '/lessons/new', component: LessonEditPage, meta: { title: 'Нове заняття', access: 'admin' } },
   { path: '/lessons/:slug', component: LessonPage, meta: { title: 'Заняття', access: 'active' } },
   { path: '/lessons/:slug/edit', component: LessonEditPage, meta: { title: 'Заняття', access: 'admin' } },
+  { path: '/attendance', component: AttendancePage, meta: { title: 'Відвідування', access: 'admin', wide: true, filters: true } },  // students × lessons, from Zoom (T222)
   // a student's own week; the teacher's summary on the whole window, /week/3 — one day of it (T186)
   { path: '/week/:day(\\d)?', component: WeekPage, meta: { title: 'Тиждень', access: 'active', filters: true, stay: true, wide: 'admin' } },
   // a student sees the slice of these two the API gives them: «Ігри студентів» (site.js students.asStudent)

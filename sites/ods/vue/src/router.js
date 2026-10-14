@@ -1,4 +1,5 @@
 import ActivityPage from '@core/pages/ActivityPage.vue'
+import AttendancePage from '@core/pages/AttendancePage.vue'
 import HistoryPage from '@core/pages/HistoryPage.vue'
 import LessonEditPage from '@core/pages/LessonEditPage.vue'
 import LessonPage from '@core/pages/LessonPage.vue'
@@ -32,6 +33,7 @@ export default makeRouter([
   { path: '/lessons/new', component: LessonEditPage, meta: { title: 'Нове заняття', access: 'admin' } },
   { path: '/lessons/:slug', component: LessonPage, meta: { title: 'Заняття', access: 'active' } },
   { path: '/lessons/:slug/edit', component: LessonEditPage, meta: { title: 'Заняття', access: 'admin' } },
+  { path: '/attendance', component: AttendancePage, meta: { title: 'Відвідування', access: 'admin', wide: true, filters: true } },  // students × lessons, from Zoom (T222)
   { path: '/method/history', component: HistoryPage, meta: { title: 'Історія правок', access: 'admin' } },
   { path: '/login', component: LoginPage, meta: { title: 'Вхід' } },
   { path: '/my/profile', component: ProfilePage, meta: { title: 'Профіль', access: 'active' } },

@@ -27,7 +27,7 @@ from siteapi import HOME, ROOT, SNAP, call, target
 
 FOLDER = Path(os.environ.get("LESSONS_DIR", ROOT / "data" / "transcripts"))  # another site keeps its folder elsewhere (ods)
 TEXTS = {"context": "context.md", "transcript": "transcript.md", "summary": "summary.md", "notes": "notes.md"}
-META = ("title", "date", "time", "groups", "links", "video_start")
+META = ("title", "date", "time", "groups", "links", "video_start", "meeting")
 SKILL_KINDS = {"pz": "practice", "lab": "lab", "lec": "lecture", "cons": "consult", "x": "other"}
 
 

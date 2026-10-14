@@ -21,6 +21,9 @@ class Settings(BaseSettings):
     agent_tokens: str = ""  # `name:token,…` — AI agents that edit the site's texts (deps.editor_user); empty = no such way in
     week_hours: str = "15-23"  # «Мій тиждень» (T177): the hours of the grid, from-to
     week_days: int = 6  # …and its days, counted from Monday
+    zoom_account_id: str = ""  # a Server-to-Server OAuth app in Zoom Marketplace (T221): attendance of a lesson from its meeting
+    zoom_client_id: str = ""
+    zoom_client_secret: str = ""  # all three empty = «Оновити із Zoom» says it is not set up
 
     model_config = {"env_file": ("site.env", ".env"), "extra": "ignore"}
 

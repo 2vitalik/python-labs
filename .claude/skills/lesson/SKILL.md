@@ -41,6 +41,8 @@ description: Заняття → вивірений транскрипт і ко�
 
 Тека заняття на сайті — `data/transcripts/<slug>/`, slug = вид + номер (`pz1`, `lab2`, `lec3`, `cons1`, `x1`); для іншого сайту тека задається `LESSONS_DIR=…`. Цикл: `bin/lesson [-t dev] pull <slug>` (сайт → тека: `meta.yml` з `roster` із профілів студентів, сирі файли в `raw/`, наявні тексти) → `/lesson merge` і `/lesson summary` → `bin/lesson push <slug> -m "…"` (тексти й `meta.yml` на сайт, нові сирі файли — теж) → перегляд на `/lessons/<slug>` → `bin/lesson publish <slug>`. Нове заняття — `bin/lesson new <slug> --title … --date … --time … --groups A,B`; файли для студентів — `bin/lesson attach <slug> <файл…>`. Невідомих мовців викладач привʼязує до студентів на сторінці заняття («хто це?») — наступний `pull` принесе їх у `roster`.
 
+Відвідування — `bin/zoom pull <slug> [--meeting <id|uuid>] [--sources]` (T222): учасники зустрічі Zoom → блок «👥 Були» на сторінці заняття; `--sources` докладає хмарний транскрипт як `raw/zoom.vtt`, чат як `raw/chat.txt` і посилання на запис — наступний `bin/lesson pull` принесе їх у теку.
+
 ## Куди це йде далі
 
 Ті самі `merge.md` і `summary.md` — промпти для серверної обробки на сайті (вузол `.dev/lessons/`); skill — локальний спосіб робити те саме через Claude Code за підпискою, поки серверної обробки нема.

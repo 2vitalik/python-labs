@@ -1,0 +1,49 @@
+#!/usr/bin/env python3
+"""bin/zoom — attendance of a lesson from its Zoom meeting (T222); the site talks to Zoom, this only asks it to.
+
+  bin/zoom [-t dev] pull <slug> [--meeting <id|uuid>] [--sources]   who was in the room and for how long → «👥 Були» of the lesson;
+                                                                   --sources: the cloud recording's transcript, chat and link too
+  bin/zoom [-t dev] show <slug>                                     the rows as the site sees them
+
+The meeting ID (of the recurring link) or one run's UUID is remembered on the lesson: the next pull needs none.
+No -t = prod. Zoom's keys live in the site's .env (ZOOM_ACCOUNT_ID, ZOOM_CLIENT_ID, ZOOM_CLIENT_SECRET), not here."""
+import argparse
+
+from siteapi import SNAP, call
+
+
+def dur(s: int) -> str:
+    return f"{s // 3600} год {s % 3600 // 60:02d} хв" if s >= 3600 else f"{s // 60} хв"
+
+
+def who(row: dict) -> str:
+    return f"{row['person']['name']} {row['person']['group']}".strip() if row["person"] else "?"
+
+
+def report(slug: str, a: dict):
+    m = a["meeting"]
+    print(f"{slug}: {m['topic'] or 'зустріч'} {m['start'][:16].replace('T', ' ')}–{m['end'][11:16]} UTC · {dur(a['seconds'])} · "
+          f"{len(a['people'])} студентів із {a['of']} · {len(a['teachers'])} викладачів · {len(a['unknown'])} невідомих")
+    for row in sorted(a["people"], key=lambda r: who(r)) + a["unknown"]:
+        late = f" · спізнився на {row['late'] // 60} хв" if row["late"] >= 300 else ""
+        print(f"  {'' if row['present'] else '~'}{row['name']:<28} {dur(row['seconds']):>12}  {who(row)}{late}")
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("-t", "--target", default=SNAP)
+    parser.add_argument("cmd", choices=["pull", "show"])
+    parser.add_argument("slug")
+    parser.add_argument("--meeting", default="")
+    parser.add_argument("--sources", action="store_true")
+    a = parser.parse_args()
+    if a.cmd == "pull":
+        got = call(a.target, "POST", f"/lessons/{a.slug}/zoom", {"meeting": a.meeting, "sources": a.sources})
+        print(f"{got['pulled']} рядків із Zoom ↓")
+        report(a.slug, got)
+    else:
+        report(a.slug, call(a.target, "GET", f"/lessons/{a.slug}/attendance"))
+
+
+if __name__ == "__main__":
+    main()

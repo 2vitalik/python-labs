@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T223** · тікетів: 222 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T224** · тікетів: 223 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -229,4 +229,5 @@
 | lessons | [T219](lessons/.t/T219-P--lessons-brief-v2.md) | 💡 | lessons-brief-v2 | Заняття на сайті: дельта брифу 2026-10-14 — види, посилання, файли, аватарки | 🟢 🟩 |
 | lessons | [T220](lessons/.t/T220-Q--lessons-v1-questions.md) | ❓ | lessons-v1-questions | Заняття v1: вибори | 🔴 ⬜ |
 | lessons | [T221](lessons/.t/T221-C--zoom-attendance.md) | 🔆 | zoom-attendance | Відвідування із Zoom: що дає API, як автоматизувати | 🟢 🟩 |
-| lessons | [T222](lessons/.t/T222--zoom-attendance-v1/plan.md) | ⚙️ | zoom-attendance-v1 | Відвідування із Zoom v1: забір, звʼязка зі студентами, сторінки — план | 🟢 ⬜ |
+| lessons | [T222](lessons/.t/T222--zoom-attendance-v1/plan.md) | ⚙️ | zoom-attendance-v1 | Відвідування із Zoom v1: забір, звʼязка зі студентами, сторінки — план | 🟢 🟩 |
+| lessons | [T223](lessons/.t/T223-Q--zoom-attendance-questions.md) | ❓ | zoom-attendance-questions | Відвідування із Zoom v1: вибори | 🔴 ⬜ |
