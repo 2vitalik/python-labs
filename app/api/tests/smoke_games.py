@@ -168,6 +168,9 @@ with TestClient(main.app) as c:
           c.put(f"/api/refs/{ref}", json={"url": "https://x.com"}).status_code == 403)
 
     login(c, "admin@nure.ua", "admin")
+    check("admin: edit any ref", c.put(f"/api/refs/{ref}", json={"url": "https://x.com", "note": "патерн погоні"}).status_code == 200)
+    check("ref edit in history: actor admin, url old → new",
+          mongo[DB].history.find_one({"coll": "refs", "actor": "admin@nure.ua"})["changes"]["url"]["new"] == "https://x.com")
     check("admin: delete any ref", c.delete(f"/api/refs/{ref}").status_code == 200)
     r = c.post("/api/my/game", json={"title": "Демо викладача", "base_custom": "Своя гра-прикладка"})
     check("admin: own game, custom base", r.status_code == 200, r.text)
