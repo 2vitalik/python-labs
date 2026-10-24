@@ -5,6 +5,7 @@ import { useRoute } from 'vue-router'
 import { getStudent, putStudent } from '../api.js'
 import Crumbs from '../components/Crumbs.vue'
 import ProfileForm from '../components/ProfileForm.vue'
+import TgPaste from '../components/TgPaste.vue'
 import UserHead from '../components/UserHead.vue'
 import { useForm } from '../form.js'
 import { studentsCrumbs } from '../students.js'
@@ -35,6 +36,7 @@ const submit = () => save(async (f) => (student.value = await putStudent(nick, f
     <UserHead :user="student" />
 
     <ProfileForm v-model="form" admin :dirty :saved :error @save="submit" />
+    <TgPaste v-if="student.status !== 'admin'" :nick class="mt-4" />
   </div>
   <p v-else-if="user && user.status !== 'admin'" class="text-center mt-5">Сторінка доступна лише викладачу.</p>
 </template>

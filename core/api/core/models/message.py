@@ -18,7 +18,8 @@ class TgMessage(Document):
     content_type: str = "text"  # Telegram's, or chat_member · join_request · reaction for non-message events
     file_id: str = ""  # media; the file itself can be fetched later via getFile
     message_id: int = 0
-    kind: str = ""  # out: alert kind from KINDS or "reply"; in: edit · deleted · member · reaction
+    kind: str = ""  # out: alert kind from KINDS or "reply"; in: edit · deleted · member · reaction · import (a pasted chat, T230)
+    about: str = ""  # import: the student whose chat it is — the teacher's lines are theirs by this, linked or not
     raw: dict = {}  # in: the whole Telegram object, for whatever analysis comes later
     at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 

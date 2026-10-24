@@ -61,7 +61,8 @@ def about(src: str, person: User, link: dict[int, str]) -> dict:
     if src == "edit":
         return {"$or": [{"actor": person.email}, {"coll": "users", "doc_id": person.id}]}
     chat = [{"chat_id": person.tg_chat_id}] if src == "tg" and person.tg_chat_id else []
-    return {"$or": [{"user": person.email}, *chat, *unlinked(src, [person.email], link)]}
+    pasted = [{"about": person.email}] if src == "tg" else []  # the teacher's lines of a pasted chat (T230)
+    return {"$or": [{"user": person.email}, *chat, *pasted, *unlinked(src, [person.email], link)]}
 
 
 def others(src: str, hide: list[str], link: dict[int, str]) -> dict:

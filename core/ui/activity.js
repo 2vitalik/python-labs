@@ -18,7 +18,7 @@ export const ICONS = { login: '🔑', view: '👁', api: '⚙️', fail: '⚠️
 export const ERRORS = { api: 'API', bot: 'бот', front: 'сайт' }
 export const COLLS = { users: 'профіль', guide: 'методичка', polls: 'опитування', poll_templates: 'шаблон опитування', weeks: 'тиждень', lessons: 'заняття' }  // the site's own — site.colls
 export const CHATS = { private: 'бот', business: 'особистий чат', group: 'група', supergroup: 'форум' }
-export const TG_KINDS = { edit: 'правка', deleted: 'видалено', member: 'членство', reaction: 'реакція' }
+export const TG_KINDS = { edit: 'правка', deleted: 'видалено', member: 'членство', reaction: 'реакція', import: 'імпорт' }
 export const PERIODS = [[1, 'сьогодні'], [7, '7 днів'], [30, '30 днів'], [0, 'весь час']]
 const ONLINE = 5  // minutes since the last row that still count as «зараз на сайті»
 

@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T230** · тікетів: 229 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T232** · тікетів: 231 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -67,7 +67,7 @@
 | platform | [T57](platform/.t/T57-B--history-storage.md) | 🧠 | history-storage | Історичність даних: варіанти зберігання | 🟢 🟩 |
 | tgbot | [T58](tgbot/.t/T58-C--tg-link-binding.md) | 🔆 | tg-link-binding | Привʼязка Telegram через deep link бота | 🟢 🟩 |
 | platform | [T59](platform/.t/T59-C--data-model-sketch.md) | 🔆 | data-model-sketch | Модель даних на загал: колекції майбутньої системи | 🟢 🟩 |
-| platform | [T60](platform/.t/T60-Q--profile-questions.md) | ❓ | profile-questions | Питання щодо сторінки профілю | 🔴 🟩 |
+| platform | [T60](platform/.t/T60-Q--profile-questions.md) | ❓ | profile-questions | Питання щодо сторінки профілю | 🟢 🟩 |
 | .rounds | [T61](.rounds/.t/T61-R--profile-decisions.md) | ✔️ | profile-decisions | Рішення по T60: профіль v1 | 🟢 🟩 |
 | platform | [T62](platform/.t/T62-C--css-frameworks.md) | 🔆 | css-frameworks | Bootstrap 5 vs Tailwind: порівняння з прикладами | 🟢 ⬜ |
 | platform | [T63](platform/.t/T63-Q--css-framework-choice.md) | ❓ | css-framework-choice | Вибір CSS-фреймворка | 🔴 ⬜ |
@@ -81,7 +81,7 @@
 | platform | [T71](platform/.t/T71--catalog-v1/plan.md) | ⚙️ | catalog-v1 | Каталог v1: реалізація — план | 🟢 🟩 |
 | platform | [T72](platform/.t/T72-B--catalog-columns.md) | 🧠 | catalog-columns | Багатоколонкова стрічка каталогу: підходи | 🟢 🟩 |
 | tasks | [T73](tasks/.t/T73-C--task-families.md) | 🔆 | task-families | Сімейства завдань: концепт і ціни | 🟢 ⬜ |
-| platform | [T74](platform/.t/T74-Q--catalog-visuals.md) | ❓ | catalog-visuals | Візуал каталогу: іконки, кольори, монетки | 🔴 🟩 |
+| platform | [T74](platform/.t/T74-Q--catalog-visuals.md) | ❓ | catalog-visuals | Візуал каталогу: іконки, кольори, монетки | 🟢 🟩 |
 | platform | [T75](platform/.t/T75-C--masonry-layouts.md) | 🔆 | masonry-layouts | Розкладки стрічки: masonry і альтернативи | 🟢 🟩 |
 | tasks | [T76](tasks/.t/T76-B--zones-rethink.md) | 🧠 | zones-rethink | Зони: сутності vs логіка, варіанти розбиття | 🟢 ⬜ |
 | platform | [T77](platform/.t/T77-P--yaml-tree-format.md) | 💡 | yaml-tree-format | Людяний YAML: дерево зон з рядками-завданнями | 🟢 🟩 |
@@ -237,3 +237,5 @@
 | ods | [T227](ods/.t/T227-Q--ods-defense-questions.md) | ❓ | ods-defense-questions | ODS: захист лаб — вибори | 🔴 ⬜ |
 | .rounds | [T228](.rounds/.t/T228-R--ods-defense-stars-decisions.md) | ✔️ | ods-defense-stars-decisions | ODS: захисти й зірочки — рішення 2026-10-16 | 🟢 ⬜ |
 | .rounds | [T229](.rounds/.t/T229-R--ods-live-defense-no-recording.md) | ✔️ | ods-live-defense-no-recording | ODS: онлайн-захист без окремого запису — доповнення до T228 | 🟢 ⬜ |
+| tgbot | [T230](tgbot/.t/T230-P--tg-paste-import.md) | 💡 | tg-paste-import | Імпорт листування з Telegram вставкою тексту | 🟢 🟩 |
+| tgbot | [T231](tgbot/.t/T231--tg-paste/plan.md) | ⚙️ | tg-paste | Імпорт листування з Telegram вставкою тексту — код — план | 🟢 🟩 |
