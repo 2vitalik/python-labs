@@ -20,7 +20,7 @@ ADMIN, TEST, VASYA, PETRO = "admin@nure.ua", "test.student@nure.ua", "vasya@nure
 settings.admin_emails, settings.tg_bot_token, settings.tg_bot_name = ADMIN, "", "smoke_bot"  # no token: nothing leaves for Telegram
 results = []
 db.users.insert_many([
-    {"email": TEST, "status": "student", "group": "TEST", "test": True, "last_name": "Тестовий", "first_name": "Студент"},
+    {"email": TEST, "status": "student", "group": "ПЗПІ-25-0", "test": True, "last_name": "Тестовий", "first_name": "Студент"},
     {"email": VASYA, "status": "student", "group": "ПЗПІ-25-1"},  # a row from before the flag: no `test` at all
     {"email": PETRO, "status": "student", "group": "ПЗПІ-25-1", "last_name": "Петренко"},  # imported, never showed up
 ])

@@ -53,8 +53,11 @@ def parse_students(text: str) -> list[dict]:
 
 
 def can_see(viewer: User, u: User) -> bool:
-    """Whom a student's lists show: fellow students — not the teacher, the waiting, or the test ones (unless that is themselves)."""
-    return viewer.status == Status.admin or (u.status == Status.student and (not u.test or u.email == viewer.email))
+    """Whom a student's lists show: fellow students of their own stream (`User.stream`) — not the teacher, the waiting,
+    the test ones, or other years and specialties (unless that is themselves)."""
+    if viewer.status == Status.admin or u.email == viewer.email:
+        return True
+    return u.status == Status.student and not u.test and u.stream == viewer.stream != ""
 
 
 @router.get("")

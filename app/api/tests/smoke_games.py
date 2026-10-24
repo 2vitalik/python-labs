@@ -162,6 +162,7 @@ with TestClient(main.app) as c:
     check("refs list: author nick + mine", r[0]["author"] == "stud" and r[0]["mine"] is True)
 
     login(c, "stud2@nure.ua", "student")
+    mongo[DB].users.update_one({"email": "stud2@nure.ua"}, {"$set": {"group": "ПЗПІ-25-2"}})
     check("foreign ref edit → 403",
           c.put(f"/api/refs/{ref}", json={"url": "https://x.com"}).status_code == 403)
 
@@ -200,10 +201,22 @@ with TestClient(main.app) as c:
     check("cascade deletes logged", mongo[DB].history.count_documents({"coll": "claims", "changes.task.new": None}) >= 1)
     check("rules history: 2 creates + 2 cascade deletes", mongo[DB].history.count_documents({"coll": "rules"}) == 4)
 
-    login(c, "stud@nure.ua", "student")  # the teacher's game is not a student's to see (T216)
+    mongo[DB].users.insert_many([{"email": "old@nure.ua", "status": "student", "group": "ПЗПІ-24-1"},
+                                 {"email": "ind@nure.ua", "status": "student", "group": "ПЗПІи-25-1"},
+                                 {"email": "lost@nure.ua", "status": "student", "group": ""}])
     r = c.get("/api/students").json()
-    check("student gallery: no teacher, no pending", {s["nick"] for s in r} == {"stud", "stud2"}, [s["nick"] for s in r])
+    check("admin gallery: every stream", {"old", "ind", "lost"} <= {s["nick"] for s in r}, [s["nick"] for s in r])
+
+    login(c, "stud@nure.ua", "student")  # the teacher's game is not a student's to see (T216), nor another stream's
+    r = c.get("/api/students").json()
+    check("student gallery: own stream only — no teacher, pending, other year, other specialty, no group",
+          {s["nick"] for s in r} == {"stud", "stud2"}, [s["nick"] for s in r])
     check("student: the teacher's passport → 404", c.get("/api/students/admin/game").status_code == 404)
+    check("student: another year's passport → 404", c.get("/api/students/old/game").status_code == 404)
+    check("student: another specialty's passport → 404", c.get("/api/students/ind/game").status_code == 404)
+    login(c, "lost@nure.ua", "student")
+    r = c.get("/api/students").json()
+    check("no group: only themselves", {s["nick"] for s in r} == {"lost"}, [s["nick"] for s in r])
 
 ok = sum(1 for _, p in results if p)
 print(f"\n{ok}/{len(results)} PASS")

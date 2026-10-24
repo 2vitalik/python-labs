@@ -6,6 +6,8 @@ from typing import Annotated
 from beanie import Document, Indexed
 from pydantic import Field
 
+STREAM_RE = re.compile(r"^(.+-\d\d)-\d+$")  # «ПЗПІ-25-3» → «ПЗПІ-25»
+
 
 class Status(str, Enum):
     pending = "pending"
@@ -39,6 +41,12 @@ class User(Document):
     @property
     def nick(self) -> str:
         return self.email.split("@")[0]
+
+    @property
+    def stream(self) -> str:
+        """The specialty and the year, «ПЗПІ-25» of «ПЗПІ-25-3» — a student's lists stay within it; «ПЗПІи-25» is another one."""
+        m = STREAM_RE.match(self.group)
+        return m[1] if m else ""
 
     @classmethod
     async def by_nick(cls, nick: str) -> "User | None":
