@@ -59,7 +59,7 @@ onMounted(load)
 
     <div v-if="showImport" class="card mb-3">
       <div class="card-body">
-        <label class="form-label">Встав списки груп як у ЦІСТ (шапки «Список групи …» перемикають групу; наявні студенти оновлюються, внесене ними не чіпається)</label>
+        <label class="form-label">Встав список групи з ЦІСТ (шапки «Список групи …» перемикають групу) або учасників із DL (група й роль — з рядка, не студенти пропускаються); формат сайт впізнає сам, наявні студенти оновлюються, внесене ними не чіпається</label>
         <textarea v-model="importText" class="form-control font-monospace" rows="8"></textarea>
         <button class="btn btn-primary btn-sm mt-2" :disabled="!importText.trim()" @click="runImport">
           Імпортувати

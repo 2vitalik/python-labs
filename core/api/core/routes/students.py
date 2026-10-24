@@ -9,7 +9,9 @@ from core.models.user import Status, User
 from core.routes.profile import ProfileIn, clean
 
 EMAIL_RE = re.compile(r"[A-Za-z0-9._+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
-GROUP_RE = re.compile(r"груп[иа]\s+(\S+)")
+GROUP_RE = re.compile(r"груп[иа]\s+(\S+)")  # CIST header: «Список групи ПЗПІ-25-1 (анг)»
+GROUP_NAME_RE = re.compile(r"\S+-\d\d-\d+")  # a NURE group name in a DL row; «Немає груп» or the last access are not one
+CELL_RE = re.compile(r"\t|\s{2,}")  # table cells: tabs from a browser, runs of spaces once an editor flattened them
 
 router = APIRouter(prefix="/api/students")
 EXTRAS = []  # the site's own part of a row in the list: async (users) → {email: {…}}
@@ -27,8 +29,9 @@ class ImportIn(BaseModel):
 
 
 def parse_students(text: str) -> list[dict]:
-    """Tolerant parser for pasted group lists (data/students/cist.txt and alike):
-    «Список групи …» headers switch the current group, email by regex, ПІБ = first tab-field without @."""
+    """Tolerant parser for pasted lists (data/students/*.hid.txt), the shape told per row by what follows the email:
+    CIST — nothing; «Список групи …» headers switch the current group, ПІБ = first cell without @.
+    DL (Moodle participants) — role, groups, last access: only «Студент» rows go in, the group is the row's own."""
     group, rows = "", []
     for line in text.splitlines():
         if m := GROUP_RE.search(line):
@@ -36,9 +39,13 @@ def parse_students(text: str) -> list[dict]:
             continue
         if not (m := EMAIL_RE.search(line)):
             continue
-        fio = next((f.strip() for f in line.split("\t") if f.strip() and "@" not in f), "")
+        tail = line[m.end():].split()
+        if tail and tail[0] != "Студент":
+            continue
+        fio = next((c.strip() for c in CELL_RE.split(line) if c.strip() and "@" not in c), "")
         parts = fio.split()
-        rows.append({"email": m[0], "group": group,
+        own = GROUP_NAME_RE.search(line, m.end())
+        rows.append({"email": m[0], "group": own[0] if own else group,
                      "last_name": parts[0] if parts else "",
                      "first_name": parts[1] if len(parts) > 1 else "",
                      "patronymic": " ".join(parts[2:])})
