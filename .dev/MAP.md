@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T224** · тікетів: 223 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T230** · тікетів: 229 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -231,3 +231,9 @@
 | lessons | [T221](lessons/.t/T221-C--zoom-attendance.md) | 🔆 | zoom-attendance | Відвідування із Zoom: що дає API, як автоматизувати | 🟢 🟩 |
 | lessons | [T222](lessons/.t/T222--zoom-attendance-v1/plan.md) | ⚙️ | zoom-attendance-v1 | Відвідування із Zoom v1: забір, звʼязка зі студентами, сторінки — план | 🟢 🟩 |
 | lessons | [T223](lessons/.t/T223-Q--zoom-attendance-questions.md) | ❓ | zoom-attendance-questions | Відвідування із Zoom v1: вибори | 🔴 ⬜ |
+| ods | [T224](ods/.t/T224-C--ods-grading-v2.md) | 🔆 | ods-grading-v2 | ODS: оцінювання лаб v2 — рівні, захисти, дедлайни, відвідування | 🟢 ⬜ |
+| ods | [T225](ods/.t/T225-Q--ods-lab1-issue-questions.md) | ❓ | ods-lab1-issue-questions | ODS: видача лаби 1 — питання (картки, файли, захисти, дедлайни, відвідування) | 🔴 ⬜ |
+| ods | [T226](ods/.t/T226-C--ods-defense-rules.md) | 🔆 | ods-defense-rules | ODS: захист лаб — правила, питання, що бачать студенти | 🟢 ⬜ |
+| ods | [T227](ods/.t/T227-Q--ods-defense-questions.md) | ❓ | ods-defense-questions | ODS: захист лаб — вибори | 🔴 ⬜ |
+| .rounds | [T228](.rounds/.t/T228-R--ods-defense-stars-decisions.md) | ✔️ | ods-defense-stars-decisions | ODS: захисти й зірочки — рішення 2026-10-16 | 🟢 ⬜ |
+| .rounds | [T229](.rounds/.t/T229-R--ods-live-defense-no-recording.md) | ✔️ | ods-live-defense-no-recording | ODS: онлайн-захист без окремого запису — доповнення до T228 | 🟢 ⬜ |

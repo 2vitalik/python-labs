@@ -16,7 +16,7 @@ IMG = re.compile(r"(\]\(|src=\")img/([^)\"\s]+)")  # ![…](img/x.png) or <img s
 
 def sources() -> dict[str, Path]:
     lectures = {p.stem: p for p in sorted(DATA.glob("lectures/lec*/lec*.md"))}
-    labs = {p.parent.name: p for p in sorted(DATA.glob("labs/lab*/lab*-student.md"))}
+    labs = {p.parent.name: p for pat in ("lab*-student.md", "lab*-task.md") for p in sorted(DATA.glob(f"labs/lab*/{pat}"))}  # -task: new labs
     return lectures | labs
 
 
