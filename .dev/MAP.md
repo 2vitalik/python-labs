@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T232** · тікетів: 231 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T234** · тікетів: 233 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -239,3 +239,5 @@
 | .rounds | [T229](.rounds/.t/T229-R--ods-live-defense-no-recording.md) | ✔️ | ods-live-defense-no-recording | ODS: онлайн-захист без окремого запису — доповнення до T228 | 🟢 ⬜ |
 | tgbot | [T230](tgbot/.t/T230-P--tg-paste-import.md) | 💡 | tg-paste-import | Імпорт листування з Telegram вставкою тексту | 🟢 🟩 |
 | tgbot | [T231](tgbot/.t/T231--tg-paste/plan.md) | ⚙️ | tg-paste | Імпорт листування з Telegram вставкою тексту — код — план | 🟢 🟩 |
+| ods | [T232](ods/.t/T232-C--ods-lab-on-site.md) | 🔆 | ods-lab-on-site | ODS: лаба на сайті — де виконувати, що здавати, що перевіряти (варіанти) | 🟢 ⬜ |
+| ods | [T233](ods/.t/T233-Q--ods-lab-on-site-questions.md) | ❓ | ods-lab-on-site-questions | ODS: лаба на сайті — вибори | 🔴 ⬜ |
