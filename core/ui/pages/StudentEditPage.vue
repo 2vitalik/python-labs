@@ -15,6 +15,7 @@ import { lookAs, user } from '../user.js'
 const nick = useRoute().params.nick
 const student = ref(null)
 const fio = () => `${student.value.last_name} ${student.value.first_name}`.trim() || student.value.name || nick
+const linkedAt = () => new Date(student.value.tg_linked_at).toLocaleDateString('uk-UA')
 useTitle(() => student.value && `Студент: ${fio()}`)
 const { form, dirty, saved, error, fill, save } = useForm({
   last_name: '', first_name: '', patronymic: '', github: '',
@@ -35,7 +36,15 @@ const submit = () => save(async (f) => (student.value = await putStudent(nick, f
     </Crumbs>
     <UserHead :user="student" />
 
-    <ProfileForm v-model="form" admin :dirty :saved :error @save="submit" />
+    <ProfileForm v-model="form" admin :dirty :saved :error @save="submit">
+      <template #telegram>
+        <div class="mt-3">
+          <span v-if="student.tg_linked" class="badge text-bg-success">✅ Бот привʼязаний</span>
+          <span v-else class="badge bg-secondary-subtle text-secondary-emphasis">○ Бот не привʼязаний</span>
+          <span v-if="student.tg_linked_at" class="ms-2 small text-secondary">з {{ linkedAt() }}</span>
+        </div>
+      </template>
+    </ProfileForm>
     <TgPaste v-if="student.status !== 'admin'" :nick class="mt-4" />
   </div>
   <p v-else-if="user && user.status !== 'admin'" class="text-center mt-5">Сторінка доступна лише викладачу.</p>
