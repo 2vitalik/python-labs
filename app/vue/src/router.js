@@ -1,5 +1,6 @@
 import ActivityPage from '@core/pages/ActivityPage.vue'
 import AttendancePage from '@core/pages/AttendancePage.vue'
+import DeadlinesPage from '@core/pages/DeadlinesPage.vue'
 import GuidePage from '@core/pages/GuidePage.vue'
 import HistoryPage from '@core/pages/HistoryPage.vue'
 import LessonEditPage from '@core/pages/LessonEditPage.vue'
@@ -57,6 +58,7 @@ export default makeRouter([
   { path: '/students', component: StudentsPage, meta: { title: 'Студенти', access: 'active' } },
   { path: '/students/:nick', component: StudentGamePage, meta: { title: 'Студенти', access: 'active' } },
   { path: '/students/:nick/edit', component: StudentEditPage, meta: { title: 'Студенти', access: 'admin' } },
+  { path: '/deadlines', component: DeadlinesPage, meta: { title: 'Дедлайни', access: 'admin', wide: true, filters: true } },  // students × labs: who met which deadline (T235)
   { path: '/activity', component: ActivityPage, meta: { title: 'Активність', access: 'admin', filters: true } },
   { path: '/polls', component: PollsPage, meta: { title: 'Опитування', access: 'admin', filters: true } },
   { path: '/polls/new', component: PollEditPage, meta: { title: 'Нове опитування', access: 'admin' } },

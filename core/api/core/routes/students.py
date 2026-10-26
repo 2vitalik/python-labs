@@ -3,7 +3,7 @@ import re
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
-from core.deps import active_user, admin_user
+from core.deps import active_user, admin_user, lister
 from core.models.history import record, record_new
 from core.models.user import Status, User
 from core.routes.profile import ProfileIn, clean
@@ -61,7 +61,7 @@ def can_see(viewer: User, u: User) -> bool:
 
 
 @router.get("")
-async def list_students(user: User = Depends(active_user)):
+async def list_students(user: User = Depends(lister)):
     """The admin's full list; a student's slice of it (can_see) as `person()` rows — the same page hosts both."""
     users = await User.find_all().sort("group", "last_name").to_list()
     users.sort(key=lambda u: u.test)  # stable: test students go last

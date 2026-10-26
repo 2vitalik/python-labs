@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T234** · тікетів: 233 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T239** · тікетів: 238 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -23,7 +23,7 @@
 | remarks | [T13](remarks/.t/T13-C--remarks-concept.md) | 🔆 | remarks-concept | Система зауважень | 🟢 ⬜ |
 | remarks | [T14](remarks/.t/T14-Q--remarks-open-questions.md) | ❓ | remarks-open-questions | Питання щодо зауважень | 🔴 ⬜ |
 | github | [T15](github/.t/T15-C--github-integration.md) | 🔆 | github-integration | Інтеграція з git/GitHub | 🟢 ⬜ |
-| github | [T16](github/.t/T16-Q--github-open-questions.md) | ❓ | github-open-questions | Питання щодо git-інтеграції | 🟢 ⬜ |
+| github | [T16](github/.t/T16-Q--github-open-questions.md) | ❓ | github-open-questions | Питання щодо git-інтеграції | 🟢 🟩 |
 | coursework | [T17](coursework/.t/T17-C--coursework-standards.md) | 🔆 | coursework-standards | Курсові та ДСТУ-оформлення | 🟢 ⬜ |
 | coursework | [T18](coursework/.t/T18-Q--coursework-open-questions.md) | ❓ | coursework-open-questions | Питання щодо курсових | 🔴 ⬜ |
 | tgbot | [T19](tgbot/.t/T19-C--tgbot-concept.md) | 🔆 | tgbot-concept | Telegram-бот і опитування | 🟢 ⬜ |
@@ -241,3 +241,6 @@
 | tgbot | [T231](tgbot/.t/T231--tg-paste/plan.md) | ⚙️ | tg-paste | Імпорт листування з Telegram вставкою тексту — код — план | 🟢 🟩 |
 | ods | [T232](ods/.t/T232-C--ods-lab-on-site.md) | 🔆 | ods-lab-on-site | ODS: лаба на сайті — де виконувати, що здавати, що перевіряти (варіанти) | 🟢 ⬜ |
 | ods | [T233](ods/.t/T233-Q--ods-lab-on-site-questions.md) | ❓ | ods-lab-on-site-questions | ODS: лаба на сайті — вибори | 🔴 ⬜ |
+| github | [T235](github/.t/T235-P--lab-deadlines-design.md) | 💡 | lab-deadlines-design | Дедлайни лаб, репозиторії студентів і звіти — дизайн v1 | 🟢 🟩 |
+| github | [T236](github/.t/T236-Q--lab-deadlines-questions.md) | ❓ | lab-deadlines-questions | Дедлайни лаб і репозиторії — вибори | 🔴 ⬜ |
+| github | [T237](github/.t/T237--lab-deadlines-v1/plan.md) | ⚙️ | lab-deadlines-v1 | Дедлайни лаб, репозиторії, звіти — код — план | 🟢 🟩 |

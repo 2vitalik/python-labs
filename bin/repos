@@ -1,0 +1,211 @@
+#!/usr/bin/env python3
+"""bin/repos — students' repositories on this machine, the way in for the agent (T235).
+
+  bin/repos [-t prod] sync              who has a GitHub link — from the site → data/repos/students.json; what changed since last time
+  bin/repos pull [нік…]                 clone the new ones, fetch the rest → data/repos/<нік>/ (detached at origin's HEAD)
+  bin/repos status [нік…]               a line per student: group · commits · first … last · branch · repo, or the error
+  bin/repos [-t prod] push [нік…]       the facts of every repo → the site: link, branch, head, error, the commit log with `seen`
+  bin/repos [-t prod] cut <lab> [нік…]  the last commit before the lab's deadline (deadlines — from the site);
+                                        --checkout → a work tree at it in data/repos/.cut/<нік>/lab<N>/
+  bin/repos [-t prod] reviews [нік…]    data/reviews/<нік>/lab<N>.md → the site: a `key: value` header between --- lines
+                                        (commit, verdict, head, head_verdict, summary), then the report in Markdown
+
+No -t = prod. data/repos/ and data/reviews/ are git-ignored: students' code and reports with names.
+The git part is core/api/core/repos.py — the server will run the same when pulling moves there."""
+import argparse
+import json
+import sys
+from concurrent.futures import ThreadPoolExecutor
+from datetime import datetime, timezone
+from pathlib import Path
+
+from siteapi import ROOT, call
+
+sys.path.insert(0, str(ROOT / "core" / "api"))
+from core import repos as git  # noqa: E402
+
+HOME = ROOT / "data" / "repos"
+REVIEWS = ROOT / "data" / "reviews"
+LIST = HOME / "students.json"
+SEEN = HOME / ".seen"  # <нік>.json: sha → when we first saw it
+STATE = HOME / ".state.json"  # nick → the last pull's error, if any, and when
+WORKERS = 6
+HEAD_KEYS = ("commit", "verdict", "head", "head_verdict", "summary")
+
+
+def now() -> str:
+    return datetime.now(timezone.utc).isoformat(timespec="seconds")
+
+
+def load(path: Path, default):
+    return json.loads(path.read_text()) if path.exists() else default
+
+
+def save(path: Path, data) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=1))
+
+
+def students(nicks: list[str]) -> list[dict]:
+    rows = load(LIST, None)
+    if rows is None:
+        sys.exit("спочатку bin/repos sync")
+    rows = rows["students"]
+    if nicks:
+        if unknown := set(nicks) - {r["nick"] for r in rows}:
+            sys.exit(f"не знаю: {', '.join(sorted(unknown))}")
+        rows = [r for r in rows if r["nick"] in nicks]
+    return rows
+
+
+def sync(a):
+    rows = [{"nick": r["nick"], "name": r["name"], "group": r["group"], "github": r.get("github", "")}
+            for r in call(a.target, "GET", "/students") if r["status"] == "student" and not r.get("test")]
+    was = {r["nick"]: r["github"] for r in load(LIST, {"students": []})["students"]}
+    for r in rows:
+        old, new = was.get(r["nick"], ""), r["github"]
+        if new and not old:
+            print(f"+ {r['nick']:16} {new}")
+        elif old and new and old != new:
+            print(f"~ {r['nick']:16} {old} → {new}")
+        elif old and not new:
+            print(f"- {r['nick']:16} {old}")
+    for nick in set(was) - {r["nick"] for r in rows}:
+        print(f"- {nick:16} вже не студент")
+    save(LIST, {"at": now(), "site": a.target, "students": rows})
+    with_link = sum(1 for r in rows if r["github"])
+    print(f"студентів {len(rows)} · з посиланням {with_link} · без {len(rows) - with_link} → {LIST.relative_to(ROOT)}")
+
+
+def pull_one(r: dict) -> tuple[str, bool, str]:
+    folder = HOME / r["nick"]
+    fresh = not (folder / ".git").exists()
+    return r["nick"], fresh, git.pull(r["github"], folder)
+
+
+def pull(a):
+    rows = [r for r in students(a.nicks) if r["github"]]
+    state, stamp = load(STATE, {}), now()
+    with ThreadPoolExecutor(WORKERS) as pool:
+        results = list(pool.map(pull_one, rows))
+    cloned = fetched = 0
+    for nick, fresh, err in results:
+        state[nick] = {"error": err, "at": stamp}
+        if err:
+            print(f"⚠️ {nick:16} {err}")
+            continue
+        cloned, fetched = cloned + fresh, fetched + (not fresh)
+        seen = load(SEEN / f"{nick}.json", {})
+        new = [c["sha"] for c in git.log(HOME / nick) if c["sha"] not in seen]
+        if new or fresh:
+            save(SEEN / f"{nick}.json", seen | dict.fromkeys(new, stamp))
+        if new and not fresh:
+            print(f"  {nick:16} +{len(new)} комітів")
+    save(STATE, state)
+    print(f"клоновано {cloned} · оновлено {fetched} · помилок {sum(1 for _, _, e in results if e)} · без посилання {len(students(a.nicks)) - len(rows)}")
+
+
+def facts(r: dict, state: dict) -> dict:
+    """What `push` sends and `status` prints for one student."""
+    nick, folder = r["nick"], HOME / r["nick"]
+    err = state.get(nick, {}).get("error", "")
+    if not (folder / ".git").exists():
+        return {"nick": nick, "url": r["github"], "ok": False, "error": err or "ще не клоновано", "branch": "", "head": "", "commits": []}
+    seen = load(SEEN / f"{nick}.json", {})
+    branch, head = git.head(folder)
+    return {"nick": nick, "url": r["github"], "ok": not err, "error": err, "branch": branch, "head": head,
+            "commits": [c | {"seen": seen.get(c["sha"])} for c in git.log(folder)]}
+
+
+def status(a):
+    state = load(STATE, {})
+    for r in students(a.nicks):
+        if not r["github"]:
+            print(f"—  {r['nick']:16} {r['group']:10} без посилання")
+            continue
+        f = facts(r, state)
+        if f["error"]:
+            print(f"⚠️ {r['nick']:16} {r['group']:10} {f['error']} · {r['github']}")
+            continue
+        c = f["commits"]
+        span = f"{c[-1]['at'][:10]} … {c[0]['at'][:10]}" if c else "жодного коміту"
+        print(f"✓  {r['nick']:16} {r['group']:10} {len(c):3} комітів · {span} · {f['branch']} · {r['github'].removeprefix('https://github.com/')}")
+
+
+def push(a):
+    state = load(STATE, {})
+    out = call(a.target, "PUT", "/repos", {"repos": [facts(r, state) for r in students(a.nicks) if r["github"]]})
+    print(f"надіслано {out['saved']}" + (f" · сайт не знає: {', '.join(out['unknown'])}" if out["unknown"] else ""))
+
+
+def cut(a):
+    picked = {r["nick"] for r in students(a.nicks)}
+    for row in call(a.target, "GET", "/labs")["rows"]:
+        if row["nick"] not in picked or not row.get("github"):
+            continue
+        cell, folder = row["cells"][str(a.lab)], HOME / row["nick"]
+        if not cell["due"]:
+            print(f"—  {row['nick']:16} дедлайн не заданий")
+            continue
+        if not (folder / ".git").exists():
+            print(f"—  {row['nick']:16} не клоновано")
+            continue
+        due, sha = cell["due"][:16].replace("T", " "), git.cut(folder, cell["due"])
+        if not sha:
+            print(f"∅  {row['nick']:16} до {due} комітів нема")
+            continue
+        line = f"{sha[:7]} {row['nick']:16} до {due} · комітів до: {cell['facts']['before']} · після: {cell['facts']['after']}"
+        if a.checkout:
+            dest = HOME / ".cut" / row["nick"] / f"lab{a.lab}"
+            err = git.checkout(folder, sha, dest)
+            line += f" ⚠️ {err}" if err else f" → {dest.relative_to(ROOT)}"
+        print(line)
+
+
+def parse_review(path: Path) -> dict:
+    text = path.read_text()
+    if not text.startswith("---\n"):
+        sys.exit(f"{path.relative_to(ROOT)}: нема шапки між --- рядками")
+    head, _, body = text[4:].partition("\n---\n")
+    data = {}
+    for line in head.splitlines():
+        key, _, value = line.partition(":")
+        if key.strip() in HEAD_KEYS:
+            data[key.strip()] = value.strip().strip('"')
+    if missing := {"commit", "verdict"} - data.keys():
+        sys.exit(f"{path.relative_to(ROOT)}: у шапці бракує {', '.join(sorted(missing))}")
+    return data | {"report": body.strip()}
+
+
+def reviews(a):
+    picked, n = {r["nick"] for r in students(a.nicks)}, 0
+    for path in sorted(REVIEWS.glob("*/lab*.md")):
+        nick, lab = path.parent.name, path.stem.removeprefix("lab")
+        if nick not in picked or not lab.isdigit():
+            continue
+        cell = call(a.target, "PUT", f"/students/{nick}/labs/{lab}/review", parse_review(path))
+        print(f"{nick:16} лаба {lab} · {cell['review']['verdict']} → {cell['state']}")
+        n += 1
+    print(f"звітів надіслано: {n}")
+
+
+def main():
+    p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    p.add_argument("-t", "--target", default="prod")
+    sub = p.add_subparsers(dest="cmd", required=True)
+    sub.add_parser("sync").set_defaults(run=sync)
+    for name, run in (("pull", pull), ("status", status), ("push", push), ("reviews", reviews)):
+        s = sub.add_parser(name)
+        s.add_argument("nicks", nargs="*")
+        s.set_defaults(run=run)
+    s = sub.add_parser("cut")
+    s.add_argument("lab", type=int)
+    s.add_argument("nicks", nargs="*")
+    s.add_argument("--checkout", action="store_true")
+    s.set_defaults(run=cut)
+    a = p.parse_args()
+    a.run(a)
+
+
+if __name__ == "__main__":
+    main()

@@ -25,6 +25,7 @@
 | Методичка | `models/guide.py`, `routes/guide.py`, `guide_io.py`, `drafts.py` | `pages/GuidePage.vue`, `MethodPage.vue`, `HistoryPage.vue`, `components/Guide*.vue`, `md.js` |
 | Опитування в Telegram | `models/poll.py`, `poll_send.py`, `vote.py`, `polls_*.py`, `routes/poll*.py`, `bot/polls.py`, `bot/chats.py` | `pages/Poll*.vue`, `components/Poll*.vue`, `TagInput.vue`, `polls.js` |
 | Тиждень студента | `models/week.py`, `week_marks.py`, `routes/my_week.py`, `routes/weeks.py`, `bot/week.py` | `pages/MyWeekPage.vue`, `WeekPage.vue`, `components/Week*.vue`, `CopyNicks.vue`, `week*.js`, `autosave.js` |
+| Лаби: дедлайни, репозиторії, звіти агента | `models/deadline.py`, `models/repo.py`, `labs.py`, `lab_marks.py`, `repos.py`, `routes/labs.py`, `routes/student_labs.py`, `bot/due.py` | `pages/DeadlinesPage.vue`, `components/Lab*.vue`, `DeadlineForm.vue`, `StudentLabs.vue`, `labs.js` |
 | Оформлення | — | `App.vue`, `NavBar.vue`, `Crumbs.vue`, `theme.js`, `style.css`, `dark.css` |
 
 ## Сайт на ядрі: бекенд
@@ -34,7 +35,7 @@
 | Файл сайту | Що в ньому |
 |:-----------|:-----------|
 | `pyproject.toml` | залежність `labs-core` за шляхом, editable |
-| `site.env` | сталі сайту, в git: `SITE_NAME`, `DB_NAME`, `SITE_URL`, `GUIDE_DIR`; за потреби `GUIDE_READERS`, `SESSION_COOKIE`, `WEEK_HOURS`, `WEEK_DAYS` |
+| `site.env` | сталі сайту, в git: `SITE_NAME`, `DB_NAME`, `SITE_URL`, `GUIDE_DIR`; за потреби `GUIDE_READERS`, `SESSION_COOKIE`, `WEEK_HOURS`, `WEEK_DAYS`, `LABS` |
 | `.env` | секрети й значення цієї машини; читається після `site.env` |
 | `db.py` | `MODELS` — власні документи, `init_db()` |
 | `main.py` | `app = create_app(models=MODELS, routers=[…])` |
@@ -47,6 +48,7 @@
 - `SESSION_COOKIE`: назва cookie сесії. Другий сайт у деві ставить свою: браузер не розрізняє cookie за портом.
 - Сторінка `/students/<нік>` — за сайтом: на неї ведуть алерти бота й крихти.
 - `WEEK_HOURS` (`15-23`) і `WEEK_DAYS` (`6`, від понеділка) — сітка «Мій тиждень»: сторінки малюють те, що віддає API, своїх годин у них нема.
+- `LABS` (`5`) — скільки лаб у курсі: колонки `/deadlines`, що приймають `/due` і звіти; сайт реєструє маршрут `/deadlines` і пункт меню, назви лаб бере з `site.guide` (`n`). Репозиторії студентів на диск тягне `bin/repos` (python), сайт лише зберігає факти (`PUT /api/repos`).
 
 ## Сайт на ядрі: фронт
 

@@ -7,7 +7,7 @@ import sys
 from aiogram import Dispatcher, html
 from aiogram.types import BotCommand, BotCommandScopeAllChatAdministrators
 
-from core.bot import chats, digest, errors, here, log, notes, notify, polls, spot, start
+from core.bot import chats, digest, due, errors, here, log, notes, notify, polls, spot, start
 from core.bot.notify import bot
 from core.config import settings
 
@@ -21,6 +21,7 @@ def build() -> Dispatcher:
     dp.my_chat_member.outer_middleware(chats.joined)
     dp.include_router(here.router)  # admin commands before start: its fallback would swallow them in private chats
     dp.include_router(notes.router)
+    dp.include_router(due.router)
     dp.include_router(spot.router)
     dp.include_router(start.router)
     dp.include_router(polls.router)  # a handler is what makes aiogram ask Telegram for `poll` and `poll_answer` at all
@@ -49,8 +50,8 @@ async def main(init_db):
     logging.basicConfig(level=logging.INFO)
     await init_db()
     dp = build()
-    commands = notes.COMMANDS | spot.COMMANDS
-    await bot().set_my_commands([BotCommand(command=c, description=d, is_ephemeral=c in ("hide", "poll")) for c, d in commands.items()],
+    commands = notes.COMMANDS | due.COMMANDS | spot.COMMANDS
+    await bot().set_my_commands([BotCommand(command=c, description=d, is_ephemeral=c in ("hide", "due", "poll")) for c, d in commands.items()],
                                 scope=BotCommandScopeAllChatAdministrators())  # ephemeral: only the sender and the bot see it
     daily = asyncio.create_task(digest.loop())
     me = await bot().get_me()

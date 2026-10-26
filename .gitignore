@@ -30,3 +30,6 @@ sites/ods/data/labs/**/*correction*
 # Записи занять: транскрипти з іменами студентів — на диску й у Mongo, не в git (.dev/lessons)
 sites/ods/transcripts/
 data/transcripts/
+# Репозиторії студентів і звіти по лабах (bin/repos, T235): код студентів та імена — не в git
+data/repos/
+data/reviews/

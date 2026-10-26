@@ -51,6 +51,21 @@ async def ack(message: Message, text: str) -> None:
         await message.answer(text, ephemeral_message_parameters=EphemeralMessageParameters(receiver_user_id=message.from_user.id))
 
 
+async def vanish(message: Message) -> list[str]:
+    """Take the command out of the student's chat (Chat Automation); the lines say when that failed and why."""
+    business = message.business_connection_id
+    try:
+        await notify.bot().delete_business_messages(business_connection_id=business, message_ids=[message.message_id])
+        return []
+    except TelegramAPIError as e:
+        lines = [f"⚠️ Команду з чату не прибрав: {html.quote(e.message)}"]
+        conn = await notify.bot().get_business_connection(business)
+        lines.append(f"🔑 {rights(conn)}")
+        if not (conn.rights and conn.rights.can_delete_all_messages):
+            lines.append("☝️ увімкни «Delete all messages» у Business → Chatbots")
+        return lines
+
+
 async def done(message: Message) -> None:
     """✍ on the command itself; an ephemeral command has nothing to react to, a group may have reactions off."""
     if not message.ephemeral_message_id:
@@ -75,14 +90,7 @@ async def note(message: Message, command: CommandObject, admin: User):
     await Note(user=student.email if student else "", tg_id=tg_id, text=text, by=admin.email, hidden=hidden, source=source).insert()
     lines = [f"{'🙈' if hidden else '📝'} Нотатка · {who(student) if student else f'<i>не привʼязаний</i> · tg {tg_id}'}", html.quote(text)]
     if business and hidden:
-        try:
-            await notify.bot().delete_business_messages(business_connection_id=business, message_ids=[message.message_id])
-        except TelegramAPIError as e:
-            lines.append(f"⚠️ Команду з чату не прибрав: {html.quote(e.message)}")
-            conn = await notify.bot().get_business_connection(business)
-            lines.append(f"🔑 {rights(conn)}")
-            if not (conn.rights and conn.rights.can_delete_all_messages):
-                lines.append("☝️ увімкни «Delete all messages» у Business → Chatbots")
+        lines += await vanish(message)
     await notify.send("note", "\n".join(lines), student.email if student else "")
     if not business:  # in a student's chat the bot can neither react nor edit: the alert is the confirmation
         await done(message)

@@ -18,7 +18,7 @@ export default {
   links: [
     ['/my/game', 'Гра', null, true],  // the student's own game — first and bold; the catalog is «Ігри»
     ...SECTIONS.map((s) => [s.path, s.nav]), ['/lessons', 'Пари', 'admin'],  // students see it later
-    ['/students', 'Студи', 'admin'], ['/activity', 'Актив'],  // a student reaches /students as «Ігри студентів» from the games catalog
+    ['/students', 'Студи', 'admin'], ['/deadlines', 'Дедлайни'], ['/activity', 'Актив'],  // a student reaches /students as «Ігри студентів» from the games catalog
     ['/polls', 'Polls'], ['/week', 'Week'], ['/my/profile', 'Профіль'],
   ],
   guide: [...SECTIONS.flatMap((s) => (s.slug === 'labs' ? [s, ...LABS] : [s])), CHANGES],

@@ -47,6 +47,11 @@ async def editor_user(request: Request, user: User | None = Depends(current_user
     return agent(request) or allow(user, user and user.status == Status.admin)
 
 
+async def lister(request: Request, user: User | None = Depends(current_user)) -> User:
+    """Whom the people lists answer: anyone signed in and active, or an agent — as an admin (bin/repos sync, T235)."""
+    return agent(request) or allow(user, user and user.status != Status.pending)
+
+
 async def viewer(request: Request, user: User | None = Depends(current_user)) -> User | None:
     """Whom the site's open lists answer: an agent sees what an admin does."""
     return agent(request) or user

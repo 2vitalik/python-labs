@@ -9,11 +9,12 @@ from core.config import settings
 from core.db import init_db
 from core.guide_io import seed
 from core.models.activity import Activity, client
-from core.routes import (activity, attendance, auth, front_errors, guide, health, lesson_files, lessons, me, my_week, poll_actions,
-                         poll_chats, poll_results, poll_templates, polls, profile, student_messages, students, view_as, weeks)
+from core.routes import (activity, attendance, auth, front_errors, guide, health, labs, lesson_files, lessons, me, my_week, poll_actions,
+                         poll_chats, poll_results, poll_templates, polls, profile, student_labs, student_messages, students, view_as, weeks)
 
 ROUTERS = [health.router, auth.router, me.router, view_as.router, profile.router, students.router, student_messages.router, guide.router,
            activity.router, front_errors.router, my_week.router, weeks.router, lessons.router, lesson_files.router, attendance.router,
+           labs.router, student_labs.router,
            # /api/polls/<word> before /api/polls/{id}: the path matches first, the id's type is checked after
            poll_templates.router, poll_chats.router, poll_results.router, polls.router, poll_actions.router]
 QUIET = {("GET", "/api/me"), ("POST", "/api/me/view")}  # session probe and page views: they have their own rows

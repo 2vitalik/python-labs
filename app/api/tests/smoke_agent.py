@@ -53,8 +53,9 @@ with TestClient(main.app) as c:
     r = c.put("/api/guide/lab1", json={"title": "Лаба 1", "body": "текст codex", "rev": 0}, headers=CODEX)
     check("second agent: its own name", r.status_code == 200 and r.json()["updated_by"] == "codex", r.text)
 
-    closed = [c.get(p, headers=CLAUDE).status_code for p in ("/api/students", "/api/activity", "/api/refs", "/api/my/game")]
-    check("token opens nothing but the guide and the catalog", closed == [401] * 4, closed)
+    closed = [c.get(p, headers=CLAUDE).status_code for p in ("/api/activity", "/api/refs", "/api/my/game")]
+    check("token opens nothing but the guide, the catalog, the lists and the labs", closed == [401] * 3, closed)
+    check("the students' list answers the agent as an admin (bin/repos sync, T235)", c.get("/api/students", headers=CLAUDE).status_code == 200)
     r = c.post("/api/guide/changes/publish", json={"line": d["body"].split("\n")[0]}, headers=CLAUDE)
     check("publish stays the admin's", r.status_code == 401 and "додав рядок" in c.get("/api/guide/changes-draft", headers=CLAUDE).json()["body"])
     check("no agent in users", mongo[DB].users.count_documents({"email": {"$regex": "@agent$"}}) == 0)
