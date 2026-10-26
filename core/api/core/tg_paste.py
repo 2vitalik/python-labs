@@ -5,9 +5,13 @@ from datetime import datetime
 from core.activity_people import TZ
 from core.models.user import User
 
-# «Імʼя, [24.10.2026 12:34]»: the clients' header of a copied message. A time inside the brackets tells it from a line of text
-# like «Ок, [чекаю]»; a header-looking line whose date still makes no sense is reported, not swallowed
-HEAD_RE = re.compile(r"^(?P<name>.+?), \[(?P<when>[^\]]*\d{1,2}:\d{2}[^\]]*)\]$")
+# The clients' header of a copied message. A time inside the brackets tells it from a line of text like «Ок, [чекаю]»;
+# a header-looking line whose date still makes no sense is reported, not swallowed
+TIME = r"[^\]]*\d{1,2}:\d{2}[^\]]*"
+HEAD_RES = [re.compile(p) for p in (
+    rf"^(?P<name>.+?), \[(?P<when>{TIME})\]$",  # Desktop, Android: «Імʼя, [24.10.2026 12:34]», the text on the lines below
+    rf"^\[(?P<when>{TIME})\] (?P<name>[^:]+?): ?(?P<text>.*)$",  # macOS: «[24.10.2026 12:34] Імʼя: текст», the text starts here
+)]
 MONTHS = "jan feb mar apr may jun jul aug sep oct nov dec".split()
 DATE_RES = [re.compile(p, re.I) for p in (
     r"(?P<d>\d{1,2})[./](?P<m>\d{1,2})[./](?P<y>\d{2,4})",
@@ -39,9 +43,9 @@ def parse_paste(text: str) -> tuple[list[dict], list[str]]:
     should be seen, not swallowed into the previous message). Text before the first header is dropped."""
     rows, errors = [], []
     for line in text.splitlines():
-        if m := HEAD_RE.match(line.strip()):
+        if m := next((m for r in HEAD_RES if (m := r.match(line.strip()))), None):
             if at := when(m["when"]):
-                rows.append({"name": m["name"].strip(), "at": at, "lines": []})
+                rows.append({"name": m["name"].strip(), "at": at, "lines": [m["text"]] if "text" in m.groupdict() else []})
             else:
                 errors.append(line.strip())
         elif rows:

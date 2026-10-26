@@ -52,9 +52,9 @@ async function save() {
         </div>
         <template v-if="look.authors.length">
           <div class="small text-secondary mb-1">Хто з них студент? Решта рядків — твої.</div>
-          <div v-for="a in look.authors" :key="a.name" class="form-check">
-            <input :id="`tg-${a.name}`" v-model="student" class="form-check-input" type="radio" :value="a.name">
-            <label :for="`tg-${a.name}`" class="form-check-label">{{ a.name }} <span class="text-secondary">· {{ a.n }}</span></label>
+          <div v-for="(a, i) in look.authors" :key="a.name" class="form-check">
+            <input :id="`tg-${i}`" v-model="student" class="form-check-input" type="radio" :value="a.name">
+            <label :for="`tg-${i}`" class="form-check-label">{{ a.name }} <span class="text-secondary">· {{ a.n }}</span></label>
           </div>
           <div class="form-check">
             <input id="tg-none" v-model="student" class="form-check-input" type="radio" value="">

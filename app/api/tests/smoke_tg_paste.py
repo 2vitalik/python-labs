@@ -26,6 +26,8 @@ CHAT = ("Віталій Ляпота, [24.10.2026 12:34]\nПривіт! Коли
         "Петро Петренко, [24.10.2026 12:36]\nДобрий день\n\nДумаю, у четвер\nабо в пʼятницю\n\n"
         "Віталій Ляпота, [24.10.2026 12:37]\nОк, [чекаю]\n")
 MORE = "Петро Петренко, [25.10.2026 09:00]\nЗдав!\n"
+MAC = ("[25.10.2026 19:46] Петро Петренко #r1 (pp): Добрий день! Я все зробив? Відео: чи це треба буде пізніше?\n"
+       "[26.10.2026 04:57] Vitaliy Lyapota: Добрий день, Петре,\nТак, все чудово) 👌\nВідео поки не треба, пізніше)\n")
 
 
 def check(name, cond, extra=""):
@@ -50,6 +52,11 @@ check("unknown date → None", when("24 жовт. 2026 12:34") is None and when(
 rows, errors = parse_paste("щось до шапки\nПетро, [вчора 12:34]\nтекст\n" + CHAT)
 check("header with an unreadable date → error, the rest parsed, text before the first header dropped",
       errors == ["Петро, [вчора 12:34]"] and len(rows) == 3, (rows, errors))
+rows, errors = parse_paste(MAC)
+check("macOS format: date first, the text starts on the header line, a colon inside the text is text", not errors and [(r["name"], r["text"]) for r in rows] == [
+    ("Петро Петренко #r1 (pp)", "Добрий день! Я все зробив? Відео: чи це треба буде пізніше?"),
+    ("Vitaliy Lyapota", "Добрий день, Петре,\nТак, все чудово) 👌\nВідео поки не треба, пізніше)")], (rows, errors))
+check("macOS format: times", rows[1]["at"].astimezone(timezone.utc) == utc(2026, 10, 26, 2, 57), rows[1]["at"])
 
 with TestClient(main.app) as c:
     settings.fake_user_email = ADMIN
@@ -65,6 +72,9 @@ with TestClient(main.app) as c:
         "authors": [{"name": "Віталій Ляпота", "n": 2}, {"name": "Петро Петренко", "n": 1}], "student": "Петро Петренко", "errors": []}, r)
     r = c.post("/api/students/vasya/messages", json={"text": CHAT.replace("Петро Петренко", "Buscha Rubino")}).json()
     check("look: a name unlike the student's — whoever is not the teacher", r["student"] == "Buscha Rubino", r)
+    r = c.post("/api/students/vasya/messages", json={"text": MAC}).json()
+    check("look, macOS paste: the contact name with a suffix is the student, the Latin teacher is known by his nick",
+          r["student"] == "Петро Петренко #r1 (pp)" and r["authors"][1] == {"name": "Vitaliy Lyapota", "n": 1}, r)
     r = c.post("/api/students/vasya/messages", json={"text": "Петро, [вчора 12:34]\nтекст\n", "student": "Петро"})
     check("import with a bad header → 422", r.status_code == 422, r.status_code)
     r = c.post("/api/students/vasya/messages", json={"text": "просто текст", "student": ""})
