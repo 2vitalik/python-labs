@@ -24,18 +24,18 @@ def check(name, cond, extra=""):
     print(("PASS " if cond else "FAIL ") + name + (f" · {extra}" if extra and not cond else ""))
 
 
-def variant(group, n):
-    return {"lab": 1, "vid": f"{group}-{n:02d}", "group": group, "n": n, "card": f'VARIANT = "{group}-{n:02d}"\nX = {n}',
+def variant(group, n, lab=1):
+    return {"lab": lab, "vid": f"{group}-{n:02d}", "group": group, "n": n, "card": f'VARIANT = "{group}-{n:02d}"\nX = {n}  # lab {lab}',
             "ask": ["Питання А?", "Питання Б?"],
             "answers": {"d1": {"value": 0.2049, "step": 0.002, "traps": [{"value": 0.1, "why": TRAP}]},
                         "pi": {"value": 3, "step": 0, "traps": []}, "out": {"value": 1, "step": 0, "traps": []}}}
 
 
 snap = Path(tempfile.mkdtemp()) / "site.hid.json"
-snap.write_text(json.dumps([variant("КН-1", 1), variant("КН-1", 2), variant("ДЕМО", 0)], ensure_ascii=False))
+snap.write_text(json.dumps([variant("КН-1", 1), variant("КН-1", 2), variant("ДЕМО", 0), variant("КН-1", 1, lab=2), variant("ДЕМО", 0, lab=2)], ensure_ascii=False))
 run = lambda: subprocess.run(["uv", "run", "python", "lab_io.py", str(snap)], check=True, capture_output=True, text=True).stdout
-check("import: three new variants", "нових 3" in run())
-check("import again: nothing changes", "без змін 3" in run())
+check("import: five new variants — the same vid in two labs lives twice", "нових 5" in run())
+check("import again: nothing changes", "без змін 5" in run())
 
 from fastapi.testclient import TestClient  # noqa: E402
 
@@ -64,7 +64,7 @@ with TestClient(main.app) as c:
     login(c, "c@nure.ua", "student", "КН-1")
     r = c.get("/api/labs/1/my")
     check("C: no cards left → 404 with the group named", r.status_code == 404 and r.json()["detail"].startswith("Карток для групи КН-1"), r.text)
-    check("C: GET /api/labs says mine=false", c.get("/api/labs").json() == [{"n": 1, "mine": False}])
+    check("C: GET /api/labs says mine=false for both labs", c.get("/api/labs").json() == [{"n": 1, "mine": False}, {"n": 2, "mine": False}], c.get("/api/labs").text[:200])
     login(c, "d@nure.ua", "student", "")
     r = c.get("/api/labs/1/my")
     check("D: no group → 404 saying so", r.status_code == 404 and r.json()["detail"].startswith("У профілі немає групи"), r.text)
@@ -85,13 +85,16 @@ with TestClient(main.app) as c:
     check("A: a non-number → 422 naming the pair", r.status_code == 422 and "d1=abc" in r.json()["detail"], r.text)
     my = c.put("/api/labs/1/my", json={"line": "", "notebook": "https://colab/y"}).json()
     check("A: an empty line keeps the old verdict, saves the link", my["attempts"] == 2 and my["ok"] == 1 and my["notebook"] == "https://colab/y", my)
-    check("A: GET /api/labs says mine=true", c.get("/api/labs").json() == [{"n": 1, "mine": True}])
+    check("A: GET /api/labs says mine=true for lab 1 only", c.get("/api/labs").json() == [{"n": 1, "mine": True}, {"n": 2, "mine": False}], c.get("/api/labs").text[:200])
+    my2 = c.get("/api/labs/2/my").json()
+    check("A: lab 2 hands out its own card with the same vid, untouched by lab 1", my2["vid"] == "КН-1-01" and "# lab 2" in my2["card"] and my2["attempts"] == 0, my2)
+    check("A: lab 1 is still A's, with the line", c.get("/api/labs/1/my").json()["attempts"] == 2)
     check("A: results are the teacher's", c.get("/api/labs/1/results").status_code == 403
           and c.put("/api/labs/1/results/КН-1-01", json={"points": 20}).status_code == 403)
 
     login(c, "admin@nure.ua", "admin")
     rows = c.get("/api/labs/1/results").json()
-    check("admin: three rows, students joined", len(rows) == 3 and rows[1]["vid"] == "КН-1-01" and rows[1]["who"]["nick"] == "a" and rows[1]["ok"] == 1
+    check("admin: three rows of lab 1, students joined", len(rows) == 3 and rows[1]["vid"] == "КН-1-01" and rows[1]["who"]["nick"] == "a" and rows[1]["ok"] == 1
           and rows[0]["vid"] == "ДЕМО-00" and rows[0]["who"] is None, rows)
     r = c.put("/api/labs/1/results/КН-1-01", json={"points": 14, "note": " охайно "})
     check("admin: marks saved", r.status_code == 200 and r.json()["points"] == 14 and r.json()["note"] == "охайно", r.text)

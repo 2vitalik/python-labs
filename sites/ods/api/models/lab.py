@@ -1,8 +1,7 @@
 from datetime import datetime, timezone
-from typing import Annotated
-
-from beanie import Document, Indexed
+from beanie import Document
 from pydantic import Field
+from pymongo import IndexModel
 
 from core.models.history import when
 
@@ -13,7 +12,7 @@ class LabVariant(Document):
     lab: int
     group: str
     n: int  # number among the group's cards; 0 — the demo, never handed out by the site
-    vid: Annotated[str, Indexed(unique=True)]  # КН-23-1-07
+    vid: str  # КН-23-1-07; unique together with `lab`: every lab numbers its cards the same way
     card: str  # the python block the student pastes into the notebook
     ask: list[str] = []  # defence questions
     answers: dict = {}  # name → {value, room, traps: [{value, why}]}
@@ -31,7 +30,7 @@ class LabVariant(Document):
 
     class Settings:
         name = "variants"
-        indexes = ["lab", "group", "student"]
+        indexes = ["group", "student", IndexModel([("lab", 1), ("vid", 1)], unique=True)]
 
     def api(self) -> dict:
         """What the student sees: no answers, no traps."""

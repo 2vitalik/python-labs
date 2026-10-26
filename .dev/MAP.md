@@ -241,6 +241,8 @@
 | tgbot | [T231](tgbot/.t/T231--tg-paste/plan.md) | ⚙️ | tg-paste | Імпорт листування з Telegram вставкою тексту — код — план | 🟢 🟩 |
 | ods | [T232](ods/.t/T232-C--ods-lab-on-site.md) | 🔆 | ods-lab-on-site | ODS: лаба на сайті — де виконувати, що здавати, що перевіряти (варіанти) | 🟢 ⬜ |
 | ods | [T233](ods/.t/T233-Q--ods-lab-on-site-questions.md) | ❓ | ods-lab-on-site-questions | ODS: лаба на сайті — вибори | 🔴 ⬜ |
+| ods | [T234](ods/.t/T234--ods-labs-2-5-ready/plan.md) | ⚙️ | ods-labs-2-5-ready | ODS, лаби 2–5: перевірка, guide, marimo, картки — план | 🟢 🟩 |
 | github | [T235](github/.t/T235-P--lab-deadlines-design.md) | 💡 | lab-deadlines-design | Дедлайни лаб, репозиторії студентів і звіти — дизайн v1 | 🟢 🟩 |
 | github | [T236](github/.t/T236-Q--lab-deadlines-questions.md) | ❓ | lab-deadlines-questions | Дедлайни лаб і репозиторії — вибори | 🔴 ⬜ |
 | github | [T237](github/.t/T237--lab-deadlines-v1/plan.md) | ⚙️ | lab-deadlines-v1 | Дедлайни лаб, репозиторії, звіти — код — план | 🟢 🟩 |
+| ods | [T238](ods/.t/T238-Q--ods-labs-2-5-questions.md) | ❓ | ods-labs-2-5-questions | ODS, лаби 2–5 після перевірки: вибори | 🔴 ⬜ |
