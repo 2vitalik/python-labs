@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T239** · тікетів: 238 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T240** · тікетів: 239 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -246,3 +246,4 @@
 | github | [T236](github/.t/T236-Q--lab-deadlines-questions.md) | ❓ | lab-deadlines-questions | Дедлайни лаб і репозиторії — вибори | 🔴 ⬜ |
 | github | [T237](github/.t/T237--lab-deadlines-v1/plan.md) | ⚙️ | lab-deadlines-v1 | Дедлайни лаб, репозиторії, звіти — код — план | 🟢 🟩 |
 | ods | [T238](ods/.t/T238-Q--ods-labs-2-5-questions.md) | ❓ | ods-labs-2-5-questions | ODS, лаби 2–5 після перевірки: вибори | 🔴 ⬜ |
+| platform | [T239](platform/.t/T239-C--student-search.md) | 🔆 | student-search | Пошук на /students: збіг за початком слова | 🟢 🟩 |

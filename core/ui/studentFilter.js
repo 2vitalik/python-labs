@@ -2,10 +2,11 @@ import { computed, toValue } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 import { site } from './site.js'
+import { matches } from './studentSearch.js'
 import { user } from './user.js'
 
 // filters of /students; the state lives in the URL, so a slice can be bookmarked:
-// ?group=A,B — only these groups (NONE = «no group») · ?seen=1 / ?gh=0 … — only those who have it / who don't
+// ?group=A,B — only these groups (NONE = «no group») · ?seen=1 / ?gh=0 … — only those who have it / who don't · ?q=шев — the search (studentSearch.js)
 const NONE = '-'
 const SEEN = { key: 'seen', text: '🔑 вхід', title: 'Вхід на сайт', has: (s) => s.seen }
 const REST = [
@@ -33,12 +34,13 @@ export function useStudentFilter(students) {
   const route = useRoute()
   const router = useRouter()
   const keys = computed(() => (route.query.group ? String(route.query.group).split(',') : []))
+  const q = computed(() => String(route.query.q || ''))
   const inGroup = (s) => !keys.value.length || keys.value.includes(s.group || NONE)
-  // a button counts what it would leave, so its own filter (`skip`) stays out of its number
-  const fits = (s, skip) => FACETS.every((f) => f.key === skip || !route.query[f.key] || !!f.has(s) === (route.query[f.key] === '1'))
+  // a button counts what it would leave, so its own filter (`skip`) stays out of its number; the search narrows every number
+  const fits = (s, skip) => matches(s, q.value) && FACETS.every((f) => f.key === skip || !route.query[f.key] || !!f.has(s) === (route.query[f.key] === '1'))
 
   const shown = computed(() => toValue(students).filter((s) => inGroup(s) && fits(s)))
-  const active = computed(() => keys.value.length > 0 || FACETS.some((f) => route.query[f.key]))
+  const active = computed(() => keys.value.length > 0 || !!q.value || FACETS.some((f) => route.query[f.key]))
   // a chip stands for one group or, «25-*», for a whole year of them; pressed = every group of it is picked
   const chip = (list, text, name) => ({
     text, name, keys: list.map((g) => g.key), on: list.every((g) => keys.value.includes(g.key)), n: list.reduce((n, g) => n + g.n, 0),
@@ -66,7 +68,8 @@ export function useStudentFilter(students) {
   const set = (patch) => router.replace({ query: { ...route.query, ...patch } })
   const toggleGroup = (g) => set({ group: (g.on ? keys.value.filter((k) => !g.keys.includes(k)) : [...new Set([...keys.value, ...g.keys])]).join() || undefined })
   const toggleFacet = (key, v) => set({ [key]: route.query[key] === v ? undefined : v })
-  const reset = () => set(Object.fromEntries(['group', ...FACETS.map((f) => f.key)].map((k) => [k, undefined])))
+  const setQ = (v) => set({ q: v || undefined })
+  const reset = () => set(Object.fromEntries(['group', 'q', ...FACETS.map((f) => f.key)].map((k) => [k, undefined])))
 
-  return { shown, picked, active, groups, facets, toggleGroup, toggleFacet, reset }
+  return { shown, picked, active, q, setQ, groups, facets, toggleGroup, toggleFacet, reset }
 }

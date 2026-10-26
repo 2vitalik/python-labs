@@ -21,7 +21,7 @@ const showImport = ref(false)
 const importText = ref('')
 const importResult = ref('')
 
-const { shown, picked, active } = useStudentFilter(students)
+const { shown, picked, active, q, setQ } = useStudentFilter(students)
 // the gallery may be of some only (site.students.inGallery): the numbers in the heading and on the chips follow the view
 const of = (list) => (view.value === 'cards' && site.students.inGallery ? list.filter(site.students.inGallery) : list)
 const listed = computed(() => of(shown.value))
@@ -48,13 +48,15 @@ onMounted(load)
 <template>
   <div>
     <Crumbs :items="crumbs" />
-    <div class="d-flex align-items-center gap-2 mb-3">
+    <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
       <h1 class="h3 mb-0">{{ home.name }} <span class="text-secondary fs-6">{{ group }} ({{ listed.length }}{{ active ? ` з ${total}` : '' }})</span></h1>
       <div v-if="cards" class="btn-group btn-group-sm ms-2">
         <button class="btn" :class="view === 'table' ? 'btn-primary' : 'btn-outline-secondary'" @click="view = 'table'">Таблиця</button>
         <button class="btn" :class="view === 'cards' ? 'btn-primary' : 'btn-outline-secondary'" @click="view = 'cards'">Картки</button>
       </div>
-      <button v-if="isAdmin" class="btn btn-outline-primary btn-sm ms-auto" @click="showImport = !showImport">Додати студентів</button>
+      <input type="search" :value="q" class="form-control form-control-sm w-auto ms-auto" placeholder="Пошук: ПІБ, нік…"
+             title="За початком слова: прізвище, імʼя, нік, Telegram" @input="setQ($event.target.value)">
+      <button v-if="isAdmin" class="btn btn-outline-primary btn-sm" @click="showImport = !showImport">Додати студентів</button>
     </div>
 
     <div v-if="showImport" class="card mb-3">

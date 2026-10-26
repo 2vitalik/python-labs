@@ -18,7 +18,7 @@
 | Частина | Бекенд `api/core/` | Фронт `ui/` |
 |:--------|:-------------------|:------------|
 | Вхід, сесія, ролі, «очима студента», токен агента | `routes/auth.py`, `routes/me.py`, `routes/view_as.py`, `deps.py` | `user.js`, `router.js`, `pages/LoginPage.vue`, `ViewBar.vue` |
-| Профіль і студенти | `models/user.py`, `routes/profile.py`, `routes/students.py` | `pages/ProfilePage.vue`, `pages/Student*.vue`, `studentFilter.js` |
+| Профіль і студенти | `models/user.py`, `routes/profile.py`, `routes/students.py` | `pages/ProfilePage.vue`, `pages/Student*.vue`, `studentFilter.js`, `studentSearch.js` |
 | Бот | `bot/` | — |
 | Активність, події, помилки | `activity_*.py`, `routes/activity.py`, `routes/front_errors.py`, `models/` | `pages/ActivityPage.vue`, `activity.js`, `problem.js`, `http.js` |
 | Історія правок | `models/history.py` | `diff.js`, `components/Diff.vue` |
@@ -61,7 +61,7 @@
 | `src/api.js` | власні виклики API |
 
 - Поля паспорта описано в `ui/site.js`. Пункт меню з третім елементом (`['/students', 'Студи', 'admin']`) — вужчий за сторінку: сторінка відкрита студентам, пункт — ні.
-- `/students` студентові — та сама сторінка під назвою з `students.asStudent` (`{ title, crumbs }`; корінь крихт і назву дають `ui/students.js`), лише чіпи груп, таблиця без пошти/GitHub/Telegram, імʼя веде на `/students/<нік>`; `students.inGallery` звужує галерею (python: лише з грою) — числа в заголовку й на чіпах ідуть за режимом.
+- `/students` студентові — та сама сторінка під назвою з `students.asStudent` (`{ title, crumbs }`; корінь крихт і назву дають `ui/students.js`), чіпи груп і пошук за початком слова (`studentSearch.js`), таблиця без пошти/GitHub/Telegram, імʼя веде на `/students/<нік>`; `students.inGallery` звужує галерею (python: лише з грою) — числа в заголовку й на чіпах ідуть за режимом.
 - Мета маршруту, яку читає ядро: `title`; `access` — `'admin'` · `'active'` · нема = усім; `filters` — зміна `?запиту` не гортає вгору; `stay` — інший параметр тієї самої сторінки теж (`/week/3` → `/week/4`); `wide` — `true`: кнопка «на всю ширину» для викладача, `'admin'`: викладачу завжди на все вікно.
 - `site` заповнюється в `start()`. Ядро читає його у функціях і компонентах, а не на верхньому рівні модуля: там він ще порожній.
 - `public/` у кожного сайту своя: іконки й `theme-boot.js`.
