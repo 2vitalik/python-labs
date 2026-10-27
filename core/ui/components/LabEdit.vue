@@ -5,12 +5,13 @@ import { putStudentLab } from '../api.js'
 import { STATES, VERDICTS, fmtWhen, fromInput, labName, toInput } from '../labs.js'
 import LabReport from './LabReport.vue'
 
-// the teacher's word on one student × one lab: an extension (a date, «поки невідомо», none), a verdict, a note — one save;
+// the teacher's word on one student × one lab: 🙋 they asked, an extension (a date, «поки невідомо», none), a verdict, a note — one save;
 // below, the agent's review with the full report on demand
 const props = defineProps({ nick: { type: String, required: true }, lab: { type: [Number, String], required: true }, cell: { type: Object, required: true } })
 const emit = defineEmits(['saved', 'close'])
 const m = props.cell.mark || {}
-const form = reactive({ until: toInput(m.until), open: !!m.open, reason: m.reason || '', met: m.met ?? null, note: m.note || '' })
+const form = reactive({ asked: !!m.asked, asked_for: m.asked_for || '', until: toInput(m.until), open: !!m.open, reason: m.reason || '',
+  met: m.met ?? null, note: m.note || '' })
 const saving = ref(false)
 const error = ref('')
 const showReport = ref(false)
@@ -47,6 +48,14 @@ function drop() {
       <button type="button" class="btn-close btn-sm ms-auto" title="Згорнути" @click="emit('close')"></button>
     </div>
     <div class="row g-2 align-items-end">
+      <div class="col-auto">
+        <div class="form-check mb-1"><input id="asked" v-model="form.asked" class="form-check-input" type="checkbox"><label class="form-check-label small" for="asked">🙋 просив подовжити</label></div>
+      </div>
+      <div class="col-sm">
+        <input v-model="form.asked_for" class="form-control form-control-sm" placeholder="на скільки, його словами: на тиждень, до 5.11…" :disabled="!form.asked">
+      </div>
+    </div>
+    <div class="row g-2 align-items-end mt-1">
       <div class="col-sm-4 col-md-3">
         <label class="form-label small mb-0">Подовжити до</label>
         <input v-model="form.until" type="datetime-local" class="form-control form-control-sm" :disabled="form.open">

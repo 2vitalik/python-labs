@@ -14,7 +14,8 @@ from core.models.user import User
 
 router = Router()
 COMMANDS = {"due": "дедлайн лаби студента (команда зникає)"}  # registered as ephemeral
-HINT = html.quote("☝️ /due <лаба> <дата | ? | -> [причина] — 5.11 · ? поки невідомо · - зняти\n"
+HINT = html.quote("☝️ /due <лаба> <дата | ? | ! | -> [текст] — 5.11 подовжити до дати · ? подовжено, дата поки невідома · "
+                  "! лише просив, ще не вирішено · - зняти подовження\n"
                   "☝️ /due — стани лаб студента · у форумі й чаті з ботом: відповіддю або /due <нік> …")
 STATES = {"ok": "✅ вчасно", "late": "🕒 пізно", "partial": "🟡 частково", "miss": "❌ не вклався", "open": "⏳ подовжено, дата невідома",
           "wait": "⏱ ще є час", "check": "🔍 не перевірено", "norepo": "🚫 без репозиторію", "noaccess": "⚠️ репозиторій недоступний",
@@ -25,9 +26,12 @@ router.business_message.filter(Command(*COMMANDS), as_admin)
 
 
 def line(n: str, c: dict) -> str:
+    m = c["mark"] or {}
     due = f" · до {kyiv(c['due'])}" if c["due"] else ""
     commits = f" · комітів до дедлайну: {c['facts']['before']}" if c["facts"]["before"] else ""
-    return f"{STATES[c['state']]} · Лаба {n}{due}{commits}"
+    asked = (" · 🙋 просив" + (f" {html.quote(m['asked_for'])}" if m.get("asked_for") else "")) if m.get("asked") else ""
+    reason = f" · 💬 {html.quote(m['reason'])}" if m.get("reason") else ""
+    return f"{STATES[c['state']]} · Лаба {n}{due}{commits}{asked}{reason}"
 
 
 async def status(student: User, lab: int | None = None) -> str:
@@ -36,13 +40,17 @@ async def status(student: User, lab: int | None = None) -> str:
     return "\n".join([f"📅 {who(student, '/edit')}", *rows])
 
 
-def patch(what: str, reason: str) -> dict | None:
-    if what == "?":
-        return {"open": True, "until": None, "reason": reason}
+def patch(what: str, text: str) -> dict | None:
+    """The second word; `text` — the reason, or after `!` what they asked for. An extension given here means they asked (🙋);
+    a date without words keeps the reason already written."""
+    if what == "!":
+        return {"asked": True} | ({"asked_for": text} if text else {})
     if what == "-":
         return {"open": False, "until": None, "reason": ""}
+    if what == "?":
+        return {"open": True, "until": None, "asked": True} | ({"reason": text} if text else {})
     if at := parse_due(what):
-        return {"until": at, "reason": reason}
+        return {"until": at, "asked": True} | ({"reason": text} if text else {})
     return None
 
 

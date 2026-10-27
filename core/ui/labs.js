@@ -39,6 +39,7 @@ export function describe(cell, name, lab) {
   const lines = [`${name} · ${labName(lab)}`, `${st.emoji} ${st.text}`]
   if (cell.due) lines.push(`дедлайн ${fmtWhen(cell.due)}${cell.mark?.until ? ` · подовжено, було ${fmtWhen(cell.base)}` : ''}`)
   if (cell.mark?.reason) lines.push(`причина: ${cell.mark.reason}`)
+  if (cell.mark?.asked) lines.push(`просив подовжити${cell.mark.asked_for ? `: ${cell.mark.asked_for}` : ''}`)
   lines.push(f.before || f.after ? `комітів до дедлайну ${f.before}${f.window !== f.before ? ` (у вікні лаби ${f.window})` : ''} · після ${f.after}` : 'комітів нема')
   if (f.last) lines.push(`останній до дедлайну: ${fmtWhen(f.last)}`)
   if (cell.review) lines.push(`звіт: ${VERDICTS[cell.review.verdict]}${cell.review.stale ? ' (інший зріз)' : ''}${cell.review.summary ? ` — ${cell.review.summary}` : ''}`)

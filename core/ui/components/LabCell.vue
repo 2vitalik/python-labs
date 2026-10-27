@@ -3,7 +3,7 @@ import { computed } from 'vue'
 
 import { STATES, describe, fmtWhen, hasWord } from '../labs.js'
 
-// one student × one lab: the state's emoji, under it the last commit before the deadline or the extension's date; ✍ — the teacher's word
+// one student × one lab: the state's emoji, under it the last commit before the deadline or the extension's date; ✍ — the teacher's word, 🙋 — they asked
 const props = defineProps({ cell: { type: Object, required: true }, name: String, lab: [Number, String], active: Boolean })
 const st = computed(() => STATES[props.cell.state])
 const sub = computed(() => (props.cell.mark?.until ? `→ ${fmtWhen(props.cell.mark.until, true)}`
@@ -15,6 +15,7 @@ const sub = computed(() => (props.cell.mark?.until ? `→ ${fmtWhen(props.cell.m
     <span class="emoji">{{ st.emoji }}</span>
     <small v-if="sub" class="sub">{{ sub }}</small>
     <span v-if="hasWord(cell)" class="word" title="слово викладача">✍</span>
+    <span v-if="cell.mark?.asked" class="word ask" :title="'просив подовжити' + (cell.mark.asked_for ? ': ' + cell.mark.asked_for : '')">🙋</span>
   </button>
 </template>
 
@@ -25,6 +26,7 @@ const sub = computed(() => (props.cell.mark?.until ? `→ ${fmtWhen(props.cell.m
 .emoji { display: block; font-size: 1rem; }
 .sub { display: block; font-size: .68rem; color: var(--bs-secondary-color); white-space: nowrap; }
 .word { position: absolute; top: 0; right: .2rem; font-size: .65rem; color: var(--bs-secondary-color); }
+.ask { right: auto; left: .2rem; }
 .none .emoji { color: var(--bs-tertiary-color); }
 .bad { background: color-mix(in srgb, var(--bs-danger) 7%, transparent); }
 .meh { background: color-mix(in srgb, var(--bs-warning) 10%, transparent); }
