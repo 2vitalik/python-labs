@@ -22,10 +22,14 @@ async def game_summary(game: Game | None) -> dict:
         return {}
     parts = await Part.find(Part.game == game.id).sort("order", "created_at").to_list()
     shots = [s for p in parts for s in p.screenshots]
+    claims = await Claim.find(Claim.game == game.id).to_list()
+    coins: dict[str, float] = {}  # what the claimed cards are worth, by kind of coin (T240)
+    for t in await Task.find({"slug": {"$in": list({c.task for c in claims})}}).to_list():
+        coins[t.coin] = coins.get(t.coin, 0) + t.amount * sum(c.task == t.slug for c in claims)
     return game.api() | {
         "windows": sum(p.kind == "window" for p in parts), "menus": sum(p.kind == "menu" for p in parts),
         "entities": sum(p.kind == "entity" for p in parts),
-        "claims": await Claim.find(Claim.game == game.id).count(),
+        "claims": len(claims), "coins": coins,
         "rules": await Rule.find(Rule.game == game.id).count(),
         "cover": f"/api/uploads/{game.id}/{shots[0]}" if shots else "",
     }

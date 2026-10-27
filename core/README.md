@@ -26,6 +26,7 @@
 | Опитування в Telegram | `models/poll.py`, `poll_send.py`, `vote.py`, `polls_*.py`, `routes/poll*.py`, `bot/polls.py`, `bot/chats.py` | `pages/Poll*.vue`, `components/Poll*.vue`, `TagInput.vue`, `polls.js` |
 | Тиждень студента | `models/week.py`, `week_marks.py`, `routes/my_week.py`, `routes/weeks.py`, `bot/week.py` | `pages/MyWeekPage.vue`, `WeekPage.vue`, `components/Week*.vue`, `CopyNicks.vue`, `week*.js`, `autosave.js` |
 | Лаби: дедлайни, репозиторії, звіти агента | `models/deadline.py`, `models/repo.py`, `labs.py`, `lab_marks.py`, `repos.py`, `routes/labs.py`, `routes/student_labs.py`, `bot/due.py` | `pages/DeadlinesPage.vue`, `components/Lab*.vue`, `DeadlineForm.vue`, `StudentLabs.vue`, `labs.js` |
+| Таблиця студентів: види, свої поля | `models/field.py`, `models/view.py`, `table.py`, `fields.py`, `routes/table.py`, `routes/fields.py`, `routes/views.py` | `pages/TablePage.vue`, `components/Table*.vue`, `Fields*.vue`, `table.js`, `tableCols.js`, `tableViews.js` |
 | Оформлення | — | `App.vue`, `NavBar.vue`, `Crumbs.vue`, `theme.js`, `style.css`, `dark.css` |
 
 ## Сайт на ядрі: бекенд
@@ -49,6 +50,7 @@
 - Сторінка `/students/<нік>` — за сайтом: на неї ведуть алерти бота й крихти.
 - `WEEK_HOURS` (`15-23`) і `WEEK_DAYS` (`6`, від понеділка) — сітка «Мій тиждень»: сторінки малюють те, що віддає API, своїх годин у них нема.
 - `LABS` (`5`) — скільки лаб у курсі: колонки `/deadlines`, що приймають `/due` і звіти; сайт реєструє маршрут `/deadlines` і пункт меню, назви лаб бере з `site.guide` (`n`). Репозиторії студентів на диск тягне `bin/repos` (python), сайт лише зберігає факти (`PUT /api/repos`).
+- `/table` (T240) — рядок студента з усіх джерел одним читанням (`core/table.py`: профіль, `labs.Index`, `Repo`, останній голос у кожному опитуванні, свої поля, `students.EXTRAS`); свої поля й збережені види — `fields`, `field_values`, `views`; усе для адміна й агента (`editor_user`), опитування (`GET`) — теж.
 
 ## Сайт на ядрі: фронт
 
@@ -63,6 +65,7 @@
 - Поля паспорта описано в `ui/site.js`. Пункт меню з третім елементом (`['/students', 'Студи', 'admin']`) — вужчий за сторінку: сторінка відкрита студентам, пункт — ні.
 - `/students` студентові — та сама сторінка під назвою з `students.asStudent` (`{ title, crumbs }`; корінь крихт і назву дають `ui/students.js`), чіпи груп і пошук за початком слова (`studentSearch.js`), таблиця без пошти/GitHub/Telegram, імʼя веде на `/students/<нік>`; `students.inGallery` звужує галерею (python: лише з грою) — числа в заголовку й на чіпах ідуть за режимом.
 - Мета маршруту, яку читає ядро: `title`; `access` — `'admin'` · `'active'` · нема = усім; `filters` — зміна `?запиту` не гортає вгору; `stay` — інший параметр тієї самої сторінки теж (`/week/3` → `/week/4`); `wide` — `true`: кнопка «на всю ширину» для викладача, `'admin'`: викладачу завжди на все вікно.
+- `site.table.cols` — власні колонки `/table`: `{ key, type, title, short, get: (row) => …, link? }` (python: гра, заявки, монетки з `game.coins`); фасети `students.facets` стають колонками-чекмарками самі.
 - `site` заповнюється в `start()`. Ядро читає його у функціях і компонентах, а не на верхньому рівні модуля: там він ще порожній.
 - `public/` у кожного сайту своя: іконки й `theme-boot.js`.
 - Свій синтаксис Markdown — `useMd(ext)` з `md.js` у `main.js` сайту, до `start()`: так ods додає формули.

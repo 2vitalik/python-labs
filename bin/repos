@@ -2,11 +2,11 @@
 """bin/repos — students' repositories on this machine, the way in for the agent (T235).
 
   bin/repos [-t prod] sync              who has a GitHub link — from the site → data/repos/students.json; what changed since last time
-  bin/repos pull [нік…]                 clone the new ones, fetch the rest → data/repos/<нік>/ (detached at origin's HEAD)
+  bin/repos pull [нік…]                 clone the new ones, fetch the rest → data/repos/<група>/<нік>/ (detached at origin's HEAD)
   bin/repos status [нік…]               a line per student: group · commits · first … last · branch · repo, or the error
   bin/repos [-t prod] push [нік…]       the facts of every repo → the site: link, branch, head, error, the commit log with `seen`
   bin/repos [-t prod] cut <lab> [нік…]  the last commit before the lab's deadline (deadlines — from the site);
-                                        --checkout → a work tree at it in data/repos/.cut/<нік>/lab<N>/
+                                        --checkout → a work tree at it in data/repos/.cut/<група>/<нік>/lab<N>/
   bin/repos [-t prod] reviews [нік…]    data/reviews/<нік>/lab<N>.md → the site: a `key: value` header between --- lines
                                         (commit, verdict, head, head_verdict, summary), then the report in Markdown
 
@@ -46,6 +46,19 @@ def save(path: Path, data) -> None:
     path.write_text(json.dumps(data, ensure_ascii=False, indent=1))
 
 
+def folder(r: dict) -> Path:
+    """data/repos/<група>/<нік>/ — a group's repositories side by side (T242); a clone made under another group, or before groups
+    were folders, moves in."""
+    dest = HOME / (r["group"] or "-") / r["nick"]
+    if not dest.exists():
+        for old in (HOME / r["nick"], *HOME.glob(f"*/{r['nick']}")):
+            if (old / ".git").exists() and not old.parent.name.startswith("."):
+                dest.parent.mkdir(parents=True, exist_ok=True)
+                old.rename(dest)
+                break
+    return dest
+
+
 def students(nicks: list[str]) -> list[dict]:
     rows = load(LIST, None)
     if rows is None:
@@ -78,13 +91,14 @@ def sync(a):
 
 
 def pull_one(r: dict) -> tuple[str, bool, str]:
-    folder = HOME / r["nick"]
-    fresh = not (folder / ".git").exists()
-    return r["nick"], fresh, git.pull(r["github"], folder)
+    home = folder(r)
+    fresh = not (home / ".git").exists()
+    return r["nick"], fresh, git.pull(r["github"], home)
 
 
 def pull(a):
     rows = [r for r in students(a.nicks) if r["github"]]
+    by_nick = {r["nick"]: r for r in rows}
     state, stamp = load(STATE, {}), now()
     with ThreadPoolExecutor(WORKERS) as pool:
         results = list(pool.map(pull_one, rows))
@@ -96,7 +110,7 @@ def pull(a):
             continue
         cloned, fetched = cloned + fresh, fetched + (not fresh)
         seen = load(SEEN / f"{nick}.json", {})
-        new = [c["sha"] for c in git.log(HOME / nick) if c["sha"] not in seen]
+        new = [c["sha"] for c in git.log(folder(by_nick[nick])) if c["sha"] not in seen]
         if new or fresh:
             save(SEEN / f"{nick}.json", seen | dict.fromkeys(new, stamp))
         if new and not fresh:
@@ -107,14 +121,14 @@ def pull(a):
 
 def facts(r: dict, state: dict) -> dict:
     """What `push` sends and `status` prints for one student."""
-    nick, folder = r["nick"], HOME / r["nick"]
+    nick, home = r["nick"], folder(r)
     err = state.get(nick, {}).get("error", "")
-    if not (folder / ".git").exists():
+    if not (home / ".git").exists():
         return {"nick": nick, "url": r["github"], "ok": False, "error": err or "ще не клоновано", "branch": "", "head": "", "commits": []}
     seen = load(SEEN / f"{nick}.json", {})
-    branch, head = git.head(folder)
+    branch, head = git.head(home)
     return {"nick": nick, "url": r["github"], "ok": not err, "error": err, "branch": branch, "head": head,
-            "commits": [c | {"seen": seen.get(c["sha"])} for c in git.log(folder)]}
+            "commits": [c | {"seen": seen.get(c["sha"])} for c in git.log(home)]}
 
 
 def status(a):
@@ -143,21 +157,21 @@ def cut(a):
     for row in call(a.target, "GET", "/labs")["rows"]:
         if row["nick"] not in picked or not row.get("github"):
             continue
-        cell, folder = row["cells"][str(a.lab)], HOME / row["nick"]
+        cell, home = row["cells"][str(a.lab)], folder(row)
         if not cell["due"]:
             print(f"—  {row['nick']:16} дедлайн не заданий")
             continue
-        if not (folder / ".git").exists():
+        if not (home / ".git").exists():
             print(f"—  {row['nick']:16} не клоновано")
             continue
-        due, sha = cell["due"][:16].replace("T", " "), git.cut(folder, cell["due"])
+        due, sha = cell["due"][:16].replace("T", " "), git.cut(home, cell["due"])
         if not sha:
             print(f"∅  {row['nick']:16} до {due} комітів нема")
             continue
         line = f"{sha[:7]} {row['nick']:16} до {due} · комітів до: {cell['facts']['before']} · після: {cell['facts']['after']}"
         if a.checkout:
-            dest = HOME / ".cut" / row["nick"] / f"lab{a.lab}"
-            err = git.checkout(folder, sha, dest)
+            dest = HOME / ".cut" / (row["group"] or "-") / row["nick"] / f"lab{a.lab}"
+            err = git.checkout(home, sha, dest)
             line += f" ⚠️ {err}" if err else f" → {dest.relative_to(ROOT)}"
         print(line)
 

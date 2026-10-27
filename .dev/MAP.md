@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T240** · тікетів: 239 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T243** · тікетів: 242 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -247,3 +247,6 @@
 | github | [T237](github/.t/T237--lab-deadlines-v1/plan.md) | ⚙️ | lab-deadlines-v1 | Дедлайни лаб, репозиторії, звіти — код — план | 🟢 🟩 |
 | ods | [T238](ods/.t/T238-Q--ods-labs-2-5-questions.md) | ❓ | ods-labs-2-5-questions | ODS, лаби 2–5 після перевірки: вибори | 🔴 ⬜ |
 | platform | [T239](platform/.t/T239-C--student-search.md) | 🔆 | student-search | Пошук на /students: збіг за початком слова | 🟢 🟩 |
+| platform | [T240](platform/.t/T240-P--table-views.md) | 💡 | table-views | Таблиця студентів: види, фільтри, свої поля — дизайн | 🟢 🟩 |
+| platform | [T241](platform/.t/T241-Q--table-views-questions.md) | ❓ | table-views-questions | Таблиця й дедлайн 1 — питання | 🔴 ⬜ |
+| platform | [T242](platform/.t/T242--table-v1/plan.md) | ⚙️ | table-v1 | Таблиця студентів v1: API, сторінка, свої поля, дедлайн 1 — план | 🟢 🟩 |

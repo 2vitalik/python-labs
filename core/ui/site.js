@@ -17,4 +17,7 @@ export const site = {
     inGallery: null,  // who has a card in the gallery: (s) => …; null = everyone
     asStudent: null,  // the same page for a student — a slice of it: { title, crumbs: [[to, text], …] } — its name and where it hangs; null = the admin's only
   },
+  table: {
+    cols: [],  // /table (T240), the site's own columns: { key, type, title, short, get: (row) => …, link?: (row) => url }; `group` — the band above, default students.page
+  },
 }

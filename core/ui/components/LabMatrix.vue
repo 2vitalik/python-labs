@@ -9,7 +9,7 @@ import LabCell from './LabCell.vue'
 import LabEdit from './LabEdit.vue'
 
 // students × labs (T235): a header row per group folds it; a cell opens the editor of that pair under the student's row;
-// ✏️ in a lab's header asks the page for the deadline form; 🐙 — the repository as the last pull saw it
+// the lab's name in the header opens /table on that lab (T240), ✏️ asks the page for the deadline form; 🐙 — the repository as the last pull saw it
 const props = defineProps({ data: { type: Object, required: true } })
 const emit = defineEmits(['deadline', 'cell'])
 const labs = computed(() => props.data.labs)
@@ -36,7 +36,8 @@ const total = (l) => Object.entries(STATES).filter(([k]) => k !== 'nodue')
           <th class="name">Студент</th>
           <th class="repo" title="Репозиторій">🐙</th>
           <th v-for="l in labs" :key="l.n" class="lab" :title="dueTitle(l)">
-            <RouterLink v-if="labPath(l.n)" :to="labPath(l.n)">{{ labName(l.n) }}</RouterLink><template v-else>{{ labName(l.n) }}</template>
+            <RouterLink :to="{ path: '/table', query: { view: `lab${l.n}` } }" title="Усе про дедлайн цієї лаби — таблиця">{{ labName(l.n) }}</RouterLink>
+            <RouterLink v-if="labPath(l.n)" :to="labPath(l.n)" class="ibtn ms-1" title="Сторінка лаби">📖</RouterLink>
             <a href="#" class="ibtn ms-1" title="Дедлайн" @click.prevent="emit('deadline', l.n)">✏️</a>
             <small class="d-block fw-normal text-secondary">{{ due(l) ? fmtWhen(due(l).at) : l.deadlines.length ? 'по групах' : '—' }}<template v-if="due(l) && l.deadlines.length > 1"> +</template></small>
           </th>

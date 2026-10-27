@@ -57,3 +57,14 @@
 :root { --strip-no: color-mix(in srgb, var(--bs-danger) 66%, var(--bs-body-bg));
         --strip-meh: color-mix(in srgb, var(--bs-warning) 75%, var(--bs-body-bg));
         --strip-ok: color-mix(in srgb, var(--bs-success) 60%, var(--bs-body-bg)); }
+
+/* /table (T240): the colours a choice may wear — soft mixes of Bootstrap's hues over the page's own background, so they follow the theme */
+.tone-gray { background: color-mix(in srgb, var(--bs-gray-500) 28%, var(--bs-body-bg)); }
+.tone-red { background: color-mix(in srgb, var(--bs-red) 26%, var(--bs-body-bg)); }
+.tone-orange { background: color-mix(in srgb, var(--bs-orange) 30%, var(--bs-body-bg)); }
+.tone-yellow { background: color-mix(in srgb, var(--bs-yellow) 35%, var(--bs-body-bg)); }
+.tone-green { background: color-mix(in srgb, var(--bs-green) 26%, var(--bs-body-bg)); }
+.tone-teal { background: color-mix(in srgb, var(--bs-teal) 28%, var(--bs-body-bg)); }
+.tone-blue { background: color-mix(in srgb, var(--bs-blue) 24%, var(--bs-body-bg)); }
+.tone-purple { background: color-mix(in srgb, var(--bs-purple) 24%, var(--bs-body-bg)); }
+.tone-pink { background: color-mix(in srgb, var(--bs-pink) 24%, var(--bs-body-bg)); }

@@ -2,7 +2,7 @@ from beanie import PydanticObjectId
 from bson import ObjectId
 from fastapi import APIRouter, Depends, HTTPException
 
-from core.deps import admin_user
+from core.deps import admin_user, editor_user
 from core.models.history import record, record_delete, record_new
 from core.models.poll import Poll
 from core.models.poll_send import PollSend
@@ -24,7 +24,8 @@ async def get_poll(id: PydanticObjectId) -> Poll:
 
 
 @router.get("")
-async def list_polls(tag: str = "", admin: User = Depends(admin_user)):
+async def list_polls(tag: str = "", user: User = Depends(editor_user)):
+    """Admins and agents alike (T240): the agent reads what the class answered."""
     polls = await Poll.find({"tags": tag} if tag else {}).sort("-created_at").to_list()
     lines = await summary(polls)
     tags = await Poll.get_pymongo_collection().distinct("tags")

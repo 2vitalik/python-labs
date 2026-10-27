@@ -23,6 +23,8 @@ class MarkIn(BaseModel):
     reason: str = ""
     met: bool | None = None
     note: str = ""
+    asked: bool = False
+    asked_for: str = ""
 
 
 class ReviewIn(BaseModel):

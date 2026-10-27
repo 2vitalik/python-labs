@@ -1,3 +1,4 @@
+import { COINS } from './catalog.js'
 import StudentCards from './components/StudentCards.vue'
 
 // what this site is; the platform (core/ui) takes it through start() in main.js
@@ -18,7 +19,7 @@ export default {
   links: [
     ['/my/game', 'Гра', null, true],  // the student's own game — first and bold; the catalog is «Ігри»
     ...SECTIONS.map((s) => [s.path, s.nav]), ['/lessons', 'Пари', 'admin'],  // students see it later
-    ['/students', 'Студи', 'admin'], ['/deadlines', 'Дедлайни'], ['/activity', 'Актив'],  // a student reaches /students as «Ігри студентів» from the games catalog
+    ['/students', 'Студи', 'admin'], ['/deadlines', 'Дедлайни'], ['/table', 'Таблиця'], ['/activity', 'Актив'],  // a student reaches /students as «Ігри студентів» from the games catalog
     ['/polls', 'Polls'], ['/week', 'Week'], ['/my/profile', 'Профіль'],
   ],
   guide: [...SECTIONS.flatMap((s) => (s.slug === 'labs' ? [s, ...LABS] : [s])), CHANGES],
@@ -42,4 +43,14 @@ export default {
     inGallery: (s) => s.game.id,  // the gallery is of games: no card without one
     asStudent: { title: 'Ігри студентів', crumbs: [['/method', 'Методичка'], ['/games', 'Ігри']] },
   },
+  table: {  // /table, the site's own columns (T240): the student's game as the API row carries it (`game`)
+    cols: [
+      { key: 'game', type: 'text', title: 'Гра', short: '🎮', get: (s) => s.game.title, link: (s) => s.game.id && `/students/${s.nick}` },
+      { key: 'claims', type: 'number', title: 'Заявок у «Моїй грі»', short: '📋', get: (s) => s.game.claims },
+      { key: 'coins', type: 'text', title: 'Монетки за заявками', short: '🪙', get: (s) => coins(s.game.coins) },
+    ],
+  },
 }
+
+// {gold: 2, silver: 1.5} → «🥇2 🥈1.5»
+const coins = (c) => Object.entries(c || {}).map(([kind, n]) => `${COINS[kind] || kind}${Number.isInteger(n) ? n : n.toFixed(1)}`).join(' ')

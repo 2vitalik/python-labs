@@ -39,9 +39,10 @@ class Repo(Document):
 
     def api(self) -> dict:
         """The short card for a row: no log."""
-        last = max((c.at for c in self.commits), default=None)
+        when_ = [c.at for c in self.commits]
         return {"url": self.url, "ok": self.ok, "error": self.error, "branch": self.branch, "head": self.head[:7],
-                "commits": len(self.commits), "last": when(last), "pulled_at": when(self.pulled_at)}
+                "commits": len(self.commits), "first": when(min(when_, default=None)), "last": when(max(when_, default=None)),
+                "pulled_at": when(self.pulled_at)}
 
 
 class Review(Document):

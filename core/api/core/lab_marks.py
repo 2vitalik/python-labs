@@ -15,7 +15,7 @@ from core.models.user import User
 TZ = ZoneInfo("Europe/Kyiv")
 END = time(23, 59)  # the day's deadline, when only a date is given
 DATE = re.compile(r"^(\d{1,2})\.(\d{1,2})(?:\.(\d{2}|\d{4}))?$")
-FIELDS = ("until", "open", "reason", "met", "note")
+FIELDS = ("until", "open", "reason", "met", "note", "asked", "asked_for")
 MET = {True: "✅ вклався — слово викладача", False: "❌ не вклався — слово викладача", None: "↩️ вердикт — як рахує сайт"}
 
 
@@ -50,6 +50,9 @@ def lines(mark: LabMark, changed: set[str]) -> list[str]:
         out.append(MET[mark.met])
     if "note" in changed and mark.note:
         out.append(f"📝 {html.quote(mark.note)}")
+    if changed & {"asked", "asked_for"}:
+        out.append(f"🙋 просив подовжити{' · ' + html.quote(mark.asked_for) if mark.asked_for else ''}" if mark.asked
+                   else "🙅 позначку «просив подовжити» знято")
     return out
 
 
