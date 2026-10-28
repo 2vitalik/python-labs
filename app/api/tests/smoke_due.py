@@ -1,5 +1,5 @@
-"""Smoke: /due from the student's chat (Chat Automation), the forum and the bot's chat (T235); the dates it takes; Telegram replaced
-by a recorder. Run from app/api: DB_NAME=python_labs_smoke uv run python tests/smoke_due.py"""
+"""Smoke: /due from the student's chat (Chat Automation), the forum and the bot's chat (T235); the dates it takes; the line the student
+reads from the teacher's account (T245); Telegram replaced by a recorder. Run from app/api: DB_NAME=python_labs_smoke uv run python tests/smoke_due.py"""
 import asyncio
 import os
 import sys
@@ -7,6 +7,8 @@ from datetime import datetime, timezone
 from types import SimpleNamespace
 
 sys.path.insert(0, os.getcwd())
+from aiogram.exceptions import TelegramAPIError  # noqa: E402
+from aiogram.methods import SendMessage  # noqa: E402
 from pymongo import MongoClient  # noqa: E402
 
 DB = os.environ["DB_NAME"]
@@ -25,8 +27,10 @@ sent, deleted, reacted, results = [], [], [], []
 
 
 class FakeBot:
-    async def send_message(self, chat_id, text, message_thread_id=None):
-        sent.append((chat_id, text))
+    async def send_message(self, chat_id, text, message_thread_id=None, business_connection_id=None):
+        if business_connection_id == "bad":  # the student has not written for a day, or «Reply to messages» is off
+            raise TelegramAPIError(SendMessage(chat_id=chat_id, text=text), "Forbidden: not enough rights")
+        sent.append((chat_id, text, business_connection_id))
 
     async def set_message_reaction(self, chat_id, message_id, reaction):
         reacted.append((chat_id, message_id, reaction[0].emoji))
@@ -57,7 +61,8 @@ def fake(chat_id=42, user_id=7, chat_type="private", conn=None, reply=None, ephe
 
 
 cmd = lambda args: SimpleNamespace(command="due", args=args)  # noqa: E731
-alert = lambda: sent[-1][1]  # noqa: E731
+alert = lambda: [m for m in sent if m[0] == 7][-1][1]  # noqa: E731 — the admin's chat is 7, the student's 42
+student = lambda: [m for m in sent if m[0] == 42]  # noqa: E731
 utc = lambda *a: datetime(*a, tzinfo=timezone.utc)  # noqa: E731
 
 today = datetime(2026, 10, 25, tzinfo=TZ)
@@ -83,20 +88,23 @@ async def run():
     check("command taken out of the chat, alert 📅 with ⏳, 💬 and 🙋, the card link",
           deleted == [("c1", [5])] and alert().startswith("📅 Лаба 1 · ") and "⏳ до 5.11 23:59" in alert() and "💬 хворів" in alert()
           and "🙋 просив подовжити" in alert() and "/students/vasya/edit" in alert(), alert())
-    check("nothing to the student: one message, the alert", len(sent) == 1)
+    check("the teacher's line in the student's chat via the business connection: the bot named first, the lab, the day",
+          student() == [(42, f"🤖 Бот {settings.site_name} записав на сайті:\n📅 <b>Лаба 1</b> — дедлайн подовжено до чт 5.11, 23:59", "c1")], student())
 
     m, _ = fake(conn="c1")
     await due.due(m, cmd("1 ?"), admin)
     mark = await LabMark.find_one(LabMark.user == "vasya@nure.ua")
     check("/due 1 ? → open, no date, the reason kept", mark.open and mark.until is None and mark.reason == "хворів" and "дата поки невідома" in alert(), alert())
+    check("…and the student hears «дату узгодимо окремо»", len(student()) == 2 and "дедлайн подовжено, дату узгодимо окремо" in student()[-1][1], student())
     m, _ = fake(conn="c1")
     await due.due(m, cmd("1 ?"), admin)
-    check("the same again → «без змін», the command still taken out", alert().startswith("☝️ Без змін") and len(deleted) == 3, alert())
+    check("the same again → «без змін», the command still taken out, nothing more to the student", alert().startswith("☝️ Без змін") and len(deleted) == 3 and len(student()) == 2, alert())
     m, _ = fake(conn="c1")
     await due.due(m, cmd("1 7.11"), admin)
     mark = await LabMark.find_one(LabMark.user == "vasya@nure.ua")
     check("/due 1 7.11 without words → the date closes «?», the reason kept",
           mark.until == datetime(2026, 11, 7, 21, 59) and not mark.open and mark.reason == "хворів" and "⏳ до 7.11 23:59" in alert(), (mark, alert()))
+    check("…the student hears the day", "дедлайн подовжено до сб 7.11, 23:59" in student()[-1][1], student())
     m, _ = fake(conn="c1")
     await due.due(m, cmd("1"), admin)
     check("/due 1 → the line carries 🙋 and 💬", "⏱ ще є час · Лаба 1 · до 7.11 23:59 · 🙋 просив · 💬 хворів" in alert(), alert())
@@ -104,6 +112,7 @@ async def run():
     await due.due(m, cmd("1 -"), admin)
     mark = await LabMark.find_one(LabMark.user == "vasya@nure.ua")
     check("/due 1 - → extension gone, 🙋 stays", not mark.open and mark.until is None and mark.asked and "✖️ подовження знято" in alert(), alert())
+    check("…the student hears the base deadline is back", "подовження знято, дедлайн знову вт 20.10, 23:59" in student()[-1][1] and len(student()) == 4, student())
     m, _ = fake(conn="c1")
     await due.due(m, cmd("1 ! хоче на тиждень"), admin)
     mark = await LabMark.find_one(LabMark.user == "vasya@nure.ua")
@@ -112,6 +121,12 @@ async def run():
     m, _ = fake(conn="c1")
     await due.due(m, cmd("1 !"), admin)
     check("/due 1 ! again → «без змін»", alert().startswith("☝️ Без змін"), alert())
+    check("! says nothing to the student", len(student()) == 4)
+    m, _ = fake(conn="bad")
+    await due.due(m, cmd("2 5.11"), admin)
+    mark = await LabMark.find_one(LabMark.lab == 2)
+    check("Telegram refuses the student's line → the mark stands, the alert warns and says why",
+          mark and mark.until == datetime(2026, 11, 5, 21, 59) and "⚠️ Студентові не написав: Forbidden" in alert() and "Reply to messages" in alert(), alert())
 
     m, _ = fake(conn="c1")
     await due.due(m, cmd(""), admin)

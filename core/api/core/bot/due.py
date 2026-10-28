@@ -1,6 +1,8 @@
 """/due — the deadline of one student's lab (T235): from the chat with them (Chat Automation — the command vanishes like /hide),
-the forum (ephemeral) or the bot's own chat. The answer is the admins' alert; the student's chat gets nothing."""
+the forum (ephemeral) or the bot's own chat. The answer is the admins' alert; in the student's chat an extension is told to them
+from the teacher's account, the bot named first (T245)."""
 from aiogram import Router, html
+from aiogram.exceptions import TelegramAPIError
 from aiogram.filters import Command, CommandObject
 from aiogram.types import Message
 
@@ -8,8 +10,9 @@ from core.bot import notify
 from core.bot.alerts import who
 from core.bot.notes import ack, as_admin, done, target, vanish
 from core.config import settings
-from core.lab_marks import kyiv, parse_due, set_mark
+from core.lab_marks import day, kyiv, parse_due, set_mark
 from core.labs import Index
+from core.models.deadline import LabMark
 from core.models.user import User
 
 router = Router()
@@ -34,10 +37,37 @@ def line(n: str, c: dict) -> str:
     return f"{STATES[c['state']]} · Лаба {n}{due}{commits}{asked}{reason}"
 
 
+async def cells(student: User) -> dict[str, dict]:
+    return (await Index.load([student.email])).cells(student.email, student.github, student.group, settings.labs)
+
+
 async def status(student: User, lab: int | None = None) -> str:
-    cells = (await Index.load([student.email])).cells(student.email, student.github, student.group, settings.labs)
-    rows = [line(n, c) for n, c in cells.items() if lab is None or int(n) == lab]
+    rows = [line(n, c) for n, c in (await cells(student)).items() if lab is None or int(n) == lab]
     return "\n".join([f"📅 {who(student, '/edit')}", *rows])
+
+
+async def told(student: User, lab: int, mark: LabMark, changed: set[str]) -> str:
+    """What the student reads: only an extension is theirs to know; a reason, a verdict, 🙋 stay with the teacher."""
+    if not changed & {"until", "open"}:
+        return ""
+    if mark.until:
+        what = f"дедлайн подовжено до {day(mark.until)}"
+    elif mark.open:
+        what = "дедлайн подовжено, дату узгодимо окремо"
+    else:
+        base = (await cells(student))[str(lab)]["due"]
+        what = f"подовження знято, дедлайн знову {day(base)}" if base else "подовження знято"
+    return f"🤖 Бот {html.quote(settings.site_name)} записав на сайті:\n📅 <b>Лаба {lab}</b> — {what}"
+
+
+async def tell_student(message: Message, text: str) -> list[str]:
+    """Into this chat from the teacher's account (Chat Automation); the lines say when Telegram refused."""
+    try:
+        await notify.bot().send_message(message.chat.id, text, business_connection_id=message.business_connection_id)
+        return []
+    except TelegramAPIError as e:
+        return [f"⚠️ Студентові не написав: {html.quote(e.message)}",
+                "☝️ потрібне право «Reply to messages» (Business → Chatbots), і студент має писати в цей чат за останню добу"]
 
 
 def patch(what: str, text: str) -> dict | None:
@@ -74,11 +104,15 @@ async def due(message: Message, command: CommandObject, admin: User):
     if data is None:
         await tell(HINT)
         return
-    _, changed = await set_mark(student, int(args[0]), data, admin.email)  # the alert is the confirmation
+    mark, changed = await set_mark(student, int(args[0]), data, admin.email)  # the alert is the confirmation
     if not changed:
         await tell(f"☝️ Без змін · {who(student)} · Лаба {args[0]}")
     if business:
-        if warn := await vanish(message):
+        warn = []
+        if said := await told(student, int(args[0]), mark, changed):
+            warn += await tell_student(message, said)
+        warn += await vanish(message)
+        if warn:
             await notify.send("due", "\n".join(warn), student.email)
     else:
         await done(message)

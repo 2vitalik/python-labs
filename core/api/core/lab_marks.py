@@ -14,6 +14,7 @@ from core.models.user import User
 
 TZ = ZoneInfo("Europe/Kyiv")
 END = time(23, 59)  # the day's deadline, when only a date is given
+WD = ("пн", "вт", "ср", "чт", "пт", "сб", "нд")
 DATE = re.compile(r"^(\d{1,2})\.(\d{1,2})(?:\.(\d{2}|\d{4}))?$")
 FIELDS = ("until", "open", "reason", "met", "note", "asked", "asked_for")
 MET = {True: "✅ вклався — слово викладача", False: "❌ не вклався — слово викладача", None: "↩️ вердикт — як рахує сайт"}
@@ -37,6 +38,13 @@ def parse_due(text: str, today: datetime | None = None) -> datetime | None:
 def kyiv(d: datetime | str) -> str:
     d = datetime.fromisoformat(d) if isinstance(d, str) else d
     return utc(d).astimezone(TZ).strftime("%-d.%m %H:%M")
+
+
+def day(d: datetime | str) -> str:
+    """«чт 5.11, 23:59» — the moment as the student reads it."""
+    d = datetime.fromisoformat(d) if isinstance(d, str) else d
+    d = utc(d).astimezone(TZ)
+    return f"{WD[d.weekday()]} {d:%-d.%m}, {d:%H:%M}"
 
 
 def lines(mark: LabMark, changed: set[str]) -> list[str]:

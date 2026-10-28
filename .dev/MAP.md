@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T245** · тікетів: 244 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T247** · тікетів: 246 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -250,5 +250,7 @@
 | platform | [T240](platform/.t/T240-P--table-views.md) | 💡 | table-views | Таблиця студентів: види, фільтри, свої поля — дизайн | 🟢 🟩 |
 | platform | [T241](platform/.t/T241-Q--table-views-questions.md) | ❓ | table-views-questions | Таблиця й дедлайн 1 — питання | 🔴 ⬜ |
 | platform | [T242](platform/.t/T242--table-v1/plan.md) | ⚙️ | table-v1 | Таблиця студентів v1: API, сторінка, свої поля, дедлайн 1 — план | 🟢 🟩 |
-| tgbot | [T243](tgbot/.t/T243-Q--due-command-choices.md) | ❓ | due-command-choices | Команда /due для подовжень — вибори | 🟢 ⬜ |
+| tgbot | [T243](tgbot/.t/T243-Q--due-command-choices.md) | ❓ | due-command-choices | Команда /due для подовжень — вибори | 🔴 ⬜ |
 | tgbot | [T244](tgbot/.t/T244--due-asked/plan.md) | ⚙️ | due-asked | /due: ! «лише просив», 🙋 при подовженні, причина не губиться — план | 🟢 ⬜ |
+| tgbot | [T245](tgbot/.t/T245--due-tell-student/plan.md) | ⚙️ | due-tell-student | /due: повідомлення студентові від викладача з підписом бота — план | 🟢 ⬜ |
+| platform | [T246](platform/.t/T246--table-quick-chips/plan.md) | ⚙️ | table-quick-chips | /table: швидкі чіпи-фільтри «у кого є» з лічильниками — план | 🟢 ⬜ |

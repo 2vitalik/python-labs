@@ -10,7 +10,7 @@ import TableCols from '../components/TableCols.vue'
 import TableGrid from '../components/TableGrid.vue'
 import TableViews from '../components/TableViews.vue'
 import { matches } from '../studentSearch.js'
-import { compare, passes, sortKey } from '../table.js'
+import { compare, hasValue, passes, sortKey } from '../table.js'
 import { columns } from '../tableCols.js'
 import { builtIn, changed, readState, resolve, toQuery } from '../tableViews.js'
 import { useTitle } from '../title.js'
@@ -33,6 +33,13 @@ const groupCol = computed(() => (state.value && state.value.group !== '-' && byK
 const sortCol = computed(() => state.value && byKey.value[state.value.sort.replace(/^-/, '')])
 const dirty = computed(() => !!(state.value && view.value && changed(state.value, view.value, cols.value)))
 const groupable = computed(() => cols.value.filter((c) => c.key === 'group' || ['bool', 'link', 'enum', 'lab', 'poll', 'multi'].includes(c.type)))
+// quick chips (T246): a shown yes/no or choice column → one click keeps the rows that have something there, with a count
+const quick = computed(() => shownCols.value.filter((c) => ['bool', 'link', 'enum'].includes(c.type)))
+const quickSpec = (c) => (c.type === 'enum' ? Object.keys(c.options || {}).join() : '1')
+const quickOn = (c) => state.value.filters[c.key] === quickSpec(c)
+const quickCount = (c) => data.value.rows.filter((r) => matches(r, state.value.q) && hasValue(c.get(r))
+  && Object.entries(state.value.filters).every(([k, spec]) => k === c.key || !byKey.value[k] || passes(byKey.value[k], r, spec))).length
+const chip = (on) => (on ? 'btn-secondary' : 'btn-outline-secondary')
 useTitle(() => view.value && `Таблиця · ${view.value.title}`)
 
 const rows = computed(() => {
@@ -52,8 +59,10 @@ const rows = computed(() => {
 const set = (patch) => router.replace({ query: toQuery({ ...state.value, ...patch }, slug.value) })
 const setFilter = (key, spec) => set({ filters: { ...state.value.filters, [key]: spec || undefined } })
 const setSort = (key) => set({ sort: state.value.sort === key ? `-${key}` : state.value.sort === `-${key}` ? '' : key })
+const flipQuick = (c) => setFilter(c.key, quickOn(c) ? '' : quickSpec(c))
 const pickView = (s) => router.replace({ query: { view: s } })
 const filterText = (col, spec) => (col.type === 'bool' || col.type === 'link' ? (spec === '1' ? 'так' : 'ні')
+  : col.options && spec === Object.keys(col.options).join() ? 'є'
   : col.options ? spec.split(',').map((id) => (id === '-' ? '∅' : col.options[id]?.emoji || col.options[id]?.text || id)).join(' ') : spec)
 
 async function load() {
@@ -105,12 +114,16 @@ onMounted(load)
       </template>
       <a v-if="dirty" href="#" class="text-secondary" @click.prevent="pickView(slug)">скинути до виду</a>
     </div>
+    <div v-if="quick.length" class="d-flex flex-wrap align-items-center gap-1 mb-2">
+      <button v-for="c in quick" :key="c.key" type="button" class="btn btn-sm chip" :class="chip(quickOn(c))"
+              :title="`${c.title}: ${quickOn(c) ? 'зняти фільтр' : 'лише ті, у кого є'}`" @click="flipQuick(c)">{{ c.short }} {{ quickCount(c) }}</button>
+    </div>
     <TableCols v-if="panel === 'cols'" :cols :picked="shownCols.map((c) => c.key)" @change="set({ cols: $event })" @close="panel = ''" />
     <FieldsPanel v-if="panel === 'fields'" :fields="data.fields" @changed="load" @close="panel = ''" />
     <div v-if="error" class="alert alert-danger">{{ error }}</div>
     <TableGrid v-if="state" :rows :cols="shownCols" :group="groupCol" :sort="state.sort" :filters="state.filters" @sort="setSort" @filter="setFilter" @save="save" />
     <p v-if="state" class="small text-secondary mt-2">
-      Заголовок колонки: клік — сортування, ▾ — фільтр, наведи — що це. Клітинки з рамкою при наведенні редагуються: 🙋 і свої поля — кліком, стан лаби — редактором під рядком.
+      Чіпи над таблицею — швидкий фільтр «у кого є» по колонці, з лічильником. Заголовок колонки: клік — сортування, ▾ — фільтр, наведи — що це. Клітинки з рамкою при наведенні редагуються: 🙋 і свої поля — кліком, стан лаби — редактором під рядком.
       Голоси беруться з опитувань щоразу живими; факти репозиторіїв — з останнього <code>bin/repos pull</code> → <code>push</code>.
     </p>
   </div>
