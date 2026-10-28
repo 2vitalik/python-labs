@@ -51,13 +51,13 @@ async def told(student: User, lab: int, mark: LabMark, changed: set[str]) -> str
     if not changed & {"until", "open"}:
         return ""
     if mark.until:
-        what = f"дедлайн подовжено до {day(mark.until)}"
+        what = f"дедлайн подовжено:  {day(mark.until)}"
     elif mark.open:
         what = "дедлайн подовжено, дату узгодимо окремо"
     else:
         base = (await cells(student))[str(lab)]["due"]
-        what = f"подовження знято, дедлайн знову {day(base)}" if base else "подовження знято"
-    return f"🤖 Бот {html.quote(settings.site_name)} записав на сайті:\n📅 <b>Лаба {lab}</b> — {what}"
+        what = f"подовження знято, дедлайн знову:  {day(base)}" if base else "подовження знято"
+    return f"🤖 <i>Бот записав:</i>\n{lab}\ufe0f\u20e3 {what}"  # 1️⃣ — the lab's keycap
 
 
 async def tell_student(message: Message, text: str) -> list[str]:

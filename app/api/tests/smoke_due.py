@@ -89,13 +89,13 @@ async def run():
           deleted == [("c1", [5])] and alert().startswith("📅 Лаба 1 · ") and "⏳ до 5.11 23:59" in alert() and "💬 хворів" in alert()
           and "🙋 просив подовжити" in alert() and "/students/vasya/edit" in alert(), alert())
     check("the teacher's line in the student's chat via the business connection: the bot named first, the lab, the day",
-          student() == [(42, f"🤖 Бот {settings.site_name} записав на сайті:\n📅 <b>Лаба 1</b> — дедлайн подовжено до чт 5.11, 23:59", "c1")], student())
+          student() == [(42, "🤖 <i>Бот записав:</i>\n1️⃣ дедлайн подовжено:  <b>5.11</b>  23:59  (четвер)", "c1")], student())
 
     m, _ = fake(conn="c1")
     await due.due(m, cmd("1 ?"), admin)
     mark = await LabMark.find_one(LabMark.user == "vasya@nure.ua")
     check("/due 1 ? → open, no date, the reason kept", mark.open and mark.until is None and mark.reason == "хворів" and "дата поки невідома" in alert(), alert())
-    check("…and the student hears «дату узгодимо окремо»", len(student()) == 2 and "дедлайн подовжено, дату узгодимо окремо" in student()[-1][1], student())
+    check("…and the student hears «дату узгодимо окремо»", len(student()) == 2 and "1️⃣ дедлайн подовжено, дату узгодимо окремо" in student()[-1][1], student())
     m, _ = fake(conn="c1")
     await due.due(m, cmd("1 ?"), admin)
     check("the same again → «без змін», the command still taken out, nothing more to the student", alert().startswith("☝️ Без змін") and len(deleted) == 3 and len(student()) == 2, alert())
@@ -104,7 +104,7 @@ async def run():
     mark = await LabMark.find_one(LabMark.user == "vasya@nure.ua")
     check("/due 1 7.11 without words → the date closes «?», the reason kept",
           mark.until == datetime(2026, 11, 7, 21, 59) and not mark.open and mark.reason == "хворів" and "⏳ до 7.11 23:59" in alert(), (mark, alert()))
-    check("…the student hears the day", "дедлайн подовжено до сб 7.11, 23:59" in student()[-1][1], student())
+    check("…the student hears the day", "1️⃣ дедлайн подовжено:  <b>7.11</b>  23:59  (субота)" in student()[-1][1], student())
     m, _ = fake(conn="c1")
     await due.due(m, cmd("1"), admin)
     check("/due 1 → the line carries 🙋 and 💬", "⏱ ще є час · Лаба 1 · до 7.11 23:59 · 🙋 просив · 💬 хворів" in alert(), alert())
@@ -112,7 +112,7 @@ async def run():
     await due.due(m, cmd("1 -"), admin)
     mark = await LabMark.find_one(LabMark.user == "vasya@nure.ua")
     check("/due 1 - → extension gone, 🙋 stays", not mark.open and mark.until is None and mark.asked and "✖️ подовження знято" in alert(), alert())
-    check("…the student hears the base deadline is back", "подовження знято, дедлайн знову вт 20.10, 23:59" in student()[-1][1] and len(student()) == 4, student())
+    check("…the student hears the base deadline is back", "1️⃣ подовження знято, дедлайн знову:  <b>20.10</b>  23:59  (вівторок)" in student()[-1][1] and len(student()) == 4, student())
     m, _ = fake(conn="c1")
     await due.due(m, cmd("1 ! хоче на тиждень"), admin)
     mark = await LabMark.find_one(LabMark.user == "vasya@nure.ua")

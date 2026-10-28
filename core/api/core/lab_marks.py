@@ -14,7 +14,7 @@ from core.models.user import User
 
 TZ = ZoneInfo("Europe/Kyiv")
 END = time(23, 59)  # the day's deadline, when only a date is given
-WD = ("пн", "вт", "ср", "чт", "пт", "сб", "нд")
+WEEKDAY = ("понеділок", "вівторок", "середа", "четвер", "пʼятниця", "субота", "неділя")
 DATE = re.compile(r"^(\d{1,2})\.(\d{1,2})(?:\.(\d{2}|\d{4}))?$")
 FIELDS = ("until", "open", "reason", "met", "note", "asked", "asked_for")
 MET = {True: "✅ вклався — слово викладача", False: "❌ не вклався — слово викладача", None: "↩️ вердикт — як рахує сайт"}
@@ -41,10 +41,10 @@ def kyiv(d: datetime | str) -> str:
 
 
 def day(d: datetime | str) -> str:
-    """«чт 5.11, 23:59» — the moment as the student reads it."""
+    """«<b>5.11</b>  23:59  (четвер)» — the moment as the student reads it (the spacing is Vitalik's)."""
     d = datetime.fromisoformat(d) if isinstance(d, str) else d
     d = utc(d).astimezone(TZ)
-    return f"{WD[d.weekday()]} {d:%-d.%m}, {d:%H:%M}"
+    return f"<b>{d:%-d.%m}</b>  {d:%H:%M}  ({WEEKDAY[d.weekday()]})"
 
 
 def lines(mark: LabMark, changed: set[str]) -> list[str]:
