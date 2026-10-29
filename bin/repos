@@ -9,11 +9,15 @@
                                         --checkout → a work tree at it in data/repos/.cut/<група>/<нік>/lab<N>/
   bin/repos [-t prod] reviews [нік…]    data/reviews/<нік>/lab<N>.md → the site: a `key: value` header between --- lines
                                         (commit, verdict, head, head_verdict, summary), then the report in Markdown
+  bin/repos [-t prod] auto              sync → pull → push; no push when GitHub was out of reach
+  bin/repos launchd on|off              run `auto` every hour on this Mac (launchd agent of this user; log — ~/Library/Logs)
 
 No -t = prod. data/repos/ and data/reviews/ are git-ignored: students' code and reports with names.
 The git part is core/api/core/repos.py — the server will run the same when pulling moves there."""
 import argparse
 import json
+import os
+import subprocess
 import sys
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
@@ -29,6 +33,8 @@ REVIEWS = ROOT / "data" / "reviews"
 LIST = HOME / "students.json"
 SEEN = HOME / ".seen"  # <нік>.json: sha → when we first saw it
 STATE = HOME / ".state.json"  # nick → the last pull's error, if any, and when
+PLIST = Path.home() / "Library" / "LaunchAgents" / "com.vitalik.python-labs-repos.plist"
+LOG = Path.home() / "Library" / "Logs" / "python-labs-repos.log"
 WORKERS = 6
 HEAD_KEYS = ("commit", "verdict", "head", "head_verdict", "summary")
 
@@ -96,7 +102,8 @@ def pull_one(r: dict) -> tuple[str, bool, str]:
     return r["nick"], fresh, git.pull(r["github"], home)
 
 
-def pull(a):
+def pull(a) -> bool:
+    """True when GitHub answered for at least one repository: what `push` may then tell the site."""
     rows = [r for r in students(a.nicks) if r["github"]]
     by_nick = {r["nick"]: r for r in rows}
     state, stamp = load(STATE, {}), now()
@@ -104,6 +111,9 @@ def pull(a):
         results = list(pool.map(pull_one, rows))
     cloned = fetched = 0
     for nick, fresh, err in results:
+        if err in git.TRANSIENT:  # keep the last real word about access
+            print(f"⚠️ {nick:16} {err}")
+            continue
         state[nick] = {"error": err, "at": stamp}
         if err:
             print(f"⚠️ {nick:16} {err}")
@@ -117,6 +127,7 @@ def pull(a):
             print(f"  {nick:16} +{len(new)} комітів")
     save(STATE, state)
     print(f"клоновано {cloned} · оновлено {fetched} · помилок {sum(1 for _, _, e in results if e)} · без посилання {len(students(a.nicks)) - len(rows)}")
+    return any(err not in git.TRANSIENT for _, _, err in results)
 
 
 def facts(r: dict, state: dict) -> dict:
@@ -203,11 +214,56 @@ def reviews(a):
     print(f"звітів надіслано: {n}")
 
 
+def auto(a):
+    print(f"— {datetime.now():%F %H:%M}")
+    sync(a)
+    a.nicks = []
+    if pull(a):
+        push(a)
+    else:
+        print("GitHub недосяжний — на сайт нічого не шлю")
+
+
+PLIST_TEXT = """<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- bin/repos launchd on — written by the script itself; `off` removes it. -->
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>{label}</string>
+  <key>ProgramArguments</key>
+  <array><string>{python}</string><string>{script}</string><string>auto</string></array>
+  <key>WorkingDirectory</key><string>{root}</string>
+  <key>StartInterval</key><integer>3600</integer>
+  <key>RunAtLoad</key><true/>
+  <key>StandardOutPath</key><string>{log}</string>
+  <key>StandardErrorPath</key><string>{log}</string>
+</dict>
+</plist>
+"""
+
+
+def launchd(a):
+    """One agent of this user, every hour and right after login; a missed hour (sleep) runs once on waking."""
+    domain, label = f"gui/{os.getuid()}", PLIST.stem
+    subprocess.run(["launchctl", "bootout", f"{domain}/{label}"], check=False, capture_output=True)
+    if a.state == "off":
+        PLIST.unlink(missing_ok=True)
+        print(f"знято: {label}")
+        return
+    PLIST.write_text(PLIST_TEXT.format(label=label, python=sys.executable, script=Path(__file__).resolve(), root=ROOT, log=LOG))
+    subprocess.run(["launchctl", "bootstrap", domain, str(PLIST)], check=True)
+    print(f"щогодини `bin/repos auto`: {PLIST}\nжурнал: {LOG}")
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("-t", "--target", default="prod")
     sub = p.add_subparsers(dest="cmd", required=True)
     sub.add_parser("sync").set_defaults(run=sync)
+    sub.add_parser("auto").set_defaults(run=auto)
+    s = sub.add_parser("launchd")
+    s.add_argument("state", choices=("on", "off"))
+    s.set_defaults(run=launchd)
     for name, run in (("pull", pull), ("status", status), ("push", push), ("reviews", reviews)):
         s = sub.add_parser(name)
         s.add_argument("nicks", nargs="*")

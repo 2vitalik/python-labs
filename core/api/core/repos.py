@@ -7,8 +7,11 @@ from pathlib import Path
 
 GITHUB = re.compile(r"^https://github\.com/([\w.-]+)/([\w.-]+?)(?:\.git)?/?$")
 STAT = re.compile(r"(\d+) files? changed(?:, (\d+) insertions?\(\+\))?(?:, (\d+) deletions?\(-\))?")
+OFFLINE, TIMEOUT, EMPTY = "нема звʼязку з GitHub", "git не відповів за 3 хвилини", "репозиторій порожній: жодного коміту"
+TRANSIENT = {OFFLINE, TIMEOUT}  # this machine's trouble, not the student's: says nothing about access
 REASONS = (("Repository not found", "репозиторій не знайдено або нема доступу"), ("Permission denied", "GitHub не прийняв SSH-ключ"),
-           ("Could not resolve host", "нема звʼязку з GitHub"), ("invalid reference", "репозиторій порожній: жодного коміту"))
+           ("Could not resolve host", OFFLINE), ("Network is unreachable", OFFLINE), ("Connection timed out", OFFLINE),
+           ("Cannot determine remote HEAD", EMPTY), ("invalid reference", EMPTY))
 SEP, REC = "\x1f", "\x1e"
 
 
@@ -36,11 +39,12 @@ def pull(url: str, folder: Path) -> str:
             if git("remote", "get-url", "origin", cwd=folder).stdout.strip() != ssh_url(url):
                 git("remote", "set-url", "origin", ssh_url(url), cwd=folder)  # the student renamed or moved it
             r = git("fetch", "-q", "--prune", "origin", cwd=folder)
-            if r.returncode == 0:
-                git("remote", "set-head", "origin", "-a", cwd=folder)
-                r = git("checkout", "-q", "--force", "--detach", "origin/HEAD", cwd=folder)
+        if r.returncode == 0:
+            r = git("remote", "set-head", "origin", "-a", cwd=folder)  # fails only when there is no branch yet
+        if r.returncode == 0:
+            r = git("checkout", "-q", "--force", "--detach", "origin/HEAD", cwd=folder)
     except subprocess.TimeoutExpired:
-        return "git не відповів за 3 хвилини"
+        return TIMEOUT
     return "" if r.returncode == 0 else reason(r.stderr)
 
 

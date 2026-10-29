@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T247** · тікетів: 246 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T248** · тікетів: 247 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -254,3 +254,4 @@
 | tgbot | [T244](tgbot/.t/T244--due-asked/plan.md) | ⚙️ | due-asked | /due: ! «лише просив», 🙋 при подовженні, причина не губиться — план | 🟢 ⬜ |
 | tgbot | [T245](tgbot/.t/T245--due-tell-student/plan.md) | ⚙️ | due-tell-student | /due: повідомлення студентові від викладача з підписом бота — план | 🟢 ⬜ |
 | platform | [T246](platform/.t/T246--table-quick-chips/plan.md) | ⚙️ | table-quick-chips | /table: швидкі чіпи-фільтри «у кого є» з лічильниками — план | 🟢 ⬜ |
+| github | [T247](github/.t/T247--repos-auto/plan.md) | ⚙️ | repos-auto | Репозиторії: pull → push щогодини на ноутбуці, сервер — пізніше — план | 🟢 🟩 |
