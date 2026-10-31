@@ -8,7 +8,8 @@
   bin/repos [-t prod] cut <lab> [нік…]  the last commit before the lab's deadline (deadlines — from the site);
                                         --checkout → a work tree at it in data/repos/.cut/<група>/<нік>/lab<N>/
   bin/repos [-t prod] reviews [нік…]    data/reviews/<нік>/lab<N>.md → the site: a `key: value` header between --- lines
-                                        (commit, verdict, head, head_verdict, summary), then the report in Markdown
+                                        (commit, verdict, head, head_verdict, kind, required, summary), then the report in Markdown;
+                                        --dry — only read the headers and print a table, send nothing
   bin/repos [-t prod] auto              sync → pull → push; no push when GitHub was out of reach
   bin/repos launchd on|off              run `auto` every hour on this Mac (launchd agent of this user; log — ~/Library/Logs)
 
@@ -36,7 +37,7 @@ STATE = HOME / ".state.json"  # nick → the last pull's error, if any, and when
 PLIST = Path.home() / "Library" / "LaunchAgents" / "com.vitalik.python-labs-repos.plist"
 LOG = Path.home() / "Library" / "Logs" / "python-labs-repos.log"
 WORKERS = 6
-HEAD_KEYS = ("commit", "verdict", "head", "head_verdict", "summary")
+HEAD_KEYS = ("commit", "verdict", "head", "head_verdict", "kind", "required", "summary")  # required: a word per task, space-separated
 
 
 def now() -> str:
@@ -199,6 +200,7 @@ def parse_review(path: Path) -> dict:
             data[key.strip()] = value.strip().strip('"')
     if missing := {"commit", "verdict"} - data.keys():
         sys.exit(f"{path.relative_to(ROOT)}: у шапці бракує {', '.join(sorted(missing))}")
+    data["required"] = data.get("required", "").split()
     return data | {"report": body.strip()}
 
 
@@ -208,10 +210,15 @@ def reviews(a):
         nick, lab = path.parent.name, path.stem.removeprefix("lab")
         if nick not in picked or not lab.isdigit():
             continue
-        cell = call(a.target, "PUT", f"/students/{nick}/labs/{lab}/review", parse_review(path))
-        print(f"{nick:16} лаба {lab} · {cell['review']['verdict']} → {cell['state']}")
+        r = parse_review(path)
+        done = f"{sum(1 for x in r['required'] if x == 'done')}/{len(r['required'])}" if r["required"] else "-"
+        if a.dry:
+            print(f"{nick:24} лаба {lab} · {r.get('kind', '-'):5} · {done:4} · {r['verdict']:7} · {r.get('summary', '')}")
+        else:
+            cell = call(a.target, "PUT", f"/students/{nick}/labs/{lab}/review", r)
+            print(f"{nick:24} лаба {lab} · {r.get('kind', '-'):5} · {done:4} · {cell['review']['verdict']} → {cell['state']}")
         n += 1
-    print(f"звітів надіслано: {n}")
+    print(f"звітів {'прочитано' if a.dry else 'надіслано'}: {n}")
 
 
 def auto(a):
@@ -268,6 +275,7 @@ def main():
         s = sub.add_parser(name)
         s.add_argument("nicks", nargs="*")
         s.set_defaults(run=run)
+    s.add_argument("--dry", action="store_true")  # reviews only
     s = sub.add_parser("cut")
     s.add_argument("lab", type=int)
     s.add_argument("nicks", nargs="*")
