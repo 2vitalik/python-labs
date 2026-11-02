@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T253** · тікетів: 252 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T259** · тікетів: 258 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -260,3 +260,6 @@
 | ods | [T250](ods/.t/T250-P--ods-deploy-go.md) | 💡 | ods-deploy-go | Деплой ods через місяць: що змінилося, репетиція на HEAD, порядок дій | 🟢 ⬜ |
 | ods | [T251](ods/.t/T251-Q--ods-deploy-go-choices.md) | ❓ | ods-deploy-go-choices | Деплой ods: вибори перед стартом | 🔴 ⬜ |
 | ods | [T252](ods/.t/T252-C--ods-deploy-checklist.md) | 🔆 | ods-deploy-checklist | Деплой ods: чекліст команд крок за кроком | 🟢 ⬜ |
+| games | [T253](games/.t/T253--ludopedia-corpus/plan.md) | ⚙️ | ludopedia-corpus | Корпус лудопедії: сотні ігор, механіки, система опису — план | 🟢 🟩 |
+| games | [T257](games/.t/T257-P--ludopedia-rules-system.md) | 💡 | ludopedia-rules-system | Система опису гри після корпусу 275 ігор: поле, правила, стани, фази, обмеження | 🟢 ⬜ |
+| games | [T258](games/.t/T258-Q--ludopedia-corpus-choices.md) | ❓ | ludopedia-corpus-choices | Вибори за корпусом лудопедії | 🔴 ⬜ |

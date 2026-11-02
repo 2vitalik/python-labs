@@ -1,0 +1,204 @@
+# Чернетки карток каталогу з корпусу лудопедії (T253, 2026-11-02, 205 ігор).
+# Формат — як data/catalog/tasks.yaml (рядок taskline: 'монетка Назва [games] #tags 🔁 ✍️ — опис'); усі ✍️ чернетки, ціни орієнтовні.
+# Злиття: скопіювати потрібні рядки в tasks.yaml під ту саму зону/підзону → `uv run python catalog_io.py import` (upsert по slug).
+# Нові підзони, яких у zones.py нема, позначені коментарем «НОВА ПІДЗОНА» — покласти поруч у наявну або додати в ZONES/_map.md свідомим кроком.
+entities:
+  move:
+  - wrap-edges: '🌱 Тор: вихід за край → протилежний бік [pac-man, snake] ✍️ — Тунель Pac-Man, Life на торі, Labyrinth; 8 ігор корпусу.'
+  - wall-follower:
+      title: Ворог тримається стіни
+      description: Жук/парамеція Chip's Challenge, світлячки Boulder Dash; слот — якого боку.
+      coin: bronze
+      slots:
+      - {key: side, label: Бік, type: choice, options: [left, right], required: true}
+      status: draft
+  - turn-when-blocked:
+      title: Поворот при упорі
+      description: Що робить ворог, впершись у перешкоду — сімʼя з 7 поведінок однією карткою.
+      coin: tin
+      slots:
+      - {key: turn, label: Поворот, type: choice, options: [left, right, reverse, random, stop], required: true}
+      status: draft
+  - carrier-platform: '📎 Платформа везе того, хто стоїть [frogger] ✍️ — Колоди Frogger, плоти A Monster''s Expedition, конвеєри.'
+  - ladder-climb: '📎 Драбини і перекладини [lode-runner] ✍️ — Вертикальний рух лише по драбині; перекладини — рух руками.'
+  - party-switch: '🥉 Кілька аватарів з перемиканням ✍️ — XOR, Catrap, Kwirk: активний персонаж змінюється клавішею, решта стоять.'
+  - descend-and-reverse: '📎 Строй: біля краю — вниз і розворот ✍️ — Space Invaders, Centipede: група рухається як одне ціле.'
+  - roll-off-rounded: '📎 Камінь скочується з округлого [boulder-dash] ✍️ — Падаючий обʼєкт зсувається вбік, якщо під ним округлий обʼєкт і поруч вільно.'
+  legality:
+  - pull-object: '📎 Тягнення обʼєкта [sokoban] ✍️ — Протилежність штовханню; Pushmo, Baba (PULL), Sokoban-варіант.'
+  - one-way-cell: '🌱 Одностороння клітина ✍️ — Порти Supaplex, поляризатори Deflektor, стрілки Lolo: прохід лише в одному напрямку.'
+  - height-levels: '🥈 Клітини з висотою ✍️ — Final Fantasy Tactics, Lightbot, Sausage Roll: стрибок лише на ±1 рівень, падіння з висоти.'
+  - polyomino-placement: '🥉 Викладання поліоміно на сітку ✍️ — Blokus, Patchwork, Rampart, Tiny Towns: фігура з кількох клітин, перевірка накладання й сусідства.'
+  - piece-rotate-flip: '📎 Поворот і віддзеркалення фігури перед ходом ✍️ — Blokus, Tetris-подібні, Ubongo.'
+  - pawn-promotion: '📎 Перетворення фігури на останньому ряду [chess] ✍️ — Шахи, шашки (дамка), сьоґі (зона перетворення).'
+  - piece-drop: '🥈 Дроп узятої фігури на поле [chess] ✍️ — Crazyhouse, сьоґі: взяте стає своїм і ставиться з руки; рука як окрема зона.'
+  - move-limit: '📎 Ліміт ходів на рівень ✍️ — XOR, Helltaker, Hitman GO: лічильник ходів, 0 = провал.'
+  interact:
+  - destructible-blocks:
+      title: Руйновані блоки
+      description: Цегла Bomberman, стіни Wrecking Crew, гриби Centipede; слот — що лишається.
+      coin: wood
+      games: [bomberman]
+      slots:
+      - {key: drops, label: Що лишає, type: choice, options: [none, item, exit, floor]}
+      status: draft
+  - dig-terrain: '📎 Копання: земля → порожня клітина [boulder-dash] ✍️ — Boulder Dash, Dig Dug, Mr. Do!: аватар робить тунель; земля не падає.'
+  - fill-hole: '📎 Блок засипає дірку ✍️ — Kwirk, Pokémon Strength, A Monster''s Expedition: обʼєкт у дірці стає підлогою.'
+  - button-toggle:
+      title: Кнопка/важіль перемикає стан цілей
+      description: Зелена кнопка Chip's Challenge, плити Zelda, важелі Railbound; слот — цілі.
+      coin: bronze
+      slots:
+      - {key: targets, label: Що перемикає, type: text, required: true}
+      status: draft
+  - mirror-reflect: '📎 Дзеркало відбиває промінь/снаряд ✍️ — Deflektor, LaserTank, Khet: кут дзеркала визначає новий напрямок.'
+  - thief: '📎 Злодій забирає предмети ✍️ — Chip''s Challenge (черевики), Gauntlet, NetHack: контакт = втрата інвентаря.'
+  - freeze-into-block: '🥉 Ворог → блок ✍️ — Kickle Cubicle, Toki Tori: заморожений ворог стає обʼєктом, який можна штовхати/ставати.'
+  - crush-by-slide: '📎 Розчавити ковзним обʼєктом ✍️ — Pengo, Kickle: блок, що ковзає, вбиває ворога на шляху.'
+  - swap-on-contact: '📎 Обмін місцями при вході ✍️ — Baba (SWAP), Khet (скарабей): сутності міняються клітинами замість блокування.'
+  - line-match-clear: '📎 Лінія з N однакових зникає ✍️ — Lines 98, Dr. Mario, match-3: перевірка ліній після кожного ходу.'
+  combat:
+  - explode-area:
+      title: Вибух площею
+      description: "Сімʼя з blast-wave (хрест): тут — квадрат 3×3 / радіус; слот — форма; продукт вибуху — окремий слот."
+      coin: bronze
+      slots:
+      - {key: shape, label: Форма, type: choice, options: [cross, square3, radius], required: true}
+      - {key: into, label: Що лишається, type: text}
+      status: draft
+  - beam-tracing: '🥉 Трасування променя по сітці ✍️ — Deflektor, Khet, LaserTank, Light Up: промінь іде до перешкоди, дзеркала/поляризатори міняють шлях.'
+  - line-of-sight-attack: '🥉 Атака по лінії бачення ✍️ — Lolo (Медуза), DROD, Hoplite (лучник): ворог бʼє, коли гравець на одній лінії без перешкод.'
+  - tower-placement: '🥉 Розстановка веж на сітці [pvz-lite] ✍️ — Вежа займає клітини, має вартість, часом формує лабіринт (Fieldrunners).'
+  - tower-range:
+      title: Радіус/форма дії вежі
+      coin: tin
+      games: [pvz-lite]
+      slots:
+      - {key: shape, label: Форма зони, type: choice, options: [line, radius, square, custom], required: true}
+      status: draft
+  state:
+  - tile-rotate: '🌱 Поворот плитки ✍️ — Infinity Loop, Net, Dorfromantik: плитка має орієнтацію, поворот — хід або підготовка ходу.'
+  - pipe-connectors: '🌱 Плитка-зʼєднувач з портами ✍️ — Pipe Mania, Net, Zenji: у плитки 1–4 виходи; звʼязок = порти збігаються.'
+  - coverage-area:
+      title: Зона покриття навколо сутності
+      description: Спринклери Stardew, стовпи Factorio, опудала; слот — форма.
+      coin: tin
+      slots:
+      - {key: shape, label: Форма, type: choice, options: [cross, square, radius], required: true}
+      - {key: size, label: Розмір, type: int}
+      status: draft
+  - status-effects: '🥉 Статуси зі стеками й тіком ✍️ — Отрута, заморозка, щит на N ходів; Wildfrost, Backpack Hero, роглайки.'
+  - item-identification: '📎 Невідомі предмети до використання ✍️ — Rogue, NetHack, DCSS, Cinco Paus: назва розкривається дією.'
+  - hunger-clock: '📎 Голод як таймер ✍️ — Роглайки: лічильник падає щохід, їжа відновлює, 0 = шкода.'
+  - unit-xp-skills: '🥉 Юніт набирає досвід і навички ✍️ — Fire Emblem, Into the Breach (пілоти), Wesnoth: XP → рівень → нові вміння.'
+  spawn:
+  - spawner-entity: '🥉 Сутність-генератор ✍️ — Gauntlet, Chip''s Challenge (клон-машина), Rogue: породжує ворогів, доки її не знищено/не натиснуто.'
+game-logic:
+  score:
+  - chain-reaction:
+      title: Каскад і ланцюг
+      description: Збіги після осідання, детонації сусідніх, ланцюг Puyo; слот — множник.
+      coin: bronze
+      slots:
+      - {key: multiplier, label: Множник за крок, type: text}
+      status: draft
+  - extra-life-threshold:
+      title: Життя за пороги очок
+      coin: wood
+      slots:
+      - {key: every, label: Кожні N очок, type: int, required: true}
+      status: draft
+  - leftover-penalty: '🌱 Штраф за залишок ✍️ — Blokus, Azul, Scrabble: наприкінці мінус за невикладені фігури / порожні клітини.'
+  opponent:
+  - pass-turn: '🌱 Пас, коли нема ходів ✍️ — Reversi, Ataxx, Onitama, го: хід переходить без дії.'
+  - repetition-draw: '📎 Нічия повторенням позиції [chess] ✍️ — Триразове повторення, ко в го, правило 50 ходів.'
+  - garbage-attack: '🥈 Сміття супернику у versus ✍️ — Tetris, Puyo, Dr. Mario: ланцюг у гравця → рядки/краплі у суперника; offset.'
+  - simultaneous-versus: '🥈 Два поля одночасно ✍️ — Puyo, Tetris 99, Take It Easy: однакові умови, перемога за швидкістю/виживанням.'
+  - async-multiplayer: '🥈 Хід поштою ✍️ — Letterpress, Words With Friends: партія триває днями, нотифікації про хід.'
+  - online-multiplayer: '🥇 Онлайн-партія ✍️ — Синхронізація стану через сервер/сокет; лобі, рейтинг — окремі картки.'
+  constraints:
+  - connectivity-check: '🥉 Перевірка звʼязності ✍️ — Hashi, Net, Nurikabe, Hive: усі острови/труби/камені — одна компонента (BFS).'
+  - single-loop-check: '🥉 Перевірка однієї петлі [paper-puzzles] ✍️ — Slitherlink, Masyu, Yajilin: ребра утворюють рівно один цикл.'
+  - neighbor-count-clue: '🌱 Число = кількість сусідів виду [minesweeper, paper-puzzles] ✍️ — Сапер, Light Up, Life: підказка рахує 4/8 сусідів.'
+  - line-sum-clue: '📎 Підказка на лінії [paper-puzzles] ✍️ — Kakuro, Hexcells, Voltorb Flip, Skyscrapers: сума/кількість у рядку чи діагоналі.'
+  - word-validation: '🥉 Перевірка слова словником ✍️ — Scrabble, Wordle, Boggle: слово є в словнику; завантаження словника, пошук.'
+  - rule-variants: '🥉 Конструктор варіантів правил ✍️ — Lichess-варіанти, Tatham-параметри, Life B/S: набір перемикачів правил у налаштуваннях.'
+  save:  # НОВА ПІДЗОНА-кандидат: history «Історія ходів» — поки поруч із збереженням
+  - undo-redo: '📎 Undo/redo ходів гри ✍️ — Сімʼя: один крок / без ліміту / redo / rewind / рестарт; 41 гра корпусу просить.'
+    children:
+    - undo-step: '📎 Один крок назад'
+    - undo-unlimited: '🥉 Без ліміту (стек станів)'
+    - redo: '🌱 Повернути скасоване'
+    - rewind: '🥈 Безперервне перемотування часу — Catrap, Toki Tori, Braid-подібне'
+    - restart-level: '🌱 Рестарт рівня з початку'
+  - move-notation: '🥉 Запис ходів у нотації [chess] ✍️ — Список ходів, перегляд назад, експорт PGN/LURD.'
+  - seed-share: '📎 Показати/ввести seed рівня ✍️ — Hexcells Infinite, Tatham game ID, роглайки: той самий рівень у друга.'
+  - state-string: '📎 Стан гри як рядок-код ✍️ — Sokoban RLE, Rush Hour 36 символів, Bloxorz level codes: копіювання й відновлення.'
+  lose:
+  - permadeath: '🌱 Одне життя, сейв стирається ✍️ — Роглайки, Fire Emblem (юніт), hardcore-режими.'
+  difficulty:
+  - skip-level: '🌱 Пропуск рівня з лімітом ✍️ — Supaplex, Pushmo, Helltaker: N пропусків на гру.'
+  economy:
+  - run-relics: '🥉 Реліквії забігу ✍️ — Роглайти: пасивні предмети, що міняють правила до кінця забігу.'
+  program:  # НОВА ПІДЗОНА «Програма гравця» — клас program-robots (Karel, Lightbot, RoboRally, 7BH)
+  - command-program: '🥉 Програма команд для сутності ✍️ — Karel, Lightbot: список команд виконується після запуску.'
+  - user-procedures: '🥈 Власні процедури/функції ✍️ — Lightbot P1/P2, RoboZZle F1–F5, рекурсія.'
+  - sensor-predicates: '🥉 Сенсори-умови ✍️ — frontIsClear, onBeeper, колір плитки: розгалуження в програмі.'
+  - step-execution: '📎 Покрокове виконання з підсвіткою команди ✍️ — Крок/пауза/швидкість, поточна команда підсвічена.'
+  - fsm-program: '🥇 Програма як скінченний автомат ✍️ — Kara: стан × сенсори → дії + наступний стан.'
+levels:
+  progression:
+  - world-map: '🥉 Мапа світу з вузлами-рівнями ✍️ — Baba, Snakebird, Candy Crush saga: вузли відкриваються, видно прогрес.'
+  - stairs-levels: '🌱 Поверхи через сходи ✍️ — Роглайки, Magic Tower: вниз/вгору, рівень лишається або генерується знову.'
+  generation:
+  - no-guess-generation: '🥇 Генерація без вгадування [minesweeper, paper-puzzles] ⭐ ✍️ — Hexcells, Kaboom, Tatham Mines: розвʼязується лише логікою.'
+interface:
+  input:
+  - path-drawing: '📎 Малювання шляху drag-ом ✍️ — Flow Free, Cosmic Express, LYNE, Puzzle & Dragons: шлях по сусідніх клітинах.'
+  - path-cut: '📎 Відкат шляху до клітини ✍️ — Повернення по своєму шляху стирає хвіст; перетин чужого обриває його.'
+  - multi-select: '📎 Виділення кількох клітин [paper-puzzles] ✍️ — SudokuPad, Tatham: групове введення/зафарбовування.'
+  - edge-marking: '📎 Розмітка ребер [paper-puzzles] ✍️ — Slitherlink, Masyu: клік по ребру, хрестик «нема ребра».'
+  - dot-mark: '🌱 Крапка/знак питання на клітині [minesweeper, paper-puzzles] ✍️ — Невпевнена позначка, не впливає на перевірку.'
+  hud:
+  - highlights: '📎 Підсвітки на полі ✍️ — Сімʼя: виділення, легальні ходи (є), конфлікти, останній хід, досяжність, загроза, телеграф, шлях.'
+    children:
+    - selection-highlight: '🌱 Виділена клітина/фігура'
+    - conflict-highlight: '📎 Конфлікти розмітки [paper-puzzles]'
+    - last-move-highlight: '🌱 Останній хід суперника [chess]'
+    - reachable-highlight: '📎 Досяжні клітини за хід'
+    - threat-range: '📎 Зона ураження ворога'
+    - telegraph-marker: '📎 Куди вдарить ворог наступного ходу — Into the Breach'
+    - path-preview: '📎 Превʼю шляху до цілі'
+  - move-counter: '🌱 Лічильник ходів/поштовхів [sokoban] ✍️'
+  - remaining-counter: '🌱 Лишилось: мін/точок/ворогів [minesweeper, pac-man] ✍️'
+  - next-queue: '🌱 Черга наступних фігур/плиток ✍️ — Tetris next, Lines 98 превʼю кольорів.'
+  - pocket: '📎 Рука/взяті фігури [chess] ✍️ — Сьоґі, Crazyhouse, Hive: панель фігур поза полем.'
+  - message-log: '📎 Журнал подій ✍️ — Роглайки: рядок/список повідомлень про події тіку.'
+  - objective-text: '🌱 Поточна ціль словами ✍️'
+  - popup-text: '🌱 Спливний текст над клітиною ✍️ — +100, Combo ×3, шкода.'
+  menus:
+  - editor-window: '🥈 Вікно редактора рівнів #window ✍️ — Окремий екран з палітрою й інструментами (функції — підзона levels/editor).'
+  - stats-window: '🌱 Статистика гравця #window ✍️ — Перемоги, час, серії, найкращі результати.'
+  - mode-select: '🌱 Вибір режиму #window ✍️ — Класика / на час / нескінченний / versus.'
+  - map-window: '📎 Карта світу або підземелля #window ✍️ — На весь екран; мінікарта — HUD.'
+  - difficulty-select: '🌱 Вибір складності #window ✍️'
+  - puzzle-select: '📎 Сітка пазлів зі статусами #window [paper-puzzles] ✍️ — Банк рівнів: розвʼязано / ні / зірки.'
+  - lobby-window: '📎 Лобі мультиплеєра #window ✍️'
+  - tutorial-window: '📎 Навчання #window ✍️ — Покрокове пояснення правил у перших рівнях.'
+  - replay-window: '📎 Перегляд повтору / історії ходів #window ✍️'
+  - codex-window: '📎 Бестіарій / енциклопедія елементів #window ✍️ — Картки сутностей гри з правилами — паспорт гри всередині гри.'
+  - achievements-window: '🌱 Досягнення #window ✍️'
+  - character-select: '🌱 Вибір персонажа / загону #window ✍️'
+  - game-over-continue: '🌱 «Продовжити?» з лічильником #window ✍️ — Аркадний екран після смерті.'
+  - level-password: '🌱 Вхід на рівень за паролем #window ✍️ — Chip''s Challenge, Bomberman, Lolo.'
+  - match-setup: '📎 Налаштування партії #window [chess] ✍️ — Сторони, AI/людина, час, арена, кількість раундів.'
+  - attract-demo: '📎 Demo-режим «гра грає сама» #window ✍️ — Аркадний attract mode: показ правил без вводу.'
+  - placement-screen: '📎 Розстановка перед партією #window ✍️ — Battleship, Stratego, Khet: сховати своє поле від суперника.'
+  - pass-device: '🌱 «Передай пристрій» для hot-seat #window ✍️ — Екран-завіса між ходами з прихованою інформацією.'
+  - code-editor-window: '🥈 Редактор програми #window ✍️ — Karel, Lightbot, 7 Billion Humans: список команд, запуск, крок.'
+  results:
+  - share-result: '📎 Поділитись результатом ✍️ — Wordle-сітка емодзі, код результату в буфер.'
+  - streak-stats: '🌱 Серії й статистика щоденних ✍️ — Streak, розподіл спроб.'
+  - rating-system: '🥈 Рейтинг гравців ✍️ — Elo/Glicko для партій проти людей або AI.'
+  render:
+  - fog-of-war: '🥉 Туман війни ✍️ — Advance Wars, Wesnoth, роглайки: видно лише в радіусі своїх сутностей; запамʼятована мапа.'
