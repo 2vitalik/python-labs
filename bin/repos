@@ -7,8 +7,12 @@
   bin/repos [-t prod] push [нік…]       the facts of every repo → the site: link, branch, head, error, the commit log with `seen`
   bin/repos [-t prod] cut <lab> [нік…]  the last commit before the lab's deadline (deadlines — from the site);
                                         --checkout → a work tree at it in data/repos/.cut/<група>/<нік>/lab<N>/
+  bin/repos facts <lab> [нік…]          measure the cut (or HEAD when nothing came before the deadline): code, syntax, the log's shape
+                                        → data/reviews/<нік>/lab<N>.facts.json (bin/labfacts.py); a line per student
+  bin/repos digest <lab>                header × profile × facts consistency, extra_missing against the AST, tables by group (bin/labdigest.py)
   bin/repos [-t prod] reviews [нік…]    data/reviews/<нік>/lab<N>.md → the site: a `key: value` header between --- lines
                                         (commit, verdict, head, head_verdict, kind, required, summary), then the report in Markdown;
+                                        lab<N>.facts.json and lab<N>.profile.json next to it go along as `profile`;
                                         --dry — only read the headers and print a table, send nothing
   bin/repos [-t prod] auto              sync → pull → push; no push when GitHub was out of reach
   bin/repos launchd on|off              run `auto` every hour on this Mac (launchd agent of this user; log — ~/Library/Logs)
@@ -24,6 +28,8 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
 
+import labdigest
+import labfacts
 from siteapi import ROOT, call
 
 sys.path.insert(0, str(ROOT / "core" / "api"))
@@ -188,6 +194,29 @@ def cut(a):
         print(line)
 
 
+def cut_tree(r: dict, lab: int) -> Path:
+    return HOME / ".cut" / (r["group"] or "-") / r["nick"] / f"lab{lab}"
+
+
+def measure(a):
+    """Facts a script can see, per student: the cut's work tree when there is one, the clone's HEAD when nothing came before the deadline."""
+    for r in students(a.nicks):
+        home = folder(r)
+        if not r["github"] or not (home / ".git").exists():
+            continue
+        tree, head = cut_tree(r, a.lab), git.head(home)[1]
+        sha = git.git("rev-parse", "HEAD", cwd=tree).stdout.strip() if (tree / ".git").exists() else ""
+        f = labfacts.measure(tree if sha else home, home, sha, head)
+        save(REVIEWS / r["nick"] / f"lab{a.lab}.facts.json", f)
+        c, g = f["code"], f["git"]
+        print(f"{r['nick']:24} {r['group']:10} {'зріз' if sha else 'HEAD'} · py {c['py_files']:3} · рядків {c['py_lines']:5} · функцій {c['functions']:3} · {c['ui']:8}"
+              f" · комітів {g['before']}+{g['after']} · сесій {g['sessions']} · найбільший {int(g['largest_share'] * 100)}%" + (f" · 🗑 {','.join(c['junk'])}" if c["junk"] else ""))
+
+
+def digest(a):
+    print(labdigest.digest(REVIEWS, a.lab, {r["nick"]: r["group"] for r in students([])}))
+
+
 def parse_review(path: Path) -> dict:
     text = path.read_text()
     if not text.startswith("---\n"):
@@ -201,7 +230,9 @@ def parse_review(path: Path) -> dict:
     if missing := {"commit", "verdict"} - data.keys():
         sys.exit(f"{path.relative_to(ROOT)}: у шапці бракує {', '.join(sorted(missing))}")
     data["required"] = data.get("required", "").split()
-    return data | {"report": body.strip()}
+    extra = {k: load(path.with_suffix(f".{k}.json"), None) for k in ("facts", "profile")}  # lab1.facts.json — measured; lab1.profile.json — the agent's
+    profile = (extra["facts"] or {}) | ({"agent": extra["profile"]} if extra["profile"] else {})
+    return data | {"report": body.strip(), "profile": profile}
 
 
 def reviews(a):
@@ -281,6 +312,13 @@ def main():
     s.add_argument("nicks", nargs="*")
     s.add_argument("--checkout", action="store_true")
     s.set_defaults(run=cut)
+    s = sub.add_parser("facts")
+    s.add_argument("lab", type=int)
+    s.add_argument("nicks", nargs="*")
+    s.set_defaults(run=measure)
+    s = sub.add_parser("digest")
+    s.add_argument("lab", type=int)
+    s.set_defaults(run=digest)
     a = p.parse_args()
     a.run(a)
 

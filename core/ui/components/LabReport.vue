@@ -2,7 +2,7 @@
 import { computed, onMounted, ref } from 'vue'
 
 import { getLabReview } from '../api.js'
-import { VERDICTS, fmtWhen } from '../labs.js'
+import { VERDICTS, fmtWhen, reviewLine } from '../labs.js'
 import { renderMd } from '../md.js'
 
 // the agent's report on a student's lab, fetched when opened: the header line, then the markdown
@@ -24,7 +24,7 @@ onMounted(async () => {
     <div v-if="error" class="text-danger">{{ error }}</div>
     <template v-else-if="review">
       <div class="small text-secondary mb-2">
-        зріз <code>{{ review.commit }}</code> — {{ VERDICTS[review.verdict] }}<template v-if="review.head"> · HEAD <code>{{ review.head }}</code> — {{ VERDICTS[review.head_verdict] || '?' }}</template>
+        зріз <code>{{ review.commit || '—' }}</code> — {{ reviewLine(review) }}<template v-if="review.head"> · HEAD <code>{{ review.head }}</code> — {{ VERDICTS[review.head_verdict] || '?' }}</template>
         · {{ review.by }} · {{ fmtWhen(review.at) }}
       </div>
       <div class="md" v-html="html"></div>

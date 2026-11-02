@@ -255,11 +255,14 @@
 | tgbot | [T245](tgbot/.t/T245--due-tell-student/plan.md) | ⚙️ | due-tell-student | /due: повідомлення студентові від викладача з підписом бота — план | 🟢 ⬜ |
 | platform | [T246](platform/.t/T246--table-quick-chips/plan.md) | ⚙️ | table-quick-chips | /table: швидкі чіпи-фільтри «у кого є» з лічильниками — план | 🟢 ⬜ |
 | github | [T247](github/.t/T247--repos-auto/plan.md) | ⚙️ | repos-auto | Репозиторії: pull → push щогодини на ноутбуці, сервер — пізніше — план | 🟢 🟩 |
-| github | [T248](github/.t/T248-P--review-spec.md) | 💡 | review-spec | Звіт по лабі: що питаємо в агента, поля звіту, шлях на сайт | 🟢 ⬜ |
+| github | [T248](github/.t/T248-P--review-spec.md) | 💡 | review-spec | Звіт по лабі: що питаємо в агента, поля звіту, шлях на сайт | 🟢 🟩 |
 | github | [T249](github/.t/T249-Q--review-choices.md) | ❓ | review-choices | Звіти по лабі 1 — вибори перед запуском на всіх | 🔴 ⬜ |
 | ods | [T250](ods/.t/T250-P--ods-deploy-go.md) | 💡 | ods-deploy-go | Деплой ods через місяць: що змінилося, репетиція на HEAD, порядок дій | 🟢 ⬜ |
 | ods | [T251](ods/.t/T251-Q--ods-deploy-go-choices.md) | ❓ | ods-deploy-go-choices | Деплой ods: вибори перед стартом | 🔴 ⬜ |
 | ods | [T252](ods/.t/T252-C--ods-deploy-checklist.md) | 🔆 | ods-deploy-checklist | Деплой ods: чекліст команд крок за кроком | 🟢 ⬜ |
 | games | [T253](games/.t/T253--ludopedia-corpus/plan.md) | ⚙️ | ludopedia-corpus | Корпус лудопедії: сотні ігор, механіки, система опису — план | 🟢 🟩 |
+| github | [T254](github/.t/T254--reviews-lab1/plan.md) | ⚙️ | reviews-lab1 | Звіти по лабі 1 на всіх: зріз, виміряні факти, профілі, субагенти пачками — план | 🟢 🟩 |
+| github | [T255](github/.t/T255-C--lab1-stream-review.md) | 🔆 | lab1-stream-review | Лаба 1 на зрізі: що здав потік — звіти агента по 82 репозиторіях | 🟢 🟩 |
+| github | [T256](github/.t/T256-Q--lab1-review-followup.md) | ❓ | lab1-review-followup | Після звітів по лабі 1: гілки поза main, відправка на сайт, модель для лаби 2 | 🔴 ⬜ |
 | games | [T257](games/.t/T257-P--ludopedia-rules-system.md) | 💡 | ludopedia-rules-system | Система опису гри після корпусу 275 ігор: поле, правила, стани, фази, обмеження | 🟢 ⬜ |
 | games | [T258](games/.t/T258-Q--ludopedia-corpus-choices.md) | ❓ | ludopedia-corpus-choices | Вибори за корпусом лудопедії | 🔴 ⬜ |

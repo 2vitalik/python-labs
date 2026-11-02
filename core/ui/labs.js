@@ -14,6 +14,9 @@ export const STATES = {
   nodue: { emoji: '—', text: 'дедлайн не заданий', cls: 'none' },
 }
 export const VERDICTS = { done: 'зроблено', partial: 'частково', none: 'нема' }
+export const KINDS = { game: 'гра', tasks: 'вправи без гри', other: 'інший код', none: 'коду нема' }  // what the reviewed code is (T248)
+export const doneOf = (required) => (required?.length ? `${required.filter((x) => x === 'done').length}/${required.length}` : '')  // «4/6»
+export const reviewLine = (r) => [VERDICTS[r.verdict], doneOf(r.required), KINDS[r.kind]].filter(Boolean).join(' · ')  // «частково · 4/6 · гра»
 export const labName = (n) => `Лаба ${n}`
 export const labPath = (n) => site.guide.find((g) => g.n === Number(n))?.path || ''
 export const hasWord = (cell) => cell.mark?.met === true || cell.mark?.met === false  // the teacher's word stands on the cell
@@ -42,7 +45,7 @@ export function describe(cell, name, lab) {
   if (cell.mark?.asked) lines.push(`просив подовжити${cell.mark.asked_for ? `: ${cell.mark.asked_for}` : ''}`)
   lines.push(f.before || f.after ? `комітів до дедлайну ${f.before}${f.window !== f.before ? ` (у вікні лаби ${f.window})` : ''} · після ${f.after}` : 'комітів нема')
   if (f.last) lines.push(`останній до дедлайну: ${fmtWhen(f.last)}`)
-  if (cell.review) lines.push(`звіт: ${VERDICTS[cell.review.verdict]}${cell.review.stale ? ' (інший зріз)' : ''}${cell.review.summary ? ` — ${cell.review.summary}` : ''}`)
+  if (cell.review) lines.push(`звіт: ${reviewLine(cell.review)}${cell.review.stale ? ' (інший зріз)' : ''}${cell.review.summary ? ` — ${cell.review.summary}` : ''}`)
   if (hasWord(cell)) lines.push(`слово викладача: ${cell.mark.met ? 'вклався' : 'не вклався'}`)
   if (cell.mark?.note) lines.push(`нотатка: ${cell.mark.note}`)
   return lines.join('\n')

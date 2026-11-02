@@ -1,4 +1,4 @@
-import { STATES, fmtWhen, labName } from './labs.js'
+import { STATES, doneOf, fmtWhen, labName } from './labs.js'
 import { site } from './site.js'
 
 // the columns of /table (T240): where a row's facts come from and how they read; the page picks and orders them.
@@ -10,6 +10,7 @@ export const REPO = { ok: { emoji: '🟢', text: 'клоновано, досту
 export const EXT = { until: { emoji: '⏳', text: 'подовжено до дати', color: 'yellow' }, open: { emoji: '⏳', text: 'подовжено, дата невідома', color: 'orange' } }
 export const MET = { yes: { emoji: '✅', text: 'вклався — слово викладача', color: 'green' }, no: { emoji: '❌', text: 'не вклався — слово викладача', color: 'red' } }
 export const VERDICT = { done: { emoji: '🟢', text: 'зроблено', color: 'green' }, partial: { emoji: '🟡', text: 'частково', color: 'yellow' }, none: { emoji: '🔴', text: 'нема', color: 'red' } }
+export const KIND = { game: { emoji: '🎮', text: 'гра на клітинках', color: 'green' }, tasks: { emoji: '📝', text: 'вправи без гри', color: 'yellow' }, other: { emoji: '🧩', text: 'інший код', color: 'orange' }, none: { emoji: '∅', text: 'коду нема', color: 'red' } }
 const TONE = { ok: 'green', bad: 'red', meh: 'yellow' }
 const LAB = Object.fromEntries(Object.entries(STATES).map(([k, s]) => [k, { emoji: s.emoji, text: s.text, color: TONE[s.cls] }]))
 const FIELD = { bool: 'bool', select: 'enum', multi: 'multi', number: 'number', text: 'text', date: 'date' }
@@ -46,7 +47,9 @@ function lab(n) {
     col(`lab${n}.ext`, g, 'enum', `${g}: подовження`, '⏳', (r) => (m(r).until ? 'until' : m(r).open ? 'open' : null), { options: EXT, sub: (r) => m(r).until && fmtWhen(m(r).until, true) }),
     col(`lab${n}.met`, g, 'enum', `${g}: слово викладача`, '✍', (r) => (m(r).met === true ? 'yes' : m(r).met === false ? 'no' : null), { options: MET }),
     col(`lab${n}.note`, g, 'text', `${g}: нотатка`, '📝', (r) => m(r).note, { edit: 'mark', lab: n, field: 'note' }),
-    col(`lab${n}.review`, g, 'enum', `${g}: звіт агента`, '🤖', (r) => c(r).review?.verdict, { options: VERDICT, hint: (r) => c(r).review?.summary }),
+    col(`lab${n}.review`, g, 'enum', `${g}: звіт агента`, '🤖', (r) => c(r).review?.verdict, { options: VERDICT, hint: (r) => c(r).review?.summary, sub: (r) => doneOf(c(r).review?.required) }),
+    col(`lab${n}.kind`, g, 'enum', `${g}: що за код (звіт агента)`, '🎮', (r) => c(r).review?.kind || null, { options: KIND, hint: (r) => c(r).review?.summary }),
+    col(`lab${n}.required`, g, 'text', `${g}: обовʼязкових зроблено на зрізі`, '✔/6', (r) => doneOf(c(r).review?.required) || null),
   ]
 }
 // what an answer claims, checked against what the site sees — by the answer's emoji (the «Перший дедлайн» poll and its kin)

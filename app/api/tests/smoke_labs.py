@@ -121,6 +121,15 @@ with TestClient(main.app) as c:
     check("bad verdict → 422", c.put("/api/students/vasya/labs/1/review", json=review | {"verdict": "ok"}).status_code == 422)
     r = c.get("/api/students/vasya/labs/1/review").json()
     check("the full review carries the report", r["report"] == "# Лаба 1\n\nтекст", r)
+    full = review | {"kind": "game", "required": ["done", "done", "partial", "none", "done", "done"], "profile": {"code": {"py_files": 1}, "agent": {"level": 3}}}
+    r = c.put("/api/students/vasya/labs/1/review", json=full).json()["review"]
+    check("kind and required in the cell", r["kind"] == "game" and r["required"] == full["required"], r)
+    r = c.get("/api/students/vasya/labs/1/review").json()
+    check("the full review carries the profile", r["profile"]["agent"]["level"] == 3 and r["kind"] == "game", r)
+    check("bad kind or a bad required word → 422", c.put("/api/students/vasya/labs/1/review", json=full | {"kind": "x"}).status_code == 422
+          and c.put("/api/students/vasya/labs/1/review", json=full | {"required": ["ok"]}).status_code == 422)
+    r = c.put("/api/students/vasya/labs/1/review", json=review).json()["review"]
+    check("a review without the new fields → empty kind, no required", r["kind"] == "" and r["required"] == [], r)
     check("no review for lab 3 → 404", c.get("/api/students/vasya/labs/3/review").status_code == 404)
     check("the teacher's word beats the review", c.put("/api/students/vasya/labs/1", json={"met": True}).json()["state"] == "ok")
     r = c.put("/api/students/petya/labs/1/review", json={"commit": "x", "verdict": "none"}, headers=AGENT)

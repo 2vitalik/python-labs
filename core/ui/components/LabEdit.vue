@@ -2,7 +2,7 @@
 import { computed, reactive, ref } from 'vue'
 
 import { putStudentLab } from '../api.js'
-import { STATES, VERDICTS, fmtWhen, fromInput, labName, toInput } from '../labs.js'
+import { STATES, VERDICTS, fmtWhen, fromInput, labName, reviewLine, toInput } from '../labs.js'
 import LabReport from './LabReport.vue'
 
 // the teacher's word on one student × one lab: 🙋 they asked, an extension (a date, «поки невідомо», none), a verdict, a note — one save;
@@ -87,7 +87,7 @@ function drop() {
     <div v-if="error" class="text-danger small mt-2">{{ error }}</div>
     <div class="small mt-3">
       <template v-if="cell.review">
-        🤖 звіт: <b>{{ VERDICTS[cell.review.verdict] }}</b> на зрізі <code>{{ cell.review.commit }}</code><template v-if="cell.review.head"> · HEAD — {{ VERDICTS[cell.review.head_verdict] || '?' }}</template>
+        🤖 звіт: <b>{{ reviewLine(cell.review) }}</b> на зрізі <code>{{ cell.review.commit || '—' }}</code><template v-if="cell.review.head"> · HEAD — {{ VERDICTS[cell.review.head_verdict] || '?' }}</template>
         <span v-if="cell.review.stale" class="text-warning"> · зріз уже інший</span> · {{ cell.review.by }}, {{ fmtWhen(cell.review.at) }}
         <span v-if="cell.review.summary"> — {{ cell.review.summary }}</span>
         <a href="#" class="ms-2" @click.prevent="showReport = !showReport">{{ showReport ? 'сховати звіт' : 'весь звіт' }}</a>

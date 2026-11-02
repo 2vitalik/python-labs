@@ -7,7 +7,7 @@ from core.deps import editor_user
 from core.lab_marks import set_mark
 from core.labs import Index
 from core.models.history import record, record_new
-from core.models.repo import Commit, Repo, Review, Verdict
+from core.models.repo import Commit, Kind, Repo, Review, Verdict
 from core.models.user import User
 from core.routes.labs import lab_no
 from fastapi import APIRouter, Depends, HTTPException
@@ -32,8 +32,11 @@ class ReviewIn(BaseModel):
     verdict: Verdict
     head: str = ""
     head_verdict: Verdict | Literal[""] = ""
+    kind: Kind | Literal[""] = ""
+    required: list[Verdict] = []
     summary: str = ""
     report: str = ""
+    profile: dict = {}
 
 
 class RepoIn(BaseModel):

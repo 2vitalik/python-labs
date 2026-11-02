@@ -7,6 +7,7 @@ from pydantic import BaseModel, Field
 from pymongo import IndexModel
 
 Verdict = Literal["done", "partial", "none"]
+Kind = Literal["game", "tasks", "other", "none"]  # what the code is (T248): the lab's game, exercises without one, something else, nothing
 
 
 class Commit(BaseModel):
@@ -54,8 +55,11 @@ class Review(Document):
     verdict: Verdict
     head: str = ""
     head_verdict: Verdict | Literal[""] = ""
+    kind: Kind | Literal[""] = ""
+    required: list[Verdict] = []  # a word per required task of the lab, in the lab's order — «4/6» in the cell
     summary: str = ""  # one line for the cell
     report: str = ""  # markdown
+    profile: dict = {}  # what bin/repos facts measured and the agent's structured judgment (T254); kept for the table, shown nowhere yet
     by: str = ""
     at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
@@ -65,5 +69,5 @@ class Review(Document):
 
     def api(self, full: bool = False) -> dict:
         data = {"commit": self.commit[:7], "verdict": self.verdict, "head": self.head[:7], "head_verdict": self.head_verdict,
-                "summary": self.summary, "by": self.by.split("@")[0], "at": when(self.at)}
-        return data | ({"report": self.report} if full else {})
+                "kind": self.kind, "required": self.required, "summary": self.summary, "by": self.by.split("@")[0], "at": when(self.at)}
+        return data | ({"report": self.report, "profile": self.profile} if full else {})
