@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T250** · тікетів: 249 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T253** · тікетів: 252 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -257,3 +257,6 @@
 | github | [T247](github/.t/T247--repos-auto/plan.md) | ⚙️ | repos-auto | Репозиторії: pull → push щогодини на ноутбуці, сервер — пізніше — план | 🟢 🟩 |
 | github | [T248](github/.t/T248-P--review-spec.md) | 💡 | review-spec | Звіт по лабі: що питаємо в агента, поля звіту, шлях на сайт | 🟢 ⬜ |
 | github | [T249](github/.t/T249-Q--review-choices.md) | ❓ | review-choices | Звіти по лабі 1 — вибори перед запуском на всіх | 🔴 ⬜ |
+| ods | [T250](ods/.t/T250-P--ods-deploy-go.md) | 💡 | ods-deploy-go | Деплой ods через місяць: що змінилося, репетиція на HEAD, порядок дій | 🟢 ⬜ |
+| ods | [T251](ods/.t/T251-Q--ods-deploy-go-choices.md) | ❓ | ods-deploy-go-choices | Деплой ods: вибори перед стартом | 🔴 ⬜ |
+| ods | [T252](ods/.t/T252-C--ods-deploy-checklist.md) | 🔆 | ods-deploy-checklist | Деплой ods: чекліст команд крок за кроком | 🟢 ⬜ |

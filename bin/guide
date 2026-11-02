@@ -4,7 +4,7 @@
   bin/guide [-t dev] ls
   bin/guide [-t dev] pull [slug…]                           no slug = every page
   bin/guide [-t dev] push <slug> -m "що змінив" [-s "Розділ"]
-  bin/guide [-t dev] snap [--to <dir>]                      every page → data/guide/, for git
+  bin/guide [-t dev] snap [--to <dir>]                      every page → data/guide/, for git; -t other than prod needs --to
 
 A page is .site/<target>/guide/<slug>.md: `# title`, a blank line, the body. No -t = prod, and a push there ends
 with a snap. The token's name on the server is who the site's history shows."""
@@ -13,6 +13,8 @@ import sys
 from pathlib import Path
 
 from siteapi import ROOT, SNAP, call, file, keep, pull, snap, taken
+
+SNAP_DIR = ROOT / "data" / "guide"  # the prod site's pages in git; another site's texts must never land here
 
 
 def text(page: dict) -> str:
@@ -42,7 +44,7 @@ def main():
     parser.add_argument("slugs", nargs="*")
     parser.add_argument("-m", "--note", default="")
     parser.add_argument("-s", "--section", default="")
-    parser.add_argument("--to", type=Path, default=ROOT / "data" / "guide")
+    parser.add_argument("--to", type=Path)
     a = parser.parse_args()
     if a.cmd == "ls":
         for g in call(a.target, "GET", "/guide"):
@@ -52,13 +54,15 @@ def main():
             page = call(a.target, "GET", f"/guide/{slug}")
             print(f"{pull(a.target, 'guide', page, text).relative_to(ROOT)} · rev {page['rev']}")
     elif a.cmd == "snap":
-        snapshot(a.target, a.to)
+        if a.target != SNAP and not a.to:
+            sys.exit(f"snap -t {a.target}: вкажи --to — data/guide/ належить {SNAP}")
+        snapshot(a.target, a.to or SNAP_DIR)
     elif len(a.slugs) != 1:
         sys.exit("push — одна сторінка за раз")
     else:
         push(a.target, a.slugs[0], a.note, a.section)
         if a.target == SNAP:
-            snapshot(a.target, a.to)
+            snapshot(a.target, a.to or SNAP_DIR)
 
 
 if __name__ == "__main__":
