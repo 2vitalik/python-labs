@@ -19,6 +19,7 @@ export default {
   links: [
     ['/my/game', 'Гра', null, true],  // the student's own game — first and bold; the catalog is «Ігри»
     ...SECTIONS.map((s) => [s.path, s.nav]), ['/lessons', 'Пари', 'admin'],  // students see it later
+    ['/ludopedia', 'Лудопедія', 'admin'],  // the corpus of reference games — the teacher's while it is v1 (T260)
     ['/students', 'Студи', 'admin'], ['/deadlines', 'Дедлайни'], ['/table', 'Таблиця'], ['/activity', 'Актив'],  // a student reaches /students as «Ігри студентів» from the games catalog
     ['/polls', 'Polls'], ['/week', 'Week'], ['/my/profile', 'Профіль'],
   ],

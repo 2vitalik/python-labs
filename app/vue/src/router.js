@@ -29,6 +29,8 @@ import GameEditPage from './pages/GameEditPage.vue'
 import GamePage from './pages/GamePage.vue'
 import GamesPage from './pages/GamesPage.vue'
 import HomePage from './pages/HomePage.vue'
+import LudoGamePage from './pages/LudoGamePage.vue'
+import LudopediaPage from './pages/LudopediaPage.vue'
 import MyGamePage from './pages/MyGamePage.vue'
 import RefsPage from './pages/RefsPage.vue'
 import StudentGamePage from './pages/StudentGamePage.vue'
@@ -75,6 +77,9 @@ export default makeRouter([
   { path: '/games/new', component: GameEditPage, meta: { title: 'Нова гра', access: 'admin' } },
   { path: '/games/:slug', component: GamePage, meta: { title: 'Ігри', filters: true } },
   { path: '/games/:slug/edit', component: GameEditPage, meta: { title: 'Ігри', access: 'admin' } },
+  // the corpus of reference games (data/ludopedia, T253/T260): the teacher's reading while the descriptions are v1
+  { path: '/ludopedia', component: LudopediaPage, meta: { title: 'Лудопедія', access: 'admin', wide: true, filters: true } },
+  { path: '/ludopedia/:slug', component: LudoGamePage, meta: { title: 'Лудопедія', access: 'admin' } },
   { path: '/colors', component: ColorsPage, meta: { title: 'Кольори', access: 'admin' } },
   { path: '/colors2', component: Colors2Page, meta: { title: 'Кольори v2', access: 'admin' } },
   { path: '/tasks', component: TasksPage, meta: { title: 'Таски', wide: true, filters: true } },
