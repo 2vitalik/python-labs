@@ -2,6 +2,7 @@
 # Шапка — YAML, читається скриптами. Коментарі прибрати у файлі гри.
 title: Назва гри                 # як її знають; UA-назва в дужках, якщо є усталена
 slug: game-slug                  # = імʼя файла, lower-kebab, EN
+aka: [Інша назва, Абревіатура]   # інші назви для пошуку: UA-переклад, регіональні назви, скорочення; нема — []
 family: push-slide               # тека (taxonomy/families.md)
 also: []                         # другорядні сімʼї, напр. [thinky]
 klass: avatar                    # avatar | cursor | figure | puzzle | hybrid
@@ -21,7 +22,7 @@ links:
   - {kind: youtube, url: "https://www.youtube.com/results?search_query=…", note: "пошук; геймплей"}
   - {kind: play, url: "https://…", note: "грати в браузері"}
   - {kind: fandom, url: "https://…", note: "вікі елементів (fandom, StrategyWiki)"}
-  - {kind: other, url: "https://…", note: "FAQ, мануал, стаття"}
+  - {kind: other, url: "https://…", note: "FAQ, мануал, стаття; kind також: bgg, itch, strategywiki"}
 stage: v1                        # v1 | v2 | v3
 coverage: 70                     # % механіки, що ліг у структуру (сутності/правила/вікна зі словників), решта — текст
 mechanics: [push-object, undo-redo, level-from-txt, +pull-object]   # slug-и каталогу; нове з «+»

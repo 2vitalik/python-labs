@@ -1,0 +1,41 @@
+# Нотатки куратора — хвиля 2 (Fable, сесія 2026-11-09, T260)
+
+Робочі спостереження другої ночі: процес, формат, що міняти в брифі, помилки черг. Підсумкові числа — в `index/README.md` і звіті [T260](../../../.dev/games/.t/T260--ludopedia-wave2/report.md); вибори — [T264](../../../.dev/games/.t/T264-Q--ludopedia-wave2-choices.md). На момент зведення — **956 ігор** (275 → 956 за ніч).
+
+## Процес
+
+- Пачка з 5 ігор на Opus (high) триває 8–17 хв і коштує 140–225 тис. токенів агента; WebSearch витрачає 0–7 на пачку. Спільний бюджет пошуку (200/сесію) вичерпався о ≈04:10 на ≈ 90-й пачці — далі агенти працювали **лише WebFetch** і якість не впала: ⭐-лінки відкриті й підтверджені у >95 % файлів, бідні статті Wikipedia замінювались сторінками правил (UltraBoardGames, RulesPal, офіційні PDF через pypdf), JA/DE-Wikipedia, сирцями ігор (PuzzleScript через gist API, Splix, Wolf3D, Tetromino Slide, Mindustry `bundle.properties`, aichallenge `ants.py`) і довідками help-центрів мобільних ігор.
+- 20 паралельних агентів (ліміт харнесу) → ≈ 100 ігор за 15 хв; три хвилі (B001–B036 п1, C001–C114 п2–п3 з дедуплікацією між сімʼями, M01–M06 — залишки) закрили всі черги за ≈ 2,5 години реального часу. Запуск наступної пачки — на нотифікації про завершення, леджер у скретчпаді.
+- Джерела, що стабільно не відкриваються агентам: fandom (402), wiki.gg (401, крім steamworld.wiki.gg), StrategyWiki / Giant Bomb / TV Tropes / MobyGames / GameFAQs / chessvariants.org / Sensei's Library / heroscapers (403), Thinky Games (403), BGG (403), BGA (500), Steam-гайди і Shopify-сайти (429 час від часу), `puzz.link/rules.html?…` (порожній JS-шаблон — правила в `puzz.link/js/pzpr-samples/<id>.js` і `failcode.en.json`), CodinGame (JS). Стабільно працюють: Wikipedia (EN/JA/DE), ultraboardgames, rulespal, Steam-сторінки, itch, офіційні сайти й вікі розробників (wildermyth.com/wiki, Paradox Wiki, Factorio wiki, Arreat Summit), RogueBasin, Tatham/Nikoli/GM Puzzles, відкриті репозиторії.
+- Дублікати між чергами різних сімей (Shogun Showdown, Pawnbarian, Pipe Push Paradise, Toodee and Topdee, Chessformer, Core Keeper, TwixT) — у хвилі C `make_batches` дедуплікує за нормалізованою першою назвою; агентам додано правило `ls` теки перед записом (паралельні агенти дописують файли) — жодного дубля slug за ніч.
+- Агенти самі правлять свої лінт-помилки до здачі (тег без `+`, зламаний YAML, число-slug `10000000` без лапок); лінт корпусу після кожної пачки — 0. Два чужі файли з тимчасовими помилками (`merge-tactics`, `cities-skylines-zoning`, `torneko`, `caverna`, `tetravex`) агенти-сусіди бачили в загальному прогоні і не чіпали — власник виправляв сам.
+- Паралельна сесія T259 влила 151 картку в каталог → `vocab/catalog-cards.md` регенеровано двічі (326 → 360); файли корпусу тегують нові картки (`undo-redo`, `history/*`) без `+`.
+
+## Формат — що підтвердилось і що додано
+
+- Шаблон v1 витримав 956 ігор без зміни структури; додано лише `aka` і допустимі `kind` лінків. Бриф v1.1 (слова правил зі словників або `custom`, без дублів, теги ≤ 40, числа без джерела лише в «Непевне») і v1.2 (див. AGENT-BRIEF) — додатково, не ламаючи старі файли.
+- Файли-огляди на кілька ігор зʼявились самі, коли джерел на окремі файли мало або ігри — сиквели одного ядра: `bomberman-multiplayer-variants`, `pac-man-sequels`, `lode-runner-sequels`, `lode-runner-3d-sequels`, `minesweeper-dimensions`, `infra-arcana` (+TGGW, Zorbus), `match3-meta-renovation`, `bards-tale` (+Might & Magic), `age-of-war-stick-war`, `tiny-tower-simtower`, `mobile-farm-timers`, `halma-chinese-checkers`, `chaturanga-shatranj`, `n-queens-knights-tour`, `magic-latin-squares`. Парсер і сайт їх приймають; норма це чи ні — T264 Q4.
+- Межові ігри без сітки (`field: free`): Slither.io, Armagetron, Bosconian, Robotron, Cloud Gardens, Viva Piñata, Shadow Labyrinth, Snake Rattle (iso) — описані коротко як «межа сімʼї» з посиланням на сіткового родича; разом ≈ 25 — T264 Q1.
+- «Витягти» в чергах (Forager, Cities: Skylines, Anno 1800, Core Keeper, Diablo II inventory, RE4 attaché case, Fallout combat): опис лише сіткового шару в «Ядро», решта гри — абзацом у «Суть». Спрацювало: файли коротші (120–150 рядків), фокус на механіці.
+- `scripts/rule_words.py` на 956: поза словником КОЛИ 4 % (533/13 816) · ЯКЩО 9 % (739/7 818) · ТО 10 % (2 170/21 745) — менше, ніж на старті хвилі (8/20/14 %): бриф v1.1 «лише зі словників або `custom`» подіяв. Верх списку невідомих — `count`, `win`, `move`, `explode`, `day_start`, `beam_hit`, `clear`, `push`, `lose` (як тригери; у коді частина з них — умови/ефекти — питання синонімії для `vocab.py`).
+- `queue_status.py` дає хибні «maybe» за схожістю назв (TwixT ≈ bejeweled, Slither.io ≈ slitherlink, Civilization ≈ civ6-districts, Battle Chess ≈ luzhanqi): 44 рядки перевірено руками, 29 справді нових описано пачками M01–M06; поріг 0,8 для `maybe` варто підняти або звіряти ще й рік.
+- Корпус парситься в базу без втрат (956/956): 13 секцій, таблиця сутностей, речення правил як списки термів, джерела — `app/api/ludoparse.py`; що не розпарсилось, лишається Markdown-текстом секції.
+
+## Помилки черг, знайдені агентами (для T264 Q5)
+
+- Чужі Steam-ID: Tiny Metal 666590 → 751500 · Telepath Tactics 332870 → 357940 (ремейк 1849820) · Inkulinati 1253320 → 957960 · Beglitched 451460 → 461220 · Lode Runner Legacy 560040 → 628660.
+- Хибні лінки: Snake Pass → стаття про дорогу (гра: `Snake_Pass_(video_game)`) · Omega `W:Omega_(video_game)` → гра про танки · Lime Rick `p=6994394` → Atlas Shrank (правильно 6841210) · Chuckie Egg spectrumcomputing 992 → Clock Chess · Viva Piñata → стаття франшизи · GM `pentominous-rules-and-info` → `pentominous-rules-info` · UBG-сторінки Lanterns і Ganz Schön Clever віддають інші ігри · статей Wikipedia немає: Dominosa, New York 1901, My City, Automachef, Production Line, Inkulinati, Tangledeep.
+- Вигадане або не те: Countless Rooms of Death (Steam 341380 — хорор-квест, у `drod.md:123` та сама вигадка) · Rogue Strokes (сторінки гри нема ніде) · «Hustle: хвіст росте від їжі» (росте від аварії) · «Mech Armada: меха збирають на сітці» (три слоти, сітка — лише бій) · «Cadence of Hyrule: вороги поза біт-логікою» (не підтверджено) · «Space Crusade: сканер блипів» (сканер — трек життя командира) · «Great Escape: 3–4 гравці» (2–3; також у `quoridor.md`, `bot-arenas.md`) · «Telepath Tactics: pull з урвища, permadeath» (не підтверджено).
+- Роки: Dyna Blaster 1992 (не 1991) · Suikyo 2023 (не 2025) · Auro 2014/2016 (не 2015) · ToME 2012 (не 2011) · Ratropolis 2020 (не 2021) · Tetravex 1991 (не 1990) · PushTOOL/elephant 2021, Magic Chalkboards 2023 · Lime Rick 2013 · Yoohoo 2024 · Tome Tumble 2024 · Cottage Garden: розплідник 4×4 (не 5×5).
+- Рядки, які `queue_status` не зіставив через переклад назви: «Шашки: російські / міжнародні / англійські» = `checkers.md` + `checkers-variants.md`; «Піддавки» — там само.
+
+## Пропущено свідомо (27 рядків черг лишились)
+
+- Без джерел на правила: Rat King (torcado), Rogue Strokes (7DRL), Hat Tricks: Hare in Box (GameMaker, тільки гра в браузері), Swixle (Product Hunt), That Gravity Glow (Steam/itch нема), DITTORI (одне речення), Wyrmspace Tactics (Thinky 403 — перевірено ще раз у M06), Metavaxx описано з coverage 50.
+- Не клітинні: Snake Pass, Oeuf, Mosa Lina, He Who Watches, Logicraft (крафт у слотах), Cube Clear, Rotastic, ReThink, Photon Engineer, Courtyard, Talos Principle (межа; лишилось на розсуд).
+- Уже покриті іншими файлами: TD: Back to the Roots 2 (`mazing-td-modern`), Zebra puzzle (`zebra-puzzle`), Renban / Sandwich / Anti-knight (`sudoku-variants`), Піддавки (`checkers-variants`), Boxxle / Rubik's Race / Zelda bombs (`sokoban`, `push-slide`), BD Construction Kit / Crystal Mines / Diamond Caves II (`boulder-dash`-родина), shapez 2, Desktop Dungeons Rewind, Bejeweled Twist/Blitz, UFO 1994 (`xcom`), Tetris 99 (`tetris`).
+
+## Питання до Vitalik (у T264)
+
+- Межові ігри без сітки — тримати, винести чи видалити (Q1); хто бачить `/ludopedia` (Q2); слова з корпусу у `vocab.py` (Q3); файли-огляди (Q4); правити рядки черг (Q5); ревʼю-хвиля v1→v2 — вибіркова чи повна (Q6); чи шукати нових кандидатів (Q7).
+- З попередньої хвилі лишаються: осі `opponent: teams` (Captain Sonar, Codenames) і `session: daily`, `opponent: parallel` (Bingo) — лінт не приймає, агенти пропонують `+axis:…`; два файли на одну гру різних шарів (Sandspiel / Sandspiel Studio).

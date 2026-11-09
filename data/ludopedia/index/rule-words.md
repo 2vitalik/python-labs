@@ -1,0 +1,375 @@
+# Слова правил поза словниками (автоген)
+
+`scripts/rule_words.py` · слів у правилах: КОЛИ 13857 (поза словником 540) · ЯКЩО 7833 (поза словником 741) · ТО 21798 (поза словником 2178)
+
+## КОЛИ → `vocab/triggers.md` · невідомих слів 181
+
+- `count` ×54 🔥
+- `win` ×26 🔥
+- `move` ×17 🔥
+- `beam_hit` ×17 🔥
+- `explode` ×14 🔥
+- `day_start` ×13 🔥
+- `use` ×12 🔥
+- `clear` ×12 🔥
+- `push` ×11 🔥
+- `lose` ×11 🔥
+- `state` ×11 🔥
+- `card_played` ×11 🔥
+- `damage` ×10 🔥
+- `placed` ×9 🔥
+- `place` ×9 🔥
+- `occupied` ×9 🔥
+- `adjacent_count` ×8 🔥
+- `connected` ×8 🔥
+- `mode` ×7 🔥
+- `trigger` ×7 🔥
+- `apply` ×7 🔥
+- `cell` ×6 🔥
+- `lives` ×6 🔥
+- `smashed` ×6 🔥
+- `round_end` ×5 🔥
+- `same` ×5 🔥
+- `has` ×5 🔥
+- `combo` ×5 🔥
+- `word_spelled` ×5 🔥
+- `cross` ×4 🔥
+- `set_state` ×4 🔥
+- `all` ×4 🔥
+- `fall` ×4 🔥
+- `round_start` ×3 🔥
+- `reveal` ×3 🔥
+- `transform` ×3 🔥
+- `free` ×3 🔥
+- `move_done` ×3 🔥
+- `flow_enter` ×3 🔥
+- `supported` ×3 🔥
+- `score` ×3 🔥
+- `attempt` ×3 🔥
+- `timeout` ×3 🔥
+- `threshold` ×3 🔥
+- `zoc` ×3 🔥
+- `attacked` ×3 🔥
+- `sighted` ×3 🔥
+- `last_drop` ×2
+- `shop` ×2
+- `season_change` ×2
+- `dir` ×2
+- `step_done` ×2
+- `passes` ×2
+- `pipe` ×2
+- `sink` ×2
+- `level` ×2
+- `fill` ×2
+- `edge_between` ×2
+- `count_in` ×2
+- `crash` ×2
+- `signal` ×2
+- `beat` ×2
+- `stepped` ×2
+- `caught_by_edge` ×2
+- `cast` ×2
+- `set_side` ×2
+- `fail` ×2
+- `enemy_moved` ×2
+- `spawn` ×2
+- `give` ×1
+- `deck_empty` ×1
+- `facing` ×1
+- `n` ×1
+- `legal` ×1
+- `path_exists` ×1
+- `zmax` ×1
+- `push_line` ×1
+- `measure` ×1
+- `liberties` ×1
+- `komi` ×1
+
+## ЯКЩО → `vocab/conditions.md` · невідомих слів 252
+
+- `adjacent` ×92 🔥
+- `pattern` ×50 🔥
+- `no_moves` ×44 🔥
+- `block` ×27 🔥
+- `cond` ×19 🔥
+- `move` ×14 🔥
+- `all_gone` ×13 🔥
+- `input` ×13 🔥
+- `constraint_broken` ×13 🔥
+- `hp_zero` ×11 🔥
+- `lose` ×10 🔥
+- `disappear_b` ×9 🔥
+- `a` ×9 🔥
+- `afford` ×8 🔥
+- `blocked` ×8 🔥
+- `damage` ×8 🔥
+- `prop` ×7 🔥
+- `b` ×7 🔥
+- `validate` ×7 🔥
+- `currency` ×6 🔥
+- `length` ×6 🔥
+- `score` ×5 🔥
+- `edge` ×5 🔥
+- `win` ×5 🔥
+- `all_on` ×4 🔥
+- `reach` ×4 🔥
+- `turns` ×4 🔥
+- `cost` ×4 🔥
+- `identified` ×4 🔥
+- `cursed` ×4 🔥
+- `enter` ×4 🔥
+- `range` ×4 🔥
+- `path_adjacent8` ×4 🔥
+- `edge_match` ×3 🔥
+- `path_clear` ×3 🔥
+- `all_constraints_met` ×3 🔥
+- `can_capture` ×3 🔥
+- `message` ×3 🔥
+- `draw` ×3 🔥
+- `pattern_present` ×3 🔥
+- `wall_between` ×3 🔥
+- `set_cell` ×3 🔥
+- `in_zone` ×3 🔥
+- `hit_side` ×3 🔥
+- `ports_match` ×3 🔥
+- `contact` ×3 🔥
+- `opposite` ×3 🔥
+- `on_top` ×3 🔥
+- `count_in` ×3 🔥
+- `set_state` ×3 🔥
+- `height_diff` ×3 🔥
+- `free_edge` ×3 🔥
+- `c` ×3 🔥
+- `choose` ×2
+- `not_reverse` ×2
+- `give` ×2
+- `swap` ×2
+- `stronger` ×2
+- `knight` ×2
+- `moved` ×2
+- `attacked` ×2
+- `to` ×2
+- `stone` ×2
+- `adjacent8` ×2
+- `crosses` ×2
+- `open_unpaired` ×2
+- `edge_colors` ×2
+- `inside_base` ×2
+- `layer` ×2
+- `disappear` ×2
+- `temp` ×2
+- `depth` ×2
+- `standing_on` ×2
+- `announce` ×2
+- `hidden_kind` ×2
+- `forced_guess` ×2
+- `flag` ×2
+- `value` ×2
+- `hp` ×2
+- `bridges` ×2
+
+## ТО → `vocab/effects.md` · невідомих слів 495
+
+- `input` ×213 🔥
+- `contact` ×163 🔥
+- `constraint_broken` ×74 🔥
+- `state` ×70 🔥
+- `hp_zero` ×70 🔥
+- `occupied` ×65 🔥
+- `bk` ×60 🔥
+- `enter` ×51 🔥
+- `cell` ×39 🔥
+- `ln` ×39 🔥
+- `prob` ×37 🔥
+- `count` ×30 🔥
+- `exec` ×27 🔥
+- `reach` ×26 🔥
+- `died` ×25 🔥
+- `pattern` ×25 🔥
+- `has` ×24 🔥
+- `adjacent_count` ×24 🔥
+- `free` ×24 🔥
+- `all_gone` ×23 🔥
+- `mode` ×22 🔥
+- `rng` ×22 🔥
+- `nm` ×21 🔥
+- `chase` ×20 🔥
+- `blocked` ×18 🔥
+- `chain` ×17 🔥
+- `after` ×15 🔥
+- `adjacent` ×15 🔥
+- `tick` ×14 🔥
+- `in_range` ×13 🔥
+- `leave` ×13 🔥
+- `wave_start` ×12 🔥
+- `cs` ×12 🔥
+- `set_status` ×12 🔥
+- `same` ×11 🔥
+- `phase_start` ×11 🔥
+- `destroyed` ×11 🔥
+- `cu` ×11 🔥
+- `edge` ×10 🔥
+- `ce` ×10 🔥
+- `identify` ×10 🔥
+- `turn_start` ×9 🔥
+- `c` ×9 🔥
+- `line_of_sight` ×9 🔥
+- `br` ×9 🔥
+- `la` ×9 🔥
+- `max` ×9 🔥
+- `settled` ×8 🔥
+- `lr` ×8 🔥
+- `piety` ×8 🔥
+- `a` ×7 🔥
+- `announce` ×7 🔥
+- `bd` ×7 🔥
+- `level_end` ×6 🔥
+- `no_moves` ×6 🔥
+- `b` ×6 🔥
+- `extend_path` ×6 🔥
+- `picked` ×6 🔥
+- `cond` ×6 🔥
+- `connected` ×5 🔥
+- `adjacent8` ×5 🔥
+- `in_check` ×5 🔥
+- `over` ×5 🔥
+- `facing` ×5 🔥
+- `n` ×5 🔥
+- `turn_end` ×5 🔥
+- `level` ×5 🔥
+- `eliminate` ×5 🔥
+- `fail` ×5 🔥
+- `shoot` ×5 🔥
+- `discard` ×4 🔥
+- `turn_of` ×4 🔥
+- `random` ×4 🔥
+- `all_constraints_met` ×4 🔥
+- `cut_path` ×4 🔥
+- `body` ×4 🔥
+- `emit_beam` ×4 🔥
+- `emit` ×4 🔥
+- `program_end` ×4 🔥
+- `reflect` ×4 🔥
+
+## По файлах (для ревʼю v1→v2)
+
+- `games/program-robots/advent-of-code-grids.md` · 43: cond:move×6, cond:adjacent×2, then:adjacent×2, then:enter×2, then:adjacent_count×2, then:repetition×2, then:tick×2, cond:block×2, then:cell×2, when:beam_hit×2, then:hp_zero×1, then:contact×1
+- `games/roguelike/nethack.md` · 38: when:apply×7, then:luck×4, then:occupied×3, then:polymorph×3, cond:respects×1, then:erode×1, cond:alignment×1, cond:xp_level×1, then:bless×1, when:drop×1, then:identify×1, cond:age×1
+- `games/pencil-logic/sudoku-line-dot-variants.md` · 25: then:constraint_broken×14, then:nm×5, cond:a×4, then:conflict×1, then:ce×1
+- `games/roguelike/dungeon-crawl-stone-soup.md` · 25: cond:can_swim×2, then:input×2, then:noise×2, then:cell×1, then:free×1, then:line_of_sight×1, cond:large×1, cond:flying×1, then:alert×1, then:fall_levels×1, then:adjacent×1, when:noise×1
+- `games/dig-gravity/rocks-n-diamonds.md` · 24: cond:prop×4, then:prop×2, then:a×2, cond:cond×1, cond:move×1, when:trigger×1, cond:a×1, then:player×1, then:bug×1, when:explode×1, then:into×1, then:chain×1
+- `games/program-robots/untrusted.md` · 24: cond:validate×7, then:on×2, then:validate×1, when:validate×1, then:allow×1, then:define_object×1, cond:impassable×1, then:pushable×1, then:map×1, then:override_key×1, then:dynamic×1, then:behavior×1
+- `games/falling-match/candy-crush.md` · 22: then:pattern×4, when:clear×2, when:lives×2, cond:adjacent×1, cond:pattern×1, then:chain×1, then:clear_color×1, when:combo×1, when:score×1, then:settled×1, cond:destroyed_this_turn×1, then:turn_end×1
+- `games/pencil-logic/nagareru-loop.md` · 22: then:constraint_broken×10, then:ln×4, then:lr×4, then:ar×2, cond:turns×1, then:br×1
+- `games/pencil-logic/puzz-link.md` · 22: then:input×6, then:mode×3, then:shade×1, then:unshade×1, then:line×1, then:peke×1, then:number×1, then:border×1, then:completion×1, then:bgcolor×1, then:auto×1, then:enter×1
+- `games/dig-gravity/emerald-mine.md` · 20: when:smashed×4, when:explode×2, cond:move×1, cond:pickup×1, then:cell×1, cond:prop×1, cond:roll×1, then:state×1, then:prop×1, then:chain×1, then:blocked×1, then:chase×1
+- `games/thinky/taiji-witness-panels.md` · 20: cond:constraint_broken×9, cond:cond×6, then:constraint_broken×2, cond:color_of×1, cond:cells×1, then:cond×1
+- `games/roguelike/card-dungeons.md` · 19: when:card_played×5, then:deal×2, then:discard×2, when:room_dealt×1, cond:skipped_last×1, then:to_bottom×1, then:room_dealt×1, then:equip×1, cond:last_kill×1, then:stack×1, then:card_played×1, cond:adjacent_lock×1
+- `games/roguelike/caves-of-qud.md` · 19: when:threshold×3, then:destroyed×2, then:ignite×2, then:reputation×2, then:adjacent×1, then:mix×1, cond:volume×1, then:evaporate×1, then:max×1, then:heat×1, then:fire×1, then:arc×1
+- `games/pencil-logic/herugolf.md` · 18: then:constraint_broken×9, then:la×5, then:ln×2, then:nm×2
+- `games/pencil-logic/suraromu.md` · 18: then:constraint_broken×8, then:ln×5, then:gate×2, then:st×1, cond:turns×1, then:lr×1
+- `games/thinky/void-stranger.md` · 18: cond:carrying×2, then:line_of_sight×2, then:enter×2, then:lift_tile×1, then:carrying×1, then:place_tile×1, then:blocked×1, then:chase×1, when:lose×1, when:push×1, then:chain×1, then:died×1
+- `games/connect-rotate/oxyd.md` · 17: when:beam_hit×4, when:use×3, cond:open_unpaired×2, then:shuffle×2, then:contact×2, then:state×1, then:emit_beam×1, then:impulse×1, then:input×1
+- `games/roguelike/crypt-of-the-necrodancer.md` · 17: when:beat×2, cond:on_beat×2, then:pattern×1, then:cell×1, then:dig×1, then:free×1, when:missed_beat×1, cond:dig_power×1, cond:missed_beat×1, cond:damaged×1, then:contact×1, then:blocked×1
+- `games/roguelike/desktop-dungeons.md` · 17: then:piety×7, cond:piety×2, cond:reachable×1, when:revealed×1, then:state×1, then:bonus×1, then:heal_full×1, then:max×1, then:convert×1, cond:no×1
+- `games/tactics/blood-bowl.md` · 17: then:fail×5, cond:adjacent×2, when:fail×2, when:tackle_zone×1, then:set_status×1, then:scatter×1, when:push×1, cond:edge×1, then:occupied×1, when:set_status×1, when:scatter×1
+- `games/chess-abstract/arimaa.md` · 16: cond:adjacent×4, cond:stronger×2, when:step_done×2, then:adjacent×2, cond:guarded×1, then:leave×1, cond:repetition×1, cond:reach×1, cond:all_gone×1, cond:no_moves×1
+- `games/pencil-logic/country-road.md` · 16: then:constraint_broken×8, then:ln×4, then:bk×3, then:cb×1
+- `games/tower-lanes/gemcraft.md` · 16: cond:c×3, then:c×3, then:input×2, cond:cost×1, then:same×1, when:monster×1, when:r×1, when:damage×1, then:contact×1, then:aura×1, then:wave_start×1
+- `games/chess-abstract/chess-rule-twists.md` · 15: when:move_done×2, then:input×2, cond:duck_to×1, cond:knight×1, cond:no_moves×1, then:turn_start×1, cond:p×1, then:measure×1, when:measure×1, cond:message×1, then:contact×1, cond:win×1
+- `games/tactics/battle-for-wesnoth.md` · 15: then:set_status×2, then:movetype×1, when:enter_zone×1, when:zoc×1, then:strong×1, then:quick×1, then:resilient×1, then:intelligent×1, cond:adjacent×1, then:attacked×1, then:prob×1, cond:status×1
+- `games/build-sim/stardew-farm.md` · 14: when:day_start×8, then:rng×2, when:set_state×1, then:watered×1, cond:retaining_soil×1, when:season_change×1
+- `games/hidden-deduction/dark-chess-kriegspiel.md` · 14: then:announce×7, when:attempt×3, cond:announce×2, when:occupied×1, then:capture×1
+- `games/pencil-logic/context.md` · 14: then:constraint_broken×5, then:nm×2, then:input×1, then:cs×1, then:no_adjacent×1, then:adjacent_count×1, then:cu×1, then:connected×1, then:br×1
+- `games/program-robots/bot-arenas.md` · 14: then:exec×4, when:timeout×1, then:eliminate×1, then:intent×1, then:cell×1, then:pattern×1, when:count_in_radius×1, then:contact×1, then:raze×1, then:phase_start×1, cond:visited×1
+- `games/program-robots/screeps.md` · 14: then:decay×2, then:phase_start×1, then:intent×1, cond:fatigue×1, then:harvest×1, then:transfer×1, then:build×1, then:repair×1, then:upgrade×1, then:ranged×1, then:in_range×1, cond:body_count×1
+- `games/roguelike/868-hack.md` · 14: then:identify×2, cond:in_row_col×1, then:in_row_col×1, then:siphon×1, cond:energy×1, then:run_program×1, then:hp_zero×1, then:level×1, then:feed×1, then:level_up×1, then:reset_board×1, then:w×1
+- `games/roguelike/rift-wizard.md` · 14: then:cast×2, when:cast×2, then:refill_charges×2, cond:charges×1, then:blast×1, then:summon×1, when:damage×1, cond:has_tag×1, then:chase×1, then:destroyed×1, cond:transform×1
+- `games/roguelike/rogue.md` · 14: then:steal×2, then:drain×2, then:input×2, then:occupied×1, then:leave×1, cond:input×1, cond:identified×1, then:identified×1, then:identify×1, cond:cursed×1, then:max×1
+- `games/tactics/mewgenics.md` · 14: then:contact×4, then:cell×3, then:state×3, then:turn_start×1, cond:adjacent×1, then:after×1, then:rng×1
+- `games/build-sim/cell-machine.md` · 13: then:input×2, then:ahead×2, when:free×1, cond:ahead×1, cond:push×1, cond:block×1, then:free×1, when:push×1, cond:slide×1, cond:immobile×1, then:contact×1
+- `games/chess-abstract/hive.md` · 13: cond:block×3, cond:adjacent×2, cond:connected_after×1, cond:can_slide×1, then:climb×1, then:copy_pattern×1, then:state×1, cond:no_moves×1, cond:surrounded×1, cond:draw×1
+- `games/chess-abstract/shogi.md` · 13: cond:block×3, cond:in_zone×2, then:legal×1, then:hand×1, then:unpromoted×1, then:choose_promotion×1, cond:kind×1, cond:lance×1, cond:knight×1, cond:no_moves×1
+- `games/falling-match/bejeweled.md` · 13: then:pattern×4, cond:pattern×2, when:clear×2, cond:adjacent×1, then:power_gem×1, then:flame_gem×1, cond:no_moves×1, when:lose×1
+- `games/roguelike/brogue.md` · 13: then:free×1, then:prob×1, then:drop_item×1, cond:adjacent×1, then:make_ally×1, cond:identified×1, then:identified×1, then:identify×1, cond:cursed×1, then:cursed×1, then:enchant×1, then:steal×1
+- `games/tower-lanes/cobalt-core.md` · 13: then:state×3, cond:damage×3, then:occupied×3, cond:block×1, cond:disappear_b×1, then:column×1, cond:heal×1
+- `games/chess-abstract/chess.md` · 12: cond:moved×2, cond:attacked×2, cond:no_moves×2, then:input×2, when:move×1, then:no_moves×1, then:in_check×1, then:repetition×1
+- `games/connect-rotate/khet.md` · 12: when:beam_hit×5, cond:hit_side×3, then:reflect×2, then:emit_beam×1, then:split_beam×1
+- `games/pencil-logic/kuromasu.md` · 12: then:cs×2, then:cu×2, when:view_count×1, cond:view_count×1, then:nm×1, when:adjacent_count×1, when:connected×1, when:connected_to_edge×1, cond:connected_to_edge×1, then:br×1
+- `games/pencil-logic/lits.md` · 12: then:bk×4, when:connected×2, when:count×1, then:constraint_broken×1, then:cs2x2×1, cond:adjacent×1, then:bs×1, then:cs×1
+- `games/pencil-logic/moon-or-sun.md` · 12: then:bk×8, then:ln×4
+- `games/pencil-logic/yajilin.md` · 12: then:ln×5, when:count_dir×1, cond:count_dir×1, then:an×1, when:adjacent_count×1, then:cs×1, then:constraint_broken×1, then:ce×1
+- `games/program-robots/the-farmer-was-replaced.md` · 12: cond:ground×1, cond:cost×1, cond:grown×1, when:grown×1, then:can_harvest×1, then:merge_region×1, when:harvest×1, then:harvest×1, then:contact×1, then:leave×1, cond:num_drones×1, then:wait_for×1
+- `games/roguelike/pixel-dungeon.md` · 12: then:identify×2, cond:adjacent8×1, when:noticed×1, when:state×1, then:rng×1, cond:identified×1, cond:cursed×1, when:str_req×1, then:upgrade×1, then:brew×1, then:picked×1
+- `games/tactics/disgaea.md` · 12: then:prob×3, then:input×1, cond:geo×1, when:occupied×1, then:c×1, cond:color×1, when:next_level×1, when:item×1, then:contact×1, then:item×1
+- `games/tactics/inkulinati.md` · 12: then:input×2, then:contact×2, cond:adjacent×1, then:occupied×1, cond:a×1, then:a×1, then:state×1, then:in_range×1, then:hp_zero×1, then:edge×1
+- `games/tower-lanes/dungeon-keeper.md` · 12: then:all_gone×2, when:move×1, cond:currency×1, cond:set_state×1, then:has×1, when:state×1, then:input×1, cond:owned×1, then:hp_zero×1, then:chase×1, then:rng×1
+- `games/build-sim/loop-hero.md` · 11: when:day_start×2, when:count×2, when:occupied×1, when:cell×1, when:legal×1, when:transform×1, then:count×1, when:adjacent_count×1, cond:picked×1
+- `games/dig-gravity/steamworld-dig.md` · 11: then:has×2, when:set_cell×1, when:supported×1, when:land×1, cond:height×1, then:land×1, cond:in_town×1, then:enter×1, then:sell×1, then:hp_zero×1
+- `games/grid-platformer/mario-vs-donkey-kong.md` · 11: then:contact×4, then:input×2, then:enter×2, then:died×2, cond:input×1
+- `games/hidden-deduction/fury-of-dracula.md` · 11: when:count×2, then:count×2, then:input×2, cond:block×1, then:has×1, then:occupied×1, then:same×1, when:state×1
+- `games/pencil-logic/ququ.md` · 11: then:constraint_broken×5, then:bk×3, then:occupied×1, then:bs×1, then:done×1
+- `games/pencil-logic/yajisan-sokoban.md` · 11: then:la×4, then:ln×2, then:an×2, then:path×1, cond:pattern×1, then:nm×1
+- `games/program-robots/7-billion-humans.md` · 11: then:exec×4, cond:held×2, then:occupied×1, then:write_value×1, cond:nearby×1, then:while×1, cond:goal×1
+- `games/roguelike/mystery-dungeon.md` · 11: then:identify×2, cond:cuts_corner×1, then:hp_zero×1, then:level_up×1, when:thrown×1, cond:identified×1, when:weapon_b×1, then:fuse×1, then:blown_out×1, when:lose×1
+- `games/roguelike/one-way-heroics.md` · 11: when:caught_by_edge×2, then:advance_wall×1, then:x_wall×1, then:scroll×1, when:scroll×1, then:count×1, then:rng×1, then:make_ally×1, when:distance×1, then:vault_store×1
+- `games/tactics/chaos-battle-of-wizards.md` · 11: cond:cond×5, then:cond×2, cond:move×1, cond:block×1, then:state×1, then:ranged_combat×1
+- `games/tactics/mage-knight.md` · 11: then:state×3, then:cell×2, cond:armor×2, cond:cost×1, then:occupied×1, cond:adjacent×1, cond:attack×1
+- `games/tactics/xcom.md` · 11: then:set_status×5, then:prob×2, when:enemy_moved×1, then:enemy_moved×1, when:sighted×1, then:died×1
+- `games/tower-lanes/wildfrost.md` · 11: then:input×2, cond:spawn×1, cond:input×1, then:free×1, then:effect×1, then:state×1, cond:block×1, cond:damage×1, then:shroom×1, then:wave_start×1
+- `games/build-sim/prison-architect-rooms.md` · 10: cond:currency×1, cond:enclosed×1, cond:indoors×1, cond:outdoors×1, then:fits×1, then:has×1, then:enclosed×1, then:indoors×1, then:outdoors×1, when:state×1
+- `games/chess-abstract/go.md` · 10: then:capture_group×2, cond:block×2, when:liberties×1, cond:liberties×1, when:passes×1, when:komi×1, when:win×1, then:komi×1
+- `games/chess-abstract/large-shogi-variants.md` · 10: cond:disappear_b×2, then:occupied×2, cond:adjacent×2, cond:end_turn×1, cond:no_moves×1, when:to1×1, cond:draw×1
+- `games/connect-rotate/electric-box.md` · 10: then:emit×1, cond:energy_type×1, then:convert×1, then:program_end×1, then:emit_beam×1, then:reflect×1, then:absorb×1, then:split_beam×1, when:beam_hit×1, then:all_constraints_met×1
+- `games/dig-gravity/dig-dug-ii.md` · 10: then:contact×3, when:sink×2, then:cell×1, cond:on_stake×1, then:crack×1, then:sink×1, then:input×1
+- `games/dig-gravity/liero.md` · 10: then:tick×2, then:contact×2, then:cell×1, then:right×1, then:hp_zero×1, then:mode×1, then:reach×1, then:died×1
+- `games/dig-gravity/repton.md` · 10: cond:all_gone×3, then:contact×2, then:toward×1, then:chase×1, then:safe×1, then:spread×1, then:input×1
+- `games/falling-match/puzzle-and-dragons.md` · 10: cond:pattern×2, then:cd×2, then:drag×1, then:pattern×1, when:trigger×1, cond:cd×1, then:wave_cleared×1, then:skill_cd×1
+- `games/pencil-logic/shikaku.md` · 10: then:bk×4, cond:is_rectangle×2, cond:count_in×1, when:is_rectangle×1, when:region_size×1, then:bd×1
+- `games/pencil-logic/star-battle.md` · 10: when:count_in×2, cond:count_in×2, then:bk×2, then:constraint_broken×1, then:star×1, cond:bk×1, then:ln×1
+- `games/pencil-logic/tapa.md` · 10: when:ring_runs×1, when:b×1, cond:ring_runs×1, cond:b×1, then:ce×1, then:constraint_broken×1, then:cs2x2×1, when:connected×1, then:cs×1, then:br×1
+- `games/pencil-logic/yin-yang.md` · 10: when:connected×2, when:same×1, then:constraint_broken×1, then:ms2x2×1, then:mu2x2×1, then:ms×1, then:mu×1, when:cell×1, then:ce×1
+- `games/program-robots/robot-odyssey.md` · 10: then:emit×3, when:signal×2, cond:signal×1, then:opposite×1, when:signal_rise×1, then:signal×1, then:enter_container×1
+- `games/roguelike/dungeon-encounters.md` · 10: when:stepped×2, cond:has_ability×1, then:learn×1, then:heal_full×1, then:event×1, then:battle×1, then:rescue×1, then:warp×1, then:make_ally×1
+- `games/roguelike/hyperrogue.md` · 10: cond:adjacent×1, then:chase×1, then:adjacent×1, then:turn_end×1, cond:temperature×1, then:temperature×1, then:input×1, then:mimic_move×1, then:mirror×1, then:died×1
+- `games/roguelike/theseus-and-the-minotaur.md` · 10: cond:free_edge×3, cond:closer×2, then:closer×2, then:free_edge×2, then:contact×1
+- `games/tactics/final-fantasy-tactics.md` · 10: then:set_status×2, when:attacked×2, when:ct_full×1, then:turn_start×1, when:charge_done×1, then:prob×1, then:facing×1, then:contact×1
+- `games/tactics/heroquest-space-hulk.md` · 10: then:set_status×2, cond:used×1, cond:win×1, when:end_turn×1, cond:ap×1, when:enemy_moved×1, cond:set_status×1, then:enemy_moved×1, when:sighted×1
+- `games/tactics/phoenix-point.md` · 10: when:explode×2, then:enter×2, then:state×2, then:line_of_sight×1, then:contact×1, then:input×1, then:all_gone×1
+- `games/board-digital/five-tribes.md` · 9: when:last_drop×2, then:input×1, cond:adjacent×1, cond:not_reverse×1, then:sow×1, cond:same_color×1, when:count×1, cond:place×1
+- `games/chess-abstract/lichess-variants.md` · 9: when:count×2, then:reach×2, then:input×1, then:pocket×1, then:unpromoted×1, then:count×1, then:no_moves×1
+- `games/chess-abstract/xiangqi.md` · 9: when:trigger×3, cond:no_moves×2, cond:disappear_b×1, then:occupied×1, cond:in_zone×1, then:no×1
+- `games/connect-rotate/trainyard.md` · 9: then:toggle_junction×2, then:mix×2, then:extend_path×1, then:input×1, then:after×1, when:simultaneous×1, cond:simultaneous×1
+- `games/dig-gravity/dome-keeper.md` · 9: cond:inside_base×2, then:wave_start×2, then:cell×1, then:input×1, then:deposit×1, then:hp_zero×1, when:all×1
+- `games/dig-gravity/the-powder-toy.md` · 9: cond:prop×2, cond:temp×2, then:diffuse×1, cond:cond×1, then:adjacent8×1, then:chain×1, when:cond×1
+- `games/grid-platformer/starquake.md` · 9: then:contact×3, then:input×2, then:hp_zero×1, cond:input×1, cond:block×1, then:state×1
+- `games/maze-arcade/bomberman-battle-mode.md` · 9: when:count×3, then:contact×2, then:hp_zero×1, then:input×1, then:count×1, then:match×1
+- `games/maze-arcade/zzt.md` · 9: then:contact×3, then:occupied×1, when:explode×1, when:damage×1, when:energized×1, when:any×1, when:flag×1
+- `games/pencil-logic/heyawake.md` · 9: then:bk×2, when:count×1, when:adjacent_count×1, then:cs×1, when:connected×1, then:cu×1, then:constraint_broken×1, then:br×1
+- `games/pencil-logic/icebarn.md` · 9: then:ln×4, then:lr×3, then:ar×1, then:bk×1
+- `games/pencil-logic/reflect-link.md` · 9: then:ln×8, then:br×1
+- `games/tactics/dnd-grid-combat.md` · 9: then:nat×2, then:occupied×1, cond:adjacent×1, then:adjacent×1, then:disadvantage×1, cond:hp_zero×1, when:damage×1, when:heal×1
+- `games/thinky/patricks-parabox.md` · 9: when:push×2, cond:has_opening×2, then:enter×1, then:exit×1, when:exit×1, then:mirror×1, when:paradox×1
+- `games/tower-lanes/random-dice.md` · 9: then:c×3, then:cost×1, then:b×1, then:a×1, when:spawn×1, then:rng×1, when:set_value×1
+- `games/board-digital/cascadia-calico.md` · 8: when:placed×3, cond:choose×1, cond:clear×1, cond:take×1, then:has×1, cond:adjacent×1
+- `games/board-digital/sagrada.md` · 8: when:round_end×2, when:round_start×1, then:effect×1, then:draft×1, cond:first×1, then:adjacent8×1, cond:afford×1
+- `games/build-sim/shapez.md` · 8: then:tick×2, then:free×1, when:has×1, cond:block×1, then:same×1, then:input×1, then:all_constraints_met×1
+- `games/connect-rotate/cosmic-express.md` · 8: cond:adjacent×1, then:extend_path×1, then:cut_path×1, then:body×1, then:board×1, then:alight×1, when:alight×1, cond:all_on×1
+- `games/connect-rotate/lyne.md` · 8: then:cut_path×2, cond:adjacent8×1, cond:edge_free×1, cond:crosses×1, then:extend_path×1, when:s×1, cond:s×1
+- `games/connect-rotate/tsuro.md` · 8: then:follow_path×2, then:cell_in_front_of×1, cond:has_alternative×1, then:shuffle×1, when:count×1, when:draw×1, cond:give×1
+- `games/dig-gravity/boulder-dash.md` · 8: then:state×2, then:spread×2, then:free×1, when:explode×1, then:chain×1, then:extra_value×1
+- `games/dig-gravity/dig-dug.md` · 8: then:contact×2, then:cell×1, then:facing×1, then:toward×1, then:enter×1, when:count×1, then:count×1
+- `games/dig-gravity/dot-valley.md` · 8: when:explode×3, then:free×2, then:contact×2, then:down×1
+- `games/dig-gravity/mole-mania.md` · 8: cond:layer×2, then:switch_layer×2, then:flip×1, then:contact×1, when:push×1, then:hp_zero×1
+- `games/grid-platformer/prince-of-persia.md` · 8: then:input×3, then:contact×3, then:enter×2
+- `games/hidden-deduction/hunt-the-wumpus.md` · 8: cond:lose×2, cond:move×2, cond:adjacent_kind×1, cond:message×1, then:adjacent_kind×1, cond:trace_path×1
+- `games/maze-arcade/frogger.md` · 8: cond:on_top×3, when:move×1, when:score×1, then:row×1, then:on_top×1, then:reach×1
+- `games/pencil-logic/nuri-maze.md` · 8: then:cu×2, then:route×2, then:bk×1, then:obj×1, then:cu2x2×1, then:cs2x2×1
+- `games/program-robots/manufactoria.md` · 8: cond:tape_head×2, then:pop_tape×2, then:tape_head×1, then:push_tape×1, then:reject×1, then:accept×1
+- `games/push-slide/bloxorz.md` · 8: then:dir×2, cond:dir×2, then:lying×1, then:standing×1, then:cube_a×1, then:contact×1
+- `games/roguelike/dungeon-master.md` · 8: then:input×2, then:has×1, cond:adjacent×1, cond:damage×1, cond:lose×1, when:clear_state×1, then:contact×1
+- `games/roguelike/dungeonup.md` · 8: when:use×5, cond:hp_zero×1, then:hp_zero×1, then:died×1
+- `games/roguelike/shogun-showdown.md` · 8: then:state×2, then:exec×2, then:level_start×1, then:blocked×1, then:enter×1, then:level_end×1
+- `games/tactics/into-the-breach.md` · 8: then:after×5, then:acid×1, then:state×1, then:hp_zero×1
+- `games/tactics/xcom-chimera-squad.md` · 8: then:state×2, then:input×1, then:prob×1, cond:hp_zero×1, then:hp_zero×1, cond:adjacent×1, then:died×1
+- `games/thinky/recursed.md` · 8: then:has×1, then:enter×1, then:reset_room×1, then:exit×1, then:paradox×1, then:flood×1, then:snapshot×1, then:restore×1

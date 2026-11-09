@@ -2,50 +2,104 @@
 
 Зібрано з шапок (`proposes`) і секцій «Пропозиції до словників». Частота ≥3 🔥 — правило трьох.
 
-## axis · 57
+## axis · 139
 
-- `control` ×41 🔥 — 2048 (+ Threes як предок), Advent of Code — сіткові пазли (збірка), Arknights, Atomix, Bejeweled (1–3, Twist), Bookworm, Cell Machine, Centipede (Багатоніжка), Chip's Challenge, Clash of Clans — розстановка бази на сітці, Dome Keeper, Factorio — клітинна логістика (конвеєри, маніпулятори, мережі), Frozen Synapse, Golf Peaks, Kara (Кара — сонечко), Karel the Robot (Reeborg's World), Klax, Labyrinth (Das verrückte Labyrinth, Божевільний лабіринт), Lightbot (Light-Bot), Magical Drop (Chain Reaction), Manufactoria, Mario & Wario, OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Opus Magnum, Panel de Pon (Tetris Attack, Puzzle League), Prison Architect — шар кімнат і зон, Puzzle & Dragons (PAD, Пазли і Дракони), RoboRally, RoboZZle, Robot Odyssey, Snake (Змійка) / Nibbles / Nokia Snake, SpellTower, Taiji + The Witness (панелі), The Farmer Was Replaced, Troddlers, Tron Light Cycles (Світлові мотоцикли) і нащадки, Untrusted — or the Continuing Adventures of Dr. Eval, Wilmot's Warehouse, XOR, Zenji, Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
-- `session` ×33 🔥 — A Monster's Expedition, Advent of Code — сіткові пазли (збірка), Blood Bowl, Boulder Dash, Candy Crush Saga, Chess (Шахи) — цифрова гра, Desktop Tower Defense, Emberward, Fieldrunners, Final Fantasy Tactics, Inscryption (Act 1), Into the Breach, Isle of Arrows, Isles of Sea and Sky, Knotwords, Letterpress, Mathable, Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), NYT Connections (+ Strands), NetHack, RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II), Recursed, Rogue, Scrabble (цифрові версії; Words With Friends), Sumplete, Super Mario Maker 2, The Battle for Wesnoth (Битва за Веснот), The Battle of Polytopia, Tomb of the Mask, Waffle, Wildfrost, Wordle, XCOM: Enemy Unknown / XCOM 2
-- `turn-structure` ×22 🔥 — A Feast for Odin (Бенкет для Одіна) і поліоміно-заповнення, Akropolis (Акрополіс), Arimaa, Azul (Азул), Blokus (Блокус), Carcassonne (Каркасон), Cartographers (Картографи), Cascadia + Calico (Каскадія, Калико), Chaos: The Battle of Wizards (+ Chaos Reborn), Five Tribes, Frozen Synapse, Game of the Amazons (Амазонки), Hey, That's My Fish! (Packeis am Pol), Kingdomino (Кінґдоміно), NMBR 9, Patchwork (Печворк), Qwirkle + Ingenious (Квіркл, Genial), Sagrada (Саграда), Take It Easy, Tiny Towns (Крихітні містечка), Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode), Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
-- `undo` ×21 🔥 — 2048 (+ Threes як предок), A Good Snowman Is Hard to Build, A Monster's Expedition, Baba Is You, Bonfire Peaks, Catrap (Pitman), Deadly Rooms of Death (DROD: King Dugan's Dungeon), Hanano Puzzle (ハナノパズル), Jelly no Puzzle (ゼリーのパズル), Kwirk (Puzzle Boy), Patrick's Parabox, Puddle Knights, Pushmo / Pullblox (引ク押ス) + Crashmo, Puzznic, Simon Tatham's Portable Puzzle Collection, Snakebird, Sokoban (Сокобан), Stephen's Sausage Roll, Theseus and the Minotaur (Тесей і Мінотавр), Toki Tori, Triple Town
-- `actors` ×19 🔥 — 7 Billion Humans, Bloxorz, BoxBoy! (ハコボーイ!), Catrap (Pitman), Gauntlet (1985), HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), Kwirk (Puzzle Boy), Opus Magnum, Puddle Knights, Robot Odyssey, Screeps (Screeps World, Screeps Arena), Snakebird, Sokobond, Space Invaders (Космічні загарбники), Spybot: The Nightfall Incident (Lego Spybotics), The Battle for Wesnoth (Битва за Веснот), Troddlers, XOR, Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
-- `gravity` ×10 🔥 — Columns (Колонки), Dr. Mario (Доктор Маріо), Kula World (Roll Away, KulaQuest), Magical Drop (Chain Reaction), Panel de Pon (Tetris Attack, Puzzle League), Puyo Puyo (Пуйо Пуйо), Puzznic, SameGame / Clickomania + Flood (Tatham), Tetris (Тетрис, Tetris Guideline), Troddlers
-- `win-condition` ×9 🔥 — Arimaa, Breakthrough і Lines of Action (Прорив і Лінії дії), Draughts / Checkers (Шашки), Game of the Amazons (Амазонки), Gess, Go (Ґо, вейці, бадук), Lichess variants (варіанти шахів Lichess), Surakarta (Roundabouts), Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
-- `session=run` ×7 🔥 — Brogue, Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel), Caves of Qud, Cogmind, HyperRogue, Maze Mice, Rift Wizard
-- `info-asymmetry` ×5 🔥 — Cluedo (Clue; «Клуедо»), Geister (Ghosts!, Good & Bad Ghosts; «Привиди»), Hunt the Wumpus («Полювання на Вампуса»), Kriegspiel + Dark Chess (Fog of War; «шахи наосліп із суддею» і «шахи в тумані»), Memory / Concentration / Pairs («Мемо», «Знайди пару»)
+- `control` ×50 🔥 — 2048 (+ Threes як предок), Advent of Code — сіткові пазли (збірка), Anomaly: Warzone Earth, Arknights, Atomix, Autonauts, Bejeweled (1–3, Twist), Blockly Games Maze і Code.org Classic Maze, Bookworm, Cell Machine, Centipede (Багатоніжка), Chip's Challenge, Clash of Clans — розстановка бази на сітці, Combat, Dome Keeper, Duskers, Factorio — клітинна логістика (конвеєри, маніпулятори, мережі), Frozen Synapse, Gladiabots, Golf Peaks, Kara (Кара — сонечко), Karel the Robot (Reeborg's World), Klax, Labyrinth (Das verrückte Labyrinth, Божевільний лабіринт), Lemmings, Lightbot (Light-Bot), Magical Drop (Chain Reaction), Manufactoria, Mario & Wario, OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Opus Magnum, Panel de Pon (Tetris Attack, Puzzle League), PixelJunk Monsters, Prison Architect — шар кімнат і зон, Puzzle & Dragons (PAD, Пазли і Дракони), Robo Instructus, RoboRally, RoboZZle, Robot Odyssey, Snake (Змійка) / Nibbles / Nokia Snake, SpellTower, Taiji + The Witness (панелі), The Farmer Was Replaced, Troddlers, Tron Light Cycles (Світлові мотоцикли) і нащадки, Untrusted — or the Continuing Adventures of Dr. Eval, Wilmot's Warehouse, XOR, Zenji, Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
+- `session` ×44 🔥 — A Monster's Expedition, Advent of Code — сіткові пазли (збірка), Blood Bowl, Boulder Dash, Candy Crush Saga, Chess (Шахи) — цифрова гра, Children of Zodiarcs, Cobalt Core, Desktop Tower Defense, Emberward, Fell Seal: Arbiter's Mark, Fieldrunners, Fights in Tight Spaces, Final Fantasy Tactics, Inscryption (Act 1), Into the Breach, Islands of Insight, Isle of Arrows, Isles of Sea and Sky, Knotwords, Letterpress, Mage Knight Board Game, Mathable, Mewgenics, Monster Train, Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), NYT Connections (+ Strands), NetHack, RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II), Recursed, Rogue, Scrabble (цифрові версії; Words With Friends), Sumplete, Super Mario Maker 2, The Battle for Wesnoth (Битва за Веснот), The Battle of Polytopia, Tomb of the Mask, Vandal Hearts, Waffle, Warhammer 40,000: Mechanicus, Wildermyth, Wildfrost, Wordle, XCOM: Enemy Unknown / XCOM 2
+- `turn-structure` ×28 🔥 — 5D Chess with Multiverse Time Travel, A Feast for Odin (Бенкет для Одіна) і поліоміно-заповнення, Akropolis (Акрополіс), Arimaa, Azul (Азул), Blokus (Блокус), Bughouse (Бʼюгхаус, шахи вдвох на двох дошках), Carcassonne (Каркасон), Cartographers (Картографи), Cascadia + Calico (Каскадія, Калико), Chaos: The Battle of Wizards (+ Chaos Reborn), Codenames, Five Tribes, Frozen Synapse, Game of the Amazons (Амазонки), Gloomhaven, Hey, That's My Fish! (Packeis am Pol), Kingdomino (Кінґдоміно), NMBR 9, Patchwork (Печворк), Quarto, Qwirkle + Ingenious (Квіркл, Genial), Sagrada (Саграда), Take It Easy, The Castles of Burgundy (Замки Бургундії), Tiny Towns (Крихітні містечка), Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode), Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
+- `actors` ×22 🔥 — 7 Billion Humans, Bloxorz, BoxBoy! (ハコボーイ!), Catrap (Pitman), Fish Fillets, Gauntlet (1985), HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), Kwirk (Puzzle Boy), Lemmings, Opus Magnum, Puddle Knights, Robot Odyssey, Screeps (Screeps World, Screeps Arena), Snakebird, Sokobond, Space Invaders (Космічні загарбники), SpaceChem, Spybot: The Nightfall Incident (Lego Spybotics), The Battle for Wesnoth (Битва за Веснот), Troddlers, XOR, Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
+- `undo` ×22 🔥 — 2048 (+ Threes як предок), A Good Snowman Is Hard to Build, A Monster's Expedition, Baba Is You, Bonfire Peaks, Catrap (Pitman), Deadly Rooms of Death (DROD: King Dugan's Dungeon), Hanano Puzzle (ハナノパズル), Jelly no Puzzle (ゼリーのパズル), Kwirk (Puzzle Boy), Patrick's Parabox, Puddle Knights, Pushmo / Pullblox (引ク押ス) + Crashmo, Puzznic, Simon Tatham's Portable Puzzle Collection, Snakebird, Sokoban (Сокобан), Stephen's Sausage Roll, Tactical Breach Wizards, Theseus and the Minotaur (Тесей і Мінотавр), Toki Tori, Triple Town
+- `gravity` ×12 🔥 — Chessformer, Columns (Колонки), Dr. Mario (Доктор Маріо), Kula World (Roll Away, KulaQuest), Magical Drop (Chain Reaction), Meteos (Метеос), Panel de Pon (Tetris Attack, Puzzle League), Puyo Puyo (Пуйо Пуйо), Puzznic, SameGame / Clickomania + Flood (Tatham), Tetris (Тетрис, Tetris Guideline), Troddlers
+- `win-condition` ×11 🔥 — Arimaa, Breakthrough і Lines of Action (Прорив і Лінії дії), Draughts / Checkers (Шашки), Duck Chess (Качині шахи), Game of the Amazons (Амазонки), Gess, Gliński's hexagonal chess (Гексагональні шахи Глінського), Go (Ґо, вейці, бадук), Lichess variants (варіанти шахів Lichess), Surakarta (Roundabouts), Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
+- `session=run` ×11 🔥 — Brogue, Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel), Caves of Qud, Cogmind, DoomRL / DRL → Jupiter Hell, HyperRogue, Larn, Maze Mice, Moria / Angband, Ratropolis, Rift Wizard
+- `time` ×8 🔥 — Archon: The Light and the Dark, Dota Auto Chess, Frozen Synapse, Hearthstone Battlegrounds, Legion TD / Legion TD 2, Super Auto Pets, Teamfight Tactics (TFT), They Are Billions
+- `view=first-person` ×7 🔥 — 3D Monster Maze, Dungeon Master, Dungeons of Daggorath, Etrian Odyssey, Labyrinth of Refrain: Coven of Dusk, Legend of Grimrock, Wolfenstein 3D
+- `info-asymmetry` ×6 🔥 — Cluedo (Clue; «Клуедо»), Cryptid, Geister (Ghosts!, Good & Bad Ghosts; «Привиди»), Hunt the Wumpus («Полювання на Вампуса»), Kriegspiel + Dark Chess (Fog of War; «шахи наосліп із суддею» і «шахи в тумані»), Memory / Concentration / Pairs («Мемо», «Знайди пару»)
 - `field-bounds` ×4 🔥 — Abalone (Абалон), Gess, Hive (Вулик), NMBR 9
 - `control=indirect` ×4 🔥 — Desktop Dungeons, Dungeon Crawl Stone Soup, Dungeon Keeper, Shattered Pixel Dungeon (і Pixel Dungeon)
 - `rules` ×4 🔥 — Baba Is You, Gorogoa, LOK Digital, Taiji + The Witness (панелі)
 - `time=programmed` ×3 🔥 — Conway's Game of Life (Гра «Життя»), Cosmic Express, Railbound
-- `time` ×3 🔥 — Archon: The Light and the Dark, Frozen Synapse, Teamfight Tactics (TFT)
+- `opponent` ×3 🔥 — Hexapawn (гексапішак) і машина, що вчиться на сірникових коробках, Rampart, Wizard of Wor
+- `physics` ×3 🔥 — Oxyd (+ Enigma), Suika Game (Кавунова гра), Tricky Towers
+- `field-nested` ×3 🔥 — Patrick's Parabox, Recursed, Shadowrun Returns
+- `field=hex+layers` ×2 — Akropolis (Акрополіс), Taluva (Талува)
 - `turn-structure=simultaneous` ×2 — Mechabellum, Ubongo + Katamino / IQ Puzzler (Убонго)
+- `field=sphere` ×2 — Dyson Sphere Program — сітка на кулі планети, Globesweeper
+- `field` ×2 — 5D Chess with Multiverse Time Travel, Kula World (Roll Away, KulaQuest)
+- `info` ×2 — Chess 2: The Sequel (Sirlin's Chess), Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
+- `field=ring` ×2 — Oware (Оваре, Авале), Ring of Pain
 - `field-edges` ×2 — Quoridor (Кворидор), Slitherlink (Слізерлінк, Loopy, Fences)
-- `opponent` ×2 — Rampart, Wizard of Wor
+- `gravity-shifting` ×2 — Bone Cruncher, Crystal Mines II
+- `field-pixel` ×2 — Lemmings, Noita
+- `field=heightmap` ×2 — Creeper World, Wetrix
+- `actors=party` ×2 — Kine, Legend of Grimrock
+- `progression` ×2 — Leap Year, Toki Tori 2 / Toki Tori 2+
 - `stop-rule` ×2 — Ice-sliding puzzles (Inertia і жанр «ковзай до упору»), Klotski (Хуажунський шлях) + Lunar Lockout
+- `turn-structure=alternating-unit` ×2 — The Banner Saga, XCOM: Chimera Squad
 - `field=layers` ×2 — Disgaea: Hour of Darkness, Final Fantasy Tactics
+- `time=hybrid-rt-turn` ×2 — Fallout 1–2 (покроковий бій), Jagged Alliance 2
 - `field-scale` ×2 — Carto, Gorogoa
-- `field-nested` ×2 — Patrick's Parabox, Recursed
-- `field=hex+layers` ×1 — Akropolis (Акрополіс)
+- `field=lanes` ×2 — Clash Royale, Swords & Soldiers
+- `field=pyramid` ×1 — IQ Puzzler Pro
+- `turn-structure=action-points` ×1 — Tash-Kalar: Arena of Legends
+- `range-metric` ×1 — Anno 1800 — дальність сервісів по дорогах
+- `states=n` ×1 — Brian's Brain і Seeds
 - `opponent=async` ×1 — Clash of Clans — розстановка бази на сітці
+- `polar` ×1 — Frostpunk
+- `states=continuous` ×1 — Lenia
+- `neighbourhood=kernel` ×1 — Lenia
+- `value-domain` ×1 — Minecraft — редстоун
 - `field=side-view` ×1 — Oxygen Not Included — клітинна фізика (гази, рідини, тепло)
+- `field=1d-stack` ×1 — Tiny Tower / SimTower
 - `field=irregular-quad` ×1 — Townscaper
 - `goal=none` ×1 — Townscaper
-- `info` ×1 — Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
+- `info:hidden-own` ×1 — Banqi (Half Chess, Dark Chess)
 - `field-boards` ×1 — Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
+- `symmetry` ×1 — Chess with Different Armies (шахи різних армій, Betza)
+- `move-site` ×1 — Dots and Boxes (Крапки й квадрати)
+- `sides` ×1 — Four-player chess (шахи на чотирьох)
 - `piece-identity` ×1 — Gess
+- `turn-structure:multi-move` ×1 — Шахи з серіями ходів (Marseillais, Progressive)
+- `random` ×1 — Quantum Chess (Квантові шахи, Cantwell)
+- `field-wrap` ×1 — Шахи без країв — циліндричні (Cylinder) і кругові (Circular / Byzantine)
 - `field=graph` ×1 — Shannon switching game / Bridg-It (+ Untangle)
+- `control:timing` ×1 — Spin Doctor / ClockWerx
 - `control=drag-path` ×1 — Trainyard
 - `engine` ×1 — Rocks'n'Diamonds
+- `actors-party-specialized` ×1 — Survivors
 - `goal-sandbox` ×1 — The Powder Toy
 - `field-layers` ×1 — The Powder Toy
-- `field` ×1 — Kula World (Roll Away, KulaQuest)
+- `control-carve` ×1 — Where's My Water?
+- `fields` ×1 — 10000000
+- `field=radial` ×1 — Hextris (Гекстріс)
+- `merge-arity` ×1 — Merge Mansion / Merge Dragons
+- `ruleset` ×1 — Puyo Puyo Tetris
+- `phases` ×1 — Titanium Court
+- `field-box-surface` ×1 — Welltris
+- `control=world-touch` ×1 — Captain Toad: Treasure Tracker
+- `actors=party-commanded` ×1 — Exit
+- `control=tank` ×1 — Knight Lore
+- `field=spiral` ×1 — Lode Runner 2 і Lode Runner 3-D
+- `field=cylinder` ×1 — Nebulus
 - `field-depth` ×1 — Pushmo / Pullblox (引ク押ス) + Crashmo
+- `opponent=teams` ×1 — Captain Sonar
 - `guess-policy` ×1 — Kaboom (+ LuckSweeper, Pure Skill Minesweeper, Tatham Mines — сапер, що карає або прощає вгадування)
+- `field=nd` ×1 — Minesweeper у вимірах: 4D Minesweeper, Tilesweeper, Timesweeper
+- `field=timeline` ×1 — Minesweeper у вимірах: 4D Minesweeper, Tilesweeper, Timesweeper
+- `control:direct-relative` ×1 — Achtung, die Kurve! (Увага, поворот!)
 - `actors=pair` ×1 — Libble Rabble
 - `control=twin-stick` ×1 — Libble Rabble
 - `time=move-driven` ×1 — Maze Mice
+- `view` ×1 — Maze War
+- `asymmetry` ×1 — Pac-Man: сиквели 1983–2021
+- `input-hardware` ×1 — Pac-Man spin-offs (Pac & Pal, Baby Pac-Man, Mega Tunnel Battle)
+- `field-3d-clues` ×1 — Picross-варіанти (Picross 3D, Round 2, Mega, Color, Clip)
+- `field=triangles` ×1 — Ququ
+- `clue-completeness` ×1 — Sudoku line & dot variants (Thermo, Arrow, Kropki, German Whispers)
 - `rule-composition` ×1 — Sudoku variants (варіанти судоку, Cracking the Cryptic / SudokuPad)
+- `field=twin-grids` ×1 — Tachiawase Block
 - `markup-layers` ×1 — Yajilin (Яджилін, Arrow Ring)
+- `turn-structure:round-robin` ×1 — Core War
 - `grid-resolution` ×1 — Adventures of Lolo (Eggerland)
 - `opponent-simultaneous` ×1 — Ricochet Robots (Rasende Roboter)
 - `move-kind` ×1 — Sliding-tile permutation puzzles (пʼятнашки й родичі)
@@ -54,49 +108,397 @@
 - `time=rhythm` ×1 — Crypt of the NecroDancer
 - `render=abstract` ×1 — Dungeon Encounters
 - `turn-structure=event` ×1 — Dungeon of the Endless
+- `control=typed` ×1 — Dungeons of Daggorath
+- `light=dynamic` ×1 — Golden Krone Hotel
 - `field=hyperbolic` ×1 — HyperRogue
-- `actors=party` ×1 — Legend of Grimrock
-- `view=first-person` ×1 — Legend of Grimrock
 - `random=none-rpg` ×1 — Tower of the Sorcerer / Magic Tower (魔塔)
 - `camera=forced-scroll` ×1 — 'One Way Heroics (Mystery Chronicle: One Way Heroics)'
-- `field=heightmap` ×1 — Creeper World
+- `attack:push-only` ×1 — Auro: A Monster-Bumping Adventure
+- `turn-structure:initiative-queue` ×1 — Battle Brothers
+- `turn-structure=offset-phases` ×1 — Battle Isle
+- `opponent=same-screen-simultaneous` ×1 — Battle Isle
+- `stacking` ×1 — Civilization (бойовий шар юнітів, I–VI)
+- `referee=human` ×1 — D&D grid combat (Dungeons & Dragons 5e)
+- `actors=stack` ×1 — Heroes of Might and Magic III (Герої меча і магії III)
+- `field=hex-height` ×1 — Heroscape
+- `session:campaign` ×1 — Kingdom Death: Monster
+- `turn-structure=sequential-interruptible` ×1 — Rebelstar / Laser Squad
+- `turn-structure:card-driven` ×1 — Memoir '44 / Commands & Colors
+- `time-mode-switch` ×1 — Mutant Year Zero: Road to Eden
+- `sides=asymmetric` ×1 — Ogre
+- `turn-structure=time-track` ×1 — Othercide
+- `time=realtime-until-contact` ×1 — Silent Storm
+- `aim=manual` ×1 — SteamWorld Heist
+- `turn-structure:wait-time` ×1 — Tactics Ogre
+- `turn-structure=speed-queue` ×1 — Triangle Strategy
+- `field=zones` ×1 — Zombicide
+- `session-daily-run` ×1 — Blue Prince
+- `control=axis-split` ×1 — elephant-in-a-bottle
+- `field-two-sided` ×1 — Paper Trail
+- `gravity=per-zone` ×1 — Suikyo [Water Mirror]
+- `gravity-per-mode` ×1 — Toodee and Topdee
+- `rules-known` ×1 — Understand
+- `control=possess` ×1 — Age of War / Stick War
+- `field=polar` ×1 — Castle Panic
+- `turn-structure=phased-asymmetric` ×1 — Plants vs. Zombies Heroes
 - `session=match` ×1 — Random Dice (+ Rush Royale)
+- `opponent=parallel` ×1 — Bingo / Keno / Lotto (Бінго, Лото)
 
-## card · 378
+## card · 1967
 
+- `shape-identity-check` ×4 🔥 — Double Choco (Дабл-чоко), LITS (Nuruomino), Pentominous («Пентамінус»), Statue Park
+- `adjacency-income` ×2 — Ark Nova, Terraforming Mars (Тераформування Марса)
+- `longest-path-scoring` ×2 — Harmonies, Railroad Ink
+- `no-crossing-edges` ×2 — Next Station: London, TwixT (Твікст)
 - `growth-stages` ×2 — Photosynthesis (Фотосинтез), Stardew Valley — фермерська сітка
+- `min-color-score` ×2 — Tash-Kalar: Arena of Legends, Tigris & Euphrates (Тигр і Євфрат)
 - `adjacency-buff` ×2 — Backpack Hero, Luck be a Landlord
+- `multi-state-cell` ×2 — Brian's Brain і Seeds, Wireworld
+- `walker-coverage` ×2 — Caesar III, Pharaoh
+- `house-evolution` ×2 — Caesar III, Pharaoh
+- `overflow-timer` ×2 — Mini Metro, Mini Motorways
+- `choose-upgrade` ×2 — Mini Metro, Mini Motorways
+- `heat-diffusion` ×2 — Oxygen Not Included — клітинна фізика (гази, рідини, тепло), Theme Hospital
+- `god-powers` ×2 — Populous, Santorini (Санторіні)
+- `room-requirements` ×2 — Prison Architect — шар кімнат і зон, Theme Hospital
+- `room-grading` ×2 — RimWorld — шар кімнат і температури, Two Point Hospital
+- `step-budget` ×2 — Arimaa, Blue Prince
+- `rank-capture` ×2 — Banqi (Half Chess, Dark Chess), Jungle (Dou Shou Qi, «Джунглі», звірині шахи)
+- `bare-king-win` ×2 — Chaturanga / Shatranj (Чатуранга / Шатрандж), Великі шогі — Chu shogi і Tenjiku shogi (Чу-шогі, Тендзіку-шогі)
+- `move-cards` ×2 — Onitama, Pawnbarian
+- `edge-walls` ×2 — Lasergoose, Quoridor (Кворидор)
+- `beam-splitter` ×2 — Chromatron (1–5), Khet (Deflexion, Laser Chess)
 - `junction-toggle` ×2 — Railbound, Trainyard
+- `egg-hatch` ×2 — Dot Valley, Repton 1–3
+- `shared-screen-coop` ×2 — Emerald Mine, Sokoboxes Duo
+- `shared-field-versus` ×2 — Blockade (Блокада), Lemmings
+- `two-layer-field` ×2 — Escape (Tom 7), Mole Mania
+- `step-climb-1` ×2 — Block Dude, Fire 'n Ice
+- `flip-screen-rooms` ×2 — Montezuma's Revenge, Treasure Island Dizzy
+- `hidden-movement` ×2 — Captain Sonar, Scotland Yard (Скотланд-Ярд)
 - `neighbor-count-clue` ×2 — Light Up (Akari, Бідзюцукан), Minesweeper (Сапер)
+- `cycle-digit-click` ×2 — Hexologic, Sudo Sweep
+- `trail-wall` ×2 — Blockade (Блокада), Tron Light Cycles (Світлові мотоцикли) і нащадки
+- `picture-reveal` ×2 — Gals Panic, Tentai Show (Galaxies, Spiral Galaxies)
+- `region-visit-once` ×2 — Country Road, Moon or Sun (月か太陽)
+- `latin-square` ×2 — KenKen (Keen, CalcuDoku, Кенкен), Sudoku line & dot variants (Thermo, Arrow, Kropki, German Whispers)
+- `equal-size-partition` ×2 — Palisade (Five Cells, «Частокіл»), Pentominous («Пентамінус»)
+- `shape-bank` ×2 — Pentopia, Statue Park
+- `rect-shape-check` ×2 — Shakashaka (シャカシャカ), Shikaku (Шікаку, Rectangles, Divide by Box)
+- `noise-attraction` ×2 — They Are Billions, Zombicide
+- `rule-discovery` ×2 — Islands of Insight, Linelith
+- `union-merge` ×1 — Acquire
+- `merger-resolution` ×1 — Acquire
+- `majority-bonus` ×1 — Acquire
+- `size-price-table` ×1 — Acquire
+- `fence-enclosure` ×1 — Agricola — сітка ферми (Агрікола)
+- `pasture-capacity` ×1 — Agricola — сітка ферми (Агрікола)
+- `unused-cell-penalty` ×1 — Agricola — сітка ферми (Агрікола)
+- `exact-payment-bonus` ×1 — Alhambra (Альгамбра)
+- `no-enclosed-holes` ×1 — Alhambra (Альгамбра)
+- `scoring-card-in-deck` ×1 — Alhambra (Альгамбра)
+- `dummy-player` ×1 — Alhambra (Альгамбра)
+- `ascending-path-scoring` ×1 — Arboretum (Дендропарк)
+- `hand-majority-right-to-score` ×1 — Arboretum (Дендропарк)
+- `low-cancels-high` ×1 — Arboretum (Дендропарк)
+- `polyhex-placement` ×1 — Ark Nova
+- `placement-bonus-cells` ×1 — Ark Nova
+- `adjacent-terrain-requirement` ×1 — Ark Nova
+- `min-distance-rule` ×1 — Ark Nova
+- `action-strength-slots` ×1 — Ark Nova
+- `cover-icon-reward` ×1 — Bärenpark
+- `growing-board` ×1 — Bärenpark
+- `depleting-tile-values` ×1 — Bärenpark
+- `seller-sets-prices` ×1 — Castles of Mad King Ludwig (Замки божевільного короля Людвіга)
+- `room-completion-reward` ×1 — Castles of Mad King Ludwig (Замки божевільного короля Людвіга)
+- `domino-tile-zoned` ×1 — Caverna: The Cave Farmers (Каверна)
+- `loot-by-strength` ×1 — Caverna: The Cave Farmers (Каверна)
+- `floating-clue-fragment` ×1 — Chocolate Fix (ThinkFun)
+- `partial-pattern-clue` ×1 — Chocolate Fix (ThinkFun)
+- `follow-colored-path` ×1 — Code Master (ThinkFun)
+- `use-all-tokens` ×1 — Code Master (ThinkFun)
+- `flowchart-program` ×1 — Code Master (ThinkFun)
+- `gardener-ring-selector` ×1 — Cottage Garden (Сільський сад)
+- `cover-to-score-visible` ×1 — Cottage Garden (Сільський сад)
+- `unlock-new-piece` ×1 — Daedalian Opus
+- `hub-walk-to-level` ×1 — Daedalian Opus
+- `unstoppable-level-timer` ×1 — Daedalian Opus
+- `top-layer-first` ×1 — Dragon Castle
+- `flip-set-on-group` ×1 — Dragon Castle
+- `countdown-end-track` ×1 — Dragon Castle
+- `drop-placement` ×1 — FITS
+- `per-round-scoring-board` ×1 — FITS
 - `mancala-sowing` ×1 — Five Tribes
 - `last-piece-action` ×1 — Five Tribes
 - `turn-order-auction` ×1 — Five Tribes
+- `blind-tile-pool` ×1 — Galaxy Trucker
+- `ship-legality-check` ×1 — Galaxy Trucker
+- `exposed-connector-bonus` ×1 — Galaxy Trucker
+- `dice-row-column-hit` ×1 — Galaxy Trucker
+- `sub-lower-dice-tray` ×1 — Ganz Schön Clever (That's Pretty Clever)
+- `passive-player-pick` ×1 — Ganz Schön Clever (That's Pretty Clever)
+- `bonus-chain-cascade` ×1 — Ganz Schön Clever (That's Pretty Clever)
+- `wild-die` ×1 — Ganz Schön Clever (That's Pretty Clever)
+- `time-track-turns` ×1 — Happy Home (Щасливий дім)
+- `set-collection-per-room` ×1 — Happy Home (Щасливий дім)
+- `stack-recipe-terrain` ×1 — Harmonies
+- `habitat-claim-cube` ×1 — Harmonies
+- `card-slot-limit` ×1 — Harmonies
+- `region-count-scoring` ×1 — Harmonies
+- `prefilled-pieces` ×1 — IQ Puzzler Pro
+- `polycube-pyramid` ×1 — IQ Puzzler Pro
+- `self-pricing-auction` ×1 — Isle of Skye: From Chieftain to King (Острів Скай)
+- `rotating-score-goals` ×1 — Isle of Skye: From Chieftain to King (Острів Скай)
+- `catch-up-income` ×1 — Isle of Skye: From Chieftain to King (Острів Скай)
+- `place-or-discard-for-action` ×1 — Karuba (Каруба)
+- `exits-as-move-points` ×1 — Karuba (Каруба)
+- `shared-mirror-setup` ×1 — Karuba (Каруба)
+- `location-powers` ×1 — Kingdom Builder
+- `area-majority` ×1 — Kingdom Builder
+- `facing-side-payout` ×1 — Lanterns: The Harvest Festival (Ліхтарі)
+- `edge-color-match-bonus` ×1 — Lanterns: The Harvest Festival (Ліхтарі)
+- `declining-reward-stack` ×1 — Lanterns: The Harvest Festival (Ліхтарі)
+- `legacy-campaign` ×1 — My City
+- `permanent-board-stickers` ×1 — My City
+- `voluntary-dropout` ×1 — My City
+- `shared-card-caller` ×1 — My City
+- `demolish-and-rebuild` ×1 — New York 1901 (Нью-Йорк 1901)
+- `street-majority` ×1 — New York 1901 (Нью-Йорк 1901)
+- `tech-tier-unlock-by-score` ×1 — New York 1901 (Нью-Йорк 1901)
+- `district-product-scoring` ×1 — Next Station: London
+- `branch-switch` ×1 — Next Station: London
 - `stacking-support` ×1 — NMBR 9
 - `level-multiplier-scoring` ×1 — NMBR 9
 - `directional-shadow` ×1 — Photosynthesis (Фотосинтез)
 - `rotating-light-source` ×1 — Photosynthesis (Фотосинтез)
+- `opponent-picks-piece` ×1 — Quarto
+- `attribute-match-line` ×1 — Quarto
+- `tax-by-territory` ×1 — Queendomino (Квіндоміно)
+- `majority-holder-token` ×1 — Queendomino (Квіндоміно)
+- `market-burn` ×1 — Queendomino (Квіндоміно)
+- `connected-exits-scoring` ×1 — Railroad Ink
+- `open-end-penalty` ×1 — Railroad Ink
+- `limited-special-pieces` ×1 — Railroad Ink
+- `type-adapter-tile` ×1 — Railroad Ink
+- `disjoint-pattern-count` ×1 — Reef (Риф)
+- `height-pattern-cell` ×1 — Reef (Риф)
+- `skip-cost-market` ×1 — Reef (Риф)
+- `influence-sum-capture` ×1 — Samurai (Самурай)
+- `fast-tiles` ×1 — Samurai (Самурай)
+- `majority-of-categories-win` ×1 — Samurai (Самурай)
+- `target-score-win` ×1 — Sprawlopolis
+- `overlap-placement` ×1 — Sprawlopolis
+- `road-segment-penalty` ×1 — Sprawlopolis
 - `loop-circuit-capture` ×1 — Surakarta (Roundabouts)
 - `circuit-graph` ×1 — Surakarta (Roundabouts)
 - `line-run-scoring` ×1 — Take It Easy
 - `broken-line-zero` ×1 — Take It Easy
+- `irrigation-network` ×1 — Takenoko (Такеноко)
+- `weather-die` ×1 — Takenoko (Такеноко)
+- `secret-objective-hand` ×1 — Takenoko (Такеноко)
+- `flood-expand-group` ×1 — Taluva (Талува)
+- `cover-destroys` ×1 — Taluva (Талува)
+- `exhaust-two-types-win` ×1 — Taluva (Талува)
+- `pattern-summon` ×1 — Tash-Kalar: Arena of Legends
+- `rank-hierarchy` ×1 — Tash-Kalar: Arena of Legends
+- `catch-up-card` ×1 — Tash-Kalar: Arena of Legends
+- `global-parameters` ×1 — Terraforming Mars (Тераформування Марса)
+- `milestones-awards` ×1 — Terraforming Mars (Тераформування Марса)
+- `card-drafting` ×1 — The Isle of Cats
+- `region-fill-penalty` ×1 — The Isle of Cats
+- `bid-turn-order` ×1 — The Isle of Cats
+- `two-price-market` ×1 — The Isle of Cats
+- `beam-touches-all` ×1 — ThinkFun Laser Maze і Gravity Maze
+- `challenge-card-setup` ×1 — ThinkFun Laser Maze і Gravity Maze
+- `marble-path-sim` ×1 — ThinkFun Laser Maze і Gravity Maze
+- `no-touch-same-color-rival` ×1 — Through the Desert (Крізь пустелю)
+- `enclose-area-scoring` ×1 — Through the Desert (Крізь пустелю)
+- `shared-color-pieces` ×1 — Through the Desert (Крізь пустелю)
+- `kingdom-leader-conflict` ×1 — Tigris & Euphrates (Тигр і Євфрат)
+- `hidden-commit-support` ×1 — Tigris & Euphrates (Тигр і Євфрат)
+- `ascending-sequence-rule` ×1 — Welcome To… (Ласкаво просимо до…)
+- `fence-split-segments` ×1 — Welcome To… (Ласкаво просимо до…)
+- `strike-penalty-track` ×1 — Welcome To… (Ласкаво просимо до…)
+- `pair-choice-market` ×1 — Welcome To… (Ласкаво просимо до…)
+- `hidden-order-rule` ×1 — A Little to the Left
+- `multi-solution-stars` ×1 — A Little to the Left
+- `mendel-genes` ×1 — Animal Crossing — New Horizons (схрещування квітів)
+- `hidden-genotype` ×1 — Animal Crossing — New Horizons (схрещування квітів)
+- `breed-adjacent` ×1 — Animal Crossing — New Horizons (схрещування квітів)
+- `clone-isolated` ×1 — Animal Crossing — New Horizons (схрещування квітів)
+- `forest-clearing` ×1 — Against the Storm
+- `hidden-glades` ×1 — Against the Storm
+- `threat-meter` ×1 — Against the Storm
+- `race-two-bars` ×1 — Against the Storm
+- `walk-cost-terrain` ×1 — Against the Storm
+- `road-distance-range` ×1 — Anno 1800 — дальність сервісів по дорогах
+- `road-connection-required` ×1 — Anno 1800 — дальність сервісів по дорогах
+- `road-tier` ×1 — Anno 1800 — дальність сервісів по дорогах
+- `warehouse-range` ×1 — Anno 1800 — дальність сервісів по дорогах
+- `order-reader-routing` ×1 — Automachef
+- `power-budget-blackout` ×1 — Automachef
+- `recipe-combine` ×1 — Backpack Battles
+- `ghost-opponent` ×1 — Backpack Battles
+- `item-state-value` ×1 — Big Pharma
+- `active-range-effect` ×1 — Big Pharma
+- `market-saturation` ×1 — Big Pharma
+- `io-blocks` ×1 — Block'hood
+- `input-decay` ×1 — Block'hood
+- `structural-support` ×1 — Block'hood
+- `flare-redirect` ×1 — Boom Beach
+- `key-target-win` ×1 — Boom Beach
+- `refractory-state` ×1 — Brian's Brain і Seeds
+- `risk-meter` ×1 — Caesar III
+- `labor-pool` ×1 — Caesar III
+- `ratings-goal` ×1 — Caesar III
 - `push-chain` ×1 — Cell Machine
+- `road-zone-grid` ×1 — Cities: Skylines (зонування)
+- `district-paint` ×1 — Cities: Skylines (зонування)
+- `hex-adjacency-yield` ×1 — Civilization VI — шар районів і бонусів суміжності
+- `district-slots` ×1 — Civilization VI — шар районів і бонусів суміжності
+- `placement-preview-yield` ×1 — Civilization VI — шар районів і бонусів суміжності
+- `cell-feature-clear` ×1 — Civilization VI — шар районів і бонусів суміжності
 - `target-preference` ×1 — Clash of Clans — розстановка бази на сітці
+- `influence-radius-growth` ×1 — Cloud Gardens
+- `powered-drill` ×1 — Core Keeper — сітковий шар (копання, ферма, автоматизація)
+- `item-arm-transfer` ×1 — Core Keeper — сітковий шар (копання, ферма, автоматизація)
+- `concentric-biomes` ×1 — Core Keeper — сітковий шар (копання, ферма, автоматизація)
+- `bag-in-bag` ×1 — Diablo II (inventory)
+- `item-sockets` ×1 — Diablo II (inventory)
+- `belt-columns` ×1 — Diablo II (inventory)
 - `edge-matching` ×1 — Dorfromantik
+- `damaged-cells` ×1 — Dredge
+- `typed-slots` ×1 — Dredge
+- `item-freshness` ×1 — Dredge
+- `sanity-meter` ×1 — Dredge
+- `time-on-action` ×1 — Dredge
+- `passive-trap-inventory` ×1 — Dredge
+- `timing-bar-minigame` ×1 — Dredge
+- `liquid-pressure` ×1 — Dwarf Fortress — призначення клітин і рідини
+- `stockpile-filter` ×1 — Dwarf Fortress — призначення клітин і рідини
+- `depth-effects-table` ×1 — Dwarf Fortress — призначення клітин і рідини
+- `sphere-grid` ×1 — Dyson Sphere Program — сітка на кулі планети
+- `latitude-bands` ×1 — Dyson Sphere Program — сітка на кулі планети
+- `rule-number-bits` ×1 — Елементарні клітинні автомати (Rule 110, Rule 30, Rule 90)
+- `spacetime-diagram` ×1 — Елементарні клітинні автомати (Rule 110, Rule 30, Rule 90)
+- `rule-equivalence` ×1 — Елементарні клітинні автомати (Rule 110, Rule 30, Rule 90)
 - `belt-lanes` ×1 — Factorio — клітинна логістика (конвеєри, маніпулятори, мережі)
+- `room-merge` ×1 — Fallout Shelter
+- `rush-gamble` ×1 — Fallout Shelter
+- `stat-pool-production` ×1 — Fallout Shelter
+- `incident-spread` ×1 — Fallout Shelter
+- `cost-scaling` ×1 — Fallout Shelter
+- `loot-box` ×1 — Fallout Shelter
+- `land-purchase` ×1 — Forager
+- `escalating-price` ×1 — Forager
+- `perk-grid` ×1 — Forager
+- `polar-grid` ×1 — Frostpunk
+- `heat-zones` ×1 — Frostpunk
+- `overload-stress` ×1 — Frostpunk
+- `hope-discontent` ×1 — Frostpunk
+- `law-book` ×1 — Frostpunk
+- `worker-assignment` ×1 — Frostpunk
 - `cellular-automaton-rule` ×1 — Conway's Game of Life (Гра «Життя»)
+- `layered-cell-score` ×1 — Graveyard Keeper
+- `rating-sum` ×1 — Graveyard Keeper
+- `area-seed-plant` ×1 — Harvest Moon (SNES)
+- `radius-scoring` ×1 — Islanders
+- `score-preview` ×1 — Islanders
+- `fertility-yield` ×1 — Kingdoms and Castles
+- `stacked-castle-blocks` ×1 — Kingdoms and Castles
+- `turmite-agent` ×1 — Langton's Ant (Мураха Ленгтона) і турміти
+- `highway-detector` ×1 — Langton's Ant (Мураха Ленгтона) і турміти
+- `convolution-kernel` ×1 — Lenia
+- `continuous-cell-state` ×1 — Lenia
 - `tile-combo-transform` ×1 — Loop Hero
 - `loop-path` ×1 — Loop Hero
 - `slot-spin-layout` ×1 — Luck be a Landlord
 - `ammo-feed` ×1 — Mindustry — клітинна логістика й оборона
 - `power-graph` ×1 — Mindustry — клітинна логістика й оборона
+- `signal-decay` ×1 — Minecraft — редстоун
+- `logic-gates` ×1 — Minecraft — редстоун
+- `delay-line` ×1 — Minecraft — редстоун
+- `comparator-modes` ×1 — Minecraft — редстоун
+- `block-update` ×1 — Minecraft — редстоун
+- `color-matched-delivery` ×1 — Mini Motorways
+- `wither-window` ×1 — FarmVille і Hay Day — ферма на годиннику
+- `production-queue` ×1 — FarmVille і Hay Day — ферма на годиннику
 - `path-reservation` ×1 — OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування)
 - `mass-equalize-flow` ×1 — Oxygen Not Included — клітинна фізика (гази, рідини, тепло)
-- `heat-diffusion` ×1 — Oxygen Not Included — клітинна фізика (гази, рідини, тепло)
 - `phase-change-threshold` ×1 — Oxygen Not Included — клітинна фізика (гази, рідини, тепло)
-- `room-requirements` ×1 — Prison Architect — шар кімнат і зон
+- `staff-only-path` ×1 — Parkitect
+- `staff-zones` ×1 — Parkitect
+- `restock-logistics` ×1 — Parkitect
+- `sight-penalty` ×1 — Parkitect
+- `decoration-rating` ×1 — Parkitect
+- `roadblock-filter` ×1 — Pharaoh
+- `seasonal-flood` ×1 — Pharaoh
+- `monument-construction` ×1 — Pharaoh
+- `item-transfer-grabber` ×1 — PlateUp!
+- `patience-timer` ×1 — PlateUp!
+- `vertex-heightmap` ×1 — Populous
+- `flat-area-building` ×1 — Populous
+- `rally-magnet` ×1 — Populous
+- `follower-modes` ×1 — Populous
+- `slot-split-research` ×1 — Production Line
+- `wall-import-export` ×1 — Production Line
+- `pickup-overflow-choice` ×1 — Resident Evil 4 (attaché case)
+- `off-grid-tabs` ×1 — Resident Evil 4 (attaché case)
+- `room-role-scoring` ×1 — RimWorld — шар кімнат і температури
+- `room-temperature` ×1 — RimWorld — шар кімнат і температури
+- `map-regions` ×1 — RimWorld — шар кімнат і температури
+- `corner-heights` ×1 — RollerCoaster Tycoon
+- `queue-line` ×1 — RollerCoaster Tycoon
+- `track-builder` ×1 — RollerCoaster Tycoon
+- `ride-ratings` ×1 — RollerCoaster Tycoon
+- `agent-needs` ×1 — RollerCoaster Tycoon
+- `land-rights` ×1 — RollerCoaster Tycoon
+- `breakdown-repair` ×1 — RollerCoaster Tycoon
+- `pathfind-budget` ×1 — RollerCoaster Tycoon
+- `item-combine` ×1 — Save Room – Organization Puzzle
+- `load-into-item` ×1 — Save Room – Organization Puzzle
+- `shape-code-string` ×1 — shapez
+- `quadrant-shape-ops` ×1 — shapez
+- `layer-stack-drop` ×1 — shapez
+- `throughput-goal` ×1 — shapez
+- `clog-on-full-output` ×1 — shapez
+- `pheromone-field` ×1 — SimAnt
+- `ratio-triangle-control` ×1 — SimAnt
+- `influence-map` ×1 — SimCity (1989) / Micropolis
+- `zone-growth` ×1 — SimCity (1989) / Micropolis
+- `gas-diffusion` ×1 — Space Haven
+- `hull-breach-vacuum` ×1 — Space Haven
+- `power-node-graph` ×1 — Space Haven
+- `job-priority-grid` ×1 — Space Haven
 - `coverage-area` ×1 — Stardew Valley — фермерська сітка
+- `placement-requirement` ×1 — Terra Nil
+- `net-gain-preview` ×1 — Terra Nil
+- `cleanup-phase` ×1 — Terra Nil
+- `liquid-flow` ×1 — Terraria — рідини
+- `liquid-mixing` ×1 — Terraria — рідини
+- `room-blueprint` ×1 — Theme Hospital
+- `diagnosis-pipeline` ×1 — Theme Hospital
+- `machine-wear` ×1 — Theme Hospital
+- `water-level-cell` ×1 — Timberborn
+- `season-cycle` ×1 — Timberborn
+- `irrigation-spread` ×1 — Timberborn
+- `adjustable-gate` ×1 — Timberborn
+- `elevator-dispatch` ×1 — Tiny Tower / SimTower
+- `tenant-stress` ×1 — Tiny Tower / SimTower
+- `rider-request` ×1 — Tiny Tower / SimTower
 - `context-tile-rules` ×1 — Townscaper
+- `additive-room-buffs` ×1 — Two Point Hospital
+- `staff-qualifications` ×1 — Two Point Hospital
+- `meta-currency-unlocks` ×1 — Two Point Hospital
+- `multi-plot-expansion` ×1 — Two Point Hospital
+- `allowed-zone-per-item` ×1 — Unpacking
+- `species-requirement-ladder` ×1 — Viva Piñata
+- `terrain-area-share` ×1 — Viva Piñata
 - `self-organised-storage` ×1 — Wilmot's Warehouse
+- `signal-gate-library` ×1 — Wireworld
+- `timeline-branching` ×1 — 5D Chess with Multiverse Time Travel
+- `multi-board-turn` ×1 — 5D Chess with Multiverse Time Travel
+- `multi-axis-moves` ×1 — 5D Chess with Multiverse Time Travel
 - `group-move` ×1 — Abalone (Абалон)
 - `majority-push` ×1 — Abalone (Абалон)
 - `push-off-capture` ×1 — Abalone (Абалон)
@@ -104,33 +506,136 @@
 - `move-then-shoot` ×1 — Game of the Amazons (Амазонки)
 - `permanent-block` ×1 — Game of the Amazons (Амазонки)
 - `last-mover-wins` ×1 — Game of the Amazons (Амазонки)
-- `step-budget` ×1 — Arimaa
+- `simultaneous-resolution` ×1 — Apocalypse (Апокаліпсис, одночасні шахи коней і пішаків)
+- `penalty-points` ×1 — Apocalypse (Апокаліпсис, одночасні шахи коней і пішаків)
+- `promotion-cap-redeploy` ×1 — Apocalypse (Апокаліпсис, одночасні шахи коней і пішаків)
 - `push-pull-weaker` ×1 — Arimaa
 - `freeze-adjacent` ×1 — Arimaa
 - `trap-squares` ×1 — Arimaa
+- `first-capture-win` ×1 — Atari Go (Capture Go, го до першого взяття)
+- `capture-quota` ×1 — Atari Go (Capture Go, го до першого взяття)
 - `clone-or-jump` ×1 — Ataxx
 - `convert-adjacent` ×1 — Ataxx
 - `majority-win` ×1 — Ataxx
+- `flip-reveal-move` ×1 — Banqi (Half Chess, Dark Chess)
+- `color-by-first-flip` ×1 — Banqi (Half Chess, Dark Chess)
+- `custodial-capture` ×1 — Baroque chess / Ultima (Бароккові шахи)
+- `immobilizer-aura` ×1 — Baroque chess / Ultima (Бароккові шахи)
+- `chameleon-capture` ×1 — Baroque chess / Ultima (Бароккові шахи)
+- `capture-cutscene` ×1 — Battle Chess
+- `opening-book` ×1 — Battle Chess
 - `line-count-move` ×1 — Breakthrough і Lines of Action (Прорив і Лінії дії)
 - `jump-own-only` ×1 — Breakthrough і Lines of Action (Прорив і Лінії дії)
 - `connect-all-win` ×1 — Breakthrough і Lines of Action (Прорив і Лінії дії)
+- `partner-transfer` ×1 — Bughouse (Бʼюгхаус, шахи вдвох на двох дошках)
+- `stall-for-piece` ×1 — Bughouse (Бʼюгхаус, шахи вдвох на двох дошках)
+- `first-board-ends-match` ×1 — Bughouse (Бʼюгхаус, шахи вдвох на двох дошках)
+- `compound-piece` ×1 — Capablanca chess (шахи Капабланки) і сімʼя 10×8
+- `piece-gating` ×1 — Capablanca chess (шахи Капабланки) і сімʼя 10×8
+- `setup-constraints` ×1 — Capablanca chess (шахи Капабланки) і сімʼя 10×8
+- `stalemate-win` ×1 — Chaturanga / Shatranj (Чатуранга / Шатрандж)
+- `handicap-odds` ×1 — Chaturanga / Shatranj (Чатуранга / Шатрандж)
+- `start-from-position` ×1 — Chaturanga / Shatranj (Чатуранга / Шатрандж)
+- `huffing` ×1 — Національні варіанти шашок
+- `capture-priority` ×1 — Національні варіанти шашок
+- `king-move-limit` ×1 — Національні варіанти шашок
+- `phalanx-move` ×1 — Національні варіанти шашок
+- `stop-behind-king` ×1 — Національні варіанти шашок
 - `multi-jump` ×1 — Draughts / Checkers (Шашки)
 - `max-capture-rule` ×1 — Draughts / Checkers (Шашки)
 - `flying-piece` ×1 — Draughts / Checkers (Шашки)
 - `misere-win` ×1 — Draughts / Checkers (Шашки)
 - `opening-ballot` ×1 — Draughts / Checkers (Шашки)
+- `sealed-bid-duel` ×1 — Chess 2: The Sequel (Sirlin's Chess)
+- `army-select` ×1 — Chess 2: The Sequel (Sirlin's Chess)
+- `auto-attack-abilities` ×1 — Chess Survivors
+- `xp-level-up-choice` ×1 — Chess Survivors
+- `survive-turns` ×1 — Chess Survivors
+- `asymmetric-armies` ×1 — Chess with Different Armies (шахи різних армій, Betza)
+- `piece-notation-dsl` ×1 — Chess with Different Armies (шахи різних армій, Betza)
+- `colorbound-piece` ×1 — Chess with Different Armies (шахи різних армій, Betza)
+- `self-play-balance` ×1 — Chess with Different Armies (шахи різних армій, Betza)
+- `gravity-chess` ×1 — Chessformer
+- `piece-stacking` ×1 — Chessformer
+- `static-target-king` ×1 — Chessformer
+- `delayed-drowning` ×1 — Congo (шахи «Конго»)
+- `zone-bound-move` ×1 — Congo (шахи «Конго»)
+- `river-board` ×1 — Congo (шахи «Конго»)
+- `edge-claim-box` ×1 — Dots and Boxes (Крапки й квадрати)
+- `extra-turn-on-score` ×1 — Dots and Boxes (Крапки й квадрати)
+- `strings-and-coins-dual` ×1 — Dots and Boxes (Крапки й квадрати)
+- `shared-blocker` ×1 — Duck Chess (Качині шахи)
+- `two-part-turn` ×1 — Duck Chess (Качині шахи)
+- `stack-height-move` ×1 — DVONN
+- `disconnect-removal` ×1 — DVONN
+- `placement-phase` ×1 — DVONN
+- `stack-height-score` ×1 — DVONN
+- `phalanx-length-move` ×1 — Epaminondas (Епамінонд)
+- `outnumber-line-capture` ×1 — Epaminondas (Епамінонд)
+- `back-row-majority-win` ×1 — Epaminondas (Епамінонд)
+- `delayed-win-check` ×1 — Epaminondas (Епамінонд)
+- `approach-capture` ×1 — Fanorona (Фанорона)
+- `line-capture-run` ×1 — Fanorona (Фанорона)
+- `no-same-direction-twice` ×1 — Fanorona (Фанорона)
+- `player-elimination` ×1 — Four-player chess (шахи на чотирьох)
+- `dead-pieces` ×1 — Four-player chess (шахи на чотирьох)
+- `multi-king-check-bonus` ×1 — Four-player chess (шахи на чотирьох)
 - `footprint-piece` ×1 — Gess
 - `pattern-directions` ×1 — Gess
 - `overlap-capture` ×1 — Gess
+- `edge-insert-push` ×1 — GIPF
+- `row-extension-clear` ×1 — GIPF
+- `reserve-recycle` ×1 — GIPF
+- `stacked-power-piece` ×1 — GIPF
+- `stalemate-partial-score` ×1 — Gliński's hexagonal chess (Гексагональні шахи Глінського)
+- `hex-piece-moves` ×1 — Gliński's hexagonal chess (Гексагональні шахи Глінського)
+- `reserve-stacks` ×1 — Gobblet (Гоблет)
+- `reveal-on-lift` ×1 — Gobblet (Гоблет)
+- `touch-move` ×1 — Gobblet (Гоблет)
+- `reveal-loses` ×1 — Gobblet (Гоблет)
+- `reserve-exception` ×1 — Gobblet (Гоблет)
+- `hop-chain` ×1 — Halma / Chinese checkers (Хальма / Китайські шашки)
+- `race-to-camp` ×1 — Halma / Chinese checkers (Хальма / Китайські шашки)
+- `camp-lock` ×1 — Halma / Chinese checkers (Хальма / Китайські шашки)
+- `placings-continue` ×1 — Halma / Chinese checkers (Хальма / Китайські шашки)
+- `long-symmetric-hop` ×1 — Halma / Chinese checkers (Хальма / Китайські шашки)
+- `camp-deadline` ×1 — Halma / Chinese checkers (Хальма / Китайські шашки)
 - `connect-sides-win` ×1 — Hex (Гекс)
 - `swap-rule` ×1 — Hex (Гекс)
 - `hex-grid-render` ×1 — Hex (Гекс)
+- `matchbox-learning` ×1 — Hexapawn (гексапішак) і машина, що вчиться на сірникових коробках
+- `symmetry-reduction` ×1 — Hexapawn (гексапішак) і машина, що вчиться на сірникових коробках
+- `learning-curve` ×1 — Hexapawn (гексапішак) і машина, що вчиться на сірникових коробках
+- `custodian-capture` ×1 — Hnefatafl (Тафл, «королівська дошка»)
+- `asymmetric-sides` ×1 — Hnefatafl (Тафл, «королівська дошка»)
+- `shieldwall-capture` ×1 — Hnefatafl (Тафл, «королівська дошка»)
+- `exit-fort` ×1 — Hnefatafl (Тафл, «королівська дошка»)
+- `encirclement-win` ×1 — Hnefatafl (Тафл, «королівська дошка»)
+- `screen-move` ×1 — Janggi (Чанґі, корейські шахи)
+- `pass-any-turn` ×1 — Janggi (Чанґі, корейські шахи)
+- `material-points-win` ×1 — Janggi (Чанґі, корейські шахи)
+- `setup-choice` ×1 — Janggi (Чанґі, корейські шахи)
+- `weakest-beats-strongest` ×1 — Jungle (Dou Shou Qi, «Джунглі», звірині шахи)
+- `terrain-restricted-piece` ×1 — Jungle (Dou Shou Qi, «Джунглі», звірині шахи)
+- `river-jump` ×1 — Jungle (Dou Shou Qi, «Джунглі», звірині шахи)
+- `own-den-forbidden` ×1 — Jungle (Dou Shou Qi, «Джунглі», звірині шахи)
 - `forced-piece-by-color` ×1 — Kamisado
 - `deadlock-loss` ×1 — Kamisado
 - `multi-round-match` ×1 — Kamisado
 - `sumo-push` ×1 — Kamisado
 - `refill-setup` ×1 — Kamisado
 - `piece-rank-up` ×1 — Kamisado
+- `straight-chain-only` ×1 — Kōnane (Конане)
+- `opening-removal` ×1 — Kōnane (Конане)
+- `normal-play-win` ×1 — Kōnane (Конане)
+- `multi-step-move` ×1 — Великі шогі — Chu shogi і Tenjiku shogi (Чу-шогі, Тендзіку-шогі)
+- `capture-in-place` ×1 — Великі шогі — Chu shogi і Tenjiku shogi (Чу-шогі, Тендзіку-шогі)
+- `lion-trading-rule` ×1 — Великі шогі — Chu shogi і Tenjiku shogi (Чу-шогі, Тендзіку-шогі)
+- `royal-plurality` ×1 — Великі шогі — Chu shogi і Tenjiku shogi (Чу-шогі, Тендзіку-шогі)
+- `range-jump-capture` ×1 — Великі шогі — Chu shogi і Tenjiku shogi (Чу-шогі, Тендзіку-шогі)
+- `burn-aura` ×1 — Великі шогі — Chu shogi і Tenjiku shogi (Чу-шогі, Тендзіку-шогі)
+- `pass-by-shuffle` ×1 — Великі шогі — Chu shogi і Tenjiku shogi (Чу-шогі, Тендзіку-шогі)
+- `piece-stack-capture` ×1 — Lasca (Ласка)
 - `line-win` ×1 — N-in-a-row (Хрестики-нулики, Gomoku, Connect Four, Pentago…)
 - `nested-boards` ×1 — N-in-a-row (Хрестики-нулики, Gomoku, Connect Four, Pentago…)
 - `forced-board` ×1 — N-in-a-row (Хрестики-нулики, Gomoku, Connect Four, Pentago…)
@@ -138,19 +643,87 @@
 - `column-drop` ×1 — N-in-a-row (Хрестики-нулики, Gomoku, Connect Four, Pentago…)
 - `pop-out` ×1 — N-in-a-row (Хрестики-нулики, Gomoku, Connect Four, Pentago…)
 - `quadrant-rotation` ×1 — N-in-a-row (Хрестики-нулики, Gomoku, Connect Four, Pentago…)
-- `move-cards` ×1 — Onitama
+- `endgame-count` ×1 — Makruk (Макрук, тайські шахи)
+- `multi-move-turn` ×1 — Шахи з серіями ходів (Marseillais, Progressive)
+- `check-ends-series` ×1 — Шахи з серіями ходів (Marseillais, Progressive)
+- `one-move-per-piece` ×1 — Шахи з серіями ходів (Marseillais, Progressive)
+- `shared-neutral-piece` ×1 — Neutron (Нейтрон)
+- `two-phase-turn` ×1 — Neutron (Нейтрон)
+- `first-turn-exception` ×1 — Neutron (Нейтрон)
+- `mill-removal` ×1 — Nine men's morris (Млин)
+- `mill-protection` ×1 — Nine men's morris (Млин)
+- `fly-when-few` ×1 — Nine men's morris (Млин)
+- `reform-mill` ×1 — Nine men's morris (Млин)
+- `min-pieces-lose` ×1 — Nine men's morris (Млин)
 - `capture-leader-win` ×1 — Onitama
-- `edge-walls` ×1 — Quoridor (Кворидор)
+- `army-draft` ×1 — The Ouroboros King
+- `piece-level-up` ×1 — The Ouroboros King
+- `king-capture-win` ×1 — The Ouroboros King
+- `transform-on-capture` ×1 — The Ouroboros King
+- `sowing` ×1 — Oware (Оваре, Авале)
+- `count-capture` ×1 — Oware (Оваре, Авале)
+- `rule-badges` ×1 — Passant: A Chess Roguelike
+- `boss-rule-modifier` ×1 — Passant: A Chess Roguelike
+- `shop-freeze-reroll` ×1 — Passant: A Chess Roguelike
+- `jump-capture` ×1 — Peg solitaire (Пег-солітер)
+- `board-shape-mask` ×1 — Peg solitaire (Пег-солітер)
+- `pagoda-function` ×1 — Peg solitaire (Пег-солітер)
+- `reverse-solution` ×1 — Peg solitaire (Пег-солітер)
+- `safe-into-flank` ×1 — Pente (Пенте)
+- `tournament-opening-rule` ×1 — Pente (Пенте)
+- `win-survives-reply` ×1 — Pente (Пенте)
+- `multi-stone-per-turn` ×1 — Pente (Пенте)
+- `superposition-move` ×1 — Quantum Chess (Квантові шахи, Cantwell)
+- `measurement-collapse` ×1 — Quantum Chess (Квантові шахи, Cantwell)
 - `pawn-jump` ×1 — Quoridor (Кворидор)
 - `move-or-build` ×1 — Quoridor (Кворидор)
+- `piece-move-3d` ×1 — Raumschach (просторові шахи)
+- `level-slices-view` ×1 — Raumschach (просторові шахи)
+- `random-army` ×1 — Really Bad Chess
+- `rank-scaled-handicap` ×1 — Really Bad Chess
+- `stalemate-loss` ×1 — Really Bad Chess
 - `place-stone` ×1 — Reversi / Othello (Реверсі)
 - `flank-flip` ×1 — Reversi / Othello (Реверсі)
 - `must-capture-legality` ×1 — Reversi / Othello (Реверсі)
+- `move-then-build` ×1 — Santorini (Санторіні)
+- `climb-limit` ×1 — Santorini (Санторіні)
+- `mirrored-second-move` ×1 — Shōbu (Шобу)
+- `multi-board-field` ×1 — Shōbu (Шобу)
+- `ammo-reload` ×1 — Shotgun King: The Final Checkmate
+- `enemy-move-timer` ×1 — Shotgun King: The Final Checkmate
+- `paired-upgrade-choice` ×1 — Shotgun King: The Final Checkmate
+- `knockback` ×1 — Shotgun King: The Final Checkmate
+- `stack-spread-move` ×1 — Tak (Так)
+- `capstone-flatten` ×1 — Tak (Так)
+- `first-move-opponent-piece` ×1 — Tak (Так)
+- `flat-count-win` ×1 — Tak (Так)
+- `knight-link` ×1 — TwixT (Твікст)
+- `own-border-only` ×1 — TwixT (Твікст)
+- `null-move-ban` ×1 — Шахи без країв — циліндричні (Cylinder) і кругові (Circular / Byzantine)
+- `ring-board` ×1 — Шахи без країв — циліндричні (Cylinder) і кругові (Circular / Byzantine)
+- `bare-king-loss` ×1 — Шахи без країв — циліндричні (Cylinder) і кругові (Circular / Byzantine)
+- `citadel-draw` ×1 — Шахи без країв — циліндричні (Cylinder) і кругові (Circular / Byzantine)
+- `polar-render` ×1 — Шахи без країв — циліндричні (Cylinder) і кругові (Circular / Byzantine)
 - `palace-zone` ×1 — Xiangqi (Сянці, китайські шахи)
 - `blockable-leap` ×1 — Xiangqi (Сянці, китайські шахи)
 - `screen-capture` ×1 — Xiangqi (Сянці, китайські шахи)
 - `facing-kings` ×1 — Xiangqi (Сянці, китайські шахи)
 - `perpetual-ban` ×1 — Xiangqi (Сянці, китайські шахи)
+- `flip-on-jump` ×1 — YINSH
+- `trail-marker` ×1 — YINSH
+- `self-handicap-on-score` ×1 — YINSH
+- `shrinking-board` ×1 — ZÈRTZ
+- `island-capture` ×1 — ZÈRTZ
+- `color-set-win` ×1 — ZÈRTZ
+- `shared-pool` ×1 — ZÈRTZ
+- `allowed-place-cells` ×1 — Archaica: The Path of Light
+- `multi-stage-level` ×1 — Archaica: The Path of Light
+- `hint-from-collectibles` ×1 — Archaica: The Path of Light
+- `shared-path-head` ×1 — Black Path Game
+- `truchet-tiles` ×1 — Black Path Game
+- `beam-color-mix` ×1 — Chromatron (1–5)
+- `multi-beam-target` ×1 — Chromatron (1–5)
+- `fixed-vs-movable-piece` ×1 — Chromatron (1–5)
 - `adjacent-transfer` ×1 — Cosmic Express
 - `carriage-capacity` ×1 — Cosmic Express
 - `seat-taint` ×1 — Cosmic Express
@@ -162,24 +735,53 @@
 - `energy-conversion-chain` ×1 — Electric Box (+ Lazors)
 - `limited-parts-inventory` ×1 — Electric Box (+ Lazors)
 - `all-targets-hit` ×1 — Electric Box (+ Lazors)
+- `auto-extend-path` ×1 — Entanglement
+- `triangular-move-score` ×1 — Entanglement
+- `hex-12-port-tile` ×1 — Entanglement
+- `bonus-tile-cells` ×1 — Entanglement
 - `path-drawing` ×1 — Flow Free
 - `path-cut` ×1 — Flow Free
+- `pull-order-dependency` ×1 — Hook
+- `signal-circuit` ×1 — Hook
+- `rotary-junction` ×1 — Hook
 - `tile-rotate` ×1 — Infinity Loop + Net (Tatham)
 - `connectivity-check` ×1 — Infinity Loop + Net (Tatham)
 - `edge-barrier` ×1 — Infinity Loop + Net (Tatham)
 - `beam-capture` ×1 — Khet (Deflexion, Laser Chess)
 - `restricted-squares` ×1 — Khet (Deflexion, Laser Chess)
 - `mandatory-action` ×1 — Khet (Deflexion, Laser Chess)
-- `beam-splitter` ×1 — Khet (Deflexion, Laser Chess)
 - `shot-push` ×1 — LaserTank
 - `line-of-fire-enemy` ×1 — LaserTank
 - `facing-turn` ×1 — LaserTank
+- `move-to-beam-end` ×1 — Lasergoose
+- `flip-after-hit` ×1 — Lasergoose
+- `beam-perch` ×1 — Lasergoose
+- `rotating-gate` ×1 — Lasergoose
 - `visit-all-nodes` ×1 — LYNE
 - `multi-pass-node` ×1 — LYNE
 - `no-crossing-lines` ×1 — LYNE
+- `route-length-score` ×1 — Metro (Iron Horse)
+- `draw-or-play` ×1 — Metro (Iron Horse)
+- `double-score-hub` ×1 — Metro (Iron Horse)
+- `route-network` ×1 — Mini Metro
+- `shape-matched-delivery` ×1 — Mini Metro
+- `dichroic-mirror` ×1 — OCTOPTICOM
+- `beam-switch-gate` ×1 — OCTOPTICOM
+- `beam-accumulator` ×1 — OCTOPTICOM
+- `area-cost-limit` ×1 — OCTOPTICOM
+- `blueprints` ×1 — OCTOPTICOM
+- `marble-physics` ×1 — Oxyd (+ Enigma)
+- `memory-pair-open` ×1 — Oxyd (+ Enigma)
+- `pair-shuffle-on-death` ×1 — Oxyd (+ Enigma)
+- `connected-block-move` ×1 — Oxyd (+ Enigma)
+- `laser-transforms-item` ×1 — Oxyd (+ Enigma)
 - `piece-queue` ×1 — Pipe Mania (Pipe Dream)
 - `flow-propagation` ×1 — Pipe Mania (Pipe Dream)
 - `replace-with-penalty` ×1 — Pipe Mania (Pipe Dream)
+- `commit-then-flow` ×1 — Plumber / Pipes / Water Connect (мобільний жанр)
+- `decoy-tiles` ×1 — Plumber / Pipes / Water Connect (мобільний жанр)
+- `scramble-solution-rotations` ×1 — Plumber / Pipes / Water Connect (мобільний жанр)
+- `multi-source-color-match` ×1 — Plumber / Pipes / Water Connect (мобільний жанр)
 - `track-budget` ×1 — Railbound
 - `ordered-arrival` ×1 — Railbound
 - `collision-fail` ×1 — Railbound
@@ -187,6 +789,22 @@
 - `spanning-tree-strategy` ×1 — Shannon switching game / Bridg-It (+ Untangle)
 - `crossing-detection` ×1 — Shannon switching game / Bridg-It (+ Untangle)
 - `vertex-drag` ×1 — Shannon switching game / Bridg-It (+ Untangle)
+- `pulse-collision-merge` ×1 — SOLAS 128
+- `interlocked-rooms` ×1 — SOLAS 128
+- `shared-border-cell` ×1 — SOLAS 128
+- `orbit-rotation` ×1 — Spin Doctor / ClockWerx
+- `pivot-hop` ×1 — Spin Doctor / ClockWerx
+- `reverse-spin` ×1 — Spin Doctor / ClockWerx
+- `no-cross-signals` ×1 — SPIN Protocol
+- `rotation-limit` ×1 — SPIN Protocol
+- `edge-color-match` ×1 — Tantrix
+- `forced-space` ×1 — Tantrix
+- `longest-line-score` ×1 — Tantrix
+- `loop-parity` ×1 — Tantrix
+- `train-dispatch` ×1 — Train Valley
+- `delivery-value-decay` ×1 — Train Valley
+- `bankruptcy-lose` ×1 — Train Valley
+- `optional-objectives` ×1 — Train Valley
 - `color-mixing` ×1 — Trainyard
 - `train-merge` ×1 — Trainyard
 - `forced-move-cascade` ×1 — Trax
@@ -198,12 +816,34 @@
 - `path-collision` ×1 — Tsuro (+ Indigo)
 - `hand-of-tiles` ×1 — Tsuro (+ Indigo)
 - `shared-goal` ×1 — Tsuro (+ Indigo)
+- `track-before-train` ×1 — Unrailed!
+- `craft-from-resources` ×1 — Unrailed!
+- `overheat-fire` ×1 — Unrailed!
+- `shared-tools` ×1 — Unrailed!
 - `path-bound-enemy` ×1 — Zenji
 - `rotate-under-avatar` ×1 — Zenji
 - `extra-life-threshold` ×1 — Zenji
+- `ordered-collection` ×1 — Banana
+- `delayed-fall` ×1 — Banana
+- `step-penalty-score` ×1 — Banana
+- `escort-npc` ×1 — Banana
+- `shifting-gravity` ×1 — Bone Cruncher
+- `trap-to-convert` ×1 — Bone Cruncher
+- `craft-at-station` ×1 — Bone Cruncher
+- `ally-guard` ×1 — Bone Cruncher
+- `no-walk-under-falling` ×1 — Boulder Dash — DOS-клони (bd-fans)
+- `solvable-random-cave` ×1 — Boulder Dash — DOS-клони (bd-fans)
+- `size-coding-clone` ×1 — Boulder Dash — DOS-клони (bd-fans)
 - `scan-order` ×1 — Boulder Dash
 - `expanding-wall` ×1 — Boulder Dash
 - `permeable-cell` ×1 — Boulder Dash
+- `dormant-enemy` ×1 — Crystal Mines II
+- `pipe-transport` ×1 — Crystal Mines II
+- `kill-method-bonus` ×1 — Crystal Mines II
+- `multi-hit-block` ×1 — Crystal Mines II
+- `two-currency-gems` ×1 — Diamond Rush
+- `recall-to-checkpoint` ×1 — Diamond Rush
+- `perfect-stage-life` ×1 — Diamond Rush
 - `fault-line-crack` ×1 — Dig Dug II
 - `region-split-sink` ×1 — Dig Dug II
 - `fire-breath` ×1 — Dig Dug
@@ -212,18 +852,53 @@
 - `wave-weight-budget` ×1 — Dome Keeper
 - `base-turret-aim` ×1 — Dome Keeper
 - `deliver-goal` ×1 — Dome Keeper
+- `lava-burns-above` ×1 — Dot Valley
+- `fire-wheel` ×1 — Dot Valley
+- `push-vertical-neighbour` ×1 — Dot Valley
+- `harmless-falling-gem` ×1 — Dot Valley
+- `plug-generator` ×1 — Dot Valley
+- `ammo-recharge-on-landing` ×1 — Downwell
+- `combo-rewards` ×1 — Downwell
+- `gem-high` ×1 — Downwell
+- `time-void-room` ×1 — Downwell
+- `fire-and-bubble` ×1 — Earth Shaker
+- `object-on-head` ×1 — Earth Shaker
 - `explosion-content` ×1 — Emerald Mine
 - `crack-open` ×1 — Emerald Mine
 - `acid-pool` ×1 — Emerald Mine
 - `lure-switch` ×1 — Emerald Mine
 - `pass-through-door` ×1 — Emerald Mine
-- `shared-screen-coop` ×1 — Emerald Mine
 - `buoyant-rise` ×1 — Heartlight
 - `one-way-tunnel` ×1 — Heartlight
 - `free-level-order` ×1 — Heartlight
 - `manual-restart` ×1 — Heartlight
-- `two-layer-field` ×1 — Mole Mania
+- `multi-resource-quota` ×1 — Joshua & the Battle of Jericho
+- `quiz-between-levels` ×1 — Joshua & the Battle of Jericho
+- `engine-reskin` ×1 — Joshua & the Battle of Jericho
+- `assign-skill` ×1 — Lemmings
+- `release-rate` ×1 — Lemmings
+- `nuke-all` ×1 — Lemmings
+- `pixel-terrain-mask` ×1 — Lemmings
+- `trap-cooldown` ×1 — Lemmings
+- `ninja-rope` ×1 — Liero
+- `weapon-loadout-select` ×1 — Liero
+- `reload-time` ×1 — Liero
+- `dig-by-input-gesture` ×1 — Liero
+- `dirt-producing-weapons` ×1 — Liero
+- `split-screen-duel` ×1 — Liero
+- `tag-timer-mode` ×1 — Liero
+- `booby-crate` ×1 — Liero
+- `tool-per-block` ×1 — Mine Blocks
+- `crafting-recipes` ×1 — Mine Blocks
+- `hotbar` ×1 — Mine Blocks
 - `hole-respawn-object` ×1 — Mole Mania
+- `fuel-tank` ×1 — Motherload
+- `sell-cargo` ×1 — Motherload
+- `depth-tiered-ore` ×1 — Motherload
+- `hidden-hazard-cell` ×1 — Motherload
+- `surface-quake` ×1 — Motherload
+- `upgrade-tiers` ×1 — Motherload
+- `flight-thrust` ×1 — Motherload
 - `boomerang-projectile` ×1 — Mr. Do!
 - `multi-kill-bonus` ×1 — Mr. Do!
 - `letter-collection` ×1 — Mr. Do!
@@ -231,7 +906,13 @@
 - `enemy-mutation` ×1 — Mr. Do!
 - `group-support` ×1 — Mr. Driller
 - `depth-goal` ×1 — Mr. Driller
-- `egg-hatch` ×1 — Repton 1–3
+- `spell-queue` ×1 — Noita
+- `stain-status` ×1 — Noita
+- `material-durability` ×1 — Noita
+- `rigid-body-debris` ×1 — Noita
+- `safe-zone-shop` ×1 — Noita
+- `angered-guardian` ×1 — Noita
+- `fire-spread` ×1 — Noita
 - `lure-to-goal` ×1 — Repton 1–3
 - `teleport-single-use` ×1 — Repton 1–3
 - `timer-reset-pickup` ×1 — Repton 1–3
@@ -243,26 +924,317 @@
 - `time-gate-wheel` ×1 — Rocks'n'Diamonds
 - `game-of-life-wall` ×1 — Rocks'n'Diamonds
 - `wind-drift` ×1 — Rocks'n'Diamonds
+- `behavior-grid-dsl` ×1 — Sandboxels
+- `reaction-table` ×1 — Sandboxels
+- `hidden-elements` ×1 — Sandboxels
+- `block-programming` ×1 — Sandspiel Studio
+- `symmetry-expansion` ×1 — Sandspiel Studio
+- `remix-tree` ×1 — Sandspiel Studio
+- `cell-registers` ×1 — Sandspiel
+- `update-clock-bit` ×1 — Sandspiel
+- `image-as-save` ×1 — Sandspiel
+- `falling-dirt` ×1 — Scorched Earth
+- `dirt-weapons` ×1 — Scorched Earth
+- `liquid-dirt-flow` ×1 — Scorched Earth
+- `angle-power-aim` ×1 — Scorched Earth
+- `wall-types` ×1 — Scorched Earth
+- `ai-personality-types` ×1 — Scorched Earth
+- `room-template-grid` ×1 — Spelunky
+- `solution-path-gen` ×1 — Spelunky
+- `probabilistic-tile` ×1 — Spelunky
+- `obstacle-chunk` ×1 — Spelunky
+- `rope-throw` ×1 — Spelunky
+- `shopkeeper-aggro` ×1 — Spelunky
+- `idol-trap` ×1 — Spelunky
 - `fall-damage` ×1 — SteamWorld Dig
 - `wall-jump` ×1 — SteamWorld Dig
 - `death-loot-drop` ×1 — SteamWorld Dig
 - `ore-vein-generation` ×1 — SteamWorld Dig
+- `freehand-draw-barrier` ×1 — Sugar, Sugar
+- `particle-sand-flow` ×1 — Sugar, Sugar
+- `color-filter` ×1 — Sugar, Sugar
+- `gravity-flip` ×1 — Sugar, Sugar
+- `cup-countdown` ×1 — Sugar, Sugar
 - `timed-bomb-drop` ×1 — Supaplex
 - `lethal-state-cell` ×1 — Supaplex
 - `skip-level` ×1 — Supaplex
+- `split-abilities` ×1 — Survivors
+- `any-member-lost` ×1 — Survivors
+- `mobile-base` ×1 — Wall World
+- `dock-undock` ×1 — Wall World
+- `resource-vacuum` ×1 — Wall World
+- `wave-timer-on-clear` ×1 — Wall World
+- `fluid-contamination` ×1 — Where's My Water?
+- `fluid-sink-goal` ×1 — Where's My Water?
+- `match-drives-avatar` ×1 — 10000000
+- `adjacency-match-placement` ×1 — Alchemy (PopCap)
+- `discard-limit` ×1 — Alchemy (PopCap)
+- `paint-on-place-goal` ×1 — Alchemy (PopCap)
+- `asymmetric-match` ×1 — Baku Baku Animal
+- `hand-of-pieces` ×1 — Block Blast! (і родина 1010! / Woodoku)
+- `streak-bonus` ×1 — Block Blast! (і родина 1010! / Woodoku)
+- `fit-anywhere-check` ×1 — Block Blast! (і родина 1010! / Woodoku)
+- `3d-polycube-rotation` ×1 — Blockout (Block Out)
+- `row-col-slide-wrap` ×1 — Chuzzle
+- `fill-meter-level` ×1 — Chuzzle
+- `paid-hint` ×1 — Chuzzle
+- `reshuffle-charges` ×1 — Chuzzle
+- `idle-lock-timer` ×1 — Chuzzle
+- `pattern-goal` ×1 — Chuzzle
+- `food-chain-feed` ×1 — Critter Crunch
+- `size-tier-eat` ×1 — Critter Crunch
+- `evolution-chain` ×1 — Darwin's Dilemma
+- `loop-clears-color` ×1 — Dots / Two Dots
+- `auto-shuffle` ×1 — Dots / Two Dots
+- `lives-regen-timer` ×1 — Dots / Two Dots
+- `booster-items` ×1 — Dots / Two Dots
+- `attack-gauge` ×1 — Gyromancer
+- `enemy-gauge-per-move` ×1 — Gyromancer
+- `color-affinity` ×1 — Gyromancer
+- `recruit-defeated` ×1 — Gyromancer
+- `shape-stack-height` ×1 — Hatris
+- `sale-meter-shop` ×1 — Hatris
+- `column-burn` ×1 — Hatris
+- `stack-top-merge` ×1 — Hexa Sort
+- `stack-clear-threshold` ×1 — Hexa Sort
+- `locked-cell-unlock` ×1 — Hexa Sort
+- `rotate-triple-hex` ×1 — Hexic (Hexic HD, Hexic 2)
+- `ring-match` ×1 — Hexic (Hexic HD, Hexic 2)
+- `radial-lanes` ×1 — Hextris (Гекстріс)
+- `spawn-wave-patterns` ×1 — Hextris (Гекстріс)
+- `pair-match-removal` ×1 — Mahjong Solitaire (Shanghai, Маджонг-пасьянс)
+- `free-tile-rule` ×1 — Mahjong Solitaire (Shanghai, Маджонг-пасьянс)
+- `reshuffle-remaining` ×1 — Mahjong Solitaire (Shanghai, Маджонг-пасьянс)
+- `solvable-deal` ×1 — Mahjong Solitaire (Shanghai, Маджонг-пасьянс)
+- `hint-pair` ×1 — Mahjong Solitaire (Shanghai, Маджонг-пасьянс)
+- `pause-hides-field` ×1 — Mahjong Solitaire (Shanghai, Маджонг-пасьянс)
+- `stars-for-tasks` ×1 — Homescapes / Gardenscapes / Royal Match (мета-шар ремонту)
+- `task-list-meta` ×1 — Homescapes / Gardenscapes / Royal Match (мета-шар ремонту)
+- `decor-variant-choice` ×1 — Homescapes / Gardenscapes / Royal Match (мета-шар ремонту)
+- `area-chest` ×1 — Homescapes / Gardenscapes / Royal Match (мета-шар ремонту)
+- `tap-activate-special` ×1 — Homescapes / Gardenscapes / Royal Match (мета-шар ремонту)
+- `seeking-special` ×1 — Homescapes / Gardenscapes / Royal Match (мета-шар ремонту)
+- `minigame-interlude` ×1 — Homescapes / Gardenscapes / Royal Match (мета-шар ремонту)
+- `producer-cooldown` ×1 — Merge Mansion / Merge Dragons
+- `order-fulfillment` ×1 — Merge Mansion / Merge Dragons
+- `locked-item-cobweb` ×1 — Merge Mansion / Merge Dragons
+- `denomination-merge` ×1 — Money Puzzle Exchanger
+- `rank-up-special` ×1 — Money Puzzle Exchanger
+- `late-chain` ×1 — Money Puzzle Exchanger
+- `big-piece-breakup` ×1 — Pictobits
+- `slot-cost-powerup` ×1 — Pictobits
+- `throw-swap-return` ×1 — Plotting (Flipull)
+- `leftover-quota` ×1 — Plotting (Flipull)
+- `pass-through-pipe` ×1 — Plotting (Flipull)
+- `poker-hand-match` ×1 — Poker Smash
+- `chip-stack-hp` ×1 — Poker Smash
+- `rotating-dealer` ×1 — Poker Smash
+- `challenge-hand` ×1 — Poker Smash
+- `one-stroke-flip` ×1 — Polarium
+- `neutral-border-cells` ×1 — Polarium
+- `grade-letter` ×1 — Polarium
+- `zone-objectives` ×1 — Puzzle Scape
+- `recolor-power` ×1 — Puzzle Scape
+- `swap-must-match` ×1 — Shariki (Шарики)
+- `bend-limited-path` ×1 — Shisen-Sho / Onet (Сісен-сьо, «зʼєднай пару»)
+- `unsolvable-warning` ×1 — Shisen-Sho / Onet (Сісен-сьо, «зʼєднай пару»)
+- `sandwich-recolor` ×1 — Soldam
+- `mono-color-row-clear` ×1 — Soldam
+- `color-weighted-spawn` ×1 — Soldam
+- `recolor-guide` ×1 — Soldam
+- `manual-group-clear` ×1 — Stickets
+- `fixed-shape-slots` ×1 — Stickets
+- `block-time-bomb` ×1 — Stickets
+- `no-space-left-lose` ×1 — Stickets
+- `power-gem-merge` ×1 — Super Puzzle Fighter II Turbo
+- `counter-gem-countdown` ×1 — Super Puzzle Fighter II Turbo
+- `drop-pattern-per-character` ×1 — Super Puzzle Fighter II Turbo
+- `edge-match-tiles` ×1 — TetraVex
+- `tile-tray-source` ×1 — TetraVex
+- `zone-time-stop` ×1 — Tetris Effect / Tetris Effect Connected
+- `stack-cleared-at-bottom` ×1 — Tetris Effect / Tetris Effect Connected
+- `history-randomizer` ×1 — Tetris The Grand Master (TGM)
+- `level-counter-gate` ×1 — Tetris The Grand Master (TGM)
+- `grade-rank` ×1 — Tetris The Grand Master (TGM)
+- `time-split-check` ×1 — Tetris The Grand Master (TGM)
+- `initial-rotation` ×1 — Tetris The Grand Master (TGM)
+- `tilt-instead-of-fall` ×1 — Tetromino Slide / Tetromino-Rutsch
+- `clear-n-lines-win` ×1 — Tetromino Slide / Tetromino-Rutsch
+- `complement-merge` ×1 — Threes!
+- `rarity-scoring` ×1 — Threes!
+- `terminal-tile-end` ×1 — Threes!
+- `unlock-reveal-tile` ×1 — Threes!
+- `group-size-specials` ×1 — Toon Blast
+- `milestone-chest` ×1 — Toon Blast
+- `reshuffle-booster` ×1 — Toon Blast
+- `rigid-body-stacking` ×1 — Tricky Towers
+- `spell-light-dark` ×1 — Tricky Towers
+- `match-tray` ×1 — Triple Match 3D / Tile Explorer
+- `covered-pick-rule` ×1 — Triple Match 3D / Tile Explorer
+- `gear-rotate-group` ×1 — Trouballs
+- `rectangle-group-match` ×1 — Trouballs
+- `bottom-pick-triple` ×1 — Tumblestone
+- `toggle-block` ×1 — Tumblestone
+- `puzzle-race` ×1 — Tumblestone
+- `carry-stack` ×1 — Wario's Woods
+- `catalyst-match` ×1 — Wario's Woods
+- `diagonal-only-tile` ×1 — Wario's Woods
+- `two-hit-tile` ×1 — Wario's Woods
+- `ceiling-descend` ×1 — Wario's Woods
+- `phase-timer-antagonist` ×1 — Wario's Woods
+- `multi-direction-clear-bonus` ×1 — Wario's Woods
+- `stack-sort` ×1 — Water Sort / Ball Sort Puzzle (сортування кольорів у пробірках)
+- `pour-run` ×1 — Water Sort / Ball Sort Puzzle (сортування кольорів у пробірках)
+- `extra-container-booster` ×1 — Water Sort / Ball Sort Puzzle (сортування кольорів у пробірках)
+- `water-flow-sim` ×1 — Wetrix
+- `line-shift-wrap` ×1 — Yoshi's Cookie
+- `type-gauge-reward` ×1 — Yoshi's Cookie
+- `pushback-on-clear` ×1 — Yoshi's Cookie
+- `shoot-swap-color` ×1 — Zoop
+- `lane-push-advance` ×1 — Zoop
+- `carry-one-block` ×1 — Block Dude
+- `drill-to-inventory` ×1 — Blocks That Matter
+- `build-mode-pause` ×1 — Blocks That Matter
+- `collapse-on-step` ×1 — Blocks That Matter
 - `box-chain-extrude` ×1 — BoxBoy! (ハコボーイ!)
+- `walk-over-to-drop` ×1 — BurgerTime
+- `rider-extra-fall` ×1 — BurgerTime
+- `crush-by-fall` ×1 — BurgerTime
+- `stun-cloud` ×1 — BurgerTime
+- `no-jump-avatar` ×1 — Captain Toad: Treasure Tracker
+- `rotate-view-to-solve` ×1 — Captain Toad: Treasure Tracker
+- `freeze-when-watched` ×1 — Captain Toad: Treasure Tracker
+- `touch-move-platform` ×1 — Captain Toad: Treasure Tracker
 - `move-counter-scrub` ×1 — Catrap (Pitman)
+- `enemy-eats-pickup` ×1 — Chuckie Egg
+- `timer-freeze-pickup` ×1 — Chuckie Egg
+- `caged-enemy-release` ×1 — Chuckie Egg
+- `loop-passes-harder` ×1 — Chuckie Egg
+- `trap-behind-door` ×1 — Door Door
+- `door-handle-side` ×1 — Door Door
+- `enemy-shadows-jump` ×1 — Door Door
+- `rescue-followers` ×1 — Exit
+- `actor-type-abilities` ×1 — Exit
+- `ice-sticks-to-wall` ×1 — Fire 'n Ice
+- `extinguish-by-block` ×1 — Fire 'n Ice
+- `pipe-travel` ×1 — Fire 'n Ice
+- `fuse-avatars` ×1 — Head over Heels
+- `observer-vanish` ×1 — Head over Heels
+- `per-avatar-powerup` ×1 — Head over Heels
+- `ability-split` ×1 — Head over Heels
+- `rope-swing` ×1 — Jet Set Willy
+- `ramp-walk` ×1 — Jet Set Willy
+- `respawn-death-loop` ×1 — Jet Set Willy
+- `copy-protection-code` ×1 — Jet Set Willy
+- `game-clock-deadline` ×1 — Jet Set Willy
 - `fill-hole-with-block` ×1 — Kickle Cubicle (迷宮島)
 - `freeze-into-block` ×1 — Kickle Cubicle (迷宮島)
+- `extend-retract-body` ×1 — Kine
+- `lift-other-avatar` ×1 — Kine
+- `dig-shape-per-tool` ×1 — King's Valley II: The Seal of El Giza
+- `vanish-after-n-uses` ×1 — King's Valley II: The Seal of El Giza
+- `enemy-behavior-table` ×1 — King's Valley
+- `day-night-cycle` ×1 — Knight Lore
+- `form-shift` ×1 — Knight Lore
+- `requested-item-sequence` ×1 — Knight Lore
+- `tank-controls` ×1 — Knight Lore
+- `fan-blow` ×1 — Krusty's Fun House
+- `capture-jar` ×1 — Krusty's Fun House
+- `hub-room-doors` ×1 — Krusty's Fun House
+- `group-herding` ×1 — Krusty's Fun House
 - `edge-roll-gravity` ×1 — Kula World (Roll Away, KulaQuest)
+- `signal-channels` ×1 — Levelhead
+- `relay-logic` ×1 — Levelhead
+- `carry-goal-object` ×1 — Levelhead
+- `power-purge-gate` ×1 — Levelhead
+- `dig-restrictions` ×1 — Lode Runner 2 і Lode Runner 3-D
+- `spiral-tower-level` ×1 — Lode Runner 2 і Lode Runner 3-D
+- `save-costs-life` ×1 — Championship Lode Runner і Lode Runner Legacy
+- `puzzle-mode-no-enemies` ×1 — Championship Lode Runner і Lode Runner Legacy
+- `voxel-asset-editor` ×1 — Championship Lode Runner і Lode Runner Legacy
+- `single-use-tool` ×1 — Lode Runner: The Legend Returns
+- `ceiling-rockfall` ×1 — Lode Runner: The Legend Returns
 - `dig-hole` ×1 — Lode Runner
+- `crumbling-floor` ×1 — Manic Miner
+- `conveyor-locks-walk` ×1 — Manic Miner
+- `fixed-arc-jump` ×1 — Manic Miner
+- `beam-drains-resource` ×1 — Manic Miner
+- `guardian-blocks-exit` ×1 — Manic Miner
 - `click-solidify-block` ×1 — Mario & Wario
+- `color-switch-blocks` ×1 — Mario vs. Donkey Kong
+- `escort-followers` ×1 — Mario vs. Donkey Kong
+- `two-phase-level` ×1 — Mario vs. Donkey Kong
+- `followers-as-boss-hp` ×1 — Mario vs. Donkey Kong
+- `level-as-qr` ×1 — Mekorama
+- `walkability-modifier` ×1 — Mekorama
+- `physics-body-avatar` ×1 — Mekorama
+- `claim-all-floor` ×1 — Miner 2049er
+- `controllable-lift` ×1 — Miner 2049er
+- `cannon-charge-height` ×1 — Miner 2049er
+- `numbered-transporter` ×1 — Miner 2049er
+- `floor-missions-elevator` ×1 — Monster Max
+- `mission-terminal` ×1 — Monster Max
+- `choose-n-of-m-levels` ×1 — Monster Max
+- `button-mapped-slots` ×1 — Monster Max
+- `shield-blocks-actions` ×1 — Monster Max
+- `crouch-squeeze` ×1 — Monster Max
+- `flicker-barrier` ×1 — Montezuma's Revenge
+- `dark-room-light-item` ×1 — Montezuma's Revenge
+- `colored-key-doors` ×1 — Montezuma's Revenge
+- `treasure-bonus-room` ×1 — Montezuma's Revenge
+- `cylinder-tower-view` ×1 — Nebulus
+- `context-fire-jump` ×1 — Nebulus
+- `technique-bonus` ×1 — Nebulus
+- `loose-floor` ×1 — Prince of Persia
+- `fall-damage-by-height` ×1 — Prince of Persia
+- `timed-gate` ×1 — Prince of Persia
+- `session-timer` ×1 — Prince of Persia
+- `sword-duel` ×1 — Prince of Persia
+- `four-side-drawer` ×1 — Pushmo World / Stretchmo
+- `auto-return-block` ×1 — Pushmo World / Stretchmo
+- `enemy-as-platform` ×1 — Pushmo World / Stretchmo
+- `paid-level-packs` ×1 — Pushmo World / Stretchmo
 - `depth-pull-wall` ×1 — Pushmo / Pullblox (引ク押ス) + Crashmo
 - `domino-topple-chain` ×1 — Pushover (Push-Over)
+- `coop-split-control` ×1 — Quadrax
+- `hidden-lever-link` ×1 — Quadrax
+- `hidden-trigger-trap` ×1 — Rick Dangerous
+- `trap-kills-enemies` ×1 — Rick Dangerous
+- `blast-flings-blocks` ×1 — Rick Dangerous
+- `fire-plus-direction` ×1 — Rick Dangerous
+- `limited-ammo-refill` ×1 — Rick Dangerous
+- `rolling-boulder-chase` ×1 — Rick Dangerous
 - `create-destroy-block` ×1 — Solomon's Key
+- `room-scoped-effect` ×1 — Solstice
+- `freeze-time` ×1 — Solstice
+- `reveal-invisible` ×1 — Solstice
+- `hidden-exit-after-task` ×1 — Solstice
+- `continue-token` ×1 — Solstice
+- `fall-height-kill` ×1 — Space Panic
+- `stack-kill-bonus` ×1 — Space Panic
+- `knock-through-hole` ×1 — Space Panic
+- `weapon-drains-resource` ×1 — Spelunker
+- `rope-climb-release` ×1 — Spelunker
+- `light-repels-enemy` ×1 — Spelunker
+- `loop-harder` ×1 — Spelunker
+- `coop-only-levels` ×1 — Spherical
+- `orbit-shield` ×1 — Spherical
+- `delayed-start-timer` ×1 — Spherical
+- `guide-rolling-ball` ×1 — Spherical
+- `fifo-inventory` ×1 — Starquake
+- `teleport-code-word` ×1 — Starquake
+- `trade-exchange` ×1 — Starquake
+- `vehicle-dock` ×1 — Starquake
+- `weak-floor-smash` ×1 — Starquake
+- `lowest-stat-refill` ×1 — Starquake
 - `part-modifiers` ×1 — Super Mario Maker 2
 - `clear-condition` ×1 — Super Mario Maker 2
+- `lure-and-scare` ×1 — Toki Tori 2 / Toki Tori 2+
+- `knowledge-gating` ×1 — Toki Tori 2 / Toki Tori 2+
 - `tool-allotment` ×1 — Toki Tori
+- `stack-inventory` ×1 — Treasure Island Dizzy
+- `passive-carry-item` ×1 — Treasure Island Dizzy
+- `give-item-to-npc` ×1 — Treasure Island Dizzy
 - `auto-walker-guide` ×1 — Troddlers
 - `surface-crawler` ×1 — Troddlers
 - `bomb-flood-destroy` ×1 — Wrecking Crew
@@ -286,6 +1258,22 @@
 - `probe-cost-score` ×1 — Black Box (Чорна скринька)
 - `counterexample-hint` ×1 — Black Box (Чорна скринька)
 - `lock-cell` ×1 — Black Box (Чорна скринька)
+- `player-written-rules` ×1 — Bombe
+- `region-clue` ×1 — Bombe
+- `rule-checker` ×1 — Bombe
+- `rule-auto-apply` ×1 — Bombe
+- `venn-rule-editor` ×1 — Bombe
+- `announced-course-tracking` ×1 — Captain Sonar
+- `no-self-cross-path` ×1 — Captain Sonar
+- `charge-gauges` ×1 — Captain Sonar
+- `breakdown-panels` ×1 — Captain Sonar
+- `team-roles` ×1 — Captain Sonar
+- `true-false-clue` ×1 — Captain Sonar
+- `sector-query` ×1 — Captain Sonar
+- `surface-reset` ×1 — Captain Sonar
+- `typed-hazard-footprints` ×1 — Cavern Sweeper
+- `moving-hidden-hazard` ×1 — Cavern Sweeper
+- `hazard-mix-mode` ×1 — Cavern Sweeper
 - `dice-move-steps` ×1 — Cluedo (Clue; «Клуедо»)
 - `room-zone-entry` ×1 — Cluedo (Clue; «Клуедо»)
 - `solution-envelope` ×1 — Cluedo (Clue; «Клуедо»)
@@ -298,6 +1286,13 @@
 - `door-blocking` ×1 — Cluedo (Clue; «Клуедо»)
 - `simultaneous-secret-answer` ×1 — Cluedo (Clue; «Клуедо»)
 - `constraint-deduction-ai` ×1 — Cluedo (Clue; «Клуедо»)
+- `secret-clue-intersection` ×1 — Cryptid
+- `hex-distance-clue` ×1 — Cryptid
+- `yes-no-token-answer` ×1 — Cryptid
+- `forced-disclosure-penalty` ×1 — Cryptid
+- `modular-map-setup` ×1 — Cryptid
+- `negative-clue` ×1 — Cryptid
+- `clue-inference-ai` ×1 — Cryptid
 - `visibility-by-moves` ×1 — Kriegspiel + Dark Chess (Fog of War; «шахи наосліп із суддею» і «шахи в тумані»)
 - `capture-king-win` ×1 — Kriegspiel + Dark Chess (Fog of War; «шахи наосліп із суддею» і «шахи в тумані»)
 - `referee-announcements` ×1 — Kriegspiel + Dark Chess (Fog of War; «шахи наосліп із суддею» і «шахи в тумані»)
@@ -307,6 +1302,15 @@
 - `hidden-promotion` ×1 — Kriegspiel + Dark Chess (Fog of War; «шахи наосліп із суддею» і «шахи в тумані»)
 - `opponent-guess-board` ×1 — Kriegspiel + Dark Chess (Fog of War; «шахи наосліп із суддею» і «шахи в тумані»)
 - `post-game-reveal` ×1 — Kriegspiel + Dark Chess (Fog of War; «шахи наосліп із суддею» і «шахи в тумані»)
+- `mistake-damage` ×1 — DemonCrawl
+- `stage-mods` ×1 — DemonCrawl
+- `mistake-free-streak` ×1 — DemonCrawl
+- `mana-charged-items` ×1 — DemonCrawl
+- `armor-slots` ×1 — DemonCrawl
+- `stranger-npcs` ×1 — DemonCrawl
+- `omens` ×1 — DemonCrawl
+- `meta-talents` ×1 — DemonCrawl
+- `autosweeper-mode` ×1 — DemonCrawl
 - `sum-of-levels-clue` ×1 — Dragonsweeper
 - `xp-level-up` ×1 — Dragonsweeper
 - `monster-bestiary` ×1 — Dragonsweeper
@@ -315,10 +1319,42 @@
 - `teleporting-neutral` ×1 — Dragonsweeper
 - `guard-adjacent` ×1 — Dragonsweeper
 - `stamps-challenges` ×1 — Dragonsweeper
+- `guaranteed-start-kit` ×1 — Dungeon Squire
+- `memory-marker-trap` ×1 — Dungeon Squire
+- `ore-selling-decay` ×1 — Dynamine
+- `furnace-processing` ×1 — Dynamine
+- `repair-cost-death` ×1 — Dynamine
+- `explosion-scar-blocks` ×1 — Dynamine
+- `auto-flag-tool` ×1 — Dynamine
+- `chest-press-puzzle` ×1 — Dynamine
+- `rail-placement` ×1 — Dynamine
+- `row-clear-when-solved` ×1 — endless mines
+- `row-lock-on-mine` ×1 — endless mines
+- `locked-rows-as-lives` ×1 — endless mines
+- `touch-hold-flag` ×1 — endless mines
+- `trail-of-locations` ×1 — The Fury of Dracula
+- `encounter-trap-placement` ×1 — The Fury of Dracula
+- `encounter-maturing` ×1 — The Fury of Dracula
+- `trail-reveal-on-visit` ×1 — The Fury of Dracula
+- `influence-track` ×1 — The Fury of Dracula
+- `day-night-phases` ×1 — The Fury of Dracula
+- `simultaneous-card-combat` ×1 — The Fury of Dracula
 - `exit-escape` ×1 — Geister (Ghosts!, Good & Bad Ghosts; «Привиди»)
 - `poison-capture` ×1 — Geister (Ghosts!, Good & Bad Ghosts; «Привиди»)
 - `capture-quota-win` ×1 — Geister (Ghosts!, Good & Bad Ghosts; «Привиди»)
 - `belief-state-ai` ×1 — Geister (Ghosts!, Good & Bad Ghosts; «Привиди»)
+- `spherical-grid` ×1 — Globesweeper
+- `corner-neighborhood` ×1 — Globesweeper
+- `camera-orbit` ×1 — Globesweeper
+- `achievement-unlocks-theme` ×1 — Globesweeper
+- `yes-no-question` ×1 — Guess Who? (Вгадай, хто?)
+- `trait-elimination-grid` ×1 — Guess Who? (Вгадай, хто?)
+- `match-best-of-n` ×1 — Guess Who? (Вгадай, хто?)
+- `compound-question` ×1 — Guess Who? (Вгадай, хто?)
+- `optimal-bisection-ai` ×1 — Guess Who? (Вгадай, хто?)
+- `directional-line-clue` ×1 — hexceed
+- `wall-cell` ×1 — hexceed
+- `level-pack-dlc` ×1 — hexceed
 - `line-sum-clue` ×1 — Hexcells / Hexcells Plus / Hexcells Infinite
 - `contiguity-clue` ×1 — Hexcells / Hexcells Plus / Hexcells Infinite
 - `mistake-counter` ×1 — Hexcells / Hexcells Plus / Hexcells Infinite
@@ -330,12 +1366,42 @@
 - `ammo-limit` ×1 — Hunt the Wumpus («Полювання на Вампуса»)
 - `same-setup-replay` ×1 — Hunt the Wumpus («Полювання на Вампуса»)
 - `hazard-notes-map` ×1 — Hunt the Wumpus («Полювання на Вампуса»)
+- `hidden-identity` ×1 — Inkognito
+- `hidden-partner` ×1 — Inkognito
+- `decoy-figures` ×1 — Inkognito
+- `truth-among-lies-answer` ×1 — Inkognito
+- `action-randomizer-balls` ×1 — Inkognito
+- `split-mission-code` ×1 — Inkognito
+- `common-letter-count-feedback` ×1 — Jotto
+- `secret-per-player` ×1 — Jotto
+- `letter-elimination-sheet` ×1 — Jotto
 - `adversarial-placement` ×1 — Kaboom (+ LuckSweeper, Pure Skill Minesweeper, Tatham Mines — сапер, що карає або прощає вгадування)
 - `forced-guess-safe` ×1 — Kaboom (+ LuckSweeper, Pure Skill Minesweeper, Tatham Mines — сапер, що карає або прощає вгадування)
 - `lazy-hidden-state` ×1 — Kaboom (+ LuckSweeper, Pure Skill Minesweeper, Tatham Mines — сапер, що карає або прощає вгадування)
 - `sat-cell-classifier` ×1 — Kaboom (+ LuckSweeper, Pure Skill Minesweeper, Tatham Mines — сапер, що карає або прощає вгадування)
 - `debug-overlay` ×1 — Kaboom (+ LuckSweeper, Pure Skill Minesweeper, Tatham Mines — сапер, що карає або прощає вгадування)
 - `undo-after-death` ×1 — Kaboom (+ LuckSweeper, Pure Skill Minesweeper, Tatham Mines — сапер, що карає або прощає вгадування)
+- `worker-dig-queue` ×1 — Keepsweeper
+- `reveal-builds-land` ×1 — Keepsweeper
+- `hidden-lairs-spawn` ×1 — Keepsweeper
+- `weather-changes-routes` ×1 — Keepsweeper
+- `daily-shared-realm` ×1 — Keepsweeper
+- `avatar-reveal-walk` ×1 — Lizzi Crossing
+- `flag-blocks-step` ×1 — Lizzi Crossing
+- `floor-streak-score` ×1 — Lizzi Crossing
+- `start-area-reveal` ×1 — Lizzi Crossing
+- `rail-line-movement` ×1 — Luzhanqi (Лучжаньці, китайські армійські шахи)
+- `safe-camp-cells` ×1 — Luzhanqi (Лучжаньці, китайські армійські шахи)
+- `immobile-on-enter` ×1 — Luzhanqi (Лучжаньці, китайські армійські шахи)
+- `mutual-destruction-piece` ×1 — Luzhanqi (Лучжаньці, китайські армійські шахи)
+- `commander-death-reveals-flag` ×1 — Luzhanqi (Лучжаньці, китайські армійські шахи)
+- `referee-hidden-combat` ×1 — Luzhanqi (Лучжаньці, китайські армійські шахи)
+- `team-play-2v2` ×1 — Luzhanqi (Лучжаньці, китайські армійські шахи)
+- `dash-power-boost` ×1 — Mamono Mower
+- `auto-battle-exchange` ×1 — Mamono Sweeper
+- `exp-doubling-by-level` ×1 — Mamono Sweeper
+- `numbered-monster-marks` ×1 — Mamono Sweeper
+- `blind-mode-inverted-goal` ×1 — Mamono Sweeper
 - `code-feedback-pegs` ×1 — Mastermind (+ Bulls and Cows, «Бики й корови»)
 - `guess-row-board` ×1 — Mastermind (+ Bulls and Cows, «Бики й корови»)
 - `consistent-guess-filter` ×1 — Mastermind (+ Bulls and Cows, «Бики й корови»)
@@ -350,11 +1416,64 @@
 - `shuffle-unmatched` ×1 — Memory / Concentration / Pairs («Мемо», «Знайди пару»)
 - `ai-forgetful-memory` ×1 — Memory / Concentration / Pairs («Мемо», «Знайди пару»)
 - `special-cards` ×1 — Memory / Concentration / Pairs («Мемо», «Знайди пару»)
+- `minesweeper-shooter` ×1 — Metavaxx
+- `one-type-remains-win` ×1 — Metavaxx
+- `survivors-score` ×1 — Metavaxx
+- `cell-hidden-agent` ×1 — Metavaxx
+- `rule-curse` ×1 — Minato
+- `artifact-charges` ×1 — Minato
+- `shop-reroll` ×1 — Minato
+- `class-unlock-by-feat` ×1 — Minato
+- `challenge-stage` ×1 — Minato
+- `no-flags-mode` ×1 — Minato
+- `exploded-mine-counts` ×1 — Minato
+- `min-size-implementation` ×1 — mine1k
+- `reveal-queue-flood` ×1 — mine1k
+- `rle-string-sprites` ×1 — mine1k
+- `visited-trail` ×1 — Mined-Out
+- `trail-fade` ×1 — Mined-Out
+- `mine-spreader` ×1 — Mined-Out
+- `stalker-mine` ×1 — Mined-Out
+- `rescue-bonus-npc` ×1 — Mined-Out
+- `avatar-mine-detector` ×1 — Mined-Out
+- `time-layer-board` ×1 — Minesweeper у вимірах: 4D Minesweeper, Tilesweeper, Timesweeper
+- `avatar-on-minefield` ×1 — Minesweeper Genius
+- `line-shift-tile` ×1 — Minesweeper Genius
+- `line-swap-tile` ×1 — Minesweeper Genius
+- `jump-pad` ×1 — Minesweeper Genius
+- `stars-by-mistakes` ×1 — Minesweeper Genius
+- `chunk-generation` ×1 — Minesweeper Infinite
+- `defuser-token` ×1 — Minesweeper Infinite
+- `score-decay` ×1 — Minesweeper Infinite
+- `chunk-race` ×1 — Minesweeper Infinite
 - `flood-reveal` ×1 — Minesweeper (Сапер)
 - `flag-cycle` ×1 — Minesweeper (Сапер)
 - `no-guess-generation` ×1 — Minesweeper (Сапер)
 - `board-metrics-3bv` ×1 — Minesweeper (Сапер)
 - `mine-flag-race` ×1 — Minesweeper (Сапер)
+- `shared-pieces-draft` ×1 — Mr. Jack (Містер Джек)
+- `turn-order-abba` ×1 — Mr. Jack (Містер Джек)
+- `witness-yes-no-filter` ×1 — Mr. Jack (Містер Джек)
+- `light-source-visibility` ×1 — Mr. Jack (Містер Джек)
+- `lantern-cone` ×1 — Mr. Jack (Містер Джек)
+- `hidden-identity-among-pieces` ×1 — Mr. Jack (Містер Джек)
+- `exit-escape-condition` ×1 — Mr. Jack (Містер Джек)
+- `blocker-relocation` ×1 — Mr. Jack (Містер Джек)
+- `clue-radius-rings` ×1 — Patterna
+- `directed-edges` ×1 — Patterna
+- `guess-detection` ×1 — Patterna
+- `tentative-mark` ×1 — Patterna
+- `custom-graph-generator` ×1 — Patterna
+- `clue-gaps-break-line` ×1 — Polimines / Polimines 2
+- `hidden-clue-under-safe` ×1 — Polimines / Polimines 2
+- `invert-buttons` ×1 — Polimines / Polimines 2
+- `graph-transport-edges` ×1 — Scotland Yard (Скотланд-Ярд)
+- `ticket-economy` ×1 — Scotland Yard (Скотланд-Ярд)
+- `scheduled-reveal` ×1 — Scotland Yard (Скотланд-Ярд)
+- `belief-set-tracking` ×1 — Scotland Yard (Скотланд-Ярд)
+- `double-move-token` ×1 — Scotland Yard (Скотланд-Ярд)
+- `wildcard-ticket` ×1 — Scotland Yard (Скотланд-Ярд)
+- `team-vs-one` ×1 — Scotland Yard (Скотланд-Ярд)
 - `hidden-rank-reveal` ×1 — Stratego (Стратего)
 - `rank-combat` ×1 — Stratego (Стратего)
 - `bomb-defuse` ×1 — Stratego (Стратего)
@@ -364,86 +1483,638 @@
 - `repetition-limit` ×1 — Stratego (Стратего)
 - `setup-zone-placement` ×1 — Stratego (Стратего)
 - `setup-presets` ×1 — Stratego (Стратего)
+- `linked-puzzles` ×1 — Sudo Sweep
+- `region-mine-count` ×1 — Sudo Sweep
+- `auto-chord` ×1 — Sudo Sweep
+- `probe-ammo-lives` ×1 — Tacticsweeper
+- `structure-plus-clue` ×1 — Tacticsweeper
+- `disable-by-reveal` ×1 — Tacticsweeper
+- `ranged-hidden-turret` ×1 — Tacticsweeper
+- `mirror-mine-fake-number` ×1 — Tacticsweeper
+- `line-confined-mines` ×1 — Tacticsweeper
+- `flag-icon-by-kind` ×1 — Tacticsweeper
+- `color-group-count` ×1 — Tametsi
+- `graph-adjacency` ×1 — Tametsi
+- `free-draw-notes` ×1 — Tametsi
+- `auto-countdown-clue` ×1 — Tametsi
+- `solve-to-clear-line` ×1 — Tetrisweeper
+- `clear-on-lock` ×1 — Tetrisweeper
+- `cleanse-piece` ×1 — Tetrisweeper
+- `multiplier-drain` ×1 — Tetrisweeper
+- `dual-input-coop` ×1 — Tetrisweeper
+- `distance-probe` ×1 — Triangulation
+- `probe-validate` ×1 — Triangulation
+- `probe-count-challenge` ×1 — Triangulation
 - `product-score` ×1 — Voltorb Flip
 - `level-drop` ×1 — Voltorb Flip
 - `cash-out` ×1 — Voltorb Flip
+- `hidden-rule-induction` ×1 — Zendo
+- `example-labeling` ×1 — Zendo
+- `counterexample-response` ×1 — Zendo
+- `guess-tokens` ×1 — Zendo
+- `simultaneous-prediction` ×1 — Zendo
+- `first-person-view` ×1 — 3D Monster Maze
+- `threat-status-text` ×1 — 3D Monster Maze
+- `trail-gaps` ×1 — Achtung, die Kurve! (Увага, поворот!)
+- `free-angle-steering` ×1 — Achtung, die Kurve! (Увага, поворот!)
+- `turn-radius-limit` ×1 — Achtung, die Kurve! (Увага, поворот!)
+- `survival-points` ×1 — Achtung, die Kurve! (Увага, поворот!)
+- `shared-keyboard-multiplayer` ×1 — Achtung, die Kurve! (Увага, поворот!)
 - `amidakuji-walker` ×1 — Amidar
 - `path-replay-chaser` ×1 — Amidar
+- `anchored-tether-body` ×1 — Anteater (Мурахоїд)
+- `tip-only-attack` ×1 — Anteater (Мурахоїд)
+- `day-night-hazard` ×1 — Anteater (Мурахоїд)
+- `product-bonus` ×1 — Anteater (Мурахоїд)
+- `rubber-lag-buffer` ×1 — Armagetron Advanced
+- `explosion-breach` ×1 — Armagetron Advanced
+- `zone-capture-hold` ×1 — Armagetron Advanced
+- `shrinking-zone` ×1 — Armagetron Advanced
+- `team-modes` ×1 — Armagetron Advanced
+- `finite-trail` ×1 — Armagetron Advanced
+- `bot-self-learning` ×1 — Armagetron Advanced
+- `ball-zone-push` ×1 — Armagetron Advanced
+- `subtile-destruction` ×1 — Battle City (Танчики) і Tank Battalion
+- `bonus-carrier` ×1 — Battle City (Танчики) і Tank Battalion
+- `decoy-ai` ×1 — Battle City (Танчики) і Tank Battalion
+- `invincible-pursuer` ×1 — Berzerk
+- `taunt-speech` ×1 — Berzerk
+- `crash-count-limit` ×1 — Blockade (Блокада)
+- `trail-toggle` ×1 — Blockade (Блокада)
+- `arena-merge-royale` ×1 — Bomberman — battle mode (Super Bomberman, Super Bomberman R / R Online / R 2)
+- `eliminated-revenge-cart` ×1 — Bomberman — battle mode (Super Bomberman, Super Bomberman R / R Online / R 2)
+- `asymmetric-castle-siege` ×1 — Bomberman — battle mode (Super Bomberman, Super Bomberman R / R Online / R 2)
+- `character-stat-caps` ×1 — Bomberman — battle mode (Super Bomberman, Super Bomberman R / R Online / R 2)
+- `rideable-mount` ×1 — Bomberman — мультиплеєрні гілки (Dyna Blaster, Saturn Bomberman, Atomic Bomberman, Bomberman Blast)
+- `mount-absorbs-hit` ×1 — Bomberman — мультиплеєрні гілки (Dyna Blaster, Saturn Bomberman, Atomic Bomberman, Bomberman Blast)
+- `player-count-scales-arena` ×1 — Bomberman — мультиплеєрні гілки (Dyna Blaster, Saturn Bomberman, Atomic Bomberman, Bomberman Blast)
+- `powerup-manager` ×1 — Bomberman — мультиплеєрні гілки (Dyna Blaster, Saturn Bomberman, Atomic Bomberman, Bomberman Blast)
+- `motion-activated-item` ×1 — Bomberman — мультиплеєрні гілки (Dyna Blaster, Saturn Bomberman, Atomic Bomberman, Bomberman Blast)
 - `destructible-blocks` ×1 — Bomberman
 - `hidden-under-block` ×1 — Bomberman
 - `shrinking-arena` ×1 — Bomberman
 - `timeout-punisher` ×1 — Bomberman
 - `segment-split` ×1 — Centipede (Багатоніжка)
+- `follower-chain` ×1 — Flicky
+- `group-delivery-bonus` ×1 — Flicky
+- `catch-bonus-round` ×1 — Flicky
 - `carrier-platform` ×1 — Frogger (Жабка) / Crossy Road
 - `periodic-sink` ×1 — Frogger (Жабка) / Crossy Road
 - `idle-punisher` ×1 — Frogger (Жабка) / Crossy Road
 - `prize-machine` ×1 — Frogger (Жабка) / Crossy Road
+- `mask-percent-goal` ×1 — Gals Panic
+- `balance-gauge` ×1 — Gals Panic
+- `between-round-roulette` ×1 — Gals Panic
+- `lane-ring-field` ×1 — Head On
+- `lane-switch-gaps` ×1 — Head On
+- `speed-boost-button` ×1 — Head On
+- `head-on-collision` ×1 — Head On
 - `trap-stages` ×1 — Heiankyo Alien (Digger)
 - `ally-rescue` ×1 — Heiankyo Alien (Digger)
+- `section-exit-no-clear` ×1 — Hungry Horace
+- `crash-grows-tail` ×1 — Hustle (Gremlin, 1977)
+- `mystery-value-pickup` ×1 — Hustle (Gremlin, 1977)
+- `decaying-target-value` ×1 — Hustle (Gremlin, 1977)
+- `crash-transfers-board` ×1 — Hustle (Gremlin, 1977)
+- `move-tick-timer` ×1 — Hustle (Gremlin, 1977)
+- `gems-as-health` ×1 — Kroz
+- `whip-adjacent-attack` ×1 — Kroz
 - `turnstile-gate` ×1 — Lady Bug
 - `tether-line` ×1 — Libble Rabble
 - `lasso-capture` ×1 — Libble Rabble
+- `player-placed-door` ×1 — Lock 'n' Chase
+- `limited-active-doors` ×1 — Lock 'n' Chase
+- `auto-cycling-door` ×1 — Lock 'n' Chase
 - `sliding-tile-board` ×1 — Loco-Motion (Guttang Gottong)
 - `loop-punisher` ×1 — Loco-Motion (Guttang Gottong)
+- `paint-all-cells` ×1 — Make Trax (Crush Roller)
+- `overpass-cells` ×1 — Make Trax (Crush Roller)
+- `trail-dirtying-intruder` ×1 — Make Trax (Crush Roller)
+- `pincer-chasers` ×1 — Make Trax (Crush Roller)
 - `move-driven-time` ×1 — Maze Mice
 - `upgrade-draft` ×1 — Maze Mice
+- `peek-around-corner` ×1 — Maze War
+- `hit-invulnerability-window` ×1 — Maze War
+- `color-door-sets` ×1 — Mouse Trap
+- `stored-power-up` ×1 — Mouse Trap
+- `wall-ignoring-enemy` ×1 — Mouse Trap
+- `roaming-bonus-item` ×1 — Ms. Pac-Man
+- `random-start-phase` ×1 — Ms. Pac-Man
+- `corner-pause` ×1 — Nibbler
+- `wait-at-wall` ×1 — Nibbler
+- `level-score-multiplier` ×1 — Nibbler
+- `tether-tail` ×1 — Oil's Well
+- `vulnerable-tail` ×1 — Oil's Well
+- `fast-retract` ×1 — Oil's Well
+- `line-score` ×1 — Oil's Well
+- `rising-hazard-front` ×1 — Pac-Man 256
+- `dot-streak-clear` ×1 — Pac-Man 256
+- `loadout-powerups` ×1 — Pac-Man 256
+- `meta-upgrades` ×1 — Pac-Man 256
+- `eat-rival-when-powered` ×1 — Pac-Man Battle Royale
+- `last-standing-round` ×1 — Pac-Man Battle Royale
+- `half-maze-refresh` ×1 — Pac-Man Championship Edition / DX (Пекмен: чемпіонське видання)
+- `sleeping-enemy` ×1 — Pac-Man Championship Edition / DX (Пекмен: чемпіонське видання)
+- `ghost-train` ×1 — Pac-Man Championship Edition / DX (Пекмен: чемпіонське видання)
+- `near-miss-slowmo` ×1 — Pac-Man Championship Edition / DX (Пекмен: чемпіонське видання)
+- `panic-bomb` ×1 — Pac-Man Championship Edition / DX (Пекмен: чемпіонське видання)
+- `score-driven-speed` ×1 — Pac-Man Championship Edition / DX (Пекмен: чемпіонське видання)
+- `asymmetric-roles` ×1 — Pac-Man: сиквели 1983–2021
+- `jammer-attack` ×1 — Pac-Man: сиквели 1983–2021
+- `item-thief-race` ×1 — Pac-Man spin-offs (Pac & Pal, Baby Pac-Man, Mega Tunnel Battle)
+- `video-pinball-hybrid` ×1 — Pac-Man spin-offs (Pac & Pal, Baby Pac-Man, Mega Tunnel Battle)
+- `death-drops-territory` ×1 — Paper.io (Пейпер-іо) і Paper.io 2
+- `skin-unlocks` ×1 — Paper.io (Пейпер-іо) і Paper.io 2
+- `trail-eraser-enemy` ×1 — Pepper II
+- `multi-screen-maze-exits` ×1 — Pepper II
 - `paint-cycle-rules` ×1 — Q*bert
+- `fuel-as-timer` ×1 — Rally-X
+- `smoke-screen-stun` ×1 — Rally-X
+- `flank-ai` ×1 — Rally-X
+- `special-flag-doubler` ×1 — Rally-X
+- `rescue-bonus-chain` ×1 — Robotron: 2084
+- `npc-to-enemy-convert` ×1 — Robotron: 2084
+- `rail-mode-switch` ×1 — Shadow Labyrinth
+- `devour-downed-enemy` ×1 — Shadow Labyrinth
+- `meter-transform` ×1 — Shadow Labyrinth
+- `maze-portal-challenge` ×1 — Shadow Labyrinth
+- `fast-travel-item` ×1 — Shadow Labyrinth
+- `fleeing-pickup` ×1 — Slither.io
+- `coil-trap` ×1 — Slither.io
+- `pointer-steering` ×1 — Slither.io
+- `weigh-exit` ×1 — Snake Rattle 'n' Roll
+- `tongue-attack` ×1 — Snake Rattle 'n' Roll
+- `stomp-attack` ×1 — Snake Rattle 'n' Roll
+- `own-color-food-bonus` ×1 — Snake Rattle 'n' Roll
+- `zone-stay-punisher` ×1 — Snake Rattle 'n' Roll
+- `control-reverse-pickup` ×1 — Snake Rattle 'n' Roll
+- `level-warp` ×1 — Snake Rattle 'n' Roll
 - `no-reverse-turn` ×1 — Snake (Змійка) / Nibbles / Nokia Snake
 - `wrap-edges` ×1 — Snake (Змійка) / Nibbles / Nokia Snake
 - `boost-for-mass` ×1 — Snake (Змійка) / Nibbles / Nokia Snake
 - `death-drops-loot` ×1 — Snake (Змійка) / Nibbles / Nokia Snake
-- `trail-wall` ×1 — Tron Light Cycles (Світлові мотоцикли) і нащадки
+- `lag-rewind` ×1 — Splix.io
+- `pause-vulnerable` ×1 — Splix.io
+- `no-encircle-player` ×1 — Splix.io
+- `spectator-mode` ×1 — Splix.io
+- `kill-arena-mode` ×1 — Splix.io
+- `slot-symbol-bonus` ×1 — Super Pac-Man
+- `super-form` ×1 — Super Pac-Man
+- `hardware-switch-settings` ×1 — Surround (Atari 2600)
+- `drawing-sandbox` ×1 — Surround (Atari 2600)
 - `territory-capture` ×1 — Tron Light Cycles (Світлові мотоцикли) і нащадки
 - `grinding-boost` ×1 — Tron Light Cycles (Світлові мотоцикли) і нащадки
+- `hub-and-rooms-zoom` ×1 — Venture
+- `lethal-corpse-decay` ×1 — Venture
+- `room-reentry-ban` ×1 — Venture
 - `region-fill` ×1 — Xonix (Ксонікс) / Qix / Volfied
 - `border-crawler` ×1 — Xonix (Ксонікс) / Qix / Volfied
 - `fuse-chaser` ×1 — Xonix (Ксонікс) / Qix / Volfied
 - `percent-goal` ×1 — Xonix (Ксонікс) / Qix / Volfied
+- `object-scripting` ×1 — ZZT
+- `message-passing-objects` ×1 — ZZT
+- `water-level-check` ×1 — Aquarium (Акваріум)
+- `auto-flood-fill` ×1 — Aquarium (Акваріум)
+- `two-clues-per-region` ×1 — Araf (相ダ部屋, Aidabeya)
+- `wildcard-clue` ×1 — Araf (相ダ部屋, Aidabeya)
+- `numbered-pieces` ×1 — Battleship Sudoku (Судоку «Морський бій»)
+- `given-is-sea` ×1 — Battleship Sudoku (Судоку «Морський бій»)
+- `neighbor-diff-sum` ×1 — Bosanowa (ボサノワ)
+- `irregular-board-shape` ×1 — Bosanowa (ボサノワ)
+- `state-dependent-clue` ×1 — Context
+- `unvisited-border-ban` ×1 — Country Road
+- `domino-tiling` ×1 — Dominosa (Доміноза)
+- `full-set-once` ×1 — Dominosa (Доміноза)
+- `value-highlight` ×1 — Dominosa (Доміноза)
+- `sum-between-clue` ×1 — Doppelblock (Double Block)
+- `gravity-support-check` ×1 — Dosun-Fuwari (ドッスンフワリ)
+- `anti-gravity-support` ×1 — Dosun-Fuwari (ドッスンフワリ)
+- `congruent-halves` ×1 — Double Choco (Дабл-чоко)
+- `two-color-block` ×1 — Double Choco (Дабл-чоко)
+- `first-seen-clue` ×1 — Easy as ABC (ABC End View)
+- `empty-cells-in-latin` ×1 — Easy as ABC (ABC End View)
+- `growth-chain` ×1 — Evolmino
+- `arrow-path-clue` ×1 — Evolmino
+- `self-inclusive-neighborhood` ×1 — Fill-a-Pix (Mosaic)
+- `edge-inequality-clue` ×1 — Futoshiki (Unequal, Нерівності)
+- `absent-clue-is-info` ×1 — Futoshiki (Unequal, Нерівності)
+- `decreasing-stroke-length` ×1 — Herugolf (Хелгольф)
+- `no-stop-cells` ×1 — Herugolf (Хелгольф)
+- `show-final-position` ×1 — Herugolf (Хелгольф)
+- `linked-cells` ×1 — Hexologic
+- `derived-sum-cell` ×1 — Hexologic
+- `relation-cells` ×1 — Hexologic
+- `random-puzzle-mode` ×1 — Hexologic
+- `timed-special-stage` ×1 — Hexologic
 - `white-run-border-limit` ×1 — Heyawake (Хеявакé, «поділені кімнати»)
 - `room-symmetry-check` ×1 — Heyawake (Хеявакé, «поділені кімнати»)
+- `numbered-path` ×1 — Hidato (Хідато)
+- `irregular-board-mask` ×1 — Hidato (Хідато)
 - `no-adjacent-check` ×1 — Hitori (Хіторі, Singles)
 - `line-uniqueness-by-removal` ×1 — Hitori (Хіторі, Singles)
 - `input-scheme-toggle` ×1 — Hitori (Хіторі, Singles)
+- `ice-straight-path` ×1 — Icebarn (アイスバーン)
+- `must-visit-checkpoints` ×1 — Icebarn (アイスバーン)
+- `arith-cage` ×1 — KenKen (Keen, CalcuDoku, Кенкен)
+- `paired-beam-endpoints` ×1 — Kin-Kon-Kan (キンコンカン)
+- `reflection-count-clue` ×1 — Kin-Kon-Kan (キンコンカン)
+- `printable-booklet` ×1 — Krazydad (банк друкованих пазлів)
+- `solve-order-hint` ×1 — Krazydad (банк друкованих пазлів)
 - `visibility-count-clue` ×1 — Kuromasu (Kurodoko, Range) + Cave (Bag)
 - `edge-connectivity` ×1 — Kuromasu (Kurodoko, Range) + Cave (Bag)
 - `drag-dot-trail` ×1 — Kuromasu (Kurodoko, Range) + Cave (Bag)
 - `ray-cast-light` ×1 — Light Up (Akari, Бідзюцукан)
 - `guarded-marks` ×1 — Light Up (Akari, Бідзюцукан)
-- `shape-identity-check` ×1 — LITS (Nuruomino)
 - `region-polyomino-shading` ×1 — LITS (Nuruomino)
+- `magic-sum-check` ×1 — Magic and Latin squares (Магічний і латинський квадрати)
+- `orthogonal-overlay` ×1 — Magic and Latin squares (Магічний і латинський квадрати)
+- `construction-algorithm` ×1 — Magic and Latin squares (Магічний і латинський квадрати)
+- `domino-slot-fill` ×1 — Magnets (Tatham)
+- `pole-repulsion` ×1 — Magnets (Tatham)
+- `click-cycle-states` ×1 — Magnets (Tatham)
+- `graph-colouring` ×1 — Map (Tatham)
+- `drag-copy-colour` ×1 — Map (Tatham)
+- `alternating-region-type` ×1 — Moon or Sun (月か太陽)
+- `attack-lines-overlay` ×1 — N-queens і Knight's tour (задача ферзів, хід коня)
+- `knight-tour-path` ×1 — N-queens і Knight's tour (задача ферзів, хід коня)
+- `hamiltonian-path-check` ×1 — N-queens і Knight's tour (задача ферзів, хід коня)
+- `backtracking-visualizer` ×1 — N-queens і Knight's tour (задача ферзів, хід коня)
+- `directed-loop` ×1 — Nagareru-Loop
+- `wind-ray` ×1 — Nagareru-Loop
+- `forced-drift` ×1 — Nagareru-Loop
+- `diagonal-run-check` ×1 — Nondango (ノンダンゴ)
+- `acyclic-check` ×1 — Nuri-Maze (Nurimeizu, ぬりめいず)
+- `route-checkpoints` ×1 — Nuri-Maze (Nurimeizu, ぬりめいず)
 - `cell-shade-toggle` ×1 — Nurikabe (Нурікабе, Islands in the Stream)
+- `dead-end-clue` ×1 — Nurimisaki (ぬりみさき)
+- `border-count-clue` ×1 — Palisade (Five Cells, «Частокіл»)
+- `no-dead-end-border` ×1 — Palisade (Five Cells, «Частокіл»)
+- `pencil-tip-line` ×1 — Pencils (Nikoli)
+- `full-cover-check` ×1 — Pencils (Nikoli)
+- `letter-shape-clue` ×1 — Pentominous («Пентамінус»)
+- `obstacle-cells` ×1 — Pentominous («Пентамінус»)
+- `nearest-in-direction-clue` ×1 — Pentopia
+- `multi-arrow-clue` ×1 — Pentopia
+- `group-count-clue` ×1 — Picross-варіанти (Picross 3D, Round 2, Mega, Color, Clip)
+- `voxel-carve` ×1 — Picross-варіанти (Picross 3D, Round 2, Mega, Color, Clip)
+- `fail-code-checklist` ×1 — puzz.link (pzprjs / pzprv3)
+- `url-puzzle-encoding` ×1 — puzz.link (pzprjs / pzprv3)
+- `trial-mode` ×1 — puzz.link (pzprjs / pzprv3)
+- `triangle-subgrid` ×1 — Ququ
+- `one-clue-per-region` ×1 — Ququ
+- `slide-to-assemble` ×1 — Rectangle-Slider
+- `forced-crossing-cell` ×1 — Reflect Link (リフレクトリンク)
+- `segment-length-clue` ×1 — Reflect Link (リフレクトリンク)
+- `fixed-corner-cell` ×1 — Reflect Link (リフレクトリンク)
+- `region-1-to-n` ×1 — Ripple Effect (Hakyuu Kouka)
+- `same-value-min-gap` ×1 — Ripple Effect (Hakyuu Kouka)
+- `half-cell-triangles` ×1 — Shakashaka (シャカシャカ)
+- `what-if-mode` ×1 — Sherlock (Everett Kaser)
 - `drag-rectangle` ×1 — Shikaku (Шікаку, Rectangles, Divide by Box)
-- `rect-shape-check` ×1 — Shikaku (Шікаку, Rectangles, Divide by Box)
+- `arrow-successor-chain` ×1 — Signpost (Pfeilpfad)
+- `chain-letter-labels` ×1 — Signpost (Pfeilpfad)
+- `clue-done-mark` ×1 — Skyscrapers (Towers, Хмарочоси)
+- `vertex-clue` ×1 — Slant (Gokigen Naname)
+- `tri-state-click-cycle` ×1 — Slant (Gokigen Naname)
 - `region-quota` ×1 — Star Battle (Зоряна битва, Two Not Touch)
 - `auto-dot-neighbors` ×1 — Star Battle (Зоряна битва, Two Not Touch)
+- `no-edge-touch` ×1 — Statue Park
+- `virtual-gravity-check` ×1 — Sto-stone (ストストーン)
+- `straight-compartment` ×1 — Str8ts (Стрейтс)
+- `blocked-digit-clue` ×1 — Str8ts (Стрейтс)
+- `negative-constraint` ×1 — Sudoku line & dot variants (Thermo, Arrow, Kropki, German Whispers)
 - `multi-select` ×1 — Sudoku (Судоку, Number Place)
+- `ordered-checkpoints` ×1 — Suraromu (Slalom)
+- `gate-crossing` ×1 — Suraromu (Slalom)
+- `twin-grid-bank` ×1 — Tachiawase Block
+- `overlay-size-clash` ×1 — Tachiawase Block
+- `balanced-lines` ×1 — Takuzu (Binairo, Unruly, Tic-Tac-Logic)
+- `no-triple-run` ×1 — Takuzu (Binairo, Unruly, Tic-Tac-Logic)
+- `distinct-lines` ×1 — Takuzu (Binairo, Unruly, Tic-Tac-Logic)
 - `ring-run-clue` ×1 — Tapa (Тапа, T-Paint)
 - `pattern-lookup-table` ×1 — Tapa (Тапа, T-Paint)
 - `platform-shell` ×1 — Simon Tatham's Portable Puzzle Collection
+- `symmetric-region` ×1 — Tentai Show (Galaxies, Spiral Galaxies)
+- `owner-arrow` ×1 — Tentai Show (Galaxies, Spiral Galaxies)
+- `tree-tent-matching` ×1 — Tents (Tatham)
+- `no-touch-8` ×1 — Tents (Tatham)
+- `track-pieces` ×1 — Tracks (Tatham)
+- `drag-line-fill` ×1 — Tracks (Tatham)
+- `mobility-clue` ×1 — Tren
+- `reflection-visibility` ×1 — Undead (Haunted Mirror Maze)
+- `type-quota` ×1 — Undead (Haunted Mirror Maze)
 - `arrow-count-clue` ×1 — Yajilin (Яджилін, Arrow Ring)
 - `cell-coverage-check` ×1 — Yajilin (Яджилін, Arrow Ring)
+- `straight-move-line` ×1 — Yajisan-Sokoban (Yajisoko)
+- `clue-void-when-covered` ×1 — Yajisan-Sokoban (Yajisoko)
 - `two-color-connectivity` ×1 — Yin-Yang (Інь-Ян, Shiromaru-Kuromaru)
 - `perimeter-color-check` ×1 — Yin-Yang (Інь-Ян, Shiromaru-Kuromaru)
+- `attribute-grid` ×1 — Zebra Puzzle (Einstein's Riddle, Загадка Ейнштейна)
+- `relation-clues` ×1 — Zebra Puzzle (Einstein's Riddle, Загадка Ейнштейна)
+- `focus-battle-resolution` ×1 — Google AI Challenge — Ants
+- `collision-kills-all` ×1 — Google AI Challenge — Ants
+- `contested-food-destroyed` ×1 — Google AI Challenge — Ants
+- `rank-stabilized-cutoff` ×1 — Google AI Challenge — Ants
+- `instruction-grid-2d` ×1 — Befunge (Befunge-93)
+- `finish-order-ranking` ×1 — CodinGame: The Great Escape
+- `signal-vector-bus` ×1 — Factorio — circuit network
+- `quantifier-signals` ×1 — Factorio — circuit network
+- `privileged-world-processor` ×1 — Mindustry — logic (mlog)
+- `custom-assembly-language` ×1 — Turing Complete
+- `knowledge-base-inference` ×1 — Wumpus world («Світ Вампуса»)
+- `signal-wires` ×1 — Escape (Tom 7)
+- `sphere-cradle` ×1 — Escape (Tom 7)
+- `robot-turn-order` ×1 — Escape (Tom 7)
 - `kick-in-place` ×1 — Helltaker
 - `dialogue-choice` ×1 — Helltaker
 - `node-graph-field` ×1 — Hitman GO (+ Lara Croft GO)
 - `noise-lure` ×1 — Hitman GO (+ Lara Croft GO)
 - `turnstile` ×1 — Kwirk (Puzzle Boy)
+- `magnet-hold` ×1 — Kye
+- `redirect-tile` ×1 — Kye
+- `npc-pusher` ×1 — Kye
+- `object-sink` ×1 — Kye
+- `rotator-pad` ×1 — Pipe Push Paradise
+- `hub-island` ×1 — Pipe Push Paradise
+- `flow-goal-3d` ×1 — Pipe Push Paradise
+- `cross-floor-drop` ×1 — Pokémon overworld puzzles (Gen I–II, лід, валуни Strength, спінери, телепорти)
+- `spinner-arrow` ×1 — Pokémon overworld puzzles (Gen I–II, лід, валуни Strength, спінери, телепорти)
+- `hidden-switch-pair` ×1 — Pokémon overworld puzzles (Gen I–II, лід, валуни Strength, спінери, телепорти)
+- `invisible-floor` ×1 — Pokémon overworld puzzles (Gen I–II, лід, валуни Strength, спінери, телепорти)
+- `quiz-gate` ×1 — Pokémon overworld puzzles (Gen I–II, лід, валуни Strength, спінери, телепорти)
+- `regrowing-obstacle` ×1 — Pokémon overworld puzzles (Gen I–II, лід, валуни Strength, спінери, телепорти)
+- `sight-line-ambush` ×1 — Pokémon overworld puzzles (Gen I–II, лід, валуни Strength, спінери, телепорти)
+- `ability-gating` ×1 — Pokémon overworld puzzles (Gen I–II, лід, валуни Strength, спінери, телепорти)
+- `perfect-move-rating` ×1 — Quell
+- `directional-spikes` ×1 — Quell
+- `hint-tokens` ×1 — Quell
 - `bid-moves` ×1 — Ricochet Robots (Rasende Roboter)
 - `axis-locked-move` ×1 — Rush Hour (ThinkFun)
+- `multi-pusher` ×1 — Sokoboxes Duo
+- `chess-push` ×1 — SokoChess (і SokoChess White / Black)
+- `capture-only-opponent` ×1 — SokoChess (і SokoChess White / Black)
+- `freeze-tile` ×1 — SokoChess (і SokoChess White / Black)
+- `knight-relocate` ×1 — SokoChess (і SokoChess White / Black)
 - `rising-hazard` ×1 — Tomb of the Mask
+- `couple-uncouple` ×1 — Train shunting puzzle (Inglenook Sidings, Timesaver)
+- `track-capacity` ×1 — Train shunting puzzle (Inglenook Sidings, Timesaver)
+- `rail-graph` ×1 — Train shunting puzzle (Inglenook Sidings, Timesaver)
+- `exit-by-direction` ×1 — Unblock Me і Parking Jam 3D (мобільні Rush Hour)
+- `crash-on-blocked` ×1 — Unblock Me і Parking Jam 3D (мобільні Rush Hour)
+- `corruption-clock` ×1 — Ancient Domains of Mystery (ADOM)
+- `overworld-travel` ×1 — Ancient Domains of Mystery (ADOM)
+- `herb-life-growth` ×1 — Ancient Domains of Mystery (ADOM)
+- `level-regenerate` ×1 — Moria / Angband
+- `level-feeling` ×1 — Moria / Angband
+- `spinner-tile` ×1 — The Bard's Tale / Might and Magic — сіткові dungeon crawl 80-х
+- `bard-song-buff` ×1 — The Bard's Tale / Might and Magic — сіткові dungeon crawl 80-х
+- `sector-world-map` ×1 — The Bard's Tale / Might and Magic — сіткові dungeon crawl 80-х
+- `stat-pools` ×1 — Beneath Apple Manor
+- `decoy-goal` ×1 — Beneath Apple Manor
+- `ability-pickup-cooldown` ×1 — Cardinal Quest
+- `multi-purpose-key` ×1 — Cardinal Quest
+- `drag-drop-inventory` ×1 — Castle of the Winds
+- `weight-and-bulk` ×1 — Castle of the Winds
+- `belt-slots` ×1 — Castle of the Winds
+- `quest-goal-select` ×1 — Cave Noire
+- `kill-toggles-room-fog` ×1 — Cave Noire
 - `rule-twist-character` ×1 — Crypt of the NecroDancer
+- `degrading-shield` ×1 — Donsol
+- `potion-sickness` ×1 — Donsol
+- `item-assembly` ×1 — DoomRL / DRL → Jupiter Hell
+- `tactics-stance` ×1 — DoomRL / DRL → Jupiter Hell
+- `skill-by-use` ×1 — Dungeon Master
+- `resurrect-reincarnate` ×1 — Dungeon Master
+- `heartbeat-stamina` ×1 — Dungeons of Daggorath
+- `typed-commands` ×1 — Dungeons of Daggorath
+- `ring-incantation` ×1 — Dungeons of Daggorath
+- `proximity-strike` ×1 — DungeonUp
+- `maze-mode-single-floor` ×1 — DungeonUp
+- `hand-drawn-map` ×1 — Etrian Odyssey
+- `spell-memorize-rest` ×1 — Eye of the Beholder
+- `stone-portal-keys` ×1 — Eye of the Beholder
+- `dual-form` ×1 — Golden Krone Hotel
+- `sunlight-beams` ×1 — Golden Krone Hotel
+- `replay-verified-score` ×1 — H5mota (H5魔塔广场) — спільнота веб-веж
+- `event-scripting` ×1 — H5mota (H5魔塔广场) — спільнота веб-веж
+- `special-rooms` ×1 — Hack
+- `indirect-combat` ×1 — Harmless7DRL
+- `rune-crafting` ×1 — Harmless7DRL
+- `wall-break-cost` ×1 — Labyrinth of Refrain: Coven of Dusk
+- `danger-gauge` ×1 — Labyrinth of Refrain: Coven of Dusk
+- `run-deadline` ×1 — Larn
+- `bank-interest` ×1 — Larn
+- `time-for-stats` ×1 — Larn
+- `slot-direction-weapons` ×1 — Magpie (7DRL 2023)
+- `items-as-hp` ×1 — Magpie (7DRL 2023)
+- `tile-defines-weapon` ×1 — Morphblade
+- `adjacency-crossbreed` ×1 — Morphblade
+- `damage-as-garbage-tile` ×1 — Mosaic (7DRL 2022)
+- `column-overflow-lose` ×1 — Mosaic (7DRL 2022)
+- `regen-unseen-map` ×1 — Myst (7DRL)
+- `enemy-strong-weak-cycle` ×1 — Myst (7DRL)
+- `eat-your-cover` ×1 — Not the Robots
+- `charge-by-eating` ×1 — Not the Robots
+- `guild-ranks` ×1 — Omega
+- `moon-phase-cycle` ×1 — Omega
+- `hand-slot-inventory` ×1 — Omega
+- `event-trigger-build` ×1 — Path of Achra
+- `attack-resolution-pipeline` ×1 — Path of Achra
+- `end-turn-square-damage` ×1 — Pawnbarian
 - `rules-as-spells` ×1 — Rift Wizard
+- `stealth-sneak` ×1 — Ring of Pain
+- `speed-initiative` ×1 — Ring of Pain
+- `group-n-opens-gate` ×1 — Road Not Taken
+- `carry-energy-cost` ×1 — Road Not Taken
+- `collision-junk` ×1 — Robots (BSD) / Chase / Daleks
+- `wait-until-end` ×1 — Robots (BSD) / Chase / Daleks
+- `safe-teleport` ×1 — Robots (BSD) / Chase / Daleks
+- `attack-queue` ×1 — Shogun Showdown
+- `tile-cooldown` ×1 — Shogun Showdown
+- `one-lane-battlefield` ×1 — Shogun Showdown
+- `bump-attack` ×1 — Shovel Knight Pocket Dungeon
+- `group-damage` ×1 — Shovel Knight Pocket Dungeon
+- `board-overflow` ×1 — Shovel Knight Pocket Dungeon
+- `idle-drift` ×1 — Shovel Knight Pocket Dungeon
+- `forced-descent` ×1 — Sil
+- `xp-for-discovery` ×1 — Sil
+- `kill-charged-skills` ×1 — Sproggiwood
+- `linked-enemies-same-turn` ×1 — Sproggiwood
+- `stain-terrain` ×1 — Sproggiwood
+- `multi-exit-score` ×1 — Tactical Nexus
+- `talent-cooldown` ×1 — Tales of Maj'Eyal
+- `sustained-talent` ×1 — Tales of Maj'Eyal
+- `zone-level-scaling` ×1 — Tales of Maj'Eyal
 - `greedy-axis-chase` ×1 — Theseus and the Minotaur (Тесей і Мінотавр)
+- `swipe-moves-all` ×1 — Twinfold
+- `wall-crush-damage` ×1 — Twinfold
+- `coordinate-teleport` ×1 — Wizardry: Proving Grounds of the Mad Overlord
+- `class-change` ×1 — Wizardry: Proving Grounds of the Mad Overlord
+- `dual-pool-target` ×1 — Ash of Gods: Redemption
+- `pay-with-hp` ×1 — Ash of Gods: Redemption
+- `one-unit-per-tile` ×1 — Civilization (бойовий шар юнітів, I–VI)
+- `stack-kill` ×1 — Civilization (бойовий шар юнітів, I–VI)
+- `city-ranged-attack` ×1 — Civilization (бойовий шар юнітів, I–VI)
+- `embark` ×1 — Civilization (бойовий шар юнітів, I–VI)
+- `battle-laws` ×1 — Final Fantasy Tactics Advance
+- `judge-points` ×1 — Final Fantasy Tactics Advance
+- `luck-pool` ×1 — Hard West
+- `poker-hand-perks` ×1 — Hard West
+- `shadow-reveal` ×1 — Hard West
+- `order-markers` ×1 — Heroscape
+- `height-attack-bonus` ×1 — Heroscape
 - `move-attack` ×1 — Hoplite
+- `modular-unit-builder` ×1 — Mech Armada
+- `map-pickup-race` ×1 — Mech Armada
+- `stealth-to-combat` ×1 — Mutant Year Zero: Road to Eden
+- `silent-kill` ×1 — Mutant Year Zero: Road to Eden
+- `combat-results-table` ×1 — Ogre
+- `subsystem-damage` ×1 — Ogre
+- `manual-aim` ×1 — SteamWorld Heist
+- `move-or-sprint` ×1 — SteamWorld Heist
+- `protect-core` ×1 — The Last Spell
+- `danger-level-spawn` ×1 — Zombicide
+- `recipe-spawn` ×1 — Bean and Nothingness
+- `room-draft` ×1 — Blue Prince
+- `exact-fit-hole` ×1 — Can of Wormholes
+- `hint-ministage` ×1 — Can of Wormholes
 - `movement-order` ×1 — Deadly Rooms of Death (DROD: King Dugan's Dungeon)
+- `axis-locked-movers` ×1 — elephant-in-a-bottle
+- `rigid-stick-pusher` ×1 — elephant-in-a-bottle
+- `assemble-shape-in-template` ×1 — elephant-in-a-bottle
+- `surface-walk` ×1 — English Country Tune
+- `per-object-gravity` ×1 — English Country Tune
+- `shadow-walk` ×1 — Felix the Reaper
+- `light-source-rotate` ×1 — Felix the Reaper
+- `rest-vs-impact` ×1 — Fish Fillets
+- `strength-classes` ×1 — Fish Fillets
+- `stretch-limb-path` ×1 — GRAB-O
+- `pull-to-anchor` ×1 — GRAB-O
+- `grab-or-step-anchor` ×1 — GRAB-O
+- `par-perfect-rating` ×1 — GRAB-O
+- `vector-momentum` ×1 — GridRacer
+- `segment-collision` ×1 — GridRacer
+- `level-from-image` ×1 — GridRacer
+- `line-of-sight-swap` ×1 — Heroes of Sokoban
+- `heroes-as-objects` ×1 — Heroes of Sokoban
+- `chain-push` ×1 — Heroes of Sokoban
+- `move-all-with-player` ×1 — increpare: мікро-Sokoban-и (Crates move when you move · Pushy-V Pully-H · Muraphilic Monophobic Multiban)
+- `axis-dependent-push-pull` ×1 — increpare: мікро-Sokoban-и (Crates move when you move · Pushy-V Pully-H · Muraphilic Monophobic Multiban)
+- `push-needs-two` ×1 — increpare: мікро-Sokoban-и (Crates move when you move · Pushy-V Pully-H · Muraphilic Monophobic Multiban)
+- `pushable-walls` ×1 — increpare: мікро-Sokoban-и (Crates move when you move · Pushy-V Pully-H · Muraphilic Monophobic Multiban)
+- `counter-move-all` ×1 — increpare: Scalesoban і Explodoban
+- `push-only-by-blast` ×1 — increpare: Scalesoban і Explodoban
+- `momentum-transfer` ×1 — Isaac and the Conservation of Momentum
+- `mass-threshold` ×1 — Isaac and the Conservation of Momentum
+- `underclued-grid` ×1 — Islands of Insight
 - `connectivity-goal` ×1 — Jelly no Puzzle (ゼリーのパズル)
+- `fall-height-death` ×1 — Leap Year
+- `hidden-moveset` ×1 — Leap Year
+- `trail-eraser-pickup` ×1 — Lime Rick
+- `shape-bound-line` ×1 — Linelith
+- `color-group-move` ×1 — Lock & Pin
+- `directional-lock` ×1 — Lock & Pin
+- `pass-through-tunnel` ×1 — Lock & Pin
+- `draw-to-spawn` ×1 — Magic Chalkboards
+- `sub-grid-canvas` ×1 — Magic Chalkboards
+- `glyph-recognition` ×1 — Magic Chalkboards
+- `ink-budget` ×1 — Magic Chalkboards
+- `merge-drawings` ×1 — Magic Chalkboards
+- `simultaneous-avatars` ×1 — Magic Chalkboards
+- `floor-shift-into-gap` ×1 — Magiciban
+- `ride-on-tile` ×1 — Magiciban
+- `floating-target` ×1 — Magiciban
+- `mirror-image-swap` ×1 — Mirror Isles
+- `reflectable-object` ×1 — Mirror Isles
+- `perspective-path` ×1 — Monument Valley
+- `fold-field` ×1 — Paper Trail
+- `extrude-numbered-tile` ×1 — PushTOOL
+- `hollow-block-cells` ×1 — PushTOOL
+- `cross-color-push` ×1 — PushTOOL
+- `all-counters-zero` ×1 — PushTOOL
 - `edge-objects` ×1 — Sokobond
+- `typed-destination` ×1 — Spooky Express
+- `escort-before-threat` ×1 — Spooky Express
+- `mirror-world-dive` ×1 — Suikyo [Water Mirror]
+- `inverted-gravity-zone` ×1 — Suikyo [Water Mirror]
+- `wire-warp` ×1 — Suikyo [Water Mirror]
+- `linked-dive-objects` ×1 — Suikyo [Water Mirror]
+- `absorb-shoot` ×1 — Tetrobot and Co.
+- `material-physics` ×1 — Tetrobot and Co.
+- `grabber-arm-reach` ×1 — The Electrifying Incident: A Monster Mini-Expedition
+- `bendable-arm` ×1 — The Electrifying Incident: A Monster Mini-Expedition
+- `circuit-door` ×1 — The Electrifying Incident: A Monster Mini-Expedition
+- `conductive-tool` ×1 — The Electrifying Incident: A Monster Mini-Expedition
+- `interconnected-rooms` ×1 — The Electrifying Incident: A Monster Mini-Expedition
+- `orientation-goal` ×1 — Tome Tumble Tournament
+- `player-only-passable` ×1 — Tome Tumble Tournament
+- `spell-on-open` ×1 — Tome Tumble Tournament
+- `perspective-switch` ×1 — Toodee and Topdee
+- `freeze-inactive` ×1 — Toodee and Topdee
+- `mimic-entity` ×1 — Toodee and Topdee
+- `hidden-rules` ×1 — Understand
+- `per-rule-feedback` ×1 — Understand
 - `lift-place-tile` ×1 — Void Stranger
+- `hidden-tile-identity` ×1 — World's Hardest 15-Puzzle
+- `lit-when-placed` ×1 — World's Hardest 15-Puzzle
+- `shuffle-by-random-moves` ×1 — World's Hardest 15-Puzzle
+- `gust-carry-over-pit` ×1 — Yoohoo
+- `gust-reverse-in-dead-end` ×1 — Yoohoo
+- `shout-action` ×1 — Yoohoo
+- `route-planning` ×1 — Anomaly: Warzone Earth
+- `convoy-order` ×1 — Anomaly: Warzone Earth
+- `support-abilities` ×1 — Anomaly: Warzone Earth
+- `target-priority` ×1 — Anomaly: Warzone Earth
+- `knockback-push` ×1 — Dungeon Warfare
+- `pit-kill` ×1 — Dungeon Warfare
+- `wall-trap` ×1 — Dungeon Warfare
+- `early-wave-bonus` ×1 — Dungeon Warfare
+- `repair-structure` ×1 — Lock's Quest
+- `survive-timer` ×1 — Lock's Quest
+- `stake-doubling` ×1 — Marvel Snap
+- `reveal-order-priority` ×1 — Marvel Snap
+- `ruler-quests` ×1 — Merge Tactics (Clash Royale)
+- `league-modifiers` ×1 — Merge Tactics (Clash Royale)
+- `trap-surfaces` ×1 — Orcs Must Die!
+- `trap-rearm` ×1 — Orcs Must Die!
+- `build-where-standing` ×1 — PixelJunk Monsters
+- `stand-to-upgrade` ×1 — PixelJunk Monsters
+- `team-up-stack` ×1 — Plants vs. Zombies Heroes
+- `block-meter` ×1 — Plants vs. Zombies Heroes
 - `lane-grid` ×1 — Plants vs. Zombies (Рослини проти зомбі)
 - `placement-cooldown` ×1 — Plants vs. Zombies (Рослини проти зомбі)
+- `hidden-container` ×1 — Plants vs. Zombies: Vasebreaker і I, Zombie (режим Puzzle)
+- `reverse-td` ×1 — Plants vs. Zombies: Vasebreaker і I, Zombie (режим Puzzle)
+- `placement-line` ×1 — Plants vs. Zombies: Vasebreaker і I, Zombie (режим Puzzle)
+- `hp-threshold-knockback` ×1 — The Battle Cats
+- `base-cannon` ×1 — The Battle Cats
+- `infection-spread` ×1 — They Are Billions
+- `power-grid` ×1 — They Are Billions
+- `fixed-build-slots` ×1 — Thronefall
+- `restore-after-wave` ×1 — Thronefall
+- `peel-all-draw` ×1 — Bananagrams
+- `personal-grid` ×1 — Bananagrams
+- `crossword-fragments` ×1 — Bonza Word Puzzle
+- `meta-currency` ×1 — Bonza Word Puzzle
+- `hidden-key-card` ×1 — Codenames
+- `clue-word-number` ×1 — Codenames
+- `large-small-draw` ×1 — Countdown — numbers round / Countle
+- `equation-grid` ×1 — Crossmath (математичний кросворд)
+- `reverse-feedback-puzzle` ×1 — Crosswordle
+- `use-all-exactly-once` ×1 — Krypto
+- `weighted-deck` ×1 — Krypto
+- `split-keyboard-state` ×1 — Quordle / Octordle
+- `required-bonus-words` ×1 — Squaredle
+- `tile-fade-when-exhausted` ×1 — Squaredle
+- `column-reel-shift` ×1 — TypeShift
+- `letter-used-state` ×1 — TypeShift
+- `stack-overwrite` ×1 — Upwords
+- `stack-height-scoring` ×1 — Upwords
+- `one-letter-step` ×1 — Weaver (word ladder)
+- `stage-challenges` ×1 — Letter Quest і Spellspire — словесні RPG-бої
+- `synced-global-rounds` ×1 — Wordament
 
-## cond · 231
+## cond · 795
 
 - `free` ×34 🔥 — A Monster's Expedition, Advent of Code — сіткові пазли (збірка), Bonfire Peaks, Boulder Dash, Cell Machine, Clash of Clans — розстановка бази на сітці, Deadly Rooms of Death (DROD: King Dugan's Dungeon), Factorio — клітинна логістика (конвеєри, маніпулятори, мережі), Hanano Puzzle (ハナノパズル), Heartlight, Helltaker, Hey, That's My Fish! (Packeis am Pol), Isles of Sea and Sky, Jelly no Puzzle (ゼリーのパズル), Klax, Klotski (Хуажунський шлях) + Lunar Lockout, Kwirk (Puzzle Boy), Mindustry — клітинна логістика й оборона, OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Opus Magnum, Oxygen Not Included — клітинна фізика (гази, рідини, тепло), Patrick's Parabox, Pengo, Prison Architect — шар кімнат і зон, Puddle Knights, Puzznic, RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II), Repton 1–3, Rush Hour (ThinkFun), Sokoban (Сокобан), Sokobond, Triple Town, Void Stranger, Wilmot's Warehouse
 - `same` ×28 🔥 — 2048 (+ Threes як предок), A Feast for Odin (Бенкет для Одіна) і поліоміно-заповнення, A Good Snowman Is Hard to Build, Cascadia + Calico (Каскадія, Калико), Columns (Колонки), Dorfromantik, Fillomino (Filling, «Заповнення»), Five Tribes, Flow Free, GemCraft, Hanano Puzzle (ハナノパズル), Jelly no Puzzle (ゼリーのパズル), LYNE, Luck be a Landlord, Magical Drop (Chain Reaction), Oxygen Not Included — клітинна фізика (гази, рідини, тепло), Puzzle & Dragons (PAD, Пазли і Дракони), Puzznic, Qwirkle + Ingenious (Квіркл, Genial), Random Dice (+ Rush Royale), Ricochet Robots (Rasende Roboter), SameGame / Clickomania + Flood (Tatham), Sliding-tile permutation puzzles (пʼятнашки й родичі), Taiji + The Witness (панелі), Teamfight Tactics (TFT), Townscaper, Trainyard, Wilmot's Warehouse
@@ -451,589 +2122,1820 @@
 - `has` ×24 🔥 — 868-HACK (+ Imbroglio, Cinco Paus — мікро-роглайки Michael Brough), Adventures of Lolo (Eggerland), Backpack Hero, Blood Bowl, Chip's Challenge, Cosmic Express, Factorio — клітинна логістика (конвеєри, маніпулятори, мережі), Gauntlet (1985), Golf Peaks, Helltaker, Hitman GO (+ Lara Croft GO), Isles of Sea and Sky, Luck be a Landlord, Magical Drop (Chain Reaction), Mindustry — клітинна логістика й оборона, Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), NetHack, Prison Architect — шар кімнат і зон, RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II), Recursed, Screeps (Screeps World, Screeps Arena), Shattered Pixel Dungeon (і Pixel Dungeon), The Battle of Polytopia, Wilmot's Warehouse
 - `connected` ×18 🔥 — Akropolis (Акрополіс), Breakthrough і Lines of Action (Прорив і Лінії дії), Cascadia + Calico (Каскадія, Калико), Creeper World, Dungeon of the Endless, Hashiwokakero (Hashi, Bridges, Мости), Hey, That's My Fish! (Packeis am Pol), Hitori (Хіторі, Singles), Infinity Loop + Net (Tatham), Masyu (Pearl, «Перлини»), Mr. Driller, Nurikabe (Нурікабе, Islands in the Stream), Prison Architect — шар кімнат і зон, SameGame / Clickomania + Flood (Tatham), Shannon switching game / Bridg-It (+ Untangle), Taiji + The Witness (панелі), Wrecking Crew, Zenji
 - `facing` ×16 🔥 — A Monster's Expedition, Advent of Code — сіткові пазли (збірка), Bonfire Peaks, Cell Machine, Deadly Rooms of Death (DROD: King Dugan's Dungeon), Dig Dug, Factorio — клітинна логістика (конвеєри, маніпулятори, мережі), Final Fantasy Tactics, Frozen Synapse, HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), Hitman GO (+ Lara Croft GO), Legend of Grimrock, Mindustry — клітинна логістика й оборона, OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Supaplex, XOR
-- `fits` ×14 🔥 — A Feast for Odin (Бенкет для Одіна) і поліоміно-заповнення, Akropolis (Акрополіс), Blokus (Блокус), Carto, Cartographers (Картографи), Kingdomino (Кінґдоміно), NMBR 9, Patchwork (Печворк), Prison Architect — шар кімнат і зон, Qwirkle + Ingenious (Квіркл, Genial), Sagrada (Саграда), Taiji + The Witness (панелі), Take It Easy, Ubongo + Katamino / IQ Puzzler (Убонго)
+- `fits` ×15 🔥 — A Feast for Odin (Бенкет для Одіна) і поліоміно-заповнення, Akropolis (Акрополіс), Blokus (Блокус), Carto, Cartographers (Картографи), Kingdomino (Кінґдоміно), NMBR 9, Patchwork (Печворк), Prison Architect — шар кімнат і зон, Qwirkle + Ingenious (Квіркл, Genial), Resident Evil 4 (attaché case), Sagrada (Саграда), Taiji + The Witness (панелі), Take It Easy, Ubongo + Katamino / IQ Puzzler (Убонго)
 - `adjacent_count` ×14 🔥 — Advent of Code — сіткові пазли (збірка), Akropolis (Акрополіс), Backpack Hero, Blood Bowl, Cartographers (Картографи), Cascadia + Calico (Каскадія, Калико), Conway's Game of Life (Гра «Життя»), Letterpress, Loop Hero, Luck be a Landlord, Taiji + The Witness (панелі), The Powder Toy, Townscaper, Triple Town
 - `supported` ×13 🔥 — Akropolis (Акрополіс), Bloxorz, Bonfire Peaks, Hanano Puzzle (ハナノパズル), Jelly no Puzzle (ゼリーのパズル), Kula World (Roll Away, KulaQuest), Lode Runner, Mr. Driller, NMBR 9, Pushover (Push-Over), Snakebird, SteamWorld Dig, Stephen's Sausage Roll
 - `in_range` ×13 🔥 — Centipede (Багатоніжка), Clash of Clans — розстановка бази на сітці, Factorio — клітинна логістика (конвеєри, маніпулятори, мережі), Gauntlet (1985), GemCraft, Mindustry — клітинна логістика й оборона, Pac-Man (Пекмен) і Ms. Pac-Man, Photosynthesis (Фотосинтез), Screeps (Screeps World, Screeps Arena), Spybot: The Nightfall Incident (Lego Spybotics), Stardew Valley — фермерська сітка, Wizard of Wor, Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
+- `afford` ×12 🔥 — A Feast for Odin (Бенкет для Одіна) і поліоміно-заповнення, Akropolis (Акрополіс), Alhambra (Альгамбра), Copenhagen (Копенгаген), Five Tribes, Patchwork (Печворк), Photosynthesis (Фотосинтез), Queendomino (Квіндоміно), Sagrada (Саграда), Terraforming Mars (Тераформування Марса), The Castles of Burgundy (Замки Бургундії), The Isle of Cats
 - `cell` ×12 🔥 — A Good Snowman Is Hard to Build, Arknights, Golf Peaks, Ice-sliding puzzles (Inertia і жанр «ковзай до упору»), Loop Hero, Mathable, Mindustry — клітинна логістика й оборона, Oxygen Not Included — клітинна фізика (гази, рідини, тепло), Puddle Knights, Recursed, Stardew Valley — фермерська сітка, Townscaper
+- `path_exists` ×11 🔥 — Clash of Clans — розстановка бази на сітці, CodinGame: The Great Escape, Color Lines / Lines 98 (Лінії), Desktop Tower Defense, Emberward, Fieldrunners, Hex (Гекс), OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Quoridor (Кворидор), Shannon switching game / Bridg-It (+ Untangle), Surakarta (Roundabouts)
 - `count` ×11 🔥 — Bonfire Peaks, Candy Crush Saga, Centipede (Багатоніжка), Clash of Clans — розстановка бази на сітці, Dig Dug, Dorfromantik, Loop Hero, Luck be a Landlord, Prison Architect — шар кімнат і зон, Space Invaders (Космічні загарбники), Taiji + The Witness (панелі)
 - `occupied` ×10 🔥 — Archon: The Light and the Dark, Carcassonne (Каркасон), Carto, Deadly Rooms of Death (DROD: King Dugan's Dungeon), Klotski (Хуажунський шлях) + Lunar Lockout, OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Pengo, Puddle Knights, Sokoban (Сокобан), The Battle of Polytopia
-- `path_exists` ×10 🔥 — Clash of Clans — розстановка бази на сітці, Color Lines / Lines 98 (Лінії), Desktop Tower Defense, Emberward, Fieldrunners, Hex (Гекс), OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Quoridor (Кворидор), Shannon switching game / Bridg-It (+ Untangle), Surakarta (Roundabouts)
 - `line_of_sight` ×9 🔥 — Cascadia + Calico (Каскадія, Калико), Chaos: The Battle of Wizards (+ Chaos Reborn), Creeper World, Frozen Synapse, Gauntlet (1985), HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), Rift Wizard, Wizard of Wor, XCOM: Enemy Unknown / XCOM 2
+- `crosses` ×9 🔥 — Hashiwokakero (Hashi, Bridges, Мости), Icebarn (アイスバーン), LYNE, Moon or Sun (月か太陽), Pencils (Nikoli), Rectangle-Slider, Reflect Link (リフレクトリンク), Tracks (Tatham), Yajisan-Sokoban (Yajisoko)
+- `duplicate_in_line` ×9 🔥 — Battleship Sudoku (Судоку «Морський бій»), Doppelblock (Double Block), Easy as ABC (ABC End View), Futoshiki (Unequal, Нерівності), Hitori (Хіторі, Singles), KenKen (Keen, CalcuDoku, Кенкен), Magic and Latin squares (Магічний і латинський квадрати), Skyscrapers (Towers, Хмарочоси), Str8ts (Стрейтс)
 - `prob` ×8 🔥 — Chaos: The Battle of Wizards (+ Chaos Reborn), Final Fantasy Tactics, HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), Luck be a Landlord, Stardew Valley — фермерська сітка, The Battle for Wesnoth (Битва за Веснот), The Powder Toy, XCOM: Enemy Unknown / XCOM 2
+- `in_zone` ×8 🔥 — Battle Brothers, Clash Royale, Congo (шахи «Конго»), Jungle (Dou Shou Qi, «Джунглі», звірині шахи), Shogi (Сьоґі, японські шахи), Swords & Soldiers, Xiangqi (Сянці, китайські шахи), Великі шогі — Chu shogi і Tenjiku shogi (Чу-шогі, Тендзіку-шогі)
 - `in_dictionary` ×8 🔥 — Bookworm, Knotwords, LOK Digital, Letterpress, NYT Connections (+ Strands), Scrabble (цифрові версії; Words With Friends), SpellTower, Wordle
-- `afford` ×6 🔥 — A Feast for Odin (Бенкет для Одіна) і поліоміно-заповнення, Akropolis (Акрополіс), Five Tribes, Patchwork (Печворк), Photosynthesis (Фотосинтез), Sagrada (Саграда)
+- `powered` ×7 🔥 — Core Keeper — сітковий шар (копання, ферма, автоматизація), Galaxy Trucker, Minecraft — редстоун, Terra Nil, The Electrifying Incident: A Monster Mini-Expedition, They Are Billions, Timberborn
+- `can_capture` ×7 🔥 — Draughts / Checkers (Шашки), Fanorona (Фанорона), Kōnane (Конане), Lasca (Ласка), SokoChess (і SokoChess White / Black), ZÈRTZ, Національні варіанти шашок
+- `edge_match` ×6 🔥 — Alhambra (Альгамбра), Carcassonne (Каркасон), Castles of Mad King Ludwig (Замки божевільного короля Людвіга), Dorfromantik, Isle of Skye: From Chieftain to King (Острів Скай), Kingdomino (Кінґдоміно)
+- `count_in` ×6 🔥 — Doppelblock (Double Block), Dosun-Fuwari (ドッスンフワリ), Kin-Kon-Kan (キンコンカン), Nondango (ノンダンゴ), Star Battle (Зоряна битва, Two Not Touch), Tentai Show (Galaxies, Spiral Galaxies)
+- `turns` ×6 🔥 — Icebarn (アイスバーン), Masyu (Pearl, «Перлини»), Nagareru-Loop, Reflect Link (リフレクトリンク), Suraromu (Slalom), Yajisan-Sokoban (Yajisoko)
+- `identified` ×6 🔥 — Brogue, Harmless7DRL, Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), NetHack, Rogue, Shattered Pixel Dungeon (і Pixel Dungeon)
 - `legal` ×5 🔥 — Carcassonne (Каркасон), Dorfromantik, Loop Hero, Mathable, Scrabble (цифрові версії; Words With Friends)
-- `identified` ×5 🔥 — Brogue, Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), NetHack, Rogue, Shattered Pixel Dungeon (і Pixel Dungeon)
+- `height_diff` ×5 🔥 — Populous, Santorini (Санторіні), Tactics Ogre, Timberborn, Vandal Hearts
+- `enclosed` ×5 🔥 — Hnefatafl (Тафл, «королівська дошка»), Rampart, RimWorld — шар кімнат і температури, Space Haven, Theme Hospital
+- `surrounded` ×5 🔥 — Bone Cruncher, DVONN, Hive (Вулик), Hnefatafl (Тафл, «королівська дошка»), Nectaris (Military Madness)
+- `charges` ×5 🔥 — BoxBoy! (ハコボーイ!), Fell Seal: Arbiter's Mark, Rift Wizard, Toki Tori, Troddlers
+- `region_size` ×5 🔥 — Araf (相ダ部屋, Aidabeya), Fillomino (Filling, «Заповнення»), Nurikabe (Нурікабе, Islands in the Stream), Shikaku (Шікаку, Rectangles, Divide by Box), Sto-stone (ストストーン)
 - `cursed` ×5 🔥 — Brogue, Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), NetHack, Rogue, Shattered Pixel Dungeon (і Pixel Dungeon)
+- `lane_has` ×5 🔥 — Cobalt Core, Inscryption (Act 1), Plants vs. Zombies (Рослини проти зомбі), Plants vs. Zombies Heroes, Plants vs. Zombies: Vasebreaker і I, Zombie (режим Puzzle)
+- `path_adjacent8` ×5 🔥 — Boggle, NYT Connections (+ Strands), SpellTower, Squaredle, Wordament
+- `distance` ×4 🔥 — Ark Nova, Ataxx, Countdown — numbers round / Countle, Digits (The New York Times)
+- `path_clear` ×4 🔥 — Breakthrough і Lines of Action (Прорив і Лінії дії), Game of the Amazons (Амазонки), Herugolf (Хелгольф), Hey, That's My Fish! (Packeis am Pol)
+- `reachable_by` ×4 🔥 — Capablanca chess (шахи Капабланки) і сімʼя 10×8, Chess with Different Armies (шахи різних армій, Betza), Congo (шахи «Конго»), Tiny Tower / SimTower
+- `sandwiched` ×4 🔥 — Baroque chess / Ultima (Бароккові шахи), Hnefatafl (Тафл, «королівська дошка»), Pente (Пенте), Soldam
 - `in_check` ×4 🔥 — Chess (Шахи) — цифрова гра, Lichess variants (варіанти шахів Lichess), Shogi (Сьоґі, японські шахи), Xiangqi (Сянці, китайські шахи)
+- `moved_this_turn` ×4 🔥 — Panzer General, SteamWorld Heist, Steel Panthers, Шахи з серіями ходів (Marseillais, Progressive)
 - `ports_match` ×4 🔥 — Infinity Loop + Net (Tatham), Loco-Motion (Guttang Gottong), Pipe Mania (Pipe Dream), Zenji
-- `charges` ×4 🔥 — BoxBoy! (ハコボーイ!), Rift Wizard, Toki Tori, Troddlers
+- `visited` ×4 🔥 — Captain Sonar, Icebarn (アイスバーン), N-queens і Knight's tour (задача ферзів, хід коня), Polarium
+- `lit` ×4 🔥 — Brogue, Light Up (Akari, Бідзюцукан), Moria / Angband, Mr. Jack (Містер Джек)
+- `from_behind` ×4 🔥 — Anteater (Мурахоїд), Card Hunter, Mewgenics, Telepath Tactics
+- `view_count` ×4 🔥 — Kuromasu (Kurodoko, Range) + Cave (Bag), Nurimisaki (ぬりみさき), Skyscrapers (Towers, Хмарочоси), Undead (Haunted Mirror Maze)
+- `held(a, kind|value)` ×4 🔥 — 7 Billion Humans, Cargo-Bot, Human Resource Machine, Opus Magnum
 - `status` ×4 🔥 — Final Fantasy Tactics, Into the Breach, The Battle for Wesnoth (Битва за Веснот), XCOM: Enemy Unknown / XCOM 2
-- `edge_match` ×3 🔥 — Carcassonne (Каркасон), Dorfromantik, Kingdomino (Кінґдоміно)
-- `path_clear` ×3 🔥 — Breakthrough і Lines of Action (Прорив і Лінії дії), Game of the Amazons (Амазонки), Hey, That's My Fish! (Packeis am Pol)
+- `ascending` ×3 🔥 — Arboretum (Дендропарк), Ganz Schön Clever (That's Pretty Clever), Welcome To… (Ласкаво просимо до…)
+- `visible` ×3 🔥 — Cottage Garden (Сільський сад), Kriegspiel + Dark Chess (Fog of War; «шахи наосліп із суддею» і «шахи в тумані»), Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
+- `strength` ×3 🔥 — Fish Fillets, Galaxy Trucker, Tigris & Euphrates (Тигр і Євфрат)
+- `in_pool` ×3 🔥 — Bananagrams, Knotwords, Pentomino (Пентаміно, гра Голомба)
+- `stack_height` ×3 🔥 — DVONN, Reef (Риф), Upwords
+- `hit_side` ×3 🔥 — Khet (Deflexion, Laser Chess), LaserTank, ThinkFun Laser Maze і Gravity Maze
+- `shape_match` ×3 🔥 — Magic Chalkboards, Tetrisphere, Tiny Towns (Крихітні містечка)
+- `adjacent_owned` ×3 🔥 — Amidar, Cities: Skylines (зонування), Forager
+- `heat` ×3 🔥 — BattleTech, Cogmind, Frostpunk
+- `attacked` ×3 🔥 — 5D Chess with Multiverse Time Travel, Capablanca chess (шахи Капабланки) і сімʼя 10×8, Chess (Шахи) — цифрова гра
+- `stronger` ×3 🔥 — Arimaa, Jungle (Dou Shou Qi, «Джунглі», звірині шахи), Великі шогі — Chu shogi і Tenjiku shogi (Чу-шогі, Тендзіку-шогі)
+- `value_ge` ×3 🔥 — Banqi (Half Chess, Dark Chess), Really Bad Chess, Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
+- `screen_count` ×3 🔥 — Banqi (Half Chess, Dark Chess), Janggi (Чанґі, корейські шахи), Xiangqi (Сянці, китайські шахи)
+- `moved` ×3 🔥 — Capablanca chess (шахи Капабланки) і сімʼя 10×8, Chess (Шахи) — цифрова гра, Wargroove
+- `top_side` ×3 🔥 — DVONN, Lasca (Ласка), Tak (Так)
+- `edges_match` ×3 🔥 — Carto, Tantrix, TetraVex
+- `airborne` ×3 🔥 — Downwell, Meteos (Метеос), Pac-Man: сиквели 1983–2021
 - `prop` ×3 🔥 — Emerald Mine, Mr. Do!, Rocks'n'Diamonds
 - `chain` ×3 🔥 — Mr. Do!, Panel de Pon (Tetris Attack, Puzzle League), Puzzle & Dragons (PAD, Пазли і Дракони)
 - `adjacent` ×3 🔥 — Bejeweled (1–3, Twist), Candy Crush Saga, Gorogoa
+- `cooldown` ×3 🔥 — Gems of War (і Marvel Puzzle Quest), Hoplite, Puzzle Quest: Challenge of the Warlords
+- `level_cmp` ×3 🔥 — Desktop Dungeons, Mamono Mower, Mamono Sweeper
 - `color` ×3 🔥 — Archon: The Light and the Dark, Disgaea: Hour of Darkness, Lady Bug
-- `region_size` ×3 🔥 — Fillomino (Filling, «Заповнення»), Nurikabe (Нурікабе, Islands in the Stream), Shikaku (Шікаку, Rectangles, Divide by Box)
+- `same_shape(a, b)` ×3 🔥 — Double Choco (Дабл-чоко), Pentominous («Пентамінус»), Tachiawase Block
+- `no_dead_end(borders)` ×3 🔥 — Double Choco (Дабл-чоко), Palisade (Five Cells, «Частокіл»), Tachiawase Block
+- `sum_eq` ×3 🔥 — Kakuro (Cross Sums, Какуро), KenKen (Keen, CalcuDoku, Кенкен), Magic and Latin squares (Магічний і латинський квадрати)
+- `is_rectangle` ×3 🔥 — Rectangle-Slider, Shakashaka (シャカシャカ), Shikaku (Шікаку, Rectangles, Divide by Box)
+- `visible(cell)` ×3 🔥 — Google AI Challenge — Ants, Myst (7DRL), Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
+- `can_damage(a, b)` ×3 🔥 — DungeonUp, Tactical Nexus, TowerBound
+- `cost` ×3 🔥 — Fights in Tight Spaces, Inkulinati, Mewgenics
+- `consistent_with_hints` ×3 🔥 — Absurdle, Crosswordle, Wordle
+- `length` ×3 🔥 — Boggle, Bookworm, SpellTower
+- `positive_integer` ×3 🔥 — Countdown — numbers round / Countle, Digits (The New York Times), Krypto
+- `size` ×2 — Acquire, Spybot: The Nightfall Incident (Lego Spybotics)
+- `capacity(region, op, n)` ×2 — Agricola — сітка ферми (Агрікола), Caverna: The Cave Farmers (Каверна)
+- `orth_adjacent(cell, kind)` ×2 — Agricola — сітка ферми (Агрікола), Caverna: The Cave Farmers (Каверна)
+- `free_tile` ×2 — Dragon Castle, Mahjong Solitaire (Shanghai, Маджонг-пасьянс)
 - `not_reverse` ×2 — Five Tribes, Labyrinth (Das verrückte Labyrinth, Божевільний лабіринт)
+- `exposed` ×2 — Galaxy Trucker, Tumblestone
+- `height` ×2 — Harmonies, Taluva (Талува)
+- `top_color` ×2 — Harmonies, Reef (Риф)
+- `covers_exactly` ×2 — IQ Puzzler Pro, Ubongo + Katamino / IQ Puzzler (Убонго)
+- `edge_free` ×2 — LYNE, Next Station: London
+- `adjacent_same_level` ×2 — Fallout Shelter, NMBR 9
 - `line_uniform` ×2 — Qwirkle + Ingenious (Квіркл, Genial), Take It Easy
-- `visible` ×2 — Kriegspiel + Dark Chess (Fog of War; «шахи наосліп із суддею» і «шахи в тумані»), Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
+- `connected_to_network` ×2 — Railroad Ink, Takenoko (Такеноко)
+- `allowed_spot` ×2 — A Little to the Left, Unpacking
+- `adjacent_count_in` ×2 — Civilization VI — шар районів і бонусів суміжності, Wireworld
+- `volume` ×2 — Dwarf Fortress — призначення клітин і рідини, Terraria — рідини
+- `temperature` ×2 — Dwarf Fortress — призначення клітин і рідини, HyperRogue
+- `slot_free` ×2 — Cogmind, Graveyard Keeper
+- `outnumbers` ×2 — Abalone (Абалон), Epaminondas (Епамінонд)
+- `liberties` ×2 — Atari Go (Capture Go, го до першого взяття), Go (Ґо, вейці, бадук)
+- `max_capture` ×2 — Draughts / Checkers (Шашки), Національні варіанти шашок
 - `group` ×2 — Go (Ґо, вейці, бадук), Hive (Вулик)
-- `in_zone` ×2 — Shogi (Сьоґі, японські шахи), Xiangqi (Сянці, китайські шахи)
-- `hit_side` ×2 — Khet (Deflexion, Laser Chess), LaserTank
-- `crosses` ×2 — Hashiwokakero (Hashi, Bridges, Мости), LYNE
+- `kings_facing` ×2 — Janggi (Чанґі, корейські шахи), Xiangqi (Сянці, китайські шахи)
+- `phase` ×2 — Battle Isle, Nine men's morris (Млин)
+- `wall_between` ×2 — CodinGame: The Great Escape, Quoridor (Кворидор)
+- `beam_color` ×2 — Chromatron (1–5), SOLAS 128
+- `has_alternative` ×2 — Metro (Iron Horse), Tsuro (+ Indigo)
+- `inside_base` ×2 — Dome Keeper, Wall World
+- `fall_height` ×2 — Leap Year, Lemmings
+- `material` ×2 — Noita, Tetrobot and Co.
+- `temp` ×2 — Sandboxels, The Powder Toy
+- `pressure` ×2 — Sandspiel, The Powder Toy
 - `timer` ×2 — Atomix, Puzzle & Dragons (PAD, Пазли і Дракони)
+- `frontmost` ×2 — Wildfrost, Zoop
+- `height_diff(a, cell, op, n)` ×2 — Krusty's Fun House, Lightbot (Light-Bot)
+- `inventory_full` ×2 — Montezuma's Revenge, Starquake
 - `hit_count` ×2 — Solomon's Key, Wrecking Crew
+- `edge_type` ×2 — Scotland Yard (Скотланд-Ярд), The Fury of Dracula
+- `contiguous` ×2 — Hexcells / Hexcells Plus / Hexcells Infinite, Patterna
 - `flags_match` ×2 — Kaboom (+ LuckSweeper, Pure Skill Minesweeper, Tatham Mines — сапер, що карає або прощає вгадування), Minesweeper (Сапер)
+- `rank_cmp` ×2 — Luzhanqi (Лучжаньці, китайські армійські шахи), Stratego (Стратего)
+- `carrying` ×2 — Adventure (Atari 2600), Void Stranger
+- `compare` ×2 — A Good Snowman Is Hard to Build, Jungler
 - `region_has` ×2 — Libble Rabble, Xonix (Ксонікс) / Qix / Volfied
-- `lit` ×2 — Brogue, Light Up (Akari, Бідзюцукан)
-- `held(a, kind|value)` ×2 — 7 Billion Humans, Opus Magnum
+- `in_own_zone` ×2 — Paper.io (Пейпер-іо) і Paper.io 2, Splix.io
+- `visits(loop, region, n)` ×2 — Country Road, Moon or Sun (月か太陽)
+- `same_shape` ×2 — LITS (Nuruomino), Ququ
+- `count_in(line, kind, op, n)` ×2 — Magnets (Tatham), Tents (Tatham)
+- `degree(cell, n)` ×2 — Pencils (Nikoli), Tracks (Tatham)
+- `same_slot` ×2 — Sherlock (Everett Kaser), Zebra Puzzle (Einstein's Riddle, Загадка Ейнштейна)
+- `next_to` ×2 — Sherlock (Everett Kaser), Zebra Puzzle (Einstein's Riddle, Загадка Ейнштейна)
+- `left_of` ×2 — Sherlock (Everett Kaser), Zebra Puzzle (Einstein's Riddle, Загадка Ейнштейна)
+- `count_dir` ×2 — Yajilin (Яджилін, Arrow Ring), Yajisan-Sokoban (Yajisoko)
+- `count_in_radius(a, kind, r2)` ×2 — Google AI Challenge — Ants, Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
+- `powered(net)` ×2 — KOHCTPYKTOP: Engineer of the People, Turing Complete
 - `color(a, c)` ×2 — Lightbot (Light-Bot), RoboZZle
+- `alignment(op, x)` ×2 — Ancient Domains of Mystery (ADOM), Omega
+- `suit(card, s)` ×2 — Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel), Donsol
+- `skipped_last` ×2 — Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel), Donsol
+- `mana(op, n)` ×2 — Castle of the Winds, Labyrinth of Refrain: Coven of Dusk
+- `conductive` ×2 — Caves of Qud, The Electrifying Incident: A Monster Mini-Expedition
 - `piety` ×2 — Desktop Dungeons, Dungeon Crawl Stone Soup
-- `lane_has` ×2 — Inscryption (Act 1), Plants vs. Zombies (Рослини проти зомбі)
-- `length` ×2 — Bookworm, SpellTower
-- `path_adjacent8` ×2 — NYT Connections (+ Strands), SpellTower
+- `rune_sequence` ×2 — Dungeon Master, Legend of Grimrock
+- `in_cover` ×2 — Invisible, Inc., Not the Robots
+- `cooldown_ready` ×2 — Auro: A Monster-Bumping Adventure, Mario + Rabbids Kingdom Battle
+- `cover` ×2 — D&D grid combat (Dungeons & Dragons 5e), Mario + Rabbids Kingdom Battle
+- `flanked` ×2 — D&D grid combat (Dungeons & Dragons 5e), Tiny Metal
+- `behind` ×2 — Duelyst, Triangle Strategy
+- `ap_left` ×2 — Fallout 1–2 (покроковий бій), Rebelstar / Laser Squad
+- `affinity` ×2 — Fire Emblem (GBA, The Blazing Blade як база), Langrisser
+- `element` ×2 — Gloomhaven, Tactics Ogre
+- `resistant` ×2 — Mage Knight Board Game, Telepath Tactics
+- `ap` ×2 — Othercide, Phoenix Point
+- `higher` ×2 — Creeper World, Triangle Strategy
+- `same_group` ×2 — NYT Connections (+ Strands), PushTOOL
+- `target_type` ×2 — Clash Royale, Mechabellum
+- `count_unique` ×2 — Dota Auto Chess, Teamfight Tactics (TFT)
+- `position` ×2 — Hearthstone Battlegrounds, Super Auto Pets
+- `trait` ×2 — Plants vs. Zombies Heroes, The Battle Cats
+- `not_played` ×2 — Boggle, Letterpress
+- `word_weight` ×2 — Bookworm Adventures, Letter Quest і Spellspire — словесні RPG-бої
+- `equation_holds` ×2 — Mathable, Nerdle
+- `safe` ×1 — Acquire
+- `enclosed(region)` ×1 — Agricola — сітка ферми (Агрікола)
+- `exact_pay` ×1 — Alhambra (Альгамбра)
+- `no_holes` ×1 — Alhambra (Альгамбра)
+- `hand_majority` ×1 — Arboretum (Дендропарк)
+- `touches` ×1 — Ark Nova
+- `aligned_edge` ×1 — Bärenpark
 - `corner_touch` ×1 — Blokus (Блокус)
 - `edge_touch` ×1 — Blokus (Блокус)
+- `doors_connected(room)` ×1 — Castles of Mad King Ludwig (Замки божевільного короля Людвіга)
+- `level(room, upstairs|downstairs)` ×1 — Castles of Mad King Ludwig (Замки божевільного короля Людвіга)
+- `zone(cell, forest|mountain)` ×1 — Caverna: The Cave Farmers (Каверна)
+- `matches_fragment(clue, offset)` ×1 — Chocolate Fix (ThinkFun)
+- `attr(cell, shape|color)` ×1 — Chocolate Fix (ThinkFun)
+- `edge_of_color(node, c)` ×1 — Code Master (ThinkFun)
+- `top_layer` ×1 — Dragon Castle
+- `reachable_from_top` ×1 — FITS
+- `connector_match` ×1 — Galaxy Trucker
+- `value_at_least` ×1 — Ganz Schön Clever (That's Pretty Clever)
+- `fits_room` ×1 — Happy Home (Щасливий дім)
+- `against_wall` ×1 — Happy Home (Щасливий дім)
+- `area_closed` ×1 — Isle of Skye: From Chieftain to King (Острів Скай)
+- `road_connected` ×1 — Isle of Skye: From Chieftain to King (Острів Скай)
+- `steps_le` ×1 — Karuba (Каруба)
+- `adjacent_to_own` ×1 — Kingdom Builder
+- `terrain` ×1 — Kingdom Builder
 - `path_connected` ×1 — Labyrinth (Das verrückte Labyrinth, Божевільний лабіринт)
+- `set_formed` ×1 — Lanterns: The Harvest Festival (Ліхтарі)
+- `supply_empty` ×1 — Lanterns: The Harvest Festival (Ліхтарі)
+- `across_river` ×1 — My City
+- `in_estate` ×1 — New York 1901 (Нью-Йорк 1901)
+- `touches(street)` ×1 — New York 1901 (Нью-Йорк 1901)
+- `tier_unlocked` ×1 — New York 1901 (Нью-Йорк 1901)
+- `on_line` ×1 — Next Station: London
 - `covers_n` ×1 — NMBR 9
-- `adjacent_same_level` ×1 — NMBR 9
 - `shaded` ×1 — Photosynthesis (Фотосинтез)
+- `actions_left` ×1 — Project L
+- `share_attribute` ×1 — Quarto
+- `holds_token` ×1 — Queendomino (Квіндоміно)
 - `in_line` ×1 — Qwirkle + Ingenious (Квіркл, Genial)
+- `ports_compatible` ×1 — Railroad Ink
+- `influence` ×1 — Samurai (Самурай)
+- `overlaps` ×1 — Sprawlopolis
+- `edge_contact` ×1 — Sprawlopolis
 - `via_loop` ×1 — Surakarta (Roundabouts)
-- `shape_match` ×1 — Tiny Towns (Крихітні містечка)
-- `covers_exactly` ×1 — Ubongo + Katamino / IQ Puzzler (Убонго)
-- `outnumbers` ×1 — Abalone (Абалон)
+- `irrigated(cell)` ×1 — Takenoko (Такеноко)
+- `straight_line(from, to)` ×1 — Takenoko (Такеноко)
+- `group_has` ×1 — Taluva (Талува)
+- `orientation_differs` ×1 — Taluva (Талува)
+- `rank` ×1 — Tash-Kalar: Arena of Legends
+- `behind_by` ×1 — Tash-Kalar: Arena of Legends
+- `requirement` ×1 — Terraforming Mars (Тераформування Марса)
+- `die_value` ×1 — The Castles of Burgundy (Замки Бургундії)
+- `touches_placed` ×1 — The Isle of Cats
+- `all_pieces_used` ×1 — ThinkFun Laser Maze і Gravity Maze
+- `owner_same` ×1 — Through the Desert (Крізь пустелю)
+- `touches_rival_same_color` ×1 — Through the Desert (Крізь пустелю)
+- `segment_closed` ×1 — Welcome To… (Ласкаво просимо до…)
+- `sorted_by` ×1 — A Little to the Left
+- `aligned` ×1 — A Little to the Left
+- `visitors_watered` ×1 — Animal Crossing — New Horizons (схрещування квітів)
+- `walk_cost` ×1 — Against the Storm
+- `road_distance` ×1 — Anno 1800 — дальність сервісів по дорогах
+- `configured` ×1 — Automachef
+- `in_mark` ×1 — Backpack Battles
+- `value_in_range(item, prop, lo, hi)` ×1 — Big Pharma
+- `inputs_met` ×1 — Block'hood
+- `key_target_alive` ×1 — Boom Beach
+- `demand` ×1 — Cities: Skylines (зонування)
+- `fronts_road` ×1 — Cities: Skylines (зонування)
+- `tool_tier` ×1 — Core Keeper — сітковий шар (копання, ферма, автоматизація)
+- `watered` ×1 — Core Keeper — сітковий шар (копання, ферма, автоматизація)
+- `in_backpack` ×1 — Diablo II (inventory)
+- `accepts` ×1 — Dwarf Fortress — призначення клітин і рідини
+- `same_band` ×1 — Dyson Sphere Program — сітка на кулі планети
+- `neighborhood_is` ×1 — Елементарні клітинні автомати (Rule 110, Rule 30, Rule 90)
+- `stat_sum` ×1 — Fallout Shelter
+- `count_in_radius` ×1 — Islanders
+- `fertility(cell, op, n)` ×1 — Kingdoms and Castles
+- `kernel_sum` ×1 — Lenia
+- `capacity(store, op, n)` ×1 — FarmVille і Hay Day — ферма на годиннику
+- `visible_from` ×1 — Parkitect
+- `walker_kind` ×1 — Pharaoh
+- `patience` ×1 — PlateUp!
+- `flat_area` ×1 — Populous
+- `feeds_next(slot)` ×1 — Production Line
+- `roofed_ratio` ×1 — RimWorld — шар кімнат і температури
+- `prefers` ×1 — RollerCoaster Tycoon
+- `fits_all` ×1 — Save Room – Organization Puzzle
+- `truthy(signal)` ×1 — shapez
+- `scent_level` ×1 — SimAnt
+- `field` ×1 — SimCity (1989) / Micropolis
+- `cell_count_in_range` ×1 — Terra Nil
+- `submerged` ×1 — Terraria — рідини
+- `wait_time` ×1 — Tiny Tower / SimTower
+- `area_share(type, op, pct)` ×1 — Viva Piñata
+- `has_eaten(a, item, n)` ×1 — Viva Piñata
+- `playable` ×1 — 5D Chess with Multiverse Time Travel
 - `region` ×1 — Game of the Amazons (Амазонки)
-- `stronger` ×1 — Arimaa
+- `same_target` ×1 — Apocalypse (Апокаліпсис, одночасні шахи коней і пішаків)
 - `guarded` ×1 — Arimaa
-- `distance` ×1 — Ataxx
+- `adjacent_enemy` ×1 — Baroque chess / Ultima (Бароккові шахи)
+- `immobilized` ×1 — Baroque chess / Ultima (Бароккові шахи)
 - `line_count` ×1 — Breakthrough і Lines of Action (Прорив і Лінії дії)
-- `can_capture` ×1 — Draughts / Checkers (Шашки)
-- `max_capture` ×1 — Draughts / Checkers (Шашки)
-- `value_ge` ×1 — Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
-- `attacked` ×1 — Chess (Шахи) — цифрова гра
-- `moved` ×1 — Chess (Шахи) — цифрова гра
+- `can_bare_back` ×1 — Chaturanga / Shatranj (Чатуранга / Шатрандж)
+- `capture_value` ×1 — Національні варіанти шашок
+- `streak` ×1 — Національні варіанти шашок
+- `rank_higher` ×1 — Chess 2: The Sequel (Sirlin's Chess)
+- `in_army` ×1 — Chess with Different Armies (шахи різних армій, Betza)
+- `falling` ×1 — Chessformer
+- `sides_drawn` ×1 — Dots and Boxes (Крапки й квадрати)
+- `not_same_cell` ×1 — Duck Chess (Качині шахи)
+- `phalanx` ×1 — Epaminondas (Епамінонд)
+- `mirror_symmetric` ×1 — Epaminondas (Епамінонд)
+- `strong_point` ×1 — Fanorona (Фанорона)
+- `visited_in_chain` ×1 — Fanorona (Фанорона)
+- `teammate(a, b)` ×1 — Four-player chess (шахи на чотирьох)
+- `lead(op, n)` ×1 — Four-player chess (шахи на чотирьох)
 - `footprint` ×1 — Gess
 - `pattern_present` ×1 — Gess
-- `liberties` ×1 — Go (Ґо, вейці, бадук)
+- `line_full` ×1 — GIPF
+- `hex_dir` ×1 — Gliński's hexagonal chess (Гексагональні шахи Глінського)
+- `bigger` ×1 — Gobblet (Гоблет)
+- `top_of_stack` ×1 — Gobblet (Гоблет)
+- `in_camp` ×1 — Halma / Chinese checkers (Хальма / Китайські шашки)
+- `mirror_of` ×1 — Hexapawn (гексапішак) і машина, що вчиться на сірникових коробках
 - `connected_after` ×1 — Hive (Вулик)
 - `can_slide` ×1 — Hive (Вулик)
-- `surrounded` ×1 — Hive (Вулик)
+- `hostile` ×1 — Hnefatafl (Тафл, «королівська дошка»)
+- `on_palace_line` ×1 — Janggi (Чанґі, корейські шахи)
 - `same_color` ×1 — Kamisado
+- `same_direction` ×1 — Kōnane (Конане)
+- `protected` ×1 — Великі шогі — Chu shogi і Tenjiku shogi (Чу-шогі, Тендзіку-шогі)
 - `forbidden_shape` ×1 — N-in-a-row (Хрестики-нулики, Gomoku, Connect Four, Pentago…)
 - `board_target` ×1 — N-in-a-row (Хрестики-нулики, Gomoku, Connect Four, Pentago…)
+- `series_last` ×1 — Шахи з серіями ходів (Marseillais, Progressive)
+- `in_mill` ×1 — Nine men's morris (Млин)
 - `card_allows` ×1 — Onitama
-- `wall_between` ×1 — Quoridor (Кворидор)
+- `captured_by(kind)` ×1 — The Ouroboros King
+- `feeds_opponent` ×1 — Oware (Оваре, Авале)
+- `last_in(side)` ×1 — Oware (Оваре, Авале)
+- `badge(name)` ×1 — Passant: A Chess Roguelike
+- `on_board` ×1 — Peg solitaire (Пег-солітер)
+- `line_breakable` ×1 — Pente (Пенте)
+- `superposed` ×1 — Quantum Chess (Квантові шахи, Cantwell)
+- `path_blocked_prob` ×1 — Quantum Chess (Квантові шахи, Cantwell)
+- `direction_class(faces|edges|corners)` ×1 — Raumschach (просторові шахи)
 - `flanks` ×1 — Reversi / Othello (Реверсі)
+- `opposite_color(board_a, board_b)` ×1 — Shōbu (Шобу)
+- `home_board(board, side)` ×1 — Shōbu (Шобу)
+- `ammo` ×1 — Shotgun King: The Final Checkmate
+- `carry_limit` ×1 — Tak (Так)
+- `segments_cross` ×1 — TwixT (Твікст)
+- `returns_to_start` ×1 — Шахи без країв — циліндричні (Cylinder) і кругові (Circular / Byzantine)
+- `crosses_seam` ×1 — Шахи без країв — циліндричні (Cylinder) і кругові (Circular / Byzantine)
 - `path_blocked` ×1 — Xiangqi (Сянці, китайські шахи)
-- `screen_count` ×1 — Xiangqi (Сянці, китайські шахи)
-- `kings_facing` ×1 — Xiangqi (Сянці, китайські шахи)
+- `jump_landing` ×1 — YINSH
+- `free_edge_cell` ×1 — ZÈRTZ
+- `path_head_cell` ×1 — Black Path Game
 - `energy_type(in, kind)` ×1 — Electric Box (+ Lazors)
+- `not_covered` ×1 — Hook
+- `circuit_closed` ×1 — Hook
 - `turn_of` ×1 — Khet (Deflexion, Laser Chess)
-- `edge_free` ×1 — LYNE
+- `overcrowded` ×1 — Mini Metro
+- `beam_present` ×1 — OCTOPTICOM
+- `open_unpaired` ×1 — Oxyd (+ Enigma)
 - `order_next` ×1 — Railbound
 - `crosses(e1, e2)` ×1 — Shannon switching game / Bridg-It (+ Untangle)
+- `pulse_aligned` ×1 — SOLAS 128
+- `signal_color` ×1 — SPIN Protocol
+- `creates_forbidden` ×1 — Tantrix
+- `bankrupt` ×1 — Train Valley
 - `simultaneous` ×1 — Trainyard
 - `edge_colors(cell, color, n)` ×1 — Trax
-- `has_alternative` ×1 — Tsuro (+ Indigo)
+- `next_in_order` ×1 — Banana
 - `rounded` ×1 — Boulder Dash
 - `on_stake` ×1 — Dig Dug II
-- `inside_base` ×1 — Dome Keeper
+- `holding` ×1 — Mine Blocks
 - `layer` ×1 — Mole Mania
-- `temp` ×1 — The Powder Toy
-- `pressure` ×1 — The Powder Toy
+- `durability` ×1 — Noita
+- `charged` ×1 — Sandboxels
+- `key_held` ×1 — Sandspiel Studio
+- `buried` ×1 — Scorched Earth
+- `ability` ×1 — Survivors
+- `fluid_type` ×1 — Where's My Water?
+- `fill` ×1 — Where's My Water?
 - `moving` ×1 — XOR
+- `neighbors_match` ×1 — Alchemy (PopCap)
+- `eats(a, b)` ×1 — Baku Baku Animal
+- `fits3d` ×1 — Blockout (Block Out)
+- `orientation(shape, dir)` ×1 — Might & Magic: Clash of Heroes
+- `rear_of_column(a)` ×1 — Might & Magic: Clash of Heroes
+- `greater` ×1 — Critter Crunch
+- `run_length` ×1 — Drop7
+- `compatible` ×1 — Dungeon Raid
+- `position(a, n)` ×1 — Gems of War (і Marvel Puzzle Quest)
+- `stack_run` ×1 — Hatris
+- `top_same` ×1 — Hexa Sort
+- `mutually_adjacent` ×1 — Hexic (Hexic HD, Hexic 2)
+- `since(event, op, t)` ×1 — Hextris (Гекстріс)
+- `most_common` ×1 — Homescapes / Gardenscapes / Royal Match (мета-шар ремонту)
+- `min_group` ×1 — Money Puzzle Exchanger
+- `poker_hand` ×1 — Poker Smash
+- `ruleset(side, r)` ×1 — Puyo Puyo Tetris
 - `adjacent_cleared` ×1 — Puyo Puyo (Пуйо Пуйо)
+- `rectangle_complete` ×1 — Quarth (Кварт)
 - `group_size` ×1 — SameGame / Clickomania + Flood (Tatham)
+- `would_match` ×1 — Shariki (Шарики)
+- `path_turns` ×1 — Shisen-Sho / Onet (Сісен-сьо, «зʼєднай пару»)
+- `adjacent_cleared(a)` ×1 — Super Puzzle Fighter II Turbo
+- `target` ×1 — TetriNET
+- `pattern_holes` ×1 — Tetris The Grand Master (TGM)
 - `last_move` ×1 — Tetris (Тетрис, Tetris Guideline)
 - `corners_occupied` ×1 — Tetris (Тетрис, Tetris Guideline)
 - `difficult` ×1 — Tetris (Тетрис, Tetris Guideline)
+- `aligned_layers` ×1 — Tetrisphere
+- `complement` ×1 — Threes!
+- `unmatched(tile)` ×1 — Titanium Court
+- `stable(a, t)` ×1 — Tricky Towers
+- `uncovered` ×1 — Triple Match 3D / Tile Explorer
+- `contains` ×1 — Wario's Woods
+- `rests_on_wall` ×1 — Welltris
+- `cycling(tile)` ×1 — Zoo Keeper
+- `drillable(cell)` ×1 — Blocks That Matter
+- `line_length(cells, op, n)` ×1 — Blocks That Matter
+- `riders(obj, op, n)` ×1 — BurgerTime
+- `from_side(a, door, side)` ×1 — Door Door
+- `can_climb(a, height)` ×1 — Exit
+- `fits_passage(a, cell)` ×1 — Exit
+- `awakened(a)` ×1 — Exit
+- `part_clear(a, part, dir)` ×1 — Kine
+- `orientation(a, o)` ×1 — Kine
+- `uses(a, op, n)` ×1 — King's Valley II: The Seal of El Giza
+- `hands_empty` ×1 — King's Valley
+- `on_stairs` ×1 — King's Valley
+- `signals(mode, channels)` ×1 — Levelhead
+- `width(cell, n)` ×1 — Lode Runner 2 і Lode Runner 3-D
+- `tool_power` ×1 — Lode Runner: The Legend Returns
+- `walkable(cell)` ×1 — Mekorama
 - `depth` ×1 — Pushmo / Pullblox (引ク押ス) + Crashmo
 - `standing_on` ×1 — Pushmo / Pullblox (引ク押ス) + Crashmo
 - `last_in_chain` ×1 — Pushover (Push-Over)
 - `clear_condition` ×1 — Super Mario Maker 2
+- `top_item` ×1 — Treasure Island Dizzy
 - `rule_active` ×1 — 14 Minesweeper Variants
 - `all_cells_hit` ×1 — Battleship (Морський бій)
 - `ray_consistent` ×1 — Black Box (Чорна скринька)
+- `system_broken` ×1 — Captain Sonar
+- `in_footprint` ×1 — Cavern Sweeper
 - `holds` ×1 — Cluedo (Clue; «Клуедо»)
+- `clue_allows(p, cell)` ×1 — Cryptid
+- `no_mistake_since` ×1 — DemonCrawl
 - `hp_after_hit` ×1 — Dragonsweeper
+- `value_decayed` ×1 — Dynamine
 - `hidden_kind` ×1 — Geister (Ghosts!, Good & Bad Ghosts; «Привиди»)
-- `contiguous` ×1 — Hexcells / Hexcells Plus / Hexcells Infinite
+- `has_trait` ×1 — Guess Who? (Вгадай, хто?)
+- `in_direction` ×1 — hexceed
 - `adjacent_kind` ×1 — Hunt the Wumpus («Полювання на Вампуса»)
+- `at_least_one_true` ×1 — Inkognito
 - `provably_safe` ×1 — Kaboom (+ LuckSweeper, Pure Skill Minesweeper, Tatham Mines — сапер, що карає або прощає вгадування)
 - `forced_guess` ×1 — Kaboom (+ LuckSweeper, Pure Skill Minesweeper, Tatham Mines — сапер, що карає або прощає вгадування)
+- `flag_kind` ×1 — Lizzi Crossing
+- `rail_path` ×1 — Luzhanqi (Лучжаньці, китайські армійські шахи)
+- `safe_cell` ×1 — Luzhanqi (Лучжаньці, китайські армійські шахи)
 - `consistent` ×1 — Mastermind (+ Bulls and Cows, «Бики й корови»)
-- `rank_cmp` ×1 — Stratego (Стратего)
+- `adjacent_count_nd` ×1 — Minesweeper у вимірах: 4D Minesweeper, Tilesweeper, Timesweeper
+- `seen` ×1 — Mr. Jack (Містер Джек)
+- `count_within` ×1 — Patterna
+- `deducible` ×1 — Patterna
+- `same_segment` ×1 — Polimines / Polimines 2
 - `repetition` ×1 — Stratego (Стратего)
+- `count_in_region` ×1 — Sudo Sweep
+- `structure_active` ×1 — Tacticsweeper
+- `in_group` ×1 — Tametsi
+- `row_solved` ×1 — Tetrisweeper
 - `all_kind_revealed` ×1 — Voltorb Flip
-- `adjacent_owned` ×1 — Amidar
+- `has_property` ×1 — Zendo
+- `alive` ×1 — Achtung, die Kurve! (Увага, поворот!)
+- `tier` ×1 — Battle City (Танчики) і Tank Battalion
+- `team` ×1 — Bomberman — battle mode (Super Bomberman, Super Bomberman R / R Online / R 2)
+- `riding` ×1 — Bomberman — мультиплеєрні гілки (Dyna Blaster, Saturn Bomberman, Atomic Bomberman, Bomberman Blast)
 - `owner_count` ×1 — Bomberman
+- `bounced` ×1 — Combat
+- `eating` ×1 — Crystal Castles
+- `ally_dead` ×1 — Dandy / Dark Chambers
 - `on_top` ×1 — Frogger (Жабка) / Crossy Road
+- `in_mask` ×1 — Gals Panic
+- `speed_mode` ×1 — Head On
 - `stage` ×1 — Heiankyo Alien (Digger)
 - `region_small` ×1 — Libble Rabble
+- `all_painted` ×1 — Make Trax (Crush Roller)
 - `mode` ×1 — Pac-Man (Пекмен) і Ms. Pac-Man
+- `mass` ×1 — Slither.io
+- `trailing` ×1 — Splix.io
+- `just_left` ×1 — Venture
+- `connected(area_a, area_b)` ×1 — Wolfenstein 3D
+- `water_level` ×1 — Aquarium (Акваріум)
+- `clues_in(region, n)` ×1 — Araf (相ダ部屋, Aidabeya)
+- `size_between` ×1 — Araf (相ダ部屋, Aidabeya)
+- `no_touch8` ×1 — Battleship Sudoku (Судоку «Морський бій»)
+- `fleet_matches` ×1 — Battleship Sudoku (Судоку «Морський бій»)
+- `sum_of_diffs` ×1 — Bosanowa (ボサノワ)
+- `diag_count` ×1 — Context
+- `pair_used(a, b)` ×1 — Dominosa (Доміноза)
+- `sum_between` ×1 — Doppelblock (Double Block)
+- `supported_above` ×1 — Dosun-Fuwari (ドッスンフワリ)
+- `one_area_per_color(block)` ×1 — Double Choco (Дабл-чоко)
+- `first_seen` ×1 — Easy as ABC (ABC End View)
+- `grows_by_one(a, b)` ×1 — Evolmino
+- `count_in(block, kind, op, n)` ×1 — Evolmino
+- `count_in_area` ×1 — Fill-a-Pix (Mosaic)
+- `less_than(a, b)` ×1 — Futoshiki (Unequal, Нерівності)
+- `differ_by(a, b, 1)` ×1 — Futoshiki (Unequal, Нерівності)
+- `stroke_length` ×1 — Herugolf (Хелгольф)
 - `run_rooms` ×1 — Heyawake (Хеявакé, «поділені кімнати»)
-- `duplicate_in_line` ×1 — Hitori (Хіторі, Singles)
-- `sum_eq` ×1 — Kakuro (Cross Sums, Какуро)
-- `view_count` ×1 — Kuromasu (Kurodoko, Range) + Cave (Bag)
+- `consecutive_adjacent(k, k+1, n8)` ×1 — Hidato (Хідато)
+- `cage_op` ×1 — KenKen (Keen, CalcuDoku, Кенкен)
 - `connected_to_edge` ×1 — Kuromasu (Kurodoko, Range) + Cave (Bag)
-- `same_shape` ×1 — LITS (Nuruomino)
-- `turns` ×1 — Masyu (Pearl, «Перлини»)
+- `all_distinct` ×1 — Magic and Latin squares (Магічний і латинський квадрати)
+- `shares_border(a, b)` ×1 — Map (Tatham)
+- `alternates` ×1 — Moon or Sun (月か太陽)
+- `attacked(cell, by)` ×1 — N-queens і Knight's tour (задача ферзів, хід коня)
+- `knight_move(a, b)` ×1 — N-queens і Knight's tour (задача ферзів, хід коня)
+- `moving_against(wind)` ×1 — Nagareru-Loop
+- `wind(cell, dir)` ×1 — Nagareru-Loop
+- `run_length(color, dirs8, n)` ×1 — Nondango (ノンダンゴ)
 - `line_runs` ×1 — Nonogram (Японський кросворд, Picross, Griddlers, Hanjie)
-- `is_rectangle` ×1 — Shikaku (Шікаку, Rectangles, Divide by Box)
-- `count_in` ×1 — Star Battle (Зоряна битва, Two Not Touch)
+- `acyclic` ×1 — Nuri-Maze (Nurimeizu, ぬりめいず)
+- `on_path` ×1 — Nuri-Maze (Nurimeizu, ぬりめいず)
+- `dead_end` ×1 — Nurimisaki (ぬりみさき)
+- `border_count(cell, n)` ×1 — Palisade (Five Cells, «Частокіл»)
+- `line_length(line, op, n)` ×1 — Pencils (Nikoli)
+- `shape_is(region, letter)` ×1 — Pentominous («Пентамінус»)
+- `nearest_dist(cell, dir, kind)` ×1 — Pentopia
+- `touches8(a, b)` ×1 — Pentopia
+- `group_count` ×1 — Picross-варіанти (Picross 3D, Round 2, Mega, Color, Clip)
+- `checklist_pass` ×1 — puzz.link (pzprjs / pzprv3)
+- `touch_corner` ×1 — Ququ
+- `moved(a, n)` ×1 — Rectangle-Slider
+- `straight_len` ×1 — Reflect Link (リフレクトリンク)
+- `min_gap(value, line)` ×1 — Ripple Effect (Hakyuu Kouka)
+- `region_values_1_to_n` ×1 — Ripple Effect (Hakyuu Kouka)
+- `between` ×1 — Sherlock (Everett Kaser)
+- `on_ray(a, b, dir)` ×1 — Signpost (Pfeilpfad)
+- `no_loop(lines)` ×1 — Slant (Gokigen Naname)
+- `lines_at(vertex, n)` ×1 — Slant (Gokigen Naname)
+- `same_shape(a, b, flip)` ×1 — Statue Park
+- `bank_used_once(bank)` ×1 — Statue Park
+- `touch_across_border` ×1 — Sto-stone (ストストーン)
+- `fills_bottom_half` ×1 — Sto-stone (ストストーン)
+- `consecutive_set(cells)` ×1 — Str8ts (Стрейтс)
+- `increasing` ×1 — Sudoku line & dot variants (Thermo, Arrow, Kropki, German Whispers)
+- `diff` ×1 — Sudoku line & dot variants (Thermo, Arrow, Kropki, German Whispers)
+- `ratio` ×1 — Sudoku line & dot variants (Thermo, Arrow, Kropki, German Whispers)
+- `order(gate, k)` ×1 — Suraromu (Slalom)
+- `same_bank(grid_a, grid_b)` ×1 — Tachiawase Block
+- `overlaps(a, b)` ×1 — Tachiawase Block
+- `balanced` ×1 — Takuzu (Binairo, Unruly, Tic-Tac-Logic)
+- `lines_distinct` ×1 — Takuzu (Binairo, Unruly, Tic-Tac-Logic)
 - `ring_runs` ×1 — Tapa (Тапа, T-Paint)
-- `count_dir` ×1 — Yajilin (Яджилін, Arrow Ring)
+- `point_symmetric` ×1 — Tentai Show (Galaxies, Spiral Galaxies)
+- `perfect_matching(a, b)` ×1 — Tents (Tatham)
+- `slide_range(a, op, n)` ×1 — Tren
+- `seen_via(direct|mirror)` ×1 — Undead (Haunted Mirror Maze)
+- `type_count` ×1 — Undead (Haunted Mirror Maze)
 - `on_loop` ×1 — Yajilin (Яджилін, Arrow Ring)
+- `clue_covered` ×1 — Yajisan-Sokoban (Yajisoko)
 - `border_color_changes` ×1 — Yin-Yang (Інь-Ян, Shiromaru-Kuromaru)
 - `nearby(dir, kind)` ×1 — 7 Billion Humans
 - `reading_order` ×1 — Advent of Code — сіткові пазли (збірка)
-- `count_in_radius(a, kind, r2)` ×1 — Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
-- `visible(cell)` ×1 — Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
+- `owners_in_radius(cell, r2, n)` ×1 — Google AI Challenge — Ants
+- `fits_capacity(a, b)` ×1 — Advent of Code 2016, день 22: Grid Computing
+- `hands_full(a)` ×1 — Autonauts
+- `hands_empty(a)` ×1 — Autonauts
+- `heard(signal)` ×1 — Autonauts
+- `stack_top(op, v)` ×1 — Befunge (Befunge-93)
+- `path(dir)` ×1 — Blockly Games Maze і Code.org Classic Maze
+- `not_done` ×1 — Blockly Games Maze і Code.org Classic Maze
+- `held_any` ×1 — Cargo-Bot
+- `held_none` ×1 — Cargo-Bot
+- `radar(kind, angle, width, range)` ×1 — Carnage Heart
+- `radio(channel, color)` ×1 — Carnage Heart
+- `api_available(method)` ×1 — CodeCombat
+- `bombs_left(a)` ×1 — CodinGame: Hypersonic
+- `can_build(cell)` ×1 — CodinGame: Keep Off the Grass (Fall Challenge 2022)
+- `in_range_of(cell, recycler)` ×1 — CodinGame: Keep Off the Grass (Fall Challenge 2022)
+- `field_value(op, n)` ×1 — Core War
+- `power(a, op, n)` ×1 — Craftomation 101
+- `powered(cell)` ×1 — Duskers
+- `docked` ×1 — Duskers
+- `host_has_space(host)` ×1 — EXAPUNKS
+- `signal(net, ch, op, n)` ×1 — Factorio — circuit network
+- `range_band(target, band)` ×1 — Gladiabots
+- `health_band(target, pct)` ×1 — Gladiabots
+- `current_action(target, act)` ×1 — Gladiabots
+- `tagged(target, tag)` ×1 — Gladiabots
+- `signal(port)` ×1 — Infinifactory
+- `aligned(a, b, joint)` ×1 — Kaizen: A Factory Story
 - `sensor(name)` ×1 — Kara (Кара — сонечко)
 - `dont_care` ×1 — Kara (Кара — сонечко)
-- `height_diff(a, cell, op, n)` ×1 — Lightbot (Light-Bot)
+- `cooldown_ready(a)` ×1 — Lux AI Challenge
+- `researched(resource)` ×1 — Lux AI Challenge
+- `cargo_full(a)` ×1 — Lux AI Challenge
 - `tape_head(c)` ×1 — Manufactoria
+- `valence_free(atom)` ×1 — MOLEK-SYNTEZ
+- `returned(call, value)` ×1 — Robo Instructus
+- `returns(value)` ×1 — RoboMind
 - `priority(a, op, b)` ×1 — RoboRally
 - `damage(a, op, n)` ×1 — RoboRally
+- `height_diff(a, b, op, n)` ×1 — Robot Karol
+- `stack_height(cell, op, n)` ×1 — Robot Karol
 - `signal(pin)` ×1 — Robot Odyssey
 - `body_count(a, part, op, n)` ×1 — Screeps (Screeps World, Screeps Arena)
 - `fatigue(a, op, n)` ×1 — Screeps (Screeps World, Screeps Arena)
+- `sensor_atom(kind)` ×1 — SpaceChem
+- `flipflop(state)` ×1 — SpaceChem
+- `standing_on(a, kind, state)` ×1 — Swift Playgrounds (Learn to Code, Byte)
 - `ground(cell, type)` ×1 — The Farmer Was Replaced
 - `water(cell, op, x)` ×1 — The Farmer Was Replaced
+- `port_ready(dir)` ×1 — TIS-100
 - `validate_count(kind, op, n)` ×1 — Untrusted — or the Continuing Adventures of Dr. Eval
+- `on_axis` ×1 — Escape (Tom 7)
+- `ports_aligned` ×1 — Pipe Push Paradise
 - `dead_square` ×1 — Sokoban (Сокобан)
+- `capacity` ×1 — Train shunting puzzle (Inglenook Sidings, Timesaver)
 - `same(color)` ×1 — 868-HACK (+ Imbroglio, Cinco Paus — мікро-роглайки Michael Brough)
 - `in_row_col(a, b)` ×1 — 868-HACK (+ Imbroglio, Cinco Paus — мікро-роглайки Michael Brough)
+- `carried(item)` ×1 — Ancient Domains of Mystery (ADOM)
+- `depth(op, n)` ×1 — Moria / Angband
+- `sector(x)` ×1 — The Bard's Tale / Might and Magic — сіткові dungeon crawl 80-х
+- `stat(a, s, op, n)` ×1 — Beneath Apple Manor
 - `stealth_range` ×1 — Brogue
-- `suit(card, s)` ×1 — Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel)
+- `enemies_on_screen` ×1 — Cadence of Hyrule: Crypt of the NecroDancer Featuring The Legend of Zelda
 - `last_kill(weapon, op, v)` ×1 — Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel)
-- `skipped_last` ×1 — Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel)
+- `ready(skill)` ×1 — Cardinal Quest
+- `fits(container, item)` ×1 — Castle of the Winds
+- `on_belt(item)` ×1 — Castle of the Winds
 - `volume(op, n)` ×1 — Caves of Qud
-- `conductive` ×1 — Caves of Qud
 - `reputation(faction, op, n)` ×1 — Caves of Qud
 - `material(x)` ×1 — Caves of Qud
-- `slot_free` ×1 — Cogmind
 - `overweight` ×1 — Cogmind
-- `heat` ×1 — Cogmind
 - `energy` ×1 — Cogmind
 - `dig_power` ×1 — Crypt of the NecroDancer
 - `on_beat` ×1 — Crypt of the NecroDancer
-- `level_cmp` ×1 — Desktop Dungeons
+- `last_kill(shield, op, v)` ×1 — Donsol
+- `hit_roll(acc)` ×1 — DoomRL / DRL → Jupiter Hell
+- `ammo(a, op, n)` ×1 — DoomRL / DRL → Jupiter Hell
+- `stance(a, s)` ×1 — DoomRL / DRL → Jupiter Hell
 - `can_swim` ×1 — Dungeon Crawl Stone Soup
 - `flying` ×1 — Dungeon Crawl Stone Soup
 - `code(cell, n)` ×1 — Dungeon Encounters
 - `has_ability(a)` ×1 — Dungeon Encounters
 - `armor(kind, op, n)` ×1 — Dungeon Encounters
+- `load(op, n)` ×1 — Dungeon Master
+- `leader(a)` ×1 — Dungeon Master
 - `powered(room)` ×1 — Dungeon of the Endless
-- `temperature` ×1 — HyperRogue
+- `light(kind)` ×1 — Dungeons of Daggorath
+- `class(a, c)` ×1 — Eye of the Beholder
+- `lit(cell, light)` ×1 — Golden Krone Hotel
+- `form(a, f)` ×1 — Golden Krone Hotel
+- `sees(a, b)` ×1 — Golden Krone Hotel
+- `time_of_day(op, t)` ×1 — Golden Krone Hotel
+- `in_shop(a)` ×1 — Hack
+- `unpaid(item)` ×1 — Hack
+- `flying(a)` ×1 — Harmless7DRL
+- `provoked(a)` ×1 — Harmless7DRL
 - `cell_color` ×1 — HyperRogue
+- `aware(a, b)` ×1 — Infra Arcana (огляд з The Ground Gives Way і Zorbus)
+- `lit(cell)` ×1 — Infra Arcana (огляд з The Ground Gives Way і Zorbus)
+- `time_elapsed(op, n)` ×1 — Larn
+- `debt` ×1 — Larn
 - `row` ×1 — Legend of Grimrock
-- `rune_sequence` ×1 — Legend of Grimrock
 - `can_damage` ×1 — Tower of the Sorcerer / Magic Tower (魔塔)
+- `tile_under(a, type)` ×1 — Morphblade
 - `buc(item, s)` ×1 — NetHack
 - `luck(op, n)` ×1 — NetHack
 - `respects(a, ward)` ×1 — NetHack
+- `member(guild)` ×1 — Omega
+- `open_hours` ×1 — Omega
 - `column(a, op, x)` ×1 — 'One Way Heroics (Mystery Chronicle: One Way Heroics)'
 - `distance(op, n)` ×1 — 'One Way Heroics (Mystery Chronicle: One Way Heroics)'
+- `encumbered` ×1 — Path of Achra
+- `card_allows(move)` ×1 — Pawnbarian
 - `str_req(item)` ×1 — Shattered Pixel Dungeon (і Pixel Dungeon)
 - `has_tag` ×1 — Rift Wizard
 - `resist` ×1 — Rift Wizard
+- `faster(a, b)` ×1 — Ring of Pain
+- `stealth_roll(a)` ×1 — Ring of Pain
+- `charged(tile)` ×1 — Shogun Showdown
+- `killing_blow` ×1 — Shovel Knight Pocket Dungeon
+- `skill_check(skill, difficulty)` ×1 — Sil
+- `lit(cell, op, n)` ×1 — Sil
+- `same_turn(a, b)` ×1 — Sproggiwood
+- `cooldown(talent, op, n)` ×1 — Tales of Maj'Eyal
+- `resource(name, op, n)` ×1 — Tales of Maj'Eyal
+- `extra_lives(op, n)` ×1 — Tales of Maj'Eyal
 - `free_edge(a, dir)` ×1 — Theseus and the Minotaur (Тесей і Мінотавр)
 - `closer(a, b, axis)` ×1 — Theseus and the Minotaur (Тесей і Мінотавр)
+- `alignment(a, x)` ×1 — Wizardry: Proving Grounds of the Mad Overlord
+- `coordinates_valid(cell)` ×1 — Wizardry: Proving Grounds of the Mad Overlord
 - `fuel` ×1 — Advance Wars
+- `target_pool(pool)` ×1 — Ash of Gods: Redemption
+- `sides_count` ×1 — The Banner Saga
+- `fatigue` ×1 — Battle Brothers
+- `facing_arc` ×1 — BattleTech
+- `dice_sum_lt` ×1 — Betrayal at House on the Hill
+- `fits_floor` ×1 — Betrayal at House on the Hill
 - `roll` ×1 — Blood Bowl
 - `alignment` ×1 — Chaos: The Battle of Wizards (+ Chaos Reborn)
-- `affinity` ×1 — Fire Emblem (GBA, The Blazing Blade як база)
-- `cooldown` ×1 — Hoplite
-- `size` ×1 — Spybot: The Nightfall Incident (Lego Spybotics)
-- `compare` ×1 — A Good Snowman Is Hard to Build
-- `edges_match` ×1 — Carto
+- `symbol` ×1 — Children of Zodiarcs
+- `in_enemy_zoc` ×1 — Civilization (бойовий шар юнітів, I–VI)
+- `range_total` ×1 — Descent: Journeys in the Dark
+- `in_reach` ×1 — D&D grid combat (Dungeons & Dragons 5e)
+- `roll_vs` ×1 — D&D grid combat (Dungeons & Dragons 5e)
+- `adjacent_to_general` ×1 — Duelyst
+- `lands_owned` ×1 — Faeria
+- `land_type` ×1 — Faeria
+- `keyword` ×1 — Faeria
+- `body_part` ×1 — Fallout 1–2 (покроковий бій)
+- `law_active` ×1 — Final Fantasy Tactics Advance
+- `part_alive` ×1 — Front Mission
+- `initiative_order` ×1 — Gloomhaven
+- `luck_ge(a, n)` ×1 — Hard West
+- `retaliation_left` ×1 — Heroes of Might and Magic III (Герої меча і магії III)
+- `higher_than` ×1 — Heroscape
+- `engaged` ×1 — Heroscape
+- `in_vision` ×1 — Invisible, Inc.
+- `stance` ×1 — Jagged Alliance 2
+- `in_blind_spot` ×1 — Kingdom Death: Monster
+- `card_says` ×1 — Kingdom Death: Monster
+- `leadership_ok` ×1 — King's Bounty: The Legend (King's Bounty. Легенда о рыцаре)
+- `in_aura` ×1 — Langrisser
+- `day_night` ×1 — Mage Knight Board Game
+- `in_section` ×1 — Memoir '44 / Commands & Colors
+- `hidden` ×1 — Mutant Year Zero: Road to Eden
+- `silent_weapon` ×1 — Mutant Year Zero: Road to Eden
+- `zoc` ×1 — Nectaris (Military Madness)
+- `odds(atk, def, op, ratio)` ×1 — Ogre
+- `entrenchment` ×1 — Panzer General
+- `part_disabled` ×1 — Phoenix Point
+- `summon_control` ×1 — Shadowrun Returns
+- `agility` ×1 — Shining Force
+- `skill_check` ×1 — Silent Storm
+- `dice_total_gt` ×1 — Space Crusade
+- `suppression` ×1 — Steel Panthers
+- `facing_side` ×1 — Steel Panthers
+- `will` ×1 — Super Robot Wars
+- `terrain_rank` ×1 — Super Robot Wars
+- `height_above` ×1 — Telepath Tactics
+- `beyond_mist` ×1 — The Last Spell
+- `mp` ×1 — The Last Spell
+- `pincer` ×1 — Triangle Strategy
+- `in_supply` ×1 — Unity of Command: Stalingrad Campaign
+- `weak` ×1 — Unity of Command: Stalingrad Campaign
+- `hp_ratio` ×1 — Wargroove
+- `terrain_defense` ×1 — Wargroove
+- `downed` ×1 — Warhammer 40,000: Mechanicus
+- `interfused` ×1 — Wildermyth
+- `distance_le` ×1 — Wildermyth
+- `breach_slot_free` ×1 — XCOM: Chimera Squad
+- `noisiest` ×1 — Zombicide
+- `danger_level` ×1 — Zombicide
+- `damage_at_least` ×1 — Zombicide
+- `recipe` ×1 — Bean and Nothingness
+- `doors_align` ×1 — Blue Prince
+- `shape_fits_slot` ×1 — Blue Prince
+- `fits_exactly` ×1 — Can of Wormholes
 - `sword_at` ×1 — Deadly Rooms of Death (DROD: King Dugan's Dungeon)
+- `axis(a, h|v)` ×1 — elephant-in-a-bottle
+- `surface_of` ×1 — English Country Tune
+- `in_shadow` ×1 — Felix the Reaper
+- `anchored(limb)` ×1 — GRAB-O
+- `line_length` ×1 — increpare: мікро-Sokoban-и (Crates move when you move · Pushy-V Pully-H · Muraphilic Monophobic Multiban)
+- `true_in_all_solutions` ×1 — Islands of Insight
+- `symmetric` ×1 — Islands of Insight
+- `visible_count` ×1 — Islands of Insight
 - `free_path` ×1 — LOK Digital
+- `projected_adjacent` ×1 — Monument Valley
+- `fold_clear` ×1 — Paper Trail
 - `has_opening` ×1 — Patrick's Parabox
 - `free_electrons` ×1 — Sokobond
 - `face_state` ×1 — Stephen's Sausage Roll
-- `carrying` ×1 — Void Stranger
+- `path_satisfies` ×1 — Understand
+- `target_priority` ×1 — Anomaly: Warzone Earth
 - `block_free` ×1 — Arknights
-- `higher` ×1 — Creeper World
+- `ring_color_match` ×1 — Castle Panic
 - `owned` ×1 — Dungeon Keeper
 - `room_capacity` ×1 — Dungeon Keeper
+- `on_wall` ×1 — Dungeon Warfare
+- `has_keyword` ×1 — Hearthstone Battlegrounds
 - `adjacent_to` ×1 — Isle of Arrows
-- `target_type` ×1 — Mechabellum
+- `all_defenders_dead` ×1 — Legion TD / Legion TD 2
+- `not_hit_for` ×1 — Сучасні mazing-TD (Electromaze, Tower Maze Defense, Thornline TD, Maul Tactics, Back to the Roots 2)
 - `xp_full` ×1 — Mechabellum
-- `enclosed` ×1 — Rampart
-- `count_unique` ×1 — Teamfight Tactics (TFT)
-- `frontmost` ×1 — Wildfrost
+- `capacity_free` ×1 — Monster Train
+- `surface` ×1 — Orcs Must Die!
+- `lane_type` ×1 — Plants vs. Zombies Heroes
+- `base_hp` ×1 — The Battle Cats
+- `infected` ×1 — They Are Billions
+- `rectangle_full` ×1 — Alphabear
+- `arrow_direction` ×1 — Arrowword (Сканворд)
+- `on_card` ×1 — Bingo / Keno / Lotto (Бінго, Лото)
+- `pattern_complete` ×1 — Bingo / Keno / Lotto (Бінго, Лото)
+- `matches_solution` ×1 — Bonza Word Puzzle
 - `path_adjacent6` ×1 — Bookworm
-- `in_pool` ×1 — Knotwords
-- `not_played` ×1 — Letterpress
-- `equation_holds` ×1 — Mathable
-- `same_group` ×1 — NYT Connections (+ Strands)
+- `clue_valid` ×1 — Codenames
+- `same_symbol_same_value` ×1 — Codeword
+- `equation_true` ×1 — Crossmath (математичний кросворд)
+- `feedback_equals` ×1 — Crosswordle
+- `fits_enumeration` ×1 — Cryptic crossword (Криптичний кросворд)
+- `crossings_agree` ×1 — Cryptic crossword (Криптичний кросворд)
+- `on_word_list` ×1 — Griddle Words
+- `all_used` ×1 — Krypto
+- `equals_target` ×1 — Mathler
+- `commutative_match` ×1 — Nerdle
+- `pair_sum` ×1 — Number Match / Take Ten (Numberzilla)
+- `clear_path` ×1 — Number Match / Take Ten (Numberzilla)
+- `top_card(c)` ×1 — Paperback Adventures
+- `splay(dir)` ×1 — Paperback Adventures
+- `hand_rank` ×1 — Puzzmo: Pile-Up Poker
+- `required_word` ×1 — Squaredle
 - `sum_equals` ×1 — Sumplete
+- `already_found` ×1 — TypeShift
+- `keeps_tile` ×1 — Upwords
 - `in_word` ×1 — Waffle
-- `consistent_with_hints` ×1 — Wordle
+- `hamming_one` ×1 — Weaver (word ladder)
+- `weak_to` ×1 — Letter Quest і Spellspire — словесні RPG-бої
+- `straight_line8` ×1 — Word search (Пошук слів)
+- `in_word_list` ×1 — Word search (Пошук слів)
+- `at_word_start` ×1 — Wordament
+- `at_word_end` ×1 — Wordament
 
-## effect · 348
+## effect · 1015
 
-- `place` ×41 🔥 — A Feast for Odin (Бенкет для Одіна) і поліоміно-заповнення, Akropolis (Акрополіс), Arimaa, Blokus (Блокус), Carcassonne (Каркасон), Carto, Cartographers (Картографи), Cascadia + Calico (Каскадія, Калико), Cell Machine, Clash of Clans — розстановка бази на сітці, Electric Box (+ Lazors), Five Tribes, Game of the Amazons (Амазонки), Go (Ґо, вейці, бадук), Hex (Гекс), Hive (Вулик), Kara (Кара — сонечко), Kickle Cubicle (迷宮島), Kingdomino (Кінґдоміно), Klax, Lichess variants (варіанти шахів Lichess), Mechabellum, N-in-a-row (Хрестики-нулики, Gomoku, Connect Four, Pentago…), NMBR 9, Patchwork (Печворк), Photosynthesis (Фотосинтез), Prison Architect — шар кімнат і зон, Pushover (Push-Over), Qwirkle + Ingenious (Квіркл, Genial), Reversi / Othello (Реверсі), Sagrada (Саграда), Shogi (Сьоґі, японські шахи), SteamWorld Dig, Take It Easy, Tiny Towns (Крихітні містечка), Toki Tori, Trax, Troddlers, Tsuro (+ Indigo), Ubongo + Katamino / IQ Puzzler (Убонго), Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
+- `place` ×45 🔥 — A Feast for Odin (Бенкет для Одіна) і поліоміно-заповнення, Akropolis (Акрополіс), Arimaa, Blokus (Блокус), Bughouse (Бʼюгхаус, шахи вдвох на двох дошках), Carcassonne (Каркасон), Carto, Cartographers (Картографи), Cascadia + Calico (Каскадія, Калико), Cell Machine, Clash of Clans — розстановка бази на сітці, Electric Box (+ Lazors), Five Tribes, Game of the Amazons (Амазонки), Go (Ґо, вейці, бадук), Hex (Гекс), Hive (Вулик), Kara (Кара — сонечко), Kickle Cubicle (迷宮島), Kingdomino (Кінґдоміно), Klax, Lichess variants (варіанти шахів Lichess), Mechabellum, Merge Tactics (Clash Royale), N-in-a-row (Хрестики-нулики, Gomoku, Connect Four, Pentago…), NMBR 9, Patchwork (Печворк), Photosynthesis (Фотосинтез), Prison Architect — шар кімнат і зон, Pushover (Push-Over), Qwirkle + Ingenious (Квіркл, Genial), Reversi / Othello (Реверсі), Sagrada (Саграда), Shogi (Сьоґі, японські шахи), SteamWorld Dig, Take It Easy, Thronefall, Tiny Towns (Крихітні містечка), Toki Tori, Trax, Troddlers, Tsuro (+ Indigo), TwixT (Твікст), Ubongo + Katamino / IQ Puzzler (Убонго), Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
 - `set_state` ×35 🔥 — Adventures of Lolo (Eggerland), Backpack Hero, Bloxorz, Bookworm, Centipede (Багатоніжка), Chip's Challenge, Deadly Rooms of Death (DROD: King Dugan's Dungeon), Dig Dug, Factorio — клітинна логістика (конвеєри, маніпулятори, мережі), Frozen Synapse, Gorogoa, Hanano Puzzle (ハナノパズル), Heiankyo Alien (Digger), Helltaker, Hitman GO (+ Lara Croft GO), Mario & Wario, Mindustry — клітинна логістика й оборона, Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), NetHack, OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Pac-Man (Пекмен) і Ms. Pac-Man, Prison Architect — шар кімнат і зон, Puddle Knights, RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II), Recursed, Shattered Pixel Dungeon (і Pixel Dungeon), Stardew Valley — фермерська сітка, Stephen's Sausage Roll, Supaplex, Super Mario Maker 2, Taiji + The Witness (панелі), Tomb of the Mask, Wizard of Wor, Wrecking Crew, XOR
 - `move` ×32 🔥 — A Good Snowman Is Hard to Build, A Monster's Expedition, Advent of Code — сіткові пазли (збірка), Bonfire Peaks, Carto, Cell Machine, Clash of Clans — розстановка бази на сітці, Factorio — клітинна логістика (конвеєри, маніпулятори, мережі), Golf Peaks, Gorogoa, Hanano Puzzle (ハナノパズル), Hey, That's My Fish! (Packeis am Pol), Hitman GO (+ Lara Croft GO), Isles of Sea and Sky, Jelly no Puzzle (ゼリーのパズル), Klotski (Хуажунський шлях) + Lunar Lockout, Kwirk (Puzzle Boy), Mindustry — клітинна логістика й оборона, OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Oxygen Not Included — клітинна фізика (гази, рідини, тепло), Patrick's Parabox, Prison Architect — шар кімнат і зон, Puddle Knights, Puzznic, RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II), Rush Hour (ThinkFun), Snakebird, Sokoban (Сокобан), Sokobond, Stephen's Sausage Roll, Triple Town, Wilmot's Warehouse
 - `set_cell` ×30 🔥 — A Good Snowman Is Hard to Build, A Monster's Expedition, Adventures of Lolo (Eggerland), Bloxorz, Boulder Dash, Centipede (Багатоніжка), Chip's Challenge, Conway's Game of Life (Гра «Життя»), Deadly Rooms of Death (DROD: King Dugan's Dungeon), Gauntlet (1985), HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), Hey, That's My Fish! (Packeis am Pol), Isles of Sea and Sky, Kickle Cubicle (迷宮島), Kwirk (Puzzle Boy), LOK Digital, Loop Hero, NetHack, Oxygen Not Included — клітинна фізика (гази, рідини, тепло), Prison Architect — шар кімнат і зон, Puddle Knights, Puzzle & Dragons (PAD, Пазли і Дракони), RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II), Rampart, Shattered Pixel Dungeon (і Pixel Dungeon), Spybot: The Nightfall Incident (Lego Spybotics), Stardew Valley — фермерська сітка, Townscaper, Void Stranger, XCOM: Enemy Unknown / XCOM 2
 - `fall` ×29 🔥 — Advent of Code — сіткові пазли (збірка), Bloxorz, Bonfire Peaks, Bookworm, Boulder Dash, BoxBoy! (ハコボーイ!), Catrap (Pitman), Dig Dug, Emerald Mine, Hanano Puzzle (ハナノパズル), Heartlight, Jelly no Puzzle (ゼリーのパズル), Mr. Do!, Oxygen Not Included — клітинна фізика (гази, рідини, тепло), Panel de Pon (Tetris Attack, Puzzle League), Pushmo / Pullblox (引ク押ス) + Crashmo, Puzznic, RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II), Repton 1–3, Rocks'n'Diamonds, SameGame / Clickomania + Flood (Tatham), Snakebird, SpellTower, Stephen's Sausage Roll, Supaplex, The Powder Toy, Troddlers, Wrecking Crew, XOR
+- `sell` ×25 🔥 — Acquire, Anomaly: Warzone Earth, Arknights, Defense Grid: The Awakening, Desktop Tower Defense, Dota Auto Chess, Dota Underlords, Dungeon Warfare, Dynamine, Element TD 2, Fieldrunners, Flash Element TD, Hearthstone Battlegrounds, Infinitode 2, Legion TD / Legion TD 2, Lock's Quest, Mechabellum, Merge Mansion / Merge Dragons, Motherload, Orcs Must Die!, PixelJunk Monsters, SteamWorld Dig, Super Auto Pets, The Castles of Burgundy (Замки Бургундії), Сучасні mazing-TD (Electromaze, Tower Maze Defense, Thornline TD, Maul Tactics, Back to the Roots 2)
+- `discard` ×24 🔥 — Alchemy (PopCap), Arboretum (Дендропарк), Azul (Азул), Card Hunter, Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel), Castle Panic, Children of Zodiarcs, Copenhagen (Копенгаген), Dredge, Fights in Tight Spaces, Gloomhaven, Gwent (Гвинт), Isle of Skye: From Chieftain to King (Острів Скай), Karuba (Каруба), Kingdom Builder, Kingdom Death: Monster, Kingdomino (Кінґдоміно), Mage Knight Board Game, Marvel Snap, Paperback Adventures, Puzzmo: Pile-Up Poker, Queendomino (Квіндоміно), Ratropolis, Resident Evil 4 (attaché case)
 - `rotate` ×23 🔥 — Akropolis (Акрополіс), Backpack Hero, Carcassonne (Каркасон), Carto, Cell Machine, Deadly Rooms of Death (DROD: King Dugan's Dungeon), Deflektor (+ Mindbender), Dorfromantik, Emberward, Factorio — клітинна логістика (конвеєри, маніпулятори, мережі), Infinity Loop + Net (Tatham), Khet (Deflexion, Laser Chess), Kingdomino (Кінґдоміно), Kwirk (Puzzle Boy), Labyrinth (Das verrückte Labyrinth, Божевільний лабіринт), Mindustry — клітинна логістика й оборона, Opus Magnum, Rampart, Sliding-tile permutation puzzles (пʼятнашки й родичі), Sokobond, Stephen's Sausage Roll, Ubongo + Katamino / IQ Puzzler (Убонго), Zenji
 - `spawn_at` ×19 🔥 — 2048 (+ Threes як предок), Archon: The Light and the Dark, Bookworm, Carto, Centipede (Багатоніжка), Chaos: The Battle of Wizards (+ Chaos Reborn), Clash of Clans — розстановка бази на сітці, Deadly Rooms of Death (DROD: King Dugan's Dungeon), Dig Dug, Gauntlet (1985), Hanano Puzzle (ハナノパズル), HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), Loop Hero, Mindustry — клітинна логістика й оборона, Pengo, Puzzle & Dragons (PAD, Пазли і Дракони), Space Invaders (Космічні загарбники), SpellTower, Wilmot's Warehouse
 - `transform` ×16 🔥 — A Feast for Odin (Бенкет для Одіна) і поліоміно-заповнення, A Monster's Expedition, Adventures of Lolo (Eggerland), Bookworm, Final Fantasy Tactics, Gorogoa, Isles of Sea and Sky, Loop Hero, Luck be a Landlord, Opus Magnum, Oxygen Not Included — клітинна фізика (гази, рідини, тепло), Pengo, Recursed, Stardew Valley — фермерська сітка, The Powder Toy, Triple Town
 - `counter` ×15 🔥 — Backpack Hero, Chaos: The Battle of Wizards (+ Chaos Reborn), Dorfromantik, Helltaker, Ice-sliding puzzles (Inertia і жанр «ковзай до упору»), Klotski (Хуажунський шлях) + Lunar Lockout, Kwirk (Puzzle Boy), Loop Hero, Luck be a Landlord, NYT Connections (+ Strands), Qwirkle + Ingenious (Квіркл, Genial), Rush Hour (ThinkFun), Sliding-tile permutation puzzles (пʼятнашки й родичі), Sokoban (Сокобан), Stardew Valley — фермерська сітка
+- `upgrade` ×15 🔥 — Cities: Skylines (зонування), Defense Grid: The Awakening, Desktop Tower Defense, Element TD 2, Fieldrunners, Flash Element TD, Infinitode 2, Legion TD / Legion TD 2, PixelJunk Monsters, Revenge of the Titans, Rift Wizard, Rogue Tower, Screeps (Screeps World, Screeps Arena), Tash-Kalar: Arena of Legends, Сучасні mazing-TD (Electromaze, Tower Maze Defense, Thornline TD, Maul Tactics, Back to the Roots 2)
+- `draw` ×15 🔥 — Castle Panic, Clash Royale, Country Road, Emberward, Gwent (Гвинт), Herugolf (Хелгольф), Inscryption (Act 1), Magic Chalkboards, Marvel Snap, Metro (Iron Horse), Ratropolis, Tantrix, Tash-Kalar: Arena of Legends, Tsuro (+ Indigo), Wildfrost
 - `reveal` ×15 🔥 — Battleship (Морський бій), Black Box (Чорна скринька), Clash of Clans — розстановка бази на сітці, HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), Mastermind (+ Bulls and Cows, «Бики й корови»), NYT Connections (+ Strands), Solomon's Key, Stratego (Стратего), Sudoku variants (варіанти судоку, Cracking the Cryptic / SudokuPad), The Battle of Polytopia, Wizard of Wor, XCOM: Enemy Unknown / XCOM 2, XOR, Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode), Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
+- `draw_card` ×14 🔥 — Arboretum (Дендропарк), Card Hunter, Children of Zodiarcs, Descent: Journeys in the Dark, Duelyst, Faeria, Fights in Tight Spaces, Gloomhaven, Kingdom Death: Monster, Mage Knight Board Game, Memoir '44 / Commands & Colors, Plants vs. Zombies Heroes, Reef (Риф), Zombicide
 - `slide` ×14 🔥 — A Monster's Expedition, Atomix, Chip's Challenge, Golf Peaks, Ice-sliding puzzles (Inertia і жанр «ковзай до упору»), Isles of Sea and Sky, Kickle Cubicle (迷宮島), Klotski (Хуажунський шлях) + Lunar Lockout, Kula World (Roll Away, KulaQuest), Pengo, RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II), Ricochet Robots (Rasende Roboter), Tomb of the Mask, XOR
+- `counterattack` ×14 🔥 — Advance Wars, Duelyst, Faeria, Fell Seal: Arbiter's Mark, Fire Emblem (GBA, The Blazing Blade як база), Heroes of Might and Magic III (Герої меча і магії III), King's Bounty: The Legend (King's Bounty. Легенда о рыцаре), Langrisser, Nectaris (Military Madness), Panzer General, Telepath Tactics, Tiny Metal, Vandal Hearts, Wargroove
+- `identify` ×13 🔥 — 868-HACK (+ Imbroglio, Cinco Paus — мікро-роглайки Michael Brough), Beneath Apple Manor, Brogue, Caves of Qud, Dungeon Crawl Stone Soup, Harmless7DRL, Moria / Angband, Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), NetHack, Rogue, Shattered Pixel Dungeon (і Pixel Dungeon), Sil, Wizardry: Proving Grounds of the Mad Overlord
+- `roll` ×12 🔥 — A Feast for Odin (Бенкет для Одіна) і поліоміно-заповнення, A Monster's Expedition, Bloxorz, Boulder Dash, Emerald Mine, Ganz Schön Clever (That's Pretty Clever), Golf Peaks, Kula World (Roll Away, KulaQuest), Repton 1–3, Sagrada (Саграда), Stephen's Sausage Roll, Supaplex
 - `give` ×12 🔥 — Carcassonne (Каркасон), Carto, Factorio — клітинна логістика (конвеєри, маніпулятори, мережі), HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), Loop Hero, Luck be a Landlord, Mathable, Mindustry — клітинна логістика й оборона, Scrabble (цифрові версії; Words With Friends), Stardew Valley — фермерська сітка, Tsuro (+ Indigo), Ubongo + Katamino / IQ Puzzler (Убонго)
 - `choose` ×12 🔥 — Backpack Hero, Chaos: The Battle of Wizards (+ Chaos Reborn), Dome Keeper, Helltaker, LOK Digital, Loop Hero, Luck be a Landlord, Maze Mice, Mechabellum, Teamfight Tactics (TFT), The Battle of Polytopia, Wilmot's Warehouse
-- `roll` ×11 🔥 — A Feast for Odin (Бенкет для Одіна) і поліоміно-заповнення, A Monster's Expedition, Bloxorz, Boulder Dash, Emerald Mine, Golf Peaks, Kula World (Roll Away, KulaQuest), Repton 1–3, Sagrada (Саграда), Stephen's Sausage Roll, Supaplex
 - `explode` ×11 🔥 — Bomberman, Boulder Dash, Clash of Clans — розстановка бази на сітці, Emerald Mine, Heartlight, Lichess variants (варіанти шахів Lichess), Rocks'n'Diamonds, Supaplex, The Powder Toy, Wrecking Crew, XOR
 - `face` ×11 🔥 — Advent of Code — сіткові пазли (збірка), Bonfire Peaks, Deadly Rooms of Death (DROD: King Dugan's Dungeon), Final Fantasy Tactics, Frozen Synapse, HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), Hitman GO (+ Lara Croft GO), Mario & Wario, OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Pac-Man (Пекмен) і Ms. Pac-Man, Troddlers
 - `swap` ×11 🔥 — Archon: The Light and the Dark, Candy Crush Saga, Hanano Puzzle (ハナノパズル), Khet (Deflexion, Laser Chess), Libble Rabble, Oxygen Not Included — клітинна фізика (гази, рідини, тепло), Panel de Pon (Tetris Attack, Puzzle League), Puzzle & Dragons (PAD, Пазли і Дракони), Sliding-tile permutation puzzles (пʼятнашки й родичі), The Powder Toy, Waffle
+- `knockback` ×11 🔥 — Auro: A Monster-Bumping Adventure, Castle Panic, Dungeon Warfare, Inkulinati, Mewgenics, Orcs Must Die!, Pac-Man Battle Royale, Shotgun King: The Final Checkmate, Tactical Breach Wizards, Telepath Tactics, The Battle Cats
+- `leave_trail` ×11 🔥 — Achtung, die Kurve! (Увага, поворот!), Armagetron Advanced, Blockade (Блокада), Gals Panic, Lime Rick, Maze Mice, Paper.io (Пейпер-іо) і Paper.io 2, Pepper II, Splix.io, Tron Light Cycles (Світлові мотоцикли) і нащадки, Xonix (Ксонікс) / Qix / Volfied
 - `take` ×10 🔥 — Chip's Challenge, Factorio — клітинна логістика (конвеєри, маніпулятори, мережі), Gauntlet (1985), Golf Peaks, Helltaker, Luck be a Landlord, Mindustry — клітинна логістика й оборона, Scrabble (цифрові версії; Words With Friends), Stardew Valley — фермерська сітка, Wilmot's Warehouse
+- `crash` ×10 🔥 — 7 Billion Humans, Blockly Games Maze і Code.org Classic Maze, Kara (Кара — сонечко), Karel the Robot (Reeborg's World), OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Opus Magnum, RoboZZle, The Farmer Was Replaced, Trainyard, Untrusted — or the Continuing Adventures of Dr. Eval
+- `spread` ×10 🔥 — Boulder Dash, Brogue, Candy Crush Saga, Caves of Qud, Chaos: The Battle of Wizards (+ Chaos Reborn), Emerald Mine, Kroz, Repton 1–3, Terra Nil, Timberborn
+- `extend_path` ×10 🔥 — Cosmic Express, Flow Free, GRAB-O, Isle of Arrows, LYNE, Linelith, Rogue Tower, Train Valley, Trainyard, Unrailed!
 - `mark` ×10 🔥 — Battleship (Морський бій), Black Box (Чорна скринька), Hashiwokakero (Hashi, Bridges, Мости), Kakuro (Cross Sums, Какуро), Knotwords, LOK Digital, Masyu (Pearl, «Перлини»), Simon Tatham's Portable Puzzle Collection, Sumplete, Taiji + The Witness (панелі)
 - `currency` ×9 🔥 — Akropolis (Акрополіс), Luck be a Landlord, Prison Architect — шар кімнат і зон, Spybot: The Nightfall Incident (Lego Spybotics), The Battle for Wesnoth (Битва за Веснот), The Battle of Polytopia, Tomb of the Mask, Triple Town, Wilmot's Warehouse
 - `paint` ×9 🔥 — Amidar, Cartographers (Картографи), HyperRogue, Kula World (Roll Away, KulaQuest), RoboZZle, SameGame / Clickomania + Flood (Tatham), Trainyard, Wordle, Zenji
-- `crash` ×9 🔥 — 7 Billion Humans, Kara (Кара — сонечко), Karel the Robot (Reeborg's World), OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Opus Magnum, RoboZZle, The Farmer Was Replaced, Trainyard, Untrusted — or the Continuing Adventures of Dr. Eval
+- `reflect` ×9 🔥 — Advent of Code — сіткові пазли (збірка), Archaica: The Path of Light, Chromatron (1–5), Deflektor (+ Mindbender), Electric Box (+ Lazors), Khet (Deflexion, Laser Chess), SOLAS 128, ThinkFun Laser Maze і Gravity Maze, Undead (Haunted Mirror Maze)
+- `reroll` ×9 🔥 — Backpack Battles, Children of Zodiarcs, Dota Auto Chess, Dota Underlords, Hearthstone Battlegrounds, Minato, Super Auto Pets, Teamfight Tactics (TFT), Wordatro!
 - `message` ×9 🔥 — Carto, Chip's Challenge, Deadly Rooms of Death (DROD: King Dugan's Dungeon), Ice-sliding puzzles (Inertia і жанр «ковзай до упору»), NYT Connections (+ Strands), NetHack, Prison Architect — шар кімнат і зон, Recursed, Wordle
 - `carry` ×9 🔥 — A Monster's Expedition, Bonfire Peaks, Dungeon of the Endless, Fire Emblem (GBA, The Blazing Blade як база), Frogger (Жабка) / Crossy Road, Pushover (Push-Over), Recursed, Robot Odyssey, Wilmot's Warehouse
 - `attach` ×9 🔥 — A Good Snowman Is Hard to Build, Bloxorz, Cogmind, Jelly no Puzzle (ゼリーのパズル), Opus Magnum, Railbound, Sokobond, Super Mario Maker 2, Wilmot's Warehouse
+- `draft` ×8 🔥 — Azul (Азул), Blue Prince, Cascadia + Calico (Каскадія, Калико), Five Tribes, Harmonies, Kingdomino (Кінґдоміно), Queendomino (Квіндоміно), Sagrada (Саграда)
 - `clear` ×8 🔥 — Bookworm, Cascadia + Calico (Каскадія, Калико), Gauntlet (1985), Gess, Magical Drop (Chain Reaction), Puzzle & Dragons (PAD, Пазли і Дракони), Puzznic, SpellTower
 - `wrap` ×8 🔥 — Advent of Code — сіткові пазли (збірка), Conway's Game of Life (Гра «Життя»), Kara (Кара — сонечко), Labyrinth (Das verrückte Labyrinth, Божевільний лабіринт), Pac-Man (Пекмен) і Ms. Pac-Man, Sliding-tile permutation puzzles (пʼятнашки й родичі), Wizard of Wor, Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
+- `emit_beam` ×8 🔥 — Archaica: The Path of Light, Chromatron (1–5), Deflektor (+ Mindbender), Electric Box (+ Lazors), Khet (Deflexion, Laser Chess), Oxyd (+ Enigma), SOLAS 128, ThinkFun Laser Maze і Gravity Maze
 - `speed` ×8 🔥 — Adventures of Lolo (Eggerland), Dig Dug, Factorio — клітинна логістика (конвеєри, маніпулятори, мережі), Mindustry — клітинна логістика й оборона, OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Pac-Man (Пекмен) і Ms. Pac-Man, Space Invaders (Космічні загарбники), Spybot: The Nightfall Incident (Lego Spybotics)
-- `identify` ×8 🔥 — 868-HACK (+ Imbroglio, Cinco Paus — мікро-роглайки Michael Brough), Brogue, Caves of Qud, Dungeon Crawl Stone Soup, Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), NetHack, Rogue, Shattered Pixel Dungeon (і Pixel Dungeon)
-- `merge` ×7 🔥 — 2048 (+ Threes як предок), Jelly no Puzzle (ゼリーのパズル), Random Dice (+ Rush Royale), Teamfight Tactics (TFT), Trainyard, Triple Town, Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
-- `spread` ×7 🔥 — Boulder Dash, Brogue, Candy Crush Saga, Caves of Qud, Chaos: The Battle of Wizards (+ Chaos Reborn), Emerald Mine, Repton 1–3
+- `jump_capture` ×8 🔥 — Congo (шахи «Конго»), Draughts / Checkers (Шашки), Jungle (Dou Shou Qi, «Джунглі», звірині шахи), Kōnane (Конане), Lasca (Ласка), Peg solitaire (Пег-солітер), ZÈRTZ, Національні варіанти шашок
+- `merge` ×8 🔥 — 2048 (+ Threes як предок), Jelly no Puzzle (ゼリーのパズル), Merge Tactics (Clash Royale), Random Dice (+ Rush Royale), Teamfight Tactics (TFT), Trainyard, Triple Town, Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
+- `reshuffle` ×8 🔥 — Beglitched, Bejeweled (1–3, Twist), Bookworm Adventures, Candy Crush Saga, Chuzzle, Mahjong Solitaire (Shanghai, Маджонг-пасьянс), Puzzle Quest: Challenge of the Warlords, Zoo Keeper
+- `roll_dice` ×8 🔥 — Battle Brothers, Card Hunter, Children of Zodiarcs, D&D grid combat (Dungeons & Dragons 5e), Heroscape, Kingdom Death: Monster, Mage Knight Board Game, Memoir '44 / Commands & Colors
+- `combine` ×7 🔥 — Automachef, Backpack Battles, Diablo II (inventory), GemCraft, PlateUp!, Resident Evil 4 (attaché case), Save Room – Organization Puzzle
+- `decay` ×7 🔥 — Alphabear, Block'hood, Dredge, Graveyard Keeper, Screeps (Screeps World, Screeps Arena), SimAnt, Venture
+- `unlock` ×7 🔥 — Dorfromantik, Isles of Sea and Sky, Lock 'n' Chase, RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II), Taiji + The Witness (панелі), The Battle of Polytopia, Wilmot's Warehouse
+- `reload` ×7 🔥 — DoomRL / DRL → Jupiter Hell, Downwell, Liero, Revenge of the Titans, Save Room – Organization Puzzle, Scorched Earth, Shotgun King: The Final Checkmate
+- `release` ×7 🔥 — Cargo-Bot, Kaizen: A Factory Story, Kye, Metavaxx, Opus Magnum, SimAnt, SpaceChem
+- `choose_promotion` ×7 🔥 — Capablanca chess (шахи Капабланки) і сімʼя 10×8, Chess (Шахи) — цифрова гра, Chess with Different Armies (шахи різних армій, Betza), Draughts / Checkers (Шашки), Shining Force, Shogi (Сьоґі, японські шахи), Великі шогі — Chu shogi і Tenjiku shogi (Чу-шогі, Тендзіку-шогі)
+- `retract` ×7 🔥 — Anteater (Мурахоїд), BoxBoy! (ハコボーイ!), Hook, Kaizen: A Factory Story, Oil's Well, PushTOOL, Zuma / Puzz Loop
+- `dig` ×7 🔥 — Crypt of the NecroDancer, Heiankyo Alien (Digger), King's Valley, King's Valley II: The Seal of El Giza, Lode Runner, Lode Runner: The Legend Returns, Space Panic
 - `set_status` ×7 🔥 — Archon: The Light and the Dark, Blood Bowl, Final Fantasy Tactics, HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), Into the Breach, The Battle for Wesnoth (Битва за Веснот), XCOM: Enemy Unknown / XCOM 2
+- `recompute_path` ×7 🔥 — Defense Grid: The Awakening, Desktop Tower Defense, Element TD 2, Emberward, Fieldrunners, Grid Forge TD, Сучасні mazing-TD (Electromaze, Tower Maze Defense, Thornline TD, Maul Tactics, Back to the Roots 2)
 - `shift` ×6 🔥 — 2048 (+ Threes як предок), Arknights, Labyrinth (Das verrückte Labyrinth, Божевільний лабіринт), Magical Drop (Chain Reaction), Sliding-tile permutation puzzles (пʼятнашки й родичі), Space Invaders (Космічні загарбники)
 - `grow` ×6 🔥 — A Good Snowman Is Hard to Build, Hanano Puzzle (ハナノパズル), Libble Rabble, Photosynthesis (Фотосинтез), Snakebird, Spybot: The Nightfall Incident (Lego Spybotics)
+- `split_beam` ×6 🔥 — Advent of Code — сіткові пазли (збірка), Archaica: The Path of Light, Chromatron (1–5), Electric Box (+ Lazors), Khet (Deflexion, Laser Chess), ThinkFun Laser Maze і Gravity Maze
 - `heal` ×6 🔥 — Archon: The Light and the Dark, Backpack Hero, Bookworm, Gauntlet (1985), Loop Hero, Puzzle & Dragons (PAD, Пазли і Дракони)
 - `throw` ×6 🔥 — Bomberman, Clash of Clans — розстановка бази на сітці, Disgaea: Hour of Darkness, Hitman GO (+ Lara Croft GO), Legend of Grimrock, Recursed
 - `score` ×6 🔥 — Atomix, Dorfromantik, Mathable, Pengo, Scrabble (цифрові версії; Words With Friends), SpellTower
-- `unlock` ×6 🔥 — Dorfromantik, Isles of Sea and Sky, RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II), Taiji + The Witness (панелі), The Battle of Polytopia, Wilmot's Warehouse
+- `flow` ×6 🔥 — Creeper World, Dwarf Fortress — призначення клітин і рідини, Scorched Earth, Sugar, Sugar, Terraria — рідини, Timberborn
+- `capture` ×6 🔥 — Advance Wars, Battle Isle, Civilization (бойовий шар юнітів, I–VI), Nectaris (Military Madness), Oware (Оваре, Авале), Tiny Metal
 - `lives` ×6 🔥 — Adventures of Lolo (Eggerland), Centipede (Багатоніжка), Dig Dug, Mr. Do!, Space Invaders (Космічні загарбники), Void Stranger
+- `drop` ×6 🔥 — Adventure (Atari 2600), Bonfire Peaks, Defense Grid: The Awakening, Dome Keeper, Slither.io, Snake (Змійка) / Nibbles / Nokia Snake
+- `clear_color` ×6 🔥 — Bejeweled (1–3, Twist), Candy Crush Saga, Columns (Колонки), Dots / Two Dots, Money Puzzle Exchanger, Zoo Keeper
 - `send_garbage` ×6 🔥 — Columns (Колонки), Dr. Mario (Доктор Маріо), Magical Drop (Chain Reaction), Panel de Pon (Tetris Attack, Puzzle League), Puyo Puyo (Пуйо Пуйо), Tetris (Тетрис, Tetris Guideline)
-- `draft` ×5 🔥 — Azul (Азул), Cascadia + Calico (Каскадія, Калико), Five Tribes, Kingdomino (Кінґдоміно), Sagrada (Саграда)
+- `grab` ×6 🔥 — Cargo-Bot, Critter Crunch, Kaizen: A Factory Story, Opus Magnum, SpaceChem, The Electrifying Incident: A Monster Mini-Expedition
+- `eliminate(bot)` ×6 🔥 — CodinGame: Hypersonic, CodinGame: Keep Off the Grass (Fall Challenge 2022), CodinGame: The Great Escape, Google AI Challenge — Ants, Lux AI Challenge, Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
+- `steal` ×6 🔥 — Brogue, Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), NetHack, Plants vs. Zombies (Рослини проти зомбі), Rogue, Сучасні mazing-TD (Electromaze, Tower Maze Defense, Thornline TD, Maul Tactics, Back to the Roots 2)
+- `interest` ×6 🔥 — Defense Grid: The Awakening, Dota Auto Chess, Dota Underlords, Element TD 2, Flash Element TD, Teamfight Tactics (TFT)
+- `claim` ×5 🔥 — Bingo / Keno / Lotto (Бінго, Лото), Dungeon Keeper, New York 1901 (Нью-Йорк 1901), Screeps (Screeps World, Screeps Arena), Terraforming Mars (Тераформування Марса)
 - `set_value` ×5 🔥 — Fillomino (Filling, «Заповнення»), Kakuro (Cross Sums, Какуро), Oxygen Not Included — клітинна фізика (гази, рідини, тепло), Sagrada (Саграда), Simon Tatham's Portable Puzzle Collection
+- `eliminate` ×5 🔥 — Bomberman — battle mode (Super Bomberman, Super Bomberman R / R Online / R 2), Cluedo (Clue; «Клуедо»), Sherlock (Everett Kaser), Taluva (Талува), Zebra Puzzle (Einstein's Riddle, Загадка Ейнштейна)
+- `summon` ×5 🔥 — Bean and Nothingness, Hearthstone Battlegrounds, Rift Wizard, Super Auto Pets, Tash-Kalar: Arena of Legends
 - `set_side` ×5 🔥 — Backpack Hero, Chaos: The Battle of Wizards (+ Chaos Reborn), Letterpress, The Battle for Wesnoth (Битва за Веснот), The Battle of Polytopia
+- `diffuse` ×5 🔥 — Sandboxels, SimCity (1989) / Micropolis, Space Haven, The Powder Toy, Theme Hospital
 - `detach` ×5 🔥 — BoxBoy! (ハコボーイ!), Cogmind, Opus Magnum, Sokobond, Wilmot's Warehouse
 - `split` ×5 🔥 — Bloxorz, Centipede (Багатоніжка), Dr. Mario (Доктор Маріо), Trainyard, Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
-- `extend_path` ×5 🔥 — Cosmic Express, Flow Free, Isle of Arrows, LYNE, Trainyard
-- `sell` ×5 🔥 — Arknights, Desktop Tower Defense, Fieldrunners, Mechabellum, SteamWorld Dig
+- `build` ×5 🔥 — Keepsweeper, Santorini (Санторіні), Screeps (Screeps World, Screeps Arena), Telepath Tactics, The Last Spell
+- `follow_path` ×5 🔥 — Black Path Game, Entanglement, Metro (Iron Horse), Suikyo [Water Mirror], Tsuro (+ Indigo)
+- `level_up` ×5 🔥 — Dragonsweeper, Mage Knight Board Game, Mamono Mower, Mamono Sweeper, Mewgenics
 - `fill` ×5 🔥 — Amidar, Fillomino (Filling, «Заповнення»), Libble Rabble, Rampart, Xonix (Ксонікс) / Qix / Volfied
-- `steal` ×5 🔥 — Brogue, Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), NetHack, Plants vs. Zombies (Рослини проти зомбі), Rogue
+- `clear_trail` ×5 🔥 — Blockade (Блокада), Paper.io (Пейпер-іо) і Paper.io 2, Pepper II, Splix.io, Tron Light Cycles (Світлові мотоцикли) і нащадки
+- `revive` ×5 🔥 — Anomaly: Warzone Earth, Dandy / Dark Chambers, Shining Force, Tactical Breach Wizards, Warhammer 40,000: Mechanicus
+- `repair` ×5 🔥 — Battle Isle, Lock's Quest, Screeps (Screeps World, Screeps Arena), Shining Force, The Last Spell
+- `produce` ×5 🔥 — Advance Wars, Age of War / Stick War, Battle Isle, Swords & Soldiers, Tiny Metal
+- `take_tile` ×4 🔥 — Bärenpark, Copenhagen (Копенгаген), Kingdom Builder, The Castles of Burgundy (Замки Бургундії)
+- `cover` ×4 🔥 — Codenames, Cottage Garden (Сільський сад), Gobblet (Гоблет), Sprawlopolis
+- `refill` ×4 🔥 — Cottage Garden (Сільський сад), New York 1901 (Нью-Йорк 1901), Pharaoh, Unrailed!
+- `flip` ×4 🔥 — Memory / Concentration / Pairs («Мемо», «Знайди пару»), Mole Mania, Polarium, Tigris & Euphrates (Тигр і Євфрат)
 - `damage` ×4 🔥 — Backpack Hero, Bookworm, Clash of Clans — розстановка бази на сітці, Puzzle & Dragons (PAD, Пазли і Дракони)
 - `hp` ×4 🔥 — Backpack Hero, Centipede (Багатоніжка), Gauntlet (1985), Loop Hero
+- `socket` ×4 🔥 — Diablo II (inventory), GemCraft, Grid Forge TD, Resident Evil 4 (attaché case)
+- `freeze` ×4 🔥 — Dwarf Fortress — призначення клітин і рідини, Kickle Cubicle (迷宮島), Mr. Do!, Tomb of the Mask
+- `queue_join` ×4 🔥 — Parkitect, RollerCoaster Tycoon, Theme Hospital, Two Point Hospital
+- `recruit` ×4 🔥 — Fire Emblem (GBA, The Blazing Blade як база), SimAnt, Tactics Ogre, The Last Spell
+- `move_group` ×4 🔥 — Abalone (Абалон), Epaminondas (Епамінонд), Gess, elephant-in-a-bottle
 - `pull` ×4 🔥 — Arimaa, Hitman GO (+ Lara Croft GO), Pushmo / Pullblox (引ク押ス) + Crashmo, Sokoban (Сокобан)
-- `reflect` ×4 🔥 — Advent of Code — сіткові пазли (збірка), Deflektor (+ Mindbender), Electric Box (+ Lazors), Khet (Deflexion, Laser Chess)
-- `draw` ×4 🔥 — Emberward, Inscryption (Act 1), Tsuro (+ Indigo), Wildfrost
+- `cut_path` ×4 🔥 — Cosmic Express, Flow Free, Herugolf (Хелгольф), LYNE
+- `shuffle` ×4 🔥 — Boggle, Dots / Two Dots, Oxyd (+ Enigma), Yoshi's Cookie
+- `place_tile` ×4 🔥 — Betrayal at House on the Hill, Isle of Arrows, Railbound, Void Stranger
+- `ignite` ×4 🔥 — Brogue, Caves of Qud, Noita, Tetrobot and Co.
 - `timer` ×4 🔥 — Atomix, Puzzle & Dragons (PAD, Пазли і Дракони), Repton 1–3, Sliding-tile permutation puzzles (пʼятнашки й родичі)
+- `shoot` ×4 🔥 — Battle City (Танчики) і Tank Battalion, Berzerk, Combat, Zoop
+- `toggle_block` ×4 🔥 — Mario & Wario, Mouse Trap, Solomon's Key, Troddlers
+- `mark_safe` ×4 🔥 — 14 Minesweeper Variants, Hexcells / Hexcells Plus / Hexcells Infinite, Kaboom (+ LuckSweeper, Pure Skill Minesweeper, Tatham Mines — сапер, що карає або прощає вгадування), Polimines / Polimines 2
+- `flood_reveal` ×4 🔥 — Globesweeper, Kaboom (+ LuckSweeper, Pure Skill Minesweeper, Tatham Mines — сапер, що карає або прощає вгадування), Minesweeper (Сапер), Minesweeper Infinite
 - `feedback` ×4 🔥 — Mastermind (+ Bulls and Cows, «Бики й корови»), NYT Connections (+ Strands), Waffle, Wordle
 - `respawn` ×4 🔥 — Adventures of Lolo (Eggerland), Golf Peaks, Pac-Man (Пекмен) і Ms. Pac-Man, Void Stranger
-- `upgrade` ×4 🔥 — Desktop Tower Defense, Fieldrunners, Rift Wizard, Screeps (Screeps World, Screeps Arena)
+- `jump(to)` ×4 🔥 — Core War, EXAPUNKS, Mindustry — logic (mlog), TIS-100
+- `wait` ×4 🔥 — EXAPUNKS, Heroes of Might and Magic III (Герої меча і магії III), Mindustry — logic (mlog), TIS-100
+- `fight(a, b)` ×4 🔥 — DungeonUp, Ring of Pain, Tactical Nexus, TowerBound
+- `stat(a, name, ±n)` ×4 🔥 — DungeonUp, Ring of Pain, Tactical Nexus, TowerBound
+- `return_to_town` ×4 🔥 — Etrian Odyssey, Labyrinth of Refrain: Coven of Dusk, Shining Force, Wizardry: Proving Grounds of the Mad Overlord
 - `pass_turn` ×4 🔥 — Letterpress, Mathable, Scrabble (цифрові версії; Words With Friends), Theseus and the Minotaur (Тесей і Мінотавр)
-- `discard` ×3 🔥 — Azul (Азул), Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel), Kingdomino (Кінґдоміно)
+- `spend_ap` ×4 🔥 — Fallout 1–2 (покроковий бій), Jagged Alliance 2, King's Bounty: The Legend (King's Bounty. Легенда о рыцаре), Rebelstar / Laser Squad
+- `interrupt` ×4 🔥 — Jagged Alliance 2, Rebelstar / Laser Squad, Silent Storm, Steel Panthers
+- `draw_cards` ×4 🔥 — Cobalt Core, Monster Train, Paperback Adventures, Rogue Tower
+- `buy` ×3 🔥 — Acquire, Alhambra (Альгамбра), Isle of Skye: From Chieftain to King (Острів Скай)
+- `mirror` ×3 🔥 — IQ Puzzler Pro, Patrick's Parabox, Ubongo + Katamino / IQ Puzzler (Убонго)
+- `harvest` ×3 🔥 — Faeria, Photosynthesis (Фотосинтез), Screeps (Screeps World, Screeps Arena)
 - `extra_move` ×3 🔥 — Color Lines / Lines 98 (Лінії), Qwirkle + Ingenious (Квіркл, Genial), Theseus and the Minotaur (Тесей і Мінотавр)
 - `end_turn` ×3 🔥 — Backpack Hero, Blood Bowl, Scrabble (цифрові версії; Words With Friends)
+- `mine` ×3 🔥 — Core Keeper — сітковий шар (копання, ферма, автоматизація), Infinitode 2, Mine Blocks
+- `evaporate` ×3 🔥 — Caves of Qud, Dwarf Fortress — призначення клітин і рідини, Terraria — рідини
 - `multiplier` ×3 🔥 — Luck be a Landlord, Mathable, Wizard of Wor
+- `possess` ×3 🔥 — Age of War / Stick War, Dungeon Keeper, SimAnt
 - `push` ×3 🔥 — Blood Bowl, Hanano Puzzle (ハナノパズル), Wilmot's Warehouse
-- `choose_promotion` ×3 🔥 — Chess (Шахи) — цифрова гра, Draughts / Checkers (Шашки), Shogi (Сьоґі, японські шахи)
 - `hide` ×3 🔥 — Wizard of Wor, XOR, Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
+- `relocate` ×3 🔥 — Creeper World, Duck Chess (Качині шахи), Monster Train
+- `climb` ×3 🔥 — Block Dude, Bonfire Peaks, Hive (Вулик)
 - `announce` ×3 🔥 — Battleship (Морський бій), Kriegspiel + Dark Chess (Fog of War; «шахи наосліп із суддею» і «шахи в тумані»), Xiangqi (Сянці, китайські шахи)
-- `cut_path` ×3 🔥 — Cosmic Express, Flow Free, LYNE
-- `emit_beam` ×3 🔥 — Deflektor (+ Mindbender), Electric Box (+ Lazors), Khet (Deflexion, Laser Chess)
-- `split_beam` ×3 🔥 — Advent of Code — сіткові пазли (збірка), Electric Box (+ Lazors), Khet (Deflexion, Laser Chess)
-- `place_tile` ×3 🔥 — Isle of Arrows, Railbound, Void Stranger
+- `recolor_beam` ×3 🔥 — Archaica: The Path of Light, Chromatron (1–5), SOLAS 128
+- `board` ×3 🔥 — Cosmic Express, Mini Metro, Spooky Express
+- `alight` ×3 🔥 — Cosmic Express, Mini Metro, Spooky Express
+- `absorb` ×3 🔥 — Electric Box (+ Lazors), Pictobits, Tetrobot and Co.
+- `lock` ×3 🔥 — Infinity Loop + Net (Tatham), Lock 'n' Chase, Tetris (Тетрис, Tetris Guideline)
+- `set_gravity` ×3 🔥 — Bone Cruncher, Crystal Mines II, English Country Tune
 - `stun` ×3 🔥 — Dig Dug, Hoplite, Pengo
-- `drop` ×3 🔥 — Bonfire Peaks, Dome Keeper, Snake (Змійка) / Nibbles / Nokia Snake
 - `bounce` ×3 🔥 — Golf Peaks, Mr. Do!, Ricochet Robots (Rasende Roboter)
-- `freeze` ×3 🔥 — Kickle Cubicle (迷宮島), Mr. Do!, Tomb of the Mask
-- `clear_color` ×3 🔥 — Bejeweled (1–3, Twist), Candy Crush Saga, Columns (Колонки)
+- `erode` ×3 🔥 — Battle City (Танчики) і Tank Battalion, Space Invaders (Космічні загарбники), Where's My Water?
+- `cast` ×3 🔥 — Gems of War (і Marvel Puzzle Quest), Puzzle Quest: Challenge of the Warlords, Rift Wizard
+- `raise_stack` ×3 🔥 — Money Puzzle Exchanger, Panel de Pon (Tetris Attack, Puzzle League), Poker Smash
 - `restart` ×3 🔥 — Bloxorz, Puzznic, RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II)
-- `dig` ×3 🔥 — Crypt of the NecroDancer, Heiankyo Alien (Digger), Lode Runner
-- `toggle_block` ×3 🔥 — Mario & Wario, Solomon's Key, Troddlers
-- `mark_safe` ×3 🔥 — 14 Minesweeper Variants, Hexcells / Hexcells Plus / Hexcells Infinite, Kaboom (+ LuckSweeper, Pure Skill Minesweeper, Tatham Mines — сапер, що карає або прощає вгадування)
-- `leave_trail` ×3 🔥 — Maze Mice, Tron Light Cycles (Світлові мотоцикли) і нащадки, Xonix (Ксонікс) / Qix / Volfied
+- `xp` ×3 🔥 — Dragonsweeper, Mamono Mower, Mamono Sweeper
+- `jump_over` ×3 🔥 — Inscryption (Act 1), Minesweeper Genius, Plants vs. Zombies (Рослини проти зомбі)
 - `unmark` ×3 🔥 — Hashiwokakero (Hashi, Bridges, Мости), Knotwords, Masyu (Pearl, «Перлини»)
 - `flash` ×3 🔥 — Simon Tatham's Portable Puzzle Collection, Sumplete, Taiji + The Witness (панелі)
+- `intent(a, action)` ×3 🔥 — CodinGame: Keep Off the Grass (Fall Challenge 2022), Screeps (Screeps World, Screeps Arena), Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
+- `deal(n)` ×3 🔥 — Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel), Donsol, RoboRally
+- `alert` ×3 🔥 — Cogmind, Dungeon Crawl Stone Soup, Invisible, Inc.
+- `start_battle` ×3 🔥 — Etrian Odyssey, Labyrinth of Refrain: Coven of Dusk, Wizardry: Proving Grounds of the Mad Overlord
+- `knockdown` ×3 🔥 — BattleTech, Fallout 1–2 (покроковий бій), Mutant Year Zero: Road to Eden
+- `bump` ×3 🔥 — Fights in Tight Spaces, Into the Breach, Tactical Breach Wizards
+- `delay_turn` ×3 🔥 — Othercide, Triangle Strategy, XCOM: Chimera Squad
+- `sacrifice` ×3 🔥 — Inscryption (Act 1), Othercide, Swords & Soldiers
 - `shrink` ×3 🔥 — Deadly Rooms of Death (DROD: King Dugan's Dungeon), Puddle Knights, Spybot: The Nightfall Incident (Lego Spybotics)
-- `recompute_path` ×3 🔥 — Desktop Tower Defense, Emberward, Fieldrunners
+- `retreat` ×3 🔥 — Arknights, Marvel Snap, Unity of Command: Stalingrad Campaign
+- `trade` ×2 — Acquire, Castle Panic
+- `breed(kind)` ×2 — Agricola — сітка ферми (Агрікола), Caverna: The Cave Farmers (Каверна)
+- `feed(n)` ×2 — Agricola — сітка ферми (Агрікола), Caverna: The Cave Farmers (Каверна)
+- `set_aside` ×2 — FITS, Samurai (Самурай)
+- `sow` ×2 — Five Tribes, Oware (Оваре, Авале)
+- `cross_box` ×2 — Ganz Schön Clever (That's Pretty Clever), Welcome To… (Ласкаво просимо до…)
+- `to_tray` ×2 — Ganz Schön Clever (That's Pretty Clever), Triple Match 3D / Tile Explorer
+- `stack` ×2 — Harmonies, Upwords
 - `pickup` ×2 — Hey, That's My Fish! (Packeis am Pol), Magical Drop (Chain Reaction)
-- `harvest` ×2 — Photosynthesis (Фотосинтез), Screeps (Screeps World, Screeps Arena)
-- `mirror` ×2 — Patrick's Parabox, Ubongo + Katamino / IQ Puzzler (Убонго)
+- `draw_edge` ×2 — Next Station: London, Tentai Show (Galaxies, Spiral Galaxies)
+- `convert` ×2 — Desktop Dungeons, Tash-Kalar: Arena of Legends
+- `withdraw` ×2 — Tigris & Euphrates (Тигр і Євфрат), Wildermyth
 - `clone` ×2 — Cell Machine, Isles of Sea and Sky
+- `transmute` ×2 — Diablo II (inventory), Terraria — рідини
+- `designate` ×2 — Dungeon Keeper, Dwarf Fortress — призначення клітин і рідини
+- `raise` ×2 — HyperRogue, Populous
+- `breed(a, b)` ×2 — Tangledeep, Viva Piñata
 - `push_line` ×2 — Abalone (Абалон), Kamisado
-- `move_group` ×2 — Abalone (Абалон), Gess
-- `climb` ×2 — Bonfire Peaks, Hive (Вулик)
-- `lock` ×2 — Infinity Loop + Net (Tatham), Tetris (Тетрис, Tetris Guideline)
-- `flip` ×2 — Memory / Concentration / Pairs («Мемо», «Знайди пару»), Mole Mania
+- `forfeit` ×2 — Apocalypse (Апокаліпсис, одночасні шахи коней і пішаків), Національні варіанти шашок
+- `capture_group` ×2 — Atari Go (Capture Go, го до першого взяття), Go (Ґо, вейці, бадук)
+- `measure` ×2 — Quantum Chess (Квантові шахи, Cantwell), Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
+- `capture_line` ×2 — Epaminondas (Епамінонд), Fanorona (Фанорона)
+- `stop_chain` ×2 — Fanorona (Фанорона), Kōnane (Конане)
+- `return_to_reserve` ×2 — GIPF, YINSH
+- `swap_sides` ×2 — Hex (Гекс), TwixT (Твікст)
+- `place_wall` ×2 — CodinGame: The Great Escape, Quoridor (Кворидор)
+- `impulse` ×2 — Oxyd (+ Enigma), Suika Game (Кавунова гра)
+- `toggle_junction` ×2 — Train Valley, Trainyard
+- `craft` ×2 — Mine Blocks, Unrailed!
+- `recall` ×2 — Diamond Rush, Wildfrost
+- `crack` ×2 — Dig Dug II, Drop7
+- `deposit` ×2 — Dome Keeper, Wall World
+- `rescue` ×2 — Lemmings, Survivors
+- `switch_layer` ×2 — Escape (Tom 7), Mole Mania
+- `refuel` ×2 — Motherload, Rally-X
 - `reset_combo` ×2 — Crypt of the NecroDancer, Mr. Do!
 - `collapse` ×2 — HyperRogue, Mr. Driller
-- `reshuffle` ×2 — Bejeweled (1–3, Twist), Candy Crush Saga
+- `kick` ×2 — Noita, Tetris (Тетрис, Tetris Guideline)
+- `heat` ×2 — Isles of Sea and Sky, Sandboxels
+- `scroll(n)` ×2 — 'One Way Heroics (Mystery Chronicle: One Way Heroics)', 10000000
 - `explode_area` ×2 — Bejeweled (1–3, Twist), Candy Crush Saga
 - `clear_row_col` ×2 — Bejeweled (1–3, Twist), Candy Crush Saga
+- `revert_swap` ×2 — Bejeweled (1–3, Twist), Zoo Keeper
+- `layer_down` ×2 — Candy Crush Saga, Pokémon overworld puzzles (Gen I–II, лід, валуни Strength, спінери, телепорти)
+- `flood_clear` ×2 — Lumines (Люмінес), Puzzle Scape
+- `boost` ×2 — Meteos (Метеос), Snake (Змійка) / Nibbles / Nokia Snake
+- `rank_up` ×2 — Mechabellum, Money Puzzle Exchanger
+- `convert_garbage` ×2 — Panel de Pon (Tetris Attack, Puzzle League), Poker Smash
+- `return_to_hand` ×2 — Gwent (Гвинт), Plotting (Flipull)
 - `offset_garbage` ×2 — Puyo Puyo (Пуйо Пуйо), Tetris (Тетрис, Tetris Guideline)
 - `flood` ×2 — Recursed, SameGame / Clickomania + Flood (Tatham)
+- `use_item` ×2 — Lode Runner: The Legend Returns, TetriNET
 - `hold_swap` ×2 — Tetris (Тетрис, Tetris Guideline), Triple Town
+- `power_up` ×2 — Random Dice (+ Rush Royale), Tetrisphere
+- `extrude` ×2 — BoxBoy! (ハコボーイ!), PushTOOL
 - `undo` ×2 — Catrap (Pitman), Snakebird
+- `jump(height)` ×2 — King's Valley, King's Valley II: The Seal of El Giza
+- `reorient_gravity` ×2 — Kula World (Roll Away, KulaQuest), Spherical
+- `restore_cell` ×2 — Lode Runner, Lode Runner: The Legend Returns
 - `reveal_kind` ×2 — Dragonsweeper, Geister (Ghosts!, Good & Bad Ghosts; «Привиди»)
-- `flood_reveal` ×2 — Kaboom (+ LuckSweeper, Pure Skill Minesweeper, Tatham Mines — сапер, що карає або прощає вгадування), Minesweeper (Сапер)
+- `secret_move` ×2 — Scotland Yard (Скотланд-Ярд), The Fury of Dracula
+- `assign_worker` ×2 — Keepsweeper, The Last Spell
+- `cycle_value` ×2 — Hexologic, Sudo Sweep
+- `swallow` ×2 — Adventure (Atari 2600), Faeria
+- `scatter` ×2 — Blood Bowl, Bosconian
 - `add_letter` ×2 — Lady Bug, Libble Rabble
-- `intent(a, action)` ×2 — Screeps (Screeps World, Screeps Arena), Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
-- `deal(n)` ×2 — Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel), RoboRally
-- `claim` ×2 — Dungeon Keeper, Screeps (Screeps World, Screeps Arena)
-- `ignite` ×2 — Brogue, Caves of Qud
-- `alert` ×2 — Cogmind, Dungeon Crawl Stone Soup
-- `counterattack` ×2 — Advance Wars, Fire Emblem (GBA, The Blazing Blade як база)
+- `open` ×2 — Legend of Grimrock, Super Pac-Man
+- `illuminate` ×2 — Light Up (Akari, Бідзюцукан), Quell
+- `raze(hill)` ×2 — Google AI Challenge — Ants, Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
+- `stack_push(v)` ×2 — Befunge (Befunge-93), Cargo-Bot
+- `output(v)` ×2 — Befunge (Befunge-93), SpaceChem
+- `call(fn)` ×2 — Cargo-Bot, RoboZZle
+- `send(port, v)` ×2 — EXAPUNKS, TIS-100
+- `recv(port)` ×2 — EXAPUNKS, TIS-100
+- `weld(a, b)` ×2 — Infinifactory, Kaizen: A Factory Story
+- `extend` ×2 — Kaizen: A Factory Story, Opus Magnum
+- `power(net)` ×2 — KOHCTPYKTOP: Engineer of the People, Turing Complete
+- `fuse(a, b)` ×2 — Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), SpaceChem
+- `lift` ×2 — Disgaea: Hour of Darkness, Pipe Push Paradise
+- `mutate` ×2 — Ancient Domains of Mystery (ADOM), Phoenix Point
+- `shift_alignment(dir, n)` ×2 — Ancient Domains of Mystery (ADOM), Omega
+- `equip(card, slot)` ×2 — Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel), Donsol
+- `hack` ×2 — Cogmind, Invisible, Inc.
+- `fight` ×2 — Faeria, Tower of the Sorcerer / Magic Tower (魔塔)
+- `load` ×2 — Advance Wars, Nectaris (Military Madness)
+- `unload` ×2 — Advance Wars, Nectaris (Military Madness)
+- `resupply` ×2 — Advance Wars, Panzer General
 - `execute_queue` ×2 — Disgaea: Hour of Darkness, Frozen Synapse
+- `ricochet(shot, surface)` ×2 — Hard West, SteamWorld Heist
+- `advance_turn` ×2 — Othercide, XCOM: Chimera Squad
+- `shred` ×2 — Phoenix Point, Wildermyth
+- `suppress` ×2 — Steel Panthers, Unity of Command: Stalingrad Campaign
 - `enter` ×2 — Patrick's Parabox, Recursed
 - `exit` ×2 — Patrick's Parabox, Recursed
-- `jump_over` ×2 — Inscryption (Act 1), Plants vs. Zombies (Рослини проти зомбі)
+- `exhaust` ×2 — Cobalt Core, Paperback Adventures
+- `buff` ×2 — Desktop Tower Defense, Infinitode 2
+- `freeze_slot` ×2 — Hearthstone Battlegrounds, Super Auto Pets
+- `income` ×2 — Legion TD / Legion TD 2, Сучасні mazing-TD (Electromaze, Tower Maze Defense, Thornline TD, Maul Tactics, Back to the Roots 2)
+- `lane_clear` ×2 — Plants vs. Zombies (Рослини проти зомбі), Plants vs. Zombies: Vasebreaker і I, Zombie (режим Puzzle)
+- `research` ×2 — Revenge of the Titans, Swords & Soldiers
 - `shake` ×2 — NYT Connections (+ Strands), Wordle
-- `sow` ×1 — Five Tribes
+- `found` ×1 — Acquire
+- `payout` ×1 — Acquire
+- `build_fence(edge)` ×1 — Agricola — сітка ферми (Агрікола)
+- `renovate(material)` ×1 — Agricola — сітка ферми (Агрікола)
+- `to_reserve` ×1 — Alhambra (Альгамбра)
+- `attach_board` ×1 — Bärenpark
+- `rescore(room)` ×1 — Castles of Mad King Ludwig (Замки божевільного короля Людвіга)
+- `set_price(item, slot)` ×1 — Castles of Mad King Ludwig (Замки божевільного короля Людвіга)
+- `forge(strength)` ×1 — Caverna: The Cave Farmers (Каверна)
+- `refresh_abilities` ×1 — Copenhagen (Копенгаген)
+- `recycle_tiles` ×1 — Cottage Garden (Сільський сад)
+- `flip_set` ×1 — Dragon Castle
+- `build_shrine` ×1 — Dragon Castle
 - `kill` ×1 — Five Tribes
+- `detach_unconnected` ×1 — Galaxy Trucker
+- `give_up` ×1 — Galaxy Trucker
+- `flight_days` ×1 — Galaxy Trucker
+- `set_price` ×1 — Isle of Skye: From Chieftain to King (Острів Скай)
+- `draw_tile` ×1 — Isle of Skye: From Chieftain to King (Острів Скай)
+- `lose_tile` ×1 — Kingdom Builder
+- `payout_by_facing` ×1 — Lanterns: The Harvest Festival (Ліхтарі)
+- `dedicate` ×1 — Lanterns: The Harvest Festival (Ліхтарі)
+- `apply_sticker` ×1 — My City
+- `drop_out` ×1 — My City
+- `demolish` ×1 — New York 1901 (Нью-Йорк 1901)
+- `reclaim_worker` ×1 — New York 1901 (Нью-Йорк 1901)
+- `return_pieces` ×1 — Project L
+- `upgrade_piece` ×1 — Project L
+- `give_piece` ×1 — Quarto
+- `burn_offer` ×1 — Queendomino (Квіндоміно)
+- `capture_figure` ×1 — Samurai (Самурай)
+- `pass_hand` ×1 — Sprawlopolis
 - `travel(path)` ×1 — Surakarta (Roundabouts)
+- `eat(cell)` ×1 — Takenoko (Такеноко)
+- `downgrade` ×1 — Tash-Kalar: Arena of Legends
+- `leap` ×1 — Tash-Kalar: Arena of Legends
+- `raise_param` ×1 — Terraforming Mars (Тераформування Марса)
+- `production` ×1 — Terraforming Mars (Тераформування Марса)
+- `modify_die` ×1 — The Castles of Burgundy (Замки Бургундії)
+- `extra_action` ×1 — The Castles of Burgundy (Замки Бургундії)
+- `draft_pass` ×1 — The Isle of Cats
+- `pay` ×1 — The Isle of Cats
+- `release_marble` ×1 — ThinkFun Laser Maze і Gravity Maze
+- `close_area` ×1 — Through the Desert (Крізь пустелю)
+- `commit` ×1 — Tigris & Euphrates (Тигр і Євфрат)
 - `consume` ×1 — Tiny Towns (Крихітні містечка)
+- `sweep` ×1 — A Little to the Left
+- `inherit` ×1 — Animal Crossing — New Horizons (схрещування квітів)
+- `reveal_region` ×1 — Against the Storm
+- `add_value(item, prop, n)` ×1 — Big Pharma
+- `redirect(group, cell)` ×1 — Boom Beach
+- `paint_zone` ×1 — Cities: Skylines (зонування)
+- `yield` ×1 — Civilization VI — шар районів і бонусів суміжності
+- `grow_toward(plant, obj)` ×1 — Cloud Gardens
+- `till` ×1 — Core Keeper — сітковий шар (копання, ферма, автоматизація)
+- `water` ×1 — Core Keeper — сітковий шар (копання, ферма, автоматизація)
+- `transport` ×1 — Core Keeper — сітковий шар (копання, ферма, автоматизація)
+- `haul` ×1 — Dwarf Fortress — призначення клітин і рідини
+- `buy_land` ×1 — Forager
+- `add_quality` ×1 — Graveyard Keeper
+- `burn(building)` ×1 — Kingdoms and Castles
+- `kidnap(raider, peasant)` ×1 — Kingdoms and Castles
+- `add_value` ×1 — Lenia
+- `propagate` ×1 — Minecraft — редстоун
+- `set_delay` ×1 — Minecraft — редстоун
+- `return_to_inventory` ×1 — Mini Motorways
+- `enqueue(building, recipe)` ×1 — FarmVille і Hay Day — ферма на годиннику
+- `split_slot` ×1 — Production Line
+- `equalize` ×1 — RimWorld — шар кімнат і температури
+- `mood` ×1 — RimWorld — шар кімнат і температури
+- `vomit` ×1 — RollerCoaster Tycoon
+- `paint_item(item, color)` ×1 — shapez
+- `cut(item, parts)` ×1 — shapez
+- `deposit_scent` ×1 — SimAnt
+- `vent` ×1 — Space Haven
+- `assign` ×1 — Tiny Tower / SimTower
+- `ride` ×1 — Tiny Tower / SimTower
+- `restock` ×1 — Tiny Tower / SimTower
 - `autotile` ×1 — Townscaper
+- `branch_timeline` ×1 — 5D Chess with Multiverse Time Travel
+- `new_board` ×1 — 5D Chess with Multiverse Time Travel
 - `clone_move` ×1 — Ataxx
-- `jump_capture` ×1 — Draughts / Checkers (Шашки)
-- `measure` ×1 — Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
-- `capture_group` ×1 — Go (Ґо, вейці, бадук)
+- `capture_as` ×1 — Baroque chess / Ultima (Бароккові шахи)
+- `play_cutscene` ×1 — Battle Chess
+- `give_partner` ×1 — Bughouse (Бʼюгхаус, шахи вдвох на двох дошках)
+- `gate` ×1 — Capablanca chess (шахи Капабланки) і сімʼя 10×8
+- `win_by_stalemate` ×1 — Chaturanga / Shatranj (Чатуранга / Шатрандж)
+- `move_line` ×1 — Національні варіанти шашок
+- `bid` ×1 — Chess 2: The Sequel (Sirlin's Chess)
+- `whirlwind` ×1 — Chess 2: The Sequel (Sirlin's Chess)
+- `rampage` ×1 — Chess 2: The Sequel (Sirlin's Chess)
+- `return_after_capture` ×1 — Chess 2: The Sequel (Sirlin's Chess)
+- `stack_on` ×1 — Chessformer
+- `stack_onto` ×1 — DVONN
+- `remove_disconnected` ×1 — DVONN
+- `eliminate(side)` ×1 — Four-player chess (шахи на чотирьох)
+- `auto_move(a)` ×1 — Four-player chess (шахи на чотирьох)
+- `insert_push` ×1 — GIPF
+- `score_split` ×1 — Gliński's hexagonal chess (Гексагональні шахи Глінського)
 - `flood_count` ×1 — Go (Ґо, вейці, бадук)
-- `swap_sides` ×1 — Hex (Гекс)
+- `uncover` ×1 — Gobblet (Гоблет)
+- `hop` ×1 — Halma / Chinese checkers (Хальма / Китайські шашки)
+- `adjust_weight` ×1 — Hexapawn (гексапішак) і машина, що вчиться на сірникових коробках
+- `pick_weighted` ×1 — Hexapawn (гексапішак) і машина, що вчиться на сірникових коробках
 - `copy_pattern` ×1 — Hive (Вулик)
+- `count_material` ×1 — Janggi (Чанґі, корейські шахи)
 - `select_piece` ×1 — Kamisado
+- `capture_in_place` ×1 — Великі шогі — Chu shogi і Tenjiku shogi (Чу-шогі, Тендзіку-шогі)
+- `second_step` ×1 — Великі шогі — Chu shogi і Tenjiku shogi (Чу-шогі, Тендзіку-шогі)
+- `burn_adjacent` ×1 — Великі шогі — Chu shogi і Tenjiku shogi (Чу-шогі, Тендзіку-шогі)
+- `capture_under` ×1 — Lasca (Ласка)
 - `rotate_region` ×1 — N-in-a-row (Хрестики-нулики, Gomoku, Connect Four, Pentago…)
 - `remove_bottom` ×1 — N-in-a-row (Хрестики-нулики, Gomoku, Connect Four, Pentago…)
+- `stop_count` ×1 — Makruk (Макрук, тайські шахи)
+- `remove_enemy` ×1 — Nine men's morris (Млин)
+- `fly` ×1 — Nine men's morris (Млин)
 - `rotate_card` ×1 — Onitama
-- `place_wall` ×1 — Quoridor (Кворидор)
+- `copy_pattern(a, b)` ×1 — The Ouroboros King
+- `infect(capturer)` ×1 — The Ouroboros King
+- `demote(a)` ×1 — Passant: A Chess Roguelike
+- `petrify(a)` ×1 — Passant: A Chess Roguelike
+- `capture_pair` ×1 — Pente (Пенте)
+- `entangle` ×1 — Quantum Chess (Квантові шахи, Cantwell)
+- `generate_army` ×1 — Really Bad Chess
 - `flip_line` ×1 — Reversi / Othello (Реверсі)
-- `board` ×1 — Cosmic Express
-- `alight` ×1 — Cosmic Express
+- `dome` ×1 — Santorini (Санторіні)
+- `repeat_move(vector, board)` ×1 — Shōbu (Шобу)
+- `shoot_spread` ×1 — Shotgun King: The Final Checkmate
+- `choose_pair` ×1 — Shotgun King: The Final Checkmate
+- `pick_up_stack` ×1 — Tak (Так)
+- `drop_trail` ×1 — Tak (Так)
+- `flatten` ×1 — Tak (Так)
+- `link` ×1 — TwixT (Твікст)
+- `unlink` ×1 — TwixT (Твікст)
+- `remove_blocked_pawns` ×1 — Шахи без країв — циліндричні (Cylinder) і кругові (Circular / Byzantine)
+- `leave_marker` ×1 — YINSH
+- `flip_jumped` ×1 — YINSH
+- `remove_cell` ×1 — ZÈRTZ
+- `claim_island` ×1 — ZÈRTZ
 - `convert(energy_in → energy_out)` ×1 — Electric Box (+ Lazors)
-- `absorb` ×1 — Electric Box (+ Lazors)
+- `swap_reserve` ×1 — Entanglement
+- `flip_state` ×1 — Lasergoose
+- `reroute` ×1 — Mini Metro
+- `write_output` ×1 — OCTOPTICOM
 - `advance_flow` ×1 — Pipe Mania (Pipe Dream)
+- `flow_fill` ×1 — Plumber / Pipes / Water Connect (мобільний жанр)
 - `claim_edge` ×1 — Shannon switching game / Bridg-It (+ Untangle)
 - `delete_edge` ×1 — Shannon switching game / Bridg-It (+ Untangle)
 - `move(vertex, xy)` ×1 — Shannon switching game / Bridg-It (+ Untangle)
+- `pivot` ×1 — Spin Doctor / ClockWerx
+- `reverse_spin` ×1 — Spin Doctor / ClockWerx
+- `route_signal` ×1 — SPIN Protocol
+- `fuse_colors` ×1 — SPIN Protocol
+- `dispatch` ×1 — Train Valley
+- `reverse` ×1 — Train Valley
 - `mix` ×1 — Trainyard
-- `toggle_junction` ×1 — Trainyard
 - `forced_place` ×1 — Trax
 - `replay_turn` ×1 — Trax
-- `follow_path` ×1 — Tsuro (+ Indigo)
+- `extinguish` ×1 — Unrailed!
+- `derail` ×1 — Unrailed!
 - `sink` ×1 — Dig Dug II
-- `crack` ×1 — Dig Dug II
-- `deposit` ×1 — Dome Keeper
 - `rise` ×1 — Heartlight
-- `switch_layer` ×1 — Mole Mania
+- `excavate` ×1 — Lemmings
+- `hook` ×1 — Liero
 - `combo` ×1 — Mr. Do!
 - `wobble` ×1 — Mr. Driller
+- `stain` ×1 — Noita
 - `change_into_area` ×1 — Rocks'n'Diamonds
-- `diffuse` ×1 — The Powder Toy
-- `revert_swap` ×1 — Bejeweled (1–3, Twist)
-- `layer_down` ×1 — Candy Crush Saga
+- `leave_behind` ×1 — Sandboxels
+- `set_wind` ×1 — Sandspiel
+- `deflect` ×1 — Scorched Earth
+- `rope` ×1 — Spelunky
+- `draw_barrier` ×1 — Sugar, Sugar
+- `dock` ×1 — Wall World
+- `contaminate` ×1 — Where's My Water?
+- `clue(kind, target)` ×1 — Beglitched
+- `deal` ×1 — Block Blast! (і родина 1010! / Woodoku)
+- `rotate3d` ×1 — Blockout (Block Out)
 - `convert_specials` ×1 — Candy Crush Saga
+- `slide_line` ×1 — Chuzzle
+- `launch(a)` ×1 — Might & Magic: Clash of Heroes
+- `reinforce(n)` ×1 — Might & Magic: Clash of Heroes
 - `cycle` ×1 — Columns (Колонки)
+- `armor` ×1 — Dungeon Raid
+- `route_mana(color)` ×1 — Gems of War (і Marvel Puzzle Quest)
+- `surge(×2)` ×1 — Gems of War (і Marvel Puzzle Quest)
+- `extend_clear` ×1 — Gunpey (Гунпей)
+- `raise_field` ×1 — Gunpey (Гунпей)
+- `fill_gauge` ×1 — Gyromancer
+- `burn` ×1 — Hatris
+- `transfer_run` ×1 — Hexa Sort
+- `rotate_group` ×1 — Hexic (Hexic HD, Hexic 2)
+- `lock_all` ×1 — Hexic (Hexic HD, Hexic 2)
 - `catch` ×1 — Klax
 - `flip_back` ×1 — Klax
 - `path_move` ×1 — Color Lines / Lines 98 (Лінії)
-- `raise_stack` ×1 — Panel de Pon (Tetris Attack, Puzzle League)
-- `convert_garbage` ×1 — Panel de Pon (Tetris Attack, Puzzle League)
+- `mark_group` ×1 — Lumines (Люмінес)
+- `shift_boundary` ×1 — Lumines (Люмінес)
+- `fly_to` ×1 — Homescapes / Gardenscapes / Royal Match (мета-шар ремонту)
+- `launch` ×1 — Meteos (Метеос)
+- `swap_ruleset` ×1 — Puyo Puyo Tetris
+- `crush(a, below)` ×1 — Puyo Puyo Tetris
+- `hold_garbage` ×1 — Puyo Puyo Tetris
+- `snap` ×1 — Puzzle Bobble / Snood / Frozen Bubble
+- `attach_to` ×1 — Quarth (Кварт)
+- `scroll_field` ×1 — Quarth (Кварт)
 - `collapse_left` ×1 — SameGame / Clickomania + Flood (Tatham)
-- `kick` ×1 — Tetris (Тетрис, Tetris Guideline)
-- `extrude` ×1 — BoxBoy! (ハコボーイ!)
-- `retract` ×1 — BoxBoy! (ハコボーイ!)
-- `reorient_gravity` ×1 — Kula World (Roll Away, KulaQuest)
-- `restore_cell` ×1 — Lode Runner
+- `draw_path` ×1 — Shisen-Sho / Onet (Сісен-сьо, «зʼєднай пару»)
+- `countdown(a, -1)` ×1 — Super Puzzle Fighter II Turbo
+- `clear_color(color)` ×1 — Super Puzzle Fighter II Turbo
+- `add_line` ×1 — TetriNET
+- `clear_bottom_line` ×1 — TetriNET
+- `quake_rows` ×1 — TetriNET
+- `swap_fields` ×1 — TetriNET
+- `nuke_field` ×1 — TetriNET
+- `scramble_controls` ×1 — TetriNET
+- `time_stop` ×1 — Tetris Effect / Tetris Effect Connected
+- `stash_line` ×1 — Tetris Effect / Tetris Effect Connected
+- `reset_field` ×1 — Tetris Effect / Tetris Effect Connected
+- `random_event` ×1 — Tetris Effect / Tetris Effect Connected
+- `set_grade` ×1 — Tetris The Grand Master (TGM)
+- `drop_into` ×1 — Tetrisphere
+- `slide_layer` ×1 — Tetrisphere
+- `spark` ×1 — Tetrisphere
+- `camera_approach` ×1 — Tetrisphere
+- `emit_stream(a)` ×1 — Tidalis
+- `orient_along(path)` ×1 — Tidalis
+- `deploy(unit, from)` ×1 — Titanium Court
+- `harvest(tile)` ×1 — Titanium Court
+- `impulse(a, dir)` ×1 — Tricky Towers
+- `rotate_ring` ×1 — Trouballs
+- `take_into_hand` ×1 — Tumblestone
+- `lift_stack` ×1 — Wario's Woods
+- `ceiling_down` ×1 — Wario's Woods
+- `pour` ×1 — Water Sort / Ball Sort Puzzle (сортування кольорів у пробірках)
+- `slide_until_blocked` ×1 — Welltris
+- `freeze_wall` ×1 — Welltris
+- `split_piece` ×1 — Welltris
+- `raise(cells, n)` ×1 — Wetrix
+- `lower(cells, n)` ×1 — Wetrix
+- `flow(water)` ×1 — Wetrix
+- `mirror_control` ×1 — Yoshi's Cookie
+- `insert` ×1 — Zuma / Puzz Loop
+- `drill(cell)` ×1 — Blocks That Matter
+- `burn(cell)` ×1 — Blocks That Matter
+- `fall_floors(a, n)` ×1 — BurgerTime
+- `rotate_camera(deg)` ×1 — Captain Toad: Treasure Tracker
+- `pluck(cell)` ×1 — Captain Toad: Treasure Tracker
+- `eat(a, item)` ×1 — Chuckie Egg
+- `pause_timer(n)` ×1 — Chuckie Egg
+- `close_door(door)` ×1 — Door Door
+- `rescue(a)` ×1 — Exit
+- `command(a, action, target)` ×1 — Exit
+- `switch_avatar` ×1 — Head over Heels
+- `extend(a, part, n)` ×1 — Kine
+- `retract(a, part)` ×1 — Kine
+- `return_to(a, owner)` ×1 — King's Valley II: The Seal of El Giza
+- `switch_form` ×1 — Knight Lore
+- `blow(a, dir)` ×1 — Krusty's Fun House
+- `kick(b)` ×1 — Krusty's Fun House
+- `send_signal(channel)` ×1 — Levelhead
+- `throw(a, dir)` ×1 — Levelhead
+- `disguise(a, t)` ×1 — Lode Runner 2 і Lode Runner 3-D
+- `spill(cell, type)` ×1 — Lode Runner: The Legend Returns
 - `reveal_cells` ×1 — Lode Runner
+- `follow(a, b)` ×1 — Mario vs. Donkey Kong
+- `walk_path(a, cell)` ×1 — Mekorama
+- `drag(part, axis, n)` ×1 — Mekorama
+- `control_transfer(a, b)` ×1 — Miner 2049er
+- `launch(a, height)` ×1 — Miner 2049er
+- `knock_down(a, to)` ×1 — Nebulus
+- `hang` ×1 — Prince of Persia
+- `flip_view` ×1 — Prince of Persia
+- `parry` ×1 — Prince of Persia
 - `reset_level` ×1 — Pushmo / Pullblox (引ク押ス) + Crashmo
 - `topple` ×1 — Pushover (Push-Over)
 - `rebound` ×1 — Pushover (Push-Over)
+- `freeze_all` ×1 — Solstice
+- `clear_room` ×1 — Solstice
+- `immobile` ×1 — Spelunker
+- `attract(a, to)` ×1 — Toki Tori 2 / Toki Tori 2+
+- `repel(a, from)` ×1 — Toki Tori 2 / Toki Tori 2+
 - `use_tool` ×1 — Toki Tori
+- `drop_top` ×1 — Treasure Island Dizzy
 - `break` ×1 — Wrecking Crew
 - `trace_ray` ×1 — Black Box (Чорна скринька)
+- `create_region` ×1 — Bombe
+- `discard_region` ×1 — Bombe
+- `hide_region` ×1 — Bombe
+- `announce(info)` ×1 — Captain Sonar
+- `reset_trail` ×1 — Captain Sonar
+- `mark_kind` ×1 — Cavern Sweeper
 - `show_card` ×1 — Cluedo (Clue; «Клуедо»)
-- `eliminate` ×1 — Cluedo (Clue; «Клуедо»)
-- `xp` ×1 — Dragonsweeper
-- `level_up` ×1 — Dragonsweeper
+- `omen` ×1 — DemonCrawl
+- `fortify` ×1 — DemonCrawl
 - `disarm` ×1 — Dragonsweeper
+- `process` ×1 — Dynamine
+- `lock_row` ×1 — endless mines
+- `mature` ×1 — The Fury of Dracula
+- `answer` ×1 — Guess Who? (Вгадай, хто?)
 - `trace_path` ×1 — Hunt the Wumpus («Полювання на Вампуса»)
+- `ask` ×1 — Inkognito
+- `show_cards` ×1 — Inkognito
 - `resolve_hidden` ×1 — Kaboom (+ LuckSweeper, Pure Skill Minesweeper, Tatham Mines — сапер, що карає або прощає вгадування)
+- `apply_curse` ×1 — Minato
+- `charge` ×1 — Minato
+- `lock_cell` ×1 — Minato
+- `rotate_line` ×1 — Minesweeper Genius
+- `swap_lines` ×1 — Minesweeper Genius
+- `relocate_token` ×1 — Mr. Jack (Містер Джек)
+- `warn` ×1 — Patterna
 - `disappear_both` ×1 — Stratego (Стратего)
+- `auto_chord` ×1 — Sudo Sweep
+- `disable` ×1 — Tacticsweeper
+- `lose_probe` ×1 — Tacticsweeper
+- `cleanse` ×1 — Tetrisweeper
+- `hard_clear` ×1 — Tetrisweeper
 - `multiply_score` ×1 — Voltorb Flip
 - `level_set` ×1 — Voltorb Flip
+- `label` ×1 — Zendo
+- `counterexample` ×1 — Zendo
+- `render_view` ×1 — 3D Monster Maze
+- `gap` ×1 — Achtung, die Kurve! (Увага, поворот!)
 - `jump_all` ×1 — Amidar
+- `shrink_zone` ×1 — Armagetron Advanced
+- `next_room` ×1 — Berzerk
+- `mount` ×1 — Bomberman — мультиплеєрні гілки (Dyna Blaster, Saturn Bomberman, Atomic Bomberman, Bomberman Blast)
+- `dismount` ×1 — Bomberman — мультиплеєрні гілки (Dyna Blaster, Saturn Bomberman, Atomic Bomberman, Bomberman Blast)
+- `steer` ×1 — Combat
+- `warp_level` ×1 — Crystal Castles
+- `detach_all` ×1 — Flicky
+- `lane_change` ×1 — Head On
+- `eject(a)` ×1 — Hungry Horace
 - `rotate_gate` ×1 — Lady Bug
 - `cycle_color` ×1 — Lady Bug
 - `cut_line` ×1 — Libble Rabble
 - `slide_tile` ×1 — Loco-Motion (Guttang Gottong)
 - `reroll_tile` ×1 — Loco-Motion (Guttang Gottong)
+- `unpaint` ×1 — Make Trax (Crush Roller)
+- `place_fake_wall` ×1 — Maze Craze
 - `chain` ×1 — Maze Mice
+- `peek` ×1 — Maze War
+- `toggle_group` ×1 — Mouse Trap
+- `path_to(a, cell)` ×1 — Ms. Pac-Man
+- `pause_move` ×1 — Nibbler
+- `clear_screen` ×1 — Pac-Man 256
+- `time_scale` ×1 — Pac-Man Championship Edition / DX (Пекмен: чемпіонське видання)
+- `regen_region` ×1 — Pac-Man Championship Edition / DX (Пекмен: чемпіонське видання)
+- `swap_role(a, b)` ×1 — Pac-Man: сиквели 1983–2021
+- `tag(a, side)` ×1 — Pac-Man: сиквели 1983–2021
+- `stun_beam` ×1 — Pac-Man spin-offs (Pac & Pal, Baby Pac-Man, Mega Tunnel Battle)
 - `set_target` ×1 — Pac-Man (Пекмен) і Ms. Pac-Man
+- `switch_screen` ×1 — Pepper II
 - `paint_step` ×1 — Q*bert
-- `boost` ×1 — Snake (Змійка) / Nibbles / Nokia Snake
-- `erode` ×1 — Space Invaders (Космічні загарбники)
-- `clear_trail` ×1 — Tron Light Cycles (Світлові мотоцикли) і нащадки
+- `convert(a, kind)` ×1 — Robotron: 2084
+- `knockback(a, dir)` ×1 — Robotron: 2084
+- `devour` ×1 — Shadow Labyrinth
+- `jump` ×1 — Snake Rattle 'n' Roll
+- `reset_decay` ×1 — Venture
 - `teleport` ×1 — Wizard of Wor
-- `illuminate` ×1 — Light Up (Akari, Бідзюцукан)
+- `open_door` ×1 — Wolfenstein 3D
+- `push_wall(dir, n)` ×1 — Wolfenstein 3D
+- `alert(a)` ×1 — Wolfenstein 3D
+- `send` ×1 — ZZT
+- `eject` ×1 — ZZT
+- `duplicate` ×1 — ZZT
+- `goto_label` ×1 — ZZT
+- `flood_to_level` ×1 — Aquarium (Акваріум)
+- `place_domino` ×1 — Dominosa (Доміноза)
+- `flip(a)` ×1 — Magnets (Tatham)
 - `timer(-n)` ×1 — Nonogram (Японський кросворд, Picross, Griddlers, Hanjie)
+- `carve` ×1 — Picross-варіанти (Picross 3D, Round 2, Mega, Color, Clip)
+- `place_triangle` ×1 — Shakashaka (シャカシャカ)
 - `draw_rect` ×1 — Shikaku (Шікаку, Rectangles, Divide by Box)
 - `mark_edge` ×1 — Slitherlink (Слізерлінк, Loopy, Fences)
 - `clear_notes` ×1 — Sudoku (Судоку, Number Place)
 - `write_value(a, v)` ×1 — 7 Billion Humans
 - `push_chain` ×1 — Advent of Code — сіткові пазли (збірка)
 - `press(key)` ×1 — Advent of Code — сіткові пазли (збірка)
-- `eliminate(bot)` ×1 — Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
-- `raze(hill)` ×1 — Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
+- `move_all(a → b)` ×1 — Advent of Code 2016, день 22: Grid Computing
+- `shout(signal)` ×1 — Autonauts
+- `find_nearest(kind, area)` ×1 — Autonauts
+- `refuel(a)` ×1 — Autonauts
+- `stack_pop(n)` ×1 — Befunge (Befunge-93)
+- `write_cell(x, y, v)` ×1 — Befunge (Befunge-93)
+- `read_cell(x, y)` ×1 — Befunge (Befunge-93)
+- `skip_cell` ×1 — Befunge (Befunge-93)
+- `radio_send(channel, color)` ×1 — Carnage Heart
+- `var_op(var, op, n)` ×1 — Carnage Heart
+- `place_bomb(range)` ×1 — CodinGame: Hypersonic
+- `annihilate(a, b, n)` ×1 — CodinGame: Keep Off the Grass (Fall Challenge 2022)
+- `fork(process, at)` ×1 — Core War
+- `skip_next` ×1 — Core War
+- `craft(a, b → c)` ×1 — Craftomation 101
+- `find_nearest(kind)` ×1 — Craftomation 101
+- `wear(a)` ×1 — Duskers
+- `tow(a, b)` ×1 — Duskers
+- `lure(a, where)` ×1 — Duskers
+- `link(a, id)` ×1 — EXAPUNKS
+- `kill(b)` ×1 — EXAPUNKS
+- `emit(net, ch, n)` ×1 — Factorio — circuit network
+- `enable(entity)` ×1 — Factorio — circuit network
+- `flee(a, from)` ×1 — Gladiabots
+- `tag(target, tag)` ×1 — Gladiabots
+- `score_resource` ×1 — Gladiabots
+- `store(cell)` ×1 — Human Resource Machine
+- `load(cell)` ×1 — Human Resource Machine
+- `jump_to(label)` ×1 — Human Resource Machine
+- `lift(a, n)` ×1 — Infinifactory
+- `emit_signal(conduit)` ×1 — Infinifactory
+- `destroy_line(dir)` ×1 — Infinifactory
+- `cut(part, line)` ×1 — Kaizen: A Factory Story
+- `drill(part)` ×1 — Kaizen: A Factory Story
+- `flip(part)` ×1 — Kaizen: A Factory Story
 - `goto_state(s)` ×1 — Kara (Кара — сонечко)
+- `draw(layer, cell)` ×1 — KOHCTPYKTOP: Engineer of the People
 - `toggle(cell)` ×1 — Lightbot (Light-Bot)
+- `transfer(a, b, res, n)` ×1 — Lux AI Challenge
+- `build_city(cell)` ×1 — Lux AI Challenge
+- `pillage(cell)` ×1 — Lux AI Challenge
+- `research(+1)` ×1 — Lux AI Challenge
+- `sap(cell, n)` ×1 — Lux AI Challenge
 - `pop_tape` ×1 — Manufactoria
 - `push_tape(c)` ×1 — Manufactoria
 - `accept` ×1 — Manufactoria
 - `reject` ×1 — Manufactoria
-- `grab` ×1 — Opus Magnum
-- `release` ×1 — Opus Magnum
-- `extend` ×1 — Opus Magnum
+- `bind(unit_type)` ×1 — Mindustry — logic (mlog)
+- `flush(target)` ×1 — Mindustry — logic (mlog)
+- `add_hydrogen(atom)` ×1 — MOLEK-SYNTEZ
+- `remove_hydrogen(atom)` ×1 — MOLEK-SYNTEZ
+- `bond_to_neighbor(atom)` ×1 — MOLEK-SYNTEZ
+- `shift(molecule, dir)` ×1 — MOLEK-SYNTEZ
+- `sync_wait(call)` ×1 — Robo Instructus
 - `lock_register(n)` ×1 — RoboRally
 - `emit(pin, v)` ×1 — Robot Odyssey
 - `enter_container(a, b)` ×1 — Robot Odyssey
-- `call(fn)` ×1 — RoboZZle
+- `melt(cell)` ×1 — Robot Turtles
 - `transfer` ×1 — Screeps (Screeps World, Screeps Arena)
-- `build` ×1 — Screeps (Screeps World, Screeps Arena)
-- `repair` ×1 — Screeps (Screeps World, Screeps Arena)
-- `decay` ×1 — Screeps (Screeps World, Screeps Arena)
+- `wait_sync` ×1 — SpaceChem
+- `redirect(a, dir)` ×1 — SpaceChem
+- `fission(a)` ×1 — SpaceChem
+- `jump(a)` ×1 — Swift Playgrounds (Learn to Code, Byte)
+- `lift(a, ±level)` ×1 — Swift Playgrounds (Learn to Code, Byte)
 - `wrap(a)` ×1 — The Farmer Was Replaced
 - `set_state(a, infected)` ×1 — The Farmer Was Replaced
 - `merge_region` ×1 — The Farmer Was Replaced
+- `halt` ×1 — Turing Complete
 - `define_object(type, props)` ×1 — Untrusted — or the Continuing Adventures of Dr. Eval
 - `override_key(key, fn)` ×1 — Untrusted — or the Continuing Adventures of Dr. Eval
 - `killed_by(text)` ×1 — Untrusted — or the Continuing Adventures of Dr. Eval
+- `sense(percepts)` ×1 — Wumpus world («Світ Вампуса»)
+- `pulse` ×1 — Escape (Tom 7)
+- `toggle_cell` ×1 — Escape (Tom 7)
+- `hold` ×1 — Kye
+- `tip_over` ×1 — Pipe Push Paradise
+- `drive_out` ×1 — Unblock Me і Parking Jam 3D (мобільні Rush Hour)
 - `siphon(cells)` ×1 — 868-HACK (+ Imbroglio, Cinco Paus — мікро-роглайки Michael Brough)
 - `run_program(p)` ×1 — 868-HACK (+ Imbroglio, Cinco Paus — мікро-роглайки Michael Brough)
 - `feed(tile)` ×1 — 868-HACK (+ Imbroglio, Cinco Paus — мікро-роглайки Michael Brough)
 - `reset_board` ×1 — 868-HACK (+ Imbroglio, Cinco Paus — мікро-роглайки Michael Brough)
+- `regenerate_level` ×1 — Moria / Angband
+- `recall(delay)` ×1 — Moria / Angband
+- `age(a, ±n)` ×1 — The Bard's Tale / Might and Magic — сіткові dungeon crawl 80-х
+- `sing(song)` ×1 — The Bard's Tale / Might and Magic — сіткові dungeon crawl 80-х
+- `spend_stat(a, s, n)` ×1 — Beneath Apple Manor
+- `rest(a, n)` ×1 — Beneath Apple Manor
+- `convert_stat(a, from, to)` ×1 — Beneath Apple Manor
+- `forget_map` ×1 — Beneath Apple Manor
 - `drop_item` ×1 — Brogue
 - `make_ally` ×1 — Brogue
 - `enchant` ×1 — Brogue
-- `equip(card, slot)` ×1 — Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel)
+- `fast_travel(to)` ×1 — Cadence of Hyrule: Crypt of the NecroDancer Featuring The Legend of Zelda
 - `stack(card, on)` ×1 — Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel)
 - `to_bottom(cards)` ×1 — Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel)
+- `recharge(a, skill)` ×1 — Cardinal Quest
+- `move_item(from, to)` ×1 — Castle of the Winds
+- `learn_spell` ×1 — Castle of the Winds
+- `rescue(b)` ×1 — Cave Noire
 - `mix(liquid)` ×1 — Caves of Qud
 - `arc(n)` ×1 — Caves of Qud
-- `evaporate` ×1 — Caves of Qud
 - `heat(±t)` ×1 — Caves of Qud
 - `reputation(faction, ±n)` ×1 — Caves of Qud
 - `salvage` ×1 — Cogmind
 - `corrupt` ×1 — Cogmind
-- `hack` ×1 — Cogmind
 - `heal_full` ×1 — Desktop Dungeons
-- `convert` ×1 — Desktop Dungeons
 - `piety` ×1 — Desktop Dungeons
+- `shuffle_back(cards)` ×1 — Donsol
+- `fire(weapon, target)` ×1 — DoomRL / DRL → Jupiter Hell
+- `apply_mod(item, mod)` ×1 — DoomRL / DRL → Jupiter Hell
+- `assemble(item, mods)` ×1 — DoomRL / DRL → Jupiter Hell
 - `fall_levels` ×1 — Dungeon Crawl Stone Soup
 - `cloud` ×1 — Dungeon Crawl Stone Soup
 - `reveal(cells)` ×1 — Dungeon Encounters
 - `battle(group)` ×1 — Dungeon Encounters
 - `learn(ability)` ×1 — Dungeon Encounters
 - `warp(floor, x, y)` ×1 — Dungeon Encounters
+- `cast(runes)` ×1 — Dungeon Master
+- `sleep(party)` ×1 — Dungeon Master
+- `skill_xp(a, skill, n)` ×1 — Dungeon Master
 - `power(room)` ×1 — Dungeon of the Endless
 - `unpower(room)` ×1 — Dungeon of the Endless
 - `build(module, slot)` ×1 — Dungeon of the Endless
+- `pulse(±n)` ×1 — Dungeons of Daggorath
+- `faint(a)` ×1 — Dungeons of Daggorath
+- `incant(item, word)` ×1 — Dungeons of Daggorath
+- `identify(item)` ×1 — Dungeons of Daggorath
+- `craft(recipe)` ×1 — Dungeons of Dredmor
+- `sacrifice(item)` ×1 — Dungeons of Dredmor
+- `quest(kind)` ×1 — Dungeons of Dredmor
+- `memorize(a, spell)` ×1 — Eye of the Beholder
+- `recruit(npc)` ×1 — Eye of the Beholder
+- `switch_form(a, f)` ×1 — Golden Krone Hotel
+- `toggle_light(source)` ×1 — Golden Krone Hotel
+- `drink_blood` ×1 — Golden Krone Hotel
+- `bill(item)` ×1 — Hack
+- `anger(a)` ×1 — Hack
+- `tame(a)` ×1 — Hack
+- `scribe(spell)` ×1 — Harmless7DRL
+- `drop_level(a)` ×1 — Harmless7DRL
+- `gust(a)` ×1 — Harmless7DRL
 - `melt` ×1 — HyperRogue
 - `mimic_move` ×1 — HyperRogue
-- `raise` ×1 — HyperRogue
+- `shock(+n)` ×1 — Infra Arcana (огляд з The Ground Gives Way і Zorbus)
+- `add_phobia` ×1 — Infra Arcana (огляд з The Ground Gives Way і Zorbus)
+- `recruit(a)` ×1 — Infra Arcana (огляд з The Ground Gives Way і Zorbus)
+- `break_wall` ×1 — Labyrinth of Refrain: Coven of Dusk
+- `interest(rate)` ×1 — Larn
+- `train(stat, time)` ×1 — Larn
+- `repopulate(n)` ×1 — Larn
 - `turn` ×1 — Legend of Grimrock
 - `fall_level` ×1 — Legend of Grimrock
-- `open` ×1 — Legend of Grimrock
 - `close` ×1 — Legend of Grimrock
-- `fight` ×1 — Tower of the Sorcerer / Magic Tower (魔塔)
 - `stat(a, ±n)` ×1 — Tower of the Sorcerer / Magic Tower (魔塔)
+- `place_tile(type, cell)` ×1 — Morphblade
+- `level_up(tile)` ×1 — Morphblade
+- `inherit(tile, from)` ×1 — Morphblade
+- `regen(cells)` ×1 — Myst (7DRL)
 - `throw(item, dir)` ×1 — Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon)
-- `fuse(a, b)` ×1 — Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon)
 - `level_up(a)` ×1 — Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon)
 - `blown_out` ×1 — Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon)
 - `polymorph(a)` ×1 — NetHack
 - `bless(item, ±1)` ×1 — NetHack
 - `erode(cell|item)` ×1 — NetHack
 - `luck(±n)` ×1 — NetHack
-- `scroll(n)` ×1 — 'One Way Heroics (Mystery Chronicle: One Way Heroics)'
+- `join(guild)` ×1 — Omega
+- `rank_up(guild)` ×1 — Omega
+- `retire` ×1 — Omega
 - `advance_wall` ×1 — 'One Way Heroics (Mystery Chronicle: One Way Heroics)'
 - `vault_store(item)` ×1 — 'One Way Heroics (Mystery Chronicle: One Way Heroics)'
+- `summon(a)` ×1 — Path of Achra
+- `draw(n)` ×1 — Pawnbarian
+- `discard(hand)` ×1 — Pawnbarian
 - `upgrade(item, +1)` ×1 — Shattered Pixel Dungeon (і Pixel Dungeon)
 - `brew(ingredients)` ×1 — Shattered Pixel Dungeon (і Pixel Dungeon)
-- `cast` ×1 — Rift Wizard
-- `summon` ×1 — Rift Wizard
 - `resist` ×1 — Rift Wizard
 - `refill_charges` ×1 — Rift Wizard
+- `shuffle(field)` ×1 — Ring of Pain
+- `reroll(options)` ×1 — Ring of Pain
+- `lift(around)` ×1 — Road Not Taken
+- `wait_until(cond)` ×1 — Robots (BSD) / Chase / Daleks
+- `run(dir)` ×1 — Robots (BSD) / Chase / Daleks
 - `drain` ×1 — Rogue
-- `capture` ×1 — Advance Wars
-- `produce` ×1 — Advance Wars
-- `load` ×1 — Advance Wars
-- `unload` ×1 — Advance Wars
-- `resupply` ×1 — Advance Wars
+- `enqueue(tile)` ×1 — Shogun Showdown
+- `group_damage(group, n)` ×1 — Shovel Knight Pocket Dungeon
+- `drift(all, down)` ×1 — Shovel Knight Pocket Dungeon
+- `free_attack(a, b)` ×1 — Sil
+- `stars(±n)` ×1 — Sproggiwood
+- `cooldown(talent, n)` ×1 — Tales of Maj'Eyal
+- `reserve(resource, n)` ×1 — Tales of Maj'Eyal
+- `fizzle` ×1 — Tales of Maj'Eyal
+- `anomaly` ×1 — Tales of Maj'Eyal
+- `capture(a)` ×1 — Tangledeep
+- `enter_dream(item)` ×1 — Tangledeep
+- `drop_floor` ×1 — Torneko's Great Adventure: Mystery Dungeon
+- `eat(b)` ×1 — Twinfold
+- `resurrect(a)` ×1 — Wizardry: Proving Grounds of the Mad Overlord
+- `level_drain(a)` ×1 — Wizardry: Proving Grounds of the Mad Overlord
 - `duel` ×1 — Archon: The Light and the Dark
+- `swap_stats(a, s1, s2)` ×1 — Ash of Gods: Redemption
+- `cooldown` ×1 — Auro: A Monster-Bumping Adventure
+- `break_armor` ×1 — The Banner Saga
+- `spend` ×1 — The Banner Saga
+- `free_attack` ×1 — Battle Brothers
+- `morale_check` ×1 — Battle Brothers
+- `shutdown` ×1 — BattleTech
+- `transfer_damage` ×1 — BattleTech
+- `reserve` ×1 — BattleTech
+- `vent_heat` ×1 — BattleTech
+- `stat` ×1 — Betrayal at House on the Hill
 - `dice` ×1 — Blood Bowl
-- `scatter` ×1 — Blood Bowl
+- `attach_card` ×1 — Card Hunter
+- `end_moves` ×1 — Civilization (бойовий шар юнітів, I–VI)
+- `fatigue` ×1 — Descent: Journeys in the Dark
+- `activate_group` ×1 — Descent: Journeys in the Dark
 - `recolor_region` ×1 — Disgaea: Hour of Darkness
-- `lift` ×1 — Disgaea: Hour of Darkness
-- `recruit` ×1 — Fire Emblem (GBA, The Blazing Blade як база)
-- `bump` ×1 — Into the Breach
+- `reaction_attack` ×1 — D&D grid combat (Dungeons & Dragons 5e)
+- `set_advantage` ×1 — D&D grid combat (Dungeons & Dragons 5e)
+- `prone` ×1 — D&D grid combat (Dungeons & Dragons 5e)
+- `grapple` ×1 — D&D grid combat (Dungeons & Dragons 5e)
+- `death_save` ×1 — D&D grid combat (Dungeons & Dragons 5e)
+- `replace_card` ×1 — Duelyst
+- `summon_from_hand` ×1 — Duelyst
+- `place_land` ×1 — Faeria
+- `cripple` ×1 — Fallout 1–2 (покроковий бій)
+- `critical` ×1 — Fallout 1–2 (покроковий бій)
+- `give_card` ×1 — Final Fantasy Tactics Advance
+- `jail` ×1 — Final Fantasy Tactics Advance
+- `set_law` ×1 — Final Fantasy Tactics Advance
+- `remove_law` ×1 — Final Fantasy Tactics Advance
+- `damage_part` ×1 — Front Mission
+- `spread_damage` ×1 — Front Mission
+- `lose_card` ×1 — Gloomhaven
+- `infuse` ×1 — Gloomhaven
+- `consume_element` ×1 — Gloomhaven
+- `recover_cards` ×1 — Gloomhaven
+- `rest` ×1 — Gloomhaven
+- `luck(a, ±n)` ×1 — Hard West
+- `defend` ×1 — Heroes of Might and Magic III (Герої меча і магії III)
+- `place_marker` ×1 — Heroscape
+- `wound` ×1 — Heroscape
+- `ring_out` ×1 — Inkulinati
+- `summon_for_cost` ×1 — Inkulinati
+- `investigate` ×1 — Invisible, Inc.
+- `ko` ×1 — Invisible, Inc.
+- `set_stance` ×1 — Jagged Alliance 2
+- `gain_rage` ×1 — King's Bounty: The Legend (King's Bounty. Легенда о рыцаре)
+- `hire` ×1 — Langrisser
+- `spend_mana` ×1 — Mage Knight Board Game
+- `add_wound` ×1 — Mage Knight Board Game
+- `explore_tile` ×1 — Mage Knight Board Game
+- `dash` ×1 — Mario + Rabbids Kingdom Battle
+- `team_jump` ×1 — Mario + Rabbids Kingdom Battle
+- `bounce_launch` ×1 — Mario + Rabbids Kingdom Battle
+- `assemble(mech, parts)` ×1 — Mech Armada
+- `scrap(mech)` ×1 — Mech Armada
+- `root` ×1 — Mutant Year Zero: Road to Eden
+- `call_help` ×1 — Mutant Year Zero: Road to Eden
+- `store` ×1 — Nectaris (Military Madness)
+- `disable(a)` ×1 — Ogre
+- `recover(a)` ×1 — Ogre
+- `queue_action` ×1 — Othercide
+- `entrench` ×1 — Panzer General
+- `support_fire` ×1 — Panzer General
+- `disable_part` ×1 — Phoenix Point
+- `interrupt_move` ×1 — Phoenix Point
+- `panic` ×1 — Phoenix Point
+- `dumpshock` ×1 — Shadowrun Returns
+- `knock_out` ×1 — Silent Storm
+- `split_damage` ×1 — Space Crusade
+- `play_card` ×1 — Space Crusade
+- `knock_hat` ×1 — SteamWorld Heist
+- `rally` ×1 — Steel Panthers
+- `rout` ×1 — Steel Panthers
+- `will` ×1 — Super Robot Wars
+- `sp` ×1 — Super Robot Wars
+- `spirit` ×1 — Super Robot Wars
+- `wait_add` ×1 — Tactics Ogre
+- `rewind_turns` ×1 — Tactics Ogre
+- `energy` ×1 — Telepath Tactics
+- `swap_weapons` ×1 — The Last Spell
+- `focus_fire` ×1 — Tiny Metal
+- `assault` ×1 — Tiny Metal
+- `follow_up` ×1 — Triangle Strategy
+- `recover` ×1 — Unity of Command: Stalingrad Campaign
+- `overrun` ×1 — Unity of Command: Stalingrad Campaign
+- `lock_ap` ×1 — Unity of Command: Stalingrad Campaign
+- `interfuse` ×1 — Wildermyth
+- `stabilize` ×1 — XCOM: Chimera Squad
+- `subdue` ×1 — XCOM: Chimera Squad
+- `make_noise` ×1 — Zombicide
+- `extra_activation` ×1 — Zombicide
+- `split_group` ×1 — Zombicide
 - `tip` ×1 — A Monster's Expedition
 - `reset_zone` ×1 — A Monster's Expedition
 - `set_property` ×1 — Baba Is You
 - `destroy` ×1 — Bonfire Peaks
+- `cut_body` ×1 — Can of Wormholes
 - `checkpoint` ×1 — Deadly Rooms of Death (DROD: King Dugan's Dungeon)
+- `recast_shadows` ×1 — Felix the Reaper
+- `carry_stack` ×1 — Fish Fillets
 - `camera` ×1 — Gorogoa
 - `animate` ×1 — Gorogoa
-- `heat` ×1 — Isles of Sea and Sky
+- `pull_to(a, anchor)` ×1 — GRAB-O
+- `accelerate` ×1 — GridRacer
+- `cast_ray` ×1 — Heroes of Sokoban
+- `slide_all` ×1 — increpare: мікро-Sokoban-и (Crates move when you move · Pushy-V Pully-H · Muraphilic Monophobic Multiban)
+- `transfer_momentum` ×1 — Isaac and the Conservation of Momentum
+- `cast_image` ×1 — Mirror Isles
+- `rebuild_graph` ×1 — Monument Valley
+- `fold` ×1 — Paper Trail
+- `unfold` ×1 — Paper Trail
 - `reset_room` ×1 — Recursed
 - `snapshot` ×1 — Recursed
 - `restore` ×1 — Recursed
 - `bond_order` ×1 — Sokobond
+- `dive` ×1 — Suikyo [Water Mirror]
+- `stick_side` ×1 — Tetrobot and Co.
+- `toggle_perspective` ×1 — Toodee and Topdee
 - `lift_tile` ×1 — Void Stranger
 - `mirror_input` ×1 — Void Stranger
-- `retreat` ×1 — Arknights
-- `flow` ×1 — Creeper World
+- `light` ×1 — World's Hardest 15-Puzzle
+- `evolve_age` ×1 — Age of War / Stick War
+- `set_formation` ×1 — Age of War / Stick War
+- `set_route` ×1 — Anomaly: Warzone Earth
+- `reorder` ×1 — Anomaly: Warzone Earth
+- `drain_shield` ×1 — Anomaly: Warzone Earth
+- `rebuild` ×1 — Castle Panic
+- `wake` ×1 — Clash Royale
+- `discard_hand` ×1 — Cobalt Core
 - `drain_cell` ×1 — Creeper World
 - `send_packet` ×1 — Creeper World
-- `relocate` ×1 — Creeper World
-- `buff` ×1 — Desktop Tower Defense
-- `designate` ×1 — Dungeon Keeper
-- `possess` ×1 — Dungeon Keeper
+- `drift_to` ×1 — Defense Grid: The Awakening
 - `pickup_unit` ×1 — Dungeon Keeper
 - `drop_unit` ×1 — Dungeon Keeper
-- `combine` ×1 — GemCraft
-- `socket` ×1 — GemCraft
+- `fall_into` ×1 — Dungeon Warfare
+- `pull_to` ×1 — Dungeon Warfare
+- `send_wave_early` ×1 — Dungeon Warfare
 - `unsocket` ×1 — GemCraft
 - `banish` ×1 — GemCraft
 - `enrage` ×1 — GemCraft
-- `sacrifice` ×1 — Inscryption (Act 1)
+- `destroy_strongest` ×1 — Gwent (Гвинт)
+- `discover` ×1 — Hearthstone Battlegrounds
+- `upgrade_tier` ×1 — Hearthstone Battlegrounds
 - `advance_queue` ×1 — Inscryption (Act 1)
 - `scale_shift` ×1 — Inscryption (Act 1)
 - `expand_area` ×1 — Isle of Arrows
 - `skip` ×1 — Isle of Arrows
-- `rank_up` ×1 — Mechabellum
+- `double_stake` ×1 — Marvel Snap
 - `tech` ×1 — Mechabellum
-- `lane_clear` ×1 — Plants vs. Zombies (Рослини проти зомбі)
+- `ascend` ×1 — Monster Train
+- `rearm` ×1 — Orcs Must Die!
+- `block_hit` ×1 — Plants vs. Zombies Heroes
+- `bounce_card` ×1 — Plants vs. Zombies Heroes
+- `reveal_gravestone` ×1 — Plants vs. Zombies Heroes
+- `break_open` ×1 — Plants vs. Zombies: Vasebreaker і I, Zombie (режим Puzzle)
 - `spawn_random` ×1 — Random Dice (+ Rush Royale)
-- `power_up` ×1 — Random Dice (+ Rush Royale)
-- `reroll` ×1 — Teamfight Tactics (TFT)
-- `interest` ×1 — Teamfight Tactics (TFT)
+- `wave_attack` ×1 — The Battle Cats
+- `deploy` ×1 — The Battle Cats
+- `infect` ×1 — They Are Billions
 - `tick_counter` ×1 — Wildfrost
 - `add_status` ×1 — Wildfrost
-- `recall` ×1 — Wildfrost
+- `prune_candidates` ×1 — Absurdle
+- `exchange` ×1 — Bananagrams
+- `all_draw` ×1 — Bananagrams
+- `daub` ×1 — Bingo / Keno / Lotto (Бінго, Лото)
+- `strike_shared` ×1 — Boggle
+- `reveal_letter` ×1 — Cryptic crossword (Криптичний кросворд)
+- `refill_from_top` ×1 — Gridwordy
+- `canonicalize` ×1 — Mathler
+- `append_copy` ×1 — Number Match / Take Ten (Numberzilla)
+- `add_card(deck, card)` ×1 — Paperback Adventures
+- `upgrade_card` ×1 — Paperback Adventures
+- `strike_word` ×1 — Word search (Пошук слів)
 
-## feature · 212
+## feature · 684
 
+- `permadeath` ×16 🔥 — 'One Way Heroics (Mystery Chronicle: One Way Heroics)', 868-HACK (+ Imbroglio, Cinco Paus — мікро-роглайки Michael Brough), Brogue, Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel), Caves of Qud, Cogmind, DoomRL / DRL → Jupiter Hell, Dungeon of the Endless, Fell Seal: Arbiter's Mark, Moria / Angband, Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), NetHack, Rift Wizard, Rogue, Shattered Pixel Dungeon (і Pixel Dungeon), Sil
+- `mode-coop` ×14 🔥 — Columns (Колонки), Dungeon of the Endless, Emerald Mine, Gauntlet (1985), Heiankyo Alien (Digger), HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), Mechabellum, Mindustry — клітинна логістика й оборона, Random Dice (+ Rush Royale), Stardew Valley — фермерська сітка, Teamfight Tactics (TFT), Wildermyth, Wilmot's Warehouse, Wizard of Wor
 - `undo` ×14 🔥 — A Good Snowman Is Hard to Build, Bonfire Peaks, Golf Peaks, Hanano Puzzle (ハナノパズル), Ice-sliding puzzles (Inertia і жанр «ковзай до упору»), Jelly no Puzzle (ゼリーのパズル), LOK Digital, Patrick's Parabox, Puddle Knights, Snakebird, Sokoban (Сокобан), Stephen's Sausage Roll, Sumplete, Theseus and the Minotaur (Тесей і Мінотавр)
-- `mode-coop` ×13 🔥 — Columns (Колонки), Dungeon of the Endless, Emerald Mine, Gauntlet (1985), Heiankyo Alien (Digger), HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), Mechabellum, Mindustry — клітинна логістика й оборона, Random Dice (+ Rush Royale), Stardew Valley — фермерська сітка, Teamfight Tactics (TFT), Wilmot's Warehouse, Wizard of Wor
-- `permadeath` ×12 🔥 — 'One Way Heroics (Mystery Chronicle: One Way Heroics)', 868-HACK (+ Imbroglio, Cinco Paus — мікро-роглайки Michael Brough), Brogue, Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel), Caves of Qud, Cogmind, Dungeon of the Endless, Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), NetHack, Rift Wizard, Rogue, Shattered Pixel Dungeon (і Pixel Dungeon)
-- `level-editor` ×9 🔥 — Creeper World, Legend of Grimrock, Lode Runner, Mindustry — клітинна логістика й оборона, OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Pushmo / Pullblox (引ク押ス) + Crashmo, Super Mario Maker 2, Tower of the Sorcerer / Magic Tower (魔塔), Wrecking Crew
+- `level-editor` ×10 🔥 — Creeper World, Legend of Grimrock, Lode Runner, Mindustry — клітинна логістика й оборона, OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Pushmo / Pullblox (引ク押ス) + Crashmo, Super Mario Maker 2, Tower of the Sorcerer / Magic Tower (魔塔), Wildermyth, Wrecking Crew
 - `custom-rules` ×8 🔥 — Akropolis (Акрополіс), Conway's Game of Life (Гра «Життя»), Dorfromantik, Draughts / Checkers (Шашки), Lichess variants (варіанти шахів Lichess), Mindustry — клітинна логістика й оборона, Sudoku variants (варіанти судоку, Cracking the Cryptic / SudokuPad), Surakarta (Roundabouts)
 - `meta-progression` ×8 🔥 — 'One Way Heroics (Mystery Chronicle: One Way Heroics)', Backpack Hero, Crypt of the NecroDancer, Desktop Dungeons, Emberward, GemCraft, Loop Hero, Maze Mice
 - `seed-input` ×8 🔥 — 'One Way Heroics (Mystery Chronicle: One Way Heroics)', Brogue, Hexcells / Hexcells Plus / Hexcells Infinite, Ice-sliding puzzles (Inertia і жанр «ковзай до упору»), Shannon switching game / Bridg-It (+ Untangle), Shattered Pixel Dungeon (і Pixel Dungeon), Simon Tatham's Portable Puzzle Collection, Sliding-tile permutation puzzles (пʼятнашки й родичі)
@@ -1041,29 +3943,45 @@
 - `mode-sandbox` ×7 🔥 — Cell Machine, Dorfromantik, Factorio — клітинна логістика (конвеєри, маніпулятори, мережі), Mindustry — клітинна логістика й оборона, Prison Architect — шар кімнат і зон, The Powder Toy, Townscaper
 - `puzzle-bank` ×6 🔥 — Desktop Dungeons, Klotski (Хуажунський шлях) + Lunar Lockout, Knotwords, Rush Hour (ThinkFun), Theseus and the Minotaur (Тесей і Мінотавр), Ubongo + Katamino / IQ Puzzler (Убонго)
 - `share-code` ×6 🔥 — Cell Machine, Clash of Clans — розстановка бази на сітці, Manufactoria, Pushmo / Pullblox (引ク押ス) + Crashmo, Simon Tatham's Portable Puzzle Collection, Townscaper
+- `solution-metrics` ×6 🔥 — 7 Billion Humans, Human Resource Machine, Kaizen: A Factory Story, Opus Magnum, Robo Instructus, SpaceChem
+- `mode-versus` ×5 🔥 — Legion TD / Legion TD 2, Mechabellum, Mindustry — клітинна логістика й оборона, Random Dice (+ Rush Royale), SpellTower
+- `handicap` ×5 🔥 — Chaturanga / Shatranj (Чатуранга / Шатрандж), GIPF, Go (Ґо, вейці, бадук), Shogi (Сьоґі, японські шахи), Xiangqi (Сянці, китайські шахи)
 - `stars-rating` ×5 🔥 — BoxBoy! (ハコボーイ!), Candy Crush Saga, Hitman GO (+ Lara Croft GO), Rush Hour (ThinkFun), Tomb of the Mask
 - `operator-settings` ×5 🔥 — Amidar, Loco-Motion (Guttang Gottong), Pac-Man (Пекмен) і Ms. Pac-Man, Q*bert, Space Invaders (Космічні загарбники)
 - `streaks` ×5 🔥 — 868-HACK (+ Imbroglio, Cinco Paus — мікро-роглайки Michael Brough), NYT Connections (+ Strands), Sumplete, Waffle, Wordle
+- `roster-carryover` ×5 🔥 — Battle Brothers, Blood Bowl, Mewgenics, The Battle for Wesnoth (Битва за Веснот), XCOM: Enemy Unknown / XCOM 2
+- `run-map` ×5 🔥 — Cobalt Core, Emberward, Inscryption (Act 1), Monster Train, Wildfrost
 - `replay` ×4 🔥 — Clash of Clans — розстановка бази на сітці, Tower of the Sorcerer / Magic Tower (魔塔), Wilmot's Warehouse, XOR
 - `mod-support` ×4 🔥 — Factorio — клітинна логістика (конвеєри, маніпулятори, мережі), Mindustry — клітинна логістика й оборона, OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Untrusted — or the Continuing Adventures of Dr. Eval
 - `speed-control` ×4 🔥 — Conway's Game of Life (Гра «Життя»), OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Oxygen Not Included — клітинна фізика (гази, рідини, тепло), Prison Architect — шар кімнат і зон
 - `rewind` ×4 🔥 — Catrap (Pitman), Conway's Game of Life (Гра «Життя»), Pushmo / Pullblox (引ク押ス) + Crashmo, Toki Tori
 - `mode-endless` ×4 🔥 — Fieldrunners, GemCraft, Luck be a Landlord, Super Mario Maker 2
-- `mode-versus` ×4 🔥 — Mechabellum, Mindustry — клітинна логістика й оборона, Random Dice (+ Rush Royale), SpellTower
 - `hint` ×4 🔥 — Bejeweled (1–3, Twist), BoxBoy! (ハコボーイ!), Flow Free, Knotwords
 - `skip-level` ×4 🔥 — 7 Billion Humans, Helltaker, Pushmo / Pullblox (引ク押ス) + Crashmo, Supaplex
+- `custom-difficulty` ×4 🔥 — Fell Seal: Arbiter's Mark, SameGame / Clickomania + Flood (Tatham), Sliding-tile permutation puzzles (пʼятнашки й родичі), Sumplete
 - `auto-check` ×4 🔥 — Fillomino (Filling, «Заповнення»), Hashiwokakero (Hashi, Bridges, Мости), Kakuro (Cross Sums, Какуро), Masyu (Pearl, «Перлини»)
+- `bot-upload` ×4 🔥 — CodinGame: Hypersonic, CodinGame: Keep Off the Grass (Fall Challenge 2022), Lux AI Challenge, Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
 - `share-result` ×4 🔥 — NYT Connections (+ Strands), Sumplete, Waffle, Wordle
-- `handicap` ×3 🔥 — Go (Ґо, вейці, бадук), Shogi (Сьоґі, японські шахи), Xiangqi (Сянці, китайські шахи)
+- `solo-rank-table` ×3 🔥 — FITS, Harmonies, Next Station: London
+- `gif-export` ×3 🔥 — Kaizen: A Factory Story, Lenia, Opus Magnum
+- `mode-creative` ×3 🔥 — Mine Blocks, Mini Metro, Mini Motorways
+- `photo-mode` ×3 🔥 — Bonfire Peaks, Monument Valley, Townscaper
 - `mode-zen` ×3 🔥 — Bejeweled (1–3, Twist), Infinity Loop + Net (Tatham), SpellTower
 - `level-password` ×3 🔥 — Bloxorz, Chip's Challenge, Repton 1–3
+- `lives-regen` ×3 🔥 — Candy Crush Saga, Dots / Two Dots, Hexa Sort
 - `mode-puzzle` ×3 🔥 — Magical Drop (Chain Reaction), Panel de Pon (Tetris Attack, Puzzle League), Puyo Puyo (Пуйо Пуйо)
-- `custom-difficulty` ×3 🔥 — SameGame / Clickomania + Flood (Tatham), Sliding-tile permutation puzzles (пʼятнашки й родичі), Sumplete
+- `fast-travel` ×3 🔥 — A Monster's Expedition, Shadow Labyrinth, Toki Tori 2 / Toki Tori 2+
+- `hard-mode` ×3 🔥 — Absurdle, Mastermind (+ Bulls and Cows, «Бики й корови»), Wordle
+- `random-test-cases` ×3 🔥 — 7 Billion Humans, Human Resource Machine, Manufactoria
+- `league-promotion` ×3 🔥 — CodinGame: Hypersonic, CodinGame: Keep Off the Grass (Fall Challenge 2022), Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
 - `par-target` ×3 🔥 — Hitman GO (+ Lara Croft GO), Klotski (Хуажунський шлях) + Lunar Lockout, Rush Hour (ThinkFun)
 - `auto-explore` ×3 🔥 — Brogue, Caves of Qud, Dungeon Crawl Stone Soup
+- `challenge-modes` ×3 🔥 — Defense Grid: The Awakening, Desktop Tower Defense, DoomRL / DRL → Jupiter Hell
 - `mode-daily` ×3 🔥 — 'One Way Heroics (Mystery Chronicle: One Way Heroics)', Creeper World, Isle of Arrows
-- `roster-carryover` ×3 🔥 — Blood Bowl, The Battle for Wesnoth (Битва за Веснот), XCOM: Enemy Unknown / XCOM 2
-- `run-map` ×3 🔥 — Emberward, Inscryption (Act 1), Wildfrost
+- `new-game-plus` ×3 🔥 — Disgaea: Hour of Darkness, SteamWorld Heist, Triangle Strategy
+- `card-collection` ×3 🔥 — Clash Royale, Duelyst, Plants vs. Zombies Heroes
+- `gacha` ×3 🔥 — Arknights, Random Dice (+ Rush Royale), The Battle Cats
+- `local-versus` ×3 🔥 — Lock's Quest, Rampart, Swords & Soldiers
 - `colorblind-palette` ×2 — Sagrada (Саграда), Trainyard
 - `mode-time-attack` ×2 — Bookworm, Ubongo + Katamino / IQ Puzzler (Убонго)
 - `step-mode` ×2 — Cell Machine, Conway's Game of Life (Гра «Життя»)
@@ -1071,602 +3989,1810 @@
 - `unlockables` ×2 — Dorfromantik, Luck be a Landlord
 - `export-import` ×2 — Factorio — клітинна логістика (конвеєри, маніпулятори, мережі), Sokoban (Сокобан)
 - `level-sharing` ×2 — Prison Architect — шар кімнат і зон, Super Mario Maker 2
-- `photo-mode` ×2 — Bonfire Peaks, Townscaper
+- `year-end-awards` ×2 — Theme Hospital, Two Point Hospital
+- `submit-turn` ×2 — 5D Chess with Multiverse Time Travel, Apocalypse (Апокаліпсис, одночасні шахи коней і пішаків)
+- `team-chat` ×2 — Bughouse (Бʼюгхаус, шахи вдвох на двох дошках), Four-player chess (шахи на чотирьох)
+- `swap-rule` ×2 — Hex (Гекс), TwixT (Твікст)
 - `card-sets` ×2 — Memory / Concentration / Pairs («Мемо», «Знайди пару»), Onitama
+- `weekly-challenge` ×2 — Golden Krone Hotel, Really Bad Chess
 - `setup-presets` ×2 — Khet (Deflexion, Laser Chess), Stratego (Стратего)
 - `auto-solve` ×2 — Shannon switching game / Bridg-It (+ Untangle), Simon Tatham's Portable Puzzle Collection
+- `self-destruct` ×2 — Bone Cruncher, Crystal Mines II
+- `scripting` ×2 — Sandboxels, The Powder Toy
+- `energy-regen` ×2 — Alphabear, Merge Mansion / Merge Dragons
 - `stamina` ×2 — Arknights, Puzzle & Dragons (PAD, Пазли і Дракони)
+- `handling-settings` ×2 — Tetris (Тетрис, Tetris Guideline), Tetrisweeper
+- `retry-token` ×2 — Pushover (Push-Over), Spherical
+- `one-button-mode` ×2 — Dynamine, endless mines
 - `fog-of-ranks` ×2 — Geister (Ghosts!, Good & Bad Ghosts; «Привиди»), Stratego (Стратего)
 - `no-guess` ×2 — Kaboom (+ LuckSweeper, Pure Skill Minesweeper, Tatham Mines — сапер, що карає або прощає вгадування), Minesweeper (Сапер)
-- `hard-mode` ×2 — Mastermind (+ Bulls and Cows, «Бики й корови»), Wordle
+- `adaptive-level` ×2 — Bosconian, Voltorb Flip
+- `battle-pass` ×2 — Bomberman — battle mode (Super Bomberman, Super Bomberman R / R Online / R 2), Clash Royale
+- `numbered-variations` ×2 — Combat, Maze Craze
+- `non-unique-mode` ×2 — Dominosa (Доміноза), Shikaku (Шікаку, Rectangles, Divide by Box)
 - `daily-puzzle` ×2 — Kakuro (Cross Sums, Какуро), LOK Digital
-- `solution-metrics` ×2 — 7 Billion Humans, Opus Magnum
-- `random-test-cases` ×2 — 7 Billion Humans, Manufactoria
+- `personal-input` ×2 — Advent of Code 2016, день 22: Grid Computing, Advent of Code — сіткові пазли (збірка)
+- `two-part-reveal` ×2 — Advent of Code 2016, день 22: Grid Computing, Advent of Code — сіткові пазли (збірка)
+- `workshop` ×2 — Infinifactory, Opus Magnum
+- `multiple-endings` ×2 — Ancient Domains of Mystery (ADOM), Omega
+- `character-import` ×2 — Castle of the Winds, The Bard's Tale / Might and Magic — сіткові dungeon crawl 80-х
+- `difficulty-ladder` ×2 — Larn, Ratropolis
+- `item-storage` ×2 — Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), Torneko's Great Adventure: Mystery Dungeon
 - `save-and-quit` ×2 — NetHack, Rogue
+- `game-modifiers` ×2 — Element TD 2, Tangledeep
+- `mode-challenge` ×2 — Absurdle, Hoplite
 - `reset-zone` ×2 — A Monster's Expedition, Isles of Sea and Sky
 - `onboarding-hints` ×2 — Carto, Taiji + The Witness (панелі)
-- `gacha` ×2 — Arknights, Random Dice (+ Rush Royale)
+- `optional-challenges` ×2 — Felix the Reaper, Toodee and Topdee
 - `rank-tiers` ×2 — Mechabellum, Random Dice (+ Rush Royale)
+- `mutators` ×2 — Monster Train, Thronefall
+- `mode-survival` ×2 — Bookworm Adventures, Revenge of the Titans
+- `puzzle-creator` ×2 — Bonza Word Puzzle, Nerdle
+- `declare-and-verify` ×2 — Countdown — numbers round / Countle, Krypto
 - `async-multiplayer` ×2 — Letterpress, Scrabble (цифрові версії; Words With Friends)
+- `public-holdings-toggle` ×1 — Acquire
 - `rated-games` ×1 — Blokus (Блокус)
 - `expansion-toggle` ×1 — Carcassonne (Каркасон)
 - `scenarios` ×1 — Cascadia + Calico (Каскадія, Калико)
 - `achievements` ×1 — Cascadia + Calico (Каскадія, Калико)
+- `password-word` ×1 — Daedalian Opus
+- `turn-based-building` ×1 — Galaxy Trucker
+- `legacy-campaign` ×1 — My City
+- `solo-bot-deck` ×1 — Project L
+- `take-back-until-draw` ×1 — Tash-Kalar: Arena of Legends
+- `serpentine-setup` ×1 — Through the Desert (Крізь пустелю)
+- `themed-sheets` ×1 — Welcome To… (Ласкаво просимо до…)
+- `let-it-be` ×1 — A Little to the Left
+- `solution-stars` ×1 — A Little to the Left
+- `visitor-boost` ×1 — Animal Crossing — New Horizons (схрещування квітів)
+- `blueprint-mode` ×1 — Anno 1800 — дальність сервісів по дорогах
+- `test-kitchen` ×1 — Automachef
+- `simulate-order` ×1 — Automachef
+- `async-pvp` ×1 — Backpack Battles
+- `event-toggle` ×1 — Block'hood
+- `task-force-operation` ×1 — Boom Beach
+- `loop-video-export` ×1 — Cloud Gardens
+- `dedicated-server` ×1 — Core Keeper — сітковий шар (копання, ферма, автоматизація)
+- `shared-stash` ×1 — Diablo II (inventory)
 - `leaderboard-online` ×1 — Dorfromantik
+- `passive-mode` ×1 — Dredge
+- `link-graph` ×1 — Dwarf Fortress — призначення клітин і рідини
+- `ending-evaluation` ×1 — Harvest Moon (SNES)
+- `disaster-toggles` ×1 — Kingdoms and Castles
+- `agent-placement` ×1 — Langton's Ant (Мураха Ленгтона) і турміти
 - `difficulty-presets` ×1 — Luck be a Landlord
+- `mode-expert` ×1 — Mini Motorways
+- `premium-speedup` ×1 — FarmVille і Hay Day — ферма на годиннику
+- `offline-progress` ×1 — FarmVille і Hay Day — ферма на годиннику
 - `overlays` ×1 — Oxygen Not Included — клітинна фізика (гази, рідини, тепло)
+- `prep-phase` ×1 — PlateUp!
+- `loan` ×1 — Production Line
+- `auto-sort` ×1 — Resident Evil 4 (attaché case)
+- `storyteller` ×1 — RimWorld — шар кімнат і температури
+- `track-design-save` ×1 — RollerCoaster Tycoon
+- `puzzle-share` ×1 — shapez
+- `presets` ×1 — SimAnt
+- `auto-manager` ×1 — SimAnt
+- `background-sim` ×1 — SimAnt
+- `disaster-toggle` ×1 — SimCity (1989) / Micropolis
 - `autosave` ×1 — Stardew Valley — фермерська сітка
+- `phase-reset` ×1 — Terra Nil
+- `appreciate-mode` ×1 — Terra Nil
+- `liquid-dynamics-setting` ×1 — Terraria — рідини
+- `allow-anywhere` ×1 — Unpacking
+- `motion-toggle` ×1 — Unpacking
+- `outline-color` ×1 — Unpacking
 - `mode-hardcore` ×1 — Wilmot's Warehouse
 - `send-move` ×1 — Arimaa
 - `buy-time` ×1 — Ataxx
+- `render-mode-toggle` ×1 — Battle Chess
+- `ai-vs-ai` ×1 — Battle Chess
+- `board-size-variant` ×1 — Capablanca chess (шахи Капабланки) і сімʼя 10×8
+- `loser-switches-army` ×1 — Chess 2: The Sequel (Sirlin's Chess)
+- `army-randomizer` ×1 — Chess with Different Armies (шахи різних армій, Betza)
 - `premove` ×1 — Chess (Шахи) — цифрова гра
 - `takeback-request` ×1 — Chess (Шахи) — цифрова гра
 - `rating` ×1 — Chess (Шахи) — цифрова гра
 - `engine-analysis` ×1 — Chess (Шахи) — цифрова гра
+- `board-start-preset` ×1 — Dots and Boxes (Крапки й квадрати)
+- `claim-win` ×1 — Four-player chess (шахи на чотирьох)
 - `score-estimator` ×1 — Go (Ґо, вейці, бадук)
-- `swap-rule` ×1 — Hex (Гекс)
+- `placings` ×1 — Halma / Chinese checkers (Хальма / Китайські шашки)
+- `ai-learning` ×1 — Hexapawn (гексапішак) і машина, що вчиться на сірникових коробках
+- `ai-reset` ×1 — Hexapawn (гексапішак) і машина, що вчиться на сірникових коробках
+- `side-swap-match` ×1 — Hnefatafl (Тафл, «королівська дошка»)
 - `match-length` ×1 — Kamisado
+- `start-count-button` ×1 — Makruk (Макрук, тайські шахи)
+- `shop-freeze` ×1 — Passant: A Chess Roguelike
+- `shop-reroll` ×1 — Passant: A Chess Roguelike
+- `goal-hole-select` ×1 — Peg solitaire (Пег-солітер)
+- `seasonal-rules` ×1 — Quantum Chess (Квантові шахи, Cantwell)
+- `pawn-rule-option` ×1 — Raumschach (просторові шахи)
+- `rank-handicap` ×1 — Really Bad Chess
 - `hint-move` ×1 — Reversi / Othello (Реверсі)
+- `god-powers` ×1 — Santorini (Санторіні)
+- `plan-aggressive-first` ×1 — Shōbu (Шобу)
 - `piece-set-select` ×1 — Xiangqi (Сянці, китайські шахи)
+- `hint-from-collectibles` ×1 — Archaica: The Path of Light
+- `solution-code` ×1 — Chromatron (1–5)
 - `mode-practice` ×1 — Deflektor (+ Mindbender)
 - `mode-inverse` ×1 — Infinity Loop + Net (Tatham)
 - `solution-proof` ×1 — LaserTank
 - `unlockable-palettes` ×1 — LYNE
+- `mode-extreme` ×1 — Mini Metro
+- `world-record-hunt` ×1 — Oxyd (+ Enigma)
+- `hint-for-currency` ×1 — Plumber / Pipes / Water Connect (мобільний жанр)
+- `hint-cooldown` ×1 — SOLAS 128
+- `optional-objectives` ×1 — Train Valley
 - `solution-sharing` ×1 — Trainyard
 - `move-notation` ×1 — Trax
+- `mode-versus-race` ×1 — Unrailed!
+- `map-editor-share` ×1 — Unrailed!
+- `perfect-bonus` ×1 — Diamond Rush
 - `profile-slots` ×1 — Heartlight
+- `quiz-between-levels` ×1 — Joshua & the Battle of Jericho
+- `weapon-availability` ×1 — Liero
 - `team-mode` ×1 — Rocks'n'Diamonds
-- `scripting` ×1 — The Powder Toy
+- `remix` ×1 — Sandspiel Studio
+- `turn-order-options` ×1 — Scorched Earth
+- `sandbox-draw` ×1 — Sugar, Sugar
+- `iap-unlock` ×1 — Where's My Water?
 - `keep-playing` ×1 — 2048 (+ Threes як предок)
-- `lives-regen` ×1 — Candy Crush Saga
+- `fail-reset-chain` ×1 — Beglitched
+- `revive-offer` ×1 — Block Blast! (і родина 1010! / Woodoku)
+- `pit-size` ×1 — Blockout (Block Out)
+- `piece-set` ×1 — Blockout (Block Out)
+- `online-replay-scores` ×1 — Blockout (Block Out)
+- `shared-sequence` ×1 — Drop7
+- `guild-events` ×1 — Gems of War (і Marvel Puzzle Quest)
+- `gacha-chests` ×1 — Gems of War (і Marvel Puzzle Quest)
+- `match-size-setting` ×1 — Hatris
+- `skin-playlist` ×1 — Lumines (Люмінес)
+- `music-sequencer` ×1 — Lumines (Люмінес)
+- `hint-disqualifies` ×1 — Mahjong Solitaire (Shanghai, Маджонг-пасьянс)
+- `renovation-meta` ×1 — Homescapes / Gardenscapes / Royal Match (мета-шар ремонту)
+- `teams` ×1 — Homescapes / Gardenscapes / Royal Match (мета-шар ремонту)
+- `material-bank` ×1 — Meteos (Метеос)
+- `handedness` ×1 — Pictobits
+- `unlock-bank` ×1 — Poker Smash
+- `mode-swap` ×1 — Puyo Puyo Tetris
+- `mode-fusion` ×1 — Puyo Puyo Tetris
+- `mode-party` ×1 — Puyo Puyo Tetris
+- `mode-big-bang` ×1 — Puyo Puyo Tetris
+- `auto-fire` ×1 — Puzzle Bobble / Snood / Frozen Bubble
+- `minigame-variants` ×1 — Puzzle Quest: Challenge of the Warlords
 - `solver-par` ×1 — SameGame / Clickomania + Flood (Tatham)
-- `handling-settings` ×1 — Tetris (Тетрис, Tetris Guideline)
+- `solve-no-record` ×1 — TetraVex
+- `server-settings` ×1 — TetriNET
+- `team-play` ×1 — TetriNET
+- `mode-chill` ×1 — Tetris Effect / Tetris Effect Connected
+- `weekend-event` ×1 — Tetris Effect / Tetris Effect Connected
+- `practice-no-lose` ×1 — Tetris Effect / Tetris Effect Connected
+- `title-codes` ×1 — Tetris The Grand Master (TGM)
 - `mode-sprint` ×1 — Tetris (Тетрис, Tetris Guideline)
 - `mode-ultra` ×1 — Tetris (Тетрис, Tetris Guideline)
+- `character-stats` ×1 — Tetrisphere
+- `mode-hide-and-seek` ×1 — Tetrisphere
+- `card-draft` ×1 — Titanium Court
+- `mode-race` ×1 — Tricky Towers
+- `pre-level-boosters` ×1 — Triple Match 3D / Tile Explorer
+- `technical-rank` ×1 — Wario's Woods
+- `paid-preview` ×1 — Welltris
+- `mode-tokoton` ×1 — Zoo Keeper
+- `curator-quests` ×1 — Zoo Keeper
+- `assist-after-deaths` ×1 — Captain Toad: Treasure Tracker
+- `bonus-objective` ×1 — Captain Toad: Treasure Tracker
+- `pass-cycle` ×1 — Chuckie Egg
+- `level-save-tape` ×1 — King's Valley II: The Seal of El Giza
+- `edit-contest` ×1 — King's Valley II: The Seal of El Giza
+- `suicide-restart` ×1 — King's Valley
 - `time-trial` ×1 — Kula World (Roll Away, KulaQuest)
-- `retry-token` ×1 — Pushover (Push-Over)
+- `promote-currency` ×1 — Levelhead
+- `coop-editing` ×1 — Levelhead
+- `save-costs-life` ×1 — Championship Lode Runner і Lode Runner Legacy
+- `completion-certificate` ×1 — Championship Lode Runner і Lode Runner Legacy
+- `asset-editor` ×1 — Championship Lode Runner і Lode Runner Legacy
+- `night-levels` ×1 — Lode Runner: The Legend Returns
+- `level-packs` ×1 — Lode Runner: The Legend Returns
+- `retry-costs-life` ×1 — Mario vs. Donkey Kong
+- `time-attack` ×1 — Mario vs. Donkey Kong
+- `level-qr-share` ×1 — Mekorama
+- `pay-what-you-want` ×1 — Mekorama
+- `mission-select` ×1 — Monster Max
+- `bonus-stage` ×1 — Nebulus
+- `paid-level-packs` ×1 — Pushmo World / Stretchmo
 - `secret-levels` ×1 — Solomon's Key
+- `room-scoped-powerup` ×1 — Solstice
 - `user-levels-browser` ×1 — Super Mario Maker 2
 - `level-rating` ×1 — Super Mario Maker 2
 - `ghost-run` ×1 — Super Mario Maker 2
+- `one-life` ×1 — Treasure Island Dizzy
 - `rule-combos` ×1 — 14 Minesweeper Variants
 - `focus-hint` ×1 — 14 Minesweeper Variants
 - `salvo-mode` ×1 — Battleship (Морський бій)
 - `counterexample-check` ×1 — Black Box (Чорна скринька)
 - `lock-cells` ×1 — Black Box (Чорна скринька)
+- `rule-library` ×1 — Bombe
+- `team-roles` ×1 — Captain Sonar
+- `hazard-mix` ×1 — Cavern Sweeper
 - `auto-notebook` ×1 — Cluedo (Clue; «Клуедо»)
+- `companion-app` ×1 — Cryptid
 - `fog-of-war` ×1 — Kriegspiel + Dark Chess (Fog of War; «шахи наосліп із суддею» і «шахи в тумані»)
+- `auto-sweep` ×1 — DemonCrawl
+- `profiles` ×1 — DemonCrawl
 - `stamps` ×1 — Dragonsweeper
+- `auto-pickup` ×1 — Dungeon Squire
+- `auto-level-up` ×1 — Dungeon Squire
+- `show-monster-levels` ×1 — Dungeon Squire
+- `death-penalty-setting` ×1 — Dynamine
+- `reset-progress` ×1 — Dynamine
+- `auto-eliminate` ×1 — Guess Who? (Вгадай, хто?)
+- `dlc-level-packs` ×1 — hexceed
 - `perfect-run` ×1 — Hexcells / Hexcells Plus / Hexcells Infinite
 - `same-setup` ×1 — Hunt the Wumpus («Полювання на Вампуса»)
 - `guess-policy` ×1 — Kaboom (+ LuckSweeper, Pure Skill Minesweeper, Tatham Mines — сапер, що карає або прощає вгадування)
 - `debug-overlay` ×1 — Kaboom (+ LuckSweeper, Pure Skill Minesweeper, Tatham Mines — сапер, що карає або прощає вгадування)
 - `undo-after-death` ×1 — Kaboom (+ LuckSweeper, Pure Skill Minesweeper, Tatham Mines — сапер, що карає або прощає вгадування)
+- `royal-seals` ×1 — Keepsweeper
+- `streak-score` ×1 — Lizzi Crossing
+- `referee-mode` ×1 — Luzhanqi (Лучжаньці, китайські армійські шахи)
+- `allied-visible` ×1 — Luzhanqi (Лучжаньці, китайські армійські шахи)
+- `mode-combination` ×1 — Mamono Sweeper
 - `share-grid` ×1 — Mastermind (+ Bulls and Cows, «Бики й корови»)
 - `role-swap` ×1 — Mastermind (+ Bulls and Cows, «Бики й корови»)
+- `no-flags` ×1 — Minato
+- `size-budget` ×1 — mine1k
+- `speech-output` ×1 — Mined-Out
+- `delta-mode` ×1 — Minesweeper у вимірах: 4D Minesweeper, Tilesweeper, Timesweeper
+- `mode-survival-decay` ×1 — Minesweeper Infinite
+- `mode-blitz` ×1 — Minesweeper Infinite
 - `board-metrics` ×1 — Minesweeper (Сапер)
 - `no-flags-style` ×1 — Minesweeper (Сапер)
+- `guess-warning` ×1 — Patterna
+- `generator-options` ×1 — Patterna
+- `invert-buttons` ×1 — Polimines / Polimines 2
+- `free-draw-notes` ×1 — Polimines / Polimines 2
+- `location-tracker` ×1 — Scotland Yard (Скотланд-Ярд)
+- `size-cycle-button` ×1 — Sudo Sweep
+- `mode-endless-after-win` ×1 — Tacticsweeper
+- `auto-countdown` ×1 — Tametsi
+- `mode-marathon-to-endless` ×1 — Tetrisweeper
+- `fewest-probes-challenge` ×1 — Triangulation
 - `cash-out` ×1 — Voltorb Flip
-- `adaptive-level` ×1 — Voltorb Flip
+- `target-score` ×1 — Achtung, die Kurve! (Увага, поворот!)
+- `server-physics-config` ×1 — Armagetron Advanced
+- `skill-levels` ×1 — Adventure (Atari 2600)
+- `league-tiers` ×1 — Bomberman — battle mode (Super Bomberman, Super Bomberman R / R Online / R 2)
+- `emotes` ×1 — Bomberman — мультиплеєрні гілки (Dyna Blaster, Saturn Bomberman, Atomic Bomberman, Bomberman Blast)
+- `crossplay` ×1 — Bomberman — мультиплеєрні гілки (Dyna Blaster, Saturn Bomberman, Atomic Bomberman, Bomberman Blast)
 - `match-trophies` ×1 — Bomberman
+- `trackball` ×1 — Crystal Castles
+- `secret-warp` ×1 — Crystal Castles
+- `shared-keys` ×1 — Dandy / Dark Chambers
+- `difficulty-loop` ×1 — Flicky
 - `free-gift-timer` ×1 — Frogger (Жабка) / Crossy Road
+- `length-stock` ×1 — Jungler
+- `message-toggle` ×1 — Kroz
+- `visibility-levels` ×1 — Maze Craze
+- `spectator-overview` ×1 — Maze War
+- `maze-rotation` ×1 — Ms. Pac-Man
+- `revive` ×1 — Pac-Man 256
+- `course-select` ×1 — Pac-Man Championship Edition / DX (Пекмен: чемпіонське видання)
+- `spectator-powerups` ×1 — Pac-Man spin-offs (Pac & Pal, Baby Pac-Man, Mega Tunnel Battle)
+- `server-select` ×1 — Slither.io
+- `name-tag` ×1 — Slither.io
 - `maze-select` ×1 — Snake (Змійка) / Nibbles / Nokia Snake
+- `honk` ×1 — Splix.io
+- `hardware-switches` ×1 — Surround (Atari 2600)
+- `twin-stick-option` ×1 — Tutankham
+- `world-editor` ×1 — ZZT
+- `auto-flood` ×1 — Aquarium (Акваріум)
+- `print-layout` ×1 — Krazydad (банк друкованих пазлів)
+- `solve-order-hint` ×1 — Krazydad (банк друкованих пазлів)
 - `symmetry-option` ×1 — Light Up (Akari, Бідзюцукан)
 - `theme-select` ×1 — Masyu (Pearl, «Перлини»)
 - `time-penalty` ×1 — Nonogram (Японський кросворд, Picross, Griddlers, Hanjie)
 - `try-it-out` ×1 — Nonogram (Японський кросворд, Picross, Griddlers, Hanjie)
 - `picture-reveal` ×1 — Nonogram (Японський кросворд, Picross, Griddlers, Hanjie)
-- `non-unique-mode` ×1 — Shikaku (Шікаку, Rectangles, Divide by Box)
+- `slice-view` ×1 — Picross-варіанти (Picross 3D, Round 2, Mega, Color, Clip)
+- `one-chance-mode` ×1 — Picross-варіанти (Picross 3D, Round 2, Mega, Color, Clip)
+- `construction-challenge` ×1 — Picross-варіанти (Picross 3D, Round 2, Mega, Color, Clip)
+- `trial-mode` ×1 — puzz.link (pzprjs / pzprv3)
+- `fail-code-check` ×1 — puzz.link (pzprjs / pzprv3)
+- `board-transform` ×1 — puzz.link (pzprjs / pzprv3)
+- `image-export` ×1 — puzz.link (pzprjs / pzprv3)
+- `auto-check-levels` ×1 — puzz.link (pzprjs / pzprv3)
+- `solve-tracking` ×1 — puzz.link (pzprjs / pzprv3)
+- `what-if` ×1 — Sherlock (Everett Kaser)
+- `view-2d-3d` ×1 — Skyscrapers (Towers, Хмарочоси)
+- `step-solver` ×1 — Str8ts (Стрейтс)
 - `auto-candidates` ×1 — Sudoku (Судоку, Number Place)
 - `technique-hints` ×1 — Sudoku (Судоку, Number Place)
 - `second-chance` ×1 — Sudoku (Судоку, Number Place)
 - `print` ×1 — Simon Tatham's Portable Puzzle Collection
-- `personal-input` ×1 — Advent of Code — сіткові пазли (збірка)
-- `two-part-reveal` ×1 — Advent of Code — сіткові пазли (збірка)
 - `private-leaderboard` ×1 — Advent of Code — сіткові пазли (збірка)
-- `bot-upload` ×1 — Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
+- `teach-by-demo` ×1 — Autonauts
+- `bot-database` ×1 — Autonauts
+- `self-modifying-code` ×1 — Befunge (Befunge-93)
+- `block-limit` ×1 — Blockly Games Maze і Code.org Classic Maze
+- `skin-select` ×1 — Blockly Games Maze і Code.org Classic Maze
+- `certificate` ×1 — Blockly Games Maze і Code.org Classic Maze
 - `local-referee` ×1 — Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
-- `league-promotion` ×1 — Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
+- `stars-by-size` ×1 — Cargo-Bot
+- `solution-video` ×1 — Cargo-Bot
+- `vs-mode-saved-units` ×1 — Carnage Heart
+- `equipment-unlocks-api` ×1 — CodeCombat
+- `required-restricted-methods` ×1 — CodeCombat
+- `clean-code-bonus` ×1 — CodeCombat
+- `code-arena-ladder` ×1 — CodeCombat
+- `hill-submission` ×1 — Core War
+- `p-space` ×1 — Core War
+- `recipe-discovery` ×1 — Craftomation 101
+- `self-replication` ×1 — Craftomation 101
+- `command-alias` ×1 — Duskers
+- `leave-no-trace` ×1 — EXAPUNKS
+- `puzzle-scripting-api` ×1 — EXAPUNKS
+- `sandbox-both-teams` ×1 — Gladiabots
+- `tournaments` ×1 — Gladiabots
+- `program-clipboard` ×1 — Human Resource Machine
+- `sandbox-containers` ×1 — Infinifactory
+- `live-edit` ×1 — Kaizen: A Factory Story
 - `sensor-config` ×1 — Kara (Кара — сонечко)
 - `goal-check` ×1 — Karel the Robot (Reeborg's World)
 - `random-variants` ×1 — Karel the Robot (Reeborg's World)
 - `slot-limit` ×1 — Lightbot (Light-Bot)
-- `gif-export` ×1 — Opus Magnum
-- `workshop` ×1 — Opus Magnum
+- `time-bank` ×1 — Lux AI Challenge
+- `hidden-params` ×1 — Lux AI Challenge
+- `code-export-text` ×1 — Mindustry — logic (mlog)
+- `card-cheat-move` ×1 — MOLEK-SYNTEZ
+- `multi-stage-tests` ×1 — Robo Instructus
+- `hidden-test-stages` ×1 — Robo Instructus
+- `function-unlocks` ×1 — Robo Instructus
+- `real-robot-export` ×1 — RoboMind
+- `localized-keywords` ×1 — RoboMind
 - `simultaneous-turns` ×1 — RoboRally
+- `blocks-text-switch` ×1 — Robot Karol
 - `simulation-speed` ×1 — Robot Odyssey
 - `chip-library` ×1 — Robot Odyssey
+- `human-interpreter` ×1 — Robot Turtles
+- `staged-rules` ×1 — Robot Turtles
+- `program-ahead` ×1 — Robot Turtles
 - `difficulty-vote` ×1 — RoboZZle
 - `solution-required` ×1 — RoboZZle
 - `persistent-world` ×1 — Screeps (Screeps World, Screeps Arena)
 - `simulation-room` ×1 — Screeps (Screeps World, Screeps Arena)
 - `private-server` ×1 — Screeps (Screeps World, Screeps Arena)
+- `user-puzzles` ×1 — SpaceChem
+- `code-built-level` ×1 — Swift Playgrounds (Learn to Code, Byte)
+- `lesson-book` ×1 — Swift Playgrounds (Learn to Code, Byte)
 - `tech-tree` ×1 — The Farmer Was Replaced
 - `simulation-run` ×1 — The Farmer Was Replaced
 - `external-editor` ×1 — The Farmer Was Replaced
+- `breakpoints` ×1 — TIS-100
+- `specification-editor` ×1 — TIS-100
+- `custom-components` ×1 — Turing Complete
 - `code-unlock-items` ×1 — Untrusted — or the Continuing Adventures of Dr. Eval
+- `agent-api` ×1 — Wumpus world («Світ Вампуса»)
+- `batch-trials` ×1 — Wumpus world («Світ Вампуса»)
 - `give-up-restart` ×1 — Adventures of Lolo (Eggerland)
 - `restart-cost` ×1 — Atomix
+- `upload-requires-solution` ×1 — Escape (Tom 7)
+- `moderated-collections` ×1 — Escape (Tom 7)
+- `speedrun-solutions` ×1 — Escape (Tom 7)
 - `hint-purchase` ×1 — Hitman GO (+ Lara Croft GO)
 - `show-solution` ×1 — Ice-sliding puzzles (Inertia і жанр «ковзай до упору»)
 - `view-toggle` ×1 — Kwirk (Puzzle Boy)
+- `god-mode` ×1 — Kye
+- `hub-world` ×1 — Pipe Push Paradise
+- `hint-tokens` ×1 — Quell
 - `solver-referee` ×1 — Ricochet Robots (Rasende Roboter)
 - `room-reset` ×1 — RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II)
 - `mode-speedrun` ×1 — Sliding-tile permutation puzzles (пʼятнашки й родичі)
 - `reverse-mode` ×1 — Sokoban (Сокобан)
 - `snapshots` ×1 — Sokoban (Сокобан)
+- `control-split` ×1 — Sokoboxes Duo
 - `ad-revive` ×1 — Tomb of the Mask
+- `random-goal-draw` ×1 — Train shunting puzzle (Inglenook Sidings, Timesaver)
+- `rewarded-ad` ×1 — Unblock Me і Parking Jam 3D (мобільні Rush Hour)
+- `hint-currency` ×1 — Unblock Me і Parking Jam 3D (мобільні Rush Hour)
+- `lives-energy` ×1 — Unblock Me і Parking Jam 3D (мобільні Rush Hour)
+- `idle-income` ×1 — Unblock Me і Parking Jam 3D (мобільні Rush Hour)
+- `birth-options` ×1 — Moria / Angband
+- `character-dump` ×1 — Moria / Angband
+- `brain-scan` ×1 — Beneath Apple Manor
+- `reincarnate-on-stairs` ×1 — Beneath Apple Manor
 - `travel-click` ×1 — Brogue
+- `fixed-beat-mode` ×1 — Cadence of Hyrule: Crypt of the NecroDancer Featuring The Legend of Zelda
+- `coffee-break-run` ×1 — Cardinal Quest
+- `save-anywhere` ×1 — Castle of the Winds
+- `rank-title` ×1 — Cave Noire
 - `mode-roleplay` ×1 — Caves of Qud
 - `keyboard-mode` ×1 — Cogmind
 - `custom-music` ×1 — Crypt of the NecroDancer
+- `rank-unlocks` ×1 — DoomRL / DRL → Jupiter Hell
 - `travel` ×1 — Dungeon Crawl Stone Soup
 - `online-spectate` ×1 — Dungeon Crawl Stone Soup
 - `codex` ×1 — Dungeon Encounters
+- `sleep-zzz` ×1 — Dungeon Master
+- `skill-loadout` ×1 — Dungeons of Dredmor
+- `crafting` ×1 — Dungeons of Dredmor
+- `permadeath-toggle` ×1 — Dungeons of Dredmor
+- `short-floors` ×1 — Dungeons of Dredmor
+- `mode-maze` ×1 — DungeonUp
+- `hand-drawn-map` ×1 — Etrian Odyssey
+- `map-completion-reward` ×1 — Etrian Odyssey
+- `party-import` ×1 — Eye of the Beholder
+- `morgue-file` ×1 — Golden Krone Hotel
+- `replay-verification` ×1 — H5mota (H5魔塔广场) — спільнота веб-веж
+- `score-upload` ×1 — H5mota (H5魔塔广场) — спільнота веб-веж
+- `plugin-api` ×1 — H5mota (H5魔塔广场) — спільнота веб-веж
+- `event-editor` ×1 — H5mota (H5魔塔广场) — спільнота веб-веж
+- `left-hand-mode` ×1 — H5mota (H5魔塔广场) — спільнота веб-веж
+- `role-select` ×1 — Hack
+- `win-report` ×1 — Harmless7DRL
+- `abandon-character` ×1 — Harmless7DRL
 - `mode-pure-tactics` ×1 — HyperRogue
 - `orb-strategy` ×1 — HyperRogue
 - `geometry-switch` ×1 — HyperRogue
+- `background-select` ×1 — Infra Arcana (огляд з The Ground Gives Way і Zorbus)
+- `trait-pick` ×1 — Infra Arcana (огляд з The Ground Gives Way і Zorbus)
+- `save-delete-on-load` ×1 — Infra Arcana (огляд з The Ground Gives Way і Zorbus)
+- `wall-break` ×1 — Labyrinth of Refrain: Coven of Dusk
+- `cross-game-debt` ×1 — Larn
 - `old-school-mode` ×1 — Legend of Grimrock
 - `map-notes` ×1 — Legend of Grimrock
+- `board-building` ×1 — Morphblade
 - `rescue-by-friend` ×1 — Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon)
-- `item-storage` ×1 — Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon)
 - `bones` ×1 — NetHack
 - `conducts` ×1 — NetHack
+- `auto-play` ×1 — Path of Achra
+- `ascension` ×1 — Pawnbarian
 - `challenges` ×1 — Shattered Pixel Dungeon (і Pixel Dungeon)
 - `daily-run` ×1 — Shattered Pixel Dungeon (і Pixel Dungeon)
 - `spell-filter-by-tag` ×1 — Rift Wizard
-- `new-game-plus` ×1 — Disgaea: Hour of Darkness
+- `career-years` ×1 — Road Not Taken
+- `auto-teleport` ×1 — Robots (BSD) / Chase / Daleks
+- `start-level` ×1 — Robots (BSD) / Chase / Daleks
+- `difficulty-days` ×1 — Shogun Showdown
+- `infinite-lives` ×1 — Shovel Knight Pocket Dungeon
+- `town-decoration` ×1 — Sproggiwood
+- `route-memo` ×1 — Tactical Nexus
+- `pure-run` ×1 — Tactical Nexus
+- `lives-mode` ×1 — Tales of Maj'Eyal
+- `online-profile` ×1 — Tales of Maj'Eyal
+- `class-unlocks` ×1 — Tales of Maj'Eyal
+- `job-change` ×1 — Tangledeep
+- `monster-corral` ×1 — Tangledeep
+- `shared-bank` ×1 — Tangledeep
+- `mode-adventure` ×1 — Tangledeep
+- `mode-heroic` ×1 — Tangledeep
+- `meta-shop-stages` ×1 — Torneko's Great Adventure: Mystery Dungeon
+- `bestiary-unlock` ×1 — TowerBound
+- `quick-resume` ×1 — Twinfold
+- `scenario-export` ×1 — Wizardry: Proving Grounds of the Mad Overlord
+- `corpse-recovery` ×1 — Wizardry: Proving Grounds of the Mad Overlord
+- `story-mode-maxed` ×1 — Ash of Gods: Redemption
+- `ironman` ×1 — Ash of Gods: Redemption
+- `ranked-ladder` ×1 — Auro: A Monster-Bumping Adventure
+- `no-reload-consequences` ×1 — The Banner Saga
+- `career-mode` ×1 — BattleTech
+- `scenario-book` ×1 — Betrayal at House on the Hill
+- `loot-chests` ×1 — Card Hunter
+- `skirmish` ×1 — Children of Zodiarcs
+- `victory-toggles` ×1 — Civilization (бойовий шар юнітів, I–VI)
+- `app-overlord` ×1 — Descent: Journeys in the Dark
+- `draft-run` ×1 — Duelyst
+- `fatigue-damage` ×1 — Faeria
+- `fight-replay` ×1 — Fights in Tight Spaces
+- `dispatch` ×1 — Final Fantasy Tactics Advance
+- `link-trade` ×1 — Final Fantasy Tactics Advance
 - `mode-casual` ×1 — Fire Emblem (GBA, The Blazing Blade як база)
-- `mode-challenge` ×1 — Hoplite
+- `legacy-unlocks` ×1 — Gloomhaven
+- `scenario-level` ×1 — Gloomhaven
+- `map-sharing` ×1 — Heroscape
+- `roster-fatigue` ×1 — Inkulinati
 - `reset-turn` ×1 — Into the Breach
+- `custom-generation` ×1 — Invisible, Inc.
+- `time-compression` ×1 — Jagged Alliance 2
+- `campaign-timeline` ×1 — Kingdom Death: Monster
+- `garrison` ×1 — King's Bounty: The Legend (King's Bounty. Легенда о рыцаре)
+- `hidden-ai-moves` ×1 — Rebelstar / Laser Squad
+- `easy-mode-toggle` ×1 — Mario + Rabbids Kingdom Battle
+- `sandbox-parts` ×1 — Mech Armada
+- `mirror-match` ×1 — Memoir '44 / Commands & Colors
+- `breeding` ×1 — Mewgenics
+- `print-map-export` ×1 — Ogre
+- `run-carryover` ×1 — Othercide
+- `core-army` ×1 — Panzer General
 - `pass-and-play` ×1 — The Battle of Polytopia
-- `fast-travel` ×1 — A Monster's Expedition
+- `workshop-campaigns` ×1 — Shadowrun Returns
+- `view-iso-toggle` ×1 — Space Crusade
+- `pbem` ×1 — Steel Panthers
+- `animation-toggle-per-battle` ×1 — Super Robot Wars
+- `turn-rewind` ×1 — Tactical Breach Wizards
+- `difficulty-variables` ×1 — Tactical Breach Wizards
+- `route-revisit` ×1 — Tactics Ogre
+- `campaign-editor` ×1 — Telepath Tactics
+- `random-campaign` ×1 — Telepath Tactics
+- `run-modifiers` ×1 — The Last Spell
+- `history-mode` ×1 — Unity of Command: Stalingrad Campaign
+- `hidden-trials` ×1 — Vandal Hearts
+- `branching-campaign` ×1 — Wargroove
+- `doom-clock` ×1 — Warhammer 40,000: Mechanicus
+- `legacy-heroes` ×1 — Wildermyth
+- `mission-fail-on-death` ×1 — XCOM: Chimera Squad
+- `setting-crossover` ×1 — Zombicide
+- `colorblind-shapes` ×1 — Bean and Nothingness
+- `notebook` ×1 — Blue Prince
+- `hint-ministage` ×1 — Can of Wormholes
 - `demo-recording` ×1 — Deadly Rooms of Death (DROD: King Dugan's Dungeon)
 - `room-reset-on-leave` ×1 — Deadly Rooms of Death (DROD: King Dugan's Dungeon)
+- `camera-orbit` ×1 — English Country Tune
+- `hardcore-variant` ×1 — Felix the Reaper
+- `subtitles` ×1 — Fish Fillets
+- `strict-rules` ×1 — Fish Fillets
 - `chapter-select` ×1 — Gorogoa
+- `level-from-image` ×1 — GridRacer
+- `personal-best` ×1 — GridRacer
+- `puzzle-refresh` ×1 — Islands of Insight
+- `skill-tree` ×1 — Islands of Insight
+- `daily-quests` ×1 — Islands of Insight
 - `ability-gating` ×1 — Isles of Sea and Sky
+- `grid-overlay` ×1 — Leap Year
+- `knowledge-gate` ×1 — Leap Year
+- `hint-sequence` ×1 — Paper Trail
+- `worked-example` ×1 — Understand
 - `brand-code` ×1 — Void Stranger
 - `step-confirm` ×1 — Void Stranger
+- `reshuffle` ×1 — World's Hardest 15-Puzzle
+- `formation-commands` ×1 — Age of War / Stick War
 - `auto-deploy` ×1 — Arknights
-- `challenge-modes` ×1 — Desktop Tower Defense
+- `mode-overlord` ×1 — Castle Panic
+- `checkpoint-rewind` ×1 — Defense Grid: The Awakening
+- `medal-tiers` ×1 — Defense Grid: The Awakening
 - `score-submit` ×1 — Desktop Tower Defense
+- `spectator-lobby` ×1 — Dota Underlords
+- `cross-device-continue` ×1 — Dota Underlords
 - `possession-view` ×1 — Dungeon Keeper
+- `difficulty-runes` ×1 — Dungeon Warfare
+- `trap-mastery` ×1 — Dungeon Warfare
 - `battle-modifiers` ×1 — GemCraft
+- `mode-duos` ×1 — Hearthstone Battlegrounds
+- `research-tree` ×1 — Infinitode 2
 - `run-relics` ×1 — Isle of Arrows
+- `season-reset` ×1 — Marvel Snap
+- `world-rules` ×1 — Сучасні mazing-TD (Electromaze, Tower Maze Defense, Thornline TD, Maul Tactics, Back to the Roots 2)
+- `star-upgrades` ×1 — Сучасні mazing-TD (Electromaze, Tower Maze Defense, Thornline TD, Maul Tactics, Back to the Roots 2)
+- `league-modifier-rotation` ×1 — Merge Tactics (Clash Royale)
+- `loadout-lock` ×1 — Orcs Must Die!
+- `research-per-level` ×1 — PixelJunk Monsters
 - `minigames` ×1 — Plants vs. Zombies (Рослини проти зомбі)
 - `loadout` ×1 — Plants vs. Zombies (Рослини проти зомбі)
-- `local-versus` ×1 — Rampart
+- `endless-streak` ×1 — Plants vs. Zombies: Vasebreaker і I, Zombie (режим Puzzle)
+- `targeting-priorities` ×1 — Rogue Tower
+- `treasures` ×1 — The Battle Cats
 - `difficulty-modifiers` ×1 — Wildfrost
+- `expanded-dictionary` ×1 — Absurdle
+- `booster-loadout` ×1 — Alphabear
+- `prestige` ×1 — Alphabear
+- `mode-solitaire` ×1 — Bananagrams
+- `auto-daub` ×1 — Bingo / Keno / Lotto (Бінго, Лото)
+- `word-challenge` ×1 — Boggle
+- `hint-reveal-word` ×1 — Bonza Word Puzzle
+- `adventure-replay` ×1 — Bookworm Adventures
 - `hall-of-fame` ×1 — Bookworm
+- `custom-word-list` ×1 — Codenames
+- `streak-protection` ×1 — Crossmath (математичний кросворд)
+- `coin-hints` ×1 — Crossmath (математичний кросворд)
+- `challenge-link` ×1 — Crosswordle
+- `check-entry` ×1 — Cryptic crossword (Криптичний кросворд)
+- `anagram-helper` ×1 — Cryptic crossword (Криптичний кросворд)
+- `prize-puzzle` ×1 — Cryptic crossword (Криптичний кросворд)
+- `friend-codes` ×1 — Griddle Words
+- `puzzle-archive` ×1 — Griddle Words
 - `ai-opponent-levels` ×1 — Mathable
+- `commutative-answers` ×1 — Nerdle
+- `mode-instant` ×1 — Nerdle
+- `multi-board` ×1 — Nerdle
+- `local-reset-time` ×1 — Nerdle
+- `boosters` ×1 — Number Match / Take Ten (Numberzilla)
 - `mistake-limit` ×1 — NYT Connections (+ Strands)
+- `reveal-penalty` ×1 — Digits (The New York Times)
+- `daily-attempts` ×1 — Puzzmo: Pile-Up Poker
+- `community-goal` ×1 — Puzzmo: Pile-Up Poker
+- `mode-sequence` ×1 — Quordle / Octordle
+- `mode-rescue` ×1 — Quordle / Octordle
 - `word-strength` ×1 — Scrabble (цифрові версії; Words With Friends)
 - `post-game-analysis` ×1 — Scrabble (цифрові версії; Words With Friends)
+- `progress-perks` ×1 — Squaredle
+- `board-rotate` ×1 — Squaredle
+- `word-reveal` ×1 — Squaredle
+- `key-words-reveal` ×1 — TypeShift
+- `mode-practice-unlimited` ×1 — Weaver (word ladder)
+- `stage-challenges` ×1 — Letter Quest і Spellspire — словесні RPG-бої
+- `timed-chest` ×1 — Letter Quest і Spellspire — словесні RPG-бої
+- `no-word-list` ×1 — Word search (Пошук слів)
+- `synced-global-rounds` ×1 — Wordament
+- `guest-mode` ×1 — Wordament
+- `dictionary-language` ×1 — Wordatro!
+- `stream-integration` ×1 — Wordatro!
 
-## role · 76
+## role · 252
 
 - `terrain` ×42 🔥 — A Good Snowman Is Hard to Build, A Monster's Expedition, Advent of Code — сіткові пазли (збірка), Adventures of Lolo (Eggerland), Bloxorz, Bonfire Peaks, Boulder Dash, Catrap (Pitman), Centipede (Багатоніжка), Chip's Challenge, Dig Dug, Factorio — клітинна логістика (конвеєри, маніпулятори, мережі), Golf Peaks, Hey, That's My Fish! (Packeis am Pol), Hitman GO (+ Lara Croft GO), Ice-sliding puzzles (Inertia і жанр «ковзай до упору»), Isles of Sea and Sky, Kickle Cubicle (迷宮島), Kula World (Roll Away, KulaQuest), Kwirk (Puzzle Boy), Loop Hero, Manufactoria, Mario & Wario, Mindustry — клітинна логістика й оборона, NetHack, OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Opus Magnum, Oxygen Not Included — клітинна фізика (гази, рідини, тепло), Pac-Man (Пекмен) і Ms. Pac-Man, Puddle Knights, Pushover (Push-Over), RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II), Recursed, Repton 1–3, Shattered Pixel Dungeon (і Pixel Dungeon), Snakebird, Spybot: The Nightfall Incident (Lego Spybotics), Stardew Valley — фермерська сітка, Stephen's Sausage Roll, Supaplex, Tomb of the Mask, XCOM: Enemy Unknown / XCOM 2
 - `zone` ×41 🔥 — Akropolis (Акрополіс), Archon: The Light and the Dark, Arimaa, Backpack Hero, Blood Bowl, Candy Crush Saga, Carto, Cartographers (Картографи), Clash of Clans — розстановка бази на сітці, Dorfromantik, Dungeon of the Endless, Fillomino (Filling, «Заповнення»), Frozen Synapse, Go (Ґо, вейці, бадук), Gorogoa, Hive (Вулик), Kakuro (Cross Sums, Какуро), Knotwords, Libble Rabble, Lichess variants (варіанти шахів Lichess), Loop Hero, Mathable, NYT Connections (+ Strands), OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Oxygen Not Included — клітинна фізика (гази, рідини, тепло), Photosynthesis (Фотосинтез), Prison Architect — шар кімнат і зон, Scrabble (цифрові версії; Words With Friends), Screeps (Screeps World, Screeps Arena), Shogi (Сьоґі, японські шахи), Simon Tatham's Portable Puzzle Collection, Stardew Valley — фермерська сітка, Taiji + The Witness (панелі), The Battle for Wesnoth (Битва за Веснот), Tron Light Cycles (Світлові мотоцикли) і нащадки, Ubongo + Katamino / IQ Puzzler (Убонго), Wilmot's Warehouse, Xiangqi (Сянці, китайські шахи), Xonix (Ксонікс) / Qix / Volfied, Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode), Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
 - `hazard` ×35 🔥 — Adventures of Lolo (Eggerland), Bonfire Peaks, Bookworm, Boulder Dash, BoxBoy! (ハコボーイ!), Cartographers (Картографи), Cell Machine, Chaos: The Battle of Wizards (+ Chaos Reborn), Clash of Clans — розстановка бази на сітці, Deadly Rooms of Death (DROD: King Dugan's Dungeon), Emerald Mine, Gauntlet (1985), Heartlight, Heiankyo Alien (Digger), Helltaker, HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), Hitman GO (+ Lara Croft GO), Ice-sliding puzzles (Inertia і жанр «ковзай до упору»), Isles of Sea and Sky, Kickle Cubicle (迷宮島), Kula World (Roll Away, KulaQuest), Loco-Motion (Guttang Gottong), Mario & Wario, Maze Mice, Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), NetHack, RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II), Repton 1–3, Shattered Pixel Dungeon (і Pixel Dungeon), Snakebird, Stephen's Sausage Roll, Supaplex, Tomb of the Mask, Void Stranger, Wrecking Crew
+- `card` ×30 🔥 — Card Hunter, Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel), Castle Panic, Children of Zodiarcs, Clash Royale, Cluedo (Clue; «Клуедо»), Cobalt Core, Codenames, Donsol, Duelyst, Emberward, Faeria, Fights in Tight Spaces, Five Tribes, Gloomhaven, Gwent (Гвинт), Inscryption (Act 1), Kingdom Death: Monster, Lanterns: The Harvest Festival (Ліхтарі), Mage Knight Board Game, Marvel Snap, Memoir '44 / Commands & Colors, Monster Train, Onitama, Pawnbarian, Plants vs. Zombies Heroes, Ratropolis, Reef (Риф), Ring of Pain, Wildfrost
 - `tile` ×29 🔥 — 2048 (+ Threes як предок), 868-HACK (+ Imbroglio, Cinco Paus — мікро-роглайки Michael Brough), Akropolis (Акрополіс), Bookworm, Carcassonne (Каркасон), Carto, Cascadia + Calico (Каскадія, Калико), Dorfromantik, Hanano Puzzle (ハナノパズル), Jelly no Puzzle (ゼリーのパズル), Kingdomino (Кінґдоміно), Labyrinth (Das verrückte Labyrinth, Божевільний лабіринт), Letterpress, Luck be a Landlord, Magical Drop (Chain Reaction), Mathable, NYT Connections (+ Strands), Puzzle & Dragons (PAD, Пазли і Дракони), Puzznic, Qwirkle + Ingenious (Квіркл, Genial), Random Dice (+ Rush Royale), Scrabble (цифрові версії; Words With Friends), Sliding-tile permutation puzzles (пʼятнашки й родичі), SpellTower, Townscaper, Triple Town, Waffle, Wilmot's Warehouse, Wordle
-- `supply` ×23 🔥 — A Feast for Odin (Бенкет для Одіна) і поліоміно-заповнення, Akropolis (Акрополіс), Arimaa, Blokus (Блокус), Carcassonne (Каркасон), Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel), Cascadia + Calico (Каскадія, Калико), Clash of Clans — розстановка бази на сітці, Electric Box (+ Lazors), Five Tribes, Golf Peaks, HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), Kingdomino (Кінґдоміно), Klax, NMBR 9, Patchwork (Печворк), Photosynthesis (Фотосинтез), Qwirkle + Ingenious (Квіркл, Genial), Sagrada (Саграда), Take It Easy, Trax, Tsuro (+ Indigo), Ubongo + Katamino / IQ Puzzler (Убонго)
-- `gate` ×22 🔥 — Adventures of Lolo (Eggerland), Bloxorz, BoxBoy! (ハコボーイ!), Chip's Challenge, Deadly Rooms of Death (DROD: King Dugan's Dungeon), Gauntlet (1985), Helltaker, HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), Hitman GO (+ Lara Croft GO), Isles of Sea and Sky, Kwirk (Puzzle Boy), OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Prison Architect — шар кімнат і зон, Puddle Knights, Pushmo / Pullblox (引ク押ス) + Crashmo, Pushover (Push-Over), RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II), Railbound, Supaplex, Void Stranger, Wrecking Crew, XOR
+- `supply` ×24 🔥 — A Feast for Odin (Бенкет для Одіна) і поліоміно-заповнення, Akropolis (Акрополіс), Arimaa, Blokus (Блокус), Carcassonne (Каркасон), Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel), Cascadia + Calico (Каскадія, Калико), Castles of Mad King Ludwig (Замки божевільного короля Людвіга), Clash of Clans — розстановка бази на сітці, Electric Box (+ Lazors), Five Tribes, Golf Peaks, HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), Kingdomino (Кінґдоміно), Klax, NMBR 9, Patchwork (Печворк), Photosynthesis (Фотосинтез), Qwirkle + Ingenious (Квіркл, Genial), Sagrada (Саграда), Take It Easy, Trax, Tsuro (+ Indigo), Ubongo + Katamino / IQ Puzzler (Убонго)
+- `gate` ×23 🔥 — Adventures of Lolo (Eggerland), Bloxorz, BoxBoy! (ハコボーイ!), Chip's Challenge, Deadly Rooms of Death (DROD: King Dugan's Dungeon), Gauntlet (1985), Helltaker, HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), Hitman GO (+ Lara Croft GO), Isles of Sea and Sky, KOHCTPYKTOP: Engineer of the People, Kwirk (Puzzle Boy), OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Prison Architect — шар кімнат і зон, Puddle Knights, Pushmo / Pullblox (引ク押ス) + Crashmo, Pushover (Push-Over), RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II), Railbound, Supaplex, Void Stranger, Wrecking Crew, XOR
 - `piece` ×17 🔥 — Archon: The Light and the Dark, Battleship (Морський бій), Blood Bowl, Chaos: The Battle of Wizards (+ Chaos Reborn), Final Fantasy Tactics, Frozen Synapse, HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), Hey, That's My Fish! (Packeis am Pol), Khet (Deflexion, Laser Chess), Klotski (Хуажунський шлях) + Lunar Lockout, Ricochet Robots (Rasende Roboter), Rush Hour (ThinkFun), Spybot: The Nightfall Incident (Lego Spybotics), Stratego (Стратего), The Battle for Wesnoth (Битва за Веснот), Ubongo + Katamino / IQ Puzzler (Убонго), XCOM: Enemy Unknown / XCOM 2
-- `container` ×15 🔥 — Adventures of Lolo (Eggerland), Backpack Hero, Chaos: The Battle of Wizards (+ Chaos Reborn), Dragonsweeper, Emerald Mine, Factorio — клітинна логістика (конвеєри, маніпулятори, мережі), Final Fantasy Tactics, Gorogoa, Mindustry — клітинна логістика й оборона, Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), Patrick's Parabox, Pengo, Recursed, Repton 1–3, Robot Odyssey
+- `tower` ×17 🔥 — Arknights, Clash of Clans — розстановка бази на сітці, Creeper World, Defense Grid: The Awakening, Desktop Tower Defense, Dungeon of the Endless, Element TD 2, Emberward, Fieldrunners, Flash Element TD, GemCraft, Infinitode 2, Isle of Arrows, Mechabellum, Random Dice (+ Rush Royale), Rogue Tower, Screeps (Screeps World, Screeps Arena)
+- `container` ×16 🔥 — Adventures of Lolo (Eggerland), Backpack Hero, Chaos: The Battle of Wizards (+ Chaos Reborn), Diablo II (inventory), Dragonsweeper, Emerald Mine, Factorio — клітинна логістика (конвеєри, маніпулятори, мережі), Final Fantasy Tactics, Gorogoa, Mindustry — клітинна логістика й оборона, Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), Patrick's Parabox, Pengo, Recursed, Repton 1–3, Robot Odyssey
 - `conduit` ×14 🔥 — Creeper World, Deflektor (+ Mindbender), Electric Box (+ Lazors), Infinity Loop + Net (Tatham), Loco-Motion (Guttang Gottong), OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Pipe Mania (Pipe Dream), Prison Architect — шар кімнат і зон, Railbound, Surakarta (Roundabouts), Taiji + The Witness (панелі), Trainyard, Tsuro (+ Indigo), Zenji
 - `boss` ×14 🔥 — 'One Way Heroics (Mystery Chronicle: One Way Heroics)', Backpack Hero, Bookworm, Crypt of the NecroDancer, Desktop Dungeons, Dragonsweeper, Fire Emblem (GBA, The Blazing Blade як база), Kickle Cubicle (迷宮島), Libble Rabble, Loop Hero, Mole Mania, Puzzle & Dragons (PAD, Пазли і Дракони), Shattered Pixel Dungeon (і Pixel Dungeon), Wizard of Wor
 - `spawner` ×14 🔥 — Cell Machine, Chip's Challenge, Deadly Rooms of Death (DROD: King Dugan's Dungeon), Dungeon of the Endless, Gauntlet (1985), Kickle Cubicle (迷宮島), Loop Hero, Mindustry — клітинна логістика й оборона, Pac-Man (Пекмен) і Ms. Pac-Man, Repton 1–3, Screeps (Screeps World, Screeps Arena), Solomon's Key, Troddlers, Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
+- `resource` ×14 🔥 — 7 Billion Humans, 868-HACK (+ Imbroglio, Cinco Paus — мікро-роглайки Michael Brough), Dome Keeper, Factorio — клітинна логістика (конвеєри, маніпулятори, мережі), Luck be a Landlord, Mindustry — клітинна логістика й оборона, Opus Magnum, Oxygen Not Included — клітинна фізика (гази, рідини, тепло), Screeps (Screeps World, Screeps Arena), Stardew Valley — фермерська сітка, The Battle of Polytopia, The Farmer Was Replaced, Wall World, Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
 - `mark` ×14 🔥 — Battleship (Морський бій), Black Box (Чорна скринька), Conway's Game of Life (Гра «Життя»), Fillomino (Filling, «Заповнення»), Hashiwokakero (Hashi, Bridges, Мости), Kakuro (Cross Sums, Какуро), Knotwords, LOK Digital, LYNE, Mastermind (+ Bulls and Cows, «Бики й корови»), Masyu (Pearl, «Перлини»), Simon Tatham's Portable Puzzle Collection, Sumplete, Taiji + The Witness (панелі)
-- `resource` ×13 🔥 — 7 Billion Humans, 868-HACK (+ Imbroglio, Cinco Paus — мікро-роглайки Michael Brough), Dome Keeper, Factorio — клітинна логістика (конвеєри, маніпулятори, мережі), Luck be a Landlord, Mindustry — клітинна логістика й оборона, Opus Magnum, Oxygen Not Included — клітинна фізика (гази, рідини, тепло), Screeps (Screeps World, Screeps Arena), Stardew Valley — фермерська сітка, The Battle of Polytopia, The Farmer Was Replaced, Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
-- `neutral` ×13 🔥 — Carto, Caves of Qud, Crypt of the NecroDancer, Dragonsweeper, Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), NetHack, Prison Architect — шар кімнат і зон, Shattered Pixel Dungeon (і Pixel Dungeon), The Battle of Polytopia, Townscaper, Triple Town, Wilmot's Warehouse, Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
-- `tower` ×12 🔥 — Arknights, Clash of Clans — розстановка бази на сітці, Creeper World, Desktop Tower Defense, Dungeon of the Endless, Emberward, Fieldrunners, GemCraft, Isle of Arrows, Mechabellum, Random Dice (+ Rush Royale), Screeps (Screeps World, Screeps Arena)
+- `neutral` ×14 🔥 — Carto, Caves of Qud, Crypt of the NecroDancer, Dragonsweeper, Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), NetHack, Prison Architect — шар кімнат і зон, Shattered Pixel Dungeon (і Pixel Dungeon), The Battle of Polytopia, Townscaper, Triple Town, Unblock Me і Parking Jam 3D (мобільні Rush Hour), Wilmot's Warehouse, Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
 - `switch` ×12 🔥 — Bloxorz, BoxBoy! (ハコボーイ!), Chip's Challenge, Deadly Rooms of Death (DROD: King Dugan's Dungeon), OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Prison Architect — шар кімнат і зон, Pushmo / Pullblox (引ク押ス) + Crashmo, RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II), Railbound, Supaplex, Void Stranger, XOR
 - `ally` ×11 🔥 — 'One Way Heroics (Mystery Chronicle: One Way Heroics)', Backpack Hero, Cogmind, Dungeon Encounters, Mario & Wario, Mindustry — клітинна логістика й оборона, Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), NetHack, Puddle Knights, Puzzle & Dragons (PAD, Пазли і Дракони), Troddlers
-- `source` ×9 🔥 — Creeper World, Deflektor (+ Mindbender), Electric Box (+ Lazors), Infinity Loop + Net (Tatham), Khet (Deflexion, Laser Chess), Pipe Mania (Pipe Dream), Prison Architect — шар кімнат і зон, Trainyard, Zenji
-- `sink` ×8 🔥 — Cosmic Express, Deflektor (+ Mindbender), Electric Box (+ Lazors), Pipe Mania (Pipe Dream), Prison Architect — шар кімнат і зон, Railbound, Trainyard, Tsuro (+ Indigo)
-- `card` ×7 🔥 — Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel), Cluedo (Clue; «Клуедо»), Emberward, Five Tribes, Inscryption (Act 1), Onitama, Wildfrost
+- `unit` ×11 🔥 — Arknights, Dota Auto Chess, Dota Underlords, Hearthstone Battlegrounds, Legion TD / Legion TD 2, Mechabellum, Ratropolis, Super Auto Pets, Swords & Soldiers, Teamfight Tactics (TFT), The Battle Cats
+- `building` ×10 🔥 — Clash Royale, Isle of Arrows, Keepsweeper, Queendomino (Квіндоміно), Ratropolis, Rogue Tower, Swords & Soldiers, The Last Spell, They Are Billions, Tiny Towns (Крихітні містечка)
+- `source` ×10 🔥 — Creeper World, Deflektor (+ Mindbender), Electric Box (+ Lazors), Infinity Loop + Net (Tatham), Khet (Deflexion, Laser Chess), Pipe Mania (Pipe Dream), Prison Architect — шар кімнат і зон, Timberborn, Trainyard, Zenji
+- `sink` ×9 🔥 — Cosmic Express, Deflektor (+ Mindbender), Electric Box (+ Lazors), Pipe Mania (Pipe Dream), Prison Architect — шар кімнат і зон, Railbound, Timberborn, Trainyard, Tsuro (+ Indigo)
+- `stairs` ×9 🔥 — Brogue, Dungeon Crawl Stone Soup, King's Valley, Moria / Angband, Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), NetHack, Rogue, Shattered Pixel Dungeon (і Pixel Dungeon), Sil
+- `base` ×9 🔥 — Battle City (Танчики) і Tank Battalion, Castle Panic, Clash Royale, Lock's Quest, Orcs Must Die!, PixelJunk Monsters, Swords & Soldiers, The Battle Cats, They Are Billions
+- `lane` ×9 🔥 — Cobalt Core, Gwent (Гвинт), Head On, Inscryption (Act 1), Legion TD / Legion TD 2, Plants vs. Zombies (Рослини проти зомбі), Plants vs. Zombies Heroes, Plants vs. Zombies: Vasebreaker і I, Zombie (режим Puzzle), Wildfrost
 - `projectile` ×7 🔥 — Advent of Code — сіткові пазли (збірка), Adventures of Lolo (Eggerland), Dig Dug, Hoplite, Space Invaders (Космічні загарбники), Tomb of the Mask, Wizard of Wor
-- `stairs` ×6 🔥 — Brogue, Dungeon Crawl Stone Soup, Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), NetHack, Rogue, Shattered Pixel Dungeon (і Pixel Dungeon)
+- `worker` ×6 🔥 — A Feast for Odin (Бенкет для Одіна) і поліоміно-заповнення, Carcassonne (Каркасон), Caverna: The Cave Farmers (Каверна), Dungeon Keeper, Keepsweeper, New York 1901 (Нью-Йорк 1901)
+- `leader` ×5 🔥 — Memoir '44 / Commands & Colors, Shining Force, Steel Panthers, Through the Desert (Крізь пустелю), Tigris & Euphrates (Тигр і Євфрат)
+- `visitor` ×5 🔥 — Parkitect, RollerCoaster Tycoon, Theme Hospital, Two Point Hospital, Viva Piñata
+- `material` ×5 🔥 — Noita, Sandboxels, Sandspiel, Sandspiel Studio, The Powder Toy
+- `core` ×5 🔥 — Defense Grid: The Awakening, Legion TD / Legion TD 2, Revenge of the Titans, Tetrisphere, The Last Spell
+- `trap` ×5 🔥 — Dungeon Warfare, Harmless7DRL, Orcs Must Die!, Prince of Persia, Vandal Hearts
+- `altar` ×5 🔥 — Brogue, Desktop Dungeons, Dungeon Crawl Stone Soup, Dungeons of Dredmor, NetHack
+- `objective` ×4 🔥 — Dragon Castle, Next Station: London, Takenoko (Такеноко), Welcome To… (Ласкаво просимо до…)
 - `terminal` ×4 🔥 — Cosmic Express, Flow Free, LYNE, Shannon switching game / Bridg-It (+ Untangle)
-- `altar` ×4 🔥 — Brogue, Desktop Dungeons, Dungeon Crawl Stone Soup, NetHack
-- `worker` ×3 🔥 — A Feast for Odin (Бенкет для Одіна) і поліоміно-заповнення, Carcassonne (Каркасон), Dungeon Keeper
-- `platform` ×3 🔥 — A Monster's Expedition, Frogger (Жабка) / Crossy Road, Puzznic
-- `unit` ×3 🔥 — Arknights, Mechabellum, Teamfight Tactics (TFT)
-- `lane` ×3 🔥 — Inscryption (Act 1), Plants vs. Zombies (Рослини проти зомбі), Wildfrost
-- `building` ×2 — Isle of Arrows, Tiny Towns (Крихітні містечка)
-- `clue-outside` ×2 — Nonogram (Японський кросворд, Picross, Griddlers, Hanjie), Sudoku variants (варіанти судоку, Cracking the Cryptic / SudokuPad)
-- `site` ×2 — The Battle for Wesnoth (Битва за Веснот), The Battle of Polytopia
+- `platform` ×4 🔥 — A Monster's Expedition, Frogger (Жабка) / Crossy Road, Puzznic, Wall World
+- `site` ×4 🔥 — Mage Knight Board Game, The Battle for Wesnoth (Битва за Веснот), The Battle of Polytopia, Wargroove
+- `commander` ×4 🔥 — Anomaly: Warzone Earth, Dota Underlords, Langrisser, Wargroove
+- `room` ×3 🔥 — Castles of Mad King Ludwig (Замки божевільного короля Людвіга), Dungeon Keeper, The Isle of Cats
+- `node` ×3 🔥 — Code Master (ThinkFun), Shannon switching game / Bridg-It (+ Untangle), TIS-100
+- `shrine` ×3 🔥 — Dragon Castle, Rift Wizard, Sproggiwood
+- `die` ×3 🔥 — Children of Zodiarcs, Ganz Schön Clever (That's Pretty Clever), Sagrada (Саграда)
+- `slot` ×3 🔥 — Dredge, Dungeon of the Endless, Magpie (7DRL 2023)
+- `liquid` ×3 🔥 — Caves of Qud, Dwarf Fortress — призначення клітин і рідини, Terraria — рідини
+- `trail` ×3 🔥 — Paper.io (Пейпер-іо) і Paper.io 2, Splix.io, The Fury of Dracula
+- `line` ×3 🔥 — Herugolf (Хелгольф), Sudoku line & dot variants (Thermo, Arrow, Kropki, German Whispers), Sudoku variants (варіанти судоку, Cracking the Cryptic / SudokuPad)
+- `clue-outside` ×3 🔥 — Kin-Kon-Kan (キンコンカン), Nonogram (Японський кросворд, Picross, Griddlers, Hanjie), Sudoku variants (варіанти судоку, Cracking the Cryptic / SudokuPad)
+- `wire` ×3 🔥 — Factorio — circuit network, KOHCTPYKTOP: Engineer of the People, Turing Complete
+- `party-member` ×3 🔥 — Dungeon Master, Legend of Grimrock, Wizardry: Proving Grounds of the Mad Overlord
+- `property` ×3 🔥 — Advance Wars, Nectaris (Military Madness), Tiny Metal
+- `hero` ×3 🔥 — Hearthstone Battlegrounds, Heroscape, Plants vs. Zombies Heroes
+- `bench` ×3 🔥 — Dota Auto Chess, Dota Underlords, Teamfight Tactics (TFT)
+- `pasture` ×2 — Agricola — сітка ферми (Агрікола), Caverna: The Cave Farmers (Каверна)
+- `token` ×2 — Cascadia + Calico (Каскадія, Калико), Harmonies
+- `door` ×2 — Castles of Mad King Ludwig (Замки божевільного короля Людвіга), Door Door
+- `hand` ×2 — Copenhagen (Копенгаген), Kingdom Builder
+- `cargo` ×2 — Galaxy Trucker, Manufactoria
+- `location` ×2 — BattleTech, Kingdom Builder
+- `settlement` ×2 — Kingdom Death: Monster, Samurai (Самурай)
+- `depot` ×2 — Battle Isle, The Castles of Burgundy (Замки Бургундії)
+- `walker` ×2 — Caesar III, Pharaoh
+- `machine` ×2 — Cogmind, Core Keeper — сітковий шар (копання, ферма, автоматизація)
+- `board` ×2 — 5D Chess with Multiverse Time Travel, Bughouse (Бʼюгхаус, шахи вдвох на двох дошках)
+- `modifier` ×2 — Infinitode 2, Santorini (Санторіні)
+- `tool` ×2 — Bingo / Keno / Lotto (Бінго, Лото), Unrailed!
+- `field` ×2 — Sandspiel, The Powder Toy
+- `rescuee` ×2 — Robotron: 2084, Survivors
+- `fluid` ×2 — Creeper World, Where's My Water?
+- `rotator` ×2 — Pipe Push Paradise, Trouballs
+- `survivor` ×2 — Exit, Zombicide
+- `ladder` ×2 — Lode Runner, Lode Runner: The Legend Returns
+- `referee` ×2 — Kriegspiel + Dark Chess (Fog of War; «шахи наосліп із суддею» і «шахи в тумані»), Luzhanqi (Лучжаньці, китайські армійські шахи)
+- `edge` ×2 — Patterna, Slitherlink (Слізерлінк, Loopy, Fences)
+- `judge` ×2 — Final Fantasy Tactics Advance, Zendo
+- `cover` ×2 — Battle City (Танчики) і Tank Battalion, Combat
+- `follower` ×2 — Flicky, Pac-Man Championship Edition / DX (Пекмен: чемпіонське видання)
+- `clue-card` ×2 — Sherlock (Everett Kaser), Zebra Puzzle (Einstein's Riddle, Загадка Ейнштейна)
+- `actuator` ×2 — Infinifactory, Robot Odyssey
+- `sensor` ×2 — Infinifactory, Robot Odyssey
+- `pin` ×2 — KOHCTPYKTOP: Engineer of the People, Turing Complete
+- `shop-entrance` ×2 — Larn, Moria / Angband
+- `npc-merchant` ×2 — DungeonUp, Tower of the Sorcerer / Magic Tower (魔塔)
+- `pet` ×2 — Hack, Tangledeep
+- `minion` ×2 — Descent: Journeys in the Dark, Rift Wizard
+- `vehicle` ×2 — Front Mission, Silent Storm
+- `stack` ×2 — Heroes of Might and Magic III (Герої меча і магії III), King's Bounty: The Legend (King's Bounty. Легенда о рыцаре)
+- `device` ×2 — Invisible, Inc., Mechabellum
+- `body-part` ×2 — Mech Armada, Phoenix Point
 - `word` ×2 — Baba Is You, LOK Digital
-- `token` ×1 — Cascadia + Calico (Каскадія, Калико)
-- `die` ×1 — Sagrada (Саграда)
-- `node` ×1 — Shannon switching game / Bridg-It (+ Untangle)
+- `waypoint` ×2 — Element TD 2, Сучасні mazing-TD (Electromaze, Tower Maze Defense, Thornline TD, Maul Tactics, Back to the Roots 2)
+- `share` ×1 — Acquire
+- `chain` ×1 — Acquire
+- `fence` ×1 — Agricola — сітка ферми (Агрікола)
+- `park-area` ×1 — Bärenpark
+- `clue-fragment` ×1 — Chocolate Fix (ThinkFun)
+- `program-token` ×1 — Code Master (ThinkFun)
+- `ability-tile` ×1 — Copenhagen (Копенгаген)
+- `module` ×1 — Galaxy Trucker
+- `crew` ×1 — Galaxy Trucker
+- `sheet-area` ×1 — Ganz Schön Clever (That's Pretty Clever)
+- `station` ×1 — Next Station: London
+- `shared-supply` ×1 — Pentomino (Пентаміно, гра Голомба)
+- `puzzle-card` ×1 — Project L
+- `market` ×1 — Queendomino (Квіндоміно)
+- `exit` ×1 — Railroad Ink
+- `caste-figure` ×1 — Samurai (Самурай)
+- `network-edge` ×1 — Takenoko (Такеноко)
+- `being-card` ×1 — Tash-Kalar: Arena of Legends
+- `task` ×1 — Tash-Kalar: Arena of Legends
+- `storage` ×1 — The Castles of Burgundy (Замки Бургундії)
+- `basket` ×1 — The Isle of Cats
+- `staff` ×1 — Big Pharma
+- `key-target` ×1 — Boom Beach
+- `demand-building` ×1 — Mini Motorways
+- `pawn` ×1 — RimWorld — шар кімнат і температури
+- `scent` ×1 — SimAnt
+- `field-map` ×1 — SimCity (1989) / Micropolis
+- `resident` ×1 — Tiny Tower / SimTower
+- `shared` ×1 — Duck Chess (Качині шахи)
+- `shared-piece` ×1 — Neutron (Нейтрон)
+- `passenger` ×1 — Mini Metro
+- `actor` ×1 — Oxyd (+ Enigma)
 - `link` ×1 — Shannon switching game / Bridg-It (+ Untangle)
+- `wagon` ×1 — Unrailed!
 - `custom` ×1 — Rocks'n'Diamonds
-- `material` ×1 — The Powder Toy
-- `field` ×1 — The Powder Toy
-- `ladder` ×1 — Lode Runner
-- `referee` ×1 — Kriegspiel + Dark Chess (Fog of War; «шахи наосліп із суддею» і «шахи в тумані»)
+- `formation` ×1 — Might & Magic: Clash of Heroes
+- `troop` ×1 — Gems of War (і Marvel Puzzle Quest)
+- `sweeper` ×1 — Lumines (Люмінес)
+- `opponent-hero` ×1 — Puzzle Quest: Challenge of the Warlords
+- `wildcard` ×1 — Soldam
+- `special-block` ×1 — TetriNET
+- `court` ×1 — Titanium Court
+- `ceiling` ×1 — Wario's Woods
+- `multi-body` ×1 — Kine
+- `relay` ×1 — Levelhead
+- `tripwire` ×1 — Lode Runner 2 і Lode Runner 3-D
+- `mechanism` ×1 — Mekorama
+- `tunnel` ×1 — Nebulus
+- `trigger-cell` ×1 — Rick Dangerous
+- `mine` ×1 — Captain Sonar
+- `clue` ×1 — Cryptid
+- `face` ×1 — Guess Who? (Вгадай, хто?)
+- `decoy` ×1 — Inkognito
+- `light` ×1 — Mr. Jack (Містер Джек)
+- `ticket` ×1 — Scotland Yard (Скотланд-Ярд)
+- `tether` ×1 — Anteater (Мурахоїд)
+- `guardian` ×1 — Adventure (Atari 2600)
+- `pursuer` ×1 — Berzerk
+- `defender` ×1 — Bomberman — battle mode (Super Bomberman, Super Bomberman R / R Online / R 2)
+- `rival` ×1 — Crystal Castles
+- `spell` ×1 — Kroz
+- `intruder` ×1 — Make Trax (Crush Roller)
+- `scout` ×1 — Maze Craze
+- `wall-front` ×1 — Pac-Man 256
+- `thief` ×1 — Pac-Man spin-offs (Pac & Pal, Baby Pac-Man, Mega Tunnel Battle)
 - `painter` ×1 — Q*bert
-- `edge` ×1 — Slitherlink (Слізерлінк, Loopy, Fences)
-- `line` ×1 — Sudoku variants (варіанти судоку, Cracking the Cryptic / SudokuPad)
+- `scripted` ×1 — ZZT
+- `arrow` ×1 — Evolmino
+- `obstacle` ×1 — Pentominous («Пентамінус»)
+- `edge-clue` ×1 — Sudoku line & dot variants (Thermo, Arrow, Kropki, German Whispers)
+- `gate-line` ×1 — Suraromu (Slalom)
 - `clue-arrow` ×1 — Yajilin (Яджилін, Arrow Ring)
-- `cargo` ×1 — Manufactoria
+- `pointer` ×1 — Befunge (Befunge-93)
+- `process` ×1 — Core War
+- `instruction-cell` ×1 — Core War
+- `host` ×1 — EXAPUNKS
+- `file` ×1 — EXAPUNKS
+- `register` ×1 — EXAPUNKS
+- `combinator` ×1 — Factorio — circuit network
+- `product` ×1 — Infinifactory
+- `processor` ×1 — Mindustry — logic (mlog)
+- `memory` ×1 — Mindustry — logic (mlog)
+- `emitter` ×1 — MOLEK-SYNTEZ
 - `circuit-part` ×1 — Robot Odyssey
-- `sensor` ×1 — Robot Odyssey
-- `actuator` ×1 — Robot Odyssey
+- `waldo` ×1 — SpaceChem
+- `bonder` ×1 — SpaceChem
+- `port` ×1 — TIS-100
 - `item` ×1 — Untrusted — or the Continuing Adventures of Dr. Eval
-- `liquid` ×1 — Caves of Qud
-- `machine` ×1 — Cogmind
+- `robot` ×1 — Escape (Tom 7)
+- `magnet` ×1 — Kye
+- `quest-giver` ×1 — Ancient Domains of Mystery (ADOM)
+- `herb` ×1 — Ancient Domains of Mystery (ADOM)
+- `chest` ×1 — Beneath Apple Manor
+- `barrel` ×1 — DoomRL / DRL → Jupiter Hell
+- `special-stairs` ×1 — DoomRL / DRL → Jupiter Hell
 - `cloud` ×1 — Dungeon Crawl Stone Soup
 - `event-tile` ×1 — Dungeon Encounters
-- `slot` ×1 — Dungeon of the Endless
+- `foe` ×1 — Etrian Odyssey
+- `light-source` ×1 — Golden Krone Hotel
+- `window` ×1 — Golden Krone Hotel
+- `shopkeeper` ×1 — Hack
+- `escort` ×1 — Harmless7DRL
 - `land` ×1 — HyperRogue
 - `alcove` ×1 — Legend of Grimrock
-- `party-member` ×1 — Legend of Grimrock
-- `npc-merchant` ×1 — Tower of the Sorcerer / Magic Tower (魔塔)
+- `weapon-tile` ×1 — Morphblade
+- `guild-hall` ×1 — Omega
+- `oracle` ×1 — Omega
 - `wall-hazard` ×1 — 'One Way Heroics (Mystery Chronicle: One Way Heroics)'
-- `minion` ×1 — Rift Wizard
 - `rift` ×1 — Rift Wizard
-- `shrine` ×1 — Rift Wizard
-- `property` ×1 — Advance Wars
+- `power-tile` ×1 — Auro: A Monster-Bumping Adventure
+- `factory` ×1 — Battle Isle
+- `hq` ×1 — Battle Isle
+- `companion` ×1 — Betrayal at House on the Hill
 - `object` ×1 — Blood Bowl
+- `city` ×1 — Civilization (бойовий шар юнітів, I–VI)
 - `geo-symbol` ×1 — Disgaea: Hour of Darkness
+- `dm` ×1 — D&D grid combat (Dungeons & Dragons 5e)
+- `general` ×1 — Duelyst
+- `god` ×1 — Faeria
+- `well` ×1 — Faeria
+- `summon` ×1 — Gloomhaven
+- `ricochet-surface` ×1 — Hard West
+- `war-machine` ×1 — Heroes of Might and Magic III (Герої меча і магії III)
+- `squad` ×1 — Heroscape
+- `army_card` ×1 — Heroscape
+- `avatar-commander` ×1 — Inkulinati
 - `structure` ×1 — Into the Breach
+- `camera` ×1 — Invisible, Inc.
+- `chassis` ×1 — Mech Armada
+- `weather` ×1 — Mewgenics
+- `subsystem` ×1 — Ogre
+- `objective-city` ×1 — Panzer General
+- `ice` ×1 — Shadowrun Returns
+- `avatar-proxy` ×1 — Shadowrun Returns
+- `objective-flag` ×1 — Steel Panthers
+- `carrier` ×1 — Super Robot Wars
+- `window-cell` ×1 — Tactical Breach Wizards
+- `hero-unit` ×1 — Tiny Metal
+- `supply-source` ×1 — Unity of Command: Stalingrad Campaign
+- `specialist` ×1 — Unity of Command: Stalingrad Campaign
+- `obelisk` ×1 — Warhammer 40,000: Mechanicus
+- `interactable` ×1 — Wildermyth
+- `spawn_zone` ×1 — Zombicide
 - `weapon` ×1 — Deadly Rooms of Death (DROD: King Dugan's Dungeon)
+- `beam-block` ×1 — English Country Tune
+- `heavy` ×1 — Fish Fillets
+- `canvas` ×1 — Magic Chalkboards
+- `image` ×1 — Mirror Isles
+- `handle` ×1 — Monument Valley
 - `atom` ×1 — Sokobond
-- `fluid` ×1 — Creeper World
-- `room` ×1 — Dungeon Keeper
+- `material-block` ×1 — Tetrobot and Co.
+- `convoy-unit` ×1 — Anomaly: Warzone Earth
+- `event` ×1 — Castle Panic
+- `part` ×1 — Cobalt Core
+- `blocker` ×1 — Element TD 2
 - `gem` ×1 — GemCraft
 - `socket` ×1 — GemCraft
-- `device` ×1 — Mechabellum
+- `wall` ×1 — Grid Forge TD
+- `miner` ×1 — Infinitode 2
+- `floor` ×1 — Monster Train
 - `castle` ×1 — Rampart
-- `bench` ×1 — Teamfight Tactics (TFT)
+- `clue-cell` ×1 — Arrowword (Сканворд)
 
-## trigger · 182
+## trigger · 464
 
 - `input` ×77 🔥 — 2048 (+ Threes як предок), 868-HACK (+ Imbroglio, Cinco Paus — мікро-роглайки Michael Brough), A Good Snowman Is Hard to Build, A Monster's Expedition, Adventures of Lolo (Eggerland), Atomix, Bloxorz, Bonfire Peaks, Bookworm, BoxBoy! (ハコボーイ!), Carto, Catrap (Pitman), Chaos: The Battle of Wizards (+ Chaos Reborn), Clash of Clans — розстановка бази на сітці, Deadly Rooms of Death (DROD: King Dugan's Dungeon), Dig Dug, Dorfromantik, Fillomino (Filling, «Заповнення»), Gauntlet (1985), Golf Peaks, Gorogoa, Hanano Puzzle (ハナノパズル), Hashiwokakero (Hashi, Bridges, Мости), Helltaker, HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), Hitman GO (+ Lara Croft GO), Ice-sliding puzzles (Inertia і жанр «ковзай до упору»), Isles of Sea and Sky, Jelly no Puzzle (ゼリーのパズル), Kakuro (Cross Sums, Какуро), Klotski (Хуажунський шлях) + Lunar Lockout, Knotwords, Kwirk (Puzzle Boy), LOK Digital, Letterpress, Luck be a Landlord, Magical Drop (Chain Reaction), Mario & Wario, Masyu (Pearl, «Перлини»), Mathable, Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), NYT Connections (+ Strands), NetHack, Patrick's Parabox, Pengo, Prison Architect — шар кімнат і зон, Puddle Knights, Puzzle & Dragons (PAD, Пазли і Дракони), Puzznic, RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II), Recursed, Ricochet Robots (Rasende Roboter), Rush Hour (ThinkFun), SameGame / Clickomania + Flood (Tatham), Scrabble (цифрові версії; Words With Friends), Shattered Pixel Dungeon (і Pixel Dungeon), Simon Tatham's Portable Puzzle Collection, Sliding-tile permutation puzzles (пʼятнашки й родичі), Snakebird, Sokoban (Сокобан), Sokobond, SpellTower, Spybot: The Nightfall Incident (Lego Spybotics), Stardew Valley — фермерська сітка, Stephen's Sausage Roll, Sumplete, Taiji + The Witness (панелі), Theseus and the Minotaur (Тесей і Мінотавр), Tomb of the Mask, Townscaper, Triple Town, Ubongo + Katamino / IQ Puzzler (Убонго), Void Stranger, Waffle, Wilmot's Warehouse, Wordle, XOR
 - `enter` ×28 🔥 — A Monster's Expedition, Bloxorz, Bonfire Peaks, Boulder Dash, Chip's Challenge, Emerald Mine, Factorio — клітинна логістика (конвеєри, маніпулятори, мережі), Golf Peaks, Heartlight, Heiankyo Alien (Digger), Ice-sliding puzzles (Inertia і жанр «ковзай до упору»), Isles of Sea and Sky, Kickle Cubicle (迷宮島), Loop Hero, Manufactoria, Mindustry — клітинна логістика й оборона, Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), NetHack, OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Opus Magnum, Pac-Man (Пекмен) і Ms. Pac-Man, Puddle Knights, RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II), Repton 1–3, Rocks'n'Diamonds, Shattered Pixel Dungeon (і Pixel Dungeon), Supaplex, Void Stranger
+- `attacked` ×27 🔥 — Battle Brothers, BattleTech, Card Hunter, Duelyst, Fallout 1–2 (покроковий бій), Fell Seal: Arbiter's Mark, Fights in Tight Spaces, Final Fantasy Tactics, Gloomhaven, Heroes of Might and Magic III (Герої меча і магії III), Inscryption (Act 1), King's Bounty: The Legend (King's Bounty. Легенда о рыцаре), Kingdom Death: Monster, Lock's Quest, Mario + Rabbids Kingdom Battle, Panzer General, Phoenix Point, Steel Panthers, Tactics Ogre, Telepath Tactics, The Battle for Wesnoth (Битва за Веснот), The Battle of Polytopia, Triangle Strategy, Vandal Hearts, Wargroove, Wildermyth, XCOM: Enemy Unknown / XCOM 2
 - `counter` ×24 🔥 — Adventures of Lolo (Eggerland), Candy Crush Saga, Centipede (Багатоніжка), Clash of Clans — розстановка бази на сітці, Dig Dug, Dorfromantik, Helltaker, Isles of Sea and Sky, Klax, Loop Hero, Luck be a Landlord, Mr. Do!, Oxygen Not Included — клітинна фізика (гази, рідини, тепло), Pac-Man (Пекмен) і Ms. Pac-Man, Pengo, Prison Architect — шар кімнат і зон, Puzzle & Dragons (PAD, Пазли і Дракони), Puzznic, Qwirkle + Ingenious (Квіркл, Genial), Repton 1–3, Space Invaders (Космічні загарбники), The Battle of Polytopia, Wilmot's Warehouse, Wizard of Wor
 - `pattern` ×21 🔥 — A Feast for Odin (Бенкет для Одіна) і поліоміно-заповнення, Atomix, Carcassonne (Каркасон), Carto, Cartographers (Картографи), Cascadia + Calico (Каскадія, Калико), Columns (Колонки), Dorfromantik, Gess, Gorogoa, Klax, Loop Hero, Magical Drop (Chain Reaction), Masyu (Pearl, «Перлини»), Panel de Pon (Tetris Attack, Puzzle League), Pengo, Puzzle & Dragons (PAD, Пазли і Дракони), Puzznic, Sliding-tile permutation puzzles (пʼятнашки й родичі), Tiny Towns (Крихітні містечка), Triple Town
+- `landed` ×21 🔥 — BurgerTime, Diamond Rush, Downwell, Fire 'n Ice, Jet Set Willy, Leap Year, Lemmings, Liero, Manic Miner, Miner 2049er, Montezuma's Revenge, Nebulus, Prince of Persia, Quadrax, Scorched Earth, Space Panic, Spelunker, Starquake, Tetris (Тетрис, Tetris Guideline), Tetris The Grand Master (TGM), Troddlers
+- `round_end` ×17 🔥 — A Feast for Odin (Бенкет для Одіна) і поліоміно-заповнення, Akropolis (Акрополіс), Azul (Азул), Bomberman — battle mode (Super Bomberman, Super Bomberman R / R Online / R 2), Card Hunter, Cartographers (Картографи), Gloomhaven, Isle of Skye: From Chieftain to King (Острів Скай), Kingdomino (Кінґдоміно), Mechabellum, Photosynthesis (Фотосинтез), Puyo Puyo Tetris, Queendomino (Квіндоміно), Railroad Ink, Sagrada (Саграда), Scorched Earth, Terraforming Mars (Тераформування Марса)
+- `phase_start` ×14 🔥 — Advance Wars, Archon: The Light and the Dark, Cell Machine, Chaos: The Battle of Wizards (+ Chaos Reborn), Emberward, Fire Emblem (GBA, The Blazing Blade як база), Mechabellum, Merge Tactics (Clash Royale), Photosynthesis (Фотосинтез), Rampart, Screeps (Screeps World, Screeps Arena), Teamfight Tactics (TFT), Thronefall, Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
 - `all_constraints_met` ×13 🔥 — Fillomino (Filling, «Заповнення»), Flow Free, Hashiwokakero (Hashi, Bridges, Мости), Infinity Loop + Net (Tatham), Kakuro (Cross Sums, Какуро), Knotwords, LYNE, Masyu (Pearl, «Перлини»), Shannon switching game / Bridg-It (+ Untangle), Simon Tatham's Portable Puzzle Collection, Sumplete, Taiji + The Witness (панелі), Ubongo + Katamino / IQ Puzzler (Убонго)
-- `phase_start` ×12 🔥 — Advance Wars, Archon: The Light and the Dark, Cell Machine, Chaos: The Battle of Wizards (+ Chaos Reborn), Emberward, Fire Emblem (GBA, The Blazing Blade як база), Mechabellum, Photosynthesis (Фотосинтез), Rampart, Screeps (Screeps World, Screeps Arena), Teamfight Tactics (TFT), Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
+- `exec(cmd)` ×13 🔥 — 7 Billion Humans, Kara (Кара — сонечко), Karel the Robot (Reeborg's World), Lightbot (Light-Bot), Manufactoria, Mindustry — logic (mlog), Opus Magnum, RoboZZle, Robot Odyssey, Screeps (Screeps World, Screeps Arena), The Farmer Was Replaced, Untrusted — or the Continuing Adventures of Dr. Eval, Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
+- `beam_hit` ×12 🔥 — Advent of Code — сіткові пазли (збірка), Archaica: The Path of Light, Chromatron (1–5), Deflektor (+ Mindbender), Electric Box (+ Lazors), English Country Tune, Khet (Deflexion, Laser Chess), LaserTank, Oxyd (+ Enigma), SOLAS 128, Tetrobot and Co., ThinkFun Laser Maze і Gravity Maze
 - `turn_end` ×12 🔥 — Archon: The Light and the Dark, Backpack Hero, Blood Bowl, Bookworm, Candy Crush Saga, Deadly Rooms of Death (DROD: King Dugan's Dungeon), Hitman GO (+ Lara Croft GO), Khet (Deflexion, Laser Chess), Mathable, Puzzle & Dragons (PAD, Пазли і Дракони), Scrabble (цифрові версії; Words With Friends), Wildfrost
 - `after` ×12 🔥 — Bookworm, Hanano Puzzle (ハナノパズル), Jelly no Puzzle (ゼリーのパズル), Kickle Cubicle (迷宮島), Luck be a Landlord, Pengo, Prison Architect — шар кімнат і зон, Snakebird, SpellTower, Townscaper, Trax, Tsuro (+ Indigo)
 - `settled` ×12 🔥 — Bejeweled (1–3, Twist), Candy Crush Saga, Columns (Колонки), Dr. Mario (Доктор Маріо), Golf Peaks, Magical Drop (Chain Reaction), Mr. Driller, Panel de Pon (Tetris Attack, Puzzle League), Pushover (Push-Over), Puyo Puyo (Пуйо Пуйо), Puzzle & Dragons (PAD, Пазли і Дракони), Puzznic
-- `exec(cmd)` ×12 🔥 — 7 Billion Humans, Kara (Кара — сонечко), Karel the Robot (Reeborg's World), Lightbot (Light-Bot), Manufactoria, Opus Magnum, RoboZZle, Robot Odyssey, Screeps (Screeps World, Screeps Arena), The Farmer Was Replaced, Untrusted — or the Continuing Adventures of Dr. Eval, Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
 - `tick` ×11 🔥 — Advent of Code — сіткові пазли (збірка), Cell Machine, Conway's Game of Life (Гра «Життя»), Creeper World, Factorio — клітинна логістика (конвеєри, маніпулятори, мережі), Gauntlet (1985), Mindustry — клітинна логістика й оборона, OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Oxygen Not Included — клітинна фізика (гази, рідини, тепло), Screeps (Screeps World, Screeps Arena), The Powder Toy
 - `timer` ×9 🔥 — Deadly Rooms of Death (DROD: King Dugan's Dungeon), Magical Drop (Chain Reaction), Pengo, SpellTower, Supaplex, Tomb of the Mask, Ubongo + Katamino / IQ Puzzler (Убонго), Wilmot's Warehouse, Wizard of Wor
+- `day_start` ×9 🔥 — Animal Crossing — New Horizons (схрещування квітів), Dredge, Frostpunk, Harvest Moon (SNES), Loop Hero, PlateUp!, Stardew Valley — фермерська сітка, The Last Spell, Tiny Tower / SimTower
 - `repetition` ×9 🔥 — Advent of Code — сіткові пазли (збірка), Arimaa, Chess (Шахи) — цифрова гра, Draughts / Checkers (Шашки), Go (Ґо, вейці, бадук), Hive (Вулик), Khet (Deflexion, Laser Chess), Shogi (Сьоґі, японські шахи), Xiangqi (Сянці, китайські шахи)
-- `round_end` ×8 🔥 — A Feast for Odin (Бенкет для Одіна) і поліоміно-заповнення, Akropolis (Акрополіс), Azul (Азул), Cartographers (Картографи), Kingdomino (Кінґдоміно), Mechabellum, Photosynthesis (Фотосинтез), Sagrada (Саграда)
+- `revealed` ×9 🔥 — Brogue, Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel), Desktop Dungeons, Dungeon Encounters, Gobblet (Гоблет), Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), NetHack, Rogue, Shattered Pixel Dungeon (і Pixel Dungeon)
+- `round_start` ×9 🔥 — Battle Brothers, Card Hunter, D&D grid combat (Dungeons & Dragons 5e), Heroes of Might and Magic III (Герої меча і магії III), Heroscape, King's Bounty: The Legend (King's Bounty. Легенда о рыцаре), Mage Knight Board Game, Mewgenics, Tactics Ogre
+- `placed` ×8 🔥 — Akropolis (Акрополіс), Carcassonne (Каркасон), Cascadia + Calico (Каскадія, Калико), Castles of Mad King Ludwig (Замки божевільного короля Людвіга), N-in-a-row (Хрестики-нулики, Gomoku, Connect Four, Pentago…), Pente (Пенте), Qwirkle + Ingenious (Квіркл, Genial), Reversi / Othello (Реверсі)
+- `deck_empty` ×8 🔥 — Arboretum (Дендропарк), Children of Zodiarcs, Happy Home (Щасливий дім), Kingdom Death: Monster, Mage Knight Board Game, NMBR 9, Reef (Риф), Sprawlopolis
 - `adjacent` ×8 🔥 — Backpack Hero, Cosmic Express, Hanano Puzzle (ハナノパズル), Hitman GO (+ Lara Croft GO), Loop Hero, Luck be a Landlord, Oxygen Not Included — клітинна фізика (гази, рідини, тепло), Sokobond
 - `program_end` ×8 🔥 — 7 Billion Humans, Electric Box (+ Lazors), Frozen Synapse, Kara (Кара — сонечко), Karel the Robot (Reeborg's World), Lightbot (Light-Bot), RoboZZle, Trainyard
 - `reach` ×8 🔥 — Blood Bowl, Bookworm, Candy Crush Saga, GemCraft, Klotski (Хуажунський шлях) + Lunar Lockout, Railbound, Rush Hour (ThinkFun), Space Invaders (Космічні загарбники)
-- `revealed` ×8 🔥 — Brogue, Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel), Desktop Dungeons, Dungeon Encounters, Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), NetHack, Rogue, Shattered Pixel Dungeon (і Pixel Dungeon)
+- `path_changed` ×8 🔥 — Defense Grid: The Awakening, Desktop Tower Defense, Dungeon Warfare, Element TD 2, Emberward, Fieldrunners, Grid Forge TD, Сучасні mazing-TD (Electromaze, Tower Maze Defense, Thornline TD, Maul Tactics, Back to the Roots 2)
+- `card_played` ×7 🔥 — Clash Royale, Gwent (Гвинт), Hearthstone Battlegrounds, Inscryption (Act 1), Marvel Snap, Onitama, Plants vs. Zombies Heroes
 - `blocked` ×7 🔥 — Advent of Code — сіткові пазли (збірка), Centipede (Багатоніжка), Helltaker, Ice-sliding puzzles (Inertia і жанр «ковзай до упору»), Klotski (Хуажунський шлях) + Lunar Lockout, Ricochet Robots (Rasende Roboter), Tomb of the Mask
-- `placed` ×6 🔥 — Akropolis (Акрополіс), Carcassonne (Каркасон), Cascadia + Calico (Каскадія, Калико), N-in-a-row (Хрестики-нулики, Gomoku, Connect Four, Pentago…), Qwirkle + Ingenious (Квіркл, Genial), Reversi / Othello (Реверсі)
+- `sighted` ×7 🔥 — Frozen Synapse, HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), Phoenix Point, Pokémon overworld puzzles (Gen I–II, лід, валуни Strength, спінери, телепорти), Silent Storm, Wargroove, XCOM: Enemy Unknown / XCOM 2
+- `enemy_moved` ×7 🔥 — HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), Jagged Alliance 2, Mario + Rabbids Kingdom Battle, Phoenix Point, Rebelstar / Laser Squad, Steel Panthers, XCOM: Enemy Unknown / XCOM 2
+- `check` ×6 🔥 — Chess (Шахи) — цифрова гра, Lichess variants (варіанти шахів Lichess), Shogi (Сьоґі, японські шахи), Xiangqi (Сянці, китайські шахи), Шахи без країв — циліндричні (Cylinder) і кругові (Circular / Byzantine), Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
 - `all_gone` ×6 🔥 — Deadly Rooms of Death (DROD: King Dugan's Dungeon), Ice-sliding puzzles (Inertia і жанр «ковзай до упору»), Mr. Do!, RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II), Space Invaders (Космічні загарбники), Wizard of Wor
 - `constraint_broken` ×6 🔥 — Fillomino (Filling, «Заповнення»), Hashiwokakero (Hashi, Bridges, Мости), Kakuro (Cross Sums, Какуро), Masyu (Pearl, «Перлини»), Simon Tatham's Portable Puzzle Collection, Taiji + The Witness (панелі)
+- `area_complete` ×5 🔥 — Bärenpark, Castles of Mad King Ludwig (Замки божевільного короля Людвіга), Cottage Garden (Сільський сад), Project L, The Castles of Burgundy (Замки Бургундії)
 - `leave` ×5 🔥 — Deadly Rooms of Death (DROD: King Dugan's Dungeon), Hey, That's My Fish! (Packeis am Pol), OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Recursed, Void Stranger
 - `no_moves` ×5 🔥 — 2048 (+ Threes як предок), Hey, That's My Fish! (Packeis am Pol), Mathable, SameGame / Clickomania + Flood (Tatham), Triple Town
-- `check` ×5 🔥 — Chess (Шахи) — цифрова гра, Lichess variants (варіанти шахів Lichess), Shogi (Сьоґі, японські шахи), Xiangqi (Сянці, китайські шахи), Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
 - `input(drag)` ×5 🔥 — Cosmic Express, Electric Box (+ Lazors), Flow Free, LYNE, Trainyard
-- `beam_hit` ×5 🔥 — Advent of Code — сіткові пазли (збірка), Deflektor (+ Mindbender), Electric Box (+ Lazors), Khet (Deflexion, Laser Chess), LaserTank
 - `edge` ×5 🔥 — Centipede (Багатоніжка), Klax, Kula World (Roll Away, KulaQuest), Space Invaders (Космічні загарбники), Tsuro (+ Indigo)
+- `smashed` ×5 🔥 — Earth Shaker, Emerald Mine, Heartlight, Rocks'n'Diamonds, Survivors
+- `locked` ×5 🔥 — Columns (Колонки), Dr. Mario (Доктор Маріо), Puyo Puyo (Пуйо Пуйо), Tetris (Тетрис, Tetris Guideline), Tetrisweeper
 - `line_of_sight` ×5 🔥 — Adventures of Lolo (Eggerland), Deadly Rooms of Death (DROD: King Dugan's Dungeon), Hitman GO (+ Lara Croft GO), Void Stranger, Wizard of Wor
-- `attacked` ×5 🔥 — Final Fantasy Tactics, Inscryption (Act 1), The Battle for Wesnoth (Битва за Веснот), The Battle of Polytopia, XCOM: Enemy Unknown / XCOM 2
+- `pattern(loop_branch)` ×5 🔥 — Country Road, Icebarn (アイスバーン), Moon or Sun (月か太陽), Reflect Link (リフレクトリンク), Yajilin (Яджилін, Arrow Ring)
+- `timeout(bot)` ×5 🔥 — CodinGame: Hypersonic, CodinGame: Keep Off the Grass (Fall Challenge 2022), CodinGame: The Great Escape, Google AI Challenge — Ants, Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
+- `covered` ×4 🔥 — Ark Nova, Bärenpark, Copenhagen (Копенгаген), The Isle of Cats
+- `season_change` ×4 🔥 — Cartographers (Картографи), Harvest Moon (SNES), Stardew Valley — фермерська сітка, Timberborn
+- `cross` ×4 🔥 — Cottage Garden (Сільський сад), GridRacer, Patchwork (Печворк), Sokobond
+- `phase_end` ×4 🔥 — DVONN, Lock's Quest, Rampart, The Castles of Burgundy (Замки Бургундії)
 - `hp_zero` ×4 🔥 — Backpack Hero, Gauntlet (1985), Loop Hero, Mindustry — клітинна логістика й оборона
 - `idle` ×4 🔥 — Dig Dug, Frogger (Жабка) / Crossy Road, Gauntlet (1985), Wrecking Crew
-- `locked` ×4 🔥 — Columns (Колонки), Dr. Mario (Доктор Маріо), Puyo Puyo (Пуйо Пуйо), Tetris (Тетрис, Tetris Guideline)
+- `land` ×4 🔥 — Motherload, Q*bert, Spelunky, SteamWorld Dig
+- `bump` ×4 🔥 — Morphblade, Ring of Pain, Tactical Nexus, Tower of the Sorcerer / Magic Tower (魔塔)
 - `hunger` ×4 🔥 — Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), NetHack, Rogue, Shattered Pixel Dungeon (і Pixel Dungeon)
+- `spotted` ×4 🔥 — Jagged Alliance 2, Mutant Year Zero: Road to Eden, Rebelstar / Laser Squad, Steel Panthers
+- `card_drawn` ×3 🔥 — Betrayal at House on the Hill, Kingdom Builder, Kingdom Death: Monster
+- `board_full` ×3 🔥 — Quarto, Shovel Knight Pocket Dungeon, Take It Easy
+- `summoned` ×3 🔥 — Duelyst, Faeria, Tash-Kalar: Arena of Legends
 - `turn_start` ×3 🔥 — Backpack Hero, HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), The Battle of Polytopia
+- `month_start` ×3 🔥 — Caesar III, Pharaoh, RollerCoaster Tycoon
 - `rng` ×3 🔥 — Luck be a Landlord, OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Stardew Valley — фермерська сітка
 - `schedule` ×3 🔥 — Mindustry — клітинна логістика й оборона, Prison Architect — шар кімнат і зон, Wilmot's Warehouse
-- `smashed` ×3 🔥 — Emerald Mine, Heartlight, Rocks'n'Diamonds
+- `breach` ×3 🔥 — Space Haven, Tactical Breach Wizards, XCOM: Chimera Squad
+- `move_done` ×3 🔥 — Ataxx, Duck Chess (Качині шахи), Game of the Amazons (Амазонки)
+- `connected` ×3 🔥 — Breakthrough і Lines of Action (Прорив і Лінії дії), Hex (Гекс), TwixT (Твікст)
+- `level_up` ×3 🔥 — Chess Survivors, Desktop Dungeons, Super Auto Pets
+- `passes` ×3 🔥 — Go (Ґо, вейці, бадук), Hive (Вулик), Janggi (Чанґі, корейські шахи)
+- `wave_start` ×3 🔥 — Dome Keeper, GemCraft, Wall World
+- `wave_cleared` ×3 🔥 — Dome Keeper, Dungeon of the Endless, Wall World
+- `cast` ×3 🔥 — Bean and Nothingness, Rift Wizard, Solomon's Key
 - `region_closed` ×3 🔥 — Amidar, Libble Rabble, Xonix (Ксонікс) / Qix / Volfied
-- `sighted` ×3 🔥 — Frozen Synapse, HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), XCOM: Enemy Unknown / XCOM 2
-- `path_changed` ×3 🔥 — Desktop Tower Defense, Emberward, Fieldrunners
-- `season_change` ×2 — Cartographers (Картографи), Stardew Valley — фермерська сітка
-- `cross` ×2 — Patchwork (Печворк), Sokobond
+- `night_start` ×3 🔥 — Anteater (Мурахоїд), Lux AI Challenge, The Last Spell
+- `return_home` ×3 🔥 — Paper.io (Пейпер-іо) і Paper.io 2, Splix.io, Tron Light Cycles (Світлові мотоцикли) і нащадки
+- `signal(net)` ×3 🔥 — Factorio — circuit network, KOHCTPYKTOP: Engineer of the People, Turing Complete
+- `noticed` ×3 🔥 — Brogue, Etrian Odyssey, Invisible, Inc.
+- `noise` ×3 🔥 — Dungeon Crawl Stone Soup, Silent Storm, Zombicide
+- `enter_zone` ×3 🔥 — Battle Brothers, Nectaris (Military Madness), The Battle for Wesnoth (Битва за Веснот)
+- `round_lost` ×3 🔥 — Dota Auto Chess, Dota Underlords, Teamfight Tactics (TFT)
+- `harvest` ×2 — Agricola — сітка ферми (Агрікола), Caverna: The Cave Farmers (Каверна)
+- `called` ×2 — Bingo / Keno / Lotto (Бінго, Лото), Karuba (Каруба)
+- `objective_met` ×2 — Takenoko (Такеноко), Welcome To… (Ласкаво просимо до…)
+- `season_start` ×2 — Against the Storm, Pharaoh
+- `cooldown_ready` ×2 — Backpack Battles, Legend of Grimrock
 - `in_range` ×2 — Clash of Clans — розстановка бази на сітці, Mindustry — клітинна логістика й оборона
-- `day_start` ×2 — Loop Hero, Stardew Valley — фермерська сітка
-- `move_done` ×2 — Ataxx, Game of the Amazons (Амазонки)
-- `connected` ×2 — Breakthrough і Lines of Action (Прорив і Лінії дії), Hex (Гекс)
-- `passes` ×2 — Go (Ґо, вейці, бадук), Hive (Вулик)
+- `week_end` ×2 — Mini Metro, Mini Motorways
+- `signal_rise` ×2 — Escape (Tom 7), Terraria — рідини
+- `submit` ×2 — 5D Chess with Multiverse Time Travel, Apocalypse (Апокаліпсис, одночасні шахи коней і пішаків)
+- `step_done` ×2 — Arimaa, Wumpus world («Світ Вампуса»)
+- `reserve_empty` ×2 — GIPF, Tak (Так)
 - `deadlock` ×2 — Kamisado, Sokoban (Сокобан)
-- `card_played` ×2 — Inscryption (Act 1), Onitama
+- `pool_empty` ×2 — YINSH, ZÈRTZ
 - `exec(tick)` ×2 — Electric Box (+ Lazors), Trainyard
 - `collide` ×2 — Loco-Motion (Guttang Gottong), Railbound
 - `pattern(loop_closed)` ×2 — Slitherlink (Слізерлінк, Loopy, Fences), Trax
-- `wave_start` ×2 — Dome Keeper, GemCraft
-- `wave_cleared` ×2 — Dome Keeper, Dungeon of the Endless
-- `land` ×2 — Q*bert, SteamWorld Dig
-- `landed` ×2 — Tetris (Тетрис, Tetris Guideline), Troddlers
-- `cast` ×2 — Rift Wizard, Solomon's Key
+- `meter_full` ×2 — Tetris Effect / Tetris Effect Connected, Tetrisphere
+- `seen_by` ×2 — Head over Heels, Mario vs. Donkey Kong
+- `all_collected` ×2 — Lode Runner, Lode Runner: The Legend Returns
 - `placement_done` ×2 — Battleship (Морський бій), Stratego (Стратего)
+- `accuse` ×2 — Cluedo (Clue; «Клуедо»), Mr. Jack (Містер Джек)
+- `streak` ×2 — DemonCrawl, Pac-Man 256
+- `attack` ×2 — Luzhanqi (Лучжаньці, китайські армійські шахи), Stratego (Стратего)
+- `zone_stay` ×2 — Armagetron Advanced, Snake Rattle 'n' Roll
+- `room_exit` ×2 — Adventure (Atari 2600), Berzerk
+- `self_contact` ×2 — Nibbler, Snake (Змійка) / Nibbles / Nokia Snake
+- `aligned` ×2 — Gorogoa, ZZT
+- `pattern(block2x2)` ×2 — Nurikabe (Нурікабе, Islands in the Stream), Nurimisaki (ぬりみさき)
 - `turn_start(side)` ×2 — Advent of Code — сіткові пазли (збірка), Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
+- `cycle_end` ×2 — Kaizen: A Factory Story, Opus Magnum
 - `all_on` ×2 — RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II), Sokoban (Сокобан)
-- `enemy_moved` ×2 — HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), XCOM: Enemy Unknown / XCOM 2
+- `rest(party)` ×2 — Eye of the Beholder, The Bard's Tale / Might and Magic — сіткові dungeon crawl 80-х
+- `room_dealt` ×2 — Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel), Donsol
+- `part_destroyed` ×2 — Cogmind, Front Mission
+- `noticed(a, b)` ×2 — Infra Arcana (огляд з The Ground Gives Way і Zorbus), Shattered Pixel Dungeon (і Pixel Dungeon)
+- `both_passed` ×2 — Card Hunter, Gwent (Гвинт)
+- `combat_start` ×2 — Fallout 1–2 (покроковий бій), Mutant Year Zero: Road to Eden
+- `timeline_turn` ×2 — Othercide, XCOM: Chimera Squad
+- `enter_zoc` ×2 — Panzer General, Unity of Command: Stalingrad Campaign
 - `paradox` ×2 — Patrick's Parabox, Recursed
+- `produced` ×2 — Age of War / Stick War, Swords & Soldiers
+- `battle_start` ×2 — Hearthstone Battlegrounds, Super Auto Pets
+- `faint` ×2 — Hearthstone Battlegrounds, Super Auto Pets
+- `bought` ×2 — Hearthstone Battlegrounds, Super Auto Pets
+- `sold` ×2 — Hearthstone Battlegrounds, Super Auto Pets
+- `lane_enter` ×2 — Plants vs. Zombies (Рослини проти зомбі), Plants vs. Zombies: Vasebreaker і I, Zombie (режим Puzzle)
+- `groups_joined` ×1 — Acquire
+- `scoring_card` ×1 — Alhambra (Альгамбра)
+- `line_complete` ×1 — Copenhagen (Копенгаген)
+- `group_formed` ×1 — Dragon Castle
 - `last_drop` ×1 — Five Tribes
-- `deck_empty` ×1 — NMBR 9
-- `board_full` ×1 — Take It Easy
+- `hit(row|col)` ×1 — Galaxy Trucker
+- `card_revealed` ×1 — Galaxy Trucker
+- `timer_flip` ×1 — Galaxy Trucker
+- `box_filled` ×1 — Ganz Schön Clever (That's Pretty Clever)
+- `market_empty` ×1 — Harmonies
+- `episode_end` ×1 — My City
+- `market_low` ×1 — New York 1901 (Нью-Йорк 1901)
+- `card_flipped` ×1 — Next Station: London
+- `supply_empty` ×1 — Reef (Риф)
+- `surrounded` ×1 — Samurai (Самурай)
+- `tiles_exhausted` ×1 — Taluva (Талува)
+- `all_passed` ×1 — Terraforming Mars (Тераформування Марса)
+- `marble_stopped` ×1 — ThinkFun Laser Maze і Gravity Maze
+- `linked` ×1 — Through the Desert (Крізь пустелю)
+- `kingdoms_joined` ×1 — Tigris & Euphrates (Тигр і Євфрат)
+- `same_leader_in_kingdom` ×1 — Tigris & Euphrates (Тигр і Євфрат)
+- `arrangement` ×1 — A Little to the Left
+- `order_expired` ×1 — Automachef
+- `battle_end` ×1 — Backpack Battles
+- `road_built` ×1 — Cities: Skylines (зонування)
 - `destroyed` ×1 — Clash of Clans — розстановка бази на сітці
-- `step_done` ×1 — Arimaa
+- `covered(obj)` ×1 — Cloud Gardens
+- `mined` ×1 — Core Keeper — сітковий шар (копання, ферма, автоматизація)
+- `hull_hit` ×1 — Dredge
+- `job_done` ×1 — Dwarf Fortress — призначення клітин і рідини
+- `incident` ×1 — Fallout Shelter
+- `hover` ×1 — Islanders
+- `season(s)` ×1 — Kingdoms and Castles
+- `block_update` ×1 — Minecraft — редстоун
+- `wallclock(t)` ×1 — FarmVille і Hay Day — ферма на годиннику
+- `day_end` ×1 — PlateUp!
+- `exported` ×1 — Production Line
+- `room_changed` ×1 — RimWorld — шар кімнат і температури
+- `delivered(item, sink)` ×1 — shapez
+- `smell` ×1 — SimAnt
+- `world_load` ×1 — Terraria — рідини
+- `arrive` ×1 — Tiny Tower / SimTower
+- `all_placed` ×1 — Unpacking
+- `requirements_met(stage)` ×1 — Viva Piñata
+- `move_reveal` ×1 — Apocalypse (Апокаліпсис, одночасні шахи коней і пішаків)
+- `move_away` ×1 — Baroque chess / Ultima (Бароккові шахи)
+- `board_end` ×1 — Bughouse (Бʼюгхаус, шахи вдвох на двох дошках)
+- `bare_king` ×1 — Chaturanga / Shatranj (Чатуранга / Шатрандж)
+- `missed_capture` ×1 — Національні варіанти шашок
+- `capture_attempt` ×1 — Chess 2: The Sequel (Sirlin's Chess)
+- `bid_reveal` ×1 — Chess 2: The Sequel (Sirlin's Chess)
 - `cooldown_end` ×1 — Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
+- `capture_chain_end` ×1 — Congo (шахи «Конго»)
+- `back_row_majority` ×1 — Epaminondas (Епамінонд)
+- `touched` ×1 — Gobblet (Гоблет)
+- `all_in_camp` ×1 — Halma / Chinese checkers (Хальма / Китайські шашки)
+- `sandwich` ×1 — Hnefatafl (Тафл, «королівська дошка»)
+- `no_capture` ×1 — Kōnane (Конане)
+- `count_start` ×1 — Makruk (Макрук, тайські шахи)
+- `series_end` ×1 — Шахи з серіями ходів (Marseillais, Progressive)
+- `mill_formed` ×1 — Nine men's morris (Млин)
+- `sown` ×1 — Oware (Оваре, Авале)
+- `boss_round` ×1 — Passant: A Chess Roguelike
+- `measured` ×1 — Quantum Chess (Квантові шахи, Cantwell)
+- `moved_up` ×1 — Santorini (Санторіні)
+- `pushed_off` ×1 — Shōbu (Шобу)
+- `move_timer` ×1 — Shotgun King: The Final Checkmate
 - `beam_hit_for(n)` ×1 — Deflektor (+ Mindbender)
+- `path_end` ×1 — Entanglement
+- `beam_end` ×1 — Lasergoose
+- `route_closed` ×1 — Metro (Iron Horse)
+- `iteration_start` ×1 — OCTOPTICOM
 - `flow_enter` ×1 — Pipe Mania (Pipe Dream)
 - `flow_blocked` ×1 — Pipe Mania (Pipe Dream)
+- `valve_open` ×1 — Plumber / Pipes / Water Connect (мобільний жанр)
 - `pattern(connected(a, b))` ×1 — Shannon switching game / Bridg-It (+ Untangle)
 - `pattern(cut(a, b))` ×1 — Shannon switching game / Bridg-It (+ Untangle)
+- `sweep_over` ×1 — Spin Doctor / ClockWerx
+- `signal_arrive` ×1 — SPIN Protocol
+- `forced_space` ×1 — Tantrix
 - `pattern(span(n))` ×1 — Trax
 - `input(rotate)` ×1 — Zenji
+- `hatch` ×1 — Dot Valley
 - `picked` ×1 — Mr. Do!
+- `submerged` ×1 — Noita
 - `timer-delay` ×1 — Rocks'n'Diamonds
+- `end_of_frame` ×1 — Sandspiel Studio
+- `pass_through` ×1 — Sugar, Sugar
 - `adjacent8` ×1 — The Powder Toy
+- `fluid_reach` ×1 — Where's My Water?
+- `all_painted` ×1 — Alchemy (PopCap)
+- `hand_empty` ×1 — Block Blast! (і родина 1010! / Woodoku)
+- `path_released` ×1 — Dungeon Raid
+- `path_complete` ×1 — Gunpey (Гунпей)
+- `gauge_full` ×1 — Gyromancer
+- `pattern(ring6)` ×1 — Hexic (Hexic HD, Hexic 2)
 - `spawned` ×1 — Color Lines / Lines 98 (Лінії)
-- `all_collected` ×1 — Lode Runner
+- `stuck_for` ×1 — Pictobits
+- `spell_cast` ×1 — Puzzle Quest: Challenge of the Warlords
+- `above_line` ×1 — Suika Game (Кавунова гра)
+- `pattern(rect)` ×1 — Super Puzzle Fighter II Turbo
+- `item_used` ×1 — TetriNET
+- `stream_end` ×1 — Tidalis
+- `phase_start(high_tide|low_tide)` ×1 — Titanium Court
+- `fell_off(a, where)` ×1 — Tricky Towers
+- `leak(water, edge)` ×1 — Wetrix
+- `gap_closed` ×1 — Zuma / Puzz Loop
+- `bump(a, cell)` ×1 — Blocks That Matter
+- `walked_over(a, obj)` ×1 — BurgerTime
+- `watched_by(a, b)` ×1 — Captain Toad: Treasure Tracker
+- `pass_end` ×1 — Chuckie Egg
+- `all_trapped` ×1 — Door Door
+- `required_lost` ×1 — Exit
+- `collected(a, goal)` ×1 — Kine
+- `used(a)` ×1 — King's Valley II: The Seal of El Giza
+- `bump_count(a, n)` ×1 — King's Valley
+- `cycle(phase)` ×1 — Knight Lore
+- `signal(channel)` ×1 — Levelhead
+- `released(part)` ×1 — Mekorama
 - `toppled` ×1 — Pushover (Push-Over)
+- `enter_hidden` ×1 — Rick Dangerous
 - `headbutt` ×1 — Solomon's Key
+- `song(seq)` ×1 — Toki Tori 2 / Toki Tori 2+
 - `turn_at_obstacle` ×1 — Toki Tori
 - `probe` ×1 — Black Box (Чорна скринька)
+- `rule_match` ×1 — Bombe
+- `announce(dir)` ×1 — Captain Sonar
 - `suggest` ×1 — Cluedo (Clue; «Клуедо»)
-- `accuse` ×1 — Cluedo (Clue; «Клуедо»)
+- `answer(p, token)` ×1 — Cryptid
 - `attempt` ×1 — Kriegspiel + Dark Chess (Fog of War; «шахи наосліп із суддею» і «шахи в тумані»)
+- `mistake` ×1 — DemonCrawl
+- `row_solved` ×1 — endless mines
 - `escape` ×1 — Geister (Ghosts!, Good & Bad Ghosts; «Привиди»)
+- `ask` ×1 — Guess Who? (Вгадай, хто?)
+- `meet` ×1 — Inkognito
+- `dug(c)` ×1 — Keepsweeper
+- `hold(action)` ×1 — Mamono Mower
 - `delay` ×1 — Memory / Concentration / Pairs («Мемо», «Знайди пару»)
-- `attack` ×1 — Stratego (Стратего)
+- `one_type_left` ×1 — Metavaxx
+- `stage_start` ×1 — Minato
+- `witness_call` ×1 — Mr. Jack (Містер Джек)
+- `probe_landed` ×1 — Tacticsweeper
+- `guess_rule` ×1 — Zendo
+- `player_moved` ×1 — 3D Monster Maze
+- `player_out` ×1 — Achtung, die Kurve! (Увага, поворот!)
 - `blast` ×1 — Bomberman
 - `died` ×1 — Centipede (Багатоніжка)
+- `jump_over` ×1 — Crystal Castles
+- `chain_delivered` ×1 — Flicky
+- `exit_section` ×1 — Hungry Horace
+- `expired` ×1 — Hustle (Gremlin, 1977)
 - `timer_lap` ×1 — Lady Bug
 - `line_cut` ×1 — Libble Rabble
 - `loop_closed` ×1 — Loco-Motion (Guttang Gottong)
+- `reach_first` ×1 — Maze Craze
 - `input(move)` ×1 — Maze Mice
 - `proximity_wake` ×1 — Maze Mice
+- `last_standing` ×1 — Pac-Man Battle Royale
+- `near_miss` ×1 — Pac-Man Championship Edition / DX (Пекмен: чемпіонське видання)
+- `jump` ×1 — Pac-Man: сиквели 1983–2021
+- `flip` ×1 — Pac-Man spin-offs (Pac & Pal, Baby Pac-Man, Mega Tunnel Battle)
 - `state_off` ×1 — Pac-Man (Пекмен) і Ms. Pac-Man
 - `all_cells` ×1 — Q*bert
-- `self_contact` ×1 — Snake (Змійка) / Nibbles / Nokia Snake
-- `return_home` ×1 — Tron Light Cycles (Світлові мотоцикли) і нащадки
+- `rescued(a)` ×1 — Robotron: 2084
+- `enter_rail` ×1 — Shadow Labyrinth
+- `head_contact` ×1 — Slither.io
+- `stall` ×1 — Targ / Spectar
+- `timer_zero` ×1 — Tutankham
+- `use(tile)` ×1 — Wolfenstein 3D
+- `noise(area)` ×1 — Wolfenstein 3D
+- `message` ×1 — ZZT
 - `pattern(long_white_run)` ×1 — Heyawake (Хеявакé, «поділені кімнати»)
 - `pattern(unlit_cell)` ×1 — Light Up (Akari, Бідзюцукан)
 - `pattern(same_shape_touch)` ×1 — LITS (Nuruomino)
-- `pattern(block2x2)` ×1 — Nurikabe (Нурікабе, Islands in the Stream)
 - `pattern(adjacent8)` ×1 — Star Battle (Зоряна битва, Two Not Touch)
 - `reveal_by_correct` ×1 — Sudoku variants (варіанти судоку, Cracking the Cryptic / SudokuPad)
-- `pattern(loop_branch)` ×1 — Yajilin (Яджилін, Arrow Ring)
+- `cross(loop, gate)` ×1 — Suraromu (Slalom)
 - `pattern(checker2x2)` ×1 — Yin-Yang (Інь-Ян, Shiromaru-Kuromaru)
-- `timeout(bot)` ×1 — Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
+- `recorded(action)` ×1 — Autonauts
+- `input_wait` ×1 — Befunge (Befunge-93)
+- `step_limit(n)` ×1 — Blockly Games Maze і Code.org Classic Maze
+- `board_exit` ×1 — Carnage Heart
+- `goal_done(goal)` ×1 — CodeCombat
+- `depleted(cell)` ×1 — CodinGame: Keep Off the Grass (Fall Challenge 2022)
+- `program_dead(side)` ×1 — Core War
+- `fuel_out(x)` ×1 — Craftomation 101
+- `motion(room)` ×1 — Duskers
+- `signal(sensor)` ×1 — Infinifactory
 - `state_enter(s)` ×1 — Kara (Кара — сонечко)
-- `cycle_end` ×1 — Opus Magnum
+- `out_of_fuel(a)` ×1 — Lux AI Challenge
+- `phase(name)` ×1 — MOLEK-SYNTEZ
 - `phase(n)` ×1 — RoboRally
 - `exec(card)` ×1 — RoboRally
 - `signal_rise(pin)` ×1 — Robot Odyssey
+- `all_synced` ×1 — SpaceChem
 - `grown(a)` ×1 — The Farmer Was Replaced
+- `port_read(node, dir)` ×1 — TIS-100
 - `level_start` ×1 — Untrusted — or the Continuing Adventures of Dr. Eval
 - `validate` ×1 — Untrusted — or the Continuing Adventures of Dr. Eval
 - `on_exit` ×1 — Untrusted — or the Continuing Adventures of Dr. Eval
 - `phone` ×1 — Untrusted — or the Continuing Adventures of Dr. Eval
 - `sleep_on_contact` ×1 — Adventures of Lolo (Eggerland)
+- `hit` ×1 — Kye
 - `crushed_by` ×1 — Pengo
 - `leave_room` ×1 — RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II)
+- `exited` ×1 — Unblock Me і Parking Jam 3D (мобільні Rush Hour)
 - `siphon(wall)` ×1 — 868-HACK (+ Imbroglio, Cinco Paus — мікро-роглайки Michael Brough)
 - `killed_on(tile)` ×1 — 868-HACK (+ Imbroglio, Cinco Paus — мікро-роглайки Michael Brough)
-- `noticed` ×1 — Brogue
-- `room_dealt` ×1 — Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel)
+- `corruption_threshold` ×1 — Ancient Domains of Mystery (ADOM)
+- `level_feeling` ×1 — Moria / Angband
 - `card_played(card, slot)` ×1 — Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel)
+- `drop_on_slot` ×1 — Castle of the Winds
 - `threshold(temp, t)` ×1 — Caves of Qud
 - `poured` ×1 — Caves of Qud
-- `part_destroyed` ×1 — Cogmind
 - `evolve` ×1 — Cogmind
 - `detected` ×1 — Cogmind
 - `beat` ×1 — Crypt of the NecroDancer
 - `missed_beat` ×1 — Crypt of the NecroDancer
 - `song_end` ×1 — Crypt of the NecroDancer
-- `level_up` ×1 — Desktop Dungeons
-- `noise` ×1 — Dungeon Crawl Stone Soup
+- `room_cleared` ×1 — Donsol
+- `shot(a, target)` ×1 — DoomRL / DRL → Jupiter Hell
 - `stairs_taken` ×1 — Dungeon Crawl Stone Soup
 - `zot_attention` ×1 — Dungeon Crawl Stone Soup
 - `stepped(code)` ×1 — Dungeon Encounters
+- `spell_cast(runes)` ×1 — Dungeon Master
 - `door_opened` ×1 — Dungeon of the Endless
 - `lifted(crystal)` ×1 — Dungeon of the Endless
+- `heart(op, n)` ×1 — Dungeons of Daggorath
+- `adjacent_enter(a, b)` ×1 — DungeonUp
+- `form_meter_full` ×1 — Golden Krone Hotel
+- `noticed_trap` ×1 — Harmless7DRL
 - `illegal_move` ×1 — HyperRogue
+- `discovered(kind)` ×1 — Infra Arcana (огляд з The Ground Gives Way і Zorbus)
+- `danger_level` ×1 — Labyrinth of Refrain: Coven of Dusk
+- `deadline` ×1 — Larn
 - `item_placed` ×1 — Legend of Grimrock
 - `weight_on` ×1 — Legend of Grimrock
 - `weight_off` ×1 — Legend of Grimrock
-- `cooldown_ready` ×1 — Legend of Grimrock
-- `bump` ×1 — Tower of the Sorcerer / Magic Tower (魔塔)
+- `out_of_sight(cell)` ×1 — Myst (7DRL)
 - `thrown(item, target)` ×1 — Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon)
 - `apply(item, target)` ×1 — NetHack
+- `spotted(a)` ×1 — Not the Robots
+- `time_of_day(h)` ×1 — Omega
+- `moon_phase(p)` ×1 — Omega
+- `surrender(monster)` ×1 — Omega
 - `scroll` ×1 — 'One Way Heroics (Mystery Chronicle: One Way Heroics)'
 - `caught_by_edge` ×1 — 'One Way Heroics (Mystery Chronicle: One Way Heroics)'
-- `noticed(a, b)` ×1 — Shattered Pixel Dungeon (і Pixel Dungeon)
+- `on_event(name)` ×1 — Path of Achra
+- `card_played(card)` ×1 — Pawnbarian
 - `realm_cleared` ×1 — Rift Wizard
+- `low_energy(n)` ×1 — Road Not Taken
+- `collide(a, b)` ×1 — Robots (BSD) / Chase / Daleks
+- `noticed(monster, player)` ×1 — Sil
+- `charge_line(a, b)` ×1 — Sproggiwood
+- `exit_reached(kind)` ×1 — Tactical Nexus
+- `cooldown_ready(talent)` ×1 — Tales of Maj'Eyal
+- `sustain_on(talent)` ×1 — Tales of Maj'Eyal
+- `dream_cleared` ×1 — Tangledeep
 - `turn_end(side)` ×1 — Theseus and the Minotaur (Тесей і Мінотавр)
+- `earthquake` ×1 — Torneko's Great Adventure: Mystery Dungeon
+- `encounter` ×1 — Wizardry: Proving Grounds of the Mad Overlord
 - `contact` ×1 — Archon: The Light and the Dark
-- `enter_zone` ×1 — The Battle for Wesnoth (Битва за Веснот)
+- `bumped` ×1 — Auro: A Monster-Bumping Adventure
+- `leave_zone` ×1 — Battle Brothers
+- `ally_died` ×1 — Battle Brothers
+- `overheat` ×1 — BattleTech
+- `tile_placed` ×1 — Betrayal at House on the Hill
 - `fail` ×1 — Blood Bowl
+- `knocked_out` ×1 — Descent: Journeys in the Dark
 - `symbol_destroyed` ×1 — Disgaea: Hour of Darkness
+- `leave_reach` ×1 — D&D grid combat (Dungeons & Dragons 5e)
+- `readied` ×1 — D&D grid combat (Dungeons & Dragons 5e)
+- `died_any` ×1 — Duelyst
+- `combat_exchange` ×1 — Faeria
+- `rule_violated` ×1 — Final Fantasy Tactics Advance
 - `ct_full` ×1 — Final Fantasy Tactics
 - `charge_done` ×1 — Final Fantasy Tactics
+- `room_revealed` ×1 — Gloomhaven
+- `cross_reaction_ring` ×1 — Hard West
+- `marker_revealed` ×1 — Heroscape
 - `move_from_to` ×1 — Hoplite
+- `chapter_end` ×1 — Inkulinati
 - `telegraph_resolve` ×1 — Into the Breach
+- `seen` ×1 — Invisible, Inc.
+- `alarm_level` ×1 — Invisible, Inc.
+- `provoked` ×1 — Mage Knight Board Game
+- `dice_face` ×1 — Memoir '44 / Commands & Colors
+- `turn_n` ×1 — Mewgenics
+- `call_help` ×1 — Mutant Year Zero: Road to Eden
+- `ram(a, b)` ×1 — Ogre
+- `interrupt` ×1 — Othercide
+- `jack_in` ×1 — Shadowrun Returns
+- `jack_out` ×1 — Shadowrun Returns
+- `alarm` ×1 — Shadowrun Returns
+- `unit_turn` ×1 — Shining Force
+- `first_enter` ×1 — Space Crusade
+- `aimed(shot, angle)` ×1 — SteamWorld Heist
+- `battle_resolved` ×1 — Super Robot Wars
 - `overlap` ×1 — Baba Is You
 - `rule_formed` ×1 — Baba Is You
 - `rule_broken` ×1 — Baba Is You
+- `out_of_steps` ×1 — Blue Prince
 - `layout_formed` ×1 — Carto
-- `aligned` ×1 — Gorogoa
+- `goal_event` ×1 — Felix the Reaper
+- `landed_on` ×1 — Fish Fillets
 - `word_spelled` ×1 — LOK Digital
+- `mode_toggle` ×1 — Magic Chalkboards
+- `snapped` ×1 — Monument Valley
 - `sweep` ×1 — Stephen's Sausage Roll
+- `circuit_closed` ×1 — The Electrifying Incident: A Monster Mini-Expedition
+- `path_submitted` ×1 — Understand
+- `junction` ×1 — Anomaly: Warzone Earth
 - `blocked_by` ×1 — Arknights
 - `sp_full` ×1 — Arknights
+- `deploy_done` ×1 — Clash Royale
+- `drone_phase` ×1 — Cobalt Core
 - `flooded` ×1 — Creeper World
 - `payday` ×1 — Dungeon Keeper
+- `boss_wave` ×1 — Flash Element TD
 - `tile_drawn` ×1 — Isle of Arrows
-- `lane_enter` ×1 — Plants vs. Zombies (Рослини проти зомбі)
-- `phase_end` ×1 — Rampart
+- `leak` ×1 — Legion TD / Legion TD 2
+- `build_phase` ×1 — Legion TD / Legion TD 2
+- `battle_phase` ×1 — Legion TD / Legion TD 2
+- `reveal` ×1 — Marvel Snap
+- `combat_phase` ×1 — Monster Train
+- `ascend` ×1 — Monster Train
+- `wave_break` ×1 — Orcs Must Die!
+- `stay` ×1 — PixelJunk Monsters
+- `blocked_hit` ×1 — Plants vs. Zombies Heroes
 - `merge` ×1 — Random Dice (+ Rush Royale)
-- `round_lost` ×1 — Teamfight Tactics (TFT)
+- `event` ×1 — Ratropolis
+- `research_done` ×1 — Revenge of the Titans
+- `expand` ×1 — Rogue Tower
+- `hurt` ×1 — Super Auto Pets
+- `hp_threshold` ×1 — The Battle Cats
+- `charge_full` ×1 — The Battle Cats
+- `heard` ×1 — They Are Billions
 - `counter_zero` ×1 — Wildfrost
+- `clue_given` ×1 — Codenames
+- `card_unplayed(c)` ×1 — Paperback Adventures
+- `deal` ×1 — Puzzmo: Pile-Up Poker
+- `all_found` ×1 — Squaredle
 
-## ui · 418
+## ui · 1105
 
+- `score-preview` ×14 🔥 — Akropolis (Акрополіс), Azul (Азул), Cartographers (Картографи), Cascadia + Calico (Каскадія, Калико), Happy Home (Щасливий дім), Harmonies, Islanders, Kingdomino (Кінґдоміно), Mathable, NMBR 9, Qwirkle + Ingenious (Квіркл, Genial), Sagrada (Саграда), Scrabble (цифрові версії; Words With Friends), Take It Easy
+- `range-circle` ×14 🔥 — Arknights, Defense Grid: The Awakening, Desktop Tower Defense, Element TD 2, Emberward, Fieldrunners, Flash Element TD, GemCraft, Grid Forge TD, Infinitode 2, Mechabellum, Rogue Tower, Wildermyth, Сучасні mazing-TD (Electromaze, Tower Maze Defense, Thornline TD, Maul Tactics, Back to the Roots 2)
 - `move-counter` ×12 🔥 — Bloxorz, Catrap (Pitman), Flow Free, Helltaker, Klotski (Хуажунський шлях) + Lunar Lockout, Kwirk (Puzzle Boy), Rush Hour (ThinkFun), SameGame / Clickomania + Flood (Tatham), Sliding-tile permutation puzzles (пʼятнашки й родичі), Sokoban (Сокобан), Theseus and the Minotaur (Тесей і Мінотавр), XOR
-- `score-preview` ×11 🔥 — Akropolis (Акрополіс), Azul (Азул), Cartographers (Картографи), Cascadia + Calico (Каскадія, Калико), Kingdomino (Кінґдоміно), Mathable, NMBR 9, Qwirkle + Ingenious (Квіркл, Genial), Sagrada (Саграда), Scrabble (цифрові версії; Words With Friends), Take It Easy
+- `hit-chance` ×10 🔥 — Battle Brothers, BattleTech, DoomRL / DRL → Jupiter Hell, Fallout 1–2 (покроковий бій), Final Fantasy Tactics, Jagged Alliance 2, Mario + Rabbids Kingdom Battle, Tactics Ogre, Wildermyth, XCOM: Enemy Unknown / XCOM 2
+- `piece-tray` ×8 🔥 — A Feast for Odin (Бенкет для Одіна) і поліоміно-заповнення, Blokus (Блокус), Chromatron (1–5), Crossmath (математичний кросворд), IQ Puzzler Pro, Patchwork (Печворк), Stickets, Ubongo + Katamino / IQ Puzzler (Убонго)
+- `opponent-boards` ×8 🔥 — Akropolis (Акрополіс), Cascadia + Calico (Каскадія, Калико), Five Tribes, Kingdomino (Кінґдоміно), Photosynthesis (Фотосинтез), Queendomino (Квіндоміно), Random Dice (+ Rush Royale), Sagrada (Саграда)
 - `path-preview` ×8 🔥 — Color Lines / Lines 98 (Лінії), Emberward, Hitman GO (+ Lara Croft GO), Loco-Motion (Guttang Gottong), Masyu (Pearl, «Перлини»), OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Taiji + The Witness (панелі), Tsuro (+ Indigo)
 - `conflict-highlight` ×8 🔥 — Fillomino (Filling, «Заповнення»), Hashiwokakero (Hashi, Bridges, Мости), Kakuro (Cross Sums, Какуро), Knotwords, Masyu (Pearl, «Перлини»), Prison Architect — шар кімнат і зон, Simon Tatham's Portable Puzzle Collection, Taiji + The Witness (панелі)
-- `opponent-boards` ×7 🔥 — Akropolis (Акрополіс), Cascadia + Calico (Каскадія, Калико), Five Tribes, Kingdomino (Кінґдоміно), Photosynthesis (Фотосинтез), Random Dice (+ Rush Royale), Sagrada (Саграда)
 - `reachable-highlight` ×7 🔥 — Final Fantasy Tactics, Labyrinth (Das verrückte Labyrinth, Божевільний лабіринт), Sokoban (Сокобан), Spybot: The Nightfall Incident (Lego Spybotics), The Battle for Wesnoth (Битва за Веснот), The Battle of Polytopia, XCOM: Enemy Unknown / XCOM 2
 - `hp-bar` ×7 🔥 — Backpack Hero, Bookworm, Gauntlet (1985), Loop Hero, Maze Mice, Mindustry — клітинна логістика й оборона, Puzzle & Dragons (PAD, Пазли і Дракони)
 - `inventory-bar` ×7 🔥 — Chip's Challenge, Clash of Clans — розстановка бази на сітці, Factorio — клітинна логістика (конвеєри, маніпулятори, мережі), Gauntlet (1985), Loop Hero, RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II), Stardew Valley — фермерська сітка
+- `turn-order-bar` ×7 🔥 — Fell Seal: Arbiter's Mark, Heroes of Might and Magic III (Герої меча і магії III), King's Bounty: The Legend (King's Bounty. Легенда о рыцаре), Mewgenics, Shining Force, The Banner Saga, Triangle Strategy
 - `pocket` ×6 🔥 — Hive (Вулик), Lichess variants (варіанти шахів Lichess), Qwirkle + Ingenious (Квіркл, Genial), Shogi (Сьоґі, японські шахи), Tsuro (+ Indigo), Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
+- `generation-counter` ×6 🔥 — Brian's Brain і Seeds, Conway's Game of Life (Гра «Життя»), Langton's Ant (Мураха Ленгтона) і турміти, Terraforming Mars (Тераформування Марса), Wireworld, Елементарні клітинні автомати (Rule 110, Rule 30, Rule 90)
+- `card-hand` ×6 🔥 — Ash of Gods: Redemption, Golf Peaks, Onitama, Paperback Adventures, Pawnbarian, Terraforming Mars (Тераформування Марса)
 - `tool-palette` ×6 🔥 — Cell Machine, Factorio — клітинна логістика (конвеєри, маніпулятори, мережі), Mindustry — клітинна логістика й оборона, OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Prison Architect — шар кімнат і зон, Super Mario Maker 2
+- `hand-slots` ×6 🔥 — Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel), Dungeon Keeper, Dungeon Master, Dungeons of Daggorath, Legend of Grimrock, Tumblestone
 - `instruction-highlight` ×6 🔥 — Kara (Кара — сонечко), Karel the Robot (Reeborg's World), Lightbot (Light-Bot), Opus Magnum, RoboZZle, The Farmer Was Replaced
-- `range-circle` ×6 🔥 — Arknights, Desktop Tower Defense, Emberward, Fieldrunners, GemCraft, Mechabellum
+- `status-line` ×6 🔥 — Caves of Qud, Harmless7DRL, Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), NetHack, Rogue, Untrusted — or the Continuing Adventures of Dr. Eval
+- `card-row` ×5 🔥 — Cartographers (Картографи), Five Tribes, New York 1901 (Нью-Йорк 1901), Pac-Man spin-offs (Pac & Pal, Baby Pac-Man, Mega Tunnel Battle), Tiny Towns (Крихітні містечка)
+- `program-slots` ×5 🔥 — 868-HACK (+ Imbroglio, Cinco Paus — мікро-роглайки Michael Brough), Cargo-Bot, Code Master (ThinkFun), Lightbot (Light-Bot), RoboZZle
+- `action-pips` ×5 🔥 — HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), Mario + Rabbids Kingdom Battle, Project L, XCOM: Enemy Unknown / XCOM 2, Zombicide
 - `last-move-highlight` ×5 🔥 — Chess (Шахи) — цифрова гра, Draughts / Checkers (Шашки), Reversi / Othello (Реверсі), Surakarta (Roundabouts), Xiangqi (Сянці, китайські шахи)
 - `timer-countdown` ×5 🔥 — Clash of Clans — розстановка бази на сітці, Kickle Cubicle (迷宮島), Ubongo + Katamino / IQ Puzzler (Убонго), Wilmot's Warehouse, Zenji
 - `tooltip` ×5 🔥 — Backpack Hero, Loop Hero, Luck be a Landlord, Oxygen Not Included — клітинна фізика (гази, рідини, тепло), Prison Architect — шар кімнат і зон
+- `map-overlay` ×5 🔥 — Caesar III, Cities: Skylines (зонування), Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), Pharaoh, SimCity (1989) / Micropolis
 - `speed-slider` ×5 🔥 — Conway's Game of Life (Гра «Життя»), Manufactoria, Oxygen Not Included — клітинна фізика (гази, рідини, тепло), Robot Odyssey, Trainyard
-- `status-line` ×5 🔥 — Caves of Qud, Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), NetHack, Rogue, Untrusted — or the Continuing Adventures of Dr. Eval
-- `piece-tray` ×4 🔥 — A Feast for Odin (Бенкет для Одіна) і поліоміно-заповнення, Blokus (Блокус), Patchwork (Печворк), Ubongo + Katamino / IQ Puzzler (Убонго)
+- `xp-bar` ×5 🔥 — Age of War / Stick War, Chess Survivors, Dragonsweeper, Maze Mice, Twinfold
+- `stack-view` ×5 🔥 — Befunge (Befunge-93), DVONN, Gobblet (Гоблет), Lasca (Ласка), Tak (Так)
+- `mana-bar` ×5 🔥 — DemonCrawl, King's Bounty: The Legend (King's Bounty. Легенда о рыцаре), Noita, Rogue Tower, Swords & Soldiers
+- `shop-bar` ×5 🔥 — Dota Auto Chess, Dota Underlords, Hearthstone Battlegrounds, Super Auto Pets, Teamfight Tactics (TFT)
+- `height-badge` ×4 🔥 — Akropolis (Акрополіс), Reef (Риф), Taluva (Талува), Vandal Hearts
+- `called-tile` ×4 🔥 — FITS, Karuba (Каруба), NMBR 9, Take It Easy
+- `rank-badge` ×4 🔥 — Auro: A Monster-Bumping Adventure, Jungle (Dou Shou Qi, «Джунглі», звірині шахи), Really Bad Chess, Tash-Kalar: Arena of Legends
+- `dice-tray` ×4 🔥 — Children of Zodiarcs, Heroscape, Memoir '44 / Commands & Colors, The Castles of Burgundy (Замки Бургундії)
+- `rule-input` ×4 🔥 — Brian's Brain і Seeds, Conway's Game of Life (Гра «Життя»), Langton's Ant (Мураха Ленгтона) і турміти, Елементарні клітинні автомати (Rule 110, Rule 30, Rule 90)
 - `objective-text` ×4 🔥 — Hitman GO (+ Lara Croft GO), Klax, Luck be a Landlord, Wilmot's Warehouse
+- `ammo-counter` ×4 🔥 — BurgerTime, DoomRL / DRL → Jupiter Hell, Downwell, Shotgun King: The Final Checkmate
 - `lives` ×4 🔥 — Centipede (Багатоніжка), Dig Dug, Dig Dug II, Kickle Cubicle (迷宮島)
+- `countdown-on-tile` ×4 🔥 — Bejeweled (1–3, Twist), Candy Crush Saga, Gems of War (і Marvel Puzzle Quest), Gyromancer
+- `clue-done-mark` ×4 🔥 — Futoshiki (Unequal, Нерівності), Magnets (Tatham), Skyscrapers (Towers, Хмарочоси), Undead (Haunted Mirror Maze)
+- `metric-panel` ×4 🔥 — Infinifactory, Kaizen: A Factory Story, Opus Magnum, SpaceChem
 - `par-moves` ×4 🔥 — Klotski (Хуажунський шлях) + Lunar Lockout, Rush Hour (ThinkFun), Sliding-tile permutation puzzles (пʼятнашки й родичі), Theseus and the Minotaur (Тесей і Мінотавр)
-- `card-row` ×3 🔥 — Cartographers (Картографи), Five Tribes, Tiny Towns (Крихітні містечка)
+- `damage-forecast` ×4 🔥 — Heroes of Might and Magic III (Герої меча і магії III), The Battle for Wesnoth (Битва за Веснот), Triangle Strategy, Wargroove
+- `next-wave-button` ×4 🔥 — Desktop Tower Defense, Fieldrunners, Flash Element TD, Grid Forge TD
+- `player-list` ×4 🔥 — Dota Auto Chess, Dota Underlords, Hearthstone Battlegrounds, Teamfight Tactics (TFT)
+- `market-ring` ×3 🔥 — Cottage Garden (Сільський сад), Happy Home (Щасливий дім), Patchwork (Печворк)
+- `color-tracks` ×3 🔥 — Cottage Garden (Сільський сад), Qwirkle + Ingenious (Квіркл, Genial), Tigris & Euphrates (Тигр і Євфрат)
+- `time-track` ×3 🔥 — Happy Home (Щасливий дім), Patchwork (Печворк), The Fury of Dracula
+- `capture-path` ×3 🔥 — Draughts / Checkers (Шашки), Fanorona (Фанорона), Surakarta (Roundabouts)
 - `energy-bar` ×3 🔥 — Backpack Hero, Deflektor (+ Mindbender), Stardew Valley — фермерська сітка
 - `progress-bar` ×3 🔥 — Clash of Clans — розстановка бази на сітці, Loop Hero, Wilmot's Warehouse
 - `legal-move-highlight` ×3 🔥 — Dorfromantik, Klotski (Хуажунський шлях) + Lunar Lockout, Mathable
 - `popup-text` ×3 🔥 — 2048 (+ Threes як предок), Dorfromantik, Luck be a Landlord
 - `minimap` ×3 🔥 — Factorio — клітинна логістика (конвеєри, маніпулятори, мережі), Mindustry — клітинна логістика й оборона, OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування)
+- `heat-bar` ×3 🔥 — BattleTech, Frostpunk, Unrailed!
+- `clock-calendar` ×3 🔥 — Harvest Moon (SNES), Stardew Valley — фермерська сітка, Tiny Tower / SimTower
 - `coins` ×3 🔥 — Luck be a Landlord, Stardew Valley — фермерська сітка, Tomb of the Mask
 - `timer-elapsed` ×3 🔥 — Prison Architect — шар кімнат і зон, Sliding-tile permutation puzzles (пʼятнашки й родичі), Sumplete
+- `thought-bubble` ×3 🔥 — RollerCoaster Tycoon, Theme Hospital, Two Point Hospital
+- `phase-indicator` ×3 🔥 — Battle Isle, Game of the Amazons (Амазонки), Nine men's morris (Млин)
 - `run-button` ×3 🔥 — Cosmic Express, Railbound, Trainyard
+- `distance-counter` ×3 🔥 — 'One Way Heroics (Mystery Chronicle: One Way Heroics)', Pipe Mania (Pipe Dream), Unrailed!
+- `wave-timer` ×3 🔥 — Dome Keeper, Ratropolis, Wall World
+- `depth-meter` ×3 🔥 — Motherload, Mr. Driller, SteamWorld Dig
 - `next-tile-preview` ×3 🔥 — 2048 (+ Threes як предок), Isle of Arrows, Triple Town
 - `danger-line` ×3 🔥 — 'One Way Heroics (Mystery Chronicle: One Way Heroics)', Panel de Pon (Tetris Attack, Puzzle League), SpellTower
 - `line-clue` ×3 🔥 — Battleship (Морський бій), Hexcells / Hexcells Plus / Hexcells Infinite, Voltorb Flip
-- `program-slots` ×3 🔥 — 868-HACK (+ Imbroglio, Cinco Paus — мікро-роглайки Michael Brough), Lightbot (Light-Bot), RoboZZle
+- `territory-percent` ×3 🔥 — Paper.io (Пейпер-іо) і Paper.io 2, Tron Light Cycles (Світлові мотоцикли) і нащадки, Xonix (Ксонікс) / Qix / Volfied
+- `edge-cross` ×3 🔥 — Dominosa (Доміноза), Palisade (Five Cells, «Частокіл»), Slitherlink (Слізерлінк, Loopy, Fences)
+- `command-palette` ×3 🔥 — Cargo-Bot, Lightbot (Light-Bot), RoboZZle
 - `target-preview` ×3 🔥 — Atomix, Ricochet Robots (Rasende Roboter), Sliding-tile permutation puzzles (пʼятнашки й родичі)
-- `hand-slots` ×3 🔥 — Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel), Dungeon Keeper, Legend of Grimrock
+- `more-prompt` ×3 🔥 — Moria / Angband, NetHack, Rogue
+- `deck-counter` ×3 🔥 — Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel), Donsol, Paperback Adventures
+- `combat-preview` ×3 🔥 — Civilization (бойовий шар юнітів, I–VI), Desktop Dungeons, Ring of Pain
+- `mana-counter` ×3 🔥 — Faeria, Labyrinth of Refrain: Coven of Dusk, Paperback Adventures
+- `trait-tracker` ×3 🔥 — Betrayal at House on the Hill, Merge Tactics (Clash Royale), Teamfight Tactics (TFT)
+- `phase-timer` ×3 🔥 — Hearthstone Battlegrounds, Lock's Quest, Rampart
+- `on-screen-keyboard` ×3 🔥 — Absurdle, Nerdle, Wordle
+- `word-preview` ×3 🔥 — Boggle, Bookworm, SpellTower
+- `target-number` ×3 🔥 — Countdown — numbers round / Countle, Digits (The New York Times), Krypto
+- `operator-buttons` ×3 🔥 — Countdown — numbers round / Countle, Digits (The New York Times), Krypto
+- `capacity-badge` ×2 — Agricola — сітка ферми (Агрікола), Caverna: The Cave Farmers (Каверна)
 - `remaining-tiles` ×2 — Carcassonne (Каркасон), Qwirkle + Ingenious (Квіркл, Genial)
-- `called-tile` ×2 — NMBR 9, Take It Easy
-- `capture-path` ×2 — Draughts / Checkers (Шашки), Surakarta (Roundabouts)
+- `objective-cards` ×2 — Cascadia + Calico (Каскадія, Калико), Takenoko (Такеноко)
+- `dice-pool` ×2 — Ganz Schön Clever (That's Pretty Clever), Railroad Ink
+- `goal-cards` ×2 — Kingdom Builder, Sprawlopolis
+- `coin-counter` ×2 — Bonza Word Puzzle, Queendomino (Квіндоміно)
+- `capture-tally` ×2 — Pente (Пенте), Samurai (Самурай)
+- `target-score` ×2 — Sprawlopolis, Wordatro!
+- `camera-orbit` ×2 — Swift Playgrounds (Learn to Code, Byte), Taluva (Талува)
+- `beam-preview` ×2 — Khet (Deflexion, Laser Chess), ThinkFun Laser Maze і Gravity Maze
+- `dual-bar` ×2 — Against the Storm, Ash of Gods: Redemption
+- `power-meter` ×2 — Automachef, Dungeon of the Endless
+- `adjacency-overlay` ×2 — Backpack Hero, Civilization VI — шар районів і бонусів суміжності
+- `rating-columns` ×2 — Caesar III, Pharaoh
 - `step-button` ×2 — Cell Machine, Conway's Game of Life (Гра «Життя»)
+- `rci-demand` ×2 — Cities: Skylines (зонування), SimCity (1989) / Micropolis
+- `paper-doll` ×2 — BattleTech, Diablo II (inventory)
 - `remaining-counter` ×2 — Dorfromantik, Ice-sliding puzzles (Inertia і жанр «ковзай до упору»)
 - `drag-ghost` ×2 — Factorio — клітинна логістика (конвеєри, маніпулятори, мережі), Mindustry — клітинна логістика й оборона
+- `cell-coordinates` ×2 — Factorio — клітинна логістика (конвеєри, маніпулятори, мережі), Labyrinth of Refrain: Coven of Dusk
 - `pause-button` ×2 — Loop Hero, Oxygen Not Included — клітинна фізика (гази, рідини, тепло)
+- `overflow-ring` ×2 — Mini Metro, Mini Motorways
+- `week-clock` ×2 — Mini Metro, Mini Motorways
+- `temperature-readout` ×2 — Caves of Qud, RimWorld — шар кімнат і температури
 - `element-picker` ×2 — Super Mario Maker 2, Townscaper
 - `undo-button` ×2 — Sumplete, Townscaper
+- `submit-button` ×2 — 5D Chess with Multiverse Time Travel, Apocalypse (Апокаліпсис, одночасні шахи коней і пішаків)
 - `direction-arrows` ×2 — Abalone (Абалон), Gess
 - `territory-overlay` ×2 — Game of the Amazons (Амазонки), Go (Ґо, вейці, бадук)
+- `trap-marker` ×2 — Arimaa, Jungle (Dou Shou Qi, «Джунглі», звірині шахи)
 - `piece-count-bar` ×2 — Ataxx, Reversi / Othello (Реверсі)
+- `board-pair` ×2 — Bughouse (Бʼюгхаус, шахи вдвох на двох дошках), Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
+- `move-diagram` ×2 — Chess with Different Armies (шахи різних армій, Betza), Великі шогі — Chu shogi і Tenjiku shogi (Чу-шогі, Тендзіку-шогі)
+- `stack-height-label` ×2 — DVONN, Hexa Sort
+- `row-choice-highlight` ×2 — GIPF, YINSH
 - `byoyomi-clock` ×2 — Go (Ґо, вейці, бадук), Shogi (Сьоґі, японські шахи)
-- `card-hand` ×2 — Golf Peaks, Onitama
+- `win-line` ×2 — N-in-a-row (Хрестики-нулики, Gomoku, Connect Four, Pentago…), Pente (Пенте)
 - `lit-tiles` ×2 — Infinity Loop + Net (Tatham), Zenji
-- `distance-counter` ×2 — 'One Way Heroics (Mystery Chronicle: One Way Heroics)', Pipe Mania (Pipe Dream)
 - `level-number` ×2 — Dig Dug, Dig Dug II
-- `depth-meter` ×2 — Mr. Driller, SteamWorld Dig
+- `combo-meter` ×2 — Downwell, Puzzle & Dragons (PAD, Пазли і Дракони)
+- `hotbar` ×2 — Mine Blocks, Tales of Maj'Eyal
 - `hint-marker` ×2 — Bejeweled (1–3, Twist), Ice-sliding puzzles (Inertia і жанр «ковзай до упору»)
-- `countdown-on-tile` ×2 — Bejeweled (1–3, Twist), Candy Crush Saga
 - `action-text` ×2 — Magical Drop (Chain Reaction), Puyo Puyo (Пуйо Пуйо)
+- `held-stack` ×2 — Magical Drop (Chain Reaction), Money Puzzle Exchanger
+- `held-block` ×2 — Krusty's Fun House, Plotting (Flipull)
+- `danger-meter` ×2 — Puzzle Bobble / Snood / Frozen Bubble, Twinfold
+- `crown-counter` ×2 — BoxBoy! (ハコボーイ!), Clash Royale
 - `tool-charges` ×2 — Toki Tori, Troddlers
 - `dice-result` ×2 — Cluedo (Clue; «Клуедо»), HeroQuest + Space Hulk (настільні данжен-кроулери на сітці)
-- `xp-bar` ×2 — Dragonsweeper, Maze Mice
 - `mistake-counter` ×2 — Hexcells / Hexcells Plus / Hexcells Infinite, NYT Connections (+ Strands)
 - `mine-counter` ×2 — Kaboom (+ LuckSweeper, Pure Skill Minesweeper, Tatham Mines — сапер, що карає або прощає вгадування), Minesweeper (Сапер)
 - `death-counter` ×2 — Ice-sliding puzzles (Inertia і жанр «ковзай до упору»), Kaboom (+ LuckSweeper, Pure Skill Minesweeper, Tatham Mines — сапер, що карає або прощає вгадування)
 - `color-palette` ×2 — Mastermind (+ Bulls and Cows, «Бики й корови»), Sudoku (Судоку, Number Place)
+- `timeline-scrubber` ×2 — Frozen Synapse, Minesweeper у вимірах: 4D Minesweeper, Tilesweeper, Timesweeper
+- `color-group-counters` ×2 — Patterna, Tametsi
 - `border-timer` ×2 — Lady Bug, Libble Rabble
 - `word-slots` ×2 — Lady Bug, Libble Rabble
-- `territory-percent` ×2 — Tron Light Cycles (Світлові мотоцикли) і нащадки, Xonix (Ксонікс) / Qix / Volfied
+- `streak-counter` ×2 — Pac-Man 256, Plants vs. Zombies: Vasebreaker і I, Zombie (режим Puzzle)
+- `live-ranking` ×2 — Paper.io (Пейпер-іо) і Paper.io 2, Splix.io
+- `digit-highlight` ×2 — Dominosa (Доміноза), Sudoku (Судоку, Number Place)
 - `number-pad` ×2 — Kakuro (Cross Sums, Какуро), Sudoku (Судоку, Number Place)
-- `command-palette` ×2 — Lightbot (Light-Bot), RoboZZle
+- `region-done-shade` ×2 — Shikaku (Шікаку, Rectangles, Divide by Box), Tentai Show (Galaxies, Spiral Galaxies)
+- `frame-scrubber` ×2 — Lux AI Challenge, Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
+- `debug-message` ×2 — CodinGame: Hypersonic, CodinGame: Keep Off the Grass (Fall Challenge 2022)
+- `instruction-timeline` ×2 — Kaizen: A Factory Story, Opus Magnum
+- `step-counter` ×2 — Blue Prince, Karel the Robot (Reeborg's World)
+- `hand-of-cards` ×2 — Memoir '44 / Commands & Colors, RoboRally
 - `resource-counters` ×2 — 868-HACK (+ Imbroglio, Cinco Paus — мікро-роглайки Michael Brough), Dungeon of the Endless
-- `more-prompt` ×2 — NetHack, Rogue
-- `hit-chance` ×2 — Final Fantasy Tactics, XCOM: Enemy Unknown / XCOM 2
-- `action-pips` ×2 — HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), XCOM: Enemy Unknown / XCOM 2
+- `compass` ×2 — Legend of Grimrock, The Bard's Tale / Might and Magic — сіткові dungeon crawl 80-х
+- `discard-pile` ×2 — Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel), Paperback Adventures
+- `resource-bars` ×2 — Cogmind, Tales of Maj'Eyal
+- `party-portraits` ×2 — Dungeon Master, Legend of Grimrock
+- `rune-grid` ×2 — Dungeon Master, Legend of Grimrock
+- `clock` ×2 — Golden Krone Hotel, Omega
+- `resist-panel` ×2 — Rift Wizard, Telepath Tactics
+- `fatigue-bar` ×2 — Battle Brothers, Descent: Journeys in the Dark
+- `initiative-tracker` ×2 — BattleTech, D&D grid combat (Dungeons & Dragons 5e)
+- `reroll-counter` ×2 — Blood Bowl, Wordatro!
+- `attack-order` ×2 — Fights in Tight Spaces, Into the Breach
+- `battle-forecast` ×2 — Fire Emblem (GBA, The Blazing Blade як база), Nectaris (Military Madness)
+- `stack-count` ×2 — Heroes of Might and Magic III (Герої меча і магії III), King's Bounty: The Legend (King's Bounty. Легенда о рыцаре)
+- `ap-counter` ×2 — Jagged Alliance 2, Rebelstar / Laser Squad
+- `timeline-bar` ×2 — Othercide, XCOM: Chimera Squad
+- `sp-counter` ×2 — Random Dice (+ Rush Royale), Super Robot Wars
+- `build-bar` ×2 — Age of War / Stick War, Swords & Soldiers
 - `tower-panel` ×2 — Desktop Tower Defense, Fieldrunners
-- `next-wave-button` ×2 — Desktop Tower Defense, Fieldrunners
+- `synergy-panel` ×2 — Dota Auto Chess, Dota Underlords
 - `ghost-piece` ×2 — Emberward, Rampart
 - `bell-button` ×2 — Inscryption (Act 1), Wildfrost
-- `word-preview` ×2 — Bookworm, SpellTower
+- `seed-bar` ×2 — Plants vs. Zombies (Рослини проти зомбі), Plants vs. Zombies: Vasebreaker і I, Zombie (режим Puzzle)
+- `found-words-list` ×2 — Boggle, TypeShift
+- `theme-clue` ×2 — Bonza Word Puzzle, NYT Connections (+ Strands)
+- `attack-timer-bar` ×2 — Bookworm Adventures, Letter Quest і Spellspire — словесні RPG-бої
+- `clue-list` ×2 — Cryptic crossword (Криптичний кросворд), TypeShift
 - `tile-rack` ×2 — Mathable, Scrabble (цифрові версії; Words With Friends)
 - `tiles-left` ×2 — Mathable, Scrabble (цифрові версії; Words With Friends)
+- `stars-rating` ×2 — Digits (The New York Times), Waffle
 - `income-preview` ×1 — A Feast for Odin (Бенкет для Одіна) і поліоміно-заповнення
 - `board-tabs` ×1 — A Feast for Odin (Бенкет для Одіна) і поліоміно-заповнення
-- `height-badge` ×1 — Akropolis (Акрополіс)
+- `stock-table` ×1 — Acquire
+- `price-card` ×1 — Acquire
+- `holdings-panel` ×1 — Acquire
+- `fence-counter` ×1 — Agricola — сітка ферми (Агрікола)
+- `currency-market` ×1 — Alhambra (Альгамбра)
+- `building-market` ×1 — Alhambra (Альгамбра)
+- `reserve-board` ×1 — Alhambra (Альгамбра)
+- `majority-table` ×1 — Alhambra (Альгамбра)
+- `discard-piles` ×1 — Arboretum (Дендропарк)
+- `path-highlight` ×1 — Arboretum (Дендропарк)
+- `action-card-row` ×1 — Ark Nova
+- `appeal-conservation-track` ×1 — Ark Nova
+- `supply-board` ×1 — Bärenpark
+- `park-area-count` ×1 — Bärenpark
 - `feature-overlay` ×1 — Carcassonne (Каркасон)
 - `score-track` ×1 — Carcassonne (Каркасон)
 - `season-track` ×1 — Cartographers (Картографи)
 - `market-pairs` ×1 — Cascadia + Calico (Каскадія, Калико)
-- `objective-cards` ×1 — Cascadia + Calico (Каскадія, Калико)
+- `price-board` ×1 — Castles of Mad King Ludwig (Замки божевільного короля Людвіга)
+- `favor-track` ×1 — Castles of Mad King Ludwig (Замки божевільного короля Людвіга)
+- `clue-cards` ×1 — Chocolate Fix (ThinkFun)
+- `attribute-placeholder` ×1 — Chocolate Fix (ThinkFun)
+- `token-supply` ×1 — Code Master (ThinkFun)
+- `card-display` ×1 — Copenhagen (Копенгаген)
+- `ability-tray` ×1 — Copenhagen (Копенгаген)
+- `test-fit` ×1 — Cottage Garden (Сільський сад)
+- `realm-board` ×1 — Dragon Castle
+- `countdown-track` ×1 — Dragon Castle
 - `sow-path` ×1 — Five Tribes
 - `bid-track` ×1 — Five Tribes
+- `hourglass` ×1 — Galaxy Trucker
+- `flight-track` ×1 — Galaxy Trucker
+- `exposed-connector-marker` ×1 — Galaxy Trucker
+- `reserve-slots` ×1 — Galaxy Trucker
+- `silver-tray` ×1 — Ganz Schön Clever (That's Pretty Clever)
+- `score-sheet` ×1 — Ganz Schön Clever (That's Pretty Clever)
+- `market-spaces` ×1 — Harmonies
+- `card-cubes` ×1 — Harmonies
 - `captured-pieces` ×1 — Hey, That's My Fish! (Packeis am Pol)
+- `challenge-card` ×1 — IQ Puzzler Pro
+- `price-tags` ×1 — Isle of Skye: From Chieftain to King (Острів Скай)
+- `scoring-schedule` ×1 — Isle of Skye: From Chieftain to King (Острів Скай)
+- `treasure-stacks` ×1 — Karuba (Каруба)
+- `move-points` ×1 — Karuba (Каруба)
+- `supply-counter` ×1 — Kingdom Builder
 - `draft-line` ×1 — Kingdomino (Кінґдоміно)
 - `spare-tile` ×1 — Labyrinth (Das verrückte Labyrinth, Божевільний лабіринт)
 - `insert-arrows` ×1 — Labyrinth (Das verrückte Labyrinth, Божевільний лабіринт)
 - `goal-card` ×1 — Labyrinth (Das verrückte Labyrinth, Божевільний лабіринт)
+- `facing-indicator` ×1 — Lanterns: The Harvest Festival (Ліхтарі)
+- `dedication-stacks` ×1 — Lanterns: The Harvest Festival (Ліхтарі)
+- `progress-symbols` ×1 — My City
+- `tier-tracker` ×1 — New York 1901 (Нью-Йорк 1901)
+- `flipped-card` ×1 — Next Station: London
+- `line-score-preview` ×1 — Next Station: London
+- `underground-count` ×1 — Next Station: London
 - `level-view` ×1 — NMBR 9
 - `support-highlight` ×1 — NMBR 9
-- `time-track` ×1 — Patchwork (Печворк)
-- `market-ring` ×1 — Patchwork (Печворк)
+- `piece-pool` ×1 — Pentomino (Пентаміно, гра Голомба)
 - `sun-indicator` ×1 — Photosynthesis (Фотосинтез)
 - `shadow-overlay` ×1 — Photosynthesis (Фотосинтез)
 - `light-track` ×1 — Photosynthesis (Фотосинтез)
 - `score-stacks` ×1 — Photosynthesis (Фотосинтез)
-- `color-tracks` ×1 — Qwirkle + Ingenious (Квіркл, Genial)
+- `puzzle-slots` ×1 — Project L
+- `offered-piece` ×1 — Quarto
+- `attribute-legend` ×1 — Quarto
+- `builders-board` ×1 — Queendomino (Квіндоміно)
+- `special-routes-panel` ×1 — Railroad Ink
+- `open-end-markers` ×1 — Railroad Ink
+- `pattern-matches-preview` ×1 — Reef (Риф)
 - `round-track` ×1 — Sagrada (Саграда)
+- `influence-preview` ×1 — Samurai (Самурай)
+- `zone-groups` ×1 — Sprawlopolis
 - `circuit-colors` ×1 — Surakarta (Roundabouts)
 - `line-score-overlay` ×1 — Take It Easy
+- `bamboo-reserve` ×1 — Takenoko (Такеноко)
+- `piece-stock` ×1 — Taluva (Талува)
+- `pattern-overlay` ×1 — Tash-Kalar: Arena of Legends
+- `task-row` ×1 — Tash-Kalar: Arena of Legends
+- `global-tracks` ×1 — Terraforming Mars (Тераформування Марса)
+- `production-board` ×1 — Terraforming Mars (Тераформування Марса)
+- `depot-board` ×1 — The Castles of Burgundy (Замки Бургундії)
+- `turn-order-track` ×1 — The Castles of Burgundy (Замки Бургундії)
+- `fish-counter` ×1 — The Isle of Cats
+- `day-track` ×1 — The Isle of Cats
+- `field-market` ×1 — The Isle of Cats
+- `family-overlay` ×1 — The Isle of Cats
+- `pieces-tray` ×1 — ThinkFun Laser Maze і Gravity Maze
+- `orientation-lock-badge` ×1 — ThinkFun Laser Maze і Gravity Maze
+- `caravan-colors` ×1 — Through the Desert (Крізь пустелю)
+- `hidden-score` ×1 — Through the Desert (Крізь пустелю)
+- `hand-screen` ×1 — Tigris & Euphrates (Тигр і Євфрат)
+- `kingdom-overlay` ×1 — Tigris & Euphrates (Тигр і Євфрат)
 - `pattern-highlight` ×1 — Tiny Towns (Крихітні містечка)
 - `finish-order` ×1 — Ubongo + Katamino / IQ Puzzler (Убонго)
+- `score-tracks` ×1 — Welcome To… (Ласкаво просимо до…)
+- `card-pairs` ×1 — Welcome To… (Ласкаво просимо до…)
+- `star-slots` ×1 — A Little to the Left
+- `hint-eraser` ×1 — A Little to the Left
+- `range-overlay` ×1 — Anno 1800 — дальність сервісів по дорогах
+- `unconfigured-warning` ×1 — Automachef
+- `synergy-marks` ×1 — Backpack Battles
+- `storage-area` ×1 — Backpack Battles
 - `telegraph-marker` ×1 — Backpack Hero
 - `end-turn-button` ×1 — Backpack Hero
-- `adjacency-overlay` ×1 — Backpack Hero
+- `concentration-gauge` ×1 — Big Pharma
+- `support-energy-bar` ×1 — Boom Beach
+- `zone-brush` ×1 — Cities: Skylines (зонування)
 - `threat-range` ×1 — Clash of Clans — розстановка бази на сітці
+- `influence-ring` ×1 — Cloud Gardens
+- `light-radius` ×1 — Core Keeper — сітковий шар (копання, ферма, автоматизація)
+- `placement-ghost` ×1 — Core Keeper — сітковий шар (копання, ферма, автоматизація)
+- `belt-slots` ×1 — Diablo II (inventory)
 - `next-piece-preview` ×1 — Dorfromantik
 - `score` ×1 — Dorfromantik
 - `quest-marker` ×1 — Dorfromantik
-- `cell-coordinates` ×1 — Factorio — клітинна логістика (конвеєри, маніпулятори, мережі)
-- `generation-counter` ×1 — Conway's Game of Life (Гра «Життя»)
+- `panic-eye` ×1 — Dredge
+- `clock-dial` ×1 — Dredge
+- `depth-digit` ×1 — Dwarf Fortress — призначення клітин і рідини
+- `z-level-indicator` ×1 — Dwarf Fortress — призначення клітин і рідини
+- `grid-overlay` ×1 — Dyson Sphere Program — сітка на кулі планети
+- `rule-table-preview` ×1 — Елементарні клітинні автомати (Rule 110, Rule 30, Rule 90)
+- `resource-gauges` ×1 — Fallout Shelter
+- `land-price-tag` ×1 — Forager
+- `temperature-forecast` ×1 — Frostpunk
 - `population-counter` ×1 — Conway's Game of Life (Гра «Життя»)
-- `rule-input` ×1 — Conway's Game of Life (Гра «Життя»)
+- `skull-rating` ×1 — Graveyard Keeper
+- `grave-tooltip` ×1 — Graveyard Keeper
+- `stamina-face` ×1 — Harvest Moon (SNES)
+- `radius-sphere` ×1 — Islanders
+- `island-gauge` ×1 — Islanders
+- `resource-overlay` ×1 — Kingdoms and Castles
+- `kernel-graph` ×1 — Lenia
+- `growth-graph` ×1 — Lenia
+- `param-slider` ×1 — Lenia
+- `stats-plot` ×1 — Lenia
 - `equipment-slots` ×1 — Loop Hero
 - `stat-panel` ×1 — Loop Hero
 - `turn-counter` ×1 — Luck be a Landlord
 - `wave-counter` ×1 — Mindustry — клітинна логістика й оборона
 - `next-wave-preview` ×1 — Mindustry — клітинна логістика й оборона
+- `tool-inventory` ×1 — Mini Motorways
+- `ready-icon` ×1 — FarmVille і Hay Day — ферма на годиннику
+- `queue-slots` ×1 — FarmVille і Hay Day — ферма на годиннику
 - `toast` ×1 — OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування)
+- `decoration-overlay` ×1 — Parkitect
+- `patience-ring` ×1 — PlateUp!
+- `order-bubble` ×1 — PlateUp!
+- `mana-slider` ×1 — Populous
+- `command-icons` ×1 — Populous
+- `stock-icon` ×1 — Production Line
+- `footprint-ghost` ×1 — Resident Evil 4 (attaché case)
+- `room-stats-panel` ×1 — RimWorld — шар кімнат і температури
+- `ride-stats-graph` ×1 — RollerCoaster Tycoon
+- `health-bar-item` ×1 — Save Room – Organization Puzzle
+- `examine-text` ×1 — Save Room – Organization Puzzle
+- `pinned-goals` ×1 — shapez
+- `building-toolbar` ×1 — shapez
+- `layer-toggle` ×1 — shapez
+- `ratio-triangle` ×1 — SimAnt
+- `warning-threshold` ×1 — SimAnt
+- `scent-overlay` ×1 — SimAnt
+- `gas-overlay` ×1 — Space Haven
 - `hover-tile-highlight` ×1 — Stardew Valley — фермерська сітка
-- `clock-calendar` ×1 — Stardew Valley — фермерська сітка
+- `net-gain-preview` ×1 — Terra Nil
+- `phase-checklist` ×1 — Terra Nil
+- `breath-meter` ×1 — Terraria — рідини
+- `heat-overlay` ×1 — Theme Hospital
+- `weather-forecast` ×1 — Timberborn
+- `water-depth-overlay` ×1 — Timberborn
+- `floor-list` ×1 — Tiny Tower / SimTower
+- `speech-bubble` ×1 — Tiny Tower / SimTower
+- `stress-color` ×1 — Tiny Tower / SimTower
+- `star-meter` ×1 — Tiny Tower / SimTower
+- `item-hand` ×1 — Unpacking
+- `room-tabs` ×1 — Unpacking
+- `requirement-checklist` ×1 — Viva Piñata
+- `present-line` ×1 — 5D Chess with Multiverse Time Travel
+- `timeline-arrow` ×1 — 5D Chess with Multiverse Time Travel
+- `board-outline` ×1 — 5D Chess with Multiverse Time Travel
+- `move-arrows` ×1 — 5D Chess with Multiverse Time Travel
 - `group-selection` ×1 — Abalone (Абалон)
-- `phase-indicator` ×1 — Game of the Amazons (Амазонки)
+- `penalty-counter` ×1 — Apocalypse (Апокаліпсис, одночасні шахи коней і пішаків)
 - `action-points` ×1 — Arimaa
-- `trap-marker` ×1 — Arimaa
+- `face-down-token` ×1 — Banqi (Half Chess, Dark Chess)
+- `frozen-marker` ×1 — Baroque chess / Ultima (Бароккові шахи)
+- `capture-preview` ×1 — Baroque chess / Ultima (Бароккові шахи)
 - `group-outline` ×1 — Breakthrough і Lines of Action (Прорив і Лінії дії)
+- `partner-chat` ×1 — Bughouse (Бʼюгхаус, шахи вдвох на двох дошках)
+- `diagonal-clock-diff` ×1 — Bughouse (Бʼюгхаус, шахи вдвох на двох дошках)
+- `stone-counter` ×1 — Chess 2: The Sequel (Sirlin's Chess)
+- `bid-hand` ×1 — Chess 2: The Sequel (Sirlin's Chess)
+- `duel-prompt` ×1 — Chess 2: The Sequel (Sirlin's Chess)
 - `cooldown-ring` ×1 — Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
 - `probability-label` ×1 — Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
 - `fog-overlay` ×1 — Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
-- `board-pair` ×1 — Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
 - `umpire-log` ×1 — Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
+- `ability-cooldowns` ×1 — Chess Survivors
 - `premove-highlight` ×1 — Chess (Шахи) — цифрова гра
 - `eval-bar` ×1 — Chess (Шахи) — цифрова гра
 - `board-arrows` ×1 — Chess (Шахи) — цифрова гра
+- `drown-warning` ×1 — Congo (шахи «Конго»)
+- `edge-hover` ×1 — Dots and Boxes (Крапки й квадрати)
+- `box-owner-mark` ×1 — Dots and Boxes (Крапки й квадрати)
+- `duck-ghost` ×1 — Duck Chess (Качині шахи)
+- `turn-phase` ×1 — Duck Chess (Качині шахи)
+- `dvonn-link-overlay` ×1 — DVONN
+- `phalanx-selection` ×1 — Epaminondas (Епамінонд)
+- `back-row-counter` ×1 — Epaminondas (Епамінонд)
+- `capture-choice` ×1 — Fanorona (Фанорона)
+- `team-arrows` ×1 — Four-player chess (шахи на чотирьох)
+- `side-scoreboard` ×1 — Four-player chess (шахи на чотирьох)
 - `footprint-preview` ×1 — Gess
+- `entry-dots` ×1 — GIPF
+- `hex-coordinates` ×1 — Gliński's hexagonal chess (Гексагональні шахи Глінського)
+- `cell-tint` ×1 — Gliński's hexagonal chess (Гексагональні шахи Глінського)
 - `prisoners` ×1 — Go (Ґо, вейці, бадук)
+- `reserve-stacks` ×1 — Gobblet (Гоблет)
+- `hop-path` ×1 — Halma / Chinese checkers (Хальма / Китайські шашки)
+- `placings` ×1 — Halma / Chinese checkers (Хальма / Китайські шашки)
 - `edge-colors` ×1 — Hex (Гекс)
 - `swap-button` ×1 — Hex (Гекс)
+- `policy-view` ×1 — Hexapawn (гексапішак) і машина, що вчиться на сірникових коробках
+- `learning-curve` ×1 — Hexapawn (гексапішак) і машина, що вчиться на сірникових коробках
 - `stack-viewer` ×1 — Hive (Вулик)
+- `escape-warning` ×1 — Hnefatafl (Тафл, «королівська дошка»)
+- `restricted-squares` ×1 — Hnefatafl (Тафл, «королівська дошка»)
+- `material-score` ×1 — Janggi (Чанґі, корейські шахи)
 - `required-piece-highlight` ×1 — Kamisado
 - `match-score` ×1 — Kamisado
+- `step-marker` ×1 — Великі шогі — Chu shogi і Tenjiku shogi (Чу-шогі, Тендзіку-шогі)
 - `check-counter` ×1 — Lichess variants (варіанти шахів Lichess)
-- `win-line` ×1 — N-in-a-row (Хрестики-нулики, Gomoku, Connect Four, Pentago…)
 - `active-board-highlight` ×1 — N-in-a-row (Хрестики-нулики, Gomoku, Connect Four, Pentago…)
 - `column-hover` ×1 — N-in-a-row (Хрестики-нулики, Gomoku, Connect Four, Pentago…)
+- `count-display` ×1 — Makruk (Макрук, тайські шахи)
+- `series-counter` ×1 — Шахи з серіями ходів (Marseillais, Progressive)
+- `hand-pieces` ×1 — Nine men's morris (Млин)
+- `mill-highlight` ×1 — Nine men's morris (Млин)
+- `removal-mode` ×1 — Nine men's morris (Млин)
 - `next-card-slot` ×1 — Onitama
+- `move-pattern-hover` ×1 — The Ouroboros King
+- `pit-counts` ×1 — Oware (Оваре, Авале)
+- `store-counter` ×1 — Oware (Оваре, Авале)
+- `badge-slots` ×1 — Passant: A Chess Roguelike
+- `coin-slots` ×1 — Passant: A Chess Roguelike
+- `forbidden-zone` ×1 — Pente (Пенте)
+- `probability-ring` ×1 — Quantum Chess (Квантові шахи, Cantwell)
+- `phase-dial` ×1 — Quantum Chess (Квантові шахи, Cantwell)
+- `split-slider` ×1 — Quantum Chess (Квантові шахи, Cantwell)
 - `wall-counter` ×1 — Quoridor (Кворидор)
 - `wall-ghost` ×1 — Quoridor (Кворидор)
 - `path-length` ×1 — Quoridor (Кворидор)
+- `level-slices` ×1 — Raumschach (просторові шахи)
+- `level-selector` ×1 — Raumschach (просторові шахи)
 - `pass-button` ×1 — Reversi / Othello (Реверсі)
+- `height-view` ×1 — Santorini (Санторіні)
+- `power-card` ×1 — Santorini (Санторіні)
+- `passive-vector-arrow` ×1 — Shōbu (Шобу)
+- `board-color-badge` ×1 — Shōbu (Шобу)
+- `move-timer-badge` ×1 — Shotgun King: The Final Checkmate
+- `threat-shield` ×1 — Shotgun King: The Final Checkmate
+- `reserve-counter` ×1 — Tak (Так)
+- `road-highlight` ×1 — Tak (Так)
+- `link-preview` ×1 — TwixT (Твікст)
+- `seam-marker` ×1 — Шахи без країв — циліндричні (Cylinder) і кругові (Circular / Byzantine)
+- `polar-board` ×1 — Шахи без країв — циліндричні (Cylinder) і кругові (Circular / Byzantine)
 - `intersection-grid` ×1 — Xiangqi (Сянці, китайські шахи)
+- `rings-removed-slots` ×1 — YINSH
+- `captured-by-color` ×1 — ZÈRTZ
+- `free-ring-highlight` ×1 — ZÈRTZ
+- `hint-plinth` ×1 — Archaica: The Path of Light
 - `overload-meter` ×1 — Deflektor (+ Mindbender)
 - `parts-tray` ×1 — Electric Box (+ Lazors)
 - `power-button` ×1 — Electric Box (+ Lazors)
@@ -1674,44 +5800,113 @@
 - `flows-counter` ×1 — Flow Free
 - `pipe-percent` ×1 — Flow Free
 - `lock-marker` ×1 — Infinity Loop + Net (Tatham)
-- `beam-preview` ×1 — Khet (Deflexion, Laser Chess)
 - `shot-counter` ×1 — LaserTank
 - `node-pass-counter` ×1 — LYNE
+- `asset-tray` ×1 — Mini Metro
 - `flow-countdown` ×1 — Pipe Mania (Pipe Dream)
 - `pieces-left` ×1 — Railbound
 - `crossing-highlight` ×1 — Shannon switching game / Bridg-It (+ Untangle)
+- `shape-glyph` ×1 — SOLAS 128
+- `next-train-gauge` ×1 — Train Valley
+- `cursor-mode-bar` ×1 — Train Valley
+- `money` ×1 — Train Valley
 - `eraser-toggle` ×1 — Trainyard
 - `train-queue` ×1 — Trainyard
 - `tile-orientation-picker` ×1 — Trax
-- `wave-timer` ×1 — Dome Keeper
+- `wind-meter` ×1 — Bone Cruncher
+- `gravity-indicator` ×1 — Crystal Mines II
+- `diamond-quota` ×1 — Diamond Rush
 - `dome-hp` ×1 — Dome Keeper
+- `percent-meter` ×1 — Dot Valley
+- `skill-counts` ×1 — Lemmings
+- `reload-bar` ×1 — Liero
+- `split-screen` ×1 — Liero
 - `hearts` ×1 — Mole Mania
+- `fuel-gauge` ×1 — Motherload
+- `cargo-meter` ×1 — Motherload
 - `letter-progress` ×1 — Mr. Do!
 - `air-gauge` ×1 — Mr. Driller
+- `levitation-bar` ×1 — Noita
+- `stats-bar` ×1 — Sandboxels
+- `wind-indicator` ×1 — Scorched Earth
+- `angle-power-readout` ×1 — Scorched Earth
+- `bombs-counter` ×1 — Spelunky
+- `ropes-counter` ×1 — Spelunky
 - `light-gauge` ×1 — SteamWorld Dig
 - `water-gauge` ×1 — SteamWorld Dig
 - `bag-slots` ×1 — SteamWorld Dig
+- `cup-counter` ×1 — Sugar, Sugar
 - `element-menu` ×1 — The Powder Toy
 - `brush-cursor` ×1 — The Powder Toy
+- `base-hp` ×1 — Wall World
+- `runner-lane` ×1 — 10000000
+- `forge-meter` ×1 — Alchemy (PopCap)
+- `depth-gauge` ×1 — Blockout (Block Out)
+- `pit-wireframe` ×1 — Blockout (Block Out)
 - `objective-panel` ×1 — Candy Crush Saga
+- `fill-flask` ×1 — Chuzzle
+- `charge-countdown` ×1 — Might & Magic: Clash of Heroes
+- `path-color-flash` ×1 — Dots / Two Dots
 - `virus-counter` ×1 — Dr. Mario (Доктор Маріо)
+- `meter-bars` ×1 — Dungeon Raid
+- `troop-cards` ×1 — Gems of War (і Marvel Puzzle Quest)
+- `sale-letters` ×1 — Hatris
+- `vertex-cursor` ×1 — Hexic (Hexic HD, Hexic 2)
+- `combo-timer-ring` ×1 — Hextris (Гекстріс)
 - `drop-meter` ×1 — Klax
 - `next-spawn-preview` ×1 — Color Lines / Lines 98 (Лінії)
-- `held-stack` ×1 — Magical Drop (Chain Reaction)
+- `sweep-counter` ×1 — Lumines (Люмінес)
+- `removed-tiles` ×1 — Mahjong Solitaire (Shanghai, Маджонг-пасьянс)
+- `order-chips` ×1 — Merge Mansion / Merge Dragons
+- `cooldown-clock` ×1 — Merge Mansion / Merge Dragons
 - `stop-timer` ×1 — Panel de Pon (Tetris Attack, Puzzle League)
 - `chain-counter` ×1 — Panel de Pon (Tetris Attack, Puzzle League)
+- `picture-progress` ×1 — Pictobits
+- `palette-slots` ×1 — Pictobits
+- `quota-target` ×1 — Plotting (Flipull)
+- `chip-stacks` ×1 — Poker Smash
+- `challenge-hand` ×1 — Poker Smash
+- `drawn-icon` ×1 — Polarium
+- `attack-gauge` ×1 — Puyo Puyo Tetris
+- `swap-timer` ×1 — Puyo Puyo Tetris
 - `garbage-meter` ×1 — Puyo Puyo (Пуйо Пуйо)
-- `combo-meter` ×1 — Puzzle & Dragons (PAD, Пазли і Дракони)
 - `drag-timer` ×1 — Puzzle & Dragons (PAD, Пазли і Дракони)
 - `enemy-turn-counter` ×1 — Puzzle & Dragons (PAD, Пазли і Дракони)
+- `aim-guide` ×1 — Puzzle Bobble / Snood / Frozen Bubble
+- `objective-list` ×1 — Puzzle Scape
 - `selection-highlight` ×1 — SameGame / Clickomania + Flood (Tatham)
+- `connection-line` ×1 — Shisen-Sho / Onet (Сісен-сьо, «зʼєднай пару»)
+- `special-inventory` ×1 — TetriNET
+- `target-numbers` ×1 — TetriNET
+- `zone-meter` ×1 — Tetris Effect / Tetris Effect Connected
+- `zone-line-counter` ×1 — Tetris Effect / Tetris Effect Connected
+- `grade-display` ×1 — Tetris The Grand Master (TGM)
+- `shadow-cursor` ×1 — Tetrisphere
+- `x-count` ×1 — Tetrisphere
+- `speed-meter` ×1 — Tetrisphere
+- `magic-slot` ×1 — Tetrisphere
+- `tide-indicator` ×1 — Titanium Court
+- `battle-tower` ×1 — Titanium Court
+- `special-preview` ×1 — Toon Blast
+- `tray-bar` ×1 — Triple Match 3D / Tile Explorer
 - `hold-slot` ×1 — Triple Town
+- `wall-lock-indicator` ×1 — Welltris
+- `drain-meter` ×1 — Wetrix
+- `earthquake-meter` ×1 — Wetrix
+- `type-gauges` ×1 — Yoshi's Cookie
+- `fuse-timer` ×1 — Yoshi's Cookie
+- `quota-strip` ×1 — Zoo Keeper
+- `favorite-animal` ×1 — Zoo Keeper
+- `quota-meter` ×1 — Zoop
+- `ammo-pair` ×1 — Zuma / Puzz Loop
+- `block-stock` ×1 — Blocks That Matter
 - `box-counter` ×1 — BoxBoy! (ハコボーイ!)
-- `crown-counter` ×1 — BoxBoy! (ハコボーイ!)
 - `character-indicator` ×1 — Catrap (Pitman)
 - `key-slots` ×1 — Kula World (Roll Away, KulaQuest)
 - `fruit-slots` ×1 — Kula World (Roll Away, KulaQuest)
 - `time-gauge` ×1 — Mario & Wario
+- `charge-meter` ×1 — Miner 2049er
+- `technique-counter` ×1 — Nebulus
 - `carried-item` ×1 — Pushover (Push-Over)
 - `token-counter` ×1 — Pushover (Push-Over)
 - `clear-rate` ×1 — Super Mario Maker 2
@@ -1725,71 +5920,185 @@
 - `edge-ports` ×1 — Black Box (Чорна скринька)
 - `ray-pair-label` ×1 — Black Box (Чорна скринька)
 - `guess-counter` ×1 — Black Box (Чорна скринька)
+- `venn-diagram` ×1 — Bombe
+- `region-bubble` ×1 — Bombe
+- `charge-gauge` ×1 — Captain Sonar
+- `breakdown-panel` ×1 — Captain Sonar
+- `trace-overlay` ×1 — Captain Sonar
 - `notebook-grid` ×1 — Cluedo (Clue; «Клуедо»)
 - `ghost-pieces` ×1 — Kriegspiel + Dark Chess (Fog of War; «шахи наосліп із суддею» і «шахи в тумані»)
 - `try-button` ×1 — Kriegspiel + Dark Chess (Fog of War; «шахи наосліп із суддею» і «шахи в тумані»)
+- `stage-mod-icons` ×1 — DemonCrawl
 - `hp-hearts` ×1 — Dragonsweeper
 - `gold-counter` ×1 — Dragonsweeper
+- `bag-meter` ×1 — Dynamine
+- `trail-strip` ×1 — The Fury of Dracula
+- `influence-track` ×1 — The Fury of Dracula
 - `captured-by-kind` ×1 — Geister (Ghosts!, Good & Bad Ghosts; «Привиди»)
+- `globe-rotate` ×1 — Globesweeper
+- `face-grid` ×1 — Guess Who? (Вгадай, хто?)
+- `question-picker` ×1 — Guess Who? (Вгадай, хто?)
 - `sense-messages` ×1 — Hunt the Wumpus («Полювання на Вампуса»)
 - `exits-list` ×1 — Hunt the Wumpus («Полювання на Вампуса»)
 - `hazard-notes` ×1 — Hunt the Wumpus («Полювання на Вампуса»)
+- `deduction-sheet` ×1 — Inkognito
+- `action-dice-balls` ×1 — Inkognito
+- `letter-sheet` ×1 — Jotto
 - `certainty-overlay` ×1 — Kaboom (+ LuckSweeper, Pure Skill Minesweeper, Tatham Mines — сапер, що карає або прощає вгадування)
+- `combat-result-only` ×1 — Luzhanqi (Лучжаньці, китайські армійські шахи)
+- `ex-ne-counter` ×1 — Mamono Sweeper
 - `feedback-pegs` ×1 — Mastermind (+ Bulls and Cows, «Бики й корови»)
 - `guess-row` ×1 — Mastermind (+ Bulls and Cows, «Бики й корови»)
 - `keyboard-hints` ×1 — Mastermind (+ Bulls and Cows, «Бики й корови»)
 - `pairs-found` ×1 — Memory / Concentration / Pairs («Мемо», «Знайди пару»)
+- `mine-detector` ×1 — Mined-Out
+- `neighbor-highlight` ×1 — Minesweeper у вимірах: 4D Minesweeper, Tilesweeper, Timesweeper
+- `defuser-counter` ×1 — Minesweeper Infinite
 - `face-button` ×1 — Minesweeper (Сапер)
+- `witness-card` ×1 — Mr. Jack (Містер Джек)
+- `suspect-tokens` ×1 — Mr. Jack (Містер Джек)
+- `turn-track` ×1 — Mr. Jack (Містер Джек)
+- `range-rings` ×1 — Patterna
+- `travel-log` ×1 — Scotland Yard (Скотланд-Ярд)
+- `ticket-board` ×1 — Scotland Yard (Скотланд-Ярд)
+- `possible-locations` ×1 — Scotland Yard (Скотланд-Ярд)
 - `piece-rank-reveal` ×1 — Stratego (Стратего)
 - `graveyard` ×1 — Stratego (Стратего)
 - `last-move-arrow` ×1 — Stratego (Стратего)
+- `infocenter-panel` ×1 — Tacticsweeper
+- `tool-buttons` ×1 — Tacticsweeper
+- `draw-overlay` ×1 — Tametsi
+- `multiplier-drain-meter` ×1 — Tetrisweeper
+- `best-today` ×1 — Tetrisweeper
+- `probe-ring` ×1 — Triangulation
+- `probe-counter` ×1 — Triangulation
 - `memo-panel` ×1 — Voltorb Flip
+- `example-labels` ×1 — Zendo
+- `threat-text` ×1 — 3D Monster Maze
+- `player-scoreboard` ×1 — Achtung, die Kurve! (Увага, поворот!)
 - `charges-left` ×1 — Amidar
+- `rubber-meter` ×1 — Armagetron Advanced
+- `brake-meter` ×1 — Armagetron Advanced
+- `alive-counter` ×1 — Bomberman — battle mode (Super Bomberman, Super Bomberman R / R Online / R 2)
 - `player-portraits` ×1 — Bomberman
+- `condition-indicator` ×1 — Bosconian
 - `hint-text` ×1 — Chip's Challenge
+- `strength-bar` ×1 — Dandy / Dark Chambers
+- `balance-gauge` ×1 — Gals Panic
+- `penalty-meter` ×1 — Hustle (Gremlin, 1977)
+- `message-line` ×1 — Kroz
 - `station-timer` ×1 — Loco-Motion (Guttang Gottong)
+- `robbers-bars` ×1 — Maze Craze
 - `ability-slots` ×1 — Maze Mice
+- `first-person-view` ×1 — Maze War
+- `power-stock` ×1 — Mouse Trap
+- `time-remaining-bar` ×1 — Nibbler
+- `powerup-slots` ×1 — Pac-Man 256
+- `round-wins` ×1 — Pac-Man Battle Royale
+- `speed-gauge` ×1 — Pac-Man Championship Edition / DX (Пекмен: чемпіонське видання)
+- `bomb-stock` ×1 — Pac-Man Championship Edition / DX (Пекмен: чемпіонське видання)
+- `vision-circle` ×1 — Pac-Man: сиквели 1983–2021
+- `target-strategy` ×1 — Pac-Man: сиквели 1983–2021
 - `level-icons` ×1 — Pac-Man (Пекмен) і Ms. Pac-Man
+- `screens-done-marker` ×1 — Pepper II
+- `prize-shelf` ×1 — Pepper II
 - `target-color` ×1 — Q*bert
+- `twin-stick` ×1 — Robotron: 2084
+- `mass-leaderboard` ×1 — Slither.io
+- `slot-reels` ×1 — Super Pac-Man
+- `flash-stock` ×1 — Tutankham
 - `radar` ×1 — Wizard of Wor
+- `face-health` ×1 — Wolfenstein 3D
 - `region-borders` ×1 — Fillomino (Filling, «Заповнення»)
 - `possible-moves-overlay` ×1 — Hashiwokakero (Hashi, Bridges, Мости)
 - `shaded-value-visibility` ×1 — Hitori (Хіторі, Singles)
 - `pencil-marks` ×1 — Kakuro (Cross Sums, Какуро)
 - `combination-helper` ×1 — Kakuro (Cross Sums, Какуро)
+- `not-blank-mark` ×1 — Magnets (Tatham)
+- `region-labels` ×1 — Map (Tatham)
 - `clue-greyed` ×1 — Nonogram (Японський кросворд, Picross, Griddlers, Hanjie)
 - `row-column-guide` ×1 — Nonogram (Японський кросворд, Picross, Griddlers, Hanjie)
 - `dot-mark` ×1 — Nurikabe (Нурікабе, Islands in the Stream)
+- `cursor-mode-toggle` ×1 — Palisade (Five Cells, «Частокіл»)
+- `shape-bank` ×1 — Pentopia
+- `slice-slider` ×1 — Picross-варіанти (Picross 3D, Round 2, Mega, Color, Clip)
+- `strike-counter` ×1 — Picross-варіанти (Picross 3D, Round 2, Mega, Color, Clip)
+- `tool-toggle` ×1 — Picross-варіанти (Picross 3D, Round 2, Mega, Color, Clip)
+- `input-mode-panel` ×1 — puzz.link (pzprjs / pzprv3)
+- `trial-marker` ×1 — puzz.link (pzprjs / pzprv3)
+- `play-edit-toggle` ×1 — puzz.link (pzprjs / pzprv3)
+- `triangle-input-mode` ×1 — Shakashaka (シャカシャカ)
 - `drag-rect-preview` ×1 — Shikaku (Шікаку, Rectangles, Divide by Box)
-- `region-done-shade` ×1 — Shikaku (Шікаку, Rectangles, Divide by Box)
-- `edge-cross` ×1 — Slitherlink (Слізерлінк, Loopy, Fences)
+- `chain-letter-label` ×1 — Signpost (Pfeilpfad)
+- `needs-predecessor-dot` ×1 — Signpost (Pfeilpfad)
 - `quota-indicator` ×1 — Star Battle (Зоряна битва, Two Not Touch)
+- `shape-bank-panel` ×1 — Statue Park
 - `rules-panel` ×1 — Sudoku variants (варіанти судоку, Cracking the Cryptic / SudokuPad)
-- `digit-highlight` ×1 — Sudoku (Судоку, Number Place)
 - `peer-highlight` ×1 — Sudoku (Судоку, Number Place)
 - `multi-number-clue` ×1 — Tapa (Тапа, T-Paint)
 - `status-bar` ×1 — Simon Tatham's Portable Puzzle Collection
+- `owner-arrow` ×1 — Tentai Show (Galaxies, Spiral Galaxies)
+- `cell-must-mark` ×1 — Tracks (Tatham)
+- `count-style-toggle` ×1 — Undead (Haunted Mirror Maze)
+- `glyph-toggle` ×1 — Undead (Haunted Mirror Maze)
 - `program-listing` ×1 — 7 Billion Humans
 - `jump-arrows` ×1 — 7 Billion Humans
 - `worker-follow` ×1 — 7 Billion Humans
 - `star-calendar` ×1 — Advent of Code — сіткові пазли (збірка)
+- `vision-overlay` ×1 — Google AI Challenge — Ants
+- `teach-panel` ×1 — Autonauts
+- `area-circle` ×1 — Autonauts
+- `pointer-trail` ×1 — Befunge (Befunge-93)
+- `block-workspace` ×1 — Blockly Games Maze і Code.org Classic Maze
+- `block-toolbox` ×1 — Blockly Games Maze і Code.org Classic Maze
+- `blocks-left` ×1 — Blockly Games Maze і Code.org Classic Maze
 - `debug-overlay` ×1 — Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
-- `frame-scrubber` ×1 — Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
+- `goal-preview` ×1 — Cargo-Bot
+- `condition-tabs` ×1 — Cargo-Bot
+- `chip-arrows` ×1 — Carnage Heart
+- `heat-gauge` ×1 — Carnage Heart
+- `goal-checklist` ×1 — CodeCombat
+- `method-docs-palette` ×1 — CodeCombat
+- `simulation-scrubber` ×1 — CodeCombat
+- `process-counter` ×1 — Core War
+- `drone-camera-feeds` ×1 — Duskers
+- `room-flag` ×1 — Duskers
+- `signal-picker` ×1 — Factorio — circuit network
+- `wire-overlay` ×1 — Factorio — circuit network
+- `debug-target-lines` ×1 — Gladiabots
+- `hand-drawn-label` ×1 — Human Resource Machine
+- `inbox-outbox-belts` ×1 — Human Resource Machine
+- `block-hotbar` ×1 — Infinifactory
 - `state-diagram` ×1 — Kara (Кара — сонечко)
 - `transition-table` ×1 — Kara (Кара — сонечко)
 - `sensor-selector` ×1 — Kara (Кара — сонечко)
-- `step-counter` ×1 — Karel the Robot (Reeborg's World)
+- `layer-selector` ×1 — KOHCTPYKTOP: Engineer of the People
+- `waveform-chart` ×1 — KOHCTPYKTOP: Engineer of the People
 - `tape-view` ×1 — Manufactoria
 - `part-counter` ×1 — Manufactoria
-- `instruction-timeline` ×1 — Opus Magnum
-- `metric-panel` ×1 — Opus Magnum
+- `link-lines` ×1 — Mindustry — logic (mlog)
+- `emitter-beam` ×1 — MOLEK-SYNTEZ
+- `inline-stack-values` ×1 — Robo Instructus
+- `api-reference` ×1 — Robo Instructus
+- `stage-tabs` ×1 — Robo Instructus
+- `remote-control-pad` ×1 — RoboMind
+- `camera-follow` ×1 — RoboMind
 - `register-row` ×1 — RoboRally
-- `hand-of-cards` ×1 — RoboRally
+- `view-2d-3d-toggle` ×1 — Robot Karol
 - `signal-color` ×1 — Robot Odyssey
+- `card-program-row` ×1 — Robot Turtles
 - `call-stack-view` ×1 — RoboZZle
 - `cpu-meter` ×1 — Screeps (Screeps World, Screeps Arena)
 - `room-visual` ×1 — Screeps (Screeps World, Screeps Arena)
+- `waldo-path-layer` ×1 — SpaceChem
+- `code-completion-bar` ×1 — Swift Playgrounds (Learn to Code, Byte)
+- `node-mode-label` ×1 — TIS-100
+- `io-columns` ×1 — TIS-100
+- `breakpoint` ×1 — TIS-100
+- `wire-probe` ×1 — Turing Complete
 - `locked-lines` ×1 — Untrusted — or the Continuing Adventures of Dr. Eval
+- `percept-panel` ×1 — Wumpus world («Світ Вампуса»)
+- `knowledge-overlay` ×1 — Wumpus world («Світ Вампуса»)
 - `shots-counter` ×1 — Adventures of Lolo (Eggerland)
 - `level-code` ×1 — Bloxorz
 - `progress-meter` ×1 — Kwirk (Puzzle Boy)
@@ -1797,340 +6106,902 @@
 - `bid-list` ×1 — Ricochet Robots (Rasende Roboter)
 - `push-counter` ×1 — Sokoban (Сокобан)
 - `distance` ×1 — Tomb of the Mask
+- `target-sequence` ×1 — Train shunting puzzle (Inglenook Sidings, Timesaver)
 - `spawn-number` ×1 — 868-HACK (+ Imbroglio, Cinco Paus — мікро-роглайки Michael Brough)
 - `wand-knowledge` ×1 — 868-HACK (+ Imbroglio, Cinco Paus — мікро-роглайки Michael Brough)
+- `corruption-list` ×1 — Ancient Domains of Mystery (ADOM)
+- `level-feeling-indicator` ×1 — Moria / Angband
+- `depth-indicator` ×1 — Moria / Angband
+- `light-indicator` ×1 — The Bard's Tale / Might and Magic — сіткові dungeon crawl 80-х
+- `stat-pools` ×1 — Beneath Apple Manor
 - `entity-sidebar` ×1 — Brogue
 - `flavor-line` ×1 — Brogue
 - `stealth-indicator` ×1 — Brogue
-- `deck-counter` ×1 — Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel)
-- `discard-pile` ×1 — Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel)
-- `temperature-readout` ×1 — Caves of Qud
+- `attribute-bars` ×1 — Castle of the Winds
+- `weight-bulk-meter` ×1 — Castle of the Winds
+- `map-scale-toggle` ×1 — Castle of the Winds
 - `parts-list` ×1 — Cogmind
 - `scan-window` ×1 — Cogmind
-- `resource-bars` ×1 — Cogmind
 - `volley-window` ×1 — Cogmind
 - `item-labels` ×1 — Cogmind
 - `beat-bar` ×1 — Crypt of the NecroDancer
 - `heart-container` ×1 — Crypt of the NecroDancer
-- `combat-preview` ×1 — Desktop Dungeons
 - `monster-level-badge` ×1 — Desktop Dungeons
+- `target-line` ×1 — DoomRL / DRL → Jupiter Hell
 - `noise-bar` ×1 — Dungeon Crawl Stone Soup
 - `monster-list` ×1 — Dungeon Crawl Stone Soup
 - `tile-code` ×1 — Dungeon Encounters
 - `coordinates` ×1 — Dungeon Encounters
 - `armor-bars` ×1 — Dungeon Encounters
 - `atb-gauge` ×1 — Dungeon Encounters
-- `power-meter` ×1 — Dungeon of the Endless
+- `eye-mouth-boxes` ×1 — Dungeon Master
+- `movement-arrows` ×1 — Dungeon Master
 - `door-marker` ×1 — Dungeon of the Endless
+- `heart-monitor` ×1 — Dungeons of Daggorath
+- `command-prompt` ×1 — Dungeons of Daggorath
+- `breakpoint-list` ×1 — DungeonUp
+- `map-tool-palette` ×1 — Etrian Odyssey
+- `encounter-gauge` ×1 — Etrian Odyssey
+- `map-icon-counter` ×1 — Etrian Odyssey
+- `form-meter` ×1 — Golden Krone Hotel
+- `hidden-indicator` ×1 — Golden Krone Hotel
 - `treasure-row` ×1 — HyperRogue
 - `orb-charges` ×1 — HyperRogue
 - `compass-beacon` ×1 — HyperRogue
-- `party-portraits` ×1 — Legend of Grimrock
-- `rune-grid` ×1 — Legend of Grimrock
+- `shock-meter` ×1 — Infra Arcana (огляд з The Ground Gives Way і Zorbus)
+- `insanity-meter` ×1 — Infra Arcana (огляд з The Ground Gives Way і Zorbus)
+- `spirit-bar` ×1 — Infra Arcana (огляд з The Ground Gives Way і Zorbus)
+- `danger-gauge` ×1 — Labyrinth of Refrain: Coven of Dusk
 - `food-bar` ×1 — Legend of Grimrock
-- `compass` ×1 — Legend of Grimrock
 - `damage-preview` ×1 — Tower of the Sorcerer / Magic Tower (魔塔)
 - `critical-value` ×1 — Tower of the Sorcerer / Magic Tower (魔塔)
 - `fullness-meter` ×1 — Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon)
-- `map-overlay` ×1 — Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon)
 - `farlook` ×1 — NetHack
+- `moon-phase` ×1 — Omega
+- `up-in-air-slot` ×1 — Omega
+- `glory-bar` ×1 — Path of Achra
+- `speed-bar` ×1 — Path of Achra
+- `damage-notches` ×1 — Pawnbarian
 - `quickslots` ×1 — Shattered Pixel Dungeon (і Pixel Dungeon)
 - `danger-indicator` ×1 — Shattered Pixel Dungeon (і Pixel Dungeon)
 - `buff-icons` ×1 — Shattered Pixel Dungeon (і Pixel Dungeon)
 - `examine-button` ×1 — Shattered Pixel Dungeon (і Pixel Dungeon)
 - `spell-bar-charges` ×1 — Rift Wizard
-- `resist-panel` ×1 — Rift Wizard
 - `aoe-preview` ×1 — Rift Wizard
+- `recipe-book` ×1 — Road Not Taken
+- `attack-queue` ×1 — Shogun Showdown
+- `alertness-marker` ×1 — Sil
+- `drop-preview` ×1 — Tactical Nexus
+- `stamina-bar` ×1 — Tangledeep
+- `party-roster` ×1 — Wizardry: Proving Grounds of the Mad Overlord
+- `monster-picture` ×1 — Wizardry: Proving Grounds of the Mad Overlord
 - `funds` ×1 — Advance Wars
 - `co-power-meter` ×1 — Advance Wars
 - `terrain-stars` ×1 — Advance Wars
-- `damage-forecast` ×1 — The Battle for Wesnoth (Битва за Веснот)
+- `kill-value` ×1 — Auro: A Monster-Bumping Adventure
+- `spell-slots` ×1 — Auro: A Monster-Bumping Adventure
+- `willpower-pips` ×1 — The Banner Saga
+- `horn-meter` ×1 — The Banner Saga
+- `initiative-bar` ×1 — Battle Brothers
+- `morale-icon` ×1 — Battle Brothers
 - `time-of-day` ×1 — The Battle for Wesnoth (Битва за Веснот)
+- `split-view` ×1 — Battle Isle
+- `evasion-pips` ×1 — BattleTech
+- `stability-bar` ×1 — BattleTech
 - `roll-target` ×1 — Blood Bowl
 - `block-dice` ×1 — Blood Bowl
-- `reroll-counter` ×1 — Blood Bowl
 - `message-log` ×1 — Blood Bowl
+- `hand-per-character` ×1 — Card Hunter
 - `cast-chance` ×1 — Chaos: The Battle of Wizards (+ Chaos Reborn)
+- `hand` ×1 — Children of Zodiarcs
+- `surge-count` ×1 — Descent: Journeys in the Dark
 - `bonus-gauge` ×1 — Disgaea: Hour of Darkness
 - `geo-effect-list` ×1 — Disgaea: Hour of Darkness
+- `aoe-template` ×1 — D&D grid combat (Dungeons & Dragons 5e)
+- `dice-roller` ×1 — D&D grid combat (Dungeons & Dragons 5e)
+- `condition-tokens` ×1 — D&D grid combat (Dungeons & Dragons 5e)
+- `measure-ruler` ×1 — D&D grid combat (Dungeons & Dragons 5e)
+- `mana-crystals` ×1 — Duelyst
+- `replace-slot` ×1 — Duelyst
+- `card-hover-zoom` ×1 — Duelyst
+- `power-wheel` ×1 — Faeria
+- `land-requirement` ×1 — Faeria
+- `ap-lights` ×1 — Fallout 1–2 (покроковий бій)
+- `body-part-picker` ×1 — Fallout 1–2 (покроковий бій)
+- `momentum-pips` ×1 — Fights in Tight Spaces
+- `law-panel` ×1 — Final Fantasy Tactics Advance
+- `jp-counter` ×1 — Final Fantasy Tactics Advance
 - `turn-order` ×1 — Final Fantasy Tactics
 - `height-label` ×1 — Final Fantasy Tactics
-- `battle-forecast` ×1 — Fire Emblem (GBA, The Blazing Blade як база)
 - `terrain-window` ×1 — Fire Emblem (GBA, The Blazing Blade як база)
+- `part-hp-diagram` ×1 — Front Mission
 - `waypoint-path` ×1 — Frozen Synapse
 - `last-seen-marker` ×1 — Frozen Synapse
-- `timeline-scrubber` ×1 — Frozen Synapse
+- `initiative-track` ×1 — Gloomhaven
+- `element-board` ×1 — Gloomhaven
+- `card-halves` ×1 — Gloomhaven
+- `modifier-reveal` ×1 — Gloomhaven
+- `luck-bar` ×1 — Hard West
+- `ricochet-line` ×1 — Hard West
+- `shadow-silhouette` ×1 — Hard West
+- `order-markers` ×1 — Heroscape
+- `wound-markers` ×1 — Heroscape
 - `attack-tiles-on-tap` ×1 — Hoplite
-- `attack-order` ×1 — Into the Breach
+- `ink-counter` ×1 — Inkulinati
 - `grid-power-bar` ×1 — Into the Breach
+- `vision-cone` ×1 — Invisible, Inc.
+- `alarm-dial` ×1 — Invisible, Inc.
+- `pwr-counter` ×1 — Invisible, Inc.
+- `stance-icon` ×1 — Jagged Alliance 2
+- `breath-bar` ×1 — Jagged Alliance 2
+- `ai-deck-counter` ×1 — Kingdom Death: Monster
+- `hit-location-silhouette` ×1 — Kingdom Death: Monster
+- `survival-tokens` ×1 — Kingdom Death: Monster
+- `rage-bar` ×1 — King's Bounty: The Legend (King's Bounty. Легенда о рыцаре)
+- `aura-range` ×1 — Langrisser
+- `unit-under-cursor` ×1 — Rebelstar / Laser Squad
+- `fame-track` ×1 — Mage Knight Board Game
+- `reputation-track` ×1 — Mage Knight Board Game
+- `mana-source` ×1 — Mage Knight Board Game
+- `day-night-board` ×1 — Mage Knight Board Game
+- `medal-track` ×1 — Memoir '44 / Commands & Colors
+- `section-lines` ×1 — Memoir '44 / Commands & Colors
+- `flatten-view` ×1 — Mewgenics
+- `detection-ring` ×1 — Mutant Year Zero: Road to Eden
+- `silent-icon` ×1 — Mutant Year Zero: Road to Eden
+- `terrain-percent` ×1 — Nectaris (Military Madness)
+- `record-sheet` ×1 — Ogre
+- `odds-preview` ×1 — Ogre
+- `action-points-preview` ×1 — Othercide
+- `strength-plaque` ×1 — Panzer General
+- `prestige` ×1 — Panzer General
+- `spread-circles` ×1 — Phoenix Point
+- `part-info-box` ×1 — Phoenix Point
+- `ap-bar-quarters` ×1 — Phoenix Point
+- `will-points` ×1 — Phoenix Point
+- `overwatch-cone` ×1 — Phoenix Point
 - `stars-income` ×1 — The Battle of Polytopia
 - `tile-actions` ×1 — The Battle of Polytopia
+- `alarm-meter` ×1 — Shadowrun Returns
+- `ap-pips` ×1 — Shadowrun Returns
+- `land-effect` ×1 — Shining Force
+- `ap-cost-preview` ×1 — Silent Storm
+- `points-track` ×1 — Space Crusade
+- `order-card-slot` ×1 — Space Crusade
 - `program-card` ×1 — Spybot: The Nightfall Incident (Lego Spybotics)
+- `aim-line` ×1 — SteamWorld Heist
+- `move-sprint-zones` ×1 — SteamWorld Heist
+- `unit-roster-table` ×1 — Steel Panthers
+- `suppression-value` ×1 — Steel Panthers
+- `will-meter` ×1 — Super Robot Wars
+- `hit-forecast` ×1 — Super Robot Wars
+- `foresight-ghost` ×1 — Tactical Breach Wizards
+- `objective-checklist` ×1 — Tactical Breach Wizards
+- `turn-order-list` ×1 — Tactics Ogre
+- `height-indicator` ×1 — Tactics Ogre
+- `ap-mp-banner` ×1 — The Last Spell
+- `worker-counter` ×1 — The Last Spell
+- `night-counter` ×1 — The Last Spell
+- `lock-on-markers` ×1 — Tiny Metal
+- `follow-up-marker` ×1 — Triangle Strategy
+- `combat-sheet` ×1 — Unity of Command: Stalingrad Campaign
+- `step-dots` ×1 — Unity of Command: Stalingrad Campaign
+- `supply-overlay` ×1 — Unity of Command: Stalingrad Campaign
+- `groove-meter` ×1 — Wargroove
+- `crit-indicator` ×1 — Wargroove
+- `terrain-shields` ×1 — Wargroove
+- `cognition-counter` ×1 — Warhammer 40,000: Mechanicus
+- `awakening-meter` ×1 — Warhammer 40,000: Mechanicus
+- `revive-countdown` ×1 — Warhammer 40,000: Mechanicus
+- `breach-point-card` ×1 — XCOM: Chimera Squad
+- `reinforcement-alert` ×1 — XCOM: Chimera Squad
 - `cover-icon` ×1 — XCOM: Enemy Unknown / XCOM 2
 - `target-icons` ×1 — XCOM: Enemy Unknown / XCOM 2
 - `turn-timer` ×1 — XCOM: Enemy Unknown / XCOM 2
+- `danger-track` ×1 — Zombicide
+- `noise-token` ×1 — Zombicide
 - `rules-list` ×1 — Baba Is You
 - `tile-tray` ×1 — Carto
 - `sword-direction` ×1 — Deadly Rooms of Death (DROD: King Dugan's Dungeon)
+- `sun-dial` ×1 — Felix the Reaper
 - `hotspot-cursor` ×1 — Gorogoa
+- `split-times` ×1 — GridRacer
+- `velocity-vector` ×1 — GridRacer
 - `word-book` ×1 — LOK Digital
+- `ink-meter` ×1 — Magic Chalkboards
+- `interactive-color` ×1 — Monument Valley
+- `fold-preview` ×1 — Paper Trail
+- `switch-counter` ×1 — Toodee and Topdee
+- `rule-dots` ×1 — Understand
 - `held-tile` ×1 — Void Stranger
 - `brane-number` ×1 — Void Stranger
+- `special-meter` ×1 — Age of War / Stick War
+- `route-line` ×1 — Anomaly: Warzone Earth
+- `ability-gauge` ×1 — Anomaly: Warzone Earth
+- `convoy-panel` ×1 — Anomaly: Warzone Earth
 - `deploy-bar` ×1 — Arknights
 - `skill-charge-ring` ×1 — Arknights
 - `enemy-route-preview` ×1 — Arknights
 - `dp-counter` ×1 — Arknights
+- `monster-pile` ×1 — Castle Panic
+- `elixir-bar` ×1 — Clash Royale
+- `next-card-preview` ×1 — Clash Royale
+- `energy-pips` ×1 — Cobalt Core
+- `status-row` ×1 — Cobalt Core
 - `energy-graph` ×1 — Creeper World
 - `packet-flow` ×1 — Creeper World
 - `depth-shading` ×1 — Creeper World
+- `wave-ticker` ×1 — Defense Grid: The Awakening
+- `air-path-overlay` ×1 — Defense Grid: The Awakening
+- `core-counter` ×1 — Defense Grid: The Awakening
 - `room-palette` ×1 — Dungeon Keeper
 - `creature-panel` ×1 — Dungeon Keeper
+- `send-wave-button` ×1 — Dungeon Warfare
+- `element-wheel` ×1 — Element TD 2
+- `recipe-table` ×1 — Element TD 2
+- `wave-strip` ×1 — Element TD 2
+- `wood-counter` ×1 — Flash Element TD
 - `gem-inventory` ×1 — GemCraft
 - `wave-stones` ×1 — GemCraft
 - `mana-pool-bar` ×1 — GemCraft
+- `piece-hotbar` ×1 — Grid Forge TD
+- `row-power` ×1 — Gwent (Гвинт)
+- `round-gems` ×1 — Gwent (Гвинт)
+- `tavern-tier` ×1 — Hearthstone Battlegrounds
+- `ability-bar` ×1 — Infinitode 2
 - `scale-meter` ×1 — Inscryption (Act 1)
 - `queue-row` ×1 — Inscryption (Act 1)
 - `start-wave-button` ×1 — Isle of Arrows
+- `income-panel` ×1 — Legion TD / Legion TD 2
+- `recommended-value` ×1 — Legion TD / Legion TD 2
+- `send-panel` ×1 — Legion TD / Legion TD 2
+- `source-counter` ×1 — Lock's Quest
+- `lane-power` ×1 — Marvel Snap
+- `cube-stake` ×1 — Marvel Snap
+- `priority-glow` ×1 — Marvel Snap
 - `deploy-grid` ×1 — Mechabellum
 - `tech-bar` ×1 — Mechabellum
 - `card-offer` ×1 — Mechabellum
 - `player-hp` ×1 — Mechabellum
 - `deploy-timer` ×1 — Mechabellum
-- `seed-bar` ×1 — Plants vs. Zombies (Рослини проти зомбі)
+- `capacity-meter` ×1 — Monster Train
+- `pyre-hp` ×1 — Monster Train
+- `wave-preview` ×1 — Monster Train
+- `rift-points` ×1 — Orcs Must Die!
+- `trap-bar` ×1 — Orcs Must Die!
+- `ring-menu` ×1 — PixelJunk Monsters
+- `lives-icons` ×1 — PixelJunk Monsters
+- `block-meter` ×1 — Plants vs. Zombies Heroes
+- `lane-badge` ×1 — Plants vs. Zombies Heroes
+- `phase-banner` ×1 — Plants vs. Zombies Heroes
 - `wave-progress-flags` ×1 — Plants vs. Zombies (Рослини проти зомбі)
 - `shovel` ×1 — Plants vs. Zombies (Рослини проти зомбі)
-- `phase-timer` ×1 — Rampart
 - `summon-button` ×1 — Random Dice (+ Rush Royale)
 - `power-up-bar` ×1 — Random Dice (+ Rush Royale)
-- `sp-counter` ×1 — Random Dice (+ Rush Royale)
-- `trait-tracker` ×1 — Teamfight Tactics (TFT)
-- `shop-bar` ×1 — Teamfight Tactics (TFT)
-- `player-list` ×1 — Teamfight Tactics (TFT)
+- `hand-bar` ×1 — Ratropolis
+- `expand-arrows` ×1 — Rogue Tower
+- `trophy-counter` ×1 — Super Auto Pets
 - `gold-interest` ×1 — Teamfight Tactics (TFT)
+- `unit-deploy-bar` ×1 — The Battle Cats
+- `wallet` ×1 — The Battle Cats
+- `cannon-charge` ×1 — The Battle Cats
+- `resource-bar` ×1 — They Are Billions
+- `day-counter` ×1 — They Are Billions
+- `horde-warning` ×1 — They Are Billions
+- `build-slot-cost` ×1 — Thronefall
 - `counter-badge` ×1 — Wildfrost
 - `wave-bell` ×1 — Wildfrost
 - `status-icons` ×1 — Wildfrost
+- `random-guess-button` ×1 — Absurdle
+- `tile-countdown` ×1 — Alphabear
+- `arrow-glyph` ×1 — Arrowword (Сканворд)
+- `solution-word-bar` ×1 — Arrowword (Сканворд)
+- `bunch-counter` ×1 — Bananagrams
+- `called-board` ×1 — Bingo / Keno / Lotto (Бінго, Лото)
+- `last-called` ×1 — Bingo / Keno / Lotto (Бінго, Лото)
+- `pattern-card` ×1 — Bingo / Keno / Lotto (Бінго, Лото)
+- `pay-table` ×1 — Bingo / Keno / Lotto (Бінго, Лото)
+- `enemy-attack-list` ×1 — Bookworm Adventures
+- `potion-shelf` ×1 — Bookworm Adventures
 - `level-progress` ×1 — Bookworm
 - `bonus-word` ×1 — Bookworm
+- `clue-display` ×1 — Codenames
+- `guesses-left` ×1 — Codenames
+- `key-card-view` ×1 — Codenames
+- `cipher-key` ×1 — Codeword
+- `alphabet-tracker` ×1 — Codeword
+- `equation-status` ×1 — Crossmath (математичний кросворд)
+- `color-pattern-grid` ×1 — Crosswordle
+- `column-error-flag` ×1 — Crosswordle
+- `current-clue-bar` ×1 — Cryptic crossword (Криптичний кросворд)
+- `enumeration` ×1 — Cryptic crossword (Криптичний кросворд)
+- `longest-word` ×1 — Gridwordy
 - `region-letter-pool` ×1 — Knotwords
 - `word-tray` ×1 — Letterpress
 - `score-bar` ×1 — Letterpress
+- `add-button` ×1 — Number Match / Take Ten (Numberzilla)
+- `adds-left` ×1 — Number Match / Take Ten (Numberzilla)
 - `solved-group-bar` ×1 — NYT Connections (+ Strands)
 - `hint-meter` ×1 — NYT Connections (+ Strands)
-- `theme-clue` ×1 — NYT Connections (+ Strands)
+- `hex-boon-track` ×1 — Paperback Adventures
+- `hand-label` ×1 — Puzzmo: Pile-Up Poker
+- `split-key-state` ×1 — Quordle / Octordle
+- `board-solved-badge` ×1 — Quordle / Octordle
 - `shuffle-button` ×1 — Scrabble (цифрові версії; Words With Friends)
 - `recall-button` ×1 — Scrabble (цифрові версії; Words With Friends)
+- `tile-word-count` ×1 — Squaredle
+- `progress-stars` ×1 — Squaredle
+- `accuracy-meter` ×1 — Squaredle
+- `words-by-length` ×1 — Squaredle
 - `line-target` ×1 — Sumplete
+- `stack-height-badge` ×1 — Upwords
 - `swaps-left` ×1 — Waffle
-- `stars-rating` ×1 — Waffle
-- `on-screen-keyboard` ×1 — Wordle
+- `ladder-rungs` ×1 — Weaver (word ladder)
+- `optimal-ladder` ×1 — Weaver (word ladder)
+- `enemy-preview` ×1 — Letter Quest і Spellspire — словесні RPG-бої
+- `word-list-panel` ×1 — Word search (Пошук слів)
+- `percentile-rank` ×1 — Wordament
+- `round-countdown` ×1 — Wordament
+- `letter-hand` ×1 — Wordatro!
 - `guess-distribution` ×1 — Wordle
 - `share-button` ×1 — Wordle
 - `next-puzzle-countdown` ×1 — Wordle
 
-## window · 202
+## window · 554
 
 - `map-window` ×35 🔥 — A Good Snowman Is Hard to Build, A Monster's Expedition, Backpack Hero, Bonfire Peaks, Candy Crush Saga, Carto, Caves of Qud, Clash of Clans — розстановка бази на сітці, Creeper World, Deadly Rooms of Death (DROD: King Dugan's Dungeon), Dungeon Crawl Stone Soup, Emberward, Factorio — клітинна логістика (конвеєри, маніпулятори, мережі), Final Fantasy Tactics, GemCraft, Golf Peaks, Inscryption (Act 1), Isles of Sea and Sky, LOK Digital, Legend of Grimrock, Mario & Wario, Mindustry — клітинна логістика й оборона, OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування), Patrick's Parabox, RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II), Recursed, Repton 1–3, Snakebird, Spybot: The Nightfall Incident (Lego Spybotics), Stephen's Sausage Roll, Taiji + The Witness (панелі), The Battle for Wesnoth (Битва за Веснот), Wildfrost, XCOM: Enemy Unknown / XCOM 2, XOR
+- `params-dialog` ×17 🔥 — Dominosa (Доміноза), Futoshiki (Unequal, Нерівності), KenKen (Keen, CalcuDoku, Кенкен), Light Up (Akari, Бідзюцукан), Magnets (Tatham), Map (Tatham), Palisade (Five Cells, «Частокіл»), Shikaku (Шікаку, Rectangles, Divide by Box), Signpost (Pfeilpfad), Simon Tatham's Portable Puzzle Collection, Skyscrapers (Towers, Хмарочоси), Slant (Gokigen Naname), Takuzu (Binairo, Unruly, Tic-Tac-Logic), Tentai Show (Galaxies, Spiral Galaxies), Tents (Tatham), Tracks (Tatham), Undead (Haunted Mirror Maze)
 - `character-select` ×16 🔥 — 'One Way Heroics (Mystery Chronicle: One Way Heroics)', Backpack Hero, Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel), Crypt of the NecroDancer, Desktop Dungeons, Dungeon Crawl Stone Soup, Dungeon of the Endless, Emberward, Gauntlet (1985), HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), Loop Hero, Magical Drop (Chain Reaction), Mario & Wario, Maze Mice, Panel de Pon (Tetris Attack, Puzzle League), Puyo Puyo (Пуйо Пуйо)
+- `game-id-dialog` ×14 🔥 — Dominosa (Доміноза), Futoshiki (Unequal, Нерівності), KenKen (Keen, CalcuDoku, Кенкен), Magnets (Tatham), Map (Tatham), Palisade (Five Cells, «Частокіл»), Signpost (Pfeilpfad), Simon Tatham's Portable Puzzle Collection, Skyscrapers (Towers, Хмарочоси), Slant (Gokigen Naname), Takuzu (Binairo, Unruly, Tic-Tac-Logic), Tents (Tatham), Tracks (Tatham), puzz.link (pzprjs / pzprv3)
+- `match-setup` ×13 🔥 — Akropolis (Акрополіс), Blokus (Блокус), Bomberman, Carcassonne (Каркасон), Cascadia + Calico (Каскадія, Калико), Five Tribes, Hey, That's My Fish! (Packeis am Pol), Kamisado, Kingdomino (Кінґдоміно), Photosynthesis (Фотосинтез), Qwirkle + Ingenious (Квіркл, Genial), Scorched Earth, Tsuro (+ Indigo)
 - `mode-select` ×13 🔥 — Bejeweled (1–3, Twist), Bookworm, Columns (Колонки), Desktop Tower Defense, Dorfromantik, Fieldrunners, Kwirk (Puzzle Boy), Mathable, Sliding-tile permutation puzzles (пʼятнашки й родичі), SpellTower, Sumplete, Tomb of the Mask, Wrecking Crew
-- `match-setup` ×12 🔥 — Akropolis (Акрополіс), Blokus (Блокус), Bomberman, Carcassonne (Каркасон), Cascadia + Calico (Каскадія, Калико), Five Tribes, Hey, That's My Fish! (Packeis am Pol), Kamisado, Kingdomino (Кінґдоміно), Photosynthesis (Фотосинтез), Qwirkle + Ingenious (Квіркл, Genial), Tsuro (+ Indigo)
 - `inventory-window` ×12 🔥 — Backpack Hero, Bookworm, Brogue, Carto, Caves of Qud, Desktop Dungeons, Luck be a Landlord, Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II), Rogue, Shattered Pixel Dungeon (і Pixel Dungeon), Stardew Valley — фермерська сітка
+- `upgrade-window` ×11 🔥 — Backpack Hero, Dome Keeper, Downwell, Isle of Arrows, Loop Hero, Luck be a Landlord, Maze Mice, Metavaxx, Wall World, Wilmot's Warehouse, XCOM: Enemy Unknown / XCOM 2
 - `code-editor` ×11 🔥 — 7 Billion Humans, Cell Machine, Frozen Synapse, Kara (Кара — сонечко), Karel the Robot (Reeborg's World), Lightbot (Light-Bot), Opus Magnum, RoboZZle, Screeps (Screeps World, Screeps Arena), The Farmer Was Replaced, Untrusted — or the Continuing Adventures of Dr. Eval
-- `upgrade-window` ×8 🔥 — Backpack Hero, Dome Keeper, Isle of Arrows, Loop Hero, Luck be a Landlord, Maze Mice, Wilmot's Warehouse, XCOM: Enemy Unknown / XCOM 2
+- `loadout-select` ×10 🔥 — Arknights, Dome Keeper, Liero, Mechabellum, Orcs Must Die!, Pac-Man 256, Plants vs. Zombies (Рослини проти зомбі), Random Dice (+ Rush Royale), The Battle Cats, Wall World
+- `choice-window` ×10 🔥 — Cobalt Core, Emberward, Inscryption (Act 1), Legion TD / Legion TD 2, Mechabellum, Monster Train, Ratropolis, Rogue Tower, Teamfight Tactics (TFT), Wildfrost
+- `variant-select` ×8 🔥 — 5D Chess with Multiverse Time Travel, Draughts / Checkers (Шашки), Jungle (Dou Shou Qi, «Джунглі», звірині шахи), Lichess variants (варіанти шахів Lichess), N-in-a-row (Хрестики-нулики, Gomoku, Connect Four, Pentago…), Pente (Пенте), Surakarta (Roundabouts), Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
+- `research-window` ×8 🔥 — Big Pharma, Dungeon of the Endless, Mech Armada, Production Line, Revenge of the Titans, RollerCoaster Tycoon, Theme Hospital, Two Point Hospital
+- `character-sheet` ×8 🔥 — D&D grid combat (Dungeons & Dragons 5e), Dungeon Master, Fallout 1–2 (покроковий бій), Legend of Grimrock, Moria / Angband, Shadowrun Returns, Sil, Wizardry: Proving Grounds of the Mad Overlord
+- `round-summary` ×7 🔥 — Azul (Азул), FITS, Harmonies, NMBR 9, Railroad Ink, Scorched Earth, Take It Easy
+- `codex-window` ×7 🔥 — Bookworm, Dragonsweeper, LOK Digital, Loop Hero, Luck be a Landlord, Tower of the Sorcerer / Magic Tower (魔塔), TowerBound
+- `deck-builder` ×7 🔥 — 868-HACK (+ Imbroglio, Cinco Paus — мікро-роглайки Michael Brough), Clash Royale, Duelyst, Faeria, Gwent (Гвинт), Marvel Snap, Plants vs. Zombies Heroes
+- `card-zoom` ×6 🔥 — A Feast for Odin (Бенкет для Одіна) і поліоміно-заповнення, Cartographers (Картографи), Five Tribes, Reef (Риф), Sagrada (Саграда), Tiny Towns (Крихітні містечка)
 - `puzzle-select` ×6 🔥 — Klotski (Хуажунський шлях) + Lunar Lockout, Knotwords, LYNE, Rush Hour (ThinkFun), Sokobond, Ubongo + Katamino / IQ Puzzler (Убонго)
 - `editor-window` ×6 🔥 — Catrap (Pitman), Clash of Clans — розстановка бази на сітці, Deadly Rooms of Death (DROD: King Dugan's Dungeon), Pushmo / Pullblox (引ク押ス) + Crashmo, Super Mario Maker 2, Wrecking Crew
-- `codex-window` ×6 🔥 — Bookworm, Dragonsweeper, LOK Digital, Loop Hero, Luck be a Landlord, Tower of the Sorcerer / Magic Tower (魔塔)
 - `level-password` ×6 🔥 — Adventures of Lolo (Eggerland), Bloxorz, Bomberman, Chip's Challenge, Pushover (Push-Over), Repton 1–3
-- `card-zoom` ×5 🔥 — A Feast for Odin (Бенкет для Одіна) і поліоміно-заповнення, Cartographers (Картографи), Five Tribes, Sagrada (Саграда), Tiny Towns (Крихітні містечка)
-- `variant-select` ×5 🔥 — Draughts / Checkers (Шашки), Lichess variants (варіанти шахів Lichess), N-in-a-row (Хрестики-нулики, Gomoku, Connect Four, Pentago…), Surakarta (Roundabouts), Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage)
+- `dialogue-window` ×6 🔥 — Carto, Caves of Qud, Helltaker, RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II), Shadowrun Returns, Spybot: The Nightfall Incident (Lego Spybotics)
 - `replay-window` ×5 🔥 — Clash of Clans — розстановка бази на сітці, Deadly Rooms of Death (DROD: King Dugan's Dungeon), Frozen Synapse, Mechabellum, Wilmot's Warehouse
+- `crafting-window` ×5 🔥 — Core Keeper — сітковий шар (копання, ферма, автоматизація), Duelyst, Dungeons of Dredmor, Fell Seal: Arbiter's Mark, Mine Blocks
+- `tech-tree` ×5 🔥 — Civilization (бойовий шар юнітів, I–VI), Craftomation 101, Frostpunk, Mindustry — клітинна логістика й оборона, The Battle of Polytopia
 - `stats-window` ×5 🔥 — NYT Connections (+ Strands), Prison Architect — шар кімнат і зон, Sliding-tile permutation puzzles (пʼятнашки й родичі), Waffle, Wordle
-- `loadout-select` ×5 🔥 — Arknights, Dome Keeper, Mechabellum, Plants vs. Zombies (Рослини проти зомбі), Random Dice (+ Rush Royale)
-- `dialogue-window` ×5 🔥 — Carto, Caves of Qud, Helltaker, RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II), Spybot: The Nightfall Incident (Lego Spybotics)
-- `choice-window` ×5 🔥 — Emberward, Inscryption (Act 1), Mechabellum, Teamfight Tactics (TFT), Wildfrost
+- `character-create` ×5 🔥 — Dungeon Master, Legend of Grimrock, Moria / Angband, NetHack, Wizardry: Proving Grounds of the Mad Overlord
+- `lobby-window` ×5 🔥 — Crypt of the NecroDancer, Dota Auto Chess, Frozen Synapse, Random Dice (+ Rush Royale), Teamfight Tactics (TFT)
+- `title-screen` ×5 🔥 — Heroes of Sokoban, Isaac and the Conservation of Momentum, Lock & Pin, Magiciban, Mirror Isles
 - `log-window` ×4 🔥 — Brogue, Clash of Clans — розстановка бази на сітці, Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), Rogue
+- `skill-tree` ×4 🔥 — Core Keeper — сітковий шар (копання, ферма, автоматизація), GemCraft, Grid Forge TD, Mario + Rabbids Kingdom Battle
 - `shop-window` ×4 🔥 — Dungeon Encounters, Final Fantasy Tactics, Stardew Valley — фермерська сітка, Triple Town
 - `daily-window` ×4 🔥 — Isle of Arrows, Knotwords, LOK Digital, LYNE
+- `bonus-round` ×4 🔥 — Amidar, Pipe Mania (Pipe Dream), Rally-X, Super Pac-Man
 - `pass-device` ×4 🔥 — Battleship (Морський бій), Cluedo (Clue; «Клуедо»), Geister (Ghosts!, Good & Bad Ghosts; «Привиди»), Stratego (Стратего)
+- `research-tree` ×4 🔥 — Infinitode 2, Keepsweeper, The Farmer Was Replaced, They Are Billions
 - `attract-demo` ×4 🔥 — Pac-Man (Пекмен) і Ms. Pac-Man, Q*bert, Space Invaders (Космічні загарбники), Wizard of Wor
-- `lobby-window` ×4 🔥 — Crypt of the NecroDancer, Frozen Synapse, Random Dice (+ Rush Royale), Teamfight Tactics (TFT)
-- `round-summary` ×3 🔥 — Azul (Азул), NMBR 9, Take It Easy
+- `metric-histograms` ×4 🔥 — Infinifactory, Kaizen: A Factory Story, Opus Magnum, SpaceChem
+- `town-hub` ×4 🔥 — Beneath Apple Manor, Etrian Odyssey, Labyrinth of Refrain: Coven of Dusk, Wizardry: Proving Grounds of the Mad Overlord
+- `perk-select` ×4 🔥 — 'One Way Heroics (Mystery Chronicle: One Way Heroics)', Battle Brothers, Tactical Breach Wizards, Thronefall
+- `message-screen` ×4 🔥 — Heroes of Sokoban, Lock & Pin, Magiciban, Mirror Isles
+- `layout-select` ×3 🔥 — Abalone (Абалон), Ataxx, Dragon Castle
+- `score-sheet` ×3 🔥 — Cogmind, Happy Home (Щасливий дім), New York 1901 (Нью-Йорк 1901)
+- `draft-window` ×3 🔥 — Blue Prince, Terraforming Mars (Тераформування Марса), The Isle of Cats
+- `production` ×3 🔥 — Advance Wars, Terraforming Mars (Тераформування Марса), Tiny Metal
+- `floor-select` ×3 🔥 — Fallout Shelter, H5mota (H5魔塔广场) — спільнота веб-веж, Tower of the Sorcerer / Magic Tower (魔塔)
+- `faction-select` ×3 🔥 — Duelyst, Swords & Soldiers, Timberborn
+- `swap-dialog` ×3 🔥 — Hex (Гекс), N-in-a-row (Хрестики-нулики, Gomoku, Connect Four, Pentago…), Pente (Пенте)
 - `game-over-continue` ×3 🔥 — Dig Dug, Gauntlet (1985), Tomb of the Mask
+- `save-browser` ×3 🔥 — Sandspiel, Sandspiel Studio, The Powder Toy
+- `battle-setup` ×3 🔥 — EXAPUNKS, Might & Magic: Clash of Heroes, Puzzle Quest: Challenge of the Warlords
+- `task-list` ×3 🔥 — Homescapes / Gardenscapes / Royal Match (мета-шар ремонту), Kara (Кара — сонечко), Merge Mansion / Merge Dragons
 - `placement-screen` ×3 🔥 — Battleship (Морський бій), Geister (Ghosts!, Good & Bad Ghosts; «Привиди»), Stratego (Стратего)
-- `params-dialog` ×3 🔥 — Light Up (Akari, Бідзюцукан), Shikaku (Шікаку, Rectangles, Divide by Box), Simon Tatham's Portable Puzzle Collection
-- `tech-tree` ×2 — Mindustry — клітинна логістика й оборона, The Battle of Polytopia
-- `layout-select` ×2 — Abalone (Абалон), Ataxx
+- `output-console` ×3 🔥 — Befunge (Befunge-93), Screeps (Screeps World, Screeps Arena), The Farmer Was Replaced
+- `battle-screen` ×3 🔥 — Etrian Odyssey, Labyrinth of Refrain: Coven of Dusk, Wizardry: Proving Grounds of the Mad Overlord
+- `spellbook` ×3 🔥 — Harmless7DRL, Heroes of Might and Magic III (Герої меча і магії III), King's Bounty: The Legend (King's Bounty. Легенда о рыцаре)
+- `job-window` ×3 🔥 — Fell Seal: Arbiter's Mark, Final Fantasy Tactics, Tangledeep
+- `recruit-window` ×3 🔥 — The Battle for Wesnoth (Битва за Веснот), The Last Spell, Wargroove
+- `squad-select` ×3 🔥 — Into the Breach, Silent Storm, XCOM: Enemy Unknown / XCOM 2
+- `deck-window` ×3 🔥 — Cobalt Core, Inscryption (Act 1), Ratropolis
+- `collection-window` ×3 🔥 — Alphabear, Marvel Snap, Plants vs. Zombies Heroes
+- `harvest-summary` ×2 — Agricola — сітка ферми (Агрікола), Caverna: The Cave Farmers (Каверна)
+- `campaign-map` ×2 — Dota Underlords, Galaxy Trucker
+- `product-naming` ×2 — Big Pharma, Production Line
+- `advisor-window` ×2 — Caesar III, Pharaoh
+- `schedule-window` ×2 — Prison Architect — шар кімнат і зон, Space Haven
+- `finance-window` ×2 — RollerCoaster Tycoon, Theme Hospital
+- `staff-hire` ×2 — Theme Hospital, Two Point Hospital
+- `journal` ×2 — Opus Magnum, Viva Piñata
+- `setup-choice` ×2 — Baroque chess / Ultima (Бароккові шахи), Janggi (Чанґі, корейські шахи)
+- `army-select` ×2 — Chess 2: The Sequel (Sirlin's Chess), Chess with Different Armies (шахи різних армій, Betza)
 - `analysis-board` ×2 — Chess (Шахи) — цифрова гра, Xiangqi (Сянці, китайські шахи)
 - `puzzle-window` ×2 — Chess (Шахи) — цифрова гра, Xiangqi (Сянці, китайські шахи)
+- `row-choice` ×2 — GIPF, YINSH
 - `handicap-select` ×2 — Go (Ґо, вейці, бадук), Shogi (Сьоґі, японські шахи)
-- `swap-dialog` ×2 — Hex (Гекс), N-in-a-row (Хрестики-нулики, Gomoku, Connect Four, Pentago…)
-- `bonus-round` ×2 — Amidar, Pipe Mania (Pipe Dream)
+- `player-count-select` ×2 — Halma / Chinese checkers (Хальма / Китайські шашки), Quoridor (Кворидор)
+- `pack-select` ×2 — Flow Free, Super Auto Pets
+- `hall-of-fame` ×2 — Fish Fillets, Supaplex
 - `difficulty-select` ×2 — Dr. Mario (Доктор Маріо), Kwirk (Puzzle Boy)
+- `team-builder` ×2 — Gems of War (і Marvel Puzzle Quest), Puzzle & Dragons (PAD, Пазли і Дракони)
+- `kingdom-map` ×2 — Desktop Dungeons, Gems of War (і Marvel Puzzle Quest)
+- `chest-reward` ×2 — Homescapes / Gardenscapes / Royal Match (мета-шар ремонту), Toon Blast
+- `gacha-window` ×2 — Puzzle & Dragons (PAD, Пазли і Дракони), The Battle Cats
+- `score-tally` ×2 — Battle City (Танчики) і Tank Battalion, Threes!
+- `upload-dialog` ×2 — Escape (Tom 7), Super Mario Maker 2
 - `intermission` ×2 — Pac-Man (Пекмен) і Ms. Pac-Man, Pengo
+- `replay-viewer` ×2 — Lux AI Challenge, Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
 - `world-map` ×2 — Dungeon Keeper, Screeps (Screeps World, Screeps Arena)
-- `output-console` ×2 — Screeps (Screeps World, Screeps Arena), The Farmer Was Replaced
 - `chapter-select` ×2 — Helltaker, Hitman GO (+ Lara Croft GO)
 - `hero-select` ×2 — 868-HACK (+ Imbroglio, Cinco Paus — мікро-роглайки Michael Brough), Shattered Pixel Dungeon (і Pixel Dungeon)
+- `overworld-map` ×2 — Ancient Domains of Mystery (ADOM), Omega
+- `quest-board` ×2 — Cave Noire, Etrian Odyssey
 - `journal-window` ×2 — Caves of Qud, Shattered Pixel Dungeon (і Pixel Dungeon)
 - `skills-window` ×2 — Caves of Qud, Dungeon Crawl Stone Soup
 - `god-window` ×2 — Desktop Dungeons, Dungeon Crawl Stone Soup
+- `challenge-select` ×2 — DoomRL / DRL → Jupiter Hell, Letter Quest і Spellspire — словесні RPG-бої
 - `dungeon-overview` ×2 — Dungeon Crawl Stone Soup, NetHack
-- `character-create` ×2 — Legend of Grimrock, NetHack
+- `storage-window` ×2 — Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon), Torneko's Great Adventure: Mystery Dungeon
 - `tombstone` ×2 — NetHack, Rogue
+- `town-window` ×2 — Sproggiwood, Wildfrost
+- `camp-screen` ×2 — The Banner Saga, Triangle Strategy
+- `battle-result` ×2 — Battle Brothers, Heroes of Might and Magic III (Герої меча і магії III)
+- `deployment` ×2 — Blood Bowl, Rebelstar / Laser Squad
+- `pack-opening` ×2 — Duelyst, Faeria
+- `formation` ×2 — Fell Seal: Arbiter's Mark, Final Fantasy Tactics
+- `mission-board` ×2 — Fell Seal: Arbiter's Mark, Final Fantasy Tactics Advance
+- `event-choice` ×2 — Fights in Tight Spaces, Warhammer 40,000: Mechanicus
+- `battle-animation` ×2 — Fire Emblem (GBA, The Blazing Blade як база), Super Robot Wars
 - `prep-screen` ×2 — Fire Emblem (GBA, The Blazing Blade як база), Spybot: The Nightfall Incident (Lego Spybotics)
-- `squad-select` ×2 — Into the Breach, XCOM: Enemy Unknown / XCOM 2
+- `creature-info` ×2 — Heroes of Might and Magic III (Герої меча і магії III), King's Bounty: The Legend (King's Bounty. Легенда о рыцаре)
+- `class-change` ×2 — Langrisser, Tactics Ogre
+- `purchase-units` ×2 — Panzer General, Steel Panthers
+- `headquarters` ×2 — Shining Force, Vandal Hearts
+- `round-results` ×2 — Boggle, Wordament
 - `game-list` ×2 — Letterpress, Scrabble (цифрові версії; Words With Friends)
 - `archive-window` ×2 — NYT Connections (+ Strands), Waffle
 - `word-lookup` ×2 — Scrabble (цифрові версії; Words With Friends), SpellTower
+- `merger-dialog` ×1 — Acquire
+- `stock-buy` ×1 — Acquire
+- `farm-rearrange` ×1 — Agricola — сітка ферми (Агрікола)
+- `scoring-round` ×1 — Alhambra (Альгамбра)
+- `species-reveal` ×1 — Arboretum (Дендропарк)
 - `solo-rating` ×1 — Cartographers (Картографи)
 - `scenario-select` ×1 — Cascadia + Calico (Каскадія, Калико)
+- `market-pricing` ×1 — Castles of Mad King Ludwig (Замки божевільного короля Людвіга)
+- `expedition-loot` ×1 — Caverna: The Cave Farmers (Каверна)
+- `bed-scoring` ×1 — Cottage Garden (Сільський сад)
+- `adventure-card` ×1 — Galaxy Trucker
+- `ship-check` ×1 — Galaxy Trucker
+- `price-screen` ×1 — Isle of Skye: From Chieftain to King (Острів Скай)
+- `lay-or-discard` ×1 — Karuba (Каруба)
+- `chapter-envelope` ×1 — My City
 - `pattern-select` ×1 — Sagrada (Саграда)
+- `capture-order` ×1 — Samurai (Самурай)
+- `goal-reveal` ×1 — Sprawlopolis
+- `weather-roll` ×1 — Takenoko (Такеноко)
+- `card-detail` ×1 — Tash-Kalar: Arena of Legends
+- `lessons-window` ×1 — The Isle of Cats
+- `challenge-card` ×1 — ThinkFun Laser Maze і Gravity Maze
+- `conflict-dialog` ×1 — Tigris & Euphrates (Тигр і Євфрат)
+- `war-order` ×1 — Tigris & Euphrates (Тигр і Євфрат)
+- `monument-dialog` ×1 — Tigris & Euphrates (Тигр і Євфрат)
+- `sheet-view` ×1 — Welcome To… (Ласкаво просимо до…)
+- `hint-page` ×1 — A Little to the Left
+- `market-window` ×1 — Big Pharma
+- `archipelago-map` ×1 — Boom Beach
+- `district-policies` ×1 — Cities: Skylines (зонування)
+- `stash-window` ×1 — Diablo II (inventory)
+- `cube-window` ×1 — Diablo II (inventory)
 - `unlocks` ×1 — Dorfromantik
+- `stockpile-settings` ×1 — Dwarf Fortress — призначення клітин і рідини
+- `zone-panel` ×1 — Dwarf Fortress — призначення клітин і рідини
 - `blueprint-library` ×1 — Factorio — клітинна логістика (конвеєри, маніпулятори, мережі)
+- `land-map` ×1 — Forager
+- `law-book` ×1 — Frostpunk
 - `pattern-library` ×1 — Conway's Game of Life (Гра «Життя»)
+- `diary-save` ×1 — Harvest Moon (SNES)
+- `ending-scenes` ×1 — Harvest Moon (SNES)
+- `pack-choice` ×1 — Islanders
+- `species-library` ×1 — Lenia
+- `order-board` ×1 — FarmVille і Hay Day — ферма на годиннику
+- `roadside-shop` ×1 — FarmVille і Hay Day — ферма на годиннику
 - `orders-window` ×1 — OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування)
 - `depot-window` ×1 — OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування)
-- `schedule-window` ×1 — Prison Architect — шар кімнат і зон
+- `staff-zones` ×1 — Parkitect
+- `card-offer` ×1 — PlateUp!
+- `blueprint-shop` ×1 — PlateUp!
+- `slot-order` ×1 — Production Line
+- `case-upgrade` ×1 — Resident Evil 4 (attaché case)
+- `track-designer` ×1 — RollerCoaster Tycoon
+- `markers-window` ×1 — shapez
+- `behavior-control` ×1 — SimAnt
+- `caste-control` ×1 — SimAnt
+- `history-graph` ×1 — SimAnt
+- `strategic-map` ×1 — SimAnt
+- `budget-window` ×1 — SimCity (1989) / Micropolis
+- `evaluation-window` ×1 — SimCity (1989) / Micropolis
+- `job-priorities` ×1 — Space Haven
 - `end-of-day-shipping` ×1 — Stardew Valley — фермерська сітка
+- `photo-mode` ×1 — Terra Nil
+- `town-map` ×1 — Theme Hospital
+- `floor-detail` ×1 — Tiny Tower / SimTower
+- `bitbook` ×1 — Tiny Tower / SimTower
+- `training-window` ×1 — Two Point Hospital
+- `move-reveal` ×1 — Apocalypse (Апокаліпсис, одночасні шахи коней і пішаків)
 - `setup-phase` ×1 — Arimaa
+- `duel-window` ×1 — Chess 2: The Sequel (Sirlin's Chess)
 - `footprint-select` ×1 — Gess
 - `stone-removal` ×1 — Go (Ґо, вейці, бадук)
 - `expansion-select` ×1 — Hive (Вулик)
+- `side-select` ×1 — Hnefatafl (Тафл, «королівська дошка»)
 - `refill-choice` ×1 — Kamisado
 - `deck-select` ×1 — Onitama
-- `player-count-select` ×1 — Quoridor (Кворидор)
-- `pack-select` ×1 — Flow Free
+- `army-draft` ×1 — The Ouroboros King
+- `pack-open` ×1 — Passant: A Chess Roguelike
+- `quantum-lab` ×1 — Quantum Chess (Квантові шахи, Cantwell)
+- `god-draft` ×1 — Santorini (Санторіні)
+- `board-size-select` ×1 — ZÈRTZ
+- `level-inspector` ×1 — Oxyd (+ Enigma)
+- `skin-select` ×1 — Downwell
+- `quiz-window` ×1 — Joshua & the Battle of Jericho
+- `wand-editor` ×1 — Noita
 - `tape-recorder` ×1 — Rocks'n'Diamonds
-- `hall-of-fame` ×1 — Supaplex
-- `save-browser` ×1 — The Powder Toy
+- `element-info` ×1 — Sandboxels
+- `mod-manager` ×1 — Sandboxels
 - `console` ×1 — The Powder Toy
+- `collectibles-shelf` ×1 — Where's My Water?
 - `level-intro` ×1 — Candy Crush Saga
 - `out-of-moves-offer` ×1 — Candy Crush Saga
+- `skill-choice` ×1 — Dungeon Raid
 - `wave-select` ×1 — Klax
-- `team-builder` ×1 — Puzzle & Dragons (PAD, Пазли і Дракони)
+- `home-screen` ×1 — Homescapes / Gardenscapes / Royal Match (мета-шар ремонту)
+- `decor-choice` ×1 — Homescapes / Gardenscapes / Royal Match (мета-шар ремонту)
+- `synthesis-window` ×1 — Meteos (Метеос)
 - `dungeon-select` ×1 — Puzzle & Dragons (PAD, Пазли і Дракони)
-- `gacha-window` ×1 — Puzzle & Dragons (PAD, Пазли і Дракони)
+- `citadel-window` ×1 — Puzzle Quest: Challenge of the Warlords
 - `retry-menu` ×1 — Puzznic
+- `partyline` ×1 — TetriNET
+- `winlist` ×1 — TetriNET
+- `build-mode` ×1 — Blocks That Matter
 - `skill-book` ×1 — BoxBoy! (ハコボーイ!)
+- `code-card-entry` ×1 — Jet Set Willy
+- `hub-room` ×1 — Krusty's Fun House
+- `level-browser` ×1 — Levelhead
+- `publish-dialog` ×1 — Levelhead
+- `bonus-game` ×1 — Mario vs. Donkey Kong
+- `move-demo` ×1 — Mario vs. Donkey Kong
+- `stage-intro` ×1 — Miner 2049er
+- `name-entry` ×1 — Miner 2049er
 - `qr-scan` ×1 — Pushmo / Pullblox (引ク押ス) + Crashmo
+- `teleport-code-entry` ×1 — Starquake
 - `course-browser` ×1 — Super Mario Maker 2
 - `part-menu` ×1 — Super Mario Maker 2
-- `upload-dialog` ×1 — Super Mario Maker 2
 - `comment-board` ×1 — Super Mario Maker 2
+- `camera-mode` ×1 — Toki Tori 2 / Toki Tori 2+
 - `tool-select` ×1 — Toki Tori
 - `rule-card` ×1 — 14 Minesweeper Variants
+- `hidden-map` ×1 — Bombe
+- `role-screen` ×1 — Captain Sonar
 - `detective-notebook` ×1 — Cluedo (Clue; «Клуедо»)
 - `suggestion-dialog` ×1 — Cluedo (Clue; «Клуедо»)
 - `disprove-dialog` ×1 — Cluedo (Clue; «Клуедо»)
 - `envelope-reveal` ×1 — Cluedo (Clue; «Клуедо»)
+- `secret-clue` ×1 — Cryptid
 - `post-game-reveal` ×1 — Kriegspiel + Dark Chess (Fog of War; «шахи наосліп із суддею» і «шахи в тумані»)
+- `combat-window` ×1 — The Fury of Dracula
+- `question-dialog` ×1 — Guess Who? (Вгадай, хто?)
 - `text-prompt` ×1 — Hunt the Wumpus («Полювання на Вампуса»)
+- `answer-window` ×1 — Inkognito
+- `realm-journal` ×1 — Keepsweeper
 - `code-setter` ×1 — Mastermind (+ Bulls and Cows, «Бики й корови»)
+- `lab-select` ×1 — Metavaxx
+- `run-map` ×1 — Minato
 - `custom-size-dialog` ×1 — Minesweeper (Сапер)
 - `record-name-dialog` ×1 — Minesweeper (Сапер)
+- `character-draft` ×1 — Mr. Jack (Містер Джек)
+- `accusation-dialog` ×1 — Mr. Jack (Містер Джек)
+- `travel-log-window` ×1 — Scotland Yard (Скотланд-Ярд)
+- `rule-guess` ×1 — Zendo
+- `rule-pick` ×1 — Zendo
+- `player-join` ×1 — Achtung, die Kurve! (Увага, поворот!)
+- `bracket-view` ×1 — Bomberman — battle mode (Super Bomberman, Super Bomberman R / R Online / R 2)
+- `ending-rank` ×1 — Crystal Castles
 - `prize-machine` ×1 — Frogger (Жабка) / Crossy Road
+- `roulette-window` ×1 — Gals Panic
+- `missions-window` ×1 — Pac-Man 256
+- `split-device` ×1 — Pac-Man: сиквели 1983–2021
+- `pinball-table` ×1 — Pac-Man spin-offs (Pac & Pal, Baby Pac-Man, Mega Tunnel Battle)
+- `rest-point` ×1 — Shadow Labyrinth
+- `level-stats` ×1 — Wolfenstein 3D
+- `episode-select` ×1 — Wolfenstein 3D
+- `scroll-window` ×1 — ZZT
+- `volume-select` ×1 — Krazydad (банк друкованих пазлів)
 - `picture-gallery` ×1 — Nonogram (Японський кросворд, Picross, Griddlers, Hanjie)
-- `game-id-dialog` ×1 — Simon Tatham's Portable Puzzle Collection
+- `genre-list` ×1 — puzz.link (pzprjs / pzprv3)
+- `network-popup` ×1 — puzz.link (pzprjs / pzprv3)
 - `file-dialog` ×1 — Simon Tatham's Portable Puzzle Collection
 - `puzzle-page` ×1 — Advent of Code — сіткові пазли (збірка)
 - `answer-form` ×1 — Advent of Code — сіткові пазли (збірка)
-- `replay-viewer` ×1 — Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
+- `code-view` ×1 — Blockly Games Maze і Code.org Classic Maze
 - `arena-ide` ×1 — Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
 - `league-ladder` ×1 — Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)
+- `chip-board-editor` ×1 — Carnage Heart
+- `hardware-design` ×1 — Carnage Heart
+- `strategy-map` ×1 — Carnage Heart
+- `battle-view` ×1 — Carnage Heart
+- `core-view` ×1 — Core War
+- `hill-table` ×1 — Core War
+- `node-editor` ×1 — Craftomation 101
+- `command-console` ×1 — Duskers
+- `ship-schematic` ×1 — Duskers
+- `galaxy-map` ×1 — Duskers
+- `zine` ×1 — EXAPUNKS
+- `entity-circuit-panel` ×1 — Factorio — circuit network
+- `ai-editor-graph` ×1 — Gladiabots
+- `team-setup` ×1 — Gladiabots
+- `ai-list` ×1 — Gladiabots
+- `boss-briefing` ×1 — Human Resource Machine
+- `puzzle-info` ×1 — Infinifactory
 - `fsm-editor` ×1 — Kara (Кара — сонечко)
 - `world-editor` ×1 — Kara (Кара — сонечко)
-- `task-list` ×1 — Kara (Кара — сонечко)
+- `waveform-view` ×1 — KOHCTPYKTOP: Engineer of the People
 - `test-results` ×1 — Manufactoria
 - `spec-window` ×1 — Manufactoria
-- `metric-histograms` ×1 — Opus Magnum
-- `journal` ×1 — Opus Magnum
+- `block-code-editor` ×1 — Mindustry — logic (mlog)
 - `program-board` ×1 — RoboRally
+- `structogram-view` ×1 — Robot Karol
 - `circuit-interior` ×1 — Robot Odyssey
 - `chip-lab` ×1 — Robot Odyssey
+- `frog-program` ×1 — Robot Turtles
 - `puzzle-submit` ×1 — RoboZZle
-- `research-tree` ×1 — The Farmer Was Replaced
+- `planet-layer` ×1 — SpaceChem
+- `lesson-page` ×1 — Swift Playgrounds (Learn to Code, Byte)
+- `spec-panel` ×1 — TIS-100
+- `manual` ×1 — TIS-100
+- `truth-table` ×1 — Turing Complete
+- `assembly-editor` ×1 — Turing Complete
+- `component-factory` ×1 — Turing Complete
 - `api-reference` ×1 — Untrusted — or the Continuing Adventures of Dr. Eval
 - `notepad` ×1 — Untrusted — or the Continuing Adventures of Dr. Eval
 - `bonus-level` ×1 — Atomix
 - `hints-window` ×1 — Ice-sliding puzzles (Inertia і жанр «ковзай до упору»)
 - `bid-reveal` ×1 — Ricochet Robots (Rasende Roboter)
 - `solutions-window` ×1 — Sokoban (Сокобан)
-- `deck-builder` ×1 — 868-HACK (+ Imbroglio, Cinco Paus — мікро-роглайки Michael Brough)
+- `quest-log` ×1 — Ancient Domains of Mystery (ADOM)
+- `talent-select` ×1 — Ancient Domains of Mystery (ADOM)
+- `store-window` ×1 — Moria / Angband
+- `home-window` ×1 — Moria / Angband
+- `knowledge-menu` ×1 — Moria / Angband
+- `birth-options` ×1 — Moria / Angband
+- `spell-entry` ×1 — The Bard's Tale / Might and Magic — сіткові dungeon crawl 80-х
+- `review-board` ×1 — The Bard's Tale / Might and Magic — сіткові dungeon crawl 80-х
+- `setup-dialog` ×1 — Beneath Apple Manor
 - `discoveries-window` ×1 — Brogue
 - `ability-deck` ×1 — Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel)
+- `paperdoll` ×1 — Castle of the Winds
+- `spellbook-window` ×1 — Castle of the Winds
+- `sage-window` ×1 — Castle of the Winds
 - `factions-window` ×1 — Caves of Qud
 - `evolution-window` ×1 — Cogmind
 - `hack-window` ×1 — Cogmind
-- `score-sheet` ×1 — Cogmind
 - `lore-window` ×1 — Cogmind
-- `kingdom-map` ×1 — Desktop Dungeons
+- `trait-select` ×1 — DoomRL / DRL → Jupiter Hell
+- `mortem` ×1 — DoomRL / DRL → Jupiter Hell
 - `event-log` ×1 — Dungeon Encounters
 - `ability-window` ×1 — Dungeon Encounters
-- `research-window` ×1 — Dungeon of the Endless
 - `pod-select` ×1 — Dungeon of the Endless
+- `skill-select` ×1 — Dungeons of Dredmor
+- `skill-tree-window` ×1 — Dungeons of Dredmor
+- `guild-roster` ×1 — Etrian Odyssey
+- `camp-menu` ×1 — Eye of the Beholder
+- `spell-book` ×1 — Eye of the Beholder
+- `morgue` ×1 — Golden Krone Hotel
+- `weekly-window` ×1 — Golden Krone Hotel
+- `tower-list` ×1 — H5mota (H5魔塔广场) — спільнота веб-веж
+- `event-editor` ×1 — H5mota (H5魔塔广场) — спільнота веб-веж
+- `look-mode` ×1 — Harmless7DRL
 - `quest-status` ×1 — HyperRogue
 - `geometry-select` ×1 — HyperRogue
 - `model-select` ×1 — HyperRogue
-- `character-sheet` ×1 — Legend of Grimrock
-- `floor-select` ×1 — Tower of the Sorcerer / Magic Tower (魔塔)
+- `petition-window` ×1 — Labyrinth of Refrain: Coven of Dusk
+- `puppet-create` ×1 — Labyrinth of Refrain: Coven of Dusk
+- `college-window` ×1 — Larn
+- `bank-window` ×1 — Larn
+- `tax-office` ×1 — Larn
 - `save-slots` ×1 — Tower of the Sorcerer / Magic Tower (魔塔)
-- `storage-window` ×1 — Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon)
 - `job-board` ×1 — Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon)
 - `rescue-password` ×1 — Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon)
 - `discoveries` ×1 — NetHack
-- `perk-select` ×1 — 'One Way Heroics (Mystery Chronicle: One Way Heroics)'
+- `questionnaire` ×1 — Omega
+- `guild-window` ×1 — Omega
 - `vault-window` ×1 — 'One Way Heroics (Mystery Chronicle: One Way Heroics)'
 - `world-name-input` ×1 — 'One Way Heroics (Mystery Chronicle: One Way Heroics)'
+- `route-choice` ×1 — Path of Achra
 - `hero-info` ×1 — Shattered Pixel Dungeon (і Pixel Dungeon)
 - `talent-window` ×1 — Shattered Pixel Dungeon (і Pixel Dungeon)
 - `challenges-window` ×1 — Shattered Pixel Dungeon (і Pixel Dungeon)
 - `spellbook-shop` ×1 — Rift Wizard
 - `realm-preview` ×1 — Rift Wizard
 - `unit-inspect` ×1 — Rift Wizard
+- `exit-choice` ×1 — Ring of Pain
+- `smithing-window` ×1 — Sil
+- `talents-window` ×1 — Tales of Maj'Eyal
+- `levelup-window` ×1 — Tales of Maj'Eyal
+- `eidolon-plane` ×1 — Tales of Maj'Eyal
+- `corral-window` ×1 — Tangledeep
+- `modifier-select` ×1 — Tangledeep
 - `co-select` ×1 — Advance Wars
 - `intel` ×1 — Advance Wars
-- `production` ×1 — Advance Wars
 - `battle-maps-shop` ×1 — Advance Wars
 - `arena` ×1 — Archon: The Light and the Dark
 - `spell-menu` ×1 — Archon: The Light and the Dark
+- `placement-match` ×1 — Auro: A Monster-Bumping Adventure
+- `caravan-travel` ×1 — The Banner Saga
+- `decision-dialog` ×1 — The Banner Saga
+- `hero-roster` ×1 — The Banner Saga
+- `company-roster` ×1 — Battle Brothers
+- `contract-window` ×1 — Battle Brothers
 - `attack-dialog` ×1 — The Battle for Wesnoth (Битва за Веснот)
-- `recruit-window` ×1 — The Battle for Wesnoth (Битва за Веснот)
 - `unit-window` ×1 — The Battle for Wesnoth (Битва за Веснот)
 - `status-table` ×1 — The Battle for Wesnoth (Битва за Веснот)
-- `deployment` ×1 — Blood Bowl
+- `unit-stats` ×1 — Battle Isle
+- `combat-cutscene` ×1 — Battle Isle
+- `mech-lab` ×1 — BattleTech
+- `contract-negotiation` ×1 — BattleTech
+- `salvage-select` ×1 — BattleTech
+- `starmap` ×1 — BattleTech
+- `haunt-reveal` ×1 — Betrayal at House on the Hill
+- `secret-goals` ×1 — Betrayal at House on the Hill
 - `team-roster` ×1 — Blood Bowl
 - `kickoff-event` ×1 — Blood Bowl
 - `reroll-prompt` ×1 — Blood Bowl
+- `equip-window` ×1 — Card Hunter
+- `loot-window` ×1 — Card Hunter
 - `spell-select` ×1 — Chaos: The Battle of Wizards (+ Chaos Reborn)
+- `deck-editor` ×1 — Children of Zodiarcs
+- `dice-forge` ×1 — Children of Zodiarcs
+- `city-screen` ×1 — Civilization (бойовий шар юнітів, I–VI)
+- `quest-guide` ×1 — Descent: Journeys in the Dark
+- `campaign-sheet` ×1 — Descent: Journeys in the Dark
 - `item-world` ×1 — Disgaea: Hour of Darkness
 - `dark-assembly` ×1 — Disgaea: Hour of Darkness
-- `formation` ×1 — Final Fantasy Tactics
-- `job-window` ×1 — Final Fantasy Tactics
-- `battle-animation` ×1 — Fire Emblem (GBA, The Blazing Blade як база)
+- `dm-screen` ×1 — D&D grid combat (Dungeons & Dragons 5e)
+- `mulligan-screen` ×1 — Duelyst
+- `pandora-draft` ×1 — Faeria
+- `called-shot` ×1 — Fallout 1–2 (покроковий бій)
+- `pipboy` ×1 — Fallout 1–2 (покроковий бій)
+- `appearance-editor` ×1 — Fell Seal: Arbiter's Mark
+- `difficulty-custom` ×1 — Fell Seal: Arbiter's Mark
+- `card-reward` ×1 — Fights in Tight Spaces
+- `deck-view` ×1 — Fights in Tight Spaces
+- `law-window` ×1 — Final Fantasy Tactics Advance
+- `map-placement` ×1 — Final Fantasy Tactics Advance
 - `unit-status` ×1 — Fire Emblem (GBA, The Blazing Blade як база)
+- `setup-window` ×1 — Front Mission
+- `town-menu` ×1 — Front Mission
+- `arena-window` ×1 — Front Mission
+- `card-select` ×1 — Gloomhaven
+- `town-screen` ×1 — Gloomhaven
+- `road-event` ×1 — Gloomhaven
+- `enhancement-window` ×1 — Gloomhaven
+- `party-sheet` ×1 — Gloomhaven
+- `card-board` ×1 — Hard West
+- `event-panel` ×1 — Hard West
 - `quest-briefing` ×1 — HeroQuest + Space Hulk (настільні данжен-кроулери на сітці)
+- `army-builder` ×1 — Heroscape
+- `map-builder` ×1 — Heroscape
 - `altar-choice` ×1 — Hoplite
+- `journey-map` ×1 — Inkulinati
 - `island-map` ×1 — Into the Breach
 - `pilot-levelup` ×1 — Into the Breach
 - `timeline-lost` ×1 — Into the Breach
+- `mainframe-view` ×1 — Invisible, Inc.
+- `agency-screen` ×1 — Invisible, Inc.
+- `destination-map` ×1 — Invisible, Inc.
+- `laptop` ×1 — Jagged Alliance 2
+- `merc-hire` ×1 — Jagged Alliance 2
+- `sector-map` ×1 — Jagged Alliance 2
+- `imp-test` ×1 — Jagged Alliance 2
+- `settlement-screen` ×1 — Kingdom Death: Monster
+- `gear-grid` ×1 — Kingdom Death: Monster
+- `timeline-window` ×1 — Kingdom Death: Monster
+- `hunt-board` ×1 — Kingdom Death: Monster
+- `rage-box` ×1 — King's Bounty: The Legend (King's Bounty. Легенда о рыцаре)
+- `army-window` ×1 — King's Bounty: The Legend (King's Bounty. Легенда о рыцаре)
+- `hire-screen` ×1 — Langrisser
+- `loadout-shop` ×1 — Rebelstar / Laser Squad
+- `offer-row` ×1 — Mage Knight Board Game
+- `tactic-select` ×1 — Mage Knight Board Game
+- `loadout` ×1 — Mario + Rabbids Kingdom Battle
+- `chapter-result` ×1 — Mario + Rabbids Kingdom Battle
+- `mech-builder` ×1 — Mech Armada
+- `scenario-briefing` ×1 — Memoir '44 / Commands & Colors
+- `house-screen` ×1 — Mewgenics
+- `breeding-window` ×1 — Mewgenics
+- `ark-hub` ×1 — Mutant Year Zero: Road to Eden
+- `command-box` ×1 — Nectaris (Military Madness)
+- `battle-scene` ×1 — Nectaris (Military Madness)
+- `scenario-editor` ×1 — Ogre
+- `inner-dream` ×1 — Othercide
+- `remembrance-select` ×1 — Othercide
+- `campaign-briefing` ×1 — Panzer General
+- `victory-tier` ×1 — Panzer General
+- `first-person-aim` ×1 — Phoenix Point
+- `geoscape` ×1 — Phoenix Point
+- `mutation-lab` ×1 — Phoenix Point
 - `tribe-select` ×1 — The Battle of Polytopia
 - `game-setup` ×1 — The Battle of Polytopia
 - `city-levelup` ×1 — The Battle of Polytopia
+- `church` ×1 — Shining Force
+- `battle-options` ×1 — Shining Force
+- `base-screen` ×1 — Silent Storm
+- `mission-briefing` ×1 — Space Crusade
+- `loadout-window` ×1 — Space Crusade
+- `space-bar` ×1 — SteamWorld Heist
+- `battle-generator` ×1 — Steel Panthers
+- `bombardment` ×1 — Steel Panthers
+- `spirit-menu` ×1 — Super Robot Wars
+- `intermission-menu` ×1 — Super Robot Wars
+- `breach-banter` ×1 — Tactical Breach Wizards
+- `outfit-select` ×1 — Tactical Breach Wizards
+- `warren-report` ×1 — Tactics Ogre
+- `chariot-timeline` ×1 — Tactics Ogre
+- `formation-screen` ×1 — Tactics Ogre
+- `omen-select` ×1 — The Last Spell
+- `night-report` ×1 — The Last Spell
+- `meta-tree` ×1 — The Last Spell
+- `vote-window` ×1 — Triangle Strategy
+- `exploration-screen` ×1 — Triangle Strategy
+- `objective-view` ×1 — Unity of Command: Stalingrad Campaign
+- `force-pool` ×1 — Unity of Command: Stalingrad Campaign
+- `promotion-window` ×1 — Vandal Hearts
+- `commander-select` ×1 — Wargroove
+- `arcade-ladder` ×1 — Wargroove
+- `noctis-map` ×1 — Warhammer 40,000: Mechanicus
+- `ark-ship` ×1 — Warhammer 40,000: Mechanicus
+- `canticle-select` ×1 — Warhammer 40,000: Mechanicus
+- `mortal-choice` ×1 — Wildermyth
+- `comic-panel` ×1 — Wildermyth
+- `legacy-window` ×1 — Wildermyth
+- `breach-planner` ×1 — XCOM: Chimera Squad
+- `city-map` ×1 — XCOM: Chimera Squad
+- `hq-screen` ×1 — XCOM: Chimera Squad
 - `shot-panel` ×1 — XCOM: Enemy Unknown / XCOM 2
 - `base-management` ×1 — XCOM: Enemy Unknown / XCOM 2
 - `exhibit-card` ×1 — A Monster's Expedition
+- `recipe-panel` ×1 — Bean and Nothingness
+- `hint-stage` ×1 — Can of Wormholes
 - `hold-select` ×1 — Deadly Rooms of Death (DROD: King Dugan's Dungeon)
+- `rules-tab` ×1 — Islands of Insight
 - `fact-card` ×1 — Sokobond
 - `brand-input` ×1 — Void Stranger
+- `tactical-map` ×1 — Anomaly: Warzone Earth
 - `squad-window` ×1 — Arknights
 - `base-window` ×1 — Arknights
+- `trade-window` ×1 — Castle Panic
+- `chest-window` ×1 — Clash Royale
+- `clan-window` ×1 — Clash Royale
 - `query-panel` ×1 — Dungeon Keeper
-- `skill-tree` ×1 — GemCraft
-- `deck-window` ×1 — Inscryption (Act 1)
+- `rune-select` ×1 — Dungeon Warfare
+- `ruler-select` ×1 — Merge Tactics (Clash Royale)
+- `forge-window` ×1 — Monster Train
+- `weaver-window` ×1 — Orcs Must Die!
 - `garden-window` ×1 — Plants vs. Zombies (Рослини проти зомбі)
 - `castle-select` ×1 — Rampart
-- `town-window` ×1 — Wildfrost
+- `unlock-tree` ×1 — Rogue Tower
+- `survival-setup` ×1 — They Are Billions
+- `card-buy` ×1 — Bingo / Keno / Lotto (Бінго, Лото)
+- `treasure-select` ×1 — Bookworm Adventures
+- `role-select` ×1 — Codenames
+- `print-view` ×1 — Codeword
 - `played-words` ×1 — Letterpress
+- `reward-choice` ×1 — Paperback Adventures
 - `tile-bag-window` ×1 — Scrabble (цифрові версії; Words With Friends)
 
 ## Тексти секцій «Пропозиції до словників»
@@ -2145,6 +7016,13 @@
 - `+window:perk-select` · `+window:vault-window` · `+window:world-name-input` · `+window:character-select` (⏳).
 - `+feature:seed-input` (⏳), `+feature:meta-progression`, `+feature:permadeath`, `+feature:mode-daily`.
 - `+axis:camera=forced-scroll` — камера не слідує за героєм, а тисне на нього (нова вісь: `follow | static | forced-scroll`).
+
+### 10000000 · `games/falling-match/10000000.md`
+
+- `+card:match-drives-avatar` — пазл-поле як пульт персонажа (10000000, YMBAB, Puzzle & Dragons-подібні).
+- `+effect:scroll(n)` — світ/коридор зсувається на N кроків незалежно від гравця.
+- `+ui:runner-lane` — смуга з аватаром і ворогами над полем збігів.
+- `+axis:fields` — `single` · `linked` (кілька повʼязаних полів: пазл + світ).
 
 ### 14 Minesweeper Variants · `games/hidden-deduction/14-minesweeper-variants.md`
 
@@ -2163,6 +7041,29 @@
 - `+ui:next-tile-preview` — превʼю наступної плитки (Threes); `+ui:popup-text` — «+N» над рахунком.
 - `+feature:keep-playing` — продовжити після перемоги.
 - `+axis:control` — `swipe-all` (одна дія рухає все поле); `+axis:undo` — `none` в оригіналі, `limited` у клонах.
+
+### 3D Monster Maze · `games/maze-arcade/3d-monster-maze.md`
+
+- `+effect:render_view` — перемалювати вид від першої особи (тут — після кожного кроку/повороту).
+- `+trigger:player_moved` — перший/будь-який рух гравця (пробудження Рекса); зараз — через `input(any)` + `first_time`.
+- `+ui:threat-text` — рядок рівня тривоги ворога.
+- `+axis:view=first-person` — нова вісь «вид»: згори / перша особа / ізометрія (поле лишається `square`).
+- `+card:first-person-view`, `+card:threat-status-text` — див. вище.
+
+### 5D Chess with Multiverse Time Travel · `games/chess-abstract/5d-chess.md`
+
+- `+trigger:submit` — гравець підтвердив хід із кількох дій (5D, також програмовані/wego-ігри).
+- `+cond:playable(board)` — дошка остання в лінії й на ній хід сторони.
+- `+cond:attacked(cell, by)` — клітина під боєм (тут — через осі часу й ліній); підтверджую з chess.md.
+- `+effect:branch_timeline(board)` — створити нову лінію часу від минулої дошки.
+- `+effect:new_board` — хід породжує наступний знімок дошки замість зміни поточного.
+- `+role:board` — дошка як сутність поля (знімок; кілька на екрані: 5D, Alice, Bughouse).
+- `+ui:present-line` · `+ui:timeline-arrow` · `+ui:board-outline` (грабельна/минула) · `+ui:submit-button` · `+ui:move-arrows` (стрілки подорожей фігур між дошками).
+- `+window:variant-select` — підтверджую (chess-rule-twists, lichess-variants).
+- `+feature:submit-turn` — хід підтверджується окремо, до того — вільний undo.
+- `+axis:field` — значення `multiverse` (сітка дошок: хід × лінія); зараз — `layers` як найближче.
+- `+axis:turn-structure` — значення `present-line` (хід триває, доки не зсунеться теперішнє).
+- `+card:timeline-branching` · `+card:multi-board-turn` · `+card:multi-axis-moves` — див. «Мапа на каталог».
 
 ### 7 Billion Humans · `games/program-robots/7-billion-humans.md`
 
@@ -2207,6 +7108,18 @@
 - `+window:map-window` — хаб як ходильний світ; `+feature:undo`, `+feature:world-map`.
 - `+axis:undo` — `unlimited` по одному ходу + reset кімнати.
 
+### A Little to the Left · `games/build-sim/a-little-to-the-left.md`
+
+- `+trigger:arrangement` — розклад речей змінився й набув одного з прийнятних станів (точніше за `all_constraints_met` для кількох розвʼязків).
+- `+cond:sorted_by` — набір посортовано за ключем (розмір, колір, кількість).
+- `+cond:aligned` — речі на одній лінії з допуском.
+- `+cond:allowed_spot` — річ у дозволеній зоні (також Unpacking).
+- `+effect:sweep` — подія розкидає/зсуває речі (кіт).
+- `+ui:star-slots` — слоти зірок по кількості розвʼязків; `+ui:hint-eraser` — стирання маски підказки.
+- `+window:hint-page` — сторінка з візуальною підказкою.
+- `+feature:let-it-be` — пропуск без ліміту й штрафу; `+feature:solution-stars` — пошук альтернативних розвʼязків.
+- `+card:hidden-order-rule`, `+card:multi-solution-stars` — див. «Мапа на каталог».
+
 ### A Monster's Expedition · `games/thinky/a-monsters-expedition.md`
 
 - `+effect:roll` — обʼєкт котиться до упору, лишаючи орієнтацію (колода, сніжка); `+effect:tip` — обʼєкт перекидається торцем через себе, змінюючи кількість зайнятих клітин.
@@ -2227,6 +7140,39 @@
 - `+axis:field-bounds` — край поля як смертельна зона, а не стіна.
 - `+card:group-move`, `+card:majority-push`, `+card:push-off-capture`, `+card:capture-count-win` — див. «Мапа на каталог».
 
+### Absurdle · `games/word-number/absurdle.md`
+
+- `+cond:consistent_with_hints` — спроба не суперечить відкритим підказкам (hard mode; Wordle, Absurdle, Nerdle).
+- `+effect:prune_candidates` — звузити приховану множину станів до обраної підмножини (Absurdle, адверсарний Kaboom).
+- `+ui:on-screen-keyboard` — екранна клавіатура зі станами літер.
+- `+ui:random-guess-button` — вписати випадкову допустиму спробу.
+- `+feature:hard-mode` — опційне посилення правил спроби.
+- `+feature:mode-challenge` — режим з заданою ціллю, яку треба нав'язати системі.
+- `+feature:expanded-dictionary` — розширений словник як налаштування складності.
+
+### Achtung, die Kurve! (Увага, поворот!) · `games/maze-arcade/achtung-die-kurve.md`
+
+- `+effect:leave_trail` — підтверджую (Tron, Blockade, Xonix).
+- `+effect:gap` — тимчасово не лишати слід (дірка).
+- `+trigger:player_out` — гравець вибув з раунду (для «очко всім живим»); `died` не розрізняє раунд і партію.
+- `+cond:alive` — сутність/гравець ще в раунді.
+- `+window:player-join` — екран входу гравців натисканням своєї клавіші.
+- `+ui:player-scoreboard` — таблиця очок усіх гравців поруч із полем.
+- `+feature:target-score` — довжина партії як функція кількості гравців.
+- `+card:trail-gaps`, `+card:free-angle-steering`, `+card:turn-radius-limit`, `+card:survival-points`, `+card:shared-keyboard-multiplayer`.
+- `+axis:control:direct-relative` — нове значення осі `control`: дві клавіші, ліво/право від поточного напряму.
+
+### Acquire · `games/board-digital/acquire.md`
+
+- `+trigger:groups_joined(a, b)` — дві групи зʼєдналися тайлом (Acquire; Go — злиття груп).
+- `+cond:size(group, op, n)` — розмір звʼязної групи (Acquire, Kingdomino) · `+cond:safe(chain)` — група понад поріг незнищенна.
+- `+effect:found(chain)` — заснувати іменовану групу · `+effect:buy` · `+effect:sell` · `+effect:trade(k → 1)` · `+effect:payout(bonus)` — виплата бонусів за таблицею.
+- `+role:share` — акція (частка в групі) · `+role:chain` — іменована група-власник (окремо від `zone`, бо має маркер, ціну й акціонерів).
+- `+ui:stock-table` — таблиця акцій/цін по мережах · `+ui:price-card` — довідник цін і бонусів · `+ui:holdings-panel` — портфель гравця.
+- `+window:merger-dialog` — розподіл поглинених акцій · `+window:stock-buy` — купівля з лімітом.
+- `+card:union-merge` · `+card:merger-resolution` · `+card:majority-bonus` · `+card:size-price-table`.
+- `+feature:public-holdings-toggle` — відкриті/таємні пакети акцій.
+
 ### Advance Wars · `games/tactics/advance-wars.md`
 
 - `+trigger:phase_start` — початок дня армії (дохід, ремонт, пальне) — уточнення ⏳ `turn_start(side)`.
@@ -2235,6 +7181,12 @@
 - `+role:property` — будівля з власником, що дає дохід/ремонт/виробництво (між `static` і `spawner`).
 - `+ui:funds` — гроші армії; `+ui:co-power-meter` — шкала сили командира; `+ui:terrain-stars` — захист клітини зірками.
 - `+window:co-select` — вибір командира; `+window:intel` — статус армій; `+window:production` — купівля юнітів; `+window:battle-maps-shop` — магазин відкриттів.
+
+### Advent of Code 2016, день 22: Grid Computing · `games/program-robots/aoc-2016-grid-computing.md`
+
+- `+cond:fits_capacity(a, b)` — вміст A вміщається у вільне місце B.
+- `+effect:move_all(a → b)` — перенести весь вміст (не обʼєкт) у сусіда.
+- `+feature:personal-input`, `+feature:two-part-reveal` — підтвердження з advent-of-code-grids.
 
 ### Advent of Code — сіткові пазли (збірка) · `games/program-robots/advent-of-code-grids.md`
 
@@ -2245,6 +7197,16 @@
 - `+window:puzzle-page`, `+window:answer-form`; `+ui:star-calendar`.
 - `+feature:personal-input`, `+feature:two-part-reveal`, `+feature:private-leaderboard`.
 - `+axis:control` = `programmed` (гравець пише симулятор); `+axis:session` = `daily`.
+
+### Adventure (Atari 2600) · `games/maze-arcade/atari-adventure.md`
+
+- `+trigger:room_exit` — герой вийшов за край кімнати-екрана (Adventure, Berzerk, Venture).
+- `+effect:drop` — кинути несений предмет у клітині / кімнаті.
+- `+cond:carrying` — що саме зараз несе (для «інвентаря на 1»), точніше за `has`.
+- `+role:guardian` — ворог, привʼязаний до свого предмета.
+- `+effect:swallow` — ворог ковтає героя (стан «проковтнутий» до Reset).
+- `+feature:skill-levels` — рівні гри як різні мапи/набори ворогів (Atari 2600).
+- `carry` уже ⏳ у `effects.md` — вживаю без пропозиції.
 
 ### Adventures of Lolo (Eggerland) · `games/push-slide/adventures-of-lolo.md`
 
@@ -2259,6 +7221,38 @@
 - `+feature:give-up-restart` — рестарт кімнати ціною життя як заміна undo.
 - `+axis:grid-resolution` — логічна сітка клітин vs крок руху пів клітини.
 
+### Against the Storm · `games/build-sim/against-the-storm.md`
+
+- `+trigger:season_start` — почався сезон (Drizzle/Clearance/Storm; Timberborn — посуха).
+- `+cond:walk_cost` — вартість кроку по клітині порівняно з N.
+- `+effect:reveal_region` — відкрити цілу приховану область (галявину), а не клітини.
+- `+ui:dual-bar` — дві протилежні смуги перегонів.
+- Уже є у словниках (лише вживання): `upgrade-window` (cornerstone), `map-window` (світова мапа), `meta-progression`, вісь `session` = `run`.
+- `+card:forest-clearing`, `+card:hidden-glades`, `+card:threat-meter`, `+card:race-two-bars`, `+card:walk-cost-terrain` — див. вище.
+
+### Age of War / Stick War · `games/tower-lanes/age-of-war-stick-war.md`
+
+- `+trigger:produced` · `+effect:produce` — черга виробництва (як у Swords & Soldiers).
+- `+effect:evolve_age` — перехід у наступну епоху з заміною набору сутностей.
+- `+effect:set_formation` — задати поведінку всім юнітам сторони.
+- `+effect:possess` — передати юніта під пряме керування гравця.
+- `+ui:build-bar` · `+ui:xp-bar` · `+ui:special-meter`.
+- `+axis:control=possess` — гравець керує одним юнітом з армії на вибір.
+- `+feature:formation-commands`.
+
+### Agricola — сітка ферми (Агрікола) · `games/board-digital/agricola-farm-grid.md`
+
+- `+trigger:harvest` — подія за розкладом раундів (урожай, годування, приплід); родич `schedule`.
+- `+cond:enclosed(region)` — область повністю обведена межами.
+- `+cond:capacity(region, op, n)` — вміст області порівняно з її ємністю.
+- `+cond:orth_adjacent(cell, kind)` — клітина ортогонально сусідить з типом (точніше за `adjacent_count`, що допускає 8-сусідство).
+- `+effect:build_fence(edge)` — покласти межу на ребро між клітинами.
+- `+effect:breed(kind)` · `+effect:feed(n)` · `+effect:renovate(material)`.
+- `+role:pasture` · `+role:fence` — область і ребро-межа як сутності.
+- `+ui:capacity-badge` · `+ui:fence-counter`.
+- `+window:farm-rearrange` · `+window:harvest-summary`.
+- `+card:fence-enclosure` · `+card:pasture-capacity` · `+card:unused-cell-penalty`.
+
 ### Akropolis (Акрополіс) · `games/board-digital/akropolis.md`
 
 - `+trigger:round_end` · `+trigger:placed` — як у Kingdomino/Carcassonne; тут накриття каменоломень.
@@ -2270,6 +7264,34 @@
 - `+window:match-setup` · `+feature:custom-rules` (варіанти районів).
 - `+axis:turn-structure` = `round-robin`; `+axis:field=hex+layers` — значення осі для «гекс зі стосами» (одна вісь не вміщує обидва).
 
+### Alchemy (PopCap) · `games/falling-match/alchemy-popcap.md`
+
+- `+effect:discard(a)` — скинути поточну фігуру замість ходу.
+- `+cond:neighbors_match(cell, a, props)` — кожен зайнятий сусід збігається з A хоча б за однією ознакою.
+- `+trigger:all_painted(kind)` — усі клітини поля мають стан/колір (золото).
+- `+ui:forge-meter` — шкала скидань поспіль.
+
+### Alhambra (Альгамбра) · `games/board-digital/alhambra.md`
+
+- `+cond:afford` — уже в сімʼї (9 разів), тут з валютою слоту.
+- `+cond:exact_pay` — оплата точно дорівнює ціні.
+- `+cond:no_holes` — розміщення не створює замкнених порожніх клітин.
+- `+cond:edge_match` — краї сусідніх плиток сумісні (тут — стіна/без стіни).
+- `+trigger:scoring_card` — з колоди вийшла картка підрахунку.
+- `+effect:buy` — купити компонент з ринку за валюту.
+- `+effect:to_reserve` — відкласти компонент у резерв поза полем.
+- `+ui:currency-market` · `+ui:building-market` · `+ui:reserve-board` · `+ui:majority-table`.
+- `+window:scoring-round` — проміжний підрахунок посеред гри.
+- `+card:exact-payment-bonus` · `+card:no-enclosed-holes` · `+card:scoring-card-in-deck` · `+card:dummy-player`.
+
+### Alphabear · `games/word-number/alphabear.md`
+
+- `+cond:rectangle_full` — набір клітин утворює повний прямокутник (ріст ведмедя).
+- `+effect:decay` — лічильник сутності спадає щоходу (є в index/proposals — Block'hood, Screeps).
+- `+ui:tile-countdown` — число-лічильник на плитці з кольором тривоги.
+- `+window:collection-window` — колекція зібраних сутностей з рівнями.
+- `+feature:energy-regen` — енергія на партію, що відновлюється з часом; `+feature:booster-loadout` — слоти підсилювачів перед рівнем; `+feature:prestige` — повторне проходження кампанії з бонусами.
+
 ### Amidar · `games/maze-arcade/amidar.md`
 
 - `+trigger:region_closed` (вже Xonix) — прямокутник замкнено фарбою.
@@ -2280,6 +7302,103 @@
 - `+window:bonus-round` (вже Pipe Mania) — Amidakuji між рівнями.
 - `+feature:operator-settings` (🔥) — пороги життів.
 - `+card:amidakuji-walker`, `+card:path-replay-chaser` — див. вище.
+
+### Ancient Domains of Mystery (ADOM) · `games/roguelike/adom.md`
+
+- `+trigger:corruption_threshold` — лічильник корупції перейшов черговий поріг.
+- `+effect:mutate` — додати герою випадкову мутацію з таблиці.
+- `+effect:shift_alignment(dir, n)` — зсув мировоззрення (lawful / chaotic) на N.
+- `+cond:alignment(op, x)` — мировоззрення героя (видача квестів, реакція богів).
+- `+cond:carried(item)` — предмет просто в інвентарі (не вдягнутий) — ширше за `has`, бо діє пасивно щотіку.
+- `+role:quest-giver` — NPC, що видає й приймає квест.
+- `+role:herb` — рослина-обʼєкт, що росте сама.
+- `+window:overworld-map`, `+window:quest-log`, `+window:talent-select` (памʼять монстрів — це `codex-window`).
+- `+ui:corruption-list` — список отриманих мутацій.
+- `+feature:multiple-endings`.
+- `+card:corruption-clock`, `+card:overworld-travel`, `+card:herb-life-growth`.
+
+### Animal Crossing — New Horizons (схрещування квітів) · `games/build-sim/acnh-flowers.md`
+
+- `+effect:inherit` — дитина отримує властивості від двох батьків за правилом (гени); зараз — `custom` у правилі.
+- `+trigger:day_start` — тік «ранок нового дня» (тут замінено на `timer(day)`).
+- `+cond:visitors_watered` — скільки різних гравців полили сутність (таблиця шансу).
+- `+card:mendel-genes`, `+card:hidden-genotype`, `+card:breed-adjacent`, `+card:clone-isolated` — див. вище.
+- `+feature:visitor-boost` — чужі гравці підсилюють твою механіку (полив).
+
+### Anno 1800 — дальність сервісів по дорогах · `games/build-sim/anno-1800-service-roads.md`
+
+- `+cond:road_distance(a, b, op, n)` — найкоротша відстань по дорогах між A і B порівняно з N (Anno; варіант `path_exists` з довжиною).
+- `+ui:range-overlay` — підсвітка зони дії вибраної будівлі (зелені дороги, коло).
+- `+axis:range-metric` — euclid / manhattan / chebyshev / graph: як гра міряє «поруч».
+- `+feature:blueprint-mode` — планувати силуетами без витрат, будувати пізніше.
+- `+card:road-distance-range`, `+card:road-connection-required`, `+card:road-tier`, `+card:warehouse-range` — див. вище.
+
+### Anomaly: Warzone Earth · `games/tower-lanes/anomaly-warzone-earth.md`
+
+- `+trigger:junction` — сутність досягла вузла графа доріг (перехрестя) — тут вирішується поворот.
+- `+cond:target_priority` — ціль обирається за пріоритетом типів (приманка > юніти > аватар).
+- `+effect:set_route` — задати маршрут як послідовність вузлів графа.
+- `+effect:reorder` — змінити позицію сутності в колоні/черзі.
+- `+effect:revive` — повернути знищену сутність (Energizer).
+- `+effect:drain_shield` — зняти щит без шкоди HP.
+- `+effect:sell` — продати свою сутність з поверненням (повтор із dungeon-warfare).
+- `+role:convoy-unit` — юніт гравця, що рухається маршрутом без прямого керування; `+role:commander` — аватар підтримки поряд із юнітами.
+- `+ui:route-line` — лінія запланованого маршруту на карті; `+ui:ability-gauge` — шкала накопичення здібності; `+ui:convoy-panel` — склад колони з купівлею/апгрейдом/порядком.
+- `+window:tactical-map` — тактична карта, на якій планують маршрут (не просто `map-window` для огляду).
+- `+axis:control` — `indirect` (маршрут) + `direct` (Commander) в одній грі.
+- `+card:route-planning`, `+card:convoy-order`, `+card:support-abilities`, `+card:target-priority` — див. «Мапа на каталог».
+
+### Anteater (Мурахоїд) · `games/maze-arcade/anteater.md`
+
+- `+effect:retract` — змотати тіло-шлях до точки кріплення (є в іншій грі корпусу; підтверджую).
+- `+trigger:night_start` — настала ніч / фаза доби змінилась.
+- `+cond:from_behind` — A торкається B з боку, протилежного напрямку руху B.
+- `+role:tether` — тіло-шлях, прив'язане до бази (язик, труба, мотузка).
+- `+card:anchored-tether-body`, `+card:tip-only-attack`, `+card:day-night-hazard`, `+card:product-bonus` — див. «Мапу на каталог».
+
+### Apocalypse (Апокаліпсис, одночасні шахи коней і пішаків) · `games/chess-abstract/apocalypse.md`
+
+- `+trigger:submit` — підтверджую (5d-chess): гравець зафіксував хід.
+- `+trigger:move_reveal` — одночасне відкриття прихованих ходів обох сторін.
+- `+cond:same_target` — два ходи ведуть в одну клітину.
+- `+effect:forfeit` — підтверджую: поразка за порушення (штрафи).
+- `+ui:submit-button` — підтверджую; `+ui:penalty-counter` — штрафні очки гравця.
+- `+window:move-reveal` — екран відкриття обох ходів з поясненням.
+- `+feature:submit-turn` — підтверджую.
+- `+card:simultaneous-resolution`, `+card:penalty-points`, `+card:promotion-cap-redeploy` — див. «Мапа на каталог».
+
+### Aquarium (Акваріум) · `games/pencil-logic/aquarium.md`
+
+- `+cond:water_level` — у тілі рідини/резервуарі нема порожньої клітинки на рівні поверхні або нижче.
+- `+effect:flood_to_level` — залити область до висоти, вище — позначити повітрям.
+- `+feature:auto-flood` — допоміжна заливка рівнем.
+- `+card:water-level-check`, `+card:auto-flood-fill` — див. мапу.
+
+### Araf (相ダ部屋, Aidabeya) · `games/pencil-logic/araf.md`
+
+- `+cond:region_size` — повтор з Fillomino/Shikaku.
+- `+cond:clues_in(region, n)` — в області рівно n підказок.
+- `+cond:size_between` — площа строго між двома числами області.
+- `+card:two-clues-per-region`, `+card:wildcard-clue` — див. мапу.
+
+### Arboretum (Дендропарк) · `games/board-digital/arboretum.md`
+
+- `+trigger:deck_empty` — колода вичерпана (Arboretum; у сімʼї вже 1 раз).
+- `+cond:ascending(path)` — значення вздовж шляху строго зростають.
+- `+cond:hand_majority(p, kind)` — у гравця найбільша сума виду в руці.
+- `+effect:draw_card(source)` — узяти карту з колоди/скиду (`draw` у коді зайняте нічиєю).
+- `+effect:discard` — скинути карту на свій скид.
+- `+ui:discard-piles` — верхні карти скидів усіх гравців.
+- `+ui:path-highlight` — підсвітка шляхів, у які входить карта.
+- `+window:species-reveal` — покрокове відкриття рук за видами з визначенням права.
+- `+card:ascending-path-scoring` · `+card:hand-majority-right-to-score` · `+card:low-cancels-high`.
+
+### Archaica: The Path of Light · `games/connect-rotate/archaica-the-path-of-light.md`
+
+- `+trigger:beam_hit(a)` — промінь влучив у кристал/сенсор (Deflektor, Chromatron, SOLAS 128).
+- `+effect:emit_beam`, `+effect:reflect`, `+effect:split_beam`, `+effect:recolor_beam` — трасування, відбиття, розщеплення, зміна кольору.
+- `+ui:hint-plinth` — підказка-зона з N підсвіченими клітинами.
+- `+feature:hint-from-collectibles` — підказки купуються збиранням на рівні.
 
 ### Archon: The Light and the Dark · `games/tactics/archon.md`
 
@@ -2306,6 +7425,14 @@
 - `+axis:turn-structure` — нове значення `step-budget` (хід = N кроків між фігурами).
 - `+axis:win-condition` — значення `race` + `elimination(kind)` + `immobilize`.
 
+### Ark Nova · `games/board-digital/ark-nova.md`
+
+- `+trigger:covered` — будівля накрила клітину з іконкою (також Bärenpark).
+- `+cond:touches(a, b|border)` — фігура має спільне ребро з іншою / з межею поля.
+- `+cond:distance(a, kind, op, n)` — відстань до найближчої сутності виду.
+- `+ui:action-card-row` — ряд карт дій зі слотами сили; `+ui:appeal-conservation-track` — два зустрічні треки.
+- `+card:…` — 6 карток вище.
+
 ### Arknights · `games/tower-lanes/arknights.md`
 
 - `+trigger:blocked_by` — ворог зупинений блокувальником; `+trigger:sp_full` — навичка заряджена.
@@ -2316,6 +7443,35 @@
 - `+window:loadout-select` — підтвердження (загін); `+window:squad-window` — прокачка юнітів; `+window:base-window` — база-інкремент.
 - `+feature:auto-deploy`, `+feature:gacha`, `+feature:stamina`.
 - `+axis:control` — `indirect`: гравець лише ставить і активує, юніти діють самі.
+
+### Armagetron Advanced · `games/maze-arcade/armagetron-advanced.md`
+
+- `+effect:leave_trail` — підтверджую (Tron, Paper.io, Blockade).
+- `+trigger:zone_stay` — перебування в зоні N тіків (фортеця колапсує); див. також Snake Rattle 'n' Roll.
+- `+effect:shrink_zone` — зменшити зону на крок (сумо, battle royale).
+- `+ui:rubber-meter`, `+ui:brake-meter` — шкали запасу гуми й гальма.
+- `+feature:server-physics-config` — фізика й правила задає хост сервера, клієнт підлаштовується.
+- `+card:rubber-lag-buffer`, `+card:explosion-breach`, `+card:zone-capture-hold`, `+card:shrinking-zone`, `+card:team-modes`, `+card:finite-trail`, `+card:bot-self-learning`, `+card:ball-zone-push`.
+
+### Arrowword (Сканворд) · `games/word-number/arrowword.md`
+
+- `+role:clue-cell` — клітина сітки, що несе підказку і водночас розділяє слова (Arrowword, Kakuro).
+- `+cond:arrow_direction` — напрям і старт слова задані стрілкою клітини-питання.
+- `+ui:arrow-glyph` — стрілка напрямку в клітині (пряма / зігнута).
+- `+ui:solution-word-bar` — рядок ключового слова з позначених клітин.
+
+### Ash of Gods: Redemption · `games/tactics/ash-of-gods.md`
+
+- `+cond:target_pool(pool)` — удар спрямовано в смугу (`health` / `energy`).
+- `+effect:swap_stats(a, s1, s2)` — обміняти значення двох статів юніта.
+- `+ui:dual-bar` — дві смуги над юнітом; `+ui:card-hand` — рука карт з порогами активації.
+- `+feature:story-mode-maxed` — режим «історія» з героями максимального рівня; `+feature:ironman` — смерті й рішення остаточні.
+- `+card:dual-pool-target`, `+card:pay-with-hp` — див. вище.
+
+### Atari Go (Capture Go, го до першого взяття) · `games/chess-abstract/atari-go.md`
+
+- `+cond:liberties`, `+effect:capture_group` — підтверджую з go.md (у `vocab/` ще нема).
+- `+card:first-capture-win`, `+card:capture-quota` — див. вище.
 
 ### Ataxx · `games/chess-abstract/ataxx.md`
 
@@ -2337,6 +7493,40 @@
 - `+feature:restart-cost` — рестарт рівня коштує очок/життя.
 - `+axis:control` — `select-then-move`: вибір фігури, потім команда (не `direct`, не `indirect`).
 
+### Auro: A Monster-Bumping Adventure · `games/tactics/auro.md`
+
+- `+effect:knockback` — відкинути ціль від атакуючого на N (не `push`: не входимо в клітину).
+- `+effect:cooldown` — поставити/зменшити перезаряд здібності; `+cond:cooldown_ready` — здібність готова.
+- `+trigger:bumped` — сутність отримала поштовх (для ланцюгів).
+- `+role:power-tile` — підбирач, що заряджає здібності (частковий `pickup`).
+- `+ui:kill-value` — «скільки дасть наступне вбивство»; `+ui:spell-slots` — слоти здібностей з перезарядом; `+ui:rank-badge` — поточний ранг.
+- `+window:placement-match` — кваліфікаційний матч для рангу.
+- `+feature:ranked-ladder` — драбина рангів у одиночній грі.
+- `+axis:attack:push-only` — атака лише переміщенням (Auro, частково Into the Breach).
+
+### Automachef · `games/build-sim/automachef.md`
+
+- `+effect:combine` — частини стають стравою за рецептом (як у `plateup`).
+- `+cond:configured` — машина налаштована (рецепт/зразок/звʼязки задано).
+- `+trigger:order_expired` — у замовлення вийшов термін.
+- `+ui:unconfigured-warning` — значок над неналаштованим обʼєктом; `+ui:power-meter` — споживання енергії проти ліміту.
+- `+feature:test-kitchen` — пісочниця з експортом блюпринтів; `+feature:simulate-order` — пробна подія.
+- `+card:order-reader-routing`, `+card:power-budget-blackout` — див. вище.
+
+### Autonauts · `games/program-robots/autonauts.md`
+
+- `+feature:teach-by-demo` — програма записується з дій гравця.
+- `+feature:bot-database` — обмін програмами між гравцями.
+- `+ui:teach-panel` — панель запису/циклу/запуску бота.
+- `+ui:area-circle` — коло зони дії/пошуку на полі.
+- `+cond:hands_full(a)` / `+cond:hands_empty(a)` — стан рук/інвентаря сутності (сусід `has`).
+- `+cond:heard(signal)` — бот почув сигнал.
+- `+effect:shout(signal)` — надіслати сигнал іншим ботам.
+- `+effect:find_nearest(kind, area)` — обрати ціль: найближчий обʼєкт виду в зоні.
+- `+effect:refuel(a)` — дозаправити сутність.
+- `+trigger:recorded(action)` — дія гравця потрапила в запис.
+- `+axis:control` — значення `taught` (запис демонстрацією).
+
 ### Azul (Азул) · `games/board-digital/azul.md`
 
 - `+trigger:round_end` — кінець раунду (коли спільний запас вичерпано); запускає фазу підрахунку.
@@ -2357,6 +7547,16 @@
 - `+axis:rules` — `fixed` (класика) · `mutable` (гравець змінює правила під час гри: Baba).
 - `+axis:undo` — тут `unlimited`, і рестарт теж скасовується.
 
+### Backpack Battles · `games/build-sim/backpack-battles.md`
+
+- `+trigger:cooldown_ready` — предмет/вміння готове до спрацювання (зараз `timer(item_cooldown)`).
+- `+trigger:battle_end` — кінець фази бою (рецепти, нагороди).
+- `+cond:in_mark` — у позначеній відносній клітині ★/♦ є сутність з тегом.
+- `+effect:reroll` — оновити вітрину/вибір за ціну; `+effect:combine` — злиття кількох суміжних за рецептом (≥2 інгредієнти, на відміну від `merge` пари однакових).
+- `+ui:synergy-marks` — підсвітка ★/♦-клітин навколо предмета; `+ui:storage-area` — зона неактивних предметів поза полем.
+- `+card:recipe-combine`, `+card:ghost-opponent` — див. вище.
+- `+feature:async-pvp` — гра проти збережених знімків інших гравців.
+
 ### Backpack Hero · `games/build-sim/backpack-hero.md`
 
 - `+trigger:turn_start`, `+trigger:turn_end` (статуси, енергія), `+trigger:adjacent` (сусідство в рюкзаку), `+trigger:hp_zero`.
@@ -2367,6 +7567,95 @@
 - `+window:inventory-window` (тут він же `game-screen`), `+window:upgrade-window` (вибір клітин рюкзака), `+window:map-window`, `+window:character-select`.
 - `+feature:meta-progression`.
 - `+card:adjacency-buff` — див. вище.
+
+### Baku Baku Animal · `games/falling-match/baku-baku-animal.md`
+
+- `+cond:eats(a, b)` — A поєднується з B за таблицею пар (тварина–їжа; асиметричний збіг замість `same`).
+- `+card:asymmetric-match` — див. вище.
+
+### Banana · `games/dig-gravity/banana.md`
+
+- `+cond:next_in_order(item)` — предмет наступний у заданій послідовності (Banana; кандидат для «збери 1→N»).
+
+### Bananagrams · `games/word-number/bananagrams.md`
+
+- `+effect:exchange` — віддати k одиниць у пул і взяти n (Dump 1→3; обмін у Scrabble/Upwords).
+- `+effect:all_draw` — кожен гравець отримує з пулу (Peel).
+- `+cond:in_pool` — у спільному пулі ≥ N одиниць (кінець Bananagrams).
+- `+ui:bunch-counter` — скільки лишилось у спільній купі.
+- `+feature:mode-solitaire` — соло без суперників (на час / мінімум слів).
+- `+card:peel-all-draw`, `+card:personal-grid` — див. «Мапа на каталог».
+
+### Banqi (Half Chess, Dark Chess) · `games/chess-abstract/banqi.md`
+
+- `+cond:value_ge(a, b)` — ранг/цінність A ≥ B (підтверджую: Hostage, RBC, тут — ранг).
+- `+cond:screen_count` — підтверджую з xiangqi (рівно 1 фігура між гарматою й ціллю; тут екран може бути закритим).
+- `+ui:face-down-token` — однакова «сорочка» закритої фігури/картки.
+- `+axis:info:hidden-own` — нове значення `info`: приховано від **обох** гравців, а не від суперника.
+- `+card:flip-reveal-move` · `+card:color-by-first-flip` · `+card:rank-capture` — див. «Мапа на каталог».
+
+### Baroque chess / Ultima (Бароккові шахи) · `games/chess-abstract/baroque-chess.md`
+
+- `+trigger:move_away(a, b)` — A відійшов від сусіда B (відступник).
+- `+cond:adjacent_enemy(a, dir)` — у напрямку dir поруч ворог.
+- `+cond:sandwiched(b, by)` — B між двома фігурами сторони by по прямій (затиск; хнефатафл, го-подібні).
+- `+cond:immobilized(p)` — фігуру паралізує сусідня аура (окремо від загального `state`, бо перераховується щоходу).
+- `+effect:capture_as(type)` — взяти способом іншого типу фігури (хамелеон).
+- `+ui:frozen-marker` — позначка паралізованої фігури.
+- `+ui:capture-preview` — підсвітити фігури, що зникнуть після ходу.
+- `+window:setup-choice` — вибір варіанта розстановки перед партією.
+- `+card:custodial-capture` · `+card:immobilizer-aura` · `+card:chameleon-capture`.
+
+### Battle Brothers · `games/tactics/battle-brothers.md`
+
+- `+trigger:leave_zone` / `+trigger:enter_zone` — вихід із / вхід у зону іншої сутності (ZoC, spearwall).
+- `+trigger:attacked` — початок атаки як подія; `+trigger:ally_died` — загинув союзник поруч (мораль).
+- `+trigger:round_start` — початок раунду спільної черги (не `turn_start` сторони).
+- `+cond:in_zone` — сутність у зоні контролю ворога; `+cond:fatigue` — втома нижча за поріг.
+- `+effect:free_attack` — вільний удар поза чергою; `+effect:morale_check` — кидок моралі зі зміною стану; `+effect:roll_dice`.
+- `+ui:initiative-bar` · `+ui:hit-chance` · `+ui:morale-icon` · `+ui:fatigue-bar`.
+- `+window:company-roster` · `+window:contract-window` · `+window:perk-select` · `+window:battle-result`.
+- `+feature:roster-carryover` — загін і його травми живуть усю кампанію.
+- `+axis:turn-structure:initiative-queue` — нове значення осі: спільна черга обох сторін за ініціативою.
+
+### Battle Chess · `games/chess-abstract/battle-chess.md`
+
+- `+effect:play_cutscene` — програти неінтерактивну вставку (анімацію бою) і лише потім продовжити.
+- `+feature:render-mode-toggle` — перемикання виду (2D / анімований) без зміни логіки.
+- `+feature:ai-vs-ai` — компʼютер грає сам із собою (перегляд).
+- `+card:capture-cutscene` · `+card:opening-book` — див. «Мапа на каталог».
+
+### Battle City (Танчики) і Tank Battalion · `games/maze-arcade/battle-city.md`
+
+- `+effect:shoot` — сутність випускає снаряд у напрямку погляду (Battle City, Berzerk, Wizard of Wor); зараз це `spawn(shot, facing)`, але постріл трапляється в корпусі постійно.
+- `+effect:erode` — зняти частину клітини (чверть цегли) замість повного `set_cell` (Battle City, бункери Space Invaders).
+- `+role:base` — обʼєкт, який гравець захищає; його втрата — поразка (орел; PvZ-будинок, TD-ядро).
+- `+role:cover` — тло, що ховає сутності під собою, не впливаючи на рух (кущі).
+- `+cond:tier` — рівень апгрейда сутності (зірки 0–3: сталь пробиває лише tier 3); зараз — через `state(a, stars=3)`.
+- `+window:score-tally` — підсумок між стадіями з розбивкою очок за типами ворогів.
+- `+card:subtile-destruction` — див. «Мапа на каталог».
+- `+card:bonus-carrier`, `+card:decoy-ai` — див. «Мапа на каталог».
+
+### Battle Isle · `games/tactics/battle-isle.md`
+
+- `+cond:phase` — поточна фаза гравця (рух чи дія).
+- `+effect:capture` — захопити споруду; `+effect:produce` — збудувати юніт; `+effect:repair` — відремонтувати.
+- `+role:factory`, `+role:depot`, `+role:hq` — споруди зі власником.
+- `+ui:split-view` — дві половини екрана з окремими курсорами; `+ui:phase-indicator`.
+- `+window:unit-stats`, `+window:combat-cutscene`.
+- `+axis:turn-structure=offset-phases`; `+axis:opponent=same-screen-simultaneous`.
+
+### BattleTech · `games/tactics/battletech.md`
+
+- `+trigger:attacked` — ціль атакували (зрив evasion) — повтор із корпусу tactics.
+- `+trigger:overheat` — нагрів перетнув поріг.
+- `+cond:facing_arc` — атака з дуги (фронт/бік/тил) відносно напрямку цілі.
+- `+cond:heat` — рівень нагріву порівняно з порогом.
+- `+effect:knockdown` · `+effect:shutdown` · `+effect:transfer_damage` · `+effect:reserve` (відкласти себе на пізнішу фазу) · `+effect:vent_heat`.
+- `+role:location` — частина складеної сутності зі своїм HP.
+- `+ui:heat-bar` · `+ui:paper-doll` (схема частин з бронею) · `+ui:hit-chance` · `+ui:evasion-pips` · `+ui:stability-bar` · `+ui:initiative-tracker`.
+- `+window:mech-lab` · `+window:contract-negotiation` · `+window:salvage-select` · `+window:starmap`.
+- `+feature:career-mode` — кампанія з лімітом днів і підсумковим рахунком.
 
 ### Battleship (Морський бій) · `games/hidden-deduction/battleship.md`
 
@@ -2379,6 +7668,43 @@
 - `+window:placement-screen` — фаза розстановки фігур/кораблів перед грою; `+window:pass-device` — завіса hotseat між ходами з прихованою інформацією.
 - `+feature:salvo-mode` — режим кількох пострілів за хід.
 
+### Battleship Sudoku (Судоку «Морський бій») · `games/pencil-logic/battleship-sudoku.md`
+
+- `+cond:duplicate_in_line` — повтор з KenKen/Easy as ABC.
+- `+cond:no_touch8` — дві фігури не мають спільної сторони чи кута.
+- `+cond:fleet_matches` — множина розміщених фігур = заданому набору.
+- `+card:numbered-pieces`, `+card:given-is-sea` — див. мапу.
+- Повтор: `+ui:fleet-status` (Battleship); `+feature:answer-code` — перевірка розвʼязку рядком відповіді (GM Puzzles).
+
+### Bean and Nothingness · `games/thinky/bean-and-nothingness.md`
+
+- `+trigger:cast` — гравець активував заклинання/паличку на клітину.
+- `+cond:recipe` — набір сутностей у клітині відповідає рецепту.
+- `+effect:summon` — породити сутність з інгредієнтів (інгредієнти зникають) — ширше за ✅ `transform`, бо з кількох в одну.
+- `+feature:colorblind-shapes` — форми замість лише кольору.
+- `+window:recipe-panel` — панель рецептів рівня.
+- `+card:recipe-spawn` — як вище.
+
+### Befunge (Befunge-93) · `games/program-robots/befunge.md`
+
+- `+effect:stack_push(v)` / `+effect:stack_pop(n)` — операції зі стеком (Befunge, Cargo-Bot-стек викликів, стекові мови).
+- `+cond:stack_top(op, v)` — порівняння вершини стека (розгалуження `_`/`|`).
+- `+effect:write_cell(x, y, v)` / `+effect:read_cell(x, y)` — запис/читання клітини за координатами (самозмінний код; `set_cell` не передає «за координатами з даних»).
+- `+effect:skip_cell` — перестрибнути наступну клітину (`#`).
+- `+effect:output(v)` — вивести значення назовні (stdout, конвеєр виходу).
+- `+trigger:input_wait` — виконання чекає на ввід користувача.
+- `+role:pointer` — абстрактна сутність потоку керування (IP), не робот.
+- `+ui:stack-view` · `+ui:pointer-trail` (слід пройдених клітин).
+- `+window:output-console` — вікно виводу програми (уже пропонували The Farmer Was Replaced і Screeps).
+- `+feature:self-modifying-code`.
+- `+card:instruction-grid-2d`.
+
+### Beglitched · `games/falling-match/beglitched.md`
+
+- `+effect:clue(kind, target)` — показати підказку про сховану ціль: напрям, відстань (Beglitched; узагальнює число сапера).
+- `+effect:reshuffle` — перемішати поле/мережу (яйце Beglitched; є і в Puzzle Quest).
+- `+feature:fail-reset-chain` — після N помилок прогрес серії рівнів скидається.
+
 ### Bejeweled (1–3, Twist) · `games/falling-match/bejeweled.md`
 
 - `+trigger:settled` — поле стабілізувалось (спільне з Puyo/Dr. Mario).
@@ -2387,6 +7713,56 @@
 - `+ui:hint-marker` — ⏳ підтверджую; `+ui:countdown-on-tile` — число ходів на плитці (бомба).
 - `+window:mode-select` — ⏳ підтверджую; `+feature:mode-zen`, `+feature:hint` — ⏳ підтверджую.
 - `+axis:control` — тут `swap` / `rotate-block` як значення осі (ввід, а не напрямок аватара).
+
+### Beneath Apple Manor · `games/roguelike/beneath-apple-manor.md`
+
+- `+cond:stat(a, s, op, n)` — значення стату-пулу (Dexterity > 0 для кроку).
+- `+effect:spend_stat(a, s, n)` — дія витрачає пул; `+effect:rest(a, n)` — відпочинок N раундів; `+effect:convert_stat(a, from, to)` — Heal: інтелект → тіло; `+effect:forget_map` — стерти запамʼятовану мапу; `+effect:identify` (як у Rogue).
+- `+role:chest` — скриня з випадковим вмістом і можливою пасткою.
+- `+ui:stat-pools` — кілька пулів поточне/макс у рядок.
+- `+window:town-hub` (як у EO) · `+window:setup-dialog` — параметри генерації перед партією.
+- `+feature:brain-scan` — платне збереження · `+feature:reincarnate-on-stairs` — смерть = повернення на вхід поверху з відкатом.
+- `+card:stat-pools` · `+card:decoy-goal`.
+
+### Berzerk · `games/maze-arcade/berzerk.md`
+
+- `+effect:shoot` — випустити снаряд у напрямку (Berzerk, Battle City).
+- `+trigger:room_exit` — аватар пройшов через вихід кімнати-екрана (Berzerk, Wizard of Wor, Atari Adventure); `+effect:next_room` — перейти в сусідню кімнату.
+- `+role:pursuer` — невразливий переслідувач-таймер (Evil Otto, привид Spelunky).
+- `+card:invincible-pursuer`, `+card:taunt-speech` — див. вище.
+
+### Betrayal at House on the Hill · `games/tactics/betrayal-at-house-on-the-hill.md`
+
+- `+trigger:card_drawn` — витягнуто картку типу (прикмета → кидок привиду).
+- `+trigger:tile_placed` — викладено нову плитку поля.
+- `+cond:dice_sum_lt` — сума кидка менша за N/лічильник.
+- `+cond:fits_floor` — плитка підходить поверху/стику.
+- `+effect:place_tile` — прикласти плитку поля до дверей (відмінно від `place` фігури).
+- `+effect:stat(a, trait, ±n)` — змінити рису на треку.
+- `+role:companion` — істота-предмет, що переходить до нового власника.
+- `+ui:trait-tracker` — кілька треків рис з позначкою смерті.
+- `+window:haunt-reveal` — оголошення сценарію й зрадника; `+window:secret-goals` — приховані цілі сторони.
+- `+feature:scenario-book` — бібліотека сценаріїв з окремими правилами.
+
+### Big Pharma · `games/build-sim/big-pharma.md`
+
+- `+cond:value_in_range(item, prop, lo, hi)` — властивість предмета в діапазоні (ефект активний).
+- `+effect:add_value(item, prop, n)` — змінити числову властивість предмета (зараз пишу через `counter`, але це не лічильник гри).
+- `+role:staff` — працівник поза полем (науковець, дослідник, executive): дає дію/бали, не ходить полем.
+- `+window:market-window` — ринок: попит, ціни, конкуренти; `+window:product-naming` — назвати новий продукт; `+window:research-window` — дерево досліджень.
+- `+ui:concentration-gauge` — шкала 0–20 з діапазонами ефектів.
+- `+card:…` — див. «Мапа на каталог».
+
+### Bingo / Keno / Lotto (Бінго, Лото) · `games/word-number/bingo.md`
+
+- `+trigger:called` — ведучий оголосив число/подію з черги.
+- `+role:tool` — інструмент гравця без власної поведінки (даубер) (?).
+- `+cond:on_card` — оголошене число є на картці · `+cond:pattern_complete` — закрита маска клітин раунду.
+- `+effect:daub` — позначити збіг (окремо від пазлового `mark`) · `+effect:claim` — заявити перемогу на перевірку.
+- `+ui:called-board` · `+ui:last-called` · `+ui:pattern-card` · `+ui:pay-table`.
+- `+window:card-buy`.
+- `+axis:opponent=parallel` — гравці змагаються паралельно на своїх полях без взаємодії (лінт не приймає, тому в шапці `online`).
+- `+feature:auto-daub`.
 
 ### Black Box (Чорна скринька) · `games/hidden-deduction/black-box.md`
 
@@ -2397,6 +7773,65 @@
 - `+role:mark` — мітки H/R/числа, гіпотези.
 - `+ui:edge-ports` — клікабельна рамка навколо поля; `+ui:ray-pair-label` — однакове число на вході й виході; `+ui:guess-counter` — «поставлено N з M».
 - `+feature:counterexample-check` — перевірка, що пояснює, чому неправильно; `+feature:lock-cells` — заморозка розмітки.
+
+### Black Path Game · `games/connect-rotate/black-path-game.md`
+
+- `+effect:follow_path(head)` — просунути голову шляху вільними відрізками до обриву (уже просить Tsuro).
+- `+cond:path_head_cell(cell)` — клітина саме та, у яку впирається голова шляху (легальність ходу).
+
+### Block Blast! (і родина 1010! / Woodoku) · `games/falling-match/block-blast.md`
+
+- `+trigger:hand_empty` — у руці/запасі не лишилось фігур (точка нової роздачі: Block Blast, роздача карт).
+- `+effect:deal` — роздати N випадкових фігур/карт із генератора в руку (Block Blast; уже просили карткові данжени, RoboRally).
+- `+feature:revive-offer` — продовжити програну партію за рекламу/валюту (мобільні аркади).
+- Вжито вже наявні `fits`, `place`, `pocket`, `combo` / `reset_combo`, `pattern(line(n))`, `pattern(region_closed)`.
+
+### Block Dude · `games/grid-platformer/block-dude.md`
+
+- `+effect:climb(a, dir)` — піднятися на клітину над перешкодою (Block Dude, Fire 'n Ice; відмінне від `move` і від драбини).
+- `+card:carry-one-block`, `+card:step-climb-1` — див. вище.
+
+### Block'hood · `games/build-sim/blockhood.md`
+
+- `+cond:inputs_met` — у сутності є всі вхідні ресурси за рецептом (Block'hood, Factorio-машини).
+- `+effect:decay` — крок деградації сутності з порогом (зараз `counter(decay, +1)` + `set_state`).
+- `+card:io-blocks`, `+card:input-decay`, `+card:structural-support` — див. вище.
+- `+feature:event-toggle` — увімк/вимк випадкових подій і запитів у пісочниці.
+
+### Blockade (Блокада) · `games/maze-arcade/blockade.md`
+
+- `+effect:leave_trail` — клітина позаду стає слідом власника (підтверджую пропозицію з `tron-light-cycles`).
+- `+effect:clear_trail` — прибрати сліди між раундами.
+- `+card:trail-wall`, `+card:crash-count-limit`, `+card:shared-field-versus`, `+card:trail-toggle`.
+
+### Blockly Games Maze і Code.org Classic Maze · `games/program-robots/block-maze-games.md`
+
+- `+cond:path(dir)` — у відносному напрямку вільна клітина (isPathForward/Left/Right/Backward); коротше за `free(cell(dir))`.
+- `+cond:not_done` — ціль ще не досягнута (умова циклу `repeat until`).
+- `+trigger:step_limit(n)` — виконання перевищило ліміт кроків.
+- `+ui:block-workspace` · `+ui:block-toolbox` · `+ui:blocks-left`.
+- `+window:code-view` — показ текстового коду програми.
+- `+feature:block-limit` · `+feature:skin-select` · `+feature:certificate` (сертифікат проходження).
+- `+axis:control` — `programmed`.
+
+### Blockout (Block Out) · `games/falling-match/blockout.md`
+
+- `+effect:rotate3d` — поворот обʼємної фігури на 90° навколо X/Y/Z (наявний `rotate` — лише в площині).
+- `+cond:fits3d` — фігура в межах 3D-стакана й не перетинає кубиків (тривимірний `fits`).
+- `+ui:depth-gauge` — колонка кольорів шарів і висоти стеку; `+ui:pit-wireframe` — каркас стінок для читання глибини.
+- `+feature:pit-size` — розмір 3D-поля як налаштування; `+feature:piece-set` — набір фігур як налаштування; `+feature:online-replay-scores` — рекорд приймається разом із повтором (антиобман).
+- `+card:3d-polycube-rotation` — див. «Мапу».
+
+### Blocks That Matter · `games/grid-platformer/blocks-that-matter.md`
+
+- `+effect:drill(cell)` — видобути блок у запас (не просто `disappear`, бо поповнює ресурс).
+- `+effect:burn(cell)` — клітина горить і зникає/поширює вогонь.
+- `+cond:drillable(cell)` — блок піддається поточному інструменту.
+- `+cond:line_length(cells, op, n)` — довжина суцільної лінії обраних блоків.
+- `+trigger:bump(a, cell)` — удар знизу стрибком.
+- `+window:build-mode` — режим будування на паузі.
+- `+ui:block-stock` — запас блоків за типами.
+- `+card:drill-to-inventory` · `+card:build-mode-pause` · `+card:collapse-on-step` — див. вище.
 
 ### Blokus (Блокус) · `games/board-digital/blokus.md`
 
@@ -2430,6 +7865,38 @@
 - `+feature:level-password`.
 - `+axis:actors` — `single`, що тимчасово стає `party` з двох кубиків.
 
+### Blue Prince · `games/thinky/blue-prince.md`
+
+- `+effect:draft(slot, n)` — запропонувати N планів і поставити обраний у клітину (зараз — `choose` + `place`).
+- `+cond:doors_align(room, cell)` — отвори кімнати узгоджені з сусідами/межею.
+- `+cond:shape_fits_slot(shape, cell)` — форма дозволена для центру/краю/кута.
+- `+trigger:out_of_steps` — бюджет кроків вичерпано (зараз `counter(steps, <=, 0)`).
+- `+window:draft-window` — вікно вибору 1 з N плиток/карт (Blue Prince, роглайк-драфти).
+- `+ui:step-counter` — лишок кроків на день.
+- `+card:room-draft`, `+card:step-budget` — див. «Мапа на каталог».
+- `+feature:notebook` — внутрішні/зовнішні нотатки гравця як частина гри.
+- `+axis:session-daily-run` — нове значення осі `session`: `daily-run` (забіг = день із повним скидом поля).
+
+### Boggle · `games/word-number/boggle.md`
+
+- `+cond:path_adjacent8` — літери слова йдуть шляхом по 8-сусідах без повтору клітин (Boggle, SpellTower, Strands).
+- `+cond:not_played` — слово ще не було знайдене/зігране (Boggle, Letterpress).
+- `+cond:length` — довжина слова порівняно з N (мінімум 3/4; очки).
+- `+effect:shuffle` — перемішати плитки/кубики поля (Boggle, Connections).
+- `+effect:strike_shared` — зняти з рахунку всіх гравців елемент, що збігся у ≥2 (Boggle, Scattergories).
+- `+ui:found-words-list` — список знайдених слів раунду.
+- `+ui:word-preview` — поточне слово з обраного шляху.
+- `+window:round-results` — порівняння списків гравців після таймера.
+- `+feature:word-challenge` — оскарження слова словником.
+
+### Bombe · `games/hidden-deduction/bombe.md`
+
+- `+trigger:rule_match` — на полі зʼявився збіг із шаблоном правила гравця.
+- `+effect:create_region` — створити нову зону-обмеження (множина + кількість); `+effect:discard_region` · `+effect:hide_region` — прибрати зону з поля/перенести на приховану мапу.
+- `+ui:venn-diagram` — діаграма перетинів вибраних зон; `+ui:region-bubble` — число-бульбашка з лініями до клітин.
+- `+window:hidden-map` — друге поле для відкладених обʼєктів.
+- `+feature:rule-library` — збережені правила гравця, що діють у всіх рівнях.
+
 ### Bomberman · `games/maze-arcade/bomberman.md`
 
 - `+effect:explode` — підрив із формою (хрест, радіус) як один ефект; зараз доводиться писати `custom` + `spawn(blast)`.
@@ -2442,6 +7909,34 @@
 - `+ui:player-portraits` — смуга облич гравців зі станом живий/мертвий/трофеї.
 - `+feature:match-trophies` — матч із раундів до N перемог.
 
+### Bomberman — battle mode (Super Bomberman, Super Bomberman R / R Online / R 2) · `games/maze-arcade/bomberman-battle-mode.md`
+
+- `+effect:eliminate` — гравець вибуває з раунду, гра триває для інших (є в інших іграх корпусу; підтверджую).
+- `+trigger:round_end` — кінець раунду всередині матчу (Battle 64: злиття арен).
+- `+cond:team` — сутність належить команді X (Grand Prix, Castle).
+- `+role:defender` — гравець асиметричної сторони з окремим набором дій.
+- `+window:bracket-view` — схема арен/сітки турніру і переходів між ними.
+- `+ui:alive-counter` — скільки гравців лишилось у матчі.
+- `+feature:league-tiers` — ліга з поділами, очки за перемоги.
+- `+feature:battle-pass` — сезонний трек нагород.
+- `+card:arena-merge-royale`, `+card:eliminated-revenge-cart`, `+card:asymmetric-castle-siege`, `+card:character-stat-caps` — див. «Мапу на каталог».
+
+### Bomberman — мультиплеєрні гілки (Dyna Blaster, Saturn Bomberman, Atomic Bomberman, Bomberman Blast) · `games/maze-arcade/bomberman-multiplayer-variants.md`
+
+- `+effect:mount` / `+effect:dismount` — сісти на / злізти з сутності-носія, що рухається з гравцем і має власне HP.
+- `+cond:riding` — гравець зараз верхи.
+- `+feature:emotes` — жести/репліки в мультиплеєрі (appeal motions).
+- `+feature:crossplay` — різні видання/платформи в одному матчі.
+- `+card:rideable-mount`, `+card:mount-absorbs-hit`, `+card:player-count-scales-arena`, `+card:powerup-manager`, `+card:motion-activated-item` — див. «Мапу на каталог».
+
+### Bone Cruncher · `games/dig-gravity/bone-cruncher.md`
+
+- `+effect:set_gravity(dir)` — змінити напрям падіння для всіх (аромат Bone Cruncher, перемикачі Crystal Mines II).
+- `+cond:surrounded(a)` — усі 4 сусіди зайняті (монстр у пастці з Glooks).
+- `+axis:gravity-shifting` — значення осі `gravity`: напрям змінюється під час рівня.
+- `+ui:wind-meter` — напрям «вітру» і відлік до зміни (C64).
+- `+feature:self-destruct` — убити свого героя за −1 життя, коли застряг (ESC/F5).
+
 ### Bonfire Peaks · `games/thinky/bonfire-peaks.md`
 
 - `+trigger:input`; `+trigger:enter` — ящик у вогнище, гравець у потік.
@@ -2450,6 +7945,15 @@
 - `+role:hazard` (пастки), `+role:terrain` (потоки).
 - `+window:map-window`, `+feature:undo`, `+feature:world-map`, `+feature:photo-mode`.
 - `+axis:undo` — `unlimited`.
+
+### Bonza Word Puzzle · `games/word-number/bonza.md`
+
+- `+cond:matches_solution` — відносне положення двох елементів збігається з розвʼязком (Bonza, jigsaw-подібні).
+- `+ui:theme-clue` — підказка-тема над полем.
+- `+ui:coin-counter` — баланс внутрішньої валюти.
+- `+feature:hint-reveal-word` — платна підказка «одне слово».
+- `+feature:puzzle-creator` — редактор, де гравець задає слова, а гра будує пазл.
+- `+card:crossword-fragments`, `+card:meta-currency` — див. «Мапа на каталог».
 
 ### Bookworm · `games/word-number/bookworm.md`
 
@@ -2462,6 +7966,35 @@
 - `+feature:hall-of-fame` — локальна таблиця рекордів з іменами; `+feature:mode-time-attack` (⏳).
 - `+axis:control` — у Classic вибір плиток по одній, а не «шлях-свайп».
 
+### Bookworm Adventures · `games/word-number/bookworm-adventures.md`
+
+- `+cond:word_weight` — вага слова (довжина × рідкість) порівняно з порогом (самоцвіти тут, бонус-плитки в bookworm.md).
+- `+effect:reshuffle` — перемішати/замінити всі плитки поля (scramble).
+- `+ui:enemy-attack-list` — видимий перелік атак ворога; `+ui:attack-timer-bar` — шкала до удару ворога (Arena); `+ui:potion-shelf` — полиця зілля з лічильниками.
+- `+window:treasure-select` — вибір пасивних бонусів у слоти перед рівнем.
+- `+feature:mode-survival` — серія боїв без лікування; `+feature:adventure-replay` — повтор кампанії з бейджами.
+
+### Boom Beach · `games/build-sim/boom-beach.md`
+
+- `+effect:redirect(group, cell)` — тимчасово перевизначити ціль AI-групи (ракета); зараз `set_state(flared)` + custom.
+- `+cond:key_target_alive` — ключова ціль ще стоїть (HQ, Power Core).
+- `+role:key-target` — будівля, від якої залежить результат бою.
+- `+ui:support-energy-bar` — пул енергії з ціною наступного удару на кнопках.
+- `+window:archipelago-map` — мапа з туманом і радаром, де вузли — бази (дитина `map-window`).
+- `+feature:task-force-operation` — кооперативна атака на спільну базу з очками за будівлі.
+- `+card:flare-redirect`, `+card:key-target-win` — див. вище.
+
+### Bosanowa (ボサノワ) · `games/pencil-logic/bosanowa.md`
+
+- `+cond:sum_of_diffs` — значення = Σ |значення − сусід| по сусідах.
+- `+card:neighbor-diff-sum`, `+card:irregular-board-shape` — див. мапу.
+
+### Bosconian · `games/maze-arcade/bosconian.md`
+
+- `+ui:condition-indicator` — табло рівня тривоги (GREEN / YELLOW / RED).
+- `+feature:adaptive-level` — складність підлаштовується під гравця (AUTO; є в індексі ×1, Voltorb Flip).
+- `+effect:scatter` — група втрачає ціль і розлітається (формація без командира).
+
 ### Boulder Dash · `games/dig-gravity/boulder-dash.md`
 
 - `+trigger:enter` — Рокфорд входить у землю/вихід (клітина-тип, не сутність); ⏳ уже є, рахую на правило трьох.
@@ -2472,6 +8005,12 @@
 - `+effect:spread(a, dir)` — сутність займає сусідню клітину, лишаючись на місці (амеба, розширювана стіна, грибок).
 - `+effect:set_cell` ⏳ (земля → порожнеча), `+role:terrain` ⏳ (земля, порожнеча, слиз), `+role:hazard` ⏳ (амеба, вибух).
 - `+axis:session` — тут `level` із «точками входу» (A/E/I/M у меню); ⏳ кандидат осі, рахую на правило трьох.
+
+### Boulder Dash — DOS-клони (bd-fans) · `games/dig-gravity/boulder-dash-dos-clones.md`
+
+- `+card:no-walk-under-falling` — легальність ходу залежить від стану обʼєкта над ціллю (Gold Hunt).
+- `+card:solvable-random-cave` — генерація фізичної печери з перевіркою розвʼязності (Boulder Dazz 256).
+- `+card:size-coding-clone` — гра як вправа на мінімальний розмір коду (Boulder Dazz 256).
 
 ### BoxBoy! (ハコボーイ!) · `games/grid-platformer/boxboy.md`
 
@@ -2495,6 +8034,14 @@
 - `+ui:group-outline` — обвести/порахувати групи сторони (LOA, го).
 - `+axis:win-condition` — значення `race` (BT) і `connect-all` (LOA).
 
+### Brian's Brain і Seeds · `games/build-sim/brians-brain-seeds.md`
+
+- `+ui:generation-counter` — номер покоління (вже просили Life, Langton, Wireworld).
+- `+ui:rule-input` — поле рядка правила.
+- `+card:multi-state-cell` — див. Wireworld; тут 3 стани.
+- `+card:refractory-state` — див. «Мапа на каталог».
+- `+axis:states=n` — кількість станів клітини як вісь опису автоматів (2 / 3 / 4 / N).
+
 ### Brogue · `games/roguelike/brogue.md`
 
 - `+trigger:noticed` — монстр помітив гравця (перехід у hunting); `+trigger:revealed` — клітину/таємні двері відкрито.
@@ -2505,6 +8052,58 @@
 - `+ui:entity-sidebar` — список видимих сутностей з HP і станом, звʼязаний з мапою наведенням; `+ui:flavor-line` — рядок-опис клітини під курсором; `+ui:stealth-indicator` — поточний радіус стелсу.
 - `+feature:permadeath`, `+feature:auto-explore`, `+feature:travel-click` (клік → автошлях), `+feature:seed-input`.
 - `+axis:session=run` — одна партія = забіг до смерті/перемоги.
+
+### Bughouse (Бʼюгхаус, шахи вдвох на двох дошках) · `games/chess-abstract/bughouse.md`
+
+- `+effect:place` — підтверджую (дроп з резерву).
+- `+effect:give_partner` — передати сутність у резерв іншого гравця/поля (Bughouse; можливо, ширше — `give(a, item)` з іншим одержувачем).
+- `+trigger:board_end` — завершилась одна з кількох паралельних партій.
+- `+role:board` — підтверджую (дошка як сутність); резерв — `supply` (уже в словнику).
+- `+ui:board-pair` — підтверджую; `+ui:partner-chat`; `+ui:diagonal-clock-diff` — різниця годинників діагональних суперників.
+- `+feature:team-chat` — командний канал спілкування.
+- `+axis:turn-structure` — нове значення `parallel-async` (кілька поточних черговостей, що йдуть незалежно).
+- `+card:partner-transfer`, `+card:stall-for-piece`, `+card:first-board-ends-match` — див. «Мапа на каталог».
+
+### BurgerTime · `games/grid-platformer/burgertime.md`
+
+- `+trigger:walked_over(a, obj)` — A пройшов усі секції обʼєкта (BurgerTime).
+- `+trigger:landed` — сутність приземлилась після падіння (BurgerTime, Space Panic, Fire 'n Ice).
+- `+effect:fall_floors(a, n)` — упасти рівно на N поверхів, а не до дна.
+- `+cond:riders(obj, op, n)` — скільки сутностей стоїть на обʼєкті.
+- `+ui:ammo-counter` — лічильник набоїв/зарядів (перець).
+- `+card:walk-over-to-drop`, `+card:rider-extra-fall`, `+card:crush-by-fall`, `+card:stun-cloud` — див. вище.
+
+### Bärenpark · `games/board-digital/barenpark.md`
+
+- `+trigger:covered` — плитка накрила клітину з іконкою (Bärenpark, A Feast for Odin-доходи, Isle of Cats-мапи скарбів).
+- `+trigger:area_complete` — зона повністю заповнена (родич `pattern(region_closed)`, але для фіксованої ділянки).
+- `+cond:aligned_edge` — новий модуль поля прилягає повним краєм.
+- `+effect:take_tile` — взяти плитку з запасу в особистий запас (не `place`, не `pickup` з поля).
+- `+effect:attach_board` — приєднати модуль поля.
+- `+role:park-area` — модуль поля зі своїми іконками.
+- `+ui:supply-board` — спільний запас з убутними номіналами; `+ui:park-area-count` — модулів x/4.
+- `+card:cover-icon-reward` · `+card:growing-board` · `+card:depleting-tile-values` — див. «Мапа на каталог».
+
+### Cadence of Hyrule: Crypt of the NecroDancer Featuring The Legend of Zelda · `games/roguelike/cadence-of-hyrule.md`
+
+- `+cond:enemies_on_screen` — у видимій зоні є вороги (перемикає режим часу).
+- `+feature:fixed-beat-mode` — вимкнути вимогу ритму.
+- `+effect:fast_travel(to)` — переміщення між відкритими точками мапи (вужче за `teleport`).
+
+### Caesar III · `games/build-sim/caesar-3.md`
+
+- `+card:walker-coverage`, `+card:house-evolution`, `+card:risk-meter`, `+card:labor-pool`, `+card:ratings-goal` — див. вище.
+- `+role:walker` — сутність-посланець будівлі, що несе службу маршрутом (ходоки Impressions, жителі Mini Metro (?)).
+- `+window:advisor-window` — радники: зведення стану міста за темами.
+- `+ui:map-overlay` — шар-оверлей поля (як у SimCity); `+ui:rating-columns` — стовпчики рейтингів з позначкою цілі.
+- `+trigger:month_start` — календарний тік (помісячні податки, настрій богів).
+
+### Can of Wormholes · `games/thinky/can-of-wormholes.md`
+
+- `+feature:hint-ministage` — підказка як окремий спрощений рівень; `+window:hint-stage` — вікно цього мінірівня.
+- `+effect:cut_body` — розрізати тіло-чергу в точці; `+cond:fits_exactly` — сутність збігається з формою цілі.
+- `+card:exact-fit-hole`, `+card:hint-ministage` — див. вище.
+- ⏳-слова, вжиті тут: `input`, `free`, `edge`, `enter`, `all_on`, `move`, `grow`, `restart`, `next_level`.
 
 ### Candy Crush Saga · `games/falling-match/candy-crush.md`
 
@@ -2521,6 +8120,33 @@
 - `+feature:lives-regen` — життя, що відновлюються за реальним часом; `+feature:world-map`, `+feature:stars-rating` — 🔥 підтверджую.
 - `+axis:session` — `level` + мета між рівнями (час реального світу).
 
+### Capablanca chess (шахи Капабланки) і сімʼя 10×8 · `games/chess-abstract/capablanca-chess.md`
+
+- `+cond:reachable_by(p, to, pattern)` — клітина досяжна за патерном (основа складених фігур і шахових умов загалом).
+- `+cond:attacked` · `+cond:moved` · `+effect:choose_promotion` — підтверджую з [chess.md](chess.md) (рокіровка, перетворення в 6 фігур).
+- `+effect:gate(x, cell)` — ввести фігуру з руки на щойно звільнене поле (Seirawan; відмінне від `place` — лише в момент ходу іншої фігури).
+- `+feature:board-size-variant` — розмір дошки як частина варіанта, а не налаштування складності.
+- `+card:compound-piece` · `+card:piece-gating` · `+card:setup-constraints` — див. «Мапа на каталог».
+
+### Captain Sonar · `games/hidden-deduction/captain-sonar.md`
+
+- `+axis:opponent=teams` — команда проти команди (кілька гравців на сторону); hotseat тут — найближче наявне.
+- `+trigger:announce(dir)` — суперник оголосив дію/напрямок (тригер для трасування); `+effect:announce(info)` — повідомити суперника частину стану.
+- `+effect:reset_trail` — стерти власний слід; `+cond:visited` — клітина вже у власному сліді.
+- `+cond:system_broken` — система недоступна через поломку.
+- `+role:mine` — міна гравця, що детонує за наказом (відрізняти від `hazard` поля).
+- `+ui:charge-gauge` · `+ui:breakdown-panel` · `+ui:trace-overlay` (прозорий аркуш трасування, що зсувається по карті).
+- `+window:role-screen` — окремий екран для кожної ролі команди; `+feature:team-roles`.
+
+### Captain Toad: Treasure Tracker · `games/grid-platformer/captain-toad-treasure-tracker.md`
+
+- `+trigger:watched_by(a, b)` — A у полі зору B / камери (Boo).
+- `+effect:rotate_camera(deg)` — повернути камеру навколо поля без зміни стану.
+- `+effect:pluck(cell)` — висмикнути вміст клітини-грядки в руки.
+- `+feature:assist-after-deaths`, `+feature:bonus-objective` — див. вище.
+- `+axis:control=world-touch` — гравець торкається обʼєктів поля напряму, крім керування аватаром.
+- `+card:no-jump-avatar`, `+card:rotate-view-to-solve`, `+card:freeze-when-watched`, `+card:touch-move-platform` — див. вище.
+
 ### Carcassonne (Каркасон) · `games/board-digital/carcassonne.md`
 
 - `+trigger:pattern(road_closed|city_closed|cloister_surrounded)` — розширення ⏳ `pattern` формами «ділянку замкнено».
@@ -2532,6 +8158,22 @@
 - `+window:match-setup` — як у Blokus; `+feature:expansion-toggle` — доповнення як перемикачі правил перед партією.
 - `+axis:turn-structure` = `round-robin`.
 
+### Card Hunter · `games/tactics/card-hunter.md`
+
+- `+effect:draw_card` — добрати N карт у руку (не `draw` = нічия).
+- `+effect:discard` — карта йде в скидання (скидання до ліміту наприкінці раунду).
+- `+role:card` — карта як сутність поза полем (рука/колода).
+- `+trigger:attacked` — сутність обрали ціллю атаки (Block/Armor).
+- `+trigger:round_start` / `+trigger:round_end` — початок/кінець раунду, коли раунд ≠ хід сторони.
+- `+trigger:both_passed` — усі сторони спасували поспіль (кінець раунду в «пасових» іграх).
+- `+effect:roll_dice` — кинути кубик і порівняти з порогом (броня).
+- `+effect:attach_card` — повісити тривалий ефект-картку на сутність/клітину з лічильником.
+- `+cond:from_behind` — атака ззаду відносно орієнтації цілі.
+- `+window:equip-window` — слоти спорядження героя з переглядом карт, які вони дають.
+- `+window:loot-window` — скрині/лут після бою.
+- `+ui:hand-per-character` — окрема рука для кожного героя загону.
+- `+feature:loot-chests` — випадкові скрині предметів за валюту/підписку.
+
 ### Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel) · `games/roguelike/card-dungeons.md`
 
 - `+trigger:room_dealt` — доздано кімнату; `+trigger:revealed` (як у Rogue); `+trigger:card_played(card, slot)` — карту розіграно в ціль.
@@ -2542,6 +8184,36 @@
 - `+window:ability-deck` — вибір карт здібностей; `+window:character-select` (⏳).
 - `+feature:permadeath`.
 - `+axis:field=row` — поле-ряд з N відкритих слотів (не `1d`-смуга руху); `+axis:session=run`.
+
+### Cardinal Quest · `games/roguelike/cardinal-quest.md`
+
+- `+effect:recharge(a, skill)` — запустити/скинути перезарядку (в коді є характеристика `cooldown`, ефекту нема).
+- `+cond:ready(skill)` — навичка заряджена.
+- `+feature:coffee-break-run` — забіг на 10–20 хв як заявлена мета дизайну.
+- `+card:ability-pickup-cooldown` · `+card:multi-purpose-key`.
+
+### Cargo-Bot · `games/program-robots/cargo-bot.md`
+
+- `+effect:grab` / `+effect:release` — узяти/відпустити обʼєкт маніпулятором (SpaceChem, Opus Magnum).
+- `+cond:held(a, kind|value)` — що тримає сутність (пропонували 7 Billion Humans, Opus Magnum); `+cond:held_any` / `+cond:held_none` — «будь-що» і «нічого».
+- `+effect:call(fn)` — виклик процедури зі стеком повернення (RoboZZle).
+- `+effect:stack_push(v)` — тут для стека викликів.
+- `+ui:goal-preview` — мініатюра цілі; `+ui:program-slots` · `+ui:command-palette` · `+ui:condition-tabs` (кольорові вкладки-умови на командах).
+- `+feature:stars-by-size` · `+feature:solution-video`.
+
+### Carnage Heart · `games/program-robots/carnage-heart.md`
+
+- `+window:chip-board-editor` — редактор плати-сітки з чипами й стрілками (різновид `code-editor`).
+- `+window:hardware-design` — конструктор юніта з деталей.
+- `+window:strategy-map` — стратегічна мапа над боями.
+- `+window:battle-view` — спостереження автобою.
+- `+ui:chip-arrows` — стрілки переходу «так/ні» на чипах.
+- `+ui:heat-gauge` — шкала нагріву.
+- `+cond:radar(kind, angle, width, range)` — сенсор-сектор.
+- `+cond:radio(channel, color)` / `+effect:radio_send(channel, color)` — канали команди.
+- `+effect:var_op(var, op, n)` — арифметика над змінною програми.
+- `+trigger:board_exit` — потік вийшов за межу плати.
+- `+feature:vs-mode-saved-units` — бій двох збережених дизайнів гравців.
 
 ### Carto · `games/thinky/carto.md`
 
@@ -2576,6 +8248,40 @@
 - `+feature:scenarios` · `+feature:achievements` (паперова мапа досягнень у правилах).
 - `+axis:turn-structure` = `round-robin`.
 
+### Castle Panic · `games/tower-lanes/castle-panic.md`
+
+- `+role:card` · `+role:base` · `+role:event` — токен-подія з мішка ворогів, що не стає на поле.
+- `+effect:draw` · `+effect:discard` · `+effect:trade` · `+effect:rebuild` (відновити знищену сутність на її місці) · `+effect:knockback` (відкинути на старт смуги).
+- `+cond:ring_color_match` — клітина цілі відповідає кільцю й кольору карти.
+- `+ui:monster-pile` (рука — наявний `pocket`).
+- `+window:trade-window`.
+- `+feature:mode-overlord`.
+- `+axis:field=polar` — кільця × сектори.
+
+### Castle of the Winds · `games/roguelike/castle-of-the-winds.md`
+
+- `+trigger:drop_on_slot` — гравець відпустив перетягнутий предмет над слотом/контейнером.
+- `+effect:move_item(from, to)` — перемістити предмет між контейнерами; `+effect:learn_spell`.
+- `+cond:fits(container, item)` — предмет влазить за вагою й обʼємом (у словнику `fits` лише для форми фігури на полі); `+cond:on_belt(item)`; `+cond:mana(op, n)`.
+- `+window:paperdoll`, `+window:spellbook-window`, `+window:sage-window`.
+- `+ui:attribute-bars`, `+ui:weight-bulk-meter`, `+ui:map-scale-toggle`.
+- `+feature:save-anywhere`, `+feature:character-import`.
+- `+card:drag-drop-inventory`, `+card:weight-and-bulk`, `+card:belt-slots`.
+
+### Castles of Mad King Ludwig (Замки божевільного короля Людвіга) · `games/board-digital/castles-of-mad-king-ludwig.md`
+
+- `+trigger:area_complete` — область/кімната завершена (усі виходи зʼєднані).
+- `+trigger:placed` — тайл щойно покладено (підрахунок одразу).
+- `+cond:doors_connected(room)` — усі прорізи кімнати мають пару.
+- `+cond:edge_match` — край тайла збігається з сусіднім (двері до дверей).
+- `+cond:level(room, upstairs|downstairs)` — рівень кімнати.
+- `+effect:rescore(room)` — повторний підрахунок.
+- `+effect:set_price(item, slot)` — гравець призначає ціну.
+- `+role:room` · `+role:door` · `+role:supply`.
+- `+ui:price-board` · `+ui:favor-track`.
+- `+window:market-pricing`.
+- `+card:seller-sets-prices` · `+card:room-completion-reward`.
+
 ### Catrap (Pitman) · `games/grid-platformer/catrap.md`
 
 - `+trigger:input` — натискання гравця (крок, відкат, перемикання).
@@ -2586,6 +8292,30 @@
 - `+ui:move-counter` (лічильник кроків для відкату), `+ui:character-indicator` (хто зараз активний).
 - `+window:editor-window` — редактор кімнат.
 - `+card:move-counter-scrub` — див. вище.
+
+### Cave Noire · `games/roguelike/cave-noire.md`
+
+- `+effect:rescue(b)` — визволити полоненого (зараз `disappear_b` + `counter`).
+- `+window:quest-board` — дошка квестів гільдії з вибором мети й складності.
+- `+feature:rank-title` — звання за пройдені рівні складності.
+- `+card:quest-goal-select` · `+card:kill-toggles-room-fog`.
+
+### Cavern Sweeper · `games/hidden-deduction/cavern-sweeper.md`
+
+- `+effect:mark_kind(c, kind)` — мітка видом сутності, не просто прапорцем.
+- `+cond:in_footprint(c, monster)` — клітина в зоні впливу монстра (форма залежить від виду).
+- `+feature:hazard-mix` — режим, що змішує всі види небезпек.
+
+### Caverna: The Cave Farmers (Каверна) · `games/board-digital/caverna.md`
+
+- `+trigger:harvest` — подія за розкладом раундів (як в Agricola).
+- `+cond:capacity(region, op, n)` · `+cond:orth_adjacent(cell, kind)` — як в Agricola.
+- `+cond:zone(cell, forest|mountain)` — клітина належить зоні дошки.
+- `+effect:breed(kind)` · `+effect:feed(n)` · `+effect:forge(strength)`.
+- `+role:pasture` · `+role:worker`.
+- `+ui:capacity-badge`.
+- `+window:harvest-summary` · `+window:expedition-loot`.
+- `+card:domino-tile-zoned` — доміно, обидві половини якого мусять лягти в одну зону; `+card:loot-by-strength`.
 
 ### Caves of Qud · `games/roguelike/caves-of-qud.md`
 
@@ -2619,6 +8349,13 @@
 - `+ui:lives` — іконки бластерів.
 - `+axis:control` — `analog`: трекбол дає вільний рух у зоні (не клітина за клавішу).
 
+### Championship Lode Runner і Lode Runner Legacy · `games/grid-platformer/lode-runner-sequels.md`
+
+- `+feature:save-costs-life` — збереження з ціною при відновленні.
+- `+feature:completion-certificate` — сертифікат/нагорода від видавця за фініш.
+- `+feature:asset-editor` — редактор персонажів і предметів (не лише рівнів).
+- `+card:save-costs-life`, `+card:puzzle-mode-no-enemies`, `+card:voxel-asset-editor` — див. вище.
+
 ### Chaos: The Battle of Wizards (+ Chaos Reborn) · `games/tactics/chaos-battle-of-wizards.md`
 
 - `+cond:prob` — шанс касту, бою, переманювання; `+cond:alignment` — вирівнювання закляття відносно світу.
@@ -2629,6 +8366,14 @@
 - `+role:piece` · `+role:hazard` (вогонь, слиз, тіньовий ліс) · `+role:container` (замок, скакун).
 - `+window:spell-select` — список заклять з шансами; `+ui:cast-chance` — відсоток успіху біля дії.
 - `+axis:turn-structure` — `sequential` з таємним вибором (кроки «обрати таємно → розкрити по черзі»).
+
+### Chaturanga / Shatranj (Чатуранга / Шатрандж) · `games/chess-abstract/chaturanga-shatranj.md`
+
+- `+trigger:bare_king` — у сторони лишився тільки король (шатрандж, макрук-рахунок, шашкові «голий король»).
+- `+cond:can_bare_back` — суперник наступним ходом може відповісти тим самим (умова нічиєї).
+- `+effect:win_by_stalemate` — пат дає перемогу (окремо від `draw`, щоб таблиця результатів була даними).
+- `+feature:handicap` — фора: прибрати фігуру сильнішого гравця.
+- `+card:bare-king-win` · `+card:stalemate-win` · `+card:handicap-odds` · `+card:start-from-position` — див. «Мапа на каталог».
 
 ### Chess (Шахи) — цифрова гра · `games/chess-abstract/chess.md`
 
@@ -2641,6 +8386,55 @@
 - `+feature:premove` · `+feature:takeback-request` (undo за згодою суперника) · `+feature:rating` (Elo/Glicko) · `+feature:engine-analysis`.
 - `+axis:session` — тут `match` (партія) і водночас банк задач (`level`) — два режими сесії в одному клієнті.
 
+### Chess 2: The Sequel (Sirlin's Chess) · `games/chess-abstract/chess-2-sequel.md`
+
+- `+trigger:capture_attempt(a, b)` — спроба взяття, до її застосування (вікно реакції: дуель).
+- `+trigger:bid_reveal` — обидві закриті ставки розкрито.
+- `+cond:rank_higher(a, b)` — ранг A вищий за B (pawn < minor < rook < queen); родич `+cond:value_ge` з chess-rule-twists.
+- `+effect:bid(n)` — закрита ставка ресурсу.
+- `+effect:whirlwind` — знищити всіх сусідів без руху (або `explode(adjacent8)` ⏳ — тоді не потрібне).
+- `+effect:rampage(a, dir, n)` — примусовий рух на максимум з взяттям усього на шляху.
+- `+effect:return_after_capture` — фігура повертається на вихідну клітину після взяття (тигр).
+- `+ui:stone-counter` · `+ui:bid-hand` (вибір 0/1/2 потай) · `+ui:duel-prompt`.
+- `+window:army-select` · `+window:duel-window`.
+- `+feature:loser-switches-army` — правило серії партій.
+- `+axis:info` — значення `simultaneous-secret` (інформація прихована лише в момент одночасного вибору).
+- `+card:sealed-bid-duel` · `+card:army-select`.
+
+### Chess Survivors · `games/chess-abstract/chess-survivors.md`
+
+- `+trigger:level_up` — досвід досяг порогу рівня (зручніше, ніж `counter(xp, >=, n)` з порогом, що росте).
+- `+ui:xp-bar` — смуга досвіду до наступного рівня; `+ui:ability-cooldowns` — іконки здібностей з таймерами.
+- `+card:auto-attack-abilities`, `+card:xp-level-up-choice`, `+card:survive-turns` — див. «Мапа на каталог».
+
+### Chess with Different Armies (шахи різних армій, Betza) · `games/chess-abstract/chess-with-different-armies.md`
+
+- `+cond:reachable_by(p, to)` — підтверджую ([capablanca-chess.md](capablanca-chess.md)); тут — з Betza-рядка.
+- `+cond:in_army(kind, armies)` — тип фігури належить одній з армій партії (обмеження перетворення).
+- `+effect:choose_promotion` — підтверджую з [chess.md](chess.md).
+- `+window:army-select` — підтверджую з [chess-2-sequel.md](chess-2-sequel.md).
+- `+ui:move-diagram` — підтверджую з [large-shogi-variants.md](large-shogi-variants.md).
+- `+feature:army-randomizer` — випадковий / сліпий вибір армій перед партією.
+- `+axis:symmetry` — `mirror` · `asymmetric-balanced` · `asymmetric-random` (симетрія сторін як вісь опису гри).
+- `+card:asymmetric-armies` · `+card:piece-notation-dsl` · `+card:colorbound-piece` · `+card:self-play-balance` — див. «Мапа на каталог».
+
+### Chessformer · `games/chess-abstract/chessformer.md`
+
+- `+effect:stack_on` — фігура приземлилась на іншу й тримається на ній (стос).
+- `+cond:falling` — сутність у падінні й тимчасово не керована.
+- `+axis:gravity` — значення `down` (тут вісь чисто «після ходу»).
+- `+card:gravity-chess`, `+card:piece-stacking`, `+card:static-target-king` — див. «Мапа на каталог».
+
+### Children of Zodiarcs · `games/tactics/children-of-zodiarcs.md`
+
+- `+effect:roll_dice(n)`, `+effect:reroll(k)` — кидок і перекид (вже пропоновані настолками); `+effect:draw_card`, `+effect:discard`.
+- `+trigger:deck_empty` — колода/рука скінчилась.
+- `+cond:symbol(die, s)` — на кубику випав символ.
+- `+role:card`, `+role:die` — карта й кубик як сутності поза полем.
+- `+ui:dice-tray`, `+ui:hand`.
+- `+window:deck-editor`, `+window:dice-forge`.
+- `+feature:skirmish` — повторювані бої для прокачки; `+axis:session` = `campaign`.
+
 ### Chip's Challenge · `games/maze-arcade/chips-challenge.md`
 
 - `+trigger:enter` — сутність стала на клітину типу (лід, вода, силова підлога); відрізняється від `contact`, бо друга сторона — плитка-шар, а не сутність.
@@ -2650,6 +8444,78 @@
 - `+window:level-password` — екран введення пароля рівня; `+ui:inventory-bar` — сітка предметів у HUD; `+ui:hint-text` — текстова панель підказки на екрані гри.
 - `+feature:level-password` — прогресія паролями.
 - `+axis:control` — тут `direct` (стрілки) і `indirect` (клік мишею → автошлях) одночасно: одна гра, два режими керування.
+
+### Chocolate Fix (ThinkFun) · `games/board-digital/chocolate-fix.md`
+
+- `+cond:matches_fragment(clue, offset)` — уривок підказки збігається з лотком при зсуві.
+- `+cond:attr(cell, shape|color)` — у клітині фігура з атрибутом (точніше за `same` для маски).
+- `+role:clue-fragment` — підказка-уривок як сутність поза полем.
+- `+ui:clue-cards` · `+ui:attribute-placeholder`.
+- `+card:floating-clue-fragment` · `+card:partial-pattern-clue`.
+
+### Chromatron (1–5) · `games/connect-rotate/chromatron.md`
+
+- `+trigger:beam_hit(a)` — промінь торкнувся сутності.
+- `+effect:reflect` — змінити напрям променя за кутом; `+effect:emit_beam` — перерахувати промінь від джерела; `+effect:split_beam` — роздвоїти промінь; `+effect:recolor_beam(op)` — фільтр/інверсія кольору.
+- `+cond:beam_color(target, c)` — сума кольорів на цілі дорівнює c.
+- `+ui:piece-tray` — лоток пристроїв рівня, з якого перетягують на поле.
+- `+feature:solution-code` — копіювати/вставити розвʼязок як текст (вужче за `share-code`).
+
+### Chuckie Egg · `games/grid-platformer/chuckie-egg.md`
+
+- `+effect:eat(a, item)` — ворог прибирає предмет з поля собі (не в інвентар гравця).
+- `+effect:pause_timer(n)` — зупинити таймер рівня на N тіків.
+- `+trigger:pass_end` — завершено цикл рівнів (прохід), починається наступний з іншими параметрами.
+- `+feature:pass-cycle` — гра крутить ту саму послідовність рівнів з наростанням складності.
+- `+card:enemy-eats-pickup`, `+card:timer-freeze-pickup`, `+card:caged-enemy-release`, `+card:loop-passes-harder` — див. вище.
+
+### Chuzzle · `games/falling-match/chuzzle.md`
+
+- `+effect:slide_line` — циклічний зсув однієї лінії на k клітин (не `shift` усього поля 2048 і не `slide` однієї сутності).
+- `+effect:reshuffle` — перемішати плитки поля (Bejeweled, Candy Crush, Chuzzle — підтверджую).
+- `+ui:fill-flask` — шкала-колба, що наповнюється прибраними плитками (родич `progress-bar`, але з анімацією «очі летять»).
+- `+card:row-col-slide-wrap` · `+card:fill-meter-level` · `+card:paid-hint` · `+card:reshuffle-charges` · `+card:idle-lock-timer` · `+card:pattern-goal` — див. «Мапу».
+
+### Cities: Skylines (зонування) · `games/build-sim/cities-skylines-zoning.md`
+
+- `+effect:paint_zone` — призначити клітинам тип зони (відрізняти від `paint` кольором: зона змінює правила росту).
+- `+effect:upgrade` — рівень будівлі +1 (повтор з TD).
+- `+cond:demand` — попит типу зони > 0; `+cond:fronts_road` — лот фасадом до дороги.
+- `+cond:adjacent_owned` — ділянка межує з купленою (спільне з forager).
+- `+trigger:road_built` — гравець проклав сегмент дороги.
+- `+ui:rci-demand`, `+ui:map-overlay` — повтори з simcity-1989; `+ui:zone-brush` — режим пензля.
+- `+window:district-policies` — політики району.
+- `+card:road-zone-grid`, `+card:district-paint` — див. вище.
+
+### Civilization (бойовий шар юнітів, I–VI) · `games/tactics/civilization.md`
+
+- `+cond:in_enemy_zoc(a, from, to)` — обидві клітини ходу в ZOC того самого ворога (Civ V; Wesnoth — інша семантика).
+- `+effect:end_moves(a)` — обнулити очки руху без завершення ходу сторони (≠ `end_turn`).
+- `+effect:capture(city)` — захопити будівлю/місто з вибором долі (поряд із ⏳ `set_side`).
+- `+role:city` — статична будівля з HP, власною атакою й ZOC.
+- `+ui:combat-preview` — прогноз бою під курсором.
+- `+window:city-screen` — екран міста; `+window:tech-tree` — дерево технологій.
+- `+feature:victory-toggles` — увімкнення/вимкнення окремих умов перемоги.
+- `+axis:stacking` = `unlimited` | `one-per-tile` | `formations`.
+- `+card:one-unit-per-tile`, `+card:stack-kill`, `+card:city-ranged-attack`, `+card:embark` — див. «Мапа на каталог».
+
+### Civilization VI — шар районів і бонусів суміжності · `games/build-sim/civ6-districts.md`
+
+- `+card:hex-adjacency-yield`, `+card:district-slots`, `+card:placement-preview-yield`, `+card:cell-feature-clear` — див. вище.
+- `+ui:adjacency-overlay` — іконки бонусу над гексами в режимі розміщення (уже пропонувалось у корпусі — підтвердження).
+- `+cond:adjacent_count_in` — підрахунок сусідів із множини типів (Mine **або** Quarry) — підтвердження наявної пропозиції.
+- `+effect:yield` — прибуток ресурсу за хід із клітини (наука/віра/золото), не одноразовий `currency`.
+
+### Clash Royale · `games/tower-lanes/clash-royale.md`
+
+- `+role:card` · `+role:building` (стоїть, атакує або генерує, має час життя) · `+role:base` (ціль, падіння якої = кінець).
+- `+trigger:card_played` · `+trigger:deploy_done` — юніт закінчив висадку й починає діяти.
+- `+effect:draw` (добір наступної карти з черги) · `+effect:wake` (активувати сплячу сутність).
+- `+cond:in_zone(cell, zone)` — клітина в дозволеній зоні · `+cond:target_type(a, b)` — B підходить під тип цілі A (земля/повітря/будівля).
+- `+ui:elixir-bar` · `+ui:next-card-preview` · `+ui:crown-counter`.
+- `+window:deck-builder` · `+window:chest-window` (розкриття нагород) · `+window:clan-window`.
+- `+feature:card-collection` · `+feature:battle-pass`.
+- `+axis:field=lanes` — поле з кількох смуг/переходів.
 
 ### Clash of Clans — розстановка бази на сітці · `games/build-sim/clash-of-clans-base.md`
 
@@ -2663,6 +8529,14 @@
 - `+axis:control` = `indirect` (висадив — далі AI); `+axis:opponent=async` (?) — суперник офлайн, його база керується AI.
 - `+card:target-preference` — див. вище.
 
+### Cloud Gardens · `games/build-sim/cloud-gardens.md`
+
+- `+trigger:covered(obj)` — обʼєкт вкрито (рослинністю/фарбою) повністю.
+- `+effect:grow_toward(plant, obj)` — ріст у напрямку джерела, не рівномірно.
+- `+ui:influence-ring` — коло впливу предмета під час перенесення.
+- `+feature:loop-video-export` — експорт зацикленого відео результату.
+- `+card:influence-radius-growth` — див. вище.
+
 ### Cluedo (Clue; «Клуедо») · `games/hidden-deduction/cluedo.md`
 
 - `+trigger:suggest` — гравець зробив припущення (запускає ланцюг спростування); `+trigger:accuse` — обвинувачення.
@@ -2674,6 +8548,76 @@
 - `+window:pass-device` — див. Battleship/Stratego.
 - `+feature:auto-notebook` — автоматичні позначки фактів.
 - `+axis:info-asymmetry` — див. Geister; тут — найскладніший випадок: кожна карта має свою множину «хто знає».
+
+### Cobalt Core · `games/tower-lanes/cobalt-core.md`
+
+- `+role:card` — карта в руці/колоді; `+role:part` — частина багатоклітинної сутності з власним станом; `+role:lane` — колонка-смуга удару.
+- `+trigger:drone_phase` — окрема фаза ходу для автономних обʼєктів (між ходами сторін).
+- `+effect:draw_cards` — взяти N карт (не плутати з `draw` = нічия); `+effect:discard_hand` — скинути руку; `+effect:exhaust` — вилучити карту до кінця бою.
+- `+cond:lane_has` — у колонці/смузі є сутність виду.
+- `+ui:energy-pips` — очки енергії кружечками; `+ui:status-row` — ряд іконок статусів зі стеками.
+- `+window:choice-window` — вибір 1 з N нагород; `+window:deck-window` — перегляд колоди/скиду.
+- `+feature:run-map` — розгалужена мапа забігу (роглайт); `+axis:session` — значення `run`.
+
+### Code Master (ThinkFun) · `games/board-digital/code-master.md`
+
+- `+cond:edge_of_color(node, c)` — з вузла виходить ребро кольору c.
+- `+role:node` — вузол графа як сутність поля.
+- `+role:program-token` — фізичний токен команди поза полем.
+- `+ui:program-slots` · `+ui:token-supply`.
+- `+card:follow-colored-path` · `+card:use-all-tokens` · `+card:flowchart-program`.
+
+### CodeCombat · `games/program-robots/codecombat.md`
+
+- `+feature:equipment-unlocks-api` — спорядження визначає доступні команди.
+- `+feature:required-restricted-methods` — обовʼязкові й заборонені методи рівня.
+- `+feature:clean-code-bonus` — бонусна ціль за код без problems.
+- `+feature:code-arena-ladder` — рейтингові матчі програм гравців.
+- `+ui:goal-checklist` — список цілей із галочками (точніше за `objective-text`).
+- `+ui:method-docs-palette` — палітра доступних методів з документацією (споріднене з `+ui:command-palette` Cargo-Bot).
+- `+ui:simulation-scrubber` — повзунок кадрів запису симуляції.
+- `+cond:api_available(method)` — метод відкритий спорядженням і не заборонений рівнем.
+- `+trigger:goal_done(goal)` — одна з цілей рівня виконана (для списку цілей).
+
+### Codenames · `games/word-number/codenames.md`
+
+- `+trigger:clue_given` — ведучий оголосив підказку (Codenames, Dixit-подібні); зараз через `input(clue)`.
+- `+cond:clue_valid` — підказка легальна за правилами (не слово зі столу, за сенсом).
+- `+effect:cover` — накрити картку маркером сторони (відмінно від `mark`: впливає на перемогу й закриває слово).
+- `+role:card` — картка на полі з прихованим призначенням.
+- `+ui:clue-display` — поточна підказка й число; `+ui:guesses-left` — лишилось вгадувань; `+ui:key-card-view` — розкладка, видима лише ролі.
+- `+window:role-select` — вибір команди й ролі перед партією.
+- `+feature:custom-word-list` — свої слова для партії (?).
+- `+axis:turn-structure` — `sequential` з фазами «підказка → вгадування».
+- `+card:hidden-key-card`, `+card:clue-word-number` — див. «Мапа на каталог».
+
+### Codeword · `games/word-number/codeword.md`
+
+- `+cond:same_symbol_same_value` — клітини з однаковим символом мають однакове значення (Codeword, криптограми).
+- `+ui:cipher-key` — таблиця «символ → значення» з вписаними парами; `+ui:alphabet-tracker` — алфавіт з викресленими літерами.
+- `+window:print-view` — версія пазла для друку.
+
+### CodinGame: Hypersonic · `games/program-robots/codingame-hypersonic.md`
+
+- `+trigger:timeout(bot)` — вже просили з bot-arenas; тут друге підтвердження.
+- `+cond:bombs_left(a)` — у гравця є вільна бомба (окремо від `has`, бо бомби повертаються).
+- `+effect:place_bomb(range)` — поставити бомбу з параметрами власника; `+effect:eliminate(bot)` — друге підтвердження.
+- `+ui:debug-message` — текст бота поруч з аватаром у реплеї.
+- `+feature:bot-upload`, `+feature:league-promotion` — підтвердження.
+
+### CodinGame: Keep Off the Grass (Fall Challenge 2022) · `games/program-robots/codingame-keep-off-the-grass.md`
+
+- `+trigger:timeout(bot)` — підтвердження; `+trigger:depleted(cell)` — запас клітини вичерпано.
+- `+cond:can_build(cell)` — клітина легальна для будівлі (своя, порожня); `+cond:in_range_of(cell, recycler)` — клітина в зоні дії будівлі.
+- `+effect:annihilate(a, b, n)` — взаємне знищення n на n; `+effect:eliminate(bot)`, `+effect:intent(a, action)` — підтвердження.
+- `+ui:debug-message` — текст бота на HUD.
+- `+feature:bot-upload`, `+feature:league-promotion` — підтвердження.
+
+### CodinGame: The Great Escape · `games/program-robots/codingame-great-escape.md`
+
+- `+trigger:timeout(bot)`, `+effect:eliminate(bot)` — підтвердження з bot-arenas/Hypersonic.
+- `+cond:wall_between`, `+effect:place_wall` — підтвердження з Quoridor (`path_exists` уже в 🔥 умов — тут вжито як ⏳).
+- `+card:finish-order-ranking`.
 
 ### Cogmind · `games/roguelike/cogmind.md`
 
@@ -2704,6 +8648,29 @@
 - `+feature:mode-coop` — 🔥 підтверджую (Doubles — двоє в одному стакані).
 - `+axis:gravity` — `cascade`.
 
+### Combat · `games/maze-arcade/combat.md`
+
+- `+effect:shoot` — випустити снаряд (Combat, Berzerk, Battle City).
+- `+effect:steer` — змінити напрям уже випущеного снаряда (керована ракета).
+- `+cond:bounced` — снаряд відбився ≥ N разів (Billiard Hit).
+- `+role:cover` — укриття, що ховає з поля зору (хмари).
+- `+feature:numbered-variations` — пронумеровані варіації правил (Atari 2600: Combat, Maze Craze).
+- `+axis:control` — `tank` (поворот + вперед) як нове значення поряд з `direct`.
+
+### Congo (шахи «Конго») · `games/chess-abstract/congo.md`
+
+- `+cond:in_zone(cell, zone)` — клітина належить зоні (замок лева, палац, ріка).
+- `+cond:reachable_by(p, to)` — підтверджую з [capablanca-chess.md](capablanca-chess.md): кожна тварина — свій патерн.
+- `+effect:jump_capture(a, over)` — стрибок через ворога зі зняттям (мавпа, шашки); тут зняття відкладене до кінця серії.
+- `+trigger:capture_chain_end` — гравець завершив серію стрибків (момент зняття взятих).
+- `+ui:drown-warning` — позначка «втоне наприкінці цього ходу».
+- `+card:delayed-drowning` · `+card:zone-bound-move` · `+card:river-board` — див. «Мапа на каталог».
+
+### Context · `games/pencil-logic/context.md`
+
+- `+cond:diag_count` — кількість сусідів виду лише по 4 діагоналях (порівняно з N); `adjacent_count` рахує ортогональних/8.
+- `+card:state-dependent-clue` — див. мапу.
+
 ### Conway's Game of Life (Гра «Життя») · `games/build-sim/game-of-life.md`
 
 - `+cond:adjacent_count` — ядро правила (рахує живих серед 8 сусідів); вжито як основна умова.
@@ -2716,6 +8683,38 @@
 - `+axis:time=programmed` — підтвердження значення ⏳: гравець задає початковий стан, далі автомат.
 - `+card:cellular-automaton-rule` — див. «Мапа на каталог».
 
+### Copenhagen (Копенгаген) · `games/board-digital/copenhagen.md`
+
+- `+trigger:covered` — плитка накрила клітину з іконкою (Bärenpark, Copenhagen).
+- `+trigger:line_complete` — ряд або колонка заповнені (без очищення, на відміну від `pattern(row_full)` у Tetris).
+- `+cond:afford` — вистачає карт/валюти на ціну.
+- `+effect:take_tile` · `+effect:discard` — скинути карти з руки · `+effect:refresh_abilities` — перевернути використані здібності.
+- `+role:ability-tile` — постійна здібність гравця зі станом активна/використана; `+role:hand` — рука карт.
+- `+ui:card-display` — ринок відкритих карт на позиціях; `+ui:ability-tray` — панель здібностей зі станом.
+
+### Core Keeper — сітковий шар (копання, ферма, автоматизація) · `games/build-sim/core-keeper.md`
+
+- `+trigger:mined` — клітину-стіну докопано (HP стіни 0) — точніше за `hp_zero` для тайлів.
+- `+cond:tool_tier` — тир інструмента ≥ тир клітини · `+cond:powered` — машина під живленням · `+cond:watered` — клітина полита.
+- `+effect:mine` — удар по стіні · `+effect:till` — зорати клітину · `+effect:water` — полити · `+effect:transport` — предмет зсувається машиною (конвеєр/рука).
+- `+role:machine` — автомат на клітині зі своєю дією за тік (дриль, рука, піч).
+- `+ui:light-radius` · `+ui:placement-ghost`.
+- `+window:crafting-window` · `+window:skill-tree`.
+- `+feature:dedicated-server`.
+- `+card:powered-drill` · `+card:item-arm-transfer` · `+card:concentric-biomes`.
+
+### Core War · `games/program-robots/core-war.md`
+
+- `+trigger:program_dead(side)` — у сторони не лишилось процесів (ширше за `all_gone`: подія для сторони, не виду).
+- `+effect:fork(process, at)` — створити паралельний потік виконання (SPL; ≠ `clone` сутності на полі).
+- `+effect:skip_next` — пропустити наступну інструкцію (SEQ/SNE/SLT; також Befunge `#`).
+- `+effect:jump(to)` — перенести вказівник програми (JMP/JMZ/DJN; ≠ `teleport` сутності).
+- `+cond:field_value(op, n)` — значення поля інструкції порівняно з N.
+- `+role:process`, `+role:instruction-cell`.
+- `+window:core-view`, `+window:hill-table`; `+ui:process-counter`.
+- `+feature:hill-submission`, `+feature:p-space`.
+- `+axis:turn-structure:round-robin` — нове значення наявної осі (по інструкції на воїна, процеси діляться часткою).
+
 ### Cosmic Express · `games/connect-rotate/cosmic-express.md`
 
 - `+role:sink` — будинок і вихід як приймачі (спільне з Pipe Mania, Deflektor); `+role:terminal` — вхід/вихід як фіксовані кінці шляху (з Flow Free).
@@ -2725,6 +8724,43 @@
 - `+ui:run-button` — кнопка «поїхали» між плануванням і симуляцією.
 - `+axis:time=programmed` ⏳ — підтвердження: план малюєш, потім він виконується.
 - `+card:adjacent-transfer`, `+card:carriage-capacity`, `+card:seat-taint`, `+card:run-simulation` — див. вище.
+
+### Cottage Garden (Сільський сад) · `games/board-digital/cottage-garden.md`
+
+- `+trigger:area_complete(zone)` — зону (клумбу) повністю закрито за правилом покриття.
+- `+trigger:cross(a, mark)` — кубик/фішка перетнув позначку треку (червона лінія).
+- `+cond:visible(mark)` — надрукована клітина не закрита плиткою.
+- `+effect:cover(cells)` — закрити клітини плиткою/жетоном (з правилом, що можна закривати).
+- `+effect:refill(row)` — поповнити ринок з черги.
+- `+effect:recycle_tiles` — повернути зіграні плитки в хвіст черги.
+- `+ui:market-ring` — ринок з підсвіченим активним рядом; `+ui:color-tracks` — треки з кількома кубиками; `+ui:test-fit` — приміряння плитки поза ходом.
+- `+window:bed-scoring` — підсумок рахунку однієї зони.
+- `+card:gardener-ring-selector` · `+card:cover-to-score-visible`.
+
+### Countdown — numbers round / Countle · `games/word-number/countdown-numbers.md`
+
+- `+cond:positive_integer` — результат операції ціле і > 0 (Countdown, Digits) — друга гра корпусу.
+- `+cond:distance` — відстань значення до цілі в межах N (10/7/5 тут, зірки в Digits).
+- `+ui:target-number`, `+ui:operator-buttons` — як у Digits (друга гра).
+- `+feature:declare-and-verify` — відповідь оголошують, потім перевіряють обчислення (ТБ-формат).
+- `+card:large-small-draw` — див. «Мапа на каталог».
+
+### Country Road · `games/pencil-logic/country-road.md`
+
+- `+cond:visits(loop, region, n)` — петля входить в область N разів.
+- `+trigger:pattern(loop_branch)` — розгалуження лінії (повтор з Yajilin/Icebarn).
+- `+effect:draw` — гравець малює сегмент лінії (повтор з Herugolf).
+- `+card:region-visit-once`, `+card:unvisited-border-ban` — див. мапу.
+
+### Craftomation 101 · `games/program-robots/craftomation-101.md`
+
+- `+effect:craft(a, b → c)` — два предмети в руках/на тайлі за рецептом дають новий (не `merge`: інгредієнти різні).
+- `+effect:find_nearest(kind)` — обрати найближчу клітину з сутністю виду як ціль.
+- `+trigger:fuel_out(x)` — у джерела скінчилось паливо (вогнище, генератор).
+- `+cond:power(a, op, n)` — рівень енергії актора.
+- `+window:node-editor` — редактор програми як графа нодів (варіант `code-editor`).
+- `+window:tech-tree` — дерево технологій.
+- `+feature:recipe-discovery`, `+feature:self-replication`.
 
 ### Creeper World · `games/tower-lanes/creeper-world.md`
 
@@ -2736,6 +8772,31 @@
 - `+window:map-window` — карта кампанії/світів.
 - `+feature:mode-daily` — Evermore; `+feature:level-editor` — CW3.
 - `+axis:field=heightmap` — сітка з висотою й рідиною поверх (відрізняти від `layers` Mahjong).
+
+### Critter Crunch · `games/falling-match/critter-crunch.md`
+
+- `+effect:grab` — схопити сутність на відстані (язик, Magical Drop) — підтверджую.
+- `+cond:greater(a, b, prop)` — A більше за B за властивістю (розмір, тир; дзеркально до `same`).
+- `+card:food-chain-feed` — нагодований звір лопається і дає нагороду.
+- `+card:size-tier-eat` — правило збігу за розмірним тиром.
+
+### Crossmath (математичний кросворд) · `games/word-number/crossmath.md`
+
+- `+cond:equation_true` — заповнений рядок/стовпець утворює правильну рівність (Crossmath, Nerdle, Mathable).
+- `+ui:piece-tray` — лоток плиток під полем (як у ubongo.md).
+- `+ui:equation-status` — колір рівняння: правильне / неправильне.
+- `+feature:streak-protection` — пропущений день не обриває серію.
+- `+feature:coin-hints` — підказки за монети з магазину.
+- `+card:equation-grid` — див. «Мапа на каталог».
+
+### Crosswordle · `games/word-number/crosswordle.md`
+
+- `+cond:feedback_equals` — відгук на слово проти відповіді збігається з заданим візерунком (Crosswordle; перевірка розвʼязника Wordle).
+- `+cond:consistent_with_hints` — спроба не суперечить попереднім відгукам (hard mode Wordle, Crosswordle).
+- `+ui:color-pattern-grid` — сітка заданих кольорів без літер.
+- `+ui:column-error-flag` — помилка, привʼязана до стовпця, з текстом під полем.
+- `+feature:challenge-link` — надіслати другу той самий пазл.
+- `+card:reverse-feedback-puzzle` — див. «Мапа на каталог».
 
 ### Crypt of the NecroDancer · `games/roguelike/crypt-of-the-necrodancer.md`
 
@@ -2749,6 +8810,81 @@
 - `+axis:time=rhythm` — ⏳-значення осі, тут еталон.
 - `+card:rule-twist-character` — див. «Мапа на каталог».
 
+### Cryptic crossword (Криптичний кросворд) · `games/word-number/cryptic-crossword.md`
+
+- `+cond:fits_enumeration` — вписане відповідає довжині й розбиттю (7,9) (кросворди всіх видів).
+- `+cond:crossings_agree` — літери слова узгоджені з перпендикулярними словами.
+- `+effect:reveal_letter` — показати правильну літеру клітини (Codeword, Cryptic, цифрові кросворди).
+- `+ui:clue-list` — списки Across/Down (є також пропозиція з TypeShift).
+- `+ui:current-clue-bar` — поточна підказка над/під сіткою.
+- `+ui:enumeration` — довжина відповіді біля підказки.
+- `+feature:check-entry` — перевірка літери/слова/сітки за розвʼязком.
+- `+feature:anagram-helper` — допоміжне перемішування літер.
+- `+feature:prize-puzzle` — пазл з надсиланням розвʼязку і розіграшем.
+
+### Cryptid · `games/hidden-deduction/cryptid.md`
+
+- `+cond:clue_allows(p, cell)` — таємна підказка гравця p допускає клітину; без неї кожне правило пишеться через `custom`.
+- `+trigger:answer(p, token)` — гравець дав відповідь (диск/кубик) на питання; Cluedo, Battleship, Mastermind мають схожу подію.
+- `+window:secret-clue` — екран, де гравець бачить лише свою таємну інформацію (часто після `pass-device`).
+- `+feature:companion-app` — цифровий застосунок до настільної гри: генерація, перевірка, хінти.
+- `+axis:info-asymmetry` — кожен гравець знає різне (тут — по одній підказці).
+- `+role:clue` — таємне правило/предикат у руці гравця (відрізняти від `supply`, бо не викладається на поле).
+
+### Crystal Castles · `games/maze-arcade/crystal-castles.md`
+
+- `+trigger:jump_over` — аватар перестрибнув сутність (Crystal Castles, Frogger-подібні).
+- `+effect:warp_level` — перескочити на рівень N.
+- `+cond:eating` — ворог у фазі дії, коли вразливий (окремий від загального `state` для читабельності; куратору вирішити).
+- `+role:rival` — ворог-конкурент за ресурс, не лише мисливець.
+- `+feature:trackball`, `+feature:secret-warp` — трекбол і сховані варпи.
+- `+window:ending-rank` — фінальний екран з титулом.
+
+### Crystal Mines II · `games/dig-gravity/crystal-mines-ii.md`
+
+- `+effect:set_gravity(dir)` — повтор з Bone Cruncher (правило трьох).
+- `+axis:gravity-shifting` — повтор з Bone Cruncher.
+- `+ui:gravity-indicator` — куди зараз тягне гравітація.
+- `+feature:self-destruct` — повтор з Bone Cruncher.
+
+### D&D grid combat (Dungeons & Dragons 5e) · `games/tactics/dnd-grid-combat.md`
+
+- `+trigger:leave_reach` — сутність вийшла з досяжності іншої (opportunity attack).
+- `+trigger:round_start` — початок раунду (повтор із tactics) · `+trigger:readied` — спрацював тригер підготовленої дії.
+- `+cond:in_reach` — ціль у досяжності ближньої атаки · `+cond:cover` — рівень укриття · `+cond:flanked` — ворог між двома нападниками · `+cond:roll_vs` — кидок + мод ≥ цілі.
+- `+effect:roll_dice` (повтор) · `+effect:reaction_attack` · `+effect:set_advantage` · `+effect:prone` · `+effect:grapple` · `+effect:death_save`.
+- `+role:dm` — людина-рефері, що керує світом і ворогами.
+- `+ui:initiative-tracker` · `+ui:aoe-template` · `+ui:dice-roller` · `+ui:condition-tokens` · `+ui:measure-ruler`.
+- `+window:character-sheet` · `+window:dm-screen`.
+- `+axis:referee=human` — правила частково застосовує людина-ведучий.
+
+### DVONN · `games/chess-abstract/dvonn.md`
+
+- `+cond:top_side` — верхня фішка стосу належить стороні (Tak, Lasca, DVONN).
+- `+cond:surrounded` — усі сусідні клітини зайняті (Hive, DVONN).
+- `+cond:stack_height` — ціль рівно на відстані висоти стосу.
+- `+effect:stack_onto` — перенести стос цілком на інший стос.
+- `+effect:remove_disconnected` — зняти всі сутності, не звʼязані з якорем.
+- `+trigger:phase_end` — завершилась фаза партії (розстановка → рух).
+- `+ui:stack-view`, `+ui:stack-height-label`, `+ui:dvonn-link-overlay` — склад стосу, висота цифрою, підсвітка звʼязку з якорем.
+- `+card:stack-height-move`, `+card:disconnect-removal`, `+card:placement-phase`, `+card:stack-height-score` — див. «Мапа на каталог».
+
+### Daedalian Opus · `games/board-digital/daedalian-opus.md`
+
+- `+feature:password-word` — пароль рівня як словникове слово (Daedalian Opus) замість коду.
+- `+card:unlock-new-piece`, `+card:hub-walk-to-level`, `+card:unstoppable-level-timer` — див. вище.
+
+### Dandy / Dark Chambers · `games/maze-arcade/dandy.md`
+
+- `+effect:revive` — повернути загиблого союзника (серце Dandy, перехід рівня в DC).
+- `+cond:ally_dead` — є загиблий член партії (умова для серця).
+- `+ui:strength-bar` — шкала сили з поділками (31 у DC); можливо, різновид `hp-bar`.
+- `+feature:shared-keys` — інвентар загиблого переходить живому партнеру.
+
+### Darwin's Dilemma · `games/falling-match/darwins-dilemma.md`
+
+- `+card:evolution-chain` — збіги однакових накопичуються, вид піднімається на сходинку (Darwin's Dilemma; Triple Town — без лічильника).
+
 ### Deadly Rooms of Death (DROD: King Dugan's Dungeon) · `games/thinky/drod.md`
 
 - `+cond:sword_at` — клітина зайнята зброєю гравця (узагальнення: «зброя/інструмент у клітині»).
@@ -2761,6 +8897,18 @@
 - `+axis:undo` — тут обмежений/версійний undo + чекпойнти.
 - ⏳-слова, вжиті тут: `input`, `turn_end`, `line_of_sight`, `all_gone`, `leave`, `timer`, `facing`, `free`, `occupied`, `rotate`, `face`, `set_state`, `set_cell`, `spawn_at`, `message`, `gate`, `switch`, `spawner`, `hazard`.
 
+### Defense Grid: The Awakening · `games/tower-lanes/defense-grid.md`
+
+- `+trigger:path_changed`, `+effect:recompute_path`, `+effect:sell`, `+effect:upgrade`, `+role:tower`, `+ui:range-circle` — підтвердження з родини.
+- `+effect:interest` — нарахувати % від поточної валюти (підтвердження).
+- `+effect:drop` — носій кидає предмет на свою клітину (протилежність `pickup`).
+- `+effect:drift_to` — предмет сам рухається до точки (ядро → станція).
+- `+role:core` — цінність, яку крадуть: стан визначає програш.
+- `+ui:wave-ticker` — бігучий рядок про склад наступної хвилі.
+- `+ui:air-path-overlay` — показ повітряних маршрутів на мапі.
+- `+ui:core-counter` — ядра на місці / в дорозі / втрачені.
+- `+feature:checkpoint-rewind`, `+feature:challenge-modes`, `+feature:medal-tiers`.
+
 ### Deflektor (+ Mindbender) · `games/connect-rotate/deflektor.md`
 
 - `+role:source` / `+role:sink` — гармата / приймач (спільне з Pipe Mania); `+role:conduit` — дзеркало, поляризатор, призма, оптоволокно.
@@ -2768,6 +8916,26 @@
 - `+effect:rotate` ⏳ (третя гра сімʼї); `+effect:reflect` — змінити напрям променя за кутом; `+effect:emit_beam` — перерахувати промінь від джерела.
 - `+ui:energy-bar` (є як ⏳ `energy-bar` — підтвердження), `+ui:overload-meter` — шкала перегріву.
 - `+feature:mode-practice` ⏳ підтверджується.
+
+### DemonCrawl · `games/hidden-deduction/demoncrawl.md`
+
+- `+trigger:mistake` — гравець відкрив небезпечну клітину (подія для предметів, модів, серій).
+- `+trigger:streak` — N дій поспіль без помилки; `+cond:no_mistake_since` — від моменту X помилок не було.
+- `+effect:omen` — накласти прокляття-предмет; `+effect:fortify` — посилити захист броні за подією.
+- `+ui:mana-bar` — мана для магічних предметів; `+ui:stage-mod-icons` — іконки модів поточного рівня.
+- `+feature:auto-sweep` — гра сама відкриває безпечне; `+feature:profiles` — кілька профілів-білдів.
+
+### Descent: Journeys in the Dark · `games/tactics/descent-journeys-in-the-dark.md`
+
+- `+trigger:knocked_out` — герой нокаутований (відмінно від `hp_zero`/`died`: лишається жетоном).
+- `+cond:range_total` — сума дальності на кубиках ≥ відстані.
+- `+effect:fatigue` — ±втома (окремий від HP ресурс з межею).
+- `+effect:draw_card` — потягнути картку (оверлорд, пошук).
+- `+effect:activate_group` — активувати групу ворогів.
+- `+role:minion` — рядовий член групи з ватажком.
+- `+ui:surge-count` — сплески кидка; `+ui:fatigue-bar` — втома / витривалість.
+- `+window:quest-guide` — книга квесту з цілями сторін; `+window:campaign-sheet` — аркуш кампанії.
+- `+feature:app-overlord` — застосунок замість гравця-ведучого.
 
 ### Desktop Dungeons · `games/roguelike/desktop-dungeons.md`
 
@@ -2790,6 +8958,23 @@
 - `+feature:score-submit` — надіслати рахунок на онлайн-таблицю з кінцевого екрана.
 - `+axis:session` — `match` (50/100 рівнів).
 
+### Diablo II (inventory) · `games/build-sim/diablo2-inventory.md`
+
+- `+effect:combine` (повтор) — інгредієнти → продукт; `+effect:transmute` — рецепт куба (повтор з Terraria).
+- `+effect:socket` — вставити самоцвіт/руну в гніздо (повтор з GemCraft).
+- `+cond:in_backpack` — предмет лежить у певній зоні інвентаря (умова дії оберега).
+- `+role:container` — підтверджую (Cube, Stash).
+- `+window:stash-window`, `+window:cube-window` — сітки-сховища поруч з рюкзаком.
+- `+ui:belt-slots`, `+ui:paper-doll` — пояс з колонками; лялька екіпірування.
+- `+feature:shared-stash`; `+card:bag-in-bag`, `+card:item-sockets`, `+card:belt-columns`.
+
+### Diamond Rush · `games/dig-gravity/diamond-rush.md`
+
+- `+trigger:landed` — повтор (камінь приземлився на гравця).
+- `+effect:recall` — повернути аватар на чекпоінт за ціну (можна `teleport` + `lives(−1)`, слабка).
+- `+ui:diamond-quota` — «зібрано/потрібно» червоних для дверей світу (близько ⏳ `progress-bar`).
+- `+feature:perfect-bonus` — нагорода за проходження без помилок.
+
 ### Dig Dug · `games/dig-gravity/dig-dug.md`
 
 - `+trigger:input` ⏳ (насос), `+trigger:counter` ⏳ (2 камені → овоч), `+trigger:idle` ⏳ (не тиснеш → ворог здувається).
@@ -2805,6 +8990,15 @@
 - `+cond:on_stake` — гравець стоїть на клітині-активаторі (узагальнення: `cell(digdug, stake)` — можна обійтись ⏳ `cell`, тому слабка пропозиція).
 - `+ui:lives`, `+ui:level-number` — ⏳, повтор.
 - Тригер `pattern(region_closed)` ⏳ — тут ключовий: замкнений контур тріщин.
+
+### Digits (The New York Times) · `games/word-number/nyt-digits.md`
+
+- `+cond:positive_integer` — результат операції ціле і > 0 (Digits, Countdown).
+- `+cond:distance` — відстань значення до цілі ≤ N (зірки Digits).
+- `+ui:operator-buttons` — панель операцій + − × ÷.
+- `+ui:stars-rating` — зірки поточної задачі (Digits, Waffle).
+- `+ui:target-number` — ціль, з якою порівнюється кожен результат.
+- `+feature:reveal-penalty` — показ розвʼязку з мінімальною оцінкою задачі.
 
 ### Disgaea: Hour of Darkness · `games/tactics/disgaea.md`
 
@@ -2828,6 +9022,51 @@
 - `+window:loadout-select` — вибір хранителя/купола/гаджета/мапи перед забігом (ширше за ⏳ `character-select`); `+window:upgrade-window` ⏳ — повтор.
 - `+axis:control` — у шахті `direct`, у куполі — наведення турелі: одна гра, два режими.
 
+### Dominosa (Доміноза) · `games/pencil-logic/dominosa.md`
+
+- `+cond:pair_used(a, b)` — пару значень {a, b} уже покладено десь на полі.
+- `+effect:place_domino` — накрити дві сусідні клітинки однією плиткою, знявши перекриті.
+- `+ui:digit-highlight` (пропоновано в sudoku) — тут до двох чисел одночасно.
+- `+ui:edge-cross` — лінія «не доміно» на ребрі.
+- `+window:params-dialog`, `+window:game-id-dialog`.
+- `+feature:non-unique-mode` — вимкнути гарантію єдиності.
+
+### Donsol · `games/roguelike/donsol.md`
+
+- `+trigger:room_dealt` (як у card-dungeons) — кімнату здано; `+trigger:room_cleared` — усі карти кімнати розіграні.
+- `+cond:last_kill(shield, op, v)` — порівняння з останнім значенням, яке «зʼїв» предмет (тут — щит); `+cond:skipped_last` — у попередній кімнаті тікав; `+cond:suit(card, s)` — масть карти.
+- `+effect:deal(n)` — здати N карт; `+effect:shuffle_back(cards)` — повернути в колоду й перетасувати; `+effect:equip(card, slot)` — покласти в слот.
+- `+role:card` — карта як сутність поза полем.
+- `+ui:deck-counter` — скільки карт лишилось.
+- `+card:degrading-shield` · `+card:potion-sickness`.
+
+### DoomRL / DRL → Jupiter Hell · `games/roguelike/doomrl.md`
+
+- `+trigger:shot(a, target)` — сутність вистрілила (для правил реакції).
+- `+cond:hit_roll(acc)` — кидок влучання вдався; `+cond:ammo(a, op, n)`; `+cond:stance(a, s)` (cautious/running/tired; вужче за `state`, але читається краще — на розсуд куратора).
+- `+effect:reload`, `+effect:fire(weapon, target)`, `+effect:apply_mod(item, mod)`, `+effect:assemble(item, mods)`.
+- `+role:barrel` — штовхана вибухова сутність; `+role:special-stairs`.
+- `+ui:ammo-counter`, `+ui:target-line` (лінія до цілі), `+ui:hit-chance` (шанс над ціллю).
+- `+window:trait-select`, `+window:challenge-select`, `+window:mortem` (текстовий звіт партії).
+- `+feature:challenge-modes`, `+feature:rank-unlocks`, `+feature:permadeath`.
+- `+axis:session=run`.
+- `+card:item-assembly`, `+card:tactics-stance`.
+
+### Door Door · `games/grid-platformer/door-door.md`
+
+- `+trigger:all_trapped(kind)` — усі вороги виду знешкоджені (не знищені: лишаються на полі за дверима).
+- `+cond:from_side(a, door, side)` — сутність підходить до обʼєкта з певного боку.
+- `+effect:close_door(door)` — зачинити двері, запечатавши тих, хто всередині.
+- `+role:door` — двері зі станом і боком (або `gate` з параметром «бік ручки»).
+- `+card:trap-behind-door`, `+card:door-handle-side`, `+card:enemy-shadows-jump` — див. вище.
+
+### Doppelblock (Double Block) · `games/pencil-logic/doppelblock.md`
+
+- `+cond:sum_between` — сума значень між двома маркерами лінії = N.
+- `+cond:count_in` — кількість сутностей виду в лінії/регіоні = N (повтор з інших пазлів).
+- `+cond:duplicate_in_line` — повтор значення в рядку/стовпці.
+- `+card:sum-between-clue` — див. мапу.
+
 ### Dorfromantik · `games/build-sim/dorfromantik.md`
 
 - `+trigger:input`, `+trigger:counter` (група = N, стос = 0), `+trigger:pattern` (`region_closed`).
@@ -2839,6 +9078,66 @@
 - `+feature:custom-rules`, `+feature:mode-sandbox`, `+feature:leaderboard-online`, `+feature:unlockables`.
 - `+card:edge-matching` — див. вище.
 
+### Dosun-Fuwari (ドッスンフワリ) · `games/pencil-logic/dosun-fuwari.md`
+
+- `+cond:supported_above` — має опору зверху (дзеркало `supported` для «легких»: кульки, бульбашки).
+- `+cond:count_in` — кількість сутностей виду в області = N (повтор зі Star Battle / Tentai Show).
+- `+card:gravity-support-check`, `+card:anti-gravity-support` — див. мапу.
+
+### Dot Valley · `games/dig-gravity/dot-valley.md`
+
+- `+trigger:hatch(egg)` — контейнер дозрів і випускає вміст (яйця Dot Valley, Repton).
+- `+ui:percent-meter` — відсоток на статус-рядку (зміст у Dot Valley невідомий; кандидат «% зібраного»).
+
+### Dota Auto Chess · `games/tower-lanes/dota-auto-chess.md`
+
+- `+role:unit` — бойовий юніт загону; `+role:bench` — зона запасу поза полем.
+- `+trigger:round_lost` — сторона програла раунд.
+- `+cond:count_unique` — кількість різних сутностей з ознакою (раса/клас).
+- `+effect:reroll` — оновити вітрину; `+effect:interest` — дохід від накопиченого; `+effect:sell` — продати сутність за частину ціни.
+- `+ui:synergy-panel` — список рас/класів з лічильниками; `+ui:shop-bar`; `+ui:player-list`.
+- `+window:lobby-window` — лобі в клієнті-хості (Dota 2 Arcade).
+- `+axis:time` — значення `phased` (планування + автобій).
+
+### Dota Underlords · `games/tower-lanes/dota-underlords.md`
+
+- `+trigger:round_lost`, `+effect:reroll`, `+effect:interest`, `+effect:sell`, `+role:unit`, `+role:bench`, `+ui:synergy-panel`, `+ui:shop-bar`, `+ui:player-list` — підтвердження з DAC/TFT.
+- `+role:commander` — юніт-лідер з перками, що бʼється разом із загоном (Лорд).
+- `+window:campaign-map` — мапа кампанії з районами-челенджами (City Crawl).
+- `+feature:spectator-lobby` — приватне лобі з глядачами.
+- `+feature:cross-device-continue` — спільний профіль і продовження матчу на іншому пристрої.
+
+### Dots / Two Dots · `games/falling-match/dots-two-dots.md`
+
+- `+effect:shuffle` — переставити плитки поля випадково, зберігаючи кількості (автоперемішування Two Dots).
+- `+effect:clear_color` — зняти всі плитки кольору з поля (контур, 13+ точок, color booster).
+- `+ui:path-color-flash` — підсвітка всього поля кольором лінії при замиканні контуру (?).
+- `+feature:lives-regen` — життя відновлюються за реальним часом (5 по 20 хв).
+- `+card:loop-clears-color`, `+card:auto-shuffle`, `+card:lives-regen-timer`, `+card:booster-items` — див. «Мапа на каталог».
+
+### Dots and Boxes (Крапки й квадрати) · `games/chess-abstract/dots-and-boxes.md`
+
+- `+axis:move-site` — де ставиться хід: `cell` · `edge` · `vertex` (Dots and Boxes — edge; го — vertex/перетин; більшість — cell).
+- `+cond:sides_drawn(box, op, n)` — скільки сторін клітини вже розмічено (3 = «подарунок»).
+- `+ui:edge-hover` — підсвітка ребра-кандидата між двома крапками.
+- `+ui:box-owner-mark` — ініціал/колір власника в захопленій клітині.
+- `+feature:board-start-preset` — стартова дошка з частково проведеними ребрами.
+- `+card:edge-claim-box`, `+card:extra-turn-on-score`, `+card:strings-and-coins-dual` — див. «Мапа на каталог».
+
+### Double Choco (Дабл-чоко) · `games/pencil-logic/double-choco.md`
+
+- `+cond:same_shape(a, b)` — однакова форма з поворотами й відбиттями.
+- `+cond:no_dead_end(borders)` — межа не обривається всередині області.
+- `+cond:one_area_per_color(block)` — у блоці кожен колір утворює рівно одну звʼязну частину.
+
+### Downwell · `games/dig-gravity/downwell.md`
+
+- `+trigger:landed` — повтор: аватар торкнувся опори (перезаряд, обрив комбо).
+- `+effect:reload` — повтор: набої до максимуму.
+- `+cond:airborne` — аватар у повітрі (вмикає стрільбу); можна `not supported`, слабка.
+- `+ui:ammo-counter` — повтор; `+ui:combo-meter` — є в ui-elements як ⏳, тут повтор вживання.
+- `+window:upgrade-window` / `+window:skin-select` — повтори.
+
 ### Dr. Mario (Доктор Маріо) · `games/falling-match/dr-mario.md`
 
 - `+trigger:locked`, `+trigger:settled` — як у Tetris/Puyo.
@@ -2846,6 +9145,16 @@
 - `+window:difficulty-select` — ⏳ підтверджую (рівень вірусів + швидкість + музика на одному екрані).
 - `+ui:virus-counter` — радше `remaining-counter` (⏳), окреме слово не потрібне, якщо куратор погодить.
 - `+axis:gravity` — `cascade` з парами (половинки зʼєднані до розриву).
+
+### Dragon Castle · `games/board-digital/dragon-castle.md`
+
+- `+cond:free_tile` — плитка вільна в шаровому стосі (Mahjong; тут — вільна довга сторона).
+- `+cond:top_layer` — плитка на найвищому зайнятому поверсі.
+- `+effect:flip_set` — перевернути групу лицем донизу (стає непридатною для збігів, але основою для стосу).
+- `+effect:build_shrine` — поставити маркер з запасу на плитку набору.
+- `+trigger:group_formed` — склалась група N+ однакових ортогональних (точніше за `pattern(group)` — через поверхи).
+- `+role:shrine` — маркер, що цінується за висотою під ним · `+role:objective` — карта спільної цілі чи сили на партію (дракон, дух).
+- `+ui:realm-board` · `+ui:countdown-track` · `+window:layout-select` — вибір макету стартового стосу.
 
 ### Dragonsweeper · `games/hidden-deduction/dragonsweeper.md`
 
@@ -2868,6 +9177,45 @@
 - `+window:variant-select` — вибір національного варіанта; `+feature:custom-rules` — перемикачі правил.
 - `+axis:win-condition` — тут три значення в одній сімʼї: без ходів = поразка / перемога / перша дамка.
 - `+card:multi-jump`, `+card:max-capture-rule`, `+card:flying-piece`, `+card:misere-win`, `+card:opening-ballot` — див. «Мапа на каталог».
+
+### Dredge · `games/build-sim/dredge.md`
+
+- `+card:damaged-cells`, `+card:typed-slots`, `+card:item-freshness`, `+card:sanity-meter`, `+card:time-on-action`, `+card:passive-trap-inventory`, `+card:timing-bar-minigame` — див. вище.
+- `+trigger:hull_hit` — корпус/контейнер отримав удар (Dredge; ушкодження рюкзака).
+- `+trigger:day_start` — календарний тік «новий день» (Dredge, Stardew, Harvest Moon).
+- `+effect:discard` — викинути предмет з інвентаря (не `take`: дія гравця).
+- `+effect:decay` — стан предмета падає на рівень (свіжість, міцність).
+- `+role:slot` — клітина-контейнер інвентаря зі своїм типом і станом.
+- `+ui:panic-eye` — індикатор страху/паніки; `+ui:clock-dial` — годинник доби.
+- `+feature:passive-mode` — режим без нападів ворогів.
+
+### Drop7 · `games/falling-match/drop7.md`
+
+- `+cond:run_length` — довжина неперервного відрізка в рядку/стовпці через клітину порівнюється з N або значенням.
+- `+effect:crack` — один удар по багатоударному блоку (зменшує «міцність», останній — відкриває); альтернатива — `set_state(cracked)`.
+- `+feature:shared-sequence` — режим, де всі гравці отримують ту саму послідовність фігур (Drop7 Sequence).
+
+### Duck Chess (Качині шахи) · `games/chess-abstract/duck-chess.md`
+
+- `+trigger:move_done` — завершено першу фазу ходу (вже вживалось у chess-rule-twists, тут — рядок пропозиції).
+- `+cond:not_same_cell` — ціль ≠ поточна клітина (обовʼязкове переміщення).
+- `+effect:relocate` — перенести на будь-яку вільну клітину (не `move` на 1 і не `teleport` на пару).
+- `+role:shared` — фігура без сторони, яку рухають обидва (точніше за `neutral`, що «ходить сама»).
+- `+ui:duck-ghost` — тінь качки в фазі 2 · `+ui:turn-phase` — індикатор фази ходу.
+- `+axis:win-condition` = `king-capture` · `+card:shared-blocker` · `+card:two-part-turn`.
+
+### Duelyst · `games/tactics/duelyst.md`
+
+- `+trigger:summoned` — юніта викликали з руки (Opening Gambit; відрізняти від `spawned` будь-якої появи).
+- `+trigger:died_any` — загинув будь-який міньйон на полі (Deathwatch).
+- `+trigger:attacked` — юніта атакують (контратака).
+- `+cond:adjacent_to_general` — юніт поруч зі своїм генералом (Zeal); `+cond:behind` — атака ззаду (Backstab).
+- `+effect:draw_card` — добір карти (не `draw` = нічия); `+effect:replace_card` — повернути карту в колоду й узяти іншу.
+- `+effect:counterattack` — ціль бʼє у відповідь; `+effect:summon_from_hand` — виклик карти на клітину (зараз `place`).
+- `+role:general` — фігура-лідер, чия смерть = поразка; `+role:card`.
+- `+ui:mana-crystals` — кристали мани (є / максимум); `+ui:replace-slot` — слот заміни карти; `+ui:card-hover-zoom` — збільшена карта при наведенні.
+- `+window:deck-builder` · `+window:mulligan-screen` · `+window:faction-select` · `+window:pack-opening` · `+window:crafting-window`.
+- `+feature:card-collection` — колекція карт між партіями; `+feature:draft-run` — драфт-серія до N поразок.
 
 ### Dungeon Crawl Stone Soup · `games/roguelike/dungeon-crawl-stone-soup.md`
 
@@ -2902,6 +9250,47 @@
 - `+feature:possession-view` — перемкнути вид на першу особу юніта.
 - `+axis:control=indirect` — гравець позначає, виконують інші.
 
+### Dungeon Master · `games/roguelike/dungeon-master.md`
+
+- `+trigger:spell_cast(runes)` — завершено вимову послідовності рун.
+- `+cond:rune_sequence` (як у Grimrock) — послідовність рун відповідає заклинанню; `+cond:load(op, n)` — вага носія; `+cond:leader(a)` — A лідер загону.
+- `+effect:cast(runes)` — виконати заклинання з рун; `+effect:sleep(party)`; `+effect:skill_xp(a, skill, n)` — досвід навички за дію.
+- `+role:party-member` — член загону, не окрема клітина.
+- `+ui:party-portraits`, `+ui:hand-slots`, `+ui:rune-grid` (усі як у Grimrock); `+ui:eye-mouth-boxes` — «око» оглянути / «рот» зʼїсти; `+ui:movement-arrows` — 6 стрілок руху на екрані.
+- `+window:character-sheet`, `+window:character-create` (як у Grimrock).
+- `+feature:sleep-zzz` — кнопка сну загону.
+- `+axis:view=first-person` (`actors: party` — уже ⏳ у classes.md).
+- `+card:skill-by-use` · `+card:resurrect-reincarnate`.
+
+### Dungeon Raid · `games/falling-match/dungeon-raid.md`
+
+- `+cond:compatible` — два види плиток можна в'язати в один ланцюг (меч ↔ череп).
+- `+effect:armor` — ±броня, окремо від HP (поглинає шкоду першою).
+- `+trigger:path_released` — гравець відпустив намальований шлях (кінець вводу drag-path).
+- `+ui:meter-bars` — кілька смуг накопичення під HUD (досвід/золото/апгрейд).
+- `+window:skill-choice` — модал вибору навички з рандомних варіантів при рівні.
+
+### Dungeon Squire · `games/hidden-deduction/dungeon-squire.md`
+
+- `+feature:auto-pickup` — предмети підбираються самі.
+- `+feature:auto-level-up` — рівень піднімається без підтвердження.
+- `+feature:show-monster-levels` — показувати рівні відкритих монстрів (допомога памʼяті).
+
+### Dungeon Warfare · `games/tower-lanes/dungeon-warfare.md`
+
+- `+effect:knockback` — відкинути сутність на N клітин від джерела (на відміну від `push`, джерело не рухається слідом).
+- `+effect:fall_into` — сутність потрапила в прірву/лаву і гине незалежно від HP.
+- `+effect:pull_to` — притягнути ворога до джерела (гарпун) (?).
+- `+effect:sell` — прибрати свою споруду з поверненням частини ціни.
+- `+effect:send_wave_early` — викликати наступну хвилю раніше розкладу.
+- `+trigger:path_changed` — маршрут ворогів перераховано (поставили/прибрали барикаду).
+- `+cond:on_wall` — клітина є стіною, що межує з коридором (легальність настінної пастки).
+- `+role:trap` — споруда гравця на клітині шляху без власного руху (між `tower` і `hazard`).
+- `+ui:send-wave-button` — кнопка «наступна хвиля зараз» із бонусом.
+- `+window:rune-select` — вибір модифікаторів складності перед рівнем.
+- `+feature:difficulty-runes` · `+feature:trap-mastery`.
+- `+card:knockback-push`, `+card:pit-kill`, `+card:wall-trap`, `+card:early-wave-bonus` — див. «Мапа на каталог».
+
 ### Dungeon of the Endless · `games/roguelike/dungeon-of-the-endless.md`
 
 - `+trigger:door_opened` — гравець відчинив двері (тут — тік економіки й хвиль); `+trigger:wave_cleared` — ⏳, вжито; `+trigger:lifted(crystal)` — обʼєкт-ціль підняли (зміна фази рівня).
@@ -2913,6 +9302,103 @@
 - `+feature:mode-coop` (⏳), `+feature:permadeath`.
 - `+axis:turn-structure=event` — real-time, але «хід» відлічується подією гравця.
 
+### DungeonUp · `games/roguelike/dungeonup.md`
+
+- `+trigger:adjacent_enter(a, b)` — A став сусідом B саме цим кроком (на відміну від `adjacent` як стану): проксимальні удари.
+- `+effect:fight(a, b)`, `+effect:stat(a, name, ±n)`, `+cond:can_damage(a, b)` — як у `magic-tower` / `tactical-nexus` (ще не в словнику).
+- `+role:npc-merchant` — купець/коваль.
+- `+ui:breakpoint-list` — пороги атаки AB1…ABn для монстра.
+- `+feature:mode-maze` — окремий режим одного поверху.
+- `+card:proximity-strike` · `+card:maze-mode-single-floor`.
+
+### Dungeons of Daggorath · `games/roguelike/dungeons-of-daggorath.md`
+
+- `+trigger:heart(op, n)` — пульс перетнув поріг (непритомність / смерть).
+- `+effect:pulse(±n)` — змінити пульс; `+effect:faint(a)` — непритомність на час; `+effect:incant(item, word)` — вимовити слово над предметом; `+effect:identify(item)` — розкрити справжній тип.
+- `+cond:light(kind)` — є світло потрібного типу (звичайне/магічне).
+- `+ui:heart-monitor` — анімоване серце зі звуком як індикатор стану; `+ui:command-prompt` — рядок вводу текстових команд; `+ui:hand-slots` — ліва/права рука.
+- `+axis:control=typed` — керування набором команд; `+axis:view=first-person`.
+- `+card:heartbeat-stamina` · `+card:typed-commands` · `+card:ring-incantation`.
+
+### Dungeons of Dredmor · `games/roguelike/dungeons-of-dredmor.md`
+
+- `+feature:skill-loadout` — збірка класу з N навичок на старті.
+- `+feature:crafting` — система крафту поза полем (вікно рецептів).
+- `+feature:permadeath-toggle` — permadeath вмикається при створенні героя.
+- `+feature:short-floors` — режим менших поверхів без втрати прогресу (No Time To Grind).
+- `+window:skill-select` — сітка навичок для вибору N на старті.
+- `+window:crafting-window` — інструмент + рецепти + інгредієнти.
+- `+window:skill-tree-window` — дерева навичок для очок рівня.
+- `+effect:craft(recipe)` — забрати інгредієнти, видати продукт.
+- `+effect:sacrifice(item)` — пожертвувати предмет обʼєкту-божеству.
+- `+effect:quest(kind)` — видати побічне завдання.
+- `+role:altar` — статуя/вівтар, що приймає предмети й дає нагороди.
+
+### Duskers · `games/program-robots/duskers.md`
+
+- `+window:command-console` — консоль вводу команд з історією (Duskers, Quadrilateral Cowboy).
+- `+window:ship-schematic` — план кімнат і дверей як основне поле.
+- `+window:galaxy-map` — метамапа перельотів (якщо не досить `map-window`).
+- `+ui:drone-camera-feeds` — кілька відеопотоків від юнітів.
+- `+ui:room-flag` — позначка кімнати кольором (`flag r#`).
+- `+feature:command-alias` — макроси з команд.
+- `+cond:powered(cell)` — двері/кімната живлені.
+- `+cond:docked` — корабель пристиковано (для відкриття шлюзу).
+- `+effect:wear(a)` — знос модуля з ростом шансу відмови.
+- `+effect:tow(a, b)` — буксирувати непрацюючого юніта (сусід 🔥 `carry`).
+- `+effect:lure(a, where)` — приманити ворога.
+- `+trigger:motion(room)` — сенсор зафіксував рух.
+- `+axis:control` — значення `typed-command`.
+
+### Dwarf Fortress — призначення клітин і рідини · `games/build-sim/dwarf-fortress-tiles.md`
+
+- `+role:liquid` — вміст клітини з рівнем, що тече (також Terraria, ONI).
+- `+effect:flow` — рідина перетікає в сусідню клітину вирівнюючи рівень; `+effect:evaporate` — рівень спадає/зникає.
+- `+cond:volume` — рівень рідини в клітині порівняно з N (глибина ≥ 4, 7/7).
+- `+cond:temperature` — температура клітини проти порогу; `+effect:freeze` — рідина → твердий тайл.
+- `+cond:accepts` — склад/контейнер приймає річ за фільтром.
+- `+effect:haul` — агент переносить річ у ціль (робота); `+effect:designate` — гравець призначає клітині роль (склад/зона/копати).
+- `+trigger:job_done` — агент завершив роботу (ланцюг майстерня → склад).
+- `+ui:depth-digit` — цифра рівня рідини на клітині; `+ui:z-level-indicator` — поточний z-рівень.
+- `+window:stockpile-settings`, `+window:zone-panel` — вікна налаштувань призначення.
+- `+feature:link-graph` — лінки між складами й майстернями як граф.
+- `+card:liquid-pressure`, `+card:stockpile-filter`, `+card:depth-effects-table` — див. «Мапа на каталог».
+
+### Dynamine · `games/hidden-deduction/dynamine.md`
+
+- `+effect:sell(item)` — обміняти предмет на валюту (від `currency` відрізняє втрата предмета).
+- `+effect:process(item)` — переробити предмет в інший дорожчий у споруді.
+- `+cond:value_decayed(item)` — вартість упала з часом.
+- `+ui:bag-meter` — заповненість сумки.
+- `+feature:one-button-mode` · `+feature:death-penalty-setting` · `+feature:reset-progress`.
+
+### Dyson Sphere Program — сітка на кулі планети · `games/build-sim/dyson-sphere-planet-grid.md`
+
+- `+axis:field=sphere` — поле на поверхні кулі (DSP; також глобуси стратегій).
+- `+cond:same_band` — дві клітини в одній смузі широт (там суміжність квадратна).
+- `+ui:grid-overlay` — сітка, що вмикається лише в режимі будування.
+- `+card:sphere-grid`, `+card:latitude-bands` — див. «Мапа на каталог».
+
+### EXAPUNKS · `games/program-robots/exapunks.md`
+
+- `+effect:link(a, id)` — перехід агента в сусідню зону за номером лінка.
+- `+effect:kill(b)` — знищити іншого актора-програму (ширше за `disappear_b`: обирає ціль у зоні).
+- `+effect:jump(to)`, `+effect:send(port, v)`, `+effect:recv(port)`, `+effect:wait` — як у TIS-100 (повтор для підрахунку).
+- `+cond:host_has_space(host)` — у зоні є вільна клітина.
+- `+role:host` (зона-кімната з місткістю), `+role:file` (дані-обʼєкт), `+role:register` (пристрій-порт).
+- `+window:zine` — зін-мануал у грі; `+window:battle-setup` — вибір суперника для битви.
+- `+feature:leave-no-trace`, `+feature:puzzle-scripting-api`.
+
+### Earth Shaker · `games/dig-gravity/earth-shaker.md`
+
+- `+trigger:smashed(a)` — на A впав обʼєкт (монітор вимикає поля); уже пропонували Emerald Mine та ін.
+
+### Easy as ABC (ABC End View) · `games/pencil-logic/easy-as-abc.md`
+
+- `+cond:first_seen` — перше непорожнє значення в лінії з боку = X.
+- `+cond:duplicate_in_line` — повтор значення в рядку/стовпці (повтор з KenKen, Skyscrapers).
+- `+card:first-seen-clue`, `+card:empty-cells-in-latin` — див. мапу.
+
 ### Electric Box (+ Lazors) · `games/connect-rotate/electric-box.md`
 
 - `+role:source` / `+role:sink` / `+role:conduit` — джерело, ціль, перетворювач/дзеркало (підтвердження); `+role:supply` — лоток деталей.
@@ -2920,6 +9406,14 @@
 - `+cond:energy_type(in, kind)` — пристрій отримав енергію певного виду з певного боку.
 - `+effect:place` ⏳; `+effect:convert(energy_in → energy_out)` — пристрій змінює вид енергії; `+effect:emit_beam` / `+effect:reflect` / `+effect:split_beam` (з Khet); `+effect:absorb` — промінь поглинуто.
 - `+ui:parts-tray` — лоток деталей рівня; `+ui:power-button` — запуск (як `run-button`); `+ui:movable-highlight` — показати рухомі предмети.
+
+### Element TD 2 · `games/tower-lanes/element-td-2.md`
+
+- `+trigger:path_changed`, `+effect:recompute_path`, `+effect:sell`, `+effect:upgrade`, `+effect:interest`, `+role:tower`, `+ui:range-circle` — підтвердження з родини.
+- `+role:blocker` — дешевий обʼєкт-стіна, на якому стоїть вежа.
+- `+role:waypoint` — точка, яку ворог мусить пройти по черзі.
+- `+ui:element-wheel`, `+ui:recipe-table`, `+ui:wave-strip`.
+- `+feature:game-modifiers` — набір модифікаторів правил партії (`mode-coop`, `mode-versus` уже ⏳).
 
 ### Emberward · `games/tower-lanes/emberward.md`
 
@@ -2941,6 +9435,105 @@
 - `+role:container` ⏳ (горіх), `+role:hazard` ⏳ (кислота, амеба).
 - `+feature:mode-coop` ⏳ — рівні, що проходяться лише вдвох.
 
+### English Country Tune · `games/thinky/english-country-tune.md`
+
+- `+effect:set_gravity` — змінити напрям гравітації окремого обʼєкта (ECT, гравітаційні перемикачі).
+- `+trigger:beam_hit` — сутність увійшла в промінь іншої (кит, лазер, Sentinel-погляд).
+- `+cond:surface_of` — на якій грані/поверхні стоїть сутність (для 3D-полів).
+- `+role:beam-block` — блок, що випромінює промені й керується ними (кит).
+- `+feature:camera-orbit` — обертання/огляд 3D-поля.
+- `+card:surface-walk`, `+card:per-object-gravity` — як вище.
+
+### Entanglement · `games/connect-rotate/entanglement.md`
+
+- `+effect:follow_path(a)` — сутність/лінія йде шляхами плиток до обриву (друга гра після Tsuro).
+- `+effect:swap_reserve` — обміняти поточну плитку із запасною.
+- `+trigger:path_end` — шлях зупинився в порожній клітині (кінець ходу).
+
+### Epaminondas (Епамінонд) · `games/chess-abstract/epaminondas.md`
+
+- `+cond:outnumbers` — своїх у лінії більше, ніж ворожих підряд (див. abalone.md).
+- `+cond:phalanx` — обрані камені — суцільна лінія в одному напрямку.
+- `+effect:move_group` — зсунути групу одним ходом (див. abalone.md).
+- `+effect:capture_line` — зняти суцільну лінію ворожих від точки удару.
+- `+trigger:back_row_majority` — на початку ходу більшість на чужому домашньому ряду.
+- `+cond:mirror_symmetric` — позиція дзеркально-симетрична.
+- `+ui:phalanx-selection` — виділення фаланги з напрямком; `+ui:back-row-counter` — лічильник проривів.
+- `+card:phalanx-length-move`, `+card:outnumber-line-capture`, `+card:back-row-majority-win`, `+card:delayed-win-check` — див. «Мапа на каталог».
+
+### Escape (Tom 7) · `games/push-slide/escape-tom7.md`
+
+- `+trigger:signal_rise` — імпульс дійшов до лампи / remote panel (уже пропонований у схемотехнічних іграх).
+- `+effect:pulse` — пустити імпульс по графу дротів від кнопки.
+- `+effect:switch_layer` — обміняти клітину між видимим і bizarro-шаром.
+- `+effect:toggle_cell` — перемкнути стан клітини up ↔ down (кольорові підлоги).
+- `+cond:on_axis` — напрям поштовху збігається з віссю блока (LR/UD).
+- `+role:robot` — ворог, що ходить у порядку номерів після гравця (відрізняти від real-time `enemy`) (?).
+- `+feature:upload-requires-solution` — рівень приймається сервером лише з розвʼязком автора.
+- `+feature:moderated-collections` — колекції рівнів за статусом модерації.
+- `+feature:speedrun-solutions` — вивантаження найкоротшого розвʼязку як рекорду.
+- `+window:upload-dialog` — оцінка + пропозиція вивантажити після проходження.
+- `+card:two-layer-field`, `+card:signal-wires`, `+card:sphere-cradle`, `+card:robot-turn-order`.
+
+### Etrian Odyssey · `games/roguelike/etrian-odyssey.md`
+
+- `+trigger:noticed` — ворог помітив гравця й перейшов у переслідування (FOE; як у Brogue).
+- `+effect:start_battle` — перехід з поля на окремий екран бою з учасниками; `+effect:return_to_town` — повернення в хаб зі збереженням знайденого.
+- `+role:foe` — видимий на мапі сильний ворог, що ходить синхронно з гравцем (відрізняти від невидимих `enemy` випадкових боїв).
+- `+ui:map-tool-palette` — перо/пензель/іконки/гумка; `+ui:encounter-gauge` — індикатор близькості випадкового бою; `+ui:map-icon-counter` — лишилось іконок на поверх.
+- `+window:town-hub`, `+window:battle-screen`, `+window:quest-board`, `+window:guild-roster`.
+- `+feature:hand-drawn-map`, `+feature:map-completion-reward`.
+- `+axis:view=first-person`.
+- `+card:hand-drawn-map`.
+
+### Evolmino · `games/pencil-logic/evolmino.md`
+
+- `+cond:grows_by_one(a, b)` — форма B отримується з A додаванням однієї клітинки без повороту/відбиття.
+- `+cond:count_in(block, kind, op, n)` — повтор: кількість клітинок виду (тут — на стрілці) в області.
+- `+role:arrow` — дана стрілка/шлях-підказка, що задає порядок (Evolmino, Arrow-sudoku, Yajilin-стрілки).
+- `+card:growth-chain`, `+card:arrow-path-clue` — див. мапу.
+
+### Exit · `games/grid-platformer/exit-taito.md`
+
+- `+effect:rescue(a)` — сутність зараховується врятованою (вийшла).
+- `+effect:command(a, action, target)` — наказ підлеглому виконати дію.
+- `+cond:can_climb(a, height)` — висота уступу в межах вміння типу.
+- `+cond:fits_passage(a, cell)` — сутність вміщується у прохід.
+- `+cond:awakened(a)` — людина вийшла з паніки (можна замінити `state`).
+- `+trigger:required_lost` — квоти врятованих уже не досягти.
+- `+role:survivor` — сутність, яку треба вивести (не `ally`, бо сама не допомагає до пробудження).
+- `+axis:actors=party-commanded` — аватар + підлеглі за наказами.
+- `+card:rescue-followers` · `+card:actor-type-abilities` — див. вище.
+
+### Eye of the Beholder · `games/roguelike/eye-of-the-beholder.md`
+
+- `+trigger:rest(party)` — загін відпочиває (відновлення, заучування).
+- `+cond:class(a, c)` — герой має клас (хто може касти, носити обладунок).
+- `+effect:memorize(a, spell)` — заучити заклинання у слот.
+- `+effect:recruit(npc)` — NPC стає членом загону.
+- `+window:camp-menu` — меню табору; `+window:spell-book` — книга заклинань для касту.
+- `+feature:party-import` — імпорт персонажів з іншої гри серії.
+- `+card:spell-memorize-rest`, `+card:stone-portal-keys` — див. вище.
+
+### FITS · `games/board-digital/fits.md`
+
+- `+cond:reachable_from_top` — клітина досяжна прямим падінням згори (FITS; родич `supported`).
+- `+effect:set_aside` — гравець відкладає отримане, воно згорає (FITS; родич `pass_turn`).
+- `+ui:called-tile` — відкрита карта, що задає фігуру ходу (NMBR 9, FITS).
+- `+window:round-summary` — підсумок раунду між дошками.
+- `+card:drop-placement` · `+card:per-round-scoring-board` · `+feature:solo-rank-table`.
+- Вісь `turn-structure` (уже 🔥 у `classes.md`) = `simultaneous`.
+
+### Factorio — circuit network · `games/program-robots/factorio-circuit-network.md`
+
+- `+trigger:signal(net)` — у мережі змінився сигнал (уже просили в Kohctpyktop — підтвердження).
+- `+cond:signal(net, ch, op, n)` — умова над каналом мережі (`iron > 100`).
+- `+effect:emit(net, ch, n)` — видати значення в канал.
+- `+effect:enable(entity)` — увімкнути/вимкнути будівлю за умовою (ширше за `set_state`).
+- `+role:wire` (підтвердження), `+role:combinator`.
+- `+window:entity-circuit-panel`, `+ui:signal-picker`, `+ui:wire-overlay`.
+- `+card:signal-vector-bus`, `+card:quantifier-signals`.
+
 ### Factorio — клітинна логістика (конвеєри, маніпулятори, мережі) · `games/build-sim/factorio-belts.md`
 
 - `+role:terrain` (конвеєр, труба — на них лежить/їде), `+role:container` (скриня, машина зі слотами), `+role:resource` (рудне поле).
@@ -2953,6 +9546,71 @@
 - `+card:belt-lanes` — див. вище.
 - `+axis:control` — тут `direct` (інженер) + `indirect` (дрони будують креслення).
 
+### Faeria · `games/tactics/faeria.md`
+
+- `+trigger:summoned` — карту щойно зіграно з руки (Gift); вужче за `spawned`, бо не рахує токени (?).
+- `+trigger:combat_exchange` — обмін ударами з істотою/орбом/спорудою (Combat); Last words — це наявний `died`.
+- `+cond:lands_owned` — у гравця ≥ N земель кольору · `+cond:land_type` — гекс має тип землі · `+cond:keyword` — у сутності є ключове слово.
+- `+effect:draw_card` (повтор) · `+effect:place_land` · `+effect:harvest` · `+effect:counterattack` (повтор) · `+effect:fight` · `+effect:swallow`.
+- `+role:card` (повтор) · `+role:god` — нерухомий «аватар-HP» гравця на полі · `+role:well` — точка доходу.
+- `+ui:mana-counter` · `+ui:power-wheel` · `+ui:land-requirement` (значки кольору на карті).
+- `+window:deck-builder` · `+window:pandora-draft` · `+window:pack-opening`.
+- `+feature:fatigue-damage` — порожня колода шкодить з наростанням.
+
+### Fallout 1–2 (покроковий бій) · `games/tactics/fallout-classic-combat.md`
+
+- `+trigger:combat_start` — перехід з реального часу в бій; `+trigger:attacked` — ціль атакована.
+- `+cond:ap_left` — лишилось AP; `+cond:body_part` — обрана зона тіла.
+- `+effect:spend_ap` — списати AP; `+effect:cripple` — покалічити кінцівку/очі; `+effect:knockdown` — збити з ніг; `+effect:critical` — застосувати рядок таблиці критів.
+- `+ui:ap-lights` — лампочки AP; `+ui:hit-chance`; `+ui:body-part-picker` — силует з зонами.
+- `+window:called-shot` — вікно прицільного пострілу; `+window:character-sheet`; `+window:pipboy` — журнал/годинник/мапа.
+- `+axis:time=hybrid-rt-turn` — реальний час поза боєм, покроковий у бою.
+
+### Fallout Shelter · `games/build-sim/fallout-shelter.md`
+
+- `+card:room-merge`, `+card:rush-gamble`, `+card:stat-pool-production`, `+card:incident-spread`, `+card:cost-scaling`, `+card:loot-box` — див. вище.
+- `+trigger:incident` — подія-лихо в кімнаті (пожежа, нашестя) як тригер ланцюга.
+- `+cond:stat_sum` — сума характеристики сутностей у зоні ≥ N; `+cond:adjacent_same_level` — підтвердження наявної пропозиції.
+- `+ui:resource-gauges` — кілька шкал ресурсів із позначкою «бракує» (енергія/їжа/вода).
+- `+window:floor-select` — підтвердження (тут — прокрутка поверхів).
+
+### Fanorona (Фанорона) · `games/chess-abstract/fanorona.md`
+
+- `+cond:can_capture` — у сторони є взяття (уже в `checkers.md`; не в словнику).
+- `+cond:strong_point` — точка має діагональні лінії.
+- `+cond:visited_in_chain` — точку вже відвідано поточною серією.
+- `+effect:capture_line` — зняти неперервний ряд ворожих сутностей від точки в напрямку.
+- `+effect:stop_chain` — гравець обриває серію добровільно.
+- `+ui:capture-path` (уже в `checkers.md`) · `+ui:capture-choice` — вибір між двома взяттями одного кроку.
+- `+card:approach-capture` · `+card:line-capture-run` · `+card:no-same-direction-twice` — див. «Мапа на каталог».
+
+### FarmVille і Hay Day — ферма на годиннику · `games/build-sim/mobile-farm-timers.md`
+
+- `+trigger:wallclock(t)` — настав момент реального часу (відмінно від `timer` у тіках).
+- `+cond:capacity(store, op, n)` — вільне місце на складі.
+- `+effect:enqueue(building, recipe)` — поставити виріб у чергу будівлі.
+- `+window:order-board`, `+window:roadside-shop` — замовлення й прилавок.
+- `+ui:ready-icon` — значок «готово» над клітиною; `+ui:queue-slots` — слоти черги з таймерами.
+- `+feature:premium-speedup`, `+feature:offline-progress` — див. вище.
+- `+card:wither-window`, `+card:production-queue` — див. вище.
+
+### Felix the Reaper · `games/thinky/felix-the-reaper.md`
+
+- `+cond:in_shadow(cell)` — клітина в тіні за поточним світлом.
+- `+effect:recast_shadows` — перерахувати маску тіней (після повороту сонця чи переставлення обʼєкта).
+- `+trigger:goal_event` — спрацювала цільова подія ланцюга (NPC дійшов, предмет упав).
+- `+card:shadow-walk`, `+card:light-source-rotate` — див. «Мапа на каталог».
+- `+ui:sun-dial` — індикатор поточного положення сонця.
+- `+feature:optional-challenges` — черепи/сонечка за необовʼязкові умови; `+feature:hardcore-variant` — та сама мапа без підказок і мети, з колекційками.
+
+### Fell Seal: Arbiter's Mark · `games/tactics/fell-seal.md`
+
+- `+trigger:attacked`, `+effect:counterattack` — слот контратаки.
+- `+cond:charges` — у предмета/слота лишились заряди.
+- `+ui:turn-order-bar` — список черги ходів.
+- `+window:job-window`, `+window:formation` (вже з FFT), `+window:crafting-window`, `+window:mission-board`, `+window:appearance-editor`, `+window:difficulty-custom`.
+- `+feature:custom-difficulty`, `+feature:permadeath`; `+axis:session` = `campaign`.
+
 ### Fieldrunners · `games/tower-lanes/fieldrunners.md`
 
 - `+trigger:path_changed` — змінилась прохідність поля (поставили/продали вежу).
@@ -2963,6 +9621,24 @@
 - `+window:mode-select` — уже ⏳; тут Classic/Extended/Endless.
 - `+feature:mode-endless` — уже ⏳; підтвердження.
 - `+axis:session` — тут `match` (100 хвиль) і `endless` в одній грі.
+
+### Fights in Tight Spaces · `games/tactics/fights-in-tight-spaces.md`
+
+- `+effect:draw_card` — добрати N карт у руку (не плутати з `draw` = нічия).
+- `+effect:discard` — карта йде в скидання / зникає з руки.
+- `+effect:bump` — зіткнення при поштовху в зайняте: шкода, руху нема (як в Into the Breach).
+- `+trigger:attacked` — сутність стала ціллю атаки (counter-стійки, counter attack ворогів).
+- `+cond:cost` — вистачає ресурсу на дію/карту (momentum, mana, AP); зараз через `has`.
+- `+role:card` — карта як сутність поза полем (рука/колода).
+- `+ui:attack-order` — номер черговості атак ворогів при наведенні; `+ui:momentum-pips` — шкала енергії з місткістю і регенерацією.
+- `+window:card-reward` — вибір 1 з N карт після бою; `+window:event-choice` — подія з варіантами й наслідками; `+window:deck-view` — перегляд колоди/скидання.
+- `+feature:fight-replay` — програвання щойно виграного покрокового бою як кіно в реальному часі.
+- `+axis:session` — `run`.
+
+### Fill-a-Pix (Mosaic) · `games/pencil-logic/fill-a-pix.md`
+
+- `+cond:count_in_area` — кількість клітинок стану в заданому околі (3×3, хрест) порівняно з n; відрізняється від `adjacent_count` тим, що включає саму клітинку.
+- `+card:self-inclusive-neighborhood` — див. мапу.
 
 ### Fillomino (Filling, «Заповнення») · `games/pencil-logic/fillomino.md`
 
@@ -2983,6 +9659,23 @@
 - `+window:formation` — розстановка загону перед боєм; `+window:job-window` — сітка професій і навичок; `+window:map-window` ⏳; `shop-window` ✅.
 - `+axis:field=layers` ⏳ — справжня висота клітин; `+axis:session` = `campaign`.
 
+### Final Fantasy Tactics Advance · `games/tactics/final-fantasy-tactics-advance.md`
+
+- `+trigger:rule_violated(u, law)` — дія порушила чинний закон бою.
+- `+cond:law_active(law)` — закон увімкнено в цьому бою.
+- `+effect:give_card(u, color)` — суддя видає картку; `+effect:jail(u)` — вилучення з бою у вʼязницю.
+- `+effect:set_law(law)` / `+effect:remove_law(law)` — додати/стерти закон картою.
+- `+role:judge` — нейтральний арбітр на полі, що перевіряє правила.
+- `+ui:law-panel` — чинні закони на екрані бою; `+ui:jp-counter` — очки судді.
+- `+window:law-window` — оголошення законів; `+window:mission-board` — дошка місій; `+window:map-placement` — розстановка областей.
+- `+feature:dispatch` — фонова місія юніта; `+feature:link-trade` — обмін юнітами через кабель.
+- `+card:battle-laws`, `+card:judge-points`.
+
+### Fire 'n Ice · `games/grid-platformer/fire-n-ice.md`
+
+- `+card:ice-sticks-to-wall`, `+card:extinguish-by-block`, `+card:step-climb-1`, `+card:pipe-travel` — див. вище.
+- `+trigger:landed(a, floors)` — лід, що впав на вогонь (спільне з Space Panic, Prince of Persia).
+
 ### Fire Emblem (GBA, The Blazing Blade як база) · `games/tactics/fire-emblem.md`
 
 - `+trigger:phase_start` — початок фази сторони (player/enemy/other) — уточнення ⏳ `turn_start(side)` для 3+ сторін.
@@ -2992,6 +9685,17 @@
 - `+ui:battle-forecast` — модал з прогнозом обох сторін; `+ui:terrain-window` — назва і бонуси клітини під курсором.
 - `+window:battle-animation` — окрема сцена розіграшу бою; `+window:unit-status` — повна картка юніта; `+window:prep-screen` — підготовка перед главою.
 - `+feature:mode-casual` — режим без permadeath.
+
+### Fish Fillets · `games/thinky/fish-fillets.md`
+
+- `+cond:strength` — сила сутності ≥ вага того, що рухається (рибки, сила в Strength-пазлах).
+- `+trigger:landed_on` — предмет, що падав, приземлився на сутність (смерть рибки, удар каменю).
+- `+effect:carry_stack` — підняти купу предметів на собі (відрізняється від ⏳ `carry`, бо купа може складатися з кількох тіл).
+- `+role:heavy` — обʼєкт з вагою понад силу частини аватарів (або `object` з параметром вага).
+- `+window:hall-of-fame` — зала слави з результатами (крокомір NG).
+- `+feature:subtitles` — субтитри до озвучених реплік; `+feature:strict-rules` — перемикач суворих правил фізики.
+- `+card:rest-vs-impact`, `+card:strength-classes` — як вище.
+- `+axis:actors` — `party` (2 рибки з перемиканням).
 
 ### Five Tribes · `games/board-digital/five-tribes.md`
 
@@ -3005,6 +9709,20 @@
 - `+axis:turn-structure` = `auction-order` (нове значення: порядок ходу купується щораунду).
 - `+card:mancala-sowing` · `+card:last-piece-action` · `+card:turn-order-auction`.
 
+### Flash Element TD · `games/tower-lanes/flash-element-td.md`
+
+- `+effect:sell`, `+effect:upgrade`, `+role:tower`, `+ui:range-circle`, `+ui:next-wave-button` — підтвердження з родини.
+- `+effect:interest` — % від запасу валюти (підтвердження).
+- `+ui:wood-counter` — лічильник другої валюти.
+- `+trigger:boss_wave` — почалась/закінчилась босова хвиля (для нагород).
+
+### Flicky · `games/maze-arcade/flicky.md`
+
+- `+effect:detach_all` — розчепити весь ланцюжок одразу (Flicky; `detach` лише пару).
+- `+trigger:chain_delivered` — ланцюжок/вантаж дійшов до приймача (Flicky, Sonic 3D Blast).
+- `+role:follower` — сутність, що йде слідом за аватаром (Chirps, Pikmin).
+- `+card:follower-chain`, `+card:group-delivery-bonus`, `+card:catch-bonus-round`, `+feature:difficulty-loop` — див. вище.
+
 ### Flow Free · `games/connect-rotate/flow-free.md`
 
 - `+role:terminal` — фіксований кінець шляху (точка Flow, вузол LYNE); від `source` відрізняється тим, що симетричний.
@@ -3016,6 +9734,25 @@
 - `+window:pack-select` — вибір пака рівнів перед `puzzle-select`.
 - `+feature:hint` ⏳ підтверджується (обмежений запас, купівля).
 
+### Forager · `games/build-sim/forager.md`
+
+- `+effect:buy_land` — купити клітину мапи світу (зараз `currency(-n)` + `custom`).
+- `+cond:adjacent_owned` — клітина межує з уже належною гравцеві (Forager, Cities: Skylines).
+- `+ui:land-price-tag` — ціна на некупленій ділянці мапи.
+- `+window:land-map` — мапа ділянок світу з купівлею (варіант `map-window`).
+- `+card:land-purchase`, `+card:escalating-price`, `+card:perk-grid` — див. вище.
+
+### Four-player chess (шахи на чотирьох) · `games/chess-abstract/four-player-chess.md`
+
+- `+effect:eliminate(side)` — сторона вибуває з черги ходів (мат/пат/здача у грі на N).
+- `+effect:auto_move(a)` — сутність ходить сама (випадково), хоча належить людині (король після здачі).
+- `+cond:teammate(a, b)` — A і B в одній команді.
+- `+cond:lead(op, n)` — відрив від наступного за очками порівняно з N.
+- `+ui:team-arrows` — стрілки-підказки партнерові на дошці; `+ui:side-scoreboard` — очки кожної з N сторін.
+- `+feature:claim-win` — кнопка «заявити перемогу» при виконанні умови; `+feature:team-chat` — приватний чат команди.
+- `+axis:sides` — кількість сторін у партії: 2 · 3 · 4 · N.
+- `+card:player-elimination`, `+card:dead-pieces`, `+card:multi-king-check-bonus` — див. «Мапа на каталог».
+
 ### Frogger (Жабка) / Crossy Road · `games/maze-arcade/frogger.md`
 
 - `+effect:carry` — платформа переносить того, хто на ній стоїть, разом із собою (Frogger, ліфти/конвеєри в платформерах).
@@ -3025,6 +9762,23 @@
 - `+card:carrier-platform`, `+card:periodic-sink`, `+card:idle-punisher`, `+card:prize-machine`.
 - `+window:prize-machine` — екран лотереї/гачі з анімацією видачі.
 - `+feature:free-gift-timer` — подарунок раз на N годин реального часу.
+
+### Front Mission · `games/tactics/front-mission.md`
+
+- `+trigger:part_destroyed` — HP частини сутності вичерпано (рука, ноги, тіло).
+- `+cond:part_alive` — частина ціла (умова для зброї, руху).
+- `+effect:damage_part` — шкода конкретній частині; `+effect:spread_damage` — шкода по всіх частинах.
+- `+role:vehicle` — машина з однією частиною (танк, літак) на противагу ванцеру.
+- `+ui:part-hp-diagram` — силует меха з HP кожної частини.
+- `+window:setup-window` — збірка юніта з частин; `+window:town-menu` — меню міста; `+window:arena-window` — арена.
+
+### Frostpunk · `games/build-sim/frostpunk.md`
+
+- `+axis:polar` — нове значення осі `field`: кругова/полярна сітка (Frostpunk, Circle-sudoku (?)).
+- `+card:polar-grid`, `+card:heat-zones`, `+card:overload-stress`, `+card:hope-discontent`, `+card:law-book`, `+card:worker-assignment` — див. вище.
+- `+cond:heat` (рівень тепла клітини), `+trigger:day_start` — підтвердження наявних пропозицій.
+- `+ui:heat-bar` (тут — теплова карта-оверлей), `+ui:temperature-forecast` — прогноз температури на дні вперед.
+- `+window:law-book`, `+window:tech-tree`.
 
 ### Frozen Synapse · `games/tactics/frozen-synapse.md`
 
@@ -3037,6 +9791,54 @@
 - `+ui:waypoint-path` — маршрут з вузлами-діями; `+ui:last-seen-marker` — примара ворога з часом; `+ui:timeline-scrubber` — повзунок часу плану.
 - `+window:replay-window` · `+window:lobby-window` — список асинхронних партій; `+window:code-editor` — аналог: екран планування як редактор програми бійця.
 
+### Futoshiki (Unequal, Нерівності) · `games/pencil-logic/futoshiki.md`
+
+- `+cond:less_than(a, b)` — значення A менше за B.
+- `+cond:differ_by(a, b, n)` — значення відрізняються рівно на n.
+- `+cond:duplicate_in_line` — повтор з інших файлів (KenKen, Skyscrapers).
+- `+ui:clue-done-mark` — повтор: згашена/використана підказка.
+- `+card:edge-inequality-clue`, `+card:absent-clue-is-info` — див. мапу.
+- `+window:params-dialog`, `+window:game-id-dialog` — повтор Tatham-вікон.
+
+### GIPF · `games/chess-abstract/gipf.md`
+
+- `+effect:insert_push` — нова сутність входить з краю і зсуває відрізок лінії до першої порожньої клітини (GIPF; Labyrinth — з викиданням).
+- `+effect:return_to_reserve` — сутність з поля повертається в запас власника (GIPF, ряди YINSH).
+- `+trigger:reserve_empty` — запас гравця порожній (GIPF, Tak).
+- `+cond:line_full` — лінія від точки входу до протилежного краю зайнята повністю.
+- `+ui:entry-dots` — точки входу навколо поля з підсвіткою можливих вштовхувань.
+- `+ui:row-choice-highlight` — підсвітка рядів, що знімаються, з вибором при перетині.
+- `+window:row-choice` — вибір ряду й долі GIPF-фішок після ходу.
+- `+feature:handicap` — слабшому додаткові фішки.
+- `+card:edge-insert-push`, `+card:row-extension-clear`, `+card:reserve-recycle`, `+card:stacked-power-piece` — див. «Мапа на каталог».
+
+### GRAB-O · `games/thinky/grab-o.md`
+
+- `+effect:extend_path` — подовжити шлях/тіло на клітину з кінчика (кандидат з Flow Free, Cosmic Express ×8 — тут кінцівка).
+- `+effect:pull_to(a, anchor)` — сутність переїжджає вздовж свого шляху до закріпленої точки.
+- `+cond:anchored(limb)` — кінчик кінцівки тримається за зачіпку або стоїть на опорі.
+- Карткові пропозиції — див. «Мапа на каталог».
+
+### Galaxy Trucker · `games/board-digital/galaxy-trucker.md`
+
+- `+trigger:hit(row|col)` — влучання кидком по рядку/стовпцю (Galaxy Trucker, Battleship-родичі).
+- `+trigger:card_revealed` — відкрито карту події · `+trigger:timer_flip` — гравець перевернув годинник.
+- `+cond:connector_match(a, b, side)` — конектори сумісні · `+cond:exposed(side)` — відкритий конектор · `+cond:powered(module)` — є заряд батареї · `+cond:strength(kind, op, n)` — сумарна сила гармат/двигунів/екіпажу.
+- `+effect:detach_unconnected` — від'єднати все, що не звʼязане з ядром (родич `fall`) · `+effect:give_up` — вийти з раунду · `+effect:flight_days(n)` — відкат по треку.
+- `+role:module` — плитка-компонент з функцією й орієнтацією · `+role:crew` — екіпаж у кабіні · `+role:cargo` — вантаж у відсіку.
+- `+ui:hourglass` · `+ui:flight-track` · `+ui:exposed-connector-marker` · `+ui:reserve-slots`.
+- `+window:adventure-card` — модальне рішення за картою · `+window:ship-check` — підсвітка нелегальних плиток · `+window:campaign-map`.
+- `+card:blind-tile-pool` · `+card:ship-legality-check` · `+card:exposed-connector-bonus` · `+card:dice-row-column-hit`.
+- `+feature:turn-based-building` — покроковий варіант realtime-фази (Extended Edition).
+
+### Gals Panic · `games/maze-arcade/gals-panic.md`
+
+- `+effect:leave_trail` — підтверджую (Qix, Xonix, Paper.io).
+- `+cond:in_mask` — клітина/область належить масці-цілі (силует).
+- `+ui:balance-gauge` — шкала зі стрілкою між двома полюсами і позначкою порогу.
+- `+window:roulette-window` — рулетка нагород/штрафів між раундами.
+- `+card:mask-percent-goal`, `+card:balance-gauge`, `+card:between-round-roulette`, `+card:picture-reveal`.
+
 ### Game of the Amazons (Амазонки) · `games/chess-abstract/amazons.md`
 
 - `+trigger:move_done` — підтверджую (з ataxx.md): після руху амазонки відкривається фаза пострілу.
@@ -3047,6 +9849,17 @@
 - `+ui:territory-overlay` — підтверджую (з go.md).
 - `+axis:turn-structure` — значення `compound` (кілька обовʼязкових фаз в одному ході).
 - `+axis:win-condition` — значення `last-mover` (нормальна гра CGT).
+
+### Ganz Schön Clever (That's Pretty Clever) · `games/board-digital/ganz-schon-clever.md`
+
+- `+effect:roll` — кинути кубики (Sagrada; тут — лише «не на таці»).
+- `+effect:cross_box` — закреслити клітинку аркуша (Welcome To).
+- `+effect:to_tray` — перемістити кубик у спільний запас для інших.
+- `+cond:value_at_least` — значення ≥ порогу клітинки.
+- `+cond:ascending` — значення більше попереднього в доріжці (тут з reset після 6).
+- `+trigger:box_filled` — заповнено клітинку з бонусом (запуск ланцюга).
+- `+role:die` · `+role:sheet-area` — область аркуша зі своїм правилом запису.
+- `+ui:dice-pool` · `+ui:silver-tray` · `+ui:score-sheet`.
 
 ### Gauntlet (1985) · `games/maze-arcade/gauntlet.md`
 
@@ -3079,6 +9892,18 @@
 - `+window:skill-tree`, `+window:map-window`.
 - `+feature:meta-progression` (🔥), `+feature:mode-endless`, `+feature:battle-modifiers`.
 
+### Gems of War (і Marvel Puzzle Quest) · `games/falling-match/gems-of-war.md`
+
+- `+effect:route_mana(color)` — віддати ресурс першому підхожому члену загону.
+- `+effect:surge(×2)` — випадкове подвоєння ресурсу збігу.
+- `+effect:cast` — повтор із PQ (закляття сутності).
+- `+cond:position(a, n)` — сутність на N-й позиції загону (перший — бере урон, дає атаку).
+- `+cond:cooldown` — повтор із PQ (тут як «мана не повна»).
+- `+role:troop` — боєць загону-картки поза полем (не `piece`, не `ally` на клітині).
+- `+ui:troop-cards` — стовпець карток загону з шкалами; `+ui:countdown-on-tile` — повтор із Bejeweled (MPQ).
+- `+window:team-builder` — повтор із P&D; `+window:kingdom-map` — мапа королівств з даниною.
+- `+feature:guild-events` — спільні цілі гільдії; `+feature:gacha-chests` — ключі → скрині → випадкові бійці.
+
 ### Gess · `games/chess-abstract/gess.md`
 
 - `+trigger:pattern` (⏳ є) — підтверджую з новим шаблоном `ring` (8 навколо порожнього центру).
@@ -3092,6 +9917,51 @@
 - `+axis:field-bounds` — підтверджую: значення `twilight-border`.
 - `+axis:win-condition` — значення `pattern-survival`.
 
+### Gladiabots · `games/program-robots/gladiabots.md`
+
+- `+window:ai-editor-graph` — редактор дерева поведінки (різновид `code-editor`).
+- `+window:team-setup` — склад команди й ШІ на бійця (ширше за `match-setup`).
+- `+window:ai-list` — бібліотека збережених програм.
+- `+ui:debug-target-lines` — лінії від бота до поточної цілі.
+- `+cond:range_band(target, band)` — ціль у смузі дальності.
+- `+cond:health_band(target, pct)` — HP/щит у смузі відсотків.
+- `+cond:current_action(target, act)` — що зараз робить ціль.
+- `+cond:tagged(target, tag)` / `+effect:tag(target, tag)` — мітки ботів.
+- `+effect:flee(a, from)` — відступати від цілі.
+- `+effect:score_resource` — здати ресурс на базу.
+- `+feature:sandbox-both-teams` · `+feature:tournaments`.
+- `+axis:control` — значення `behavior-tree`.
+
+### Gliński's hexagonal chess (Гексагональні шахи Глінського) · `games/chess-abstract/glinski-hex-chess.md`
+
+- `+cond:hex_dir(a, b, kind)` — B на гекс-промені від A: `edge` (ортогональ) або `vertex` (діагональ).
+- `+effect:score_split(a, b)` — нерівний розподіл очок за результат (пат ¾ : ¼).
+- `+ui:hex-coordinates` — підписи вертикалей/горизонталей гекс-дошки.
+- `+ui:cell-tint` — колір клітини як частина правил (три слони).
+- `+axis:win-condition` — значення `stalemate-partial` (підтримую вісь з chess-rule-twists).
+- `+card:stalemate-partial-score` · `+card:hex-piece-moves`.
+
+### Globesweeper · `games/hidden-deduction/globesweeper.md`
+
+- `+axis:field=sphere` — поле на сфері: граф без межі з геометрією (ширше за `graph`, вужче за `3d`).
+- `+ui:globe-rotate` — контрол обертання/зуму 3D-поля.
+- `+effect:flood_reveal` — рекурсивне відкриття (повтор з minesweeper, для правила трьох).
+
+### Gloomhaven · `games/tactics/gloomhaven.md`
+
+- `+trigger:round_end` — кінець раунду (усі сходили): перетасовки, згасання стихій, short rest.
+- `+trigger:attacked` — фігуру атакують (retaliate, shield).
+- `+trigger:room_revealed` — відкрилась нова кімната (спавн, позачерговий хід монстрів).
+- `+cond:element` — стихія в стані strong/waning; `+cond:initiative_order` — хто раніше в черзі.
+- `+effect:draw_card`, `+effect:discard`, `+effect:lose_card` — рух карти між рукою, скиданням і «втраченими».
+- `+effect:infuse` / `+effect:consume_element` — створити / спожити стихію.
+- `+effect:recover_cards` — повернути карти зі скидання/втрачених у руку; `+effect:rest` — відпочинок як дія.
+- `+role:summon` — призвана істота гравця з автоматичною поведінкою; `+role:card`.
+- `+ui:initiative-track` — черга ходів раунду; `+ui:element-board` — 6 стихій у 3 колонках; `+ui:card-halves` — карта з двома клікабельними половинами; `+ui:modifier-reveal` — показ витягнутого модифікатора.
+- `+window:card-select` — таємний вибір 2 карт; `+window:town-screen` — місто між сценаріями; `+window:road-event` — подія з умовними варіантами; `+window:enhancement-window` — наліпки-покращення карт; `+window:party-sheet` — партія, репутація, досягнення.
+- `+feature:legacy-unlocks` — незворотні відкриття в кампанії; `+feature:scenario-level` — рівень сценарію 0–7.
+- `+axis:turn-structure` — `card-initiative` (порядок щораунду з карт).
+
 ### Go (Ґо, вейці, бадук) · `games/chess-abstract/go.md`
 
 - `+trigger:repetition` (ко/суперко) — спільне з шахами й шогі; `+trigger:passes` — N пасів поспіль (го, Hive-«нема ходів»).
@@ -3102,6 +9972,29 @@
 - `+window:stone-removal` — фаза узгодження мертвих каменів перед підрахунком; `+window:handicap-select`.
 - `+feature:handicap` · `+feature:score-estimator`.
 - `+axis:win-condition` — тут `territory` (і `goal: territory` вже ⏳ — підтверджую).
+
+### Gobblet (Гоблет) · `games/chess-abstract/gobblet.md`
+
+- `+effect:cover` — уже в `cottage-garden.md` / `copenhagen.md` (клітини); тут — фігура накриває фігуру.
+- `+effect:uncover` — знята верхня відкриває нижню.
+- `+cond:bigger` — розмір A більший за верхню B.
+- `+cond:top_of_stack` — сутність верхня у стеку / запасі.
+- `+trigger:revealed` — уже в корпусі; тут — фігура стала верхньою після зняття накривки.
+- `+trigger:touched` — гравець торкнувся / виділив фігуру (touch-move).
+- `+ui:stack-view` (уже в корпусі) · `+ui:reserve-stacks` — запас гравця стеками поруч з полем.
+- `+card:reserve-stacks` · `+card:reveal-on-lift` · `+card:touch-move` · `+card:reveal-loses` · `+card:reserve-exception` — див. «Мапа на каталог».
+
+### Golden Krone Hotel · `games/roguelike/golden-krone-hotel.md`
+
+- `+trigger:form_meter_full` — шкала форми заповнилась.
+- `+cond:lit(cell, light)` — клітина освітлена (сонцем/факелом/місяцем); `+cond:form(a, f)` — герой у формі; `+cond:sees(a, b)` — A бачить B з урахуванням світла й нічного зору (ширше за `line_of_sight`); `+cond:time_of_day(op, t)`.
+- `+effect:switch_form(a, f)` (окремо від `transform`: зберігає героя, міняє набір правил); `+effect:toggle_light(source)`; `+effect:drink_blood`.
+- `+role:light-source` — факел/вікно, що світить радіусом/променем; `+role:window` — скло, що пропускає сонце й розбивається.
+- `+ui:form-meter`, `+ui:clock`, `+ui:hidden-indicator`.
+- `+window:morgue`, `+window:weekly-window`.
+- `+feature:weekly-challenge`, `+feature:morgue-file`.
+- `+axis:light=dynamic` — світло як правило поля.
+- `+card:dual-form`, `+card:sunlight-beams`.
 
 ### Golf Peaks · `games/thinky/golf-peaks.md`
 
@@ -3114,6 +10007,13 @@
 - `+feature:undo`.
 - `+axis:control` — нове значення `card-hand`: ввід = вибір команди з обмеженого набору + напрям.
 
+### Google AI Challenge — Ants · `games/program-robots/ai-challenge-ants.md`
+
+- `+trigger:timeout(bot)`, `+effect:eliminate(bot)`, `+effect:raze(hill)`, `+cond:count_in_radius(a, kind, r2)`, `+cond:visible(cell)` — уже просив `bot-arenas.md`; тут ще одна гра (правило трьох).
+- `+cond:owners_in_radius(cell, r2, n)` — скільки різних власників мають юнітів у радіусі (збір їжі: рівно 1).
+- `+card:focus-battle-resolution`, `+card:collision-kills-all`, `+card:contested-food-destroyed`, `+card:rank-stabilized-cutoff` — див. «Мапу на каталог».
+- `+ui:vision-overlay` — у реплеї перемикання туману «очима гравця N».
+
 ### Gorogoa · `games/thinky/gorogoa.md`
 
 - `+trigger:input(click|drag|pan|zoom)`; `+trigger:aligned(edge_a, edge_b)` — краї двох панелей збіглися (новий: вирівнювання як подія); `+trigger:pattern(scene_complete)`.
@@ -3125,6 +10025,99 @@
 - `+axis:field-scale` — тут `nested` (зум у деталь = вкладена сцена).
 - `+axis:rules` — `discovered` (правила вичитуються з малюнка).
 
+### Graveyard Keeper · `games/build-sim/graveyard-keeper.md`
+
+- `+cond:slot_free` — у клітині вільний слот потрібного шару.
+- `+effect:add_quality` — додати ±бали якості до клітини/предмета.
+- `+effect:decay` — якість падає з часом (є в index/proposals — повтор).
+- `+ui:skull-rating` — значок якості з плюс- і мінус-одиницями над клітиною; `+ui:grave-tooltip` — склад якості при наведенні.
+- `+card:layered-cell-score`, `+card:rating-sum` — див. вище.
+
+### Grid Forge TD · `games/tower-lanes/grid-forge-td.md`
+
+- `+role:wall` (стіна, яку поставив гравець і на якій будують).
+- `+trigger:path_changed` · `+effect:recompute_path` · `+effect:socket` (вставити модифікатор у клітину).
+- `+ui:piece-hotbar` · `+ui:next-wave-button` · `+ui:range-circle`.
+- `+window:skill-tree`.
+
+### GridRacer · `games/thinky/gridracer.md`
+
+- `+effect:accelerate` — змінити вектор швидкості сутності на крок (Racetrack).
+- `+trigger:cross` — відрізок руху перетнув клітину / зону (не лише кінцева клітина).
+- `+ui:split-times` — час/ходи на чекпойнтах проти найкращого; `+ui:velocity-vector` — стрілка поточного вектора (?).
+- `+feature:level-from-image` — завантажити рівень як картинку; `+feature:personal-best` — локальний особистий рекорд на рівень.
+- `+card:vector-momentum`, `+card:segment-collision`, `+card:level-from-image` — див. вище.
+- ⏳-слова, вжиті тут: `input`, `enter`, `level_end`, `count`, `move`, `counter`, `restart`, `zone`.
+
+### Griddle Words · `games/word-number/griddle-words.md`
+
+- `+cond:on_word_list` — слово з заданого списку рівня (не лише зі словника).
+- `+feature:friend-codes` · `+feature:puzzle-archive`.
+
+### Gridwordy · `games/word-number/gridwordy.md`
+
+- `+effect:refill_from_top` — порожні клітини після падіння заповнюються новими згори (Gridwordy, match-3, Bookworm).
+- `+ui:longest-word` — найдовше слово сесії/рекорд.
+
+### Guess Who? (Вгадай, хто?) · `games/hidden-deduction/guess-who.md`
+
+- `+trigger:ask` — гравець поставив питання про прихований стан суперника.
+- `+cond:has_trait` — кандидат має ознаку (предикат над атрибутами сутності).
+- `+effect:answer` — відповідь так/ні (вужча за `feedback(guess)`, бо питання не є спробою).
+- `+role:face` — кандидат у множині дедукції (обличчя, підозрюваний).
+- `+ui:face-grid` — сітка кандидатів зі станом стоїть/опущено; `+ui:question-picker` — перелік ознак для питання.
+- `+window:question-dialog` — складання питання.
+- `+feature:auto-eliminate` — гра сама опускає кандидатів за відповіддю.
+
+### Gunpey (Гунпей) · `games/falling-match/gunpey.md`
+
+- `+trigger:path_complete` — склалась траса між двома заданими межами (Gunpey; Pipe Mania — джерело→злив); альтернатива — `after(x)` + ⏳ `connected`.
+- `+effect:extend_clear` — додати клітини до групи, що вже в стані зникнення.
+- `+effect:raise_field` — поле піднімається на ряд, знизу новий ряд (Gunpey, Panel de Pon; ⏳ `shift(all, up)` близький, але без генерації).
+
+### Gwent (Гвинт) · `games/tower-lanes/gwent.md`
+
+- `+trigger:card_played`, `+effect:draw`, `+effect:discard`, `+role:card`, `+role:lane`, `+window:deck-builder` — підтвердження з Inscryption/Marvel Snap.
+- `+trigger:both_passed` — обидва гравці спасували (кінець раунду).
+- `+effect:return_to_hand` — картка зі столу назад у руку (Decoy).
+- `+effect:destroy_strongest` — знищити сутність(і) з максимальним параметром (Scorch).
+- `+ui:row-power` — сума сили біля ряду; `+ui:round-gems` — індикатор виграних/програних раундів.
+
+### Gyromancer · `games/falling-match/gyromancer.md`
+
+- `+trigger:gauge_full(a)` — шкала сутності заповнена (атака, спецкамінь).
+- `+effect:fill_gauge(a, n)` — додати до шкали; відрізняти від загального `counter`, бо шкала має поріг і скидання.
+
+### H5mota (H5魔塔广场) — спільнота веб-веж · `games/roguelike/h5mota.md`
+
+- `+feature:replay-verification` — рекорд приймається лише після серверного відтворення реплею.
+- `+feature:score-upload` — завантаження рахунку з клієнта (з обмеженнями анти-читу).
+- `+feature:plugin-api` — плагіни на рівень (ширше за `mod-support`: правила, а не скіни).
+- `+feature:event-editor` — редактор подій/скриптів клітин поруч із редактором карт.
+- `+feature:left-hand-mode` — дзеркальне розташування елементів керування.
+- `+window:tower-list` — каталог користувацьких рівнів на сайті (якщо не вистачить `user-levels-browser`-фічі).
+- `+window:event-editor` — вікно скриптів події.
+- `+window:floor-select` — вибір відвіданого поверху для телепорту (транспортер рушія).
+- `+card:replay-verified-score`, `+card:event-scripting` — див. картки.
+
+### Hack · `games/roguelike/hack.md`
+
+- `+cond:in_shop(a)` — сутність у зоні магазину; `+cond:unpaid(item)` — предмет не оплачено.
+- `+effect:bill(item)` — додати в рахунок; `+effect:anger(a)` — NPC стає ворожим; `+effect:tame(a)` — приручити.
+- `+role:shopkeeper` — нейтрал, що стереже зону й стає ворогом за крадіжку; `+role:pet` — союзник, що йде за героєм.
+- `+feature:role-select` — вибір ролі зі стартовим набором.
+- `+card:special-rooms`.
+
+### Halma / Chinese checkers (Хальма / Китайські шашки) · `games/chess-abstract/halma-chinese-checkers.md`
+
+- `+effect:hop` — перестрибнути сутність без взяття (на відміну від `jump_capture`).
+- `+cond:in_camp` — сутність у зоні-таборі (своєму / цільовому).
+- `+trigger:all_in_camp` — усі фігури сторони в цільовій зоні (окремий випадок `all_on`; можна не вводити, якщо `all_on` приймає зону).
+- `+ui:hop-path` — проміжні точки ланцюга стрибків · `+ui:placings` — список фінішувалих з місцями.
+- `+feature:placings` — гонка з розподілом усіх місць.
+- `+window:player-count-select` — вибір 2/3/4/6 гравців і хто людина / AI.
+- `+card:hop-chain` · `+card:race-to-camp` · `+card:camp-lock` · `+card:placings-continue` · `+card:long-symmetric-hop` · `+card:camp-deadline` — див. «Мапа на каталог».
+
 ### Hanano Puzzle (ハナノパズル) · `games/thinky/hanano-puzzle.md`
 
 - `+trigger:input`; `+trigger:adjacent` — бутон торкнувся квітки ребром (без спільної клітини); `+trigger:after` — каскад.
@@ -3132,6 +10125,57 @@
 - `+effect:move`, `+effect:swap`, `+effect:fall`, `+effect:grow` (тіло +1 клітина в напрямку стрілки), `+effect:spawn_at`, `+effect:set_state`; `push` тут — від росту, не від руху гравця.
 - `+role:tile` — бутон із кольором і стрілкою.
 - `+feature:undo`; `+axis:undo`.
+
+### Happy Home (Щасливий дім) · `games/board-digital/happy-home.md`
+
+- `+cond:fits_room(item, room)` — вміщається в кімнату свого типу (ширше за `fits`).
+- `+cond:against_wall(item)` — повне ребро прилягає до стіни.
+- `+trigger:deck_empty` — колода вичерпана (перехід у фінал).
+- `+ui:time-track` · `+ui:market-ring` · `+ui:score-preview`.
+- `+window:score-sheet` — блокнот рахунку з рядками категорій.
+- `+card:time-track-turns` · `+card:set-collection-per-room`.
+
+### Hard West · `games/tactics/hard-west.md`
+
+- `+cond:luck_ge(a, n)` — удача A ≥ N (ключова умова промаху/здібностей).
+- `+effect:luck(a, ±n)` — змінити удачу (за аналогією з ⏳ `hp`).
+- `+effect:ricochet(shot, surface)` — постріл відбивається від поверхні (поруч із ⏳ `bounce`, але як прицільний постріл).
+- `+trigger:cross_reaction_ring(a, e)` — A перетнув зону реакції E (≈ `enemy_moved` з XCOM, але з боку гравця).
+- `+role:ricochet-surface` — обʼєкт-дзеркало для куль (може бути `object` з прапорцем).
+- `+ui:luck-bar` · `+ui:ricochet-line` · `+ui:shadow-silhouette`.
+- `+window:card-board` — розкладка карт-перків; `+window:event-panel` — текстова подія з варіантами.
+- `+card:luck-pool`, `+card:poker-hand-perks`, `+card:shadow-reveal` — див. «Мапа на каталог».
+
+### Harmless7DRL · `games/roguelike/harmless-7drl.md`
+
+- `+trigger:noticed_trap` — гравець помітив тригер пастки (підсвітка).
+- `+cond:flying(a)` — сутність летить; `+cond:identified` (як у Rogue) — руна відома; `+cond:provoked(a)` — монстр спровокований.
+- `+effect:scribe(spell)` — записати заклинання, витративши руни; `+effect:identify` (як у Rogue); `+effect:drop_level(a)` — впасти на поверх нижче; `+effect:gust(a)` — порив вітру зносить.
+- `+role:trap` — прихована пастка, що спрацьовує на вхід (відрізнити від видимого `hazard`); `+role:escort` — ціль, яку треба донести.
+- `+ui:status-line` (як у Rogue).
+- `+window:spellbook` — книга записаних заклинань; `+window:look-mode` — режим огляду курсором.
+- `+feature:win-report` — текстовий звіт партії у файл; `+feature:abandon-character` — здатись, коли застряг.
+- `+card:indirect-combat` · `+card:rune-crafting`.
+
+### Harmonies · `games/board-digital/harmonies.md`
+
+- `+cond:height(cell, op, n)` — висота стопки клітини (Harmonies, Akropolis, NMBR 9).
+- `+cond:top_color(cell, c)` — колір верхнього диска стопки (Harmonies: рецепти, сусіди будинку).
+- `+effect:stack(token, cell)` — покласти поверх стопки (відрізняється від `place` на порожню).
+- `+effect:draft` — узяти картку з відкритого ряду з дозаповненням.
+- `+trigger:market_empty` — запас/мішечок порожній при поповненні (кінець гри).
+- `+role:token` — кубик на картці, що переходить на поле (як у Cascadia).
+- `+ui:market-spaces` — спільне поле з клітинами-наборами · `+ui:card-cubes` — кубики, що лишились на картці (прогрес цілі) · `+ui:score-preview`.
+- `+window:round-summary` — аркуш рахунку з рядками ландшафтів.
+- `+card:stack-recipe-terrain` · `+card:habitat-claim-cube` · `+card:card-slot-limit` · `+card:longest-path-scoring` · `+card:region-count-scoring` · `+feature:solo-rank-table`.
+
+### Harvest Moon (SNES) · `games/build-sim/harvest-moon.md`
+
+- `+trigger:day_start`, `+trigger:season_change` — ті самі, що в `stardew-farm` (лічба підтримки).
+- `+ui:clock-calendar` — годинник + дата + сезон; `+ui:stamina-face` — стан витривалості анімацією персонажа.
+- `+window:diary-save` — збереження «щоденником» у світі гри; `+window:ending-scenes` — серія сцен-кінцівок.
+- `+feature:ending-evaluation` — оцінка гравця після ліміту часу.
+- `+card:area-seed-plant` — див. вище.
 
 ### Hashiwokakero (Hashi, Bridges, Мости) · `games/pencil-logic/hashiwokakero.md`
 
@@ -3141,6 +10185,37 @@
 - `+role:mark` — міст, маркер.
 - `+ui:conflict-highlight`; `+ui:possible-moves-overlay` — сірі лінії можливих зʼєднань (Tatham G).
 - `+feature:auto-check`.
+
+### Hatris · `games/falling-match/hatris.md`
+
+- `+effect:burn` — знищити сутності в стовпці за фільтром типу (FIRE у Hatris; споріднено з `clear`).
+- `+cond:stack_run` — верхні N у стосі однакові (Hatris, Hexa Sort, Water Sort).
+- `+ui:sale-letters` — літерна шкала прогресу до бонусу (SALE; Bubble Bobble EXTEND).
+- `+feature:match-size-setting` — гравець задає розмір сету.
+- `+card:shape-stack-height` · `+card:sale-meter-shop` · `+card:column-burn` — див. «Мапа на каталог».
+
+### Head On · `games/maze-arcade/head-on.md`
+
+- `+effect:lane_change` — перехід на N сусідніх смуг (Head On, Frogger-подібні, лейн-шутери).
+- `+cond:speed_mode` — сутність у режимі швидкості (газ натиснуто).
+- `+role:lane` — смуга-доріжка як сутність поля (уже пропонували інші ігри; підтверджую).
+- `+card:lane-ring-field`, `+card:lane-switch-gaps`, `+card:speed-boost-button`, `+card:head-on-collision` — див. «Мапу на каталог».
+
+### Head over Heels · `games/grid-platformer/head-over-heels.md`
+
+- `+effect:switch_avatar` — передати керування іншому аватару (Head over Heels, Catrap, XOR).
+- `+trigger:seen_by(a, b)` — B у полі зору / в кімнаті з A (собаки зникають від Head).
+- `+card:fuse-avatars`, `+card:observer-vanish`, `+card:per-avatar-powerup`, `+card:ability-split` — див. вище.
+
+### Hearthstone Battlegrounds · `games/tower-lanes/hearthstone-battlegrounds.md`
+
+- `+role:unit` · `+role:hero` — аватар-«життя» гравця поза полем бою.
+- `+trigger:battle_start` · `+trigger:faint` (Deathrattle) · `+trigger:bought` · `+trigger:sold` · `+trigger:card_played` (Battlecry).
+- `+effect:reroll` · `+effect:sell` · `+effect:freeze_slot` · `+effect:summon` · `+effect:discover` (вибір 1 з 3 випадкових за фільтром) · `+effect:upgrade_tier`.
+- `+cond:position` (місце в ряду) · `+cond:has_keyword(a, k)` (Taunt, Divine Shield).
+- `+ui:tavern-tier` · `+ui:shop-bar` · `+ui:player-list` · `+ui:phase-timer`.
+- `+feature:mode-duos`.
+- `+axis:time` — значення `phased` (найм → бій).
 
 ### Heartlight · `games/dig-gravity/heartlight.md`
 
@@ -3183,6 +10258,47 @@
 - `+window:quest-briefing` — брифінг місії; `+window:character-select` — вибір героїв.
 - `+feature:mode-coop` — герої разом проти майстра; `+axis:actors` — `party`.
 
+### Heroes of Might and Magic III (Герої меча і магії III) · `games/tactics/heroes-of-might-and-magic-3.md`
+
+- `+trigger:attacked` — сутність атакована (контратака, реакції).
+- `+trigger:round_start` — початок раунду (скинути лічильники відповідей).
+- `+effect:counterattack` — відповідь захисника.
+- `+effect:wait` — відкласти дію в кінець черги раунду; `+effect:defend` — захисна стійка до наступної дії.
+- `+cond:retaliation_left` — у захисника лишилась контратака.
+- `+role:stack` — фігура «N однакових істот» з кількістю як параметром.
+- `+role:war-machine` — нерухомий обʼєкт-учасник бою з власним ходом.
+- `+ui:stack-count` — число кількості біля фігури; `+ui:turn-order-bar` — черга ходу (є в HD/HotA (?)); `+ui:damage-forecast` — оцінка вбитих під курсором (HotA (?)).
+- `+window:spellbook` — книга заклинань зі школами; `+window:creature-info` — картка істоти; `+window:battle-result` — підсумок бою.
+- `+axis:actors=stack` — фігура як група однакових.
+
+### Heroes of Sokoban · `games/thinky/heroes-of-sokoban.md`
+
+- `+effect:cast_ray` — пустити службовий промінь до першої перешкоди й повернути, у що він уперся (Чарівник; Mirror Isles має схоже).
+- `+card:line-of-sight-swap`, `+card:heroes-as-objects`, `+card:chain-push` — див. вище.
+- `+window:title-screen`, `+window:message-screen` — повтор пропозицій Mirror Isles (стандартні екрани PuzzleScript).
+- ⏳-слова, вжиті тут: `input`, `free`, `occupied`, `turn_of`, `move`, `pull`, `swap`, `set_state`, `sound`, `after`, `all_on`, `next_level`, ролі `switch`, `gate`.
+
+### Heroscape · `games/tactics/heroscape.md`
+
+- `+trigger:round_start` — початок раунду (фаза планування маркерів); `+trigger:marker_revealed(n)` — відкрито маркер наказу.
+- `+cond:higher_than(a, b)` — A стоїть вище за B; `+cond:engaged(a)` — фігурка в контакті з ворогом.
+- `+effect:roll_dice(n, kind)` — кинути кубики з символами; `+effect:place_marker(card, n)` — покласти маркер наказу; `+effect:wound(a, n)` — рани без зменшення статів.
+- `+role:squad` — група фігурок під однією картою; `+role:hero` — одна фігурка з кількома Life; `+role:army_card` — карта статів поза полем.
+- `+ui:order-markers` — маркери на картах; `+ui:wound-markers` — рани на карті; `+ui:dice-tray` — лоток кидка.
+- `+window:army-builder` — драфт армії; `+window:map-builder` — збір ландшафту.
+- `+feature:map-sharing` — обмін мапами-ландшафтами.
+- `+axis:field=hex-height` — гекс з висотою (зараз лише `hex` або `layers`).
+- `+card:order-markers`, `+card:height-attack-bonus`.
+
+### Herugolf (Хелгольф) · `games/pencil-logic/herugolf.md`
+
+- `+cond:stroke_length` — довжина k-го відрізка лінії дорівнює формулі (N − k + 1).
+- `+cond:path_clear` — відрізок не проходить через заборонені клітинки (мʼячі, лунки, інші лінії); повтор із корпусу.
+- `+effect:draw` — гравець малює відрізок лінії (повтор із корпусу, для правила трьох).
+- `+effect:cut_path` — стерти відрізок / хвіст лінії (повтор).
+- `+role:line` — траєкторія як сутність із порядком відрізків (повтор із sudoku-variants).
+- `+card:decreasing-stroke-length`, `+card:no-stop-cells`, `+card:show-final-position` — див. мапу.
+
 ### Hex (Гекс) · `games/chess-abstract/hex.md`
 
 - `+trigger:connected` — група сутностей зʼєднала дві/три зони (сторони, кути); варіант `pattern(...)` з формою `connect(zones)` — потрібен для Hex, Y, Havannah, Bridg-It.
@@ -3194,12 +10310,52 @@
 - `+feature:swap-rule` — увімкнення pie-правила як налаштування партії.
 - `+card:connect-sides-win`, `+card:swap-rule`, `+card:hex-grid-render` — див. «Мапа на каталог».
 
+### Hexa Sort · `games/falling-match/hexa-sort.md`
+
+- `+effect:transfer_run` — перенести верхню одноколірну серію з однієї стопки в іншу (Hexa Sort, Water Sort, Ball Sort).
+- `+cond:top_same` — верхні шари двох стопок одного кольору (поки пишу як `same(a, b, top_color)`).
+- `+card:stack-top-merge` · `+card:stack-clear-threshold` · `+card:locked-cell-unlock` — див. «Мапа на каталог».
+- `+ui:stack-height-label` — число шарів над стопкою.
+- `+feature:lives-regen` — життя на спроби рівня, відновлюються в часі (Candy Crush-модель).
+
+### Hexapawn (гексапішак) і машина, що вчиться на сірникових коробках · `games/chess-abstract/hexapawn.md`
+
+- `+effect:adjust_weight(state, move, ±n)` — змінити вагу ходу в таблиці навчання (конфіскація/нагорода намистинки); загальне для будь-якого табличного AI.
+- `+effect:pick_weighted(box)` — випадковий вибір з мультимножини/за вагами (хід HER; родич `rng`, але з розподілом).
+- `+cond:mirror_of(pos_a, pos_b)` — позиції однакові з точністю до симетрії.
+- `+ui:policy-view` — видимий «мозок» AI: варіанти ходу з вагами (намистинки в коробці).
+- `+ui:learning-curve` — графік поразок/перемог AI за номером партії.
+- `+feature:ai-learning` — AI змінюється між партіями й памʼятає досвід; `+feature:ai-reset` — скинути навчання.
+- `+axis:opponent` — нове значення `learning-ai` (суперник, що вчиться під час серії).
+- `+card:matchbox-learning` · `+card:symmetry-reduction` · `+card:learning-curve` — див. «Мапа на каталог».
+
 ### Hexcells / Hexcells Plus / Hexcells Infinite · `games/hidden-deduction/hexcells.md`
 
 - `+cond:contiguous` — сині в околі/на лінії утворюють один ланцюжок (для `{n}`; заперечення — `-n-`).
 - `+effect:mark_safe` — відповісти «чорна»; на відміну від прапорця в сапері, перевіряється одразу.
 - `+ui:mistake-counter` (вже є в ui-elements як `mistake-counter` — тут підтвердження вжитку) · `+ui:line-clue` — числа за краєм поля, привʼязані до лінії.
 - `+feature:seed-input` — повторити згенерований пазл за кодом; `+feature:perfect-run` — окрема позначка «пройдено без помилок».
+
+### Hexic (Hexic HD, Hexic 2) · `games/falling-match/hexic.md`
+
+- `+effect:rotate_group` — повернути групу сутностей навколо точки (вершини, центру).
+- `+trigger:pattern(ring6)` — нова форма для `pattern`: кільце з 6 навколо центру.
+- `+cond:mutually_adjacent` — набір клітин попарно суміжний (трикутник гексів).
+- `+effect:lock_all` — замкнути всі плитки на полі.
+- `+card:rotate-triple-hex`, `+card:ring-match` — див. мапу.
+- `+ui:vertex-cursor` — курсор у вершині між клітинами, а не в клітині.
+
+### Hexologic · `games/pencil-logic/hexologic.md`
+
+- `+effect:cycle_value` — значення клітини перебирається по колу за кліком (кандидат з Sudo Sweep; тут 0→1→2→3→0).
+- Карткові пропозиції — див. «Мапа на каталог».
+
+### Hextris (Гекстріс) · `games/falling-match/hextris.md`
+
+- `+cond:since(event, op, t)` — від останньої події минуло порівняно з t (вікно комбо Hextris; затримка повороту).
+- `+axis:field=radial` — полярна сітка: лани від центру з циклічним сусідством (Hextris; гравітація `toward-center` уже в коді).
+- `+ui:combo-timer-ring` — таймер комбо, намальований по межі поля.
+- `+card:radial-lanes`, `+card:spawn-wave-patterns` — див. «Мапа на каталог».
 
 ### Hey, That's My Fish! (Packeis am Pol) · `games/board-digital/hey-thats-my-fish.md`
 
@@ -3217,6 +10373,11 @@
 - `+cond:run_rooms` — скільки регіонів охоплює неперервна серія клітинок одного стану в рядку/стовпці.
 - `+trigger:pattern(long_white_run)` — значення для `pattern(shape)`: біла серія задовга відносно меж.
 - `+card:white-run-border-limit`, `+card:room-symmetry-check` — див. мапу.
+
+### Hidato (Хідато) · `games/pencil-logic/hidato.md`
+
+- `+cond:consecutive_adjacent(k, k+1, n8)` — клітинки з послідовними числами сусідні у заданому сусідстві.
+- `+card:numbered-path`, `+card:irregular-board-mask` — див. мапу.
 
 ### Hitman GO (+ Lara Croft GO) · `games/push-slide/hitman-go.md`
 
@@ -3246,6 +10407,35 @@
 - `+window:expansion-select` — вибір набору фігур/розширень перед партією (близько до `variant-select`).
 - `+axis:field-bounds` — `bounded` / `unbounded` (Hive, Life, нескінченні раннери); `field: hex` не каже, що поля нема.
 
+### Hnefatafl (Тафл, «королівська дошка») · `games/chess-abstract/hnefatafl.md`
+
+- `+cond:sandwiched(a)` — A між двома ворогами (або ворогом і ворожою клітиною) по прямій.
+- `+cond:hostile(cell, side)` — клітина діє як ворог для сторони.
+- `+cond:surrounded(a, n)` — A оточений з N ортогональних боків.
+- `+cond:enclosed(kind)` — сутності виду замкнені суцільним кільцем ворога.
+- `+trigger:sandwich` — щойно склався затиск (подія для каскаду взяття).
+- `+ui:escape-warning` — «raichi/tuichu»: відкритий шлях короля; `+ui:restricted-squares` — позначки трону/кутів.
+- `+window:side-select` — вибір сторони в асиметричній грі; `+feature:side-swap-match`.
+- `+card:custodian-capture`, `+card:asymmetric-sides`, `+card:shieldwall-capture`, `+card:exit-fort`, `+card:encirclement-win` — див. «Мапа на каталог».
+
+### Homescapes / Gardenscapes / Royal Match (мета-шар ремонту) · `games/falling-match/match3-meta-renovation.md`
+
+- `+effect:fly_to` — сутність летить над полем до обраної цілі й діє там (Propeller, рибка Candy Crush).
+- `+cond:most_common` — колір/тип, якого найбільше на полі (комбо light ball + X).
+- `+window:home-screen` — сцена мета-шару з точками задач (не `map-window`: це одна кімната, а не мапа рівнів).
+- `+window:task-list` — список задач зони з цінами в зірках.
+- `+window:decor-choice` — вибір одного з варіантів обʼєкта.
+- `+window:chest-reward` — відкриття скрині з нагородами (Royal Match, Toon Blast).
+- `+feature:renovation-meta` — мета-прогрес «ремонт за зірки» між рівнями.
+- `+feature:teams` — постійні команди гравців з чатом і обміном життями (родич `chat`, `online-multiplayer`).
+- `+card:*` — див. «Мапу».
+
+### Hook · `games/connect-rotate/hook.md`
+
+- `+cond:not_covered(a)` — на сутності не лежить інша (шари перекриття).
+- `+cond:circuit_closed(a, b)` — є замкнений контур від A до B.
+- `+effect:retract(a)` — змотати лінію до котушки.
+
 ### Hoplite · `games/tactics/hoplite.md`
 
 - `+trigger:move_from_to` — хід гравця з умовою на стартову й кінцеву клітину (stab: обидві сусідні з ворогом).
@@ -3256,6 +10446,21 @@
 - `+feature:mode-challenge` — короткі підземелля з випадковими стартовими дарами.
 - `+card:move-attack` — див. «Мапа на каталог».
 
+### Human Resource Machine · `games/program-robots/human-resource-machine.md`
+
+- `+effect:store(cell)` / `+effect:load(cell)` — запис/читання значення в комірку памʼяті актором (COPYTO/COPYFROM).
+- `+effect:jump_to(label)` — перехід лічильника команд на мітку (спільне для асемблерних ігор).
+- `+cond:held(a, kind|value)` — що в руках і з яким значенням (=0, <0) — уже пропонували 7 Billion Humans і Cargo-Bot.
+- `+feature:random-test-cases`, `+feature:solution-metrics`, `+feature:program-clipboard`.
+- `+ui:hand-drawn-label` — підпис від руки на команді/плитці; `+ui:inbox-outbox-belts` — конвеєри входу/виходу з видимою чергою.
+- `+window:boss-briefing` — брифінг завдання з прикладом входу/виходу.
+
+### Hungry Horace · `games/maze-arcade/hungry-horace.md`
+
+- `+trigger:exit_section` — аватар вийшов через вихід секції (близьке до Berzerk `+trigger:room_exit`; можна злити).
+- `+effect:eject(a)` — прибрати сутність з поля «за межі» (не смерть: Горацій, сторож).
+- `+card:section-exit-no-clear` — див. вище.
+
 ### Hunt the Wumpus («Полювання на Вампуса») · `games/hidden-deduction/hunt-the-wumpus.md`
 
 - `+cond:adjacent_kind(cell, kind)` — серед сусідів є сутність виду (булевий варіант `adjacent_count ≥ 1`; підказка без числа).
@@ -3265,6 +10470,12 @@
 - `+feature:same-setup` — повтор стартової розстановки (ширше: `seed-input`).
 - Вжито наявні ⏳ без пропозицій: `message` (головний канал інформації), `hazard` (ями, кажани), `map-window`, `message-log`.
 - `+axis:info-asymmetry` — див. Geister; тут `player-vs-game`.
+
+### Hustle (Gremlin, 1977) · `games/maze-arcade/hustle.md`
+
+- `+trigger:expired` — сутність вичерпала час життя (ціль Hustle, тимчасові предмети); зараз — `custom` або `timer` на кожну сутність.
+- `+ui:penalty-meter` — лічильник штрафу, що віднімається наприкінці.
+- `+card:crash-grows-tail`, `+card:mystery-value-pickup`, `+card:decaying-target-value`, `+card:crash-transfers-board`, `+card:move-tick-timer` — див. «Мапу на каталог».
 
 ### HyperRogue · `games/roguelike/hyperrogue.md`
 
@@ -3277,6 +10488,14 @@
 - `+feature:mode-pure-tactics`, `+feature:orb-strategy`, `+feature:geometry-switch`.
 - `+axis:field=hyperbolic` — граф не передає головного: експоненційний ріст кілець; `+axis:session=run`.
 
+### IQ Puzzler Pro · `games/board-digital/iq-puzzler-pro.md`
+
+- `+cond:covers_exactly` — фігури разом покривають поле без залишку (Ubongo вже пропонував).
+- `+effect:mirror` — віддзеркалити фігуру (ширше за `rotate`).
+- `+ui:piece-tray` — лоток фігур · `+ui:challenge-card` — номер, рівень і стартова позиція задачі.
+- `+axis:field=pyramid` — шаровий FCC-лаштунок (між `layers` і `3d`).
+- `+card:prefilled-pieces` · `+card:polycube-pyramid`.
+
 ### Ice-sliding puzzles (Inertia і жанр «ковзай до упору») · `games/push-slide/ice-sliding-puzzles.md`
 
 - `+trigger:input`, `+trigger:enter` (стоп, міна, самоцвіт на льоту), `+trigger:blocked`, `+trigger:all_gone` (самоцвіти).
@@ -3287,6 +10506,37 @@
 - `+window:hints-window` — тут вбудовано в game-screen; `+feature:undo`, `+feature:show-solution`, `+feature:seed-input`.
 - `+axis:stop-rule` — що зупиняє ковзання (спільна вісь з klotski.md).
 
+### Icebarn (アイスバーン) · `games/pencil-logic/icebarn.md`
+
+- `+cond:turns` — лінія повертає в клітинці (повтор з Masyu).
+- `+cond:crosses` — лінія перетинає себе/іншу в клітинці (повтор).
+- `+cond:visited` — шлях пройшов через клітинку/зону/стрілку.
+- `+trigger:pattern(loop_branch)` — розгалуження лінії (повтор).
+- `+card:ice-straight-path`, `+card:must-visit-checkpoints` — див. мапу.
+
+### Infinifactory · `games/program-robots/infinifactory.md`
+
+- `+trigger:signal(sensor)` — сенсор подав сигнал (подія сигнальної мережі).
+- `+cond:signal(port)` — на вході механізму є сигнал.
+- `+effect:weld(a, b)` — постійне зчеплення (≠ `attach`, який можна розірвати).
+- `+effect:lift(a, n)` — підняти групу на N угору.
+- `+effect:emit_signal(conduit)` — передати сигнал проводом.
+- `+effect:destroy_line(dir)` — знищити все на лінії (лазер).
+- `+role:actuator`, `+role:sensor`, `+role:product`.
+- `+window:puzzle-info`, `+window:metric-histograms`.
+- `+ui:block-hotbar`, `+ui:metric-panel`.
+- `+feature:workshop`, `+feature:sandbox-containers`.
+
+### Infinitode 2 · `games/tower-lanes/infinitode-2.md`
+
+- `+effect:sell`, `+effect:upgrade`, `+effect:buff`, `+role:tower`, `+ui:range-circle` — підтвердження з родини.
+- `+effect:mine` — сутність щотіку додає ресурс з клітини.
+- `+role:miner` — будівля-видобувач на клітині-ресурсі.
+- `+role:modifier` — будівля без атаки, що змінює сусідів.
+- `+ui:ability-bar` — панель активних умінь із зарядами.
+- `+window:research-tree` — дерево досліджень (`editor-window` уже ⏳).
+- `+feature:research-tree` — дерево досліджень як фіча (поруч із ⏳ `meta-progression`, `mode-endless`, `cloud-save`, які вже є).
+
 ### Infinity Loop + Net (Tatham) · `games/connect-rotate/infinity-loop.md`
 
 - `+role:conduit` — плитка, що проводить зʼєднання (труба, лінія); `+role:source` — джерело, від якого рахується звʼязність.
@@ -3296,6 +10546,41 @@
 - `+ui:lit-tiles` — підсвітка підключених; `+ui:lock-marker` — позначка заблокованої плитки.
 - `+feature:mode-zen` ⏳ підтверджується; `+feature:mode-inverse` — режим з протилежною метою (Dark mode).
 - `+card:tile-rotate`, `+card:connectivity-check`, `+card:edge-barrier` — див. вище.
+
+### Infra Arcana (огляд з The Ground Gives Way і Zorbus) · `games/roguelike/infra-arcana.md`
+
+- `+trigger:noticed(a, b)` — A помітив B (стелс).
+- `+trigger:discovered(kind)` — гравець уперше побачив тип предмета/ворога.
+- `+cond:aware(a, b)` — A знає про B.
+- `+cond:lit(cell)` — клітина освітлена.
+- `+effect:shock(+n)` — додати до шок-метра.
+- `+effect:add_phobia` — додати негативний трейт/фобію.
+- `+effect:recruit(a)` — сутність стає союзником.
+- `+ui:shock-meter` · `+ui:insanity-meter` · `+ui:spirit-bar` — індикатори IA.
+- `+feature:background-select` — клас-передісторія на старті · `+feature:trait-pick` — вибір пасивного трейту при рівні · `+feature:save-delete-on-load`.
+
+### Inkognito · `games/hidden-deduction/inkognito.md`
+
+- `+trigger:meet` — дві фігури різних сторін закінчили хід в одному вузлі (ширше за `contact`: можна «притягнути» чужу фігуру до своєї).
+- `+effect:ask` — запит до власника сутності про прихований атрибут.
+- `+effect:show_cards` — показати N карт приватно одному гравцю.
+- `+cond:at_least_one_true` — серед показаних карт є правдива.
+- `+role:decoy` — сутність-приманка, не відмінна від справжньої ззовні.
+- `+ui:deduction-sheet` — таблиця гіпотез «хто є хто».
+- `+ui:action-dice-balls` — видимий результат рандомайзера дій.
+- `+window:answer-window` — приватний вибір карт відповіді.
+
+### Inkulinati · `games/tactics/inkulinati.md`
+
+- `+trigger:chapter_end` — кінець розділу/раунду (Danse Macabre).
+- `+effect:ring_out` — знищити сутність, виштовхнуту за край поля (зараз `edge` + `disappear`).
+- `+effect:summon_for_cost` — виклик юніта за ресурс (відмінно від `spawn` без ціни і `place` з запасу).
+- `+effect:knockback` — відкинути на N клітин.
+- `+cond:cost` — вистачає ресурсу на дію (Living Ink).
+- `+role:avatar-commander` — аватар гравця серед юнітів, смерть якого = поразка.
+- `+ui:ink-counter` — лічильник ресурсу виклику з поточною ціною.
+- `+window:journey-map` — кампанійна мапа територій із майстрами.
+- `+feature:roster-fatigue` — нудьга/втома юнітів між боями.
 
 ### Inscryption (Act 1) · `games/tower-lanes/inscryption.md`
 
@@ -3319,6 +10604,43 @@
 - `+feature:reset-turn` — одноразовий відкат ходу.
 - `+axis:session` — тут `run` (забіг з кількох боїв, кінець = смерть мережі).
 
+### Invisible, Inc. · `games/tactics/invisible-inc.md`
+
+- `+trigger:seen` / `+trigger:noticed` — агент потрапив у основний / периферійний зір (дві різні реакції).
+- `+trigger:alarm_level` — глобальний лічильник тривоги перейшов рівень.
+- `+cond:in_vision` — клітина в конусі зору ворога; `+cond:in_cover` — агент за укриттям і присів.
+- `+effect:alert` — перевести ворога в стан тривоги; `+effect:investigate` — ворог іде до точки (шум, тіло, остання позиція).
+- `+effect:hack` — зменшити вогнестіну пристрою за ресурс; `+effect:ko` — вирубити на N ходів (тіло лишається на клітині).
+- `+role:device` — пристрій з вогнестіною і власником (камера, турель, сейф, консоль); `+role:camera` — нерухомий спостерігач з конусом.
+- `+ui:vision-cone` — конуси зору (основний/периферійний кольором); `+ui:alarm-dial` — диск тривоги з поділками; `+ui:pwr-counter` (`action-points` вже є).
+- `+window:mainframe-view` — той самий план у шарі пристроїв; `+window:agency-screen` — агентство між місіями; `+window:destination-map` — карта світу з часом перельоту.
+- `+feature:custom-generation` — ручні параметри генерації кампанії.
+
+### Isaac and the Conservation of Momentum · `games/thinky/isaac-conservation-of-momentum.md`
+
+- `+effect:transfer_momentum` — передати одиниці імпульсу іншій сутності в напрямку удару.
+- `+card:momentum-transfer`, `+card:mass-threshold` — див. вище.
+- `+window:title-screen` — повтор (Mirror Isles).
+- Слова словників, вжиті тут: `settled` (🔥), `input`, `tick`, `enter`, `free`, `move`, `animate`, `sound`, `all_on`, `next_level`, ролі `terrain`, `hazard`, `mark`.
+
+### Islanders · `games/build-sim/islanders.md`
+
+- `+cond:count_in_radius` — кількість сутностей виду в радіусі (уже пропонувалось у корпусі; тут — ядро рахунку).
+- `+trigger:hover` — курсор над позицією (перерахунок превʼю без дії).
+- `+ui:score-preview` — сума очок до кліку; `+ui:radius-sphere` — видима сфера дії будівлі; `+ui:island-gauge` — шкала до переїзду.
+- `+window:pack-choice` — вибір паку.
+- `+card:radius-scoring`, `+card:score-preview` — див. вище.
+
+### Islands of Insight · `games/thinky/islands-of-insight.md`
+
+- `+cond:true_in_all_solutions` — клітина однакова в усіх розвʼязках (underclued).
+- `+cond:symmetric` — область центрально-симетрична відносно символу.
+- `+cond:visible_count` — кількість видимих клітин у 4 напрямках (Kuromasu, Viewpoint).
+- `+feature:puzzle-refresh`, `+feature:skill-tree`, `+feature:daily-quests`.
+- `+window:rules-tab` — вкладка мапи зі словником усіх побачених правил.
+- `+card:underclued-grid`, `+card:rule-discovery` — як вище.
+- `+axis:session` — `endless` (пазли оновлюються без кінця) поруч із кураторськими Enclave-ами.
+
 ### Isle of Arrows · `games/tower-lanes/isle-of-arrows.md`
 
 - `+trigger:tile_drawn` — гравець отримав нову плитку з колоди.
@@ -3330,12 +10652,46 @@
 - `+feature:mode-daily` · `+feature:run-relics` — реліквії/бонуси діють до кінця забігу.
 - `+axis:session` — `level` (Campaign) і `daily` в одній грі.
 
+### Isle of Skye: From Chieftain to King (Острів Скай) · `games/board-digital/isle-of-skye.md`
+
+- `+trigger:round_end` — тут спрацьовують раундові плитки (як у Kingdomino).
+- `+effect:discard` — тайл повертається в мішок; `+effect:draw_tile` — тягнення N тайлів з мішка (`draw` у словнику — нічия).
+- `+effect:set_price` — гравець призначає ціну своєму тайлу; `+effect:buy` — купівля за ціною іншого гравця (гроші — йому).
+- `+cond:edge_match` — тут **усі** спільні ребра однакові (у Kingdomino — хоча б одне).
+- `+cond:area_closed` — область оточена іншою місцевістю (Carcassonne-місто, Skye-область).
+- `+cond:road_connected` — тайл зʼєднаний дорогою з точкою (замок).
+- `+ui:price-tags` — ціна над тайлом · `+ui:scoring-schedule` — таблиця «плитка × раунд».
+- `+window:price-screen` — таємна фаза ціни (`match-setup`, `turn-structure: simultaneous + sequential` — уже в словниках).
+- `+card:self-pricing-auction` · `+card:rotating-score-goals` · `+card:catch-up-income`.
+
 ### Isles of Sea and Sky · `games/thinky/isles-of-sea-and-sky.md`
 
 - `+effect:clone` (⏳ є) — водний елементаль копіює блок; `+effect:unlock` (⏳ є) — зоряні ворота; `+effect:heat` — накопичення тепла обʼєктом до вибуху.
 - `+feature:reset-zone` (з A Monster's Expedition) — reset екрана, а не світу; `+feature:ability-gating` — прогресія здібностями.
 - `+axis:session` = `open-world` — нема рівнів, лише безперервний світ екранів.
 - ⏳-слова, вжиті тут: `input`, `enter`, `counter`, `has`, `free`, `move`, `slide`, `set_cell`, `transform`, `terrain`, `gate`, `hazard`, `map-window`.
+
+### Jagged Alliance 2 · `games/tactics/jagged-alliance-2.md`
+
+- `+trigger:spotted(a, b)` — B уперше потрапив у поле зору A (старт бою, перехоплення; родич `sighted` з XCOM).
+- `+trigger:enemy_moved(e)` (з XCOM) — ворог витратив AP / зробив крок у полі зору (1.13 NIS).
+- `+cond:stance(a, s)` — поза юніта (stand / crouch / prone).
+- `+effect:interrupt(a)` — перервати хід поточної сторони і віддати хід A.
+- `+effect:set_stance(a, s)` — змінити позу; `+effect:spend_ap(a, n)` — витратити очки дії.
+- `+ui:ap-counter` — залишок AP над/біля юніта; `+ui:hit-chance` (з XCOM); `+ui:stance-icon` — іконка пози; `+ui:breath-bar` — смуга дихання/енергії.
+- `+window:laptop` — внутрішньоігровий «компʼютер» з сайтами; `+window:merc-hire` — каталог найманців з контрактами; `+window:sector-map` — стратегічна сітка секторів; `+window:imp-test` — анкета створення персонажа.
+- `+feature:time-compression` — прискорення стратегічного часу.
+- `+axis:time=hybrid-rt-turn` — real-time поза боєм, покроково в бою.
+
+### Janggi (Чанґі, корейські шахи) · `games/chess-abstract/janggi.md`
+
+- `+cond:screen_count`, `+cond:kings_facing` — уже запропоновані в xiangqi.md; тут `screen_count` ще й з типом екрана (не гармата).
+- `+cond:on_palace_line` — хід уздовж намальованої лінії палацу (діагоналі).
+- `+trigger:passes` — обидві сторони пасували поспіль (go, janggi).
+- `+effect:count_material` — підрахунок очок фігур на полі з компенсацією.
+- `+window:setup-choice` — вибір стартової розстановки зі схемами.
+- `+ui:material-score` — поточна сума очок фігур кожної сторони.
+- `+card:screen-move`, `+card:pass-any-turn`, `+card:material-points-win`, `+card:setup-choice` — див. «Мапа на каталог».
 
 ### Jelly no Puzzle (ゼリーのパズル) · `games/thinky/jelly-no-puzzle.md`
 
@@ -3345,6 +10701,44 @@
 - `+role:tile` — желе як плитка з кольором і формою.
 - `+feature:undo`; `+axis:undo` — `unlimited` (?).
 - `+card:connectivity-goal` — умова перемоги «звʼязність кожного кольору» не лягає ні в `all-on-targets`, ні в `satisfy-constraints`.
+
+### Jet Set Willy · `games/grid-platformer/jet-set-willy.md`
+
+- `+trigger:landed` — приземлення після падіння з висотою (смерть від падіння; вже пропоновано Manic Miner).
+- `+window:code-card-entry` — ввід коду з паперової картки.
+- `+card:rope-swing`, `+card:ramp-walk`, `+card:respawn-death-loop`, `+card:copy-protection-code`, `+card:game-clock-deadline` — див. вище.
+
+### Joshua & the Battle of Jericho · `games/dig-gravity/joshua-battle-of-jericho.md`
+
+- `+window:quiz-window` — вікно питання з варіантами відповіді (між рівнями; у Pokémon — ворота-вікторина на полі).
+- `+feature:quiz-between-levels` — вікторина як частина прогресії (бонус за правильні відповіді, без блокування).
+- `+card:multi-resource-quota`, `+card:quiz-between-levels`, `+card:engine-reskin` — див. «Мапа на каталог».
+
+### Jotto · `games/hidden-deduction/jotto.md`
+
+- `+ui:letter-sheet` — алфавіт з позначками «нема / є / невідомо» (ширше за `keyboard-hints` Wordle: ставить гравець).
+
+### Jungle (Dou Shou Qi, «Джунглі», звірині шахи) · `games/chess-abstract/jungle.md`
+
+- `+cond:stronger` — ранг A ≥ рангу B (підтверджую arimaa.md; тут з винятком щур/слон і рангом 0 у пастці).
+- `+cond:in_zone` — підтверджую (у ворожій пастці / барлозі).
+- `+effect:jump_capture` — стрибок із взяттям на клітині приземлення (є в пропозиціях сімʼї; тут — стрибок через річку).
+- `+ui:rank-badge` — число рангу на фігурі (Jungle, Stratego).
+- `+ui:trap-marker`, `+window:variant-select` — підтверджую (arimaa.md, lichess-variants.md).
+- `+card:rank-capture`, `+card:weakest-beats-strongest`, `+card:terrain-restricted-piece`, `+card:river-jump`, `+card:own-den-forbidden` — див. «Мапа на каталог».
+
+### Jungler · `games/maze-arcade/jungler.md`
+
+- `+cond:compare` — порівняння властивості двох сутностей (`compare(a, b, length, >=)`); `same` покриває лише рівність.
+- `+feature:length-stock` — запас «довжини», що конвертується в життя.
+
+### KOHCTPYKTOP: Engineer of the People · `games/program-robots/kohctpyktop.md`
+
+- `+trigger:signal(net)` — у мережі зʼявився/зник сигнал.
+- `+cond:powered(net)` — мережа під сигналом.
+- `+effect:power(net)` — подати сигнал у мережу; `+effect:draw(layer, cell)` — намалювати шар у клітині (≠ `set_cell`: шари накладаються).
+- `+role:wire`, `+role:gate`, `+role:pin`.
+- `+window:waveform-view`; `+ui:layer-selector`, `+ui:waveform-chart`.
 
 ### Kaboom (+ LuckSweeper, Pure Skill Minesweeper, Tatham Mines — сапер, що карає або прощає вгадування) · `games/hidden-deduction/kaboom.md`
 
@@ -3356,6 +10750,16 @@
 - `+ui:mine-counter` — див. Minesweeper; `+ui:certainty-overlay` — позначки safe/mine/uncertain поверх закритих клітин; `+ui:death-counter` — скільки разів вибухнув (Tatham).
 - `+feature:guess-policy` — налаштування, як гра реагує на вгадування; `+feature:no-guess` — див. Minesweeper; `+feature:debug-overlay`; `+feature:undo-after-death`.
 - `+axis:guess-policy` — нова вісь для hidden-deduction: `random` (класика) · `punished` (Kaboom) · `forgiven` (LuckSweeper) · `impossible` (Tatham, Hexcells) · `undoable` (Tatham Undo).
+
+### Kaizen: A Factory Story · `games/program-robots/kaizen-a-factory-story.md`
+
+- `+trigger:cycle_end` — кінець такту: момент автоматичних зʼєднань і перевірки виходів (вже просили з Opus Magnum).
+- `+cond:aligned(a, b, joint)` — дві деталі стикуються на клітині інструмента.
+- `+effect:weld(a, b)` — постійне зʼєднання (окремий від `attach` тип звʼязку); `+effect:cut(part, line)`; `+effect:drill(part)`; `+effect:flip(part)`.
+- `+effect:extend` / `+effect:retract` — довжина руки; `+effect:grab` / `+effect:release` — утримання деталі.
+- `+window:metric-histograms`; `+ui:instruction-timeline`; `+ui:metric-panel`.
+- `+feature:solution-metrics`, `+feature:gif-export`, `+feature:live-edit` — правка програми під час симуляції.
+- Осі (вже є в `classes.md`, не пропоную): `control` = `programmed`, `actors` = `party` (кілька пристроїв, кожен зі своєю доріжкою).
 
 ### Kakuro (Cross Sums, Какуро) · `games/pencil-logic/kakuro.md`
 
@@ -3396,6 +10800,35 @@
 - `+feature:goal-check` — автоматична перевірка кінцевого стану; `+feature:random-variants` — кілька варіантів стартового світу.
 - `+axis:control` — тут чисте `programmed`.
 
+### Karuba (Каруба) · `games/board-digital/karuba.md`
+
+- `+effect:discard` — скинути компонент з руки/запасу без розміщення (Karuba, Carcassonne, Kingdomino).
+- `+trigger:called` — щойно названо спільний компонент, на який реагують усі гравці (Karuba, Take It Easy, Tiny Towns).
+- `+cond:steps_le(n)` — шлях не довший за N кроків (рух за очками).
+- `+ui:called-tile` — уже в сімʼї (Take It Easy); тут назва тайла-номера.
+- `+ui:treasure-stacks` — стоси нагород зі значенням верхнього.
+- `+ui:move-points` — скільки кроків лишилось після скидання.
+- `+window:lay-or-discard` — вибір опції ходу для названого тайла.
+- `+card:place-or-discard-for-action` · `+card:exits-as-move-points` · `+card:shared-mirror-setup`.
+
+### Keepsweeper · `games/hidden-deduction/keepsweeper.md`
+
+- `+trigger:dug(c)` — клітину розкопано (відкриття не миттєве, а наприкінці роботи робітника).
+- `+effect:assign_worker(c)` — поставити робітника/чергу на клітину.
+- `+effect:build(c, building)` — звести будівлю (від `place` відрізняє ціна й час будівництва).
+- `+role:worker` — підконтрольний NPC, що виконує накази-черги.
+- `+role:building` — будівля гравця з функцією (економіка, армія).
+- `+window:realm-journal` · `+window:research-tree`.
+- `+feature:royal-seals` — валюта мета-прогресії за перші проходження.
+
+### KenKen (Keen, CalcuDoku, Кенкен) · `games/pencil-logic/kenken.md`
+
+- `+cond:sum_eq` — сума групи = N (повтор з Kakuro).
+- `+cond:cage_op` — op(цифри групи) = T, op ∈ {+, −, ×, ÷}; узагальнення `sum_eq`.
+- `+cond:duplicate_in_line` — повтор значення в рядку/стовпці (повтор з інших файлів).
+- `+window:params-dialog`, `+window:game-id-dialog` — повтор Tatham-вікон.
+- `+card:arith-cage`, `+card:latin-square` — див. мапу.
+
 ### Khet (Deflexion, Laser Chess) · `games/connect-rotate/khet.md`
 
 - `+role:piece` ⏳ підтверджується; `+role:source` — сфінкс/лазер як джерело променя.
@@ -3413,6 +10846,77 @@
 - `+ui:lives`, `+ui:timer-countdown`.
 - `+card:fill-hole-with-block`, `+card:freeze-into-block`.
 
+### Kin-Kon-Kan (キンコンカン) · `games/pencil-logic/kin-kon-kan.md`
+
+- `+role:clue-outside` — повтор: підказка на рамці поза полем.
+- `+cond:count_in` — повтор зі Star Battle: кількість сутностей виду в області.
+- `+card:paired-beam-endpoints`, `+card:reflection-count-clue` — див. мапу.
+
+### Kine · `games/grid-platformer/kine.md`
+
+- `+effect:extend(a, part, n)` — висунути частину тіла на N клітин.
+- `+effect:retract(a, part)` — втягнути частину.
+- `+cond:part_clear(a, part, dir)` — для частини тіла є вільне місце.
+- `+cond:orientation(a, o)` — тіло в орієнтації (ширше за `facing`: яка грань угорі).
+- `+trigger:collected(a, goal)` — інструмент забрав ціль (можна лишити `reach`).
+- `+role:multi-body` — аватар з кількох рухомих частин.
+- `+axis:actors=party` — підтвердження осі (три аватари по черзі).
+- `+card:extend-retract-body` · `+card:lift-other-avatar` — див. вище.
+
+### King's Bounty: The Legend (King's Bounty. Легенда о рыцаре) · `games/tactics/kings-bounty-the-legend.md`
+
+- `+trigger:round_start` — початок раунду (ініціативна черга); `+trigger:attacked` — загін атаковано (відповідь).
+- `+cond:leadership_ok` — стек укладається в лідерство.
+- `+effect:counterattack` — відповідь захисника; `+effect:spend_ap`; `+effect:gain_rage` — приріст гніву.
+- `+role:stack` — фігура-загін з кількістю.
+- `+ui:stack-count` — кількість під загоном; `+ui:turn-order-bar` — черга ініціативи; `+ui:rage-bar`, `+ui:mana-bar`.
+- `+window:spellbook`, `+window:rage-box`, `+window:army-window`, `+window:creature-info`.
+- `+feature:garrison` — залишити загони в замку.
+
+### King's Valley · `games/grid-platformer/kings-valley.md`
+
+- `+effect:dig(cell, shape)` — прибрати блоки формою (2×1 униз + стіна поруч).
+- `+effect:jump(height)` — стрибок на N клітин (прямо / дугою).
+- `+cond:hands_empty(a)` — у руках нічого (умова стрибка); короткий запис `not has(a, item)`.
+- `+cond:on_stairs(a)` — стоїть на сходах (заборона дій); поки — `cell(here, stairs)`.
+- `+trigger:bump_count(a, n)` — сутність N разів уперлась у перешкоду.
+- `+role:stairs` — діагональні сходи (або `terrain` з прапорцем).
+- `+feature:suicide-restart` — клавіша «здатися» ціною життя, коли рівень зіпсовано (F2; Ctrl-A у Lode Runner).
+- `+card:enemy-behavior-table` — див. вище.
+
+### King's Valley II: The Seal of El Giza · `games/grid-platformer/kings-valley-2.md`
+
+- `+effect:dig(cell, shape)` — прибрати блоки маскою відносно гравця.
+- `+effect:jump(height)` — стрибок на N клітин.
+- `+effect:return_to(a, owner)` — снаряд повертається до власника.
+- `+cond:uses(a, op, n)` — клітиною скористались N разів (зношування).
+- `+trigger:used(a)` — сутністю/клітиною щойно скористались (пройшли, піднялись).
+- `+feature:level-save-tape` — запис рівнів на касету/диск як носій обміну.
+- `+feature:edit-contest` — конкурс користувацьких рівнів від видавця.
+- `+card:dig-shape-per-tool`, `+card:vanish-after-n-uses` — див. вище.
+
+### Kingdom Builder · `games/board-digital/kingdom-builder.md`
+
+- `+trigger:card_drawn` — гравець добрав карту (визначає наступний хід).
+- `+cond:adjacent_to_own` — гекс поруч з власною сутністю (ширше за `adjacent_count`: з фолбеком «якщо можливо» — головне правило гри).
+- `+cond:terrain(hex, t)` — тип терену клітини збігається з картою.
+- `+effect:discard` — скинути карту · `+effect:take_tile` — взяти тайл у запас · `+effect:lose_tile` — втратити тайл, коли умова володіння зникла.
+- `+role:location` — клітина-джерело спецдій; `+role:hand` — рука карт.
+- `+ui:goal-cards` — панель карт цілей партії; `+ui:supply-counter` — скільки фішок лишилось.
+- `+card:location-powers` · `+card:area-majority` — див. «Мапа на каталог».
+
+### Kingdom Death: Monster · `games/tactics/kingdom-death-monster.md`
+
+- `+trigger:card_drawn` — витягнуто карту (ШІ, локації) як подія; `+trigger:deck_empty` — колода вичерпалась (смерть монстра, перетасування).
+- `+trigger:attacked` — початок атаки як подія (реакції, dodge).
+- `+effect:draw_card` · `+effect:discard` — колоди; `+effect:roll_dice` — кидок кубиків.
+- `+cond:in_blind_spot` — атакувальник у сліпій зоні цілі; `+cond:card_says` — умова, що бере пріоритет цілі з карти ШІ.
+- `+role:card` — карта як сутність; `+role:settlement` — база між боями з будівлями.
+- `+ui:ai-deck-counter` — лишок колоди ШІ як шкала здоровʼя; `+ui:hit-location-silhouette` — силует тіла з бронею й травмами; `+ui:survival-tokens`.
+- `+window:settlement-screen`, `+window:gear-grid`, `+window:timeline-window`, `+window:hunt-board`.
+- `+feature:campaign-timeline` — кампанія з фіксованих подій за роками.
+- `+axis:session:campaign` — нове значення: кампанія з таймлайном.
+
 ### Kingdomino (Кінґдоміно) · `games/board-digital/kingdomino.md`
 
 - `+trigger:round_end` — нова лінія доміно; `+effect:draft` · `+effect:place` · `+effect:rotate` · `+cond:fits` — як у сусідах по теці.
@@ -3422,6 +10926,16 @@
 - `+ui:opponent-boards` · `+ui:score-preview` · `+ui:draft-line` — дві лінії тайлів (поточна з королями і наступна для вибору).
 - `+window:match-setup` — як у Blokus: гравці, AI, варіанти.
 - `+axis:turn-structure` = `draft-order`.
+
+### Kingdoms and Castles · `games/build-sim/kingdoms-and-castles.md`
+
+- `+trigger:season(s)` — почався сезон (зима, весна) — календарний тригер, не `timer`.
+- `+cond:fertility(cell, op, n)` — родючість клітини порівняно з N.
+- `+effect:burn(building)` — підпалити (стан «горить» із поширенням); зараз `spawn_at(fire)` + custom.
+- `+effect:kidnap(raider, peasant)` — нападник забирає сутність з поля (вікінги).
+- `+ui:resource-overlay` — перемикач шарів мапи (родючість, щастя, покриття).
+- `+feature:disaster-toggles` — увімкнути/вимкнути окремі лиха й ворогів перед грою.
+- `+card:fertility-yield`, `+card:stacked-castle-blocks` — див. вище.
 
 ### Klax · `games/falling-match/klax.md`
 
@@ -3448,6 +10962,13 @@
 - `+window:puzzle-select`; `+feature:par-target`, `+feature:puzzle-bank`.
 - `+axis:stop-rule` — що зупиняє ковзання: `wall` · `entity` · `wall+entity` · `stop-cell` · `none` (крок на 1); одна вісь на Klotski, Lunar Lockout, Ricochet, Inertia, Pokémon-лід.
 
+### Knight Lore · `games/grid-platformer/knight-lore.md`
+
+- `+trigger:cycle(phase)` — змінилась фаза циклу (день → ніч), Knight Lore.
+- `+effect:switch_form(a, form)` — A змінює форму з іншим набором умінь (перевертень).
+- `+axis:control=tank` — значення осі `control`: поворот + вперед.
+- `+card:day-night-cycle`, `+card:form-shift`, `+card:requested-item-sequence`, `+card:tank-controls` — див. вище.
+
 ### Knotwords · `games/word-number/knotwords.md`
 
 - `+trigger:input`; `+trigger:all_constraints_met` (⏳) — фінальна перевірка.
@@ -3458,6 +10979,13 @@
 - `+window:puzzle-select` (⏳), `+window:daily-window` (⏳).
 - `+feature:hint`, `+feature:puzzle-bank` (⏳).
 - `+axis:session` — `daily` + `level`.
+
+### Krazydad (банк друкованих пазлів) · `games/pencil-logic/krazydad.md`
+
+- `+feature:print-layout` — друк N пазлів на сторінку, чернетка.
+- `+feature:solve-order-hint` — сітка з номерами кроків розвʼязання.
+- `+window:volume-select` — вибір тому/буклета в межах рівня.
+- `+card:printable-booklet`, `+card:solve-order-hint` — див. мапу.
 
 ### Kriegspiel + Dark Chess (Fog of War; «шахи наосліп із суддею» і «шахи в тумані») · `games/hidden-deduction/dark-chess-kriegspiel.md`
 
@@ -3470,6 +10998,31 @@
 - `+feature:fog-of-war` — режим прихованої позиції (на відміну від Stratego `fog-of-ranks`).
 - `+axis:info-asymmetry` — див. Geister; Kriegspiel — `both-but-referee`, Dark — `opponent` (динамічний).
 - Вжито наявні ⏳ без пропозицій: `fog-overlay`, `message-log`, `player-clock`, `captured-pieces`, `move-list`, `mode-select`, `match-setup`, `neutral`.
+
+### Kroz · `games/maze-arcade/kroz.md`
+
+- `+effect:spread` — клітина займає сусідні порожні (лава, дерева, слиз у ZZT).
+- `+role:spell` — одноразовий предмет-заклинання, що діє на весь рівень (сповільнення, zap, reveal).
+- `+ui:message-line` — рядок повідомлень унизу екрана.
+- `+feature:message-toggle` — вимкнути пояснювальні повідомлення.
+- `+card:gems-as-health`, `+card:whip-adjacent-attack` — див. вище.
+
+### Krusty's Fun House · `games/grid-platformer/krustys-fun-house.md`
+
+- `+effect:blow(a, dir)` — потік повітря зсуває сутність (вентилятор).
+- `+effect:kick(b)` — копнути обʼєкт: зсув/розбиття/відкриття залежно від типу.
+- `+cond:height_diff(a, cell, op, n)` — перепад висоти перед сутністю (≤1 — перелазить).
+- `+window:hub-room` — ігрова кімната-хаб з дверима замість меню вибору рівня.
+- `+ui:held-block` — слот предмета в руках.
+- `+card:fan-blow`, `+card:capture-jar`, `+card:hub-room-doors`, `+card:group-herding`.
+
+### Krypto · `games/word-number/krypto.md`
+
+- `+cond:positive_integer` — підтвердження з Countdown/Digits (третя гра).
+- `+cond:all_used` — усі елементи набору вжито (Krypto, «24»).
+- `+ui:target-number`, `+ui:operator-buttons` — третя гра.
+- `+feature:declare-and-verify` — підтвердження з Countdown.
+- `+card:use-all-exactly-once`, `+card:weighted-deck`.
 
 ### Kula World (Roll Away, KulaQuest) · `games/grid-platformer/kula-world.md`
 
@@ -3501,6 +11054,23 @@
 - `+window:mode-select`, `+window:difficulty-select` — окремі екрани вибору.
 - `+feature:view-toggle` — перемикання проєкції (згори / псевдо-3D) без зміни логіки.
 - `+card:turnstile` — механіка, якої в каталозі нема зовсім.
+
+### Kye · `games/push-slide/kye.md`
+
+- `+effect:hold` / `+effect:release` — магніт утримує / відпускає обʼєкт (у реченні — `custom`).
+- `+trigger:hit(a, b)` — рухомий A вдарився в B (clocker, сентрі); `contact` описує вхід у клітину, тут клітина не спільна.
+- `+role:magnet` — сутність з полем притягання (відрізняти від `object`).
+- `+feature:god-mode` — безсмертя як налаштування (Kye 3.1); ближче до `assist-mode`.
+- `+card:magnet-hold`, `+card:redirect-tile`, `+card:npc-pusher`, `+card:object-sink`.
+
+### Kōnane (Конане) · `games/chess-abstract/konane.md`
+
+- `+effect:jump_capture` — уже в `checkers.md`; тут єдиний вид ходу.
+- `+cond:can_capture` — уже в `checkers.md` / `fanorona.md`; тут збігається з `no_moves`.
+- `+cond:same_direction` — крок ланцюга в тому самому напрямку, що й перший.
+- `+effect:stop_chain` — уже в `fanorona.md`; добровільна зупинка ланцюга.
+- `+trigger:no_capture` — у сторони нема взять (тут = нема ходів).
+- `+card:straight-chain-only` · `+card:opening-removal` · `+card:normal-play-win` — див. «Мапа на каталог».
 
 ### LITS (Nuruomino) · `games/pencil-logic/lits.md`
 
@@ -3539,6 +11109,17 @@
 - `+ui:spare-tile` — віджет зайвої плитки з поворотом; `+ui:insert-arrows` — стрілки-точки вставки на краях; `+ui:goal-card` — таємна поточна ціль гравця; `+ui:reachable-highlight` — уже пропонувалось.
 - `+axis:control` — у межах одного ходу `cursor` (вставка) + `indirect` (клік-ціль для фішки).
 
+### Labyrinth of Refrain: Coven of Dusk · `games/roguelike/labyrinth-of-refrain.md`
+
+- `+effect:break_wall` — стіна попереду стає підлогою (з ціною; ширше за `set_cell`, бо є неламані стіни).
+- `+effect:start_battle`, `+effect:return_to_town` (як в Etrian Odyssey).
+- `+cond:mana(op, n)` — у гравця досить мани.
+- `+trigger:danger_level` — рівень небезпеки досяг порогу.
+- `+ui:danger-gauge`, `+ui:mana-counter`, `+ui:cell-coordinates`.
+- `+window:battle-screen`, `+window:town-hub`, `+window:petition-window` (купівля навичок за ману), `+window:puppet-create`.
+- `+feature:wall-break`, `+axis:view=first-person`.
+- `+card:wall-break-cost`, `+card:danger-gauge`.
+
 ### Lady Bug · `games/maze-arcade/lady-bug.md`
 
 - `+effect:rotate_gate` — повернути стінку-турнікет на 90° у бік проходу (`rotate(a, deg)` є, але не про стіну між клітинами).
@@ -3549,6 +11130,53 @@
 - `+ui:border-timer` — таймер як рамка поля; `+ui:word-slots` — слово з підсвіченими зібраними буквами.
 - `+card:turnstile-gate` — див. вище.
 
+### Langrisser · `games/tactics/langrisser.md`
+
+- `+cond:in_aura(a, leader)` — A в радіусі командування ватажка (окремий випадок `in_range` з радіусом від класу).
+- `+cond:affinity(a, b)` (з FE) — тип A сильний проти типу B.
+- `+effect:hire(leader, type)` — додати найманий загін до командира з оплатою.
+- `+effect:counterattack` (з FE) — захисник бʼє у відповідь.
+- `+ui:aura-range` — підсвічений радіус командира.
+- `+window:hire-screen` — найм загонів перед сценарієм; `+window:class-change` — вибір нового класу.
+- `+role:commander` — фігура, від якої залежать інші (аура, повʼязане життя).
+
+### Langton's Ant (Мураха Ленгтона) і турміти · `games/build-sim/langtons-ant.md`
+
+- `+card:turmite-agent`, `+card:highway-detector` — див. «Мапа на каталог».
+- `+ui:generation-counter` — номер кроку/покоління (друга гра-автомат після Life).
+- `+ui:rule-input` — поле рядка правила (`RL`, `LLRR`, таблиця турміта).
+- `+feature:agent-placement` — поставити агента з напрямом на поле перед запуском (мурахи, турміти; відрізняється від малювання клітин).
+- Вісь `actors: swarm` (⏳ у classes.md) — мультимураха; тут вжито як підтвердження, не нова пропозиція.
+
+### Lanterns: The Harvest Festival (Ліхтарі) · `games/board-digital/lanterns.md`
+
+- `+effect:payout_by_facing` — кожен гравець отримує за орієнтацією тайла (Lanterns).
+- `+effect:dedicate` — обміняти набір ресурсів на жетон очок (Lanterns; родич `take` + `give`, але атомарно).
+- `+cond:set_formed` — у руці є набір заданого виду (4 однакових / пари / усі різні).
+- `+cond:supply_empty` — запас ресурсу вичерпано.
+- `+role:card` — карта-ресурс у руці (не на полі).
+- `+ui:facing-indicator` — превʼю «колір до кожного гравця» при повороті · `+ui:dedication-stacks`.
+
+### Larn · `games/roguelike/larn.md`
+
+- `+trigger:deadline` — вичерпано глобальний ліміт часу забігу.
+- `+effect:interest(rate)` — нарахування відсотків на рахунок; `+effect:train(stat, time)` — +стат за час; `+effect:repopulate(n)` — доспавн N монстрів на рівні.
+- `+cond:time_elapsed(op, n)` — скільки часу минуло від старту (ширше за `timer`, бо глобальний годинник забігу); `+cond:debt` — є неоплачений борг.
+- `+role:shop-entrance` — клітина-вхід у вікно будівлі.
+- `+window:college-window`, `+window:bank-window`, `+window:tax-office`.
+- `+feature:difficulty-ladder`, `+feature:cross-game-debt`.
+- `+axis:session=run`.
+- `+card:run-deadline`, `+card:bank-interest`, `+card:time-for-stats`.
+
+### Lasca (Ласка) · `games/chess-abstract/lasca.md`
+
+- `+effect:capture_under` — верхня фігура жертви переходить під низ стосу атакувальника.
+- `+cond:top_side` — верхня фігура стосу належить стороні (умова володіння колоною).
+- `+cond:can_capture` — у сторони є хоча б одне взяття (як у checkers.md; ще один голос).
+- `+effect:jump_capture` — стрибок через сусіда з взяттям (як у checkers.md; ще один голос).
+- `+ui:stack-view` — склад стосу на клітині (збоку / тултіп).
+- `+card:piece-stack-capture` — див. «Мапа на каталог».
+
 ### LaserTank · `games/connect-rotate/laser-tank.md`
 
 - Вжито наявні ролі `projectile`, `terrain`, тригер `line_of_sight`, умову `facing`, ефекти `bounce` (відбиття від дзеркала), `rotate`, `face`, `slide`, `set_cell`, вікно `editor-window`.
@@ -3557,6 +11185,19 @@
 - `+ui:shot-counter` — окремий лічильник пострілів поруч з ходами.
 - `+feature:solution-proof` — розвʼязок як обовʼязковий додаток до рівня/рекорду.
 - `+card:shot-push`, `+card:line-of-fire-enemy`, `+card:facing-turn` — див. вище.
+
+### Lasergoose · `games/connect-rotate/lasergoose.md`
+
+- `+trigger:beam_end(beam)` — промінь досяг кінця траси (уперся в стіну).
+- `+effect:flip_state(a)` — перемкнути бінарну орієнтацію (CW↔CCW, N-S↔E-W).
+
+### Leap Year · `games/thinky/leap-year.md`
+
+- `+trigger:landed` — сутність приземлилась після падіння; `+cond:fall_height` — висота падіння порівняно з N.
+- `+feature:grid-overlay` — сітка поверх світу на утриманні кнопки (не перемикач `grid-toggle`); `+feature:knowledge-gate` — прогрес через знання гравця.
+- `+card:fall-height-death`, `+card:hidden-moveset` — див. вище.
+- `+axis:progression` = `knowledge` (нова вісь: чим відкривається світ — `items` / `knowledge` / `levels`).
+- ⏳-слова, вжиті тут: `input`, `supported`, `move`, `fall`, `counter`, `respawn`, `terrain`, `neutral`, `mark`.
 
 ### Legend of Grimrock · `games/roguelike/legend-of-grimrock.md`
 
@@ -3569,6 +11210,52 @@
 - `+feature:old-school-mode`, `+feature:map-notes`, `+feature:level-editor` (є ⏳).
 - `+axis:actors=party` — 4 героя в одній клітині; `+axis:view=first-person` — нова вісь «камера»: згори / ізо / перша особа на сітці.
 
+### Legion TD / Legion TD 2 · `games/tower-lanes/legion-td.md`
+
+- `+role:unit` — бойовий юніт; `+role:lane` — смуга гравця; `+role:core` — ядро/король, чия смерть = поразка команди.
+- `+trigger:leak` — вороги прорвали смугу; `+trigger:build_phase` / `+trigger:battle_phase` — початок фаз циклу хвилі.
+- `+effect:sell` · `+effect:upgrade` (перетворити в покращену форму за ціну) · `+effect:income` (змінити постійний дохід).
+- `+cond:all_defenders_dead` — на смузі не лишилось захисників.
+- `+ui:income-panel` · `+ui:recommended-value` (порівняння вартості оборони з нормою хвилі) · `+ui:send-panel`.
+- `+window:choice-window` — вибір 1 з N.
+- `+feature:mode-versus` — командний PvP.
+- `+axis:time` — значення `phased` (будування без бою → автобій).
+
+### Lemmings · `games/dig-gravity/lemmings.md`
+
+- `+trigger:landed` — сутність приземлилась після падіння (тут — перевірка висоти); повтор з Troddlers/Leap Year.
+- `+cond:fall_height(a, op, n)` — висота падіння порівняно з N; повтор з Leap Year.
+- `+effect:excavate(a, shape, dir)` — вигризти форму рельєфу в напрямку (басер, шахтар, копач; вибух — `explode`).
+- `+effect:rescue` — сутність іде у вихід і рахується врятованою (не `pickup`); повтор з Survivors.
+- `+ui:skill-counts` — кнопки умінь з лишком на кожній (варіант `ability-buttons` без cooldown).
+- `+card:assign-skill`, `+card:release-rate`, `+card:nuke-all`, `+card:pixel-terrain-mask`, `+card:trap-cooldown`, `+card:shared-field-versus` — див. «Мапа на каталог».
+- `+axis:field-pixel` — поле-маска пікселів (повтор з Noita); у шапці `square` як найближче.
+- `+axis:control` = `indirect` (призначення умінь, не напрямок); `+axis:actors` = `swarm`.
+
+### Lenia · `games/build-sim/lenia.md`
+
+- `+cond:kernel_sum` — зважена сума по ядру в межах вікна (узагальнення `adjacent_count` для Lenia, SmoothLife, тепла в ONI).
+- `+effect:add_value` — додати до значення клітини з обрізанням (`A += Δt·G`, clip); `set_value` не передає «приріст».
+- `+ui:kernel-graph`, `+ui:growth-graph` — графіки функцій правила поруч із полем.
+- `+ui:param-slider` — повзунок параметра правила в реальному часі.
+- `+ui:stats-plot` — живий графік статистик патерна.
+- `+window:species-library` — бібліотека форм із параметрами правила (на відміну від `pattern-library` Life, де правило одне).
+- `+feature:gif-export` — запис анімації.
+- `+axis:states=continuous` — до запропонованої `states=n` (Brian's Brain).
+- `+axis:neighbourhood=kernel` — вісь сусідства: moore8 / vn4 / radius-r / kernel.
+- `+card:convolution-kernel`, `+card:continuous-cell-state` — див. «Мапа на каталог».
+
+### Letter Quest і Spellspire — словесні RPG-бої · `games/word-number/word-rpg-battlers.md`
+
+- `+cond:word_weight` — вага слова (довжина × рідкість) проти порогу (друга гра після BWA).
+- `+cond:weak_to` — ворог вразливий / стійкий до стихії атаки (Spellspire).
+- `+ui:attack-timer-bar` — шкала до удару ворога (друга гра після BWA Arena).
+- `+ui:enemy-preview` — список монстрів етапу до входу (Spellspire).
+- `+window:challenge-select` — вибір способу/обмеження для повтору етапу.
+- `+feature:stage-challenges` — повтор рівня з обмеженнями за зірки й валюту.
+- `+feature:timed-chest` — оновлення магазину за реальним часом.
+- `+card:stage-challenges` — див. «Мапа на каталог».
+
 ### Letterpress · `games/word-number/letterpress.md`
 
 - `+trigger:input` — тап по плитці, submit, pass.
@@ -3579,6 +11266,17 @@
 - `+window:game-list` — паралельні асинхронні партії; `+window:played-words` — список зіграних слів.
 - `+feature:async-multiplayer`.
 - `+axis:session` — `match` асинхронна.
+
+### Levelhead · `games/grid-platformer/levelhead.md`
+
+- `+trigger:signal(channel)` — на каналі зʼявився/зник сигнал (Levelhead).
+- `+effect:send_signal(channel)` — надіслати сигнал на канал.
+- `+cond:signals(mode, channels)` — Any/All вхідних каналів активні (Relay).
+- `+effect:throw(a, dir)` — кинути взятий обʼєкт.
+- `+role:relay` — невидима логічна деталь, що переносить сигнал.
+- `+window:level-browser` — пошук і вітрини рівнів спільноти; `+window:publish-dialog` — публікація з назвою й тегами.
+- `+feature:promote-currency`, `+feature:coop-editing` — див. вище.
+- `+card:signal-channels`, `+card:relay-logic`, `+card:carry-goal-object`, `+card:power-purge-gate` — див. вище.
 
 ### Libble Rabble · `games/maze-arcade/libble-rabble.md`
 
@@ -3602,6 +11300,16 @@
 - `+feature:custom-rules` (⏳ є) — підтверджую.
 - `+axis:win-condition` — значення: checkmate · royal-capture · lose-all · zone · race · n-checks; корисна для всіх абстрактних ігор.
 
+### Liero · `games/dig-gravity/liero.md`
+
+- `+effect:hook` — сутність чіпляється до точки рельєфу/іншої сутності й підтягується (ninja rope).
+- `+effect:reload` — повтор: обойма перезаряджається за час.
+- `+trigger:landed` — повтор: сутність торкнулась рельєфу після польоту (гак, граната).
+- `+ui:reload-bar` — смуга перезарядки поточної зброї.
+- `+ui:split-screen` — поле показано кількома камерами одночасно.
+- `+window:loadout-select` — повтор: вибір набору зброї перед боєм.
+- `+feature:weapon-availability` — кожна зброя: у меню / лише бонусом / заборонена.
+
 ### Light Up (Akari, Бідзюцукан) · `games/pencil-logic/light-up.md`
 
 - `+effect:illuminate` — позначити клітинки по променю до перешкоди як освітлені.
@@ -3621,6 +11329,46 @@
 - `+ui:program-slots` — ряди слотів фіксованої довжини; `+ui:command-palette` — палітра іконок-команд; `+ui:instruction-highlight`.
 - `+feature:slot-limit` — обмеження довжини програми.
 - `+axis:control` — `programmed`.
+
+### Lime Rick · `games/thinky/lime-rick.md`
+
+- `+effect:leave_trail(a, kind)` — клітина, яку покинула сутність, стає сутністю виду (Lime Rick, Tron).
+- `+card:trail-eraser-pickup` — нема в каталозі.
+
+### Linelith · `games/thinky/linelith.md`
+
+- `+effect:extend_path` — підтвердження (Flow Free, Trainyard).
+- `+card:rule-discovery`, `+card:shape-bound-line` — див. «Мапа на каталог».
+
+### Lizzi Crossing · `games/hidden-deduction/lizzi-crossing.md`
+
+- `+cond:flag_kind(cell, k)` — тип прапорця на клітині («!» блокує, «?» — ні).
+- `+feature:streak-score` — постійний рахунок за серію поверхів.
+- (`tooltip` уже є в ui-elements — лише вжиток.)
+- (`high-contrast` уже є у features.md — не пропоную, лише вжиток.)
+
+### Lock & Pin · `games/thinky/lock-and-pin.md`
+
+- `+card:color-group-move`, `+card:directional-lock`, `+card:pass-through-tunnel` — див. вище.
+- `+window:title-screen`, `+window:message-screen` — повтор (Mirror Isles).
+- ⏳-слова, вжиті тут: `input`, `free`, `occupied`, `moving`, `move`, `sound`, `all_on`, `next_level`.
+
+### Lock 'n' Chase · `games/maze-arcade/lock-n-chase.md`
+
+- `+effect:lock` — зачинити двері/прохід (стає стіною зі станом).
+- `+effect:unlock` — відчинити двері (за таймером або ключем).
+- `+card:player-placed-door`, `+card:limited-active-doors`, `+card:auto-cycling-door` — див. вище.
+
+### Lock's Quest · `games/tower-lanes/locks-quest.md`
+
+- `+trigger:phase_end` — кінець фази (Build → Battle).
+- `+trigger:attacked` — сутність отримала удар (тригер ремонту/хелпера).
+- `+effect:sell` — рециклінг споруди з поверненням валюти.
+- `+effect:repair` — відновити HP споруди (≠ `heal` живої сутності; повністю знищена — не можна).
+- `+role:base` — ціль захисту з HP (роль `tower` уже є в 🔥-списку `roles.md`).
+- `+ui:phase-timer` — таймер фази; `+ui:source-counter` — запас валюти будування.
+- `+feature:local-versus` — локальний бій двох DS, кожен на своїй мапі.
+- `+card:repair-structure`, `+card:survive-timer` — див. «Мапа на каталог».
 
 ### Loco-Motion (Guttang Gottong) · `games/maze-arcade/loco-motion.md`
 
@@ -3645,6 +11393,27 @@
 - `+feature:level-editor` ↔ вже є в `features.md` — тут лише позначка, що редактор зберігає на диск і є в меню гри.
 - `+card:dig-hole` — див. вище.
 
+### Lode Runner 2 і Lode Runner 3-D · `games/grid-platformer/lode-runner-3d-sequels.md`
+
+- `+cond:width(cell, n)` — ширина проходу в клітинах (LR2: копати не можна в прохід шириною 1).
+- `+effect:disguise(a, t)` — вороги тимчасово ігнорують сутність (можна як `set_state(a, disguised)`).
+- `+role:tripwire` — сенсор на клітині, що запускає механізм (близько до ⏳ `switch`, але без ручного вмикання).
+- `+axis:field=spiral` — поле на бічній поверхні вежі (циліндр); Nebulus, LR 3-D.
+- `+card:dig-restrictions`, `+card:spiral-tower-level` — див. вище.
+
+### Lode Runner: The Legend Returns · `games/grid-platformer/lode-runner-the-legend-returns.md`
+
+- `+effect:dig(cell, side)` — пропалити ґрунт збоку внизу (тимчасово); ⏳ у lode-runner.
+- `+effect:restore_cell(cell, after)` — повернути тип клітини через N тіків.
+- `+effect:use_item(item)` — застосувати предмет з руки (ефект залежить від предмета, потім `take`).
+- `+effect:spill(cell, type)` — розлити покриття на поверхню (клей).
+- `+cond:tool_power(tool, cell)` — інструмент достатньо сильний для типу клітини (бластер < відбійник < велика бомба).
+- `+trigger:all_collected(kind)` — зібрано весь скарб (частину можуть нести вороги).
+- `+role:ladder` — драбина/перекладина як окрема роль або `terrain` з прапорцем «лізти».
+- `+feature:night-levels` — рівень у темряві з колом світла.
+- `+feature:level-packs` — групування власних рівнів у набір у редакторі.
+- `+card:single-use-tool`, `+card:ceiling-rockfall` — див. вище.
+
 ### Loop Hero · `games/build-sim/loop-hero.md`
 
 - `+trigger:enter`, `+trigger:adjacent` (комбо пари), `+trigger:day_start` (новий: початок дня), `+trigger:counter` (шкала боса, 3 петлі), `+trigger:pattern` (3×3, плюс), `+trigger:hp_zero`.
@@ -3667,6 +11436,77 @@
 - `+feature:mode-endless`, `+feature:difficulty-presets`, `+feature:unlockables`.
 - `+card:adjacency-buff`, `+card:slot-spin-layout`.
 
+### Lumines (Люмінес) · `games/falling-match/lumines.md`
+
+- `+role:sweeper` — сутність-розгортка, що проходить полем і застосовує ефект до клітин (time line Lumines; родич — скан-лінія).
+- `+effect:mark_group` — позначити групу як «до зчищення» без негайного `clear` (Lumines; Panel de Pon — затримка перед зникненням).
+- `+effect:flood_clear` — стерти звʼязну область того самого кольору від клітини (special block).
+- `+effect:shift_boundary` — зсунути межу між зонами гравців (Lumines Versus).
+- `+ui:sweep-counter` — лічильник подій поточного проходу/циклу на самій лінії.
+- `+feature:skin-playlist` — порядок тем/скінів задає гравець.
+- `+feature:music-sequencer` — вбудований секвенсор зі звуків гри.
+
+### Lux AI Challenge · `games/program-robots/lux-ai.md`
+
+- `+trigger:night_start` — початок нічної фази циклу; `+trigger:out_of_fuel(a)` — паливо вичерпано.
+- `+cond:cooldown_ready(a)` — cooldown < 1; `+cond:researched(resource)`; `+cond:cargo_full(a)`.
+- `+effect:transfer(a, b, res, n)` — передача ресурсу сусідньому юніту; `+effect:build_city(cell)`; `+effect:pillage(cell)`; `+effect:research(+1)`; `+effect:sap(cell, n)` — шкода енергією в ціль і сусідів (S3); `+effect:eliminate(bot)` — підтвердження.
+- `+window:replay-viewer`, `+ui:frame-scrubber` — підтвердження з bot-arenas.
+- `+feature:bot-upload` — підтвердження; `+feature:time-bank`; `+feature:hidden-params`.
+- Осі (вже є в `classes.md`, не пропоную): `turn-structure` = `simultaneous`, `actors` = `swarm`, `control` = `programmed`.
+
+### Luzhanqi (Лучжаньці, китайські армійські шахи) · `games/hidden-deduction/luzhanqi.md`
+
+- `+trigger:attack` — фігура пішла на ворожу (як у Stratego: результат вирішує таблиця бою).
+- `+cond:rank_cmp` — порівняння рангів із винятками (бомба, міна, сапер).
+- `+cond:rail_path` — шлях залізницею по прямій без фігур (або з поворотами для сапера); `path_exists` не каже, що повертати не можна.
+- `+cond:safe_cell` — фігуру в цій клітині не можна атакувати (табір).
+- `+role:referee` — суддя: не фігура, а учасник, що бачить усе і вирішує бій.
+- `+ui:combat-result-only` — показ результату бою без рангів.
+- `+feature:referee-mode` — бій вирішує суддя/сервер, ранги приховані; `+feature:allied-visible` — союзник бачить твої ранги.
+
+### MOLEK-SYNTEZ · `games/program-robots/molek-syntez.md`
+
+- `+trigger:phase(name)` — фаза всередині такту (ширше за `phase_start`: впорядкований список фаз).
+- `+cond:valence_free(atom)` — атом має вільну валентність.
+- `+effect:add_hydrogen(atom)` / `+effect:remove_hydrogen(atom)` — зміна лічильника H, що тягне розрив/утворення звʼязку.
+- `+effect:bond_to_neighbor(atom)` — звʼязатися з сусідом за пріоритетом.
+- `+effect:shift(molecule, dir)` — зсув групи (≠ `shift` ряду поля).
+- `+role:emitter`; `+ui:emitter-beam`.
+- `+feature:card-cheat-move` — чит-хід у пасьянсі.
+
+### Mage Knight Board Game · `games/tactics/mage-knight.md`
+
+- `+effect:draw_card` / `+effect:discard` — добір і скидання карт.
+- `+role:card` — карта як сутність поза полем; `+role:site` — сайт на гексі з власними правилами взаємодії (село, вежа, шахта).
+- `+trigger:round_start` — початок раунду (раунд ≠ хід гравця); `+trigger:deck_empty` — колода вичерпана на початку ходу.
+- `+trigger:provoked` — ворога спровоковано рухом поруч.
+- `+cond:day_night` — зараз день / ніч; `+cond:resistant` — ціль має опір стихії атаки.
+- `+effect:roll_dice` — кинути кубик(и) (Source, броня); у словнику `roll` = скочування.
+- `+effect:spend_mana` — витратити ману кольору на посилення.
+- `+effect:add_wound` — покласти карту-рану в руку/скидання.
+- `+effect:explore_tile` — викласти новий тайл мапи за правилом стику.
+- `+effect:level_up` — підвищити рівень за порогом треку.
+- `+ui:fame-track` · `+ui:reputation-track` · `+ui:mana-source` (кубики пулу) · `+ui:day-night-board` (таблиця вартостей терену).
+- `+window:offer-row` — вітрина карт/юнітів зі зсувом; `+window:tactic-select` — вибір тактики-порядку на раунд.
+- `+axis:session` — `scenario` (партія з кількістю днів).
+
+### Magic Chalkboards · `games/thinky/magic-chalkboards.md`
+
+- `+cond:shape_match` — набір клітин/пікселів збігається з шаблоном (вже пропонувався іншими іграми).
+- `+effect:draw` — лишити слід/піксель у позиції курсора (вже пропонувався).
+- `+trigger:mode_toggle` — гравець перемкнув режим вводу (малювання ↔ рух).
+- `+role:canvas` — клітина-полотно з власною вкладеною сіткою.
+- `+ui:ink-meter` — смуга залишку чорнила/крейди.
+- Карткові — див. «Мапа на каталог».
+
+### Magic and Latin squares (Магічний і латинський квадрати) · `games/pencil-logic/magic-latin-squares.md`
+
+- `+cond:sum_eq` — повтор з Kakuro/KenKen.
+- `+cond:duplicate_in_line` — повтор.
+- `+cond:all_distinct` — усі значення множини різні.
+- `+card:magic-sum-check`, `+card:orthogonal-overlay`, `+card:construction-algorithm` — див. мапу; `+distinct-values` — тег без окремої пропозиції слова.
+
 ### Magical Drop (Chain Reaction) · `games/falling-match/magical-drop.md`
 
 - `+trigger:input` · `+trigger:pattern` · `+trigger:settled` · `+trigger:timer`.
@@ -3677,6 +11517,67 @@
 - `+window:character-select` — ⏳ підтверджую.
 - `+feature:mode-puzzle` — ⏳ підтверджую.
 - `+axis:gravity` — новий варіант `up` (до стелі); `+axis:control` — `grab-throw`.
+
+### Magiciban · `games/thinky/magiciban.md`
+
+- `+card:floor-shift-into-gap`, `+card:ride-on-tile`, `+card:floating-target` — див. вище.
+- `+window:title-screen`, `+window:message-screen` — повтор (Mirror Isles).
+- ⏳-слова, вжиті тут: `input`, `cell`, `free`, `occupied`, `move`, `set_state`, `sound`, `after`, `all_on`, `next_level`, ролі `terrain`, `mark`.
+
+### Magnets (Tatham) · `games/pencil-logic/magnets.md`
+
+- `+cond:count_in(line, kind, op, n)` — повтор (кількість виду в лінії).
+- `+effect:flip(a)` — перевернути орієнтацію/полярність сутності без руху (магніт, плитка, монета).
+- `+ui:clue-done-mark` — повтор: підказку позначено виконаною.
+- `+ui:not-blank-mark` — мітка «точно не порожньо, значення невідоме» («??»).
+- `+window:params-dialog`, `+window:game-id-dialog` — повтори з Tatham collection.
+- `+card:domino-slot-fill`, `+card:pole-repulsion`, `+card:click-cycle-states` — див. мапу.
+
+### Magpie (7DRL 2023) · `games/roguelike/magpie-broughlike.md`
+
+- `+role:slot` — позиція відносно гравця (бік), що тримає предмет.
+- `+card:slot-direction-weapons` · `+card:items-as-hp`.
+
+### Mahjong Solitaire (Shanghai, Маджонг-пасьянс) · `games/falling-match/mahjong-solitaire.md`
+
+- `+cond:free_tile` — плитка вільна: нема плитки зверху і відкритий лівий або правий бік (Mahjong; не те саме, що `free(cell)` — порожня клітина).
+- `+effect:reshuffle` — перемішати сутності, що лишились, по зайнятих місцях (Mahjong; уже просили Bejeweled, Candy Crush).
+- `+ui:removed-tiles` — стопка знятих плиток (KMahjongg).
+- `+feature:hint-disqualifies` — використання підказки чи undo знімає результат із рекордів (KMahjongg, KShisen).
+- Вжито вже наявні `same(..., group)`, `all_gone`, `no_moves`, `mode`, `hint-marker`, `seed-input`, `attract-demo`.
+
+### Make Trax (Crush Roller) · `games/maze-arcade/make-trax.md`
+
+- `+effect:unpaint` — повернути клітину у стан «не пофарбовано / брудна».
+- `+cond:all_painted` — усі клітини виду пофарбовані (Make Trax, Q*bert, Amidar).
+- `+role:intruder` — нешкідлива сутність, що псує прогрес гравця.
+- `+card:paint-all-cells`, `+card:overpass-cells`, `+card:trail-dirtying-intruder`, `+card:pincer-chasers` — див. «Мапу на каталог».
+
+### Makruk (Макрук, тайські шахи) · `games/chess-abstract/makruk.md`
+
+- `+trigger:count_start` — гравець оголосив початок рахунку (подія вводу, що вмикає лічильник-обмеження).
+- `+effect:stop_count` — зупинити рахунок (зі зміною наслідків мату).
+- `+ui:count-display` — поточне значення рахунку й ліміт біля годинника.
+- `+feature:start-count-button` — кнопка рахунку для сторони, що тікає.
+- `+card:endgame-count` — див. «Мапа на каталог».
+
+### Mamono Mower · `games/hidden-deduction/mamono-mower.md`
+
+- `+trigger:hold(action)` — клавіша утримується (не одноразовий `input`).
+- `+cond:level_cmp(a, b, op, k)` — рівень A порівняно з рівнем B (+k).
+- `+effect:xp` · `+effect:level_up` — як у Dragonsweeper (ще не у словнику).
+
+### Mamono Sweeper · `games/hidden-deduction/mamono-sweeper.md`
+
+- `+effect:xp` · `+effect:level_up` — як у Dragonsweeper / Mamono Mower (ще не у словнику).
+- `+cond:level_cmp(a, b, op)` — рівень A порівняно з рівнем B (як у Mamono Mower).
+- `+ui:ex-ne-counter` — пара «досвід / лишилось до рівня».
+- `+feature:mode-combination` — режими-комбінації (Huge×Extreme).
+
+### Manic Miner · `games/grid-platformer/manic-miner.md`
+
+- `+trigger:landed(a, height)` — сутність приземлилась після падіння на N клітин (Manic Miner, Spelunker, Space Panic).
+- `+card:crumbling-floor`, `+card:conveyor-locks-walk`, `+card:fixed-arc-jump`, `+card:beam-drains-resource`, `+card:guardian-blocks-exit` — див. вище.
 
 ### Manufactoria · `games/program-robots/manufactoria.md`
 
@@ -3689,6 +11590,13 @@
 - `+feature:random-test-cases`, `+feature:share-code`.
 - `+axis:control` — `programmed` (просторова програма).
 
+### Map (Tatham) · `games/pencil-logic/map.md`
+
+- `+cond:shares_border(a, b)` — два регіони мають спільну межу ненульової довжини (не лише кут); Map, політичні карти, Hex-подібні.
+- `+ui:region-labels` — номери/імена регіонів поверх поля.
+- `+window:params-dialog`, `+window:game-id-dialog` — повтори з Tatham collection.
+- `+card:graph-colouring`, `+card:drag-copy-colour` — див. мапу.
+
 ### Mario & Wario · `games/grid-platformer/mario-and-wario.md`
 
 - `+effect:toggle_block(cell)` (повтор Solomon's Key) — Flip-Flop; `+effect:set_state(block, solid, duration)` — таймерний блок.
@@ -3699,6 +11607,40 @@
 - `+ui:time-gauge` — шкала часу замість цифр.
 - `+axis:control` = `indirect`: гравець — курсор, герой іде сам.
 - `+card:click-solidify-block` — див. вище.
+
+### Mario + Rabbids Kingdom Battle · `games/tactics/mario-rabbids-kingdom-battle.md`
+
+- `+trigger:enemy_moved` — ворог зробив крок у полі зору (реакційні постріли).
+- `+trigger:attacked` — сутність атакована (щити, контрзахист).
+- `+effect:dash` — шкода цілі на шляху руху без зупинки.
+- `+effect:team_jump` — стрибок від союзника з новою зоною досяжності.
+- `+effect:bounce_launch` — підкинути ціль і перенести в іншу клітину (Bounce).
+- `+cond:cover` — ціль за укриттям рівня (none / half / full) відносно стрільця.
+- `+cond:cooldown_ready` — здібність перезарядилась.
+- `+ui:hit-chance` — шанс влучання над ціллю; `+ui:action-pips` — які дії героя ще доступні.
+- `+window:loadout` — вибір загону і зброї перед боєм; `+window:skill-tree` — дерево навичок; `+window:chapter-result` — оцінка розділу.
+- `+feature:easy-mode-toggle` — легкий режим на старті бою.
+
+### Mario vs. Donkey Kong · `games/grid-platformer/mario-vs-donkey-kong.md`
+
+- `+trigger:seen_by(a, b)` — B у полі зору / A дивиться на B (Boo; Head over Heels).
+- `+effect:follow(a, b)` — A йде за B (міні-Маріо).
+- `+window:bonus-game` — бонус-гра між рівнями.
+- `+window:move-demo` — автодемонстрація руху перед рівнем.
+- `+feature:retry-costs-life` — рестарт рівня коштує життя.
+- `+feature:time-attack` — режим «пройди якнайшвидше» після кампанії.
+- `+card:color-switch-blocks`, `+card:escort-followers`, `+card:two-phase-level`, `+card:followers-as-boss-hp`.
+
+### Marvel Snap · `games/tower-lanes/marvel-snap.md`
+
+- `+trigger:reveal` — карту розкрито (On Reveal); `+trigger:card_played` — повтор з Inscryption.
+- `+effect:draw` — взяти карту з колоди (повтор); `+effect:discard` — скинути карту з руки.
+- `+effect:double_stake` — подвоїти ставку партії; `+effect:retreat` — вийти з партії з поточною втратою.
+- `+role:card` — карта як сутність (повтор з Inscryption).
+- `+ui:lane-power` — сума сили на смузі з обох боків; `+ui:cube-stake` — поточна ставка; `+ui:priority-glow` — хто розкриває першим.
+- `+window:deck-builder`, `+window:collection-window`.
+- `+feature:season-reset` — м'який скид рангу щосезону.
+- `+card:stake-doubling`, `+card:reveal-order-priority` — див. «Мапа на каталог».
 
 ### Mastermind (+ Bulls and Cows, «Бики й корови») · `games/hidden-deduction/mastermind.md`
 
@@ -3730,6 +11672,20 @@
 - `+feature:ai-opponent-levels` (⏳).
 - `+axis:session` — `match`.
 
+### Mathler · `games/word-number/mathler.md`
+
+- `+cond:equals_target` — значення виразу дорівнює показаній цілі (Mathler; близько до Nerdle `equation_holds`).
+- `+effect:canonicalize` — переписати еквівалентну спробу в канонічну форму відповіді.
+
+### Maze Craze · `games/maze-arcade/maze-craze.md`
+
+- `+trigger:reach_first` — гравець досяг цілі першим (гонки: Maze Craze, Combat-подібні дуелі).
+- `+effect:place_fake_wall` — гравець кладе прохідну «стіну» (Maze Craze Blockade).
+- `+ui:robbers-bars` — смужки «скільки ще спіймати».
+- `+feature:visibility-levels` — рівні видимості мапи як налаштування.
+- `+feature:numbered-variations` — пронумеровані варіації (Atari 2600).
+- `+role:scout` — NPC-провідник гравця.
+
 ### Maze Mice · `games/maze-arcade/maze-mice.md`
 
 - `+axis:time=move-driven` — тік світу = рух гравця (SUPERHOT, Maze Mice); не `turn` і не чистий `realtime`.
@@ -3743,6 +11699,23 @@
 - `+feature:meta-progression` (🔥).
 - `+card:move-driven-time`, `+card:upgrade-draft` — див. вище.
 
+### Maze War · `games/maze-arcade/maze-war.md`
+
+- `+effect:peek` — показати вид з сусідньої позиції без зміни положення сутності.
+- `+ui:first-person-view` — вікно виду від першої особи поряд із картою.
+- `+feature:spectator-overview` — окремий вид згори для глядачів (Maze Watcher).
+- `+axis:view` — `top-down` · `side` · `first-person` (у `code-words.md` є поле `view`, але не вісь шапки).
+- `+card:peek-around-corner`, `+card:hit-invulnerability-window` — див. вище.
+
+### Mech Armada · `games/tactics/mech-armada.md`
+
+- `+effect:assemble(mech, parts)` — створити сутність із частин (поряд із ✅ `spawn`).
+- `+effect:scrap(mech)` — розібрати з поверненням ресурсу.
+- `+role:chassis` / `+role:body-part` — частина юніта, що не існує на полі окремо.
+- `+window:mech-builder` — конструктор юніта; `+window:research-window` (вже в черзі) — дослідження частин.
+- `+feature:sandbox-parts` — режим з усіма частинами (окремий випадок `mode-sandbox` ⏳).
+- `+card:modular-unit-builder`, `+card:map-pickup-race` — див. «Мапа на каталог».
+
 ### Mechabellum · `games/tower-lanes/mechabellum.md`
 
 - `+trigger:phase_start` (🔥) — розстановка/бій; `+trigger:round_end` — раунд завершено.
@@ -3754,6 +11727,29 @@
 - `+feature:mode-versus`, `+feature:mode-coop`, `+feature:rank-tiers`.
 - `+axis:turn-structure=simultaneous` (🔥) — розстановка одночасна, бій без вводу.
 
+### Mekorama · `games/grid-platformer/mekorama.md`
+
+- `+effect:walk_path(a, cell)` — сутність сама йде побудованим шляхом до клітини (не `move` на 1).
+- `+effect:drag(part, axis, n)` — гравець тягне частину механізму вздовж осі/по колу.
+- `+trigger:released(part)` — гравець відпустив частину, яку тягнув.
+- `+cond:walkable(cell)` — клітину можна пройти з урахуванням модифікаторів.
+- `+role:mechanism` — частина поля, якою керує гравець (слайдер, мотор), а не обʼєкт без волі.
+- `+feature:level-qr-share` — обмін рівнями через QR-картинку.
+- `+feature:pay-what-you-want` — гра з добровільною ціною.
+- `+card:level-as-qr` · `+card:walkability-modifier` · `+card:physics-body-avatar` — див. вище.
+
+### Memoir '44 / Commands & Colors · `games/tactics/memoir-44.md`
+
+- `+effect:draw_card` — добрати карту з колоди (Memoir, Gloomhaven, KDM).
+- `+effect:roll_dice` — кинути N кубиків як ефект (не `roll` ⏳, що означає скочування з округлого).
+- `+trigger:dice_face` — на кубику випала грань (прапор, граната, шолом).
+- `+cond:in_section` — юніт у секції поля (флангова зона карти наказу).
+- `+role:card` — карта як сутність гри; `+role:leader` — фігура, що приєднується до загону й дає бонус.
+- `+ui:hand-of-cards` — рука карт гравця; `+ui:dice-tray` — результат кидка; `+ui:medal-track` — медалі обох сторін; `+ui:section-lines` — межі секцій поля.
+- `+window:scenario-briefing` — історична довідка й умови сценарію.
+- `+feature:mirror-match` — та сама місія двічі зі зміною сторін.
+- `+axis:turn-structure:card-driven` — нове значення осі: що дозволено цього ходу, визначає карта.
+
 ### Memory / Concentration / Pairs («Мемо», «Знайди пару») · `games/hidden-deduction/memory-concentration.md`
 
 - `+trigger:delay(t)` — одноразова затримка після події (відмінно від `timer(every)`, що повторюється).
@@ -3762,6 +11758,87 @@
 - `+feature:card-sets` — набори малюнків (змінює вміст пар, а не лише вигляд).
 - `+axis:info-asymmetry` — див. Geister; тут `everyone` (приховано від усіх однаково, тому hotseat без завіси).
 - Вжито наявні ⏳/🔥 без пропозицій: `same`, `extra_move`, `tile`, `move-counter`, `timer-elapsed`, `difficulty-select`, `stars-rating`.
+
+### Merge Mansion / Merge Dragons · `games/falling-match/merge-mansion.md`
+
+- `+axis:merge-arity` — `2to1` · `3to1` · `5to2` (Merge Mansion, Merge Dragons, Triple Town, 2048).
+- `+effect:sell` — прибрати предмет з поля за валюту (Merge Mansion; також TD-ігри продають вежі).
+- `+feature:energy-regen` — дії коштують енергію, що відновлюється в реальному часі.
+- `+window:task-list` — список задач-замовлень з потрібними предметами.
+- `+ui:order-chips` — чипи поточних замовлень над полем · `+ui:cooldown-clock` — годинник на сутності з кулдауном.
+- `+card:producer-cooldown` · `+card:order-fulfillment` · `+card:locked-item-cobweb` — див. «Мапа на каталог».
+
+### Merge Tactics (Clash Royale) · `games/tower-lanes/merge-tactics.md`
+
+- `+trigger:phase_start`, `+effect:place`, `+effect:merge` — уже в 🔥/коді, тут вжито.
+- `+window:ruler-select`, `+ui:trait-tracker`, `+feature:league-modifier-rotation`.
+- `+card:ruler-quests`, `+card:league-modifiers`.
+
+### Metavaxx · `games/hidden-deduction/metavaxx.md`
+
+- `+trigger:one_type_left` — на полі лишились клітини лише одного типу (можна й `count(...) = 0` двома правилами).
+- `+effect:release` — знищений контейнер випускає сутність (агент вірусу).
+- `+window:upgrade-window` — повтор: вибір апгрейда між рівнями.
+- `+window:lab-select` — вибір стартового бонусу забігу.
+
+### Meteos (Метеос) · `games/falling-match/meteos.md`
+
+- `+effect:launch` — надати масі/сутності імпульс угору (протилежність `fall`).
+- `+effect:boost` — додати імпульс сутності, що вже рухається.
+- `+cond:airborne` — сутність у польоті, не на опорі (обернене до ⏳ `supported`; можна й `not supported`).
+- `+feature:material-bank` — ресурси з партій накопичуються між сесіями й витрачаються на відкриття.
+- `+window:synthesis-window` — екран обміну матеріалів на планети/предмети.
+- `+axis:gravity` — значення `per-level` (гравітація задається рівнем/планетою).
+
+### Metro (Iron Horse) · `games/connect-rotate/metro-iron-horse.md`
+
+- `+trigger:route_closed(station)` — маршрут станції дійшов до будь-якої станції.
+- `+effect:follow_path` (з Tsuro), `+effect:draw` — добрати плитку із запасу.
+- `+cond:has_alternative` (з Tsuro) — є інше легальне місце (для заборони петлі).
+
+### Mewgenics · `games/tactics/mewgenics.md`
+
+- `+trigger:round_start` — початок раунду (погода, черга за Speed).
+- `+trigger:turn_n` — настав хід бою № N (Exhaustion з 10-го).
+- `+effect:knockback` — відкинути на N клітин від джерела.
+- `+effect:level_up` — підвищити рівень (випадковому коту після бою).
+- `+cond:from_behind` — атака ззаду відносно орієнтації.
+- `+cond:cost` — вистачає мани на уміння.
+- `+role:weather` — глобальний модифікатор бою.
+- `+ui:turn-order-bar` — черга ходів юнітів.
+- `+ui:flatten-view` — перемикач ізометрії на плаский вид для читання загроз.
+- `+window:house-screen` — дім з кімнатами, мешканцями й меблями; `+window:breeding-window` — пари й прогноз потомства.
+- `+feature:breeding` — розведення юнітів між забігами; `+feature:roster-carryover` — вцілілі передають стати/спорядження.
+- `+axis:session` — `run`.
+
+### Might & Magic: Clash of Heroes · `games/falling-match/clash-of-heroes.md`
+
+- `+cond:orientation(shape, dir)` — збіг вертикальний чи горизонтальний (CoH: атака/стіна).
+- `+cond:rear_of_column(a)` — сутність остання у своєму стовпці (лише її можна взяти).
+- `+effect:launch(a)` — заряджена формація вилітає вздовж стовпця, пробиваючи цілі зі своєю силою.
+- `+effect:reinforce(n)` — дозаповнити поле юнітами з резерву у випадкові вільні місця.
+- `+role:formation` — група плиток, що стала однією сутністю з HP і відліком.
+- `+ui:charge-countdown` — число ходів до спрацювання над сутністю.
+- `+window:battle-setup` — екран перед боєм: склад армії, артефакт (є й у Puzzle Quest).
+
+### Minato · `games/hidden-deduction/minato.md`
+
+- `+trigger:stage_start` — початок стадії в забігу (момент накладання прокляття; ширше за `level_start`, бо стадія — частина поверху).
+- `+effect:apply_curse` — накласти модифікатор правил на стадію.
+- `+effect:charge` — витратити/додати заряд активного предмета.
+- `+effect:lock_cell` — замкнути клітину від кліку (не прапорець, але рахується як він).
+- `+effect:reroll` — перекинути випадковий набір (вітрина, нагорода).
+- `+window:run-map` — мапа поверху забігу з вузлами різних типів (вужче за `map-window`).
+- `+feature:no-flags` — режим без позначок.
+
+### Mindustry — logic (mlog) · `games/program-robots/mindustry-logic.md`
+
+- `+trigger:exec(cmd)` — уже в 🔥, тут підтвердження (кілька сутностей-процесорів).
+- `+effect:jump(to)`, `+effect:wait` — як у TIS-100 (підтвердження).
+- `+effect:bind(unit_type)` — програма привʼязує зовнішню сутність для керування.
+- `+effect:flush(target)` — вивести накопичений буфер на пристрій.
+- `+role:processor`, `+role:memory`.
+- `+window:block-code-editor`, `+ui:link-lines`, `+feature:code-export-text`, `+card:privileged-world-processor`.
 
 ### Mindustry — клітинна логістика й оборона · `games/build-sim/mindustry.md`
 
@@ -3774,6 +11851,40 @@
 - `+feature:mode-sandbox`, `+feature:mode-versus`, `+feature:mode-coop`, `+feature:level-editor`, `+feature:mod-support`, `+feature:custom-rules`.
 - `+card:ammo-feed`, `+card:power-graph`.
 
+### Mine Blocks · `games/dig-gravity/mine-blocks.md`
+
+- `+effect:craft` — інгредієнти → предмет за рецептом (можна `take` + `give`, але рецепт — окреме поняття).
+- `+effect:mine` — поступове руйнування блока утриманням (зараз `custom` + `set_cell`).
+- `+cond:holding` — у вибраному слоті хотбару предмет X (інструмент, блок, їжа).
+- `+window:crafting-window` — сітка крафту з результатом.
+- `+ui:hotbar` — ряд швидких слотів (ширше за ⏳ `inventory-bar`: визначає дію кліку).
+- `+feature:mode-creative` — нескінченні ресурси, безсмертя, політ (близько ⏳ `mode-sandbox`).
+
+### Minecraft — редстоун · `games/build-sim/minecraft-redstone.md`
+
+- `+trigger:block_update` — сусідній блок змінився й надіслав оновлення (спостерігач, quasi-connectivity).
+- `+cond:powered` — блок/компонент має сигнал > 0 (зараз — `state(a, powered)`).
+- `+effect:propagate` — поширити значення по провіднику з затуханням (пил), зараз — `set_value` з формулою.
+- `+effect:set_delay` — задати затримку компонента (репітер), зараз — `custom`.
+- `+card:signal-decay`, `+card:logic-gates`, `+card:delay-line`, `+card:comparator-modes`, `+card:block-update` — див. вище.
+- `+axis:value-domain` — що несе клітина-провідник: біт / мале ціле / необмежене число (Wireworld · Minecraft · Factorio).
+
+### Mined-Out · `games/hidden-deduction/mined-out.md`
+
+- `+ui:mine-detector` — число небезпек біля аватара в HUD (не в клітині); відрізняється від `remaining-counter`.
+- `+feature:speech-output` — синтез голосу/озвучення подій (Currah Microspeech).
+- Картки: `+card:avatar-mine-detector`, `+card:visited-trail`, `+card:trail-fade`, `+card:mine-spreader`, `+card:stalker-mine`, `+card:rescue-bonus-npc` — див. «Мапа на каталог».
+
+### Miner 2049er · `games/grid-platformer/miner-2049er.md`
+
+- `+trigger:landed` — приземлення після падіння (з висотою) (Miner 2049er, Space Panic, BurgerTime).
+- `+effect:control_transfer(a, b)` — ввід гравця переходить до іншої сутності (ліфт; керування механізмом).
+- `+effect:launch(a, height)` — підкинути сутність на висоту (гармата).
+- `+window:stage-intro` — екран-анонс станції/рівня перед грою.
+- `+window:name-entry` — введення ініціалів для рекорду.
+- `+ui:charge-meter` — індикатор накопиченого заряду (тонн TNT).
+- `+card:claim-all-floor`, `+card:controllable-lift`, `+card:cannon-charge-height`, `+card:numbered-transporter` — див. вище.
+
 ### Minesweeper (Сапер) · `games/hidden-deduction/minesweeper.md`
 
 - `+cond:flags_match` — кількість прапорців навколо числа = його значенню (умова акорду); через `adjacent_count` пишеться, але порівняння з власним значенням клітини — окрема форма.
@@ -3783,6 +11894,56 @@
 - `+window:custom-size-dialog` — діалог W/H/кількість мін; `+window:record-name-dialog` — ввести імʼя після рекорду.
 - `+feature:no-guess` — гарантія розвʼязності логікою; `+feature:board-metrics` — 3BV/IOE/3BV/s; `+feature:no-flags-style` — гра без позначок, перемога лише відкриттям.
 
+### Minesweeper Genius · `games/hidden-deduction/minesweeper-genius.md`
+
+- `+effect:rotate_line` — циклічний зсув рядка/стовпця з вмістом (ширше за `shift`, який зсуває до упору).
+- `+effect:swap_lines` — обмін двох рядків/стовпців цілком.
+- `+effect:jump_over` — переміщення через клітину без входу в неї.
+
+### Minesweeper Infinite · `games/hidden-deduction/minesweeper-infinite.md`
+
+- `+feature:mode-survival-decay` — режим, де ресурс/рахунок спадає і треба його поповнювати.
+- `+feature:mode-blitz` — пройти фіксований обсяг якомога швидше (відрізняється від `mode-time-attack`, де обсяг за час).
+- `+ui:defuser-counter` — лічильник рятівних жетонів.
+- `+effect:flood_reveal` — повтор для правила трьох.
+
+### Minesweeper у вимірах: 4D Minesweeper, Tilesweeper, Timesweeper · `games/hidden-deduction/minesweeper-dimensions.md`
+
+- `+axis:field=nd` — N-вимірна сітка (ширше за `3d`); `+axis:field=timeline` — поле × час як вісь (Timesweeper, 5D Chess).
+- `+cond:adjacent_count_nd` — лічильник сусідів у N вимірах (або параметр `adjacent_count(..., dims=n)`).
+- `+ui:neighbor-highlight` — підсвітка всіх сусідів клітини (критично, коли сусіди не поруч на екрані).
+- `+ui:timeline-scrubber` — перемикач/повзунок часового кроку (повтор з Frozen Synapse).
+- `+feature:delta-mode` — альтернативна подача підказок.
+- `+card:time-layer-board` — див. вище.
+
+### Mini Metro · `games/connect-rotate/mini-metro.md`
+
+- `+trigger:week_end` — кінець ігрового тижня (підтвердження з Mini Motorways).
+- `+cond:overcrowded` — кількість на станції > місткості (можна виразити `count`, але це стан з таймером).
+- `+effect:board` / `+effect:alight` — агент сідає в транспорт / виходить.
+- `+effect:reroute` — усі агенти перераховують маршрут після зміни мережі.
+- `+role:passenger` — агент з ціллю, що їздить чужим транспортом (Mini Metro, Cosmic Express).
+- `+ui:overflow-ring` (з Mini Motorways), `+ui:week-clock`, `+ui:asset-tray` — запас ліній/поїздів/тунелів.
+- `+feature:mode-extreme` — правки заборонені після розміщення; `+feature:mode-creative` — пісочниця.
+- `+card:*` — див. «Мапа на каталог».
+
+### Mini Motorways · `games/build-sim/mini-motorways.md`
+
+- `+trigger:week_end` — кінець ігрового періоду (тиждень), що відкриває вибір; узагальнення `schedule`.
+- `+effect:return_to_inventory` — знята будова повертається в запас гравця (дороги, мости, світлофори).
+- `+role:demand-building` — будівля, що накопичує попит і приймає агентів (відрізняється від `sink`: має ємність і таймер).
+- `+ui:overflow-ring` — кругова шкала таймера над будівлею; `+ui:week-clock` — годинник тижня до вибору; `+ui:tool-inventory` — запас плиток і спецінструментів з кількістю.
+- `+feature:mode-expert` — постійні рішення (не можна стерти) + менше апгрейдів; `+feature:mode-creative` — необмежені ресурси й редагування міста.
+- `+card:…` — див. «Мапа на каталог».
+
+### Mirror Isles · `games/thinky/mirror-isles.md`
+
+- `+role:image` — безтілесний образ сутності: видно, не штовхає, не блокує (відображення, привид-прогноз).
+- `+effect:cast_image` — поставити образ сутності в обчислену клітину.
+- `+card:mirror-image-swap`, `+card:reflectable-object` — див. вище.
+- `+window:title-screen` — титульний екран PuzzleScript (назва + start/continue); `+window:message-screen` — повноекранний текст між рівнями.
+- ⏳-слова, вжиті тут: `input`, `free`, `cell`, `occupied`, `count`, `move`, `rotate`, `swap`, `set_state`, `message`, `sound`, `after`, `level_start`, `all_on`, `next_level`, `terrain`.
+
 ### Mole Mania · `games/dig-gravity/mole-mania.md`
 
 - `+effect:switch_layer` — перейти на інший шар поля в тій самій клітині.
@@ -3790,6 +11951,95 @@
 - `+effect:flip` — перекинути обʼєкт через себе на клітину позаду.
 - `+role:boss` ⏳ — повтор (боси світів).
 - `+ui:hearts` — здоровʼя поділками (як ⏳ `hp-bar`, але дискретно).
+
+### Money Puzzle Exchanger · `games/falling-match/money-puzzle-exchanger.md`
+
+- `+effect:rank_up` — усі сутності типу стають наступним рангом (RU; також підвищення плиток у merge-іграх).
+- `+effect:clear_color` — прибрати з поля всі сутності типу/кольору (ER; Columns, Magical Drop).
+- `+effect:raise_stack` — ⏳ підтверджую (Panel de Pon): тут стек опускається від стелі.
+- `+cond:min_group` — розмір звʼязної групи ≥ N, де N залежить від типу (5 для 1/10/100, 2 для 5/50/500).
+- `+ui:held-stack` — ⏳ підтверджую (Magical Drop): номінал і кількість у руках.
+- `+card:denomination-merge` · `+card:rank-up-special` · `+card:late-chain`.
+
+### Monster Max · `games/grid-platformer/monster-max.md`
+
+- `+feature:mission-select` — гравець обирає, які місії поверху виконати (2 з 3).
+- `+card:floor-missions-elevator`, `+card:mission-terminal`, `+card:choose-n-of-m-levels`, `+card:button-mapped-slots`, `+card:shield-blocks-actions`, `+card:crouch-squeeze` — див. вище.
+
+### Monster Train · `games/tower-lanes/monster-train.md`
+
+- `+role:card` — карта руки/колоди; `+role:floor` — поверх-смуга з місткістю; `+role:unit` — бойовий юніт загону.
+- `+trigger:combat_phase` — фаза автоматичного бою після кінця ходу; `+trigger:ascend` — ворог перейшов на поверх вище.
+- `+effect:ascend` — перемістити ворога на поверх вище; `+effect:relocate` — перемістити свій юніт на інший поверх; `+effect:draw_cards` — взяти N карт.
+- `+cond:capacity_free` — на поверсі є місце під розмір.
+- `+ui:capacity-meter` · `+ui:pyre-hp` · `+ui:wave-preview`.
+- `+window:choice-window` · `+window:forge-window` (кузня апгрейдів).
+- `+feature:run-map` · `+feature:mutators` (модифікатори правил забігу) · `+axis:session` — `run`.
+
+### Montezuma's Revenge · `games/grid-platformer/montezumas-revenge.md`
+
+- `+trigger:landed(a, height)` — приземлення після падіння на N клітин (Montezuma, Manic Miner, Spelunker).
+- `+cond:inventory_full(a)` — інвентар заповнено, предмет не береться (Montezuma, роглайки).
+- `+card:flicker-barrier`, `+card:dark-room-light-item`, `+card:flip-screen-rooms`, `+card:colored-key-doors`, `+card:treasure-bonus-room` — див. вище.
+
+### Monument Valley · `games/thinky/monument-valley.md`
+
+- `+cond:projected_adjacent(a, b)` — дві плити суміжні на екрані (у проєкції), хоча в 3D розірвані.
+- `+trigger:snapped(part)` — рухома частина після drag зупинилась на дискретному кроці (90°, позиція доріжки).
+- `+effect:rebuild_graph` — перерахувати ребра навігаційного графа після зміни споруди.
+- `+role:handle` — ручка/повзунок: не сутність поля, а точка вводу, що керує частиною споруди.
+- `+ui:interactive-color` — колір/виступи позначають, що можна крутити чи натиснути.
+- `+feature:photo-mode` — вільна камера і знімки з фільтрами.
+- `+card:perspective-path` — картка «шлях за збігом проєкцій».
+
+### Moon or Sun (月か太陽) · `games/pencil-logic/moon-or-sun.md`
+
+- `+cond:visits(loop, region, n)` — повтор з Country Road: скільки разів лінія заходить в область.
+- `+cond:alternates` — властивість чергується вздовж послідовності (кімнат шляху, ходів).
+- `+cond:crosses` — лінія перетинає себе (повтор з Masyu/Icebarn).
+- `+trigger:pattern(loop_branch)` — повтор.
+- `+card:region-visit-once`, `+card:alternating-region-type` — див. мапу.
+
+### Moria / Angband · `games/roguelike/angband.md`
+
+- `+trigger:level_feeling` — рівень повідомив свою оцінку при вході.
+- `+effect:regenerate_level` — створити новий рівень на глибині; `+effect:recall(delay)` — відкладений телепорт хаб ⇄ глибина; `+effect:identify`.
+- `+cond:lit` — клітина/герой освітлені; `+cond:depth(op, n)` — глибина порівняно з N (ширше за `level`, бо рівні нескінченні й безіменні).
+- `+role:stairs`; `+role:shop-entrance` — клітина-вхід у вікно крамниці.
+- `+window:store-window`, `+window:home-window`, `+window:knowledge-menu`, `+window:character-sheet`, `+window:character-create`, `+window:birth-options`.
+- `+ui:level-feeling-indicator`, `+ui:depth-indicator` (глибина у футах), `+ui:more-prompt`.
+- `+feature:birth-options`, `+feature:character-dump`, `+feature:permadeath`.
+- `+axis:session=run`.
+- `+card:level-regenerate`, `+card:level-feeling`.
+
+### Morphblade · `games/roguelike/morphblade.md`
+
+- `+trigger:bump` — гравець іде в клітину, зайняту сутністю (атака/відкидання замість руху).
+- `+effect:place_tile(type, cell)` — додати нову клітину до поля (поле росте); `place` ставить сутність, а не клітину.
+- `+effect:level_up(tile)` — підвищити рівень клітини/сутності.
+- `+effect:inherit(tile, from)` — клітина переймає поведінку сусіднього типу.
+- `+cond:tile_under(a, type)` — під A клітина типу (зручніше за `cell(x, type)` для «зброї з підлоги»).
+- `+role:weapon-tile` — клітина, що задає дію гравця, який на ній стоїть.
+- `+feature:board-building` — збирання поля як колоди між раундами.
+- `+card:tile-defines-weapon`, `+card:adjacency-crossbreed` — див. картки.
+
+### Mosaic (7DRL 2022) · `games/roguelike/mosaic-broughlike.md`
+
+- `+card:damage-as-garbage-tile` · `+card:column-overflow-lose`.
+
+### Motherload · `games/dig-gravity/motherload.md`
+
+- `+trigger:land` — приземлення після падіння (шкода за швидкістю; повтор зі SteamWorld Dig).
+- `+effect:sell` — обміняти вміст інвентаря на валюту (Mineral Depot; повтор).
+- `+effect:refuel` — поповнити ресурс-таймер за гроші/предмет.
+- `+ui:fuel-gauge` — шкала палива; `+ui:depth-meter` — висотомір/глибиномір (повтор з Mr. Driller, SteamWorld Dig); `+ui:cargo-meter` — заповнення трюму.
+
+### Mouse Trap · `games/maze-arcade/mouse-trap.md`
+
+- `+effect:toggle_block` — перемкнути двері/стіну між станами.
+- `+effect:toggle_group(color)` — перемкнути всі сутності групи одним вводом.
+- `+ui:power-stock` — запас енерджайзерів (кістки).
+- `+card:color-door-sets`, `+card:stored-power-up`, `+card:wall-ignoring-enemy` — див. вище.
 
 ### Mr. Do! · `games/dig-gravity/mr-do.md`
 
@@ -3806,6 +12056,51 @@
 - `+cond:supported` ⏳ — є опора знизу; `+cond:connected` ⏳ — звʼязна група того ж кольору.
 - `+effect:collapse` — падіння групи як цілого (на відміну від `fall` однієї сутності); `+effect:wobble` — стан «хитається N тіків» перед падінням (можна як `set_state(wobble, n)` — слабка пропозиція).
 - `+ui:depth-meter` — лічильник глибини (Mr. Driller, SteamWorld Dig, Dome Keeper); `+ui:air-gauge` — шкала ресурсу-годинника (близько до ⏳ `energy-bar`).
+
+### Mr. Jack (Містер Джек) · `games/hidden-deduction/mr-jack.md`
+
+- `+trigger:witness_call` — фаза кінця раунду, коли прихована сторона дає відповідь так/ні.
+- `+trigger:accuse` — обвинувачення (див. Cluedo); тут — хід на клітину підозрюваного.
+- `+cond:lit` — клітина освітлена (суміжна з джерелом світла або в його промені).
+- `+cond:seen` — персонаж видимий: `lit` або сусід іншого персонажа.
+- `+effect:relocate_token` — перенести обʼєкт поля (ліхтар, кордон, кришку) з однієї позиції на іншу дозволену.
+- `+role:light` — джерело світла з радіусом/променем.
+- `+ui:witness-card` — індикатор відповіді «Бачили / Не бачили»; `+ui:suspect-tokens` — жетони з боками «підозрюваний/невинний»; `+ui:turn-track` — трек раундів із подіями.
+- `+window:character-draft` — вибір карти персонажа з відкритих; `+window:accusation-dialog` — підтвердження звинувачення.
+
+### Ms. Pac-Man · `games/maze-arcade/ms-pac-man.md`
+
+- `+feature:maze-rotation` — набір полів, що змінюються за номером рівня.
+- `+effect:path_to(a, cell)` — сутність іде шляхом до клітини (фрукт до тунелю); ширше за `move`, вужче за `custom`.
+- `+card:roaming-bonus-item`, `+card:random-start-phase` — див. вище.
+
+### Mutant Year Zero: Road to Eden · `games/tactics/mutant-year-zero.md`
+
+- `+trigger:spotted(a, by)` — A помічений ворогом (≈ `sighted` з XCOM, але з боку жертви) — можна злити.
+- `+trigger:combat_start(by)` — перемикання в бій; `+trigger:call_help(e)` — ворог кличе підмогу.
+- `+cond:hidden(a)` — A у стелсі (можна як `state(a, stealth)` ⏳); `+cond:silent_weapon(w)`.
+- `+effect:knockdown(a, n)` — ціль втрачає хід (≈ `stun` ⏳ — краще злити); `+effect:root(a, n)` — не рухається, але діє; `+effect:call_help`.
+- `+ui:detection-ring` — коло помічання навколо ворога; `+ui:silent-icon` — позначка тихої зброї.
+- `+window:ark-hub` — хаб з крамницями між вилазками.
+- `+axis:time-mode-switch` — гра має два режими часу (`time: turn` тут — лише для бою).
+- `+card:stealth-to-combat`, `+card:silent-kill` — див. «Мапа на каталог».
+
+### My City · `games/board-digital/my-city.md`
+
+- `+effect:apply_sticker` — постійна зміна клітини між партіями (не `set_cell`, бо переживає партію).
+- `+effect:drop_out` — гравець виходить з поточного раунду/епізоду (My City; родич `pass_turn`, але назавжди до кінця епізоду).
+- `+trigger:episode_end` — кінець епізоду кампанії (відрізняти від `level_end` у legacy).
+- `+cond:across_river` — фігура перетинає розділову смугу.
+- `+feature:legacy-campaign` — кампанія, де правила відкриваються конвертами.
+- `+window:chapter-envelope` — екран «нові правила розділу».
+- `+ui:progress-symbols` — мета-лічильник кампанії на полі.
+
+### Myst (7DRL) · `games/roguelike/myst-7drl.md`
+
+- `+trigger:out_of_sight(cell)` — клітина вийшла з поля зору.
+- `+effect:regen(cells)` — перегенерувати клітини.
+- `+cond:visible(cell)` — клітина в полі зору гравця.
+- `+card:regen-unseen-map`, `+card:enemy-strong-weak-cycle` — див. вище.
 
 ### Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon) · `games/roguelike/mystery-dungeon.md`
 
@@ -3831,6 +12126,12 @@
 - `+window:variant-select`, `+window:swap-dialog` — вибір варіанта; дебютний вибір кольору.
 - `+card:line-win`, `+card:nested-boards`, `+card:forced-board`, `+card:forbidden-patterns`, `+card:column-drop`, `+card:pop-out`, `+card:quadrant-rotation` — див. «Мапа на каталог».
 
+### N-queens і Knight's tour (задача ферзів, хід коня) · `games/pencil-logic/n-queens-knights-tour.md`
+
+- `+cond:attacked(cell, by)`, `+cond:visited` — повтори (Chess, Icebarn).
+- `+cond:knight_move(a, b)` — між клітинками хід коня (|dx|,|dy|) = (1,2)/(2,1); узагальнення — `+cond:leaper(a, b, m, n)`.
+- `+card:attack-lines-overlay`, `+card:knight-tour-path`, `+card:hamiltonian-path-check`, `+card:backtracking-visualizer` — див. мапу.
+
 ### NMBR 9 · `games/board-digital/nmbr-9.md`
 
 - `+cond:supported` — уже 🔥 у conditions; тут — під кожним квадратом плитки є квадрат на рівні нижче.
@@ -3853,6 +12154,43 @@
 - `+feature:share-result`, `+feature:streaks`, `+feature:mistake-limit` (⏳).
 - `+axis:session` — `daily`.
 
+### Nagareru-Loop · `games/pencil-logic/nagareru-loop.md`
+
+- `+cond:wind(cell, dir)` — у клітинці дме вітер у напрямку (похідний шар від вентиляторів).
+- `+cond:moving_against(dir)` — сегмент іде проти заданого напрямку (`moving` + протилежний).
+- `+cond:turns` — петля повертає в клітинці (повтор з Masyu/Icebarn).
+- `+card:directed-loop`, `+card:wind-ray`, `+card:forced-drift` — див. мапу.
+
+### Nebulus · `games/grid-platformer/nebulus.md`
+
+- `+axis:field=cylinder` — сітка, загорнута по горизонталі в кільце, без вертикального загортання (Nebulus); окремо від тору.
+- `+effect:knock_down(a, to)` — скинути сутність з опори на нижчий рівень (без шкоди).
+- `+trigger:landed(a)` — сутність приземлилась після падіння (вже пропоновано в manic-miner; тут — для очок висоти й смерті у воді).
+- `+role:tunnel` — прохід крізь стіну на протилежний бік поля.
+- `+feature:bonus-stage` — міні-гра між рівнями з окремими правилами.
+- `+ui:technique-counter` — лічильник бездоганності, видимий у підсумку вежі.
+- `+card:cylinder-tower-view`, `+card:context-fire-jump`, `+card:technique-bonus` — див. вище.
+
+### Nectaris (Military Madness) · `games/tactics/nectaris.md`
+
+- `+trigger:enter_zone` — увійшов у зону контролю (повтор із tactics).
+- `+cond:zoc` — клітина в зоні контролю ворога · `+cond:surrounded` — ціль між нападниками на протилежних гексах.
+- `+effect:capture` · `+effect:load` · `+effect:unload` · `+effect:counterattack` — повтори з Advance Wars; `+effect:store` — сховати юніт у будівлю (ремонт, вихід наступного ходу).
+- `+role:property` — будівля з власником і складом (повтор).
+- `+ui:terrain-percent` — відсоток ландшафту під курсором · `+ui:battle-forecast` — атака/захист перед ударом.
+- `+window:command-box` — меню команд ходу · `+window:battle-scene` — анімація обміну ударами.
+
+### Nerdle · `games/word-number/nerdle.md`
+
+- `+cond:equation_holds` — вираз праворуч і ліворуч від `=` рівні (Nerdle, Mathable).
+- `+cond:commutative_match` — спроба збігається з відповіддю з точністю до перестановки операндів.
+- `+ui:on-screen-keyboard` — екранна клавіатура зі станами символів.
+- `+feature:commutative-answers` — перемикач еквівалентності відповідей.
+- `+feature:puzzle-creator` — гравець складає задачу іншому (Pro nerdle).
+- `+feature:mode-instant` — одна спроба.
+- `+feature:multi-board` — кілька полів одночасно (bi/quad/octo).
+- `+feature:local-reset-time` — щоденна задача за локальною, а не глобальною північчю.
+
 ### NetHack · `games/roguelike/nethack.md`
 
 - `+trigger:apply(item, target)` — гравець застосував предмет до предмета/клітини/монстра (dip, engrave, offer, rub, apply) — центральний тригер «системних» ігор.
@@ -3865,6 +12203,69 @@
 - `+feature:permadeath` · `+feature:save-and-quit` · `+feature:bones` · `+feature:conducts`.
 - `+axis:session` — тут `run` (одна довга партія з одним сейвом).
 
+### Neutron (Нейтрон) · `games/chess-abstract/neutron.md`
+
+- `+role:shared-piece` — фігура без сторони, яку рухають обидва гравці (нейтрон); не `neutral`, бо власної поведінки не має.
+- `+card:shared-neutral-piece` · `+card:two-phase-turn` · `+card:first-turn-exception` — див. «Мапа на каталог».
+
+### New York 1901 (Нью-Йорк 1901) · `games/board-digital/new-york-1901.md`
+
+- `+trigger:market_low` — ринок/колода нижче порогу (кінець гри).
+- `+cond:in_estate(shape)` — фігура цілком у зоні власника.
+- `+cond:touches(street)` — дотик ребром до лінії/обʼєкта (без кутів).
+- `+cond:tier_unlocked(t)` — покоління відкрите.
+- `+effect:demolish(cells)` — зняти побудоване з поля без втрати очок.
+- `+effect:claim(lot)` — зайняти ділянку робітником; `+effect:reclaim_worker` — повернути робітника.
+- `+effect:refill(market)` — поповнити ринок з колоди.
+- `+role:worker` — фішка, що займає місце й повертається.
+- `+ui:tier-tracker` — запас за поколіннями з позначкою відкритого; `+ui:card-row` — ряд відкритих карт.
+- `+window:score-sheet` — підсумок за категоріями.
+- `+card:demolish-and-rebuild` · `+card:street-majority` · `+card:tech-tier-unlock-by-score`.
+
+### Next Station: London · `games/board-digital/next-station-london.md`
+
+- `+cond:edge_free` — ребро вільне: не перетинає проведених і не проходить крізь вузол.
+- `+cond:on_line` — вузол уже належить цій лінії.
+- `+effect:draw_edge` — провести ребро між двома вузлами (Next Station, Lyne, Hashi).
+- `+trigger:card_flipped` — ведучий відкрив карту (flip-and-write).
+- `+role:station` — вузол графа з типом (форма станції).
+- `+role:objective` — спільна ціль поза полем.
+- `+ui:flipped-card` · `+ui:underground-count` · `+ui:line-score-preview`.
+- `+feature:solo-rank-table` — титул за діапазоном очок у соло.
+- `+card:no-crossing-edges` · `+card:district-product-scoring` · `+card:branch-switch` — див. «Мапа на каталог».
+
+### Nibbler · `games/maze-arcade/nibbler.md`
+
+- `+trigger:self_contact` — голова торкнулась власного тіла (уже просила `snake.md`; тут — єдина смерть гри).
+- `+effect:pause_move` — сутність стоїть N тіків, не втрачаючи напряму (пауза на повороті); `stun` має відтінок покарання.
+- `+card:corner-pause`, `+card:wait-at-wall`, `+card:level-score-multiplier` — див. «Мапу на каталог».
+- `+ui:time-remaining-bar` — смуга/лічильник лишку часу, що потім конвертується в бонус.
+
+### Nine men's morris (Млин) · `games/chess-abstract/nine-mens-morris.md`
+
+- `+trigger:mill_formed` — хід склав нову лінію з N своїх (на відміну від `pattern(line)`, що спрацьовує на будь-яку наявну).
+- `+cond:in_mill` — фішка входить до складеного млину.
+- `+cond:phase` — поточна фаза гравця (ставлення / рух / літання).
+- `+effect:remove_enemy` — гравець обирає й знімає ворожу фішку (не ходом на неї).
+- `+effect:fly` — перемістити на будь-яку вільну клітину/точку.
+- `+ui:phase-indicator` — фаза кожної сторони · `+ui:hand-pieces` — фішки в руці · `+ui:mill-highlight` — щойно складений млин · `+ui:removal-mode` — режим вибору фішки для знімання.
+- `+card:mill-removal` · `+card:mill-protection` · `+card:fly-when-few` · `+card:reform-mill` · `+card:min-pieces-lose` — див. «Мапа на каталог».
+
+### Noita · `games/dig-gravity/noita.md`
+
+- `+trigger:submerged` — сутність повністю в рідині (статус за 20 с у поліморфіні; утоплення).
+- `+cond:durability` — міцність клітини менша за силу удару; `+cond:material` — клітина належить класу матеріалу (порошок/рідина/газ).
+- `+effect:ignite` — підпалити клітину/сутність; `+effect:stain` — накласти статус-пляму від матеріалу; `+effect:kick` — копнути фізичне тіло.
+- `+role:material` — клітина-матеріал симуляції (повтор з Powder Toy/Sandspiel).
+- `+window:wand-editor` — редактор слотів зброї; `+ui:mana-bar`, `+ui:levitation-bar`.
+- `+axis:field-pixel` — поле, де клітина = піксель і тайлів як таких нема (значення осі `field`).
+
+### Nondango (ノンダンゴ) · `games/pencil-logic/nondango.md`
+
+- `+cond:count_in` — повтор зі Star Battle: кількість позначок виду в області.
+- `+cond:run_length(color, dirs8, n)` — є ряд з n однакових поспіль у заданих напрямках.
+- `+card:diagonal-run-check` — див. мапу.
+
 ### Nonogram (Японський кросворд, Picross, Griddlers, Hanjie) · `games/pencil-logic/nonogram.md`
 
 - `+role:clue-outside` — підказка поза полем, привʼязана до ряду (спільна з sudoku-variants).
@@ -3874,6 +12275,26 @@
 - `+feature:time-penalty` — помилка коштує час, а не життя; `+feature:try-it-out` — тимчасовий шар припущень (Picross DS); `+feature:picture-reveal` — малюнок-нагорода.
 - `+window:picture-gallery` — галерея розвʼязаних малюнків / макет Clip-картини (?).
 
+### Not the Robots · `games/roguelike/not-the-robots.md`
+
+- `+trigger:spotted(a)` — ворог побачив гравця (стелс), відмінне від `line_of_sight`, бо враховує укриття/стан.
+- `+cond:in_cover` — гравець за укриттям / невидимий.
+- `+card:eat-your-cover` · `+card:charge-by-eating`.
+
+### Number Match / Take Ten (Numberzilla) · `games/word-number/number-match.md`
+
+- `+cond:pair_sum` — сума значень двох сутностей дорівнює N (Take Ten, Pyramid solitaire).
+- `+cond:clear_path` — між двома клітинами по лінії лише порожні (Number Match, Mahjong-«вільна», Onet).
+- `+effect:append_copy` — дописати копії обраних сутностей у кінець поля.
+- `+ui:add-button` — кнопка «дописати»; `+ui:adds-left` — лишилось дописувань.
+- `+feature:boosters` — одноразові інструменти поза правилами за валюту.
+
+### Nuri-Maze (Nurimeizu, ぬりめいず) · `games/pencil-logic/nuri-maze.md`
+
+- `+cond:acyclic` — множина клітинок не містить циклу (дерево); пара до `connected`.
+- `+cond:on_path` — клітинка лежить на шляху між двома точками.
+- `+card:acyclic-check`, `+card:route-checkpoints` — див. мапу.
+
 ### Nurikabe (Нурікабе, Islands in the Stream) · `games/pencil-logic/nurikabe.md`
 
 - `+trigger:pattern(block2x2)` — нове значення для `pattern(shape)`: заборонений квадрат.
@@ -3881,6 +12302,47 @@
 - `+cond:region_size` — розмір компоненти порівняно з числом.
 - `+ui:dot-mark` — крапка «біле» в бінарних пазлах (окремо від `pencil-marks`).
 - `+card:cell-shade-toggle` — див. мапу.
+
+### Nurimisaki (ぬりみさき) · `games/pencil-logic/nurimisaki.md`
+
+- `+trigger:pattern(block2x2)` — повтор з Nurikabe.
+- `+cond:view_count` — повтор з Kuromasu: скільки клітинок видно по прямій.
+- `+cond:dead_end` — клітинка мережі має рівно одного сусіда своєї мережі.
+- `+card:dead-end-clue` — див. мапу.
+
+### OCTOPTICOM · `games/connect-rotate/octopticom.md`
+
+- `+trigger:iteration_start` — почалась ітерація симуляції (наступна клітина вхідної стрічки).
+- `+cond:beam_present(cell, side)` — на вході клітини з боку є промінь.
+- `+effect:write_output(tape, color)` — записати значення у вихідну стрічку.
+
+### Ogre · `games/tactics/ogre.md`
+
+- `+cond:odds(atk, def, op, ratio)` — співвідношення сили атаки до захисту порівняно з порогом.
+- `+effect:disable(a)` — оглушити до наступної фази відновлення (відрізняється від `stun(n)`: друге влучання знищує).
+- `+effect:recover(a)` — зняти оглушення у фазі Recovery (поки — `clear_state`).
+- `+trigger:ram(a, b)` — таран: рух у клітину ворога як атака.
+- `+role:subsystem` — частина великої сутності, що є окремою ціллю.
+- `+ui:record-sheet` — листок стану сутності з клітинками втрат; `+ui:odds-preview` — співвідношення й шанси перед атакою.
+- `+window:scenario-editor` — редактор мапи й складу сторін (дитина `editor-window`).
+- `+feature:print-map-export` — експорт мапи для друку настільної версії.
+- `+axis:sides=asymmetric` — сторони несиметричні за силами й метою.
+- `+card:combat-results-table`, `+card:subsystem-damage` — див. вище.
+
+### Oil's Well · `games/maze-arcade/oils-well.md`
+
+- `+effect:retract` — сутність повертається своїм шляхом до бази (труба, язик, гак).
+
+### Omega · `games/roguelike/omega.md`
+
+- `+trigger:time_of_day(h)` — настала година доби; `+trigger:moon_phase(p)` — змінилась фаза місяця; `+trigger:surrender(monster)` — монстр здався.
+- `+effect:shift_alignment(dir, n)`, `+effect:join(guild)`, `+effect:rank_up(guild)`, `+effect:retire` — кінцівка «пенсія».
+- `+cond:alignment(op, x)`, `+cond:member(guild)`, `+cond:open_hours` — заклад зараз працює.
+- `+role:guild-hall` — клітина-вхід у гільдію; `+role:oracle` — NPC-підказник.
+- `+window:overworld-map`, `+window:questionnaire`, `+window:guild-window`.
+- `+ui:moon-phase`, `+ui:clock`, `+ui:up-in-air-slot`.
+- `+feature:multiple-endings`.
+- `+card:guild-ranks`, `+card:moon-phase-cycle`, `+card:hand-slot-inventory`.
 
 ### Onitama · `games/chess-abstract/onitama.md`
 
@@ -3915,6 +12377,57 @@
 - `+feature:solution-metrics`, `+feature:gif-export`, `+feature:workshop`.
 - `+axis:control` = `programmed`; `+axis:actors` = `party` (кілька рук, кожна зі своєю програмою).
 
+### Orcs Must Die! · `games/tower-lanes/orcs-must-die.md`
+
+- `+role:trap` — пастка гравця (а не стихія рівня): ціна, поверхня, перезарядка (Dungeon Warfare, OMD).
+- `+role:base` — ціль ворогів з пулом життів (розлом, хатина, командний центр).
+- `+cond:surface` — тип поверхні клітинки: floor / wall / ceiling.
+- `+effect:sell` — прибрати свою споруду з поверненням валюти (TD-повтор).
+- `+effect:knockback` — відкинути сутність імпульсом у напрямку.
+- `+effect:rearm` — пастка знову готова (≈ `set_state(armed)`, але як окреме слово для TD).
+- `+trigger:wave_break` — настала перерва між пачками хвиль.
+- `+ui:rift-points` — лічильник життів бази; `+ui:trap-bar` — слоти лоадауту з ціною і кулдауном.
+- `+window:loadout-select`, `+window:weaver-window` — вибір лоадауту / помічника з деревом апгрейдів.
+- `+feature:loadout-lock` — лоадаут фіксується з першою дією рівня.
+- `+card:trap-surfaces`, `+card:trap-rearm` — див. «Мапа на каталог».
+
+### Othercide · `games/tactics/othercide.md`
+
+- `+trigger:timeline_turn` — таймлайн дійшов до юніта/події (вже пропонував Chimera Squad).
+- `+trigger:interrupt` — подія поза ходом, що спрацьовує перед чужою дією.
+- `+effect:delay_turn` / `+effect:advance_turn` — зсунути позицію на таймлайні.
+- `+effect:queue_action` — поставити дію на таймлайн на пізніше.
+- `+effect:sacrifice` — прибрати свого юніта ціною ефекту для іншого.
+- `+cond:ap` — лишок очок дії порівняно з порогом (частковий `counter`).
+- `+ui:timeline-bar` — шкала черги з портретами й позначками подій.
+- `+ui:action-points-preview` — скільки AP лишиться і куди стане юніт після дії.
+- `+window:inner-dream` — хаб між боями; `+window:remembrance-select` — вибір мета-бонусів.
+- `+feature:run-carryover` — частина загону переноситься в нову спробу.
+- `+axis:turn-structure=time-track` — значення осі з корпусу (FFT, Chimera Squad).
+
+### Oware (Оваре, Авале) · `games/chess-abstract/oware.md`
+
+- `+effect:sow(pit, dir)` — розсіяти вміст лунки по одній у наступні.
+- `+effect:capture(cells)` — забрати вміст клітин у комору (манкала; інші ігри — взяття фігури).
+- `+trigger:sown` — розсів завершився (точка перевірки взяття).
+- `+cond:last_in(side)` — остання насінина впала в ряд сторони.
+- `+cond:feeds_opponent(move)` — хід дає насінини суперникові.
+- `+ui:pit-counts` — числа над лунками; `+ui:store-counter` — комора з лічильником.
+- `+card:sowing` · `+card:count-capture`.
+- `+axis:field=ring` — кільце клітин (окремо від `1d`-смуги).
+
+### Oxyd (+ Enigma) · `games/connect-rotate/oxyd.md`
+
+- `+axis:physics` — значення `rolling` (кулька з інерцією й тертям поверх клітинної мапи); підтримую наявну пропозицію осі.
+- `+trigger:beam_hit(a)` — промінь торкнувся сутності (Oxyd відкривається, предмет трансформується, boulder розвертається).
+- `+effect:emit_beam(src)` — перерахувати промінь від джерела.
+- `+effect:impulse(a, dir)` — короткий поштовх актора (bumper).
+- `+effect:shuffle(set)` — перемішати значення множини сутностей (кольори Oxyd).
+- `+cond:open_unpaired(x)` — є відкрита сутність без пари (Memory-стан).
+- `+role:actor` — неперервна сутність з фізикою поверх клітин (кулька) на відміну від клітинного `player`.
+- `+window:level-inspector` — картка рівня: рекорд, par, статистика, нотатка, оцінка.
+- `+feature:world-record-hunt` — рівень повторюється, доки не побито рекорд.
+
 ### Oxygen Not Included — клітинна фізика (гази, рідини, тепло) · `games/build-sim/oxygen-not-included-cells.md`
 
 - `+trigger:tick` (уся симуляція), `+trigger:counter` (маса > макс., T > поріг), `+trigger:adjacent` (пара клітин для теплообміну).
@@ -3938,6 +12451,62 @@
 - `+window:intermission` — мультфільм між рівнями (Pengo); `+window:attract-demo` — атракт з представленням персонажів (Q*bert).
 - `+feature:operator-settings` — DIP-налаштування автомата (Q*bert).
 
+### Pac-Man 256 · `games/maze-arcade/pac-man-256.md`
+
+- `+trigger:streak` — серія однакових подій без перерви досягла N (256 точок поспіль); `counter` не передає «підряд».
+- `+effect:clear_screen` — прибрати всіх ворогів у видимій області (бомба-серія, вибух 256).
+- `+role:wall-front` — рухомий фронт-небезпека, що займає ряди поля (глітч; «смерть знизу» в раннерах).
+- `+window:loadout-select` — вибір набору здібностей/предметів перед забігом; `+window:missions-window` — список місій з нагородами.
+- `+ui:streak-counter` — лічильник серії; `+ui:powerup-slots` — слоти обраних power-up-ів.
+- `+feature:revive` — оживити після смерті за валюту/рекламу.
+- `+card:rising-hazard-front`, `+card:dot-streak-clear`, `+card:loadout-powerups`, `+card:meta-upgrades`.
+
+### Pac-Man Battle Royale · `games/maze-arcade/pac-man-battle-royale.md`
+
+- `+effect:knockback` — відкинути сутність на кілька клітин від точки зіткнення.
+- `+trigger:last_standing` — на полі лишився один гравець (Battle Royale, Bomberman, Achtung).
+- `+ui:round-wins` — виграні раунди кожного гравця.
+- `+card:eat-rival-when-powered`, `+card:last-standing-round` — див. вище.
+
+### Pac-Man Championship Edition / DX (Пекмен: чемпіонське видання) · `games/maze-arcade/pac-man-championship-edition.md`
+
+- `+effect:time_scale` — глобальний множник часу гри на N тіків (slow-motion DX); не `speed`, бо міняється темп усього світу, а не однієї сутності.
+- `+effect:regen_region` — заповнити зону новим набором предметів/клітин (половина лабіринту CE).
+- `+trigger:near_miss` — ворог пройшов у радіусі r без зіткнення (DX slow-mo; бонуси «впритул» в аркадах).
+- `+role:follower` — ворог/союзник, що повторює шлях за ведучим (потяг привидів).
+- `+ui:speed-gauge` — індикатор поточного рівня швидкості гри; `+ui:bomb-stock` — запас бомб.
+- `+card:half-maze-refresh`, `+card:sleeping-enemy`, `+card:ghost-train`, `+card:near-miss-slowmo`, `+card:panic-bomb`, `+card:score-driven-speed`.
+- `+feature:course-select` — вибір курсу (геометрії лабіринту) незалежно від режиму.
+
+### Pac-Man spin-offs (Pac & Pal, Baby Pac-Man, Mega Tunnel Battle) · `games/maze-arcade/pac-man-spinoffs.md`
+
+- `+trigger:flip` — сутність перевернуто/відкрито наїздом (карта); можна виразити `enter` + `reveal`, але подія потрібна для ланцюгів.
+- `+effect:stun_beam` — постріл, що оглушує, а не вбиває (можна `spawn(beam)` + `stun`; лишаю як кандидат на складене слово).
+- `+role:thief` — NPC, що забирає предмети з поля (Міру; злодій у Chip's Challenge забирає з інвентаря).
+- `+ui:card-row` — рядок відкритих/лишених предметів рівня.
+- `+window:pinball-table` — окремий режим-сцена з іншою фізикою.
+- `+feature:spectator-powerups` — глядачі впливають на гру.
+- `+axis:input-hardware` — фізичні елементи кабінету (фліпери, кулька) поряд з екраном.
+- `+card:item-thief-race`, `+card:video-pinball-hybrid` — див. вище.
+
+### Pac-Man: сиквели 1983–2021 · `games/maze-arcade/pac-man-sequels.md`
+
+- `+trigger:jump` — сутність відірвалась від поля (стрибок як подія); `+cond:airborne` — у повітрі (чи можна замінити `state(a, airborne)` — питання куратору).
+- `+effect:swap_role(a, b)` — гравці міняються ролями (Vs.).
+- `+effect:tag(a, side)` — нейтральна сутність переходить на бік (близько до ⏳ `set_side`, але без захоплення).
+- `+ui:vision-circle` — коло видимості навколо сутності; `+ui:target-strategy` — перемикач цілі атак.
+- `+window:split-device` — ті самі дані на двох пристроях з різною видимістю.
+- `+axis:asymmetry` — сторони грають за різними правилами/інформацією (Vs., Dead by Daylight, Scotland Yard).
+- `+card:asymmetric-roles`, `+card:jammer-attack` — див. вище.
+
+### Palisade (Five Cells, «Частокіл») · `games/pencil-logic/palisade.md`
+
+- `+cond:border_count(cell, n)` — кількість сторін клітинки, що є межами (Palisade, Five Cells).
+- `+cond:no_dead_end(borders)` — жоден відрізок межі не закінчується всередині області.
+- `+ui:edge-cross` — хрестик «тут не межа» на ребрі.
+- `+ui:cursor-mode-toggle` — курсор по клітинках чи по ребрах.
+- `+window:params-dialog`, `+window:game-id-dialog` — Tatham Custom і Specific/Seed.
+
 ### Panel de Pon (Tetris Attack, Puzzle League) · `games/falling-match/panel-de-pon.md`
 
 - `+trigger:settled` — 🔥 підтверджую (кінець ланцюга); `+trigger:pattern` — ⏳ підтверджую.
@@ -3951,6 +12520,71 @@
 - `+axis:control` — значення `swap-cursor` (курсор над двома клітинами).
 - `+axis:gravity` — `cascade` + стани hover (затримка перед падінням як параметр).
 
+### Panzer General · `games/tactics/panzer-general.md`
+
+- `+trigger:enter_zoc` — сутність увійшла в зону контролю ворога.
+- `+trigger:attacked` — юніт атаковано (підтримувальний вогонь, окопи).
+- `+effect:counterattack` — відповідь захисника; `+effect:support_fire` — вогонь сусіда-підтримки перед боєм.
+- `+effect:entrench` — +1 рівень окопування; `+cond:entrenchment` — рівень окопу.
+- `+effect:resupply` — поповнити пальне/набої.
+- `+cond:moved_this_turn` — юніт уже рухався цього ходу (артилерія, поповнення, посадка).
+- `+role:objective-city` — клітина-ціль із власником.
+- `+ui:strength-plaque` — табличка сили під юнітом; `+ui:prestige` — валюта кампанії.
+- `+window:purchase-units` — закупівля/модернізація; `+window:campaign-briefing` — брифінг; `+window:victory-tier` — підсумок з рівнем перемоги.
+- `+feature:core-army` — армія, що переходить між місіями.
+
+### Paper Trail · `games/thinky/paper-trail.md`
+
+- `+effect:fold(sheet, line)` / `+effect:unfold(sheet, fold)` — перевернути частину поля по лінії поверх іншої / повернути.
+- `+cond:fold_clear(line)` — лінія згину не перетинає аватара, блокувальні обʼєкти й наявні згини.
+- `+axis:field-two-sided` — значення `field` для двостороннього поля, що згинається; зараз записано як `layers`.
+- `+ui:fold-preview` — живий показ звороту під час перетягування.
+- `+card:fold-field` — див. «Мапа на каталог».
+- `+feature:hint-sequence` — підказка розкриває один крок еталонного розвʼязку.
+
+### Paper.io (Пейпер-іо) і Paper.io 2 · `games/maze-arcade/paper-io.md`
+
+- `+effect:leave_trail`, `+effect:clear_trail` — підтверджую (Tron, Xonix, Blockade, Kurve).
+- `+trigger:return_home` — підтверджую з `tron-light-cycles`: повернення на свою зону з хвостом запускає заливку.
+- `+cond:in_own_zone` — сутність на своїй території (безпека, лоб у лоб).
+- `+role:trail` — хвіст як окрема сутність з власником (вразливий, не стіна); `hazard` не передає «шкодить власнику, коли його торкнуться».
+- `+ui:territory-percent` — підтверджую; `+ui:live-ranking` — живий топ гравців поруч із полем.
+- `+card:death-drops-territory`, `+card:skin-unlocks`.
+
+### Paperback Adventures · `games/word-number/paperback-adventures.md`
+
+- `+effect:draw_cards` — добрати N карт у руку (Paperback Adventures, Monster Train, Cobalt Core).
+- `+effect:exhaust` — карта вибуває до кінця бою (fatigue; Cobalt Core, Slay the Spire).
+- `+effect:discard` — карта/рука у скид.
+- `+effect:add_card(deck, card)` — додати карту в колоду (штрафна, нагорода).
+- `+effect:upgrade_card` — перевернути карту на посилений бік.
+- `+cond:top_card(c)` — карта є крайньою («верхньою») в комбінації.
+- `+cond:splay(dir)` — обраний напрямок розкладу слова.
+- `+trigger:card_unplayed(c)` — карта лишилась на руці наприкінці ходу.
+- `+ui:card-hand` · `+ui:deck-counter` · `+ui:discard-pile` · `+ui:mana-counter` — стандартні віджети deckbuilder.
+- `+ui:hex-boon-track` — два треки лічильників-станів у гравця й ворога.
+- `+window:reward-choice` — вибір одного з двох боків нагороди після бою.
+
+### Parkitect · `games/build-sim/parkitect.md`
+
+- `+role:visitor` — автономний клієнт з потребами (гість) — повторно після RCT/Theme Hospital.
+- `+cond:visible_from(a, b)` — B видно з позиції A з урахуванням стін і висот (відмінно від `line_of_sight` по прямій ряду).
+- `+effect:queue_join` — стати в кінець черги (повторно).
+- `+ui:decoration-overlay` — теплова мапа рейтингу декору.
+- `+window:staff-zones` — керування зонами персоналу.
+- `+card:staff-only-path`, `+card:staff-zones`, `+card:restock-logistics`, `+card:sight-penalty`, `+card:decoration-rating` — див. вище.
+
+### Passant: A Chess Roguelike · `games/chess-abstract/passant.md`
+
+- `+effect:demote(a)` — фігура понижується до базової (до пішака).
+- `+effect:petrify(a)` — сутність назавжди втрачає здатність ходити, лишаючись на полі (окремий випадок `set_state`).
+- `+trigger:boss_round` — настав бос-раунд (кожен N-й).
+- `+cond:badge(name)` — у забігу активний модифікатор правил.
+- `+ui:badge-slots` · `+ui:coin-slots` — слоти постійних і витратних модифікаторів.
+- `+feature:shop-freeze` — зберегти товар магазину на наступний візит; `+feature:shop-reroll` — оновити асортимент за гроші.
+- `+window:pack-open` — відкриття пака-нагороди.
+- `+card:rule-badges`, `+card:boss-rule-modifier`, `+card:shop-freeze-reroll` — див. «Мапа на каталог».
+
 ### Patchwork (Печворк) · `games/board-digital/patchwork.md`
 
 - `+trigger:cross(a, mark)` — фішка пройшла через клітину (не обовʼязково зупинилась): дохід, спецлатка. Відрізняється від `reach`/`enter`.
@@ -3959,6 +12593,16 @@
 - `+role:supply` — коло латок як спільний запас.
 - `+ui:time-track` — трек часу/очок з фішками гравців; `+ui:market-ring` — кільце товарів з підсвіченим доступним вікном; `+ui:piece-tray` — тут власні латки, що чекають розміщення (спецлатка).
 - `+axis:turn-structure` = `time-track`.
+
+### Path of Achra · `games/roguelike/path-of-achra.md`
+
+- `+trigger:on_event(name)` — спрацювати на іменовану подію бою (on hit, on dodge, on kill, on prayer) — ширше за `after(effect)`.
+- `+cond:encumbered` — вага спорядження понад силу (і загалом «стан збірки»: two-handing, bare fist).
+- `+effect:summon(a)` — призвати союзника з перевіркою ліміту (зараз `spawn`).
+- `+window:route-choice` — вибір наступної області/вузла маршруту.
+- `+ui:glory-bar` · `+ui:speed-bar` — смуги досвіду й швидкості під HP.
+- `+feature:auto-play` — авто-хід до виходу однією клавішею.
+- `+card:event-trigger-build` · `+card:attack-resolution-pipeline`.
 
 ### Patrick's Parabox · `games/thinky/patricks-parabox.md`
 
@@ -3972,6 +12616,38 @@
 - `+axis:field-nested` — нове значення осі `field`: `nested` (сітки вкладені одна в одну, можливо циклічно); зараз записано як `graph`.
 - `+axis:undo` — `unlimited`.
 
+### Patterna · `games/hidden-deduction/patterna.md`
+
+- `+cond:count_within(cell, kind, r, op, n)` — кількість сутностей виду в радіусі r кроків (ребер); `adjacent_count` — окремий випадок r=1.
+- `+cond:deducible(cell)` — стан клітини однозначно виводиться з відкритого (детектор вгадування).
+- `+cond:contiguous` — цілі в зоні підказки утворюють одну звʼязну групу (Hexcells `{n}`; тут — у межах радіуса).
+- `+effect:warn` — попередження без штрафу (перше вгадування).
+- `+role:edge` — ребро графа як сутність з властивістю (напрям).
+- `+ui:color-group-counters` · `+ui:range-rings` — кільця радіуса навколо числа.
+- `+feature:guess-warning` · `+feature:generator-options` — параметри рандом-генератора перед стартом.
+
+### Pawnbarian · `games/roguelike/pawnbarian.md`
+
+- `+role:card` — карта як сутність колоди (також у Onitama).
+- `+trigger:card_played(card)` · `+cond:card_allows(move)` — зіграна карта і її патерн.
+- `+effect:draw(n)` · `+effect:discard(hand)` — добір і скидання.
+- `+ui:card-hand` — рука карт; `+ui:damage-notches` — число ударів на клітині.
+- `+feature:ascension` — сходинки ускладнення (Chains).
+- `+card:move-cards` · `+card:end-turn-square-damage`.
+
+### Peg solitaire (Пег-солітер) · `games/chess-abstract/peg-solitaire.md`
+
+- `+effect:jump_capture` — стрибок через фігуру зі зняттям (уже пропонувався в `checkers.md`/`konane.md`; тут — єдиний вид ходу одиночної гри).
+- `+cond:on_board` — клітина належить масці поля (непрямокутні дошки).
+- `+feature:goal-hole-select` — вибір стартової порожньої і цільової лунки як налаштування задачі.
+- `+card:jump-capture` · `+card:board-shape-mask` · `+card:pagoda-function` · `+card:reverse-solution` — див. «Мапа на каталог».
+
+### Pencils (Nikoli) · `games/pencil-logic/pencils.md`
+
+- `+cond:crosses`, `+cond:degree(cell, n)` — повтори (Tracks, Yajisan-Sokoban).
+- `+cond:line_length(line, op, n)` — довжина намальованої лінії в клітинках.
+- `+card:pencil-tip-line`, `+card:full-cover-check` — див. мапу.
+
 ### Pengo · `games/push-slide/pengo.md`
 
 - `+trigger:input` — кнопка дії; `+trigger:after` — ворог гине по завершенні ковзання блоку; `+trigger:pattern` — `line(3, diamond)`; `+trigger:counter` — лишилось 2/1 Sno-Bee; `+trigger:timer` — 2 хв раунду.
@@ -3981,6 +12657,62 @@
 - `+trigger:crushed_by` — сутність знищена обʼєктом, що рухається (подія для очок і комбо).
 - `+window:intermission` — анімаційна вставка між раундами (аркади).
 - `+ui:egg-counter` — лишилось яєць (?).
+
+### Pente (Пенте) · `games/chess-abstract/pente.md`
+
+- `+cond:sandwiched` — уже в `baroque-chess.md`: групу ворогів затиснуто між своїми.
+- `+effect:capture_pair` — зняти затиснуту групу заданого розміру.
+- `+trigger:placed` — уже в `line-games.md`: камінь поставлено (тут через `after(place)`).
+- `+cond:line_breakable` — суперник може розірвати лінію взяттям (Boat-Pente).
+- `+ui:capture-tally` — лічильник взятих з порогом перемоги · `+ui:win-line` (уже в `line-games.md`) · `+ui:forbidden-zone` — підсвічена зона заборони для ходу.
+- `+window:variant-select`, `+window:swap-dialog` — уже в `line-games.md`.
+- `+card:safe-into-flank` · `+card:tournament-opening-rule` · `+card:win-survives-reply` · `+card:multi-stone-per-turn` — див. «Мапа на каталог».
+
+### Pentomino (Пентаміно, гра Голомба) · `games/board-digital/pentomino.md`
+
+- `+role:shared-supply` — спільний запас, з якого беруть усі сторони (на відміну від особистого `supply`).
+- `+cond:in_pool` — фігура ще не використана в спільному наборі.
+- `+ui:piece-pool` — панель набору з позначкою використаних фігур.
+
+### Pentominous («Пентамінус») · `games/pencil-logic/pentominous.md`
+
+- `+cond:same_shape(a, b)` — однакова форма з точністю до поворотів і відбиттів (Pentominous, LITS, Double Choco).
+- `+cond:shape_is(region, letter)` — область має задану форму.
+- `+role:obstacle` — клітинка поза грою пазла (не належить жодній області).
+
+### Pentopia · `games/pencil-logic/pentopia.md`
+
+- `+cond:nearest_dist(cell, dir, kind)` — відстань до першої сутності виду в напрямку (Pentopia, Myopia, Kuromasu-подібні промені).
+- `+cond:touches8(a, b)` — дві групи торкаються хоча б кутом.
+- `+ui:shape-bank` — панель фігур поруч із полем з позначкою «використано».
+- `+card:shape-bank`, `+card:nearest-in-direction-clue`, `+card:multi-arrow-clue` — див. мапу.
+
+### Pepper II · `games/maze-arcade/pepper-ii.md`
+
+- `+effect:leave_trail` — рух лишає позначку на відрізку/клітині (застібка).
+- `+effect:clear_trail` — стерти незавершений слід (повернення назад, Whippersnapper).
+- `+effect:switch_screen` — перейти на інший екран-лабіринт рівня зі збереженням його стану.
+- `+ui:screens-done-marker` — позначки пройдених наборів екранів (кубики).
+- `+ui:prize-shelf` — зібрані призи під полем.
+- `+card:trail-eraser-enemy`, `+card:multi-screen-maze-exits` — див. вище.
+
+### Pharaoh · `games/build-sim/pharaoh.md`
+
+- `+card:roadblock-filter`, `+card:seasonal-flood`, `+card:monument-construction` — див. вище; `+card:walker-coverage`, `+card:house-evolution` — друга гра (правило трьох).
+- `+role:walker` — друга гра після Caesar III.
+- `+trigger:month_start` — календарний тік (друга гра); `+trigger:season_start` — початок сезону (розлив, Stardew-сезони).
+- `+cond:walker_kind` — вид агента (блукаючий/цільовий) як умова фільтра.
+- `+effect:refill` — агент повертається поповнити запас (вода пожежника, набої).
+- `+ui:map-overlay`, `+ui:rating-columns`, `+window:advisor-window` — друга гра.
+
+### Phoenix Point · `games/tactics/phoenix-point.md`
+
+- `+trigger:sighted` — ворога виявлено (уже просить XCOM); `+trigger:attacked` — по юніту стріляли (Return Fire); `+trigger:enemy_moved` — рух у зоні overwatch.
+- `+cond:ap` — вистачає очок дії (частка); `+cond:part_disabled` — частина тіла вимкнена.
+- `+effect:disable_part` — вимкнути частину тіла з її здібностями; `+effect:shred` — назавжди зменшити броню; `+effect:interrupt_move` — обірвати рух; `+effect:panic` — перехід у паніку з вимушеною дією; `+effect:mutate` — замінити частину тіла ворожого типу.
+- `+role:body-part` — підсутність юніта з власними HP/бронею.
+- `+ui:spread-circles` — два кола розкиду; `+ui:part-info-box` — HP/броня обраної частини; `+ui:ap-bar-quarters` — AP четвертинами; `+ui:will-points`; `+ui:overwatch-cone` — регульований конус.
+- `+window:first-person-aim` — вигляд прицілювання; `+window:geoscape` — глобальна стратегія; `+window:mutation-lab` — дослідження/мутації (?).
 
 ### Photosynthesis (Фотосинтез) · `games/board-digital/photosynthesis.md`
 
@@ -3992,6 +12724,24 @@
 - `+ui:opponent-boards` · `+window:match-setup`.
 - `+card:directional-shadow` · `+card:rotating-light-source` · `+card:growth-stages`.
 
+### Picross-варіанти (Picross 3D, Round 2, Mega, Color, Clip) · `games/pencil-logic/picross-variants.md`
+
+- `+cond:group_count` — кількість груп у лінії порівняно з n (1 / 2 / ≥3).
+- `+effect:carve` — прибрати куб/клітинку з тіла моделі (руйнівна розмітка, протилежна `mark`).
+- `+ui:slice-slider` — повзунок зрізу шарів; `+ui:strike-counter` — лічильник помилок з лімітом; `+ui:tool-toggle` — перемикач двох інструментів (пензель/молот).
+- `+feature:slice-view`, `+feature:one-chance-mode`, `+feature:construction-challenge`.
+- `+axis:field-3d-clues` — для `field: 3d`: підказки на лініях трьох осей (до осі field).
+- `+card:group-count-clue`, `+card:voxel-carve` — див. мапу.
+
+### Pictobits · `games/falling-match/pictobits.md`
+
+- `+effect:absorb` — забрати плитку з поля в буфер, де вона лишається плиткою (Pictobits; родич `catch` у Klax).
+- `+trigger:stuck_for` — умова «стан триває N секунд» (жоден блок не може впасти 3 с).
+- `+ui:picture-progress` — картинка, що заповнюється пікселями як прогрес етапу.
+- `+ui:palette-slots` — буфер зі слотами, які можуть бути вимкнені.
+- `+feature:handedness` — перемикання правша/лівша дзеркалить HUD (палітра, POW).
+- `+card:big-piece-breakup` · `+card:slot-cost-powerup` — див. «Мапу».
+
 ### Pipe Mania (Pipe Dream) · `games/connect-rotate/pipe-mania.md`
 
 - `+role:source` — джерело потоку/променя (старт труб, лазер); `+role:sink` — приймач (кінцева труба, злив, рецептор); `+role:conduit` — клітина, що проводить потік (труба, дзеркало), не `object`, бо сенс — у портах.
@@ -4001,6 +12751,27 @@
 - `+ui:flow-countdown` — шкала до старту потоку; `+ui:distance-counter` — скільки ще труб до мети.
 - `+window:bonus-round` — окремий міні-рівень з іншими правилами між звичайними.
 - `+card:piece-queue`, `+card:flow-propagation`, `+card:replace-with-penalty` — див. «Мапа на каталог».
+
+### Pipe Push Paradise · `games/push-slide/pipe-push-paradise.md`
+
+- `+effect:lift` — підняти обʼєкт на висоту +1 (ротатор, стекування).
+- `+effect:tip_over` — перекинути обʼєкт через ребро в напрямку руху (зміна орієнтації + зсув); зараз — `rotate` + `move`.
+- `+cond:ports_aligned` — порти двох сусідніх труб дивляться один на одного (база `connected`).
+- `+role:rotator` — плитка-механізм, що змінює орієнтацію обʼєкта на ній.
+- `+feature:hub-world` — прогресія через вільний світ, а не список рівнів.
+- `+card:rotator-pad`, `+card:hub-island`, `+card:flow-goal-3d`.
+
+### PixelJunk Monsters · `games/tower-lanes/pixeljunk-monsters.md`
+
+- `+trigger:stay` — сутність перебуває на клітинці/біля обʼєкта N тіків поспіль (танець на вежі).
+- `+effect:upgrade` — рівень споруди +1 за шляхом апгрейдів (TD-повтор, Fieldrunners).
+- `+effect:sell` — продаж з рефандом (TD-повтор).
+- `+role:base` — хатина: ціль ворогів з пулом життів.
+- `+ui:ring-menu` — кільцеве меню дій навколо аватара/обʼєкта (вибір стіком).
+- `+ui:lives-icons` — життя як фігурки на полі біля бази (дитинчата), а не лічильник у HUD.
+- `+feature:research-per-level` — дослідження скидаються між заходами в рівень.
+- `+card:build-where-standing`, `+card:stand-to-upgrade` — див. «Мапа на каталог».
+- `+axis:control` — значення `avatar-build`: дія курсора виконується позицією аватара.
 
 ### Plants vs. Zombies (Рослини проти зомбі) · `games/tower-lanes/plants-vs-zombies.md`
 
@@ -4017,6 +12788,95 @@
 - `+feature:minigames` — набір варіантів правил над тим самим двіжком; `+feature:loadout` — обмежений набір інструментів на рівень.
 - `+card:lane-grid`, `+card:placement-cooldown` — див. «Мапа на каталог».
 
+### Plants vs. Zombies Heroes · `games/tower-lanes/plants-vs-zombies-heroes.md`
+
+- `+trigger:card_played(card, lane)` — зіграно карту (для Hunt і реакцій); `+trigger:blocked_hit(hero)` — герой заблокував удар.
+- `+cond:lane_type(lane, type)` — тип смуги (висота/вода/земля); `+cond:lane_has(lane, kind)` — у смузі вже є карта; `+cond:trait(a, t)` — у бійця трейт.
+- `+effect:draw_card` — добір; `+effect:block_hit(hero)` — ігнорувати шкоду й дати суперсилу; `+effect:bounce_card(a)` — повернути бійця в руку; `+effect:reveal_gravestone` — відкрити приховані карти.
+- `+role:card` · `+role:hero` (герой поза смугами з HP) · `+role:lane`.
+- `+ui:block-meter` — 8 поділок під портретом; `+ui:lane-badge` — значок типу смуги; `+ui:phase-banner` — банер поточної фази.
+- `+window:deck-builder` · `+window:collection-window` (вибір героя — наявний `character-select`).
+- `+feature:card-collection` — колекція карт з рідкістю й сетами; щоденний виклик — наявний `mode-daily`.
+- `+axis:turn-structure=phased-asymmetric` — фази ходу різні для сторін.
+- `+trigger:phase_start` вже ✅ (🔥) — використано без пропозиції.
+- `+card:team-up-stack`, `+card:block-meter`.
+
+### Plants vs. Zombies: Vasebreaker і I, Zombie (режим Puzzle) · `games/tower-lanes/pvz-puzzle-modes.md`
+
+- `+trigger:lane_enter` · `+cond:lane_has` · `+effect:lane_clear` · `+role:lane` · `+ui:seed-bar` — повтор із plants-vs-zombies (для правила трьох).
+- `+effect:break_open` — розбити контейнер: він зникає, вміст зʼявляється в його клітині (ваза, скриня, яйце); відмінність від `disappear_b` + `spawn_at` — одна атомарна дія.
+- `+ui:streak-counter` — лічильник поточної серії в нескінченному режимі.
+- `+feature:endless-streak` — нескінченний режим, де одиниця прогресу — пройдена серія, з нагородою кожні N.
+- `+card:hidden-container`, `+card:reverse-td`, `+card:placement-line` — див. «Мапа на каталог».
+
+### PlateUp! · `games/build-sim/plateup.md`
+
+- `+trigger:day_start` / `+trigger:day_end` — межі дня-раунду (сервіс ↔ підготовка).
+- `+effect:combine` — частини стають стравою за рецептом.
+- `+cond:patience` — терпіння групи вище нуля (окремо від `timer` гри).
+- `+ui:patience-ring` — кільце терпіння над групою; `+ui:order-bubble` — бульбашка замовлення.
+- `+window:card-offer` — вибір 1 з 2 карток; `+window:blueprint-shop` — крамниця як предмети на підлозі.
+- `+feature:prep-phase` — фаза, коли поле редагується.
+- `+card:item-transfer-grabber`, `+card:patience-timer` — див. вище.
+
+### Plotting (Flipull) · `games/falling-match/plotting.md`
+
+- `+effect:return_to_hand` — снаряд/предмет повертається в руки гравця (Plotting; бумеранги).
+- `+ui:held-block` — блок у руках персонажа (що буде кинуто).
+- `+ui:quota-target` — ціль «залишити ≤ N».
+- `+card:throw-swap-return` · `+card:leftover-quota` · `+card:pass-through-pipe`.
+
+### Plumber / Pipes / Water Connect (мобільний жанр) · `games/connect-rotate/plumber-pipe-rotation.md`
+
+- `+trigger:valve_open` — гравець запустив перевірку потоку (кнопка вентиля).
+- `+effect:flow_fill(source)` — заповнити трубопровід від джерела фронтом (BFS-хвиля); родич `advance_flow` з Pipe Mania.
+- `+feature:hint-for-currency` — підказка за ігрову валюту.
+
+### Poker Smash · `games/falling-match/poker-smash.md`
+
+- `+cond:poker_hand` — лінія карт утворює покерну комбінацію (Poker Smash; карткові match-гри).
+- `+effect:raise_stack` · `+effect:convert_garbage` — ⏳ підтверджую (Panel de Pon).
+- `+ui:chip-stacks` — фішки кожного гравця як HP у мультиплеєрі.
+- `+ui:challenge-hand` — поточна вимога-ціль із таймером.
+- `+feature:unlock-bank` — очки як валюта розблокувань (теми, картинки, розвʼязки).
+- `+card:poker-hand-match` · `+card:chip-stack-hp` · `+card:rotating-dealer` · `+card:challenge-hand`.
+
+### Pokémon overworld puzzles (Gen I–II, лід, валуни Strength, спінери, телепорти) · `games/push-slide/pokemon-overworld-puzzles.md`
+
+- `+effect:layer_down` — сутність переходить на шар/поверх нижче в тій самій координаті (валун у дірці Ice Path).
+- `+trigger:sighted` — сутність потрапила в поле зору іншої (тренер Pokémon).
+- `+card:cross-floor-drop`, `+card:spinner-arrow`, `+card:hidden-switch-pair`, `+card:invisible-floor`, `+card:quiz-gate`, `+card:regrowing-obstacle`, `+card:sight-line-ambush`, `+card:ability-gating` — див. «Мапа на каталог».
+
+### Polarium · `games/falling-match/polarium.md`
+
+- `+effect:flip` — перевернути двостанову плитку (чорна ↔ біла); пропозиція вже є в корпусі — підтверджую.
+- `+cond:visited` — клітина вже в поточному шляху/штриху (підтверджую).
+- `+card:one-stroke-flip` · `+card:neutral-border-cells` · `+card:grade-letter` — див. «Мапу».
+- `+ui:drawn-icon` — іконка, яку гравець малює сам для таблиці рекордів.
+
+### Polimines / Polimines 2 · `games/hidden-deduction/polimines.md`
+
+- `+cond:same_segment(a, b)` — клітини в одному відрізку лінії (не розділені розривом).
+- `+effect:mark_safe` — відповісти «безпечна» з перевіркою (як у Hexcells; тут — «видалити»).
+- (`line-clue` уже є в ui-elements — лише вжиток: числа ліній за краєм і в розривах.)
+- `+feature:invert-buttons` · `+feature:free-draw-notes` — нотатки малюванням поверх поля.
+
+### Populous · `games/build-sim/populous.md`
+
+- `+card:vertex-heightmap`, `+card:flat-area-building`, `+card:god-powers`, `+card:rally-magnet`, `+card:follower-modes` — див. вище.
+- `+effect:raise` — підняти/опустити рельєф (підтвердження наявної пропозиції); `+cond:height_diff` — різниця висот сусідів (підтвердження).
+- `+cond:flat_area` — довкола клітини пласка площа ≥ N.
+- `+ui:mana-slider` — шкала сили бога з позначками порогів сил; `+ui:command-icons` — панель глобальних наказів.
+
+### Prince of Persia · `games/grid-platformer/prince-of-persia.md`
+
+- `+trigger:landed(a, floors)` — приземлення з висоти N (спільне з Space Panic, Fire 'n Ice).
+- `+effect:hang(a, ledge)` — вчепитися за край і висіти.
+- `+effect:flip_view` — перевернути відображення поля (рівень 9).
+- `+effect:parry` — заблокувати удар (дуелі).
+- `+role:trap` — пастка зі станом/циклом (шипи, гільйотина), відмінна від статичної `hazard`.
+- `+card:loose-floor`, `+card:fall-damage-by-height`, `+card:timed-gate`, `+card:session-timer`, `+card:sword-duel` — див. вище.
+
 ### Prison Architect — шар кімнат і зон · `games/build-sim/prison-architect-rooms.md`
 
 - `+trigger:schedule` (година розкладу), `+trigger:input`, `+trigger:counter` (навантаження мережі), `+trigger:after` (перерахунок секторів після зміни стін).
@@ -4029,6 +12889,26 @@
 - `+axis:control` = `indirect` (агентами не керують).
 - `+card:room-requirements` — див. вище.
 
+### Production Line · `games/build-sim/production-line.md`
+
+- `+trigger:exported` — предмет вийшов через експорт (подія продукту).
+- `+cond:feeds_next(slot)` — вихід веде в наступну за порядком станцію.
+- `+effect:split_slot` — станція замінюється ланцюжком під-станцій.
+- `+window:research-window`, `+window:product-naming` (як у `big-pharma`), `+window:slot-order` — порядок кроків.
+- `+ui:stock-icon` — склад непроданої продукції.
+- `+feature:loan` — позика проти банкрутства.
+- `+card:slot-split-research`, `+card:wall-import-export` — див. вище.
+
+### Project L · `games/board-digital/project-l.md`
+
+- `+trigger:area_complete` — виріз/ділянка заповнена повністю (як у Bärenpark).
+- `+effect:return_pieces` — фігури з розвʼязаного пазла повертаються в запас власника.
+- `+effect:upgrade_piece` — обміняти фігуру на іншу за драбиною рівнів.
+- `+cond:actions_left` — у ході лишились дії (хід з N дій).
+- `+role:puzzle-card` — картка-ціль з власним маленьким полем.
+- `+ui:action-pips` — лічильник дій ходу; `+ui:puzzle-slots` — слоти незавершених цілей гравця.
+- `+feature:solo-bot-deck` — соло-суперник на колоді/правилах без AI.
+
 ### Puddle Knights · `games/thinky/puddle-knights.md`
 
 - `+trigger:input`; `+trigger:enter` — стати на клітину типу (бруд, міст, голова).
@@ -4036,6 +12916,13 @@
 - `+effect:move`; `+effect:shrink(cape, n)` — рвання; `+effect:set_cell` — шматок плаща лишається на бруді (?); `+effect:set_state` — міст.
 - `+role:terrain` (бруд), `+role:ally` (леді, єпископ — підконтрольні, але слабші), `+role:gate` (підйомний міст).
 - `+feature:undo`; `+axis:actors` — `party`; `+axis:undo` — `unlimited` (?).
+
+### PushTOOL · `games/thinky/pushtool.md`
+
+- `+effect:extrude` — сутність видавлює/витягує нову клітину групи (вже пропоноване для BoxBoy!; тут — від відходу гравця).
+- `+effect:retract` — зворотне до `extrude`: клітина групи втягується назад.
+- `+cond:same_group` — клітини належать одній звʼязній групі одного кольору (для поширення руху).
+- Карткові пропозиції — див. «Мапа на каталог».
 
 ### Pushmo / Pullblox (引ク押ス) + Crashmo · `games/grid-platformer/pushmo.md`
 
@@ -4046,6 +12933,11 @@
 - `+window:editor-window`, `+window:qr-scan` — зчитування рівня з камери/картинки.
 - `+axis:undo` = `rewind`; `+axis:field-depth` — 2D-поле з обмеженою глибиною (між `square` і `3d`).
 - `+card:depth-pull-wall` — див. вище.
+
+### Pushmo World / Stretchmo · `games/grid-platformer/pushmo-world-stretchmo.md`
+
+- `+card:four-side-drawer`, `+card:auto-return-block`, `+card:enemy-as-platform`, `+card:paid-level-packs` — див. вище.
+- `+feature:paid-level-packs` — курси/рівні як окремі покупки, фінальний курс за проходженням усіх.
 
 ### Pushover (Push-Over) · `games/grid-platformer/pushover.md`
 
@@ -4069,6 +12961,17 @@
 - `+feature:mode-puzzle` — ⏳ підтверджую (Nazo Puyo).
 - `+axis:gravity` — `cascade` тут (кожна кулька окремо).
 
+### Puyo Puyo Tetris · `games/falling-match/puyo-puyo-tetris.md`
+
+- `+effect:swap_ruleset` — змінити активні правила/поле гравця (Swap).
+- `+effect:crush(a, below)` — фігура знищує те, крізь що проходить вниз (Fusion).
+- `+effect:hold_garbage` — покласти атаку в накопичувач замість відправки (Attack Gauge).
+- `+cond:ruleset(side, r)` — сторона грає за правилами r (Puyo/Tetris).
+- `+trigger:round_end` — кінець раунду з таймером (Big Bang); `round` ще нема в життєвому циклі.
+- `+ui:attack-gauge` — накопичувач власної атаки; `+ui:swap-timer` — відлік до перемикання полів.
+- `+feature:mode-swap`, `+feature:mode-fusion`, `+feature:mode-party`, `+feature:mode-big-bang` — змішані режими.
+- `+axis:ruleset` — `single` · `per-player` (кожен свої) · `alternating` (Swap) · `merged` (Fusion).
+
 ### Puzzle & Dragons (PAD, Пазли і Дракони) · `games/falling-match/puzzle-and-dragons.md`
 
 - `+trigger:input` (drag/release) · `+trigger:pattern` · `+trigger:settled` · `+trigger:turn_end` · `+trigger:counter` (CD ворога = 0).
@@ -4079,6 +12982,38 @@
 - `+window:team-builder` · `+window:dungeon-select` · `+window:gacha-window`.
 - `+feature:stamina` — енергія, що відновлюється з часом.
 - `+axis:control` — `drag-path`.
+
+### Puzzle Bobble / Snood / Frozen Bubble · `games/falling-match/puzzle-bobble.md`
+
+- `+effect:snap` — сутність з вільними координатами прилипає до найближчої вільної клітини сітки (bubble shooter).
+- `+ui:danger-meter` — шкала, що росте з кожним ходом і при заповненні запускає штраф (Snood).
+- `+ui:aim-guide` — прицільна лінія з передбаченням відбиттів (ширше за `path-preview`: траєкторія снаряда).
+- `+feature:auto-fire` — гра сама робить хід після N секунд бездіяльності.
+
+### Puzzle Quest: Challenge of the Warlords · `games/falling-match/puzzle-quest.md`
+
+- `+trigger:spell_cast` — сторона застосувала закляття/здібність (для ланцюгів реакцій).
+- `+effect:reshuffle` — перемішати дошку (нема ходів; Bejeweled, PQ).
+- `+effect:cast` — застосувати закляття зі списку сутності (ефект за таблицею закляття).
+- `+cond:cooldown` — здібність ще перезаряджається (N ходів).
+- `+role:opponent-hero` — ворог із тим самим набором дій, що й гравець (дзеркальний супротивник), відмінне від `enemy`/`boss`.
+- `+window:battle-setup` — екран перед боєм з портретами й параметрами сторін.
+- `+window:citadel-window` — база з будівлями-функціями.
+- `+feature:minigame-variants` — режими-варіанти основної механіки з іншою ціллю.
+
+### Puzzle Scape · `games/falling-match/puzzle-scape.md`
+
+- `+effect:flood_clear` — ⏳ підтверджую (Lumines): прибрати всю звʼязну групу кольору.
+- `+ui:objective-list` — список цілей рівня з галочками.
+- `+card:zone-objectives` · `+card:recolor-power`.
+
+### Puzzmo: Pile-Up Poker · `games/word-number/pile-up-poker.md`
+
+- `+trigger:deal` — роздача карт у руку (є в index/proposals як `deal(n)`).
+- `+effect:discard` — карта/плитка йде в скид (index/proposals 🔥).
+- `+cond:hand_rank` — набір карт утворює комбінацію рангу ≥ X.
+- `+ui:hand-label` — підпис комбінації біля ряду/стовпця.
+- `+feature:daily-attempts` — ліміт спроб щоденного пазла; `+feature:community-goal` — спільна ціль усіх гравців.
 
 ### Puzznic · `games/falling-match/puzznic.md`
 
@@ -4101,6 +13036,62 @@
 - `+feature:operator-settings` — налаштування власника автомата (життя, пороги бонусів).
 - `+card:paint-cycle-rules` — див. вище.
 
+### Quadrax · `games/grid-platformer/quadrax.md`
+
+- `+trigger:landed` — приземлення після падіння з висотою (смерть від висоти).
+- `+card:coop-split-control`, `+card:hidden-lever-link`.
+
+### Quantum Chess (Квантові шахи, Cantwell) · `games/chess-abstract/quantum-chess.md`
+
+- `+effect:measure(cells)` — вимірювання з двома результатами, колапс суперпозиції (у chess-rule-twists — теж; підтверджую).
+- `+effect:entangle(a, b)` — корелювати стани двох фігур (ковзання крізь суперпозицію).
+- `+cond:superposed(cell)` — клітина зайнята з імовірністю 0 < p < 1.
+- `+cond:path_blocked_prob(path)` — шлях заблокований у частині гілок.
+- `+trigger:measured(p)` — після вимірювання (ланцюг: колапс → перевірка короля).
+- `+ui:probability-ring` · `+ui:phase-dial` · `+ui:split-slider` (нерівний split).
+- `+window:quantum-lab` — пісочниця з гілкуванням ходів.
+- `+feature:seasonal-rules` — змінні правила за сезонами (Alchemy League).
+- `+axis:random` — значення `measurement` (випадковість лише як колапс стану, керована гравцем).
+- `+card:superposition-move` · `+card:measurement-collapse`.
+
+### Quarth (Кварт) · `games/falling-match/quarth.md`
+
+- `+effect:attach_to` — снаряд прилипає до цілі й стає її частиною (Quarth; близьке до ⏳ `attach`, але одностороннє й без розʼєднання — можливо, досить `attach`).
+- `+effect:scroll_field` — усе поле зсувається на ряд (прокрутка маси вниз; Quarth, Panel de Pon — підйом).
+- `+cond:rectangle_complete` — множина клітин утворює повний прямокутник.
+
+### Quarto · `games/board-digital/quarto.md`
+
+- `+effect:give_piece` — передати фігуру з запасу суперникові на його хід (Quarto; родич `give`, але між гравцями і як обовʼязок).
+- `+cond:share_attribute` — усі сутності множини мають однакове значення хоча б однієї ознаки (родич `same`, але «хоча б одна з N»).
+- `+trigger:board_full` — дошка заповнена (уже в Take It Easy; тут — нічия).
+- `+ui:offered-piece` — фігура, яку тобі дали, у «руці».
+- `+ui:attribute-legend` — легенда бінарних ознак фігур.
+- `+axis:turn-structure` = `sequential`, але з двома фазами (розмістити → обрати).
+- `+card:opponent-picks-piece` · `+card:attribute-match-line` — див. «Мапа на каталог».
+
+### Queendomino (Квіндоміно) · `games/board-digital/queendomino.md`
+
+- `+trigger:round_end` · `+effect:discard` · `+effect:draft` — як у Kingdomino/Azul/Sagrada.
+- `+effect:burn_offer` — прибрати пропозицію з ринку назавжди (дракон).
+- `+cond:afford` — вистачає валюти на ціну (з урахуванням знижки).
+- `+cond:holds_token` — гравець тримає спільний токен (королева) — родич `has`, але токен один на гру.
+- `+role:building` · `+role:market` — будівля на полі; ринок пропозицій.
+- `+ui:builders-board` — ринок з ціною слотів · `+ui:coin-counter`.
+
+### Quell · `games/push-slide/quell.md`
+
+- `+effect:illuminate` — після зупинки світло від сутності в 4 боки до перешкоди засвічує цілі (кристали Quell Memento); відмінне від `reveal` (туману тут нема).
+- `+feature:hint-tokens` — підказки обмежені токенами, що поповнюються проходженням (у словнику є лише `hint`).
+- `+card:perfect-move-rating`, `+card:directional-spikes`, `+card:hint-tokens` — див. «Мапа на каталог».
+
+### Quordle / Octordle · `games/word-number/quordle.md`
+
+- `+ui:split-key-state` — клавіша, поділена на сектори за полями.
+- `+ui:board-solved-badge` — позначка на розвʼязаному полі (номер спроби).
+- `+feature:mode-sequence` — поля відкриваються по черзі; `+feature:mode-rescue` — стартові спроби введено за гравця.
+- `+card:split-keyboard-state` — див. «Мапа на каталог».
+
 ### Quoridor (Кворидор) · `games/chess-abstract/quoridor.md`
 
 - `+cond:path_exists` — існує шлях від сутності до зони (легальність стіни; спільне з Hex).
@@ -4110,6 +13101,13 @@
 - `+window:player-count-select` — вибір 2/4 гравців і хто з них AI.
 - `+axis:field-edges` — поле з окремим шаром ребер (стіни між клітинами): Quoridor, Ricochet Robots, тонкі стіни.
 - `+card:edge-walls`, `+card:pawn-jump`, `+card:move-or-build` — див. «Мапа на каталог».
+
+### Ququ · `games/pencil-logic/ququ.md`
+
+- `+cond:same_shape` — два блоки конгруентні з поворотом і віддзеркаленням (повтор з LITS).
+- `+cond:touch_corner` — дві множини клітинок торкаються лише вершиною, не ребром.
+- `+axis:field=triangles` — значення осі `field` для трикутної підсітки всередині квадратів (тут поки `graph`).
+- `+card:triangle-subgrid`, `+card:one-clue-per-region` — див. мапу.
 
 ### Qwirkle + Ingenious (Квіркл, Genial) · `games/board-digital/qwirkle-ingenious.md`
 
@@ -4141,6 +13139,24 @@
 - `+axis:time=programmed` ⏳ — підтвердження.
 - `+card:track-budget`, `+card:ordered-arrival`, `+card:collision-fail`, `+card:junction-toggle`.
 
+### Railroad Ink · `games/board-digital/railroad-ink.md`
+
+- `+trigger:round_end` — кінець раунду (Railroad Ink: фіксація; Cartographers, Odin).
+- `+cond:ports_compatible` — порти сусідніх фрагментів одного типу (дорога-дорога), інакше зʼєднання заборонене.
+- `+cond:connected_to_network` — новий фрагмент торкається виходу або наявної мережі.
+- `+role:exit` — вихід на краю поля з типом порту, що рахується в мережі (родич `source`/`sink`).
+- `+ui:dice-pool` — грані поточного кидка з позначкою «використано».
+- `+ui:special-routes-panel` — запас джокерів з лімітами.
+- `+ui:open-end-markers` — підсвітка обірваних кінців (майбутніх штрафів).
+- `+window:round-summary` — як у Take It Easy; тут — підсумковий розклад очок.
+- `+card:connected-exits-scoring` · `+card:longest-path-scoring` · `+card:open-end-penalty` · `+card:limited-special-pieces` · `+card:type-adapter-tile` — див. «Мапа на каталог».
+
+### Rally-X · `games/maze-arcade/rally-x.md`
+
+- `+effect:refuel` — поповнити ресурс-таймер (Lucky-прапорець).
+- `+window:bonus-round` — бонус-стадія з окремими правилами.
+- `+card:fuel-as-timer`, `+card:smoke-screen-stun`, `+card:flank-ai`, `+card:special-flag-doubler` — див. вище.
+
 ### Rampart · `games/tower-lanes/rampart.md`
 
 - `+trigger:phase_start` (з TFT), `+trigger:phase_end` — початок/кінець фази циклу.
@@ -4163,6 +13179,48 @@
 - `+feature:mode-versus`, `+feature:mode-coop`, `+feature:rank-tiers`, `+feature:gacha`.
 - `+axis:session=match`.
 
+### Ratropolis · `games/tower-lanes/ratropolis.md`
+
+- `+role:card` · `+role:building` · `+role:unit`.
+- `+effect:draw` — карта з колоди в руку · `+effect:discard` — видалити/скинути карту.
+- `+trigger:event` — випадкова/скриптова подія забігу.
+- `+window:choice-window` — подія чи радник з варіантами · `+window:deck-window` — перегляд і правка колоди.
+- `+ui:hand-bar` — рука карт з цінами · `+ui:wave-timer` — відлік до хвилі.
+- `+axis:session=run` · `+feature:difficulty-ladder`.
+
+### Raumschach (просторові шахи) · `games/chess-abstract/raumschach.md`
+
+- `+cond:direction_class(faces|edges|corners)` — напрямок ходу належить класу (змінюється 1 / 2 / 3 координати).
+- `+ui:level-slices` — 3D-поле як ряд 2D-зрізів; `+ui:level-selector` — перемикач видимого рівня.
+- `+feature:pawn-rule-option` — вибір правила пішака перед партією (окремий випадок `custom-rules`).
+- `+card:piece-move-3d`, `+card:level-slices-view` — див. «Мапа на каталог».
+
+### Really Bad Chess · `games/chess-abstract/really-bad-chess.md`
+
+- `+effect:generate_army(side, budget)` — згенерувати склад і розстановку армії під бюджет (RBC; родич `random-setup` Chess960).
+- `+cond:value_ge(a, b)` — порівняння цінності (тут — сум армій; уже пропонувався в chess-rule-twists, підтверджую).
+- `+ui:rank-badge` — ранг гравця на екрані (підтверджую).
+- `+feature:rank-handicap` — ранг керує гандикапом сторін, а не силою AI.
+- `+feature:weekly-challenge` — задача тижня (поруч із `mode-daily`).
+- `+card:random-army` · `+card:rank-scaled-handicap` · `+card:stalemate-loss` — див. «Мапа на каталог».
+
+### Rebelstar / Laser Squad · `games/tactics/laser-squad.md`
+
+- `+trigger:enemy_moved` — ворог зробив крок у чужий хід (тригер opportunity fire).
+- `+trigger:spotted` — ворог уперше потрапив у поле зору (тривога).
+- `+effect:interrupt` — перехопити хід суперника; `+effect:spend_ap` — списати AP (фіксовано або %).
+- `+cond:ap_left` — лишилось AP (≥ частки).
+- `+ui:ap-counter` — AP бійця; `+ui:unit-under-cursor` — панель «що під курсором».
+- `+window:loadout-shop` — закупівля спорядження на кредити; `+window:deployment` — розстановка на клітинах висадки.
+- `+feature:hidden-ai-moves` — рухи AI не показуються.
+- `+axis:turn-structure=sequential-interruptible` — послідовні ходи з перериванням.
+
+### Rectangle-Slider · `games/pencil-logic/rectangle-slider.md`
+
+- `+cond:is_rectangle`, `+cond:crosses` — повтори (Shikaku, Tracks).
+- `+cond:moved(a, n)` — сутність зміщена від старту рівно/щонайменше на N.
+- `+card:slide-to-assemble` — див. мапу.
+
 ### Recursed · `games/thinky/recursed.md`
 
 - `+trigger:input`; `+trigger:paradox` — неможливо відтворити ланцюг вкладення (з Parabox, друга гра); `+trigger:leave` — вихід з кімнати.
@@ -4173,6 +13231,27 @@
 - `+axis:field-nested` — тут стек вкладення з моделями-шаблонами (друга гра після Parabox, варто прийняти).
 - `+axis:session` — `level`.
 
+### Reef (Риф) · `games/board-digital/reef.md`
+
+- `+cond:top_color` — колір верхнього елемента стопки (Reef, Harmonies, Akropolis).
+- `+cond:stack_height` — висота стопки порівняно з N (`=`, `>=`, `<`).
+- `+trigger:supply_empty` — вичерпано запас виду (корал кольору, верблюди, плитки).
+- `+trigger:deck_empty` — колода скінчилась.
+- `+effect:draw_card` — гравець бере карту з ряду/колоди в руку (≠ `give`: джерело — спільний ринок).
+- `+role:card` — карта як сутність поза полем (рука, ряд, колода).
+- `+ui:height-badge` — число висоти на стопці (як пропонував Akropolis).
+- `+ui:pattern-matches-preview` — підсвітка, де шаблон карти вже є на полі.
+- `+window:card-zoom` — збільшена карта з шаблоном.
+- `+card:disjoint-pattern-count` · `+card:height-pattern-cell` · `+card:skip-cost-market` — див. «Мапа на каталог».
+
+### Reflect Link (リフレクトリンク) · `games/pencil-logic/reflect-link.md`
+
+- `+cond:turns` — лінія повертає в клітинці (повтор з Masyu/Icebarn).
+- `+cond:crosses` — лінія перетинає себе в клітинці (повтор).
+- `+cond:straight_len` — довжина прямого відрізка лінії від клітинки до першого повороту.
+- `+trigger:pattern(loop_branch)` — розгалуження лінії (повтор).
+- `+card:forced-crossing-cell`, `+card:segment-length-clue`, `+card:fixed-corner-cell` — див. мапу.
+
 ### Repton 1–3 · `games/dig-gravity/repton.md`
 
 - `+trigger:enter` ⏳ (земля, транспортер), `+trigger:counter` ⏳ (таймер бомби = 0).
@@ -4180,6 +13259,27 @@
 - `+effect:fall` ⏳, `+effect:roll`, `+effect:spread`, `+effect:timer` ⏳ (`timer(reset)`).
 - `+role:container` ⏳ (яйце, сейф), `+role:spawner` (тріснуте яйце), `+role:terrain` (земля), `+role:hazard` (череп, грибок) — ⏳.
 - `+window:map-window` ⏳ (мапа на весь екран), `+window:level-password` ⏳, `+feature:level-password`.
+
+### Resident Evil 4 (attaché case) · `games/build-sim/re4-attache-case.md`
+
+- `+effect:discard` — викинути предмет з інвентаря (повтор з index/proposals).
+- `+effect:combine` — два предмети стають третім за рецептом (повтор).
+- `+effect:socket` — вставити камінь у гніздо предмета (повтор з GemCraft).
+- `+cond:fits` — предмет вміщається у вільні клітини (у 🔥 як `fits(shape, cells)`; підтверджую).
+- `+window:case-upgrade` — купівля більшої сітки інвентаря в торговця.
+- `+ui:footprint-ghost` — рамка клітин, які займе предмет при відпусканні.
+- `+feature:auto-sort` — автоматично переукласти інвентар.
+- `+card:pickup-overflow-choice`, `+card:off-grid-tabs` — див. вище.
+
+### Revenge of the Titans · `games/tower-lanes/revenge-of-the-titans.md`
+
+- `+trigger:research_done` — завершено дослідження (відкриває будівлю).
+- `+effect:research` — відкрити технологію/будівлю.
+- `+effect:upgrade` — підтвердження з сімʼї.
+- `+effect:reload` — поповнити боєзапас вежі.
+- `+role:core` — база/ядро, яку захищають (як у Legion TD).
+- `+window:research-window` — дерево досліджень між рівнями.
+- `+feature:mode-survival` — хвилі проти ліміту часу з онлайн-рекордами.
 
 ### Reversi / Othello (Реверсі) · `games/chess-abstract/reversi.md`
 
@@ -4190,6 +13290,12 @@
 - `+ui:piece-count-bar` — два лічильники/смуга співвідношення дисків; `+ui:last-move-highlight` — позначка останнього ходу; `+ui:pass-button` — явна кнопка паса.
 - `+feature:hint-move` — підказка «найкращий хід» від AI в абстрактних іграх (відрізняється від `hint` у пазлах, бо розвʼязку нема).
 - `+card:place-stone`, `+card:flank-flip`, `+card:must-capture-legality` — див. «Мапа на каталог».
+
+### Rick Dangerous · `games/grid-platformer/rick-dangerous.md`
+
+- `+trigger:enter_hidden(a, cell)` — сутність стала на приховану клітину-тригер (Rick Dangerous, Prince of Persia, Spelunky).
+- `+role:trigger-cell` — невидима клітина-спусковий гачок, відмінна від видимої `switch`.
+- `+card:hidden-trigger-trap`, `+card:trap-kills-enemies`, `+card:blast-flings-blocks`, `+card:fire-plus-direction`, `+card:limited-ammo-refill`, `+card:rolling-boulder-chase` — див. вище.
 
 ### Ricochet Robots (Rasende Roboter) · `games/push-slide/ricochet-robots.md`
 
@@ -4214,6 +13320,66 @@
 - `+feature:spell-filter-by-tag`, `+feature:permadeath`; `+axis:session=run`.
 - `+card:rules-as-spells` — картка-рамка «механіка як набір дій-даних з тегами».
 
+### RimWorld — шар кімнат і температури · `games/build-sim/rimworld-rooms.md`
+
+- `+card:room-role-scoring`, `+card:room-temperature`, `+card:map-regions`, `+card:room-grading` — див. вище.
+- `+cond:enclosed` — область замкнена (PA, Theme Hospital, RimWorld — третя гра); `+cond:roofed_ratio` — частка клітин під дахом ≥ порогу.
+- `+trigger:room_changed` — перерахунок після зміни межі (схоже на `after`, але подія поля).
+- `+effect:equalize` — значення двох областей зближуються зі швидкістю; `+effect:mood` — модифікатор настрою агента з тривалістю.
+- `+role:pawn` — автономний підконтрольний агент, яким не керують напряму (колоніст, гном, дуплікант).
+- `+ui:room-stats-panel` — статистики кімнати під курсором; `+ui:temperature-readout`.
+- `+feature:storyteller` — AI-режисер подій як налаштування гри.
+
+### Ring of Pain · `games/roguelike/ring-of-pain.md`
+
+- `+axis:field=ring` — поле-цикл (Ring of Pain); зараз лише `1d` + `wrap`.
+- `+trigger:bump` — рух/дія в клітину, зайняту сутністю.
+- `+cond:faster(a, b)` — Speed A > Speed B (ініціатива, залякування).
+- `+cond:stealth_roll(a)` — успіх перевірки скритності (окремо від загального `prob`, бо шанс — стат).
+- `+effect:fight(a, b)` — атомарний бій з черговістю й відповіддю.
+- `+effect:stat(a, name, ±n)` — змінити стат (ATK/DEF/Speed/Stealth).
+- `+effect:shuffle(field)` — перетасувати поле (кристал).
+- `+effect:reroll(options)` — замінити пропозиції вибору новими.
+- `+role:card` — карта-сутність на картковому полі.
+- `+ui:combat-preview` — скільки HP забере бій, на ворогові.
+- `+window:exit-choice` — вибір гілки на роздоріжжі.
+- `+card:stealth-sneak`, `+card:speed-initiative` — див. картки.
+
+### Ripple Effect (Hakyuu Kouka) · `games/pencil-logic/ripple-effect.md`
+
+- `+cond:min_gap(value, line)` — дві однакові клітинки зі значенням N на лінії розділені щонайменше N клітинками.
+- `+cond:region_values_1_to_n` — регіон розміру k містить 1…k (уточнення `unique` + `region_size`).
+- `+card:region-1-to-n`, `+card:same-value-min-gap` — див. мапу.
+
+### Road Not Taken · `games/roguelike/road-not-taken.md`
+
+- `+trigger:low_energy(n)` — ресурс гравця опустився до порогу (частковий випадок `counter`, але вартий окремого слова для роглайтів).
+- `+effect:lift(around)` — підняти всі обʼєкти навколо (до `carry`, що везе один).
+- `+ui:recipe-book` — книга відкритих рецептів/взаємодій.
+- `+feature:career-years` — забіг розбитий на роки з віком героя.
+- `+card:group-n-opens-gate` · `+card:carry-energy-cost`.
+
+### Robo Instructus · `games/program-robots/robo-instructus.md`
+
+- `+feature:multi-stage-tests` — розвʼязок перевіряють на кількох варіантах рівня.
+- `+feature:hidden-test-stages` — частина варіантів невидима гравцеві (темні етапи).
+- `+feature:solution-metrics` — час/розмір/операції як рахунок розвʼязку.
+- `+feature:function-unlocks` — нові команди мови як прогресія.
+- `+ui:inline-stack-values` — значення змінних поруч із рядком коду.
+- `+ui:api-reference` — список доступних функцій з описами.
+- `+ui:stage-tabs` — перемикач етапів одного рівня.
+- `+cond:returned(call, value)` — значення, яке повернув сенсорний виклик (`robo_scan() is …`).
+- `+effect:sync_wait(call)` — дія чекає синхронізації світу (lock-step двох виконавців).
+- `+axis:control` — значення `programmed-text` (текстова мова) проти `programmed` іконками (?).
+
+### RoboMind · `games/program-robots/robomind.md`
+
+- `+feature:real-robot-export` — перенести програму з симуляції на реальний пристрій (LEGO NXT/EV3, Sparki).
+- `+feature:localized-keywords` — мова програмування з перекладеними ключовими словами.
+- `+ui:remote-control-pad` — панель ручного керування роботом поза програмою.
+- `+ui:camera-follow` — перемикач «камера стежить за роботом».
+- `+cond:returns(value)` — умова як значення процедури користувача (`return(true)`), ширше за сенсор.
+
 ### RoboRally · `games/program-robots/roborally.md`
 
 - `+trigger:phase(n)` — початок фази/регістру n усередині ходу (у словнику є лише `turn_start/turn_end`).
@@ -4234,6 +13400,14 @@
 - `+feature:difficulty-vote`, `+feature:solution-required`.
 - `+axis:control` — `programmed`.
 
+### Robot Karol · `games/program-robots/robot-karol.md`
+
+- `+cond:height_diff(a, b, op, n)` — перепад висот між клітинами (крок на стопку, Lightbot-стрибок).
+- `+cond:stack_height(cell, op, n)` — висота стопки в клітині (`IstZiegel(n)`).
+- `+window:structogram-view` — вікно-вид програми як діаграми.
+- `+ui:view-2d-3d-toggle` — перемикач виду поля.
+- `+feature:blocks-text-switch` — двостороннє перетворення блоки ⇄ текст.
+
 ### Robot Odyssey · `games/program-robots/robot-odyssey.md`
 
 - `+trigger:signal_rise(pin)` — сигнал на піні змінився 0→1 (захват, антена, лічильник); `+trigger:exec(cmd)` — спільний для сімʼї (тут «такт схеми»).
@@ -4244,6 +13418,32 @@
 - `+ui:signal-color` — колір дроту = значення; `+ui:speed-slider` — пропонувався в Manufactoria.
 - `+feature:simulation-speed` — множник швидкості симуляції; `+feature:chip-library` — бібліотека готових компонентів з диска.
 - `+axis:control` — `programmed` (схема), гравець при цьому — `direct`-аватар; `+axis:actors` — `party` (три роботи, кожен зі своєю схемою).
+
+### Robot Turtles · `games/program-robots/robot-turtles.md`
+
+- `+feature:human-interpreter` — роль «виконавця» програми (Turtle Mover).
+- `+feature:staged-rules` — відкривання правил по одному.
+- `+feature:program-ahead` — перемикач «по карті / уся програма».
+- `+ui:card-program-row` — ряд карт-команд гравця.
+- `+effect:melt(cell)` — лазер розтоплює крижану стіну (зараз записано як `transform(puddle)`; окреме слово — якщо зустрінеться ще).
+- `+window:frog-program` — окрема панель підпрограми.
+
+### Robotron: 2084 · `games/maze-arcade/robotron-2084.md`
+
+- `+trigger:rescued(a)` — NPC врятовано (Robotron, Choplifter (?)).
+- `+effect:convert(a, kind)` — сутність переходить на бік ворога зі зміною типу (Brain → Prog); ширше за `transform` наміром.
+- `+effect:knockback(a, dir)` — відштовхнути без шкоди (Hulk).
+- `+role:rescuee` — NPC, якого рятують (родина Robotron, заручники).
+- `+ui:twin-stick` — схема вводу з двома стіками.
+- `+card:rescue-bonus-chain`, `+card:npc-to-enemy-convert` — див. вище.
+
+### Robots (BSD) / Chase / Daleks · `games/roguelike/robots.md`
+
+- `+trigger:collide(a, b)` — дві рухомі сутності одночасно опинились в одній клітині (симетрично, на відміну від `contact`, де A входить у B).
+- `+effect:wait_until(cond)` — пропускати ходи, доки не виконається умова (BSD `w`, `>`).
+- `+effect:run(dir)` — повторювати крок, поки безпечно/можливо.
+- `+feature:auto-teleport` — автоматичний рятувальний хід; `+feature:start-level` — почати з вищого рівня.
+- `+card:collision-junk` · `+card:wait-until-end` · `+card:safe-teleport` — див. вище.
 
 ### Rocks'n'Diamonds · `games/dig-gravity/rocks-n-diamonds.md`
 
@@ -4269,6 +13469,30 @@
 - `+feature:permadeath`, `+feature:save-and-quit`.
 - `+axis:session` — тут `run` (одна партія = забіг до смерті) — бракує значення поряд з `level`/`endless`/`match`.
 
+### Rogue Tower · `games/tower-lanes/rogue-tower.md`
+
+- `+trigger:expand` — гравець розширив поле/шлях (нагороди «за розширення»).
+- `+effect:extend_path` — прибудувати плитку шляху до кінця гілки.
+- `+effect:draw_cards` — взяти картки на вибір (підтвердження з родини; `draw` у словнику — нічия).
+- `+effect:upgrade`, `+role:tower`, `+ui:range-circle` — підтвердження з родини.
+- `+role:building` — споруда без атаки з економічним/пасивним ефектом (Siphon, University, House).
+- `+ui:expand-arrows` — стрілки на кінцях гілок для вибору розширення.
+- `+ui:mana-bar` — запас і приріст мани.
+- `+window:choice-window` — вибір однієї з випадкових карток (підтвердження з родини).
+- `+window:unlock-tree` — постійні відкриття між забігами.
+- `+feature:targeting-priorities` — налаштування пріоритетів цілі вежі.
+
+### RollerCoaster Tycoon · `games/build-sim/rollercoaster-tycoon.md`
+
+- `+card:corner-heights`, `+card:queue-line`, `+card:track-builder`, `+card:ride-ratings`, `+card:agent-needs`, `+card:land-rights`, `+card:breakdown-repair`, `+card:pathfind-budget` — див. вище.
+- `+trigger:month_start` — календарний тік (Caesar III, Pharaoh, RCT).
+- `+cond:prefers` — агент обирає ціль, якщо її параметр у його діапазоні (інтенсивність атракціону).
+- `+effect:queue_join` — стати в кінець черги; `+effect:vomit` — агент лишає забруднення на тайлі (взагалі «лишити слід»).
+- `+role:visitor` — автономний клієнт з потребами й грошима (гість парку, пацієнт).
+- `+ui:thought-bubble` — думка агента текстом; `+ui:ride-stats-graph` — графік вимірів атракціону.
+- `+window:track-designer`, `+window:research-window`, `+window:finance-window`.
+- `+feature:track-design-save` — збереження власних дизайнів для повторного використання.
+
 ### Rush Hour (ThinkFun) · `games/push-slide/rush-hour.md`
 
 - `+trigger:input` — drag машини; `+trigger:reach` — червона дійшла до виходу.
@@ -4279,6 +13503,21 @@
 - `+window:puzzle-select` — сітка пазлів за рівнями складності.
 - `+feature:par-target`, `+feature:stars-rating`, `+feature:puzzle-bank` — оцінка відносно мінімуму, колода карток.
 - `+card:axis-locked-move` — див. вище.
+
+### SOLAS 128 · `games/connect-rotate/solas-128.md`
+
+- `+trigger:beam_hit(a)` — промінь/імпульс влучив у сутність (вже просять Deflektor, Chromatron).
+- `+effect:emit_beam(src)`, `+effect:reflect(beam, mirror)`, `+effect:recolor_beam(beam, color)` — трасування, відбиття, зміна кольору.
+- `+cond:beam_color(beam, c)` — промінь має колір; `+cond:pulse_aligned(a, b)` — імпульси двох променів в одній точці в один такт.
+- `+ui:shape-glyph` — форма-позначка поряд із кольором.
+- `+feature:hint-cooldown` — підказка доступна раз на N секунд, ліміт на рівень.
+
+### SPIN Protocol · `games/connect-rotate/spin-protocol.md`
+
+- `+trigger:signal_arrive(a, receiver)` — сигнал/потік дійшов до приймача.
+- `+cond:signal_color(a, c)` — колір сигналу, що прийшов, дорівнює c.
+- `+effect:route_signal` — перетрасувати сигнали від джерел після зміни поля.
+- `+effect:fuse_colors(a, b → c)` — два сигнали дають сигнал нового кольору.
 
 ### Sagrada (Саграда) · `games/board-digital/sagrada.md`
 
@@ -4300,6 +13539,91 @@
 - `+ui:selection-highlight` — ⏳ підтверджую (виділена група з n та очками); `+ui:move-counter` — 🔥 (ходи / ліміт).
 - `+feature:solver-par` — ліміт ходів, обчислений солвером; `+feature:custom-difficulty` — ⏳ підтверджую.
 - `+axis:gravity` — значення `down-then-left` (SameGame) і `none` (Flood).
+
+### Samurai (Самурай) · `games/board-digital/samurai.md`
+
+- `+trigger:surrounded(zone)` — усі прохідні сусіди клітини/зони зайняті (Samurai; родич оточення в Cartographers, Go).
+- `+cond:influence(side, kind, op, other)` — порівняння суми впливу сторін на обʼєкт.
+- `+effect:capture_figure(a, side)` — приз переходить гравцю (з поля в трофеї), не знищення.
+- `+effect:set_aside(a)` — обʼєкт знято з гри нікому з лічильником.
+- `+role:settlement` — клітина-приз із місткістю для кількох обʼєктів різних видів.
+- `+role:caste-figure` — обʼєкт-приз певної категорії для підрахунку більшості.
+- `+ui:influence-preview` · `+ui:capture-tally`.
+- `+window:capture-order`.
+- `+card:influence-sum-capture` · `+card:fast-tiles` · `+card:majority-of-categories-win`.
+
+### Sandboxels · `games/dig-gravity/sandboxels.md`
+
+- `+cond:temp(a, op, T)` — поріг температури (повтор TPT).
+- `+cond:charged(a)` — піксель має заряд (умова реакцій і машин).
+- `+effect:diffuse(field)` — розтікання значення по сусідах (повтор TPT).
+- `+effect:heat(pos, ±n)` — змінити температуру сусіда (коди HT/CO, інструменти Heat/Cool).
+- `+effect:leave_behind(x)` — при русі лишити x на старому місці (`LB`, `L1`, `L2`).
+- `+role:material` — повтор.
+- `+ui:stats-bar` — рядок статусу: координати, кількість пікселів, TPS, властивості під курсором.
+- `+window:element-info` — сторінка властивостей елемента в грі (≈ `codex-window` для одного запису).
+- `+window:mod-manager` — список модів з увімк./вимк.
+- `+feature:scripting` — повтор TPT (тут JS-моди).
+- `+card:behavior-grid-dsl` · `+card:reaction-table` · `+card:hidden-elements` — див. «Мапа на каталог».
+
+### Sandspiel · `games/dig-gravity/sandspiel.md`
+
+- `+cond:pressure(cell, op, p)` — поріг поля тиску (повтор TPT).
+- `+effect:set_wind(dx, dy, pressure, density)` — записати силу в поле вітру.
+- `+role:material` · `+role:field` — повтор TPT: у таблиці частинки записані як `object`, вітер — як `zone`, бо точних ролей нема.
+- `+window:save-browser` — онлайн-галерея творінь з голосами (повтор TPT).
+- `+card:cell-registers` · `+card:update-clock-bit` · `+card:image-as-save` — див. «Мапа на каталог».
+
+### Sandspiel Studio · `games/dig-gravity/sandspiel-studio.md`
+
+- `+trigger:end_of_frame` — дія після того, як діяли всі клітини тіку.
+- `+cond:key_held(key)` — клавіша затиснута (умова в правилі, а не тригер `input`).
+- `+role:material` — повтор TPT/Sandspiel.
+- `+window:save-browser` — повтор (галерея з зірками).
+- `+feature:remix` — опублікувати змінену копію чужого творіння з посиланням на батька.
+- `+card:block-programming` · `+card:symmetry-expansion` · `+card:remix-tree` — див. «Мапа на каталог».
+
+### Santorini (Санторіні) · `games/chess-abstract/santorini.md`
+
+- `+cond:height_diff(from, to, op, n)` — різниця висот клітин (підйом ≤1, Pan: спуск ≥2).
+- `+effect:build` — підняти клітину на рівень (зараз `set_cell(cell, level+1)`); `+effect:dome` — закрити клітину назавжди.
+- `+trigger:moved_up` — сутність піднялась цим ходом (Athena).
+- `+role:modifier` — сутність поза полем, що змінює правила для власника (карта бога; також карти правил у інших іграх).
+- `+ui:height-view` — висоти клітин цифрами/кольором; `+ui:power-card` — картка сили гравця на екрані.
+- `+window:god-draft` — драфт асиметричних сил (вужче за `character-select`: обирає один, беруть по черзі).
+- `+feature:god-powers` — режим з асиметричними силами.
+- `+card:move-then-build`, `+card:climb-limit`, `+card:god-powers` — див. «Мапа на каталог».
+
+### Save Room – Organization Puzzle · `games/build-sim/save-room.md`
+
+- `+effect:combine` — два предмети стають третім за рецептом (відмінне від `merge` значень 2048 рецептурою).
+- `+effect:reload` — патрони переходять у гармату за типом.
+- `+cond:fits_all` — усі предмети запасу вміщаються (ціль рівня).
+- `+ui:health-bar-item` — індикатор здоровʼя героя на екрані інвентаря; `+ui:examine-text` — текст огляду предмета.
+- `+card:item-combine`, `+card:load-into-item` — див. вище.
+
+### Scorched Earth · `games/dig-gravity/scorched-earth.md`
+
+- `+trigger:landed` — повтор: танк/снаряд торкнувся землі після падіння (шкода падіння, парашут).
+- `+trigger:round_end` — повтор: лишився один танк → гроші, магазин.
+- `+effect:flow` — повтор: рідина (Liquid Dirt, Napalm) стікає й заповнює ями.
+- `+effect:reload` — повтор (тут: батарея/паливо як витратні, слабко).
+- `+effect:deflect` — змінити напрям снаряда силовим полем, не зіткненням (Mag Deflector, Force Shield).
+- `+cond:buried` — сутність повністю засипана (вибух власного пострілу).
+- `+ui:wind-indicator` — сила й напрям вітру; `+ui:angle-power-readout` — кут і потужність дула.
+- `+window:match-setup` / `+window:round-summary` — повтори.
+- `+feature:turn-order-options` — порядок ходу: випадково / першими ті, хто програє / переможці / по колу.
+
+### Scotland Yard (Скотланд-Ярд) · `games/hidden-deduction/scotland-yard.md`
+
+- `+effect:secret_move` — сутність рухається приховано для інших сторін (запис у журнал).
+- `+cond:edge_type` — ребро між станціями має вид, що відповідає квитку.
+- `+role:ticket` — одиниця ресурсу руху (ширше за `supply`: тип визначає дозволене ребро).
+- `+ui:travel-log` — журнал прихованих ходів з видимими типами і вікнами появи.
+- `+ui:ticket-board` — лічильники квитків за видами в кожного гравця.
+- `+ui:possible-locations` — підсвітка станцій, де може бути прихована сутність.
+- `+window:travel-log-window` — журнал на весь екран (цифрова версія, перегляд маршруту).
+- `+feature:location-tracker` — автоматичне обчислення можливих позицій (допомога детективам).
 
 ### Scrabble (цифрові версії; Words With Friends) · `games/word-number/scrabble.md`
 
@@ -4323,6 +13647,33 @@
 - `+feature:persistent-world` · `+feature:simulation-room` · `+feature:private-server`.
 - `+axis:actors` — `swarm` з різними тілами; `control: programmed`.
 
+### Shadow Labyrinth · `games/maze-arcade/shadow-labyrinth.md`
+
+- `+trigger:enter_rail` — сутність стала на лінію-рейку й перейшла на рух графом (Shadow Labyrinth D-Line).
+- `+effect:devour` — поглинути повалену сутність, отримавши ресурс (відмінне від `pickup`: ціль — ворог у стані «повалений»).
+- `+feature:fast-travel` — перехід між відкритими точками мапи.
+- `+window:rest-point` — меню точки відпочинку (прокачка, перки, перехід).
+- `+card:rail-mode-switch`, `+card:devour-downed-enemy`, `+card:meter-transform`, `+card:maze-portal-challenge`, `+card:fast-travel-item` — див. «Мапу на каталог».
+
+### Shadowrun Returns · `games/tactics/shadowrun-returns.md`
+
+- `+trigger:jack_in(a, point)` / `+trigger:jack_out(a)` — вхід у вкладене поле й вихід.
+- `+trigger:alarm(level)` — шкала тривоги досягла порогу.
+- `+effect:dumpshock(a, n)` — шкода тілу за аварійний вихід (окремий випадок `damage` з іншою причиною — можна звести до `damage`).
+- `+cond:summon_control(a, p)` — перевірка контролю над закликаним.
+- `+role:ice` — захисна програма-ворог у мережевому полі; `+role:avatar-proxy` — проєкція сутності в іншому полі.
+- `+ui:alarm-meter` — шкала тривоги; `+ui:ap-pips` — очки дії над портретом.
+- `+window:character-sheet` — атрибути й навички; `dialogue-window` ⏳ — діалоги з перевіркою навичок.
+- `+feature:workshop-campaigns` — кампанії спільноти.
+- `+axis:field-nested` — у шапці `field` одне значення; тут фактично `square` + `nested` (поле Матриці).
+
+### Shakashaka (シャカシャカ) · `games/pencil-logic/shakashaka.md`
+
+- `+cond:is_rectangle` — область має форму прямокутника (слот: дозволений поворот 45°); повтор з Shikaku.
+- `+effect:place_triangle` — поставити в клітинку половинку з вибраним кутом.
+- `+ui:triangle-input-mode` — перемикач схеми вводу орієнтації (клік-цикл / за квадрантом / drag) (?).
+- `+card:half-cell-triangles`, `+card:rect-shape-check` — див. мапу.
+
 ### Shannon switching game / Bridg-It (+ Untangle) · `games/connect-rotate/shannon-switching.md`
 
 - `+role:terminal` — фіксовані кінці (A, B; з Flow Free); `+role:node` / `+role:link` — вершина і ребро графа як сутності поля `graph`.
@@ -4333,6 +13684,11 @@
 - `+ui:crossing-highlight` — підсвітка ребер, що перетинаються (?).
 - `+feature:seed-input` ⏳, `+feature:auto-solve` ⏳ — підтвердження.
 - `+axis:field=graph` — підтвердження значення.
+
+### Shariki (Шарики) · `games/falling-match/shariki.md`
+
+- `+cond:would_match` — хід дав би збіг (пробне виконання ходу без застосування): Shariki, Bejeweled, Candy Crush.
+- `+card:swap-must-match` — див. «Мапу».
 
 ### Shattered Pixel Dungeon (і Pixel Dungeon) · `games/roguelike/pixel-dungeon.md`
 
@@ -4346,6 +13702,15 @@
 - `+axis:control=indirect` — тап задає ціль, хід іде сам; клавіатура — `direct`.
 - `+trigger:input` · `+trigger:enter` · `+trigger:hunger` · `+trigger:revealed` · `+cond:has` · `+cond:identified` · `+cond:cursed` · `+cond:state` · `+effect:identify` · `+effect:set_state` · `+effect:set_cell` — як у Rogue/NetHack.
 
+### Sherlock (Everett Kaser) · `games/pencil-logic/sherlock.md`
+
+- `+cond:same_slot`, `+cond:next_to`, `+cond:left_of` — повтор із Zebra Puzzle.
+- `+cond:between` — b між a і c (сусідні позиції, порядок будь-який).
+- `+effect:eliminate` — викреслити кандидата.
+- `+role:clue-card` — підказка як окрема сутність поза полем.
+- `+feature:what-if` — тимчасове припущення з відкатом.
+- `+card:what-if-mode` — див. мапу.
+
 ### Shikaku (Шікаку, Rectangles, Divide by Box) · `games/pencil-logic/shikaku.md`
 
 - `+cond:is_rectangle` — область збігається зі своїм обмежувальним прямокутником.
@@ -4356,6 +13721,22 @@
 - `+window:params-dialog` — повтор (Tatham Custom).
 - `+card:drag-rectangle`, `+card:rect-shape-check` — див. мапу.
 
+### Shining Force · `games/tactics/shining-force.md`
+
+- `+trigger:unit_turn` — настав хід конкретного юніта в черзі ініціативи (на відміну від `turn_start(side)`).
+- `+effect:choose_promotion` — промоція (уже просить корпус); `+effect:revive` — воскресити полеглого; `+effect:return_to_town` — відкат у місто; `+effect:repair` — відновити тріснутий предмет.
+- `+cond:agility` — порівняння спритності (порядок, ухил).
+- `+role:leader` — юніт, чия загибель = поразка (Макс).
+- `+ui:land-effect` — % захисту клітини; `+ui:turn-order-bar` — черга ходів (GBA-ремейк).
+- `+window:church` — сервіси церкви; `+window:headquarters` — штаб і склад; `+window:battle-options` — опції посеред бою.
+
+### Shisen-Sho / Onet (Сісен-сьо, «зʼєднай пару») · `games/falling-match/shisen-sho.md`
+
+- `+cond:path_turns` — існує шлях між A і B з ≤N поворотами (Shisen-Sho; розширює `path_exists`).
+- `+effect:draw_path` — показати лінію шляху перед дією (Shisen-Sho, Onet).
+- `+ui:connection-line` — лінія, що зʼєднує зняту пару.
+- Вжито вже наявні `path_exists`, `same(..., group)`, `mode`, `fall`, `all_gone`, `no_moves`, `message`.
+
 ### Shogi (Сьоґі, японські шахи) · `games/chess-abstract/shogi.md`
 
 - `+trigger:check` · `+trigger:repetition` · `+cond:in_check` — як у chess.md.
@@ -4365,6 +13746,101 @@
 - `+ui:pocket` — комадай; `+ui:byoyomi-clock` — годинник з періодами байо-йомі (шогі, го).
 - `+window:handicap-select` — вибір гандикапу перед партією (шогі, го).
 - `+feature:handicap` — компенсація сили правилами, а не рейтингом.
+
+### Shogun Showdown · `games/roguelike/shogun-showdown.md`
+
+- `+effect:enqueue(tile)` — покласти дію в чергу без виконання.
+- `+cond:charged(tile)` — тайл/здібність заряджені.
+- `+ui:attack-queue` — слоти черги дій з порядком.
+- `+feature:difficulty-days` — «Дні»: наступна складність відкривається перемогою.
+- `+card:attack-queue` · `+card:tile-cooldown` · `+card:one-lane-battlefield`.
+
+### Shotgun King: The Final Checkmate · `games/chess-abstract/shotgun-king.md`
+
+- `+effect:shoot_spread` — постріл кількома снарядами-променями в секторі.
+- `+effect:reload` — поповнити набої ціною ходу.
+- `+effect:knockback` — відкинути сутність від джерела удару на N клітин.
+- `+cond:ammo` — є набій для пострілу.
+- `+trigger:move_timer` — лічильник ходу сутності дійшов до нуля (вона діє).
+- `+effect:choose_pair` — обрати пару «бонус + штраф» (особливий випадок `choose`).
+- `+ui:move-timer-badge` — число на ворогу «ходів до його дії»; `+ui:ammo-counter` — набої; `+ui:threat-shield` — попередження про хід під шах.
+- `+card:ammo-reload`, `+card:enemy-move-timer`, `+card:paired-upgrade-choice`, `+card:knockback` — див. «Мапа на каталог».
+
+### Shovel Knight Pocket Dungeon · `games/roguelike/shovel-knight-pocket-dungeon.md`
+
+- `+trigger:board_full` — усі клітини поля зайняті (переповнення колодязя).
+- `+effect:group_damage(group, n)` — шкода всій звʼязній групі; `+effect:drift(all, down)` — зсув усього поля без дії гравця.
+- `+cond:killing_blow` — удар добиває ціль.
+- `+feature:infinite-lives` — смерть без кінця гри, лише затримка.
+- `+card:bump-attack` · `+card:group-damage` · `+card:board-overflow` · `+card:idle-drift`.
+
+### Shōbu (Шобу) · `games/chess-abstract/shobu.md`
+
+- `+trigger:pushed_off(a)` — обʼєкт виштовхнуто за край поля іншим (на відміну від `edge` — власний вихід).
+- `+cond:opposite_color(board_a, board_b)` — поля різного кольору.
+- `+cond:home_board(board, side)` — поле належить стороні.
+- `+effect:repeat_move(vector, board)` — повторити рух тим самим вектором в іншому місці.
+- `+ui:passive-vector-arrow` · `+ui:board-color-badge`.
+- `+feature:plan-aggressive-first` — режим вводу «спершу другий рух».
+- `+card:mirrored-second-move` · `+card:multi-board-field`.
+
+### Signpost (Pfeilpfad) · `games/pencil-logic/signpost.md`
+
+- `+cond:on_ray(a, b, dir)` — B лежить на промені з A у напрямку dir, перешкоди не важливі (на відміну від `line_of_sight`).
+- `+ui:chain-letter-label` — тимчасова літера ланцюга.
+- `+ui:needs-predecessor-dot` — точка «до клітинки ще не підвʼязано попередника».
+- `+window:params-dialog`, `+window:game-id-dialog` — повтори з Tatham collection.
+- `+card:arrow-successor-chain`, `+card:chain-letter-labels` — див. мапу.
+
+### Sil · `games/roguelike/sil.md`
+
+- `+trigger:noticed(monster, player)` — монстр перейшов у alert (зручніше за `counter(alertness, >=, 0)`).
+- `+cond:skill_check(skill, difficulty)` — протиставлений кидок навички (Sil, Cave Noire-подібні RPG-перевірки).
+- `+cond:lit(cell, op, n)` — рівень освітлення клітини.
+- `+effect:free_attack(a, b)` — позачерговий удар-реакція.
+- `+effect:identify` — розкрити тип предмета.
+- `+role:stairs` — перехід між рівнями (зараз `static`).
+- `+window:character-sheet` — витрата досвіду на навички/здібності.
+- `+window:smithing-window` — конструктор предмета з ціною.
+- `+ui:alertness-marker` — позначка сну/unwary/alert біля монстра (?).
+- `+feature:permadeath`.
+- `+card:forced-descent` · `+card:xp-for-discovery`.
+
+### Silent Storm · `games/tactics/silent-storm.md`
+
+- `+trigger:sighted` — сторону помітили (вмикання бою, тривога; Silent Storm, XCOM).
+- `+trigger:noise` — у радіусі пролунав шум (біг, постріл, вибух) — для AI ворогів.
+- `+effect:interrupt` — позачергова дія під час чужого ходу.
+- `+cond:skill_check` — кидок/перевірка навички (Interrupt, Spot, Hide).
+- `+effect:knock_out` — непритомність замість смерті (лікується після бою).
+- `+role:vehicle` — сутність, у яку сідає інша (панцеркляйн, танк, мех).
+- `+ui:ap-cost-preview` — скільки AP коштує дія під курсором.
+- `+window:base-screen` — база між місіями з відділами (медпункт, арсенал, найм, ангар).
+- `+window:squad-select` — відбір загону з пулу перед місією.
+- `+axis:time=realtime-until-contact` — real-time, поки нема бою, далі покроково.
+
+### SimAnt · `games/build-sim/simant.md`
+
+- `+role:scent` — невидима мітка на клітині з інтенсивністю й вигасанням (феромон, запах, шум).
+- `+trigger:smell` — сутність відчула мітку-запах у своїй клітині/поруч (замість `contact` з невидимим).
+- `+cond:scent_level` — інтенсивність мітки в клітині порівняно з N.
+- `+effect:deposit_scent` — лишити/підсилити мітку; `+effect:decay` — інтенсивність спадає щотіку.
+- `+effect:recruit` / `+effect:release` — N сусідів починають / перестають ходити за лідером.
+- `+effect:possess` — гравець вселяється в іншу сутність (бере її тип і параметри).
+- `+ui:ratio-triangle` — трикутний повзунок трьох часток; `+ui:warning-threshold` — тягнений поріг у барі; `+ui:scent-overlay` — показ невидимого шару.
+- `+window:behavior-control`, `+window:caste-control`, `+window:history-graph`, `+window:strategic-map` — вікна SimAnt.
+- `+feature:presets`, `+feature:auto-manager`, `+feature:background-sim`.
+- `+card:pheromone-field`, `+card:ratio-triangle-control` — див. «Мапа на каталог».
+
+### SimCity (1989) / Micropolis · `games/build-sim/simcity-1989.md`
+
+- `+effect:diffuse` — згладити поле-карту сусідами (дифузія/blur); зараз `custom`.
+- `+cond:field` — значення поля-карти в клітині порівняно з порогом (`field(land_value, >, n)`).
+- `+role:field-map` — невидима скалярна карта над сіткою як «сутність» гри.
+- `+ui:rci-demand` — стовпчики попиту за типами зон; `+ui:map-overlay` — перемикач оверлеїв карт.
+- `+window:budget-window` — річний бюджет зі ставкою й статтями; `+window:evaluation-window` — оцінка мера й проблеми міста.
+- `+card:influence-map`, `+card:zone-growth` — див. вище.
+- `+feature:disaster-toggle` — увімк/вимк і ручний виклик катастроф.
 
 ### Simon Tatham's Portable Puzzle Collection · `games/pencil-logic/tatham-collection.md`
 
@@ -4377,6 +13853,22 @@
 - `+axis:undo` — `unlimited` + restart як відкочуваний крок.
 - `+card:platform-shell` — див. «Мапа на каталог».
 
+### Skyscrapers (Towers, Хмарочоси) · `games/pencil-logic/skyscrapers.md`
+
+- `+cond:view_count` — кількість видимих з точки сутностей = N (повтор з Kuromasu; тут — вежі, вища ховає нижчу).
+- `+cond:duplicate_in_line` — повтор значення в рядку/стовпці (повтор з KenKen).
+- `+ui:clue-done-mark` — підказка, позначена гравцем як опрацьована (сіра).
+- `+feature:view-2d-3d` — вибір 2D/3D вигляду в налаштуваннях.
+- `+window:params-dialog`, `+window:game-id-dialog` — повтор Tatham-вікон.
+- `+card:clue-done-mark` — див. мапу.
+
+### Slant (Gokigen Naname) · `games/pencil-logic/slant.md`
+
+- `+cond:no_loop(lines)` — граф ліній не містить циклу (протилежність `single_loop`).
+- `+cond:lines_at(vertex, n)` — у вершині сходиться рівно n ліній.
+- `+card:vertex-clue`, `+card:tri-state-click-cycle` — див. мапу.
+- `+window:params-dialog`, `+window:game-id-dialog` — повтор Tatham-вікон.
+
 ### Sliding-tile permutation puzzles (пʼятнашки й родичі) · `games/push-slide/sliding-tile-permutation.md`
 
 - `+trigger:input` — клік/стрілка/drag; `+trigger:pattern` — `all_in_order` / `centre3x3 == sample`.
@@ -4387,6 +13879,15 @@
 - `+window:stats-window` (ao5/ao12), `+window:mode-select` (розмір/івент Loopover).
 - `+feature:seed-input`, `+feature:mode-speedrun`, `+feature:custom-difficulty` (розмір + глибина перемішування).
 - `+axis:move-kind` — один генератор ходу на всю гру: `gap-slide` · `line-shift` · `block-rotate`; саме ця вісь розрізняє ігри парасольки.
+
+### Slither.io · `games/maze-arcade/slither-io.md`
+
+- `+effect:drop` — сутність лишає предмети на шляху/місці (буст, смерть); уже просили `snake.md` і Bomberman — третя гра.
+- `+trigger:head_contact` — контакт саме головної частини багатосегментної сутності з тілом іншої (асиметрична колізія).
+- `+cond:mass` — порівняння маси/довжини (дозволено буст, хто кого обгородить); поки — `custom`.
+- `+ui:mass-leaderboard` — живий топ-N сервера за поточною масою (не рекорди).
+- `+card:fleeing-pickup`, `+card:coil-trap`, `+card:pointer-steering` — див. «Мапу на каталог».
+- `+feature:server-select` — вибір сервера/кімнати перед входом; `+feature:name-tag` — імʼя над аватаром без акаунта.
 
 ### Slitherlink (Слізерлінк, Loopy, Fences) · `games/pencil-logic/slitherlink.md`
 
@@ -4405,6 +13906,12 @@
 - `+feature:maze-select` — вибір макета поля перед грою без «рівнів» (Snake II).
 - `+axis:control` — тут три значення в межах одного жанру: `direct` абсолютне, відносне ліво/право, «до курсора» (Slither.io) — варто розрізнити `direct-absolute` / `direct-relative` / `pointer`.
 
+### Snake Rattle 'n' Roll · `games/maze-arcade/snake-rattle-n-roll.md`
+
+- `+effect:jump` — стрибок аватара (висота/дальність); у корпусі вже є `jump(height)` у King's Valley — підтверджую.
+- `+trigger:zone_stay` — сутність перебуває в зоні/клітині типу N тіків поспіль (вода → акула).
+- `+card:weigh-exit`, `+card:tongue-attack`, `+card:stomp-attack`, `+card:own-color-food-bonus`, `+card:zone-stay-punisher`, `+card:control-reverse-pickup`, `+card:level-warp`.
+
 ### Snakebird · `games/thinky/snakebird.md`
 
 - `+trigger:input` — крок голови; `+trigger:after(move)` — фаза гравітації після ходу.
@@ -4414,6 +13921,11 @@
 - `+role:terrain` (телепорт), `+role:hazard` (шипи, вода).
 - `+window:map-window` — мапа світу з вузлами; `+feature:undo`, `+feature:world-map`.
 - `+axis:actors` — `party` (2–3 птахи, по черзі); `+axis:undo` — `unlimited` + авто-undo на смерть.
+
+### SokoChess (і SokoChess White / Black) · `games/push-slide/sokochess.md`
+
+- `+cond:can_capture` — фігура A може наступним ходом взяти B (реакція чорних SokoChess).
+- `+card:chess-push`, `+card:capture-only-opponent`, `+card:freeze-tile`, `+card:knight-relocate` — див. «Мапа на каталог».
 
 ### Sokoban (Сокобан) · `games/push-slide/sokoban.md`
 
@@ -4436,6 +13948,20 @@
 - `+card:edge-objects` — сутності на ребрах/вузлах сітки, а не в клітинах (Sokobond, тонкі стіни Chip's Challenge).
 - `+axis:actors` — тут «одна сутність, що росте в групу» (single → party як тіло).
 
+### Sokoboxes Duo · `games/push-slide/sokoboxes-duo.md`
+
+- `+feature:control-split` — один гравець перемикає персонажів або кожен гравець веде свого на тому самому рівні.
+- `+card:multi-pusher`, `+card:shared-screen-coop`.
+
+### Soldam · `games/falling-match/soldam.md`
+
+- `+cond:sandwiched(run, color)` — ряд чужих затиснутий між двома своїми (Reversi, Soldam) — підтверджую.
+- `+card:sandwich-recolor` — перефарбування за затисканням у падаючому стакані.
+- `+card:mono-color-row-clear` — повний ряд одного кольору.
+- `+card:color-weighted-spawn` — спавн кольорів, зважений станом поля.
+- `+card:recolor-guide` — превʼю перефарбування (Guide).
+- `+role:wildcard` — сутність-джокер, що підходить під будь-який колір/вид (Clear Soldam, wildcard Triple Town).
+
 ### Solomon's Key · `games/grid-platformer/solomons-key.md`
 
 - `+effect:toggle_block(cell)` — порожньо ↔ блок однією дією.
@@ -4446,6 +13972,33 @@
 - `+effect:reveal` ↔ є `reveal(cells)`; тут — проявити прихований предмет.
 - `+feature:secret-levels` — секретні рівні + розгалужена кінцівка.
 - `+card:create-destroy-block` — див. вище.
+
+### Solstice · `games/grid-platformer/solstice.md`
+
+- `+effect:freeze_all(scope)` — зупинити всі рухомі сутності в області (Solstice).
+- `+effect:clear_room` — знищити всі рухомі сутності в кімнаті.
+- `+feature:room-scoped-powerup` — бонус зникає при виході з кімнати.
+- `+card:room-scoped-effect`, `+card:freeze-time`, `+card:reveal-invisible`, `+card:hidden-exit-after-task`, `+card:continue-token` — див. вище.
+
+### Space Crusade · `games/tactics/space-crusade.md`
+
+- `+trigger:first_enter` — сутність уперше увійшла в зону/дошку (розставлення блипів).
+- `+cond:dice_total_gt` — сума кубиків більша за поріг (броня).
+- `+effect:split_damage` — гравець розподіляє суму шкоди між цілями.
+- `+effect:play_card` — зіграти картку з руки/колоди (наказ, подія).
+- `+ui:points-track` — трек очок гравця; `+ui:order-card-slot` — картка цього ходу.
+- `+window:mission-briefing` — мета і бонуси місії; `+window:loadout-window` — спорядження загону.
+- `+feature:view-iso-toggle` — перемикання 2D/ізометрія.
+
+### Space Haven · `games/build-sim/space-haven.md`
+
+- `+cond:enclosed` — область замкнена (корпус без пробоїн) — повторно.
+- `+effect:diffuse` — значення клітини змішується з сусідами (газ, тепло) — повторно.
+- `+effect:vent` — вивести газ із області в «нескінченний» поглинач (космос, шлюз).
+- `+trigger:breach` — у бар'єрі (корпус, стіна) зʼявилась дірка.
+- `+ui:gas-overlay` — кольорова мапа газу/тепла на тайлах.
+- `+window:job-priorities`, `+window:schedule-window`.
+- `+card:gas-diffusion`, `+card:hull-breach-vacuum`, `+card:power-node-graph`, `+card:job-priority-grid` — див. вище.
 
 ### Space Invaders (Космічні загарбники) · `games/maze-arcade/space-invaders.md`
 
@@ -4458,6 +14011,27 @@
 - `+feature:operator-settings` — DIP-налаштування.
 - `+axis:actors` — `swarm`: ворог як 55 однакових учасників однієї групи.
 
+### Space Panic · `games/grid-platformer/space-panic.md`
+
+- `+trigger:landed(a, floors)` — сутність приземлилась після падіння на N поверхів/клітин (Space Panic, Prince of Persia, Fire 'n Ice).
+- `+effect:dig(cell)` — перетворити підлогу на яму (Heiankyo Alien, Lode Runner, Space Panic).
+- `+card:fall-height-kill`, `+card:stack-kill-bonus`, `+card:knock-through-hole` — див. вище.
+
+### SpaceChem · `games/program-robots/spacechem.md`
+
+- `+effect:grab` / `+effect:release` — маніпулятор бере/відпускає обʼєкт (Opus Magnum, SpaceChem, Cargo-Bot).
+- `+effect:wait_sync` · `+trigger:all_synced` — барʼєр: виконавець чекає, доки всі дійдуть до sync.
+- `+effect:redirect(a, dir)` — змінити напрямок руху виконавця командою клітини (≠ `face`, бо рух триває).
+- `+cond:sensor_atom(kind)` — на клітині-сенсорі обʼєкт виду.
+- `+cond:flipflop(state)` — стан перемикача з чергуванням.
+- `+effect:fuse(a, b)` / `+effect:fission(a)` — злиття/поділ за числовою властивістю (атомний номер).
+- `+effect:output(v)` — відправити назовні (вихід реактора).
+- `+role:waldo` — маніпулятор, що їде маршрутом; `+role:bonder` — спецклітина звʼязування.
+- `+window:planet-layer` — поле з'єднаних машин; `+window:metric-histograms`.
+- `+ui:waldo-path-layer` — шари маршрутів різних кольорів; `+ui:metric-panel`.
+- `+feature:solution-metrics` · `+feature:user-puzzles` (ResearchNet).
+- `+axis:actors` — `party` (два вальдо).
+
 ### SpellTower · `games/word-number/spelltower.md`
 
 - `+trigger:input`, `+trigger:after` (⏳) — каскад «очистити → вибух → падіння», `+trigger:timer` (Rush).
@@ -4468,6 +14042,66 @@
 - `+window:mode-select` (⏳), `+window:word-lookup` (див. scrabble.md).
 - `+feature:mode-zen`, `+feature:mode-versus` (⏳).
 - `+axis:control` — `swipe`-шлях як окремий тип вводу.
+
+### Spelunker · `games/grid-platformer/spelunker.md`
+
+- `+trigger:landed(a, height)` — приземлення після падіння на N клітин (Spelunker, Manic Miner, Montezuma).
+- `+effect:immobile(a, n)` — сутність нерухома N тіків після власної дії (відмінне від `stun` від ворога) — Spelunker.
+- `+card:weapon-drains-resource`, `+card:rope-climb-release`, `+card:light-repels-enemy`, `+card:loop-harder` — див. вище.
+
+### Spelunky · `games/dig-gravity/spelunky.md`
+
+- `+trigger:land` — приземлення після падіння (повтор: SteamWorld Dig, Motherload).
+- `+effect:rope` — створити тимчасову вертикаль для лазіння.
+- `+ui:bombs-counter`, `+ui:ropes-counter` — лічильники витратних інструментів зміни рельєфу.
+
+### Spherical · `games/grid-platformer/spherical.md`
+
+- `+effect:reorient_gravity` — змінити напрямок гравітації для сутності (тут — лише для кулі).
+- `+feature:retry-token` — обмежені рестарти рівня.
+- `+card:coop-only-levels`, `+card:orbit-shield`, `+card:delayed-start-timer` — див. вище.
+- `+card:guide-rolling-ball` «Провести автономну кулю до цілі, змінюючи поле» · entities/move · 🥉.
+
+### Spin Doctor / ClockWerx · `games/connect-rotate/spin-doctor.md`
+
+- `+trigger:sweep_over(a, b)` — кінець обертної сутності проходить над точкою/перемикачем.
+- `+effect:pivot(a, dot)` — змінити опору обертання; `+effect:reverse_spin(a)` — змінити напрям обертання.
+- `+axis:control:timing` — ввід лише вибирає момент, а не напрям.
+
+### Splix.io · `games/maze-arcade/splix-io.md`
+
+- `+effect:leave_trail`, `+effect:clear_trail`, `+trigger:return_home`, `+cond:in_own_zone`, `+role:trail`, `+ui:live-ranking` — підтверджую з `paper-io` / `tron-light-cycles`.
+- `+cond:trailing` — сутність зараз поза своєю землею з відкритим слідом (у реченнях — `state(b, trailing)`).
+- `+feature:honk` — звуковий сигнал іншим гравцям поруч.
+- `+card:lag-rewind`, `+card:pause-vulnerable`, `+card:no-encircle-player`, `+card:spectator-mode`, `+card:kill-arena-mode`.
+
+### Spooky Express · `games/thinky/spooky-express.md`
+
+- `+effect:board` / `+effect:alight` — пасажир у носій / з носія (підтверджую з cosmic-express.md; у `vocab/` ще нема).
+- `+card:typed-destination`, `+card:escort-before-threat` — див. вище.
+
+### Sprawlopolis · `games/board-digital/sprawlopolis.md`
+
+- `+trigger:deck_empty` — колода/карти вичерпано (також Arboretum).
+- `+cond:overlaps(card, cells)` — нова карта перекриває ≥1 наявний квартал.
+- `+cond:edge_contact(card, city)` — дотик ≥1 ребром (кутовий не рахується).
+- `+effect:cover(cells)` — покрити клітини новим шаром (нижні зникають для підрахунку).
+- `+effect:pass_hand(dir)` — передати карти руки сусіду.
+- `+ui:target-score` — ціль партії поруч із поточним рахунком.
+- `+ui:goal-cards` — у сімʼї вже раз; тут 3 умови з поточними ± очками.
+- `+ui:zone-groups` — підсвітка найбільших груп кожного типу.
+- `+window:goal-reveal` — розкриття цілей партії перед стартом.
+- `+card:target-score-win` · `+card:overlap-placement` · `+card:road-segment-penalty`.
+
+### Sproggiwood · `games/roguelike/sproggiwood.md`
+
+- `+effect:stars(±n)` — зміна заряду навичок (можна й через `counter`, але це окремий ресурс класу).
+- `+cond:same_turn(a, b)` — події сталися в один хід.
+- `+trigger:charge_line(a, b)` — B на прямій з A → A кидається (ширше за `line_of_sight`: з рухом).
+- `+role:shrine` — обʼєкт одноразового випадкового дару (або ⏳ `neutral`).
+- `+window:town-window` — екран міста між забігами.
+- `+feature:town-decoration`.
+- `+card:kill-charged-skills` · `+card:linked-enemies-same-turn` · `+card:stain-terrain`.
 
 ### Spybot: The Nightfall Incident (Lego Spybotics) · `games/tactics/spybot-nightfall.md`
 
@@ -4480,6 +14114,18 @@
 - `+ui:program-card` — панель параметрів обраної фігури (move, max/поточний розмір, команди з описом).
 - `+ui:reachable-highlight` — підсвітка досяжних клітин.
 - `+axis:actors` — `party` (кілька програм, кожна ходить раз).
+
+### Squaredle · `games/word-number/squaredle.md`
+
+- `+cond:path_adjacent8` — шлях по 8-сусідах без повтору клітин (Boggle, Wordament, Squaredle).
+- `+cond:required_word` — слово з курованого обовʼязкового списку (на відміну від бонусного).
+- `+trigger:all_found` — знайдено всі елементи списку, що проходять через сутність (згасання клітини).
+- `+ui:tile-word-count` — число слів, що починаються з клітини / використовують її.
+- `+ui:progress-stars` — прогрес-бар з порогами-зірками.
+- `+ui:accuracy-meter` — частка валідних спроб.
+- `+ui:words-by-length` — скільки лишилось слів кожної довжини.
+- `+feature:progress-perks` · `+feature:board-rotate` · `+feature:word-reveal`.
+- `+card:required-bonus-words`, `+card:tile-fade-when-exhausted` — див. «Мапа на каталог».
 
 ### Star Battle (Зоряна битва, Two Not Touch) · `games/pencil-logic/star-battle.md`
 
@@ -4499,6 +14145,20 @@
 - `+window:inventory-window`, `+window:shop-window`; новий `+window:end-of-day-shipping` — підсумок дня (продане, прибуток).
 - `+card:coverage-area`, `+card:growth-stages` — див. вище.
 
+### Starquake · `games/grid-platformer/starquake.md`
+
+- `+cond:inventory_full` — усі слоти зайняті (FIFO-витіснення).
+- `+trigger:landed` — приземлення після падіння з висоти (слабка підлога).
+- `+window:teleport-code-entry` — ввід адреси телепорту.
+- `+card:fifo-inventory`, `+card:teleport-code-word`, `+card:trade-exchange`, `+card:vehicle-dock`, `+card:weak-floor-smash`, `+card:lowest-stat-refill` — див. вище.
+
+### Statue Park · `games/pencil-logic/statue-park.md`
+
+- `+cond:same_shape(a, b, flip)` — повтор: дві групи однакові з точністю до поворотів (і дзеркал, якщо flip).
+- `+cond:bank_used_once(bank)` — кожна форма банку використана рівно раз.
+- `+ui:shape-bank-panel` — панель доступних форм з позначкою «вже на полі».
+- `+card:shape-bank`, `+card:shape-identity-check`, `+card:no-edge-touch` — див. мапу.
+
 ### SteamWorld Dig · `games/dig-gravity/steamworld-dig.md`
 
 - `+trigger:land` — сутність приземлилась після падіння з висоти N (основа шкоди від падіння).
@@ -4506,6 +14166,28 @@
 - `+effect:place` ⏳ — повтор (драбина, телепорт з інвентаря).
 - `+cond:supported` ⏳ — повтор.
 - `+ui:depth-meter` (повтор з Mr. Driller), `+ui:light-gauge`, `+ui:water-gauge` (обидва — підвиди ⏳ `energy-bar`), `+ui:bag-slots` (сумка як сітка слотів, близько `inventory-bar`).
+
+### SteamWorld Heist · `games/tactics/steamworld-heist.md`
+
+- `+trigger:aimed(shot, angle)` — гравець задав кут пострілу (відрізняти від `input(target_cell)`).
+- `+effect:ricochet(shot, surface)` — повтор з Hard West; тут для будь-якої зброї без тегу.
+- `+effect:knock_hat` — збити предмет із сутності (капелюх падає на поле).
+- `+cond:moved_this_turn` — сутність уже рухалась цього ходу.
+- `+ui:aim-line` — лінія траєкторії з відбиттями; `+ui:move-sprint-zones` — дві зони досяжності різним кольором.
+- `+window:space-bar` — хаб між місіями (найм, крамниця, NPC).
+- `+feature:new-game-plus` — повторне проходження зі збереженням прогресу.
+- `+axis:aim=manual` — влучання задає гравець, не кубик (значення: chance · manual · deterministic).
+- `+card:manual-aim`, `+card:move-or-sprint` — див. вище.
+
+### Steel Panthers · `games/tactics/steel-panthers.md`
+
+- `+trigger:enemy_moved` — ворог рухається в полі зору (opportunity fire); `+trigger:spotted` — юніт помічено; `+trigger:attacked` — юніт під вогнем (придушення).
+- `+cond:moved_this_turn` — рухався цього ходу; `+cond:suppression` — рівень придушення; `+cond:facing_side` — з якої сторони прийшов удар (front/side/rear).
+- `+effect:suppress` — додати придушення; `+effect:rally` — зібрати; `+effect:rout` — перевести у втечу; `+effect:interrupt` — постріл у чужий хід.
+- `+role:objective-flag` — ціль з очками; `+role:leader` — командир-модифікатор.
+- `+ui:unit-roster-table` — таблиця всіх юнітів зі станами; `+ui:suppression-value`.
+- `+window:purchase-units`, `+window:battle-generator`, `+window:bombardment`.
+- `+feature:pbem` — гра поштою (обмін файлами ходу).
 
 ### Stephen's Sausage Roll · `games/thinky/stephens-sausage-roll.md`
 
@@ -4517,6 +14199,28 @@
 - `+role:hazard` (гриль, вода), `+role:terrain` (драбина, уступ).
 - `+window:map-window` — світ як ходильний хаб; `+feature:undo`, `+feature:world-map`.
 - `+axis:undo` — `unlimited`, по одному ходу.
+
+### Stickets · `games/falling-match/stickets.md`
+
+- `+card:manual-group-clear` — гравець сам знімає готову групу (Stickets).
+- `+card:fixed-shape-slots` — слот відновлює фігуру тієї ж форми (Stickets).
+- `+card:block-time-bomb` — таймер на кожному блоці поля (Stickets Time).
+- `+card:no-space-left-lose` — поразка, коли жодна фігура з лотка не вміщується.
+- `+ui:piece-tray` — лоток доступних фігур під полем (Stickets, Block Blast).
+
+### Sto-stone (ストストーン) · `games/pencil-logic/sto-stone.md`
+
+- `+cond:region_size` — розмір групи/блоку дорівнює числу (повтор з Fillomino).
+- `+cond:touch_across_border` — дві зафарбовані клітинки сусідять через межу кімнат.
+- `+cond:fills_bottom_half` — після падіння нижня половина поля заповнена повністю.
+- `+card:virtual-gravity-check` — див. мапу.
+
+### Str8ts (Стрейтс) · `games/pencil-logic/str8ts.md`
+
+- `+cond:consecutive_set(cells)` — значення клітинок утворюють послідовний набір без пропусків.
+- `+cond:duplicate_in_line` — повтор з інших файлів.
+- `+feature:step-solver` — покроковий розвʼязувач з назвою техніки (str8ts.com, SudokuWiki).
+- `+card:straight-compartment`, `+card:blocked-digit-clue` — див. мапу.
 
 ### Stratego (Стратего) · `games/hidden-deduction/stratego.md`
 
@@ -4530,6 +14234,14 @@
 - `+window:placement-screen` · `+window:pass-device` — див. Battleship.
 - `+feature:setup-presets` — збережені розстановки; `+feature:fog-of-ranks` — режим прихованих рангів у цифровій версії.
 
+### Sudo Sweep · `games/hidden-deduction/sudo-sweep.md`
+
+- `+cond:count_in_region(zone, kind, op, n)` — кількість сутностей виду в регіоні/секторі.
+- `+effect:cycle_value(cell, ±1)` — значення клітини по колу.
+- `+effect:auto_chord` — відкрити сусідів, якщо прапорці збігаються з числом.
+- (`timer-elapsed` уже є в ui-elements — лише вжиток.)
+- `+feature:size-cycle-button` — одна кнопка перебирає пресети розміру.
+
 ### Sudoku (Судоку, Number Place) · `games/pencil-logic/sudoku.md`
 
 - `+ui:number-pad` — екранна панель цифр 1–9 (часто з лічильником, скільки лишилось поставити).
@@ -4541,6 +14253,16 @@
 - `+effect:clear_notes` — стерти нотатку цифри в peer-клітинках після вводу.
 - `+card:multi-select` — дія над набором клітинок (див. мапу).
 
+### Sudoku line & dot variants (Thermo, Arrow, Kropki, German Whispers) · `games/pencil-logic/sudoku-line-dot-variants.md`
+
+- `+cond:increasing` — значення на упорядкованій лінії строго (або нестрого, слот `strict`) зростають.
+- `+cond:diff` — |a − b| порівняно з N (`= 1` Kropki, `≥ 5` German Whispers, `≥ 4` Dutch).
+- `+cond:ratio` — a = k·b або b = k·a (Kropki чорна, k = 2).
+- `+role:line` — упорядкована лінія клітинок (повтор із sudoku-variants і herugolf).
+- `+role:edge-clue` — підказка на ребрі між двома клітинками (крапка, риска, знак <).
+- `+card:negative-constraint`, `+card:latin-square` — див. мапу.
+- `+axis:clue-completeness` — `partial` (дано не всі) / `complete` (відсутність = заборона) / `global` (правило без підказок).
+
 ### Sudoku variants (варіанти судоку, Cracking the Cryptic / SudokuPad) · `games/pencil-logic/sudoku-variants.md`
 
 - `+role:line` — послідовність клітинок з порядком (термометр, стрілка, whisper): `zone` не передає порядок.
@@ -4550,6 +14272,27 @@
 - `+ui:rules-panel` — текст правил конкретного пазла поруч з полем (`fog-overlay` уже ⏳ — тут ще одне вживання).
 - `+feature:custom-rules` — правила як частина рівня (вже ⏳; ще одне вживання).
 - `+axis:rule-composition` — `fixed` (одне правило) / `modular` (рівень = набір модулів-обмежень).
+
+### Sugar, Sugar · `games/dig-gravity/sugar-sugar.md`
+
+- `+effect:draw_barrier` — гравець малює довільну тверду лінію (не `place` поштучно, не `set_cell` однієї клітини).
+- `+effect:flow` — повтор: сипке/рідке розтікається купкою.
+- `+trigger:pass_through` — частинка пройшла крізь проникну сутність (фільтр).
+- `+ui:cup-counter` — число-квота на контейнері, що спадає.
+- `+feature:sandbox-draw` — режим малювання без мети.
+
+### Suika Game (Кавунова гра) · `games/falling-match/suika-game.md`
+
+- `+trigger:above_line` — сутність перебуває вище лінії/межі (можливо довше за t) — програш у Suika й фізичних клонах.
+- `+effect:impulse` — поштовх фізичним тілам (розштовхування сусідів при появі/злитті).
+- `+axis:physics` — поле з 2D-фізикою тіл (`rigid`) замість клітинної гравітації.
+
+### Suikyo [Water Mirror] · `games/thinky/suikyo.md`
+
+- `+effect:dive` — пройти крізь межу зон у першу вільну клітину по той бік, змінивши зону/стан (Suikyo).
+- `+effect:follow_path` — сутність їде заданим ланцюгом клітин без вводу (є як кандидат з Entanglement; тут — дріт).
+- `+axis:gravity=per-zone` — нове значення осі `gravity`: напрямок залежить від зони клітини, а не від типу обʼєкта.
+- Карткові пропозиції — див. «Мапа на каталог».
 
 ### Sumplete · `games/word-number/sumplete.md`
 
@@ -4571,6 +14314,16 @@
 - `+feature:skip-level` — пропустити рівень, лишивши «борг» (ліміт 3).
 - `+window:hall-of-fame` — найкращі часи на конкретному рівні (не загальна `leaderboard`).
 
+### Super Auto Pets · `games/tower-lanes/super-auto-pets.md`
+
+- `+role:unit` — бойовий юніт загону.
+- `+trigger:faint` (загинув свій юніт — ширше за `died` для здібностей), `+trigger:hurt`, `+trigger:bought`, `+trigger:sold`, `+trigger:battle_start`, `+trigger:level_up`.
+- `+effect:reroll` · `+effect:sell` · `+effect:freeze_slot` (закріпити пропозицію магазину) · `+effect:summon` (призвати токен у ряд з перевіркою місця).
+- `+cond:position` — місце в ряду (передній, сусід позаду).
+- `+ui:trophy-counter` · `+ui:shop-bar`.
+- `+window:pack-select` — вибір набору контенту.
+- `+axis:time` — значення `phased`.
+
 ### Super Mario Maker 2 · `games/grid-platformer/super-mario-maker.md`
 
 - `+feature:level-editor`, `+feature:level-sharing`, `+feature:user-levels-browser`, `+feature:level-rating`, `+feature:ghost-run`, `+feature:mode-endless` — усі вже ⏳ у `features.md`; SMM2 — еталон для них.
@@ -4581,6 +14334,31 @@
 - `+axis:session` — `level` для курсів, `endless` для Endless Challenge.
 - `+card:part-modifiers`, `+card:clear-condition`.
 
+### Super Pac-Man · `games/maze-arcade/super-pac-man.md`
+
+- `+effect:open` — відчинити привʼязаний `gate` дистанційно (ключ → двері; кнопка → ворота) без `take`.
+- `+ui:slot-reels` — HUD-барабани символів.
+- `+window:bonus-round` — окрема стадія-бонус з таймером (уже пропонувалось для Amidar; тут ще один випадок).
+- `+card:slot-symbol-bonus`, `+card:super-form` — див. вище.
+
+### Super Puzzle Fighter II Turbo · `games/falling-match/super-puzzle-fighter-ii-turbo.md`
+
+- `+trigger:pattern(rect)` — форма шаблону «прямокутник ≥ w×h» (поруч з наявною `square`).
+- `+effect:countdown(a, -1)` — зменшити лічильник на сутності (counter gems; бомби з лічильником ходів).
+- `+effect:clear_color(color)` — очистити всі клітини кольору (діамант SPF2T, монета Baku Baku; пропонував і Columns).
+- `+cond:adjacent_cleared(a)` — поруч з A очищено (пропонував Puyo; тут — для counter gems).
+- `+card:power-gem-merge`, `+card:counter-gem-countdown`, `+card:drop-pattern-per-character` — див. вище.
+
+### Super Robot Wars · `games/tactics/super-robot-wars.md`
+
+- `+trigger:battle_resolved` — завершилась сцена бою (досвід, воля, гроші).
+- `+cond:will` — воля ≥ N (зброя, навички); `+cond:terrain_rank` — рейтинг місцевості.
+- `+effect:will` — ±воля; `+effect:sp` — ±SP; `+effect:spirit` — накласти дух-команду.
+- `+role:carrier` — юніт, що приймає інших на борт.
+- `+ui:sp-counter` — SP пілота; `+ui:will-meter` — воля; `+ui:hit-forecast` — прогноз влучання/шкоди.
+- `+window:battle-animation` — сцена бою; `+window:spirit-menu` — меню дух-команд; `+window:intermission-menu` — інтермісія.
+- `+feature:animation-toggle-per-battle` — увімкнути/пропустити анімацію конкретного бою.
+
 ### Surakarta (Roundabouts) · `games/board-digital/surakarta.md`
 
 - `+cond:via_loop(path, n)` — шлях пройшов щонайменше n петель (Surakarta).
@@ -4590,6 +14368,114 @@
 - `+ui:capture-path` (як шашки) · `+ui:circuit-colors` — кольорові контури на дошці · `+ui:last-move-highlight`.
 - `+window:variant-select` · `+feature:custom-rules` · `+axis:win-condition` (`eliminate-all` / `majority-by-agreement`).
 - `+card:loop-circuit-capture` · `+card:circuit-graph`.
+
+### Suraromu (Slalom) · `games/pencil-logic/suraromu.md`
+
+- `+trigger:cross(loop, gate)` — лінія перетинає відрізок-ворота.
+- `+cond:order(gate, k)` — у обході від старту ворота стоять k-ми.
+- `+cond:turns` — петля повертає в клітинці (повтор з Masyu/Icebarn).
+- `+role:gate-line` — ворота як відрізок клітинок, а не одна клітинка (`gate` — двері зі станом).
+- `+card:ordered-checkpoints`, `+card:gate-crossing` — див. мапу.
+
+### Surround (Atari 2600) · `games/maze-arcade/surround.md`
+
+- `+feature:hardware-switches` — налаштування правил і складності фізичними перемикачами консолі (Atari 2600).
+- `+card:hardware-switch-settings`, `+card:drawing-sandbox` — див. «Мапу на каталог».
+
+### Survivors · `games/dig-gravity/survivors.md`
+
+- `+trigger:smashed` — на сутність упав обʼєкт (повтор з Heartlight; тут двічі: дроїд і вартовий).
+- `+cond:ability(a, verb)` — чи вміє активний аватар це дієслово (копати / штовхати / рятувати).
+- `+effect:rescue` — «зібрати» живу сутність телепортом (лічильник врятованих; візуально ≠ pickup).
+- `+role:rescuee` — сутність, яку треба врятувати, а не зібрати (Lemmings, Survivors, Choplifter).
+- `+card:split-abilities` · `+card:any-member-lost` — див. «Мапа на каталог».
+- `+axis:actors-party-specialized` — значення осі `actors`: «загін із різними вміннями» на відміну від `party`.
+
+### Swift Playgrounds (Learn to Code, Byte) · `games/program-robots/swift-playgrounds.md`
+
+- `+effect:jump(a)` — стрибок на сусідню клітину іншої висоти.
+- `+effect:lift(a, ±level)` — вертикальний рух платформи (замок).
+- `+cond:standing_on(a, kind, state)` — «стою на предметі виду в стані» (`isOnClosedSwitch`) — коротше за `occupied and state`.
+- `+feature:code-built-level` — рівень будує код гравця.
+- `+feature:lesson-book` — уроки як книга сторінок з поясненням і пазлом.
+- `+window:lesson-page` — сторінка уроку: текст + код + світ.
+- `+ui:camera-orbit` — обертання 3D-сцени жестом.
+- `+ui:code-completion-bar` — панель автодоповнення команд над клавіатурою.
+
+### Swords & Soldiers · `games/tower-lanes/swords-and-soldiers.md`
+
+- `+role:unit` · `+role:base` · `+role:building`.
+- `+trigger:produced` — юніт вийшов з черги виробництва.
+- `+effect:produce` (поставити в чергу виробництва) · `+effect:research` (відкрити тип) · `+effect:sacrifice` (знищити свій юніт заради ресурсу).
+- `+cond:in_zone`.
+- `+ui:build-bar` · `+ui:mana-bar`.
+- `+window:faction-select`.
+- `+feature:local-versus`.
+- `+axis:field=lanes`.
+
+### TIS-100 · `games/program-robots/tis-100.md`
+
+- `+trigger:port_read(node, dir)` — сусід прочитав значення з порту (розблокування писача).
+- `+cond:port_ready(dir)` — у порту є значення / сусід готовий читати.
+- `+effect:send(port, v)` / `+effect:recv(port)` — обмін повідомленням між акторами (ширше за `set_value`).
+- `+effect:jump(to)` — перехід вказівника програми (спільне з Core War).
+- `+effect:wait` — актор пропускає тік, доки не виконана умова.
+- `+role:node`, `+role:port`.
+- `+window:spec-panel` (завдання + потоки IN/OUT), `+window:manual`.
+- `+ui:node-mode-label`, `+ui:io-columns`, `+ui:breakpoint`.
+- `+feature:breakpoints`, `+feature:specification-editor`.
+
+### Tachiawase Block · `games/pencil-logic/tachiawase-block.md`
+
+- `+cond:same_shape(a, b)` — однакова форма з поворотами й відбиттями.
+- `+cond:same_bank(grid_a, grid_b)` — мультимножини форм двох розбиттів рівні.
+- `+cond:overlaps(a, b)` — при накладанні полів A і B мають спільну клітинку.
+- `+cond:no_dead_end(borders)` — межа не обривається всередині області.
+- `+axis:field=twin-grids` — кілька повʼязаних сіток в одному пазлі.
+
+### Tactical Breach Wizards · `games/tactics/tactical-breach-wizards.md`
+
+- `+effect:bump` — зіткнення при відкиданні в зайняте (як у Into the Breach, Fights in Tight Spaces).
+- `+effect:knockback` — відкинути ціль на N клітин від джерела удару (відмінне від `push`, де рушить той, хто штовхає).
+- `+effect:revive` — повернути вибулу сутність з HP.
+- `+trigger:breach` — старт бою з прориву дверей (рівень починається дією гравця).
+- `+role:window-cell` — клітина-вікно: вихід назовні для відкинутих (смертельний край усередині кімнати).
+- `+ui:foresight-ghost` — привиди майбутніх позицій/дій; `+ui:objective-checklist` — обовʼязкові й додаткові цілі з галочками.
+- `+window:breach-banter` — сцена перед дверима; `+window:perk-select` — вибір перка вміння; `+window:outfit-select` — вбрання за очки.
+- `+feature:turn-rewind` — безкоштовна перемотка дій до кінця ходу; `+feature:difficulty-variables` — складність окремими параметрами.
+- `+axis:undo` — `turn` (відкат лише в межах поточного ходу).
+
+### Tactical Nexus · `games/roguelike/tactical-nexus.md`
+
+- `+trigger:bump` — рух у клітину, зайняту ворогом/дверима (бій, відкриття).
+- `+cond:can_damage(a, b)` — ATK A > DEF B.
+- `+effect:fight(a, b)` — атомарний розрахунок бою й застосування втрат.
+- `+effect:stat(a, name, ±n)` — змінити ATK/DEF (бо `hp`/`heal` не покривають).
+- `+trigger:exit_reached(kind)` — досягнуто виходу певного виду (формула рахунку залежить від виду); `reach` не несе вид.
+- `+feature:route-memo` — нотатки гравця на клітинах, якими можна ділитися.
+- `+feature:pure-run` — режим/позначка забігу без мета-бонусів.
+- `+ui:drop-preview` — що випаде з ворога, видно до бою.
+- `+card:multi-exit-score` — див. картку.
+
+### Tactics Ogre · `games/tactics/tactics-ogre.md`
+
+- `+trigger:attacked` — атака як подія (поворот цілі до атакувальника); `+trigger:round_start` — тік спільної черги.
+- `+cond:height_diff` — різниця висот атакувальника і цілі; `+cond:element` — стихія юніта/атаки.
+- `+effect:wait_add` — додати очікування до наступного ходу юніта; `+effect:recruit` — ворог переходить у загін (ширше за `set_side`: лишається між боями); `+effect:rewind_turns` — відкотити бій на N ходів.
+- `+ui:turn-order-list` · `+ui:height-indicator` · `+ui:hit-chance`.
+- `+window:warren-report` · `+window:chariot-timeline` · `+window:formation-screen` · `+window:class-change`.
+- `+feature:route-revisit` — повернутися до сюжетної розвилки без нової гри.
+- `+axis:turn-structure:wait-time` — нове значення: черга за накопиченим очікуванням (WT/RT), відмінна від `time-track` (?).
+
+### Tacticsweeper · `games/hidden-deduction/tacticsweeper.md`
+
+- `+trigger:probe_landed(c)` — зонд приземлився (момент, коли споруди атакують).
+- `+effect:disable(structure)` — вимкнути сутність разом з її ефектами (не `disappear`: лишається на полі).
+- `+effect:lose_probe` — витрата одиниці «життя-патрона».
+- `+cond:structure_active(s)` — споруда ще працює.
+- `+ui:infocenter-panel` — панель опису сутностей рівня з кліком-вибором.
+- `+ui:tool-buttons` — стовпчик кнопок інструментів.
+- `+feature:mode-endless-after-win` — Endless як продовження виграного забігу.
 
 ### Taiji + The Witness (панелі) · `games/thinky/taiji-witness-panels.md`
 
@@ -4602,6 +14488,17 @@
 - `+feature:onboarding-hints` — навчання серією панелей.
 - `+axis:rules` — `discovered` (правила фіксовані, але не пояснені).
 - `+axis:control` — нове значення `draw-path` (Witness) і `toggle` (Taiji).
+
+### Tak (Так) · `games/chess-abstract/tak.md`
+
+- `+cond:top_side` — стос контролює сторона верхнього елемента (lasca, Tak).
+- `+cond:carry_limit` — кількість взятих ≤ ліміту.
+- `+effect:pick_up_stack` — зняти k верхніх зі стосу в «руку».
+- `+effect:drop_trail` — розкласти «руку» слідом по прямій, ≥1 на клітину.
+- `+effect:flatten` — стіна → плоский під капстоуном (окремий випадок `transform`, але з умовою «останній крок, сам»).
+- `+trigger:reserve_empty` — гравець витратив весь запас (кінець гри).
+- `+ui:stack-view` — склад стосу; `+ui:reserve-counter` — лишок запасу кожного; `+ui:road-highlight` — підсвітка переможного шляху.
+- `+card:stack-spread-move`, `+card:capstone-flatten`, `+card:first-move-opponent-piece`, `+card:flat-count-win` — див. «Мапа на каталог».
 
 ### Take It Easy · `games/board-digital/take-it-easy.md`
 
@@ -4617,11 +14514,99 @@
 - `+axis:turn-structure` = `simultaneous`.
 - `+card:line-run-scoring` · `+card:broken-line-zero`.
 
+### Takenoko (Такеноко) · `games/board-digital/takenoko.md`
+
+- `+cond:irrigated(cell)` — клітина отримує ресурс від мережі/джерела (Takenoko; родич `connected_to_network`).
+- `+cond:straight_line(from, to)` — ціль на одній прямій без проміжків (гекс-ходи «на будь-яку відстань»).
+- `+cond:connected_to_network` — ребро/клітина продовжує мережу від джерела.
+- `+trigger:objective_met` — умова картки цілі справдилась.
+- `+effect:eat(cell)` — зняти одиницю зі стосу клітини собі на планшет.
+- `+role:objective` · `+role:network-edge` — картка цілі й ребро-канал як сутності.
+- `+ui:objective-cards` · `+ui:bamboo-reserve`.
+- `+window:weather-roll` — кидок модифікатора і вибір ефекту.
+- `+card:irrigation-network` · `+card:weather-die` · `+card:secret-objective-hand`.
+
+### Takuzu (Binairo, Unruly, Tic-Tac-Logic) · `games/pencil-logic/takuzu.md`
+
+- `+cond:balanced` — у лінії/групі кожного символу рівно задана квота (Takuzu, Odd Binairo).
+- `+cond:lines_distinct` — жодні два заповнені рядки (стовпці) не однакові (Takuzu, Tic-Tac-Logic).
+- `+window:params-dialog` — форма Custom Tatham (повтор із Light Up, Hitori, для правила трьох).
+- `+window:game-id-dialog` — ввід ID / seed (повтор із Hitori).
+- `+card:balanced-lines`, `+card:no-triple-run`, `+card:distinct-lines` — див. мапу.
+
+### Tales of Maj'Eyal · `games/roguelike/tales-of-maj-eyal.md`
+
+- `+trigger:cooldown_ready(talent)` — талант перезарядився; `+trigger:sustain_on(talent)`.
+- `+effect:cooldown(talent, n)` — поставити перезарядку; `+effect:reserve(resource, n)` — зарезервувати частину пулу; `+effect:fizzle` — дія зірвалась, хід втрачено; `+effect:anomaly` — випадковий ефект з таблиці аномалій.
+- `+cond:cooldown(talent, op, n)`; `+cond:resource(name, op, n)` — значення іменованого ресурсу (ширше за `counter`, бо з max і резервом); `+cond:extra_lives(op, n)`.
+- `+window:talents-window`, `+window:levelup-window`, `+window:eidolon-plane`.
+- `+ui:hotbar` — панель дій з клавішами й кулдаунами; `+ui:resource-bars`.
+- `+feature:lives-mode`, `+feature:online-profile`, `+feature:class-unlocks`.
+- `+card:talent-cooldown`, `+card:sustained-talent`, `+card:zone-level-scaling`.
+
+### Taluva (Талува) · `games/board-digital/taluva.md`
+
+- `+cond:height` — рівень (висота) клітини порівняно з N (Taluva, Akropolis, FFT).
+- `+cond:group_has` — у групі/поселенні вже є сутність виду (храм, вежа).
+- `+cond:orientation_differs` — нова плитка повернута інакше, ніж накрита.
+- `+effect:eliminate` — гравець вибуває, його фігури лишаються на полі.
+- `+trigger:tiles_exhausted` — стос плиток вичерпано (родич `+trigger:deck_empty`).
+- `+ui:height-badge` — число рівня на гексі.
+- `+ui:piece-stock` — запаси будівель кожного гравця за типами.
+- `+ui:camera-orbit` — обертання/нахил 3D-поля.
+- `+axis:field=hex+layers` — поле одночасно гекс і шари (як Akropolis).
+- `+card:flood-expand-group` · `+card:cover-destroys` · `+card:exhaust-two-types-win` — див. «Мапа на каталог».
+
+### Tametsi · `games/hidden-deduction/tametsi.md`
+
+- `+cond:in_group` — клітина належить групі/кольору (зона-лічильник без геометрії).
+- `+ui:draw-overlay` — шар вільного малювання поверх поля; `+ui:color-group-counters` — лічильники мін за кольором групи.
+- `+feature:auto-countdown` — опція: числа показують ще не знайдені міни.
+
+### Tangledeep · `games/roguelike/tangledeep.md`
+
+- `+feature:job-change` — зміна класу посеред гри з переносом навичок.
+- `+feature:monster-corral` — колекція зловлених монстрів поза полем.
+- `+feature:shared-bank` — сховище між персонажами.
+- `+feature:game-modifiers` — набір перемикачів правил на старті забігу.
+- `+feature:mode-adventure` / `+feature:mode-heroic` — смерть без втрати / з частковою втратою прогресу.
+- `+window:job-window` — навички джоба, JP, слоти.
+- `+window:corral-window` — пети, розведення.
+- `+window:modifier-select` — вибір модифікаторів забігу.
+- `+effect:capture(a)` — ворог стає петом гравця.
+- `+effect:breed(a, b)` — нова сутність з рис двох.
+- `+effect:enter_dream(item)` — перейти в рівень, згенерований з предмета.
+- `+trigger:dream_cleared` — пройдено міні-данж предмета.
+- `+role:pet` — союзник-монстр гравця (вужче за `ally`: зловлений, росте, розводиться).
+- `+ui:stamina-bar` — окрема смуга стаміни для навичок.
+
+### Tantrix · `games/connect-rotate/tantrix.md`
+
+- `+trigger:forced_space` — зʼявилась вимушена клітина.
+- `+cond:edges_match(tile, cell)` — кольори плитки збігаються з усіма сусідами; `+cond:creates_forbidden(move)` — хід створює заборонену клітину.
+- `+effect:draw(p)` — добрати плитку з мішка (друга гра після Tsuro).
+
 ### Tapa (Тапа, T-Paint) · `games/pencil-logic/tapa.md`
 
 - `+cond:ring_runs` — мультимножина довжин серій чорних у кільці сусідів клітинки.
 - `+ui:multi-number-clue` — кілька чисел в одній клітинці з автокомпоновкою (1–4 числа).
 - `+card:ring-run-clue`, `+card:pattern-lookup-table` — див. мапу.
+
+### Targ / Spectar · `games/maze-arcade/targ.md`
+
+- `+trigger:stall` — гравець надто довго не завершує раунд (тиск на кемпінг; споріднений з `idle`, але про прогрес, не про ввід).
+
+### Tash-Kalar: Arena of Legends · `games/board-digital/tash-kalar.md`
+
+- `+trigger:summoned(being)` — істоту викликано (ланцюг до ефекту карти).
+- `+cond:rank(a, op, b)` — порівняння рангів фішок (Tash-Kalar; Stratego-родичі) · `+cond:behind_by(metric, n)` — відставання від суперника за метрикою (флер).
+- `+effect:summon(card)` — поставити фігуру за картою + ефект · `+effect:upgrade` / `+effect:downgrade` — ранг ±1 (не знищення) · `+effect:leap(a, any)` — стрибок на будь-яку клітину з правилами цілі (відмінний від `teleport` правилом знищення) · `+effect:convert(a, side)` — зміна кольору як знищення · `+effect:draw(n)` — добір карт.
+- `+role:being-card` — карта з візерунком і ефектом · `+role:task` — публічне завдання з очками.
+- `+ui:pattern-overlay` — підсвітка складеного візерунка · `+ui:task-row` · `+ui:rank-badge`.
+- `+window:card-detail` — збільшена карта.
+- `+card:pattern-summon` · `+card:rank-hierarchy` · `+card:catch-up-card` · `+card:min-color-score`.
+- `+feature:take-back-until-draw` — відкат до незворотної події.
+- `+axis:turn-structure=action-points` — значення осі: N дій за хід.
 
 ### Teamfight Tactics (TFT) · `games/tower-lanes/teamfight-tactics.md`
 
@@ -4634,6 +14619,90 @@
 - `+feature:mode-coop` ⏳ — Double Up.
 - `+axis:time` — значення `phased` (планування покроково + бій real-time без вводу).
 
+### Telepath Tactics · `games/tactics/telepath-tactics.md`
+
+- `+trigger:attacked` — юніта обрано ціллю атаки (контратака).
+- `+effect:counterattack` — удар у відповідь після атаки впритул.
+- `+effect:knockback` — відкинути на N клітин від атакувальника (push без руху атакувальника).
+- `+effect:build` — звести обʼєкт на клітині (міст, барикада) — ширше за `place` з запасу.
+- `+cond:from_behind` — атака ззаду відносно орієнтації цілі.
+- `+cond:height_above` — атакувальник вище за ціль.
+- `+cond:resistant` — ціль має опір/слабкість до стихії атаки.
+- `+effect:energy` — ± енергія (EN) юніта як окремий від HP ресурс.
+- `+ui:resist-panel` — панель опорів стихій у паспорті юніта.
+- `+feature:campaign-editor` — створення цілих кампаній (персонажі, сцени, предмети, скіли).
+- `+feature:random-campaign` — рандомізована кампанія з ручних частин.
+
+### Tentai Show (Galaxies, Spiral Galaxies) · `games/pencil-logic/tentai-show.md`
+
+- `+cond:point_symmetric` — множина клітинок переходить у себе при повороті на 180° навколо точки.
+- `+cond:count_in` — кількість сутностей виду в області = N (повтор зі Star Battle).
+- `+effect:draw_edge` — провести/стерти межу на ребрі між клітинками.
+- `+ui:owner-arrow` — стрілка від клітинки до її власника.
+- `+ui:region-done-shade`, `+window:params-dialog` — повтори.
+- `+card:symmetric-region`, `+card:owner-arrow`, `+card:picture-reveal` — див. мапу.
+
+### Tents (Tatham) · `games/pencil-logic/tents.md`
+
+- `+cond:count_in(line, kind, op, n)` — кількість обʼєктів виду в рядку/стовпці/регіоні (повтор з інших пазлів сімʼї).
+- `+cond:perfect_matching(a, b)` — існує паросполучення 1:1 між сутностями A і B по сусідству.
+- `+window:params-dialog`, `+window:game-id-dialog` — повтори з Tatham collection.
+- `+card:tree-tent-matching`, `+card:no-touch-8` — див. мапу.
+
+### Terra Nil · `games/build-sim/terra-nil.md`
+
+- `+effect:spread` — поширення на сусідні клітини (вогонь, зелень під дощем).
+- `+cond:powered` — будівля в радіусі джерела енергії.
+- `+cond:cell_count_in_range` — у радіусі ≥ N клітин типу (вимоги тварин); зараз пишеться `custom`.
+- `+ui:net-gain-preview` — число над привидом будівлі.
+- `+ui:phase-checklist` — список цілей поточної фази.
+- `+window:photo-mode` — фоторежим з оцінкою знімків.
+- `+feature:phase-reset` — повернутися на початок фази.
+- `+feature:appreciate-mode` — огляд завершеної мапи без цілей.
+- `+card:placement-requirement`, `+card:net-gain-preview`, `+card:cleanup-phase` — див. «Мапа на каталог».
+
+### Terraforming Mars (Тераформування Марса) · `games/board-digital/terraforming-mars-board.md`
+
+- `+trigger:round_end` — кінець покоління/раунду (тут — фаза виробництва як подія).
+- `+trigger:all_passed` — усі гравці спасували, фаза закінчується.
+- `+cond:afford(a, cost)` — вистачає валюти (з урахуванням замінників: сталь/титан).
+- `+cond:requirement(card)` — вимоги карти до стану світу (рівень параметра, теги).
+- `+effect:raise_param(p, n)` — підняти глобальний параметр (з TR і каскадом бонусів).
+- `+effect:production(res, ±n)` — змінити виробництво ресурсу (не сам ресурс).
+- `+effect:claim(x)` — заявити віху/нагороду.
+- `+ui:global-tracks` — треки спільних параметрів довкола поля; `+ui:generation-counter`; `+ui:production-board` — планшет ресурс/виробництво; `+ui:card-hand`.
+- `+window:draft-window` — вибір карт з N; `+window:production` — підсумок доходу.
+- `+card:global-parameters` · `+card:adjacency-income` · `+card:milestones-awards`.
+
+### Terraria — рідини · `games/build-sim/terraria-liquids.md`
+
+- `+role:liquid` — рідина як шар клітини з рівнем (не `terrain`: тече й змінює обʼєм).
+- `+effect:flow` — розтектися на сусідні клітини, вирівнюючи рівні; `+effect:evaporate` — рідина зникає (біом, дистанція); `+effect:transmute` — предмет у рідині стає іншим за таблицею.
+- `+cond:volume` — рівень рідини в клітині порівняно з порогом (відро 100/255, тонкий шар зникає); `+cond:submerged` — сутність (голова) під рідиною.
+- `+trigger:signal_rise` — сигнал дроту (помпи, решітки); `+trigger:world_load` — завантаження світу (осідання рідин).
+- `+ui:breath-meter` — бульбашки дихання над аватаром.
+- `+feature:liquid-dynamics-setting` — налаштування «наскільки динамічні рідини».
+- `+card:liquid-flow`, `+card:liquid-mixing` — див. вище.
+
+### TetraVex · `games/falling-match/tetravex.md`
+
+- `+cond:edges_match` — мітки на дотичних ребрах сусідніх плиток рівні (TetraVex, Eternity II, доміно).
+- `+card:edge-match-tiles` · `+card:tile-tray-source` — див. «Мапа на каталог».
+- `+feature:solve-no-record` — авторозвʼязання доступне, але результат не йде в рекорди (GNOME Tetravex).
+
+### TetriNET · `games/falling-match/tetrinet.md`
+
+- `+trigger:item_used` — гравець застосував предмет з інвентаря (точка всіх ефектів спецблоків).
+- `+cond:target` — ефект діє на вибране поле/гравця, а не на себе.
+- `+effect:use_item` — взяти перший предмет черги і застосувати до цілі.
+- `+effect:add_line` / `+effect:clear_bottom_line` / `+effect:nuke_field` — додати/знищити нижній ряд/очистити поле цілі.
+- `+effect:quake_rows` — зсунути кожен ряд на випадкову величину; `+effect:swap_fields` — обмін полів двох гравців.
+- `+effect:scramble_controls` — тимчасово перемішати керування (Confusion; ширше за наявний `invert_controls`).
+- `+role:special-block` — клітина поля, що несе предмет.
+- `+ui:special-inventory` — рядок предметів-черги; `+ui:target-numbers` — номери полів для таргетингу.
+- `+window:partyline` — чат-лобі каналу; `+window:winlist` — таблиця переможців сервера.
+- `+feature:server-settings` — правила партії задає сервер; `+feature:team-play` — команди.
+
 ### Tetris (Тетрис, Tetris Guideline) · `games/falling-match/tetris.md`
 
 - `+trigger:landed` — фігура торкнулась опори (старт lock-таймера); `+trigger:locked` — фігура зафіксована в стеку (точка підрахунку рядів, спінів, сміття).
@@ -4643,6 +14712,93 @@
 - Вжито вже наявні `garbage-meter`, `opponent-boards`, `action-text`, `ghost-piece`, `hold-slot`, `mode-select` — ще одна гра для правила трьох.
 - `+feature:handling-settings` — DAS/ARR/SDF як налаштування; `+feature:mode-sprint` — N рядів на час; `+feature:mode-ultra` — макс. очок за фіксований час.
 - `+axis:gravity` — `naive | sticky | cascade` — як осідають клітини після зчищення (Tetris / Tetris sticky / Puyo, Dr. Mario).
+
+### Tetris Effect / Tetris Effect Connected · `games/falling-match/tetris-effect.md`
+
+- `+trigger:meter_full` — шкала заряду наповнилась (Zone, магія Tetrisphere).
+- `+effect:time_stop` — вимкнути гравітацію/таймер світу, крім вводу гравця, на N с.
+- `+effect:stash_line` — повний ряд не зникає, а переноситься на дно поля до події.
+- `+effect:reset_field` — очистити поле й рахунок без завершення гри (Relax).
+- `+effect:random_event` — увімкнути випадкове тимчасове правило (Mystery).
+- `+ui:zone-meter` — сегментована шкала заряду; `+ui:zone-line-counter` — лічильник рядів, накопичених у Zone.
+- `+feature:mode-chill` — нескінченна гра без поразки з ціллю рядів; `+feature:weekend-event` — спільнотна подія за розкладом; `+feature:practice-no-lose` — практика кампанії без game over.
+- `+card:zone-time-stop`, `+card:stack-cleared-at-bottom` — див. «Мапу».
+- Вжито наявні `garbage-meter`, `opponent-boards`, `action-text`, `hold-slot` — ще одна гра для правила трьох.
+
+### Tetris The Grand Master (TGM) · `games/falling-match/tetris-the-grand-master.md`
+
+- `+trigger:landed` — фігура торкнулась опори (старт lock delay; уже просив Tetris).
+- `+cond:pattern_holes` — дірки в стеку утворюють заданий візерунок (секретний грейд TGM).
+- `+effect:set_grade` — присвоїти гравцеві ранг/грейд за таблицею.
+- `+feature:title-codes` — режими, що вмикаються кодом на титульному екрані, і не пишуться в рекорди.
+- `+ui:grade-display` — поточний грейд і поріг до наступного.
+- Вжито вже наявні `locked`, `spawned`, `counter`, `timer`, `drop_rows`, `ghost-piece`, `cheat-codes`.
+
+### Tetrisphere · `games/falling-match/tetrisphere.md`
+
+- `+trigger:meter_full` — шкала заряду наповнилась (магія; також Tetris Effect Zone).
+- `+cond:shape_match` — дві фігури однієї форми торкаються за правилом (повний бік / ребро); `+cond:aligned_layers` — фігури сусідніх шарів точно одна над одною.
+- `+effect:drop_into` — скинути фігуру з курсора вглиб до опори; `+effect:slide_layer` — ковзати фігуру шаром, лише якщо тінь збігається.
+- `+effect:power_up` — позначити випадкові фігури як підсилені; `+effect:spark` — снаряд, що перетворює фігуру, якої торкнувся.
+- `+effect:camera_approach` — камера наближається як візуальний таймер небезпеки.
+- `+role:core` — ціль у центрі поля, яку треба відкрити.
+- `+ui:shadow-cursor` — тінь фігури на поверхні, що яскравішає перед реакцією; `+ui:x-count` — множник комбо; `+ui:speed-meter` — кольоровий таймер-шкала; `+ui:magic-slot` — поточна магія.
+- `+feature:character-stats` — персонаж міняє швидкість вводу; `+feature:mode-hide-and-seek` — кампанія з особливими цілями рівнів.
+
+### Tetrisweeper · `games/hidden-deduction/tetrisweeper.md`
+
+- `+trigger:locked` — фігура зафіксувалась (уже ⏳-кандидат у Tetris; тут ключовий для Clear on Lock).
+- `+cond:row_solved(row)` — усі клітини ряду відкриті або правильно позначені.
+- `+effect:cleanse(piece)` — зняти міни з фігури й відкрити її.
+- `+effect:hard_clear` — примусово очистити розвʼязані ряди ціною комбо.
+- `+ui:multiplier-drain-meter` — множник з видимою затримкою спаду · `+ui:best-today`.
+- `+feature:handling-settings` (ARR/SDF/lock delay) · `+feature:mode-marathon-to-endless`.
+
+### Tetrobot and Co. · `games/thinky/tetrobot-and-co.md`
+
+- `+trigger:beam_hit` — промінь/лазер влучив у сутність (пісок → скло, всмоктування).
+- `+cond:material` — матеріал сутності (sand, wood, metal…) як умова реакції.
+- `+effect:absorb` — забрати сутність з відстані в запас (відрізняється від ✅ `pickup` дальністю й чергою).
+- `+effect:ignite` — підпалити (горіння з поширенням) (?).
+- `+effect:stick_side` — зробити липкою одну грань.
+- `+role:material-block` — блок з матеріалом, що визначає фізику й реакції.
+- `+card:absorb-shoot`, `+card:material-physics` — як вище.
+
+### Tetromino Slide / Tetromino-Rutsch · `games/falling-match/tetromino-slide.md`
+
+- `+card:tilt-instead-of-fall`, `+card:clear-n-lines-win` — механік нема в каталозі.
+
+### The Banner Saga · `games/tactics/banner-saga.md`
+
+- `+effect:break_armor(t, n)` — зменшити броню цілі на N, не чіпаючи HP.
+- `+effect:spend(a, resource, n)` — витратити ресурс юніта (Willpower, TP) на підсилення.
+- `+cond:sides_count(side, op, n)` — у сторони лишилось N юнітів (Pillage).
+- `+ui:turn-order-bar` — черга ходів обох сторін; `+ui:willpower-pips` — зірки Willpower над юнітом; `+ui:horn-meter` — ріг з накопиченими зірками.
+- `+window:caravan-travel` — подорож каравану з ресурсами; `+window:camp-screen` — табір; `+window:decision-dialog` — подія з варіантами; `+window:hero-roster` — герої, черга, підвищення.
+- `+feature:no-reload-consequences` — поразка не скасовується, гра йде далі з наслідками.
+- `+axis:turn-structure=alternating-unit` — сторони чергуються по одному юніту (TBS, Chimera Squad).
+
+### The Bard's Tale / Might and Magic — сіткові dungeon crawl 80-х · `games/roguelike/bards-tale.md`
+
+- `+trigger:rest(party)` — загін відпочиває (їжа, відновлення, вік).
+- `+effect:age(a, ±n)` — вік героя як стат.
+- `+effect:sing(song)` — запустити пісню (баф + музика); можна звести до `set_state` + `sound`.
+- `+cond:sector(x)` — загін у секторі/області (M&M).
+- `+window:spell-entry` — рядок вводу коду заклинання; `+window:review-board` — екран підвищення рівня/зміни класу.
+- `+ui:compass` — компас від заклинання; `+ui:light-indicator` — індикатор світла.
+- `+feature:character-import` — імпорт героїв з інших ігор.
+- `+card:spinner-tile` · `+card:bard-song-buff` · `+card:sector-world-map`.
+
+### The Battle Cats · `games/tower-lanes/the-battle-cats.md`
+
+- `+trigger:hp_threshold(a, k)` — HP перетнуло k-й поріг (knockback, фази боса, спавн за HP бази); `+trigger:charge_full(x)` — заряд (гармата) повний.
+- `+cond:trait(a, t)` — у цілі трейт; `+cond:base_hp(op, n)` — HP бази порівняно з порогом.
+- `+effect:knockback(a, dist)` — відкинути назад по лінії; `+effect:wave_attack` — хвиля, що біжить по лінії; `+effect:deploy(unit)` — висадити з кнопки (ціна + кулдаун).
+- `+role:base` — база з HP на краю лінії; `+role:unit` — юніт, що діє сам після висадки.
+- `+ui:unit-deploy-bar` — іконки з ціною й кулдауном; `+ui:wallet` — гроші / макс.; `+ui:cannon-charge` — заряд гармати.
+- `+window:loadout-select` · `+window:gacha-window`; прокачку юнітів показую наявним ⏳ `upgrade-window`.
+- `+feature:gacha` — капсули за квитки/валюту; `+feature:treasures` — пасивні бафи за зібрані скарби.
+- `+card:hp-threshold-knockback`, `+card:base-cannon`.
 
 ### The Battle for Wesnoth (Битва за Веснот) · `games/tactics/battle-for-wesnoth.md`
 
@@ -4666,6 +14822,25 @@
 - `+feature:pass-and-play` = `hotseat` ⏳ на одному телефоні з екраном-заслінкою.
 - `+axis:session` = `match`.
 
+### The Castles of Burgundy (Замки Бургундії) · `games/board-digital/the-castles-of-burgundy.md`
+
+- `+trigger:area_complete` — регіон заповнено (як у Bärenpark, Project L).
+- `+trigger:phase_end` — кінець фази гри (дохід шахт, поповнення депо).
+- `+cond:die_value(die, n)` — значення кубика (після модифікаторів) дорівнює N.
+- `+cond:afford` — вистачає срібла.
+- `+effect:take_tile` · `+effect:modify_die(±n)` · `+effect:extra_action` — додаткова дія з уявним кубиком · `+effect:sell(kind)` — продати всі товари виду.
+- `+role:depot` — нумерований склад плиток; `+role:storage` — обмежений склад гравця.
+- `+ui:dice-tray` · `+ui:depot-board` · `+ui:turn-order-track` (міст зі стопками).
+- `+axis:turn-structure` = `track` (порядок мосту).
+
+### The Electrifying Incident: A Monster Mini-Expedition · `games/thinky/the-electrifying-incident.md`
+
+- `+effect:grab` — схопити обʼєкт на відстані й тримати (є як кандидат з Cargo-Bot ×3 — тут клешня).
+- `+cond:powered` — клітина/обʼєкт під струмом (кандидат з Galaxy Trucker, Duskers).
+- `+cond:conductive` — обʼєкт/інструмент проводить струм (кандидат з Caves of Qud).
+- `+trigger:circuit_closed` — коло замкнулось (кандидат з Hook; тут — ящиком на плиті).
+- Карткові пропозиції — див. «Мапа на каталог».
+
 ### The Farmer Was Replaced · `games/program-robots/the-farmer-was-replaced.md`
 
 - `+trigger:exec(cmd)` — спільний для сімʼї; `+trigger:grown(a)` — рослина дозріла (подія росту за таймером).
@@ -4676,6 +14851,48 @@
 - `+ui:instruction-highlight`.
 - `+feature:tech-tree`, `+feature:simulation-run` (прогін у пісочниці з seed), `+feature:external-editor`.
 - `+axis:control` — `programmed` у реальному часі (не покроково, як у Karel).
+
+### The Fury of Dracula · `games/hidden-deduction/fury-of-dracula.md`
+
+- `+effect:secret_move` — повтор (Scotland Yard): прихований хід із записом у стрічку.
+- `+effect:mature` — прихована зустріч спрацьовує з окремим ефектом, дійшовши до кінця стрічки.
+- `+cond:edge_type` — повтор: ребро потрібного виду (дорога / залізниця / море).
+- `+role:trail` — черга прихованих позицій, що зсувається щоходу.
+- `+ui:trail-strip` — стрічка з N слотів з закритими/відкритими картами.
+- `+ui:time-track` — трек день/ніч і тижнів; `+ui:influence-track` — шкала очок до порогу перемоги.
+- `+window:combat-window` — окремий екран бою картами.
+
+### The Isle of Cats · `games/board-digital/the-isle-of-cats.md`
+
+- `+trigger:covered` — плитка накрила клітину з іконкою (Bärenpark, Isle of Cats, Odin).
+- `+cond:afford` — вистачає валюти на покупку (Patchwork, Odin, Isle of Cats).
+- `+cond:touches_placed` — нова плитка торкається вже покладеної ортогонально.
+- `+effect:draft_pass` — лишити N карт і передати решту сусідові.
+- `+effect:pay` — заплатити валютою за карту/кота (родич `currency(-n)`; можливо, зайве).
+- `+role:room` — регіон поля зі штрафом за незаповнення (родич `zone`).
+- `+role:basket` — обмежений ресурс-дозвіл на дію з різною перезарядкою.
+- `+ui:fish-counter` · `+ui:day-track` · `+ui:field-market` (поля з цінами) · `+ui:family-overlay` (підсвітка родин з очками).
+- `+window:draft-window` — драфт карт; `+window:lessons-window` — таємні й публічні цілі з прогресом.
+- `+card:card-drafting` · `+card:region-fill-penalty` · `+card:bid-turn-order` · `+card:two-price-market` — див. «Мапа на каталог».
+
+### The Last Spell · `games/tactics/the-last-spell.md`
+
+- `+trigger:day_start` / `+trigger:night_start` — початок фази циклу (уточнення ⏳ `phase_start`).
+- `+role:building` — будівля міста з HP і функцією; `+role:core` — сутність, загибель якої = поразка (магічне коло, База в TD).
+- `+effect:build` / `+effect:repair` — поставити / відновити будівлю за ресурси; `+effect:assign_worker` — призначити робітника; `+effect:recruit` — найняти юніт; `+effect:swap_weapons` — змінити набір навичок.
+- `+cond:beyond_mist` — ціль за лінією туману; `+cond:mp` — вистачає очок руху.
+- `+ui:ap-mp-banner` — два лічильники бюджету ходу; `+ui:worker-counter` · `+ui:night-counter` — ніч N з M.
+- `+window:omen-select` — вибір модифікаторів у слоти; `+window:recruit-window` — найм; `+window:night-report` — підсумок ночі; `+window:meta-tree` — дерево мета-відкриттів (Oraculum).
+- `+feature:run-modifiers` — модифікатори забігу; `+card:protect-core`.
+
+### The Ouroboros King · `games/chess-abstract/ouroboros-king.md`
+
+- `+effect:copy_pattern(a, b)` — A ходить за патерном фігури B (Fool, Tabitha).
+- `+effect:infect(capturer)` — той, хто взяв, перетворюється на взяту (Leper); частковий випадок `transform`.
+- `+cond:captured_by(kind)` — фігуру взяв конкретний вид.
+- `+window:army-draft` — вибір стартової армії з випадкового набору.
+- `+ui:move-pattern-hover` — наведення на фігуру показує її патерн.
+- `+card:army-draft`, `+card:piece-level-up`, `+card:king-capture-win`, `+card:transform-on-capture` — див. «Мапа на каталог».
 
 ### The Powder Toy · `games/dig-gravity/the-powder-toy.md`
 
@@ -4688,6 +14905,17 @@
 - `+feature:mode-sandbox` ⏳ · `+feature:scripting` — Lua-плагіни.
 - `+axis:goal-sandbox` — `goal` без мети (поставлено `state` як найближче); `+axis:field-layers` — дві роздільності сітки (піксель + 4×4).
 
+### Theme Hospital · `games/build-sim/theme-hospital.md`
+
+- `+card:room-blueprint`, `+card:heat-diffusion`, `+card:diagnosis-pipeline`, `+card:machine-wear`, `+card:room-requirements` — див. вище.
+- `+cond:enclosed` — область замкнена стінами/дверима (Prison Architect, RimWorld, Theme Hospital).
+- `+effect:diffuse` — значення клітини змішується з сусідами (тепло, газ, запах).
+- `+effect:queue_join` — стати в кінець черги (RCT, Theme Hospital).
+- `+role:visitor` — автономний клієнт з потребами (пацієнт, гість парку).
+- `+ui:thought-bubble` — гримаса/думка над агентом; `+ui:heat-overlay` — теплова мапа.
+- `+window:town-map`, `+window:research-window`, `+window:finance-window`, `+window:staff-hire`.
+- `+feature:year-end-awards` — річний огляд з трофеями/бонусами.
+
 ### Theseus and the Minotaur (Тесей і Мінотавр) · `games/roguelike/theseus-and-the-minotaur.md`
 
 - `+cond:closer(a, b, axis)` — крок уздовж осі зменшує відстань A до B (ядро AI Мінотавра).
@@ -4699,6 +14927,108 @@
 - `+card:greedy-axis-chase` — див. вище.
 - `+trigger:input` — як в інших файлах.
 
+### They Are Billions · `games/tower-lanes/they-are-billions.md`
+
+- `+trigger:heard` — сутність почула шум у радіусі (зміна цілі).
+- `+effect:infect` — будівля/юніт переходить на бік ворога і стає генератором (≈ `set_side` + `transform`, але з каскадом).
+- `+cond:powered` — клітинка в зоні енергомережі; `+cond:infected` — будівля заражена.
+- `+role:base` — штаб: ціль орд; `+role:building` — споруда економіки (не вежа, не стіна).
+- `+ui:resource-bar` — рядок ресурсів; `+ui:day-counter` — дні до кінця; `+ui:horde-warning` — напрямок і час орди.
+- `+window:research-tree`, `+window:survival-setup` — дерево технологій; налаштування Survival з множником.
+- `+axis:time` — значення `rtwp` (real-time з паузою для наказів).
+- `+card:infection-spread`, `+card:noise-attraction`, `+card:power-grid` — див. «Мапа на каталог».
+
+### ThinkFun Laser Maze і Gravity Maze · `games/board-digital/thinkfun-logic-mazes.md`
+
+- `+trigger:beam_hit(beam, a)` — промінь торкнувся сутності (вже пропонував Khet; тут — друга гра).
+- `+trigger:marble_stopped(marble)` — кулька зупинилась (кінець симуляції).
+- `+cond:hit_side(a, side)` — з якого боку влучено (ціль лише червоною гранню).
+- `+cond:all_pieces_used` — усі деталі з набору на полі.
+- `+effect:emit_beam(source)` · `+effect:reflect(beam, deg)` · `+effect:split_beam(beam)` — оптика (Khet, Deflektor).
+- `+effect:release_marble(where)` — пустити кульку зі старту.
+- `+ui:beam-preview` · `+ui:pieces-tray` · `+ui:orientation-lock-badge`.
+- `+window:challenge-card`.
+- `+card:beam-touches-all` · `+card:challenge-card-setup` · `+card:marble-path-sim`.
+
+### Threes! · `games/falling-match/threes.md`
+
+- `+card:complement-merge` — злиття пари різних значень за правилом доповнення (Threes).
+- `+card:rarity-scoring` — очки за рідкістю/рівнем плитки, а не за значенням (Threes).
+- `+card:terminal-tile-end` — поява максимальної плитки закінчує гру (Threes; Suika — кавун не завершує (?)).
+- `+card:unlock-reveal-tile` — конфеті-вікно нового типу плитки (Threes, Suika-подібні).
+- `+window:score-tally` — фінальний підрахунок по елементах поля замість Game Over.
+- `+cond:complement(a, b)` — значення доповнюють одне одне до правила (1+2).
+
+### Thronefall · `games/tower-lanes/thronefall.md`
+
+- `+trigger:phase_start`, `+effect:place` — уже в 🔥, тут вжито.
+- `+window:perk-select`, `+ui:build-slot-cost`, `+feature:mutators`.
+- `+card:fixed-build-slots`, `+card:restore-after-wave`.
+
+### Through the Desert (Крізь пустелю) · `games/board-digital/through-the-desert.md`
+
+- `+cond:owner_same` — сутності належать одному гравцеві (верблюд → караван із вершником власника).
+- `+cond:touches_rival_same_color` — клітина сусідить із чужою групою того ж кольору.
+- `+trigger:linked` — група вперше стала сусідом обʼєкта (оазис, місто, джерело).
+- `+effect:close_area` — область стає закритою для всіх ходів.
+- `+role:leader` — голова групи, що визначає її власника.
+- `+ui:caravan-colors` — запаси спільних кольорів з лічильниками.
+- `+ui:hidden-score` — свої закриті жетони видно лише собі.
+- `+feature:serpentine-setup` — змійковий порядок розстановки.
+- `+card:no-touch-same-color-rival` · `+card:enclose-area-scoring` · `+card:shared-color-pieces` — див. «Мапа на каталог».
+
+### Tidalis · `games/falling-match/tidalis.md`
+
+- `+effect:emit_stream(a)` — з сутності виходить хвиля, що йде за стрілками клітин.
+- `+effect:orient_along(path)` — стрілки сутностей на шляху повертаються вздовж намальованого шляху.
+- `+trigger:stream_end` — хвиля/промінь більше не має куди йти.
+
+### Tigris & Euphrates (Тигр і Євфрат) · `games/board-digital/tigris-and-euphrates.md`
+
+- `+role:leader` — фігура-власник групи плиток: не ходить, а стоїть біля опори й збирає очки свого кольору (T&E); родич `worker` з Carcassonne.
+- `+trigger:kingdoms_joined` — плитка злила дві групи з власниками (T&E, Acquire).
+- `+trigger:same_leader_in_kingdom` — у групі опинились два лідери одного кольору.
+- `+cond:strength(side, op, other)` — порівняння сили сторін конфлікту.
+- `+effect:commit(tiles)` — приховано докласти компоненти з руки як підтримку.
+- `+effect:withdraw(a)` — фігура знімається з поля в запас власника.
+- `+effect:flip(tiles)` — перевернути компоненти (втрачають властивості, лишаються на полі).
+- `+ui:color-tracks` · `+ui:hand-screen` · `+ui:kingdom-overlay`.
+- `+window:conflict-dialog` · `+window:war-order` · `+window:monument-dialog`.
+- `+card:kingdom-leader-conflict` · `+card:hidden-commit-support` · `+card:min-color-score`.
+
+### Timberborn · `games/build-sim/timberborn.md`
+
+- `+effect:flow` — рідина перетікає в сусідню клітину (Timberborn, ONI, Minecraft-вода).
+- `+effect:spread` — властивість поширюється на сусідні клітини (зрошення, забруднення).
+- `+trigger:season_change` — зміна сезону/погоди.
+- `+cond:height_diff` — різниця висот клітин (ціна підйому, перелив).
+- `+cond:powered` — будівля отримує енергію.
+- `+role:source` / `+role:sink` — джерело й споживач потоку (джерело води, помпа).
+- `+ui:weather-forecast` — поточний сезон і попередження про наступний.
+- `+ui:water-depth-overlay` — оверлей глибини/течії води.
+- `+window:faction-select` — вибір фракції перед грою.
+- `+card:water-level-cell`, `+card:season-cycle`, `+card:irrigation-spread`, `+card:adjustable-gate` — див. «Мапа на каталог».
+
+### Tiny Metal · `games/tactics/tiny-metal.md`
+
+- `+effect:focus_fire` — запустити всі призначені на ціль атаки; `+effect:assault` — атака з витісненням.
+- `+effect:counterattack` — відповідь захисника (вже просять AW і інші); `+effect:capture` / `+effect:produce` — як у AW.
+- `+cond:flanked` — атакуючий збоку/ззаду відносно напрямку цілі.
+- `+role:property` — будівля з власником; `+role:hero-unit` — іменний юніт, що переходить між місіями.
+- `+ui:lock-on-markers` — позначки призначених атак на цілі.
+- `+window:production` — купівля юнітів.
+
+### Tiny Tower / SimTower · `games/build-sim/tiny-tower-simtower.md`
+
+- `+trigger:day_start` — початок доби/робочого дня (розклад мешканців) — уже пропонував Stardew; тут ще `+trigger:arrive` — агент прибув на ціль.
+- `+cond:reachable_by` — поверх досяжний шахтою ліфта · `+cond:wait_time` — агент чекає довше за N.
+- `+effect:assign` — призначити агента на роботу/житло · `+effect:ride` — везти ліфтом · `+effect:restock` — поповнити склад з таймером.
+- `+role:resident` — агент-мешканець з потребами (не `neutral`, бо має стрес і виїжджає).
+- `+ui:floor-list` · `+ui:speech-bubble` (бажання агента над головою) · `+ui:stress-color` · `+ui:star-meter` · `+ui:clock-calendar`.
+- `+window:floor-detail` · `+window:bitbook` (внутрішньоігрова стрічка).
+- `+axis:field=1d-stack` — стос поверхів (1d по вертикалі з шириною поверху).
+- `+card:elevator-dispatch` · `+card:tenant-stress` · `+card:rider-request`.
+
 ### Tiny Towns (Крихітні містечка) · `games/board-digital/tiny-towns.md`
 
 - `+trigger:pattern` вже ⏳ — тут `pattern(building_shape)` на полі гравця.
@@ -4708,6 +15038,17 @@
 - `+ui:card-row` — ряд відкритих карт (будівлі, цілі) поруч з полем; `+ui:pattern-highlight` — підсвітка клітин, що складають готовий шаблон.
 - `+window:card-zoom` — збільшений перегляд карти з правилом.
 - `+axis:turn-structure` = `simultaneous`.
+
+### Titanium Court · `games/falling-match/titanium-court.md`
+
+- `+trigger:phase_start(high_tide|low_tide)` — підтверджую `phase_start` з аргументом фази ходу (не тіку).
+- `+effect:deploy(unit, from)` — висадити юніт за ресурси з Двору (ширше за `place`: з ціною й точкою виходу).
+- `+effect:harvest(tile)` — юніт забирає ресурс клітини.
+- `+cond:unmatched(tile)` — плитка пережила фазу матчингу (будівлі).
+- `+role:court` — фортеця-база сторони (ціль і точка висадки).
+- `+ui:tide-indicator` — поточна фаза ходу; `+ui:battle-tower` — стос-індикатор переваги в бою.
+- `+feature:card-draft` — вибір карт-апгрейдів між боями.
+- `+axis:phases` — `single` · `two-phase` (матч → бій).
 
 ### Toki Tori · `games/grid-platformer/toki-tori.md`
 
@@ -4720,6 +15061,15 @@
 - `+feature:rewind` ↔ є в `features.md`; `+axis:undo` = `rewind` для PC-версії, `none` для GBC.
 - `+card:tool-allotment` — див. вище.
 
+### Toki Tori 2 / Toki Tori 2+ · `games/grid-platformer/toki-tori-2.md`
+
+- `+trigger:song(seq)` — введено задану послідовність дій (пісня, чит-код, комбо).
+- `+effect:attract(a, to)` / `+effect:repel(a, from)` — сутність рухається до / від джерела стимулу.
+- `+feature:fast-travel` — переміщення між відкритими точками світу.
+- `+window:camera-mode` — видошукач фотоапарата поверх поля (Tokidex).
+- `+axis:progression` — `items` · `knowledge` · `levels` — що відкриває нову частину гри.
+- `+card:lure-and-scare`, `+card:knowledge-gating` — див. вище.
+
 ### Tomb of the Mask · `games/push-slide/tomb-of-the-mask.md`
 
 - `+trigger:input` — свайп; `+trigger:blocked` — зупинка об стіну; `+trigger:timer` — цикли пасток.
@@ -4730,6 +15080,30 @@
 - `+feature:stars-rating`; `+feature:ad-revive` — продовження за рекламу як мобільна фіча.
 - `+axis:session` — `endless` (Arcade) і `level` (Stage) в одній грі.
 - `+card:rising-hazard`.
+
+### Tome Tumble Tournament · `games/thinky/tome-tumble-tournament.md`
+
+- `+card:orientation-goal`, `+card:player-only-passable`, `+card:spell-on-open` — механік нема в каталозі.
+
+### Toodee and Topdee · `games/thinky/toodee-and-topdee.md`
+
+- `+effect:toggle_perspective` — перемкнути набір правил кімнати разом з активним персонажем.
+- `+axis:gravity-per-mode` — нове значення осі `gravity`: `per-mode` (гравітація лише в одному з режимів).
+- `+card:perspective-switch`, `+card:freeze-inactive`, `+card:mimic-entity` — див. «Мапа на каталог».
+- `+feature:optional-challenges` — необовʼязкові умови рівня з нагородою (сонечка, черепи Felix the Reaper).
+- `+ui:switch-counter` — лічильник перемикань для челенджу (?) чи він видимий.
+
+### Toon Blast · `games/falling-match/toon-blast.md`
+
+- `+ui:special-preview` — іконка на плитках групи: яка спецплитка вийде, якщо тапнути (?).
+- `+window:chest-reward` — відкриття скрині з нагородами (також у `match3-meta-renovation`).
+- `+card:group-size-specials` · `+card:milestone-chest` · `+card:reshuffle-booster` — див. «Мапу».
+
+### Torneko's Great Adventure: Mystery Dungeon · `games/roguelike/torneko-great-adventure.md`
+
+- `+trigger:earthquake` — лічильник дій поверху вичерпано (дитина `counter`).
+- `+effect:drop_floor` — примусовий перехід на поверх нижче (протилежність `blown_out` з mystery-dungeon.md).
+- `+feature:item-storage` (уже з mystery-dungeon.md — підтверджую) · `+feature:meta-shop-stages` · `+window:storage-window` (підтверджую).
 
 ### Tower of the Sorcerer / Magic Tower (魔塔) · `games/roguelike/magic-tower.md`
 
@@ -4742,6 +15116,12 @@
 - `+feature:replay`, `+feature:level-editor` (⏳) — вжито.
 - `+axis:random=none-rpg` — нагадування: RPG-бій без рандому — значення `none` тут ключове для жанру.
 
+### TowerBound · `games/roguelike/towerbound.md`
+
+- `+effect:fight(a, b)`, `+effect:stat(a, name, ±n)`, `+cond:can_damage(a, b)` — повтор пропозицій сімʼї Magic Tower (ще не в словнику).
+- `+window:codex-window` — бестіарій (⏳ кандидат, тут вжито).
+- `+feature:bestiary-unlock` — запис у довідник відкривається першою перемогою над видом.
+
 ### Townscaper · `games/build-sim/townscaper.md`
 
 - `+trigger:input` — клік/тап по грані; `+trigger:after` — каскад перерахунку після `set_cell`.
@@ -4752,6 +15132,31 @@
 - `+feature:mode-sandbox`, `+feature:share-code` (місто рядком), `+feature:photo-mode` — фото-режим зі світлом і камерою (нове).
 - `+axis:field=irregular-quad` — нерегулярна квадова сітка (зараз лише `graph`); `+axis:goal=none` — іграшка без мети (зараз довелося ставити `state`).
 - `+card:context-tile-rules` — див. вище.
+
+### Tracks (Tatham) · `games/pencil-logic/tracks.md`
+
+- `+cond:degree(cell, n)` — скільки сегментів лінії виходить з клітинки (0/1/2/3+).
+- `+cond:crosses` — повтор.
+- `+ui:cell-must-mark` — мітка «клітинка точно на шляху, напрямок невідомий».
+- `+window:params-dialog`, `+window:game-id-dialog` — повтори з Tatham collection.
+- `+card:track-pieces`, `+card:drag-line-fill` — див. мапу.
+
+### Train Valley · `games/connect-rotate/train-valley.md`
+
+- `+effect:extend_path` — подовжити шлях/колію (з Flow Free / Trainyard).
+- `+effect:toggle_junction` — перемкнути гілку стрілки (з Trainyard).
+- `+effect:dispatch` — відправити поїзд зі станції; `+effect:reverse` — розвернути рух сутності (для поїзда ≠ `bounce`).
+- `+cond:bankrupt` — бюджет < 0 (можна `count`/`counter`, але частий стан економік).
+- `+ui:next-train-gauge` — індикатор часу до наступного спавну; `+ui:cursor-mode-bar` — режими курсора на геймпаді; `+ui:money` — баланс.
+- `+feature:optional-objectives` — додаткові цілі рівня (три на рівень).
+- `+card:*` — див. «Мапа на каталог».
+
+### Train shunting puzzle (Inglenook Sidings, Timesaver) · `games/push-slide/train-shunting-puzzle.md`
+
+- `+cond:capacity` — відрізок/клітина вміщає ще N одиниць (колії Inglenook, тупики); `count` рахує сутності на всьому полі, а тут — у конкретному контейнері.
+- `+ui:target-sequence` — картка цільового порядку обʼєктів (потяг 1-2-3-4-5, список «вагон → пункт»).
+- `+feature:random-goal-draw` — ціль партії тягнеться випадково (жеребкування, кубик, картки).
+- `+card:couple-uncouple`, `+card:track-capacity`, `+card:rail-graph` — див. «Мапа на каталог».
 
 ### Trainyard · `games/connect-rotate/trainyard.md`
 
@@ -4772,6 +15177,53 @@
 - `+effect:place` ⏳ (×10 у корпусі) — покласти плитку з запасу; `+effect:forced_place` — автоматично визначене розміщення в межах того самого ходу; `+effect:replay_turn` — скасувати весь хід і переграти.
 - `+ui:tile-orientation-picker` — вибір сторони/повороту плитки біля курсора.
 - `+feature:move-notation` — текстовий запис ходів, з якого стан відновлюється.
+
+### Treasure Island Dizzy · `games/grid-platformer/treasure-island-dizzy.md`
+
+- `+cond:top_item(a, item)` — предмет зверху інвентаря A (Treasure Island Dizzy).
+- `+effect:drop_top(a)` — A кладе верхній предмет інвентаря.
+- `+feature:one-life` — одне життя на гру, без continue.
+- `+card:stack-inventory`, `+card:passive-carry-item`, `+card:give-item-to-npc`, `+card:flip-screen-rooms` — див. вище.
+
+### Tren · `games/pencil-logic/tren.md`
+
+- `+cond:slide_range(a, op, n)` — скільки клітинок сутність може проїхати до упору (сума напрямків уздовж осі).
+- `+card:mobility-clue` — див. мапу.
+
+### Triangle Strategy · `games/tactics/triangle-strategy.md`
+
+- `+cond:behind(a, b)` — A стоїть за спиною B (з напряму погляду B).
+- `+cond:higher(a, b)` — A на вищому рівні висоти, ніж B.
+- `+cond:pincer(a, t, b)` — A і B на протилежних клітинах відносно T.
+- `+effect:follow_up(a, t)` — A робить безкоштовну додаткову атаку по T.
+- `+effect:delay_turn(a, n)` — зсунути юніта в черзі ходів (Wait, навички).
+- `+trigger:attacked(a, b)` — A атакував B (ланцюг: follow-up, контратака).
+- `+ui:turn-order-bar` — смуга майбутньої черги ходів; `+ui:follow-up-marker` — значок «буде додаткова атака»; `+ui:damage-forecast` — прогноз шкоди на полосці HP.
+- `+window:vote-window` — голосування ради; `+window:exploration-screen` — вільна локація з NPC між боями; `+window:camp-screen` — табір з крамницями й тренуваннями.
+- `+feature:new-game-plus` — повтор кампанії зі збереженим прогресом.
+- `+axis:turn-structure=speed-queue` — черга окремих юнітів за швидкістю (TS, FFT).
+
+### Triangulation · `games/hidden-deduction/triangulation.md`
+
+- `+ui:probe-ring` — кільце відстані навколо зонда; `+ui:probe-counter` — скільки зондів поставлено.
+- `+feature:fewest-probes-challenge` — виклик «пройти найменшою кількістю зондів».
+
+### Tricky Towers · `games/falling-match/tricky-towers.md`
+
+- `+trigger:fell_off(a, where)` — сутність впала за межу поля/платформи (≠ `edge`: тут через фізику, не рух гравця).
+- `+effect:impulse(a, dir)` — фізичний поштовх тілу (спільне з Suika; темна магія).
+- `+cond:stable(a, t)` — тіло/структура нерухома не менше t (фініш Race).
+- `+feature:mode-race` — режим «першим до цілі» у versus.
+- `+axis:physics` — фізичне поле `rigid` (підтримую пропозицію з Suika).
+- `+card:rigid-body-stacking`, `+card:spell-light-dark` — див. «Мапа на каталог».
+
+### Triple Match 3D / Tile Explorer · `games/falling-match/triple-match-3d.md`
+
+- `+cond:uncovered` — сутність не накрита іншими (Mahjong Solitaire, Tile Explorer, купа 3D).
+- `+effect:to_tray` — перенести взятий предмет у буфер-лоток (поки `custom`).
+- `+card:match-tray` · `+card:covered-pick-rule` — див. «Мапа на каталог».
+- `+ui:tray-bar` — лоток слотів під полем.
+- `+feature:pre-level-boosters` — вибір бустерів перед стартом рівня.
 
 ### Triple Town · `games/falling-match/triple-town.md`
 
@@ -4804,6 +15256,12 @@
 - `+ui:territory-percent` — частка поля у власника (Paper.io, Qix, Xonix).
 - `+axis:control` — Armagetron: `direct-relative` (ліво/право від напрямку), Splix: `direct-absolute`.
 
+### Trouballs · `games/falling-match/trouballs.md`
+
+- `+effect:rotate_ring` — циклічний зсув сутностей навколо вузла (Trouballs, Hexic (?)).
+- `+role:rotator` — вузол поля, що обертає сусідні клітини (шестерня).
+- `+card:gear-rotate-group` · `+card:rectangle-group-match`.
+
 ### Tsuro (+ Indigo) · `games/connect-rotate/tsuro.md`
 
 - `+role:supply` — рука/колода/запас каменів; `+role:sink` — ворота Indigo; `+role:conduit` — плитка-шлях як провідник руху.
@@ -4812,6 +15270,61 @@
 - `+effect:place` ⏳; `+effect:follow_path(a)` — рух сутності шляхом плиток до обриву; `+effect:draw(p)` — добрати плитку з колоди; `+effect:give` ⏳ — камінь власнику воріт.
 - `+ui:pocket` (рука плиток, ×3 у корпусі), `+ui:path-preview` (куди поїде фішка).
 - `+window:match-setup` — кількість гравців і хто AI.
+
+### Tumblestone · `games/falling-match/tumblestone.md`
+
+- `+cond:exposed` — сутність доступна для взяття (нижня в стовпці; підтверджую наявну пропозицію).
+- `+effect:take_into_hand` — блок переходить у руку-трійку, а не в інвентар (відмінне від `pickup`: рука має дисципліну «лише один колір»).
+- `+card:bottom-pick-triple` · `+card:toggle-block` · `+card:puzzle-race` — див. «Мапу».
+- `+ui:hand-slots` — індикатор зібраних блоків поточної трійки (родич `pocket`).
+
+### Turing Complete · `games/program-robots/turing-complete.md`
+
+- `+trigger:signal(net)`, `+cond:powered(net)`, `+effect:power(net)` — як у Kohctpyktop (підтвердження).
+- `+effect:halt` — схема зупиняє власну симуляцію.
+- `+role:wire`, `+role:pin` — підтвердження.
+- `+window:truth-table`, `+window:assembly-editor`, `+window:component-factory`.
+- `+ui:wire-probe`, `+feature:custom-components`, `+card:custom-assembly-language`.
+
+### Tutankham · `games/maze-arcade/tutankham.md`
+
+- `+trigger:timer_zero` — таймер рівня дійшов нуля (зручніше за `counter(time, ==, 0)`).
+- `+ui:flash-stock` — іконки запасу «розумних бомб».
+- `+feature:twin-stick-option` — опція схеми керування на дві рукоятки.
+
+### Twinfold · `games/roguelike/twinfold.md`
+
+- `+effect:eat(b)` — зʼїсти плитку: значення → очки/XP/лікування (зараз `pickup` + `score`).
+- `+ui:danger-meter` — наскільки близько новий спавн.
+- `+ui:xp-bar` — смуга досвіду до наступного вибору.
+- `+feature:quick-resume` — старт одразу в незакінчений забіг.
+- `+card:swipe-moves-all` · `+card:wall-crush-damage`.
+
+### TwixT (Твікст) · `games/chess-abstract/twixt.md`
+
+- `+trigger:connected` — група зʼєднала задані зони (уже просив `hex.md`; `connected` є умовою, не тригером).
+- `+effect:link` / `+effect:unlink` — поставити/прибрати ребро між двома сутностями (міст); `attach` — про зчеплення для руху, тут інше.
+- `+cond:segments_cross` — новий відрізок перетинає наявний (TwixT, Flow-подібні, Planarity).
+- `+effect:swap_sides` — гравці міняються кольорами (pie; уже просив `hex.md`).
+- `+ui:link-preview` — показ мостів, які стануть доступні після кілка.
+- `+card:knight-link`, `+card:no-crossing-edges`, `+card:own-border-only` — див. «Мапу на каталог»; `+feature:swap-rule`.
+
+### Two Point Hospital · `games/build-sim/two-point-hospital.md`
+
+- `+role:visitor` — пацієнт як автономний клієнт (повторно).
+- `+effect:queue_join` — стати в чергу (повторно, Theme Hospital, RCT).
+- `+ui:thought-bubble` — потреба/думка над агентом.
+- `+window:staff-hire`, `+window:training-window`, `+window:research-window`.
+- `+feature:year-end-awards` — річна церемонія з сертифікатами, що дають престиж.
+- `+card:additive-room-buffs`, `+card:staff-qualifications`, `+card:meta-currency-unlocks`, `+card:multi-plot-expansion`, `+card:room-grading` — див. вище.
+
+### TypeShift · `games/word-number/typeshift.md`
+
+- `+cond:already_found` — слово вже є в списку знайдених (TypeShift, Boggle, SpellTower: повтор не рахується).
+- `+ui:found-words-list` — список знайдених слів на ігровому екрані.
+- `+ui:clue-list` — список текстових підказок із закресленням розвʼязаних.
+- `+feature:key-words-reveal` — після розвʼязку показати еталонний мінімальний набір.
+- `+card:column-reel-shift`, `+card:letter-used-state` — див. «Мапа на каталог».
 
 ### Ubongo + Katamino / IQ Puzzler (Убонго) · `games/board-digital/ubongo.md`
 
@@ -4823,6 +15336,65 @@
 - `+window:puzzle-select` · `+feature:mode-time-attack` · `+feature:puzzle-bank`.
 - `+axis:turn-structure=simultaneous` — одночасна гонка без черги.
 
+### Unblock Me і Parking Jam 3D (мобільні Rush Hour) · `games/push-slide/unblock-me.md`
+
+- `+effect:drive_out` — сутність їде за край і зникає з поля зарахованою (Parking Jam; також «вийти з рівня» у Lemmings-подібних); поки `custom`.
+- `+trigger:exited` — сутність покинула поле через вихід/край (відмінне від `edge` — там «вийшов за межу» як помилка).
+- `+feature:rewarded-ad`, `+feature:hint-currency`, `+feature:lives-energy`, `+feature:idle-income` — мобільні фічі поза полем.
+- `+card:exit-by-direction`, `+card:crash-on-blocked` — див. «Мапу на каталог».
+- `+role:neutral` — Granny (вже ⏳ у roles.md — просто підтвердження вжитку, не нове слово).
+
+### Undead (Haunted Mirror Maze) · `games/pencil-logic/undead.md`
+
+- `+cond:view_count` — скільки видно з точки (повтор з Kuromasu/Skyscrapers).
+- `+cond:seen_via(direct|mirror)` — сутність на промені до / після відбиття.
+- `+cond:type_count` — кількість сутностей виду на полі = N (уточнення `count` для квоти виду; якщо `count` покриває — зняти).
+- `+effect:reflect` — промінь змінює напрямок на дзеркалі (`bounce` — для руху сутності, не променя).
+- `+ui:count-style-toggle` — лічильник у стилях усього / лишилось / поставлено з усього.
+- `+ui:glyph-toggle` — картинки ⇄ літери для сутностей.
+- `+ui:clue-done-mark`, `+window:params-dialog` — повтори.
+- `+card:reflection-visibility`, `+card:type-quota` — див. мапу.
+
+### Understand · `games/thinky/understand.md`
+
+- `+cond:path_satisfies(path, rule)` — шлях задовольняє предикат правила (Understand, Witness, Taiji).
+- `+trigger:path_submitted` — гравець завершив малювання шляху (відпустив кнопку); зараз — `custom`.
+- `+ui:rule-dots` — ряд індикаторів, по одному на правило, заповнюється при виконанні.
+- `+card:hidden-rules`, `+card:per-rule-feedback` — див. «Мапа на каталог».
+- `+feature:worked-example` — гра показує розвʼязаний приклад перед самостійними екранами.
+- `+axis:rules-known` — нова вісь: `given` (правила сказані) · `discovered` (виводяться: Understand, Taiji, Baba Is You частково).
+
+### Unity of Command: Stalingrad Campaign · `games/tactics/unity-of-command.md`
+
+- `+trigger:enter_zoc` — вхід у зону контролю ворога.
+- `+effect:suppress` — пригнітити N кроків; `+effect:recover` — відновити пригнічені.
+- `+effect:retreat` — відступ у свій гекс; `+effect:overrun` — прорив зі збереженням AP.
+- `+effect:lock_ap` — AP лише для атаки, без ривка.
+- `+cond:in_supply` — гекс юніта в мережі постачання; `+cond:weak` — юніт слабкий.
+- `+role:supply-source` — джерело постачання з радіусом; `+role:specialist` — приєднаний крок-спеціаліст.
+- `+ui:combat-sheet` — лист шансів і прогнозу; `+ui:step-dots` — крапки кроків; `+ui:supply-overlay` — карта постачання.
+- `+window:objective-view` — цілі з очками й строками; `+window:force-pool` — пул поповнень.
+- `+feature:history-mode` — повтор кампанії після бою.
+
+### Unpacking · `games/build-sim/unpacking.md`
+
+- `+cond:allowed_spot` — сутність стоїть у дозволеній для неї зоні (Unpacking, A Little to the Left).
+- `+trigger:all_placed` — запас/черга вичерпано (останню річ розпаковано); зараз пишеться через `all_gone(item-in-box)`.
+- `+ui:item-hand` — річ «у руці» біля курсора; `+ui:room-tabs` — перемикач сцен.
+- `+feature:allow-anywhere`, `+feature:motion-toggle`, `+feature:outline-color` — доступність.
+- `+card:allowed-zone-per-item` — див. «Мапа на каталог».
+
+### Unrailed! · `games/connect-rotate/unrailed.md`
+
+- `+effect:extend_path` (підтвердження: Flow Free, Trainyard, Train Valley).
+- `+effect:craft(container, recipe)` — контейнер перетворює ресурси на предмет.
+- `+effect:refill(a, n)` / `+effect:extinguish(a)` — наповнити ресурс / зняти горіння (зараз — `custom`).
+- `+effect:derail` — варіант `crash` для поїзда в кінці колії (можна злити з `crash`).
+- `+role:tool` — інструмент, що лишається в руках і змінює дію; `+role:wagon` — частина поїзда-ланцюга з функцією.
+- `+ui:heat-bar` — шкала перегріву; `+ui:distance-counter` — пройдена відстань.
+- `+feature:mode-versus-race` — команди будують наввипередки; `+feature:map-editor-share` — Terrain Conductor.
+- `+card:*` — див. «Мапа на каталог».
+
 ### Untrusted — or the Continuing Adventures of Dr. Eval · `games/program-robots/untrusted.md`
 
 - `+trigger:exec(cmd)` — спільний для сімʼї; `+trigger:level_start` — є ⏳ (`startLevel`); `+trigger:validate` — після збирання рівня; `+trigger:on_exit` — спроба вийти; `+trigger:phone` — використано предмет-функцію.
@@ -4833,6 +15405,40 @@
 - `+ui:locked-lines` — заблоковані рядки коду з підсвіткою; `+ui:status-line` — рядок статусу під картою.
 - `+feature:code-unlock-items` — можливості відкриваються предметами на полі; `+feature:mod-support` — ⏳ уже є, тут бонус-рівні.
 - `+axis:control` — `direct` аватар + `programmed` світ: гравець програмує не себе, а рівень.
+
+### Upwords · `games/word-number/upwords.md`
+
+- `+cond:stack_height` — висота стосу клітини порівняно з N (Upwords; висоти в тактиках).
+- `+cond:keeps_tile` — хід лишає незмінною хоча б одну плитку наявного слова.
+- `+effect:stack` — покласти плитку поверх наявної, висота +1 (на відміну від `place` у порожню).
+- `+ui:stack-height-badge` — число висоти на клітині.
+- `+card:stack-overwrite`, `+card:stack-height-scoring` — див. «Мапа на каталог».
+
+### Vandal Hearts · `games/tactics/vandal-hearts.md`
+
+- `+trigger:attacked`, `+effect:counterattack` — контратака (вже пропоновані іншими тактиками).
+- `+cond:height_diff(a, b)` — різниця висот атакувальника й цілі.
+- `+role:trap` — пастка мапи з тригером.
+- `+window:headquarters` — штаб між боями (магазини, підвищення, збереження); `+window:promotion-window`.
+- `+ui:height-badge` — висота клітини під курсором.
+- `+feature:hidden-trials`; `+axis:session` = `campaign`.
+
+### Venture · `games/maze-arcade/venture.md`
+
+- `+effect:decay` — сутність переходить у наступну фазу розпаду (труп).
+- `+effect:reset_decay` — відкотити фазу розпаду (стріла в труп).
+- `+cond:just_left(a, zone)` — A щойно вийшов із зони (заборона повторного входу).
+- `+card:hub-and-rooms-zoom`, `+card:lethal-corpse-decay`, `+card:room-reentry-ban` — див. вище.
+
+### Viva Piñata · `games/build-sim/viva-pinata.md`
+
+- `+cond:area_share(type, op, pct)` — частка/площа покриву типу на полі.
+- `+cond:has_eaten(a, item, n)` — A зʼїв N предметів виду (історія сутності).
+- `+trigger:requirements_met(stage)` — виконано набір вимог сходинки.
+- `+effect:breed(a, b)` — пара дає нащадка (яйце).
+- `+role:visitor` — сутність, що приходить сама, якщо поле відповідає умові.
+- `+window:journal` — журнал видів з вимогами; `+ui:requirement-checklist` — список вимог з галочками.
+- `+card:species-requirement-ladder`, `+card:terrain-area-share` — див. вище.
 
 ### Void Stranger · `games/thinky/void-stranger.md`
 
@@ -4864,6 +15470,110 @@
 - `+feature:share-result`, `+feature:streaks`.
 - `+axis:session` — `daily` + щотижневий спецвипуск.
 
+### Wall World · `games/dig-gravity/wall-world.md`
+
+- `+trigger:wave_start` / `+trigger:wave_cleared` — повтори (уже в коді; тут — тригер старту таймера).
+- `+effect:deposit` — повтор: ресурс у базу = валюта.
+- `+effect:dock` — пришвартувати/відшвартувати рухому базу (можна `set_state`, слабка).
+- `+cond:inside_base` — повтор (Dome Keeper).
+- `+role:resource` — повтор; `+role:platform` — повтор (павук везе базу).
+- `+ui:wave-timer` — повтор; `+ui:base-hp` — HP бази окремо від аватара.
+- `+window:upgrade-window` / `+window:loadout-select` — повтори.
+
+### Wargroove · `games/tactics/wargroove.md`
+
+- `+trigger:attacked` — атака як подія (groove, контратака); `+trigger:sighted` — ворога виявлено в тумані (засідка).
+- `+cond:moved` — юніт рухався цього ходу (лучник); `+cond:hp_ratio` — HP у відсотках від максимуму (велетень); `+cond:terrain_defense` — захист клітини ≥ N (маг).
+- `+effect:counterattack` — відповідний удар захисника (вжито як `custom`).
+- `+role:site` — захоплювана будівля з HP; `+role:commander` — фігура-король із суперздібністю.
+- `+ui:groove-meter` · `+ui:damage-forecast` · `+ui:crit-indicator` · `+ui:terrain-shields`.
+- `+window:commander-select` · `+window:recruit-window` · `+window:arcade-ladder`.
+- `+feature:branching-campaign` — світовий редактор: місії звʼязані гілками й умовами розблокування.
+
+### Warhammer 40,000: Mechanicus · `games/tactics/warhammer-40k-mechanicus.md`
+
+- `+effect:revive(a)` — повалений встає; `+cond:downed(a)` — сутність повалена, не знищена.
+- `+role:obelisk` — обʼєкт-джерело ресурсу, з яким взаємодіють юніти (відрізняти від `resource`, бо не підбирається).
+- `+ui:cognition-counter` — спільний пул CP; `+ui:awakening-meter`; `+ui:revive-countdown`.
+- `+window:noctis-map` (карта кімнат місії), `+window:event-choice`, `+window:ark-ship` (хаб), `+window:canticle-select`.
+- `+feature:doom-clock`; `+axis:session` = `campaign`.
+
+### Wario's Woods · `games/falling-match/warios-woods.md`
+
+- `+effect:lift_stack` — підняти стовпчик обʼєктів від клітини вгору як одне ціле (інакше — 3 речення `carry` + `custom`).
+- `+effect:ceiling_down` — зсунути верхню межу поля вниз на N рядів (Wario's Woods; родич підйому поля в Panel de Pon).
+- `+cond:contains` — лінія/група містить ≥1 сутність виду (бомба в лінії; родич `has` для множини клітин).
+- `+role:ceiling` — рухома межа поля, що звужує простір (Thwomp); не `hazard`, бо не шкодить контактом.
+- `+card:carry-stack` · `+card:catalyst-match` · `+card:diagonal-only-tile` · `+card:two-hit-tile` · `+card:ceiling-descend` · `+card:phase-timer-antagonist` · `+card:multi-direction-clear-bonus` — див. «Мапу».
+- `+feature:technical-rank` — сертифікат-оцінка майстерності за результатом режиму на час.
+
+### Water Sort / Ball Sort Puzzle (сортування кольорів у пробірках) · `games/falling-match/water-sort.md`
+
+- `+effect:pour` — перенести верхній однокольоровий відрізок одного стека в інший у межах місткості (Water Sort; відрізняється від `move` кількістю одиниць).
+- Вжито вже наявні `all_constraints_met`, `no_moves`, `same`, `count`, `undo`, `restart`, роль `container`.
+
+### Weaver (word ladder) · `games/word-number/weaver.md`
+
+- `+cond:hamming_one` — два слова однакової довжини різняться рівно в одній позиції (Weaver; варіант `edit_one` для ±літери).
+- `+ui:ladder-rungs` — стовпчик щаблів між двома закріпленими словами.
+- `+ui:optimal-ladder` — показ однієї з найкоротших драбин після розвʼязання.
+- `+feature:mode-practice-unlimited` — безлімітна практика поруч із daily (Weaver, Wordle-клони).
+- `+card:one-letter-step` — див. «Мапа на каталог».
+
+### Welcome To… (Ласкаво просимо до…) · `games/board-digital/welcome-to.md`
+
+- `+cond:ascending` — значення в ряду строго зростають (з урахуванням порожніх клітин).
+- `+cond:segment_closed` — сегмент між двома межами повністю заповнений.
+- `+effect:cross_box` — закреслити наступну клітину треку (roll-and-write: Welcome To, Ganz schön clever, Cartographers).
+- `+trigger:objective_met` — виконано спільну/особисту ціль.
+- `+role:objective` — ціль-карта поза полем (план міста, спільні цілі Next Station).
+- `+ui:score-tracks` — бічні треки з поточною ціною категорій.
+- `+ui:card-pairs` — 3 пари «номер + дія» на вибір.
+- `+window:sheet-view` — перегляд аркуша іншого гравця.
+- `+feature:themed-sheets` — альтернативні аркуші з іншими діями (один на партію).
+- `+card:ascending-sequence-rule` · `+card:fence-split-segments` · `+card:strike-penalty-track` · `+card:pair-choice-market` — див. «Мапа на каталог».
+
+### Welltris · `games/falling-match/welltris.md`
+
+- `+effect:slide_until_blocked` — ковзання по дну від стіни; відрізняється від `slide` тим, що напрямок задається стіною входу, не вводом (можна злити з `slide` — рішення куратора).
+- `+effect:freeze_wall` — закрити вхід/сектор на N тіків; `+cond:rests_on_wall` — частина фігури лишилась на стіні.
+- `+effect:split_piece` — розділити фігуру на звʼязні частини, кожна рухається окремо.
+- `+axis:field-box-surface` — значення `field` для розгортки коробки (стіни + дно), якщо `graph` замало.
+- `+ui:wall-lock-indicator` — які входи закриті; `+feature:paid-preview` — підказка, що зменшує очки.
+
+### Wetrix · `games/falling-match/wetrix.md`
+
+- `+effect:raise(cells, n)` / `+effect:lower(cells, n)` — зміна висоти клітин (Wetrix; рельєф у build-sim).
+- `+effect:flow(water)` — рідина розтікається за висотою (Wetrix, Powder Toy-подібні).
+- `+trigger:leak(water, edge)` — рідина витекла за край поля.
+- `+ui:drain-meter` — метр витоку/злива як життя (пор. `drop-meter` з Klax); `+ui:earthquake-meter` — шкала висоти до землетрусу.
+- `+axis:field=heightmap` — сітка з висотою клітин (рельєф), без шарів-обʼєктів.
+- `+card:water-flow-sim` — див. вище.
+
+### Where's My Water? · `games/dig-gravity/wheres-my-water.md`
+
+- `+trigger:fluid_reach(type, sink)` — рідина типу дійшла до стоку (ванна, орган).
+- `+cond:fluid_type(a, t)` — тип рідини (вода, отрута, слиз, бруд, пара) — замість окремих сутностей.
+- `+cond:fill(a, op, n)` — наповненість качки/ванни.
+- `+effect:contaminate(a → b)` — рідина заражає іншу (отрута → вода), поширюючись дотиком.
+- `+effect:erode(cell)` — рідина розʼїдає клітину рельєфу (ooze → земля).
+- `+role:fluid` — рідина без форми, що тече (≠ `object`).
+- `+window:collectibles-shelf` — полиця колекцій з наборами.
+- `+feature:iap-unlock` — платне відкриття контенту.
+- `+card:fluid-contamination` · `+card:fluid-sink-goal` — див. «Мапа на каталог».
+- `+axis:control-carve` — значення осі `control`: гравець змінює рельєф, а не рухає сутність.
+
+### Wildermyth · `games/tactics/wildermyth.md`
+
+- `+trigger:attacked` — для знімання Hidden і реакцій (як у Wesnoth/XCOM).
+- `+effect:interfuse(a, obj)` / `+effect:withdraw(a, obj)` — привʼязати/відвʼязати мага до обʼєкта.
+- `+effect:shred(a, n)` — знизити броню до кінця місії.
+- `+cond:interfused(a, obj)` — маг повʼязаний з обʼєктом; `+cond:distance_le(a, b, x)` — дробова відстань.
+- `+role:interactable` — обʼєкт поля, що дає дію (носій інтерфузії).
+- `+ui:range-circle` — кільце дальності від обʼєкта; `+ui:hit-chance`.
+- `+window:mortal-choice`, `+window:comic-panel`, `+window:legacy-window`.
+- `+feature:legacy-heroes`, `+feature:mode-coop`, `+feature:level-editor`; `+axis:session` = `campaign`.
+
 ### Wildfrost · `games/tower-lanes/wildfrost.md`
 
 - `+trigger:counter_zero` — лічильник карти досяг 0 (спрацювання); `+trigger:turn_end` ⏳ — підтвердження (тут тікають статуси).
@@ -4887,6 +15597,12 @@
 - `+axis:control` = `direct` + grab-throw-подібне перенесення.
 - `+card:self-organised-storage` — див. вище.
 
+### Wireworld · `games/build-sim/wireworld.md`
+
+- `+card:multi-state-cell`, `+card:signal-gate-library` — див. «Мапа на каталог».
+- `+ui:generation-counter` — номер покоління (Life, Langton, Wireworld).
+- `+cond:adjacent_count_in` — кількість сусідів у множині значень ({1,2}); зараз пишеться `adjacent_count(x, head, in, {1,2})`, але `in` не описано в словнику операторів.
+
 ### Wizard of Wor · `games/maze-arcade/wizard-of-wor.md`
 
 - `+trigger:all_gone` — усі монстри знищені (Worluk); `+trigger:line_of_sight` / `+cond:line_of_sight` — невидимий монстр проявляється на лінії; `+cond:in_range` — проявлення поруч; `+trigger:timer` — телепорт Чарівника, закриття дверей; `+trigger:counter`.
@@ -4895,6 +15611,55 @@
 - `+ui:radar` — мінікарта, що показує приховане (ширше за `minimap`).
 - `+window:attract-demo`; `+feature:mode-coop` — кооп і змагання в одній партії.
 - `+axis:opponent` — значення `coop+versus` (союзник, у якого можна стріляти): сьогодні вісь не дозволяє обидва.
+
+### Wizardry: Proving Grounds of the Mad Overlord · `games/roguelike/wizardry.md`
+
+- `+trigger:encounter` — почалась зустріч (випадкова або фіксована) з групою монстрів.
+- `+cond:alignment(a, x)` — світогляд героя; `+cond:coordinates_valid(cell)` — ціль телепорту не камінь.
+- `+effect:start_battle` (як у EO) · `+effect:return_to_town` (як у EO; Loktofeit) · `+effect:resurrect(a)` — оживити з імовірністю провалу · `+effect:level_drain(a)` — мінус рівень досвіду · `+effect:identify` (як у Rogue; Calfo/Latumapic).
+- `+role:party-member` (як у DM).
+- `+window:town-hub` · `+window:battle-screen` (як у EO) · `+window:character-create` · `+window:character-sheet` (як у DM).
+- `+ui:party-roster` — таблиця загону (клас, AC, HP, стан) · `+ui:monster-picture` — картинка ворога замість виду.
+- `+feature:scenario-export` — перенести загін у наступну гру серії · `+feature:corpse-recovery` — рятувальна експедиція.
+- `+card:coordinate-teleport` · `+card:class-change`.
+
+### Wolfenstein 3D · `games/maze-arcade/wolfenstein-3d.md`
+
+- `+trigger:use(tile)` — гравець натиснув Use на клітину попереду (Wolf3D, DOOM, Grimrock-кнопки).
+- `+trigger:noise(area)` — у зоні пролунав шум (постріл); `+effect:alert(a)` — ворог переходить у бойовий режим.
+- `+cond:connected(area_a, area_b)` — зони зʼєднані відчиненими дверима (вужче за ⏳ `connected` множини — може лягти в нього).
+- `+effect:open_door` — відчинити двері зі станом (open/closing); `+effect:push_wall(dir, n)` — зсунути стіну-таємницю.
+- `+ui:face-health` — портрет героя, що показує здоровʼя (Wolf3D, DOOM).
+- `+window:level-stats` — екран статистики рівня (ratios, час, par); `+window:episode-select` — вибір епізоду.
+- `+axis:view=first-person` — уже пропоновано в DM / 3D Monster Maze; тут підтвердження.
+
+### Word search (Пошук слів) · `games/word-number/word-search.md`
+
+- `+cond:straight_line8` — клітини лежать на одній прямій у одному з 8 напрямків (Word search, N-in-a-row).
+- `+cond:in_word_list` — рядок є в заданому списку пазла (не в словнику мови).
+- `+effect:strike_word` — викреслити слово в списку цілей.
+- `+ui:word-list-panel` — список слів з викресленими.
+- `+feature:no-word-list` — режим без списку як рівень складності.
+
+### Wordament · `games/word-number/wordament.md`
+
+- `+cond:at_word_start` / `+cond:at_word_end` — елемент стоїть першим / останнім у слові (префікс/суфікс-плитки).
+- `+cond:path_adjacent8` — шлях по 8-сусідах без повтору (Boggle, SpellTower, Strands, Wordament, Squaredle).
+- `+window:round-results` — результати раунду з місцем і словами поля.
+- `+ui:percentile-rank` — твій перцентиль серед усіх гравців.
+- `+ui:round-countdown` — зворотний відлік раунду, спільний для всіх.
+- `+feature:synced-global-rounds` — безперервні синхронні раунди для всіх.
+- `+feature:guest-mode` — гра гостя без впливу на статистику власника.
+- `+card:synced-global-rounds` — див. «Мапа на каталог».
+
+### Wordatro! · `games/word-number/wordatro.md`
+
+- `+effect:reroll` — замінити руку/пропозицію новою випадковою (Wordatro, Balatro, роглайт-магазини).
+- `+ui:reroll-counter` — скільки перекидань лишилось.
+- `+ui:target-score` — ціль рівня поруч із поточним рахунком.
+- `+ui:letter-hand` — рука плиток-літер поза полем.
+- `+feature:dictionary-language` — мова словника як параметр правил.
+- `+feature:stream-integration` — Twitch-чат впливає на гру.
 
 ### Wordle · `games/word-number/wordle.md`
 
@@ -4909,6 +15674,13 @@
 - `+feature:hard-mode` — опційне посилення правил; `+feature:share-result` — текстовий експорт результату без спойлера; `+feature:streaks`.
 - `+axis:session` — тут `daily`: одна задача на день для всіх, повтору нема.
 
+### World's Hardest 15-Puzzle · `games/thinky/worlds-hardest-15-puzzle.md`
+
+- `+effect:light` — увімкнути / вимкнути світіння сутності як видимий відгук (тут через `set_state(tile, lit)`).
+- `+feature:reshuffle` — рестарт генерує нову розкладку, а не повертає ту саму.
+- `+card:hidden-tile-identity`, `+card:lit-when-placed`, `+card:shuffle-by-random-moves` — див. вище.
+- ⏳-слова, вжиті тут: `input`, `edge`, `after`, `game_start`, `swap`, `set_state`, `clear_state`, `restart`, роль `tile`.
+
 ### Wrecking Crew · `games/grid-platformer/wrecking-crew.md`
 
 - `+effect:break(cell)` — руйнування обʼєкта молотом (відмінне від `disappear_b`: є лічильник ударів) — або `set_cell` + `+cond:hit_count` (повтор Solomon's Key).
@@ -4919,6 +15691,28 @@
 - `+window:editor-window`, `+window:mode-select` (1P/2P/Design).
 - `+feature:level-editor` — збереження на зовнішній носій (касета/дискета).
 - `+card:bomb-flood-destroy` — див. вище.
+
+### Wumpus world («Світ Вампуса») · `games/program-robots/wumpus-world.md`
+
+- `+effect:sense(percepts)` — видати агенту сприйняття (Stench, Breeze, Glitter, Bump, Scream).
+- `+trigger:step_done` — кінець дії агента (момент формування сприйняття).
+- `+feature:agent-api` — гра надає API для програми-агента замість людини.
+- `+feature:batch-trials` — серії світів і спроб з підсумковою статистикою.
+- `+ui:percept-panel` — панель поточних сприйнять.
+- `+ui:knowledge-overlay` — позначки знань агента на клітинах.
+- `+card:knowledge-base-inference` — картка логічного агента (база знань + виведення).
+
+### XCOM: Chimera Squad · `games/tactics/xcom-chimera-squad.md`
+
+- `+trigger:breach` (є як пропозиція з Tactical Breach Wizards) — старт прориву в енкаунтер.
+- `+trigger:timeline_turn(a)` — настав хід юніта A у спільній черзі (точніше за `turn_start` для чергування).
+- `+cond:breach_slot_free(point)` — у точці прориву є місце.
+- `+effect:delay_turn(a, n)` / `+effect:advance_turn(a, pos)` — зсунути юніта назад / на позицію в черзі.
+- `+effect:stabilize(a)` — зупинити таймер смерті; `+effect:subdue(a)` — вивести з бою без убивства.
+- `+ui:timeline-bar` — спільна черга з портретами; `+ui:breach-point-card` — картка точки входу; `+ui:reinforcement-alert` — значок майбутнього підкріплення в черзі.
+- `+window:breach-planner` — розстановка по точках прориву; `+window:city-map` — райони й неспокій; `+window:hq-screen` — штаб між місіями.
+- `+feature:mission-fail-on-death` — смерть персонажа = провал місії замість permadeath.
+- `+axis:turn-structure=alternating-unit` — спільна черга з чергуванням юнітів.
 
 ### XCOM: Enemy Unknown / XCOM 2 · `games/tactics/xcom.md`
 
@@ -4961,6 +15755,17 @@
 - `+ui:territory-percent` — частка захопленого / ціль (Qix, Xonix, Paper.io).
 - `+role:zone` — суша/море як зони з правилами руху для різних ворогів.
 
+### YINSH · `games/chess-abstract/yinsh.md`
+
+- `+effect:leave_marker` — сутність, рушаючи, лишає маркер у стартовій клітині.
+- `+effect:flip_jumped` — перевернути (змінити колір) усі перестрибнуті сутності.
+- `+effect:return_to_reserve` — повернути з поля в запас/пул (див. gipf.md).
+- `+cond:jump_landing` — ціль — перша порожня клітина за суцільним відрізком.
+- `+trigger:pool_empty` — спільний пул вичерпано (YINSH, ZÈRTZ).
+- `+ui:rings-removed-slots` — гнізда-прогрес до перемоги.
+- `+ui:row-choice-highlight`, `+window:row-choice` — вибір ряду (див. gipf.md).
+- `+card:flip-on-jump`, `+card:trail-marker`, `+card:self-handicap-on-score` — див. «Мапа на каталог».
+
 ### Yajilin (Яджилін, Arrow Ring) · `games/pencil-logic/yajilin.md`
 
 - `+cond:count_dir` — кількість сутностей виду в напрямку від клітинки до краю.
@@ -4970,11 +15775,61 @@
 - `+axis:markup-layers` — скільки взаємодіючих шарів розмітки (1: фарба · 2: фарба + лінія).
 - `+card:arrow-count-clue`, `+card:cell-coverage-check` — див. мапу.
 
+### Yajisan-Sokoban (Yajisoko) · `games/pencil-logic/yajisan-sokoban.md`
+
+- `+cond:count_dir` — кількість сутностей у напрямку від клітинки (повтор з Yajilin).
+- `+cond:crosses`, `+cond:turns` — лінія перетинає себе/іншу, лінія повертає (повтори з Icebarn).
+- `+cond:clue_covered` — на клітинці-підказці стоїть обʼєкт.
+- `+card:straight-move-line`, `+card:clue-void-when-covered` — див. мапу.
+
 ### Yin-Yang (Інь-Ян, Shiromaru-Kuromaru) · `games/pencil-logic/yin-yang.md`
 
 - `+trigger:pattern(checker2x2)` — значення для `pattern(shape)`: шахове вікно 2×2.
 - `+cond:border_color_changes` — скільки разів колір змінюється при обході краю поля.
 - `+card:two-color-connectivity`, `+card:perimeter-color-check` — див. мапу.
+
+### Yoohoo · `games/thinky/yoohoo.md`
+
+- `+card:gust-carry-over-pit`, `+card:gust-reverse-in-dead-end`, `+card:shout-action` — механік нема в каталозі.
+
+### Yoshi's Cookie · `games/falling-match/yoshis-cookie.md`
+
+- `+effect:shuffle` — перемішати сутності поля (PANIC); пропозиція вже є — підтверджую.
+- `+effect:mirror_control` — ввід жертви повторює ввід нападника (SLAVE), родич `mirror_input`, але між двома гравцями.
+- `+ui:type-gauges` — набір шкал за типом плиток.
+- `+ui:fuse-timer` — ґніт/шкала бездіяльності, що росте без успішних дій.
+- `+card:line-shift-wrap` · `+card:type-gauge-reward` · `+card:pushback-on-clear` — див. «Мапу».
+
+### ZZT · `games/maze-arcade/zzt.md`
+
+- `+trigger:message` — сутність отримала повідомлення (мітку) від іншої або від рушія (touch, shot, bombed, thud, energize).
+- `+trigger:aligned` — гравець на одній горизонталі/вертикалі з сутністю (ZZT `alligned`, тигр, ведмідь).
+- `+effect:send` — надіслати повідомлення іншій сутності; `+effect:goto_label` — перейти на мітку власної програми.
+- `+effect:eject` — виштовхнути сутність у сусідню вільну клітину (blink wall).
+- `+effect:duplicate` — копія сутності разом зі станом (дублікатор).
+- `+role:scripted` — сутність, поведінку якої задає програма автора (Object).
+- `+window:scroll-window` — модальне вікно тексту з гіперпосиланнями.
+- `+feature:world-editor` — редактор світу з мовою поведінки обʼєктів.
+- `+card:object-scripting`, `+card:message-passing-objects` — див. вище.
+
+### Zebra Puzzle (Einstein's Riddle, Загадка Ейнштейна) · `games/pencil-logic/zebra-puzzle.md`
+
+- `+cond:same_slot` — два значення в одній позиції.
+- `+cond:next_to` — позиції значень сусідні (у ряду позицій, не на полі).
+- `+cond:left_of` — позиція a ліворуч від b (одразу або будь-де — параметр).
+- `+effect:eliminate` — викреслити кандидата з клітинки/таблиці (сильніше за `mark`: зменшує множину кандидатів).
+- `+role:clue-card` — підказка як окрема сутність поза полем (список, піктограма).
+- `+card:attribute-grid`, `+card:relation-clues` — див. мапу.
+
+### Zendo · `games/hidden-deduction/zendo.md`
+
+- `+trigger:guess_rule` — гравець висунув гіпотезу про приховане правило.
+- `+effect:label` — оракул ставить прикладу позначку відповідності (white/black); `mark` близький, але це не розмітка клітини.
+- `+effect:counterexample` — побудувати приклад, де гіпотеза і правило розходяться.
+- `+cond:has_property` — набір сутностей має властивість за предикатом.
+- `+role:judge` — гравець-оракул, що знає правило і відповідає (Майстер).
+- `+ui:example-labels` — позначки «так/ні» на прикладах.
+- `+window:rule-guess` / `+window:rule-pick` — конструктор гіпотези / вибір правила.
 
 ### Zenji · `games/connect-rotate/zenji.md`
 
@@ -4984,6 +15839,108 @@
 - `+effect:rotate` ⏳ · `+effect:paint` ⏳ — фарбування підключених.
 - `+ui:lit-tiles` (з Infinity Loop) · `timer-countdown` ⏳.
 - `+axis:control` — `direct` (рух) + дія на місці: аватар як «рука», що мусить дійти до плитки.
+
+### Zombicide · `games/tactics/zombicide.md`
+
+- `+trigger:noise(zone)` — у зоні зʼявився шум (для реакцій ворогів).
+- `+cond:noisiest(zone)` — зона з найбільшим шумом; `+cond:danger_level(op, color)` — рівень небезпеки; `+cond:damage_at_least(n)` — шкода зброї ≥ порогу цілі.
+- `+effect:make_noise(zone)` — покласти жетон шуму; `+effect:extra_activation(kind)` — тип ворогів діє ще раз; `+effect:split_group(group)` — поділ групи порівну; `+effect:draw_card` — витягнути карту (спавн, спорядження).
+- `+role:survivor` — фігура гравця з рюкзаком і рівнем небезпеки; `+role:spawn_zone` — зона, куди приходять вороги за картою.
+- `+ui:danger-track` — шкала XP із кольорами; `+ui:noise-token` — жетон на зоні; `+ui:action-pips` — лишок дій.
+- вікна вибору місії й вцілілих — наявні `level-select` і `character-select`.
+- `+feature:setting-crossover` — змішування наборів у межах сетингу (без змішування між сетингами).
+- `+axis:field=zones` — граф зон як окреме значення осі.
+- `+card:noise-attraction`, `+card:danger-level-spawn`.
+
+### Zoo Keeper · `games/falling-match/zoo-keeper.md`
+
+- `+effect:reshuffle` — перемішати/скинути поле (повтор із Bejeweled, PQ).
+- `+effect:revert_swap` — повернути свап без збігу (повтор із Bejeweled).
+- `+effect:clear_color` — прибрати всі плитки виду (повтор із Bejeweled).
+- `+cond:cycling(tile)` — плитка в стані циклу значень (Special Panel).
+- `+ui:quota-strip` — ряд іконок типів із лічильниками квот.
+- `+ui:favorite-animal` — «улюблений» тип з бонусом очок.
+- `+feature:mode-tokoton` — режим «квота одного виду, решта не скидається».
+- `+feature:curator-quests` — стадії з челенджами від NPC.
+
+### Zoop · `games/falling-match/zoop.md`
+
+- `+effect:shoot` — постріл уздовж лінії з першою ціллю (є в інших файлах як пропозиція — підтверджую).
+- `+cond:frontmost` — сутність найближча до гравця/центру у своїй смузі (підтверджую).
+- `+card:shoot-swap-color` · `+card:lane-push-advance` — див. «Мапу».
+- `+ui:quota-meter` — лічильник «скільки ще до наступного рівня» (родич `remaining-counter`, але для квоти рівня).
+
+### Zuma / Puzz Loop · `games/falling-match/zuma.md`
+
+- `+effect:insert` — вставити сутність у послідовність/ланцюг між сусідами (зсуваючи решту).
+- `+effect:retract` — сегмент ланцюга відкочується назад до іншого (магніт за кольором).
+- `+trigger:gap_closed` — два сегменти ланцюга знову зʼєднались (точка перевірки каскаду).
+- `+ui:ammo-pair` — поточний і запасний снаряд на стрільці з перемиканням.
+
+### ZÈRTZ · `games/chess-abstract/zertz.md`
+
+- `+effect:remove_cell` — клітина зникає з поля назавжди (ZÈRTZ; у словнику є `set_cell`, але тут — зміна топології).
+- `+effect:claim_island` — забрати відрізану групу клітин разом із вмістом.
+- `+cond:free_edge_cell` — клітина порожня, на краю й знімається без зсуву інших.
+- `+cond:can_capture` — у фігури є доступне взяття (Lasca, ZÈRTZ).
+- `+effect:jump_capture` — стрибок через сусідню з її взяттям (шашки, Lasca, ZÈRTZ).
+- `+trigger:pool_empty` — спільний пул вичерпано (див. yinsh.md).
+- `+ui:captured-by-color` — взяті по кольорах проти квот; `+ui:free-ring-highlight` — підсвітка клітин, які можна зняти.
+- `+window:board-size-select` — вибір розміру/форми поля перед партією.
+- `+card:shrinking-board`, `+card:island-capture`, `+card:color-set-win`, `+card:shared-pool` — див. «Мапа на каталог».
+
+### elephant-in-a-bottle · `games/thinky/elephant-in-a-bottle.md`
+
+- `+cond:axis(a, h|v)` — сутність належить до горизонтальної/вертикальної осі (вибір акторів вводом).
+- `+effect:move_group` — рух звʼязної групи цілком (вже пропонувалося іншими іграми).
+- `+axis:control=axis-split` — новий режим осі `control`: напрям вводу вибирає підмножину акторів.
+- Карткові — див. «Мапа на каталог».
+
+### endless mines · `games/hidden-deduction/endless-mines.md`
+
+- `+trigger:row_solved` — рядок розвʼязано за правилами пазла (не те саме, що `pattern(row_full)`).
+- `+effect:lock_row` — позначити рядок як незнищенний.
+- `+feature:one-button-mode` — гра одним вводом (тег доступності itch).
+
+### hexceed · `games/hidden-deduction/hexceed.md`
+
+- `+cond:in_direction` — клітина лежить на промені від підказки в заданому напрямку (до стіни/краю).
+- `+feature:dlc-level-packs` — додаткові набори рівнів поза базовою грою.
+
+### increpare: Scalesoban і Explodoban · `games/thinky/increpare-sokoban-variants.md`
+
+- `+card:counter-move-all`, `+card:push-only-by-blast` — механік нема в каталозі.
+
+### increpare: мікро-Sokoban-и (Crates move when you move · Pushy-V Pully-H · Muraphilic Monophobic Multiban) · `games/thinky/increpare-micro-puzzles.md`
+
+- `+cond:line_length(dir, op, n)` — довжина суцільного ряду обʼєктів у напрямку (Multiban: ≥2).
+- `+effect:slide_all(kind, dir)` — усі сутності виду ковзають у напрямку до упору (Crates; tilt-ігри).
+- `+card:move-all-with-player`, `+card:axis-dependent-push-pull`, `+card:push-needs-two`, `+card:pushable-walls` — механік нема в каталозі.
+
+### mine1k · `games/hidden-deduction/mine1k.md`
+
+- `+feature:size-budget` — обмеження розміру коду/картриджа як частина задуму (джеми 1K, 4K).
+
+### puzz.link (pzprjs / pzprv3) · `games/pencil-logic/puzz-link.md`
+
+- `+window:genre-list` — каталог жанрів платформи з групами й сортуванням (list.html), окремо від `puzzle-select`.
+- `+window:game-id-dialog` (повтор з Tatham) — ввід/вивід URL пазла.
+- `+window:network-popup` — старт і запрошення в кооп-сесію.
+- `+ui:input-mode-panel` — явний вибір інструмента вводу; `+ui:trial-marker` — позначка пробних ходів; `+ui:play-edit-toggle` — перемикач редактор/гра на тому самому екрані.
+- `+feature:trial-mode`, `+feature:fail-code-check`, `+feature:board-transform`, `+feature:image-export`, `+feature:auto-check-levels` (off / guarded / simple), `+feature:solve-tracking`.
+- `+cond:checklist_pass` — усі функції перевірки жанру пройшли (узагальнення `all_constraints_met` з порядком і кодами).
+- `+card:fail-code-checklist`, `+card:url-puzzle-encoding`, `+card:trial-mode` — див. мапу.
+
+### shapez · `games/build-sim/shapez.md`
+
+- `+effect:paint_item(item, color)` — фарбування предмета (не клітини: `paint` у словнику — для клітин).
+- `+effect:cut(item, parts)` — розрізати предмет на частини з виходами (різак, quad-різак).
+- `+trigger:delivered(item, sink)` — предмет здано приймачу (HUB, вихідний порт у Big Pharma).
+- `+cond:truthy(signal)` — сигнал дроту не 0/порожній (quad-фарбувальник, транзистор).
+- `+window:markers-window` — список маркерів-закладок на карті.
+- `+ui:pinned-goals` — закріплені на екрані форми з лічильником; `+ui:building-toolbar` — тулбар будівель з варіантами; `+ui:layer-toggle` — перемикач шарів поля.
+- `+feature:puzzle-share` — публікація пазла з рецензуванням (Review & Publish, Report).
+- `+card:…` — див. «Мапа на каталог».
 
 ### Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode) · `games/program-robots/bot-arenas.md`
 
@@ -4995,6 +15952,65 @@
 - `+ui:debug-overlay` — малювання з коду бота поверх реплею · `+ui:frame-scrubber` — повзунок кадрів.
 - `+feature:bot-upload` · `+feature:local-referee` · `+feature:league-promotion`.
 - `+axis:control` — `programmed`; `+axis:actors` — `single` (Tron) / `swarm` (Ants, Halite); `+axis:turn-structure` 🔥 — `simultaneous` (Ants, Halite, Tron) vs `sequential` (UTTT, OoC).
+
+### Великі шогі — Chu shogi і Tenjiku shogi (Чу-шогі, Тендзіку-шогі) · `games/chess-abstract/large-shogi-variants.md`
+
+- `+effect:capture_in_place` — зняти сусідню фігуру, лишившись на місці (igui: лев, тетрарх).
+- `+effect:second_step` — продовжити той самий хід ще одним кроком (лев, сокіл, орел).
+- `+effect:burn_adjacent` — зняти всіх сусідів заданої сторони (вогняний демон).
+- `+cond:stronger` — ранг фігури вищий (див. arimaa.md; тут — генерали-стрибуни, у [jungle](jungle.md) — тварини).
+- `+cond:protected` — фігуру суперник може відбити наступним ходом (захищений лев; не плутати з `+cond:guarded` з arimaa.md — сусід-союзник).
+- `+cond:in_zone`, `+effect:choose_promotion` — підтверджую (shogi.md).
+- `+ui:move-diagram` — діаграма ходу фігури під курсором (великі шогі, Betza-довідка).
+- `+ui:step-marker` — маркер проміжної клітини багатокрокового ходу.
+- `+card:multi-step-move`, `+card:capture-in-place`, `+card:lion-trading-rule`, `+card:royal-plurality`, `+card:bare-king-win`, `+card:range-jump-capture`, `+card:burn-aura`, `+card:pass-by-shuffle` — див. «Мапа на каталог».
+
+### Елементарні клітинні автомати (Rule 110, Rule 30, Rule 90) · `games/build-sim/elementary-cellular-automata.md`
+
+- `+cond:neighborhood_is` — конфігурація сусідства дорівнює шаблону (рядок таблиці правила); `adjacent_count` тут не підходить, бо важить порядок сусідів.
+- `+ui:rule-input` — поле номера/рядка правила.
+- `+ui:rule-table-preview` — 8 картинок трійок з бітами під ними.
+- `+ui:generation-counter` — номер покоління.
+- `+card:rule-number-bits`, `+card:spacetime-diagram`, `+card:rule-equivalence` — див. «Мапа на каталог».
+
+### Національні варіанти шашок · `games/chess-abstract/checkers-variants.md`
+
+- `+cond:can_capture`, `+cond:max_capture`, `+effect:jump_capture` — ще голоси за слова з checkers.md (ядро всіх варіантів).
+- `+trigger:missed_capture` — гравець закінчив хід без обовʼязкового взяття.
+- `+effect:forfeit` — сутність знімається як штраф (фук).
+- `+cond:capture_value` — серія має максимальну вартість збитого (вага за типом фігури).
+- `+cond:streak` — та сама фігура / дія повторилась N разів поспіль.
+- `+effect:move_line` — зсув групи сутностей у лінії однією дією.
+- `+card:huffing`, `+card:capture-priority`, `+card:king-move-limit`, `+card:phalanx-move`, `+card:stop-behind-king` — див. «Мапа на каталог».
+
+### Сучасні mazing-TD (Electromaze, Tower Maze Defense, Thornline TD, Maul Tactics, Back to the Roots 2) · `games/tower-lanes/mazing-td-modern.md`
+
+- `+trigger:path_changed`, `+effect:recompute_path`, `+effect:sell`, `+effect:upgrade`, `+effect:income` — підтвердження з родичів (DTD, Fieldrunners, Legion TD).
+- `+effect:steal` — ворог забирає ресурс гравця на ходу (Wrecker).
+- `+cond:not_hit_for(a, n)` — сутність не отримувала шкоди N тіків (Ghoul).
+- `+role:waypoint` — обовʼязкова точка маршруту ворога (Electromaze; як у Element TD 2).
+- `+feature:world-rules` — світ/розділ міняє одне правило гри для всіх рівнів.
+- `+feature:star-upgrades` — зірки за рівні купують постійні апгрейди (Thornline).
+- `+ui:range-circle` — підтвердження.
+
+### Шахи без країв — циліндричні (Cylinder) і кругові (Circular / Byzantine) · `games/chess-abstract/wraparound-chess.md`
+
+- `+cond:returns_to_start(p)` — хід повертає фігуру у вихідну клітину (нуль-хід).
+- `+cond:crosses_seam(move)` — хід перетинає склеєний край (правила рокіровки й підсвітки на циліндрі).
+- `+effect:remove_blocked_pawns` — зняти пару своїх пішаків-зустрічних (історичний Circular), без витрати ходу.
+- `+trigger:check` — підтверджую (snaffling: шах проігноровано → короля можна взяти).
+- `+ui:seam-marker` — лінія склейки на плоскій дошці; `+ui:polar-board` — дошка-кільце.
+- `+axis:field-wrap` — `none` · `cylinder-x` · `cylinder-y` · `torus` · `ring` (зараз `wrap` — лише булеве поле `Part kind=field`).
+- `+card:null-move-ban` · `+card:ring-board` · `+card:bare-king-loss` · `+card:citadel-draw` · `+card:polar-render` — див. «Мапа на каталог».
+
+### Шахи з серіями ходів (Marseillais, Progressive) · `games/chess-abstract/multi-move-chess.md`
+
+- `+cond:series_last` — поточний одиничний хід останній у серії (Italian; також Arimaa-кроки).
+- `+cond:moved_this_turn(p)` — фігура вже ходила в цій серії (English; відмінне від `+cond:moved` з chess.md — «ходила за партію»).
+- `+trigger:series_end(side)` — серія сторони завершилась (за лічильником або обривом).
+- `+ui:series-counter` — «хід k з N» у серії.
+- `+axis:turn-structure:multi-move` — нове значення осі `turn-structure`: серія з кількох одиничних ходів.
+- `+card:multi-move-turn` · `+card:check-ends-series` · `+card:one-move-per-piece` — див. «Мапа на каталог».
 
 ### Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage) · `games/chess-abstract/chess-rule-twists.md`
 
