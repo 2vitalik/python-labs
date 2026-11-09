@@ -7,7 +7,7 @@ import GameEditor from '../components/GameEditor.vue'
 import GameHead from '../components/GameHead.vue'
 import MyGameForm from '../components/MyGameForm.vue'
 import { loadCatalog } from '../catalog.js'
-import { loadMyGame, myClaims, myGame, myParts, myRules, reloadInsides } from '../myGame.js'
+import { loadMyGame, myClaims, myGame, myParts, myRules, myTasks, reloadInsides } from '../myGame.js'
 import { useForm } from '@core/form.js'
 import { user } from '@core/user.js'
 
@@ -39,6 +39,6 @@ onMounted(async () => {
     </GameHead>
     <p v-if="!myGame" class="text-secondary">Обери основу з каталогу або опиши свою, дай назву — і гра твоя. Далі опишеш поле, сутності, правила, вікна й заявиш картки каталогу.</p>
     <MyGameForm v-model="form" :dirty :saved :error :fresh="!myGame" @save="submit" />
-    <GameEditor v-if="myGame" :game="myGame" :parts="myParts" :claims="myClaims" :rules="myRules" :tasks="{}" editable :nick @changed="reloadInsides" />
+    <GameEditor v-if="myGame" :game="myGame" :parts="myParts" :claims="myClaims" :rules="myRules" :tasks="myTasks" editable :nick @changed="reloadInsides" />
   </div>
 </template>

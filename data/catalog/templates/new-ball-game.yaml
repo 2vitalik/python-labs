@@ -26,6 +26,7 @@ entities:
   - title: Щит ↗
     role: object
     description: "Діагональ ↗ ↙: ставиться курсором на порожню клітину, повертає мʼячик на 90°"
+    claims: [mirror-reflect]
   - title: Щит ↘
     role: object
     description: "Діагональ ↘ ↖: так само, але повертає в дзеркальний бік"
@@ -72,4 +73,3 @@ windows:
       - {title: В меню, window: Головне меню}
 claims:
   - collect-all
-  - mirror-reflect

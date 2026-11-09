@@ -20,7 +20,7 @@ entities:
     role: ally
     description: "Стріляє горошиною вперед по своєму ряду, коли там є зомбі"
     stats: [{key: cost, label: ціна, value: "100", unit: сонць}, {key: hp, value: "6"}, {key: cooldown, value: "14"}]
-    claims: [shoot-forward, {slug: shoot-cooldown, params: {cooldown: 14}}, {slug: tower-range, params: {shape: line}}]
+    claims: [tower-placement, shoot-forward, {slug: shoot-cooldown, params: {cooldown: 14}}, {slug: tower-range, params: {shape: line}}]
   - title: Горіх
     role: ally
     description: "Стіна з великим HP: зомбі довго його гризуть, поки стрільці бʼють"
@@ -121,4 +121,4 @@ windows:
     items:
       - {title: Ще раз, window: Гра}
       - {title: Головне меню, window: Головне меню}
-claims: [tower-placement, round-currency, {slug: enemy-waves, params: {waves: 5, final_wave: true}}, enemy-reached-base]
+claims: [round-currency, {slug: enemy-waves, params: {waves: 5, final_wave: true}}, enemy-reached-base]

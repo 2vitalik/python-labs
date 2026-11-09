@@ -2,7 +2,6 @@
 import { computed, reactive, ref, watch } from 'vue'
 
 import { deletePart, postPart, putPart } from '../api.js'
-import { taskIndex } from '../catalog.js'
 
 // the menu of a window, edited in place: a row per item — title and where it leads (another window, a card, nothing);
 // the menu is a Part of its own (kind=menu) hosted on this window, created on the first save
@@ -13,7 +12,7 @@ const error = ref('')
 const form = reactive({ items: [] })
 const items = computed(() => props.menu?.items || [])
 const target = (it) => (it.window ? `→ ${props.windows.find((w) => w.id === it.window)?.title || '?'}` : it.task ? `→ ${props.info(it.task)?.title || it.task}` : '')
-const taskTitle = (slug) => taskIndex.value[slug]?.title
+const taskTitle = (slug) => props.info(slug)?.title
 watch(edit, (on) => on && (form.items = items.value.length ? items.value.map((it) => ({ ...it, to: it.window ? `w:${it.window}` : it.task ? 't' : '' })) : [blank()]))
 const blank = () => ({ title: '', window: '', task: '', note: '', to: '' })
 

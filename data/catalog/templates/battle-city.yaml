@@ -31,6 +31,7 @@ entities:
   - title: Сталева стіна
     role: static
     description: "Непрохідна й невразлива; руйнує її лише куля танка з трьома зірками"
+    claims: [impassable-cells]
   - title: База
     role: object
     description: "Орел-штаб унизу посередині, обнесений цеглою; одне влучання будь-чиєї кулі — поразка"
@@ -131,7 +132,6 @@ windows:
     items:
       - {title: На титул, window: Головне меню}
 claims:
-  - impassable-cells
   - {slug: player-death, params: {lives: 3}}
   - enemy-reached-base
   - destroy-all-enemies

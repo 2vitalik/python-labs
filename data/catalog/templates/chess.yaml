@@ -33,12 +33,13 @@ entities:
     description: "Ходить буквою Г (2 + 1) і єдиний перестрибує через фігури"
     stats: [{key: count, value: "2"}, {key: value, label: цінність, value: "3"}]
     states: [вибрана]
+    claims: [piece-move-patterns]
   - title: Пішак
     role: piece
     description: "Іде на 1 вперед (з початкового ряду — на 2), бʼє по діагоналі вперед; на останньому ряду перетворюється"
     stats: [{key: count, value: "8"}, {key: value, label: цінність, value: "1"}]
     states: [вибрана, щойно на 2]
-    claims: [pawn-promotion]
+    claims: [pawn-promotion, piece-capture]
   - title: Клітина
     role: terrain
     description: "Поле дошки a1–h8, світле або темне; на клітині не більше однієї фігури"
@@ -133,4 +134,4 @@ windows:
     items:
       - {title: Реванш, window: Гра}
       - {title: Головне меню, window: Головне меню}
-claims: [piece-move-patterns, piece-capture, checkmate, hot-seat, turn-enforcement]
+claims: [checkmate, hot-seat, turn-enforcement]

@@ -12,26 +12,30 @@ vocab = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(vocab)
 
 
-def catalog() -> tuple[set, set]:
+def catalog() -> tuple[set, set, set]:
     tree = yaml.safe_load((ROOT / "data/catalog/tasks.yaml").read_text())
-    slugs, windows = set(), set()
+    slugs, windows, anchored = set(), set(), set()
 
-    def take(slug, node):
+    def take(slug, node, home):
         slugs.add(slug)
         if (isinstance(node, str) and "#window" in node) or (isinstance(node, dict) and "window" in node.get("tags", [])):
             windows.add(slug)
+        if home:
+            anchored.add(slug)
 
-    for subs in tree.values():
-        for items in subs.values():
+    for zone, subs in tree.items():
+        for sub, items in subs.items():
+            # such a card lives on an entity or a window, not on the game — anchorKind() in app/vue/src/myGame.js
+            home = zone == "entities" or (zone == "interface" and sub in ("hud", "settings", "menus"))
             for item in items:
                 slug = next(k for k in item if k != "children")
-                take(slug, item[slug])
+                take(slug, item[slug], home)
                 for ch in item.get("children") or []:
-                    take(*next(iter(ch.items())))
-    return slugs, windows
+                    take(*next(iter(ch.items())), home)
+    return slugs, windows, anchored
 
 
-SLUGS, WINDOWS = catalog()
+SLUGS, WINDOWS, ANCHORED = catalog()
 
 
 def check_word(dic, item, names, sides, where, problems):
@@ -64,6 +68,8 @@ def check_claim(x, where, problems):
     slug = x if isinstance(x, str) else x.get("slug")
     if slug not in SLUGS:
         problems.append(f"{where}: картки «{slug}» нема в каталозі")
+    elif where == "claims" and slug in ANCHORED:
+        problems.append(f"claims: «{slug}» — картка сутності чи вікна: на рівні гри ляже студентові в «📥 Чернетки»")
 
 
 def validate(path: Path) -> list[str]:

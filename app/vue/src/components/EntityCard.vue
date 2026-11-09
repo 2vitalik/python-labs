@@ -78,7 +78,7 @@ const addClaim = (task, params) => run(() => postClaim({ task, part: props.part.
         <div v-if="part.description" class="text-secondary small">{{ part.description }}</div>
         <div v-if="part.stats.length || part.states.length" class="d-flex flex-wrap gap-1 small">
           <span v-for="s in part.stats" :key="s.key" class="badge rounded-pill fw-normal stat" :title="s.key">{{ statIcon(s) }} {{ s.label || s.key }} {{ s.value }}<span v-if="s.unit" class="opacity-75"> {{ s.unit }}</span></span>
-          <span v-if="part.states.length" class="badge rounded-pill fw-normal state" title="стани">🔁 {{ part.states.join(' · ') }}</span>
+          <span v-if="part.states.length" class="badge fw-normal state" title="стани">🔁 {{ part.states.join(' · ') }}</span>
         </div>
         <ShotStrip v-if="editable || part.screenshots.length" :part :editable @changed="emit('changed')" />
         <div v-if="claims.length" class="d-flex flex-wrap gap-1 align-items-start">
@@ -100,6 +100,8 @@ const addClaim = (task, params) => run(() => postClaim({ task, part: props.part.
 .act:hover { opacity: 1; }
 .stat { background: var(--bs-tertiary-bg); color: var(--bs-body-color); border: 1px solid var(--bs-border-color); }
 .state { background: color-mix(in srgb, var(--bs-info) 14%, var(--bs-body-bg)); color: var(--bs-body-color); border: 1px solid var(--bs-info-border-subtle); }
+/* a dozen states do not fit one line: the badge wraps; on a single line it stays as tall and round as the pills beside it */
+.state { white-space: normal; text-align: start; line-height: 1.3; padding-block: .2em; border-radius: .75rem; }
 .rules li { padding: .1rem 0; }
 .rules li:hover { color: var(--bs-body-color) !important; }
 </style>

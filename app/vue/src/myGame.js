@@ -8,6 +8,7 @@ export const myGame = ref(undefined)  // undefined = not loaded yet · null = no
 export const myParts = ref([])
 export const myClaims = ref([])
 export const myRules = ref([])
+export const myTasks = ref({})  // the cards the game names, drafts too — the catalog gives a student only the active ones
 export const claimedSlugs = computed(() => new Set(myClaims.value.map((c) => c.task)))
 
 export async function loadMyGame(force = false) {
@@ -24,6 +25,7 @@ export async function reloadInsides() {
   myParts.value = full.parts
   myClaims.value = full.claims
   myRules.value = full.rules
+  myTasks.value = full.tasks
 }
 
 // where a card wants to live: on an entity, on a window, or with the game itself

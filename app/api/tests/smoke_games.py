@@ -266,7 +266,8 @@ with TestClient(main.app) as c:
     check("templates listed", len(tpls) >= 1 and all("rules" in t for t in tpls.values()), list(tpls))
     check("template for a base without one → 404", c.post("/api/my/game/template", json={"slug": "no-such"}).status_code == 404)
     for slug, summary in tpls.items():
-        login(c, f"tpl-{slug.replace('.', '-')}@nure.ua", "student")
+        nick = f"tpl-{slug.replace('.', '-')}"
+        login(c, f"{nick}@nure.ua", "student")
         r = c.post("/api/my/game", json={"title": f"Еталон {slug}", "base_game": slug})
         if r.status_code != 200:
             r = c.post("/api/my/game", json={"title": f"Еталон {slug}", "base_custom": slug})
@@ -276,6 +277,9 @@ with TestClient(main.app) as c:
         check(f"template {slug}: applied fully", ok, r.text[:400])
         r2 = c.post("/api/my/game/template", json={"slug": slug})
         check(f"template {slug}: second apply adds nothing", r2.status_code == 200 and not any(r2.json()["added"].values()), r2.text[:200])
+        full = c.get(f"/api/students/{nick}/game").json()
+        loose = [x["task"] for x in full["claims"] if not x["part"] and full["tasks"][x["task"]]["zone"] == "entities"]
+        check(f"template {slug}: no entity card at the game level (the student would find it in drafts)", not loose, loose)
         if not ok:
             break
 
