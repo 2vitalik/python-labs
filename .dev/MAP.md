@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T265** · тікетів: 264 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T267** · тікетів: 266 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -272,3 +272,5 @@
 | games | [T262](games/.t/T262-Q--game-desc-v2-choices.md) | ❓ | game-desc-v2-choices | Опис гри v2: вибори після нічної сесії | 🔴 ⬜ |
 | reports | [T263](reports/.t/T263-C--evidence-github-ai.md) | 🔆 | evidence-github-ai | Докази заявок: GitHub-лінки, ШІ-допомога, перевірка викладачем — що радить агент | 🟢 🟩 |
 | games | [T264](games/.t/T264-Q--ludopedia-wave2-choices.md) | ❓ | ludopedia-wave2-choices | Лудопедія: вибори після хвилі 2 (корпус 956, база, сайт) | 🔴 ⬜ |
+| games | [T265](games/.t/T265--ludopedia-wave3/plan.md) | ⚙️ | ludopedia-wave3 | Лудопедія: хвиля 3 — нові кандидати й описи — план | 🟢 🟩 |
+| games | [T266](games/.t/T266-Q--ludopedia-wave3-choices.md) | ❓ | ludopedia-wave3-choices | Лудопедія: вибори після хвилі 3 — залишок черг, ліміт Opus, конвеєр | 🔴 ⬜ |
