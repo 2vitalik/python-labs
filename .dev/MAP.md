@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T267** · тікетів: 266 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T270** · тікетів: 269 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -274,3 +274,6 @@
 | games | [T264](games/.t/T264-Q--ludopedia-wave2-choices.md) | ❓ | ludopedia-wave2-choices | Лудопедія: вибори після хвилі 2 (корпус 956, база, сайт) | 🔴 ⬜ |
 | games | [T265](games/.t/T265--ludopedia-wave3/plan.md) | ⚙️ | ludopedia-wave3 | Лудопедія: хвиля 3 — нові кандидати й описи — план | 🟢 🟩 |
 | games | [T266](games/.t/T266-Q--ludopedia-wave3-choices.md) | ❓ | ludopedia-wave3-choices | Лудопедія: вибори після хвилі 3 — залишок черг, ліміт Opus, конвеєр | 🔴 ⬜ |
+| platform | [T267](platform/.t/T267--demo-students/plan.md) | ⚙️ | demo-students | Демо-студенти: описані ігри в дев-базі — план | 🟢 ⬜ |
+| platform | [T268](platform/.t/T268-Q--demo-findings.md) | ❓ | demo-findings | Знахідки з демо-ігор: чернетки-slug-и, стани, еталон | 🔴 ⬜ |
+| platform | [T269](platform/.t/T269--demo-findings-fix/plan.md) | ⚙️ | demo-findings-fix | Знахідки з демо-ігор полагоджено: назви чернеток, стани, еталони — план | 🟢 ⬜ |
