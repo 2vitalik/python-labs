@@ -1,0 +1,111 @@
+# Sokoban (1982, Thinking Rabbit) у вигляді типового сучасного плеєра: undo, лічильники, колекції .xsb.
+field:
+  size: "до 20×20"
+  topology: square
+  view: top-down
+  gravity: none
+  time: turn
+  control: direct
+  layers: [підлога, обʼєкти]
+entities:
+  - title: Комірник
+    role: player
+    description: "Ходить у 4 напрямки; штовхає ящик перед собою; тягнути не може. У .xsb — «@», на цілі — «+»"
+    claims: [move-4dir, push-object]
+  - title: Ящик
+    role: object
+    description: "Зсувається на 1 у бік поштовху, якщо за ним вільно; лише по одному. У .xsb — «$», на цілі — «*»"
+    states: [на підлозі, на цілі]
+  - title: Ціль
+    role: zone
+    description: "Мітка на підлозі «.»: ні на що не впливає, крім перемоги; цілей стільки ж, скільки ящиків"
+  - title: Підлога
+    role: terrain
+    description: "Прохідна для комірника й ящиків"
+  - title: Стіна
+    role: static
+    description: "«#»: непрохідна для всіх; обносить склад"
+    claims: [impassable-cells]
+rules:
+  - when: {kind: input, action: стрілка, a: Комірник}
+    cond: [{kind: free, cell: ahead}]
+    then: [{kind: move, a: "@a", dir: forward}, {kind: counter, name: ходи, n: 1}]
+  - when: {kind: contact, a: Комірник, b: Стіна}
+    then: [{kind: block}]
+    note: "хід не зараховується"
+  - when: {kind: contact, a: Комірник, b: Ящик}
+    cond: [{kind: free, cell: ahead}]
+    then: [{kind: push, a: "@b"}, {kind: move, a: "@a", dir: forward}, {kind: counter, name: ходи, n: 1}, {kind: counter, name: поштовхи, n: 1}]
+    note: "вільна клітина за ящиком — підлога або ціль"
+  - when: {kind: contact, a: Комірник, b: Ящик}
+    cond: [{kind: free, cell: ahead, not: true}]
+    then: [{kind: block}]
+    note: "за ящиком стіна або інший ящик: ланцюга нема"
+  - when: {kind: enter, a: Ящик, b: Ціль}
+    then: [{kind: set_state, a: "@a", s: на цілі}]
+  - when: {kind: leave, a: Ящик, b: Ціль}
+    then: [{kind: set_state, a: "@a", s: на підлозі}]
+    note: "з цілі ящик можна зіштовхнути далі"
+  - when: {kind: all_on, a: Ящик, b: Ціль}
+    then: [{kind: win}, {kind: window, window: Рівень розвʼязано}]
+  - when: {kind: constraint_broken, text: "ящик у глухому куті"}
+    then: [{kind: message, text: "Глухий кут — зроби undo або рестарт"}]
+    note: "поразки в класиці нема; види — dead square, freeze, corral, bipartite"
+  - when: {kind: input, action: "Z / Backspace — undo"}
+    then: [{kind: custom, text: "скасувати останній хід; якщо це був поштовх — ящик повертається"}]
+    note: "без ліміту; redo — повернути скасоване"
+  - when: {kind: input, action: "R — рестарт"}
+    then: [{kind: restart}]
+  - when: {kind: input, action: "клік по клітині", a: Комірник}
+    cond: [{kind: path_exists, a: Комірник, b: Підлога}]
+    then: [{kind: move, a: "@a", dir: toward}]
+    note: "комірник іде найкоротшим шляхом без поштовхів (BFS)"
+windows:
+  - title: Головне меню
+    task: main-menu
+    items:
+      - {title: Грати, window: Вибір рівня}
+      - {title: "Колекції / імпорт .xsb", task: import-open-formats}
+      - {title: Редактор, window: Редактор рівнів}
+      - {title: Налаштування, window: Налаштування}
+  - title: Вибір рівня
+    task: level-select
+    description: "Колекція (Original 50, Microban 155…) з позначкою «розвʼязано» і найкращими ходами/поштовхами"
+    claims: [level-bank]
+    items:
+      - {title: Грати рівень, window: Склад}
+      - {title: Назад, window: Головне меню}
+  - title: Склад
+    task: game-screen
+    description: "Поле; HUD — назва рівня й колекції, ходи, поштовхи, ящиків на цілях; кнопки undo і рестарт"
+    claims: [move-counter, goal-counter, cell-click]
+    items:
+      - {title: Undo, task: undo-unlimited}
+      - {title: Рестарт, task: restart-level}
+      - {title: До списку, window: Вибір рівня}
+  - title: Рівень розвʼязано
+    task: end-screen
+    description: "Ходи й поштовхи, порівняння з рекордом"
+    items:
+      - {title: Наступний рівень, window: Склад}
+      - {title: До списку, window: Вибір рівня}
+  - title: Редактор рівнів
+    task: editor-window
+    description: "Палітра «# @ $ .», перевірка «ящиків = цілей», плейтест, копіювання рівня як .xsb"
+    claims: [editor-palette]
+    items:
+      - {title: Плейтест, window: Склад}
+  - title: Налаштування
+    task: settings-window
+    description: "Скін, швидкість анімації, звук"
+    claims: [theme-select]
+    items:
+      - {title: Звук, task: volume-control}
+      - {title: Анімація кроку, task: movement-animation}
+claims:
+  - all-on-targets
+  - undo-unlimited
+  - restart-level
+  - deadlock-detection
+  - level-from-txt
+  - import-open-formats

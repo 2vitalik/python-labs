@@ -1,0 +1,131 @@
+field:
+  size: "14×13: старт, дорога, розділювач, річка, берег (?)"
+  topology: square
+  view: top-down
+  gravity: none
+  time: realtime
+  control: direct
+  layers: [смуга, обʼєкти смуги, жабка]
+entities:
+  - title: Жабка
+    role: player
+    description: "Стрибає на одну клітину за натискання; стартує внизу на тротуарі"
+    stats: [{key: lives, value: "3"}, {key: duration, label: "час на спробу", value: "30", unit: "с"}]
+    claims: [move-4dir]
+  - title: Машина
+    role: enemy
+    description: "Машини, вантажівки, бульдозери, баггі; їдуть смугою, виїжджають з краю й заїжджають з іншого"
+    stats: [{key: speed, value: "своя для смуги"}]
+    claims: [touch-death, row-conveyor]
+  - title: Колода
+    role: terrain
+    description: "Пливе річковою смугою й везе жабку, що на ній стоїть"
+    stats: [{key: speed, value: "своя для смуги"}]
+    claims: [carrier-platform]
+  - title: Черепахи
+    role: terrain
+    description: "Групи в річці: везуть, як колода, а деякі періодично пірнають"
+    states: [на поверхні, під водою]
+  - title: Вода
+    role: hazard
+    description: "Річка: жабка без опори тоне"
+    claims: [environment-death]
+  - title: Будиночок
+    role: gate
+    description: "Пʼять гнізд на березі; заповнити всі — пройти рівень, у зайняте не можна"
+    stats: [{key: count, value: "5"}, {key: value, value: "50"}]
+    states: [порожній, зайнятий]
+  - title: Муха
+    role: pickup
+    description: "Сідає на час у порожній будиночок; жабка, що зайшла туди, — +200 (період і час (?))"
+    stats: [{key: value, value: "200"}, {key: duration, value: "50"}]
+    claims: [{slug: timed-despawn, params: {lifetime: 50}}]
+  - title: Крокодил
+    role: hazard
+    description: "Займає будиночок на час — зайти туди смертельно"
+  - title: Кущі
+    role: static
+    description: "Берег між будиночками; стрибок у них — смерть"
+rules:
+  - when: {kind: input, action: "↑", a: Жабка}
+    then: [{kind: move, a: "@a", dir: up}, {kind: score, n: 10}]
+    note: "+10 лише за новий, ще не пройдений рядок; ↓ ← → — так само, без очок"
+  - when: {kind: tick}
+    then: [{kind: custom, text: "кожна смуга зсувається на свою швидкість у свій бік; що виїхало за край — заїжджає з протилежного"}]
+    note: "сусідні річкові смуги пливуть у протилежні боки"
+  - when: {kind: contact, a: Машина, b: Жабка}
+    then: [{kind: lives, n: -1}, {kind: respawn, a: "@b", where: "старт"}]
+  - when: {kind: enter, a: Жабка, b: Вода}
+    then: [{kind: lives, n: -1}, {kind: respawn, a: "@a", where: "старт"}]
+    note: "лише без опори: на колоді чи черепахах жабка стоїть на них, а не у воді"
+  - when: {kind: enter, a: Жабка, b: Колода}
+    then: [{kind: attach, a: "@a", b: "@b"}]
+    note: "колода везе жабку вздовж смуги"
+  - when: {kind: enter, a: Жабка, b: Черепахи}
+    cond: [{kind: state, a: "@b", s: під водою, not: true}]
+    then: [{kind: attach, a: "@a", b: "@b"}]
+  - when: {kind: timer, every: 50}
+    then: [{kind: set_state, a: Черепахи, s: під водою, dur: 20}]
+    note: "період (?) у кожної групи свій, пірнають не всі; жабка на черепахах, що пірнули, — у воді"
+  - when: {kind: edge, a: Жабка}
+    then: [{kind: lives, n: -1}, {kind: respawn, a: "@a", where: "старт"}]
+    note: "колода чи черепахи винесли за край"
+  - when: {kind: enter, a: Жабка, b: Будиночок}
+    cond: [{kind: state, a: "@b", s: порожній}]
+    then:
+      - {kind: set_state, a: "@b", s: зайнятий}
+      - {kind: score, n: 50}
+      - {kind: respawn, a: "@a", where: "старт"}
+      - {kind: timer, clock: start, n: 30}
+    note: "ще +10 за кожні пів секунди, що лишились; нова жабка зʼявляється на старті"
+  - when: {kind: enter, a: Жабка, b: Будиночок}
+    cond: [{kind: state, a: "@b", s: зайнятий}]
+    then: [{kind: lives, n: -1}, {kind: respawn, a: "@a", where: "старт"}]
+  - when: {kind: enter, a: Жабка, b: Кущі}
+    then: [{kind: lives, n: -1}, {kind: respawn, a: "@a", where: "старт"}]
+  - when: {kind: contact, a: Жабка, b: Крокодил}
+    then: [{kind: lives, n: -1}, {kind: respawn, a: "@a", where: "старт"}]
+  - when: {kind: timer, every: 100}
+    then: [{kind: spawn_at, entity: Муха, where: "порожній будиночок"}]
+    note: "період (?) — у джерелах нема"
+  - when: {kind: contact, a: Жабка, b: Муха}
+    then: [{kind: disappear, a: "@b"}, {kind: score, n: 200}]
+  - when: {kind: all_on, a: Жабка, b: Будиночок}
+    then: [{kind: score, n: 1000}, {kind: next_level}]
+    note: "усі 5 будиночків зайняті; новий рівень — швидші смуги, більше небезпек"
+  - when: {kind: counter, name: "час", op: "==", n: 0}
+    then: [{kind: lives, n: -1}, {kind: respawn, a: Жабка, where: "старт"}]
+    note: "30 с на одну жабку"
+  - when: {kind: counter, name: "очки", op: ">=", n: 20000}
+    then: [{kind: lives, n: 1}]
+  - when: {kind: counter, name: "життя", op: "==", n: 0}
+    then: [{kind: game_over}, {kind: window, window: Кінець гри}]
+windows:
+  - title: Заставка
+    task: splash-screen
+    description: "Назва й демо-режим автомата"
+    items:
+      - {title: Монета, window: Головне меню}
+  - title: Головне меню
+    task: main-menu
+    description: "Вибір 1 чи 2 гравців після монети"
+    items:
+      - {title: 1 гравець, window: Гра}
+      - {title: 2 гравці, window: Гра, note: "по черзі"}
+  - title: Гра
+    task: game-screen
+    description: "Смуги поля; згори очки й рекорд, знизу життя-жабки і смуга TIME"
+    claims: [status-panel]
+  - title: Кінець гри
+    task: end-screen
+    description: "GAME OVER"
+    items:
+      - {title: Далі, window: Заставка}
+claims:
+  - {slug: player-death, params: {lives: 3}}
+  - {slug: time-out, params: {limit: 30}}
+  - time-bonus
+  - event-points
+  - collect-all
+  - sequential-levels
+  - progress-acceleration

@@ -1,0 +1,81 @@
+# Inertia (Simon Tatham's Portable Puzzle Collection): кулька ковзає у 8 напрямках до упору; зібрати всі призи, не влетівши в пастку.
+field:
+  size: "10×8"
+  topology: square
+  view: top-down
+  gravity: none
+  time: turn
+  control: direct
+entities:
+  - title: Гравець
+    role: player
+    description: "🏂 (у Tatham — кулька): обирає один із 8 напрямків і ковзає, доки не зупинять стіна, край поля чи Зупинка; лише тоді — новий напрямок"
+    states: [живий, загинув]
+    claims: [inertia-slide, move-8dir]
+  - title: Приз
+    role: pickup
+    description: "🟡 Самоцвіт: збирається на льоту, ковзання не зупиняє"
+    claims: [item-pickup]
+  - title: Зупинка
+    role: terrain
+    description: "🔘 Гравець, що вʼїхав, зупиняється на ній з будь-якого напрямку"
+  - title: Стіна
+    role: static
+    description: "🟦 Зупиняє Гравця в клітині перед собою; по діагоналі між двома стінами, що торкаються кутами, Гравець проходить"
+    claims: [impassable-cells]
+  - title: Пастка
+    role: hazard
+    description: "☠️ Міна: вʼїзд — смерть, навіть якщо цим ходом зібрано останній приз"
+    claims: [touch-death]
+rules:
+  - when: {kind: input, action: "стрілка (8 напрямків)", a: Гравець}
+    cond: [{kind: moving, a: "@a", dir: any, not: true}]
+    then: [{kind: slide, a: "@a", dir: forward}, {kind: counter, name: ходів, n: 1}]
+    note: "«вперед» — обраний напрямок, діагоналі теж; клік по полю — рух у бік кліку"
+  - when: {kind: enter, a: Гравець, b: Приз}
+    then: [{kind: disappear, a: "@b"}]
+    note: "ковзання триває"
+  - when: {kind: enter, a: Гравець, b: Зупинка}
+    then: [{kind: block}]
+    note: "ковзання обривається — Гравець стоїть на Зупинці"
+  - when: {kind: contact, a: Гравець, b: Стіна}
+    then: [{kind: block}]
+    note: "зупинка в клітині перед стіною"
+  - when: {kind: edge, a: Гравець}
+    then: [{kind: block}]
+    note: "межа поля діє як стіна"
+  - when: {kind: custom, text: "Гравець ковзає по діагоналі між двома Стінами, що торкаються кутами"}
+    then: [{kind: slide, a: Гравець, dir: forward}]
+    note: "щілина не зупиняє"
+  - when: {kind: enter, a: Гравець, b: Пастка}
+    then: [{kind: set_state, a: "@a", s: загинув}, {kind: lose}, {kind: counter, name: смертей, n: 1}]
+    note: "фатальний хід можна скасувати й грати далі; лічильник смертей лишається"
+  - when: {kind: all_gone, a: Приз}
+    cond: [{kind: state, a: Гравець, s: загинув, not: true}]
+    then: [{kind: win}, {kind: message, text: "COMPLETED!"}]
+  - when: {kind: input, action: U, a: Гравець}
+    then: [{kind: custom, text: "скасувати останній хід — і фатальний теж"}]
+    note: "redo — R; скасування без ліміту"
+windows:
+  - title: Головне меню
+    task: main-menu
+    description: "Меню Game / Type, як у колекції Tatham"
+    items:
+      - {title: Нова гра, window: Гра}
+      - {title: Почати заново, task: restart-level}
+      - {title: Розмір поля, window: Налаштування}
+      - {title: Довідка, window: Довідка}
+  - title: Гра
+    task: game-screen
+    description: "Поле; рядок стану — скільки призів лишилось (після перемоги — COMPLETED!) і скільки разів загинув"
+    claims: [remaining-counter, move-counter]
+  - title: Налаштування
+    task: settings-window
+    description: "Type → Custom: ширина й висота поля"
+    claims: [field-size-picker]
+  - title: Довідка
+    task: help-window
+    description: "Правила й керування: цифровий блок — 8 напрямків, клік — рух у бік кліку, U — скасувати"
+claims:
+  - collect-all
+  - undo-unlimited

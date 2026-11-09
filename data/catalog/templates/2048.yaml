@@ -1,0 +1,99 @@
+# 2048 (2014, Габріеле Чірулі): поле 4×4, спавн 2 (90 %) / 4 (10 %), одне злиття на плитку за хід.
+field:
+  size: "4×4"
+  topology: square
+  view: top-down
+  gravity: none
+  time: turn
+  control: swipe-all
+entities:
+  - title: Плитка
+    role: tile
+    description: "Число 2^k (2, 4, 8 … 2048 …); ковзає до упору в бік ходу; зливається з рівною, якщо та ще не зливалась цього ходу"
+    stats: [{key: value, value: "2^k"}]
+    states: [звичайна, злита цього ходу]
+    claims: [tile-merge, movement-animation]
+  - title: Нова плитка
+    role: tile
+    description: "2 (90 %) або 4 (10 %) у випадковій порожній клітині — лише після ходу, що щось зрушив"
+    stats: [{key: value, value: "2 або 4"}]
+    claims: [spawn-random-cell]
+  - title: Плитка 2048
+    role: tile
+    description: "При першій появі — «You win!» з вибором продовжити"
+    stats: [{key: value, value: "2048"}]
+  - title: Порожня клітина
+    role: terrain
+    description: "Місце для ковзання і спавну"
+rules:
+  - when: {kind: level_start}
+    then: [{kind: spawn, entity: Нова плитка, cell: any}, {kind: spawn, entity: Нова плитка, cell: any}]
+    note: "дві стартові плитки у випадкових порожніх клітинах"
+  - when: {kind: input, action: "свайп ліворуч / ←"}
+    then: [{kind: shift, axis: all, dir: left}]
+    note: "обхід від стіни призначення назад: [2,2,2] ← дає [4,2]"
+  - when: {kind: input, action: "свайп праворуч / →"}
+    then: [{kind: shift, axis: all, dir: right}]
+  - when: {kind: input, action: "свайп вгору / ↑"}
+    then: [{kind: shift, axis: all, dir: up}]
+  - when: {kind: input, action: "свайп вниз / ↓"}
+    then: [{kind: shift, axis: all, dir: down}]
+  - when: {kind: contact, a: Плитка, b: Плитка}
+    cond: [{kind: same, a: "@a", b: "@b", prop: значення}, {kind: state, a: "@b", s: злита цього ходу, not: true}]
+    then: [{kind: merge, a: "@a", b: "@b", into: Плитка}, {kind: set_state, a: "@b", s: злита цього ходу}, {kind: custom, text: "очки + значення нової плитки"}]
+    note: "нова плитка — подвоєне значення; [2,2,2,2] ← дає [4,4], а не [8]"
+  - when: {kind: contact, a: Плитка, b: Плитка}
+    cond: [{kind: same, a: "@a", b: "@b", prop: значення, not: true}]
+    then: [{kind: block}]
+    note: "плитка зупиняється поруч; так само перед уже злитою"
+  - when: {kind: turn_end}
+    cond: [{kind: legal, text: "хоч одна плитка зрушила"}]
+    then: [{kind: spawn_at, entity: Нова плитка, where: "випадкова порожня клітина"}, {kind: clear_state, a: Плитка, s: злита цього ходу}]
+    note: "хід, що нічого не зрушив, не рахується — спавну нема"
+  - when: {kind: spawned, a: Нова плитка}
+    cond: [{kind: prob, p: 10}]
+    then: [{kind: set_value, a: "@a", v: "4"}]
+    note: "інакше — 2 (90 %)"
+  - when: {kind: spawned, a: Плитка 2048}
+    cond: [{kind: first_time}]
+    then: [{kind: window, window: Перемога}]
+    note: "мʼяка перемога: «Keep going» — грати далі на рекорд"
+  - when: {kind: no_moves}
+    then: [{kind: lose}, {kind: window, window: Гру закінчено}]
+    note: "поле повне й нема сусідньої рівної пари"
+  - when: {kind: input, action: "кнопка New Game"}
+    then: [{kind: restart}]
+windows:
+  - title: Головне меню
+    task: main-menu
+    description: "В оригіналі меню нема — гра стартує одразу; у клонах і Threes — Грати, Як грати, Рекорди"
+    items:
+      - {title: Грати, window: Гра}
+      - {title: Як грати, window: Як грати}
+  - title: Гра
+    task: game-screen
+    description: "Поле 4×4; над ним SCORE (з «+N» при злитті) і BEST; кнопка New Game"
+    claims: [status-panel, popup-text, keyboard-controls, swipe-gestures]
+    items:
+      - {title: New Game, task: restart-level}
+  - title: Перемога
+    task: end-screen
+    description: "«You win!» поверх поля"
+    items:
+      - {title: Keep going, window: Гра}
+      - {title: Try again, task: restart-level}
+  - title: Гру закінчено
+    task: end-screen
+    description: "«Game over!» поверх поля"
+    items:
+      - {title: Try again, task: restart-level}
+  - title: Як грати
+    task: help-window
+    description: "В оригіналі — текст під полем: стрілки рухають усі плитки, дві однакові зливаються в одну"
+    items:
+      - {title: До гри, window: Гра}
+claims:
+  - no-moves-left
+  - event-points
+  - score-records
+  - save-autosave

@@ -1,0 +1,111 @@
+# Mined-Out (Ian Andrew, Quicksilva, 1983, ZX Spectrum): 9 мінних полів знизу догори; в кінці — врятувати Біла-черв'яка.
+field:
+  topology: square
+  view: top-down
+  gravity: none
+  time: turn
+  control: direct
+  layers: [підлога, приховані міни, розмітка]
+entities:
+  - title: Сапер
+    role: player
+    description: "Аватар-цифра 0️⃣–3️⃣: скільки мін у сусідніх клітинах по вертикалі й горизонталі, але не де саме; ходить на 1 клітину в 4 напрямки, діагоналей нема"
+    claims: [move-4dir, neighbor-count-clue]
+  - title: Міна
+    role: hazard
+    description: "Невидима; крок на неї — миттєва смерть. З рівнем мін більше"
+    claims: [touch-death, spawn-random-cell]
+  - title: Стіна
+    role: static
+    description: "🟪 Видима огорожа поля, непрохідна; внизу — прохід-старт, угорі — прохід-вихід"
+    claims: [impassable-cells]
+  - title: Слід
+    role: mark
+    description: "▪️ Пройдені клітини — безпечний шлях назад; з 6-го рівня слід за спиною зникає"
+  - title: Вихід
+    role: zone
+    description: "Прохід в огорожі вгорі: поле треба перейти знизу догори"
+  - title: Панночка
+    role: ally
+    description: "З 2-го рівня: стоїть десь на полі; забрати й вивести — бонусні очки"
+    claims: [item-pickup]
+  - title: Розкидач мін
+    role: enemy
+    description: "Mine Spreader, з 3-го рівня: ходить туди-сюди своєю смугою поля й переставляє на ній міни — ці міни видно"
+    claims: [enemy-patrol]
+  - title: Жук
+    role: enemy
+    description: "The Bug, з 4-го рівня: рухома міна, що повзе слідом Сапера його ж шляхом — не дає баритися"
+    claims: [body-queue]
+rules:
+  - when: {kind: level_start}
+    then: [{kind: spawn, entity: Міна, cell: any}, {kind: spawn_at, entity: Сапер, where: "прохід унизу"}]
+    note: "міни — у випадкові вільні клітини, з кожним рівнем їх більше"
+  - when: {kind: input, action: "↑", a: Сапер}
+    then: [{kind: move, a: "@a", dir: up}, {kind: set_cell, cell: behind, type: Слід}, {kind: set_value, a: "@a", v: "кількість мін у 4 сусідніх клітинах"}]
+    note: "так само ↓ ← →; з 6-го рівня Слід не лишається"
+  - when: {kind: contact, a: Сапер, b: Стіна}
+    then: [{kind: block}]
+  - when: {kind: enter, a: Сапер, b: Міна}
+    then: [{kind: lose}, {kind: window, window: Кінець рівня}]
+    note: "миттєва смерть, далі — повтор проходження"
+  - when: {kind: enter, a: Сапер, b: Панночка}
+    then: [{kind: pickup, a: "@a", item: "@b"}]
+    note: "Сапер веде її з собою до виходу"
+  - when: {kind: enter, a: Сапер, b: Вихід}
+    cond: [{kind: has, a: "@a", item: Панночка}]
+    then: [{kind: score, n: 100}]
+    note: "бонус за кожну виведену панночку; розмір — на розсуд"
+  - when: {kind: enter, a: Сапер, b: Вихід}
+    cond: [{kind: level, op: "<", n: 9}]
+    then: [{kind: next_level}, {kind: window, window: Кінець рівня}]
+    note: "очки за швидкість: що швидше пройдено поле, то більше"
+  - when: {kind: enter, a: Сапер, b: Вихід}
+    cond: [{kind: level, op: "==", n: 9}]
+    then: [{kind: win}, {kind: window, window: Кінець рівня}]
+    note: "на останньому полі на Сапера чекає полонений Біл-черв'як"
+  - when: {kind: level_start}
+    cond: [{kind: level, op: ">=", n: 2}]
+    then: [{kind: spawn, entity: Панночка, cell: any}]
+  - when: {kind: level_start}
+    cond: [{kind: level, op: ">=", n: 3}]
+    then: [{kind: spawn_at, entity: Розкидач мін, where: "на своїй смузі поля"}]
+  - when: {kind: timer, every: 5}
+    then: [{kind: place, a: Розкидач мін, entity: Міна}]
+    note: "переставляє міни у своїй смузі; переставлені — видимі"
+  - when: {kind: level_start}
+    cond: [{kind: level, op: ">=", n: 4}]
+    then: [{kind: spawn_at, entity: Жук, where: "прохід унизу"}]
+  - when: {kind: timer, every: 2}
+    then: [{kind: move, a: Жук, dir: toward}]
+    note: "крок за кроком тим самим шляхом, яким ішов Сапер"
+  - when: {kind: contact, a: Жук, b: Сапер}
+    then: [{kind: lose}, {kind: window, window: Кінець рівня}]
+windows:
+  - title: Головне меню
+    task: main-menu
+    items:
+      - {title: Грати, window: Гра}
+      - {title: Вибір поля, window: Вибір рівня}
+  - title: Вибір рівня
+    task: level-select
+    description: "Будь-яке вже пройдене поле можна зіграти знову"
+    claims: [level-unlock]
+    items:
+      - {title: Старт, window: Гра}
+  - title: Гра
+    task: game-screen
+    description: "Мінне поле в огорожі; рядок стану — рівень, очки, врятовані панночки"
+    claims: [status-panel]
+  - title: Кінець рівня
+    task: end-screen
+    description: "Миттєвий повтор щойно зіграного — і після смерті, і після проходу; далі очки"
+    claims: [replay]
+    items:
+      - {title: Далі, window: Гра}
+      - {title: В меню, window: Головне меню}
+claims:
+  - player-death
+  - reach-exit
+  - time-bonus
+  - sequential-levels

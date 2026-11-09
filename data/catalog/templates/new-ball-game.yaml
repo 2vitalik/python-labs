@@ -1,0 +1,75 @@
+# New Ball Game (гра курсу, клас «курсорна»): мʼячик летить сам, гравець ставить щити-відбивачі, щоб зібрати всі енергетичні кульки.
+field:
+  size: "13×6"
+  topology: square
+  view: top-down
+  gravity: none
+  time: realtime
+  control: click-cell
+entities:
+  - title: Курсор
+    role: player
+    description: "👁️ Рука гравця: клітина, куди ставиться щит; ходить полем вільно, мʼячик тим часом летить"
+    claims: [cell-click]
+  - title: Мʼячик
+    role: object
+    description: "🔵 Летить сам по прямій, клітина за тік: від стіни — назад, від щита — на 90°"
+    stats: [{key: speed, value: "1", unit: "кл/тік"}]
+    claims: [move-auto, {slug: turn-when-blocked, params: {turn: reverse}}]
+  - title: Енергетична кулька
+    role: pickup
+    description: "🟠 Зникає, коли мʼячик пролітає її клітину; зібрати всі — перемога"
+    claims: [item-pickup]
+  - title: Стіна
+    role: static
+    description: "⬛ Мʼячик відбивається від неї назад, на 180°"
+  - title: Щит ↗
+    role: object
+    description: "Діагональ ↗ ↙: ставиться курсором на порожню клітину, повертає мʼячик на 90°"
+  - title: Щит ↘
+    role: object
+    description: "Діагональ ↘ ↖: так само, але повертає в дзеркальний бік"
+rules:
+  - when: {kind: tick}
+    then: [{kind: move, a: Мʼячик, dir: forward}]
+    note: "автономно, без участі гравця"
+  - when: {kind: contact, a: Мʼячик, b: Стіна}
+    then: [{kind: rotate, a: "@a", deg: "180"}]
+  - when: {kind: enter, a: Мʼячик, b: Щит ↗}
+    then: [{kind: rotate, a: "@a", deg: "90"}]
+    note: "← стає ↓, → стає ↑, ↑ стає →, ↓ стає ←"
+  - when: {kind: enter, a: Мʼячик, b: Щит ↘}
+    then: [{kind: rotate, a: "@a", deg: "90"}]
+    note: "← стає ↑, → стає ↓, ↑ стає ←, ↓ стає →"
+  - when: {kind: enter, a: Мʼячик, b: Енергетична кулька}
+    then: [{kind: disappear, a: "@b"}]
+  - when: {kind: all_gone, a: Енергетична кулька}
+    then: [{kind: win}, {kind: window, window: Перемога}]
+  - when: {kind: input, action: "поставити ↗", a: Курсор}
+    cond: [{kind: free, cell: under}]
+    then: [{kind: place, a: "@a", entity: Щит ↗}]
+    note: "щит — лише на порожню клітину"
+  - when: {kind: input, action: "поставити ↘", a: Курсор}
+    cond: [{kind: free, cell: under}]
+    then: [{kind: place, a: "@a", entity: Щит ↘}]
+  - when: {kind: input, action: "↑", a: Курсор}
+    then: [{kind: move, a: "@a", dir: up}]
+    note: "так само ↓ ← →; у GUI курсор іде за мишею"
+windows:
+  - title: Головне меню
+    task: main-menu
+    items:
+      - {title: Грати, window: Гра}
+      - {title: Вийти}
+  - title: Гра
+    task: game-screen
+    description: "Поле з мʼячиком; лічильник — скільки кульок лишилось"
+    claims: [remaining-counter]
+  - title: Перемога
+    task: end-screen
+    items:
+      - {title: Ще раз, window: Гра}
+      - {title: В меню, window: Головне меню}
+claims:
+  - collect-all
+  - mirror-reflect

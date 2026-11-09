@@ -1,0 +1,139 @@
+field:
+  size: "31×13 (?), два екрани завширшки"
+  topology: square
+  wrap: false
+  view: top-down
+  gravity: none
+  time: realtime
+  control: direct
+  layers: [підлога, блоки, бомби й вогонь, персонажі]
+entities:
+  - title: Бомбермен
+    role: player
+    description: "Ходить у 4 боки, ставить бомбу на свою клітину; стартує в лівому верхньому куті"
+    stats:
+      - {key: lives, value: "3"}
+      - {key: bombs, label: "бомб одночасно", value: "1"}
+      - {key: range, label: "дальність вогню", value: "1", unit: "кл"}
+    claims: [move-4dir]
+  - title: Бомба
+    role: object
+    description: "Непрохідна; після запалу вибухає хрестом"
+    stats: [{key: duration, label: "запал", value: "25", unit: "тіків"}]
+    states: [запал]
+    claims: [chain-detonation]
+  - title: Вогонь
+    role: hazard
+    description: "Хрест вибуху на кілька миттєвостей: вбиває всіх, руйнує цеглу, підриває бомби"
+    claims: [{slug: blast-wave, params: {radius: 1}}, environment-death]
+  - title: Колона
+    role: static
+    description: "Непробивна; стоїть через клітину в кожному другому рядку, гасить вогонь"
+    claims: [impassable-cells]
+  - title: Цегла
+    role: object
+    description: "Руйнується вогнем; під нею може ховатися вихід або підсилення"
+    claims: [destructible-blocks]
+  - title: Вихід
+    role: gate
+    description: "Двері під однією з цеглин; пропускають, лише коли ворогів не лишилось"
+    stats: [{key: count, value: "1"}]
+    states: [закритий, відкритий]
+  - title: Бонус-бомба
+    role: pickup
+    description: "Під цеглою, одне підсилення на рівень: +1 бомба одночасно, назавжди"
+  - title: Бонус-вогонь
+    role: pickup
+    description: "Під цеглою: +1 клітина дальності вогню, назавжди"
+  - title: Ворог
+    role: enemy
+    description: "Ballom, Onil, Dahl, Minvo блукають; Kondoria й Ovape проходять крізь цеглу; Pass і Pontan женуться за гравцем; у кожного своя швидкість"
+    stats: [{key: value, value: "100–8000"}, {key: speed, value: "за типом"}]
+    claims: [random-walk, chase-greedy, touch-death]
+rules:
+  - when: {kind: input, action: "A", a: Бомбермен}
+    cond: [{kind: free, cell: under}, {kind: counter, name: "бомб на полі", op: "<", n: 1}]
+    then: [{kind: place, a: "@a", entity: Бомба}]
+    note: "ліміт 1 на старті, кожна Бонус-бомба піднімає його на 1"
+  - when: {kind: spawned, a: Бомба}
+    then: [{kind: set_state, a: "@a", s: запал, dur: 25}]
+    note: "запал — кілька секунд (?); тік ≈ 0,1 с"
+  - when: {kind: state_off, a: Бомба, s: запал}
+    then: [{kind: explode, shape: cross, n: 1, into: Вогонь}, {kind: disappear, a: "@a"}]
+    note: "промінь гасне на колоні, цеглу руйнує і теж гасне; довжина — дальність вогню Бомбермена"
+  - when: {kind: contact, a: Вогонь, b: Бомба}
+    then: [{kind: clear_state, a: "@b", s: запал}]
+    note: "ланцюгова детонація: сусідня бомба вибухає одразу"
+  - when: {kind: contact, a: Вогонь, b: Цегла}
+    then: [{kind: disappear, a: "@b"}]
+    note: "тепер видно, що було під цеглою"
+  - when: {kind: contact, a: Вогонь, b: Ворог}
+    then: [{kind: disappear, a: "@b"}, {kind: score, n: 100}]
+    note: "Ballom 100 … Pontan 8000"
+  - when: {kind: contact, a: Вогонь, b: Бомбермен}
+    then: [{kind: lives, n: -1}, {kind: restart}]
+    note: "власний вибух теж вбиває"
+  - when: {kind: contact, a: Ворог, b: Бомбермен}
+    then: [{kind: lives, n: -1}, {kind: restart}]
+  - when: {kind: contact, a: Бомбермен, b: Бонус-бомба}
+    then: [{kind: disappear, a: "@b"}, {kind: counter, name: "бомб одночасно", n: 1}]
+  - when: {kind: contact, a: Бомбермен, b: Бонус-вогонь}
+    then: [{kind: disappear, a: "@b"}, {kind: counter, name: "дальність вогню", n: 1}]
+  - when: {kind: contact, a: Вогонь, b: Вихід}
+    then: [{kind: spawn_at, entity: Ворог, where: "з дверей виходу"}]
+    note: "кара за підрив дверей: кілька (?) сильніших ворогів, двері лишаються"
+  - when: {kind: all_gone, a: Ворог}
+    then: [{kind: set_state, a: Вихід, s: відкритий}, {kind: sound, text: "дзвін"}]
+  - when: {kind: contact, a: Бомбермен, b: Вихід}
+    cond: [{kind: state, a: "@b", s: відкритий}]
+    then: [{kind: next_level}, {kind: lives, n: 1}]
+    note: "50 етапів; після кожного 5-го — бонус-етап"
+  - when: {kind: level_start}
+    then:
+      - {kind: window, window: Етап}
+      - {kind: set_state, a: Вихід, s: закритий}
+      - {kind: timer, clock: start, n: 200}
+  - when: {kind: counter, name: "час", op: "==", n: 0}
+    then: [{kind: spawn_at, entity: Ворог, where: "по всьому полю"}]
+    note: "налітають Pontan-и (12–20 (?)); життя не забирається, але вижити майже неможливо"
+  - when: {kind: contact, a: "*", b: Цегла}
+    then: [{kind: block}]
+    note: "Kondoria, Ovape і Pontan проходять крізь цеглу"
+  - when: {kind: contact, a: "*", b: Бомба}
+    then: [{kind: block}]
+    note: "з бомби, щойно поставленої під собою, зійти можна"
+  - when: {kind: tick}
+    then: [{kind: move, a: Ворог, dir: random}]
+    note: "блукачі міняють напрям за таймером, деякі повертають до гравця на спільній осі (?); Pass і Pontan женуться"
+  - when: {kind: counter, name: "життя", op: "==", n: 0}
+    then: [{kind: game_over}, {kind: window, window: Кінець гри}]
+windows:
+  - title: Головне меню
+    task: main-menu
+    items:
+      - {title: START, window: Етап}
+      - {title: CONTINUE, window: Пароль}
+  - title: Пароль
+    task: level-password
+    description: "20 літер A–P: етап, бомби, вогонь, очки"
+    items:
+      - {title: Грати, window: Етап}
+  - title: Етап
+    task: custom-window
+    description: "Заставка STAGE N перед кожним етапом, BONUS STAGE — після кожного 5-го"
+  - title: Гра
+    task: game-screen
+    description: "Поле скролиться по горизонталі; згори TIME 200, очки, життя"
+    claims: [status-panel]
+  - title: Кінець гри
+    task: end-screen
+    description: "GAME OVER і пароль для продовження"
+    items:
+      - {title: Пароль, window: Пароль}
+      - {title: У меню, window: Головне меню}
+claims:
+  - destroy-all-enemies
+  - reach-exit
+  - {slug: time-out, params: {limit: 200}}
+  - {slug: player-death, params: {lives: 3}}
+  - in-round-upgrades

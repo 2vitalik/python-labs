@@ -1,0 +1,124 @@
+field:
+  size: "5×9"
+  topology: square
+  view: top-down
+  gravity: none
+  time: realtime
+  control: click-cell
+  layers: [газон, рослини, зомбі і снаряди]
+entities:
+  - title: Сонце
+    role: resource
+    description: "Падає з неба й від соняшника; клік — +25 сонць, не зібране зникає"
+    stats: [{key: value, label: сонць, value: "25"}, {key: duration, value: "80"}]
+    claims: [{slug: timed-despawn, params: {lifetime: 80}}]
+  - title: Соняшник
+    role: ally
+    description: "Виробник: раз на ~24 с кладе поруч сонце"
+    stats: [{key: cost, label: ціна, value: "50", unit: сонць}, {key: hp, value: "6"}, {key: cooldown, value: "240"}]
+  - title: Горохострел
+    role: ally
+    description: "Стріляє горошиною вперед по своєму ряду, коли там є зомбі"
+    stats: [{key: cost, label: ціна, value: "100", unit: сонць}, {key: hp, value: "6"}, {key: cooldown, value: "14"}]
+    claims: [shoot-forward, {slug: shoot-cooldown, params: {cooldown: 14}}, {slug: tower-range, params: {shape: line}}]
+  - title: Горіх
+    role: ally
+    description: "Стіна з великим HP: зомбі довго його гризуть, поки стрільці бʼють"
+    stats: [{key: cost, label: ціна, value: "50", unit: сонць}, {key: hp, value: "72"}]
+  - title: Горошина
+    role: projectile
+    description: "Летить праворуч своїм рядом, бʼє першого зомбі"
+    stats: [{key: damage, value: "1"}, {key: speed, value: "0.3"}]
+    claims: [projectile-shot]
+  - title: Зомбі
+    role: enemy
+    description: "Іде справа наліво своїм рядом; натрапив на рослину — зупиняється й гризе"
+    stats: [{key: hp, value: "10"}, {key: damage, value: "1"}, {key: speed, value: "0.02"}]
+    states: [іде, їсть]
+    claims: [{slug: hp-damage, params: {hp: 10, who: "зомбі й рослини"}}]
+  - title: Газонокосарка
+    role: object
+    description: "Одна на ряд, ліворуч від газону; разово вичищає свій ряд від зомбі"
+    stats: [{key: count, value: "5"}]
+    states: [стоїть, їде]
+rules:
+  - when: {kind: timer, every: 100}
+    then: [{kind: spawn_at, entity: Сонце, where: "випадкова клітина газону"}]
+    note: "сонце з неба"
+  - when: {kind: timer, every: 240}
+    then: [{kind: spawn_at, entity: Сонце, where: "поруч із кожним соняшником"}]
+    note: "у кожного соняшника свій відлік"
+  - when: {kind: input, action: "клік по сонцю", a: Сонце}
+    then: [{kind: currency, n: 25}, {kind: disappear, a: "@a"}]
+  - when: {kind: input, action: "посадити соняшник"}
+    cond: [{kind: free, cell: target}, {kind: counter, name: "запас сонця", op: ">=", n: 50}]
+    then: [{kind: spawn, entity: Соняшник, cell: target}, {kind: currency, n: -50}]
+  - when: {kind: input, action: "посадити горохострел"}
+    cond: [{kind: free, cell: target}, {kind: counter, name: "запас сонця", op: ">=", n: 100}]
+    then: [{kind: spawn, entity: Горохострел, cell: target}, {kind: currency, n: -100}]
+  - when: {kind: input, action: "посадити горіх"}
+    cond: [{kind: free, cell: target}, {kind: counter, name: "запас сонця", op: ">=", n: 50}]
+    then: [{kind: spawn, entity: Горіх, cell: target}, {kind: currency, n: -50}]
+  - when: {kind: line_of_sight, a: Горохострел, b: Зомбі}
+    then: [{kind: spawn, entity: Горошина, cell: ahead}]
+    note: "не частіше за перезарядку"
+  - when: {kind: tick}
+    then: [{kind: move, a: Горошина, dir: right}]
+  - when: {kind: contact, a: Горошина, b: Зомбі}
+    then: [{kind: damage, a: "@b", n: 1}, {kind: disappear, a: "@a"}]
+  - when: {kind: tick}
+    cond: [{kind: state, a: Зомбі, s: їсть, not: true}]
+    then: [{kind: move, a: Зомбі, dir: left}]
+  - when: {kind: contact, a: Зомбі, b: Горіх}
+    then: [{kind: set_state, a: "@a", s: їсть, dur: 10}, {kind: damage, a: "@b", n: 1}]
+    note: "кусає раз на секунду, поки рослина перед ним"
+  - when: {kind: contact, a: Зомбі, b: Горохострел}
+    then: [{kind: set_state, a: "@a", s: їсть, dur: 10}, {kind: damage, a: "@b", n: 1}]
+  - when: {kind: contact, a: Зомбі, b: Соняшник}
+    then: [{kind: set_state, a: "@a", s: їсть, dur: 10}, {kind: damage, a: "@b", n: 1}]
+  - when: {kind: hp_zero, a: "*"}
+    then: [{kind: disappear, a: "@a"}]
+    note: "і рослина, і зомбі"
+  - when: {kind: contact, a: Зомбі, b: Газонокосарка}
+    cond: [{kind: state, a: "@b", s: їде, not: true}]
+    then: [{kind: set_state, a: "@b", s: їде}, {kind: slide, a: "@b", dir: right}]
+  - when: {kind: contact, a: Газонокосарка, b: Зомбі}
+    cond: [{kind: state, a: "@a", s: їде}]
+    then: [{kind: disappear, a: "@b"}]
+  - when: {kind: edge, a: Газонокосарка}
+    then: [{kind: disappear, a: "@a"}]
+  - when: {kind: edge, a: Зомбі}
+    then: [{kind: lose}, {kind: window, window: Кінець гри}]
+    note: "зомбі пройшов ряд, де вже нема косарки"
+  - when: {kind: wave_start}
+    then: [{kind: spawn_at, entity: Зомбі, where: "правий край, випадковий ряд"}, {kind: counter, name: хвиля, n: 1}]
+  - when: {kind: wave_cleared}
+    cond: [{kind: counter, name: хвиля, op: ">=", n: 5}]
+    then: [{kind: win}, {kind: window, window: Кінець гри}]
+    note: "відбито фінальну хвилю"
+windows:
+  - title: Головне меню
+    task: main-menu
+    items:
+      - {title: Грати, window: Гра}
+      - {title: Вихід}
+  - title: Гра
+    task: game-screen
+    description: "Газон 5×9, угорі — запас сонця й картки рослин із ціною, внизу — прогрес хвиль"
+    claims: [status-panel, cell-click, goal-counter]
+    items:
+      - {title: Меню, window: Пауза}
+  - title: Пауза
+    task: pause-menu
+    claims: [game-pause]
+    items:
+      - {title: Продовжити, window: Гра}
+      - {title: Почати рівень заново, task: restart-level}
+      - {title: Головне меню, window: Головне меню}
+  - title: Кінець гри
+    task: end-screen
+    description: "Перемога — усі хвилі відбито; поразка — зомбі дійшли до будинку"
+    items:
+      - {title: Ще раз, window: Гра}
+      - {title: Головне меню, window: Головне меню}
+claims: [tower-placement, round-currency, {slug: enemy-waves, params: {waves: 5, final_wave: true}}, enemy-reached-base]

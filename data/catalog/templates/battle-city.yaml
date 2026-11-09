@@ -1,0 +1,138 @@
+# Battle City (Namco, 1985, NES/Famicom): 35 рівнів 13×13, по 20 ворожих танків на рівень, до 4 на полі одночасно.
+field:
+  size: "13×13"
+  topology: square
+  view: top-down
+  gravity: none
+  time: realtime
+  control: direct
+  layers: [підлога, стіни, танки й кулі]
+entities:
+  - title: Танк гравця
+    role: player
+    description: "🔼 Їздить у 4 напрямки, іконка повертається за напрямом руху; стріляє вперед. Стартує ліворуч від бази"
+    stats: [{key: lives, value: "3"}, {key: speed, value: "1", unit: "кл/тік"}]
+    states: [звичайний, зі щитом, посилений]
+    claims: [move-4dir, projectile-shot, {slug: temporary-modes, params: {duration: 200}}]
+  - title: Ворожий танк
+    role: enemy
+    description: "🔻 Чотири види: звичайний, швидкий, потужний (швидка куля), броньований (4 влучання). Блукає, у перешкоді розвертається, стріляє, коли бачить гравця"
+    stats: [{key: count, value: "≤ 4 (20 на рівень)"}, {key: hp, value: "1–4"}, {key: value, value: "100–400"}]
+    states: [звичайний, червоний]
+    claims: [random-walk, line-of-sight-attack, {slug: spawn-schedule, params: {every: 20, max_alive: 4}}, {slug: hp-damage, params: {hp: 4, who: "броньований танк"}}]
+  - title: Куля
+    role: projectile
+    description: "🔷 наша / ⭕ ворожа: летить по прямій у напрямку пострілу до першої перешкоди"
+    stats: [{key: speed, value: "2", unit: "кл/тік"}, {key: damage, value: "1"}]
+  - title: Цегляна стіна
+    role: static
+    description: "🟫 Непрохідна для танків; руйнується кулею будь-якого танка"
+    claims: [{slug: destructible-blocks, params: {drops: floor}}]
+  - title: Сталева стіна
+    role: static
+    description: "Непрохідна й невразлива; руйнує її лише куля танка з трьома зірками"
+  - title: База
+    role: object
+    description: "Орел-штаб унизу посередині, обнесений цеглою; одне влучання будь-чиєї кулі — поразка"
+    stats: [{key: hp, value: "1"}]
+    states: [ціла, зруйнована]
+  - title: Зірка
+    role: pickup
+    description: "Бонус: посилює танк — швидша куля, потім дві кулі, з третьою зіркою куля пробиває сталь"
+  - title: Шолом
+    role: pickup
+    description: "Бонус: щит на кілька секунд — кулі не шкодять"
+  - title: Годинник
+    role: pickup
+    description: "Бонус: заморожує всіх ворогів на кілька секунд"
+rules:
+  - when: {kind: level_start}
+    then: [{kind: counter, name: ворогів у запасі, n: 20}, {kind: spawn_at, entity: Танк гравця, where: "ліворуч від бази"}, {kind: set_state, a: Танк гравця, s: зі щитом, dur: 60}]
+    note: "на старті й після загибелі — короткий щит"
+  - when: {kind: input, action: "↑", a: Танк гравця}
+    then: [{kind: face, a: "@a", dir: up}, {kind: move, a: "@a", dir: up}]
+    note: "так само ↓ ← →: спершу розворот іконки, далі рух"
+  - when: {kind: input, action: постріл, a: Танк гравця}
+    then: [{kind: spawn, entity: Куля, cell: ahead}]
+    note: "своя куля на полі одна (з другою зіркою — дві)"
+  - when: {kind: tick}
+    then: [{kind: move, a: Куля, dir: forward}]
+    note: "кожна куля — у напрямку свого пострілу"
+  - when: {kind: contact, a: Куля, b: Цегляна стіна}
+    then: [{kind: disappear, a: "@both"}]
+  - when: {kind: contact, a: Куля, b: Сталева стіна}
+    then: [{kind: disappear, a: "@a"}]
+    note: "куля танка з трьома зірками руйнує й сталь"
+  - when: {kind: contact, a: Куля, b: Куля}
+    then: [{kind: disappear, a: "@both"}]
+    note: "зустрічні кулі гасять одна одну"
+  - when: {kind: contact, a: Куля, b: Ворожий танк}
+    then: [{kind: disappear, a: "@a"}, {kind: damage, a: "@b", n: 1}]
+    note: "ворожі кулі інших ворогів не ранять"
+  - when: {kind: hp_zero, a: Ворожий танк}
+    then: [{kind: disappear, a: "@a"}, {kind: score, n: 100}]
+    note: "звичайний 100, швидкий 200, потужний 300, броньований 400"
+  - when: {kind: hp_zero, a: Ворожий танк}
+    cond: [{kind: state, a: "@a", s: червоний}]
+    then: [{kind: custom, text: "у випадковому місці поля зʼявляється випадковий бонус: Зірка, Шолом або Годинник"}]
+    note: "червоні (блимають) — 4-й, 11-й і 18-й танк рівня"
+  - when: {kind: contact, a: Куля, b: Танк гравця}
+    cond: [{kind: state, a: "@b", s: зі щитом, not: true}]
+    then: [{kind: disappear, a: "@a"}, {kind: lives, n: -1}, {kind: clear_state, a: "@b", s: посилений}, {kind: respawn, a: "@b", where: "ліворуч від бази"}, {kind: set_state, a: "@b", s: зі щитом, dur: 60}]
+  - when: {kind: contact, a: Куля, b: База}
+    then: [{kind: disappear, a: "@a"}, {kind: set_state, a: "@b", s: зруйнована}, {kind: lose}, {kind: window, window: Підсумок}]
+    note: "зокрема й своя куля"
+  - when: {kind: line_of_sight, a: Ворожий танк, b: Танк гравця}
+    then: [{kind: face, a: "@a", dir: toward}, {kind: spawn, entity: Куля, cell: ahead}]
+  - when: {kind: blocked, a: Ворожий танк}
+    then: [{kind: face, a: "@a", dir: random}]
+  - when: {kind: timer, every: 20}
+    cond: [{kind: counter, name: ворогів у запасі, op: ">", n: 0}]
+    then: [{kind: spawn_at, entity: Ворожий танк, where: "по черзі в одній із 3 точок угорі"}, {kind: counter, name: ворогів у запасі, n: -1}]
+    note: "лише поки на полі менше 4 ворогів; знищений звільняє місце наступному"
+  - when: {kind: all_gone, a: Ворожий танк}
+    cond: [{kind: counter, name: ворогів у запасі, op: "==", n: 0}]
+    then: [{kind: window, window: Підсумок}, {kind: next_level}]
+  - when: {kind: contact, a: Танк гравця, b: Шолом}
+    then: [{kind: disappear, a: "@b"}, {kind: set_state, a: "@a", s: зі щитом, dur: 200}, {kind: score, n: 500}]
+  - when: {kind: contact, a: Танк гравця, b: Годинник}
+    then: [{kind: disappear, a: "@b"}, {kind: stun, a: Ворожий танк, n: 200}, {kind: score, n: 500}]
+  - when: {kind: contact, a: Танк гравця, b: Зірка}
+    then: [{kind: disappear, a: "@b"}, {kind: set_state, a: "@a", s: посилений}, {kind: score, n: 500}]
+    note: "3 ступені: швидша куля → дві кулі → куля пробиває сталь"
+  - when: {kind: counter, name: життя, op: "==", n: 0}
+    then: [{kind: lose}, {kind: window, window: Підсумок}]
+windows:
+  - title: Головне меню
+    task: main-menu
+    description: "Титул BATTLE CITY: курсор-танк обирає пункт"
+    items:
+      - {title: 1 гравець, window: Вибір рівня}
+      - {title: 2 гравці, note: "кооператив: другий танк праворуч від бази"}
+      - {title: Конструктор, window: Конструктор}
+  - title: Вибір рівня
+    task: level-select
+    description: "Сірий екран «STAGE 1»: перед стартом кнопками обрати номер рівня"
+    items:
+      - {title: Старт, window: Гра}
+  - title: Гра
+    task: game-screen
+    description: "Поле 13×13; праворуч — значки ворогів у запасі, життя гравця (IP), прапорець із номером рівня; Start — пауза"
+    claims: [status-panel, remaining-counter]
+  - title: Підсумок
+    task: end-screen
+    description: "Після рівня — скільки танків кожного виду знищено й очки за них; після поразки — ще й GAME OVER"
+    items:
+      - {title: Далі, window: Вибір рівня}
+      - {title: На титул, window: Головне меню}
+  - title: Конструктор
+    task: editor-window
+    description: "Construction: курсором розставити цеглу, сталь, воду, ліс і лід; збудована мапа грається з титулу"
+    items:
+      - {title: На титул, window: Головне меню}
+claims:
+  - impassable-cells
+  - {slug: player-death, params: {lives: 3}}
+  - enemy-reached-base
+  - destroy-all-enemies
+  - reinforcements

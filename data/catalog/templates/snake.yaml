@@ -1,0 +1,110 @@
+field:
+  size: "на весь екран (Nibbles — 80×50)"
+  topology: square
+  wrap: false
+  view: top-down
+  gravity: none
+  time: realtime
+  control: direct
+entities:
+  - title: Голова
+    role: player
+    description: "Повзе безупинно; гравець лише повертає, розворот назад заборонено"
+    stats: [{key: lives, value: "1"}, {key: speed, value: "1", unit: "кл/тік"}]
+    claims: [move-auto, wrap-edges]
+  - title: Тіло
+    role: object
+    description: "Черга сегментів за головою: хвіст повторює її шлях, з кожною їжею довшає"
+    claims: [body-queue, std-collections]
+  - title: Їжа
+    role: pickup
+    description: "Одна на полі, зʼявляється у випадковій вільній клітині"
+    stats: [{key: count, value: "1"}, {key: value, value: "1"}]
+    claims: [spawn-random-cell]
+  - title: Бонус-жук
+    role: pickup
+    description: "Snake II: зʼявляється після кожної 5-ї їжі й скоро зникає; що швидше зʼїв — то більше очок (?)"
+    stats: [{key: value, value: "10"}, {key: duration, value: "20"}]
+    claims: [{slug: timed-despawn, params: {lifetime: 20}}]
+  - title: Стіна
+    role: static
+    description: "Межа поля; врізатися — кінець гри"
+    claims: [touch-death]
+  - title: Перешкода
+    role: static
+    description: "Стіни лабіринту всередині поля — свій макет на кожен лабіринт чи рівень"
+rules:
+  - when: {kind: tick}
+    then:
+      - {kind: move, a: Голова, dir: forward}
+      - {kind: custom, text: "кожен сегмент тіла стає на місце попереднього, хвіст звільняє клітину"}
+    note: "тік — крок голови на клітину; темп задає рівень швидкості 1–9 (?)"
+  - when: {kind: input, action: "↑", a: Голова}
+    cond: [{kind: moving, a: "@a", dir: down, not: true}]
+    then: [{kind: face, a: "@a", dir: up}]
+    note: "розворот на 180° ігнорується; одна зміна напряму за тік (?)"
+  - when: {kind: input, action: "↓", a: Голова}
+    cond: [{kind: moving, a: "@a", dir: up, not: true}]
+    then: [{kind: face, a: "@a", dir: down}]
+  - when: {kind: input, action: "←", a: Голова}
+    cond: [{kind: moving, a: "@a", dir: right, not: true}]
+    then: [{kind: face, a: "@a", dir: left}]
+  - when: {kind: input, action: "→", a: Голова}
+    cond: [{kind: moving, a: "@a", dir: left, not: true}]
+    then: [{kind: face, a: "@a", dir: right}]
+  - when: {kind: contact, a: Голова, b: Їжа}
+    then:
+      - {kind: disappear, a: "@b"}
+      - {kind: grow, a: Тіло, n: 1}
+      - {kind: score, n: 1}
+      - {kind: counter, name: "зʼїдено", n: 1}
+      - {kind: spawn_at, entity: Їжа, where: "випадкова вільна клітина"}
+    note: "ріст: хвіст не знімається один тік; у Nokia за їжу більше очок на вищій швидкості (?)"
+  - when: {kind: contact, a: Голова, b: Тіло}
+    then: [{kind: lose}, {kind: window, window: Кінець гри}]
+    note: "самозіткнення"
+  - when: {kind: contact, a: Голова, b: Стіна}
+    then: [{kind: lose}, {kind: window, window: Кінець гри}]
+  - when: {kind: contact, a: Голова, b: Перешкода}
+    then: [{kind: lose}, {kind: window, window: Кінець гри}]
+  - when: {kind: edge, a: Голова}
+    cond: [{kind: mode, text: "без стін"}]
+    then: [{kind: wrap, a: "@a"}]
+    note: "Snake II без лабіринту: вихід за край — поява з протилежного боку (?)"
+  - when: {kind: counter, name: "зʼїдено", op: "==", n: 5}
+    then:
+      - {kind: spawn_at, entity: Бонус-жук, where: "випадкова вільна клітина"}
+      - {kind: counter, name: "зʼїдено", n: -5}
+    note: "Snake II (?)"
+  - when: {kind: contact, a: Голова, b: Бонус-жук}
+    then: [{kind: disappear, a: "@b"}, {kind: score, n: 10}]
+    note: "очки × залишок часу жука (?)"
+  - when: {kind: counter, name: "довжина", op: ">=", n: 10}
+    then: [{kind: speed, a: Голова, n: 10}]
+    note: "BBC Micro: темп росте з довжиною (поріг (?)); у Nokia темп сталий — його задає рівень"
+windows:
+  - title: Головне меню
+    task: main-menu
+    items:
+      - {title: Нова гра, window: Гра}
+      - {title: Рівень, window: Рівень}
+      - {title: Лабіринти, window: Лабіринти}
+      - {title: Рекорд, task: score-records}
+      - {title: Інструкції, task: player-guide}
+  - title: Гра
+    task: game-screen
+    description: "Поле й рахунок; у Snake II — ще лічильник часу бонус-жука"
+    claims: [status-panel, game-pause]
+  - title: Рівень
+    task: difficulty-select
+    description: "Рівень швидкості 1–9 (?)"
+  - title: Лабіринти
+    task: level-select
+    description: "Snake II: без стін або один з макетів перешкод (?)"
+  - title: Кінець гри
+    task: end-screen
+    description: "Game over і рахунок; новий рекорд, якщо побито"
+    items:
+      - {title: Ще раз, window: Гра}
+      - {title: У меню, window: Головне меню}
+claims: [{slug: player-death, params: {lives: 1}}, event-points, score-records, difficulty-levels, progress-acceleration]

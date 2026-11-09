@@ -1,0 +1,110 @@
+field:
+  size: "9×9 (нонограма — 10×10, 15×15)"
+  topology: square
+  view: top-down
+  gravity: none
+  time: static
+  control: mark
+  layers: [дані цифри й підказки, розмітка гравця, нотатки, підсвітка]
+entities:
+  - title: Дана цифра
+    role: static
+    description: "Судоку: цифра умови, незмінна, іншим кольором"
+  - title: Цифра
+    role: mark
+    description: "Судоку: цифра 1–9, яку ставить гравець; конфліктує з такою ж у своєму рядку, стовпці чи блоці"
+  - title: Нотатка
+    role: mark
+    description: "Олівцевий кандидат у порожній клітинці; у перевірці не бере участі"
+  - title: Блок 3×3
+    role: zone
+    description: "Судоку: 9 клітинок, кожна цифра по разу — так само рядок і стовпець"
+    stats: [{key: count, value: "9"}]
+  - title: Підказка серій
+    role: static
+    description: "Нонограма: числа збоку від рядка й над стовпцем — довжини серій зафарбованих по порядку"
+    states: [звичайна, виконана, порушена]
+  - title: Зафарбована клітинка
+    role: mark
+    description: "Нонограма: клітинка малюнка"
+  - title: Хрестик
+    role: mark
+    description: "Нонограма: «тут точно порожньо»; у перевірці — як порожня"
+rules:
+  - when: {kind: level_start}
+    then: [{kind: timer, clock: start}]
+    note: "час — лише метрика, на правила не впливає"
+  - when: {kind: input, action: "цифра 1–9"}
+    cond: [{kind: mode, text: ручка}, {kind: legal, text: "клітинка не з даних цифр"}]
+    then: [{kind: mark, cell: target, v: "цифра 1–9"}]
+  - when: {kind: input, action: "цифра 1–9", a: Дана цифра}
+    then: [{kind: block}]
+    note: "дані цифри не змінюються"
+  - when: {kind: input, action: "цифра 1–9"}
+    cond: [{kind: mode, text: олівець}, {kind: free, cell: target}]
+    then: [{kind: mark, cell: target, v: "кандидат"}]
+    note: "повтор тієї ж цифри знімає кандидата; заповнена клітинка нотаток не має"
+  - when: {kind: input, action: "стерти", a: Цифра}
+    then: [{kind: disappear, a: "@a"}]
+  - when: {kind: input, action: "цифра 1–9"}
+    cond: [{kind: mode, text: ручка}, {kind: unique, where: row, not: true}]
+    then: [{kind: paint, cell: target, color: червоний}, {kind: message, text: "Ця цифра вже є в рядку"}]
+  - when: {kind: input, action: "цифра 1–9"}
+    cond: [{kind: mode, text: ручка}, {kind: unique, where: col, not: true}]
+    then: [{kind: paint, cell: target, color: червоний}, {kind: message, text: "Ця цифра вже є в стовпці"}]
+  - when: {kind: input, action: "цифра 1–9"}
+    cond: [{kind: mode, text: ручка}, {kind: unique, where: region, not: true}]
+    then: [{kind: paint, cell: target, color: червоний}, {kind: message, text: "Ця цифра вже є в блоці"}]
+  - when: {kind: constraint_broken, text: "цифра не збігається з розвʼязком"}
+    cond: [{kind: mode, text: "з лімітом помилок"}]
+    then: [{kind: counter, name: помилки, n: 1}, {kind: paint, cell: target, color: червоний}]
+  - when: {kind: counter, name: помилки, op: ">=", n: 3}
+    then: [{kind: lose}, {kind: window, window: Підсумок}]
+  - when: {kind: input, action: "ліва кнопка: зафарбувати"}
+    then: [{kind: paint, cell: target, color: чорний}]
+    note: "протяжка мишею фарбує всю лінію; повтор очищує"
+  - when: {kind: input, action: "права кнопка: хрестик"}
+    then: [{kind: mark, cell: target, v: "×"}]
+  - when: {kind: input, action: "ліва кнопка: зафарбувати"}
+    cond: [{kind: run_lengths, where: row}]
+    then: [{kind: set_state, a: Підказка серій, s: виконана}]
+    note: "підказка сіріє; так само для стовпця"
+  - when: {kind: constraint_broken, text: "серії заповненого ряду не збігаються з підказкою"}
+    then: [{kind: set_state, a: Підказка серій, s: порушена}]
+  - when: {kind: all_constraints_met}
+    then: [{kind: win}, {kind: timer, clock: stop}, {kind: window, window: Підсумок}]
+    note: "нонограма ще показує малюнок і назву"
+windows:
+  - title: Головне меню
+    task: main-menu
+    items:
+      - {title: Грати, window: Вибір пазла}
+      - {title: Правила, window: Правила}
+      - {title: Вихід}
+  - title: Вибір пазла
+    task: puzzle-select
+    description: "Сітка пазлів зі статусами «розвʼязано / ні» і найкращим часом"
+    items:
+      - {title: Судоку, window: Гра}
+      - {title: Нонограма, window: Гра}
+      - {title: Назад, window: Головне меню}
+  - title: Гра
+    task: game-screen
+    description: "Поле з підказками, час, помилки 0/3, перемикач ручка / олівець"
+    claims: [cell-click, pencil-marks, conflict-highlight, status-panel]
+    items:
+      - {title: Скасувати, task: undo-unlimited}
+      - {title: Ручка / олівець}
+      - {title: До списку, window: Вибір пазла}
+  - title: Підсумок
+    task: end-screen
+    description: "Розвʼязано або три помилки: час, кількість помилок"
+    items:
+      - {title: Наступний пазл, window: Вибір пазла}
+      - {title: Головне меню, window: Головне меню}
+  - title: Правила
+    task: help-window
+    description: "Правила судоку й нонограми, керування"
+    items:
+      - {title: Назад, window: Головне меню}
+claims: [markup-validity, completion-detection, satisfy-constraints, wrong-mark-lose, undo-unlimited, level-bank, import-open-formats]

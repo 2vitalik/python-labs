@@ -1,0 +1,117 @@
+# Minesweeper (Windows 3.1–7): Beginner 9×9 / 10, Intermediate 16×16 / 40, Expert 30×16 / 99; перемога — лише час.
+field:
+  size: "9×9 / 16×16 / 30×16"
+  topology: square
+  view: top-down
+  gravity: none
+  time: static
+  control: click-cell
+  layers: [вміст, позначки]
+entities:
+  - title: Закрита клітина
+    role: tile
+    description: "Ще не відкрита; під нею міна або число; приймає відкриття, прапорець, «?»"
+    claims: [cell-click]
+  - title: Міна
+    role: hazard
+    description: "Відкриття — програш; на перемозі автоматично позначається прапорцем"
+    stats: [{key: count, value: "10 / 40 / 99"}]
+    states: [прихована, вибухла, показана]
+  - title: Число
+    role: mark
+    description: "1–8: скільки мін серед 8 сусідів; клік обома кнопками — акорд"
+    claims: [neighbor-count-clue, chord-click]
+  - title: Порожня клітина
+    role: mark
+    description: "0 мін поруч: відкриття розкриває сусідів каскадом до чисел"
+  - title: Прапорець
+    role: mark
+    description: "Права кнопка: блокує відкриття; −1 у лічильнику мін (не перевіряється); на програші хибний — з хрестиком"
+    states: [стоїть, хибний]
+  - title: Знак питання
+    role: mark
+    description: "«?» — нотатка «не певен», опція Marks; відкривається звичайно"
+    claims: [dot-mark]
+  - title: Смайлик
+    role: static
+    description: "Кнопка над полем: клік — нова гра; обличчя показує стан гри"
+    states: ["🙂", "😮", "😵", "😎"]
+rules:
+  - when: {kind: input, action: "лівий клік", a: Закрита клітина}
+    cond: [{kind: first_time}]
+    then: [{kind: spawn_at, entity: Міна, where: "випадкові клітини, крім клітини кліку"}, {kind: timer, clock: start}]
+    note: "перший клік безпечний: Win 3.1–XP переносять міну в кут, Vista+ розкладає так, щоб тут був нуль"
+  - when: {kind: input, action: "лівий клік", a: Закрита клітина}
+    cond: [{kind: has, a: "@a", item: Міна}]
+    then: [{kind: set_state, a: Міна, s: вибухла}, {kind: set_state, a: Смайлик, s: "😵"}, {kind: timer, clock: stop}, {kind: lose}, {kind: window, window: Кінець гри}]
+    note: "решта мін показуються, хибні прапорці — з хрестиком"
+  - when: {kind: input, action: "лівий клік", a: Закрита клітина}
+    cond: [{kind: has, a: "@a", item: Міна, not: true}, {kind: counter, name: мін серед сусідів, op: ">", n: 0}]
+    then: [{kind: transform, a: "@a", into: Число}]
+  - when: {kind: input, action: "лівий клік", a: Закрита клітина}
+    cond: [{kind: has, a: "@a", item: Міна, not: true}, {kind: counter, name: мін серед сусідів, op: "==", n: 0}]
+    then: [{kind: transform, a: "@a", into: Порожня клітина}]
+  - when: {kind: spawned, a: Порожня клітина}
+    then: [{kind: fill, cell: target}]
+    note: "flood fill: відкрити 8 сусідів, нулі відкривають далі, числа зупиняють, прапорці не чіпаються"
+  - when: {kind: input, action: "лівий клік", a: Прапорець}
+    then: [{kind: block}]
+  - when: {kind: input, action: "правий клік", a: Закрита клітина}
+    then: [{kind: transform, a: "@a", into: Прапорець}, {kind: counter, name: мін лишилось, n: -1}]
+    note: "лічильник може піти в мінус"
+  - when: {kind: input, action: "правий клік", a: Прапорець}
+    then: [{kind: transform, a: "@a", into: Знак питання}, {kind: counter, name: мін лишилось, n: 1}]
+    note: "якщо Marks вимкнено — одразу назад у закриту"
+  - when: {kind: input, action: "правий клік", a: Знак питання}
+    then: [{kind: transform, a: "@a", into: Закрита клітина}]
+  - when: {kind: input, action: "обидві кнопки на числі", a: Число}
+    cond: [{kind: custom, text: "прапорців навколо стільки ж, скільки показує число"}]
+    then: [{kind: reveal, cell: any}]
+    note: "акорд: відкрити закритих незапрапорених сусідів; хибний прапорець — міна відкриється й програш; прапорців менше — лише підсвітити"
+  - when: {kind: input, action: "ліва кнопка затиснута", a: Закрита клітина}
+    then: [{kind: set_state, a: Смайлик, s: "😮"}]
+    note: "клітина «втискається» — превʼю до відпускання"
+  - when: {kind: counter, name: закритих безпечних, op: "==", n: 0}
+    then: [{kind: set_state, a: Смайлик, s: "😎"}, {kind: timer, clock: stop}, {kind: win}, {kind: window, window: Новий рекорд}]
+    note: "прапорці не потрібні; міни позначаються самі; вікно рекорду — лише якщо час кращий"
+  - when: {kind: input, action: "клік по смайлику / F2", a: Смайлик}
+    then: [{kind: restart}]
+    note: "нова дошка"
+windows:
+  - title: Меню Game
+    task: main-menu
+    description: "Меню Windows 3.1–XP над полем"
+    claims: [field-size-picker]
+    items:
+      - {title: "New (F2)", task: restart-level}
+      - {title: "Beginner / Intermediate / Expert", task: difficulty-levels}
+      - {title: "Custom… (висота, ширина, міни)", task: field-size-picker}
+      - {title: "Marks (?)", task: dot-mark}
+      - {title: "Best Times…", window: Рекорди}
+      - {title: Exit}
+  - title: Сапер
+    task: game-screen
+    description: "Зверху — лічильник мін (міни − прапорці), смайлик, таймер секунд до 999"
+    claims: [remaining-counter, status-panel]
+  - title: Кінець гри
+    task: end-screen
+    description: "Windows 7: поразка — Exit / Restart this game / Play again; перемога — час, рекорд, статистика"
+    items:
+      - {title: Play again, window: Сапер}
+      - {title: Restart this game, task: restart-level}
+      - {title: Exit}
+  - title: Новий рекорд
+    task: custom-window
+    description: "«You have the fastest time for … level. Please enter your name.»"
+    items:
+      - {title: OK, window: Рекорди}
+  - title: Рекорди
+    task: leaderboard
+    description: "Fastest Mine Sweepers: по одному рекорду на складність з іменем; Reset Scores"
+    items:
+      - {title: OK, window: Сапер}
+claims:
+  - mines-after-first-click
+  - difficulty-levels
+  - completion-detection
+  - score-records

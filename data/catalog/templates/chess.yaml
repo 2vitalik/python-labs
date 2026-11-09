@@ -1,0 +1,136 @@
+field:
+  size: "8×8"
+  topology: square
+  view: top-down
+  gravity: none
+  time: turn
+  control: click-cell
+  layers: [дошка, фігури, підсвітка]
+entities:
+  - title: Король
+    role: piece
+    description: "Ходить на 1 клітину в будь-який бік; не може стати під удар; рокіровка"
+    stats: [{key: count, value: "1"}]
+    states: [вибрана, ходив, під шахом]
+    claims: [no-move-into-check, check-stalemate]
+  - title: Ферзь
+    role: piece
+    description: "Будь-яка відстань по вертикалі, горизонталі й діагоналі до першої перешкоди"
+    stats: [{key: count, value: "1"}, {key: value, label: цінність, value: "9"}]
+    states: [вибрана]
+  - title: Тура
+    role: piece
+    description: "Будь-яка відстань по вертикалі й горизонталі; бере участь у рокіровці"
+    stats: [{key: count, value: "2"}, {key: value, label: цінність, value: "5"}]
+    states: [вибрана, ходила]
+  - title: Слон
+    role: piece
+    description: "Будь-яка відстань по діагоналі, завжди на полях свого кольору"
+    stats: [{key: count, value: "2"}, {key: value, label: цінність, value: "3"}]
+    states: [вибрана]
+  - title: Кінь
+    role: piece
+    description: "Ходить буквою Г (2 + 1) і єдиний перестрибує через фігури"
+    stats: [{key: count, value: "2"}, {key: value, label: цінність, value: "3"}]
+    states: [вибрана]
+  - title: Пішак
+    role: piece
+    description: "Іде на 1 вперед (з початкового ряду — на 2), бʼє по діагоналі вперед; на останньому ряду перетворюється"
+    stats: [{key: count, value: "8"}, {key: value, label: цінність, value: "1"}]
+    states: [вибрана, щойно на 2]
+    claims: [pawn-promotion]
+  - title: Клітина
+    role: terrain
+    description: "Поле дошки a1–h8, світле або темне; на клітині не більше однієї фігури"
+    stats: [{key: count, value: "64"}]
+rules:
+  - when: {kind: input, action: "вибір фігури", a: "*"}
+    cond: [{kind: turn_of, a: "@a"}]
+    then: [{kind: set_state, a: "@a", s: вибрана}, {kind: mark, cell: any, v: "легальний хід"}]
+    note: "підсвітити клітини, куди обрана фігура може піти"
+  - when: {kind: input, action: "вибір фігури", a: "*"}
+    cond: [{kind: turn_of, a: "@a", not: true}]
+    then: [{kind: message, text: "Зараз хід суперника"}]
+  - when: {kind: input, action: "хід на клітину", a: Король}
+    cond: [{kind: turn_of, a: "@a"}, {kind: legal, text: "на 1 клітину в будь-якому з 8 напрямків"}]
+    then: [{kind: move, a: "@a", dir: any}, {kind: set_state, a: "@a", s: ходив}, {kind: end_turn}]
+  - when: {kind: input, action: "хід на клітину", a: Ферзь}
+    cond: [{kind: turn_of, a: "@a"}, {kind: legal, text: "по вертикалі, горизонталі чи діагоналі"}, {kind: path_exists, a: "@a", b: Клітина}]
+    then: [{kind: move, a: "@a", dir: toward}, {kind: end_turn}]
+  - when: {kind: input, action: "хід на клітину", a: Тура}
+    cond: [{kind: turn_of, a: "@a"}, {kind: legal, text: "по вертикалі чи горизонталі"}, {kind: path_exists, a: "@a", b: Клітина}]
+    then: [{kind: move, a: "@a", dir: toward}, {kind: set_state, a: "@a", s: ходила}, {kind: end_turn}]
+  - when: {kind: input, action: "хід на клітину", a: Слон}
+    cond: [{kind: turn_of, a: "@a"}, {kind: legal, text: "по діагоналі"}, {kind: path_exists, a: "@a", b: Клітина}]
+    then: [{kind: move, a: "@a", dir: toward}, {kind: end_turn}]
+  - when: {kind: input, action: "хід на клітину", a: Кінь}
+    cond: [{kind: turn_of, a: "@a"}, {kind: legal, text: "буквою Г: 2 клітини в один бік і 1 убік, через фігури"}]
+    then: [{kind: move, a: "@a", dir: toward}, {kind: end_turn}]
+  - when: {kind: input, action: "хід на клітину", a: Пішак}
+    cond: [{kind: turn_of, a: "@a"}, {kind: legal, text: "на 1 вперед на вільну або на 1 по діагоналі вперед із взяттям"}]
+    then: [{kind: move, a: "@a", dir: toward}, {kind: end_turn}]
+  - when: {kind: input, action: "хід на 2 клітини", a: Пішак}
+    cond: [{kind: turn_of, a: "@a"}, {kind: legal, text: "з початкового ряду, обидві клітини вільні"}]
+    then: [{kind: move, a: "@a", dir: forward}, {kind: move, a: "@a", dir: forward}, {kind: set_state, a: "@a", s: щойно на 2, dur: 1}, {kind: end_turn}]
+    note: "стан живе до кінця наступного ходу суперника — для взяття на проході"
+  - when: {kind: input, action: "хід на клітину", a: "*"}
+    cond: [{kind: legal, text: "після ходу свій король не під ударом", not: true}]
+    then: [{kind: block}, {kind: message, text: "Так не можна: король під шахом"}]
+  - when: {kind: contact, a: "*", b: "*"}
+    cond: [{kind: same, a: "@a", b: "@b", prop: кольором, not: true}]
+    then: [{kind: disappear, a: "@b"}]
+    note: "взяття: фігура стає на клітину фігури суперника"
+  - when: {kind: reach, a: Пішак, where: "останній ряд"}
+    then: [{kind: choose, options: "ферзь, тура, слон або кінь"}, {kind: transform, a: "@a", into: Ферзь}]
+    note: "за замовчуванням — ферзь"
+  - when: {kind: input, action: "рокіровка", a: Король}
+    cond: [{kind: turn_of, a: "@a"}, {kind: state, a: "@a", s: ходив, not: true}, {kind: legal, text: "тура не ходила, між ними вільно, король не під шахом і не проходить битим полем"}]
+    then: [{kind: custom, text: "король зсувається на 2 клітини до тури, тура стає поруч по інший бік від нього"}, {kind: set_state, a: "@a", s: ходив}, {kind: end_turn}]
+  - when: {kind: input, action: "взяття на проході", a: Пішак}
+    cond: [{kind: turn_of, a: "@a"}, {kind: legal, text: "поруч стоїть пішак суперника у стані «щойно на 2»"}]
+    then: [{kind: move, a: "@a", dir: toward}, {kind: custom, text: "знімається пішак суперника, що щойно пройшов, — не з клітини призначення"}, {kind: end_turn}]
+  - when: {kind: turn_end}
+    cond: [{kind: custom, text: "король суперника під ударом"}]
+    then: [{kind: set_state, a: Король, s: під шахом, dur: 1}, {kind: message, text: "Шах!"}, {kind: sound, text: "шах"}]
+    note: "король сторони, що ходить наступною"
+  - when: {kind: no_moves}
+    cond: [{kind: state, a: Король, s: під шахом}]
+    then: [{kind: win}, {kind: window, window: Кінець партії}]
+    note: "мат: перемагає той, хто його поставив"
+  - when: {kind: no_moves}
+    cond: [{kind: state, a: Король, s: під шахом, not: true}]
+    then: [{kind: draw}, {kind: window, window: Кінець партії}]
+    note: "пат"
+  - when: {kind: turn_start}
+    then: [{kind: timer, clock: start, n: 60}]
+    note: "годинник сторони, що ходить"
+  - when: {kind: counter, name: "час на хід", op: "<=", n: 0}
+    then: [{kind: lose}, {kind: window, window: Кінець партії}]
+    note: "програє той, у кого скінчився час"
+windows:
+  - title: Головне меню
+    task: main-menu
+    items:
+      - {title: Нова партія, window: Налаштування партії}
+      - {title: Вихід}
+  - title: Налаштування партії
+    task: match-setup
+    description: "Хто грає білими, час на хід"
+    claims: [{slug: move-timer, params: {per_move: 60}}]
+    items:
+      - {title: Почати, window: Гра}
+      - {title: Назад, window: Головне меню}
+  - title: Гра
+    task: game-screen
+    description: "Дошка 8×8 з координатами, чий хід, взяті фігури, годинник"
+    claims: [legal-move-highlight, last-move-highlight, mode-indicator]
+    items:
+      - {title: Здатися, window: Кінець партії}
+      - {title: Головне меню, window: Головне меню}
+  - title: Кінець партії
+    task: end-screen
+    description: "Мат, пат або час вийшов: хто переміг і як"
+    items:
+      - {title: Реванш, window: Гра}
+      - {title: Головне меню, window: Головне меню}
+claims: [piece-move-patterns, piece-capture, checkmate, hot-seat, turn-enforcement]
