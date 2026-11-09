@@ -1,0 +1,29 @@
+# початок руками, без еталона: мало всього, підказки, чернетки без господаря, картки без параметрів
+student: {last_name: Савчук, first_name: Дарина, group: ПЗПІ-25-0}
+game: {title: Мишка і сир, base_game: maze}
+field: {size: "15×15", time: turn}
+entities:
+  - title: Мишка
+    role: player
+    claims: [move-4dir]
+  - title: Сир
+    role: pickup
+  - title: Кіт
+    role: enemy
+    description: "Ходить за мишкою, коли бачить її"
+rules:
+  - when: {kind: contact, a: Мишка, b: Кіт}
+    then: [{kind: lose}]
+windows:
+  - title: Головне меню
+    task: main-menu
+    items:
+      - {title: Грати}
+      - {title: Вихід}
+claims:
+  - reach-exit
+  - {slug: maze-generation, params: {algo: dfs}}   # ⭐ без посилання на код
+  - time-out          # без обовʼязкового параметра
+  - chase-greedy      # картки сутності й вікна без господаря — чернетки
+  - spawn-schedule
+  - status-panel

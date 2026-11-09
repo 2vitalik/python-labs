@@ -1,0 +1,155 @@
+# фігурна покрокова: ШІ з глибиною, ходи назад, годинник, тор по горизонталі; майже все зараховано
+student: {last_name: Шевчук, first_name: Вікторія, group: ПЗПІ-25-0}
+game:
+  title: Шахи на циліндрі
+  base_game: chess
+  description: |
+    Шахи, де вертикалі **a** і **h** склеєні: тура з a1 бʼє на h1 «через край». Плюс дві казкові фігури і ШІ на мінімаксі.
+  phases: [ввід, перевірка легальності, хід, взяття, перевірка шаху, передача ходу]
+etalon: true
+field:
+  size: "8×8"
+  topology: square
+  wrap: true
+  view: top-down
+  gravity: none
+  time: turn
+  control: drag-piece
+  layers: [дошка, фігури, підсвітка, стрілки аналізу]
+  description: "Тор лише по горизонталі: край a ↔ h; по вертикалі дошка звичайна"
+  claims: [{slug: gui-render, status: accepted}, field-scaling]
+entities:
+  - title: Король
+    claims:
+      - {slug: no-move-into-check, link: "https://github.com/demo-pzpi-25-0/cylinder-chess/blob/main/chess/legal.py#L20-L55", status: accepted, verdict: "Пробний хід і відкат — коректно, і через край теж"}
+      - {slug: check-stalemate, link: "https://github.com/demo-pzpi-25-0/cylinder-chess/blob/main/chess/legal.py#L58-L80", status: returned, verdict: "Пат не розпізнається, коли єдиний хід короля — через край"}
+  - title: Кінь
+    claims: [{slug: piece-move-patterns, status: accepted}]
+  - title: Пішак
+    claims: [{slug: pawn-promotion, status: accepted}, {slug: piece-capture, status: accepted}]
+  - title: Канцлер
+    role: piece
+    description: "Тура + кінь; стоїть замість ферзевої тури"
+    stats: [{key: count, value: "2"}, {key: value, value: "8"}]
+    states: [вибрана]
+    claims: [piece-move-patterns]
+  - title: Архієпископ
+    role: piece
+    description: "Слон + кінь"
+    stats: [{key: count, value: "2"}, {key: value, value: "7"}]
+    states: [вибрана]
+  - title: Шаховий годинник
+    role: object
+    description: "Два таймери з додаванням 5 с за хід (Фішер)"
+    stats: [{key: duration, label: на партію, value: "600", unit: "с"}, {key: інкремент, value: "5", unit: "с"}]
+    states: [іде у білих, іде у чорних, на паузі]
+  - title: Стрілка аналізу
+    role: mark
+    description: "Перетягування правою кнопкою малює стрілку на дошці — для розбору"
+rules:
+  - when: {kind: edge, a: "*"}
+    cond: [{kind: moving, a: "@a", dir: left}]
+    then: [{kind: wrap, a: "@a"}]
+    note: "і так само праворуч; по вертикалі край — стіна"
+  - when: {kind: turn_start}
+    cond: [{kind: in_check, a: Король}]
+    then: [{kind: set_state, a: Король, s: під шахом}, {kind: message, text: "Шах!"}]
+  - when: {kind: turn_start}
+    cond: [{kind: mode, text: проти ШІ}]
+    then: [{kind: custom, text: "ШІ обирає хід: мінімакс глибини 3 з альфа-бета відсіканням"}]
+  - when: {kind: input, action: Ctrl+Z}
+    cond: [{kind: mode, text: проти ШІ}]
+    then: [{kind: undo, n: 2}]
+    note: "свій хід і відповідь ШІ"
+  - when: {kind: input, action: Ctrl+Z}
+    cond: [{kind: mode, text: проти ШІ, not: true}]
+    then: [{kind: undo}]
+  - when: {kind: turn_end}
+    then: [{kind: timer, clock: add, n: 5}, {kind: end_turn}]
+    note: "інкремент Фішера"
+  - when: {kind: counter, name: час сторони, op: "==", n: 0}
+    then: [{kind: lose}]
+    note: "нічия, якщо в суперника лишився голий король"
+  - when: {kind: counter, name: повторень позиції, op: ">=", n: 3}
+    then: [{kind: draw}]
+  - when: {kind: reach, a: Пішак, where: остання горизонталь}
+    then: [{kind: choose, options: "ферзь · тура · слон · кінь · канцлер · архієпископ"}]
+  - when: {kind: input, action: ПКМ + перетягнути}
+    then: [{kind: spawn, entity: Стрілка аналізу, cell: target}]
+  - when: {kind: turn_start}
+    then: [{kind: disappear, a: Стрілка аналізу}]
+windows:
+  - title: Головне меню
+    items:
+      - {title: Нова партія, window: Налаштування партії}
+      - {title: Удвох, window: Лобі}
+      - {title: Розбір партій, window: Розбір партії}
+      - {title: Навчання, window: Навчання}
+      - {title: Фігури, window: Фігури}
+      - {title: Статистика, window: Статистика}
+      - {title: Налаштування, window: Налаштування}
+      - {title: Вихід}
+  - title: Гра
+    claims:
+      - {slug: legal-move-highlight, status: accepted}
+      - {slug: last-move-highlight, status: accepted}
+      - {slug: drag-drop-piece, status: accepted}
+      - hover-highlight
+      - {slug: threat-range, note: "клавіша T показує биті поля"}
+    items:
+      - {title: Хід назад, task: undo-step}
+      - {title: Запропонувати нічию, note: "ШІ погоджується, коли оцінка в межах ±0.3"}
+      - {title: Здатися, window: Кінець партії}
+      - {title: Головне меню, window: Головне меню}
+    shots:
+      - |
+        tnbqkbnt
+        pppppppp
+        . . . .
+         . . . .
+        . . P .
+         . . . .
+        PPPP PPP
+        TNBQKBNT
+  - title: Налаштування партії
+    claims: [{slug: move-timer, status: returned, verdict: "Час іде й під час анімації ходу суперника"}]
+  - title: Лобі
+    task: lobby-window
+    description: "Двоє за одним компʼютером: імена, кольори, хто починає"
+    items: [{title: Грати, window: Гра}, {title: Назад, window: Головне меню}]
+  - title: Розбір партії
+    task: replay-window
+    description: "Перемотування ходів, стрілки аналізу, оцінка позиції"
+    claims: [{slug: replay, status: accepted}]
+    items: [{title: Назад, window: Головне меню}]
+  - title: Навчання
+    task: tutorial-window
+    description: "Пʼять уроків: як ходять фігури через край"
+  - title: Фігури
+    task: codex-window
+  - title: Статистика
+    task: stats-window
+    claims: [profile-stats, score-records]
+  - title: Налаштування
+    task: settings-window
+    claims: [theme-select, avatar-picker, volume-control]
+    items: [{title: Назад, window: Головне меню}]
+claims:
+  - {slug: ai-minimax, params: {depth: 3}, link: "https://github.com/demo-pzpi-25-0/cylinder-chess/blob/main/chess/ai.py#L1-L90", status: accepted, verdict: "Альфа-бета є, на глибині 3 відповідає за секунду"}
+  - {slug: ai-greedy, status: accepted}
+  - {slug: ai-random, status: accepted}
+  - {slug: checkmate, link: "https://github.com/demo-pzpi-25-0/cylinder-chess/blob/main/chess/legal.py#L82-L96", status: accepted}
+  - {slug: hot-seat, status: accepted}
+  - {slug: turn-enforcement, status: accepted}
+  - {slug: undo-redo, status: accepted}
+  - {slug: undo-step, status: accepted}
+  - redo
+  - {slug: ai-opponent, status: returned, verdict: "ШІ завжди грає чорними — вибору сторони нема"}
+  - {slug: save-game, status: accepted}
+  - {slug: unit-tests, link: "https://github.com/demo-pzpi-25-0/cylinder-chess/tree/main/tests", status: accepted}
+  - property-tests   # ⭐ без посилання — підказка
+  - {slug: typing-mypy, status: accepted}
+  - state-as-data
+  - custom-exceptions
+  - sound-effects
+  - sound-volume

@@ -1,0 +1,91 @@
+# хід рухає все поле: гравітація, вид збоку, шаблони й каскади; середній розмір, викладач ще не дивився
+student: {last_name: Руденко, first_name: Ілля, group: ПЗПІ-25-0}
+game:
+  title: "2048: Обвал"
+  base_game: "2048"
+  description: "2048 у колодязі: після кожного ходу плитки падають униз, три однакові поспіль згоряють, а камені не зливаються ні з чим."
+  phases: [ввід, зсув, злиття, падіння, згоряння, нова плитка, перевірка кінця]
+etalon: true
+field:
+  size: "5×7"
+  topology: square
+  view: side
+  gravity: down
+  time: turn
+  control: swipe-all
+  layers: [плитки, ефекти]
+  description: "Колодязь: стінки з боків, дно знизу; нові плитки зʼявляються згори"
+  claims: [gui-render, field-scaling]
+entities:
+  - title: Плитка   # еталонна сутність
+    claims: [gravity-fall]
+  - title: Камінь
+    role: tile
+    description: "Не зливається; зникає лише від бомби або разом із повним рядом"
+    stats: [{key: count, value: "до 6"}]
+    claims: [gravity-fall]
+  - title: Бомба
+    role: tile
+    description: "Зливається з будь-чим і вибухає хрестом"
+    stats: [{key: range, value: "1", unit: "кл"}]
+    states: [спокійна, запалена]
+    claims: [{slug: blast-wave, params: {radius: 1}}, gravity-fall]
+rules:
+  - when: {kind: turn_end}
+    then: [{kind: fall, a: "*"}]
+    note: "усе, під чим порожньо, падає до упору"
+  - when: {kind: settled}
+    cond: [{kind: chain, n: 2}]
+    then: [{kind: multiplier, k: 2}, {kind: sound, text: комбо}]
+  - when: {kind: pattern, shape: row}
+    then: [{kind: clear, shape: row}, {kind: score, n: 500}, {kind: shift, axis: all, dir: down}]
+  - when: {kind: pattern, shape: line, n: 3}
+    then: [{kind: clear, shape: line}, {kind: counter, name: комбо, n: 1}]
+    note: "три однакові поспіль по горизонталі чи вертикалі"
+  - when: {kind: contact, a: Бомба, b: "*"}
+    then: [{kind: set_state, a: "@a", s: запалена}, {kind: explode, shape: cross, n: 1}, {kind: disappear, a: "@a"}]
+  - when: {kind: phase_start, phase: нова плитка}
+    cond: [{kind: prob, p: 10}]
+    then: [{kind: spawn_at, entity: Камінь, where: "верхній ряд, випадковий стовпець"}]
+  - when: {kind: spawned, a: Камінь}
+    cond: [{kind: fits, a: "@a", cell: target, not: true}]
+    then: [{kind: lose}]
+    note: "колодязь повний"
+  - when: {kind: input, action: R}
+    then: [{kind: rotate, a: "*", deg: "90"}, {kind: fall, a: "*"}]
+    note: "поворот колодязя — раз на 10 ходів"
+  - when: {kind: tick}
+    cond: [{kind: mode, text: на час}, {kind: timer, op: "<=", n: 10}]
+    then: [{kind: sound, text: цокання}]
+windows:
+  - title: Головне меню
+    items:
+      - {title: Грати, window: Режими}
+      - {title: Рекорди, window: Рекорди}
+      - {title: Як грати, window: Як грати}
+  - title: Режими
+    task: mode-select
+    description: "Класика · обвал · на час"
+    items: [{title: Почати, window: Гра}, {title: Назад, window: Головне меню}]
+  - title: Гра
+    shots:
+      - |
+        #.....#
+        #.....#
+        #..2..#
+        #..4.s#
+        #.8842#
+        #s4228#
+        #24s48#
+        #######
+  - title: Рекорди
+    task: leaderboard
+    items: [{title: Назад, window: Головне меню}]
+claims:
+  - undo-step
+  - combo-multiplier
+  - {slug: time-out, params: {limit: 120}, note: "лише в режимі «на час»"}
+  - difficulty-levels
+  - particles
+  - sound-effects
+  - {slug: unit-tests, link: "https://github.com/demo-pzpi-25-0/2048-collapse/tree/main/tests"}

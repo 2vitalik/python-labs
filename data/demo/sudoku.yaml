@@ -1,0 +1,136 @@
+# пазли-розмітки: предикати обмежень, корона за генератор; викладач ще не дивився — усе «заявлено», з нотатками й лінками
+student: {last_name: Кравець, first_name: Андрій, group: ПЗПІ-25-0}
+game:
+  title: Зошит у клітинку
+  base_game: paper-puzzles
+  description: "Чотири пазли в одному зошиті: судоку, кілер-судоку, нурікабе і слізерлінк. Щодня — новий пазл із гарантовано єдиним розвʼязком."
+  phases: [ввід, розмітка, перевірка обмежень, підсвітка конфліктів, перевірка розвʼязку]
+etalon: true
+entities:
+  - title: Клітка суми
+    role: zone
+    description: "Кілер-судоку: пунктирна область із числом — сума цифр у ній, без повторів"
+    stats: [{key: count, value: "≈ 30"}, {key: size, value: "1–5", unit: "кл"}]
+    states: [відкрита, заповнена, порушена]
+    claims: [markup-validity]
+  - title: Острів
+    role: mark
+    description: "Нурікабе: біла область з рівно одним числом — її розміром"
+  - title: Море
+    role: mark
+    description: "Нурікабе: чорні клітинки — одна звʼязна область без квадратів 2×2"
+  - title: Відрізок петлі
+    role: mark
+    description: "Слізерлінк: ребро між точками; всі відрізки разом — одна замкнена петля"
+  - title: Число-підказка
+    role: static
+    description: "Слізерлінк і нурікабе: скільки ребер навколо клітинки або розмір острова"
+rules:
+  - when: {kind: input, action: клік по ребру}
+    cond: [{kind: mode, text: слізерлінк}]
+    then: [{kind: spawn, entity: Відрізок петлі, cell: target}]
+    note: "другий клік по тому самому ребру — хрестик «тут лінії нема», третій — порожньо"
+  - when: {kind: adjacent, a: Відрізок петлі, b: Число-підказка}
+    cond: [{kind: adjacent_count, what: Відрізок петлі, op: ">", n: 3}]
+    then: [{kind: paint, cell: target, color: червоний}]
+    note: "3 — приклад: поріг — саме число в клітинці"
+  - when: {kind: input, action: цифра в клітинку}
+    cond: [{kind: mode, text: кілер}, {kind: unique, where: cage, not: true}]
+    then: [{kind: set_state, a: Клітка суми, s: порушена}, {kind: paint, cell: target, color: червоний}]
+  - when: {kind: constraint_broken, text: сума клітки}
+    cond: [{kind: sum, where: cage, n: 15, not: true}]
+    then: [{kind: set_state, a: Клітка суми, s: порушена}]
+    note: "15 — приклад: число в кожної клітки своє"
+  - when: {kind: input, action: зафарбувати клітинку}
+    cond: [{kind: mode, text: нурікабе}, {kind: no_2x2, what: Море, not: true}]
+    then: [{kind: paint, cell: neighbors, color: червоний}, {kind: message, text: "Квадрат 2×2 з моря — не можна"}]
+  - when: {kind: constraint_broken, text: острови торкаються}
+    cond: [{kind: no_adjacent, what: Острів, not: true}]
+    then: [{kind: paint, cell: target, color: червоний}]
+  - when: {kind: constraint_broken, text: розмір острова}
+    cond: [{kind: region_size, what: Острів, n: 5, not: true}]
+    then: [{kind: mark, cell: target, v: "!"}]
+    note: "5 — приклад: розмір — число на острові"
+  - when: {kind: input, action: перевірити}
+    cond: [{kind: mode, text: нурікабе}, {kind: connected, what: Море}, {kind: no_2x2, what: Море}, {kind: custom, text: "кожен острів має рівно одне число і стільки ж клітин"}]
+    then: [{kind: win}]
+  - when: {kind: input, action: перевірити}
+    cond: [{kind: mode, text: слізерлінк}, {kind: single_loop}, {kind: custom, text: "біля кожного числа стільки ж відрізків"}]
+    then: [{kind: win}]
+  - when: {kind: all_constraints_met}
+    cond: [{kind: mode, text: кілер}, {kind: cover_all, what: Цифра}]
+    then: [{kind: win}, {kind: timer, clock: stop}, {kind: window, window: Підсумок}]
+  - when: {kind: input, action: подвійний клік по морю}
+    then: [{kind: fill, cell: target}]
+    note: "заливає замкнену порожню область"
+  - when: {kind: input, action: підказка}
+    cond: [{kind: counter, name: підказок, op: ">", n: 0}]
+    then: [{kind: reveal, cell: target}, {kind: counter, name: підказок, n: -1}]
+  - when: {kind: input, action: ПКМ по позначці}
+    then: [{kind: unmark, cell: target}]
+windows:
+  - title: Головне меню
+    items:
+      - {title: Пазл дня, window: Календар}
+      - {title: Усі пазли, window: Вибір пазла}
+      - {title: Статистика, window: Статистика}
+      - {title: Як розвʼязувати, window: Навчання}
+      - {title: Правила, window: Правила}
+      - {title: Налаштування, window: Налаштування}
+  - title: Гра
+    claims: [selection-highlight, {slug: mode-indicator, note: "ручка чи олівець — іконка біля курсора"}, goal-counter]
+    items:
+      - {title: Скасувати, task: undo-unlimited}
+      - {title: Повернути, task: redo}
+      - {title: Підказка, note: "3 на пазл"}
+      - {title: Перевірити}
+      - {title: Ручка / олівець}
+      - {title: До списку, window: Вибір пазла}
+    shots:
+      - |
+        53 |.7.|...
+        6..|195|...
+        .98|...|.6.
+        ---+---+---
+        8..|.6.|..3
+        4..|8.3|..1
+        7..|.2.|..6
+        ---+---+---
+        .6.|...|28.
+        ...|419|..5
+        ...|.8.|.79
+  - title: Календар
+    task: custom-window
+    description: "Місяць клітинками: розвʼязані дні зафарбовані, серія без пропусків — у кутку"
+    claims: [daily-puzzle]
+    items: [{title: Сьогоднішній пазл, window: Гра}, {title: Назад, window: Головне меню}]
+  - title: Статистика
+    task: stats-window
+    claims: [profile-stats, level-rating]
+  - title: Навчання
+    task: tutorial-window
+    description: "По одному прийому на екран: «гола одиниця», «прихована пара»…"
+  - title: Налаштування
+    task: settings-window
+    claims: [theme-select, game-settings]
+    items: [{title: Назад, window: Головне меню}]
+claims:
+  - {slug: unique-puzzle-generation, note: "будую повне рішення, прибираю цифри, доки солвер знаходить рівно один розвʼязок", link: "https://github.com/demo-pzpi-25-0/grid-notebook/blob/main/puzzles/generate.py"}
+  - {slug: level-solver, note: "пошук з поверненням + поширення обмежень", link: "https://github.com/demo-pzpi-25-0/grid-notebook/blob/main/puzzles/solve.py#L1-L120"}
+  - difficulty-rating   # ⭐ без посилання — підказка
+  - {slug: property-tests, link: "https://github.com/demo-pzpi-25-0/grid-notebook/blob/main/tests/test_unique.py"}
+  - {slug: difficulty-levels, note: "за кількістю прийомів, потрібних солверу"}
+  - time-bonus
+  - score-records
+  - undo-redo
+  - redo
+  - rewind
+  - save-autosave
+  - save-progress
+  - level-metadata
+  - unit-tests
+  - fixture-level-tests
+  - generators-iterators
+  - std-collections
+  - architecture-doc
+  - dev-log

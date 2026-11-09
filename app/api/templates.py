@@ -38,11 +38,15 @@ def all_summaries() -> dict:
 
 
 async def apply(game: Game, user: User, slug: str) -> dict:
-    """Add what the student's game does not have yet: the field, entities, windows with menus, rules, claims.
-    Matching is by title, so the import is safe to repeat; unknown cards and bad words are reported, not fatal."""
     t = load(slug)
     if not t:
         raise HTTPException(404, "Еталона для цієї основи ще нема.")
+    return await pour(game, user, t)
+
+
+async def pour(game: Game, user: User, t: dict) -> dict:
+    """Add what the student's game does not have yet: the field, entities, windows with menus, rules, claims.
+    Matching is by title, so the import is safe to repeat; unknown cards and bad words are reported, not fatal."""
     parts = await Part.find(Part.game == game.id).to_list()
     claims = await Claim.find(Claim.game == game.id).to_list()
     by_title = {(p.kind, p.title.lower()): p for p in parts}

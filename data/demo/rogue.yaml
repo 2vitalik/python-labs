@@ -1,0 +1,308 @@
+# своя основа, без еталона: гекси, туман, інвентар; 12 фаз тіку і 12 станів героя — стелі форми; перевірено частково
+student: {last_name: Лисенко, first_name: Тарас, group: ПЗПІ-25-0}
+game:
+  title: Печери Говерли
+  base_custom: "Roguelike: покрокове підземелля на гексах"
+  description: |
+    Мандрівник спускається на 10 поверхів випадкового підземелля. Смерть — назавжди, кожен забіг новий.
+
+    Натхнення — NetHack і Brogue; поле гексагональне, щоб не було суперечок про діагоналі.
+  phases: [ввід, гравець, супутник, вороги, снаряди, пастки, голод, ефекти станів, спавн, туман, перевірка смерті, рендер]
+field:
+  size: "змінний, ≈ 40×25 на поверх"
+  topology: hex
+  view: top-down
+  gravity: none
+  time: turn
+  control: indirect
+  layers: [підлога, предмети, істоти, ефекти, туман]
+  description: "Поверх генерується на вході: кімнати й коридори; бачене раніше лишається сірим"
+  claims:
+    - {slug: player-camera, status: accepted}
+    - minimap-radar
+    - field-scaling
+    - {slug: console-render, note: "curses; гекси — зі зсувом рядка на півсимволу", status: accepted}
+    - gui-render
+  shots:
+    - |
+      ##########################
+      ###......####....#########
+      ###..@...++......###...###
+      ###..d...####..w.###.$.###
+      ######+######....+++...###
+      ####.....####.!..###...###
+      ####..>..#########+#######
+      ####.....####......b...###
+      #############..^.......###
+      ##########################
+entities:
+  - title: Мандрівник
+    role: player
+    description: "Один хід — одна дія: крок, удар, предмет або відпочинок"
+    stats:
+      - {key: hp, value: "20"}
+      - {key: armor, value: "1"}
+      - {key: damage, value: "1–4"}
+      - {key: range, label: огляд, value: "6", unit: "кл"}
+      - {key: capacity, value: "10"}
+      - {key: ситість, value: "100", unit: "од."}
+      - {key: рівень, value: "1"}
+    states: [звичайний, голодний, отруєний, спить, невидимий, у люті, обпечений, сліпий, швидкий, повільний, закляклий, благословенний]
+    claims:
+      - move-by-input
+      - {slug: hp-damage, params: {hp: 20, who: герой і монстри}, status: accepted}
+      - {slug: inventory, status: accepted}
+      - {slug: inventory-limit, params: {capacity: 10}}
+      - inventory-items
+      - {slug: temporary-modes, params: {duration: 30}, note: "12 станів, у кожного свій лічильник ходів"}
+    shots:
+      - |
+        ..@@..
+        .@@@@.
+        ..@@..
+        .@@@@.
+        .@..@.
+  - title: Пес
+    role: ally
+    description: "Супутник: тримається за 2 клітини, кусає того, хто бʼє господаря"
+    stats: [{key: hp, value: "8"}, {key: damage, value: "1–3"}]
+    states: [поруч, атакує, загубився]
+    claims: [chase-player]
+  - title: Вовк
+    role: enemy
+    stats: [{key: hp, value: "6"}, {key: damage, value: "1–3"}, {key: speed, value: "2", unit: "кл/тік"}, {key: досвід, value: "15"}]
+    states: [спить, блукає, переслідує, тікає]
+    claims:
+      - {slug: chase-bfs, link: "https://github.com/demo-pzpi-25-0/hoverla-caves/blob/main/core/path.py", status: accepted}
+      - chase-double-move
+  - title: Кажан
+    role: enemy
+    description: "Літає хаотично, через воду і прірви"
+    stats: [{key: hp, value: "2"}, {key: damage, value: "1"}]
+    claims: [random-walk, {slug: spawn-schedule, params: {every: 50, max_alive: 8}}]
+  - title: Чугайстер
+    role: boss
+    description: "Господар 10-го поверху; телепортується, коли HP падає нижче третини"
+    stats: [{key: hp, value: "60"}, {key: armor, value: "2"}, {key: damage, value: "3–8"}]
+    states: [чекає, бʼється, тікає]
+    claims: [teleport, {slug: shoot-spread, params: {rays: 3}}]
+  - title: Торговець
+    role: neutral
+    description: "Стоїть на кожному третьому поверсі; вдариш — стане ворогом назавжди"
+    states: [торгує, ворожий]
+  - title: Скриня
+    role: container
+    stats: [{key: capacity, value: "1–3"}]
+    states: [зачинена, відчинена, пастка]
+  - title: Зілля
+    role: pickup
+    description: "Колір щозабігу випадковий: що робить «синє», дізнаєшся, лише випивши"
+    stats: [{key: видів, value: "8"}]
+    claims: [item-pickup, {slug: inventory-duration, params: {duration: 30}}]
+  - title: Ключ
+    role: pickup
+  - title: Золото
+    role: resource
+    stats: [{key: value, value: "1–50"}]
+  - title: Стріла
+    role: projectile
+    stats: [{key: damage, value: "2–5"}, {key: range, value: "6", unit: "кл"}, {key: ammo, value: "12"}]
+    claims: [projectile-shot, projectile-collision]
+  - title: Шипи
+    role: hazard
+    states: [приховані, видимі]
+    claims: [environment-death]
+  - title: Двері
+    role: gate
+    states: [зачинені, відчинені, замкнені, таємні]
+    claims: [key-and-door]
+  - title: Важіль
+    role: switch
+    claims: [cell-transform]
+  - title: Сходи вниз
+    role: zone
+    claims: [teleport-one-way]
+  - title: Вівтар
+    role: zone
+    description: "Раз на забіг: молитва знімає отруту або дає благословення"
+  - title: Стіна печери
+    role: static
+    claims: [impassable-cells]
+  - title: Мох
+    role: terrain
+    description: "Глушить кроки: вороги на ньому не чують героя"
+    claims: [floor-types]
+  - title: Гніздо кажанів
+    role: spawner
+    claims: [spawn-points]
+rules:
+  - when: {kind: input, action: клік по клітині, a: Мандрівник}
+    cond: [{kind: free, cell: target}]
+    then: [{kind: move, a: Мандрівник, dir: toward}]
+    note: "A* по гексах; крок за хід, зупиняється, щойно в полі зору зʼявився ворог"
+  - when: {kind: contact, a: Мандрівник, b: Зілля}
+    cond: [{kind: counter, name: предметів, op: "<", n: 10}]
+    then: [{kind: pickup, a: "@a", item: "@b"}]
+  - when: {kind: input, action: випити, a: Мандрівник}
+    cond: [{kind: has, a: Мандрівник, item: Зілля}]
+    then:
+      - {kind: use, a: Мандрівник, item: Зілля}
+      - {kind: choose, options: "ефект за кольором: лікування · отрута · невидимість · лють · сліпота"}
+      - {kind: take, a: Мандрівник, item: Зілля}
+  - when: {kind: contact, a: Мандрівник, b: Двері}
+    cond: [{kind: state, a: "@b", s: замкнені}, {kind: has, a: "@a", item: Ключ}]
+    then: [{kind: use, a: "@a", item: Ключ}, {kind: set_state, a: "@b", s: відчинені}]
+  - when: {kind: contact, a: Мандрівник, b: Двері}
+    cond: [{kind: state, a: "@b", s: замкнені}, {kind: has, a: "@a", item: Ключ, not: true}]
+    then: [{kind: block}, {kind: message, text: "Замкнено. Потрібен ключ"}]
+  - when: {kind: contact, a: Мандрівник, b: Пес}
+    then: [{kind: swap, a: "@a", b: "@b"}]
+  - when: {kind: enter, a: "*", b: Шипи}
+    then: [{kind: damage, a: "@a", n: 3}, {kind: set_state, a: "@b", s: видимі}, {kind: reveal, cell: under}]
+  - when: {kind: enter, a: Мандрівник, b: Сходи вниз}
+    then: [{kind: next_level}, {kind: counter, name: поверх, n: 1}, {kind: heal, a: "@a", n: 2}]
+  - when: {kind: timer, every: 10}
+    then: [{kind: counter, name: ситість, n: -1}]
+  - when: {kind: counter, name: ситість, op: "<=", n: 20}
+    then: [{kind: set_state, a: Мандрівник, s: голодний}, {kind: message, text: "Ти голодний"}]
+  - when: {kind: counter, name: ситість, op: "==", n: 0}
+    then: [{kind: damage, a: Мандрівник, n: 1}]
+    note: "щоходу, доки не поїсть"
+  - when: {kind: line_of_sight, a: Вовк, b: Мандрівник}
+    cond: [{kind: state, a: "@b", s: невидимий, not: true}, {kind: in_range, a: "@a", b: "@b", n: 8}]
+    then: [{kind: set_state, a: "@a", s: переслідує}]
+  - when: {kind: adjacent, a: Вовк, b: Мандрівник}
+    then: [{kind: damage, a: "@b", n: 2}]
+  - when: {kind: hp_zero, a: Вовк}
+    then: [{kind: disappear, a: "@a"}, {kind: counter, name: досвід, n: 15}, {kind: spawn, entity: Золото, cell: under}]
+  - when: {kind: counter, name: HP Чугайстра, op: "<", n: 20}
+    cond: [{kind: first_time}]
+    then: [{kind: teleport, a: Чугайстер, where: "найдальша кімната"}, {kind: set_state, a: Чугайстер, s: тікає}, {kind: clone, a: Кажан}]
+  - when: {kind: hp_zero, a: Чугайстер}
+    then: [{kind: win}, {kind: window, window: Літопис}]
+  - when: {kind: hp_zero, a: Мандрівник}
+    then: [{kind: lose}, {kind: game_over}, {kind: window, window: Некролог}]
+    note: "збереження стирається — смерть назавжди"
+  - when: {kind: contact, a: Мандрівник, b: Торговець}
+    cond: [{kind: state, a: "@b", s: ворожий, not: true}]
+    then: [{kind: window, window: Крамниця}]
+  - when: {kind: contact, a: Стріла, b: Торговець}
+    then: [{kind: set_state, a: "@b", s: ворожий}, {kind: set_side, a: "@b", side: вороги}]
+  - when: {kind: enter, a: Мандрівник, b: Вівтар}
+    cond: [{kind: first_time}]
+    then: [{kind: clear_state, a: "@a", s: отруєний}, {kind: set_state, a: "@a", s: благословенний, dur: 100}]
+  - when: {kind: input, action: потягнути важіль, a: Мандрівник}
+    cond: [{kind: occupied, cell: ahead, what: Важіль}]
+    then: [{kind: set_cell, cell: any, type: Двері}, {kind: sound, text: скрегіт каменю}]
+    note: "таємні двері поверху стають звичайними"
+  - when: {kind: level_start}
+    then: [{kind: hide, cell: any}, {kind: reveal, cell: neighbors}, {kind: spawn_at, entity: Пес, where: "поруч із героєм"}]
+  - when: {kind: tick}
+    cond: [{kind: state, a: Мандрівник, s: швидкий}]
+    then: [{kind: extra_move}]
+  - when: {kind: input, action: s — відпочити, a: Мандрівник}
+    then: [{kind: pass_turn}, {kind: heal, a: Мандрівник, n: 1}]
+windows:
+  - title: Заставка
+    task: splash-screen
+    items: [{title: Будь-яка клавіша, window: Головне меню}]
+  - title: Головне меню
+    task: main-menu
+    items:
+      - {title: Новий забіг, window: Створення героя}
+      - {title: Продовжити, window: Гра, note: "один слот, стирається по смерті"}
+      - {title: Літопис, window: Літопис}
+      - {title: Бестіарій, window: Бестіарій}
+      - {title: Довідка, window: Довідка}
+      - {title: Вихід}
+  - title: Створення героя
+    task: character-select
+    description: "Клас (вояк · мисливець · мольфар) і стартовий предмет"
+    items: [{title: У печеру, window: Гра}]
+  - title: Гра
+    task: game-screen
+    description: "Поверх, смужка HP і ситості, журнал останніх подій"
+    claims: [{slug: status-panel, status: accepted}, {slug: path-preview, status: accepted}, hover-highlight, threat-range, cell-click, keyboard-controls]
+    items:
+      - {title: i — інвентар, window: Інвентар}
+      - {title: m — мапа, window: Мапа поверху}
+      - {title: Esc — пауза, window: Пауза}
+    shots:
+      - |
+        ##########################
+        ###......####....#########
+        ###..@...++......###...###
+        ###..d...####..w.###.$.###
+        ######+######....+++...###
+        ####.....####.!..###...###
+        ####..>..#########+#######
+        ####.....####......b...###
+        #############..^.......###
+        ##########################
+      - |
+        ##########################
+        ##########################
+        #######......#############
+        #######..@...#############
+        #######...w..+############
+        #######......#############
+        ##########+###############
+        ##########################
+        ##########################
+        ##########################
+  - title: Інвентар
+    task: custom-window
+    description: "10 клітинок; невпізнані зілля підписані кольором"
+    claims: [inventory-items]
+    items: [{title: Використати}, {title: Викинути}, {title: Назад, window: Гра}]
+  - title: Мапа поверху
+    task: map-window
+    items: [{title: Назад, window: Гра}]
+  - title: Крамниця
+    task: shop-window
+    claims: [shop-catalog, shop-buyback]
+    items: [{title: Піти, window: Гра}]
+  - title: Пауза
+    task: pause-menu
+    items:
+      - {title: Продовжити, window: Гра}
+      - {title: Зберегти й вийти, task: save-single-slot}
+      - {title: Головне меню, window: Головне меню}
+  - title: Некролог
+    task: end-screen
+    description: "Хто вбив, на якому поверсі, скільки золота"
+    items: [{title: Новий забіг, window: Створення героя}, {title: У меню, window: Головне меню}]
+  - title: Літопис
+    task: stats-window
+    description: "Усі забіги: поверх, причина смерті, зерно генератора"
+    claims: [score-records]
+  - title: Бестіарій
+    task: codex-window
+  - title: Довідка
+    task: help-window
+claims:
+  - {slug: dungeon-generation, note: "кімнати BSP-поділом, коридори — мінімальне кістякове дерево", link: "https://github.com/demo-pzpi-25-0/hoverla-caves/blob/main/core/dungeon.py", status: accepted, verdict: "Усі кімнати звʼязані, перевірив на 200 зернах"}
+  - {slug: reachability-check, link: "https://github.com/demo-pzpi-25-0/hoverla-caves/blob/main/core/dungeon.py#L140-L170"}
+  - {slug: save-single-slot, status: returned, verdict: "Після смерті збереження має стиратись, а його можна скопіювати й повернутись"}
+  - {slug: logic-render-split, status: accepted}
+  - {slug: dual-frontends, note: "консоль і вікно над одним ядром", status: accepted}
+  - game-loop
+  - state-as-data
+  - dataclass-entities
+  - custom-exceptions
+  - std-collections
+  - typing-mypy
+  - unit-tests
+  - fixture-level-tests
+  - commit-history
+  - project-readme
+  - version-tags
+  - requirements-pyproject
+  - single-command-run
+  - player-guide
+  - architecture-doc
+  - dev-log
+  - game-page
+  - itchio-publish
+  - feature-demo
+  - sound-effects
