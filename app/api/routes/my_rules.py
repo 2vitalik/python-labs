@@ -7,7 +7,8 @@ from core.deps import active_user
 from core.models.history import record, record_delete, record_new
 from core.models.user import User
 from models.game import Game, Part
-from models.rule import EFFECTS, TRIGGERS, Rule
+from models.rule import Rule
+from models.vocab import CONDITIONS, EFFECTS, OPTIONS, SIDES, TRIGGERS
 from routes.my_game import my_game
 
 router = APIRouter(prefix="/api/my/game/rules")
@@ -15,55 +16,64 @@ router = APIRouter(prefix="/api/my/game/rules")
 
 class RuleIn(BaseModel):
     when: dict = {}
+    cond: list[dict] = []
     then: list[dict] = []
     note: str = ""
 
 
-def need_int(d: dict, key: str, minimum: int | None = 1) -> int:
-    try:
-        n = int(d.get(key))
-    except (TypeError, ValueError):
-        raise HTTPException(422, f"«{key}» — число.")
-    if minimum is not None and n < minimum:
-        raise HTTPException(422, f"«{key}» — від {minimum}.")
-    return n
+def clean_item(dic: dict, item: dict, ids: dict, sides: set, what: str) -> dict:
+    """One word of a sentence with its arguments, checked against the dictionary's arg specs."""
+    spec = dic.get(item.get("kind"))
+    if not spec:
+        raise HTTPException(422, f"Невідоме слово {what}: «{item.get('kind')}».")
+    out = {"kind": item["kind"]}
+    for a in spec["args"]:
+        v = item.get(a["name"])
+        if v is None or v == "":
+            if a["required"]:
+                raise HTTPException(422, f"«{spec['label']}»: не вистачає «{a['name']}».")
+            continue
+        t = a["type"]
+        if t == "entity":
+            if v not in sides and v not in ids["entity"]:
+                raise HTTPException(422, f"«{spec['label']}»: сутність має бути з твоєї гри.")
+        elif t == "window":
+            if v not in ids["window"]:
+                raise HTTPException(422, f"«{spec['label']}»: вікно має бути з твоєї гри.")
+        elif t == "int":
+            try:
+                v = int(v)
+            except (TypeError, ValueError):
+                raise HTTPException(422, f"«{spec['label']}»: «{a['name']}» — число.")
+            if a["name"] in ("every", "p", "dur", "n") and v < 0 and item["kind"] not in ("lives", "score", "currency", "counter", "grow", "speed"):
+                raise HTTPException(422, f"«{spec['label']}»: «{a['name']}» — не менше 0.")
+        elif t == "bool":
+            v = bool(v)
+        elif t.startswith("choice:"):
+            if str(v) not in OPTIONS[t[7:]]:
+                raise HTTPException(422, f"«{spec['label']}»: «{a['name']}» — зі списку.")
+            v = str(v)
+        else:
+            v = " ".join(str(v).split())
+            if not v:
+                raise HTTPException(422, f"«{spec['label']}»: «{a['name']}» — порожнє.")
+        out[a["name"]] = v
+    if dic is CONDITIONS and item.get("not"):
+        out["not"] = True
+    return out
 
 
 async def clean(data: RuleIn, game: Game) -> dict:
     parts = await Part.find(Part.game == game.id).to_list()
     ids = {kind: {str(p.id) for p in parts if p.kind == kind} for kind in ("entity", "window")}
-
-    kind = data.when.get("kind")
-    if kind == "contact":
-        a, b = data.when.get("a"), data.when.get("b")
-        if a not in ids["entity"] or b not in ids["entity"]:
-            raise HTTPException(422, "Обидві сторони контакту — сутності твоєї гри.")
-        when = {"kind": kind, "a": a, "b": b}
-    elif kind == "timer":
-        when = {"kind": kind, "every": need_int(data.when, "every")}
-    else:
-        raise HTTPException(422, "Невідомий тригер КОЛИ.")
-
-    effects = []
-    for e in data.then:
-        if e.get("kind") not in EFFECTS:
-            raise HTTPException(422, "Невідомий ефект ТО.")
-        out = {"kind": e["kind"]}
-        arg = EFFECTS[e["kind"]]
-        if arg == "n":
-            out["n"] = need_int(e, "n", minimum=None if e["kind"] == "score" else 1)
-        elif arg in ("entity", "window"):
-            if e.get("part") not in ids[arg]:
-                raise HTTPException(422, "Ціль ефекту — сутність чи вікно твоєї гри.")
-            out["part"] = e["part"]
-        elif arg == "text":
-            out["text"] = str(e.get("text") or "").strip()
-            if not out["text"]:
-                raise HTTPException(422, "Ефект «інше» — опиши текстом.")
-        effects.append(out)
-    if not effects:
+    when = clean_item(TRIGGERS, data.when, ids, {"*"}, "КОЛИ")
+    # @a / @b point at the trigger's sides — only when it has them
+    sides = {"*"} | {s for s in ("@a", "@b") if s[1:] in when} | ({"@both"} if "a" in when and "b" in when else set())
+    cond = [clean_item(CONDITIONS, c, ids, sides, "ЯКЩО") for c in data.cond]
+    then = [clean_item(EFFECTS, e, ids, sides, "ТО") for e in data.then]
+    if not then:
         raise HTTPException(422, "Хоч один ефект ТО.")
-    return {"when": when, "then": effects, "note": data.note.strip()}
+    return {"when": when, "cond": cond, "then": then, "note": data.note.strip()}
 
 
 async def get_rule(id: PydanticObjectId, game: Game) -> Rule:
@@ -98,3 +108,6 @@ async def delete_rule(id: PydanticObjectId, tasks: BackgroundTasks, game: Game =
     await record_delete(rule, actor=user.email)
     tasks.add_task(game_alerts.rule, user, rule, 2)
     return {"ok": True}
+
+
+SIDE_NAMES = SIDES  # re-export for the bot's sentence rendering

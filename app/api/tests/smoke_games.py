@@ -1,4 +1,4 @@
-"""Smoke: student games / parts / claims / screenshots / gallery on a scratch DB. Run from app/api:
+"""Smoke: student games / parts / claims / rules / screenshots / gallery / templates on a scratch DB. Run from app/api:
 DB_NAME=python_labs_smoke UPLOADS_DIR=... uv run python tests/smoke_games.py"""
 import os
 import subprocess
@@ -39,6 +39,11 @@ def login(c, email, status):
 
 with TestClient(main.app) as c:
     check("guest: /students → 401", c.get("/api/students").status_code == 401)
+    v = c.get("/api/vocab").json()
+    check("vocab: roles, triggers, conditions, effects, field, stats",
+          "terrain" in v["roles"] and "contact" in v["triggers"] and "free" in v["conditions"] and "disappear" in v["effects"]
+          and v["field"][0]["key"] == "size" and v["stats"][0]["key"] == "hp")
+    check("vocab: no arg is called kind", all(a["name"] != "kind" for dic in ("triggers", "conditions", "effects") for s in v[dic].values() for a in s["args"]))
 
     login(c, "waiting@nure.ua", "pending")  # stays pending: gallery visibility check below
     check("pending: POST /my/game → 403", c.post("/api/my/game", json={"title": "x", "base_custom": "y"}).status_code == 403)
@@ -51,6 +56,9 @@ with TestClient(main.app) as c:
     check("second game → 409", c.post("/api/my/game", json={"title": "Друга", "base_custom": "x"}).status_code == 409)
     check("bad base → 422", c.put("/api/my/game", json={"title": "Т", "base_game": "no-such"}).status_code == 422)
     check("no base → 422", c.put("/api/my/game", json={"title": "Т"}).status_code == 422)
+    r = c.put("/api/my/game", json={"title": "Танчики Пілот", "base_game": "battle-city", "phases": [" ввід ", "гравець", "вороги", "Вороги", ""]})
+    check("phases cleaned", r.status_code == 200 and r.json()["phases"] == ["ввід", "гравець", "вороги"], r.text)
+    check("13 phases → 422", c.put("/api/my/game", json={"title": "Т", "base_game": "battle-city", "phases": [str(i) for i in range(13)]}).status_code == 422)
 
     r = c.post("/api/my/game/parts", json={"kind": "window", "task": "main-menu", "title": "Головне меню"})
     check("window create", r.status_code == 200, r.text)
@@ -76,6 +84,15 @@ with TestClient(main.app) as c:
           c.post("/api/my/game/parts", json={"kind": "menu", "title": "М",
                                              "items": [{"title": "x", "window": "000000000000000000000000"}]}).status_code == 422)
 
+    # the field: one per game, props by the vocab
+    r = c.post("/api/my/game/parts", json={"kind": "field", "props": {"size": " 20×15 ", "topology": "square", "wrap": 1, "layers": "підлога, обʼєкти", "junk": "x", "view": ""}})
+    check("field create: props cleaned", r.status_code == 200 and r.json()["title"] == "Поле"
+          and r.json()["props"] == {"size": "20×15", "topology": "square", "wrap": True, "layers": ["підлога", "обʼєкти"]}, r.text)
+    field = r.json()["id"]
+    check("second field → 409", c.post("/api/my/game/parts", json={"kind": "field"}).status_code == 409)
+    check("field bad choice → 422", c.put(f"/api/my/game/parts/{field}", json={"title": "Поле", "props": {"topology": "donut"}}).status_code == 422)
+    check("unknown part kind → 422", c.post("/api/my/game/parts", json={"kind": "level", "title": "x"}).status_code == 422)
+
     r = c.post(f"/api/my/game/parts/{win}/screenshot", files={"file": ("s.png", PNG, "image/png")})
     check("screenshot upload", r.status_code == 200 and len(r.json()["screenshots"]) == 1, r.text)
     shot = r.json()["screenshots"][0]
@@ -89,7 +106,7 @@ with TestClient(main.app) as c:
 
     r = c.get("/api/students").json()
     me = next(s for s in r if s["nick"] == "stud")
-    check("gallery: cover + counters", me["game"]["cover"].endswith(shot) and me["game"]["windows"] == 1)
+    check("gallery: cover + counters + field flag", me["game"]["cover"].endswith(shot) and me["game"]["windows"] == 1 and me["game"]["field"] is True)
     check("gallery: student sees no emails/pending", all("email" not in s for s in r)
           and not any(s["nick"] == "waiting" for s in r))
 
@@ -102,57 +119,94 @@ with TestClient(main.app) as c:
     check("part claim", r.status_code == 200, r.text)
     check("claim on alien part → 422",
           c.post("/api/my/claims", json={"task": "time-out", "part": "abc"}).status_code == 422)
+    check("field claim", c.post("/api/my/claims", json={"task": "console-render", "part": field}).status_code == 200)
 
     r = c.delete(f"/api/my/game/parts/{win}")
     check("window delete", r.status_code == 200)
     r = c.get("/api/students/stud/game").json()
-    check("cascade: window claims gone", {cl["task"] for cl in r["claims"]} == {"player-death"})
+    check("cascade: window claims gone", {cl["task"] for cl in r["claims"]} == {"player-death", "console-render"})
     m = next(p for p in r["parts"] if p["id"] == menu)
     check("cascade: menu host stripped", m["window"] == "")
     check("cascade: item target stripped", m["items"][0]["window"] == "")
     check("cascade: file left original dir", not (Path(os.environ["UPLOADS_DIR"]) / gid / shot).is_file())
     check("cascade: file in trash", (uploads.TRASH / gid / shot).is_file())
 
-    r = c.post("/api/my/game/parts", json={"kind": "entity", "title": "Гравець", "role": "player"})
-    check("entity create", r.status_code == 200 and r.json()["role"] == "player", r.text)
+    # entities: role from the vocab, stats and states
+    r = c.post("/api/my/game/parts", json={"kind": "entity", "title": "Гравець", "role": "player",
+                                           "stats": [{"key": "hp", "value": 3}, {"key": "швидкість", "value": "1", "unit": "кл/тік"}, {"key": "HP", "value": 9}],
+                                           "states": ["звичайний", " зі щитом ", "Звичайний"]})
+    check("entity create: stats labelled, states unique", r.status_code == 200 and r.json()["role"] == "player"
+          and r.json()["stats"] == [{"key": "hp", "label": "HP", "value": "3", "unit": ""}, {"key": "швидкість", "label": "швидкість", "value": "1", "unit": "кл/тік"}]
+          and r.json()["states"] == ["звичайний", "зі щитом"], r.text)
     player = r.json()["id"]
     check("entity bad role → 422",
-          c.post("/api/my/game/parts", json={"kind": "entity", "title": "Бос", "role": "boss"}).status_code == 422)
+          c.post("/api/my/game/parts", json={"kind": "entity", "title": "Бос", "role": "dragon"}).status_code == 422)
+    check("entity new role terrain", c.post("/api/my/game/parts", json={"kind": "entity", "title": "Лід", "role": "terrain"}).status_code == 200)
+    check("stat without value → 422",
+          c.put(f"/api/my/game/parts/{player}", json={"title": "Гравець", "role": "player", "stats": [{"key": "hp", "value": ""}]}).status_code == 422)
+    check("13 states → 422",
+          c.put(f"/api/my/game/parts/{player}", json={"title": "Гравець", "role": "player", "states": [str(i) for i in range(13)]}).status_code == 422)
     enemy = c.post("/api/my/game/parts", json={"kind": "entity", "title": "Ворожий танк", "role": "enemy"}).json()["id"]
     check("claim on entity", c.post("/api/my/claims", json={"task": "status-panel", "part": player}).status_code == 200)
 
+    # rules: КОЛИ → ЯКЩО → ТО from the dictionaries, sides @a/@b, conditions with not
     r = c.post("/api/my/game/rules", json={"when": {"kind": "contact", "a": player, "b": enemy},
-                                           "then": [{"kind": "damage", "n": 1}, {"kind": "disappear_b"}]})
-    check("rule contact create", r.status_code == 200, r.text)
+                                           "cond": [{"kind": "state", "a": "@a", "s": "зі щитом", "not": True}],
+                                           "then": [{"kind": "damage", "a": "@a", "n": 1}, {"kind": "disappear", "a": "@b"}]})
+    check("rule contact create (cond + sides)", r.status_code == 200 and r.json()["cond"][0]["not"] is True
+          and r.json()["then"][1]["a"] == "@b", r.text)
     check("rule non-entity side → 422",
-          c.post("/api/my/game/rules", json={"when": {"kind": "contact", "a": player, "b": menu},
-                                             "then": [{"kind": "win"}]}).status_code == 422)
+          c.post("/api/my/game/rules", json={"when": {"kind": "contact", "a": player, "b": menu}, "then": [{"kind": "win"}]}).status_code == 422)
     check("rule unknown effect → 422",
-          c.post("/api/my/game/rules", json={"when": {"kind": "timer", "every": 5},
-                                             "then": [{"kind": "explode"}]}).status_code == 422)
+          c.post("/api/my/game/rules", json={"when": {"kind": "timer", "every": 5}, "then": [{"kind": "explode_everything"}]}).status_code == 422)
+    check("rule unknown trigger → 422",
+          c.post("/api/my/game/rules", json={"when": {"kind": "full_moon"}, "then": [{"kind": "win"}]}).status_code == 422)
+    check("rule missing required arg → 422",
+          c.post("/api/my/game/rules", json={"when": {"kind": "contact", "a": player, "b": enemy}, "then": [{"kind": "damage", "a": "@a"}]}).status_code == 422)
+    check("rule @a without such side → 422",
+          c.post("/api/my/game/rules", json={"when": {"kind": "timer", "every": 5}, "then": [{"kind": "disappear", "a": "@a"}]}).status_code == 422)
+    check("rule choice out of list → 422",
+          c.post("/api/my/game/rules", json={"when": {"kind": "input", "action": "стрілки"}, "then": [{"kind": "move", "a": player, "dir": "sideways"}]}).status_code == 422)
+    check("rule unknown condition → 422",
+          c.post("/api/my/game/rules", json={"when": {"kind": "tick"}, "cond": [{"kind": "moon"}], "then": [{"kind": "win"}]}).status_code == 422)
+    check("rule without effects → 422",
+          c.post("/api/my/game/rules", json={"when": {"kind": "tick"}, "then": []}).status_code == 422)
     r = c.post("/api/my/game/rules", json={"when": {"kind": "timer", "every": 20},
-                                           "then": [{"kind": "spawn", "part": enemy}], "note": "хвилі ворогів"})
-    check("rule timer+spawn create", r.status_code == 200, r.text)
+                                           "cond": [{"kind": "count", "what": enemy, "op": "<", "n": 4}],
+                                           "then": [{"kind": "spawn", "entity": enemy, "cell": "any"}], "note": "хвилі ворогів"})
+    check("rule timer + count + spawn create", r.status_code == 200 and r.json()["cond"][0]["what"] == enemy, r.text)
+    check("rule anyone (*) as a side", c.post("/api/my/game/rules", json={"when": {"kind": "contact", "a": "*", "b": enemy}, "then": [{"kind": "block"}]}).status_code == 200)
     r = c.get("/api/students/stud/game").json()
-    check("passport: rules present", len(r["rules"]) == 2 and r["rules"][0]["when"]["kind"] == "contact")
+    check("passport: rules present", len(r["rules"]) == 3 and r["rules"][0]["when"]["kind"] == "contact")
     check("entity delete", c.delete(f"/api/my/game/parts/{enemy}").status_code == 200)
     r = c.get("/api/students/stud/game").json()
-    check("cascade: entity rules gone", r["rules"] == [] and any(p["id"] == player for p in r["parts"]))
+    check("cascade: entity rules gone (all three named it)", r["rules"] == [] and any(p["id"] == player for p in r["parts"]))
 
+    # claims with params; the game level may wait for required ones (drafts), a part may not
     r = c.post("/api/my/claims", json={"task": "spawn-schedule", "params": {"every": 20, "max_alive": 4}})
     check("claim with params", r.status_code == 200 and r.json()["params"] == {"every": 20, "max_alive": 4}, r.text)
     spawn_claim = r.json()["id"]
-    check("params: missing required → 422", c.post("/api/my/claims", json={"task": "collect-quota"}).status_code == 422)
+    check("params: game-level without required → draft, 200", c.post("/api/my/claims", json={"task": "collect-quota"}).status_code == 200)
+    check("params: on a part without required → 422",
+          c.post("/api/my/claims", json={"task": "shoot-cooldown", "part": player}).status_code == 422)
     check("params: wrong type → 422",
           c.post("/api/my/claims", json={"task": "time-out", "params": {"limit": "довго"}}).status_code == 422)
     check("params: unknown key → 422",
           c.post("/api/my/claims", json={"task": "event-points", "params": {"x": 1}}).status_code == 422)
     r = c.put(f"/api/my/claims/{spawn_claim}", json={"params": {"every": 30}})
     check("params update", r.status_code == 200 and r.json()["params"] == {"every": 30}, r.text)
+    r = c.put(f"/api/my/claims/{spawn_claim}", json={"params": {"every": 30}, "part": player})
+    check("claim moves to an entity (drafts pool → anchor)", r.status_code == 200 and r.json()["part"] == player, r.text)
+    check("claim move to alien part → 422", c.put(f"/api/my/claims/{spawn_claim}", json={"params": {"every": 30}, "part": "abc"}).status_code == 422)
+    r = c.post("/api/my/claims", json={"task": "spawn-schedule", "params": {"every": 5}})
+    check("same card again at game level — another anchor, ok", r.status_code == 200, r.text)
+    check("move onto a duplicate → 409", c.put(f"/api/my/claims/{r.json()['id']}", json={"params": {"every": 5}, "part": player}).status_code == 409)
     r = c.get("/api/students/stud/game").json()
     check("passport: slots on card + params on claim",
           r["tasks"]["spawn-schedule"]["slots"][0]["key"] == "every"
-          and next(cl for cl in r["claims"] if cl["task"] == "spawn-schedule")["params"] == {"every": 30})
+          and next(cl for cl in r["claims"] if cl["task"] == "spawn-schedule" and cl["part"] == player)["params"] == {"every": 30})
+    check("student cannot judge own claim → 403", c.put(f"/api/students/stud/claims/{spawn_claim}", json={"status": "accepted"}).status_code == 403)
+    check("tasks api carries aliases", isinstance(c.get("/api/tasks").json()[0]["aliases"], list))
 
     r = c.post("/api/refs", json={"url": "https://youtu.be/dQw4w9WgXcQ", "note": "патерн погоні"})
     check("ref create", r.status_code == 200, r.text)
@@ -183,7 +237,15 @@ with TestClient(main.app) as c:
           c.post("/api/my/claims", json={"task": "enemy-waves", "params": {"waves": 5, "final_wave": "так"}}).status_code == 422)
     check("params: bool ok",
           c.post("/api/my/claims", json={"task": "enemy-waves", "params": {"waves": 5, "final_wave": True}}).status_code == 200)
+
+    # the teacher's verdict on a student's claim
+    r = c.put(f"/api/students/stud/claims/{spawn_claim}", json={"status": "accepted", "verdict": " молодець "})
+    check("admin judges a claim", r.status_code == 200 and r.json()["status"] == "accepted" and r.json()["verdict"] == "молодець", r.text)
+    check("judge: bad status → 422", c.put(f"/api/students/stud/claims/{spawn_claim}", json={"status": "maybe"}).status_code == 422)
+    check("judge: unknown claim → 404", c.put("/api/students/stud/claims/000000000000000000000000", json={"status": "accepted"}).status_code == 404)
     r = c.get("/api/students").json()
+    stud_row = next(s for s in r if s["nick"] == "stud")
+    check("gallery: accepted counter + coins_accepted", stud_row["game"]["accepted"] == 1 and stud_row["game"]["coins_accepted"] == {"tin": 1.0}, stud_row["game"])
     check("admin gallery: emails + pending visible", any(s.get("email") for s in r)
           and any(s["nick"] == "waiting" for s in r))
     check("gallery: 2 games", sum(1 for s in r if s["game"]) == 2)
@@ -194,13 +256,30 @@ with TestClient(main.app) as c:
           and r.json()["student"]["nick"] == "waiting", r.text)
     r = c.put("/api/students/stud", json={"last_name": "Тест", "group": "ПЗПІ-25-1"})
     check("admin: edit by nick", r.status_code == 200 and r.json()["group"] == "ПЗПІ-25-1", r.text)
-    r = c.get("/api/students").json()
-    stud_row = next(s for s in r if s["nick"] == "stud")
-    check("gallery: entity/rule counters", stud_row["game"]["entities"] == 1 and stud_row["game"]["rules"] == 0)
+    check("gallery: entity/rule counters", stud_row["game"]["entities"] == 2 and stud_row["game"]["rules"] == 0)
     check("history recorded", mongo[DB].history.count_documents({"coll": "student_games"}) >= 2)
     check("cascade deletes logged", mongo[DB].history.count_documents({"coll": "claims", "changes.task.new": None}) >= 1)
-    check("rules history: 2 creates + 2 cascade deletes", mongo[DB].history.count_documents({"coll": "rules"}) == 4)
+    check("rules history: 3 creates + 3 cascade deletes", mongo[DB].history.count_documents({"coll": "rules"}) == 6)
 
+    # reference descriptions (Д4): every template pours into a fresh game without a single skipped item, and is idempotent
+    tpls = c.get("/api/templates").json()
+    check("templates listed", len(tpls) >= 1 and all("rules" in t for t in tpls.values()), list(tpls))
+    check("template for a base without one → 404", c.post("/api/my/game/template", json={"slug": "no-such"}).status_code == 404)
+    for slug, summary in tpls.items():
+        login(c, f"tpl-{slug.replace('.', '-')}@nure.ua", "student")
+        r = c.post("/api/my/game", json={"title": f"Еталон {slug}", "base_game": slug})
+        if r.status_code != 200:
+            r = c.post("/api/my/game", json={"title": f"Еталон {slug}", "base_custom": slug})
+        r = c.post("/api/my/game/template", json={"slug": slug})
+        ok = r.status_code == 200 and not r.json()["skipped"] and r.json()["added"]["rules"] == summary["rules"] \
+            and r.json()["added"]["entities"] == summary["entities"] and r.json()["added"]["windows"] == summary["windows"]
+        check(f"template {slug}: applied fully", ok, r.text[:400])
+        r2 = c.post("/api/my/game/template", json={"slug": slug})
+        check(f"template {slug}: second apply adds nothing", r2.status_code == 200 and not any(r2.json()["added"].values()), r2.text[:200])
+        if not ok:
+            break
+
+    login(c, "admin@nure.ua", "admin")
     mongo[DB].users.insert_many([{"email": "old@nure.ua", "status": "student", "group": "ПЗПІ-24-1"},
                                  {"email": "ind@nure.ua", "status": "student", "group": "ПЗПІи-25-1"},
                                  {"email": "lost@nure.ua", "status": "student", "group": ""}])

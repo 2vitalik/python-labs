@@ -30,9 +30,9 @@ def dump(doc, exclude=("id", "created_at")) -> dict:
     return {k: v for k, v in d.items() if not (v == "" or v == [] or v == {})}
 
 
-def task_node(t) -> dict | str:  # dict fallback for multi-line descriptions and slot specs
+def task_node(t) -> dict | str:  # dict fallback for multi-line descriptions and slot specs; aliases live in aliases.yaml
     if "\n" in t.description or t.slots:
-        return dump(t, exclude=("id", "created_at", "slug", "zone", "subzone", "order", "parent"))
+        return dump(t, exclude=("id", "created_at", "slug", "zone", "subzone", "order", "parent", "aliases"))
     return render_line(t)
 
 
@@ -53,8 +53,10 @@ async def render() -> dict[str, str]:
             entry["children"] = [{k.slug: task_node(k)} for k in kids[t.slug]]
         tree.setdefault(t.zone, {}).setdefault(t.subzone, []).append(entry)
     tree = {z: tree[z] for z in ZONES if z in tree}
+    aliases = {t.slug: t.aliases for t in sorted(tasks, key=lambda t: t.slug) if t.aliases}  # other names people search by
     return {"games.yaml": yaml.dump([dump(g) for g in games], Dumper=Dumper, allow_unicode=True, sort_keys=False, width=120),
-            "tasks.yaml": yaml.dump(tree, Dumper=Dumper, allow_unicode=True, sort_keys=False, width=200)}
+            "tasks.yaml": yaml.dump(tree, Dumper=Dumper, allow_unicode=True, sort_keys=False, width=200),
+            "aliases.yaml": yaml.dump(aliases, Dumper=Dumper, allow_unicode=True, sort_keys=False, width=200, default_flow_style=None)}
 
 
 async def export():
@@ -66,6 +68,8 @@ async def export():
 
 def task_rows() -> list[dict]:
     tree = yaml.safe_load((CATALOG / "tasks.yaml").read_text()) or {}
+    path = CATALOG / "aliases.yaml"
+    aliases = (yaml.safe_load(path.read_text()) if path.is_file() else None) or {}
     rows = []
     for zone, subs in tree.items():
         for sub, items in subs.items():
@@ -76,6 +80,8 @@ def task_rows() -> list[dict]:
                 for j, ch in enumerate(item.get("children") or [], 1):
                     cslug = next(iter(ch))
                     rows.append(to_row(cslug, ch[cslug], zone, sub, j * 10) | {"parent": slug})
+    for row in rows:
+        row["aliases"] = list(aliases.get(row["slug"]) or [])
     return rows
 
 

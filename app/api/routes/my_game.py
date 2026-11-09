@@ -16,6 +16,7 @@ class GameIn(BaseModel):
     base_game: str = ""
     base_custom: str = ""
     description: str = ""
+    phases: list[str] = []
 
 
 async def my_game(user: User = Depends(active_user)) -> Game:
@@ -23,6 +24,17 @@ async def my_game(user: User = Depends(active_user)) -> Game:
     if not game:
         raise HTTPException(404, "Спершу створи свою гру.")
     return game
+
+
+def clean_phases(phases: list[str]) -> list[str]:
+    out = []
+    for p in phases:
+        p = " ".join(str(p).split())
+        if p and p.lower() not in {x.lower() for x in out}:
+            out.append(p)
+    if len(out) > 12:
+        raise HTTPException(422, "Фаз забагато — до 12.")
+    return out
 
 
 async def clean(data: GameIn) -> dict:
@@ -35,6 +47,7 @@ async def clean(data: GameIn) -> dict:
             raise HTTPException(422, "Немає такої гри-основи в каталозі.")
     elif not d["base_custom"].strip():
         raise HTTPException(422, "Обери гру-основу з каталогу або опиши свою.")
+    d["phases"] = clean_phases(d["phases"])
     return d
 
 

@@ -4,6 +4,8 @@ from typing import Annotated
 from beanie import Document, Indexed, PydanticObjectId
 from pydantic import Field
 
+CLAIM_STATUSES = ("claimed", "accepted", "returned")  # заявлено · зараховано · повернуто (the teacher's word)
+
 
 class Game(Document):
     """The student's game (the catalog base game is models/base_game.py)."""
@@ -12,6 +14,7 @@ class Game(Document):
     base_game: str = ""  # catalog game slug; "" = custom base
     base_custom: str = ""  # free-text base when not from the catalog
     description: str = ""  # markdown
+    phases: list[str] = []  # the order of one tick / turn: ввід → гравець → вороги → … (T257)
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
     class Settings:
@@ -21,20 +24,24 @@ class Game(Document):
         return {
             "id": str(self.id), "owner": self.owner, "title": self.title,
             "base_game": self.base_game, "base_custom": self.base_custom,
-            "description": self.description, "created_at": self.created_at.isoformat(),
+            "description": self.description, "phases": self.phases, "created_at": self.created_at.isoformat(),
         }
 
 
 class Part(Document):
+    """A piece of the game's description: the field (one), an entity, a window, a menu — the anchor of claims and screenshots."""
     game: Annotated[PydanticObjectId, Indexed()]
-    kind: str  # window | menu | entity
+    kind: str  # field | entity | window | menu (vocab.PART_KINDS)
     title: str
     task: str = ""  # window type: catalog task slug tagged "window"
-    role: str = ""  # entity: player | enemy | object | pickup | static
+    role: str = ""  # entity: vocab.ROLES key
     description: str = ""
     screenshots: list[str] = []  # file names under uploads/<game-id>/
     window: str = ""  # menu: id of the host window part
     items: list[dict] = []  # menu: {title, window: part id, task: slug, note}
+    props: dict = {}  # field: values by vocab.FIELD keys
+    stats: list[dict] = []  # entity: {key, label, value, unit} — HP, життя, швидкість…
+    states: list[str] = []  # entity: its states; transitions are rules with set_state
     order: int = 0
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
@@ -46,6 +53,7 @@ class Part(Document):
             "id": str(self.id), "game": str(self.game), "kind": self.kind, "title": self.title,
             "task": self.task, "role": self.role, "description": self.description,
             "screenshots": self.screenshots, "window": self.window, "items": self.items,
+            "props": self.props, "stats": self.stats, "states": self.states,
             "order": self.order, "created_at": self.created_at.isoformat(),
         }
 
@@ -53,11 +61,12 @@ class Part(Document):
 class Claim(Document):
     game: Annotated[PydanticObjectId, Indexed()]
     task: str  # catalog task slug
-    part: str = ""  # Part id; "" = game-level claim
+    part: str = ""  # Part id; "" = game-level claim, or a draft waiting for its anchor
     params: dict = {}  # values for the card's slots {key: value}
     note: str = ""
     link: str = ""  # GitHub link (commit-pin normalization — later phase)
-    status: str = "claimed"  # lifecycle grows with reports node (T10)
+    status: str = "claimed"  # CLAIM_STATUSES; the teacher sets accepted / returned
+    verdict: str = ""  # the teacher's line with the status
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
     class Settings:
@@ -66,6 +75,6 @@ class Claim(Document):
     def api(self) -> dict:
         return {
             "id": str(self.id), "game": str(self.game), "task": self.task, "part": self.part,
-            "params": self.params, "note": self.note, "link": self.link, "status": self.status,
+            "params": self.params, "note": self.note, "link": self.link, "status": self.status, "verdict": self.verdict,
             "created_at": self.created_at.isoformat(),
         }

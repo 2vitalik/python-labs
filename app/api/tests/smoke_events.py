@@ -76,11 +76,12 @@ async def run():
     check("part deleted → 🔴 … → ✖️", last() == f"🔴 Гра · {head}\n🧩 сутність «Ворог» → ✖️", last())
 
     rule = await Rule(game=game.id, when={"kind": "contact", "a": str(hero.id), "b": str(foe.id)},
-                      then=[{"kind": "damage", "n": 3}, {"kind": "spawn", "part": str(hero.id)},
+                      cond=[{"kind": "state", "a": "@a", "s": "щит", "not": True}],
+                      then=[{"kind": "damage", "a": "@b", "n": 3}, {"kind": "spawn", "entity": str(hero.id)},
                             {"kind": "custom", "text": "бум <b>"}]).insert()
     await game_alerts.rule(vasya, rule, 0)
-    check("rule added → sentence with names, effects, quoted text",
-          last() == f"🟢 Гра · {head}\n📜 КОЛИ «Гравець» × «Ворог» → ТО шкода 3 · спавн «Гравець» · бум &lt;b&gt;", last())
+    check("rule added → sentence with names, condition, effects, quoted text",
+          last() == f"🟢 Гра · {head}\n📜 КОЛИ «Гравець» × «Ворог» → ЯКЩО не А у стані «щит» → ТО шкода 3 → Б · спавн «Гравець» · бум &lt;b&gt;", last())
     timer = await Rule(game=game.id, when={"kind": "timer", "every": 5}, then=[{"kind": "win"}]).insert()
     await game_alerts.rule(vasya, timer, 2)
     check("timer rule deleted", last().endswith("📜 КОЛИ кожні 5 тіків → ТО перемога 🏆 → ✖️"), last())

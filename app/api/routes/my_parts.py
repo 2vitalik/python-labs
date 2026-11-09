@@ -8,21 +8,26 @@ from core.deps import active_user
 from core.models.history import record, record_delete, record_new
 from core.models.user import Status, User
 from models.game import Claim, Game, Part
-from models.rule import ROLES, Rule
+from models.rule import Rule
 from models.task import Task
+from models.vocab import FIELD, PART_KINDS, ROLES, STATS
 from routes.my_game import my_game
 
 router = APIRouter(prefix="/api/my/game/parts")
+KIND_NAMES = {"field": "поле", "entity": "сутність", "window": "вікно", "menu": "меню"}
 
 
 class PartIn(BaseModel):
-    kind: str = ""  # window | menu | entity; fixed after creation
-    title: str
+    kind: str = ""  # vocab.PART_KINDS; fixed after creation
+    title: str = ""
     task: str = ""  # window type: catalog slug tagged "window"
-    role: str = ""  # entity role from the ROLES dictionary
+    role: str = ""  # entity role from vocab.ROLES
     description: str = ""
     window: str = ""  # menu: host window part id
     items: list[dict] = []
+    props: dict = {}  # field
+    stats: list[dict] = []  # entity
+    states: list[str] = []  # entity
     order: int = 0
 
 
@@ -71,23 +76,86 @@ def check_role(role: str) -> None:
         raise HTTPException(422, "Роль сутності — зі словника.")
 
 
+def clean_props(props: dict) -> dict:
+    """The field's properties by vocab.FIELD: unknown keys dropped, choices checked, empty values left out."""
+    out = {}
+    for spec in FIELD:
+        v = props.get(spec["key"])
+        if v is None or v == "" or v == []:
+            continue
+        if spec["type"] == "bool":
+            v = bool(v)
+        elif spec["type"] == "choice":
+            if str(v) not in spec["options"]:
+                raise HTTPException(422, f"«{spec['label']}» — зі списку.")
+        elif spec["type"] == "tags":
+            v = [str(x).strip() for x in (v if isinstance(v, list) else str(v).split(",")) if str(x).strip()]
+            if not v:
+                continue
+        else:
+            v = str(v).strip()
+            if not v:
+                continue
+        out[spec["key"]] = v
+    return out
+
+
+def clean_stats(stats: list[dict]) -> list[dict]:
+    """Entity stats: a key (a known one or the student's own word), a value as text, an optional unit."""
+    known = {k: (label, unit) for k, label, _, unit in STATS}
+    out, seen = [], set()
+    for s in stats:
+        key = str(s.get("key") or "").strip()
+        value = str(s.get("value") if s.get("value") is not None else "").strip()
+        if not key or key.lower() in seen:
+            continue
+        if not value:
+            raise HTTPException(422, f"Параметр «{key}» — без значення.")
+        label = str(s.get("label") or "").strip() or known.get(key, (key, ""))[0]
+        unit = str(s.get("unit") or "").strip() or (known[key][1] if key in known and not s.get("unit") else "")
+        out.append({"key": key, "label": label, "value": value, "unit": unit})
+        seen.add(key.lower())
+    return out
+
+
+def clean_states(states: list[str]) -> list[str]:
+    out = []
+    for s in states:
+        s = " ".join(str(s).split())
+        if s and s.lower() not in {x.lower() for x in out}:
+            out.append(s)
+    if len(out) > 12:
+        raise HTTPException(422, "Станів забагато — до 12.")
+    return out
+
+
+def kind_fields(part_kind: str, data: PartIn) -> dict:
+    if part_kind == "entity":
+        check_role(data.role)
+        return {"role": data.role, "stats": clean_stats(data.stats), "states": clean_states(data.states)}
+    if part_kind == "field":
+        return {"props": clean_props(data.props)}
+    return {}
+
+
 @router.post("")
 async def create_part(data: PartIn, tasks: BackgroundTasks, game: Game = Depends(my_game),
                       user: User = Depends(active_user)):
-    if data.kind not in ("window", "menu", "entity"):
+    if data.kind not in PART_KINDS:
         raise HTTPException(422, "Невідомий тип обʼєкта.")
-    d = {"game": game.id, "kind": data.kind, "title": data.title.strip(),
-         "description": data.description, "order": data.order}
-    if not d["title"]:
+    title = data.title.strip() or ("Поле" if data.kind == "field" else "")
+    if not title:
         raise HTTPException(422, "Назва — обовʼязкова.")
-    if data.kind == "window":
+    d = {"game": game.id, "kind": data.kind, "title": title, "description": data.description, "order": data.order}
+    if data.kind == "field":
+        if await Part.find_one(Part.game == game.id, Part.kind == "field"):
+            raise HTTPException(409, "Поле в грі одне — воно вже є.")
+    elif data.kind == "window":
         await check_window_type(data.task, user)
         d["task"] = data.task
-    elif data.kind == "entity":
-        check_role(data.role)
-        d["role"] = data.role
-    else:
+    elif data.kind == "menu":
         d |= await clean_menu(data, game)
+    d |= kind_fields(data.kind, data)
     part = Part(**d)
     await part.insert()
     await record_new(part, actor=user.email)
@@ -108,9 +176,7 @@ async def update_part(id: PydanticObjectId, data: PartIn, game: Game = Depends(m
         raise HTTPException(422, "Назва — обовʼязкова.")
     if part.kind == "menu":
         d |= await clean_menu(data, game)
-    elif part.kind == "entity":
-        check_role(data.role)
-        d["role"] = data.role
+    d |= kind_fields(part.kind, data)
     await record(part, d, actor=user.email)
     return part.api()
 

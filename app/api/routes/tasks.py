@@ -23,6 +23,7 @@ class TaskIn(BaseModel):
     amount: float = 1
     max_count: int = 1
     parent: str = ""
+    aliases: list[str] = []
     status: str = "draft"
     order: int = 0
 
@@ -30,6 +31,7 @@ class TaskIn(BaseModel):
 async def clean(data: TaskIn) -> dict:
     d = data.model_dump()
     d["slug"], d["title"] = d["slug"].strip().lower(), d["title"].strip()
+    d["aliases"] = list(dict.fromkeys(" ".join(a.split()) for a in d["aliases"] if a.strip()))
     if not d["slug"] or not d["title"]:
         raise HTTPException(422, "Slug і назва — обовʼязкові.")
     if d["zone"] not in ZONES or d["subzone"] not in ZONES[d["zone"]]["subzones"]:
