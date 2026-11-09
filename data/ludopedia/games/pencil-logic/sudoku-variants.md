@@ -26,10 +26,14 @@ links:
   - {kind: official, url: "https://puzzles.mit.edu/sudokuopen/2023/variants-i.pdf", note: "MIT 2023: Palindrome, Little Killer, Sandwich, Quadruples, Thermo, Arrow"}
   - {kind: steam, url: "https://store.steampowered.com/app/3165770/Cracking_the_Cryptic__Fog_of_War_1/", note: "CtC Fog of War 1"}
   - {kind: youtube, url: "https://www.youtube.com/c/CrackingTheCryptic", note: "канал — варіанти в SudokuPad щодня"}
+  - {kind: steam, url: "https://store.steampowered.com/app/1117310/Sandwich_Sudoku/", note: "CtC Sandwich Sudoku (2019): правило «сума між 1 і 9», 40→100 рівнів"}
+  - {kind: steam, url: "https://store.steampowered.com/app/1377260/Miracle_Sudoku/", note: "CtC Miracle Sudoku (2020): Non-Consecutive, Miracle, NC Thermo, NC Sandwich"}
+  - {kind: steam, url: "https://store.steampowered.com/app/1250560/Chess_Sudoku/", note: "CtC Chess Sudoku (2020): Knight, King, Queen — тексти правил"}
+  - {kind: other, url: "https://ethmcc.github.io/miracle-sudoku", note: "On Miracle Sudoku: правила, 72 повні сітки, 174 816 пар даних з єдиним розвʼязком"}
 stage: v2
 coverage: 55
 mechanics: [markup-validity, completion-detection, satisfy-constraints, pencil-marks, cell-click, keyboard-controls, level-bank, level-rating, import-open-formats, in-game-editor, level-exchange, level-solver, +constraint-overlay, +killer-cage, +line-constraints, +dot-constraints, +outside-clues, +chess-move-constraint, +fog-reveal, +irregular-regions, +multi-select, +cell-coloring]
-proposes: ["+role:line", "+role:clue-outside", "+trigger:reveal_by_correct", "+effect:reveal", "+ui:rules-panel", "+feature:custom-rules", "+axis:rule-composition"]
+proposes: ["+role:line", "+role:clue-outside", "+trigger:reveal_by_correct", "+effect:reveal", "+ui:rules-panel", "+feature:custom-rules", "+axis:rule-composition", "+cond:sum_between", "+cond:knight_move"]
 author: opus
 date: 2026-11-02
 ---
@@ -112,6 +116,25 @@ date: 2026-11-02
 - Осі варіацій: «одне обмеження / мікс» · «позитивне (дано) / негативне (не дано = заборонено)» · «локальне (лінія) / глобальне (anti-knight)» · «над елементом / над класом елементів» · «повне поле / туман».
 - Родичі: Kakuro (Killer без сітки судоку), Futoshiki (Thermo-нерівності на ребрах), Skyscrapers/Towers (Tatham) — самостійні жанри.
 
+### Sandwich Sudoku — сума «начинки» між 1 і 9
+- Правило (Steam «Sandwich Sudoku», CtC): числа ззовні біля рядків і стовпців — «the SUM of cells sandwiched between the 1 and the 9 in that row/column»; 1 і 9 — «скибки», самі в суму не входять. На 6×6 (MIT 2023, Sandwich Sums) — сума між 1 і 6.
+- КОЛИ `custom: «у ряду з підказкою стоять 1 і 9»` → ЯКЩО `not sum(between_1_9, clue)` (`+cond:sum_between`) → ТО `constraint_broken(sandwich)`.
+- Висновки (виведено з правила): 0 — 1 і 9 поруч; 35 — 1 і 9 на кінцях ряду (2+…+8); суми 1 і 34 неможливі. Начинка з k клітинок дає від 2+…+(k+1) до (9−k)+…+8: k=1 → 2–8, k=2 → 5–15, k=3 → 9–21, k=4 → 14–26, k=5 → 20–30, k=6 → 27–33, k=7 → 35. Тож сума 2–4 — одна клітинка, 31–33 — рівно шість, а відстань між скибками в рядку й стовпці звʼязує позиції 1 і 9 по всьому полю.
+- Історія: CtC зробили варіант вірусним (Guardian, 6 травня 2019, «Sandwich sudoku – a new puzzle goes viral» — за Wikipedia «Cracking the Cryptic»); застосунок «Sandwich Sudoku» (Steam, 19.08.2019): 40 рівнів на старті + 5 щомісяця до 100, підказки від Simon і Mark, теми.
+- Родичі: [doppelblock](doppelblock.md) — сума між двома чорними клітинками (картка `+sum-between-clue`); X-Sums і Skyscraper — інші зовнішні підказки (таблиця сутностей); Non-Consecutive Sandwich — у застосунку Miracle Sudoku.
+- Цікавинка: перевірка ряду (індекси 1 і 9, сума між ними) — 🌱; таблиця «сума → можливі набори начинки» для розвʼязувача — 📎.
+
+### Miracle Sudoku — anti-knight + anti-king + non-consecutive і дві дані цифри
+- Правила (ethmcc «On Miracle Sudoku», 11.05.2020): класичне судоку + однакові цифри не на відстані ходу коня + не на відстані ходу короля + ортогональні сусіди не послідовні (по діагоналі — можна). Chess Sudoku CtC формулює King як «a digit must not be a single diagonal move away from itself» — ортогональних сусідів і так покривають рядок і стовпець.
+- Автор — Mitchell Lee; в оригіналі дано лише дві цифри — 1 і 2 (ethmcc). Відео CtC з ним стало вірусним (Guardian, 22.05.2020 — за Wikipedia «Cracking the Cryptic»).
+- КОЛИ `input(digit)` → ЯКЩО `custom: «та сама цифра на ході коня»` (`+cond:knight_move`) → ТО `constraint_broken(anti_knight)`.
+- КОЛИ `input(digit)` → ЯКЩО `custom: «та сама цифра в діагональному сусіді»` → ТО `constraint_broken(anti_king)`.
+- КОЛИ `input(digit)` → ЯКЩО `custom: «ортогональний сусід = d ± 1»` → ТО `constraint_broken(non_consecutive)` — глобальна форма Nonconsecutive з [sudoku-line-dot-variants](sudoku-line-dot-variants.md).
+- Чому «диво» (ethmcc): повних сіток рівно 72 — 9 з точністю до 8 симетрій квадрата (по одній на центральну цифру), 5 з урахуванням заміни d ↔ 10−d; жоден пазл з однією даною не має єдиного розвʼязку; 174 816 розстановок двох даних дають єдиний розвʼязок (21 852 з точністю до симетрій), випадкова пара різних даних — майже у 75 %. Без non-consecutive шахові правила не розрізняють цифр (перестановка значень зберігає розвʼязок), тож треба ≥ 8 даних.
+- Застосунки CtC: «Chess Sudoku» (Steam, 02.03.2020) — Knight, King і Queen («кожна 9 — ферзь»); «Miracle Sudoku» (Steam, 13.08.2020) — 40 пазлів на старті, 100 за перший рік, 4 варіанти: Non-Consecutive, Miracle, Non-Consecutive Thermo, Non-Consecutive Sandwich; підказки Simon і Mark, зірки за розвʼязання відкривають нові пазли.
+- Цікавинки: перелічити всі 72 Miracle-сітки перебором або exact cover (ethmcc — Algorithm X, dancing links) — 🥉; знайти всі пари даних з єдиним розвʼязком — 🥇.
+- Родичі: Miracle на торі — [sudoku-topology](sudoku-topology.md); [n-queens-knights-tour](n-queens-knights-tour.md) — ті самі шахові відстані без цифр.
+
 ## Цікавинки для курсу
 - Модуль-обмеження як обʼєкт з методом `check(grid) → conflicts`; варіант = список модулів — 🥉 (архітектура plugin-правил).
 - Рендер шарів поверх сітки: лінії, пунктир кліток, крапки на ребрах, зовнішнє кільце — 🥈 (консоль: ASCII-лінії — окремий виклик).
@@ -140,6 +163,8 @@ date: 2026-11-02
 - `+ui:rules-panel` — текст правил конкретного пазла поруч з полем (`fog-overlay` уже ⏳ — тут ще одне вживання).
 - `+feature:custom-rules` — правила як частина рівня (вже ⏳; ще одне вживання).
 - `+axis:rule-composition` — `fixed` (одне правило) / `modular` (рівень = набір модулів-обмежень).
+- `+cond:sum_between` — сума значень між двома позначеними клітинками ряду (Sandwich; повтор з Doppelblock).
+- `+cond:knight_move` — клітинки на відстані ходу коня (anti-knight, Miracle; повтор з N-Queens).
 
 ## Джерела
 - ⭐ [LMG: Confined Constraints](https://logic-masters.de/Raetselportal/Raetsel/zeigen.php?id=000OGK) — класика + 8 модулів (Thermo, Killer, Whisper, Renban, Kropki, XV, Arrow, Odd) з точними правилами + лінк у SudokuPad; solution code — стовпець 3.
@@ -153,9 +178,17 @@ date: 2026-11-02
 - [Artisanal Sudoku: basics](https://artisanalsudoku.substack.com/p/the-basics-of-popular-sudoku-variants) — Kropki, Whispers, Renban, Arrow з наслідками (whisper без 5).
 - [Steam: CtC Fog of War 1](https://store.steampowered.com/app/3165770/Cracking_the_Cryptic__Fog_of_War_1/).
 - [YouTube: Cracking the Cryptic](https://www.youtube.com/c/CrackingTheCryptic).
+- [Steam: Sandwich Sudoku](https://store.steampowered.com/app/1117310/Sandwich_Sudoku/) — правило, 40 рівнів + 5 на місяць до 100, 19.08.2019.
+- [Steam: Miracle Sudoku](https://store.steampowered.com/app/1377260/Miracle_Sudoku/) — 4 варіанти з non-consecutive, 13.08.2020.
+- [Steam: Chess Sudoku](https://store.steampowered.com/app/1250560/Chess_Sudoku/) — тексти правил Knight, King, Queen, 02.03.2020.
+- [On Miracle Sudoku (ethmcc)](https://ethmcc.github.io/miracle-sudoku) — правила, Mitchell Lee, дві дані 1 і 2, 72 сітки, 174 816 пар даних.
+- [Wikipedia: Cracking the Cryptic](https://en.wikipedia.org/wiki/Cracking_the_Cryptic) — посилання на статті Guardian про Sandwich (2019) і Miracle (2020), перелік застосунків.
+- [The Takeout: Sandwich Sudoku](https://thetakeout.com/sandwich-sudoku-puzzles-how-to-play-1834591096) — правило і атрибуція ідеї (див. «Непевне»).
 
 ## Непевне
 - (?) Between line, Skyscraper-sudoku, «повтори на діагоналі Little Killer можливі» — з памʼяті (стандартні формулювання), сторінок з їхнім текстом не відкрив.
 - (?) Як SudokuPad перевіряє варіанти: Check — лише базові правила; повна перевірка — через вбудований розвʼязок (з памʼяті).
 - (?) Кольори ліній (зелений whisper, фіолетовий renban, синій region sum) — конвенція, а не стандарт; Palindrome «сірий» бачив лише в MIT 2023 («shaded lines»).
 - (?) Рік 2005 у шапці умовний: Killer у The Times — 2005, CtC — 2017 (обидва за Wikipedia); старші варіанти (Sudoku-X, Jigsaw) — дат не перевіряв.
+- (?) Автор Sandwich: The Takeout пише про ідею Isaac Resnikoff, Guardian (джерело Wikipedia) агенту недоступний — атрибуцію не підтверджено; чи підказки дано біля всіх рядків, правило Steam не уточнює.
+- (?) Miracle: де саме стоять дані 1 і 2 в оригіналі, ethmcc не каже; дату відео CtC (травень 2020) знаю лише з дати статті Guardian і результатів пошуку.
