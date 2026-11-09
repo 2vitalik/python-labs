@@ -53,7 +53,7 @@ const addClaim = (task, params) => run(() => postClaim({ task, part: props.part.
       <div v-if="!edit" class="d-flex flex-wrap align-items-center gap-1">
         <span class="me-1">🗺️</span>
         <template v-if="chips.length">
-          <span v-for="c in chips" :key="c" class="badge rounded-pill text-bg-light border fw-normal text-body">{{ c }}</span>
+          <span v-for="c in chips" :key="c" class="badge text-bg-light border fw-normal text-body prop">{{ c }}</span>
         </template>
         <span v-else class="text-secondary small">{{ part ? 'Поле без властивостей — додай розмір, сітку, час' : 'Поле ще не описане: розмір, сітка, тор, час, керування, шари клітини' }}</span>
         <template v-if="editable">
@@ -95,6 +95,8 @@ const addClaim = (task, params) => run(() => postClaim({ task, part: props.part.
 </template>
 
 <style scoped>
+/* a long property (the layers) wraps instead of widening the page; on one line it is the same pill as before */
+.prop { white-space: normal; text-align: start; line-height: 1.3; padding-block: .2em; border-radius: .75rem; }
 .act { opacity: .6; }
 .act:hover { opacity: 1; }
 </style>

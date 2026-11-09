@@ -40,13 +40,15 @@ const addHint = (task) => run(() => postClaim({ task }))  // game-level, no para
 <template>
   <div :id="`p-${part.id}`" class="card h-100">
     <div class="card-body p-2 vstack gap-2">
-      <div class="d-flex align-items-center gap-2">
+      <div class="d-flex align-items-start gap-2">
         <template v-if="!edit">
           <span>🪟</span>
-          <span class="fw-semibold">{{ part.title }}</span>
-          <span class="badge text-bg-light border text-secondary fw-normal"><CoinBadge :coin="typeInfo?.coin" :amount="typeInfo?.amount" /> {{ typeInfo?.title || part.task }}</span>
+          <div class="head d-flex flex-wrap align-items-center column-gap-2 row-gap-1 flex-grow-1">
+            <span class="fw-semibold">{{ part.title }}</span>
+            <span class="badge text-bg-light border text-secondary fw-normal text-wrap text-start"><CoinBadge :coin="typeInfo?.coin" :amount="typeInfo?.amount" /> {{ typeInfo?.title || part.task }}</span>
+          </div>
           <template v-if="editable">
-            <span class="ms-auto act" role="button" title="Редагувати" @click="edit = true">✏️</span>
+            <span class="act" role="button" title="Редагувати" @click="edit = true">✏️</span>
             <span v-if="!arm" class="act" role="button" title="Видалити вікно" @click="arm = true">🗑️</span>
             <button v-else class="btn btn-danger btn-sm py-0" @mouseleave="arm = false" @click="remove">Точно видалити?</button>
           </template>
@@ -75,6 +77,8 @@ const addHint = (task) => run(() => postClaim({ task }))  // game-level, no para
 </template>
 
 <style scoped>
+/* the title and the window type wrap inside their own block — on a phone ✏️ 🗑️ stay in the card */
+.head { min-width: 0; overflow-wrap: anywhere; }
 .act { opacity: .6; }
 .act:hover { opacity: 1; }
 </style>
