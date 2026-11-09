@@ -112,3 +112,68 @@
 - Hanabi (прихована власна рука) → не клітинна, не брати: https://en.wikipedia.org/wiki/Hanabi_(card_game)
 - Примітка: Black Box у сиді позначено як «Tatham» — у колекції Tatham його не знайдено; оригінал — настільна гра Eric Solomon (Parker), є в Emacs як `M-x blackbox` (?).
 - Не знайдено пошуком: Minesweeper Genius (точна сторінка), Cryptid і Turing Machine на BGG (API потребує токен; бюджет пошуку вичерпано) — лінки описовому агенту знайти самостійно.
+
+## Хвиля 3 — 2026-11-09: нові кандидати (пошукові агенти Opus)
+
+Джерела: itch `tag-minesweeper` (popular / top-rated / newest), `top-rated/tag-deduction`; Steam-пошук «minesweeper» (418 результатів, стор. 1–2); Wikipedia `Category:Deduction_board_games`, статті EN/DE/ZH; RulesPal (правила настолок); OpenSpiel `docs/games.md`; coding-horror `basic-computer-games`; FFXIV consolegameswiki; JHU APL RBC · Не відкрилось: BGG xmlapi2 (401), Bulbapedia (403), mienfield.com (редирект на спам), cocktailgames PDF (404), en-wiki EFTAIOS / Bomb Busters / Skyjo / Jieqi (статей нема), ru-wiki «Лабиринт» (лише сторінка значень) · WebSearch: 4.
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| Das magische Labyrinth | 2009 | стіни під полем невидимі: магніт тримає кульку, удар у стіну скидає її | W:Das_magische_Labyrinth | https://www.youtube.com/results?search_query=Das+magische+Labyrinth+spiel | 1 |
+| Blind Sweeper | 2026 | сапер лише на слух: голос називає клітини, сусіди звучать просторово | https://cubenape.itch.io/blind-sweeper | — | 1 |
+| Non-Euclidean Minesweeper | 2024 | сапер на гіперболічних плитках з п'яти- і семикутників, без вгадувань | https://store.steampowered.com/app/3380320/NonEuclidean_Minesweeper/ | https://www.youtube.com/results?search_query=Non-Euclidean+Minesweeper+gameplay | 1 |
+| Rock Paper Sweeper | 2026 | три типи схованих клітин; гравець міняє форму, програє від сильнішої | https://puleo.itch.io/rps | — | 1 |
+| Yamainu no Kan (山犬の勘) | 2026 | PvP-перегони саперним полем до святилища; предмети ховають або зсувають числа на ±1 | https://romamaa.itch.io/yamainu-no-kan | — | 1 |
+| Clues by Sam | 2025 (?) | сітка 5×4 підозрюваних; позначив — відкривається текстова підказка про рядки й сусідів | https://cluesbysam.com/ | — | 1 |
+| Reconnaissance Blind Chess | 2018 (?) | фігур суперника не видно; щоходу зонд 3×3, без шаху, виграш — взяти короля | https://rbc.jhuapl.edu/gameRules | https://rbc.jhuapl.edu/ | 1 |
+| Лабиринт (паперова гра з ведучим; цифрова Labirinth) | ? | хід наосліп зі звітом: річка зносить, портали по колу, мінотавр шле в лікарню | https://red23714.itch.io/labirinth | — | 1 |
+| Code Name: Sector | 1977 | субмарина йде сталим курсом; комп'ютер дає лише дальність, курс і глибину вивести | https://rulespal.com/code-name-sector/rulebook | https://thatmichaelpark.github.io/code-name-sector/ | 1 |
+| Stop Thief | 1979 | невидимий злодій; пристрій звуком видає тип клітини: підлога, двері, вікно, вулиця | W:Stop_Thief | https://www.youtube.com/results?search_query=Stop+Thief+board+game+1979 | 1 |
+| Specter Ops | 2015 (?) | прихований рух на координатній сітці; мисливці бачать свій рядок і стовпець до будівель | https://rulespal.com/specter-ops/rulebook | https://www.youtube.com/results?search_query=Specter+Ops+board+game+how+to+play | 1 |
+| Bomb Busters | 2024 | кооп: сховані дроти в стійці за зростанням; назви число чужого дроту | https://gigazine.net/gsc_news/en/20250720-bomb-busters | https://pegasus.de/en/bombbusters | 1 |
+| The Search for Planet X | 2020 (?) | кільце 12/18 секторів; кожна дія коштує час, огляд рахує обʼєкти в діапазоні | https://rulespal.com/the-search-for-planet-x/rulebook | https://www.youtube.com/results?search_query=Search+for+Planet+X+how+to+play | 1 |
+| Escape from the Aliens in Outer Space | 2010 | прихований рух на гекс-карті олівцем; карти шуму/тиші видають сектор | https://rulespal.com/escape-from-the-aliens-in-outer-space/rulebook | https://www.ospreypublishing.com/media/fssckwfb/efa-rulebook-for-web.pdf | 2 |
+| omegasweeper | 2023 (?) | пари позитивних і негативних мін: числа можуть «брехати» сумою | https://duncanacnud.itch.io/omegasweeper | — | 2 |
+| Tales from the Crypt Sweeper | 2017 (?) | цифри замінені символами, шифр щоразу новий — спершу розгадати код | https://laundrybear.itch.io/tales-from-the-crypt-sweeper | — | 2 |
+| Venom Sweep | 2026 | real-time: змія кладе яйця, числа перераховуються наживо, болото прокручується | https://houjousxnnyside.itch.io/venom-sweep | — | 2 |
+| BoomBoomBattle | 2026 | королівська битва 32 гравців: раунди на час, далі проходить половина | https://unitendded.itch.io/boomboombattle | — | 2 |
+| Minesweeper Together | 2025 | онлайн до 8 гравців: кооператив до очищення поля або versus, малювання на полі | https://store.steampowered.com/app/3550060/Minesweeper_Together/ | — | 2 |
+| Cargo Quest | 2026 | ящики трьох категорій; лічильники рядків і стовпців за категорією; сортувати закритим вигідніше | https://kyuroguneiro.itch.io/cargo-quest | — | 2 |
+| Necrosweeper | 2026 | колір числа — тип сусіднього обʼєкта; колоду плиток поля збирає гравець | https://studio-ahn.itch.io/necrosweeper | — | 2 |
+| Minesweeper Sonar | 2026 | кожна ракета несе міні-поле сапера; частковий розвʼязок — частковий ефект, real-time | https://store.steampowered.com/app/3133120/Minesweeper_Sonar/ | — | 2 |
+| Asteroids Minesweeper | 2016 | 3D-сапер: міни переходять між кубами, «заплутані» куби мають спільний стан | https://store.steampowered.com/app/425070/Asteroids_Minesweeper/ | — | 2 |
+| Don't Step Wrong | 2025 | перейти сітку блоків за схованим правилом безпеки; помилка — нові значення, те саме правило | https://adrianocastro.itch.io/dont-step-wrong | — | 2 |
+| Faux Hollows (FFXIV) | 2020 (?) | 6×6 з 5 блоками, 11 відкриттів: знайти сховані фігури 2×3, 2×2, 1×1 | https://ffxiv.consolegameswiki.com/wiki/Faux_Hollows | — | 2 |
+| Mini Cactpot (FFXIV) | 2015 | 3×3 перестановка 1–9: відкрити 3, обрати лінію, виграш за таблицею сум | https://ffxiv.consolegameswiki.com/wiki/Mini_Cactpot | — | 2 |
+| Hurkle | 1978 | сховане на сітці 10×10; після промаху — лише напрям, куди шукати | https://raw.githubusercontent.com/coding-horror/basic-computer-games/main/51_Hurkle/README.md | — | 2 |
+| Depth Charge | 1978 | 3D-куб води: після вибуху — положення відносно субмарини по осях | https://raw.githubusercontent.com/coding-horror/basic-computer-games/main/31_Depth_Charge/README.md | — | 2 |
+| Schnappt Hubi! | 2012 | 4×4 кімнати, межі невідомі: електронний компас голосом каже, що між кімнатами | https://de.wikipedia.org/wiki/Schnappt_Hubi! | https://www.youtube.com/results?search_query=Schnappt+Hubi+Spiel | 2 |
+| Clue: The Great Museum Caper | 1991 | невидимий злодій у музеї з камерами й датчиками руху; злодієм бувають по черзі | W:Clue:_The_Great_Museum_Caper | — | 2 |
+| Tobago | 2009 | спільні карти-умови на гекс-острові; кожна мусить відсікти хоч одну клітину | https://rulespal.com/tobago/rulebook | — | 2 |
+| Penultima | 1994 | шахівниця, правила ходу таємно пишуть глядачі; «законно / ні» — індукція правил | W:Penultima_(game) | — | 2 |
+| Top Secret Spies (Heimlich & Co.) | 1984 | фігури спільні, колір кожного гравця прихований; наприкінці вгадуєш чужі кольори | W:Top_Secret_Spies | — | 2 |
+| Geistertreppe | 2003 | привиди накривають фішки й міняються місцями — памʼятай, де твоя | https://de.wikipedia.org/wiki/Geistertreppe | — | 2 |
+| Zicke Zacke Hühnerkacke | 1998 | memory керує рухом: перевернута плитка має збігтися з клітиною попереду на кільці | https://de.wikipedia.org/wiki/Zicke_Zacke_H%C3%BChnerkacke | — | 2 |
+| Memoarrr! | 2017 (?) | memory на 5×5: нова карта мусить ділити тварину або пейзаж з попередньою | https://rulespal.com/memoarrr/rulebook | — | 2 |
+| Mr. Jack Pocket | 2010 (?) | сиквел Mr. Jack: плитки 3×3 зі стінами обертаються, детективи ходять по краю | https://rulespal.com/mr-jack-pocket/rulebook | https://apps.apple.com/app/id853246110 | 2 |
+| Popsweeper | 2026 | сусіди — бульбашки, що торкаються; фізика зсуває купу й міняє сусідство | https://mightysebas.itch.io/popsweeper | — | 3 |
+| TrapSweeper | ? | пастки рівнів 1–3: число — сума рівнів, колір — найвищий рівень сусіда | https://celia14.itch.io/trapsweeper | — | 3 |
+| Nuns on the Run | 2010 (?) | сховані послушниці; варта бачить дугу 180° до 6 точок і чує шум за кубиком | https://rulespal.com/nuns-on-the-run/rulebook | — | 3 |
+| Phantom Go | ? | го з невидимими каменями суперника (родич Kriegspiel) | https://raw.githubusercontent.com/google-deepmind/open_spiel/master/docs/games.md | — | 3 |
+| Latent Tic-Tac-Toe | 2009 (?) | хід суперника стає видимим лише після твого наступного ходу | https://raw.githubusercontent.com/google-deepmind/open_spiel/master/docs/games.md | — | 3 |
+
+## Хвиля 3 — 2026-11-09: нові кандидати (пошукові агенти Opus)
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| Laser Reflection | 2022 | ховаєш дзеркала й чорні діри на сітці; підказка суперникам — лише довжина шляху променя | https://en.boardgamearena.com/gamepanel?game=laserreflection | https://www.youtube.com/results?search_query=Laser+Reflection+board+game | 1 |
+
+## Хвиля 3 — 2026-11-09: нові кандидати (пошукові агенти Opus)
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| RYB | 2016 | FLEB: колірний сапер — точки називають кольори сусідів, червоний+жовтий = помаранчевий | https://fleb.itch.io/ryb | — | 1 |
+| Alien Cartographer | 2026 | гекс-сапер: будівлі вгадуєш за підказками й правилами сусідства їхньої архітектури | https://store.steampowered.com/app/3134580/Alien_Cartographer/ | https://www.youtube.com/results?search_query=Alien+Cartographer+gameplay | 1 |
+| BroomSweeper | 2026 | сапер-роглайк: 16 поверхів, нічні хазмати роблять числа ненадійними, предмети-синергії | https://store.steampowered.com/app/3473250/BroomSweeper/ | https://www.youtube.com/results?search_query=BroomSweeper+gameplay | 2 |
+| Dupery: A Game of Solo Deduction | 2026 | сітка ролей як Clues by Sam, але підручні брешуть, зрадники гірші; арешт усіх злих | https://store.steampowered.com/app/3845070/Dupery_A_Game_of_Solo_Deduction/ | https://www.youtube.com/results?search_query=Dupery+gameplay | 2 |
+| Mimic Logic | 2024 | скрині кажуть правду чи брешуть; знайди міміків, відкрий решту; сітка (?) | https://store.steampowered.com/app/2455920/Mimic_Logic/ | https://www.youtube.com/results?search_query=Mimic+Logic+gameplay | 3 |

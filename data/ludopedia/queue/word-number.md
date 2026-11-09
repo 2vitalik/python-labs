@@ -74,3 +74,72 @@
 - Spelling Bee, Letter Boxed — не сітка (соти/квадрат), лишаються як словесні «поля» нестандартної форми.
 - Redactle, Contexto, Semantle — словесні, але без поля; не брати.
 - Countdown numbers / Digits / Krypto — без сітки; беремо одну (Digits) як числовий «бонус», решта в згадках.
+
+## Хвиля 3 — 2026-11-09: нові кандидати (пошукові агенти Opus)
+
+Джерела: Wikipedia API (категорії Word_puzzle_video_games, Word_games, Word_puzzles, Crosswords, Scrabble_variants, Wordle_clones + пакетні extracts по 20 статей), ru/fr Wikipedia, Steam-пошук «word puzzle», itch `top-rated/tag-word-game`, правила RulesPal/UltraBoardGames/PDF видавців, огляди · Не відкрилось: puzzmo.com (fetch заблоковано), BGG XML API (401 — раніше працював), W:Puzzmo (404) · WebSearch: 15.
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| Балда (Balda) | трад. | слово в центрі 5×5; хід — одна літера в сусідню клітину, слово — шлях через неї | https://ru.wikipedia.org/wiki/Балда_(игра) | https://www.youtube.com/results?search_query=Балда+игра | 1 |
+| Kotoba no Puzzle: Mojipittan | 2001 | одна кана за хід, одна плитка дає слова в кількох напрямках (ланцюг) | W:Kotoba_no_Puzzle:_Mojipittan | https://store.steampowered.com/search/?term=Mojipittan | 1 |
+| Wordox | 2000 | Scrabble + Othello: плитки мають колір гравця, слово перефарбовує чужі | W:Scrabble_variants | https://fr.wikipedia.org/wiki/Wordox | 1 |
+| RSVP | 1958 | вертикальна рамка 11×11 з двох боків: кубик у дірці будує слово тобі й блокує суперника | W:RSVP_(board_game) | — | 1 |
+| Thiruthamizh | 1990 | тамільський Scrabble 21×21: прозора плитка-діакритика накладається на літеру → новий склад | W:Thiruthamizh | — | 1 |
+| Dropquote | 1975 | літери кожного стовпця опускаються в клітини того ж стовпця — скласти цитату | W:Dropquote | — | 1 |
+| Acrostic (Double-Crostic) | трад. | дві сітки: літери відповідей переносяться за номерами в сітку цитати; перші літери — автор | W:Acrostic_(puzzle) | — | 1 |
+| Fill-In (Kriss Kross) | трад. | дано слова без підказок, згруповані за довжиною — вписати в сітку за перетинами | W:Fill-In_(puzzle) | — | 1 |
+| Cross-figure (crossnumber) | трад. | кросворд з цифр: підказки — арифметика й посилання на інші відповіді | W:Cross-figure | — | 1 |
+| Number Munchers / Word Munchers | 1986 / 1985 | Muncher їсть клітини за правилом (кратні, прості, рівності); 5 видів Troggles з різною поведінкою | W:Number_Munchers | W:Word_Munchers · https://www.youtube.com/results?search_query=Number+Munchers+gameplay | 1 |
+| Babble Royale | 2021 | battle royale на дошці Scrabble: слова — рух, дотик до чужого слова елімінує, зона звужується | W:Babble_Royale | https://store.steampowered.com/search/?term=Babble+Royale | 1 |
+| Lingo | 1987 | Wordle-раунд (5 спроб) → витягнуті кулі закривають бінго-картку 5×5 до лінії | W:Lingo_(American_game_show) | https://fr.wikipedia.org/wiki/Motus_(jeu_télévisé) | 1 |
+| Blockbusters | 1983 | гекс-поле літер: відповідь на питання на цю літеру захоплює гекс, шлях через поле як у Hex | W:Blockbusters_(British_game_show) | — | 1 |
+| Puzzmo: Bongo | ? | 25 плиток у 5×5, рахуються лише рядки; щоденні номінали й множники, бонус-лінія, джокер | https://apps.apple.com/us/app/-/id6714482734 | https://playlin-site-production.pages.dev/game/bongo/ | 1 |
+| Apple News+ Quartiles | 2024 | сітка 4×5 зі складів-фрагментів: слова з 1–4 плиток, знайти 5 чотириплиткових | https://www.cultofmac.com/how-to/quartiles | https://support.apple.com/guide/news/iph701ef27fb/mac | 1 |
+| Fruit Box (Apple Game, Make 10) | ? | поле 17×10 цифр: прямокутник мишею з сумою рівно 10 знімає клітини, 120 с | https://playpile.gg/games/fruit-box | https://www.moddb.com/games/fruit-box | 1 |
+| Sumoku | 2010 | кросворд з числових плиток: сума ряду кратна ключовому числу з кубика, колір не повторюється | https://ultraboardgames.com/sumoku/game-rules.php | https://rulespal.com/sumoku/rulebook · https://blueorangegames.com/games/sumoku | 1 |
+| Puzzlejuice | 2012 | тетроміно → ряд одного кольору стає літерами → слово Boggle-шляхом очищає | W:Puzzlejuice | згадано в spelltower.md як предок, не описано | 1 |
+| Nansuke (Number Skeleton) | ? | вписати числа зі списку в кросворд-скелет без жодних визначень | https://www.nikoli.co.jp/en/puzzles/nansuke/ | — | 2 |
+| Wordbase | 2014 | слова-шляхи від своєї бази; клітини стають твоїми, мета — торкнутись бази суперника | https://www.androidpolice.com/2014/06/03/new-game-wordbase-is-a-strategic-game-of-vocabulary-vengeance/ | https://www.producthunt.com/products/wordbase-app · згадано в letterpress.md з (?) | 2 |
+| Fibble | 2022 | Wordle, де в кожному рядку фідбеку рівно одна плитка бреше | https://drchangliu.github.io/FibbleArena | https://kotaku.com/wordle-today-games-like-alternatives-best-nerdle-heardl-1848782927/3 | 2 |
+| Xordle | 2022 | два слова без спільних літер на одному полі: кожна підказка стосується лише одного | https://www.hey.gg/blog/xordle | https://playpile.gg/games/xordle | 2 |
+| Squabble | 2022 | Wordle-баттл-рояль до 99 гравців: HP тане щосекунди, вгадані літери б'ють суперника | W:Squabble_(video_game) | — | 2 |
+| WordJong | 2007 | маджонг-розкладка літер: слово лише з відкритих плиток, очистити всю розкладку | https://www.gamespot.com/reviews/wordjong-review/1900-6184115/ | W:WordJong · https://www.engadget.com/2007/11/02/ds-fanboy-review-wordjong/ | 2 |
+| Duplicate Scrabble | ? | усі гравці мають ту саму дошку й літери; на час, на дошку йде найкращий хід | W:Duplicate_Scrabble | W:Scrabble_variants | 2 |
+| Equate | ? | рівності хрест-навхрест на дошці 19×19 з плиток-цифр і знаків | W:Equate_(game) | згадано в mathable.md як родич | 2 |
+| Triolet | ? | Scrabble з числами: пари з сумою до 15, трійки — рівно 15 | W:Scrabble_variants | — | 2 |
+| Yushino | ? | ряди чисел, де кожне — остання цифра суми двох попередніх (Фібоначчі mod 10) | W:Scrabble_variants | — | 2 |
+| Spiral puzzle | трад. | ланцюг клітин спіраллю: одні відповіді читаються 1→100, інші 100→1 | W:Spiral_puzzle | — | 2 |
+| Чайнворд (Chainword) | трад. | лінійний кросворд: кінець слова — початок наступного, ланцюг або змійка | https://ru.wikipedia.org/wiki/Линейный_кроссворд | — | 2 |
+| Diagramless crossword (Carte Blanche) | трад. | дано лише розмір: чорні клітини й нумерацію розвідує сам розвʼязувач | W:Crossword | — | 2 |
+| Wordscapes | 2017 | свайп по колесу з літер → слова заповнюють кросвордну сітку | W:Wordscapes | — | 2 |
+| Washington Post Keyword | ? | 6 вертикальних слів з пропуском перетинає ключове слово; літера мусить пасувати обом | https://helpcenter.washingtonpost.com/hc/en-us/articles/16190753288475-What-is-Keyword | https://www.askdavetaylor.com/how-to-play-keyword-game-from-the-washington-post/ | 2 |
+| Quarrel | 2011 | карта територій як Risk; атака — анаграмний двобій з однакових виданих літер | W:Quarrel_(video_game) | https://gameinformer.com/games/quarrel/b/xbox360/archive/2012/02/02/quarrel-review-turning-words-into-war | 2 |
+| So Clover! | 2021 | конюшина 2×2 з карт по 4 слова: підказки на стиках, інші обертають і розкладають карти назад | https://cdn.shopify.com/s/files/1/2003/4581/files/sc-en01-rules-16197761427wP8d.pdf | https://rulespal.com/so-clover/rulebook | 2 |
+| Cross Clues | 2020 | осі-слова 3×3…5×5: однослівна підказка → вгадати координату перетину, таймер | https://blueorangegames.eu/wp-content/uploads/2023/05/CrossClues-Rules-EN.pdf | https://rulespal.com/cross-clues/rulebook | 2 |
+| Word on the Street | ? | смуга з 17 приголосних: кожна літера слова зсуває плитку на клітину до своєї команди | https://rulespal.com/word-on-the-street/rulebook | https://www.majorfun.com/word-on-the-street/ | 2 |
+| WordTactics | 2020 | трей із 6 літер ставиш у сітку; слово можна не здавати, а нарощувати; спецплитки | https://store.steampowered.com/app/1463350/WordTactics/ | — | 2 |
+| Lexilotl: Crossword Puzzle Run | 2026 | забіг міні-кросвордів: вгадана літера відкривається в усіх словах, 3 промахи — кінець | https://store.steampowered.com/app/4735750/Lexilotl_Crossword_Puzzle_Run/ | — | 2 |
+| Overwords | 2025 | слова накладаються на дошку: перекриті літери мають утворити нові слова, дошка росте | https://store.steampowered.com/app/3902010/Overwords/ | — | 2 |
+| Wormspell | ? | черв'як ходить клітинами, вписує слова на порожні — слова стають місциною, оточення ламає обʼєкти | https://chriswade.itch.io/wormspell | — | 2 |
+| King's Cribbage | ? | плитки-карти хрест-навхрест: кожен ряд — комбінація криббеджа з 5 карт | W:Scrabble_variants | — | 3 |
+| LinkedIn Crossclimb | 2024 | драбина слів з тривіа-підказками: рядки перетягнути в порядок, кінці відкриваються останніми | https://www.askdavetaylor.com/how-to-play-the-linkedin-puzzle-game-crossclimb/ | https://crossclimb-site.pages.dev/how-to-play | 3 |
+| Hollywood Squares | 1966 | хрестики-нулики 3×3: клітина твоя, якщо правильно оцінив відповідь знаменитості | W:Hollywood_Squares | — | 3 |
+
+## Хвиля 3 — 2026-11-09: нові кандидати (пошукові агенти Opus)
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| Tiled Words | 2025 | зламаний кросворд порізано на плитки-фрагменти: обертати й складати за підказками, як Patchwork | https://tiledwords.com/how-to-play | https://www.youtube.com/results?search_query=Tiled+Words+daily+puzzle | 1 |
+| Spell Slide | 2025 | штовхання літер складає й ламає слова; двері-слова, роботи-помічники, редактор | https://store.steampowered.com/app/3330410/ | — | 2 |
+| Spellsy | 2026 | слово з сусідніх літер прибирає плитки; спецплитки зсувають сусідів і вибухають ланцюгом | https://store.steampowered.com/app/4171910/Spellsy/ | https://www.youtube.com/results?search_query=Spellsy+gameplay | 2 |
+| 12 Word Searches | 2023 | пошук слів, де приховані правила ускладнюють кожну наступну сітку | https://playcebo.itch.io/12-word-searches | — | 2 |
+| Dave's Word Game | 2026 | щоденне спільне поле літер: слова очищають рядки й квадрати, порядок ходів змінює майбутні опції | https://store.steampowered.com/app/3670940/Daves_Word_Game/ | https://www.youtube.com/results?search_query=Dave%27s+Word+Game+gameplay | 2 |
+| Beyond Words | 2026 | Balatro-словесний: слова викладаються на нерегулярні поля з клітинами-модифікаторами, кілька підполів | https://store.steampowered.com/app/3823370/Beyond_Words/ | https://www.youtube.com/results?search_query=Beyond+Words+gameplay | 2 |
+| Watchword | 2025 | anagram-роглайк: слова кросвордом на дошці; особливе слово розширює дошку на наступні раунди | https://store.steampowered.com/app/2906730/Watchword/ | https://www.youtube.com/results?search_query=Watchword+gameplay | 2 |
+| Cursed Words | 2026 | розкидані «зіпсовані» сітки літер-плиток; з часом слова стають числами чи шаховими знаками | https://store.steampowered.com/app/3856460/ | https://store.steampowered.com/app/4264890/ | 2 |
+| Pool Letter | 2025 | лабіринт із літер: ланцюжком слів прокласти шлях до цілі; підказка — чи лишились слова | https://cisuthen.itch.io/pool-letter | https://www.youtube.com/results?search_query=Pool+Letter+word+maze | 2 |
+| Letter Coins | 2025 | 25 двобічних монет-літер, шукати слова серед монет (за 12 Word Searches) | https://noblesteedgames.itch.io/letter-coins | — | 3 |
+| Gridogram | 2025 | щоденна цитата схована в сітці 4×4–5×4; свайп сусідніх літер, слова цитати золоті в алфавітному списку | https://www.gridogram.com/blah/playing | https://www.gridogram.com/blah/words | 3 |
+| Pronoun Palace | 2026 | бій правописом: деревʼяні плитки атакують, пластикові захищають; заклинання зсувають літери абеткою | https://store.steampowered.com/app/3618850/Pronoun_Palace/ | https://www.youtube.com/results?search_query=Pronoun+Palace+gameplay | 3 |
+| Tomb of the Bloodletter | 2026 | поле — QWERTY-клавіатура: на клавішах-літерах лежать магії, набране слово запускає їхні ефекти | https://store.steampowered.com/app/3531630/Tomb_of_the_Bloodletter/ | https://www.youtube.com/results?search_query=Tomb+of+the+Bloodletter+gameplay | 3 |

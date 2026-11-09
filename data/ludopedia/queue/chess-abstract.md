@@ -168,3 +168,62 @@
 - Blokus · Entropy · Focus → `board-digital`.
 - Nim · Sprouts (https://en.wikipedia.org/wiki/Sprouts_(game)) → математичні ігри без сітки, можливо поза корпусом.
 - Ludii (https://ludii.games/library.php) — далі брати звідти Bao/Oware (манкала, не клітинні) → поза корпусом або окрема сімʼя.
+
+## Хвиля 3 — 2026-11-09: нові кандидати (пошукові агенти Opus)
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| Cathedral | 1979 | поліоміно 10×10; замкнена область захоплює єдину чужу фігуру всередині | W:Cathedral_(board_game) | https://www.youtube.com/results?search_query=Cathedral+board+game+how+to+play | 1 |
+| boop. | 2022 | поставлена фішка відштовхує всіх 8 сусідів на клітину, з краю — геть з поля | https://rulespal.com/boop/rulebook | https://thinkygames.com/reviews/boop-an-adorable-strategy-board-game-about-booping-cats-around/ ; перша версія Gekitai (2020) | 1 |
+| Pokémon Duel | 2016 | поле-граф; бій — рулетки із секторами атак; оточений з усіх боків вибуває; дійти до бази | W:Pok%C3%A9mon_Duel | https://www.youtube.com/results?search_query=Pokemon+Duel+gameplay | 1 |
+| Jieqi (揭棋) | 1980-ті | сянці з закритими фігурами: ходять за стартовою клітиною, відкриваються після ходу | https://zh.wikipedia.org/wiki/%E6%8F%AD%E6%A3%8B | — | 2 |
+| Quixo (Thierry Chapeau) | 1995 | кубик з краю засуваєш у ряд з іншого кінця, зсуваючи ряд; 5 у лінію | https://ludii.games/details.php?keyword=Quixo | https://www.youtube.com/results?search_query=Quixo+how+to+play | 2 |
+
+## Хвиля 3 — 2026-11-09: нові кандидати (пошукові агенти Opus)
+
+Джерела: Wikipedia API (Category:Abstract_strategy_games, Chess_variants, Shogi_variants, Connection_games, Mancala, Go_variants + extracts статей), Ludii library і details.php, BoardSpace about_<гра>.html, pychess.org/variants, Steam-пошук chess roguelike / chess puzzle, itch tag-chess · Не відкрилось: BoardSpace about_games.html (404), iggamecenter (403), BGG XML API (401), mindsports.nl (списку ігор нема) · WebSearch: 0.
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| Djambi | 1975 | 4 гравці 9×9: трупи лишаються блокерами, Некромобіль і Дипломат переставляють чужі фігури | W:Djambi | https://www.youtube.com/results?search_query=Djambi+chess+gameplay | 1 |
+| Circe chess | 1967 | взята фігура одразу відроджується на своїй стартовій клітині, якщо та вільна | W:Circe_chess | — | 1 |
+| Dynamo chess | 1968 | взяття нема: фігури штовхають і тягнуть ворожі, знята — виштовхнута за край | W:Dynamo_chess | — | 1 |
+| Kyoto shogi | ~1976 | 5×5: кожна фігура після кожного ходу перевертається на інший тип; дропи | W:Kyoto_shogi | https://ludii.games/details.php?keyword=Kyoto%20Shogi · https://www.pychess.org/variants/chennis | 1 |
+| Annan shogi | ? | фігура, за якою стоїть своя, ходить як та, що позаду, а не як сама | W:Annan_shogi | — | 1 |
+| Bagh-chal | трад. | полювання: 4 тигри бʼють стрибком, 20 кіз спершу ставляться й мусять заблокувати тигрів | W:Bagh-chal | https://ludii.games/details.php?keyword=Baghchal · W:Fox_games | 1 |
+| Domineering | ? | ставлять доміно: один лише вертикально, другий горизонтально; хто не може — програв | W:Domineering | https://ludii.games/details.php?keyword=Domineering | 1 |
+| Phutball (Philosopher's Football) | 1982 | спільний мʼяч: поставити камінь будь-де або стрибати мʼячем ланцюгом, знімаючи перестрибнуті | W:Phutball | — | 1 |
+| Paper soccer | ? | мʼяч-лінія йде ребрами решітки; на відвіданій точці чи краю — відскок, ще хід | W:Paper_soccer | — | 1 |
+| L game | 1967 | 4×4: переставити свою L-фігуру в нове положення, потім одну з двох нейтральних | W:L_game | https://ludii.games/details.php?keyword=L%20Game | 1 |
+| Ploy | 1970 | фігури з маркерами напрямків; поворот на місці — окремий хід, щит може обидва | W:Ploy_(board_game) | https://ludii.games/details.php?keyword=Ploy | 1 |
+| Martian Chess | 1999 | фігура належить тому, у чиїй чверті стоїть; перетнув канал — віддав супернику | W:Martian_Chess | — | 1 |
+| Rithmomachia | ~11 ст. | фігури з числами: взяття рівністю, сумою, добутком, облогою; перемога — прогресії | W:Rithmomachia | https://ludii.games/details.php?keyword=Rithmomachia | 1 |
+| The Duke | 2013 | плитка після кожного ходу перевертається на інший патерн руху; нові тягнуть із мішка | W:The_Duke_(board_game) | — | 1 |
+| EinStein würfelt nicht! | 2004 | кубик обирає, яким номерним кубом ходити; гонка в кут, бʼє й свої | W:EinStein_würfelt_nicht! | https://ludii.games/details.php?keyword=EinStein%20W%C3%BCrfelt%20Nicht | 1 |
+| Entropy | 1977 | ролі: Хаос ставить фішку випадкового кольору, Порядок зсуває; очки за паліндроми | W:Entropy_(board_game) | — | 1 |
+| TAMSK | 1998 | фігури — пісочні годинники, що спливають у реальному часі; кільця на годинниках | W:TAMSK | — | 1 |
+| Guerrilla Checkers | 2010 | асиметрія шарів: 6 шашок на клітинах проти каменів, що ставляться парами на перехрестя | https://ludii.games/details.php?keyword=Guerrilla%20Checkers | — | 1 |
+| Tumbleweed | 2020 | висота нового стосу = кількість своїх стосів у лінії видимості; вищий перезаселяє | https://ludii.games/details.php?keyword=Tumbleweed | https://www.boardspace.net/english/about_tumbleweed.html | 1 |
+| Gyges | ? | фігури нічиї: ходиш будь-якою з найближчого ряду, рикошети на висоту 1–3 | https://www.boardspace.net/english/about_gyges.html | — | 1 |
+| Andernach chess | 1993 | фігура, що взяла, міняє колір і переходить до суперника (крім короля) | W:Andernach_chess | — | 2 |
+| Madrasi chess | 1979 | фігура під атакою однойменної ворожої паралізована: не ходить, не бʼє, не шахує | W:Madrasi_chess | — | 2 |
+| Grid chess | 1953 | дошку поділено сіткою 2×2; хід легальний, лише якщо перетинає лінію сітки | W:Grid_chess | — | 2 |
+| Rollerball (chess variant) | 1998 | 7×7 без центру 3×3 — кільцевий трек, фігури рухаються переважно за годинниковою | W:Rollerball_(chess_variant) | — | 2 |
+| Jeson Mor | трад. | монгольська: лише коні, 9 на 9; перемога — зайняти центр і вийти з нього | W:Jeson_Mor | — | 2 |
+| Knightmare Chess | 1996 | карта замість ходу міняє правила: рух фігур, спец-клітини, чужі фігури (перевірити: ≈ `capablanca-chess`) | W:Knightmare_Chess | https://www.youtube.com/results?search_query=Knightmare+Chess+gameplay | 2 |
+| Dōbutsu shōgi | 2008 | 3×4 дитяче шогі: лев виграє, дійшовши до останнього ряду не під шахом | W:Dōbutsu_shōgi | https://ludii.games/details.php?keyword=Let%27s%20Catch%20the%20Lion | 2 |
+| Tori shogi | 1799 | пташине шогі 7×7 з дропами; лівий і правий перепели ходять дзеркально різно | W:Tori_shogi | — | 2 |
+| Hyper Chinese Chess | 2025 | real-time сянці без черги: спільний запас очок дій регенерує, режим туману | https://store.steampowered.com/app/4059530/ | — | 2 |
+| Gonnect | 2000 | правила го, але мета — одна група, що зʼєднує протилежні сторони | W:Gonnect | https://ludii.games/details.php?keyword=Gonnect | 2 |
+| NoGo | 2005 | анти-го: після ходу кожна група мусить мати дихання; хто не може поставити — програв | https://ludii.games/details.php?keyword=NoGo | — | 2 |
+| Sygo | 2010 | го Фрілінга: оточені камені перефарбовуються, не знімаються; або ріст усіх своїх груп | W:Sygo | — | 2 |
+| Bao la Kiswahili | трад. | манкала 4×8: фаза з руки, естафетний розсів захоплених із kichwa, будинок nyumba | W:Bao_(game) | https://ludii.games/details.php?keyword=Bao%20Kiswahili%20(East%20Africa) | 2 |
+| Togyzkumalak | трад. | казахська манкала 2×9: туздик — ворожа лунка назавжди стає твоєю коморою | W:Togyzkumalak | — | 2 |
+| Octi | 1999 | додаєш капсулі «зубці» — так будуєш її дозволені напрямки руху (?) | W:Octi | https://www.youtube.com/results?search_query=Octi+board+game | 2 |
+| Diaballik | 2004 | 2 кроки + 1 пас мʼяча прямою чи діагоналлю; анти-гра карає за глуху стіну | W:Diaballik | https://ludii.games/details.php?keyword=Diaballik | 2 |
+| TZAAR | ? | три типи фішок; спершу обовʼязкове взяття, далі стос; втратив тип — програв | W:TZAAR | — | 2 |
+| Three Musketeers | ≤1969 | 3 мушкетери лише бʼють сусідніх; 22 вороги виграють, вишикувавши їх в одну лінію | W:Three_Musketeers_(game) | — | 2 |
+| Trike | ? | спільна пішка: ставиш камінь на її прямій і переносиш її туди; очки довкола | https://ludii.games/details.php?keyword=Trike | https://www.boardspace.net/english/about_trike.html | 2 |
+| Squadro | 2018 | 5 фішок перетинають шляхи суперника; швидкість від лунки, перескок відкидає ворога | https://ludii.games/details.php?keyword=Squadro | — | 2 |
+| Barca | ? | без взяття: слон, лев, миша лякають за камінь-ножиці-папір; зайняти 3 водопої | W:Barca_(board_game) | https://ludii.games/details.php?keyword=Barca | 2 |
+| Chessarama | 2023 | 8 мініігор зі звичайними ходами фігур і новими цілями: Sokoban-шахи, дракон | https://store.steampowered.com/app/1831830/Chessarama/ | — | 2 |

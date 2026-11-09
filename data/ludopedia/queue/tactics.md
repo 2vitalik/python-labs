@@ -50,11 +50,11 @@
 | Hard West | 2015 | удача як ресурс замість кидків, рикошети від предметів (?) | ⭐ https://en.wikipedia.org/wiki/Hard_West | https://store.steampowered.com/search/?term=Hard+West | 3 |
 | Othercide | 2020 | таймлайн ініціативи: дії зсувають наступний хід, переривання | ⭐ https://en.wikipedia.org/wiki/Othercide | https://store.steampowered.com/search/?term=Othercide | 2 |
 | BattleTech | 2018 (настолка 1984) | гекс, нагрів зброєю, частини меха окремо, бік удару | ⭐ https://en.wikipedia.org/wiki/BattleTech_(video_game) | https://store.steampowered.com/search/?term=BattleTech | 2 |
-| Mech Armada | 2022 (?) | роглайт: меха збирають із частин на сітці | ⭐ https://store.steampowered.com/search/?term=Mech+Armada | https://www.youtube.com/results?search_query=Mech+Armada+gameplay | 3 |
+| Mech Armada | 2022 | роглайт: меха з трьох слотів частин; сітка — лише поле бою | ⭐ https://store.steampowered.com/search/?term=Mech+Armada | https://www.youtube.com/results?search_query=Mech+Armada+gameplay · ✔ виправлено 2026-11-09 | 3 |
 | Gloomhaven | 2017 | 2 карти на хід (верх/низ), ініціатива з карт, колода = втома | ⭐ https://en.wikipedia.org/wiki/Gloomhaven | https://store.steampowered.com/search/?term=Gloomhaven | 1 |
 | Frosthaven | 2023 | продовження Gloomhaven, будування міста між сценаріями | ⭐ https://www.youtube.com/results?search_query=Frosthaven+gameplay | https://store.steampowered.com/search/?term=Frosthaven | 3 |
 | HeroQuest | 1989 | класичний данж-кроул на сітці: кубики черепів/щитів, гравець-лиходій | ⭐ https://en.wikipedia.org/wiki/HeroQuest | https://www.youtube.com/results?search_query=HeroQuest+board+game+how+to+play | 2 |
-| Space Crusade | 1990 | HeroQuest у космосі: команди-орденські карти, сканер «блипів» (?) | ⭐ https://en.wikipedia.org/wiki/Space_Crusade | https://www.youtube.com/results?search_query=Space+Crusade+board+game | 3 |
+| Space Crusade | 1990 | HeroQuest у космосі: орденські карти команд, блипи — жетони прихованих ворогів; сканер — трек командира | ⭐ https://en.wikipedia.org/wiki/Space_Crusade | https://www.youtube.com/results?search_query=Space+Crusade+board+game · ✔ виправлено 2026-11-09 | 3 |
 | Space Hulk | 1989 | командні очки, пісочний годинник на хід, overwatch заклинює на дублі | ⭐ https://www.youtube.com/results?search_query=Space+Hulk+board+game+how+to+play | https://store.steampowered.com/search/?term=Space+Hulk | 2 |
 | Descent: Journeys in the Dark | 2005 | 1 проти всіх: оверлорд розігрує карти пасток і монстрів | ⭐ https://en.wikipedia.org/wiki/Descent:_Journeys_in_the_Dark | https://www.youtube.com/results?search_query=Descent+Journeys+in+the+Dark+how+to+play | 3 |
 | Zombicide | 2012 | кооп, шум притягує зомбі, рівень небезпеки за найсильнішим героєм | ⭐ https://en.wikipedia.org/wiki/Zombicide | https://www.youtube.com/results?search_query=Zombicide+how+to+play | 2 |
@@ -88,7 +88,7 @@
 | Children of Zodiarcs | 2017 | кубики, які крафтить гравець, + карти на сітці | ⭐ https://store.steampowered.com/search/?term=Children+of+Zodiarcs | https://www.youtube.com/results?search_query=Children+of+Zodiarcs+gameplay | 3 |
 | Ash of Gods: Redemption | 2018 | урон по HP або по енергії на вибір (?) | ⭐ https://en.wikipedia.org/wiki/Ash_of_Gods:_Redemption | https://store.steampowered.com/search/?term=Ash+of+Gods | 3 |
 | Ogre (Steve Jackson) | 1977 | гекс: один гігантський танк із підсистемами проти загону | ⭐ https://www.youtube.com/results?search_query=Ogre+Steve+Jackson+board+game | — | 3 |
-| Auro: A Monster-Bumping Adventure | 2015 | бій лише штовханням монстрів у воду | ⭐ https://store.steampowered.com/search/?term=Auro | https://www.youtube.com/results?search_query=Auro+Monster+Bumping+Adventure | 2 |
+| Auro: A Monster-Bumping Adventure | 2014 | бій лише штовханням монстрів у воду | ⭐ https://store.steampowered.com/search/?term=Auro | https://www.youtube.com/results?search_query=Auro+Monster+Bumping+Adventure · ✔ виправлено 2026-11-09 | 2 |
 
 ## Межові випадки
 
@@ -108,3 +108,69 @@
 - Stratego → `chess-abstract`
 - Teamfight Tactics / auto chess → `tower-lanes`
 - Ogre Battle (https://en.wikipedia.org/wiki/Ogre_Battle), Unicorn Overlord, Mordheim, Gears Tactics, Valkyria Chronicles, Marvel's Midnight Suns — тактики без клітинної сітки або в реальному часі, у корпус лише якщо знадобиться контраст
+
+## Хвиля 3 — 2026-11-09: нові кандидати (пошукові агенти Opus)
+
+Джерела: Wikipedia API (Category:Tactical_role-playing_video_games, Category:Turn-based_tactics_video_games) + статті ігор; Steam (тег Turn-Based Tactics + Hex Grid, сторінки ігор); UltraBoardGames і RulesPal (правила настолок) · Не відкрилось: BGG XML API (401, тепер потребує токен), UBG без сторінок Dungeon Twister / Neuroshima Hex, Wikipedia 404 — Fort Triumph, Combat Commander: Europe, Undaunted: Normandy, Warhammer Underworlds, BattleCON; дамп Thinky — тека порожня · WebSearch: 10.
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| Yggdra Union | 2006 | карта ходу дає спільний пул руху; одна атака за хід формацією X або + | W:Yggdra_Union | https://www.youtube.com/results?search_query=Yggdra+Union+gameplay | 1 |
+| Knights in the Nightmare | 2008 | стилус-вогник ухиляється від куль на ізосітці; перемога — три смерті ворогів у ряд | W:Knights_in_the_Nightmare | https://www.youtube.com/results?search_query=Knights+in+the+Nightmare+gameplay | 1 |
+| Hoshigami: Ruining Blue Earth | 2001 | постріл штовхає на 2 клітини; союзник у «сесії» перенаправляє вибитого ворога своїм фасингом | W:Hoshigami:_Ruining_Blue_Earth | https://www.youtube.com/results?search_query=Hoshigami+Ruining+Blue+Earth+gameplay | 1 |
+| Jeanne d'Arc | 2006 | атака лишає «палаючу ауру» на клітині за ціллю — наступний атакувальник звідти б'є сильніше | W:Jeanne_d%27Arc_(video_game) | https://www.youtube.com/results?search_query=Jeanne+d%27Arc+PSP+gameplay | 1 |
+| La Pucelle: Tactics | 2002 | портали пускають промінь темряви, юніти повертають його фасингом; самоперетин петлі >15 — «диво» | W:La_Pucelle:_Tactics | https://www.youtube.com/results?search_query=La+Pucelle+Tactics+purification | 1 |
+| Persona 5 Tactica | 2023 | удар по ворогу поза укриттям збиває й дає ще хід; трикутник трьох союзників б'є площею | W:Persona_5_Tactica | https://store.steampowered.com/search/?term=Persona+5+Tactica | 1 |
+| Metal Slug Tactics | 2024 | що далі пройшов за хід, то вищий захист; союзник, що бачить ціль, б'є синхронно | W:Metal_Slug_Tactics | https://store.steampowered.com/search/?term=Metal+Slug+Tactics | 1 |
+| Dynasty Tactics | 2002 | тактики генералів ланцюжаться в комбо за позицією союзників; фасинг після руху; мораль = черга | W:Dynasty_Tactics | https://www.youtube.com/results?search_query=Dynasty+Tactics+gameplay | 1 |
+| Atlas Reactor | 2016 | одночасні ходи за 20 с, розв'язка фазами Prep→Dash→Blast→Move; відкидання скасовує рух | W:Atlas_Reactor | https://www.youtube.com/results?search_query=Atlas+Reactor+gameplay | 1 |
+| Summoner Wars | 2009 | призов лише біля своїх стін; мана — колода з убитих і скинутих карт | https://www.ultraboardgames.com/summoner-wars/game-rules.php | W:Summoner_Wars | 1 |
+| Neuroshima Hex! | 2005 | тайли-юніти викладаються на гекс; бій вмикає тайл битви, штаб має 20 ОЗ, ініціатива (?) | W:Neuroshima_Hex! | https://www.youtube.com/results?search_query=Neuroshima+Hex+how+to+play | 1 |
+| Squad Leader | 1977 | 8 фаз ходу; захисний вогонь по тих, хто щойно рухався; видимість перевіряють ниткою | W:Squad_Leader | https://www.youtube.com/results?search_query=Squad+Leader+Avalon+Hill+how+to+play | 1 |
+| Combat Commander: Europe | 2006 | без фіксованих ходів: накази й дії обох гравців з карт руки, тригер «Time!» | https://rulespal.com/combat-commander-europe/rulebook | https://www.youtube.com/results?search_query=Combat+Commander+Europe+how+to+play | 1 |
+| Undaunted: Normandy | 2019 | колода = загін: карта активує юніт, втрата вилучає карту; таємна ставка ініціативи | https://www.ultraboardgames.com/undaunted-normandy/game-rules.php | https://www.youtube.com/results?search_query=Undaunted+Normandy+how+to+play | 1 |
+| Star Fleet Battles | 1979 | 32 імпульси руху за швидкістю, розподіл енергії на хід, 6 щитів за гранями гекса | W:Star_Fleet_Battles | https://www.youtube.com/results?search_query=Star+Fleet+Battles+how+to+play | 1 |
+| Tannhäuser | 2007 | поле-граф кольорових кіл: рух по колах, стріляти лише в коло спільного кольору | W:Tannh%C3%A4user_(board_game) | https://www.youtube.com/results?search_query=Tannhauser+board+game+how+to+play | 1 |
+| Dungeon Twister | 2004 | кімнати поля обертаються парами в протилежні боки; ОД з карт дій; втеча через край | https://rulespal.com/dungeon-twister/rulebook | W:Dungeon_Twister | 1 |
+| HeroClix | 2002 | бойовий диск у підставці: кожне поранення клацає диск і міняє стати й здібності | W:HeroClix | https://www.youtube.com/results?search_query=HeroClix+how+to+play | 1 |
+| Dreamblade | 2006 | поле 5×5: клітини дають очки присутності, спільна клітина — нуль; призов у стовпчик свого | W:Dreamblade | https://www.youtube.com/results?search_query=Dreamblade+miniatures+game | 1 |
+| Yu-Gi-Oh! Dungeon Dice Monsters | 2001 | кубики розгортаються на полі в шматки підземелля-шляху; символи кубиків — ресурси руху й атаки | https://rulespal.com/yu-gi-oh-dungeon-dice-monsters/rulebook | W:Dungeon_Dice_Monsters | 1 |
+| Diplomacy | 1959 | граф провінцій; одночасні письмові накази, сила = 1 + підтримки, нічия — відскок | W:Diplomacy_(game) | https://www.youtube.com/results?search_query=Diplomacy+board+game+how+to+play | 2 |
+| Ticket to Earth | 2017 | покрокова тактика: ходити лише по плитках свого кольору, збіг заряджає вміння | W:Ticket_to_Earth | — | 2 |
+| generals.io | ? | real-time захоплення клітин арміями: генерал і міста ростять військо; ціль — чужий генерал | https://wiki.generals.io/1v1guide | https://arxiv.org/html/2507.06825v2 | 2 |
+| Rondo of Swords | 2007 | маршрут креслиться наперед, юніт б'є кожного ворога на шляху; контратака зупиняє | W:Rondo_of_Swords | https://www.youtube.com/results?search_query=Rondo+of+Swords+gameplay | 2 |
+| Metal Gear Acid | 2004 | карти — і дія, і рух; вартість зіграних карт відсуває наступний хід юніта | W:Metal_Gear_Acid | https://www.youtube.com/results?search_query=Metal+Gear+Acid+gameplay | 2 |
+| Bahamut Lagoon | 1996 | драконам лише загальні накази «вперед/чекай»; годування предметами змінює їхню форму | W:Bahamut_Lagoon | https://www.youtube.com/results?search_query=Bahamut+Lagoon+gameplay | 2 |
+| Demonschool | 2025 | дії всього загону плануються з відкатом і виконуються разом; атаки вишиковувати в лінію | W:Demonschool | https://store.steampowered.com/search/?term=Demonschool | 2 |
+| Valkyrie Profile: Covenant of the Plume | 2008 | сусідні союзники вступають у бій, кожен на своїй кнопці; жертва юніта дає силу | W:Valkyrie_Profile:_Covenant_of_the_Plume | https://www.youtube.com/results?search_query=Valkyrie+Profile+Covenant+of+the+Plume+gameplay | 2 |
+| Chroma Squad | 2015 | стійка Teamwork: союзник поруч підкидає героя далі або б'є разом; рейтинг глядачів | W:Chroma_Squad | https://store.steampowered.com/search/?term=Chroma+Squad | 2 |
+| Fort Triumph | 2019 | копняк кидає ворога в інших по лінії; дерева й валуни — ланцюгові відкидання | https://store.steampowered.com/app/612570 | https://www.youtube.com/results?search_query=Fort+Triumph+gameplay | 2 |
+| Dofus | 2004 | MMO з покроковими боями на ізосітці; окремі ОД і ОР, закляття крадуть ОД/ОР ворога | W:Dofus | https://www.youtube.com/results?search_query=Dofus+combat+gameplay | 2 |
+| Massive Assault | 2003 | гекс-карта країн; таємні союзники розкриваються посеред гри й перевертають баланс | W:Massive_Assault | https://www.youtube.com/results?search_query=Massive+Assault+gameplay | 2 |
+| Hero Academy | 2012 | 5 дій на хід на будь-яких юнітів; юніти й предмети з руки; кристали-цілі | W:Hero_Academy | https://www.youtube.com/results?search_query=Hero+Academy+gameplay | 2 |
+| Bokosuka Wars | 1983 | уся армія рухається разом за королем; зіткнення вирішує різниця сил; полонених визволяють | W:Bokosuka_Wars | https://www.youtube.com/results?search_query=Bokosuka+Wars+gameplay | 2 |
+| Conflict of Heroes | 2008 | активований юніт має 7 ОД; спільні командні ОД; реакції неактивованих між діями | https://rulespal.com/conflict-of-heroes-awakening-the-bear/rulebook | https://www.youtube.com/results?search_query=Conflict+of+Heroes+how+to+play | 2 |
+| Wooden Ships and Iron Men | 1974 | гекс-вітрильники: вітер визначає рух, план у журналі, впалі щогли закривають сектор вогню | W:Wooden_Ships_and_Iron_Men | https://www.youtube.com/results?search_query=Wooden+Ships+and+Iron+Men+board+game | 2 |
+| Blue Max | 1983 | маневр з таблиці, усі літаки рухаються одночасно; вогонь лише прямо вперед до 3 гексів | W:Blue_Max_(board_game) | https://www.youtube.com/results?search_query=Blue+Max+board+game+GDW | 2 |
+| Mage Wars | 2012 | арена 12 зон; закляття з «книги» на вибір, не з колоди; 2 закляття на раунд (перевірити: ≈ `maze-war`) | W:Mage_Wars | https://www.youtube.com/results?search_query=Mage+Wars+how+to+play | 2 |
+| Unmatched | 2019 | кольорові зони мапи визначають видимість; бій — таємні карти атаки й захисту | W:Unmatched_(board_game) | https://www.youtube.com/results?search_query=Unmatched+board+game+how+to+play | 2 |
+| Warhammer Underworlds | 2017 | 3 раунди по 4 активації; боєць «надихається» за умовою й перевертає картку | https://rulespal.com/warhammer-underworlds/rulebook | https://www.youtube.com/results?search_query=Warhammer+Underworlds+how+to+play | 2 |
+| BattleCON | 2009 | 1D-дуель на 7 клітинах: таємні стиль+база, пріоритет — сума, рівність — clash і нова база | https://rulespal.com/battlecon-war-of-indines/rulebook | https://www.youtube.com/results?search_query=BattleCON+how+to+play | 2 |
+| Pit People | 2018 | гекс-арени: гравець веде лише рух, атака по сусідах автоматична (?); полонені поповнюють загін | https://store.steampowered.com/app/291860/Pit_People/ | W:Pit_People | 3 |
+| RoboSport | 1991 | роботи програмуються на хід, ходи всіх виконуються одночасно — ранній wego до Frozen Synapse | W:RoboSport | https://www.youtube.com/results?search_query=RoboSport+Maxis+gameplay | 3 |
+| Master of Monsters | 1988 | гекс; смерть майстра-призивача закінчує гру, вежі захоплюються, ветерани еволюціонують | W:Master_of_Monsters | https://www.youtube.com/results?search_query=Master+of+Monsters+Genesis+gameplay | 3 |
+| Dragon Quest Wars | 2009 | до 4 гравців на квадратному полі; перемога — завести юніта в базу ворога | W:Dragon_Quest_Wars | https://www.youtube.com/results?search_query=Dragon+Quest+Wars+gameplay | 3 |
+
+## Хвиля 3 — 2026-11-09: нові кандидати (пошукові агенти Opus)
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| ENYO | 2016 | без прямої атаки: гак тягне, щит штовхає ворогів у лаву й шипи | https://apps.apple.com/us/app/enyo/id1118353232 | https://www.killscreen.com/indirect-combat-al-youll-tackle-enyos-labyrinth-monsters/ | 1 |
+| Zero Orders Tactics | 2024 | наказів нема: гравець змінює рельєф і класи, юніти ходять за фіксованим пошуком шляху | https://store.steampowered.com/app/1877650/Zero_Orders_Tactics/ | https://store.steampowered.com/app/4116860/Zero_Orders_Tactics_Under/ | 1 |
+| Dog in the Machine | 2026 | малі сітки з доміно, конвеєрами й вибухівкою; превʼю послідовності, ланцюгові реакції | https://store.steampowered.com/app/4613180/Dog_in_the_Machine/ | https://www.youtube.com/results?search_query=Dog+in+the+Machine+gameplay | 1 |
+| Sunken Stones | 2025 | піратський загін на 5×5; вороги цілять лише в капітана, 3 стихії, лічильник прокляття | https://store.steampowered.com/app/2601810/Sunken_Stones/ | https://www.youtube.com/results?search_query=Sunken+Stones+gameplay | 2 |
+| Below the Crown | 2026 | данж-кроулер з шаховими фігурами: старт з однієї, нові фігури «викликаються» на дошку | https://store.steampowered.com/app/1883920/Below_the_Crown/ | https://www.youtube.com/results?search_query=Below+the+Crown+gameplay | 2 |
+| StarVaders | 2025 | мех проти вторгнення на сітці, колода карт; Chrono Tokens перемотують хід | https://store.steampowered.com/app/2097570/StarVaders/ | https://www.youtube.com/results?search_query=StarVaders+gameplay | 2 |
+| Sunderfolk | 2025 | кооп до 4: телефон — контролер і рука карт; обраний порядок ходів; поле (?) | https://store.steampowered.com/app/2414270/Sunderfolk/ | https://www.youtube.com/results?search_query=Sunderfolk+gameplay | 2 |
+| Inkshade | 2025 | гекс-тактика дерев'яних мініатюр проти гейм-майстра; переможених ворогів можна вербувати | https://store.steampowered.com/app/3141310/Inkshade/ | https://www.youtube.com/results?search_query=Inkshade+gameplay | 3 |
+| Death Howl | 2025 | карти рухають і бʼють на сітці; тотеми, відкритий світ духів | https://store.steampowered.com/app/2825880/Death_Howl/ | https://www.youtube.com/results?search_query=Death+Howl+gameplay | 3 |

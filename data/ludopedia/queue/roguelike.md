@@ -20,7 +20,7 @@
 | Castle of the Winds | 1989 | віконний Windows-інтерфейс, drag-and-drop інвентар | WP-список | — | 3 |
 | Dungeon Crawl Stone Soup (DCSS) | 2006 | автодослідження, боги з власними правилами, без їжі-гринду | WP-список | — | 1 |
 | Brogue | 2009 | світло, рідини, газ, вогонь як клітинні автомати; союзники | https://en.wikipedia.org/wiki/Brogue_(video_game) | WP-список | 1 |
-| Tales of Maj'Eyal | 2011 | таланти з кулдаунами замість ресурсу-мани | WP-список | — | 3 |
+| Tales of Maj'Eyal | 2012 | таланти з кулдаунами замість ресурсу-мани | WP-список | — · ✔ виправлено 2026-11-09 | 3 |
 | Caves of Qud | 2007 | фізика рідин, мутації, кожна клітина має матеріал | WP-список | — | 2 |
 | Cogmind | 2012/2017 | тіло з частин-слотів, урон знищує деталі, а не HP | https://en.wikipedia.org/wiki/Cogmind | WP-список | 1 |
 | DoomRL / DRL → Jupiter Hell | 2002 / 2019 | шутер-роглайк: укриття, вогнева лінія на сітці | WP-список | — | 2 |
@@ -44,7 +44,7 @@
 | Cave Noire | 1991 | кожен спуск — одна квест-мета (вбити/врятувати/зібрати), 10 рівнів складності | https://en.wikipedia.org/wiki/Cave_Noire | WP-список | 1 |
 | Mystery Chronicle: One Way Heroics | 2015 | екран примусово скролиться щоходу, світло поглинає світ | https://en.wikipedia.org/wiki/Mystery_Chronicle:_One_Way_Heroics | WP-список | 1 |
 | Crypt of the NecroDancer | 2014 | хід лише в такт музиці, патерни ворогів у бітах | WP-список | — | 1 |
-| Cadence of Hyrule | 2019 | ритм-хід + світ Zelda, вороги стоять поза біт-логікою | — | — | 3 |
+| Cadence of Hyrule | 2019 | ритм-хід + світ Zelda; поведінка ворогів поза бітом не підтверджена (?) | W:Cadence_of_Hyrule | — · ✔ виправлено 2026-11-09 | 3 |
 | Not the Robots | 2013 | робот їсть меблі, вони ж — укриття; рівень зникає під тобою | WP-список | — | 2 |
 | Road Not Taken | 2014 | підняти/кинути обʼєкти, злиття однакових — роглайк-сокобан | WP-список | — | 2 |
 
@@ -121,7 +121,7 @@
 | Catoblepas (7DRL) | 2017 | рельєф змінюється, коли клітина в тумані війни | https://roguetemple.com/7drl/2017 | — | 2 |
 | Myst (7DRL) | 2017 | знаєш лише найближче оточення — радіус памʼяті | https://roguetemple.com/7drl/2017 | — | 3 |
 | Harmless (7DRL, Kaw) | 2010 | мізерне HP, бій лише непрямий (довкіллям) | https://roguetemple.com/7drl/2010 | — | 2 |
-| Rogue Strokes (7DRL) | 2010-ті | покроковий «гольф» з фізикою в роглайк-шкурі | https://blog.roguetemple.com/category/roguelike-development/page/2/ | — | 3 |
+| Rogue Strokes (7DRL) | 2010-ті | покроковий «гольф» з фізикою в роглайк-шкурі — сторінки гри не знайдено, рядок сумнівний | https://blog.roguetemple.com/category/roguelike-development/page/2/ | — · ✔ виправлено 2026-11-09 | 3 |
 
 ## Межові випадки
 
@@ -137,3 +137,74 @@
 - Dungeon of the Endless → `tower-lanes`/hybrid; Loop Hero → `build-sim`.
 - Spelunky, TowerClimb → `grid-platformer`.
 - Donsol, Scoundrel, Ring of Pain, Card Crawl → `board-digital` (картковий бік сильніший за сітку).
+
+## Хвиля 3 — 2026-11-09: нові кандидати (пошукові агенти Opus)
+
+Джерела: RogueTemple 7DRL-огляди 2016 / 2018 / 2019 / 2020 (одна сторінка — 30+ описаних механік), Wikipedia API `Category:Roguelike_video_games` і `Category:Mystery_Dungeon` + статті ігор, JA-Wikipedia `Category:ローグライクゲーム`, RogueBasin (сторінки ігор), itch `tag-broughlike` (2 сторінки) і `7drl-challenge-2024/entries`, Steam (тег 454187 Traditional Roguelike за датою, пошук «magic tower») · Не відкрилось: RogueBasin `List_of_roguelikes` (лише навігація), Glitchwave magic-tower (403), itch `entries.json` (404), `W:One_Step_from_Eden` (404) · WebSearch: 0.
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| Bloodwych | 1989 | двоє гравців split-screen в одному лабіринті; фрази з меню для розмов навіть з ворогами | W:Bloodwych | https://www.youtube.com/results?search_query=Bloodwych+gameplay | 1 |
+| The Castle Doctrine | 2014 | будуєш дім-пастку, власник мусить сам дійти до сейфу; грабуєш чужі доми, одна смерть | W:The_Castle_Doctrine | https://store.steampowered.com/app/249570/The_Castle_Doctrine/ | 1 |
+| IVAN (Iter Vehemens ad Necem) | 2001 | частини тіла з окремими HP і бронею, втрата кінцівок; матеріал предмета чи кінцівки змінний | https://www.roguebasin.com/index.php/IVAN | https://store.steampowered.com/app/4890840/IVAN_Iter_Vehemens_ad_Necem/ | 1 |
+| Ringfall | 2026 | арена з концентричних кілець; зовнішнє кільце обвалюється кожні кілька ходів, вороги на ньому живлять боса | https://helmworkshop.itch.io/ringfall | — | 1 |
+| Arachne (7DRL) | 2016 | рух по ребрах павутини-графа, яку гравець редагує; павутина — пружинна симуляція | https://roguetemple.com/7drl/2016 | — | 1 |
+| Six Two One (7DRL) | 2016 | підземелля на поверхні кубика Рубіка: обертання ряду чи стовпця перебудовує кімнати | https://roguetemple.com/7drl/2016 | — | 1 |
+| Crowd Eraser (7DRL) | 2016 | match-3 лише в аурі 5×5 навколо героя; удар ворога змінює твій колір | https://roguetemple.com/7drl/2016 | — | 1 |
+| The Trapped Heart (7DRL) | 2016 | гекси без HP: програш настає, коли героя оточили | https://roguetemple.com/7drl/2016 | — | 1 |
+| Pocket Dimensions RL (7DRL) | 2019 | кімнати перекриваються в просторі, звʼязані рухомими дверима-порталами; ворогів можна лише штовхати | https://roguetemple.com/7drl/2019 | — | 1 |
+| Potion Curse (7DRL) | 2020 | постійна спрага змушує пити неідентифіковані зілля — ідентифікація під таймером | https://roguetemple.com/7drl/2020 | — | 1 |
+| Sword of Fargoal | 1982 | після здобуття меча — зворотний відлік втечі; темний рівень світлішає з дослідженням; храм ховає від ворогів | W:Sword_of_Fargoal | https://www.youtube.com/results?search_query=Sword+of+Fargoal+gameplay | 2 |
+| Telengard | 1982 | 2 млн кімнат обчислюються з координат героя, не зберігаються; real-time без паузи, сейв лише в корчмі | W:Telengard | — | 2 |
+| Captive | 1990 | 4 дистанційні дроїди зі змінними частинами тіла; 65535 баз з одного сіду; таймер втечі після генератора | W:Captive_(video_game) | — | 2 |
+| Dungeon Hack | 1993 | процедурний blobber з одним героєм; сід підземелля можна передати іншим; смерть стирає сейви | W:Dungeon_Hack | — | 2 |
+| Island of Kesmai | 1985 | до 100 гравців на спільній сітці, одна команда на 10 секунд | W:Island_of_Kesmai | — | 2 |
+| Dragon Crystal | 1990 | їжа = бюджет кроків (1 очко — 6 клітин); яйце-супутник вилуплюється в дракона з рівнем героя | W:Dragon_Crystal | — | 2 |
+| Azure Dreams | 1997 | яйця монстрів → фамільяри зберігають рівень, герой щоразу з 1-го; жертва фамільяра = втеча | W:Azure_Dreams | — | 2 |
+| Z.H.P. Unlosing Ranger VS Darkdeath Evilman | 2010 | рівень кожного забігу, і програного, сумується в Total Level; кидати ворогів; витягти: сітка модифікації тіла | W:Z.H.P._Unlosing_Ranger_VS_Darkdeath_Evilman | — | 2 |
+| POWDER | 2003 | клас складається з бога, обраного на кожному рівні; кілька богів стежать одночасно; спершу предмет, потім дієслово | https://www.roguebasin.com/index.php/POWDER | — | 2 |
+| GearHead | 2002 | дві шкали руху: пішки — вільні кроки, у мехі — «черепаха» (поворот + крок); сюжет з випадкових підсюжетів | https://www.roguebasin.com/index.php/GearHead | — | 2 |
+| Jacob's Matrix | 2009 | гравець стріляє порталами-ярликами; мана й ліміт рівня йдуть за реальним годинником | https://www.roguebasin.com/index.php/Jacob%27s_Matrix | — | 2 |
+| Cataclysm: Dark Days Ahead | 2013 | авто збирається з деталей у меню будівництва; сезони й ферма, мутації, зламані кінцівки | W:Cataclysm:_Dark_Days_Ahead | — | 2 |
+| Stoneshard | 2020 | біль, мораль, розсудливість, інтоксикація — окремі шкали; караван як пересувна база | https://store.steampowered.com/app/625960/Stoneshard/ | — | 2 |
+| Quasimorph | 2026 | екстракція: лут лишається, лише якщо вивіз; смерть клона — втрата всього взятого | https://store.steampowered.com/app/2059170/Quasimorph/ | — | 2 |
+| Magic Tower: Legion | 2026 | Magic Tower загоном: порядок виходу героїв у бій, поранений відступає, наступний продовжує | https://store.steampowered.com/app/4012830/Magic_Tower_Legion/ | — | 2 |
+| Terry The Skeleton | 2019 | гравець рухається в реальному часі, вороги — фазами за таймером; позначені клітини атак; ривок до стіни | https://amidos2006.itch.io/terry-the-skeleton | — | 2 |
+| Daedalike | ? | гравець сам викладає плитки рівня, кожна викладка — хід; деякі плитки спавнять ворогів | https://tomtl.itch.io/daedalike | — | 2 |
+| SlideMaze | ? | зсув цілих рядів і стовпців лабіринту як у Labyrinth; ключ → двері | https://squaredev.itch.io/slidemaze | — | 2 |
+| Tactical Tetrominoes (7DRL) | 2022 | тетроміно-штампи: літера фігури задає ефект на клітинах під нею; заповнені лінії множать монети | https://notester82.itch.io/tactical-tetrominoes | — | 2 |
+| Switch Hook (7DRL) | 2016 | атака = обмін місцями з ворогом на гексах (гак-постріл), 1 урон | https://roguetemple.com/7drl/2016 | — | 2 |
+| Billiard Dungeon / Pinball Dungeon (7DRL) | 2016 / 2019 | герой — більярдна куля: напрям і сила, відскоки від стін і ворогів | https://roguetemple.com/7drl/2016 | https://roguetemple.com/7drl/2019 | 2 |
+| Timegame / Chronomaniac (7DRL) | 2016 | ходи записуються; минулі копії героя не мусять тебе побачити | https://roguetemple.com/7drl/2016 | — | 2 |
+| The Prancing Bard (7DRL) | 2016 | атаки — мелодії, зіграні послідовністю напрямків руху | https://roguetemple.com/7drl/2016 | — | 2 |
+| Rogue Kudzu (7DRL) | 2016 | ліана розростається клітинами як таймер; вогонь чистить лише кілька клітин і повільно заряджається | https://roguetemple.com/7drl/2016 | — | 2 |
+| Tower of Babel (7DRL) | 2019 | кожна дія на випадковій клавіші щозабігу — керування вчиш наново | https://roguetemple.com/7drl/2019 | — | 2 |
+| ExpelledRL (7DRL) | 2019 | вселитися в монстра й покинути старе тіло; кулдаун вселення за часом | https://roguetemple.com/7drl/2019 | — | 2 |
+| Ars Moriendi (7DRL) | 2019 | мета навпаки — відкрити 20 різних способів померти на 5 рівнях | https://roguetemple.com/7drl/2019 | — | 2 |
+| Wait For It (7DRL) | 2019 | ворог гине, лише якщо вбити в той самий хід; досвід лише за мультивбивства; зупинка часу | https://roguetemple.com/7drl/2019 | — | 2 |
+| Ishar: Legend of the Fortress | 1992 | загін голосує за прийом і вигнання; ланцюг вбивств між членами; сейв коштує 1000 золота | W:Ishar:_Legend_of_the_Fortress | — | 3 |
+| Fatal Labyrinth | 1990 | переїдання вбиває; затримка на поверсі — респавн монстрів; золото впливає лише на похорон | W:Fatal_Labyrinth | — | 3 |
+| Skeleton Crew (7DRL) | 2016 | пробоїна в корпусі розгерметизує кімнату; вороги-«bloats» вибухом роблять дірки | https://roguetemple.com/7drl/2016 | — | 3 |
+| Some Dogs Go To Hell (7DRL) | 2016 | запах — кольорові хмари, що дифундують і змішуються; зграя з формацією | https://roguetemple.com/7drl/2016 | — | 3 |
+| Banisher (7DRL) | 2019 | кулдаун головної здібності зростає з кожним використанням | https://roguetemple.com/7drl/2019 | — | 3 |
+
+## Хвиля 3 — 2026-11-09: нові кандидати (пошукові агенти Opus)
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| Kinetype | 2026 | ASCII-роглайт: рухаєшся, набираючи текстові команди в терміналі | https://store.steampowered.com/app/4556110/Kinetype/ | — | 3 |
+
+## Хвиля 3 — 2026-11-09: нові кандидати (пошукові агенти Opus)
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| Fidel Dungeon Rescue | 2017 | пес на повідку: шлях не перетинає себе, бій коштує HP, перемотка, процедурні рівні | https://store.steampowered.com/app/573170/Fidel_Dungeon_Rescue/ | https://www.youtube.com/results?search_query=Fidel+Dungeon+Rescue+gameplay | 1 |
+| Achronal Dungeon | 2022 | однокімнатна magic-tower: «зелені» предмети діють ретроактивно й створюють нові таймлайни | https://patashu.itch.io/achronal-dungeon | https://patashu.itch.io/achronal-dungeon/devlog/469939/v13-secret-endings | 1 |
+| Sol Cesto | 2026 | обрати один із 4 рядів — гравець падає на випадкову клітинку; зуби міняють ймовірності | https://store.steampowered.com/app/2738490/Sol_Cesto/ | https://www.youtube.com/results?search_query=Sol+Cesto+gameplay | 1 |
+| DROD RPG: Tendry's Tale (+ DROD RPG 2) | 2016 | DROD-кімнати з детермінованими дуелями magic-tower: кого бити зараз, кого — сильнішим | https://store.steampowered.com/app/351330/ | https://store.steampowered.com/app/3661610/ | 2 |
+| Towers of Scale | 2026 | ключі, кирки, золото, односторонні шляхи; рекорди дають геми на нові ресурси | https://store.steampowered.com/app/3962750/Towers_of_Scale/ | https://www.youtube.com/results?search_query=Towers+of+Scale+gameplay | 2 |
+| Requiem of Reuinis | 2026 | magic-tower з добовим циклом: розвідка руїн, алхімія, дослідження в постійні стати | https://store.steampowered.com/app/3371260/Requiem_of_Reuinis/ | https://www.youtube.com/results?search_query=Requiem+of+Reuinis+gameplay | 3 |
+| Soulestination | 2021 | magic-tower: 200+ ворогів зі скілами, боси, мета-пазли | https://store.steampowered.com/app/1477330/Soulestination/ | https://www.youtube.com/results?search_query=Soulestination+gameplay | 3 |
+| Deep Rune | 2021 | magic-tower у бічному розрізі підземелля; динамічна складність як рахунок | https://store.steampowered.com/app/1631780/Deep_Rune/ | https://www.youtube.com/results?search_query=Deep+Rune+Moonskull+gameplay | 3 |
+| Myth Bearer | 2020 | відкритий світ magic-tower: вороги не відроджуються, витрати назавжди, сиквенс-брейки | https://store.steampowered.com/app/1453450/Myth_Bearer/ | https://www.youtube.com/results?search_query=Myth+Bearer+Moonskull+gameplay | 3 |
+| Vapormancer | 2025 | однокімнатна magic-tower: стати фліп-флопом міняються на протилежні замість росту | https://hazelstorm.itch.io/vapormancer | — | 3 |

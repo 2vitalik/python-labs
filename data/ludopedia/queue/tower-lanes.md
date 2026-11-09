@@ -57,7 +57,7 @@
 | The Battle Cats | 2012 | одна лінія: спавн юнітів з кулдауном, бази на краях | https://en.wikipedia.org/wiki/The_Battle_Cats | https://www.bluestacks.com/blog/game-guides/the-battle-cats/tbc-beginners-guide-en.html | 2 |
 | Swords & Soldiers | 2009 | 1D RTS: юніти йдуть самі, гравець — заклинання й черга | https://en.wikipedia.org/wiki/Swords_%26_Soldiers | — | 2 |
 | Age of War / Stick War | 2007/2009 | Flash-1D: лінія між двома базами, епохи/юніти | — | — | 3 |
-| Ratropolis | 2021 | карткова оборона міста на горизонтальній лінії зліва/справа | — | — | 3 |
+| Ratropolis | 2020 | карткова оборона міста на горизонтальній лінії зліва/справа | — | — · ✔ виправлено 2026-11-09 | 3 |
 | Thronefall | 2023 | мінімалістичне RTS-TD: будуєш на фіксованих слотах удень, б'єшся вночі | — | — | 3 |
 | Dome Keeper | 2022 | копай під куполом (сітка) + обороняй купол хвилями | — | — | 3 |
 | Castle Panic | 2009 | настільна: кільця-зони × кольорові сектори, монстри наступають | — | — | 2 |
@@ -77,3 +77,58 @@
 - Sanctum / Dungeon Defenders / Iron Grip — 3D/FPS-TD, сітка лише в будуванні; межа.
 - Backpack Battles / Backpack Hero → `build-sim` (сітка-інвентар, автобій вторинний).
 - Duelyst (2016) / Hero Academy → `tactics`: карти на 9×5 сітці, юніти рухаються. https://en.wikipedia.org/wiki/Duelyst
+
+## Хвиля 3 — 2026-11-09: нові кандидати (пошукові агенти Opus)
+
+Джерела: Wikipedia API (Category:Tower_defense_video_games, Digital_collectible_card_games, Auto_battler_video_games; пакетні intro-екстракти + статті ігор), Steam (пошук «tower defense maze», «lane defense», «lane card game», сторінки ігор), RulesPal і UltraBoardGames (правила настолок) · Не відкрилось: BGG XML API (401), UBG без сторінок Air Land & Sea / Riftforce, Wikipedia без опису поля для Teppen, Spectromancer, Cardfight!! Vanguard · WebSearch: 2.
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| Mega Man Battle Network | 2001 | real-time бій на 6×3: дві половини поля, атаки чипами з власної колоди | W:Mega_Man_Battle_Network | https://www.youtube.com/results?search_query=Mega+Man+Battle+Network+gameplay | 1 |
+| Crystal Defenders: Vanguard Storm | 2009 | покрокова смугова оборона 4×8: ворог на клітинку за хід, війська лише на правій половині | W:Crystal_Defenders | https://www.youtube.com/results?search_query=Crystal+Defenders+Vanguard+Storm+gameplay | 1 |
+| Gem Tower Defense 2 (Gem TD) | 2022 | щохвилі 5 випадкових самоцвітів: лишаєш один, решта стають каменями лабіринту | https://store.steampowered.com/app/1953220/Gem_Tower_Defense_2/ | https://www.youtube.com/results?search_query=Gem+TD+gameplay | 1 |
+| Circuit Maze | 2025 | TD без бою: оптимізаційний пазл на найдовший лабіринт з обмежених спецблоків | https://store.steampowered.com/app/3421850/Circuit_Maze/ | https://www.youtube.com/results?search_query=Circuit+Maze+Patrik+Windahl | 1 |
+| Unstoppable Gorg | 2012 | вежі-супутники в слотах орбіт навколо бази; поворот кільця зсуває всі одразу | W:Unstoppable_Gorg | https://www.youtube.com/results?search_query=Unstoppable+Gorg+gameplay | 1 |
+| Space Run | 2014 | гекс-корабель: зброя мусить дивитись назовні, живлення від сусіда, вантаж займає клітини | W:Space_Run | https://store.steampowered.com/app/275670/Space_Run/ | 1 |
+| Final Fantasy Crystal Chronicles: My Life as a Darklord | 2009 | вертикальна вежа з поверхів-типів: вороги лізуть угору, артефакт поверху тримає прохід | W:Final_Fantasy_Crystal_Chronicles:_My_Life_as_a_Darklord | https://www.youtube.com/results?search_query=My+Life+as+a+Darklord+gameplay | 1 |
+| What Did I Do to Deserve This, My Lord? (Holy Invasion of Privacy, Badman!) | 2007 | копаєш підземелля: поживні блоки народжують монстрів-екосистему проти героя | https://en.wikipedia.org/wiki/What_Did_I_Do_to_Deserve_This,_My_Lord%3F | https://www.youtube.com/results?search_query=Holy+Invasion+of+Privacy+Badman+gameplay | 1 |
+| Ironclad Tactics | 2013 | карткові загони самі сунуть смугами сітки; одночасні ходи, очки за перетин поля | W:Ironclad_Tactics | https://www.youtube.com/results?search_query=Ironclad+Tactics+gameplay | 1 |
+| Artifact | 2018 | три окремі дошки-смуги з вежею й власною маною; ініціатива переходить за карту | W:Artifact_(video_game) | https://store.steampowered.com/app/583950/Artifact/ | 1 |
+| Mythgard | 2019 | 7 смуг: істота б'є три протилежні; посилення смуги переживає істоту | W:Mythgard | https://store.steampowered.com/app/839910/Mythgard/ | 1 |
+| Caller's Bane (Scrolls) | 2014/2018 | юніти з лічильником до атаки, рух на сусідню клітину; знести 3 з 5 ідолів | W:Caller's_Bane | https://www.youtube.com/results?search_query=Scrolls+Mojang+gameplay | 1 |
+| The Eye of Judgment | 2007 | AR-карти на 3×3: стихія клітинки й напрям погляду істоти; 5 з 9 | W:The_Eye_of_Judgment | https://www.youtube.com/results?search_query=Eye+of+Judgment+gameplay | 1 |
+| Queen's Blood | 2024 | 3 ряди шахівниці: ранг-пішаки визначають, куди ставити; рахунок порядно | W:Queen's_Blood | https://www.youtube.com/results?search_query=Queen%27s+Blood+gameplay | 1 |
+| Knucklebones (Cult of the Lamb) | 2022 | кубики в 3 стовпці по 3: збіг множить, збіг навпроти знищує чужі | https://rulespal.com/knucklebones/rulebook | https://www.gamepressure.com/cult-of-the-lamb/knucklebones-rules-and-how-to-play/z6102ab | 1 |
+| Battle Line / Schotten Totten | 1999 | 9 каменів у ряд: на кожному покерна трійка карт; 5 каменів або 3 поспіль | W:Schotten_Totten | https://www.youtube.com/results?search_query=Schotten+Totten+how+to+play | 1 |
+| Riftforce | 2020 | 5 локацій у ряд; стихія задає ціль: своя, сусідня, з переходом | https://rulespal.com/riftforce/rulebook | https://www.youtube.com/results?search_query=Riftforce+how+to+play | 1 |
+| Ghost Stories | 2008 | село 3×3 і 4 планшети по 3 слоти: привиди наступають і проклинають клітини | https://www.ultraboardgames.com/ghost-stories/game-rules.php | W:Ghost_Stories_(game) | 1 |
+| One Step From Eden | 2020 | ядро MMBN як роглайк-декбілдер: рух клітинами real-time, мана, перемішування колоди | W:One_Step_From_Eden | https://store.steampowered.com/search/?term=One+Step+From+Eden | 2 |
+| Mega Man Star Force | 2006 | сітка 3×5 з виглядом з-за спини: герой ходить лише своїм рядом | W:Mega_Man_Star_Force | https://www.youtube.com/results?search_query=Mega+Man+Star+Force+battle+gameplay | 2 |
+| Rift of the NecroDancer | 2025 | ритм-оборона на 3 смугах: вороги міняють смугу, деякі потребують кількох ударів (перевірити: ≈ `crypt-of-the-necrodancer`) | W:Rift_of_the_NecroDancer | https://store.steampowered.com/search/?term=Rift+of+the+NecroDancer | 2 |
+| X-Morph: Defense | 2017 | лазерні паркани між вежами й знесення мостів перебудовують шлях; шутер-фаза | https://store.steampowered.com/app/408410/XMorph_Defense/ | https://www.youtube.com/results?search_query=X-Morph+Defense+gameplay | 2 |
+| Hexguardian | 2024 | гекс-тайли шляху за кіли; замкнена петля гасить портал, висота дає дальність | https://store.steampowered.com/app/2381740/Hexguardian/ | https://www.youtube.com/results?search_query=Hexguardian+gameplay | 2 |
+| Legend of Keepers | 2021 | реверс-кроулер: пастки й монстри по кімнатах на шляху героїв, покроковий бій | https://store.steampowered.com/app/978520/Legend_of_Keepers_Career_of_a_Dungeon_Manager/ | https://www.youtube.com/results?search_query=Legend+of+Keepers+gameplay | 2 |
+| Necronator: Dead Wrong | 2020 | реверс-TD-декбілдер: шлеш нежить смугами на замки, заклинання підсилюють | https://store.steampowered.com/app/1144970/Necronator_Dead_Wrong/ | https://www.youtube.com/results?search_query=Necronator+Dead+Wrong+gameplay | 2 |
+| The Elder Scrolls: Legends | 2017 | 2 смуги, тіньова дає укриття на хід; руни здоровʼя тягнуть «пророцтва» | W:The_Elder_Scrolls:_Legends | https://www.youtube.com/results?search_query=Elder+Scrolls+Legends+gameplay | 2 |
+| SolForge | 2016 | 5 смуг; зіграна карта повертається в колоду сильнішою версією | W:SolForge | https://www.youtube.com/results?search_query=SolForge+gameplay | 2 |
+| Monster Monpiece | 2013 | поле 7×3: карти ближнього й дальнього бою в клітинках | W:Monster_Monpiece | https://www.youtube.com/results?search_query=Monster+Monpiece+battle+gameplay | 2 |
+| Hanamikoji | 2013 | 7 гейш у ряд; 4 разові дії ділять карти між сторонами | https://rulespal.com/hanamikoji/rulebook | https://www.youtube.com/results?search_query=Hanamikoji+how+to+play | 2 |
+| Air, Land & Sea | 2019 | 3 театри-стовпці: закрита карта будь-куди, здібності на сусідні, відступ за очки | https://rulespal.com/air-land-and-sea/rulebook | https://www.youtube.com/results?search_query=Air+Land+and+Sea+how+to+play | 2 |
+| Space Alert | 2008 | 3 зони × 2 палуби; загрози сунуть траєкторіями X/Y/Z; 12 дій наперед | https://www.ultraboardgames.com/space-alert/game-rules.php | W:Space_Alert | 2 |
+| Spirit Island | 2017 | граф земель: карти загарбників Explore/Build/Ravage за типом землі, блайт | W:Spirit_Island_(board_game) | https://www.youtube.com/results?search_query=Spirit+Island+how+to+play | 2 |
+| The Bazaar | 2025 | автобій на 1D-дошці до 10 слотів: предмети на 1–3 слоти, кулдауни, сусідні бафи | https://store.steampowered.com/app/1617400/The_Bazaar/ | https://mobalytics.gg/the-bazaar/guides/keywords-and-terms | 2 |
+| Darkest Dungeon | 2016 | 4 ранги на бік: вміння діють лише з певних позицій і на певні, зсув шеренги | W:Darkest_Dungeon | https://www.youtube.com/results?search_query=Darkest+Dungeon+combat+positions | 2 |
+| worDefense | ? | літери на полі стріляють; вороги наступають клітинами після кожного слова; свап двох літер | https://amidos2006.itch.io/wordefense | — | 2 |
+| Calculords | 2014 | числа-карти + арифметика = вартість юніта; юніти йдуть трьома смугами | W:Calculords | https://www.gamezebo.com/reviews/calculords-review/ | 2 |
+| Maze Keeper | 2024 | реверс-кроулер-автобатлер: процедурний лабіринт, карти монстрів посилюють тайли | https://store.steampowered.com/app/2940990/Maze_Keeper/ | https://www.youtube.com/results?search_query=Maze+Keeper+gameplay | 3 |
+| Castle Doombad | 2014 | лиходій-оборонець: автоматичні й ручні пастки на таймінг проти героїв | W:Castle_Doombad | https://store.steampowered.com/app/2888470/Castle_Doombad_Classic/ | 3 |
+| Bad Hotel | 2012 | вежі — прибудовані кімнати готелю; музика генерується з планування | W:Bad_Hotel | https://www.youtube.com/results?search_query=Bad+Hotel+gameplay | 3 |
+| Cataclismo | 2025 | витягти: конструктор стін з 100+ деталей зі стійкістю, руйнування частинами | W:Cataclismo | https://www.youtube.com/results?search_query=Cataclismo+gameplay | 3 |
+| Defender's Quest: Valley of the Forgotten | 2012 | персонажі партії замість веж: рівні, спорядження, накази на паузі | https://store.steampowered.com/app/218410/Defenders_Quest_Valley_of_the_Forgotten_DX_edition/ | W:Defender's_Quest | 3 |
+| Cross Blitz | 2023 | 2 ряди × 4 слоти на бік, юніти атакують самі з наступного ходу | W:Cross_Blitz | https://store.steampowered.com/search/?term=Cross+Blitz | 3 |
+
+## Хвиля 3 — 2026-11-09: нові кандидати (пошукові агенти Opus)
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| Lethal Geometry | демо (EA 2027) | TD без веж: один лазер, дзеркала, спліттери, лінзи; вороги поглинають промінь | https://stoneforgelabs.itch.io/lethal-geometry | https://store.steampowered.com/app/5325830/Lethal_Geometry/ | 3 |

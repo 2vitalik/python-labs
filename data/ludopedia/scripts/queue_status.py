@@ -41,10 +41,12 @@ def described():
         except yaml.YAMLError:
             continue
         aliases = names(str(fm.get("title", ""))) | {norm(f.stem.replace("-", " "))}
+        full = {norm(str(fm.get("title", ""))), norm(f.stem.replace("-", " "))}  # whole names only, no sub-parts
         for a in fm.get("aka") or []:
             aliases |= names(str(a))
+            full.add(norm(str(a)))
         urls = {url_key(l["url"]) for l in fm.get("links") or [] if isinstance(l, dict) and l.get("url")}
-        games.append({"slug": f.stem, "family": f.parent.name, "title": fm.get("title"), "aliases": aliases, "urls": urls})
+        games.append({"slug": f.stem, "family": f.parent.name, "title": fm.get("title"), "aliases": aliases, "full": full, "urls": urls})
     return games
 
 

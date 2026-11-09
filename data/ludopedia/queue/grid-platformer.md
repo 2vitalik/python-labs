@@ -89,3 +89,62 @@
 - Flashback, Oddworld: Abe's Oddysee, Heart of Darkness → кінематографічні платформери; можливо клітинні кроки як у Prince of Persia (?) — перевірити перед включенням.
 - Donkey Kong, Bubble Bobble, Bomb Jack, Mappy, Elevator Action → піксельні аркади з платформами; `maze-arcade` за потреби.
 - Puzznic → `falling-match`. Daedalian Opus — ядро пентоміно, міг би піти в `pencil-logic`/`board-digital`; лишаю тут через платформер-хаб.
+
+## Хвиля 3 — 2026-11-09: нові кандидати (пошукові агенти Opus)
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| Midas (wanderlands) | 2013 | корона Мідаса: стіна поруч стає золотом і падає; вода змиває корону | https://www.puzzlescript.net/play.html?p=6878337 | — | 2 |
+| ElecHead | 2021 | робот електризує поверхню, якої торкається: вмикаються платформи, ліфти, пастки | W:ElecHead | https://www.youtube.com/results?search_query=ElecHead+gameplay | 3 |
+
+## Хвиля 3 — 2026-11-09: нові кандидати (пошукові агенти Opus)
+
+Джерела: EN-Wikipedia API `Category:Puzzle-platformers` (≈220 назв) і JA-Wikipedia `Category:アクションパズル` (175) + статті ігор EN/JA, Steam-пошук (lode runner, grid / turn-based puzzle platformer, mousecraft, gunbrick) + сторінки app, itch-теги (puzzle-platformer × turn-based / sokoban, puzzlescript × platformer), nodal.gg (схожі на Solomon's Key) · Не відкрилось: Steam tag-сторінки й tags= (JS/невірні ID), PuzzleScript-галерея (JS), GitHub gist API (403), EN-W Lup_Salad / Flappy_(video_game) / Mousecraft (404), itch entries.json TPGJ-4 (404) · WebSearch: 1.
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| Popils (Magical Puzzle Popils) | 1991 | розбитий блок обвалює всю колону над ним; драбини, варп-двері, редактор на 30 рівнів | W:Popils | https://www.youtube.com/results?search_query=Popils+Game+Gear+gameplay | 1 |
+| Moai-kun | 1990 | блок, притиснутий до перешкоди, застигає назавжди; бомба під собою, врятувати всіх моаї | W:Moai-kun | https://www.youtube.com/results?search_query=Moai-kun+Famicom+gameplay | 1 |
+| Sutte Hakkun | 1997 | всмоктати фарбу з пляшки й впорснути в прозорий блок — блок рушає за кольором | W:Sutte_Hakkun | https://www.youtube.com/results?search_query=Sutte+Hakkun+gameplay | 1 |
+| Gyromite | 1985 | червоні й сині стовпи піднімає фізичний робот R.O.B.; герой не стрибає | W:Gyromite | https://www.youtube.com/results?search_query=Gyromite+NES+gameplay | 1 |
+| Kiki the Nano Bot | 2002 | 3D-сітка: напрям падіння штовхнутого каменя задає орієнтація бота, що штовхав | https://transmutrix.itch.io/kiki-the-nanobot | https://www.youtube.com/results?search_query=Kiki+the+Nano+Bot+gameplay | 1 |
+| MouseCraft | 2014 | мишки йдуть самі; гравець кладе тетроміно — вибухові, кришені, желейні; редактор | https://store.steampowered.com/app/252750/MouseCraft/ | https://www.youtube.com/results?search_query=MouseCraft+gameplay | 1 |
+| Hako-Oshimai: Sokoban Platformer | ? | велетенська сестра штовхає ящики згори, вони — рельєф для 2D-платформера маленької | https://candypencil.itch.io/hako-oshimai | — | 1 |
+| The Castle | 1985 | 100 кімнат на мапі 10×10: блок-керування ліфтом, кольоровий ключ витрачається | W:The_Castle_(video_game) | https://www.youtube.com/results?search_query=The+Castle+ASCII+MSX+gameplay | 2 |
+| Mr. Do's Castle | 1983 | сиквел Mr. Do!: молотом вибити блок — яма-пастка, ворога згори добити блоком | W:Mr._Do%27s_Castle | https://www.youtube.com/results?search_query=Mr.+Do%27s+Castle+arcade+gameplay | 2 |
+| Battle Lode Runner | 1993 | сиквел Lode Runner: до 5 гравців, режими survival/escape/tag — ями проти суперників | W:Battle_Lode_Runner | https://www.youtube.com/results?search_query=Battle+Lode+Runner+PC+Engine+gameplay | 2 |
+| Imogen | 1986 | три форми — маг, кіт, мавпа — з різними вміннями; ліміт 150 перетворень | W:Imogen_(video_game) | https://www.youtube.com/results?search_query=Imogen+BBC+Micro+gameplay | 2 |
+| Met Mag (Jikai Shōnen Met Mag) | 1987 | герой-магніт: блоки притягують чи відштовхують за полюсом; чіпи перемикають полюс | https://ja.wikipedia.org/wiki/%E7%A3%81%E7%95%8C%E5%B0%91%E5%B9%B4%E3%83%A1%E3%83%83%E3%83%88%E3%83%BB%E3%83%9E%E3%82%B0 | https://www.youtube.com/results?search_query=Jikai+Shounen+Met+Mag+gameplay | 2 |
+| Chack'n Pop | 1984 | ходить і по підлозі, і по стелі; дим власних гранат убиває героя | W:Chack%27n_Pop | https://www.youtube.com/results?search_query=Chack%27n+Pop+arcade+gameplay | 2 |
+| Lup Salad (Lupupu Cube) | 1996 | штовхати кольорові блоки: три й більше суміжних однакових зникають | https://ja.wikipedia.org/wiki/%E3%83%AB%E3%83%97%E2%98%85%E3%81%95%E3%82%89%E3%81%A0 | https://www.youtube.com/results?search_query=Lup+Salad+gameplay | 2 |
+| Q Billion | 1989 | стоси з числом-висотою; зіштовхнути блок можна, лише стоячи на рівень нижче | W:Q_Billion | https://www.youtube.com/results?search_query=Q+Billion+Game+Boy+gameplay | 2 |
+| Gunbrick: Reloaded | 2020 | герой-куб котиться гранями: з одного боку гармата, з іншого щит; постріл униз — стрибок | https://store.steampowered.com/app/1222270/Gunbrick_Reloaded/ | https://www.youtube.com/results?search_query=Gunbrick+Reloaded+gameplay | 2 |
+| Rabi Laby | 2010 | дует: з голови Лілі вищий стрибок; Лілі самопідривом руйнує блоки | https://ja.wikipedia.org/wiki/%E3%83%A9%E3%83%93%C3%97%E3%83%A9%E3%83%93 | https://www.youtube.com/results?search_query=Rabi+Laby+DSiWare+gameplay | 2 |
+| Majokko Princess: Mefi (Majō-kko Princess) | 2007 | стрибка нема, лише підйом на 1 клітину; ящики складати й скидати на солдатів | https://ja.wikipedia.org/wiki/%E9%AD%94%E5%9F%8E%E3%81%A3%E5%A8%98%E3%83%97%E3%83%AA%E3%83%B3%E3%82%BB%E3%82%B9_-%E3%83%A1%E3%83%95%E3%82%A3%E3%81%AE%E3%81%8A%E5%9F%8E%E5%A5%AA%E9%82%84%E5%A4%A7%E4%BD%9C%E6%88%A6- | https://www.youtube.com/results?search_query=%E9%AD%94%E5%9F%8E%E3%81%A3%E5%A8%98%E3%83%97%E3%83%AA%E3%83%B3%E3%82%BB%E3%82%B9 | 2 |
+| Kitten Kaboodle (Nyan Nyan Panic) | 1988 | копнутий блок летить у ворога, заблокований — руйнується; 4 ключі відкривають двері | https://ja.wikipedia.org/wiki/%E3%81%AB%E3%82%83%E3%82%93%E3%81%AB%E3%82%83%E3%82%93%E3%83%91%E3%83%8B%E3%83%83%E3%82%AF | https://www.youtube.com/results?search_query=Kitten+Kaboodle+arcade+gameplay | 2 |
+| Gabbuchi | 2019 | герой зʼїдає блоки свого кольору, решта — опора; ліміт змін кольору | https://ja.wikipedia.org/wiki/%E3%82%AC%E3%83%96%E3%83%83%E3%83%81 | https://www.youtube.com/results?search_query=Gabbuchi+gameplay | 2 |
+| The Bugs Bunny Crazy Castle (Roger Rabbit / Mickey Mouse) | 1989 | без стрибка; двері, труби й сходи по-різному пропускають ворогів; сейфи й гирі як зброя | W:The_Bugs_Bunny_Crazy_Castle | https://www.youtube.com/results?search_query=Bugs+Bunny+Crazy+Castle+NES+gameplay | 2 |
+| Mappy | 1983 | батут ламається на 4-й відскок; двері оглушують, мікрохвильові двері змітають котів | W:Mappy | https://www.youtube.com/results?search_query=Mappy+arcade+gameplay | 2 |
+| Gridvania | 2024 | метроїдванія: предмети кладуться на сітку й піднімаються як будівельний інструмент | https://store.steampowered.com/app/3303560/Gridvania/ | — | 2 |
+| Crazy Climber | 1980 | два джойстики — дві пари кінцівок; вікна-клітини зачиняються, згори падають предмети | W:Crazy_Climber | https://www.youtube.com/results?search_query=Crazy+Climber+arcade+gameplay | 2 |
+| Stackrobats | ? | ланцюг звʼязаних акробатів рухається разом: драбини, канат униз, батути, бочки | https://beepyeah.itch.io/stackrobats | — | 2 |
+| Bagman | 1982 | мішки нести до тачки нагору; мішок скинути на охоронця на драбині | W:Bagman_(video_game) | https://www.youtube.com/results?search_query=Bagman+arcade+gameplay | 3 |
+| Bumpy's Arcade Fantasy | 1989 | керуєш мʼячем, що скаче платформами; руйнівні та вогняні плитки, крапля-захист | W:Bumpy%27s_Arcade_Fantasy | https://www.youtube.com/results?search_query=Bumpy+Loriciels+gameplay | 3 |
+| Stomp! | ? | покроковий роглайк-платформер на 300 ходів: топіт запускає камені, шипи, бомби | https://st33d.itch.io/stomp | https://st33d.itch.io/bump | 3 |
+| It 2: They/Them | 2025 | покроково: загін із 7 героїв ділиться на групи, у кожного своя здібність | https://twinbeard.itch.io/it2 | — | 3 |
+| Mystic Balloon (Misutikku Barūn) | 2002 | повітряні кульки — головний елемент: носити предмети; лід, конвеєри, клітки | https://ja.wikipedia.org/wiki/%E3%81%BF%E3%81%99%E3%81%A6%E3%81%83%E3%81%A3%E3%81%8F%E2%98%86%E3%81%B0%E3%82%8B%E3%80%9C%E3%82%93 | — | 3 |
+| Lode Builder | 2026 | наступник Lode Runner: з обмежених ресурсів будувати драбини й ланцюги (ще не вийшла) | https://store.steampowered.com/app/3305720/Lode_Builder/ | — | 3 |
+| Nuts & Milk | 1983 | зібрати всі фрукти — відчиняються двері; мотузяні мости, довге падіння оглушує | W:Nuts_%26_Milk | https://www.youtube.com/results?search_query=Nuts+%26+Milk+Famicom+gameplay | 3 |
+| Booty | 1984 | 20 екранів корабля; двері з номером відкриває лише ключ із тим самим номером | W:Booty_(video_game) | https://www.youtube.com/results?search_query=Booty+ZX+Spectrum+gameplay | 3 |
+| Ruins & Switch | 2022 | перемикач міняє місцями порожні й тверді блоки рівня | https://store.steampowered.com/app/1898410/ | — | 3 |
+| Dwarfer | 2022 | двоє гномів: кожен крок одного дзеркально повторює інший | https://store.steampowered.com/app/2206450/Dwarfer/ | — | 3 |
+
+## Хвиля 3 — 2026-11-09: нові кандидати (пошукові агенти Opus)
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| A Short Bike | ? | заднім колесом велосипеда піднімаєш ящики й розвертаєш його, щоб виїхати на скелю | https://werxzy.itch.io/a-short-bike | https://www.youtube.com/results?search_query=A+Short+Bike+gameplay | 2 |
+| Magicube | 2023 | PICO-8: заклинання, націлене стрілками, створює жовтий блок-опору; стрибки з плануванням | https://store.steampowered.com/app/2216120/Magicube/ | https://www.youtube.com/results?search_query=Magicube+gameplay | 2 |
+| AkiRobots | 2020 | керуєш кількома роботами одночасно, щоб довести Акі до розетки; сітка (?) | https://store.steampowered.com/app/861520/AkiRobots/ | https://www.youtube.com/results?search_query=AkiRobots+gameplay | 3 |
+| UltraNothing | 2024 | покроковий сокобан-платформер (лише теги Steam, опис скупий) | https://store.steampowered.com/app/2662590/ | — | 3 |
+| FILMECHANISM | 2021 | зібрана плівка зберігає стан екрана; відновити знімок будь-коли — новий шлях | https://store.steampowered.com/app/1608270/FILMECHANISM/ | https://www.youtube.com/results?search_query=FILMECHANISM+gameplay | 3 |

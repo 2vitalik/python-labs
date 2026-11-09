@@ -29,12 +29,12 @@
 | Dynablaster / Bomberman Blast | 1991/2008 | європейська гілка; Blast — 8 гравців і спецудари Wii | [W](https://en.wikipedia.org/wiki/Bomberman_Blast) | [Dynablaster](https://en.wikipedia.org/wiki/Dynablaster) | 3 |
 | Blockade | 1976 | перша Snake: два гравці, слід = стіна, виграє той, хто довше живе | [W](https://en.wikipedia.org/wiki/Blockade_(video_game)) | [Snake genre](https://en.wikipedia.org/wiki/Snake_(video_game_genre)) | 1 |
 | Surround | 1977 | Blockade на Atari 2600; варіанти «стирання сліду» і діагоналей | [W](https://en.wikipedia.org/wiki/Surround_(video_game)) | — | 3 |
-| Hustle | 1977 | Snake з ціллю-предметом — одиночна змійка, що росте від їжі | [Snake genre](https://en.wikipedia.org/wiki/Snake_(video_game_genre)) | — | 3 |
+| Hustle | 1977 | Snake з ціллю-предметом — одиночна змійка Blockade-типу; хвіст росте сам, не від їжі (?) | [Snake genre](https://en.wikipedia.org/wiki/Snake_(video_game_genre)) | — · ✔ виправлено 2026-11-09 | 3 |
 | Snake / Snake II (Nokia) | 1997/2000 | класична одиночна змійка; у Snake II — лабіринти-рівні і бонус-їжа з таймером | [Snake genre](https://en.wikipedia.org/wiki/Snake_(video_game_genre)) | [Snake II](https://en.wikipedia.org/wiki/Snake_II) | 1 |
 | Nibbler | 1982 | змійка в лабіринті Pac-Man-типу: рух без зупинок, коридори завширшки 1 | [W](https://en.wikipedia.org/wiki/Nibbler_(video_game)) | [Snake Byte](https://en.wikipedia.org/wiki/Snake_Byte) | 2 |
 | Nibbles (QBasic) | 1991 | змійка-програма для навчання: 2 гравці, рівні-лабіринти, текст. режим | [W](https://en.wikipedia.org/wiki/Nibbles_(video_game)) | [Sssnake](https://en.wikipedia.org/wiki/Sssnake) | 2 |
 | Snake Rattle 'n' Roll | 1990 | ізометрична змійка з висотою: стрибки, вага-ваги на виході | [W](https://en.wikipedia.org/wiki/Snake_Rattle_%27n%27_Roll) | — | 3 |
-| Snake Pass | 2017 | змійка з фізикою тіла: обвивання, хват — без сітки | [W](https://en.wikipedia.org/wiki/Snake_Pass) | — | 3 |
+| Snake Pass | 2017 | змійка з фізикою тіла: обвивання, хват — без сітки | [W](https://en.wikipedia.org/wiki/Snake_Pass_(video_game)) | — · ✔ виправлено 2026-11-09 | 3 |
 | Anteater | 1982 | «язик» як змійка, що втягується назад; удар лише кінчиком | [W](https://en.wikipedia.org/wiki/Anteater_(video_game)) | — | 2 |
 | Tron (Light Cycles) | 1982 | слід = стіна на швидкості, ШІ-суперники, повороти лише на 90° | [W](https://en.wikipedia.org/wiki/Tron_(video_game)) | [Discs of Tron](https://en.wikipedia.org/wiki/Discs_of_Tron) · [Deadly Discs](https://en.wikipedia.org/wiki/Tron:_Deadly_Discs) | 1 |
 | Armagetron Advanced | 2001 | 3D light cycles: «грайнд» біля стін для прискорення, командні бої | [W](https://en.wikipedia.org/wiki/Armagetron_Advanced) | — | 3 |
@@ -102,3 +102,67 @@
 - Rogue і роглайки → `roguelike`; Kroz/ZZT межують із ним.
 - Kickle Cubicle, Chew Man Fu → `push-slide`.
 - Robotron: 2084 — арена без лабіринту; залишити як відлік «що вже не maze».
+
+## Хвиля 3 — 2026-11-09: нові кандидати (пошукові агенти Opus)
+
+Джерела: Wikipedia API — категорії Maze_games, Maze_chase_games, Grid_capture_games, Snake_video_games, Pac-Man_clones, Bomberman, стаття List_of_maze_video_games; механіки звірено пакетним `prop=revisions` (6 статей за запит); Steam-пошук «snake» і сторінки ігор; iogames.space; pacmanhattan.com. · Не відкрилось: iogames.space/powerlineio (404), generals.io (порожня SPA), Pac-Man Arrangement / Mad Mix Game / Side Trak / Toypop (статей нема). · WebSearch: 2.
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| Clu Clu Land | 1984 | повертає лише хапаючись за стовпи; прохід відкриває сховані злитки; оглушених дотискати до стіни | W:Clu_Clu_Land | https://www.youtube.com/results?search_query=Clu+Clu+Land+gameplay | 1 |
+| Devil World | 1984 | диявол зсуває весь лабіринт і чавить ним гравця; без хреста крапки не їсти | W:Devil_World | https://www.youtube.com/results?search_query=Devil+World+NES+gameplay | 1 |
+| Rompers | 1989 | штовхані стіни-двері розчавлюють ворогів; ті вертаються з яєць; після таймера — невбивний переслідувач | W:Rompers_(video_game) | https://www.youtube.com/results?search_query=Rompers+Namco+arcade | 1 |
+| Entombed | 1983 | лабіринт генерується на льоту таблицею з 5 сусідніх клітин; тупики ламає make-break | W:Entombed_(1983_video_game) | https://www.youtube.com/results?search_query=Entombed+Atari+2600 | 1 |
+| Drelbs | 1983 | штовханням обертати ворота-стінки й замикати з них коробки; вороги теж крутять ворота | W:Drelbs | https://www.youtube.com/results?search_query=Drelbs+Atari+gameplay | 1 |
+| Oh Mummy | 1983 | сліди обводять блок гробниці — він відкриває вміст: ключ, сувій, мумію чи нічого | W:Oh_Mummy | https://www.youtube.com/results?search_query=Oh+Mummy+Amstrad+gameplay | 1 |
+| Marvin's Maze | 1983 | двоповерховий лабіринт з переходами в кутах; рухомі перехрестя перебудовують його й скидають ворогів у яму | W:Marvin's_Maze | https://www.youtube.com/results?search_query=Marvin%27s+Maze+SNK | 1 |
+| Pix the Cat | 2014 | хвіст-каченята доставити в кола-цілі; вкладені рівні «Grid of Infinity»; режим на мінімум ходів | https://store.steampowered.com/app/330180/ | W:Pix_the_Cat | 1 |
+| The Last Guy | 2008 | лабіринт — супутникові знімки реальних міст; ведеш ланцюг урятованих, тепловізор шукає людей | W:The_Last_Guy | https://www.youtube.com/results?search_query=The+Last+Guy+PS3+gameplay | 1 |
+| JezzBall | 1992 | стіна росте в обидва боки й ділить поле; мʼяч у недобудовану стіну — втрата | W:JezzBall | https://www.youtube.com/results?search_query=JezzBall+gameplay | 1 |
+| Maziacs | 1983 | меч одноразовий і не несеться разом із золотом; вʼязні підсвічують шлях; енергія тане від кроків | W:Maziacs | https://www.youtube.com/results?search_query=Maziacs+ZX+Spectrum | 1 |
+| Splat! | 1983 | лабіринт сам зсувається у випадкових напрямках; краї кадру вбивають — втриматись у вікні | W:Splat!_(video_game) | https://www.youtube.com/results?search_query=Splat+ZX+Spectrum+1983 | 1 |
+| Knot in 3D | 1983 | Tron-сліди в кубі 16×16×16 від першої особи; рух лише вперед | W:Knot_in_3D | https://www.youtube.com/results?search_query=Knot+in+3D+ZX+Spectrum | 1 |
+| Guzzler | 1983 | вода — і набої, і вага: постріл спорожнює й пришвидшує; поповнення з калюж | W:Guzzler | https://www.youtube.com/results?search_query=Guzzler+Tehkan+arcade | 1 |
+| Hover Bovver | 1983 | скосити всі клітини трави; швидкість перегріває косарку; пес-помічник зі шкалами вірності й терпіння | W:Hover_Bovver | https://www.youtube.com/results?search_query=Hover+Bovver+C64 | 1 |
+| Binary Land | 1983 | два пінгвіни рухаються дзеркально по обидва боки стіни; зійтися в клітині з серцем | W:Binary_Land | https://www.youtube.com/results?search_query=Binary+Land+Famicom | 1 |
+| Spy vs. Spy | 1984 | два шпигуни одночасно в сітці кімнат; пастки на меблях і дверях; смерть забирає час | W:Spy_vs._Spy_(1984_video_game) | https://www.youtube.com/results?search_query=Spy+vs+Spy+1984+C64 | 1 |
+| ChuChu Rocket! | 1999 | real-time стрілки на клітинах ведуть мишей у ракету; стрілки тануть і ламаються котами | W:ChuChu_Rocket! | https://www.youtube.com/results?search_query=ChuChu+Rocket+gameplay | 1 |
+| Domino Man | 1983 | розставити доміно на позначки, поки перехожі збивають; потім повалити весь ланцюг | W:Domino_Man | https://www.youtube.com/results?search_query=Domino+Man+arcade | 1 |
+| Hopping Mappy | 1986 | пого-стрибки лише між центрами шахових клітин; коти — фіксованими маршрутами, повільність їх пришвидшує | W:Hopping_Mappy | https://www.youtube.com/results?search_query=Hopping+Mappy+arcade | 1 |
+| The Tower of Druaga | 1984 | 60 поверхів: прихований скарб відкривається таємною дією; затримка — невбивні вогники | W:The_Tower_of_Druaga | https://www.youtube.com/results?search_query=Tower+of+Druaga+gameplay | 1 |
+| Do! Run Run | 1984 | сиквел Mr. Do!: слід-мотузка замикає ділянки, крапки в них стають фруктами; колоди котяться схилом | W:Do!_Run_Run | https://www.youtube.com/results?search_query=Do+Run+Run+arcade+1984 | 2 |
+| Frostbite | 1983 | Frogger × Q*bert: стрибки по смугах крижин перефарбовують їх і будують іглу; таймер-температура | W:Frostbite_(video_game) | https://www.youtube.com/results?search_query=Frostbite+Atari+2600 | 2 |
+| Flip and Flop | 1983 | ізометричні плитки перевертати; другий герой ходить під платформами догори ногами; липкі клітини | W:Flip_and_Flop | https://www.youtube.com/results?search_query=Flip+and+Flop+1983 | 2 |
+| Serpentine | 1982 | змії в лабіринті: лобовий удар убиває чи ростить за кольором; їсти хвости; яйця → життя | W:Serpentine_(video_game) | https://www.youtube.com/results?search_query=Serpentine+Broderbund | 2 |
+| Nimble Quest / MageTrain | 2013 | змійка з героїв: кожен сегмент сам атакує; у MageTrain позиція в ланцюжку вмикає здібність | W:Nimble_Quest | W:MageTrain · W:Snake_Core | 2 |
+| Gotcha | 1973 | перша лабіринтна погоня на двох: лабіринт безперервно змінюється, біп частішає з наближенням ловця | W:Gotcha_(video_game) | W:List_of_maze_video_games | 2 |
+| Crazy Arcade (BnB) | 2001 | водяні кулі замість бомб: суперник у бульбашці, союзник рятує дотиком, ворог лопає | W:Crazy_Arcade | https://www.youtube.com/results?search_query=Crazy+Arcade+BnB+gameplay | 2 |
+| Bombergirl | 2018 | командний Bomberman 4 на 4: зруйнувати базу суперника; ролі з уміннями, рівні в матчі | W:Bombergirl | https://www.youtube.com/results?search_query=Bombergirl+gameplay | 2 |
+| Snafu | 1981 | дві змійки: режим Trap — загнати в стіну, Bite — укус у хвіст забирає сегмент | W:Snafu_(video_game) | https://www.youtube.com/results?search_query=Snafu+Intellivision | 2 |
+| Tinkle Pit | 1994 | кульки-ланцюг лягають за героєм; відпустив кнопку — летять назад і бʼють ворогів | W:Tinkle_Pit | https://www.youtube.com/results?search_query=Tinkle+Pit+Namco | 2 |
+| Live Wire! | 1999 | чотири гравці обводять квадрати сітки на час; павер-апи крадуть чужі клітини | W:Live_Wire! | https://www.youtube.com/results?search_query=Live+Wire+PS1+gameplay | 2 |
+| Hexanaut.io | ? | paper.io на гексах: «король» при 20 % мапи, утримати 3 хв; тотеми-телепорти, без респавну | https://iogames.space/hexanautio | https://www.youtube.com/results?search_query=Hexanaut.io+gameplay | 2 |
+| Castle Wolfenstein | 1981 | процедурний замок ~60 кімнат; ключі й скрині; постріл у замок кличе охорону | W:Castle_Wolfenstein | https://www.youtube.com/results?search_query=Castle+Wolfenstein+1981 | 2 |
+| Tempest | 1981 | поле — труба зі смуг; гравець на ободі, вороги лізуть смугами з глибини | W:Tempest_(video_game) | https://www.youtube.com/results?search_query=Tempest+arcade+1981 | 2 |
+| Pac-Manhattan | 2004 | Pac-Man на реальних вулицях 6×4 квартали; генерали бачать дошку, бігуни — лише перехрестя | http://pacmanhattan.com/rules.php | http://pacmanhattan.com/ | 2 |
+| The Snake Is the Tower | 2026 | сегменти змійки — гармати; сусідні однакові зливаються в старший рівень; захист яйця | https://store.steampowered.com/app/2957070/ | https://www.youtube.com/results?search_query=The+Snake+Is+the+Tower | 2 |
+| K.C.'s Krazy Chase! | 1982 | їсти сегменти ворожої змійки з хвоста, голова смертельна; сегмент робить Drats їстівними | W:K.C.'s_Krazy_Chase! | https://www.youtube.com/results?search_query=KC%27s+Krazy+Chase | 2 |
+| Motos | 1985 | машинка-бампер виштовхує ворогів за край поля з дірками; деталі сили і стрибка | W:Motos_(video_game) | https://www.youtube.com/results?search_query=Motos+Namco+arcade | 2 |
+| Tapper | 1983 | 4 стійки-смуги: клієнти наступають, кухлі ковзають назустріч | W:Tapper_(video_game) | https://www.youtube.com/results?search_query=Tapper+arcade+gameplay | 2 |
+| Bank Heist | 1983 | грабувати банки в місті-лабіринті; пальне поновлюється зміною міста; динаміт з вихлопу ранить і себе | W:Bank_Heist_(video_game) | https://www.youtube.com/results?search_query=Bank+Heist+Atari+2600 | 3 |
+| Ms. Pac-Man Maze Madness | 2000 | пазл-лабіринти: рухомі блоки, пружини через стіни, перемикачі, двері відкриваються крапками | W:Ms._Pac-Man_Maze_Madness | https://www.youtube.com/results?search_query=Ms+Pac-Man+Maze+Madness | 3 |
+| Google Snake | ? | модифікатори комбінуються: портал між яблуками, ящики-Sokoban, дзеркальна змійка (Yin Yang) | https://snakegame.net/how-to-play-google-snake | https://www.youtube.com/results?search_query=Google+Snake+modes | 3 |
+
+## Хвиля 3 — 2026-11-09: нові кандидати (пошукові агенти Opus)
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| Chessplosion | 2021 | бомби-фігури вибухають за патерном свого ходу, ланцюгові реакції в real-time | https://store.steampowered.com/app/1571220/Chessplosion/ | https://ctmatthews.itch.io/chessplosion | 2 |
+
+## Хвиля 3 — 2026-11-09: нові кандидати (пошукові агенти Opus)
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| Knight Move | 1990 | Пажитнов: кінь безупинно стрибає полем 4×8, приземлення поступово роблять клітину дірою | W:Knight_Move | — | 2 |
+| Amazing Penguin (Osawagase! Penguin Boy) | 1990 | ламати печатки на ребрах сітки — замкнені ділянки зафарбовуються | https://ja.wikipedia.org/wiki/%E3%81%8A%E3%81%95%E3%82%8F%E3%81%8C%E3%81%9B!_%E3%83%9A%E3%83%B3%E3%82%AE%E3%83%B3BOY | https://www.youtube.com/results?search_query=Amazing+Penguin+Game+Boy+gameplay | 2 |
+| Zoo Keeper (Taito, аркада) | 1983 | біг по периметру кладе цеглу за собою; тварини пробивають стіну зсередини; не плутати з match-3 | W:Zoo_Keeper_(1983_video_game) | https://www.youtube.com/results?search_query=Zoo+Keeper+Taito+arcade | 1 |

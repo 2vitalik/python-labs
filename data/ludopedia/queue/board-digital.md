@@ -12,7 +12,7 @@
 | Bärenpark | 2017 | покрита іконка на полі дає нову плитку; модульне розширення парку | https://boardgamegeek.com/boardgame/219513/barenpark | https://boardgamegeek.com/video/282295/barenpark/barenpark-board-game-review | 2 |
 | The Isle of Cats | 2019 | поліоміно-коти в човні: родини одного кольору, кімнати, скарби | https://boardgamegeek.com/boardgame/281259/the-isle-of-cats | https://www.youtube.com/results?search_query=The+Isle+of+Cats+how+to+play | 2 |
 | Project L | 2020 | поліоміно як двигун: розвʼязаний пазл повертає нову, більшу фігуру | https://www.youtube.com/results?search_query=Project+L+board+game+how+to+play | — | 2 |
-| Cottage Garden | 2016 | сітка 5×5 «ринок» по колу + клумби; ціль — закрити клумбу цілком | https://boardgamegeek.com/boardgame/204027/cottage-garden | — | 3 |
+| Cottage Garden | 2016 | розплідник 4×4 «ринок» по колу + клумби; ціль — закрити клумбу цілком | https://boardgamegeek.com/boardgame/204027/cottage-garden | — · ✔ виправлено 2026-11-09 | 3 |
 | NMBR 9 | 2017 | цифри-поліоміно стопками: вищий рівень множить очки, без дірок під | https://boardgamegeek.com/boardgame/217449/nmbr-9 | https://www.youtube.com/results?search_query=NMBR+9+how+to+play | 1 |
 | FITS | 2009 | Knizia: поліоміно ковзають згори вниз, як у Tetris (?) | https://boardgamegeek.com/geeklist/63024/reiner-knizia-and-the-polyominoes | https://boardgamegeek.com/boardgame/57362/fits-official-expansion | 1 |
 | Pentomino | 1969 | дуель на 8×8: ставити пентоміно, поки влазить; хто поставив більше | https://boardgamegeek.com/boardgame/43411/pentomino | — | 2 |
@@ -124,3 +124,71 @@
 - Dorfromantik (відеогра 2022) → `build-sim`; тут лише настільна версія.
 - Five Tribes, Oware — манкала-лінія; якщо зʼявиться окрема гілка «розсів», Oware перенести в `chess-abstract`.
 - Tangram — фігури не на сітці (довільні кути), лише як контраст до поліоміно → пропустити або `pencil-logic` (пакування).
+
+## Хвиля 3 — 2026-11-09: нові кандидати (пошукові агенти Opus)
+
+Джерела: Wikipedia API (Category:Tile-based_board_games, Tile-laying_board_games, Board_games_with_a_modular_board; пакетна перевірка 50 назв за запит + intro-екстракти; статті ігор), DE-Wikipedia API (роки), UltraBoardGames `…/game-rules.php`, RulesPal `…/rulebook`, PDF правил Blue Orange · Не відкрилось: BGG XML API (тепер 401, потребує токен), UBG без сторінок для Flash Point / Bandido / Penguin Party / Uptown / Castle Combo · WebSearch: 14.
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| Magic Maze | 2017 | кооп реал-тайм: кожен гравець володіє одним напрямком руху всіх фішок, говорити заборонено | https://www.ultraboardgames.com/magic-maze/game-rules.php | https://de.wikipedia.org/wiki/Magic_Maze ; https://www.youtube.com/results?search_query=Magic+Maze+how+to+play | 1 |
+| Cacao | 2015 | шахове чергування тайлів робітник/джунглі; робітник на ребрі активує сусідню дію | https://www.ultraboardgames.com/cacao/game-rules.php | https://de.wikipedia.org/wiki/Cacao_(Spiel) ; https://www.youtube.com/results?search_query=Cacao+board+game+how+to+play | 1 |
+| Nova Luna | 2019 | цілі на тайлі виконують ортогональні сусіди-ланцюги кольорів; хід — хто позаду на треку | https://www.ultraboardgames.com/nova-luna/game-rules.php | https://de.wikipedia.org/wiki/Nova_Luna ; https://www.youtube.com/results?search_query=Nova+Luna+how+to+play | 1 |
+| Planet | 2018 | поле — 3D-ядро планети з пʼятикутних магнітних тайлів; тварини за ареали | https://www.ultraboardgames.com/planet/game-rules.php | https://de.wikipedia.org/wiki/Planet_(Spiel) ; https://www.youtube.com/results?search_query=Planet+board+game+Blue+Orange+how+to+play | 1 |
+| Flamme Rouge | 2016 | велогонка: 2 смуги на клітину, слипстрім підтягує зграї, порожня клітина попереду дає втому | https://www.ultraboardgames.com/flamme-rouge/game-rules.php | https://www.youtube.com/results?search_query=Flamme+Rouge+how+to+play | 1 |
+| Topiary | 2017 | 5×5 сад; відвідувач з краю бачить лінію, більша скульптура закриває менші за нею | https://www.ultraboardgames.com/topiary/game-rules.php | https://www.youtube.com/results?search_query=Topiary+board+game+how+to+play | 1 |
+| My Shelfie | 2022 | взяти 1–3 тайли з вільною стороною прямою лінією, вкинути в одну колонку полиці | https://rulespal.com/my-shelfie/rulebook | https://www.youtube.com/results?search_query=My+Shelfie+how+to+play | 1 |
+| Bosk | 2019 | дерева на перехрестях; вітер з краю розносить листя-шляхи; більшість у регіонах | https://www.ultraboardgames.com/bosk/game-rules.php | https://www.youtube.com/results?search_query=Bosk+board+game+how+to+play | 1 |
+| Tetris Link | 2011 | тетроміно з кубика скидаються у вертикальну вежу; очки за звʼязки, штраф за дірки під | https://www.ultraboardgames.com/tetris-link/game-rules.php | https://www.youtube.com/results?search_query=Tetris+Link+board+game | 1 |
+| Camel Up | 2014 | 1D-трек: верблюд везе всіх, хто стоїть на ньому; міраж кладе під стос | https://www.ultraboardgames.com/camel-up/game-rules.php | W:Camel_Up ; https://www.youtube.com/results?search_query=Camel+Up+how+to+play | 1 |
+| Forbidden Desert | 2013 | 5×5 тайлів з діркою-бурею: вітер зсуває тайли разом з фішками, насипає пісок | https://www.ultraboardgames.com/forbidden-desert/game-rules.php | W:Forbidden_Desert ; https://www.youtube.com/results?search_query=Forbidden+Desert+how+to+play | 1 |
+| Torres | 1999 | вежі ростуть стосами; лицар підіймається на 1 рівень; очки = рівень × площа замку | W:Torres_(board_game) | https://www.youtube.com/results?search_query=Torres+board+game+how+to+play | 1 |
+| Battle Sheep | 2010 | розщепити стос овець і ковзати частиною до перешкоди; поле збирають гравці | W:Battle_Sheep | https://www.youtube.com/results?search_query=Battle+Sheep+how+to+play | 1 |
+| Cartagena | 2000 | карта символу кидає пірата до наступної вільної такої клітини; відступ до зайнятої дає карти | W:Cartagena_(board_game) | https://www.youtube.com/results?search_query=Cartagena+board+game+how+to+play | 1 |
+| Catan | 1995 | поселення на вершинах і дороги на ребрах гексів; кидок 2d6 запускає видобуток, розбійник | W:Catan | https://www.ultraboardgames.com/catan/ ; https://www.youtube.com/results?search_query=Catan+how+to+play | 1 |
+| Pandemic | 2008 | граф міст; 4-й кубик спричиняє спалах у сусідів — ланцюгова реакція; кооп | W:Pandemic_(board_game) | https://www.youtube.com/results?search_query=Pandemic+board+game+how+to+play | 1 |
+| Ticket to Ride | 2004 | граф маршрутів: набір карт кольору захоплює ребро; квитки-цілі й найдовший шлях | W:Ticket_to_Ride_(board_game) | https://www.youtube.com/results?search_query=Ticket+to+Ride+how+to+play | 1 |
+| The Night Cage | 2021 | кооп: тайли існують лише в світлі свічки, неосвітлені падають у темряву | W:The_Night_Cage | https://www.youtube.com/results?search_query=The+Night+Cage+how+to+play | 1 |
+| Carat | 1993 | поле з восьмикутників і квадратів; квадрат бере найбільший унікальний вплив довкола | W:Carat_(board_game) | https://www.youtube.com/results?search_query=Carat+Dirk+Henn+board+game | 1 |
+| Niagara | 2004 | річка з прозорих дисків сама зсувається до водоспаду, човни пливуть з нею | W:Niagara_(board_game) | https://www.youtube.com/results?search_query=Niagara+board+game+how+to+play | 1 |
+| Hare and Tortoise | 1974 | 1D-трек: рух на n клітин коштує трикутне число морквин; відступ платить | W:Hare_and_Tortoise | https://www.youtube.com/results?search_query=Hare+and+Tortoise+board+game+rules | 1 |
+| Uptown (Blockers!) | 2007 | 9×9: тайл лише на клітину свого символу; захоплення без розриву групи; мінімум груп | https://en.doc.boardgamearena.com/Gamehelpuptown | https://en.boardgamearena.com/gamepanel?game=uptown ; https://www.ultraboardgames.com/blockers/index.php | 1 |
+| Triple Triad | 1999 | карти з 4 числами-ребрами на 3×3 захоплюють сусідів, правила Same/Plus | W:Triple_Triad | https://www.youtube.com/results?search_query=Triple+Triad+rules | 1 |
+| Encore! (Noch mal!) | 2016 | кубик колір+число: хрестики одним звʼязним блоком від стартової колонки; перший закрив — більше | https://www.ultraboardgames.com/encore/game-rules.php | https://de.wikipedia.org/wiki/Noch_mal! ; https://www.youtube.com/results?search_query=Encore+Noch+mal+how+to+play | 2 |
+| Trails of Tucana | 2019 | flip-and-write: дві карти терену дають один відрізок стежки між сусідніми клітинами | https://www.ultraboardgames.com/trails-of-tucana/game-rules.php | https://www.youtube.com/results?search_query=Trails+of+Tucana+how+to+play | 2 |
+| Avenue | 2016 | малювати дорогу з карти у фіксованій орієнтації; кожна наступна ферма має бути багатша | https://www.ultraboardgames.com/avenue/game-rules.php | https://www.youtube.com/results?search_query=Avenue+Aporta+game+how+to+play | 2 |
+| Blue Lagoon | 2018 | архіпелаг 8 островів, дві фази: розвідка морем, потім поселення ланцюгом від своїх | https://blueorangegames.eu/wp-content/uploads/2018/09/BLUE-LAGOON_rules_ML.pdf | https://www.ultraboardgames.com/blue-lagoon/game-rules.php ; https://rulespal.com/blue-lagoon/rulebook | 2 |
+| Forbidden Island | 2010 | тайли острова затоплюються, повторно витягнутий тоне й зникає; укріплення сусіда | W:Forbidden_Island_(game) | https://www.youtube.com/results?search_query=Forbidden+Island+how+to+play | 2 |
+| Flash Point: Fire Rescue | 2011 | кооп: вогонь і дим поширюються сіткою будинку, вибухи ламають стіни (?) | W:Flash_Point:_Fire_Rescue | https://www.youtube.com/results?search_query=Flash+Point+Fire+Rescue+how+to+play | 2 |
+| Escape from Atlantis | 1982 | гекс-острів тоне кільцями від берега; знятий тайл випускає акулу чи вир | W:Escape_from_Atlantis | https://www.youtube.com/results?search_query=Survive+Escape+from+Atlantis+how+to+play | 2 |
+| Formula D (Formula Dé) | 1991 | кубик передачі d4–d30 задає рух; у повороті треба зупинитись N разів | W:Formula_D_(board_game) | https://www.youtube.com/results?search_query=Formula+D+how+to+play | 2 |
+| Hues and Cues | 2020 | поле — сітка 480 відтінків; рамка 3×3 навколо цілі рахує близькість здогадок | W:Hues_and_Cues | https://www.youtube.com/results?search_query=Hues+and+Cues+how+to+play | 2 |
+| Drunter und Drüber | 1991 | тайли доріг накривають будинки; накрити вбиральню — таємне голосування картами | W:Drunter_und_Drüber | https://www.youtube.com/results?search_query=Drunter+und+Druber+Teuber | 2 |
+| Continuo | 1982 | карти-квадрати 4×4 кольорів; кольори на стику збігаються, очки за довжину ланцюгів | W:Continuo_(game) | https://www.youtube.com/results?search_query=Continuo+game+Maureen+Hiron | 2 |
+| Spectrangle | 1989 | трикутне поле, трикутні тайли зі збігом кольорів ребер; очки × бонус × кількість дотиків | W:Spectrangle | https://www.youtube.com/results?search_query=Spectrangle+game | 2 |
+| Sequence | 1982 | кожна клітина — карта колоди (двічі); валети: дикий хід і зняття фішки | https://www.ultraboardgames.com/sequence/game-rules.php | W:Sequence_(game) ; https://www.youtube.com/results?search_query=Sequence+board+game+how+to+play | 2 |
+| Penguin Party | 2008 | піраміда карт: карта вищого ряду спирається на дві, одна мусить збігтися кольором | https://www.gumnut.com.au/products/penguin-party | https://www.youtube.com/results?search_query=Penguin+Party+Knizia+how+to+play | 2 |
+| Culdcept | 1997 | кільцева дошка: істоти-карти захоплюють клітини-землі, мито за зупинку | W:Culdcept | https://www.youtube.com/results?search_query=Culdcept+gameplay | 2 |
+| Fjords | 2005 | дві фази: спершу спільна мапа гексів зі збігом країв, потім розповзання від хуторів | W:Fjords_(board_game) | https://www.youtube.com/results?search_query=Fjords+board+game+how+to+play | 3 |
+
+## Хвиля 3 — 2026-11-09: нові кандидати (пошукові агенти Opus)
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| Cats Organized Neatly | 2020 | укласти котів-поліміно на сітку кімнати, обертаючи фігури | https://store.steampowered.com/app/1369340/Cats_Organized_Neatly/ | https://www.youtube.com/results?search_query=Cats+Organized+Neatly+gameplay | 2 |
+
+## Хвиля 3 — 2026-11-09: нові кандидати (пошукові агенти Opus)
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| Domino Grove | ? | доміно з двох дерев (форма і колір); регіон рахується за формою або кольором (≠ Kingdomino) | https://ezra-szanton.itch.io/domino-grove | https://ezra-szanton.itch.io/domino-grove/devlog/846299/domino-grove-development-log | 1 |
+| Outpacked | 2026 | пакування предметів у сітку-інвентар з логічними умовами сусідства («Tetris meets Sudoku») | https://store.steampowered.com/app/4012320/Outpacked/ | https://www.youtube.com/results?search_query=Outpacked+gameplay | 1 |
+| Moonsigil Atlas | 2026 | деквілдер без енергії: карти-сигіли певної форми кладуться на сітку, поки вміщаються; сусідство й накладання | https://store.steampowered.com/app/3284290/Moonsigil_Atlas/ | https://www.youtube.com/results?search_query=Moonsigil+Atlas+gameplay | 2 |
+| Stamps | ? | марки в сітці: правило країни зсуває, прибирає чи міняє сусідні марки; цілі за країною й ціною | https://hatemyury.itch.io/stamps | https://www.youtube.com/results?search_query=Stamps+puzzle+game | 2 |
+| TeenyShire | 2022 | щоденне містечко за 11 ходів; очки за правилами сусідства «nearby» (8 клітин) і «touching» (4) | https://dr-d-king.itch.io/teenyshire | https://www.youtube.com/results?search_query=TeenyShire | 2 |
+| Beacon Patrol | 2025 | кооперативне викладання квадратних плиток моря: корабель одразу заходить на нові плитки | https://store.steampowered.com/app/2273850/Beacon_Patrol/ | https://www.youtube.com/results?search_query=Beacon+Patrol+gameplay | 2 |
+| Dogs Organized Neatly | 2021 | вкласти фігурки тварин (з поворотом) у сітку без порожнеч; сиквел Birds — нові форми | https://store.steampowered.com/app/1597730/Dogs_Organized_Neatly/ | https://store.steampowered.com/app/2707110/Birds_Organized_Neatly/ | 2 |
+| Electrogical | 2026 | фігури-пазли з операціями +1 / −1 / × / ÷ кладуться на плату, щоб дати цільове число | https://store.steampowered.com/app/2501650/Electrogical/ | https://www.youtube.com/results?search_query=Electrogical+gameplay | 2 |
+| Feed the Scorchpot | 2026 | гекс-острів: ферми, святилища, гавані змінюють, як клітини платять за кидки кубів | https://store.steampowered.com/app/3966510/Feed_the_Scorchpot/ | https://www.youtube.com/results?search_query=Feed+the+Scorchpot+gameplay | 2 |
+| Tiny Islands | 2019 | roll-and-write з картами замість кубів: малюєш гори, ліси, будівлі на мапі островів (сітка ?) | https://dr-d-king.itch.io/tiny-islands | https://www.youtube.com/results?search_query=Tiny+Islands+David+King | 3 |
+| Dicevaders | 2026 | роглайк з кубиками: загарбників розставляєш на розширюваній сітці, позиція множить очки | https://store.steampowered.com/app/3917700/Dicevaders/ | https://www.youtube.com/results?search_query=Dicevaders+gameplay | 3 |

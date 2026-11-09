@@ -153,3 +153,108 @@ Norinori, Kurotto, Coral, Kurochute, Mannequin Gate, Canal View, Ant Mill, Choco
 - Icebarn — лінія на льоду; друга лінія — `push-slide` (ковзання по льоду).
 - Sumplete → `word-number`.
 - Sherlock (1992) — дедукція атрибутів на сітці; якщо підказки відкриваються з часом → `hidden-deduction`.
+
+## Хвиля 3 — 2026-11-09: нові кандидати (пошукові агенти Opus)
+
+Джерела: puzz.link — `list.html` (245 data-pid) + таблиця назв у `js/pzpr.js` (247 id) + правила й автори з `js/pzpr-samples/<id>.js` для 130 кандидатів; Janko — `Raetsel/index.htm` (350 жанрів) + 238 сторінок жанрів без збігів (правила EN/DE, «Lexikon» з автором і роком); Nikoli EN — список 47 жанрів і сторінки Kuralin, Nuritwin, Nansuke; Wikipedia — API `Category:Logic_puzzles`, статті Goishi Hiroi, Shinro, Survo puzzle, Stained Glass, Yajisan-Kazusan · Не відкрилось: `puzz.link/list.html` через WebFetch (сторінку малює JS, тому id взято з `pzpr.js`) · WebSearch: 0. Скорочення не вжиті: усі лінки повні. `https://puzz.link/rules.html?<id>` — сторінка правил puzz.link, текст правил з якої я читав у `pzpr-samples/<id>.js`.
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| Hitori-Ribashi (ひとりリバーシ) | 2006 | пасьянс-реверсі: кожен хід мусить захопити білі; число = номер ходу захоплення | https://www.janko.at/Raetsel/Hitori-Ribashi/index.htm | https://www.youtube.com/results?search_query=Hitori+Ribashi+puzzle | 1 |
+| Saltatori | ? | тварини стрибають на відстань свого виду; кожну клітинку зайняти чи перестрибнути раз | https://www.janko.at/Raetsel/Saltatori/index.htm | — | 1 |
+| Goishi Hiroi (Hiroimono, 碁石ひろい) | 1727 | зібрати всі камені ланцюгом: до найближчого по прямій, без розвороту назад | W:Goishi_Hiroi | https://puzz.link/rules.html?goishi · https://www.janko.at/Raetsel/Hiroimono/index.htm | 1 |
+| Satogaeri (さとがえり) | Nikoli vol.99 | кружки ковзають прямо рівно на N клітинок; у кожному регіоні рівно один | https://www.nikoli.co.jp/en/puzzles/satogaeri/ | https://puzz.link/rules.html?satogaeri · https://www.janko.at/Raetsel/Satogaeri/index.htm | 1 |
+| Kouchoku (交差は直角に限る) | Nikoli vol.133 | петля прямими відрізками між вузлами під будь-яким кутом; перетин лише під 90° | https://puzz.link/rules.html?kouchoku | — | 1 |
+| Building Walk (ビルウォーク) | Nikoli vol.174 | шлях крізь багатоповерховий будинок: ліфти, стрілки вгору/вниз, число = поверх | https://puzz.link/rules.html?bdwalk | — | 1 |
+| Tawamurenga (たわむれんが) | Nikoli vol.127 | цегляна кладка замість квадратів; чорна цеглина мусить спиратися на нижню | https://puzz.link/rules.html?tawa | https://www.janko.at/Raetsel/Tawa/index.htm | 1 |
+| Usowan (Usoone, ウソワン) | Nikoli vol.151 | у кожній кімнаті рівно одна числова підказка бреше | https://www.nikoli.co.jp/en/puzzles/usowan/ | https://puzz.link/rules.html?usoone · https://www.janko.at/Raetsel/Usoone/index.htm | 1 |
+| Yajisan-Kazusan (やじさんかずさん) | ? | стрілка-лічильник може брехати лише тоді, коли її клітинку зафарбовано | W:Yajisan-Kazusan | https://puzz.link/rules.html?yajikazu · https://www.janko.at/Raetsel/Yajisan-Kazusan/index.htm | 1 |
+| Hinge (Chōtsugai, Chiyotsui, ちょうつがい) | Nikoli vol.159 | блок, розтятий межею кімнат, дзеркально симетричний відносно цієї межі | https://puzz.link/rules.html?hinge | https://www.janko.at/Raetsel/Chiyotsui/index.htm | 1 |
+| Compass | ? | компас в області: скільки її клітинок лежить далі за кожен напрямок | https://puzz.link/rules.html?compass | https://www.janko.at/Raetsel/Compass/index.htm | 1 |
+| Haisu | ? | шлях S→G крізь усі клітинки; число N — клітинка проходиться на N-му візиті регіону | https://puzz.link/rules.html?haisu | — | 1 |
+| Guide Arrow (ガイドアロー) | ? | білі клітинки — дерево; стрілка = єдиний можливий перший крок до зірки | https://puzz.link/rules.html?guidearrow | — | 1 |
+| Hebi-Ichigo (へびいちご) | Nikoli vol.126 | змійки 1–5 з головою; голова не може дивитися на іншу змійку | https://www.nikoli.co.jp/en/puzzles/hebi/ | https://puzz.link/rules.html?hebi · https://www.janko.at/Raetsel/Hebi-Ichigo/index.htm | 1 |
+| Polyominos (сума 10) | ? | оптимізація замість єдиного розвʼязку: поліоміно із сумою 10, мінімум зайвих клітинок (перевірити: ≈ `pentominous`) | https://www.janko.at/Raetsel/Polyominos/index.htm | — | 1 |
+| Army Ants (ぐんたいあり) | Nikoli vol.158 | перенести числа лініями так, щоб склались ланцюжки 1…N, що не торкаються | https://puzz.link/rules.html?armyants | https://www.janko.at/Raetsel/Armyants/index.htm | 2 |
+| Oyakodori (おやこどり) | ? | малий і великий птах летять у гніздо; один межі не перетинає, інший мусить | https://puzz.link/rules.html?oyakodori | — | 2 |
+| Suraido | ? | судоку, де дані цифри спершу треба зсунути в сусідні клітинки | https://www.janko.at/Raetsel/Suraido/index.htm | — | 2 |
+| Detektivschach (Detective Chess) | ? | розставити дані шахові фігури; число = скільки фігур атакує клітинку | https://www.janko.at/Raetsel/Detektivschach/index.htm | — | 2 |
+| Karakiri | ? | поле з кіл і прямих ліній: на кожній лінії кожне число рівно раз | https://www.janko.at/Raetsel/Karakiri/index.htm | — | 2 |
+| Mäander (Meander) | ? | річка сталої ширини, береги — діагоналі клітинок; ззовні лічильники берегів | https://www.janko.at/Raetsel/Maeander/index.htm | — | 2 |
+| Crossstitch | ? | дві петлі з діагоналей, що можуть перетинати одна одну; стрілки рахують перетини | https://puzz.link/rules.html?crossstitch | — | 2 |
+| SquarO | ? | фарбуються вузли сітки, а не клітинки; число = скільки кутів клітинки чорні | https://www.janko.at/Raetsel/SquarO/index.htm | — | 2 |
+| Ziegelmauer (Brick Wall) | ? | латинський квадрат з цеглин «парне + непарне»; півцеглини країв рядка зшиваються | https://www.janko.at/Raetsel/Ziegelmauer/index.htm | — | 2 |
+| Zahlenlabyrinth (Magic Labyrinth) | ? | латинський квадрат, де вздовж шляху лабіринту числа йдуть циклом 1…N | https://www.janko.at/Raetsel/Zahlenlabyrinth/index.htm | — | 2 |
+| Sukoro (数コロ) | Nikoli vol.40 | число = скільки сусідніх клітинок теж мають число; усі числа звʼязні | https://puzz.link/rules.html?sukoro | https://www.janko.at/Raetsel/Sukoro/index.htm | 2 |
+| Zeiger | ? | число в стрілці = скільки різних чисел лежить у напрямку стрілки | https://www.janko.at/Raetsel/Zeiger/index.htm | — | 2 |
+| Arofuro (Arrow Flow) | 2008 | стрілка в кожній клітинці; число = скільки стрілок ведуть сюди, зокрема ланцюжком | https://www.janko.at/Raetsel/Arofuro/index.htm | — | 2 |
+| Mirror Block (ミラーブロック) | Nikoli vol.177 | товста лінія-дзеркало: області обабіч неї — дзеркальні копії | https://puzz.link/rules.html?mirrorbk | — | 2 |
+| Chained Block (チェンブロ) | Nikoli vol.173 | блоки, що торкаються кутами, утворюють ланцюг без однакових форм | https://www.nikoli.co.jp/en/puzzles/chained-block/ | https://puzz.link/rules.html?chainedb · https://www.janko.at/Raetsel/Chained-Blocks/index.htm | 2 |
+| Curve Data (カーブデータ) | ? | фігура з ліній топологічно збігається зі схемою-підказкою; довжини відрізків гнучкі | https://puzz.link/rules.html?curvedata | — | 2 |
+| Remembered Length | ? | спрямована петля: число регіону задає довжину візиту в наступний регіон | https://puzz.link/rules.html?remlen | — | 2 |
+| Pipelink (パイプリンク) | Nikoli vol.45 | петля крізь усі клітинки з прямими перехрестями будь-де; дано шматки труб | https://puzz.link/rules.html?pipelink | https://www.janko.at/Raetsel/Pipelink/index.htm | 2 |
+| Nagenawa (なげなわ) | Nikoli vol.123 | кілька прямокутних петель-ласо, що перетинаються; число = клітинки петель у кімнаті | https://puzz.link/rules.html?nagenawa | https://www.janko.at/Raetsel/Nagewawa/index.htm | 2 |
+| Myopia | ? | петля по ребрах; стрілки показують напрям(и) до найближчого відрізка петлі | https://puzz.link/rules.html?myopia | — | 2 |
+| Look-Air (るっくえあ) | Nikoli vol.136 | чорні блоки — квадрати; два рівні квадрати не бачать один одного по прямій | https://puzz.link/rules.html?lookair | https://www.janko.at/Raetsel/Rukkuea/index.htm | 2 |
+| No Three (ノースリー) | Nikoli vol.158 | будь-які три чорні підряд по лінії мають різні проміжки між собою | https://puzz.link/rules.html?nothree | — | 2 |
+| One Room One Door (ワンルームワンドア) | Nikoli vol.169 | між двома кімнатами щонайбільше одні «двері» — пара білих через межу | https://puzz.link/rules.html?oneroom | https://www.janko.at/Raetsel/Wanrumuwandoa/index.htm | 2 |
+| Kuralin | ? | петля, решта клітинок чорна; кружок торкається більше клітинок свого кольору | https://www.nikoli.co.jp/en/puzzles/kuralin/ | — | 2 |
+| Tenner Grid (Zehnergitter) | ? | у кожному рядку 0–9, однакові не торкаються навіть кутом; суми стовпців | https://www.janko.at/Raetsel/Zehnergitter/index.htm | — | 2 |
+| Survo puzzle | 2006 | розставити 1…m×n по разу, щоб збіглися суми рядків і стовпців | W:Survo_puzzle | — | 2 |
+| Shinro | 2007 | 12 лунок на полі 8×8; кожна стрілка вказує хоча б на одну | W:Shinro | — | 2 |
+| Trilogik | ? | три символи; трійка підряд, з діагоналями, ні однакова, ні вся різна | https://www.janko.at/Raetsel/Trilogik/index.htm | — | 2 |
+| KaitoRamma (快刀乱麻) | Nikoli vol.123 | розрізи — лише прямі від краю до краю; білі й чорні кружки розділені | https://puzz.link/rules.html?kramma | — | 2 |
+| Deddoanguru (Dead Angle) | 2003 | «око» дивиться в 4 боки до межі; число = клітинки області поза зором | https://www.janko.at/Raetsel/Deddoanguru/index.htm | — | 2 |
+| Scrin (スクリン) | Nikoli vol.165 | прямокутники, що торкаються кутами, утворюють одну замкнену петлю | https://puzz.link/rules.html?scrin | https://www.janko.at/Raetsel/Scrin/index.htm | 2 |
+| Ichimaga (イチマガ) | Nikoli vol.35 | лінії з не більше ніж одним поворотом зʼєднують кружки в мережу; число = степінь | https://puzz.link/rules.html?ichimaga | https://www.janko.at/Raetsel/Ichimaga/index.htm | 2 |
+| Coffee Milk (コーヒー牛乳) | Nikoli vol.156 | групи кружків прямими лініями: один сірий, білих і чорних порівну | https://puzz.link/rules.html?coffeemilk | https://www.janko.at/Raetsel/Milchkaffee/index.htm | 2 |
+| Molekularis | ? | атоми з валентністю H1 O2 N3 C4: звʼязки 1–4 лінії, молекула звʼязна | https://www.janko.at/Raetsel/Molekularis/index.htm | — | 2 |
+| Stitches | ? | кожну пару сусідніх регіонів зшити рівно одним стібком довжини 1 | https://www.janko.at/Raetsel/Stitches/index.htm | — | 2 |
+| Türen (Doors, Seethrough) | ? | вирішити, які двері між кімнатами відчинені; число = скільки кімнат видно | https://www.janko.at/Raetsel/Tueren/index.htm | — | 2 |
+| Angle Loop (鋭直鈍ループ) | ? | петля по точках: трикутник — гострий кут, квадрат — прямий, пʼятикутник — тупий | https://puzz.link/rules.html?angleloop | — | 3 |
+| Kuroclone (クロクローン) | Nikoli vol.153 | у кімнаті два чорні блоки однакової форми; стрілка — розмір сусіднього блока | https://puzz.link/rules.html?kuroclone | https://www.janko.at/Raetsel/Kuroclone/index.htm | 3 |
+| Train Stations | ? | петля крізь усі клітинки; усі перехрестя дано; станції по зростанню, без поворотів | https://puzz.link/rules.html?trainstations | — | 3 |
+| Creek (クリーク) | Nikoli vol.110 | підказки у вузлах сітки: скільки з чотирьох клітинок навколо зафарбовано | https://puzz.link/rules.html?creek | https://www.janko.at/Raetsel/Creek/index.htm | 3 |
+| Aqre | ? | жодних 4 однакових кольорів підряд; чорні звʼязні; лічильники кімнат | https://puzz.link/rules.html?aqre | https://www.janko.at/Raetsel/Aqre/index.htm | 3 |
+| Tilepaint (タイルペイント) | Nikoli vol.53 | плитки фарбуються цілком; какуро-підказки рахують чорні до наступної підказки | https://www.nikoli.co.jp/en/puzzles/tilepaint/ | https://puzz.link/rules.html?tilepaint · https://www.janko.at/Raetsel/Tairupeinto/index.htm | 3 |
+| Cake Table | ? | три кольори; число = скільки клітинок того ж кольору в 3×3 навколо | https://www.janko.at/Raetsel/Cake-Table/index.htm | — | 3 |
+| Knossos | ? | розбити на області; єдине число в області = її периметр | https://www.janko.at/Raetsel/Knossos/index.htm | — | 3 |
+
+## Хвиля 3 — 2026-11-09: нові кандидати (пошукові агенти Opus)
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| Tapa Sink (Bonpsi) | 2024 | Tapa на нескінченній сітці, видимій лише під прожектором субмарини | https://bonpsi.itch.io/tapa-sink | — | 3 |
+| N-Chessmen (Ben Matthews) | 2024 | розставити різні шахові фігури: покрити всі клітини, жодна не б'є іншу | https://tsuhre.itch.io/n-chessmen | — | 3 |
+
+## Хвиля 3 — 2026-11-09: нові кандидати (пошукові агенти Opus)
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| Sudokuvania: Digits of Despair | 2025 | мапа 40×50 гаттай-судоку під туманом; правила відкриваються як здібності, боси-підпазли | https://logic-masters.de/Raetselportal/Raetsel/zeigen.php?id=000MQQ | https://www.youtube.com/results?search_query=Sudokuvania+Digits+of+Despair | 1 |
+| Sudoku Mansion | 2026 | «класи» перечитують ту саму кімнату-судоку за іншим правилом (Whisper → Region Sum) | https://store.steampowered.com/app/5005590/Sudoku_Mansion/ | https://www.youtube.com/results?search_query=Sudoku+Mansion+gameplay | 1 |
+| Sudoku Topology | 2024 | судоку з лініями-варіантами на сфері, торі, стрічці Мебіуса, пляшці Клейна | https://store.steampowered.com/app/3051910/Sudoku_Topology/ | https://www.youtube.com/results?search_query=Sudoku+Topology+gameplay | 1 |
+| Murdoku | 2025 | підозрювані по кімнатах, один на рядок і колонку; убивця — сам на сам з жертвою | https://allthings.how/murdoku-explained-how-the-murder-mystery-sudoku-puzzle-works/ | https://murdoku.com/play | 1 |
+| Nodes of a Feather | 2022 | у кожній парі ребер рівно одне, червоне чи синє; число вузла = розмір компоненти | https://sharkwithlasers.itch.io/nodes-of-a-feather | — | 1 |
+| Super Sudokoid: Dark Inversion | 2026 | сиквел жанру Sudokuvania: 16 секторів 9×9 у тумані, стіни, HUD-боси дають цифри | https://logic-masters.de/Raetselportal/Raetsel/zeigen.php?id=000SQ0 | Final Transmission (перша частина): https://logic-masters.de/Raetselportal/Raetsel/zeigen.php?id=000RPZ | 2 |
+| Hidden Oxygen | 2020 | кисні не торкаються навіть діагонально, лічильники рядків, кожен вуглець — 2 сусіди-кисні | https://www.crazygames.com/game/hidden-oxygen | https://www.youtube.com/results?search_query=Hidden+Oxygen+puzzle | 2 |
+| 13 Sticky Notes | 2025 | 13 записок з просторовими правилами розкласти на нумеровану сітку, 2 клітини порожні | https://fachewachewa.itch.io/13-sticky-notes | — | 2 |
+| Is This Seat Taken? | 2025 | розсадити персонажів у рядах місць за симпатіями й антипатіями до сусідів | https://store.steampowered.com/app/3035120/Is_This_Seat_Taken/ | https://www.youtube.com/results?search_query=Is+This+Seat+Taken+gameplay | 2 |
+| CrossCells | 2017 | Matthew Brown: прибирати клітини з числами, щоб рядки й колонки дали цільові суми | https://store.steampowered.com/app/632000/CrossCells/ | https://www.youtube.com/results?search_query=CrossCells+gameplay | 2 |
+| SquareCells | 2015 | гібрид нонограми й сапера: підказки рядків плюс числа клітин, без вгадування | https://store.steampowered.com/app/416770/SquareCells/ | https://www.youtube.com/results?search_query=SquareCells+gameplay | 2 |
+| Liquidum | 2024 | нонограм-акваріуми: вода тече з гравітацією, діагональні стінки, човни над водою | https://store.steampowered.com/app/2716690/Liquidum/ | https://www.youtube.com/results?search_query=Liquidum+gameplay | 2 |
+| Homgard | 2026 | нонограми з 6 новими правилами: кольорові клітини з іншим правилом, неквадратні поля | https://store.steampowered.com/app/4287570/Homgard/ | https://www.youtube.com/results?search_query=Homgard+gameplay | 2 |
+| CiniCross | 2026 | нонограм-роглайт: кімнати-нонограми, боси міняють правила, артефакти заповнюють колонки | https://store.steampowered.com/app/3933120/CiniCross/ | https://www.youtube.com/results?search_query=CiniCross+gameplay | 2 |
+| The Artisan of Glimmith | 2026 | вітражі: фарбувати, різати й зʼєднувати регіони за 20+ типами правил | https://store.steampowered.com/app/4160210/The_Artisan_of_Glimmith/ | https://www.youtube.com/results?search_query=The+Artisan+of+Glimmith+gameplay | 2 |
+| Zerko | 2024 | Maciej Targoni: ставити фігури-блоки зі значеннями, щоб усі числа стали нулем | https://store.steampowered.com/app/2862990/Zerko/ | https://www.youtube.com/results?search_query=Zerko+gameplay | 2 |
+| Logic Bombs | 2025 | бомби на полі: вибух кожної має зачепити рівно задану кількість ворогів | https://store.steampowered.com/app/3816700/Logic_Bombs/ | https://www.youtube.com/results?search_query=Logic+Bombs+Matthewmatosis | 2 |
+| Rondoku | 2025 | числа в кругових діаграмах за трьома правилами, сусідні — не послідовні (?) | https://store.steampowered.com/app/3791600/Rondoku/ | — | 3 |
+| Tatami | 2025 | поділ на прямокутники заданої площі; далі жовті клітини віднімають, від'ємні суми | https://apps.apple.com/us/app/tatami/id6575395532 | — | 3 |
+| Draw a Loop! | 2025 | одна сторінка: петля на сітці без інструкцій, правило з єдиності, плюс секрет | https://xxuurruuii.itch.io/draw-a-loop | — | 3 |
+| Lyth | 2025 | PDF без інструкцій: точки, числа, літери — правило виводиш з єдиності розвʼязку | https://xxuurruuii.itch.io/lyth | — | 3 |
+| A Rule-Explorer's Adventure | 2025 | PDF без інструкцій за пазлом FDUPH; за описом — у кожного пазла рівно два розвʼязки | https://xxuurruuii.itch.io/a-rule-explorers-adventure | — | 3 |
+| Overblock | 2025 | PDF: пакування обʼємних фігур у порожнини, фінальне розкриття | https://xxuurruuii.itch.io/overblock | — | 3 |
+| Counterfill | 2025 | PDF: 20 паперових пазлів, правила замазані фарбою — відновити з єдиності | https://permatemp.itch.io/counterfill | — | 3 |
+| Loopmaker | 2025 | одна картинка, 25 рівнів: петлі між синіми точками, правила відкриваєш сам | https://torcado.itch.io/loopmaker | — | 3 |
+| The Domino Lockpicking Company | 2025 | PDF: лінії через доміно-сітки з очками; правила виводиш, розвʼязок не завжди єдиний | https://garth-sidious.itch.io/domino-lockpicking-company | — | 3 |
+| Stencil Revamped | 2025 | архів пазлів, де правила перекреслені й дописані графіті — відновити набір | https://hutt3.itch.io/stencil-revamped | https://hutthutthuttspuzzledump.blogspot.com/2025/06/the-making-of-stencil-revamped.html | 3 |

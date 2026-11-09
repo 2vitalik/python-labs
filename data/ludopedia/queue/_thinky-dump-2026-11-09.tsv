@@ -1,0 +1,146 @@
+# Thinky Games — дамп 2026-11-09 (T265): назви, яких ще нема ні в корпусі, ні в чергах; колонки: slug · назва · теги Thinky · сімʼя-підказка. Сировина для наступної хвилі пошуку (queue/_search-brief.md); сторінка гри — https://thinkygames.com/games/<slug>/ (агентам 403 — відкривати у Chrome або шукати гру в Steam/itch).
+a-confusing-map	A Confusing Map	tile-placement,puzzle	board-digital
+birds-organized-neatly	Birds Organized Neatly	tile-placement	board-digital
+drop-duchy	Drop Duchy	tile-placement,roguelike,strategy,deck-building	board-digital
+hexa-world-3d	Hexa-World-3D	tile-placement,strategy	board-digital
+islanders-new-shores	Islanders: New Shores	tile-placement,strategy	board-digital
+circuit-breaker	Circuit Breaker	limited-moves,line-drawing	connect-rotate
+filament	Filament	line-drawing,sci-fi,spatial-visualization	connect-rotate
+glowkeeper	Glowkeeper	line-drawing,platformer,metroidbrainia,open-world	connect-rotate
+lenrual	Lenrual	line-drawing	connect-rotate
+linea	Linea	line-drawing	connect-rotate
+ouros	Ouros	line-drawing,hint-system	connect-rotate
+shareflakes	Shareflakes	line-drawing,puzzle	connect-rotate
+the-looker	The Looker	line-drawing	connect-rotate
+the-talos-principle-2	The Talos Principle 2	sequencing,beam-reflection,first-person,adventure,sci-fi,thinky-awards,story-rich	connect-rotate
+transmission	Transmission	line-drawing	connect-rotate
+2024-mosaic-retrospective	2024: Mosaic Retrospective	logic	pencil-logic
+blobs	Blobs	logic,rule-discovery	pencil-logic
+cert	CERT	logic	pencil-logic
+d-topia	D-topia	logic	pencil-logic
+daily-akari	Daily Akari	logic,daily,abstract-logic,puzzle	pencil-logic
+decipher-the-deck	Decipher The Deck	logic,rule-discovery	pencil-logic
+dice-of-dusk	Dice of Dusk	tile-placement,roguelike,logic	pencil-logic
+dino-sort	Dino Sort	logic,sorting,free,puzzle,web	pencil-logic
+dual-threaded	Dual Threaded	logic,rule-discovery,puzzle	pencil-logic
+fivefold	Fivefold	logic,daily	pencil-logic
+fmtc	FMTC	logic,rule-discovery	pencil-logic
+hatsune-miku-bomb-squad	Hatsune Miku Bomb Squad!	logic,rule-discovery	pencil-logic
+i-made-some-paper-puzzles	I Made Some Paper Puzzles	logic	pencil-logic
+ika	IKA	logic,rule-discovery	pencil-logic
+inkwell-fields	Inkwell Fields	logic,daily	pencil-logic
+inkwell-lazy-river	Inkwell Loopy River	logic,line-drawing,daily	pencil-logic
+inkwell-stars	Inkwell Stars	logic,daily	pencil-logic
+juufuutei-radens-guide-for-pixel-museum	Juufuutei Raden's Guide for Pixel Museum	logic	pencil-logic
+letibus-advent-calendar-2025	Letibus Advent Calendar 2025	logic	pencil-logic
+logiart-grimoire	Logiart Grimoire	logic	pencil-logic
+mosaic-of-the-strange	Mosaic of the Strange	logic	pencil-logic
+murder-by-numbers	Murder by Numbers	logic	pencil-logic
+nurikabe-world	Nurikabe World	logic,line-drawing,daily	pencil-logic
+one-to-three	One to Three	logic,rule-discovery,line-drawing	pencil-logic
+peppers-puzzles	Pepper's Puzzles	logic	pencil-logic
+perimeter	Perimeter	logic,rule-discovery	pencil-logic
+picross-s-plus	Picross S+	logic	pencil-logic
+picross-s9	Picross S9	logic	pencil-logic
+pictopix	Pictopix	logic	pencil-logic
+piczle-cross-adventure	Piczle Cross Adventure	logic	pencil-logic
+pixelogic	Pixelogic	logic	pencil-logic
+proverbs	Proverbs	logic	pencil-logic
+rorschachs-river	Rorschach's River	logic,line-drawing	pencil-logic
+squeakross-home-squeak-home	Squeakross: Home Squeak Home	logic,abstract-logic,puzzle	pencil-logic
+sudokuvania-2-lineage-of-logic	Sudokuvania 2: Lineage of Logic	logic	pencil-logic
+super-sudokoid-final-transmission	Super Sudokoid: Final Transmission	logic	pencil-logic
+the-case-of-the-worst-day-ever	The Case of the Worst Day Ever	logic,detective,hint-system	pencil-logic
+thinky-dailies	Thinky Dailies	logic,word,daily,free,puzzle,abstract-logic,lateral,hint-system	pencil-logic
+tunnels	Tunnels	logic,rule-discovery,line-drawing,pen-and-paper,puzzle	pencil-logic
+ufo-50-nonograms	UFO 50 Nonograms	logic	pencil-logic
+voxelgram	Voxelgram	logic	pencil-logic
+voxelgram-2	Voxelgram 2	logic,puzzle	pencil-logic
+walfies-nonograms	Walfie's Nonograms	logic	pencil-logic
+witless-a-puzzling-journey	Witless - A Puzzling Journey	logic,rule-discovery	pencil-logic
+alans-automaton-workshop	Alan's Automaton Workshop	zachlike,automation,engineering,puzzle	program-robots
+automate-it	Automate It	zachlike,automation,engineering,puzzle	program-robots
+emudevz	EmuDevz	programming,zachlike,automation,engineering	program-robots
+harmless-drudge	Harmless Drudge	programming,engineering	program-robots
+last-call-bbs	Last Call BBS	programming,zachlike,automation,engineering	program-robots
+manufactoria-2022	Manufactoria 2022	zachlike,automation,engineering,puzzle	program-robots
+mhrd	MHRD	programming,engineering	program-robots
+nandgame	NandGame	programming,engineering	program-robots
+opus-magnum-de-re-metallica	Opus Magnum: De Re Metallica	zachlike,automation,engineering	program-robots
+quantum-odyssey	Quantum Odyssey	zachlike,automation,engineering,puzzle	program-robots
+quantumpulse-2a	QuantumPulse 2A	programming,zachlike,automation,engineering,puzzle	program-robots
+rodocodo-code-hour	Rodocodo: Code Hour	programming,zachlike,automation,engineering	program-robots
+rush	Rush	zachlike,automation	program-robots
+shenzhen-io	Shenzhen I/O	programming,zachlike,automation,engineering	program-robots
+sic-1	SIC-1	programming,zachlike,automation,engineering	program-robots
+silicon-zeroes	Silicon Zeroes	programming,zachlike,automation,engineering	program-robots
+the-codex-of-alchemical-engineering	The Codex of Alchemical Engineering	zachlike,automation,engineering	program-robots
+the-sequence-2	The Sequence [2]	zachlike,automation,engineering	program-robots
+while-true-learn	While True: Learn()	programming,zachlike,automation,engineering	program-robots
+a-man-walks-into-a-scrollbar	A Man Walks into a Scrollbar	sokoban	push-slide
+aha-alphabet	Aha Alphabet	sokoban,line-drawing	push-slide
+bonfire-peaks-lost-memories	Bonfire Peaks: Lost Memories	sokoban,grid-based,dlc	push-slide
+boxception	Boxception	sokoban	push-slide
+bubble-sort	Bubble Sort	sokoban	push-slide
+confusion-conveyed	Confusion Conveyed	sokoban,sequencing	push-slide
+fish-fillets-2	Fish Fillets 2	sokoban	push-slide
+gunning-for-the-exit	Gunning for the Exit	sokoban,free	push-slide
+in-a-pickle	In a Pickle	sokoban	push-slide
+logica-emotica	Logica Emotica	sokoban,line-drawing	push-slide
+microban	Microban	sokoban	push-slide
+mimic	Mimic	maneuvering	push-slide
+nuworm	Nuworm	sokoban,maneuvering,free,grid-based,puzzle,snake	push-slide
+paintban	Paintban	sokoban,free	push-slide
+push-blox	Push Blox	sokoban	push-slide
+push-blox-2	Push Blox 2	sokoban	push-slide
+shall-we-golf	Shall We Golf?	sokoban,snake,line-drawing,spatial-visualization,puzzlescript	push-slide
+skipping-stones-to-lonely-homes	Skipping Stones to Lonely Homes	sokoban,free	push-slide
+two-worlds	Two Worlds	sokoban	push-slide
+yugo-puzzle	Yugo Puzzle	sokoban,grid-based,spatial-visualization	push-slide
+shadow-gambit-the-cursed-crew	Shadow Gambit: The Cursed Crew	tactics,strategy	tactics
+songs-of-conquest	Songs of Conquest	tactics,strategy	tactics
+steamworld-heist-ii	SteamWorld Heist II	tactics,strategy,turn-based,story-rich	tactics
+bobogram	Bobogram	logic,rule-discovery,free,pen-and-paper,nonogram,grid-based	thinky
+braid	Braid	record-and-replay,puzzle-platformer,action	thinky
+causal-loop	Causal Loop	record-and-replay,puzzle	thinky
+clockwork-rabbit	Clockwork Rabbit	record-and-replay	thinky
+drod-gunthro-and-the-epic-blunder	DROD: Gunthro and the Epic Blunder	stepping	thinky
+drod-journey-to-rooted-hold	DROD: Journey to Rooted Hold	stepping	thinky
+drod-the-city-beneath	DROD: The City Beneath	stepping,puzzle	thinky
+drod-the-second-sky	DROD: The Second Sky	stepping	thinky
+give-up-the-ghost	Give Up the Ghost	sokoban,rule-discovery	thinky
+hourglass	Hourglass	record-and-replay,puzzle	thinky
+how-hungry	How Hungry?	sokoban,stepping	thinky
+humbug	Humbug	limited-moves	thinky
+humbug-2	Humbug 2	limited-moves	thinky
+motionrec	MotionRec	record-and-replay	thinky
+n-step-steve-part-1	N Step Steve: Part 1	sokoban,limited-moves	thinky
+n-step-steve-part-2	N Step Steve: Part 2	sokoban,limited-moves	thinky
+nomori	Nomori	record-and-replay,puzzle	thinky
+playback-loop	Playback Loop	record-and-replay	thinky
+re-taped	Re-Taped	record-and-replay	thinky
+snakebird-complete	Snakebird Complete	snake	thinky
+snakebird-primer	Snakebird Primer	snake	thinky
+squish-os	Squish OS	sokoban,rule-discovery,puzzle	thinky
+the-descent-of-king-hesper	The Descent of King Hesper	stepping	thinky
+the-entropy-centre	The Entropy Centre	record-and-replay,puzzle	thinky
+viewfinder	Viewfinder	record-and-replay	thinky
+birdigo	Birdigo	roguelike,strategy,word	word-number
+bracket-city	Bracket City	word,daily	word-number
+can-of-words	Can of Words	word	word-number
+cryptmaster	Cryptmaster	word,typing,awards-2024,grid-based,story-rich	word-number
+fourteen-definitions	Fourteen Definitions	word,puzzle	word-number
+letterlike	Letterlike	roguelike,strategy,word	word-number
+lingo-2	Lingo 2	word,rule-discovery	word-number
+minute-cryptic	Minute Cryptic	word,daily	word-number
+parseword	Parseword	word,daily	word-number
+puzzle-spy-international	Puzzle Spy International	word,lateral,puzzle,visual-novel,point-and-click	word-number
+rita	Rita	word	word-number
+showy-homes	Showy Homes	word,rule-discovery	word-number
+spelling-bee	Spelling Bee	word,daily	word-number
+the-daily-spell	The Daily Spell	word,daily	word-number
+the-stupefying-sweater	The Stupefying Sweater	word,rule-discovery	word-number
+trms	trms	word,daily,free,hint-system	word-number
+type-word	Type Word	word	word-number
+we-surrender	We Surrender!	word,rule-discovery	word-number
+word-play	Word Play	roguelike,strategy,word,deck-building	word-number
