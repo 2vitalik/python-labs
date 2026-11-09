@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T259** · тікетів: 258 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T265** · тікетів: 264 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -264,5 +264,11 @@
 | github | [T254](github/.t/T254--reviews-lab1/plan.md) | ⚙️ | reviews-lab1 | Звіти по лабі 1 на всіх: зріз, виміряні факти, профілі, субагенти пачками — план | 🟢 🟩 |
 | github | [T255](github/.t/T255-C--lab1-stream-review.md) | 🔆 | lab1-stream-review | Лаба 1 на зрізі: що здав потік — звіти агента по 82 репозиторіях | 🟢 🟩 |
 | github | [T256](github/.t/T256-Q--lab1-review-followup.md) | ❓ | lab1-review-followup | Після звітів по лабі 1: гілки поза main, відправка на сайт, модель для лаби 2 | 🔴 ⬜ |
-| games | [T257](games/.t/T257-P--ludopedia-rules-system.md) | 💡 | ludopedia-rules-system | Система опису гри після корпусу 275 ігор: поле, правила, стани, фази, обмеження | 🟢 ⬜ |
-| games | [T258](games/.t/T258-Q--ludopedia-corpus-choices.md) | ❓ | ludopedia-corpus-choices | Вибори за корпусом лудопедії | 🔴 ⬜ |
+| games | [T257](games/.t/T257-P--ludopedia-rules-system.md) | 💡 | ludopedia-rules-system | Система опису гри після корпусу 275 ігор: поле, правила, стани, фази, обмеження | 🟢 🟩 |
+| games | [T258](games/.t/T258-Q--ludopedia-corpus-choices.md) | ❓ | ludopedia-corpus-choices | Вибори за корпусом лудопедії | 🔴 🟩 |
+| platform | [T259](platform/.t/T259--game-desc-v2/plan.md) | ⚙️ | game-desc-v2 | Опис гри v2: поле, параметри, стани, словники правил, редактор і паспорт — план | 🟢 🟩 |
+| games | [T260](games/.t/T260--ludopedia-wave2/plan.md) | ⚙️ | ludopedia-wave2 | Лудопедія: хвиля 2 описів, корпус у базі й на сайті — план | 🟢 🟩 |
+| games | [T261](games/.t/T261-P--game-desc-v2-concept.md) | 💡 | game-desc-v2-concept | Опис гри v2: мова опису після корпусу — поле, сутності з параметрами й станами, речення КОЛИ→ЯКЩО→ТО, вікна, заявки | 🟢 🟩 |
+| games | [T262](games/.t/T262-Q--game-desc-v2-choices.md) | ❓ | game-desc-v2-choices | Опис гри v2: вибори після нічної сесії | 🔴 ⬜ |
+| reports | [T263](reports/.t/T263-C--evidence-github-ai.md) | 🔆 | evidence-github-ai | Докази заявок: GitHub-лінки, ШІ-допомога, перевірка викладачем — що радить агент | 🟢 🟩 |
+| games | [T264](games/.t/T264-Q--ludopedia-wave2-choices.md) | ❓ | ludopedia-wave2-choices | Лудопедія: вибори після хвилі 2 (корпус 956, база, сайт) | 🔴 ⬜ |

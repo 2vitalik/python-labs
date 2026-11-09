@@ -3,8 +3,8 @@
 Серце системи: розширюваний каталог завдань (елементи, фічі, інтерфейс, рівні, алгоритмічні), з якого студенти набирають монетки. Сусіди: ігри/механіки — [games](../games/README.md), принципи цін — [grading](../grading/README.md), заявки — [reports](../reports/README.md).
 
 Шапка:
-- Оновлено: 2026-08-15
-- Інтегровано: [T28](.t/T28-Q--v3-csv-questions.md) (рішення по v3-конвертації) · [T29](.t/T29-C--v2-data-anomalies.md) · [T31](.t/T31--v3-conversion/report.md) (v3 готово) · [T33](.t/T33-B--task-taxonomy.md)+[T50](.t/T50-B--kb-task-groups.md) з рішеннями [T37](.t/T37-Q--taxonomy-questions.md)/[T06](.t/T06-Q--tasks-open-questions.md)/[T70](../.rounds/.t/T70-R--catalog-decisions.md) (таксономія прийнята, каталог у вебі) · [T88](.t/T88--catalog-objects-seed/report.md) (сид обʼєктного раунду: 209 карток, тег `window`)
+- Оновлено: 2026-11-09
+- Інтегровано: [T259](../platform/.t/T259--game-desc-v2/report.md) (каталог v2: +151 картка з корпусу й еталонів, синоніми `aliases.yaml`, підзони `history`/`program`, «＋ у гру» на картці) · [T28](.t/T28-Q--v3-csv-questions.md) (рішення по v3-конвертації) · [T29](.t/T29-C--v2-data-anomalies.md) · [T31](.t/T31--v3-conversion/report.md) (v3 готово) · [T33](.t/T33-B--task-taxonomy.md)+[T50](.t/T50-B--kb-task-groups.md) з рішеннями [T37](.t/T37-Q--taxonomy-questions.md)/[T06](.t/T06-Q--tasks-open-questions.md)/[T70](../.rounds/.t/T70-R--catalog-decisions.md) (таксономія прийнята, каталог у вебі) · [T88](.t/T88--catalog-objects-seed/report.md) (сид обʼєктного раунду: 209 карток, тег `window`)
 - Не інтегровано: [T05](.t/T05-C--task-catalog-concept.md) (хвости: версіонування-снапшоти цін, рекалібрація за статистикою, пайплайн ідей студентів)
 
 ## Таксономія (прийнято, [T37](.t/T37-Q--taxonomy-questions.md)/[T70](../.rounds/.t/T70-R--catalog-decisions.md)) · [T33](.t/T33-B--task-taxonomy.md)
@@ -15,6 +15,15 @@
 - Звʼязка зі spec-моделлю гри: кожен таск несе фрагмент спеки — [T34](../games/.t/T34-P--game-spec-model.md).
 - Розширення 2026-08-02: зони узагальнюються на нові класи ігор (фігурні, пазли-розмітки — [T49](../games/.t/T49-B--game-classes.md)) — одна таксономія на всі класи, клас = ще один тег; нові підзони-кандидати (легальність ходу, суперник, перевірка обмежень) · [T50](.t/T50-B--kb-task-groups.md).
 - База знань — **`data/wiki/tasks/`** (створено 2026-08-03, рішення [T54](../.rounds/.t/T54-R--kb-round-decisions.md)): 6 зон-файлів з курованим ядром (~150 пунктів) + карта зон `_map.md` + staging `_v3-raw.md` — вся v3-сировина (2019 унікальних назв) розкладена по зонах для поступового зведення.
+
+## Каталог v2 — після корпусу · [T259](../platform/.t/T259--game-desc-v2/report.md) (2026-11-09)
+
+- **360 карток**: 209 перших + 117 із корпусу ([T253](../games/.t/T253--ludopedia-corpus/report.md) `analysis/03-cards-draft.yaml`) + 34 з потреб еталонів 17 базових ігор. Активні з нових — 19 типів вікон (разом 32, тег `window`) і сімʼя `undo-redo` (один крок · без ліміту · redo · rewind · рестарт); решта ✍️ чернетки — ревізія Vitalik пачкою в `tasks.yaml` ([T262](../games/.t/T262-Q--game-desc-v2-choices.md) Q5).
+- Нові підзони `game-logic/history` «Історія ходів» (undo/нотація/seed/код стану) і `game-logic/program` «Програма гравця» (клас програмних ігор) — `app/api/zones.py` (T262 Q6).
+- **Синоніми** — `Task.aliases`, файл `data/catalog/aliases.yaml` (`{slug: [..]}`, окремо від дерева, щоб `tasks.yaml` лишався читабельним; export/import/snapshot знають): 3–7 на картку UA/RU/EN і сленг для 326 карток (Opus-агент); пошук `/tasks` і «＋ Додати» в «Моїй грі» шукають по них; адмін-форма картки синонімів ще не редагує (канал — YAML).
+- Картка в каталозі: «＋ у мою гру» (параметри спершу, якщо обовʼязкові; на рівні гри без них можна — ⚙️? у чіпі), ✓ на вже заявлених; 🔎 синоніми видно на картці.
+- Де живе картка в описі гри: зона `entities` → на сутності, `interface/hud|settings|menus` → на вікні, решта — гра загалом; непривʼязана заявка картки, що хоче господаря, — чернетка (`myGame.anchorKind`).
+- Кандидати від агентів-авторів еталонів, яких бракує і які **не** додані (щоб не роздувати): `attacked`-умова для шахів, `currency`-умова, ефект `send_garbage`, `role`-умова; слова додано — `undo`, `unmark`, `in_check`, напрямки `diagonal`/`all8`, клітини `neighbors`.
 
 ## Старі матеріали (отримано)
 
@@ -42,6 +51,7 @@
 
 ## Наступний крок
 
+- **Каталог v2** (2026-11-09, [T259](../platform/.t/T259--game-desc-v2/report.md)): Vitalik — ревізія 132 чернеток і цін у `data/catalog/tasks.yaml` (прибрати ✍️ = активувати) → `catalog_io.py import`; синоніми для 34 нових карток допишу за словом; на сервері після деплою — `import` з `data/catalog/`.
 - Каталог живе в вебі (2026-08-05, [T71](../platform/.t/T71--catalog-v1/report.md)): тепер **209 карток, 10 сімей** (сид обʼєктного раунду 2026-08-15 — [T88](.t/T88--catalog-objects-seed/report.md): типи вікон з тегом `window`, сімʼя елементів налаштувань, діти редактора/магазину) → Vitalik: ревізія (ціни/статуси/активація) в адмінці або пачкою через YAML; **з 2026-10-13 усі 209 `active`, каталог відкритий усім, і гостю** ([T213](../platform/.t/T213--guide-open-catalog/report.md)); окремо — controls-remap проти keyboard-controls і чи робити end-screen сімʼєю win/lose.
 - Vitalik: закомітити доправки v2 + `data/v3/`, `data/scripts/`, `data/wiki/` і новий `data/catalog/`.
 - Зведення сировини: поступово розносити `data/wiki/tasks/_v3-raw.md` по зон-файлах (я, порціями; зведене видаляється зі staging).
