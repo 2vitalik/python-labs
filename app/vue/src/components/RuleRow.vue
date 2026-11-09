@@ -1,50 +1,41 @@
 <script setup>
-import { computed, reactive, ref } from 'vue'
+import { computed, reactive, ref, watch } from 'vue'
 
 import { deleteRule, postRule, putRule } from '../api.js'
-import { ROLES } from '../catalog.js'
-import { EFFECTS, TRIGGERS, effectText, whenText } from '../rules.js'
+import { sentence, sidesFor, specOf } from '../rules.js'
+import ArgFields from './ArgFields.vue'
+import WordPick from './WordPick.vue'
 
-const props = defineProps({ rule: Object, parts: Array, editable: Boolean })
+// a rule as a sentence «КОЛИ … → ЯКЩО … → ТО …»; in edit mode each word is a pick from the vocab with its arguments
+const props = defineProps({ rule: Object, parts: Array, game: Object, editable: Boolean })
 const emit = defineEmits(['changed', 'cancel'])
 const edit = ref(!props.rule)
+const arm = ref(false)
 const error = ref('')
 const form = reactive({
-  kind: props.rule?.when.kind || 'contact',
-  a: props.rule?.when.a || '',
-  b: props.rule?.when.b || '',
-  every: props.rule?.when.every || 20,
-  effects: props.rule ? props.rule.then.map((e) => ({ ...e })) : [],
+  when: { kind: 'contact', ...(props.rule?.when || {}) },
+  cond: (props.rule?.cond || []).map((c) => ({ ...c })),
+  then: props.rule ? props.rule.then.map((e) => ({ ...e })) : [{ kind: '' }],
   note: props.rule?.note || '',
 })
-const ne = reactive({ kind: '', n: 1, part: '', text: '' }) // new-effect draft
-
-const entities = computed(() => props.parts.filter((p) => p.kind === 'entity'))
-const windows = computed(() => props.parts.filter((p) => p.kind === 'window'))
-const name = (id) => {
-  const p = props.parts.find((x) => x.id === id)
-  return p ? `${ROLES[p.role]?.icon || ''}${p.title}` : '?'
+const text = computed(() => props.rule && sentence(props.rule, props.parts))
+const sides = computed(() => sidesFor(form.when))
+const whenSpec = computed(() => specOf('triggers', form.when.kind))
+const complete = (dic, it) => {
+  const spec = specOf(dic, it.kind)
+  return spec && spec.args.every((a) => !a.required || it[a.name] || it[a.name] === 0)
 }
-const arg = computed(() => EFFECTS[ne.kind]?.arg)
-const ready = computed(() => form.effects.length &&
-  (form.kind === 'timer' ? form.every > 0 : form.a && form.b))
+const ready = computed(() => complete('triggers', form.when) && form.then.length &&
+  form.then.every((e) => complete('effects', e)) && form.cond.every((c) => complete('conditions', c)))
 
-function addEffect() {
-  const e = { kind: ne.kind }
-  if (arg.value === 'n') e.n = ne.n
-  if (arg.value === 'entity' || arg.value === 'window') e.part = ne.part
-  if (arg.value === 'text') e.text = ne.text
-  form.effects.push(e)
-  Object.assign(ne, { kind: '', n: 1, part: '', text: '' })
-}
+// a new word keeps only its own args
+const reset = (it) => { for (const k of Object.keys(it)) if (k !== 'kind' && k !== 'not') delete it[k] }
+watch(() => form.when.kind, () => reset(form.when))
 
 async function save() {
   error.value = ''
-  const when = form.kind === 'contact'
-    ? { kind: 'contact', a: form.a, b: form.b } : { kind: 'timer', every: form.every }
-  const data = { when, then: form.effects, note: form.note }
   try {
-    await (props.rule ? putRule(props.rule.id, data) : postRule(data))
+    await (props.rule ? putRule(props.rule.id, form) : postRule(form))
     edit.value = false
     emit('changed')
   } catch (e) {
@@ -56,59 +47,49 @@ const remove = async () => { await deleteRule(props.rule.id); emit('changed') }
 </script>
 
 <template>
-  <div v-if="!edit" class="d-flex flex-wrap align-items-center gap-1 border rounded px-2 py-1">
-    <span class="text-secondary small fw-semibold">КОЛИ</span>
-    <span>{{ whenText(rule.when, name) }}</span>
-    <span class="text-secondary small fw-semibold">→ ТО</span>
-    <span>{{ rule.then.map((e) => effectText(e, name)).join(' · ') }}</span>
+  <div v-if="!edit" class="rule d-flex flex-wrap align-items-baseline gap-1 px-2 py-1 border rounded">
+    <span class="kw">КОЛИ</span><span>{{ text.when }}</span>
+    <template v-if="text.cond"><span class="kw">→ ЯКЩО</span><span>{{ text.cond }}</span></template>
+    <span class="kw">→ ТО</span><span>{{ text.then }}</span>
     <span v-if="rule.note" class="text-secondary small" :title="rule.note">💬</span>
     <template v-if="editable">
-      <span class="ms-auto" role="button" title="Редагувати" @click="edit = true">✏️</span>
-      <span class="text-secondary" role="button" title="Видалити правило" @click="remove">✕</span>
+      <span class="ms-auto act" role="button" title="Редагувати" @click="edit = true">✏️</span>
+      <span v-if="!arm" class="act text-secondary" role="button" title="Видалити правило" @click="arm = true">✕</span>
+      <button v-else class="btn btn-danger btn-sm py-0" @mouseleave="arm = false" @click="remove">Точно?</button>
     </template>
   </div>
 
-  <div v-else class="border rounded p-2 vstack gap-2">
-    <div class="d-flex flex-wrap align-items-center gap-2">
-      <span class="text-secondary small fw-semibold">КОЛИ</span>
-      <select v-model="form.kind" class="form-select form-select-sm w-auto">
-        <option v-for="(label, k) in TRIGGERS" :key="k" :value="k">{{ label }}</option>
-      </select>
-      <template v-if="form.kind === 'contact'">
-        <select v-model="form.a" class="form-select form-select-sm w-auto">
-          <option value="">сутність А…</option>
-          <option v-for="p in entities" :key="p.id" :value="p.id">{{ name(p.id) }}</option>
-        </select>
-        ×
-        <select v-model="form.b" class="form-select form-select-sm w-auto">
-          <option value="">сутність Б…</option>
-          <option v-for="p in entities" :key="p.id" :value="p.id">{{ name(p.id) }}</option>
-        </select>
-      </template>
-      <template v-else>
-        кожні <input v-model.number="form.every" type="number" min="1" class="form-control form-control-sm num"> тіків
-      </template>
+  <div v-else class="border rounded p-2 vstack gap-2 editing">
+    <div class="d-flex flex-wrap align-items-center gap-1">
+      <span class="kw">КОЛИ</span>
+      <WordPick v-model="form.when.kind" dic="triggers" placeholder="подія…" />
+      <ArgFields v-if="whenSpec" :spec="whenSpec" :item="form.when" :parts :sides="['*']" :game />
     </div>
-    <div class="d-flex flex-wrap align-items-center gap-2">
-      <span class="text-secondary small fw-semibold">ТО</span>
-      <span v-for="(e, i) in form.effects" :key="i" class="badge text-bg-light border text-dark fw-normal">
-        {{ effectText(e, name) }} <span role="button" @click="form.effects.splice(i, 1)">✕</span>
-      </span>
-      <select v-model="ne.kind" class="form-select form-select-sm w-auto">
-        <option value="">＋ ефект…</option>
-        <option v-for="(d, k) in EFFECTS" :key="k" :value="k">{{ d.label }}</option>
-      </select>
-      <input v-if="arg === 'n'" v-model.number="ne.n" type="number" class="form-control form-control-sm num">
-      <select v-else-if="arg === 'entity' || arg === 'window'" v-model="ne.part" class="form-select form-select-sm w-auto">
-        <option value="">ціль…</option>
-        <option v-for="p in arg === 'entity' ? entities : windows" :key="p.id" :value="p.id">{{ name(p.id) }}</option>
-      </select>
-      <input v-else-if="arg === 'text'" v-model="ne.text" class="form-control form-control-sm w-auto" placeholder="опиши словами">
-      <button v-if="ne.kind" class="btn btn-outline-primary btn-sm" @click="addEffect">＋</button>
+    <div class="d-flex flex-wrap align-items-center gap-1">
+      <span class="kw">ЯКЩО</span>
+      <template v-for="(c, i) in form.cond" :key="i">
+        <span v-if="i" class="text-secondary small">і</span>
+        <button type="button" class="btn btn-sm py-0 px-1" :class="c.not ? 'btn-dark' : 'btn-outline-secondary'" title="заперечення" @click="c.not = !c.not">не</button>
+        <WordPick v-model="c.kind" dic="conditions" placeholder="умова…" @update:model-value="reset(c)" />
+        <ArgFields v-if="specOf('conditions', c.kind)" :spec="specOf('conditions', c.kind)" :item="c" :parts :sides :game />
+        <span class="act text-secondary" role="button" title="Прибрати умову" @click="form.cond.splice(i, 1)">✕</span>
+      </template>
+      <button type="button" class="btn btn-link btn-sm p-0 text-decoration-none" @click="form.cond.push({ kind: '' })">＋ умова</button>
+      <span v-if="!form.cond.length" class="text-secondary small">(необовʼязково)</span>
+    </div>
+    <div class="d-flex flex-wrap align-items-center gap-1">
+      <span class="kw">ТО</span>
+      <template v-for="(e, i) in form.then" :key="i">
+        <span v-if="i" class="text-secondary small">·</span>
+        <WordPick v-model="e.kind" dic="effects" placeholder="ефект…" @update:model-value="reset(e)" />
+        <ArgFields v-if="specOf('effects', e.kind)" :spec="specOf('effects', e.kind)" :item="e" :parts :sides :game />
+        <span v-if="form.then.length > 1" class="act text-secondary" role="button" title="Прибрати ефект" @click="form.then.splice(i, 1)">✕</span>
+      </template>
+      <button type="button" class="btn btn-link btn-sm p-0 text-decoration-none" @click="form.then.push({ kind: '' })">＋ ефект</button>
     </div>
     <div class="d-flex gap-2">
-      <input v-model="form.note" class="form-control form-control-sm" placeholder="Нотатка">
-      <button class="btn btn-primary btn-sm" :disabled="!ready" @click="save">💾</button>
+      <input v-model="form.note" class="form-control form-control-sm" placeholder="Нотатка (за бажанням)">
+      <button class="btn btn-primary btn-sm text-nowrap" :disabled="!ready" @click="save">💾 Зберегти</button>
       <button class="btn btn-outline-secondary btn-sm" @click="cancel">✕</button>
     </div>
     <div v-if="error" class="text-danger small">{{ error }}</div>
@@ -116,5 +97,9 @@ const remove = async () => { await deleteRule(props.rule.id); emit('changed') }
 </template>
 
 <style scoped>
-.num { width: 5rem; }
+.kw { font-size: .72rem; font-weight: 700; color: var(--bs-secondary-color); letter-spacing: .04em; }
+.rule { font-size: .9rem; background: var(--bs-body-bg); }
+.act { opacity: .6; }
+.act:hover { opacity: 1; }
+.editing { background: var(--bs-tertiary-bg); }
 </style>

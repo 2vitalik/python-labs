@@ -6,11 +6,12 @@ import { getGames } from '../api.js'
 import { games } from '../catalog.js'
 import { user } from '@core/user.js'
 
-// /students as a gallery: who picked which game — and its cover, once a window has a screenshot;
-// the counters of the game's insides are the admin's, like the insides themselves (T216)
+// /students as a gallery: who picked which game — and its cover, once a window has a screenshot; the counters of the
+// description are everyone's since the insides opened (T259); the admin also sees what is accepted
 defineProps({ students: Array })
 const admin = computed(() => user.value?.status === 'admin')
 const fio = (s) => s.name || s.nick
+const counts = (g) => [[g.entities, 'сут.'], [g.rules, 'правил'], [g.windows, 'вікон'], [g.claims, 'заявок']].filter(([n]) => n).map(([n, w]) => `${n} ${w}`).join(' · ')
 const base = (g) => games.value.find((b) => b.slug === g.base_game)
 const baseText = (g) => (base(g) ? `${base(g).icon} ${base(g).title}` : `✨ ${g.base_custom}`)
 if (!games.value.length) getGames().then((g) => (games.value = g))
@@ -33,7 +34,7 @@ if (!games.value.length) getGames().then((g) => (games.value = g))
           <div v-if="s.game.id" class="mt-1">
             🎮 {{ s.game.title }}
             <div class="text-secondary small">основа: {{ baseText(s.game) }}</div>
-            <div v-if="admin" class="text-secondary small">вікон: {{ s.game.windows }} · меню: {{ s.game.menus }} · заявок: {{ s.game.claims }}</div>
+            <div v-if="counts(s.game)" class="text-secondary small">{{ counts(s.game) }}<span v-if="admin && s.game.accepted" class="text-success"> · ✓ {{ s.game.accepted }}</span></div>
           </div>
           <div v-else class="text-secondary mt-1">Гру ще не обрано</div>
         </div>

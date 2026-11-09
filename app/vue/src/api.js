@@ -2,7 +2,10 @@ import { request, upload } from '@core/http.js'
 
 // the site's own calls; the platform's are in @core/api.js
 export const getStudentGame = (nick) => request(`/api/students/${nick}/game`)
+export const judgeClaim = (nick, id, data) => request(`/api/students/${nick}/claims/${id}`, 'PUT', data)
 export const getZones = () => request('/api/zones')
+export const getVocab = () => request('/api/vocab')
+export const getTemplates = () => request('/api/templates')
 export const getGames = () => request('/api/games')
 export const getTasks = () => request('/api/tasks')
 export const postGame = (data) => request('/api/games', 'POST', data)
@@ -14,6 +17,7 @@ export const revertCard = (kind, id) => request(`/api/catalog/history/${kind}/${
 export const getMyGame = () => request('/api/my/game')
 export const postMyGame = (data) => request('/api/my/game', 'POST', data)
 export const putMyGame = (data) => request('/api/my/game', 'PUT', data)
+export const applyTemplate = (slug = '') => request('/api/my/game/template', 'POST', { slug })
 export const postPart = (data) => request('/api/my/game/parts', 'POST', data)
 export const putPart = (id, data) => request(`/api/my/game/parts/${id}`, 'PUT', data)
 export const deletePart = (id) => request(`/api/my/game/parts/${id}`, 'DELETE')

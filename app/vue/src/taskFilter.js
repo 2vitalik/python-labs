@@ -45,7 +45,8 @@ export function useTaskFilter(fixedGame = '') {
     if (f.value.algo && !t.tags.includes('algo')) return false
     if (!f.value.q) return true
     const kids = kidsOf.value[t.slug] || []
-    const hay = norm([t.title, t.slug, t.description, ...t.tags, ...kids.map((k) => `${k.title} ${k.description}`)].join(' '))
+    const hay = norm([t.title, t.slug, t.description, ...t.tags, ...(t.aliases || []),
+                      ...kids.map((k) => `${k.title} ${k.description} ${(k.aliases || []).join(' ')}`)].join(' '))
     return hay.includes(norm(f.value.q))
   }
 

@@ -8,6 +8,7 @@ import IconArrows from '@core/components/IconArrows.vue'
 import TaskCatalog from '../components/TaskCatalog.vue'
 import Toc from '@core/components/Toc.vue'
 import { games, loadCatalog } from '../catalog.js'
+import { loadMyGame } from '../myGame.js'
 import { useTaskFilter } from '../taskFilter.js'
 import { canAccess, user } from '@core/user.js'
 import { toggleWide, wide, wideOn } from '@core/wide.js'
@@ -29,7 +30,7 @@ const toc = computed(() => {
     : [...guideToc.value, ...(both ? [{ label: 'Завдання' }] : []), ...zones]
 })
 
-onMounted(loadCatalog)
+onMounted(() => { loadCatalog(); loadMyGame() })  // the student's game lets a card be added from here («＋ у гру»)
 </script>
 
 <template>
@@ -57,7 +58,7 @@ onMounted(loadCatalog)
       </div>
       <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
         <input :value="f.q" class="form-control form-control-sm w-auto flex-grow-1" style="max-width: 28rem"
-               placeholder="Пошук: назва, опис, теги…" @input="set({ q: $event.target.value })">
+               placeholder="Пошук: назва, синоніми, опис, теги…" @input="set({ q: $event.target.value })">
         <select :value="f.game" class="form-select form-select-sm w-auto" @change="set({ game: $event.target.value })">
           <option value="">Всі ігри</option>
           <option value="universal">🌍 Універсальні</option>

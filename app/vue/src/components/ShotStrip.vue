@@ -3,7 +3,8 @@ import { ref } from 'vue'
 
 import { deleteShot, uploadShot } from '../api.js'
 
-const props = defineProps({ part: Object })
+// screenshots of a part: thumbnails that open full size; the owner adds and removes
+const props = defineProps({ part: Object, editable: Boolean })
 const emit = defineEmits(['changed'])
 const error = ref('')
 const busy = ref(false)
@@ -36,11 +37,11 @@ async function remove(name) {
       <a :href="`/api/uploads/${part.game}/${s}`" target="_blank">
         <img :src="`/api/uploads/${part.game}/${s}`" class="rounded border shot">
       </a>
-      <button class="btn-close bg-white border rounded-circle position-absolute top-0 end-0 m-1 p-1"
+      <button v-if="editable" class="btn-close bg-white border rounded-circle position-absolute top-0 end-0 m-1 p-1"
               title="У кошик" @click="remove(s)"></button>
     </div>
-    <label class="btn btn-outline-secondary btn-sm" :class="{ disabled: busy }">
-      📷 Скриншот
+    <label v-if="editable" class="btn btn-link btn-sm p-0 text-decoration-none text-secondary add" :class="{ disabled: busy }" title="png, jpg, webp або gif до 8 МБ">
+      📷 {{ part.screenshots.length ? '' : 'скриншот' }}
       <input type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden @change="onFile">
     </label>
     <div v-if="error" class="text-danger small w-100">{{ error }}</div>
@@ -48,5 +49,7 @@ async function remove(name) {
 </template>
 
 <style scoped>
-.shot { height: 72px; }
+.shot { height: 64px; }
+.add { font-size: .8rem; }
+.add:hover { color: var(--bs-body-color) !important; }
 </style>
