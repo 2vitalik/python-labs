@@ -2,15 +2,15 @@ from beanie import PydanticObjectId
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 from pydantic import BaseModel
 
+import field_claims
 from bot import game_alerts
 from claims_clean import clean_params
-from core.deps import active_user
 from core.models.history import record, record_delete, record_new
 from core.models.user import Status, User
 from models.game import Claim, Game
 from models.rule import Rule
 from models.task import Task
-from routes.my_game import my_game
+from routes.my_game import author, my_game
 from routes.my_parts import part_of
 from zones import kind_of, misplaced
 
@@ -61,17 +61,20 @@ async def check_unique(game: Game, task: str, part: str, rule: str, me: Claim | 
 
 @router.post("")
 async def create_claim(data: ClaimIn, tasks: BackgroundTasks, game: Game = Depends(my_game),
-                       user: User = Depends(active_user)):
+                       user: User = Depends(author)):
     task = await Task.find_one(Task.slug == data.task)
     if not task or task.status == "archived":
         raise HTTPException(422, "Немає такої картки в каталозі.")
     if task.status != "active" and user.status != Status.admin:
         raise HTTPException(422, "Ця картка ще чернетка.")
     part, rule = data.part or "", data.rule or ""
+    loose = not (part or rule)  # sent with no place («＋ у гру»): required params may wait, even once it sits on the field
+    if loose:
+        part = await field_claims.field_of(game, task)
     await check_place(game, task, part, rule)
     await check_unique(game, data.task, part, rule)
     claim = Claim(game=game.id, task=data.task, part=part, rule=rule, note=data.note.strip(), link=data.link.strip(),
-                  params=clean_params(task, data.params or {}, loose=not (part or rule)))
+                  params=clean_params(task, data.params or {}, loose=loose))
     await claim.insert()
     await record_new(claim, actor=user.email)
     tasks.add_task(game_alerts.claim, user, claim, 0)
@@ -80,7 +83,7 @@ async def create_claim(data: ClaimIn, tasks: BackgroundTasks, game: Game = Depen
 
 @router.put("/{id}")
 async def update_claim(id: PydanticObjectId, data: ClaimIn, tasks: BackgroundTasks, game: Game = Depends(my_game),
-                       user: User = Depends(active_user)):
+                       user: User = Depends(author)):
     claim = await get_claim(id, game)
     patch = {"note": data.note.strip(), "link": data.link.strip()}
     if claim.auto:  # its anchor and value are the part's: only the note and the link are the student's
@@ -104,7 +107,7 @@ async def update_claim(id: PydanticObjectId, data: ClaimIn, tasks: BackgroundTas
 
 @router.delete("/{id}")
 async def delete_claim(id: PydanticObjectId, tasks: BackgroundTasks, game: Game = Depends(my_game),
-                       user: User = Depends(active_user)):
+                       user: User = Depends(author)):
     claim = await get_claim(id, game)
     if claim.auto:
         raise HTTPException(422, HELD)

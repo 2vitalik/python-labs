@@ -1,11 +1,10 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
 import templates
-from core.deps import active_user
 from core.models.user import User
 from models.game import Game
-from routes.my_game import my_game
+from routes.my_game import author, in_sandbox, my_game
 
 router = APIRouter()
 
@@ -21,5 +20,7 @@ async def list_templates():
 
 
 @router.post("/api/my/game/template")
-async def apply_template(data: TemplateIn, game: Game = Depends(my_game), user: User = Depends(active_user)):
+async def apply_template(data: TemplateIn, game: Game = Depends(my_game), user: User = Depends(author)):
+    if in_sandbox(user):
+        raise HTTPException(403, "Пісочниця — вже копія зразка: щоб почати наново, натисни «Скинути».")
     return await templates.apply(game, user, data.slug or game.base_game)

@@ -3,28 +3,19 @@ from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 from pydantic import BaseModel
 
 from bot import game_alerts
-from core.deps import active_user
+from core.deps import active_user, admin_user
 from core.models.history import record, record_delete, record_new
 from core.models.user import Status, User
 from models.ref import Ref
+from refs_clean import RefIn, clean
 
 router = APIRouter(prefix="/api/refs")
+STATUSES = ("inbox", "linked", "dropped")  # нове · взято · ні
 
 
-class RefIn(BaseModel):
-    url: str = ""
-    title: str = ""
-    note: str = ""
-    parent: str = ""
-
-
-def clean(data: RefIn) -> dict:
-    url, title, note = data.url.strip(), data.title.strip(), data.note.strip()
-    if url and not url.startswith(("http://", "https://")):
-        raise HTTPException(422, "Посилання починається з http(s)://")
-    if not url and not (title or note):
-        raise HTTPException(422, "Ідея порожня — напиши хоч рядок")
-    return {"url": url, "title": title, "note": note, "kind": "link" if url else "idea", "parent": data.parent.strip()}
+class VerdictIn(BaseModel):
+    status: str
+    reply: str = ""
 
 
 async def own_ref(id: PydanticObjectId, user: User) -> Ref:
@@ -36,27 +27,42 @@ async def own_ref(id: PydanticObjectId, user: User) -> Ref:
     return ref
 
 
+def out(ref: Ref, user: User) -> dict:
+    return ref.api() | {"mine": ref.author == user.email}
+
+
 @router.get("")
 async def list_refs(user: User = Depends(active_user)):
-    refs = await Ref.find_all().sort("-created_at").to_list()
-    return [r.api() | {"mine": r.author == user.email} for r in refs]
+    return [out(r, user) for r in await Ref.find_all().sort("-created_at").to_list()]
 
 
 @router.post("")
 async def create_ref(data: RefIn, tasks: BackgroundTasks, user: User = Depends(active_user)):
-    ref = Ref(author=user.email, **clean(data))
+    ref = Ref(author=user.email, **await clean(data))
     await ref.insert()
     await record_new(ref, actor=user.email)
-    if ref.kind == "idea":  # a new card or a card in the wrong place — the teacher's to sort (T270 §6, §10.2)
+    if ref.kind != "link":  # an idea, a word on a card or on the site — the teacher's to sort (T274 §4)
         tasks.add_task(game_alerts.idea, user, ref)
-    return ref.api()
+    return out(ref, user)
 
 
 @router.put("/{id}")
 async def update_ref(id: PydanticObjectId, data: RefIn, user: User = Depends(active_user)):
     ref = await own_ref(id, user)
-    await record(ref, clean(data), actor=user.email)
-    return ref.api()
+    await record(ref, await clean(data), actor=user.email)
+    return out(ref, user)
+
+
+@router.put("/{id}/verdict")
+async def judge_ref(id: PydanticObjectId, data: VerdictIn, admin: User = Depends(admin_user)):
+    """The teacher's word with a line the author sees on the page; no alert to the author (T274 §13)."""
+    ref = await Ref.get(id)
+    if not ref:
+        raise HTTPException(404)
+    if data.status not in STATUSES:
+        raise HTTPException(422, "Стан — нове, взято або ні")
+    await record(ref, {"status": data.status, "reply": data.reply.strip()}, actor=admin.email)
+    return out(ref, admin)
 
 
 @router.delete("/{id}")

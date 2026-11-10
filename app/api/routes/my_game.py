@@ -1,14 +1,15 @@
-from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Request
 from pydantic import BaseModel
 
 from bot import game_alerts
 from core.deps import active_user
-from core.models.history import record, record_new
-from core.models.user import User
+from core.models.history import Change, record, record_new
+from core.models.user import Status, User
 from models.base_game import BaseGame
 from models.game import Game
 
 router = APIRouter(prefix="/api/my/game")
+SANDBOX = "x-sandbox"  # header: the base game's slug of the sandbox the editor works in (T274 §7, routes/sandbox.py)
 
 
 class GameIn(BaseModel):
@@ -19,8 +20,32 @@ class GameIn(BaseModel):
     phases: list[str] = []
 
 
-async def my_game(user: User = Depends(active_user)) -> Game:
+def sandbox_owner(email: str) -> str:
+    """The sandbox game's owner: no user has such an email, so the gallery, the table and the passports never meet it."""
+    return email.replace("@", "+") + "@sandbox"
+
+
+def in_sandbox(user: User) -> bool:
+    return user.email.endswith("@sandbox")
+
+
+async def author(request: Request, user: User = Depends(active_user)):
+    """Who writes «Моя гра»: the user, or under `X-Sandbox` a made-up test student who owns the sandbox copy."""
+    if not request.headers.get(SANDBOX):
+        yield user
+        return
+    me = User(email=sandbox_owner(user.email), status=Status.student, test=True)
+    try:
+        yield me
+    finally:  # no trace in `history`: the activity feed and the card history read it
+        await Change.find(Change.actor == me.email).delete()
+
+
+async def my_game(request: Request, user: User = Depends(author)) -> Game:
     game = await Game.find_one(Game.owner == user.email)
+    slug = request.headers.get(SANDBOX)
+    if slug and (not game or game.base_game != slug):
+        raise HTTPException(404, "Пісочницю не відкрито — натисни «Спробувати редагувати» на сторінці гри.")
     if not game:
         raise HTTPException(404, "Спершу створи свою гру.")
     return game
@@ -52,13 +77,13 @@ async def clean(data: GameIn) -> dict:
 
 
 @router.get("")
-async def get_my_game(user: User = Depends(active_user)):
+async def get_my_game(user: User = Depends(author)):
     game = await Game.find_one(Game.owner == user.email)
     return game.api() if game else None
 
 
 @router.post("")
-async def create_game(data: GameIn, tasks: BackgroundTasks, user: User = Depends(active_user)):
+async def create_game(data: GameIn, tasks: BackgroundTasks, user: User = Depends(author)):
     if await Game.find_one(Game.owner == user.email):
         raise HTTPException(409, "Гра вже створена — вона в тебе одна.")
     game = Game(owner=user.email, **await clean(data))
@@ -70,7 +95,10 @@ async def create_game(data: GameIn, tasks: BackgroundTasks, user: User = Depends
 
 @router.put("")
 async def update_game(data: GameIn, tasks: BackgroundTasks, game: Game = Depends(my_game),
-                      user: User = Depends(active_user)):
-    if changes := await record(game, await clean(data), actor=user.email):
+                      user: User = Depends(author)):
+    d = await clean(data)
+    if in_sandbox(user) and d["base_game"] != game.base_game:  # X-Sandbox names the base: another one would lock the copy out
+        raise HTTPException(422, "У пісочниці основа не міняється — це копія зразка.")
+    if changes := await record(game, d, actor=user.email):
         tasks.add_task(game_alerts.game, user, game, changes)
     return game.api()

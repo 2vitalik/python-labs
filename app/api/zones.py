@@ -38,7 +38,7 @@ ZONES = {
         "sound": ("Звук", "🔊", G),
     }},
     "code": {"title": "Код", "icon": "💻", "color": "#3949ab", "subzones": {
-        "architecture": ("Архітектура", "🏛️", G), "python": ("Python-фічі", "🐍", G), "tests": ("Тести", "🧪", G),
+        "labs": ("Завдання лаб", "📚", G), "architecture": ("Архітектура", "🏛️", G), "python": ("Python-фічі", "🐍", G), "tests": ("Тести", "🧪", G),
         "git": ("Git", "🔀", G), "packaging": ("Пакування і запуск", "📦", G),
     }},
     "support": {"title": "Супровід", "icon": "📣", "color": "#d81b60", "subzones": {

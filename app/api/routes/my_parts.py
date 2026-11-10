@@ -3,10 +3,10 @@ from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 from pydantic import BaseModel
 
 import auto_claims
+import field_claims
 import options
 import uploads
 from bot import game_alerts
-from core.deps import active_user
 from core.models.history import record, record_delete, record_new
 from core.models.user import User
 from models.game import Claim, Game, Part
@@ -14,7 +14,7 @@ from models.rule import Rule
 from models.task import Task
 from models.vocab import PART_KINDS
 from parts_clean import kind_fields
-from routes.my_game import my_game
+from routes.my_game import author, my_game
 from routes.my_rules import drop_rule
 from zones import kind_of
 
@@ -83,7 +83,7 @@ async def fields(kind: str, data: PartIn, game: Game, user: User) -> dict:
 
 @router.post("")
 async def create_part(data: PartIn, tasks: BackgroundTasks, game: Game = Depends(my_game),
-                      user: User = Depends(active_user)):
+                      user: User = Depends(author)):
     if data.kind not in PART_KINDS:
         raise HTTPException(422, "Невідомий тип обʼєкта.")
     title = data.title.strip() or ("Поле" if data.kind == "field" else "")
@@ -99,13 +99,15 @@ async def create_part(data: PartIn, tasks: BackgroundTasks, game: Game = Depends
     await part.insert()
     await record_new(part, actor=user.email)
     await auto_claims.sync(game, user.email)
+    if part.kind == "field":
+        await field_claims.seat(game, part, user.email)
     tasks.add_task(game_alerts.part, user, part, 0)
     return part.api()
 
 
 @router.put("/{id}")
 async def update_part(id: PydanticObjectId, data: PartIn, game: Game = Depends(my_game),
-                      user: User = Depends(active_user)):
+                      user: User = Depends(author)):
     part = await get_part(id, game)
     d = {"title": data.title.strip(), "description": data.description, "order": data.order}
     if not d["title"]:
@@ -120,7 +122,7 @@ async def update_part(id: PydanticObjectId, data: PartIn, game: Game = Depends(m
 
 @router.delete("/{id}")
 async def delete_part(id: PydanticObjectId, tasks: BackgroundTasks, game: Game = Depends(my_game),
-                      user: User = Depends(active_user)):
+                      user: User = Depends(author)):
     part = await get_part(id, game)
     pid = str(part.id)
     for claim in await Claim.find(Claim.game == game.id, Claim.part == pid).to_list():

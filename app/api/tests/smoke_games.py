@@ -418,7 +418,10 @@ with TestClient(main.app) as c:
     on_rule = r.json()["id"]
     check("place: the same card on the same rule → 409", claim(task="player-death", rule=rule["id"]) == "Така заявка вже є.")
     check("place: game — no anchor", claim(task="save-game", part=hero["id"]) == zones.HOMES["game"][1] and claim(task="save-game") == 200)
-    check("place: unanchored is the drafts pool for every other kind", [claim(task=x) for x in ("status-panel", "console-render", "player-death")] == [200] * 3)
+    check("place: unanchored is the drafts pool for every other kind", [claim(task=x) for x in ("status-panel", "player-death")] == [200] * 2)
+    check("place: a field card with no place goes onto the field (T274 §3): already there → 409", claim(task="console-render") == "Така заявка вже є.")
+    r = c.post(CLAIMS, json={"task": "gui-render"})
+    check("place: a field card with no place sits on the field", r.status_code == 200 and r.json()["part"] == fld["id"], r.text)
     check("place: a part and a rule at once → 422", isinstance(claim(task="time-out", part=hero["id"], rule=rule["id"]), str))
     check("place: someone else's rule → 422", claim(task="time-out", rule="0" * 24) == "Правило не знайдено.")
     draft = c.post(CLAIMS, json={"task": "time-out"}).json()["id"]
@@ -442,6 +445,18 @@ with TestClient(main.app) as c:
           and not mongo[DB].claims.find_one({"_id": ObjectId(on_rule)}) and not auto(villain["id"]))
     row = next(x for x in c.get("/api/students").json() if x["nick"] == "v3")
     check("gallery: levels counted", row["game"]["levels"] == 2, row["game"])
+
+    # T274 §3: cards about the field claimed before it wait unanchored and sit on it once it is described
+    login(c, "fld@nure.ua", "student")
+    c.post("/api/my/game", json={"title": "Поле потім", "base_custom": "своя"})
+    early = [c.post(CLAIMS, json={"task": x}).json() for x in ("console-render", "player-camera", "save-game")]
+    check("field cards before the field: unanchored", [x.get("part") for x in early] == ["", "", ""], early)
+    fld2 = c.post(PARTS, json={"kind": "field", "props": {"topology": "square"}}).json()
+    got = {x["task"]: x["part"] for x in c.get("/api/students/fld/game").json()["claims"] if not x["auto"]}
+    check("the field described: its cards sit on it, the rest wait",
+          got == {"console-render": fld2["id"], "player-camera": fld2["id"], "save-game": ""}, got)
+    check("the move is in the history, by the student",
+          mongo[DB].history.count_documents({"coll": "claims", "actor": "fld@nure.ua", "changes.part": {"old": "", "new": fld2["id"]}}) == 2)
 
     login(c, "tester@nure.ua", "student")
     mongo[DB].users.update_one({"email": "tester@nure.ua"}, {"$set": {"test": True}})
