@@ -1,4 +1,5 @@
-"""Alerts about the student's game (T113): claims (kind `claim`); the card, parts and rules (kind `game`)."""
+"""Alerts about the student's game (T113): claims (kind `claim`); the card, parts and rules (kind `game`);
+ideas and card proposals (kind `idea`, T270)."""
 from aiogram import html
 from beanie import PydanticObjectId
 
@@ -6,11 +7,12 @@ from core.bot import notify
 from core.bot.alerts import arrow, event, level
 from core.models.user import User
 from models.game import Claim, Game, Part
+from models.ref import Ref
 from models.rule import Rule
 from models.task import Task
 from models.vocab import sentence
 
-PART = {"field": "поле", "window": "вікно", "menu": "меню", "entity": "сутність"}
+PART = {"field": "поле", "window": "вікно", "menu": "меню", "entity": "сутність", "level": "рівень"}
 CARD = {"title": "🏷 Назва", "base_game": "🕹 Основа", "base_custom": "🕹 Основа (своя)", "description": "📄 Опис", "phases": "🔁 Фази"}
 CLAIM = {"note": "📝 Нотатка", "link": "🔗 Лінк", "params": "⚙️ Параметри", "part": "🧩 Обʼєкт"}
 STATUS = {"claimed": "заявлено", "accepted": "✅ зараховано", "returned": "↩️ повернуто"}
@@ -24,6 +26,8 @@ async def claim(user: User, c: Claim, lvl: int, changes: dict | None = None) -> 
     rows = [f"🎯 {html.quote(task.title if task else c.task)}{gone(lvl)}"]
     if c.part and (part := await Part.get(PydanticObjectId(c.part))):
         rows.append(f"🧩 {PART[part.kind]} «{html.quote(part.title)}»")
+    if c.rule and (r := await Rule.get(PydanticObjectId(c.rule))):
+        rows.append(f"📜 {await said(r)}")
     for key, label in CLAIM.items():
         if key in (changes or {}):
             old, new = changes[key]["old"], changes[key]["new"]
@@ -60,7 +64,16 @@ async def part(user: User, p: Part, lvl: int) -> None:
     await notify.send("game", event(lvl, "Гра", user, [f"🧩 {PART[p.kind]} «{html.quote(p.title)}»{gone(lvl)}"]), user.email)
 
 
-async def rule(user: User, r: Rule, lvl: int) -> None:
+async def said(r: Rule) -> str:
+    """The rule's sentence, quoted for HTML; no icons in Telegram: quotes mark the names."""
     name = {str(p.id): p.title for p in await Part.find(Part.game == r.game).to_list()}
-    text = html.quote(sentence(r, lambda pid: f"«{name.get(pid, '?')}»"))  # no icons in Telegram: quotes mark the names
-    await notify.send("game", event(lvl, "Гра", user, [f"📜 {text}{gone(lvl)}"]), user.email)
+    return html.quote(sentence(r, lambda pid: f"«{name.get(pid, '?')}»"))
+
+
+async def rule(user: User, r: Rule, lvl: int) -> None:
+    await notify.send("game", event(lvl, "Гра", user, [f"📜 {await said(r)}{gone(lvl)}"]), user.email)
+
+
+async def idea(user: User, ref: Ref) -> None:
+    rows = [f"💡 {html.quote(ref.title)}" if ref.title else "💡 ідея", *([f"💬 {html.quote(ref.note)}"] if ref.note else [])]
+    await notify.send("idea", event(0, "Ідея", user, rows), user.email)

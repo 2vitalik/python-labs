@@ -1,7 +1,8 @@
 from beanie import PydanticObjectId
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 from pydantic import BaseModel
 
+from bot import game_alerts
 from core.deps import active_user
 from core.models.history import record, record_delete, record_new
 from core.models.user import Status, User
@@ -42,10 +43,12 @@ async def list_refs(user: User = Depends(active_user)):
 
 
 @router.post("")
-async def create_ref(data: RefIn, user: User = Depends(active_user)):
+async def create_ref(data: RefIn, tasks: BackgroundTasks, user: User = Depends(active_user)):
     ref = Ref(author=user.email, **clean(data))
     await ref.insert()
     await record_new(ref, actor=user.email)
+    if ref.kind == "idea":  # a new card or a card in the wrong place — the teacher's to sort (T270 §6, §10.2)
+        tasks.add_task(game_alerts.idea, user, ref)
     return ref.api()
 
 

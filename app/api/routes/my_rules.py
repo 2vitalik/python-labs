@@ -6,7 +6,7 @@ from bot import game_alerts
 from core.deps import active_user
 from core.models.history import record, record_delete, record_new
 from core.models.user import User
-from models.game import Game, Part
+from models.game import Claim, Game, Part
 from models.rule import Rule
 from models.vocab import CONDITIONS, EFFECTS, OPTIONS, SIDES, TRIGGERS
 from routes.my_game import my_game
@@ -76,6 +76,13 @@ async def clean(data: RuleIn, game: Game) -> dict:
     return {"when": when, "cond": cond, "then": then, "note": data.note.strip()}
 
 
+async def drop_rule(rule: Rule, actor: str) -> None:
+    """The rule goes with the cards claimed on it."""
+    for claim in await Claim.find(Claim.game == rule.game, Claim.rule == str(rule.id)).to_list():
+        await record_delete(claim, actor=actor)
+    await record_delete(rule, actor=actor)
+
+
 async def get_rule(id: PydanticObjectId, game: Game) -> Rule:
     rule = await Rule.get(id)
     if not rule or rule.game != game.id:
@@ -105,7 +112,7 @@ async def update_rule(id: PydanticObjectId, data: RuleIn, game: Game = Depends(m
 async def delete_rule(id: PydanticObjectId, tasks: BackgroundTasks, game: Game = Depends(my_game),
                       user: User = Depends(active_user)):
     rule = await get_rule(id, game)
-    await record_delete(rule, actor=user.email)
+    await drop_rule(rule, user.email)
     tasks.add_task(game_alerts.rule, user, rule, 2)
     return {"ok": True}
 

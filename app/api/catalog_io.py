@@ -1,7 +1,8 @@
 """Catalog snapshot: Mongo ↔ data/catalog/*.yaml. Truth lives in Mongo; YAML is a git-diffable
 snapshot and the bulk-edit channel (upsert by slug, logged in `history` as `import`). games.yaml — flat dicts; tasks.yaml — a tree
-zone → subzone → one-line tasks (taskline.py), file position = order, family children nested.
-Usage: uv run python catalog_io.py export|import"""
+zone → subzone → one-line tasks (taskline.py), file position = order, family children nested; aliases.yaml — slug → names,
+a list (Ukrainian) or {uk, ru, en}. Usage: uv run python catalog_io.py export | import [--prune] (--prune: what the YAML
+lacks goes to the archive)"""
 import asyncio
 import sys
 from pathlib import Path
@@ -11,8 +12,8 @@ import yaml
 from core.models.history import record, record_new
 from db import init_db
 from models.base_game import BaseGame
-from models.task import Task
-from taskline import parse_line, render_line
+from models.task import LANGS, Task, langs
+from taskline import parse_line, plain, render_line
 from zones import ZONES
 
 CATALOG = Path(__file__).resolve().parents[2] / "data" / "catalog"
@@ -30,8 +31,9 @@ def dump(doc, exclude=("id", "created_at")) -> dict:
     return {k: v for k, v in d.items() if not (v == "" or v == [] or v == {})}
 
 
-def task_node(t) -> dict | str:  # dict fallback for multi-line descriptions and slot specs; aliases live in aliases.yaml
-    if "\n" in t.description or t.slots:
+def task_node(t) -> dict | str:  # dict fallback for multi-line descriptions, slot specs, icons, opts, rule blanks; aliases live in aliases.yaml
+    # also a title with « — » inside: in the one-line form that dash starts the description
+    if "\n" in t.description or " — " in t.title or t.slots or t.icon or t.opt or not plain(t.rule):
         return dump(t, exclude=("id", "created_at", "slug", "zone", "subzone", "order", "parent", "aliases"))
     return render_line(t)
 
@@ -53,10 +55,15 @@ async def render() -> dict[str, str]:
             entry["children"] = [{k.slug: task_node(k)} for k in kids[t.slug]]
         tree.setdefault(t.zone, {}).setdefault(t.subzone, []).append(entry)
     tree = {z: tree[z] for z in ZONES if z in tree}
-    aliases = {t.slug: t.aliases for t in sorted(tasks, key=lambda t: t.slug) if t.aliases}  # other names people search by
+    aliases = {t.slug: alias_node(t.aliases) for t in sorted(tasks, key=lambda t: t.slug) if any(t.aliases.values())}
     return {"games.yaml": yaml.dump([dump(g) for g in games], Dumper=Dumper, allow_unicode=True, sort_keys=False, width=120),
             "tasks.yaml": yaml.dump(tree, Dumper=Dumper, allow_unicode=True, sort_keys=False, width=200),
             "aliases.yaml": yaml.dump(aliases, Dumper=Dumper, allow_unicode=True, sort_keys=False, width=200, default_flow_style=None)}
+
+
+def alias_node(a: dict) -> list | dict:
+    """The plain list while there are only Ukrainian names, the languages apart once there are others."""
+    return {k: a[k] for k in LANGS if a[k]} if a["ru"] or a["en"] else a["uk"]
 
 
 async def export():
@@ -81,14 +88,14 @@ def task_rows() -> list[dict]:
                     cslug = next(iter(ch))
                     rows.append(to_row(cslug, ch[cslug], zone, sub, j * 10) | {"parent": slug})
     for row in rows:
-        row["aliases"] = list(aliases.get(row["slug"]) or [])
+        row["aliases"] = langs(aliases.get(row["slug"]))
     return rows
 
 
 def to_row(slug, node, zone, sub, order) -> dict:
     if isinstance(node, str):
         return parse_line(slug, node, zone, sub, order)
-    return {"slug": slug, "zone": zone, "subzone": sub, "order": order, "parent": ""} | node
+    return {"slug": slug, "zone": zone, "subzone": sub, "order": order, "parent": "", "kind": "", "icon": "", "opt": "", "rule": {}} | node
 
 
 async def upsert(model, rows) -> None:
@@ -109,7 +116,18 @@ async def upsert(model, rows) -> None:
 
 async def import_():
     await upsert(BaseGame, yaml.safe_load((CATALOG / "games.yaml").read_text()) or [])
-    await upsert(Task, task_rows())
+    rows = task_rows()
+    await upsert(Task, rows)
+    if "--prune" in sys.argv:
+        await prune({r["slug"] for r in rows})
+
+
+async def prune(slugs: set[str]) -> None:
+    gone = await Task.find({"slug": {"$nin": list(slugs)}, "status": {"$ne": "archived"}}).to_list()
+    for t in gone:
+        await record(t, {"status": "archived"}, actor="import")
+        print(f"в архів: {t.slug} · {t.title}")
+    print(f"tasks: в архів {len(gone)}")
 
 
 async def main():

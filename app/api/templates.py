@@ -1,21 +1,23 @@
-"""Reference descriptions of the catalog's base games (Д4, T257): data/catalog/templates/<slug>.yaml, written in the
+"""Reference descriptions of the catalog's base games (Д4, T257, T270): data/catalog/templates/<slug>.yaml, written in the
 vocab's words with entities named by title. `apply()` pours one into the student's game — the menu to cross out and add to."""
 from pathlib import Path
 
 import yaml
 from fastapi import HTTPException
 
+import auto_claims
+import options
+from claims_clean import clean_params
 from core.models.history import record_new
 from core.models.user import User
 from models.game import Claim, Game, Part
-from models.rule import Rule
 from models.task import Task
-from models.vocab import CONDITIONS, EFFECTS, TRIGGERS
-from routes.my_claims import clean_params
-from routes.my_parts import clean_props, clean_stats, clean_states, check_role
-from routes.my_rules import RuleIn, clean
+from parts_clean import kind_fields
+from template_rules import pour_rules
+from zones import kind_of, misplaced
 
 DIR = Path(__file__).resolve().parents[2] / "data" / "catalog" / "templates"
+LEVEL_KEYS = ("title", "description", "stats", "claims")  # the rest of a level's node is its props
 
 
 def load(slug: str) -> dict | None:
@@ -28,9 +30,10 @@ def summary(slug: str) -> dict | None:
     t = load(slug)
     if not t:
         return None
+    nodes = [t] + [x for k in ("entities", "windows", "levels", "rules") for x in t.get(k) or []]
     return {"slug": slug, "field": bool(t.get("field")), "entities": len(t.get("entities") or []),
-            "rules": len(t.get("rules") or []), "windows": len(t.get("windows") or []),
-            "claims": len(t.get("claims") or []) + sum(len(e.get("claims") or []) for e in t.get("entities") or [])}
+            "rules": len(t.get("rules") or []), "windows": len(t.get("windows") or []), "levels": len(t.get("levels") or []),
+            "claims": sum(len(x.get("claims") or []) for x in nodes)}
 
 
 def all_summaries() -> dict:
@@ -44,108 +47,98 @@ async def apply(game: Game, user: User, slug: str) -> dict:
     return await pour(game, user, t)
 
 
+def card(x) -> tuple[str, dict]:  # 'slug' or {slug: …, params: {…}}
+    return (x, {}) if isinstance(x, str) else (x.get("slug", ""), x.get("params") or {})
+
+
 async def pour(game: Game, user: User, t: dict) -> dict:
-    """Add what the student's game does not have yet: the field, entities, windows with menus, rules, claims.
-    Matching is by title, so the import is safe to repeat; unknown cards and bad words are reported, not fatal."""
+    """Add what the student's game does not have yet: the field, entities, windows with menus, levels, rules, claims.
+    Matching is by title, so the import is safe to repeat; unknown cards, bad words and cards out of their place
+    (the card's kind says where it lives) are reported in `skipped`, not fatal."""
+    cat = await options.catalog(options.is_admin(user))
     parts = await Part.find(Part.game == game.id).to_list()
-    claims = await Claim.find(Claim.game == game.id).to_list()
     by_title = {(p.kind, p.title.lower()): p for p in parts}
-    claimed = {(c.task, c.part) for c in claims}
-    added = {"field": 0, "entities": 0, "windows": 0, "menus": 0, "rules": 0, "claims": 0}
+    claimed = {(c.task, c.part, c.rule) for c in await Claim.find(Claim.game == game.id).to_list()}
+    added = {"field": 0, "entities": 0, "windows": 0, "menus": 0, "levels": 0, "rules": 0, "claims": 0}
     skipped: list[str] = []
 
-    async def new_part(**d) -> Part:
-        part = Part(game=game.id, **d)
+    async def new_part(kind: str, title: str, d: dict, **more) -> Part | None:
+        try:
+            fields = kind_fields(kind, d, cat)
+        except HTTPException as e:
+            skipped.append(f"«{title}»: {e.detail}")
+            return None
+        part = Part(game=game.id, kind=kind, title=title, description=d.get("description", ""), **fields | more)
         await part.insert()
         await record_new(part, actor=user.email)
-        by_title[(part.kind, part.title.lower())] = part
+        by_title[(kind, title.lower())] = part
+        added[{"field": "field", "entity": "entities", "window": "windows", "menu": "menus", "level": "levels"}[kind]] += 1
         return part
 
-    async def claim(task_slug: str, part_id: str, params: dict | None = None):
-        task = await Task.find_one(Task.slug == task_slug)
+    async def claim(x, part: Part | None = None, rule: str = "", where: str = ""):
+        slug, params = card(x)
+        task = await Task.find_one(Task.slug == slug)
         if not task or task.status == "archived":
-            skipped.append(f"картка «{task_slug}»")
+            skipped.append(f"картка «{slug}»")
             return
-        if (task_slug, part_id) in claimed:
+        pid = str(part.id) if part else ""
+        if why := misplaced(kind_of(task), part.kind if part else "rule" if rule else ""):
+            skipped.append(f"«{slug}» {where}: {why}")
+            return
+        if (slug, pid, rule) in claimed:
             return
         try:
-            values = clean_params(task, params or {}, loose=True)
+            values = clean_params(task, params, loose=True)
         except HTTPException as e:
-            skipped.append(f"«{task_slug}»: {e.detail}")
+            skipped.append(f"«{slug}»: {e.detail}")
             return
-        c = Claim(game=game.id, task=task_slug, part=part_id, params=values)
+        c = Claim(game=game.id, task=slug, part=pid, rule=rule, params=values)
         await c.insert()
         await record_new(c, actor=user.email)
-        claimed.add((task_slug, part_id))
+        claimed.add((slug, pid, rule))
         added["claims"] += 1
 
-    def card(x) -> tuple[str, dict]:  # 'slug' or {slug: …, params: {…}}
-        return (x, {}) if isinstance(x, str) else (x.get("slug", ""), x.get("params") or {})
-
-    if t.get("field") and ("field", "поле") not in by_title and not any(p.kind == "field" for p in parts):
-        await new_part(kind="field", title="Поле", props=clean_props(t["field"]))
-        added["field"] = 1
+    field = next((p for p in parts if p.kind == "field"), None)
+    if t.get("field") and not field:
+        field = await new_part("field", "Поле", {"props": t["field"]})
     for e in t.get("entities") or []:
-        key = ("entity", e["title"].lower())
-        if key not in by_title:
-            check_role(e.get("role", ""))
-            part = await new_part(kind="entity", title=e["title"], role=e["role"], description=e.get("description", ""),
-                                  stats=clean_stats(e.get("stats") or []), states=clean_states(e.get("states") or []))
-            added["entities"] += 1
-        else:
-            part = by_title[key]
-        for x in e.get("claims") or []:
-            await claim(*card(x)[:1], str(part.id), card(x)[1])
-    for wdef in t.get("windows") or []:
-        key = ("window", wdef["title"].lower())
-        if key not in by_title:
-            task = await Task.find_one(Task.slug == wdef.get("task", ""))
-            if not task or "window" not in task.tags:
-                skipped.append(f"тип вікна «{wdef.get('task')}»")
+        part = by_title.get(("entity", e["title"].lower())) or await new_part("entity", e["title"], e)
+        for x in (e.get("claims") or []) if part else []:
+            await claim(x, part, where=f"на сутності «{e['title']}»")
+    for w in t.get("windows") or []:
+        part = by_title.get(("window", w["title"].lower()))
+        if not part:
+            task = await Task.find_one(Task.slug == w.get("task", ""))
+            if not task or kind_of(task) != "window":
+                skipped.append(f"тип вікна «{w.get('task')}»")
                 continue
-            part = await new_part(kind="window", title=wdef["title"], task=task.slug, description=wdef.get("description", ""))
-            added["windows"] += 1
-            await claim(task.slug, str(part.id))
-        else:
-            part = by_title[key]
-        for x in wdef.get("claims") or []:
-            await claim(*card(x)[:1], str(part.id), card(x)[1])
-    for wdef in t.get("windows") or []:  # menus after every window exists: items point at windows by title
-        items = wdef.get("items") or []
-        host = by_title.get(("window", wdef["title"].lower()))
-        if not items or not host or ("menu", f"меню «{wdef['title']}»".lower()) in by_title:
+            part = await new_part("window", w["title"], w, task=task.slug)
+        for x in w.get("claims") or []:
+            await claim(x, part, where=f"на вікні «{w['title']}»")
+    for w in t.get("windows") or []:  # menus after every window exists: items point at windows by title
+        items = w.get("items") or []
+        host = by_title.get(("window", w["title"].lower()))
+        title = f"Меню «{w['title']}»"
+        if not items or not host or ("menu", title.lower()) in by_title:
             continue
         rows = []
         for it in items:
             target = by_title.get(("window", str(it.get("window", "")).lower()))
             rows.append({"title": it["title"], "window": str(target.id) if target else "", "task": it.get("task", ""), "note": it.get("note", "")})
-        await new_part(kind="menu", title=f"Меню «{wdef['title']}»", window=str(host.id), items=rows)
-        added["menus"] += 1
-    names = {k[1]: str(p.id) for k, p in by_title.items() if k[0] == "entity"}
-    names |= {k[1]: str(p.id) for k, p in by_title.items() if k[0] == "window"}
-    existing = {sentence_key(r.when, r.cond, r.then) for r in await Rule.find(Rule.game == game.id).to_list()}
-    for r in t.get("rules") or []:
-        def resolve(dic, d):  # titles → ids, only where the word expects an entity or a window
-            spec = dic.get(d.get("kind")) or {"args": []}
-            refs = {a["name"] for a in spec["args"] if a["type"] in ("entity", "window")}
-            return {k: (names.get(str(v).lower(), v) if k in refs and isinstance(v, str) else v) for k, v in d.items()}
-        data = RuleIn(when=resolve(TRIGGERS, r.get("when") or {}), cond=[resolve(CONDITIONS, c) for c in r.get("cond") or []],
-                      then=[resolve(EFFECTS, e) for e in r.get("then") or []], note=r.get("note", ""))
-        try:
-            d = await clean(data, game)
-        except HTTPException as e:
-            skipped.append(f"правило: {e.detail}")
-            continue
-        if sentence_key(d["when"], d["cond"], d["then"]) in existing:
-            continue
-        rule = Rule(game=game.id, **d)
-        await rule.insert()
-        await record_new(rule, actor=user.email)
-        added["rules"] += 1
-    for x in t.get("claims") or []:
-        await claim(*card(x)[:1], "", card(x)[1])
+        await new_part("menu", title, {}, window=str(host.id), items=rows)
+    for lv in t.get("levels") or []:
+        node = {"description": lv.get("description", ""), "stats": lv.get("stats") or [],
+                "props": {k: v for k, v in lv.items() if k not in LEVEL_KEYS}}
+        part = by_title.get(("level", lv["title"].lower())) or await new_part("level", lv["title"], node)
+        for x in (lv.get("claims") or []) if part else []:
+            await claim(x, part, where=f"на рівні «{lv['title']}»")
+    for rule, claims in await pour_rules(game, user, t.get("rules") or [], by_title, added, skipped):
+        for x in claims:
+            await claim(x, rule=str(rule.id), where="на правилі")
+    for x in t.get("claims") or []:  # the game's own: a field card goes onto the field, the rest wait unanchored
+        slug = card(x)[0]
+        task = await Task.find_one(Task.slug == slug)
+        on_field = field and task and kind_of(task) == "field"
+        await claim(x, field if on_field else None, where="на рівні гри")
+    await auto_claims.sync(game, user.email)
     return {"added": added, "skipped": skipped}
-
-
-def sentence_key(when, cond, then) -> str:
-    return repr((when, cond, then))

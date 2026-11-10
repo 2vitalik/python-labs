@@ -9,6 +9,8 @@ from uuid import uuid4
 
 import yaml
 
+import auto_claims
+import options
 import templates
 import uploads
 from core.config import settings
@@ -19,7 +21,9 @@ from demo_shots import png
 from models.game import Claim, Game, Part
 from models.rule import Rule
 from models.task import Task
-from routes.my_parts import clean_props
+from models.vocab import FIELD
+from parts_clean import clean_props
+from zones import kind_of, misplaced
 
 DEMO = Path(__file__).resolve().parents[2] / "data" / "demo"
 EXTRA = ("note", "link", "status", "verdict")  # what a claim carries beyond its card
@@ -41,23 +45,32 @@ async def drop(email: str) -> None:
 
 async def set_field(game: Game, f: dict) -> list[str]:
     """The file's field replaces the etalon's; the cards claimed on it are the file's too."""
-    await Part.find(Part.game == game.id, Part.kind == "field").delete()
-    part = Part(game=game.id, kind="field", title="Поле", props=clean_props(f), description=f.get("description", ""))
+    for old in await Part.find(Part.game == game.id, Part.kind == "field").to_list():
+        await Claim.find(Claim.game == game.id, Claim.part == str(old.id)).delete()
+        await old.delete()
+    part = Part(game=game.id, kind="field", title="Поле", props=clean_props(f, FIELD, await options.catalog(admin=False)),
+                description=f.get("description", ""))
     await part.insert()
     slugs = [x if isinstance(x, str) else x["slug"] for x in f.get("claims") or []]
-    known = {t.slug for t in await Task.find({"slug": {"$in": slugs}}).to_list()}
+    known = {t.slug: t for t in await Task.find({"slug": {"$in": slugs}}).to_list()}
+    skipped = []
     for x in f.get("claims") or []:
         slug, params = (x, {}) if isinstance(x, str) else (x["slug"], x.get("params") or {})
-        if slug in known:
+        if slug not in known:
+            skipped.append(f"картка поля «{slug}»")
+        elif why := misplaced(kind_of(known[slug]), "field"):
+            skipped.append(f"«{slug}» на полі: {why}")
+        else:
             await Claim(game=game.id, task=slug, part=str(part.id), params=params).insert()
-    return [f"картка поля «{s}»" for s in slugs if s not in known]
+    return skipped
 
 
 async def finish(game: Game, d: dict, field: dict) -> None:
     """What the templates' format has no words for: screenshots of a part, a claim's note, link and verdict."""
     parts = {(p.kind, p.title.lower()): p for p in await Part.find(Part.game == game.id).to_list()}
     nodes = [(None, d), (parts.get(("field", "поле")), field)]
-    nodes += [(parts[(kind, x["title"].lower())], x) for kind, key in (("entity", "entities"), ("window", "windows")) for x in d.get(key) or []]
+    kinds = (("entity", "entities"), ("window", "windows"), ("level", "levels"))
+    nodes += [(parts[(kind, x["title"].lower())], x) for kind, key in kinds for x in d.get(key) or []]
     for part, node in nodes:
         if part and node.get("shots"):
             folder = uploads.ROOT / str(game.id)
@@ -69,6 +82,12 @@ async def finish(game: Game, d: dict, field: dict) -> None:
         for x in node.get("claims") or []:
             if isinstance(x, dict) and (extra := {k: x[k] for k in EXTRA if k in x}):
                 claim = await Claim.find_one(Claim.game == game.id, Claim.task == x["slug"], Claim.part == (str(part.id) if part else ""))
+                if claim:  # a card out of its place was skipped by the pour
+                    await claim.set(extra)
+    for x in (x for r in d.get("rules") or [] for x in r.get("claims") or []):
+        if isinstance(x, dict) and (extra := {k: x[k] for k in EXTRA if k in x}):
+            claim = await Claim.find_one(Claim.game == game.id, Claim.task == x["slug"], Claim.rule != "")  # a card sits on one rule
+            if claim:
                 await claim.set(extra)
 
 
@@ -91,6 +110,7 @@ async def seed(path: Path, email: str) -> None:
     skipped += (await templates.pour(game, user, d))["skipped"]
     if field:
         skipped += await set_field(game, field)
+    await auto_claims.sync(game, email)
     await finish(game, d, field)
     counts = [await m.find(m.game == game.id).count() for m in (Part, Rule, Claim)]
     print(f"{user.nick}: «{game.title}» — обʼєктів {counts[0]}, правил {counts[1]}, заявок {counts[2]}" + (f"\n  пропущено: {skipped}" if skipped else ""))

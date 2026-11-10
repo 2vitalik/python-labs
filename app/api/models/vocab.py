@@ -1,21 +1,11 @@
-"""The game-description language (T98 → T257): every word the forms offer, in one place.
-Roles of entities, the WHEN / IF / THEN dictionaries of rules, the field's properties, stat suggestions.
+"""The game-description language (T98 → T257 → T270): the words the forms offer that are not catalog cards.
+The WHEN / IF / THEN dictionaries of rules, the field's and a level's properties, the arguments' human names.
+Entity roles, stats and the field's options are catalog cards (kinds role · stat · fieldopt): options.py.
 Arg types: entity · window · int · text · bool · choice:<OPTIONS key>. An entity arg takes a Part id, `*` (anyone),
 `@a` / `@b` (the sides of the trigger) or `@both`. Templates render the sentence; a `[…]` segment drops when its args are empty."""
 import re
 
-PART_KINDS = ("field", "entity", "window", "menu")
-
-ROLES = {  # slug: (label, icon, group)
-    "player": ("гравець", "🧍", "живі"), "ally": ("союзник", "🤝", "живі"), "enemy": ("ворог", "👾", "живі"),
-    "boss": ("бос", "👹", "живі"), "neutral": ("нейтрал", "🐾", "живі"),
-    "object": ("обʼєкт", "📦", "речі"), "pickup": ("предмет / бонус", "💎", "речі"), "projectile": ("снаряд", "🔸", "речі"),
-    "container": ("контейнер", "🎁", "речі"), "resource": ("ресурс", "🪙", "речі"),
-    "static": ("стіна / статика", "🧱", "поле"), "terrain": ("підлога з властивістю", "🟫", "поле"),
-    "hazard": ("пастка / стихія", "🔥", "поле"), "gate": ("двері / барʼєр", "🚪", "поле"), "switch": ("кнопка / важіль", "🔘", "поле"),
-    "spawner": ("генератор", "🌀", "поле"), "zone": ("зона / область", "🟦", "поле"),
-    "piece": ("фігура", "♟️", "фігурні й пазли"), "tile": ("плитка", "🔷", "фігурні й пазли"), "mark": ("розмітка", "✏️", "фігурні й пазли"),
-}
+PART_KINDS = ("field", "entity", "window", "menu", "level")
 
 OPTIONS = {  # choice lists: value → label
     "dir": {"up": "вгору", "down": "вниз", "left": "ліворуч", "right": "праворуч", "forward": "вперед", "back": "назад",
@@ -61,8 +51,8 @@ TRIGGERS = {
     # state and counters
     "counter": w("лічильник досяг", "{name} {op} {n}", [("name", T, 1), ("op", "choice:op", 1), ("n", N, 1)], "стан і лічильники"),
     "hp_zero": w("HP А вичерпано", "HP {a} = 0", [("a", E, 1)], "стан і лічильники"),
-    "state_on": w("А увійшов у стан", "{a} → стан «{s}»", [("a", E, 1), ("s", T, 1)], "стан і лічильники"),
-    "state_off": w("А вийшов зі стану", "{a} ← стан «{s}»", [("a", E, 1), ("s", T, 1)], "стан і лічильники"),
+    "state_on": w("А увійшов у стан", "{a} перейшов у стан «{s}»", [("a", E, 1), ("s", T, 1)], "стан і лічильники"),
+    "state_off": w("А вийшов зі стану", "{a} вийшов зі стану «{s}»", [("a", E, 1), ("s", T, 1)], "стан і лічильники"),
     "all_gone": w("зникли всі А", "зникли всі {a}", [("a", E, 1)], "стан і лічильники"),
     "all_on": w("усі А на Б", "усі {a} на {b}", [("a", E, 1), ("b", E, 1)], "стан і лічильники"),
     "no_moves": w("нема легальних ходів", "нема ходів[ у {a}]", [("a", E, 0)], "стан і лічильники"),
@@ -87,7 +77,7 @@ CONDITIONS = {
     "occupied": w("у клітині сутність", "у {cell} є {what}", [("cell", "choice:cell", 1), ("what", E, 1)], "поле"),
     "adjacent_count": w("кількість сусідів виду", "сусідів {what} {op} {n}", [("what", E, 1), ("op", "choice:op", 1), ("n", N, 1)], "поле"),
     "count": w("кількість сутностей на полі", "{what} на полі {op} {n}", [("what", E, 1), ("op", "choice:op", 1), ("n", N, 1)], "поле"),
-    "path_exists": w("існує шлях", "є шлях {a} → {b}", [("a", E, 1), ("b", E, 1)], "поле"),
+    "path_exists": w("існує шлях", "є шлях від {a} до {b}", [("a", E, 1), ("b", E, 1)], "поле"),
     "connected": w("множина звʼязна", "усі {what} звʼязні", [("what", E, 1)], "поле"),
     "in_check": w("А під ударом", "{a} під ударом", [("a", E, 1)], "хід гри"),
     "fits": w("фігура вміщується", "{a} вміщується у {cell}", [("a", E, 1), ("cell", "choice:cell", 1)], "поле"),
@@ -122,9 +112,9 @@ CONDITIONS = {
 EFFECTS = {
     # appear / disappear
     "disappear": w("зникає", "зникає {a}", [("a", E, 1)], "поява і зникнення"),
-    "spawn": w("зʼявляється", "спавн {entity}[ у {cell}]", [("entity", E, 1), ("cell", "choice:cell", 0)], "поява і зникнення"),
-    "spawn_at": w("зʼявляється у місці", "спавн {entity} у {where}", [("entity", E, 1), ("where", T, 1)], "поява і зникнення"),
-    "transform": w("перетворюється на", "{a} → {into}", [("a", E, 1), ("into", E, 1)], "поява і зникнення"),
+    "spawn": w("зʼявляється", "зʼявляється {entity}[ у {cell}]", [("entity", E, 1), ("cell", "choice:cell", 0)], "поява і зникнення"),
+    "spawn_at": w("зʼявляється у місці", "зʼявляється {entity} у {where}", [("entity", E, 1), ("where", T, 1)], "поява і зникнення"),
+    "transform": w("перетворюється на", "{a} перетворюється на {into}", [("a", E, 1), ("into", E, 1)], "поява і зникнення"),
     "respawn": w("відроджується", "{a} відроджується[ у {where}]", [("a", E, 1), ("where", T, 0)], "поява і зникнення"),
     "clone": w("клонується", "клон {a}", [("a", E, 1)], "поява і зникнення"),
     # movement
@@ -133,9 +123,9 @@ EFFECTS = {
     "pull": w("тягнеться", "тягне {a}", [("a", E, 1)], "рух"),
     "move": w("рухається на 1", "{a} рухається {dir}", [("a", E, 1), ("dir", "choice:dir", 1)], "рух"),
     "slide": w("ковзає до упору", "{a} ковзає {dir}", [("a", E, 1), ("dir", "choice:dir", 1)], "рух"),
-    "teleport": w("телепортується", "телепорт {a}[ → {where}]", [("a", E, 1), ("where", T, 0)], "рух"),
+    "teleport": w("телепортується", "{a} телепортується[ у {where}]", [("a", E, 1), ("where", T, 0)], "рух"),
     "wrap": w("переходить через край (тор)", "{a} через край", [("a", E, 1)], "рух"),
-    "swap": w("міняються місцями", "{a} ⇄ {b}", [("a", E, 1), ("b", E, 1)], "рух"),
+    "swap": w("міняються місцями", "{a} і {b} міняються місцями", [("a", E, 1), ("b", E, 1)], "рух"),
     "rotate": w("повертається", "{a} повертається {deg}", [("a", E, 1), ("deg", "choice:deg", 1)], "рух"),
     "fall": w("падає", "{a} падає", [("a", E, 1)], "рух"),
     "bounce": w("відбивається", "{a} відбивається", [("a", E, 1)], "рух"),
@@ -145,16 +135,16 @@ EFFECTS = {
     "speed": w("змінює швидкість", "швидкість {a} {n} %", [("a", E, 1), ("n", N, 1)], "рух"),
     "attach": w("зчіплюється", "{a} зчіплюється з {b}", [("a", E, 1), ("b", E, 1)], "рух"),
     # state and numbers
-    "damage": w("шкода", "шкода {n} → {a}", [("a", E, 1), ("n", N, 1)], "стан і числа"),
-    "heal": w("лікування", "+{n} HP → {a}", [("a", E, 1), ("n", N, 1)], "стан і числа"),
+    "damage": w("шкода", "{a} отримує шкоду {n}", [("a", E, 1), ("n", N, 1)], "стан і числа"),
+    "heal": w("лікування", "{a} лікується на {n} HP", [("a", E, 1), ("n", N, 1)], "стан і числа"),
     "lives": w("± життя", "життя {n:+}", [("n", N, 1)], "стан і числа"),
     "score": w("± очки", "очки {n:+}", [("n", N, 1)], "стан і числа"),
     "currency": w("± валюта", "валюта {n:+}", [("n", N, 1)], "стан і числа"),
     "counter": w("± лічильник", "{name} {n:+}", [("name", T, 1), ("n", N, 1)], "стан і числа"),
     "set_value": w("встановити значення", "{a} = {v}", [("a", E, 1), ("v", T, 1)], "стан і числа"),
     "multiplier": w("множник очок", "множник ×{k}", [("k", N, 1)], "стан і числа"),
-    "set_state": w("увімкнути стан", "{a} → стан «{s}»[ на {dur} тіків]", [("a", E, 1), ("s", T, 1), ("dur", N, 0)], "стан і числа"),
-    "clear_state": w("зняти стан", "{a} без стану «{s}»", [("a", E, 1), ("s", T, 1)], "стан і числа"),
+    "set_state": w("увімкнути стан", "{a} стає «{s}»[ на {dur} тіків]", [("a", E, 1), ("s", T, 1), ("dur", N, 0)], "стан і числа"),
+    "clear_state": w("зняти стан", "{a} більше не «{s}»", [("a", E, 1), ("s", T, 1)], "стан і числа"),
     "grow": w("росте / зменшується", "{a} росте на {n}", [("a", E, 1), ("n", N, 1)], "стан і числа"),
     "set_side": w("змінює сторону / власника", "{a} переходить до {side}", [("a", E, 1), ("side", T, 1)], "стан і числа"),
     # inventory
@@ -172,8 +162,8 @@ EFFECTS = {
     "paint": w("зафарбувати", "зафарбувати {cell}[ у {color}]", [("cell", "choice:cell", 1), ("color", T, 0)], "клітини й поле"),
     "fill": w("заливка області", "заливка від {cell}", [("cell", "choice:cell", 1)], "клітини й поле"),
     "clear": w("очистити лінію / групу", "очистити {shape}", [("shape", "choice:shape", 1)], "клітини й поле"),
-    "merge": w("злиття двох в одну", "{a} + {b} → {into}", [("a", E, 1), ("b", E, 1), ("into", E, 1)], "клітини й поле"),
-    "explode": w("вибух із формою", "вибух {shape}[ {n}][ → {into}]", [("shape", "choice:shape", 1), ("n", N, 0), ("into", E, 0)], "клітини й поле"),
+    "merge": w("злиття двох в одну", "{a} і {b} зливаються в {into}", [("a", E, 1), ("b", E, 1), ("into", E, 1)], "клітини й поле"),
+    "explode": w("вибух із формою", "вибух: {shape}[ {n}][, лишає {into}]", [("shape", "choice:shape", 1), ("n", N, 0), ("into", E, 0)], "клітини й поле"),
     # the game itself
     "win": w("перемога 🏆", "перемога 🏆", (), "хід гри"),
     "lose": w("поразка 💀", "поразка 💀", (), "хід гри"),
@@ -186,49 +176,47 @@ EFFECTS = {
     "pass_turn": w("пас", "пас", (), "хід гри"),
     "extra_move": w("додатковий хід", "додатковий хід", (), "хід гри"),
     "choose": w("гравець обирає", "вибір: {options}", [("options", T, 1)], "хід гри"),
-    "window": w("відкрити вікно", "вікно «{window}»", [("window", "window", 1)], "хід гри"),
+    "window": w("відкрити вікно", "відкривається вікно {window}", [("window", "window", 1)], "хід гри"),
     "message": w("повідомлення", "повідомлення «{text}»", [("text", T, 1)], "хід гри"),
     "sound": w("звук / ефект", "звук «{text}»", [("text", T, 1)], "хід гри"),
     "timer": w("таймер", "таймер: {clock}[ {n}]", [("clock", "choice:clock", 1), ("n", N, 0)], "хід гри"),
     "custom": w("інше (словами)", "{text}", [("text", T, 1)], "інше"),
 }
 
-FIELD = [  # the field's properties, in form order; `choice` options live here
-    {"key": "size", "label": "Розмір", "type": "text", "hint": "напр. 20×15, або «змінний»"},
-    {"key": "topology", "label": "Сітка", "type": "choice", "options": {
-        "square": "квадратна", "hex": "гексагональна", "graph": "граф (нестандартна суміжність)", "iso": "ізометрична",
-        "layers": "кілька шарів / висот", "1d": "лінія", "3d": "обʼємна", "nested": "поле в полі"}},
-    {"key": "wrap", "label": "Тор (край → протилежний)", "type": "bool"},
-    {"key": "view", "label": "Вид", "type": "choice", "options": {"top-down": "згори", "side": "збоку", "first-person": "від першої особи"}},
-    {"key": "gravity", "label": "Гравітація", "type": "choice", "options": {
-        "none": "нема", "down": "вниз", "up": "вгору", "per-type": "залежить від типу", "toward-center": "до центру"}},
-    {"key": "time", "label": "Час", "type": "choice", "options": {
-        "turn": "покроковий (хід = тік)", "realtime": "реальний час", "static": "статичний (пазл)", "programmed": "програмований",
-        "wego": "усі планують, потім виконання", "rhythm": "у такт музики"}},
-    {"key": "control", "label": "Керування", "type": "choice", "options": {
-        "direct": "клавіші = рух аватара", "indirect": "вказую ціль, сутність іде сама", "click-cell": "клік по клітині",
-        "drag-piece": "перетягую фігуру", "swipe-all": "хід рухає все поле", "drag-path": "малюю шлях", "mark": "розмічаю клітини",
-        "programmed": "пишу програму команд"}},
-    {"key": "layers", "label": "Шари клітини", "type": "tags", "hint": "підлога · обʼєкти · розмітка · туман"},
+ARGS = {  # the arguments' names in the forms
+    "a": "хто", "b": "з ким", "n": "скільки", "every": "N", "p": "%", "dur": "тіків", "cell": "клітина", "dir": "напрям",
+    "what": "хто / що", "entity": "хто", "item": "предмет", "into": "на що", "s": "стан", "name": "лічильник", "op": "порівняння",
+    "shape": "форма", "where": "де", "text": "словами", "action": "дія", "list": "тіки", "phase": "фаза", "v": "значення",
+    "k": "множник", "deg": "кут", "axis": "що", "clock": "дія", "options": "варіанти", "color": "колір", "side": "сторона",
+    "type": "тип клітини", "window": "вікно", "prop": "за чим",
+}
+
+FIELD = [  # the field's properties, in form order; a choice's options are cards of kind fieldopt with opt `key:value`
+    {"key": "topology", "label": "Сітка", "type": "choice"},
+    {"key": "view", "label": "Вид", "type": "choice"},
+    {"key": "time", "label": "Час", "type": "choice", "multi": True},
+    {"key": "control", "label": "Керування", "type": "choice", "multi": True},
+    {"key": "gravity", "label": "Гравітація", "type": "choice"},
+    {"key": "wrap", "label": "Замкнене поле: вийшов за край — зʼявився з протилежного боку", "type": "bool"},
+    {"key": "size", "label": "Розмір за замовчуванням", "type": "text", "hint": "напр. 20×15; різний на рівнях — пиши в рівнях"},
+    {"key": "layers", "label": "Шари клітини", "type": "tags",
+     "hint": "що може лежати в одній клітині одночасно: підлога · обʼєкт · розмітка · туман"},
 ]
 
-STATS = [  # suggested stats of an entity: key, label, icon, unit
-    ("hp", "HP", "❤️", ""), ("lives", "життя", "💗", ""), ("speed", "швидкість", "⚡", "кл/тік"), ("damage", "шкода", "⚔️", ""),
-    ("armor", "броня", "🛡️", ""), ("range", "дальність", "🎯", "кл"), ("capacity", "місткість", "🎒", "предм."),
-    ("cooldown", "перезарядка", "⏱️", "тіків"), ("value", "очки за…", "⭐", ""), ("count", "кількість на полі", "#", ""),
-    ("duration", "тривалість", "⏳", "тіків"), ("size", "розмір", "📐", "кл"), ("ammo", "патрони", "🔫", ""),
+LEVEL = [  # a level's own properties; the field's ones it may override come after them
+    {"key": "mode", "label": "Звідки рівень", "type": "choice", "options": {
+        "hand": "зроблений вручну", "file": "з файла", "generated": "згенерований", "endless": "нескінченний"}},
+    {"key": "count", "label": "Скільки таких", "type": "text", "hint": "1, 10, «без ліміту»"},
+    {"key": "size", "label": "Розмір", "type": "text"},
 ]
 
 SIDES = {"*": "будь-хто", "@a": "А", "@b": "Б", "@both": "обидва"}  # entity arg values that are not a Part
 
 
 def vocab() -> dict:
-    """What the front needs to build selects and render sentences — the same source as the validation."""
-    return {
-        "roles": {k: {"label": v[0], "icon": v[1], "group": v[2]} for k, v in ROLES.items()},
-        "triggers": TRIGGERS, "conditions": CONDITIONS, "effects": EFFECTS, "options": OPTIONS,
-        "field": FIELD, "stats": [{"key": k, "label": l, "icon": i, "unit": u} for k, l, i, u in STATS], "sides": SIDES,
-    }
+    """The forms' words that live in code — the same source as the validation; the catalog's part is routes/vocab.py."""
+    return {"triggers": TRIGGERS, "conditions": CONDITIONS, "effects": EFFECTS, "options": OPTIONS, "sides": SIDES,
+            "args": ARGS, "level": LEVEL}
 
 
 def render(spec: dict, args: dict, name) -> str:

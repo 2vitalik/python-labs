@@ -15,6 +15,7 @@ class Game(Document):
     base_custom: str = ""  # free-text base when not from the catalog
     description: str = ""  # markdown
     phases: list[str] = []  # the order of one tick / turn: ввід → гравець → вороги → … (T257)
+    poured: float = 0  # an etalon (owner `<slug>@etalon`): the mtime of the template it was poured from — routes/etalon.py
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
     class Settings:
@@ -29,18 +30,19 @@ class Game(Document):
 
 
 class Part(Document):
-    """A piece of the game's description: the field (one), an entity, a window, a menu — the anchor of claims and screenshots."""
+    """A piece of the game's description: the field (one), an entity, a window, a menu, a level — the anchor of claims and screenshots."""
     game: Annotated[PydanticObjectId, Indexed()]
-    kind: str  # field | entity | window | menu (vocab.PART_KINDS)
+    kind: str  # field | entity | window | menu | level (vocab.PART_KINDS)
     title: str
-    task: str = ""  # window type: catalog task slug tagged "window"
-    role: str = ""  # entity: vocab.ROLES key
+    task: str = ""  # window type: catalog card of kind window
+    role: str = ""  # entity: the `opt` of a role card
+    icon: str = ""  # entity: its own emoji; "" = the role's
     description: str = ""
     screenshots: list[str] = []  # file names under uploads/<game-id>/
     window: str = ""  # menu: id of the host window part
     items: list[dict] = []  # menu: {title, window: part id, task: slug, note}
-    props: dict = {}  # field: values by vocab.FIELD keys
-    stats: list[dict] = []  # entity: {key, label, value, unit} — HP, життя, швидкість…
+    props: dict = {}  # field: values by vocab.FIELD keys; level: vocab.LEVEL + the field's it overrides
+    stats: list[dict] = []  # entity, level: {key, label, value, unit} — HP, життя, швидкість…
     states: list[str] = []  # entity: its states; transitions are rules with set_state
     order: int = 0
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
@@ -51,7 +53,7 @@ class Part(Document):
     def api(self) -> dict:
         return {
             "id": str(self.id), "game": str(self.game), "kind": self.kind, "title": self.title,
-            "task": self.task, "role": self.role, "description": self.description,
+            "task": self.task, "role": self.role, "icon": self.icon, "description": self.description,
             "screenshots": self.screenshots, "window": self.window, "items": self.items,
             "props": self.props, "stats": self.stats, "states": self.states,
             "order": self.order, "created_at": self.created_at.isoformat(),
@@ -61,7 +63,9 @@ class Part(Document):
 class Claim(Document):
     game: Annotated[PydanticObjectId, Indexed()]
     task: str  # catalog task slug
-    part: str = ""  # Part id; "" = game-level claim, or a draft waiting for its anchor
+    part: str = ""  # Part id; "" with no rule = game-level claim, or a draft waiting for its anchor
+    rule: str = ""  # Rule id: a card of kind rule anchors on the rule that describes it
+    auto: bool = False  # made by the description itself (a window's type, a role, a stat, a field option): auto_claims.py
     params: dict = {}  # values for the card's slots {key: value}
     note: str = ""
     link: str = ""  # GitHub link (commit-pin normalization — later phase)
@@ -74,7 +78,7 @@ class Claim(Document):
 
     def api(self) -> dict:
         return {
-            "id": str(self.id), "game": str(self.game), "task": self.task, "part": self.part,
-            "params": self.params, "note": self.note, "link": self.link, "status": self.status, "verdict": self.verdict,
+            "id": str(self.id), "game": str(self.game), "task": self.task, "part": self.part, "rule": self.rule,
+            "auto": self.auto, "params": self.params, "note": self.note, "link": self.link, "status": self.status, "verdict": self.verdict,
             "created_at": self.created_at.isoformat(),
         }

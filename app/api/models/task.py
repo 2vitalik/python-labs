@@ -2,7 +2,17 @@ from datetime import datetime, timezone
 from typing import Annotated
 
 from beanie import Document, Indexed
-from pydantic import Field
+from pydantic import Field, field_validator
+
+from zones import kind_of
+
+LANGS = ("uk", "ru", "en")
+
+
+def langs(v) -> dict:
+    """Aliases by language; a plain list is the old format — Ukrainian (and whatever else people typed)."""
+    v = {"uk": v} if isinstance(v, list) else v or {}
+    return {k: list(v.get(k) or []) for k in LANGS}
 
 
 class Task(Document):
@@ -11,6 +21,9 @@ class Task(Document):
     description: str = ""  # markdown: what to do + "what I check"
     zone: str
     subzone: str
+    kind: str = ""  # zones.KINDS; "" = the subzone's (zones.kind_of)
+    icon: str = ""  # emoji of a role, a stat, a field option
+    opt: str = ""  # what the card means in a description: a role key, a stat key, `prop:value` of the field
     tags: list[str] = []  # mechanics/entities + "algo" (⭐)
     games: list[str] = []  # game slugs; [] = universal
     coin: str = ""  # wood | tin | bronze | silver | gold | crown
@@ -18,7 +31,8 @@ class Task(Document):
     max_count: int = 1  # 1 = once · N = N times · 0 = unlimited (extra levels etc.)
     parent: str = ""  # slug of the family card; children are full tasks, one level deep
     slots: list[dict] = []  # claim param specs {key, label, type: int|choice|bool|text, options?, unit?, required?}
-    aliases: list[str] = []  # other names people search by: UA/RU/EN, slang — data/catalog/aliases.yaml
+    rule: dict = {}  # a rule-card's blank: {when, cond, then} in the vocab's words, args optional
+    aliases: dict = {k: [] for k in LANGS}  # other names people search by, per language — data/catalog/aliases.yaml
     status: str = "draft"  # draft | active | archived
     order: int = 0  # manual order within subzone
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
@@ -26,10 +40,16 @@ class Task(Document):
     class Settings:
         name = "tasks"
 
+    @field_validator("aliases", mode="before")
+    @classmethod
+    def aliases_by_lang(cls, v):
+        return langs(v)
+
     def api(self) -> dict:
         return {
             "id": str(self.id), "slug": self.slug, "title": self.title, "description": self.description,
-            "zone": self.zone, "subzone": self.subzone, "tags": self.tags, "games": self.games,
-            "coin": self.coin, "amount": self.amount, "max_count": self.max_count,
-            "parent": self.parent, "slots": self.slots, "aliases": self.aliases, "status": self.status, "order": self.order,
+            "zone": self.zone, "subzone": self.subzone, "kind": kind_of(self), "icon": self.icon, "opt": self.opt,
+            "tags": self.tags, "games": self.games, "coin": self.coin, "amount": self.amount, "max_count": self.max_count,
+            "parent": self.parent, "slots": self.slots, "rule": self.rule, "aliases": self.aliases,
+            "status": self.status, "order": self.order,
         }

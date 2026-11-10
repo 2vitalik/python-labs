@@ -4,7 +4,7 @@ from typing import Annotated
 from beanie import Document, Indexed, PydanticObjectId
 from pydantic import Field, field_validator
 
-from models.vocab import CONDITIONS, EFFECTS, ROLES, TRIGGERS  # noqa: F401 — the dictionaries live in vocab.py, routes import them from here too
+from models.vocab import CONDITIONS, EFFECTS, TRIGGERS  # noqa: F401 — the dictionaries live in vocab.py, routes import them from here too
 
 
 class Rule(Document):

@@ -1,32 +1,37 @@
 from beanie import PydanticObjectId
-from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, UploadFile
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 from pydantic import BaseModel
 
+import auto_claims
+import options
 import uploads
 from bot import game_alerts
 from core.deps import active_user
 from core.models.history import record, record_delete, record_new
-from core.models.user import Status, User
+from core.models.user import User
 from models.game import Claim, Game, Part
 from models.rule import Rule
 from models.task import Task
-from models.vocab import FIELD, PART_KINDS, ROLES, STATS
+from models.vocab import PART_KINDS
+from parts_clean import kind_fields
 from routes.my_game import my_game
+from routes.my_rules import drop_rule
+from zones import kind_of
 
 router = APIRouter(prefix="/api/my/game/parts")
-KIND_NAMES = {"field": "поле", "entity": "сутність", "window": "вікно", "menu": "меню"}
 
 
 class PartIn(BaseModel):
     kind: str = ""  # vocab.PART_KINDS; fixed after creation
     title: str = ""
-    task: str = ""  # window type: catalog slug tagged "window"
-    role: str = ""  # entity role from vocab.ROLES
+    task: str = ""  # window type: a card of kind window; on PUT "" = leave as is
+    role: str = ""  # entity: the opt of a role card
+    icon: str = ""  # entity
     description: str = ""
     window: str = ""  # menu: host window part id
     items: list[dict] = []
-    props: dict = {}  # field
-    stats: list[dict] = []  # entity
+    props: dict = {}  # field, level
+    stats: list[dict] = []  # entity, level
     states: list[str] = []  # entity
     order: int = 0
 
@@ -49,9 +54,9 @@ async def get_part(id: PydanticObjectId, game: Game) -> Part:
 
 async def check_window_type(slug: str, user: User) -> None:
     task = await Task.find_one(Task.slug == slug)
-    if not task or "window" not in task.tags or task.status == "archived":
-        raise HTTPException(422, "Тип вікна — картка каталогу з тегом window.")
-    if task.status != "active" and user.status != Status.admin:
+    if not task or kind_of(task) != "window" or task.status == "archived":
+        raise HTTPException(422, "Тип вікна — картка каталогу з типом «тип вікна».")
+    if task.status != "active" and not options.is_admin(user):
         raise HTTPException(422, "Ця картка-тип ще чернетка.")
 
 
@@ -71,71 +76,9 @@ async def clean_menu(data: PartIn, game: Game) -> dict:
     return {"window": data.window, "items": items}
 
 
-def check_role(role: str) -> None:
-    if role not in ROLES:
-        raise HTTPException(422, "Роль сутності — зі словника.")
-
-
-def clean_props(props: dict) -> dict:
-    """The field's properties by vocab.FIELD: unknown keys dropped, choices checked, empty values left out."""
-    out = {}
-    for spec in FIELD:
-        v = props.get(spec["key"])
-        if v is None or v == "" or v == []:
-            continue
-        if spec["type"] == "bool":
-            v = bool(v)
-        elif spec["type"] == "choice":
-            if str(v) not in spec["options"]:
-                raise HTTPException(422, f"«{spec['label']}» — зі списку.")
-        elif spec["type"] == "tags":
-            v = [str(x).strip() for x in (v if isinstance(v, list) else str(v).split(",")) if str(x).strip()]
-            if not v:
-                continue
-        else:
-            v = str(v).strip()
-            if not v:
-                continue
-        out[spec["key"]] = v
-    return out
-
-
-def clean_stats(stats: list[dict]) -> list[dict]:
-    """Entity stats: a key (a known one or the student's own word), a value as text, an optional unit."""
-    known = {k: (label, unit) for k, label, _, unit in STATS}
-    out, seen = [], set()
-    for s in stats:
-        key = str(s.get("key") or "").strip()
-        value = str(s.get("value") if s.get("value") is not None else "").strip()
-        if not key or key.lower() in seen:
-            continue
-        if not value:
-            raise HTTPException(422, f"Параметр «{key}» — без значення.")
-        label = str(s.get("label") or "").strip() or known.get(key, (key, ""))[0]
-        unit = str(s.get("unit") or "").strip() or (known[key][1] if key in known and not s.get("unit") else "")
-        out.append({"key": key, "label": label, "value": value, "unit": unit})
-        seen.add(key.lower())
-    return out
-
-
-def clean_states(states: list[str]) -> list[str]:
-    out = []
-    for s in states:
-        s = " ".join(str(s).split())
-        if s and s.lower() not in {x.lower() for x in out}:
-            out.append(s)
-    if len(out) > 12:
-        raise HTTPException(422, "Станів забагато — до 12.")
-    return out
-
-
-def kind_fields(part_kind: str, data: PartIn) -> dict:
-    if part_kind == "entity":
-        check_role(data.role)
-        return {"role": data.role, "stats": clean_stats(data.stats), "states": clean_states(data.states)}
-    if part_kind == "field":
-        return {"props": clean_props(data.props)}
-    return {}
+async def fields(kind: str, data: PartIn, game: Game, user: User) -> dict:
+    d = await clean_menu(data, game) if kind == "menu" else {}
+    return d | kind_fields(kind, data.model_dump(), await options.catalog(options.is_admin(user)))
 
 
 @router.post("")
@@ -147,23 +90,16 @@ async def create_part(data: PartIn, tasks: BackgroundTasks, game: Game = Depends
     if not title:
         raise HTTPException(422, "Назва — обовʼязкова.")
     d = {"game": game.id, "kind": data.kind, "title": title, "description": data.description, "order": data.order}
-    if data.kind == "field":
-        if await Part.find_one(Part.game == game.id, Part.kind == "field"):
-            raise HTTPException(409, "Поле в грі одне — воно вже є.")
-    elif data.kind == "window":
+    if data.kind == "field" and await Part.find_one(Part.game == game.id, Part.kind == "field"):
+        raise HTTPException(409, "Поле в грі одне — воно вже є.")
+    if data.kind == "window":
         await check_window_type(data.task, user)
         d["task"] = data.task
-    elif data.kind == "menu":
-        d |= await clean_menu(data, game)
-    d |= kind_fields(data.kind, data)
-    part = Part(**d)
+    part = Part(**d | await fields(data.kind, data, game, user))
     await part.insert()
     await record_new(part, actor=user.email)
+    await auto_claims.sync(game, user.email)
     tasks.add_task(game_alerts.part, user, part, 0)
-    if data.kind == "window":  # a window claims its type card automatically
-        claim = Claim(game=game.id, task=data.task, part=str(part.id))
-        await claim.insert()
-        await record_new(claim, actor=user.email)
     return part.api()
 
 
@@ -174,10 +110,11 @@ async def update_part(id: PydanticObjectId, data: PartIn, game: Game = Depends(m
     d = {"title": data.title.strip(), "description": data.description, "order": data.order}
     if not d["title"]:
         raise HTTPException(422, "Назва — обовʼязкова.")
-    if part.kind == "menu":
-        d |= await clean_menu(data, game)
-    d |= kind_fields(part.kind, data)
-    await record(part, d, actor=user.email)
+    if part.kind == "window" and data.task and data.task != part.task:  # a new type: its auto-claim follows
+        await check_window_type(data.task, user)
+        d["task"] = data.task
+    await record(part, d | await fields(part.kind, data, game, user), actor=user.email)
+    await auto_claims.sync(game, user.email)
     return part.api()
 
 
@@ -185,15 +122,15 @@ async def update_part(id: PydanticObjectId, data: PartIn, game: Game = Depends(m
 async def delete_part(id: PydanticObjectId, tasks: BackgroundTasks, game: Game = Depends(my_game),
                       user: User = Depends(active_user)):
     part = await get_part(id, game)
-    for claim in await Claim.find(Claim.game == game.id, Claim.part == str(part.id)).to_list():
+    pid = str(part.id)
+    for claim in await Claim.find(Claim.game == game.id, Claim.part == pid).to_list():
         await record_delete(claim, actor=user.email)
     for rule in await Rule.find(Rule.game == game.id).to_list():  # a sentence loses its subject
-        if rule.uses(str(part.id)):
-            await record_delete(rule, actor=user.email)
+        if rule.uses(pid):
+            await drop_rule(rule, user.email)
     for name in part.screenshots:
         uploads.drop_shot(str(game.id), name)
     if part.kind == "window":  # strip dangling references from menus
-        pid = str(part.id)
         for menu in await Part.find(Part.game == game.id, Part.kind == "menu").to_list():
             patch = {"window": ""} if menu.window == pid else {}
             items = [it | {"window": ""} if it.get("window") == pid else it for it in menu.items]
@@ -202,25 +139,7 @@ async def delete_part(id: PydanticObjectId, tasks: BackgroundTasks, game: Game =
             if patch:
                 await record(menu, patch, actor=user.email)
     await record_delete(part, actor=user.email)
+    await auto_claims.sync(game, user.email)
     tasks.add_task(game_alerts.part, user, part, 2)
     return {"ok": True}
 
-
-@router.post("/{id}/screenshot")
-async def add_screenshot(id: PydanticObjectId, file: UploadFile, game: Game = Depends(my_game),
-                         user: User = Depends(active_user)):
-    part = await get_part(id, game)
-    name = await uploads.save_shot(str(game.id), file)
-    await record(part, {"screenshots": part.screenshots + [name]}, actor=user.email)
-    return part.api()
-
-
-@router.delete("/{id}/screenshot/{name}")
-async def delete_screenshot(id: PydanticObjectId, name: str, game: Game = Depends(my_game),
-                            user: User = Depends(active_user)):
-    part = await get_part(id, game)
-    if name not in part.screenshots:
-        raise HTTPException(404)
-    uploads.drop_shot(str(game.id), name)
-    await record(part, {"screenshots": [s for s in part.screenshots if s != name]}, actor=user.email)
-    return part.api()

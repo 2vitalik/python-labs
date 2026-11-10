@@ -1,50 +1,13 @@
 from beanie import PydanticObjectId
 from fastapi import APIRouter, Depends, HTTPException
-from pydantic import BaseModel
 
 from core.deps import editor_user, viewer
 from core.models.history import record, record_new
 from core.models.user import Status, User
 from models.task import Task
-from zones import COINS, STATUSES, ZONES
+from tasks_clean import TaskIn, clean
 
 router = APIRouter(prefix="/api/tasks")
-
-
-class TaskIn(BaseModel):
-    slug: str
-    title: str
-    description: str = ""
-    zone: str
-    subzone: str
-    tags: list[str] = []
-    games: list[str] = []
-    coin: str = ""
-    amount: float = 1
-    max_count: int = 1
-    parent: str = ""
-    aliases: list[str] = []
-    status: str = "draft"
-    order: int = 0
-
-
-async def clean(data: TaskIn) -> dict:
-    d = data.model_dump()
-    d["slug"], d["title"] = d["slug"].strip().lower(), d["title"].strip()
-    d["aliases"] = list(dict.fromkeys(" ".join(a.split()) for a in d["aliases"] if a.strip()))
-    if not d["slug"] or not d["title"]:
-        raise HTTPException(422, "Slug і назва — обовʼязкові.")
-    if d["zone"] not in ZONES or d["subzone"] not in ZONES[d["zone"]]["subzones"]:
-        raise HTTPException(422, "Невідома зона або підзона.")
-    if d["coin"] and d["coin"] not in COINS:
-        raise HTTPException(422, "Невідомий тип монетки.")
-    if d["status"] not in STATUSES:
-        raise HTTPException(422, "Невідомий статус.")
-    if d["parent"]:
-        parent = await Task.find_one(Task.slug == d["parent"])
-        if not parent or parent.slug == d["slug"] or parent.parent:
-            raise HTTPException(422, "Батько має існувати і сам бути кореневим завданням.")
-    return d
 
 
 @router.get("")
