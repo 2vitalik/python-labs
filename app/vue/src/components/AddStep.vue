@@ -24,7 +24,7 @@ async function send() {
   try {
     if (s.value.task) {
       const c = await postClaim({ task: s.value.task.slug, part: s.value.part, params: s.value.params })
-      jump(s.value.part ? `c-${c.id}` : 'drafts')
+      jump(`c-${c.id}`)
     } else {
       const p = ed.entities.find((e) => e.id === s.value.part), st = s.value.stat
       const stats = [...p.stats, { key: st.key, label: st.label, value: String(s.value.value).trim(), unit: st.unit }]

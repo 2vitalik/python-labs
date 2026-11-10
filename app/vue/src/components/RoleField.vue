@@ -26,7 +26,8 @@ const proposed = () => { role.value = 'object'; open.value = false }
         <span v-else class="text-secondary">обери тип: гравець, ворог, стіна…</span>
       </button>
     </template>
-    <ProposeCard v-if="proposing" what="новий тип сутності" all-to="/tasks?zone=entities&sub=roles" @done="proposed" @cancel="proposing = false" />
+    <ProposeCard v-if="proposing" what="новий тип сутності" all-to="/tasks?zone=entities&sub=roles" zone="entities" subzone="roles"
+                 @done="proposed" @cancel="proposing = false" />
     <Picker v-else inline autofocus :items placeholder="пошук типу…" @pick="pick">
       <template #footer>
         <div class="foot">Нема потрібного типу? <a href="#" @click.prevent="proposing = true">запропонувати</a></div>

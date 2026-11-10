@@ -13,13 +13,15 @@ const option = (s, v) => {
 }
 const text = (s, v) => (s.type === 'bool' ? 'так' : s.type === 'choice' ? [].concat(v).map((x) => option(s, x)).join(' · ')
   : Array.isArray(v) ? v.join(' · ') : String(v))
+// what the chosen options mean — the cards' own descriptions, under the mouse
+const about = (s, v) => (s.type === 'choice' ? [].concat(v).map((x) => s.options?.[x]?.desc).filter(Boolean).join('\n') : '')
 const rows = computed(() => p.specs.filter((s) => !empty(p.props?.[s.key]))
-  .map((s) => ({ key: s.key, label: s.label.split(/[:(]/)[0].trim(), full: s.label, value: text(s, p.props[s.key]) })))
+  .map((s) => ({ key: s.key, label: s.label.split(/[:(]/)[0].trim(), full: s.label, value: text(s, p.props[s.key]), about: about(s, p.props[s.key]) })))
 </script>
 
 <template>
   <div v-if="rows.length || $slots.default" class="plist small">
-    <div v-for="r in rows" :key="r.key" class="prop"><span class="text-secondary" :title="r.full">{{ r.label }}:</span> {{ r.value }}</div>
+    <div v-for="r in rows" :key="r.key" class="prop"><span class="text-secondary" :title="r.full">{{ r.label }}:</span> <span :title="r.about">{{ r.value }}</span></div>
     <slot v-if="!rows.length" />
   </div>
 </template>

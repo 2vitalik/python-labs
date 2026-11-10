@@ -25,7 +25,7 @@ defineProps({ f: Object, kind: String, subKind: String })
   <div class="row-f">
     <label class="f w9">тип
       <select v-model="f.kind" class="form-select form-select-sm">
-        <option value="">за підзоною: {{ vocab.kinds[subKind] || subKind }}</option>
+        <option value="">за підкатегорією: {{ vocab.kinds[subKind] || subKind }}</option>
         <option v-for="(label, k) in vocab.kinds" :key="k" :value="k">{{ label }}</option>
       </select>
     </label>

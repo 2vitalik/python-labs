@@ -35,9 +35,10 @@ import MyGamePage from './pages/MyGamePage.vue'
 import RefsPage from './pages/RefsPage.vue'
 import StudentGamePage from './pages/StudentGamePage.vue'
 import TasksPage from './pages/TasksPage.vue'
+import { setSandbox } from './sandbox.js'
 import { CHANGES, SECTIONS } from './site.js'
 
-export default makeRouter([
+const router = makeRouter([
   { path: '/', component: HomePage },
   ...[...SECTIONS, CHANGES].filter((s) => s.page).map((s) => ({ path: s.path, component: GuidePage, meta: { title: s.nav, slug: s.slug } })),  // the guide is open to all, a guest too (T214)
   { path: '/labs/:n', component: GuidePage, meta: { title: 'Лаби' } },
@@ -88,3 +89,6 @@ export default makeRouter([
   { path: '/tasks/:slug/edit', redirect: (to) => ({ path: '/tasks', query: { q: to.params.slug } }) },
   { path: '/:pathMatch(.*)*', component: NotFoundPage, meta: { title: 'Такої сторінки нема' } },  // the server answers any path with index.html, so 404 is ours to show
 ])
+// the sample's sandbox never outlives its page: else «Моя гра» would read and write the scratch copy (T274 §7)
+router.afterEach((to, from) => { if (to.path !== from.path) setSandbox('') })
+export default router

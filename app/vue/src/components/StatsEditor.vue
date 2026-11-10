@@ -64,7 +64,8 @@ watch(open, () => (proposing.value = false))
       <template #trigger="{ toggle }">
         <button type="button" class="btn btn-sm btn-add" @click="toggle"><Icon name="plus" /> параметр</button>
       </template>
-      <ProposeCard v-if="proposing" what="новий параметр" all-to="/tasks?zone=entities&sub=params" @done="addOwn" @cancel="proposing = false" />
+      <ProposeCard v-if="proposing" what="новий параметр" all-to="/tasks?zone=entities&sub=params" zone="entities" subzone="params"
+                   @done="addOwn" @cancel="proposing = false" />
       <Picker v-else inline autofocus :items placeholder="HP, швидкість, шкода…" @pick="pick">
         <template #footer>
           <div class="foot">

@@ -30,8 +30,8 @@ const place = computed(() => {
   if (p) return { id: `p-${p.id}`, text: `${iconOf(p)} ${p.title}` }
   const r = c.rule && ed.rules.find((x) => x.id === c.rule)
   if (r) return { id: `r-${r.id}`, text: `правило: ${cut(sentence(r, ed.parts).when, 28)}` }
-  const kind = kindOf(info.value)  // unanchored: a level card lives in «Рівні», a game card in its zone, the rest wait in drafts
-  return kind === 'level' ? { id: 'levels', text: '🪜 рівні' } : kind === 'game' ? null : { id: 'drafts', text: '📥 чернетка' }
+  const kind = kindOf(info.value)  // unanchored: a level card lives in «Рівні», a game card in its zone, the rest wait in their section's strip
+  return kind === 'level' ? { id: 'levels', text: '🪜 рівні' } : kind === 'game' ? null : { id: `c-${c.id}`, text: 'ще без місця' }
 })
 </script>
 

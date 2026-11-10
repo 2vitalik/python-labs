@@ -25,7 +25,7 @@ const winTitle = (id) => ed.windows.find((w) => w.id === id)?.title
           {{ it.title }}
           <a v-if="winTitle(it.window)" href="#" class="text-decoration-none ms-1" @click.prevent="jump('p-' + it.window)">→ 🪟 {{ winTitle(it.window) }}</a>
           <span v-else-if="it.window" class="text-secondary ms-1">→ 🪟 вікна вже нема</span>
-          <span v-else-if="it.task" class="ms-1">⚙ {{ ed.info(it.task)?.title || it.task }}</span>
+          <span v-else-if="it.task" class="ms-1" :title="ed.info(it.task)?.description">⚙ {{ ed.info(it.task)?.title || it.task }}</span>
           <span v-if="it.note" class="text-secondary ms-1">· {{ it.note }}</span>
         </div>
       </div>

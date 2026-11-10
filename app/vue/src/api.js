@@ -8,6 +8,8 @@ export const getVocab = () => request('/api/vocab')
 export const getTemplates = () => request('/api/templates')
 export const getGames = () => request('/api/games')
 export const getEtalon = (slug) => request(`/api/games/${slug}/etalon`)  // the base game's reference description, shaped as a student's game
+export const getSandbox = (slug) => request(`/api/games/${slug}/sandbox`)  // the reader's scratch copy of the sample (T274 §7)
+export const resetSandbox = (slug) => request(`/api/games/${slug}/sandbox`, 'POST')
 export const getTasks = () => request('/api/tasks')
 export const postGame = (data) => request('/api/games', 'POST', data)
 export const putGame = (id, data) => request(`/api/games/${id}`, 'PUT', data)
@@ -34,3 +36,4 @@ export const getRefs = () => request('/api/refs')
 export const postRef = (data) => request('/api/refs', 'POST', data)
 export const putRef = (id, data) => request(`/api/refs/${id}`, 'PUT', data)
 export const deleteRef = (id) => request(`/api/refs/${id}`, 'DELETE')
+export const judgeRef = (id, data) => request(`/api/refs/${id}/verdict`, 'PUT', data)  // the teacher: taken / dropped, a reply

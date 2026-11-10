@@ -1,12 +1,14 @@
 <script setup>
 import { subStyle } from '../catalog.js'
 
+// the filter of /tasks: a row of categories, under the chosen one — a row of its subcategories, each with how many cards match
 defineProps({ zones: Object, counts: Object, zone: String, sub: String })
 defineEmits(['select'])
 </script>
 
 <template>
   <nav class="mb-3">
+    <div class="cap">категорія</div>
     <div class="d-flex flex-wrap gap-2">
       <button type="button" class="btn btn-sm zone-btn" :class="{ active: !zone }"
               @click="$emit('select', '', '')">
@@ -18,18 +20,22 @@ defineEmits(['select'])
         {{ z.icon }} {{ z.title }} <span class="count">{{ counts[zk] || 0 }}</span>
       </button>
     </div>
-    <div v-if="zones[zone]" class="d-flex flex-wrap gap-1 mt-2">  <!-- ?zone= in the URL comes before the zones load -->
-      <button v-for="([st, si], sk, i) in zones[zone].subzones" :key="sk" type="button"
-              class="btn btn-sm sub-btn" :style="subStyle(zones[zone].color, i)"
-              :class="{ active: sub === sk, 'opacity-50': !counts[`${zone}/${sk}`] }"
-              @click="$emit('select', zone, sub === sk ? '' : sk)">
-        {{ si }} {{ st }} <span class="count">{{ counts[`${zone}/${sk}`] || 0 }}</span>
-      </button>
-    </div>
+    <template v-if="zones[zone]">  <!-- ?zone= in the URL comes before the zones load -->
+      <div class="cap mt-2">підкатегорія</div>
+      <div class="d-flex flex-wrap gap-1">
+        <button v-for="([st, si], sk, i) in zones[zone].subzones" :key="sk" type="button"
+                class="btn btn-sm sub-btn" :style="subStyle(zones[zone].color, i)"
+                :class="{ active: sub === sk, 'opacity-50': !counts[`${zone}/${sk}`] }"
+                @click="$emit('select', zone, sub === sk ? '' : sk)">
+          {{ si }} {{ st }} <span class="count">{{ counts[`${zone}/${sk}`] || 0 }}</span>
+        </button>
+      </div>
+    </template>
   </nav>
 </template>
 
 <style scoped>
+.cap { margin-bottom: .2rem; font-size: .7rem; color: var(--bs-secondary-color); }
 .zone-btn {
   --zc: #6c757d;
   font-weight: 600; color: var(--zc);

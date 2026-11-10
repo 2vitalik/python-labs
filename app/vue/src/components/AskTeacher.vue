@@ -3,18 +3,22 @@ import { ref } from 'vue'
 
 import Icon from '@core/components/Icon.vue'
 import { postRef } from '../api.js'
+import { taskIndex } from '../catalog.js'
 
-// «Картка мала б бути деінде?» (T270 §6): one line to the teacher — an idea and a Telegram alert; the teacher moves the card
-const props = defineProps({ title: String })
+// «Картка мала б бути деінде?» (T270 §6): one line to the teacher — a word about this card (`fix`) with its category in
+// /ideas and a Telegram alert; the teacher moves the card
+const props = defineProps({ task: String })
 const open = ref(false)
 const text = ref('')
 const sent = ref(false)
 const error = ref('')
 
 async function send() {
+  const card = taskIndex.value[props.task]
   error.value = ''
   try {
-    await postRef({ title: `Картка «${props.title}»: інше місце`, note: text.value.trim() })
+    await postRef({ kind: 'fix', task: props.task, zone: card?.zone || '', subzone: card?.subzone || '',
+                    title: 'Мала б бути деінде', note: text.value.trim() })
     sent.value = true
   } catch (e) {
     error.value = e.message

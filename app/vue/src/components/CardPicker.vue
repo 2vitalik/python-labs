@@ -57,7 +57,9 @@ async function send(task, p) {
     <template #trigger="{ toggle }">
       <button type="button" class="btn btn-sm btn-add" @click="toggle"><Icon name="plus" /> {{ label }}</button>
     </template>
-    <ProposeCard v-if="proposing" what="нову картку" @done="open = false" @cancel="proposing = false" />
+    <ProposeCard v-if="proposing" what="нову картку" @done="open = false" @cancel="proposing = false"
+                 :zone="{ mechanic: 'entities', element: 'interface', field: 'interface', level: 'levels', rule: 'game-logic' }[kinds[0]]"
+                 :subzone="{ element: 'hud', field: 'render' }[kinds[0]]" />
     <div v-else-if="picked" class="vstack gap-2">
       <div class="fw-semibold">{{ picked.icon }} {{ picked.title }}</div>
       <div v-if="picked.desc" class="desc">{{ plain(picked.desc) }}</div>

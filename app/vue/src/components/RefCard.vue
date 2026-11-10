@@ -1,31 +1,35 @@
 <script setup>
-import { computed, reactive, ref } from 'vue'
+import { computed, ref } from 'vue'
 
-import { putRef } from '../api.js'
+import DelButton from '@core/components/DelButton.vue'
+import Icon from '@core/components/Icon.vue'
 import { user } from '@core/user.js'
-import GrowArea from '@core/components/GrowArea.vue'
+import { deleteRef } from '../api.js'
+import { KINDS, refKind } from '../ideas.js'
+import IdeaForm from './IdeaForm.vue'
+import RefChips from './RefChips.vue'
+import RefJudge from './RefJudge.vue'
 
-// one find (link with a YouTube thumb) or idea (💡, no url); edits inline, ideas can hang under a link
+// one record of /ideas: its kind's sign (a YouTube find shows its thumb), title, text, what it is about, its state and the
+// teacher's answer; the author or the teacher edits it in place with the same form; a find takes an idea under it
 const props = defineProps({ r: Object })
-const emit = defineEmits(['changed', 'remove', 'idea'])
+const emit = defineEmits(['changed', 'idea'])
+const STATE = { linked: ['взято', 'text-bg-success'], dropped: ['відхилено', 'text-bg-secondary'] }  // a new one wears no badge
 const editing = ref(false)
 const error = ref('')
-const form = reactive({ url: '', title: '', note: '' })
+const kind = computed(() => refKind(props.r))
+const admin = computed(() => user.value?.status === 'admin')
+const canEdit = computed(() => props.r.mine || admin.value)
 
-const ytId = (url) => url.match(/(?:youtu\.be\/|[?&]v=|\/shorts\/|\/embed\/)([\w-]{11})/)?.[1]
+const ytId = (url) => url?.match(/(?:youtu\.be\/|[?&]v=|\/shorts\/|\/embed\/)([\w-]{11})/)?.[1]
 const host = (url) => { try { return new URL(url).hostname.replace('www.', '') } catch { return url } }
 const day = (iso) => new Date(iso).toLocaleDateString('uk-UA', { day: 'numeric', month: 'short' })
-const canEdit = computed(() => props.r.mine || user.value?.status === 'admin')
 
-function start() {
-  Object.assign(form, { url: props.r.url, title: props.r.title, note: props.r.note })
-  editing.value = true
-}
-async function save() {
+const saved = () => { editing.value = false; emit('changed') }
+async function remove() {
   error.value = ''
   try {
-    await putRef(props.r.id, { ...form, parent: props.r.parent })
-    editing.value = false
+    await deleteRef(props.r.id)
     emit('changed')
   } catch (e) {
     error.value = e.message
@@ -35,39 +39,42 @@ async function save() {
 
 <template>
   <div class="card">
-    <div class="card-body py-2 d-flex gap-3 align-items-center">
+    <div v-if="editing" class="card-body py-2"><IdeaForm :edit="r" compact @done="saved" @cancel="editing = false" /></div>
+    <div v-else class="card-body py-2 d-flex gap-3 align-items-start">
       <a v-if="ytId(r.url)" :href="r.url" target="_blank" class="flex-shrink-0">
         <img :src="`https://i.ytimg.com/vi/${ytId(r.url)}/mqdefault.jpg`" class="rounded border thumb" alt="">
       </a>
-      <span v-else-if="r.kind === 'idea'" class="fs-4" title="Ідея">💡</span>
-      <div v-if="editing" class="vstack gap-2 flex-grow-1" @keydown.enter="(e) => (e.metaKey || e.ctrlKey) && save()">
-        <input v-model="form.url" class="form-control form-control-sm" placeholder="https://… (порожнє = ідея)">
-        <input v-model="form.title" class="form-control form-control-sm" placeholder="Назва">
-        <div class="d-flex gap-2 align-items-start">
-          <GrowArea v-model="form.note" class="form-control form-control-sm" placeholder="Нотатка" />
-          <button class="btn btn-primary btn-sm" title="⌘/Ctrl+Enter" @click="save">💾</button>
-          <button class="btn btn-outline-secondary btn-sm" @click="editing = false">✕</button>
+      <span v-else class="sign" :title="KINDS[kind].one">{{ KINDS[kind].icon }}</span>
+      <div class="flex-grow-1 min-w-0 vstack gap-1">
+        <div>
+          <a v-if="r.url" :href="r.url" target="_blank" class="text-break">{{ r.title || host(r.url) }}</a>
+          <span v-else class="text-break note" :class="{ 'fw-semibold': r.title }">{{ r.title || r.note }}</span>
+          <span v-if="STATE[r.status]" class="badge ms-2" :class="STATE[r.status][1]">{{ STATE[r.status][0] }}</span>
         </div>
+        <div v-if="r.note && (r.url || r.title)" class="note small">{{ r.note }}</div>
+        <div class="d-flex flex-wrap align-items-center gap-2 small">
+          <RefChips :r />
+          <span class="text-secondary">{{ r.author }} · {{ day(r.created_at) }}</span>
+          <span class="d-flex align-items-center gap-1 ms-auto">
+            <button v-if="kind === 'link'" type="button" class="iact add wide" @click="emit('idea')"><Icon name="plus" /> ідея до цієї знахідки</button>
+            <RefJudge v-if="admin" :r @changed="emit('changed')" />
+            <template v-if="canEdit">
+              <button type="button" class="iact" title="Редагувати" @click="editing = true"><Icon name="pencil" /></button>
+              <DelButton what="запис" @yes="remove" />
+            </template>
+          </span>
+        </div>
+        <div v-if="r.reply" class="note small"><span class="text-secondary">↳ викладач:</span> {{ r.reply }}</div>
         <div v-if="error" class="text-danger small">{{ error }}</div>
       </div>
-      <div v-else class="flex-grow-1 min-w-0">
-        <a v-if="r.url" :href="r.url" target="_blank" class="text-break">{{ r.title || host(r.url) }}</a>
-        <span v-else class="text-break note">{{ r.title || r.note }}</span>
-        <div v-if="r.note && (r.url || r.title)" class="text-secondary small note">{{ r.note }}</div>
-        <div class="text-secondary small">{{ r.author }} · {{ day(r.created_at) }}</div>
-      </div>
-      <template v-if="!editing">
-        <span v-if="r.kind === 'link'" role="button" title="Записати ідею до цієї знахідки" @click="$emit('idea')">💡</span>
-        <template v-if="canEdit">
-          <span role="button" title="Редагувати" @click="start">✏️</span>
-          <span role="button" title="Видалити" @click="$emit('remove')">🗑️</span>
-        </template>
-      </template>
     </div>
   </div>
 </template>
 
 <style scoped>
 .thumb { width: 120px; }
+.sign { font-size: 1.4rem; line-height: 1.2; width: 2rem; text-align: center; flex-shrink: 0; }
 .note { white-space: pre-line; }
+.iact.wide { width: auto; gap: .3rem; padding: 0 .45rem; font-size: .8rem; }
+@media (max-width: 575px) { .thumb { width: 80px; } }
 </style>

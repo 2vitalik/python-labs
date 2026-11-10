@@ -30,7 +30,7 @@ const firstRoot = (windows, out) =>
 
 // breadth-first from the root: the first edge that reaches a window makes it a child, every other edge is an extra of
 // its source; windows the root does not reach start trees of their own, in list order.
-// → { roots, kids: {id: [child id]}, extras: {id: [target id]}, label: {child id: its arrow's label} }
+// → { roots, kids: {id: [child id]}, extras: {id: [target id]}, label: {child id: its arrow's label, uncut} }
 export function forest(windows, menus, rules = []) {
   const out = transitions(windows, menus, rules)
   const seen = new Set(), roots = [], kids = {}, extras = {}, label = {}
@@ -47,7 +47,7 @@ export function forest(windows, menus, rules = []) {
         else {
           seen.add(e.to)
           kids[v].push(e.to)
-          label[e.to] = cut(e.labels.join(', '), 28)
+          label[e.to] = e.labels.join(', ')
           queue.push(e.to)
         }
       }

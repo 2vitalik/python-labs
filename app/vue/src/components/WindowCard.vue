@@ -21,10 +21,12 @@ const edit = ref(false)
 const error = ref('')
 const type = computed(() => ed.info(props.part.task))
 const menu = computed(() => ed.menus.find((m) => m.window === props.part.id))
+const bare = computed(() => ed.editable && !edit.value && !props.part.description && !props.part.screenshots?.length)
 const claims = computed(() => ed.claimsOf(props.part.id).filter((c) => !c.auto))
-// an element implies a function of the whole game (a volume slider → the volume really changes): offer it once
-const pairs = computed(() => claims.value.filter((c) => PAIRS[c.task] && !ed.claims.some((x) => x.task === PAIRS[c.task]))
-  .map((c) => ({ slug: PAIRS[c.task], element: ed.info(c.task)?.title || c.task, fn: ed.info(PAIRS[c.task])?.title || PAIRS[c.task] })))
+// the window's type or an element implies a function of the whole game (a volume slider → the volume really changes): offer it once
+const pairs = computed(() => [props.part.task, ...claims.value.map((c) => c.task)]
+  .filter((slug) => ed.info(PAIRS[slug]) && !ed.claims.some((x) => x.task === PAIRS[slug]))  // a card the reader cannot see is not offered
+  .map((slug) => ({ slug: PAIRS[slug], element: ed.info(slug)?.title || slug, fn: ed.info(PAIRS[slug])?.title || PAIRS[slug] })))
 
 async function run(fn) {
   error.value = ''
@@ -44,7 +46,7 @@ async function addPair(slug) {
 </script>
 
 <template>
-  <div :id="'p-' + part.id" class="card">
+  <div :id="'p-' + part.id" class="card" :class="{ bare }">
     <div class="card-body p-2 vstack gap-2">
       <WindowForm v-if="edit" :part @done="edit = false" @cancel="edit = false" />
       <template v-else>
@@ -52,7 +54,7 @@ async function addPair(slug) {
           <span>🪟</span>
           <div class="head flex-grow-1">
             <span class="fw-semibold">{{ part.title }}</span>
-            <span class="badge border fw-normal text-secondary bg-body-tertiary text-wrap text-start">
+            <span class="badge border fw-normal text-secondary bg-body-tertiary text-wrap text-start" :title="type?.description">
               <CoinBadge :coin="type?.coin" :amount="type?.amount" /> {{ type?.title || part.task }}</span>
           </div>
           <template v-if="ed.editable">
@@ -60,6 +62,7 @@ async function addPair(slug) {
             <DelButton :what="`вікно «${part.title}»`" @yes="remove" />
           </template>
         </div>
+        <div v-if="bare" class="unsaid">ще не описано — олівець: назва, опис, скриншот</div>
         <div v-if="part.description" class="small text-secondary">{{ part.description }}</div>
         <ShotStrip :part />
         <template v-if="!ed.simple">
@@ -71,7 +74,7 @@ async function addPair(slug) {
           </div>
           <template v-if="ed.editable">
             <div v-for="p in pairs" :key="p.slug" class="small text-secondary d-flex flex-wrap align-items-center column-gap-2">
-              <span>💡 є «{{ p.element }}» — додай і те, що він робить: «{{ p.fn }}»</span>
+              <span>💡 є «{{ p.element }}» — заяви й те, що за ним стоїть: «{{ p.fn }}»</span>
               <button type="button" class="btn btn-sm btn-add py-0" @click="addPair(p.slug)"><Icon name="plus" /> додати</button>
             </div>
           </template>
@@ -83,6 +86,9 @@ async function addPair(slug) {
 </template>
 
 <style scoped>
+/* fresh from the catalog's «＋» and not yet told about (T274 §3): the owner sees what is still to fill */
+.card.bare { border-style: dashed; border-color: color-mix(in srgb, var(--bs-danger) 40%, var(--bs-border-color)); }
+.unsaid { font-size: .75rem; color: color-mix(in srgb, var(--bs-danger-text-emphasis) 75%, var(--bs-secondary-color)); }
 /* the title and the type wrap inside their own block, so the pencil and the trash stay in the card on a phone */
 .head { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem .5rem; min-width: 0; overflow-wrap: anywhere; }
 </style>

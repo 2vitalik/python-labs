@@ -25,6 +25,7 @@ const claims = computed(() => ed.claimsOf(props.part.id))
 const auto = computed(() => claims.value.filter((c) => c.auto))
 const mechanics = computed(() => claims.value.filter((c) => !c.auto))
 const roleClaim = computed(() => (role.value.slug ? auto.value.find((c) => c.task === role.value.slug) : null))
+const bare = computed(() => ed.editable && !edit.value && !props.part.description && !props.part.screenshots?.length)
 
 async function remove() {
   error.value = ''
@@ -38,7 +39,7 @@ async function remove() {
 </script>
 
 <template>
-  <div :id="`p-${part.id}`" class="card">
+  <div :id="`p-${part.id}`" class="card" :class="{ bare }">
     <div class="card-body p-2 vstack gap-2">
       <EntityForm v-if="edit" :part @done="edit = false" @cancel="edit = false" />
       <template v-else>
@@ -51,6 +52,7 @@ async function remove() {
             <DelButton :what="`сутність «${part.title}»`" note="разом з її правилами й заявками" @yes="remove" />
           </span>
         </div>
+        <div v-if="bare" class="unsaid">ще не описано — олівець: назва, опис, скриншот</div>
         <div v-if="part.description" class="desc">{{ part.description }}</div>
         <EntityStats v-if="!ed.simple" :part :auto />
         <ShotStrip :part />
@@ -72,5 +74,8 @@ async function remove() {
 .ico { font-size: 1.5rem; line-height: 1; }
 .type { font-size: .8rem; color: var(--bs-secondary-color); }
 .desc { font-size: .85rem; }
+/* fresh from the catalog's «＋» and not yet told about (T274 §3): the owner sees what is still to fill */
+.card.bare { border-style: dashed; border-color: color-mix(in srgb, var(--bs-danger) 40%, var(--bs-border-color)); }
+.unsaid { font-size: .75rem; color: color-mix(in srgb, var(--bs-danger-text-emphasis) 75%, var(--bs-secondary-color)); }
 .label { font-size: .7rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--bs-secondary-color); }
 </style>

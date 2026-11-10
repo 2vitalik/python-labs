@@ -1,88 +1,69 @@
 <script setup>
-import { computed, onMounted, reactive, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
-import { deleteRef, getRefs, postRef } from '../api.js'
 import Crumbs from '@core/components/Crumbs.vue'
-import GrowArea from '@core/components/GrowArea.vue'
+import Icon from '@core/components/Icon.vue'
+import { getRefs } from '../api.js'
+import { loadCatalog } from '../catalog.js'
+import { useRefFilter } from '../refFilter.js'
+import IdeaForm from '../components/IdeaForm.vue'
 import RefCard from '../components/RefCard.vue'
+import RefFilters from '../components/RefFilters.vue'
 
-// one stream of finds (links) and ideas (no url); an idea may hang under a find (`parent`) and shows indented below it
-const FILTERS = { all: 'усе', link: '🔗 лінки', idea: '💡 ідеї' }
+// one stream of finds, card ideas and words about cards and the site (T274 §4); an idea under a find (`parent`) sits
+// indented below it when both are on screen
 const refs = ref([])
+const loaded = ref(false)
 const error = ref('')
-const filter = ref('all')
-const form = reactive({ url: '', note: '' })
-const ideaFor = ref('')  // find id the mini-form under a card belongs to
-const ideaNote = ref('')
-const canAdd = computed(() => form.url.trim() || form.note.trim())
-const hot = (e, fn) => (e.metaKey || e.ctrlKey) && fn()  // ⌘/Ctrl+Enter submits, plain Enter is a new line
+const writing = ref(false)
+const ideaFor = ref('')  // the find whose «＋ ідея» form is open
+const { f, set, clear, counts, shown } = useRefFilter(refs)
 
-const shown = computed(() => {  // [find, ideas under it][]; the ideas filter lists every idea flat
-  const ids = new Set(refs.value.map((r) => r.id))
-  if (filter.value === 'idea') return refs.value.filter((r) => r.kind === 'idea').map((r) => [r, []])
-  const top = refs.value.filter((r) => !(r.parent && ids.has(r.parent)) && (filter.value === 'all' || r.kind === 'link'))
-  return top.map((r) => [r, filter.value === 'all' ? refs.value.filter((k) => k.parent === r.id).reverse() : []])
+const rows = computed(() => {  // [record, ideas under it][]
+  const ids = new Set(shown.value.map((r) => r.id))
+  return shown.value.filter((r) => !ids.has(r.parent)).map((r) => [r, shown.value.filter((k) => k.parent === r.id).reverse()])
 })
 
 async function load() {
-  refs.value = await getRefs()
-}
-async function run(fn) {
   error.value = ''
   try {
-    await fn()
-    await load()
+    refs.value = await getRefs()
+    loaded.value = true
   } catch (e) {
     error.value = e.message
   }
 }
-const add = () => run(async () => {
-  await postRef(form)
-  form.url = form.note = ''
-})
-const addIdea = () => run(async () => {
-  await postRef({ note: ideaNote.value, parent: ideaFor.value })
-  ideaFor.value = ideaNote.value = ''
-})
-const remove = (r) => run(() => deleteRef(r.id))
+const done = () => { writing.value = false; ideaFor.value = ''; load() }
 
-onMounted(load)
+onMounted(() => { loadCatalog(); load() })
 </script>
 
 <template>
   <div>
     <Crumbs :items="['Знахідки']" />
-    <h1 class="h3 mb-1">Знахідки</h1>
-    <p class="text-secondary">Побачив круту гру, механіку чи ідею — відео, стаття, сайт, сама гра — кинь лінк сюди, поки не загубився.
-      Своя ідея без лінка — теж сюди. Розбір і розкладання по картках каталогу — потім.</p>
+    <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
+      <h1 class="h3 mb-0 me-auto">Знахідки й ідеї</h1>
+      <button v-if="!writing" type="button" class="btn btn-sm btn-add" @click="writing = true"><Icon name="plus" /> Записати</button>
+    </div>
+    <p class="text-secondary">Знахідки — посилання на круті ігри й відео, ідеї — чого бракує в каталозі, а ще думки про картки
+      й про сам сайт; бачать усі, викладач відповідає.</p>
 
-    <div class="card mb-3">
-      <div class="card-body vstack gap-2" @keydown.enter="hot($event, add)">
-        <input v-model="form.url" class="form-control" placeholder="https://… (порожнє = ідея)">
-        <div class="d-flex gap-2 align-items-start">
-          <GrowArea v-model="form.note" class="form-control" placeholder="Що тут крутого? — або сама ідея" />
-          <button class="btn btn-primary text-nowrap" :disabled="!canAdd" title="⌘/Ctrl+Enter" @click="add">
-            {{ form.url.trim() ? 'Кинути лінк' : 'Записати ідею' }}</button>
-        </div>
-      </div>
-    </div>
+    <div v-if="writing" class="card mb-3"><div class="card-body"><IdeaForm @done="done" @cancel="writing = false" /></div></div>
+    <RefFilters :f :counts @set="set" />
     <div v-if="error" class="alert alert-danger">{{ error }}</div>
-    <div class="d-flex gap-2 mb-3">
-      <button v-for="(t, k) in FILTERS" :key="k" class="btn btn-sm" :class="filter === k ? 'btn-secondary' : 'btn-outline-secondary'"
-              @click="filter = k">{{ t }}</button>
-    </div>
 
     <div class="vstack gap-2">
-      <template v-for="[r, kids] in shown" :key="r.id">
-        <RefCard :r @changed="load" @remove="remove(r)" @idea="ideaFor = r.id" />
-        <div v-if="ideaFor === r.id" class="ms-4 d-flex gap-2 align-items-start" @keydown.enter="hot($event, addIdea)">
-          <GrowArea v-model="ideaNote" class="form-control form-control-sm" placeholder="Ідея до цієї знахідки" />
-          <button class="btn btn-primary btn-sm" :disabled="!ideaNote.trim()" title="⌘/Ctrl+Enter" @click="addIdea">Записати</button>
-          <button class="btn btn-outline-secondary btn-sm" @click="ideaFor = ''">✕</button>
+      <template v-for="[r, kids] in rows" :key="r.id">
+        <RefCard :r @changed="load" @idea="ideaFor = r.id" />
+        <div v-if="ideaFor === r.id" class="card ms-4">
+          <div class="card-body py-2"><IdeaForm kind="idea" :parent="r.id" compact @done="done" @cancel="ideaFor = ''" /></div>
         </div>
-        <RefCard v-for="k in kids" :key="k.id" :r="k" class="ms-4" @changed="load" @remove="remove(k)" />
+        <RefCard v-for="k in kids" :key="k.id" :r="k" class="ms-4" @changed="load" />
       </template>
     </div>
-    <p v-if="!shown.length" class="text-secondary text-center mt-4">Поки порожньо — кинь перший лінк 🙂</p>
+    <p v-if="loaded && !rows.length" class="text-secondary text-center mt-4">
+      <template v-if="refs.length">Нічого не знайдено — <a href="#" @click.prevent="clear">зніми фільтри</a></template>
+      <template v-else>Поки порожньо — запиши першу знахідку 🙂</template>
+    </p>
   </div>
 </template>

@@ -27,7 +27,7 @@ const set = (key, v) => (model.value = { ...model.value, [key]: v })
         <input v-else-if="s.type === 'text'" :value="model[s.key] || ''" class="form-control form-control-sm text" :placeholder="s.hint"
                @input="set(s.key, $event.target.value)">
         <template v-else>
-          <TagInput :model-value="model[s.key] || []" :hash="false" placeholder="слово і Enter" @update:model-value="set(s.key, $event)" />
+          <TagInput :model-value="model[s.key] || []" :hash="false" placeholder="слова через кому" @update:model-value="set(s.key, $event)" />
           <div v-if="s.hint" class="form-text mt-1">{{ s.hint }}</div>
         </template>
       </template>

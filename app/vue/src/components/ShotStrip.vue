@@ -8,11 +8,12 @@ import { deleteShot, uploadShot } from '../api.js'
 import { useEd } from '../ed.js'
 
 // the screenshots of a part (T270 §10.3): thumbnails that open over the page; the owner adds through the violet tile,
-// always there, and takes one off by the round control in its corner
+// always there (not in the sample's sandbox: nothing is uploaded there), and takes one off by the round control in its corner
 const props = defineProps({ part: Object })
 const ed = useEd()
 const error = ref('')
 const busy = ref(false)
+const adds = computed(() => ed.editable && !ed.sandbox)
 const urls = computed(() => (props.part.screenshots || []).map((s) => `/api/uploads/${props.part.game}/${s}`))
 
 async function run(fn) {
@@ -36,13 +37,13 @@ const remove = (name) => run(() => deleteShot(props.part.id, name))
 </script>
 
 <template>
-  <div v-if="ed.editable || urls.length">
+  <div v-if="adds || urls.length">
     <div class="d-flex flex-wrap align-items-center gap-2">
       <div v-for="(s, i) in part.screenshots" :key="s" class="shot">
         <img :src="urls[i]" alt="скриншот" class="rounded border" title="на весь екран" @click="showShot(urls, i)">
         <span v-if="ed.editable" class="rm"><DelButton what="скриншот" @yes="remove(s)" /></span>
       </div>
-      <label v-if="ed.editable" class="add" :class="{ busy, lone: !urls.length }" title="png, jpg, webp або gif до 8 МБ">
+      <label v-if="adds" class="add" :class="{ busy, lone: !urls.length }" title="png, jpg, webp або gif до 8 МБ">
         <Icon name="plus" /><span v-if="!urls.length">скриншот</span>
         <input type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden :disabled="busy" @change="onFile">
       </label>

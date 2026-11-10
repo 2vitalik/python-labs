@@ -54,7 +54,7 @@ async function save() {
       <div class="label">Параметри</div>
       <StatsEditor v-model="form.stats" />
       <div class="label">Стани</div>
-      <TagInput v-model="form.states" :hash="false" placeholder="стан і Enter" :known="STATES" />
+      <TagInput v-model="form.states" :hash="false" placeholder="стани через кому" :known="STATES" />
       <div class="hint">переходи між станами — правилами з ефектом «стає…»</div>
     </template>
     <div class="d-flex gap-2">

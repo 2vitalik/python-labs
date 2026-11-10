@@ -61,7 +61,7 @@ function newRule() {
         </div>
         <MoveTo v-if="moving" :claim @pick="move" @rule="newRule" />
       </template>
-      <AskTeacher :title />
+      <AskTeacher :task="claim.task" />
     </div>
   </div>
 </template>

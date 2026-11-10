@@ -64,7 +64,7 @@ async function save() {
         </button>
       </template>
       <template v-if="proposing">
-        <ProposeCard what="новий тип вікна" all-to="/tasks?zone=interface&sub=menus" @done="choose('custom-window')" />
+        <ProposeCard what="новий тип вікна" all-to="/tasks?zone=interface&sub=menus" zone="interface" subzone="menus" @done="choose('custom-window')" />
         <button type="button" class="btn btn-link btn-sm p-0 mt-1 text-decoration-none" @click="proposing = false">← до списку типів</button>
       </template>
       <Picker v-else inline autofocus :items="types" placeholder="головне меню, пауза, кінець гри…" @pick="choose($event.key)">

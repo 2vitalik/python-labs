@@ -3,7 +3,7 @@ import { computed } from 'vue'
 
 import { zones } from '../catalog.js'
 
-// «де лежить» of the card form: zone, subzone, family, order, slug — folded under one muted line for a card that exists.
+// «де лежить» of the card form: category (zone), subcategory (subzone), family, order, slug — folded under one muted line for a card that exists.
 // `f` is TaskEdit's form, written in place
 const props = defineProps({ f: Object, open: Boolean })
 const zone = computed(() => zones.value[props.f.zone])
@@ -17,12 +17,12 @@ const firstSub = (z) => Object.keys(zones.value[z]?.subzones || {})[0] || ''
       · у сімʼї {{ f.parent }}</template> · <span class="font-monospace">{{ f.slug || 'без slug' }}</span>
     </summary>
     <div class="row-f mt-1">
-      <label class="f w9">зона
+      <label class="f w9">категорія
         <select v-model="f.zone" class="form-select form-select-sm" @change="f.subzone = firstSub(f.zone)">
           <option v-for="(z, k) in zones" :key="k" :value="k">{{ z.icon }} {{ z.title }}</option>
         </select>
       </label>
-      <label class="f w9">підзона
+      <label class="f w9">підкатегорія
         <select v-model="f.subzone" class="form-select form-select-sm">
           <option v-for="(s, k) in zone?.subzones" :key="k" :value="k">{{ s[1] }} {{ s[0] }}</option>
         </select>

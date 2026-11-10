@@ -17,7 +17,7 @@ const step = ref(null)
 const error = ref('')
 
 const FORMS = [
-  { key: 'form:rule', title: 'Правило', icon: '📜', desc: 'КОЛИ подія — ЯКЩО умова — ТО ефект', words: ['коли', 'якщо', 'взаємодія', 'подія', 'rule'], open: 'rule' },
+  { key: 'form:rule', title: 'Правило', icon: '⚡', desc: 'КОЛИ подія — ЯКЩО умова — ТО ефект', words: ['коли', 'якщо', 'взаємодія', 'подія', 'rule'], open: 'rule' },
   { key: 'form:level', title: 'Рівень', icon: '🪜', desc: 'звідки береться, розмір, параметри, скриншот', words: ['мапа', 'карта', 'level'], open: 'level' },
   { key: 'form:field', title: 'Поле', icon: '🗺️', desc: 'сітка, вид, час, керування', words: ['сітка', 'grid', 'field'], go: 'field' },
 ]
@@ -47,7 +47,7 @@ async function pick(it) {
   try {
     const c = await postClaim({ task: it.task.slug, part: kind === 'field' && ed.field ? ed.field.id : '', params: {} })
     ed.changed()
-    jump(kind === 'field' && !ed.field ? 'drafts' : `c-${c.id}`)
+    jump(`c-${c.id}`)
   } catch (e) {
     error.value = e.message
   }

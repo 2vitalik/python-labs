@@ -41,7 +41,12 @@ export const PAIRS = {
   'pause-menu': 'game-pause', 'shop-window': 'shop-between-levels', 'editor-window': 'in-game-editor', 'leaderboard': 'score-records',
   'stats-window': 'profile-stats', 'mode-select': 'difficulty-levels', 'replay-window': 'replay', 'lobby-window': 'online-multiplayer',
   'pass-device': 'hot-seat', 'inventory-window': 'inventory', 'save-load-window': 'save-multi-slot', 'name-entry': 'score-records',
+  'shop-preview': 'shop-between-levels', 'legal-move-highlight': 'piece-move-patterns', 'wave-progress': 'enemy-waves',
+  'achievements-window': 'achievements', 'calendar-window': 'daily-puzzle',
 }
+// the functions that are nothing without their window or element — the hint «є функція — додай і вікно» goes only for them
+export const NEEDS_SCREEN = ['shop-between-levels', 'in-game-editor', 'save-multi-slot', 'markup-validity', 'telegraphed-intents',
+  'sound-volume', 'achievements']
 
 export const roleOf = (role) => vocab.value.roles[role] || { label: role, icon: '❔', group: '' }
 const PART_ICON = { window: '🪟', field: '🗺️', level: '🪜', menu: '☰' }

@@ -3,7 +3,7 @@ import { computed } from 'vue'
 
 import { zones } from '../catalog.js'
 import { useTaskFilter } from '../taskFilter.js'
-import MasonryGroups from './MasonryGroups.vue'
+import TaskGroups from './TaskGroups.vue'
 import ZoneNav from './ZoneNav.vue'
 
 const props = defineProps({ game: { type: String, default: '' } })
@@ -20,7 +20,7 @@ const shown = computed(() => grouped.value.reduce((n, z) => n + z.subs.reduce((m
     <h2 v-if="!f.zone" class="h6 zone-head" :style="{ '--zc': z.color }">
       {{ z.icon }} {{ z.title }} <span class="count">{{ counts[z.key] || 0 }}</span>
     </h2>
-    <MasonryGroups :zone="z.key" :color="z.color" :subs="z.subs" />
+    <TaskGroups :zone="z.key" :color="z.color" :subs="z.subs" />
   </section>
 </template>
 

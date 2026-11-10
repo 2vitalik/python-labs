@@ -6,16 +6,25 @@ import Icon from '@core/components/Icon.vue'
 import { games } from '../catalog.js'
 
 // creating the game: base · title · description as three cards, the profile's way (ProfileForm);
-// once it exists the same fields fold into one compact card above the description's sections
+// once it exists the same fields fold into one compact card above the description's sections, and «змінити основу» opens
+// the choice with its own «Зберегти» / «Скасувати» (T274 §10)
 const props = defineProps({ dirty: Boolean, saved: Boolean, error: String, fresh: Boolean })
 defineEmits(['save'])
 const form = defineModel({ type: Object, required: true })
 const custom = ref(false)
-const changing = ref(false)
+const was = ref(null)  // the base before «змінити основу», while the choice is open
 watch(() => form.value.base_custom, (v) => v && !form.value.base_game && (custom.value = true))
-const pick = (slug) => { form.value.base_game = slug; custom.value = !slug; changing.value = false }
+watch(() => props.saved, (v) => v && (was.value = null))
+const pick = (slug) => { form.value.base_game = slug; custom.value = !slug }
+const change = () => (was.value = { base_game: form.value.base_game, base_custom: form.value.base_custom })
+function cancel() {
+  Object.assign(form.value, was.value)
+  custom.value = !was.value.base_game
+  was.value = null
+}
+const moved = computed(() => was.value && (form.value.base_game !== was.value.base_game || form.value.base_custom !== was.value.base_custom))
 const chosen = computed(() => games.value.find((g) => g.slug === form.value.base_game))
-const showChips = computed(() => props.fresh || changing.value)
+const showChips = computed(() => props.fresh || !!was.value)
 </script>
 
 <template>
@@ -27,7 +36,7 @@ const showChips = computed(() => props.fresh || changing.value)
           <span class="text-secondary">Основа:</span>
           <RouterLink v-if="chosen" :to="`/games/${chosen.slug}`">{{ chosen.icon }} {{ chosen.title }}</RouterLink>
           <span v-else>✨ {{ form.base_custom }}</span>
-          <a href="#" class="text-secondary ms-1" title="Обрати іншу гру-основу: описане лишається, міняються еталон і підказки" @click.prevent="changing = true">змінити основу</a>
+          <a href="#" class="text-secondary ms-1" title="Обрати іншу гру-основу: описане лишається, міняються еталон і підказки" @click.prevent="change">змінити основу</a>
         </div>
         <template v-if="showChips">
           <div class="d-flex flex-wrap gap-1">
@@ -40,8 +49,12 @@ const showChips = computed(() => props.fresh || changing.value)
             <template v-if="chosen">Про основу — на її сторінці: <RouterLink :to="`/games/${chosen.slug}`">{{ chosen.title }} ↗</RouterLink></template>
             <template v-else-if="custom">Своя — теж на клітинковому полі; викладач подивиться і, може, додасть її в каталог</template>
             <template v-else>Одна з ігор каталогу — або своя</template>
-            <template v-if="!fresh"> · Зміна основи нічого не стирає: описане лишається, міняються лише еталон і підказки ·
-              <a href="#" @click.prevent="changing = false">не міняти</a></template>
+            <template v-if="!fresh"> · Зміна основи нічого не стирає: описане лишається, міняються лише еталон і підказки</template>
+          </div>
+          <div v-if="!fresh" class="d-flex flex-wrap align-items-center gap-2 mt-2 mb-2">
+            <button class="btn btn-sm btn-success" :disabled="!moved"><Icon name="check" /> Зберегти</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary" @click="cancel">Скасувати</button>
+            <span v-if="error" class="text-danger small">{{ error }}</span>
           </div>
         </template>
         <template v-if="!fresh">
@@ -69,7 +82,7 @@ const showChips = computed(() => props.fresh || changing.value)
       </div>
     </template>
 
-    <div v-if="fresh || dirty || saved || error" class="d-flex align-items-center gap-3" :class="{ 'mb-3': !fresh }">
+    <div v-if="fresh || (!was && (dirty || saved || error))" class="d-flex align-items-center gap-3" :class="{ 'mb-3': !fresh }">
       <button v-if="fresh" class="btn btn-primary" :disabled="!dirty">Створити гру</button>
       <button v-else class="btn btn-sm btn-success" :disabled="!dirty"><Icon name="check" /> Зберегти</button>
       <Transition name="saved">

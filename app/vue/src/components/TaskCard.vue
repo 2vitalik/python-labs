@@ -2,9 +2,10 @@
 import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
-import { COINS, kidsOf, STATUSES, vocab } from '../catalog.js'
+import { COINS, kidsOf, STATUSES } from '../catalog.js'
 import { claimedSlugs } from '../myGame.js'
 import { hl, norm } from '../taskFilter.js'
+import { addable } from '../taskMeta.js'
 import { covers, isUnfolded, order } from '../unfold.js'
 import { user } from '@core/user.js'
 import CoinBadge from './CoinBadge.vue'
@@ -20,7 +21,7 @@ const kids = computed(() => kidsOf.value[props.task.slug] || [])
 const scope = computed(() => `${props.task.zone}/${props.task.subzone}`)
 const open = ref(isUnfolded(scope.value))
 const editing = ref(false)
-const inGame = computed(() => vocab.value.depth !== 'simple' && claimedSlugs.value.has(props.task.slug))
+const inGame = computed(() => claimedSlugs.value.has(props.task.slug) && addable(props.task))
 // family shows the min‥max range of its children's coins instead of the card's reference coin
 const range = computed(() => {
   const present = Object.keys(COINS).filter((c) => kids.value.some((k) => k.coin === c))
@@ -45,7 +46,7 @@ watch(order, (o) => { if (covers(scope.value)) open.value = o.open })
               class="badge text-bg-light border text-secondary fw-normal ms-1">{{ STATUSES[task.status] }}</span>
       </span>
       <TaskAdd v-if="!kids.length" :task :in-game="inGame" />
-      <span v-if="kids.length" class="badge fam" title="сімʼя: кілька варіантів, кожен зі своєю ціною">×{{ kids.length }}</span>
+      <span v-if="kids.length" class="badge fam" title="сімʼя: кілька карток усередині, кожна зі своєю ціною">×{{ kids.length }}</span>
       <span v-if="kids.length" class="text-nowrap" title="діапазон цін варіантів">
         <template v-for="(c, i) in range" :key="c"><span v-if="i" class="text-secondary">‥</span>{{ COINS[c] }}</template>
       </span>

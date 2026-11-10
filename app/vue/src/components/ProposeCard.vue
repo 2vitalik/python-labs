@@ -4,8 +4,9 @@ import { onMounted, ref } from 'vue'
 import Icon from '@core/components/Icon.vue'
 import { postRef } from '../api.js'
 
-// «нема потрібного — запропонуй» (T270 §10.2): a name and two words go to the teacher as an idea (/ideas + Telegram)
-const props = defineProps({ what: String, allTo: String })
+// «нема потрібного — запропонуй» (T270 §10.2): a name and two words go to the teacher as a card idea in its category
+// (/ideas + Telegram)
+const props = defineProps({ what: String, allTo: String, zone: String, subzone: String })
 const emit = defineEmits(['done', 'cancel'])
 const name = ref('')
 const note = ref('')
@@ -17,7 +18,7 @@ onMounted(() => first.value?.focus())
 async function send() {
   error.value = ''
   try {
-    await postRef({ title: `Пропозиція: ${props.what} «${name.value.trim()}»`, note: note.value.trim() })
+    await postRef({ kind: 'idea', title: name.value.trim(), note: note.value.trim(), zone: props.zone || '', subzone: props.subzone || '' })
     sent.value = true
     setTimeout(() => emit('done', name.value.trim()), 1200)
   } catch (e) {
