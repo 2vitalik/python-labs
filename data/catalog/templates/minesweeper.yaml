@@ -1,39 +1,41 @@
 # Minesweeper (Windows 3.1–7): Beginner 9×9 / 10, Intermediate 16×16 / 40, Expert 30×16 / 99; перемога — лише час.
 field:
-  size: "9×9 / 16×16 / 30×16"
   topology: square
   view: top-down
-  gravity: none
-  time: static
-  control: click-cell
+  time: [static]
+  control: [click-cell]
   layers: [вміст, позначки]
 entities:
   - title: Закрита клітина
     role: tile
+    icon: "⬜"
     description: "Ще не відкрита; під нею міна або число; приймає відкриття, прапорець, «?»"
-    claims: [cell-click]
   - title: Міна
     role: hazard
+    icon: "💣"
     description: "Відкриття — програш; на перемозі автоматично позначається прапорцем"
     stats: [{key: count, value: "10 / 40 / 99"}]
     states: [прихована, вибухла, показана]
   - title: Число
     role: mark
+    icon: "1️⃣"
     description: "1–8: скільки мін серед 8 сусідів; клік обома кнопками — акорд"
-    claims: [neighbor-count-clue, chord-click]
   - title: Порожня клітина
     role: mark
+    icon: "▫️"
     description: "0 мін поруч: відкриття розкриває сусідів каскадом до чисел"
   - title: Прапорець
     role: mark
+    icon: "🚩"
     description: "Права кнопка: блокує відкриття; −1 у лічильнику мін (не перевіряється); на програші хибний — з хрестиком"
     states: [стоїть, хибний]
   - title: Знак питання
     role: mark
+    icon: "❓"
     description: "«?» — нотатка «не певен», опція Marks; відкривається звичайно"
-    claims: [dot-mark]
   - title: Смайлик
     role: static
+    icon: "🙂"
     description: "Кнопка над полем: клік — нова гра; обличчя показує стан гри"
     states: ["🙂", "😮", "😵", "😎"]
 rules:
@@ -41,24 +43,28 @@ rules:
     cond: [{kind: first_time}]
     then: [{kind: spawn_at, entity: Міна, where: "випадкові клітини, крім клітини кліку"}, {kind: timer, clock: start}]
     note: "перший клік безпечний: Win 3.1–XP переносять міну в кут, Vista+ розкладає так, щоб тут був нуль"
+    claims: [mines-after-first-click]
   - when: {kind: input, action: "лівий клік", a: Закрита клітина}
     cond: [{kind: has, a: "@a", item: Міна}]
     then: [{kind: set_state, a: Міна, s: вибухла}, {kind: set_state, a: Смайлик, s: "😵"}, {kind: timer, clock: stop}, {kind: lose}, {kind: window, window: Кінець гри}]
     note: "решта мін показуються, хибні прапорці — з хрестиком"
   - when: {kind: input, action: "лівий клік", a: Закрита клітина}
-    cond: [{kind: has, a: "@a", item: Міна, not: true}, {kind: counter, name: мін серед сусідів, op: ">", n: 0}]
+    cond: [{kind: has, a: "@a", item: Міна, not: true}, {kind: adjacent_count, what: Міна, op: ">", n: 0}]
     then: [{kind: transform, a: "@a", into: Число}]
+    claims: [neighbor-count-clue]
   - when: {kind: input, action: "лівий клік", a: Закрита клітина}
-    cond: [{kind: has, a: "@a", item: Міна, not: true}, {kind: counter, name: мін серед сусідів, op: "==", n: 0}]
+    cond: [{kind: has, a: "@a", item: Міна, not: true}, {kind: adjacent_count, what: Міна, op: "==", n: 0}]
     then: [{kind: transform, a: "@a", into: Порожня клітина}]
   - when: {kind: spawned, a: Порожня клітина}
     then: [{kind: fill, cell: target}]
     note: "flood fill: відкрити 8 сусідів, нулі відкривають далі, числа зупиняють, прапорці не чіпаються"
+    claims: [{slug: flood-reveal, params: {neighborhood: "8"}}]
   - when: {kind: input, action: "лівий клік", a: Прапорець}
     then: [{kind: block}]
   - when: {kind: input, action: "правий клік", a: Закрита клітина}
     then: [{kind: transform, a: "@a", into: Прапорець}, {kind: counter, name: мін лишилось, n: -1}]
     note: "лічильник може піти в мінус"
+    claims: [dot-mark]
   - when: {kind: input, action: "правий клік", a: Прапорець}
     then: [{kind: transform, a: "@a", into: Знак питання}, {kind: counter, name: мін лишилось, n: 1}]
     note: "якщо Marks вимкнено — одразу назад у закриту"
@@ -66,14 +72,16 @@ rules:
     then: [{kind: transform, a: "@a", into: Закрита клітина}]
   - when: {kind: input, action: "обидві кнопки на числі", a: Число}
     cond: [{kind: custom, text: "прапорців навколо стільки ж, скільки показує число"}]
-    then: [{kind: reveal, cell: any}]
+    then: [{kind: reveal, cell: neighbors}]
     note: "акорд: відкрити закритих незапрапорених сусідів; хибний прапорець — міна відкриється й програш; прапорців менше — лише підсвітити"
+    claims: [chord-click]
   - when: {kind: input, action: "ліва кнопка затиснута", a: Закрита клітина}
     then: [{kind: set_state, a: Смайлик, s: "😮"}]
     note: "клітина «втискається» — превʼю до відпускання"
   - when: {kind: counter, name: закритих безпечних, op: "==", n: 0}
     then: [{kind: set_state, a: Смайлик, s: "😎"}, {kind: timer, clock: stop}, {kind: win}, {kind: window, window: Новий рекорд}]
     note: "прапорці не потрібні; міни позначаються самі; вікно рекорду — лише якщо час кращий"
+    claims: [satisfy-constraints]
   - when: {kind: input, action: "клік по смайлику / F2", a: Смайлик}
     then: [{kind: restart}]
     note: "нова дошка"
@@ -92,7 +100,7 @@ windows:
   - title: Сапер
     task: game-screen
     description: "Зверху — лічильник мін (міни − прапорці), смайлик, таймер секунд до 999"
-    claims: [remaining-counter, status-panel]
+    claims: [goal-counter, status-panel, face-button]
   - title: Кінець гри
     task: end-screen
     description: "Windows 7: поразка — Exit / Restart this game / Play again; перемога — час, рекорд, статистика"
@@ -110,8 +118,25 @@ windows:
     description: "Fastest Mine Sweepers: по одному рекорду на складність з іменем; Reset Scores"
     items:
       - {title: OK, window: Сапер}
+levels:
+  - title: Beginner
+    mode: generated
+    count: "без ліміту"
+    size: "9×9"
+    stats: [{key: мін, value: "10"}]
+    description: "Розкладка генерується першим кліком — щоразу нова; у ранніх Windows поле 8×8 (?)"
+  - title: Intermediate
+    mode: generated
+    count: "без ліміту"
+    size: "16×16"
+    stats: [{key: мін, value: "40"}]
+    description: "Те саме, але поле більше й мін щільніше"
+  - title: Expert
+    mode: generated
+    count: "без ліміту"
+    size: "30×16"
+    stats: [{key: мін, value: "99"}]
+    description: "Найбільше поле пресетів; своє поле — пункт Custom… (висота, ширина, міни)"
 claims:
-  - mines-after-first-click
   - difficulty-levels
-  - completion-detection
   - score-records

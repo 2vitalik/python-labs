@@ -3,56 +3,60 @@ field:
   topology: square
   wrap: true
   view: top-down
-  gravity: none
-  time: realtime
-  control: direct
+  time: [realtime]
+  control: [direct]
   layers: [стіни, точки, персонажі]
 entities:
   - title: Пакман
     role: player
+    icon: "😮"
     description: "Жовте коло; біжить сам, ввід лише змінює напрям, поворот спрацьовує, щойно стане можливим"
-    stats: [{key: lives, value: "3"}, {key: speed, value: "80", unit: "%"}]
-    claims: [move-auto]
+    stats: [{key: lives, value: "3"}, {key: "швидкість, %", value: "80"}]
   - title: Точка
     role: pickup
+    icon: "▪️"
     description: "Дрібна їжа в коридорах; зʼїсти всі — пройти рівень"
     stats: [{key: count, value: "240"}, {key: value, value: "10"}]
   - title: Енерджайзер
     role: pickup
     description: "Велика точка в кутах; на час робить привидів наляканими"
     stats: [{key: count, value: "4"}, {key: value, value: "50"}, {key: duration, value: "60"}]
-    claims: [{slug: temporary-modes, params: {duration: 60}}]
   - title: Привид
     role: enemy
+    icon: "👻"
     description: "Четверо з характерами: Blinky цілиться в Пакмана, Pinky — на 4 клітини перед ним, Inky — за вектором від Blinky, Clyde — женеться, доки до Пакмана понад 8 клітин, інакше йде у свій кут"
-    stats: [{key: count, value: "4"}, {key: speed, value: "75", unit: "%"}, {key: value, value: "200–1600"}]
+    stats: [{key: count, value: "4"}, {key: "швидкість, %", value: "75"}, {key: value, value: "200–1600"}]
     states: [у будиночку, розсіювання, погоня, переляк, зʼїдений]
-    claims: [chase-greedy, random-walk, touch-death]
   - title: Стіна
     role: static
     description: "Стіни лабіринту, непрохідні для всіх"
   - title: Будиночок привидів
     role: spawner
+    icon: "🏠"
     description: "Дім у центрі: звідти виходять привиди, туди повертаються очі зʼїденого"
-    stats: [{key: cooldown, label: "примусовий випуск", value: "40", unit: "тіків"}]
-    claims: [spawn-points, respawn]
+    stats: [{key: cooldown, value: "40"}]
   - title: Тунель
     role: terrain
     description: "Бічний прохід: вихід праворуч — поява ліворуч; привиди в ньому повільніші"
-    stats: [{key: speed, label: "швидкість привидів", value: "40", unit: "%"}]
-    claims: [wrap-edges]
+    stats: [{key: "швидкість привидів, %", value: "40"}]
   - title: Фрукт
     role: pickup
+    icon: "🍒"
     description: "Бонус під будиночком після 70-ї і 170-ї точки; від вишні 100 до ключа 5000 очок за рівнем"
     stats: [{key: value, value: "100"}, {key: duration, value: "95"}]
-    claims: [{slug: timed-despawn, params: {lifetime: 95}}]
 rules:
   - when: {kind: tick}
     cond: [{kind: free, cell: ahead}]
     then: [{kind: move, a: Пакман, dir: forward}]
     note: "тік ≈ 0,1 с: на 100 % швидкості — приблизно клітина за тік"
+    claims: [move-auto]
+  - when: {kind: level_start}
+    then: [{kind: spawn_at, entity: Пакман, where: "стартова клітина під будиночком"}, {kind: spawn_at, entity: Привид, where: "Будиночок привидів"}]
+    note: "Blinky стартує над дверима будиночка, решта — всередині; READY! — і гра пішла"
+    claims: [spawn-points]
   - when: {kind: contact, a: Пакман, b: Точка}
     then: [{kind: disappear, a: "@b"}, {kind: score, n: 10}]
+    claims: [event-points]
   - when: {kind: contact, a: Пакман, b: Енерджайзер}
     then:
       - {kind: disappear, a: "@b"}
@@ -61,10 +65,12 @@ rules:
       - {kind: face, a: Привид, dir: back}
       - {kind: multiplier, k: 1}
     note: "6 с на 1-му рівні, далі коротше, з 19-го — лише розворот; коли переляк мине, привид продовжує свій режим без розвороту, за 2 с до кінця блимає"
+    claims: [temporary-modes]
   - when: {kind: contact, a: Пакман, b: Привид}
     cond: [{kind: state, a: "@b", s: переляк}]
     then: [{kind: set_state, a: "@b", s: зʼїдений}, {kind: score, n: 200}, {kind: multiplier, k: 2}]
     note: "за один енерджайзер 200 → 400 → 800 → 1600; зʼїдений привид — лише очі, що біжать додому"
+    claims: [combo-multiplier]
   - when: {kind: contact, a: Пакман, b: Привид}
     cond: [{kind: state, a: "@b", s: переляк, not: true}, {kind: state, a: "@b", s: зʼїдений, not: true}]
     then:
@@ -72,6 +78,7 @@ rules:
       - {kind: respawn, a: "@a", where: "стартова клітина"}
       - {kind: respawn, a: Привид, where: "будиночок"}
     note: "зʼїдені точки не повертаються"
+    claims: [touch-death, respawn]
   - when: {kind: enter, a: Привид, b: Будиночок привидів}
     cond: [{kind: state, a: "@a", s: зʼїдений}]
     then: [{kind: respawn, a: "@a"}, {kind: set_state, a: "@a", s: у будиночку}]
@@ -84,19 +91,22 @@ rules:
     cond: [{kind: state, a: Привид, s: переляк, not: true}]
     then: [{kind: move, a: Привид, dir: toward}]
     note: "на перехресті — дозволений напрям (не назад, не в стіну), найближчий до цілі; ціль: погоня — за характером, розсіювання — свій кут, зʼїдений — двері будиночка"
+    claims: [chase-greedy]
   - when: {kind: tick}
     cond: [{kind: state, a: Привид, s: переляк}]
     then: [{kind: move, a: Привид, dir: random}]
     note: "випадковий дозволений напрям без розвороту, швидкість 50 %"
+    claims: [random-walk]
   - when: {kind: enter, a: Привид, b: Тунель}
     then: [{kind: speed, a: "@a", n: 40}]
-    note: "40 % на 1-му рівні, 50 % з 5-го"
-  - when: {kind: edge, a: "*"}
-    then: [{kind: wrap, a: "@a"}]
-    note: "вийти за край можна лише тунелем"
+    note: "40 % на 1-му рівні, 50 % з 5-го; вийти за край поля можна лише тунелем"
   - when: {kind: idle, n: 40}
     then: [{kind: clear_state, a: Привид, s: у будиночку}]
     note: "Пакман 4 с нічого не їв — виходить наступний привид; ще виходять за лічильником точок: Pinky одразу, Inky після 30, Clyde після 60"
+  - when: {kind: counter, name: "лишилось точок", op: "<=", n: 20}
+    then: [{kind: speed, a: Привид, n: 80}]
+    note: "Cruise Elroy: прискорюється лише Blinky — на 1-му рівні при 20 точках +5 %, при 10 — ще +5 %, пороги ростуть з рівнем; темп Пакмана й привидів за рівнями — у «Рівнях»"
+    claims: [progress-acceleration]
   - when: {kind: counter, name: "зʼїдено точок", op: "==", n: 70}
     then: [{kind: spawn_at, entity: Фрукт, where: "під будиночком"}]
     note: "і вдруге після 170-ї точки"
@@ -109,12 +119,14 @@ rules:
   - when: {kind: all_gone, a: Точка}
     then: [{kind: next_level}]
     note: "енерджайзери теж мають бути зʼїдені; лабіринт блимає, новий — з усіма точками"
+    claims: [collect-all]
   - when: {kind: level_end}
     cond: [{kind: level, op: "==", n: 2}]
     then: [{kind: window, window: Інтермісія}]
     note: "ще після 5-го і 9-го рівнів (?)"
   - when: {kind: counter, name: "життя", op: "==", n: 0}
     then: [{kind: game_over}, {kind: window, window: Кінець гри}]
+    claims: [player-death]
 windows:
   - title: Атракт
     task: attract-demo
@@ -139,4 +151,34 @@ windows:
     description: "GAME OVER просто в лабіринті"
     items:
       - {title: Далі, window: Атракт}
-claims: [collect-all, {slug: player-death, params: {lives: 3}}, event-points, progress-acceleration]
+levels:
+  - title: Рівень 1
+    mode: hand
+    count: "1"
+    stats:
+      - {key: "Пакман, %", value: "80"}
+      - {key: "привиди, %", value: "75"}
+      - {key: "привиди в тунелі, %", value: "40"}
+      - {key: "переляк, с", value: "6"}
+      - {key: фрукт, value: "вишні · 100"}
+    description: "Один лабіринт на всю гру, той самий щорівня; від рівня до рівня міняються лише швидкості, тривалість переляку, фрукт і пороги Cruise Elroy (20 / 10 точок)"
+  - title: Рівні 2–4
+    mode: hand
+    count: "3"
+    stats:
+      - {key: "Пакман, %", value: "90"}
+      - {key: "привиди, %", value: "85"}
+      - {key: "привиди в тунелі, %", value: "45"}
+      - {key: "переляк, с", value: "5 / 4 / 3"}
+      - {key: фрукт, value: "полуниця 300 · персик 500"}
+    description: "Той самий лабіринт, усі швидші, переляк коротшає; після 2-го — перша інтермісія (?)"
+  - title: Рівні 5–256
+    mode: hand
+    count: "252"
+    stats:
+      - {key: "Пакман, %", value: "100 (з 21-го — 90)"}
+      - {key: "привиди, %", value: "95"}
+      - {key: "привиди в тунелі, %", value: "50"}
+      - {key: "переляк, с", value: "1–5, на 17-му і з 19-го — 0"}
+      - {key: фрукт, value: "яблуко 700 … ключ 5000 (з 13-го)"}
+    description: "Темп сталий, переляк тане до нуля — енерджайзер лише розвертає привидів; 256-й — kill screen: переповнення номера рівня псує праву половину лабіринту, пройти неможливо"

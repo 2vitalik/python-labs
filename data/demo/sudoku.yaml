@@ -9,15 +9,17 @@ etalon: true
 entities:
   - title: Клітка суми
     role: zone
+    icon: "➕"
     description: "Кілер-судоку: пунктирна область із числом — сума цифр у ній, без повторів"
-    stats: [{key: count, value: "≈ 30"}, {key: size, value: "1–5", unit: "кл"}]
+    stats: [{key: count, value: "≈ 30"}, {key: size, value: "1–5"}, {key: сума, value: "3–45"}]
     states: [відкрита, заповнена, порушена]
-    claims: [markup-validity]
   - title: Острів
     role: mark
+    icon: "🏝️"
     description: "Нурікабе: біла область з рівно одним числом — її розміром"
   - title: Море
     role: mark
+    icon: "🌊"
     description: "Нурікабе: чорні клітинки — одна звʼязна область без квадратів 2×2"
   - title: Відрізок петлі
     role: mark
@@ -34,6 +36,7 @@ rules:
     cond: [{kind: adjacent_count, what: Відрізок петлі, op: ">", n: 3}]
     then: [{kind: paint, cell: target, color: червоний}]
     note: "3 — приклад: поріг — саме число в клітинці"
+    claims: [{slug: neighbor-count-clue, note: "рахую відрізки на чотирьох ребрах клітинки"}]
   - when: {kind: input, action: цифра в клітинку}
     cond: [{kind: mode, text: кілер}, {kind: unique, where: cage, not: true}]
     then: [{kind: set_state, a: Клітка суми, s: порушена}, {kind: paint, cell: target, color: червоний}]
@@ -41,6 +44,7 @@ rules:
     cond: [{kind: sum, where: cage, n: 15, not: true}]
     then: [{kind: set_state, a: Клітка суми, s: порушена}]
     note: "15 — приклад: число в кожної клітки своє"
+    claims: [line-sum-clue]
   - when: {kind: input, action: зафарбувати клітинку}
     cond: [{kind: mode, text: нурікабе}, {kind: no_2x2, what: Море, not: true}]
     then: [{kind: paint, cell: neighbors, color: червоний}, {kind: message, text: "Квадрат 2×2 з моря — не можна"}]
@@ -54,12 +58,19 @@ rules:
   - when: {kind: input, action: перевірити}
     cond: [{kind: mode, text: нурікабе}, {kind: connected, what: Море}, {kind: no_2x2, what: Море}, {kind: custom, text: "кожен острів має рівно одне число і стільки ж клітин"}]
     then: [{kind: win}]
+    claims: [{slug: connectivity-check, link: "https://github.com/demo-pzpi-25-0/grid-notebook/blob/main/puzzles/nurikabe.py#L30-L58"}]
   - when: {kind: input, action: перевірити}
     cond: [{kind: mode, text: слізерлінк}, {kind: single_loop}, {kind: custom, text: "біля кожного числа стільки ж відрізків"}]
     then: [{kind: win}]
+    claims: [single-loop-check]
   - when: {kind: all_constraints_met}
     cond: [{kind: mode, text: кілер}, {kind: cover_all, what: Цифра}]
     then: [{kind: win}, {kind: timer, clock: stop}, {kind: window, window: Підсумок}]
+  - when: {kind: level_end}
+    cond: [{kind: timer, op: "<", n: 300}]
+    then: [{kind: score, n: 50}]
+    note: "розвʼязав швидше за 5 хвилин — бонус до рейтингу"
+    claims: [time-bonus]
   - when: {kind: input, action: подвійний клік по морю}
     then: [{kind: fill, cell: target}]
     note: "заливає замкнену порожню область"
@@ -102,32 +113,65 @@ windows:
   - title: Календар
     task: custom-window
     description: "Місяць клітинками: розвʼязані дні зафарбовані, серія без пропусків — у кутку"
-    claims: [daily-puzzle]
     items: [{title: Сьогоднішній пазл, window: Гра}, {title: Назад, window: Головне меню}]
   - title: Статистика
     task: stats-window
-    claims: [profile-stats, level-rating]
   - title: Навчання
     task: tutorial-window
     description: "По одному прийому на екран: «гола одиниця», «прихована пара»…"
   - title: Налаштування
     task: settings-window
-    claims: [theme-select, game-settings]
+    claims: [theme-select]
     items: [{title: Назад, window: Головне меню}]
+levels:
+  - title: Кілер-судоку
+    description: "Ті самі 9×9 без даних цифр: лише клітки з сумами; поверх сітки — ще шар кліток"
+    mode: generated
+    size: "9×9"
+    layers: [клітки сум, розмітка гравця, нотатки, підсвітка]
+    stats: [{key: кліток, value: "≈ 30"}]
+    shots:
+      - |
+        aabccdeef
+        gabhcdief
+        gjjhkkiff
+        lmmnokppq
+        lrmnoospq
+        ttrruvvwq
+        xyyzuAAwB
+        xCyzDDEEB
+        FCCGGHHEB
+  - title: Нурікабе
+    description: "Числа — розміри островів; решта клітинок — одне море"
+    mode: generated
+    size: "7×7 … 10×10"
+    stats: [{key: островів, value: "5–12"}]
+  - title: Слізерлінк
+    description: "Петля по ребрах між точками: поле — граф точок і ліній, а не клітинки"
+    mode: generated
+    size: "5×5 … 10×10"
+    topology: graph
+    control: [mark]
+  - title: Пазл дня
+    description: "Щодня один з чотирьох типів; складність росте від понеділка до неділі"
+    mode: generated
+    count: "1 на день"
+    stats: [{key: складність, value: "пн 1 … нд 5"}]
+    claims: [daily-puzzle, difficulty-rating]   # ⭐ без посилання — підказка
 claims:
   - {slug: unique-puzzle-generation, note: "будую повне рішення, прибираю цифри, доки солвер знаходить рівно один розвʼязок", link: "https://github.com/demo-pzpi-25-0/grid-notebook/blob/main/puzzles/generate.py"}
-  - {slug: level-solver, note: "пошук з поверненням + поширення обмежень", link: "https://github.com/demo-pzpi-25-0/grid-notebook/blob/main/puzzles/solve.py#L1-L120"}
-  - difficulty-rating   # ⭐ без посилання — підказка
+  - {slug: level-solver, params: {algo: backtracking}, note: "пошук з поверненням + поширення обмежень", link: "https://github.com/demo-pzpi-25-0/grid-notebook/blob/main/puzzles/solve.py#L1-L120"}
+  - level-metadata
   - {slug: property-tests, link: "https://github.com/demo-pzpi-25-0/grid-notebook/blob/main/tests/test_unique.py"}
   - {slug: difficulty-levels, note: "за кількістю прийомів, потрібних солверу"}
-  - time-bonus
+  - profile-stats
   - score-records
+  - game-settings
   - undo-redo
   - redo
   - rewind
   - save-autosave
   - save-progress
-  - level-metadata
   - unit-tests
   - fixture-level-tests
   - generators-iterators

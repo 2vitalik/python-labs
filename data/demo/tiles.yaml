@@ -11,25 +11,23 @@ field:
   topology: square
   view: side
   gravity: down
-  time: turn
-  control: swipe-all
+  time: [turn]
+  control: [swipe-all]
   layers: [плитки, ефекти]
   description: "Колодязь: стінки з боків, дно знизу; нові плитки зʼявляються згори"
   claims: [gui-render, field-scaling]
 entities:
-  - title: Плитка   # еталонна сутність
-    claims: [gravity-fall]
   - title: Камінь
     role: tile
+    icon: "🪨"
     description: "Не зливається; зникає лише від бомби або разом із повним рядом"
     stats: [{key: count, value: "до 6"}]
-    claims: [gravity-fall]
   - title: Бомба
     role: tile
+    icon: "💣"
     description: "Зливається з будь-чим і вибухає хрестом"
-    stats: [{key: range, value: "1", unit: "кл"}]
+    stats: [{key: range, value: "1"}]
     states: [спокійна, запалена]
-    claims: [{slug: blast-wave, params: {radius: 1}}, gravity-fall]
 rules:
   - when: {kind: turn_end}
     then: [{kind: fall, a: "*"}]
@@ -37,6 +35,7 @@ rules:
   - when: {kind: settled}
     cond: [{kind: chain, n: 2}]
     then: [{kind: multiplier, k: 2}, {kind: sound, text: комбо}]
+    claims: [combo-multiplier, sound-effects]
   - when: {kind: pattern, shape: row}
     then: [{kind: clear, shape: row}, {kind: score, n: 500}, {kind: shift, axis: all, dir: down}]
   - when: {kind: pattern, shape: line, n: 3}
@@ -44,12 +43,13 @@ rules:
     note: "три однакові поспіль по горизонталі чи вертикалі"
   - when: {kind: contact, a: Бомба, b: "*"}
     then: [{kind: set_state, a: "@a", s: запалена}, {kind: explode, shape: cross, n: 1}, {kind: disappear, a: "@a"}]
+    claims: [{slug: blast-wave, params: {shape: cross}}]
   - when: {kind: phase_start, phase: нова плитка}
     cond: [{kind: prob, p: 10}]
     then: [{kind: spawn_at, entity: Камінь, where: "верхній ряд, випадковий стовпець"}]
   - when: {kind: spawned, a: Камінь}
     cond: [{kind: fits, a: "@a", cell: target, not: true}]
-    then: [{kind: lose}]
+    then: [{kind: lose}, {kind: window, window: Гру закінчено}]
     note: "колодязь повний"
   - when: {kind: input, action: R}
     then: [{kind: rotate, a: "*", deg: "90"}, {kind: fall, a: "*"}]
@@ -57,6 +57,10 @@ rules:
   - when: {kind: tick}
     cond: [{kind: mode, text: на час}, {kind: timer, op: "<=", n: 10}]
     then: [{kind: sound, text: цокання}]
+  - when: {kind: tick}
+    cond: [{kind: mode, text: на час}, {kind: timer, op: "<=", n: 0}]
+    then: [{kind: lose}, {kind: window, window: Гру закінчено}]
+    claims: [{slug: time-out, params: {limit: 120}, note: "лише в режимі «на час»"}]
 windows:
   - title: Головне меню
     items:
@@ -81,11 +85,30 @@ windows:
   - title: Рекорди
     task: leaderboard
     items: [{title: Назад, window: Головне меню}]
+levels:
+  - title: Обвал
+    mode: generated
+    count: "1"
+    size: "5×7"
+    stats: [{key: шанс каменю, value: "10 %"}, {key: поворот колодязя, value: "раз на 10 ходів"}]
+    description: "Основний режим: порожній колодязь, дві стартові плитки у випадкових стовпцях, далі камені й бомби згори; партія триває, доки нова плитка вміщується"
+    shots:
+      - |
+        #..2..#
+        #..s..#
+        #.48b.#
+        #2884.#
+        #s4228#
+        #24s48#
+        #######
+  - title: На час
+    mode: generated
+    count: "1"
+    size: "5×7"
+    stats: [{key: ліміт, value: "120 с"}]
+    description: "Той самий колодязь на дві хвилини: за 10 секунд до кінця — цокання, час вийшов — кінець гри; рекорди окремі"
 claims:
   - undo-step
-  - combo-multiplier
-  - {slug: time-out, params: {limit: 120}, note: "лише в режимі «на час»"}
   - difficulty-levels
   - particles
-  - sound-effects
   - {slug: unit-tests, link: "https://github.com/demo-pzpi-25-0/2048-collapse/tree/main/tests"}

@@ -7,79 +7,108 @@ game:
   phases: [ввід, сонце, рослини стріляють, снаряди, слимаки, косарки, спавн хвилі, перевірка поразки]
 etalon: true
 field:
-  size: "6×9, нічні рівні — 5×9"
+  size: "6×9"
   topology: iso
   view: top-down
-  gravity: none
-  time: realtime
-  control: click-cell
+  time: [realtime]
+  control: [click-cell]
   layers: [грядка, рослини, слимаки і снаряди, сонце]
   description: "Ізометричний город; рядки незалежні — слимак ніколи не міняє свій"
   claims: [{slug: gui-render, status: returned, verdict: "Ізометрія зʼїжджає на непарних рядках"}, field-scaling]
 entities:
-  - title: Зомбі   # еталонна сутність — тут слимак
-    claims: [{slug: hp-damage, status: accepted}, {slug: speed-per-type, status: returned, verdict: "Усі типи повзуть з однією швидкістю"}]
-  - title: Горохострел
-    claims: [{slug: tower-placement, status: accepted}]
+  - title: Зомбі   # еталонна сутність — тут слимак; HP і швидкість — її параметри
+    claims: [{slug: telegraphed-intents, note: "смужка хвиль угорі"}]
   - title: Вишнева бомба
     role: ally
+    icon: "🍒"
     description: "Одноразова: вибух 3×3 через 12 тіків після посадки"
-    stats: [{key: ціна, value: "150", unit: "☀"}, {key: damage, value: "90"}, {key: cooldown, value: "500", unit: "тіків"}, {key: range, value: "1", unit: "кл"}]
+    stats: [{key: cost, value: "150", unit: "сонць"}, {key: damage, value: "90"}, {key: cooldown, value: "500"}, {key: range, value: "1"}, {key: duration, value: "12"}]
     states: [запал, вибух]
-    claims:
-      - {slug: blast-wave, params: {radius: 1}, status: returned, verdict: "Зачіпає і сусідні рослини — за описом не має"}
-      - {slug: timed-despawn, params: {lifetime: 12}}
   - title: Морозний горох
     role: ally
+    icon: "🥶"
     description: "Стріляє крижаними горошинами: шкода та сама, слимак удвічі повільніший"
-    stats: [{key: ціна, value: "175", unit: "☀"}, {key: hp, value: "6"}, {key: cooldown, value: "14", unit: "тіків"}]
-    claims: [shoot-forward, {slug: shoot-cooldown, params: {cooldown: 14}}, {slug: temporary-modes, params: {duration: 40}, status: returned, verdict: "Заморозка не спадає — слимак повільний до кінця рівня"}]
+    stats: [{key: cost, value: "175", unit: "сонць"}, {key: hp, value: "6"}, {key: cooldown, value: "14"}]
   - title: Крижана горошина
     role: projectile
-    stats: [{key: damage, value: "1"}, {key: speed, value: "3", unit: "кл/тік"}, {key: duration, label: заморозка, value: "40", unit: "тіків"}]
+    icon: "🧊"
+    stats: [{key: damage, value: "1"}, {key: speed, value: "3"}, {key: duration, value: "40"}, {key: "швидкість слимака, %", value: "50"}]
   - title: Слимак-панцирник
     role: enemy
+    icon: "🐌"
     description: "Мушля тримає 18 шкоди; розбили — звичайний слимак, але швидший"
-    stats: [{key: hp, value: "28"}, {key: armor, value: "18"}, {key: damage, value: "1"}, {key: speed, value: "0.2", unit: "кл/тік"}]
+    stats: [{key: hp, value: "28"}, {key: armor, value: "18"}, {key: damage, value: "1"}, {key: speed, value: "0.2"}]
     states: [у мушлі, без мушлі, заморожений, їсть]
-    claims: [{slug: hp-damage, params: {hp: 28, who: панцирник}, status: returned, verdict: "Шкода понад мушлю губиться: 20 по мушлі з 18 має лишити 2 слимакові"}]
   - title: Кріт
     role: enemy
     description: "Іде під землею до третьої колонки, там вилазить позаду рослин"
     states: [під землею, на поверхні]
-    claims: [teleport-one-way]
   - title: Картопляна міна
     role: hazard
-    stats: [{key: ціна, value: "25", unit: "☀"}, {key: duration, label: зведення, value: "150", unit: "тіків"}]
+    icon: "🥔"
+    stats: [{key: cost, value: "25", unit: "сонць"}, {key: duration, value: "150"}]
     states: [зводиться, зведена]
-    claims: [touch-death]
   - title: Лопата
     role: object
+    icon: "🪏"
     description: "Викопує рослину і повертає половину ціни"
   - title: Насіння
     role: resource
+    icon: "🌰"
     description: "Валюта між рівнями: по жмені за кожну вцілілу косарку"
     stats: [{key: value, value: "1"}]
 rules:
+  # еталонні правила слово в слово: зливаються з еталонними, а вердикти лягають на їхні картки
+  - when: {kind: input, action: "клік по сонцю", a: Сонце}
+    then: [{kind: currency, n: 25}, {kind: disappear, a: "@a"}]
+    claims: [{slug: round-currency, status: accepted}]
+  - when: {kind: input, action: "посадити горохострел"}
+    cond: [{kind: free, cell: target}, {kind: counter, name: "запас сонця", op: ">=", n: 100}]
+    then: [{kind: place, a: Панель насінин, entity: Горохострел}, {kind: currency, n: -100}]
+    claims: [{slug: cursor-place, status: accepted}]
+  - when: {kind: wave_start}
+    then: [{kind: spawn_at, entity: Зомбі, where: "правий край, випадковий ряд"}, {kind: counter, name: хвиля, n: 1}]
+    claims: [{slug: enemy-waves, status: returned, verdict: "Фінальна хвиля не оголошується"}]
+  # свої
   - when: {kind: state_on, a: Вишнева бомба, s: вибух}
     then: [{kind: explode, shape: square, n: 1}, {kind: damage, a: Зомбі, n: 90}, {kind: disappear, a: "@a"}]
+    claims: [{slug: blast-wave, params: {shape: square}, status: returned, verdict: "Зачіпає і сусідні рослини — за описом не має"}]
+  - when: {kind: line_of_sight, a: Морозний горох, b: Зомбі}
+    then: [{kind: spawn, entity: Крижана горошина, cell: ahead}]
+    note: "не частіше за перезарядку"
   - when: {kind: contact, a: Крижана горошина, b: "*"}
     cond: [{kind: state, a: "@b", s: заморожений, not: true}]
     then: [{kind: damage, a: "@b", n: 1}, {kind: set_state, a: "@b", s: заморожений, dur: 40}, {kind: speed, a: "@b", n: 50}, {kind: disappear, a: "@a"}]
+    claims: [{slug: temporary-modes, status: returned, verdict: "Заморозка не спадає — слимак повільний до кінця рівня"}]
   - when: {kind: counter, name: HP мушлі, op: "<=", n: 0}
     then: [{kind: set_state, a: Слимак-панцирник, s: без мушлі}, {kind: speed, a: Слимак-панцирник, n: 150}]
   - when: {kind: reach, a: Кріт, where: третя колонка}
     then: [{kind: teleport, a: "@a", where: "перша колонка"}, {kind: set_state, a: "@a", s: на поверхні}, {kind: face, a: "@a", dir: back}]
+    claims: [teleport-one-way]
   - when: {kind: contact, a: "*", b: Картопляна міна}
     cond: [{kind: state, a: "@b", s: зведена}]
     then: [{kind: disappear, a: "@both"}, {kind: sound, text: чвак}]
+    claims: [touch-death, sound-effects]
   - when: {kind: input, action: клік лопатою, a: Лопата}
     cond: [{kind: occupied, cell: target, what: "*"}]
     then: [{kind: currency, n: 25}, {kind: custom, text: "рослина зникає, повертається половина її ціни"}]
+    claims: [shovel]
+  - when: {kind: destroyed, a: Зомбі}
+    cond: [{kind: counter, name: слимаків у хвилі, op: ">", n: 0}]
+    then: [{kind: spawn_at, entity: Зомбі, where: "правий край, той самий рядок"}, {kind: counter, name: слимаків у хвилі, n: -1}]
+    note: "розчавлений слимак — на його місце виповзає новий, доки хвиля не скінчилась"
+    claims: [reinforcements]
+  - when: {kind: wave_start}
+    cond: [{kind: counter, name: хвиля, op: ">=", n: 3}]
+    then: [{kind: counter, name: "інтервал спавну, %", n: -10}]
+    note: "хвилі густішають: слимаки йдуть щільніше"
+    claims: [{slug: progress-acceleration, status: returned, verdict: "Прискорення є, але хвилі стають коротші, а не густіші"}]
   - when: {kind: level_end}
-    then: [{kind: window, window: Ярмарок насіння}]
+    then: [{kind: counter, name: насіння, n: 5}, {kind: window, window: Ярмарок насіння}]
+    note: "+5 насінин за кожну вцілілу косарку"
   - when: {kind: schedule, list: "20 · 60 · 110 · 170 с"}
-    then: [{kind: spawn_at, entity: Зомбі, where: "правий край, випадковий рядок"}, {kind: message, text: "Велика хвиля слимаків!"}]
+    then: [{kind: spawn_at, entity: Зомбі, where: "правий край, випадковий рядок"}, {kind: message, text: "Велика хвиля слимаків!"}, {kind: sound, text: сирена}]
+    claims: [sound-warnings]
   - when: {kind: timer, every: 240}
     cond: [{kind: mode, text: ніч, not: true}]
     then: [{kind: spawn, entity: Сонце, cell: any}]
@@ -94,14 +123,14 @@ windows:
     description: "День · ніч · нескінченний"
     items: [{title: Далі, window: Складність}, {title: Назад, window: Головне меню}]
   - title: Складність
-    task: difficulty-select
+    task: mode-select
     items: [{title: Далі, window: Вибір насіння}]
   - title: Вибір насіння
     task: placement-screen
     description: "Шість слотів під рослини на рівень; унизу — хто прийде"
     items: [{title: Садити!, window: Гра}]
   - title: Гра
-    claims: [{slug: telegraphed-intents, note: "смужка хвиль угорі"}, telegraph-marker, {slug: goal-counter, status: returned, verdict: "Лічильник хвиль відстає на одну"}]
+    claims: [telegraph-marker, {slug: goal-counter, status: returned, verdict: "Лічильник хвиль відстає на одну"}]
     shots:
       - |
         ssssssssssssssssss
@@ -115,7 +144,7 @@ windows:
   - title: Ярмарок насіння
     task: shop-window
     description: "Між рівнями: нові рослини за насіння"
-    claims: [{slug: shop-catalog, status: accepted}, {slug: shop-sales, status: returned, verdict: "Розпродаж однаковий щоразу — картка просить випадковий"}]
+    claims: [shop-preview]
     items: [{title: Купити}, {title: Наступний рівень, window: Вибір насіння}]
   - title: Альманах
     task: codex-window
@@ -125,18 +154,43 @@ windows:
     task: game-over-continue
     description: "10 секунд на рішення: рівень заново за 50 насінин"
     items: [{title: Так, window: Гра}, {title: Ні, window: Кінець гри}]
+levels:
+  - title: Город удень
+    description: "Сонце падає з неба і від соняшників; кожен рівень додає нову рослину на ярмарку"
+    mode: hand
+    count: "8"
+    size: "6×9"
+    stats: [{key: хвиль, value: "3–5"}, {key: сонця на старті, value: "50"}]
+    claims: [{slug: level-unlock, status: returned, verdict: "П’ятий рівень відкривається, навіть коли четвертий програно"}]
+    shots:
+      - |
+        m.S.P..z.
+        m.S.P....
+        m.F.W.o.Z
+        m.S.P...z
+        m.C......
+        m.S.P..z.
+  - title: Город уночі
+    description: "Сонця згори нема — лише від соняшників; грядок на ряд менше, на краю — ліхтарі"
+    mode: hand
+    count: "4"
+    size: "5×9"
+    layers: [грядка, рослини, слимаки і снаряди, ліхтарі]
+    stats: [{key: хвиль, value: "5"}, {key: сонця на старті, value: "150"}]
+  - title: Нескінченний город
+    description: "Хвиля за хвилею, доки слимак не дійде до хати; рахується кількість відбитих хвиль"
+    mode: endless
+    count: "без ліміту"
+    size: "6×9"
+    stats: [{key: густіше на, value: "10", unit: "% за хвилю"}]
+    claims: [difficulty-curve]
 claims:
-  - {slug: round-currency, status: accepted}
-  - {slug: enemy-waves, status: returned, verdict: "Фінальна хвиля не оголошується"}
   - {slug: shop-between-levels, status: returned, verdict: "Куплене не зберігається після виходу з гри"}
-  - reinforcements
-  - {slug: progress-acceleration, status: returned, verdict: "Прискорення є, але хвилі стають коротші, а не густіші"}
+  - {slug: shop-sales, status: returned, verdict: "Розпродаж однаковий щоразу — картка просить випадковий"}
   - {slug: difficulty-levels, status: returned, verdict: "Складності відрізняються лише написом"}
   - cheat-codes
   - {slug: save-progress, status: returned, verdict: "Після перезапуску відкритий лише перший рівень"}
   - level-bank
-  - sound-effects
   - background-music
-  - sound-warnings
   - idle-animation
   - particles

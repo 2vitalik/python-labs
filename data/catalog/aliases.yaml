@@ -1,326 +1,1777 @@
-about-window: [о игре, credits, титри, автори, info, контакти]
-achievements-window: [ачівки, достижения, трофеї, trophies, бейджі, badges, медалі]
-ai-greedy: [жадный, найвигідніший хід, бере найбільше, one-ply, середній бот, оцінка ходу]
-ai-minimax: [мінімакс, alpha-beta, альфа-бета, дерево гри, game tree, перебір ходів, negamax]
-ai-opponent: [бот, ШІ, ИИ, компьютер, проти компа, CPU, bot]
-ai-random: [рандомний бот, random bot, случайные ходы, тупий бот, легкий AI, dumb AI]
-all-on-targets: [сокобан, sokoban, ящики на місцях, boxes on goals, ящики на крестиках, всі на хрестиках]
-architecture-doc: [UML, діаграма класів, диаграмма, структура проєкту, design doc, документація коду]
-async-multiplayer: [асинхронна гра, correspondence, заочна партія, по переписке, play by email, ход раз в день]
-attract-demo: [autoplay, автоигра, демо-ролик, бот грає, screensaver, idle demo]
-avatar-picker: [skin, аватарка, выбор персонажа, вибір героя, костюм, иконка игрока]
-background-music: [саундтрек, OST, BGM, музыка, мелодія, playlist, музон]
-beam-tracing: [лазер, луч, raycast, ray tracing, рейкаст, light ray]
-blast-wave: [бомба, бомбочка, взрыв, explosion, вогонь бомби, flames, бомбермен]
-body-queue: [змейка, змійка, snake, хвост, deque, сегменти, хвіст росте]
-button-toggle: [рычаг, switch, lever, pressure plate, нажимна плита, тригер, перемикач]
-carrier-platform: [moving platform, рухома платформа, ліфт, бревно, едет на платформе, ride]
-cell-click: [мишка, мышь, mouse, ЛКМ, клацнути, нажать на клетку, тап]
-cell-transform: [конвертер, converter, превращение, морф, мутація, transmute, змінити тип]
-chain-detonation: [цепная реакция, chain reaction, каскад вибухів, підрив бомб, взрыв бомб, бомба підриває бомбу]
-chain-reaction: [комбо, combo, цепочка, цепная реакция, cascade, ланцюжок збігів, гравітація після збігу]
-character-select: [вибір героя, выбор героя, select hero, класс персонажа, пік, roster, скін]
-chase-bfs: [pathfinding, найкоротший шлях, астар, поиск пути, Dijkstra, дейкстра, обхід у ширину]
-chase-double-move: [мінотавр, minotaur, тесей, подвійна швидкість, ходит дважды, 2x speed]
-chase-greedy: [жадный, наивный, прямо до цілі, manhattan, найпростіший AI, по прямой]
-chase-player: [переслідування, преследование, follow, hunter, ворог біжить за мною, AI ворога, бот-мисливець]
-cheat-codes: [читы, чити, cheats, godmode, iddqd, режим бога, debug mode]
-check-stalemate: [король под ударом, king in check, атака на короля, нет ходов у короля, шаховая угроза, draw]
-checkmate: [шах і мат, перемога в шахах, king captured, кінець партії, victory in chess]
-checkpoint: [чекпоінт, контрольна точка, контрольная точка, respawn point, флажок, сейв-точка]
-chord-click: [аккорд, chording, обидві кнопки миші, ЛКМ+ПКМ, середня кнопка, двойной клик, сапер]
-code-editor-window: [редактор коду, IDE, редактор команд, блоки команд, visual coding, scratch, программирование робота]
-codex-window: [кодекс, вікі, wiki, довідник, энциклопедия, монстропедія, lore]
-collect-all: [собрать все, all coins, всі монети, всі точки, 100%, повна зачистка]
-collect-quota: [норма, діаманти, кристали, gems, required items, нужно собрать N, ціль по кількості]
-combo-multiplier: [множитель, x2, стрік, streak, бонус за серію, chain bonus]
-command-program: [карел, лайтбот, черепашка, turtle, робот-виконавець, visual programming, алгоритм для робота]
-commit-history: [git log, коммиты, commit messages, гіт, github, conventional commits, git commit]
-completion-detection: [solved, puzzle complete, перевірка рішення, головоломка решена, розвʼязано, автоперевірка]
-confirm-dialog: [ви впевнені, are you sure, подтверждение, yes/no, так/ні, модалка, попап]
-conflict-highlight: [помилки червоним, ошибки красным, error highlight, дублікати, повтор цифри, red cells]
-connectivity-check: [flood fill, заливка, connected components, связность, граф, одна мережа, union-find]
-console-render: [термінал, terminal, ascii, curses, print, текстова графіка, CLI]
-controls-remap: [ребінд, rebind, keybinds, бінди, настройка клавиш, keymap, свої кнопки]
-coverage-area: [аура, aura, радіус дії, AoE, зона дії, радиус, range]
-crush-by-slide: [задавити, раздавить, squash, придавить, давить врагов]
-custom-exceptions: [винятки, исключения, try/except, raise, error handling, помилки, traceback]
-custom-window: [інший екран, свой экран, кастомний екран, other screen, особливе меню, unique window]
-daily-puzzle: [ежедневная головоломка, пазл дня, daily challenge, задача дня, як wordle, челендж дня]
-dataclass-entities: [датакласи, датаклассы, dataclasses, OOP, ООП, класи сутностей, attrs]
-deadlock-detection: [тупик, застряг, stuck, дедлок, ящик в углу, мертва позиція, безнадійно]
-death-animation: [death effect, die animation, ефект загибелі, анимация гибели, умирание]
-demo-effects: [монтаж, editing, субтитры, subtitles, таймлапс, timelapse, slow-mo]
-descend-and-reverse: [інвейдери, захватчики, прибульці, formation, aliens, флот спускається, марш]
-destroy-all-enemies: [убить всех, kill all, зачистка, вбити всіх, перебити, clear enemies, без ворогів]
-destructible-blocks: [breakable, ламати стіни, розбити стіну, разрушаемые, кирпичи, softblock, ящики]
-dev-log: [девлог, щоденник розробки, дневник разработки, changelog, ченджлог, blog]
-difficulty-levels: [easy, hard, легкий режим, сложность, хардкор, новичок, normal]
-difficulty-rating: [grading, difficulty score, сложность головоломки, easy/hard, зірки складності, класифікація пазлів]
-difficulty-select: [easy, normal, hard, выбор сложности, хардкор]
-dig-terrain: [рити, копать, прокопати, digging, шахта, mining, лопата]
-dot-mark: [прапорець, флажок, flag, question mark, пометка, мітка, хрестик]
-drag-drop-piece: [перетаскивание, перетягування, драг-н-дроп, drag and drop, dnd, тягнути мишкою]
-dual-frontends: [два інтерфейси, два UI, console + GUI, консоль і вікно, two views, переключение режимов отображения]
-dungeon-generation: [данж, подземелье, roguelike, BSP, процедурка, procgen, cellular automata]
-edge-marking: [ребро, edges, лінії між точками, межі клітин, границы клеток, wall drawing]
-editor-draw-tools: [fill, bucket, кисть, brush, rectangle tool, рисование, paint tools]
-editor-erase: [ластик, eraser, стерти, удалить, delete, очистити клітину]
-editor-map-check: [валідація рівня, level validation, проверка карты, solvable, прохідність, блокувати збереження]
-editor-palette: [tile palette, toolbar, тулбар, набор тайлов, вибір блоку, brush]
-editor-playtest: [test play, тест рівня, проверить уровень, спробувати зіграти, try level, quick play]
-editor-undo: [ctrl+z, відкат, отмена, історія правок, edit history, крок назад]
-editor-window: [level editor, редактор уровней, map editor, мапмейкер, editor screen, экран редактора]
-end-screen: [game over, геймовер, you win, victory screen, итоги, results screen, фінал]
-enemy-patrol: [патруль, патрулирование, guard, вартовий, охранник, waypoints, моби ходять]
-enemy-reached-base: [прорыв, прорив, base destroyed, зомбі дійшли до дому, штаб знищено, орел battle city, breach]
-enemy-waves: [волны врагов, орда, horde, натиск, рейд, бос-хвиля]
-environment-death: [лава, утонул, утопився, hazard, environmental hazard, задавило каменем, падіння в прірву]
-event-effects: [VFX, спецефекти, спецэффекты, juice, screen shake, тряска екрану, вспышка]
-event-points: [скор, score, бали, баллы, рахунок, нарахування, за монетку +10]
-exe-build: [екзешник, executable, бінарник, nuitka, сборка, cx_freeze, windows-версія]
-explode-area: [AoE, splash, сплеш, урон по площі, area damage, взрыв по области, масова шкода]
-extra-life-threshold: [1UP, extra life, лайф за очки, додаткове життя, дополнительная жизнь, бонусная жизнь]
-feature-demo: [скринкаст, screencast, запис екрану, запись экрана, гіфка, GIF, OBS]
-field-scaling: [зум, zoom, resize, ресайз, скролл, scrolling, fullscreen]
-field-size-picker: [размер поля, board size, grid size, 10x10, розмір сітки, ширина і висота]
-fill-hole: [яма, засипать яму, pit, провал, заповнити отвір, міст з ящика]
-fixture-level-tests: [fixtures, фикстуры, golden tests, еталонні рівні, тестовые уровни, snapshot test, тестові мапи]
-floor-types: [terrain, ландшафт, місцевість, тип клітини, лед, ковзанка, болото]
-fog-of-war: [фог, туман войны, FOV, поле зору, видимость, line of sight, темрява]
-freeze-into-block: [заморозка, заморозить, ice block, ледяной блок, крижана брила, ворог-платформа]
-fsm-program: [state machine, конечный автомат, кінцевий автомат, стейт-машина, стани і переходи, automaton]
-game-loop: [main loop, главный цикл, while True, FPS, тік, clock.tick, гейм-луп]
-game-over-continue: [insert coin, продолжить, ще спроба, countdown, 10-9-8, кредити аркади, last chance]
-game-page: [лендінг, landing, сайт гри, страница игры, github pages, промо, вебсторінка]
-game-pause: [стоп, пробіл, space, Esc, зупинити гру, остановить игру, freeze]
-game-screen: [main window, игровое окно, gameplay screen, основне вікно, canvas, playfield]
-game-settings: [настройки, сетінги, options, конфіг, config, settings.json, параметры]
-game-trailer: [промо-ролик, ролик, тизер, teaser, відеоролик, gameplay video, геймплей]
-garbage-attack: [мусор, junk, атака рядками, мусорные линии, подкинуть линии, puyo battle]
-generators-iterators: [yield, itertools, генераторы, __iter__, lazy, ленивые вычисления, comprehension]
-goal-counter: [прогрес цілі, objective tracker, осталось собрать, 3/10, квест-трекер]
-gravity-fall: [падение, фізика, сила тяжести, falling, тяжіння, платформер]
-gui-render: [pygame, tkinter, arcade, pyglet, графіка, графический интерфейс, вікно гри]
-height-levels: [рельєф, elevation, ізометрія, isometric, ярус, перепад, стрибок вгору]
-help-window: [помощь, справка, інструкція, how to play, як грати, F1, FAQ]
-highlights: [подсветка, хайлайт, маркери, overlay, оверлей, кольорова клітина]
-hot-seat: [хотсит, local multiplayer, PvP, вдвоем, два гравці, 2 players, на одному компі]
-hover-highlight: [ховер, mouseover, наведение мыши, курсор над клітиною, подсветка под мышкой, rollover]
-hp-damage: [хп, здоровье, health, hitpoints, урон, dmg, полоска здоровья]
-hunger-clock: [еда, food, starvation, сытость, ситість, виживання, survival]
-idle-animation: [стояча анімація, анимация стояния, breathing, покачування, пульсація, моргання]
-impassable-cells: [стени, walls, obstacles, перешкоди, препятствия, колізія, не пройти]
-import-open-formats: [стандартні формати, file format, чужі рівні, загрузка готовых уровней, рівні з інтернету, sokoban collections]
-in-game-editor: [level editor, map editor, конструктор рівнів, мапмейкер, maker, будівник рівнів, creator mode]
-in-round-upgrades: [power-ups, павер-апи, бустери, улучшения, покращення, бонус бомба, прокачка]
-inertia-slide: [лід, скольжение, ice sliding, на льоду, їде до стіни, momentum, катится]
-infinite-field: [endless runner, бесконечная карта, раннер, endless mode, chunks, кросси роуд]
-interaction-table: [матриця колізій, collision matrix, правила зіткнень, таблица столкновений, data-driven, правила в словнику]
-inventory: [инвентарь, рюкзак, сумка, backpack, bag, шмот, айтеми]
-inventory-duration: [тривалість, баф на час, срок действия, таймер ефекту, expire, витрачається, time limit]
-inventory-items: [зілля, зелье, use item, consumables, расходники, аптечка, айтеми]
-inventory-limit: [capacity, вместимость, слоти, inventory slots, рюкзак повний, max items, перевантаження]
-itchio-publish: [ітч, реліз гри, опублікувати гру, выложить игру, деплой, game jam, steam]
-item-identification: [ідентифікація, unidentified, опознание, загадкове зілля, mystery item, сюрприз]
-item-pickup: [підібрати, подобрать, лут, loot, collect, бонуси, монетки]
-key-and-door: [замок, lock, відімкнути, дверь, ключик, locked door, keycard]
-keyboard-controls: [клавиши, WASD, стрілки, hotkeys, хоткеї, управление, keybindings]
-ladder-climb: [лестница, лазать, лазити, канат, верёвка, rope, lode runner]
-language-picker: [язык, локалізація, переклад, i18n, english, мультимовність, перевод]
-last-move-highlight: [последний ход, previous move, звідки-куди, слід ходу, жовті клітини]
-leaderboard: [лідерборд, хайскор, high scores, таблица лидеров, топ гравців, scoreboard, hall of fame]
-leftover-penalty: [мінус бали, штрафные очки, остаток, оставшиеся фишки, невикористані фішки, negative points]
-legal-move-highlight: [можливі ходи, доступні ходи, valid moves, подсветка ходов, куди можна ходити, move hints]
-level-bank: [level pack, набір рівнів, колекція пазлів, список уровней, пак рівнів, puzzle collection]
-level-exchange: [share level, поділитися рівнем, обмен картами, шаринг, export, import, user levels]
-level-from-txt: [ascii map, текстова карта, карта из файла, map file, завантаження рівня, читання з файлу]
-level-metadata: [header, метаданные, level info, опис рівня, теги, title рівня]
-level-password: [пароль, level code, код уровня, код рівня, passcode, секретний код]
-level-rating: [оцінка рівня, зірочки, лайки, rate level, сложность уровня, likes, топ рівнів]
-level-select: [выбор уровня, список рівнів, level menu, stage select, меню рівнів]
-level-solver: [солвер, решатель, автопроходження, backtracking, бектрекінг, підказка ходу, autosolve]
-level-unlock: [анлок, замочок, locked levels, открыть уровень, закриті рівні, відкриття рівнів]
-line-match-clear: [три в ряд, 3 в ряд, color lines, лайнс, збіг кольорів, bejeweled, кульки]
-line-of-sight-attack: [LOS, line of sight, снайпер, турель, turret, видимость, ворог бачить гравця]
-line-sum-clue: [какуро, хмарочоси, небоскребы, японский кроссворд, nonogram, нонограм, цифри збоку]
-lobby-window: [лобби, кімната очікування, matchmaking, rooms, список кімнат, join game]
-logic-render-split: [MVC, model-view, separation of concerns, engine, рушій, ядро гри, разделение логики]
-main-menu: [главное меню, стартове меню, title screen, start menu, стартовий екран, new game]
-map-validation: [parse error, помилка парсингу, ошибка загрузки, перевірка файлу, сломанная карта, error message]
-map-window: [мапа, world map, большая карта, повноекранна мапа, атлас, overview]
-markup-validity: [судоку, sudoku, перевірка заповнення, валидация, повтор цифри, rule check]
-match-setup: [game setup, настройка матча, custom game, кастомна гра, параметри матчу, new game options]
-maze-generation: [процедурна генерація, procedural, recursive backtracker, Prim, Kruskal, крускал, perfect maze]
-melee-vs-ranged: [ближній бій, дальній бій, ближний бой, close combat, лучник, мечник, стрілок]
-message-log: [лог, combat log, сообщения, хроніка, текстові повідомлення, notifications]
-mines-after-first-click: [сапер, minesweeper, safe first click, первый клик безопасен, бомби, расстановка мин]
-minimap-radar: [мінікарта, маленькая карта, overview map, карта в кутку, map overlay]
-mirror-reflect: [отражение, рикошет, ricochet, лазер, bounce, відбивач]
-mode-indicator: [индикатор хода, иконка режима, значок режиму, mode icon, turn indicator, бафф активний]
-mode-select: [game modes, выбор режима, time attack, тайм-атака, endless, аркада, classic]
-move-4dir: [без діагоналей, 4 направления, 4-way, orthogonal, хрестом, стрілки]
-move-8dir: [8-way, diagonal, по диагонали, 8 направлений, numpad, наискосок]
-move-auto: [рухається сам, автобег, auto-run, змійка, snake movement, як pac-man, constant movement]
-move-by-input: [керування, управление, ходьба, WASD, стрілочки, movement, player movement]
-move-counter: [moves, pushes, steps, кроки, счетчик ходов, кількість ходів]
-move-limit: [обмеження ходів, moves left, лимит ходов, кроків лишилось, step limit, N ходів]
-move-notation: [нотация, журнал ходів, запис партії, запись партии, e2-e4, FEN, move list]
-move-timer: [шахматные часы, chess clock, бліц, blitz, time control, контроль часу, ліміт на хід]
-movement-animation: [tween, плавний рух, smooth movement, lerp, интерполяция, анимация движения, slide animation]
-multi-cell-size: [2x2, 1x2, великі фігури, большой объект, multi-tile, big entity, бос на кілька клітин]
-multi-select: [shift+click, ctrl+click, box select, рамка виділення, выделить несколько, lasso, групою]
-music-toggle: [вимкнути музику, выключить музыку, music on/off, mute, саундтрек, OST]
-neighbor-count-clue: [minesweeper, міни поруч, цифра навколо, клетки вокруг, adjacent, соседи]
-next-queue: [next piece, следующая фигура, превью, тетрис, що далі, upcoming]
-no-guess-generation: [no guess, без угадывания, чесний сапер, logic only, solvable minesweeper, без лотереї, 50/50]
-no-move-into-check: [king safety, illegal move, нельзя под шах, самошах, pin, звʼязана фігура]
-no-moves-left: [тупик, no moves, ходов нет, нет ходов, stuck, поле заповнене, нікуди ходити]
-objective-text: [завдання, задание, квест, quest, місія, mission, підказка що робити]
-one-way-cell: [стрілка, стрелка, arrow tile, клапан, однобічний прохід, односторонний проход]
-online-multiplayer: [мультиплеєр, по сети, мережева гра, websocket, LAN, netcode, сетевая игра]
-orientation-state: [facing, rolling cube, кубик котиться, bloxorz, сосиска, грані куба, напрям погляду]
-particles: [партикли, частицы, particle system, искры, іскри, дим, конфетти]
-party-switch: [switch character, переключение персонажей, кілька героїв, змінити героя, команда, squad, lost vikings]
-pass-device: [pass and play, передай телефон, передать устройство, шторка, не підглядай, curtain]
-pass-turn: [пропуск ходу, skip turn, пропустить ход, реверсі, отелло, othello]
-path-cut: [обрізати лінію, стерти хвіст лінії, backtrack, стирание пути, обрыв линии, trim path]
-path-drawing: [провести лінію, draw line, рисовать путь, connect dots, соединить точки, лінія мишкою]
-path-preview: [маршрут, траектория, путь, лінія руху, стрілки маршруту, route preview]
-pattern-automaton: [scripted movement, скрипт руху, фіксований маршрут, паттерн, ходит по кругу, ритм, повторюваний рух]
-pause-menu: [Esc-меню, escape menu, меню на паузе, pause screen, продолжить, resume]
-pawn-promotion: [превращение пешки, пішак у ферзя, пешка, queening, ферзь, проходна]
-pencil-marks: [карандаш, заметки, пометки, notes, candidates, позначки в судоку, маленькі цифри]
-permadeath: [пермадес, перманентна смерть, хардкор, ironman, roguelike, без сохранений, вечная смерть]
-piece-capture: [бити фігуру, рубити, съесть фигуру, взятие, срубить, take]
-piece-drop: [bughouse, бугхаус, shogi, шоги, сброс фигуры, з запасу]
-piece-move-patterns: [moveset, chess moves, як ходить кінь, ферзь, ладья, конь буквой Г]
-piece-rotate-flip: [обертання, вращение, крутити фігуру, mirror, отзеркалить, перевернути, rotation]
-pipe-connectors: [труби, трубы, водопровід, pipes, plumber, сантехнік, дроти]
-placement-screen: [морський бій, морской бой, расстановка кораблей, setup phase, deployment, стратего, hidden setup]
-player-camera: [viewport, вьюпорт, follow camera, скролінг мапи, слежение камеры, камера следует]
-player-death: [лайфи, жизни, життя, lives, game over, геймовер, сердечки]
-player-guide: [мануал, manual, гайд, як грати, how to play, руководство, rules]
-pocket: [запас фігур, резерв, reserve, взятые фигуры, captured pieces, hand, кишеня]
-polyomino-placement: [тетраміно, tetromino, пентаміно, полимино, фігурки з клітин, тетріс-фігури, puzzle pieces]
-popup-text: [floating text, damage numbers, цифри урону, всплывающий текст, плаваючі цифри, tooltip]
-profile-stats: [стата, профиль, account, акаунт, player stats, особистий кабінет]
-progress-acceleration: [ускорение, speed up, гра пришвидшується, разгон, difficulty ramp, наростаюча складність, все швидше]
-project-readme: [рідмі, опис проєкту, описание проекта, markdown, документація репо, how to run]
-projectile-collision: [bullet collision, пуля в пулю, куля в кулю, збити снаряд, перехоплення, столкновение пуль]
-projectile-shot: [стрільба, стрелять, пуля, куля, bullet, выстрел, shoot]
-property-tests: [hypothesis, property-based, fuzzing, фазинг, рандомні тести, генеративні тести, quickcheck]
-pull-object: [тянуть, тягати, drag, тягнути ящик, витягнути, за собою]
-push-object: [толкать, сокобан, sokoban, ящик, двигати ящик, box pushing, пхати]
-puzzle-select: [вибір пазла, выбор головоломки, puzzle list, level grid, сетка уровней, список головоломок]
-random-walk: [рандомний рух, хаотичний рух, случайное движение, wander, бродилка, drunk walk, бродит]
-rating-system: [ело, эло, MMR, ранг, rank, ladder, ммр]
-reach-exit: [выход, finish, goal, кінець лабіринту, дойти до конца, exit door, прохід рівня]
-reachability-check: [прохідність, проверка проходимости, path exists, чи можна дійти, заливка, доступность, connectivity]
-reachable-highlight: [movement range, зона руху, куди можна піти, дальность хода, синие клетки, move range]
-realtime-ai: [трон, бот-змійка, змейка против бота, snake AI, light cycles, бот без черги ходів]
-redo: [ctrl+y, повторити хід, вернуть ход, повтор, вперед по історії, ctrl+shift+z]
-reinforcements: [подкрепление, новий ворог замість убитого, резерв, танки battle city, поповнення]
-remaining-counter: [осталось, залишилось, mines left, enemies left, скільки ще, лічильник мін]
-repetition-draw: [ничья, threefold repetition, троекратное повторение, 50 moves rule, зацикливание, вечный шах]
-replay: [реплей, повтор, запис гри, запись игры, playback, recording, ghost]
-replay-window: [реплей, просмотр записи, playback, відтворення, плеєр партії, перемотка]
-requirements-pyproject: [залежності, зависимости, pip, uv, venv, poetry, dependencies]
-respawn: [відродження, возрождение, воскресіння, revive, оживлення, воскрешение]
-restart-level: [перезапуск, заново, reset, ресет, начать заново, почати знову, retry]
-rewind: [перемотка, time rewind, назад у часі, отмотать, повернення часу, реверс часу, time travel]
-roll-off-rounded: [валун, boulder, скатывается, rolling, лавина, круглий камінь падає вбік]
-round-currency: [гроші, деньги, money, coins, золото, ресурси, солнышки]
-row-conveyor: [фроггер, frogger, дорога з машинами, лента, потік машин, колоди на річці, rolling row]
-rule-variants: [house rules, custom rules, кастомні правила, моди, mods, свої правила, fairy chess]
-run-relics: [артефакти, артефакты, пасивки, passive items, перки, амулеты, амулети]
-satisfy-constraints: [puzzle solved, головоломка решена, судоку зібрано, всі правила виконані, перемога в пазлі, solved]
-save-autosave: [автозбереження, автосохранение, auto save, при виході, кожні N ходів, background save]
-save-game: [сохранение, зберегти, загрузка, load game, savegame, сохраниться, продовжити гру]
-save-multi-slot: [кілька сейвів, save slots, multiple saves, ячейки сохранения, вибір сейва, профілі]
-save-progress: [persistence, хайскор у файлі, сохранить рекорды, high score file, json, профіль гравця, пройдені рівні]
-save-single-slot: [одне збереження, quicksave, швидкий сейв, один сейв, one save file, перезапис]
-score-records: [хайскор, highscore, high score, best score, топ-10, лучший результат]
-seed-share: [сід, номер карти, код рівня, random seed, зерно, поделиться картой, map code]
-selection-highlight: [выделение, курсор, рамка, focus, обрана фігура, selected]
-sensor-predicates: [if-else, условия, датчики, умовний перехід, conditions, if wall ahead]
-sequential-levels: [next level, наступний рівень, следующий уровень, кампанія, campaign, уровни]
-settings-elements: [slider, чекбокс, перемикачі, віджети, widgets, UI controls, контролы]
-settings-window: [настройки, сетінги, сеттинги, options, опції, параметры, config]
-share-result: [поделиться, скопіювати результат, clipboard, emoji grid, похвастаться, похвалитися]
-shoot-burst: [автомат, очередь, burst fire, rapid fire, кулемет, пулемет, серія пострілів]
-shoot-cooldown: [кулдаун, КД, перезарядка, reload, fire rate, скорострільність, затримка пострілу]
-shoot-forward: [прямий постріл, одиночний постріл, single shot, straight shot, стріляти прямо]
-shoot-modes: [види зброї, типи пострілів, weapon modes, fire modes, зброя, оружие]
-shoot-spread: [дробовик, shotgun, spread shot, веер, віяло, дробь]
-shop-between-levels: [шоп, крамниця, лавка, торговець, торговец, store, купівля]
-shop-buyback: [sell, продати, продать, возврат, refund, скупка, повернути гроші]
-shop-catalog: [асортимент, ассортимент, прайс, price list, список покупок, полиці]
-shop-preview: [попередній перегляд, tooltip, тултип, характеристики, сравнение, порівняння до покупки]
-shop-sales: [скидки, распродажа, discount, дисконт, промо, black friday, дешевше]
-shop-window: [шоп, лавка, store, торговец, меню покупок, buy menu]
-simultaneous-versus: [splitscreen, спліт-скрін, разделенный экран, race, гонка на швидкість, battle royale]
-single-command-run: [main.py, __main__, entry point, точка входу, run.sh, старт гри]
-single-loop-check: [single cycle, замкнений контур, замкнутая линия, петля, слизерлинк, обхід периметра]
-skip-level: [скіп, пропустить уровень, перескочити, next level, джокер, joker]
-sound-effects: [SFX, звуки, звуковые эффекты, бип, pygame.mixer, озвучка, шум]
-sound-volume: [громкость, mute, mixer, микшер, без звуку, звук тихіше]
-sound-warnings: [сигнал, alarm, тікання годинника, тиканье, бип, alert]
-spawn-animation: [fade in, мерехтіння, мигание, materialize, ефект народження, warp in]
-spawn-points: [start position, місце появи, база ворогів, логово, гнездо, стартова позиція, спаунер]
-spawn-random-cell: [random spawn, спаун, рандом, яблуко в змійці, нова їжа, случайная клетка, randint]
-spawn-schedule: [періодична поява, interval, спаун по таймеру, кожні N секунд, timed spawn, генерация врагов]
-spawner-entity: [гніздо, улей, hive, nest, логово, фабрика ворогів, монстрогенератор]
-speed-per-type: [скорость, повільний ворог, быстрые враги, fast enemy, slow, ходить через тік]
-splash-screen: [сплеш, интро, intro, loading screen, екран завантаження, загрузочный экран]
-stairs-levels: [этажи, лестница вниз, floors, спуск, глибина, dungeon depth, multi-floor]
-state-as-data: [серіалізація, JSON, snapshot, знімок стану, dict, model, to_dict]
-state-string: [серіалізація, serialize, FEN, код позиції, base64, copy-paste позиції, код сохранения]
-stats-window: [стата, профіль, profile, win rate, вінрейт, рекорди гравця]
-status-effects: [бафф, дебафф, buff, debuff, яд, poison, DoT]
-status-panel: [HUD, худ, статус-бар, status bar, інфопанель, верхня панель]
-std-collections: [Counter, defaultdict, namedtuple, черга, очередь, коллекции, структури даних]
-step-execution: [дебагер, debugger, step by step, пошагово, налагодження, трасування, відладка]
-stick-together: [склеювання, слипание, приклеїтися, sticky, магніт, glue]
-streak-stats: [стрік, win streak, дні поспіль, дней подряд, гістограма спроб, daily stats]
-swap-on-contact: [поміняти місцями, поменяться местами, switch places, exchange, переставити, рокіровка]
-swipe-gestures: [телефон, мобілка, mobile, touchscreen, смахивание, жесты пальцем, планшет]
-telegraph-marker: [попередження, warning, маркер атаки, intent, предупреждение, приціл, мітка удару]
-telegraphed-intents: [enemy intent, попередження про атаку, предупреждение атаки, план ворога, warning, червоні клітини]
-teleport: [warp, варп, ТП, TP, переміщення, перенос]
-teleport-cooldown: [кулдаун, КД, перезарядка, затримка, delay, не телепортує одразу]
-teleport-one-way: [one-way portal, в один бік, лише туди, без повернення, в одну сторону]
-teleport-pair: [linked portals, двосторонній, вхід і вихід, туда-обратно, синій і помаранчевий]
-teleport-random-exit: [рандом, random portal, случайный, непередбачуваний, кидає куди завгодно]
-temporary-modes: [бафф, power-up, павер-ап, неуязвимость, невразливість, буст, бонус на час]
-theme-select: [скін, skin, тема, dark mode, оформлення, tileset, тайлсет]
-thief: [вор, кража, крадіжка, steal, robber, грабіжник]
-threat-range: [зона атаки, attack range, danger zone, небезпечні клітини, опасные клетки, червона зона]
-tile-merge: ['2048', слияние, combine, склеювання чисел, обʼєднання плиток, 2+2=4]
-tile-rotate: [обертання, вращать, крутити, rotation, крутилка труб, pipe rotate, повернути по кліку]
-time-bonus: [speedrun, спідран, за швидкість, бонус за скорость, очки за время, быстрое прохождение]
-time-out: [timeout, час вийшов, время вышло, countdown, зворотний відлік, обратный отсчет, лимит времени]
-timed-despawn: [исчезает, пропадає, expire, lifetime, тимчасовий обʼєкт, таймер життя]
-touch-death: [шипи, ловушка, instakill, ваншот, one-hit kill, contact damage, умирает от врага]
-tower-placement: [tower defense, TD, товер дефенс, башни, турелі, будувати оборону, plants vs zombies]
-tower-range: [дальність, attack range, зона атаки башни, дальнобойность, покриття турелі, зона ураження]
-turn-enforcement: [чий хід, turn order, whose turn, по очереди, по черзі, порядок ходов, черговість]
-turn-when-blocked: [разворот, bounce, отскок, відскок, змінює напрям, уперся в стену, rebound]
-tutorial-window: [туторіал, обучение, гайд, guide, onboarding, підказки новачку]
-typing-mypy: [type hints, тайпхінти, pyright, static typing, статична перевірка, аннотации]
-undo-redo: [відкат, откат, ctrl+z, скасувати хід, отменить ход, отмена, повернути хід]
-undo-step: [ctrl+z, скасувати останній хід, отменить последний ход, single undo, відкат, step back]
-undo-unlimited: [unlimited undo, нескінченний відкат, история ходов, undo history, скільки завгодно, бесконечная отмена]
-unique-puzzle-generation: [генератор судоку, sudoku generator, единственное решение, unique solution, одне рішення, procgen пазлів]
-unit-tests: [pytest, unittest, тестирование, тестування, assert, автотести, TDD]
-unit-xp-skills: [прокачка, level up, левелап, опыт, скіли, перки, experience]
-unsolvable-states: [тупик, глухий кут, dead state, нерешаемо, безвихідь, підказати рестарт, stuck]
-user-procedures: [підпрограми, подпрограммы, subroutines, functions, функции, макроси, recursion]
-version-tags: [git tag, релізи, releases, версіонування, v1.0, semver]
-video-channel: [ютуб, youtube, тікток, tiktok, відеоканал, стрім, twitch]
-volume-control: [громкость, sound, mute, регулятор звуку, тише-громче, повзунок]
-wall-follower: [правило правої руки, right-hand rule, wall hugging, вдоль стены, по периметру, светлячок]
-word-validation: [вордл, скрабл, эрудит, dictionary, словарь, word list, перевірка орфографії]
-world-map: [карта світу, карта мира, overworld, оверворлд, карта рівнів, map screen]
-wrap-edges: [wraparound, наскрізь через край, з краю на край, крізь стіну, бесконечное поле, зациклене поле, торус]
-wrong-mark-lose: [ошибка, mistake, wrong answer, помилився, штраф за помилку, без права на ошибку, хардкор]
+about-window:
+  uk: [титри, автори, контакти, подяки, версія гри]
+  ru: [о игре, об игре, авторы]
+  en: [credits, info]
+achievements-window:
+  uk: [ачівки, трофеї, бейджі, медалі, нагороди]
+  ru: [достижения, награды]
+  en: [trophies, badges]
+ai-greedy:
+  uk: [найвигідніший хід, бере найбільше, середній бот, оцінка ходу]
+  ru: [жадный, средний бот, лучший ход]
+  en: [one-ply, greedy bot]
+ai-minimax:
+  uk: [мінімакс, альфа-бета, дерево гри, перебір ходів, сильний бот]
+  ru: [перебор ходов, дерево игры, сильный бот]
+  en: [alpha-beta, game tree, negamax]
+ai-opponent:
+  uk: [бот, ші, проти компа, компʼютер, штучний інтелект]
+  ru: [ии, компьютер, против компа]
+  en: [cpu, bot, computer]
+ai-random:
+  uk: [рандомний бот, тупий бот, легкий ai, слабкий бот]
+  ru: [случайные ходы, случайный бот, тупой бот]
+  en: [random bot, dumb ai]
+all-on-targets:
+  uk: [сокобан, ящики на місцях, всі на хрестиках, коробки на місцях]
+  ru: [ящики на крестиках, коробки на местах]
+  en: [sokoban, boxes on goals]
+architecture-doc:
+  uk: [діаграма класів, структура проєкту, документація коду, схема модулів]
+  ru: [диаграмма, структура проекта, описание архитектуры]
+  en: [uml, design doc]
+async-multiplayer:
+  uk: [асинхронна гра, заочна партія, хід раз на день, по листуванню]
+  ru: [по переписке, ход раз в день, заочная партия]
+  en: [correspondence, play by email, async]
+attract-demo:
+  uk: [демо-ролик, бот грає, атракт-режим, гра без гравця]
+  ru: [автоигра, игра играет сама]
+  en: [autoplay, screensaver, idle demo]
+avatar-picker:
+  uk: [аватарка, вибір героя, костюм, скін, іконка гравця]
+  ru: [выбор персонажа, иконка игрока]
+  en: [skin, player icon]
+background-music:
+  uk: [саундтрек, мелодія, музон]
+  ru: [музыка, фоновая музыка]
+  en: [ost, bgm, playlist]
+beam-tracing:
+  uk: [лазер, рейкаст, лазерна головоломка]
+  ru: [луч, лазерный луч, трассировка луча]
+  en: [raycast, ray tracing, light ray]
+blast-wave:
+  uk: [бомба, бомбочка, вогонь бомби, бомбермен, вибух хрестом]
+  ru: [взрыв, взрывная волна]
+  en: [explosion, flames, bomberman]
+blob-growth:
+  uk: [амеба, слайм, розростання, пліснява]
+  ru: [амёба, разрастание, слизь]
+  en: [amoeba, slime]
+body-queue:
+  uk: [змійка, сегменти, хвіст росте, ріст змійки]
+  ru: [змейка, хвост, сегменты]
+  en: [snake, deque, tail]
+bomb-fuse:
+  uk: [таймер бомби, поставити бомбу, гніт, детонатор]
+  ru: [фитиль, таймер бомбы, поставить бомбу]
+  en: [fuse, bomb timer, place bomb]
+button-toggle:
+  uk: [тригер, перемикач, нажимна плита, натискна плита, рубильник]
+  ru: [рычаг, нажимная плита, переключатель]
+  en: [switch, lever, pressure plate]
+carrier-platform:
+  uk: [рухома платформа, ліфт, колода, пліт]
+  ru: [бревно, едет на платформе, движущаяся платформа]
+  en: [moving platform, ride]
+castling:
+  uk: [рокірування, король і тура, король з турою]
+  ru: [король и ладья, длинная рокировка]
+  en: [castle, 0-0]
+cell-click:
+  uk: [мишка, лкм, клацнути, тап, натиснути на клітинку]
+  ru: [мышь, нажать на клетку, кликнуть]
+  en: [mouse, click, tap]
+cell-transform:
+  uk: [конвертер, морф, мутація, змінити тип, перетворювач]
+  ru: [превращение, сменить тип]
+  en: [converter, transmute]
+chain-detonation:
+  uk: [каскад вибухів, підрив бомб, бомба підриває бомбу, ланцюгова реакція]
+  ru: [цепная реакция, взрыв бомб, детонация бомб]
+  en: [chain reaction, chain explosion]
+chain-reaction:
+  uk: [комбо, ланцюжок збігів, гравітація після збігу, осідання]
+  ru: [цепочка, цепная реакция]
+  en: [combo, cascade]
+character-select:
+  uk: [вибір героя, пік, скін, клас героя]
+  ru: [выбор героя, класс персонажа, выбор персонажа]
+  en: [select hero, roster, hero pick]
+chase-bfs:
+  uk: [найкоротший шлях, астар, дейкстра, обхід у ширину, пошук у ширину]
+  ru: [поиск пути, кратчайший путь, обход в ширину]
+  en: [pathfinding, dijkstra, shortest path]
+chase-double-move:
+  uk: [мінотавр, тесей, подвійна швидкість, подвійний хід]
+  ru: [ходит дважды, двойной ход]
+  en: [minotaur, 2x speed, double move]
+chase-greedy:
+  uk: [прямо до цілі, найпростіший ai, наївний, манхеттен]
+  ru: [жадный, наивный, по прямой]
+  en: [manhattan, straight line]
+chase-player:
+  uk: [переслідування, ворог біжить за мною, ai ворога, бот-мисливець, наздоганяє]
+  ru: [преследование, враг бежит за мной, догоняет]
+  en: [follow, hunter, pursuit]
+cheat-codes:
+  uk: [чити, режим бога, безсмертя]
+  ru: [читы, бессмертие]
+  en: [cheats, godmode, debug mode]
+check-stalemate:
+  uk: [атака на короля, король під ударом, нема ходів у короля, шахова загроза]
+  ru: [король под ударом, нет ходов у короля, шаховая угроза]
+  en: [king in check, draw]
+checkmate:
+  uk: [шах і мат, перемога в шахах, кінець партії]
+  ru: [победа в шахматах, конец партии]
+  en: [king captured, victory in chess, mate]
+checkpoint:
+  uk: [чекпоінт, контрольна точка, сейв-точка, чекпойнт]
+  ru: [контрольная точка, флажок, точка сохранения]
+  en: [respawn point, save point]
+chord-click:
+  uk: [обидві кнопки миші, лкм+пкм, середня кнопка, сапер, подвійний клік]
+  ru: [аккорд, двойной клик, обе кнопки мыши]
+  en: [chording, middle click, double click]
+chunk-generation:
+  uk: [кімнати-заготовки, чанки, шаблони кімнат]
+  ru: [чанки, заготовки комнат]
+  en: [chunks, room templates, prefabs]
+code-editor-window:
+  uk: [редактор коду, редактор команд, блоки команд, скретч, програмування робота]
+  ru: [программирование робота, редактор кода]
+  en: [ide, visual coding, scratch]
+codex-window:
+  uk: [кодекс, вікі, довідник, монстропедія, лор]
+  ru: [энциклопедия, справочник]
+  en: [wiki, lore, bestiary]
+collect-all:
+  uk: [всі монети, всі точки, повна зачистка, все золото]
+  ru: [собрать все, все монеты, все точки]
+  en: [all coins, 100%]
+collect-quota:
+  uk: [норма, діаманти, кристали, ціль по кількості, алмази]
+  ru: [нужно собрать n, алмазы, кристаллы]
+  en: [gems, required items, diamonds]
+combo-multiplier:
+  uk: [множник, стрік, бонус за серію]
+  ru: [множитель]
+  en: [x2, streak, chain bonus]
+command-program:
+  uk: [карел, лайтбот, черепашка, робот-виконавець, алгоритм для робота]
+  ru: [исполнитель, программа для робота]
+  en: [turtle, visual programming, karel]
+commit-history:
+  uk: [гіт, повідомлення комітів, журнал комітів]
+  ru: [коммиты, история коммитов]
+  en: [git log, commit messages, conventional commits]
+completion-detection:
+  uk: [перевірка рішення, розвʼязано, автоперевірка, кінець пазла]
+  ru: [головоломка решена, проверка решения, решено]
+  en: [solved, puzzle complete]
+confirm-dialog:
+  uk: [ви впевнені, так/ні, модалка, попап]
+  ru: [подтверждение, вы уверены]
+  en: [are you sure, yes/no, modal]
+conflict-highlight:
+  uk: [помилки червоним, дублікати, повтор цифри, червоні клітинки]
+  ru: [ошибки красным, повтор цифры]
+  en: [error highlight, red cells]
+connectivity-check:
+  uk: [заливка, граф, одна мережа, острови, компонента звʼязності]
+  ru: [связность, острова, одна сеть]
+  en: [flood fill, connected components, union-find]
+console-render:
+  uk: [термінал, текстова графіка, псевдографіка]
+  ru: [текстовая графика]
+  en: [terminal, ascii, curses]
+control-click-cell:
+  uk: [мишка, клік, клацнути, тап]
+  ru: [мышь, нажать на клетку]
+  en: [click, mouse]
+control-direct:
+  uk: [стрілки, клавіатура, wasd, напряму]
+  ru: [стрелки, клавиатура]
+  en: [arrows, keyboard]
+control-drag-path:
+  uk: [провести лінію, зʼєднати, намалювати маршрут]
+  ru: [нарисовать путь, провести линию]
+  en: [draw path, connect, line drawing]
+control-drag-piece:
+  uk: [перетягнути, драг, тягнути мишкою]
+  ru: [перетащить, драг]
+  en: [drag and drop, drag, dnd]
+control-indirect:
+  uk: [клік куди йти, вказати ціль, ртс]
+  ru: [указать цель, клик куда идти]
+  en: [indirect, point and click, click to move]
+control-mark:
+  uk: [ставлю цифри, зафарбовую, хрестики, олівець]
+  ru: [закрашивать]
+  en: [mark, fill, pencil]
+control-programmed:
+  uk: [програмування, команди, алгоритм, карел, черепашка]
+  ru: [программирование]
+  en: [programming, lightbot]
+control-swipe-all:
+  uk: [свайп, зсув усього поля, нахил, '2048']
+  ru: [сдвиг поля]
+  en: [swipe, tilt, slide all]
+controls-remap:
+  uk: [ребінд, бінди, свої кнопки, налаштування керування]
+  ru: [настройка клавиш, переназначение клавиш, бинды]
+  en: [rebind, keybinds, keymap]
+coverage-area:
+  uk: [аура, радіус дії, зона дії, спринклер]
+  ru: [радиус, зона действия]
+  en: [aoe, aura, range]
+crush-by-slide:
+  uk: [задавити, пенго, розплющити, блоком по ворогу]
+  ru: [раздавить, придавить, давить врагов]
+  en: [squash, pengo]
+cursor-place:
+  uk: [розміщення, посадити рослину, поставити кліком, вибір місця]
+  ru: [поставить объект, разместить, посадить растение]
+  en: [placement, click to place, place object]
+custom-exceptions:
+  uk: [винятки, помилки, обробка помилок]
+  ru: [исключения, ошибки, обработка ошибок]
+  en: [try/except, raise, traceback]
+custom-window:
+  uk: [інший екран, кастомний екран, особливе меню, свій екран]
+  ru: [свой экран, особое меню, кастомный экран]
+  en: [other screen, unique window, custom screen]
+cutscene:
+  uk: [сценка, катсцена, перерва між рівнями, інтермісія]
+  ru: [катсцена, заставка между уровнями]
+  en: [cutscene, intermission]
+daily-puzzle:
+  uk: [пазл дня, задача дня, як wordle, челендж дня, головоломка дня]
+  ru: [ежедневная головоломка, челлендж дня]
+  en: [daily challenge, puzzle of the day]
+dataclass-entities:
+  uk: [датакласи, ооп, класи сутностей]
+  ru: [датаклассы, классы сущностей]
+  en: [dataclasses, oop, attrs]
+deadlock-detection:
+  uk: [застряг, дедлок, мертва позиція, безнадійно, ящик у кутку, тупик]
+  ru: [ящик в углу, застрял]
+  en: [stuck, dead end]
+death-animation:
+  uk: [ефект загибелі, вмирання, анімація загибелі]
+  ru: [анимация гибели, умирание]
+  en: [death effect, die animation]
+demo-effects:
+  uk: [монтаж, таймлапс, субтитри, сповільнення]
+  ru: [субтитры, замедление, ускорение видео]
+  en: [subtitles, timelapse, slow-mo]
+descend-and-reverse:
+  uk: [інвейдери, прибульці, флот спускається, марш, загарбники]
+  ru: [захватчики, пришельцы, инвейдеры]
+  en: [formation, aliens, space invaders]
+destroy-all-enemies:
+  uk: [зачистка, вбити всіх, перебити, без ворогів]
+  ru: [убить всех, уничтожить всех, без врагов]
+  en: [kill all, clear enemies]
+destructible-blocks:
+  uk: [ламати стіни, розбити стіну, ящики, цегла, цеглини]
+  ru: [разрушаемые, кирпичи, сломать стену]
+  en: [breakable, softblock, bricks]
+dev-log:
+  uk: [девлог, щоденник розробки, ченджлог, блог]
+  ru: [дневник разработки]
+  en: [changelog, blog, devlog]
+diagonal-gap-pass:
+  uk: [щілина між стінами, прохід крізь кут, косий прохід]
+  ru: [проход по диагонали, щель между стенами]
+  en: [diagonal squeeze, corner cutting, corner gap]
+dialogue-window:
+  uk: [діалог, репліка, табличка, сюжет]
+  ru: [диалог, реплика]
+  en: [dialogue, dialog, text box]
+difficulty-curve:
+  uk: [складність росте, навчальні рівні, поступово складніше]
+  ru: [кривая сложности]
+  en: [difficulty curve, progression]
+difficulty-levels:
+  uk: [легкий режим, хардкор, новачок, важкий режим]
+  ru: [сложность, новичок, лёгкий режим]
+  en: [easy, hard, normal]
+difficulty-rating:
+  uk: [зірки складності, класифікація пазлів, наскільки важко]
+  ru: [сложность головоломки, оценка сложности]
+  en: [grading, difficulty score, easy/hard]
+difficulty-select:
+  uk: [хардкор, легко, важко, режим складності]
+  ru: [выбор сложности, сложно, уровень сложности]
+  en: [easy, normal, hard]
+dig-hole:
+  uk: [вирити яму, яма для ворога, риє вниз, пастка-яма]
+  ru: [копать яму, вырыть яму]
+  en: [dig down, dig trap]
+dig-terrain:
+  uk: [рити, прокопати, шахта, лопата, тунель]
+  ru: [копать, тоннель, рыть]
+  en: [digging, mining, dig dug]
+dot-mark:
+  uk: [прапорець, мітка, хрестик, позначка]
+  ru: [флажок, пометка, знак вопроса]
+  en: [flag, question mark]
+drag-drop-piece:
+  uk: [перетягування, драг-н-дроп, тягнути мишкою, перенести фігуру]
+  ru: [перетаскивание, перетащить, тащить мышкой]
+  en: [drag and drop, dnd]
+drop-on-death:
+  uk: [лут з ворога, дроп, випадає бонус, червоний танк]
+  ru: [выпадает предмет, лут с врага]
+  en: [loot drop, drop rate, enemy drop]
+dual-frontends:
+  uk: [два інтерфейси, два ui, консоль і вікно, перемикання режиму відображення]
+  ru: [переключение режимов отображения, два интерфейса, консоль и окно]
+  en: [console + gui, two views]
+dungeon-generation:
+  uk: [данж, процедурка, кімнати й коридори, роглайк, данжон]
+  ru: [подземелье, комнаты и коридоры]
+  en: [roguelike, bsp, cellular automata]
+edge-marking:
+  uk: [ребро, лінії між точками, межі клітин, хрестик на ребрі]
+  ru: [границы клеток, линии между точками]
+  en: [edges, wall drawing]
+editor-draw-tools:
+  uk: [кисть, заливка, пензлик, прямокутник]
+  ru: [рисование, кисточка, прямоугольник]
+  en: [fill, brush, paint tools]
+editor-erase:
+  uk: [ластик, стерти, очистити клітину, видалити]
+  ru: [удалить, стереть, стёрка]
+  en: [eraser, delete]
+editor-map-check:
+  uk: [валідація рівня, прохідність, блокувати збереження, чи проходиться рівень]
+  ru: [проверка карты, проверка уровня]
+  en: [level validation, solvable]
+editor-palette:
+  uk: [тулбар, вибір блоку, набір тайлів, панель інструментів]
+  ru: [набор тайлов, выбор блока]
+  en: [tile palette, toolbar, brush]
+editor-playtest:
+  uk: [тест рівня, спробувати зіграти, перевірити рівень, запуск з редактора]
+  ru: [проверить уровень, тест уровня]
+  en: [test play, try level, quick play]
+editor-undo:
+  uk: [відкат, історія правок, крок назад, скасувати]
+  ru: [отмена, отменить]
+  en: [ctrl+z, edit history]
+editor-window:
+  uk: [мапмейкер, конструктор рівнів, екран редактора]
+  ru: [редактор уровней, экран редактора, редактор карт]
+  en: [level editor, map editor, editor screen]
+en-passant:
+  uk: [анпасан, бій на проході, пішак бере пішака]
+  ru: [взятие на проходе, пешка бьёт пешку]
+  en: [en passant]
+end-screen:
+  uk: [геймовер, фінал, підсумки, ви виграли]
+  ru: [итоги, победа, конец игры]
+  en: [game over, you win, victory screen]
+enemy-patrol:
+  uk: [патруль, вартовий, моби ходять, охоронець, туди-сюди]
+  ru: [патрулирование, охранник, туда-сюда]
+  en: [guard, waypoints]
+enemy-reached-base:
+  uk: [прорив, зомбі дійшли до дому, штаб знищено, орел battle city]
+  ru: [прорыв, штаб уничтожен, база уничтожена]
+  en: [base destroyed, breach]
+enemy-waves:
+  uk: [орда, натиск, рейд, бос-хвиля]
+  ru: [волны врагов, финальная волна]
+  en: [horde, raid]
+environment-death:
+  uk: [лава, утопився, задавило каменем, падіння в прірву, вода вбиває]
+  ru: [утонул, придавило камнем, упал в пропасть]
+  en: [hazard, environmental hazard]
+escalating-kill-points:
+  uk: [зʼїсти привидів, привиди підряд, бонус за привидів, подвоєння]
+  ru: [съесть привидений, удвоение очков, очки за призраков]
+  en: [ghost combo, 200-400-800-1600, kill streak]
+event-effects:
+  uk: [спецефекти, тряска екрану, спалах]
+  ru: [спецэффекты, вспышка, тряска экрана]
+  en: [vfx, juice, screen shake]
+event-points:
+  uk: [скор, бали, рахунок, нарахування, за монетку +10]
+  ru: [баллы, счет]
+  en: [score, scoring]
+exe-build:
+  uk: [екзешник, бінарник, windows-версія, виконуваний файл]
+  ru: [сборка, экзешник, исполняемый файл]
+  en: [executable, nuitka, cx_freeze]
+explode-area:
+  uk: [сплеш, масова шкода, шкода по площі, вибух квадратом]
+  ru: [урон по площі, взрыв по области, массовый урон]
+  en: [aoe, splash, area damage]
+extra-life-threshold:
+  uk: [лайф за очки, додаткове життя, бонусне життя, плюс життя]
+  ru: [дополнительная жизнь, бонусная жизнь, жизнь за очки]
+  en: [1up, extra life]
+face-button:
+  uk: [кнопка рестарту, рожиця, емодзі-кнопка, кнопка-обличчя]
+  ru: [рожица, кнопка рестарта]
+  en: [smiley, reset button]
+facing-icon:
+  uk: [поворот спрайту, куди дивиться, спрайт за напрямком, танк повертається]
+  ru: [поворот спрайта, направление взгляда, куда смотрит]
+  en: [sprite direction, directional sprite]
+feature-demo:
+  uk: [запис екрану, гіфка, скрінкаст, коротке відео]
+  ru: [скринкаст, запись экрана]
+  en: [screencast, gif, obs]
+field-scaling:
+  uk: [зум, ресайз, скрол, повний екран, прокрутка]
+  ru: [скролл, полный экран, прокрутка карты]
+  en: [zoom, resize, fullscreen]
+field-size-picker:
+  uk: [розмір сітки, ширина і висота, розмір мапи]
+  ru: [размер поля, размер карты, ширина и высота]
+  en: [board size, grid size, 10x10]
+fill-hole:
+  uk: [яма, засипать яму, провал, заповнити отвір, міст з ящика]
+  ru: [засыпать яму, заполнить дыру]
+  en: [pit, kwirk]
+fixture-level-tests:
+  uk: [еталонні рівні, тестові мапи, тестові рівні]
+  ru: [фикстуры, тестовые уровни, эталонные уровни]
+  en: [fixtures, golden tests, snapshot test]
+flag-cycle:
+  uk: [пкм, прапорець, права кнопка миші, позначити міну]
+  ru: [флажок, правая кнопка, пометить мину]
+  en: [right click, flag]
+flood-reveal:
+  uk: [відкриття області, порожні клітинки, розкриття поля]
+  ru: [открытие области, пустые клетки, раскрытие нулей]
+  en: [flood fill, auto reveal]
+floor-types:
+  uk: [ландшафт, місцевість, тип клітини, ковзанка, болото, лід]
+  ru: [лед, местность, тип клетки]
+  en: [terrain, ice]
+fog-of-war:
+  uk: [фог, поле зору, темрява, видимість]
+  ru: [туман войны, видимость, поле зрения]
+  en: [fov, line of sight]
+freeze-into-block:
+  uk: [заморозка, крижана брила, ворог-платформа, заморозити]
+  ru: [заморозить, ледяной блок, ледяная глыба]
+  en: [ice block, kickle]
+fsm-program:
+  uk: [кінцевий автомат, стейт-машина, стани і переходи]
+  ru: [конечный автомат, состояния и переходы]
+  en: [state machine, automaton, kara]
+game-loop:
+  uk: [тік, гейм-луп, головний цикл, ігровий цикл]
+  ru: [главный цикл, игровой цикл]
+  en: [main loop, while true, fps]
+game-over-continue:
+  uk: [ще спроба, кредити аркади, останній шанс, вставте монету]
+  ru: [продолжить, ещё попытка, последний шанс]
+  en: [insert coin, 10-9-8, last chance]
+game-page:
+  uk: [лендінг, сайт гри, промо, вебсторінка]
+  ru: [страница игры, сайт игры]
+  en: [landing, github pages]
+game-pause:
+  uk: [стоп, пробіл, зупинити гру, зупинка]
+  ru: [остановить игру, пробел]
+  en: [space, esc, freeze]
+game-screen:
+  uk: [основне вікно, головне вікно, ігрове поле, полотно]
+  ru: [игровое окно, главное окно]
+  en: [main window, canvas, playfield]
+game-settings:
+  uk: [сетінги, конфіг, параметри, опції]
+  ru: [настройки, параметры]
+  en: [options, config, settings.json]
+game-trailer:
+  uk: [промо-ролик, ролик, тизер, відеоролик, геймплей]
+  ru: [промо-видео]
+  en: [teaser, gameplay video]
+garbage-attack:
+  uk: [атака рядками, підкинути рядки, тетріс-батл, сміттєві рядки]
+  ru: [мусор, мусорные линии, подкинуть линии]
+  en: [junk, puyo battle, garbage lines]
+generators-iterators:
+  uk: [ліниві обчислення, ітерування, генераторний вираз]
+  ru: [генераторы, ленивые вычисления, итераторы]
+  en: [yield, itertools, __iter__]
+ghost-house-release:
+  uk: [дім привидів, привиди виходять, клітка привидів]
+  ru: [дом призраков, выход привидений]
+  en: [ghost house, ghost release]
+goal-counter:
+  uk: [прогрес цілі, квест-трекер, лишилось зібрати]
+  ru: [осталось собрать, прогресс цели]
+  en: [objective tracker, 3/10]
+gravity-down:
+  uk: [гравітація, падіння, падає вниз]
+  ru: [гравитация, падение]
+  en: [gravity, fall, falling]
+gravity-fall:
+  uk: [фізика, тяжіння, платформер, падіння]
+  ru: [падение, сила тяжести]
+  en: [falling, physics]
+gravity-per-type:
+  uk: [різна гравітація, кожен свій напрям, легкі й важкі]
+  ru: [разная гравитация]
+  en: [per-type gravity, mixed gravity]
+gravity-toward-center:
+  uk: [до центру, планета, радіальна]
+  ru: [к центру, планета]
+  en: [toward center, radial, planet gravity]
+gravity-up:
+  uk: [антигравітація, спливає, догори]
+  ru: [антигравитация, всплывает]
+  en: [reverse gravity, float, upward]
+grid-1d:
+  uk: [доріжка, трек, ряд, коло, одновимірне]
+  ru: [дорожка]
+  en: [1d, track]
+grid-3d:
+  uk: [3d, тривимірна, кубики, воксельна]
+  ru: [объемная]
+  en: [voxel, cube]
+grid-graph:
+  uk: [вузли, вершини, карта, млин, мережа]
+  ru: [узлы]
+  en: [graph, nodes]
+grid-hex:
+  uk: [гекси, шестикутники, соти]
+  ru: [гексы, шестиугольники]
+  en: [hex, hexagon, hex grid]
+grid-iso:
+  uk: [ізометрія, ромби, ізо, 2.5d]
+  ru: [изометрия]
+  en: [isometric, iso]
+grid-layers:
+  uk: [поверхи, висоти, маджонг]
+  ru: [этажи, слои]
+  en: [layers, floors, height]
+grid-nested:
+  uk: [вкладене поле, рекурсія, хрестики-нулики 9 полів]
+  ru: [поле в поле, рекурсия]
+  en: [nested, recursive, ultimate tic-tac-toe]
+grid-square:
+  uk: [квадрати, клітинки, звичайна сітка]
+  ru: [квадратная сетка, клетки]
+  en: [square grid, grid]
+gui-render:
+  uk: [графіка, вікно гри, спрайти, графічний інтерфейс]
+  ru: [графический интерфейс, спрайты]
+  en: [pygame, tkinter, pyglet]
+height-levels:
+  uk: [рельєф, ізометрія, ярус, перепад, стрибок вгору]
+  ru: [прыжок вверх, перепад высот]
+  en: [elevation, isometric]
+help-window:
+  uk: [інструкція, як грати, допомога]
+  ru: [помощь, справка, как играть]
+  en: [how to play, f1, faq]
+hidden-under-block:
+  uk: [схованка, секретний вихід, бонус у цеглі, прихований вихід]
+  ru: [секретный выход, тайник, спрятанный бонус]
+  en: [hidden exit, secret, hidden item]
+highlights:
+  uk: [хайлайт, маркери, оверлей, кольорова клітина, підсвічування]
+  ru: [подсветка, маркеры, выделение клеток]
+  en: [overlay, markers]
+hole-refill:
+  uk: [яма-пастка, яма закривається, ворог у ямі, замуровує]
+  ru: [яма закрывается, ловушка-яма, враг в яме]
+  en: [hole closes, regrowing hole]
+home-slots:
+  uk: [хатки, будиночки, гнізда на березі, фінішні клітини]
+  ru: [домики, домики лягушек]
+  en: [home bays, frog homes]
+hot-seat:
+  uk: [хотсит, два гравці, на одному компі, вдвох]
+  ru: [вдвоем, на одном компе, два игрока]
+  en: [local multiplayer, pvp, 2 players]
+hover-highlight:
+  uk: [ховер, курсор над клітиною, підсвітка під курсором]
+  ru: [наведение мыши, подсветка под мышкой]
+  en: [mouseover, rollover]
+hp-damage:
+  uk: [хп, здоровʼя, смужка здоровʼя, хіти]
+  ru: [здоровье, урон, полоска здоровья]
+  en: [health, hitpoints, dmg]
+hunger-clock:
+  uk: [їжа, ситість, виживання, голодна смерть]
+  ru: [еда, сытость, выживание]
+  en: [food, starvation, survival]
+idle-animation:
+  uk: [стояча анімація, покачування, пульсація, моргання, дихання]
+  ru: [анимация стояния, дыхание, покачивание]
+  en: [breathing, idle sprite]
+impassable-cells:
+  uk: [перешкоди, колізія, не пройти, стіни]
+  ru: [стени, стены, препятствия]
+  en: [walls, obstacles, collision]
+import-open-formats:
+  uk: [стандартні формати, чужі рівні, рівні з інтернету, готові рівні]
+  ru: [загрузка готовых уровней, чужие уровни]
+  en: [file format, sokoban collections, xsb]
+in-game-editor:
+  uk: [конструктор рівнів, мапмейкер, будівник рівнів]
+  ru: [редактор уровней, конструктор уровней, редактор карт]
+  en: [level editor, map editor, creator mode]
+in-round-upgrades:
+  uk: [павер-апи, бустери, покращення, бонус бомба, прокачка]
+  ru: [улучшения, усиления]
+  en: [power-ups, boosts]
+inertia-slide:
+  uk: [лід, на льоду, їде до стіни, ковзання]
+  ru: [скольжение, катится, на льду]
+  en: [ice sliding, momentum, sliding]
+infinite-field:
+  uk: [раннер, кросі роуд, безкінечна мапа, генерація на льоту]
+  ru: [бесконечная карта, кросси роуд, бесконечный раннер]
+  en: [endless runner, endless mode, chunks]
+interaction-table:
+  uk: [матриця колізій, правила зіткнень, правила в словнику, що буде якщо]
+  ru: [таблица столкновений, правила столкновений]
+  en: [collision matrix, data-driven]
+inventory:
+  uk: [рюкзак, сумка, шмот, айтеми]
+  ru: [инвентарь, вещи, айтемы]
+  en: [backpack, bag, items]
+inventory-duration:
+  uk: [тривалість, баф на час, таймер ефекту, витрачається]
+  ru: [срок действия, длительность]
+  en: [expire, time limit, duration]
+inventory-items:
+  uk: [зілля, аптечка, айтеми, витратні предмети]
+  ru: [зелье, расходники]
+  en: [use item, consumables, potion]
+inventory-limit:
+  uk: [слоти, рюкзак повний, перевантаження, обмеження інвентаря]
+  ru: [вместимость, слоты, перегруз]
+  en: [capacity, inventory slots, max items]
+inventory-window:
+  uk: [інвентар, рюкзак, сумка, предмети]
+  ru: [инвентарь, рюкзак]
+  en: [inventory, backpack, items]
+itchio-publish:
+  uk: [ітч, реліз гри, опублікувати гру, деплой, викласти гру]
+  ru: [выложить игру, опубликовать игру]
+  en: [game jam, steam]
+item-identification:
+  uk: [ідентифікація, загадкове зілля, сюрприз]
+  ru: [опознание, неизвестное зелье]
+  en: [unidentified, mystery item]
+item-pickup:
+  uk: [підібрати, лут, бонуси, монетки, підбір предметів]
+  ru: [подобрать, собирать предметы]
+  en: [loot, collect]
+keep-playing-after-win:
+  uk: [мʼяка перемога, гра після виграшу, продовжити після 2048]
+  ru: [продолжить после победы, играть дальше]
+  en: [keep playing, continue after win]
+key-and-door:
+  uk: [замок, відімкнути, ключик, зачинені двері, картка-ключ]
+  ru: [дверь, открыть дверь, запертая дверь]
+  en: [lock, locked door, keycard]
+keyboard-controls:
+  uk: [стрілки, хоткеї, клавіші, гарячі клавіші]
+  ru: [клавиши, управление, горячие клавиши]
+  en: [wasd, hotkeys, keybindings]
+ladder-climb:
+  uk: [лазити, канат, мотузка, лізти вгору]
+  ru: [лестница, лазать, верёвка]
+  en: [rope, lode runner]
+language-picker:
+  uk: [локалізація, переклад, мультимовність, українська]
+  ru: [язык, перевод]
+  en: [i18n, english, localization]
+last-line-defense:
+  uk: [газонокосарка, зачистка ряду, рятівна косарка]
+  ru: [газонокосилка, косилка]
+  en: [lawn mower, last stand]
+last-move-highlight:
+  uk: [звідки-куди, слід ходу, жовті клітини, попередній хід]
+  ru: [последний ход, предыдущий ход]
+  en: [previous move]
+leaderboard:
+  uk: [лідерборд, хайскор, топ гравців, таблиця лідерів]
+  ru: [таблица лидеров, топ игроков, рекорды]
+  en: [high scores, scoreboard, hall of fame]
+leftover-penalty:
+  uk: [мінус бали, невикористані фішки, штрафні очки, мінус очки]
+  ru: [штрафные очки, остаток, оставшиеся фишки]
+  en: [negative points, minus points]
+legal-move-highlight:
+  uk: [можливі ходи, доступні ходи, куди можна ходити, допустимі ходи]
+  ru: [подсветка ходов, возможные ходы, куда можно ходить]
+  en: [valid moves, move hints]
+level-bank:
+  uk: [набір рівнів, колекція пазлів, пак рівнів, збірка головоломок]
+  ru: [список уровней, набор уровней, сборник головоломок]
+  en: [level pack, puzzle collection]
+level-exchange:
+  uk: [поділитися рівнем, шаринг, експорт рівня, імпорт рівня]
+  ru: [обмен картами, поделиться уровнем]
+  en: [share level, export, user levels]
+level-format-doc:
+  uk: [опис формату, легенда символів, як зробити рівень]
+  ru: [описание формата]
+  en: [level format, legend]
+level-from-txt:
+  uk: [текстова карта, завантаження рівня, читання з файлу, парсер мапи]
+  ru: [карта из файла, загрузка уровня, текстовая карта]
+  en: [ascii map, map file, parser]
+level-intro:
+  uk: [заставка рівня, екран рівня, номер рівня]
+  ru: [заставка уровня]
+  en: [stage intro, level intro, get ready]
+level-metadata:
+  uk: [опис рівня, теги, title рівня, автор рівня, назва рівня]
+  ru: [метаданные, автор уровня, описание уровня]
+  en: [header, level info]
+level-objects-format:
+  uk: [json рівня, обʼєкти в рівні, параметри в файлі]
+  ru: [объекты уровня]
+  en: [level json, level objects, tiled]
+level-par:
+  uk: [зірки за рівень, найкращий результат, пар]
+  ru: [звёзды за уровень]
+  en: [par, stars, best moves]
+level-password:
+  uk: [пароль, код рівня, секретний код, код доступу]
+  ru: [код уровня, секретный код]
+  en: [level code, passcode, password]
+level-rating:
+  uk: [оцінка рівня, зірочки, лайки, топ рівнів]
+  ru: [сложность уровня, оценка уровня, звёздочки]
+  en: [rate level, likes, stars]
+level-select:
+  uk: [список рівнів, меню рівнів, вибір етапу, вибір мапи]
+  ru: [выбор уровня, меню уровней]
+  en: [level menu, stage select]
+level-solver:
+  uk: [солвер, автопроходження, бектрекінг, підказка ходу, авторозвʼязання]
+  ru: [решатель, автопрохождение, решить автоматически]
+  en: [backtracking, autosolve, solver]
+level-unlock:
+  uk: [анлок, замочок, закриті рівні, відкриття рівнів]
+  ru: [открыть уровень, закрытые уровни]
+  en: [locked levels, unlockables]
+line-match-clear:
+  uk: [три в ряд, 3 в ряд, лайнс, збіг кольорів, кульки]
+  ru: [совпадение цветов, шарики]
+  en: [color lines, bejeweled, match-3]
+line-of-sight-attack:
+  uk: [снайпер, турель, ворог бачить гравця, пряма видимість]
+  ru: [видимость, враг видит игрока, прямая видимость]
+  en: [los, line of sight, turret]
+line-sum-clue:
+  uk: [какуро, хмарочоси, цифри збоку, сума в рядку]
+  ru: [небоскребы, сумма в строке, цифры сбоку]
+  en: [kakuro, skyscrapers, hexcells]
+lobby-window:
+  uk: [кімната очікування, список кімнат, матчмейкінг, підключитися до гри]
+  ru: [лобби, комната ожидания, список комнат]
+  en: [matchmaking, rooms, join game]
+logic-render-split:
+  uk: [рушій, ядро гри, двіжок]
+  ru: [разделение логики, ядро игры]
+  en: [mvc, model-view, separation of concerns]
+magic-wall-timer:
+  uk: [магічна стіна, стіна перетворює каміння, камінь у діамант]
+  ru: [волшебная стена, магическая стена]
+  en: [magic wall]
+main-menu:
+  uk: [стартове меню, стартовий екран, нова гра, меню гри]
+  ru: [главное меню, новая игра, стартовое меню]
+  en: [title screen, start menu, new game]
+map-validation:
+  uk: [помилка парсингу, перевірка файлу, битий файл, помилка завантаження]
+  ru: [ошибка загрузки, сломанная карта, битый файл]
+  en: [parse error, error message]
+map-window:
+  uk: [мапа, повноекранна мапа, атлас, велика карта]
+  ru: [большая карта, карта подземелья]
+  en: [world map, overview, full map]
+markup-validity:
+  uk: [судоку, перевірка заповнення, повтор цифри, правила судоку]
+  ru: [валидация, повтор цифры, проверка заполнения]
+  en: [sudoku, rule check]
+match-setup:
+  uk: [кастомна гра, параметри матчу, налаштування матчу]
+  ru: [настройка матча, параметры партии]
+  en: [game setup, custom game, new game options]
+maze-generation:
+  uk: [процедурна генерація, крускал, алгоритм прима, випадковий лабіринт]
+  ru: [случайный лабиринт, процедурная генерация]
+  en: [recursive backtracker, prim, kruskal]
+melee-vs-ranged:
+  uk: [ближній бій, дальній бій, лучник, мечник, стрілок]
+  ru: [ближний бой, дальний бой]
+  en: [close combat, archer]
+merge-once-per-move:
+  uk: [подвійне злиття, без повторного злиття, правило злиття 2048]
+  ru: [двойное слияние, слияние один раз]
+  en: [merge once, double merge]
+message-log:
+  uk: [лог, хроніка, текстові повідомлення, бойовий лог]
+  ru: [сообщения, лог боя]
+  en: [combat log, notifications]
+mines-after-first-click:
+  uk: [сапер, бомби, безпечний перший клік, розстановка мін]
+  ru: [первый клик безопасен, расстановка мин, сапёр]
+  en: [minesweeper, safe first click]
+minimap-radar:
+  uk: [мінікарта, карта в кутку, маленька карта, огляд мапи]
+  ru: [маленькая карта, карта в углу]
+  en: [overview map, map overlay]
+mirror-reflect:
+  uk: [рикошет, лазер, відбивач, відбиття]
+  ru: [отражение, отражатель]
+  en: [ricochet, bounce, reflection]
+mode-indicator:
+  uk: [значок режиму, бафф активний, іконка режиму, індикатор ходу]
+  ru: [индикатор хода, иконка режима]
+  en: [mode icon, turn indicator]
+mode-select:
+  uk: [тайм-атака, аркада, класика, режими гри]
+  ru: [выбор режима, режимы игры]
+  en: [game modes, time attack, classic]
+move-4dir:
+  uk: [без діагоналей, хрестом, стрілки, вгору-вниз-вліво-вправо]
+  ru: [4 направления]
+  en: [4-way, orthogonal]
+move-8dir:
+  uk: [навскіс, по діагоналі, нумпад]
+  ru: [по диагонали, наискосок, 8 направлений]
+  en: [8-way, diagonal, numpad]
+move-auto:
+  uk: [рухається сам, змійка, як pac-man, автобіг]
+  ru: [автобег, движется сам]
+  en: [auto-run, snake movement, constant movement]
+move-by-input:
+  uk: [керування, стрілочки, ходьба, переміщення героя]
+  ru: [управление, движение игрока, передвижение]
+  en: [wasd, movement, player movement]
+move-counter:
+  uk: [кроки, кількість ходів, кількість кроків]
+  ru: [счетчик ходов, количество ходов, шаги]
+  en: [moves, pushes, steps]
+move-limit:
+  uk: [обмеження ходів, кроків лишилось, n ходів, залишок ходів]
+  ru: [лимит ходов, осталось ходов]
+  en: [moves left, step limit]
+move-notation:
+  uk: [журнал ходів, запис партії, шахова нотація]
+  ru: [нотация, запись партии]
+  en: [e2-e4, fen, move list]
+move-timer:
+  uk: [бліц, контроль часу, ліміт на хід, шахові часи]
+  ru: [шахматные часы, контроль времени]
+  en: [chess clock, blitz, time control]
+movement-animation:
+  uk: [плавний рух, інтерполяція, твін, плавне переміщення]
+  ru: [интерполяция, анимация движения, плавное движение]
+  en: [tween, smooth movement, lerp]
+multi-cell-size:
+  uk: [великі фігури, бос на кілька клітин, великий обʼєкт]
+  ru: [большой объект, большая фигура]
+  en: [2x2, 1x2, multi-tile]
+multi-select:
+  uk: [рамка виділення, групою, мультивибір]
+  ru: [выделить несколько, групповое выделение]
+  en: [shift+click, ctrl+click, box select]
+music-toggle:
+  uk: [вимкнути музику, саундтрек, без музики]
+  ru: [выключить музыку, без музыки]
+  en: [music on/off, mute, ost]
+name-entry:
+  uk: [імʼя гравця, ініціали, ввести імʼя]
+  ru: [ввод имени]
+  en: [name entry, initials, enter name]
+neighbor-count-clue:
+  uk: [міни поруч, цифра навколо, сапер, клітинки навколо]
+  ru: [клетки вокруг, соседи, мины рядом]
+  en: [minesweeper, adjacent]
+next-queue:
+  uk: [превʼю, тетріс, що далі, наступна фігура]
+  ru: [следующая фигура, превью, тетрис]
+  en: [next piece, upcoming, preview]
+no-guess-generation:
+  uk: [чесний сапер, без лотереї, лише логіка, без рандому]
+  ru: [без угадывания, честный сапер]
+  en: [no guess, logic only, solvable minesweeper]
+no-move-into-check:
+  uk: [самошах, звʼязана фігура, нелегальний хід, король під шахом]
+  ru: [нельзя под шах, связанная фигура]
+  en: [king safety, illegal move, pin]
+no-moves-left:
+  uk: [тупик, поле заповнене, нікуди ходити, немає ходів]
+  ru: [ходов нет, нет ходов]
+  en: [no moves, stuck]
+no-reverse-turn:
+  uk: [назад не можна, буфер вводу, поворот назад]
+  ru: [разворот назад, нельзя назад]
+  en: [no u-turn, input buffer, 180 turn]
+objective-text:
+  uk: [завдання, квест, місія, підказка що робити]
+  ru: [задание, миссия, что делать]
+  en: [quest, mission]
+one-way-cell:
+  uk: [стрілка, клапан, однобічний прохід]
+  ru: [стрелка, односторонний проход]
+  en: [arrow tile]
+online-multiplayer:
+  uk: [мультиплеєр, мережева гра, по мережі, сокети]
+  ru: [по сети, сетевая игра]
+  en: [websocket, lan, netcode]
+orientation-state:
+  uk: [кубик котиться, сосиска, грані куба, напрям погляду]
+  ru: [кубик катится]
+  en: [facing, rolling cube, bloxorz]
+particles:
+  uk: [партикли, іскри, дим, конфеті]
+  ru: [частицы, искры, конфетти]
+  en: [particle system, sparks, confetti]
+party-switch:
+  uk: [кілька героїв, змінити героя, команда, загін]
+  ru: [переключение персонажей, сменить героя, отряд]
+  en: [switch character, squad, lost vikings]
+pass-device:
+  uk: [передай телефон, шторка, не підглядай, завіса]
+  ru: [передать устройство, не подглядывай]
+  en: [pass and play, curtain]
+pass-turn:
+  uk: [пропуск ходу, реверсі, отелло]
+  ru: [пропустить ход]
+  en: [skip turn, othello, reversi]
+path-cut:
+  uk: [обрізати лінію, стерти хвіст лінії, обрив лінії]
+  ru: [стирание пути, обрыв линии]
+  en: [backtrack, trim path]
+path-drawing:
+  uk: [провести лінію, лінія мишкою, зʼєднати точки, флоу]
+  ru: [рисовать путь, соединить точки]
+  en: [draw line, connect dots, flow free]
+path-preview:
+  uk: [маршрут, лінія руху, стрілки маршруту, траєкторія]
+  ru: [траектория, путь]
+  en: [route preview, trajectory]
+pattern-automaton:
+  uk: [скрипт руху, фіксований маршрут, ритм, повторюваний рух, ходить по колу]
+  ru: [паттерн, ходит по кругу, фиксированный маршрут]
+  en: [scripted movement, fixed route]
+pause-menu:
+  uk: [esc-меню, меню на паузі, продовжити]
+  ru: [меню на паузе, продолжить]
+  en: [escape menu, pause screen, resume]
+pawn-promotion:
+  uk: [пішак у ферзя, ферзь, проходна, дамка]
+  ru: [превращение пешки, пешка]
+  en: [queening, promote]
+pencil-marks:
+  uk: [позначки в судоку, маленькі цифри, кандидати, замітки]
+  ru: [карандаш, заметки, пометки]
+  en: [notes, candidates]
+periodic-sink:
+  uk: [черепахи пірнають, зникаюча платформа, пірнаюча черепаха]
+  ru: [черепахи ныряют, исчезающая платформа]
+  en: [sinking turtles, disappearing platform]
+permadeath:
+  uk: [пермадес, перманентна смерть, хардкор, без збережень, остаточна смерть]
+  ru: [без сохранений, вечная смерть, перманентная смерть]
+  en: [ironman, roguelike, hardcore mode]
+piece-capture:
+  uk: [бити фігуру, рубити, зʼїсти фігуру, побити]
+  ru: [съесть фигуру, взятие, срубить]
+  en: [take]
+piece-drop:
+  uk: [бугхаус, сьоґі, з запасу, крейзіхаус, фігура з руки]
+  ru: [шоги, сброс фигуры]
+  en: [bughouse, shogi, crazyhouse]
+piece-move-patterns:
+  uk: [як ходить кінь, ферзь, тура, слон, кінь буквою г]
+  ru: [ладья, конь буквой г, как ходит конь]
+  en: [moveset, chess moves]
+piece-rotate-flip:
+  uk: [обертання, крутити фігуру, перевернути, дзеркально]
+  ru: [вращение, отзеркалить, повернуть фигуру]
+  en: [mirror, rotation]
+pipe-connectors:
+  uk: [труби, водопровід, сантехнік, дроти]
+  ru: [трубы, водопровод, провода]
+  en: [pipes, plumber, pipe mania]
+placement-cooldown:
+  uk: [кулдаун рослини, перезарядка картки, кд посадки, затримка посадки]
+  ru: [перезарядка карточки, кулдаун растения]
+  en: [seed cooldown, recharge, plant cooldown]
+placement-screen:
+  uk: [морський бій, стратего, розстановка кораблів]
+  ru: [морской бой, расстановка кораблей]
+  en: [setup phase, deployment, hidden setup]
+player-camera:
+  uk: [скролінг мапи, вʼюпорт, камера слідкує]
+  ru: [вьюпорт, слежение камеры, камера следует]
+  en: [viewport, follow camera, scrolling camera]
+player-death:
+  uk: [лайфи, життя, геймовер, сердечки, загибель]
+  ru: [жизни, гибель]
+  en: [lives, game over]
+player-guide:
+  uk: [мануал, гайд, як грати, посібник]
+  ru: [руководство, как играть, правила игры]
+  en: [manual, how to play, rules]
+pocket:
+  uk: [запас фігур, резерв, кишеня, побиті фігури]
+  ru: [взятые фигуры]
+  en: [reserve, captured pieces, hand]
+polyomino-placement:
+  uk: [тетраміно, пентаміно, фігурки з клітин, тетріс-фігури, блокус]
+  ru: [полимино, фигурки из клеток]
+  en: [tetromino, puzzle pieces, blokus]
+popup-text:
+  uk: [плаваючі цифри, цифри шкоди, спливаючі цифри]
+  ru: [всплывающий текст, цифры урона, цифри урону]
+  en: [floating text, damage numbers, tooltip]
+profile-stats:
+  uk: [стата, акаунт, особистий кабінет]
+  ru: [профиль, аккаунт, личный кабинет]
+  en: [account, player stats]
+progress-acceleration:
+  uk: [гра пришвидшується, наростаюча складність, все швидше, розгін]
+  ru: [ускорение, разгон, всё быстрее]
+  en: [speed up, difficulty ramp]
+project-readme:
+  uk: [рідмі, опис проєкту, документація репо, як запустити]
+  ru: [описание проекта, как запустить]
+  en: [markdown, how to run]
+projectile-collision:
+  uk: [куля в кулю, збити снаряд, перехоплення, анігіляція]
+  ru: [пуля в пулю, столкновение пуль, сбить снаряд]
+  en: [bullet collision, intercept]
+projectile-shot:
+  uk: [стрільба, куля, снаряд, стріляти]
+  ru: [стрелять, пуля, выстрел]
+  en: [bullet, shoot]
+property-tests:
+  uk: [фазинг, рандомні тести, генеративні тести, перевірка властивостей]
+  ru: [случайные тесты, генеративные тесты]
+  en: [hypothesis, property-based, fuzzing]
+pull-object:
+  uk: [тягати, тягнути ящик, витягнути, за собою]
+  ru: [тянуть, тащить]
+  en: [drag, pushmo]
+push-counter:
+  uk: [кількість поштовхів, пуші, лічильник пушів]
+  ru: [счетчик толчков, количество толчков]
+  en: [pushes, push count]
+push-object:
+  uk: [сокобан, ящик, двигати ящик, пхати, штовхати]
+  ru: [толкать, двигать ящик]
+  en: [sokoban, box pushing]
+puzzle-select:
+  uk: [вибір пазла, список головоломок, вибір головоломки]
+  ru: [выбор головоломки, сетка уровней]
+  en: [puzzle list, level grid]
+random-placement:
+  uk: [розкидати предмети, випадкові позиції, рандомна розстановка]
+  ru: [случайная расстановка]
+  en: [random placement, scatter]
+random-walk:
+  uk: [рандомний рух, хаотичний рух, бродилка, блукає]
+  ru: [случайное движение, бродит, хаотичное движение]
+  en: [wander, drunk walk, random movement]
+rating-system:
+  uk: [ело, ранг, ммр, ладдер]
+  ru: [эло]
+  en: [mmr, rank, ladder]
+reach-exit:
+  uk: [кінець лабіринту, прохід рівня, вихід, двері виходу]
+  ru: [выход, дойти до конца]
+  en: [finish, goal, exit door]
+reachability-check:
+  uk: [прохідність, чи можна дійти, заливка, доступність]
+  ru: [проверка проходимости, доступность, достижимость]
+  en: [path exists, connectivity]
+reachable-highlight:
+  uk: [зона руху, куди можна піти, сині клітинки, дальність ходу]
+  ru: [дальность хода, синие клетки]
+  en: [movement range, move range]
+realtime-ai:
+  uk: [трон, бот-змійка, бот без черги ходів, змійка проти бота]
+  ru: [змейка против бота, бот-змейка]
+  en: [snake ai, light cycles, tron]
+redo:
+  uk: [повторити хід, повтор, вперед по історії]
+  ru: [вернуть ход, повторить ход]
+  en: [ctrl+y, ctrl+shift+z]
+reinforcements:
+  uk: [новий ворог замість убитого, резерв, танки battle city, поповнення]
+  ru: [подкрепление, новый враг вместо убитого]
+  en: [enemy reserve]
+remaining-counter:
+  uk: [залишилось, скільки ще, лічильник мін, кількість мін]
+  ru: [осталось, мин осталось]
+  en: [mines left, enemies left]
+repetition-draw:
+  uk: [триразове повторення, правило 50 ходів, вічний шах, зациклення]
+  ru: [ничья, троекратное повторение, вечный шах]
+  en: [threefold repetition, 50 moves rule]
+replay:
+  uk: [реплей, повтор, запис гри, перегляд запису]
+  ru: [запись игры, повтор партии]
+  en: [playback, recording, ghost]
+replay-window:
+  uk: [реплей, відтворення, плеєр партії, перемотка]
+  ru: [просмотр записи, история ходов]
+  en: [playback, replay viewer]
+requirements-pyproject:
+  uk: [залежності, віртуальне оточення, бібліотеки, пакети]
+  ru: [зависимости, пакеты]
+  en: [pip, uv, venv]
+respawn:
+  uk: [відродження, воскресіння, оживлення]
+  ru: [возрождение, воскрешение, оживление]
+  en: [revive, resurrection]
+restart-level:
+  uk: [перезапуск, заново, ресет, почати знову]
+  ru: [начать заново, перезагрузка уровня]
+  en: [reset, retry]
+rewind:
+  uk: [перемотка, назад у часі, повернення часу, реверс часу]
+  ru: [отмотать, назад во времени, перемотка времени]
+  en: [time rewind, time travel, braid]
+role-ally:
+  uk: [напарник, помічник, вежа, рослина]
+  ru: [союзник]
+  en: [ally, companion, tower]
+role-boss:
+  uk: [бос рівня, головний ворог, фінальний бос]
+  ru: [босс]
+  en: [boss, final boss]
+role-container:
+  uk: [скриня, сундук, сейф, яйце, лутбокс]
+  en: [chest, loot box, container]
+role-enemy:
+  uk: [моб, монстр, противник, бот]
+  ru: [враг]
+  en: [enemy, monster, mob]
+role-gate:
+  uk: [ворота, вихід, ґрати, шлагбаум]
+  ru: [дверь, выход]
+  en: [door, exit]
+role-hazard:
+  uk: [шипи, вогонь, лава, міна, кислота]
+  ru: [ловушка]
+  en: [trap, spikes]
+role-mark:
+  uk: [цифра, хрестик, прапорець, позначка]
+  ru: [пометка, флажок]
+  en: [mark, flag]
+role-neutral:
+  uk: [нейтрал, тварина, торговець, житель]
+  ru: [торговец]
+  en: [npc, neutral, trader]
+role-object:
+  uk: [ящик, камінь, коробка, валун, бомба]
+  en: [box, rock, boulder]
+role-pickup:
+  uk: [бонус, приз, монета, ключ, лут]
+  en: [item, bonus, powerup]
+role-piece:
+  uk: [пішак, король, шашка, фішка, кінь]
+  ru: [пешка]
+  en: [piece, pawn]
+role-player:
+  uk: [герой, персонаж, аватар, танк гравця, курсор]
+  ru: [игрок]
+  en: [player, hero]
+role-projectile:
+  uk: [куля, постріл, ракета, стріла]
+  ru: [пуля]
+  en: [bullet, projectile, missile]
+role-resource:
+  uk: [золото, сонце, валюта, гроші, кристали]
+  en: [resource, gold, currency]
+role-segment:
+  uk: [хвіст, тіло змійки, сегмент, слід]
+  ru: [хвост]
+  en: [tail, segment, trail]
+role-spawner:
+  uk: [гніздо, точка появи, породжувач]
+  ru: [гнездо]
+  en: [spawner, spawn point, nest]
+role-static:
+  uk: [блок, перешкода, бетон, колона]
+  ru: [стена, препятствие]
+  en: [wall, obstacle]
+role-supply:
+  uk: [лоток, рука, колода, резерв, черга фігур]
+  en: [supply, tray, deck]
+role-switch:
+  uk: [плита, перемикач, рубильник]
+  ru: [рычаг]
+  en: [button, lever, switch, pressure plate]
+role-terrain:
+  uk: [лід, вода, трава, пісок, драбина]
+  ru: [пол]
+  en: [floor, ground]
+role-tile:
+  uk: [плиточка, кубик, кулька, блок, цукерка]
+  ru: [фишка]
+  en: [tile, gem]
+role-zone:
+  uk: [регіон, ціль, фініш, база]
+  ru: [цель]
+  en: [zone, area, goal]
+roles-cells:
+  uk: [клітинки, тайли поля, поле]
+  ru: [клетки, поле]
+  en: [cells, terrain, map]
+roles-live:
+  uk: [персонажі, істоти, актори]
+  ru: [персонажи, существа]
+  en: [characters, actors, units]
+roles-pieces:
+  uk: [настільні, пазли, головоломки]
+  ru: [настольные, головоломки]
+  en: [board, puzzle, tiles]
+roles-things:
+  uk: [предмети, речі, обʼєкти]
+  ru: [предметы, вещи]
+  en: [items, things, objects]
+roll-off-rounded:
+  uk: [валун, лавина, круглий камінь падає вбік, обвал]
+  ru: [скатывается, круглый камень]
+  en: [boulder, rolling]
+round-currency:
+  uk: [гроші, золото, ресурси, монети, сонечка]
+  ru: [деньги, солнышки, ресурсы]
+  en: [money, coins, gold]
+row-conveyor:
+  uk: [фроггер, дорога з машинами, потік машин, колоди на річці, стрічка]
+  ru: [лента, поток машин, бревна на реке]
+  en: [frogger, rolling row, lanes]
+rule-variants:
+  uk: [кастомні правила, моди, свої правила, домашні правила]
+  ru: [свои правила, кастомные правила]
+  en: [house rules, mods, fairy chess]
+run-length-clues:
+  uk: [нонограм, японський кросворд, числа збоку, малюнок за числами]
+  ru: [японский кроссворд, нонограмма]
+  en: [nonogram, picross, griddlers]
+run-relics:
+  uk: [артефакти, пасивки, перки, амулети]
+  ru: [артефакты, амулеты, реликвии]
+  en: [passive items, relics, artifacts]
+satisfy-constraints:
+  uk: [судоку зібрано, всі правила виконані, перемога в пазлі, пазл розвʼязано]
+  ru: [головоломка решена, все правила выполнены]
+  en: [puzzle solved, solved]
+save-autosave:
+  uk: [автозбереження, при виході, кожні n ходів]
+  ru: [автосохранение, при выходе]
+  en: [auto save, background save]
+save-game:
+  uk: [зберегти, продовжити гру, сейв, завантажити гру]
+  ru: [сохранение, загрузка, сохраниться]
+  en: [load game, savegame, save file]
+save-load-window:
+  uk: [слоти збережень, сейви, завантажити гру, зберегти гру]
+  ru: [сохранения, загрузка]
+  en: [save, load, save slots]
+save-multi-slot:
+  uk: [кілька сейвів, вибір сейва, профілі, слоти збереження]
+  ru: [ячейки сохранения, несколько сохранений]
+  en: [save slots, multiple saves]
+save-progress:
+  uk: [хайскор у файлі, профіль гравця, пройдені рівні]
+  ru: [сохранить рекорды, пройденные уровни]
+  en: [persistence, high score file, json]
+save-single-slot:
+  uk: [одне збереження, швидкий сейв, один сейв, перезапис]
+  ru: [одно сохранение, быстрое сохранение]
+  en: [quicksave, one save file]
+scatter-chase-schedule:
+  uk: [привиди пекмена, розсіювання і погоня, режими привидів, поведінка привидів]
+  ru: [режимы призраков, поведение привидений]
+  en: [scatter mode, chase mode, ghost ai]
+score-records:
+  uk: [хайскор, топ-10, найкращий результат]
+  ru: [лучший результат, рекорды]
+  en: [highscore, high score, best score]
+secret-level:
+  uk: [прихований рівень, бонусний рівень, секретка]
+  ru: [секретный уровень, бонусный уровень]
+  en: [secret level, bonus level]
+seed-share:
+  uk: [сід, номер карти, код рівня, зерно]
+  ru: [поделиться картой, номер карты]
+  en: [random seed, map code]
+selection-highlight:
+  uk: [курсор, рамка, обрана фігура, вибрана клітинка]
+  ru: [выделение, выбранная фигура]
+  en: [focus, selected, selection]
+self-collision:
+  uk: [зʼїсти себе, вкусити хвіст, вʼїхати в хвіст, смерть змійки]
+  ru: [укусить хвост, съесть себя, врезаться в хвост]
+  en: [bite tail, tail collision]
+sensor-predicates:
+  uk: [датчики, умовний перехід, розгалуження, якщо стіна попереду]
+  ru: [условия, ветвление, если стена впереди]
+  en: [if-else, conditions, if wall ahead]
+sequential-levels:
+  uk: [наступний рівень, кампанія, етапи]
+  ru: [следующий уровень, уровни]
+  en: [next level, campaign]
+settings-elements:
+  uk: [чекбокс, перемикачі, віджети, повзунок, слайдер]
+  ru: [контролы, ползунок, переключатели]
+  en: [slider, widgets, ui controls]
+settings-window:
+  uk: [сетінги, опції, параметри]
+  ru: [настройки, сеттинги, параметры]
+  en: [options, config]
+share-result:
+  uk: [скопіювати результат, похвалитися, буфер обміну, емодзі-сітка]
+  ru: [поделиться, похвастаться, скопировать результат]
+  en: [clipboard, emoji grid]
+shoot-burst:
+  uk: [автомат, кулемет, серія пострілів]
+  ru: [очередь, пулемет, стрельба очередью]
+  en: [burst fire, rapid fire]
+shoot-cooldown:
+  uk: [кулдаун, кд, перезарядка, скорострільність, затримка пострілу]
+  ru: [скорострельность, задержка выстрела]
+  en: [reload, fire rate]
+shoot-forward:
+  uk: [прямий постріл, одиночний постріл, стріляти прямо]
+  ru: [одиночный выстрел, стрелять прямо, прямой выстрел]
+  en: [single shot, straight shot]
+shoot-modes:
+  uk: [види зброї, типи пострілів, зброя]
+  ru: [оружие, виды оружия]
+  en: [weapon modes, fire modes]
+shoot-spread:
+  uk: [дробовик, віяло, шотган]
+  ru: [веер, дробь]
+  en: [shotgun, spread shot]
+shop-between-levels:
+  uk: [шоп, крамниця, лавка, торговець, купівля]
+  ru: [торговец, покупки]
+  en: [store, merchant]
+shop-buyback:
+  uk: [продати, повернути гроші, скупка, повернення]
+  ru: [продать, возврат, вернуть деньги]
+  en: [sell, refund]
+shop-catalog:
+  uk: [асортимент, прайс, список покупок, полиці]
+  ru: [ассортимент, цены, полки]
+  en: [price list, item list]
+shop-preview:
+  uk: [попередній перегляд, тултип, характеристики, порівняння до покупки]
+  ru: [сравнение, предпросмотр]
+  en: [tooltip, item stats]
+shop-sales:
+  uk: [дисконт, промо, дешевше, акція]
+  ru: [скидки, распродажа, акции]
+  en: [discount, black friday, sale]
+shop-window:
+  uk: [шоп, лавка, меню покупок, крамниця]
+  ru: [торговец, меню магазина]
+  en: [store, buy menu]
+shovel:
+  uk: [викопати рослину, видалити рослину, звільнити клітинку]
+  ru: [выкопать растение, убрать растение]
+  en: [dig up plant, remove plant]
+simultaneous-versus:
+  uk: [спліт-скрін, гонка на швидкість, дуель, батл]
+  ru: [разделенный экран, гонка на скорость]
+  en: [splitscreen, race, battle royale]
+single-command-run:
+  uk: [точка входу, старт гри, запуск гри]
+  ru: [точка входа, запуск игры]
+  en: [main.py, __main__, entry point]
+single-loop-check:
+  uk: [замкнений контур, петля, слізерлінк, обхід периметра]
+  ru: [замкнутая линия, слизерлинк]
+  en: [single cycle, slitherlink, masyu]
+skip-level:
+  uk: [скіп, перескочити, джокер]
+  ru: [пропустить уровень, перескочить]
+  en: [next level, joker]
+sound-effects:
+  uk: [звуки, біп, озвучка, шум]
+  ru: [звуковые эффекты, бип]
+  en: [sfx, pygame.mixer]
+sound-volume:
+  uk: [без звуку, звук тихіше, мікшер, тихіше-голосніше]
+  ru: [громкость, микшер, без звука]
+  en: [mute, mixer]
+sound-warnings:
+  uk: [сигнал, тікання годинника, біп, сирена]
+  ru: [тиканье, бип]
+  en: [alarm, alert, beep]
+spawn-animation:
+  uk: [мерехтіння, ефект народження, проявлення, блимання]
+  ru: [мигание, материализация]
+  en: [fade in, materialize, warp in]
+spawn-points:
+  uk: [місце появи, база ворогів, лігво, стартова позиція, спаунер]
+  ru: [гнездо, логово, место появления]
+  en: [start position, spawn location]
+spawn-random-cell:
+  uk: [спаун, рандом, яблуко в змійці, нова їжа]
+  ru: [случайная клетка, яблоко в змейке, новая еда]
+  en: [random spawn, randint]
+spawn-schedule:
+  uk: [періодична поява, спаун по таймеру, кожні n секунд, таймер спавну]
+  ru: [генерация врагов, появление по таймеру]
+  en: [interval, timed spawn]
+spawner-entity:
+  uk: [гніздо, лігво, фабрика ворогів, монстрогенератор, спавнер, вулик]
+  ru: [улей, логово, генератор монстров]
+  en: [hive, nest, monster generator]
+speed-per-type:
+  uk: [повільний ворог, швидкий ворог, ходить через тік, темп руху]
+  ru: [скорость, быстрые враги, медленный враг]
+  en: [fast enemy, slow]
+splash-screen:
+  uk: [сплеш, інтро, екран завантаження, логотип]
+  ru: [интро, загрузочный экран]
+  en: [intro, loading screen]
+stairs-levels:
+  uk: [спуск, глибина, підвал, рівні підземелля]
+  ru: [этажи, лестница вниз, глубина]
+  en: [floors, dungeon depth, multi-floor]
+stat-ammo:
+  uk: [заряди, боєзапас, набої, бомби]
+  ru: [патроны]
+  en: [ammo, charges]
+stat-armor:
+  uk: [захист, щит, бронь]
+  ru: [броня, защита]
+  en: [armor, defense, shield]
+stat-capacity:
+  uk: [інвентар на, слотів, вміщує, вантаж]
+  ru: [вместимость]
+  en: [capacity, slots]
+stat-cooldown:
+  uk: [кулдаун, пауза між, затримка]
+  ru: [перезарядка, кулдаун]
+  en: [cooldown, reload, delay]
+stat-cost:
+  uk: [ціна, вартість, коштує, скільки коштує]
+  ru: [цена, стоимость]
+  en: [cost, price]
+stat-count:
+  uk: [кількість, штук, скільки на полі]
+  ru: [количество, штук]
+  en: [count, amount, number]
+stat-damage:
+  uk: [урон, атака, сила удару, дамаг]
+  en: [damage, attack, dmg]
+stat-duration:
+  uk: [час дії, скільки триває, таймер, запал]
+  ru: [длительность]
+  en: [duration, lifetime]
+stat-energy:
+  uk: [мана, витривалість, стаміна]
+  ru: [энергия, топливо]
+  en: [energy, mana, fuel]
+stat-hp:
+  uk: [хп, здоровʼя, хіти, міцність]
+  ru: [здоровье]
+  en: [hp, health, hit points]
+stat-lives:
+  uk: [лайфи, спроби, жити]
+  ru: [жизни]
+  en: [lives, life, extra life]
+stat-range:
+  uk: [радіус, дистанція, дальність]
+  ru: [дальность, радиус]
+  en: [range, radius, reach]
+stat-rank:
+  uk: [левел, досвід, апгрейд, ранг]
+  ru: [уровень, опыт]
+  en: [level, xp]
+stat-side:
+  uk: [власник, команда, білі, чорні, гравець 1]
+  ru: [цвет]
+  en: [side, team]
+stat-size:
+  uk: [габарит, довжина, клітин]
+  ru: [размер]
+  en: [size, footprint, length]
+stat-speed:
+  uk: [темп, швидко, повільно]
+  ru: [скорость]
+  en: [speed, velocity]
+stat-value:
+  uk: [очки за, бали, поінти, номінал]
+  ru: [баллы]
+  en: [score, points]
+stat-vision:
+  uk: [зір, видимість, поле зору, радіус огляду]
+  ru: [обзор]
+  en: [vision, sight, fov]
+state-as-data:
+  uk: [серіалізація, знімок стану, словник стану]
+  ru: [снимок состояния, состояние игры]
+  en: [json, snapshot, to_dict]
+state-string:
+  uk: [серіалізація, код позиції, copy-paste позиції, код збереження]
+  ru: [код сохранения, код позиции]
+  en: [serialize, fen, base64]
+stats-window:
+  uk: [стата, профіль, вінрейт, рекорди гравця]
+  ru: [профиль игрока, рекорды игрока]
+  en: [profile, win rate]
+status-effects:
+  uk: [бафф, дебафф, отрута, горіння]
+  ru: [яд, отравление, горение]
+  en: [buff, debuff, poison]
+status-panel:
+  uk: [худ, статус-бар, інфопанель, верхня панель]
+  ru: [верхняя панель]
+  en: [hud, status bar]
+std-collections:
+  uk: [черга, структури даних, черга з пріоритетом]
+  ru: [очередь, коллекции, структуры данных]
+  en: [counter, defaultdict, namedtuple]
+step-execution:
+  uk: [дебагер, налагодження, трасування, відладка, крок за кроком]
+  ru: [пошагово, отладка, по шагам]
+  en: [debugger, step by step]
+stick-together:
+  uk: [склеювання, приклеїтися, магніт, клей]
+  ru: [слипание, приклеиться]
+  en: [sticky, glue, sokobond]
+stop-cell:
+  uk: [стоп-клітина, зупинка ковзання, зупинник]
+  ru: [тормоз, клетка-стоп, остановка скольжения]
+  en: [stopper, brake tile, stop tile]
+streak-stats:
+  uk: [стрік, дні поспіль, гістограма спроб, розподіл спроб]
+  ru: [дней подряд, серия побед]
+  en: [win streak, daily stats]
+swap-on-contact:
+  uk: [поміняти місцями, переставити, свап, обмін позиціями]
+  ru: [поменяться местами, поменять местами]
+  en: [switch places, exchange, swap]
+swipe-all-shift:
+  uk: [свайп, зсув ряду, зсув усього поля, рух усіх плиток]
+  ru: [сдвиг всех плиток, сдвиг ряда]
+  en: [slide all, shift tiles, 2048 move]
+swipe-gestures:
+  uk: [телефон, мобілка, планшет, сенсорний екран, тач]
+  ru: [смахивание, жесты пальцем, сенсорный экран]
+  en: [mobile, touchscreen, touch]
+telegraph-marker:
+  uk: [попередження, маркер атаки, приціл, мітка удару]
+  ru: [предупреждение, прицел, метка удара]
+  en: [warning, intent, attack marker]
+telegraphed-intents:
+  uk: [попередження про атаку, план ворога, червоні клітини, інтент]
+  ru: [предупреждение атаки, план врага, намерения врага]
+  en: [enemy intent, warning, into the breach]
+teleport:
+  uk: [варп, тп, переміщення, перенос, портал, телепортація]
+  ru: [перемещение]
+  en: [warp, tp, portal]
+teleport-cooldown:
+  uk: [кулдаун, кд, перезарядка, затримка, не телепортує одразу]
+  ru: [задержка, не телепортирует сразу]
+  en: [delay, portal cooldown]
+teleport-one-way:
+  uk: [в один бік, лише туди, без повернення]
+  ru: [в одну сторону, только туда, без возврата]
+  en: [one-way portal]
+teleport-pair:
+  uk: [двосторонній, вхід і вихід, синій і помаранчевий, туди-назад]
+  ru: [туда-обратно, синий и оранжевый]
+  en: [linked portals, two-way portal]
+teleport-random-exit:
+  uk: [рандом, непередбачуваний, кидає куди завгодно, рандомний портал]
+  ru: [случайный, случайный портал]
+  en: [random portal]
+temporary-modes:
+  uk: [бафф, павер-ап, невразливість, буст, бонус на час, енерджайзер]
+  ru: [неуязвимость, бонус на время]
+  en: [power-up, invincibility, power pellet]
+theme-select:
+  uk: [скін, тема, оформлення, тайлсет, спрайти]
+  ru: [оформление, тёмная тема]
+  en: [skin, dark mode, tileset]
+thief:
+  uk: [крадіжка, грабіжник, крадій, вкрав]
+  ru: [вор, кража, грабитель]
+  en: [steal, robber]
+threat-range:
+  uk: [зона атаки, небезпечні клітини, червона зона, радіус атаки]
+  ru: [опасные клетки, зона поражения]
+  en: [attack range, danger zone]
+tile-merge:
+  uk: [склеювання чисел, обʼєднання плиток, додавання плиток]
+  ru: [слияние, объединение плиток]
+  en: ['2048', combine, 2+2=4]
+tile-rotate:
+  uk: [обертання, крутити, крутилка труб, повернути по кліку]
+  ru: [вращать, вращение плитки]
+  en: [rotation, pipe rotate]
+time-bonus:
+  uk: [спідран, за швидкість, швидке проходження]
+  ru: [бонус за скорость, очки за время, быстрое прохождение]
+  en: [speedrun, fast clear]
+time-out:
+  uk: [час вийшов, зворотний відлік, таймер рівня, ліміт часу]
+  ru: [время вышло, обратный отсчет, лимит времени]
+  en: [timeout, countdown]
+time-programmed:
+  uk: [запуск програми, виконання програми, покрокове виконання]
+  ru: [выполнение программы]
+  en: [programmed, run, execute]
+time-realtime:
+  uk: [реалтайм, в реальному часі, динамічна, аркада]
+  ru: [реальное время]
+  en: [real-time, realtime, game loop]
+time-rhythm:
+  uk: [ритм, такт, під музику, біт]
+  ru: [в такт]
+  en: [rhythm, beat, music]
+time-static:
+  uk: [без часу, пазл, головоломка]
+  ru: [без времени, головоломка]
+  en: [static, puzzle, no time]
+time-turn:
+  uk: [покрокова, по ходах, хід за ходом, по черзі]
+  ru: [пошаговая, ходы]
+  en: [turn-based, turns]
+time-wego:
+  uk: [одночасно, план потім виконання, всі разом]
+  ru: [одновременные ходы]
+  en: [wego, simultaneous turns, plan then execute]
+timed-despawn:
+  uk: [пропадає, тимчасовий обʼєкт, таймер життя, зникає]
+  ru: [исчезает, пропадает, временный объект]
+  en: [expire, lifetime]
+timeout-punisher:
+  uk: [штраф за час, понтан, вороги після таймера]
+  ru: [наказание за время, враги после таймера]
+  en: [hurry up, pontan, time penalty]
+touch-death:
+  uk: [шипи, ваншот, пастка, вмирає від ворога]
+  ru: [ловушка, умирает от врага, шипы]
+  en: [instakill, one-hit kill, contact damage]
+tower-placement:
+  uk: [товер дефенс, турелі, будувати оборону, рослини проти зомбі]
+  ru: [башни, растения против зомби, строить оборону]
+  en: [tower defense, td, plants vs zombies]
+tower-range:
+  uk: [дальність, покриття турелі, зона ураження, зона атаки вежі]
+  ru: [зона атаки башни, дальнобойность, радиус башни]
+  en: [attack range, turret range]
+turn-enforcement:
+  uk: [чий хід, по черзі, черговість, порядок ходів]
+  ru: [по очереди, порядок ходов, чей ход]
+  en: [turn order, whose turn]
+turn-when-blocked:
+  uk: [відскок, змінює напрям, розворот, вперся в стіну]
+  ru: [разворот, отскок, уперся в стену]
+  en: [bounce, rebound]
+tutorial-window:
+  uk: [туторіал, гайд, підказки новачку, навчальний рівень]
+  ru: [обучение, подсказки новичку]
+  en: [guide, onboarding]
+typing-mypy:
+  uk: [тайпхінти, статична перевірка, анотації типів]
+  ru: [аннотации, статическая типизация]
+  en: [type hints, pyright, static typing]
+undo-redo:
+  uk: [відкат, скасувати хід, повернути хід]
+  ru: [откат, отменить ход, отмена]
+  en: [ctrl+z, take back]
+undo-step:
+  uk: [скасувати останній хід, відкат, відмінити хід]
+  ru: [отменить последний ход]
+  en: [ctrl+z, single undo, step back]
+undo-unlimited:
+  uk: [нескінченний відкат, скільки завгодно, історія ходів, безліміт]
+  ru: [история ходов, бесконечная отмена]
+  en: [unlimited undo, undo history, undo stack]
+unique-puzzle-generation:
+  uk: [генератор судоку, одне рішення, procgen пазлів, єдиний розвʼязок]
+  ru: [единственное решение, генератор головоломок]
+  en: [sudoku generator, unique solution]
+unit-tests:
+  uk: [тестування, автотести, модульні тести]
+  ru: [тестирование, модульные тесты, автотесты]
+  en: [pytest, unittest, assert]
+unit-xp-skills:
+  uk: [прокачка, левелап, скіли, перки, рівень персонажа]
+  ru: [опыт, навыки, скиллы]
+  en: [level up, experience, xp]
+unsolvable-states:
+  uk: [глухий кут, безвихідь, підказати рестарт, тупик]
+  ru: [нерешаемо, безвыходное положение]
+  en: [dead state, stuck]
+user-procedures:
+  uk: [підпрограми, макроси, рекурсія]
+  ru: [подпрограммы, функции, макросы]
+  en: [subroutines, functions, recursion]
+version-tags:
+  uk: [релізи, версіонування, нумерація версій]
+  ru: [релизы, версионирование]
+  en: [git tag, releases, semver]
+video-channel:
+  uk: [ютуб, тікток, відеоканал, стрім]
+  en: [youtube, tiktok, twitch]
+view-first-person:
+  uk: [очима героя, 3d лабіринт, рейкастинг]
+  ru: [от первого лица]
+  en: [first-person, fps, dungeon crawler, raycasting]
+view-side:
+  uk: [вид збоку, платформер, розріз, сайд-скролер]
+  ru: [вид сбоку]
+  en: [side view, platformer, side-scroller]
+view-top-down:
+  uk: [вид зверху, з висоти, карта]
+  ru: [вид сверху, сверху]
+  en: [top-down, top view, overhead]
+visited-trail:
+  uk: [хлібні крихти, пройдений шлях, відвідані клітини, позначка шляху]
+  ru: [пройденный путь, посещенные клетки]
+  en: [breadcrumbs, trail, visited cells]
+volume-control:
+  uk: [регулятор звуку, повзунок, тихіше-голосніше]
+  ru: [громкость, тише-громче]
+  en: [sound, mute]
+wall-follower:
+  uk: [правило правої руки, по периметру, світлячок, жук]
+  ru: [вдоль стены, светлячок, правило правой руки]
+  en: [right-hand rule, wall hugging]
+weighted-spawn:
+  uk: [шанс появи, двійка чи четвірка, рандом з вагами, відсоток випадіння]
+  ru: [шанс появления, вероятность, взвешенный рандом]
+  en: [weighted random, drop chance, random.choices]
+word-validation:
+  uk: [вордл, скрабл, перевірка орфографії, ерудит, список слів]
+  ru: [эрудит, словарь, проверка слова]
+  en: [dictionary, word list, wordle]
+world-map:
+  uk: [карта світу, оверворлд, карта рівнів]
+  ru: [карта мира, карта уровней]
+  en: [overworld, map screen]
+wrap-edges:
+  uk: [тор, наскрізні краї, тунель, через край]
+  ru: [сквозные края]
+  en: [wrap, torus, screen wrap]
+wrong-mark-lose:
+  uk: [помилився, штраф за помилку, хардкор, без права на помилку]
+  ru: [ошибка, без права на ошибку]
+  en: [mistake, wrong answer]

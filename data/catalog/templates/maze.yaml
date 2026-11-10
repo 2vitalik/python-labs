@@ -3,22 +3,18 @@ field:
   size: "17×7"
   topology: square
   view: top-down
-  gravity: none
-  time: turn
-  control: direct
+  time: [turn]
+  control: [direct]
 entities:
   - title: Гравець
     role: player
     description: "😎 Ходить на 1 клітину в 4 напрямки; хід = один крок"
-    claims: [move-4dir]
   - title: Стіна
     role: static
     description: "⬛ Непрохідна"
-    claims: [impassable-cells]
   - title: Двері
     role: gate
     description: "🔒 Зачинені — як стіна; відчиняються ключем, на їхньому місці на мить спалахує ✨"
-    claims: [key-and-door]
   - title: Ключ
     role: pickup
     description: "🗝️ Збирається, коли Гравець стає на його клітину; кожен відчиняє свої двері"
@@ -30,19 +26,21 @@ entities:
     role: object
     description: "✨ Тимчасовий знак на місці відчинених дверей; за кілька ходів зникає, лишаючи прохід"
     stats: [{key: duration, value: "3"}]
-    claims: [{slug: timed-despawn, params: {lifetime: 3}}, event-effects]
 rules:
   - when: {kind: input, action: "↑", a: Гравець}
     then: [{kind: move, a: "@a", dir: up}]
     note: "так само ↓ ← →"
+    claims: [move-4dir]
   - when: {kind: contact, a: Гравець, b: Стіна}
     then: [{kind: block}]
+    claims: [impassable-cells]
   - when: {kind: contact, a: Гравець, b: Двері}
     then: [{kind: block}]
     note: "поки двері зачинені"
   - when: {kind: enter, a: Гравець, b: Ключ}
     then: [{kind: disappear, a: "@b"}, {kind: counter, name: ключів, n: 1}, {kind: transform, a: Двері, into: Ефект відкриття}]
     note: "відчиняються двері цього ключа — одразу при зборі, як у прикладі курсу; інші способи: при підході з ключем або окремою дією «застосувати»"
+    claims: [key-and-door]
   - when: {kind: all_gone, a: Ключ}
     then: [{kind: set_state, a: Вихід, s: відчинений}, {kind: message, text: "Вихід відчинено!"}]
   - when: {kind: contact, a: Гравець, b: Вихід}
@@ -51,6 +49,7 @@ rules:
   - when: {kind: enter, a: Гравець, b: Вихід}
     cond: [{kind: state, a: "@b", s: відчинений}]
     then: [{kind: win}, {kind: window, window: Перемога}]
+    claims: [reach-exit]
   - when: {kind: input, action: підказка, a: Гравець}
     then: [{kind: custom, text: "підсвітити найкоротший шлях від Гравця до Виходу (BFS)"}]
 windows:
@@ -62,12 +61,23 @@ windows:
   - title: Гра
     task: game-screen
     description: "Лабіринт; збоку — скільки ключів зібрано й скільки лишилось"
-    claims: [goal-counter, fog-of-war, path-preview]
+    claims: [goal-counter, path-preview]
   - title: Перемога
     task: end-screen
     items:
       - {title: Ще раз, window: Гра}
       - {title: В меню, window: Головне меню}
+levels:
+  - title: Лабіринт з прикладу
+    description: "Один лабіринт, зроблений вручну, як у прикладі курсу: три ключі, двоє дверей, вихід праворуч"
+    mode: hand
+    count: "1"
+    size: "17×7"
+  - title: Згенерований лабіринт
+    description: "Прохідний лабіринт, який щоразу будує алгоритм (DFS чи Прима), — нова гра, новий лабіринт"
+    mode: generated
+    count: "без ліміту"
+    claims: [{slug: maze-generation, params: {algo: dfs}}]
 claims:
-  - reach-exit
-  - {slug: maze-generation, params: {algo: dfs}}
+  - fog-of-war
+  - event-effects

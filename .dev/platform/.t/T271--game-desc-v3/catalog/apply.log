@@ -1,0 +1,8 @@
+stat-hp: тексти й ціна — coin
+stat-speed: тексти й ціна — coin
+grid-layers: тексти й ціна — coin
+grid-layers: ціна від height-levels — coin
+stat-speed: ціна від chase-double-move — coin
+stat-hp: ціна від hp-damage — coin
+player-death: reword — rule, title, description
+no-moves-left: reword — rule, title, description, games

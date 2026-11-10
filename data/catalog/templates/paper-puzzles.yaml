@@ -1,10 +1,8 @@
 field:
-  size: "9×9 (нонограма — 10×10, 15×15)"
   topology: square
   view: top-down
-  gravity: none
-  time: static
-  control: mark
+  time: [static]
+  control: [mark, click-cell]
   layers: [дані цифри й підказки, розмітка гравця, нотатки, підсвітка]
 entities:
   - title: Дана цифра
@@ -49,6 +47,7 @@ rules:
   - when: {kind: input, action: "цифра 1–9"}
     cond: [{kind: mode, text: ручка}, {kind: unique, where: row, not: true}]
     then: [{kind: paint, cell: target, color: червоний}, {kind: message, text: "Ця цифра вже є в рядку"}]
+    claims: [markup-validity]
   - when: {kind: input, action: "цифра 1–9"}
     cond: [{kind: mode, text: ручка}, {kind: unique, where: col, not: true}]
     then: [{kind: paint, cell: target, color: червоний}, {kind: message, text: "Ця цифра вже є в стовпці"}]
@@ -60,20 +59,24 @@ rules:
     then: [{kind: counter, name: помилки, n: 1}, {kind: paint, cell: target, color: червоний}]
   - when: {kind: counter, name: помилки, op: ">=", n: 3}
     then: [{kind: lose}, {kind: window, window: Підсумок}]
+    claims: [{slug: wrong-mark-lose, params: {mistakes: 3}}]
   - when: {kind: input, action: "ліва кнопка: зафарбувати"}
     then: [{kind: paint, cell: target, color: чорний}]
     note: "протяжка мишею фарбує всю лінію; повтор очищує"
   - when: {kind: input, action: "права кнопка: хрестик"}
     then: [{kind: mark, cell: target, v: "×"}]
+    claims: [dot-mark]
   - when: {kind: input, action: "ліва кнопка: зафарбувати"}
     cond: [{kind: run_lengths, where: row}]
     then: [{kind: set_state, a: Підказка серій, s: виконана}]
     note: "підказка сіріє; так само для стовпця"
+    claims: [run-length-clues]
   - when: {kind: constraint_broken, text: "серії заповненого ряду не збігаються з підказкою"}
     then: [{kind: set_state, a: Підказка серій, s: порушена}]
   - when: {kind: all_constraints_met}
     then: [{kind: win}, {kind: timer, clock: stop}, {kind: window, window: Підсумок}]
     note: "нонограма ще показує малюнок і назву"
+    claims: [satisfy-constraints]
 windows:
   - title: Головне меню
     task: main-menu
@@ -82,7 +85,7 @@ windows:
       - {title: Правила, window: Правила}
       - {title: Вихід}
   - title: Вибір пазла
-    task: puzzle-select
+    task: level-select
     description: "Сітка пазлів зі статусами «розвʼязано / ні» і найкращим часом"
     items:
       - {title: Судоку, window: Гра}
@@ -91,7 +94,7 @@ windows:
   - title: Гра
     task: game-screen
     description: "Поле з підказками, час, помилки 0/3, перемикач ручка / олівець"
-    claims: [cell-click, pencil-marks, conflict-highlight, status-panel]
+    claims: [conflict-highlight, status-panel]
     items:
       - {title: Скасувати, task: undo-unlimited}
       - {title: Ручка / олівець}
@@ -107,4 +110,16 @@ windows:
     description: "Правила судоку й нонограми, керування"
     items:
       - {title: Назад, window: Головне меню}
-claims: [markup-validity, completion-detection, satisfy-constraints, wrong-mark-lose, undo-unlimited, level-bank, import-open-formats]
+levels:
+  - title: Судоку
+    mode: file
+    size: "9×9"
+    stats: [{key: рівнів складності, value: "6"}]
+    description: "Банк пазлів з єдиним розвʼязком за складністю: sudoku.com — Easy … Extreme, Tatham — за найважчою потрібною технікою, а не за кількістю даних цифр (їх щонайменше 17)"
+    claims: [level-rating]
+  - title: Нонограми
+    mode: file
+    count: "по 15 на розмір (Picross DS)"
+    size: "5×5 … 25×20"
+    description: "Банк малюнків, де складність — це розмір: Mario's Picross — 5×5, 10×10, 15×15; Picross DS — від 5×5 до 25×20"
+claims: [pencil-marks, undo-unlimited, level-bank, import-open-formats]

@@ -3,22 +3,20 @@ field:
   size: "28×16"
   topology: square
   view: side
+  time: [realtime]
+  control: [direct]
   gravity: down
-  time: realtime
-  control: direct
 entities:
   - title: Бігун
     role: player
-    description: "Бігає, лазить драбинами, висить на перекладині, копає яму в цеглі зліва або справа знизу; стрибати й вилазити з ями не може"
-    stats: [{key: lives, value: "5"}, {key: speed, value: "1", unit: "кл/тік"}]
+    description: "Бігає, лазить драбинами, висить на перекладині, копає яму в цеглі зліва або справа знизу; стрибати й вилазити з ями не може; без опори падає, падіння з будь-якої висоти безпечне"
+    stats: [{key: lives, value: "5"}, {key: speed, value: "1"}]
     states: [біжить, на драбині, висить, падає]
-    claims: [move-4dir, ladder-climb, gravity-fall]
   - title: Вартовий
     role: enemy
     description: "Переслідує бігуна простою евристикою; може підняти й нести 1 злиток (невидимо); падає в ями й застрягає"
-    stats: [{key: capacity, value: "1", unit: "злиток"}]
+    stats: [{key: capacity, value: "1"}]
     states: [переслідує, застряг]
-    claims: [chase-player, touch-death, respawn]
   - title: Золото
     role: pickup
     description: "Злиток: збирає бігун; вартовий може підняти й кинути у ямі"
@@ -27,11 +25,9 @@ entities:
     role: terrain
     description: "Підлога, яку можна прокопати збоку-знизу від бігуна; яма за кілька секунд заростає і вбиває того, хто в ній"
     states: [ціла, яма]
-    claims: [environment-death]
   - title: Бетон
     role: static
     description: "Не копається, непрохідний"
-    claims: [impassable-cells]
   - title: Драбина
     role: terrain
     description: "Рух угору й униз; опора"
@@ -46,40 +42,46 @@ entities:
     description: "Невидима, доки не зібрано все золото; веде до верхнього краю — вихід з рівня"
     states: [прихована, видима]
 rules:
+  - when: {kind: input, action: "←", a: Бігун}
+    then: [{kind: move, a: "@a", dir: left}]
+    note: "так само →; угору й униз — лише драбиною, на перекладині — лише вбік"
+    claims: [move-4dir]
   - when: {kind: input, action: "копати ліворуч / праворуч", a: Бігун}
     cond: [{kind: free, cell: ahead}]
     then: [{kind: set_state, a: Цегла, s: яма}]
     note: "цегла збоку-знизу від бігуна, збоку має бути вільно; під себе копати не можна; яма заростає за кілька секунд"
+    claims: [dig-hole]
   - when: {kind: contact, a: Цегла, b: Бігун}
     cond: [{kind: state, a: "@a", s: ціла}]
     then: [{kind: lives, n: -1}, {kind: restart}]
     note: "яма заросла над бігуном"
+    claims: [hole-refill]
   - when: {kind: contact, a: Цегла, b: Вартовий}
     cond: [{kind: state, a: "@a", s: ціла}]
     then: [{kind: score, n: 75}, {kind: respawn, a: "@b", where: "випадкова клітина верхнього ряду"}]
     note: "яма заросла над вартовим"
+    claims: [respawn]
   - when: {kind: enter, a: Вартовий, b: Цегла}
     cond: [{kind: state, a: "@b", s: яма}]
     then: [{kind: set_state, a: "@a", s: застряг}, {kind: score, n: 75}]
-    note: "по голові застряглого можна пройти"
+    note: "по голові застряглого можна пройти; за кілька тіків вилазить угору, якщо яма ще не заросла"
   - when: {kind: enter, a: Вартовий, b: Цегла}
     cond: [{kind: state, a: "@b", s: яма}, {kind: has, a: "@a", item: Золото}]
     then: [{kind: take, a: "@a", item: Золото}, {kind: spawn_at, entity: Золото, where: "клітина над ямою"}]
-  - when: {kind: state_off, a: Вартовий, s: застряг}
-    then: [{kind: move, a: "@a", dir: up}]
-    note: "вилазить, якщо яма ще не заросла"
-  - when: {kind: tick}
-    cond: [{kind: free, cell: under}]
-    then: [{kind: fall, a: Бігун}, {kind: fall, a: Вартовий}]
-    note: "опора — цегла, бетон, драбина, перекладина або голова вартового; падіння з будь-якої висоти безпечне"
+  - when: {kind: contact, a: "*", b: Бетон}
+    then: [{kind: block}]
+    note: "ціла цегла теж не пропускає — лише копається"
+    claims: [impassable-cells]
   - when: {kind: enter, a: "*", b: Пастка}
     then: [{kind: fall, a: "@a"}]
   - when: {kind: enter, a: "*", b: Драбина}
     then: [{kind: set_state, a: "@a", s: на драбині}]
     note: "зійшов — стан знімається"
   - when: {kind: input, action: вгору, a: Бігун}
-    cond: [{kind: state, a: "@a", s: на драбині, not: true}]
-    then: [{kind: block}]
+    cond: [{kind: state, a: "@a", s: на драбині}]
+    then: [{kind: move, a: "@a", dir: up}]
+    note: "не на драбині вгору не можна; униз драбиною — так само"
+    claims: [ladder-climb]
   - when: {kind: enter, a: "*", b: Перекладина}
     then: [{kind: set_state, a: "@a", s: висить}]
   - when: {kind: input, action: вниз, a: Бігун}
@@ -95,19 +97,24 @@ rules:
     cond: [{kind: state, a: "@a", s: застряг, not: true}]
     then: [{kind: lives, n: -1}, {kind: restart}]
     note: "бігун на голові вартового — не дотик"
+    claims: [touch-death]
   - when: {kind: tick}
     then: [{kind: move, a: Вартовий, dir: toward}]
     note: "проста евристика, не найкоротший шлях"
+    claims: [chase-player]
   - when: {kind: counter, name: золота лишилось, op: "==", n: 0}
     then: [{kind: set_state, a: Прихована драбина, s: видима}]
+    claims: [collect-all]
   - when: {kind: reach, a: Бігун, where: "верхній край екрана"}
     cond: [{kind: counter, name: золота лишилось, op: "==", n: 0}]
     then: [{kind: score, n: 1500}, {kind: lives, n: 1}, {kind: win}, {kind: next_level}]
+    claims: [reach-exit]
   - when: {kind: input, action: "Ctrl-A — здатися", a: Бігун}
     then: [{kind: lives, n: -1}, {kind: restart}]
     note: "вихід з безвиході"
   - when: {kind: counter, name: життя, op: "==", n: 0}
     then: [{kind: game_over}, {kind: window, window: Рекорди}]
+    claims: [player-death]
 windows:
   - title: Головне меню
     task: main-menu
@@ -129,7 +136,6 @@ windows:
   - title: Редактор рівнів
     task: editor-window
     description: "Game Generator: та сама сітка з курсором, палітра типів клітин, збереження рівня на диск"
-    claims: [editor-palette, editor-playtest]
     items:
       - {title: Тест-гра, window: Рівень}
       - {title: Зберегти на диск}
@@ -138,8 +144,14 @@ windows:
     description: "Таблиця рекордів після game over, імʼя до 8 символів"
     items:
       - {title: До меню, window: Головне меню}
-claims:
-  - collect-all
-  - reach-exit
-  - {slug: player-death, params: {lives: 5}}
-  - sequential-levels
+levels:
+  - title: Рівні 1–150
+    description: "150 рівнів, зроблених вручну, ідуть по черзі: зібрав усе золото й виліз нагору — наступний; кожен — один екран без скролу"
+    mode: hand
+    count: "150"
+    claims: [sequential-levels]
+  - title: Свої рівні з Game Generator
+    description: "Гравець сам малює рівень у редакторі на тій самій сітці — палітра типів клітин, тест-гра, збереження на диск — і грає його звідти"
+    mode: file
+    count: "без ліміту (?)"
+    claims: [editor-palette, editor-playtest]

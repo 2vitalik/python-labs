@@ -1,0 +1,100 @@
+# T271 · картки, яких бракувало: знайшли ревізії зон (review-*.yaml, шапки). Типи вікон — активні (без них список
+# вибору типу неповний); картки про рівні — чернетки ✍️ на ревізію цін викладачем.
+level-intro:
+  home: interface/menus
+  title: Заставка рівня
+  description: Екран перед рівнем — «STAGE 3», назва печери, скільки життів; зникає сам або з клавіші.
+  coin: wood
+  tags: [window]
+  status: active
+  aliases: {uk: [заставка рівня, екран рівня, номер рівня], ru: [заставка уровня], en: [stage intro, level intro, get ready]}
+name-entry:
+  home: interface/menus
+  title: Введення імені для рекорду
+  description: Після рекорду гравець вводить імʼя — воно потрапляє в таблицю рекордів.
+  coin: wood
+  tags: [window]
+  status: active
+  aliases: {uk: [імʼя гравця, ініціали, ввести імʼя], ru: [ввод имени], en: [name entry, initials, enter name]}
+cutscene:
+  home: interface/menus
+  title: Інтермісія / сценка
+  description: Коротка сценка між рівнями без керування — як перерви в Pac-Man; пропускається клавішею.
+  coin: tin
+  tags: [window]
+  status: active
+  aliases: {uk: [сценка, катсцена, перерва між рівнями, інтермісія], ru: [катсцена, заставка между уровнями], en: [cutscene, intermission]}
+inventory-window:
+  home: interface/menus
+  title: Вікно інвентаря
+  description: Окремий екран з предметами й кількістю — обрати й застосувати; сама логіка — картка «Інвентар» на сутності.
+  coin: tin
+  tags: [window]
+  status: active
+  aliases: {uk: [інвентар, рюкзак, сумка, предмети], ru: [инвентарь, рюкзак], en: [inventory, backpack, items]}
+save-load-window:
+  home: interface/menus
+  title: Збереження і завантаження
+  description: Слоти збережень з датою й прогресом — зберегти, завантажити, стерти; сама логіка — картки «Збереження гри».
+  coin: tin
+  tags: [window]
+  status: active
+  aliases: {uk: [слоти збережень, сейви, завантажити гру, зберегти гру], ru: [сохранения, загрузка], en: [save, load, save slots]}
+dialogue-window:
+  home: interface/menus
+  title: Діалог / сюжетний текст
+  description: Репліка персонажа чи табличка поверх поля; наступна — з клавіші.
+  coin: wood
+  tags: [window]
+  status: active
+  aliases: {uk: [діалог, репліка, табличка, сюжет], ru: [диалог, реплика], en: [dialogue, dialog, text box]}
+
+difficulty-curve:
+  home: levels/progression
+  title: Крива складності
+  description: Щонайменше 5 рівнів вручну — кожен додає новий елемент або ускладнює відомий; перший вчить без тексту.
+  coin: tin
+  status: draft
+  aliases: {uk: [складність росте, навчальні рівні, поступово складніше], ru: [кривая сложности], en: [difficulty curve, progression]}
+secret-level:
+  home: levels/progression
+  title: Секретний рівень
+  description: Відкривається особливою дією — прихований прохід, усі зірки, код.
+  coin: wood
+  status: draft
+  aliases: {uk: [прихований рівень, бонусний рівень, секретка], ru: [секретный уровень, бонусный уровень], en: [secret level, bonus level]}
+level-par:
+  home: levels/bank
+  title: Еталон рівня і зірки
+  description: У рівня є ціль — ходів чи часу; результат дає 1–3 зірки, найкращий памʼятається.
+  coin: tin
+  status: draft
+  aliases: {uk: [зірки за рівень, найкращий результат, пар], ru: [звёзды за уровень], en: [par, stars, best moves]}
+level-objects-format:
+  home: levels/format
+  title: Рівень з обʼєктами й параметрами
+  description: У файлі не лише мапа символів, а й сутності з параметрами — маршрут патруля, таймер, вміст скрині (JSON чи YAML).
+  coin: bronze
+  status: draft
+  aliases: {uk: [json рівня, обʼєкти в рівні, параметри в файлі], ru: [объекты уровня], en: [level json, level objects, tiled]}
+level-format-doc:
+  home: levels/format
+  title: Формат рівня описано
+  description: Таблиця символів і полів у README — інша людина робить рівень без коду.
+  coin: wood
+  status: draft
+  aliases: {uk: [опис формату, легенда символів, як зробити рівень], ru: [описание формата], en: [level format, legend]}
+random-placement:
+  home: levels/generation
+  title: Випадкова розстановка на готовій мапі
+  description: Предмети й вороги щоразу лягають інакше — з перевіркою, що не на старті й не замуровані.
+  coin: tin
+  status: draft
+  aliases: {uk: [розкидати предмети, випадкові позиції, рандомна розстановка], ru: [случайная расстановка], en: [random placement, scatter]}
+chunk-generation:
+  home: levels/generation
+  title: Рівень зі шматків
+  description: Генератор складає рівень із заготовлених вручну кімнат чи смуг (Spelunky, Crossy Road); стики прохідні.
+  coin: silver
+  status: draft
+  aliases: {uk: [кімнати-заготовки, чанки, шаблони кімнат], ru: [чанки, заготовки комнат], en: [chunks, room templates, prefabs]}

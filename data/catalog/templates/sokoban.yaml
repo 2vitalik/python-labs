@@ -3,15 +3,13 @@ field:
   size: "до 20×20"
   topology: square
   view: top-down
-  gravity: none
-  time: turn
-  control: direct
+  time: [turn]
+  control: [direct, click-cell]
   layers: [підлога, обʼєкти]
 entities:
   - title: Комірник
     role: player
     description: "Ходить у 4 напрямки; штовхає ящик перед собою; тягнути не може. У .xsb — «@», на цілі — «+»"
-    claims: [move-4dir, push-object]
   - title: Ящик
     role: object
     description: "Зсувається на 1 у бік поштовху, якщо за ним вільно; лише по одному. У .xsb — «$», на цілі — «*»"
@@ -25,18 +23,20 @@ entities:
   - title: Стіна
     role: static
     description: "«#»: непрохідна для всіх; обносить склад"
-    claims: [impassable-cells]
 rules:
   - when: {kind: input, action: стрілка, a: Комірник}
     cond: [{kind: free, cell: ahead}]
     then: [{kind: move, a: "@a", dir: forward}, {kind: counter, name: ходи, n: 1}]
+    claims: [move-4dir]
   - when: {kind: contact, a: Комірник, b: Стіна}
     then: [{kind: block}]
     note: "хід не зараховується"
+    claims: [impassable-cells]
   - when: {kind: contact, a: Комірник, b: Ящик}
     cond: [{kind: free, cell: ahead}]
     then: [{kind: push, a: "@b"}, {kind: move, a: "@a", dir: forward}, {kind: counter, name: ходи, n: 1}, {kind: counter, name: поштовхи, n: 1}]
     note: "вільна клітина за ящиком — підлога або ціль"
+    claims: [push-object]
   - when: {kind: contact, a: Комірник, b: Ящик}
     cond: [{kind: free, cell: ahead, not: true}]
     then: [{kind: block}]
@@ -48,14 +48,17 @@ rules:
     note: "з цілі ящик можна зіштовхнути далі"
   - when: {kind: all_on, a: Ящик, b: Ціль}
     then: [{kind: win}, {kind: window, window: Рівень розвʼязано}]
+    claims: [all-on-targets]
   - when: {kind: constraint_broken, text: "ящик у глухому куті"}
     then: [{kind: message, text: "Глухий кут — зроби undo або рестарт"}]
-    note: "поразки в класиці нема; види — dead square, freeze, corral, bipartite"
+    note: "поразки в класиці нема"
+    claims: [{slug: deadlock-detection, params: {kinds: "dead square, freeze, corral, bipartite"}}]
   - when: {kind: input, action: "Z / Backspace — undo"}
     then: [{kind: custom, text: "скасувати останній хід; якщо це був поштовх — ящик повертається"}]
     note: "без ліміту; redo — повернути скасоване"
   - when: {kind: input, action: "R — рестарт"}
     then: [{kind: restart}]
+    claims: [restart-level]
   - when: {kind: input, action: "клік по клітині", a: Комірник}
     cond: [{kind: path_exists, a: Комірник, b: Підлога}]
     then: [{kind: move, a: "@a", dir: toward}]
@@ -71,14 +74,13 @@ windows:
   - title: Вибір рівня
     task: level-select
     description: "Колекція (Original 50, Microban 155…) з позначкою «розвʼязано» і найкращими ходами/поштовхами"
-    claims: [level-bank]
     items:
       - {title: Грати рівень, window: Склад}
       - {title: Назад, window: Головне меню}
   - title: Склад
     task: game-screen
     description: "Поле; HUD — назва рівня й колекції, ходи, поштовхи, ящиків на цілях; кнопки undo і рестарт"
-    claims: [move-counter, goal-counter, cell-click]
+    claims: [move-counter, goal-counter]
     items:
       - {title: Undo, task: undo-unlimited}
       - {title: Рестарт, task: restart-level}
@@ -92,7 +94,6 @@ windows:
   - title: Редактор рівнів
     task: editor-window
     description: "Палітра «# @ $ .», перевірка «ящиків = цілей», плейтест, копіювання рівня як .xsb"
-    claims: [editor-palette]
     items:
       - {title: Плейтест, window: Склад}
   - title: Налаштування
@@ -102,10 +103,14 @@ windows:
     items:
       - {title: Звук, task: volume-control}
       - {title: Анімація кроку, task: movement-animation}
-claims:
-  - all-on-targets
-  - undo-unlimited
-  - restart-level
-  - deadlock-detection
-  - level-from-txt
-  - import-open-formats
+levels:
+  - title: Колекції рівнів
+    mode: file
+    count: "Original — 50, Microban I — 155, тисячі інших"
+    description: "Готові рівні ручної роботи в текстовому .xsb (# @ + $ * .) або RLE; колекція — один txt з багатьма рівнями, назвою й автором; у кожного рівня — «розвʼязано» і найкращі ходи/поштовхи. Оригінал Thinking Rabbit (1982) мав 20 рівнів"
+    claims: [level-from-txt, import-open-formats, level-bank]
+  - title: Свій рівень
+    mode: hand
+    description: "Зібраний у редакторі: палітра «# @ $ .», перевірка «ящиків = цілей», плейтест, копіювання як .xsb"
+    claims: [editor-palette]
+claims: [undo-unlimited]

@@ -2,56 +2,60 @@
 field:
   topology: square
   view: top-down
-  gravity: none
-  time: turn
-  control: direct
+  time: [turn]
+  control: [direct]
   layers: [підлога, приховані міни, розмітка]
 entities:
   - title: Сапер
     role: player
     description: "Аватар-цифра 0️⃣–3️⃣: скільки мін у сусідніх клітинах по вертикалі й горизонталі, але не де саме; ходить на 1 клітину в 4 напрямки, діагоналей нема"
-    claims: [move-4dir, neighbor-count-clue]
   - title: Міна
     role: hazard
+    icon: "💣"
     description: "Невидима; крок на неї — миттєва смерть. З рівнем мін більше"
-    claims: [touch-death, spawn-random-cell]
   - title: Стіна
     role: static
+    icon: "🟪"
     description: "🟪 Видима огорожа поля, непрохідна; внизу — прохід-старт, угорі — прохід-вихід"
-    claims: [impassable-cells]
   - title: Слід
     role: mark
+    icon: "▪️"
     description: "▪️ Пройдені клітини — безпечний шлях назад; з 6-го рівня слід за спиною зникає"
   - title: Вихід
     role: zone
     description: "Прохід в огорожі вгорі: поле треба перейти знизу догори"
   - title: Панночка
     role: ally
+    icon: "👧"
     description: "З 2-го рівня: стоїть десь на полі; забрати й вивести — бонусні очки"
-    claims: [item-pickup]
   - title: Розкидач мін
     role: enemy
     description: "Mine Spreader, з 3-го рівня: ходить туди-сюди своєю смугою поля й переставляє на ній міни — ці міни видно"
-    claims: [enemy-patrol]
   - title: Жук
     role: enemy
+    icon: "🐛"
     description: "The Bug, з 4-го рівня: рухома міна, що повзе слідом Сапера його ж шляхом — не дає баритися"
     claims: [body-queue]
 rules:
   - when: {kind: level_start}
     then: [{kind: spawn, entity: Міна, cell: any}, {kind: spawn_at, entity: Сапер, where: "прохід унизу"}]
     note: "міни — у випадкові вільні клітини, з кожним рівнем їх більше"
+    claims: [spawn-random-cell]
   - when: {kind: input, action: "↑", a: Сапер}
     then: [{kind: move, a: "@a", dir: up}, {kind: set_cell, cell: behind, type: Слід}, {kind: set_value, a: "@a", v: "кількість мін у 4 сусідніх клітинах"}]
     note: "так само ↓ ← →; з 6-го рівня Слід не лишається"
+    claims: [move-4dir, neighbor-count-clue, visited-trail]
   - when: {kind: contact, a: Сапер, b: Стіна}
     then: [{kind: block}]
+    claims: [impassable-cells]
   - when: {kind: enter, a: Сапер, b: Міна}
     then: [{kind: lose}, {kind: window, window: Кінець рівня}]
     note: "миттєва смерть, далі — повтор проходження"
+    claims: [touch-death, player-death]
   - when: {kind: enter, a: Сапер, b: Панночка}
     then: [{kind: pickup, a: "@a", item: "@b"}]
     note: "Сапер веде її з собою до виходу"
+    claims: [item-pickup]
   - when: {kind: enter, a: Сапер, b: Вихід}
     cond: [{kind: has, a: "@a", item: Панночка}]
     then: [{kind: score, n: 100}]
@@ -60,16 +64,22 @@ rules:
     cond: [{kind: level, op: "<", n: 9}]
     then: [{kind: next_level}, {kind: window, window: Кінець рівня}]
     note: "очки за швидкість: що швидше пройдено поле, то більше"
+    claims: [time-bonus]
   - when: {kind: enter, a: Сапер, b: Вихід}
     cond: [{kind: level, op: "==", n: 9}]
     then: [{kind: win}, {kind: window, window: Кінець рівня}]
     note: "на останньому полі на Сапера чекає полонений Біл-черв'як"
+    claims: [reach-exit]
   - when: {kind: level_start}
     cond: [{kind: level, op: ">=", n: 2}]
     then: [{kind: spawn, entity: Панночка, cell: any}]
   - when: {kind: level_start}
     cond: [{kind: level, op: ">=", n: 3}]
     then: [{kind: spawn_at, entity: Розкидач мін, where: "на своїй смузі поля"}]
+  - when: {kind: tick}
+    then: [{kind: move, a: Розкидач мін, dir: forward}]
+    note: "туди-сюди своєю смугою: на краю смуги розвертається"
+    claims: [enemy-patrol]
   - when: {kind: timer, every: 5}
     then: [{kind: place, a: Розкидач мін, entity: Міна}]
     note: "переставляє міни у своїй смузі; переставлені — видимі"
@@ -90,7 +100,6 @@ windows:
   - title: Вибір рівня
     task: level-select
     description: "Будь-яке вже пройдене поле можна зіграти знову"
-    claims: [level-unlock]
     items:
       - {title: Старт, window: Гра}
   - title: Гра
@@ -100,12 +109,23 @@ windows:
   - title: Кінець рівня
     task: end-screen
     description: "Миттєвий повтор щойно зіграного — і після смерті, і після проходу; далі очки"
-    claims: [replay]
     items:
       - {title: Далі, window: Гра}
       - {title: В меню, window: Головне меню}
+levels:
+  - title: Поле 1
+    mode: hand
+    count: "1"
+    description: "Лише огорожа й міни у випадкових клітинах (?): вчить читати число на Сапері"
+  - title: Поля 2–5
+    mode: hand
+    count: "4"
+    description: "Кожне поле додає нове: 2-ге — панночки, 3-тє — Розкидач мін, 4-те — Жук; мін щоразу більше; що нового на 5-му — (?)"
+  - title: Поля 6–9
+    mode: hand
+    count: "4"
+    description: "Слід за спиною більше не лишається — безпечний шлях назад треба памʼятати; що нового на 7-му і 8-му — (?); на 9-му — полонений Біл-черв'як: урятувати — пройти гру"
 claims:
-  - player-death
-  - reach-exit
-  - time-bonus
   - sequential-levels
+  - level-unlock
+  - replay

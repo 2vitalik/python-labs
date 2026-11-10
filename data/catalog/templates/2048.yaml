@@ -3,21 +3,18 @@ field:
   size: "4×4"
   topology: square
   view: top-down
-  gravity: none
-  time: turn
-  control: swipe-all
+  time: [turn]
+  control: [swipe-all]
 entities:
   - title: Плитка
     role: tile
     description: "Число 2^k (2, 4, 8 … 2048 …); ковзає до упору в бік ходу; зливається з рівною, якщо та ще не зливалась цього ходу"
     stats: [{key: value, value: "2^k"}]
     states: [звичайна, злита цього ходу]
-    claims: [tile-merge, movement-animation]
   - title: Нова плитка
     role: tile
     description: "2 (90 %) або 4 (10 %) у випадковій порожній клітині — лише після ходу, що щось зрушив"
     stats: [{key: value, value: "2 або 4"}]
-    claims: [spawn-random-cell]
   - title: Плитка 2048
     role: tile
     description: "При першій появі — «You win!» з вибором продовжити"
@@ -29,6 +26,7 @@ rules:
   - when: {kind: level_start}
     then: [{kind: spawn, entity: Нова плитка, cell: any}, {kind: spawn, entity: Нова плитка, cell: any}]
     note: "дві стартові плитки у випадкових порожніх клітинах"
+    claims: [spawn-random-cell]
   - when: {kind: input, action: "свайп ліворуч / ←"}
     then: [{kind: shift, axis: all, dir: left}]
     note: "обхід від стіни призначення назад: [2,2,2] ← дає [4,2]"
@@ -41,7 +39,8 @@ rules:
   - when: {kind: contact, a: Плитка, b: Плитка}
     cond: [{kind: same, a: "@a", b: "@b", prop: значення}, {kind: state, a: "@b", s: злита цього ходу, not: true}]
     then: [{kind: merge, a: "@a", b: "@b", into: Плитка}, {kind: set_state, a: "@b", s: злита цього ходу}, {kind: custom, text: "очки + значення нової плитки"}]
-    note: "нова плитка — подвоєне значення; [2,2,2,2] ← дає [4,4], а не [8]"
+    note: "нова плитка — подвоєне значення; [2,2,2,2] ← дає [4,4], а не [8]; «+N» спливає над SCORE"
+    claims: [tile-merge, event-points, popup-text]
   - when: {kind: contact, a: Плитка, b: Плитка}
     cond: [{kind: same, a: "@a", b: "@b", prop: значення, not: true}]
     then: [{kind: block}]
@@ -54,15 +53,19 @@ rules:
     cond: [{kind: prob, p: 10}]
     then: [{kind: set_value, a: "@a", v: "4"}]
     note: "інакше — 2 (90 %)"
+    claims: [weighted-spawn]
   - when: {kind: spawned, a: Плитка 2048}
     cond: [{kind: first_time}]
     then: [{kind: window, window: Перемога}]
     note: "мʼяка перемога: «Keep going» — грати далі на рекорд"
+    claims: [keep-playing-after-win]
   - when: {kind: no_moves}
     then: [{kind: lose}, {kind: window, window: Гру закінчено}]
     note: "поле повне й нема сусідньої рівної пари"
+    claims: [no-moves-left]
   - when: {kind: input, action: "кнопка New Game"}
     then: [{kind: restart}]
+    claims: [restart-level]
 windows:
   - title: Головне меню
     task: main-menu
@@ -73,7 +76,7 @@ windows:
   - title: Гра
     task: game-screen
     description: "Поле 4×4; над ним SCORE (з «+N» при злитті) і BEST; кнопка New Game"
-    claims: [status-panel, popup-text, keyboard-controls, swipe-gestures]
+    claims: [status-panel]
     items:
       - {title: New Game, task: restart-level}
   - title: Перемога
@@ -92,8 +95,14 @@ windows:
     description: "В оригіналі — текст під полем: стрілки рухають усі плитки, дві однакові зливаються в одну"
     items:
       - {title: До гри, window: Гра}
+levels:
+  - title: Партія 4×4
+    mode: generated
+    count: "1"
+    size: "4×4"
+    description: "Рівнів нема: кожна партія — те саме поле 4×4, де випадкові лише клітини двох стартових плиток; мета — плитка 2048, після неї гра триває на рекорд, поки є хід"
 claims:
-  - no-moves-left
-  - event-points
+  - swipe-gestures
+  - movement-animation
   - score-records
   - save-autosave

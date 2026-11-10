@@ -1,0 +1,751 @@
+# T271 · ревізія карток зони «Сутності» (entities: combat, death, interact, legality, move, spawn, state)
+# Джерело: data/catalog/tasks.yaml станом на 2026-11-10 (уже з підзонами roles/params і зоною field).
+# wrap-edges тут нема: паралельна правка вже перенесла її в field/physics як fieldopt (opt wrap:on).
+#
+# Поля: kind · action · rule (заготовка, лише kind-и слів vocab.py) · into (для merge) · coin (для merge —
+# яка монетка лишається на цілі; для reword — запропонована нова) · where (місце поза сутністю) ·
+# title / description (для reword) · slots (новий повний список) · drop_slots (слоти, що дублюють параметр) · why.
+#
+# Підсумок — 124 картки (батьки + діти); перевірено скриптом: усі слаги зони рівно по разу, у порядку каталогу,
+#   87 заготовок правил (203 слова) — лише ключі з TRIGGERS / CONDITIONS / EFFECTS, без аргументів.
+#   kind:   rule 93 · mechanic 12 · stat 10 · game 3 · fieldopt 3 · role 2 · element 1 · field 0 · level 0
+#   action: keep 79 · merge 24 · reword 21 · archive 0 · split 0
+#
+# Злиття (у дужках — монетка, що лишається на цілі):
+#   у зоні:   shoot-forward → projectile-shot (🥉) · explode-area → blast-wave (🥉) · tower-placement → cursor-place (🥉)
+#             tower-range → coverage-area (📎) · hidden-under-block → destructible-blocks (🌱)
+#             pattern-automaton → enemy-patrol (🥉) · tile-rotate → piece-rotate-flip (📎)
+#   у параметри: hp-damage → stat-hp (📎) · shoot-cooldown, teleport-cooldown, placement-cooldown → stat-cooldown (📎)
+#             timed-despawn, inventory-duration → stat-duration (🌱) · speed-per-type, chase-double-move → stat-speed (📎)
+#             inventory-limit → stat-capacity (📎; 🥈 завищено для числа) · hunger-clock → stat-hunger (📎, новий)
+#   у ролі:   spawner-entity → role-spawner (🥉) · floor-types → role-terrain (🌱; 🥈 розкладається на правила)
+#   у поле:   gravity-fall → gravity-down (🥉) · swipe-all-shift → control-swipe-all (📎) · height-levels → grid-layers (🥈)
+#   в інші зони: death-animation, spawn-animation → event-effects (📎, interface/graphics)
+#
+# Архів: нема. Чисті дублікати зливаються (їхні заявки в еталонах переїжджають на ціль), а базові 🌱/📎 правила
+#   («зникає», «міняються місцями», «втрачає предмет»…) лишаються — це перші монетки простої гри.
+#
+# Переїзд без зміни суті: interaction-table → code/architecture (game) · legal-move-highlight → interface/hud,
+#   дитина сімʼї highlights (element) · move-limit → game-logic/lose (rule).
+#
+# Нові параметри: stat-hunger (ситість, 🍖, ходів) — з hunger-clock · stat-cost (вартість, 💰) — pvz-lite уже пише
+#   свій параметр cost у Горохострела; потрібен після злиття tower-placement → cursor-place.
+# Нові ролі: нема (генератор, підлога з властивістю — уже є).
+# Нові слоти: chase-bfs (algo) · enemy-patrol (pattern, з pattern-automaton) · blast-wave (shape, into — з explode-area)
+#   · coverage-area (shape + line, custom — з tower-range).
+# Слоти, що дублюють параметр (у еталонах те саме число двічі): blast-wave.radius → stat-range ·
+#   coverage-area.size → stat-range · bomb-fuse.fuse → stat-duration бомби · bomb-fuse.max_bombs → stat-ammo гравця ·
+#   temporary-modes.duration → stat-duration (pac-man: Енерджайзер duration 60 і слот 60).
+# Системне питання (не по картці): слоти карток-правил часто повторюють аргументи самого правила (таймер «кожні N»,
+#   «вибух форми», «стан на N тіків»). Тут не чіпав (spawn-schedule, turn-when-blocked — зразок дому), але це
+#   той самий «двічі одне число», що й параметр + слот.
+#
+# Найменш певні (що ще розглядав):
+#   1. projectile-shot — правило «ввід → спавн»; альтернатива — злити в role-projectile. Те саме питання в парах
+#      impassable-cells / role-static, item-pickup / role-pickup, button-toggle / role-switch, touch-death / role-hazard:
+#      тип без свого правила безглуздий, тож дві монетки на одне. Лишив правилами (бриф: pickup, touch-death — rule).
+#   2. move-by-input (+ move-4dir/8dir) — правило; але властивість поля control-direct «клавіші = рух аватара» каже те
+#      саме. Монетка має бути на одному з них; пропоную на правилі, control-direct — без монетки.
+#   3. floor-types — злиття в role-terrain; альтернатива — лишити 🥈 правилом «підлога змінює рух» за різноманіття.
+#   4. gravity-fall → gravity-down; альтернатива — правило «тік ЯКЩО під ним вільно → падає», а fieldopt без монетки.
+#   5. height-levels → grid-layers; альтернатива — правило «крок лише на ±1 висоти» на правилі руху (🥈 за це).
+#   6. death-animation / spawn-animation → event-effects; альтернатива — правило «загинув/зʼявився → стан на N тіків»
+#      (сутність неактивна, поки грає анімація, як зірка появи в Battle City).
+#   7. timed-despawn → stat-duration; альтернатива — правило «таймер → зникає» 🌱 (тоді параметр без монетки).
+#   8. hunger-clock → новий stat-hunger; альтернатива — правило «лічильник = 0 → шкода» на картці 📎.
+#   9. melee-vs-ranged — переписав на «Атака впритул» (сусідня клітина → шкода); альтернатива — архів, бо
+#      дистанційну вже ціновано line-of-sight-attack, а шкоду — параметрами HP і «шкода».
+#  10. tile-rotate → piece-rotate-flip; альтернатива — лишити обидві (🌱 поворот однієї плитки, 📎 фігура + дзеркало).
+
+# ── combat ──────────────────────────────────────────────────────────────
+projectile-shot:
+  kind: rule
+  action: reword
+  description: "Ввід чи подія породжує снаряд перед стрільцем у бік погляду; снаряд летить по прямій і зникає на перешкоді."
+  rule: {when: {kind: input}, then: [{kind: spawn}]}
+  why: "постріл — подія і наслідок (ввід → спавн снаряда); тип «снаряд» — роль, а тут ціна самої стрільби"
+shoot-modes:
+  kind: rule
+  action: reword
+  description: "Сімʼя: черга / дріб. Простий постріл вперед — «Постріл», перезарядка — параметр «перезарядка»."
+  rule: {when: {kind: input}, then: [{kind: spawn}]}
+  why: "заголовок сімʼї; після злиття «вперед» і «cooldown» лишаються черга й дріб"
+shoot-forward:
+  kind: rule
+  action: merge
+  into: projectile-shot
+  coin: bronze
+  why: "постріл вперед і є «Постріл»: дві монетки на одне правило; лишається 🥉 «Постріл»"
+shoot-burst:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, then: [{kind: spawn}]}
+  why: "один ввід → N снарядів поспіль; скільки — у слоті, правило саме цього не скаже"
+shoot-spread:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, then: [{kind: spawn}]}
+  why: "один ввід → снаряди в кількох напрямках; кількість напрямків — слот"
+shoot-cooldown:
+  kind: stat
+  action: merge
+  into: stat-cooldown
+  coin: tin
+  why: "це число «перезарядка» стрільця (у pvz-lite двічі: параметр 14 і слот 14); 📎 переходить на параметр"
+projectile-collision:
+  kind: rule
+  action: keep
+  rule: {when: {kind: contact}, then: [{kind: disappear}]}
+  why: "снаряд × снаряд → гасять одне одного; подія і наслідок"
+blast-wave:
+  kind: rule
+  action: reword
+  title: "Вибух заданої форми"
+  description: "Вибух накриває клітини хрестом, квадратом чи радіусом, гасне на непробивному й лишає продукт (вогонь, алмази, порожнечу); радіус — параметр «дальність»."
+  rule: {when: {kind: state_off}, then: [{kind: explode}]}
+  slots:
+  - {key: shape, label: Форма, type: choice, options: [cross, square, radius], required: true}
+  - {key: into, label: Що лишається, type: text}
+  drop_slots: [radius]
+  why: "вибух — ефект правила; вбирає «Вибух площею» (форма й продукт — слоти), радіус уже є параметром «дальність» (bomberman: range 1)"
+chain-detonation:
+  kind: rule
+  action: keep
+  rule: {when: {kind: contact}, then: [{kind: explode}]}
+  why: "вогонь × бомба → бомба вибухає одразу; подія і наслідок"
+piece-capture:
+  kind: rule
+  action: keep
+  rule: {when: {kind: contact}, then: [{kind: disappear}]}
+  why: "хід на клітину суперника → його фігура знімається з поля"
+melee-vs-ranged:
+  kind: rule
+  action: reword
+  title: "Атака впритул"
+  description: "Ворог бʼє, коли ціль на сусідній клітині: шкода замість смерті від дотику. Дистанційна атака — «Атака по лінії бачення»."
+  coin: tin
+  rule: {when: {kind: adjacent}, then: [{kind: damage}]}
+  why: "«два типи атак» — це два правила; дистанційну вже ціновано line-of-sight-attack, лишається ближня (🥉 → 📎)"
+explode-area:
+  kind: rule
+  action: merge
+  into: blast-wave
+  coin: bronze
+  why: "та сама сімʼя, лише інша форма — стає слотом «форма» картки «Вибух заданої форми»"
+beam-tracing:
+  kind: mechanic
+  action: keep
+  why: "промінь щотіку рахується від випромінювача цілим шляхом — алгоритм сутності, не одне правило"
+line-of-sight-attack:
+  kind: rule
+  action: keep
+  rule: {when: {kind: line_of_sight}, then: [{kind: spawn}]}
+  why: "КОЛИ А бачить Б → постріл; монетка за перевірку лінії без перешкод — на правилі"
+tower-placement:
+  kind: rule
+  action: merge
+  into: cursor-place
+  coin: bronze
+  why: "посадка вежі = «Поставити обʼєкт курсором» + плата з запасу; дві 🥉 на одне правило вводу"
+tower-range:
+  kind: mechanic
+  action: merge
+  into: coverage-area
+  coin: tin
+  why: "форма зони дії вежі = «Зона покриття навколо сутності»; варіант «лінія» додається в її слот"
+bomb-fuse:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, cond: [{kind: counter}], then: [{kind: place}, {kind: set_state}]}
+  drop_slots: [fuse, max_bombs]
+  why: "ввід → бомба на свою клітину в стані «запал» на N тіків; запал — «тривалість» бомби, ліміт — «патрони» гравця"
+
+# ── death ───────────────────────────────────────────────────────────────
+touch-death:
+  kind: rule
+  action: keep
+  rule: {when: {kind: contact}, then: [{kind: lives}]}
+  why: "базова смерть: контакт → мінус життя; 🌱 на правилі, тип «пастка» — окрема роль"
+environment-death:
+  kind: rule
+  action: keep
+  rule: {when: {kind: enter}, then: [{kind: lives}]}
+  why: "гине від клітини чи падіння з умовою (вода без колоди) — інша подія, ніж дотик ворога"
+respawn:
+  kind: rule
+  action: reword
+  description: "Після смерті сутність повертається у свою точку (старт, дім привидів), можна із затримкою; з середини рівня — «Checkpoint»."
+  rule: {when: {kind: died}, then: [{kind: respawn}]}
+  why: "ефект «відроджується» — правило; checkpoint з опису прибрано, бо це окрема картка в levels/progression"
+timed-despawn:
+  kind: stat
+  action: merge
+  into: stat-duration
+  coin: wood
+  why: "«живе N тіків» — число тривалості; у 5 еталонах двічі: параметр duration і слот lifetime з тим самим числом"
+death-animation:
+  kind: game
+  action: merge
+  into: event-effects
+  coin: tin
+  where: interface/graphics
+  why: "ефект на події «загинув» — частковий випадок «Ефектів подій»"
+
+# ── interact ────────────────────────────────────────────────────────────
+item-pickup:
+  kind: rule
+  action: keep
+  rule: {when: {kind: contact}, then: [{kind: disappear}]}
+  why: "подія і наслідок: контакт → предмет зникає, ефект гравцеві; 📎 на правилі"
+interaction-table:
+  kind: game
+  action: keep
+  where: code/architecture
+  why: "про код (взаємодії як дані, а не ланцюг if-ів), не про сутність; в описі гри це вигляд «Таблиця контактів»"
+key-and-door:
+  kind: rule
+  action: reword
+  description: "Двері пропускають лише з ключем: умова «у А є ключ»; ключ витрачається або лишається."
+  rule: {when: {kind: contact}, cond: [{kind: has}], then: [{kind: disappear}]}
+  why: "КОЛИ гравець × двері ЯКЩО є ключ → двері зникають; «сімʼя способів» без дітей — з опису прибрано"
+teleport:
+  kind: rule
+  action: reword
+  description: "Сімʼя: парні / односторонні / випадковий вихід."
+  rule: {when: {kind: enter}, then: [{kind: teleport}]}
+  why: "заголовок сімʼї; опис дублював дитину «Парні портали»"
+teleport-pair:
+  kind: rule
+  action: keep
+  rule: {when: {kind: enter}, then: [{kind: teleport}]}
+  why: "базовий варіант: став на портал → вийшов з парного"
+teleport-one-way:
+  kind: rule
+  action: keep
+  rule: {when: {kind: enter}, then: [{kind: teleport}]}
+  why: "вихід не веде назад — варіант того самого правила"
+teleport-cooldown:
+  kind: stat
+  action: merge
+  into: stat-cooldown
+  coin: tin
+  why: "пауза порталу — число «перезарядка» на сутності-порталі"
+teleport-random-exit:
+  kind: rule
+  action: keep
+  rule: {when: {kind: enter}, then: [{kind: teleport}]}
+  why: "вихід обирається випадково — варіант правила телепорту"
+floor-types:
+  kind: role
+  action: merge
+  into: role-terrain
+  coin: wood
+  why: "лід, вода, вогонь — тип «підлога з властивістю» плюс правила (ковзання, смерть від середовища); 🥈 розкладається на них"
+stick-together:
+  kind: rule
+  action: keep
+  rule: {when: {kind: contact}, then: [{kind: attach}]}
+  why: "контакт → зчіплюються; 🥈 — за рух групи як цілого"
+cell-transform:
+  kind: rule
+  action: keep
+  rule: {when: {kind: enter}, then: [{kind: transform}]}
+  why: "зайшов у клітину-перетворювач → став іншим"
+destructible-blocks:
+  kind: rule
+  action: reword
+  description: "Блок руйнується від вибуху чи пострілу; слот — що лишається: нічого, предмет, вихід (схований під блоком), підлога."
+  rule: {when: {kind: contact}, then: [{kind: disappear}]}
+  why: "подія → блок зникає; вбирає «Схований під блоком вихід або бонус» — це вже варіанти слота"
+dig-terrain:
+  kind: rule
+  action: keep
+  rule: {when: {kind: enter}, then: [{kind: disappear}]}
+  why: "аватар стає на землю → вона зникає (boulder-dash так і пише)"
+fill-hole:
+  kind: rule
+  action: keep
+  rule: {when: {kind: enter}, then: [{kind: disappear}, {kind: set_cell}]}
+  why: "блок у дірці → блок зникає, дірка стає підлогою"
+button-toggle:
+  kind: rule
+  action: keep
+  rule: {when: {kind: enter}, then: [{kind: set_state}]}
+  why: "наступив на кнопку → цілі перемикають стан; тип «кнопка» — роль, тут ціна самого перемикання"
+mirror-reflect:
+  kind: rule
+  action: keep
+  rule: {when: {kind: enter}, then: [{kind: rotate}]}
+  why: "снаряд чи мʼяч заходить у дзеркало → повертає (new-ball-game саме так)"
+thief:
+  kind: rule
+  action: keep
+  rule: {when: {kind: contact}, then: [{kind: take}]}
+  why: "контакт зі злодієм → втрата предмета; базова 📎 на правилі"
+freeze-into-block:
+  kind: rule
+  action: keep
+  rule: {when: {kind: contact}, then: [{kind: transform}]}
+  why: "заморожений ворог перетворюється на блок і далі живе як обʼєкт"
+crush-by-slide:
+  kind: rule
+  action: keep
+  rule: {when: {kind: contact}, cond: [{kind: moving}], then: [{kind: disappear}]}
+  why: "блок × ворог ЯКЩО блок ковзає → ворог зникає; умова руху — суть"
+swap-on-contact:
+  kind: rule
+  action: keep
+  rule: {when: {kind: contact}, then: [{kind: swap}]}
+  why: "контакт → міняються місцями замість блоку; базова монетка на правилі"
+line-match-clear:
+  kind: rule
+  action: keep
+  rule: {when: {kind: pattern}, then: [{kind: clear}]}
+  why: "склалась лінія з N → очищення; пошук ліній — на правилі"
+dig-hole:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, cond: [{kind: free}], then: [{kind: set_state}]}
+  why: "ввід «копати» → цегла збоку-знизу стає ямою"
+hole-refill:
+  kind: rule
+  action: keep
+  rule: {when: {kind: contact}, cond: [{kind: state}], then: [{kind: lives}]}
+  why: "яма заросла над тим, хто всередині → смерть; час заростання — тривалість стану «яма»"
+hidden-under-block:
+  kind: rule
+  action: merge
+  into: destructible-blocks
+  coin: wood
+  why: "«що лишає блок: вихід чи бонус» — уже слот «Руйнованих блоків»"
+periodic-sink:
+  kind: rule
+  action: keep
+  rule: {when: {kind: timer}, then: [{kind: set_state}]}
+  why: "кожні N тіків платформа «під водою» на M — таймер і стан на час"
+stop-cell:
+  kind: rule
+  action: keep
+  rule: {when: {kind: enter}, then: [{kind: block}]}
+  why: "зайшов на гальмо → ковзання обривається (inertia так і пише)"
+shovel:
+  kind: rule
+  action: reword
+  description: "Ввід прибирає свою сутність з клітини, щоб звільнити місце під іншу."
+  rule: {when: {kind: input}, then: [{kind: disappear}]}
+  why: "ввід → своя рослина зникає; бракувало опису"
+last-line-defense:
+  kind: rule
+  action: keep
+  rule: {when: {kind: contact}, then: [{kind: set_state}, {kind: slide}]}
+  why: "ворог дійшов до косарки → вона їде смугою й чистить її, раз за гру"
+placement-cooldown:
+  kind: stat
+  action: merge
+  into: stat-cooldown
+  coin: tin
+  why: "пауза між посадками — «перезарядка» типу рослини"
+
+# ── legality ────────────────────────────────────────────────────────────
+impassable-cells:
+  kind: rule
+  action: keep
+  rule: {when: {kind: contact}, then: [{kind: block}]}
+  why: "контакт зі стіною → рух не відбувається; 🌱 на правилі, тип «стіна» — роль"
+piece-move-patterns:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, cond: [{kind: legal}], then: [{kind: move}]}
+  why: "хід фігури легальний за її патерном → рух; ціна — на правилах ходів"
+legal-move-highlight:
+  kind: element
+  action: keep
+  where: interface/hud (дитина сімʼї highlights)
+  why: "підсвітка на екрані, а не поведінка фігури; «Підсвітки на полі» вже посилаються на неї («легальні ходи (є)»)"
+no-move-into-check:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, cond: [{kind: in_check}], then: [{kind: block}]}
+  why: "хід, після якого свій король під ударом, блокується; 🥇 за перевірку — на правилі"
+tile-merge:
+  kind: rule
+  action: keep
+  rule: {when: {kind: contact}, cond: [{kind: same}], then: [{kind: merge}]}
+  why: "дві однакові × → злиття; умова «однакові» — суть"
+push-object:
+  kind: rule
+  action: keep
+  rule: {when: {kind: contact}, cond: [{kind: free}], then: [{kind: push}]}
+  why: "подія і наслідок: контакт → штовхає, якщо за обʼєктом вільно"
+pull-object:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, then: [{kind: pull}]}
+  why: "ввід від обʼєкта → тягне його за собою"
+one-way-cell:
+  kind: rule
+  action: keep
+  rule: {when: {kind: contact}, cond: [{kind: moving}], then: [{kind: block}]}
+  why: "заходиш не в тому напрямку → блок; умова напрямку — суть"
+height-levels:
+  kind: fieldopt
+  action: merge
+  into: grid-layers
+  coin: silver
+  where: field/grid
+  why: "клітини з висотою — властивість поля «кілька шарів / висот»; крок на ±1 — правило руху на ній"
+polyomino-placement:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, cond: [{kind: fits}], then: [{kind: place}]}
+  why: "ставиш фігуру ЯКЩО вміщується → лягає; умова «вміщується» — суть"
+piece-rotate-flip:
+  kind: rule
+  action: reword
+  title: "Поворот фігури чи плитки"
+  description: "Ввід повертає (і віддзеркалює) фігуру чи плитку: разом повертаються її клітини чи порти; поворот — хід або підготовка ходу."
+  rule: {when: {kind: input}, then: [{kind: rotate}]}
+  why: "ввід → повертається; вбирає «Поворот плитки» — те саме слово правила"
+pawn-promotion:
+  kind: rule
+  action: keep
+  rule: {when: {kind: reach}, then: [{kind: transform}]}
+  why: "дійшов до останнього ряду → перетворюється"
+piece-drop:
+  kind: rule
+  action: reword
+  description: "Взята фігура переходить до того, хто взяв, і замість ходу ставиться з руки на поле (Crazyhouse, сьоґі); панель руки — «Рука/взяті фігури»."
+  rule: {when: {kind: input}, cond: [{kind: has}], then: [{kind: place}]}
+  why: "ввід «дроп» ЯКЩО фігура в руці → ставить на поле; панель руки — окрема картка інтерфейсу"
+move-limit:
+  kind: rule
+  action: keep
+  where: game-logic/lose
+  rule: {when: {kind: counter}, then: [{kind: lose}]}
+  why: "лічильник ходів дійшов до 0 → поразка; це умова поразки, як «Вичерпано час»"
+castling:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, cond: [{kind: state}], then: [{kind: move}]}
+  why: "ввід «рокіровка» ЯКЩО король і тура не ходили → обидва рухаються"
+en-passant:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, cond: [{kind: state}], then: [{kind: move}, {kind: disappear}]}
+  why: "пішак суперника у стані «щойно на 2» → взяття на проході"
+cursor-place:
+  kind: rule
+  action: reword
+  description: "Ввід ставить обʼєкт на обрану клітину: перевірка, що вільно й дозволено, плата з запасу; заборона перекрити шлях — умова «існує шлях»."
+  rule: {when: {kind: input}, cond: [{kind: free}], then: [{kind: place}]}
+  why: "ввід ЯКЩО вільно → ставить; вбирає «Розстановку веж» (вартість і лабіринт — частина того самого правила)"
+swipe-all-shift:
+  kind: fieldopt
+  action: merge
+  into: control-swipe-all
+  coin: tin
+  where: field/control
+  why: "«один хід зсуває всі плитки» — дослівно властивість поля «Хід рухає все поле»"
+merge-once-per-move:
+  kind: rule
+  action: keep
+  rule: {when: {kind: contact}, cond: [{kind: state}], then: [{kind: merge}]}
+  why: "умова «ще не зливалась цього ходу» на правилі злиття; окрема типова помилка"
+
+# ── move ────────────────────────────────────────────────────────────────
+move-by-input:
+  kind: rule
+  action: reword
+  description: "Сімʼя: 4 напрямки / 8 напрямків / рух сам, ввід лише повертає."
+  rule: {when: {kind: input}, then: [{kind: move}]}
+  why: "заголовок сімʼї; опис дублював «4 напрямки»; control-direct у полі — схема, монетка — тут, на правилі"
+move-4dir:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, then: [{kind: move}]}
+  why: "ввід → рух на 1; найперша монетка простої гри — на правилі"
+move-8dir:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, then: [{kind: move}]}
+  why: "те саме плюс діагоналі"
+move-auto:
+  kind: rule
+  action: keep
+  rule: {when: {kind: tick}, then: [{kind: move}]}
+  why: "щотіку рухається сам; ввід лише розвертає (друге правило — «ввід → дивиться»)"
+inertia-slide:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, then: [{kind: slide}]}
+  why: "ввід → ковзає до упору; слово «ковзає» в правилі"
+gravity-fall:
+  kind: fieldopt
+  action: merge
+  into: gravity-down
+  coin: bronze
+  where: field/physics
+  why: "«падіння без опори» — властивість поля «гравітація вниз»; правило «тік → падає» — її реалізація"
+enemy-patrol:
+  kind: rule
+  action: reword
+  description: "Ворог ходить заданим маршрутом по колу: туди-сюди, квадратом, через такт; слот — маршрут. Розворот, упершись, — «Поворот при упорі»."
+  rule: {when: {kind: tick}, then: [{kind: move}]}
+  slots:
+  - {key: pattern, label: Маршрут, type: text, required: true}
+  why: "вбирає «Патерн-автомат» — той самий жорсткий цикл ходів; «туди-сюди до стіни» — це turn-when-blocked"
+random-walk:
+  kind: rule
+  action: keep
+  rule: {when: {kind: tick}, then: [{kind: move}]}
+  why: "щотіку крок у випадковий дозволений бік; алгоритм — на правилі руху"
+chase-player:
+  kind: rule
+  action: reword
+  description: "Сімʼя за якістю: жадібна (крок у бік цілі) / пошук шляху BFS-A*."
+  rule: {when: {kind: tick}, then: [{kind: move}]}
+  why: "заголовок сімʼї; опис дублював «Жадібну»; «два ходи на один» — це число швидкості"
+chase-greedy:
+  kind: rule
+  action: keep
+  rule: {when: {kind: tick}, then: [{kind: move}]}
+  why: "якість правила «рухається до цілі»: крок, що зменшує відстань"
+chase-bfs:
+  kind: rule
+  action: reword
+  title: "Пошук шляху BFS / A*"
+  description: "Рух «до цілі» найкоротшим шляхом в обхід перешкод: ворог женеться, аватар іде до клікнутої клітини."
+  rule: {when: {kind: tick}, then: [{kind: move}]}
+  slots:
+  - {key: algo, label: Алгоритм, type: choice, options: [bfs, astar, dijkstra], required: true}
+  why: "алгоритм на правилі «рухається до цілі» — і для погоні, і для ходу аватара по кліку (sokoban)"
+chase-double-move:
+  kind: stat
+  action: merge
+  into: stat-speed
+  coin: tin
+  why: "два ходи на один хід гравця — це швидкість 2; сам крок — та сама жадібна погоня, 🥉 не переходить"
+pattern-automaton:
+  kind: rule
+  action: merge
+  into: enemy-patrol
+  coin: bronze
+  why: "жорсткий цикл ходів і є патрулювання за маршрутом; слот «цикл ходів» переходить"
+row-conveyor:
+  kind: rule
+  action: keep
+  rule: {when: {kind: tick}, then: [{kind: shift}]}
+  why: "щотіку вся смуга зсувається — слово «зсув ряду»"
+body-queue:
+  kind: mechanic
+  action: keep
+  why: "тіло йде слідом за головою — постійна властивість сутності, не одне правило"
+wall-follower:
+  kind: rule
+  action: keep
+  rule: {when: {kind: tick}, then: [{kind: move}]}
+  why: "алгоритм «тримайся стіни» на правилі «тік → рух»; бік — слот"
+turn-when-blocked:
+  kind: rule
+  action: keep
+  rule: {when: {kind: blocked}, then: [{kind: face}]}
+  why: "вперся → розвертається; слот — куди"
+carrier-platform:
+  kind: rule
+  action: keep
+  rule: {when: {kind: enter}, then: [{kind: attach}]}
+  why: "став на колоду → їде з нею (frogger: зчіплюється)"
+ladder-climb:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, cond: [{kind: state}], then: [{kind: move}]}
+  why: "вгору-вниз лише у стані «на драбині»; перекладина — ще одне правило"
+party-switch:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, then: [{kind: set_state}]}
+  why: "ввід «перемкнути» → інший аватар стає активним"
+descend-and-reverse:
+  kind: rule
+  action: keep
+  rule: {when: {kind: reach}, then: [{kind: move}, {kind: face}]}
+  why: "строй дійшов до краю → усі вниз і розворот"
+roll-off-rounded:
+  kind: rule
+  action: keep
+  rule: {when: {kind: blocked}, cond: [{kind: occupied}, {kind: free}], then: [{kind: move}]}
+  why: "камінь упав на округле ЯКЩО збоку вільно → скочується"
+self-collision:
+  kind: rule
+  action: keep
+  rule: {when: {kind: contact}, then: [{kind: lose}]}
+  why: "голова × власне тіло → поразка чи обрізка хвоста; окремо від дотику ворога"
+no-reverse-turn:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, cond: [{kind: moving}], then: [{kind: face}]}
+  why: "ввід назад ЯКЩО рухається протилежно → ігнор (snake так і пише)"
+diagonal-gap-pass:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, cond: [{kind: free}], then: [{kind: slide}]}
+  why: "уточнення легальності: ковзання по діагоналі між кутами стін не зупиняється"
+visited-trail:
+  kind: rule
+  action: keep
+  rule: {when: {kind: leave}, then: [{kind: mark}]}
+  why: "зійшов з клітини → вона позначена слідом"
+facing-icon:
+  kind: mechanic
+  action: keep
+  why: "іконка за напрямком погляду — постійна властивість сутності"
+
+# ── spawn ───────────────────────────────────────────────────────────────
+spawn-random-cell:
+  kind: rule
+  action: keep
+  rule: {when: {kind: level_start}, then: [{kind: spawn}]}
+  why: "подія → спавн у випадковій вільній клітині; базова 🌱 на правилі"
+spawn-schedule:
+  kind: rule
+  action: reword
+  description: "Кожні N тіків, доки на полі менше ліміту; появу за подією (знищив — прийшов новий) — «Підкріплення»."
+  rule: {when: {kind: timer}, then: [{kind: spawn}]}
+  why: "таймер → спавн; «за подією» прибрано, бо це reinforcements у game-logic/waves"
+spawn-points:
+  kind: rule
+  action: keep
+  rule: {when: {kind: level_start}, then: [{kind: spawn_at}]}
+  why: "поява у фіксованих місцях рівня — слово «зʼявляється у місці»"
+spawn-animation:
+  kind: game
+  action: merge
+  into: event-effects
+  coin: tin
+  where: interface/graphics
+  why: "анімація появи — ефект на події «зʼявився», частковий випадок «Ефектів подій»"
+spawner-entity:
+  kind: role
+  action: merge
+  into: role-spawner
+  coin: bronze
+  why: "«сутність-генератор» — дослівно тип «генератор»; 🥉 переходить на картку ролі"
+scatter-chase-schedule:
+  kind: rule
+  action: keep
+  rule: {when: {kind: schedule}, then: [{kind: set_state}, {kind: face}]}
+  why: "за розкладом → режим ворогів міняється з розворотом (pac-man)"
+ghost-house-release:
+  kind: rule
+  action: keep
+  rule: {when: {kind: counter}, then: [{kind: clear_state}]}
+  why: "лічильник зʼїденого чи простій → привид виходить з дому"
+weighted-spawn:
+  kind: rule
+  action: keep
+  rule: {when: {kind: spawned}, cond: [{kind: prob}], then: [{kind: set_value}]}
+  why: "зʼявилась ЯКЩО 10 % → четвірка; ймовірність — суть (2048 так і пише)"
+drop-on-death:
+  kind: rule
+  action: keep
+  rule: {when: {kind: died}, then: [{kind: spawn}]}
+  why: "загинув → лишає предмет; що лишають блоки — слот destructible-blocks"
+
+# ── state ───────────────────────────────────────────────────────────────
+hp-damage:
+  kind: stat
+  action: merge
+  into: stat-hp
+  coin: tin
+  why: "це параметр HP; ціна 📎 переходить на картку параметра"
+inventory:
+  kind: mechanic
+  action: reword
+  description: "Сутність носить предмети: підібране зберігається, видно й витрачається. Сімʼя: застосування предмета; ліміт — параметр «місткість»."
+  why: "інвентар — постійна здатність сутності; ліміт і час дії йдуть у параметри"
+inventory-items:
+  kind: rule
+  action: reword
+  title: "Застосування предмета"
+  description: "Ввід застосовує предмет з інвентаря: ефект і витрата (ключ, зілля, бомба)."
+  rule: {when: {kind: input}, cond: [{kind: has}], then: [{kind: use}]}
+  why: "назва дублювала батька; застосування — подія і наслідок"
+inventory-limit:
+  kind: stat
+  action: merge
+  into: stat-capacity
+  coin: tin
+  why: "місткість — число сутності; 🥈 завищено для перевірки ліміту, пропоную 📎"
+inventory-duration:
+  kind: stat
+  action: merge
+  into: stat-duration
+  coin: wood
+  why: "час дії предмета — число «тривалість»; сам тимчасовий ефект ціновано «Тимчасовими режимами» 🥉"
+temporary-modes:
+  kind: rule
+  action: keep
+  rule: {when: {kind: contact}, then: [{kind: set_state}]}
+  drop_slots: [duration]
+  why: "контакт → стан на N тіків, що міняє поведінку інших; тривалість — параметр (pac-man двічі: 60 і 60)"
+speed-per-type:
+  kind: stat
+  action: merge
+  into: stat-speed
+  coin: tin
+  why: "різний темп — це число «швидкість» у кожного типу"
+multi-cell-size:
+  kind: mechanic
+  action: keep
+  why: "розмір понад клітину — постійна властивість, яку жодне правило не скаже; саме число — параметр «розмір»"
+orientation-state:
+  kind: mechanic
+  action: keep
+  why: "орієнтація з різними боками — модель стану сутності, не одна подія"
+tile-rotate:
+  kind: rule
+  action: merge
+  into: piece-rotate-flip
+  coin: tin
+  why: "ввід → повертається — те саме слово; 🌱 зливається з 📎 «Поворот фігури чи плитки»"
+pipe-connectors:
+  kind: mechanic
+  action: keep
+  why: "порти плитки — постійна властивість; звʼязність по них перевіряє connectivity-check"
+coverage-area:
+  kind: mechanic
+  action: reword
+  description: "Сутність діє на клітини довкола заданої форми: вежа, спринклер, опудало; відстань — параметр «дальність»."
+  slots:
+  - {key: shape, label: Форма, type: choice, options: [line, cross, square, radius, custom], required: true}
+  drop_slots: [size]
+  why: "форму зони «у радіусі N» не скаже; вбирає «Радіус/форма вежі»; розмір — параметр «дальність»"
+status-effects:
+  kind: mechanic
+  action: reword
+  description: "Отрута, горіння, заморозка: стан зі стеками, що щотіку діє й спадає (Wildfrost, роглайки); простий стан на час — «Тимчасові режими»."
+  why: "стеки й тік — система станів сутності; щит на N ходів уже є в temporary-modes"
+item-identification:
+  kind: mechanic
+  action: keep
+  why: "предмет має приховану суть, що відкривається дією, — властивість типу предметів"
+hunger-clock:
+  kind: stat
+  action: merge
+  into: stat-hunger
+  coin: tin
+  why: "голод — число сутності, що спадає; «їжа відновлює» і «0 = шкода» — звичайні правила"
+unit-xp-skills:
+  kind: mechanic
+  action: keep
+  why: "досвід → рівень → вміння — система прокачки сутності, не одне правило"
+blob-growth:
+  kind: rule
+  action: keep
+  rule: {when: {kind: rng}, then: [{kind: grow}]}
+  why: "випадково → росте; «завелика» і «замкнена» — ще два правила з перетворенням"
+magic-wall-timer:
+  kind: rule
+  action: keep
+  rule: {when: {kind: contact}, then: [{kind: set_state}]}
+  why: "перший камінь будить стіну на N тіків, потім «вичерпана»; саме перетворення — cell-transform"

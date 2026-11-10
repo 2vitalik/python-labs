@@ -4,14 +4,13 @@ field:
   topology: square
   view: side
   gravity: down
-  time: realtime
-  control: direct
+  time: [realtime]
+  control: [direct]
 entities:
   - title: Рокфорд
     role: player
     description: "Шукач алмазів: ходить у 4 напрямки (діагональ → горизонталь), прокопує пісок, штовхає камінь убік; кнопка + напрямок — взяти сусідню клітину, не рухаючись"
-    stats: [{key: lives, value: "3"}, {key: speed, value: "1", unit: "кл/тік"}]
-    claims: [move-4dir, dig-terrain, push-object]
+    stats: [{key: lives, value: "3"}, {key: speed, value: "1"}]
   - title: Пісок
     role: terrain
     description: "Земля печери: Рокфорд проходить крізь неї, лишаючи порожнечу; камінь на піску лежить, вороги в пісок не заходять"
@@ -19,7 +18,6 @@ entities:
     role: object
     description: "Падає в порожнечу; скочується з круглого (камінь, алмаз, стіна); падаючий вбиває Рокфорда і підриває ворогів"
     states: [лежить, падає]
-    claims: [gravity-fall, roll-off-rounded, environment-death]
   - title: Алмаз
     role: pickup
     description: "Фізика як у каменя, падаючий теж вбиває; збирається навіть у падінні"
@@ -32,33 +30,36 @@ entities:
     role: switch
     description: "Падаючий камінь проходить крізь неї і стає алмазом на 2 клітини нижче (алмаз — каменем); працює обмежений час"
     states: [спить, працює, вичерпана]
-    claims: [cell-transform]
   - title: Світлячок
     role: enemy
     description: "Ходить уздовж краю порожнечі, тримаючись лівого боку (старт — ліворуч); поруч із Рокфордом вибухає 3×3 у порожнечу"
-    stats: [{key: speed, value: "1", unit: "кл/тік"}]
-    claims: [{slug: wall-follower, params: {side: left}}]
+    stats: [{key: speed, value: "1"}]
   - title: Метелик
     role: enemy
     description: "Дзеркальний світлячку: тримається правого боку; вибухає 3×3 у 9 алмазів"
-    stats: [{key: speed, value: "1", unit: "кл/тік"}]
-    claims: [{slug: wall-follower, params: {side: right}}]
+    stats: [{key: speed, value: "1"}]
   - title: Амеба
     role: hazard
     description: "Росте у порожнечу й пісок у випадковий бік; завелика — стає камінням, задушена — алмазами"
-    stats: [{key: size, value: "до 200", unit: "кл"}]
+    stats: [{key: size, value: "до 200"}]
   - title: Вихід
     role: gate
     description: "Схожий на сталеву стіну; відкривається, коли зібрано квоту алмазів"
     states: [закритий, відкритий]
 rules:
+  - when: {kind: input, action: "↑", a: Рокфорд}
+    then: [{kind: move, a: "@a", dir: up}]
+    note: "так само ↓ ← →; діагональ джойстика — по горизонталі; кнопка + напрямок — взяти сусідню клітину, не рухаючись"
+    claims: [move-4dir]
   - when: {kind: enter, a: Рокфорд, b: Пісок}
     then: [{kind: disappear, a: "@b"}]
     note: "пісок стає порожнечею"
+    claims: [dig-terrain]
   - when: {kind: contact, a: Рокфорд, b: Камінь}
     cond: [{kind: state, a: "@b", s: лежить}, {kind: free, cell: ahead}, {kind: prob, p: 12}]
     then: [{kind: push, a: "@b"}]
     note: "лише вбік, клітина за каменем вільна; шанс 1/8 на кожен тік спроби; вертикально камінь не штовхається"
+    claims: [push-object]
   - when: {kind: contact, a: Рокфорд, b: Алмаз}
     then: [{kind: disappear, a: "@b"}, {kind: counter, name: алмази, n: 1}, {kind: score, n: 10}]
     note: "після квоти алмаз дає 15 очок"
@@ -70,10 +71,12 @@ rules:
     cond: [{kind: state, a: "@a", s: падає}, {kind: custom, text: "під ним круглий обʼєкт, а збоку й збоку-знизу вільно"}]
     then: [{kind: move, a: "@a", dir: left}]
     note: "спершу ліворуч, інакше праворуч; інакше камінь лягає (стан «лежить»); алмаз — так само"
+    claims: [roll-off-rounded]
   - when: {kind: contact, a: Камінь, b: Рокфорд}
     cond: [{kind: state, a: "@a", s: падає}]
     then: [{kind: explode, shape: square, n: 3}]
     note: "Рокфорд гине; падаючий алмаз — так само"
+    claims: [environment-death]
   - when: {kind: contact, a: Камінь, b: Світлячок}
     cond: [{kind: state, a: "@a", s: падає}]
     then: [{kind: explode, shape: square, n: 3}]
@@ -84,19 +87,20 @@ rules:
     note: "9 алмазів"
   - when: {kind: adjacent, a: Світлячок, b: Рокфорд}
     then: [{kind: explode, shape: square, n: 3}]
-    note: "перевірка 4 сусідів щотік до руху; так само поруч з амебою"
-  - when: {kind: adjacent, a: Метелик, b: Рокфорд}
-    then: [{kind: explode, shape: square, n: 3, into: Алмаз}]
+    note: "перевірка 4 сусідів щотік до руху; так само поруч з амебою; метелик поруч — так само, але вибух у 9 алмазів"
   - when: {kind: tick}
     then: [{kind: move, a: Світлячок, dir: forward}, {kind: move, a: Метелик, dir: forward}]
-    note: "світлячок: поворот ліворуч → прямо → поворот праворуч на місці; метелик — дзеркально"
+    note: "світлячок: поворот ліворуч → прямо → поворот праворуч на місці; метелик — дзеркально, тримається правого боку"
+    claims: [{slug: wall-follower, params: {side: left}}]
   - when: {kind: contact, a: Камінь, b: Магічна стіна}
     cond: [{kind: state, a: "@a", s: падає}, {kind: state, a: "@b", s: вичерпана, not: true}]
     then: [{kind: set_state, a: "@b", s: працює}, {kind: disappear, a: "@a"}, {kind: spawn_at, entity: Алмаз, where: "2 клітини нижче стіни, якщо вільно"}]
     note: "алмаз дзеркально стає каменем; час роботи — параметр печери"
+    claims: [cell-transform]
   - when: {kind: rng, p: 3}
     then: [{kind: grow, a: Амеба, n: 1}]
     note: "4/128 у випадкову сусідню порожнечу чи пісок; після повільної фази — 4/16"
+    claims: [blob-growth]
   - when: {kind: counter, name: розмір амеби, op: ">=", n: 200}
     then: [{kind: transform, a: Амеба, into: Камінь}]
   - when: {kind: no_moves, a: Амеба}
@@ -104,17 +108,21 @@ rules:
     note: "амеба не змогла вирости за минулий тік"
   - when: {kind: counter, name: алмази, op: ">=", n: 12}
     then: [{kind: set_state, a: Вихід, s: відкритий}, {kind: sound, text: "спалах екрана"}]
+    claims: [{slug: collect-quota, params: {quota: 12}}]
   - when: {kind: enter, a: Рокфорд, b: Вихід}
     cond: [{kind: state, a: "@b", s: відкритий}]
     then: [{kind: win}, {kind: next_level}]
     note: "залишок часу переходить в очки"
+    claims: [reach-exit]
   - when: {kind: counter, name: час, op: "==", n: 0}
     then: [{kind: lives, n: -1}, {kind: restart}]
+    claims: [{slug: time-out, params: {limit: 150}}]
   - when: {kind: died, a: Рокфорд}
     then: [{kind: lives, n: -1}, {kind: restart}]
     note: "та сама печера знову; +1 життя кожні 500 очок"
   - when: {kind: counter, name: життя, op: "==", n: 0}
     then: [{kind: game_over}, {kind: window, window: Кінець гри}]
+    claims: [player-death]
 windows:
   - title: Головне меню
     task: main-menu
@@ -138,8 +146,16 @@ windows:
     description: "Game over, рахунок і рекорд"
     items:
       - {title: На титул, window: Головне меню}
-claims:
-  - {slug: collect-quota, params: {quota: 12}}
-  - {slug: time-out, params: {limit: 150}}
-  - {slug: player-death, params: {lives: 3}}
-  - sequential-levels
+levels:
+  - title: Печери A–P
+    mode: hand
+    count: "16"
+    size: "40×22"
+    stats: [{key: рівнів складності, value: "5"}, {key: квота алмазів, value: "12 у печері A"}, {key: "час, с", value: "150 у печері A"}]
+    description: "Печери по черзі, кожна зі своєю мапою, квотою, ціною алмаза й часом; 5 рівнів складності — ті самі мапи з іншими параметрами; почати можна лише з A, E, I чи M"
+    claims: [sequential-levels]
+  - title: Інтермісії
+    mode: hand
+    count: "4"
+    size: "один екран"
+    description: "Бонусні логічні мініпечери на один екран — після печер D, H, L і P"

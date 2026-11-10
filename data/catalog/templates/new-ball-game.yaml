@@ -3,53 +3,60 @@ field:
   size: "13×6"
   topology: square
   view: top-down
-  gravity: none
-  time: realtime
-  control: click-cell
+  time: [realtime]
+  control: [click-cell]
 entities:
   - title: Курсор
     role: player
+    icon: "👁️"
     description: "👁️ Рука гравця: клітина, куди ставиться щит; ходить полем вільно, мʼячик тим часом летить"
-    claims: [cell-click]
   - title: Мʼячик
     role: object
+    icon: "🔵"
     description: "🔵 Летить сам по прямій, клітина за тік: від стіни — назад, від щита — на 90°"
-    stats: [{key: speed, value: "1", unit: "кл/тік"}]
-    claims: [move-auto, {slug: turn-when-blocked, params: {turn: reverse}}]
+    stats: [{key: speed, value: "1"}]
   - title: Енергетична кулька
     role: pickup
+    icon: "🟠"
     description: "🟠 Зникає, коли мʼячик пролітає її клітину; зібрати всі — перемога"
-    claims: [item-pickup]
   - title: Стіна
     role: static
+    icon: "⬛"
     description: "⬛ Мʼячик відбивається від неї назад, на 180°"
   - title: Щит ↗
     role: object
+    icon: "↗️"
     description: "Діагональ ↗ ↙: ставиться курсором на порожню клітину, повертає мʼячик на 90°"
-    claims: [mirror-reflect]
   - title: Щит ↘
     role: object
+    icon: "↘️"
     description: "Діагональ ↘ ↖: так само, але повертає в дзеркальний бік"
 rules:
   - when: {kind: tick}
     then: [{kind: move, a: Мʼячик, dir: forward}]
     note: "автономно, без участі гравця"
+    claims: [move-auto]
   - when: {kind: contact, a: Мʼячик, b: Стіна}
     then: [{kind: rotate, a: "@a", deg: "180"}]
+    claims: [{slug: turn-when-blocked, params: {turn: reverse}}]
   - when: {kind: enter, a: Мʼячик, b: Щит ↗}
     then: [{kind: rotate, a: "@a", deg: "90"}]
     note: "← стає ↓, → стає ↑, ↑ стає →, ↓ стає ←"
+    claims: [mirror-reflect]
   - when: {kind: enter, a: Мʼячик, b: Щит ↘}
     then: [{kind: rotate, a: "@a", deg: "90"}]
     note: "← стає ↑, → стає ↓, ↑ стає ←, ↓ стає →"
   - when: {kind: enter, a: Мʼячик, b: Енергетична кулька}
     then: [{kind: disappear, a: "@b"}]
+    claims: [item-pickup]
   - when: {kind: all_gone, a: Енергетична кулька}
     then: [{kind: win}, {kind: window, window: Перемога}]
+    claims: [collect-all]
   - when: {kind: input, action: "поставити ↗", a: Курсор}
     cond: [{kind: free, cell: under}]
     then: [{kind: place, a: "@a", entity: Щит ↗}]
     note: "щит — лише на порожню клітину"
+    claims: [cursor-place]
   - when: {kind: input, action: "поставити ↘", a: Курсор}
     cond: [{kind: free, cell: under}]
     then: [{kind: place, a: "@a", entity: Щит ↘}]
@@ -65,11 +72,14 @@ windows:
   - title: Гра
     task: game-screen
     description: "Поле з мʼячиком; лічильник — скільки кульок лишилось"
-    claims: [remaining-counter]
+    claims: [goal-counter]
   - title: Перемога
     task: end-screen
     items:
       - {title: Ще раз, window: Гра}
       - {title: В меню, window: Головне меню}
-claims:
-  - collect-all
+levels:
+  - title: Рівень
+    mode: hand
+    count: "1"
+    description: "Розстановка з опису курсу: стіни, кульки й старт мʼячика задано наперед, щити ставить гравець; чи були в оригіналі інші рівні — (?)"

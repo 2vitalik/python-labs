@@ -3,35 +3,31 @@ field:
   size: "13×13"
   topology: square
   view: top-down
-  gravity: none
-  time: realtime
-  control: direct
+  time: [realtime]
+  control: [direct]
   layers: [підлога, стіни, танки й кулі]
 entities:
   - title: Танк гравця
     role: player
     description: "🔼 Їздить у 4 напрямки, іконка повертається за напрямом руху; стріляє вперед. Стартує ліворуч від бази"
-    stats: [{key: lives, value: "3"}, {key: speed, value: "1", unit: "кл/тік"}]
+    stats: [{key: lives, value: "3"}, {key: speed, value: "1"}]
     states: [звичайний, зі щитом, посилений]
-    claims: [move-4dir, projectile-shot, {slug: temporary-modes, params: {duration: 200}}]
+    claims: [facing-icon]
   - title: Ворожий танк
     role: enemy
     description: "🔻 Чотири види: звичайний, швидкий, потужний (швидка куля), броньований (4 влучання). Блукає, у перешкоді розвертається, стріляє, коли бачить гравця"
     stats: [{key: count, value: "≤ 4 (20 на рівень)"}, {key: hp, value: "1–4"}, {key: value, value: "100–400"}]
     states: [звичайний, червоний]
-    claims: [random-walk, line-of-sight-attack, {slug: spawn-schedule, params: {every: 20, max_alive: 4}}, {slug: hp-damage, params: {hp: 4, who: "броньований танк"}}]
   - title: Куля
     role: projectile
     description: "🔷 наша / ⭕ ворожа: летить по прямій у напрямку пострілу до першої перешкоди"
-    stats: [{key: speed, value: "2", unit: "кл/тік"}, {key: damage, value: "1"}]
+    stats: [{key: speed, value: "2"}, {key: damage, value: "1"}]
   - title: Цегляна стіна
     role: static
     description: "🟫 Непрохідна для танків; руйнується кулею будь-якого танка"
-    claims: [{slug: destructible-blocks, params: {drops: floor}}]
   - title: Сталева стіна
     role: static
     description: "Непрохідна й невразлива; руйнує її лише куля танка з трьома зірками"
-    claims: [impassable-cells]
   - title: База
     role: object
     description: "Орел-штаб унизу посередині, обнесений цеглою; одне влучання будь-чиєї кулі — поразка"
@@ -53,17 +49,21 @@ rules:
   - when: {kind: input, action: "↑", a: Танк гравця}
     then: [{kind: face, a: "@a", dir: up}, {kind: move, a: "@a", dir: up}]
     note: "так само ↓ ← →: спершу розворот іконки, далі рух"
+    claims: [move-4dir]
   - when: {kind: input, action: постріл, a: Танк гравця}
     then: [{kind: spawn, entity: Куля, cell: ahead}]
     note: "своя куля на полі одна (з другою зіркою — дві)"
+    claims: [projectile-shot]
   - when: {kind: tick}
     then: [{kind: move, a: Куля, dir: forward}]
     note: "кожна куля — у напрямку свого пострілу"
   - when: {kind: contact, a: Куля, b: Цегляна стіна}
     then: [{kind: disappear, a: "@both"}]
+    claims: [{slug: destructible-blocks, params: {drops: floor}}]
   - when: {kind: contact, a: Куля, b: Сталева стіна}
     then: [{kind: disappear, a: "@a"}]
     note: "куля танка з трьома зірками руйнує й сталь"
+    claims: [impassable-cells]
   - when: {kind: contact, a: Куля, b: Куля}
     then: [{kind: disappear, a: "@both"}]
     note: "зустрічні кулі гасять одна одну"
@@ -83,19 +83,25 @@ rules:
   - when: {kind: contact, a: Куля, b: База}
     then: [{kind: disappear, a: "@a"}, {kind: set_state, a: "@b", s: зруйнована}, {kind: lose}, {kind: window, window: Підсумок}]
     note: "зокрема й своя куля"
+    claims: [enemy-reached-base]
   - when: {kind: line_of_sight, a: Ворожий танк, b: Танк гравця}
     then: [{kind: face, a: "@a", dir: toward}, {kind: spawn, entity: Куля, cell: ahead}]
+    claims: [line-of-sight-attack]
   - when: {kind: blocked, a: Ворожий танк}
     then: [{kind: face, a: "@a", dir: random}]
+    claims: [random-walk]
   - when: {kind: timer, every: 20}
     cond: [{kind: counter, name: ворогів у запасі, op: ">", n: 0}]
     then: [{kind: spawn_at, entity: Ворожий танк, where: "по черзі в одній із 3 точок угорі"}, {kind: counter, name: ворогів у запасі, n: -1}]
     note: "лише поки на полі менше 4 ворогів; знищений звільняє місце наступному"
+    claims: [{slug: spawn-schedule, params: {every: 20, max_alive: 4}}, reinforcements]
   - when: {kind: all_gone, a: Ворожий танк}
     cond: [{kind: counter, name: ворогів у запасі, op: "==", n: 0}]
     then: [{kind: window, window: Підсумок}, {kind: next_level}]
+    claims: [destroy-all-enemies]
   - when: {kind: contact, a: Танк гравця, b: Шолом}
     then: [{kind: disappear, a: "@b"}, {kind: set_state, a: "@a", s: зі щитом, dur: 200}, {kind: score, n: 500}]
+    claims: [temporary-modes]
   - when: {kind: contact, a: Танк гравця, b: Годинник}
     then: [{kind: disappear, a: "@b"}, {kind: stun, a: Ворожий танк, n: 200}, {kind: score, n: 500}]
   - when: {kind: contact, a: Танк гравця, b: Зірка}
@@ -103,6 +109,7 @@ rules:
     note: "3 ступені: швидша куля → дві кулі → куля пробиває сталь"
   - when: {kind: counter, name: життя, op: "==", n: 0}
     then: [{kind: lose}, {kind: window, window: Підсумок}]
+    claims: [player-death]
 windows:
   - title: Головне меню
     task: main-menu
@@ -119,7 +126,7 @@ windows:
   - title: Гра
     task: game-screen
     description: "Поле 13×13; праворуч — значки ворогів у запасі, життя гравця (IP), прапорець із номером рівня; Start — пауза"
-    claims: [status-panel, remaining-counter]
+    claims: [status-panel, goal-counter]
   - title: Підсумок
     task: end-screen
     description: "Після рівня — скільки танків кожного виду знищено й очки за них; після поразки — ще й GAME OVER"
@@ -131,8 +138,22 @@ windows:
     description: "Construction: курсором розставити цеглу, сталь, воду, ліс і лід; збудована мапа грається з титулу"
     items:
       - {title: На титул, window: Головне меню}
-claims:
-  - {slug: player-death, params: {lives: 3}}
-  - enemy-reached-base
-  - destroy-all-enemies
-  - reinforcements
+levels:
+  - title: Стадії 1–35
+    mode: hand
+    count: "35"
+    size: "13×13"
+    stats: [{key: ворогів, value: "20"}]
+    description: "Мапи зроблені вручну й ідуть по черзі; на кожній — свій набір із 20 ворожих танків, бонус лишають 4-й, 11-й і 18-й; стартову стадію можна обрати на екрані «STAGE»"
+    claims: [sequential-levels]
+  - title: Наступні кола
+    mode: hand
+    count: "без ліміту"
+    size: "13×13"
+    description: "Після 35-ї стадії ті самі мапи йдуть по колу — з іншим набором ворогів і швидшою появою; кінця гри нема"
+  - title: Своя мапа
+    mode: hand
+    count: "1"
+    size: "13×13"
+    description: "Construction: порожнє поле з орлом, курсором розставити цеглу, сталь, воду, ліс і лід; зібрана мапа грається з титулу; зберегти на касету — лише у Famicom-версії з Data Recorder (?)"
+    claims: [in-game-editor]

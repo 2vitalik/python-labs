@@ -2,9 +2,8 @@ field:
   size: "8×8"
   topology: square
   view: top-down
-  gravity: none
-  time: turn
-  control: click-cell
+  time: [turn]
+  control: [click-cell]
   layers: [дошка, фігури, підсвітка]
 entities:
   - title: Король
@@ -12,7 +11,6 @@ entities:
     description: "Ходить на 1 клітину в будь-який бік; не може стати під удар; рокіровка"
     stats: [{key: count, value: "1"}]
     states: [вибрана, ходив, під шахом]
-    claims: [no-move-into-check, check-stalemate]
   - title: Ферзь
     role: piece
     description: "Будь-яка відстань по вертикалі, горизонталі й діагоналі до першої перешкоди"
@@ -33,13 +31,11 @@ entities:
     description: "Ходить буквою Г (2 + 1) і єдиний перестрибує через фігури"
     stats: [{key: count, value: "2"}, {key: value, label: цінність, value: "3"}]
     states: [вибрана]
-    claims: [piece-move-patterns]
   - title: Пішак
     role: piece
     description: "Іде на 1 вперед (з початкового ряду — на 2), бʼє по діагоналі вперед; на останньому ряду перетворюється"
     stats: [{key: count, value: "8"}, {key: value, label: цінність, value: "1"}]
     states: [вибрана, щойно на 2]
-    claims: [pawn-promotion, piece-capture]
   - title: Клітина
     role: terrain
     description: "Поле дошки a1–h8, світле або темне; на клітині не більше однієї фігури"
@@ -51,7 +47,8 @@ rules:
     note: "підсвітити клітини, куди обрана фігура може піти"
   - when: {kind: input, action: "вибір фігури", a: "*"}
     cond: [{kind: turn_of, a: "@a", not: true}]
-    then: [{kind: message, text: "Зараз хід суперника"}]
+    then: [{kind: block}, {kind: message, text: "Зараз хід суперника"}]
+    claims: [turn-enforcement]
   - when: {kind: input, action: "хід на клітину", a: Король}
     cond: [{kind: turn_of, a: "@a"}, {kind: legal, text: "на 1 клітину в будь-якому з 8 напрямків"}]
     then: [{kind: move, a: "@a", dir: any}, {kind: set_state, a: "@a", s: ходив}, {kind: end_turn}]
@@ -67,6 +64,7 @@ rules:
   - when: {kind: input, action: "хід на клітину", a: Кінь}
     cond: [{kind: turn_of, a: "@a"}, {kind: legal, text: "буквою Г: 2 клітини в один бік і 1 убік, через фігури"}]
     then: [{kind: move, a: "@a", dir: toward}, {kind: end_turn}]
+    claims: [piece-move-patterns]
   - when: {kind: input, action: "хід на клітину", a: Пішак}
     cond: [{kind: turn_of, a: "@a"}, {kind: legal, text: "на 1 вперед на вільну або на 1 по діагоналі вперед із взяттям"}]
     then: [{kind: move, a: "@a", dir: toward}, {kind: end_turn}]
@@ -77,19 +75,30 @@ rules:
   - when: {kind: input, action: "хід на клітину", a: "*"}
     cond: [{kind: legal, text: "після ходу свій король не під ударом", not: true}]
     then: [{kind: block}, {kind: message, text: "Так не можна: король під шахом"}]
+    claims: [no-move-into-check]
   - when: {kind: contact, a: "*", b: "*"}
     cond: [{kind: same, a: "@a", b: "@b", prop: кольором, not: true}]
     then: [{kind: disappear, a: "@b"}]
     note: "взяття: фігура стає на клітину фігури суперника"
+    claims: [piece-capture]
   - when: {kind: reach, a: Пішак, where: "останній ряд"}
     then: [{kind: choose, options: "ферзь, тура, слон або кінь"}, {kind: transform, a: "@a", into: Ферзь}]
     note: "за замовчуванням — ферзь"
+    claims: [pawn-promotion]
   - when: {kind: input, action: "рокіровка", a: Король}
     cond: [{kind: turn_of, a: "@a"}, {kind: state, a: "@a", s: ходив, not: true}, {kind: legal, text: "тура не ходила, між ними вільно, король не під шахом і не проходить битим полем"}]
-    then: [{kind: custom, text: "король зсувається на 2 клітини до тури, тура стає поруч по інший бік від нього"}, {kind: set_state, a: "@a", s: ходив}, {kind: end_turn}]
+    then:
+      - {kind: move, a: "@a", dir: toward}
+      - {kind: move, a: "@a", dir: toward}
+      - {kind: custom, text: "тура стає поруч із королем, по інший бік від нього"}
+      - {kind: set_state, a: "@a", s: ходив}
+      - {kind: end_turn}
+    note: "король зсувається на 2 клітини в бік тури"
+    claims: [castling]
   - when: {kind: input, action: "взяття на проході", a: Пішак}
     cond: [{kind: turn_of, a: "@a"}, {kind: legal, text: "поруч стоїть пішак суперника у стані «щойно на 2»"}]
     then: [{kind: move, a: "@a", dir: toward}, {kind: custom, text: "знімається пішак суперника, що щойно пройшов, — не з клітини призначення"}, {kind: end_turn}]
+    claims: [en-passant]
   - when: {kind: turn_end}
     cond: [{kind: custom, text: "король суперника під ударом"}]
     then: [{kind: set_state, a: Король, s: під шахом, dur: 1}, {kind: message, text: "Шах!"}, {kind: sound, text: "шах"}]
@@ -98,13 +107,16 @@ rules:
     cond: [{kind: state, a: Король, s: під шахом}]
     then: [{kind: win}, {kind: window, window: Кінець партії}]
     note: "мат: перемагає той, хто його поставив"
+    claims: [checkmate]
   - when: {kind: no_moves}
     cond: [{kind: state, a: Король, s: під шахом, not: true}]
     then: [{kind: draw}, {kind: window, window: Кінець партії}]
     note: "пат"
+    claims: [check-stalemate]
   - when: {kind: turn_start}
     then: [{kind: timer, clock: start, n: 60}]
     note: "годинник сторони, що ходить"
+    claims: [{slug: move-timer, params: {per_move: 60}}]
   - when: {kind: counter, name: "час на хід", op: "<=", n: 0}
     then: [{kind: lose}, {kind: window, window: Кінець партії}]
     note: "програє той, у кого скінчився час"
@@ -117,7 +129,6 @@ windows:
   - title: Налаштування партії
     task: match-setup
     description: "Хто грає білими, час на хід"
-    claims: [{slug: move-timer, params: {per_move: 60}}]
     items:
       - {title: Почати, window: Гра}
       - {title: Назад, window: Головне меню}
@@ -134,4 +145,10 @@ windows:
     items:
       - {title: Реванш, window: Гра}
       - {title: Головне меню, window: Головне меню}
-claims: [checkmate, hot-seat, turn-enforcement]
+levels:
+  - title: Початкова позиція
+    description: "Рівнів у звичному сенсі нема: кожна партія починається з тієї самої розстановки — по 16 фігур, білі на рядах 1–2, чорні на 7–8, першими ходять білі. Задачі «мат за N ходів» і варіанти на кшталт Chess960 — у цифрових клієнтах, не в самих шахах"
+    mode: hand
+    count: "1"
+    size: "8×8"
+claims: [hot-seat]

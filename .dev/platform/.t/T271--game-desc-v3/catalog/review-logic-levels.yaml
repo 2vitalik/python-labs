@@ -1,0 +1,695 @@
+# T271 · ревізія каталогу: зони game-logic + levels (114 карток з дітьми сімей) · 2026-11-10
+# Контракт — T270 §6 (типи), §4 (правила), §9 (рівні). Поля: kind · action · rule (лише слова, без аргументів)
+# · into + coin (злиття: яка монетка лишається) · title / description / games / slots (нове) · move_to · parent · why.
+#
+# ── Тип за замовчуванням від підзони (zones.py, третій елемент) ─────────────
+#   game-logic: win · lose · score · waves · constraints → rule; difficulty · economy · history · opponent ·
+#   program · save → game. levels: усі → level. Тоді явний `kind` у YAML потрібен лише 16 карткам (після
+#   переїздів): skip-level, round-currency, shop-preview, in-round-upgrades, restart-level, permadeath,
+#   turn-enforcement, move-timer, realtime-ai, pass-turn, repetition-draw, garbage-attack, step-execution,
+#   score-records, mines-after-first-click, checkpoint.
+# Що робити з такими, як level-select: тип вікна переїжджає до interface/menus (туди веде «глянь усі типи
+#   вікон» з T270 §10.2); картка kind=level — у зону levels (зона «Рівні» = секція «Рівні»); решта невідповідностей —
+#   лише `kind` у межах своєї зони.
+#
+# ── Підсумок ───────────────────────────────────────────────────────────────
+# kind:   rule 47 · game 32 · level 28 · window 3 · element 2 · mechanic 1 · fieldopt 1
+#         (лишаються в каталозі — keep + reword — 105: rule 43 · game 32 · level 26 · window 1 · element 2 · mechanic 1)
+# action: keep 78 · reword 27 · merge 8 · archive 1 · split 0
+#
+# Злиття (8):
+#   completion-detection   → satisfy-constraints  📎   «усі обмеження виконано → перемога» двічі
+#   check-stalemate        → checkmate            🥇   мат / пат — один алгоритм; checkmate стає «Мат і пат»
+#   unsolvable-states      → deadlock-detection   🥇   дослівний дубль
+#   escalating-kill-points → combo-multiplier     📎   серія множить очки
+#   game-pause             → pause-menu           📎   (interface/menus) пауза = вікно паузи
+#   shop-catalog           → shop-window          📎   (interface/menus) вітрина = вікно магазину
+#   command-program        → control-programmed   🥉   (нова картка fieldopt) «Керування: пишу програму команд»
+#   editor-map-check       → map-validation       📎   один валідатор на завантаженні й збереженні
+# Архів (1): level-exchange — експорт = збереження редактора, імпорт = рівні з файлів; окремо оцінювати нічого.
+# Переїзди (3): level-select → interface/menus · seed-share → levels/generation · rule-variants → game-logic/difficulty.
+#   restart-level виходить із сімʼї undo-redo (parent: "").
+# Слоти: нові — deadlock-detection (які глухі кути), skip-level (пропусків), wrong-mark-lose (помилок),
+#   dungeon-generation (алгоритм), level-solver (алгоритм); прибрано — player-death «Життів» (це параметр stat-lives;
+#   еталони з params {lives: N} переносять число в параметр гравця).
+#
+# ── Сусідні зони: що варто зробити там (рішення не моє, лише сигнал) ────────
+#   pause-menu — в опис «гра справді стоїть: тіки й таймери»; напис «Пауза» без меню — теж вікно цього типу.
+#   shop-window — вбирає «список із цінами й описами» (shop-catalog).
+#   puzzle-select (interface/menus) = level-select «зі статусами» — влити в level-select.
+#   editor-window 🥈 + in-game-editor 🥈 = два срібла за один редактор: вікну лишити «окремий екран», монетку знизити
+#     до 📎, «палітру й інструменти» прибрати з опису (це діти in-game-editor).
+#   conflict-highlight (hud/highlights) — показ того, що рахує markup-validity; влити туди.
+#   code-editor-window — прибрати «крок» з опису (це step-execution).
+#   control-programmed бере 🥉 від command-program; time-programmed тоді без монетки, щоб не платити двічі.
+#   respawn — прибрати «checkpoint» з опису (це checkpoint); touch-death — причина смерті, player-death — поразка:
+#     у грі з одним життям обидві можуть стати на одне правило «гравець × ворог → поразка» (див. непевні, №4).
+#   spawn-schedule — «за подією» в описі перетинає reinforcements; лишити «кожні N тіків».
+#   game-settings — «складність, розмір поля» перетинає difficulty-levels і field-size-picker.
+#   move-limit (entities/legality) — це умова поразки: rule {when: counter, then: [lose]}, поруч із time-out.
+#   chain-detonation — єдина картка на «вибух підриває сусідні» (з chain-reaction це прибрано).
+#
+# ── Чого бракує секції «Рівні» (пропоную; рядки у форматі каталогу) ─────────
+#   levels/progression · difficulty-curve:     📎 Крива складності — Щонайменше 5 рівнів вручну: кожен додає новий елемент
+#                                              або ускладнює відомий; перший вчить без тексту.
+#   levels/progression · secret-level:         🌱 Секретний рівень — Відкривається особливою дією: прихований прохід,
+#                                              усі зірки, код.
+#   levels/bank        · level-par:            📎 Еталон рівня і зірки — У рівня ціль (ходів, часу), результат дає
+#                                              1–3 зірки, найкращий памʼятається.
+#   levels/format      · level-objects-format: 🥉 Рівень з обʼєктами й параметрами — У файлі не лише мапа символів, а й
+#                                              сутності з параметрами (маршрут патруля, таймер, вміст скрині); JSON/YAML.
+#   levels/format      · level-format-doc:     🌱 Формат рівня описано — Таблиця символів і полів у README: інший робить
+#                                              рівень без коду.
+#   levels/generation  · random-placement:     📎 Випадкова розстановка на готовій мапі — Предмети й вороги щоразу
+#                                              лягають інакше, з перевіркою (не на старті, не замуровані).
+#   levels/generation  · chunk-generation:     🥈 Рівень зі шматків — Генератор складає рівень із заготовлених вручну
+#                                              кімнат чи смуг (Spelunky, Crossy Road); стики прохідні.
+#   Покриття джерел рівня з §9: вручну — sequential-levels, difficulty-curve · з файла — level-from-txt ·
+#   згенерований — maze / dungeon / chunk-generation, random-placement · нескінченний — infinite-field.
+#
+# ── Де я найменш певен (обране → альтернатива) ─────────────────────────────
+#    1. game-pause: злити в pause-menu → лишити 🌱 kind=game для паузи без вікна (Snake «P»).
+#    2. check-stalemate: злити в checkmate → лишити окремо як rule на «пат → нічия», 🥉 замість 🥇.
+#    3. command-program: злити у fieldopt control-programmed → лишити game 🥉, а властивість поля зробити без монетки.
+#    4. player-death: rule «загинув → поразка» без слота → злити touch-death сюди (в простій грі одне правило несе обидві).
+#    5. neighbor-count-clue: rule з умовою «сусідів = N» → mechanic на сутності-підказці (так його заявляють еталони).
+#    6. realtime-ai: mechanic сутності-суперника → game, дитина сімʼї ai-opponent.
+#    7. restart-level: rule «ввід → рестарт», поза сімʼєю undo → лишити game у сімʼї (пункти меню ведуть на неї).
+#    8. checkpoint: rule «прапорець → активний» → level у прогресії (як save-точка рівня).
+#    9. sequential-levels: level «кілька рівнів» → rule на «ТО наступний рівень».
+#   10. mines-after-first-click: rule «перший клік → розкласти міни» → level у генерації.
+#   (ще коливався: round-currency rule ↔ game; skip-level rule ↔ level; level-exchange archive ↔ merge в in-game-editor;
+#    score-records reword ↔ merge у leaderboard.)
+#
+# ── Перевірка (скрипт check_review.py у скретчпаді сесії) ──────────────────
+#   YAML парситься без дублікатів ключів; 114 / 114 слагів обох зон, кожен рівно раз, у порядку каталогу;
+#   47 заготовок rule — лише ключі when / cond / then і лише `kind` зі словника (TRIGGERS / CONDITIONS / EFFECTS);
+#   цілі злиттів є в каталозі (крім нової fieldopt control-programmed); слоти — типи int / text / choice з options.
+
+# ── game-logic / constraints ────────────────────────────────────────────────
+markup-validity:
+  kind: rule
+  action: reword
+  rule: {when: {kind: input}, cond: [{kind: unique}], then: [{kind: paint}, {kind: message}]}
+  description: "Після кожного ходу гра шукає порушення в рядку, стовпці, регіоні й одразу позначає клітини-конфлікти; викладач ставить свідомо хибну цифру."
+  why: "перевірка живе на правилі «ЯКЩО не різні → ТО зафарбувати»; підсвітку conflict-highlight з HUD варто влити сюди"
+completion-detection:
+  kind: rule
+  action: merge
+  into: satisfy-constraints
+  coin: tin
+  rule: {when: {kind: all_constraints_met}, then: [{kind: win}]}
+  why: "те саме, що «Задовольнити всі обмеження»: обидві — «КОЛИ усі обмеження виконано → ТО перемога»"
+check-stalemate:
+  kind: rule
+  action: merge
+  into: checkmate
+  coin: gold
+  rule: {when: {kind: no_moves}, cond: [{kind: in_check}], then: [{kind: win}]}
+  why: "мат і пат — один алгоритм «нема легальних ходів ± шах»; два золота за нього — подвійна монетка"
+deadlock-detection:
+  kind: rule
+  action: reword
+  rule: {when: {kind: constraint_broken}, then: [{kind: message}]}
+  description: "Гра помічає ящик, який уже не дійде до цілі (кут, стіна без цілі, «замерзла» пара), і каже про це під час гри; слот — які види глухого кута ловить."
+  slots:
+  - {key: kinds, label: Які глухі кути ловить, type: text, required: true}
+  why: "алгоритм за правилом «глухий кут → повідомлення»; глибина виявлення і є суть золота — її видно в слоті"
+connectivity-check:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, cond: [{kind: connected}], then: [{kind: win}]}
+  why: "умова «усі звʼязні» — слово правила; BFS ціниться на правилі, яке його вживає"
+single-loop-check:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, cond: [{kind: single_loop}], then: [{kind: win}]}
+  why: "умова «одна петля» — слово правила; монетка за перевірку — на правилі"
+neighbor-count-clue:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, cond: [{kind: adjacent_count}], then: [{kind: mark}]}
+  why: "підрахунок сусідів — умова «сусідів … = N» у правилі відкриття клітини чи кроку Life"
+line-sum-clue:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, cond: [{kind: sum}], then: [{kind: set_state}]}
+  why: "умова «сума у ряду = N» — слово правила, як підказка серій у нонограмі"
+word-validation:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, cond: [{kind: legal}], then: [{kind: score}]}
+  why: "словник ціниться як перевірка «хід легальний» у правилі введення слова"
+rule-variants:
+  kind: game
+  action: keep
+  move_to: game-logic/difficulty
+  why: "набір перемикачів правил — можливість гри загалом (у правилах це умова «режим»); ближче до «Чіти і складність»"
+run-length-clues:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, cond: [{kind: run_lengths}], then: [{kind: set_state}]}
+  why: "умова «блоки за підказкою» — слово правила; так уже записано в еталоні paper-puzzles"
+
+# ── game-logic / difficulty ─────────────────────────────────────────────────
+difficulty-levels:
+  kind: game
+  action: reword
+  description: "Кілька наборів складності (Beginner / Expert): кожен міняє розмір поля, кількість мін чи ворогів, швидкість; вибір — вікно «Вибір складності»."
+  why: "набори параметрів — можливість гри; вікно difficulty-select лише показує вибір, тому не дубль"
+cheat-codes:
+  kind: game
+  action: keep
+  why: "чіти — можливість гри загалом, жодне правило її не каже"
+game-pause:
+  kind: window
+  action: merge
+  into: pause-menu
+  coin: tin
+  why: "пауза без вікна-паузи не буває (навіть напис «PAUSED» — вікно); дві монетки за одну паузу — дубль"
+skip-level:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, cond: [{kind: counter}], then: [{kind: next_level}, {kind: counter}]}
+  slots:
+  - {key: skips, label: Пропусків на гру, type: int, required: true}
+  why: "«ввід → наступний рівень, поки є пропуски» — правило; ліміт пропусків і є суть картки"
+
+# ── game-logic / economy ────────────────────────────────────────────────────
+round-currency:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, then: [{kind: currency}]}
+  why: "заробіток і витрата — ефект «± валюта» у правилах; монетка — на правилі, де валюта зʼявляється"
+shop-between-levels:
+  kind: game
+  action: keep
+  why: "магазин з апгрейдами — система гри поверх рівнів, одним правилом не скажеш"
+shop-catalog:
+  kind: window
+  action: merge
+  into: shop-window
+  coin: tin
+  why: "вітрина з цінами — це й є вікно магазину (shop-window: «Вітрина крамниці»)"
+shop-preview:
+  kind: element
+  action: keep
+  why: "превʼю покупки — елемент у вікні магазину"
+shop-sales:
+  kind: game
+  action: keep
+  why: "тимчасові ціни — можливість магазину, не одне правило"
+shop-buyback:
+  kind: game
+  action: keep
+  why: "продаж назад — можливість магазину"
+in-round-upgrades:
+  kind: rule
+  action: reword
+  rule: {when: {kind: picked}, then: [{kind: counter}]}
+  description: "Бонус до кінця раунду збільшує параметр гравця: радіус вибуху, кількість бомб, швидкість; щонайменше два види."
+  why: "«підібрав бонус → параметр +1» — правило; уточнення відділяє від простого збирання (item-pickup)"
+run-relics:
+  kind: game
+  action: keep
+  why: "пасивні предмети, що міняють багато правил до кінця забігу, — система гри"
+
+# ── game-logic / history ────────────────────────────────────────────────────
+undo-redo:
+  kind: game
+  action: keep
+  why: "історія станів — можливість гри; правило лише привʼязує її до клавіші"
+undo-step:
+  kind: game
+  action: keep
+  why: "варіант сімʼї undo"
+undo-unlimited:
+  kind: game
+  action: keep
+  why: "варіант сімʼї undo (стек станів)"
+redo:
+  kind: game
+  action: keep
+  why: "варіант сімʼї undo"
+rewind:
+  kind: game
+  action: keep
+  why: "варіант сімʼї undo, складніший за стек"
+restart-level:
+  kind: rule
+  action: keep
+  parent: ""
+  rule: {when: {kind: input}, then: [{kind: restart}]}
+  why: "«ввід → рестарт рівня» — рівно ефект словника, історії не треба; із сімʼї undo вийти, пункт меню й далі може вести до картки"
+move-notation:
+  kind: game
+  action: reword
+  description: "Ходи записуються в стандартній нотації (PGN, LURD) і копіюються чи експортуються у файл; перегляд записаного — картка «Replay»."
+  why: "«перегляд назад» уже є в replay / replay-window — лишаю тут лише запис і експорт"
+seed-share:
+  kind: level
+  action: keep
+  move_to: levels/generation
+  why: "seed — властивість згенерованого рівня; місце в секції «Рівні»"
+state-string:
+  kind: game
+  action: reword
+  description: "Поточну позицію можна скопіювати рядком (Sokoban RLE, 36 символів Rush Hour) і вставити назад — гра відновлюється; паролі рівнів — вікно «Вхід на рівень за паролем»."
+  why: "можливість гри; приклад «коди рівнів Bloxorz» дублював level-password — прибрано"
+
+# ── game-logic / lose ───────────────────────────────────────────────────────
+player-death:
+  kind: rule
+  action: reword
+  rule: {when: {kind: died}, then: [{kind: lose}]}
+  title: "Смерть гравця — поразка"
+  description: "Загибель гравця закінчує гру — одразу або коли скінчились життя (скільки — параметр «життя» гравця); що саме вбиває — картки «Смерть від дотику / від середовища»."
+  slots: []
+  why: "умова поразки — правило; слот «Життів» дублює параметр stat-lives, причину смерті рахує touch-death"
+time-out:
+  kind: rule
+  action: reword
+  rule: {when: {kind: counter}, then: [{kind: lose}]}
+  description: "Таймер рівня: час вийшов — поразка або мінус життя; час на один хід у партії — «Таймер ходу»."
+  why: "«час рівня = 0 → поразка» — правило; опис розводить з move-timer"
+enemy-reached-base:
+  kind: rule
+  action: keep
+  rule: {when: {kind: reach}, then: [{kind: lose}]}
+  why: "умова поразки — правило; монетка — на ньому"
+no-moves-left:
+  kind: rule
+  action: reword
+  rule: {when: {kind: no_moves}, then: [{kind: lose}]}
+  title: "Нема ходів — поразка"
+  description: "Гра сама помічає, що жоден хід нічого не змінить (2048: поле повне, рівних сусідів нема), і закінчує партію."
+  games: ["2048"]
+  why: "тригер «нема ходів» + поразка; Sokoban і «глухий кут» — це deadlock-detection, прибрано"
+wrong-mark-lose:
+  kind: rule
+  action: reword
+  rule: {when: {kind: constraint_broken}, then: [{kind: lose}]}
+  description: "Хибна цифра чи позначка (не збігається з розвʼязком) — поразка або мінус спроба; слот — скільки помилок можна."
+  slots:
+  - {key: mistakes, label: Помилок до поразки, type: int}
+  why: "«порушено обмеження → поразка» — правило; «like paper» плутало, ліміт помилок — суть"
+permadeath:
+  kind: game
+  action: reword
+  title: "Смерть стирає збереження"
+  description: "Загинув — забіг закінчено назавжди: сейв видаляється, переграти з нього не можна (роглайки, hardcore); юніт Fire Emblem не повертається в наступних боях."
+  why: "суть — збереження, що зникає, а не одне життя (це параметр «життя» = 1)"
+timeout-punisher:
+  kind: rule
+  action: keep
+  rule: {when: {kind: counter}, then: [{kind: spawn_at}]}
+  why: "«час вийшов → спавн карателів» — правило, так і записано в еталоні bomberman"
+
+# ── game-logic / opponent ───────────────────────────────────────────────────
+hot-seat:
+  kind: game
+  action: keep
+  why: "два гравці за однією клавіатурою — режим гри; вікно pass-device — окрема річ"
+turn-enforcement:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, cond: [{kind: turn_of}], then: [{kind: block}]}
+  why: "«не твій хід → блок» — правило з умовою «ходить сторона»"
+move-timer:
+  kind: rule
+  action: reword
+  rule: {when: {kind: turn_start}, then: [{kind: timer}]}
+  description: "Кожна сторона має свій час на хід (або на всю партію); годинник іде лише в того, хто ходить; скінчився — поразка цієї сторони."
+  why: "годинник — правило «початок ходу → таймер»; від time-out відрізняє сторона й скидання щоходу"
+ai-opponent:
+  kind: game
+  action: keep
+  why: "ШІ веде цілу сторону, не одну сутність, — можливість гри"
+ai-random:
+  kind: game
+  action: keep
+  why: "варіант сімʼї ШІ-суперника"
+ai-greedy:
+  kind: game
+  action: keep
+  why: "варіант сімʼї ШІ-суперника"
+ai-minimax:
+  kind: game
+  action: keep
+  why: "варіант сімʼї ШІ-суперника; слот глибини вже є"
+realtime-ai:
+  kind: mechanic
+  action: reword
+  description: "Сутність-суперник сама обирає напрям, щоб вижити довше за гравця (оцінка вільного простору, flood fill); як інші алгоритми руху — на сутності."
+  why: "ШІ однієї сутності в реальному часі — механіка сутності (§6), поруч із chase-bfs"
+pass-turn:
+  kind: rule
+  action: keep
+  rule: {when: {kind: no_moves}, then: [{kind: pass_turn}]}
+  why: "«нема ходів → пас» — правило з двох слів словника; базова дерев'яна монетка"
+repetition-draw:
+  kind: rule
+  action: keep
+  rule: {when: {kind: turn_end}, then: [{kind: draw}]}
+  why: "алгоритм повтору позиції стоїть за правилом «→ нічия»"
+garbage-attack:
+  kind: rule
+  action: keep
+  rule: {when: {kind: pattern}, then: [{kind: spawn_at}]}
+  why: "«ланцюг у мене → сміття в полі суперника» — правило"
+simultaneous-versus:
+  kind: game
+  action: keep
+  why: "два поля одночасно — режим гри"
+async-multiplayer:
+  kind: game
+  action: keep
+  why: "партія поштою — можливість гри"
+online-multiplayer:
+  kind: game
+  action: keep
+  why: "мережева партія — можливість гри"
+
+# ── game-logic / program ────────────────────────────────────────────────────
+command-program:
+  kind: fieldopt
+  action: merge
+  into: control-programmed
+  coin: bronze
+  why: "властивість поля «Керування: пишу програму команд» каже те саме; монетка — на ній"
+user-procedures:
+  kind: game
+  action: keep
+  why: "надбудова над програмою гравця — можливість гри"
+sensor-predicates:
+  kind: game
+  action: keep
+  why: "умови всередині програми гравця — можливість гри, не правило опису"
+step-execution:
+  kind: element
+  action: keep
+  why: "крок / пауза / підсвітка команди — елементи вікна «Редактор програми»"
+fsm-program:
+  kind: game
+  action: keep
+  why: "програма-автомат — можливість гри"
+
+# ── game-logic / save ───────────────────────────────────────────────────────
+save-game:
+  kind: game
+  action: keep
+  why: "збереження — можливість гри загалом"
+save-single-slot:
+  kind: game
+  action: keep
+  why: "варіант сімʼї збереження"
+save-multi-slot:
+  kind: game
+  action: keep
+  why: "варіант сімʼї збереження"
+save-autosave:
+  kind: game
+  action: keep
+  why: "варіант сімʼї збереження"
+save-progress:
+  kind: game
+  action: reword
+  description: "Рекорди, відкриті й пройдені рівні лишаються після перезапуску гри (файл); викладач закриває гру і відкриває знову."
+  why: "тут лише «між запусками»; що таке рекорд — score-records, таблиця — leaderboard"
+
+# ── game-logic / score ──────────────────────────────────────────────────────
+event-points:
+  kind: rule
+  action: keep
+  rule: {when: {kind: contact}, then: [{kind: score}]}
+  why: "очки за подію — ефект «± очки» у правилі; базова монетка"
+combo-multiplier:
+  kind: rule
+  action: reword
+  rule: {when: {kind: contact}, then: [{kind: score}, {kind: multiplier}]}
+  description: "Серія без перерви множить очки: Mr. Do! (вишні поспіль), Pac-Man (200 → 400 → 800 → 1600 за один енерджайзер)."
+  games: [pac-man]
+  why: "ефект «множник очок» у правилі; вбирає escalating-kill-points"
+time-bonus:
+  kind: rule
+  action: keep
+  rule: {when: {kind: level_end}, cond: [{kind: timer}], then: [{kind: score}]}
+  why: "«кінець рівня, лишився час → очки» — правило"
+score-records:
+  kind: game
+  action: reword
+  title: "Рекорд"
+  description: "Гра памʼятає найкращий результат (очки, час, ходи), показує його поруч із поточним і каже, коли побито; таблиця з іменами — вікно «Таблиця рекордів»."
+  why: "«локальна таблиця» дублювала leaderboard; лишаю саму логіку рекорду, збереження між запусками — save-progress"
+chain-reaction:
+  kind: rule
+  action: reword
+  rule: {when: {kind: settled}, cond: [{kind: chain}], then: [{kind: clear}, {kind: multiplier}]}
+  description: "Після осідання поля нові збіги зникають самі (каскад, ланцюг Puyo); кожен крок каскаду множить очки; слот — множник."
+  why: "каскад — правило «поле осіло → очистити»; «детонації сусідніх» — це chain-detonation, прибрано"
+extra-life-threshold:
+  kind: rule
+  action: keep
+  rule: {when: {kind: counter}, then: [{kind: lives}]}
+  why: "«очки ≥ N → життя +1» — правило; слот уже є"
+leftover-penalty:
+  kind: rule
+  action: keep
+  rule: {when: {kind: level_end}, then: [{kind: score}]}
+  why: "«кінець → мінус за залишок» — правило"
+escalating-kill-points:
+  kind: rule
+  action: merge
+  into: combo-multiplier
+  coin: tin
+  rule: {when: {kind: contact}, then: [{kind: score}, {kind: multiplier}]}
+  why: "подвоєння очок у серії — той самий множник за неперервність (у еталоні pac-man — ефект «множник»)"
+
+# ── game-logic / waves ──────────────────────────────────────────────────────
+enemy-waves:
+  kind: rule
+  action: keep
+  rule: {when: {kind: wave_start}, then: [{kind: spawn_at}]}
+  why: "старт хвилі — тригер словника; монетка на правилі хвилі, слоти вже є"
+reinforcements:
+  kind: rule
+  action: keep
+  rule: {when: {kind: destroyed}, then: [{kind: spawn}]}
+  why: "«знищено ворога → новий» — правило"
+progress-acceleration:
+  kind: rule
+  action: keep
+  rule: {when: {kind: counter}, then: [{kind: speed}]}
+  why: "«довжина / рівень досяг N → швидкість» — правило"
+
+# ── game-logic / win ────────────────────────────────────────────────────────
+collect-all:
+  kind: rule
+  action: keep
+  rule: {when: {kind: all_gone}, then: [{kind: win}]}
+  why: "умова перемоги — правило; монетка на правилі"
+collect-quota:
+  kind: rule
+  action: keep
+  rule: {when: {kind: counter}, then: [{kind: set_state}]}
+  why: "«зібрано N → вихід відкрився» — правило; слот квоти вже є"
+reach-exit:
+  kind: rule
+  action: keep
+  rule: {when: {kind: enter}, then: [{kind: win}]}
+  why: "умова перемоги — правило"
+destroy-all-enemies:
+  kind: rule
+  action: keep
+  rule: {when: {kind: all_gone}, then: [{kind: win}]}
+  why: "умова перемоги — це правило; монетка — на правилі"
+all-on-targets:
+  kind: rule
+  action: keep
+  rule: {when: {kind: all_on}, then: [{kind: win}]}
+  why: "умова перемоги — правило з тригером «усі А на Б»"
+satisfy-constraints:
+  kind: rule
+  action: reword
+  rule: {when: {kind: all_constraints_met}, then: [{kind: win}]}
+  title: "Пазл розвʼязано"
+  description: "Гра сама помічає, що всі обмеження виконано (чи всі безпечні клітини відкрито), і оголошує перемогу — без кнопки «Перевірити»."
+  games: [paper-puzzles, minesweeper]
+  why: "умова перемоги пазла; вбирає completion-detection (у сапері — «закритих безпечних = 0»)"
+checkmate:
+  kind: rule
+  action: reword
+  rule: {when: {kind: no_moves}, cond: [{kind: in_check}], then: [{kind: win}]}
+  title: "Мат і пат"
+  description: "Нема легальних ходів: король під шахом — мат і перемога, не під шахом — пат і нічия; викладач перевіряє на кількох позиціях."
+  why: "алгоритм за правилом «мат → перемога»; вбирає check-stalemate"
+home-slots:
+  kind: rule
+  action: keep
+  rule: {when: {kind: enter}, cond: [{kind: state}], then: [{kind: set_state}]}
+  why: "«став на порожню домівку → зайнята», а на зайняту — смерть: правила зі станом"
+keep-playing-after-win:
+  kind: rule
+  action: keep
+  rule: {when: {kind: spawned}, cond: [{kind: first_time}], then: [{kind: window}]}
+  why: "мʼяка перемога — правило «вперше → вікно» без ефекту «перемога»"
+
+# ── levels / bank ───────────────────────────────────────────────────────────
+level-bank:
+  kind: level
+  action: reword
+  description: "Десятки рівнів (свої чи імпортовані колекції), у кожного статус «розвʼязано / ні» і найкращий результат; статус оновлюється одразу після розвʼязання."
+  why: "банк — вміст і облік рівнів; вікно зі списком — level-select, збереження між запусками — save-progress"
+daily-puzzle:
+  kind: level
+  action: keep
+  why: "рівень дня — про рівні"
+level-rating:
+  kind: level
+  action: reword
+  description: "Рівні банку мають оцінку складності (зірки, «легкий / важкий») і сортуються та фільтруються за нею; обчислити оцінку — картка «Оцінка складності згенерованого»."
+  why: "розводить із difficulty-rating: тут показ і сортування, там обчислення"
+
+# ── levels / editor ─────────────────────────────────────────────────────────
+in-game-editor:
+  kind: level
+  action: keep
+  why: "редактор — про рівні; вікно editor-window теж 🥈 і має «палітру й інструменти» — там лишити лише екран і знизити монетку"
+editor-palette:
+  kind: level
+  action: keep
+  why: "функція редактора рівнів"
+editor-draw-tools:
+  kind: level
+  action: keep
+  why: "функція редактора рівнів"
+editor-erase:
+  kind: level
+  action: keep
+  why: "функція редактора рівнів"
+editor-undo:
+  kind: level
+  action: keep
+  why: "undo дій редактора — окремий від undo ходів гри стек"
+editor-playtest:
+  kind: level
+  action: keep
+  why: "функція редактора рівнів"
+editor-map-check:
+  kind: level
+  action: merge
+  into: map-validation
+  coin: tin
+  why: "той самий валідатор, що й на завантаженні файла; «непрохідне» (BFS) — це reachability-check"
+level-exchange:
+  kind: level
+  action: archive
+  why: "нема що оцінити окремо: експорт — збереження редактора, імпорт — рівні з файлів"
+
+# ── levels / format ─────────────────────────────────────────────────────────
+level-from-txt:
+  kind: level
+  action: reword
+  title: "Рівні з файлів"
+  description: "Рівні лежать окремими файлами (символьна мапа txt, JSON), гра читає їх парсером; новий рівень — новий файл, без зміни коду."
+  why: "не лише txt; головне, що викладач перевіряє, — рівень додається без коду"
+import-open-formats:
+  kind: level
+  action: keep
+  why: "формат рівнів"
+map-validation:
+  kind: level
+  action: reword
+  title: "Перевірка мапи"
+  description: "Один валідатор на завантаженні файла й на збереженні в редакторі: зрозуміла помилка («рядок 3: невідомий символ», «ящиків 4, цілей 3»), бита мапа не грається і не зберігається."
+  why: "вбирає editor-map-check: перевірка та сама, місць дві"
+level-metadata:
+  kind: level
+  action: keep
+  why: "формат рівня"
+
+# ── levels / generation ─────────────────────────────────────────────────────
+maze-generation:
+  kind: level
+  action: keep
+  why: "генерація рівня; слот алгоритму вже є"
+mines-after-first-click:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, cond: [{kind: first_time}], then: [{kind: spawn_at}]}
+  why: "у еталоні minesweeper це рівно правило «перший клік → розкласти міни повз нього»"
+dungeon-generation:
+  kind: level
+  action: keep
+  slots:
+  - {key: algo, label: Алгоритм, type: choice, options: [rooms, bsp, cellular, drunkard], required: true}
+  why: "генерація рівня; алгоритм (кімнати, BSP, печери автоматом) — суть золота"
+unique-puzzle-generation:
+  kind: level
+  action: keep
+  why: "генерація рівня"
+infinite-field:
+  kind: level
+  action: keep
+  why: "генерація на льоту — рівень «нескінченний» у секції «Рівні»"
+difficulty-rating:
+  kind: level
+  action: keep
+  why: "оцінка згенерованого рівня"
+no-guess-generation:
+  kind: level
+  action: reword
+  description: "Розкладка мін, яку можна розвʼязати лише логікою (Hexcells, Kaboom, Tatham Mines): генератор перевіряє розкладку розвʼязувачем."
+  games: [minesweeper]
+  why: "для паперових пазлів «без вгадування» вже дає unique-puzzle-generation 👑 — прибрав подвійну монетку"
+
+# ── levels / progression ────────────────────────────────────────────────────
+sequential-levels:
+  kind: level
+  action: reword
+  title: "Кілька рівнів по черзі"
+  description: "Щонайменше два різні рівні, зроблені вручну, ідуть один за одним; перехід — правило «ТО наступний рівень»."
+  why: "монетка — за самі рівні в секції «Рівні»; перехід — слово правила і окремо не платиться"
+level-unlock:
+  kind: level
+  action: keep
+  why: "прогресія рівнів"
+level-select:
+  kind: window
+  action: keep
+  move_to: interface/menus
+  why: "це тип вікна (#window): переїжджає до решти типів вікон; puzzle-select звідти — влити сюди"
+checkpoint:
+  kind: rule
+  action: reword
+  rule: {when: {kind: enter}, then: [{kind: set_state}]}
+  description: "Дійшов до прапорця — після смерті продовжує з нього, а не з початку рівня."
+  why: "«став на прапорець → він активний» + відродження там — правила; з опису respawn варто прибрати «checkpoint»"
+world-map:
+  kind: level
+  action: reword
+  description: "Рівні складаються в граф (світи, гілки): пройдений відкриває сусідні, порядок можна обирати; показують його у вікні вибору рівня чи карти."
+  why: "суть — нелінійна прогресія; сам екран — вікно (level-select / map-window)"
+stairs-levels:
+  kind: level
+  action: keep
+  why: "звʼязок поверхів і памʼять рівня — про рівні; сам перехід сходами — правило без монетки"
+
+# ── levels / solvability ────────────────────────────────────────────────────
+reachability-check:
+  kind: level
+  action: keep
+  why: "перевірка рівня, а не подія гри"
+level-solver:
+  kind: level
+  action: keep
+  slots:
+  - {key: algo, label: Алгоритм, type: choice, options: [bfs, astar, backtracking, propagation], required: true}
+  why: "розвʼязувач рівня; алгоритм — суть золота"
+unsolvable-states:
+  kind: rule
+  action: merge
+  into: deadlock-detection
+  coin: gold
+  rule: {when: {kind: constraint_broken}, then: [{kind: message}]}
+  why: "«deadlock під час гри» — дослівно deadlock-detection"

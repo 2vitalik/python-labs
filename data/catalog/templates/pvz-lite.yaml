@@ -2,16 +2,18 @@ field:
   size: "5×9"
   topology: square
   view: top-down
-  gravity: none
-  time: realtime
-  control: click-cell
+  time: [realtime]
+  control: [click-cell]
   layers: [газон, рослини, зомбі і снаряди]
 entities:
   - title: Сонце
     role: resource
     description: "Падає з неба й від соняшника; клік — +25 сонць, не зібране зникає"
     stats: [{key: value, label: сонць, value: "25"}, {key: duration, value: "80"}]
-    claims: [{slug: timed-despawn, params: {lifetime: 80}}]
+  - title: Панель насінин
+    role: supply
+    description: "Насінини рослин угорі екрана з ціною: обрав насінину, клікнув по вільній клітині — посадив; після посадки насінина якийсь час відкочується. У класиці перед рівнем обирають 6 насінин (слотів до 10)"
+    stats: [{key: capacity, value: "6"}]
   - title: Соняшник
     role: ally
     description: "Виробник: раз на ~24 с кладе поруч сонце"
@@ -20,7 +22,7 @@ entities:
     role: ally
     description: "Стріляє горошиною вперед по своєму ряду, коли там є зомбі"
     stats: [{key: cost, label: ціна, value: "100", unit: сонць}, {key: hp, value: "6"}, {key: cooldown, value: "14"}]
-    claims: [tower-placement, shoot-forward, {slug: shoot-cooldown, params: {cooldown: 14}}, {slug: tower-range, params: {shape: line}}]
+    claims: [{slug: coverage-area, params: {shape: line}}]
   - title: Горіх
     role: ally
     description: "Стіна з великим HP: зомбі довго його гризуть, поки стрільці бʼють"
@@ -29,13 +31,11 @@ entities:
     role: projectile
     description: "Летить праворуч своїм рядом, бʼє першого зомбі"
     stats: [{key: damage, value: "1"}, {key: speed, value: "0.3"}]
-    claims: [projectile-shot]
   - title: Зомбі
     role: enemy
     description: "Іде справа наліво своїм рядом; натрапив на рослину — зупиняється й гризе"
     stats: [{key: hp, value: "10"}, {key: damage, value: "1"}, {key: speed, value: "0.02"}]
     states: [іде, їсть]
-    claims: [{slug: hp-damage, params: {hp: 10, who: "зомбі й рослини"}}]
   - title: Газонокосарка
     role: object
     description: "Одна на ряд, ліворуч від газону; разово вичищає свій ряд від зомбі"
@@ -50,18 +50,21 @@ rules:
     note: "у кожного соняшника свій відлік"
   - when: {kind: input, action: "клік по сонцю", a: Сонце}
     then: [{kind: currency, n: 25}, {kind: disappear, a: "@a"}]
+    claims: [round-currency]
   - when: {kind: input, action: "посадити соняшник"}
     cond: [{kind: free, cell: target}, {kind: counter, name: "запас сонця", op: ">=", n: 50}]
-    then: [{kind: spawn, entity: Соняшник, cell: target}, {kind: currency, n: -50}]
+    then: [{kind: place, a: Панель насінин, entity: Соняшник}, {kind: currency, n: -50}]
   - when: {kind: input, action: "посадити горохострел"}
     cond: [{kind: free, cell: target}, {kind: counter, name: "запас сонця", op: ">=", n: 100}]
-    then: [{kind: spawn, entity: Горохострел, cell: target}, {kind: currency, n: -100}]
+    then: [{kind: place, a: Панель насінин, entity: Горохострел}, {kind: currency, n: -100}]
+    claims: [cursor-place]
   - when: {kind: input, action: "посадити горіх"}
     cond: [{kind: free, cell: target}, {kind: counter, name: "запас сонця", op: ">=", n: 50}]
-    then: [{kind: spawn, entity: Горіх, cell: target}, {kind: currency, n: -50}]
+    then: [{kind: place, a: Панель насінин, entity: Горіх}, {kind: currency, n: -50}]
   - when: {kind: line_of_sight, a: Горохострел, b: Зомбі}
     then: [{kind: spawn, entity: Горошина, cell: ahead}]
     note: "не частіше за перезарядку"
+    claims: [projectile-shot, line-of-sight-attack]
   - when: {kind: tick}
     then: [{kind: move, a: Горошина, dir: right}]
   - when: {kind: contact, a: Горошина, b: Зомбі}
@@ -82,16 +85,19 @@ rules:
   - when: {kind: contact, a: Зомбі, b: Газонокосарка}
     cond: [{kind: state, a: "@b", s: їде, not: true}]
     then: [{kind: set_state, a: "@b", s: їде}, {kind: slide, a: "@b", dir: right}]
+    claims: [last-line-defense]
   - when: {kind: contact, a: Газонокосарка, b: Зомбі}
     cond: [{kind: state, a: "@a", s: їде}]
     then: [{kind: disappear, a: "@b"}]
   - when: {kind: edge, a: Газонокосарка}
     then: [{kind: disappear, a: "@a"}]
-  - when: {kind: edge, a: Зомбі}
+  - when: {kind: reach, a: Зомбі, where: будинок}
     then: [{kind: lose}, {kind: window, window: Кінець гри}]
     note: "зомбі пройшов ряд, де вже нема косарки"
+    claims: [enemy-reached-base]
   - when: {kind: wave_start}
     then: [{kind: spawn_at, entity: Зомбі, where: "правий край, випадковий ряд"}, {kind: counter, name: хвиля, n: 1}]
+    claims: [{slug: enemy-waves, params: {waves: 5, final_wave: true}}]
   - when: {kind: wave_cleared}
     cond: [{kind: counter, name: хвиля, op: ">=", n: 5}]
     then: [{kind: win}, {kind: window, window: Кінець гри}]
@@ -105,12 +111,11 @@ windows:
   - title: Гра
     task: game-screen
     description: "Газон 5×9, угорі — запас сонця й картки рослин із ціною, внизу — прогрес хвиль"
-    claims: [status-panel, cell-click, goal-counter]
+    claims: [status-panel, goal-counter]
     items:
       - {title: Меню, window: Пауза}
   - title: Пауза
     task: pause-menu
-    claims: [game-pause]
     items:
       - {title: Продовжити, window: Гра}
       - {title: Почати рівень заново, task: restart-level}
@@ -121,4 +126,19 @@ windows:
     items:
       - {title: Ще раз, window: Гра}
       - {title: Головне меню, window: Головне меню}
-claims: [round-currency, {slug: enemy-waves, params: {waves: 5, final_wave: true}}, enemy-reached-base]
+levels:
+  - title: "День: 1-1 … 1-10"
+    mode: hand
+    count: "10"
+    description: "Пригода починається вдень: сонце падає з неба; кожен рівень — свій сценарій хвиль із прапорцями великих наступів і нова рослина в нагороду. перші рівні — на 1 і 3 ряди дерну (?); 1-5 — міні-гра, 1-10 — конвеєр насінин замість сонця"
+    claims: [sequential-levels]
+  - title: Басейн і туман
+    mode: hand
+    count: "20"
+    size: "6×9"
+    description: "Задній двір: шість рядів, два середні — вода, там садять лише латаття чи водні рослини; у тумані праві колонки закриті"
+  - title: Ніч і дах
+    mode: hand
+    count: "20"
+    description: "Ніч: сонця з неба нема, у фінальній хвилі зомбі лізуть з надгробків. Дах: похилий — прямі стрільці бʼють у схил, садити лише в горщик; останній рівень — бос Dr. Zomboss"
+claims: [game-pause]

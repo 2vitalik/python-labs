@@ -17,16 +17,16 @@ field:
   size: "26×26"
   topology: square
   view: top-down
-  gravity: none
-  time: realtime
-  control: direct
+  time: [realtime]
+  control: [direct]
   layers: [підлога, стіни, танки й кулі, ліс, туман]
   description: "Рівні з текстових файлів; камера їде за танком, туман відкривається в радіусі 6 клітин"
   claims:
     - {slug: gui-render, note: "pygame, спрайти 16×16", link: "https://github.com/demo-pzpi-25-0/steel-swarm/blob/main/ui/render.py", status: accepted}
     - field-scaling
     - {slug: player-camera, status: accepted, verdict: "Плавно, без ривків на краях — добре"}
-    - {slug: minimap-radar, status: returned, verdict: "На мінікарті нема порталів — без них не видно, звідки чекати ворогів"}
+    - floor-types
+    - fog-of-war
   shots:
     - |
       ####################
@@ -42,37 +42,29 @@ field:
       #.......=B=........#
       ####################
 entities:
-  - title: Танк гравця   # еталонна сутність: тут лише вердикти на її картках
-    claims:
-      - {slug: move-4dir, status: accepted}
-      - {slug: projectile-shot, status: accepted, verdict: "Куля летить окремою сутністю — як треба"}
-      - {slug: temporary-modes, status: returned, verdict: "Щит не знімається, коли таймер вийшов"}
   - title: Другий гравець
     role: ally
     description: "Кооператив на одній клавіатурі: WASD + пробіл; життя спільні"
-    stats: [{key: lives, value: "спільні"}, {key: speed, value: "1", unit: "кл/тік"}]
+    stats: [{key: lives, value: "спільні"}, {key: speed, value: "1"}]
     states: [звичайний, зі щитом]
-    claims: [move-4dir, projectile-shot, {slug: respawn, params: {delay: 30}}]
   - title: Маус
     role: boss
+    icon: "🐭"
     description: "Танк 2×2 наприкінці світу: спить, доки гравець далеко; на половині HP лютує і стріляє чергами"
     stats:
       - {key: hp, value: "20"}
       - {key: armor, value: "3"}
-      - {key: speed, value: "0.5", unit: "кл/тік"}
+      - {key: speed, value: "0.5"}
       - {key: damage, value: "2"}
-      - {key: range, value: "8", unit: "кл"}
-      - {key: cooldown, value: "25", unit: "тіків"}
+      - {key: range, value: "8"}
+      - {key: cooldown, value: "25"}
       - {key: value, value: "5000"}
-      - {key: size, value: "2×2", unit: "кл"}
+      - {key: size, value: "2×2"}
       - {key: фази бою, value: "3"}
     states: [спить, атакує, розлючений, оглушений]
     claims:
-      - {slug: chase-bfs, note: "BFS по сітці з урахуванням розміру 2×2", link: "https://github.com/demo-pzpi-25-0/steel-swarm/blob/main/ai/bfs.py#L10-L64", status: accepted, verdict: "Чистий BFS, шлях перераховується раз на 5 тіків — ок"}
       - {slug: multi-cell-size, link: "https://github.com/demo-pzpi-25-0/steel-swarm/blob/main/entities/boss.py", status: returned, verdict: "Бос проїжджає крізь цеглу лівим нижнім кутом — колізія рахується по одній клітині"}
-      - {slug: shoot-burst, params: {shots: 3}}
-      - {slug: hp-damage, params: {hp: 20, who: бос}, status: accepted}
-      - {slug: death-animation, note: "вибух у 6 кадрів"}
+      - telegraphed-intents
     shots:
       - |
         ........
@@ -84,108 +76,186 @@ entities:
   - title: Портал ворогів
     role: spawner
     description: "Три портали вгорі поля; новий ворог виходить з випадкового"
-    stats: [{key: count, value: "3"}, {key: cooldown, value: "40", unit: "тіків"}]
+    stats: [{key: count, value: "3"}, {key: cooldown, value: "40"}]
     states: [активний, заглушений]
-    claims: [spawn-points, spawn-animation, spawn-schedule]   # spawn-schedule без параметрів — ⚙️?
   - title: Лід
     role: terrain
+    icon: "🧊"
     description: "Танк ковзає далі, доки лід не скінчиться"
-    claims: [inertia-slide, floor-types]
   - title: Вода
     role: hazard
+    icon: "🌊"
     description: "Танк тоне, куля пролітає"
-    claims: [environment-death]
   - title: Ліс
     role: terrain
+    icon: "🌲"
     description: "Ховає танки й кулі — окремий шар над ними"
   - title: Міна
     role: hazard
+    icon: "💣"
     description: "Вороги її не бачать; вибухає під будь-ким"
-    stats: [{key: damage, value: "2"}, {key: range, value: "2", unit: "кл"}, {key: count, value: "до 5"}]
+    stats: [{key: damage, value: "2"}, {key: range, value: "2"}, {key: count, value: "до 5"}]
     states: [зведена, вибухнула]
-    claims: [{slug: blast-wave, params: {radius: 2}}, {slug: chain-detonation, params: {delay: 3}}]
   - title: Ворота
     role: gate
     states: [зачинені, відчинені]
-    claims: [key-and-door]
   - title: Кнопка воріт
     role: switch
     description: "Наїхав — ворота відчинені на 100 тіків"
-    claims: [cell-transform]
   - title: Ящик зі зброєю
     role: container
+    icon: "📦"
     description: "Розбий кулею — з половини випадає ремкомплект"
     stats: [{key: hp, value: "2"}]
-    claims: [{slug: hp-damage, params: {hp: 2, who: ящик}}]
   - title: Монета
     role: resource
-    stats: [{key: value, value: "10"}, {key: duration, value: "150", unit: "тіків"}]
-    claims: [item-pickup, {slug: timed-despawn, params: {lifetime: 150}}]
+    stats: [{key: value, value: "10"}, {key: duration, value: "150"}]
   - title: Ремкомплект
     role: pickup
+    icon: "🔧"
     stats: [{key: лікує, value: "+1 життя"}]
-    claims: [item-pickup]
   - title: Ракета
     role: projectile
+    icon: "🚀"
     description: "Самонавідна, купується в магазині; повертає не частіше ніж раз на 3 тіки"
-    stats: [{key: speed, value: "2", unit: "кл/тік"}, {key: damage, value: "4"}, {key: ammo, value: "3"}]
-    claims: [chase-greedy, projectile-collision]
+    stats: [{key: speed, value: "2"}, {key: damage, value: "4"}, {key: ammo, value: "3"}]
   - title: Вантажівка
     role: neutral
+    icon: "🚚"
     description: "Цивільна, їде своїм маршрутом; підбив — штраф"
     stats: [{key: value, value: "−300"}]
-    claims: [{slug: pattern-automaton, params: {pattern: "→→↓↓←←↑↑"}}]
 rules:
+  # еталонні правила слово в слово: зливаються з еталонними, а вердикти лягають на їхні картки
+  - when: {kind: input, action: "↑", a: Танк гравця}
+    then: [{kind: face, a: "@a", dir: up}, {kind: move, a: "@a", dir: up}]
+    claims: [{slug: move-4dir, status: accepted}]
+  - when: {kind: input, action: постріл, a: Танк гравця}
+    then: [{kind: spawn, entity: Куля, cell: ahead}]
+    claims: [{slug: projectile-shot, status: accepted, verdict: "Куля летить окремою сутністю — як треба"}]
+  - when: {kind: contact, a: Танк гравця, b: Шолом}
+    then: [{kind: disappear, a: "@b"}, {kind: set_state, a: "@a", s: зі щитом, dur: 200}, {kind: score, n: 500}]
+    claims: [{slug: temporary-modes, status: returned, verdict: "Щит не знімається, коли таймер вийшов"}]
+  - when: {kind: contact, a: Куля, b: База}
+    then: [{kind: disappear, a: "@a"}, {kind: set_state, a: "@b", s: зруйнована}, {kind: lose}, {kind: window, window: Підсумок}]
+    claims: [{slug: enemy-reached-base, status: accepted, verdict: "Поразка і від кулі, і від тарану — добре"}]
+  - when: {kind: all_gone, a: Ворожий танк}
+    cond: [{kind: counter, name: ворогів у запасі, op: "==", n: 0}]
+    then: [{kind: window, window: Підсумок}, {kind: next_level}]
+    claims: [{slug: destroy-all-enemies, status: accepted}]
+  - when: {kind: counter, name: життя, op: "==", n: 0}
+    then: [{kind: lose}, {kind: window, window: Підсумок}]
+    claims: [{slug: player-death, status: accepted}]
+  # свої
+  - when: {kind: contact, a: Ворожий танк, b: База}
+    then: [{kind: set_state, a: "@b", s: зруйнована}, {kind: lose}, {kind: window, window: Підсумок}]
+    note: "таран — так само, як куля в базу"
   - when: {kind: enter, a: Танк гравця, b: Лід}
     then: [{kind: slide, a: "@a", dir: forward}]
     note: "до кінця льоду або до перешкоди; стріляти під час ковзання можна"
+    claims: [inertia-slide]
   - when: {kind: enter, a: "*", b: Ліс}
     then: [{kind: hide, cell: target}]
     note: "ліс малюється поверх танка — окремий шар"
   - when: {kind: contact, a: Танк гравця, b: Вода}
     then: [{kind: lives, n: -1}, {kind: respawn, a: "@a", where: "біля бази"}]
+    claims: [environment-death]
   - when: {kind: contact, a: "*", b: Міна}
     cond: [{kind: state, a: "@b", s: зведена}]
     then: [{kind: set_state, a: "@b", s: вибухнула}, {kind: explode, shape: radius, n: 2}, {kind: damage, a: "@a", n: 2}, {kind: sound, text: бабах}]
+    claims: [{slug: blast-wave, params: {shape: radius}}]
+  - when: {kind: in_range, a: Міна, b: Міна, n: 2}
+    cond: [{kind: state, a: "@a", s: вибухнула}, {kind: state, a: "@b", s: зведена}]
+    then: [{kind: set_state, a: "@b", s: вибухнула}, {kind: explode, shape: radius, n: 2}]
+    note: "сусідня міна в радіусі вибуху детонує через 3 тіки — ланцюгом"
+    claims: [{slug: chain-detonation, params: {delay: 3}}]
   - when: {kind: enter, a: "*", b: Кнопка воріт}
     then: [{kind: set_state, a: Ворота, s: відчинені, dur: 100}, {kind: sound, text: клац}]
+    claims: [cell-transform]
   - when: {kind: state_off, a: Ворота, s: відчинені}
     then: [{kind: set_state, a: Ворота, s: зачинені}]
   - when: {kind: contact, a: "*", b: Ворота}
     cond: [{kind: state, a: "@b", s: відчинені, not: true}]
     then: [{kind: block}]
+    claims: [key-and-door]
   - when: {kind: destroyed, a: Ящик зі зброєю}
     cond: [{kind: prob, p: 50}]
     then: [{kind: spawn, entity: Ремкомплект, cell: target}]
     note: "інакше — монета"
   - when: {kind: picked, a: Танк гравця, b: Монета}
     then: [{kind: currency, n: 10}, {kind: disappear, a: "@b"}]
+    claims: [{slug: round-currency, status: accepted}]
   - when: {kind: picked, a: "*", b: Ремкомплект}
     cond: [{kind: counter, name: життя, op: "<", n: 5}]
     then: [{kind: lives, n: 1}, {kind: disappear, a: "@b"}]
+    claims: [item-pickup]
+  - when: {kind: input, action: Купити}
+    cond: [{kind: counter, name: валюта, op: ">=", n: 100}]
+    then: [{kind: currency, n: -100}, {kind: counter, name: рівень покращення, n: 1}]
+    note: "пункт «Купити» в Магазині; ціна росте з рівнем покращення"
+    claims: [{slug: in-round-upgrades, note: "швидкість, броня, скорострільність — по 3 рівні"}]
+  - when: {kind: level_start}
+    then: [{kind: spawn_at, entity: Портал ворогів, where: "три точки вгорі поля"}]
+    note: "новий ворог виходить з випадкового активного порталу"
+    claims: [spawn-points]
   - when: {kind: in_range, a: Маус, b: Танк гравця, n: 6}
     cond: [{kind: state, a: "@a", s: спить}]
     then: [{kind: set_state, a: "@a", s: атакує}, {kind: sound, text: рев двигуна}, {kind: message, text: "Маус прокинувся!"}]
+    claims: [sound-effects]
+  - when: {kind: tick}
+    cond: [{kind: state, a: Маус, s: атакує}]
+    then: [{kind: move, a: Маус, dir: toward}]
+    note: "до танка гравця найкоротшим шляхом; розлючений — так само, лише на 150 %"
+    claims:
+      - {slug: chase-bfs, params: {algo: bfs}, note: "BFS по сітці з урахуванням розміру 2×2", link: "https://github.com/demo-pzpi-25-0/steel-swarm/blob/main/ai/bfs.py#L10-L64", status: accepted, verdict: "Чистий BFS, шлях перераховується раз на 5 тіків — ок"}
+  - when: {kind: line_of_sight, a: Маус, b: Танк гравця}
+    cond: [{kind: state, a: "@a", s: розлючений}]
+    then: [{kind: face, a: "@a", dir: toward}, {kind: spawn, entity: Куля, cell: ahead}]
+    note: "черга з 3 куль, далі перезарядка 25 тіків"
+    claims: [{slug: shoot-burst, params: {shots: 3}}]
   - when: {kind: counter, name: HP Мауса, op: "<=", n: 10}
     cond: [{kind: first_time}]
     then: [{kind: set_state, a: Маус, s: розлючений}, {kind: speed, a: Маус, n: 150}]
   - when: {kind: hp_zero, a: Маус}
     then: [{kind: disappear, a: "@a"}, {kind: score, n: 5000}, {kind: spawn, entity: Монета, cell: neighbors}, {kind: window, window: Магазин}]
+  - when: {kind: reach, a: Танк гравця, where: "прапорець перед ареною Мауса"}
+    then: [{kind: message, text: "Чекпойнт!"}, {kind: custom, text: "після загибелі танк зʼявляється тут, а не біля бази"}]
+    claims: [checkpoint]
   - when: {kind: wave_cleared}
     cond: [{kind: level, op: "<", n: 12}]
     then: [{kind: window, window: Магазин}]
   - when: {kind: wave_cleared}
     cond: [{kind: level, op: "==", n: 12}]
-    then: [{kind: win}]
+    then: [{kind: win}, {kind: window, window: Підсумок}]
   - when: {kind: wave_start}
     then: [{kind: message, text: "Хвиля!"}, {kind: timer, clock: start}]
+    claims: [{slug: enemy-waves, params: {waves: 12, final_wave: true}, status: accepted}]
+  - when: {kind: destroyed, a: Ворожий танк}
+    cond: [{kind: counter, name: серія, op: ">=", n: 3}]
+    then: [{kind: multiplier, k: 2}, {kind: message, text: "Серія ×2!"}]
+    note: "серія — вороги, знищені з перервою до 3 с; перерва скидає множник"
+    claims: [combo-multiplier]
+  - when: {kind: level_end}
+    cond: [{kind: timer, op: ">", n: 60}]
+    then: [{kind: score, n: 1000}]
+    note: "рівень пройдено, а таймер хвилі ще не вичерпав останню хвилину"
+    claims: [time-bonus]
   - when: {kind: rng, p: 1}
     cond: [{kind: count, what: Вантажівка, op: "==", n: 0}]
     then: [{kind: spawn_at, entity: Вантажівка, where: "лівий край"}]
+  - when: {kind: tick}
+    then: [{kind: move, a: Вантажівка, dir: forward}]
+    note: "напрям щокроку — наступний у циклі маршруту"
+    claims: [{slug: pattern-automaton, params: {pattern: "→→↓↓←←↑↑"}}]
   - when: {kind: destroyed, a: Вантажівка}
     then: [{kind: score, n: -300}, {kind: message, text: "Штраф: цивільний транспорт"}]
   - when: {kind: line_of_sight, a: Ракета, b: Ворожий танк}
     then: [{kind: face, a: "@a", dir: toward}]
+    note: "повертає не частіше ніж раз на 3 тіки"
+    claims: [chase-greedy]
+  - when: {kind: contact, a: Ракета, b: Куля}
+    then: [{kind: disappear, a: "@b"}]
+    note: "ракета збиває зустрічну кулю й летить далі — кулі ж гасять одна одну"
+    claims: [projectile-collision]
   - when: {kind: input, action: Esc}
     then: [{kind: window, window: Пауза}]
   - when: {kind: input, action: пробіл, a: Другий гравець}
@@ -195,6 +265,7 @@ rules:
   - when: {kind: died, a: Другий гравець}
     cond: [{kind: counter, name: життя, op: ">", n: 0}]
     then: [{kind: lives, n: -1}, {kind: respawn, a: "@a", where: "праворуч від бази"}]
+    claims: [{slug: respawn, params: {delay: 30}}]
 windows:
   - title: Заставка
     task: splash-screen
@@ -237,20 +308,19 @@ windows:
   - title: Мапа кампанії
     task: map-window
     description: "12 рівнів у 3 світах; пройдені — із зірками"
-    claims: [level-unlock, sequential-levels]
     items: [{title: Рівень, window: Вибір рівня}, {title: Назад, window: Головне меню}]
   - title: Вибір танка
     task: character-select
     description: "Легкий · середній · важкий: швидкість проти броні"
     items: [{title: У бій, window: Гра}]
-  - title: Гра
+  - title: Гра   # еталонне вікно: вердикти на його елементах і свої елементи
     claims:
       - {slug: status-panel, status: accepted}
-      - {slug: remaining-counter, status: accepted}
-      - telegraphed-intents
+      - {slug: goal-counter, status: accepted}
       - threat-range
       - {slug: mode-indicator, note: "іконка щита й зірки над танком, доки діє бонус"}
       - telegraph-marker
+      - {slug: minimap-radar, status: returned, verdict: "На мінікарті нема порталів — без них не видно, звідки чекати ворогів"}
     items: [{title: Esc, window: Пауза}]
     shots:
       - |
@@ -281,7 +351,6 @@ windows:
         ####################
   - title: Пауза
     task: pause-menu
-    claims: [game-pause]
     items:
       - {title: Продовжити, window: Гра}
       - {title: Зберегти, task: save-multi-slot}
@@ -293,11 +362,7 @@ windows:
   - title: Магазин
     task: shop-window
     description: "Між хвилями: три випадкові товари зі знижкою і постійний асортимент"
-    claims:
-      - {slug: shop-catalog, status: accepted}
-      - shop-preview
-      - {slug: shop-sales, status: returned, verdict: "Знижка рахується від уже зниженої ціни — після трьох хвиль товар безкоштовний"}
-      - shop-buyback
+    claims: [shop-preview]
     items: [{title: Купити}, {title: Продати, note: "за півціни"}, {title: Далі, window: Гра}]
     shots:
       - |
@@ -323,40 +388,98 @@ windows:
     description: "24 ачівки: «Без жодної подряпини», «Пацифіст», «Ковзаняр»…"
   - title: Про гру
     task: about-window
+levels:
+  - title: Кампанія
+    mode: file
+    count: "9"
+    size: "26×26"
+    stats:
+      - {key: світів, value: "3"}
+      - {key: ворогів на рівні, value: "20 → 30"}
+      - {key: порталів, value: "3"}
+    description: "Місто (рівні 1–3) — цегла й ліс · Крига (5–7) — лід і ворота з кнопкою · Болота (9–11) — вода й міни. Кожен рівень — свій файл; пройдений відкриває наступний, за час — до трьох зірок; четвертий рівень світу — бій з Маусом"
+    claims:
+      - {slug: level-from-txt, status: accepted}
+      - {slug: map-validation, note: "рівно одна база, є хоч один портал, база досяжна"}
+      - level-unlock
+      - level-par
+    shots:
+      - |
+        ####################
+        #E.......E........E#
+        #.iiii.==..==.iiii.#
+        #.iiii.==..==.iiii.#
+        #......iiiiii......#
+        #.==...iGGi....==..#
+        #.==...iiii..k.==..#
+        #......iiiiii......#
+        #.iiii........iiii.#
+        #.iiii.P...A..iiii.#
+        #.......=B=........#
+        ####################
+  - title: Бій з Маусом
+    mode: hand
+    count: "3"
+    size: "16×16"
+    layers: [підлога, стіни, танки й кулі]
+    stats:
+      - {key: рівні кампанії, value: "4 · 8 · 12"}
+      - {key: ворогів, value: "лише Маус"}
+    description: "Кінець кожного світу: арена менша й без лісу та туману — Маус видно здалеку, сховатися нема де. Перед ареною — прапорець-чекпойнт"
+    shots:
+      - |
+        ################
+        #..............#
+        #......MM......#
+        #......MM......#
+        #..##......##..#
+        #..............#
+        #.....x..x.....#
+        #..##......##..#
+        #..............#
+        #.....P..A.....#
+        #......=B=.....#
+        ################
+  - title: Своя мапа   # еталонний рівень: лише картки й скриншот
+    claims:
+      - editor-palette
+      - editor-playtest
+      - {slug: reachability-check, link: "https://github.com/demo-pzpi-25-0/steel-swarm/blob/main/levels/check.py#L5-L40", status: returned, verdict: "Перевіряється досяжність лише від першого порталу, а їх три"}
+    shots:
+      - |
+        ####################
+        #E........E.......E#
+        #..~~~~......~~~~..#
+        #..~ff~..##..~ff~..#
+        #..~~~~..##..~~~~..#
+        #.......o..o.......#
+        #..====......====..#
+        #..=..=..ii..=..=..#
+        #..====..ii..====..#
+        #..................#
+        #.....P.=B=.A......#
+        ####################
 claims:
-  # еталонні — з вердиктами
-  - {slug: player-death, status: accepted}
-  - {slug: destroy-all-enemies, status: accepted}
-  - {slug: enemy-reached-base, status: accepted, verdict: "Поразка і від кулі, і від тарану — добре"}
   # логіка гри
-  - {slug: enemy-waves, params: {waves: 12, final_wave: true}, status: accepted}
-  - {slug: round-currency, status: accepted}
   - {slug: shop-between-levels, status: accepted}
-  - {slug: in-round-upgrades, note: "швидкість, броня, скорострільність — по 3 рівні"}
+  - {slug: shop-sales, status: returned, verdict: "Знижка рахується від уже зниженої ціни — після трьох хвиль товар безкоштовний"}
+  - shop-buyback
+  - game-pause
   - difficulty-levels
   - {slug: cheat-codes, status: returned, verdict: "IDDQD вмикається, а вимкнути не можна"}
   - {slug: save-multi-slot, link: "https://github.com/demo-pzpi-25-0/steel-swarm/blob/main/core/save.py", status: accepted}
   - save-autosave
   - {slug: hot-seat, status: accepted}
-  - combo-multiplier
   - score-records
-  - time-bonus
   # інтерфейс
-  - sound-effects
   - background-music
   - {slug: movement-animation, status: accepted}
   - particles
   - event-effects
-  - keyboard-controls
+  - spawn-animation
+  - {slug: death-animation, note: "вибух Мауса у 6 кадрів"}
   # рівні
-  - {slug: level-from-txt, status: accepted}
-  - {slug: map-validation, note: "рівно одна база, є хоч один портал, база досяжна"}
-  - in-game-editor
-  - editor-palette
-  - editor-playtest
-  - {slug: reachability-check, link: "https://github.com/demo-pzpi-25-0/steel-swarm/blob/main/levels/check.py#L5-L40", status: returned, verdict: "Перевіряється досяжність лише від першого порталу, а їх три"}
   - level-bank
-  - checkpoint
   # код
   - {slug: logic-render-split, status: accepted, verdict: "Ядро без жодного імпорту pygame — зразково"}
   - {slug: unit-tests, link: "https://github.com/demo-pzpi-25-0/steel-swarm/tree/main/tests", status: accepted}

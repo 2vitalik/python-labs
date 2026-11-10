@@ -1,0 +1,670 @@
+# T271 · ревізія карток: зони interface · code · support (T270 §6, §8, §10, §11)
+# Пропозиція, нічого не змінено. Ключі запису: kind · action · into/coin/wording (merge) ·
+# title/description (reword) · rule (заготовка, слова vocab.py) · slots · where (живе деінде) · why.
+#
+# ПІДСУМОК
+# Карток: 121 (interface 94 · code 18 · support 9), кожен slug — рівно раз, у порядку каталогу.
+# kind:   window 31 · element 28 · game 39 · field 11 · rule 7 · fieldopt 4 · mechanic 1
+# action: keep 87 · reword 21 · merge 13 · archive 0 · split 0
+#
+# Злиття (into · монетка, що лишається):
+#   keyboard-controls → control-direct      🌱 (була 🥉, але бронза була й за перепризначення — воно в controls-remap)
+#   cell-click        → control-click-cell  🌱
+#   drag-drop-piece   → control-drag-piece  🥉
+#   path-drawing      → control-drag-path   📎
+#   remaining-counter → goal-counter        🌱
+#   push-counter      → move-counter        🌱
+#   flag-cycle        → dot-mark            🌱
+#   difficulty-select → mode-select         🌱
+#   puzzle-select     → level-select        📎
+#   streak-stats      → profile-stats       📎
+#   game-settings     → save-progress       🥉
+#   sound-warnings    → sound-effects       📎
+#   dual-frontends    → logic-render-split  🥉
+# Не злито, хоч ТЗ пропонувало: swipe-gestures ≠ control-swipe-all (жест — пристрій вводу,
+#   «хід рухає все поле» працює й зі стрілками); справжній дубль control-swipe-all — entities/swipe-all-shift.
+# Консоль чи GUI — НЕ властивість поля, а картки kind field: це реалізація, а не правило світу гри;
+#   буває обидва одразу; на рівні не перекривається; монетки різні (🥉 / 🥈).
+# В архів: нічого — кожен дубль має куди злитись без втрати змісту.
+#
+# Типи вікон — майже-дублі:
+#   level-select ↔ puzzle-select — один тип (злито); difficulty-select ↔ mode-select — один тип (злито);
+#   match-setup лишається: кілька налаштувань партії разом, а не вибір зі списку;
+#   leaderboard (чужі імена, топ-N) · stats-window (мої підсумки) · achievements-window (відкриті цілі) — різні, усі лишаються;
+#   map-window ↔ levels/world-map — різні (мапа рівня vs мапа вибору рівнів), map-window перейменовано.
+# Типи вікон, яких бракує (у еталонах їх зараз закривають custom-window):
+#   level-intro      🌱 Заставка рівня — «STAGE 3», печера, життя перед стартом рівня (Bomberman, Boulder Dash, Battle City)
+#   name-entry       🌱 Введення імені для рекорду — після рекорду поле імені, запис у таблицю (Сапер, аркади)
+#   cutscene         📎 Інтермісія / сценка — коротка сцена між рівнями без керування, пропуск клавішею (Pac-Man)
+#   inventory-window 📎 Інвентар — предмети з кількістю, вибір і використання; функція — inventory (роглайки)
+#   save-load-window 📎 Збереження і завантаження — слоти з датою й прогресом; функція — save-multi-slot
+#   dialogue-window  🌱 Діалог / сюжетний текст — репліка чи табличка поверх поля, далі клавішею (роглайки, Zelda-подібні)
+#
+# pairs (елемент → функція; «є елемент — заяви й функцію»):
+#   volume-control → sound-volume · music-toggle → background-music · field-size-picker → difficulty-levels
+#   conflict-highlight → markup-validity · telegraph-marker → telegraphed-intents · face-button → restart-level
+# pairs (вікно → функція, та сама підказка):
+#   pause-menu → game-pause · shop-window → shop-between-levels · editor-window → in-game-editor
+#   leaderboard → score-records · stats-window → profile-stats · mode-select → difficulty-levels
+#   replay-window → replay · lobby-window → online-multiplayer · pass-device → hot-seat · code-editor-window → command-program
+#   (нові) inventory-window → inventory · save-load-window → save-multi-slot · name-entry → score-records
+#   achievements-window → функції нема: бракує картки game «Досягнення» (умови, відкриття, збереження)
+#
+# Відео:
+#   відео — доказ конкретної заявки: посилання з таймкодом (YouTube ?t=83) у `link` тієї картки, яку показує; сайт може впізнати таймкод і показати «▶ 1:23» — нових полів не треба;
+#   gif замість скриншота — так, у тому ж слоті скриншота з лімітом розміру: рух, анімація, малювання шляху, каскади на gif доводяться, на кадрі — ні;
+#   монетки за саме відео — лише в support/video (feature-demo зі слотом «що показує», трейлер, ефекти); «історію відео» не будувати до Q-тікета.
+# code/support описом гри не доводяться взагалі: доказ — `link` (файл, коміт, тег, лог, відео), варто зробити його для цих зон обовʼязковим.
+#
+# Найменш певні (вибір → альтернатива):
+#   1. swipe-gestures — field (пристрій вводу) → злити в control-swipe-all, як у ТЗ
+#   2. console-render / gui-render — field → fieldopt «Рендер: консоль · GUI» (кілька одразу)
+#   3. dual-frontends → logic-render-split 🥉 → лишити 🥈 як вимогу курсу, з gui-render лише прибрати «спільний двіжок»
+#   4. game-settings → save-progress → лишити game «Налаштування зберігаються між сесіями» з 📎
+#   5. sound-effects — rule → game («звук загалом»), тоді правила з ефектом «звук» без монетки
+#   6. popup-text — rule → element ігрового екрана (рендерер спливних написів)
+#   7. chord-click, flood-reveal — rule (в еталоні сапера вже правила) → field, як у ТЗ
+#   8. flag-cycle → dot-mark → лишити обидві (тоді «?» у сапері платиться двічі)
+#   9. telegraphed-intents — mechanic у парі з telegraph-marker → злити telegraph-marker у неї одним element 🥉
+#  10. hover-highlight — field (реакція поля на курсор) → element-дитина highlights поруч із selection-highlight
+#
+# Поза моїми зонами (для інших ревізій):
+#   entities/swipe-all-shift дублює control-swipe-all · entities/legal-move-highlight → kind element, дитина highlights,
+#   пара → piece-move-patterns · game-logic/shop-catalog дублює вікно shop-window · levels/world-map — це тип вікна
+#   (#window) або злиття в level-select · game-logic/save-progress — дописати «і налаштування» · levels/level-bank —
+#   лишити за ним збереження прогресу, список зі статусом — це вікно level-select.
+# Еталони перепривʼязати: remaining-counter (4), cell-click (5), keyboard-controls і swipe-gestures (2048), difficulty-select (snake),
+#   puzzle-select (paper-puzzles); movement-animation (2048, на сутності), replay (mined-out, на вікні), std-collections (snake, на сутності)
+#   стали game — на рівень гри.
+
+# ── interface / graphics ───────────────────────────────────────────────
+movement-animation:
+  kind: game
+  action: keep
+  why: "анімація загалом — секція «Інтерфейс, графіка, звук»; в еталоні 2048 висить на сутності — перенести на рівень гри"
+event-effects:
+  kind: game
+  action: reword
+  description: "Короткий кадровий ефект на подію: спалах, вибух, відкриття дверей; смерть і поява сутності — свої картки, система часток — particles."
+  why: "графіка загалом: слова «візуальний ефект» у словнику нема, правилом не скажеш; опис розводить з particles і анімаціями смерті/появи"
+idle-animation:
+  kind: game
+  action: keep
+  why: "анімація спрайтів на місці — графіка загалом"
+particles:
+  kind: game
+  action: keep
+  why: "техніка рендера (багато часток з рухом і згасанням) — графіка загалом"
+
+# ── interface / hud ────────────────────────────────────────────────────
+status-panel:
+  kind: element
+  action: keep
+  why: "панель стоїть на ігровому екрані — елемент вікна"
+goal-counter:
+  kind: element
+  action: reword
+  description: "Скільки лишилось зібрати, знищити чи знайти: точок, ворогів, мін (міни − прапорці)."
+  why: "лічильник на ігровому екрані; поглинає remaining-counter — той самий «скільки лишилось»"
+mode-indicator:
+  kind: element
+  action: keep
+  why: "показ режиму чи черги на екрані — елемент вікна"
+telegraphed-intents:
+  kind: mechanic
+  action: reword
+  where: "entities/combat — механіка на сутності-ворогові"
+  title: "Ворог оголошує хід наперед"
+  description: "Ворог обирає дію на хід раніше й виконує саме її (Into the Breach); позначка на полі — telegraph-marker."
+  why: "суть — поведінка ворога, а не малюнок; показ на полі лишається елементом telegraph-marker (пара), тож дубля нема"
+highlights:
+  kind: element
+  action: keep
+  why: "заголовок сімʼї підсвіток на ігровому екрані; legal-move-highlight з legality варто зробити її дитиною"
+selection-highlight:
+  kind: element
+  action: keep
+  why: "підсвітка обраної клітини чи фігури на ігровому екрані"
+conflict-highlight:
+  kind: element
+  action: keep
+  why: "показ конфліктів на полі; саму перевірку дає markup-validity (пара)"
+last-move-highlight:
+  kind: element
+  action: keep
+  why: "мітка останнього ходу на ігровому екрані"
+reachable-highlight:
+  kind: element
+  action: keep
+  why: "показ досяжних за хід клітин — малюнок на ігровому екрані"
+threat-range:
+  kind: element
+  action: keep
+  why: "показ зони ураження на ігровому екрані; дальність ворога — його параметр"
+telegraph-marker:
+  kind: element
+  action: keep
+  why: "позначка «куди вдарить» на полі; поведінку ворога дає telegraphed-intents (пара)"
+path-preview:
+  kind: element
+  action: keep
+  why: "превʼю шляху, намальоване на ігровому екрані"
+move-counter:
+  kind: element
+  action: reword
+  title: "Лічильник ходів"
+  description: "Ходи (за потреби окремо поштовхи) на ігровому екрані; рахуються лише ходи, що відбулись."
+  why: "лічбу пише правило ефектом «± лічильник», картка — показ на екрані; поглинає push-counter"
+remaining-counter:
+  kind: element
+  action: merge
+  into: goal-counter
+  coin: wood
+  why: "те саме «скільки лишилось»: точок, мін, ворогів; 🌱 лишається; 4 еталони перепривʼязати"
+next-queue:
+  kind: element
+  action: keep
+  why: "черга наступних фігур — панель на ігровому екрані"
+pocket:
+  kind: element
+  action: keep
+  why: "панель узятих фігур поза полем — елемент ігрового екрана; сам дроп — piece-drop"
+message-log:
+  kind: element
+  action: keep
+  why: "журнал — панель на екрані; самі повідомлення пишуть правила ефектом «повідомлення»"
+objective-text:
+  kind: element
+  action: keep
+  why: "рядок поточної цілі на ігровому екрані"
+popup-text:
+  kind: rule
+  action: keep
+  rule: {when: {kind: contact}, then: [{kind: score}, {kind: message}]}
+  why: "«+100» над клітиною — наслідок події: правило з очками й ефектом «повідомлення», картка сідає на нього"
+push-counter:
+  kind: element
+  action: merge
+  into: move-counter
+  coin: wood
+  why: "move-counter уже «ходів/поштовхів»; другий рядок того самого лічильника монетки не вартий; 🌱 лишається"
+face-button:
+  kind: element
+  action: keep
+  why: "кнопка-смайлик на ігровому екрані; рестарт — restart-level (пара)"
+
+# ── interface / input ──────────────────────────────────────────────────
+keyboard-controls:
+  kind: fieldopt
+  action: merge
+  into: control-direct
+  coin: wood
+  wording: "Клавіші = рух аватара — стрілки чи WASD рухають аватар, окремі клавіші дій"
+  why: "це і є «клавіші = рух аватара»; бронза була й за перепризначення, а воно окремо в controls-remap, тож 🌱"
+cell-click:
+  kind: fieldopt
+  action: merge
+  into: control-click-cell
+  coin: wood
+  wording: "Клік по клітині — базова курсорна дія: клік обирає чи відкриває клітину"
+  why: "це і є спосіб керування «клік по клітині»; 🌱 лишається"
+hover-highlight:
+  kind: field
+  action: reword
+  title: "Підсвітка клітини під курсором"
+  description: "Клітина під мишкою чи курсором клавіатури підсвічується ще до дії."
+  why: "реакція поля на курсор — картка поля; «виділення» прибрано з назви, бо це selection-highlight"
+drag-drop-piece:
+  kind: fieldopt
+  action: merge
+  into: control-drag-piece
+  coin: bronze
+  wording: "Перетягую фігуру — фігура йде за мишею; відпустив на легальній клітині — хід, ні — повертається"
+  why: "це і є «перетягую фігуру»; 🥉 лишається — тягнути спрайт і повертати на місце помітно складніше за клік"
+pencil-marks:
+  kind: field
+  action: keep
+  why: "кандидати дрібно всередині клітини й режим «олівець» — як поле приймає ввід і малює клітину"
+chord-click:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, cond: [{kind: adjacent_count}], then: [{kind: reveal}]}
+  why: "акорд — ввід на числі з умовою «прапорців навколо стільки ж» і наслідком «відкрити сусідів»; в еталоні сапера це вже правило"
+swipe-gestures:
+  kind: field
+  action: reword
+  title: "Жести мишею чи пальцем"
+  description: "Хід жестом: тягнеш у бік — гра визначає напрям за порогом; клавіші не потрібні."
+  why: "це пристрій вводу, а не спосіб керування: control-swipe-all працює й зі стрілками; тому не злито"
+path-drawing:
+  kind: fieldopt
+  action: merge
+  into: control-drag-path
+  coin: tin
+  wording: "Малюю шлях — тягнеш по сусідніх клітинах, шлях лишається на полі (Flow Free, Cosmic Express, LYNE)"
+  why: "це і є спосіб керування «малюю шлях»; 📎 лишається"
+path-cut:
+  kind: field
+  action: keep
+  why: "як редагується намальований шлях — доповнення до керування «малюю шлях», картка поля"
+multi-select:
+  kind: field
+  action: keep
+  why: "групове виділення клітин — як поле приймає ввід"
+edge-marking:
+  kind: field
+  action: keep
+  why: "ввід по ребрах, а не клітинах — особливість поля"
+dot-mark:
+  kind: rule
+  action: reword
+  title: "Позначки-нагадування на клітині"
+  description: "Прапорець, «?», крапка: ставляться й перебираються по колу однією кнопкою; перевірка розвʼязку їх не враховує."
+  rule: {when: {kind: input}, then: [{kind: mark}]}
+  why: "поставити позначку — подія вводу з ефектом «розмітка»; поглинає flag-cycle: «?» у сапері — крок того самого кола"
+flag-cycle:
+  kind: rule
+  action: merge
+  into: dot-mark
+  coin: wood
+  why: "прапорець → «?» → порожньо — це ті самі позначки-нагадування, перебрані однією кнопкою; 🌱 лишається"
+flood-reveal:
+  kind: rule
+  action: keep
+  rule: {when: {kind: input}, cond: [{kind: adjacent_count}], then: [{kind: fill}]}
+  why: "клік по нулю → «заливка області» — одне правило, в еталоні сапера воно вже є; слот сусідства лишається"
+
+# ── interface / menus ──────────────────────────────────────────────────
+main-menu:
+  kind: window
+  action: keep
+  why: "тип вікна; заявка сама з типу"
+pause-menu:
+  kind: window
+  action: keep
+  why: "окремий тип; заморожує гру game-pause (пара)"
+confirm-dialog:
+  kind: window
+  action: keep
+  why: "модальне «Так / Ні» — окремий тип"
+end-screen:
+  kind: window
+  action: keep
+  why: "перемога й поразка — один тип, назви вікон різні"
+game-screen:
+  kind: window
+  action: reword
+  description: "Головне вікно з полем гри; рендер, камера, туман — картки поля, HUD і кнопки — елементи цього вікна."
+  why: "посилання на підзону «Поле і рендер» застаріє з новою зоною «Поле» — кажемо через типи карток"
+splash-screen:
+  kind: window
+  action: keep
+  why: "назва й лого при запуску; гра, що грає сама, — attract-demo"
+settings-window:
+  kind: window
+  action: keep
+  why: "вікно, куди ставляться елементи налаштувань"
+shop-window:
+  kind: window
+  action: keep
+  why: "тип вікна; купівля — shop-between-levels (пара); вітрина shop-catalog в economy дублює це вікно"
+help-window:
+  kind: window
+  action: keep
+  why: "довідка всередині гри; документ поза грою — player-guide"
+about-window:
+  kind: window
+  action: keep
+  why: "автор і версія — окремий простий тип"
+custom-window:
+  kind: window
+  action: keep
+  why: "запасний тип для «нема потрібного» (§10.2), без монетки"
+editor-window:
+  kind: window
+  action: keep
+  why: "екран редактора; функції — in-game-editor і діти (пара)"
+stats-window:
+  kind: window
+  action: keep
+  why: "мої підсумки — не топ чужих імен (leaderboard) і не досягнення; функція — profile-stats (пара)"
+mode-select:
+  kind: window
+  action: reword
+  title: "Вибір режиму чи складності"
+  description: "Список варіантів перед грою: класика / на час / нескінченний / versus, легко–важко."
+  why: "поглинає difficulty-select — те саме вікно-список; кілька налаштувань разом — match-setup"
+map-window:
+  kind: window
+  action: reword
+  title: "Повна карта рівня"
+  description: "Уся мапа рівня чи підземелля (досліджене) на весь екран; мінімапа — minimap-radar, мапа вибору рівнів — world-map."
+  why: "«Карта світу» плутається з world-map (вибір рівнів на мапі) — уточнити назву"
+difficulty-select:
+  kind: window
+  action: merge
+  into: mode-select
+  coin: wood
+  why: "вікно-список вибору — те саме, що mode-select; 🌱 лишається; еталон snake перепривʼязати"
+puzzle-select:
+  kind: window
+  action: merge
+  into: level-select
+  coin: tin
+  why: "той самий тип — список рівнів зі статусом; сітка чи список — оформлення, прогрес — level-bank; 📎 лишається"
+lobby-window:
+  kind: window
+  action: keep
+  why: "окремий тип; функція — online-multiplayer (пара)"
+tutorial-window:
+  kind: window
+  action: keep
+  why: "покрокове навчання — не те саме, що довідка help-window"
+replay-window:
+  kind: window
+  action: keep
+  why: "екран перегляду; запис і відтворення — replay (пара)"
+codex-window:
+  kind: window
+  action: keep
+  why: "довідник сутностей — окремий тип"
+achievements-window:
+  kind: window
+  action: keep
+  why: "окремий тип, але функції «досягнення» в каталозі нема — бракує картки game"
+character-select:
+  kind: window
+  action: keep
+  why: "герой чи загін з різними параметрами перед грою; косметичний скін — avatar-picker"
+game-over-continue:
+  kind: window
+  action: keep
+  why: "аркадне «Продовжити?» з відліком — не те саме, що end-screen"
+level-password:
+  kind: window
+  action: keep
+  why: "введення пароля рівня — окремий тип"
+match-setup:
+  kind: window
+  action: keep
+  why: "кілька налаштувань партії разом (сторони, AI, час) — більше, ніж вибір зі списку mode-select"
+attract-demo:
+  kind: window
+  action: keep
+  why: "гра грає сама — окремий тип, не заставка"
+placement-screen:
+  kind: window
+  action: keep
+  why: "окремий етап партії з прихованим полем"
+pass-device:
+  kind: window
+  action: keep
+  why: "завіса між ходами; функція — hot-seat (пара)"
+code-editor-window:
+  kind: window
+  action: keep
+  why: "окремий екран програми; функція — command-program (пара)"
+
+# ── interface / render ─────────────────────────────────────────────────
+console-render:
+  kind: field
+  action: keep
+  why: "як малюється поле; не властивість поля — це реалізація, буває разом з GUI і не перекривається на рівні"
+gui-render:
+  kind: field
+  action: reword
+  description: "Поле спрайтами чи фігурами у вікні (pygame, tkinter, arcade), перемальовка кадру."
+  why: "«спільний двіжок із консоллю» — це logic-render-split, тут лише сам GUI-рендер поля"
+field-scaling:
+  kind: field
+  action: reword
+  description: "Клітини підлаштовуються під розмір вікна, зум; мапа, більша за екран, — player-camera."
+  why: "«скрол великих мап» дублював player-camera"
+player-camera:
+  kind: field
+  action: keep
+  why: "вʼюпорт над мапою — про поле загалом"
+minimap-radar:
+  kind: element
+  action: keep
+  why: "мінімапа стоїть на ігровому екрані (так і каже map-window) — елемент"
+fog-of-war:
+  kind: field
+  action: keep
+  why: "що з поля видно гравцеві — про поле загалом"
+
+# ── interface / results ────────────────────────────────────────────────
+leaderboard:
+  kind: window
+  action: keep
+  why: "тип вікна за тегом #window; таблицю зберігає score-records (пара)"
+profile-stats:
+  kind: game
+  action: reword
+  description: "Партії, перемоги, найкращий час, серії днів; зберігаються між запусками."
+  why: "функція за вікном stats-window (пара); поглинає streak-stats"
+replay:
+  kind: game
+  action: keep
+  why: "запис і відтворення гри — гра загалом; вікно — replay-window (пара); доказ — відео"
+share-result:
+  kind: game
+  action: keep
+  why: "результат текстом у буфер — гра загалом"
+streak-stats:
+  kind: game
+  action: merge
+  into: profile-stats
+  coin: tin
+  why: "серії й розподіл спроб — ще рядки тієї самої статистики профілю; 📎 лишається"
+rating-system:
+  kind: game
+  action: keep
+  slots:
+  - key: algo
+    label: Алгоритм
+    type: choice
+    options:
+    - elo
+    - glicko
+  why: "рейтинг гравців — гра загалом; алгоритм — суть картки, тож слот"
+
+# ── interface / settings ───────────────────────────────────────────────
+game-settings:
+  kind: game
+  action: merge
+  into: save-progress
+  coin: bronze
+  why: "складність, розмір поля, звук уже окремі картки; своє лишилось лише «між сесіями» — це save-progress; 🥉 лишається"
+theme-select:
+  kind: element
+  action: keep
+  why: "перемикач у вікні налаштувань; самі набори спрайтів — частина картки"
+settings-elements:
+  kind: element
+  action: keep
+  why: "заголовок сімʼї елементів налаштувань; заявляються діти"
+volume-control:
+  kind: element
+  action: keep
+  why: "слайдер у вікні; що гучність справді діє — sound-volume (пара)"
+music-toggle:
+  kind: element
+  action: keep
+  why: "перемикач у вікні; сама музика — background-music (пара)"
+avatar-picker:
+  kind: element
+  action: reword
+  description: "Скін чи вигляд гравця без впливу на гру; герой з різними параметрами — вікно character-select."
+  why: "розвести з character-select"
+field-size-picker:
+  kind: element
+  action: reword
+  description: "Ширина й висота поля (де треба — кількість мін) перед грою; поле справді будується під обране."
+  why: "«масштаб» — це field-scaling; сам вибір розміру як складність — difficulty-levels (пара)"
+language-picker:
+  kind: element
+  action: keep
+  why: "перемикач мови у вікні; викладач дивиться, що змінюються всі написи"
+controls-remap:
+  kind: element
+  action: keep
+  why: "контрол у вікні налаштувань; забрав «перепризначення» з keyboard-controls"
+
+# ── interface / sound ──────────────────────────────────────────────────
+sound-effects:
+  kind: rule
+  action: reword
+  description: "Звук на подію: кроки, постріл, збирання, попередження (час добігає, шах)."
+  rule: {when: {kind: picked}, then: [{kind: sound}]}
+  why: "звук на подію — ефект «звук» у правилі, картка сідає на таке правило; поглинає sound-warnings"
+background-music:
+  kind: game
+  action: reword
+  description: "Музика грає фоном у циклі; вимикач у налаштуваннях — music-toggle."
+  why: "звук загалом; вимикач уже окремий елемент (пара)"
+sound-volume:
+  kind: game
+  action: keep
+  why: "функція за слайдером volume-control (пара)"
+sound-warnings:
+  kind: rule
+  action: merge
+  into: sound-effects
+  coin: tin
+  why: "попередження — той самий звук на подію (таймер, шах), лише інше правило; 📎 лишається"
+
+# ── code / architecture ────────────────────────────────────────────────
+logic-render-split:
+  kind: game
+  action: reword
+  description: "Двіжок не імпортує рендер: консоль і GUI (чи тести) працюють з тим самим станом."
+  why: "поглинає dual-frontends; доказ — посилання на модуль двіжка без імпортів рендера й на обидва фронтенди"
+dual-frontends:
+  kind: game
+  action: merge
+  into: logic-render-split
+  coin: bronze
+  why: "консоль + GUI = console-render + gui-render + розділення; окрема 🥈 повторює три картки; 🥉 лишається"
+state-as-data:
+  kind: game
+  action: keep
+  why: "доказ — посилання на клас стану і (де)серіалізацію; не плутати з state-string (код для гравця)"
+game-loop:
+  kind: game
+  action: keep
+  why: "доказ — посилання на цикл tick/update/render у коді"
+
+# ── code / git ─────────────────────────────────────────────────────────
+commit-history:
+  kind: game
+  action: keep
+  why: "опис гри цього не покаже; доказ — посилання на історію комітів і .gitignore"
+project-readme:
+  kind: game
+  action: reword
+  description: "Як встановити й запустити, вимоги, короткий опис зі скриншотом; правила гри — player-guide."
+  why: "розвести з player-guide; доказ — посилання на README"
+version-tags:
+  kind: game
+  action: keep
+  why: "доказ — посилання на сторінку тегів репозиторію"
+
+# ── code / packaging ───────────────────────────────────────────────────
+requirements-pyproject:
+  kind: game
+  action: keep
+  why: "доказ — посилання на requirements.txt чи pyproject.toml"
+single-command-run:
+  kind: game
+  action: keep
+  why: "доказ — рядок запуску в README і gif чи відео запуску з чистого клону"
+exe-build:
+  kind: game
+  action: keep
+  why: "доказ — файл у Releases або відео запуску на машині без Python"
+
+# ── code / python ──────────────────────────────────────────────────────
+typing-mypy:
+  kind: game
+  action: keep
+  why: "доказ — конфіг mypy і лог чистого прогону"
+dataclass-entities:
+  kind: game
+  action: keep
+  why: "доказ — посилання на файл моделей"
+generators-iterators:
+  kind: game
+  action: keep
+  why: "доказ — посилання на рядки з генераторами"
+custom-exceptions:
+  kind: game
+  action: keep
+  why: "доказ — посилання на класи помилок і місця обробки"
+std-collections:
+  kind: game
+  action: keep
+  why: "доказ — посилання на рядки з deque/heapq; в еталоні snake висить на сутності — перенести на рівень гри"
+
+# ── code / tests ───────────────────────────────────────────────────────
+unit-tests:
+  kind: game
+  action: keep
+  why: "доказ — посилання на тести й лог pytest"
+fixture-level-tests:
+  kind: game
+  action: keep
+  why: "доказ — посилання на рівні-фікстури й тести до них; окремо від unit-tests"
+property-tests:
+  kind: game
+  action: keep
+  why: "доказ — посилання на тести hypothesis"
+
+# ── support / docs ─────────────────────────────────────────────────────
+player-guide:
+  kind: game
+  action: reword
+  description: "Правила й керування для гравця окремим документом чи розділом README; довідка всередині гри — help-window."
+  why: "розвести з help-window і project-readme; доказ — посилання на документ"
+architecture-doc:
+  kind: game
+  action: keep
+  why: "доказ — посилання на документ зі схемою модулів"
+dev-log:
+  kind: game
+  action: keep
+  why: "доказ — посилання на devlog із датами"
+
+# ── support / sites ────────────────────────────────────────────────────
+game-page:
+  kind: game
+  action: reword
+  description: "Сторінка поза репозиторієм (GitHub Pages, свій сайт): опис, скриншоти, посилання на код; сторінка itch.io — itchio-publish."
+  why: "розвести з itchio-publish; опис на цьому сайті не рахується; доказ — посилання"
+video-channel:
+  kind: game
+  action: keep
+  why: "доказ — посилання на плейліст"
+itchio-publish:
+  kind: game
+  action: keep
+  why: "доказ — посилання на сторінку itch.io з робочою збіркою"
+
+# ── support / video ────────────────────────────────────────────────────
+feature-demo:
+  kind: game
+  action: keep
+  slots:
+  - key: feature
+    label: Що показує
+    type: text
+    required: true
+  why: "🔁 без ліміту, тож кожна заявка каже, що показує, — слот; доказ — посилання на відео з таймкодом"
+game-trailer:
+  kind: game
+  action: keep
+  why: "доказ — посилання на відео"
+demo-effects:
+  kind: game
+  action: keep
+  why: "доказ — таймкоди моментів із титрами, прискоренням, зумом"
