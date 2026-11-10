@@ -42,6 +42,7 @@ rules:
     cond: [{kind: mode, text: олівець}, {kind: free, cell: target}]
     then: [{kind: mark, cell: target, v: "кандидат"}]
     note: "повтор тієї ж цифри знімає кандидата; заповнена клітинка нотаток не має"
+    claims: [pencil-marks]
   - when: {kind: input, action: "стерти", a: Цифра}
     then: [{kind: disappear, a: "@a"}]
   - when: {kind: input, action: "цифра 1–9"}
@@ -122,4 +123,4 @@ levels:
     count: "по 15 на розмір (Picross DS)"
     size: "5×5 … 25×20"
     description: "Банк малюнків, де складність — це розмір: Mario's Picross — 5×5, 10×10, 15×15; Picross DS — від 5×5 до 25×20"
-claims: [pencil-marks, undo-unlimited, level-bank, import-open-formats]
+claims: [undo-unlimited, level-bank, import-open-formats]
