@@ -33,7 +33,7 @@ const remove = (tag) => (tags.value = tags.value.filter((t) => t !== tag))
     <span v-for="t in tags" :key="t" class="badge text-bg-light border fw-normal d-inline-flex align-items-center gap-1">
       {{ hash ? '#' : '' }}{{ t }}<button v-if="!disabled" type="button" class="btn-close" :aria-label="`Прибрати ${t}`" @click.stop="remove(t)"></button>
     </span>
-    <input ref="input" v-model="text" :list="id" :disabled class="border-0 bg-transparent flex-grow-1" :placeholder="tags.length ? '' : placeholder || (hash ? 'тег і Enter' : 'і Enter')"
+    <input ref="input" v-model="text" :list="id" :disabled class="border-0 bg-transparent flex-grow-1" :placeholder="tags.length ? '' : placeholder || (hash ? 'теги через кому' : 'через кому')"
            @keydown="key" @blur="add" @input="picked">
     <datalist :id><option v-for="t in hints" :key="t" :value="t" /></datalist>
   </div>

@@ -14,7 +14,7 @@ const yes = () => { open.value = false; emit('yes') }
 <template>
   <Pop v-model="open" width="16rem">
     <template #trigger="{ toggle }">
-      <button type="button" class="iact del" :title @click.stop="toggle"><Icon name="trash" /></button>
+      <button type="button" class="iact del trash" :title @click.stop="toggle"><Icon name="trash" /></button>
     </template>
     <div class="mb-2">Видалити {{ what }}?<div v-if="note" class="text-secondary small">{{ note }}</div></div>
     <div class="d-flex gap-2">

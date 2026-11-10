@@ -25,6 +25,8 @@ const PATHS = {
   unfold: '<path d="M4.5 6L8 3l3.5 3M4.5 10L8 13l3.5-3"/>',
   fold: '<path d="M4.5 3L8 6l3.5-3M4.5 13L8 10l3.5 3"/>',
   help: '<circle cx="8" cy="8" r="6.5"/><path d="M6.2 6.3a1.9 1.9 0 1 1 2.6 1.8c-.5.3-.8.6-.8 1.3"/><path d="M8 11.6h.01" stroke-width="2"/>',
+  keys: '<rect x="1.5" y="4" width="13" height="8.5" rx="1.5"/><path d="M5 10h6"/><path d="M4.3 7h.01M6.8 7h.01M9.2 7h.01M11.7 7h.01" stroke-width="2"/>',
+  clock: '<circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.3 1.5"/>',
 }
 </script>
 

@@ -27,6 +27,7 @@
         border: 0; border-radius: .3rem; background: none; color: var(--bs-secondary-color); }
 .iact:hover { background: var(--bs-tertiary-bg); color: var(--bs-body-color); }
 .iact.del:hover { background: color-mix(in srgb, var(--act-del) 12%, transparent); color: var(--act-del); }
+.iact.trash { color: color-mix(in srgb, var(--act-del) 60%, var(--bs-secondary-color)); }  /* deleting an object is red at rest too */
 .iact.add { color: var(--act-add); }
 .iact.add:hover { background: color-mix(in srgb, var(--act-add) 12%, transparent); color: var(--act-add); }
 /* a field that looks like text until the mouse or the focus finds it: the frame says «this can be edited» */

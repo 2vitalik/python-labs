@@ -1,6 +1,7 @@
 import { ref } from 'vue'
 
 export const down = ref(false)  // the API does not answer: a restart on deploy, a crash, no network
+export const extra = {}  // headers every call carries while a page asks for them
 
 const DOWN = 'Сайт тимчасово недоступний. Спробуй ще раз за хвилину.'
 const BROKEN = 'Щось пішло не так на сервері. Викладач уже знає — спробуй ще раз трохи згодом.'
@@ -36,7 +37,7 @@ function send(url, options) {
 export function request(url, method = 'GET', body) {
   return send(url, {
     method,
-    headers: body ? { 'Content-Type': 'application/json' } : {},
+    headers: body ? { ...extra, 'Content-Type': 'application/json' } : { ...extra },
     body: body ? JSON.stringify(body) : undefined,
   })
 }
@@ -51,5 +52,5 @@ export function upload(url, file, fields = {}) {
   const fd = new FormData()
   fd.append('file', file)
   for (const [k, v] of Object.entries(fields)) fd.append(k, v)
-  return send(url, { method: 'POST', body: fd })
+  return send(url, { method: 'POST', headers: { ...extra }, body: fd })
 }
