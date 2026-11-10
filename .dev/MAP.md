@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T274** · тікетів: 273 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T278** · тікетів: 277 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -281,3 +281,7 @@
 | platform | [T271](platform/.t/T271--game-desc-v3/plan.md) | ⚙️ | game-desc-v3 | Опис гри v3: редактор, типи карток, рівні, каталог — план | 🟢 🟩 |
 | reports | [T272](reports/.t/T272-C--ai-game-draft.md) | 🔆 | ai-game-draft | Чернетка опису гри від ШІ: що дозволяє підписка і скільки коштує API | 🟢 🟩 |
 | games | [T273](games/.t/T273-Q--game-desc-v3-choices.md) | ❓ | game-desc-v3-choices | Опис гри v3: вибори після нічної сесії | 🔴 ⬜ |
+| games | [T274](games/.t/T274-P--game-desc-v4-design.md) | 💡 | game-desc-v4-design | Опис гри v4: таски рядами, чернетки на місці, знахідки, пісочниця зразка | 🟢 🟩 |
+| platform | [T275](platform/.t/T275--game-desc-v4/plan.md) | ⚙️ | game-desc-v4 | Опис гри v4: каталог рядами, додавання з каталогу, знахідки, вигляди правил, пісочниця — план | 🟢 🟩 |
+| games | [T276](games/.t/T276-P--game-moments-editor.md) | 💡 | game-moments-editor | Ігрові моменти: редактор кадрів і показ по кроках | 🟢 ⬜ |
+| games | [T277](games/.t/T277-Q--game-desc-v4-choices.md) | ❓ | game-desc-v4-choices | Опис гри v4: вибори після вечірньої диктовки | 🔴 ⬜ |

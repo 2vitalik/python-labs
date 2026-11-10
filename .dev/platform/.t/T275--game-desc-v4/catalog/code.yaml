@@ -1,0 +1,986 @@
+# T275 · Каталог v4 — зона «Код» (і прогалина в «Супроводі»): картки з вимог лаб і дрібні Python-фічі
+# 2026-11-10 · пропозиція методиста; у data/ нічого не внесено, slug-и звірено з data/catalog/tasks.yaml
+#
+# Навіщо: студент на «трійку» має отримувати монетки за те, що й так робить у лабі. Зона code мала
+# 22 картки, з них 🌱 лише 5 і жодної, що повторює сторінку лаби.
+#
+# ПІДСУМОК
+# - нових карток: 60 (активних 54 · чернеток ✍️ 6); переформулювань (reword): 15
+# - за підзонами (поле home): architecture 16 · python 36 · tests 2 · git 2 · packaging 3 · support/video 1
+# - за монетками: 🌱 29 · 📎 28 · 🥉 3 (усі 🥉 — чернетки)
+# - дзеркало сторінок лаб (поле lab): лаба 1 — 11 · 2 — 10 · 3 — 9 · 4 — 7 (з first-test) · 5 — 6;
+#   з них обовʼязкових (required: true) — 19; ще 17 — дрібниці понад лаби (без lab)
+# - «трієчнику»: 16 обовʼязкових 🌱 лаб 1–4 = 16🌱 = 4🥉, тобто як чотири ігрові фічі;
+#   плюс дешеві git/README/демка (commit-history, gitignore-clean, project-readme, game-demo-video)
+#
+# ЯК ЛЯГАЄ НА ЛАБИ (п. — номер пункту на сторінці лаби; «є» — наявна картка, нової не роблю)
+# Лаба 1 · обовʼязкові п.1–6 → lab1-field-output · lab1-read-key · lab1-move-player · lab1-cell-check ·
+#          lab1-game-loop · lab1-own-functions (усі 🌱). Порядок = порядок `required` у звіті рецензента
+#          (.dev/github/review.md, T248/T254): «required: done done …» → заявки можна зараховувати пачкою.
+#   додаткові 5 груп → lab1-data-types 🌱 · lab1-conditions 🌱 · lab1-loops 📎 · lab1-function-params 📎 ·
+#          lab1-scope 📎 (по потоку бракує nonlocal 55/82, * 53, / 52, вкладених 49, for-else 47 — тому 📎)
+# Лаба 2 · п.1–3, 6 → lab2-grid-matrix · lab2-cell-dict · lab2-direction-tuples · lab2-string-methods (🌱)
+#          п.4 рівень із файлу → є: level-from-txt 🥉 (levels/format)
+#          п.5 запис у файл → lab2-save-text 🌱 (мінімум); повніше — є: score-records 📎, save-progress 🥉
+#   додаткові п.1–4, 6 → lab2-slices-comprehensions · lab2-unpacking · lab2-sets · lab2-dict-tricks ·
+#          lab2-binary-save (📎); п.5 «кілька рівнів = кілька файлів» → є: level-from-txt
+# Лаба 3 · п.1–3 → lab3-classes · lab3-base-class · lab3-init-str (🌱)
+#          п.4 двіжок окремо від виводу → є: logic-render-split (reword, 🥉 → 📎)
+#   додаткові → lab3-underscores · lab3-container-methods + lab3-eq-hash (п.2 розбито надвоє) ·
+#          lab3-property · lab3-classmethods (📎) · lab3-mixins 🥉 ✍️
+# Лаба 4 · п.1 → lab4-package 🌱 · п.3 → lab4-type-hints 🌱 (typing-mypy стає наступним кроком)
+#          п.2 винятки → є: custom-exceptions 📎 (reword)
+#          п.4 тести → є: unit-tests (reword, 🥉 → 📎) + крок до нього first-test 🌱
+#   додаткові → п.1 послідовність — у lab3-container-methods (зрізи там же) · п.2 — є: generators-iterators
+#          (reword) · п.3 lab4-closures 📎 · п.4 lab4-decorator 📎 · п.5 lab4-with-files 🌱 ·
+#          п.6 lab4-parametrize 📎 (+ є: fixture-level-tests 🥉)
+# Лаба 5* · обовʼязкові → lab5-score-server · lab5-database · lab5-jinja-page (📎, не 🌱 — див. сумнів 6)
+#   додаткові → п.1 lab5-level-api 🥉 ✍️ · п.2 профіль — є: profile-stats 📎 (локально; серверний не роблю) ·
+#          п.3 lab5-routers-tests 📎 · п.4 lab5-deploy 🥉 ✍️
+# Понад лаби → python: enum-states, match-case-commands, pathlib-paths, json-files ✍️, argparse-cli,
+#   logging-debug, docstrings, named-constants, abc-protocol, random-seed ✍️, input-robust, ruff-clean ·
+#   tests: first-test · git: gitignore-clean, feature-branch · packaging: main-guard, cross-platform-run ✍️ ·
+#   support/video: game-demo-video (відео-демка — умова «до 69» з howto, а картки не було)
+#
+# ПРОПОЗИЦІЯ ПІДЗОНИ: code/labs «Завдання лаб» 📚 (kind game) — home_wish у всіх lab*-картках
+# - чому: підзони code — про види інженерної роботи (архітектура, Python, тести, git, пакування);
+#   «вивести поле», «зчитати клавішу», «словник клітинок» у жодну не лягають — зараз вони в architecture,
+#   і це вводить в оману. Студент на «трійку» хоче відкрити одне місце і побачити чек-лист своєї лаби
+#   в порядку сторінки лаби, а не збирати його з пʼяти підзон.
+# - одна підзона всього не закриє: частина вимог уже має картки в інших місцях (level-from-txt,
+#   logic-render-split, custom-exceptions, unit-tests, generators-iterators). Тому разом із нею —
+#   поле картки `lab: N` (+ `required: true`) як наскрізний тег: фільтр «Лаба N» на /tasks і блок
+#   «Картки цієї лаби» на /labs/N збирають усі, з будь-якої зони. Полів lab/required у моделі Task
+#   ще нема — додати перед імпортом (і проставити наявним карткам за таблицею вище).
+# - не хочеш підзону — тег lab працює й без неї, картки лишаються у своїх home.
+#
+# СУМНІВИ
+# 1. Ціна обовʼязкового. Бриф — 🌱; score.md: «📎 — обовʼязкове з тем лаб, „трійка“». Я зробив 🌱
+#    (дрібних карток багато, разом відчутно). Якщо правило score.md — підняти 19 required до 📎
+#    або переписати рядок у score.md.
+# 2. Подвійна оплата одного коду: lab1-field-output ↔ console-render 🥉; lab1-read-key / move-player ↔
+#    авто-картки опису гри (control-direct 🌱, тип «гравець» 🌱); lab2-save-text ↔ score-records;
+#    lab2-binary-save ↔ save-game; json-files ↔ save-progress / game-settings; lab2-cell-dict ↔
+#    interaction-table. Розвів описами («як у коді» ↔ «що в грі», мінімум ↔ повна фіча) і посиланнями.
+#    Альтернатива — правило «картка лаби і картка фічі на тому самому коді — платиться дорожча».
+# 3. Сторінки лаб 2–5 — чернетки («узгодити перед публікацією»): картки повторюють поточний текст;
+#    зміниться лаба — правляться картки. Лаба 1 стабільна.
+# 4. Додаткові — картка на групу, а не на кожну можливість: зараховується, коли використано все
+#    з групи і зі змістом; частково — нуль. Пом'якшити: «≥ 2/3 групи» або окремі 🌱 на найрідші
+#    (nonlocal, for-else, * і /) — ще ~6 карток. Перелік «по пунктах» дав би ~25 карток на одну лабу 1.
+# 5. Ціни наявних обовʼязкових: logic-render-split і unit-tests 🥉 → 📎 (reword); typing-mypy розщеплено:
+#    сигнатури — нова 🌱, mypy по всьому коду — лишається 🥉. Якщо усталені ціни не чіпаємо (як у T273 Q5) —
+#    reword лише тексту, coin прибрати.
+# 6. Лаба 5 бонусна, і кожен її пункт — день роботи: обовʼязкові 📎, деплой і рівні через API 🥉 ✍️.
+# 7. Чернетки ✍️: lab3-mixins (🥉 чи 📎), lab5-level-api і lab5-deploy (ціна), json-files і random-seed
+#    (перетин із фічами), cross-platform-run (для pygame/tkinter безкоштовно, для msvcrt — 22 з 82
+#    на лабі 1 — справжня робота; перевірка — запуск на macOS).
+# 8. «Зі смислом» (умова на 89) у картках не формалізоване — вирішує викладач; docstrings прямо каже
+#    «по суті, а не номери пунктів лаби» (T255: такі докстрінги — ознака згенерованого коду).
+# 9. Відкинуто, щоб не роздувати: свій контекстний менеджер, lru_cache, покриття тестами, CI на GitHub
+#    Actions, GitHub Issues, профіль гравця на сервері, відео-пояснення коду (формат захисту, не таск),
+#    тест завантаження рівня, файл-індекс рівнів, окремий itertools (злитий у std-collections).
+
+new:
+  # ── Лаба 1 · обовʼязкові ─────────────────────────────────────────────
+  lab1-field-output:
+    home: code/architecture
+    home_wish: code/labs
+    title: "Поле на екрані"
+    description: "Гра показує поле й оновлює його після кожного ходу — print у консолі чи вікно. Показати: функцію виводу і рядок у циклі, де вона викликається; перемальовка кадру й емодзі — «Консольний рендер»."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [вивід поля, малювання поля, друк мапи, карта на екрані]
+      ru: [вывод поля, отрисовка поля, печать карты]
+      en: [render, print board, draw grid]
+    status: active
+    lab: 1
+    required: true
+  lab1-read-key:
+    home: code/architecture
+    home_wish: code/labs
+    title: "Клавіша з клавіатури"
+    description: "Гра читає клавішу гравця будь-яким способом: input(), msvcrt, keyboard, curses чи подія вікна pygame / tkinter. Показати: рядок, де читається клавіша, і як вона стає командою."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [ввід клавіші, натискання клавіші, керування, wasd]
+      ru: [ввод клавиши, нажатие клавиши, управление]
+      en: [input, keypress, getch, msvcrt]
+    status: active
+    lab: 1
+    required: true
+  lab1-move-player:
+    home: code/architecture
+    home_wish: code/labs
+    title: "Рух гравця клавішами"
+    description: "Клавіша змінює координати гравця — вгору, вниз, вліво, вправо, — і гравець зʼявляється на новій клітинці. Показати: функцію руху і як вона отримує напрямок від клавіші."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [рух гравця, переміщення, крок гравця, координати гравця]
+      ru: [движение игрока, перемещение, ход игрока]
+      en: [player movement, move, step]
+    status: active
+    lab: 1
+    required: true
+  lab1-cell-check:
+    home: code/architecture
+    home_wish: code/labs
+    title: "Перевірка клітинки перед кроком"
+    description: "Перед кожним кроком гра дивиться, що в цільовій клітинці: стіна й край поля не пускають, приз дає бали, ворог чи вихід закінчують гру. Показати: перевірку і місце в русі, де вона викликається (перевірка лише при побудові поля не рахується)."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [перевірка клітинки, зіткнення, стіна не пускає, колізія]
+      ru: [проверка клетки, столкновение, коллизия]
+      en: [collision, cell check, walkable]
+    status: active
+    lab: 1
+    required: true
+  lab1-game-loop:
+    home: code/architecture
+    home_wish: code/labs
+    title: "Ігровий цикл до виграшу чи програшу"
+    description: "Цикл «клавіша → рух → перевірка → вивід» крутиться, доки гравець не виграв або не програв, і в грі є обидва фінали. Показати: while і умови виходу з нього; цикл з окремими кроками — «Цикл: ввід → оновлення → вивід»."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [ігровий цикл, головний цикл, кінець гри, виграш і програш]
+      ru: [игровой цикл, главный цикл, конец игры]
+      en: [game loop, main loop, game over]
+    status: active
+    lab: 1
+    required: true
+  lab1-own-functions:
+    home: code/python
+    home_wish: code/labs
+    title: "Кілька власних функцій"
+    description: "Логіку розкладено на власні функції — щонайменше три, напр. main, read_key, move_player, — і кожна справді викликається. Показати: def-и і місця викликів."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [функції, свої функції, розбиття на функції, def]
+      ru: [функции, свои функции, разбить на функции]
+      en: [functions, def, decomposition]
+    status: active
+    lab: 1
+    required: true
+
+  # ── Лаба 1 · додаткові (група = картка) ──────────────────────────────
+  lab1-data-types:
+    home: code/python
+    home_wish: code/labs
+    title: "Типи: str, int, float, bool, None"
+    description: "У коді гри є str, int, float, bool і None, кожен на своєму місці: float — час чи швидкість, bool — «гра триває», None — «ще нема». Показати: рядок для кожного типу."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [типи даних, дробові числа, логічний тип, порожнє значення]
+      ru: [типы данных, флоат, булевый тип, нон]
+      en: [data types, float, bool, NoneType]
+    status: active
+    lab: 1
+  lab1-conditions:
+    home: code/python
+    home_wish: code/labs
+    title: "Умови: elif, and/or/not, a < b < c"
+    description: "У коді є elif і else, логічні and, or, not і подвійне порівняння на кшталт 0 <= x < width для меж поля. Показати: рядок для кожного."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [умови, логічні оператори, ланцюжок порівнянь, межі поля]
+      ru: [условия, елиф, логические операторы]
+      en: [elif, boolean operators, chained comparison]
+    status: active
+    lab: 1
+  lab1-loops:
+    home: code/python
+    home_wish: code/labs
+    title: "Цикли: for, while, break, for-else"
+    description: "Є for із range, while, continue, break і else у циклу (напр. for … else: «ворога поруч нема»). Показати: рядок для кожного."
+    coin: tin
+    max_count: 1
+    games: []
+    aliases:
+      uk: [цикли, for-else, переривання циклу, range]
+      ru: [циклы, фор елс, брейк, континью]
+      en: [for else, while, break, continue]
+    status: active
+    lab: 1
+  lab1-function-params:
+    home: code/python
+    home_wish: code/labs
+    title: "Функції: параметри, *, /, lambda"
+    description: "Параметри за замовчуванням і виклик за іменем, * і / у списку параметрів, lambda (напр. key= у max чи sorted), вкладена функція і кілька вбудованих понад print та input (min, max, abs, sum…). Показати: рядок для кожного."
+    coin: tin
+    max_count: 1
+    games: []
+    aliases:
+      uk: [параметри за замовчуванням, іменовані аргументи, лямбда, вкладена функція, вбудовані функції]
+      ru: [аргументы по умолчанию, лямбда, вложенная функция, кварги]
+      en: [keyword arguments, keyword-only, positional-only, lambda, builtins]
+    status: active
+    lab: 1
+  lab1-scope:
+    home: code/python
+    home_wish: code/labs
+    title: "global і nonlocal"
+    description: "global для спільного стану (рахунок, рекорд) і nonlocal у вкладеній функції, що змінює змінну зовнішньої (лічильник кроків). Показати: обидва місця і навіщо там саме так."
+    coin: tin
+    max_count: 1
+    games: []
+    aliases:
+      uk: [область видимості, глобальна змінна, нелокальна змінна]
+      ru: [область видимости, глобальная переменная, нонлокал]
+      en: [scope, global, nonlocal, LEGB]
+    status: active
+    lab: 1
+
+  # ── Лаба 2 · обовʼязкові ─────────────────────────────────────────────
+  lab2-grid-matrix:
+    home: code/architecture
+    home_wish: code/labs
+    title: "Поле — список списків"
+    description: "Поле зберігається списком списків, клітинка — field[y][x], а не символ у рядку. Показати: де поле будується і де гра читає й змінює клітинку за координатами."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [матриця, двовимірний список, список списків, сітка]
+      ru: [матрица, двумерный список, список списков]
+      en: [2d list, matrix, grid]
+    status: active
+    lab: 2
+    required: true
+  lab2-cell-dict:
+    home: code/architecture
+    home_wish: code/labs
+    title: "Словник клітинок: символ → властивості"
+    description: "Символ клітинки → її властивості (прохідна, бали, назва) у словнику, і гра питає словник замість ланцюжка if. Показати: словник і рядок, де з нього читається; що стається при зустрічі двох сутностей, записане даними, — «Таблиця взаємодій»."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [словник клітинок, легенда мапи, властивості клітинок]
+      ru: [словарь клеток, легенда карты, свойства клеток]
+      en: [dict, tile table, lookup table]
+    status: active
+    lab: 2
+    required: true
+  lab2-direction-tuples:
+    home: code/python
+    home_wish: code/labs
+    title: "Напрямки — кортежі (dx, dy)"
+    description: "Координати — кортежі (x, y), напрямки — (dx, dy), клавіша → напрямок через словник {'w': (0, -1), …}. Показати: словник і рядок, де гравець зсувається на (dx, dy)."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [кортежі, напрямки, вектор руху, dx dy]
+      ru: [кортежи, направления, тюпл]
+      en: [tuple, direction vector, dx dy]
+    status: active
+    lab: 2
+    required: true
+  lab2-save-text:
+    home: code/python
+    home_wish: code/labs
+    title: "Результат партії у текстовий файл"
+    description: "Після партії результат (кроки, бали, зібране) записується в текстовий файл. Показати: open(…) у режимі 'a' чи 'w' і сам файл після двох партій; рекорд, який гра читає назад і показує, — «Рекорд»."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [запис у файл, результати у файл, текстовий файл]
+      ru: [запись в файл, сохранить в файл, текстовый файл]
+      en: [write file, open, text file]
+    status: active
+    lab: 2
+    required: true
+  lab2-string-methods:
+    home: code/python
+    home_wish: code/labs
+    title: "Рядкові методи і f-рядки"
+    description: "split, strip і join розбирають рядки файлу рівня чи ввід гравця, f-рядки форматують вивід (рахунок, повідомлення). Показати: рядок для кожного."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [методи рядків, розбір рядка, f-рядки, форматування]
+      ru: [методы строк, сплит, ф-строки, форматирование]
+      en: [split, strip, join, f-string]
+    status: active
+    lab: 2
+    required: true
+
+  # ── Лаба 2 · додаткові ───────────────────────────────────────────────
+  lab2-slices-comprehensions:
+    home: code/python
+    home_wish: code/labs
+    title: "Зрізи, включення, enumerate, zip"
+    description: "Спискове включення будує поле чи збирає всіх ворогів, зріз бере частину рядка чи поля, enumerate дає координати при обході, zip складає пари. Показати: рядок для кожного."
+    coin: tin
+    max_count: 1
+    games: []
+    aliases:
+      uk: [зрізи, спискові включення, генератор списку, нумерація при обході]
+      ru: [срезы, генератор списка, лист компрехеншн, энумерейт]
+      en: [slicing, list comprehension, enumerate, zip]
+    status: active
+    lab: 2
+  lab2-unpacking:
+    home: code/python
+    home_wish: code/labs
+    title: "Розпакування, *args і **kwargs"
+    description: "x, y = pos, first, *rest = … і функція з *args чи **kwargs (напр. створення сутності з довільними параметрами). Показати: рядок для кожного."
+    coin: tin
+    max_count: 1
+    games: []
+    aliases:
+      uk: [розпакування, зірочка, множинне присвоювання, довільні аргументи]
+      ru: [распаковка, звёздочка, аргс кваргс]
+      en: [unpacking, "*args", "**kwargs", star expression]
+    status: active
+    lab: 2
+  lab2-sets:
+    home: code/python
+    home_wish: code/labs
+    title: "Множини: відвідане і зібране"
+    description: "Множина відвіданих клітинок чи зібраних призів: додавання, перевірка in, операції |, & чи -. Показати: де множина оновлюється і де перевіряється."
+    coin: tin
+    max_count: 1
+    games: []
+    aliases:
+      uk: [множини, відвідані клітинки, унікальні значення]
+      ru: [множества, сет, посещённые клетки]
+      en: [set, visited, membership]
+    status: active
+    lab: 2
+  lab2-dict-tricks:
+    home: code/python
+    home_wish: code/labs
+    title: "Словники: включення, get, вкладені"
+    description: "Словникове включення, get зі значенням за замовчуванням і словник словників (напр. параметри кожного типу клітинки). Показати: рядок для кожного."
+    coin: tin
+    max_count: 1
+    games: []
+    aliases:
+      uk: [словникові включення, значення за замовчуванням, вкладені словники]
+      ru: [словарь словарей, дикт компрехеншн, гет по умолчанию]
+      en: [dict comprehension, dict.get, nested dict]
+    status: active
+    lab: 2
+  lab2-binary-save:
+    home: code/python
+    home_wish: code/labs
+    title: "Двійковий файл: pickle або struct"
+    description: "Стан гри чи рекорди записуються у двійковий файл через pickle (або struct) і читаються назад при запуску. Показати: dump і load та сам файл; продовжити перервану партію — «Збереження гри»."
+    coin: tin
+    max_count: 1
+    games: []
+    aliases:
+      uk: [двійковий файл, бінарний файл, серіалізація, pickle]
+      ru: [бинарный файл, пикл, сериализация]
+      en: [pickle, struct, binary file]
+    status: active
+    lab: 2
+
+  # ── Лаба 3 · обовʼязкові ─────────────────────────────────────────────
+  lab3-classes:
+    home: code/architecture
+    home_wish: code/labs
+    title: "Класи гри, поля і гравця"
+    description: "Головні сутності — класи (Game, Field, Player): стан в атрибутах, поведінка в методах. Показати: класи і де створюються обʼєкти."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [класи, ооп, обʼєкти, атрибути й методи]
+      ru: [классы, ооп, объекты]
+      en: [class, oop, object]
+    status: active
+    lab: 3
+    required: true
+  lab3-base-class:
+    home: code/architecture
+    home_wish: code/labs
+    title: "Базовий клас клітинки і нащадки"
+    description: "Стіна, приз, ворог успадковують спільний клас і перевизначають його метод (напр. on_enter), а гра не питає «який це тип». Показати: базовий клас, два нащадки і виклик методу без isinstance."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [спадкування, базовий клас, нащадок, поліморфізм, перевизначення методу]
+      ru: [наследование, базовый класс, полиморфизм]
+      en: [inheritance, base class, polymorphism, override]
+    status: active
+    lab: 3
+    required: true
+  lab3-init-str:
+    home: code/python
+    home_wish: code/labs
+    title: "__init__ і __str__ / __repr__"
+    description: "Обʼєкти налаштовуються в __init__, клітинка й поле друкуються через __str__ (для гравця) чи __repr__ (для налагодження). Показати: методи і print(field)."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [конструктор, магічні методи, системні методи, рядкове представлення]
+      ru: [конструктор, магические методы, дандер]
+      en: [__init__, __str__, __repr__, dunder]
+    status: active
+    lab: 3
+    required: true
+
+  # ── Лаба 3 · додаткові ───────────────────────────────────────────────
+  lab3-underscores:
+    home: code/python
+    home_wish: code/labs
+    title: "Підкреслення: _x, __x і _"
+    description: "Внутрішні атрибути позначені _ (напр. _cells), приватний __ із name mangling, _ для непотрібного значення (for _ in range(n)). Показати: рядок для кожного."
+    coin: tin
+    max_count: 1
+    games: []
+    aliases:
+      uk: [підкреслення, приватні атрибути, захищені атрибути, інкапсуляція]
+      ru: [подчёркивание, приватные поля, инкапсуляция]
+      en: [private, protected, name mangling, encapsulation]
+    status: active
+    lab: 3
+  lab3-eq-hash:
+    home: code/python
+    home_wish: code/labs
+    title: "Порівняння: __eq__, __hash__, __lt__"
+    description: "Координата чи предмет порівнюються через __eq__ і мають __hash__ (тож їх можна класти в set і брати ключем словника), порядок — через __lt__ (сортування рекордів). Показати: методи і де вони працюють."
+    coin: tin
+    max_count: 1
+    games: []
+    aliases:
+      uk: [порівняння обʼєктів, рівність обʼєктів, хешування, сортування обʼєктів]
+      ru: [сравнение объектов, хеш, равенство]
+      en: [__eq__, __hash__, __lt__, total_ordering]
+    status: active
+    lab: 3
+  lab3-container-methods:
+    home: code/python
+    home_wish: code/labs
+    title: "Поле як контейнер: len, [ ], in, for"
+    description: "Клас поля чи інвентаря має __len__, __getitem__, __iter__ і __contains__: працюють len(field), field[pos], pos in field, for cell in field; зрізи field[a:b] (лаба 4) — теж сюди. Показати: методи і їх використання."
+    coin: tin
+    max_count: 1
+    games: []
+    aliases:
+      uk: [протокол контейнера, індексація поля, ітерування поля, протокол послідовності]
+      ru: [контейнер, итерация, индексация, срезы]
+      en: [__getitem__, __len__, __iter__, __contains__, sequence protocol]
+    status: active
+    lab: 3
+  lab3-property:
+    home: code/python
+    home_wish: code/labs
+    title: "@property і setter з перевіркою"
+    description: "Обчислювана властивість (player.is_alive, level.is_solved) і setter, що не пускає погане значення (hp не нижче 0). Показати: декоратори і звернення без дужок."
+    coin: tin
+    max_count: 1
+    games: []
+    aliases:
+      uk: [властивості, геттер, сеттер, обчислюване поле]
+      ru: [свойства, проперти, геттер, сеттер]
+      en: [property, getter, setter]
+    status: active
+    lab: 3
+  lab3-mixins:
+    home: code/architecture
+    home_wish: code/labs
+    title: "Міксини і super()"
+    description: "Множинне спадкування зі змістом: міксини Movable, Collectable, Dangerous додають поведінку, а super().__init__() проходить увесь ланцюжок. Показати: клас із двома батьками і його __mro__."
+    coin: bronze
+    max_count: 1
+    games: []
+    aliases:
+      uk: [міксини, домішки, множинне спадкування, порядок mro]
+      ru: [миксины, множественное наследование, супер]
+      en: [mixin, multiple inheritance, super, MRO]
+    status: draft
+    lab: 3
+  lab3-classmethods:
+    home: code/python
+    home_wish: code/labs
+    title: "Класові й статичні методи"
+    description: "@classmethod як другий конструктор (Level.from_file), @staticmethod для допоміжного, атрибут класу — лічильник обʼєктів чи реєстр типів клітинок за символом. Показати: рядок для кожного."
+    coin: tin
+    max_count: 1
+    games: []
+    aliases:
+      uk: [класовий метод, статичний метод, атрибут класу, реєстр типів, фабричний метод]
+      ru: [классметод, статикметод, атрибут класса]
+      en: [classmethod, staticmethod, class attribute, factory method]
+    status: active
+    lab: 3
+
+  # ── Лаба 4 · обовʼязкові (п.2 і п.4 — наявні картки, див. шапку) ─────
+  lab4-package:
+    home: code/architecture
+    home_wish: code/labs
+    title: "Гра — пакет із модулів"
+    description: "Код розкладено по файлах за відповідальністю (двіжок, вивід, рівні) у теці з __init__.py, і модулі імпортують одне одного. Показати: дерево файлів та імпорти; запуск однією командою — окрема картка."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [модулі, пакет, імпорти, структура проєкту]
+      ru: [модули, пакет, импорты, структура проекта]
+      en: [package, modules, import, __init__.py]
+    status: active
+    lab: 4
+    required: true
+  lab4-type-hints:
+    home: code/python
+    home_wish: code/labs
+    title: "Анотації типів у сигнатурах"
+    description: "Публічні функції й методи мають анотації параметрів і результату (def move(self, d: Direction) -> bool), і PyCharm не підкреслює типи. Показати: кілька сигнатур; mypy по всьому коду — «Типи перевіряє mypy»."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [анотації типів, тайпхінти, типізація сигнатур, підказки типів]
+      ru: [аннотации типов, тайпхинты, типизация]
+      en: [type hints, annotations, typing]
+    status: active
+    lab: 4
+    required: true
+
+  # ── Лаба 4 · додаткові ───────────────────────────────────────────────
+  lab4-closures:
+    home: code/python
+    home_wish: code/labs
+    title: "Замикання: фабрика функцій"
+    description: "Функція створює й повертає іншу, що памʼятає її змінні: make_handler(direction), make_patrol(route). Показати: фабрику і де викликається створена функція."
+    coin: tin
+    max_count: 1
+    games: []
+    aliases:
+      uk: [замикання, фабрика функцій, функція повертає функцію]
+      ru: [замыкание, фабрика функций, функция возвращает функцию]
+      en: [closure, function factory, higher-order function]
+    status: active
+    lab: 4
+  lab4-decorator:
+    home: code/python
+    home_wish: code/labs
+    title: "Свій декоратор"
+    description: "Свій декоратор із wrapper над функціями гри: лог ходу, вимір часу, перевірка «гра ще триває» перед дією. Показати: декоратор і щонайменше два місця з @."
+    coin: tin
+    max_count: 1
+    games: []
+    aliases:
+      uk: [декоратор, обгортка функції, логування ходів, таймер функції]
+      ru: [декоратор, обёртка, враппер]
+      en: [decorator, wrapper, functools.wraps]
+    status: active
+    lab: 4
+  lab4-with-files:
+    home: code/python
+    home_wish: code/labs
+    title: "Файли лише через with"
+    description: "Усі файли гри (рівні, рекорди, збереження) відкриваються через with open(…), без open, який треба закривати руками. Показати: ці місця."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [контекстний менеджер, закриття файлу, with open]
+      ru: [контекстный менеджер, закрытие файла, виз опен]
+      en: [with open, context manager, with statement]
+    status: active
+    lab: 4
+  lab4-parametrize:
+    home: code/tests
+    home_wish: code/labs
+    title: "Тести з parametrize і фікстурою"
+    description: "Один тест перевіряє кілька випадків правила через @pytest.mark.parametrize (стіна, приз, вихід), а маленьке поле дає фікстура. Показати: тест і зелений вивід pytest."
+    coin: tin
+    max_count: 1
+    games: []
+    aliases:
+      uk: [параметризація тестів, фікстури, кілька випадків в одному тесті]
+      ru: [параметризация, фикстуры, пайтест]
+      en: [parametrize, fixture, pytest]
+    status: active
+    lab: 4
+
+  # ── Лаба 5* (бонусна) ────────────────────────────────────────────────
+  lab5-score-server:
+    home: code/architecture
+    home_wish: code/labs
+    title: "Сервер рекордів на FastAPI"
+    description: "POST /scores приймає результат, GET /scores віддає таблицю лідерів, а гра після партії сама надсилає результат. Показати: кінцеві точки, рядок із запитом у грі і сторінку /docs."
+    coin: tin
+    max_count: 1
+    games: []
+    aliases:
+      uk: [сервер рекордів, апі, таблиця лідерів онлайн, бекенд]
+      ru: [сервер рекордов, апи, бэкенд, лидерборд]
+      en: [fastapi, rest api, leaderboard, backend]
+    status: active
+    lab: 5
+    required: true
+  lab5-database:
+    home: code/architecture
+    home_wish: code/labs
+    title: "Рекорди в SQLite через SQLAlchemy"
+    description: "Результати живуть у базі SQLite через модель SQLAlchemy (на старті можна JSON-файл), і перезапуск сервера їх не губить. Показати: модель, запис у базу і файл .db."
+    coin: tin
+    max_count: 1
+    games: []
+    aliases:
+      uk: [база даних, sqlite, orm, таблиця в базі]
+      ru: [база данных, скулайт, орм, алхимия]
+      en: [sqlite, sqlalchemy, orm, database]
+    status: active
+    lab: 5
+    required: true
+  lab5-jinja-page:
+    home: code/architecture
+    home_wish: code/labs
+    title: "Сторінка лідерів на Jinja2"
+    description: "Сервер віддає HTML-сторінку таблиці лідерів із шаблону Jinja2 ({% for %} по результатах). Показати: шаблон і скриншот сторінки в браузері."
+    coin: tin
+    max_count: 1
+    games: []
+    aliases:
+      uk: [html-сторінка, шаблон сторінки, веб-сторінка рекордів]
+      ru: [шаблон, джинджа, хтмл страница]
+      en: [jinja2, template, html]
+    status: active
+    lab: 5
+    required: true
+  lab5-level-api:
+    home: code/architecture
+    home_wish: code/labs
+    title: "Обмін рівнями через сервер"
+    description: "Гравець вивантажує свій рівень на сервер і скачує чужий (POST і GET /levels), гра відкриває скачаний, а список рівнів — галерея. Показати: кінцеві точки і гру на скачаному рівні; обмін файлом без сервера — «Обмін рівнями»."
+    coin: bronze
+    max_count: 1
+    games: []
+    aliases:
+      uk: [обмін рівнями онлайн, завантаження рівнів, галерея рівнів]
+      ru: [обмен уровнями, галерея уровней, загрузка уровней]
+      en: [level sharing, upload levels, user levels]
+    status: draft
+    lab: 5
+  lab5-routers-tests:
+    home: code/architecture
+    home_wish: code/labs
+    title: "Роутери і тести API"
+    description: "Кінцеві точки розкладено по модулях через APIRouter, і на POST та GET є тести з TestClient. Показати: модулі роутерів і зелений вивід pytest."
+    coin: tin
+    max_count: 1
+    games: []
+    aliases:
+      uk: [роутери, тести апі, модулі кінцевих точок]
+      ru: [роутеры, тесты апи, эндпоинты]
+      en: [APIRouter, TestClient, api tests]
+    status: active
+    lab: 5
+  lab5-deploy:
+    home: code/packaging
+    home_wish: code/labs
+    title: "Сервер на публічній адресі"
+    description: "Сервер рекордів розгорнуто в інтернеті (Render, Railway, VPS…), і гра ходить на публічну адресу, а не на localhost. Показати: адресу з /docs і де гра бере адресу сервера."
+    coin: bronze
+    max_count: 1
+    games: []
+    aliases:
+      uk: [деплой, розгортання, хостинг, публічна адреса]
+      ru: [деплой, хостинг, задеплоить]
+      en: [deploy, hosting, render, railway]
+    status: draft
+    lab: 5
+
+  # ── Понад лаби · python ──────────────────────────────────────────────
+  enum-states:
+    home: code/python
+    title: "Enum для напрямків і станів"
+    description: "Напрямки, стани гри (меню, гра, пауза, кінець) чи типи клітинок — Enum замість рядків і чисел. Показати: клас Enum і порівняння на кшталт state is State.PAUSED."
+    coin: tin
+    max_count: 1
+    games: []
+    aliases:
+      uk: [перелічення, енам, стани гри, напрямки]
+      ru: [енам, перечисление, состояния]
+      en: [enum, Enum, state machine]
+    status: active
+  match-case-commands:
+    home: code/python
+    title: "match-case для команд"
+    description: "Клавіша чи команда розбирається через match / case замість ланцюжка elif: кілька клавіш через |, case _ — для решти. Показати: блок match."
+    coin: tin
+    max_count: 1
+    games: []
+    aliases:
+      uk: [зіставлення зі зразком, світч, розбір команд]
+      ru: [матч кейс, свитч, паттерн матчинг]
+      en: [match case, pattern matching, switch]
+    status: active
+  pathlib-paths:
+    home: code/python
+    title: "Шляхи до файлів через pathlib"
+    description: "Файли рівнів шукаються від теки коду — Path(__file__).parent / 'levels', а не від теки, звідки запустили. Показати: рядок і запуск гри з іншої теки."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [шляхи до файлів, відносний шлях, тека з рівнями]
+      ru: [пути к файлам, патлиб, относительный путь]
+      en: [pathlib, Path, __file__]
+    status: active
+  json-files:
+    home: code/python
+    title: "JSON для рекордів чи налаштувань"
+    description: "Рекорди, налаштування чи стан читаються й пишуться через json.load і json.dump, а відсутній файл не валить гру. Показати: код і сам .json; що саме зберігається — окремі картки (рекорди, налаштування)."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [джейсон, збереження у json, файл налаштувань]
+      ru: [джейсон, жсон, сохранение в json]
+      en: [json, json.dump, json.load]
+    status: draft
+  argparse-cli:
+    home: code/python
+    title: "Аргументи запуску гри"
+    description: "Параметри запуску на кшталт python main.py --level 3 --seed 42 задають рівень, розмір чи режим через argparse (чи sys.argv), а --help друкує довідку. Показати: парсер і вивід --help."
+    coin: tin
+    max_count: 1
+    games: []
+    aliases:
+      uk: [аргументи командного рядка, параметри запуску, ключі запуску]
+      ru: [аргументы командной строки, параметры запуска, аргпарс]
+      en: [argparse, cli, sys.argv, "--help"]
+    status: active
+  logging-debug:
+    home: code/python
+    title: "Журнал налагодження: logging"
+    description: "Налагоджувальні повідомлення йдуть через logging у файл (game.log) з рівнями DEBUG та INFO, а не print, що лишився в коді. Показати: налаштування logging і шматок game.log; журнал подій для гравця — «Журнал подій»."
+    coin: tin
+    max_count: 1
+    games: []
+    aliases:
+      uk: [логування, лог-файл, налагодження, логи]
+      ru: [логирование, логи, отладка]
+      en: [logging, log file, debug]
+    status: active
+  docstrings:
+    home: code/python
+    title: "Докстрінги класів і функцій"
+    description: "Класи й публічні функції двіжка мають докстрінги по суті: що робить, що приймає, що повертає, а не номери пунктів лаби. Показати: кілька докстрінгів і help(…) у консолі."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [докстрінги, документація коду, опис функцій]
+      ru: [докстринги, документация функций, описание функций]
+      en: [docstring, help, pydoc]
+    status: active
+  named-constants:
+    home: code/python
+    title: "Константи замість магічних чисел"
+    description: "Розмір поля, символи клітинок, клавіші, швидкість — іменовані константи ВЕЛИКИМИ_ЛІТЕРАМИ на початку модуля чи в config.py, а не числа й символи посеред логіки. Показати: константи і де вони використовуються."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [константи, магічні числа, налаштування в коді, конфіг]
+      ru: [константы, магические числа, конфиг]
+      en: [constants, magic numbers, config]
+    status: active
+  abc-protocol:
+    home: code/python
+    title: "Абстрактний клас або Protocol"
+    description: "Базова сутність — ABC з @abstractmethod (сама не створюється) або typing.Protocol («усе, що вміє draw»). Показати: базовий клас і нащадка, що реалізує метод."
+    coin: tin
+    max_count: 1
+    games: []
+    aliases:
+      uk: [абстрактний клас, інтерфейс, протокол, абстрактний метод]
+      ru: [абстрактный класс, интерфейс, протокол]
+      en: [abc, abstractmethod, Protocol, interface]
+    status: active
+  random-seed:
+    home: code/python
+    title: "Випадковість через seed"
+    description: "Уся випадковість гри йде через один random.Random(seed): той самий seed — той самий рівень і ходи ворогів, що зручно для тестів і пошуку помилок. Показати: створення генератора й де він передається; seed для гравця — «Показати/ввести seed рівня»."
+    coin: tin
+    max_count: 1
+    games: []
+    aliases:
+      uk: [сід, зерно випадковості, відтворюваність, рандом]
+      ru: [сид, зерно, воспроизводимость, рандом]
+      en: [seed, random.Random, reproducible]
+    status: draft
+  input-robust:
+    home: code/python
+    title: "Ввід, що не валить гру"
+    description: "Невідома клавіша, текст замість числа чи Ctrl+C не обривають гру текстом помилки Python: гра перепитує або чемно виходить (try / except ValueError, KeyboardInterrupt). Показати: обробку і спробу «зламати» ввід."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [неправильний ввід, обробка вводу, гра не падає, перевірка вводу]
+      ru: [неправильный ввод, валидация ввода, не падает]
+      en: [input validation, ValueError, KeyboardInterrupt]
+    status: active
+  ruff-clean:
+    home: code/python
+    title: "Код без зауважень ruff"
+    description: "ruff check і ruff format --check (чи black) проходять без зауважень, налаштування — у pyproject.toml. Показати: вивід обох команд."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [лінтер, форматування коду, стиль коду, pep8]
+      ru: [линтер, форматирование, стиль кода, пеп8]
+      en: [ruff, black, pep8, linter]
+    status: active
+
+  # ── Понад лаби · tests / git / packaging ─────────────────────────────
+  first-test:
+    home: code/tests
+    title: "Перший тест на правило гри"
+    description: "Хоча б один pytest-тест перевіряє правило двіжка без консолі (гравець не проходить крізь стіну), і pytest зелений. Показати: тест і вивід pytest; тести на рух, зіткнення й виграш — «Юніт-тести логіки»."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [перший тест, тест правила, перевірка правила]
+      ru: [первый тест, тест, пайтест]
+      en: [pytest, assert, test]
+    status: active
+    lab: 4
+  gitignore-clean:
+    home: code/git
+    title: ".gitignore без сміття в репо"
+    description: "У корені є .gitignore, а в репозиторії нема __pycache__, .venv, .idea, .DS_Store та інших згенерованих файлів. Показати: .gitignore і дерево репозиторію на GitHub."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [гітігнор, сміття в репо, ігнорування файлів]
+      ru: [гитигнор, мусор в репозитории, пикеш]
+      en: [.gitignore, __pycache__, clean repo]
+    status: active
+  feature-branch:
+    home: code/git
+    title: "Фіча в окремій гілці"
+    description: "Одна фіча зроблена в окремій гілці й злита в main (merge чи Pull Request), а здаєш із main. Показати: гілку в git log --graph чи PR на GitHub."
+    coin: tin
+    max_count: 1
+    games: []
+    aliases:
+      uk: [гілка, бранч, злиття гілки, пул-реквест]
+      ru: [ветка, бранч, мерж, пулл реквест]
+      en: [branch, merge, pull request]
+    status: active
+  main-guard:
+    home: code/packaging
+    title: "if __name__ == '__main__'"
+    description: "Модуль із точкою входу запускає гру лише під if __name__ == '__main__', тож import цього модуля (у тестах чи іншому файлі) гру не стартує. Показати: цей рядок."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [точка входу, запуск модуля, імпорт без запуску]
+      ru: [нейм мейн, точка входа, запуск модуля]
+      en: [__main__, entry point, main guard]
+    status: active
+  cross-platform-run:
+    home: code/packaging
+    title: "Запуск на Windows, macOS і Linux"
+    description: "Гра працює на Windows, macOS і Linux: клавіші читаються не лише через msvcrt (є запасний шлях чи кросплатформна бібліотека), шляхи — через pathlib чи os.path. Показати: де гра обирає спосіб читання клавіш; викладач запускає на macOS."
+    coin: tin
+    max_count: 1
+    games: []
+    aliases:
+      uk: [кросплатформність, працює на маку, windows і macos]
+      ru: [кроссплатформенность, работает на маке, виндовс]
+      en: [cross-platform, msvcrt, curses, macos]
+    status: draft
+
+  # ── Супровід ─────────────────────────────────────────────────────────
+  game-demo-video:
+    home: support/video
+    title: "Відео-демка гри"
+    description: "Відео на 1–3 хвилини: запуск, як грається, виграш і програш. Показати: посилання (YouTube без пошуку, Loom чи Drive) у заявці."
+    coin: wood
+    max_count: 1
+    games: []
+    aliases:
+      uk: [відео-демка, відео гри, запис екрана, демо]
+      ru: [видео демка, запись экрана, демо]
+      en: [demo video, gameplay video, screen recording]
+    status: active
+
+reword:
+  game-loop:
+    title: "Цикл: ввід → оновлення → вивід"
+    description: "Ігровий цикл розкладено на три кроки — прочитати ввід, оновити стан, намалювати, — кожен своєю функцією чи методом (handle_input, update, render), і вороги з таймерами живуть у тому ж тіку. Показати: цикл і три функції; простий while «клавіша → рух» — «Ігровий цикл до виграшу чи програшу» (лаба 1)."
+    why: "«tick/update/render» — жаргон без того, що показати; картка перетиналась з обовʼязковим п.5 лаби 1 — тепер вона наступний крок після нього, ціна 📎 лишається"
+  logic-render-split:
+    title: "Двіжок окремо від виводу"
+    description: "Клас гри нічого не друкує й не читає клавіш: print, input, pygame — лише в модулі виводу, а двіжок віддає стан і приймає команди. Показати: модуль двіжка без print та input і де вивід бере з нього стан; два виводи на одному двіжку — «Два фронтенди»."
+    coin: tin
+    why: "«вимога спільного двіжка» студенту нічого не каже; це обовʼязковий п.4 лаби 3, а 🥉 за обовʼязкове вибивається з набору (інші обовʼязкові — 🌱); 📎, бо це найважча з вимог лаби 3; повна версія — dual-frontends 🥈"
+  state-as-data:
+    description: "Увесь стан партії — один обʼєкт, що перетворюється на словник чи JSON і назад (to_dict / from_dict) без втрат. Показати: обидва методи і хто ними користується (збереження, повтор, тест)."
+    why: "«серіалізований стан» без підказки, що показати і чим це відрізняється від простого збереження"
+  commit-history:
+    description: "Коміти робляться з компʼютера (git commit і push) по ходу роботи: щонайменше 5 у кілька різних днів, кожен із повідомленням, що змінилось («вороги ходять», а не «update»). Показати: git log чи сторінку комітів на GitHub."
+    why: "«осмислені повідомлення» не каже, скільки й як; на лабі 1 42 з 82 залили все одним комітом, 17 — шаблонні повідомлення, часто — завантаження файлів через сайт GitHub; «без сміття» винесено в gitignore-clean"
+  version-tags:
+    description: "Коміт, з яким здаєш лабу, позначено тегом lab1, lab2… (git tag lab1 і git push --tags). Показати: список тегів на GitHub."
+    why: "«зріз на кожну лабораторну» — без команди й без того, де дивитись"
+  requirements-pyproject:
+    title: "Список залежностей"
+    description: "Усі сторонні бібліотеки (pygame, keyboard…) записані в requirements.txt чи pyproject.toml, і з чистого середовища після pip install -r requirements.txt гра запускається. Показати: файл і команду встановлення в README."
+    why: "«відтворюване середовище» абстрактне, а назва — імена файлів, не дія"
+  single-command-run:
+    description: "Гра запускається однією командою з кореня репозиторію — python main.py чи python -m game — без правки шляхів і копіювання файлів, і ця команда є в README. Показати: команду і README."
+    why: "«без танців» — сленг; не сказано, що показати"
+  typing-mypy:
+    title: "Типи перевіряє mypy"
+    description: "Анотовано весь код, включно з атрибутами класів, і mypy (чи pyright) проходить без помилок. Показати: вивід mypy; анотації лише в сигнатурах — «Анотації типів у сигнатурах» (лаба 4)."
+    why: "обовʼязковий п.3 лаби 4 (анотації в сигнатурах) став окремою 🌱 карткою lab4-type-hints; ця лишається 🥉 як повна перевірка всього коду"
+  dataclass-entities:
+    title: "Dataclass для сутностей"
+    description: "Сутності чи координати описано через @dataclass (Pos(x, y), Item(name, points)) замість словників і голих кортежів; frozen=True чи order=True — де доречно. Показати: клас і створення обʼєктів."
+    why: "«моделі елементів поля» — незрозуміло, що саме зробити й показати"
+  generators-iterators:
+    description: "Функція з yield віддає по одній клітинки поля, сусідів клітинки (neighbors(x, y)) чи хвилі ворогів, а цикл чи any / sum їх споживає; генераторний вираз — теж сюди. Показати: yield і де генератор використовується."
+    why: "додатковий п.2 лаби 4; «обхід поля, хвилі» без того, що показати"
+  custom-exceptions:
+    title: "Власні винятки"
+    description: "Свій клас помилки (LevelError(Exception)) кидається на битий файл рівня чи недопустимий хід і ловиться try / except з повідомленням гравцю замість тексту помилки Python; finally і raise … from … — плюсом. Показати: class, raise і except."
+    why: "обовʼязковий п.2 лаби 4; «охайна обробка» неконкретна; ціна 📎 лишається — це не дрібниця"
+  std-collections:
+    description: "Модуль collections чи itertools зі змістом: deque для черги BFS чи тіла змійки, Counter для підрахунку, defaultdict, namedtuple, heapq, itertools.product для обходу поля. Показати: імпорт і рядок використання."
+    why: "картка була лише для [snake], а колекції потрібні будь-якій грі — привʼязку games зняти; itertools злито сюди, щоб не плодити окрему картку"
+  unit-tests:
+    description: "pytest-тести двіжка без консолі й графіки: щонайменше по тесту на рух, зіткнення (стіна, приз) і виграш чи програш, усі зелені. Показати: теку tests/ і вивід pytest; один тест — «Перший тест на правило гри»."
+    coin: tin
+    why: "обовʼязковий п.4 лаби 4 за 🥉 — найдорожча обовʼязкова вимога; 📎 + крок first-test 🌱; тест на рівнях-фікстурах лишається 🥉"
+  fixture-level-tests:
+    description: "Тест бере маленький рівень із файлу (tests/levels/), програє послідовність ходів і звіряє результат: виграш, позиція гравця, рахунок. Показати: файл рівня, тест і вивід pytest."
+    why: "«мапа з очікуваним результатом» — незрозуміло, що це тест і як він виглядає"
+  architecture-doc:
+    description: "Схема модулів чи класів — Mermaid у README, draw.io чи фото від руки: що де лежить, хто кого викликає, де двіжок і де вивід. Показати: схему в репозиторії."
+    why: "«схема модулів для захисту» — не сказано, у якому вигляді й де вона має бути"

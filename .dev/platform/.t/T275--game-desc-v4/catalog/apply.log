@@ -1,0 +1,357 @@
+beam-tracing: активовано — description, status
+line-of-sight-attack: активовано — description, status
+bomb-fuse: активовано — description, status
+destructible-blocks: активовано — description, status
+dig-terrain: активовано — description, status
+fill-hole: активовано — description, aliases, status
+button-toggle: активовано — description, status
+mirror-reflect: активовано — description, aliases, status
+thief: активовано — description, aliases, status
+crush-by-slide: активовано — description, aliases, status
+swap-on-contact: активовано — description, aliases, status
+line-match-clear: активовано — description, coin, aliases, status
+dig-hole: активовано — description, aliases, status
+hole-refill: активовано — description, aliases, status
+periodic-sink: активовано — description, aliases, status
+stop-cell: активовано — description, status
+shovel: активовано — description, aliases, status
+last-line-defense: активовано — description, aliases, status
+pull-object: активовано — description, aliases, status
+one-way-cell: активовано — description, aliases, status
+polyomino-placement: активовано — description, aliases, status
+piece-rotate-flip: активовано — description, aliases, status
+pawn-promotion: активовано — description, aliases, status
+piece-drop: активовано — description, coin, aliases, status
+castling: активовано — description, aliases, status
+en-passant: активовано — description, aliases, status
+cursor-place: активовано — description, status
+merge-once-per-move: злито в tile-merge — status
+wall-follower: активовано — description, aliases, status
+turn-when-blocked: активовано — description, aliases, status
+carrier-platform: активовано — description, aliases, status
+ladder-climb: активовано — description, aliases, status
+party-switch: активовано — description, status
+descend-and-reverse: активовано — title, description
+roll-off-rounded: активовано — description, aliases, status
+self-collision: активовано — description, aliases, status
+no-reverse-turn: активовано — description, aliases, status
+diagonal-gap-pass: активовано — description, coin, aliases, status
+visited-trail: активовано — description, aliases, status
+facing-icon: активовано — description, coin, aliases, status
+scatter-chase-schedule: активовано — description, aliases, status
+ghost-house-release: активовано — description, aliases, status
+weighted-spawn: активовано — description, status
+drop-on-death: активовано — description, aliases, status
+pipe-connectors: активовано — description, coin, status
+coverage-area: активовано — aliases, status
+status-effects: активовано — description, status
+item-identification: активовано — description, aliases, status
+hunger-clock: активовано — description, status
+blob-growth: активовано — description, aliases, status
+magic-wall-timer: активовано — description, aliases, status
+connectivity-check: активовано — description, status
+single-loop-check: активовано — description, aliases, status
+neighbor-count-clue: активовано — description, aliases, status
+line-sum-clue: активовано — description, status
+word-validation: активовано — description, status
+run-length-clues: активовано — description, aliases, status
+skip-level: активовано — description, aliases, status
+rule-variants: активовано — description, aliases, status
+move-notation: активовано — aliases, status
+state-string: активовано — aliases, status
+permadeath: активовано — status
+timeout-punisher: активовано — description, aliases, status
+move-limit: активовано — description, coin, slots, aliases, status
+pass-turn: активовано — description, aliases, status
+repetition-draw: активовано — description, aliases, status
+simultaneous-versus: активовано — description, aliases, status
+online-multiplayer: активовано — description, aliases, status
+user-procedures: активовано — description, status
+sensor-predicates: активовано — description, status
+step-execution: активовано — description, aliases, status
+chain-reaction: активовано — description, aliases, status
+extra-life-threshold: активовано — description, aliases, status
+leftover-penalty: активовано — description, aliases, status
+home-slots: активовано — description, aliases, status
+keep-playing-after-win: активовано — description, aliases, status
+highlights: активовано — description, aliases, status
+move-counter: активовано — status
+next-queue: активовано — description, status
+pocket: злито в role-supply — status
+message-log: активовано — description, aliases, status
+objective-text: активовано — description, aliases, status
+popup-text: активовано — description, status
+face-button: активовано — description, aliases, status
+path-cut: активовано — description, aliases, status
+multi-select: активовано — description, aliases, status
+edge-marking: активовано — description, aliases, status
+dot-mark: активовано — aliases, status
+flood-reveal: активовано — description, coin, aliases, status
+fog-of-war: активовано — description, aliases, status
+share-result: активовано — description, aliases, status
+level-par: активовано — aliases, status
+level-objects-format: активовано — aliases, status
+level-format-doc: активовано — description, aliases, status
+seed-share: активовано — description, aliases, status
+no-guess-generation: активовано — aliases, status
+random-placement: активовано — status
+chunk-generation: активовано — aliases, status
+world-map: активовано — aliases, status
+stairs-levels: активовано — description, coin, status
+difficulty-curve: активовано — description, aliases, status
+secret-level: активовано — aliases, status
+difficulty-levels: kind — description, kind
+pencil-marks: kind — description, rule, kind
+inventory-items: move — parent
+inventory: reword — description
+shop-preview: move — parent
+shop-sales: move — parent
+shop-buyback: move — parent
+shop-between-levels: reword — description
+editor-palette: move — parent
+editor-draw-tools: move — parent
+editor-erase: move — parent
+editor-undo: move — description, parent
+editor-playtest: move — parent
+collect-all: reword — description, rule
+destroy-all-enemies: reword — description, rule
+all-on-targets: reword — description, rule
+time-out: reword — description, rule
+respawn: reword — description, rule
+restart-level: reword — description, rule
+sound-effects: reword — description, rule
+in-round-upgrades: reword — description, rule
+player-death: reword — description, rule
+item-pickup: reword — description, rule
+spawn-schedule: reword — rule
+reinforcements: reword — description, rule
+wrong-mark-lose: reword — description, rule
+touch-death: reword — description
+environment-death: reword — description
+reach-exit: reword — description
+projectile-shot: reword — description
+event-points: reword — description
+spawn-random-cell: reword — description
+check-stalemate: пропущено за рішенням
+markup-validity: reword — description
+score-records: reword — description
+profile-stats: reword — description
+stats-window: reword — description
+game-settings: пропущено за рішенням
+editor-window: reword — description
+body-queue: reword — description
+descend-and-reverse: reword — title, description
+game-pause: reword — description
+round-currency: reword — description
+time-bonus: reword — description
+hot-seat: reword — description
+turn-enforcement: reword — description
+undo-redo: reword — description
+undo-step: reword — description
+undo-unlimited: reword — description
+redo: reword — description
+rewind: reword — description
+ai-random: reword — description
+ai-greedy: reword — description
+ai-minimax: reword — description
+save-game: reword — description
+enemy-reached-base: reword — description
+checkmate: reword — description
+projectile-collision: reword — description
+tile-merge: reword — description
+selection-highlight: reword — description
+last-move-highlight: reword — description
+reachable-highlight: reword — description
+threat-range: reword — description
+path-preview: reword — description
+conflict-highlight: reword — description
+lobby-window: reword — description
+replay-window: reword — description
+achievements-window: reword — description
+character-select: reword — description
+mode-indicator: reword — description
+daily-puzzle: reword — description
+level-param-ramp: нова картка (levels/progression)
+bonus-stage: нова картка (levels/progression)
+wave-progress: нова картка (interface/hud)
+health-bars: нова картка (interface/hud)
+calendar-window: нова картка (interface/menus)
+achievements: нова картка (interface/results)
+bonus-appears: нова картка (entities/spawn)
+grow-on-eat: нова картка (entities/interact)
+survive-waves: нова картка (game-logic/win)
+score-target: нова картка (game-logic/win)
+local-two-players: нова картка (game-logic/opponent)
+lab1: нова картка (code/labs)
+lab2: нова картка (code/labs)
+lab3: нова картка (code/labs)
+lab4: нова картка (code/labs)
+lab5: нова картка (code/labs)
+lab1-field-output: нова картка (code/labs · у сімʼї lab1)
+lab1-read-key: нова картка (code/labs · у сімʼї lab1)
+lab1-move-player: нова картка (code/labs · у сімʼї lab1)
+lab1-cell-check: нова картка (code/labs · у сімʼї lab1)
+lab1-game-loop: нова картка (code/labs · у сімʼї lab1)
+lab1-own-functions: нова картка (code/labs · у сімʼї lab1)
+lab1-data-types: нова картка (code/labs · у сімʼї lab1)
+lab1-conditions: нова картка (code/labs · у сімʼї lab1)
+lab1-loops: нова картка (code/labs · у сімʼї lab1)
+lab1-function-params: нова картка (code/labs · у сімʼї lab1)
+lab1-scope: нова картка (code/labs · у сімʼї lab1)
+lab2-grid-matrix: нова картка (code/labs · у сімʼї lab2)
+lab2-cell-dict: нова картка (code/labs · у сімʼї lab2)
+lab2-direction-tuples: нова картка (code/labs · у сімʼї lab2)
+lab2-save-text: нова картка (code/labs · у сімʼї lab2)
+lab2-string-methods: нова картка (code/labs · у сімʼї lab2)
+lab2-slices-comprehensions: нова картка (code/labs · у сімʼї lab2)
+lab2-unpacking: нова картка (code/labs · у сімʼї lab2)
+lab2-sets: нова картка (code/labs · у сімʼї lab2)
+lab2-dict-tricks: нова картка (code/labs · у сімʼї lab2)
+lab2-binary-save: нова картка (code/labs · у сімʼї lab2)
+lab3-classes: нова картка (code/labs · у сімʼї lab3)
+lab3-base-class: нова картка (code/labs · у сімʼї lab3)
+lab3-init-str: нова картка (code/labs · у сімʼї lab3)
+lab3-underscores: нова картка (code/labs · у сімʼї lab3)
+lab3-eq-hash: нова картка (code/labs · у сімʼї lab3)
+lab3-container-methods: нова картка (code/labs · у сімʼї lab3)
+lab3-property: нова картка (code/labs · у сімʼї lab3)
+lab3-mixins: нова картка (code/labs · у сімʼї lab3)
+lab3-classmethods: нова картка (code/labs · у сімʼї lab3)
+lab4-package: нова картка (code/labs · у сімʼї lab4)
+lab4-type-hints: нова картка (code/labs · у сімʼї lab4)
+lab4-closures: нова картка (code/labs · у сімʼї lab4)
+lab4-decorator: нова картка (code/labs · у сімʼї lab4)
+lab4-with-files: нова картка (code/labs · у сімʼї lab4)
+lab4-parametrize: нова картка (code/labs · у сімʼї lab4)
+lab5-score-server: нова картка (code/labs · у сімʼї lab5)
+lab5-database: нова картка (code/labs · у сімʼї lab5)
+lab5-jinja-page: нова картка (code/labs · у сімʼї lab5)
+lab5-level-api: нова картка (code/labs · у сімʼї lab5)
+lab5-routers-tests: нова картка (code/labs · у сімʼї lab5)
+lab5-deploy: нова картка (code/labs · у сімʼї lab5)
+enum-states: нова картка (code/python)
+match-case-commands: нова картка (code/python)
+pathlib-paths: нова картка (code/python)
+json-files: нова картка (code/python)
+argparse-cli: нова картка (code/python)
+logging-debug: нова картка (code/python)
+docstrings: нова картка (code/python)
+named-constants: нова картка (code/python)
+abc-protocol: нова картка (code/python)
+random-seed: нова картка (code/python)
+input-robust: нова картка (code/python)
+ruff-clean: нова картка (code/python)
+first-test: нова картка (code/tests)
+gitignore-clean: нова картка (code/git)
+feature-branch: нова картка (code/git)
+main-guard: нова картка (code/packaging)
+cross-platform-run: нова картка (code/packaging)
+game-demo-video: нова картка (support/video)
+game-loop: новий текст — title, description
+logic-render-split: новий текст — title, description
+state-as-data: новий текст — description
+commit-history: новий текст — description
+version-tags: новий текст — description
+requirements-pyproject: новий текст — title, description
+single-command-run: новий текст — description
+typing-mypy: новий текст — title, description
+dataclass-entities: новий текст — title, description
+generators-iterators: новий текст — description
+custom-exceptions: новий текст — title, description
+std-collections: новий текст — description
+unit-tests: новий текст — description
+fixture-level-tests: новий текст — description
+architecture-doc: новий текст — description
+level-from-txt: тег лаби 2 — tags
+score-records: тег лаби 2 — tags
+logic-render-split: тег лаби 3 — tags
+custom-exceptions: тег лаби 4 — tags
+unit-tests: тег лаби 4 — tags
+generators-iterators: тег лаби 4 — tags
+fixture-level-tests: тег лаби 4 — tags
+typing-mypy: тег лаби 4 — tags
+profile-stats: тег лаби 5 — tags
+telegraphed-intents: текст — description
+undo-redo: текст — description
+event-effects: текст — description
+map-window: текст — description
+field-scaling: текст — description
+avatar-picker: текст — description
+background-music: текст — description
+state-as-data: текст — description
+project-readme: текст — description
+player-guide: текст — description
+game-page: текст — description
+restart-level: текст — description
+enemy-reached-base: текст — description
+destroy-all-enemies: текст — description
+all-on-targets: текст — description
+lobby-window: текст — description
+replay-window: текст — description
+achievements-window: текст — description
+character-select: текст — description
+descend-and-reverse: текст — title, description
+tile-merge: текст — description
+spawn-random-cell: текст — description
+piece-capture: синоніми — aliases
+teleport: синоніми — aliases
+teleport-one-way: синоніми — aliases
+teleport-random-exit: синоніми — aliases
+move-4dir: синоніми — aliases
+orientation-state: синоніми — aliases
+combo-multiplier: синоніми — aliases
+reinforcements: синоніми — aliases
+stat-hp: синоніми — aliases
+stat-lives: синоніми — aliases
+stat-speed: синоніми — aliases
+stat-damage: синоніми — aliases
+stat-capacity: синоніми — aliases
+stat-value: синоніми — aliases
+stat-duration: синоніми — aliases
+stat-size: синоніми — aliases
+stat-ammo: синоніми — aliases
+stat-vision: синоніми — aliases
+stat-side: синоніми — aliases
+role-player: синоніми — aliases
+role-ally: синоніми — aliases
+role-enemy: синоніми — aliases
+role-boss: синоніми — aliases
+role-neutral: синоніми — aliases
+role-segment: синоніми — aliases
+role-object: синоніми — aliases
+role-pickup: синоніми — aliases
+role-projectile: синоніми — aliases
+role-container: синоніми — aliases
+role-resource: синоніми — aliases
+role-supply: синоніми — aliases
+role-terrain: синоніми — aliases
+role-hazard: синоніми — aliases
+role-switch: синоніми — aliases
+role-spawner: синоніми — aliases
+role-zone: синоніми — aliases
+role-piece: синоніми — aliases
+role-tile: синоніми — aliases
+control-swipe-all: синоніми — aliases
+control-mark: синоніми — aliases
+control-programmed: синоніми — aliases
+grid-graph: синоніми — aliases
+grid-iso: синоніми — aliases
+grid-1d: синоніми — aliases
+grid-3d: синоніми — aliases
+gravity-per-type: синоніми — aliases
+wrap-edges: синоніми — aliases
+time-realtime: синоніми — aliases
+time-programmed: синоніми — aliases
+time-wego: синоніми — aliases
+time-rhythm: синоніми — aliases
+view-side: синоніми — aliases
+view-first-person: синоніми — aliases
+undo-step: синоніми — aliases
+status-panel: синоніми — aliases
+last-move-highlight: синоніми — aliases
+level-intro: синоніми — aliases
+name-entry: синоніми — aliases
+console-render: синоніми — aliases
+dev-log: синоніми — aliases
+video-channel: синоніми — aliases
+game-trailer: синоніми — aliases
