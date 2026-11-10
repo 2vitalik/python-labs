@@ -1,7 +1,7 @@
 import { computed, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
-import { kidsOf, tasks, zones } from './catalog.js'
+import { aliasesOf, kidsOf, tasks, zones } from './catalog.js'
 
 // tolerant search over the RU/UA/EN mixed corpus: case + и/і + е/є folded
 export const norm = (s) => String(s).toLowerCase().replace(/и/g, 'і').replace(/є/g, 'е')
@@ -45,8 +45,8 @@ export function useTaskFilter(fixedGame = '') {
     if (f.value.algo && !t.tags.includes('algo')) return false
     if (!f.value.q) return true
     const kids = kidsOf.value[t.slug] || []
-    const hay = norm([t.title, t.slug, t.description, ...t.tags, ...(t.aliases || []),
-                      ...kids.map((k) => `${k.title} ${k.description} ${(k.aliases || []).join(' ')}`)].join(' '))
+    const hay = norm([t.title, t.slug, t.description, ...t.tags, ...aliasesOf(t),
+                      ...kids.map((k) => `${k.title} ${k.description} ${aliasesOf(k).join(' ')}`)].join(' '))
     return hay.includes(norm(f.value.q))
   }
 

@@ -40,9 +40,8 @@ onMounted(async () => {
         <RouterLink v-if="data.mine" to="/my/game" class="ms-auto small text-nowrap">✏️ Редагувати в «Моїй грі»</RouterLink>
       </GameHead>
       <Md v-if="data.game.description" :text="data.game.description" class="mb-3" />
-      <p v-if="data.game.phases?.length" class="small text-secondary">🔁 Порядок тіку: {{ data.game.phases.join(' → ') }}</p>
-      <GameEditor :game="data.game" :parts="data.parts" :claims="data.claims" :rules="data.rules" :tasks="data.tasks"
-                  :judge="admin && !data.mine" :nick @changed="reload" />
+      <GameEditor :game="data.game" :parts="data.parts" :claims="data.claims" :rules="data.rules" :tasks="data.tasks" :coins="data.coins"
+                  :judge="admin && !data.mine" :nick :reload />
     </template>
   </div>
 </template>

@@ -6,15 +6,25 @@ export const zones = ref({})
 export const games = ref([])
 export const tasks = ref([])
 export const templates = ref({})  // base slug → counts of its reference description (Д4)
-// the description language, served by the API from models/vocab.py: roles, triggers, conditions, effects, field, stats
-export const vocab = ref({ roles: {}, triggers: {}, conditions: {}, effects: {}, options: {}, field: [], stats: [], sides: {} })
+// the description language, served by the API: the words of rules from models/vocab.py; entity types, stats and the
+// field's options from the catalog's cards (T270 §14.3); `depth` — how much of the editor this user fills
+export const vocab = ref({ roles: {}, triggers: {}, conditions: {}, effects: {}, options: {}, field: [], level: [], stats: [], sides: {}, args: {}, kinds: {}, depth: 'full' })
 export const kidsOf = computed(() => {
   const m = {}
   for (const t of tasks.value) if (t.parent) (m[t.parent] ??= []).push(t)
   return m
 })
 export const taskIndex = computed(() => Object.fromEntries(tasks.value.map((t) => [t.slug, t])))
-export const windowTypes = computed(() => tasks.value.filter((t) => t.tags.includes('window')))
+// what a card is and where its claim lives (zones.py KINDS): the API resolves it; `game` until it answers
+export const kindOf = (task) => task?.kind || (task?.tags?.includes('window') ? 'window' : 'game')
+export const windowTypes = computed(() => tasks.value.filter((t) => kindOf(t) === 'window'))
+// the other names of a card, by language {uk, ru, en}; Russian ones are searched but shown only when asked for
+export const ruShown = ref(localStorage.getItem('aliases-ru') === '1')
+export const setRuShown = (on) => { ruShown.value = on; localStorage.setItem('aliases-ru', on ? '1' : '0') }
+export const aliasesOf = (task, ru = true) => {
+  const a = task?.aliases
+  return Array.isArray(a) ? a : [...(a?.uk || []), ...(a?.en || []), ...(ru ? a?.ru || [] : [])]
+}
 
 export const KLASSES = { avatar: 'аватарна', cursor: 'курсорна', figure: 'фігурна', puzzle: 'пазли-розмітки' }
 export const AXES = { field: 'Поле', time: 'Час', opponent: 'Суперник', info: 'Інформація', random: 'Випадковість', goal: 'Мета' }
@@ -23,10 +33,21 @@ export const COIN_NAMES = { wood: 'деревʼяна', tin: 'оловʼяна',
 export const COIN_ORDER = ['crown', 'gold', 'silver', 'bronze', 'tin', 'wood']
 export const STATUSES = { draft: 'чернетка', active: 'активне', archived: 'архів' }
 export const CLAIM_STATUSES = { claimed: 'заявлено', accepted: 'зараховано', returned: 'повернуто' }
-// window element → game-level function it implies (my-game editor suggestions)
-export const PAIRS = { 'volume-control': 'sound-volume', 'music-toggle': 'background-music' }
+// what is on a window → the function of the game it implies: «є слайдер гучності — заяви й саму гучність» (hints on a window's card).
+// Keys are elements and window types alike; the pairs come from the catalog review (T271)
+export const PAIRS = {
+  'volume-control': 'sound-volume', 'music-toggle': 'background-music', 'field-size-picker': 'difficulty-levels',
+  'conflict-highlight': 'markup-validity', 'telegraph-marker': 'telegraphed-intents', 'face-button': 'restart-level',
+  'pause-menu': 'game-pause', 'shop-window': 'shop-between-levels', 'editor-window': 'in-game-editor', 'leaderboard': 'score-records',
+  'stats-window': 'profile-stats', 'mode-select': 'difficulty-levels', 'replay-window': 'replay', 'lobby-window': 'online-multiplayer',
+  'pass-device': 'hot-seat', 'inventory-window': 'inventory', 'save-load-window': 'save-multi-slot', 'name-entry': 'score-records',
+}
 
 export const roleOf = (role) => vocab.value.roles[role] || { label: role, icon: '❔', group: '' }
+const PART_ICON = { window: '🪟', field: '🗺️', level: '🪜', menu: '☰' }
+// a part's icon: the student's own emoji on an entity, else its type's
+export const iconOf = (part) => (part.kind === 'entity' ? part.icon || roleOf(part.role).icon : PART_ICON[part.kind] || '')
+export const statOf = (key) => vocab.value.stats.find((s) => s.key === key)
 export const roleGroups = computed(() => {
   const out = {}
   for (const [k, r] of Object.entries(vocab.value.roles)) (out[r.group] ??= []).push({ key: k, ...r })

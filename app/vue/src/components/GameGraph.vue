@@ -1,101 +1,67 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
-const props = defineProps({ windows: Array, menus: Array })
-const emit = defineEmits(['pick'])
+import { useEd } from '../ed.js'
+import { BOX_H, EXTRA_H, layout } from '../graphLayout.js'
+import { jump } from '../jump.js'
+import GraphPanel from './GraphPanel.vue'
 
-const W = 160, H = 92, THUMB = 56, COL = 240, ROW = 118
+// the map of windows (T270 §10.4): a tree from the root, menu items as labelled arrows; the other transitions are
+// «↩ target» lines under a node (the mouse over one lights its target, a click goes to its card); a node opens its panel
+const ed = useEd()
+const g = computed(() => layout(ed.windows, ed.menus, ed.rules))
+const still = computed(() => !g.value.edges.length && !g.value.nodes.some((n) => n.extras.length))
+const box = ref()
+const lit = ref('')  // the node an «↩» line under the mouse points at
+const at = ref(null)  // the open panel: { id, left, top } over the map, so it is placed outside the scrolling box
+const win = computed(() => at.value && ed.windows.find((w) => w.id === at.value.id))
+const titleOf = (id) => ed.windows.find((w) => w.id === id)?.title
 
-const trim = (s, n = 20) => (s.length > n ? s.slice(0, n - 1) + '…' : s)
-
-const graph = computed(() => {
-  const ids = props.windows.map((w) => w.id)
-  const byPair = {} // parallel menu items merge into one labeled arrow
-  for (const m of props.menus) {
-    if (!m.window) continue
-    for (const it of m.items) {
-      if (!it.window || it.window === m.window || !ids.includes(it.window)) continue
-      const key = `${m.window}>${it.window}`
-      byPair[key] ??= { from: m.window, to: it.window, labels: [] }
-      if (it.title) byPair[key].labels.push(it.title)
-    }
-  }
-  const edges = Object.values(byPair)
-  const adj = {}
-  edges.forEach((e) => (adj[e.from] ??= []).push(e.to))
-
-  // BFS layers left → right; unreachable windows start new roots
-  const layerOf = {}
-  for (const root of ids) {
-    if (root in layerOf) continue
-    layerOf[root] = 0
-    const q = [root]
-    while (q.length) {
-      const v = q.shift()
-      for (const t of adj[v] || []) {
-        if (!(t in layerOf)) {
-          layerOf[t] = layerOf[v] + 1
-          q.push(t)
-        }
-      }
-    }
-  }
-  const rows = {}
-  const pos = {}
-  for (const w of props.windows) {
-    const l = layerOf[w.id]
-    rows[l] ??= 0
-    pos[w.id] = { x: 20 + l * COL, y: 16 + rows[l] * ROW, win: w }
-    rows[l]++
-  }
-  const lines = edges.map((e) => {
-    const a = pos[e.from], b = pos[e.to]
-    const [x1, y1, x2, y2] = [a.x + W, a.y + H / 2, b.x, b.y + H / 2]
-    const dx = Math.max(40, Math.abs(x2 - x1) / 2)
-    return {
-      d: `M ${x1} ${y1} C ${x1 + dx} ${y1}, ${x2 - dx} ${y2}, ${x2} ${y2}`,
-      lx: (x1 + x2) / 2, ly: (y1 + y2) / 2 - 7, label: trim(e.labels.join(', '), 28),
-    }
-  })
-  return {
-    pos, lines,
-    width: 40 + (Math.max(0, ...Object.keys(rows).map(Number)) + 1) * COL - (COL - W),
-    height: 32 + Math.max(1, ...Object.values(rows)) * ROW - (ROW - H),
-  }
-})
+function toggle(n) {
+  at.value = at.value?.id === n.id ? null : { id: n.id, left: n.x - box.value.scrollLeft, top: n.y + BOX_H + 4 }
+}
 </script>
 
 <template>
-  <div>
-    <div class="overflow-x-auto">
-      <svg :width="graph.width" :height="graph.height" class="d-block">
+  <div class="graph">
+    <div ref="box" class="overflow-x-auto" @scroll="at = null">
+      <svg :width="g.width" :height="g.height" class="d-block">
         <defs>
-          <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
-            <path d="M 0 0 L 8 4 L 0 8 z" fill="#868e96" />
+          <marker id="gg-arrow" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="7" markerHeight="7" orient="auto">
+            <path d="M0 0L8 4L0 8z" class="tip" />
           </marker>
         </defs>
-        <g v-for="(e, i) in graph.lines" :key="i">
-          <path :d="e.d" fill="none" stroke="#adb5bd" stroke-width="1.5" marker-end="url(#arrow)" />
-          <text :x="e.lx" :y="e.ly" text-anchor="middle" class="lbl">{{ e.label }}</text>
-        </g>
-        <g v-for="(p, id) in graph.pos" :key="id" role="button" @click="emit('pick', id)">
-          <rect :x="p.x" :y="p.y" :width="W" :height="H" rx="8" class="win" />
-          <image v-if="p.win.screenshots[0]" :href="`/api/uploads/${p.win.game}/${p.win.screenshots[0]}`"
-                 :x="p.x + 5" :y="p.y + 5" :width="W - 10" :height="THUMB" preserveAspectRatio="xMidYMid slice" />
-          <text :x="p.x + W / 2" :y="p.y + (p.win.screenshots[0] ? H - 12 : H / 2 + 4)"
-                text-anchor="middle" class="ttl">{{ trim(p.win.title) }}</text>
-        </g>
+        <path v-for="e in g.edges" :key="e.to" :d="e.d" class="edge" marker-end="url(#gg-arrow)" />
+        <text v-for="e in g.edges" :key="`l${e.to}`" :x="e.lx" :y="e.ly" text-anchor="end" class="lbl">{{ e.label }}</text>
+        <template v-for="n in g.nodes" :key="n.id">
+          <g class="gg-node" :class="{ lit: lit === n.id || at?.id === n.id }" role="button" @click="toggle(n)">
+            <title>{{ titleOf(n.id) }}</title>
+            <rect :x="n.x + .5" :y="n.y + .5" :width="n.w - 1" :height="BOX_H - 1" rx="6" />
+            <text :x="n.x + 10" :y="n.y + BOX_H / 2" dominant-baseline="central" class="ttl">{{ n.title }}</text>
+            <text v-if="n.shot" :x="n.x + n.w - 7" :y="n.y + BOX_H / 2" dominant-baseline="central" text-anchor="end" class="cam">📷</text>
+          </g>
+          <text v-for="(x, i) in n.extras" :key="x.id" :x="n.x + 4" :y="n.y + BOX_H + 11 + i * EXTRA_H" class="extra" role="button"
+                @mouseenter="lit = x.id" @mouseleave="lit = ''" @click="jump(`p-${x.id}`)">↩&#xFE0E; {{ x.title }}</text>
+        </template>
       </svg>
     </div>
-    <p v-if="!graph.lines.length" class="text-secondary small mb-0">
-      Стрілки зʼявляться, коли меню матимуть вікно-хост, а їхні пункти — цілі-вікна.
-    </p>
+    <GraphPanel v-if="win" :win :style="{ left: `max(0px, min(${at.left}px, 100% - 18rem))`, top: `${at.top}px` }" @close="at = null" />
+    <div v-if="still" class="small text-secondary">Стрілки зʼявляться, коли пункти меню вестимуть до інших вікон</div>
   </div>
 </template>
 
 <style scoped>
-.win { fill: var(--bs-body-bg); stroke: #ced4da; }
-[data-bs-theme=dark] .win { stroke: var(--bs-border-color); }
-.ttl { font-size: .8rem; font-weight: 600; fill: var(--bs-body-color); }
-.lbl { font-size: .7rem; fill: #868e96; paint-order: stroke; stroke: var(--bs-body-bg); stroke-width: 3px; }
+.graph { position: relative; --gg-line: color-mix(in srgb, var(--bs-body-color) 35%, var(--bs-body-bg)); }
+.edge { fill: none; stroke: var(--gg-line); stroke-width: 1.3; }
+.tip { fill: var(--gg-line); }
+/* a halo in the page colour under a label: a line passing below never cuts a word */
+.lbl { font-size: .7rem; fill: var(--bs-secondary-color); paint-order: stroke; stroke: var(--bs-body-bg); stroke-width: 4px; stroke-linejoin: round; }
+.gg-node { cursor: pointer; }
+.gg-node rect { fill: var(--bs-tertiary-bg); stroke: var(--bs-border-color); }
+.gg-node:hover rect { stroke: var(--bs-secondary-color); }
+.gg-node.lit rect { fill: var(--bs-warning-bg-subtle); stroke: var(--bs-warning-border-subtle); }
+.ttl { font-size: .8rem; fill: var(--bs-body-color); }
+.cam { font-size: .65rem; }
+.extra { font-size: .68rem; fill: var(--bs-secondary-color); cursor: pointer; }
+.extra:hover { fill: var(--bs-body-color); text-decoration: underline; }
 </style>

@@ -6,18 +6,20 @@ import Crumbs from '@core/components/Crumbs.vue'
 import GameEditor from '../components/GameEditor.vue'
 import GameHead from '../components/GameHead.vue'
 import MyGameForm from '../components/MyGameForm.vue'
-import { loadCatalog } from '../catalog.js'
-import { loadMyGame, myClaims, myGame, myParts, myRules, myTasks, reloadInsides } from '../myGame.js'
+import { loadCatalog, vocab } from '../catalog.js'
+import { loadMyGame, myClaims, myCoins, myGame, myParts, myRules, myTasks, reloadInsides } from '../myGame.js'
 import { useForm } from '@core/form.js'
 import { user } from '@core/user.js'
 
-// the student's game: base, title, description — then its description proper (field, entities, rules, windows, claims)
+// the student's game: base, title, description — then its description proper (field, levels, entities, rules, windows, cards)
 const loaded = ref(false)
-const { form, dirty, saved, error, fill, save } = useForm({ title: '', base_game: '', base_custom: '', description: '', phases: [] })
+const { form, dirty, saved, error, fill, save } = useForm({ title: '', base_game: '', base_custom: '', description: '' })
 const nick = computed(() => user.value?.nick)
+const intro = computed(() => (vocab.value.depth === 'simple' ? 'Далі опишеш, хто й що є на полі та які екрани має гра.' : 'Далі опишеш поле, рівні, сутності, правила, вікна й заявиш картки каталогу.'))
 
+// the tick order lives in «Правила» and is saved from there: the head form must not send its stale copy back
 const submit = () => save(async (f) => {
-  myGame.value = await (myGame.value ? putMyGame(f) : postMyGame(f))
+  myGame.value = await (myGame.value ? putMyGame({ ...f, phases: myGame.value.phases }) : postMyGame(f))
   if (!myParts.value.length) await reloadInsides()
   return myGame.value
 })
@@ -37,8 +39,9 @@ onMounted(async () => {
     <GameHead :game="myGame" title="Моя гра" :checks="!myGame">
       <RouterLink v-if="myGame" :to="`/students/${nick}`" class="ms-auto small text-nowrap">Як це бачать інші →</RouterLink>
     </GameHead>
-    <p v-if="!myGame" class="text-secondary">Обери основу з каталогу або опиши свою, дай назву — і гра твоя. Далі опишеш поле, сутності, правила, вікна й заявиш картки каталогу.</p>
+    <p v-if="!myGame" class="text-secondary">Обери основу з каталогу або опиши свою, дай назву — і гра твоя. {{ intro }}</p>
     <MyGameForm v-model="form" :dirty :saved :error :fresh="!myGame" @save="submit" />
-    <GameEditor v-if="myGame" :game="myGame" :parts="myParts" :claims="myClaims" :rules="myRules" :tasks="myTasks" editable :nick @changed="reloadInsides" />
+    <GameEditor v-if="myGame" :game="myGame" :parts="myParts" :claims="myClaims" :rules="myRules" :tasks="myTasks" :coins="myCoins"
+                editable :nick :reload="() => loadMyGame(true)" />
   </div>
 </template>

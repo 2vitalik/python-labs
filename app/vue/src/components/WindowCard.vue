@@ -1,84 +1,88 @@
 <script setup>
-import { computed, reactive, ref } from 'vue'
+import { computed, ref } from 'vue'
 
-import { deletePart, postClaim, putPart } from '../api.js'
+import DelButton from '@core/components/DelButton.vue'
+import Icon from '@core/components/Icon.vue'
+import { deletePart, postClaim } from '../api.js'
 import { PAIRS } from '../catalog.js'
+import { useEd } from '../ed.js'
+import { jump } from '../jump.js'
 import CardPicker from './CardPicker.vue'
-import ClaimChip from './ClaimChip.vue'
+import ClaimRow from './ClaimRow.vue'
 import CoinBadge from './CoinBadge.vue'
 import MenuItems from './MenuItems.vue'
 import ShotStrip from './ShotStrip.vue'
+import WindowForm from './WindowForm.vue'
 
-// a window of the game: its type from the catalog, a screenshot, the elements on it (claims), its menu
-const props = defineProps({ part: Object, menus: Array, windows: Array, claims: Array, gameClaims: Array, parts: Array, info: Function, editable: Boolean, judge: Boolean, nick: String })
-const emit = defineEmits(['changed'])
+// a window of the game (T270 §10.1): its type, screenshots, menu and the elements on it; the pencil turns the card into its form
+const props = defineProps({ part: Object })
+const ed = useEd()
 const edit = ref(false)
-const arm = ref(false)
 const error = ref('')
-const form = reactive({ title: props.part.title, description: props.part.description })
-const own = computed(() => props.claims.filter((c) => c.task !== props.part.task))
-const typeInfo = computed(() => props.info(props.part.task))
-// claimed element implies a game-level function (volume control → volume actually works)
-const hints = computed(() => props.claims.map((c) => PAIRS[c.task]).filter((slug) => slug && !props.gameClaims.some((c) => c.task === slug)))
-const ui = (t) => t.zone === 'interface' || t.zone === 'game-logic'
+const type = computed(() => ed.info(props.part.task))
+const menu = computed(() => ed.menus.find((m) => m.window === props.part.id))
+const claims = computed(() => ed.claimsOf(props.part.id).filter((c) => !c.auto))
+// an element implies a function of the whole game (a volume slider → the volume really changes): offer it once
+const pairs = computed(() => claims.value.filter((c) => PAIRS[c.task] && !ed.claims.some((x) => x.task === PAIRS[c.task]))
+  .map((c) => ({ slug: PAIRS[c.task], element: ed.info(c.task)?.title || c.task, fn: ed.info(PAIRS[c.task])?.title || PAIRS[c.task] })))
 
 async function run(fn) {
   error.value = ''
   try {
-    await fn()
-    emit('changed')
+    const out = await fn()
+    ed.changed()
+    return out
   } catch (e) {
     error.value = e.message
   }
 }
-const save = () => run(async () => { await putPart(props.part.id, form); edit.value = false })
 const remove = () => run(() => deletePart(props.part.id))
-const addClaim = (task, params) => run(() => postClaim({ task, part: props.part.id, params }))
-const addHint = (task) => run(() => postClaim({ task }))  // game-level, no params
+async function addPair(slug) {
+  const c = await run(() => postClaim({ task: slug, params: {} }))
+  if (c) jump(`c-${c.id}`)
+}
 </script>
 
 <template>
-  <div :id="`p-${part.id}`" class="card h-100">
+  <div :id="'p-' + part.id" class="card">
     <div class="card-body p-2 vstack gap-2">
-      <div class="d-flex align-items-start gap-2">
-        <template v-if="!edit">
+      <WindowForm v-if="edit" :part @done="edit = false" @cancel="edit = false" />
+      <template v-else>
+        <div class="d-flex align-items-start gap-2">
           <span>🪟</span>
-          <div class="head d-flex flex-wrap align-items-center column-gap-2 row-gap-1 flex-grow-1">
+          <div class="head flex-grow-1">
             <span class="fw-semibold">{{ part.title }}</span>
-            <span class="badge text-bg-light border text-secondary fw-normal text-wrap text-start"><CoinBadge :coin="typeInfo?.coin" :amount="typeInfo?.amount" /> {{ typeInfo?.title || part.task }}</span>
+            <span class="badge border fw-normal text-secondary bg-body-tertiary text-wrap text-start">
+              <CoinBadge :coin="type?.coin" :amount="type?.amount" /> {{ type?.title || part.task }}</span>
           </div>
-          <template v-if="editable">
-            <span class="act" role="button" title="Редагувати" @click="edit = true">✏️</span>
-            <span v-if="!arm" class="act" role="button" title="Видалити вікно" @click="arm = true">🗑️</span>
-            <button v-else class="btn btn-danger btn-sm py-0" @mouseleave="arm = false" @click="remove">Точно видалити?</button>
+          <template v-if="ed.editable">
+            <button type="button" class="iact" title="Редагувати" @click="edit = true"><Icon name="pencil" /></button>
+            <DelButton :what="`вікно «${part.title}»`" @yes="remove" />
+          </template>
+        </div>
+        <div v-if="part.description" class="small text-secondary">{{ part.description }}</div>
+        <ShotStrip :part />
+        <template v-if="!ed.simple">
+          <MenuItems :window="part" :menu />
+          <div v-if="claims.length || ed.editable" class="small vstack gap-1">
+            <div class="text-secondary fw-semibold">Елементи</div>
+            <ClaimRow v-for="c in claims" :key="c.id" :claim="c" />
+            <div v-if="ed.editable"><CardPicker :kinds="['element']" :anchor="{ part: part.id }" label="елемент" /></div>
+          </div>
+          <template v-if="ed.editable">
+            <div v-for="p in pairs" :key="p.slug" class="small text-secondary d-flex flex-wrap align-items-center column-gap-2">
+              <span>💡 є «{{ p.element }}» — додай і те, що він робить: «{{ p.fn }}»</span>
+              <button type="button" class="btn btn-sm btn-add py-0" @click="addPair(p.slug)"><Icon name="plus" /> додати</button>
+            </div>
           </template>
         </template>
-        <template v-else>
-          <input v-model="form.title" class="form-control form-control-sm">
-          <button class="btn btn-primary btn-sm" @click="save">💾</button>
-          <button class="btn btn-outline-secondary btn-sm" @click="edit = false">✕</button>
-        </template>
-      </div>
-      <input v-if="edit" v-model="form.description" class="form-control form-control-sm" placeholder="Що на цьому вікні">
-      <div v-else-if="part.description" class="text-secondary small">{{ part.description }}</div>
-      <ShotStrip v-if="editable || part.screenshots.length" :part :editable @changed="emit('changed')" />
-      <MenuItems :window="part" :menu="menus[0]" :windows :info :editable @changed="emit('changed')" />
-      <div v-if="own.length" class="d-flex flex-wrap gap-1 align-items-start">
-        <ClaimChip v-for="c in own" :key="c.id" :claim="c" :info="info(c.task)" :parts :editable :judge :nick @changed="emit('changed')" />
-      </div>
-      <CardPicker v-if="editable" placeholder="＋ елемент на вікні: лічильник, слайдер, кнопка, підсвітка…" :filter="ui"
-                  :claimed="new Set(claims.map((c) => c.task))" @pick="addClaim" />
-      <div v-for="slug in hints" :key="slug" class="small text-secondary">
-        💡 Є елемент — заяви й функцію <a href="#" @click.prevent="addHint(slug)">«{{ info(slug)?.title || slug }}»</a> (рівень гри)
-      </div>
-      <div v-if="error" class="text-danger small">{{ error }}</div>
+        <div v-if="error" class="text-danger small">{{ error }}</div>
+      </template>
     </div>
   </div>
 </template>
 
 <style scoped>
-/* the title and the window type wrap inside their own block — on a phone ✏️ 🗑️ stay in the card */
-.head { min-width: 0; overflow-wrap: anywhere; }
-.act { opacity: .6; }
-.act:hover { opacity: 1; }
+/* the title and the type wrap inside their own block, so the pencil and the trash stay in the card on a phone */
+.head { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem .5rem; min-width: 0; overflow-wrap: anywhere; }
 </style>

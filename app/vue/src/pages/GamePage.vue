@@ -1,9 +1,11 @@
 <script setup>
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 import Crumbs from '@core/components/Crumbs.vue'
 import GuideText from '@core/components/GuideText.vue'
+import { getEtalon } from '../api.js'
+import GameEditor from '../components/GameEditor.vue'
 import TaskCatalog from '../components/TaskCatalog.vue'
 import { AXES, games, KLASSES, loadCatalog, STATUSES } from '../catalog.js'
 import { problem } from '@core/problem.js'
@@ -25,10 +27,12 @@ const { grouped } = useTaskFilter(slug)
 const shown = computed(() => grouped.value.reduce((n, z) => n + z.subs.reduce((m, s) => m + s.list.length, 0), 0))
 
 const SHOW_TASKS = false  // «Завдання гри» hidden until the catalog has enough per-game cards (T125 п. 44)
+const etalon = ref(null)  // the classic version described the way students describe theirs; absent for a base without one
 
 onMounted(async () => {
   await loadCatalog()
   if (!game.value) problem.value = 'lost'
+  else getEtalon(slug).then((d) => (etalon.value = d), () => {})
 })
 </script>
 
@@ -50,6 +54,16 @@ onMounted(async () => {
       <span v-for="(v, k) in game.axes" :key="k" class="badge text-bg-light border text-dark fw-normal">{{ AXES[k] }}: {{ v }}</span>
     </p>
     <GuideText :text class="mb-4" />
+
+    <template v-if="etalon">
+      <h2 id="etalon" class="h5">Як описати цю гру — зразок</h2>
+      <p class="text-secondary small">
+        Так виглядає опис класичної версії в «Моїй грі»: поле, рівні, сутності, правила, вікна, картки каталогу. Це зразок — тут нічого
+        не зберігається. Свій опис робиш у <RouterLink to="/my/game">«Моїй грі»</RouterLink>: на цій основі кнопка «Почати з еталона»
+        скопіює зразок тобі, далі викреслюєш зайве й додаєш своє.
+      </p>
+      <GameEditor full :game="etalon.game" :parts="etalon.parts" :claims="etalon.claims" :rules="etalon.rules" :tasks="etalon.tasks" :coins="etalon.coins" />
+    </template>
 
     <template v-if="SHOW_TASKS">
       <h2 id="catalog" class="h5">Завдання гри <span class="count fs-6">({{ shown }})</span></h2>

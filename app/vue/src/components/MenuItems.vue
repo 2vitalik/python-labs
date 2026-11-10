@@ -1,74 +1,40 @@
 <script setup>
-import { computed, reactive, ref, watch } from 'vue'
+import { computed, ref } from 'vue'
 
-import { deletePart, postPart, putPart } from '../api.js'
+import Icon from '@core/components/Icon.vue'
+import { useEd } from '../ed.js'
+import { jump } from '../jump.js'
+import MenuForm from './MenuForm.vue'
 
-// the menu of a window, edited in place: a row per item — title and where it leads (another window, a card, nothing);
-// the menu is a Part of its own (kind=menu) hosted on this window, created on the first save
-const props = defineProps({ window: Object, menu: Object, windows: Array, info: Function, editable: Boolean })
-const emit = defineEmits(['changed'])
+// the menu of a window to read: each item and where it leads — another window (a click goes there) or an action card;
+// the owner edits it in place (MenuForm). `menu` — the Part of kind menu hosted on this window, if there is one yet
+const props = defineProps({ window: Object, menu: Object })
+const ed = useEd()
 const edit = ref(false)
-const error = ref('')
-const form = reactive({ items: [] })
 const items = computed(() => props.menu?.items || [])
-const target = (it) => (it.window ? `→ ${props.windows.find((w) => w.id === it.window)?.title || '?'}` : it.task ? `→ ${props.info(it.task)?.title || it.task}` : '')
-const taskTitle = (slug) => props.info(slug)?.title
-watch(edit, (on) => on && (form.items = items.value.length ? items.value.map((it) => ({ ...it, to: it.window ? `w:${it.window}` : it.task ? 't' : '' })) : [blank()]))
-const blank = () => ({ title: '', window: '', task: '', note: '', to: '' })
-
-function retarget(it) {
-  it.window = it.to.startsWith('w:') ? it.to.slice(2) : ''
-  if (it.to !== 't') it.task = ''
-}
-async function save() {
-  error.value = ''
-  const rows = form.items.map(({ to, ...it }) => it)
-  try {
-    if (props.menu) await putPart(props.menu.id, { title: props.menu.title, description: props.menu.description, window: props.window.id, items: rows })
-    else await postPart({ kind: 'menu', title: `Меню «${props.window.title}»`, window: props.window.id, items: rows })
-    edit.value = false
-    emit('changed')
-  } catch (e) {
-    error.value = e.message
-  }
-}
-async function remove() {
-  await deletePart(props.menu.id)
-  edit.value = false
-  emit('changed')
-}
+const winTitle = (id) => ed.windows.find((w) => w.id === id)?.title
 </script>
 
 <template>
-  <div v-if="items.length || editable" class="menu small">
-    <div v-if="!edit" class="d-flex align-items-start gap-2">
-      <ul v-if="items.length" class="mb-0 ps-3 flex-grow-1">
-        <li v-for="(it, i) in items" :key="i">
-          {{ it.title }} <span class="text-secondary">{{ target(it) }}</span>
-          <span v-if="it.note" class="text-secondary">· {{ it.note }}</span>
-        </li>
-      </ul>
-      <button v-if="editable" class="btn btn-link btn-sm p-0 text-decoration-none text-nowrap" @click="edit = true">{{ items.length ? '✏️ меню' : '＋ пункти меню' }}</button>
-    </div>
-    <div v-else class="vstack gap-1">
-      <div v-for="(it, i) in form.items" :key="i" class="input-group input-group-sm">
-        <input v-model="it.title" class="form-control" placeholder="Пункт меню">
-        <select v-model="it.to" class="form-select" style="max-width: 11rem" @change="retarget(it)">
-          <option value="">нікуди (текст)</option>
-          <option value="t">→ картка…</option>
-          <option v-for="w in windows" :key="w.id" :value="`w:${w.id}`" :disabled="w.id === window.id">→ {{ w.title }}</option>
-        </select>
-        <input v-if="it.to === 't'" v-model="it.task" class="form-control" placeholder="slug картки" list="task-cards" :title="taskTitle(it.task)">
-        <input v-model="it.note" class="form-control" placeholder="нотатка" style="max-width: 9rem">
-        <button class="btn btn-outline-secondary" title="Прибрати пункт" @click="form.items.splice(i, 1)">✕</button>
+  <div v-if="items.length || ed.editable" class="small">
+    <MenuForm v-if="edit" :window :menu @done="edit = false" @cancel="edit = false" />
+    <div v-else-if="items.length" class="d-flex align-items-start gap-2">
+      <div class="list">
+        <div class="text-secondary fw-semibold">Меню</div>
+        <div v-for="(it, i) in items" :key="i">
+          {{ it.title }}
+          <a v-if="winTitle(it.window)" href="#" class="text-decoration-none ms-1" @click.prevent="jump('p-' + it.window)">→ 🪟 {{ winTitle(it.window) }}</a>
+          <span v-else-if="it.window" class="text-secondary ms-1">→ 🪟 вікна вже нема</span>
+          <span v-else-if="it.task" class="ms-1">⚙ {{ ed.info(it.task)?.title || it.task }}</span>
+          <span v-if="it.note" class="text-secondary ms-1">· {{ it.note }}</span>
+        </div>
       </div>
-      <div class="d-flex gap-2 align-items-center">
-        <button class="btn btn-outline-secondary btn-sm" @click="form.items.push(blank())">＋ пункт</button>
-        <button class="btn btn-primary btn-sm" @click="save">💾 Зберегти меню</button>
-        <button class="btn btn-outline-secondary btn-sm" @click="edit = false">✕</button>
-        <button v-if="menu" class="btn btn-link btn-sm text-danger text-decoration-none ms-auto" @click="remove">прибрати меню</button>
-      </div>
-      <div v-if="error" class="text-danger">{{ error }}</div>
+      <button v-if="ed.editable" type="button" class="iact" title="Редагувати меню" @click="edit = true"><Icon name="pencil" /></button>
     </div>
+    <button v-else type="button" class="btn btn-sm btn-add" @click="edit = true"><Icon name="plus" /> пункти меню</button>
   </div>
 </template>
+
+<style scoped>
+.list { flex-grow: 1; min-width: 0; overflow-wrap: anywhere; }
+</style>

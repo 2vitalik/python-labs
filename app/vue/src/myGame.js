@@ -1,6 +1,7 @@
 import { computed, ref } from 'vue'
 
 import { getMyGame, getStudentGame } from './api.js'
+import { kindOf } from './catalog.js'
 import { user } from '@core/user.js'
 
 // the signed-in student's own game, shared by the editor and the catalog's «＋ у гру»: the card, its parts, claims, rules
@@ -9,6 +10,7 @@ export const myParts = ref([])
 export const myClaims = ref([])
 export const myRules = ref([])
 export const myTasks = ref({})  // the cards the game names, drafts too — the catalog gives a student only the active ones
+export const myCoins = ref({})  // {claimed, accepted} as the server counts them: a card no more times than its limit
 export const claimedSlugs = computed(() => new Set(myClaims.value.map((c) => c.task)))
 
 export async function loadMyGame(force = false) {
@@ -26,12 +28,8 @@ export async function reloadInsides() {
   myClaims.value = full.claims
   myRules.value = full.rules
   myTasks.value = full.tasks
+  myCoins.value = full.coins || {}
 }
 
-// where a card wants to live: on an entity, on a window, or with the game itself
-export function anchorKind(task) {
-  if (!task) return 'game'
-  if (task.zone === 'entities') return 'entity'
-  if (task.zone === 'interface' && ['hud', 'settings', 'menus'].includes(task.subzone)) return 'window'
-  return 'game'
-}
+// a claim waiting for its place: not anchored, though its card lives on an entity, a window, the field or a rule (T270 §6)
+export const isDraft = (claim, task) => !claim.auto && !claim.part && !claim.rule && !['game', 'level'].includes(kindOf(task))

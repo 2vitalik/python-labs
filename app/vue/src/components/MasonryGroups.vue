@@ -1,11 +1,18 @@
 <script setup>
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
+import Icon from '@core/components/Icon.vue'
 import { subStyle } from '../catalog.js'
+import { isUnfolded, unfoldAll } from '../unfold.js'
 import { user } from '@core/user.js'
 import TaskCard from './TaskCard.vue'
+import TaskEdit from './TaskEdit.vue'
 
 const props = defineProps({ zone: String, color: String, subs: Array })
+const admin = computed(() => user.value?.status === 'admin')
+const scope = (s) => `${props.zone}/${s.key}`
+const adding = ref('')  // the subzone whose «＋» opened a new card's form at its top
+const blank = (s) => ({ zone: props.zone, subzone: s.key, status: 'draft' })
 
 const el = ref(null)
 const cols = ref(3)
@@ -35,9 +42,15 @@ const columns = computed(() => {
         <div class="group-head d-flex align-items-center gap-1">
           <span>{{ s.icon }} {{ s.title }}</span>
           <span class="count">{{ s.list.length }}</span>
-          <RouterLink v-if="user?.status === 'admin'" :to="`/tasks/new?zone=${zone}&sub=${s.key}`"
-                      class="ms-auto add text-decoration-none" title="Новий таск у цій підзоні">＋ таск</RouterLink>
+          <button type="button" class="iact ms-auto" :title="isUnfolded(scope(s)) ? 'згорнути всі' : 'розгорнути всі'"
+                  @click="unfoldAll(scope(s), !isUnfolded(scope(s)))">
+            <Icon :name="isUnfolded(scope(s)) ? 'fold' : 'unfold'" />
+          </button>
+          <button v-if="admin" type="button" class="iact add" title="Нова картка в цій підзоні" @click="adding = s.key">
+            <Icon name="plus" />
+          </button>
         </div>
+        <TaskEdit v-if="adding === s.key" :task="blank(s)" class="mb-1" @done="adding = ''" />
         <TaskCard v-for="t in s.list" :key="t.id" :task="t" />
       </div>
     </div>
@@ -48,8 +61,7 @@ const columns = computed(() => {
 .col-stack { flex: 1 1 0; min-width: 0; }
 .task-group { padding-left: .5rem; border-left: 3px solid var(--sc); }
 .group-head { font-size: .85rem; font-weight: 600; color: var(--sc); margin-bottom: .25rem; }
+.group-head .iact { width: 1.35rem; height: 1.35rem; font-size: .95rem; }
 .count { font-weight: 400; opacity: .55; font-size: .85em; }
-.add { color: var(--sc); opacity: .6; font-size: .8rem; font-weight: 600; }
-.add:hover { opacity: 1; }
-[data-bs-theme=dark] .group-head, [data-bs-theme=dark] .add { color: color-mix(in srgb, var(--sc) 60%, #fff); }
+[data-bs-theme=dark] .group-head { color: color-mix(in srgb, var(--sc) 60%, #fff); }
 </style>

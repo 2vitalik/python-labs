@@ -34,7 +34,6 @@ import LudopediaPage from './pages/LudopediaPage.vue'
 import MyGamePage from './pages/MyGamePage.vue'
 import RefsPage from './pages/RefsPage.vue'
 import StudentGamePage from './pages/StudentGamePage.vue'
-import TaskEditPage from './pages/TaskEditPage.vue'
 import TasksPage from './pages/TasksPage.vue'
 import { CHANGES, SECTIONS } from './site.js'
 
@@ -84,7 +83,8 @@ export default makeRouter([
   { path: '/colors2', component: Colors2Page, meta: { title: 'Кольори v2', access: 'admin' } },
   { path: '/tasks', component: TasksPage, meta: { title: 'Таски', wide: true, filters: true } },
   { path: '/tasks/history', component: CardHistoryPage, meta: { title: 'Історія завдань', kind: 'tasks', access: 'admin' } },
-  { path: '/tasks/new', component: TaskEditPage, meta: { title: 'Нове завдання', access: 'admin' } },
-  { path: '/tasks/:slug/edit', component: TaskEditPage, meta: { title: 'Таски', access: 'admin' } },
+  // a card is edited on itself now (T271): the old links land on the catalog, on the card when there is one
+  { path: '/tasks/new', redirect: '/tasks' },
+  { path: '/tasks/:slug/edit', redirect: (to) => ({ path: '/tasks', query: { q: to.params.slug } }) },
   { path: '/:pathMatch(.*)*', component: NotFoundPage, meta: { title: 'Такої сторінки нема' } },  // the server answers any path with index.html, so 404 is ours to show
 ])

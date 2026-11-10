@@ -1,102 +1,61 @@
 <script setup>
-import { computed, reactive, ref } from 'vue'
+import { computed, ref } from 'vue'
 
-import TagInput from '@core/components/TagInput.vue'
-import { deletePart, postClaim, postPart, putPart } from '../api.js'
+import DelButton from '@core/components/DelButton.vue'
+import Icon from '@core/components/Icon.vue'
+import { deletePart } from '../api.js'
 import { vocab } from '../catalog.js'
+import { useEd } from '../ed.js'
 import CardPicker from './CardPicker.vue'
-import ClaimChip from './ClaimChip.vue'
+import ClaimRow from './ClaimRow.vue'
+import FieldForm from './FieldForm.vue'
+import PropsList from './PropsList.vue'
 import ShotStrip from './ShotStrip.vue'
 
-// the field — one per game: its properties as a row of chips, the render / camera cards claimed on it, a screenshot
-const props = defineProps({ part: Object, claims: Array, info: Function, parts: Array, editable: Boolean, judge: Boolean, nick: String })
-const emit = defineEmits(['changed'])
+// the «Поле» section's body (T270 §8): the field's properties to read, its screenshots and the cards about it;
+// the pencil turns the card into its form in place
+const ed = useEd()
 const edit = ref(false)
-const error = ref('')
-const form = reactive({ props: {}, description: '' })
-const specs = computed(() => vocab.value.field)
-const chips = computed(() => specs.value.flatMap((s) => {
-  const v = props.part?.props?.[s.key]
-  if (v === undefined || v === '' || v === false || (Array.isArray(v) && !v.length)) return []
-  if (s.type === 'bool') return [s.label.split(' (')[0]]
-  if (s.type === 'choice') return [s.options[v] || v]
-  if (s.type === 'tags') return [`шари: ${v.join(' · ')}`]
-  return [v]
-}))
+const claims = computed(() => (ed.field ? ed.claimsOf(ed.field.id).filter((c) => !c.auto) : []))
 
-async function run(fn) {
-  error.value = ''
+async function remove() {
   try {
-    await fn()
-    emit('changed')
+    await deletePart(ed.field.id)
+    await ed.changed()
   } catch (e) {
-    error.value = e.message
+    ed.fail(e.message)
   }
 }
-function start() {
-  form.props = { ...(props.part?.props || {}) }
-  form.description = props.part?.description || ''
-  edit.value = true
-}
-const save = () => run(async () => {
-  if (props.part) await putPart(props.part.id, { title: 'Поле', ...form })
-  else await postPart({ kind: 'field', title: 'Поле', ...form })
-  edit.value = false
-})
-const remove = () => run(() => deletePart(props.part.id))
-const addClaim = (task, params) => run(() => postClaim({ task, part: props.part.id, params }))
+defineExpose({ add: () => (edit.value = true) })
 </script>
 
 <template>
-  <div class="card">
+  <div :id="ed.field ? `p-${ed.field.id}` : null" class="card">
     <div class="card-body p-2 vstack gap-2">
-      <div v-if="!edit" class="d-flex flex-wrap align-items-center gap-1">
-        <span class="me-1">🗺️</span>
-        <template v-if="chips.length">
-          <span v-for="c in chips" :key="c" class="badge text-bg-light border fw-normal text-body prop">{{ c }}</span>
-        </template>
-        <span v-else class="text-secondary small">{{ part ? 'Поле без властивостей — додай розмір, сітку, час' : 'Поле ще не описане: розмір, сітка, тор, час, керування, шари клітини' }}</span>
-        <template v-if="editable">
-          <button class="btn btn-sm ms-auto" :class="part ? 'btn-link text-decoration-none py-0' : 'btn-outline-primary'" @click="start">{{ part ? '✏️' : 'Описати поле' }}</button>
-          <span v-if="part" class="text-secondary act" role="button" title="Прибрати поле" @click="remove">🗑️</span>
-        </template>
-      </div>
-      <div v-else class="row g-2 align-items-end">
-        <div v-for="s in specs" :key="s.key" :class="s.type === 'tags' ? 'col-12' : 'col-6 col-md-3'">
-          <label class="form-label small mb-0 text-secondary">{{ s.label }}</label>
-          <input v-if="s.type === 'text'" v-model="form.props[s.key]" class="form-control form-control-sm" :placeholder="s.hint">
-          <select v-else-if="s.type === 'choice'" v-model="form.props[s.key]" class="form-select form-select-sm">
-            <option value="">—</option>
-            <option v-for="(label, v) in s.options" :key="v" :value="v">{{ label }}</option>
-          </select>
-          <div v-else-if="s.type === 'bool'" class="form-check mb-1"><input v-model="form.props[s.key]" class="form-check-input" type="checkbox"> <span class="small">так</span></div>
-          <TagInput v-else v-model="form.props[s.key]" :hash="false" :known="['підлога', 'обʼєкти', 'розмітка', 'туман', 'предмети']" />
-        </div>
-        <div class="col-12">
-          <input v-model="form.description" class="form-control form-control-sm" placeholder="Коротко про поле: як генерується, чи є рівні, камера…">
-        </div>
-        <div class="col-12 d-flex gap-2">
-          <button class="btn btn-primary btn-sm" @click="save">💾 Зберегти</button>
-          <button class="btn btn-outline-secondary btn-sm" @click="edit = false">✕</button>
-        </div>
-      </div>
-      <div v-if="part?.description && !edit" class="text-secondary small">{{ part.description }}</div>
-      <template v-if="part">
-        <ShotStrip v-if="editable || part.screenshots.length" :part :editable @changed="emit('changed')" />
-        <div v-if="claims.length" class="d-flex flex-wrap gap-1 align-items-start">
-          <ClaimChip v-for="c in claims" :key="c.id" :claim="c" :info="info(c.task)" :parts :editable :judge :nick @changed="emit('changed')" />
-        </div>
-        <CardPicker v-if="editable" placeholder="＋ картка про поле: рендер, камера, масштаб, генерація…"
-                    :claimed="new Set(claims.map((c) => c.task))" @pick="addClaim" />
+      <FieldForm v-if="edit" :part="ed.field" @done="edit = false" @cancel="edit = false" />
+      <template v-else-if="!ed.field">
+        <div class="text-secondary small">Поле — де йде гра: яка сітка, як на неї дивимось, як іде час (покроково чи в реальному часі),
+          як керує гравець і що може лежати в одній клітині.</div>
+        <button v-if="ed.editable" type="button" class="btn btn-sm btn-add align-self-start" @click="edit = true"><Icon name="plus" /> Описати поле</button>
       </template>
-      <div v-if="error" class="text-danger small">{{ error }}</div>
+      <template v-else>
+        <div class="d-flex align-items-start gap-2">
+          <PropsList :props="ed.field.props" :specs="vocab.field" class="flex-grow-1">
+            <span class="text-secondary">Властивості поля ще не вказані.</span>
+          </PropsList>
+          <span v-if="ed.editable" class="d-flex ms-auto">
+            <button type="button" class="iact" title="Редагувати" @click="edit = true"><Icon name="pencil" /></button>
+            <DelButton what="опис поля" note="разом зі скриншотами й картками про поле" @yes="remove" />
+          </span>
+        </div>
+        <div v-if="ed.field.description" class="small">{{ ed.field.description }}</div>
+        <ShotStrip v-if="ed.editable || ed.field.screenshots?.length" :part="ed.field" />
+        <div v-if="claims.length || ed.editable" class="vstack gap-1">
+          <div class="small text-secondary">Картки про поле</div>
+          <ClaimRow v-for="c in claims" :key="c.id" :claim="c" />
+          <div v-if="ed.editable"><CardPicker :kinds="['field']" :anchor="{ part: ed.field.id }" label="картка про поле" /></div>
+        </div>
+      </template>
     </div>
   </div>
 </template>
-
-<style scoped>
-/* a long property (the layers) wraps instead of widening the page; on one line it is the same pill as before */
-.prop { white-space: normal; text-align: start; line-height: 1.3; padding-block: .2em; border-radius: .75rem; }
-.act { opacity: .6; }
-.act:hover { opacity: 1; }
-</style>

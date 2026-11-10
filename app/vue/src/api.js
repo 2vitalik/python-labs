@@ -7,6 +7,7 @@ export const getZones = () => request('/api/zones')
 export const getVocab = () => request('/api/vocab')
 export const getTemplates = () => request('/api/templates')
 export const getGames = () => request('/api/games')
+export const getEtalon = (slug) => request(`/api/games/${slug}/etalon`)  // the base game's reference description, shaped as a student's game
 export const getTasks = () => request('/api/tasks')
 export const postGame = (data) => request('/api/games', 'POST', data)
 export const putGame = (id, data) => request(`/api/games/${id}`, 'PUT', data)

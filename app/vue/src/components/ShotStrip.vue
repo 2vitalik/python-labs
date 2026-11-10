@@ -1,55 +1,66 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
+import DelButton from '@core/components/DelButton.vue'
+import Icon from '@core/components/Icon.vue'
+import { showShot } from '@core/lightbox.js'
 import { deleteShot, uploadShot } from '../api.js'
+import { useEd } from '../ed.js'
 
-// screenshots of a part: thumbnails that open full size; the owner adds and removes
-const props = defineProps({ part: Object, editable: Boolean })
-const emit = defineEmits(['changed'])
+// the screenshots of a part (T270 §10.3): thumbnails that open over the page; the owner adds through the violet tile,
+// always there, and takes one off by the round control in its corner
+const props = defineProps({ part: Object })
+const ed = useEd()
 const error = ref('')
 const busy = ref(false)
+const urls = computed(() => (props.part.screenshots || []).map((s) => `/api/uploads/${props.part.game}/${s}`))
 
-async function onFile(e) {
-  const file = e.target.files[0]
-  e.target.value = ''
-  if (!file) return
+async function run(fn) {
   error.value = ''
   busy.value = true
   try {
-    await uploadShot(props.part.id, file)
-    emit('changed')
-  } catch (err) {
-    error.value = err.message
+    await fn()
+    ed.changed()
+  } catch (e) {
+    error.value = e.message
   } finally {
     busy.value = false
   }
 }
-
-async function remove(name) {
-  await deleteShot(props.part.id, name)
-  emit('changed')
+function onFile(e) {
+  const file = e.target.files[0]
+  e.target.value = ''
+  if (file) run(() => uploadShot(props.part.id, file))
 }
+const remove = (name) => run(() => deleteShot(props.part.id, name))
 </script>
 
 <template>
-  <div class="d-flex flex-wrap gap-2 align-items-center">
-    <div v-for="s in part.screenshots" :key="s" class="position-relative">
-      <a :href="`/api/uploads/${part.game}/${s}`" target="_blank">
-        <img :src="`/api/uploads/${part.game}/${s}`" class="rounded border shot">
-      </a>
-      <button v-if="editable" class="btn-close bg-white border rounded-circle position-absolute top-0 end-0 m-1 p-1"
-              title="У кошик" @click="remove(s)"></button>
+  <div v-if="ed.editable || urls.length">
+    <div class="d-flex flex-wrap align-items-center gap-2">
+      <div v-for="(s, i) in part.screenshots" :key="s" class="shot">
+        <img :src="urls[i]" alt="скриншот" class="rounded border" title="на весь екран" @click="showShot(urls, i)">
+        <span v-if="ed.editable" class="rm"><DelButton what="скриншот" @yes="remove(s)" /></span>
+      </div>
+      <label v-if="ed.editable" class="add" :class="{ busy, lone: !urls.length }" title="png, jpg, webp або gif до 8 МБ">
+        <Icon name="plus" /><span v-if="!urls.length">скриншот</span>
+        <input type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden :disabled="busy" @change="onFile">
+      </label>
     </div>
-    <label v-if="editable" class="btn btn-link btn-sm p-0 text-decoration-none text-secondary add" :class="{ disabled: busy }" title="png, jpg, webp або gif до 8 МБ">
-      📷 {{ part.screenshots.length ? '' : 'скриншот' }}
-      <input type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden @change="onFile">
-    </label>
-    <div v-if="error" class="text-danger small w-100">{{ error }}</div>
+    <div v-if="error" class="text-danger small mt-1">{{ error }}</div>
   </div>
 </template>
 
 <style scoped>
-.shot { height: 64px; }
-.add { font-size: .8rem; }
-.add:hover { color: var(--bs-body-color) !important; }
+.shot { position: relative; }
+.shot img { height: 64px; cursor: zoom-in; }
+.rm { position: absolute; top: -.5rem; right: -.5rem; }
+.rm :deep(.iact) { width: 1.35rem; height: 1.35rem; border: 1px solid var(--bs-border-color); border-radius: 50%; background: var(--bs-body-bg); font-size: .75rem; }
+.rm :deep(.iact:hover) { background: var(--bs-danger-bg-subtle); }
+.add { display: inline-flex; align-items: center; justify-content: center; gap: .3rem; height: 64px; min-width: 64px; padding: 0 .75rem;
+       border: 1.5px dashed color-mix(in srgb, var(--act-add) 55%, transparent); border-radius: .375rem; color: var(--act-add);
+       font-size: .85rem; cursor: pointer; }
+.add.lone { height: 1.9rem; padding: 0 .55rem; font-size: .8rem; }  /* no thumbnails to match yet: a card without screenshots stays short */
+.add:hover { border-color: var(--act-add); background: color-mix(in srgb, var(--act-add) 8%, transparent); }
+.add.busy { opacity: .5; pointer-events: none; }
 </style>

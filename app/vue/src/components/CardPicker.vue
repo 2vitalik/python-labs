@@ -1,64 +1,85 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 
-import { COINS, missingParams, subzoneTitle } from '../catalog.js'
-import { searchTasks } from '../search.js'
+import Icon from '@core/components/Icon.vue'
+import Pop from '@core/components/Pop.vue'
+import { postClaim } from '../api.js'
+import { missingParams } from '../catalog.js'
+import { useEd } from '../ed.js'
+import { cardItems } from '../items.js'
+import { jump } from '../jump.js'
+import Picker from './Picker.vue'
+import ProposeCard from './ProposeCard.vue'
 import SlotFields from './SlotFields.vue'
 
-// «＋ картка…» on an entity, a window or the game: search by title, synonyms, slug, tags; a card with required
-// slots asks for them first (unless `loose` — the game level may wait); emits pick(slug, params)
-const props = defineProps({
-  placeholder: { type: String, default: '＋ картка з каталогу…' }, filter: { type: Function, default: () => true },
-  claimed: { type: Set, default: () => new Set() }, loose: Boolean,
-})
-const emit = defineEmits(['pick'])
-const q = ref('')
+// «＋ механіка» and the like: the catalog's cards of these kinds in a panel; a picked one is claimed at `anchor`
+// ({ part } · { rule } · {}), its required params asked first. `suggest(task)` lifts a card under «підходять сюди»
+const props = defineProps({ kinds: Array, anchor: { type: Object, default: () => ({}) }, label: String, suggest: Function, filter: Function })
+const ed = useEd()
 const open = ref(false)
-const picked = ref(null)
+const picked = ref(null)  // a row of the list waiting for its params
 const params = ref({})
-const found = computed(() => (q.value.trim().length < 2 ? [] : searchTasks(q.value, 8, props.filter)))
-const ready = computed(() => props.loose || !missingParams(picked.value, params.value).length)
+const proposing = ref(false)
+const error = ref('')
+const here = (c) => (c.part || '') === (props.anchor.part || '') && (c.rule || '') === (props.anchor.rule || '')
+const items = computed(() => {
+  const all = cardItems(props.kinds, new Set(ed.claims.filter(here).map((c) => c.task)), props.filter)
+  const fit = (it) => props.suggest?.(it.task)
+  return [...all.filter(fit).map((it) => ({ ...it, group: 'підходять сюди' })), ...all.filter((it) => !fit(it))]
+})
+const anchored = computed(() => !!(props.anchor.part || props.anchor.rule))
+const ready = computed(() => !missingParams(picked.value?.task, params.value).length)
+const plain = (md) => (md || '').replace(/\[([^\]]*)\]\([^)]*\)/g, '$1').replace(/[*_`#>]/g, '')
 
-function pick(t) {
-  q.value = ''
-  open.value = false
-  if (t.slots?.length) {
-    picked.value = t
+watch(open, () => { picked.value = null; proposing.value = false; error.value = '' })
+
+function pick(it) {
+  if (anchored.value && missingParams(it.task, {}).length) {
+    picked.value = it
     params.value = {}
-  } else {
-    emit('pick', t.slug, {})
-  }
+  } else send(it.task, {})
 }
-function send() {
-  emit('pick', picked.value.slug, params.value)
-  picked.value = null
+async function send(task, p) {
+  error.value = ''
+  try {
+    const c = await postClaim({ task: task.slug, ...props.anchor, params: p })
+    open.value = false
+    ed.changed()
+    jump(`c-${c.id}`)
+  } catch (e) {
+    error.value = e.message
+  }
 }
 </script>
 
 <template>
-  <div v-if="picked" class="d-flex gap-1 flex-wrap align-items-center small">
-    <span class="text-nowrap">{{ COINS[picked.coin] || '·' }} {{ picked.title }}:</span>
-    <SlotFields :specs="picked.slots" :params="params" />
-    <button class="btn btn-primary btn-sm" :disabled="!ready" @click="send">Додати</button>
-    <button class="btn btn-outline-secondary btn-sm" @click="picked = null">✕</button>
-  </div>
-  <div v-else class="position-relative">
-    <input v-model="q" class="form-control form-control-sm picker" :placeholder="placeholder"
-           @focus="open = true" @blur="open = false" @keydown.enter.prevent="found[0] && pick(found[0])">
-    <div v-if="open && found.length" class="list-group position-absolute w-100 shadow" style="z-index: 20">
-      <button v-for="t in found" :key="t.slug" type="button" class="list-group-item list-group-item-action py-1 small d-flex gap-2"
-              :class="{ 'text-secondary': claimed.has(t.slug) }" @mousedown.prevent="pick(t)">
-        <span>{{ COINS[t.coin] || '·' }}</span>
-        <span class="me-auto">{{ t.title }} <span v-if="claimed.has(t.slug)" title="уже є в грі">✓</span></span>
-        <span class="text-secondary text-nowrap">{{ subzoneTitle(t) }}</span>
-      </button>
+  <Pop v-if="ed.editable" v-model="open" width="24rem">
+    <template #trigger="{ toggle }">
+      <button type="button" class="btn btn-sm btn-add" @click="toggle"><Icon name="plus" /> {{ label }}</button>
+    </template>
+    <ProposeCard v-if="proposing" what="нову картку" @done="open = false" @cancel="proposing = false" />
+    <div v-else-if="picked" class="vstack gap-2">
+      <div class="fw-semibold">{{ picked.icon }} {{ picked.title }}</div>
+      <div v-if="picked.desc" class="desc">{{ plain(picked.desc) }}</div>
+      <div class="d-flex flex-wrap gap-2 align-items-center"><SlotFields :specs="picked.task.slots" :params /></div>
+      <div class="d-flex gap-2">
+        <button type="button" class="btn btn-sm btn-add" :disabled="!ready" @click="send(picked.task, params)"><Icon name="plus" /> Додати</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary" @click="picked = null">Скасувати</button>
+      </div>
     </div>
-    <div v-else-if="open && q.trim().length >= 2" class="list-group position-absolute w-100 shadow" style="z-index: 20">
-      <div class="list-group-item py-1 small text-secondary">Нічого — спробуй інше слово або <RouterLink to="/ideas">запропонуй картку</RouterLink></div>
-    </div>
-  </div>
+    <Picker v-else inline autofocus :items placeholder="пошук картки…" @pick="pick">
+      <template #footer>
+        <div class="foot">
+          Нема потрібного? Глянь <RouterLink to="/tasks">увесь каталог</RouterLink>
+          або <a href="#" @click.prevent="proposing = true">запропонуй картку</a>
+        </div>
+      </template>
+    </Picker>
+    <div v-if="error" class="text-danger small mt-2">{{ error }}</div>
+  </Pop>
 </template>
 
 <style scoped>
-.picker { border-style: dashed; }
+.desc { display: -webkit-box; overflow: hidden; -webkit-line-clamp: 2; -webkit-box-orient: vertical; font-size: .8rem; color: var(--bs-secondary-color); }
+.foot { margin: .4rem .5rem .1rem; padding-top: .4rem; border-top: 1px solid var(--bs-border-color-translucent); font-size: .78rem; color: var(--bs-secondary-color); }
 </style>

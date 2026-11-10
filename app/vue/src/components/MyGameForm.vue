@@ -2,11 +2,11 @@
 import { computed, ref, watch } from 'vue'
 
 import GrowArea from '@core/components/GrowArea.vue'
-import TagInput from '@core/components/TagInput.vue'
+import Icon from '@core/components/Icon.vue'
 import { games } from '../catalog.js'
 
 // creating the game: base · title · description as three cards, the profile's way (ProfileForm);
-// once it exists the same fields fold into one compact card above the description's sections, plus the tick order
+// once it exists the same fields fold into one compact card above the description's sections
 const props = defineProps({ dirty: Boolean, saved: Boolean, error: String, fresh: Boolean })
 defineEmits(['save'])
 const form = defineModel({ type: Object, required: true })
@@ -27,7 +27,7 @@ const showChips = computed(() => props.fresh || changing.value)
           <span class="text-secondary">Основа:</span>
           <RouterLink v-if="chosen" :to="`/games/${chosen.slug}`">{{ chosen.icon }} {{ chosen.title }}</RouterLink>
           <span v-else>✨ {{ form.base_custom }}</span>
-          <a href="#" class="text-secondary text-decoration-none ms-1" @click.prevent="changing = true">змінити</a>
+          <a href="#" class="text-secondary ms-1" title="Обрати іншу гру-основу: описане лишається, міняються еталон і підказки" @click.prevent="changing = true">змінити основу</a>
         </div>
         <template v-if="showChips">
           <div class="d-flex flex-wrap gap-1">
@@ -40,16 +40,14 @@ const showChips = computed(() => props.fresh || changing.value)
             <template v-if="chosen">Про основу — на її сторінці: <RouterLink :to="`/games/${chosen.slug}`">{{ chosen.title }} ↗</RouterLink></template>
             <template v-else-if="custom">Своя — теж на клітинковому полі; викладач подивиться і, може, додасть її в каталог</template>
             <template v-else>Одна з ігор каталогу — або своя</template>
+            <template v-if="!fresh"> · Зміна основи нічого не стирає: описане лишається, міняються лише еталон і підказки ·
+              <a href="#" @click.prevent="changing = false">не міняти</a></template>
           </div>
         </template>
         <template v-if="!fresh">
-          <input v-model="form.title" class="form-control form-control-lg fw-semibold border-0 px-0 shadow-none" placeholder="Назва гри" required>
-          <GrowArea v-model="form.description" class="form-control border-0 px-0 shadow-none" placeholder="Що за гра і чим відрізняється від основи (Markdown можна)" />
-          <div class="d-flex flex-wrap align-items-center gap-2 small mt-1">
-            <span class="text-secondary text-nowrap" title="Порядок кроків одного тіку або ходу: знімає спір «хто ходить першим»">🔁 Порядок тіку:</span>
-            <TagInput v-model="form.phases" :hash="false" class="flex-grow-1 form-control-sm phases" placeholder="ввід → гравець → вороги → … (слово і Enter)"
-                      :known="['ввід', 'гравець', 'вороги', 'снаряди', 'середовище', 'спавн', 'перевірка перемоги', 'рендер']" />
-          </div>
+          <input v-model="form.title" class="form-control form-control-lg fw-semibold soft-input px-2 mt-1" placeholder="Назва гри" title="Назва гри — можна редагувати" required>
+          <GrowArea v-model="form.description" class="form-control soft-input px-2" title="Опис — можна редагувати"
+                    placeholder="Що за гра і чим відрізняється від основи (Markdown можна) — натисни й пиши" />
         </template>
       </div>
     </div>
@@ -72,7 +70,8 @@ const showChips = computed(() => props.fresh || changing.value)
     </template>
 
     <div v-if="fresh || dirty || saved || error" class="d-flex align-items-center gap-3" :class="{ 'mb-3': !fresh }">
-      <button class="btn btn-primary" :class="{ 'btn-sm': !fresh }" :disabled="!dirty">{{ fresh ? 'Створити гру' : 'Зберегти' }}</button>
+      <button v-if="fresh" class="btn btn-primary" :disabled="!dirty">Створити гру</button>
+      <button v-else class="btn btn-sm btn-success" :disabled="!dirty"><Icon name="check" /> Зберегти</button>
       <Transition name="saved">
         <span v-if="saved" class="text-success small">✓ Збережено</span>
       </Transition>
@@ -85,5 +84,4 @@ const showChips = computed(() => props.fresh || changing.value)
 .saved-enter-active { transition: opacity .2s; }
 .saved-leave-active { transition: opacity .6s; }
 .saved-enter-from, .saved-leave-to { opacity: 0; }
-.phases { font-size: .85rem; }
 </style>
