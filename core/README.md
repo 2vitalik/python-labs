@@ -28,6 +28,7 @@
 | Лаби: дедлайни, репозиторії, звіти агента | `models/deadline.py`, `models/repo.py`, `labs.py`, `lab_marks.py`, `repos.py`, `routes/labs.py`, `routes/student_labs.py`, `bot/due.py` | `pages/DeadlinesPage.vue`, `components/Lab*.vue`, `DeadlineForm.vue`, `StudentLabs.vue`, `labs.js` |
 | Таблиця студентів: види, свої поля | `models/field.py`, `models/view.py`, `table.py`, `fields.py`, `routes/table.py`, `routes/fields.py`, `routes/views.py` | `pages/TablePage.vue`, `components/Table*.vue`, `Fields*.vue`, `table.js`, `tableCols.js`, `tableViews.js` |
 | Оформлення | — | `App.vue`, `NavBar.vue`, `Crumbs.vue`, `theme.js`, `style.css`, `dark.css` |
+| Мова дій: один колір — одна дія (T270 §1) | — | `components/Icon.vue` (лінійні SVG: `<Icon name="plus" />`), `Pop.vue` (спливна панель біля свого елемента), `DelButton.vue` (кошик з підтвердженням), `Lightbox.vue` + `lightbox.js` (картинка поверх сторінки); у `style.css` — `btn-add` (додати — фіолетовий), `iact` / `iact del` / `iact add` (іконка-дія), `soft-input`, `<mark>`; зберегти — `btn-success`, скасувати — `btn-outline-secondary` |
 
 ## Сайт на ядрі: бекенд
 

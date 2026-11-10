@@ -13,6 +13,29 @@
         text-decoration: none; font-size: .75rem; line-height: 1; }
 .ibtn:hover { color: var(--bs-body-color); border-color: var(--bs-secondary-color); background: var(--bs-tertiary-bg); }
 
+/* one colour — one action (T270): add is violet, save is Bootstrap's green, delete its red, cancel its grey outline */
+:root { --act-add: #6f42c1; --act-del: var(--bs-danger); }
+[data-bs-theme=dark] { --act-add: #b197e8; }
+.btn-add { --bs-btn-color: var(--act-add); --bs-btn-border-color: color-mix(in srgb, var(--act-add) 45%, transparent);
+           --bs-btn-hover-color: var(--act-add); --bs-btn-hover-bg: color-mix(in srgb, var(--act-add) 10%, transparent); --bs-btn-hover-border-color: var(--act-add);
+           --bs-btn-active-color: var(--act-add); --bs-btn-active-bg: color-mix(in srgb, var(--act-add) 20%, transparent); --bs-btn-active-border-color: var(--act-add);
+           --bs-btn-disabled-color: var(--bs-secondary-color); --bs-btn-disabled-border-color: var(--bs-border-color);
+           display: inline-flex; align-items: center; gap: .3rem; }
+.btn-success, .btn-outline-secondary { display: inline-flex; align-items: center; gap: .3rem; }
+/* an icon that acts (edit, delete, take a row off): quiet until the mouse is over it; `del` turns red, `add` is violet */
+.iact { display: inline-flex; align-items: center; justify-content: center; width: 1.6rem; height: 1.6rem; flex-shrink: 0; padding: 0;
+        border: 0; border-radius: .3rem; background: none; color: var(--bs-secondary-color); }
+.iact:hover { background: var(--bs-tertiary-bg); color: var(--bs-body-color); }
+.iact.del:hover { background: color-mix(in srgb, var(--act-del) 12%, transparent); color: var(--act-del); }
+.iact.add { color: var(--act-add); }
+.iact.add:hover { background: color-mix(in srgb, var(--act-add) 12%, transparent); color: var(--act-add); }
+/* a field that looks like text until the mouse or the focus finds it: the frame says «this can be edited» */
+.soft-input { border-color: transparent; background: transparent; }
+.soft-input:hover { border-color: var(--bs-border-color); }
+.soft-input:focus { border-color: var(--bs-primary-border-subtle); background: var(--bs-body-bg); }
+/* a search hit inside a title or a description */
+mark { padding: 0; background: var(--bs-warning-bg-subtle); color: inherit; font-weight: 700; border-radius: .15rem; }
+
 /* a filter chip that is off: Bootstrap fills an outline button on hover, and one just switched off would still look pressed */
 .chip.btn-outline-secondary { --bs-btn-hover-color: var(--bs-btn-color); --bs-btn-hover-bg: var(--bs-tertiary-bg); }
 
