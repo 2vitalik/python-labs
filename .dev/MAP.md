@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T270** · тікетів: 269 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T274** · тікетів: 273 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -277,3 +277,7 @@
 | platform | [T267](platform/.t/T267--demo-students/plan.md) | ⚙️ | demo-students | Демо-студенти: описані ігри в дев-базі — план | 🟢 ⬜ |
 | platform | [T268](platform/.t/T268-Q--demo-findings.md) | ❓ | demo-findings | Знахідки з демо-ігор: чернетки-slug-и, стани, еталон | 🔴 ⬜ |
 | platform | [T269](platform/.t/T269--demo-findings-fix/plan.md) | ⚙️ | demo-findings-fix | Знахідки з демо-ігор полагоджено: назви чернеток, стани, еталони — план | 🟢 ⬜ |
+| games | [T270](games/.t/T270-P--game-desc-v3-design.md) | 💡 | game-desc-v3-design | Опис гри v3: мова інтерфейсу, типи карток, рівні, простий режим | 🟢 🟩 |
+| platform | [T271](platform/.t/T271--game-desc-v3/plan.md) | ⚙️ | game-desc-v3 | Опис гри v3: редактор, типи карток, рівні, каталог — план | 🟢 🟩 |
+| reports | [T272](reports/.t/T272-C--ai-game-draft.md) | 🔆 | ai-game-draft | Чернетка опису гри від ШІ: що дозволяє підписка і скільки коштує API | 🟢 🟩 |
+| games | [T273](games/.t/T273-Q--game-desc-v3-choices.md) | ❓ | game-desc-v3-choices | Опис гри v3: вибори після нічної сесії | 🔴 ⬜ |
