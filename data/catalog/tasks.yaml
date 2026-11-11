@@ -1,3 +1,286 @@
+field:
+  control:
+  - control-direct:
+      title: Клавіші = рух аватара
+      description: 'Натиснув стрілку — аватар зробив крок саме туди: Pac-Man, Sokoban, Snake, Battle City. Якщо ти лише вказуєш ціль, а дорогу шукає гра, — це «вказую ціль».'
+      icon: ⌨️
+      opt: control:direct
+      coin: wood
+      amount: 1.0
+      max_count: 1
+      status: active
+  - control-indirect:
+      title: Вказую ціль, іде сама
+      description: 'Ти кажеш куди, а сутність сама шукає шлях і йде туди кілька тіків: кулька в Lines, юніти в стратегіях. Якщо після кліку все стається одразу на тій клітині — це «клік по клітині».'
+      icon: 📍
+      opt: control:indirect
+      coin: tin
+      amount: 1.0
+      max_count: 1
+      status: active
+  - control-click-cell:
+      title: Клік по клітині
+      description: 'Клік і є дія над клітиною, результат одразу: відкрити клітину в сапері, посадити рослину в PvZ, обрати фігуру й клітину ходу в шахах. Ніхто не йде шляхом — на відміну від «вказую ціль».'
+      icon: 🖱️
+      opt: control:click-cell
+      coin: wood
+      amount: 1.0
+      max_count: 1
+      status: active
+  - control-drag-piece:
+      title: Перетягую фігуру
+      description: 'Береш фігуру мишкою, ведеш і відпускаєш на клітину: Blokus, пазли з фігурами, шахи на lichess. Якщо ведеш лінію через клітини і важливий сам шлях — це «малюю шлях».'
+      icon: ✋
+      opt: control:drag-piece
+      coin: bronze
+      amount: 1.0
+      max_count: 1
+      status: active
+  - control-swipe-all:
+      title: Хід рухає все поле
+      description: 'Одна дія зсуває все, що може рухатись, в один бік — обирати, що рухати, не треба: 2048, Threes, нахил лабіринту з кульками. Свайп пальцем — лише спосіб натиснути; суть у тому, що їде
+        все поле.'
+      icon: 🔀
+      opt: control:swipe-all
+      coin: tin
+      amount: 1.0
+      max_count: 1
+      status: active
+  - control-drag-path:
+      title: Малюю шлях
+      description: 'Ведеш мишкою чи пальцем через сусідні клітини, і сама лінія — це хід: Flow Free, Two Dots, маршрути літаків у Flight Control.'
+      icon: 〰️
+      opt: control:drag-path
+      coin: tin
+      amount: 1.0
+      max_count: 1
+      status: active
+  - control-mark:
+      title: Розмічаю клітини
+      description: Ставиш у клітини цифри, хрестики, зафарбовуєш — світ від цього не рухається, правила лише перевіряють розмітку. Судоку, японський кросворд, прапорці в сапері.
+      icon: 📝
+      opt: control:mark
+      coin: wood
+      amount: 1.0
+      max_count: 1
+      status: active
+  - control-programmed:
+      title: Пишу програму команд
+      description: Спершу складаєш список команд — вперед, поворот, повтори, — потім запускаєш, і сутність виконує їх сама, клавішами вже не втрутишся. Karel, Lightbot, Human Resource Machine.
+      icon: 📜
+      opt: control:programmed
+      coin: bronze
+      amount: 1.0
+      max_count: 1
+      status: active
+  grid:
+  - grid-square:
+      title: Квадратна
+      description: 'Звичайна сітка з квадратів: 4 сусіди через сторону і ще 4 через кут. Майже всі базові ігри: Pac-Man, Sokoban, шахи, сапер.'
+      icon: 🔲
+      opt: topology:square
+      coin: wood
+      amount: 1.0
+      max_count: 1
+      status: active
+  - grid-hex:
+      title: Гексагональна
+      description: 'Клітини-шестикутники: у кожної 6 сусідів на однаковій відстані, діагоналей нема. Wesnoth, Civilization, Catan, Hextris; координати хитріші — ряди зсунуті через один.'
+      icon: ⬢
+      opt: topology:hex
+      coin: bronze
+      amount: 1.0
+      max_count: 1
+      status: active
+  - grid-graph:
+      title: Граф (точки й лінії)
+      description: 'Поле — точки, зʼєднані лініями, і сусіди задані списком, а не сіткою: «Млин», Risk, карта метро. Квадратний лабіринт зі стінами між клітинами — ще квадратна сітка, не граф.'
+      icon: 🕸️
+      opt: topology:graph
+      coin: bronze
+      amount: 1.0
+      max_count: 1
+      status: active
+  - grid-iso:
+      title: Ізометрична
+      description: 'Та сама квадратна сітка, намальована ромбами під кутом, щоб було видно висоту: Q*bert, Into the Breach, Final Fantasy Tactics. Логіка лишається квадратною — змінюються малювання й перерахунок
+        координат кліку.'
+      icon: 💠
+      opt: topology:iso
+      coin: bronze
+      amount: 1.0
+      max_count: 1
+      status: active
+  - grid-layers:
+      title: Кілька шарів / висот
+      description: 'У поля є поверхи чи висоти один над одним: піраміда маджонгу, сходи між поверхами лабіринту, пагорби в тактиках. Не плутай із «шарами клітини», де в одній клітині лежать підлога й ящик.'
+      icon: 🏢
+      opt: topology:layers
+      coin: silver
+      amount: 1.0
+      max_count: 1
+      status: active
+  - grid-1d:
+      title: Лінія
+      description: 'Поле — один ряд клітин чи доріжка по колу, і сусідів лише двоє: попередня й наступна. «Змії й драбини», нарди, Монополія, манкала.'
+      icon: 📏
+      opt: topology:1d
+      coin: wood
+      amount: 1.0
+      max_count: 1
+      status: active
+  - grid-3d:
+      title: Обʼємна (3D)
+      description: 'Кубики в трьох вимірах, у клітини 6 сусідів через грані: 3D хрестики-нулики, кубик Рубіка, 3D-тетрис, Minecraft. Найважче — показати таке поле на пласкому екрані.'
+      icon: 🧊
+      opt: topology:3d
+      coin: silver
+      amount: 1.0
+      max_count: 1
+      status: active
+  - grid-nested:
+      title: Поле в полі
+      description: 'Клітина сама містить ціле поле: великі хрестики-нулики з 9 малих, Patrick''s Parabox, Recursed. Хід у малому полі щось змінює у великому.'
+      icon: 🪆
+      opt: topology:nested
+      coin: silver
+      amount: 1.0
+      max_count: 1
+      status: active
+  physics:
+  - gravity-down:
+      title: Вниз
+      description: 'Що не має опори, падає на клітину вниз щотіку: камені й алмази Boulder Dash, бігун у Lode Runner, фішки «4 в ряд», цукерки в match-3. Якщо падають лише деякі типи, а решта висить, —
+        це все одно «вниз».'
+      icon: ⬇️
+      opt: gravity:down
+      coin: bronze
+      amount: 1.0
+      max_count: 1
+      status: active
+  - gravity-up:
+      title: Вгору
+      description: 'Усе, що «падає», летить до стелі: бульбашки, повітряні кульки, перевернутий світ VVVVVV. Логіка та сама, що й униз, лише дзеркальна.'
+      icon: ⬆️
+      opt: gravity:up
+      coin: bronze
+      amount: 1.0
+      max_count: 1
+      status: active
+  - gravity-per-type:
+      title: Залежить від типу
+      description: 'Різні типи падають у різні боки: залізні кулі вниз, повітряні кульки вгору (Dosun-Fuwari), вода стікає, а дим піднімається. Якщо всі падають в один бік — обери «вниз».'
+      icon: ↕️
+      opt: gravity:per-type
+      coin: silver
+      amount: 1.0
+      max_count: 1
+      status: active
+  - gravity-toward-center:
+      title: До центру
+      description: 'Падають не вниз, а до середини поля, як до планети: Hextris, Tetrisphere. Зазвичай на круглому чи шестикутному полі.'
+      icon: 🪐
+      opt: gravity:toward-center
+      coin: silver
+      amount: 1.0
+      max_count: 1
+      status: active
+  - wrap-edges:
+      title: Замкнене поле
+      description: 'Вийшов за край — зʼявився з протилежного боку: тунель у Pac-Man, змійка, що пролазить крізь край екрана, Asteroids, Game of Life на торі.'
+      icon: 🍩
+      opt: wrap:on
+      games:
+      - pac-man
+      - snake
+      coin: wood
+      amount: 1.0
+      max_count: 1
+      status: active
+  time:
+  - time-turn:
+      title: Покроковий (хід = тік)
+      description: 'Світ стоїть, доки ти не зробиш хід; твій хід — один тік, за ним роблять свій крок усі інші. Sokoban, шахи, 2048, роглайки: не натискаєш — нічого не відбувається.'
+      icon: 👣
+      opt: time:turn
+      coin: wood
+      amount: 1.0
+      max_count: 1
+      status: active
+  - time-realtime:
+      title: Реальний час
+      description: 'Тіки йдуть за годинником, хоч натискаєш, хоч ні: привиди женуться, змійка повзе сама. Pac-Man, Snake, Battle City, Tetris — потрібен ігровий цикл із таймером.'
+      icon: ⏰
+      opt: time:realtime
+      coin: tin
+      amount: 1.0
+      max_count: 1
+      status: active
+  - time-static:
+      title: Статичний (пазл)
+      description: 'Часу в грі нема: поле саме не змінюється, є лише твої позначки й перевірка. Судоку, японський кросворд, сапер; секундомір «за скільки розвʼязав» — це рахунок, а не час гри.'
+      icon: ⏸️
+      opt: time:static
+      coin: wood
+      amount: 1.0
+      max_count: 1
+      status: active
+  - time-programmed:
+      title: Програмований
+      description: 'Час іде лише після «Пуск»: поки складаєш програму, світ стоїть, потім тіки біжать за нею — часто з кнопками «крок» і «пауза». Karel, Lightbot; майже завжди разом із керуванням «пишу
+        програму команд».'
+      icon: ▶️
+      opt: time:programmed
+      coin: tin
+      amount: 1.0
+      max_count: 1
+      status: active
+  - time-wego:
+      title: Одночасні ходи
+      description: Кожна сторона потай обирає хід, потім усі ходи виконуються разом, і гра розвʼязує зіткнення. RoboRally, Frozen Synapse, Diplomacy; на відміну від покрокового, ніхто не ходить першим.
+      icon: 📋
+      opt: time:wego
+      coin: bronze
+      amount: 1.0
+      max_count: 1
+      status: active
+  - time-rhythm:
+      title: У такт музики
+      description: 'Тік — це удар музики: хід зараховується, лише якщо натиснув у такт, і вороги ходять під ритм. Crypt of the NecroDancer, Cadence of Hyrule.'
+      icon: 🎵
+      opt: time:rhythm
+      coin: bronze
+      amount: 1.0
+      max_count: 1
+      status: active
+  view:
+  - view-top-down:
+      title: Згори
+      description: 'Дивишся на поле згори, як на карту: «вгору» означає «на північ», падати нікуди. Pac-Man, Sokoban, шахи, Battle City.'
+      icon: 🦅
+      opt: view:top-down
+      coin: wood
+      amount: 1.0
+      max_count: 1
+      status: active
+  - view-side:
+      title: Збоку
+      description: 'Поле — розріз збоку: є низ, речі падають, по драбинах лізуть угору. Lode Runner, Boulder Dash, Tetris, платформери; тест — якщо «вгору» означає «стрибнути чи вилізти», це вид збоку.'
+      icon: 🧗
+      opt: view:side
+      coin: wood
+      amount: 1.0
+      max_count: 1
+      status: active
+  - view-first-person:
+      title: Від першої особи
+      description: 'Бачиш коридор попереду очима героя, а сітка лишається під капотом: крок вперед, поворот на 90°. Wolfenstein 3D, Eye of the Beholder, Dungeon Master, 3D-лабіринт.'
+      icon: 👀
+      opt: view:first-person
+      coin: silver
+      amount: 1.0
+      max_count: 1
+      status: active
 entities:
   combat:
   - projectile-shot: 🥉 Постріл [battle-city] @rule(input>spawn) — Стрілець породжує снаряд перед собою в бік погляду — за клавішею (танк Battle City) чи сам, коли бачить ціль (горохострел PvZ); снаряд летить
@@ -296,10 +579,12 @@ entities:
   - inertia-slide: 🥉 Інерція [inertia] @rule(input>slide) — Ковзання до упору.
   - gravity-fall: 🥉 Гравітація [lode-runner, boulder-dash] 🗄️ — Падіння без опори.
   - enemy-patrol: 🥉 Патрулювання @rule(tick>move) — Ворог туди-сюди / по маршруту.
-  - random-walk: 📎 Випадкове блукання @rule(tick>move) — З забороною розвороту на місці.
+  - random-walk: 📎 Випадкове блукання @rule(tick>move) — Ворог щотіку йде у випадковий дозволений бік, але не розвертається назад на місці (привиди Pac-Man у переляку). Компʼютер, що випадково обирає хід
+      за цілу сторону (шахи), — «Випадковий» в «AI-суперник».
   - chase-player: '🥉 Погоня за гравцем @rule(tick>move) — Сімʼя за якістю: жадібна (крок у бік цілі) / пошук шляху BFS-A*.'
     children:
-    - chase-greedy: 🥉 Жадібна (крок у бік цілі) @rule(tick>move)
+    - chase-greedy: 🥉 Жадібна (крок у бік цілі) @rule(tick>move) — Ворог щотіку робить крок у той дозволений бік, звідки до цілі найближче, — без пошуку шляху, тож за стіною може застрягти (привиди Pac-Man
+        на перехресті). Компʼютер, що обирає за сторону найвигідніший хід (шахи), — «Жадібний» в «AI-суперник».
     - chase-bfs:
         title: Пошук шляху BFS / A*
         description: 'Рух «до цілі» найкоротшим шляхом в обхід перешкод: ворог женеться, аватар іде до клікнутої клітини.'
@@ -323,6 +608,8 @@ entities:
           - kind: move
         status: active
     - chase-double-move: 🥉 Два ходи ворога на один хід гравця (Theseus) 🗄️
+  - realtime-ai: '🥇 AI в реальному часі [snake] ⭐ — Сутність-суперник у реальному часі сама обирає, куди повернути, щоб вижити довше за гравця: оцінює вільний простір попереду (flood fill) — змійка-бот
+      у Snake, мотоцикл у Tron. Компʼютер, що обирає хід за цілу сторону в покроковій грі (шахи), — «AI-суперник».'
   - pattern-automaton:
       title: Патерн-автомат
       description: Жорсткий цикл ходів (слайм квадратом, скелет через такт).
@@ -916,7 +1203,8 @@ entities:
         max_count: 1
         status: active
   spawn:
-  - spawn-random-cell: '🌱 Спавн у випадковій клітині @rule(level_start>spawn) — З перевіркою, що клітина вільна й не на старті гравця: предмети, вороги чи цегла щоразу лягають інакше.'
+  - spawn-random-cell: 🌱 Спавн у випадковій клітині @rule(level_start>spawn) — Сутність зʼявляється у випадковій вільній клітині — на старті рівня, після кожного ходу (нова плитка в 2048) чи коли попередню
+      зʼїли (їжа в Snake); гра перевіряє, що клітина порожня й не на старті гравця. Уся розкладка рівня щоразу інша (цегла в Bomberman) — картка рівня «Випадкова розстановка на готовій мапі».
   - spawn-schedule:
       title: Спавн за розкладом
       description: Кожні N тіків, доки на полі менше ліміту; появу за подією (знищив — прийшов новий) — «Підкріплення».
@@ -1030,289 +1318,6 @@ entities:
       (Boulder Dash).
   - magic-wall-timer: 📎 Чарівна стіна з таймером [boulder-dash] @rule(contact>set_state) — Чарівна стіна спить, доки крізь неї не впаде перший камінь; тоді N тіків вона перетворює камінь, що падає крізь
       неї, на алмаз, а потім вичерпується назавжди (Boulder Dash).
-field:
-  control:
-  - control-direct:
-      title: Клавіші = рух аватара
-      description: 'Натиснув стрілку — аватар зробив крок саме туди: Pac-Man, Sokoban, Snake, Battle City. Якщо ти лише вказуєш ціль, а дорогу шукає гра, — це «вказую ціль».'
-      icon: ⌨️
-      opt: control:direct
-      coin: wood
-      amount: 1.0
-      max_count: 1
-      status: active
-  - control-indirect:
-      title: Вказую ціль, іде сама
-      description: 'Ти кажеш куди, а сутність сама шукає шлях і йде туди кілька тіків: кулька в Lines, юніти в стратегіях. Якщо після кліку все стається одразу на тій клітині — це «клік по клітині».'
-      icon: 📍
-      opt: control:indirect
-      coin: tin
-      amount: 1.0
-      max_count: 1
-      status: active
-  - control-click-cell:
-      title: Клік по клітині
-      description: 'Клік і є дія над клітиною, результат одразу: відкрити клітину в сапері, посадити рослину в PvZ, обрати фігуру й клітину ходу в шахах. Ніхто не йде шляхом — на відміну від «вказую ціль».'
-      icon: 🖱️
-      opt: control:click-cell
-      coin: wood
-      amount: 1.0
-      max_count: 1
-      status: active
-  - control-drag-piece:
-      title: Перетягую фігуру
-      description: 'Береш фігуру мишкою, ведеш і відпускаєш на клітину: Blokus, пазли з фігурами, шахи на lichess. Якщо ведеш лінію через клітини і важливий сам шлях — це «малюю шлях».'
-      icon: ✋
-      opt: control:drag-piece
-      coin: bronze
-      amount: 1.0
-      max_count: 1
-      status: active
-  - control-swipe-all:
-      title: Хід рухає все поле
-      description: 'Одна дія зсуває все, що може рухатись, в один бік — обирати, що рухати, не треба: 2048, Threes, нахил лабіринту з кульками. Свайп пальцем — лише спосіб натиснути; суть у тому, що їде
-        все поле.'
-      icon: 🔀
-      opt: control:swipe-all
-      coin: tin
-      amount: 1.0
-      max_count: 1
-      status: active
-  - control-drag-path:
-      title: Малюю шлях
-      description: 'Ведеш мишкою чи пальцем через сусідні клітини, і сама лінія — це хід: Flow Free, Two Dots, маршрути літаків у Flight Control.'
-      icon: 〰️
-      opt: control:drag-path
-      coin: tin
-      amount: 1.0
-      max_count: 1
-      status: active
-  - control-mark:
-      title: Розмічаю клітини
-      description: Ставиш у клітини цифри, хрестики, зафарбовуєш — світ від цього не рухається, правила лише перевіряють розмітку. Судоку, японський кросворд, прапорці в сапері.
-      icon: 📝
-      opt: control:mark
-      coin: wood
-      amount: 1.0
-      max_count: 1
-      status: active
-  - control-programmed:
-      title: Пишу програму команд
-      description: Спершу складаєш список команд — вперед, поворот, повтори, — потім запускаєш, і сутність виконує їх сама, клавішами вже не втрутишся. Karel, Lightbot, Human Resource Machine.
-      icon: 📜
-      opt: control:programmed
-      coin: bronze
-      amount: 1.0
-      max_count: 1
-      status: active
-  grid:
-  - grid-square:
-      title: Квадратна
-      description: 'Звичайна сітка з квадратів: 4 сусіди через сторону і ще 4 через кут. Майже всі базові ігри: Pac-Man, Sokoban, шахи, сапер.'
-      icon: 🔲
-      opt: topology:square
-      coin: wood
-      amount: 1.0
-      max_count: 1
-      status: active
-  - grid-hex:
-      title: Гексагональна
-      description: 'Клітини-шестикутники: у кожної 6 сусідів на однаковій відстані, діагоналей нема. Wesnoth, Civilization, Catan, Hextris; координати хитріші — ряди зсунуті через один.'
-      icon: ⬢
-      opt: topology:hex
-      coin: bronze
-      amount: 1.0
-      max_count: 1
-      status: active
-  - grid-graph:
-      title: Граф (точки й лінії)
-      description: 'Поле — точки, зʼєднані лініями, і сусіди задані списком, а не сіткою: «Млин», Risk, карта метро. Квадратний лабіринт зі стінами між клітинами — ще квадратна сітка, не граф.'
-      icon: 🕸️
-      opt: topology:graph
-      coin: bronze
-      amount: 1.0
-      max_count: 1
-      status: active
-  - grid-iso:
-      title: Ізометрична
-      description: 'Та сама квадратна сітка, намальована ромбами під кутом, щоб було видно висоту: Q*bert, Into the Breach, Final Fantasy Tactics. Логіка лишається квадратною — змінюються малювання й перерахунок
-        координат кліку.'
-      icon: 💠
-      opt: topology:iso
-      coin: bronze
-      amount: 1.0
-      max_count: 1
-      status: active
-  - grid-layers:
-      title: Кілька шарів / висот
-      description: 'У поля є поверхи чи висоти один над одним: піраміда маджонгу, сходи між поверхами лабіринту, пагорби в тактиках. Не плутай із «шарами клітини», де в одній клітині лежать підлога й ящик.'
-      icon: 🏢
-      opt: topology:layers
-      coin: silver
-      amount: 1.0
-      max_count: 1
-      status: active
-  - grid-1d:
-      title: Лінія
-      description: 'Поле — один ряд клітин чи доріжка по колу, і сусідів лише двоє: попередня й наступна. «Змії й драбини», нарди, Монополія, манкала.'
-      icon: 📏
-      opt: topology:1d
-      coin: wood
-      amount: 1.0
-      max_count: 1
-      status: active
-  - grid-3d:
-      title: Обʼємна (3D)
-      description: 'Кубики в трьох вимірах, у клітини 6 сусідів через грані: 3D хрестики-нулики, кубик Рубіка, 3D-тетрис, Minecraft. Найважче — показати таке поле на пласкому екрані.'
-      icon: 🧊
-      opt: topology:3d
-      coin: silver
-      amount: 1.0
-      max_count: 1
-      status: active
-  - grid-nested:
-      title: Поле в полі
-      description: 'Клітина сама містить ціле поле: великі хрестики-нулики з 9 малих, Patrick''s Parabox, Recursed. Хід у малому полі щось змінює у великому.'
-      icon: 🪆
-      opt: topology:nested
-      coin: silver
-      amount: 1.0
-      max_count: 1
-      status: active
-  physics:
-  - gravity-down:
-      title: Вниз
-      description: 'Що не має опори, падає на клітину вниз щотіку: камені й алмази Boulder Dash, бігун у Lode Runner, фішки «4 в ряд», цукерки в match-3. Якщо падають лише деякі типи, а решта висить, —
-        це все одно «вниз».'
-      icon: ⬇️
-      opt: gravity:down
-      coin: bronze
-      amount: 1.0
-      max_count: 1
-      status: active
-  - gravity-up:
-      title: Вгору
-      description: 'Усе, що «падає», летить до стелі: бульбашки, повітряні кульки, перевернутий світ VVVVVV. Логіка та сама, що й униз, лише дзеркальна.'
-      icon: ⬆️
-      opt: gravity:up
-      coin: bronze
-      amount: 1.0
-      max_count: 1
-      status: active
-  - gravity-per-type:
-      title: Залежить від типу
-      description: 'Різні типи падають у різні боки: залізні кулі вниз, повітряні кульки вгору (Dosun-Fuwari), вода стікає, а дим піднімається. Якщо всі падають в один бік — обери «вниз».'
-      icon: ↕️
-      opt: gravity:per-type
-      coin: silver
-      amount: 1.0
-      max_count: 1
-      status: active
-  - gravity-toward-center:
-      title: До центру
-      description: 'Падають не вниз, а до середини поля, як до планети: Hextris, Tetrisphere. Зазвичай на круглому чи шестикутному полі.'
-      icon: 🪐
-      opt: gravity:toward-center
-      coin: silver
-      amount: 1.0
-      max_count: 1
-      status: active
-  - wrap-edges:
-      title: Замкнене поле
-      description: 'Вийшов за край — зʼявився з протилежного боку: тунель у Pac-Man, змійка, що пролазить крізь край екрана, Asteroids, Game of Life на торі.'
-      icon: 🍩
-      opt: wrap:on
-      games:
-      - pac-man
-      - snake
-      coin: wood
-      amount: 1.0
-      max_count: 1
-      status: active
-  time:
-  - time-turn:
-      title: Покроковий (хід = тік)
-      description: 'Світ стоїть, доки ти не зробиш хід; твій хід — один тік, за ним роблять свій крок усі інші. Sokoban, шахи, 2048, роглайки: не натискаєш — нічого не відбувається.'
-      icon: 👣
-      opt: time:turn
-      coin: wood
-      amount: 1.0
-      max_count: 1
-      status: active
-  - time-realtime:
-      title: Реальний час
-      description: 'Тіки йдуть за годинником, хоч натискаєш, хоч ні: привиди женуться, змійка повзе сама. Pac-Man, Snake, Battle City, Tetris — потрібен ігровий цикл із таймером.'
-      icon: ⏰
-      opt: time:realtime
-      coin: tin
-      amount: 1.0
-      max_count: 1
-      status: active
-  - time-static:
-      title: Статичний (пазл)
-      description: 'Часу в грі нема: поле саме не змінюється, є лише твої позначки й перевірка. Судоку, японський кросворд, сапер; секундомір «за скільки розвʼязав» — це рахунок, а не час гри.'
-      icon: ⏸️
-      opt: time:static
-      coin: wood
-      amount: 1.0
-      max_count: 1
-      status: active
-  - time-programmed:
-      title: Програмований
-      description: 'Час іде лише після «Пуск»: поки складаєш програму, світ стоїть, потім тіки біжать за нею — часто з кнопками «крок» і «пауза». Karel, Lightbot; майже завжди разом із керуванням «пишу
-        програму команд».'
-      icon: ▶️
-      opt: time:programmed
-      coin: tin
-      amount: 1.0
-      max_count: 1
-      status: active
-  - time-wego:
-      title: Одночасні ходи
-      description: Кожна сторона потай обирає хід, потім усі ходи виконуються разом, і гра розвʼязує зіткнення. RoboRally, Frozen Synapse, Diplomacy; на відміну від покрокового, ніхто не ходить першим.
-      icon: 📋
-      opt: time:wego
-      coin: bronze
-      amount: 1.0
-      max_count: 1
-      status: active
-  - time-rhythm:
-      title: У такт музики
-      description: 'Тік — це удар музики: хід зараховується, лише якщо натиснув у такт, і вороги ходять під ритм. Crypt of the NecroDancer, Cadence of Hyrule.'
-      icon: 🎵
-      opt: time:rhythm
-      coin: bronze
-      amount: 1.0
-      max_count: 1
-      status: active
-  view:
-  - view-top-down:
-      title: Згори
-      description: 'Дивишся на поле згори, як на карту: «вгору» означає «на північ», падати нікуди. Pac-Man, Sokoban, шахи, Battle City.'
-      icon: 🦅
-      opt: view:top-down
-      coin: wood
-      amount: 1.0
-      max_count: 1
-      status: active
-  - view-side:
-      title: Збоку
-      description: 'Поле — розріз збоку: є низ, речі падають, по драбинах лізуть угору. Lode Runner, Boulder Dash, Tetris, платформери; тест — якщо «вгору» означає «стрибнути чи вилізти», це вид збоку.'
-      icon: 🧗
-      opt: view:side
-      coin: wood
-      amount: 1.0
-      max_count: 1
-      status: active
-  - view-first-person:
-      title: Від першої особи
-      description: 'Бачиш коридор попереду очима героя, а сітка лишається під капотом: крок вперед, поворот на 90°. Wolfenstein 3D, Eye of the Beholder, Dungeon Master, 3D-лабіринт.'
-      icon: 👀
-      opt: view:first-person
-      coin: silver
-      amount: 1.0
-      max_count: 1
-      status: active
 game-logic:
   constraints:
   - markup-validity: 🥉 Валідність розмітки [paper-puzzles] @rule(input?unique>paint+message) — Після кожного ходу гра перевіряє рядок, стовпець і регіон і знаходить порушення правил пазла — свідомо хибну
@@ -1517,10 +1522,13 @@ game-logic:
         then:
         - kind: timer
       status: active
-  - ai-opponent: '📎 AI-суперник [chess] — Сімʼя за силою: випадковий → жадібний → minimax.'
+  - ai-opponent: '📎 AI-суперник [chess] — Компʼютер грає за цілу сторону в покроковій грі — шахи, шашки, хрестики-нулики, реверсі: щоходу обирає один хід серед усіх дозволених ходів своїх фігур. Сімʼя за
+      силою: випадковий → жадібний → minimax. Вороги, що самі ходять полем (привиди Pac-Man, танки Battle City), — не сюди: це рух сутності — «Випадкове блукання», «Погоня за гравцем», «AI в реальному часі»
+      в «Сутностях».'
     children:
-    - ai-random: '📎 Випадковий [chess] — Суперник-компʼютер ходить випадковим дозволеним ходом — найпростіший, але чесний ШІ: правил він не порушує.'
-    - ai-greedy: 🥉 Жадібний [chess] — Суперник-компʼютер перебирає свої ходи й обирає той, що дає найбільше одразу (взяти найдорожчу фігуру), не думаючи на хід уперед.
+    - ai-random: '📎 Випадковий [chess] — Суперник-компʼютер ходить випадковим дозволеним ходом — найпростіший, але чесний ШІ: правил він не порушує. Ворог на полі, що щотіку йде навмання, — «Випадкове блукання».'
+    - ai-greedy: 🥉 Жадібний [chess] — Суперник-компʼютер перебирає свої ходи й обирає той, що дає найбільше одразу (взяти найдорожчу фігуру), не думаючи на хід уперед. Ворог на полі, що щотіку робить крок
+        до гравця, — «Жадібна (крок у бік цілі)» в «Погоні за гравцем».
     - ai-minimax:
         title: Minimax
         description: Суперник-компʼютер дивиться на кілька ходів уперед за себе й за тебе (minimax, краще з альфа-бета) і обирає найкращий; глибина — параметр заявки.
@@ -1536,7 +1544,6 @@ game-logic:
           unit: ходів
           required: true
         status: active
-  - realtime-ai: 🥇 AI в реальному часі [snake] @mechanic ⭐ — Сутність-суперник сама обирає напрям, щоб вижити довше за гравця (оцінка вільного простору, flood fill); як інші алгоритми руху — на сутності.
   - pass-turn: 🌱 Пас, коли нема ходів @rule(no_moves>pass_turn) — Сторона, якій нема куди ходити, пропускає хід — і хід переходить до суперника, гра не зависає (Reversi, Ataxx, го).
   - repetition-draw: 📎 Нічия повторенням позиції [chess] @rule(turn_end>draw) — Партія закінчується нічиєю, коли позиція повторилась утретє або 50 ходів ніхто нікого не брав; гра памʼятає історію позицій
       (шахи, ко в го).
@@ -1738,7 +1745,8 @@ levels:
   - infinite-field: 🥇 Нескінченне поле вперед [frogger] ⭐ — Генерація на льоту (Crossy Road).
   - difficulty-rating: 🥇 Оцінка складності згенерованого [paper-puzzles] ⭐ — Рейтинг за технікою розвʼязання.
   - no-guess-generation: '🥇 Генерація без вгадування [minesweeper] ⭐ — Розкладка мін, яку можна розвʼязати лише логікою (Hexcells, Kaboom, Tatham Mines): генератор перевіряє розкладку розвʼязувачем.'
-  - random-placement: 📎 Випадкова розстановка на готовій мапі — Предмети й вороги щоразу лягають інакше — з перевіркою, що не на старті й не замуровані.
+  - random-placement: '📎 Випадкова розстановка на готовій мапі — Рівень щоразу інший: на готовій мапі гра розкидає цеглу, предмети й ворогів по вільних клітинах — не на старті гравця й не замурованими (цегла
+      в Bomberman). Одна сутність, що зʼявляється у випадковій клітині за правилом (їжа в Snake, плитка в 2048), — «Спавн у випадковій клітині».'
   - chunk-generation: 🥈 Рівень зі шматків — Генератор складає рівень із заготовлених вручну кімнат чи смуг (Spelunky, Crossy Road); стики прохідні.
   progression:
   - sequential-levels: 📎 Кілька рівнів по черзі — Щонайменше два різні рівні, зроблені вручну, ідуть один за одним; перехід — правило «ТО наступний рівень».
@@ -2039,8 +2047,16 @@ code:
         Показати: рядок для кожного.'
     - lab3-eq-hash: '📎 Порівняння: __eq__, __hash__, __lt__ #lab3 — Додаткове в лабі 3. Координата чи предмет порівнюються через __eq__ і мають __hash__ (тож їх можна класти в set і брати ключем словника),
         порядок — через __lt__ (сортування рекордів). Показати: методи і де вони працюють.'
-    - lab3-container-methods: '📎 Поле як контейнер: len, [ ], in, for #lab3 — Додаткове в лабі 3. Клас поля чи інвентаря має __len__, __getitem__, __iter__ і __contains__: працюють len(field), field[pos],
-        pos in field, for cell in field; зрізи field[a:b] (лаба 4) — теж сюди. Показати: методи і їх використання.'
+    - lab3-container-methods:
+        title: 'Поле як контейнер: len, [ ], in, for'
+        description: 'Додаткове в лабі 3. Клас поля чи інвентаря має __len__, __getitem__, __iter__ і __contains__: працюють len(field), field[pos], pos in field, for cell in field; зрізи field[a:b] (лаба
+          4) — теж сюди. Показати: методи і їх використання.'
+        tags:
+        - lab3
+        coin: tin
+        amount: 1.0
+        max_count: 1
+        status: active
     - lab3-property: '📎 @property і setter з перевіркою #lab3 — Додаткове в лабі 3. Обчислювана властивість (player.is_alive, level.is_solved) і setter, що не пускає погане значення (hp не нижче 0). Показати:
         декоратори і звернення без дужок.'
     - lab3-mixins: '🥉 Міксини і super() #lab3 ✍️ — Додаткове в лабі 3. Множинне спадкування зі змістом: міксини Movable, Collectable, Dangerous додають поведінку, а super().__init__() проходить увесь ланцюжок.
