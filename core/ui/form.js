@@ -7,13 +7,15 @@ const LEAVE = 'Є незбережені зміни. Піти без збере�
 export function useForm(fields) {
   const form = reactive({ ...fields })
   const base = reactive({ ...fields })
-  const dirty = computed(() => Object.keys(fields).some((k) => form[k] !== base[k]))
+  const changed = computed(() => Object.keys(fields).filter((k) => form[k] !== base[k]))
+  const dirty = computed(() => changed.value.length > 0)
   const saved = ref(false)
   const error = ref('')
 
   function fill(data) {
     for (const k in fields) if (k in data) form[k] = base[k] = data[k]
   }
+  const reset = () => Object.assign(form, base)
 
   async function save(submit) {  // submit(form) → server response, which becomes the new snapshot
     error.value = ''
@@ -36,5 +38,5 @@ export function useForm(fields) {
   window.addEventListener('beforeunload', unload)
   onUnmounted(() => window.removeEventListener('beforeunload', unload))
 
-  return { form, dirty, saved, error, fill, save }
+  return { form, dirty, changed, saved, error, fill, save, reset }
 }
