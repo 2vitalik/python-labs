@@ -1,0 +1,341 @@
+# T279 · ревізія «Логіки»: чи нема там карток, що насправді про сутність (механіка, правило руху) · 2026-11-10
+# Запит Vitalik: «перевір щодо логіки гри, чи не сталося так, що там деякі завдання відповідають фактично сутностям
+#   і правилам сутностей… Наприклад, жадібні та випадкові супротивники». Попередній прохід — T275 catalog/logic.yaml
+#   (типи, пари, заготовки) і T271 catalog/review-logic-levels.yaml + review-entities.yaml; їм не суперечу.
+#
+# ── Цифри ───────────────────────────────────────────────────────────────────
+# Переглянуто 94 активні картки: «Логіка» — 77 (усі підкатегорії, з дітьми сімей); «Інтерфейс» типу game — 13;
+#   у «Рівнях» карток типу game нема — звірив ті, що про поведінку (random-placement, checkpoint,
+#   mines-after-first-click); сусіди в «Сутностях», з якими «Логіка» перетинається, — 4 (розділ neighbors).
+# Вердикти: keep 91 (з них 7 — з уточненням опису) · mechanic 1 (realtime-ai → «Сутності → Рух») · rule 0 ·
+#   element / window 0 · unsure 2 (reinforcements, progress-acceleration) + сумнів про тип realtime-ai — не
+#   застосовано, питання тобі.
+# Застосовано (certainty: sure, apply2.py): 8 карток — 1 переїзд (з новим описом), 7 описів. Ціни, назви, slug-и,
+#   статуси не чіпав; нових карток і злиттів нема.
+#
+# ── Відповідь про «жадібних і випадкових супротивників» ─────────────────────
+# Це дві різні речі з однаковими словами, і в каталозі вони вже розведені — дублів нема:
+#   • Сімʼя «AI-суперник» (ai-random 📎 → ai-greedy 🥉 → ai-minimax 🥇, «Логіка → Суперник») — компʼютер грає за
+#     цілу СТОРОНУ покрокової гри (шахи, шашки, реверсі): щоходу обирає один хід серед усіх дозволених ходів усіх своїх
+#     фігур, оцінюючи позицію. Сутності, якій це «належить», нема — це гравець-сторона. Тип game правильний
+#     (T270 §6 прямо: «суперник-ШІ» — гра загалом; T271: «ШІ веде цілу сторону, не одну сутність»).
+#   • Ворог, що сам ходить полем (привиди Pac-Man, танки Battle City, кулі Bomberman), — це поведінка однієї
+#     сутності, і для неї картки вже є в «Сутності → Рух»: «Випадкове блукання» (random-walk 📎), «Погоня за
+#     гравцем» → «Жадібна (крок у бік цілі)» (chase-greedy 🥉) / «Пошук шляху BFS / A*» (chase-bfs 🥇),
+#     «Патрулювання», «Ворог тримається стіни». Тут вони — картки на правило руху («КОЛИ кожен тік ТО Привид
+#     рухається до цілі» + картка), так вирішив T271 («алгоритм — на правилі руху»); еталони pac-man, bomberman,
+#     battle-city, lode-runner так і пишуть.
+# Чого бракувало — межі в описах: «Жадібний» і «Випадковий» у «Логіці» не казали, що вони лише для сторони, а
+#   «Випадкове блукання» й «Жадібна» в «Сутностях» — що вони лише для ворога на полі; студент з Pac-Man міг
+#   заявити «AI-суперник: жадібний» на привидів (тип game лягає без місця) і ще «Жадібну» на правило руху — двічі
+#   за одне. Дописав межу в обидва боки (ai-opponent, ai-random, ai-greedy ↔ random-walk, chase-greedy).
+#   Розводити на дві сімʼї чи робити нові картки не треба: «сутнісна» половина вже існує.
+# Єдина картка «Логіки», що справді про сутність, — realtime-ai «AI в реальному часі» (змійка-бот, flood fill):
+#   вона вже була механікою сутності (T271), але лежала в «Суперник»; переїхала до «Сутності → Рух» поруч із погонею.
+#
+# ── Що ще перевірив і чому решта лишається ──────────────────────────────────
+# - Перемога / Поразка / Рахунок / Обмеження — усе вже rule (заявка на правилі) і про мету чи облік рівня: «знищити
+#   всіх ворогів», «ворог дійшов до бази», «карателі по часу» згадують ворогів лише як учасників правила; їхня
+#   поведінка — їхні картки в «Сутностях».
+# - Хвилі, Економіка — rule або game; «Апгрейди в раунді» таксономія (_map.md) кладе в «Економіку» свідомо.
+# - Програма гравця — мова програми (процедури, сенсори), однакова для будь-якого робота: game. Самого робота-виконавця
+#   описує властивість поля «Пишу програму команд».
+# - Історія, Збереження, Складність — гра загалом; сумніви T275 (undo як `input>undo`, game-pause ↔ pause-menu,
+#   check-stalemate ↔ checkmate) чекають T273 Q5 / T277, не чіпав.
+# - Інтерфейс типу game (графіка, результати, звук, налаштування) — показ і звук гри, не поведінка: keep.
+#
+# ── Як читати ───────────────────────────────────────────────────────────────
+# review / neighbors: slug → title · home (зона/підзона зараз) · kind (тип зараз) · verdict · certainty · why;
+#   change — що застосовано (лише certainty: sure): move_to + after (переїзд і місце після картки), kind, rule,
+#   description; proposal — для unsure, не застосовано.
+
+review:
+  # ── game-logic / win ────────────────────────────────────────────────────────
+  collect-all: {title: "Зібрати все", home: game-logic/win, kind: rule, verdict: keep, certainty: sure,
+    why: "Мета рівня («зникли всі Х»), заготовка all_gone> лягає на правило; хто збирає — не важить."}
+  collect-quota: {title: "Зібрати квоту", home: game-logic/win, kind: rule, verdict: keep, certainty: sure,
+    why: "Лічильник зібраного відчиняє вихід — облік рівня, не властивість алмаза чи гравця."}
+  reach-exit: {title: "Дійти до фінішу", home: game-logic/win, kind: rule, verdict: keep, certainty: sure,
+    why: "Умова перемоги (enter>win); сутності — лише учасники правила."}
+  destroy-all-enemies: {title: "Знищити всіх ворогів", home: game-logic/win, kind: rule, verdict: keep, certainty: sure,
+    why: "Мета рівня; як саме знищують — картки «Бою і снарядів»."}
+  all-on-targets: {title: "Усі обʼєкти на цілях", home: game-logic/win, kind: rule, verdict: keep, certainty: sure,
+    why: "Перевірка стану всього поля після ходу — правило рівня."}
+  satisfy-constraints: {title: "Пазл розвʼязано", home: game-logic/win, kind: rule, verdict: keep, certainty: sure,
+    why: "Перевірка всіх обмежень — гра загалом, на правилі."}
+  checkmate: {title: "Мат", home: game-logic/win, kind: rule, verdict: keep, certainty: sure,
+    why: "Оцінка позиції всієї сторони, не механіка фігури; ходи фігур — «Легальність ходу»."}
+  home-slots: {title: "Заповнити N домівок по разу", home: game-logic/win, kind: rule, verdict: keep, certainty: sure,
+    why: "Мета рівня Frogger; правило enter?state>set_state."}
+  keep-playing-after-win: {title: "Грати далі після перемоги", home: game-logic/win, kind: rule, verdict: keep, certainty: sure,
+    why: "Подія партії й вікно вибору — гра загалом."}
+  survive-waves: {title: "Протриматись усі хвилі", home: game-logic/win, kind: rule, verdict: keep, certainty: sure,
+    why: "Мета рівня за хвилями; правило wave_cleared>win."}
+
+  # ── game-logic / lose ───────────────────────────────────────────────────────
+  player-death: {title: "Смерть гравця — поразка", home: game-logic/lose, kind: rule, verdict: keep, certainty: sure,
+    why: "Поразка за лічильником життів; саму смерть від ворога чи клітини дають картки «Зникнення і смерть» у «Сутностях»."}
+  time-out: {title: "Вичерпано час", home: game-logic/lose, kind: rule, verdict: keep, certainty: sure,
+    why: "Час рівня — облік гри, не сутності."}
+  enemy-reached-base: {title: "Ворог дійшов до краю/бази", home: game-logic/lose, kind: rule, verdict: keep, certainty: sure,
+    why: "Ворог тут — учасник правила (reach>lose); як він іде до бази — його картки руху."}
+  no-moves-left: {title: "Нема ходів — поразка", home: game-logic/lose, kind: rule, verdict: keep, certainty: sure,
+    why: "Перевірка всього поля (2048) — гра загалом."}
+  wrong-mark-lose: {title: "Помилкова розмітка", home: game-logic/lose, kind: rule, verdict: keep, certainty: sure,
+    why: "Лічильник помилок гравця — облік партії."}
+  permadeath: {title: "Смерть стирає збереження", home: game-logic/lose, kind: game, verdict: keep, certainty: sure,
+    why: "Про збереження всієї гри; словом правила не виразиш (ефекту «стерти сейв» у словнику нема)."}
+  timeout-punisher: {title: "Карателі замість програшу по часу", home: game-logic/lose, kind: rule, verdict: keep, certainty: sure,
+    why: "Подія часу рівня (counter>spawn_at); самі карателі — звичайні вороги зі своїми картками руху."}
+  move-limit: {title: "Ліміт ходів на рівень", home: game-logic/lose, kind: rule, verdict: keep, certainty: sure,
+    why: "Лічильник ходів рівня (T271 переніс сюди з «Легальності ходу»)."}
+
+  # ── game-logic / score ──────────────────────────────────────────────────────
+  event-points: {title: "Очки за події", home: game-logic/score, kind: rule, verdict: keep, certainty: sure,
+    why: "Рахунок гри; ефект «очки» на будь-якому правилі."}
+  combo-multiplier: {title: "Комбо-серії", home: game-logic/score, kind: rule, verdict: keep, certainty: sure,
+    why: "Множник рахунку — облік партії."}
+  time-bonus: {title: "Бонус за час", home: game-logic/score, kind: rule, verdict: keep, certainty: sure,
+    why: "Підсумок рівня."}
+  score-records: {title: "Рекорд", home: game-logic/score, kind: game, verdict: keep, certainty: sure,
+    why: "Памʼять гри між партіями, без місця на полі."}
+  chain-reaction: {title: "Каскад і ланцюг", home: game-logic/score, kind: rule, verdict: keep, certainty: sure,
+    why: "Стан усього поля після ходу (settled?chain) — правило гри; лінія, що зникає, — окрема картка «Взаємодії»."}
+  extra-life-threshold: {title: "Життя за пороги очок", home: game-logic/score, kind: rule, verdict: keep, certainty: sure,
+    why: "Рахунок → життя; облік партії."}
+  leftover-penalty: {title: "Штраф за залишок", home: game-logic/score, kind: rule, verdict: keep, certainty: sure,
+    why: "Підсумок партії."}
+
+  # ── game-logic / waves ──────────────────────────────────────────────────────
+  enemy-waves: {title: "Хвилі ворогів", home: game-logic/waves, kind: rule, verdict: keep, certainty: sure,
+    why: "Розклад рівня: хвиля — подія гри, а не властивість зомбі."}
+  reinforcements:
+    title: "Підкріплення"
+    home: game-logic/waves
+    kind: rule
+    verdict: unsure
+    certainty: unsure
+    why: "Тип rule правильний, сумнів лише в домі: це правило появи ворога, як і «Спавн за розкладом» (spawn-schedule) у «Сутності → Поява», — обидві посилаються одна на одну з різних категорій, а еталон Battle City ставить обидві на те саме правило. Для заявки дім не важить (обидві на правилі), але в каталозі їх шукають у двох місцях."
+    proposal: "Звести в одну підкатегорію: або reinforcements → entities/spawn (поруч зі spawn-schedule), або spawn-schedule → game-logic/waves («Хвилі та спавн» — запас і темп ворогів рівня). Я б обрав друге: «Поява» тоді — де й як зʼявляється одна сутність, «Хвилі» — скільки й коли ворогів у рівні."
+  progress-acceleration:
+    title: "Прискорення прогресу"
+    home: game-logic/waves
+    kind: rule
+    verdict: unsure
+    certainty: unsure
+    why: "Тип і дім гаразд, але опис «Темп росте з рівнем/довжиною» перетинається з T275-карткою рівня level-param-ramp («Той самий лабіринт — інші числа»), яка відсилає сюди лише «темп, що росте всередині рівня». Еталон frogger ставить progress-acceleration саме на правило «рівень > 1 → смуги швидшають», тобто на міжрівневе; pac-man і snake — на внутрішньорівневе."
+    proposal: "Опис: «Темп росте посеред рівня: змійка швидшає з довжиною, Blinky в Pac-Man — коли точок лишилось мало; у правилі — лічильник ТО швидкість. Швидші вороги на кожному наступному рівні — «Той самий лабіринт — інші числа».» І в еталоні frogger правило «рівень > 1» прибрати, а рівням дати заявку level-param-ramp. Не застосовую: міняє, за що платиться картка, і чіпає еталон."
+
+  # ── game-logic / economy ────────────────────────────────────────────────────
+  round-currency: {title: "Валюта в раунді", home: game-logic/economy, kind: rule, verdict: keep, certainty: sure,
+    why: "Валюта — облік гравця-сторони; соняшник, що дає сонце, описується своїм правилом появи."}
+  shop-between-levels: {title: "Магазин між рівнями", home: game-logic/economy, kind: game, verdict: keep, certainty: sure,
+    why: "Функція гри між рівнями, без місця на полі."}
+  shop-preview: {title: "Превʼю товару", home: game-logic/economy, kind: element, verdict: keep, certainty: sure,
+    why: "Елемент вітрини (T275)."}
+  in-round-upgrades: {title: "Апгрейди в раунді", home: game-logic/economy, kind: rule, verdict: keep, certainty: sure,
+    why: "Заявка й так на правилі «гравець × бонус → параметр +1»; таксономія (_map.md) кладе апгрейди в «Економіку» свідомо."}
+  shop-sales: {title: "Знижки й розпродажі", home: game-logic/economy, kind: game, verdict: keep, certainty: sure,
+    why: "Доповнення магазину."}
+  shop-buyback: {title: "Продаж назад", home: game-logic/economy, kind: game, verdict: keep, certainty: sure,
+    why: "Доповнення магазину."}
+
+  # ── game-logic / opponent ───────────────────────────────────────────────────
+  ai-opponent:
+    title: "AI-суперник"
+    home: game-logic/opponent
+    kind: game
+    verdict: keep
+    certainty: sure
+    why: "Компʼютер грає за сторону (усі фігури), а не за одну сутність — гра загалом (T270 §6, T271). Але опис «Сімʼя за силою…» не казав, для яких ігор, і студент з Pac-Man міг заявити її на привидів поряд із «Погонею» — дописую межу."
+    change:
+      description: "Компʼютер грає за цілу сторону в покроковій грі — шахи, шашки, хрестики-нулики, реверсі: щоходу обирає один хід серед усіх дозволених ходів своїх фігур. Сімʼя за силою: випадковий → жадібний → minimax. Вороги, що самі ходять полем (привиди Pac-Man, танки Battle City), — не сюди: це рух сутності — «Випадкове блукання», «Погоня за гравцем», «AI в реальному часі» в «Сутностях»."
+  ai-random:
+    title: "Випадковий"
+    home: game-logic/opponent
+    kind: game
+    verdict: keep
+    certainty: sure
+    why: "Випадковий хід сторони; сутнісний аналог — random-walk (ворог щотіку йде навмання). Дописую посилання."
+    change:
+      description: "Суперник-компʼютер ходить випадковим дозволеним ходом — найпростіший, але чесний ШІ: правил він не порушує. Ворог на полі, що щотіку йде навмання, — «Випадкове блукання»."
+  ai-greedy:
+    title: "Жадібний"
+    home: game-logic/opponent
+    kind: game
+    verdict: keep
+    certainty: sure
+    why: "Жадібний вибір ходу сторони за вигодою (матеріал); сутнісний аналог — chase-greedy (крок, що скорочує відстань до цілі). Те саме слово — різні алгоритми; дописую посилання."
+    change:
+      description: "Суперник-компʼютер перебирає свої ходи й обирає той, що дає найбільше одразу (взяти найдорожчу фігуру), не думаючи на хід уперед. Ворог на полі, що щотіку робить крок до гравця, — «Жадібна (крок у бік цілі)» в «Погоні за гравцем»."
+  ai-minimax: {title: "Minimax", home: game-logic/opponent, kind: game, verdict: keep, certainty: sure,
+    why: "Перебір ходів сторони на глибину; у ворога на полі такого аналога нема (пошук шляху BFS / A* — інша задача), плутанини не бачу — опис не чіпаю."}
+  realtime-ai:
+    title: "AI в реальному часі"
+    home: game-logic/opponent
+    kind: mechanic
+    verdict: mechanic
+    certainty: sure
+    why: "ШІ однієї сутності (змійка-бот обирає поворот, flood fill) — механіка сутності; тип уже mechanic (T271: «поруч із chase-bfs»), заявка вже на сутності, але дім лишився в «Суперник», де решта — гра загалом. Переїзд до «Сутності → Рух» після сімʼї «Погоня за гравцем»; тип стає типом підкатегорії (той самий mechanic). Еталони й демо її не заявляють — переносити нічого."
+    change:
+      move_to: entities/move
+      after: chase-player
+      description: "Сутність-суперник у реальному часі сама обирає, куди повернути, щоб вижити довше за гравця: оцінює вільний простір попереду (flood fill) — змійка-бот у Snake, мотоцикл у Tron. Компʼютер, що обирає хід за цілу сторону в покроковій грі (шахи), — «AI-суперник»."
+    proposal: "Сумнів (тип): сусіди-алгоритми руху (chase-greedy, chase-bfs, random-walk, enemy-patrol) — картки на правило `tick>move`; послідовніше й цій стати rule з заготовкою {when: tick, then: [move]}. Лишаю mechanic, як вирішив T271 (T270 §6: «ШІ» — механіка) — на твоє слово."
+  hot-seat: {title: "Hot-seat на двох", home: game-logic/opponent, kind: game, verdict: keep, certainty: sure,
+    why: "Режим для двох людей — гра загалом."}
+  turn-enforcement: {title: "Заборона позачергового ходу", home: game-logic/opponent, kind: rule, verdict: keep, certainty: sure,
+    why: "Черга сторін — правило партії (input?turn_of>block)."}
+  move-timer: {title: "Таймер ходу / шаховий годинник", home: game-logic/opponent, kind: rule, verdict: keep, certainty: sure,
+    why: "Годинник сторони — правило партії."}
+  pass-turn: {title: "Пас, коли нема ходів", home: game-logic/opponent, kind: rule, verdict: keep, certainty: sure,
+    why: "Черга сторін."}
+  repetition-draw: {title: "Нічия повторенням позиції", home: game-logic/opponent, kind: rule, verdict: keep, certainty: sure,
+    why: "Історія позицій усієї партії."}
+  simultaneous-versus: {title: "Два поля одночасно", home: game-logic/opponent, kind: game, verdict: keep, certainty: sure,
+    why: "Режим гри для двох."}
+  online-multiplayer: {title: "Онлайн-партія", home: game-logic/opponent, kind: game, verdict: keep, certainty: sure,
+    why: "Мережа — гра загалом."}
+  local-two-players: {title: "Двоє гравців одночасно", home: game-logic/opponent, kind: game, verdict: keep, certainty: sure,
+    why: "Режим для двох людей; два аватари — звичайні сутності з рухом за вводом."}
+
+  # ── game-logic / constraints ────────────────────────────────────────────────
+  markup-validity: {title: "Валідність розмітки", home: game-logic/constraints, kind: rule, verdict: keep, certainty: sure,
+    why: "Перевірка правил пазла по всьому полю."}
+  check-stalemate: {title: "Шах / пат", home: game-logic/constraints, kind: rule, verdict: keep, certainty: sure,
+    why: "Оцінка позиції сторони; назва й злиття з «Матом» чекають T273 Q5 (T275)."}
+  deadlock-detection: {title: "Виявлення deadlock", home: game-logic/constraints, kind: rule, verdict: keep, certainty: sure,
+    why: "Аналіз позиції всього рівня, не властивість ящика."}
+  connectivity-check: {title: "Перевірка звʼязності", home: game-logic/constraints, kind: rule, verdict: keep, certainty: sure,
+    why: "Перевірка розвʼязку по всьому полю."}
+  single-loop-check: {title: "Перевірка однієї петлі", home: game-logic/constraints, kind: rule, verdict: keep, certainty: sure,
+    why: "Те саме."}
+  neighbor-count-clue: {title: "Число = кількість сусідів виду", home: game-logic/constraints, kind: rule, verdict: keep, certainty: sure,
+    why: "T271 вагався (механіка клітини-підказки), але еталони minesweeper і mined-out та демо sudoku ставлять її на правило з умовою adjacent_count — лишається rule."}
+  line-sum-clue: {title: "Підказка на лінії", home: game-logic/constraints, kind: rule, verdict: keep, certainty: sure,
+    why: "Перевірка ряду — правило пазла."}
+  word-validation: {title: "Перевірка слова словником", home: game-logic/constraints, kind: rule, verdict: keep, certainty: sure,
+    why: "Перевірка ходу словником — правило гри."}
+  run-length-clues: {title: "Підказки довжин блоків", home: game-logic/constraints, kind: rule, verdict: keep, certainty: sure,
+    why: "Перевірка ряду — правило пазла."}
+
+  # ── game-logic / difficulty ─────────────────────────────────────────────────
+  difficulty-levels: {title: "Рівні складності", home: game-logic/difficulty, kind: level, verdict: keep, certainty: sure,
+    why: "Пресет — рівень зі своїми числами (T275)."}
+  cheat-codes: {title: "Чіт-коди", home: game-logic/difficulty, kind: game, verdict: keep, certainty: sure,
+    why: "Режим налагодження всієї гри; «безсмертя» — не механіка гравця, а вимикач правил смерті."}
+  game-pause: {title: "Пауза", home: game-logic/difficulty, kind: game, verdict: keep, certainty: sure,
+    why: "Зупинка всієї гри; пара з pause-menu — T273 Q5, не чіпав."}
+  skip-level: {title: "Пропуск рівня з лімітом", home: game-logic/difficulty, kind: rule, verdict: keep, certainty: sure,
+    why: "Правило «ввід ЯКЩО пропуски є ТО наступний рівень»."}
+  rule-variants: {title: "Конструктор варіантів правил", home: game-logic/difficulty, kind: game, verdict: keep, certainty: sure,
+    why: "Налаштування правил гри загалом."}
+
+  # ── game-logic / history ────────────────────────────────────────────────────
+  undo-redo: {title: "Undo/redo ходів гри", home: game-logic/history, kind: game, verdict: keep, certainty: sure,
+    why: "Стан усієї гри; сумнів T275 «послідовніше rule input>undo» не мій і на сутність не вказує."}
+  undo-step: {title: "Один крок назад", home: game-logic/history, kind: game, verdict: keep, certainty: sure,
+    why: "Див. undo-redo."}
+  undo-unlimited: {title: "Без ліміту (стек станів)", home: game-logic/history, kind: game, verdict: keep, certainty: sure,
+    why: "Див. undo-redo."}
+  redo: {title: "Повернути скасоване", home: game-logic/history, kind: game, verdict: keep, certainty: sure,
+    why: "Див. undo-redo."}
+  rewind: {title: "Безперервне перемотування часу", home: game-logic/history, kind: game, verdict: keep, certainty: sure,
+    why: "Див. undo-redo."}
+  move-notation: {title: "Запис ходів у нотації", home: game-logic/history, kind: game, verdict: keep, certainty: sure,
+    why: "Запис усієї партії."}
+  state-string: {title: "Стан гри як рядок-код", home: game-logic/history, kind: game, verdict: keep, certainty: sure,
+    why: "Стан усієї гри."}
+  restart-level: {title: "Рестарт рівня з початку", home: game-logic/history, kind: rule, verdict: keep, certainty: sure,
+    why: "Ефект «рестарт» на будь-якому правилі (T275)."}
+
+  # ── game-logic / save ───────────────────────────────────────────────────────
+  save-game: {title: "Збереження гри", home: game-logic/save, kind: game, verdict: keep, certainty: sure,
+    why: "Файл усієї гри."}
+  save-single-slot: {title: "Один слот", home: game-logic/save, kind: game, verdict: keep, certainty: sure,
+    why: "Варіант збереження."}
+  save-multi-slot: {title: "Кілька слотів", home: game-logic/save, kind: game, verdict: keep, certainty: sure,
+    why: "Варіант збереження."}
+  save-autosave: {title: "Автосейв", home: game-logic/save, kind: game, verdict: keep, certainty: sure,
+    why: "Варіант збереження."}
+  save-progress: {title: "Збереження рекордів і прогресу", home: game-logic/save, kind: game, verdict: keep, certainty: sure,
+    why: "Памʼять гри між запусками."}
+
+  # ── game-logic / program ────────────────────────────────────────────────────
+  user-procedures: {title: "Власні процедури/функції", home: game-logic/program, kind: game, verdict: keep, certainty: sure,
+    why: "Можливість мови програми гравця, однакова для будь-якого робота; самого виконавця описує властивість поля «Пишу програму команд»."}
+  sensor-predicates: {title: "Сенсори-умови", home: game-logic/program, kind: game, verdict: keep, certainty: sure,
+    why: "Сенсори — слова мови програми, а не механіка робота: та сама програма проходить різні поля."}
+  step-execution: {title: "Покрокове виконання з підсвіткою команди", home: game-logic/program, kind: element, verdict: keep, certainty: sure,
+    why: "Елемент вікна редактора програми."}
+
+interface:  # картки типу game в «Інтерфейсі»: показ, звук, результати — не поведінка
+  movement-animation: {title: "Анімація руху", home: interface/graphics, kind: game, verdict: keep, certainty: sure,
+    why: "Як рух намальовано, не як сутність рухається."}
+  event-effects: {title: "Ефекти подій", home: interface/graphics, kind: game, verdict: keep, certainty: sure,
+    why: "Графіка подій."}
+  idle-animation: {title: "Анімація очікування", home: interface/graphics, kind: game, verdict: keep, certainty: sure,
+    why: "Графіка."}
+  particles: {title: "Частинки", home: interface/graphics, kind: game, verdict: keep, certainty: sure,
+    why: "Графіка."}
+  spawn-animation: {title: "Поява з анімацією", home: interface/graphics, kind: game, verdict: keep, certainty: sure,
+    why: "Як поява виглядає; коли й де зʼявляється — «Поява» в «Сутностях»."}
+  death-animation: {title: "Анімація смерті", home: interface/graphics, kind: game, verdict: keep, certainty: sure,
+    why: "Як зникнення виглядає; сама смерть — «Зникнення і смерть»."}
+  profile-stats: {title: "Статистика профілю", home: interface/results, kind: game, verdict: keep, certainty: sure,
+    why: "Облік партій між запусками."}
+  replay: {title: "Replay", home: interface/results, kind: game, verdict: keep, certainty: sure,
+    why: "Запис усієї партії."}
+  share-result: {title: "Поділитись результатом", home: interface/results, kind: game, verdict: keep, certainty: sure,
+    why: "Результат гри в буфер."}
+  achievements: {title: "Досягнення", home: interface/results, kind: game, verdict: keep, certainty: sure,
+    why: "Цілі поза перемогою, памʼять між запусками — гра загалом."}
+  game-settings: {title: "Налаштування гри", home: interface/settings, kind: game, verdict: keep, certainty: sure,
+    why: "Збереження налаштувань; назва й ціна — T273 Q5 (T275 не застосовував), не чіпав."}
+  background-music: {title: "Фонова музика", home: interface/sound, kind: game, verdict: keep, certainty: sure,
+    why: "Звук гри."}
+  sound-volume: {title: "Застосування гучності", home: interface/sound, kind: game, verdict: keep, certainty: sure,
+    why: "Звук гри."}
+
+neighbors:  # картки «Сутностей» і «Рівнів», з якими «Логіка» перетинається: межа в обидва боки
+  random-walk:
+    title: "Випадкове блукання"
+    home: entities/move
+    kind: rule
+    verdict: keep
+    certainty: sure
+    why: "Пара до ai-random: опис «З забороною розвороту на місці» не казав, що це ворог на полі, і не відсилав до сторони-суперника. Суть (без розвороту назад) лишаю; еталон pac-man пише саме це («випадковий дозволений напрям без розвороту»)."
+    change:
+      description: "Ворог щотіку йде у випадковий дозволений бік, але не розвертається назад на місці (привиди Pac-Man у переляку). Компʼютер, що випадково обирає хід за цілу сторону (шахи), — «Випадковий» в «AI-суперник»."
+  chase-greedy:
+    title: "Жадібна (крок у бік цілі)"
+    home: entities/move
+    kind: rule
+    verdict: keep
+    certainty: sure
+    why: "Пара до ai-greedy; власного опису не було (студент бачив лише заголовок сімʼї). Межа з chase-bfs — без пошуку шляху."
+    change:
+      description: "Ворог щотіку робить крок у той дозволений бік, звідки до цілі найближче, — без пошуку шляху, тож за стіною може застрягти (привиди Pac-Man на перехресті). Компʼютер, що обирає за сторону найвигідніший хід (шахи), — «Жадібний» в «AI-суперник»."
+  spawn-random-cell:
+    title: "Спавн у випадковій клітині"
+    home: entities/spawn
+    kind: rule
+    verdict: keep
+    certainty: sure
+    why: "Залишок T275: шліфування (polish.yaml) дописало сюди текст картки рівня random-placement («цегла щоразу лягає інакше») під злиття, а злиття скасували (SKIP_MERGE) — і затерли опис з logic.yaml. Тепер дві картки різних типів (rule на правилі й level на рівні) мають майже той самий опис. Повертаю опис logic.yaml і межу."
+    change:
+      description: "Сутність зʼявляється у випадковій вільній клітині — на старті рівня, після кожного ходу (нова плитка в 2048) чи коли попередню зʼїли (їжа в Snake); гра перевіряє, що клітина порожня й не на старті гравця. Уся розкладка рівня щоразу інша (цегла в Bomberman) — картка рівня «Випадкова розстановка на готовій мапі»."
+  random-placement:
+    title: "Випадкова розстановка на готовій мапі"
+    home: levels/generation
+    kind: level
+    verdict: keep
+    certainty: sure
+    why: "Друга половина межі зі spawn-random-cell: картка рівня (еталон bomberman — на рівні) про всю розкладку, а не про одну сутність. Зміст лишаю, дописую приклад і посилання."
+    change:
+      description: "Рівень щоразу інший: на готовій мапі гра розкидає цеглу, предмети й ворогів по вільних клітинах — не на старті гравця й не замурованими (цегла в Bomberman). Одна сутність, що зʼявляється у випадковій клітині за правилом (їжа в Snake, плитка в 2048), — «Спавн у випадковій клітині»."
+
+# ── Попутно (дані демо, не картки; не чіпав — сід демо стирає наклацане) ────
+# - demo/tanks.yaml: in-round-upgrades заявлено на правилі «Купити в Магазині → рівень покращення +1» — це покупка між
+#   рівнями (shop-between-levels), а «Апгрейди в раунді» — підібраний бонус.
+# - demo/pvz.yaml: Зомбі заявляє telegraphed-intents з приміткою «смужка хвиль угорі» — це елемент wave-progress у вікні.

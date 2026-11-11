@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T278** · тікетів: 277 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T281** · тікетів: 280 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -285,3 +285,6 @@
 | platform | [T275](platform/.t/T275--game-desc-v4/plan.md) | ⚙️ | game-desc-v4 | Опис гри v4: каталог рядами, додавання з каталогу, знахідки, вигляди правил, пісочниця — план | 🟢 🟩 |
 | games | [T276](games/.t/T276-P--game-moments-editor.md) | 💡 | game-moments-editor | Ігрові моменти: редактор кадрів і показ по кроках | 🟢 ⬜ |
 | games | [T277](games/.t/T277-Q--game-desc-v4-choices.md) | ❓ | game-desc-v4-choices | Опис гри v4: вибори після вечірньої диктовки | 🔴 ⬜ |
+| games | [T278](games/.t/T278-P--game-desc-v5-design.md) | 💡 | game-desc-v5-design | Опис гри v5: плюс питає назву, переходи, поради, порядок секцій, історія | 🟢 🟩 |
+| platform | [T279](platform/.t/T279--game-desc-v5/plan.md) | ⚙️ | game-desc-v5 | Опис гри v5 — реалізація — план | 🟢 🟩 |
+| games | [T280](games/.t/T280-Q--game-desc-v5-choices.md) | ❓ | game-desc-v5-choices | Опис гри v5 — вибори | 🔴 ⬜ |

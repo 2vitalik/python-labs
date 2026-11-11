@@ -1,0 +1,50 @@
+# 2026-11-10 08:01 · python_labs_catalog_smoke · dry
+ai-opponent: keep — description
+ai-random: keep — description
+ai-greedy: keep — description
+realtime-ai: mechanic — zone, subzone, kind, order, description (game-logic/opponent → entities/move)
+random-walk: keep — description
+chase-greedy: keep — description
+spawn-random-cell: keep — description
+random-placement: keep — description
+
+# 2026-11-10 08:01 · python_labs_catalog_smoke
+ai-opponent: keep — description
+ai-random: keep — description
+ai-greedy: keep — description
+realtime-ai: mechanic — zone, subzone, kind, order, description (game-logic/opponent → entities/move)
+random-walk: keep — description
+chase-greedy: keep — description
+spawn-random-cell: keep — description
+random-placement: keep — description
+
+# 2026-11-10 08:01 · python_labs_catalog_smoke
+ai-opponent: без змін
+ai-random: без змін
+ai-greedy: без змін
+realtime-ai: без змін
+random-walk: без змін
+chase-greedy: без змін
+spawn-random-cell: без змін
+random-placement: без змін
+
+# 2026-11-10 08:02 · python_labs · dry
+ai-opponent: keep — description
+ai-random: keep — description
+ai-greedy: keep — description
+realtime-ai: mechanic — zone, subzone, kind, order, description (game-logic/opponent → entities/move)
+random-walk: keep — description
+chase-greedy: keep — description
+spawn-random-cell: keep — description
+random-placement: keep — description
+
+# 2026-11-10 08:02 · python_labs
+ai-opponent: keep — description
+ai-random: keep — description
+ai-greedy: keep — description
+realtime-ai: mechanic — zone, subzone, kind, order, description (game-logic/opponent → entities/move)
+random-walk: keep — description
+chase-greedy: keep — description
+spawn-random-cell: keep — description
+random-placement: keep — description
+
