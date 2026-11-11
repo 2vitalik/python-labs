@@ -8,13 +8,21 @@ import { games } from '../catalog.js'
 // creating the game: base · title · description as three cards, the profile's way (ProfileForm);
 // once it exists the same fields fold into one compact card above the description's sections, and «змінити основу» opens
 // the choice with its own «Зберегти» / «Скасувати» (T274 §10)
-const props = defineProps({ dirty: Boolean, saved: Boolean, error: String, fresh: Boolean })
-defineEmits(['save'])
+const props = defineProps({ dirty: Boolean, changed: { type: Array, default: () => [] }, saved: Boolean, error: String, fresh: Boolean })
+const emit = defineEmits(['save', 'reset'])
 const form = defineModel({ type: Object, required: true })
 const custom = ref(false)
 const was = ref(null)  // the base before «змінити основу», while the choice is open
 watch(() => form.value.base_custom, (v) => v && !form.value.base_game && (custom.value = true))
 watch(() => props.saved, (v) => v && (was.value = null))
+// what waits for «Зберегти» — named in the bar that floats over the page, wherever it is scrolled to
+const NAMES = { title: 'назва гри', description: 'опис гри', base_game: 'основа', base_custom: 'основа' }
+const unsaved = computed(() => [...new Set(props.changed.map((k) => NAMES[k] || k))].join(', '))
+function undo() {
+  emit('reset')  // the page puts the saved values back at once
+  was.value = null
+  custom.value = !form.value.base_game && !!form.value.base_custom
+}
 const pick = (slug) => { form.value.base_game = slug; custom.value = !slug }
 const change = () => (was.value = { base_game: form.value.base_game, base_custom: form.value.base_custom })
 function cancel() {
@@ -59,8 +67,11 @@ const showChips = computed(() => props.fresh || !!was.value)
         </template>
         <template v-if="!fresh">
           <input v-model="form.title" class="form-control form-control-lg fw-semibold soft-input px-2 mt-1" placeholder="Назва гри" title="Назва гри — можна редагувати" required>
-          <GrowArea v-model="form.description" class="form-control soft-input px-2" title="Опис — можна редагувати"
-                    placeholder="Що за гра і чим відрізняється від основи (Markdown можна) — натисни й пиши" />
+          <div class="desc">
+            <GrowArea v-model="form.description" class="form-control soft-input px-2" title="Опис — можна редагувати"
+                      placeholder="Що за гра і чим відрізняється від основи — натисни й пиши" />
+            <span class="md" title="Опис розуміє Markdown: **жирний**, *курсив*, списки з «- », [посилання](https://…)">Markdown</span>
+          </div>
         </template>
       </div>
     </div>
@@ -82,18 +93,32 @@ const showChips = computed(() => props.fresh || !!was.value)
       </div>
     </template>
 
-    <div v-if="fresh || (!was && (dirty || saved || error))" class="d-flex align-items-center gap-3" :class="{ 'mb-3': !fresh }">
-      <button v-if="fresh" class="btn btn-primary" :disabled="!dirty">Створити гру</button>
-      <button v-else class="btn btn-sm btn-success" :disabled="!dirty"><Icon name="check" /> Зберегти</button>
-      <Transition name="saved">
-        <span v-if="saved" class="text-success small">✓ Збережено</span>
-      </Transition>
+    <div v-if="fresh" class="d-flex align-items-center gap-3">
+      <button class="btn btn-primary" :disabled="!dirty">Створити гру</button>
       <span v-if="error" class="text-danger small">{{ error }}</span>
     </div>
+    <!-- a bar over the page, not a row in it: nothing below jumps when the first letter is typed, and it is in sight
+         however far the page is scrolled — «десь є незбережене» always says where -->
+    <Transition v-else name="saved">
+      <div v-if="dirty || saved" class="unsaved shadow border rounded bg-body">
+        <template v-if="dirty">
+          <span><span class="dot" /> Не збережено: <b>{{ unsaved }}</b></span>
+          <button class="btn btn-sm btn-success"><Icon name="check" /> Зберегти</button>
+          <button type="button" class="btn btn-sm btn-outline-secondary" @click="undo">Скасувати</button>
+          <span v-if="error" class="text-danger w-100">{{ error }}</span>
+        </template>
+        <span v-else class="text-success">✓ Збережено</span>
+      </div>
+    </Transition>
   </form>
 </template>
 
 <style scoped>
+.desc { position: relative; }
+.md { position: absolute; right: .4rem; bottom: .2rem; font-size: .65rem; color: var(--bs-secondary-color); opacity: .6; cursor: help; }
+.unsaved { position: fixed; z-index: 1040; left: 50%; bottom: 1rem; transform: translateX(-50%); display: flex; flex-wrap: wrap; align-items: center;
+           gap: .4rem .6rem; max-width: calc(100vw - 1.5rem); padding: .45rem .7rem; font-size: .875rem; }
+.dot { display: inline-block; width: .5rem; height: .5rem; margin-right: .15rem; border-radius: 50%; background: var(--bs-warning); }
 .saved-enter-active { transition: opacity .2s; }
 .saved-leave-active { transition: opacity .6s; }
 .saved-enter-from, .saved-leave-to { opacity: 0; }

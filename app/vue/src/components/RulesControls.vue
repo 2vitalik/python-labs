@@ -5,6 +5,7 @@ import Icon from '@core/components/Icon.vue'
 import { vocab } from '../catalog.js'
 import { useEd } from '../ed.js'
 import { clauses } from '../rules.js'
+import { marks } from '../ruleSides.js'
 import { isControl, spans, whoPiece } from '../ruleViews.js'
 import Pieces from './Pieces.vue'
 import './ruleTable.css'
@@ -17,7 +18,7 @@ const action = (r) => String(r.when.action ?? '').trim().toLowerCase()
 const rows = computed(() => {
   const list = ed.rules.filter(isControl)
   const order = [...new Set(list.map(action))]
-  const out = list.map((r) => ({ r, c: clauses(r, ed.parts), who: r.when.a ? [whoPiece(r.when.a, r.when, ed.parts)] : [] }))
+  const out = list.map((r) => ({ r, c: clauses(r, ed.parts), who: r.when.a ? [{ ...whoPiece(r.when.a, r.when, ed.parts), sub: marks(r).a }] : [] }))
   return spans(out.sort((x, y) => order.indexOf(action(x.r)) - order.indexOf(action(y.r))), (x) => action(x.r))
 })
 // the field's own «Керування», by its options' names

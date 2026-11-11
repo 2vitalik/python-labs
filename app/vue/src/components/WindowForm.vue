@@ -11,9 +11,10 @@ import CoinBadge from './CoinBadge.vue'
 import Picker from './Picker.vue'
 import ProposeCard from './ProposeCard.vue'
 
-// a window's form (T270 §10.1): the type from the list of window types, the title, one line of what is on it.
-// `part` — the window being edited; without it a new one, `prefill.task` — its type already chosen
-const props = defineProps({ part: Object, prefill: Object })
+// a window's form (T270 §10.1, T278 §6): the title, then the type from the list of window types, one line of what is on it.
+// `part` — the window being edited; without it a new one, `prefill.task` — its type already chosen;
+// `focus: 'description'` — opened by the card's «＋ опис», the cursor waits there
+const props = defineProps({ part: Object, prefill: Object, focus: String })
 const emit = defineEmits(['done', 'cancel'])
 const ed = useEd()
 const form = reactive({ task: props.part?.task || props.prefill?.task || '', title: props.part?.title || '', description: props.part?.description || '' })
@@ -23,6 +24,7 @@ const proposing = ref(false)
 const busy = ref(false)
 const error = ref('')
 const titleInput = ref()
+const descInput = ref()
 const type = computed(() => ed.info(form.task))
 const types = computed(() => windowTypeItems().map((it) => ({ ...it, taken: it.key === form.task })))
 
@@ -34,7 +36,10 @@ function choose(slug) {
 }
 if (!props.part && form.task) form.title = type.value?.title || ''
 // opened after mount: Pop starts listening for Esc and outside clicks only when its model changes
-onMounted(() => (form.task ? titleInput.value?.focus() : (open.value = true)))
+onMounted(() => {
+  if (!form.task) open.value = true
+  else (props.focus === 'description' ? descInput : titleInput).value?.focus()
+})
 
 async function save() {
   error.value = !form.task ? 'Обери тип вікна.' : !form.title.trim() ? 'Напиши назву вікна.' : ''
@@ -56,26 +61,29 @@ async function save() {
 
 <template>
   <div class="vstack gap-2">
-    <Pop v-model="open" width="24rem" block>
-      <template #trigger="{ toggle }">
-        <button type="button" class="form-select form-select-sm text-start" title="Тип вікна" @click="toggle">
-          <template v-if="type"><CoinBadge :coin="type.coin" :amount="type.amount" /> {{ type.title }}</template>
-          <span v-else class="text-secondary">тип вікна…</span>
-        </button>
-      </template>
-      <template v-if="proposing">
-        <ProposeCard what="новий тип вікна" all-to="/tasks?zone=interface&sub=menus" zone="interface" subzone="menus" @done="choose('custom-window')" />
-        <button type="button" class="btn btn-link btn-sm p-0 mt-1 text-decoration-none" @click="proposing = false">← до списку типів</button>
-      </template>
-      <Picker v-else inline autofocus :items="types" placeholder="головне меню, пауза, кінець гри…" @pick="choose($event.key)">
-        <template #footer>
-          <div class="foot">Нема потрібного типу? → <a href="#" @click.prevent="proposing = true">запропонувати</a></div>
-        </template>
-      </Picker>
-    </Pop>
     <input ref="titleInput" v-model="form.title" class="form-control form-control-sm" placeholder="Назва вікна"
            @input="own = !!form.title.trim()" @keydown.enter="save">
-    <input v-model="form.description" class="form-control form-control-sm" placeholder="Що на цьому вікні" @keydown.enter="save">
+    <div class="d-flex align-items-center gap-2">
+      <span class="label">Тип</span>
+      <Pop v-model="open" width="24rem" class="flex-grow-1">
+        <template #trigger="{ toggle }">
+          <button type="button" class="form-select form-select-sm text-start" title="Тип вікна" @click="toggle">
+            <template v-if="type"><CoinBadge :coin="type.coin" :amount="type.amount" /> {{ type.title }}</template>
+            <span v-else class="text-secondary">обери тип: головне меню, пауза, кінець гри…</span>
+          </button>
+        </template>
+        <template v-if="proposing">
+          <ProposeCard what="новий тип вікна" all-to="/tasks?zone=interface&sub=menus" zone="interface" subzone="menus" @done="choose('custom-window')" />
+          <button type="button" class="btn btn-link btn-sm p-0 mt-1 text-decoration-none" @click="proposing = false">← до списку типів</button>
+        </template>
+        <Picker v-else inline autofocus :items="types" placeholder="головне меню, пауза, кінець гри…" @pick="choose($event.key)">
+          <template #footer>
+            <div class="foot">Нема потрібного типу? → <a href="#" @click.prevent="proposing = true">запропонувати</a></div>
+          </template>
+        </Picker>
+      </Pop>
+    </div>
+    <input ref="descInput" v-model="form.description" class="form-control form-control-sm" placeholder="Що на цьому вікні" @keydown.enter="save">
     <div class="d-flex gap-2">
       <button type="button" class="btn btn-sm btn-success" :disabled="busy" @click="save"><Icon name="check" /> Зберегти</button>
       <button type="button" class="btn btn-sm btn-outline-secondary" @click="emit('cancel')">Скасувати</button>
@@ -86,4 +94,5 @@ async function save() {
 
 <style scoped>
 .foot { margin: .35rem .5rem .1rem; font-size: .8rem; color: var(--bs-secondary-color); }
+.label { font-size: .7rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--bs-secondary-color); }
 </style>

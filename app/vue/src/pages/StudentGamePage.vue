@@ -38,6 +38,8 @@ onMounted(async () => {
     <template v-else-if="data">
       <GameHead :game="data.game" :student="data.student">
         <RouterLink v-if="data.mine" to="/my/game" class="ms-auto small text-nowrap">✏️ Редагувати в «Моїй грі»</RouterLink>
+        <RouterLink v-if="admin || data.mine" :to="`/students/${nick}/history`" class="small text-nowrap" :class="{ 'ms-auto': !data.mine }"
+                    title="Хто що змінював у грі">🕘 Історія</RouterLink>
       </GameHead>
       <Md v-if="data.game.description" :text="data.game.description" class="mb-3" />
       <GameEditor :game="data.game" :parts="data.parts" :claims="data.claims" :rules="data.rules" :tasks="data.tasks" :coins="data.coins"

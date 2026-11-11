@@ -13,7 +13,7 @@ import { user } from '@core/user.js'
 
 // the student's game: base, title, description — then its description proper (field, levels, entities, rules, windows, cards)
 const loaded = ref(false)
-const { form, dirty, saved, error, fill, save } = useForm({ title: '', base_game: '', base_custom: '', description: '' })
+const { form, dirty, changed, saved, error, fill, save, reset } = useForm({ title: '', base_game: '', base_custom: '', description: '' })
 const nick = computed(() => user.value?.nick)
 const intro = computed(() => (vocab.value.depth === 'simple' ? 'Далі опишеш, хто й що є на полі та які екрани має гра.' : 'Далі опишеш поле, рівні, сутності, правила, вікна й заявиш картки каталогу.'))
 
@@ -38,9 +38,10 @@ onMounted(async () => {
     </Crumbs>
     <GameHead :game="myGame" title="Моя гра" :checks="!myGame">
       <RouterLink v-if="myGame" :to="`/students/${nick}`" class="ms-auto small text-nowrap">Як це бачать інші →</RouterLink>
+      <RouterLink v-if="myGame" to="/my/game/history" class="small text-nowrap" title="Хто що змінював у грі">🕘 Історія</RouterLink>
     </GameHead>
     <p v-if="!myGame" class="text-secondary">Обери основу з каталогу або опиши свою, дай назву — і гра твоя. {{ intro }}</p>
-    <MyGameForm v-model="form" :dirty :saved :error :fresh="!myGame" @save="submit" />
+    <MyGameForm v-model="form" :dirty :changed :saved :error :fresh="!myGame" @save="submit" @reset="reset" />
     <GameEditor v-if="myGame" :game="myGame" :parts="myParts" :claims="myClaims" :rules="myRules" :tasks="myTasks" :coins="myCoins"
                 editable :nick :reload="() => loadMyGame(true)" />
   </div>

@@ -12,7 +12,7 @@ import { foldAll, isFolded, setFold } from '../fold.js'
 import { hints as makeHints } from '../hints.js'
 import { jump, target } from '../jump.js'
 import { sandbox } from '../sandbox.js'
-import { foldKey, sectionOf, SECTIONS, ZONES } from '../sections.js'
+import { foldKey, HEADS, sectionOf, SECTIONS, SIMPLE, ZONES } from '../sections.js'
 import AddBar from './AddBar.vue'
 import ClaimsTable from './ClaimsTable.vue'
 import DraftStrip from './DraftStrip.vue'
@@ -62,16 +62,21 @@ const template = computed(() => templates.value[props.game.base_game])
 const empty = computed(() => !props.parts.length && !props.rules.length && !props.claims.length)
 const row = (m) => COIN_ORDER.filter((k) => m?.[k]).map((k) => `${COINS[k]}×${m[k]}`).join(' ')
 const hints = computed(() => (props.editable ? makeHints({ game: props.game, parts: props.parts, rules: props.rules, claims: props.claims, info: ed.info, base: base.value, simple: ed.simple, shots: !ed.sandbox }) : []))
-const toc = computed(() => (view.value === 'cards' ? [] : [
-  ...(ed.simple ? [] : [['field', '🗺️ Поле'], ['levels', `🪜 Рівні (${ed.levels.length})`]]),
-  ['entities', `👾 Сутності (${ed.entities.length})`],
-  ...(ed.simple ? [] : [['rules', `⚡ Правила (${props.rules.length})`]]),
-  ['windows', `🪟 Вікна (${ed.windows.length})`],
-  ...(ed.simple ? [] : ZONES.map((z) => [z.id, `${z.icon} ${z.title} (${inZone(z)})`])),
-].map(([id, text]) => ({ id, text, depth: 2 }))))
+// the sections in the catalog's order (T278 §9): their headings and the contents say the same
+const shown = computed(() => (ed.simple ? SIMPLE : SECTIONS))
+const counts = computed(() => ({ entities: ed.entities.length, rules: props.rules.length, levels: ed.levels.length, windows: ed.windows.length,
+  ...Object.fromEntries(ZONES.map((z) => [z.id, inZone(z)])) }))
+const head = (id) => {
+  const { icon, title, short, zone } = HEADS[id]
+  return { icon, title: (ed.simple && short) || title, zone, count: counts.value[id], fold: foldKey(id) }
+}
+const zone = (id) => ZONES.find((z) => z.id === id)
+const toc = computed(() => (view.value === 'cards' ? [] : shown.value.map((id) => {
+  const h = head(id)
+  return { id, text: `${h.icon} ${h.title}${h.count === undefined ? '' : ` (${h.count})`}`, depth: 2 }
+})))
 
 // folding (T274 §8): each section by its heading, all at once by the button beside «Опис | Картки»
-const shown = computed(() => (ed.simple ? ['entities', 'windows'] : SECTIONS))
 const folded = (id) => isFolded(foldKey(id))
 const allFolded = computed(() => shown.value.every(folded))
 const foldEvery = () => foldAll(shown.value.map(foldKey), !allFolded.value)
@@ -139,25 +144,18 @@ async function fromTemplate() {
     <div v-if="error" class="alert alert-danger py-2 small">{{ error }}</div>
 
     <ClaimsTable v-if="view === 'cards' && !ed.simple" />
-    <!-- folded bodies stay mounted (v-show): «＋» still opens their forms, «show me where» still finds what is inside -->
+    <!-- in SECTIONS' order (sections.js); folded bodies stay mounted (v-show): «＋» still opens their forms, «show me where»
+         still finds what is inside -->
     <template v-else>
-      <template v-if="!ed.simple">
-        <section id="field" class="mb-4">
-          <SectionHead icon="🗺️" title="Поле" :fold="foldKey('field')" />
-          <div v-show="!folded('field')">
-            <DraftStrip :kinds="['field']" hint="сядуть на поле самі, щойно його опишеш" />
-            <FieldCard />
-          </div>
-        </section>
-        <section id="levels" class="mb-4">
-          <SectionHead icon="🪜" title="Рівні" :count="ed.levels.length" :fold="foldKey('levels')">
-            <button v-if="editable" type="button" class="btn btn-sm btn-add" @click="open('level')"><Icon name="plus" /> рівень</button>
-          </SectionHead>
-          <LevelsBlock v-show="!folded('levels')" :ref="blocks.level" />
-        </section>
-      </template>
+      <section v-if="!ed.simple" id="field" class="mb-4">
+        <SectionHead v-bind="head('field')" />
+        <div v-show="!folded('field')">
+          <DraftStrip :kinds="['field']" hint="сядуть на поле самі, щойно його опишеш" />
+          <FieldCard />
+        </div>
+      </section>
       <section id="entities" class="mb-4">
-        <SectionHead icon="👾" title="Сутності" :count="ed.entities.length" :fold="foldKey('entities')">
+        <SectionHead v-bind="head('entities')">
           <button v-if="editable" type="button" class="btn btn-sm btn-add" @click="open('entity')"><Icon name="plus" /> сутність</button>
         </SectionHead>
         <div v-show="!folded('entities')">
@@ -166,7 +164,7 @@ async function fromTemplate() {
         </div>
       </section>
       <section v-if="!ed.simple" id="rules" class="mb-4">
-        <SectionHead icon="⚡" title="Правила" :count="rules.length" :fold="foldKey('rules')">
+        <SectionHead v-bind="head('rules')">
           <button v-if="editable" type="button" class="btn btn-sm btn-add" @click="open('rule')"><Icon name="plus" /> правило</button>
         </SectionHead>
         <div v-show="!folded('rules')">
@@ -174,8 +172,15 @@ async function fromTemplate() {
           <RulesBlock :ref="blocks.rule" />
         </div>
       </section>
+      <ZoneSection v-if="!ed.simple" :z="zone('zone-game-logic')" :head="head('zone-game-logic')" />
+      <section v-if="!ed.simple" id="levels" class="mb-4">
+        <SectionHead v-bind="head('levels')">
+          <button v-if="editable" type="button" class="btn btn-sm btn-add" @click="open('level')"><Icon name="plus" /> рівень</button>
+        </SectionHead>
+        <LevelsBlock v-show="!folded('levels')" :ref="blocks.level" />
+      </section>
       <section id="windows" class="mb-4">
-        <SectionHead icon="🪟" :title="ed.simple ? 'Вікна' : 'Вікна й меню'" :count="ed.windows.length" :fold="foldKey('windows')">
+        <SectionHead v-bind="head('windows')">
           <button v-if="editable" type="button" class="btn btn-sm btn-add" @click="open('window')"><Icon name="plus" /> вікно</button>
         </SectionHead>
         <div v-show="!folded('windows')">
@@ -184,10 +189,7 @@ async function fromTemplate() {
         </div>
       </section>
       <template v-if="!ed.simple">
-        <section v-for="z in ZONES" :id="z.id" :key="z.id" class="mb-4">
-          <SectionHead :icon="z.icon" :title="z.title" :count="inZone(z)" :fold="foldKey(z.id)" />
-          <ZoneSection v-show="!folded(z.id)" :zones="z.zones" :hint="z.hint" />
-        </section>
+        <ZoneSection v-for="id in ['zone-interface', 'zone-code', 'zone-support']" :key="id" :z="zone(id)" :head="head(id)" />
       </template>
     </template>
 

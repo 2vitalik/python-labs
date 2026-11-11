@@ -46,7 +46,8 @@ function newRule() {
       <SlotFields :specs="info.slots" :params="form.params" />
     </div>
     <input v-model="form.note" class="form-control form-control-sm" placeholder="Нотатка: як саме це зроблено">
-    <input v-model="form.link" class="form-control form-control-sm" placeholder="GitHub: файл або коміт — за бажанням">
+    <input v-model="form.link" class="form-control form-control-sm"
+           :placeholder="info?.zone === 'support' ? 'Посилання: відео, сторінка гри, документ' : 'GitHub: файл або коміт — за бажанням'">
     <div class="d-flex gap-2">
       <button type="button" class="btn btn-sm btn-success" @click="save"><Icon name="check" /> Зберегти</button>
       <button type="button" class="btn btn-sm btn-outline-secondary" @click="emit('close')">Скасувати</button>

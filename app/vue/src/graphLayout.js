@@ -2,13 +2,15 @@ import { cut, forest } from './graphTree.js'
 
 // the map of windows (T270 §10.4) placed as a tidy tree, left to right: depth is the column, every leaf takes the next
 // free band, a parent sits at the mean of its children — so arrows never cross. A menu item's label stands over the node
-// it leads to (T274 §9), so the gap between columns is short whatever the labels. Pure: no DOM.
-// → { nodes: [{ id, x, y, w, h, title, shot, extras: [{ id, title }] }], edges: [{ from, to, d, label, full, lx, ly }], width, height }
+// it leads to (T274 §9), so the gap between columns is short whatever the labels; an extra keeps its items' label for
+// the hint under the mouse (T278 §8). Pure: no DOM.
+// → { nodes: [{ id, x, y, w, h, title, shot, extras: [{ id, title, label }] }], edges: [{ from, to, d, label, full, lx, ly }], width, height }
 export const BOX_H = 30  // a node's box; its extras hang under it, EXTRA_H each, and count in its h
 export const EXTRA_H = 15
 export const LABEL_H = 14  // the row of a label over its node: y is the box's top, the label is above it
 const CH = 7.4, SMALL_CH = 6.6  // estimated width of a character: a title; a label or an extra
-const PAD = 12, ROW_GAP = 10, TREE_GAP = 10, GAP = 40, KNEE = 14, R = 8  // KNEE: the bend's distance from a column; R: its radius
+// ROW_GAP: from a node's last extra to the next label in its column — less, and the two read as one
+const PAD = 12, ROW_GAP = 16, TREE_GAP = 10, GAP = 40, KNEE = 14, R = 8  // KNEE: the bend's distance from a column; R: its radius
 
 const mean = (xs) => Math.round(xs.reduce((a, b) => a + b, 0) / xs.length)
 
@@ -26,7 +28,7 @@ export function layout(windows, menus, rules = []) {
   for (const w of windows) {
     const shot = w.screenshots?.length ? `/api/uploads/${w.game}/${w.screenshots[0]}` : ''
     const title = cut(w.title || '…', shot ? 22 : 25)
-    const ex = extras[w.id].map((id) => ({ id, title: cut(byId[id].title || '…', 24) }))
+    const ex = extras[w.id].map((x) => ({ id: x.id, title: cut(byId[x.id].title || '…', 24), label: x.label }))
     const width = Math.round(Math.min(210, Math.max(90, title.length * CH + 24 + (shot ? 16 : 0))))
     node[w.id] = { id: w.id, x: 0, y: 0, w: width, h: BOX_H + ex.length * EXTRA_H, title, shot, extras: ex }
     span[w.id] = Math.ceil(Math.max(width, ...ex.map((x) => (x.title.length + 2) * SMALL_CH + 4)))  // the extras may be wider than the box
@@ -62,9 +64,11 @@ export function layout(windows, menus, rules = []) {
     for (const k of kids[w.id]) {
       const p = node[w.id], c = node[k], d = depth[w.id], x0 = colX[d] + colW[d]
       const full = label[k] || ''
+      // «→ » goes first, two characters; the label may run into the gap up to where the next column's bends start
+      const fits = Math.floor((colW[d + 1] + KNEE - R - 2) / SMALL_CH) - 2
       edges.push({
         from: w.id, to: k, d: arrow(p.x + p.w, p.y + BOX_H / 2, x0 + KNEE, c.y + BOX_H / 2, c.x),
-        label: cut(full, Math.floor((colW[d + 1] - 2) / SMALL_CH)), full, lx: c.x + 2, ly: c.y - 4,
+        label: cut(full, fits), full, lx: c.x + 2, ly: c.y - 4,
       })
     }
   }

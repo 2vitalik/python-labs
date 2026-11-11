@@ -2,16 +2,16 @@
 import { jump } from '../jump.js'
 
 // the pieces of one clause (rules.js: pieces), each looking like what it is: an entity in a frame, a number in bold,
-// a state as a pill, the student's own words on a yellowish ground (T270 §4.1)
+// a state as a pill, the student's own words on a yellowish ground (T270 §4.1); `sub` — a side's letter, small (T278 §7)
 defineProps({ list: Array })
-const TIP = { free: 'написано студентом', state: 'стан сутності', name: 'лічильник або параметр', choice: 'варіант зі словника', side: 'сторона події КОЛИ' }
+const TIP = { free: 'написано студентом', state: 'стан сутності', name: 'лічильник або параметр', choice: 'варіант зі словника', side: 'сторона події КОЛИ', not: 'заперечення' }
 </script>
 
 <template>
   <span class="pieces">
     <template v-for="(p, i) in list" :key="i">
-      <span v-if="p.id" class="pc ent" role="button" :title="`показати «${p.v}»`" @click.stop="jump(`p-${p.id}`)">{{ p.icon }} {{ p.v }}</span>
-      <span v-else class="pc" :class="[p.t, { unknown: p.unknown }]" :title="p.unknown ? 'такого стану в сутності нема — додай його в станах' : TIP[p.t]">{{ p.v }}</span>
+      <span v-if="p.id" class="pc ent" role="button" :title="p.tip || `показати «${p.v}»`" @click.stop="jump(`p-${p.id}`)">{{ p.icon }} {{ p.v }}<sup v-if="p.sub" class="pc-ix">{{ p.sub }}</sup></span>
+      <span v-else class="pc" :class="[p.t, { unknown: p.unknown }]" :title="p.unknown ? 'такого стану в сутності нема — додай його в станах' : p.tip || TIP[p.t]">{{ p.v }}<sup v-if="p.sub" class="pc-ix">{{ p.sub }}</sup></span>
       {{ ' ' }}
     </template>
   </span>
@@ -31,4 +31,5 @@ const TIP = { free: 'написано студентом', state: 'стан су
 .pc.name { border-bottom: 1px dashed var(--bs-secondary-color); }
 .pc.free { padding: .05rem .25rem; border-radius: .25rem; background: color-mix(in srgb, var(--bs-warning) 16%, var(--bs-body-bg)); font-style: italic; }
 .pc.not { color: var(--bs-danger); font-weight: 600; }
+.pc-ix { margin-left: .15em; font-size: .68em; font-weight: 700; line-height: 0; color: var(--bs-secondary-color); }
 </style>

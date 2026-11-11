@@ -1,14 +1,26 @@
 import { kindOf } from './catalog.js'
 
 // the editor's sections (GameEditor.vue) by the ids the page, the contents and «show me where» know; each folds under
-// `ed:<id>` (fold.js). The zone sections hold the cards about the game as a whole (T270 §11)
+// `ed:<id>` (fold.js). The zone sections hold the cards about the game as a whole (T270 §11); the first of `zones` is
+// the section's own catalog category, `table` — its claims are links to show (T278 §10)
 export const ZONES = [
   { id: 'zone-game-logic', icon: '🎲', title: 'Логіка гри', zones: ['game-logic', 'entities', 'field', 'levels'], hint: 'Що гра вміє загалом, а правилом не скажеш: збереження, суперник-ШІ, скасування ходу, магазин, складність, чіти.' },
   { id: 'zone-interface', icon: '🕹️', title: 'Інтерфейс, графіка, звук', zones: ['interface'], hint: 'Те, що не привʼязане до одного вікна: анімації, ефекти, звук і музика, рекорди й статистика.' },
-  { id: 'zone-code', icon: '💻', title: 'Код', zones: ['code'], hint: 'Архітектура, типи, тести, git, запуск — з посиланням на файл чи коміт у нотатці картки.' },
-  { id: 'zone-support', icon: '📣', title: 'Супровід', zones: ['support'], hint: 'Відео-демки, сторінка гри, інструкція гравця, журнал розробки.' },
+  { id: 'zone-code', icon: '💻', title: 'Код', zones: ['code'], table: true, hint: 'Архітектура, типи, тести, git, запуск — з посиланням на файл чи коміт.' },
+  { id: 'zone-support', icon: '📣', title: 'Супровід', zones: ['support'], table: true, hint: 'Відео-демки, сторінка гри, інструкція гравця, журнал розробки.' },
 ]
-export const SECTIONS = ['field', 'levels', 'entities', 'rules', 'windows', ...ZONES.map((z) => z.id)]
+// the page's order is the catalog's order of categories (T278 §9); the simple form shows two of them
+export const SECTIONS = ['field', 'entities', 'rules', 'zone-game-logic', 'levels', 'windows', 'zone-interface', 'zone-code', 'zone-support']
+export const SIMPLE = ['entities', 'windows']
+// each heading wears its category's colour; `short` — the title in the simple form
+export const HEADS = {
+  field: { icon: '🗺️', title: 'Поле', zone: 'field' },
+  entities: { icon: '👾', title: 'Сутності', zone: 'entities' },
+  rules: { icon: '⚡', title: 'Правила', zone: 'game-logic' },
+  levels: { icon: '🪜', title: 'Рівні', zone: 'levels' },
+  windows: { icon: '🪟', title: 'Вікна й переходи', short: 'Вікна', zone: 'interface' },
+  ...Object.fromEntries(ZONES.map((z) => [z.id, { icon: z.icon, title: z.title, zone: z.zones[0] }])),
+}
 export const foldKey = (id) => `ed:${id}`
 
 const OF_PART = { entity: 'entities', window: 'windows', menu: 'windows', level: 'levels', field: 'field' }

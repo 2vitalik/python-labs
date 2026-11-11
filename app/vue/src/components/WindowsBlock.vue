@@ -7,7 +7,7 @@ import StableColumns from './StableColumns.vue'
 import WindowCard from './WindowCard.vue'
 import WindowForm from './WindowForm.vue'
 
-// the body of «Вікна й меню»: the form of a new window on top, the window cards in stable columns, the map of transitions.
+// the body of «Вікна й переходи»: the form of a new window on top, the window cards in stable columns, the map of transitions.
 // add(prefill?) opens the form; prefill = { task } — the window type already chosen (the top «＋ Додати» bar)
 const ed = useEd()
 const adding = ref(null)  // { n, prefill } while the form is open; n remounts it when add() comes again
@@ -26,7 +26,7 @@ defineExpose({ add })
     </div>
     <p v-if="!ed.windows.length" class="small text-secondary">
       Вікна — це екрани гри: ігровий екран, головне меню, пауза, налаштування, кінець гри…<br>
-      У кожного — тип, скриншот{{ ed.simple ? ' й опис' : ', елементи на ньому і пункти меню' }}.
+      У кожного — тип, скриншот{{ ed.simple ? ' й опис' : ', елементи на ньому, переходи до інших вікон і дії' }}.
     </p>
     <StableColumns v-else v-slot="{ item }" :items="ed.windows">
       <WindowCard :part="item" />

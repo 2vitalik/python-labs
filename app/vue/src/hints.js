@@ -1,3 +1,4 @@
+import { answersOf, isHidden } from './advice.js'
 import { kindOf, missingParams, NEEDS_SCREEN, PAIRS } from './catalog.js'
 import { isDraft } from './myGame.js'
 import { mentions } from './rules.js'
@@ -9,7 +10,7 @@ const misplaced = (c, task, parts) => {
   if (c.auto || !c.part) return kind === 'rule' && !c.rule ? false : kind !== 'rule' && !!c.rule
   return (HOME[kind] || 'none') !== parts.find((p) => p.id === c.part)?.kind
 }
-const WAITS = { mechanic: 'Сутності', element: 'Вікна', rule: 'Правила' }  // the section whose strip a claim without a place waits in
+const WAITS = { mechanic: 'Сутності', element: 'Вікна й переходи', rule: 'Правила' }  // the section whose strip a claim without a place waits in
 
 // what the short form still lacks (T270 §12): entities and windows only
 function simpleHints({ game, parts }) {
@@ -24,20 +25,21 @@ function simpleHints({ game, parts }) {
 }
 
 // a function of the game claimed with nothing on a window to work it: «є гучність — а де слайдер?» (the other way round
-// from WindowCard's pairs). Only the functions that cannot live without their window or element (NEEDS_SCREEN): a pause
-// or records do without one. Names the window type or the element, the ones that are in the catalog
-function reversePair({ claims, wins, info }) {
+// from PairAdvice). Only the functions that cannot live without their window or element (NEEDS_SCREEN): a pause
+// or records do without one. Names the window types and elements that are in the catalog; an advice — it can be hidden (T278 §11)
+function reversePair({ game, claims, wins, info }) {
   const has = (slug) => claims.some((c) => c.task === slug) || wins.some((w) => w.task === slug)
-  for (const c of claims) {
-    const keys = NEEDS_SCREEN.includes(c.task) ? Object.keys(PAIRS).filter((k) => PAIRS[k] === c.task) : []
-    if (!keys.length || keys.some(has)) continue
+  for (const fn of new Set(claims.map((c) => c.task))) {
+    const keys = NEEDS_SCREEN.includes(fn) ? Object.keys(PAIRS).filter((k) => answersOf(k).includes(fn)) : []
+    const key = `need:${fn}`
+    if (!keys.length || keys.some(has) || isHidden(game.id, key)) continue
     const want = keys.filter((k) => info(k)).map((k) => `${kindOf(info(k)) === 'window' ? 'вікно' : 'елемент'} «${info(k).title}»`)
-    if (want.length) return { to: 'windows', text: `Є «${info(c.task)?.title || c.task}» — додай і ${want.join(' або ')} у секції «Вікна».` }
+    if (want.length) return { to: 'windows', key, advice: true, text: `Є «${info(fn)?.title || fn}». Може, у грі є й ${want.join(' або ')}? Якщо так — додай у секції «Вікна й переходи».` }
   }
 }
 
 // what the description still lacks — gentle, at most a handful, the most useful first, each naming the place and the button
-// `shots: false` — screenshots cannot be added here (the sample's sandbox)
+// `shots: false` — the sample's sandbox: no screenshots to add there, no head form to write the description in
 export function hints({ game, parts, rules, claims, info, base, simple, shots = true }) {
   if (simple) return simpleHints({ game, parts }).slice(0, 4)
   const out = []
@@ -63,12 +65,12 @@ export function hints({ game, parts, rules, claims, info, base, simple, shots = 
   if (ents.length && !effects.has('lose') && !puzzle) out.push({ to: 'rules', text: 'Як програти? «＋ правило» з ефектом «поразка».' })
   if (!wins.some((w) => w.task === 'game-screen')) out.push({ to: 'windows', text: '«＋ вікно» з типом «Ігровий екран» і скриншотом гри.' })
   if (ents.length && !parts.some((p) => p.kind === 'level')) out.push({ to: 'levels', text: 'Опиши рівні: «＋ рівень» — хоч один: звідки береться, розмір, скриншот.' })
-  const pair = reversePair({ claims, wins, info })
+  const pair = reversePair({ game, claims, wins, info })
   if (pair) out.push(pair)
   const bare = shots && wins.find((w) => !w.screenshots.length)
   if (bare) out.push({ to: `p-${bare.id}`, text: `Скриншот для вікна «${bare.title}» — рамка з плюсом на його картці.` })
   const star = claims.find((c) => info(c.task)?.tags?.includes('algo') && !c.link)
   if (star) out.push({ to: `c-${star.id}`, text: `⭐ «${info(star.task).title}» — додай посилання на код: алгоритмічні картки перевіряються по ньому.` })
-  if (!game.description) out.push({ to: 'about', text: 'Кілька речень опису вгорі: що за гра і чим відрізняється від основи.' })
+  if (shots && !game.description) out.push({ to: 'about', text: 'Кілька речень опису вгорі: що за гра і чим відрізняється від основи.' })
   return out.slice(0, 5)
 }

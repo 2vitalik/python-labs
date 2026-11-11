@@ -1,9 +1,10 @@
 <script setup>
 import { statOf } from '../catalog.js'
 import JudgeMark from './JudgeMark.vue'
+import PartLabel from './PartLabel.vue'
 
-// an entity's stats as a small table — name on the left, value and unit on the right, the teacher's mark on the stat's
-// claim — and its states, a pill each; `auto` — the part's auto-claims
+// an entity's stats as a small table under «Параметри» — name on the left, value and unit on the right, the teacher's mark
+// on the stat's claim — and its states, a pill each after «Стани»; `auto` — the part's auto-claims
 const props = defineProps({ part: Object, auto: Array })
 const claimOf = (s) => {
   const slug = statOf(s.key)?.slug
@@ -13,6 +14,7 @@ const claimOf = (s) => {
 
 <template>
   <div v-if="part.stats?.length || part.states?.length" class="vstack gap-1">
+    <PartLabel v-if="part.stats?.length" icon="🔢" zone="entities">Параметри</PartLabel>
     <div v-if="part.stats?.length" class="stats">
       <div v-for="s in part.stats" :key="s.key" class="stat" :title="statOf(s.key)?.desc || 'свій параметр'">
         <span class="name">{{ statOf(s.key)?.icon || '•' }} {{ s.label || s.key }}</span>
@@ -20,7 +22,7 @@ const claimOf = (s) => {
       </div>
     </div>
     <div v-if="part.states?.length" class="d-flex flex-wrap align-items-center gap-1">
-      <span class="lbl">стани</span>
+      <PartLabel icon="◐" zone="entities" class="me-1">Стани</PartLabel>
       <span v-for="st in part.states" :key="st" class="state">{{ st }}</span>
     </div>
   </div>
@@ -32,6 +34,5 @@ const claimOf = (s) => {
 .name { min-width: 0; overflow-wrap: anywhere; color: var(--bs-secondary-color); }
 .stat b { font-weight: 600; font-variant-numeric: tabular-nums; }
 .unit { margin-left: .25em; color: var(--bs-secondary-color); }
-.lbl { font-size: .72rem; color: var(--bs-secondary-color); }
 .state { padding: 0 .45rem; border: 1px solid var(--bs-info-border-subtle); border-radius: 1rem; background: color-mix(in srgb, var(--bs-info) 14%, var(--bs-body-bg)); font-size: .76rem; }
 </style>

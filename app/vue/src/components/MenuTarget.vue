@@ -6,8 +6,8 @@ import { useEd } from '../ed.js'
 import { cardItems } from '../items.js'
 import Picker from './Picker.vue'
 
-// «веде до» of a menu item (T270 §10.1): nowhere, another window of the game, or a card — an action that opens no window.
-// v-model:window (a window part id) and v-model:task (a card slug), one of them or none; `host` — the menu's own window
+// where a transition leads (T270 §10.1, T278 §4): nowhere, another window of the game, or a card — an action that opens no
+// window. v-model:window (a window part id) and v-model:task (a card slug), one of them or none; `host` — the item's own window
 const props = defineProps({ host: String })
 const win = defineModel('window', { type: String, default: '' })
 const task = defineModel('task', { type: String, default: '' })
@@ -15,7 +15,7 @@ const ed = useEd()
 const open = ref(false)
 const ACTIONS = ['element', 'game', 'level', 'rule', 'mechanic', 'field']
 const items = computed(() => [
-  { key: '', title: 'нікуди — просто пункт', icon: '·' },
+  { key: '', title: 'нікуди — просто рядок', icon: '·' },
   ...ed.windows.filter((w) => w.id !== props.host)
     .map((w) => ({ key: `w:${w.id}`, title: w.title, icon: '🪟', desc: w.description, group: 'Вікна', taken: w.id === win.value })),
   ...cardItems(ACTIONS).map((it) => ({ ...it, key: `t:${it.key}`, group: 'Дія — картка каталогу', taken: it.key === task.value })),
@@ -32,13 +32,13 @@ function pick(it) {
 <template>
   <Pop v-model="open" width="24rem" class="target">
     <template #trigger="{ toggle }">
-      <button type="button" class="form-select form-select-sm text-start text-truncate" title="Куди веде пункт" @click="toggle">
+      <button type="button" class="form-select form-select-sm text-start text-truncate" title="Куди веде або що робить" @click="toggle">
         <template v-if="win">🪟 {{ winTitle }}</template>
         <template v-else-if="task">⚙ {{ ed.info(task)?.title || task }}</template>
         <span v-else class="text-secondary">нікуди</span>
       </button>
     </template>
-    <Picker inline autofocus :items placeholder="вікно або картка…" @pick="pick" />
+    <Picker inline autofocus :items placeholder="вікно або картка-дія…" @pick="pick" />
   </Pop>
 </template>
 

@@ -61,7 +61,7 @@ async function save() {
     <span class="kw when">КОЛИ</span>
     <RuleLine :item="form.when" dic="triggers" :sides="['*']" placeholder="подія…" />
     <template v-for="(c, i) in form.cond" :key="`c${i}`">
-      <span class="kw if">{{ i ? 'і' : 'ЯКЩО' }}</span>
+      <span class="kw if">{{ i ? 'ТА' : 'ЯКЩО' }}</span>
       <RuleLine :item="c" dic="conditions" :sides :when="form.when" placeholder="умова…" negatable removable @remove="form.cond.splice(i, 1)" />
     </template>
     <span class="kw if">{{ form.cond.length ? '' : 'ЯКЩО' }}</span>

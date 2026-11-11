@@ -3,6 +3,7 @@ import { request, upload } from '@core/http.js'
 // the site's own calls; the platform's are in @core/api.js
 export const getStudentGame = (nick) => request(`/api/students/${nick}/game`)
 export const judgeClaim = (nick, id, data) => request(`/api/students/${nick}/claims/${id}`, 'PUT', data)
+export const getGameHistory = (nick, params) => request(`/api/students/${nick}/game/history?${new URLSearchParams(params)}`)  // {limit, before}
 export const getZones = () => request('/api/zones')
 export const getVocab = () => request('/api/vocab')
 export const getTemplates = () => request('/api/templates')

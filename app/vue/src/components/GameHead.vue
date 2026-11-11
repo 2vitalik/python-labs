@@ -32,10 +32,12 @@ const checkList = computed(() => [['основа', props.game], ['назва', p
         <span v-if="student.group" class="text-secondary">· {{ student.group }}</span>
       </div>
     </div>
-    <slot />
+    <div class="side"><slot /></div>
   </div>
 </template>
 
 <style scoped>
 .icon { width: 56px; height: 56px; font-size: 28px; }
+/* the links at the right edge stand one under another: two of them side by side push a phone's page wider than the screen */
+.side { display: flex; flex-direction: column; align-items: flex-end; gap: .15rem; margin-left: auto; }
 </style>

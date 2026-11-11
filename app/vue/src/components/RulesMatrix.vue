@@ -25,7 +25,7 @@ const cells = computed(() => {
     const key = `${r.when.a} ${r.when.b}`
     m[key] = [...(m[key] || []), {
       id: r.id, trigger: r.when.kind === 'contact' ? '' : specOf('triggers', r.when.kind)?.label,
-      cond: c.cond.map(plain).join(' і '), then: c.then.map(plain),
+      cond: c.cond.map(plain).join(' та '), then: c.then.map(plain),
     }]
   }
   return m

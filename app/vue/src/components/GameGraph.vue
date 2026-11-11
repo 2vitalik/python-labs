@@ -9,18 +9,21 @@ import { jump } from '../jump.js'
 import GraphOutline from './GraphOutline.vue'
 import GraphPanel from './GraphPanel.vue'
 
-// the map of windows (T270 §10.4, T274 §9): a tree from the root, «вшир» — left to right, a menu item's label over the
-// node it leads to; «вглиб» — top down in rows (GraphOutline). The other transitions are «↩ target» lines under a node
-// (the mouse over one lights its target, a click goes to its card); a node opens its panel
+// the map of windows (T270 §10.4, T274 §9, T278 §8): a tree from the root, «вшир» — left to right, «→ menu item» over the
+// node it leads to, darker: it is about the arrow coming in; «вглиб» — top down in rows (GraphOutline). The other
+// transitions are grey «↩ target» lines under a node (the hint names the item, the mouse over one lights its target,
+// a click goes to its card); a node opens its panel
 const ed = useEd()
 const g = computed(() => layout(ed.windows, ed.menus, ed.rules))
+const labelled = computed(() => g.value.edges.filter((e) => e.label))
 const still = computed(() => !g.value.edges.length && !g.value.nodes.some((n) => n.extras.length))
 const root = ref(), box = ref()
 const mode = ref(load('graph-mode'))  // 'wide' | 'deep'; not chosen yet — by the width, once it is known
 const lit = ref('')  // the node an «↩» line under the mouse points at
 const at = ref(null)  // the open panel: { id, left, top } over the map, so it is placed outside the scrolling box
 const win = computed(() => at.value && ed.windows.find((w) => w.id === at.value.id))
-const titleOf = (id) => ed.windows.find((w) => w.id === id)?.title
+const titleOf = (id) => ed.windows.find((w) => w.id === id)?.title || '…'
+const hint = (x) => (x.label ? `${x.label} → ${titleOf(x.id)}` : titleOf(x.id))
 
 onMounted(() => { mode.value ||= (root.value.clientWidth || window.innerWidth) < 700 ? 'deep' : 'wide' })
 function choose(m) {
@@ -50,7 +53,7 @@ const pick = (id, el) => togglePanel(id, el.offsetLeft, el.offsetTop + el.offset
           </marker>
         </defs>
         <path v-for="e in g.edges" :key="e.to" :d="e.d" class="edge" marker-end="url(#gg-arrow)" />
-        <text v-for="e in g.edges" :key="`l${e.to}`" :x="e.lx" :y="e.ly" class="lbl"><title>{{ e.full }}</title>{{ e.label }}</text>
+        <text v-for="e in labelled" :key="`l${e.to}`" :x="e.lx" :y="e.ly" class="lbl"><title>{{ e.full }}</title><tspan class="lbl-arr">→</tspan> {{ e.label }}</text>
         <template v-for="n in g.nodes" :key="n.id">
           <g class="gg-node" :class="{ lit: lit === n.id || at?.id === n.id }" role="button" @click="toggle(n)">
             <title>{{ titleOf(n.id) }}</title>
@@ -59,20 +62,23 @@ const pick = (id, el) => togglePanel(id, el.offsetLeft, el.offsetTop + el.offset
             <text v-if="n.shot" :x="n.x + n.w - 7" :y="n.y + BOX_H / 2" dominant-baseline="central" text-anchor="end" class="cam">📷</text>
           </g>
           <text v-for="(x, i) in n.extras" :key="x.id" :x="n.x + 4" :y="n.y + BOX_H + 11 + i * EXTRA_H" class="extra" role="button"
-                @mouseenter="lit = x.id" @mouseleave="lit = ''" @click="jump(`p-${x.id}`)">↩&#xFE0E; {{ x.title }}</text>
+                @mouseenter="lit = x.id" @mouseleave="lit = ''" @click="jump(`p-${x.id}`)"><title>{{ hint(x) }}</title>↩&#xFE0E; {{ x.title }}</text>
         </template>
       </svg>
     </div>
     <GraphPanel v-if="win" :win :style="{ left: `max(0px, min(${at.left}px, 100% - 18rem))`, top: `${at.top}px` }" @close="at = null" />
-    <div v-if="still" class="small text-secondary">Стрілки зʼявляться, коли пункти меню вестимуть до інших вікон</div>
+    <div v-if="still" class="small text-secondary">Стрілки зʼявляться, коли переходи вестимуть до інших вікон</div>
   </div>
 </template>
 
 <style scoped>
-.graph { position: relative; --gg-line: color-mix(in srgb, var(--bs-body-color) 35%, var(--bs-body-bg)); }
+/* both views: the lines; a label over a node — darker than the grey «↩» under it; the item after an «↩» in «вглиб» */
+.graph { position: relative; --gg-line: color-mix(in srgb, var(--bs-body-color) 35%, var(--bs-body-bg));
+  --gg-lbl: color-mix(in srgb, var(--bs-body-color) 85%, var(--bs-body-bg)); --gg-pale: color-mix(in srgb, var(--bs-body-color) 50%, var(--bs-body-bg)); }
 .edge { fill: none; stroke: var(--gg-line); stroke-width: 1.3; }
 .tip { fill: var(--gg-line); }
-.lbl { font-size: .7rem; fill: var(--bs-secondary-color); }
+.lbl { font-size: .7rem; font-weight: 500; fill: var(--gg-lbl); }
+.lbl-arr { fill: var(--gg-line); }
 .gg-node { cursor: pointer; }
 .gg-node rect { fill: var(--bs-tertiary-bg); stroke: var(--bs-border-color); }
 .gg-node:hover rect { stroke: var(--bs-secondary-color); }

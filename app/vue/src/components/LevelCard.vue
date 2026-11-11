@@ -9,6 +9,7 @@ import { useEd } from '../ed.js'
 import CardPicker from './CardPicker.vue'
 import ClaimRow from './ClaimRow.vue'
 import LevelForm from './LevelForm.vue'
+import PartLabel from './PartLabel.vue'
 import PropsList from './PropsList.vue'
 import ShotStrip from './ShotStrip.vue'
 
@@ -51,15 +52,19 @@ async function remove() {
           </span>
         </div>
         <PropsList :props="values" :specs />
-        <div v-if="part.stats?.length" class="d-flex flex-wrap gap-1 small">
+        <div v-if="part.stats?.length" class="d-flex flex-wrap align-items-center gap-1 small">
+          <PartLabel icon="🔢" zone="levels" class="me-1">Параметри</PartLabel>
           <span v-for="s in part.stats" :key="s.key" class="badge rounded-pill fw-normal stat">
             {{ s.label || s.key }} {{ s.value }} <span v-if="s.unit" class="opacity-75">{{ s.unit }}</span>
           </span>
         </div>
         <div v-if="part.description" class="small">{{ part.description }}</div>
         <ShotStrip v-if="ed.editable || part.screenshots?.length" :part />
-        <ClaimRow v-for="c in claims" :key="c.id" :claim="c" />
-        <div v-if="ed.editable"><CardPicker :kinds="['level']" :anchor="{ part: part.id }" label="картка" /></div>
+        <div v-if="claims.length || ed.editable" class="vstack gap-1">
+          <PartLabel icon="🃏" zone="levels">Картки рівня</PartLabel>
+          <ClaimRow v-for="c in claims" :key="c.id" :claim="c" />
+          <div v-if="ed.editable"><CardPicker :kinds="['level']" :anchor="{ part: part.id }" label="картка" /></div>
+        </div>
       </template>
     </div>
   </div>

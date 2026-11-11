@@ -33,18 +33,22 @@ export const COIN_NAMES = { wood: 'деревʼяна', tin: 'оловʼяна',
 export const COIN_ORDER = ['crown', 'gold', 'silver', 'bronze', 'tin', 'wood']
 export const STATUSES = { draft: 'чернетка', active: 'активне', archived: 'архів' }
 export const CLAIM_STATUSES = { claimed: 'заявлено', accepted: 'зараховано', returned: 'повернуто' }
-// what is on a window → the function of the game it implies: «є слайдер гучності — заяви й саму гучність» (hints on a window's card).
-// Keys are elements and window types alike; the pairs come from the catalog review (T271)
+// what is on a window → the function of the game it hints at: «є слайдер гучності — може, є й сама гучність?» (advice on
+// a window's card, T278 §11). A list — the alternatives: any of them claimed, no advice (a lobby also stands before
+// hot-seat; a shop sells in the round too). Keys are elements and window types alike; the pairs come from the catalog review (T271)
 export const PAIRS = {
   'volume-control': 'sound-volume', 'music-toggle': 'background-music', 'field-size-picker': 'difficulty-levels',
   'conflict-highlight': 'markup-validity', 'telegraph-marker': 'telegraphed-intents', 'face-button': 'restart-level',
-  'pause-menu': 'game-pause', 'shop-window': 'shop-between-levels', 'editor-window': 'in-game-editor', 'leaderboard': 'score-records',
-  'stats-window': 'profile-stats', 'mode-select': 'difficulty-levels', 'replay-window': 'replay', 'lobby-window': 'online-multiplayer',
-  'pass-device': 'hot-seat', 'inventory-window': 'inventory', 'save-load-window': 'save-multi-slot', 'name-entry': 'score-records',
-  'shop-preview': 'shop-between-levels', 'legal-move-highlight': 'piece-move-patterns', 'wave-progress': 'enemy-waves',
+  'pause-menu': 'game-pause', 'editor-window': 'in-game-editor', 'leaderboard': 'score-records',
+  'stats-window': 'profile-stats', 'mode-select': 'difficulty-levels', 'replay-window': 'replay',
+  'lobby-window': ['online-multiplayer', 'hot-seat', 'local-two-players'],
+  'shop-window': ['shop-between-levels', 'round-currency'], 'shop-preview': ['shop-between-levels', 'round-currency'],
+  'save-load-window': ['save-multi-slot', 'save-single-slot'],
+  'pass-device': 'hot-seat', 'inventory-window': 'inventory', 'name-entry': 'score-records',
+  'legal-move-highlight': 'piece-move-patterns', 'wave-progress': 'enemy-waves',
   'achievements-window': 'achievements', 'calendar-window': 'daily-puzzle',
 }
-// the functions that are nothing without their window or element — the hint «є функція — додай і вікно» goes only for them
+// the functions that are nothing without their window or element — the advice «є функція — може, є й вікно?» goes only for them
 export const NEEDS_SCREEN = ['shop-between-levels', 'in-game-editor', 'save-multi-slot', 'markup-validity', 'telegraphed-intents',
   'sound-volume', 'achievements']
 

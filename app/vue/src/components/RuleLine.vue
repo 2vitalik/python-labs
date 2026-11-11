@@ -10,10 +10,12 @@ import WordPick from './WordPick.vue'
 const props = defineProps({ item: Object, dic: String, sides: Array, when: Object, placeholder: String, negatable: Boolean, removable: Boolean })
 defineEmits(['remove'])
 const spec = computed(() => specOf(props.dic, props.item.kind))
-// another word starts clean: the old one's arguments mean nothing to it
+// another word starts clean: the old one's arguments mean nothing to it. Its «хто» starts as side А of the trigger — the one
+// a condition or an effect is most often about (T278 §7)
 function setWord(kind) {
   for (const k of Object.keys(props.item)) if (k !== 'not') delete props.item[k]
   props.item.kind = kind
+  if (props.sides?.includes('@a') && specOf(props.dic, kind)?.args.some((a) => a.name === 'a' && a.type === 'entity')) props.item.a = '@a'
 }
 </script>
 

@@ -33,12 +33,19 @@ function fieldOpt(task) {
   return { now: spec.type === 'choice' && !list && was && was !== value ? name(was) : '', name: name(value), write }
 }
 
-// what the plus does: `ask` — a panel asks first (params · stat · replace), else `run` writes at once
+// a window or an entity of the card's type, named in the plus's panel (T278 §1)
+export const addPart = (task, { icon, title, description }) => (kindOf(task) === 'window'
+  ? postPart({ kind: 'window', task: task.slug, title, description })
+  : postPart({ kind: 'entity', role: task.opt, icon, title, description }))
+
+// a game has many entities of one type (enemies): the plus stays beside the tick
+export const addsMore = (task) => kindOf(task) === 'role'
+
+// what the plus does: `ask` — a panel asks first (params · stat · replace · part), else `run` writes at once
 export function plusOf(task) {
   const kind = kindOf(task)
   if (kind === 'stat') return { ask: 'stat' }
-  if (kind === 'window') return { run: () => postPart({ kind: 'window', task: task.slug, title: task.title }) }
-  if (kind === 'role') return { run: () => postPart({ kind: 'entity', role: task.opt, title: task.title }) }
+  if (kind === 'window' || kind === 'role') return { ask: 'part' }
   if (kind === 'fieldopt') {
     const opt = fieldOpt(task)
     return { ask: opt.now ? 'replace' : '', run: opt.write, opt }

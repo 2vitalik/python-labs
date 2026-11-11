@@ -11,8 +11,9 @@ import RoleField from './RoleField.vue'
 import StatsEditor from './StatsEditor.vue'
 
 // an entity's form, for a new one and in place of its card (T270 §7): the name first (own emoji + title), then the type and
-// a line about it; the full form adds stats and states. `prefill` = { role?, title? } — a new one's start; emits done(saved part)
-const props = defineProps({ part: Object, prefill: Object })
+// a line about it; the full form adds stats and states. `prefill` = { role?, title? } — a new one's start; emits done(saved part);
+// `focus: 'description'` — opened by the card's «＋ опис», the cursor waits there
+const props = defineProps({ part: Object, prefill: Object, focus: String })
 const emit = defineEmits(['done', 'cancel'])
 const ed = useEd()
 const p = props.part
@@ -23,8 +24,9 @@ const form = reactive({
 })
 const error = ref('')
 const title = ref()
+const desc = ref()
 const STATES = ['звичайний', 'посилений', 'переляканий', 'патрулює', 'переслідує', 'спить', 'відкрито', 'закрито']
-onMounted(() => !p && title.value?.focus())
+onMounted(() => (props.focus === 'description' ? desc.value?.focus() : !p && title.value?.focus()))
 
 async function save() {
   error.value = form.role ? '' : 'Обери тип сутності'
@@ -49,7 +51,7 @@ async function save() {
       <span class="label">Тип</span>
       <RoleField v-model="form.role" class="flex-grow-1" />
     </div>
-    <input v-model="form.description" class="form-control form-control-sm" placeholder="Що це і як поводиться — коротко">
+    <input ref="desc" v-model="form.description" class="form-control form-control-sm" placeholder="Що це і як поводиться — коротко">
     <template v-if="!ed.simple">
       <div class="label">Параметри</div>
       <StatsEditor v-model="form.stats" />

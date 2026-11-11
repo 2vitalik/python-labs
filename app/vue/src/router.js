@@ -26,6 +26,7 @@ import CardHistoryPage from './pages/CardHistoryPage.vue'
 import Colors2Page from './pages/Colors2Page.vue'
 import ColorsPage from './pages/ColorsPage.vue'
 import GameEditPage from './pages/GameEditPage.vue'
+import GameHistoryPage from './pages/GameHistoryPage.vue'
 import GamePage from './pages/GamePage.vue'
 import GamesPage from './pages/GamesPage.vue'
 import HomePage from './pages/HomePage.vue'
@@ -48,6 +49,7 @@ const router = makeRouter([
   { path: '/my/profile', component: ProfilePage, meta: { title: 'Профіль', access: 'active' } },
   { path: '/profile', redirect: '/my/profile' },  // old links in bot messages and the guide
   { path: '/my/game', component: MyGamePage, meta: { title: 'Моя гра', access: 'active' } },  // a student picks their game here; its insides stay the admin's for now (T216)
+  { path: '/my/game/history', component: GameHistoryPage, meta: { title: 'Історія гри', access: 'active' } },  // who changed what (T278 §12)
   { path: '/my/week', component: MyWeekPage, meta: { title: 'Мій тиждень', access: 'active' } },
   // meetings with their transcripts: signed-in students read what is published (T218)
   { path: '/lessons', component: LessonsPage, meta: { title: 'Пари', access: 'active', filters: true } },
@@ -60,6 +62,7 @@ const router = makeRouter([
   // a student sees the slice of these two the API gives them: «Ігри студентів» (site.js students.asStudent)
   { path: '/students', component: StudentsPage, meta: { title: 'Студенти', access: 'active' } },
   { path: '/students/:nick', component: StudentGamePage, meta: { title: 'Студенти', access: 'active' } },
+  { path: '/students/:nick/history', component: GameHistoryPage, meta: { title: 'Історія гри', access: 'active' } },  // the API lets in the owner and the teacher
   { path: '/students/:nick/edit', component: StudentEditPage, meta: { title: 'Студенти', access: 'admin' } },
   { path: '/deadlines', component: DeadlinesPage, meta: { title: 'Дедлайни', access: 'admin', wide: true, filters: true } },  // students × labs: who met which deadline (T235)
   { path: '/table', component: TablePage, meta: { title: 'Таблиця', access: 'admin', wide: true, filters: true } },  // students × anything, in views (T240)
