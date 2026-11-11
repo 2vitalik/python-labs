@@ -13,7 +13,7 @@ from models.task import Task
 from models.vocab import sentence
 from zones import ZONES
 
-PART = {"field": "поле", "window": "вікно", "menu": "меню", "entity": "сутність", "level": "рівень"}
+PART = {"field": "поле", "window": "вікно", "menu": "переходи", "entity": "сутність", "level": "рівень"}
 CARD = {"title": "🏷 Назва", "base_game": "🕹 Основа", "base_custom": "🕹 Основа (своя)", "description": "📄 Опис", "phases": "🔁 Фази"}
 CLAIM = {"note": "📝 Нотатка", "link": "🔗 Лінк", "params": "⚙️ Параметри", "part": "🧩 Обʼєкт"}
 STATUS = {"claimed": "заявлено", "accepted": "✅ зараховано", "returned": "↩️ повернуто"}

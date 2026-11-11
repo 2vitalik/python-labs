@@ -109,6 +109,25 @@ CONDITIONS = {
     "custom": w("інше (словами)", "{text}", [("text", T, 1)], "інше"),
 }
 
+# a condition's negation (T278 §7): `!…!` marks the word that says «not», `{op:!}` turns the comparison around.
+# A word without one (free text) puts «НЕ» before the whole clause
+NEG = {
+    "free": "{cell} !не! вільна", "occupied": "у {cell} !нема! {what}", "adjacent_count": "сусідів {what} {op:!} {n}",
+    "count": "{what} на полі {op:!} {n}", "path_exists": "!нема! шляху від {a} до {b}", "connected": "!не! всі {what} звʼязні",
+    "in_check": "{a} !не! під ударом", "fits": "{a} !не! вміщується у {cell}", "state": "{a} !не! у стані «{s}»",
+    "has": "у {a} !нема! {item}", "counter": "{name} {op:!} {n}", "same": "{a} і {b} !не! однакові за {prop}",
+    "facing": "{a} !не! дивиться {dir}", "moving": "{a} !не! рухається {dir}", "in_range": "{b} !не! ближче {n} до {a}",
+    "line_of_sight": "{a} !не! бачить {b}", "turn_of": "ходить !не! {a}", "legal": "хід !не! легальний[ ({text})]",
+    "level": "рівень {op:!} {n}", "timer": "час {op:!} {n}", "mode": "режим !не! «{text}»", "first_time": "!не! вперше",
+    "chain": "каскад !<! {n}", "prob": "шанс {p} % !не! випав",
+    "unique": "у {where} значення !повторюються!", "sum": "сума у {where} !≠! {n}", "no_adjacent": "{what} !сусідять!",
+    "no_2x2": "!є! 2×2 з {what}", "region_size": "область з {what} має !не! {n} клітин", "single_loop": "!не! одна петля",
+    "cover_all": "!не! всі клітини покриті {what}", "run_lengths": "блоки у {where} !не! за підказкою",
+}
+for _k, _neg in NEG.items():
+    CONDITIONS[_k]["neg"] = _neg
+OP_NOT = {"==": "!=", "!=": "==", ">=": "<", "<=": ">", ">": "<=", "<": ">="}
+
 EFFECTS = {
     # appear / disappear
     "disappear": w("зникає", "зникає {a}", [("a", E, 1)], "поява і зникнення"),
@@ -216,41 +235,64 @@ SIDES = {"*": "будь-хто", "@a": "А", "@b": "Б", "@both": "обидва"
 def vocab() -> dict:
     """The forms' words that live in code — the same source as the validation; the catalog's part is routes/vocab.py."""
     return {"triggers": TRIGGERS, "conditions": CONDITIONS, "effects": EFFECTS, "options": OPTIONS, "sides": SIDES,
-            "args": ARGS, "level": LEVEL}
+            "args": ARGS, "level": LEVEL, "op_not": OP_NOT}
 
 
-def render(spec: dict, args: dict, name) -> str:
-    """Fill the template: entities through name(id), choices through their labels, `[…]` dropped when empty."""
-    def value(a):
+def render(spec: dict, args: dict, name, neg=False, who=None) -> str:
+    """Fill the template (`neg` — the negation's): entities through who(arg, value), windows through name(id), choices
+    through their labels, `[…]` dropped when empty."""
+    who = who or (lambda k, v: SIDES.get(v) or name(v))
+
+    def value(a, flip=False):
         v = args.get(a["name"])
         if v is None or v == "":
             return ""
         if a["type"] == "entity":
-            return SIDES.get(v) or name(v)
+            return who(a["name"], v)
         if a["type"] == "window":
             return name(v)
         if a["type"].startswith("choice:"):
+            v = OP_NOT.get(str(v), v) if flip else v
             return OPTIONS[a["type"][7:]].get(str(v), str(v))
         return str(v)
 
     values = {a["name"]: value(a) for a in spec["args"]}
-    out = spec["tpl"]
+    out = re.sub(r"!([^!{}]+)!", r"\1", spec["neg"] if neg else spec["tpl"])
     for seg in re.findall(r"\[[^\]]*\]", out):
         keys = re.findall(r"\{(\w+)", seg)
         out = out.replace(seg, "" if any(not values.get(k) for k in keys) else seg[1:-1])
-    for k, v in values.items():
-        out = out.replace("{%s:+}" % k, (("+" + v) if v and not v.startswith("-") else v)).replace("{%s}" % k, v)
+    for a in spec["args"]:
+        k, v = a["name"], values[a["name"]]
+        out = out.replace(f"{{{k}:+}}", ("+" + v) if v and not v.startswith("-") else v)
+        out = out.replace(f"{{{k}:!}}", value(a, True)).replace(f"{{{k}}}", v)
     return out.strip()
 
 
 def sentence(rule, name) -> str:
-    """КОЛИ … → ЯКЩО … → ТО … the way the site shows it (the bot's alerts use this too)."""
-    def part(dic, item):
-        spec = dic.get(item.get("kind"))
-        text = render(spec, item, name) if spec else item.get("kind", "?")
-        return ("не " if item.get("not") else "") + text
+    """КОЛИ … → ЯКЩО … та … → ТО … the way the site shows it (the bot's alerts use this too). A side of the trigger
+    (@a / @b) reads as its entity; its letter stays where the entity alone is ambiguous: «будь-хто» or one entity on both sides."""
+    when, cond = rule.when, rule.cond or []
+    twin = bool(when.get("a")) and when.get("a") == when.get("b")
+    used = {v for it in [*cond, *rule.then] for v in it.values() if v in ("@a", "@b")}
+    marked = {s for s in "ab" if f"@{s}" in used and (when.get(s) == "*" or twin)}
 
-    out = "КОЛИ " + part(TRIGGERS, rule.when)
-    if rule.cond:
-        out += " → ЯКЩО " + " і ".join(part(CONDITIONS, c) for c in rule.cond)
-    return out + " → ТО " + " · ".join(part(EFFECTS, e) for e in rule.then)
+    def own(k, v):  # the trigger's side, with the letter ЯКЩО / ТО call it by
+        text = SIDES.get(v) or name(v)
+        return f"{text} ({SIDES['@' + k]})" if k in marked else text
+
+    def side(k, v):
+        target = when.get(v[1:]) if v in ("@a", "@b") else None
+        if not target or target in SIDES:
+            return SIDES.get(v) or name(v)
+        return f"{name(target)} ({SIDES[v]})" if twin else name(target)
+
+    def part(dic, item, who):
+        spec = dic.get(item.get("kind"))
+        neg = bool(item.get("not") and spec and spec.get("neg"))
+        text = render(spec, item, name, neg, who) if spec else item.get("kind", "?")
+        return ("не " if item.get("not") and not neg else "") + text
+
+    out = "КОЛИ " + part(TRIGGERS, when, own)
+    if cond:
+        out += " → ЯКЩО " + " та ".join(part(CONDITIONS, c, side) for c in cond)
+    return out + " → ТО " + " · ".join(part(EFFECTS, e, side) for e in rule.then)

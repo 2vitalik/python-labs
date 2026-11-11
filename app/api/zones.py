@@ -9,15 +9,15 @@ AUTO_KINDS = {"window", "role", "stat", "fieldopt"}  # claimed by the form itsel
 
 M, R, G, F, L, E = "mechanic", "rule", "game", "fieldopt", "level", "element"
 ZONES = {
+    "field": {"title": "Поле", "icon": "🗺️", "color": "#00897b", "subzones": {
+        "grid": ("Сітка", "🔲", F), "view": ("Вид", "👁️", F), "time": ("Час", "⏳", F),
+        "control": ("Керування", "🎮", F), "physics": ("Фізика поля", "🧲", F),
+    }},
     "entities": {"title": "Сутності", "icon": "👾", "color": "#43a047", "subzones": {
         "roles": ("Типи сутностей", "🎭", "role"), "params": ("Параметри", "🔢", "stat"),
         "spawn": ("Поява", "✨", M), "move": ("Рух", "🏃", M), "legality": ("Легальність ходу", "🚦", M),
         "interact": ("Взаємодія", "🤝", M), "combat": ("Бій і снаряди", "💥", M),
         "state": ("Стани й ефекти", "❤️", M), "death": ("Зникнення і смерть", "💀", M),
-    }},
-    "field": {"title": "Поле", "icon": "🗺️", "color": "#00897b", "subzones": {
-        "grid": ("Сітка", "🔲", F), "view": ("Вид", "👁️", F), "time": ("Час", "⏳", F),
-        "control": ("Керування", "🎮", F), "physics": ("Фізика поля", "🧲", F),
     }},
     "game-logic": {"title": "Логіка", "icon": "🎲", "color": "#8e24aa", "subzones": {
         "win": ("Перемога", "🏆", R), "lose": ("Поразка", "🏳️", R), "score": ("Рахунок і час", "⏱️", G),

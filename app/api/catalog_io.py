@@ -31,9 +31,15 @@ def dump(doc, exclude=("id", "created_at")) -> dict:
     return {k: v for k, v in d.items() if not (v == "" or v == [] or v == {})}
 
 
+def reads_back(t) -> bool:
+    """Does the one-line form read back as the same card: a title with « — », [ ], a #word or a mark inside does not."""
+    d = parse_line(t.slug, render_line(t), t.zone, t.subzone, t.order)
+    same = ("title", "description", "games", "kind", "rule", "coin", "amount", "max_count", "status")
+    return all(d[k] == getattr(t, k) for k in same) and sorted(d["tags"]) == sorted(t.tags)
+
+
 def task_node(t) -> dict | str:  # dict fallback for multi-line descriptions, slot specs, icons, opts, rule blanks; aliases live in aliases.yaml
-    # also a title with « — » inside: in the one-line form that dash starts the description
-    if "\n" in t.description or " — " in t.title or t.slots or t.icon or t.opt or not plain(t.rule):
+    if "\n" in t.description or t.slots or t.icon or t.opt or not plain(t.rule) or not reads_back(t):
         return dump(t, exclude=("id", "created_at", "slug", "zone", "subzone", "order", "parent", "aliases"))
     return render_line(t)
 

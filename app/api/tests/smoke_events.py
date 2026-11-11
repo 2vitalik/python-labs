@@ -82,7 +82,7 @@ async def run():
                             {"kind": "custom", "text": "бум <b>"}]).insert()
     await game_alerts.rule(vasya, rule, 0)
     check("rule added → sentence with names, condition, effects, quoted text",
-          last() == f"🟢 Гра · {head}\n📜 КОЛИ «Гравець» × «Ворог» → ЯКЩО не А у стані «щит» → ТО Б отримує шкоду 3 · зʼявляється «Гравець» · бум &lt;b&gt;", last())
+          last() == f"🟢 Гра · {head}\n📜 КОЛИ «Гравець» × «Ворог» → ЯКЩО «Гравець» не у стані «щит» → ТО «Ворог» отримує шкоду 3 · зʼявляється «Гравець» · бум &lt;b&gt;", last())
     timer = await Rule(game=game.id, when={"kind": "timer", "every": 5}, then=[{"kind": "win"}]).insert()
     await game_alerts.rule(vasya, timer, 2)
     check("timer rule deleted", last().endswith("📜 КОЛИ кожні 5 тіків → ТО перемога 🏆 → ✖️"), last())
@@ -100,7 +100,7 @@ async def run():
     check("claim deleted, card gone → slug + ✖️", last() == f"🔴 Заявка · {head}\n🎯 gone-card → ✖️", last())
     await game_alerts.claim(vasya, await Claim(game=game.id, task="pause-menu", rule=str(rule.id)).insert(), 0)
     check("claim on a rule → the rule's sentence", last() == f"🟢 Заявка · {head}\n🎯 Меню паузи\n📜 КОЛИ «Гравець» × «Ворог» → ЯКЩО "
-          "не А у стані «щит» → ТО Б отримує шкоду 3 · зʼявляється «Гравець» · бум &lt;b&gt;", last())
+          "«Гравець» не у стані «щит» → ТО «Ворог» отримує шкоду 3 · зʼявляється «Гравець» · бум &lt;b&gt;", last())
     await game_alerts.part(vasya, await Part(game=game.id, kind="level", title="Печери").insert(), 0)
     check("level added → 🧩 рівень «…»", last() == f"🟢 Гра · {head}\n🧩 рівень «Печери»", last())
     await game_alerts.idea(vasya, Ref(author=vasya.email, kind="idea", title="Тип вікна «Мапа»", note="нема <такого>"))
