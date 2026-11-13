@@ -9,7 +9,7 @@ import { useEd } from '../ed.js'
 import CardPicker from './CardPicker.vue'
 import ClaimRow from './ClaimRow.vue'
 import FieldForm from './FieldForm.vue'
-import PartLabel from './PartLabel.vue'
+import PartBlock from './PartBlock.vue'
 import PropsList from './PropsList.vue'
 import ShotStrip from './ShotStrip.vue'
 
@@ -51,12 +51,13 @@ defineExpose({ add: () => (edit.value = true) })
         </div>
         <div v-if="ed.field.description" class="small">{{ ed.field.description }}</div>
         <ShotStrip v-if="ed.editable || ed.field.screenshots?.length" :part="ed.field" />
-        <div v-if="claims.length || ed.editable" class="vstack gap-1">
-          <PartLabel icon="🃏" zone="field">Картки про поле</PartLabel>
-          <ClaimRow v-for="c in claims" :key="c.id" :claim="c" />
+      </template>
+      <PartBlock v-if="ed.field && (claims.length || ed.editable)" icon="🃏" zone="field" title="Картки про поле">
+        <div class="vstack gap-1">
+          <ClaimRow v-for="c in claims" :key="c.id" :claim="c" :tools="edit" />
           <div v-if="ed.editable"><CardPicker :kinds="['field']" :anchor="{ part: ed.field.id }" label="картка про поле" /></div>
         </div>
-      </template>
+      </PartBlock>
     </div>
   </div>
 </template>

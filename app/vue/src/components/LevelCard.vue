@@ -9,12 +9,13 @@ import { useEd } from '../ed.js'
 import CardPicker from './CardPicker.vue'
 import ClaimRow from './ClaimRow.vue'
 import LevelForm from './LevelForm.vue'
-import PartLabel from './PartLabel.vue'
+import PartBlock from './PartBlock.vue'
 import PropsList from './PropsList.vue'
 import ShotStrip from './ShotStrip.vue'
 
 // one level or a group of alike ones (T270 §9): where it comes from and how many, its size, the field's properties it
-// overrides, its parameters, screenshots and cards; the pencil turns the card into its form in place
+// overrides, its parameters, screenshots and cards; the pencil turns the top of the card into its form in place — the
+// level's cards stay under the form, each with its trash (T284 §4)
 const p = defineProps({ part: Object })
 const ed = useEd()
 const edit = ref(false)
@@ -52,20 +53,22 @@ async function remove() {
           </span>
         </div>
         <PropsList :props="values" :specs />
-        <div v-if="part.stats?.length" class="d-flex flex-wrap align-items-center gap-1 small">
-          <PartLabel icon="🔢" zone="levels" class="me-1">Параметри</PartLabel>
-          <span v-for="s in part.stats" :key="s.key" class="badge rounded-pill fw-normal stat">
-            {{ s.label || s.key }} {{ s.value }} <span v-if="s.unit" class="opacity-75">{{ s.unit }}</span>
+        <PartBlock v-if="part.stats?.length" icon="🔢" zone="levels" title="Параметри" inline class="small">
+          <span class="d-flex flex-wrap gap-1">
+            <span v-for="s in part.stats" :key="s.key" class="badge rounded-pill fw-normal stat">
+              {{ s.label || s.key }} {{ s.value }} <span v-if="s.unit" class="opacity-75">{{ s.unit }}</span>
+            </span>
           </span>
-        </div>
+        </PartBlock>
         <div v-if="part.description" class="small">{{ part.description }}</div>
         <ShotStrip v-if="ed.editable || part.screenshots?.length" :part />
-        <div v-if="claims.length || ed.editable" class="vstack gap-1">
-          <PartLabel icon="🃏" zone="levels">Картки рівня</PartLabel>
-          <ClaimRow v-for="c in claims" :key="c.id" :claim="c" />
+      </template>
+      <PartBlock v-if="claims.length || ed.editable" icon="🃏" zone="levels" title="Картки рівня">
+        <div class="vstack gap-1">
+          <ClaimRow v-for="c in claims" :key="c.id" :claim="c" :tools="edit" />
           <div v-if="ed.editable"><CardPicker :kinds="['level']" :anchor="{ part: part.id }" label="картка" /></div>
         </div>
-      </template>
+      </PartBlock>
     </div>
   </div>
 </template>

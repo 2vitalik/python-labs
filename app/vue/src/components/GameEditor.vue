@@ -1,24 +1,29 @@
 <script setup>
 import { computed, nextTick, reactive, ref, toRef, watch } from 'vue'
 
+import Clamp from '@core/components/Clamp.vue'
 import Icon from '@core/components/Icon.vue'
 import Lightbox from '@core/components/Lightbox.vue'
+import PeekHost from '@core/components/PeekHost.vue'
 import Toc from '@core/components/Toc.vue'
 import { user } from '@core/user.js'
 import { applyTemplate } from '../api.js'
-import { COIN_ORDER, COINS, games, kindOf, taskIndex, templates, vocab } from '../catalog.js'
+import { games, kindOf, taskIndex, templates, vocab } from '../catalog.js'
 import { provideEd } from '../ed.js'
-import { foldAll, isFolded, setFold } from '../fold.js'
+import { allAre, isFolded, isShort, setAll, setFold, setShort } from '../fold.js'
 import { hints as makeHints } from '../hints.js'
 import { jump, target } from '../jump.js'
+import '../peeks.js'
 import { sandbox } from '../sandbox.js'
 import { foldKey, HEADS, sectionOf, SECTIONS, SIMPLE, ZONES } from '../sections.js'
+import { editing } from '../teacher.js'
 import AddBar from './AddBar.vue'
 import ClaimsTable from './ClaimsTable.vue'
 import DraftStrip from './DraftStrip.vue'
 import EntitiesBlock from './EntitiesBlock.vue'
 import EtalonGap from './EtalonGap.vue'
 import FieldCard from './FieldCard.vue'
+import GameTotals from './GameTotals.vue'
 import Hints from './Hints.vue'
 import LevelsBlock from './LevelsBlock.vue'
 import RulesBlock from './RulesBlock.vue'
@@ -43,6 +48,7 @@ const ed = reactive({
   game: toRef(props, 'game'), parts: toRef(props, 'parts'), claims: toRef(props, 'claims'), rules: toRef(props, 'rules'),
   editable: toRef(props, 'editable'), judge: toRef(props, 'judge'), nick: toRef(props, 'nick'),
   sandbox: computed(() => !!sandbox.value && props.editable),  // the sample's scratch copy (T274 §7): no screenshots there
+  teacher: computed(() => !!editing.value && props.editable),  // the teacher edits a student's game (T282): no owner's aids
   field: computed(() => props.parts.find((p) => p.kind === 'field')),
   entities: ofKind('entity'), windows: ofKind('window'), levels: ofKind('level'), menus: ofKind('menu'),
   simple: computed(() => !props.full && (simpleLook.value || vocab.value.depth === 'simple')), showRules: false,
@@ -61,7 +67,6 @@ const own = computed(() => props.claims.filter((c) => !c.auto).length)
 const base = computed(() => games.value.find((g) => g.slug === props.game.base_game))
 const template = computed(() => templates.value[props.game.base_game])
 const empty = computed(() => !props.parts.length && !props.rules.length && !props.claims.length)
-const row = (m) => COIN_ORDER.filter((k) => m?.[k]).map((k) => `${COINS[k]}×${m[k]}`).join(' ')
 const hints = computed(() => (props.editable ? makeHints({ game: props.game, parts: props.parts, rules: props.rules, claims: props.claims, info: ed.info, base: base.value, simple: ed.simple, shots: !ed.sandbox }) : []))
 // the sections in the catalog's order (T278 §9): their headings and the contents say the same
 const shown = computed(() => (ed.simple ? SIMPLE : SECTIONS))
@@ -77,10 +82,15 @@ const toc = computed(() => (view.value === 'cards' ? [] : shown.value.map((id) =
   return { id, text: `${h.icon} ${h.title}${h.count === undefined ? '' : ` (${h.count})`}`, depth: 2 }
 })))
 
-// folding (T274 §8): each section by its heading, all at once by the button beside «Опис | Картки»
+// folding (T274 §8, T284 §3): a section is open, short (its beginning) or folded — each by its own heading, all at once
+// by the three buttons beside «Опис | Картки»
 const folded = (id) => isFolded(foldKey(id))
-const allFolded = computed(() => shown.value.every(folded))
-const foldEvery = () => foldAll(shown.value.map(foldKey), !allFolded.value)
+const short = (id) => isShort(foldKey(id))
+const unclamp = (id) => setShort(foldKey(id), false)
+const keys = computed(() => shown.value.map(foldKey))
+const MODES = [['open', 'unfold', 'усе', 'Усі секції повністю'], ['short', 'short', 'коротко', 'Усі секції коротко: початок кожної і «Показати все»'], ['folded', 'fold', 'згорнуто', 'Згорнути всі секції до заголовків']]
+const totals = computed(() => ({ ...counts.value, cards: own.value }))
+const go = (k) => (k === 'cards' ? (view.value = 'cards') : jump(k))
 // «show me where» lands in the description: back from «Картки», the section holding the place unfolded. A claim just
 // added is jumped to before the reload brings it, so its section is looked for again as the data comes
 let landed = ''  // its section is open: a later reload must not unfold it again
@@ -117,31 +127,30 @@ async function fromTemplate() {
 
 <template>
   <div class="editor">
-    <div class="d-flex flex-wrap align-items-center gap-2 small text-secondary mb-2">
-      <span>{{ ed.entities.length }} сут. · {{ ed.windows.length }} вікон<template v-if="!ed.simple"> · {{ rules.length }} правил · {{ ed.levels.length }} рівнів · {{ own }} карток</template></span>
-      <span v-if="row(coins?.claimed)" title="заявлено монеток: картка рахується не більше разів, ніж дозволяє">· {{ row(coins.claimed) }}</span>
-      <span v-if="row(coins?.accepted)" class="text-success" title="зараховано">· ✓ {{ row(coins.accepted) }}</span>
-      <label v-if="admin && !full" class="form-check form-switch m-0 ms-auto" title="Як бачить студент, поки відкрито лише простий опис">
-        <input v-model="simpleLook" type="checkbox" class="form-check-input"> простий вигляд
-      </label>
-      <span class="d-flex gap-2" :class="{ 'ms-auto': !admin || full }">
+    <GameTotals :counts="totals" :coins :simple="ed.simple" class="mb-3" @go="go">
+      <div class="d-flex flex-wrap align-items-center gap-2 small text-secondary">
         <span v-if="!ed.simple" class="btn-group btn-group-sm">
           <button type="button" class="btn" :class="view === 'desc' ? 'btn-secondary' : 'btn-outline-secondary'" @click="view = 'desc'"><Icon name="list" /> Опис</button>
           <button type="button" class="btn" :class="view === 'cards' ? 'btn-secondary' : 'btn-outline-secondary'" title="Усе заявлене деревом: категорія → картка → де вона" @click="view = 'cards'"><Icon name="table" /> Картки</button>
         </span>
-        <button type="button" class="btn btn-sm btn-outline-secondary" :disabled="view === 'cards'" :title="allFolded ? 'Розгорнути всі секції' : 'Згорнути всі секції'"
-                @click="foldEvery"><Icon :name="allFolded ? 'unfold' : 'fold'" /></button>
-      </span>
-    </div>
+        <span class="btn-group btn-group-sm" role="group" aria-label="секції">
+          <button v-for="[m, icon, word, tip] in MODES" :key="m" type="button" class="btn btn-outline-secondary" :class="{ active: view === 'desc' && allAre(keys, m) }"
+                  :disabled="view === 'cards'" :title="tip" @click="setAll(keys, m)"><Icon :name="icon" /><span class="d-none d-sm-inline"> {{ word }}</span></button>
+        </span>
+        <label v-if="admin && !full" class="form-check form-switch m-0" title="Як бачить студент, поки відкрито лише простий опис">
+          <input v-model="simpleLook" type="checkbox" class="form-check-input"> простий вигляд
+        </label>
+      </div>
+    </GameTotals>
 
     <template v-if="editable">
       <AddBar class="mb-2" @open="open" />
-      <div v-if="empty && template && !ed.simple && !ed.sandbox" class="alert alert-light border d-flex flex-wrap align-items-center gap-2 py-2 small">
+      <div v-if="empty && template && !ed.simple && !ed.sandbox && !ed.teacher" class="alert alert-light border d-flex flex-wrap align-items-center gap-2 py-2 small">
         <span>Порожньо. Почати з еталона <b>{{ base?.icon }} {{ base?.title }}</b> — {{ template.entities }} сутностей, {{ template.rules }} правил, {{ template.windows }} вікон, {{ template.claims }} карток — і далі викреслювати й додавати своє?</span>
         <button type="button" class="btn btn-sm btn-add ms-auto" @click="fromTemplate"><Icon name="plus" /> Почати з еталона</button>
       </div>
-      <Hints :items="hints" class="mb-3" />
-      <EtalonGap v-if="!ed.simple && !ed.sandbox && game.base_game" class="mb-3" />
+      <Hints v-if="!ed.teacher" :items="hints" class="mb-3" />
+      <EtalonGap v-if="!ed.simple && !ed.sandbox && !ed.teacher && game.base_game" class="mb-3" />
     </template>
     <div v-if="error" class="alert alert-danger py-2 small">{{ error }}</div>
 
@@ -151,44 +160,44 @@ async function fromTemplate() {
     <template v-else>
       <section v-if="!ed.simple" id="field" class="mb-4">
         <SectionHead v-bind="head('field')" />
-        <div v-show="!folded('field')">
+        <Clamp v-show="!folded('field')" :on="short('field')" @open="unclamp('field')">
           <DraftStrip :kinds="['field']" hint="сядуть на поле самі, щойно його опишеш" />
           <FieldCard />
-        </div>
+        </Clamp>
       </section>
       <section id="entities" class="mb-4">
         <SectionHead v-bind="head('entities')">
           <button v-if="editable" type="button" class="btn btn-sm btn-add" @click="open('entity')"><Icon name="plus" /> сутність</button>
         </SectionHead>
-        <div v-show="!folded('entities')">
+        <Clamp v-show="!folded('entities')" :on="short('entities')" @open="unclamp('entities')">
           <DraftStrip :kinds="['mechanic']" hint="привʼяжи до сутності: натисни на картку → «Перемістити»" />
           <EntitiesBlock :ref="blocks.entity" />
-        </div>
+        </Clamp>
       </section>
       <section v-if="!ed.simple" id="rules" class="mb-4">
         <SectionHead v-bind="head('rules')">
           <button v-if="editable" type="button" class="btn btn-sm btn-add" @click="open('rule')"><Icon name="plus" /> правило</button>
         </SectionHead>
-        <div v-show="!folded('rules')">
+        <Clamp v-show="!folded('rules')" :on="short('rules')" @open="unclamp('rules')">
           <DraftStrip :kinds="['rule']" hint="натисни на картку → «нове правило з цієї картки» або привʼяжи до наявного" />
           <RulesBlock :ref="blocks.rule" />
-        </div>
+        </Clamp>
       </section>
       <ZoneSection v-if="!ed.simple" :z="zone('zone-game-logic')" :head="head('zone-game-logic')" />
       <section v-if="!ed.simple" id="levels" class="mb-4">
         <SectionHead v-bind="head('levels')">
           <button v-if="editable" type="button" class="btn btn-sm btn-add" @click="open('level')"><Icon name="plus" /> рівень</button>
         </SectionHead>
-        <LevelsBlock v-show="!folded('levels')" :ref="blocks.level" />
+        <Clamp v-show="!folded('levels')" :on="short('levels')" @open="unclamp('levels')"><LevelsBlock :ref="blocks.level" /></Clamp>
       </section>
       <section id="windows" class="mb-4">
         <SectionHead v-bind="head('windows')">
           <button v-if="editable" type="button" class="btn btn-sm btn-add" @click="open('window')"><Icon name="plus" /> вікно</button>
         </SectionHead>
-        <div v-show="!folded('windows')">
+        <Clamp v-show="!folded('windows')" :on="short('windows')" @open="unclamp('windows')">
           <DraftStrip :kinds="['element']" hint="привʼяжи до вікна: натисни на картку → «Перемістити»" />
           <WindowsBlock :ref="blocks.window" />
-        </div>
+        </Clamp>
       </section>
       <template v-if="!ed.simple">
         <ZoneSection v-for="id in ['zone-interface', 'zone-code', 'zone-support']" :key="id" :z="zone(id)" :head="head(id)" />
@@ -197,8 +206,14 @@ async function fromTemplate() {
 
     <Toc :items="toc" />
     <Lightbox />
+    <PeekHost />
   </div>
 </template>
+
+<style>
+/* a section's heading sticks under the menu (SectionHead): what is scrolled to on this page lands below both */
+html:has(.editor) { --stick-h: 2.4rem; }
+</style>
 
 <style scoped>
 section { scroll-margin-top: 1rem; }

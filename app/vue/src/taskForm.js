@@ -17,7 +17,7 @@ export function toForm(t) {
     coin: t.coin || '', amount: t.amount ?? 1, max_count: t.max_count ?? 1, tags: tags.join(', '), games: (t.games || []).join(', '),
     slots: (t.slots || []).map((s) => ({ ...s, options: [...(s.options || [])] })),
     aliases: { uk: [...(a.uk || [])], en: [...(a.en || [])], ru: [...(a.ru || [])] },
-    rule: t.rule || {},
+    rule: t.rule || {}, proof: t.proof || '',
   }
 }
 
@@ -25,7 +25,7 @@ export function toForm(t) {
 export function toPayload(f, kind) {
   const { rule, opt, ...rest } = f
   const out = {
-    ...rest, tags: csv(f.tags), games: csv(f.games),
+    ...rest, tags: csv(f.tags), games: csv(f.games), proof: f.proof || '',
     amount: num(f.amount, 1), max_count: num(f.max_count, 1), order: num(f.order, 0),
     slots: f.slots.map(({ options, ...s }) => (s.type === 'choice' ? { ...s, options } : s)),
   }

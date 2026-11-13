@@ -1,9 +1,11 @@
 <script setup>
+import { vPeek } from '@core/peek.js'
 import { jump } from '../jump.js'
 
 // the pieces of one clause (rules.js: pieces), each looking like what it is: an entity in a frame, a number in bold,
 // a state as a pill, the student's own words on a yellowish ground (T270 §4.1); `sub` — a side's letter, a small badge in
-// the side's own colour (`sd`: a | b), so «Міна ᴮ» in ТО is found in КОЛИ by the colour (T278 §7)
+// the side's own colour (`sd`: a | b), so «Міна ᴮ» in ТО is found in КОЛИ by the colour (T278 §7). An entity or a window
+// named in the clause shows its card under the mouse (T284 §2); a click goes to it on the page
 defineProps({ list: Array })
 const TIP = { free: 'написано студентом', state: 'стан сутності', name: 'лічильник або параметр', choice: 'варіант зі словника', side: 'сторона події КОЛИ', letter: 'сторона події КОЛИ', not: 'заперечення' }
 </script>
@@ -11,7 +13,7 @@ const TIP = { free: 'написано студентом', state: 'стан су
 <template>
   <span class="pieces">
     <template v-for="(p, i) in list" :key="i">
-      <span v-if="p.id" class="pc ent" role="button" :title="p.tip || `показати «${p.v}»`" @click.stop="jump(`p-${p.id}`)">{{ p.icon }} {{ p.v }}<sup v-if="p.sub" class="pc-ix" :class="`sd-${p.sd}`">{{ p.sub }}</sup></span>
+      <span v-if="p.id" v-peek="{ kind: p.t === 'window' ? 'window' : 'entity', id: p.id }" class="pc ent" role="button" :title="p.tip" @click.stop="jump(`p-${p.id}`)">{{ p.icon }} {{ p.v }}<sup v-if="p.sub" class="pc-ix" :class="`sd-${p.sd}`">{{ p.sub }}</sup></span>
       <span v-else class="pc" :class="[p.t, p.sd && `sd-${p.sd}`, { unknown: p.unknown }]" :title="p.unknown ? 'такого стану в сутності нема — додай його в станах' : p.tip || TIP[p.t]">{{ p.v }}<sup v-if="p.sub" class="pc-ix" :class="`sd-${p.sd}`">{{ p.sub }}</sup></span>
       {{ ' ' }}
     </template>

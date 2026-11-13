@@ -2,20 +2,23 @@
 import { computed, ref } from 'vue'
 
 import Icon from '@core/components/Icon.vue'
+import { vPeek } from '@core/peek.js'
 import { useEd } from '../ed.js'
 import { jump } from '../jump.js'
-import { ruleJumps } from '../windowJumps.js'
+import { useJumps } from '../windowJumps.js'
 import MenuForm from './MenuForm.vue'
-import PartLabel from './PartLabel.vue'
+import PartBlock from './PartBlock.vue'
 
 // «Переходи й дії» of a window (T278 §4), in two columns: what was pressed or what happened → the window it leads to (a click
-// goes there) or the action card, then a note. Under the items — the jumps the rules make, to read only: a click goes to the
-// rule. The owner edits the items in place (MenuForm); `menu` — the Part of kind menu hosted on this window, if there is one yet
+// goes there) or the action card, then a note. Under the items — the jumps the rules make, to read only: named by the
+// rule's reason, a click goes to the rule. A window, a card or a rule named here shows its card under the mouse.
+// The owner edits the items in place (MenuForm); `menu` — the Part of kind menu hosted on this window, if there is one yet
 const props = defineProps({ window: Object, menu: Object })
 const ed = useEd()
 const edit = ref(false)
 const items = computed(() => props.menu?.items || [])
-const jumps = computed(() => ruleJumps(ed.windows, ed.rules || []).filter((j) => j.from === props.window.id))
+const all = useJumps()
+const jumps = computed(() => all.value.filter((j) => j.from === props.window.id))
 const winTitle = (id) => ed.windows.find((w) => w.id === id)?.title
 </script>
 
@@ -24,25 +27,23 @@ const winTitle = (id) => ed.windows.find((w) => w.id === id)?.title
     <MenuForm v-if="edit" :window :menu @done="edit = false" @cancel="edit = false" />
     <div v-else class="vstack gap-1">
       <div v-if="items.length || jumps.length" class="d-flex align-items-start gap-2">
-        <div class="flex-grow-1 min-w-0">
-          <PartLabel icon="↪" zone="interface">Переходи й дії</PartLabel>
+        <PartBlock icon="↪" zone="interface" title="Переходи й дії" class="flex-grow-1 min-w-0">
           <div class="moves">
             <div v-for="(it, i) in items" :key="i" class="move">
               <span>{{ it.title }}</span>
               <span>
-                <a v-if="winTitle(it.window)" href="#" class="text-decoration-none" @click.prevent="jump('p-' + it.window)">→ 🪟 {{ winTitle(it.window) }}</a>
-                <span v-else-if="it.window" class="text-secondary">→ 🪟 вікна вже нема</span>
-                <span v-else-if="it.task" :title="ed.info(it.task)?.description">⚙ {{ ed.info(it.task)?.title || it.task }}</span>
+                <a v-if="winTitle(it.window)" v-peek="{ kind: 'window', id: it.window }" href="#" class="text-decoration-none" @click.prevent="jump('p-' + it.window)">→ <Icon name="win" /> {{ winTitle(it.window) }}</a>
+                <span v-else-if="it.window" class="text-secondary">→ вікна вже нема</span>
+                <span v-else-if="it.task" v-peek="{ kind: 'task', id: it.task }">⚙ {{ ed.info(it.task)?.title || it.task }}</span>
                 <span v-if="it.note" class="text-secondary"><template v-if="it.window || it.task"> · </template>{{ it.note }}</span>
               </span>
             </div>
-            <div v-for="j in jumps" :key="j.rule + j.to" class="move rule" role="button" title="перехід за правилом — змінюється правилом; клік — до правила"
-                 @click="jump('r-' + j.rule)">
-              <span>⚡ {{ j.title }}</span>
-              <span>→ 🪟 {{ winTitle(j.to) }}</span>
+            <div v-for="j in jumps" :key="j.rule + j.to" v-peek="{ kind: 'rule', id: j.rule }" class="move rule" role="button" @click="jump('r-' + j.rule)">
+              <span><Icon name="bolt" /> {{ j.title }}</span>
+              <span>→ <Icon name="win" /> {{ winTitle(j.to) }}</span>
             </div>
           </div>
-        </div>
+        </PartBlock>
         <button v-if="ed.editable && items.length" type="button" class="iact" title="Редагувати переходи й дії" @click="edit = true"><Icon name="pencil" /></button>
       </div>
       <div v-if="ed.editable && !items.length">
@@ -55,8 +56,9 @@ const winTitle = (id) => ed.windows.find((w) => w.id === id)?.title
 <style scoped>
 .min-w-0 { min-width: 0; }
 /* one grid for all the rows of the window, so both columns line up; a long title wraps rather than widens its column */
-.moves { display: grid; grid-template-columns: fit-content(55%) minmax(0, 1fr); column-gap: .75rem; margin-top: .25rem; overflow-wrap: anywhere; }
+.moves { display: grid; grid-template-columns: fit-content(55%) minmax(0, 1fr); column-gap: .75rem; overflow-wrap: anywhere; }
 .move { display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; padding: .05rem .25rem; margin: 0 -.25rem; border-radius: .25rem; }
-.rule { color: var(--bs-secondary-color); cursor: pointer; }
-.rule:hover { background: var(--bs-tertiary-bg); color: var(--bs-body-color); }
+/* a jump a rule makes wears the rules' violet, as on the map */
+.rule { color: color-mix(in srgb, #8e24aa 70%, var(--bs-body-color)); cursor: pointer; }
+.rule:hover { background: var(--bs-tertiary-bg); }
 </style>

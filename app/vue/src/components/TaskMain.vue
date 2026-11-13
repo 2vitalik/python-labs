@@ -1,43 +1,67 @@
 <script setup>
 import { COIN_NAMES, COINS, STATUSES, vocab } from '../catalog.js'
 import { OPT_HINT } from '../taskMeta.js'
+import { TIPS } from '../taskTips.js'
 
-// the two top rows of the card form: name, icon, price, limit; kind, what it means, status, games, tags.
+// «Основне» of the card form: name, icon, price, how many times; kind, what it means, status, games, tags.
 // `f` is TaskEdit's form, written in place; `kind` — the one in force, `subKind` — the subzone's
 defineProps({ f: Object, kind: String, subKind: String })
 </script>
 
 <template>
-  <div class="row-f">
-    <label class="f grow">назва<input v-model="f.title" class="form-control form-control-sm" required></label>
-    <label class="f w3">іконка<input v-model="f.icon" class="form-control form-control-sm text-center"></label>
-    <label class="f w8">монетка
-      <select v-model="f.coin" class="form-select form-select-sm">
-        <option value="">—</option>
-        <option v-for="(e, k) in COINS" :key="k" :value="k">{{ e }} {{ COIN_NAMES[k] }}</option>
-      </select>
-    </label>
-    <label class="f w4">скільки<input v-model.number="f.amount" type="number" step="0.5" min="0" class="form-control form-control-sm"></label>
-    <label class="f w9" title="1 — раз · N — стільки разів · 0 — без ліміту">макс. разів (1 / N / 0 = без ліміту)
-      <input v-model.number="f.max_count" type="number" min="0" class="form-control form-control-sm">
-    </label>
-  </div>
-  <div class="row-f">
-    <label class="f w9">тип
-      <select v-model="f.kind" class="form-select form-select-sm">
-        <option value="">за підкатегорією: {{ vocab.kinds[subKind] || subKind }}</option>
-        <option v-for="(label, k) in vocab.kinds" :key="k" :value="k">{{ label }}</option>
-      </select>
-    </label>
-    <label v-if="OPT_HINT[kind]" class="f w9" :title="OPT_HINT[kind]">що означає
-      <input v-model="f.opt" class="form-control form-control-sm font-monospace" :placeholder="OPT_HINT[kind]">
-    </label>
-    <label class="f w7">статус
-      <select v-model="f.status" class="form-select form-select-sm">
-        <option v-for="(label, k) in STATUSES" :key="k" :value="k">{{ label }}</option>
-      </select>
-    </label>
-    <label class="f grow">ігри<input v-model="f.games" class="form-control form-control-sm font-monospace" placeholder="slug, … — порожнє = усі"></label>
-    <label class="f grow">теги<input v-model="f.tags" class="form-control form-control-sm font-monospace" placeholder="algo, …"></label>
+  <div class="vstack main">
+    <div class="row-f">
+      <label class="f grow">назва<input v-model="f.title" class="form-control form-control-sm" required></label>
+      <label class="f w3" :title="TIPS.icon"><span class="tip">іконка</span>
+        <input v-model="f.icon" class="form-control form-control-sm text-center">
+      </label>
+      <label class="f w8" :title="TIPS.coin"><span class="tip">монетка</span>
+        <select v-model="f.coin" class="form-select form-select-sm">
+          <option value="">—</option>
+          <option v-for="(e, k) in COINS" :key="k" :value="k">{{ e }} {{ COIN_NAMES[k] }}</option>
+        </select>
+      </label>
+      <label class="f w4" :title="TIPS.amount"><span class="tip">скільки</span>
+        <input v-model.number="f.amount" type="number" step="0.5" min="0" class="form-control form-control-sm">
+      </label>
+      <label class="f max" :title="TIPS.max"><span class="tip">разів</span>
+        <span class="position-relative">
+          <input v-model.number="f.max_count" type="number" min="0" class="form-control form-control-sm">
+          <span v-if="f.max_count === 0" class="unlim">без ліміту</span>
+        </span>
+      </label>
+    </div>
+    <div class="row-f">
+      <label class="f w9" :title="TIPS.kind"><span class="tip">тип</span>
+        <select v-model="f.kind" class="form-select form-select-sm">
+          <option value="">за підкатегорією: {{ vocab.kinds[subKind] || subKind }}</option>
+          <option v-for="(label, k) in vocab.kinds" :key="k" :value="k">{{ label }}</option>
+        </select>
+      </label>
+      <label v-if="OPT_HINT[kind]" class="f w9" :title="TIPS.opt"><span class="tip">що означає</span>
+        <input v-model="f.opt" class="form-control form-control-sm font-monospace" :placeholder="OPT_HINT[kind]">
+      </label>
+      <label class="f w7" :title="TIPS.status"><span class="tip">статус</span>
+        <select v-model="f.status" class="form-select form-select-sm">
+          <option v-for="(label, k) in STATUSES" :key="k" :value="k">{{ label }}</option>
+        </select>
+      </label>
+      <label class="f grow" :title="TIPS.games"><span class="tip">ігри</span>
+        <input v-model="f.games" class="form-control form-control-sm font-monospace" placeholder="усі ігри">
+      </label>
+      <label class="f grow" :title="TIPS.tags"><span class="tip">теги</span>
+        <input v-model="f.tags" class="form-control form-control-sm font-monospace" placeholder="algo, lab1, …">
+      </label>
+    </div>
   </div>
 </template>
+
+<style scoped>
+.main { gap: .4rem; }
+/* as narrow as «скільки»: the meaning of 0 sits inside the field, so nothing beside it moves */
+.max { width: 5.25rem; }
+.max input { appearance: textfield; }
+.max input::-webkit-inner-spin-button, .max input::-webkit-outer-spin-button { appearance: none; margin: 0; }
+.unlim { position: absolute; top: 50%; right: .45rem; transform: translateY(-50%); font-size: .68rem; white-space: nowrap;
+         color: var(--bs-secondary-color); pointer-events: none; }
+</style>

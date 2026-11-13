@@ -11,6 +11,7 @@ import PhasesStrip from './PhasesStrip.vue'
 import RuleForm from './RuleForm.vue'
 import RuleGroup from './RuleGroup.vue'
 import RulesControls from './RulesControls.vue'
+import RulesLegend from './RulesLegend.vue'
 import RulesMatrix from './RulesMatrix.vue'
 import RulesSwitch from './RulesSwitch.vue'
 import RulesTime from './RulesTime.vue'
@@ -77,6 +78,7 @@ watch(target, (id) => {
         <Icon name="plus" /> правило
       </button>
     </template>
+    <RulesLegend v-if="ed.rules.length" />
   </div>
 </template>
 

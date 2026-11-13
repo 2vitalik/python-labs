@@ -5,6 +5,7 @@ import { inject, provide } from 'vue'
 //   info(slug) — the card behind a claim · claimsOf(partId) · ruleClaims(ruleId)
 //   editable — the owner edits · judge — the teacher gives verdicts · simple — the short form (T270 §12) · nick
 //   sandbox — the editor works on the reader's scratch copy of a sample (T274 §7)
+//   teacher — the teacher edits a student's game (T282): `editable` and `judge` at once, without the owner's aids
 //   showRules — the rule lists on entity cards are all open
 //   changed() — reload after a write · fail(text) — an error that has no place of its own
 //   open(block, prefill) — the form of a new entity | window | level | rule, in view and lit

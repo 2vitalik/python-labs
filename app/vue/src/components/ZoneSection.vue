@@ -1,9 +1,10 @@
 <script setup>
 import { computed } from 'vue'
 
+import Clamp from '@core/components/Clamp.vue'
 import { kindOf } from '../catalog.js'
 import { useEd } from '../ed.js'
-import { isFolded } from '../fold.js'
+import { isFolded, isShort, setShort } from '../fold.js'
 import CardPicker from './CardPicker.vue'
 import SectionHead from './SectionHead.vue'
 import SubzoneRows from './SubzoneRows.vue'
@@ -25,12 +26,14 @@ const noVideo = computed(() => ed.editable && p.z.zones.includes('support')
 <template>
   <section :id="z.id" class="mb-4">
     <SectionHead v-bind="head" />
-    <div v-show="!isFolded(head.fold)" class="vstack gap-2">
-      <SubzoneRows v-if="claims.length" :claims :table="z.table" />
-      <div v-else class="text-secondary small">{{ z.hint }}</div>
-      <div v-if="noVideo" class="ask">🎬 Відео-демки ще нема: рано чи пізно вона знадобиться — додай картку й посилання, коли запишеш</div>
-      <div v-if="ed.editable"><CardPicker :kinds="['game']" :anchor="{}" label="картка" :filter="here" /></div>
-    </div>
+    <Clamp v-show="!isFolded(head.fold)" :on="isShort(head.fold)" @open="setShort(head.fold, false)">
+      <div class="vstack gap-2">
+        <SubzoneRows v-if="claims.length" :claims :table="z.table" />
+        <div v-else class="text-secondary small">{{ z.hint }}</div>
+        <div v-if="noVideo" class="ask">🎬 Відео-демки ще нема: рано чи пізно вона знадобиться — додай картку й посилання, коли запишеш</div>
+        <div v-if="ed.editable"><CardPicker :kinds="['game']" :anchor="{}" label="картка" :filter="here" /></div>
+      </div>
+    </Clamp>
   </section>
 </template>
 

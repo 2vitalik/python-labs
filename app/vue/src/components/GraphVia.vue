@@ -2,23 +2,35 @@
 import { computed } from 'vue'
 
 import Icon from '@core/components/Icon.vue'
-import { viaWords } from '../graphTree.js'
+import { vPeek } from '@core/peek.js'
+import { viaText } from '../graphTree.js'
+import { jump } from '../jump.js'
 
-// what makes a transition on the map of windows: «☰ items» of «Переходи й дії», «⚡ reasons» of the rules — each of its colour
+// what makes a transition on the map of windows, and the arrow after it: «☰ items» of «Переходи й дії» in a quiet ink,
+// «⚡ reason» of a rule in the rules' violet — a click on a reason goes to its rule, the mouse over it brings the rule's card
 const props = defineProps({ via: Array })
-const w = computed(() => viaWords(props.via || []))
+const items = computed(() => props.via.filter((v) => v.kind === 'item').map((v) => v.title).join(', '))
+const rules = computed(() => props.via.filter((v) => v.kind === 'rule'))
 </script>
 
 <template>
-  <span class="gvia">
-    <span v-if="w.item" class="by-item"><Icon name="menu" /> {{ w.item }}</span>
-    <span v-if="w.rule" class="by-rule">⚡&#xFE0E; {{ w.rule }}</span>
+  <span class="gvia" :title="viaText(via)">
+    <span class="words">
+      <span v-if="items" class="by-item"><Icon name="menu" /> {{ items }}</span>
+      <template v-for="(r, i) in rules" :key="r.title">
+        <span v-peek="{ kind: 'rule', id: r.rule }" class="by-rule" role="button" @click.stop="jump(`r-${r.rule}`)"><Icon v-if="!i" name="bolt" /> {{ r.title }}</span><span v-if="i < rules.length - 1" class="by-rule">,</span>
+      </template>
+    </span>
+    <Icon name="arrow" class="arr" />
   </span>
 </template>
 
 <style scoped>
-.gvia { font-size: .7rem; font-weight: 500; }
+.gvia { display: inline-flex; align-items: center; gap: .3em; max-width: 100%; font-weight: 500; white-space: nowrap; }
+.words { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 .by-item { color: var(--gg-item); }
 .by-rule { color: var(--gg-rule); }
-.by-item + .by-rule { margin-left: .4em; }
+.by-rule[role=button]:hover { text-decoration: underline; }
+.by-item + .by-rule, .by-rule + .by-rule[role=button] { margin-left: .4em; }
+.arr { color: var(--gg-line); font-size: .85em; }
 </style>

@@ -30,6 +30,8 @@ export const deleteShot = (id, name) => request(`/api/my/game/parts/${id}/screen
 export const postClaim = (data) => request('/api/my/claims', 'POST', data)
 export const putClaim = (id, data) => request(`/api/my/claims/${id}`, 'PUT', data)
 export const deleteClaim = (id) => request(`/api/my/claims/${id}`, 'DELETE')
+export const uploadClaimShot = (id, file) => upload(`/api/my/claims/${id}/shot`, file)  // the claim's proof (T284 §7)
+export const deleteClaimShot = (id, name) => request(`/api/my/claims/${id}/shot/${name}`, 'DELETE')
 export const postRule = (data) => request('/api/my/game/rules', 'POST', data)
 export const putRule = (id, data) => request(`/api/my/game/rules/${id}`, 'PUT', data)
 export const deleteRule = (id) => request(`/api/my/game/rules/${id}`, 'DELETE')

@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 
 import DelButton from '@core/components/DelButton.vue'
 import Icon from '@core/components/Icon.vue'
+import { vPeek } from '@core/peek.js'
 import { deletePart } from '../api.js'
 import { iconOf, roleOf } from '../catalog.js'
 import { useEd } from '../ed.js'
@@ -12,11 +13,12 @@ import EntityForm from './EntityForm.vue'
 import EntityRules from './EntityRules.vue'
 import EntityStats from './EntityStats.vue'
 import JudgeMark from './JudgeMark.vue'
-import PartLabel from './PartLabel.vue'
+import PartBlock from './PartBlock.vue'
 import ShotStrip from './ShotStrip.vue'
 
 // an inhabitant of the field (T270 §7): icon, name, type; the description, stats and states, screenshots, the mechanics
-// claimed on it and the rules that name it. The pencil turns the card into its form in place
+// claimed on it and the rules that name it. The pencil turns the top of the card into its form in place; the mechanics
+// stay under the form, each with its trash, and the rules too (T284 §4): editing shows everything that can be changed
 const props = defineProps({ part: Object })
 const ed = useEd()
 const edit = ref('')  // '' — the card; otherwise its form, and 'description' puts the cursor there (T278 §2)
@@ -46,7 +48,7 @@ async function remove() {
         <div class="d-flex align-items-center gap-2">
           <span class="ico">{{ iconOf(part) }}</span>
           <span class="fw-semibold">{{ part.title }}</span>
-          <span class="type" :title="role.desc">{{ (role.label || '').toLowerCase() }}<JudgeMark :claim="roleClaim" /></span>
+          <span v-peek="role.slug ? { kind: 'task', id: role.slug } : null" class="type" :title="role.slug ? null : role.desc">{{ (role.label || '').toLowerCase() }}<JudgeMark :claim="roleClaim" /></span>
           <span v-if="ed.editable" class="ms-auto d-flex">
             <button type="button" class="iact" title="Редагувати" @click="edit = 'all'"><Icon name="pencil" /></button>
             <DelButton :what="`сутність «${part.title}»`" note="разом з її правилами й заявками" @yes="remove" />
@@ -56,16 +58,17 @@ async function remove() {
         <button v-else-if="ed.editable" type="button" class="more" @click="edit = 'description'"><Icon name="plus" /> опис</button>
         <EntityStats v-if="!ed.simple" :part :auto />
         <ShotStrip :part />
-        <template v-if="!ed.simple">
-          <div v-if="mechanics.length || ed.editable" class="vstack gap-1">
-            <PartLabel icon="⚙" zone="entities">Механіки</PartLabel>
-            <ClaimRow v-for="c in mechanics" :key="c.id" :claim="c" />
+      </template>
+      <template v-if="!ed.simple">
+        <PartBlock v-if="mechanics.length || ed.editable" icon="⚙" zone="entities" title="Механіки">
+          <div class="vstack gap-1">
+            <ClaimRow v-for="c in mechanics" :key="c.id" :claim="c" :tools="!!edit" />
             <div><CardPicker :kinds="['mechanic']" :anchor="{ part: part.id }" label="механіка" /></div>
           </div>
-          <EntityRules :part />
-        </template>
-        <div v-if="error" class="text-danger small">{{ error }}</div>
+        </PartBlock>
+        <EntityRules :part />
       </template>
+      <div v-if="error" class="text-danger small">{{ error }}</div>
     </div>
   </div>
 </template>

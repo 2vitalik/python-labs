@@ -38,6 +38,7 @@ import StudentGamePage from './pages/StudentGamePage.vue'
 import TasksPage from './pages/TasksPage.vue'
 import { setSandbox } from './sandbox.js'
 import { CHANGES, SECTIONS } from './site.js'
+import { setEditing } from './teacher.js'
 
 const router = makeRouter([
   { path: '/', component: HomePage },
@@ -94,4 +95,5 @@ const router = makeRouter([
 ])
 // the sample's sandbox never outlives its page: else «Моя гра» would read and write the scratch copy (T274 §7)
 router.afterEach((to, from) => { if (to.path !== from.path) setSandbox('') })
+router.afterEach((to, from) => { if (to.path !== from.path) setEditing('') })  // the same for the teacher in a student's game (T282 Б)
 export default router

@@ -2,6 +2,7 @@
 import { ref, useId, watch } from 'vue'
 
 import { vocab } from '../catalog.js'
+import { TIPS } from '../taskTips.js'
 
 // «Заготовка правила» of a rule card (Task.rule): the vocab's keys in three fields — КОЛИ one, ЯКЩО and ТО several,
 // comma-separated; a word the blank had keeps its args. «Моя гра» opens a rule half-filled from it
@@ -21,17 +22,14 @@ const labels = (k, dic) => keys(text.value[k]).map((w) => vocab.value[dic]?.[w]?
 </script>
 
 <template>
-  <div class="vstack gap-1">
-    <div class="hint">Заготовка правила — ключі слів словника; з неї «Моя гра» відкриває правило вже наполовину заповненим</div>
-    <div class="rule-text">
-      <template v-for="[k, dic, kw, ph] in ROWS" :key="k">
-        <span class="kw" :class="KW[k]">{{ kw }}</span>
-        <div>
-          <input v-model="text[k]" :list="`${id}-${k}`" class="form-control form-control-sm font-monospace" :placeholder="ph">
-          <datalist :id="`${id}-${k}`"><option v-for="(w, key) in vocab[dic]" :key="key" :value="key">{{ w.label }}</option></datalist>
-          <div class="hint">{{ labels(k, dic) }}</div>
-        </div>
-      </template>
-    </div>
+  <div class="rule-text">
+    <template v-for="[k, dic, kw, ph] in ROWS" :key="k">
+      <span class="kw tip" :class="KW[k]" :title="TIPS.kw[k]">{{ kw }}</span>
+      <div>
+        <input v-model="text[k]" :list="`${id}-${k}`" class="form-control form-control-sm font-monospace" :placeholder="ph">
+        <datalist :id="`${id}-${k}`"><option v-for="(w, key) in vocab[dic]" :key="key" :value="key">{{ w.label }}</option></datalist>
+        <div class="hint">{{ labels(k, dic) }}</div>
+      </div>
+    </template>
   </div>
 </template>

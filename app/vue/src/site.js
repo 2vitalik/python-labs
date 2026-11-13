@@ -39,7 +39,10 @@ export default {
   students: {
     page: 'Гра',
     cols: [{ title: 'Гра', text: (s) => s.game.title, to: (s) => `/students/${s.nick}` }],
-    facets: [{ key: 'game', text: '🎮 гра', title: 'Гра створена', has: (s) => s.game.id }],
+    facets: [
+      { key: 'game', text: '🎮 гра', title: 'Гра створена', has: (s) => s.game.id },
+      { key: 'review', text: '⏳ є що перевірити', title: 'Є заявки, що чекають вердикту', has: (s) => s.game.waiting, keep: true, table: false },
+    ],
     cards: StudentCards,
     inGallery: (s) => s.game.id,  // the gallery is of games: no card without one
     asStudent: { title: 'Ігри студентів', crumbs: [['/method', 'Методичка'], ['/games', 'Ігри']] },
@@ -49,6 +52,9 @@ export default {
       { key: 'game', type: 'text', title: 'Гра', short: '🎮', get: (s) => s.game.title, link: (s) => s.game.id && `/students/${s.nick}` },
       { key: 'claims', type: 'number', title: 'Заявок у «Моїй грі»', short: '📋', get: (s) => s.game.claims },
       { key: 'coins', type: 'text', title: 'Монетки за заявками', short: '🪙', get: (s) => coins(s.game.coins) },
+      { key: 'waiting', type: 'number', title: 'Заявок чекають вердикту', short: '⏳', get: (s) => s.game.waiting },
+      { key: 'wood', type: 'number', title: 'Заявлено, у 🌱', short: '🌱', get: (s) => s.game.wood_claimed },
+      { key: 'wood_ok', type: 'number', title: 'Зараховано, у 🌱', short: '🌱✓', get: (s) => s.game.wood_accepted },
     ],
   },
 }

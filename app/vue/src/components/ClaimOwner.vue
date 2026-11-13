@@ -6,11 +6,12 @@ import Icon from '@core/components/Icon.vue'
 import { deleteClaim, putClaim } from '../api.js'
 import { useEd } from '../ed.js'
 import AskTeacher from './AskTeacher.vue'
+import ClaimShots from './ClaimShots.vue'
 import MoveTo from './MoveTo.vue'
 import SlotFields from './SlotFields.vue'
 
-// the owner's part of a claim's panel: params, note, link; then move it, delete it or tell the teacher the card belongs
-// elsewhere. An auto-claim follows its part: only its note and link are the student's. `linkFirst` — opened for the link
+// the owner's part of a claim's panel: params, note, link, proof; then move it, delete it or tell the teacher the card belongs
+// elsewhere. An auto-claim follows its part: only its note, link and proof are the student's. `linkFirst` — opened for the link
 // («＋ посилання» in a table of links): the cursor starts there
 const props = defineProps({ claim: Object, linkFirst: Boolean })
 const emit = defineEmits(['close'])
@@ -51,6 +52,7 @@ function newRule() {
     <input v-model="form.note" class="form-control form-control-sm" placeholder="Нотатка: як саме це зроблено" @keydown.enter="save">
     <input ref="linkBox" v-model="form.link" class="form-control form-control-sm" @keydown.enter="save"
            :placeholder="info?.zone === 'support' ? 'Посилання: відео, сторінка гри, документ' : 'GitHub: файл або коміт — за бажанням'">
+    <ClaimShots :claim editable />
     <div class="d-flex gap-2">
       <button type="button" class="btn btn-sm btn-success" @click="save"><Icon name="check" /> Зберегти</button>
       <button type="button" class="btn btn-sm btn-outline-secondary" @click="emit('close')">Скасувати</button>

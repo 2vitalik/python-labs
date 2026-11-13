@@ -37,7 +37,7 @@ export const CLAIM_STATUSES = { claimed: 'заявлено', accepted: 'зара
 // a window's card, T278 §11). A list — the alternatives: any of them claimed, no advice (a lobby also stands before
 // hot-seat; a shop sells in the round too). Keys are elements and window types alike; the pairs come from the catalog review (T271)
 export const PAIRS = {
-  'volume-control': 'sound-volume', 'music-toggle': 'background-music', 'field-size-picker': 'difficulty-levels',
+  'music-toggle': 'background-music', 'field-size-picker': 'difficulty-levels',
   'conflict-highlight': 'markup-validity', 'telegraph-marker': 'telegraphed-intents', 'face-button': 'restart-level',
   'pause-menu': 'game-pause', 'editor-window': 'in-game-editor', 'leaderboard': 'score-records',
   'stats-window': 'profile-stats', 'mode-select': 'difficulty-levels', 'replay-window': 'replay',
@@ -50,7 +50,7 @@ export const PAIRS = {
 }
 // the functions that are nothing without their window or element — the advice «є функція — може, є й вікно?» goes only for them
 export const NEEDS_SCREEN = ['shop-between-levels', 'in-game-editor', 'save-multi-slot', 'markup-validity', 'telegraphed-intents',
-  'sound-volume', 'achievements']
+  'achievements']
 
 export const roleOf = (role) => vocab.value.roles[role] || { label: role, icon: '❔', group: '' }
 const PART_ICON = { window: '🪟', field: '🗺️', level: '🪜', menu: '☰' }

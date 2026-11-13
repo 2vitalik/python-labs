@@ -7,9 +7,10 @@ import { load, save } from '@core/local.js'
 import { moments } from '../moments.js'
 
 // a game's examples step by step (T274 §8): the legend on top, then one frame at a time — «◀ 3 з 12 ▶», the arrow keys
-// too while the mouse or the focus is here; or the frames one after another, as written. The switch stands where the
-// frames start — after the legend and the moment's heading: it rules them only. Every frame sits in one grid cell, so
-// the block is as tall as the tallest frame and nothing jumps between steps
+// too while the mouse or the focus is here; or the frames one after another. A frame is a picture with its caption under
+// it (T284 §5): the field, the step's words in a smaller type, then the notes. The switch stands where the frames start —
+// after the legend and the moment's heading: it rules them only. In steps every frame sits in one grid cell, so the block
+// is as tall as the tallest frame and nothing jumps between steps
 const props = defineProps({ text: String })
 const cut = computed(() => moments(props.text))
 const n = computed(() => cut.value.frames.length)
@@ -51,10 +52,13 @@ onBeforeUnmount(() => document.removeEventListener('keydown', key))
         </span>
       </template>
     </div>
-    <div v-if="steps" class="frames">
-      <GuideText v-for="(f, i) in cut.frames" :key="i" :text="f" :class="{ off: i !== at }" :aria-hidden="i !== at" />
+    <div v-if="n" :class="steps ? 'frames' : 'all'">
+      <figure v-for="(f, i) in cut.frames" :key="i" class="frame" :class="{ off: steps && i !== at }" :aria-hidden="steps && i !== at">
+        <GuideText :text="f.grid" />
+        <figcaption v-if="f.caption"><GuideText :text="f.caption" /></figcaption>
+        <GuideText v-if="f.after" :text="f.after" class="after" />
+      </figure>
     </div>
-    <GuideText v-else-if="n" :text="cut.frames.join('\n\n')" />
   </div>
 </template>
 
@@ -62,6 +66,14 @@ onBeforeUnmount(() => document.removeEventListener('keydown', key))
 .frames { display: grid; }
 .frames > * { grid-area: 1 / 1; min-width: 0; }
 .frames > .off { visibility: hidden; }
+.frame { margin: 0; }
+.all > .frame + .frame { margin-top: 1.75rem; }
+/* the caption belongs to the picture above it: close to it, smaller and quieter than the page's text */
+.frame :deep(pre), .frame > :first-child :deep(> :last-child) { margin-bottom: .35rem; }
+figcaption { font-size: .9rem; color: var(--bs-secondary-color); }
+figcaption :deep(p) { margin-bottom: .25rem; }
+figcaption :deep(strong) { color: var(--bs-body-color); }
+.after { margin-top: .75rem; }
 .dot { width: .9rem; height: .9rem; padding: 0; border: 0; background: none; }
 .dot::before { content: ''; display: block; width: .45rem; height: .45rem; margin: auto; border-radius: 50%; background: var(--bs-border-color); }
 .dot:hover::before { background: var(--bs-secondary-color); }

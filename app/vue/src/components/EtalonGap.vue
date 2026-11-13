@@ -2,6 +2,7 @@
 import { computed, ref, watch } from 'vue'
 
 import Icon from '@core/components/Icon.vue'
+import { vPeek } from '@core/peek.js'
 import { hide, isHidden } from '../advice.js'
 import { getEtalon } from '../api.js'
 import { games, taskIndex, zones } from '../catalog.js'
@@ -48,7 +49,7 @@ const wave = (t) => hide(ed.game.id, key(t.slug), `В еталоні є «${t.ti
         <PartLabel :icon="g.z.icon" :zone="g.id">{{ g.z.title }}</PartLabel>
         <div v-for="t in g.list" :key="t.slug" class="line">
           <TaskAdd :task="t" />
-          <span class="name" :title="`${t.description || ''}\n${addsTo(t)}`.trim()">{{ t.icon }} {{ t.title }}</span>
+          <span v-peek="{ kind: 'task', id: t.slug }" class="name" :title="addsTo(t)">{{ t.icon }} {{ t.title }}</span>
           <CoinBadge :coin="t.coin" :amount="t.amount" />
           <button type="button" class="quiet off text-nowrap" title="сховати для цієї гри; повернути — «сховані поради» вище" @click="wave(t)">не про мою гру</button>
         </div>

@@ -7,11 +7,13 @@ import { kindOf, subzoneTitle, vocab, zoneOf } from '../catalog.js'
 import { useEd } from '../ed.js'
 import ClaimJudge from './ClaimJudge.vue'
 import ClaimOwner from './ClaimOwner.vue'
+import ClaimShots from './ClaimShots.vue'
 import CoinBadge from './CoinBadge.vue'
 import Md from './Md.vue'
 
 // a claim's panel (T270 §7): the card it claims — what it is, where it lives, its description — then by who looks:
-// the owner edits, moves or drops it, the teacher gives the verdict, anyone else reads the note, the link and the verdict
+// the owner edits, moves or drops it, the teacher gives the verdict, anyone else reads the note, the link and the verdict;
+// the teacher editing a student's game (T282) is both — the owner's fields, then the verdict
 const props = defineProps({ claim: Object, linkFirst: Boolean })  // linkFirst — the owner's cursor starts in the link
 const emit = defineEmits(['close'])
 const ed = useEd()
@@ -43,8 +45,9 @@ const home = computed(() => {
     <template v-else>
       <div v-if="claim.note" class="note">{{ claim.note }}</div>
       <a v-if="claim.link" :href="claim.link" target="_blank" rel="noopener" class="small text-break"><Icon name="link" /> {{ claim.link }}</a>
-      <ClaimJudge v-if="ed.judge" :claim @close="emit('close')" />
+      <ClaimShots :claim />
     </template>
+    <ClaimJudge v-if="ed.judge" :claim :class="{ 'pt-2 border-top': ed.editable }" @close="emit('close')" />
   </div>
 </template>
 

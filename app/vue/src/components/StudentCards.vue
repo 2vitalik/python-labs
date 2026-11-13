@@ -7,13 +7,15 @@ import { games } from '../catalog.js'
 import { lookAs, user } from '@core/user.js'
 
 // /students as a gallery: who picked which game — and its cover, once a window has a screenshot; the counters of the
-// description are everyone's since the insides opened (T259); the admin also sees what is accepted and has «👁» —
-// straight into the student's own «Моя гра» as them
+// description are everyone's since the insides opened (T259); the admin also sees what is accepted, what waits for
+// their word (⏳) and has «👁» — straight into the student's own «Моя гра» as them
 defineProps({ students: Array })
 const admin = computed(() => user.value?.status === 'admin')
 const fio = (s) => s.name || s.nick
 const counts = (g) => [[g.entities, 'сут.'], [g.rules, 'правил'], [g.windows, 'вікон'], [g.claims, 'заявок']].filter(([n]) => n).map(([n, w]) => `${n} ${w}`).join(' · ')
 const base = (g) => games.value.find((b) => b.slug === g.base_game)
+const few = (n) => n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)
+const waits = (n) => `${n} ${n % 10 === 1 && n % 100 !== 11 ? 'заявка чекає' : few(n) ? 'заявки чекають' : 'заявок чекають'} вердикту`
 const baseText = (g) => (base(g) ? `${base(g).icon} ${base(g).title}` : `✨ ${g.base_custom}`)
 if (!games.value.length) getGames().then((g) => (games.value = g))
 </script>
@@ -39,7 +41,8 @@ if (!games.value.length) getGames().then((g) => (games.value = g))
           <div v-if="s.game.id" class="mt-1">
             🎮 {{ s.game.title }}
             <div class="text-secondary small">основа: {{ baseText(s.game) }}</div>
-            <div v-if="counts(s.game)" class="text-secondary small">{{ counts(s.game) }}<span v-if="admin && s.game.accepted" class="text-success"> · ✓ {{ s.game.accepted }}</span></div>
+            <div v-if="counts(s.game)" class="text-secondary small">{{ counts(s.game) }}<span v-if="admin && s.game.accepted" class="text-success"> · ✓ {{ s.game.accepted }}</span><span
+              v-if="admin && s.game.waiting" class="wait" :title="waits(s.game.waiting)"> · ⏳ {{ s.game.waiting }}</span></div>
           </div>
           <div v-else class="text-secondary mt-1">Гру ще не обрано</div>
         </div>
@@ -50,4 +53,5 @@ if (!games.value.length) getGames().then((g) => (games.value = g))
 
 <style scoped>
 .cover { height: 140px; }
+.wait { color: var(--bs-warning-text-emphasis); }
 </style>

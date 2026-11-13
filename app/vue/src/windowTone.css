@@ -1,0 +1,8 @@
+/* a window's colour says its type (T284 §1): the main menu, the game screen — the field's colour, it lives there — and
+   any other window; the same on the map, on the window's card and in its card under the mouse. An element takes `.gg-w`
+   and maybe `.tone-main` / `.tone-game` (graphTree.js: toneOf); --w is the hue, the ground, the frame and the ink come from it */
+:root { --gg-win: #0288d1; --gg-main: #e39a00; --gg-game: #00897b; }
+.gg-w { --w: var(--gg-win); --w-bg: color-mix(in srgb, var(--w) 9%, var(--bs-body-bg)); --w-line: color-mix(in srgb, var(--w) 50%, var(--bs-body-bg));
+  --w-ink: color-mix(in srgb, var(--w) 72%, var(--bs-body-color)); }
+.gg-w.tone-main { --w: var(--gg-main); --w-bg: color-mix(in srgb, var(--w) 20%, var(--bs-body-bg)); --w-line: color-mix(in srgb, var(--w) 75%, var(--bs-body-bg)); }
+.gg-w.tone-game { --w: var(--gg-game); --w-bg: color-mix(in srgb, var(--w) 17%, var(--bs-body-bg)); --w-line: color-mix(in srgb, var(--w) 70%, var(--bs-body-bg)); }
