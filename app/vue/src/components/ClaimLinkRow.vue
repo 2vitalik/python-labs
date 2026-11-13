@@ -60,7 +60,7 @@ function shortLink(url, max = 32) {
           <div v-if="claim.status === 'returned' && claim.verdict" class="verdict">{{ claim.verdict }}</div>
         </div>
       </template>
-      <ClaimPop :claim @close="open = false" />
+      <ClaimPop :claim :link-first="!claim.link" @close="open = false" />
     </Pop>
   </div>
 </template>

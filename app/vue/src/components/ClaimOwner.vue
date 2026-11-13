@@ -1,5 +1,5 @@
 <script setup>
-import { computed, reactive, ref } from 'vue'
+import { computed, onMounted, reactive, ref } from 'vue'
 
 import DelButton from '@core/components/DelButton.vue'
 import Icon from '@core/components/Icon.vue'
@@ -10,8 +10,9 @@ import MoveTo from './MoveTo.vue'
 import SlotFields from './SlotFields.vue'
 
 // the owner's part of a claim's panel: params, note, link; then move it, delete it or tell the teacher the card belongs
-// elsewhere. An auto-claim follows its part: only its note and link are the student's
-const props = defineProps({ claim: Object })
+// elsewhere. An auto-claim follows its part: only its note and link are the student's. `linkFirst` — opened for the link
+// («＋ посилання» in a table of links): the cursor starts there
+const props = defineProps({ claim: Object, linkFirst: Boolean })
 const emit = defineEmits(['close'])
 const ed = useEd()
 const info = computed(() => ed.info(props.claim.task))
@@ -19,6 +20,8 @@ const title = computed(() => info.value?.title || props.claim.task)
 const form = reactive({ params: { ...props.claim.params }, note: props.claim.note || '', link: props.claim.link || '' })
 const moving = ref(false)
 const error = ref('')
+const linkBox = ref()
+onMounted(() => props.linkFirst && linkBox.value?.focus())
 
 async function run(call) {
   error.value = ''
@@ -45,8 +48,8 @@ function newRule() {
     <div v-if="!claim.auto && info?.slots?.length" class="d-flex flex-wrap gap-2 align-items-center">
       <SlotFields :specs="info.slots" :params="form.params" />
     </div>
-    <input v-model="form.note" class="form-control form-control-sm" placeholder="Нотатка: як саме це зроблено">
-    <input v-model="form.link" class="form-control form-control-sm"
+    <input v-model="form.note" class="form-control form-control-sm" placeholder="Нотатка: як саме це зроблено" @keydown.enter="save">
+    <input ref="linkBox" v-model="form.link" class="form-control form-control-sm" @keydown.enter="save"
            :placeholder="info?.zone === 'support' ? 'Посилання: відео, сторінка гри, документ' : 'GitHub: файл або коміт — за бажанням'">
     <div class="d-flex gap-2">
       <button type="button" class="btn btn-sm btn-success" @click="save"><Icon name="check" /> Зберегти</button>

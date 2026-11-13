@@ -12,7 +12,7 @@ import Md from './Md.vue'
 
 // a claim's panel (T270 §7): the card it claims — what it is, where it lives, its description — then by who looks:
 // the owner edits, moves or drops it, the teacher gives the verdict, anyone else reads the note, the link and the verdict
-const props = defineProps({ claim: Object })
+const props = defineProps({ claim: Object, linkFirst: Boolean })  // linkFirst — the owner's cursor starts in the link
 const emit = defineEmits(['close'])
 const ed = useEd()
 const info = computed(() => ed.info(props.claim.task))
@@ -39,7 +39,7 @@ const home = computed(() => {
     <div v-if="claim.verdict && !ed.judge" class="small" :class="claim.status === 'returned' ? 'text-danger' : 'text-secondary'">
       Викладач: {{ claim.verdict }}
     </div>
-    <ClaimOwner v-if="ed.editable" :claim @close="emit('close')" />
+    <ClaimOwner v-if="ed.editable" :claim :link-first @close="emit('close')" />
     <template v-else>
       <div v-if="claim.note" class="note">{{ claim.note }}</div>
       <a v-if="claim.link" :href="claim.link" target="_blank" rel="noopener" class="small text-break"><Icon name="link" /> {{ claim.link }}</a>
