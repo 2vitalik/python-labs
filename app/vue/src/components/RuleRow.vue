@@ -9,7 +9,8 @@ import ClaimRow from './ClaimRow.vue'
 import RuleForm from './RuleForm.vue'
 import RuleText from './RuleText.vue'
 
-// one rule of «Правила»: the sentence and the cards claimed on it; the pencil turns the sentence into the form in place
+// one rule of «Правила»: the sentence and the cards claimed on it; the pencil turns the sentence into the form in place.
+// The pencil and the trash hang in the corner and only the КОЛИ line makes room for them: the lines below run full width
 const props = defineProps({ rule: Object })
 const ed = useEd()
 const edit = ref(false)
@@ -31,13 +32,13 @@ async function remove() {
 <template>
   <div :id="`r-${rule.id}`" class="rule-row" :class="{ editing: edit }">
     <RuleForm v-if="edit" :rule @saved="edit = false" @cancel="edit = false" />
-    <div v-else class="d-flex align-items-start gap-1">
-      <RuleText :rule :parts="ed.parts" class="text" />
-      <template v-if="ed.editable">
+    <template v-else>
+      <RuleText :rule :parts="ed.parts" :class="{ acted: ed.editable }" />
+      <div v-if="ed.editable" class="acts">
         <button type="button" class="iact" title="Редагувати правило" @click="edit = true"><Icon name="pencil" /></button>
         <DelButton what="правило" :note @yes="remove" />
-      </template>
-    </div>
+      </div>
+    </template>
     <div v-if="claims.length" class="claims">
       <ClaimRow v-for="c in claims" :key="c.id" :claim="c" />
     </div>
@@ -45,8 +46,9 @@ async function remove() {
 </template>
 
 <style scoped>
-.rule-row { padding: .3rem .4rem .3rem .5rem; border: 1px solid var(--bs-border-color); border-radius: .375rem; background: var(--bs-body-bg); }
+.rule-row { position: relative; padding: .3rem .4rem .3rem .5rem; border: 1px solid var(--bs-border-color); border-radius: .375rem; background: var(--bs-body-bg); }
 .rule-row.editing { padding: .5rem; background: var(--bs-tertiary-bg); }
-.text { flex: 1 1 auto; min-width: 0; }
+.acts { position: absolute; top: .2rem; right: .25rem; display: flex; gap: .1rem; }
+.acted > :deep(.pieces:nth-child(2)) { padding-right: 3.3rem; }
 .claims { margin-top: .3rem; padding-top: .3rem; border-top: 1px dashed var(--bs-border-color); }
 </style>

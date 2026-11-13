@@ -54,7 +54,7 @@ const words = (chunk) => chunk.split(/!([^!]+)!/)
 
 // one word of a sentence with its arguments → pieces [{ t: word|entity|window|side|num|choice|state|name|free|not, v, … }].
 // A negated condition reads through its `neg` template; a word without one starts with a `lead` «не» (RuleText: «ЯКЩО НЕ»).
-// ctx: { parts, when, marks } — marks from ruleSides.js put a side's letter next to the trigger's side
+// ctx: { parts, when, marks } — marks from ruleSides.js put a side's letter (`sub`, of side `sd`) next to the trigger's side
 export function pieces(dic, item, ctx) {
   const spec = specOf(dic, item.kind)
   const neg = item.not && spec?.neg
@@ -72,7 +72,7 @@ export function pieces(dic, item, ctx) {
     else if (filled(item[m[1]])) {
       const p = argPiece(args[m[1]], item[m[1]], item, ctx, m[2] === '!')
       if (m[2] === '+' && p.t === 'num' && !p.v.startsWith('−')) p.v = `+${p.v}`
-      if (dic === 'triggers' && ctx.marks?.[m[1]]) p.sub = ctx.marks[m[1]]
+      if (dic === 'triggers' && ctx.marks?.[m[1]]) Object.assign(p, { sub: ctx.marks[m[1]], sd: m[1] })
       out.push(p)
     }
   }

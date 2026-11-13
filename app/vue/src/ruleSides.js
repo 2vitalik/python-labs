@@ -18,8 +18,8 @@ export function marks(rule) {
 export function sidePiece(s, ctx) {
   const p = ctx.parts.find((x) => x.id === ctx.when?.[s])
   const l = letter(s)
-  if (!p) return { t: 'side', v: l, tip: `сторона ${l} з КОЛИ: ${vocab.value.sides[ctx.when?.[s]] || '?'}` }
-  return { t: 'entity', id: p.id, v: p.title, icon: iconOf(p), sub: twin(ctx.when) ? l : '', tip: `та сама, що в КОЛИ (${l}) — показати` }
+  if (!p) return { t: 'letter', v: l, sd: s, tip: `сторона ${l} з КОЛИ: ${vocab.value.sides[ctx.when?.[s]] || '?'}` }
+  return { t: 'entity', id: p.id, v: p.title, icon: iconOf(p), sub: twin(ctx.when) ? l : '', sd: s, tip: `та сама, що в КОЛИ (${l}) — показати` }
 }
 
 // how the form's list names a side of the trigger: «👻 Привид — той, що в КОЛИ (Б)», «будь-хто з КОЛИ (А)»
