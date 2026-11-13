@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T281** · тікетів: 280 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T284** · тікетів: 283 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -288,3 +288,6 @@
 | games | [T278](games/.t/T278-P--game-desc-v5-design.md) | 💡 | game-desc-v5-design | Опис гри v5: плюс питає назву, переходи, поради, порядок секцій, історія | 🟢 🟩 |
 | platform | [T279](platform/.t/T279--game-desc-v5/plan.md) | ⚙️ | game-desc-v5 | Опис гри v5 — реалізація — план | 🟢 🟩 |
 | games | [T280](games/.t/T280-Q--game-desc-v5-choices.md) | ❓ | game-desc-v5-choices | Опис гри v5 — вибори | 🔴 ⬜ |
+| platform | [T281](platform/.t/T281--game-desc-v5-polish/plan.md) | ⚙️ | game-desc-v5-polish | Опис гри v5.1 — шліфування після перегляду — план | 🟢 🟩 |
+| platform | [T282](platform/.t/T282-P--teacher-edits-student-game.md) | 💡 | teacher-edits-student-game | Викладач у грі студента: швидкі переходи й редагування | 🟢 ⬜ |
+| games | [T283](games/.t/T283-Q--game-desc-v51-choices.md) | ❓ | game-desc-v51-choices | Опис гри v5.1 — вибори | 🔴 ⬜ |
