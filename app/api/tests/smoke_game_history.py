@@ -140,6 +140,14 @@ with TestClient(main.app) as c:
         before = page[-1]["at"]
     check("pages by `before`: the same rows, none twice", ids == [x["id"] for x in rows], f"{len(ids)} vs {len(rows)}")
 
+    own, rest = c.get(H, params={"limit": 200, "who": "student"}).json(), c.get(H, params={"limit": 200, "who": "staff"}).json()
+    check("who=student: the owner's rows only", own and {x["actor"]["role"] for x in own} == {"student"}, {x["actor"]["role"] for x in own})
+    others = {x["actor"]["role"] for x in rows} - {"student"}
+    check("who=staff: everyone but the owner", {"teacher", "agent"} <= others == {x["actor"]["role"] for x in rest}, {x["actor"]["role"] for x in rest})
+    check("who: the two halves make the whole", len(own) + len(rest) == len(rows), f"{len(own)} + {len(rest)} vs {len(rows)}")
+    check("who=staff pages too", [x["id"] for x in c.get(H, params={"limit": 1, "who": "staff"}).json()] == [rest[0]["id"]])
+    check("who: an unknown value → 422", c.get(H, params={"who": "nobody"}).status_code == 422)
+
     check("view as the student: own history", c.post("/api/me/as/stud").status_code == 200 and len(c.get(H, params={"limit": 200}).json()) == len(rows))
     c.delete("/api/me/as")
     login(c, "stud2@nure.ua", "student", group="ПЗПІ-25-2")

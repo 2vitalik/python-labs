@@ -24,7 +24,6 @@ const busy = ref(false)
 const error = ref('')
 const who = ref('')
 const filters = computed(() => WHO.map((w) => ({ ...w, label: (mine.value && w.mine) || w.label })))
-const shown = computed(() => rows.value?.filter(WHO.find((w) => w.key === who.value).keep) || [])
 const name = computed(() => head.value?.student.name || nick.value)
 const crumbs = computed(() => (own.value ? [['/my/game', 'Моя гра'], 'Історія'] : studentsCrumbs([back.value, name.value], 'Історія')))
 useTitle(() => head.value?.game && `Історія · ${head.value.game.title}`)
@@ -32,7 +31,9 @@ useTitle(() => head.value?.game && `Історія · ${head.value.game.title}`)
 async function load(before) {
   busy.value = true
   try {
-    const page = await getGameHistory(nick.value, before ? { limit: PAGE, before } : { limit: PAGE })
+    const asked = who.value
+    const page = await getGameHistory(nick.value, { limit: PAGE, ...(asked && { who: asked }), ...(before && { before }) })
+    if (asked !== who.value) return  // the filter changed meanwhile: its own answer is on the way
     rows.value = before ? [...rows.value, ...page] : page
     more.value = page.length >= PAGE
     error.value = ''
@@ -49,6 +50,7 @@ watch(nick, (n) => {
   load()
   getStudentGame(n).then((d) => (head.value = d), () => {})
 }, { immediate: true })
+watch(who, () => load())  // the server filters: a rare teacher's row is found at once, not pages down
 </script>
 
 <template>
@@ -65,9 +67,8 @@ watch(nick, (n) => {
       </div>
     </div>
     <div v-if="error" class="alert alert-danger">{{ error }}</div>
-    <GameHistoryRow v-for="r in shown" :key="r.id" :row="r" />
-    <p v-if="rows && !rows.length && !error" class="text-secondary text-center mt-4">Змін ще нема.</p>
-    <p v-else-if="rows?.length && !shown.length" class="text-secondary text-center mt-4">Серед показаних змін таких нема{{ more ? ' — глянь далі' : '' }}.</p>
+    <GameHistoryRow v-for="r in rows || []" :key="r.id" :row="r" />
+    <p v-if="rows && !rows.length && !error" class="text-secondary text-center mt-4">{{ who ? 'Таких змін нема.' : 'Змін ще нема.' }}</p>
     <div v-if="more" class="text-center">
       <button class="btn btn-outline-secondary btn-sm" :disabled="busy" @click="load(rows.at(-1).at)">Показати ще</button>
     </div>

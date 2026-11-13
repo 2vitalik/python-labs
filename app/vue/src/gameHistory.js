@@ -16,11 +16,11 @@ export const ACTIONS = {
   claimed: { word: 'знову заявлено', cls: 'text-body-secondary' },
 }
 
-// the student's own hand, or everyone else's: the teacher, an agent, a script
+// the owner's own hand, or everyone else's: the teacher, an agent, a script — the API filters by `key` (who=)
 export const WHO = [
-  { key: '', label: 'усі', keep: () => true },
-  { key: 'student', label: 'студент', mine: 'я', keep: (r) => r.actor.role === 'student' },
-  { key: 'staff', label: 'викладач і агент', keep: (r) => r.actor.role !== 'student' },
+  { key: '', label: 'усі' },
+  { key: 'student', label: 'студент', mine: 'я' },
+  { key: 'staff', label: 'викладач і агент' },
 ]
 
 export const PAGE = 50

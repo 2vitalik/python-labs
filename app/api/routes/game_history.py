@@ -1,5 +1,6 @@
 """History of one student's game (T278 §12): read-only, for the owner and the teacher."""
 from datetime import datetime
+from typing import Literal
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 
@@ -14,10 +15,11 @@ router = APIRouter(prefix="/api/students")
 
 @router.get("/{nick}/game/history")
 async def game_history(nick: str, before: datetime | None = None, limit: int = Query(50, ge=1, le=200),
-                       user: User = Depends(active_user)):
-    """Newest first; `before` — `at` of the last row seen, for the next page. A fellow student sees the game, not its history."""
+                       who: Literal["", "student", "staff"] = "", user: User = Depends(active_user)):
+    """Newest first; `before` — `at` of the last row seen, for the next page; `who` — the owner's own changes or everyone
+    else's (the teacher, an agent, a script). A fellow student sees the game, not its history."""
     owner = await visible_owner(nick, user)
     if owner.email != user.email and user.status != Status.admin:
         raise HTTPException(403, "Історію гри бачать її автор і викладач.")
     game = await Game.find_one(Game.owner == owner.email)
-    return await game_log.rows(game, before, limit) if game else []
+    return await game_log.rows(game, before, limit, who) if game else []

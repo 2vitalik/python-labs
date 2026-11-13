@@ -74,10 +74,14 @@ async def names(snaps: dict, found: list[Change]) -> Names:
                  {o: t.title for o, t in cat["fieldopt"].items()})
 
 
-async def rows(game: Game, before: datetime | None, limit: int) -> list[dict]:
+BY = {"student": lambda owner: {"actor": owner}, "staff": lambda owner: {"actor": {"$ne": owner}}}  # the owner's hand or the rest
+
+
+async def rows(game: Game, before: datetime | None, limit: int, who: str = "") -> list[dict]:
     snaps, ids = await snapshots(game)
     query = {"$or": [{"coll": "student_games", "doc_id": game.id}, {"coll": {"$in": COLLS}, "doc_id": {"$in": list(ids)}}]}
-    found = await page(query | SEEN | AUTO, before, limit)
+    by = BY[who](game.owner) if who else {}
+    found = await page(query | SEEN | AUTO | by, before, limit)
     who, nm = await actors({c.actor for c in found}), await names(snaps, found)
     out = []
     for c in found:
