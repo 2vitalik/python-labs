@@ -207,4 +207,3 @@ claims:
   - {slug: typing-mypy, status: accepted}
   - state-as-data
   - custom-exceptions
-  - sound-volume
