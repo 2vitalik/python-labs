@@ -12,7 +12,7 @@ export const site = {
   students: {
     page: '',  // what /students/<nick> shows, the text of links to it — «Гра»
     cols: [],  // /students, columns after the name: { title, text: (s) => …, to: (s) => … }
-    facets: [],  // /students, filters after «вхід»: { key, text, title, has: (s) => … }
+    facets: [],  // /students, filters after «вхід»: { key, text, title, has: (s) => …, keep? — remembered as the view is, table? — false: no checkmark column in /table }
     cards: null,  // /students as a gallery: a component that takes `students`
     inGallery: null,  // who has a card in the gallery: (s) => …; null = everyone
     asStudent: null,  // the same page for a student — a slice of it: { title, crumbs: [[to, text], …] } — its name and where it hangs; null = the admin's only

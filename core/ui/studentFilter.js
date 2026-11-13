@@ -1,6 +1,7 @@
 import { computed, toValue } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
+import { load, save } from './local.js'
 import { site } from './site.js'
 import { matches } from './studentSearch.js'
 import { user } from './user.js'
@@ -19,6 +20,12 @@ const label = (key) => (key === NONE ? 'Без групи' : key)
 export const short = (key) => (key === NONE ? '—' : key.replace(/^\p{Lu}+(\p{Ll}*)-(.+)$/u, '$2$1'))
 // «ПЗПІ-25-3» → «ПЗПІ-25»: the regular groups of a year share the «25-*» chip; «-0» and «ПЗПІи» stay out of it
 const year = (key) => key.match(/^(\p{Lu}+-\d+)-[1-9]\d*$/u)?.[1]
+
+// the order /students last showed its rows in, in this tab: a student's page pages through it (the site's)
+export const keepOrder = (nicks) => { try { sessionStorage.setItem('students-order', JSON.stringify(nicks)) } catch { /* no paging */ } }
+export function lastOrder() {
+  try { return JSON.parse(sessionStorage.getItem('students-order')) || [] } catch { return [] }
+}
 
 // groups of test students go last, «no group» right before them
 export function byGroup(students) {
@@ -65,11 +72,20 @@ export function useStudentFilter(students) {
     return { ...f, value: route.query[f.key], n: { 1: yes, 0: list.length - yes } }
   }))
 
-  const set = (patch) => router.replace({ query: { ...route.query, ...patch } })
+  // a facet marked `keep` is remembered like the view: back on the page, it is on again unless the link says its own
+  const kept = (key) => `students-${key}`
+  const set = (patch) => {
+    for (const f of FACETS) if (f.keep && f.key in patch) save(kept(f.key), patch[f.key] || '')
+    return router.replace({ query: { ...route.query, ...patch } })
+  }
+  const restore = () => {
+    const patch = Object.fromEntries(FACETS.filter((f) => f.keep && !route.query[f.key] && load(kept(f.key))).map((f) => [f.key, load(kept(f.key))]))
+    if (Object.keys(patch).length) router.replace({ query: { ...route.query, ...patch } })
+  }
   const toggleGroup = (g) => set({ group: (g.on ? keys.value.filter((k) => !g.keys.includes(k)) : [...new Set([...keys.value, ...g.keys])]).join() || undefined })
   const toggleFacet = (key, v) => set({ [key]: route.query[key] === v ? undefined : v })
   const setQ = (v) => set({ q: v || undefined })
   const reset = () => set(Object.fromEntries(['group', 'q', ...FACETS.map((f) => f.key)].map((k) => [k, undefined])))
 
-  return { shown, picked, active, q, setQ, groups, facets, toggleGroup, toggleFacet, reset }
+  return { shown, picked, active, q, setQ, groups, facets, toggleGroup, toggleFacet, reset, restore }
 }

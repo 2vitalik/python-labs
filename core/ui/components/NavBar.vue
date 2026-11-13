@@ -22,12 +22,26 @@ const open = ref(false)
 const close = (e) => (!e || !more.value?.contains(e.target)) && (open.value = false)
 watch(() => route.fullPath, () => close())
 watch(user, () => layout(), { flush: 'post' })  // the name appears/changes → re-fit
-onMounted(() => document.addEventListener('click', close))
-onUnmounted(() => document.removeEventListener('click', close))
+
+// always in sight (T284 §3): the bar sticks to the top and, once the page is scrolled, gets lower; whatever sticks under
+// it reads its height as --nav-h. Two thresholds, so the bar does not flicker where it changes
+const small = ref(false)
+const scrolled = () => (small.value = scrollY > (small.value ? 40 : 120))
+const sized = new ResizeObserver(() => document.documentElement.style.setProperty('--nav-h', `${bar.value.offsetHeight}px`))
+onMounted(() => {
+  document.addEventListener('click', close)
+  addEventListener('scroll', scrolled, { passive: true })
+  sized.observe(bar.value)
+})
+onUnmounted(() => {
+  document.removeEventListener('click', close)
+  removeEventListener('scroll', scrolled)
+  sized.disconnect()
+})
 </script>
 
 <template>
-  <nav ref="bar" class="navbar navbar-expand bg-body-tertiary border-bottom">
+  <nav ref="bar" class="navbar navbar-expand bg-body-tertiary border-bottom sticky-top" :class="{ small }">
     <div class="page d-flex align-items-center">
       <RouterLink class="navbar-brand d-flex align-items-center" to="/" :title="site.name"><IconHome :size="20" /></RouterLink>
       <ul ref="list" class="navbar-nav">
@@ -49,6 +63,10 @@ onUnmounted(() => document.removeEventListener('click', close))
 </template>
 
 <style scoped>
+/* scrolled: the same row with less air; the type stays, so navFit's widths hold */
+.navbar { transition: padding .15s; }
+.navbar.small { --bs-navbar-padding-y: 0; }
+.small .nav-link, .small .navbar-brand { padding-top: .3rem; padding-bottom: .3rem; }
 .navbar-brand { margin-right: .5rem; }
 /* the row takes the free width; links never shrink or wrap — the fit is computed in navFit.js */
 .navbar-nav { flex: 1 1 0; min-width: 0; }

@@ -28,6 +28,15 @@ const PATHS = {
   help: '<circle cx="8" cy="8" r="6.5"/><path d="M6.2 6.3a1.9 1.9 0 1 1 2.6 1.8c-.5.3-.8.6-.8 1.3"/><path d="M8 11.6h.01" stroke-width="2"/>',
   keys: '<rect x="1.5" y="4" width="13" height="8.5" rx="1.5"/><path d="M5 10h6"/><path d="M4.3 7h.01M6.8 7h.01M9.2 7h.01M11.7 7h.01" stroke-width="2"/>',
   clock: '<circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.3 1.5"/>',
+  arrow: '<path d="M2.5 8h11M9.5 4l4 4-4 4"/>',
+  up: '<path d="M4 10l4-4 4 4"/>',
+  top: '<path d="M3.5 2.5h9M8 13.5v-8M4.5 8.5L8 5l3.5 3.5"/>',
+  bolt: '<path d="M9.2 1.8L3.8 9h3.9l-.9 5.2L12.2 7H8.3z"/>',
+  more: '<path d="M3.5 8h.01M8 8h.01M12.5 8h.01" stroke-width="2.2"/>',
+  short: '<path d="M3 3.5h10M3 7h10"/><path d="M3 10.5h10M3 13.5h10" opacity=".35"/>',
+  // a window of the game: bare, or with its screenshot — the body filled
+  win: '<rect x="2" y="3" width="12" height="10" rx="1.5"/><path d="M2 6h12"/>',
+  winshot: '<rect x="2" y="3" width="12" height="10" rx="1.5"/><path d="M2 6h12"/><rect x="4" y="7.6" width="8" height="3.6" rx=".5" fill="currentColor" stroke="none"/>',
 }
 </script>
 

@@ -1,4 +1,5 @@
 import { load, save } from './local.js'
+import { plural } from './plural.js'
 
 // polls (T174): an answer is a line with its emoji first; the table shows the emoji alone
 const seg = new Intl.Segmenter('uk', { granularity: 'grapheme' })
@@ -69,11 +70,7 @@ export function review(f) {
   return { options, errors, warnings, ready }
 }
 
-export function plural(n, one, few, many) {
-  const d = n % 10
-  const t = n % 100
-  return d === 1 && t !== 11 ? one : d >= 2 && d <= 4 && (t < 12 || t > 14) ? few : many
-}
+export { plural }
 
 export const today = () => new Date().toLocaleDateString('uk-UA', { day: '2-digit', month: '2-digit' })
 export const moment = (iso) => iso && new Date(iso).toLocaleString('uk-UA', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })

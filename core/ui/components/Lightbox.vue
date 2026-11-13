@@ -5,20 +5,21 @@ import { box } from '../lightbox.js'
 import Icon from './Icon.vue'
 
 // a picture over the whole page (lightbox.js: showShot): a click anywhere or Esc folds it back, ← → walk the list.
-// Mounted once by the page that has pictures.
+// Mounted once by the page that has pictures. Its Esc and its click are its own: a panel the picture was opened from
+// (a claim's, a card under the mouse) listens on the document for the same and must stay open
 const step = (d) => (box.value.i = (box.value.i + d + box.value.list.length) % box.value.list.length)
 function key(e) {
-  if (e.key === 'Escape') box.value = null
+  if (e.key === 'Escape') { e.stopPropagation(); box.value = null }
   else if (e.key === 'ArrowRight') step(1)
   else if (e.key === 'ArrowLeft') step(-1)
 }
-watch(() => !!box.value, (on) => document[on ? 'addEventListener' : 'removeEventListener']('keydown', key))
-onBeforeUnmount(() => document.removeEventListener('keydown', key))
+watch(() => !!box.value, (on) => document[on ? 'addEventListener' : 'removeEventListener']('keydown', key, true))
+onBeforeUnmount(() => document.removeEventListener('keydown', key, true))
 </script>
 
 <template>
   <Transition name="zoom">
-    <div v-if="box" class="lightbox" @click="box = null">
+    <div v-if="box" class="lightbox" @click="box = null" @mousedown.stop>
       <img :key="box.i" :src="box.list[box.i]" alt="">
       <button type="button" class="ctl close" title="Закрити (Esc)"><Icon name="x" /></button>
       <template v-if="box.list.length > 1">

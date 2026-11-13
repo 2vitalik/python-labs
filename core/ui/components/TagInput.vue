@@ -30,19 +30,21 @@ const remove = (tag) => (tags.value = tags.value.filter((t) => t !== tag))
 
 <template>
   <div class="form-control tags d-flex flex-wrap align-items-center gap-1" :class="{ disabled }" @click="input.focus()">
-    <span v-for="t in tags" :key="t" class="badge text-bg-light border fw-normal d-inline-flex align-items-center gap-1">
+    <span v-for="t in tags" :key="t" class="badge bg-body-secondary text-body border fw-normal d-inline-flex align-items-center gap-1">
       {{ hash ? '#' : '' }}{{ t }}<button v-if="!disabled" type="button" class="btn-close" :aria-label="`Прибрати ${t}`" @click.stop="remove(t)"></button>
     </span>
-    <input ref="input" v-model="text" :list="id" :disabled class="border-0 bg-transparent flex-grow-1" :placeholder="tags.length ? '' : placeholder || (hash ? 'теги через кому' : 'через кому')"
-           @keydown="key" @blur="add" @input="picked">
+    <input ref="input" v-model="text" :list="id" :disabled :style="{ width: `${Math.max(2, text.length + 2)}ch` }" class="border-0 bg-transparent flex-grow-1"
+           :placeholder="tags.length ? '' : placeholder || (hash ? 'теги через кому' : 'через кому')" @keydown="key" @blur="add" @input="picked">
     <datalist :id><option v-for="t in hints" :key="t" :value="t" /></datalist>
   </div>
 </template>
 
 <style scoped>
 .tags { min-height: calc(1.5em + .75rem + 2px); padding-top: .25rem; padding-bottom: .25rem; cursor: text; }
+.tags.form-control-sm { min-height: calc(1.5em + .5rem + 2px); }  /* as tall as its small neighbours */
 .tags.disabled { background: var(--bs-secondary-bg); }
-input { outline: none; min-width: 6rem; padding: 0; color: inherit; }
+/* a couple of letters wide, more as they are typed (a bare input is ~20): it stays on the chips' line while it fits */
+input { outline: none; min-width: 0; padding: 0; color: inherit; }
 input::placeholder { color: var(--bs-gray-500); }  /* as .form-control's in style.css */
 .btn-close { width: .5em; height: .5em; padding: 0; }
 </style>

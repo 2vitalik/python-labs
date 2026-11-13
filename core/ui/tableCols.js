@@ -70,10 +70,11 @@ function polls(list) {
       { tags: p.tags, poll: p, hint: (r) => poll.doubt(r).map((id) => `${poll.options[id].emoji} ${poll.options[id].text} — сайт цього не бачить`).join('\n') || (r.polls[p.id] ? 'збігається' : '') })]
   })
 }
-// the site's part of a row: its own columns, and its /students filters as checkmarks
+// the site's part of a row: its own columns, and its /students filters as checkmarks (a filter with `table: false` has
+// a column of its own among them)
 const own = () => [
   ...(site.table?.cols || []).map((c) => ({ group: site.students.page || 'Сайт', ...c })),
-  ...site.students.facets.map((f) => col(f.key, site.students.page || 'Сайт', 'bool', f.title, f.text.split(' ')[0], (s) => !!f.has(s))),
+  ...site.students.facets.filter((f) => f.table !== false).map((f) => col(f.key, site.students.page || 'Сайт', 'bool', f.title, f.text.split(' ')[0], (s) => !!f.has(s))),
 ]
 function fields(list, labs) {
   const make = (f, lab) => col(lab ? `f.${f.key}.${lab}` : `f.${f.key}`, lab ? labName(lab) : 'Мої поля', FIELD[f.type], lab ? `${f.title} · ${labName(lab)}` : f.title,

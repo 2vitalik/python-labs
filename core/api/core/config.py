@@ -23,6 +23,7 @@ class Settings(BaseSettings):
     week_days: int = 6  # …and its days, counted from Monday
     labs: int = 5  # labs in the course: the columns of /deadlines, what /due and the reviews may name (T235)
     game_depth: str = "full"  # how much of «Моя гра» a student fills (T270): simple — header, entities, windows · full — all; admins and test students see full
+    grade_scale: str = "draft"  # the estimate «coins → grade» in «Моя гра» (T284): draft — the teacher sees it · open — students too
     zoom_account_id: str = ""  # a Server-to-Server OAuth app in Zoom Marketplace (T221): attendance of a lesson from its meeting
     zoom_client_id: str = ""
     zoom_client_secret: str = ""  # all three empty = «Оновити із Zoom» says it is not set up

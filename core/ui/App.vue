@@ -7,6 +7,7 @@ import { postView } from './api.js'
 import DownBar from './components/DownBar.vue'
 import NavBar from './components/NavBar.vue'
 import Oops from './components/Oops.vue'
+import PageJump from './components/PageJump.vue'
 import ViewBar from './components/ViewBar.vue'
 import { down } from './http.js'
 import NotFoundPage from './pages/NotFoundPage.vue'
@@ -41,4 +42,5 @@ watch(() => route.hash, (h) => h && flash(h.slice(1)))  // #target changed on a 
       </template>
     </template>
   </main>
+  <PageJump />
 </template>

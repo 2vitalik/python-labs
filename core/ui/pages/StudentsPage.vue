@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
 
 import { getStudents, importStudents } from '../api.js'
@@ -8,7 +8,7 @@ import StudentFilters from '../components/StudentFilters.vue'
 import StudentsTable from '../components/StudentsTable.vue'
 import { load as recall, save } from '../local.js'
 import { site } from '../site.js'
-import { useStudentFilter } from '../studentFilter.js'
+import { byGroup, keepOrder, useStudentFilter } from '../studentFilter.js'
 import { studentsCrumbs, studentsHome } from '../students.js'
 import { useTitle } from '../title.js'
 import { user } from '../user.js'
@@ -17,14 +17,16 @@ import { user } from '../user.js'
 const students = ref([])
 const cards = site.students.cards  // the site's gallery, when it has one
 const isAdmin = computed(() => user.value?.status === 'admin')
+const route = useRoute()
 // the look last chosen is remembered, so the menu's link comes back to it; a link with ?view= says its own
-const view = ref((cards && (useRoute().query.view || recall('students-view') || (isAdmin.value ? 'table' : 'cards'))) === 'cards' ? 'cards' : 'table')
+const view = ref((cards && (route.query.view || recall('students-view') || (isAdmin.value ? 'table' : 'cards'))) === 'cards' ? 'cards' : 'table')
 const look = (v) => { view.value = v; save('students-view', v) }
 const showImport = ref(false)
 const importText = ref('')
 const importResult = ref('')
 
-const { shown, picked, active, q, setQ } = useStudentFilter(students)
+const { shown, picked, active, q, setQ, restore } = useStudentFilter(students)
+restore()
 // the gallery may be of some only (site.students.inGallery): the numbers in the heading and on the chips follow the view
 const of = (list) => (view.value === 'cards' && site.students.inGallery ? list.filter(site.students.inGallery) : list)
 const listed = computed(() => of(shown.value))
@@ -33,6 +35,10 @@ const group = computed(() => picked.value.join(', '))  // picked groups read as 
 const home = computed(() => studentsHome())
 const crumbs = computed(() => studentsCrumbs(...(group.value ? [group.value] : [])))
 useTitle(() => [home.value.name, group.value].filter(Boolean).join(' '))
+// the rows in the order they are seen, for paging on a student's page; not on the way out, when the query is the next page's
+const here = route.path
+const seen = computed(() => (view.value === 'cards' ? listed.value : byGroup(listed.value).flatMap((g) => g.list)))
+watchEffect(() => { if (route.path === here && students.value.length) keepOrder(seen.value.map((s) => s.nick)) })
 
 async function load() {
   students.value = await getStudents()

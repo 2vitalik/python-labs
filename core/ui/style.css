@@ -2,6 +2,10 @@
 :root { --page-max: 52rem; }
 .page { width: 100%; max-width: var(--page-max); margin: 0 auto; padding: 0 1rem; }
 
+/* the menu sticks to the top (NavBar sets --nav-h), and a page may stick a heading of its own under it (--stick-h):
+   whatever is scrolled to — an #anchor, a jump, a flash — lands below them, not under them */
+html { scroll-padding-top: calc(var(--nav-h, 3.5rem) + var(--stick-h, 0px) + .6rem); }
+
 /* Bootstrap 5.3 placeholders are nearly as dark as text; keep them clearly lighter */
 .form-control::placeholder {
   color: var(--bs-gray-500);
