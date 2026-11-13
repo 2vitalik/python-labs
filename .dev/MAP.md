@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T284** · тікетів: 283 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T287** · тікетів: 286 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -291,3 +291,6 @@
 | platform | [T281](platform/.t/T281--game-desc-v5-polish/plan.md) | ⚙️ | game-desc-v5-polish | Опис гри v5.1 — шліфування після перегляду — план | 🟢 🟩 |
 | platform | [T282](platform/.t/T282-P--teacher-edits-student-game.md) | 💡 | teacher-edits-student-game | Викладач у грі студента: швидкі переходи й редагування | 🟢 ⬜ |
 | games | [T283](games/.t/T283-Q--game-desc-v51-choices.md) | ❓ | game-desc-v51-choices | Опис гри v5.1 — вибори | 🔴 ⬜ |
+| games | [T284](games/.t/T284-P--game-desc-v6-design.md) | 💡 | game-desc-v6-design | Опис гри v6 — рішення: схема, підказки-картки, навігація, каталог | 🟢 🟩 |
+| platform | [T285](platform/.t/T285--game-desc-v6/plan.md) | ⚙️ | game-desc-v6 | Опис гри v6 — схема, підказки, навігація, каталог — план | 🟢 🟩 |
+| games | [T286](games/.t/T286-Q--game-desc-v6-choices.md) | ❓ | game-desc-v6-choices | Опис гри v6 — вибори | 🔴 🟩 |

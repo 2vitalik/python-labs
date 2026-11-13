@@ -1,0 +1,1736 @@
+# 2026-11-13 04:59 · python_labs_stand · dry · змінено 412
+## code-support
+logic-render-split: edit — description, proof
+dual-frontends: edit — description, proof
+interaction-table: edit — description, coin, proof silver → bronze
+state-as-data: edit — description, proof
+game-loop: keep — proof
+commit-history: keep — proof
+project-readme: keep — proof
+version-tags: keep — proof
+gitignore-clean: keep — proof
+feature-branch: keep — proof
+lab1: edit — description
+lab1-field-output: keep — proof
+lab1-read-key: keep — proof
+lab1-move-player: keep — proof
+lab1-cell-check: keep — proof
+lab1-game-loop: keep — proof
+lab1-own-functions: keep — proof
+lab1-data-types: keep — proof
+lab1-conditions: keep — proof
+lab1-loops: keep — proof
+lab1-function-params: keep — proof
+lab1-scope: keep — proof
+lab2: edit — description
+lab2-grid-matrix: edit — title, proof
+lab2-cell-dict: keep — proof
+lab2-direction-tuples: edit — title, proof
+lab2-save-text: edit — description, proof
+lab2-string-methods: keep — proof
+lab2-slices-comprehensions: keep — proof
+lab2-unpacking: keep — proof
+lab2-sets: keep — proof
+lab2-dict-tricks: keep — proof
+lab2-binary-save: keep — proof
+lab3: edit — description
+lab3-classes: keep — proof
+lab3-base-class: keep — proof
+lab3-init-str: keep — proof
+lab3-underscores: keep — proof
+lab3-eq-hash: keep — proof
+lab3-container-methods: edit — title, description, proof
+lab3-property: keep — proof
+lab3-mixins: activate — coin, proof, status bronze → tin
+lab3-classmethods: keep — proof
+lab4: edit — description
+lab4-package: edit — title, proof
+lab4-type-hints: keep — proof
+lab4-closures: keep — proof
+lab4-decorator: keep — proof
+lab4-with-files: keep — proof
+lab4-parametrize: keep — proof
+lab5-score-server: keep — proof
+lab5-database: keep — proof
+lab5-jinja-page: keep — proof
+lab5-level-api: activate — proof, status
+lab5-routers-tests: keep — proof
+lab5-deploy: activate — status
+requirements-pyproject: keep — proof
+single-command-run: edit — description, proof
+exe-build: edit — description, proof
+main-guard: keep — proof
+cross-platform-run: activate — description, proof, status
+typing-mypy: keep — proof
+dataclass-entities: keep — proof
+generators-iterators: edit — description, proof
+custom-exceptions: edit — description, proof
+std-collections: edit — coin, games, proof tin → wood
+enum-states: keep — proof
+match-case-commands: edit — coin, proof tin → wood
+pathlib-paths: keep — proof
+json-files: activate — description, proof, status
+argparse-cli: keep — proof
+logging-debug: keep — proof
+docstrings: keep — proof
+named-constants: keep — proof
+abc-protocol: edit — description, coin, proof tin → wood
+random-seed: activate — description, proof, status
+input-robust: keep — proof
+ruff-clean: keep — proof
+unit-tests: edit — description, proof
+fixture-level-tests: keep — proof
+property-tests: edit — не застосовано (відкладено)
+first-test: edit — description, proof
+player-guide: keep — proof
+architecture-doc: keep — proof
+dev-log: edit — description, proof
+game-page: edit — description
+video-channel: edit — description, proof
+itchio-publish: edit — description
+feature-demo: archive — не застосовано (питання викладачеві)
+game-trailer: edit — description, proof
+demo-effects: edit — description, proof
+game-demo-video: edit — description, proof
+lab2-level-file: нова — відкладено
+lab4-sequence-slices: нова картка — code/labs wood «Зрізи у власному класі поля»
+lab5-player-profile: нова картка — code/labs tin «Профіль гравця на сервері»
+## entities-a
+touch-death: edit — description
+environment-death: edit — coin tin → wood
+chase-greedy: keep — proof
+move-4dir: edit — title, description, coin bronze → tin
+move-by-input: edit — description, coin bronze → tin
+chase-bfs: edit — description, proof
+inertia-slide: edit — title, description, coin, games, proof bronze → tin
+move-8dir: edit — title, description, coin bronze → tin
+move-auto: edit — description, coin bronze → tin
+enemy-patrol: edit — description, coin, proof bronze → tin
+random-walk: keep — proof
+chase-player: edit — description, proof
+realtime-ai: keep — proof
+pattern-automaton: edit — title, description, coin, proof bronze → tin
+row-conveyor: edit — description, coin, games, proof bronze → tin
+body-queue: edit — games
+wall-follower: keep — proof
+turn-when-blocked: edit — description, proof
+carrier-platform: keep — proof
+ladder-climb: keep — proof
+party-switch: keep — proof
+descend-and-reverse: keep — proof
+roll-off-rounded: keep — proof
+diagonal-gap-pass: keep — proof
+visited-trail: keep — proof
+facing-icon: edit — games, proof
+stat-damage: edit — coin tin → wood
+stat-armor: edit — coin tin → wood
+stat-range: edit — coin tin → wood
+stat-capacity: edit — coin tin → wood
+stat-size: edit — coin tin → wood
+stat-ammo: edit — coin tin → wood
+stat-cost: edit — title, coin tin → wood
+stat-vision: edit — coin tin → wood
+stat-rank: edit — coin tin → wood
+role-object: edit — coin tin → wood
+role-ally: edit — coin tin → wood
+role-enemy: edit — coin tin → wood
+role-hazard: edit — coin tin → wood
+role-projectile: edit — coin tin → wood
+role-boss: edit — coin bronze → tin
+role-container: edit — coin tin → wood
+role-gate: edit — coin tin → wood
+role-neutral: edit — coin tin → wood
+role-resource: edit — coin tin → wood
+role-switch: edit — coin tin → wood
+role-segment: edit — coin tin → wood
+role-spawner: edit — coin bronze → wood
+role-supply: edit — coin tin → wood
+spawn-schedule: edit — description, proof
+spawn-points: edit — description, games
+scatter-chase-schedule: edit — coin, proof bronze → tin
+ghost-house-release: keep — proof
+weighted-spawn: keep — proof
+drop-on-death: edit — coin, games tin → wood
+bonus-appears: keep — proof
+notice-and-chase: нова картка — entities/move tin «Ворог помічає гравця»
+## entities-b
+projectile-shot: edit — description, games, proof
+shoot-burst: edit — title, description, proof
+projectile-collision: keep — proof
+shoot-spread: edit — title, description, proof
+blast-wave: edit — games, proof
+telegraphed-intents: keep — proof
+chain-detonation: edit — description, coin, games, proof bronze → tin
+piece-capture: edit — description
+melee-vs-ranged: edit — description, proof
+beam-tracing: keep — proof
+line-of-sight-attack: keep — proof
+bomb-fuse: keep — proof
+teleport-pair: edit — description, proof
+key-and-door: edit — description, games, proof
+teleport-one-way: edit — title, description, proof
+floor-types: merge — не застосовано (питання викладачеві)
+teleport-random-exit: edit — title, description, proof
+stick-together: edit — description, proof
+cell-transform: edit — title, description, proof
+destructible-blocks: edit — games, proof
+dig-terrain: edit — coin tin → wood
+fill-hole: keep — proof
+button-toggle: keep — proof
+mirror-reflect: keep — proof
+thief: keep — proof
+freeze-into-block: merge → cell-transform — status
+crush-by-slide: edit — title, description, proof
+swap-on-contact: keep — proof
+line-match-clear: keep — proof
+dig-hole: keep — proof
+hole-refill: keep — proof
+periodic-sink: keep — proof
+stop-cell: keep — proof
+last-line-defense: keep — proof
+impassable-cells: edit — description
+piece-move-patterns: edit — description, proof
+no-move-into-check: edit — не застосовано (відкладено)
+tile-merge: edit — description, proof
+push-object: edit — description, proof
+pull-object: keep — proof
+one-way-cell: keep — proof
+polyomino-placement: keep — proof
+piece-rotate-flip: keep — proof
+pawn-promotion: keep — proof
+piece-drop: keep — proof
+castling: keep — proof
+en-passant: keep — proof
+cursor-place: edit — description, coin, proof bronze → tin
+inventory-items: keep — proof
+inventory: keep — proof
+temporary-modes: edit — description, games, proof
+multi-cell-size: edit — не застосовано (відкладено)
+orientation-state: edit — не застосовано (відкладено)
+pipe-connectors: keep — proof
+coverage-area: keep — proof
+status-effects: keep — proof
+item-identification: keep — proof
+hunger-clock: keep — proof
+unit-xp-skills: activate — description, proof, status
+blob-growth: keep — proof
+magic-wall-timer: keep — proof
+jump-capture: нова картка — entities/combat bronze «Взяття стрибком»
+sandwich-capture: нова картка — entities/combat bronze «Захоплення оточенням»
+dice-move: нова картка — entities/legality tin «Хід на кидок кубика»
+n-in-a-row-win: нова картка — game-logic/win tin «Перемога лінією з N»
+## field-levels
+control-indirect: keep — proof
+control-drag-piece: edit — coin, proof bronze → tin
+control-drag-path: keep — proof
+control-programmed: edit — description, proof
+grid-layers: edit — description, coin silver → bronze
+gravity-down: keep — proof
+gravity-up: keep — proof
+gravity-per-type: keep — proof
+gravity-toward-center: keep — proof
+wrap-edges: edit — games, proof
+time-programmed: edit — description, coin tin → wood
+time-wego: keep — proof
+time-rhythm: keep — proof
+view-first-person: keep — proof
+level-bank: edit — description, games, proof
+daily-puzzle: edit — games, proof
+level-rating: edit — title, description, proof
+level-par: edit — title, description, proof
+editor-palette: edit — description, proof
+in-game-editor: edit — description, proof
+editor-draw-tools: edit — description, proof
+editor-map-check: edit — description, coin, proof bronze → tin
+editor-erase: edit — description
+level-exchange: edit — description, proof
+editor-undo: keep — proof
+editor-playtest: edit — description, coin, proof bronze → tin
+level-from-txt: edit — coin, proof bronze → tin
+import-open-formats: edit — description, games, proof
+map-validation: edit — description, proof
+level-metadata: edit — description, proof
+level-objects-format: keep — proof
+level-format-doc: keep — proof
+maze-generation: edit — description, games, proof
+mines-after-first-click: edit — description, proof
+dungeon-generation: edit — description, proof
+seed-share: keep — proof
+unique-puzzle-generation: edit — не застосовано (відкладено)
+infinite-field: edit — не застосовано (відкладено)
+difficulty-rating: edit — title, description, proof
+no-guess-generation: keep — proof
+random-placement: keep — proof
+chunk-generation: edit — description, proof
+level-unlock: edit — description, proof
+checkpoint: edit — description, coin, proof bronze → tin
+world-map: keep — proof
+stairs-levels: keep — proof
+secret-level: edit — description, proof
+level-param-ramp: edit — title, games
+bonus-stage: edit — games, proof
+reachability-check: edit — не застосовано (відкладено)
+level-solver: edit — description, games, proof
+control-typed: нова картка — field/control wood «Набираю хід текстом»
+control-cursor: нова картка — field/control wood «Воджу курсор клавішами»
+extra-level: нова картка — levels/progression wood «Ще один рівень»
+## interface
+movement-animation: edit — description, games, proof
+event-effects: keep — proof
+idle-animation: edit — description, proof
+particles: edit — description, proof
+spawn-animation: edit — description, proof
+death-animation: edit — description, proof
+selection-highlight: keep — proof
+status-panel: edit — description, proof
+conflict-highlight: edit — coin, proof tin → wood
+goal-counter: keep — proof
+last-move-highlight: edit — description, games, proof
+mode-indicator: edit — description, games, proof
+legal-move-highlight: edit — description, games, proof
+move-counter: edit — games, proof
+reachable-highlight: edit — coin, proof tin → bronze
+threat-range: keep — proof
+next-queue: keep — proof
+telegraph-marker: edit — description, coin, proof tin → wood
+path-preview: keep — proof
+message-log: keep — proof
+objective-text: keep — proof
+popup-text: keep — proof
+face-button: edit — description, proof
+wave-progress: keep — proof
+health-bars: activate — description, proof, status
+hover-highlight: edit — coin, proof tin → wood
+pencil-marks: keep — proof
+chord-click: edit — description, proof
+swipe-gestures: edit — coin, games, proof bronze → tin
+path-cut: keep — proof
+multi-select: keep — proof
+edge-marking: keep — proof
+dot-mark: keep — proof
+flood-reveal: keep — proof
+main-menu: edit — description, proof
+pause-menu: edit — description, proof
+confirm-dialog: edit — description, proof
+level-select: edit — description, proof
+end-screen: edit — description, proof
+game-screen: keep — proof
+splash-screen: edit — description, coin, proof tin → wood
+settings-window: edit — description, proof
+shop-window: edit — description, proof
+help-window: edit — description, proof
+about-window: keep — proof
+custom-window: keep — proof
+editor-window: edit — не застосовано (питання викладачеві)
+stats-window: keep — proof
+mode-select: keep — proof
+map-window: keep — proof
+lobby-window: keep — proof
+tutorial-window: edit — title, description, proof
+replay-window: keep — proof
+codex-window: edit — description, proof
+achievements-window: edit — title, proof
+character-select: keep — proof
+game-over-continue: edit — description, proof
+level-password: edit — description, proof
+match-setup: edit — description, games, proof
+attract-demo: edit — title, description, proof
+placement-screen: edit — description, proof
+pass-device: edit — description, proof
+code-editor-window: edit — description, coin, proof silver → bronze
+level-intro: keep — proof
+name-entry: keep — proof
+cutscene: keep — proof
+inventory-window: keep — proof
+save-load-window: keep — proof
+dialogue-window: keep — proof
+calendar-window: keep — proof
+console-render: edit — description, proof
+gui-render: keep — proof
+field-scaling: keep — proof
+player-camera: edit — description, proof
+minimap-radar: edit — description, coin, proof bronze → tin
+fog-of-war: keep — proof
+leaderboard: edit — description, proof
+replay: edit — title, description, proof
+share-result: keep — proof
+rating-system: activate — description, coin, proof, status silver → bronze
+achievements: keep — proof
+game-settings: edit — не застосовано (питання викладачеві)
+volume-control: edit — description, proof
+music-toggle: keep — proof
+theme-select: edit — description, proof
+avatar-picker: edit — coin, proof tin → wood
+settings-elements: edit — description
+field-size-picker: keep — proof
+language-picker: edit — description, proof
+controls-remap: edit — description, proof
+sound-effects: keep — proof
+background-music: edit — coin, proof tin → wood
+sound-volume: merge → volume-control — status
+sound-warnings: edit — description, games, proof
+menu-keyboard: нова картка — interface/menus wood «Меню клавішами»
+menu-mouse: нова картка — interface/menus wood «Меню мишкою»
+window-transition: нова картка — interface/graphics tin «Анімація переходу між вікнами»
+## logic
+markup-validity: edit — coin, proof bronze → tin
+check-stalemate: edit — не застосовано (відкладено)
+deadlock-detection: edit — description, proof
+connectivity-check: keep — proof
+word-validation: edit — coin, proof bronze → tin
+difficulty-levels: edit — games, proof
+cheat-codes: edit — description, proof
+rule-variants: keep — proof
+round-currency: keep — proof
+shop-between-levels: keep — proof
+shop-preview: edit — description, proof
+in-round-upgrades: edit — description, games, proof
+shop-sales: edit — description, proof
+run-relics: merge → in-round-upgrades — status
+shop-buyback: edit — description
+undo-redo: edit — description
+undo-step: keep — proof
+move-notation: edit — description, proof
+undo-unlimited: edit — title, description, proof
+state-string: keep — proof
+rewind: keep — proof
+player-death: edit — title
+time-out: edit — description, games
+no-moves-left: edit — title
+permadeath: edit — description, proof
+timeout-punisher: edit — description, proof
+ai-random: edit — title, proof
+hot-seat: edit — description, games
+ai-greedy: edit — title, proof
+ai-minimax: edit — title, proof
+move-timer: keep — proof
+garbage-attack: activate — title, description, coin, proof, status silver → bronze
+simultaneous-versus: keep — proof
+async-multiplayer: merge → online-multiplayer — status
+online-multiplayer: edit — description, proof
+local-two-players: keep — proof
+user-procedures: keep — proof
+sensor-predicates: keep — proof
+step-execution: keep — proof
+fsm-program: activate — description, coin, proof, status gold → bronze
+save-game: edit — description
+save-single-slot: edit — title, description, proof
+save-multi-slot: edit — title, description, coin, proof silver → tin
+save-progress: edit — description, coin, proof bronze → tin
+save-autosave: edit — description, coin, proof silver → tin
+combo-multiplier: edit — description, proof
+score-records: keep — proof
+chain-reaction: keep — proof
+enemy-waves: edit — description, proof
+progress-acceleration: edit — title, description, games, proof
+collect-all: edit — games
+collect-quota: edit — description
+reach-exit: edit — games
+destroy-all-enemies: edit — games
+checkmate: edit — не застосовано (відкладено)
+score-target: activate — description, status
+elapsed-timer: нова картка — game-logic/score wood «Секундомір партії»
+hint-limited: нова картка — game-logic/difficulty wood «Підказка з лімітом»
+
+# 2026-11-13 04:59 · python_labs_stand · змінено 412
+## code-support
+logic-render-split: edit — description, proof
+dual-frontends: edit — description, proof
+interaction-table: edit — description, coin, proof silver → bronze
+state-as-data: edit — description, proof
+game-loop: keep — proof
+commit-history: keep — proof
+project-readme: keep — proof
+version-tags: keep — proof
+gitignore-clean: keep — proof
+feature-branch: keep — proof
+lab1: edit — description
+lab1-field-output: keep — proof
+lab1-read-key: keep — proof
+lab1-move-player: keep — proof
+lab1-cell-check: keep — proof
+lab1-game-loop: keep — proof
+lab1-own-functions: keep — proof
+lab1-data-types: keep — proof
+lab1-conditions: keep — proof
+lab1-loops: keep — proof
+lab1-function-params: keep — proof
+lab1-scope: keep — proof
+lab2: edit — description
+lab2-grid-matrix: edit — title, proof
+lab2-cell-dict: keep — proof
+lab2-direction-tuples: edit — title, proof
+lab2-save-text: edit — description, proof
+lab2-string-methods: keep — proof
+lab2-slices-comprehensions: keep — proof
+lab2-unpacking: keep — proof
+lab2-sets: keep — proof
+lab2-dict-tricks: keep — proof
+lab2-binary-save: keep — proof
+lab3: edit — description
+lab3-classes: keep — proof
+lab3-base-class: keep — proof
+lab3-init-str: keep — proof
+lab3-underscores: keep — proof
+lab3-eq-hash: keep — proof
+lab3-container-methods: edit — title, description, proof
+lab3-property: keep — proof
+lab3-mixins: activate — coin, proof, status bronze → tin
+lab3-classmethods: keep — proof
+lab4: edit — description
+lab4-package: edit — title, proof
+lab4-type-hints: keep — proof
+lab4-closures: keep — proof
+lab4-decorator: keep — proof
+lab4-with-files: keep — proof
+lab4-parametrize: keep — proof
+lab5-score-server: keep — proof
+lab5-database: keep — proof
+lab5-jinja-page: keep — proof
+lab5-level-api: activate — proof, status
+lab5-routers-tests: keep — proof
+lab5-deploy: activate — status
+requirements-pyproject: keep — proof
+single-command-run: edit — description, proof
+exe-build: edit — description, proof
+main-guard: keep — proof
+cross-platform-run: activate — description, proof, status
+typing-mypy: keep — proof
+dataclass-entities: keep — proof
+generators-iterators: edit — description, proof
+custom-exceptions: edit — description, proof
+std-collections: edit — coin, games, proof tin → wood
+enum-states: keep — proof
+match-case-commands: edit — coin, proof tin → wood
+pathlib-paths: keep — proof
+json-files: activate — description, proof, status
+argparse-cli: keep — proof
+logging-debug: keep — proof
+docstrings: keep — proof
+named-constants: keep — proof
+abc-protocol: edit — description, coin, proof tin → wood
+random-seed: activate — description, proof, status
+input-robust: keep — proof
+ruff-clean: keep — proof
+unit-tests: edit — description, proof
+fixture-level-tests: keep — proof
+property-tests: edit — не застосовано (відкладено)
+first-test: edit — description, proof
+player-guide: keep — proof
+architecture-doc: keep — proof
+dev-log: edit — description, proof
+game-page: edit — description
+video-channel: edit — description, proof
+itchio-publish: edit — description
+feature-demo: archive — не застосовано (питання викладачеві)
+game-trailer: edit — description, proof
+demo-effects: edit — description, proof
+game-demo-video: edit — description, proof
+lab2-level-file: нова — відкладено
+lab4-sequence-slices: нова картка — code/labs wood «Зрізи у власному класі поля»
+lab5-player-profile: нова картка — code/labs tin «Профіль гравця на сервері»
+## entities-a
+touch-death: edit — description
+environment-death: edit — coin tin → wood
+chase-greedy: keep — proof
+move-4dir: edit — title, description, coin bronze → tin
+move-by-input: edit — description, coin bronze → tin
+chase-bfs: edit — description, proof
+inertia-slide: edit — title, description, coin, games, proof bronze → tin
+move-8dir: edit — title, description, coin bronze → tin
+move-auto: edit — description, coin bronze → tin
+enemy-patrol: edit — description, coin, proof bronze → tin
+random-walk: keep — proof
+chase-player: edit — description, proof
+realtime-ai: keep — proof
+pattern-automaton: edit — title, description, coin, proof bronze → tin
+row-conveyor: edit — description, coin, games, proof bronze → tin
+body-queue: edit — games
+wall-follower: keep — proof
+turn-when-blocked: edit — description, proof
+carrier-platform: keep — proof
+ladder-climb: keep — proof
+party-switch: keep — proof
+descend-and-reverse: keep — proof
+roll-off-rounded: keep — proof
+diagonal-gap-pass: keep — proof
+visited-trail: keep — proof
+facing-icon: edit — games, proof
+stat-damage: edit — coin tin → wood
+stat-armor: edit — coin tin → wood
+stat-range: edit — coin tin → wood
+stat-capacity: edit — coin tin → wood
+stat-size: edit — coin tin → wood
+stat-ammo: edit — coin tin → wood
+stat-cost: edit — title, coin tin → wood
+stat-vision: edit — coin tin → wood
+stat-rank: edit — coin tin → wood
+role-object: edit — coin tin → wood
+role-ally: edit — coin tin → wood
+role-enemy: edit — coin tin → wood
+role-hazard: edit — coin tin → wood
+role-projectile: edit — coin tin → wood
+role-boss: edit — coin bronze → tin
+role-container: edit — coin tin → wood
+role-gate: edit — coin tin → wood
+role-neutral: edit — coin tin → wood
+role-resource: edit — coin tin → wood
+role-switch: edit — coin tin → wood
+role-segment: edit — coin tin → wood
+role-spawner: edit — coin bronze → wood
+role-supply: edit — coin tin → wood
+spawn-schedule: edit — description, proof
+spawn-points: edit — description, games
+scatter-chase-schedule: edit — coin, proof bronze → tin
+ghost-house-release: keep — proof
+weighted-spawn: keep — proof
+drop-on-death: edit — coin, games tin → wood
+bonus-appears: keep — proof
+notice-and-chase: нова картка — entities/move tin «Ворог помічає гравця»
+## entities-b
+projectile-shot: edit — description, games, proof
+shoot-burst: edit — title, description, proof
+projectile-collision: keep — proof
+shoot-spread: edit — title, description, proof
+blast-wave: edit — games, proof
+telegraphed-intents: keep — proof
+chain-detonation: edit — description, coin, games, proof bronze → tin
+piece-capture: edit — description
+melee-vs-ranged: edit — description, proof
+beam-tracing: keep — proof
+line-of-sight-attack: keep — proof
+bomb-fuse: keep — proof
+teleport-pair: edit — description, proof
+key-and-door: edit — description, games, proof
+teleport-one-way: edit — title, description, proof
+floor-types: merge — не застосовано (питання викладачеві)
+teleport-random-exit: edit — title, description, proof
+stick-together: edit — description, proof
+cell-transform: edit — title, description, proof
+destructible-blocks: edit — games, proof
+dig-terrain: edit — coin tin → wood
+fill-hole: keep — proof
+button-toggle: keep — proof
+mirror-reflect: keep — proof
+thief: keep — proof
+freeze-into-block: merge → cell-transform — status
+crush-by-slide: edit — title, description, proof
+swap-on-contact: keep — proof
+line-match-clear: keep — proof
+dig-hole: keep — proof
+hole-refill: keep — proof
+periodic-sink: keep — proof
+stop-cell: keep — proof
+last-line-defense: keep — proof
+impassable-cells: edit — description
+piece-move-patterns: edit — description, proof
+no-move-into-check: edit — не застосовано (відкладено)
+tile-merge: edit — description, proof
+push-object: edit — description, proof
+pull-object: keep — proof
+one-way-cell: keep — proof
+polyomino-placement: keep — proof
+piece-rotate-flip: keep — proof
+pawn-promotion: keep — proof
+piece-drop: keep — proof
+castling: keep — proof
+en-passant: keep — proof
+cursor-place: edit — description, coin, proof bronze → tin
+inventory-items: keep — proof
+inventory: keep — proof
+temporary-modes: edit — description, games, proof
+multi-cell-size: edit — не застосовано (відкладено)
+orientation-state: edit — не застосовано (відкладено)
+pipe-connectors: keep — proof
+coverage-area: keep — proof
+status-effects: keep — proof
+item-identification: keep — proof
+hunger-clock: keep — proof
+unit-xp-skills: activate — description, proof, status
+blob-growth: keep — proof
+magic-wall-timer: keep — proof
+jump-capture: нова картка — entities/combat bronze «Взяття стрибком»
+sandwich-capture: нова картка — entities/combat bronze «Захоплення оточенням»
+dice-move: нова картка — entities/legality tin «Хід на кидок кубика»
+n-in-a-row-win: нова картка — game-logic/win tin «Перемога лінією з N»
+## field-levels
+control-indirect: keep — proof
+control-drag-piece: edit — coin, proof bronze → tin
+control-drag-path: keep — proof
+control-programmed: edit — description, proof
+grid-layers: edit — description, coin silver → bronze
+gravity-down: keep — proof
+gravity-up: keep — proof
+gravity-per-type: keep — proof
+gravity-toward-center: keep — proof
+wrap-edges: edit — games, proof
+time-programmed: edit — description, coin tin → wood
+time-wego: keep — proof
+time-rhythm: keep — proof
+view-first-person: keep — proof
+level-bank: edit — description, games, proof
+daily-puzzle: edit — games, proof
+level-rating: edit — title, description, proof
+level-par: edit — title, description, proof
+editor-palette: edit — description, proof
+in-game-editor: edit — description, proof
+editor-draw-tools: edit — description, proof
+editor-map-check: edit — description, coin, proof bronze → tin
+editor-erase: edit — description
+level-exchange: edit — description, proof
+editor-undo: keep — proof
+editor-playtest: edit — description, coin, proof bronze → tin
+level-from-txt: edit — coin, proof bronze → tin
+import-open-formats: edit — description, games, proof
+map-validation: edit — description, proof
+level-metadata: edit — description, proof
+level-objects-format: keep — proof
+level-format-doc: keep — proof
+maze-generation: edit — description, games, proof
+mines-after-first-click: edit — description, proof
+dungeon-generation: edit — description, proof
+seed-share: keep — proof
+unique-puzzle-generation: edit — не застосовано (відкладено)
+infinite-field: edit — не застосовано (відкладено)
+difficulty-rating: edit — title, description, proof
+no-guess-generation: keep — proof
+random-placement: keep — proof
+chunk-generation: edit — description, proof
+level-unlock: edit — description, proof
+checkpoint: edit — description, coin, proof bronze → tin
+world-map: keep — proof
+stairs-levels: keep — proof
+secret-level: edit — description, proof
+level-param-ramp: edit — title, games
+bonus-stage: edit — games, proof
+reachability-check: edit — не застосовано (відкладено)
+level-solver: edit — description, games, proof
+control-typed: нова картка — field/control wood «Набираю хід текстом»
+control-cursor: нова картка — field/control wood «Воджу курсор клавішами»
+extra-level: нова картка — levels/progression wood «Ще один рівень»
+## interface
+movement-animation: edit — description, games, proof
+event-effects: keep — proof
+idle-animation: edit — description, proof
+particles: edit — description, proof
+spawn-animation: edit — description, proof
+death-animation: edit — description, proof
+selection-highlight: keep — proof
+status-panel: edit — description, proof
+conflict-highlight: edit — coin, proof tin → wood
+goal-counter: keep — proof
+last-move-highlight: edit — description, games, proof
+mode-indicator: edit — description, games, proof
+legal-move-highlight: edit — description, games, proof
+move-counter: edit — games, proof
+reachable-highlight: edit — coin, proof tin → bronze
+threat-range: keep — proof
+next-queue: keep — proof
+telegraph-marker: edit — description, coin, proof tin → wood
+path-preview: keep — proof
+message-log: keep — proof
+objective-text: keep — proof
+popup-text: keep — proof
+face-button: edit — description, proof
+wave-progress: keep — proof
+health-bars: activate — description, proof, status
+hover-highlight: edit — coin, proof tin → wood
+pencil-marks: keep — proof
+chord-click: edit — description, proof
+swipe-gestures: edit — coin, games, proof bronze → tin
+path-cut: keep — proof
+multi-select: keep — proof
+edge-marking: keep — proof
+dot-mark: keep — proof
+flood-reveal: keep — proof
+main-menu: edit — description, proof
+pause-menu: edit — description, proof
+confirm-dialog: edit — description, proof
+level-select: edit — description, proof
+end-screen: edit — description, proof
+game-screen: keep — proof
+splash-screen: edit — description, coin, proof tin → wood
+settings-window: edit — description, proof
+shop-window: edit — description, proof
+help-window: edit — description, proof
+about-window: keep — proof
+custom-window: keep — proof
+editor-window: edit — не застосовано (питання викладачеві)
+stats-window: keep — proof
+mode-select: keep — proof
+map-window: keep — proof
+lobby-window: keep — proof
+tutorial-window: edit — title, description, proof
+replay-window: keep — proof
+codex-window: edit — description, proof
+achievements-window: edit — title, proof
+character-select: keep — proof
+game-over-continue: edit — description, proof
+level-password: edit — description, proof
+match-setup: edit — description, games, proof
+attract-demo: edit — title, description, proof
+placement-screen: edit — description, proof
+pass-device: edit — description, proof
+code-editor-window: edit — description, coin, proof silver → bronze
+level-intro: keep — proof
+name-entry: keep — proof
+cutscene: keep — proof
+inventory-window: keep — proof
+save-load-window: keep — proof
+dialogue-window: keep — proof
+calendar-window: keep — proof
+console-render: edit — description, proof
+gui-render: keep — proof
+field-scaling: keep — proof
+player-camera: edit — description, proof
+minimap-radar: edit — description, coin, proof bronze → tin
+fog-of-war: keep — proof
+leaderboard: edit — description, proof
+replay: edit — title, description, proof
+share-result: keep — proof
+rating-system: activate — description, coin, proof, status silver → bronze
+achievements: keep — proof
+game-settings: edit — не застосовано (питання викладачеві)
+volume-control: edit — description, proof
+music-toggle: keep — proof
+theme-select: edit — description, proof
+avatar-picker: edit — coin, proof tin → wood
+settings-elements: edit — description
+field-size-picker: keep — proof
+language-picker: edit — description, proof
+controls-remap: edit — description, proof
+sound-effects: keep — proof
+background-music: edit — coin, proof tin → wood
+sound-volume: merge → volume-control — status
+sound-warnings: edit — description, games, proof
+menu-keyboard: нова картка — interface/menus wood «Меню клавішами»
+menu-mouse: нова картка — interface/menus wood «Меню мишкою»
+window-transition: нова картка — interface/graphics tin «Анімація переходу між вікнами»
+## logic
+markup-validity: edit — coin, proof bronze → tin
+check-stalemate: edit — не застосовано (відкладено)
+deadlock-detection: edit — description, proof
+connectivity-check: keep — proof
+word-validation: edit — coin, proof bronze → tin
+difficulty-levels: edit — games, proof
+cheat-codes: edit — description, proof
+rule-variants: keep — proof
+round-currency: keep — proof
+shop-between-levels: keep — proof
+shop-preview: edit — description, proof
+in-round-upgrades: edit — description, games, proof
+shop-sales: edit — description, proof
+run-relics: merge → in-round-upgrades — status
+shop-buyback: edit — description
+undo-redo: edit — description
+undo-step: keep — proof
+move-notation: edit — description, proof
+undo-unlimited: edit — title, description, proof
+state-string: keep — proof
+rewind: keep — proof
+player-death: edit — title
+time-out: edit — description, games
+no-moves-left: edit — title
+permadeath: edit — description, proof
+timeout-punisher: edit — description, proof
+ai-random: edit — title, proof
+hot-seat: edit — description, games
+ai-greedy: edit — title, proof
+ai-minimax: edit — title, proof
+move-timer: keep — proof
+garbage-attack: activate — title, description, coin, proof, status silver → bronze
+simultaneous-versus: keep — proof
+async-multiplayer: merge → online-multiplayer — status
+online-multiplayer: edit — description, proof
+local-two-players: keep — proof
+user-procedures: keep — proof
+sensor-predicates: keep — proof
+step-execution: keep — proof
+fsm-program: activate — description, coin, proof, status gold → bronze
+save-game: edit — description
+save-single-slot: edit — title, description, proof
+save-multi-slot: edit — title, description, coin, proof silver → tin
+save-progress: edit — description, coin, proof bronze → tin
+save-autosave: edit — description, coin, proof silver → tin
+combo-multiplier: edit — description, proof
+score-records: keep — proof
+chain-reaction: keep — proof
+enemy-waves: edit — description, proof
+progress-acceleration: edit — title, description, games, proof
+collect-all: edit — games
+collect-quota: edit — description
+reach-exit: edit — games
+destroy-all-enemies: edit — games
+checkmate: edit — не застосовано (відкладено)
+score-target: activate — description, status
+elapsed-timer: нова картка — game-logic/score wood «Секундомір партії»
+hint-limited: нова картка — game-logic/difficulty wood «Підказка з лімітом»
+
+# 2026-11-13 05:01 · python_labs · dry · змінено 412
+## code-support
+logic-render-split: edit — description, proof
+dual-frontends: edit — description, proof
+interaction-table: edit — description, coin, proof silver → bronze
+state-as-data: edit — description, proof
+game-loop: keep — proof
+commit-history: keep — proof
+project-readme: keep — proof
+version-tags: keep — proof
+gitignore-clean: keep — proof
+feature-branch: keep — proof
+lab1: edit — description
+lab1-field-output: keep — proof
+lab1-read-key: keep — proof
+lab1-move-player: keep — proof
+lab1-cell-check: keep — proof
+lab1-game-loop: keep — proof
+lab1-own-functions: keep — proof
+lab1-data-types: keep — proof
+lab1-conditions: keep — proof
+lab1-loops: keep — proof
+lab1-function-params: keep — proof
+lab1-scope: keep — proof
+lab2: edit — description
+lab2-grid-matrix: edit — title, proof
+lab2-cell-dict: keep — proof
+lab2-direction-tuples: edit — title, proof
+lab2-save-text: edit — description, proof
+lab2-string-methods: keep — proof
+lab2-slices-comprehensions: keep — proof
+lab2-unpacking: keep — proof
+lab2-sets: keep — proof
+lab2-dict-tricks: keep — proof
+lab2-binary-save: keep — proof
+lab3: edit — description
+lab3-classes: keep — proof
+lab3-base-class: keep — proof
+lab3-init-str: keep — proof
+lab3-underscores: keep — proof
+lab3-eq-hash: keep — proof
+lab3-container-methods: edit — title, description, proof
+lab3-property: keep — proof
+lab3-mixins: activate — coin, proof, status bronze → tin
+lab3-classmethods: keep — proof
+lab4: edit — description
+lab4-package: edit — title, proof
+lab4-type-hints: keep — proof
+lab4-closures: keep — proof
+lab4-decorator: keep — proof
+lab4-with-files: keep — proof
+lab4-parametrize: keep — proof
+lab5-score-server: keep — proof
+lab5-database: keep — proof
+lab5-jinja-page: keep — proof
+lab5-level-api: activate — proof, status
+lab5-routers-tests: keep — proof
+lab5-deploy: activate — status
+requirements-pyproject: keep — proof
+single-command-run: edit — description, proof
+exe-build: edit — description, proof
+main-guard: keep — proof
+cross-platform-run: activate — description, proof, status
+typing-mypy: keep — proof
+dataclass-entities: keep — proof
+generators-iterators: edit — description, proof
+custom-exceptions: edit — description, proof
+std-collections: edit — coin, games, proof tin → wood
+enum-states: keep — proof
+match-case-commands: edit — coin, proof tin → wood
+pathlib-paths: keep — proof
+json-files: activate — description, proof, status
+argparse-cli: keep — proof
+logging-debug: keep — proof
+docstrings: keep — proof
+named-constants: keep — proof
+abc-protocol: edit — description, coin, proof tin → wood
+random-seed: activate — description, proof, status
+input-robust: keep — proof
+ruff-clean: keep — proof
+unit-tests: edit — description, proof
+fixture-level-tests: keep — proof
+property-tests: edit — не застосовано (відкладено)
+first-test: edit — description, proof
+player-guide: keep — proof
+architecture-doc: keep — proof
+dev-log: edit — description, proof
+game-page: edit — description
+video-channel: edit — description, proof
+itchio-publish: edit — description
+feature-demo: archive — не застосовано (питання викладачеві)
+game-trailer: edit — description, proof
+demo-effects: edit — description, proof
+game-demo-video: edit — description, proof
+lab2-level-file: нова — відкладено
+lab4-sequence-slices: нова картка — code/labs wood «Зрізи у власному класі поля»
+lab5-player-profile: нова картка — code/labs tin «Профіль гравця на сервері»
+## entities-a
+touch-death: edit — description
+environment-death: edit — coin tin → wood
+chase-greedy: keep — proof
+move-4dir: edit — title, description, coin bronze → tin
+move-by-input: edit — description, coin bronze → tin
+chase-bfs: edit — description, proof
+inertia-slide: edit — title, description, coin, games, proof bronze → tin
+move-8dir: edit — title, description, coin bronze → tin
+move-auto: edit — description, coin bronze → tin
+enemy-patrol: edit — description, coin, proof bronze → tin
+random-walk: keep — proof
+chase-player: edit — description, proof
+realtime-ai: keep — proof
+pattern-automaton: edit — title, description, coin, proof bronze → tin
+row-conveyor: edit — description, coin, games, proof bronze → tin
+body-queue: edit — games
+wall-follower: keep — proof
+turn-when-blocked: edit — description, proof
+carrier-platform: keep — proof
+ladder-climb: keep — proof
+party-switch: keep — proof
+descend-and-reverse: keep — proof
+roll-off-rounded: keep — proof
+diagonal-gap-pass: keep — proof
+visited-trail: keep — proof
+facing-icon: edit — games, proof
+stat-damage: edit — coin tin → wood
+stat-armor: edit — coin tin → wood
+stat-range: edit — coin tin → wood
+stat-capacity: edit — coin tin → wood
+stat-size: edit — coin tin → wood
+stat-ammo: edit — coin tin → wood
+stat-cost: edit — title, coin tin → wood
+stat-vision: edit — coin tin → wood
+stat-rank: edit — coin tin → wood
+role-object: edit — coin tin → wood
+role-ally: edit — coin tin → wood
+role-enemy: edit — coin tin → wood
+role-hazard: edit — coin tin → wood
+role-projectile: edit — coin tin → wood
+role-boss: edit — coin bronze → tin
+role-container: edit — coin tin → wood
+role-gate: edit — coin tin → wood
+role-neutral: edit — coin tin → wood
+role-resource: edit — coin tin → wood
+role-switch: edit — coin tin → wood
+role-segment: edit — coin tin → wood
+role-spawner: edit — coin bronze → wood
+role-supply: edit — coin tin → wood
+spawn-schedule: edit — description, proof
+spawn-points: edit — description, games
+scatter-chase-schedule: edit — coin, proof bronze → tin
+ghost-house-release: keep — proof
+weighted-spawn: keep — proof
+drop-on-death: edit — coin, games tin → wood
+bonus-appears: keep — proof
+notice-and-chase: нова картка — entities/move tin «Ворог помічає гравця»
+## entities-b
+projectile-shot: edit — description, games, proof
+shoot-burst: edit — title, description, proof
+projectile-collision: keep — proof
+shoot-spread: edit — title, description, proof
+blast-wave: edit — games, proof
+telegraphed-intents: keep — proof
+chain-detonation: edit — description, coin, games, proof bronze → tin
+piece-capture: edit — description
+melee-vs-ranged: edit — description, proof
+beam-tracing: keep — proof
+line-of-sight-attack: keep — proof
+bomb-fuse: keep — proof
+teleport-pair: edit — description, proof
+key-and-door: edit — description, games, proof
+teleport-one-way: edit — title, description, proof
+floor-types: merge — не застосовано (питання викладачеві)
+teleport-random-exit: edit — title, description, proof
+stick-together: edit — description, proof
+cell-transform: edit — title, description, proof
+destructible-blocks: edit — games, proof
+dig-terrain: edit — coin tin → wood
+fill-hole: keep — proof
+button-toggle: keep — proof
+mirror-reflect: keep — proof
+thief: keep — proof
+freeze-into-block: merge → cell-transform — status
+crush-by-slide: edit — title, description, proof
+swap-on-contact: keep — proof
+line-match-clear: keep — proof
+dig-hole: keep — proof
+hole-refill: keep — proof
+periodic-sink: keep — proof
+stop-cell: keep — proof
+last-line-defense: keep — proof
+impassable-cells: edit — description
+piece-move-patterns: edit — description, proof
+no-move-into-check: edit — не застосовано (відкладено)
+tile-merge: edit — description, proof
+push-object: edit — description, proof
+pull-object: keep — proof
+one-way-cell: keep — proof
+polyomino-placement: keep — proof
+piece-rotate-flip: keep — proof
+pawn-promotion: keep — proof
+piece-drop: keep — proof
+castling: keep — proof
+en-passant: keep — proof
+cursor-place: edit — description, coin, proof bronze → tin
+inventory-items: keep — proof
+inventory: keep — proof
+temporary-modes: edit — description, games, proof
+multi-cell-size: edit — не застосовано (відкладено)
+orientation-state: edit — не застосовано (відкладено)
+pipe-connectors: keep — proof
+coverage-area: keep — proof
+status-effects: keep — proof
+item-identification: keep — proof
+hunger-clock: keep — proof
+unit-xp-skills: activate — description, proof, status
+blob-growth: keep — proof
+magic-wall-timer: keep — proof
+jump-capture: нова картка — entities/combat bronze «Взяття стрибком»
+sandwich-capture: нова картка — entities/combat bronze «Захоплення оточенням»
+dice-move: нова картка — entities/legality tin «Хід на кидок кубика»
+n-in-a-row-win: нова картка — game-logic/win tin «Перемога лінією з N»
+## field-levels
+control-indirect: keep — proof
+control-drag-piece: edit — coin, proof bronze → tin
+control-drag-path: keep — proof
+control-programmed: edit — description, proof
+grid-layers: edit — description, coin silver → bronze
+gravity-down: keep — proof
+gravity-up: keep — proof
+gravity-per-type: keep — proof
+gravity-toward-center: keep — proof
+wrap-edges: edit — games, proof
+time-programmed: edit — description, coin tin → wood
+time-wego: keep — proof
+time-rhythm: keep — proof
+view-first-person: keep — proof
+level-bank: edit — description, games, proof
+daily-puzzle: edit — games, proof
+level-rating: edit — title, description, proof
+level-par: edit — title, description, proof
+editor-palette: edit — description, proof
+in-game-editor: edit — description, proof
+editor-draw-tools: edit — description, proof
+editor-map-check: edit — description, coin, proof bronze → tin
+editor-erase: edit — description
+level-exchange: edit — description, proof
+editor-undo: keep — proof
+editor-playtest: edit — description, coin, proof bronze → tin
+level-from-txt: edit — coin, proof bronze → tin
+import-open-formats: edit — description, games, proof
+map-validation: edit — description, proof
+level-metadata: edit — description, proof
+level-objects-format: keep — proof
+level-format-doc: keep — proof
+maze-generation: edit — description, games, proof
+mines-after-first-click: edit — description, proof
+dungeon-generation: edit — description, proof
+seed-share: keep — proof
+unique-puzzle-generation: edit — не застосовано (відкладено)
+infinite-field: edit — не застосовано (відкладено)
+difficulty-rating: edit — title, description, proof
+no-guess-generation: keep — proof
+random-placement: keep — proof
+chunk-generation: edit — description, proof
+level-unlock: edit — description, proof
+checkpoint: edit — description, coin, proof bronze → tin
+world-map: keep — proof
+stairs-levels: keep — proof
+secret-level: edit — description, proof
+level-param-ramp: edit — title, games
+bonus-stage: edit — games, proof
+reachability-check: edit — не застосовано (відкладено)
+level-solver: edit — description, games, proof
+control-typed: нова картка — field/control wood «Набираю хід текстом»
+control-cursor: нова картка — field/control wood «Воджу курсор клавішами»
+extra-level: нова картка — levels/progression wood «Ще один рівень»
+## interface
+movement-animation: edit — description, games, proof
+event-effects: keep — proof
+idle-animation: edit — description, proof
+particles: edit — description, proof
+spawn-animation: edit — description, proof
+death-animation: edit — description, proof
+selection-highlight: keep — proof
+status-panel: edit — description, proof
+conflict-highlight: edit — coin, proof tin → wood
+goal-counter: keep — proof
+last-move-highlight: edit — description, games, proof
+mode-indicator: edit — description, games, proof
+legal-move-highlight: edit — description, games, proof
+move-counter: edit — games, proof
+reachable-highlight: edit — coin, proof tin → bronze
+threat-range: keep — proof
+next-queue: keep — proof
+telegraph-marker: edit — description, coin, proof tin → wood
+path-preview: keep — proof
+message-log: keep — proof
+objective-text: keep — proof
+popup-text: keep — proof
+face-button: edit — description, proof
+wave-progress: keep — proof
+health-bars: activate — description, proof, status
+hover-highlight: edit — coin, proof tin → wood
+pencil-marks: keep — proof
+chord-click: edit — description, proof
+swipe-gestures: edit — coin, games, proof bronze → tin
+path-cut: keep — proof
+multi-select: keep — proof
+edge-marking: keep — proof
+dot-mark: keep — proof
+flood-reveal: keep — proof
+main-menu: edit — description, proof
+pause-menu: edit — description, proof
+confirm-dialog: edit — description, proof
+level-select: edit — description, proof
+end-screen: edit — description, proof
+game-screen: keep — proof
+splash-screen: edit — description, coin, proof tin → wood
+settings-window: edit — description, proof
+shop-window: edit — description, proof
+help-window: edit — description, proof
+about-window: keep — proof
+custom-window: keep — proof
+editor-window: edit — не застосовано (питання викладачеві)
+stats-window: keep — proof
+mode-select: keep — proof
+map-window: keep — proof
+lobby-window: keep — proof
+tutorial-window: edit — title, description, proof
+replay-window: keep — proof
+codex-window: edit — description, proof
+achievements-window: edit — title, proof
+character-select: keep — proof
+game-over-continue: edit — description, proof
+level-password: edit — description, proof
+match-setup: edit — description, games, proof
+attract-demo: edit — title, description, proof
+placement-screen: edit — description, proof
+pass-device: edit — description, proof
+code-editor-window: edit — description, coin, proof silver → bronze
+level-intro: keep — proof
+name-entry: keep — proof
+cutscene: keep — proof
+inventory-window: keep — proof
+save-load-window: keep — proof
+dialogue-window: keep — proof
+calendar-window: keep — proof
+console-render: edit — description, proof
+gui-render: keep — proof
+field-scaling: keep — proof
+player-camera: edit — description, proof
+minimap-radar: edit — description, coin, proof bronze → tin
+fog-of-war: keep — proof
+leaderboard: edit — description, proof
+replay: edit — title, description, proof
+share-result: keep — proof
+rating-system: activate — description, coin, proof, status silver → bronze
+achievements: keep — proof
+game-settings: edit — не застосовано (питання викладачеві)
+volume-control: edit — description, proof
+music-toggle: keep — proof
+theme-select: edit — description, proof
+avatar-picker: edit — coin, proof tin → wood
+settings-elements: edit — description
+field-size-picker: keep — proof
+language-picker: edit — description, proof
+controls-remap: edit — description, proof
+sound-effects: keep — proof
+background-music: edit — coin, proof tin → wood
+sound-volume: merge → volume-control — status
+sound-warnings: edit — description, games, proof
+menu-keyboard: нова картка — interface/menus wood «Меню клавішами»
+menu-mouse: нова картка — interface/menus wood «Меню мишкою»
+window-transition: нова картка — interface/graphics tin «Анімація переходу між вікнами»
+## logic
+markup-validity: edit — coin, proof bronze → tin
+check-stalemate: edit — не застосовано (відкладено)
+deadlock-detection: edit — description, proof
+connectivity-check: keep — proof
+word-validation: edit — coin, proof bronze → tin
+difficulty-levels: edit — games, proof
+cheat-codes: edit — description, proof
+rule-variants: keep — proof
+round-currency: keep — proof
+shop-between-levels: keep — proof
+shop-preview: edit — description, proof
+in-round-upgrades: edit — description, games, proof
+shop-sales: edit — description, proof
+run-relics: merge → in-round-upgrades — status
+shop-buyback: edit — description
+undo-redo: edit — description
+undo-step: keep — proof
+move-notation: edit — description, proof
+undo-unlimited: edit — title, description, proof
+state-string: keep — proof
+rewind: keep — proof
+player-death: edit — title
+time-out: edit — description, games
+no-moves-left: edit — title
+permadeath: edit — description, proof
+timeout-punisher: edit — description, proof
+ai-random: edit — title, proof
+hot-seat: edit — description, games
+ai-greedy: edit — title, proof
+ai-minimax: edit — title, proof
+move-timer: keep — proof
+garbage-attack: activate — title, description, coin, proof, status silver → bronze
+simultaneous-versus: keep — proof
+async-multiplayer: merge → online-multiplayer — status
+online-multiplayer: edit — description, proof
+local-two-players: keep — proof
+user-procedures: keep — proof
+sensor-predicates: keep — proof
+step-execution: keep — proof
+fsm-program: activate — description, coin, proof, status gold → bronze
+save-game: edit — description
+save-single-slot: edit — title, description, proof
+save-multi-slot: edit — title, description, coin, proof silver → tin
+save-progress: edit — description, coin, proof bronze → tin
+save-autosave: edit — description, coin, proof silver → tin
+combo-multiplier: edit — description, proof
+score-records: keep — proof
+chain-reaction: keep — proof
+enemy-waves: edit — description, proof
+progress-acceleration: edit — title, description, games, proof
+collect-all: edit — games
+collect-quota: edit — description
+reach-exit: edit — games
+destroy-all-enemies: edit — games
+checkmate: edit — не застосовано (відкладено)
+score-target: activate — description, status
+elapsed-timer: нова картка — game-logic/score wood «Секундомір партії»
+hint-limited: нова картка — game-logic/difficulty wood «Підказка з лімітом»
+
+# 2026-11-13 05:02 · python_labs · змінено 412
+## code-support
+logic-render-split: edit — description, proof
+dual-frontends: edit — description, proof
+interaction-table: edit — description, coin, proof silver → bronze
+state-as-data: edit — description, proof
+game-loop: keep — proof
+commit-history: keep — proof
+project-readme: keep — proof
+version-tags: keep — proof
+gitignore-clean: keep — proof
+feature-branch: keep — proof
+lab1: edit — description
+lab1-field-output: keep — proof
+lab1-read-key: keep — proof
+lab1-move-player: keep — proof
+lab1-cell-check: keep — proof
+lab1-game-loop: keep — proof
+lab1-own-functions: keep — proof
+lab1-data-types: keep — proof
+lab1-conditions: keep — proof
+lab1-loops: keep — proof
+lab1-function-params: keep — proof
+lab1-scope: keep — proof
+lab2: edit — description
+lab2-grid-matrix: edit — title, proof
+lab2-cell-dict: keep — proof
+lab2-direction-tuples: edit — title, proof
+lab2-save-text: edit — description, proof
+lab2-string-methods: keep — proof
+lab2-slices-comprehensions: keep — proof
+lab2-unpacking: keep — proof
+lab2-sets: keep — proof
+lab2-dict-tricks: keep — proof
+lab2-binary-save: keep — proof
+lab3: edit — description
+lab3-classes: keep — proof
+lab3-base-class: keep — proof
+lab3-init-str: keep — proof
+lab3-underscores: keep — proof
+lab3-eq-hash: keep — proof
+lab3-container-methods: edit — title, description, proof
+lab3-property: keep — proof
+lab3-mixins: activate — coin, proof, status bronze → tin
+lab3-classmethods: keep — proof
+lab4: edit — description
+lab4-package: edit — title, proof
+lab4-type-hints: keep — proof
+lab4-closures: keep — proof
+lab4-decorator: keep — proof
+lab4-with-files: keep — proof
+lab4-parametrize: keep — proof
+lab5-score-server: keep — proof
+lab5-database: keep — proof
+lab5-jinja-page: keep — proof
+lab5-level-api: activate — proof, status
+lab5-routers-tests: keep — proof
+lab5-deploy: activate — status
+requirements-pyproject: keep — proof
+single-command-run: edit — description, proof
+exe-build: edit — description, proof
+main-guard: keep — proof
+cross-platform-run: activate — description, proof, status
+typing-mypy: keep — proof
+dataclass-entities: keep — proof
+generators-iterators: edit — description, proof
+custom-exceptions: edit — description, proof
+std-collections: edit — coin, games, proof tin → wood
+enum-states: keep — proof
+match-case-commands: edit — coin, proof tin → wood
+pathlib-paths: keep — proof
+json-files: activate — description, proof, status
+argparse-cli: keep — proof
+logging-debug: keep — proof
+docstrings: keep — proof
+named-constants: keep — proof
+abc-protocol: edit — description, coin, proof tin → wood
+random-seed: activate — description, proof, status
+input-robust: keep — proof
+ruff-clean: keep — proof
+unit-tests: edit — description, proof
+fixture-level-tests: keep — proof
+property-tests: edit — не застосовано (відкладено)
+first-test: edit — description, proof
+player-guide: keep — proof
+architecture-doc: keep — proof
+dev-log: edit — description, proof
+game-page: edit — description
+video-channel: edit — description, proof
+itchio-publish: edit — description
+feature-demo: archive — не застосовано (питання викладачеві)
+game-trailer: edit — description, proof
+demo-effects: edit — description, proof
+game-demo-video: edit — description, proof
+lab2-level-file: нова — відкладено
+lab4-sequence-slices: нова картка — code/labs wood «Зрізи у власному класі поля»
+lab5-player-profile: нова картка — code/labs tin «Профіль гравця на сервері»
+## entities-a
+touch-death: edit — description
+environment-death: edit — coin tin → wood
+chase-greedy: keep — proof
+move-4dir: edit — title, description, coin bronze → tin
+move-by-input: edit — description, coin bronze → tin
+chase-bfs: edit — description, proof
+inertia-slide: edit — title, description, coin, games, proof bronze → tin
+move-8dir: edit — title, description, coin bronze → tin
+move-auto: edit — description, coin bronze → tin
+enemy-patrol: edit — description, coin, proof bronze → tin
+random-walk: keep — proof
+chase-player: edit — description, proof
+realtime-ai: keep — proof
+pattern-automaton: edit — title, description, coin, proof bronze → tin
+row-conveyor: edit — description, coin, games, proof bronze → tin
+body-queue: edit — games
+wall-follower: keep — proof
+turn-when-blocked: edit — description, proof
+carrier-platform: keep — proof
+ladder-climb: keep — proof
+party-switch: keep — proof
+descend-and-reverse: keep — proof
+roll-off-rounded: keep — proof
+diagonal-gap-pass: keep — proof
+visited-trail: keep — proof
+facing-icon: edit — games, proof
+stat-damage: edit — coin tin → wood
+stat-armor: edit — coin tin → wood
+stat-range: edit — coin tin → wood
+stat-capacity: edit — coin tin → wood
+stat-size: edit — coin tin → wood
+stat-ammo: edit — coin tin → wood
+stat-cost: edit — title, coin tin → wood
+stat-vision: edit — coin tin → wood
+stat-rank: edit — coin tin → wood
+role-object: edit — coin tin → wood
+role-ally: edit — coin tin → wood
+role-enemy: edit — coin tin → wood
+role-hazard: edit — coin tin → wood
+role-projectile: edit — coin tin → wood
+role-boss: edit — coin bronze → tin
+role-container: edit — coin tin → wood
+role-gate: edit — coin tin → wood
+role-neutral: edit — coin tin → wood
+role-resource: edit — coin tin → wood
+role-switch: edit — coin tin → wood
+role-segment: edit — coin tin → wood
+role-spawner: edit — coin bronze → wood
+role-supply: edit — coin tin → wood
+spawn-schedule: edit — description, proof
+spawn-points: edit — description, games
+scatter-chase-schedule: edit — coin, proof bronze → tin
+ghost-house-release: keep — proof
+weighted-spawn: keep — proof
+drop-on-death: edit — coin, games tin → wood
+bonus-appears: keep — proof
+notice-and-chase: нова картка — entities/move tin «Ворог помічає гравця»
+## entities-b
+projectile-shot: edit — description, games, proof
+shoot-burst: edit — title, description, proof
+projectile-collision: keep — proof
+shoot-spread: edit — title, description, proof
+blast-wave: edit — games, proof
+telegraphed-intents: keep — proof
+chain-detonation: edit — description, coin, games, proof bronze → tin
+piece-capture: edit — description
+melee-vs-ranged: edit — description, proof
+beam-tracing: keep — proof
+line-of-sight-attack: keep — proof
+bomb-fuse: keep — proof
+teleport-pair: edit — description, proof
+key-and-door: edit — description, games, proof
+teleport-one-way: edit — title, description, proof
+floor-types: merge — не застосовано (питання викладачеві)
+teleport-random-exit: edit — title, description, proof
+stick-together: edit — description, proof
+cell-transform: edit — title, description, proof
+destructible-blocks: edit — games, proof
+dig-terrain: edit — coin tin → wood
+fill-hole: keep — proof
+button-toggle: keep — proof
+mirror-reflect: keep — proof
+thief: keep — proof
+freeze-into-block: merge → cell-transform — status
+crush-by-slide: edit — title, description, proof
+swap-on-contact: keep — proof
+line-match-clear: keep — proof
+dig-hole: keep — proof
+hole-refill: keep — proof
+periodic-sink: keep — proof
+stop-cell: keep — proof
+last-line-defense: keep — proof
+impassable-cells: edit — description
+piece-move-patterns: edit — description, proof
+no-move-into-check: edit — не застосовано (відкладено)
+tile-merge: edit — description, proof
+push-object: edit — description, proof
+pull-object: keep — proof
+one-way-cell: keep — proof
+polyomino-placement: keep — proof
+piece-rotate-flip: keep — proof
+pawn-promotion: keep — proof
+piece-drop: keep — proof
+castling: keep — proof
+en-passant: keep — proof
+cursor-place: edit — description, coin, proof bronze → tin
+inventory-items: keep — proof
+inventory: keep — proof
+temporary-modes: edit — description, games, proof
+multi-cell-size: edit — не застосовано (відкладено)
+orientation-state: edit — не застосовано (відкладено)
+pipe-connectors: keep — proof
+coverage-area: keep — proof
+status-effects: keep — proof
+item-identification: keep — proof
+hunger-clock: keep — proof
+unit-xp-skills: activate — description, proof, status
+blob-growth: keep — proof
+magic-wall-timer: keep — proof
+jump-capture: нова картка — entities/combat bronze «Взяття стрибком»
+sandwich-capture: нова картка — entities/combat bronze «Захоплення оточенням»
+dice-move: нова картка — entities/legality tin «Хід на кидок кубика»
+n-in-a-row-win: нова картка — game-logic/win tin «Перемога лінією з N»
+## field-levels
+control-indirect: keep — proof
+control-drag-piece: edit — coin, proof bronze → tin
+control-drag-path: keep — proof
+control-programmed: edit — description, proof
+grid-layers: edit — description, coin silver → bronze
+gravity-down: keep — proof
+gravity-up: keep — proof
+gravity-per-type: keep — proof
+gravity-toward-center: keep — proof
+wrap-edges: edit — games, proof
+time-programmed: edit — description, coin tin → wood
+time-wego: keep — proof
+time-rhythm: keep — proof
+view-first-person: keep — proof
+level-bank: edit — description, games, proof
+daily-puzzle: edit — games, proof
+level-rating: edit — title, description, proof
+level-par: edit — title, description, proof
+editor-palette: edit — description, proof
+in-game-editor: edit — description, proof
+editor-draw-tools: edit — description, proof
+editor-map-check: edit — description, coin, proof bronze → tin
+editor-erase: edit — description
+level-exchange: edit — description, proof
+editor-undo: keep — proof
+editor-playtest: edit — description, coin, proof bronze → tin
+level-from-txt: edit — coin, proof bronze → tin
+import-open-formats: edit — description, games, proof
+map-validation: edit — description, proof
+level-metadata: edit — description, proof
+level-objects-format: keep — proof
+level-format-doc: keep — proof
+maze-generation: edit — description, games, proof
+mines-after-first-click: edit — description, proof
+dungeon-generation: edit — description, proof
+seed-share: keep — proof
+unique-puzzle-generation: edit — не застосовано (відкладено)
+infinite-field: edit — не застосовано (відкладено)
+difficulty-rating: edit — title, description, proof
+no-guess-generation: keep — proof
+random-placement: keep — proof
+chunk-generation: edit — description, proof
+level-unlock: edit — description, proof
+checkpoint: edit — description, coin, proof bronze → tin
+world-map: keep — proof
+stairs-levels: keep — proof
+secret-level: edit — description, proof
+level-param-ramp: edit — title, games
+bonus-stage: edit — games, proof
+reachability-check: edit — не застосовано (відкладено)
+level-solver: edit — description, games, proof
+control-typed: нова картка — field/control wood «Набираю хід текстом»
+control-cursor: нова картка — field/control wood «Воджу курсор клавішами»
+extra-level: нова картка — levels/progression wood «Ще один рівень»
+## interface
+movement-animation: edit — description, games, proof
+event-effects: keep — proof
+idle-animation: edit — description, proof
+particles: edit — description, proof
+spawn-animation: edit — description, proof
+death-animation: edit — description, proof
+selection-highlight: keep — proof
+status-panel: edit — description, proof
+conflict-highlight: edit — coin, proof tin → wood
+goal-counter: keep — proof
+last-move-highlight: edit — description, games, proof
+mode-indicator: edit — description, games, proof
+legal-move-highlight: edit — description, games, proof
+move-counter: edit — games, proof
+reachable-highlight: edit — coin, proof tin → bronze
+threat-range: keep — proof
+next-queue: keep — proof
+telegraph-marker: edit — description, coin, proof tin → wood
+path-preview: keep — proof
+message-log: keep — proof
+objective-text: keep — proof
+popup-text: keep — proof
+face-button: edit — description, proof
+wave-progress: keep — proof
+health-bars: activate — description, proof, status
+hover-highlight: edit — coin, proof tin → wood
+pencil-marks: keep — proof
+chord-click: edit — description, proof
+swipe-gestures: edit — coin, games, proof bronze → tin
+path-cut: keep — proof
+multi-select: keep — proof
+edge-marking: keep — proof
+dot-mark: keep — proof
+flood-reveal: keep — proof
+main-menu: edit — description, proof
+pause-menu: edit — description, proof
+confirm-dialog: edit — description, proof
+level-select: edit — description, proof
+end-screen: edit — description, proof
+game-screen: keep — proof
+splash-screen: edit — description, coin, proof tin → wood
+settings-window: edit — description, proof
+shop-window: edit — description, proof
+help-window: edit — description, proof
+about-window: keep — proof
+custom-window: keep — proof
+editor-window: edit — не застосовано (питання викладачеві)
+stats-window: keep — proof
+mode-select: keep — proof
+map-window: keep — proof
+lobby-window: keep — proof
+tutorial-window: edit — title, description, proof
+replay-window: keep — proof
+codex-window: edit — description, proof
+achievements-window: edit — title, proof
+character-select: keep — proof
+game-over-continue: edit — description, proof
+level-password: edit — description, proof
+match-setup: edit — description, games, proof
+attract-demo: edit — title, description, proof
+placement-screen: edit — description, proof
+pass-device: edit — description, proof
+code-editor-window: edit — description, coin, proof silver → bronze
+level-intro: keep — proof
+name-entry: keep — proof
+cutscene: keep — proof
+inventory-window: keep — proof
+save-load-window: keep — proof
+dialogue-window: keep — proof
+calendar-window: keep — proof
+console-render: edit — description, proof
+gui-render: keep — proof
+field-scaling: keep — proof
+player-camera: edit — description, proof
+minimap-radar: edit — description, coin, proof bronze → tin
+fog-of-war: keep — proof
+leaderboard: edit — description, proof
+replay: edit — title, description, proof
+share-result: keep — proof
+rating-system: activate — description, coin, proof, status silver → bronze
+achievements: keep — proof
+game-settings: edit — не застосовано (питання викладачеві)
+volume-control: edit — description, proof
+music-toggle: keep — proof
+theme-select: edit — description, proof
+avatar-picker: edit — coin, proof tin → wood
+settings-elements: edit — description
+field-size-picker: keep — proof
+language-picker: edit — description, proof
+controls-remap: edit — description, proof
+sound-effects: keep — proof
+background-music: edit — coin, proof tin → wood
+sound-volume: merge → volume-control — status
+sound-warnings: edit — description, games, proof
+menu-keyboard: нова картка — interface/menus wood «Меню клавішами»
+menu-mouse: нова картка — interface/menus wood «Меню мишкою»
+window-transition: нова картка — interface/graphics tin «Анімація переходу між вікнами»
+## logic
+markup-validity: edit — coin, proof bronze → tin
+check-stalemate: edit — не застосовано (відкладено)
+deadlock-detection: edit — description, proof
+connectivity-check: keep — proof
+word-validation: edit — coin, proof bronze → tin
+difficulty-levels: edit — games, proof
+cheat-codes: edit — description, proof
+rule-variants: keep — proof
+round-currency: keep — proof
+shop-between-levels: keep — proof
+shop-preview: edit — description, proof
+in-round-upgrades: edit — description, games, proof
+shop-sales: edit — description, proof
+run-relics: merge → in-round-upgrades — status
+shop-buyback: edit — description
+undo-redo: edit — description
+undo-step: keep — proof
+move-notation: edit — description, proof
+undo-unlimited: edit — title, description, proof
+state-string: keep — proof
+rewind: keep — proof
+player-death: edit — title
+time-out: edit — description, games
+no-moves-left: edit — title
+permadeath: edit — description, proof
+timeout-punisher: edit — description, proof
+ai-random: edit — title, proof
+hot-seat: edit — description, games
+ai-greedy: edit — title, proof
+ai-minimax: edit — title, proof
+move-timer: keep — proof
+garbage-attack: activate — title, description, coin, proof, status silver → bronze
+simultaneous-versus: keep — proof
+async-multiplayer: merge → online-multiplayer — status
+online-multiplayer: edit — description, proof
+local-two-players: keep — proof
+user-procedures: keep — proof
+sensor-predicates: keep — proof
+step-execution: keep — proof
+fsm-program: activate — description, coin, proof, status gold → bronze
+save-game: edit — description
+save-single-slot: edit — title, description, proof
+save-multi-slot: edit — title, description, coin, proof silver → tin
+save-progress: edit — description, coin, proof bronze → tin
+save-autosave: edit — description, coin, proof silver → tin
+combo-multiplier: edit — description, proof
+score-records: keep — proof
+chain-reaction: keep — proof
+enemy-waves: edit — description, proof
+progress-acceleration: edit — title, description, games, proof
+collect-all: edit — games
+collect-quota: edit — description
+reach-exit: edit — games
+destroy-all-enemies: edit — games
+checkmate: edit — не застосовано (відкладено)
+score-target: activate — description, status
+elapsed-timer: нова картка — game-logic/score wood «Секундомір партії»
+hint-limited: нова картка — game-logic/difficulty wood «Підказка з лімітом»
+
