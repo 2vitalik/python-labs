@@ -16,7 +16,7 @@ document.addEventListener('visibilitychange', async () => {
 })
 
 // «Очима студента»: the whole site answers as to a test student; the reload drops what was loaded for the admin
-export const lookAs = (nick) => viewAs(nick).then(() => location.assign('/'))
+export const lookAs = (nick, to = '/') => viewAs(nick).then(() => location.assign(to))  // `to` — where to land as them
 export const lookBack = () => stopViewAs().then(() => location.assign('/students'))
 
 // route access: 'admin' | 'active' (student or admin) | undefined = public

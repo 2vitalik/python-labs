@@ -6,6 +6,7 @@ import { getStudents, importStudents } from '../api.js'
 import Crumbs from '../components/Crumbs.vue'
 import StudentFilters from '../components/StudentFilters.vue'
 import StudentsTable from '../components/StudentsTable.vue'
+import { load as recall, save } from '../local.js'
 import { site } from '../site.js'
 import { useStudentFilter } from '../studentFilter.js'
 import { studentsCrumbs, studentsHome } from '../students.js'
@@ -16,7 +17,9 @@ import { user } from '../user.js'
 const students = ref([])
 const cards = site.students.cards  // the site's gallery, when it has one
 const isAdmin = computed(() => user.value?.status === 'admin')
-const view = ref(cards && (useRoute().query.view === 'cards' || !isAdmin.value) ? 'cards' : 'table')
+// the look last chosen is remembered, so the menu's link comes back to it; a link with ?view= says its own
+const view = ref((cards && (useRoute().query.view || recall('students-view') || (isAdmin.value ? 'table' : 'cards'))) === 'cards' ? 'cards' : 'table')
+const look = (v) => { view.value = v; save('students-view', v) }
 const showImport = ref(false)
 const importText = ref('')
 const importResult = ref('')
@@ -51,8 +54,8 @@ onMounted(load)
     <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
       <h1 class="h3 mb-0">{{ home.name }} <span class="text-secondary fs-6">{{ group }} ({{ listed.length }}{{ active ? ` з ${total}` : '' }})</span></h1>
       <div v-if="cards" class="btn-group btn-group-sm ms-2">
-        <button class="btn" :class="view === 'table' ? 'btn-primary' : 'btn-outline-secondary'" @click="view = 'table'">Таблиця</button>
-        <button class="btn" :class="view === 'cards' ? 'btn-primary' : 'btn-outline-secondary'" @click="view = 'cards'">Картки</button>
+        <button class="btn" :class="view === 'table' ? 'btn-primary' : 'btn-outline-secondary'" @click="look('table')">Таблиця</button>
+        <button class="btn" :class="view === 'cards' ? 'btn-primary' : 'btn-outline-secondary'" @click="look('cards')">Картки</button>
       </div>
       <input type="search" :value="q" class="form-control form-control-sm w-auto ms-auto" placeholder="Пошук: ПІБ, нік…"
              title="За початком слова: прізвище, імʼя, нік, Telegram" @input="setQ($event.target.value)">

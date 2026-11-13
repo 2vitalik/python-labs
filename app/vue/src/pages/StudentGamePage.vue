@@ -30,7 +30,7 @@ onMounted(async () => {
   <div>
     <Crumbs :items="studentsCrumbs(data?.student.name || nick)">
       <button v-if="admin && data && data.student.status !== 'admin'" class="btn btn-outline-secondary btn-sm ms-auto"
-              :title="data.student.test ? null : 'Лише перегляд'" @click="lookAs(nick)">👁 Очима студента</button>
+              :title="data.student.test ? 'Його «Моя гра» — з редагуванням' : 'Його «Моя гра» — лише перегляд'" @click="lookAs(nick, '/my/game')">👁 Очима студента</button>
       <RouterLink v-if="admin" :to="{ path: '/activity', query: { user: nick } }" class="btn btn-outline-secondary btn-sm">📈 Активність</RouterLink>
     </Crumbs>
     <p v-if="data && !data.game" class="text-center mt-5 text-secondary">Гру ще не обрано.</p>
