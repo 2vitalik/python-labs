@@ -17,6 +17,7 @@ import AddBar from './AddBar.vue'
 import ClaimsTable from './ClaimsTable.vue'
 import DraftStrip from './DraftStrip.vue'
 import EntitiesBlock from './EntitiesBlock.vue'
+import EtalonGap from './EtalonGap.vue'
 import FieldCard from './FieldCard.vue'
 import Hints from './Hints.vue'
 import LevelsBlock from './LevelsBlock.vue'
@@ -140,6 +141,7 @@ async function fromTemplate() {
         <button type="button" class="btn btn-sm btn-add ms-auto" @click="fromTemplate"><Icon name="plus" /> Почати з еталона</button>
       </div>
       <Hints :items="hints" class="mb-3" />
+      <EtalonGap v-if="!ed.simple && !ed.sandbox && game.base_game" class="mb-3" />
     </template>
     <div v-if="error" class="alert alert-danger py-2 small">{{ error }}</div>
 

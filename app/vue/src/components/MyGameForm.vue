@@ -7,7 +7,8 @@ import { games } from '../catalog.js'
 
 // creating the game: base · title · description as three cards, the profile's way (ProfileForm);
 // once it exists the same fields fold into one compact card above the description's sections, and «змінити основу» opens
-// the choice with its own «Зберегти» / «Скасувати» (T274 §10)
+// the choice with its own «Зберегти» / «Скасувати» (T274 §10). A changed title or description brings the same pair right
+// under them, into a row that is always there — so nothing below moves when the first letter is typed
 const props = defineProps({ dirty: Boolean, changed: { type: Array, default: () => [] }, saved: Boolean, error: String, fresh: Boolean })
 const emit = defineEmits(['save', 'reset'])
 const form = defineModel({ type: Object, required: true })
@@ -18,6 +19,7 @@ watch(() => props.saved, (v) => v && (was.value = null))
 // what waits for «Зберегти» — named in the bar that floats over the page, wherever it is scrolled to
 const NAMES = { title: 'назва гри', description: 'опис гри', base_game: 'основа', base_custom: 'основа' }
 const unsaved = computed(() => [...new Set(props.changed.map((k) => NAMES[k] || k))].join(', '))
+const texts = computed(() => props.changed.some((k) => k === 'title' || k === 'description'))
 function undo() {
   emit('reset')  // the page puts the saved values back at once
   was.value = null
@@ -70,6 +72,13 @@ const showChips = computed(() => props.fresh || !!was.value)
           <div class="desc">
             <GrowArea v-model="form.description" class="form-control soft-input px-2" title="Опис — можна редагувати"
                       placeholder="Що за гра і чим відрізняється від основи — натисни й пиши" />
+          </div>
+          <div class="foot">
+            <template v-if="texts">
+              <button class="btn btn-sm btn-success"><Icon name="check" /> Зберегти</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary" @click="undo">Скасувати</button>
+              <span v-if="error" class="text-danger small">{{ error }}</span>
+            </template>
             <span class="md" title="Опис розуміє Markdown: **жирний**, *курсив*, списки з «- », [посилання](https://…)">Markdown</span>
           </div>
         </template>
@@ -114,8 +123,9 @@ const showChips = computed(() => props.fresh || !!was.value)
 </template>
 
 <style scoped>
-.desc { position: relative; }
-.md { position: absolute; right: .4rem; bottom: .2rem; font-size: .65rem; color: var(--bs-secondary-color); opacity: .6; cursor: help; }
+/* as tall as its buttons whether they are there or not */
+.foot { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; min-height: calc(1.5 * .875rem + .5rem + 2px); margin-top: .25rem; padding: 0 .5rem; }
+.md { margin-left: auto; font-size: .65rem; color: var(--bs-secondary-color); opacity: .6; cursor: help; }
 .unsaved { position: fixed; z-index: 1040; left: 50%; bottom: 1rem; transform: translateX(-50%); display: flex; flex-wrap: wrap; align-items: center;
            gap: .4rem .6rem; max-width: calc(100vw - 1.5rem); padding: .45rem .7rem; font-size: .875rem; }
 .dot { display: inline-block; width: .5rem; height: .5rem; margin-right: .15rem; border-radius: 50%; background: var(--bs-warning); }
