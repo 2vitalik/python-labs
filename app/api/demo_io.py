@@ -14,7 +14,7 @@ import options
 import templates
 import uploads
 from core.config import settings
-from core.models.history import Change, record_new
+from core.models.history import Change, record, record_new
 from core.models.user import Status, User
 from db import init_db
 from demo_shots import png
@@ -26,7 +26,7 @@ from parts_clean import clean_props
 from zones import kind_of, misplaced
 
 DEMO = Path(__file__).resolve().parents[2] / "data" / "demo"
-EXTRA = ("note", "link", "status", "verdict")  # what a claim carries beyond its card
+OWN, VERDICT = ("note", "link"), ("status", "verdict")  # what a claim carries beyond its card: the student's words · the teacher's
 
 
 async def drop(email: str) -> None:
@@ -35,6 +35,8 @@ async def drop(email: str) -> None:
         return
     assert user.test, f"{email} is not a test student"
     if game := await Game.find_one(Game.owner == email):
+        ids = [game.id] + [d.id for model in (Part, Claim, Rule) for d in await model.find(model.game == game.id).to_list()]
+        await Change.find({"doc_id": {"$in": ids}}).delete()  # the teacher's verdicts on it too
         for model in (Part, Claim, Rule):
             await model.find(model.game == game.id).delete()
         shutil.rmtree(uploads.ROOT / str(game.id), ignore_errors=True)
@@ -65,6 +67,16 @@ async def set_field(game: Game, f: dict) -> list[str]:
     return skipped
 
 
+async def settle(claim: Claim | None, x: dict) -> None:
+    """A claim's note and link as the file says; its verdict as the teacher gives one — a row of the game's history (T281)."""
+    if not claim:  # a card out of its place was skipped by the pour
+        return
+    if own := {k: x[k] for k in OWN if k in x}:
+        await claim.set(own)
+    if word := {k: x[k] for k in VERDICT if k in x}:
+        await record(claim, word, actor=settings.admin_list[0] if settings.admin_list else "teacher@demo")
+
+
 async def finish(game: Game, d: dict, field: dict) -> None:
     """What the templates' format has no words for: screenshots of a part, a claim's note, link and verdict."""
     parts = {(p.kind, p.title.lower()): p for p in await Part.find(Part.game == game.id).to_list()}
@@ -79,16 +91,10 @@ async def finish(game: Game, d: dict, field: dict) -> None:
             for name, art in zip(names, node["shots"]):
                 (folder / name).write_bytes(png(art.splitlines()))
             await part.set({Part.screenshots: names})
-        for x in node.get("claims") or []:
-            if isinstance(x, dict) and (extra := {k: x[k] for k in EXTRA if k in x}):
-                claim = await Claim.find_one(Claim.game == game.id, Claim.task == x["slug"], Claim.part == (str(part.id) if part else ""))
-                if claim:  # a card out of its place was skipped by the pour
-                    await claim.set(extra)
-    for x in (x for r in d.get("rules") or [] for x in r.get("claims") or []):
-        if isinstance(x, dict) and (extra := {k: x[k] for k in EXTRA if k in x}):
-            claim = await Claim.find_one(Claim.game == game.id, Claim.task == x["slug"], Claim.rule != "")  # a card sits on one rule
-            if claim:
-                await claim.set(extra)
+        for x in (x for x in node.get("claims") or [] if isinstance(x, dict)):
+            await settle(await Claim.find_one(Claim.game == game.id, Claim.task == x["slug"], Claim.part == (str(part.id) if part else "")), x)
+    for x in (x for r in d.get("rules") or [] for x in r.get("claims") or [] if isinstance(x, dict)):
+        await settle(await Claim.find_one(Claim.game == game.id, Claim.task == x["slug"], Claim.rule != ""), x)  # a card sits on one rule
 
 
 async def seed(path: Path, email: str) -> None:

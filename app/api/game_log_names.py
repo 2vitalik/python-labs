@@ -65,7 +65,7 @@ class Names:
         words = {
             "status": lambda: STATUS.get(v, v), "base_game": lambda: self.bases.get(v, v), "task": lambda: self.card(v),
             "role": lambda: self.roles.get(v, v), "window": lambda: self.part(v), "part": lambda: self.where(v),
-            "rule": lambda: self.sentence(self.rules.get(v, {})), "screenshots": lambda: str(len(v)),
+            "rule": lambda: self.sentence(self.rules.get(v, {})), "screenshots": lambda: str(len(v)), "shots": lambda: str(len(v)),
             "phases": lambda: " → ".join(v), "when": lambda: self.clause("when", v, {}),
             "cond": lambda: self.clause("cond", v, snap.get("when")), "then": lambda: self.clause("then", v, snap.get("when")),
             "items": lambda: "; ".join(map(self.item, v)), "props": lambda: "; ".join(self.prop(k, x) for k, x in v.items()),

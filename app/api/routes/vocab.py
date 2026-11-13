@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends
 
+import grading
 import options
 from core.config import settings
 from core.deps import viewer
@@ -20,4 +21,8 @@ async def get_vocab(user: User | None = Depends(viewer)):
     """The description language for the forms: the rules' dictionaries, the arguments' names, the card kinds,
     and from the catalog — entity roles, stats, the field's options."""
     cat = await options.catalog(options.is_admin(user))
-    return vocab() | await options.described(cat) | {"kinds": KINDS, "depth": depth(user)}
+    seen = settings.grade_scale == "open" or (user and options.is_admin(user))
+    return vocab() | await options.described(cat) | {
+        "kinds": KINDS, "depth": depth(user),
+        "grade": {"wood": grading.WOOD, "scale": grading.SCALE if seen else [], "draft": settings.grade_scale != "open"},
+    }

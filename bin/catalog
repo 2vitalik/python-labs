@@ -4,7 +4,7 @@
   bin/catalog [-t dev] ls tasks|games [text]
   bin/catalog [-t dev] pull                          every card of both kinds
   bin/catalog [-t dev] push [tasks/<slug> …]         the named cards; none = every changed one
-  bin/catalog [-t dev] snap [--to <dir>]             games.yaml + tasks.yaml → data/catalog/, for git
+  bin/catalog [-t dev] snap [--to <dir>]             every YAML of the site's snapshot (games, tasks, aliases, proof) → data/catalog/, for git
   bin/catalog [-t dev] log tasks|games [slug]        the edits, newest first, each with its id
   bin/catalog [-t dev] undo tasks|games <id>         the fields of that edit back to what they were
 

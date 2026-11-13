@@ -3,7 +3,7 @@ the slot specs, the vocab's words of a rule blank; aliases by language (T270 §1
 from fastapi import HTTPException
 from pydantic import BaseModel
 
-from models.task import Task, langs
+from models.task import PROOFS, Task, langs
 from models.vocab import CONDITIONS, EFFECTS, TRIGGERS
 from zones import COINS, KINDS, STATUSES, ZONES, default_kind
 
@@ -28,6 +28,7 @@ class TaskIn(BaseModel):
     slots: list[dict] | None = None
     rule: dict | None = None
     aliases: list[str] | dict = []  # a plain list is Ukrainian
+    proof: str | None = None
     status: str = "draft"
     order: int = 0
 
@@ -81,9 +82,11 @@ async def clean(data: TaskIn) -> dict:
             raise HTTPException(422, "Невідомий тип картки.")
         if d["kind"] == default_kind(d["zone"], d["subzone"], d["tags"]):
             d["kind"] = ""  # the subzone's own: kept implicit, so a card follows its subzone
-    for k in ("icon", "opt"):
+    for k in ("icon", "opt", "proof"):
         if k in d:
             d[k] = d[k].strip()
+    if d.get("proof") and d["proof"] not in PROOFS:
+        raise HTTPException(422, "Доказ — shot (скриншот), gif (гіфка), video (відео), code (посилання на код) або нічого.")
     if "slots" in d:
         d["slots"] = clean_slots(d["slots"])
     if "rule" in d:

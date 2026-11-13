@@ -11,7 +11,7 @@ def task_index(tasks: list[Task]) -> dict:
     return {t.slug: {"title": t.title, "coin": t.coin, "amount": t.amount, "slots": t.slots, "tags": t.tags,
                      "zone": t.zone, "subzone": t.subzone, "status": t.status, "kind": kind_of(t), "icon": t.icon,
                      "opt": t.opt, "description": t.description, "max_count": t.max_count, "parent": t.parent,
-                     "rule": t.rule} for t in tasks}
+                     "rule": t.rule, "proof": t.proof} for t in tasks}
 
 
 def coins_of(claims: list[Claim], tasks: list[Task]) -> dict:

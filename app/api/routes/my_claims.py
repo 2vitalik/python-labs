@@ -3,6 +3,7 @@ from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 from pydantic import BaseModel
 
 import field_claims
+import uploads
 from bot import game_alerts
 from claims_clean import clean_params
 from core.models.history import record, record_delete, record_new
@@ -111,6 +112,7 @@ async def delete_claim(id: PydanticObjectId, tasks: BackgroundTasks, game: Game 
     claim = await get_claim(id, game)
     if claim.auto:
         raise HTTPException(422, HELD)
+    uploads.drop_shots(claim)
     await record_delete(claim, actor=user.email)
     tasks.add_task(game_alerts.claim, user, claim, 2)
     return {"ok": True}

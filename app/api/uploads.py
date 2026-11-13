@@ -27,6 +27,12 @@ async def save_shot(game_id: str, file: UploadFile) -> str:
     return name
 
 
+def drop_shots(claim) -> None:
+    """A claim goes away: its proof files go to the trash with it (T284 §7)."""
+    for name in claim.shots:
+        drop_shot(str(claim.game), name)
+
+
 def drop_shot(game_id: str, name: str) -> None:
     path = ROOT / game_id / name
     if path.is_file():

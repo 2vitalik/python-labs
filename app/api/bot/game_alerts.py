@@ -22,9 +22,13 @@ fmt = lambda v: html.quote(" → ".join(v) if isinstance(v, list) else str(v)) i
 gone = lambda lvl: " → ✖️" if lvl == 2 else ""  # noqa: E731
 
 
-async def send(kind: str, text: str, email: str) -> None:
-    if not email.endswith("@sandbox"):  # the sandbox's author is made up (routes/my_game.py): its edits are nobody's news
-        await notify.send(kind, text, email)
+async def send(kind: str, text: str, email: str, game: PydanticObjectId | None = None) -> None:
+    """`game` — whose game was edited: the teacher's edit in a student's game (X-Game-Of) is no news to the teacher."""
+    if email.endswith("@sandbox"):  # the sandbox's author is made up (routes/my_game.py): its edits are nobody's news
+        return
+    if game and (g := await Game.get(game)) and g.owner != email:
+        return
+    await notify.send(kind, text, email)
 
 
 async def claim(user: User, c: Claim, lvl: int, changes: dict | None = None) -> None:
@@ -39,7 +43,7 @@ async def claim(user: User, c: Claim, lvl: int, changes: dict | None = None) -> 
         if key in (changes or {}):
             old, new = changes[key]["old"], changes[key]["new"]
             rows.append(f"{label}: {arrow(level(old, new), old, new, fmt)}")
-    await send("claim", event(lvl, "Заявка", user, rows), user.email)
+    await send("claim", event(lvl, "Заявка", user, rows), user.email, c.game)
 
 
 async def verdict(owner: User, c: Claim, changes: dict) -> None:
@@ -64,11 +68,11 @@ async def game(user: User, g: Game, changes: dict | None = None) -> None:
                 lvl = max(lvl, lvl_k)
                 rows.append(f"{label}: {'змінено' if key == 'description' and lvl_k == 1 else arrow(lvl_k, old, new, fmt)}")
     if rows:
-        await send("game", event(lvl, "Гра", user, rows), user.email)
+        await send("game", event(lvl, "Гра", user, rows), user.email, g.id)
 
 
 async def part(user: User, p: Part, lvl: int) -> None:
-    await send("game", event(lvl, "Гра", user, [f"🧩 {PART[p.kind]} «{html.quote(p.title)}»{gone(lvl)}"]), user.email)
+    await send("game", event(lvl, "Гра", user, [f"🧩 {PART[p.kind]} «{html.quote(p.title)}»{gone(lvl)}"]), user.email, p.game)
 
 
 async def said(r: Rule) -> str:
@@ -78,7 +82,7 @@ async def said(r: Rule) -> str:
 
 
 async def rule(user: User, r: Rule, lvl: int) -> None:
-    await send("game", event(lvl, "Гра", user, [f"📜 {await said(r)}{gone(lvl)}"]), user.email)
+    await send("game", event(lvl, "Гра", user, [f"📜 {await said(r)}{gone(lvl)}"]), user.email, r.game)
 
 
 def where(ref: Ref) -> str:

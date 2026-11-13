@@ -7,7 +7,7 @@ LABELS = {
     "title": "назва", "description": "опис", "base_game": "основа", "base_custom": "своя основа", "phases": "порядок тіку",
     "task": "тип вікна", "role": "роль", "icon": "іконка", "screenshots": "скриншоти", "window": "вікно", "items": "переходи",
     "props": "властивості", "stats": "параметри", "states": "стани", "when": "коли", "cond": "якщо", "then": "то",
-    "note": "нотатка", "part": "де", "rule": "правило", "params": "параметри", "link": "посилання", "status": "стан",
+    "note": "нотатка", "part": "де", "rule": "правило", "params": "параметри", "link": "посилання", "shots": "докази", "status": "стан",
     "verdict": "коментар викладача",
 }
 HIDDEN = ("game", "owner", "order", "kind", "auto", "poured", "created_at")  # the plumbing: nobody typed these

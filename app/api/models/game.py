@@ -69,6 +69,7 @@ class Claim(Document):
     params: dict = {}  # values for the card's slots {key: value}
     note: str = ""
     link: str = ""  # GitHub link (commit-pin normalization — later phase)
+    shots: list[str] = []  # the proof (T284 §7): up to three pictures, file names under uploads/<game-id>/
     status: str = "claimed"  # CLAIM_STATUSES; the teacher sets accepted / returned
     verdict: str = ""  # the teacher's line with the status
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
@@ -79,6 +80,7 @@ class Claim(Document):
     def api(self) -> dict:
         return {
             "id": str(self.id), "game": str(self.game), "task": self.task, "part": self.part, "rule": self.rule,
-            "auto": self.auto, "params": self.params, "note": self.note, "link": self.link, "status": self.status, "verdict": self.verdict,
+            "auto": self.auto, "params": self.params, "note": self.note, "link": self.link, "shots": self.shots,
+            "status": self.status, "verdict": self.verdict,
             "created_at": self.created_at.isoformat(),
         }

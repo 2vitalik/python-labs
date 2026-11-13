@@ -7,6 +7,7 @@ from core.deps import active_user, admin_user
 from core.models.history import record
 from core.models.user import User
 from core.routes import students
+from grading import wood
 from models.game import CLAIM_STATUSES, Claim, Game, Part
 from models.rule import Rule
 from models.task import Task
@@ -29,6 +30,8 @@ async def game_summary(game: Game | None) -> dict:
         "field": any(p.kind == "field" for p in parts),
         "claims": len(claims), "accepted": sum(c.status == "accepted" for c in claims),
         "coins": coins["claimed"], "coins_accepted": coins["accepted"],
+        "wood_claimed": wood(coins["claimed"]), "wood_accepted": wood(coins["accepted"]),
+        "waiting": sum(c.status == "claimed" and not c.auto for c in claims),  # the teacher's word is due
         "rules": await Rule.find(Rule.game == game.id).count(),
         "cover": f"/api/uploads/{game.id}/{shots[0]}" if shots else "",
     }

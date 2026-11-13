@@ -126,6 +126,7 @@ async def delete_part(id: PydanticObjectId, tasks: BackgroundTasks, game: Game =
     part = await get_part(id, game)
     pid = str(part.id)
     for claim in await Claim.find(Claim.game == game.id, Claim.part == pid).to_list():
+        uploads.drop_shots(claim)
         await record_delete(claim, actor=user.email)
     for rule in await Rule.find(Rule.game == game.id).to_list():  # a sentence loses its subject
         if rule.uses(pid):

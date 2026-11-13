@@ -2,6 +2,7 @@ from beanie import PydanticObjectId
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 from pydantic import BaseModel
 
+import uploads
 from bot import game_alerts
 from core.models.history import record, record_delete, record_new
 from core.models.user import User
@@ -78,6 +79,7 @@ async def clean(data: RuleIn, game: Game) -> dict:
 async def drop_rule(rule: Rule, actor: str) -> None:
     """The rule goes with the cards claimed on it."""
     for claim in await Claim.find(Claim.game == rule.game, Claim.rule == str(rule.id)).to_list():
+        uploads.drop_shots(claim)
         await record_delete(claim, actor=actor)
     await record_delete(rule, actor=actor)
 

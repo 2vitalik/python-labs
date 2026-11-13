@@ -5,6 +5,7 @@ import asyncio
 from collections import Counter
 
 import options
+import uploads
 from core.models.history import record, record_delete, record_new
 from db import init_db
 from models.game import Claim, Game, Part
@@ -42,6 +43,7 @@ async def sync(game: Game, actor: str) -> Counter:
         if c.rule or not (c.auto or key in want):
             continue
         if key not in want or key in have:
+            uploads.drop_shots(c)
             await record_delete(c, actor=actor)
             done["removed"] += 1
         else:

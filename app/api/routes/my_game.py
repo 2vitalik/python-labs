@@ -10,6 +10,7 @@ from models.game import Game
 
 router = APIRouter(prefix="/api/my/game")
 SANDBOX = "x-sandbox"  # header: the base game's slug of the sandbox the editor works in (T274 §7, routes/sandbox.py)
+GAME_OF = "x-game-of"  # header: the nick of the student whose game the teacher edits (T282 Б)
 
 
 class GameIn(BaseModel):
@@ -30,7 +31,13 @@ def in_sandbox(user: User) -> bool:
 
 
 async def author(request: Request, user: User = Depends(active_user)):
-    """Who writes «Моя гра»: the user, or under `X-Sandbox` a made-up test student who owns the sandbox copy."""
+    """Who writes «Моя гра»: the user, or under `X-Sandbox` a made-up test student who owns the sandbox copy.
+    Under `X-Game-Of` it stays the teacher — the history and the catalog's drafts are theirs, the game is the student's (game_of)."""
+    if request.headers.get(GAME_OF):
+        if user.status != Status.admin:
+            raise HTTPException(403, "Редагувати чужу гру може лише викладач.")
+        if request.headers.get(SANDBOX):
+            raise HTTPException(422, "Пісочниця й гра студента разом не відкриваються.")
     if not request.headers.get(SANDBOX):
         yield user
         return
@@ -41,8 +48,21 @@ async def author(request: Request, user: User = Depends(active_user)):
         await Change.find(Change.actor == me.email).delete()
 
 
+async def game_of(request: Request, user: User) -> Game | None:
+    """The game «Моя гра» works on: the writer's own, or under `X-Game-Of` the student's — which must be there already."""
+    if not (nick := request.headers.get(GAME_OF)):
+        return await Game.find_one(Game.owner == user.email)
+    student = await User.by_nick(nick)
+    if not student:
+        raise HTTPException(404, f"Студента «{nick}» не знайдено.")
+    game = await Game.find_one(Game.owner == student.email)
+    if not game:
+        raise HTTPException(404, f"У студента {student.person()['name'] or nick} ще нема гри — створити її може лише він сам.")
+    return game
+
+
 async def my_game(request: Request, user: User = Depends(author)) -> Game:
-    game = await Game.find_one(Game.owner == user.email)
+    game = await game_of(request, user)
     slug = request.headers.get(SANDBOX)
     if slug and (not game or game.base_game != slug):
         raise HTTPException(404, "Пісочницю не відкрито — натисни «Спробувати редагувати» на сторінці гри.")
@@ -77,13 +97,15 @@ async def clean(data: GameIn) -> dict:
 
 
 @router.get("")
-async def get_my_game(user: User = Depends(author)):
-    game = await Game.find_one(Game.owner == user.email)
+async def get_my_game(request: Request, user: User = Depends(author)):
+    game = await game_of(request, user)
     return game.api() if game else None
 
 
 @router.post("")
-async def create_game(data: GameIn, tasks: BackgroundTasks, user: User = Depends(author)):
+async def create_game(data: GameIn, request: Request, tasks: BackgroundTasks, user: User = Depends(author)):
+    if request.headers.get(GAME_OF):
+        raise HTTPException(403, "Створити гру за студента не можна — лише редагувати наявну.")
     if await Game.find_one(Game.owner == user.email):
         raise HTTPException(409, "Гра вже створена — вона в тебе одна.")
     game = Game(owner=user.email, **await clean(data))
