@@ -9,7 +9,8 @@ import TocList from './TocList.vue'
 
 // the way around a long page (T284 §3): «↑» to the top once the page is scrolled, and «☰» — the page's contents in a
 // panel — where the side column of Toc.vue is not shown (a narrow window, a page on the whole window: `wide`). Beside the
-// page column while there is room for it, in the corner under the thumb otherwise. It also runs the contents' spy (toc.js)
+// page column while there is room for it, in the corner under the thumb otherwise. «☰» opens under a mouse that rests on
+// it a moment and closes once the mouse has left the panel a while (T294 §11); a finger taps. It also runs the contents' spy (toc.js)
 const props = defineProps({ wide: Boolean })
 const far = ref(false)
 const narrow = ref(false)
@@ -21,6 +22,14 @@ const look = () => { frame ||= requestAnimationFrame(() => { frame = 0; spy() })
 const scrolled = () => { far.value = scrollY > 500; look() }
 const sized = () => (narrow.value = !roomy.matches)
 const outside = (e) => !root.value?.contains(e.target) && (open.value = false)
+const hovers = matchMedia('(hover: hover)').matches
+let timer
+const hover = (on) => {
+  if (!hovers) return
+  clearTimeout(timer)
+  timer = setTimeout(() => (open.value = on), on ? 200 : 400)
+}
+const tap = () => { clearTimeout(timer); open.value = hovers || !open.value }
 const route = useRoute()
 watch(() => route.path, () => (open.value = false))
 watch(tocItems, () => nextTick(look))
@@ -38,16 +47,17 @@ onBeforeUnmount(() => {
   roomy.removeEventListener('change', sized)
   document.removeEventListener('mousedown', outside)
   grown.disconnect()
+  clearTimeout(timer)
 })
 </script>
 
 <template>
-  <div ref="root" class="jump" :class="{ beside: !narrow && !wide }">
-    <div v-if="open" class="panel shadow border rounded bg-body">
+  <div ref="root" class="jump" :class="{ beside: !narrow && !wide }" @mouseleave="hover(false)">
+    <div v-if="open" class="panel shadow border rounded bg-body" @mouseenter="hover(true)">
       <div class="text-uppercase fw-semibold mb-1">Зміст</div>
       <TocList :items="tocListed" @went="open = false" />
     </div>
-    <button v-if="(narrow || wide) && tocListed.length" type="button" class="round" :class="{ on: open }" title="Зміст сторінки" @click="open = !open"><Icon name="list" /></button>
+    <button v-if="(narrow || wide) && tocListed.length" type="button" class="round" :class="{ on: open }" title="Зміст сторінки" @click="tap" @mouseenter="hover(true)"><Icon name="list" /></button>
     <button v-if="far" type="button" class="round" title="Нагору" @click="toTop(); open = false"><Icon name="top" /></button>
   </div>
 </template>

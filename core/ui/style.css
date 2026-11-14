@@ -23,6 +23,9 @@ html.toc-bar { --stick-h: 2rem; }  /* TocBar's row under the menu */
 /* one colour — one action (T270): add is violet, save is Bootstrap's green, delete its red, cancel its grey outline */
 :root { --act-add: #6f42c1; --act-del: var(--bs-danger); }
 [data-bs-theme=dark] { --act-add: #b197e8; }
+/* something wanted is not there yet (T294 §9): a screenshot, a description — the owner's eye goes there first */
+:root { --act-miss: #d63939; }
+[data-bs-theme=dark] { --act-miss: #f07575; }
 .btn-add { --bs-btn-color: var(--act-add); --bs-btn-border-color: color-mix(in srgb, var(--act-add) 45%, transparent);
            --bs-btn-hover-color: var(--act-add); --bs-btn-hover-bg: color-mix(in srgb, var(--act-add) 10%, transparent); --bs-btn-hover-border-color: var(--act-add);
            --bs-btn-active-color: var(--act-add); --bs-btn-active-bg: color-mix(in srgb, var(--act-add) 20%, transparent); --bs-btn-active-border-color: var(--act-add);
@@ -37,6 +40,12 @@ html.toc-bar { --stick-h: 2rem; }  /* TocBar's row under the menu */
 .iact.trash { color: color-mix(in srgb, var(--act-del) 60%, var(--bs-secondary-color)); }  /* deleting an object is red at rest too */
 .iact.add { color: var(--act-add); }
 .iact.add:hover { background: color-mix(in srgb, var(--act-add) 12%, transparent); color: var(--act-add); }
+/* a button that is only a drawing says its word under the mouse at once, not after the browser's second (T294 §5, §8) */
+.qtip { position: relative; }
+.qtip[data-tip]:hover::after { content: attr(data-tip); position: absolute; z-index: 45; bottom: calc(100% + .3rem); left: 50%; transform: translateX(-50%);
+                               padding: .1rem .45rem; border-radius: .3rem; background: var(--bs-emphasis-color); color: var(--bs-body-bg);
+                               font-size: .75rem; font-weight: 400; letter-spacing: 0; text-transform: none; white-space: nowrap; pointer-events: none; }
+.qtip.qtip-end[data-tip]:hover::after { left: auto; right: 0; transform: none; }
 /* an open form (T291 §4): a frame nobody misses — «editing here: save or cancel»; the form of a new thing wears the
    colour of «add». The host keeps its own padding */
 :root { --act-edit: #fd7e14; }

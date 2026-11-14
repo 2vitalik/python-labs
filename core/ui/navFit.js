@@ -5,7 +5,8 @@ import { load, save } from './local.js'
 // priority menu: one row always. When it gets tight — first the user name goes, then «Вийти» shrinks to an icon
 // (the brand is always the 🏠 icon), and only then the links give way (never a hamburger). How — the reader's choice,
 // remembered in this browser (T287): trailing links move into the «Ще» dropdown, or — `icons` — every link becomes its
-// icon (`compact`), and only what still does not fit goes to «Ще»
+// icon (`compact`); still tight — the page we are on gives up its word too (`bare`, T294 §15), and only what still does
+// not fit goes to «Ще»
 export const icons = ref(load('nav-look') === 'icons')
 
 export function useNavFit(items) {
@@ -16,6 +17,7 @@ export function useNavFit(items) {
   const fit = ref(items.value.length)  // how many links stay in the row
   const stage = ref(0)  // 0 full · 1 no user name · 2 icon instead of «Вийти», short sign-in button
   const compact = ref(false)  // the links are icons now
+  const bare = ref(false)  // … the current one as well
   let busy = false
 
   const aside = () => [more.value, tail.value].filter(Boolean)
@@ -26,6 +28,7 @@ export function useNavFit(items) {
     if (busy || !list.value) return
     busy = true
     compact.value = false
+    bare.value = false
     fit.value = items.value.length
     let ok = false
     const stages = async () => {
@@ -38,6 +41,10 @@ export function useNavFit(items) {
     if (!ok && icons.value) {  // icons free the row: the name may come back
       compact.value = true
       await stages()
+      if (!ok) {
+        bare.value = true
+        await stages()
+      }
     }
     if (!ok) {  // «Ще» takes the tail — and holds the way back to words, so «Аа» is not drawn beside it
       let sum = more.value.offsetWidth
@@ -55,5 +62,5 @@ export function useNavFit(items) {
   onMounted(() => ro.observe(bar.value))
   onUnmounted(() => ro.disconnect())
   watch(items, layout, { flush: 'post' })
-  return { bar, list, more, tail, fit, stage, compact, layout, setIcons }
+  return { bar, list, more, tail, fit, stage, compact, bare, layout, setIcons }
 }

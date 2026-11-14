@@ -21,6 +21,8 @@ const PATHS = {
   stop: '<rect x="4" y="4" width="8" height="8" rx="1"/>',
   eraser: '<path d="M6.8 13.5h6.7M2.8 10.3l6-6.3 4 3.8-5.4 5.7H5.2z"/><path d="M6.2 7.2l4 3.8"/>',
   brush: '<path d="M13.5 2.5l-6 6.2 1.8 1.8 6-6.2z" transform="translate(-1.5 0)"/><path d="M6 9.2c-1.6.1-2.3 1.2-2.4 2.3-.1.9-.5 1.5-1.1 1.9 1.9.5 4.6 0 4.9-2.6"/>',
+  bucket: '<path d="M3.2 7.6L7.6 3.2l5.2 5.2-4.4 4.4a1.2 1.2 0 0 1-1.7 0L3.2 9.3a1.2 1.2 0 0 1 0-1.7z"/><path d="M3 8.3h9.6"/><path d="M13.6 11.2c.6.9.9 1.5.9 2a.9.9 0 0 1-1.8 0c0-.5.3-1.1.9-2z"/>',
+  broom: '<path d="M13.5 2.5L8.6 7.4"/><path d="M6.4 6.6l3 3c-.4 1.9-1.6 3.4-3.6 4.4-1.4-.6-2.9-2-3.8-3.8 1-2 2.5-3.2 4.4-3.6z"/><path d="M4.6 12.3l1.6-1.6"/>',
   sliders: '<path d="M2.5 4.5h5.5M12 4.5h1.5M2.5 11.5H4M8 11.5h5.5"/><circle cx="10" cy="4.5" r="1.7"/><circle cx="6" cy="11.5" r="1.7"/>',
   back: '<path d="M5.5 3.5l-3 3 3 3"/><path d="M3 6.5h6a3.5 3.5 0 0 1 0 7H7"/>',
   table: '<rect x="2.5" y="2.5" width="11" height="11" rx="1"/><path d="M2.5 6.5h11M2.5 10h11M6.5 2.5v11"/>',
@@ -62,6 +64,8 @@ const PATHS = {
   // the menu as icons (T291 §9): one drawing per page, the same on every system
   book: '<path d="M8 4.2C6.5 3.2 4.5 3 2.5 3.3v8.9c2-.3 4-.1 5.5.9 1.5-1 3.5-1.2 5.5-.9V3.3c-2-.3-4-.1-5.5.9zM8 4.2v8.9"/>',
   gamepad: '<rect x="1.5" y="4.5" width="13" height="7.5" rx="3.2"/><path d="M4.4 8.2H7M5.7 6.9v2.6"/><path d="M10 7.4h.01M11.9 9h.01" stroke-width="2"/>',
+  // many games — the catalog to choose from (T294 §16): a game's face on a card in front of another; «Гра» — one's own, the gamepad
+  games: '<path d="M5.5 3h7a1.5 1.5 0 0 1 1.5 1.5v7"/><rect x="2" y="5.5" width="9.5" height="8.5" rx="1.5"/><path d="M5 9.2h.01M8.5 9.2h.01" stroke-width="2"/><path d="M5.2 11.6h3.1"/>',
   invader: '<path d="M4.5 2.8L5.8 5M11.5 2.8L10.2 5"/><rect x="3" y="5" width="10" height="5.5" rx="1.5"/><path d="M5.9 7.7h.01M10.1 7.7h.01" stroke-width="2"/><path d="M4.5 10.5v2.5M8 10.5v1.6M11.5 10.5v2.5"/>',
   flask: '<path d="M6 2.5h4M6.5 2.5v4L3 12.4a.9.9 0 0 0 .8 1.3h8.4a.9.9 0 0 0 .8-1.3L9.5 6.5v-4"/><path d="M4.8 10h6.4"/>',
   puzzle: '<path d="M3 6h2.6a1.7 1.7 0 1 1 2.8 0H11v2.6a1.7 1.7 0 1 1 0 2.8V14H3z"/>',

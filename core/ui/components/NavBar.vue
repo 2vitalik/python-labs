@@ -13,7 +13,7 @@ const route = useRoute()
 const router = useRouter()
 // menu follows route access, so a page and its link open together; a link with its own access is narrower than its page
 const visible = computed(() => site.links.filter(([to, , access]) => canAccess(access ?? router.resolve(to).meta.access)))
-const { bar, list, more, tail, fit, stage, compact, layout, setIcons } = useNavFit(visible)
+const { bar, list, more, tail, fit, stage, compact, bare, layout, setIcons } = useNavFit(visible)
 const row = computed(() => visible.value.slice(0, fit.value))
 const rest = computed(() => visible.value.slice(fit.value))
 const isActive = (to) => route.path === to || route.path.startsWith(to + '/')  // /labs/1 lights «Лаби»
@@ -57,23 +57,24 @@ onUnmounted(() => {
     <div class="page d-flex align-items-center">
       <RouterLink class="navbar-brand d-flex align-items-center" to="/" :title="site.name"><IconHome :size="20" /></RouterLink>
       <ul ref="list" class="navbar-nav">
-        <!-- tight and the reader chose icons (navFit.js): a link is its icon, named under the mouse; the page we are on keeps its word -->
+        <!-- tight and the reader chose icons (navFit.js): a link is its icon, named under the mouse; the page we are on keeps its
+             word while it fits (`bare` — not even that) -->
         <li v-for="[to, text, , bold, icon] in row" :key="to" class="nav-item">
           <RouterLink class="nav-link" :class="{ active: isActive(to), main: bold, ico: compact }" :to="to"
-                      :data-tip="compact && !isActive(to) ? text : null" :aria-label="text">
+                      :data-tip="compact && (!isActive(to) || bare) ? text : null" :aria-label="text">
             <template v-if="compact">
               <span class="pic"><Icon v-if="icon" :name="icon" /><template v-else>{{ text.slice(0, 2) }}</template></span>
-              <span v-if="isActive(to)" class="ms-1">{{ text }}</span>
+              <span v-if="isActive(to) && !bare" class="word">{{ text }}</span>
             </template>
             <template v-else>{{ text }}</template>
           </RouterLink>
         </li>
         <li ref="more" class="nav-item dropdown" :class="{ 'invisible position-absolute': !rest.length }" @mouseenter="hover(true)" @mouseleave="hover(false)">
           <a class="nav-link dropdown-toggle" :class="{ active: restActive }" href="#" :aria-expanded="open" @click.prevent="tap">Ще</a>
-          <!-- the list reads as the bar going on downwards: its ground, its type, its colours -->
+          <!-- the list reads as the bar going on downwards: its ground, its type, its colours; a bar of icons lends them its icons -->
           <ul class="dropdown-menu dropdown-menu-end" :class="{ show: open }">
-            <li v-for="[to, text, , bold] in rest" :key="to">
-              <RouterLink class="dropdown-item" :class="{ active: isActive(to), main: bold }" :to="to">{{ text }}</RouterLink>
+            <li v-for="[to, text, , bold, icon] in rest" :key="to">
+              <RouterLink class="dropdown-item" :class="{ active: isActive(to), main: bold }" :to="to"><Icon v-if="compact && icon" :name="icon" class="ipic" />{{ text }}</RouterLink>
             </li>
             <li><hr class="dropdown-divider"></li>
             <li>
@@ -109,10 +110,14 @@ onUnmounted(() => {
 /* the site's main page (T291 §9): bold, and at rest a shade darker than its neighbours — not black */
 .main { font-weight: 700; }
 .nav-link.main:not(.active):not(:hover) { color: rgba(var(--bs-emphasis-color-rgb), .8); }
-/* an icon as tall as a word, so the bar keeps its height; its name comes under the mouse at once, not after the browser's second */
-.pic { display: inline-block; font-size: 1.15rem; line-height: 1.5rem; vertical-align: top; }
-.nav-link.ico { padding-left: .35rem; padding-right: .35rem; }
-.nav-link.ico.active::before { left: .35rem; right: .35rem; }
+/* an icon as tall as a word, so the bar keeps its height, drawn as large as «Додому» in finer lines, with air between
+   (T294 §13); its name comes under the mouse at once, not after the browser's second */
+.pic { display: inline-block; font-size: 1.3rem; line-height: 1.5rem; vertical-align: top; }
+.pic .icon { stroke-width: 1.15; vertical-align: -.2em; }
+.nav-link.ico { padding-left: .5rem; padding-right: .5rem; }
+.nav-link.ico.active::before { left: .5rem; right: .5rem; }
+/* the current page's word beside its icon: lighter than the bar's words, so it reads as a caption (T294 §14) */
+.word { margin-left: .3rem; font-size: .85rem; font-weight: 400; }
 .nav-link[data-tip]:hover::after { content: attr(data-tip); position: absolute; z-index: 5; top: calc(100% + .15rem); left: 50%; transform: translateX(-50%);
                                    padding: .1rem .45rem; border-radius: .3rem; background: var(--bs-emphasis-color); color: var(--bs-body-bg);
                                    font-size: .75rem; font-weight: 400; white-space: nowrap; pointer-events: none; }
@@ -123,7 +128,10 @@ onUnmounted(() => {
                  --bs-dropdown-link-hover-bg: rgba(var(--bs-emphasis-color-rgb), .06);
                  --bs-dropdown-link-active-color: var(--bs-navbar-active-color); --bs-dropdown-link-active-bg: transparent;
                  border-top-left-radius: 0; border-top-right-radius: 0; }
-.dropdown-item { position: relative; }
+.dropdown-item { position: relative; display: flex; align-items: center; }
+.ipic { margin-right: .5rem; font-size: 1.1rem; stroke-width: 1.15; }
+/* scrolled, the bar has less air — so has its list (T294 §12) */
+.small .dropdown-menu { --bs-dropdown-item-padding-y: .1rem; --bs-dropdown-font-size: .9rem; --bs-dropdown-padding-y: .15rem; }
 .dropdown-item.active::before { content: ''; position: absolute; left: .3rem; top: .35rem; bottom: .35rem; width: 2px; border-radius: 1px; background: var(--bs-primary); }
 .look { color: var(--bs-secondary-color); font-size: .8rem; }
 .dropdown-item.look { display: flex; align-items: center; gap: .35rem; }
