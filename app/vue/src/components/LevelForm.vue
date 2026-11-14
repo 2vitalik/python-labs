@@ -11,6 +11,7 @@ import { gameBrushes } from '../momentMap.js'
 import FieldProps from './FieldProps.vue'
 import MomentMap from './MomentMap.vue'
 import OptionCards from './OptionCards.vue'
+import SaveCancel from './SaveCancel.vue'
 import StatsEditor from './StatsEditor.vue'
 
 // a level's form (T270 §9, T291 §4): the name, how many and the size in one row, as the card's head; where it comes from and
@@ -61,7 +62,7 @@ async function save() {
     </div>
     <div class="gutter">
       <span class="cap">{{ spec('mode').label }}</span>
-      <OptionCards v-model="form.props.mode" :options="spec('mode').options" />
+      <OptionCards v-model="form.props.mode" :options="spec('mode').options" compact />
       <span class="cap">Параметри</span>
       <StatsEditor v-model="form.stats" free />
     </div>
@@ -74,18 +75,15 @@ async function save() {
     </div>
     <button v-else type="button" class="more-field align-self-start" title="рівень клітинками зі значків сутностей — заявляє картку «Мапа рівня на сайті»"
             @click="drawing = true">＋ намалювати рівень</button>
-    <div>
-      <button type="button" class="fold" @click="differs = !differs"><Icon :name="differs ? 'down' : 'right'" /> Поле цього рівня відрізняється</button>
+    <div data-dock>
+      <button type="button" class="fold" @click="differs = !differs"><Icon :name="differs ? 'down' : 'right'" /> Поле цього рівня відрізняється</button><span class="tip-dock" />
       <div v-if="differs" class="vstack gap-2 mt-1">
         <Tip id="level-field-differs">Лише те, що тут не так, як у поля загалом: гравітація лише на цьому рівні, гекси на бонусному…</Tip>
-        <FieldProps v-model="form.props" :only="OVERRIDES" />
+        <FieldProps v-model="form.props" :only="OVERRIDES" compact />
       </div>
     </div>
     <div v-if="error" class="text-danger small">{{ error }}</div>
-    <div class="d-flex gap-2">
-      <button type="button" class="btn btn-sm btn-success" :disabled="busy || !form.title.trim()" @click="save"><Icon name="check" /> Зберегти</button>
-      <button type="button" class="btn btn-sm btn-outline-secondary" @click="emit('cancel')">Скасувати</button>
-    </div>
+    <SaveCancel :disabled="busy || !form.title.trim()" @save="save" @cancel="emit('cancel')" />
   </div>
 </template>
 

@@ -2,7 +2,6 @@
 import { computed, nextTick, onMounted, reactive, ref } from 'vue'
 
 import GrowArea from '@core/components/GrowArea.vue'
-import Icon from '@core/components/Icon.vue'
 import Pop from '@core/components/Pop.vue'
 import { postPart, putPart } from '../api.js'
 import { useEd } from '../ed.js'
@@ -11,6 +10,7 @@ import { jump } from '../jump.js'
 import CoinBadge from './CoinBadge.vue'
 import Picker from './Picker.vue'
 import ProposeCard from './ProposeCard.vue'
+import SaveCancel from './SaveCancel.vue'
 
 // a window's form (T270 §10.1, T278 §6, T291 §4): the title and the type from the list of window types side by side, as on
 // the card, then what is on it. `part` — the window being edited; without it a new one, `prefill.task` — its type already
@@ -90,10 +90,7 @@ async function save() {
     <!-- one paragraph, as the card shows it: a long one wraps into more rows, Enter still saves -->
     <GrowArea ref="descInput" v-model="form.description" class="form-control form-control-sm" placeholder="Що на цьому вікні"
               @keydown.enter.prevent="save" />
-    <div class="d-flex gap-2">
-      <button type="button" class="btn btn-sm btn-success" :disabled="busy" @click="save"><Icon name="check" /> Зберегти</button>
-      <button type="button" class="btn btn-sm btn-outline-secondary" @click="emit('cancel')">Скасувати</button>
-    </div>
+    <SaveCancel :disabled="busy" @save="save" @cancel="emit('cancel')" />
     <div v-if="error" class="text-danger small">{{ error }}</div>
   </div>
 </template>

@@ -28,6 +28,7 @@ export function makeMapEd(map, given) {
     if ((t || '') === last) return
     last = t || ''
     ed.model = read(last)
+    ed.forget()
   })
   watch(() => ed.model, (m) => {
     const grid = m.scenarios[0].frames[0].grid

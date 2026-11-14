@@ -2,7 +2,6 @@
 import { onMounted, reactive, ref } from 'vue'
 
 import GrowArea from '@core/components/GrowArea.vue'
-import Icon from '@core/components/Icon.vue'
 import TagInput from '@core/components/TagInput.vue'
 import Tip from '@core/components/Tip.vue'
 import { postPart, putPart } from '../api.js'
@@ -11,6 +10,7 @@ import { useEd } from '../ed.js'
 import EmojiField from './EmojiField.vue'
 import MoreFields from './MoreFields.vue'
 import RoleField from './RoleField.vue'
+import SaveCancel from './SaveCancel.vue'
 import StatsEditor from './StatsEditor.vue'
 
 // an entity's form, for a new one and in place of its card (T270 §7, T291 §4): own emoji, name and type in one row, as on
@@ -62,11 +62,11 @@ async function save() {
     <GrowArea ref="desc" v-model="form.description" class="form-control form-control-sm" placeholder="Що це і як поводиться — коротко"
               @keydown.enter.prevent />
     <template v-if="!ed.simple">
-      <div class="gutter">
+      <div class="gutter" data-dock>
         <span class="label">Параметри</span>
         <StatsEditor v-model="form.stats" />
         <template v-if="shown.states">
-          <span class="label">Стани</span>
+          <span class="label">Стани<span class="tip-dock" /></span>
           <div class="vstack gap-1">
             <TagInput v-model="form.states" :hash="false" placeholder="стани через кому" :known="STATES" />
             <Tip id="entity-states">Переходи між станами — правилами з ефектом «стає…»</Tip>
@@ -75,10 +75,7 @@ async function save() {
       </div>
       <MoreFields :fields="{ states: 'стани' }" :shown @show="shown[$event] = true" />
     </template>
-    <div class="d-flex gap-2">
-      <button type="button" class="btn btn-sm btn-success" :disabled="!form.title.trim()" @click="save"><Icon name="check" /> Зберегти</button>
-      <button type="button" class="btn btn-sm btn-outline-secondary" @click="emit('cancel')">Скасувати</button>
-    </div>
+    <SaveCancel :disabled="!form.title.trim()" @save="save" @cancel="emit('cancel')" />
     <div v-if="error" class="text-danger small">{{ error }}</div>
   </div>
 </template>

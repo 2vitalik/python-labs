@@ -3,7 +3,7 @@ import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
 import { zones } from '../catalog.js'
 import { useEd } from '../ed.js'
-import { dense, fitCols, oneCol, split } from '../layout.js'
+import { fitCols, modeOf, split } from '../layout.js'
 import ClaimLinkRow from './ClaimLinkRow.vue'
 import ClaimRow from './ClaimRow.vue'
 
@@ -11,8 +11,9 @@ import ClaimRow from './ClaimRow.vue'
 // `where` — each row says what it is anchored to; `table` — rows of a table with the link a column (T278 §10);
 // `cols` — a section's own look (T291 §1): a subcategory is a row across the section, its cards under it in columns,
 // dealt evenly as on «Таски»; a table on a wide page becomes two or three tables side by side.
-// `anchors` — each subcategory gets an id (`<anchors>-<zone>-<subzone>`) the contents can name
-const p = defineProps({ claims: Array, where: Boolean, table: Boolean, cols: Boolean, anchors: String })
+// `anchors` — each subcategory gets an id (`<anchors>-<zone>-<subzone>`) the contents can name; `scope` — the section whose
+// own look counts (layout.js)
+const p = defineProps({ claims: Array, where: Boolean, table: Boolean, cols: Boolean, anchors: String, scope: String })
 const ed = useEd()
 const home = (c) => {
   const t = ed.info(c.task)
@@ -35,8 +36,10 @@ onMounted(() => {
   ro.observe(el.value)
 })
 onBeforeUnmount(() => ro?.disconnect())
-const tables = computed(() => Math.max(1, Math.min(dense.value ? 3 : 2, Math.floor(width.value / (dense.value ? 440 : 520)))))
-const n = computed(() => (!p.cols || oneCol.value ? 1 : p.table ? tables.value : fitCols(width.value, 330)))
+const mode = computed(() => modeOf(p.scope))
+const tight = computed(() => mode.value === 'dense')
+const tables = computed(() => Math.max(1, Math.min(tight.value ? 3 : 2, Math.floor(width.value / (tight.value ? 440 : 520)))))
+const n = computed(() => (!p.cols || mode.value === 'one' ? 1 : p.table ? tables.value : fitCols(width.value, 330, 620, tight.value)))
 
 // a table's subcategories in `n` runs of about as many rows each, in the catalog's order
 const runs = computed(() => {

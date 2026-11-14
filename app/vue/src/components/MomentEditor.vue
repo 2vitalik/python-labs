@@ -3,12 +3,11 @@ import GrowArea from '@core/components/GrowArea.vue'
 import Tip from '@core/components/Tip.vue'
 import { makeMomentEd } from '../momentEd.js'
 import MomentFrame from './MomentFrame.vue'
-import MomentPalette from './MomentPalette.vue'
 import MomentStrip from './MomentStrip.vue'
 import MomentTabs from './MomentTabs.vue'
 
-// the editor of game moments (T276 «Редактор кадрів», T291 §15): a form over the examples text — the palette (the
-// legend), the scenarios, the strip of frames and the frame in work, drawn with the mouse or a finger. In: Markdown,
+// the editor of game moments (T276 «Редактор кадрів», T291 §15): a form over the examples text — the scenarios, the strip
+// of frames and the frame in work with its brushes (the legend) over the field, drawn with the mouse or a finger. In: Markdown,
 // out: the same Markdown (momentsText.js), nothing else is stored. `palette` [{ icon, name }] — brushes ahead of the
 // legend (a student's game: its entities), `empty` — what the eraser leaves; then the text before the frames is not
 // asked for. Text the frames do not claim is shown grey and left as it is
@@ -20,10 +19,9 @@ const ed = makeMomentEd(text, () => props.palette, () => props.empty)
 <template>
   <div class="vstack gap-3">
     <Tip id="moments-editor">
-      Обери значок у легенді й малюй по полю мишкою чи пальцем. «＋ кадр» копіює поточний — зміни клітину-дві й допиши підпис.
-      Синя рамка — хто щойно ходив, жовта — що змінилось; з «підсвітити зміни» жовта ставиться сама.
+      Обери значок над полем і малюй мишкою чи пальцем; відро — заливка. «＋ кадр» копіює поточний — зміни клітину-дві й допиши
+      підпис. Синя рамка — хто щойно ходив, жовта — що змінилось; з ✦ жовта ставиться сама. Помилився — ↶ або Ctrl+Z.
     </Tip>
-    <MomentPalette />
     <div v-if="!palette || ed.model.notes">
       <div class="label">Особливості та інше до кадрів</div>
       <GrowArea v-model="ed.model.notes" class="form-control form-control-sm font-monospace" spellcheck="false"

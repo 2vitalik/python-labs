@@ -25,36 +25,32 @@ const winTitle = (id) => ed.windows.find((w) => w.id === id)?.title
 <template>
   <div v-if="items.length || jumps.length || ed.editable" class="small">
     <MenuForm v-if="edit" :window :menu class="editing open-form" :class="{ new: !menu }" @done="edit = false" @cancel="edit = false" />
-    <div v-else class="vstack gap-1">
-      <div v-if="items.length || jumps.length" class="d-flex align-items-start gap-2">
-        <PartBlock icon="↪" zone="interface" title="Переходи й дії" class="flex-grow-1 min-w-0">
-          <div class="moves">
-            <div v-for="(it, i) in items" :key="i" class="move">
-              <span>{{ it.title }}</span>
-              <span>
-                <a v-if="winTitle(it.window)" v-peek="{ kind: 'window', id: it.window }" href="#" class="text-decoration-none" @click.prevent="jump('p-' + it.window)">→ <Icon name="win" /> {{ winTitle(it.window) }}</a>
-                <span v-else-if="it.window" class="text-secondary">→ вікна вже нема</span>
-                <span v-else-if="it.task" v-peek="{ kind: 'task', id: it.task }">⚙ {{ ed.info(it.task)?.title || it.task }}</span>
-                <span v-if="it.note" class="text-secondary"><template v-if="it.window || it.task"> · </template>{{ it.note }}</span>
-              </span>
-            </div>
-            <div v-for="j in jumps" :key="j.rule + j.to" v-peek="{ kind: 'rule', id: j.rule }" class="move rule" role="button" @click="jump('r-' + j.rule)">
-              <span><Icon name="bolt" /> {{ j.title }}</span>
-              <span>→ <Icon name="win" /> {{ winTitle(j.to) }}</span>
-            </div>
-          </div>
-        </PartBlock>
-        <button v-if="ed.editable && items.length" type="button" class="iact" title="Редагувати переходи й дії" @click="edit = true"><Icon name="pencil" /></button>
+    <PartBlock v-else icon="↪" zone="interface" title="Переходи й дії">
+      <!-- by the caption (T294 §8): «＋» while there are none, the pencil once there are -->
+      <template v-if="ed.editable" #after>
+        <button v-if="items.length" type="button" class="iact qtip" data-tip="Редагувати переходи й дії" aria-label="Редагувати переходи й дії" @click="edit = true"><Icon name="pencil" /></button>
+        <button v-else type="button" class="iact add qtip" data-tip="＋ перехід" aria-label="додати перехід" @click="edit = true"><Icon name="plus" /></button>
+      </template>
+      <div v-if="items.length || jumps.length" class="moves">
+        <div v-for="(it, i) in items" :key="i" class="move">
+          <span>{{ it.title }}</span>
+          <span>
+            <a v-if="winTitle(it.window)" v-peek="{ kind: 'window', id: it.window }" href="#" class="text-decoration-none" @click.prevent="jump('p-' + it.window)">→ <Icon name="win" /> {{ winTitle(it.window) }}</a>
+            <span v-else-if="it.window" class="text-secondary">→ вікна вже нема</span>
+            <span v-else-if="it.task" v-peek="{ kind: 'task', id: it.task }">⚙ {{ ed.info(it.task)?.title || it.task }}</span>
+            <span v-if="it.note" class="text-secondary"><template v-if="it.window || it.task"> · </template>{{ it.note }}</span>
+          </span>
+        </div>
+        <div v-for="j in jumps" :key="j.rule + j.to" v-peek="{ kind: 'rule', id: j.rule }" class="move rule" role="button" @click="jump('r-' + j.rule)">
+          <span><Icon name="bolt" /> {{ j.title }}</span>
+          <span>→ <Icon name="win" /> {{ winTitle(j.to) }}</span>
+        </div>
       </div>
-      <div v-if="ed.editable && !items.length">
-        <button type="button" class="btn btn-sm btn-add" @click="edit = true"><Icon name="plus" /> перехід</button>
-      </div>
-    </div>
+    </PartBlock>
   </div>
 </template>
 
 <style scoped>
-.min-w-0 { min-width: 0; }
 .open-form { padding: .45rem; }  /* the form's frame (T291 §4) keeps off its fields */
 /* one grid for all the rows of the window, so both columns line up; a long title wraps rather than widens its column */
 .moves { display: grid; grid-template-columns: fit-content(55%) minmax(0, 1fr); column-gap: .75rem; overflow-wrap: anywhere; }

@@ -29,7 +29,7 @@ defineExpose({ add })
       Вікна — це екрани гри: ігровий екран, головне меню, пауза, налаштування, кінець гри…<br>
       У кожного — тип, скриншот{{ ed.simple ? ' й опис' : ', елементи на ньому, переходи до інших вікон і дії' }}.
     </Tip>
-    <StableColumns v-else v-slot="{ item }" :items="ed.windows">
+    <StableColumns v-else v-slot="{ item }" :items="ed.windows" scope="windows">
       <WindowCard :part="item" />
     </StableColumns>
     <div v-if="!ed.simple && orphans.length" class="small text-secondary mt-2">

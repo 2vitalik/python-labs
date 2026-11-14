@@ -1,15 +1,15 @@
 <script setup>
 import { computed, ref, watch } from 'vue'
 
-import Icon from '@core/components/Icon.vue'
 import Tip from '@core/components/Tip.vue'
 import { putMyGame } from '../api.js'
 import { useEd } from '../ed.js'
 import { gameBrushes } from '../momentMap.js'
 import GameMoments from './GameMoments.vue'
 import MomentEditor from './MomentEditor.vue'
+import SaveCancel from './SaveCancel.vue'
 
-// «Як це грається» (T276 «Те саме студентам», T291 §15): the owner draws the game's moments — scenarios of frames with the
+// «Розкадровка» (T276 «Те саме студентам», T291 §15): the owner draws the game's moments — scenarios of frames with the
 // game's entities for brushes — and saves them with the game; everyone else sees them step by step. A scenario of three
 // frames claims «Ігровий момент по кадрах» by itself (auto_claims.py). Unsaved changes frame the block; the row of
 // «Зберегти / Скасувати» keeps its room, so nothing jumps when it shows
@@ -44,11 +44,9 @@ async function save() {
       копіює попередній. Сценарій із трьох кадрів сам заявляє картку «Ігровий момент по кадрах».
     </Tip>
     <MomentEditor v-model="text" :palette empty="▫️" />
-    <div class="d-flex flex-wrap align-items-center gap-2" :class="{ idle: !dirty }">
-      <button type="button" class="btn btn-sm btn-success" :disabled="busy" @click="save"><Icon name="check" /> Зберегти</button>
-      <button type="button" class="btn btn-sm btn-outline-secondary" @click="text = saved">Скасувати</button>
+    <SaveCancel :class="{ idle: !dirty }" :disabled="busy" @save="save" @cancel="text = saved">
       <span v-if="error" class="text-danger small">{{ error }}</span>
-    </div>
+    </SaveCancel>
   </div>
   <GameMoments v-else-if="saved" :text="saved" />
   <div v-else class="text-secondary small">Ще не показано, як грається.</div>

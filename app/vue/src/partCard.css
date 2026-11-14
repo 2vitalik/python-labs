@@ -1,0 +1,16 @@
+/* a card of the description — an entity, a window, a level (T294 §6–7, §17): its head in the tint of the card's category,
+   so the eye sees where one card ends and the next begins; the head sticks under the section's heading while the card
+   passes — in every column its own — with the pencil and the trash at hand. `--z` — the category's colour */
+.pcard { --bs-card-border-color: color-mix(in srgb, var(--z, var(--bs-secondary-color)) 35%, var(--bs-border-color)); }
+.pcard-head { position: sticky; z-index: 10; top: calc(var(--nav-h, 0px) + var(--stick-h, 0px)); display: flex; align-items: center; gap: .5rem;
+              padding: .3rem .4rem .3rem .65rem; border-bottom: 1px solid color-mix(in srgb, var(--z, var(--bs-secondary-color)) 25%, var(--bs-border-color));
+              border-radius: calc(var(--bs-card-border-radius) - 1px) calc(var(--bs-card-border-radius) - 1px) 0 0;
+              background: color-mix(in srgb, var(--z, var(--bs-secondary-color)) 11%, var(--bs-body-bg)); }
+.pcard > .card-body { padding: .6rem .65rem; }
+.pcard-acts { display: flex; flex-shrink: 0; margin-left: auto; align-self: flex-start; }
+/* an open form frames only what it edits (T291 §4, T294 §4): the blocks under it stay outside */
+.pform { padding: .45rem; }
+/* no description yet (T278 §2): an invitation in the colour of «missing» (T294 §9) — framed as the screenshot's tile */
+.pcard .more { display: flex; align-items: center; gap: .3rem; padding: .2rem .55rem; border: 1.5px dashed color-mix(in srgb, var(--act-miss) 55%, transparent);
+               border-radius: .375rem; background: none; color: var(--act-miss); font-size: .8rem; text-align: start; }
+.pcard .more:hover { border-color: var(--act-miss); background: color-mix(in srgb, var(--act-miss) 8%, transparent); }

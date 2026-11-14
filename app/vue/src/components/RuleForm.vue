@@ -8,6 +8,7 @@ import { useEd } from '../ed.js'
 import { sidesFor, specOf } from '../rules.js'
 import CardPicker from './CardPicker.vue'
 import RuleLine from './RuleLine.vue'
+import SaveCancel from './SaveCancel.vue'
 
 // the rule's editor (T270 §4.3): КОЛИ, every condition and every effect on a line of its own, the card it stands for; the note
 // behind «＋ нотатка» until it has text (T291 §4). `rule` null — a new one, opened from `prefill` { when?, cond?, then?, card?,
@@ -107,8 +108,8 @@ async function save() {
         <span>картка «{{ ed.info(card)?.title || card }}» додасться до правила після збереження</span>
         <button v-if="chosen" type="button" class="iact del" title="Не додавати цю картку" @click="chosen = null"><Icon name="minus" /></button>
       </div>
-      <div v-else class="vstack gap-1 align-items-start">
-        <CardPicker :kinds="['rule']" hold label="картка, яку це правило реалізує" :suggest="fits" @choose="choose" />
+      <div v-else class="vstack gap-1 align-items-start" data-dock>
+        <span class="d-flex align-items-center gap-1"><CardPicker :kinds="['rule']" hold label="картка, яку це правило реалізує" :suggest="fits" @choose="choose" /><span class="tip-dock" /></span>
         <Tip id="rule-form-card">Картка каталогу — монетка за це правило. Обрана до слів — заповнить правило своєю заготовкою;
           обрана після — ті, що підходять до написаного, стоять угорі списку</Tip>
       </div>
@@ -118,11 +119,8 @@ async function save() {
       <div><button type="button" class="more-field" @click="addNote">＋ нотатка</button></div>
     </template>
     <span></span>
-    <div class="d-flex flex-wrap gap-2">
-      <button type="button" class="btn btn-sm btn-success" :disabled="!ready || busy" @click="save"><Icon name="check" /> Зберегти</button>
-      <button type="button" class="btn btn-sm btn-outline-secondary" @click="emit('cancel')">Скасувати</button>
-      <div v-if="error" class="w-100 text-danger small">{{ error }}</div>
-    </div>
+    <SaveCancel :disabled="!ready || busy" @save="save" @cancel="emit('cancel')" />
+    <div v-if="error" class="text-danger small">{{ error }}</div>
     <template v-if="rule">
       <span class="kw note">🪙</span><div><CardPicker :kinds="['rule']" :anchor="{ rule: rule.id }" label="картка, яку це правило реалізує" :suggest="fits" /></div>
     </template>

@@ -7,7 +7,7 @@ import StudentCards from './components/StudentCards.vue'
 // `pic` — the drawing that stands for the word in a menu of icons (Icon.vue)
 export const SECTIONS = [
   { slug: 'labs', path: '/labs', nav: 'Лаби', icon: '🧪', pic: 'flask', page: true },
-  { slug: 'game', path: '/games', nav: 'Ігри', icon: '👾', pic: 'invader' },  // text on top of the catalog page (GuideHead)
+  { slug: 'game', path: '/games', nav: 'Ігри', icon: '👾', pic: 'games' },  // text on top of the catalog page (GuideHead)
   { slug: 'tasks', path: '/tasks', nav: 'Таски', icon: '🧩', pic: 'puzzle' },
   { slug: 'score', path: '/score', nav: 'Бали', icon: '🪙', pic: 'medal', page: true },
   { slug: 'howto', path: '/howto', nav: 'Здача', icon: '✅', pic: 'done', page: true },

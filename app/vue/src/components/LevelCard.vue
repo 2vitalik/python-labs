@@ -4,7 +4,7 @@ import { computed, ref } from 'vue'
 import DelButton from '@core/components/DelButton.vue'
 import Icon from '@core/components/Icon.vue'
 import { deletePart } from '../api.js'
-import { vocab } from '../catalog.js'
+import { vocab, zones } from '../catalog.js'
 import { useEd } from '../ed.js'
 import CardPicker from './CardPicker.vue'
 import ClaimRow from './ClaimRow.vue'
@@ -13,10 +13,12 @@ import MomentField from './MomentField.vue'
 import PartBlock from './PartBlock.vue'
 import PropsList from './PropsList.vue'
 import ShotStrip from './ShotStrip.vue'
+import '../partCard.css'
 
 // one level or a group of alike ones (T270 §9): where it comes from and how many, its size, the field's properties it
-// overrides, its parameters, its map drawn in cells (T276), screenshots and cards; the pencil turns the top of the card into its form in place — the
-// level's cards stay under the form, each with its trash (T284 §4)
+// overrides, its parameters, its map drawn in cells (T276), screenshots and cards; the head is tinted and sticks while the
+// card passes (partCard.css); the pencil turns the head and the top of the card into its form in place, framed alone
+// (T294 §4) — the level's cards stay under the form, each with its trash (T284 §4)
 const p = defineProps({ part: Object })
 const ed = useEd()
 const edit = ref(false)
@@ -40,19 +42,19 @@ async function remove() {
 </script>
 
 <template>
-  <div :id="'p-' + part.id" class="card" :class="{ editing: edit }">
-    <div class="card-body p-2 vstack gap-2">
-      <LevelForm v-if="edit" :part @done="edit = false" @cancel="edit = false" />
+  <div :id="'p-' + part.id" class="card pcard" :style="{ '--z': zones.levels?.color }">
+    <div v-if="!edit" class="pcard-head">
+      <span>🪜</span>
+      <span class="fw-semibold">{{ part.title }}</span>
+      <span class="text-secondary small">{{ mode }}<template v-if="values.count"> {{ /^\d+$/.test(values.count) ? '×' : '·' }} {{ values.count }}</template></span>
+      <span v-if="ed.editable" class="pcard-acts">
+        <button type="button" class="iact" title="Редагувати" @click="edit = true"><Icon name="pencil" /></button>
+        <DelButton :what="`рівень «${part.title}»`" note="разом зі скриншотами й картками рівня" @yes="remove" />
+      </span>
+    </div>
+    <div class="card-body vstack gap-2">
+      <div v-if="edit" class="editing pform"><LevelForm :part @done="edit = false" @cancel="edit = false" /></div>
       <template v-else>
-        <div class="d-flex align-items-center gap-2">
-          <span>🪜</span>
-          <span class="fw-semibold">{{ part.title }}</span>
-          <span class="text-secondary small">{{ mode }}<template v-if="values.count"> {{ /^\d+$/.test(values.count) ? '×' : '·' }} {{ values.count }}</template></span>
-          <span v-if="ed.editable" class="d-flex ms-auto">
-            <button type="button" class="iact" title="Редагувати" @click="edit = true"><Icon name="pencil" /></button>
-            <DelButton :what="`рівень «${part.title}»`" note="разом зі скриншотами й картками рівня" @yes="remove" />
-          </span>
-        </div>
         <PropsList :props="values" :specs />
         <PartBlock v-if="part.stats?.length" icon="🔢" zone="levels" title="Параметри" inline class="small">
           <span class="d-flex flex-wrap gap-1">
@@ -66,9 +68,9 @@ async function remove() {
         <ShotStrip v-if="ed.editable || part.screenshots?.length" :part />
       </template>
       <PartBlock v-if="claims.length || ed.editable" icon="🃏" zone="levels" title="Картки рівня">
-        <div class="vstack gap-1">
+        <template #after><CardPicker plus :kinds="['level']" :anchor="{ part: part.id }" label="картка рівня" /></template>
+        <div v-if="claims.length" class="vstack gap-1">
           <ClaimRow v-for="c in claims" :key="c.id" :claim="c" />
-          <div v-if="ed.editable"><CardPicker :kinds="['level']" :anchor="{ part: part.id }" label="картка" /></div>
         </div>
       </PartBlock>
     </div>
@@ -76,7 +78,5 @@ async function remove() {
 </template>
 
 <style scoped>
-/* the frame of an open form (T291 §4) is a pixel thicker than the card's: the body gives the pixel back, nothing inside shifts */
-.editing > .card-body { margin: -1px; }
 .stat { background: var(--bs-tertiary-bg); color: var(--bs-body-color); border: 1px solid var(--bs-border-color); }
 </style>

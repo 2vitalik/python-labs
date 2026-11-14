@@ -30,13 +30,13 @@ defineExpose({ add: () => (adding.value = true) })
       </Tip>
       <div v-else class="text-secondary small">Рівні не описані.</div>
     </template>
-    <StableColumns v-if="ed.levels.length" v-slot="{ item }" :items="ed.levels">
+    <StableColumns v-if="ed.levels.length" v-slot="{ item }" :items="ed.levels" scope="levels">
       <LevelCard :part="item" />
     </StableColumns>
     <div v-if="general.length || ed.editable" id="levels-general" class="vstack gap-1">
-      <div class="small text-secondary">Про рівні загалом</div>
+      <div class="d-flex align-items-center gap-1 small text-secondary">Про рівні загалом
+        <CardPicker plus :kinds="['level']" :anchor="{}" label="картка про рівні загалом" /></div>
       <ClaimRow v-for="c in general" :key="c.id" :claim="c" />
-      <div v-if="ed.editable"><CardPicker :kinds="['level']" :anchor="{}" label="картка про рівні" /></div>
     </div>
   </div>
 </template>

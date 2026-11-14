@@ -37,7 +37,7 @@ function created(part) {
         <EntityForm :key="formKey" :prefill="adding" @done="created" @cancel="adding = null" />
       </div>
     </div>
-    <StableColumns v-if="ed.entities.length" v-slot="{ item }" :items="ed.entities">
+    <StableColumns v-if="ed.entities.length" v-slot="{ item }" :items="ed.entities" scope="entities">
       <EntityCard :part="item" />
     </StableColumns>
     <Tip v-else-if="!adding">

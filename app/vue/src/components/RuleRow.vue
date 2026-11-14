@@ -30,8 +30,8 @@ async function remove() {
 </script>
 
 <template>
-  <div :id="`r-${rule.id}`" class="rule-row" :class="{ editing: edit }">
-    <RuleForm v-if="edit" :rule @saved="edit = false" @cancel="edit = false" />
+  <div :id="`r-${rule.id}`" class="rule-row" :class="{ open: edit }">
+    <div v-if="edit" class="editing form-box"><RuleForm :rule @saved="edit = false" @cancel="edit = false" /></div>
     <template v-else>
       <RuleText :rule :parts="ed.parts" :class="{ acted: ed.editable }" />
       <div v-if="ed.editable" class="acts">
@@ -47,7 +47,9 @@ async function remove() {
 
 <style scoped>
 .rule-row { position: relative; padding: .3rem .4rem .3rem .5rem; border: 1px solid var(--bs-border-color); border-radius: .375rem; background: var(--bs-body-bg); }
-.rule-row.editing { padding: .5rem; background: var(--bs-tertiary-bg); }
+.rule-row.open { padding: .35rem; }
+/* the frame is the form's alone (T294 §4): the cards claimed on the rule stay outside it */
+.form-box { padding: .45rem; background: var(--bs-tertiary-bg); }
 .acts { position: absolute; top: .2rem; right: .25rem; display: flex; gap: .1rem; }
 .acted > :deep(.pieces:nth-child(2)) { padding-right: 3.3rem; }
 .claims { margin-top: .3rem; padding-top: .3rem; border-top: 1px dashed var(--bs-border-color); }

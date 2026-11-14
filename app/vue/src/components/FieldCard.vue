@@ -15,7 +15,7 @@ import PropsList from './PropsList.vue'
 import ShotStrip from './ShotStrip.vue'
 
 // the «Поле» section's body (T270 §8): the field's properties to read, its screenshots and the cards about it;
-// the pencil turns the card into its form in place
+// the pencil turns the card into its form in place, framed alone (T294 §4): the cards about the field stay under it
 const ed = useEd()
 const edit = ref(false)
 const claims = computed(() => (ed.field ? ed.claimsOf(ed.field.id).filter((c) => !c.auto) : []))
@@ -32,9 +32,9 @@ defineExpose({ add: () => (edit.value = true) })
 </script>
 
 <template>
-  <div :id="ed.field ? `p-${ed.field.id}` : null" class="card" :class="edit && (ed.field ? 'editing' : 'editing new')">
+  <div :id="ed.field ? `p-${ed.field.id}` : null" class="card">
     <div class="card-body p-2 vstack gap-2">
-      <FieldForm v-if="edit" :part="ed.field" @done="edit = false" @cancel="edit = false" />
+      <div v-if="edit" class="editing form-box" :class="{ new: !ed.field }"><FieldForm :part="ed.field" @done="edit = false" @cancel="edit = false" /></div>
       <template v-else-if="!ed.field">
         <Tip>Поле — де йде гра: яка сітка, як на неї дивимось, як іде час (покроково чи в реальному часі),
           як керує гравець і що може лежати в одній клітині.</Tip>
@@ -54,9 +54,9 @@ defineExpose({ add: () => (edit.value = true) })
         <ShotStrip v-if="ed.editable || ed.field.screenshots?.length" :part="ed.field" />
       </template>
       <PartBlock v-if="ed.field && (claims.length || ed.editable)" icon="🃏" zone="field" title="Картки про поле">
-        <div class="vstack gap-1">
+        <template #after><CardPicker plus :kinds="['field']" :anchor="{ part: ed.field.id }" label="картка про поле" /></template>
+        <div v-if="claims.length" class="vstack gap-1">
           <ClaimRow v-for="c in claims" :key="c.id" :claim="c" />
-          <div v-if="ed.editable"><CardPicker :kinds="['field']" :anchor="{ part: ed.field.id }" label="картка про поле" /></div>
         </div>
       </PartBlock>
     </div>
@@ -64,6 +64,5 @@ defineExpose({ add: () => (edit.value = true) })
 </template>
 
 <style scoped>
-/* the frame of an open form (T291 §4) is a pixel thicker than the card's: the body gives the pixel back, nothing inside shifts */
-.editing > .card-body { margin: -1px; }
+.form-box { padding: .45rem; }
 </style>

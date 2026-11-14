@@ -1,7 +1,6 @@
 <script setup>
 import { computed, nextTick, reactive, ref, watch } from 'vue'
 
-import Icon from '@core/components/Icon.vue'
 import Tip from '@core/components/Tip.vue'
 import { vocab } from '../catalog.js'
 import { useEd } from '../ed.js'
@@ -75,10 +74,6 @@ watch(target, (id) => {
         або «<b class="kw-when">КОЛИ</b> кожні 20 тіків <b class="kw-if">ЯКЩО</b> ворогів на полі &lt; 4 <b class="kw-then">ТО</b> зʼявляється ворог».
       </Tip>
       <p v-else-if="!ed.rules.length" class="small text-secondary mb-0">Правил поки нема.</p>
-      <!-- «Керування» and «Час» have a plus of their own under the table -->
-      <button v-if="ed.editable && (view === 'list' || view === 'contacts')" type="button" class="btn btn-sm btn-add mt-2" @click="add()">
-        <Icon name="plus" /> правило
-      </button>
     </template>
     <RulesLegend v-if="ed.rules.length" />
   </div>

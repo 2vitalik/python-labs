@@ -9,6 +9,7 @@ import { useEd } from '../ed.js'
 import MenuTarget from './MenuTarget.vue'
 import MoreFields from './MoreFields.vue'
 import PartLabel from './PartLabel.vue'
+import SaveCancel from './SaveCancel.vue'
 
 // the transitions and actions of a window (T278 §4), edited in place: a row per item — what was pressed or what happened
 // and where it leads, side by side as on the card (T291 §4); the notes are rare and come by «＋ нотатки». They are a Part
@@ -46,8 +47,8 @@ const remove = () => run(() => deletePart(props.menu.id))
 </script>
 
 <template>
-  <div class="vstack frm" :class="{ notes: shown.notes }">
-    <PartLabel icon="↪" zone="interface">Переходи й дії</PartLabel>
+  <div class="vstack frm" :class="{ notes: shown.notes }" data-dock>
+    <span class="d-flex align-items-center gap-1"><PartLabel icon="↪" zone="interface">Переходи й дії</PartLabel><span class="tip-dock" /></span>
     <Tip id="menu-form-rows">Рядок — що натиснули чи що сталось, і куди це веде: інше вікно або дія — картка, що щось робить
       (рестарт рівня, гучність, збереження). Перехід за подією гри (перемога → вікно) задає правило.</Tip>
     <div v-for="(it, i) in rows" :key="i" class="item">
@@ -57,12 +58,10 @@ const remove = () => run(() => deletePart(props.menu.id))
       <input v-if="shown.notes || it.noted" v-model="it.note" class="form-control form-control-sm note" placeholder="нотатка — як: клавіша, сам через 3 с…">
     </div>
     <MoreFields :fields="{ notes: 'нотатки' }" :shown @show="shown[$event] = true" />
-    <div class="d-flex flex-wrap align-items-center gap-2">
-      <button type="button" class="btn btn-sm btn-add" @click="rows.push(blank())"><Icon name="plus" /> перехід</button>
-      <button type="button" class="btn btn-sm btn-success" :disabled="busy" @click="save"><Icon name="check" /> Зберегти</button>
-      <button type="button" class="btn btn-sm btn-outline-secondary" @click="emit('cancel')">Скасувати</button>
-      <DelButton v-if="menu" class="ms-auto" what="усі переходи й дії цього вікна" @yes="remove" />
-    </div>
+    <SaveCancel :disabled="busy" @save="save" @cancel="emit('cancel')">
+      <button type="button" class="iact add qtip" data-tip="＋ рядок" aria-label="ще рядок" @click="rows.push(blank())"><Icon name="plus" /></button>
+      <DelButton v-if="menu" what="усі переходи й дії цього вікна" @yes="remove" />
+    </SaveCancel>
     <div v-if="error" class="text-danger">{{ error }}</div>
   </div>
 </template>

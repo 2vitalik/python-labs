@@ -6,7 +6,8 @@ import { useMomentEd } from '../momentEd.js'
 
 // the field of the frame in work (T276): the cell under the mouse or a finger takes the brush, the eraser's empty cell or
 // a frame mark, and the stroke goes on over every cell it crosses; a mark stroke puts what its first cell switched to.
-// The page does not scroll under a drawing finger; the cells shrink so that a wide field fits its box (a phone, a card)
+// The page does not scroll under a drawing finger; the cells shrink so that a wide field fits its box (a phone, a card).
+// «заливка» fills at a click, no stroke; every stroke and fill can be taken back — «↶» or Ctrl+Z once the field was touched
 const ed = useMomentEd()
 const root = ref()
 const cols = computed(() => Math.max(1, ...ed.frame.grid.map((row) => row.length)))
@@ -21,6 +22,9 @@ function down(e) {
   const p = cellAt(e)
   if (!p || e.button > 0) return
   e.preventDefault()
+  root.value.focus({ preventScroll: true })  // the keys (Ctrl+Z) come here now
+  if (ed.tool === 'fill') return ed.fill(p[0], p[1])
+  ed.snap()
   root.value.setPointerCapture(e.pointerId)  // the moves keep coming here when the pointer leaves the field
   const mark = ed.frame.grid[p[0]][p[1]].mark
   value = { paint: ed.brush, erase: '' }[ed.tool] ?? (mark === ed.tool ? '' : ed.tool)
@@ -35,10 +39,17 @@ function move(e) {
   ed.put(p[0], p[1], value)
 }
 const up = () => (value = null)
+function key(e) {
+  if ((e.metaKey || e.ctrlKey) && !e.shiftKey && e.key.toLowerCase() === 'z') {
+    e.preventDefault()
+    ed.undo()
+  }
+}
 </script>
 
 <template>
-  <div ref="root" class="cells" :style="{ '--cell': `${cell}px` }" @pointerdown="down" @pointermove="move" @pointerup="up" @pointercancel="up" @lostpointercapture="up">
+  <div ref="root" class="cells" :class="{ filling: ed.tool === 'fill' }" :style="{ '--cell': `${cell}px` }" tabindex="-1" @keydown="key"
+       @pointerdown="down" @pointermove="move" @pointerup="up" @pointercancel="up" @lostpointercapture="up">
     <div v-for="(row, r) in ed.frame.grid" :key="r" class="line">
       <span v-for="(c, k) in row" :key="k" class="c" :class="c.mark" :data-r="r" :data-c="k">{{ c.icon }}</span>
     </div>
@@ -49,7 +60,8 @@ const up = () => (value = null)
 /* the same look as a ```field on the page (GuideText) */
 .cells { width: fit-content; padding: .35rem; border: 1px solid var(--bs-border-color);
          border-radius: .375rem; background: var(--bs-tertiary-bg); font-size: calc(var(--cell) * .62); line-height: 1;
-         touch-action: none; user-select: none; -webkit-user-select: none; cursor: crosshair; }
+         touch-action: none; user-select: none; -webkit-user-select: none; cursor: crosshair; outline: none; }
+.cells.filling { cursor: cell; }
 .line { display: flex; }
 .c { display: inline-flex; align-items: center; justify-content: center; width: var(--cell); height: var(--cell); flex-shrink: 0; border-radius: .3rem; }
 .c:hover { background: color-mix(in srgb, var(--bs-body-color) 10%, transparent); }

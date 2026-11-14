@@ -5,7 +5,8 @@ import RuleRow from './RuleRow.vue'
 import StableColumns from './StableColumns.vue'
 
 // one group of rules by what starts them: a header in the group's colour with the count — a click folds it — and the rules
-// in two steady columns; the header's plus starts a new rule of this group
+// in steady columns; the header's plus starts a new rule of this group. The header sticks under the section's heading
+// while its rules pass (T294 §17): «where am I» and its «＋» stay at hand
 defineProps({ name: String, rules: Array })
 defineEmits(['add'])
 const folded = defineModel('folded', { type: Boolean, default: false })
@@ -29,15 +30,16 @@ const WHEN = {
       </button>
       <button v-if="ed.editable" type="button" class="iact add" :title="`Нове правило: ${name}`" @click="$emit('add')"><Icon name="plus" /></button>
     </div>
-    <StableColumns v-if="!folded" v-slot="{ item }" :items="rules">
+    <StableColumns v-if="!folded" v-slot="{ item }" :items="rules" scope="rules">
       <RuleRow :rule="item" />
     </StableColumns>
   </section>
 </template>
 
 <style scoped>
-.ghead { display: flex; align-items: center; gap: .25rem; margin-bottom: .4rem; padding: .1rem .2rem .1rem .55rem;
-         border-left: 3px solid var(--g); border-radius: .25rem; background: color-mix(in srgb, var(--g) 9%, transparent); }
+.ghead { position: sticky; z-index: 10; top: calc(var(--nav-h, 0px) + var(--stick-h, 0px)); display: flex; align-items: center; gap: .25rem;
+         margin-bottom: .4rem; padding: .1rem .2rem .1rem .55rem; border-left: 3px solid var(--g); border-radius: .25rem;
+         background: color-mix(in srgb, var(--g) 9%, var(--bs-body-bg)); }
 .fold { display: inline-flex; flex-grow: 1; align-items: center; gap: .45rem; padding: .15rem 0; border: 0; background: none; color: inherit; text-align: start; }
 .gname { font-size: .74rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: color-mix(in srgb, var(--g) 78%, var(--bs-body-color)); }
 .count { font-size: .75rem; color: var(--bs-secondary-color); font-variant-numeric: tabular-nums; }

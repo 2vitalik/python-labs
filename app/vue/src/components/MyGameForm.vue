@@ -41,8 +41,8 @@ const showChips = computed(() => props.fresh || !!was.value)
 
 <template>
   <form @submit.prevent="$emit('save')">
-    <div id="about" class="card mb-3" :class="{ editing: !fresh && (was || texts) }">
-      <div v-if="fresh" class="card-header">Основа</div>
+    <div id="about" class="card mb-3" :class="{ editing: !fresh && (was || texts) }" data-dock>
+      <div v-if="fresh" class="card-header">Основа<span class="tip-dock ms-1" /></div>
       <div class="card-body" :class="{ 'py-2': !fresh }">
         <div v-if="!fresh && !showChips" class="d-flex align-items-center gap-2 small mb-2">
           <span class="text-secondary">Основа:</span>
@@ -88,15 +88,15 @@ const showChips = computed(() => props.fresh || !!was.value)
     </div>
 
     <template v-if="fresh">
-      <div id="title" class="card mb-3">
-        <div class="card-header">Назва</div>
+      <div id="title" class="card mb-3" data-dock>
+        <div class="card-header">Назва<span class="tip-dock ms-1" /></div>
         <div class="card-body">
           <input v-model="form.title" class="form-control" placeholder="Наприклад: Танчики делюкс" autocomplete="off" required>
           <Tip v-if="!form.title" id="game-title" class="mt-2">Своя назва проєкту, не назва основи</Tip>
         </div>
       </div>
-      <div id="description" class="card mb-3">
-        <div class="card-header">Опис</div>
+      <div id="description" class="card mb-3" data-dock>
+        <div class="card-header">Опис<span class="tip-dock ms-1" /></div>
         <div class="card-body">
           <GrowArea v-model="form.description" class="form-control" placeholder="Що за гра і чим відрізнятиметься від основи" />
           <Tip v-if="!form.description" id="game-desc" class="mt-2">Не обовʼязково зараз — допишеш, коли задум устоїться. Markdown можна</Tip>

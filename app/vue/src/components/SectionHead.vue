@@ -12,8 +12,9 @@ import WideSwitch from './WideSwitch.vue'
 // with `fold` (the key it is remembered by, fold.js) a chevron leads the title and a click on either folds the section,
 // and a quiet button at the end shows the section in short or in full (T284 §3) — its icon says which it is now;
 // `zone` — the catalog category the section belongs to: a bar of its colour before the title (T278 §9);
-// `layout` — the section lays cards in columns: the switches of columns and of the page's width stand here too, always
-// at hand (T291 §1); `anchor` — the section's id: a link to it by the title (T291 §11).
+// the page's width is switched from every heading, and `layout` — the section lays cards in columns — adds the switch of
+// its own columns (T291 §1, T294 §1–2); `anchor` — the section's id: a link to it by the title (T291 §11), the key of its
+// own columns. An explanation put away inside the section leaves its icon by the title (`tip-dock`, Tip.vue).
 // The heading sticks under the menu while its section is on screen: the reader sees where they are and can fold it away
 defineProps({ icon: String, title: String, count: [Number, String], note: String, fold: String, zone: String, layout: Boolean, anchor: String })
 const el = ref()
@@ -44,11 +45,12 @@ async function keep(change) {
       {{ icon }} {{ title }} <span v-if="count !== undefined" class="count">({{ count }})</span>
     </component>
     <HashLink v-if="anchor" :id="anchor" class="hash" />
+    <span class="tip-dock" />
     <span v-if="note" class="note">{{ note }}</span>
     <span class="ms-auto d-flex align-items-center gap-1">
       <slot />
-      <template v-if="layout && !(fold && isFolded(fold))">
-        <ColsSwitch quiet :around="keep" />
+      <template v-if="!(fold && isFolded(fold))">
+        <ColsSwitch v-if="layout" quiet :scope="anchor" :around="keep" />
         <WideSwitch quiet :around="keep" />
       </template>
       <button v-if="fold && !isFolded(fold)" type="button" class="iact" :class="isShort(fold) ? 'on' : 'dim'" :aria-pressed="isShort(fold)"
@@ -62,7 +64,7 @@ async function keep(change) {
 
 <style scoped>
 /* stuck under the menu, over the section's own content; wider than the column by its padding, so nothing shows beside it */
-.head { position: sticky; top: var(--nav-h, 0px); z-index: 20; min-height: 2.35rem; margin: 0 -.5rem .5rem; padding: .25rem .5rem; border-bottom: 1px solid var(--bs-border-color);
+.head { position: sticky; top: var(--nav-h, 0px); z-index: 20; min-height: var(--stick-h, 2.6rem); margin: 0 -.5rem .5rem; padding: .25rem .5rem; border-bottom: 1px solid var(--bs-border-color);
         background: var(--bs-body-bg); font-weight: 700; }
 .bar { width: 4px; height: 1.2em; margin-right: -.2rem; border-radius: 2px; }
 .name.fold { padding: 0; border: 0; background: none; color: inherit; font: inherit; text-align: start; }

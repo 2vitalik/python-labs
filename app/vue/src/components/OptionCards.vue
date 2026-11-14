@@ -2,12 +2,14 @@
 import { computed } from 'vue'
 
 import Icon from '@core/components/Icon.vue'
+import { vPeek } from '@core/peek.js'
 import { COINS } from '../catalog.js'
 import OptionInfo from './OptionInfo.vue'
 
-// the options of one property as tiles, all in sight (T270 §8: no dropdowns); `multi` — the model is a list
+// the options of one property as tiles, all in sight (T270 §8: no dropdowns); `multi` — the model is a list; `compact` —
+// small tiles, as many in a row as fit, a word and its icon only: the description and the coin come under the mouse (T294 §23)
 const model = defineModel({ type: [String, Array], default: '' })
-const p = defineProps({ options: { type: Object, default: () => ({}) }, multi: Boolean })
+const p = defineProps({ options: { type: Object, default: () => ({}) }, multi: Boolean, compact: Boolean })
 // vocab.field options are cards { label, icon, desc, coin, slug }, vocab.level ones are plain labels
 const tiles = computed(() => Object.entries(p.options).map(([v, o]) => ({ v, ...(typeof o === 'string' ? { label: o } : o) })))
 const list = () => [].concat(model.value || [])
@@ -19,7 +21,13 @@ function click(v) {
 </script>
 
 <template>
-  <div class="d-flex flex-wrap gap-1">
+  <div v-if="compact" class="d-flex flex-wrap gap-1">
+    <button v-for="t in tiles" :key="t.v" v-peek="t.slug ? { kind: 'task', id: t.slug } : null" type="button" class="opt small-opt"
+            :class="{ on: on(t.v) }" :aria-pressed="on(t.v)" :title="t.slug ? null : t.desc || null" @click="click(t.v)">
+      <span class="head"><span v-if="t.icon">{{ t.icon }}</span>{{ t.label }}</span>
+    </button>
+  </div>
+  <div v-else class="d-flex flex-wrap gap-1">
     <!-- «ⓘ» is the tile's neighbour laid over its corner, not its child: no button inside a button, and its click selects nothing -->
     <div v-for="t in tiles" :key="t.v" class="cell">
       <button type="button" class="opt" :class="{ on: on(t.v), coined: COINS[t.coin] }" :aria-pressed="on(t.v)"
@@ -54,4 +62,7 @@ function click(v) {
 .tick { font-size: .85rem; }
 .tick.off { visibility: hidden; }
 .info-at { position: absolute; right: .2rem; bottom: .15rem; line-height: 1; }
+/* compact: the tile is as wide as its word; chosen — the same green */
+.small-opt { flex: 0 0 auto; padding: .15rem .5rem; }
+.small-opt .head { font-weight: 500; }
 </style>

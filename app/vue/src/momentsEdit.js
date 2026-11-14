@@ -35,10 +35,34 @@ export function put(frame, prev, r, c, tool, value, { empty, highlight }) {
   frame.fence = FENCE
 }
 
+// «заливка» (T294 §20): the cell under the pointer and every cell of the same icon joined to it side by side take the brush
+export function fill(frame, prev, r, c, icon, { empty, highlight }) {
+  const g = frame.grid
+  const was = g[r]?.[c]?.icon
+  if (was === undefined || was === icon) return
+  const todo = [[r, c]]
+  while (todo.length) {
+    const [y, x] = todo.pop()
+    const cell = g[y]?.[x]
+    if (!cell || cell.icon !== was) continue
+    cell.icon = icon
+    if (highlight) lit(cell, prev?.grid[y]?.[x], empty)
+    todo.push([y + 1, x], [y - 1, x], [y, x + 1], [y, x - 1])
+  }
+  frame.fence = FENCE
+}
+// «очистити кадр»: every cell empty, no marks; the size stays
+export function clear(frame, empty) {
+  for (const row of frame.grid) for (const cell of row) Object.assign(cell, { icon: empty, mark: '' })
+  frame.fence = FENCE
+}
+
 const blankRow = (n, icon) => Array.from({ length: n }, () => ({ icon, mark: '' }))
 export const blankFrame = (icon, rows = 5, cols = 9) => ({ caption: '', fence: FENCE, grid: Array.from({ length: rows }, () => blankRow(cols, icon)), note: '' })
 // «＋ кадр» — the same picture to change a cell or two in; with the highlight on, last step's frames are of no use here
 export const copyFrame = (f, clean) => ({ caption: '', fence: FENCE, note: '', grid: f.grid.map((row) => row.map((c) => ({ icon: c.icon, mark: clean ? '' : c.mark }))) })
+// a scenario's twin to make a variation of: every frame as it is, captions and notes too
+export const copyScenario = (s, title) => ({ ...JSON.parse(JSON.stringify(s)), title, tail: '' })
 
 // a row or a column more (d = 1) or less (d = -1) at a side of the grid; new cells are empty ones; the last row stays
 export function resize(frame, side, d, empty) {

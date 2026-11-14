@@ -15,11 +15,13 @@ const ask = ref(null)  // { side, d } waiting for the answer
 const open = computed({ get: () => !!ask.value, set: (v) => !v && (ask.value = null) })
 const size = computed(() => `${Math.max(0, ...ed.frame.grid.map((row) => row.length))} × ${ed.frame.grid.length}`)
 function go(side, d) {
-  if (ed.scenario.frames.length > 1) ask.value = { side, d }
-  else resize(ed.frame, side, d, ed.empty)
+  if (ed.scenario.frames.length > 1) return (ask.value = { side, d })
+  ed.snap()
+  resize(ed.frame, side, d, ed.empty)
 }
 function apply(all) {
   const { side, d } = ask.value
+  ed.snap()
   for (const f of all ? ed.scenario.frames : [ed.frame]) resize(f, side, d, ed.empty)
   ask.value = null
 }

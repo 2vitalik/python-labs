@@ -8,6 +8,7 @@ import { putMyGame } from '../api.js'
 import { iconOf } from '../catalog.js'
 import { useEd } from '../ed.js'
 import { jump } from '../jump.js'
+import SaveCancel from './SaveCancel.vue'
 
 // the order of one tick (T270 §4.2, T274 §6): the game's phases as numbered chips, edited in place; the trigger «почалась фаза
 // тіку» names them. A phase named as an entity of the game wears its icon and leads to it — a match of names, not a link
@@ -38,17 +39,15 @@ async function save() {
 </script>
 
 <template>
-  <div v-if="phases.length || ed.editable" class="phases">
-    <div v-if="edit" class="vstack gap-2">
+  <div v-if="phases.length || ed.editable" class="phases" data-dock>
+    <div v-if="edit" class="vstack gap-2 editing form-box">
+      <span class="lead-in">🔁 За один тік<span class="tip-dock" /></span>
       <TagInput v-model="list" :hash="false" placeholder="через кому: ввід, гравець, вороги…" :known />
-      <div class="d-flex gap-2">
-        <button type="button" class="btn btn-sm btn-success" @click="save"><Icon name="check" /> Зберегти</button>
-        <button type="button" class="btn btn-sm btn-outline-secondary" @click="edit = false">Скасувати</button>
-      </div>
+      <SaveCancel @save="save" @cancel="edit = false" />
       <div v-if="error" class="text-danger small">{{ error }}</div>
     </div>
     <div v-else class="d-flex flex-wrap align-items-center gap-1">
-      <span class="lead-in">🔁 За один тік:</span>
+      <span class="lead-in">🔁 За один тік:<span class="tip-dock" /></span>
       <template v-for="({ name, ent }, i) in items" :key="name">
         <Icon v-if="i" name="right" class="sep" />
         <span v-if="ent" class="phase ent" role="button" :title="`показати «${ent.title}»`" @click="jump(`p-${ent.id}`)"><b>{{ i + 1 }}</b> {{ iconOf(ent) }} {{ name }}</span>
@@ -68,6 +67,7 @@ async function save() {
 
 <style scoped>
 .phases { font-size: .85rem; }
+.form-box { padding: .45rem; }
 .lead-in { font-weight: 600; margin-right: .15rem; }
 .phase { padding: .05rem .5rem; border: 1px solid var(--bs-border-color); border-radius: 1rem; background: var(--bs-body-bg); white-space: nowrap; }
 .phase.ent:hover { border-color: var(--bs-secondary-color); }

@@ -1,18 +1,19 @@
 <script setup>
 import { computed, nextTick, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
 
-import { fitCols, oneCol } from '../layout.js'
+import { fitCols, modeOf } from '../layout.js'
 
 // columns that never reshuffle (T270 §2): a card stays in its column whatever grows inside it; a new card goes to the
 // shortest column. Two columns in the page column, more on a wide page (`col` px each at least; narrower and more of
 // them when the reader chose «щільно»), one on a narrow screen or when the reader asked for one (layout.js) — then in
-// the list's order. <StableColumns :items v-slot="{ item }">…
-const props = defineProps({ items: Array, by: { type: String, default: 'id' }, min: { type: Number, default: 620 }, col: { type: Number, default: 380 } })
+// the list's order; `scope` — the section whose own look counts (layout.js). <StableColumns :items v-slot="{ item }">…
+const props = defineProps({ items: Array, by: { type: String, default: 'id' }, min: { type: Number, default: 620 }, col: { type: Number, default: 380 }, scope: String })
 const root = ref()
 const cols = []
 const home = reactive({})  // item key → its column
 const width = ref(props.min)  // two columns until measured
-const n = computed(() => (oneCol.value ? 1 : fitCols(width.value, props.col, props.min)))
+const mode = computed(() => modeOf(props.scope))
+const n = computed(() => (mode.value === 'one' ? 1 : fitCols(width.value, props.col, props.min, mode.value === 'dense')))
 const key = (it) => it[props.by]
 const shortest = (heights) => heights.indexOf(Math.min(...heights))
 let watcher
@@ -64,7 +65,8 @@ onBeforeUnmount(() => watcher?.disconnect())
 </template>
 
 <style scoped>
-.stable { display: flex; align-items: flex-start; gap: .5rem; }
+/* a little air between cards, so each reads as a block of its own (T294 §7) */
+.stable { display: flex; align-items: flex-start; gap: .75rem; }
 .col { flex: 1 1 0; min-width: 0; }
-.cell { margin-bottom: .5rem; }
+.cell { margin-bottom: .75rem; }
 </style>

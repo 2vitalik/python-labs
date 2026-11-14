@@ -2,10 +2,10 @@
 import { reactive, ref } from 'vue'
 
 import GrowArea from '@core/components/GrowArea.vue'
-import Icon from '@core/components/Icon.vue'
 import { postPart, putPart } from '../api.js'
 import { useEd } from '../ed.js'
 import FieldProps from './FieldProps.vue'
+import SaveCancel from './SaveCancel.vue'
 
 // the field's form in place of its card: the properties as tiles and a line about the field; no `part` — a new field
 const p = defineProps({ part: Object })
@@ -39,10 +39,7 @@ async function save() {
     <GrowArea v-model="form.description" class="form-control form-control-sm" placeholder="Коротко про поле: як генерується, камера…"
               @keydown.enter.prevent="save" />
     <div v-if="error" class="text-danger small">{{ error }}</div>
-    <div class="d-flex gap-2">
-      <button type="button" class="btn btn-sm btn-success" :disabled="busy" @click="save"><Icon name="check" /> Зберегти</button>
-      <button type="button" class="btn btn-sm btn-outline-secondary" @click="emit('cancel')">Скасувати</button>
-    </div>
+    <SaveCancel :disabled="busy" @save="save" @cancel="emit('cancel')" />
   </div>
 </template>
 

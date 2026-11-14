@@ -8,8 +8,8 @@ import { useEd } from '../ed.js'
 
 // pictures uploaded to a game (a part's screenshots, a claim's proof): thumbnails that open over the page, a gif plays;
 // `adds` — the violet tile, `word` on it while there is nothing yet; `drops` — the round control in a thumbnail's corner.
-// `add(file)` / `drop(name)` — the calls; the editor reloads after each
-const props = defineProps({ game: String, names: Array, adds: Boolean, drops: Boolean, word: String, what: String, add: Function, drop: Function })
+// `add(file)` / `drop(name)` — the calls; the editor reloads after each; `need` — none yet is a gap: the lone tile is red
+const props = defineProps({ game: String, names: Array, adds: Boolean, drops: Boolean, word: String, what: String, add: Function, drop: Function, need: Boolean })
 const ed = useEd()
 const error = ref('')
 const busy = ref(false)
@@ -41,7 +41,8 @@ function onFile(e) {
         <img :src="urls[i]" :alt="what" class="rounded border" title="на весь екран" @click="showShot(urls, i)">
         <span v-if="drops" class="rm"><DelButton :what @yes="run(() => drop(s))" /></span>
       </div>
-      <label v-if="adds" class="add" :class="{ busy, lone: !urls.length }" title="png, jpg, webp або gif до 8 МБ">
+      <label v-if="adds" class="add" :class="{ busy, lone: !urls.length, miss: need && !urls.length }"
+             :title="need && !urls.length ? `${word} ще нема — png, jpg, webp або gif до 8 МБ` : 'png, jpg, webp або gif до 8 МБ'">
         <Icon name="plus" /><span v-if="!urls.length">{{ word }}</span>
         <input type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden :disabled="busy" @change="onFile">
       </label>
@@ -62,4 +63,5 @@ function onFile(e) {
 .add.lone { height: 1.9rem; padding: 0 .55rem; font-size: .8rem; }  /* no thumbnails to match yet: a card without pictures stays short */
 .add:hover { border-color: var(--act-add); background: color-mix(in srgb, var(--act-add) 8%, transparent); }
 .add.busy { opacity: .5; pointer-events: none; }
+.add.miss { --act-add: var(--act-miss); }
 </style>

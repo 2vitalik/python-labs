@@ -78,24 +78,21 @@ const hints = computed(() => (props.editable ? makeHints({ game: props.game, par
 const shown = computed(() => (ed.simple ? SIMPLE : SECTIONS))
 const counts = computed(() => ({ entities: ed.entities.length, rules: props.rules.length, levels: ed.levels.length, windows: ed.windows.length,
   ...Object.fromEntries(ZONES.map((z) => [z.id, inZone(z)])) }))
-const LAID = ['entities', 'levels', 'windows', ...ZONES.map((z) => z.id)]  // the sections that lay cards in columns
+const LAID = ['entities', 'rules', 'levels', 'windows', ...ZONES.map((z) => z.id)]  // the sections that lay cards in columns
 const head = (id) => {
   const { icon, title, short, zone } = HEADS[id]
   return { icon, title: (ed.simple && short) || title, zone, count: counts.value[id], fold: foldKey(id), anchor: id, layout: LAID.includes(id) }
 }
 const zone = (id) => ZONES.find((z) => z.id === id)
 const cardsToc = ref([])  // «Картки» names its own contents: the categories on screen
-// a section's parts worth a line of their own in the contents (T291 §3): [id, text, is it on the page]
-const parts = computed(() => (ed.simple ? {} : {
-  rules: [['rules-phases', 'Порядок ходу', true]],
-  levels: [['levels-general', 'Про рівні загалом', props.editable || props.claims.some((c) => !c.part && !c.rule && kindOf(ed.info(c.task)) === 'level')]],
-  windows: [['windows-graph', 'Схема вікон', ed.windows.length > 1]],
-}))
-const partHome = computed(() => Object.fromEntries(Object.entries(parts.value).flatMap(([s, list]) => list.map(([id]) => [id, s]))))
+// the places inside a section a link may lead to (#rules-phases…): the section opens whole first; of them only the map of
+// windows is worth a line in the contents (T291 §3, T294 §10) — a sub-item, a step right of its section's title
+const partHome = { 'rules-phases': 'rules', 'levels-general': 'levels', 'windows-graph': 'windows' }
+const parts = computed(() => (ed.simple ? {} : { windows: ed.windows.length > 1 ? [['windows-graph', '🔀 Схема вікон']] : [] }))
 const toc = computed(() => (view.value === 'cards' ? cardsToc.value : shown.value.flatMap((id) => {
   const h = head(id)
   return [{ id, text: `${h.icon} ${h.title}${h.count === undefined ? '' : ` (${h.count})`}`, depth: 2 },
-    ...(parts.value[id] || []).filter((p) => p[2]).map(([pid, text]) => ({ id: pid, text, depth: 3 }))]
+    ...(parts.value[id] || []).map(([pid, text]) => ({ id: pid, text, depth: 4 }))]
 })))
 
 // the page on the whole window (T287): the reader's choice where the page allows it (router: meta.wide 'game'); the top
@@ -135,7 +132,7 @@ watch([target, () => props.claims, () => props.parts], ([id], [was]) => {
 // it and show it, on arrival and later
 watch(() => route.hash, (h) => {
   const id = decodeURIComponent(h.slice(1))
-  const home = partHome.value[id]  // a part of a section: the section opens whole first
+  const home = partHome[id]  // a part of a section: the section opens whole first
   if (home) setFold(foldKey(home), false)
   if (home) setShort(foldKey(home), false)
   if (home || /^[prc]-/.test(id) || SECTIONS.includes(id)) jump(id)
@@ -165,6 +162,7 @@ async function fromTemplate() {
   <div ref="root" class="editor">
     <div :class="{ 'in-column': wide }">
     <GameTotals :counts="totals" :coins :simple="ed.simple" class="mb-3" @go="go">
+      <!-- the tiles, then the look and the folding, then the layout — a line each, a word of what it does (T294 §3) -->
       <div class="d-flex flex-wrap align-items-center gap-2 small text-secondary">
         <span v-if="!ed.simple" class="btn-group btn-group-sm">
           <button type="button" class="btn" :class="view === 'desc' ? 'btn-secondary' : 'btn-outline-secondary'" @click="view = 'desc'"><Icon name="list" /> Опис</button>
@@ -174,11 +172,13 @@ async function fromTemplate() {
           <button v-for="[m, icon, word, tip] in MODES" :key="m" type="button" class="btn btn-outline-secondary" :class="{ active: view === 'desc' && allAre(keys, m) }"
                   :disabled="view === 'cards'" :title="tip" @click="setAll(keys, m)"><Icon :name="icon" /><span class="d-none d-sm-inline"> {{ word }}</span></button>
         </span>
-        <ColsSwitch />
-        <WideSwitch />
         <label v-if="admin && !full" class="form-check form-switch m-0" title="Як бачить студент, поки відкрито лише простий опис">
           <input v-model="simpleLook" type="checkbox" class="form-check-input"> простий вигляд
         </label>
+      </div>
+      <div v-if="view === 'desc'" class="vstack gap-1 align-items-start">
+        <ColsSwitch wordy />
+        <WideSwitch wordy />
       </div>
     </GameTotals>
 
@@ -255,8 +255,9 @@ async function fromTemplate() {
 </template>
 
 <style>
-/* a section's heading sticks under the menu (SectionHead): what is scrolled to on this page lands below both */
-html:has(.editor) { --stick-h: 2.4rem; }
+/* a section's heading sticks under the menu (SectionHead): what is scrolled to on this page lands below both; a card's head
+   and a group of rules stick right under it (partCard.css) — so the heading keeps this height, buttons and all */
+html:has(.editor) { --stick-h: 2.6rem; }
 /* a section reads as a block of its own (T287): its content stands in from the heading's line on both sides, and the
    next heading comes after a wider gap */
 .editor > section { margin-bottom: 2.5rem !important; scroll-margin-top: 1rem; }

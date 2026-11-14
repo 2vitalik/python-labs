@@ -15,9 +15,10 @@ import SlotFields from './SlotFields.vue'
 // «＋ механіка» and the like: the catalog's cards of these kinds in a panel; a picked one is claimed at `anchor`
 // ({ part } · { rule } · {}), its required params asked first. `suggest(task)` lifts a card under «підходять сюди».
 // `hold` — the anchor does not exist yet (a new rule's form, T291 §8): the card is only chosen — choose(task, params) — and
-// the caller claims it once the anchor is saved
+// the caller claims it once the anchor is saved. `plus` — the trigger is a small violet «＋» by a block's caption (T294 §8),
+// the label under the mouse
 const props = defineProps({ kinds: Array, anchor: { type: Object, default: () => ({}) }, label: String, suggest: Function, filter: Function,
-                            hold: Boolean })
+                            hold: Boolean, plus: Boolean })
 const emit = defineEmits(['choose'])
 const ed = useEd()
 const open = ref(false)
@@ -64,7 +65,8 @@ async function send(task, p) {
 <template>
   <Pop v-if="ed.editable" v-model="open" width="24rem">
     <template #trigger="{ toggle }">
-      <button type="button" class="btn btn-sm btn-add" @click="toggle"><Icon name="plus" /> {{ label }}</button>
+      <button v-if="plus" type="button" class="iact add qtip" :data-tip="`＋ ${label}`" :aria-label="`додати: ${label}`" @click.stop="toggle"><Icon name="plus" /></button>
+      <button v-else type="button" class="btn btn-sm btn-add" @click="toggle"><Icon name="plus" /> {{ label }}</button>
     </template>
     <ProposeCard v-if="proposing" what="нову картку" @done="open = false" @cancel="proposing = false"
                  :zone="{ mechanic: 'entities', element: 'interface', field: 'interface', level: 'levels', rule: 'game-logic' }[kinds[0]]"
