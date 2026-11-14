@@ -1,6 +1,7 @@
 """Catalog snapshot: Mongo ↔ data/catalog/*.yaml. Truth lives in Mongo; YAML is a git-diffable
 snapshot and the bulk-edit channel (upsert by slug, logged in `history` as `import`). games.yaml — flat dicts; tasks.yaml — a tree
-zone → subzone → one-line tasks (taskline.py), file position = order, family children nested; aliases.yaml — slug → names,
+zone → subzone → one-line tasks (taskline.py), file position = order, family children nested, a card with price steps — a dict
+with `tiers: [[upto, factor], …]` (T291 §13); aliases.yaml — slug → names,
 a list (Ukrainian) or {uk, ru, en}; proof.yaml — slug → shot | gif | video | code (T284 §7), only the cards that ask for one.
 Usage: uv run python catalog_io.py export | import [--prune] (--prune: what the YAML lacks goes to the archive)"""
 import asyncio
@@ -13,6 +14,7 @@ from core.models.history import record, record_new
 from db import init_db
 from models.base_game import BaseGame
 from models.task import LANGS, PROOFS, Task, langs
+from pricing import clean_tiers
 from taskline import parse_line, plain, render_line
 from zones import ZONES
 
@@ -25,7 +27,12 @@ class Dumper(yaml.SafeDumper):
     """Texts of several lines go as literal blocks `|`: a field grid reads in the snapshot as it does in the text."""
 
 
+class Flow(list):
+    """A list on one line: `tiers: [[3, 1], [10, 0.5], [0, 0.25]]` (T291 §13)."""
+
+
 Dumper.add_representer(str, lambda d, s: d.represent_scalar("tag:yaml.org,2002:str", s, style="|" if "\n" in s else None))
+Dumper.add_representer(Flow, lambda d, v: d.represent_sequence("tag:yaml.org,2002:seq", v, flow_style=True))
 
 
 def dump(doc, exclude=("id", "created_at")) -> dict:
@@ -40,9 +47,10 @@ def reads_back(t) -> bool:
     return all(d[k] == getattr(t, k) for k in same) and sorted(d["tags"]) == sorted(t.tags)
 
 
-def task_node(t) -> dict | str:  # dict fallback for multi-line descriptions, slot specs, icons, opts, rule blanks; aliases and proofs live apart
-    if "\n" in t.description or t.slots or t.icon or t.opt or not plain(t.rule) or not reads_back(t):
-        return dump(t, exclude=("id", "created_at", "slug", "zone", "subzone", "order", "parent", "aliases", "proof"))
+def task_node(t) -> dict | str:  # dict fallback for multi-line descriptions, slot specs, icons, opts, rule blanks, price steps; aliases and proofs live apart
+    if "\n" in t.description or t.slots or t.icon or t.opt or t.tiers or not plain(t.rule) or not reads_back(t):
+        node = dump(t, exclude=("id", "created_at", "slug", "zone", "subzone", "order", "parent", "aliases", "proof"))
+        return node | ({"tiers": Flow(node["tiers"])} if "tiers" in node else {})
     return render_line(t)
 
 
@@ -106,6 +114,12 @@ def task_rows() -> list[dict]:
                     cslug = next(iter(ch))
                     rows.append(to_row(cslug, ch[cslug], zone, sub, j * 10) | {"parent": slug})
     for row in rows:
+        try:
+            row["tiers"] = clean_tiers(row.get("tiers"))
+        except ValueError as e:
+            sys.exit(f"tasks.yaml, {row['slug']}: {e}")
+        if row["tiers"]:
+            row["max_count"] = row["tiers"][-1][0]  # the last step says the cap
         row["aliases"] = langs(aliases.get(row["slug"]))
         if proofs is not None:  # no file — the proofs stay as they are in Mongo
             row["proof"] = proofs.get(row["slug"]) or ""

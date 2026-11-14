@@ -3,6 +3,7 @@ and what the claims are worth. A student's game (routes/student_games.py) and a 
 from models.game import Claim, Game, Part
 from models.rule import Rule
 from models.task import Task
+from pricing import worth
 from zones import kind_of
 
 
@@ -10,22 +11,22 @@ def task_index(tasks: list[Task]) -> dict:
     """Minimal card info for rendering claims/parts, drafts included (viewer may not see them in the catalog)."""
     return {t.slug: {"title": t.title, "coin": t.coin, "amount": t.amount, "slots": t.slots, "tags": t.tags,
                      "zone": t.zone, "subzone": t.subzone, "status": t.status, "kind": kind_of(t), "icon": t.icon,
-                     "opt": t.opt, "description": t.description, "max_count": t.max_count, "parent": t.parent,
-                     "rule": t.rule, "proof": t.proof} for t in tasks}
+                     "opt": t.opt, "description": t.description, "max_count": t.max_count, "tiers": t.tiers,
+                     "parent": t.parent, "rule": t.rule, "proof": t.proof} for t in tasks}
 
 
 def coins_of(claims: list[Claim], tasks: list[Task]) -> dict:
     """What the claims are worth by kind of coin, claimed and accepted apart (T240; informational until grading).
-    A card counts at most max_count times a game (0 — no cap): five enemies are one coin for the role «ворог» (T270)."""
+    A card counts at most max_count times a game (0 — no cap): five enemies are one coin for the role «ворог» (T270);
+    its repeats get cheaper by its price steps, the accepted ones taking the dearest places (pricing.py, T291 §13)."""
     out: dict[str, dict] = {"claimed": {}, "accepted": {}}
     for t in tasks:
         if not t.coin:
             continue
         mine = [c for c in claims if c.task == t.slug]
         for key, n in (("claimed", len(mine)), ("accepted", sum(c.status == "accepted" for c in mine))):
-            n = min(n, t.max_count) if t.max_count else n
-            if n:
-                out[key][t.coin] = out[key].get(t.coin, 0) + n * t.amount
+            if w := worth(t, n):
+                out[key][t.coin] = round(out[key].get(t.coin, 0) + w * t.amount, 2)
     return out
 
 

@@ -11,6 +11,7 @@ from core.models.user import Status, User
 from models.game import Claim, Game
 from models.rule import Rule
 from models.task import Task
+from pricing import cap, repeatable
 from routes.my_game import author, my_game
 from routes.my_parts import part_of
 from zones import kind_of, misplaced
@@ -53,11 +54,22 @@ async def check_place(game: Game, task: Task | None, part: str, rule: str) -> No
         raise HTTPException(422, why)
 
 
-async def check_unique(game: Game, task: str, part: str, rule: str, me: Claim | None = None) -> None:
-    same = [c for c in await Claim.find(Claim.game == game.id, Claim.task == task).to_list()
-            if c.part == part and c.rule == rule and (not me or c.id != me.id)]  # filtered here: old claims have no `rule`
-    if same:
-        raise HTTPException(409, "Така заявка вже є." if part or rule else "Така заявка вже є серед заявок гри.")
+async def check_unique(game: Game, slug: str, part: str, rule: str, task: Task | None, me: Claim | None = None) -> None:
+    """One claim of a card per place; a card with repeats goes again with no place, up to its cap (T291 §13)."""
+    mine = [c for c in await Claim.find(Claim.game == game.id, Claim.task == slug).to_list() if not me or c.id != me.id]
+    if not any(c.part == part and c.rule == rule for c in mine):  # compared here: old claims have no `rule`
+        return
+    if part or rule:
+        raise HTTPException(409, "Така заявка вже є.")
+    if not task or not repeatable(task):
+        raise HTTPException(409, "Така заявка вже є серед заявок гри.")
+    if (n := cap(task)) and len(mine) >= n:
+        raise HTTPException(409, f"Цю картку вже заявлено {times(len(mine))} — більше не зараховується.")
+
+
+def times(n: int) -> str:
+    few = n % 10 in (2, 3, 4) and n % 100 not in (12, 13, 14)
+    return f"{n} " + ("раз" if n % 10 == 1 and n % 100 != 11 else "рази" if few else "разів")
 
 
 @router.post("")
@@ -72,8 +84,10 @@ async def create_claim(data: ClaimIn, tasks: BackgroundTasks, game: Game = Depen
     loose = not (part or rule)  # sent with no place («＋ у гру»): required params may wait, even once it sits on the field
     if loose:
         part = await field_claims.field_of(game, task)
+        if part and repeatable(task) and await Claim.find_one(Claim.game == game.id, Claim.task == task.slug, Claim.part == part):
+            part = ""  # the field holds it already: a repeat stays at game level (T291 §13)
     await check_place(game, task, part, rule)
-    await check_unique(game, data.task, part, rule)
+    await check_unique(game, data.task, part, rule, task)
     claim = Claim(game=game.id, task=data.task, part=part, rule=rule, note=data.note.strip(), link=data.link.strip(),
                   params=clean_params(task, data.params or {}, loose=loose))
     await claim.insert()
@@ -96,7 +110,7 @@ async def update_claim(id: PydanticObjectId, data: ClaimIn, tasks: BackgroundTas
         rule = data.rule if data.rule is not None else "" if data.part else claim.rule
         if (part, rule) != (claim.part, claim.rule):
             await check_place(game, task, part, rule)
-            await check_unique(game, claim.task, part, rule, me=claim)
+            await check_unique(game, claim.task, part, rule, task, me=claim)
             patch |= {"part": part, "rule": rule}
         if task:  # card gone from the catalog → params frozen as claimed
             params = claim.params if data.params is None else data.params

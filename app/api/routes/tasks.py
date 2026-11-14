@@ -34,7 +34,7 @@ async def update_task(id: PydanticObjectId, data: TaskIn, admin: User = Depends(
     task = await Task.get(id)
     if not task:
         raise HTTPException(404)
-    d = await clean(data)
+    d = await clean(data, task)
     other = await Task.find_one(Task.slug == d["slug"])
     if other and other.id != task.id:
         raise HTTPException(422, "Завдання з таким slug уже існує.")

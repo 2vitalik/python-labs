@@ -5,6 +5,7 @@ from pydantic import BaseModel
 
 from models.task import PROOFS, Task, langs
 from models.vocab import CONDITIONS, EFFECTS, TRIGGERS
+from pricing import clean_tiers
 from zones import COINS, KINDS, STATUSES, ZONES, default_kind
 
 SLOT_TYPES = ("int", "text", "bool", "choice")
@@ -24,6 +25,7 @@ class TaskIn(BaseModel):
     coin: str = ""
     amount: float = 1
     max_count: int = 1
+    tiers: list | None = None  # price steps [[upto, factor], …] (T291 §13)
     parent: str = ""
     slots: list[dict] | None = None
     rule: dict | None = None
@@ -65,7 +67,8 @@ def clean_rule(rule: dict) -> dict:
     return {k: v for k, v in rule.items() if v}
 
 
-async def clean(data: TaskIn) -> dict:
+async def clean(data: TaskIn, was: Task | None = None) -> dict:
+    """The card's fields as stored; `was` — the card being edited, whose price steps stay when none are sent."""
     d = data.model_dump(exclude_none=True)
     d["slug"], d["title"] = d["slug"].strip().lower(), d["title"].strip()
     d["aliases"] = {k: list(dict.fromkeys(" ".join(a.split()) for a in v if a.strip())) for k, v in langs(d["aliases"]).items()}
@@ -91,6 +94,13 @@ async def clean(data: TaskIn) -> dict:
         d["slots"] = clean_slots(d["slots"])
     if "rule" in d:
         d["rule"] = clean_rule(d["rule"])
+    if "tiers" in d:
+        try:
+            d["tiers"] = clean_tiers(d["tiers"])
+        except ValueError as e:
+            raise HTTPException(422, str(e))
+    if tiers := d.get("tiers", was.tiers if was else []):
+        d["max_count"] = tiers[-1][0]  # the last step says the cap
     if d["parent"]:
         parent = await Task.find_one(Task.slug == d["parent"])
         if not parent or parent.slug == d["slug"] or parent.parent:

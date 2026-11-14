@@ -30,6 +30,7 @@ class Task(Document):
     coin: str = ""  # wood | tin | bronze | silver | gold | crown
     amount: float = 1
     max_count: int = 1  # 1 = once · N = N times · 0 = unlimited (extra levels etc.)
+    tiers: list[list] = []  # price steps [[upto, factor], …] (pricing.py, T291 §13); max_count follows the last upto
     parent: str = ""  # slug of the family card; children are full tasks, one level deep
     slots: list[dict] = []  # claim param specs {key, label, type: int|choice|bool|text, options?, unit?, required?}
     rule: dict = {}  # a rule-card's blank: {when, cond, then} in the vocab's words, args optional
@@ -52,6 +53,6 @@ class Task(Document):
             "id": str(self.id), "slug": self.slug, "title": self.title, "description": self.description,
             "zone": self.zone, "subzone": self.subzone, "kind": kind_of(self), "icon": self.icon, "opt": self.opt,
             "tags": self.tags, "games": self.games, "coin": self.coin, "amount": self.amount, "max_count": self.max_count,
-            "parent": self.parent, "slots": self.slots, "rule": self.rule, "aliases": self.aliases, "proof": self.proof,
+            "tiers": self.tiers, "parent": self.parent, "slots": self.slots, "rule": self.rule, "aliases": self.aliases, "proof": self.proof,
             "status": self.status, "order": self.order,
         }
