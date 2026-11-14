@@ -5,16 +5,20 @@
   bin/guide [-t dev] pull [slug…]                           no slug = every page
   bin/guide [-t dev] push <slug> -m "що змінив" [-s "Розділ"]
   bin/guide [-t dev] snap [--to <dir>]                      every page → data/guide/, for git; -t other than prod needs --to
+  bin/guide [-t dev] dump [--to <file>]                     every page with its history of edits → one JSON, for a mirror
 
 A page is .site/<target>/guide/<slug>.md: `# title`, a blank line, the body. No -t = prod, and a push there ends
-with a snap. The token's name on the server is who the site's history shows."""
+with a snap. The token's name on the server is who the site's history shows.
+A dump makes another site's guide a mirror of this one: in that site's folder, `python -m core.guide_mirror apply <file>`."""
 import argparse
+import json
 import sys
 from pathlib import Path
 
-from siteapi import ROOT, SNAP, call, file, keep, pull, snap, taken
+from siteapi import HOME, ROOT, SNAP, call, file, keep, pull, snap, taken
 
 SNAP_DIR = ROOT / "data" / "guide"  # the prod site's pages in git; another site's texts must never land here
+DRAFT = "changes-draft"  # the admin's page of unpublished change notes: not in the list, part of a mirror
 
 
 def text(page: dict) -> str:
@@ -24,6 +28,15 @@ def text(page: dict) -> str:
 def snapshot(to: str, folder: Path):
     pages = [call(to, "GET", f"/guide/{g['slug']}") for g in call(to, "GET", "/guide")]
     snap(folder, {f"{p['slug']}.md": text(p) for p in pages})
+
+
+def dump(to: str, path: Path):
+    slugs = [g["slug"] for g in call(to, "GET", "/guide")] + [DRAFT]
+    pages = [call(to, "GET", f"/guide/{s}") for s in slugs]
+    history = {s: call(to, "GET", f"/guide/history?slug={s}") for s in slugs}  # 200 edits a page at most — the API's cap
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps({"from": to, "pages": pages, "history": history}, ensure_ascii=False, indent=1))
+    print(f"дамп: {len(pages)} сторінок, {sum(map(len, history.values()))} правок → {path}")
 
 
 def push(to: str, slug: str, note: str, section: str):
@@ -40,7 +53,7 @@ def push(to: str, slug: str, note: str, section: str):
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("-t", "--target", default=SNAP)
-    parser.add_argument("cmd", choices=["ls", "pull", "push", "snap"])
+    parser.add_argument("cmd", choices=["ls", "pull", "push", "snap", "dump"])
     parser.add_argument("slugs", nargs="*")
     parser.add_argument("-m", "--note", default="")
     parser.add_argument("-s", "--section", default="")
@@ -57,6 +70,8 @@ def main():
         if a.target != SNAP and not a.to:
             sys.exit(f"snap -t {a.target}: вкажи --to — data/guide/ належить {SNAP}")
         snapshot(a.target, a.to or SNAP_DIR)
+    elif a.cmd == "dump":
+        dump(a.target, a.to or HOME / a.target / "guide-dump.json")
     elif len(a.slugs) != 1:
         sys.exit("push — одна сторінка за раз")
     else:
