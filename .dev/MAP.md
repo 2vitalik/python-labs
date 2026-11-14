@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T287** · тікетів: 286 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T294** · тікетів: 293 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -294,3 +294,10 @@
 | games | [T284](games/.t/T284-P--game-desc-v6-design.md) | 💡 | game-desc-v6-design | Опис гри v6 — рішення: схема, підказки-картки, навігація, каталог | 🟢 🟩 |
 | platform | [T285](platform/.t/T285--game-desc-v6/plan.md) | ⚙️ | game-desc-v6 | Опис гри v6 — схема, підказки, навігація, каталог — план | 🟢 🟩 |
 | games | [T286](games/.t/T286-Q--game-desc-v6-choices.md) | ❓ | game-desc-v6-choices | Опис гри v6 — вибори | 🔴 🟩 |
+| platform | [T287](platform/.t/T287--game-desc-v7/plan.md) | ⚙️ | game-desc-v7 | Опис гри v7 — навігація, картка від картки, стовпці, меню значками — план | 🟢 🟩 |
+| games | [T288](games/.t/T288-P--game-desc-v7-design.md) | 💡 | game-desc-v7-design | Опис гри v7 — рішення: навігація, картка від картки, стовпці, меню | 🟢 🟩 |
+| games | [T289](games/.t/T289-P--ai-describe-in-words.md) | 💡 | ai-describe-in-words | ШІ-помічник: описати гру словами — проєкт | 🟢 ⬜ |
+| games | [T290](games/.t/T290-Q--game-desc-v7-choices.md) | ❓ | game-desc-v7-choices | Опис гри v7 — вибори | 🔴 ⬜ |
+| games | [T291](games/.t/T291-P--game-desc-v8-design.md) | 💡 | game-desc-v8-design | Опис гри v8 — рішення: стовпці, форми, підказки, меню, повтори, ШІ, моменти | 🟢 ⬜ |
+| platform | [T292](platform/.t/T292--game-desc-v8/plan.md) | ⚙️ | game-desc-v8 | Опис гри v8 — шліфування, повтори, ШІ-помічник, ігрові моменти — план | 🟢 ⬜ |
+| games | [T293](games/.t/T293-Q--game-desc-v8-choices.md) | ❓ | game-desc-v8-choices | Опис гри v8 — вибори | 🔴 ⬜ |

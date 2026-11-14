@@ -1,0 +1,144 @@
+<!doctype html>
+<!-- T289: макет «Описати словами» — статична сторінка без коду сайту; знімок — ai-mock.png -->
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../../../app/vue/node_modules/bootstrap/dist/css/bootstrap.min.css">
+<style>
+  body { width: 860px; margin: 0 auto; padding: 1.25rem 1rem 2rem; font-size: .92rem; }
+  :root { --add: #6f42c1; --when: #2a6fb8; --if: #a36a00; --then: #2a8a5a; }
+  .step { margin: 1.6rem 0 .5rem; font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--bs-secondary-color); }
+  .step:first-child { margin-top: 0; }
+  .box { border: 1px solid var(--bs-border-color); border-radius: .5rem; padding: .75rem; }
+  .seg .btn { --bs-btn-padding-y: .2rem; font-size: .85rem; }
+  .btn-add { color: var(--add); border-color: color-mix(in srgb, var(--add) 45%, transparent); }
+  .btn-add.fill { background: var(--add); color: #fff; }
+  textarea { font-size: .92rem !important; line-height: 1.45; }
+  .hint { font-size: .8rem; color: var(--bs-secondary-color); }
+  .group { margin-top: .9rem; }
+  .ghead { display: flex; align-items: center; gap: .5rem; padding: .15rem .5rem; border-left: 4px solid var(--c); font-weight: 700; }
+  .ghead .n { font-weight: 400; opacity: .55; }
+  .ghead .all { margin-left: auto; font-size: .78rem; font-weight: 400; color: var(--add); }
+  .item { display: flex; align-items: flex-start; gap: .6rem; margin: .35rem 0 0 .75rem; padding: .4rem .55rem; border-radius: .4rem; }
+  .item.new { border: 1.5px dashed color-mix(in srgb, var(--add) 55%, transparent); background: color-mix(in srgb, var(--add) 3%, transparent); }
+  .item.new .body { opacity: .78; }
+  .item.added { border: 1px solid color-mix(in srgb, var(--bs-success) 50%, transparent); background: color-mix(in srgb, var(--bs-success) 7%, transparent); }
+  .item.has { border: 1px solid var(--bs-border-color); color: var(--bs-secondary-color); }
+  .item.no { border: 1px solid var(--bs-border-color); color: var(--bs-secondary-color); }
+  .item.no .t { text-decoration: line-through; }
+  .item.ask { border: 1.5px dashed color-mix(in srgb, var(--bs-warning) 80%, transparent); background: color-mix(in srgb, var(--bs-warning) 8%, transparent); }
+  .body { flex: 1; min-width: 0; }
+  .t { font-weight: 600; }
+  .ty { margin-left: .35rem; font-size: .78rem; font-weight: 400; color: var(--bs-secondary-color); }
+  .d { font-size: .84rem; }
+  .sub { margin-top: .15rem; font-size: .78rem; color: var(--bs-secondary-color); }
+  .acts { display: flex; gap: .25rem; flex-shrink: 0; }
+  .acts .btn { --bs-btn-padding-y: .1rem; --bs-btn-padding-x: .45rem; font-size: .78rem; }
+  .state { flex-shrink: 0; font-size: .78rem; white-space: nowrap; }
+  .kw { display: inline-block; width: 3.1rem; font-size: .72rem; font-weight: 700; letter-spacing: .04em; }
+  .kw.w { color: var(--when); } .kw.i { color: var(--if); } .kw.th { color: var(--then); }
+  .ent { padding: 0 .3rem; border: 1px solid var(--bs-border-color); border-radius: .3rem; background: var(--bs-body-bg); white-space: nowrap; }
+  .card1 { display: inline-block; margin-top: .2rem; padding: 0 .4rem; border: 1px solid var(--bs-border-color); border-left: 3px solid var(--c, #888); border-radius: .3rem; background: var(--bs-body-bg); font-size: .8rem; }
+  .need { color: var(--bs-warning-text-emphasis); }
+  .quote { font-style: italic; }
+  .chip { display: inline-block; margin-right: .25rem; padding: 0 .45rem; border: 1px solid color-mix(in srgb, var(--add) 45%, transparent); border-radius: 1rem; color: var(--add); font-size: .8rem; }
+  .hist { display: flex; gap: .6rem; padding: .5rem .6rem; border: 1px solid var(--bs-border-color); border-radius: .4rem; font-size: .86rem; }
+</style>
+</head>
+<body>
+
+<div class="step">1 · над описом гри — поруч з «＋ Додати»</div>
+<div class="box">
+  <div class="btn-group seg mb-2">
+    <button class="btn btn-outline-secondary">＋ Додати зі списку</button>
+    <button class="btn btn-secondary">✨ Описати словами</button>
+  </div>
+  <textarea class="form-control" rows="6">У мене танчики. Є танк гравця, він їздить у 4 боки і стріляє. Вороги зʼявляються кожні 20 тіків зверху, їх не більше 4 одразу. Куля ламає цегляну стіну, а сталеву ні. Якщо куля влучила в базу — поразка, відкривається вікно «Підсумок». Є головне меню: Грати, Налаштування, Вихід. У налаштуваннях можна змінити гучність. Ще зробив паузу на Esc і збереження в три слоти.</textarea>
+  <div class="d-flex align-items-center gap-3 mt-2">
+    <div class="hint me-auto">Пиши, як розповів би другові: хто є на полі, що відбувається, які вікна, що вже зроблено. Можна шматками — потім допишеш ще.<br>На телефоні зручно диктувати: мікрофон на клавіатурі.</div>
+    <div class="hint text-nowrap">лишилось 8 з 10 на сьогодні</div>
+    <button class="btn btn-add fill text-nowrap">✨ Розібрати</button>
+  </div>
+</div>
+
+<div class="step">2 · пропозиції: нічого не додається само</div>
+<div class="box">
+  <div class="d-flex align-items-center gap-2">
+    <div class="fw-bold">✨ Пропозиції з твого опису <span class="fw-normal text-secondary">(15)</span></div>
+    <button class="btn btn-sm btn-add fill ms-auto">✓ Додати все (11)</button>
+    <button class="btn btn-sm btn-outline-secondary">Відкласти</button>
+  </div>
+  <div class="hint mt-1">Пунктир — ще не в грі. «✓» додає рядок, «✎» відкриває звичайну форму з цими даними, «✕» відхиляє.</div>
+
+  <div class="group">
+    <div class="ghead" style="--c:#3a9d4f">👾 Сутності <span class="n">5</span><span class="all">✓ додати всі (2)</span></div>
+    <div class="item new"><div class="body"><span class="t">🧍 Танк гравця</span><span class="ty">гравець</span><div class="d">Їздить у 4 напрямки, стріляє</div></div>
+      <div class="acts"><button class="btn btn-add">✓ Додати</button><button class="btn btn-outline-secondary">✎</button><button class="btn btn-outline-secondary">✕</button></div></div>
+    <div class="item new"><div class="body"><span class="t">👾 Ворог</span><span class="ty">ворог</span><div class="d">Зʼявляється зверху</div><div class="sub">параметр: Кількість на полі ≤ 4</div></div>
+      <div class="acts"><button class="btn btn-add">✓ Додати</button><button class="btn btn-outline-secondary">✎</button><button class="btn btn-outline-secondary">✕</button></div></div>
+    <div class="item added"><div class="body"><span class="t">🔸 Куля</span><span class="ty">снаряд</span></div><div class="state text-success">✓ додано · <a href="#">показати →</a></div></div>
+    <div class="item has"><div class="body"><span class="t">🧱 Цегляна стіна</span><span class="ty">стіна / статика</span></div><div class="state">уже є в грі</div></div>
+    <div class="item no"><div class="body"><span class="t">🧱 Сталева стіна</span><span class="ty">стіна / статика</span></div><div class="state">відхилено · <a href="#">повернути</a></div></div>
+  </div>
+
+  <div class="group">
+    <div class="ghead" style="--c:#7b3fb5">⚡ Правила <span class="n">4</span><span class="all">✓ додати всі (4)</span></div>
+    <div class="item new"><div class="body">
+        <div><span class="kw w">КОЛИ</span>кожні <b>20</b> тіків</div>
+        <div><span class="kw i">ЯКЩО</span><span class="ent">👾 Ворог</span> на полі &lt; <b>4</b></div>
+        <div><span class="kw th">ТО</span>зʼявляється <span class="ent">👾 Ворог</span></div>
+        <span class="card1" style="--c:#3a9d4f">📎 Спавн за розкладом · кожні 20 тіків, макс. 4</span></div>
+      <div class="acts"><button class="btn btn-add">✓ Додати</button><button class="btn btn-outline-secondary">✎</button><button class="btn btn-outline-secondary">✕</button></div></div>
+    <div class="item new"><div class="body">
+        <div><span class="kw w">КОЛИ</span><span class="ent">🔸 Куля</span> × <span class="ent">🧱 Цегляна стіна</span></div>
+        <div><span class="kw th">ТО</span>зникає <span class="ent">🧱 Цегляна стіна</span>, зникає <span class="ent">🔸 Куля</span></div>
+        <span class="card1" style="--c:#3a9d4f">🌱 Руйновані блоки</span></div>
+      <div class="acts"><button class="btn btn-add">✓ Додати</button><button class="btn btn-outline-secondary">✎</button><button class="btn btn-outline-secondary">✕</button></div></div>
+    <div class="item new"><div class="body">
+        <div><span class="kw w">КОЛИ</span><span class="ent">🔸 Куля</span> × <span class="ent">📦 База</span></div>
+        <div><span class="kw th">ТО</span>поразка 💀, відкривається вікно <span class="ent">🪟 Підсумок</span></div>
+        <div class="sub need">разом додасться сутність «📦 База» — у тексті вона згадана, окремо не описана</div></div>
+      <div class="acts"><button class="btn btn-add">✓ Додати</button><button class="btn btn-outline-secondary">✎</button><button class="btn btn-outline-secondary">✕</button></div></div>
+    <div class="item new"><div class="body">
+        <div><span class="kw w">КОЛИ</span>ввід <b>Esc</b></div>
+        <div><span class="kw th">ТО</span>відкривається вікно <span class="ent">🪟 Пауза</span></div></div>
+      <div class="acts"><button class="btn btn-add">✓ Додати</button><button class="btn btn-outline-secondary">✎</button><button class="btn btn-outline-secondary">✕</button></div></div>
+  </div>
+
+  <div class="group">
+    <div class="ghead" style="--c:#2f7fd0">🪟 Вікна й переходи <span class="n">4</span><span class="all">✓ додати всі (4)</span></div>
+    <div class="item new"><div class="body"><span class="t">🪟 Головне меню</span><span class="ty">головне меню</span><div class="sub">☰ Грати → Гра · ☰ Налаштування → Налаштування · ☰ Вихід</div></div>
+      <div class="acts"><button class="btn btn-add">✓ Додати</button><button class="btn btn-outline-secondary">✎</button><button class="btn btn-outline-secondary">✕</button></div></div>
+    <div class="item new"><div class="body"><span class="t">🪟 Налаштування</span><span class="ty">налаштування</span><div><span class="card1" style="--c:#2f7fd0">📎 Регулятор гучності</span></div></div>
+      <div class="acts"><button class="btn btn-add">✓ Додати</button><button class="btn btn-outline-secondary">✎</button><button class="btn btn-outline-secondary">✕</button></div></div>
+    <div class="item new"><div class="body"><span class="t">🪟 Пауза</span><span class="ty">пауза</span></div>
+      <div class="acts"><button class="btn btn-add">✓ Додати</button><button class="btn btn-outline-secondary">✎</button><button class="btn btn-outline-secondary">✕</button></div></div>
+    <div class="item new"><div class="body"><span class="t">🪟 Підсумок</span><span class="ty">кінець гри</span></div>
+      <div class="acts"><button class="btn btn-add">✓ Додати</button><button class="btn btn-outline-secondary">✎</button><button class="btn btn-outline-secondary">✕</button></div></div>
+  </div>
+
+  <div class="group">
+    <div class="ghead" style="--c:#7b3fb5">🎲 Логіка гри <span class="n">1</span></div>
+    <div class="item new"><div class="body"><span class="card1" style="--c:#7b3fb5">🥈 Кілька слотів збереження · слотів: 3</span><div class="sub">картка каталогу — монетка після перевірки викладачем</div></div>
+      <div class="acts"><button class="btn btn-add">✓ Додати</button><button class="btn btn-outline-secondary">✎</button><button class="btn btn-outline-secondary">✕</button></div></div>
+  </div>
+
+  <div class="group">
+    <div class="ghead" style="--c:#c69026">❓ Не розпізнано <span class="n">1</span></div>
+    <div class="item ask"><div class="body"><div><span class="quote">«він… стріляє»</span> — у каталозі це кілька різних карток. Яка твоя?</div>
+        <div class="mt-1"><span class="chip">🥉 Постріл</span><span class="chip">🥉 Стрільба чергою</span><span class="chip">💡 нема такої — запропонувати</span></div></div></div>
+  </div>
+
+  <div class="hint mt-3">Твій текст і всі пропозиції — додані, відхилені, відкладені — лишаються в «🕘 Історії» гри. Відкладені чекають тут, доки не розбереш.</div>
+</div>
+
+<div class="step">3 · рядок в історії гри — його бачить і викладач</div>
+<div class="hist">
+  <div>✨</div>
+  <div><b>Опис словами</b> · сьогодні 14:32 · Максим Бойко<br>
+    15 пропозицій: 11 додано · 1 відхилено · 1 вже була · 1 не розпізнано · 1 чекає<br>
+    <a href="#">показати текст і пропозиції</a></div>
+</div>
+
+</body>
+</html>
