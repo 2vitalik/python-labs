@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T294** · тікетів: 293 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T296** · тікетів: 295 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -301,3 +301,5 @@
 | games | [T291](games/.t/T291-P--game-desc-v8-design.md) | 💡 | game-desc-v8-design | Опис гри v8 — рішення: стовпці, форми, підказки, меню, повтори, ШІ, моменти | 🟢 ⬜ |
 | platform | [T292](platform/.t/T292--game-desc-v8/plan.md) | ⚙️ | game-desc-v8 | Опис гри v8 — шліфування, повтори, ШІ-помічник, ігрові моменти — план | 🟢 ⬜ |
 | games | [T293](games/.t/T293-Q--game-desc-v8-choices.md) | ❓ | game-desc-v8-choices | Опис гри v8 — вибори | 🔴 ⬜ |
+| platform | [T294](platform/.t/T294--game-desc-v9/plan.md) | ⚙️ | game-desc-v9 | Опис гри v9 — шліфування за диктовкою після v8 — план | 🟢 ⬜ |
+| games | [T295](games/.t/T295-Q--game-desc-v9-choices.md) | ❓ | game-desc-v9-choices | Опис гри v9 — вибори | 🟢 ⬜ |
