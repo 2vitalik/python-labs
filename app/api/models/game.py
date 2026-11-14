@@ -15,6 +15,7 @@ class Game(Document):
     base_custom: str = ""  # free-text base when not from the catalog
     description: str = ""  # markdown
     phases: list[str] = []  # the order of one tick / turn: ввід → гравець → вороги → … (T257)
+    moments: str = ""  # «Як це грається»: scenarios of frames, markdown like a base game's examples (T276, moments.py)
     poured: float = 0  # an etalon (owner `<slug>@etalon`): the mtime of the template it was poured from — routes/etalon.py
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
@@ -25,7 +26,7 @@ class Game(Document):
         return {
             "id": str(self.id), "owner": self.owner, "title": self.title,
             "base_game": self.base_game, "base_custom": self.base_custom,
-            "description": self.description, "phases": self.phases, "created_at": self.created_at.isoformat(),
+            "description": self.description, "phases": self.phases, "moments": self.moments, "created_at": self.created_at.isoformat(),
         }
 
 

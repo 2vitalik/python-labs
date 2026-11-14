@@ -3,6 +3,7 @@ from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 from pydantic import BaseModel
 
 import field_claims
+import moments
 import uploads
 from bot import game_alerts
 from claims_clean import clean_params
@@ -18,6 +19,7 @@ from zones import kind_of, misplaced
 
 router = APIRouter(prefix="/api/my/claims")
 HELD = "Ця заявка тримається сама: зміни тип, параметр чи властивість."
+DRAWN = "Ця картка заявляється сама, щойно намалюєш: мапу — у формі рівня, кадри — в секції «Як це грається»."
 
 
 class ClaimIn(BaseModel):
@@ -80,6 +82,8 @@ async def create_claim(data: ClaimIn, tasks: BackgroundTasks, game: Game = Depen
         raise HTTPException(422, "Немає такої картки в каталозі.")
     if task.status != "active" and user.status != Status.admin:
         raise HTTPException(422, "Ця картка ще чернетка.")
+    if task.slug in (moments.MAP, moments.FRAMES):  # what is drawn on the site claims itself (auto_claims.py)
+        raise HTTPException(422, DRAWN)
     part, rule = data.part or "", data.rule or ""
     loose = not (part or rule)  # sent with no place («＋ у гру»): required params may wait, even once it sits on the field
     if loose:

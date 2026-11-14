@@ -1,6 +1,7 @@
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Request
 from pydantic import BaseModel
 
+import auto_claims
 from bot import game_alerts
 from core.deps import active_user
 from core.models.history import Change, record, record_new
@@ -19,6 +20,10 @@ class GameIn(BaseModel):
     base_custom: str = ""
     description: str = ""
     phases: list[str] = []
+    moments: str | None = None  # None — left as it is: the forms of the title and the phases do not send it
+
+
+MOMENTS_MAX = 20_000
 
 
 def sandbox_owner(email: str) -> str:
@@ -93,6 +98,10 @@ async def clean(data: GameIn) -> dict:
     elif not d["base_custom"].strip():
         raise HTTPException(422, "Обери гру-основу з каталогу або опиши свою.")
     d["phases"] = clean_phases(d["phases"])
+    if d["moments"] is None:
+        del d["moments"]
+    elif len(d["moments"]) > MOMENTS_MAX:
+        raise HTTPException(422, "«Як це грається» задовге — до 20 000 знаків: менше кадрів чи сценаріїв.")
     return d
 
 
@@ -111,6 +120,8 @@ async def create_game(data: GameIn, request: Request, tasks: BackgroundTasks, us
     game = Game(owner=user.email, **await clean(data))
     await game.insert()
     await record_new(game, actor=user.email)
+    if game.moments:
+        await auto_claims.sync(game, user.email)
     tasks.add_task(game_alerts.game, user, game)
     return game.api()
 
@@ -123,4 +134,6 @@ async def update_game(data: GameIn, tasks: BackgroundTasks, game: Game = Depends
         raise HTTPException(422, "У пісочниці основа не міняється — це копія зразка.")
     if changes := await record(game, d, actor=user.email):
         tasks.add_task(game_alerts.game, user, game, changes)
+        if "moments" in changes:  # a scenario of three frames claims its card by itself (T276)
+            await auto_claims.sync(game, user.email)
     return game.api()

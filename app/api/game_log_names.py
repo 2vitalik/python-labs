@@ -5,7 +5,7 @@ from models.vocab import FIELD, LEVEL, sentence
 
 PARTS = {"field": "поле", "level": "рівень", "entity": "сутність", "window": "вікно", "menu": "переходи"}
 STATUS = {"claimed": "заявлено", "accepted": "зараховано", "returned": "повернуто"}
-PROPS = {p["key"]: p for p in FIELD + LEVEL}
+PROPS = {p["key"]: p for p in FIELD + LEVEL} | {"map": {"label": "мапа рівня"}}  # a level drawn in cells (T276)
 EMPTY = (None, "", [], {})
 
 

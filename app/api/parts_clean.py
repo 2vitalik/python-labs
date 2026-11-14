@@ -99,6 +99,16 @@ def kind_fields(kind: str, d: dict, cat: dict) -> dict:
     if kind == "field":
         return {"props": clean_props(d.get("props") or {}, FIELD, cat)}
     if kind == "level":
-        return {"props": clean_props(d.get("props") or {}, LEVEL_PROPS, cat),
-                "stats": clean_stats(d.get("stats") or [], None, "на цьому рівні")}
+        props = clean_props(d.get("props") or {}, LEVEL_PROPS, cat)
+        if drawn := clean_map((d.get("props") or {}).get("map")):
+            props["map"] = drawn
+        return {"props": props, "stats": clean_stats(d.get("stats") or [], None, "на цьому рівні")}
     return {}
+
+
+def clean_map(text) -> str:
+    """A level drawn in cells (T276): the lines of one ```field — emoji through spaces; "" — none."""
+    text = "\n".join(line.rstrip() for line in str(text or "").replace("\r", "").split("\n")).strip("\n")
+    if len(text) > 4000:
+        raise HTTPException(422, "Мапа рівня завелика — до 4 000 знаків.")
+    return text if text.strip() else ""
