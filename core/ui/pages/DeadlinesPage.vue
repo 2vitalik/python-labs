@@ -5,6 +5,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { getLabs } from '../api.js'
 import Crumbs from '../components/Crumbs.vue'
 import DeadlineForm from '../components/DeadlineForm.vue'
+import Icon from '../components/Icon.vue'
 import IconArrows from '../components/IconArrows.vue'
 import LabMatrix from '../components/LabMatrix.vue'
 import { STATES } from '../labs.js'
@@ -71,7 +72,7 @@ onMounted(load)
       <LabMatrix :data="shown" @deadline="editing = $event" @cell="onCell" />
       <p class="small text-secondary mt-2">
         Клітинка — стан лаби студента, під емодзі — останній коміт до дедлайну або дата подовження «→»; ✍ — слово викладача; клік — подовження, вердикт, звіт.
-        ✏️ у шапці — дедлайн лаби. Факти з репозиторіїв — <code>bin/repos pull</code> → <code>push</code>; звіти — <code>bin/repos reviews</code>.
+        <Icon name="pencil" /> у шапці — дедлайн лаби. Факти з репозиторіїв — <code>bin/repos pull</code> → <code>push</code>; звіти — <code>bin/repos reviews</code>.
       </p>
     </template>
   </div>

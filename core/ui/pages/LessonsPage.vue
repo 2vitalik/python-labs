@@ -4,6 +4,7 @@ import { useRoute, useRouter } from 'vue-router'
 
 import { getLessons } from '../api.js'
 import Crumbs from '../components/Crumbs.vue'
+import Icon from '../components/Icon.vue'
 import { KINDS_MANY, fmtDate } from '../lesson.js'
 import { user } from '../user.js'
 
@@ -24,8 +25,8 @@ onMounted(async () => (all.value = await getLessons()))
 <template>
   <Crumbs :items="['Пари']">
     <div v-if="admin" class="d-flex gap-2 ms-auto">
-      <RouterLink to="/attendance" class="btn btn-outline-secondary btn-sm">👥 Відвідування</RouterLink>
-      <RouterLink to="/lessons/new" class="btn btn-outline-primary btn-sm">＋ Пара</RouterLink>
+      <RouterLink to="/attendance" class="btn btn-outline-secondary btn-sm"><Icon name="users" /> Відвідування</RouterLink>
+      <RouterLink to="/lessons/new" class="btn btn-outline-primary btn-sm d-inline-flex align-items-center gap-1"><Icon name="plus" /> Пара</RouterLink>
     </div>
   </Crumbs>
   <h1 class="h2 mb-3">Пари</h1>

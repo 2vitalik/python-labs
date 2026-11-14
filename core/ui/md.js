@@ -3,8 +3,9 @@ import { Marked } from 'marked'
 import { markDrafts } from './drafts.js'
 import { fieldHtml } from './field.js'
 import { ANCHOR, headingId } from './headings.js'
+import { iconHtml } from './iconHtml.js'
 
-// guide markdown: `{#id}` anchors, 🔗 (+ ✏️ for the editor) on headings, emoji callouts, ```field grids,
+// guide markdown: `{#id}` anchors, a link icon (+ a pencil for the editor) on headings, emoji callouts, ```field grids,
 // responsive tables, external links in new tabs, `<!-- drafts -->` marked
 const SPAN = /<span id="([\w-]+)" class="anchor"><\/span>\s*/
 const isEmoji = (html) => /^<p>\s*\p{Extended_Pictographic}/u.test(html)
@@ -21,9 +22,9 @@ const md = new Marked({
       const id = m ? m[1] : withPrefix(headingId(text)[0])
       if (m) html = html.replace(SPAN, '').trimEnd()
       const local = prefix ? id.slice(prefix.length + 1) : id  // the id inside the page's own text, for the editor
-      const edit = editable ? ` <a class="edit" href="#" data-id="${local}" title="Редагувати розділ">✏️</a>` : ''
+      const edit = editable ? ` <a class="edit" href="#" data-id="${local}" title="Редагувати розділ">${iconHtml('pencil')}</a>` : ''
       const slot = editable ? `<div id="${id}-slot"></div>\n` : ''  // where the inline editor lands (Teleport)
-      return `<h${depth} id="${id}">${html} <a class="link" href="#${id}" title="Скопіювати посилання">🔗</a>${edit}</h${depth}>\n${slot}`
+      return `<h${depth} id="${id}">${html} <a class="link" href="#${id}" title="Скопіювати посилання">${iconHtml('link')}</a>${edit}</h${depth}>\n${slot}`
     },
     blockquote({ tokens }) {
       const body = this.parser.parse(tokens)

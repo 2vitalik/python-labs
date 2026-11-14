@@ -6,6 +6,7 @@ import { getActivity } from '../api.js'
 import { site } from '../site.js'
 import ActivityRow from './ActivityRow.vue'
 import Avatar from './Avatar.vue'
+import Icon from './Icon.vue'
 
 // everything that happened, newest first, a heading per day; refreshes itself, «показати ще» goes back in time
 const props = defineProps({ nick: String, src: String, staff: Boolean })
@@ -63,7 +64,7 @@ usePolling(load, 15)
     </div>
     <RouterLink :to="`/students/${person.nick}/edit`" class="btn btn-outline-secondary btn-sm">Профіль</RouterLink>
     <RouterLink v-if="site.students.page" :to="`/students/${person.nick}`" class="btn btn-outline-secondary btn-sm">{{ site.students.page }}</RouterLink>
-    <RouterLink :to="{ query: { ...$route.query, user: undefined } }" class="btn btn-outline-secondary btn-sm" title="Показати всіх">✕</RouterLink>
+    <RouterLink :to="{ query: { ...$route.query, user: undefined } }" class="btn btn-outline-secondary btn-sm" title="Показати всіх"><Icon name="x" /></RouterLink>
   </div>
   <div v-if="error" class="alert alert-danger">{{ error }}</div>
   <section v-for="d in days" :key="d.title" class="mb-3">

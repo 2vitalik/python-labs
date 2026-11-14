@@ -1,10 +1,13 @@
 /* one page width for every page and the menu; change it here (tools/wide pages use container-fluid instead) */
 :root { --page-max: 52rem; }
 .page { width: 100%; max-width: var(--page-max); margin: 0 auto; padding: 0 1rem; }
+/* a part of a page on the whole window that keeps the page column — its head, a text over a wide table (the wide container has side padding of its own) */
+.in-column { max-width: calc(var(--page-max) - 2rem); margin-inline: auto; }
 
 /* the menu sticks to the top (NavBar sets --nav-h), and a page may stick a heading of its own under it (--stick-h):
    whatever is scrolled to — an #anchor, a jump, a flash — lands below them, not under them */
 html { scroll-padding-top: calc(var(--nav-h, 3.5rem) + var(--stick-h, 0px) + .6rem); }
+html.toc-bar { --stick-h: 2rem; }  /* TocBar's row under the menu */
 
 /* Bootstrap 5.3 placeholders are nearly as dark as text; keep them clearly lighter */
 .form-control::placeholder {
@@ -34,6 +37,16 @@ html { scroll-padding-top: calc(var(--nav-h, 3.5rem) + var(--stick-h, 0px) + .6r
 .iact.trash { color: color-mix(in srgb, var(--act-del) 60%, var(--bs-secondary-color)); }  /* deleting an object is red at rest too */
 .iact.add { color: var(--act-add); }
 .iact.add:hover { background: color-mix(in srgb, var(--act-add) 12%, transparent); color: var(--act-add); }
+/* an open form (T291 §4): a frame nobody misses — «editing here: save or cancel»; the form of a new thing wears the
+   colour of «add». The host keeps its own padding */
+:root { --act-edit: #fd7e14; }
+.editing { border: 2px solid var(--act-edit) !important; border-radius: .45rem;
+           box-shadow: 0 0 0 .2rem color-mix(in srgb, var(--act-edit) 16%, transparent); }
+.editing.new { --act-edit: var(--act-add); }
+/* a rare field's way in (T291 §4): «＋ нотатка» — a quiet dashed link that brings the field */
+.more-field { padding: 0; border: 0; background: none; color: var(--bs-secondary-color); font-size: .76rem;
+              text-decoration: underline dashed; text-underline-offset: .2em; }
+.more-field:hover { color: var(--act-add); }
 /* a field that looks like text until the mouse or the focus finds it: the frame says «this can be edited» */
 .soft-input { border-color: transparent; background: transparent; }
 .soft-input:hover { border-color: var(--bs-border-color); }

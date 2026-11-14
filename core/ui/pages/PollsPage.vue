@@ -5,6 +5,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { usePolling } from '../activity.js'
 import { getPolls } from '../api.js'
 import Crumbs from '../components/Crumbs.vue'
+import Icon from '../components/Icon.vue'
 import PollCard from '../components/PollCard.vue'
 import PollChats from '../components/PollChats.vue'
 
@@ -38,9 +39,9 @@ const pick = (t) => router.replace({ query: { ...route.query, tag: t === tag.val
     <Crumbs :items="['Опитування']" />
     <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
       <h1 class="h3 mb-0 me-auto">Опитування</h1>
-      <RouterLink to="/polls/new" class="btn btn-primary btn-sm">➕ Нове опитування</RouterLink>
-      <RouterLink to="/polls/templates" class="btn btn-outline-secondary btn-sm">📋 Шаблони</RouterLink>
-      <RouterLink :to="{ path: '/polls/matrix', query: tag ? { tag } : {} }" class="btn btn-outline-secondary btn-sm">▦ Таблиця</RouterLink>
+      <RouterLink to="/polls/new" class="btn btn-primary btn-sm d-inline-flex align-items-center gap-1"><Icon name="plus" /> Нове опитування</RouterLink>
+      <RouterLink to="/polls/templates" class="btn btn-outline-secondary btn-sm"><Icon name="copy" /> Шаблони</RouterLink>
+      <RouterLink :to="{ path: '/polls/matrix', query: tag ? { tag } : {} }" class="btn btn-outline-secondary btn-sm"><Icon name="table" /> Таблиця</RouterLink>
     </div>
     <div v-if="tags.length" class="d-flex flex-wrap gap-1 mb-3">
       <button type="button" class="btn btn-sm chip" :class="!tag ? 'btn-secondary' : 'btn-outline-secondary'" @click="pick('')">усі</button>

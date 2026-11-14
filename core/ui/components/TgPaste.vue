@@ -2,6 +2,7 @@
 import { ref, watch } from 'vue'
 
 import { importMessages } from '../api.js'
+import HashLink from './HashLink.vue'
 
 // a chat with the student pasted from Telegram (T230): the bot never gets history, so the teacher's copy of it goes in by hand.
 // «Розібрати» shows who wrote how much and guesses which name is the student; «Імпортувати» writes the rows
@@ -39,8 +40,8 @@ async function save() {
 </script>
 
 <template>
-  <div class="card mb-3">
-    <div class="card-header">Telegram: вставити листування</div>
+  <div id="tg" class="card mb-3">
+    <div class="card-header d-flex align-items-center gap-1">Telegram: вставити листування <HashLink id="tg" /></div>
     <div class="card-body">
       <textarea v-model="text" class="form-control font-monospace small" rows="6"
                 placeholder="Віталій Ляпота, [24.10.2026 12:34]&#10;Текст повідомлення&#10;&#10;Імʼя студента, [24.10.2026 12:36]&#10;Відповідь"></textarea>

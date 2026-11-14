@@ -4,6 +4,7 @@ import { computed, onMounted, ref } from 'vue'
 import { deleteLessonFile, getStudents, postLessonAlias, uploadLessonFile } from '../api.js'
 import { fmtSize, fmtWords } from '../lesson.js'
 import Avatar from './Avatar.vue'
+import Icon from './Icon.vue'
 
 // the admin's card: raw transcripts and attachments (upload · drop), who the speakers are (an unknown name → a student,
 // remembered as their alias), and the local way to the texts — bin/lesson and the /lesson skill
@@ -50,20 +51,20 @@ onMounted(async () => (students.value = (await getStudents()).filter((s) => s.st
             <li v-for="f in sources" :key="f.id" class="d-flex gap-2 align-items-baseline">
               <a :href="`/api/lessons/${lesson.slug}/files/${f.id}`" target="_blank" class="font-monospace">{{ f.name }}</a>
               <span class="text-body-tertiary">{{ fmtWords(f.words) }} · {{ f.by }} · {{ when(f.uploaded) }}</span>
-              <a href="#" class="ms-auto text-body-tertiary text-decoration-none" title="Прибрати" @click.prevent="drop(f)">✕</a>
+              <a href="#" class="ms-auto text-body-tertiary text-decoration-none" title="Прибрати" @click.prevent="drop(f)"><Icon name="x" /></a>
             </li>
             <li v-if="!sources.length" class="text-body-tertiary">ще нема — zoom.txt, plaud.txt, whisper.txt, chat.txt…</li>
           </ul>
-          <label class="btn btn-outline-secondary btn-sm">＋ сирий транскрипт<input type="file" multiple hidden @change="add($event, 'source')"></label>
+          <label class="btn btn-outline-secondary btn-sm"><Icon name="plus" /> сирий транскрипт<input type="file" multiple hidden @change="add($event, 'source')"></label>
           <div class="fw-semibold mt-3 mb-1">Файли для студентів</div>
           <ul class="list-unstyled mb-2">
             <li v-for="f in attachments" :key="f.id" class="d-flex gap-2 align-items-baseline">
               <a :href="`/api/lessons/${lesson.slug}/files/${f.id}`" target="_blank">📎 {{ f.name }}</a>
               <span class="text-body-tertiary">{{ fmtSize(f.size) }}</span>
-              <a href="#" class="ms-auto text-body-tertiary text-decoration-none" title="Прибрати" @click.prevent="drop(f)">✕</a>
+              <a href="#" class="ms-auto text-body-tertiary text-decoration-none" title="Прибрати" @click.prevent="drop(f)"><Icon name="x" /></a>
             </li>
           </ul>
-          <label class="btn btn-outline-secondary btn-sm">＋ файл<input type="file" multiple hidden @change="add($event, 'file')"></label>
+          <label class="btn btn-outline-secondary btn-sm"><Icon name="plus" /> файл<input type="file" multiple hidden @change="add($event, 'file')"></label>
         </div>
         <div class="col-md-6">
           <div class="fw-semibold mb-1">Мовці</div>

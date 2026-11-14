@@ -4,6 +4,7 @@ import { useRoute, useRouter } from 'vue-router'
 
 import { deleteLesson, getLesson, getStudents, postLesson, putLesson } from '../api.js'
 import Crumbs from '../components/Crumbs.vue'
+import Icon from '../components/Icon.vue'
 import TagInput from '../components/TagInput.vue'
 import { KINDS } from '../lesson.js'
 import { problem } from '../problem.js'
@@ -94,9 +95,9 @@ async function remove() {
           <div v-for="(l, i) in form.links" :key="i" class="input-group mb-2">
             <input v-model="l.label" class="form-control" style="max-width: 11rem" placeholder="Відео">
             <input v-model="l.url" class="form-control" type="url" placeholder="https://">
-            <button type="button" class="btn btn-outline-secondary" title="Прибрати" @click="form.links.splice(i, 1)">✕</button>
+            <button type="button" class="btn btn-outline-secondary" title="Прибрати" @click="form.links.splice(i, 1)"><Icon name="x" /></button>
           </div>
-          <button type="button" class="btn btn-outline-secondary btn-sm" @click="addLink">＋ посилання</button>
+          <button type="button" class="btn btn-outline-secondary btn-sm" @click="addLink"><Icon name="plus" /> посилання</button>
         </div>
         <div class="col-md-4">
           <label class="form-label">Старт запису</label>

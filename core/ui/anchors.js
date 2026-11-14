@@ -1,3 +1,5 @@
+import { iconHtml } from './iconHtml.js'
+
 // hash targets inside guide text: scroll, open enclosing <details>, flash the section for a moment
 const HEADING = /^H[1-6]$/
 const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -27,11 +29,11 @@ export const toTop = () => window.scrollTo({ top: 0, behavior: reduced() ? 'auto
 export async function copyLink(a) {
   const url = location.origin + location.pathname + a.getAttribute('href')
   try { await navigator.clipboard.writeText(url) } catch { return }
-  a.textContent = '✓'
-  setTimeout(() => (a.textContent = '🔗'), 1500)
+  a.innerHTML = iconHtml('check')
+  setTimeout(() => (a.innerHTML = iconHtml('link')), 1500)
 }
 
-// clicks inside rendered markdown: 🔗 copies, #hash scrolls+flashes, site links go through the router
+// clicks inside rendered markdown: the link icon copies, #hash scrolls+flashes, site links go through the router
 export function guideClick(e, router) {
   const a = e.target.closest('a')
   if (!a || e.metaKey || e.ctrlKey || a.target === '_blank') return

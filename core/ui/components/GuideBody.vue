@@ -6,6 +6,7 @@ import { user } from '../user.js'
 import DraftsToggle from './DraftsToggle.vue'
 import GuideEditor from './GuideEditor.vue'
 import GuideText from './GuideText.vue'
+import Icon from './Icon.vue'
 
 // guide text with its admin tools: ✏️ on headings (renderMd) and «сторінку» open one inline editor at a time;
 // the saved page comes back through v-model:page. The admin's text is with drafts or without (drafts.js)
@@ -33,8 +34,8 @@ async function saved(p) {
   <div>
     <div v-if="admin && tools" class="tools small text-end">
       <template v-if="hasDrafts(page)"><DraftsToggle /> · </template>
-      <a href="#" @click.prevent="edit('')">✏️ редагувати</a>
-      <template v-if="history"> · <RouterLink :to="{ path: history, query: { slug: page.slug } }">🕘 історія</RouterLink></template>
+      <a href="#" @click.prevent="edit('')"><Icon name="pencil" /> редагувати</a>
+      <template v-if="history"> · <RouterLink :to="{ path: history, query: { slug: page.slug } }"><Icon name="clock" /> історія</RouterLink></template>
     </div>
     <GuideEditor v-if="editing !== null" ref="editor" :key="editing" :page :id="editing" :prefix :put :notitle="!history" :view
                  @saved="saved" @close="editing = null" />

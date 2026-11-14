@@ -1,5 +1,6 @@
 <script setup>
 import { moment } from '../polls.js'
+import Icon from './Icon.vue'
 
 // the end of «Мій тиждень»: «Готово» says the week is whole. It waits for a reason to each «не можу» (`unexplained` names them);
 // once pressed it stays pressed, and what is painted later only asks for its reasons. `empty` — nothing is marked at all
@@ -18,7 +19,7 @@ defineEmits(['finish'])
         </template>
       </template>
       <template v-else>
-        <button type="button" class="btn btn-success" :disabled="!!unexplained || busy" @click="$emit('finish')">✅ Готово — тиждень позначено</button>
+        <button type="button" class="btn btn-success" :disabled="!!unexplained || busy" @click="$emit('finish')"><Icon name="done" /> Готово — тиждень позначено</button>
         <div class="small mt-2" :class="unexplained ? 'text-danger' : 'text-secondary'">
           <template v-if="unexplained">Спершу поясни червоні блоки: {{ unexplained }}</template>
           <template v-else-if="empty">Жодної позначки — отже, можеш будь-коли {{ range }}? Якщо так — тисни «Готово»</template>

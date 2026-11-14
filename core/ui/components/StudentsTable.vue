@@ -6,6 +6,7 @@ import { site } from '../site.js'
 import { byGroup } from '../studentFilter.js'
 import { lookAs, user } from '../user.js'
 import Avatar from './Avatar.vue'
+import Icon from './Icon.vue'
 import IconChevron from './IconChevron.vue'
 
 // a header row per group folds it; the site's own columns (site.students.cols) go after the name; «↗» shows that group alone (?group=, crumb on the page).
@@ -44,7 +45,7 @@ const rowClass = (s) => ({ 'table-warning': s.status === 'pending', 'table-info'
           <span class="caret text-secondary"><IconChevron :dir="folded.has(g.name) ? 'right' : 'down'" :size="12" /></span>
           {{ g.name || 'Без групи' }} <span class="count">{{ g.list.length }}</span>
           <RouterLink v-if="g.name && !route.query.group" :to="{ query: { ...route.query, group: g.name } }" class="ibtn ms-2"
-                      title="Лише ця група" @click.stop>↗</RouterLink>
+                      title="Лише ця група" @click.stop><Icon name="open" /></RouterLink>
         </th>
       </tr>
       <template v-if="!folded.has(g.name)">
@@ -56,7 +57,7 @@ const rowClass = (s) => ({ 'table-warning': s.status === 'pending', 'table-info'
                 <RouterLink :to="nameTo(s)" class="name">{{ fio(s) }}</RouterLink>
                 <span v-if="s.status === 'admin'" class="badge text-bg-secondary fw-normal ms-1">викладач</span>
                 <span v-else-if="s.status === 'pending'" class="badge text-bg-warning fw-normal ms-1">очікує</span>
-                <a v-if="admin && s.test" href="#" class="ibtn ms-1" title="Очима студента" @click.prevent="lookAs(s.nick)">👁</a>
+                <a v-if="admin && s.test" href="#" class="ibtn ms-1" title="Очима студента" @click.prevent="lookAs(s.nick)"><Icon name="eye" /></a>
                 <div v-if="admin" class="email small">{{ s.email }}</div>
               </div>
             </div>

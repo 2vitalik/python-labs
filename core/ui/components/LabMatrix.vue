@@ -4,6 +4,7 @@ import { computed, ref } from 'vue'
 import { STATES, fmtWhen, labName, labPath } from '../labs.js'
 import { byGroup } from '../studentFilter.js'
 import Avatar from './Avatar.vue'
+import Icon from './Icon.vue'
 import IconChevron from './IconChevron.vue'
 import LabCell from './LabCell.vue'
 import LabEdit from './LabEdit.vue'
@@ -37,8 +38,8 @@ const total = (l) => Object.entries(STATES).filter(([k]) => k !== 'nodue')
           <th class="repo" title="Репозиторій">🐙</th>
           <th v-for="l in labs" :key="l.n" class="lab" :title="dueTitle(l)">
             <RouterLink :to="{ path: '/table', query: { view: `lab${l.n}` } }" title="Усе про дедлайн цієї лаби — таблиця">{{ labName(l.n) }}</RouterLink>
-            <RouterLink v-if="labPath(l.n)" :to="labPath(l.n)" class="ibtn ms-1" title="Сторінка лаби">📖</RouterLink>
-            <a href="#" class="ibtn ms-1" title="Дедлайн" @click.prevent="emit('deadline', l.n)">✏️</a>
+            <RouterLink v-if="labPath(l.n)" :to="labPath(l.n)" class="ibtn ms-1" title="Сторінка лаби"><Icon name="books" /></RouterLink>
+            <a href="#" class="ibtn ms-1" title="Дедлайн" @click.prevent="emit('deadline', l.n)"><Icon name="pencil" /></a>
             <small class="d-block fw-normal text-secondary">{{ due(l) ? fmtWhen(due(l).at) : l.deadlines.length ? 'по групах' : '—' }}<template v-if="due(l) && l.deadlines.length > 1"> +</template></small>
           </th>
         </tr>

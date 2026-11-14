@@ -5,6 +5,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { getTable, putFieldValue, putStudentLab } from '../api.js'
 import Crumbs from '../components/Crumbs.vue'
 import FieldsPanel from '../components/FieldsPanel.vue'
+import Icon from '../components/Icon.vue'
 import IconArrows from '../components/IconArrows.vue'
 import TableCols from '../components/TableCols.vue'
 import TableGrid from '../components/TableGrid.vue'
@@ -98,19 +99,19 @@ onMounted(load)
     </div>
     <TableViews v-if="state" :views :slug :dirty :state @pick="pickView" @saved="data.views = $event" />
     <div v-if="state" class="d-flex flex-wrap align-items-center gap-2 mb-2 small">
-      <button type="button" class="btn btn-sm" :class="panel === 'cols' ? 'btn-secondary' : 'btn-outline-secondary'" @click="panel = panel === 'cols' ? '' : 'cols'">
-        ▦ Колонки <span class="count">{{ shownCols.length }}</span></button>
+      <button type="button" class="btn btn-sm d-inline-flex align-items-center gap-1" :class="panel === 'cols' ? 'btn-secondary' : 'btn-outline-secondary'" @click="panel = panel === 'cols' ? '' : 'cols'">
+        <Icon name="cols3" /> Колонки <span class="count">{{ shownCols.length }}</span></button>
       <label class="d-flex align-items-center gap-1">Групи:
         <select class="form-select form-select-sm w-auto" :value="state.group" @change="set({ group: $event.target.value })">
           <option value="-">без груп</option>
           <option v-for="c in groupable" :key="c.key" :value="c.key">{{ c.short === c.title ? c.title : `${c.short} ${c.title}` }}</option>
         </select>
       </label>
-      <button type="button" class="btn btn-sm" :class="panel === 'fields' ? 'btn-secondary' : 'btn-outline-secondary'" @click="panel = panel === 'fields' ? '' : 'fields'">
-        ⚙️ Мої поля <span class="count">{{ data.fields.length }}</span></button>
+      <button type="button" class="btn btn-sm d-inline-flex align-items-center gap-1" :class="panel === 'fields' ? 'btn-secondary' : 'btn-outline-secondary'" @click="panel = panel === 'fields' ? '' : 'fields'">
+        <Icon name="sliders" /> Мої поля <span class="count">{{ data.fields.length }}</span></button>
       <template v-for="(spec, key) in state.filters" :key="key">
         <span v-if="byKey[key]" class="badge rounded-pill text-bg-light border fw-normal" :title="byKey[key].title">{{ byKey[key].short }} {{ filterText(byKey[key], spec) }}
-          <a href="#" class="text-reset text-decoration-none ms-1" title="Прибрати фільтр" @click.prevent="setFilter(key, '')">✕</a></span>
+          <a href="#" class="text-reset text-decoration-none ms-1" title="Прибрати фільтр" @click.prevent="setFilter(key, '')"><Icon name="x" /></a></span>
       </template>
       <a v-if="dirty" href="#" class="text-secondary" @click.prevent="pickView(slug)">скинути до виду</a>
     </div>
@@ -123,7 +124,7 @@ onMounted(load)
     <div v-if="error" class="alert alert-danger">{{ error }}</div>
     <TableGrid v-if="state" :rows :cols="shownCols" :group="groupCol" :sort="state.sort" :filters="state.filters" @sort="setSort" @filter="setFilter" @save="save" />
     <p v-if="state" class="small text-secondary mt-2">
-      Чіпи над таблицею — швидкий фільтр «у кого є» по колонці, з лічильником. Заголовок колонки: клік — сортування, ▾ — фільтр, наведи — що це. Клітинки з рамкою при наведенні редагуються: 🙋 і свої поля — кліком, стан лаби — редактором під рядком.
+      Чіпи над таблицею — швидкий фільтр «у кого є» по колонці, з лічильником. Заголовок колонки: клік — сортування, <Icon name="filter" /> — фільтр, наведи — що це. Клітинки з рамкою при наведенні редагуються: 🙋 і свої поля — кліком, стан лаби — редактором під рядком.
       Голоси беруться з опитувань щоразу живими; факти репозиторіїв — з останнього <code>bin/repos pull</code> → <code>push</code>.
     </p>
   </div>

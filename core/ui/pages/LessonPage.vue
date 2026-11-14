@@ -8,6 +8,7 @@ import Crumbs from '../components/Crumbs.vue'
 import GuideBody from '../components/GuideBody.vue'
 import GuideEditor from '../components/GuideEditor.vue'
 import GuideText from '../components/GuideText.vue'
+import Icon from '../components/Icon.vue'
 import IconChevron from '../components/IconChevron.vue'
 import LessonChat from '../components/LessonChat.vue'
 import LessonHead from '../components/LessonHead.vue'
@@ -72,7 +73,7 @@ watch(() => route.hash, (h) => lesson.value && hash(h))  // a save replaces `les
 <template>
   <div v-if="lesson">
     <Crumbs :items="[['/lessons', 'Пари'], lesson.label]">
-      <RouterLink v-if="admin" :to="`/lessons/${slug}/edit`" class="btn btn-outline-secondary btn-sm ms-auto">✏️ Пара</RouterLink>
+      <RouterLink v-if="admin" :to="`/lessons/${slug}/edit`" class="btn btn-outline-secondary btn-sm ms-auto"><Icon name="pencil" /> Пара</RouterLink>
     </Crumbs>
     <h1 class="h2 mb-1">{{ heading }}</h1>
     <LessonHead :lesson />
@@ -94,7 +95,7 @@ watch(() => route.hash, (h) => lesson.value && hash(h))  // a save replaces `les
           <span class="text-secondary small">· {{ sum.sections }} розділів · {{ sum.lines }} реплік · {{ sum.speakers }} мовців</span>
         </a>
         <span v-else class="text-secondary small">🗣 Транскрипту ще нема</span>
-        <a v-if="admin && lesson.transcript" href="#" class="small text-secondary ms-auto" @click.prevent="editing = !editing">✏️ транскрипт</a>
+        <a v-if="admin && lesson.transcript" href="#" class="small text-secondary ms-auto" @click.prevent="editing = !editing"><Icon name="pencil" /> транскрипт</a>
       </div>
       <GuideEditor v-if="editing" :page="transcriptPage" :put="putText('transcript')" notitle @saved="editing = false" @close="editing = false" />
       <Transcript v-if="open" :sections :people="lesson.people" :video :start="lesson.video_start" />

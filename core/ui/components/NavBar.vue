@@ -2,9 +2,10 @@
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
-import { useNavFit } from '../navFit.js'
+import { icons, useNavFit } from '../navFit.js'
 import { site } from '../site.js'
 import { canAccess, user } from '../user.js'
+import Icon from './Icon.vue'
 import IconHome from './IconHome.vue'
 import NavUser from './NavUser.vue'
 
@@ -12,13 +13,23 @@ const route = useRoute()
 const router = useRouter()
 // menu follows route access, so a page and its link open together; a link with its own access is narrower than its page
 const visible = computed(() => site.links.filter(([to, , access]) => canAccess(access ?? router.resolve(to).meta.access)))
-const { bar, list, more, fit, stage, layout } = useNavFit(visible)
+const { bar, list, more, tail, fit, stage, compact, layout, setIcons } = useNavFit(visible)
 const row = computed(() => visible.value.slice(0, fit.value))
 const rest = computed(() => visible.value.slice(fit.value))
 const isActive = (to) => route.path === to || route.path.startsWith(to + '/')  // /labs/1 lights «Лаби»
 const restActive = computed(() => rest.value.some(([to]) => isActive(to)))
 
+// «Ще» opens under a mouse that stopped on it (T291 §9): a pause, so a mouse passing by opens nothing, and a longer one
+// before it goes — the way from the word to the list. A finger has no hover: there a tap opens and closes it
 const open = ref(false)
+const hovers = matchMedia('(hover: hover)').matches
+let timer
+const hover = (on) => {
+  if (!hovers) return
+  clearTimeout(timer)
+  timer = setTimeout(() => (open.value = on), on ? 200 : 300)
+}
+const tap = () => { clearTimeout(timer); open.value = hovers || !open.value }
 const close = (e) => (!e || !more.value?.contains(e.target)) && (open.value = false)
 watch(() => route.fullPath, () => close())
 watch(user, () => layout(), { flush: 'post' })  // the name appears/changes → re-fit
@@ -31,12 +42,13 @@ const sized = new ResizeObserver(() => document.documentElement.style.setPropert
 onMounted(() => {
   document.addEventListener('click', close)
   addEventListener('scroll', scrolled, { passive: true })
-  sized.observe(bar.value)
+  sized.observe(bar.value, { box: 'border-box' })  // the bar's own padding is animated: the content box alone would miss it
 })
 onUnmounted(() => {
   document.removeEventListener('click', close)
   removeEventListener('scroll', scrolled)
   sized.disconnect()
+  clearTimeout(timer)
 })
 </script>
 
@@ -45,16 +57,35 @@ onUnmounted(() => {
     <div class="page d-flex align-items-center">
       <RouterLink class="navbar-brand d-flex align-items-center" to="/" :title="site.name"><IconHome :size="20" /></RouterLink>
       <ul ref="list" class="navbar-nav">
-        <li v-for="[to, text, , bold] in row" :key="to" class="nav-item">
-          <RouterLink class="nav-link" :class="{ active: isActive(to), 'fw-bold': bold }" :to="to">{{ text }}</RouterLink>
+        <!-- tight and the reader chose icons (navFit.js): a link is its icon, named under the mouse; the page we are on keeps its word -->
+        <li v-for="[to, text, , bold, icon] in row" :key="to" class="nav-item">
+          <RouterLink class="nav-link" :class="{ active: isActive(to), main: bold, ico: compact }" :to="to"
+                      :data-tip="compact && !isActive(to) ? text : null" :aria-label="text">
+            <template v-if="compact">
+              <span class="pic"><Icon v-if="icon" :name="icon" /><template v-else>{{ text.slice(0, 2) }}</template></span>
+              <span v-if="isActive(to)" class="ms-1">{{ text }}</span>
+            </template>
+            <template v-else>{{ text }}</template>
+          </RouterLink>
         </li>
-        <li ref="more" class="nav-item dropdown" :class="{ 'invisible position-absolute': !rest.length }">
-          <a class="nav-link dropdown-toggle" :class="{ active: restActive }" href="#" @click.prevent="open = !open">Ще</a>
+        <li ref="more" class="nav-item dropdown" :class="{ 'invisible position-absolute': !rest.length }" @mouseenter="hover(true)" @mouseleave="hover(false)">
+          <a class="nav-link dropdown-toggle" :class="{ active: restActive }" href="#" :aria-expanded="open" @click.prevent="tap">Ще</a>
+          <!-- the list reads as the bar going on downwards: its ground, its type, its colours -->
           <ul class="dropdown-menu dropdown-menu-end" :class="{ show: open }">
             <li v-for="[to, text, , bold] in rest" :key="to">
-              <RouterLink class="dropdown-item" :class="{ active: isActive(to), 'fw-bold': bold }" :to="to">{{ text }}</RouterLink>
+              <RouterLink class="dropdown-item" :class="{ active: isActive(to), main: bold }" :to="to">{{ text }}</RouterLink>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <button type="button" class="dropdown-item look" :title="icons ? 'Меню словами: що не вміщається — у «Ще»' : 'Меню значками: вміщається все, назва — під мишкою'"
+                      @click="setIcons(!icons); open = false">
+                <template v-if="icons">Аа словами</template><template v-else><Icon name="grid" /> значками</template>
+              </button>
             </li>
           </ul>
+        </li>
+        <li v-if="compact && !rest.length" ref="tail" class="nav-item">
+          <button type="button" class="nav-link look" data-tip="Меню словами: що не вміщається — у «Ще»" @click="setIcons(false)">Аа</button>
         </li>
       </ul>
       <NavUser :stage />
@@ -75,4 +106,26 @@ onUnmounted(() => {
 /* current page: a bar under the word (::before — ::after is the «Ще» caret); colour and weight stay, so navFit's widths hold */
 .nav-link.active::before { content: ''; position: absolute; left: .45rem; right: .45rem; bottom: .2rem; height: 2px;
                           border-radius: 1px; background: var(--bs-primary); }
+/* the site's main page (T291 §9): bold, and at rest a shade darker than its neighbours — not black */
+.main { font-weight: 700; }
+.nav-link.main:not(.active):not(:hover) { color: rgba(var(--bs-emphasis-color-rgb), .8); }
+/* an icon as tall as a word, so the bar keeps its height; its name comes under the mouse at once, not after the browser's second */
+.pic { display: inline-block; font-size: 1.15rem; line-height: 1.5rem; vertical-align: top; }
+.nav-link.ico { padding-left: .35rem; padding-right: .35rem; }
+.nav-link.ico.active::before { left: .35rem; right: .35rem; }
+.nav-link[data-tip]:hover::after { content: attr(data-tip); position: absolute; z-index: 5; top: calc(100% + .15rem); left: 50%; transform: translateX(-50%);
+                                   padding: .1rem .45rem; border-radius: .3rem; background: var(--bs-emphasis-color); color: var(--bs-body-bg);
+                                   font-size: .75rem; font-weight: 400; white-space: nowrap; pointer-events: none; }
+/* «Ще»: the bar's own ground and link colours, rows as tight as the bar's words, no wider than its longest word */
+.dropdown-menu { --bs-dropdown-bg: var(--bs-tertiary-bg); --bs-dropdown-min-width: 0; --bs-dropdown-padding-y: .25rem; --bs-dropdown-spacer: 0;
+                 --bs-dropdown-item-padding-x: .8rem; --bs-dropdown-item-padding-y: .2rem; --bs-dropdown-divider-margin-y: .25rem;
+                 --bs-dropdown-link-color: var(--bs-navbar-color); --bs-dropdown-link-hover-color: var(--bs-navbar-hover-color);
+                 --bs-dropdown-link-hover-bg: rgba(var(--bs-emphasis-color-rgb), .06);
+                 --bs-dropdown-link-active-color: var(--bs-navbar-active-color); --bs-dropdown-link-active-bg: transparent;
+                 border-top-left-radius: 0; border-top-right-radius: 0; }
+.dropdown-item { position: relative; }
+.dropdown-item.active::before { content: ''; position: absolute; left: .3rem; top: .35rem; bottom: .35rem; width: 2px; border-radius: 1px; background: var(--bs-primary); }
+.look { color: var(--bs-secondary-color); font-size: .8rem; }
+.dropdown-item.look { display: flex; align-items: center; gap: .35rem; }
+button.nav-link.look { border: 0; background: none; line-height: 1.5rem; }
 </style>

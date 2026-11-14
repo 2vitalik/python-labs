@@ -1,13 +1,13 @@
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 
 import { load, save } from './local.js'
-import { user } from './user.js'
 
-// a meta.wide page on the whole window instead of the page column — the admin's choice, remembered in this browser
-const KEY = 'tasks-wide'
-export const wide = ref(load(KEY) === '1')
-export const wideOn = computed(() => wide.value && user.value?.status === 'admin')
-export function toggleWide() {
-  wide.value = !wide.value
-  save(KEY, wide.value ? '1' : '0')
+// a meta.wide page on the whole window instead of the page column — the reader's choice, remembered in this browser.
+// `meta.wide` names the memory: true — the tables and the catalog share one, 'game' — a game's description has its own
+function memo(key) {
+  const on = ref(load(key) === '1')
+  return { on, toggle: () => { on.value = !on.value; save(key, on.value ? '1' : '0') } }
 }
+const kinds = { tasks: memo('tasks-wide'), game: memo('game-wide') }
+export const wideOf = (name) => kinds[name === true ? 'tasks' : name]
+export const { on: wide, toggle: toggleWide } = kinds.tasks

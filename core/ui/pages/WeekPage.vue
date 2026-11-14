@@ -2,6 +2,7 @@
 import { computed, ref, watchEffect } from 'vue'
 
 import Crumbs from '../components/Crumbs.vue'
+import Icon from '../components/Icon.vue'
 import WeekBar from '../components/WeekBar.vue'
 import WeekDayNav from '../components/WeekDayNav.vue'
 import WeekHeat from '../components/WeekHeat.vue'
@@ -45,7 +46,7 @@ if (admin) {
     <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
       <h1 class="h3 mb-0 me-auto">{{ day === null ? 'Тиждень потоку' : DAY_NAMES[day] }}</h1>
       <WeekDayNav v-if="day !== null && frame" :day :days="frame.days" />
-      <RouterLink to="/my/week" class="btn btn-outline-secondary btn-sm">🗓 Мій тиждень</RouterLink>
+      <RouterLink to="/my/week" class="btn btn-outline-secondary btn-sm"><Icon name="calendar" /> Мій тиждень</RouterLink>
     </div>
     <div v-if="error" class="alert alert-danger">{{ error }}</div>
     <div v-if="demo" class="alert alert-warning py-2">🧪 Вигадані дані: так сторінка виглядатиме, коли позначать {{ demo }} % потоку ·

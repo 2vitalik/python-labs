@@ -3,6 +3,7 @@ import { reactive, ref } from 'vue'
 
 import { postField, putField } from '../api.js'
 import { parseOption } from '../polls.js'
+import Icon from './Icon.vue'
 
 // a field's form (T240): name with an emoji, type, what it is on, the answers of a choice — each with an emoji, a text and a colour from the palette
 const props = defineProps({ field: { type: Object, required: true } })
@@ -64,9 +65,9 @@ async function save() {
         <span class="d-flex gap-1">
           <button v-for="c in COLORS" :key="c" type="button" class="swatch" :class="[c ? `tone-${c}` : 'tone-none', { picked: o.color === c }]" :title="c || 'без кольору'" @click="o.color = c"></button>
         </span>
-        <a href="#" class="ibtn" title="Прибрати варіант" @click.prevent="remove(i)">✕</a>
+        <a href="#" class="ibtn" title="Прибрати варіант" @click.prevent="remove(i)"><Icon name="x" /></a>
       </div>
-      <button type="button" class="btn btn-sm btn-outline-secondary" @click="addOption">＋ варіант</button>
+      <button type="button" class="btn btn-sm btn-outline-secondary" @click="addOption"><Icon name="plus" /> варіант</button>
     </div>
     <div class="d-flex align-items-center gap-2 mt-3">
       <button type="submit" class="btn btn-sm btn-primary" :disabled="busy || !form.title.trim()">{{ f.key ? 'Зберегти' : 'Створити' }}</button>

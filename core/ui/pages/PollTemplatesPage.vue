@@ -3,6 +3,7 @@ import { computed, onMounted, reactive, ref } from 'vue'
 
 import { deletePollTemplate, getPollTemplates, postPollTemplate, putPollTemplate } from '../api.js'
 import Crumbs from '../components/Crumbs.vue'
+import Icon from '../components/Icon.vue'
 import PollForm from '../components/PollForm.vue'
 import { emptyForm, fromPoll, optionLabel, review, toPayload } from '../polls.js'
 
@@ -50,9 +51,9 @@ onMounted(load)
     <Crumbs :items="[['/polls', 'Опитування'], 'Шаблони']" />
     <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
       <h1 class="h3 mb-0 me-auto">Шаблони</h1>
-      <button v-if="editing !== 'new'" type="button" class="btn btn-primary btn-sm" @click="edit(null)">➕ Новий шаблон</button>
+      <button v-if="editing !== 'new'" type="button" class="btn btn-primary btn-sm d-inline-flex align-items-center gap-1" @click="edit(null)"><Icon name="plus" /> Новий шаблон</button>
     </div>
-    <p class="text-secondary small">Питання, які ставиш знову й знову: «🗳 Опитати» відкриває нове опитування, заповнене з шаблону, — лишається обрати, куди.
+    <p class="text-secondary small">Питання, які ставиш знову й знову: кнопка «Опитати» відкриває нове опитування, заповнене з шаблону, — лишається обрати, куди.
       Правка шаблону не змінює вже зроблених з нього опитувань.</p>
     <div v-if="error" class="alert alert-danger py-2">{{ error }}</div>
 
@@ -60,16 +61,16 @@ onMounted(load)
       <div v-if="editing === t.id" class="card card-body mb-2 border-primary">
         <PollForm v-model="form" :known template />
         <div class="d-flex gap-2 mt-3">
-          <button type="button" class="btn btn-primary" :disabled="busy || !ready" @click="save">💾 Зберегти шаблон</button>
+          <button type="button" class="btn btn-primary d-inline-flex align-items-center gap-1" :disabled="busy || !ready" @click="save"><Icon name="check" /> Зберегти шаблон</button>
           <button type="button" class="btn btn-link text-secondary" @click="editing = ''">Скасувати</button>
         </div>
       </div>
       <div v-else class="card card-body py-2 px-3 mb-2">
         <div class="d-flex flex-wrap align-items-center gap-2">
           <span class="fw-semibold me-auto">{{ t.title }}</span>
-          <RouterLink :to="`/polls/new?template=${t.id}`" class="btn btn-primary btn-sm">🗳 Опитати</RouterLink>
-          <button type="button" class="btn btn-outline-secondary btn-sm" title="Редагувати" @click="edit(t)">✏️</button>
-          <button type="button" class="btn btn-outline-danger btn-sm" title="Видалити" :disabled="busy" @click="remove(t)">🗑</button>
+          <RouterLink :to="`/polls/new?template=${t.id}`" class="btn btn-primary btn-sm d-inline-flex align-items-center gap-1"><Icon name="bars" /> Опитати</RouterLink>
+          <button type="button" class="btn btn-outline-secondary btn-sm" title="Редагувати" @click="edit(t)"><Icon name="pencil" /></button>
+          <button type="button" class="btn btn-outline-danger btn-sm d-inline-flex align-items-center" title="Видалити" :disabled="busy" @click="remove(t)"><Icon name="trash" /></button>
         </div>
         <div class="small text-break">{{ t.question }}</div>
         <div class="small text-secondary d-flex flex-wrap column-gap-2">
@@ -80,7 +81,7 @@ onMounted(load)
       </div>
     </template>
     <p v-if="!templates.length && editing !== 'new'" class="text-secondary text-center my-4">
-      Шаблонів ще нема. Зроби перший — або збережи вдале опитування кнопкою «📋 У шаблони» на його сторінці.
+      Шаблонів ще нема. Зроби перший — або збережи вдале опитування кнопкою «У шаблони» на його сторінці.
     </p>
   </div>
 </template>

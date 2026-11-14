@@ -5,6 +5,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { usePolling } from '../activity.js'
 import { closePoll, deletePoll, getPoll, getPollChats, pollToTemplate, retrySend, sendPoll } from '../api.js'
 import Crumbs from '../components/Crumbs.vue'
+import Icon from '../components/Icon.vue'
 import PollHead from '../components/PollHead.vue'
 import PollResults from '../components/PollResults.vue'
 import PollSends from '../components/PollSends.vue'
@@ -82,8 +83,9 @@ const remove = () => confirm('Видалити опитування? Голос�
     <div v-if="res.sends.length || !draft" class="mb-4">
       <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
         <h2 class="h5 mb-0 me-auto">Де опитування</h2>
-        <button v-if="poll.status === 'open'" type="button" class="btn btn-outline-secondary btn-sm" @click="sendMore">➕ Ще кудись</button>
-        <button v-if="poll.status === 'open'" type="button" class="btn btn-outline-danger btn-sm" :disabled="busy" @click="close">⏹ Закрити</button>
+        <button v-if="poll.status === 'open'" type="button" class="btn btn-outline-secondary btn-sm" @click="sendMore"><Icon name="plus" /> Ще кудись</button>
+        <button v-if="poll.status === 'open'" type="button" class="btn btn-outline-danger btn-sm d-inline-flex align-items-center gap-1" :disabled="busy" @click="close">
+          <Icon name="stop" /> Закрити</button>
       </div>
       <PollSends :sends="res.sends" :open="poll.status !== 'closed'" @retry="retry" />
     </div>
@@ -92,7 +94,7 @@ const remove = () => confirm('Видалити опитування? Голос�
       <div class="fw-semibold mb-2">{{ draft ? 'Куди надіслати' : 'Куди ще' }}</div>
       <PollTargets v-model="targets" v-model:silent="silent" :chats="places.chats" :me="places.me" :sent="res.sends" />
       <div class="mt-2">
-        <button type="button" class="btn btn-primary" :disabled="busy || !targets.length" @click="send">🚀 Надіслати</button>
+        <button type="button" class="btn btn-primary d-inline-flex align-items-center gap-1" :disabled="busy || !targets.length" @click="send"><Icon name="send" /> Надіслати</button>
         <span v-if="busy" class="small text-secondary ms-2">Надсилаю…</span>
       </div>
     </div>

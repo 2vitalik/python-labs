@@ -1,34 +1,15 @@
 <script setup>
-import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted } from 'vue'
 
-import { back, close, leave, peek, peekView, stay } from '../peek.js'
-import Icon from './Icon.vue'
+import { close, peek } from '../peek.js'
+import PeekCard from './PeekCard.vue'
 
-// the one floating card of peek.js, drawn where it is mounted — so what a card shows can read what the page provides
-// (the game being described). It hangs under its anchor, turned up or shifted left when the window ends; a pinned card
-// has a bar: back along the way it came, and a cross. Esc or a click outside closes it
+// the floating cards of peek.js, drawn where this is mounted — so what a card shows can read what the page provides
+// (the game being described). Esc closes the last card of the chain, a click outside them all — every one
 const id = Math.random()
-const panel = ref()
-const pos = ref(null)
-const top = computed(() => (peek.host === id ? peek.stack.at(-1) : null))
-const view = computed(() => top.value && peekView(top.value.kind))
-
-async function place() {
-  pos.value = null
-  await nextTick()
-  if (!panel.value || !peek.at) return
-  const a = peek.at, p = panel.value.getBoundingClientRect(), gap = 6
-  const below = a.top + a.height + gap, above = a.top - p.height - gap
-  const fitsBelow = below + p.height < scrollY + innerHeight - 8
-  pos.value = {
-    left: `${Math.max(scrollX + 8, Math.min(a.left, scrollX + document.documentElement.clientWidth - p.width - 8))}px`,
-    top: `${fitsBelow || above < scrollY + 8 ? below : above}px`,
-  }
-}
-watch(() => [peek.at, peek.stack.length, peek.host], () => top.value && place(), { flush: 'post' })
-
-const outside = (e) => peek.pinned && !panel.value?.contains(e.target) && close()
-const esc = (e) => e.key === 'Escape' && peek.stack.length && close()
+const cards = computed(() => (peek.host === id ? peek.cards : []))
+const outside = (e) => peek.pinned && !e.target.closest?.('.peek-card') && close()
+const esc = (e) => e.key === 'Escape' && peek.cards.length && close(peek.cards.length - 1)
 onMounted(() => {
   peek.host = id
   document.addEventListener('mousedown', outside)
@@ -43,14 +24,7 @@ onBeforeUnmount(() => {
 
 <template>
   <Teleport to="body">
-    <div v-if="view" ref="panel" class="peek-card shadow border rounded bg-body" :class="{ ready: pos }" :style="pos"
-         @mouseenter="stay" @mouseleave="leave" @click="peek.stack.length && (peek.pinned = true)">
-      <div v-if="peek.pinned" class="bar">
-        <button v-if="peek.stack.length > 1" type="button" class="nav" @click.stop="back"><Icon name="left" /> назад</button>
-        <button type="button" class="nav ms-auto" title="Закрити (Esc)" @click.stop="close"><Icon name="x" /></button>
-      </div>
-      <component :is="view" v-bind="top" :key="`${top.kind}:${top.id}`" />
-    </div>
+    <PeekCard v-for="(card, k) in cards" :key="k" :card :k />
   </Teleport>
 </template>
 
@@ -67,14 +41,4 @@ onBeforeUnmount(() => {
 .pk-go { align-self: flex-start; display: inline-flex; align-items: center; gap: .3rem; padding: 0; border: 0; background: none;
          color: var(--bs-link-color); font-size: .8rem; text-decoration: none; }
 .pk-go:hover { text-decoration: underline; }
-</style>
-
-<style scoped>
-.peek-card { position: absolute; z-index: 1050; width: 21rem; max-width: calc(100vw - 1rem); max-height: min(32rem, 80vh); overflow-y: auto;
-             padding: .6rem .7rem; font-size: .875rem; visibility: hidden; }
-.peek-card.ready { visibility: visible; }
-.bar { display: flex; align-items: center; margin: -.25rem -.25rem .25rem; }
-.nav { display: inline-flex; align-items: center; gap: .15rem; padding: .05rem .3rem; border: 0; border-radius: .25rem; background: none;
-       color: var(--bs-secondary-color); font-size: .78rem; }
-.nav:hover { background: var(--bs-tertiary-bg); color: var(--bs-body-color); }
 </style>

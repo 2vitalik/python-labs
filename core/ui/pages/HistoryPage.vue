@@ -5,6 +5,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { getGuideHistory, getGuidePage, putGuidePage } from '../api.js'
 import Crumbs from '../components/Crumbs.vue'
 import Diff from '../components/Diff.vue'
+import Icon from '../components/Icon.vue'
 import { diffLines } from '../diff.js'
 import { loadGuide, pages } from '../guide.js'
 import { site } from '../site.js'
@@ -64,7 +65,7 @@ loadGuide()
         <span class="ms-auto small font-monospace"><span class="text-success">+{{ e.add }}</span> <span class="text-danger">−{{ e.del }}</span></span>
         <a v-if="e.new != null" href="#" class="small" @click.prevent="open[e.id] = !open[e.id]">{{ open[e.id] ? 'сховати' : 'зміни' }}</a>
         <button v-if="e.old != null" class="btn btn-outline-secondary btn-sm py-0" @click="revert(e)"
-                title="Повернути текст до стану перед цією правкою (як нова правка)">↩</button>
+                title="Повернути текст до стану перед цією правкою (як нова правка)"><Icon name="back" /></button>
       </div>
       <Diff v-if="open[e.id]" :old="e.old" :new="e.new" class="border-top px-3 py-2" />
     </div>

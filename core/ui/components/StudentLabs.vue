@@ -1,22 +1,30 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { nextTick, onMounted, ref } from 'vue'
 
 import { getStudentLabs } from '../api.js'
 import { STATES, fmtWhen, labName, labPath } from '../labs.js'
+import HashLink from './HashLink.vue'
+import Icon from './Icon.vue'
 import LabEdit from './LabEdit.vue'
 
 // the «Лаби» card of a student (T235): a row per lab with its state and deadline; ✏️ opens the same editor as the matrix
+// `loaded` — the card is in the DOM now: the page lights #labs only then
 const props = defineProps({ nick: { type: String, required: true } })
+const emit = defineEmits(['loaded'])
 const data = ref(null)
 const open = ref(null)
 const facts = (c) => (c.facts.before || c.facts.after ? `${c.facts.before} до · ${c.facts.after} після` : 'комітів нема')
-onMounted(async () => (data.value = await getStudentLabs(props.nick)))
+onMounted(async () => {
+  data.value = await getStudentLabs(props.nick)
+  await nextTick()
+  emit('loaded')
+})
 </script>
 
 <template>
-  <div v-if="data" class="card">
+  <div v-if="data" id="labs" class="card">
     <div class="card-body">
-      <h2 class="h5 d-flex align-items-center gap-2">Лаби <RouterLink to="/deadlines" class="small fw-normal ms-auto">усі дедлайни →</RouterLink></h2>
+      <h2 class="h5 d-flex align-items-center gap-2">Лаби <HashLink id="labs" /> <RouterLink to="/deadlines" class="small fw-normal ms-auto">усі дедлайни →</RouterLink></h2>
       <p class="small text-secondary mb-2">
         🐙 <template v-if="data.repo"><a :href="data.repo.url" target="_blank">{{ data.repo.url.replace('https://github.com/', '') }}</a>
           · <template v-if="data.repo.ok">{{ data.repo.commits }} комітів · {{ data.repo.branch }}<template v-if="data.repo.last"> · останній {{ fmtWhen(data.repo.last) }}</template></template>
@@ -34,7 +42,7 @@ onMounted(async () => (data.value = await getStudentLabs(props.nick)))
                 <template v-if="c.due">до {{ fmtWhen(c.due) }}<span v-if="c.mark?.until" title="подовжено"> ⏳</span><span v-if="c.mark?.reason"> · {{ c.mark.reason }}</span></template>
               </td>
               <td class="text-secondary small">{{ facts(c) }}</td>
-              <td class="text-end"><a href="#" class="ibtn" title="Подовження, вердикт, звіт" @click.prevent="open = open === c.n ? null : c.n">{{ open === c.n ? '▴' : '✏️' }}</a></td>
+              <td class="text-end"><a href="#" class="ibtn" title="Подовження, вердикт, звіт" @click.prevent="open = open === c.n ? null : c.n"><Icon :name="open === c.n ? 'up' : 'pencil'" /></a></td>
             </tr>
             <tr v-if="open === c.n">
               <td colspan="5" class="p-0 pb-2"><LabEdit :nick :lab="c.n" :cell="c" @saved="data.labs[c.n - 1] = { n: c.n, ...$event }" @close="open = null" /></td>

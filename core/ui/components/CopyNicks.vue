@@ -1,6 +1,8 @@
 <script setup>
 import { computed, ref } from 'vue'
 
+import Icon from './Icon.vue'
+
 // «@нік @нік …» of these people to the clipboard: to call them in the group's chat. Who has no nick is left out, and counted
 const props = defineProps({ people: { type: Array, required: true } })
 const nicks = computed(() => props.people.filter((p) => p.tg_username).map((p) => `@${p.tg_username}`))
@@ -14,6 +16,6 @@ async function copy() {
 
 <template>
   <button v-if="nicks.length" type="button" class="btn btn-outline-secondary btn-sm py-0" :title="`${nicks.length} з ${people.length} мають нік`" @click="copy">
-    {{ copied ? `✓ скопійовано ${nicks.length}` : '📋 @ніки' }}
+    <Icon :name="copied ? 'check' : 'copy'" /> {{ copied ? `скопійовано ${nicks.length}` : '@ніки' }}
   </button>
 </template>

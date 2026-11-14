@@ -1,5 +1,6 @@
 <script setup>
 import { STATUS, moment } from '../polls.js'
+import Icon from './Icon.vue'
 
 // the poll itself: its title and state, what can be done with it, and the question as it was asked.
 // «Повторити» opens a new poll with the same question; the delete button shows only while nobody but teachers has voted
@@ -12,11 +13,12 @@ defineEmits(['template', 'remove'])
     <h1 class="h3 mb-0 text-break">{{ poll.title }}</h1>
     <span class="badge fw-normal" :class="STATUS[poll.status].cls">{{ STATUS[poll.status].icon }} {{ STATUS[poll.status].text }}</span>
     <div class="ms-auto d-flex flex-wrap gap-1">
-      <RouterLink :to="`/polls/${poll.id}/edit`" class="btn btn-outline-secondary btn-sm" title="Редагувати">✏️</RouterLink>
-      <RouterLink :to="`/polls/new?from=${poll.id}`" class="btn btn-outline-secondary btn-sm" title="Нове опитування з тим самим питанням">🔁 Повторити</RouterLink>
+      <RouterLink :to="`/polls/${poll.id}/edit`" class="btn btn-outline-secondary btn-sm" title="Редагувати"><Icon name="pencil" /></RouterLink>
+      <RouterLink :to="`/polls/new?from=${poll.id}`" class="btn btn-outline-secondary btn-sm" title="Нове опитування з тим самим питанням"><Icon name="repeat" /> Повторити</RouterLink>
       <button type="button" class="btn btn-outline-secondary btn-sm" :disabled="busy" title="Зберегти питання й варіанти як шаблон"
-              @click="$emit('template')">📋 У шаблони</button>
-      <button v-if="canDelete" type="button" class="btn btn-outline-danger btn-sm" :disabled="busy" title="Видалити" @click="$emit('remove')">🗑</button>
+              @click="$emit('template')"><Icon name="copy" /> У шаблони</button>
+      <button v-if="canDelete" type="button" class="btn btn-outline-danger btn-sm d-inline-flex align-items-center" :disabled="busy" title="Видалити" @click="$emit('remove')">
+        <Icon name="trash" /></button>
     </div>
   </div>
   <div class="small text-secondary mb-3 d-flex flex-wrap column-gap-2">

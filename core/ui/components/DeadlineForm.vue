@@ -3,6 +3,7 @@ import { computed, reactive, ref } from 'vue'
 
 import { deleteDeadline, putDeadline } from '../api.js'
 import { endOfDay, fmtWhen, fromInput, labName, toInput } from '../labs.js'
+import Icon from './Icon.vue'
 
 // a lab's deadlines: one for everyone and, when a stream runs on another schedule, one per set of groups — the narrower wins.
 // The list is what exists; the form below adds or rewrites one (the same set of groups = the same document)
@@ -44,8 +45,8 @@ const drop = (d) => confirm(`Прибрати дедлайн ${labName(props.lab
       <ul v-if="deadlines.length" class="list-unstyled small mb-2">
         <li v-for="d in deadlines" :key="d.id" class="d-flex align-items-center gap-2">
           <span>{{ fmtWhen(d.at) }} · {{ label(d) }}</span>
-          <a href="#" class="ibtn" title="Редагувати" @click.prevent="edit(d)">✏️</a>
-          <a href="#" class="ibtn" title="Прибрати" @click.prevent="drop(d)">🗑</a>
+          <a href="#" class="ibtn" title="Редагувати" @click.prevent="edit(d)"><Icon name="pencil" /></a>
+          <a href="#" class="ibtn" title="Прибрати" @click.prevent="drop(d)"><Icon name="trash" /></a>
         </li>
       </ul>
       <div class="row g-2 align-items-end">

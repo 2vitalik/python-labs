@@ -3,6 +3,7 @@ import { ref } from 'vue'
 
 import { deleteField, orderFields } from '../api.js'
 import FieldForm from './FieldForm.vue'
+import Icon from './Icon.vue'
 
 // the teacher's own columns (T240): the list with its order, a form for a new one or an edit, deletion in two clicks (the values go with it)
 const props = defineProps({ fields: { type: Array, required: true } })
@@ -46,10 +47,10 @@ function move(f, by) {
         <span>{{ f.emoji }} <b>{{ f.title }}</b></span>
         <span class="text-secondary">{{ TYPES[f.type] }} · {{ SCOPES[f.scope] }}<template v-if="f.options.length"> · {{ f.options.map((o) => o.emoji || o.text).join(' ') }}</template></span>
         <span class="ms-auto d-flex gap-1">
-          <a href="#" class="ibtn" :class="{ invisible: !i }" title="Вище" @click.prevent="move(f, -1)">↑</a>
-          <a href="#" class="ibtn" :class="{ invisible: i === fields.length - 1 }" title="Нижче" @click.prevent="move(f, 1)">↓</a>
-          <a href="#" class="ibtn" title="Редагувати" @click.prevent="editing = f">✏️</a>
-          <a v-if="sure !== f.key" href="#" class="ibtn" title="Видалити поле з усіма значеннями" @click.prevent="sure = f.key">🗑</a>
+          <a href="#" class="ibtn" :class="{ invisible: !i }" title="Вище" @click.prevent="move(f, -1)"><Icon name="up" /></a>
+          <a href="#" class="ibtn" :class="{ invisible: i === fields.length - 1 }" title="Нижче" @click.prevent="move(f, 1)"><Icon name="down" /></a>
+          <a href="#" class="ibtn" title="Редагувати" @click.prevent="editing = f"><Icon name="pencil" /></a>
+          <a v-if="sure !== f.key" href="#" class="ibtn" title="Видалити поле з усіма значеннями" @click.prevent="sure = f.key"><Icon name="trash" /></a>
           <template v-else>
             <button type="button" class="btn btn-sm btn-outline-danger py-0" @click="drop(f)">видалити</button>
             <button type="button" class="btn btn-sm btn-outline-secondary py-0" @click="sure = ''">ні</button>
@@ -58,7 +59,7 @@ function move(f, by) {
       </div>
       <p v-if="!fields.length" class="small text-secondary mb-1">Полів ще нема.</p>
       <div v-if="error" class="text-danger small mt-1">{{ error }}</div>
-      <button v-if="!editing" type="button" class="btn btn-sm btn-outline-primary mt-2" @click="editing = {}">＋ Нове поле</button>
+      <button v-if="!editing" type="button" class="btn btn-sm btn-outline-primary mt-2 d-inline-flex align-items-center gap-1" @click="editing = {}"><Icon name="plus" /> Нове поле</button>
       <FieldForm v-else :field="editing" class="mt-2" @saved="editing = null; emit('changed')" @close="editing = null" />
     </div>
   </div>

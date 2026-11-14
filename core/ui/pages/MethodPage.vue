@@ -7,6 +7,7 @@ import { getGuidePage } from '../api.js'
 import Crumbs from '../components/Crumbs.vue'
 import DraftsToggle from '../components/DraftsToggle.vue'
 import GuideBody from '../components/GuideBody.vue'
+import Icon from '../components/Icon.vue'
 import Toc from '../components/Toc.vue'
 import { hasDrafts } from '../drafts.js'
 import { site } from '../site.js'
@@ -32,19 +33,19 @@ Promise.all(site.guide.map((s) => getGuidePage(s.slug))).then(async (list) => {
       Усі розділи на одній сторінці — для пошуку (Ctrl+F) і друку.
       <span v-if="items.some(hasDrafts)" class="small float-end"><DraftsToggle class="text-reset text-decoration-none" /></span>
     </p>
-    <!-- contents: ↗ opens the section as its own page, the title is an anchor down this page (both go through guideClick) -->
+    <!-- contents: the «open» icon opens the section as its own page, the title is an anchor down this page (both go through guideClick) -->
     <nav v-if="items.length" class="toc border rounded px-3 py-2 mb-4" @click="guideClick($event, router)">
       <div v-for="s in items" :key="s.slug" class="d-flex align-items-center gap-2" :class="{ 'ps-4': s.n }">
-        <a :href="s.path" class="ibtn" title="Відкрити розділ окремою сторінкою">↗</a>
+        <a :href="s.path" class="ibtn" title="Відкрити розділ окремою сторінкою"><Icon name="open" /></a>
         <a :href="'#' + s.slug" class="text-decoration-none">{{ s.title }}</a>
       </div>
     </nav>
     <section v-for="(s, i) in items" :id="s.slug" :key="s.slug" class="mt-5">
       <h2 class="d-flex align-items-center gap-2 border-bottom pb-2" @click="guideClick($event, router)">
-        <a :href="s.path" class="ibtn" title="Відкрити розділ окремою сторінкою">↗</a>
+        <a :href="s.path" class="ibtn" title="Відкрити розділ окремою сторінкою"><Icon name="open" /></a>
         <span>{{ s.title }}</span>
-        <a :href="'#' + s.slug" class="ibtn link ms-auto" title="Скопіювати посилання">🔗</a>
-        <a href="#" class="ibtn" title="Наверх" @click.stop.prevent="toTop">↑</a>
+        <a :href="'#' + s.slug" class="ibtn link ms-auto" title="Скопіювати посилання"><Icon name="link" /></a>
+        <a href="#" class="ibtn" title="Наверх" @click.stop.prevent="toTop"><Icon name="top" /></a>
       </h2>
       <GuideBody :page="s" :prefix="s.slug" :tools="false" @update:page="items[i] = { ...s, ...$event }" />
     </section>

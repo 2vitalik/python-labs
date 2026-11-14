@@ -8,13 +8,14 @@ import DownBar from './components/DownBar.vue'
 import NavBar from './components/NavBar.vue'
 import Oops from './components/Oops.vue'
 import PageJump from './components/PageJump.vue'
+import TocBar from './components/TocBar.vue'
 import ViewBar from './components/ViewBar.vue'
 import { down } from './http.js'
 import NotFoundPage from './pages/NotFoundPage.vue'
 import { problem } from './problem.js'
 import { watchTitle } from './title.js'
 import { user } from './user.js'
-import { wideOn } from './wide.js'
+import { wideOf } from './wide.js'
 
 const route = useRoute()
 watchTitle(route)
@@ -23,13 +24,14 @@ useRouter().afterEach((to, from) => {
   // footprint for the activity map: every page a signed-in user opens (after the guards, so `user` is known)
   if (user.value) postView(to.fullPath).catch(() => {})
 })
-// a meta.wide page on the whole window: the admin's remembered choice; 'admin' — always, for the admin (/week, T186)
-const wide = computed(() => (route.meta.wide === 'admin' ? user.value?.status === 'admin' : route.meta.wide && wideOn.value))
+// a meta.wide page on the whole window: the reader's remembered choice (wide.js); 'admin' — always, for the admin (/week, T186)
+const wide = computed(() => (route.meta.wide === 'admin' ? user.value?.status === 'admin' : !!wideOf(route.meta.wide)?.on.value))
 watch(() => route.hash, (h) => h && flash(h.slice(1)))  // #target changed on a loaded page; page load is GuideText's job
 </script>
 
 <template>
   <NavBar />
+  <TocBar :wide />
   <ViewBar v-if="user?.viewing" />
   <main class="py-4" :class="wide ? 'container-fluid px-4' : 'page'">
     <DownBar v-if="down" />
@@ -42,5 +44,5 @@ watch(() => route.hash, (h) => h && flash(h.slice(1)))  // #target changed on a 
       </template>
     </template>
   </main>
-  <PageJump />
+  <PageJump :wide />
 </template>

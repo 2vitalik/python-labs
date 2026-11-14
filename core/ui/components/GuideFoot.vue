@@ -1,4 +1,6 @@
 <script setup>
+import Icon from './Icon.vue'
+
 // under a guide page: «Оновлено» (when the page has a date), the caller's own line, and the way to the whole guide
 defineProps({ updated: String })
 const fmt = (d) => new Date(d).toLocaleDateString('uk-UA')
@@ -8,7 +10,7 @@ const fmt = (d) => new Date(d).toLocaleDateString('uk-UA')
   <div class="foot small mt-4 text-end">
     <div v-if="updated" class="text-body-tertiary">Оновлено {{ fmt(updated) }}</div>
     <slot />
-    <div class="mt-1"><RouterLink to="/method">📖 Уся методичка</RouterLink></div>
+    <div class="mt-1"><RouterLink to="/method"><Icon name="books" /> Уся методичка</RouterLink></div>
   </div>
 </template>
 

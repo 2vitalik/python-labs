@@ -8,6 +8,7 @@ export const KINDS = { lectures: 'Лекції', labs: 'Лаби' }
 
 export default {
   name: 'ODS Labs',
-  links: [['/lectures', 'Лекції'], ['/labs', 'Лаби'], ['/lessons', 'Пари', 'admin'], ['/students', 'Студи'], ['/activity', 'Актив'], ['/my/profile', 'Профіль']],
+  links: [['/lectures', 'Лекції', null, false, 'book'], ['/labs', 'Лаби', null, false, 'flask'], ['/lessons', 'Пари', 'admin', false, 'cap'],
+    ['/students', 'Студи', null, false, 'users'], ['/activity', 'Актив', null, false, 'chart'], ['/my/profile', 'Профіль', null, false, 'user']],
   guide: [...LECTURES, ...LABS],
 }

@@ -1,6 +1,9 @@
 <script setup>
 import { computed, ref } from 'vue'
 
+import Icon from './Icon.vue'
+import IconChevron from './IconChevron.vue'
+
 // which columns the table shows and in what order: the picked ones on the left (↑ ↓ ✕), every column there is on the right, by its group
 const props = defineProps({ cols: { type: Array, required: true }, picked: { type: Array, required: true } })
 const emit = defineEmits(['change', 'close'])
@@ -35,14 +38,14 @@ function move(key, by) {
           <div class="text-secondary mb-1">Показані · {{ picked.length }}</div>
           <div v-for="(k, i) in picked" :key="k" class="d-flex align-items-center gap-1 py-1 border-bottom">
             <span class="text-truncate" :title="byKey[k]?.title">{{ byKey[k]?.short }}<template v-if="byKey[k]?.short !== byKey[k]?.title"> {{ byKey[k]?.title }}</template></span>
-            <a href="#" class="ibtn ms-auto" :class="{ invisible: !i }" title="Вище" @click.prevent="move(k, -1)">↑</a>
-            <a href="#" class="ibtn" :class="{ invisible: i === picked.length - 1 }" title="Нижче" @click.prevent="move(k, 1)">↓</a>
-            <a href="#" class="ibtn" title="Сховати" @click.prevent="toggle(k)">✕</a>
+            <a href="#" class="ibtn ms-auto" :class="{ invisible: !i }" title="Вище" @click.prevent="move(k, -1)"><Icon name="up" /></a>
+            <a href="#" class="ibtn" :class="{ invisible: i === picked.length - 1 }" title="Нижче" @click.prevent="move(k, 1)"><Icon name="down" /></a>
+            <a href="#" class="ibtn" title="Сховати" @click.prevent="toggle(k)"><Icon name="x" /></a>
           </div>
         </div>
         <div class="col-md-8">
           <div v-for="g in groups" :key="g.name" class="mb-1">
-            <a href="#" class="text-body text-decoration-none fw-semibold" @click.prevent="toggleGroup(g.name)">{{ open.has(g.name) ? '▾' : '▸' }} {{ g.name }}
+            <a href="#" class="text-body text-decoration-none fw-semibold" @click.prevent="toggleGroup(g.name)"><IconChevron :dir="open.has(g.name) ? 'down' : 'right'" :size="12" /> {{ g.name }}
               <span class="text-secondary fw-normal">{{ g.n }} / {{ g.list.length }}</span></a>
             <div v-if="open.has(g.name)" class="d-flex flex-wrap gap-1 mt-1 mb-2">
               <button v-for="c in g.list" :key="c.key" type="button" class="btn btn-sm chip" :class="picked.includes(c.key) ? 'btn-secondary' : 'btn-outline-secondary'"

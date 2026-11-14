@@ -1,5 +1,6 @@
 <script setup>
 import { site } from '../site.js'
+import HashLink from './HashLink.vue'
 import TagInput from './TagInput.vue'
 
 defineProps({ hints: Boolean, admin: Boolean, dirty: Boolean, saved: Boolean, error: String })
@@ -10,7 +11,7 @@ const form = defineModel({ type: Object, required: true })
 <template>
   <form @submit.prevent="$emit('save')">
     <div id="name" class="card mb-3">
-      <div class="card-header">ПІБ</div>
+      <div class="card-header d-flex align-items-center gap-1">ПІБ <HashLink id="name" /></div>
       <div class="card-body">
         <div class="row g-3">
           <div class="col-md-4">
@@ -31,7 +32,7 @@ const form = defineModel({ type: Object, required: true })
     </div>
 
     <div id="telegram" class="card mb-3">
-      <div class="card-header">Telegram</div>
+      <div class="card-header d-flex align-items-center gap-1">Telegram <HashLink id="telegram" /></div>
       <div class="card-body">
         <div class="d-flex">
           <label class="form-label">Нікнейм</label>
@@ -52,7 +53,7 @@ const form = defineModel({ type: Object, required: true })
     </div>
 
     <div id="github" class="card mb-3">
-      <div class="card-header">GitHub</div>
+      <div class="card-header d-flex align-items-center gap-1">GitHub <HashLink id="github" /></div>
       <div class="card-body">
         <div class="d-flex">
           <label class="form-label">Посилання на репозиторій</label>
@@ -69,8 +70,8 @@ const form = defineModel({ type: Object, required: true })
       </div>
     </div>
 
-    <div v-if="admin" class="card mb-3">
-      <div class="card-header">Адмінське</div>
+    <div v-if="admin" id="admin" class="card mb-3">
+      <div class="card-header d-flex align-items-center gap-1">Адмінське <HashLink id="admin" /></div>
       <div class="card-body row g-3">
         <div class="col-md-6">
           <label class="form-label">Група</label>

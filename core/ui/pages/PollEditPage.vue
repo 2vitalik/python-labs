@@ -4,6 +4,7 @@ import { useRoute, useRouter } from 'vue-router'
 
 import { getPoll, getPollChats, getPollTemplates, postPoll, putPoll, sendPoll } from '../api.js'
 import Crumbs from '../components/Crumbs.vue'
+import Icon from '../components/Icon.vue'
 import PollForm from '../components/PollForm.vue'
 import PollTargets from '../components/PollTargets.vue'
 import { useForm } from '../form.js'
@@ -104,9 +105,10 @@ const send = () => run(async () => {
     </div>
 
     <div class="d-flex flex-wrap align-items-center gap-2">
-      <button v-if="draft" type="button" class="btn btn-primary" :disabled="busy || !r.ready || !targets.length" @click="send">🚀 Надіслати</button>
-      <button type="button" class="btn" :class="draft ? 'btn-outline-secondary' : 'btn-primary'" :disabled="busy || !r.ready || (!dirty && !!poll)"
-              @click="keep">{{ draft ? '💾 Зберегти чернетку' : '💾 Зберегти' }}</button>
+      <button v-if="draft" type="button" class="btn btn-primary d-inline-flex align-items-center gap-1" :disabled="busy || !r.ready || !targets.length" @click="send">
+        <Icon name="send" /> Надіслати</button>
+      <button type="button" class="btn d-inline-flex align-items-center gap-1" :class="draft ? 'btn-outline-secondary' : 'btn-primary'" :disabled="busy || !r.ready || (!dirty && !!poll)"
+              @click="keep"><Icon name="check" /> {{ draft ? 'Зберегти чернетку' : 'Зберегти' }}</button>
       <RouterLink :to="poll ? `/polls/${poll.id}` : '/polls'" class="btn btn-link text-secondary">Скасувати</RouterLink>
       <span v-if="draft && r.ready && !targets.length" class="small text-secondary">☝️ Обери, куди надіслати</span>
       <span v-if="busy" class="small text-secondary">Надсилаю…</span>

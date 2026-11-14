@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 
 import { getGuidePage, publishChange, putGuidePage } from '../api.js'
 import GuideText from './GuideText.vue'
+import Icon from './Icon.vue'
 
 // admin box on /changes: the lines edit notes collected (T126 §5b) — publish one into the page below or drop it
 const emit = defineEmits(['published'])
@@ -32,11 +33,11 @@ load()
 
 <template>
   <div v-if="lines.length" class="border rounded px-3 py-2 mb-4">
-    <div class="small text-secondary mb-1">Чернетка з нотаток до правок — студентам не видно. «↑» переносить рядок у журнал нижче.</div>
+    <div class="small text-secondary mb-1">Чернетка з нотаток до правок — студентам не видно. Кнопка <Icon name="upload" /> переносить рядок у журнал нижче.</div>
     <div v-for="l in lines" :key="l" class="d-flex align-items-start gap-2 py-1">
       <GuideText :text="l.replace(/^- /, '')" class="flex-grow-1 small" />
-      <button class="btn btn-outline-primary btn-sm py-0" title="Опублікувати" @click="publish(l)">↑</button>
-      <button class="btn btn-outline-secondary btn-sm py-0" title="Прибрати" @click="drop(l)">✕</button>
+      <button class="btn btn-outline-primary btn-sm py-0 d-inline-flex align-items-center" title="Опублікувати" @click="publish(l)"><Icon name="upload" /></button>
+      <button class="btn btn-outline-secondary btn-sm py-0" title="Прибрати" @click="drop(l)"><Icon name="x" /></button>
     </div>
     <div v-if="error" class="text-danger small">{{ error }}</div>
   </div>

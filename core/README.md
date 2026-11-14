@@ -22,13 +22,13 @@
 | Бот | `bot/` | — |
 | Активність, події, помилки | `activity_*.py`, `routes/activity.py`, `routes/front_errors.py`, `models/` | `pages/ActivityPage.vue`, `activity.js`, `problem.js`, `http.js` |
 | Історія правок | `models/history.py` | `diff.js`, `components/Diff.vue` |
-| Методичка | `models/guide.py`, `routes/guide.py`, `guide_io.py`, `drafts.py` | `pages/GuidePage.vue`, `MethodPage.vue`, `HistoryPage.vue`, `components/Guide*.vue`, `md.js` |
+| Методичка | `models/guide.py`, `routes/guide.py`, `guide_io.py`, `guide_mirror.py` (дзеркало з іншого сайту: `bin/guide dump` → `python -m core.guide_mirror apply`), `drafts.py` | `pages/GuidePage.vue`, `MethodPage.vue`, `HistoryPage.vue`, `components/Guide*.vue`, `md.js` |
 | Опитування в Telegram | `models/poll.py`, `poll_send.py`, `vote.py`, `polls_*.py`, `routes/poll*.py`, `bot/polls.py`, `bot/chats.py` | `pages/Poll*.vue`, `components/Poll*.vue`, `TagInput.vue`, `polls.js` |
 | Тиждень студента | `models/week.py`, `week_marks.py`, `routes/my_week.py`, `routes/weeks.py`, `bot/week.py` | `pages/MyWeekPage.vue`, `WeekPage.vue`, `components/Week*.vue`, `CopyNicks.vue`, `week*.js`, `autosave.js` |
 | Лаби: дедлайни, репозиторії, звіти агента | `models/deadline.py`, `models/repo.py`, `labs.py`, `lab_marks.py`, `repos.py`, `routes/labs.py`, `routes/student_labs.py`, `bot/due.py` | `pages/DeadlinesPage.vue`, `components/Lab*.vue`, `DeadlineForm.vue`, `StudentLabs.vue`, `labs.js` |
 | Таблиця студентів: види, свої поля | `models/field.py`, `models/view.py`, `table.py`, `fields.py`, `routes/table.py`, `routes/fields.py`, `routes/views.py` | `pages/TablePage.vue`, `components/Table*.vue`, `Fields*.vue`, `table.js`, `tableCols.js`, `tableViews.js` |
 | Оформлення | — | `App.vue`, `NavBar.vue`, `Crumbs.vue`, `theme.js`, `style.css`, `dark.css` |
-| Мова дій: один колір — одна дія (T270 §1) | — | `components/Icon.vue` (лінійні SVG: `<Icon name="plus" />`), `Pop.vue` (спливна панель біля свого елемента), `DelButton.vue` (кошик з підтвердженням), `Lightbox.vue` + `lightbox.js` (картинка поверх сторінки); у `style.css` — `btn-add` (додати — фіолетовий), `iact` / `iact del` / `iact add` (іконка-дія), `soft-input`, `<mark>`; зберегти — `btn-success`, скасувати — `btn-outline-secondary` |
+| Мова дій: один колір — одна дія (T270 §1) | — | `components/Icon.vue` (лінійні SVG: `<Icon name="plus" />`), `Pop.vue` (спливна панель біля свого елемента), `DelButton.vue` (кошик з підтвердженням), `Lightbox.vue` + `lightbox.js` (картинка поверх сторінки); `Tip.vue` + `tips.js` (пояснення в єдиному оформленні: `<Tip id="…">` — читач може сховати, лишається «ⓘ»), `HashLink.vue` («#» біля заголовка блоку: посилання на це місце сторінки); у `style.css` — `btn-add` (додати — фіолетовий), `iact` / `iact del` / `iact add` (іконка-дія), `soft-input`, `<mark>`, `editing` / `editing new` (рамка відкритої форми), `more-field` (тихе «＋ нотатка»); зберегти — `btn-success`, скасувати — `btn-outline-secondary` |
 
 ## Сайт на ядрі: бекенд
 
@@ -63,10 +63,12 @@
 | `src/main.js` | `start(site, router)` |
 | `src/api.js` | власні виклики API |
 
-- Поля паспорта описано в `ui/site.js`. Пункт меню з третім елементом (`['/students', 'Студи', 'admin']`) — вужчий за сторінку: сторінка відкрита студентам, пункт — ні.
+- Поля паспорта описано в `ui/site.js`. Пункт меню з третім елементом (`['/students', 'Студи', 'admin']`) — вужчий за сторінку: сторінка відкрита студентам, пункт — ні. Пʼятий елемент — значок: ним стає слово, коли меню тісно й читач обрав «меню значками» (`navFit.js`).
 - `/students` студентові — та сама сторінка під назвою з `students.asStudent` (`{ title, crumbs }`; корінь крихт і назву дають `ui/students.js`), чіпи груп і пошук за початком слова (`studentSearch.js`), таблиця без пошти/GitHub/Telegram, імʼя веде на `/students/<нік>`; `students.inGallery` звужує галерею (python: лише з грою) — числа в заголовку й на чіпах ідуть за режимом.
-- Мета маршруту, яку читає ядро: `title`; `access` — `'admin'` · `'active'` · нема = усім; `filters` — зміна `?запиту` не гортає вгору; `stay` — інший параметр тієї самої сторінки теж (`/week/3` → `/week/4`); `wide` — `true`: кнопка «на всю ширину» для викладача, `'admin'`: викладачу завжди на все вікно.
+- Мета маршруту, яку читає ядро: `title`; `access` — `'admin'` · `'active'` · нема = усім; `filters` — зміна `?запиту` не гортає вгору; `stay` — інший параметр тієї самої сторінки теж (`/week/3` → `/week/4`); `wide` — `true`: сторінку можна розгорнути на все вікно (`wide.js`: `wide`, `toggleWide` — одна памʼять на таблиці й каталог), слово (`'game'`) — окрема памʼять `wideOf('game')`, `'admin'`: викладачу завжди на все вікно. Частину широкої сторінки тримає в колонці клас `.in-column`.
 - `site.table.cols` — власні колонки `/table`: `{ key, type, title, short, get: (row) => …, link? }` (python: гра, заявки, монетки з `game.coins`); фасети `students.facets` стають колонками-чекмарками самі.
+- Зміст сторінки — `<Toc :items>` (`[{ id, text, depth }]`, `{ label }` між групами, `quiet` — місце поза списком): збоку від колонки, а де не вміщається чи `side` вимкнено — у «☰» з `PageJump`. Ядро саме позначає розділ на екрані й показує під меню рядок «де я» (`TocBar`); сторінка з власними прилиплими заголовками вимикає його властивістю `bar`.
+- Картка під мишкою — директива `v-peek="{ kind, id }"` і `<PeekHost />` на сторінці; вигляд картки за видом реєструє сайт: `registerPeeks({ kind: Component })`. Згадка всередині картки відкриває наступну.
 - `site` заповнюється в `start()`. Ядро читає його у функціях і компонентах, а не на верхньому рівні модуля: там він ще порожній.
 - `public/` у кожного сайту своя: іконки й `theme-boot.js`.
 - Свій синтаксис Markdown — `useMd(ext)` з `md.js` у `main.js` сайту, до `start()`: так ods додає формули.

@@ -7,6 +7,7 @@ import ChangesDraft from '../components/ChangesDraft.vue'
 import Crumbs from '../components/Crumbs.vue'
 import GuideBody from '../components/GuideBody.vue'
 import GuideFoot from '../components/GuideFoot.vue'
+import LabTabs from '../components/LabTabs.vue'
 import Toc from '../components/Toc.vue'
 import { textOf } from '../drafts.js'
 import { loadGuide, pages } from '../guide.js'
@@ -26,8 +27,13 @@ const lab = computed(() => LABS.find((l) => l.slug === slug.value))
 const prev = computed(() => lab.value && LABS[lab.value.n - 2])
 const next = computed(() => lab.value && LABS[lab.value.n])
 const title = (l) => pages.value[l.slug]?.title || `Лаба ${l.n}`
+// the labs of the same kind stand in the crumbs as numbers (LabTabs) — while there are few enough for one row
+const tabs = computed(() => {
+  const same = lab.value ? LABS.filter((l) => l.kind === lab.value.kind) : []
+  return same.length > 1 && same.length <= 8 ? same : null
+})
 const crumbs = computed(() => [['/method', 'Методичка'],
-  ...(lab.value ? [['/labs', 'Лаби'], `Лаба ${lab.value.n}`] : [site.guide.find((s) => s.slug === slug.value)?.nav])])
+  ...(lab.value ? [['/labs', 'Лаби'], ...(tabs.value ? [] : [`Лаба ${lab.value.n}`])] : [site.guide.find((s) => s.slug === slug.value)?.nav])])
 
 async function load() {
   page.value = null
@@ -38,7 +44,9 @@ loadGuide()
 </script>
 
 <template>
-  <Crumbs :items="crumbs" />
+  <Crumbs :items="crumbs">
+    <template v-if="tabs" #last><span class="d-none d-sm-inline">Лаба</span><LabTabs :labs="tabs" :n="lab.n" /></template>
+  </Crumbs>
   <div v-if="page">
     <h1 class="h2 mb-3">{{ page.title }}</h1>
     <ChangesDraft v-if="slug === 'changes' && admin" @published="load" />

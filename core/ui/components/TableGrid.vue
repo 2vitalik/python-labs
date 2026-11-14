@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 
 import { compare, groupOf, total } from '../table.js'
 import Avatar from './Avatar.vue'
+import Icon from './Icon.vue'
 import IconChevron from './IconChevron.vue'
 import LabEdit from './LabEdit.vue'
 import TableCell from './TableCell.vue'
@@ -48,7 +49,7 @@ const pick = (r, c) => (picked.value = picked.value?.nick === r.nick && picked.v
           <th class="name">Студент</th>
           <th v-for="c in cols" :key="c.key" class="col" :class="{ on: filters[c.key] }" :title="`${c.title}\nклік — сортування`">
             <a href="#" class="head" @click.prevent="emit('sort', c.key)">{{ c.short }}<small v-if="sortMark(c)">{{ sortMark(c) }}</small></a>
-            <a href="#" class="flt" :class="{ 'is-on': filters[c.key] }" title="Фільтр" @click.prevent="filtering = filtering === c.key ? '' : c.key">▾</a>
+            <a href="#" class="flt" :class="{ 'is-on': filters[c.key] }" title="Фільтр" @click.prevent="filtering = filtering === c.key ? '' : c.key"><Icon name="filter" /></a>
             <TableFilter v-if="filtering === c.key" :col="c" :spec="filters[c.key] || ''" @set="emit('filter', c.key, $event)" @close="filtering = ''" />
           </th>
         </tr>

@@ -2,7 +2,8 @@
 import IconHome from './IconHome.vue'
 
 // the way to the page: 🏠 › parents as [to, text] › the page itself as a plain string (its full title is the h1 below);
-// the slot sits at the right edge — a button the page wants at hand (e.g. «Моя гра»)
+// the slot sits at the right edge — a button the page wants at hand (e.g. «Моя гра»); `last` — the page's own crumb when
+// it is more than a word (a lab among its neighbours, LabTabs)
 defineProps({ items: { type: Array, default: () => [] } })
 </script>
 
@@ -14,6 +15,7 @@ defineProps({ items: { type: Array, default: () => [] } })
         <RouterLink v-if="Array.isArray(item)" :to="item[0]">{{ item[1] }}</RouterLink>
         <template v-else>{{ item }}</template>
       </li>
+      <li v-if="$slots.last" class="breadcrumb-item active"><slot name="last" /></li>
     </ol>
     <slot />
   </nav>
