@@ -18,12 +18,15 @@ export function toForm(t) {
     slots: (t.slots || []).map((s) => ({ ...s, options: [...(s.options || [])] })),
     aliases: { uk: [...(a.uk || [])], en: [...(a.en || [])], ru: [...(a.ru || [])] },
     rule: t.rule || {}, proof: t.proof || '',
+    // price steps (T291 §13): null — the editor was never opened, nothing goes; [] — taken off
+    tiers: t.tiers?.length ? t.tiers.map((s) => [...s]) : null,
   }
 }
 
-// `rule` and `opt` go only with the kinds they mean something for; left out, the API keeps what the card had
+// `rule` and `opt` go only with the kinds they mean something for, `tiers` — once the form touched them; left out, the API
+// keeps what the card had
 export function toPayload(f, kind) {
-  const { rule, opt, ...rest } = f
+  const { rule, opt, tiers, ...rest } = f
   const out = {
     ...rest, tags: csv(f.tags), games: csv(f.games), proof: f.proof || '',
     amount: num(f.amount, 1), max_count: num(f.max_count, 1), order: num(f.order, 0),
@@ -31,6 +34,7 @@ export function toPayload(f, kind) {
   }
   if (kind === 'rule') out.rule = rule
   if (OPT_HINT[kind]) out.opt = opt
+  if (tiers) out.tiers = tiers.map(([upto, factor]) => [Number(upto) || 0, Number(factor)])
   return out
 }
 

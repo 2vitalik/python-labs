@@ -5,6 +5,7 @@ import { useRoute } from 'vue-router'
 import { flash } from '@core/anchors.js'
 import { getGuidePage } from '@core/api.js'
 import GuideBody from '@core/components/GuideBody.vue'
+import Icon from '@core/components/Icon.vue'
 import IconChevron from '@core/components/IconChevron.vue'
 import { textOf } from '@core/drafts.js'
 import { load, save } from '@core/local.js'
@@ -62,7 +63,7 @@ getGuidePage(props.slug).then(async (p) => {
       </summary>
       <GuideBody v-model:page="page" class="mt-3 mb-2" />
       <div class="move small text-end mb-1">
-        <a ref="link" href="#" @click.prevent="move">{{ low ? '↑ перенести вгору' : '↓ перенести вниз' }}</a>
+        <a ref="link" href="#" @click.prevent="move"><Icon :name="low ? 'up' : 'down'" /> {{ low ? 'перенести вгору' : 'перенести вниз' }}</a>
       </div>
     </details>
   </Teleport>

@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 
 import { CLAIM_STATUSES, zones } from '../catalog.js'
 import { useEd } from '../ed.js'
@@ -25,6 +25,10 @@ const tree = computed(() => {
   const known = Object.entries(zones.value).filter(([z]) => by[z]).map(([z, zone]) => ({ key: z, ...zone, list: by[z] }))
   return by[''] ? [...known, { key: '', icon: '·', title: 'інше', color: '#888', list: by[''] }] : known
 })
+// the categories on screen are this view's contents (the editor's Toc)
+const emit = defineEmits(['toc'])
+const idOf = (z) => `cards-${z.key || 'other'}`
+watch(tree, (t) => emit('toc', t.map((z) => ({ id: idOf(z), text: `${z.icon} ${z.title} (${z.list.length})`, depth: 2 }))), { immediate: true })
 </script>
 
 <template>
@@ -34,14 +38,14 @@ const tree = computed(() => {
               :class="status === s ? 'btn-secondary' : 'btn-outline-secondary'" @click="status = s">
         {{ label }} <span class="opacity-75">{{ count(s) }}</span>
       </button>
-      <label v-if="autos" class="form-check form-switch small m-0 ms-auto align-self-center" title="Типи сутностей, параметри, властивості поля, типи вікон — заявляються самі, коли їх обирають">
+      <label v-if="autos" class="form-check form-switch small m-0 ms-auto align-self-center" title="Типи сутностей, параметри, властивості поля, типи вікон — заявляються самі, коли їх обирають; мапа рівня й ігрові моменти — коли їх намальовано">
         <input v-model="auto" type="checkbox" class="form-check-input"> і ті, що заявились самі ({{ autos }})
       </label>
     </div>
     <div v-if="!tree.length" class="text-secondary small">
       {{ ed.claims.length ? 'Карток з таким статусом нема.' : 'Карток ще нема: вони зʼявляються, коли обираєш тип сутності, вікна чи властивість поля або додаєш картку з каталогу.' }}
     </div>
-    <section v-for="z in tree" :key="z.key" class="vstack gap-1">
+    <section v-for="z in tree" :id="idOf(z)" :key="z.key" class="vstack gap-1 noflash">
       <div class="zone" :style="{ color: z.color }">{{ z.icon }} {{ z.title }} <span class="count">{{ z.list.length }}</span></div>
       <SubzoneRows v-if="z.key" :claims="z.list" where />
       <template v-else><ClaimRow v-for="c in z.list" :key="c.id" :claim="c" where /></template>

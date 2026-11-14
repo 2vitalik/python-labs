@@ -1,11 +1,16 @@
 <script setup>
+import { computed } from 'vue'
+
 import { COIN_NAMES, COINS, STATUSES, vocab } from '../catalog.js'
 import { OPT_HINT } from '../taskMeta.js'
 import { TIPS } from '../taskTips.js'
+import TierEditor from './TierEditor.vue'
 
-// «Основне» of the card form: name, icon, price, how many times; kind, what it means, status, games, tags.
-// `f` is TaskEdit's form, written in place; `kind` — the one in force, `subKind` — the subzone's
-defineProps({ f: Object, kind: String, subKind: String })
+// «Основне» of the card form: name, icon, price, how many times — or, by «＋ спадна ціна», price steps that say it instead
+// (T291 §13); kind, what it means, status, games, tags. `f` is TaskEdit's form, written in place; `kind` — the one in force,
+// `subKind` — the subzone's
+const props = defineProps({ f: Object, kind: String, subKind: String })
+const tiered = computed(() => !!props.f.tiers?.length)
 </script>
 
 <template>
@@ -24,13 +29,17 @@ defineProps({ f: Object, kind: String, subKind: String })
       <label class="f w4" :title="TIPS.amount"><span class="tip">скільки</span>
         <input v-model.number="f.amount" type="number" step="0.5" min="0" class="form-control form-control-sm">
       </label>
-      <label class="f max" :title="TIPS.max"><span class="tip">разів</span>
+      <label class="f max" :class="{ tiered }" :title="TIPS.max"><span class="tip">разів</span>
         <span class="position-relative">
-          <input v-model.number="f.max_count" type="number" min="0" class="form-control form-control-sm">
-          <span v-if="f.max_count === 0" class="unlim">без ліміту</span>
+          <input v-if="tiered" disabled class="form-control form-control-sm">
+          <input v-else v-model.number="f.max_count" type="number" min="0" class="form-control form-control-sm">
+          <span v-if="tiered" class="unlim">за сходинками</span>
+          <span v-else-if="f.max_count === 0" class="unlim">без ліміту</span>
         </span>
       </label>
+      <button v-if="!tiered" type="button" class="more-field mb-1" @click="f.tiers = [[3, 1], [0, 0.5]]">＋ спадна ціна за повтори</button>
     </div>
+    <TierEditor v-if="tiered" v-model="f.tiers" :amount="f.amount" class="tiers" />
     <div class="row-f">
       <label class="f w9" :title="TIPS.kind"><span class="tip">тип</span>
         <select v-model="f.kind" class="form-select form-select-sm">
@@ -60,6 +69,8 @@ defineProps({ f: Object, kind: String, subKind: String })
 .main { gap: .4rem; }
 /* as narrow as «скільки»: the meaning of 0 sits inside the field, so nothing beside it moves */
 .max { width: 5.25rem; }
+.max.tiered { width: 6.5rem; }  /* the steps decide: the words take the field */
+.tiers { max-width: 30rem; padding-left: .5rem; border-left: 2px solid var(--bs-border-color); }
 .max input { appearance: textfield; }
 .max input::-webkit-inner-spin-button, .max input::-webkit-outer-spin-button { appearance: none; margin: 0; }
 .unlim { position: absolute; top: 50%; right: .45rem; transform: translateY(-50%); font-size: .68rem; white-space: nowrap;

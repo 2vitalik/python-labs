@@ -46,9 +46,9 @@ onMounted(async () => {
 
 <template>
   <div>
-    <Crumbs :items="['Лудопедія']" />
+    <Crumbs :items="['Ігротека']" />
     <div class="d-flex flex-wrap align-items-baseline gap-2 mb-2">
-      <h1 class="h3 mb-0">Лудопедія <span class="text-secondary fs-6">({{ found.length }} з {{ games.length }})</span></h1>
+      <h1 class="h3 mb-0">Ігротека <span class="text-secondary fs-6">({{ found.length }} з {{ games.length }})</span></h1>
       <span class="text-secondary small">референсні ігри, розкладені мовою опису студентських ігор: сутності · правила · вікна · фічі</span>
     </div>
 

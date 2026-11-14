@@ -3,20 +3,26 @@ import { reactive, ref } from 'vue'
 
 import DelButton from '@core/components/DelButton.vue'
 import Icon from '@core/components/Icon.vue'
+import Tip from '@core/components/Tip.vue'
 import { deletePart, postPart, putPart } from '../api.js'
 import { useEd } from '../ed.js'
 import MenuTarget from './MenuTarget.vue'
+import MoreFields from './MoreFields.vue'
 import PartLabel from './PartLabel.vue'
 
-// the transitions and actions of a window (T278 §4), edited in place: a row per item — what was pressed or what happened,
-// where it leads, a note. They are a Part of its own (kind menu) hosted on the window, made on the first save — its title
-// stays «Меню «…»»: the samples find it by that; an item is { title, window, task, note }
+// the transitions and actions of a window (T278 §4), edited in place: a row per item — what was pressed or what happened
+// and where it leads, side by side as on the card (T291 §4); the notes are rare and come by «＋ нотатки». They are a Part
+// of its own (kind menu) hosted on the window, made on the first save — its title stays «Меню «…»»: the samples find it
+// by that; an item is { title, window, task, note }
 const props = defineProps({ window: Object, menu: Object })
 const emit = defineEmits(['done', 'cancel'])
 const ed = useEd()
 const blank = () => ({ title: '', window: '', task: '', note: '' })
-const rows = reactive((props.menu?.items || []).map((it) => ({ ...blank(), ...it })))
+// `noted` — the row came with a note: its field is in sight, the others wait for «＋ нотатки»
+const rows = reactive((props.menu?.items || []).map((it) => ({ ...blank(), ...it, noted: !!it.note })))
 if (!rows.length) rows.push(blank())
+const shown = reactive({ notes: false })
+const items = () => rows.map(({ noted, ...it }) => it)
 const busy = ref(false)
 const error = ref('')
 
@@ -34,22 +40,23 @@ async function run(fn) {
   }
 }
 const save = () => run(() => (props.menu
-  ? putPart(props.menu.id, { title: props.menu.title, description: props.menu.description, window: props.window.id, items: rows })
-  : postPart({ kind: 'menu', title: `Меню «${props.window.title}»`, window: props.window.id, items: rows })))
+  ? putPart(props.menu.id, { title: props.menu.title, description: props.menu.description, window: props.window.id, items: items() })
+  : postPart({ kind: 'menu', title: `Меню «${props.window.title}»`, window: props.window.id, items: items() })))
 const remove = () => run(() => deletePart(props.menu.id))
 </script>
 
 <template>
-  <div class="vstack gap-2">
+  <div class="vstack frm" :class="{ notes: shown.notes }">
     <PartLabel icon="↪" zone="interface">Переходи й дії</PartLabel>
+    <Tip id="menu-form-rows">Рядок — що натиснули чи що сталось, і куди це веде: інше вікно або дія — картка, що щось робить
+      (рестарт рівня, гучність, збереження). Перехід за подією гри (перемога → вікно) задає правило.</Tip>
     <div v-for="(it, i) in rows" :key="i" class="item">
-      <input v-model="it.title" class="form-control form-control-sm what" placeholder="пункт меню, кнопка чи клавіша: «Нова гра», Esc…">
+      <input v-model="it.title" class="form-control form-control-sm what" placeholder="пункт, кнопка, клавіша: «Нова гра», Esc…">
       <MenuTarget v-model:window="it.window" v-model:task="it.task" :host="window.id" />
-      <input v-model="it.note" class="form-control form-control-sm" placeholder="як: клавіша, сам через 3 с…">
       <button type="button" class="iact del" title="Прибрати рядок" @click="rows.splice(i, 1)"><Icon name="minus" /></button>
+      <input v-if="shown.notes || it.noted" v-model="it.note" class="form-control form-control-sm note" placeholder="нотатка — як: клавіша, сам через 3 с…">
     </div>
-    <div class="text-secondary">Рядок — що натиснули чи що сталось, і куди це веде: інше вікно або дія — картка, що щось робить
-      (рестарт рівня, гучність, збереження). Перехід за подією гри (перемога → вікно) задає правило.</div>
+    <MoreFields :fields="{ notes: 'нотатки' }" :shown @show="shown[$event] = true" />
     <div class="d-flex flex-wrap align-items-center gap-2">
       <button type="button" class="btn btn-sm btn-add" @click="rows.push(blank())"><Icon name="plus" /> перехід</button>
       <button type="button" class="btn btn-sm btn-success" :disabled="busy" @click="save"><Icon name="check" /> Зберегти</button>
@@ -61,9 +68,10 @@ const remove = () => run(() => deletePart(props.menu.id))
 </template>
 
 <style scoped>
-/* title · target · note in a row; in a narrow card the note wraps under them */
+.frm { gap: .35rem; }
+/* what · where side by side, as the card's two columns; in a narrow card the target goes under, the note — always under */
 .item { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem; }
-.item > input { flex: 1 1 8rem; min-width: 0; }
-.item > .what { flex-basis: 14rem; }  /* its hint is long: in a narrow card it takes the row, the target and the note go under */
-.item + .item { padding-top: .5rem; border-top: 1px dashed var(--bs-border-color); }
+.what { flex: 1 1 8rem; min-width: 0; max-width: 16rem; }
+.note { flex: 1 1 100%; margin-right: 1.6rem; }  /* under the row, short of the minus's column */
+.notes .item + .item { padding-top: .35rem; border-top: 1px dashed var(--bs-border-color); }  /* two lines an item: where one ends */
 </style>

@@ -7,7 +7,7 @@ import { user } from '@core/user.js'
 // what `opt` holds, the languages of its synonyms
 
 // a `game` card's claim lands in the editor's section of its category (GameEditor's ZONES); the rest — «Логіка гри»
-const SECTION = { interface: 'Інтерфейс, графіка, звук', code: 'Код', support: 'Супровід' }
+const SECTION = { interface: 'Інтерфейс', code: 'Код', support: 'Супровід' }
 const ADDS = {
   game: (t) => `кладе одразу в «Мою гру», секція «${SECTION[t.zone] || 'Логіка гри'}»`,
   level: 'кладе в «Рівні»; до конкретного рівня — там же',
@@ -20,7 +20,12 @@ const ADDS = {
   stat: 'питає, яким сутностям додати',
   fieldopt: 'вмикає в полі',
 }
+// what is drawn on the site claims itself (T291 §15, auto_claims.py): no plus — the card says where to draw
+const DRAWN = { 'moment-frames': 'заявляється сама: намалюй сценарій із трьох кадрів у секції «Як це грається»',
+                'level-map-drawn': 'заявляється сама: намалюй рівень у його формі — «＋ намалювати рівень»' }
+export const drawn = (task) => !!DRAWN[task.slug]
 export const addsTo = (task) => {
+  if (drawn(task)) return DRAWN[task.slug]
   const a = ADDS[kindOf(task)] || ADDS.game
   return `＋ ${typeof a === 'function' ? a(task) : a}`
 }

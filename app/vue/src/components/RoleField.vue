@@ -21,7 +21,7 @@ const proposed = () => { role.value = 'object'; open.value = false }
 <template>
   <Pop v-model="open" width="24rem">
     <template #trigger="{ toggle }">
-      <button type="button" class="form-select form-select-sm text-start type" @click="toggle">
+      <button type="button" class="form-select form-select-sm text-start text-truncate type" title="Тип сутності" @click="toggle">
         <template v-if="role">{{ roleOf(role).icon }} {{ roleOf(role).label }}</template>
         <span v-else class="text-secondary">обери тип: гравець, ворог, стіна…</span>
       </button>
@@ -37,6 +37,6 @@ const proposed = () => { role.value = 'object'; open.value = false }
 </template>
 
 <style scoped>
-.type { min-width: 14rem; }
+.type { min-width: 10rem; }  /* beside the name in the form's top row (T291 §4) */
 .foot { margin: .4rem .5rem .1rem; padding-top: .4rem; border-top: 1px solid var(--bs-border-color-translucent); font-size: .78rem; color: var(--bs-secondary-color); }
 </style>

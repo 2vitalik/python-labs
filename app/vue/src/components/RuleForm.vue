@@ -1,28 +1,33 @@
 <script setup>
-import { computed, reactive, ref } from 'vue'
+import { computed, nextTick, reactive, ref } from 'vue'
 
 import Icon from '@core/components/Icon.vue'
+import Tip from '@core/components/Tip.vue'
 import { postClaim, postRule, putClaim, putRule } from '../api.js'
 import { useEd } from '../ed.js'
 import { sidesFor, specOf } from '../rules.js'
 import CardPicker from './CardPicker.vue'
 import RuleLine from './RuleLine.vue'
 
-// the rule's editor (T270 §4.3): КОЛИ, every condition and every effect on a line of its own, a note. `rule` null — a new one,
-// opened from `prefill` { when?, cond?, then?, card? }; the card is claimed on the new rule once it is saved
+// the rule's editor (T270 §4.3): КОЛИ, every condition and every effect on a line of its own, the card it stands for; the note
+// behind «＋ нотатка» until it has text (T291 §4). `rule` null — a new one, opened from `prefill` { when?, cond?, then?, card?,
+// claim? }; its card — from the prefill, from a draft claim that waits for this rule, or picked here (T291 §8) — is claimed
+// once the rule is saved
 const props = defineProps({ rule: Object, prefill: Object })
 const emit = defineEmits(['saved', 'cancel'])
 const ed = useEd()
-const src = props.rule || props.prefill || {}
 const copy = (list) => (list || []).map((it) => ({ ...it }))
-const form = reactive({
-  when: { ...src.when, kind: src.when?.kind || 'contact' },
-  cond: copy(src.cond),
-  then: src.then?.length ? copy(src.then) : [{ kind: '' }],
-  note: props.rule?.note || '',
+const words = (src) => ({
+  when: { ...src?.when, kind: src?.when?.kind || 'contact' },
+  cond: copy(src?.cond),
+  then: src?.then?.length ? copy(src.then) : [{ kind: '' }],
 })
+const form = reactive({ ...words(props.rule || props.prefill), note: props.rule?.note || '' })
+const said = () => JSON.stringify([form.when, form.cond, form.then])
+const opened = said()
 const moved = computed(() => !props.rule && ed.claims.find((c) => c.id === props.prefill?.claim))  // a draft claim that waits for this rule
-const card = computed(() => !props.rule && (props.prefill?.card || moved.value?.task))
+const chosen = ref(null)  // { slug, params } — the card picked in this form
+const card = computed(() => !props.rule && (chosen.value?.slug || props.prefill?.card || moved.value?.task))
 const sides = computed(() => sidesFor(form.when))
 const complete = (dic, it) => specOf(dic, it.kind)?.args.every((a) => !a.required || it[a.name] || it[a.name] === 0)
 const ready = computed(() => complete('triggers', form.when) && form.then.length > 0 &&
@@ -34,6 +39,22 @@ function fits(task) {
   if (!when && !then.length) return false
   return (!when || when === form.when.kind) && then.every((k) => form.then.some((e) => e.kind === k))
 }
+// a card picked before any word is written brings its blank — as a rule card picked from the catalog opens its rule
+function choose(task, params) {
+  chosen.value = { slug: task.slug, params }
+  const blank = task.rule || {}
+  if (said() !== opened || !(blank.when?.kind || blank.then?.length)) return
+  Object.assign(form, words(blank), blank.when?.kind ? {} : { when: form.when })
+}
+
+const noting = ref(!!form.note)
+const noteBox = ref()
+async function addNote() {
+  noting.value = true
+  await nextTick()
+  noteBox.value?.focus()
+}
+
 const error = ref('')
 const busy = ref(false)
 async function save() {
@@ -43,7 +64,8 @@ async function save() {
     const saved = await (props.rule ? putRule(props.rule.id, form) : postRule(form))
     let lost = ''  // the rule is in; a card that failed must not make a retry post the rule twice
     const c = moved.value
-    const claim = c ? putClaim(c.id, { params: c.params, note: c.note, link: c.link, rule: saved.id }) : card.value && postClaim({ task: card.value, rule: saved.id, params: {} })
+    const claim = c ? putClaim(c.id, { params: c.params, note: c.note, link: c.link, rule: saved.id })
+      : card.value && postClaim({ task: card.value, rule: saved.id, params: chosen.value?.params || {} })
     await Promise.resolve(claim).catch((e) => (lost = e.message))
     ed.changed()
     if (lost) ed.fail(`Правило збережено, а картку не додано: ${lost}`)
@@ -75,10 +97,25 @@ async function save() {
     </template>
     <span></span>
     <div><button type="button" class="btn btn-sm btn-add more" @click="form.then.push({ kind: '' })"><Icon name="plus" /> ефект</button></div>
-    <span class="kw note">💬</span>
-    <input v-model="form.note" class="form-control form-control-sm" placeholder="Нотатка: як саме це зроблено — за бажанням">
-    <template v-if="card">
-      <span class="kw note">🪙</span><span class="small">картка «{{ ed.info(card)?.title || card }}» додасться до правила після збереження</span>
+    <template v-if="noting">
+      <span class="kw note">💬</span>
+      <input ref="noteBox" v-model="form.note" class="form-control form-control-sm" placeholder="Нотатка: як саме це зроблено">
+    </template>
+    <template v-if="!rule">
+      <span class="kw note">🪙</span>
+      <div v-if="card" class="small d-flex align-items-center gap-1">
+        <span>картка «{{ ed.info(card)?.title || card }}» додасться до правила після збереження</span>
+        <button v-if="chosen" type="button" class="iact del" title="Не додавати цю картку" @click="chosen = null"><Icon name="minus" /></button>
+      </div>
+      <div v-else class="vstack gap-1 align-items-start">
+        <CardPicker :kinds="['rule']" hold label="картка, яку це правило реалізує" :suggest="fits" @choose="choose" />
+        <Tip id="rule-form-card">Картка каталогу — монетка за це правило. Обрана до слів — заповнить правило своєю заготовкою;
+          обрана після — ті, що підходять до написаного, стоять угорі списку</Tip>
+      </div>
+    </template>
+    <template v-if="!noting">
+      <span></span>
+      <div><button type="button" class="more-field" @click="addNote">＋ нотатка</button></div>
     </template>
     <span></span>
     <div class="d-flex flex-wrap gap-2">

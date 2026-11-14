@@ -3,12 +3,14 @@ import { computed, ref, watch } from 'vue'
 
 import GrowArea from '@core/components/GrowArea.vue'
 import Icon from '@core/components/Icon.vue'
+import Tip from '@core/components/Tip.vue'
 import { games } from '../catalog.js'
 
 // creating the game: base · title · description as three cards, the profile's way (ProfileForm);
 // once it exists the same fields fold into one compact card above the description's sections, and «змінити основу» opens
 // the choice with its own «Зберегти» / «Скасувати» (T274 §10). A changed title or description brings the same pair right
-// under them, into a row that is always there — so nothing below moves when the first letter is typed
+// under them, into a row that is always there — so nothing below moves when the first letter is typed. While a change waits
+// for «Зберегти», the card wears the frame of an open form (T291 §4)
 const props = defineProps({ dirty: Boolean, changed: { type: Array, default: () => [] }, saved: Boolean, error: String, fresh: Boolean })
 const emit = defineEmits(['save', 'reset'])
 const form = defineModel({ type: Object, required: true })
@@ -39,7 +41,7 @@ const showChips = computed(() => props.fresh || !!was.value)
 
 <template>
   <form @submit.prevent="$emit('save')">
-    <div id="about" class="card mb-3">
+    <div id="about" class="card mb-3" :class="{ editing: !fresh && (was || texts) }">
       <div v-if="fresh" class="card-header">Основа</div>
       <div class="card-body" :class="{ 'py-2': !fresh }">
         <div v-if="!fresh && !showChips" class="d-flex align-items-center gap-2 small mb-2">
@@ -55,12 +57,12 @@ const showChips = computed(() => props.fresh || !!was.value)
             <button type="button" class="btn btn-sm chip" :class="custom ? 'btn-primary' : 'btn-outline-secondary'" @click="pick('')">✨ своя</button>
           </div>
           <input v-if="custom" v-model="form.base_custom" class="form-control mt-2" placeholder="Кількома словами: що за гра" required>
-          <div class="form-text mt-2">
+          <Tip id="game-base" class="mt-2">
             <template v-if="chosen">Про основу — на її сторінці: <RouterLink :to="`/games/${chosen.slug}`">{{ chosen.title }} ↗</RouterLink></template>
             <template v-else-if="custom">Своя — теж на клітинковому полі; викладач подивиться і, може, додасть її в каталог</template>
             <template v-else>Одна з ігор каталогу — або своя</template>
             <template v-if="!fresh"> · Зміна основи нічого не стирає: описане лишається, міняються лише еталон і підказки</template>
-          </div>
+          </Tip>
           <div v-if="!fresh" class="d-flex flex-wrap align-items-center gap-2 mt-2 mb-2">
             <button class="btn btn-sm btn-success" :disabled="!moved"><Icon name="check" /> Зберегти</button>
             <button type="button" class="btn btn-sm btn-outline-secondary" @click="cancel">Скасувати</button>
@@ -90,14 +92,14 @@ const showChips = computed(() => props.fresh || !!was.value)
         <div class="card-header">Назва</div>
         <div class="card-body">
           <input v-model="form.title" class="form-control" placeholder="Наприклад: Танчики делюкс" autocomplete="off" required>
-          <div v-if="!form.title" class="form-text mt-2">Своя назва проєкту, не назва основи</div>
+          <Tip v-if="!form.title" id="game-title" class="mt-2">Своя назва проєкту, не назва основи</Tip>
         </div>
       </div>
       <div id="description" class="card mb-3">
         <div class="card-header">Опис</div>
         <div class="card-body">
           <GrowArea v-model="form.description" class="form-control" placeholder="Що за гра і чим відрізнятиметься від основи" />
-          <div v-if="!form.description" class="form-text mt-2">Не обовʼязково зараз — допишеш, коли задум устоїться. Markdown можна</div>
+          <Tip v-if="!form.description" id="game-desc" class="mt-2">Не обовʼязково зараз — допишеш, коли задум устоїться. Markdown можна</Tip>
         </div>
       </div>
     </template>
@@ -123,6 +125,8 @@ const showChips = computed(() => props.fresh || !!was.value)
 </template>
 
 <style scoped>
+/* the frame of an open edit (T291 §4) is a pixel thicker than the card's: the body gives the pixel back, nothing inside shifts */
+.editing > .card-body { margin: -1px; }
 /* as tall as its buttons whether they are there or not */
 .foot { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; min-height: calc(1.5 * .875rem + .5rem + 2px); margin-top: .25rem; padding: 0 .5rem; }
 .md { margin-left: auto; font-size: .65rem; color: var(--bs-secondary-color); opacity: .6; cursor: help; }

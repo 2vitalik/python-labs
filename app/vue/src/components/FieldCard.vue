@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 
 import DelButton from '@core/components/DelButton.vue'
 import Icon from '@core/components/Icon.vue'
+import Tip from '@core/components/Tip.vue'
 import { deletePart } from '../api.js'
 import { vocab } from '../catalog.js'
 import { useEd } from '../ed.js'
@@ -31,12 +32,12 @@ defineExpose({ add: () => (edit.value = true) })
 </script>
 
 <template>
-  <div :id="ed.field ? `p-${ed.field.id}` : null" class="card">
+  <div :id="ed.field ? `p-${ed.field.id}` : null" class="card" :class="edit && (ed.field ? 'editing' : 'editing new')">
     <div class="card-body p-2 vstack gap-2">
       <FieldForm v-if="edit" :part="ed.field" @done="edit = false" @cancel="edit = false" />
       <template v-else-if="!ed.field">
-        <div class="text-secondary small">Поле — де йде гра: яка сітка, як на неї дивимось, як іде час (покроково чи в реальному часі),
-          як керує гравець і що може лежати в одній клітині.</div>
+        <Tip>Поле — де йде гра: яка сітка, як на неї дивимось, як іде час (покроково чи в реальному часі),
+          як керує гравець і що може лежати в одній клітині.</Tip>
         <button v-if="ed.editable" type="button" class="btn btn-sm btn-add align-self-start" @click="edit = true"><Icon name="plus" /> Описати поле</button>
       </template>
       <template v-else>
@@ -54,10 +55,15 @@ defineExpose({ add: () => (edit.value = true) })
       </template>
       <PartBlock v-if="ed.field && (claims.length || ed.editable)" icon="🃏" zone="field" title="Картки про поле">
         <div class="vstack gap-1">
-          <ClaimRow v-for="c in claims" :key="c.id" :claim="c" :tools="edit" />
+          <ClaimRow v-for="c in claims" :key="c.id" :claim="c" />
           <div v-if="ed.editable"><CardPicker :kinds="['field']" :anchor="{ part: ed.field.id }" label="картка про поле" /></div>
         </div>
       </PartBlock>
     </div>
   </div>
 </template>
+
+<style scoped>
+/* the frame of an open form (T291 §4) is a pixel thicker than the card's: the body gives the pixel back, nothing inside shifts */
+.editing > .card-body { margin: -1px; }
+</style>

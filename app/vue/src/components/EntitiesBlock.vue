@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 
 import Icon from '@core/components/Icon.vue'
+import Tip from '@core/components/Tip.vue'
 import { useEd } from '../ed.js'
 import { jump } from '../jump.js'
 import EntityCard from './EntityCard.vue'
@@ -31,7 +32,7 @@ function created(part) {
         <Icon :name="ed.showRules ? 'fold' : 'unfold'" /> {{ ed.showRules ? 'згорнути правила' : 'розгорнути правила' }}
       </button>
     </div>
-    <div v-if="ed.editable && adding" class="card mb-2">
+    <div v-if="ed.editable && adding" class="card mb-2 editing new">
       <div class="card-body p-2">
         <EntityForm :key="formKey" :prefill="adding" @done="created" @cancel="adding = null" />
       </div>
@@ -39,11 +40,11 @@ function created(part) {
     <StableColumns v-if="ed.entities.length" v-slot="{ item }" :items="ed.entities">
       <EntityCard :part="item" />
     </StableColumns>
-    <div v-else-if="!adding" class="text-secondary small">
+    <Tip v-else-if="!adding">
       <div>Мешканці поля: гравець, вороги, предмети, стіни, підлога.</div>
       <div v-if="ed.simple">У кожної — тип, короткий опис і скриншот.</div>
       <div v-else>У кожної — тип, параметри, стани, механіки й правила.</div>
-    </div>
+    </Tip>
   </div>
 </template>
 

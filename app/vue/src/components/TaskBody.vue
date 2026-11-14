@@ -6,6 +6,7 @@ import { kindOf, vocab } from '../catalog.js'
 import { myGame } from '../myGame.js'
 import { PROOFS } from '../proof.js'
 import { addable, addsTo } from '../taskMeta.js'
+import { ladder, repeatable } from '../tiers.js'
 import { user } from '@core/user.js'
 import IdeaPop from './IdeaPop.vue'
 import Md from './Md.vue'
@@ -14,7 +15,7 @@ import TaskAliases from './TaskAliases.vue'
 import TaskEdit from './TaskEdit.vue'
 
 // a card unfolded (T274 §2), a row each at one spacing: its kind and what «＋» does with it, the rule it stands for, the
-// description, the claim's params, a family's variants (the slot), games and the limit; at the bottom, quiet grey lines
+// description, the claim's params, a family's variants (the slot), the price ladder of repeats (a line a step), games; at the bottom, quiet grey lines
 // one under another (T284 §6): the proof it asks for, the other names, a word about the card to the teacher.
 // The pencil asks the card to turn into its form
 const props = defineProps({ task: Object, family: Boolean, q: String })
@@ -48,9 +49,10 @@ const variant = computed(() => ({ zone: props.task.zone, subzone: props.task.sub
       <TaskEdit v-if="adding" :task="variant" class="mb-1" @done="adding = false" />
       <button v-else-if="admin" type="button" class="btn btn-sm btn-add" @click="adding = true"><Icon name="plus" /> варіант</button>
     </div>
-    <div v-if="task.max_count !== 1 || task.games.length" class="d-flex gap-2 flex-wrap align-items-center small">
-      <span v-if="task.max_count === 0" class="text-secondary">без ліміту повторів</span>
-      <span v-else-if="task.max_count > 1" class="text-secondary">до {{ task.max_count }} разів</span>
+    <div v-if="repeatable(task)" class="small text-secondary">
+      <div v-for="l in ladder(task)" :key="l"><Icon name="repeat" /> {{ l }}</div>
+    </div>
+    <div v-if="task.games.length" class="d-flex gap-2 flex-wrap align-items-center small">
       <RouterLink v-for="g in task.games" :key="g" :to="`/games/${g}`"
                   class="badge text-bg-light border fw-normal text-decoration-none game-tag">{{ g }}</RouterLink>
     </div>

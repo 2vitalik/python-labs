@@ -38,7 +38,7 @@ function click(v) {
 
 <style scoped>
 .cell { position: relative; display: flex; flex: 0 1 11rem; min-width: 8rem; }
-.opt { position: relative; flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: .1rem;
+.opt { position: relative; flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: .1rem;
        padding: .3rem 1.4rem .35rem .5rem; border: 1px solid var(--bs-border-color); border-radius: .4rem;
        background: var(--bs-body-bg); color: var(--bs-body-color); text-align: start; line-height: 1.25; }
 .opt:hover { border-color: var(--bs-secondary-color); background: var(--bs-tertiary-bg); }
@@ -47,7 +47,8 @@ function click(v) {
 .head { display: inline-flex; align-items: center; gap: .25rem; font-size: .8rem; font-weight: 600; }
 /* the tick's place left of the coin is kept, chosen or not: the title never shifts */
 .coined .head { padding-right: .9rem; }
-.desc { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: .72rem; color: var(--bs-secondary-color); }
+/* one line (T291 §4): the whole text is under «ⓘ» and in the title */
+.desc { align-self: stretch; overflow: hidden; font-size: .72rem; color: var(--bs-secondary-color); text-overflow: ellipsis; white-space: nowrap; }
 .corner { position: absolute; top: .3rem; right: .3rem; display: inline-flex; align-items: center; gap: .15rem; height: 1rem;
           font-size: .75rem; line-height: 1; }
 .tick { font-size: .85rem; }

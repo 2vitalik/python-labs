@@ -6,6 +6,7 @@ import { getGameHistory, getStudentGame } from '../api.js'
 import GameHistoryRow from '../components/GameHistoryRow.vue'
 import { PAGE, WHO } from '../gameHistory.js'
 import Crumbs from '@core/components/Crumbs.vue'
+import Icon from '@core/components/Icon.vue'
 import { studentsCrumbs } from '@core/students.js'
 import { useTitle } from '@core/title.js'
 import { user } from '@core/user.js'
@@ -56,7 +57,7 @@ watch(who, () => load())  // the server filters: a rare teacher's row is found a
 <template>
   <div>
     <Crumbs :items="crumbs">
-      <RouterLink :to="back" class="btn btn-outline-secondary btn-sm">← до гри</RouterLink>
+      <RouterLink :to="back" class="btn btn-outline-secondary btn-sm"><Icon name="left" /> до гри</RouterLink>
     </Crumbs>
     <h1 class="h2 mb-3">🕘 Історія гри<span v-if="head?.game" class="text-secondary fs-5"> · {{ head.game.title }}</span></h1>
     <div class="d-flex flex-wrap align-items-center gap-2 mb-3">

@@ -3,6 +3,7 @@ import { computed, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 import Crumbs from '@core/components/Crumbs.vue'
+import Icon from '@core/components/Icon.vue'
 import GuideHead from '../components/GuideHead.vue'
 import IconArrows from '@core/components/IconArrows.vue'
 import TaskCatalog from '../components/TaskCatalog.vue'
@@ -12,19 +13,25 @@ import { loadCatalog } from '../catalog.js'
 import { loadMyGame } from '../myGame.js'
 import { useTaskFilter } from '../taskFilter.js'
 import { canAccess, user } from '@core/user.js'
-import { toggleWide, wide, wideOn } from '@core/wide.js'
+import { toggleWide, wide } from '@core/wide.js'
 
 const router = useRouter()
 const admin = computed(() => user.value?.status === 'admin')
 const myGame = computed(() => canAccess(router.resolve('/my/game').meta.access))
 const ideas = computed(() => canAccess(router.resolve('/ideas').meta.access))
-const { grouped } = useTaskFilter()
+const { f, grouped } = useTaskFilter()
 const shown = computed(() => grouped.value.reduce((n, z) => n + z.subs.reduce((m, s) => m + s.list.length, 0), 0))
-// side contents in page order: the guide text's headings while it is open and the zones on screen
+// side contents in page order: the guide text's headings while it is open and the categories on screen — a category chosen
+// in the filter gives its subcategories instead; with all of them shown the subcategories stay off the list (`quiet`),
+// only the row under the menu names the one being read
 const guideToc = ref([])
 const low = ref(false)
 const toc = computed(() => {
-  const zones = grouped.value.map((z) => ({ id: `zone-${z.key}`, text: `${z.icon} ${z.title}`, depth: 2 }))
+  const one = !!f.value.zone
+  const zones = grouped.value.flatMap((z) => [
+    ...(one ? [] : [{ id: `zone-${z.key}`, text: `${z.icon} ${z.title}`, depth: 2 }]),
+    ...z.subs.map((s) => ({ id: `sub-${z.key}-${s.key}`, text: `${s.icon} ${s.title}`, depth: one ? 2 : 3, quiet: !one })),
+  ])
   const both = guideToc.value.length && zones.length
   return low.value
     ? [...zones, ...(both ? [{ label: 'Методичка' }] : []), ...guideToc.value]
@@ -37,7 +44,7 @@ onMounted(() => { loadCatalog(); loadMyGame() })  // the student's game lets a c
 <template>
   <div>
     <!-- wide mode widens the catalog only: crumbs and the guide block keep the page column -->
-    <div :class="{ column: wideOn }">
+    <div :class="{ 'in-column': wide }">
       <Crumbs :items="[['/method', 'Методичка'], 'Таски']">
         <RouterLink v-if="myGame" to="/my/game" class="btn btn-outline-primary btn-sm">Моя гра</RouterLink>
       </Crumbs>
@@ -48,7 +55,7 @@ onMounted(() => { loadCatalog(); loadMyGame() })  // the student's game lets a c
       <div id="catalog" class="d-flex flex-wrap align-items-center gap-2 mb-2">
         <h1 class="h3 mb-0 me-auto">Завдання <span class="count fs-6">({{ shown }})</span></h1>
         <RouterLink v-if="ideas" to="/ideas" class="btn btn-outline-secondary btn-sm">💡 Знахідки</RouterLink>
-        <RouterLink v-if="admin" to="/tasks/history" class="btn btn-outline-secondary btn-sm">🕘 Історія</RouterLink>
+        <RouterLink v-if="admin" to="/tasks/history" class="btn btn-outline-secondary btn-sm"><Icon name="clock" /> Історія</RouterLink>
         <button type="button" class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center px-2"
                 :title="wide ? 'Назад у колонку сторінки' : 'Каталог на всю ширину'" @click="toggleWide">
           <IconArrows :out="!wide" />
@@ -57,8 +64,8 @@ onMounted(() => { loadCatalog(); loadMyGame() })  // the student's game lets a c
       <TaskFilters />
       <TaskCatalog />
     </div>
-    <div id="guide-low" :class="{ column: wideOn }"></div>
-    <Toc v-if="!wideOn" :items="toc" />
+    <div id="guide-low" :class="{ 'in-column': wide }"></div>
+    <Toc :items="toc" :side="!wide" />
   </div>
 </template>
 
@@ -66,6 +73,4 @@ onMounted(() => { loadCatalog(); loadMyGame() })  // the student's game lets a c
 .count { font-weight: 400; opacity: .55; }
 #catalog { scroll-margin-top: 1rem; }
 .catalog-area { min-height: 100vh; }
-/* the page column without its side padding (the wide container has its own) */
-.column { max-width: calc(var(--page-max) - 2rem); margin: 0 auto; }
 </style>

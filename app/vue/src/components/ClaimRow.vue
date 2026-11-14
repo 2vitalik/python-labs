@@ -6,33 +6,28 @@ import Icon from '@core/components/Icon.vue'
 import Pop from '@core/components/Pop.vue'
 import { vPeek } from '@core/peek.js'
 import { deleteClaim } from '../api.js'
-import { iconOf, kindOf, missingParams, paramsText, zoneOf } from '../catalog.js'
+import { missingParams, paramsText, zoneOf } from '../catalog.js'
+import { claimPlace } from '../claimPlace.js'
 import { useEd } from '../ed.js'
 import { jump } from '../jump.js'
-import { sentence } from '../rules.js'
+import { factorsOf, repeatable } from '../tiers.js'
 import ClaimPop from './ClaimPop.vue'
 import CoinBadge from './CoinBadge.vue'
 
 // one claim as a row (T270 §7): coin · title · params · the student's note · link · status; the mouse over it brings the
-// card's description (T284 §2), a click opens the panel with the actions — «⋯» at the end tells the owner so.
-// `where` — name the anchor too, a click on it jumps there; `tools` — the row's host is being edited: a trash beside it
-const props = defineProps({ claim: Object, where: Boolean, tools: Boolean })
+// card's description (T284 §2), a click opens the panel with the actions — «⋯» at the end tells the owner so. The owner's
+// trash waits at the very end under the mouse (T291 §6): its place is kept, so the row does not shift when it shows.
+// `where` — name the anchor too, a click on it jumps there
+const props = defineProps({ claim: Object, where: Boolean })
 const ed = useEd()
 const open = ref(false)
 const info = computed(() => ed.info(props.claim.task))
+// only a card with repeats: a once-only one claimed on five entities would read «×0» on four
+const factor = computed(() => (repeatable(info.value) ? factorsOf(props.claim.task, info.value, ed.claims)[props.claim.id] ?? 1 : 1))
 const ptext = computed(() => paramsText(info.value, props.claim.params))
 const missing = computed(() => missingParams(info.value, props.claim.params).length > 0)
 const remove = () => deleteClaim(props.claim.id).then(() => ed.changed(), (e) => ed.fail(e.message))
-const cut = (s, n) => (s.length > n ? `${s.slice(0, n - 1)}…` : s)
-const place = computed(() => {
-  const c = props.claim
-  const p = c.part && ed.parts.find((x) => x.id === c.part)
-  if (p) return { id: `p-${p.id}`, text: `${iconOf(p)} ${p.title}` }
-  const r = c.rule && ed.rules.find((x) => x.id === c.rule)
-  if (r) return { id: `r-${r.id}`, text: `правило: ${cut(sentence(r, ed.parts).when, 28)}` }
-  const kind = kindOf(info.value)  // unanchored: a level card lives in «Рівні», a game card in its zone, the rest wait in their section's strip
-  return kind === 'level' ? { id: 'levels', text: '🪜 рівні' } : kind === 'game' ? null : { id: `c-${c.id}`, text: 'ще без місця' }
-})
+const place = computed(() => claimPlace(props.claim, { parts: ed.parts, rules: ed.rules, info: ed.info }))
 </script>
 
 <template>
@@ -41,12 +36,12 @@ const place = computed(() => {
       <template #trigger="{ toggle }">
         <div v-peek="open ? null : { kind: 'task', id: claim.task }" class="claim" :class="claim.status" :style="{ '--zc': zoneOf(info).color }" role="button" @click="toggle">
           <div class="line">
-            <CoinBadge :coin="info?.coin" :amount="info?.amount" />
+            <CoinBadge :coin="info?.coin" :amount="info?.amount" :factor />
             <span class="title">{{ info?.title || claim.task }}</span>
             <span v-if="ptext" class="params">{{ ptext }}</span>
             <span v-if="missing" class="need" title="картка чекає обовʼязкових параметрів">параметри?</span>
             <span v-if="claim.note" class="note">{{ claim.note }}</span>
-            <span v-if="claim.auto" class="auto" title="тримається сама — з типу, параметра чи властивості">авто</span>
+            <span v-if="claim.auto" class="auto" title="тримається сама — з типу, параметра, властивості чи намальованого">авто</span>
             <span v-if="claim.shots?.length" class="text-secondary" :title="`є доказ: ${claim.shots.length}`"><Icon name="image" /></span>
             <a v-if="claim.link" :href="claim.link" target="_blank" rel="noopener" class="lnk" title="код" @click.stop><Icon name="link" /></a>
             <span class="end">
@@ -61,7 +56,9 @@ const place = computed(() => {
       </template>
       <ClaimPop :claim @close="open = false" />
     </Pop>
-    <DelButton v-if="tools && ed.editable && !claim.auto" :what="`заявку «${info?.title || claim.task}»`" @yes="remove" />
+    <span v-if="ed.editable" class="del-slot">
+      <DelButton v-if="!claim.auto" :what="`заявку «${info?.title || claim.task}»`" title="Видалити заявку" @yes="remove" />
+    </span>
   </div>
 </template>
 
@@ -70,6 +67,11 @@ const place = computed(() => {
 .crow > :first-child { min-width: 0; }
 .dots { align-self: center; color: var(--bs-secondary-color); opacity: .55; }
 .claim:hover .dots { opacity: 1; }
+/* the slot is there for every row of the owner (auto ones too), so the rows of a list end at one line */
+.del-slot { display: inline-flex; flex-shrink: 0; width: 1.6rem; }
+.del-slot :deep(.trash) { opacity: 0; }
+.crow:hover .del-slot :deep(.trash), .del-slot:focus-within :deep(.trash) { opacity: 1; }
+@media (hover: none) { .del-slot :deep(.trash) { opacity: .45; } }
 /* translucent grounds: the flash of a jump (on the wrapper) shows through */
 .claim { padding: .2rem .45rem; border: 1px solid var(--bs-border-color); border-left: 3px solid var(--zc); border-radius: .3rem; font-size: .82rem; }
 .claim:hover { background-image: linear-gradient(rgb(127 127 127 / .07), rgb(127 127 127 / .07)); }

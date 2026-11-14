@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 
 import Icon from '@core/components/Icon.vue'
 import TagInput from '@core/components/TagInput.vue'
+import Tip from '@core/components/Tip.vue'
 import { putMyGame } from '../api.js'
 import { iconOf } from '../catalog.js'
 import { useEd } from '../ed.js'
@@ -58,10 +59,10 @@ async function save() {
         <button v-else type="button" class="btn btn-sm btn-add py-0" @click="open"><Icon name="plus" /> фази</button>
       </template>
     </div>
-    <div class="why">
+    <Tip id="rules-phases-why" class="why">
       Що за чим відбувається за один крок гри. Фази — назви кроків своїми словами, ні до чого не привʼязуються; порядок потрібен,
       коли правила сперечаються, хто перший. На ці назви посилається подія «почалась фаза тіку»
-    </div>
+    </Tip>
   </div>
 </template>
 
@@ -72,5 +73,5 @@ async function save() {
 .phase.ent:hover { border-color: var(--bs-secondary-color); }
 .phase b { margin-right: .1rem; color: var(--bs-secondary-color); font-variant-numeric: tabular-nums; }
 .sep { color: var(--bs-secondary-color); }
-.why { margin-top: .2rem; font-size: .75rem; color: var(--bs-secondary-color); }
+.why { margin-top: .25rem; }
 </style>

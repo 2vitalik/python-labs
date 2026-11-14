@@ -1,6 +1,7 @@
 <script setup>
 import { computed, ref } from 'vue'
 
+import Tip from '@core/components/Tip.vue'
 import { kindOf } from '../catalog.js'
 import { useEd } from '../ed.js'
 import CardPicker from './CardPicker.vue'
@@ -19,20 +20,20 @@ defineExpose({ add: () => (adding.value = true) })
 
 <template>
   <div class="vstack gap-2">
-    <div v-if="adding" class="card">
+    <div v-if="adding" class="card editing new">
       <div class="card-body p-2"><LevelForm @done="adding = false" @cancel="adding = false" /></div>
     </div>
-    <div v-if="!ed.levels.length && !adding" class="text-secondary small">
-      <template v-if="ed.editable">
+    <template v-if="!ed.levels.length && !adding">
+      <Tip v-if="ed.editable">
         <div>Опиши кожен рівень або групу схожих: звідки він береться, розмір і параметри, скриншот. Генератор рівнів — теж рівень.</div>
         <div>Розмір і властивості поля на різних рівнях можуть відрізнятись — це пишеться в самому рівні.</div>
-      </template>
-      <template v-else>Рівні не описані.</template>
-    </div>
+      </Tip>
+      <div v-else class="text-secondary small">Рівні не описані.</div>
+    </template>
     <StableColumns v-if="ed.levels.length" v-slot="{ item }" :items="ed.levels">
       <LevelCard :part="item" />
     </StableColumns>
-    <div v-if="general.length || ed.editable" class="vstack gap-1">
+    <div v-if="general.length || ed.editable" id="levels-general" class="vstack gap-1">
       <div class="small text-secondary">Про рівні загалом</div>
       <ClaimRow v-for="c in general" :key="c.id" :claim="c" />
       <div v-if="ed.editable"><CardPicker :kinds="['level']" :anchor="{}" label="картка про рівні" /></div>

@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router'
 
 import GameCard from '../components/GameCard.vue'
 import Crumbs from '@core/components/Crumbs.vue'
+import Icon from '@core/components/Icon.vue'
 import GuideHead from '../components/GuideHead.vue'
 import Toc from '@core/components/Toc.vue'
 import { games, KLASSES, loadCatalog } from '../catalog.js'
@@ -32,11 +33,11 @@ onMounted(loadCatalog)
       <div id="catalog" class="d-flex justify-content-between align-items-center mb-3">
         <h1 class="h3 mb-0">Ігри <span class="text-secondary fs-6">({{ shown.length }})</span></h1>
         <div class="d-flex gap-2">
-          <RouterLink v-if="students" to="/students?view=cards" class="btn btn-outline-secondary btn-sm">🎮 Ігри студентів</RouterLink>
+          <RouterLink v-if="students" to="/students?view=cards" class="btn btn-outline-secondary btn-sm"><Icon name="gamepad" /> Ігри студентів</RouterLink>
           <RouterLink v-if="ideas" to="/ideas" class="btn btn-outline-secondary btn-sm">💡 Знахідки</RouterLink>
           <template v-if="admin">
-            <RouterLink to="/games/history" class="btn btn-outline-secondary btn-sm">🕘 Історія</RouterLink>
-            <RouterLink to="/games/new" class="btn btn-outline-primary btn-sm">➕ Нова гра</RouterLink>
+            <RouterLink to="/games/history" class="btn btn-outline-secondary btn-sm"><Icon name="clock" /> Історія</RouterLink>
+            <RouterLink to="/games/new" class="btn btn-outline-primary btn-sm d-inline-flex align-items-center gap-1"><Icon name="plus" /> Нова гра</RouterLink>
           </template>
         </div>
       </div>

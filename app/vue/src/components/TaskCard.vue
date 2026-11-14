@@ -12,6 +12,8 @@ import CoinBadge from './CoinBadge.vue'
 import TaskAdd from './TaskAdd.vue'
 import TaskBody from './TaskBody.vue'
 import TaskEdit from './TaskEdit.vue'
+import TaskKidsMark from './TaskKidsMark.vue'
+import TierBadge from './TierBadge.vue'
 
 // a card of the catalog: a click on the header unfolds it; the teacher's pencil turns it into its form in place and back
 const props = defineProps({ task: Object })
@@ -41,11 +43,12 @@ watch(order, (o) => { if (covers(scope.value)) open.value = o.open })
         <span v-if="task.icon" class="me-1">{{ task.icon }}</span>
         <span v-html="hl(task.title, q)"></span>
         <span v-if="task.tags.includes('algo')" class="ms-1" title="алгоритмічне — золото">⭐</span>
-        <span v-if="task.max_count !== 1" class="ms-1" title="можна зараховувати кілька разів">🔁</span>
+        <TierBadge :task class="ms-1" />
         <span v-if="user?.status === 'admin' && task.status !== 'active'"
               class="badge text-bg-light border text-secondary fw-normal ms-1">{{ STATUSES[task.status] }}</span>
       </span>
       <TaskAdd v-if="!kids.length" :task :in-game="inGame" />
+      <TaskKidsMark v-else :task />
       <span v-if="kids.length" class="badge fam" title="сімʼя: кілька карток усередині, кожна зі своєю ціною">×{{ kids.length }}</span>
       <span v-if="kids.length" class="text-nowrap" title="діапазон цін варіантів">
         <template v-for="(c, i) in range" :key="c"><span v-if="i" class="text-secondary">‥</span>{{ COINS[c] }}</template>

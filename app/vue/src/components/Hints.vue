@@ -23,7 +23,7 @@ const open = ref(false)
       <li v-for="h in lines" :key="h.key || h.text" role="button" class="d-flex gap-1 align-items-baseline" title="показати, де це" @click="jump(h.to)">
         <span>💡</span><span class="text">{{ h.text }}</span><span class="go text-nowrap">показати <Icon name="right" /></span>
         <button v-if="h.advice" type="button" class="quiet off text-nowrap" title="сховати цю пораду для цієї гри"
-                @click.stop="hide(ed.game.id, h.key, h.text)">✕ не про мою гру</button>
+                @click.stop="hide(ed.game.id, h.key, h.text)"><Icon name="x" /> не про мою гру</button>
       </li>
     </ul>
     <div v-if="hidden.length" :class="{ 'mt-1': lines.length }">

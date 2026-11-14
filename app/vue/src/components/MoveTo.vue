@@ -7,8 +7,9 @@ import { useEd } from '../ed.js'
 import { sentence } from '../rules.js'
 
 // where a claim may go, by its card's kind (T270 §6): a mechanic — to an entity, an element — to a window, a rule card —
-// to a rule…; the current place is marked and cannot be picked. Emits pick({ part, rule })
-const props = defineProps({ claim: Object })
+// to a rule…; the current place is marked and cannot be picked. Emits pick({ part, rule }). `noNew` — the panel offers
+// «нове правило з цієї картки» itself, above
+const props = defineProps({ claim: Object, noNew: Boolean })
 const emit = defineEmits(['pick', 'rule'])  // rule — «there is no such rule yet: start one from this card»
 const ed = useEd()
 const kind = computed(() => kindOf(ed.info(props.claim.task)))
@@ -49,7 +50,7 @@ const unbind = computed(() => (now.value.part || now.value.rule) && kind.value !
         <span v-if="isNow(p.to)" class="here"><Icon name="done" /> тут</span>
       </button>
     </div>
-    <button v-if="kind === 'rule'" type="button" class="place new" @click="emit('rule')"><Icon name="plus" /> нове правило з цієї картки</button>
+    <button v-if="kind === 'rule' && !noNew" type="button" class="place new" @click="emit('rule')"><Icon name="plus" /> нове правило з цієї картки</button>
     <button v-if="unbind" type="button" class="place mt-1" @click="emit('pick', { part: '', rule: '' })">📥 у чернетки — відвʼязати</button>
   </div>
 </template>

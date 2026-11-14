@@ -13,8 +13,12 @@ import ProposeCard from './ProposeCard.vue'
 import SlotFields from './SlotFields.vue'
 
 // «＋ механіка» and the like: the catalog's cards of these kinds in a panel; a picked one is claimed at `anchor`
-// ({ part } · { rule } · {}), its required params asked first. `suggest(task)` lifts a card under «підходять сюди»
-const props = defineProps({ kinds: Array, anchor: { type: Object, default: () => ({}) }, label: String, suggest: Function, filter: Function })
+// ({ part } · { rule } · {}), its required params asked first. `suggest(task)` lifts a card under «підходять сюди».
+// `hold` — the anchor does not exist yet (a new rule's form, T291 §8): the card is only chosen — choose(task, params) — and
+// the caller claims it once the anchor is saved
+const props = defineProps({ kinds: Array, anchor: { type: Object, default: () => ({}) }, label: String, suggest: Function, filter: Function,
+                            hold: Boolean })
+const emit = defineEmits(['choose'])
 const ed = useEd()
 const open = ref(false)
 const picked = ref(null)  // a row of the list waiting for its params
@@ -23,11 +27,11 @@ const proposing = ref(false)
 const error = ref('')
 const here = (c) => (c.part || '') === (props.anchor.part || '') && (c.rule || '') === (props.anchor.rule || '')
 const items = computed(() => {
-  const all = cardItems(props.kinds, new Set(ed.claims.filter(here).map((c) => c.task)), props.filter)
+  const all = cardItems(props.kinds, new Set(props.hold ? [] : ed.claims.filter(here).map((c) => c.task)), props.filter)
   const fit = (it) => props.suggest?.(it.task)
   return [...all.filter(fit).map((it) => ({ ...it, group: 'підходять сюди' })), ...all.filter((it) => !fit(it))]
 })
-const anchored = computed(() => !!(props.anchor.part || props.anchor.rule))
+const anchored = computed(() => props.hold || !!(props.anchor.part || props.anchor.rule))
 const ready = computed(() => !missingParams(picked.value?.task, params.value).length)
 const plain = (md) => (md || '').replace(/\[([^\]]*)\]\([^)]*\)/g, '$1').replace(/[*_`#>]/g, '')
 
@@ -41,6 +45,11 @@ function pick(it) {
 }
 async function send(task, p) {
   error.value = ''
+  if (props.hold) {
+    emit('choose', task, p)
+    open.value = false
+    return
+  }
   try {
     const c = await postClaim({ task: task.slug, ...props.anchor, params: p })
     open.value = false

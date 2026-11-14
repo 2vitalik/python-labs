@@ -9,12 +9,13 @@ import { useEd } from '../ed.js'
 import CardPicker from './CardPicker.vue'
 import ClaimRow from './ClaimRow.vue'
 import LevelForm from './LevelForm.vue'
+import MomentField from './MomentField.vue'
 import PartBlock from './PartBlock.vue'
 import PropsList from './PropsList.vue'
 import ShotStrip from './ShotStrip.vue'
 
 // one level or a group of alike ones (T270 §9): where it comes from and how many, its size, the field's properties it
-// overrides, its parameters, screenshots and cards; the pencil turns the top of the card into its form in place — the
+// overrides, its parameters, its map drawn in cells (T276), screenshots and cards; the pencil turns the top of the card into its form in place — the
 // level's cards stay under the form, each with its trash (T284 §4)
 const p = defineProps({ part: Object })
 const ed = useEd()
@@ -39,7 +40,7 @@ async function remove() {
 </script>
 
 <template>
-  <div :id="'p-' + part.id" class="card">
+  <div :id="'p-' + part.id" class="card" :class="{ editing: edit }">
     <div class="card-body p-2 vstack gap-2">
       <LevelForm v-if="edit" :part @done="edit = false" @cancel="edit = false" />
       <template v-else>
@@ -61,11 +62,12 @@ async function remove() {
           </span>
         </PartBlock>
         <div v-if="part.description" class="small">{{ part.description }}</div>
+        <MomentField v-if="values.map" :text="values.map" />
         <ShotStrip v-if="ed.editable || part.screenshots?.length" :part />
       </template>
       <PartBlock v-if="claims.length || ed.editable" icon="🃏" zone="levels" title="Картки рівня">
         <div class="vstack gap-1">
-          <ClaimRow v-for="c in claims" :key="c.id" :claim="c" :tools="edit" />
+          <ClaimRow v-for="c in claims" :key="c.id" :claim="c" />
           <div v-if="ed.editable"><CardPicker :kinds="['level']" :anchor="{ part: part.id }" label="картка" /></div>
         </div>
       </PartBlock>
@@ -74,5 +76,7 @@ async function remove() {
 </template>
 
 <style scoped>
+/* the frame of an open form (T291 §4) is a pixel thicker than the card's: the body gives the pixel back, nothing inside shifts */
+.editing > .card-body { margin: -1px; }
 .stat { background: var(--bs-tertiary-bg); color: var(--bs-body-color); border: 1px solid var(--bs-border-color); }
 </style>

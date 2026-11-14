@@ -1,6 +1,7 @@
 <script setup>
 import { reactive, ref } from 'vue'
 
+import GrowArea from '@core/components/GrowArea.vue'
 import Icon from '@core/components/Icon.vue'
 import { postPart, putPart } from '../api.js'
 import { useEd } from '../ed.js'
@@ -32,10 +33,11 @@ async function save() {
 </script>
 
 <template>
-  <div class="vstack gap-2">
+  <div class="vstack frm">
     <FieldProps v-model="form.props" />
-    <input v-model="form.description" class="form-control form-control-sm" placeholder="Коротко про поле: як генерується, камера…"
-           @keydown.enter="save">
+    <!-- one paragraph, as the card shows it: a long one wraps into more rows, Enter still saves -->
+    <GrowArea v-model="form.description" class="form-control form-control-sm" placeholder="Коротко про поле: як генерується, камера…"
+              @keydown.enter.prevent="save" />
     <div v-if="error" class="text-danger small">{{ error }}</div>
     <div class="d-flex gap-2">
       <button type="button" class="btn btn-sm btn-success" :disabled="busy" @click="save"><Icon name="check" /> Зберегти</button>
@@ -43,3 +45,7 @@ async function save() {
     </div>
   </div>
 </template>
+
+<style scoped>
+.frm { gap: .45rem; }
+</style>

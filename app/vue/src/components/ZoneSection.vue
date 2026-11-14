@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 
 import Clamp from '@core/components/Clamp.vue'
+import Tip from '@core/components/Tip.vue'
 import { kindOf } from '../catalog.js'
 import { useEd } from '../ed.js'
 import { isFolded, isShort, setShort } from '../fold.js'
@@ -27,16 +28,12 @@ const noVideo = computed(() => ed.editable && p.z.zones.includes('support')
   <section :id="z.id" class="mb-4">
     <SectionHead v-bind="head" />
     <Clamp v-show="!isFolded(head.fold)" :on="isShort(head.fold)" @open="setShort(head.fold, false)">
-      <div class="vstack gap-2">
-        <SubzoneRows v-if="claims.length" :claims :table="z.table" />
-        <div v-else class="text-secondary small">{{ z.hint }}</div>
-        <div v-if="noVideo" class="ask">🎬 Відео-демки ще нема: рано чи пізно вона знадобиться — додай картку й посилання, коли запишеш</div>
+      <div class="vstack gap-2 align-items-start">
+        <SubzoneRows v-if="claims.length" class="align-self-stretch" :claims :table="z.table" cols />
+        <Tip v-else>{{ z.hint }}</Tip>
+        <Tip v-if="noVideo" id="ask-video">🎬 Відео-демки ще нема: рано чи пізно вона знадобиться — додай картку й посилання, коли запишеш</Tip>
         <div v-if="ed.editable"><CardPicker :kinds="['game']" :anchor="{}" label="картка" :filter="here" /></div>
       </div>
     </Clamp>
   </section>
 </template>
-
-<style scoped>
-.ask { padding: .25rem .5rem; border: 1px dashed var(--bs-border-color); border-radius: .3rem; color: var(--bs-secondary-color); font-size: .8rem; }
-</style>

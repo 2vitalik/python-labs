@@ -49,7 +49,7 @@ const router = makeRouter([
   { path: '/login', component: LoginPage, meta: { title: 'Вхід' } },
   { path: '/my/profile', component: ProfilePage, meta: { title: 'Профіль', access: 'active' } },
   { path: '/profile', redirect: '/my/profile' },  // old links in bot messages and the guide
-  { path: '/my/game', component: MyGamePage, meta: { title: 'Моя гра', access: 'active' } },  // a student picks their game here; its insides stay the admin's for now (T216)
+  { path: '/my/game', component: MyGamePage, meta: { title: 'Моя гра', access: 'active', wide: 'game' } },  // a student picks their game here; its insides stay the admin's for now (T216)
   { path: '/my/game/history', component: GameHistoryPage, meta: { title: 'Історія гри', access: 'active' } },  // who changed what (T278 §12)
   { path: '/my/week', component: MyWeekPage, meta: { title: 'Мій тиждень', access: 'active' } },
   // meetings with their transcripts: signed-in students read what is published (T218)
@@ -62,7 +62,7 @@ const router = makeRouter([
   { path: '/week/:day(\\d)?', component: WeekPage, meta: { title: 'Тиждень', access: 'active', filters: true, stay: true, wide: 'admin' } },
   // a student sees the slice of these two the API gives them: «Ігри студентів» (site.js students.asStudent)
   { path: '/students', component: StudentsPage, meta: { title: 'Студенти', access: 'active' } },
-  { path: '/students/:nick', component: StudentGamePage, meta: { title: 'Студенти', access: 'active' } },
+  { path: '/students/:nick', component: StudentGamePage, meta: { title: 'Студенти', access: 'active', wide: 'game' } },
   { path: '/students/:nick/history', component: GameHistoryPage, meta: { title: 'Історія гри', access: 'active' } },  // the API lets in the owner and the teacher
   { path: '/students/:nick/edit', component: StudentEditPage, meta: { title: 'Студенти', access: 'admin' } },
   { path: '/deadlines', component: DeadlinesPage, meta: { title: 'Дедлайни', access: 'admin', wide: true, filters: true } },  // students × labs: who met which deadline (T235)
@@ -82,8 +82,9 @@ const router = makeRouter([
   { path: '/games/:slug', component: GamePage, meta: { title: 'Ігри', filters: true } },
   { path: '/games/:slug/edit', component: GameEditPage, meta: { title: 'Ігри', access: 'admin' } },
   // the corpus of reference games (data/ludopedia, T253/T260): the teacher's reading while the descriptions are v1
-  { path: '/ludopedia', component: LudopediaPage, meta: { title: 'Лудопедія', access: 'admin', wide: true, filters: true } },
-  { path: '/ludopedia/:slug', component: LudoGamePage, meta: { title: 'Лудопедія', access: 'admin' } },
+  // «Ігротека» on screen (T291 §9); the address and the code keep the working name
+  { path: '/ludopedia', component: LudopediaPage, meta: { title: 'Ігротека', access: 'admin', wide: true, filters: true } },
+  { path: '/ludopedia/:slug', component: LudoGamePage, meta: { title: 'Ігротека', access: 'admin' } },
   { path: '/colors', component: ColorsPage, meta: { title: 'Кольори', access: 'admin' } },
   { path: '/colors2', component: Colors2Page, meta: { title: 'Кольори v2', access: 'admin' } },
   { path: '/tasks', component: TasksPage, meta: { title: 'Таски', wide: true, filters: true } },

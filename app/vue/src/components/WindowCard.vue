@@ -19,7 +19,7 @@ import WindowForm from './WindowForm.vue'
 
 // a window of the game (T270 §10.1): its type, screenshots, transitions and actions, the elements on it. Its sign is the
 // map's: filled when there is a screenshot, in the colour of the window's type (T284 §1). The pencil turns the top of the
-// card into its form; the elements stay under the form, each with its trash (T284 §4)
+// card into its form, framed as one (T291 §4); the elements stay under the form, each with its trash (T284 §4)
 const props = defineProps({ part: Object })
 const ed = useEd()
 const edit = ref('')  // '' — the card; otherwise its form, and 'description' puts the cursor there (T278 §2)
@@ -41,7 +41,7 @@ async function remove() {
 </script>
 
 <template>
-  <div :id="'p-' + part.id" class="card">
+  <div :id="'p-' + part.id" class="card" :class="{ editing: edit }">
     <div class="card-body p-2 vstack gap-2">
       <WindowForm v-if="edit" :part :focus="edit" @done="edit = ''" @cancel="edit = ''" />
       <template v-else>
@@ -65,7 +65,7 @@ async function remove() {
         <MenuItems :window="part" :menu />
         <PartBlock v-if="claims.length || ed.editable" icon="🧩" zone="interface" title="Елементи" class="small">
           <div class="vstack gap-1">
-            <ClaimRow v-for="c in claims" :key="c.id" :claim="c" :tools="!!edit" />
+            <ClaimRow v-for="c in claims" :key="c.id" :claim="c" />
             <div v-if="ed.editable"><CardPicker :kinds="['element']" :anchor="{ part: part.id }" label="елемент" /></div>
           </div>
         </PartBlock>
@@ -77,6 +77,8 @@ async function remove() {
 </template>
 
 <style scoped>
+/* the frame of an open form is a pixel thicker than the card's: the body gives the pixel back, so nothing inside shifts */
+.editing > .card-body { margin: -1px; }
 .sign { margin-top: .2rem; color: var(--w-ink); font-size: 1.1rem; }
 /* the title and the type wrap inside their own block, so the pencil and the trash stay in the card on a phone */
 .head { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem .5rem; min-width: 0; overflow-wrap: anywhere; }

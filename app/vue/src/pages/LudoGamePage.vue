@@ -31,7 +31,7 @@ watch(() => route.params.slug, (s) => s && load())
 
 <template>
   <div v-if="game">
-    <Crumbs :items="[['/ludopedia', 'Лудопедія'], game.title]">
+    <Crumbs :items="[['/ludopedia', 'Ігротека'], game.title]">
       <RouterLink :to="{ path: '/ludopedia', query: { fam: game.family } }" class="btn btn-outline-secondary btn-sm">Сімʼя</RouterLink>
     </Crumbs>
     <LudoHead :game />

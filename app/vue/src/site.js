@@ -3,25 +3,29 @@ import StudentCards from './components/StudentCards.vue'
 
 // what this site is; the platform (core/ui) takes it through start() in main.js
 
-// guide sections in menu order: slug = data/guide/<slug>.md; `page` = own route rendered by GuidePage
+// guide sections in menu order: slug = data/guide/<slug>.md; `page` = own route rendered by GuidePage;
+// `pic` — the drawing that stands for the word in a menu of icons (Icon.vue)
 export const SECTIONS = [
-  { slug: 'labs', path: '/labs', nav: 'Лаби', page: true },
-  { slug: 'game', path: '/games', nav: 'Ігри' },  // text on top of the catalog page (GuideHead)
-  { slug: 'tasks', path: '/tasks', nav: 'Таски' },
-  { slug: 'score', path: '/score', nav: 'Бали', page: true },
-  { slug: 'howto', path: '/howto', nav: 'Здача', page: true },
+  { slug: 'labs', path: '/labs', nav: 'Лаби', icon: '🧪', pic: 'flask', page: true },
+  { slug: 'game', path: '/games', nav: 'Ігри', icon: '👾', pic: 'invader' },  // text on top of the catalog page (GuideHead)
+  { slug: 'tasks', path: '/tasks', nav: 'Таски', icon: '🧩', pic: 'puzzle' },
+  { slug: 'score', path: '/score', nav: 'Бали', icon: '🪙', pic: 'medal', page: true },
+  { slug: 'howto', path: '/howto', nav: 'Здача', icon: '✅', pic: 'done', page: true },
 ]
+const link = (s) => [s.path, s.nav, null, false, s.pic]
 export const CHANGES = { slug: 'changes', path: '/changes', nav: 'Що змінилось', page: true }  // not in the menu: linked from the home page
 const LABS = [1, 2, 3, 4, 5].map((n) => ({ slug: `lab${n}`, path: `/labs/${n}`, n }))
 
 export default {
   name: 'Python Labs',
+  // the menu: [path, text, access, bold, icon] — the icon (a name of Icon.vue) stands for the word in a menu of icons
   links: [
-    ['/my/game', 'Гра', null, true],  // the student's own game — first and bold; the catalog is «Ігри»
-    ...SECTIONS.map((s) => [s.path, s.nav]), ['/lessons', 'Пари', 'admin'],  // students see it later
-    ['/ludopedia', 'Лудопедія', 'admin'],  // the corpus of reference games — the teacher's while it is v1 (T260)
-    ['/students', 'Студи', 'admin'], ['/deadlines', 'Дедлайни'], ['/table', 'Таблиця'], ['/activity', 'Актив'],  // a student reaches /students as «Ігри студентів» from the games catalog
-    ['/polls', 'Polls'], ['/week', 'Week'], ['/my/profile', 'Профіль'],
+    ...SECTIONS.slice(0, 2).map(link),
+    ['/my/game', 'Гра', null, true, 'gamepad'],  // the student's own game — bold, right after the catalog of games «Ігри» (T291 §9)
+    ...SECTIONS.slice(2).map(link), ['/lessons', 'Пари', 'admin', false, 'cap'],  // students see it later
+    ['/ludopedia', 'Ігротека', 'admin', false, 'books'],  // the corpus of reference games — the teacher's while it is v1 (T260)
+    ['/students', 'Студи', 'admin', false, 'users'], ['/deadlines', 'Строки', null, false, 'alarm'], ['/table', 'Звід', null, false, 'table'],  // a student reaches /students as «Ігри студентів» from the games catalog
+    ['/activity', 'Актив', null, false, 'chart'], ['/polls', 'Polls', null, false, 'bars'], ['/week', 'Week', null, false, 'calendar'], ['/my/profile', 'Профіль', null, false, 'user'],
   ],
   guide: [...SECTIONS.flatMap((s) => (s.slug === 'labs' ? [s, ...LABS] : [s])), CHANGES],
   colls: {

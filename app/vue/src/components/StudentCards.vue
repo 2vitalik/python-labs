@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 
 import Avatar from '@core/components/Avatar.vue'
+import Icon from '@core/components/Icon.vue'
 import { getGames } from '../api.js'
 import { games } from '../catalog.js'
 import { lookAs, user } from '@core/user.js'
@@ -35,7 +36,7 @@ if (!games.value.length) getGames().then((g) => (games.value = g))
             <span class="ms-auto d-inline-flex align-items-center gap-2 text-nowrap">
               <span class="text-secondary small">{{ s.group }}</span>
               <a v-if="admin && s.status !== 'admin'" href="#" class="ibtn" :title="`Очима студента: його «Моя гра»${s.test ? '' : ' — лише перегляд'}`"
-                 @click.prevent.stop="lookAs(s.nick, '/my/game')">👁</a>
+                 @click.prevent.stop="lookAs(s.nick, '/my/game')"><Icon name="eye" /></a>
             </span>
           </div>
           <div v-if="s.game.id" class="mt-1">

@@ -1,20 +1,28 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
+import Icon from '@core/components/Icon.vue'
+import { aiShown, loadAi, setTab, tab } from '../ai.js'
 import { postClaim } from '../api.js'
 import { kindOf, vocab } from '../catalog.js'
 import { useEd } from '../ed.js'
 import { cardItems, roleItems, statItems, windowTypeItems } from '../items.js'
 import { jump } from '../jump.js'
 import AddStep from './AddStep.vue'
+import AiPanel from './AiPanel.vue'
 import Picker from './Picker.vue'
 
 // one «＋ Додати» over the whole description (T270 §11): type what the game has — a type of entity, a type of window,
 // a parameter, a card — and it lands where its kind says. The «＋» of each section does the same within the section.
+// Beside it — «✨ Описати словами» (T291 §14): the switch shows only while the server offers the helper, and only on the
+// student's own game (not the sample's sandbox, not the teacher's edit of someone's game)
 const emit = defineEmits(['open'])  // open(block, prefill): the form of a new entity | window | level | rule
 const ed = useEd()
 const step = ref(null)
 const error = ref('')
+const own = computed(() => !ed.teacher && !ed.sandbox)
+const words = computed(() => own.value && aiShown.value && tab.value === 'words')
+onMounted(() => own.value && loadAi())
 
 const FORMS = [
   { key: 'form:rule', title: 'Правило', icon: '⚡', desc: 'КОЛИ подія — ЯКЩО умова — ТО ефект', words: ['коли', 'якщо', 'взаємодія', 'подія', 'rule'], open: 'rule' },
@@ -56,7 +64,14 @@ async function pick(it) {
 
 <template>
   <div>
-    <AddStep v-if="step" :step @done="step = null" />
+    <div v-if="own && aiShown" class="btn-group btn-group-sm mb-2" role="group" aria-label="як додати">
+      <button type="button" class="btn" :class="words ? 'btn-outline-secondary' : 'btn-secondary'" :aria-pressed="!words" @click="setTab('list')">
+        <Icon name="plus" /> Додати зі списку</button>
+      <button type="button" class="btn" :class="words ? 'btn-secondary' : 'btn-outline-secondary'" :aria-pressed="words" @click="setTab('words')">
+        <Icon name="spark" /> Описати словами</button>
+    </div>
+    <AiPanel v-if="words" />
+    <AddStep v-else-if="step" :step @done="step = null" />
     <template v-else>
       <Picker :items placeholder="＋ Додати: що є в грі — «ворог», «життя», «пауза», «телепорт», «правило»…" @pick="pick" />
       <div class="form-text">

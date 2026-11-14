@@ -3,13 +3,15 @@ import { computed, nextTick, ref, watch } from 'vue'
 
 import Icon from '@core/components/Icon.vue'
 import Pop from '@core/components/Pop.vue'
+import { vPeek } from '@core/peek.js'
 import { statOf } from '../catalog.js'
 import { statItems } from '../items.js'
 import Picker from './Picker.vue'
 import ProposeCard from './ProposeCard.vue'
 
 // stats as rows «назва = значення одиниця» (T270 §7): a catalog stat brings its label and unit, the student's own one has
-// both typed; a name already present is marked and not sent twice. `free` — no catalog, own rows only (a level's)
+// both typed; a name already present is marked and not sent twice; a catalog stat shows its card under the mouse (T291 §6).
+// `free` — no catalog, own rows only (a level's)
 const stats = defineModel({ type: Array, default: () => [] })
 const props = defineProps({ free: Boolean })
 const rows = ref([])
@@ -20,7 +22,8 @@ let uid = 0
 let sent = ''  // what went up last: the same list coming back down is not a reset
 
 const own = (key) => props.free || !statOf(key)
-const toRow = (s) => ({ ...s, uid: ++uid, own: own(s.key), label: s.label || s.key, was: s.label || s.key })
+// `withUnit` — the student's own unit field is in the row: a unit is rare, it comes by «＋ од.» (T291 §4)
+const toRow = (s) => ({ ...s, uid: ++uid, own: own(s.key), label: s.label || s.key, was: s.label || s.key, withUnit: !!s.unit })
 const names = (r) => (r.own ? [r.label.trim().toLowerCase()] : [r.key.toLowerCase(), r.label.toLowerCase()]).filter(Boolean)
 const dup = computed(() => rows.value.map((r, i) => names(r).some((n) => rows.value.slice(0, i).some((x) => names(x).includes(n)))))
 // an own row keeps its key while its name stays as it came
@@ -43,6 +46,10 @@ function push(row, field) {
 }
 const pick = (it) => (it.taken ? (open.value = false) : push({ key: it.key, label: it.title, unit: it.stat.unit, own: false }, '.val'))
 const addOwn = (name = '') => push({ label: name, own: true }, name ? '.val' : '.name-in')
+function showUnit(r, i) {
+  r.withUnit = true
+  nextTick(() => root.value.querySelectorAll('.srow')[i]?.querySelector('.unit-in')?.focus())
+}
 watch(open, () => (proposing.value = false))
 </script>
 
@@ -50,12 +57,14 @@ watch(open, () => (proposing.value = false))
   <div ref="root" class="vstack gap-1">
     <div v-for="(r, i) in rows" :key="r.uid" class="srow">
       <span class="ico">{{ r.own ? '•' : statOf(r.key)?.icon }}</span>
-      <span v-if="!r.own" class="name" :title="statOf(r.key)?.desc">{{ statOf(r.key)?.label || r.label }}</span>
+      <span v-if="!r.own" v-peek="statOf(r.key)?.slug ? { kind: 'task', id: statOf(r.key).slug } : null" class="name"
+            :title="statOf(r.key)?.slug ? null : statOf(r.key)?.desc">{{ statOf(r.key)?.label || r.label }}</span>
       <input v-else v-model="r.label" class="form-control form-control-sm name-in" :class="{ 'is-invalid': dup[i] }" placeholder="назва">
       <span class="eq">=</span>
       <input v-model="r.value" class="form-control form-control-sm val" placeholder="3">
       <span v-if="!r.own && statOf(r.key)?.unit" class="unit" title="одиницю дає картка параметра">{{ statOf(r.key).unit }}</span>
-      <input v-else v-model="r.unit" class="form-control form-control-sm unit-in" placeholder="од.">
+      <input v-else-if="r.withUnit" v-model="r.unit" class="form-control form-control-sm unit-in" placeholder="од.">
+      <button v-else type="button" class="more-field" title="одиниця виміру: шт., с, клітинок за тік…" @click="showUnit(r, i)">＋ од.</button>
       <button type="button" class="iact del" title="Прибрати" @click="rows.splice(i, 1)"><Icon name="minus" /></button>
       <div v-if="dup[i]" class="bad">такий параметр уже є</div>
     </div>
@@ -79,13 +88,15 @@ watch(open, () => (proposing.value = false))
 </template>
 
 <style scoped>
-.srow { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; }
-.ico { width: 1.3rem; text-align: center; }
-.name { min-width: 7rem; font-size: .85rem; }
-.name-in { width: 9rem; }
-.val, .unit-in { width: 5rem; }
+/* one line a stat even in a narrow card (T291 §4): the name gives way, the value and the unit keep their size */
+.srow { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem; }
+.ico { width: 1.1rem; text-align: center; }
+.name { flex: 1 1 4.5rem; min-width: 4.5rem; max-width: 9rem; font-size: .85rem; }
+.name-in { flex: 1 1 5rem; min-width: 5rem; max-width: 9rem; }
+.val { width: 3.8rem; }
+.unit-in { width: 3.6rem; }
 .eq, .unit { color: var(--bs-secondary-color); }
-.unit { min-width: 3rem; font-size: .8rem; }
+.unit { font-size: .8rem; white-space: nowrap; }
 .bad { width: 100%; padding-left: 1.65rem; font-size: .75rem; color: var(--bs-danger); }
 .foot { display: flex; align-items: center; gap: .5rem; margin: .4rem .5rem .1rem; padding-top: .4rem; border-top: 1px solid var(--bs-border-color-translucent); font-size: .78rem; }
 .foot a { margin-left: auto; color: var(--bs-secondary-color); }

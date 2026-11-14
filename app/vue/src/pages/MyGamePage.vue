@@ -3,6 +3,7 @@ import { computed, onMounted, ref } from 'vue'
 
 import { postMyGame, putMyGame } from '../api.js'
 import Crumbs from '@core/components/Crumbs.vue'
+import Icon from '@core/components/Icon.vue'
 import GameEditor from '../components/GameEditor.vue'
 import GameHead from '../components/GameHead.vue'
 import MyGameForm from '../components/MyGameForm.vue'
@@ -10,9 +11,11 @@ import { loadCatalog, vocab } from '../catalog.js'
 import { loadMyGame, myClaims, myCoins, myGame, myParts, myRules, myTasks, reloadInsides } from '../myGame.js'
 import { useForm } from '@core/form.js'
 import { user } from '@core/user.js'
+import { wideOf } from '@core/wide.js'
 
 // the student's game: base, title, description — then its description proper (field, levels, entities, rules, windows, cards)
 const loaded = ref(false)
+const wide = wideOf('game').on
 const { form, dirty, changed, saved, error, fill, save, reset } = useForm({ title: '', base_game: '', base_custom: '', description: '' })
 const nick = computed(() => user.value?.nick)
 const intro = computed(() => (vocab.value.depth === 'simple' ? 'Далі опишеш, хто й що є на полі та які екрани має гра.' : 'Далі опишеш поле, рівні, сутності, правила, вікна й заявиш картки каталогу.'))
@@ -33,15 +36,18 @@ onMounted(async () => {
 
 <template>
   <div v-if="loaded">
+    <!-- on the whole window (GameEditor's toggle) only the description widens: the head keeps the page column -->
+    <div :class="{ 'in-column': wide }">
     <Crumbs :items="['Моя гра']">
-      <RouterLink to="/students?view=cards" class="btn btn-outline-secondary btn-sm">🎮 Ігри студентів</RouterLink>
+      <RouterLink to="/students?view=cards" class="btn btn-outline-secondary btn-sm"><Icon name="gamepad" /> Ігри студентів</RouterLink>
     </Crumbs>
     <GameHead :game="myGame" title="Моя гра" :checks="!myGame">
       <RouterLink v-if="myGame" :to="`/students/${nick}`" class="ms-auto small text-nowrap">Як це бачать інші →</RouterLink>
-      <RouterLink v-if="myGame" to="/my/game/history" class="small text-nowrap" title="Хто що змінював у грі">🕘 Історія</RouterLink>
+      <RouterLink v-if="myGame" to="/my/game/history" class="small text-nowrap" title="Хто що змінював у грі"><Icon name="clock" /> Історія</RouterLink>
     </GameHead>
     <p v-if="!myGame" class="text-secondary">Обери основу з каталогу або опиши свою, дай назву — і гра твоя. {{ intro }}</p>
     <MyGameForm v-model="form" :dirty :changed :saved :error :fresh="!myGame" @save="submit" @reset="reset" />
+    </div>
     <GameEditor v-if="myGame" :game="myGame" :parts="myParts" :claims="myClaims" :rules="myRules" :tasks="myTasks" :coins="myCoins"
                 editable :nick :reload="() => loadMyGame(true)" />
   </div>

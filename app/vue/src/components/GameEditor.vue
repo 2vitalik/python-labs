@@ -1,5 +1,6 @@
 <script setup>
-import { computed, nextTick, reactive, ref, toRef, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, reactive, ref, toRef, watch } from 'vue'
+import { useRoute } from 'vue-router'
 
 import Clamp from '@core/components/Clamp.vue'
 import Icon from '@core/components/Icon.vue'
@@ -7,18 +8,21 @@ import Lightbox from '@core/components/Lightbox.vue'
 import PeekHost from '@core/components/PeekHost.vue'
 import Toc from '@core/components/Toc.vue'
 import { user } from '@core/user.js'
+import { wideOf } from '@core/wide.js'
 import { applyTemplate } from '../api.js'
 import { games, kindOf, taskIndex, templates, vocab } from '../catalog.js'
 import { provideEd } from '../ed.js'
 import { allAre, isFolded, isShort, setAll, setFold, setShort } from '../fold.js'
 import { hints as makeHints } from '../hints.js'
 import { jump, target } from '../jump.js'
+import { edWidth } from '../layout.js'
 import '../peeks.js'
 import { sandbox } from '../sandbox.js'
 import { foldKey, HEADS, sectionOf, SECTIONS, SIMPLE, ZONES } from '../sections.js'
 import { editing } from '../teacher.js'
 import AddBar from './AddBar.vue'
 import ClaimsTable from './ClaimsTable.vue'
+import ColsSwitch from './ColsSwitch.vue'
 import DraftStrip from './DraftStrip.vue'
 import EntitiesBlock from './EntitiesBlock.vue'
 import EtalonGap from './EtalonGap.vue'
@@ -26,8 +30,10 @@ import FieldCard from './FieldCard.vue'
 import GameTotals from './GameTotals.vue'
 import Hints from './Hints.vue'
 import LevelsBlock from './LevelsBlock.vue'
+import MomentsBlock from './MomentsBlock.vue'
 import RulesBlock from './RulesBlock.vue'
 import SectionHead from './SectionHead.vue'
+import WideSwitch from './WideSwitch.vue'
 import WindowsBlock from './WindowsBlock.vue'
 import ZoneSection from './ZoneSection.vue'
 
@@ -72,15 +78,35 @@ const hints = computed(() => (props.editable ? makeHints({ game: props.game, par
 const shown = computed(() => (ed.simple ? SIMPLE : SECTIONS))
 const counts = computed(() => ({ entities: ed.entities.length, rules: props.rules.length, levels: ed.levels.length, windows: ed.windows.length,
   ...Object.fromEntries(ZONES.map((z) => [z.id, inZone(z)])) }))
+const LAID = ['entities', 'levels', 'windows', ...ZONES.map((z) => z.id)]  // the sections that lay cards in columns
 const head = (id) => {
   const { icon, title, short, zone } = HEADS[id]
-  return { icon, title: (ed.simple && short) || title, zone, count: counts.value[id], fold: foldKey(id) }
+  return { icon, title: (ed.simple && short) || title, zone, count: counts.value[id], fold: foldKey(id), anchor: id, layout: LAID.includes(id) }
 }
 const zone = (id) => ZONES.find((z) => z.id === id)
-const toc = computed(() => (view.value === 'cards' ? [] : shown.value.map((id) => {
+const cardsToc = ref([])  // «Картки» names its own contents: the categories on screen
+// a section's parts worth a line of their own in the contents (T291 §3): [id, text, is it on the page]
+const parts = computed(() => (ed.simple ? {} : {
+  rules: [['rules-phases', 'Порядок ходу', true]],
+  levels: [['levels-general', 'Про рівні загалом', props.editable || props.claims.some((c) => !c.part && !c.rule && kindOf(ed.info(c.task)) === 'level')]],
+  windows: [['windows-graph', 'Схема вікон', ed.windows.length > 1]],
+}))
+const partHome = computed(() => Object.fromEntries(Object.entries(parts.value).flatMap(([s, list]) => list.map(([id]) => [id, s]))))
+const toc = computed(() => (view.value === 'cards' ? cardsToc.value : shown.value.flatMap((id) => {
   const h = head(id)
-  return { id, text: `${h.icon} ${h.title}${h.count === undefined ? '' : ` (${h.count})`}`, depth: 2 }
+  return [{ id, text: `${h.icon} ${h.title}${h.count === undefined ? '' : ` (${h.count})`}`, depth: 2 },
+    ...(parts.value[id] || []).filter((p) => p[2]).map(([pid, text]) => ({ id: pid, text, depth: 3 }))]
 })))
+
+// the page on the whole window (T287): the reader's choice where the page allows it (router: meta.wide 'game'); the top
+// of the editor keeps the page column, the sections take the width — and more columns of cards with it
+const route = useRoute()
+const wide = computed(() => route.meta.wide === 'game' && wideOf('game').on.value)
+// the editor's own width is what the columns switch decides by (layout.js)
+const root = ref()
+const sized = new ResizeObserver(() => (edWidth.value = root.value.offsetWidth))
+onMounted(() => sized.observe(root.value))
+onBeforeUnmount(() => sized.disconnect())
 
 // folding (T274 §8, T284 §3): a section is open, short (its beginning) or folded — each by its own heading, all at once
 // by the three buttons beside «Опис | Картки»
@@ -105,6 +131,16 @@ watch([target, () => props.claims, () => props.parts], ([id], [was]) => {
   }
 })
 
+// a link to a place in the description (#p-…, #r-…, #c-…, a section — the tick of /tasks leads so): unfold what holds
+// it and show it, on arrival and later
+watch(() => route.hash, (h) => {
+  const id = decodeURIComponent(h.slice(1))
+  const home = partHome.value[id]  // a part of a section: the section opens whole first
+  if (home) setFold(foldKey(home), false)
+  if (home) setShort(foldKey(home), false)
+  if (home || /^[prc]-/.test(id) || SECTIONS.includes(id)) jump(id)
+}, { immediate: true })
+
 // «＋» anywhere: the section's own form of a new thing, in view and lit
 async function open(block, prefill) {
   view.value = 'desc'
@@ -126,7 +162,8 @@ async function fromTemplate() {
 </script>
 
 <template>
-  <div class="editor">
+  <div ref="root" class="editor">
+    <div :class="{ 'in-column': wide }">
     <GameTotals :counts="totals" :coins :simple="ed.simple" class="mb-3" @go="go">
       <div class="d-flex flex-wrap align-items-center gap-2 small text-secondary">
         <span v-if="!ed.simple" class="btn-group btn-group-sm">
@@ -137,6 +174,8 @@ async function fromTemplate() {
           <button v-for="[m, icon, word, tip] in MODES" :key="m" type="button" class="btn btn-outline-secondary" :class="{ active: view === 'desc' && allAre(keys, m) }"
                   :disabled="view === 'cards'" :title="tip" @click="setAll(keys, m)"><Icon :name="icon" /><span class="d-none d-sm-inline"> {{ word }}</span></button>
         </span>
+        <ColsSwitch />
+        <WideSwitch />
         <label v-if="admin && !full" class="form-check form-switch m-0" title="Як бачить студент, поки відкрито лише простий опис">
           <input v-model="simpleLook" type="checkbox" class="form-check-input"> простий вигляд
         </label>
@@ -153,8 +192,9 @@ async function fromTemplate() {
       <EtalonGap v-if="!ed.simple && !ed.sandbox && !ed.teacher && game.base_game" class="mb-3" />
     </template>
     <div v-if="error" class="alert alert-danger py-2 small">{{ error }}</div>
+    </div>
 
-    <ClaimsTable v-if="view === 'cards' && !ed.simple" />
+    <ClaimsTable v-if="view === 'cards' && !ed.simple" :class="{ 'in-column': wide }" @toc="cardsToc = $event" />
     <!-- in SECTIONS' order (sections.js); folded bodies stay mounted (v-show): «＋» still opens their forms, «show me where»
          still finds what is inside -->
     <template v-else>
@@ -179,7 +219,7 @@ async function fromTemplate() {
           <button v-if="editable" type="button" class="btn btn-sm btn-add" @click="open('rule')"><Icon name="plus" /> правило</button>
         </SectionHead>
         <Clamp v-show="!folded('rules')" :on="short('rules')" @open="unclamp('rules')">
-          <DraftStrip :kinds="['rule']" hint="натисни на картку → «нове правило з цієї картки» або привʼяжи до наявного" />
+          <DraftStrip :kinds="['rule']" hint="натисни на картку → «нове правило з цієї картки» або «привʼязати до наявного»" />
           <RulesBlock :ref="blocks.rule" />
         </Clamp>
       </section>
@@ -189,6 +229,10 @@ async function fromTemplate() {
           <button v-if="editable" type="button" class="btn btn-sm btn-add" @click="open('level')"><Icon name="plus" /> рівень</button>
         </SectionHead>
         <Clamp v-show="!folded('levels')" :on="short('levels')" @open="unclamp('levels')"><LevelsBlock :ref="blocks.level" /></Clamp>
+      </section>
+      <section v-if="!ed.simple" id="moments" class="mb-4">
+        <SectionHead v-bind="head('moments')" />
+        <Clamp v-show="!folded('moments')" :on="short('moments')" @open="unclamp('moments')"><MomentsBlock /></Clamp>
       </section>
       <section id="windows" class="mb-4">
         <SectionHead v-bind="head('windows')">
@@ -204,7 +248,7 @@ async function fromTemplate() {
       </template>
     </template>
 
-    <Toc :items="toc" />
+    <Toc :items="toc" :side="!wide" :bar="view === 'cards'" />
     <Lightbox />
     <PeekHost />
   </div>
@@ -213,8 +257,8 @@ async function fromTemplate() {
 <style>
 /* a section's heading sticks under the menu (SectionHead): what is scrolled to on this page lands below both */
 html:has(.editor) { --stick-h: 2.4rem; }
-</style>
-
-<style scoped>
-section { scroll-margin-top: 1rem; }
+/* a section reads as a block of its own (T287): its content stands in from the heading's line on both sides, and the
+   next heading comes after a wider gap */
+.editor > section { margin-bottom: 2.5rem !important; scroll-margin-top: 1rem; }
+@media (min-width: 576px) { .editor > section > .clamp { padding-inline: .75rem; } }  /* a phone has no width to give away */
 </style>

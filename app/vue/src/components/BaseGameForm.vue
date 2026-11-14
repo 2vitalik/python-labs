@@ -1,9 +1,16 @@
 <script setup>
+import { ref } from 'vue'
+
 import { AXES, KLASSES, STATUSES } from '../catalog.js'
 import MdArea from '@core/components/MdArea.vue'
+import { load, save } from '@core/local.js'
+import MomentEditor from './MomentEditor.vue'
 
 const form = defineModel({ type: Object })
 defineEmits(['save'])
+// the examples in the moments editor or as their Markdown (T276): one text either way, the choice is remembered
+const view = ref(load('moments-view') || 'form')
+const setView = (v) => { view.value = v; save('moments-view', v) }
 </script>
 
 <template>
@@ -69,10 +76,19 @@ defineEmits(['save'])
     </div>
 
     <div class="card mb-3">
-      <div class="card-header">Приклади ігрових ситуацій</div>
+      <div class="card-header d-flex align-items-center gap-2">
+        Приклади ігрових ситуацій
+        <div class="btn-group btn-group-sm ms-auto" role="group" aria-label="вигляд прикладів">
+          <button type="button" class="btn btn-outline-secondary" :class="{ active: view === 'form' }" @click="setView('form')">форма</button>
+          <button type="button" class="btn btn-outline-secondary" :class="{ active: view === 'text' }" @click="setView('text')">текст</button>
+        </div>
+      </div>
       <div class="card-body">
-        <MdArea v-model="form.examples" label="Легенда і хід гри крок за кроком (markdown)" :rows="20" />
-        <div class="form-text mt-2">Поле — блок <code>```field</code>: емодзі через пробіл, <code>[😎]</code> — хто щойно зробив хід, <code>(✨)</code> — що змінилось.</div>
+        <MomentEditor v-if="view === 'form'" v-model="form.examples" />
+        <template v-else>
+          <MdArea v-model="form.examples" label="Легенда і хід гри крок за кроком (markdown)" :rows="20" />
+          <div class="form-text mt-2">Поле — блок <code>```field</code>: емодзі через пробіл, <code>[😎]</code> — хто щойно зробив хід, <code>(✨)</code> — що змінилось.</div>
+        </template>
       </div>
     </div>
 

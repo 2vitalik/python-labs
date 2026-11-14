@@ -5,6 +5,7 @@ import Icon from '@core/components/Icon.vue'
 import { user } from '@core/user.js'
 import { kindOf, subzoneTitle, vocab, zoneOf } from '../catalog.js'
 import { useEd } from '../ed.js'
+import { factorsOf, repeatable } from '../tiers.js'
 import ClaimJudge from './ClaimJudge.vue'
 import ClaimOwner from './ClaimOwner.vue'
 import ClaimShots from './ClaimShots.vue'
@@ -18,6 +19,7 @@ const props = defineProps({ claim: Object, linkFirst: Boolean })  // linkFirst �
 const emit = defineEmits(['close'])
 const ed = useEd()
 const info = computed(() => ed.info(props.claim.task))
+const factor = computed(() => (repeatable(info.value) ? factorsOf(props.claim.task, info.value, ed.claims)[props.claim.id] ?? 1 : 1))
 const desc = computed(() => info.value?.description || (info.value?.parent && ed.info(info.value.parent)?.description) || '')
 const home = computed(() => {
   const where = [zoneOf(info.value).title, subzoneTitle(info.value)].filter(Boolean).join(' › ')
@@ -29,7 +31,7 @@ const home = computed(() => {
   <div class="vstack gap-2">
     <div>
       <div class="d-flex align-items-baseline gap-2">
-        <CoinBadge :coin="info?.coin" :amount="info?.amount" />
+        <CoinBadge :coin="info?.coin" :amount="info?.amount" :factor />
         <span class="fw-semibold">{{ info?.title || claim.task }}</span>
         <RouterLink v-if="user?.status === 'admin'" :to="`/tasks?q=${claim.task}`" class="ms-auto small text-nowrap" title="картка в каталозі">
           <Icon name="open" /> каталог

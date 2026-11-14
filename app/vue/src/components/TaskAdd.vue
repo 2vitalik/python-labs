@@ -4,19 +4,29 @@ import { computed, ref } from 'vue'
 import Icon from '@core/components/Icon.vue'
 import Pop from '@core/components/Pop.vue'
 import { postClaim } from '../api.js'
+import { myPlaces } from '../claimPlace.js'
 import { addPart, addsMore, addStat, plusOf } from '../gameAdd.js'
-import { myGame, reloadInsides } from '../myGame.js'
-import { addable, addsTo } from '../taskMeta.js'
+import { myClaims, myGame, reloadInsides } from '../myGame.js'
+import { addable, addsTo, drawn } from '../taskMeta.js'
+import { factorOf, factorText, roomFor } from '../tiers.js'
 import TaskAddParams from './TaskAddParams.vue'
 import TaskAddPart from './TaskAddPart.vue'
 import TaskAddStat from './TaskAddStat.vue'
 
 // the round mark in a card's header for a student with a game: the violet plus «у мою гру», the green tick once the card is
-// in (an entity type keeps a small plus beside it — «ще одну»). What the plus does depends on the card's kind (gameAdd.js);
-// a question it asks first — in a panel at it
+// in (an entity type keeps a small plus beside it — «ще одну»; so does a card with repeats while one more still counts,
+// T291 §13). What the plus does depends on the card's kind (gameAdd.js); a question it asks first — in a panel at it
 const props = defineProps({ task: Object, inGame: Boolean })
-const canAdd = computed(() => props.task.status === 'active' && (!props.inGame || addsMore(props.task)))
+const count = computed(() => myClaims.value.filter((c) => c.task === props.task.slug).length)
+const canAdd = computed(() => props.task.status === 'active' && !drawn(props.task) && (!props.inGame || addsMore(props.task) || roomFor(props.task, count.value)))
+const moreTitle = computed(() => {
+  if (addsMore(props.task)) return 'Ще одну сутність цього типу'
+  const price = factorText(factorOf(props.task, count.value + 1))
+  return `Ще раз — повтор (${count.value + 1}-й)${price ? `\nза ${price} ціни` : ''}`
+})
 const shown = computed(() => !!myGame.value && addable(props.task) && (props.inGame || canAdd.value))
+const places = computed(() => (props.inGame ? myPlaces(props.task.slug) : []))
+const where = ref(false)
 const open = ref(false)
 const plus = ref({})
 const busy = ref(false)
@@ -49,7 +59,7 @@ async function write(run) {
     <Pop v-if="canAdd" v-model="open" width="20rem">
       <template #trigger>
         <button type="button" class="iact round add" :class="{ more: inGame }" :disabled="busy" @click="add"
-                :title="inGame ? 'Ще одну сутність цього типу' : `Додати у мою гру\n${addsTo(task)}`">
+                :title="inGame ? moreTitle : `Додати у мою гру\n${addsTo(task)}`">
           <Icon name="plus" />
         </button>
       </template>
@@ -67,7 +77,18 @@ async function write(run) {
       </template>
       <div v-if="error" class="text-danger small" :class="{ 'mt-2': plus.ask }">{{ error }}</div>
     </Pop>
-    <RouterLink v-if="inGame" to="/my/game" class="iact round done" title="уже в твоїй грі — відкрити"><Icon name="done" /></RouterLink>
+    <!-- the tick leads to the card's place in the game; a card that sits in several — to a list of them -->
+    <Pop v-if="inGame && places.length > 1" v-model="where" width="17rem">
+      <template #trigger>
+        <button type="button" class="iact round done many" :title="`уже в твоїй грі — у ${places.length} місцях: показати де`" @click="where = !where">
+          <Icon name="done" /><sup>{{ places.length }}</sup>
+        </button>
+      </template>
+      <div class="cap">у твоїй грі</div>
+      <RouterLink v-for="p in places" :key="p.id" :to="{ path: '/my/game', hash: `#${p.id}` }" class="place"><span>{{ p.text }}</span><Icon name="arrow" /></RouterLink>
+    </Pop>
+    <RouterLink v-else-if="inGame" :to="{ path: '/my/game', hash: places[0] ? `#${places[0].id}` : '' }" class="iact round done"
+                :title="`уже в твоїй грі${places[0] ? `: ${places[0].text}` : ''} — показати там`"><Icon name="done" /></RouterLink>
   </span>
 </template>
 
@@ -79,4 +100,11 @@ async function write(run) {
 .round.more { width: 1.1rem; height: 1.1rem; font-size: .85rem; }
 .done { color: var(--bs-success); }
 .done:hover { color: var(--bs-success); background: color-mix(in srgb, var(--bs-success) 12%, transparent); }
+.many { position: relative; }
+.many sup { position: absolute; top: -.1rem; right: -.35rem; font-size: .6rem; font-weight: 700; line-height: 1; }
+.cap { margin-bottom: .2rem; font-size: .7rem; color: var(--bs-secondary-color); }
+.place { display: flex; align-items: center; justify-content: space-between; gap: .5rem; padding: .2rem .35rem; border-radius: .3rem; color: inherit;
+         font-size: .85rem; text-decoration: none; }
+.place:hover { background: var(--bs-tertiary-bg); }
+.place .icon { color: var(--bs-secondary-color); }
 </style>

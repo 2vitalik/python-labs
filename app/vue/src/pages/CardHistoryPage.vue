@@ -7,6 +7,7 @@ import { FIELDS } from '../cardFields.js'
 import { loadCatalog } from '../catalog.js'
 import CardChange from '../components/CardChange.vue'
 import Crumbs from '@core/components/Crumbs.vue'
+import Icon from '@core/components/Icon.vue'
 
 // every edit of every task or game, newest first (?slug= narrows to one); ↩ puts the old values back as a new edit
 const KINDS = {
@@ -52,13 +53,13 @@ loadCatalog()
         <span class="text-secondary small">{{ when(e.at) }}</span>
         <span class="small">{{ e.actor }}</span>
         <RouterLink :to="KINDS[kind].to(e.slug)">{{ e.title }}</RouterLink>
-        <RouterLink v-if="!slug" :to="{ query: { slug: e.slug } }" class="text-decoration-none small" title="Лише правки цього запису">🕘</RouterLink>
+        <RouterLink v-if="!slug" :to="{ query: { slug: e.slug } }" class="text-decoration-none small" title="Лише правки цього запису"><Icon name="clock" /></RouterLink>
         <i v-if="e.note" class="text-secondary">{{ e.note }}</i>
         <span v-else class="small text-secondary">{{ e.created ? 'створено' : fields(e) }}</span>
         <span class="ms-auto d-flex align-items-center gap-2">
           <a href="#" class="small" @click.prevent="open[e.id] = !open[e.id]">{{ open[e.id] ? 'сховати' : 'зміни' }}</a>
           <button v-if="!e.created" class="btn btn-outline-secondary btn-sm py-0" @click="revert(e)"
-                  title="Повернути ці поля до стану перед цією правкою (як нова правка)">↩</button>
+                  title="Повернути ці поля до стану перед цією правкою (як нова правка)"><Icon name="back" /></button>
         </span>
       </div>
       <CardChange v-if="open[e.id]" :changes="e.changes" class="border-top px-3 py-2" />

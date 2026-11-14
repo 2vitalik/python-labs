@@ -36,7 +36,7 @@ function split(list, n) {
 
 <template>
   <div ref="el">
-    <div v-for="s in subs" :key="s.key" class="task-group mb-3" :style="subStyle(color, s.i)">
+    <div v-for="s in subs" :id="`sub-${zone}-${s.key}`" :key="s.key" class="task-group noflash mb-3" :style="subStyle(color, s.i)">
       <div class="group-head d-flex align-items-center gap-1">
         <span>{{ s.icon }} {{ s.title }}</span>
         <span class="count">{{ s.list.length }}</span>

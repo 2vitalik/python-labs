@@ -16,7 +16,7 @@ import TaskNames from './TaskNames.vue'
 import TaskWhere from './TaskWhere.vue'
 
 // the teacher's form of a catalog card, in the card's own place: groups of dense rows under small captions (T284 §6), no page.
-// A task without `id` is a new card; the saved one goes straight into the loaded catalog
+// A task without `id` is a new card — framed in the colour of adding (T291 §4); the saved one goes straight into the loaded catalog
 const props = defineProps({ task: Object })
 const emit = defineEmits(['done'])
 const f = reactive(toForm(props.task))
@@ -41,7 +41,7 @@ async function save() {
 </script>
 
 <template>
-  <form class="task-edit border rounded p-2 vstack" @submit.prevent="save">
+  <form class="task-edit vstack" :class="task.id ? 'editing' : 'editing new'" @submit.prevent="save">
     <TaskGroup label="Основне"><TaskMain :f :kind :sub-kind="subKind" /></TaskGroup>
     <TaskWhere :f :open="!task.id" />
     <TaskGroup label="Опис" :tip="TIPS.description">
@@ -71,7 +71,8 @@ async function save() {
 <style>
 /* the dense rows of the form and its parts (TaskMain, TaskWhere, SlotsEditor, TaskNames, RuleBlank): a tiny caption over each field;
    a caption with a dotted line has a hint under the mouse (taskTips.js) */
-.task-edit { gap: .8rem; background: var(--bs-body-bg); font-size: .85rem; }
+/* framed as an open form (T291 §4): the frame is a pixel thicker than the card it replaces, the padding a pixel thinner */
+.task-edit { gap: .6rem; padding: calc(.5rem - 1px); background: var(--bs-body-bg); font-size: .85rem; }
 .task-edit .row-f { display: flex; flex-wrap: wrap; gap: .35rem; align-items: flex-end; }
 .task-edit .f { display: flex; flex-direction: column; gap: .1rem; margin: 0; font-size: .7rem; color: var(--bs-secondary-color); }
 .task-edit .grow { flex: 1 1 8rem; min-width: 0; }

@@ -41,7 +41,7 @@ async function remove() {
 </script>
 
 <template>
-  <div :id="`p-${part.id}`" class="card">
+  <div :id="`p-${part.id}`" class="card" :class="{ editing: edit }">
     <div class="card-body p-2 vstack gap-2">
       <EntityForm v-if="edit" :part :focus="edit" @done="edit = ''" @cancel="edit = ''" />
       <template v-else>
@@ -62,7 +62,7 @@ async function remove() {
       <template v-if="!ed.simple">
         <PartBlock v-if="mechanics.length || ed.editable" icon="⚙" zone="entities" title="Механіки">
           <div class="vstack gap-1">
-            <ClaimRow v-for="c in mechanics" :key="c.id" :claim="c" :tools="!!edit" />
+            <ClaimRow v-for="c in mechanics" :key="c.id" :claim="c" />
             <div><CardPicker :kinds="['mechanic']" :anchor="{ part: part.id }" label="механіка" /></div>
           </div>
         </PartBlock>
@@ -74,6 +74,8 @@ async function remove() {
 </template>
 
 <style scoped>
+/* the frame of an open form (T291 §4) is a pixel thicker than the card's: the body gives the pixel back, nothing inside shifts */
+.editing > .card-body { margin: -1px; }
 .ico { font-size: 1.5rem; line-height: 1; }
 .type { font-size: .8rem; color: var(--bs-secondary-color); }
 .desc { font-size: .85rem; }

@@ -9,11 +9,11 @@ import { KINDS, refKind, zonePath } from '../ideas.js'
 import ZonePick from './ZonePick.vue'
 
 // one form for every record of /ideas (T274 §4): what came as a prop is not asked but shown as «про що»;
-// `parent` — an idea under that find; `edit` — an existing record, saved in place
-const props = defineProps({ kind: String, zone: String, subzone: String, task: String, parent: String, compact: Boolean, edit: Object })
+// `parent` — an idea under that find; `edit` — an existing record, saved in place; `note` — the text a new one starts with
+const props = defineProps({ kind: String, zone: String, subzone: String, task: String, parent: String, compact: Boolean, edit: Object, note: String })
 const emit = defineEmits(['done', 'cancel'])
 const e = props.edit || {}
-const form = reactive({ kind: props.kind || (props.edit ? refKind(e) : 'link'), title: e.title || '', note: e.note || '',
+const form = reactive({ kind: props.kind || (props.edit ? refKind(e) : 'link'), title: e.title || '', note: e.note || props.note || '',
                         url: e.url || '', zone: e.zone || '', subzone: e.subzone || '' })
 const task = props.task || e.task || ''
 const card = computed(() => taskIndex.value[task])

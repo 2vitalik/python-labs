@@ -2,6 +2,7 @@
 import { computed, nextTick, reactive, ref, watch } from 'vue'
 
 import Icon from '@core/components/Icon.vue'
+import Tip from '@core/components/Tip.vue'
 import { vocab } from '../catalog.js'
 import { useEd } from '../ed.js'
 import { jump, target } from '../jump.js'
@@ -54,7 +55,8 @@ watch(target, (id) => {
 
 <template>
   <div>
-    <PhasesStrip class="mb-3" />
+    <!-- the page's contents point here («Порядок ходу»): the anchor stays even when the strip has nothing to show -->
+    <div id="rules-phases"><PhasesStrip class="mb-3" /></div>
     <RulesSwitch v-model="view" class="mb-2" />
     <RulesMatrix v-if="view === 'contacts'" :rules="contacts" @show="show" @add="add" />
     <RulesControls v-else-if="view === 'controls'" @show="show" @add="add" />
@@ -63,15 +65,15 @@ watch(target, (id) => {
       <RuleGroup v-for="{ g, list } in grouped" :key="g" v-model:folded="folded[g]" :name="g" :rules="list"
                  @add="add({ when: { kind: firstWord(g) } })" />
     </div>
-    <div v-if="adding" id="rule-new" class="new mt-2">
+    <div v-if="adding" id="rule-new" class="editing new mt-2">
       <RuleForm :key="opened" :rule="null" :prefill="adding" @saved="adding = null" @cancel="adding = null" />
     </div>
     <template v-else>
-      <p v-if="!ed.rules.length && ed.editable" class="small text-secondary mb-0">
+      <Tip v-if="!ed.rules.length && ed.editable">
         Правило — речення з трьох частин: <b class="kw-when">КОЛИ</b> щось сталося, <b class="kw-if">ЯКЩО</b> виконано умову (можна без неї),
         <b class="kw-then">ТО</b> ось що відбувається. Наприклад: «<b class="kw-when">КОЛИ</b> куля × танк <b class="kw-then">ТО</b> танк отримує шкоду 1»
         або «<b class="kw-when">КОЛИ</b> кожні 20 тіків <b class="kw-if">ЯКЩО</b> ворогів на полі &lt; 4 <b class="kw-then">ТО</b> зʼявляється ворог».
-      </p>
+      </Tip>
       <p v-else-if="!ed.rules.length" class="small text-secondary mb-0">Правил поки нема.</p>
       <!-- «Керування» and «Час» have a plus of their own under the table -->
       <button v-if="ed.editable && (view === 'list' || view === 'contacts')" type="button" class="btn btn-sm btn-add mt-2" @click="add()">
@@ -83,7 +85,7 @@ watch(target, (id) => {
 </template>
 
 <style scoped>
-.new { padding: .5rem; border: 1px solid var(--bs-border-color); border-radius: .375rem; background: var(--bs-tertiary-bg); scroll-margin-top: 1rem; }
+.new { padding: .5rem; background: var(--bs-tertiary-bg); scroll-margin-top: 1rem; }  /* the frame is `editing new` */
 .kw-when { color: var(--kw-when); }
 .kw-if { color: var(--kw-if); }
 .kw-then { color: var(--kw-then); }

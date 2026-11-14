@@ -1,42 +1,53 @@
 <script setup>
-import { nextTick, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
 
-// two columns that never reshuffle (T270 §2): a card stays in its column whatever grows inside it; a new card goes to the
-// shorter column; a narrow screen shows one column in the list's order. <StableColumns :items v-slot="{ item }">…
-const props = defineProps({ items: Array, by: { type: String, default: 'id' }, min: { type: Number, default: 620 } })
+import { fitCols, oneCol } from '../layout.js'
+
+// columns that never reshuffle (T270 §2): a card stays in its column whatever grows inside it; a new card goes to the
+// shortest column. Two columns in the page column, more on a wide page (`col` px each at least; narrower and more of
+// them when the reader chose «щільно»), one on a narrow screen or when the reader asked for one (layout.js) — then in
+// the list's order. <StableColumns :items v-slot="{ item }">…
+const props = defineProps({ items: Array, by: { type: String, default: 'id' }, min: { type: Number, default: 620 }, col: { type: Number, default: 380 } })
 const root = ref()
 const cols = []
 const home = reactive({})  // item key → its column
-const one = ref(false)
+const width = ref(props.min)  // two columns until measured
+const n = computed(() => (oneCol.value ? 1 : fitCols(width.value, props.col, props.min)))
 const key = (it) => it[props.by]
+const shortest = (heights) => heights.indexOf(Math.min(...heights))
 let watcher
 
 async function place() {
   const keys = props.items.map(key)
   for (const k of Object.keys(home)) if (!keys.includes(k)) delete home[k]
   const fresh = keys.filter((k) => !(k in home))
-  if (!fresh.length) return
+  if (!fresh.length || n.value === 1) return
   if (fresh.length < keys.length) {
     for (const k of fresh) {
-      home[k] = (cols[0]?.offsetHeight || 0) <= (cols[1]?.offsetHeight || 0) ? 0 : 1
+      home[k] = shortest(Array.from({ length: n.value }, (_, c) => cols[c]?.offsetHeight || 0))
       await nextTick()
     }
     return
   }
-  fresh.forEach((k, i) => (home[k] = i % 2))  // the first fill goes by turns, then once by the real heights
+  fresh.forEach((k, i) => (home[k] = i % n.value))  // the first fill goes by turns, then once by the real heights
   await nextTick()
   if (!root.value) return
   const tall = Object.fromEntries([...root.value.querySelectorAll(':scope > .col > [data-k]')].map((el) => [el.dataset.k, el.offsetHeight]))
-  const sum = [0, 0]
+  const sum = Array(n.value).fill(0)
   for (const k of keys) {
-    const c = sum[0] <= sum[1] ? 0 : 1
+    const c = shortest(sum)
     home[k] = c
     sum[c] += tall[k] || 1
   }
 }
 watch(() => props.items.map(key).join(), place, { immediate: true })
+// another number of columns is another layout: every card is dealt again
+watch(n, () => {
+  for (const k of Object.keys(home)) delete home[k]
+  place()
+})
 onMounted(() => {
-  watcher = new ResizeObserver(() => (one.value = root.value.offsetWidth < props.min))
+  watcher = new ResizeObserver(() => (width.value = root.value.offsetWidth))
   watcher.observe(root.value)
 })
 onBeforeUnmount(() => watcher?.disconnect())
@@ -44,8 +55,8 @@ onBeforeUnmount(() => watcher?.disconnect())
 
 <template>
   <div ref="root" class="stable">
-    <div v-for="c in one ? [0] : [0, 1]" :key="c" :ref="(el) => (cols[c] = el)" class="col">
-      <div v-for="it in items.filter((it) => one || home[key(it)] === c)" :key="key(it)" :data-k="key(it)" class="cell">
+    <div v-for="c in n" :key="c" :ref="(el) => (cols[c - 1] = el)" class="col">
+      <div v-for="it in items.filter((it) => n === 1 || home[key(it)] === c - 1)" :key="key(it)" :data-k="key(it)" class="cell">
         <slot :item="it" />
       </div>
     </div>
