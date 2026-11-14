@@ -101,7 +101,7 @@ async def clean(data: GameIn) -> dict:
     if d["moments"] is None:
         del d["moments"]
     elif len(d["moments"]) > MOMENTS_MAX:
-        raise HTTPException(422, "«Як це грається» задовге — до 20 000 знаків: менше кадрів чи сценаріїв.")
+        raise HTTPException(422, "Розкадровка задовга — до 20 000 знаків: менше кадрів чи сценаріїв.")
     return d
 
 

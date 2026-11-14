@@ -21,7 +21,7 @@ const ADDS = {
   fieldopt: 'вмикає в полі',
 }
 // what is drawn on the site claims itself (T291 §15, auto_claims.py): no plus — the card says where to draw
-const DRAWN = { 'moment-frames': 'заявляється сама: намалюй сценарій із трьох кадрів у секції «Як це грається»',
+const DRAWN = { 'moment-frames': 'заявляється сама: намалюй сценарій із трьох кадрів у секції «Розкадровка»',
                 'level-map-drawn': 'заявляється сама: намалюй рівень у його формі — «＋ намалювати рівень»' }
 export const drawn = (task) => !!DRAWN[task.slug]
 export const addsTo = (task) => {

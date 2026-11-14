@@ -18,7 +18,7 @@ export const HEADS = {
   entities: { icon: '👾', title: 'Сутності', zone: 'entities' },
   rules: { icon: '⚡', title: 'Правила', zone: 'game-logic' },
   levels: { icon: '🪜', title: 'Рівні', zone: 'levels' },
-  moments: { icon: '🎞️', title: 'Як це грається', zone: 'support' },  // T276: its card lives in «Супровід»
+  moments: { icon: '🎞️', title: 'Розкадровка', zone: 'support' },  // T276: its card lives in «Супровід»
   windows: { icon: '🪟', title: 'Вікна й переходи', short: 'Вікна', zone: 'interface' },
   ...Object.fromEntries(ZONES.map((z) => [z.id, { icon: z.icon, title: z.title, zone: z.zones[0] }])),
 }
