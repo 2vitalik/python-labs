@@ -1,0 +1,65 @@
+[
+  {
+    "have": {"entities": [], "windows": [], "levels": []},
+    "text": "Гра — лабіринт. Гравець ходить стрілками на одну клітинку за раз. Є стіни, через них не пройти. По лабіринту лежать ключі: наступив на ключ — він зникає, і відчиняються двері. Коли зібрав усі ключі, відкривається вихід; зайшов у вихід — перемога, показується вікно «Перемога». На старті головне меню: «Грати» і «Вийти». Поле 17 на 7, лабіринт один, малював сам. Збоку показую, скільки ключів зібрано. Потім ще хочу зробити туман війни і, може, збереження.",
+    "answer": {
+      "field": {"topology": "", "view": "", "time": [], "control": ["direct"], "gravity": "", "wrap": "", "size": "17×7", "quote": "Поле 17 на 7"},
+      "entities": [
+        {"title": "Гравець", "role": "player", "icon": "", "description": "Ходить стрілками на одну клітинку за раз", "stats": [], "states": [], "claims": [],
+         "quote": "Гравець ходить стрілками на одну клітинку за раз"},
+        {"title": "Стіна", "role": "static", "icon": "", "description": "Через неї не пройти", "stats": [], "states": [], "claims": [],
+         "quote": "Є стіни, через них не пройти"},
+        {"title": "Ключ", "role": "pickup", "icon": "", "description": "Зникає, коли на нього наступити; відчиняє двері", "stats": [], "states": [], "claims": [],
+         "quote": "По лабіринту лежать ключі"},
+        {"title": "Двері", "role": "gate", "icon": "", "description": "Відчиняються, коли зібрано ключ", "stats": [], "states": ["зачинені", "відчинені"], "claims": [],
+         "quote": "він зникає, і відчиняються двері"},
+        {"title": "Вихід", "role": "gate", "icon": "", "description": "Відкривається, коли зібрано всі ключі", "stats": [], "states": ["зачинений", "відчинений"], "claims": [],
+         "quote": "Коли зібрав усі ключі, відкривається вихід"}
+      ],
+      "rules": [
+        {"when": {"kind": "input", "args": [{"name": "action", "value": "↑"}, {"name": "a", "value": "Гравець"}]}, "cond": [],
+         "then": [{"kind": "move", "args": [{"name": "a", "value": "@a"}, {"name": "dir", "value": "up"}]}],
+         "note": "так само ↓ ← →", "claims": [{"slug": "move-4dir", "params": []}],
+         "quote": "Гравець ходить стрілками на одну клітинку за раз"},
+        {"when": {"kind": "contact", "args": [{"name": "a", "value": "Гравець"}, {"name": "b", "value": "Стіна"}]}, "cond": [],
+         "then": [{"kind": "block", "args": []}],
+         "note": "", "claims": [{"slug": "impassable-cells", "params": []}],
+         "quote": "Є стіни, через них не пройти"},
+        {"when": {"kind": "enter", "args": [{"name": "a", "value": "Гравець"}, {"name": "b", "value": "Ключ"}]}, "cond": [],
+         "then": [{"kind": "disappear", "args": [{"name": "a", "value": "@b"}]},
+                  {"kind": "counter", "args": [{"name": "name", "value": "ключів"}, {"name": "n", "value": "1"}]},
+                  {"kind": "set_state", "args": [{"name": "a", "value": "Двері"}, {"name": "s", "value": "відчинені"}]}],
+         "note": "", "claims": [{"slug": "key-and-door", "params": []}],
+         "quote": "наступив на ключ — він зникає, і відчиняються двері"},
+        {"when": {"kind": "all_gone", "args": [{"name": "a", "value": "Ключ"}]}, "cond": [],
+         "then": [{"kind": "set_state", "args": [{"name": "a", "value": "Вихід"}, {"name": "s", "value": "відчинений"}]}],
+         "note": "", "claims": [],
+         "quote": "Коли зібрав усі ключі, відкривається вихід"},
+        {"when": {"kind": "enter", "args": [{"name": "a", "value": "Гравець"}, {"name": "b", "value": "Вихід"}]},
+         "cond": [{"kind": "state", "not": false, "args": [{"name": "a", "value": "@b"}, {"name": "s", "value": "відчинений"}]}],
+         "then": [{"kind": "win", "args": []}, {"kind": "window", "args": [{"name": "window", "value": "Перемога"}]}],
+         "note": "", "claims": [{"slug": "reach-exit", "params": []}],
+         "quote": "зайшов у вихід — перемога, показується вікно «Перемога»"}
+      ],
+      "windows": [
+        {"title": "Головне меню", "task": "main-menu", "description": "", "claims": [],
+         "items": [{"title": "Грати", "window": "Гра", "task": "", "note": ""}, {"title": "Вийти", "window": "", "task": "", "note": ""}],
+         "quote": "На старті головне меню: «Грати» і «Вийти»"},
+        {"title": "Гра", "task": "game-screen", "description": "Лабіринт; збоку — скільки ключів зібрано", "claims": [{"slug": "goal-counter", "params": []}], "items": [],
+         "quote": "Збоку показую, скільки ключів зібрано"},
+        {"title": "Перемога", "task": "end-screen", "description": "", "claims": [], "items": [],
+         "quote": "показується вікно «Перемога»"}
+      ],
+      "levels": [
+        {"title": "Лабіринт", "description": "Один лабіринт, намальований вручну", "mode": "hand", "count": "1", "size": "17×7", "claims": [],
+         "quote": "лабіринт один, малював сам"}
+      ],
+      "claims": [],
+      "unknown": [
+        {"quote": "Потім ще хочу зробити туман війни і, може, збереження",
+         "why": "це план, а не те, що вже є в грі, — додай, коли зробиш",
+         "candidates": ["fog-of-war", "save-game"]}
+      ]
+    }
+  }
+]

@@ -27,6 +27,14 @@ class Settings(BaseSettings):
     zoom_account_id: str = ""  # a Server-to-Server OAuth app in Zoom Marketplace (T221): attendance of a lesson from its meeting
     zoom_client_id: str = ""
     zoom_client_secret: str = ""  # all three empty = «Оновити із Zoom» says it is not set up
+    ai_describe: str = "off"  # «Описати словами» (T291 §14): off · admin — the teacher only · students — every active user
+    ai_model: str = "claude-opus-5-5"  # the pick of the three measured on the etalons (T292): the fewest proposals to fix by hand
+    ai_effort: str = "medium"
+    ai_per_day: int = 10  # requests of one student; the admin has no such limits
+    ai_total: int = 60  # …per semester
+    ai_max_chars: int = 4000
+    ai_budget_usd: float = 30  # a calendar month, everybody together — the admin too
+    anthropic_api_key: str = ""  # .env; empty = «ще не підключено»
 
     model_config = {"env_file": ("site.env", ".env"), "extra": "ignore"}
 

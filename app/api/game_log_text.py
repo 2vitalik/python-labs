@@ -2,13 +2,13 @@
 Ukrainian with values in words (game_log_names.py)."""
 from game_log_names import PARTS, Names
 
-WHAT = {"student_games": "гра", "rules": "правило", "claims": "заявка"}
+WHAT = {"student_games": "гра", "rules": "правило", "claims": "заявка", "game_drafts": "✨ опис словами"}
 LABELS = {
     "title": "назва", "description": "опис", "base_game": "основа", "base_custom": "своя основа", "phases": "порядок тіку",
     "task": "тип вікна", "role": "роль", "icon": "іконка", "screenshots": "скриншоти", "window": "вікно", "items": "переходи",
     "props": "властивості", "stats": "параметри", "states": "стани", "when": "коли", "cond": "якщо", "then": "то",
     "note": "нотатка", "part": "де", "rule": "правило", "params": "параметри", "link": "посилання", "shots": "докази", "status": "стан",
-    "verdict": "коментар викладача", "moments": "як це грається",
+    "verdict": "коментар викладача", "moments": "як це грається", "text": "текст",
 }
 HIDDEN = ("game", "owner", "order", "kind", "auto", "poured", "created_at")  # the plumbing: nobody typed these
 
@@ -17,7 +17,15 @@ def what(coll: str, snap: dict) -> str:
     return PARTS.get(snap.get("kind"), "обʼєкт") if coll == "game_parts" else WHAT.get(coll, coll)
 
 
+def proposals(n: int) -> str:
+    return f"{n} " + ("пропозиція" if n % 10 == 1 and n % 100 != 11 else "пропозиції" if 2 <= n % 10 <= 4 and not 12 <= n % 100 <= 14 else "пропозицій")
+
+
 def title(names: Names, coll: str, snap: dict) -> str:
+    if coll == "game_drafts":  # the AI's proposals (T291 §14): the text is the row's field, their states live in the draft
+        items = snap.get("items") or []
+        unknown = sum(1 for it in items if it.get("group") == "unknown")
+        return proposals(len(items) - unknown) + (f" · не розпізнано {unknown}" if unknown else "")
     if coll == "rules":
         return names.sentence(snap)
     if snap.get("kind") == "menu" and snap.get("window"):  # «Меню «Пауза»» says less than the window whose transitions these are

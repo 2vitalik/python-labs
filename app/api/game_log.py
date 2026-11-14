@@ -9,11 +9,12 @@ from core.models.user import Status, User
 from game_log_names import Names
 from game_log_text import HIDDEN, action, fields, title, what
 from models.base_game import BaseGame
+from models.draft import Draft
 from models.game import Claim, Game, Part
 from models.rule import Rule
 from models.task import Task
 
-INSIDES = (Part, Rule, Claim)  # each carries `game`, and record_new / record_delete log it: deleted ones are found by it
+INSIDES = (Part, Rule, Claim, Draft)  # each carries `game`, and record_new / record_delete log it: deleted ones are found by it
 COLLS = [m.Settings.name for m in INSIDES]
 SCRIPTS = {"auto-sync": "синхронізація каталогу", "import": "імпорт каталогу"}  # actors with no account: scripts the teacher runs
 # a change of plumbing alone (order, an auto-claim adopted) is no row: filtered in Mongo, so a page stays `limit` long
