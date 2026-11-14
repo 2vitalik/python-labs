@@ -51,15 +51,13 @@ with TestClient(main.app) as c:
           [c.get(f"/api/guide{p}").status_code for p in ("", "/labs", "/changes-draft", "/history")] == [200, 200, 404, 403])
 
     login(c, "admin@nure.ua", "admin")
-    home = c.get("/api/guide/home").json()
-    check("drafts: in `body`, cut out of `public`", "<!-- Бали лише ростуть" in home["body"]
-          and "<!--" not in home["public"] and "тільки від 80" not in home["public"], home)
     pages = c.get("/api/guide").json()
     check("seed: pages from data/guide, no draft", len(pages) >= 10 and all(p["slug"] != "changes-draft" for p in pages))
     check("seed logged", mongo[DB].history.count_documents({"coll": "guide", "actor": "seed"}) == len(pages))
     g = c.get("/api/guide/game").json()
     check("page: title/body/rev 0", g["title"].endswith("Ігри") and g["rev"] == 0 and "## " in g["body"])
-    edit = {"title": g["title"], "body": g["body"].replace("## Своя гра", "## Своя гра 2") + "\n\n<!-- нотатка -->", "rev": 0,
+    # the smoke's own heading and draft: the seed is the site's snapshot, and what its pages say changes with the site
+    edit = {"title": g["title"], "body": g["body"] + "\n\n## Своя гра 2\n\n<!-- нотатка смоуку -->", "rev": 0,
             "note": "уточнив своє", "section": "Своя гра"}
     c.cookies.clear()
     check("guest: PUT 401", c.put("/api/guide/game", json=edit).status_code == 401)
@@ -69,10 +67,12 @@ with TestClient(main.app) as c:
     login(c, "admin@nure.ua", "admin")
     r = c.put("/api/guide/game", json=edit)
     check("PUT: rev 1 + new body", r.status_code == 200 and r.json()["rev"] == 1 and "Своя гра 2" in r.json()["body"], r.text)
+    check("drafts: in `body`, cut out of `public`", "<!-- нотатка смоуку -->" in r.json()["body"]
+          and "Своя гра 2" in r.json()["public"] and "нотатка смоуку" not in r.json()["public"], r.text)
     check("stale rev → 409", c.put("/api/guide/game", json=edit).status_code == 409)
     c.cookies.clear()
     g2 = c.get("/api/guide/game").json()
-    check("guest: the open page without the draft", "Своя гра 2" in g2["body"] and "нотатка" not in g2["body"], g2["body"])
+    check("guest: the open page without the draft", "Своя гра 2" in g2["body"] and "нотатка смоуку" not in g2["body"], g2["body"])
     login(c, "admin@nure.ua", "admin")
     r = c.put("/api/guide/game", json=edit | {"rev": 1, "note": "нічого"})
     check("same text: no new rev, no draft line", r.json()["rev"] == 1 and "нічого" not in c.get("/api/guide/changes-draft").json()["body"])
