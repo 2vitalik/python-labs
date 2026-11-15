@@ -84,11 +84,12 @@ const hsl = (hex) => { // #rrggbb → [h, s, l]
   return [h * 60, s * 100, l * 100]
 }
 
-// sibling hues around the zone color (…-24° -12° 0° +12° +24°…): distinct but same family
-export const subStyle = (color, i) => {
+// a subcategory wears its category's colour (T296 §16): sibling hues around it (±12°, ±24°…) drifted into the next
+// category's colour — «Фізика поля» looked like «Інтерфейс»; one colour per category is what the eye learns, the same as
+// in the game's sections
+export const subStyle = (color) => {
   const [h, s, l] = hsl(color)
-  const hh = (h + (i % 2 ? -1 : 1) * Math.ceil(i / 2) * 12 + 360) % 360
-  return { '--sc': `hsl(${hh} ${s}% ${Math.min(l, 42)}%)`, '--st': `hsl(${hh} ${s}% 94%)` }
+  return { '--sc': `hsl(${h} ${s}% ${Math.min(l, 42)}%)`, '--st': `hsl(${h} ${s}% 94%)` }
 }
 
 let loading
