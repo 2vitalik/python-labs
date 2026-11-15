@@ -9,8 +9,10 @@ import TocList from './TocList.vue'
 
 // the way around a long page (T284 §3): «↑» to the top once the page is scrolled, and «☰» — the page's contents in a
 // panel — where the side column of Toc.vue is not shown (a narrow window, a page on the whole window: `wide`). Beside the
-// page column while there is room for it, in the corner under the thumb otherwise. «☰» opens under a mouse that rests on
-// it a moment and closes once the mouse has left the panel a while (T294 §11); a finger taps. It also runs the contents' spy (toc.js)
+// page column while there is room for it, in the corner under the thumb otherwise. «☰» opens at once under the mouse — a
+// passing mouse may open it for nothing, a waiting reader costs more (T301 §4) — and closes once the mouse has left the
+// panel a while (T294 §11); a finger taps. The panel is as wide as its lines, hung over the button: the way to a line is
+// straight up. It also runs the contents' spy (toc.js)
 const props = defineProps({ wide: Boolean })
 const far = ref(false)
 const narrow = ref(false)
@@ -27,7 +29,7 @@ let timer
 const hover = (on) => {
   if (!hovers) return
   clearTimeout(timer)
-  timer = setTimeout(() => (open.value = on), on ? 200 : 400)
+  timer = setTimeout(() => (open.value = on), on ? 40 : 400)
 }
 const tap = () => { clearTimeout(timer); open.value = hovers || !open.value }
 const route = useRoute()
@@ -53,10 +55,12 @@ onBeforeUnmount(() => {
 
 <template>
   <div ref="root" class="jump" :class="{ beside: !narrow && !wide }" @mouseleave="hover(false)">
-    <div v-if="open" class="panel shadow border rounded bg-body" @mouseenter="hover(true)">
-      <div class="text-uppercase fw-semibold mb-1">Зміст</div>
-      <TocList :items="tocListed" @went="open = false" />
-    </div>
+    <Transition name="pop">
+      <div v-if="open" class="panel shadow border rounded bg-body" @mouseenter="hover(true)">
+        <div class="text-uppercase fw-semibold mb-1">Зміст</div>
+        <TocList :items="tocListed" @went="open = false" />
+      </div>
+    </Transition>
     <button v-if="(narrow || wide) && tocListed.length" type="button" class="round" :class="{ on: open }" title="Зміст сторінки" @click="tap" @mouseenter="hover(true)"><Icon name="list" /></button>
     <button v-if="far" type="button" class="round" title="Нагору" @click="toTop(); open = false"><Icon name="top" /></button>
   </div>
@@ -70,6 +74,13 @@ onBeforeUnmount(() => {
          border-radius: 50%; background: color-mix(in srgb, var(--bs-body-bg) 88%, transparent); color: var(--bs-secondary-color);
          box-shadow: 0 1px 4px rgb(0 0 0 / .12); backdrop-filter: blur(4px); }
 .round:hover, .round.on { border-color: var(--bs-secondary-color); color: var(--bs-body-color); }
-.panel { width: 15rem; max-width: calc(100vw - 1.5rem); max-height: 70vh; overflow-y: auto; padding: .6rem .75rem; font-size: .85rem; line-height: 1.3; }
+.panel { width: max-content; min-width: 9rem; max-width: min(20rem, calc(100vw - 1.5rem)); max-height: 70vh; overflow-y: auto; padding: .5rem .5rem .5rem .6rem;
+         font-size: .85rem; line-height: 1.3; transform-origin: bottom right; }
+.beside .panel { transform-origin: bottom left; }
+/* it grows out of the button in a blink: quick enough not to wait for, slow enough to see where it came from */
+.pop-enter-active { transition: opacity .1s, transform .1s ease-out; }
+.pop-leave-active { transition: opacity .12s; }
+.pop-enter-from { opacity: 0; transform: translateY(.4rem) scale(.97); }
+.pop-leave-to { opacity: 0; }
 @media print { .jump { display: none; } }
 </style>
