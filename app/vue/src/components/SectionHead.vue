@@ -1,10 +1,11 @@
 <script setup>
 import { ref } from 'vue'
 
+import { ALL_KEY, toAll } from '@core/allkey.js'
 import HashLink from '@core/components/HashLink.vue'
 import Icon from '@core/components/Icon.vue'
 import { zones } from '../catalog.js'
-import { isFolded, isShort, setShort, toggleFold } from '../fold.js'
+import { allMode, isFolded, isShort, ownShort, toggleFold, toggleShort } from '../fold.js'
 import { canCols, modeOf } from '../layout.js'
 import { cards, CARDS, ROWS, rows } from '../looks.js'
 import ColsSwitch from './ColsSwitch.vue'
@@ -18,10 +19,15 @@ import WideSwitch from './WideSwitch.vue'
 // the page's width is switched from every heading, and `layout` — the section lays cards in columns — adds the switch of
 // its own columns (T291 §1, T294 §1–2); `anchor` — the section's id: a link to it by the title (T291 §11), the key of its
 // own columns and of its rows (T296 §6); `cardFold` — its cards fold to their heads, the switch of that too (T296 §7).
+// A switch is blue while its section differs from the top row — the default (T298); ⌥-click on any of them, the chevron
+// too, does the same in every section (allkey.js); held ⌥ rings them all under the mouse.
 // An explanation put away inside the section leaves its icon by the title (`tip-dock`, Tip.vue).
 // The heading sticks under the menu while its section is on screen: the reader sees where they are and can fold it away
 defineProps({ icon: String, title: String, count: [Number, String], note: String, fold: String, zone: String, layout: Boolean, anchor: String, cardFold: Boolean })
 const el = ref()
+const WORD = { open: 'повністю', short: 'коротко', folded: 'згорнуто' }
+const shortTip = (key) => `${isShort(key) ? 'Зараз коротко: видно початок секції — показати всю' : 'Зараз уся секція — показати коротко, лише початок'}`
+  + `${ownShort(key) ? ` (угорі — ${WORD[allMode(key.split(':')[0])]})` : ''} · ${ALL_KEY}-клік — у всіх секціях`
 
 // a change made from the heading — folding, short, other columns, another width — moves everything around it; the reader
 // stays at this section: a stuck heading keeps its section right under the menu, a heading in the flow keeps its place
@@ -41,10 +47,12 @@ async function keep(change) {
 </script>
 
 <template>
-  <h2 ref="el" class="h6 head d-flex flex-wrap align-items-center gap-2">
+  <h2 ref="el" class="h6 head d-flex flex-wrap align-items-center gap-2" data-all-host>
     <span v-if="zones[zone]" class="bar" :style="{ background: zones[zone].color }" :title="`категорія каталогу: ${zones[zone].title}`" />
-    <component :is="fold ? 'button' : 'span'" :type="fold ? 'button' : null" class="name" :class="{ fold }"
-               :aria-expanded="fold ? !isFolded(fold) : null" @click="fold && keep(() => toggleFold(fold))">
+    <component :is="fold ? 'button' : 'span'" :type="fold ? 'button' : null" class="name" :class="{ 'fold every every-start': fold }"
+               :aria-expanded="fold ? !isFolded(fold) : null" :title="fold ? `${isFolded(fold) ? 'Розгорнути' : 'Згорнути'} секцію · ${ALL_KEY}-клік — усі секції` : null"
+               :data-all="fold ? `${ALL_KEY} ${isFolded(fold) ? 'розгорнути' : 'згорнути'} всі секції` : null"
+               @click="(e) => fold && keep(() => toggleFold(fold, toAll(e)))">
       <Icon v-if="fold" :name="isFolded(fold) ? 'right' : 'down'" class="chev" />
       {{ icon }} {{ title }} <span v-if="count !== undefined" class="count">({{ count }})</span>
     </component>
@@ -60,9 +68,9 @@ async function keep(change) {
         <LookSwitch v-if="cardFold" quiet :look="cards" :modes="CARDS" label="Картки" :scope="anchor" :around="keep" />
         <WideSwitch quiet :around="keep" />
       </template>
-      <button v-if="fold && !isFolded(fold)" type="button" class="iact" :class="isShort(fold) ? 'on' : 'dim'" :aria-pressed="isShort(fold)"
-              :title="isShort(fold) ? 'Зараз коротко: видно початок секції — показати всю' : 'Зараз уся секція — показати коротко, лише початок'"
-              @click="keep(() => setShort(fold, !isShort(fold)))">
+      <button v-if="fold && !isFolded(fold)" type="button" class="iact every" :class="ownShort(fold) ? 'on' : 'dim'" :aria-pressed="isShort(fold)"
+              :title="shortTip(fold)" :data-all="`${ALL_KEY} у всіх секціях: ${isShort(fold) ? 'повністю' : 'коротко'}`"
+              @click="(e) => keep(() => toggleShort(fold, toAll(e)))">
         <Icon :name="isShort(fold) ? 'short' : 'lines'" />
       </button>
     </span>
@@ -82,8 +90,8 @@ async function keep(change) {
 /* the link to the section waits for the mouse over the heading; a finger has no hover — there it is pale, not absent */
 .hash { margin-left: -.3rem; }
 @media (hover: hover) { .head:not(:hover) .hash:not(.done) { opacity: 0; } }
-/* a switch at rest is a pale grey drawing (T291 §2) — the same drawing wears colour when it is on: short — the two lines
-   that are shown take the colour of «Показати все», the two cut ones fade (Icon `short`) */
+/* a switch at rest is a pale grey drawing (T291 §2) — the same drawing wears colour when its section differs from the
+   top row (T298): short — the two lines that are shown take the colour of «Показати все», the two cut ones fade (Icon `short`) */
 .head :deep(.iact.dim) { color: color-mix(in srgb, var(--bs-secondary-color) 60%, transparent); }
 .head :deep(.iact.dim:hover) { color: var(--bs-body-color); }
 .head :deep(.iact.on) { background: color-mix(in srgb, var(--bs-link-color) 12%, transparent); color: var(--bs-link-color); }

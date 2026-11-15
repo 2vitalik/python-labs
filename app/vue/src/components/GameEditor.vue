@@ -2,17 +2,19 @@
 import { computed, nextTick, onBeforeUnmount, onMounted, reactive, ref, toRef, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
+import { ALL_KEY } from '@core/allkey.js'
 import Clamp from '@core/components/Clamp.vue'
 import Icon from '@core/components/Icon.vue'
 import Lightbox from '@core/components/Lightbox.vue'
 import PeekHost from '@core/components/PeekHost.vue'
+import Tip from '@core/components/Tip.vue'
 import Toc from '@core/components/Toc.vue'
 import { user } from '@core/user.js'
 import { wideOf } from '@core/wide.js'
 import { applyTemplate } from '../api.js'
 import { games, kindOf, taskIndex, templates, vocab } from '../catalog.js'
 import { provideEd } from '../ed.js'
-import { allAre, isFolded, isShort, setAll, setFold, setShort } from '../fold.js'
+import { allMode, isFolded, isOwn, isShort, setAll, setFold, setShort } from '../fold.js'
 import { hints as makeHints } from '../hints.js'
 import { jump, target } from '../jump.js'
 import { canCols, colsMode, edWidth } from '../layout.js'
@@ -110,11 +112,12 @@ onMounted(() => sized.observe(root.value))
 onBeforeUnmount(() => sized.disconnect())
 
 // folding (T274 §8, T284 §3): a section is open, short (its beginning) or folded — each by its own heading, all at once
-// by the three buttons beside «Опис | Картки»
+// by the three buttons beside «Опис | Картки»: the one pressed is the default, a heading differing from it is blue (T298)
 const folded = (id) => isFolded(foldKey(id))
 const short = (id) => isShort(foldKey(id))
 const unclamp = (id) => setShort(foldKey(id), false)
-const keys = computed(() => shown.value.map(foldKey))
+const ownFolds = computed(() => shown.value.map(foldKey).filter(isOwn).length)
+const pointer = matchMedia('(hover: hover)').matches  // ⌥-click is for a mouse and a keyboard
 const MODES = [['open', 'unfold', 'усе', 'Усі секції повністю'], ['short', 'short', 'коротко', 'Усі секції коротко: початок кожної і «Показати все»'], ['folded', 'fold', 'згорнуто', 'Згорнути всі секції до заголовків']]
 const totals = computed(() => ({ ...counts.value, cards: own.value }))
 const go = (k) => (k === 'cards' ? (view.value = 'cards') : jump(k))
@@ -173,8 +176,8 @@ async function fromTemplate() {
           <button type="button" class="btn" :class="view === 'cards' ? 'btn-secondary' : 'btn-outline-secondary'" title="Усе заявлене деревом: категорія → картка → де вона" @click="view = 'cards'"><Icon name="table" /> Картки</button>
         </span>
         <span class="btn-group btn-group-sm" role="group" aria-label="секції">
-          <button v-for="[m, icon, word, tip] in MODES" :key="m" type="button" class="btn btn-outline-secondary" :class="{ active: view === 'desc' && allAre(keys, m) }"
-                  :disabled="view === 'cards'" :title="tip" @click="setAll(keys, m)"><Icon :name="icon" /><span class="d-none d-sm-inline"> {{ word }}</span></button>
+          <button v-for="[m, icon, word, tip] in MODES" :key="m" type="button" class="btn btn-outline-secondary" :class="{ active: view === 'desc' && allMode('ed') === m }"
+                  :disabled="view === 'cards'" :title="`${tip}${ownFolds ? ` · свої на заголовках: ${ownFolds}, клік їх скине` : ''}`" @click="setAll('ed', m)"><Icon :name="icon" /><span class="d-none d-sm-inline"> {{ word }}</span></button>
         </span>
         <label v-if="admin && !full" class="form-check form-switch m-0" title="Як бачить студент, поки відкрито лише простий опис">
           <input v-model="simpleLook" type="checkbox" class="form-check-input"> простий вигляд
@@ -186,6 +189,8 @@ async function fromTemplate() {
                     :off="!canCols ? 'вікно вузьке — один стовпець, вирівнювати нема чого' : colsMode === 'one' ? 'один стовпець — вирівнювати нема чого' : ''" />
         <LookSwitch wordy :look="cardLooks" :modes="CARDS" label="Картки сутностей, рівнів і вікон" />
         <WideSwitch wordy />
+        <Tip v-if="pointer" id="all-key">Угорі — як за замовчуванням для всіх секцій; кнопка на заголовку синя, поки секція інакша.
+          {{ ALL_KEY }}-клік по кнопці на заголовку — те саме одразу в усіх секціях</Tip>
       </div>
     </GameTotals>
 

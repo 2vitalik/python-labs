@@ -24,9 +24,11 @@ export const canCols = computed(() => fitCols(edWidth.value, 380, MIN2, false) >
 export const canDense = computed(() => fitCols(edWidth.value, 380, MIN2, true) > fitCols(edWidth.value, 380, MIN2, false))
 const fit = (m) => (m === 'dense' && !canDense.value ? 'some' : m)
 export const colsMode = computed(() => fit(oneCol.value ? 'one' : dense.value ? 'dense' : 'some'))
-// a section's look: its own, else the page's
+// a section's look: its own, else the page's. The page's is the default (T298): a section's own counts — and its button
+// is blue — only while it differs; clicked back to the page's, the section follows the page again
 export const modeOf = (id) => (id && own[id] ? fit(own[id]) : colsMode.value)
-export const ownCount = computed(() => Object.keys(own).length)
+export const isOwn = (id) => !!id && !!own[id] && modeOf(id) !== colsMode.value
+export const ownCount = computed(() => Object.keys(own).filter(isOwn).length)
 const after = (m) => (m === 'one' ? 'some' : m === 'some' && canDense.value ? 'dense' : 'one')
 export const nextOf = (id) => after(modeOf(id))
 
@@ -37,12 +39,13 @@ function set(one, tight) {
   dense.value = tight
   save('game-dense', tight ? '' : '0')
 }
-// one → several → dense → one; where dense gives no more columns than several, the two that differ. Without `id` — every
-// section, their own looks dropped
-export function nextCols(id) {
+// one → several → dense → one; where dense gives no more columns than several, the two that differ. Without `id`, or
+// with `all` (⌥-click on a heading: this section's next look for all) — every section, their own looks dropped
+export function nextCols(id, all) {
   const m = nextOf(id)
-  if (id) {
-    own[id] = m
+  if (id && !all) {
+    if (m === colsMode.value) delete own[id]
+    else own[id] = m
     return keepOwn()
   }
   for (const k of Object.keys(own)) delete own[k]

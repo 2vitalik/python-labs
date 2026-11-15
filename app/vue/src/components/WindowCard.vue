@@ -74,7 +74,7 @@ async function remove() {
         </template>
       </span>
     </div>
-    <div v-if="shut" class="card-body"><CardShut :text="part.description" :bits @open="toggleCard(part.id, 'windows')" /></div>
+    <div v-if="shut" class="card-body"><CardShut :text="part.description" :bits @open="toggleCard(part.id, 'windows', $event)" /></div>
     <div v-else class="card-body vstack gap-2">
       <div v-if="edit" class="editing pform"><WindowForm :part :focus="edit" @done="edit = ''" @cancel="edit = ''" /></div>
       <template v-else>

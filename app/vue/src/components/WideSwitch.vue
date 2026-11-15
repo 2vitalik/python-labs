@@ -7,7 +7,8 @@ import { wideOf } from '@core/wide.js'
 
 // a game's description on the whole window or back in the page column (T287) — where the page allows it (router:
 // meta.wide 'game'). On a window no wider than the column there is nothing to widen: a heading has no button then, the
-// top row (`wordy`, with a line of what it does) keeps it greyed, saying why. `quiet`, `around` — as in ColsSwitch
+// top row (`wordy`, with a line of what it does) keeps it greyed, saying why. `quiet`, `around` — as in ColsSwitch; quiet,
+// it is never blue: on a section's heading blue says «this section's own» (T298), and the width is always the page's
 defineProps({ quiet: Boolean, wordy: Boolean, around: { type: Function, default: (change) => change() } })
 const route = useRoute()
 const memo = wideOf('game')
@@ -27,7 +28,7 @@ const tip = computed(() => (on.value ? 'Назад у колонку сторі�
     <span class="why">{{ !roomy ? 'Ширина: вікно вузьке — сторінка й так на всю' : on ? 'Ширина: на все вікно — клік поверне в колонку' : 'Ширина: колонка сторінки — клік розтягне на все вікно' }}</span>
   </span>
   <button v-else-if="route.meta.wide === 'game' && roomy" type="button" class="d-inline-flex align-items-center"
-          :class="quiet ? ['iact', on ? 'on' : 'dim'] : ['btn btn-sm btn-outline-secondary px-2', { active: on }]"
+          :class="quiet ? 'iact dim' : ['btn btn-sm btn-outline-secondary px-2', { active: on }]"
           :title="tip" @click="around(memo.toggle)"><IconArrows :out="!on" /></button>
 </template>
 

@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T298** · тікетів: 297 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T300** · тікетів: 299 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -304,4 +304,6 @@
 | platform | [T294](platform/.t/T294--game-desc-v9/plan.md) | ⚙️ | game-desc-v9 | Опис гри v9 — шліфування за диктовкою після v8 — план | 🟢 ⬜ |
 | games | [T295](games/.t/T295-Q--game-desc-v9-choices.md) | ❓ | game-desc-v9-choices | Опис гри v9 — вибори | 🔴 ⬜ |
 | platform | [T296](platform/.t/T296--game-desc-v10/plan.md) | ⚙️ | game-desc-v10 | Опис гри v10 — шліфування за диктовкою після v9 — план | 🟢 ⬜ |
-| games | [T297](games/.t/T297-Q--game-desc-v10-choices.md) | ❓ | game-desc-v10-choices | Опис гри v10 — вибори | 🟢 ⬜ |
+| games | [T297](games/.t/T297-Q--game-desc-v10-choices.md) | ❓ | game-desc-v10-choices | Опис гри v10 — вибори | 🔴 ⬜ |
+| platform | [T298](platform/.t/T298--game-looks-all/plan.md) | ⚙️ | game-looks-all | Вигляд секцій «Гри»: ⌥-клік — у всіх, верх — за замовчуванням — план | 🟢 ⬜ |
+| games | [T299](games/.t/T299-Q--game-looks-all-choices.md) | ❓ | game-looks-all-choices | Вигляд секцій «Гри» — вибори | 🔴 ⬜ |

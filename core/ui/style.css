@@ -46,6 +46,15 @@ html.toc-bar { --stick-h: 2rem; }  /* TocBar's row under the menu */
                                padding: .1rem .45rem; border-radius: .3rem; background: var(--bs-emphasis-color); color: var(--bs-body-bg);
                                font-size: .75rem; font-weight: 400; letter-spacing: 0; text-transform: none; white-space: nowrap; pointer-events: none; }
 .qtip.qtip-end[data-tip]:hover::after { left: auto; right: 0; transform: none; }
+/* ⌥ / Alt held (allkey.js): the buttons that would act on all take a dashed ring — every one of them under the mouse
+   in a `[data-all-host]` — and the one under the cursor says at once what it will do; below, as a heading sticks under
+   the menu. `.every-start` — a button on the left, its words go right */
+.all-key [data-all-host]:hover .every, .all-key .every:hover { outline: 1px dashed currentColor; outline-offset: 1px; }
+.all-key .every[data-all]:hover { position: relative; }
+.all-key .every[data-all]:hover::after { content: attr(data-all); position: absolute; z-index: 45; top: calc(100% + .3rem); right: 0;
+                                         padding: .1rem .45rem; border-radius: .3rem; background: var(--bs-emphasis-color); color: var(--bs-body-bg);
+                                         font-size: .75rem; font-weight: 400; white-space: nowrap; pointer-events: none; }
+.all-key .every.every-start[data-all]:hover::after { right: auto; left: 0; }
 /* an open form (T291 §4): a frame nobody misses — «editing here: save or cancel»; the form of a new thing wears the
    colour of «add». The host keeps its own padding */
 :root { --act-edit: #fd7e14; }
