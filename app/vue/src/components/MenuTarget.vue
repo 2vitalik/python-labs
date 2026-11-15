@@ -1,9 +1,11 @@
 <script setup>
 import { computed, ref } from 'vue'
 
+import Icon from '@core/components/Icon.vue'
 import Pop from '@core/components/Pop.vue'
 import { useEd } from '../ed.js'
 import { cardItems } from '../items.js'
+import CardSign from './CardSign.vue'
 import Picker from './Picker.vue'
 
 // where a transition leads (T270 §10.1, T278 §4): nowhere, another window of the game, or a card — an action that opens no
@@ -33,8 +35,8 @@ function pick(it) {
   <Pop v-model="open" width="24rem" class="target">
     <template #trigger="{ toggle }">
       <button type="button" class="form-select form-select-sm text-start text-truncate" title="Куди веде або що робить" @click="toggle">
-        <template v-if="win">🪟 {{ winTitle }}</template>
-        <template v-else-if="task">⚙ {{ ed.info(task)?.title || task }}</template>
+        <template v-if="win"><Icon name="win" /> {{ winTitle }}</template>
+        <template v-else-if="task"><CardSign :task="ed.info(task)" /> {{ ed.info(task)?.title || task }}</template>
         <span v-else class="text-secondary">нікуди</span>
       </button>
     </template>

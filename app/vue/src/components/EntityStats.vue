@@ -16,7 +16,7 @@ const peek = (s) => (statOf(s.key)?.slug ? { kind: 'task', id: statOf(s.key).slu
 </script>
 
 <template>
-  <PartBlock v-if="part.stats?.length" icon="🔢" zone="entities" title="Параметри">
+  <PartBlock v-if="part.stats?.length" pic="gauge" zone="entities" title="Параметри">
     <div class="stats">
       <div v-for="s in part.stats" :key="s.key" v-peek="peek(s)" class="stat" :title="statOf(s.key) ? null : 'свій параметр'">
         <span class="name">{{ statOf(s.key)?.icon || '•' }} {{ s.label || s.key }}</span>
@@ -24,7 +24,7 @@ const peek = (s) => (statOf(s.key)?.slug ? { kind: 'task', id: statOf(s.key).slu
       </div>
     </div>
   </PartBlock>
-  <PartBlock v-if="part.states?.length" icon="◐" zone="entities" title="Стани" inline>
+  <PartBlock v-if="part.states?.length" pic="half" zone="entities" title="Стани" inline>
     <span class="d-flex flex-wrap gap-1"><span v-for="st in part.states" :key="st" class="state">{{ st }}</span></span>
   </PartBlock>
 </template>

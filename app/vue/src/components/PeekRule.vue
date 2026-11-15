@@ -20,10 +20,10 @@ const show = () => { close(); jump(`r-${props.id}`) }
 
 <template>
   <div v-if="rule" class="vstack gap-2">
-    <div class="pk-head"><PartLabel icon="⚡" zone="game-logic">Правило</PartLabel></div>
+    <div class="pk-head"><PartLabel pic="bolt" zone="game-logic">Правило</PartLabel></div>
     <RuleText :rule :parts="ed.parts" />
     <div v-if="claims.length">
-      <PartLabel icon="🃏">Картки на правилі</PartLabel>
+      <PartLabel pic="card">Картки на правилі</PartLabel>
       <div v-for="c in claims" :key="c.id" class="pk-row"><span><CardSign :task="ed.info(c.task)" /> <span v-peek="{ kind: 'task', id: c.task }">{{ ed.info(c.task)?.title || c.task }}</span></span></div>
     </div>
     <button type="button" class="pk-go" @click.stop="show">до правила на сторінці <Icon name="arrow" /></button>

@@ -38,8 +38,8 @@ const claims = computed(() => ed.claimsOf(p.part.id).filter((c) => !c.auto))
 const shut = computed(() => !edit.value && isShut(p.part.id, 'levels'))
 // «show me where» a claim of this card is: a folded card opens to show it
 watch(target, (id) => id && shut.value && claims.value.some((c) => `c-${c.id}` === id) && toggleCard(p.part.id, 'levels'))
-const bits = computed(() => [['🔢', p.part.stats?.length, 'параметри'], ['▦', values.value.map ? 1 : 0, 'карта рівня'],
-  ['image', p.part.screenshots?.length, 'скриншоти'], ['🃏', claims.value.length, 'картки рівня']])
+const bits = computed(() => [['gauge', p.part.stats?.length, 'параметри'], ['grid', values.value.map ? 1 : 0, 'карта рівня'],
+  ['image', p.part.screenshots?.length, 'скриншоти'], ['card', claims.value.length, 'картки рівня']])
 
 async function remove() {
   try {
@@ -70,7 +70,7 @@ async function remove() {
       <div v-if="edit" class="editing pform"><LevelForm :part @done="edit = false" @cancel="edit = false" /></div>
       <template v-else>
         <PropsList :props="values" :specs />
-        <PartBlock v-if="part.stats?.length" icon="🔢" zone="levels" title="Параметри" inline class="small">
+        <PartBlock v-if="part.stats?.length" pic="gauge" zone="levels" title="Параметри" inline class="small">
           <span class="d-flex flex-wrap gap-1">
             <span v-for="s in part.stats" :key="s.key" class="badge rounded-pill fw-normal stat">
               {{ s.label || s.key }} {{ s.value }} <span v-if="s.unit" class="opacity-75">{{ s.unit }}</span>
@@ -81,7 +81,7 @@ async function remove() {
         <MomentField v-if="values.map" :text="values.map" />
         <ShotStrip v-if="ed.editable || part.screenshots?.length" :part />
       </template>
-      <PartBlock v-if="claims.length || ed.editable" icon="🃏" zone="levels" title="Картки рівня">
+      <PartBlock v-if="claims.length || ed.editable" pic="card" zone="levels" title="Картки рівня">
         <template #after><CardPicker plus :kinds="['level']" :anchor="{ part: part.id }" label="картка рівня" /></template>
         <div v-if="claims.length" class="vstack gap-1">
           <ClaimRow v-for="c in claims" :key="c.id" :claim="c" />

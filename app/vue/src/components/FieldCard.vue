@@ -53,7 +53,7 @@ defineExpose({ add: () => (edit.value = true) })
         <div v-if="ed.field.description" class="small">{{ ed.field.description }}</div>
         <ShotStrip v-if="ed.editable || ed.field.screenshots?.length" :part="ed.field" />
       </template>
-      <PartBlock v-if="ed.field && (claims.length || ed.editable)" icon="🃏" zone="field" title="Картки про поле">
+      <PartBlock v-if="ed.field && (claims.length || ed.editable)" pic="card" zone="field" title="Картки про поле">
         <template #after><CardPicker plus :kinds="['field']" :anchor="{ part: ed.field.id }" label="картка про поле" /></template>
         <div v-if="claims.length" class="vstack gap-1">
           <ClaimRow v-for="c in claims" :key="c.id" :claim="c" />

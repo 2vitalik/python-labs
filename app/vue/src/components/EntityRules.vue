@@ -17,7 +17,7 @@ const mine = computed(() => ed.rules.filter((r) => mentions(r, props.part.id)))
 </script>
 
 <template>
-  <PartBlock v-if="mine.length" icon="⚡" zone="game-logic" title="Правила" class="rules" role="button" :aria-expanded="open" @click="open = !open">
+  <PartBlock v-if="mine.length" pic="bolt" zone="game-logic" title="Правила" class="rules" role="button" :aria-expanded="open" @click="open = !open">
     <template #after><span class="count">{{ mine.length }}</span><Icon :name="open ? 'down' : 'right'" class="chev" /></template>
     <div v-if="open" class="vstack gap-1" @click.stop>
       <div v-for="r in mine" :key="r.id" class="rule" role="button" title="до правила" @click="jump(`r-${r.id}`)">

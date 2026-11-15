@@ -43,8 +43,8 @@ const shut = computed(() => !edit.value && isShut(props.part.id, 'windows'))
 // «show me where» a claim of this card is: a folded card opens to show it
 watch(target, (id) => id && shut.value && claims.value.some((c) => `c-${c.id}` === id) && toggleCard(props.part.id, 'windows'))
 const bits = computed(() => [['image', props.part.screenshots?.length, 'скриншоти'],
-  ['↪\uFE0E', (menu.value?.items?.length || 0) + jumps.value.filter((j) => j.from === props.part.id).length, 'переходи й дії'],
-  ['🧩', claims.value.length, 'елементи']])
+  ['goto', (menu.value?.items?.length || 0) + jumps.value.filter((j) => j.from === props.part.id).length, 'переходи й дії'],
+  ['widgets', claims.value.length, 'елементи']])
 
 async function remove() {
   error.value = ''
@@ -84,7 +84,7 @@ async function remove() {
       </template>
       <template v-if="!ed.simple">
         <MenuItems :window="part" :menu />
-        <PartBlock v-if="claims.length || ed.editable" icon="🧩" zone="interface" title="Елементи" class="small">
+        <PartBlock v-if="claims.length || ed.editable" pic="widgets" zone="interface" title="Елементи" class="small">
           <template #after><CardPicker plus :kinds="['element']" :anchor="{ part: part.id }" label="елемент" /></template>
           <div v-if="claims.length" class="vstack gap-1">
             <ClaimRow v-for="c in claims" :key="c.id" :claim="c" />

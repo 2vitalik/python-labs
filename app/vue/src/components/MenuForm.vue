@@ -48,7 +48,7 @@ const remove = () => run(() => deletePart(props.menu.id))
 
 <template>
   <div class="vstack frm" :class="{ notes: shown.notes }" data-dock>
-    <span class="d-flex align-items-center gap-1"><PartLabel icon="↪" zone="interface">Переходи й дії</PartLabel><span class="tip-dock" /></span>
+    <span class="d-flex align-items-center gap-1"><PartLabel pic="goto" zone="interface">Переходи й дії</PartLabel><span class="tip-dock" /></span>
     <Tip id="menu-form-rows">Рядок — що натиснули чи що сталось, і куди це веде: інше вікно або дія — картка, що щось робить
       (рестарт рівня, гучність, збереження). Перехід за подією гри (перемога → вікно) задає правило.</Tip>
     <div v-for="(it, i) in rows" :key="i" class="item">

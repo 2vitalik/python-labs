@@ -43,7 +43,7 @@ const show = () => { close(); jump(`p-${props.id}`) }
     <div v-if="win.description">{{ win.description }}</div>
     <div v-else class="text-secondary">Опису ще нема.</div>
     <div v-if="items.length || jumps.length">
-      <PartLabel icon="↪" zone="interface">Переходи й дії</PartLabel>
+      <PartLabel pic="goto" zone="interface">Переходи й дії</PartLabel>
       <div v-for="(it, i) in items" :key="i" class="pk-row">
         <span>{{ it.title }}</span>
         <span v-if="title(it.window)">→ <Icon :name="sign(it.window)" class="gg-w" :class="tone(it.window)" /> <span v-peek="{ kind: 'window', id: it.window }">{{ title(it.window) }}</span></span>
@@ -56,7 +56,7 @@ const show = () => { close(); jump(`p-${props.id}`) }
       </div>
     </div>
     <div v-if="claims.length">
-      <PartLabel icon="🧩" zone="interface">Елементи</PartLabel>
+      <PartLabel pic="widgets" zone="interface">Елементи</PartLabel>
       <div v-for="c in claims" :key="c.id" class="pk-row"><span><CardSign :task="ed.info(c.task)" /> <span v-peek="{ kind: 'task', id: c.task }">{{ card(c.task) }}</span></span></div>
     </div>
     <button type="button" class="pk-go" @click.stop="show">до вікна на сторінці <Icon name="arrow" /></button>

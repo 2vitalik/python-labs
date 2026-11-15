@@ -26,7 +26,7 @@ const winTitle = (id) => ed.windows.find((w) => w.id === id)?.title
 <template>
   <div v-if="items.length || jumps.length || ed.editable" class="small">
     <MenuForm v-if="edit" :window :menu class="editing open-form" :class="{ new: !menu }" @done="edit = false" @cancel="edit = false" />
-    <PartBlock v-else icon="↪" zone="interface" title="Переходи й дії">
+    <PartBlock v-else pic="goto" zone="interface" title="Переходи й дії">
       <!-- by the caption (T294 §8): «＋» while there are none, the pencil once there are -->
       <template v-if="ed.editable" #after>
         <button v-if="items.length" type="button" class="iact qtip" data-tip="Редагувати переходи й дії" aria-label="Редагувати переходи й дії" @click="edit = true"><Icon name="pencil" /></button>

@@ -39,8 +39,8 @@ const roleClaim = computed(() => (role.value.slug ? auto.value.find((c) => c.tas
 const shut = computed(() => !edit.value && isShut(props.part.id, 'entities'))
 // «show me where» a claim of this card is: a folded card opens to show it
 watch(target, (id) => id && shut.value && claims.value.some((c) => `c-${c.id}` === id) && toggleCard(props.part.id, 'entities'))
-const bits = computed(() => [['🔢', props.part.stats?.length, 'параметри'], ['◐', props.part.states?.length, 'стани'],
-  ['image', props.part.screenshots?.length, 'скриншоти'], ['⚙', mechanics.value.length, 'механіки'],
+const bits = computed(() => [['gauge', props.part.stats?.length, 'параметри'], ['half', props.part.states?.length, 'стани'],
+  ['image', props.part.screenshots?.length, 'скриншоти'], ['cog', mechanics.value.length, 'механіки'],
   ['⚡', ed.rules.filter((r) => mentions(r, props.part.id)).length, 'правила']])
 
 async function remove() {
@@ -78,7 +78,7 @@ async function remove() {
         <ShotStrip :part need />
       </template>
       <template v-if="!ed.simple">
-        <PartBlock v-if="mechanics.length || ed.editable" icon="⚙" zone="entities" title="Механіки">
+        <PartBlock v-if="mechanics.length || ed.editable" pic="cog" zone="entities" title="Механіки">
           <template #after><CardPicker plus :kinds="['mechanic']" :anchor="{ part: part.id }" label="механіка" /></template>
           <div v-if="mechanics.length" class="vstack gap-1">
             <ClaimRow v-for="c in mechanics" :key="c.id" :claim="c" />

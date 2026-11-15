@@ -41,7 +41,7 @@ const show = () => { close(); jump(`p-${props.id}`) }
     <EntityStats :part :auto="claims.filter((c) => c.auto)" />
     <div v-if="mechanics.length">
       <button type="button" class="pk-fold" @click.stop="open = open === 'mechanics' ? '' : 'mechanics'">
-        <PartLabel icon="⚙" zone="entities">Механіки</PartLabel> {{ mechanics.length }} <Icon :name="open === 'mechanics' ? 'down' : 'right'" />
+        <PartLabel pic="cog" zone="entities">Механіки</PartLabel> {{ mechanics.length }} <Icon :name="open === 'mechanics' ? 'down' : 'right'" />
       </button>
       <template v-if="open === 'mechanics'">
         <div v-for="c in mechanics" :key="c.id" class="pk-row"><span><CardSign :task="ed.info(c.task)" /> <span v-peek="{ kind: 'task', id: c.task }">{{ ed.info(c.task)?.title || c.task }}</span></span></div>
@@ -49,7 +49,7 @@ const show = () => { close(); jump(`p-${props.id}`) }
     </div>
     <div v-if="rules.length">
       <button type="button" class="pk-fold" @click.stop="open = open === 'rules' ? '' : 'rules'">
-        <PartLabel icon="⚡" zone="game-logic">Правила</PartLabel> {{ rules.length }} <Icon :name="open === 'rules' ? 'down' : 'right'" />
+        <PartLabel pic="bolt" zone="game-logic">Правила</PartLabel> {{ rules.length }} <Icon :name="open === 'rules' ? 'down' : 'right'" />
       </button>
       <div v-if="open === 'rules'" class="vstack gap-1 mt-1">
         <div v-for="r in rules" :key="r.id" v-peek="{ kind: 'rule', id: r.id }" class="pk-rule"><RuleText :rule="r" :parts="ed.parts" /></div>
