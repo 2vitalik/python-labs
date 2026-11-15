@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 
-import { ALL_KEY, toAll } from '@core/allkey.js'
+import { ALL_HOW, toAll } from '@core/allkey.js'
 import Icon from '@core/components/Icon.vue'
 
 // a look of the description in one button (T296 §6–7), as ColsSwitch: its icon is the look it is in, a click — the next.
@@ -19,7 +19,7 @@ const mine = computed(() => !!p.scope && !!p.look.own[p.scope])
 const count = computed(() => p.look.count.value)
 const tip = computed(() => p.off || (p.scope
   ? `${p.label} — ${mine.value ? `своє: ${cur.value[2]} (угорі — ${word(top.value)})` : `як угорі: ${cur.value[2]}`}. `
-    + `Клік — ${next.value[2]}${next.value[0] === top.value ? ', як угорі' : ' лише тут'} · ${ALL_KEY}-клік — у всіх секціях`
+    + `Клік — ${next.value[2]}${next.value[0] === top.value ? ', як угорі' : ' лише тут'} · ${ALL_HOW} — у всіх секціях`
   : `${p.label} зараз: ${cur.value[2]}. Клік — ${next.value[2]} у всіх секціях`))
 const go = (e) => p.around(() => p.look.set(next.value[0], toAll(e) ? undefined : p.scope))
 </script>
@@ -30,7 +30,7 @@ const go = (e) => p.around(() => p.look.set(next.value[0], toAll(e) ? undefined 
     <span class="why">{{ label }}: {{ off || `${cur[2]} — у всіх секціях` }}<template v-if="!off && count"> · свої (сині на заголовках): {{ count }}, клік їх скине</template></span>
   </span>
   <button v-else type="button" :class="quiet ? ['iact every', mine ? 'on' : 'dim'] : 'btn btn-sm btn-outline-secondary px-2'" :aria-pressed="mine"
-          :disabled="!!off" :title="tip" :data-all="`${ALL_KEY} у всіх секціях: ${next[2].split(' — ')[0]}`" @click="go"><Icon :name="cur[1]" /></button>
+          :disabled="!!off" :title="tip" :data-all="`у всіх секціях: ${next[2].split(' — ')[0]}`" @click="go"><Icon :name="cur[1]" /></button>
 </template>
 
 <style scoped>

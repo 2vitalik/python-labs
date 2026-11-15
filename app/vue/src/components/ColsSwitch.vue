@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 
-import { ALL_KEY, toAll } from '@core/allkey.js'
+import { ALL_HOW, toAll } from '@core/allkey.js'
 import Icon from '@core/components/Icon.vue'
 import { canCols, colsMode, isOwn, modeOf, nextCols, nextOf, ownCount } from '../layout.js'
 
@@ -18,7 +18,7 @@ const mine = computed(() => isOwn(p.scope))
 const next = computed(() => nextOf(p.scope))
 const tip = computed(() => (!canCols.value ? 'Вікно вузьке: один стовпець за будь-якого вибору'
   : p.scope ? `Стовпці — ${mine.value ? `своє: ${LOOK[mode.value][1]} (угорі — ${LOOK[colsMode.value][1]})` : `як угорі: ${LOOK[mode.value][1]}`}. `
-    + `Клік — ${LOOK[next.value][1]}${next.value === colsMode.value ? ', як угорі' : ' лише тут'} · ${ALL_KEY}-клік — у всіх секціях`
+    + `Клік — ${LOOK[next.value][1]}${next.value === colsMode.value ? ', як угорі' : ' лише тут'} · ${ALL_HOW} — у всіх секціях`
     : `Зараз: ${LOOK[mode.value][1]}. Клік — ${LOOK[nextOf()][1]} у всіх секціях`))
 </script>
 
@@ -30,7 +30,7 @@ const tip = computed(() => (!canCols.value ? 'Вікно вузьке: один 
       · свої (сині на заголовках): {{ ownCount }}, клік їх скине</template></span>
   </span>
   <button v-else-if="canCols" type="button" :class="quiet ? ['iact every', mine ? 'on' : 'dim'] : 'btn btn-sm btn-outline-secondary px-2'" :aria-pressed="mine"
-          :title="tip" :data-all="`${ALL_KEY} у всіх секціях: ${LOOK[next][1].split(' — ')[0]}`" @click="(e) => around(() => nextCols(scope, toAll(e)))"><Icon :name="LOOK[mode][0]" /></button>
+          :title="tip" :data-all="`у всіх секціях: ${LOOK[next][1].split(' — ')[0]}`" @click="(e) => around(() => nextCols(scope, toAll(e)))"><Icon :name="LOOK[mode][0]" /></button>
 </template>
 
 <style scoped>

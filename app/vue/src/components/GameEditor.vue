@@ -117,7 +117,7 @@ const folded = (id) => isFolded(foldKey(id))
 const short = (id) => isShort(foldKey(id))
 const unclamp = (id) => setShort(foldKey(id), false)
 const ownFolds = computed(() => shown.value.map(foldKey).filter(isOwn).length)
-const pointer = matchMedia('(hover: hover)').matches  // ⌥-click is for a mouse and a keyboard
+const pointer = matchMedia('(hover: hover)').matches  // a phone has no ⌥: it only holds
 const MODES = [['open', 'unfold', 'усе', 'Усі секції повністю'], ['short', 'short', 'коротко', 'Усі секції коротко: початок кожної і «Показати все»'], ['folded', 'fold', 'згорнуто', 'Згорнути всі секції до заголовків']]
 const totals = computed(() => ({ ...counts.value, cards: own.value }))
 const go = (k) => (k === 'cards' ? (view.value = 'cards') : jump(k))
@@ -189,8 +189,8 @@ async function fromTemplate() {
                     :off="!canCols ? 'вікно вузьке — один стовпець, вирівнювати нема чого' : colsMode === 'one' ? 'один стовпець — вирівнювати нема чого' : ''" />
         <LookSwitch wordy :look="cardLooks" :modes="CARDS" label="Картки сутностей, рівнів і вікон" />
         <WideSwitch wordy />
-        <Tip v-if="pointer" id="all-key">Угорі — як за замовчуванням для всіх секцій; кнопка на заголовку синя, поки секція інакша.
-          {{ ALL_KEY }}-клік по кнопці на заголовку — те саме одразу в усіх секціях</Tip>
+        <Tip id="all-key">Угорі — як за замовчуванням для всіх секцій; кнопка на заголовку синя, поки секція інакша.
+          {{ pointer ? `${ALL_KEY}-клік чи утримати кнопку на заголовку` : 'Утримай кнопку на заголовку' }} — те саме одразу в усіх секціях</Tip>
       </div>
     </GameTotals>
 

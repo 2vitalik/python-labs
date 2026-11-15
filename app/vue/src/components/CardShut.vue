@@ -1,5 +1,5 @@
 <script setup>
-import { ALL_KEY, toAll } from '@core/allkey.js'
+import { ALL_HOW, toAll } from '@core/allkey.js'
 import Icon from '@core/components/Icon.vue'
 
 // a card folded to its head (T296 §7): two lines of its description and a line of what is inside — a block's sign and a
@@ -11,11 +11,11 @@ defineEmits(['open'])
 </script>
 
 <template>
-  <div class="shut" role="button" data-all-host :title="`Розгорнути картку · ${ALL_KEY}-клік — усі картки`" @click="(e) => $emit('open', toAll(e))">
+  <div class="shut" role="button" data-all-host :title="`Розгорнути картку · ${ALL_HOW} — усі картки`" @click="(e) => $emit('open', toAll(e))">
     <div class="txt" :class="{ none: !text }">{{ text || 'опису ще нема' }}</div>
     <div class="bits">
       <span v-for="[sign, n, word] in bits.filter((b) => b[1])" :key="word" :title="`${word}: ${n}`"><Icon v-if="/^[a-z]/.test(sign)" :name="sign" /><template v-else>{{ sign }}</template> {{ n }}</span>
-      <span class="open every" :data-all="`${ALL_KEY} розгорнути всі картки`">розгорнути <Icon name="down" /></span>
+      <span class="open every" data-all="розгорнути всі картки">розгорнути <Icon name="down" /></span>
     </div>
   </div>
 </template>

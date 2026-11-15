@@ -1,5 +1,5 @@
 <script setup>
-import { ALL_KEY, toAll } from '@core/allkey.js'
+import { ALL_HOW, toAll } from '@core/allkey.js'
 import Icon from '@core/components/Icon.vue'
 import { cardOwn, isShut, toggleCard } from '../looks.js'
 
@@ -11,8 +11,8 @@ defineProps({ id: String, scope: String })
 
 <template>
   <button type="button" class="iact fold every" :class="{ on: cardOwn(id, scope) }"
-          :title="`${isShut(id, scope) ? 'Розгорнути картку' : 'Згорнути картку до заголовка'} · ${ALL_KEY}-клік — усі картки`"
-          :data-all="`${ALL_KEY} ${isShut(id, scope) ? 'розгорнути' : 'згорнути'} всі картки`"
+          :title="`${isShut(id, scope) ? 'Розгорнути картку' : 'Згорнути картку до заголовка'} · ${ALL_HOW} — усі картки`"
+          :data-all="`${isShut(id, scope) ? 'розгорнути' : 'згорнути'} всі картки`"
           :aria-expanded="!isShut(id, scope)" @click="(e) => toggleCard(id, scope, toAll(e))"><Icon :name="isShut(id, scope) ? 'down' : 'up'" /></button>
 </template>
 
