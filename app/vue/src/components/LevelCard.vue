@@ -1,12 +1,16 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 
 import DelButton from '@core/components/DelButton.vue'
 import Icon from '@core/components/Icon.vue'
 import { deletePart } from '../api.js'
 import { vocab, zones } from '../catalog.js'
 import { useEd } from '../ed.js'
+import { target } from '../jump.js'
+import { isShut, toggleCard } from '../looks.js'
+import CardFold from './CardFold.vue'
 import CardPicker from './CardPicker.vue'
+import CardShut from './CardShut.vue'
 import ClaimRow from './ClaimRow.vue'
 import LevelForm from './LevelForm.vue'
 import MomentField from './MomentField.vue'
@@ -18,7 +22,8 @@ import '../partCard.css'
 // one level or a group of alike ones (T270 §9): where it comes from and how many, its size, the field's properties it
 // overrides, its parameters, its map drawn in cells (T276), screenshots and cards; the head is tinted and sticks while the
 // card passes (partCard.css); the pencil turns the head and the top of the card into its form in place, framed alone
-// (T294 §4) — the level's cards stay under the form, each with its trash (T284 §4)
+// (T294 §4) — the level's cards stay under the form, each with its trash (T284 §4). Folded (T296 §7) — the head, two lines
+// and what is inside
 const p = defineProps({ part: Object })
 const ed = useEd()
 const edit = ref(false)
@@ -30,6 +35,11 @@ const mode = computed(() => {
 // the level's own size, then whatever of the field it changes
 const specs = computed(() => [...vocab.value.level.filter((s) => s.key === 'size'), ...vocab.value.field.filter((s) => s.key !== 'size')])
 const claims = computed(() => ed.claimsOf(p.part.id).filter((c) => !c.auto))
+const shut = computed(() => !edit.value && isShut(p.part.id, 'levels'))
+// «show me where» a claim of this card is: a folded card opens to show it
+watch(target, (id) => id && shut.value && claims.value.some((c) => `c-${c.id}` === id) && toggleCard(p.part.id, 'levels'))
+const bits = computed(() => [['🔢', p.part.stats?.length, 'параметри'], ['▦', values.value.map ? 1 : 0, 'карта рівня'],
+  ['image', p.part.screenshots?.length, 'скриншоти'], ['🃏', claims.value.length, 'картки рівня']])
 
 async function remove() {
   try {
@@ -47,12 +57,16 @@ async function remove() {
       <span>🪜</span>
       <span class="fw-semibold">{{ part.title }}</span>
       <span class="text-secondary small">{{ mode }}<template v-if="values.count"> {{ /^\d+$/.test(values.count) ? '×' : '·' }} {{ values.count }}</template></span>
-      <span v-if="ed.editable" class="pcard-acts">
-        <button type="button" class="iact" title="Редагувати" @click="edit = true"><Icon name="pencil" /></button>
-        <DelButton :what="`рівень «${part.title}»`" note="разом зі скриншотами й картками рівня" @yes="remove" />
+      <span class="pcard-acts">
+        <CardFold :id="part.id" scope="levels" />
+        <template v-if="ed.editable">
+          <button type="button" class="iact" title="Редагувати" @click="edit = true"><Icon name="pencil" /></button>
+          <DelButton :what="`рівень «${part.title}»`" note="разом зі скриншотами й картками рівня" @yes="remove" />
+        </template>
       </span>
     </div>
-    <div class="card-body vstack gap-2">
+    <div v-if="shut" class="card-body"><CardShut :text="part.description" :bits @open="toggleCard(part.id, 'levels')" /></div>
+    <div v-else class="card-body vstack gap-2">
       <div v-if="edit" class="editing pform"><LevelForm :part @done="edit = false" @cancel="edit = false" /></div>
       <template v-else>
         <PropsList :props="values" :specs />

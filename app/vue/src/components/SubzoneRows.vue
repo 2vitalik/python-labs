@@ -3,7 +3,8 @@ import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
 import { zones } from '../catalog.js'
 import { useEd } from '../ed.js'
-import { fitCols, modeOf, split } from '../layout.js'
+import { fitCols, MIN2, modeOf, split } from '../layout.js'
+import { rows as rowsLook } from '../looks.js'
 import ClaimLinkRow from './ClaimLinkRow.vue'
 import ClaimRow from './ClaimRow.vue'
 
@@ -39,7 +40,8 @@ onBeforeUnmount(() => ro?.disconnect())
 const mode = computed(() => modeOf(p.scope))
 const tight = computed(() => mode.value === 'dense')
 const tables = computed(() => Math.max(1, Math.min(tight.value ? 3 : 2, Math.floor(width.value / (tight.value ? 440 : 520)))))
-const n = computed(() => (!p.cols || mode.value === 'one' ? 1 : p.table ? tables.value : fitCols(width.value, 330, 620, tight.value)))
+const n = computed(() => (!p.cols || mode.value === 'one' ? 1 : p.table ? tables.value : fitCols(width.value, 330, MIN2, tight.value)))
+const inRows = computed(() => n.value > 1 && rowsLook.of(p.scope) === 'rows')  // a row at a time, in the catalog's order (T296 §6)
 
 // a table's subcategories in `n` runs of about as many rows each, in the catalog's order
 const runs = computed(() => {
@@ -70,7 +72,10 @@ const runs = computed(() => {
     <template v-else>
       <div v-for="g in groups" :id="idOf(g)" :key="g.key" class="group noflash">
         <div class="sub">{{ g.label }}</div>
-        <div class="d-flex align-items-start gap-2">
+        <div v-if="inRows" class="in-rows" :style="{ '--n': n }">
+          <ClaimRow v-for="c in g.list" :key="c.id" :claim="c" :where />
+        </div>
+        <div v-else class="d-flex align-items-start gap-2">
           <div v-for="(col, i) in split(g.list, n)" :key="i" class="stack vstack gap-1">
             <ClaimRow v-for="c in col" :key="c.id" :claim="c" :where />
           </div>
@@ -82,6 +87,7 @@ const runs = computed(() => {
 
 <style scoped>
 .stack { flex: 1 1 0; min-width: 0; }
+.in-rows { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: .25rem .5rem; align-items: start; }
 .sub { margin-bottom: .15rem; font-size: .75rem; color: var(--bs-secondary-color); }
 .group + .group { margin-top: .5rem; }
 /* in a section of its own a subcategory is a row across it: a stronger name over a line, and air before the next one */

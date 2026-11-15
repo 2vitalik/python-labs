@@ -6,7 +6,7 @@ import { answersOf, hide, isHidden } from '../advice.js'
 import { postClaim } from '../api.js'
 import { kindOf } from '../catalog.js'
 import { useEd } from '../ed.js'
-import { jump } from '../jump.js'
+import { landed } from '../jump.js'
 
 // advice on a window's card (T278 §11): its type or an element hints at a function of the whole game (a volume slider →
 // the volume really changes). Asked, not ordered, while none of the answers is claimed; «не про мою гру» hides it for
@@ -44,7 +44,7 @@ async function add(slug) {
   try {
     const c = await postClaim({ task: slug, params: {} })
     await ed.changed()
-    jump(`c-${c.id}`)
+    landed(`c-${c.id}`)
   } catch (e) {
     error.value = e.message
   }

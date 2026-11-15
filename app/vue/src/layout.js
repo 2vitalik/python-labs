@@ -13,13 +13,15 @@ const read = () => { try { return JSON.parse(load('game-cols-own') || '{}') } ca
 export const own = reactive(read())  // section id → 'one' | 'some' | 'dense'
 const keepOwn = () => save('game-cols-own', JSON.stringify(own))
 
+// two columns from this width on: half a laptop's screen still holds two cards side by side (T296 §4)
+export const MIN2 = 540
 // columns of at least `col` px in `width`: two at least once `min` is there, four at most — six when dense
-export function fitCols(width, col = 380, min = 620, tight = dense.value) {
+export function fitCols(width, col = 380, min = MIN2, tight = dense.value) {
   if (width < min) return 1
   return tight ? Math.min(6, Math.max(2, Math.floor(width / (col * 0.75)))) : Math.min(4, Math.max(2, Math.floor(width / col)))
 }
-export const canCols = computed(() => fitCols(edWidth.value, 380, 620, false) > 1)  // else there is nothing to switch
-export const canDense = computed(() => fitCols(edWidth.value, 380, 620, true) > fitCols(edWidth.value, 380, 620, false))
+export const canCols = computed(() => fitCols(edWidth.value, 380, MIN2, false) > 1)  // else there is nothing to switch
+export const canDense = computed(() => fitCols(edWidth.value, 380, MIN2, true) > fitCols(edWidth.value, 380, MIN2, false))
 const fit = (m) => (m === 'dense' && !canDense.value ? 'some' : m)
 export const colsMode = computed(() => fit(oneCol.value ? 'one' : dense.value ? 'dense' : 'some'))
 // a section's look: its own, else the page's

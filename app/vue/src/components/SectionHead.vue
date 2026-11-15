@@ -5,7 +5,10 @@ import HashLink from '@core/components/HashLink.vue'
 import Icon from '@core/components/Icon.vue'
 import { zones } from '../catalog.js'
 import { isFolded, isShort, setShort, toggleFold } from '../fold.js'
+import { canCols, modeOf } from '../layout.js'
+import { cards, CARDS, ROWS, rows } from '../looks.js'
 import ColsSwitch from './ColsSwitch.vue'
+import LookSwitch from './LookSwitch.vue'
 import WideSwitch from './WideSwitch.vue'
 
 // a section's heading in the editor: icon and title, a count, a muted note, and the section's own actions on the right;
@@ -14,9 +17,10 @@ import WideSwitch from './WideSwitch.vue'
 // `zone` — the catalog category the section belongs to: a bar of its colour before the title (T278 §9);
 // the page's width is switched from every heading, and `layout` — the section lays cards in columns — adds the switch of
 // its own columns (T291 §1, T294 §1–2); `anchor` — the section's id: a link to it by the title (T291 §11), the key of its
-// own columns. An explanation put away inside the section leaves its icon by the title (`tip-dock`, Tip.vue).
+// own columns and of its rows (T296 §6); `cardFold` — its cards fold to their heads, the switch of that too (T296 §7).
+// An explanation put away inside the section leaves its icon by the title (`tip-dock`, Tip.vue).
 // The heading sticks under the menu while its section is on screen: the reader sees where they are and can fold it away
-defineProps({ icon: String, title: String, count: [Number, String], note: String, fold: String, zone: String, layout: Boolean, anchor: String })
+defineProps({ icon: String, title: String, count: [Number, String], note: String, fold: String, zone: String, layout: Boolean, anchor: String, cardFold: Boolean })
 const el = ref()
 
 // a change made from the heading — folding, short, other columns, another width — moves everything around it; the reader
@@ -51,6 +55,9 @@ async function keep(change) {
       <slot />
       <template v-if="!(fold && isFolded(fold))">
         <ColsSwitch v-if="layout" quiet :scope="anchor" :around="keep" />
+        <LookSwitch v-if="layout && canCols" quiet :look="rows" :modes="ROWS" label="Розкладка" :scope="anchor" :around="keep"
+                    :off="modeOf(anchor) === 'one' ? 'Один стовпець — рядами нема чого вирівнювати' : ''" />
+        <LookSwitch v-if="cardFold" quiet :look="cards" :modes="CARDS" label="Картки" :scope="anchor" :around="keep" />
         <WideSwitch quiet :around="keep" />
       </template>
       <button v-if="fold && !isFolded(fold)" type="button" class="iact" :class="isShort(fold) ? 'on' : 'dim'" :aria-pressed="isShort(fold)"

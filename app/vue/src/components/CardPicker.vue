@@ -7,7 +7,7 @@ import { postClaim } from '../api.js'
 import { missingParams } from '../catalog.js'
 import { useEd } from '../ed.js'
 import { cardItems } from '../items.js'
-import { jump } from '../jump.js'
+import { landed } from '../jump.js'
 import Picker from './Picker.vue'
 import ProposeCard from './ProposeCard.vue'
 import SlotFields from './SlotFields.vue'
@@ -55,7 +55,7 @@ async function send(task, p) {
     const c = await postClaim({ task: task.slug, ...props.anchor, params: p })
     open.value = false
     ed.changed()
-    jump(`c-${c.id}`)
+    landed(`c-${c.id}`)
   } catch (e) {
     error.value = e.message
   }

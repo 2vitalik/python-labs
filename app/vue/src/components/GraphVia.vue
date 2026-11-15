@@ -7,7 +7,9 @@ import { viaText } from '../graphTree.js'
 import { jump } from '../jump.js'
 
 // what makes a transition on the map of windows, and the arrow after it: «☰ items» of «Переходи й дії» in a quiet ink,
-// «⚡ reason» of a rule in the rules' violet — a click on a reason goes to its rule, the mouse over it brings the rule's card
+// «⚡ reason» of a rule in the rules' violet — a click on a reason goes to its rule, the mouse over it brings the rule's card.
+// The arrow points down (T296 §11): the window it leads to stands under the caption — two captions side by side must not
+// read as one leading to the other
 const props = defineProps({ via: Array })
 const items = computed(() => props.via.filter((v) => v.kind === 'item').map((v) => v.title).join(', '))
 const rules = computed(() => props.via.filter((v) => v.kind === 'rule'))
@@ -21,7 +23,7 @@ const rules = computed(() => props.via.filter((v) => v.kind === 'rule'))
         <span v-peek="{ kind: 'rule', id: r.rule }" class="by-rule" role="button" @click.stop="jump(`r-${r.rule}`)"><Icon v-if="!i" name="bolt" /> {{ r.title }}</span><span v-if="i < rules.length - 1" class="by-rule">,</span>
       </template>
     </span>
-    <Icon name="arrow" class="arr" />
+    <Icon name="arrowdown" class="arr" />
   </span>
 </template>
 

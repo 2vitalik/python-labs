@@ -4,7 +4,7 @@ import { ref } from 'vue'
 import Icon from '@core/components/Icon.vue'
 import Tip from '@core/components/Tip.vue'
 import { useEd } from '../ed.js'
-import { jump } from '../jump.js'
+import { landed } from '../jump.js'
 import EntityCard from './EntityCard.vue'
 import EntityForm from './EntityForm.vue'
 import StableColumns from './StableColumns.vue'
@@ -21,7 +21,7 @@ function add(prefill = {}) {
 defineExpose({ add })
 function created(part) {
   adding.value = null
-  if (part?.id) jump(`p-${part.id}`)
+  if (part?.id) landed(`p-${part.id}`)
 }
 </script>
 

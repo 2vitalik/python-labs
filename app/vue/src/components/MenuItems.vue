@@ -6,6 +6,7 @@ import { vPeek } from '@core/peek.js'
 import { useEd } from '../ed.js'
 import { jump } from '../jump.js'
 import { useJumps } from '../windowJumps.js'
+import CardSign from './CardSign.vue'
 import MenuForm from './MenuForm.vue'
 import PartBlock from './PartBlock.vue'
 
@@ -37,7 +38,7 @@ const winTitle = (id) => ed.windows.find((w) => w.id === id)?.title
           <span>
             <a v-if="winTitle(it.window)" v-peek="{ kind: 'window', id: it.window }" href="#" class="text-decoration-none" @click.prevent="jump('p-' + it.window)">→ <Icon name="win" /> {{ winTitle(it.window) }}</a>
             <span v-else-if="it.window" class="text-secondary">→ вікна вже нема</span>
-            <span v-else-if="it.task" v-peek="{ kind: 'task', id: it.task }">⚙ {{ ed.info(it.task)?.title || it.task }}</span>
+            <span v-else-if="it.task">→ <CardSign :task="ed.info(it.task)" /> <span v-peek="{ kind: 'task', id: it.task }">{{ ed.info(it.task)?.title || it.task }}</span></span>
             <span v-if="it.note" class="text-secondary"><template v-if="it.window || it.task"> · </template>{{ it.note }}</span>
           </span>
         </div>

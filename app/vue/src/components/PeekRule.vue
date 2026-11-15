@@ -5,6 +5,7 @@ import Icon from '@core/components/Icon.vue'
 import { close, vPeek } from '@core/peek.js'
 import { useEd } from '../ed.js'
 import { jump } from '../jump.js'
+import CardSign from './CardSign.vue'
 import PartLabel from './PartLabel.vue'
 import RuleText from './RuleText.vue'
 
@@ -23,7 +24,7 @@ const show = () => { close(); jump(`r-${props.id}`) }
     <RuleText :rule :parts="ed.parts" />
     <div v-if="claims.length">
       <PartLabel icon="🃏">Картки на правилі</PartLabel>
-      <div v-for="c in claims" :key="c.id" class="pk-row"><span v-peek="{ kind: 'task', id: c.task }">{{ ed.info(c.task)?.title || c.task }}</span></div>
+      <div v-for="c in claims" :key="c.id" class="pk-row"><span><CardSign :task="ed.info(c.task)" /> <span v-peek="{ kind: 'task', id: c.task }">{{ ed.info(c.task)?.title || c.task }}</span></span></div>
     </div>
     <button type="button" class="pk-go" @click.stop="show">до правила на сторінці <Icon name="arrow" /></button>
   </div>

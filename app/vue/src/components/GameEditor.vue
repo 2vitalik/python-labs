@@ -15,7 +15,8 @@ import { provideEd } from '../ed.js'
 import { allAre, isFolded, isShort, setAll, setFold, setShort } from '../fold.js'
 import { hints as makeHints } from '../hints.js'
 import { jump, target } from '../jump.js'
-import { edWidth } from '../layout.js'
+import { canCols, colsMode, edWidth } from '../layout.js'
+import { cards as cardLooks, CARDS, ROWS, rows } from '../looks.js'
 import '../peeks.js'
 import { sandbox } from '../sandbox.js'
 import { foldKey, HEADS, sectionOf, SECTIONS, SIMPLE, ZONES } from '../sections.js'
@@ -30,6 +31,7 @@ import FieldCard from './FieldCard.vue'
 import GameTotals from './GameTotals.vue'
 import Hints from './Hints.vue'
 import LevelsBlock from './LevelsBlock.vue'
+import LookSwitch from './LookSwitch.vue'
 import MomentsBlock from './MomentsBlock.vue'
 import RulesBlock from './RulesBlock.vue'
 import SectionHead from './SectionHead.vue'
@@ -79,9 +81,11 @@ const shown = computed(() => (ed.simple ? SIMPLE : SECTIONS))
 const counts = computed(() => ({ entities: ed.entities.length, rules: props.rules.length, levels: ed.levels.length, windows: ed.windows.length,
   ...Object.fromEntries(ZONES.map((z) => [z.id, inZone(z)])) }))
 const LAID = ['entities', 'rules', 'levels', 'windows', ...ZONES.map((z) => z.id)]  // the sections that lay cards in columns
+const SHUT = ['entities', 'windows', 'levels']  // the sections whose cards fold to their heads (looks.js)
 const head = (id) => {
   const { icon, title, short, zone } = HEADS[id]
-  return { icon, title: (ed.simple && short) || title, zone, count: counts.value[id], fold: foldKey(id), anchor: id, layout: LAID.includes(id) }
+  return { icon, title: (ed.simple && short) || title, zone, count: counts.value[id], fold: foldKey(id), anchor: id, layout: LAID.includes(id),
+           cardFold: SHUT.includes(id) }
 }
 const zone = (id) => ZONES.find((z) => z.id === id)
 const cardsToc = ref([])  // «Картки» names its own contents: the categories on screen
@@ -178,6 +182,9 @@ async function fromTemplate() {
       </div>
       <div v-if="view === 'desc'" class="vstack gap-1 align-items-start">
         <ColsSwitch wordy />
+        <LookSwitch wordy :look="rows" :modes="ROWS" label="Розкладка"
+                    :off="!canCols ? 'вікно вузьке — один стовпець, вирівнювати нема чого' : colsMode === 'one' ? 'один стовпець — вирівнювати нема чого' : ''" />
+        <LookSwitch wordy :look="cardLooks" :modes="CARDS" label="Картки сутностей, рівнів і вікон" />
         <WideSwitch wordy />
       </div>
     </GameTotals>

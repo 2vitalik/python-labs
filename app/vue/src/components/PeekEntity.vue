@@ -8,6 +8,7 @@ import { iconOf, roleOf } from '../catalog.js'
 import { useEd } from '../ed.js'
 import { jump } from '../jump.js'
 import { mentions } from '../rules.js'
+import CardSign from './CardSign.vue'
 import EntityStats from './EntityStats.vue'
 import PartLabel from './PartLabel.vue'
 import RuleText from './RuleText.vue'
@@ -43,7 +44,7 @@ const show = () => { close(); jump(`p-${props.id}`) }
         <PartLabel icon="⚙" zone="entities">Механіки</PartLabel> {{ mechanics.length }} <Icon :name="open === 'mechanics' ? 'down' : 'right'" />
       </button>
       <template v-if="open === 'mechanics'">
-        <div v-for="c in mechanics" :key="c.id" class="pk-row"><span v-peek="{ kind: 'task', id: c.task }">{{ ed.info(c.task)?.title || c.task }}</span></div>
+        <div v-for="c in mechanics" :key="c.id" class="pk-row"><span><CardSign :task="ed.info(c.task)" /> <span v-peek="{ kind: 'task', id: c.task }">{{ ed.info(c.task)?.title || c.task }}</span></span></div>
       </template>
     </div>
     <div v-if="rules.length">

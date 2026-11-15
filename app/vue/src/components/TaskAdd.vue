@@ -100,8 +100,9 @@ async function write(run) {
 .round.more { width: 1.1rem; height: 1.1rem; font-size: .85rem; }
 .done { color: var(--bs-success); }
 .done:hover { color: var(--bs-success); background: color-mix(in srgb, var(--bs-success) 12%, transparent); }
-.many { position: relative; }
-.many sup { position: absolute; top: -.1rem; right: -.35rem; font-size: .6rem; font-weight: 700; line-height: 1; }
+/* the count hangs on the tick's shoulder, and the tick keeps a step from the coin after it (T296 §5) */
+.many { position: relative; margin-right: .25rem; }
+.many sup { position: absolute; top: -.05rem; right: -.2rem; font-size: .6rem; font-weight: 700; line-height: 1; }
 .cap { margin-bottom: .2rem; font-size: .7rem; color: var(--bs-secondary-color); }
 .place { display: flex; align-items: center; justify-content: space-between; gap: .5rem; padding: .2rem .35rem; border-radius: .3rem; color: inherit;
          font-size: .85rem; text-decoration: none; }

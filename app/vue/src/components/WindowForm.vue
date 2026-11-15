@@ -6,7 +6,7 @@ import Pop from '@core/components/Pop.vue'
 import { postPart, putPart } from '../api.js'
 import { useEd } from '../ed.js'
 import { windowTypeItems } from '../items.js'
-import { jump } from '../jump.js'
+import { landed } from '../jump.js'
 import CoinBadge from './CoinBadge.vue'
 import Picker from './Picker.vue'
 import ProposeCard from './ProposeCard.vue'
@@ -52,7 +52,7 @@ async function save() {
     const saved = p ? await putPart(p.id, { ...form, order: p.order }) : await postPart({ kind: 'window', ...form })
     ed.changed()
     emit('done')
-    if (!p) jump(`p-${saved.id}`)
+    if (!p) landed(`p-${saved.id}`)
   } catch (e) {
     error.value = e.message
   } finally {

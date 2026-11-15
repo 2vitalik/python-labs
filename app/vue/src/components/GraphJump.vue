@@ -1,10 +1,11 @@
 <script setup>
+import Icon from '@core/components/Icon.vue'
 import { vPeek } from '@core/peek.js'
 import { jump } from '../jump.js'
 import GraphVia from './GraphVia.vue'
 
-// a transition the map's tree has no arrow for, in two lines read as a child of its node: «☰ item →» over its target —
-// a dashed copy of a node, in that window's colour, a step further right. The mouse over it tells the map which node to
+// a transition the map's tree has no arrow for, in two lines read as a child of its node: «☰ item ↓» over its target —
+// a dashed copy of a node with the window's sign, smaller, in that window's colour, a step further right (T296 §13). The mouse over it tells the map which node to
 // light (`over`) and brings the window's card; a click goes to the window's own card on the page.
 // x: { id, via, title, tone }; the sizes come from the view: --by-h, --by-gap, --ghost-h, --ghost-dx
 defineProps({ x: Object, lit: Boolean })
@@ -14,7 +15,7 @@ defineEmits(['over'])
 <template>
   <span class="gjump" @mouseenter="$emit('over', x.id)" @mouseleave="$emit('over', '')">
     <GraphVia :via="x.via" class="by" />
-    <span v-peek="{ kind: 'window', id: x.id }" class="ghost gg-w" :class="[x.tone && `tone-${x.tone}`, { lit }]" role="button" @click="jump(`p-${x.id}`)">{{ x.title }}</span>
+    <span v-peek="{ kind: 'window', id: x.id }" class="ghost gg-w" :class="[x.tone && `tone-${x.tone}`, { lit }]" role="button" @click="jump(`p-${x.id}`)"><Icon name="win" class="wsign" />{{ x.title }}</span>
   </span>
 </template>
 
@@ -24,5 +25,6 @@ defineEmits(['over'])
 .ghost { max-width: calc(100% - var(--ghost-dx, 0px)); height: var(--ghost-h); margin-left: var(--ghost-dx, 0); padding: 0 .4rem; overflow: hidden; border: 1px dashed var(--w-line);
          border-radius: 5px; color: var(--w-ink); font-size: var(--ghost-font, .7rem); line-height: calc(var(--ghost-h) - 2px); text-overflow: ellipsis; white-space: nowrap; cursor: pointer; }
 .ghost:hover { border-style: solid; }
+.wsign { margin-right: .25rem; vertical-align: -.15em; }
 .ghost.lit { background: var(--bs-warning-bg-subtle); border-color: var(--bs-warning-border-subtle); }
 </style>

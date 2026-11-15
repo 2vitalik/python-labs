@@ -6,6 +6,7 @@ import { user } from '@core/user.js'
 import { kindOf, subzoneTitle, vocab, zoneOf } from '../catalog.js'
 import { useEd } from '../ed.js'
 import { factorsOf, repeatable } from '../tiers.js'
+import CardSign from './CardSign.vue'
 import ClaimJudge from './ClaimJudge.vue'
 import ClaimOwner from './ClaimOwner.vue'
 import ClaimShots from './ClaimShots.vue'
@@ -31,8 +32,9 @@ const home = computed(() => {
   <div class="vstack gap-2">
     <div>
       <div class="d-flex align-items-baseline gap-2">
-        <CoinBadge :coin="info?.coin" :amount="info?.amount" :factor />
+        <CardSign :task="info" class="align-self-center" />
         <span class="fw-semibold">{{ info?.title || claim.task }}</span>
+        <CoinBadge :coin="info?.coin" :amount="info?.amount" :factor />
         <RouterLink v-if="user?.status === 'admin'" :to="`/tasks?q=${claim.task}`" class="ms-auto small text-nowrap" title="картка в каталозі">
           <Icon name="open" /> каталог
         </RouterLink>

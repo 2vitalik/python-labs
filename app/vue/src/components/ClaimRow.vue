@@ -6,18 +6,19 @@ import Icon from '@core/components/Icon.vue'
 import Pop from '@core/components/Pop.vue'
 import { vPeek } from '@core/peek.js'
 import { deleteClaim } from '../api.js'
-import { missingParams, paramsText, zoneOf } from '../catalog.js'
+import { missingParams, paramsText } from '../catalog.js'
 import { claimPlace } from '../claimPlace.js'
 import { useEd } from '../ed.js'
 import { jump } from '../jump.js'
 import { factorsOf, repeatable } from '../tiers.js'
+import CardSign from './CardSign.vue'
 import ClaimPop from './ClaimPop.vue'
 import CoinBadge from './CoinBadge.vue'
 
-// one claim as a row (T270 §7): coin · title · params · the student's note · link · status; the mouse over it brings the
-// card's description (T284 §2), a click opens the panel with the actions — «⋯» at the end tells the owner so. The owner's
-// trash waits at the very end under the mouse (T291 §6): its place is kept, so the row does not shift when it shows.
-// `where` — name the anchor too, a click on it jumps there
+// one claim as one line (T270 §7, T296 §10): the card's sign · title · params · the student's note · link · status · the
+// coin at the end, as on «Таски»; what does not fit ends in «…» — the card under the mouse has it all (T284 §2) and says
+// what a click opens. The owner's trash waits at the very end under the mouse (T291 §6): its place is kept, so the row
+// does not shift when it shows. `where` — name the anchor too, a click on it jumps there
 const props = defineProps({ claim: Object, where: Boolean })
 const ed = useEd()
 const open = ref(false)
@@ -28,15 +29,16 @@ const ptext = computed(() => paramsText(info.value, props.claim.params))
 const missing = computed(() => missingParams(info.value, props.claim.params).length > 0)
 const remove = () => deleteClaim(props.claim.id).then(() => ed.changed(), (e) => ed.fail(e.message))
 const place = computed(() => claimPlace(props.claim, { parts: ed.parts, rules: ed.rules, info: ed.info }))
+const hint = computed(() => (ed.editable ? 'Клік по рядку — твоя заявка: нотатка, посилання, скриншот, перенести' : 'Клік по рядку — заявка: нотатка, посилання, доказ'))
 </script>
 
 <template>
   <div :id="`c-${claim.id}`" class="crow">
     <Pop v-model="open" block width="26rem" class="flex-grow-1">
       <template #trigger="{ toggle }">
-        <div v-peek="open ? null : { kind: 'task', id: claim.task }" class="claim" :class="claim.status" :style="{ '--zc': zoneOf(info).color }" role="button" @click="toggle">
+        <div v-peek="open ? null : { kind: 'task', id: claim.task, hint }" class="claim" :class="claim.status" role="button" @click="toggle">
           <div class="line">
-            <CoinBadge :coin="info?.coin" :amount="info?.amount" :factor />
+            <CardSign :task="info" class="sign" />
             <span class="title">{{ info?.title || claim.task }}</span>
             <span v-if="ptext" class="params">{{ ptext }}</span>
             <span v-if="missing" class="need" title="картка чекає обовʼязкових параметрів">параметри?</span>
@@ -48,7 +50,7 @@ const place = computed(() => claimPlace(props.claim, { parts: ed.parts, rules: e
               <span v-if="where && place" class="where" role="button" title="показати" @click.stop="jump(place.id)">{{ place.text }}</span>
               <span v-if="claim.status === 'accepted'" class="text-success" title="зараховано"><Icon name="done" /></span>
               <span v-else-if="claim.status === 'returned'" class="text-danger" title="повернуто — доробити"><Icon name="back" /></span>
-              <Icon v-if="ed.editable" name="more" class="dots" />
+              <CoinBadge :coin="info?.coin" :amount="info?.amount" :factor />
             </span>
           </div>
           <div v-if="claim.status === 'returned' && claim.verdict" class="verdict">{{ claim.verdict }}</div>
@@ -65,20 +67,24 @@ const place = computed(() => claimPlace(props.claim, { parts: ed.parts, rules: e
 <style scoped>
 .crow { display: flex; align-items: flex-start; gap: .15rem; }
 .crow > :first-child { min-width: 0; }
-.dots { align-self: center; color: var(--bs-secondary-color); opacity: .55; }
-.claim:hover .dots { opacity: 1; }
 /* the slot is there for every row of the owner (auto ones too), so the rows of a list end at one line */
 .del-slot { display: inline-flex; flex-shrink: 0; width: 1.6rem; }
 .del-slot :deep(.trash) { opacity: 0; }
 .crow:hover .del-slot :deep(.trash), .del-slot:focus-within :deep(.trash) { opacity: 1; }
 @media (hover: none) { .del-slot :deep(.trash) { opacity: .45; } }
 /* translucent grounds: the flash of a jump (on the wrapper) shows through */
-.claim { padding: .2rem .45rem; border: 1px solid var(--bs-border-color); border-left: 3px solid var(--zc); border-radius: .3rem; font-size: .82rem; }
+.claim { padding: .2rem .45rem; border: 1px solid var(--bs-border-color); border-radius: .3rem; font-size: .82rem; }
 .claim:hover { background-image: linear-gradient(rgb(127 127 127 / .07), rgb(127 127 127 / .07)); }
 .claim.accepted { background-color: color-mix(in srgb, var(--bs-success) 9%, transparent); }
 .claim.returned { background-color: color-mix(in srgb, var(--bs-danger) 9%, transparent); }
-.line { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: .4rem; }
-.title { min-width: 0; overflow-wrap: anywhere; }
+/* one line whatever the width: the words give way, each ending in «…»; the sign, the marks and the coin keep their size */
+.line { display: flex; align-items: baseline; column-gap: .4rem; min-width: 0; white-space: nowrap; }
+.line > * { flex-shrink: 0; }
+.sign { align-self: center; }
+.title, .params, .note { flex-shrink: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.title { min-width: 2.5rem; }
+.params { flex-shrink: 2; }  /* the name gives way last */
+.note { flex-shrink: 4; }
 .params, .lnk, .where { color: var(--bs-secondary-color); }
 .need { padding: 0 .3rem; border-radius: .25rem; background: var(--bs-warning-bg-subtle); color: var(--bs-warning-text-emphasis); font-size: .72rem; }
 .note { min-width: 3rem; overflow: hidden; padding: 0 .25rem; border-radius: .25rem; background: color-mix(in srgb, var(--bs-warning) 16%, var(--bs-body-bg));
