@@ -40,6 +40,11 @@ html.toc-bar { --stick-h: 2rem; }  /* TocBar's row under the menu */
 .iact.trash { color: color-mix(in srgb, var(--act-del) 60%, var(--bs-secondary-color)); }  /* deleting an object is red at rest too */
 .iact.add { color: var(--act-add); }
 .iact.add:hover { background: color-mix(in srgb, var(--act-add) 12%, transparent); color: var(--act-add); }
+/* a group of controls or lines that belong together (T301 §3): a thin frame and a small caption in capitals on its first
+   line — the caption's right end is where a put-away explanation of the group docks (`.tip-dock`, Tip.vue) */
+.group-box { padding: .3rem .6rem .45rem; border: 1px solid var(--bs-border-color); border-radius: .5rem; }
+.group-cap { display: flex; align-items: center; gap: .3rem; min-height: 1.25rem; font-size: .68rem; font-weight: 600; letter-spacing: .05em;
+             text-transform: uppercase; color: var(--bs-secondary-color); }
 /* a button that is only a drawing says its word under the mouse at once, not after the browser's second (T294 §5, §8) */
 .qtip { position: relative; }
 .qtip[data-tip]:hover::after { content: attr(data-tip); position: absolute; z-index: 45; bottom: calc(100% + .3rem); left: 50%; transform: translateX(-50%);

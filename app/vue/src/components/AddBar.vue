@@ -15,7 +15,8 @@ import Picker from './Picker.vue'
 // one «＋ Додати» over the whole description (T270 §11): type what the game has — a type of entity, a type of window,
 // a parameter, a card — and it lands where its kind says. The «＋» of each section does the same within the section.
 // Beside it — «✨ Описати словами» (T291 §14): the switch shows only while the server offers the helper, and only on the
-// student's own game (not the sample's sandbox, not the teacher's edit of someone's game)
+// student's own game (not the sample's sandbox, not the teacher's edit of someone's game). Its caption names it (T301 §3):
+// one field that adds anything — and finds where it goes
 const emit = defineEmits(['open'])  // open(block, prefill): the form of a new entity | window | level | rule
 const ed = useEd()
 const step = ref(null)
@@ -64,6 +65,7 @@ async function pick(it) {
 
 <template>
   <div>
+    <div class="group-cap mb-1">Додати в гру</div>
     <div v-if="own && aiShown" class="btn-group btn-group-sm mb-2" role="group" aria-label="як додати">
       <button type="button" class="btn" :class="words ? 'btn-outline-secondary' : 'btn-secondary'" :aria-pressed="!words" @click="setTab('list')">
         <Icon name="plus" /> Додати зі списку</button>

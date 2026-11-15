@@ -183,7 +183,10 @@ async function fromTemplate() {
           <input v-model="simpleLook" type="checkbox" class="form-check-input"> простий вигляд
         </label>
       </div>
-      <div v-if="view === 'desc'" class="vstack gap-1 align-items-start">
+      <!-- the reader's look of the sections as one framed group (T301 §3): its explanation, put away, leaves its icon at the
+           caption's right end — right of the switches, left of the wallet — not a row of its own -->
+      <div v-if="view === 'desc'" class="looks group-box vstack gap-1 align-items-start" data-dock>
+        <div class="group-cap">Вигляд<span class="tip-dock ms-auto" /></div>
         <ColsSwitch wordy />
         <LookSwitch wordy :look="rows" :modes="ROWS" label="Розкладка"
                     :off="!canCols ? 'вікно вузьке — один стовпець, вирівнювати нема чого' : colsMode === 'one' ? 'один стовпець — вирівнювати нема чого' : ''" />
@@ -274,4 +277,8 @@ html:has(.editor) { --stick-h: 2.6rem; }
    next heading comes after a wider gap */
 .editor > section { margin-bottom: 2.5rem !important; scroll-margin-top: 1rem; }
 @media (min-width: 576px) { .editor > section > .clamp { padding-inline: .75rem; } }  /* a phone has no width to give away */
+/* the frame is as wide as its switches: the explanation wraps inside it instead of widening it */
+.editor .looks { align-self: flex-start; max-width: 100%; }
+.editor .looks > .group-cap { align-self: stretch; }
+.editor .looks > .tipbox { width: 0; min-width: 100%; }
 </style>

@@ -29,7 +29,8 @@ const fmt = (n) => (n ? String(+n.toFixed(1)).replace('.', ',') : '—')
       </div>
       <slot />
     </div>
-    <table v-if="!simple && rows.length" class="wallet">
+    <div v-if="!simple && rows.length" class="wallet-box group-box">
+    <table class="wallet">
       <thead><tr><th>монетки</th><th title="картка рахується не більше разів, ніж дозволяє">заявлено</th><th title="після перевірки викладачем">зараховано</th></tr></thead>
       <tbody>
         <tr v-for="c in rows" :key="c"><td>{{ COINS[c] }} {{ COIN_NAMES[c] }}</td><td>{{ fmt(coins.claimed?.[c]) }}</td><td class="ok">{{ fmt(coins.accepted?.[c]) }}</td></tr>
@@ -41,6 +42,7 @@ const fmt = (n) => (n ? String(+n.toFixed(1)).replace('.', ',') : '—')
         </tr>
       </tfoot>
     </table>
+    </div>
   </div>
 </template>
 
@@ -53,7 +55,8 @@ const fmt = (n) => (n ? String(+n.toFixed(1)).replace('.', ',') : '—')
 .tile:hover { border-color: var(--bs-secondary-color); background: var(--bs-tertiary-bg); }
 .tile b { font-size: 1.35rem; font-weight: 600; font-variant-numeric: tabular-nums; }
 .tile span { font-size: .72rem; color: var(--bs-secondary-color); }
-.wallet { flex: 0 0 auto; font-size: .8rem; font-variant-numeric: tabular-nums; }
+.wallet-box { flex: 0 0 auto; padding-top: .35rem; }
+.wallet { font-size: .8rem; font-variant-numeric: tabular-nums; }
 .wallet th { padding: 0 0 .15rem .9rem; font-size: .68rem; font-weight: 600; letter-spacing: .03em; color: var(--bs-secondary-color); text-align: end; }
 .wallet th:first-child, .wallet td:first-child { padding-left: 0; text-align: start; }
 .wallet td { padding: .05rem 0 .05rem .9rem; text-align: end; }

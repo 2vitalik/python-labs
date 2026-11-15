@@ -8,7 +8,8 @@ import { jump } from '../jump.js'
 
 // «чого бракує» — a few gentle lines; a click shows the place: the page scrolls there and it flashes.
 // An advice line (`advice`, T278 §11) can be hidden for this game; the hidden ones wait under the list with «повернути».
-// No advice in the sample's sandbox or the short form, as on the window cards
+// No advice in the sample's sandbox or the short form, as on the window cards. A framed group with its caption (T301 §3):
+// it must not read as the explanation of the «＋ Додати» field above it
 const props = defineProps({ items: Array })
 const ed = useEd()
 const asks = computed(() => ed.editable && !ed.sandbox && !ed.simple)
@@ -18,7 +19,8 @@ const open = ref(false)
 </script>
 
 <template>
-  <div v-if="lines.length || hidden.length" class="small">
+  <div v-if="lines.length || hidden.length" class="group-box small">
+    <div class="group-cap mb-1">Підказки</div>
     <ul v-if="lines.length" class="lines list-unstyled mb-0 vstack gap-1">
       <li v-for="h in lines" :key="h.key || h.text" role="button" class="d-flex gap-1 align-items-baseline" title="показати, де це" @click="jump(h.to)">
         <span>💡</span><span class="text">{{ h.text }}</span><span class="go text-nowrap">показати <Icon name="right" /></span>
