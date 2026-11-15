@@ -63,7 +63,7 @@ async function remove() {
       <Icon :name="part.screenshots?.length ? 'winshot' : 'win'" class="gg-w sign" :class="tone && `tone-${tone}`" />
       <div class="head flex-grow-1">
         <span class="fw-semibold">{{ part.title }}</span>
-        <span v-peek="type ? { kind: 'task', id: part.task } : null" class="badge border fw-normal text-secondary bg-body wtype">
+        <span v-peek="type ? { kind: 'task', id: part.task } : null" class="badge border fw-normal text-secondary wtype">
           <CardSign v-if="type" :task="type" /><span class="t">{{ type?.title || part.task }}</span><CoinBadge :coin="type?.coin" :amount="type?.amount" /></span>
       </div>
       <span class="pcard-acts">
@@ -101,7 +101,8 @@ async function remove() {
 .sign { color: var(--w-ink); font-size: 1.1rem; }
 /* the title and the type wrap inside their own block, so the pencil and the trash stay in the card on a phone */
 .head { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem .5rem; min-width: 0; overflow-wrap: anywhere; }
-/* the window's type: its sign, name and coin on one line — a long name ends in «…», the card under the mouse has it whole */
-.wtype { display: inline-flex; align-items: center; gap: .3rem; max-width: 100%; }
+/* the window's type: its sign, name and coin on one line — a long name ends in «…», the card under the mouse has it whole;
+   on the head's own tint, framed by the head's line */
+.wtype { display: inline-flex; align-items: center; gap: .3rem; max-width: 100%; border-color: color-mix(in srgb, var(--z) 35%, var(--bs-border-color)) !important; }
 .wtype .t { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 </style>
