@@ -56,7 +56,7 @@ const rows = computed(() => {
 /* --step: a level's shift right, the length of an arrow's last stretch; --rx: where in the step the line comes down;
    an extra's two lines and the gap between them make --node: 12 + 1 + 17 */
 .go { --step: 2.4rem; --rx: .85rem; --pad: .3rem; --lbl: 1.05rem; --node: 30px;
-  --by-h: 12px; --by-gap: 1px; --ghost-h: 17px; --ghost-dx: 8px; --by-font: .62rem; --ghost-font: .68rem; }
+  --by-h: 12px; --by-gap: 1px; --ghost-h: 17px; --by-font: .62rem; --ghost-font: .68rem; }
 @media (max-width: 575px) { .go { --step: 1.5rem; --rx: .55rem; } }
 .go-row { display: flex; }
 .go-row.root:not(:first-child) { margin-top: .6rem; }

@@ -9,8 +9,7 @@ import { forest, toneOf, viaText } from './graphTree.js'
 //     edges: [{ from, to, d, via, lx, ly, lw }], width, height }
 export const BOX_H = 30  // a node's box; its extras hang under it, EXTRA_H each, and count in its h
 export const EXTRA_H = 38  // an extra's two lines and the gap to the next, as GraphWide's styles size them: 13 + 2 + 17 + 6
-export const EXTRA_DX = 12  // the extras' shift right of the node's edge; the dashed frame goes GHOST_DX further
-export const GHOST_DX = 10
+export const EXTRA_DX = 12  // the extras' shift right of the node's edge: a caption and, under it, its dashed frame
 const LABEL_H = 16  // the row of a label over its node
 const CH = 7.4, LBL_CH = 6.7, SMALL_CH = 6.2  // estimated width of a character: a title; a label; an extra's line
 // ROW_GAP: from a node's last extra to the next label in its column — less, and the two read as one
@@ -40,7 +39,7 @@ export function layout(windows, menus, jumps = []) {
     const width = Math.round(Math.min(MAX_W, Math.max(90, title.length * CH + 24 + ICON)))
     node[w.id] = { id: w.id, x: 0, y: 0, w: width, h: BOX_H + ex.length * EXTRA_H, title, shot: !!w.screenshots?.length, tone: toneOf(w), extras: ex }
     // its label and its extras may be wider than the box, each up to a limit
-    const exW = ex.map((x) => EXTRA_DX + Math.max(labelW(x.via, SMALL_CH), GHOST_DX + Math.min(x.title.length, 24) * LBL_CH + 14))
+    const exW = ex.map((x) => EXTRA_DX + Math.max(labelW(x.via, SMALL_CH), Math.min(x.title.length, 24) * LBL_CH + 14))
     span[w.id] = Math.ceil(Math.max(width, Math.min(MAX_LBL, labelW(via[w.id] || [], LBL_CH)), ...exW.map((v) => Math.min(v, MAX_W + 20))))
   }
   const setDepth = (id, d) => { depth[id] = d; kids[id].forEach((k) => setDepth(k, d + 1)) }

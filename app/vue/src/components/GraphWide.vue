@@ -46,8 +46,8 @@ const px = (o) => Object.fromEntries(Object.entries(o).map(([k, v]) => [k, `${v}
 <style scoped>
 .edge { fill: none; stroke: var(--gg-line); stroke-width: 1.3; }
 .tip { fill: var(--gg-line); }
-/* an extra is EXTRA_H (graphLayout): 13 + 2 + 17 and the gap of 6; the frame GHOST_DX further right */
-.wide { position: relative; --by-h: 13px; --by-gap: 2px; --ghost-h: 17px; --ghost-dx: 10px; }
+/* an extra is EXTRA_H (graphLayout): 13 + 2 + 17 and the gap of 6 */
+.wide { position: relative; --by-h: 13px; --by-gap: 2px; --ghost-h: 17px; }
 .lbl, .node, .jumps { position: absolute; }
 .lbl { height: 16px; font-size: .7rem; line-height: 16px; }
 .jumps { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
