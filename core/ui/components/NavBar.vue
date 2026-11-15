@@ -114,6 +114,9 @@ onUnmounted(() => {
    (T294 §13); its name comes under the mouse at once, not after the browser's second */
 .pic { display: inline-block; font-size: 1.3rem; line-height: 1.5rem; vertical-align: top; }
 .pic .icon { stroke-width: 1.15; vertical-align: -.2em; }
+/* the main page is bold in words; in icons it is a larger drawing in bolder lines (T296 §1) — it stands out the same way */
+.main .pic { font-size: 1.6rem; }
+.main .pic .icon { stroke-width: 1.55; }
 .nav-link.ico { padding-left: .5rem; padding-right: .5rem; }
 .nav-link.ico.active::before { left: .5rem; right: .5rem; }
 /* the current page's word beside its icon: lighter than the bar's words, so it reads as a caption (T294 §14) */
@@ -130,6 +133,7 @@ onUnmounted(() => {
                  border-top-left-radius: 0; border-top-right-radius: 0; }
 .dropdown-item { position: relative; display: flex; align-items: center; }
 .ipic { margin-right: .5rem; font-size: 1.1rem; stroke-width: 1.15; }
+.main .ipic { stroke-width: 1.55; }
 /* scrolled, the bar has less air — so has its list (T294 §12) */
 .small .dropdown-menu { --bs-dropdown-item-padding-y: .1rem; --bs-dropdown-font-size: .9rem; --bs-dropdown-padding-y: .15rem; }
 .dropdown-item.active::before { content: ''; position: absolute; left: .3rem; top: .35rem; bottom: .35rem; width: 2px; border-radius: 1px; background: var(--bs-primary); }

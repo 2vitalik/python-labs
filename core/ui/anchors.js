@@ -5,7 +5,22 @@ const HEADING = /^H[1-6]$/
 const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches
 let timer
 
-export function flash(id) {
+// the band of the window nothing sticks over: under the menu (--nav-h, px) and a page's stuck heading (--stick-h, rem)
+function band() {
+  const css = getComputedStyle(document.documentElement)
+  const px = (v) => (parseFloat(v) || 0) * (v.trim().endsWith('rem') ? parseFloat(css.fontSize) : 1)
+  return px(css.getPropertyValue('--nav-h')) + px(css.getPropertyValue('--stick-h'))
+}
+// a thing just added (T296 §9): the page moves only when it is out of sight, and only as far as it takes
+function reveal(el) {
+  const r = el.getBoundingClientRect(), top = band()
+  if (r.top >= top && r.bottom <= innerHeight) return
+  const by = r.top < top || r.height > innerHeight - top ? r.top - top - 8 : r.bottom - innerHeight + 8
+  scrollBy({ top: by, behavior: reduced() ? 'auto' : 'smooth' })
+}
+
+// `near` — the reader is already here (they have just added it): no jump to the top, the flash says where it is
+export function flash(id, { near = false } = {}) {
   const el = id && document.getElementById(id)
   if (!el) return false
   for (let d = el.closest('details'); d; d = d.parentElement?.closest('details')) d.open = true
@@ -14,7 +29,8 @@ export function flash(id) {
   if (HEADING.test(block.tagName)) {  // a heading lights up with its section: up to the next heading of the same or higher level
     for (let n = block.nextElementSibling; n && !(HEADING.test(n.tagName) && n.tagName <= block.tagName); n = n.nextElementSibling) targets.push(n)
   }
-  block.scrollIntoView({ block: 'start', behavior: reduced() ? 'auto' : 'smooth' })
+  if (near) reveal(block)
+  else block.scrollIntoView({ block: 'start', behavior: reduced() ? 'auto' : 'smooth' })
   if (el.closest('.noflash')) return true  // catalog zones, the /method contents box: scroll only, the colour would cover a whole block
   clearTimeout(timer)
   document.querySelectorAll('.flash').forEach((t) => t.classList.remove('flash'))

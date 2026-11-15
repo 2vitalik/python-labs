@@ -33,6 +33,11 @@ onBeforeUnmount(() => {
 .peek-card .peek-link { cursor: pointer; text-decoration: underline dotted; text-underline-offset: .2em; }
 .peek-card .peek-link:hover { color: var(--bs-link-color); text-decoration-style: solid; }
 .pk-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .15rem .45rem; }
+/* a sign, a name, a price: one line — a long name wraps inside itself and never leaves its sign alone on a row (T296 §10) */
+.pk-one { flex-wrap: nowrap; }
+.pk-one > .fw-semibold { flex: 1 1 auto; min-width: 0; }
+.pk-sign { align-self: center; }
+.pk-hint { padding-top: .35rem; border-top: 1px dashed var(--bs-border-color); font-size: .75rem; color: var(--bs-secondary-color); }
 .pk-type { font-size: .78rem; color: var(--bs-secondary-color); }
 .pk-shot { align-self: flex-start; max-width: 100%; max-height: 9rem; cursor: zoom-in; }
 .pk-row { display: flex; flex-wrap: wrap; gap: 0 .5rem; padding: .05rem 0; font-size: .82rem; }

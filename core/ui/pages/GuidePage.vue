@@ -27,13 +27,13 @@ const lab = computed(() => LABS.find((l) => l.slug === slug.value))
 const prev = computed(() => lab.value && LABS[lab.value.n - 2])
 const next = computed(() => lab.value && LABS[lab.value.n])
 const title = (l) => pages.value[l.slug]?.title || `Лаба ${l.n}`
-// the labs of the same kind stand in the crumbs as numbers (LabTabs) — while there are few enough for one row
+// the labs of the same kind as numbers at the crumbs' right end (LabTabs, T296 §3) — while there are few enough for one row
 const tabs = computed(() => {
   const same = lab.value ? LABS.filter((l) => l.kind === lab.value.kind) : []
   return same.length > 1 && same.length <= 8 ? same : null
 })
 const crumbs = computed(() => [['/method', 'Методичка'],
-  ...(lab.value ? [['/labs', 'Лаби'], ...(tabs.value ? [] : [`Лаба ${lab.value.n}`])] : [site.guide.find((s) => s.slug === slug.value)?.nav])])
+  ...(lab.value ? [['/labs', 'Лаби'], `Лаба ${lab.value.n}`] : [site.guide.find((s) => s.slug === slug.value)?.nav])])
 
 async function load() {
   page.value = null
@@ -44,9 +44,7 @@ loadGuide()
 </script>
 
 <template>
-  <Crumbs :items="crumbs">
-    <template v-if="tabs" #last><span class="d-none d-sm-inline">Лаба</span><LabTabs :labs="tabs" :n="lab.n" /></template>
-  </Crumbs>
+  <Crumbs :items="crumbs"><LabTabs v-if="tabs" :labs="tabs" :n="lab.n" /></Crumbs>
   <div v-if="page">
     <h1 class="h2 mb-3">{{ page.title }}</h1>
     <ChangesDraft v-if="slug === 'changes' && admin" @published="load" />

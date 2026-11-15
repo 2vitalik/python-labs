@@ -36,6 +36,7 @@ const PATHS = {
   keys: '<rect x="1.5" y="4" width="13" height="8.5" rx="1.5"/><path d="M5 10h6"/><path d="M4.3 7h.01M6.8 7h.01M9.2 7h.01M11.7 7h.01" stroke-width="2"/>',
   clock: '<circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.3 1.5"/>',
   arrow: '<path d="M2.5 8h11M9.5 4l4 4-4 4"/>',
+  arrowdown: '<path d="M8 2.5v11M4 9.5l4 4 4-4"/>',
   up: '<path d="M4 10l4-4 4 4"/>',
   top: '<path d="M3.5 2.5h9M8 13.5v-8M4.5 8.5L8 5l3.5 3.5"/>',
   bolt: '<path d="M9.2 1.8L3.8 9h3.9l-.9 5.2L12.2 7H8.3z"/>',
@@ -45,6 +46,14 @@ const PATHS = {
   cols1: '<rect x="4" y="2.5" width="8" height="11" rx="1"/>',
   cols2: '<rect x="2" y="2.5" width="5" height="11" rx="1"/><rect x="9" y="2.5" width="5" height="11" rx="1"/>',
   cols3: '<rect x="1.5" y="2.5" width="3.4" height="11" rx=".8"/><rect x="6.3" y="2.5" width="3.4" height="11" rx=".8"/><rect x="11.1" y="2.5" width="3.4" height="11" rx=".8"/>',
+  // cards in columns, each under the one above · in rows, each row from one line (T296 §6)
+  heap: '<rect x="2" y="2.5" width="5" height="6" rx="1"/><rect x="2" y="10" width="5" height="3.5" rx="1"/><rect x="9" y="2.5" width="5" height="3.5" rx="1"/><rect x="9" y="7.5" width="5" height="6" rx="1"/>',
+  rows: '<rect x="2" y="2.5" width="5" height="4" rx="1"/><rect x="9" y="2.5" width="5" height="2.5" rx="1"/><rect x="2" y="9.5" width="5" height="2.5" rx="1"/><rect x="9" y="9.5" width="5" height="4" rx="1"/>',
+  // cards in full · folded to their heads (T296 §7)
+  cardsopen: '<rect x="2.5" y="2" width="11" height="12" rx="1.3"/><path d="M2.5 5.2h11M5 8.2h6M5 10.8h4"/>',
+  cardsshut: '<rect x="2.5" y="2.5" width="11" height="4" rx="1.3"/><rect x="2.5" y="9.5" width="11" height="4" rx="1.3"/>',
+  // a card of the catalog (T296 §14): what a claim is, in its category's colour wherever it is mentioned
+  card: '<rect x="3" y="1.8" width="10" height="12.4" rx="1.6"/><circle cx="8" cy="6.6" r="2.1"/><path d="M5.6 11.2h4.8"/>',
   info: '<circle cx="8" cy="8" r="6.5"/><path d="M8 7.4V11"/><path d="M8 5h.01" stroke-width="2"/>',
   hash: '<path d="M6.4 2.5L5 13.5M11 2.5L9.6 13.5M3 5.8h10.5M2.5 10.2H13"/>',
   copy: '<rect x="5.5" y="5.5" width="8" height="8" rx="1.2"/><path d="M3.5 10.5H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h6.5a1 1 0 0 1 1 1v.5"/>',
@@ -63,7 +72,8 @@ const PATHS = {
   grid: '<rect x="2.5" y="2.5" width="4.5" height="4.5" rx="1"/><rect x="9" y="2.5" width="4.5" height="4.5" rx="1"/><rect x="2.5" y="9" width="4.5" height="4.5" rx="1"/><rect x="9" y="9" width="4.5" height="4.5" rx="1"/>',
   // the menu as icons (T291 §9): one drawing per page, the same on every system
   book: '<path d="M8 4.2C6.5 3.2 4.5 3 2.5 3.3v8.9c2-.3 4-.1 5.5.9 1.5-1 3.5-1.2 5.5-.9V3.3c-2-.3-4-.1-5.5.9zM8 4.2v8.9"/>',
-  gamepad: '<rect x="1.5" y="4.5" width="13" height="7.5" rx="3.2"/><path d="M4.4 8.2H7M5.7 6.9v2.6"/><path d="M10 7.4h.01M11.9 9h.01" stroke-width="2"/>',
+  // the student's own game: a controller with grips — as tall as the other drawings (T296 §1)
+  gamepad: '<path d="M4.8 3.8h6.4a3.7 3.7 0 0 1 3.7 3.7v1.9a3 3 0 0 1-5.3 1.9l-.6-.8H7l-.6.8a3 3 0 0 1-5.3-1.9V7.5a3.7 3.7 0 0 1 3.7-3.7z"/><path d="M3.9 7.6h2.7M5.25 6.25v2.7"/><path d="M10.3 6.9h.01M11.9 8.4h.01" stroke-width="2"/>',
   // many games — the catalog to choose from (T294 §16): a game's face on a card in front of another; «Гра» — one's own, the gamepad
   games: '<path d="M5.5 3h7a1.5 1.5 0 0 1 1.5 1.5v7"/><rect x="2" y="5.5" width="9.5" height="8.5" rx="1.5"/><path d="M5 9.2h.01M8.5 9.2h.01" stroke-width="2"/><path d="M5.2 11.6h3.1"/>',
   invader: '<path d="M4.5 2.8L5.8 5M11.5 2.8L10.2 5"/><rect x="3" y="5" width="10" height="5.5" rx="1.5"/><path d="M5.9 7.7h.01M10.1 7.7h.01" stroke-width="2"/><path d="M4.5 10.5v2.5M8 10.5v1.6M11.5 10.5v2.5"/>',

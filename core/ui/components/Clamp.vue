@@ -31,8 +31,10 @@ async function clicked() {
 </template>
 
 <style scoped>
-.cut { position: relative; max-height: var(--clamp); overflow: hidden; }
-.more { position: absolute; inset: auto 0 0; display: flex; align-items: flex-end; justify-content: center; height: 5rem; padding: 0 0 .35rem; border: 0;
+/* clip, not hidden: a hidden overflow is a scroll box, and whatever sticks inside (a card's head) would stick to it —
+   pushed down over the cut. «Показати все» lies over those heads, under the section's own */
+.cut { position: relative; max-height: var(--clamp); overflow: hidden; overflow: clip; }
+.more { position: absolute; z-index: 15; inset: auto 0 0; display: flex; align-items: flex-end; justify-content: center; height: 5rem; padding: 0 0 .35rem; border: 0;
         background: linear-gradient(transparent, var(--bs-body-bg) 70%); color: var(--bs-link-color); font-size: .85rem; }
 .more span { padding: .1rem .7rem; border: 1px solid var(--bs-border-color); border-radius: 1rem; background: var(--bs-body-bg); }
 .more:hover span { border-color: var(--bs-link-color); }
