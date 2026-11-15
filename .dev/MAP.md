@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T301** · тікетів: 300 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T304** · тікетів: 303 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -308,3 +308,6 @@
 | platform | [T298](platform/.t/T298--game-looks-all/plan.md) | ⚙️ | game-looks-all | Вигляд секцій «Гри»: ⌥-клік — у всіх, верх — за замовчуванням — план | 🟢 ⬜ |
 | games | [T299](games/.t/T299-Q--game-looks-all-choices.md) | ❓ | game-looks-all-choices | Вигляд секцій «Гри» — вибори | 🔴 ⬜ |
 | platform | [T300](platform/.t/T300--game-looks-hold/plan.md) | ⚙️ | game-looks-hold | Вигляд секцій «Гри»: утримати кнопку — у всіх (телефон і мишка) — план і звіт | 🟢 ⬜ |
+| platform | [T301](platform/.t/T301--game-desc-v11/plan.md) | ⚙️ | game-desc-v11 | Опис гри v11 — дрібниці після v10: смітнички, верх сторінки, зміст, значки, схема — план і звіт | 🟢 ⬜ |
+| games | [T302](games/.t/T302-P--inline-edit.md) | 💡 | inline-edit | Опис гри: редагування на місці замість форм — пропозиція | 🟢 ⬜ |
+| games | [T303](games/.t/T303-Q--game-desc-v11-choices.md) | ❓ | game-desc-v11-choices | Опис гри v11 і редагування на місці — вибори | 🔴 ⬜ |
