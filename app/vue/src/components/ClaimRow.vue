@@ -17,8 +17,8 @@ import CoinBadge from './CoinBadge.vue'
 
 // one claim as one line (T270 §7, T296 §10): the card's sign · title · params · the student's note · link · status · the
 // coin at the end, as on «Таски»; what does not fit ends in «…» — the card under the mouse has it all (T284 §2) and says
-// what a click opens. The owner's trash waits at the very end under the mouse (T291 §6): its place is kept, so the row
-// does not shift when it shows. `where` — name the anchor too, a click on it jumps there
+// what a click opens. The owner's trash stands at the very end of every row, as on a card's head (T301 §2): quieter until
+// the mouse is over the row, never an empty gap. `where` — name the anchor too, a click on it jumps there
 const props = defineProps({ claim: Object, where: Boolean })
 const ed = useEd()
 const open = ref(false)
@@ -68,10 +68,9 @@ const hint = computed(() => (ed.editable ? 'Клік по рядку — тво�
 .crow { display: flex; align-items: flex-start; gap: .15rem; }
 .crow > :first-child { min-width: 0; }
 /* the slot is there for every row of the owner (auto ones too), so the rows of a list end at one line */
-.del-slot { display: inline-flex; flex-shrink: 0; width: 1.6rem; }
-.del-slot :deep(.trash) { opacity: 0; }
+.del-slot { display: inline-flex; flex-shrink: 0; width: 1.6rem; font-size: 1rem; }  /* the size of a card head's trash, whatever the list's type */
+.del-slot :deep(.trash) { opacity: .5; }
 .crow:hover .del-slot :deep(.trash), .del-slot:focus-within :deep(.trash) { opacity: 1; }
-@media (hover: none) { .del-slot :deep(.trash) { opacity: .45; } }
 /* translucent grounds: the flash of a jump (on the wrapper) shows through */
 .claim { padding: .2rem .45rem; border: 1px solid var(--bs-border-color); border-radius: .3rem; font-size: .82rem; }
 .claim:hover { background-image: linear-gradient(rgb(127 127 127 / .07), rgb(127 127 127 / .07)); }

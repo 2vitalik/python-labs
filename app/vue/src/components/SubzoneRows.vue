@@ -95,7 +95,7 @@ const runs = computed(() => {
 .roomy .group + .group { margin-top: 1.1rem; }
 .roomy .group .sub { margin-bottom: .35rem; }
 /* the columns every row of the table shares: fractions, not content, so they line up across rows */
-.links { --cols: minmax(0, 2fr) minmax(0, 1.4fr) minmax(0, 1.4fr) 2.6rem; }
+.links { --cols: minmax(0, 2fr) minmax(0, 1.4fr) minmax(0, 1.4fr) 3rem; }
 .thead { display: grid; grid-template-columns: var(--cols); column-gap: .6rem; padding: 0 .45rem; border-bottom: 1px solid var(--bs-border-color);
          font-size: .7rem; color: var(--bs-secondary-color); }
 .links .sub { margin-top: .35rem; }

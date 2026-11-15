@@ -12,7 +12,7 @@ import ClaimPop from './ClaimPop.vue'
 import CoinBadge from './CoinBadge.vue'
 
 // a claim as a table row where the link is the point (T278 §10): card · link · note · status; a click opens the claim's
-// panel, as ClaimRow does, and the owner's trash waits in the status cell under the mouse (T291 §6). Its columns are the
+// panel, as ClaimRow does, and the owner's trash ends the row — always there, quieter until the mouse is over it (T301 §2). Its columns are the
 // table's (`--cols`, SubzoneRows); on a phone the card takes a line of its own
 const props = defineProps({ claim: Object })
 const ed = useEd()
@@ -95,10 +95,10 @@ function shortLink(url, max = 32) {
 .add:hover { text-decoration: underline; }
 .need { padding: 0 .3rem; border-radius: .25rem; background: var(--bs-warning-bg-subtle); color: var(--bs-warning-text-emphasis); font-size: .72rem; }
 .note { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; font-style: italic; color: var(--bs-secondary-color); }
-.state { display: inline-flex; align-items: baseline; justify-content: flex-end; gap: .15rem; }
-.del-slot :deep(.trash) { width: 1.2rem; height: 1.2rem; opacity: 0; }
+.state { display: inline-flex; align-self: center; align-items: center; justify-content: flex-end; gap: .15rem; }
+/* the trash of every list (ClaimRow): full size, its height given back so the row keeps the text's */
+.del-slot :deep(.trash) { margin-block: -.25rem; font-size: 1rem; opacity: .5; }
 .tr:hover .del-slot :deep(.trash), .del-slot:focus-within :deep(.trash) { opacity: 1; }
-@media (hover: none) { .del-slot :deep(.trash) { opacity: .45; } }
 .verdict { grid-column: 1 / -1; font-size: .75rem; color: var(--bs-danger-text-emphasis); }
 @media (max-width: 575px) {
   .tr { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; row-gap: .1rem; }
