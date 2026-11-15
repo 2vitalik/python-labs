@@ -56,7 +56,7 @@ async function remove() {
     <div v-if="!edit" class="pcard-head">
       <span>🪜</span>
       <span class="fw-semibold">{{ part.title }}</span>
-      <span class="text-secondary small">{{ mode }}<template v-if="values.count"> {{ /^\d+$/.test(values.count) ? '×' : '·' }} {{ values.count }}</template></span>
+      <span class="text-secondary small">{{ mode }}<template v-if="values.count">{{ ` ${/^\d+$/.test(values.count) ? '×' : '·'} ${values.count}` }}</template></span>
       <span class="pcard-acts">
         <CardFold :id="part.id" scope="levels" />
         <template v-if="ed.editable">

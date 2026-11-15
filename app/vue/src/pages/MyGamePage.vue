@@ -20,8 +20,12 @@ const { form, dirty, changed, saved, error, fill, save, reset } = useForm({ titl
 const nick = computed(() => user.value?.nick)
 const intro = computed(() => (vocab.value.depth === 'simple' ? 'Далі опишеш, хто й що є на полі та які екрани має гра.' : 'Далі опишеш поле, рівні, сутності, правила, вікна й заявиш картки каталогу.'))
 
+// blank lines before and after the text say nothing and keep an empty row in the field (T301 §7); spaces that start the
+// first line stay — Markdown may need them
+const tidy = (s) => s.replace(/^\s*\n/, '').trimEnd()
 // the tick order lives in «Правила» and is saved from there: the head form must not send its stale copy back
 const submit = () => save(async (f) => {
+  f = { ...f, title: f.title.trim(), description: tidy(f.description) }
   myGame.value = await (myGame.value ? putMyGame({ ...f, phases: myGame.value.phases }) : postMyGame(f))
   if (!myParts.value.length) await reloadInsides()
   return myGame.value
