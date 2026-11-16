@@ -8,6 +8,7 @@ import { inject, provide } from 'vue'
 //   teacher — the teacher edits a student's game (T282): `editable` and `judge` at once, without the owner's aids
 //   showRules — the rule lists on entity cards are all open
 //   changed() — reload after a write · fail(text) — an error that has no place of its own
+//   save.part | claim | rule(id, patch) — one value changed in place, saved and reloaded in line (edSave.js, T306)
 //   open(block, prefill) — the form of a new entity | window | level | rule, in view and lit
 const KEY = 'game-editor'  // a plain string: a Symbol is made anew when Vite hot-swaps this module, and the pieces lose the editor
 export const provideEd = (ed) => provide(KEY, ed)

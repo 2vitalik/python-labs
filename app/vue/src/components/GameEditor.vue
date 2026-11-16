@@ -14,6 +14,7 @@ import { wideOf } from '@core/wide.js'
 import { applyTemplate } from '../api.js'
 import { games, kindOf, taskIndex, templates, vocab } from '../catalog.js'
 import { provideEd } from '../ed.js'
+import { savers } from '../edSave.js'
 import { allMode, isFolded, isOwn, isShort, setAll, setFold, setShort } from '../fold.js'
 import { hints as makeHints } from '../hints.js'
 import { jump, target } from '../jump.js'
@@ -70,6 +71,7 @@ const ed = reactive({
   open: (block, prefill) => open(block, prefill),
   fail: (text) => (error.value = text),
 })
+ed.save = savers(ed)
 provideEd(ed)
 
 const loose = computed(() => props.claims.filter((c) => !c.part && !c.rule && !c.auto))
