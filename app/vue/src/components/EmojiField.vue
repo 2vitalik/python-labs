@@ -2,18 +2,13 @@
 import { ref } from 'vue'
 
 import Pop from '@core/components/Pop.vue'
+import { EMOJI_SETS as SETS } from '../emojis.js'
 
 // an entity's own emoji (T270 §7): a narrow field and, on a click, a grid of typical game emojis; empty — the type's icon,
 // which the field shows as its placeholder
 const icon = defineModel({ type: String, default: '' })
 defineProps({ placeholder: String })
 const open = ref(false)
-const SETS = [
-  ['люди й істоти', '🧍 🧙 🥷 🤖 👾 👻 🧟 💀 🐉 🐍 🕷️ 🦇 🐺 🐱 🐸 🐟 👽'],
-  ['речі', '🔑 💎 🪙 🍎 🍒 ❤️ ⭐ 💣 🔸 🏹 🗡️ 🛡️ 📦 🧪 🎁'],
-  ['клітини й природа', '🧱 🟫 🟩 🟦 ⬛ 🌲 🪨 🌊 🔥 ❄️ 🌵 🚪 🕳️'],
-  ['знаки', '🚩 🏁 🎯 ❌ ⭕ ⚡ ✨ 💥 ❓ 🔒'],
-].map(([name, list]) => [name, list.split(' ')])
 const put = (e) => { icon.value = e; open.value = false }
 </script>
 
