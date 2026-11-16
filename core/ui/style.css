@@ -82,6 +82,21 @@ html.toc-bar { --stick-h: 2rem; }  /* TocBar's row under the menu */
 .soft-input { border-color: transparent; background: transparent; }
 .soft-input:hover { border-color: var(--bs-border-color); }
 .soft-input:focus { border-color: var(--bs-primary-border-subtle); background: var(--bs-body-bg); }
+/* a value edited where it reads (InlineText, InlinePop — T306): at rest the text alone; under the mouse a light ground a
+   little wider than the text — a shadow, so nothing moves; saved — a green ground that fades */
+:root { --inl-bg: color-mix(in srgb, var(--bs-body-color) 8%, transparent); --inl-ok: color-mix(in srgb, var(--bs-success) 26%, transparent); }
+.inl { border-radius: .2rem; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.inl.block { display: block; }
+.inl.can:not(.open) { cursor: text; }
+.inl.can.pick { cursor: pointer; }
+.inl.can:not(.open):hover, .inl.can.on { background-color: var(--inl-bg); box-shadow: 0 0 0 .2rem var(--inl-bg); }
+.inl.can.empty:not(.open):hover { background-color: transparent; box-shadow: none; }  /* the owner's «＋ опис» has a hover of its own */
+.inl.can:focus-visible { outline: 2px solid var(--bs-primary-border-subtle); outline-offset: .15rem; }
+.inl.saved { animation: inl-saved 1.4s ease-out; }
+@keyframes inl-saved {
+  0%, 35% { background-color: var(--inl-ok); box-shadow: 0 0 0 .2rem var(--inl-ok); }
+  100% { background-color: transparent; box-shadow: 0 0 0 .2rem transparent; }
+}
 /* a heading stuck over its block (toStart.js): a click on its empty space goes back to the block's start */
 .head-stuck { cursor: pointer; }
 /* a search hit inside a title or a description */
