@@ -4,6 +4,7 @@ import { ref } from 'vue'
 import { ALL_HOW, toAll } from '@core/allkey.js'
 import HashLink from '@core/components/HashLink.vue'
 import Icon from '@core/components/Icon.vue'
+import { vToStart } from '@core/toStart.js'
 import { zones } from '../catalog.js'
 import { allMode, isFolded, isShort, ownShort, toggleFold, toggleShort } from '../fold.js'
 import { canCols, modeOf } from '../layout.js'
@@ -22,7 +23,8 @@ import WideSwitch from './WideSwitch.vue'
 // A switch is blue while its section differs from the top row — the default (T298); ⌥-click on any of them, the chevron
 // too, or a long press on it, does the same in every section (allkey.js); held ⌥ rings them all under the mouse.
 // An explanation put away inside the section leaves its icon by the title (`tip-dock`, Tip.vue).
-// The heading sticks under the menu while its section is on screen: the reader sees where they are and can fold it away
+// The heading sticks under the menu while its section is on screen: the reader sees where they are and can fold it away;
+// a click on its empty space while it is stuck goes back to the section's start (T306, toStart.js)
 defineProps({ icon: String, title: String, count: [Number, String], note: String, fold: String, zone: String, layout: Boolean, anchor: String, cardFold: Boolean })
 const el = ref()
 const WORD = { open: 'повністю', short: 'коротко', folded: 'згорнуто' }
@@ -47,7 +49,7 @@ async function keep(change) {
 </script>
 
 <template>
-  <h2 ref="el" class="h6 head d-flex flex-wrap align-items-center gap-2" data-all-host>
+  <h2 ref="el" v-to-start="'секції'" class="h6 head d-flex flex-wrap align-items-center gap-2" data-all-host>
     <span v-if="zones[zone]" class="bar" :style="{ background: zones[zone].color }" :title="`категорія каталогу: ${zones[zone].title}`" />
     <component :is="fold ? 'button' : 'span'" :type="fold ? 'button' : null" class="name" :class="{ 'fold every every-start': fold }"
                :aria-expanded="fold ? !isFolded(fold) : null" :title="fold ? `${isFolded(fold) ? 'Розгорнути' : 'Згорнути'} секцію · ${ALL_HOW} — усі секції` : null"

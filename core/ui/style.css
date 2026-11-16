@@ -82,6 +82,8 @@ html.toc-bar { --stick-h: 2rem; }  /* TocBar's row under the menu */
 .soft-input { border-color: transparent; background: transparent; }
 .soft-input:hover { border-color: var(--bs-border-color); }
 .soft-input:focus { border-color: var(--bs-primary-border-subtle); background: var(--bs-body-bg); }
+/* a heading stuck over its block (toStart.js): a click on its empty space goes back to the block's start */
+.head-stuck { cursor: pointer; }
 /* a search hit inside a title or a description */
 mark { padding: 0; background: var(--bs-warning-bg-subtle); color: inherit; font-weight: 700; border-radius: .15rem; }
 
