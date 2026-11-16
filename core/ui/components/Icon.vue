@@ -88,9 +88,10 @@ const PATHS = {
   calendar: '<rect x="2.5" y="3.5" width="11" height="10" rx="1.2"/><path d="M2.5 6.8h11M5.5 2v3M10.5 2v3"/>',
   user: '<circle cx="8" cy="5.5" r="2.8"/><path d="M2.5 13.5c.6-2.8 2.8-4 5.5-4s4.9 1.2 5.5 4"/>',
   users: '<circle cx="6" cy="5.5" r="2.4"/><path d="M1.5 13c.5-2.4 2.2-3.5 4.5-3.5s4 1.1 4.5 3.5"/><path d="M10.5 3.3a2.4 2.4 0 0 1 0 4.5M12.2 9.8c1.3.5 2 1.6 2.3 3.2"/>',
-  // the blocks inside a game's cards (T301 §5): a parameter is a value on a dial, the states — a half-lit circle, a mechanic —
-  // a cog, «Переходи й дії» — the arrow of «go on there», the elements of a window — a button, a knob and a slider
-  gauge: '<path d="M2.6 11.8a5.6 5.6 0 1 1 10.8 0"/><path d="M8 10.6l2.6-3.6"/><circle cx="8" cy="10.6" r=".6" fill="currentColor"/>',
+  // the blocks inside a game's cards (T301 §5): the parameters — two bars filled to their values, as a game's health and
+  // mana (T304: the dial read as cut off), the states — a half-lit circle, a mechanic — a cog, «Переходи й дії» — the arrow
+  // of «go on there», the elements of a window — a button, a knob and a slider
+  stats: '<rect x="2" y="2.5" width="12" height="3.2" rx="1.6"/><rect x="2" y="10.3" width="12" height="3.2" rx="1.6"/><rect x="2" y="2.5" width="7.5" height="3.2" rx="1.6" fill="currentColor" stroke="none"/><rect x="2" y="10.3" width="4.5" height="3.2" rx="1.6" fill="currentColor" stroke="none"/>',
   half: '<circle cx="8" cy="8" r="5.6"/><path d="M8 2.4a5.6 5.6 0 0 0 0 11.2z" fill="currentColor" stroke="none"/>',
   cog: '<path d="M12.9 8.5l1.4.7-1 2.4-1.5-.5-.7.7.5 1.5-2.4 1-.7-1.4h-1l-.7 1.4-2.4-1 .5-1.5-.7-.7-1.5.5-1-2.4 1.4-.7v-1l-1.4-.7 1-2.4 1.5.5.7-.7-.5-1.5 2.4-1 .7 1.4h1l.7-1.4 2.4 1-.5 1.5.7.7 1.5-.5 1 2.4-1.4.7z"/><circle cx="8" cy="8" r="2.1"/>',
   goto: '<path d="M3.5 2.8v4.4a2.8 2.8 0 0 0 2.8 2.8h7"/><path d="M10.3 7l3 3-3 3"/>',

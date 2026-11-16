@@ -38,7 +38,7 @@ const claims = computed(() => ed.claimsOf(p.part.id).filter((c) => !c.auto))
 const shut = computed(() => !edit.value && isShut(p.part.id, 'levels'))
 // «show me where» a claim of this card is: a folded card opens to show it
 watch(target, (id) => id && shut.value && claims.value.some((c) => `c-${c.id}` === id) && toggleCard(p.part.id, 'levels'))
-const bits = computed(() => [['gauge', p.part.stats?.length, 'параметри'], ['grid', values.value.map ? 1 : 0, 'карта рівня'],
+const bits = computed(() => [['stats', p.part.stats?.length, 'параметри'], ['grid', values.value.map ? 1 : 0, 'карта рівня'],
   ['image', p.part.screenshots?.length, 'скриншоти'], ['card', claims.value.length, 'картки рівня']])
 
 async function remove() {
@@ -70,7 +70,7 @@ async function remove() {
       <div v-if="edit" class="editing pform"><LevelForm :part @done="edit = false" @cancel="edit = false" /></div>
       <template v-else>
         <PropsList :props="values" :specs />
-        <PartBlock v-if="part.stats?.length" pic="gauge" zone="levels" title="Параметри" inline class="small">
+        <PartBlock v-if="part.stats?.length" pic="stats" zone="levels" title="Параметри" inline class="small">
           <span class="d-flex flex-wrap gap-1">
             <span v-for="s in part.stats" :key="s.key" class="badge rounded-pill fw-normal stat">
               {{ s.label || s.key }} {{ s.value }} <span v-if="s.unit" class="opacity-75">{{ s.unit }}</span>

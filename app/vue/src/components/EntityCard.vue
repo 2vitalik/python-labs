@@ -39,7 +39,7 @@ const roleClaim = computed(() => (role.value.slug ? auto.value.find((c) => c.tas
 const shut = computed(() => !edit.value && isShut(props.part.id, 'entities'))
 // «show me where» a claim of this card is: a folded card opens to show it
 watch(target, (id) => id && shut.value && claims.value.some((c) => `c-${c.id}` === id) && toggleCard(props.part.id, 'entities'))
-const bits = computed(() => [['gauge', props.part.stats?.length, 'параметри'], ['half', props.part.states?.length, 'стани'],
+const bits = computed(() => [['stats', props.part.stats?.length, 'параметри'], ['half', props.part.states?.length, 'стани'],
   ['image', props.part.screenshots?.length, 'скриншоти'], ['cog', mechanics.value.length, 'механіки'],
   ['⚡', ed.rules.filter((r) => mentions(r, props.part.id)).length, 'правила']])
 
