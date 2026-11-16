@@ -1,16 +1,31 @@
 <script setup>
+import { computed, ref } from 'vue'
+
+import { ALL_HOW, toAll } from '@core/allkey.js'
 import Icon from '@core/components/Icon.vue'
 import { useEd } from '../ed.js'
+import { groups } from '../looks.js'
 import RuleRow from './RuleRow.vue'
 import StableColumns from './StableColumns.vue'
 
-// one group of rules by what starts them: a header in the group's colour with the count — a click folds it — and the rules
-// in steady columns; the header's plus starts a new rule of this group. The header sticks under the section's heading
-// while its rules pass (T294 §17): «where am I» and its «＋» stay at hand
-defineProps({ name: String, rules: Array })
+// one group of rules by what starts them: a header in the group's colour with the count — a click folds it, ⌥-click or a
+// long press folds or opens every group (T304, looks.js) — and the rules in steady columns; the header's plus starts a new
+// rule of this group. The header sticks under the section's heading while its rules pass (T294 §17): «where am I» and its
+// «＋» stay at hand; after a fold of all it stays where it was in the window
+const p = defineProps({ name: String, rules: Array })
 defineEmits(['add'])
-const folded = defineModel('folded', { type: Boolean, default: false })
 const ed = useEd()
+const head = ref()
+const folded = computed(() => groups.of(p.name) === 'shut')
+async function flip(e) {
+  const y = head.value.getBoundingClientRect().top
+  groups.set(folded.value ? 'open' : 'shut', toAll(e) ? undefined : p.name)
+  for (let i = 0; i < 6 && head.value; i++) {  // the columns settle over a few frames
+    await new Promise(requestAnimationFrame)
+    const off = head.value.getBoundingClientRect().top - y
+    if (Math.abs(off) > 1) scrollBy({ top: off, behavior: 'instant' })
+  }
+}
 // calm hues, one per group (rules.js: RULE_GROUP_ORDER); the text mixes them with the page's own colour, so both themes read
 const COLORS = { контакт: '#d9603b', 'ввід і час': '#3b82c4', 'стан і лічильники': '#2a9d8f', 'життєвий цикл': '#c2557a', пазли: '#b08a1e', інше: '#7a8594' }
 // a group is «what starts the rule» — said in words next to its name
@@ -23,8 +38,9 @@ const WHEN = {
 
 <template>
   <section class="rgroup" :style="{ '--g': COLORS[name] || COLORS.інше }">
-    <div class="ghead">
-      <button type="button" class="fold" :aria-expanded="!folded" :title="folded ? 'Розгорнути' : 'Згорнути'" @click="folded = !folded">
+    <div ref="head" class="ghead" data-all-host>
+      <button type="button" class="fold every every-start" :aria-expanded="!folded" :title="`${folded ? 'Розгорнути' : 'Згорнути'} групу · ${ALL_HOW} — усі групи`"
+              :data-all="`${folded ? 'розгорнути' : 'згорнути'} всі групи`" @click="flip">
         <span class="gname">{{ name }}</span><span class="count">{{ rules.length }}</span><Icon :name="folded ? 'right' : 'down'" class="chev" />
         <span v-if="WHEN[name]" class="gwhen">{{ WHEN[name] }}</span>
       </button>

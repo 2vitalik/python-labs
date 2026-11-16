@@ -31,6 +31,7 @@ import EntitiesBlock from './EntitiesBlock.vue'
 import EtalonGap from './EtalonGap.vue'
 import FieldCard from './FieldCard.vue'
 import GameTotals from './GameTotals.vue'
+import GroupsFold from './GroupsFold.vue'
 import Hints from './Hints.vue'
 import LevelsBlock from './LevelsBlock.vue'
 import LookSwitch from './LookSwitch.vue'
@@ -231,7 +232,10 @@ async function fromTemplate() {
       </section>
       <section v-if="!ed.simple" id="rules" class="mb-4">
         <SectionHead v-bind="head('rules')">
-          <button v-if="editable" type="button" class="btn btn-sm btn-add" @click="open('rule')"><Icon name="plus" /> правило</button>
+          <template #default="{ keep }">
+            <button v-if="editable" type="button" class="btn btn-sm btn-add" @click="open('rule')"><Icon name="plus" /> правило</button>
+            <GroupsFold v-if="!folded('rules')" :around="keep" />
+          </template>
         </SectionHead>
         <Clamp v-show="!folded('rules')" :on="short('rules')" @open="unclamp('rules')">
           <DraftStrip :kinds="['rule']" hint="натисни на картку → «нове правило з цієї картки» або «привʼязати до наявного»" />

@@ -60,7 +60,7 @@ async function keep(change) {
     <span class="tip-dock" />
     <span v-if="note" class="note">{{ note }}</span>
     <span class="ms-auto d-flex align-items-center gap-1">
-      <slot />
+      <slot :keep />
       <template v-if="!(fold && isFolded(fold))">
         <ColsSwitch v-if="layout" quiet :scope="anchor" :around="keep" />
         <LookSwitch v-if="layout && canCols" quiet :look="rows" :modes="ROWS" label="Розкладка" :scope="anchor" :around="keep"

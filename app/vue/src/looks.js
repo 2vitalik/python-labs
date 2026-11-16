@@ -40,6 +40,11 @@ export const cards = {
     for (const k of Object.keys(one)) if (!id || k === id) delete one[k]
   },
 }
+// the groups of «Правила» in full or folded to their heads (T304): all at once from the section's heading, one by its own
+// head, ⌥-click or a long press there — all; `rulesView` — the section as that list of groups or as one of its tables
+export const groups = scoped('game-rgroups', 'open')
+export const rulesView = ref('list')
+
 export const isShut = (card, scope) => (one[scope]?.[card] ?? cards.of(scope)) === 'shut'
 // a card opened or folded unlike its section (T298: back as its section — it follows the section again)
 export const cardOwn = (card, scope) => one[scope]?.[card] !== undefined

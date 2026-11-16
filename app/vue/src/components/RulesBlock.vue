@@ -1,10 +1,11 @@
 <script setup>
-import { computed, nextTick, reactive, ref, watch } from 'vue'
+import { computed, nextTick, ref, watch } from 'vue'
 
 import Tip from '@core/components/Tip.vue'
 import { vocab } from '../catalog.js'
 import { useEd } from '../ed.js'
 import { jump, target } from '../jump.js'
+import { groups, rulesView } from '../looks.js'
 import { RULE_GROUP_ORDER, ruleGroup } from '../rules.js'
 import { isContact } from '../ruleViews.js'
 import PhasesStrip from './PhasesStrip.vue'
@@ -19,8 +20,7 @@ import RulesTime from './RulesTime.vue'
 // the body of «Правила» (T270 §4.2, T274 §6): the tick's order, then the rules grouped by what starts them — or one of the
 // tables: contacts, controls, time. add(prefill?) opens the new rule's form: prefill = { when?, cond?, then?, card? }
 const ed = useEd()
-const view = ref('list')
-const folded = reactive({})  // group → folded
+const view = rulesView  // the heading's GroupsFold reads it too
 const adding = ref(null)  // the new rule's prefill while its form is open
 const opened = ref(0)  // every add() starts a fresh form
 const contacts = computed(() => ed.rules.filter(isContact))
@@ -48,7 +48,7 @@ watch(target, (id) => {
   const rule = ed.rules.find((r) => `r-${r.id}` === id || r.id === claim?.rule)
   if (!rule) return
   view.value = 'list'
-  folded[ruleGroup(rule)] = false
+  if (groups.of(ruleGroup(rule)) === 'shut') groups.set('open', ruleGroup(rule))
 })
 </script>
 
@@ -61,7 +61,7 @@ watch(target, (id) => {
     <RulesControls v-else-if="view === 'controls'" @show="show" @add="add" />
     <RulesTime v-else-if="view === 'time'" @show="show" @add="add" />
     <div v-else class="vstack gap-2">
-      <RuleGroup v-for="{ g, list } in grouped" :key="g" v-model:folded="folded[g]" :name="g" :rules="list"
+      <RuleGroup v-for="{ g, list } in grouped" :key="g" :name="g" :rules="list"
                  @add="add({ when: { kind: firstWord(g) } })" />
     </div>
     <div v-if="adding" id="rule-new" class="editing new mt-2">
