@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T304** · тікетів: 303 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T306** · тікетів: 305 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -311,3 +311,5 @@
 | platform | [T301](platform/.t/T301--game-desc-v11/plan.md) | ⚙️ | game-desc-v11 | Опис гри v11 — дрібниці після v10: смітнички, верх сторінки, зміст, значки, схема — план і звіт | 🟢 ⬜ |
 | games | [T302](games/.t/T302-P--inline-edit.md) | 💡 | inline-edit | Опис гри: редагування на місці замість форм — пропозиція | 🟢 ⬜ |
 | games | [T303](games/.t/T303-Q--game-desc-v11-choices.md) | ❓ | game-desc-v11-choices | Опис гри v11 і редагування на місці — вибори | 🔴 ⬜ |
+| platform | [T304](platform/.t/T304--game-desc-v11-1/plan.md) | ⚙️ | game-desc-v11-1 | Опис гри v11.1 — опис гри Markdown-ом, значок параметрів, групи правил разом — план і звіт | 🟢 ⬜ |
+| games | [T305](games/.t/T305-Q--game-desc-v11-1-choices.md) | ❓ | game-desc-v11-1-choices | Опис гри v11.1 — вибори | 🔴 ⬜ |
