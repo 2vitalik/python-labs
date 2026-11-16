@@ -5,16 +5,19 @@ import GrowArea from '@core/components/GrowArea.vue'
 import Icon from '@core/components/Icon.vue'
 import Tip from '@core/components/Tip.vue'
 import { games } from '../catalog.js'
+import MdField from './MdField.vue'
 
 // creating the game: base · title · description as three cards, the profile's way (ProfileForm);
 // once it exists the same fields fold into one compact card above the description's sections, and «змінити основу» opens
-// the choice with its own «Зберегти» / «Скасувати» (T274 §10). A changed title or description brings the same pair right
+// the choice with its own «Зберегти» / «Скасувати» (T274 §10). The description reads as the others see it, rendered, and
+// a click turns it into its Markdown in place (T304, MdField). A changed title or description brings the same pair right
 // under them, into a row that is always there — so nothing below moves when the first letter is typed. While a change waits
 // for «Зберегти», the card wears the frame of an open form (T291 §4)
 const props = defineProps({ dirty: Boolean, changed: { type: Array, default: () => [] }, saved: Boolean, error: String, fresh: Boolean })
 const emit = defineEmits(['save', 'reset'])
 const form = defineModel({ type: Object, required: true })
 const custom = ref(false)
+const writing = ref(false)  // the description shows its Markdown source (MdField)
 const was = ref(null)  // the base before «змінити основу», while the choice is open
 watch(() => form.value.base_custom, (v) => v && !form.value.base_game && (custom.value = true))
 watch(() => props.saved, (v) => v && (was.value = null))
@@ -71,17 +74,16 @@ const showChips = computed(() => props.fresh || !!was.value)
         </template>
         <template v-if="!fresh">
           <input v-model="form.title" class="form-control form-control-lg fw-semibold soft-input px-2 mt-1" placeholder="Назва гри" title="Назва гри — можна редагувати" required>
-          <div class="desc">
-            <GrowArea v-model="form.description" class="form-control soft-input px-2" title="Опис — можна редагувати"
-                      placeholder="Що за гра і чим відрізняється від основи — натисни й пиши" />
-          </div>
-          <div class="foot">
+          <MdField v-model="form.description" v-model:open="writing" :dirty="changed.includes('description')"
+                   placeholder="Що за гра і чим відрізняється від основи — натисни й пиши" @save="$emit('save')" />
+          <!-- the row is there from the moment the source opens, so nothing jumps when the first letter is typed -->
+          <div v-if="writing || texts" class="foot">
             <template v-if="texts">
               <button class="btn btn-sm btn-success"><Icon name="check" /> Зберегти</button>
               <button type="button" class="btn btn-sm btn-outline-secondary" @click="undo">Скасувати</button>
               <span v-if="error" class="text-danger small">{{ error }}</span>
             </template>
-            <span class="md" title="Опис розуміє Markdown: **жирний**, *курсив*, списки з «- », [посилання](https://…)">Markdown</span>
+            <span v-if="writing" class="md" title="Опис розуміє Markdown: **жирний**, *курсив*, списки з «- », [посилання](https://…) · ⌘/Ctrl+Enter — зберегти">Markdown</span>
           </div>
         </template>
       </div>
@@ -129,7 +131,8 @@ const showChips = computed(() => props.fresh || !!was.value)
 .editing > .card-body { margin: -1px; }
 /* as tall as its buttons whether they are there or not */
 .foot { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; min-height: calc(1.5 * .875rem + .5rem + 2px); margin-top: .25rem; padding: 0 .5rem; }
-.md { margin-left: auto; font-size: .65rem; color: var(--bs-secondary-color); opacity: .6; cursor: help; }
+/* right under the field's frame, not in the middle of the reserved row */
+.md { align-self: flex-start; margin: -.2rem 0 0 auto; font-size: .65rem; color: var(--bs-secondary-color); opacity: .7; cursor: help; }
 .unsaved { position: fixed; z-index: 1040; left: 50%; bottom: 1rem; transform: translateX(-50%); display: flex; flex-wrap: wrap; align-items: center;
            gap: .4rem .6rem; max-width: calc(100vw - 1.5rem); padding: .45rem .7rem; font-size: .875rem; }
 .dot { display: inline-block; width: .5rem; height: .5rem; margin-right: .15rem; border-radius: 50%; background: var(--bs-warning); }
