@@ -5,7 +5,8 @@ import { useRoute } from 'vue-router'
 import Crumbs from '@core/components/Crumbs.vue'
 import GuideText from '@core/components/GuideText.vue'
 import Icon from '@core/components/Icon.vue'
-import { getEtalon } from '../api.js'
+import InlineText from '@core/components/InlineText.vue'
+import { getEtalon, putGame } from '../api.js'
 import GameMoments from '../components/GameMoments.vue'
 import GameSample from '../components/GameSample.vue'
 import TaskCatalog from '../components/TaskCatalog.vue'
@@ -29,6 +30,15 @@ const shown = computed(() => grouped.value.reduce((n, z) => n + z.subs.reduce((m
 
 const SHOW_TASKS = false  // «Завдання гри» hidden until the catalog has enough per-game cards (T125 п. 44)
 const etalon = ref(null)  // the classic version described the way students describe theirs; absent for a base without one
+// the teacher changes the title and the line under it where they read (T306); the rest — on the edit page. The server
+// takes a game whole: the rest goes back as the catalog holds it, and its answer takes the game's place there
+const admin = computed(() => user.value?.status === 'admin')
+const FIELDS = ['slug', 'title', 'icon', 'klass', 'axes', 'summary', 'description', 'examples', 'status', 'order']
+async function saveGame(patch) {
+  const g = game.value
+  const fresh = await putGame(g.id, { ...Object.fromEntries(FIELDS.map((k) => [k, g[k]])), ...patch })
+  games.value = games.value.map((x) => (x.id === fresh.id ? { ...x, ...fresh } : x))
+}
 
 onMounted(async () => {
   await loadCatalog()
@@ -42,14 +52,15 @@ onMounted(async () => {
     <Crumbs :items="[['/method', 'Методичка'], ['/games', 'Ігри'], game.title]" />
     <div class="d-flex align-items-center gap-2 mb-1">
       <span class="fs-2">{{ game.icon }}</span>
-      <h1 class="h3 mb-0">{{ game.title }}</h1>
+      <h1 class="h3 mb-0"><InlineText :value="game.title" :can="admin" required placeholder="Назва гри" :save="(title) => saveGame({ title })" /></h1>
       <span v-if="game.status !== 'active'" class="badge text-bg-light border text-secondary fw-normal">{{ STATUSES[game.status] }}</span>
-      <RouterLink v-if="user?.status === 'admin'" :to="`/games/${game.slug}/edit`"
-                  class="ms-auto text-decoration-none" title="Редагувати">✏️</RouterLink>
-      <RouterLink v-if="user?.status === 'admin'" :to="`/games/history?slug=${game.slug}`"
+      <RouterLink v-if="admin" :to="`/games/${game.slug}/edit`"
+                  class="ms-auto text-decoration-none" title="Редагувати все разом">✏️</RouterLink>
+      <RouterLink v-if="admin" :to="`/games/history?slug=${game.slug}`"
                   class="text-decoration-none" title="Історія правок">🕘</RouterLink>
     </div>
-    <p class="text-secondary">{{ game.summary }}</p>
+    <InlineText :value="game.summary" :can="admin" multi block placeholder="Одним рядком: що за гра" class="text-secondary mb-3"
+                :save="(summary) => saveGame({ summary })" />
     <p class="d-flex gap-2 flex-wrap">
       <span class="badge text-bg-primary">{{ KLASSES[game.klass] }}</span>
       <span v-for="(v, k) in game.axes" :key="k" class="badge text-bg-light border text-dark fw-normal">{{ AXES[k] }}: {{ v }}</span>
