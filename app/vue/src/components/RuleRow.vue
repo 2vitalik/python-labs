@@ -33,7 +33,7 @@ async function remove() {
   <div :id="`r-${rule.id}`" class="rule-row" :class="{ open: edit }">
     <div v-if="edit" class="editing form-box"><RuleForm :rule @saved="edit = false" @cancel="edit = false" /></div>
     <template v-else>
-      <RuleText :rule :parts="ed.parts" :class="{ acted: ed.editable }" />
+      <RuleText :rule :parts="ed.parts" :class="{ acted: ed.editable }" :save="ed.editable ? (note) => ed.save.rule(rule.id, { note }) : null" />
       <div v-if="ed.editable" class="acts">
         <button type="button" class="iact" title="Редагувати правило" @click="edit = true"><Icon name="pencil" /></button>
         <DelButton what="правило" :note @yes="remove" />

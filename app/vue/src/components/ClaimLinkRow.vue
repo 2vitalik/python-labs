@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 
 import DelButton from '@core/components/DelButton.vue'
 import Icon from '@core/components/Icon.vue'
+import InlineText from '@core/components/InlineText.vue'
 import Pop from '@core/components/Pop.vue'
 import { deleteClaim } from '../api.js'
 import { missingParams, paramsText } from '../catalog.js'
@@ -12,13 +13,16 @@ import ClaimPop from './ClaimPop.vue'
 import CoinBadge from './CoinBadge.vue'
 
 // a claim as a table row where the link is the point (T278 §10): card · link · note · status; a click opens the claim's
-// panel, as ClaimRow does, and the owner's trash ends the row — always there, quieter until the mouse is over it (T301 §2). Its columns are the
-// table's (`--cols`, SubzoneRows); on a phone the card takes a line of its own
+// panel, as ClaimRow does, and the owner's trash ends the row — always there, quieter until the mouse is over it (T301 §2).
+// The owner writes the link and the note right in their cells (T306): a click beside the link — its address in place, a
+// click on the link itself still leads there. Its columns are the table's (`--cols`, SubzoneRows); on a phone the card
+// takes a line of its own
 const props = defineProps({ claim: Object })
 const ed = useEd()
 const open = ref(false)
 const info = computed(() => ed.info(props.claim.task))
 const remove = () => deleteClaim(props.claim.id).then(() => ed.changed(), (e) => ed.fail(e.message))
+const save = (patch) => ed.save.claim(props.claim.id, patch)
 const factor = computed(() => (repeatable(info.value) ? factorsOf(props.claim.task, info.value, ed.claims)[props.claim.id] ?? 1 : 1))
 const ptext = computed(() => paramsText(info.value, props.claim.params))
 const missing = computed(() => missingParams(info.value, props.claim.params).length > 0)
@@ -56,11 +60,18 @@ function shortLink(url, max = 32) {
             </span>
           </span>
           <span class="link-cell">
-            <a v-if="claim.link" :href="claim.link" target="_blank" rel="noopener" :title="claim.link" @click.stop>{{ shortLink(claim.link) }}</a>
-            <span v-else-if="ed.editable" class="add" title="додати посилання: файл, коміт чи відео"><Icon name="plus" /> посилання</span>
+            <InlineText v-if="ed.editable" :value="claim.link" can block :save="(link) => save({ link })"
+                        :placeholder="info?.zone === 'support' ? 'відео, сторінка гри, документ' : 'файл або коміт на GitHub'">
+              <a :href="claim.link" target="_blank" rel="noopener" :title="claim.link" @click.stop>{{ shortLink(claim.link) }}</a>
+              <template #empty><span class="add" title="додати посилання: файл, коміт чи відео"><Icon name="plus" /> посилання</span></template>
+            </InlineText>
+            <a v-else-if="claim.link" :href="claim.link" target="_blank" rel="noopener" :title="claim.link" @click.stop>{{ shortLink(claim.link) }}</a>
             <span v-else class="muted">—</span>
           </span>
-          <span class="note" :title="claim.note">{{ claim.note }}</span>
+          <InlineText v-if="ed.editable" :value="claim.note" can block class="note" placeholder="як саме це зроблено" :save="(note) => save({ note })">
+            <template #empty><span class="nadd">＋ нотатка</span></template>
+          </InlineText>
+          <span v-else class="note" :title="claim.note">{{ claim.note }}</span>
           <span class="state">
             <span v-if="claim.status === 'accepted'" class="text-success" title="зараховано"><Icon name="done" /></span>
             <span v-else-if="claim.status === 'returned'" class="text-danger" title="повернуто — доробити"><Icon name="back" /></span>
@@ -88,13 +99,17 @@ function shortLink(url, max = 32) {
 .what { min-width: 0; overflow-wrap: anywhere; }
 .link-cell, .note { min-width: 0; overflow-wrap: anywhere; }
 /* one line: a link cut in the middle of a word reads worse than one cut at the end — the whole is in the title */
-.link-cell a { display: block; overflow: hidden; text-decoration: none; text-overflow: ellipsis; white-space: nowrap; }
+.link-cell a { display: inline-block; max-width: 100%; overflow: hidden; vertical-align: top; text-decoration: none; text-overflow: ellipsis; white-space: nowrap; }
 .link-cell a:hover { text-decoration: underline; }
 .muted { color: var(--bs-secondary-color); }
 .add { color: var(--act-add); white-space: nowrap; }
 .add:hover { text-decoration: underline; }
 .need { padding: 0 .3rem; border-radius: .25rem; background: var(--bs-warning-bg-subtle); color: var(--bs-warning-text-emphasis); font-size: .72rem; }
 .note { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; font-style: italic; color: var(--bs-secondary-color); }
+.note.open { display: block; overflow: visible; }  /* the field in place shows the whole note */
+/* an empty note's way in waits for the mouse over the row: a row without a note stays quiet */
+.nadd { color: var(--act-add); opacity: 0; }
+.tr:hover .nadd, .inl:focus-visible .nadd { opacity: .75; }
 .state { display: inline-flex; align-self: center; align-items: center; justify-content: flex-end; gap: .15rem; }
 /* the trash of every list (ClaimRow): full size, its height given back so the row keeps the text's */
 .del-slot :deep(.trash) { margin-block: -.25rem; font-size: 1rem; opacity: .5; }

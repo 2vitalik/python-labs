@@ -1,13 +1,15 @@
 <script setup>
 import { computed } from 'vue'
 
+import InlineText from '@core/components/InlineText.vue'
 import { clauses } from '../rules.js'
 import Pieces from './Pieces.vue'
 
 // a rule to read (T270 §4.1): the keywords in a narrow left column, each of its colour; every condition and every effect
 // on a line of its own, joined by «ТА»; the student's note under the sentence. Used in «Правила» and on an entity's card.
-// A condition whose word has no negative form (rules.js: a `lead` «не») says «НЕ» in the keyword column: «ЯКЩО НЕ», «ТА НЕ»
-const props = defineProps({ rule: Object, parts: Array })
+// A condition whose word has no negative form (rules.js: a `lead` «не») says «НЕ» in the keyword column: «ЯКЩО НЕ», «ТА НЕ».
+// `save(note)` — the owner changes the note where it reads (T306)
+const props = defineProps({ rule: Object, parts: Array, save: Function })
 const c = computed(() => clauses(props.rule, props.parts))
 const lead = (ps) => !!ps[0]?.lead
 </script>
@@ -22,7 +24,7 @@ const lead = (ps) => !!ps[0]?.lead
       <span class="kw then">{{ i ? '' : 'ТО' }}</span><Pieces :list="ps" />
     </template>
     <template v-if="rule.note">
-      <span class="kw note" title="нотатка студента">💬</span><span class="note-text">{{ rule.note }}</span>
+      <span class="kw note" title="нотатка студента">💬</span><InlineText :value="rule.note" :can="!!save" :save class="note-text" placeholder="нотатка" />
     </template>
   </div>
 </template>

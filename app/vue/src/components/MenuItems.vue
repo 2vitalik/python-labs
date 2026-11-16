@@ -2,6 +2,7 @@
 import { computed, ref } from 'vue'
 
 import Icon from '@core/components/Icon.vue'
+import InlineText from '@core/components/InlineText.vue'
 import { vPeek } from '@core/peek.js'
 import { useEd } from '../ed.js'
 import { jump } from '../jump.js'
@@ -13,7 +14,9 @@ import PartBlock from './PartBlock.vue'
 // «Переходи й дії» of a window (T278 §4), in two columns: what was pressed or what happened → the window it leads to (a click
 // goes there) or the action card, then a note. Under the items — the jumps the rules make, to read only: named by the
 // rule's reason, a click goes to the rule. A window, a card or a rule named here shows its card under the mouse.
-// The owner edits the items in place (MenuForm, framed as an open form — the new-thing frame while there is no menu); `menu` — the Part of kind menu hosted on this window, if there is one yet
+// The owner changes an item's words and its note where they read (T306); the pencil opens all the rows as a form (MenuForm,
+// framed as an open form — the new-thing frame while there is no menu): where they lead, new rows, the notes not yet
+// written. `menu` — the Part of kind menu hosted on this window, if there is one yet
 const props = defineProps({ window: Object, menu: Object })
 const ed = useEd()
 const edit = ref(false)
@@ -21,6 +24,7 @@ const items = computed(() => props.menu?.items || [])
 const all = useJumps()
 const jumps = computed(() => all.value.filter((j) => j.from === props.window.id))
 const winTitle = (id) => ed.windows.find((w) => w.id === id)?.title
+const setItem = (i, patch) => ed.save.part(props.menu.id, (m) => ({ items: m.items.map((it, j) => (j === i ? { ...it, ...patch } : it)) }))
 </script>
 
 <template>
@@ -34,12 +38,13 @@ const winTitle = (id) => ed.windows.find((w) => w.id === id)?.title
       </template>
       <div v-if="items.length || jumps.length" class="moves">
         <div v-for="(it, i) in items" :key="i" class="move">
-          <span>{{ it.title }}</span>
+          <InlineText :value="it.title" :can="ed.editable" required placeholder="пункт, кнопка, клавіша" :save="(title) => setItem(i, { title })" />
           <span>
             <a v-if="winTitle(it.window)" v-peek="{ kind: 'window', id: it.window }" href="#" class="text-decoration-none" @click.prevent="jump('p-' + it.window)">→ <Icon name="win" /> {{ winTitle(it.window) }}</a>
             <span v-else-if="it.window" class="text-secondary">→ вікна вже нема</span>
             <span v-else-if="it.task">→ <CardSign :task="ed.info(it.task)" /> <span v-peek="{ kind: 'task', id: it.task }">{{ ed.info(it.task)?.title || it.task }}</span></span>
-            <span v-if="it.note" class="text-secondary"><template v-if="it.window || it.task"> · </template>{{ it.note }}</span>
+            <span v-if="it.note" class="text-secondary"><template v-if="it.window || it.task"> · </template><InlineText :value="it.note" :can="ed.editable"
+              placeholder="нотатка" :save="(note) => setItem(i, { note })" /></span>
           </span>
         </div>
         <div v-for="j in jumps" :key="j.rule + j.to" v-peek="{ kind: 'rule', id: j.rule }" class="move rule" role="button" @click="jump('r-' + j.rule)">
