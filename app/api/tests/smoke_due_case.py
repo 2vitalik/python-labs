@@ -92,6 +92,9 @@ db.deadlines.insert_many([{"lab": 1, "at": D, "groups": [], "created_at": NOW}, 
                           {"lab": 3, "at": NOW + timedelta(days=30), "groups": [], "created_at": NOW}])
 for i, (nick, c) in enumerate(CASES.items()):
     seed(i, nick, c)
+for nick, cut in (("near", "nearc0"), ("days", "daysc1")):  # lab 2 read by the agent: the same code as at lab 1 · new commits, still not all
+    db.reviews.insert_one({"user": f"{nick}@nure.ua", "lab": 2, "commit": cut, "verdict": "partial", "head": "", "head_verdict": "", "kind": "game", "required": HALF,
+                           "summary": "", "report": "", "profile": {}, "by": "", "at": NOW})
 
 with TestClient(main.app) as c:
     c.get("/api/auth/dev-login", follow_redirects=False)
@@ -104,8 +107,9 @@ with TestClient(main.app) as c:
     check("the status poll is known by its tag and its ✅ 🚫", {p["title"]: p["says_lab"] for p in t["polls"]} == {"Дедлайн 1: Статус": 1, "Пара 1": None}, t["polls"])
     check("the word of the poll and when", rows["bit"]["1"]["case"]["says"] == "ext" and rows["bit"]["1"]["case"]["said_at"].startswith("2026-10-21"), rows["bit"]["1"]["case"])
     check("no bot linked → the vote is nobody's", rows["norepo"]["1"]["case"]["says"] is None)
-    check("lab 2, its window empty, nothing after → nowork", rows["ontime"]["2"]["case"]["code"] == "nowork" and rows["ontime"]["2"]["case"]["answer"] == "ask", rows["ontime"]["2"])
-    check("lab 2, commits in its window → unreviewed", rows["days"]["2"]["case"]["code"] == "unreviewed", rows["days"]["2"])
+    check("lab 2, no review yet → unreviewed, whenever the commits came", [rows[n]["2"]["case"]["code"] for n in ("ontime", "bit")] == ["unreviewed"] * 2, rows["ontime"]["2"])
+    check("lab 2 read, not done, not a commit since lab 1 → nowork, a plain «ні»", (rows["near"]["2"]["case"]["answer"], rows["near"]["2"]["case"]["code"]) == ("no", "nowork"), rows["near"]["2"])
+    check("lab 2 read, not done, but worked on → partial", rows["days"]["2"]["case"]["code"] == "partial", rows["days"]["2"])
     check("lab 3 ahead → wait", rows["ontime"]["3"]["case"] | {"flags": []} == {"answer": "wait", "code": "ahead", "late": None, "says": None, "said_at": None, "flags": []})
     check("lab 4 without a deadline → nodue", rows["ontime"]["4"]["case"]["code"] == "nodue")
 

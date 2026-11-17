@@ -19,7 +19,7 @@ def hours(d: timedelta) -> float:
     return round(d.total_seconds() / 3600, 1)
 
 
-def by_review(repo: Repo | None, review: Review, due: datetime, extended: bool) -> tuple[str, str, float | None]:
+def by_review(repo: Repo | None, review: Review, due: datetime, extended: bool, idle: bool) -> tuple[str, str, float | None]:
     fine = YES, "extended" if extended else "ontime", None
     if review.verdict == "done":
         return fine
@@ -31,6 +31,8 @@ def by_review(repo: Repo | None, review: Review, due: datetime, extended: bool) 
         if late <= SLIP:  # ≤ 0 — the deadline moved after the review was cut
             return fine if late <= 0 else (YES, "slip", late)
         return ASK, "late_bit" if late <= NEAR else "late_days" if late <= DAYS else "late_far", late
+    if idle:  # not a commit since the previous deadline: what the review read is the previous lab's code
+        return NO, "nowork", None
     if "partial" in (review.verdict, review.head_verdict):
         return ASK, "near" if [w for w in review.required if w != "done"] == ["partial"] else "partial", None
     return (ASK, "other", None) if review.kind in ("tasks", "other") else (NO, "nothing", None)
@@ -53,15 +55,15 @@ def decide(u: User, repo: Repo | None, mark: LabMark | None, review: Review | No
         return NO, "norepo", None
     at = sorted(utc(c.at) for c in repo.commits) if repo else []
     if review:  # «з подовженням» — work went on past the common deadline
-        return by_review(repo, review, due, bool(mark and mark.until) and any(t <= due and (not base or t > utc(base.at)) for t in at))
+        return by_review(repo, review, due, bool(mark and mark.until) and any(t <= due and (not base or t > utc(base.at)) for t in at),
+                         bool(since) and not any(since < t <= due for t in at))
     if not at and repo and (repo.ok or repo.error == EMPTY):  # the pull calls an empty repository a failure too
         return NO, "empty", None
     if not repo or not repo.ok:
         return ASK, "noaccess", None
-    if any(t <= due and (not since or t > since) for t in at):
-        return WAIT, "unreviewed", None  # commits in the lab's window, nobody has read them yet
-    after = [t for t in at if t > due]
-    return (ASK, "after", hours(after[0] - due)) if after else (ASK, "nowork", None)
+    if at[0] <= due:
+        return WAIT, "unreviewed", None  # there is code, nobody has read it yet
+    return ASK, "after", hours(at[0] - due)
 
 
 def flags(u: User, n: int, repo: Repo | None, mark: LabMark | None, review: Review | None, due: datetime | None,
