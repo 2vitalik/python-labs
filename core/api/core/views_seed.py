@@ -8,7 +8,7 @@ from core.models.view import View, ViewVersion
 
 GONE = "table.seeds_gone"
 # the columns and the «для чого» of a lab's view; a site adds its own by the lab's number, 0 — any other lab
-LAB_COLS = {0: "reg,lab,lab.review,lab.required,lab.kind,lab.before,lab.after,lab.last,lab.asked,lab.ext,lab.met,lab.note,polls:lab,fields:lab"}
+LAB_COLS = {0: "reg,lab,lab.review,lab.required,lab.kind,lab.before,lab.after,lab.last,lab.asked,lab.ext,lab.met,lab.note,fields:lab,polls:lab"}
 LAB_ABOUT = {0: "Дедлайн лаби: стан кожного студента, звіт агента, подовження й відповіді опитувань."}
 
 

@@ -4,7 +4,7 @@ from lab 3 on — the game's table filled, and a demo video for labs 3 and 4 (T3
 this is only where they start."""
 from core import views_seed
 
-MARKS = "lab.before,lab.last,lab.asked,lab.ext,lab.met,lab.note,polls:lab,fields:lab"
+MARKS = "lab.before,lab.last,lab.asked,lab.ext,lab.met,lab.note,fields:lab,polls:lab"
 GAME = "gname,gfill,gents,gwins,grules"
 views_seed.LAB_COLS |= {
     1: f"reg,seen,bot,gh,repo,lab,lab.review,lab.required,lab.kind,{MARKS}",
