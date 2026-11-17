@@ -10,6 +10,8 @@ import { inject, provide } from 'vue'
 //   changed() — reload after a write · fail(text) — an error that has no place of its own
 //   save.part | claim | rule(id, patch) — one value changed in place, saved and reloaded in line (edSave.js, T306)
 //   open(block, prefill) — the form of a new entity | window | level | rule, in view and lit
+//   videos — the rows of «Супровід» the game is asked for (T318); undefined — a sample, its sandbox
+//   catalog(scope) — the catalog's cards of a place in a window over the page (CatalogWindow, sections.js catalogOf)
 const KEY = 'game-editor'  // a plain string: a Symbol is made anew when Vite hot-swaps this module, and the pieces lose the editor
 export const provideEd = (ed) => provide(KEY, ed)
 export const useEd = () => inject(KEY, null)  // null outside a game's editor: the emoji picker serves /table too
