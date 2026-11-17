@@ -39,6 +39,7 @@ import LookSwitch from './LookSwitch.vue'
 import MomentsBlock from './MomentsBlock.vue'
 import RulesBlock from './RulesBlock.vue'
 import SectionHead from './SectionHead.vue'
+import UndoBar from './UndoBar.vue'
 import WideSwitch from './WideSwitch.vue'
 import WindowsBlock from './WindowsBlock.vue'
 import ZoneSection from './ZoneSection.vue'
@@ -70,6 +71,7 @@ const ed = reactive({
   changed: () => { error.value = ''; return props.reload?.() },
   open: (block, prefill) => open(block, prefill),
   fail: (text) => (error.value = text),
+  last: null,
 })
 ed.save = savers(ed)
 provideEd(ed)
@@ -270,6 +272,7 @@ async function fromTemplate() {
     </template>
 
     <Toc :items="toc" :side="!wide" :bar="view === 'cards'" />
+    <UndoBar v-if="editable" />
     <Lightbox />
     <PeekHost />
   </div>

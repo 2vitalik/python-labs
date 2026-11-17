@@ -4,9 +4,14 @@ import { putClaim, putPart, putRule } from './api.js'
 
 // one value changed in place (T306): the server takes a thing whole, so the rest of it goes back as the page holds it.
 // Saves run one after another, each built from the data the save before brought back — two quick changes of one card
-// must not send its old copy over the fresh one. `patch` — the fields, or a function of the thing as it is now
+// must not send its old copy over the fresh one. `patch` — the fields, or a function of the thing as it is now.
+// What a save changed can be taken back (T310): `ed.last` = { what, undo } — the same fields as they were, through the
+// same line (UndoBar.vue shows it for a few seconds)
 const PART = ['title', 'task', 'role', 'icon', 'description', 'window', 'items', 'props', 'stats', 'states', 'order']
+const NAMES = { title: 'назву', description: 'опис', role: 'тип', task: 'тип', icon: 'значок', stats: 'параметри', states: 'стани', props: 'властивості',
+  items: 'переходи й дії', note: 'нотатку', link: 'посилання' }
 const pick = (o, keys) => Object.fromEntries(keys.map((k) => [k, o[k]]))
+const copy = (o) => JSON.parse(JSON.stringify(o))
 let line = Promise.resolve()
 
 export function savers(ed) {
@@ -21,10 +26,20 @@ export function savers(ed) {
     line = run.catch(() => {})
     return run
   }
-  const of = (patch, now) => (typeof patch === 'function' ? patch(now) : patch)
+  // `whole(now)` — the thing as the server wants it; `back` — this save is itself an undo: it offers none
+  function saver(list, put, whole) {
+    const save = (id, patch, back = false) => inLine(list, id, async (now) => {
+      const next = typeof patch === 'function' ? patch(now) : patch
+      const keys = Object.keys(next)
+      const was = copy(pick(now, keys))
+      await put(id, { ...whole(now), ...next })
+      ed.last = back ? null : { what: keys.map((k) => NAMES[k] || k).join(', '), undo: () => save(id, was, true) }
+    })
+    return save
+  }
   return {
-    part: (id, patch) => inLine('parts', id, (p) => putPart(id, { ...pick(p, PART), ...of(patch, p) })),
-    claim: (id, patch) => inLine('claims', id, (c) => putClaim(id, { note: c.note, link: c.link, ...of(patch, c) })),
-    rule: (id, patch) => inLine('rules', id, (r) => putRule(id, { ...pick(r, ['when', 'cond', 'then', 'note']), ...of(patch, r) })),
+    part: saver('parts', putPart, (p) => pick(p, PART)),
+    claim: saver('claims', putClaim, (c) => ({ note: c.note, link: c.link })),
+    rule: saver('rules', putRule, (r) => pick(r, ['when', 'cond', 'then', 'note'])),
   }
 }
