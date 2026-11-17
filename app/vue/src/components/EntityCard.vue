@@ -4,6 +4,7 @@ import { computed, ref, watch } from 'vue'
 import DelButton from '@core/components/DelButton.vue'
 import Icon from '@core/components/Icon.vue'
 import InlineText from '@core/components/InlineText.vue'
+import Reveal from '@core/components/Reveal.vue'
 import { vPeek } from '@core/peek.js'
 import { vToStart } from '@core/toStart.js'
 import { deletePart } from '../api.js'
@@ -32,7 +33,8 @@ import '../partCard.css'
 // passes); the description, stats and states, screenshots, the mechanics claimed on it and the rules that name it.
 // The owner changes each of them where it reads (T306): the icon, the name, the type, the description, a stat's value, the
 // states. The pencil opens no form (T310): it turns the card's tools on — what is not there yet («＋ параметр», «＋ стани»)
-// and a minus by every stat. Folded (T296 §7) — the head, two lines and what is inside
+// and a minus by every stat. Folded (T296 §7) — the head, two lines and what is inside. Stats and states, mechanics —
+// features of the page (T319): they come with the switch
 const props = defineProps({ part: Object })
 const ed = useEd()
 const tools = computed(() => ed.editable && toolsOn(props.part.id))
@@ -90,17 +92,17 @@ async function remove() {
                   placeholder="Що це і як поводиться — коротко" :save="(description) => save({ description })">
         <template #empty><span class="more" title="опису ще нема — додай пару слів"><Icon name="plus" /> опис</span></template>
       </InlineText>
-      <EntityStats v-if="!ed.simple" :part :auto :can="ed.editable" :tools />
+      <EntityStats :part :auto :can="ed.editable" :tools="tools && ed.has('stats')" />
       <ShotStrip :part need />
-      <template v-if="!ed.simple">
-        <PartBlock v-if="mechanics.length || ed.editable" pic="cog" zone="entities" title="Механіки">
+      <Reveal :show="ed.has('mechanics') && (mechanics.length > 0 || ed.editable)" gap>
+        <PartBlock pic="cog" zone="entities" title="Механіки">
           <template #after><CardPicker plus :kinds="['mechanic']" :anchor="{ part: part.id }" label="механіка" /></template>
           <div v-if="mechanics.length" class="vstack gap-1">
             <ClaimRow v-for="c in mechanics" :key="c.id" :claim="c" />
           </div>
         </PartBlock>
-        <EntityRules :part />
-      </template>
+      </Reveal>
+      <EntityRules :part />
       <div v-if="error" class="text-danger small">{{ error }}</div>
     </div>
   </div>

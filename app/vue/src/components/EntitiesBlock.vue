@@ -19,7 +19,7 @@ defineExpose({ add })
 
 <template>
   <div>
-    <div v-if="!ed.simple && ed.entities.length" class="d-flex justify-content-end mb-1">
+    <div v-if="ed.entities.length" class="d-flex justify-content-end mb-1">
       <button type="button" class="toggle" @click="ed.showRules = !ed.showRules">
         <Icon :name="ed.showRules ? 'fold' : 'unfold'" /> {{ ed.showRules ? 'згорнути правила' : 'розгорнути правила' }}
       </button>
@@ -30,8 +30,7 @@ defineExpose({ add })
     </StableColumns>
     <Tip v-else-if="!adding">
       <div>Мешканці поля: гравець, вороги, предмети, стіни, підлога.</div>
-      <div v-if="ed.simple">У кожної — тип, короткий опис і скриншот.</div>
-      <div v-else>У кожної — тип, параметри, стани, механіки й правила.</div>
+      <div>У кожної — {{ ['тип, опис, скриншот', ed.has('stats') && 'параметри, стани', ed.has('mechanics') && 'механіки'].filter(Boolean).join(', ') }} і правила.</div>
     </Tip>
   </div>
 </template>

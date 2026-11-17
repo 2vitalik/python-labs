@@ -1,6 +1,7 @@
 <script setup>
 import { computed, nextTick, ref, watch } from 'vue'
 
+import Reveal from '@core/components/Reveal.vue'
 import Tip from '@core/components/Tip.vue'
 import { vocab } from '../catalog.js'
 import { useEd } from '../ed.js'
@@ -18,9 +19,11 @@ import RulesSwitch from './RulesSwitch.vue'
 import RulesTime from './RulesTime.vue'
 
 // the body of «Правила» (T270 §4.2, T274 §6): the tick's order, then the rules grouped by what starts them — or one of the
-// tables: contacts, controls, time. add(prefill?) opens the new rule's form: prefill = { when?, cond?, then?, card? }
+// tables: contacts, controls, time. add(prefill?) opens the new rule's form: prefill = { when?, cond?, then?, card? }.
+// The tick's order and the tables are features of the page (T319): without the tables — the list alone
 const ed = useEd()
 const view = rulesView  // the heading's GroupsFold reads it too
+watch(() => ed.has('tables'), (on) => on || (view.value = 'list'), { immediate: true })
 const adding = ref(null)  // the new rule's prefill while its form is open
 const opened = ref(0)  // every add() starts a fresh form
 const contacts = computed(() => ed.rules.filter(isContact))
@@ -55,8 +58,8 @@ watch(target, (id) => {
 <template>
   <div>
     <!-- the page's contents point here («Порядок ходу»): the anchor stays even when the strip has nothing to show -->
-    <div id="rules-phases"><PhasesStrip class="mb-3" /></div>
-    <RulesSwitch v-model="view" class="mb-2" />
+    <div id="rules-phases"><Reveal :show="ed.has('phases')"><PhasesStrip class="mb-3" /></Reveal></div>
+    <Reveal :show="ed.has('tables')"><RulesSwitch v-model="view" class="mb-2" /></Reveal>
     <RulesMatrix v-if="view === 'contacts'" :rules="contacts" @show="show" @add="add" />
     <RulesControls v-else-if="view === 'controls'" @show="show" @add="add" />
     <RulesTime v-else-if="view === 'time'" @show="show" @add="add" />

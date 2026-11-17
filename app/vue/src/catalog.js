@@ -7,8 +7,10 @@ export const games = ref([])
 export const tasks = ref([])
 export const templates = ref({})  // base slug → counts of its reference description (Д4)
 // the description language, served by the API: the words of rules from models/vocab.py; entity types, stats and the
-// field's options from the catalog's cards (T270 §14.3); `depth` — how much of the editor this user fills
-export const vocab = ref({ roles: {}, triggers: {}, conditions: {}, effects: {}, options: {}, field: [], level: [], stats: [], sides: {}, args: {}, kinds: {}, depth: 'full' })
+// field's options from the catalog's cards (T270 §14.3); `features` — the game page's features (T319): all, closed for
+// students, `free` — the teacher, whom closing does not limit
+export const vocab = ref({ roles: {}, triggers: {}, conditions: {}, effects: {}, options: {}, field: [], level: [], stats: [], sides: {}, args: {}, kinds: {},
+  features: { all: [], closed: [], free: false } })
 export const kidsOf = computed(() => {
   const m = {}
   for (const t of tasks.value) if (t.parent) (m[t.parent] ??= []).push(t)

@@ -10,7 +10,7 @@ import { landed } from '../jump.js'
 
 // advice on a window's card (T278 §11): its type or an element hints at a function of the whole game (a volume slider →
 // the volume really changes). Asked, not ordered, while none of the answers is claimed; «не про мою гру» hides it for
-// this game. Not in the sample's sandbox, the short form or a reader's view. `part` — the window
+// this game. Not in the sample's sandbox or a reader's view, and only with the elements of windows (T319). `part` — the window
 const props = defineProps({ part: Object })
 const ed = useEd()
 const error = ref('')
@@ -24,7 +24,7 @@ const line = (slugs, fns) => `Є ${slugs.map(what).join(' і ')}. Може, у �
 
 // the window type and an element asking the same make one advice
 const advice = computed(() => {
-  if (!ed.editable || ed.sandbox || ed.simple) return []
+  if (!ed.editable || ed.sandbox || !ed.has('elements')) return []
   const out = []
   const own = ed.claimsOf(props.part.id).filter((c) => !c.auto).map((c) => c.task)
   for (const slug of new Set([props.part.task, ...own])) {

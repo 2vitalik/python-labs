@@ -8,14 +8,14 @@ import VideoRow from './VideoRow.vue'
 
 // the videos every game is asked for (T318), on top of «Супровід»: rows that are there already — nobody adds them as
 // cards. By who needs them: demos — everyone, by a lab's deadline; async defenses — from 70; a row per gold card — from 85.
-// The same table of links as the section's cards (SubzoneRows, `table`); in the short form the section is these rows alone
+// The same table of links as the section's cards (SubzoneRows, `table`); without them (T319) the section is these rows alone
 const ed = useEd()
 const groups = computed(() => GROUPS.map((g) => ({ ...g, list: ed.videos.filter((v) => v.kind === g.kind) })).filter((g) => g.list.length))
 </script>
 
 <template>
-  <div class="videos" :class="{ judge: ed.judge }" :data-dock="ed.simple ? null : ''">
-    <div v-if="!ed.simple" class="cap"><span class="fw-semibold">Відео</span> <span class="muted">— ці рядки є в кожній грі, картки додавати не треба</span><span class="tip-dock" /></div>
+  <div class="videos" :class="{ judge: ed.judge }" :data-dock="ed.has('support') ? '' : null">
+    <div v-if="ed.has('support')" class="cap"><span class="fw-semibold">Відео</span> <span class="muted">— ці рядки є в кожній грі, картки додавати не треба</span><span class="tip-dock" /></div>
     <Tip v-if="ed.editable" id="videos-how" class="mb-1">Встав посилання на відео: YouTube («доступ за посиланням»), Google Drive (відкрий доступ усім, хто має посилання) чи Loom.
       Перезаписав — дай нове посилання кнопкою «оновити»: попередні версії лишаються, а «вчасно» рахується за першим.</Tip>
     <div class="thead"><span>відео</span><span>посилання</span><span>нотатка</span></div>

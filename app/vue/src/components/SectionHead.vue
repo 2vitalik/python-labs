@@ -33,6 +33,7 @@ const props = defineProps({ icon: String, title: String, count: [Number, String]
                             catalog: Object })
 const ed = useEd()
 const router = useRouter()
+const looks = computed(() => !ed?.has || ed.has('looks'))  // the reader's switches wait for «Налаштування вигляду» (T319): the base keeps a heading calm
 const tasksHref = computed(() => (props.catalog ? router.resolve(props.catalog.to).href : ''))
 const el = ref()
 const WORD = { open: 'повністю', short: 'коротко', folded: 'згорнуто' }
@@ -75,13 +76,15 @@ async function keep(change) {
         <a v-if="catalog && ed" :href="tasksHref" target="_blank" rel="noopener" class="iact dim"
            title="Картки каталогу для цієї секції — у вікні над сторінкою&#10;⌘- чи Ctrl-клік — та сама категорія на «Тасках», у новій вкладці"
            @click.exact.prevent="ed.catalog(catalog)"><Icon name="puzzle" /></a>
+        <template v-if="looks">
         <ColsSwitch v-if="layout" quiet :scope="anchor" :around="keep" />
         <LookSwitch v-if="layout && canCols" quiet :look="rows" :modes="ROWS" label="Розкладка" :scope="anchor" :around="keep"
                     :off="modeOf(anchor) === 'one' ? 'Один стовпець — рядами нема чого вирівнювати' : ''" />
         <LookSwitch v-if="cardFold" quiet :look="cards" :modes="CARDS" label="Картки" :scope="anchor" :around="keep" />
         <WideSwitch quiet :around="keep" />
+        </template>
       </template>
-      <button v-if="fold && !isFolded(fold)" type="button" class="iact every" :class="ownShort(fold) ? 'on' : 'dim'" :aria-pressed="isShort(fold)"
+      <button v-if="looks && fold && !isFolded(fold)" type="button" class="iact every" :class="ownShort(fold) ? 'on' : 'dim'" :aria-pressed="isShort(fold)"
               :title="shortTip(fold)" :data-all="`у всіх секціях: ${isShort(fold) ? 'повністю' : 'коротко'}`"
               @click="(e) => keep(() => toggleShort(fold, toAll(e)))">
         <Icon :name="isShort(fold) ? 'short' : 'lines'" />

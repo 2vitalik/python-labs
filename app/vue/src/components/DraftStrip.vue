@@ -7,13 +7,13 @@ import { isDraft } from '../myGame.js'
 import ClaimRow from './ClaimRow.vue'
 
 // the claims of `kinds` still waiting for their place (T274 §3): added to the game, not yet tied to an entity, a window,
-// a rule or the field — a red-edged strip under the heading of the section they belong to; none in the short form
+// a rule or the field — a red-edged strip under the heading of the section they belong to
 const props = defineProps({ kinds: Array, hint: String })
 const ed = useEd()
-const list = computed(() => (ed.simple ? [] : ed.claims.filter((c) => {
+const list = computed(() => ed.claims.filter((c) => {
   const t = ed.info(c.task)
   return isDraft(c, t) && props.kinds.includes(kindOf(t))
-})))
+}))
 </script>
 
 <template>

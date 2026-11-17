@@ -1,6 +1,7 @@
 import { computed } from 'vue'
 
 import { kindOf, ruShown, vocab, zones } from './catalog.js'
+import { homeOf } from './features.js'
 import { user } from '@core/user.js'
 
 // what /tasks says about a card beyond its fields: what «＋ у гру» does with its kind (T274 §3), where the plus is at all,
@@ -32,12 +33,10 @@ export const addsTo = (task) => {
 
 export const OPT_HINT = { role: 'ключ типу: enemy', stat: 'ключ параметра: hp', fieldopt: 'властивість:значення — control:click-cell' }
 
-// the simple mode fills only windows and entities; a card that names an object by `opt` without one has nothing to add
-const SIMPLE = ['window', 'role']
-export const addable = (task) => {
-  const kind = kindOf(task)
-  return (vocab.value.depth !== 'simple' || SIMPLE.includes(kind)) && (!OPT_HINT[kind] || !!task.opt)
-}
+// a card whose place is a feature the teacher closed waits for it (T319): its plus is grey, «ще готується»
+export const closedHome = (task) => !vocab.value.features.free && vocab.value.features.closed.includes(homeOf(task))
+// a card that names an object by `opt` without one has nothing to add
+export const addable = (task) => !closedHome(task) && (!OPT_HINT[kindOf(task)] || !!task.opt)
 
 // the kind of a card that names none (zones.py default_kind)
 export const subzoneKind = (zone, sub, tags = []) => (tags.includes('window') ? 'window' : zones.value[zone]?.subzones[sub]?.[2] || 'game')

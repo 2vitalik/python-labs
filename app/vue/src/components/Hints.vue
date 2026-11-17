@@ -8,11 +8,11 @@ import { jump } from '../jump.js'
 
 // «чого бракує» — a few gentle lines; a click shows the place: the page scrolls there and it flashes.
 // An advice line (`advice`, T278 §11) can be hidden for this game; the hidden ones wait under the list with «повернути».
-// No advice in the sample's sandbox or the short form, as on the window cards. A framed group with its caption (T301 §3):
+// No advice in the sample's sandbox, as on the window cards. A framed group with its caption (T301 §3):
 // it must not read as the explanation of the «＋ Додати» field above it
 const props = defineProps({ items: Array })
 const ed = useEd()
-const asks = computed(() => ed.editable && !ed.sandbox && !ed.simple)
+const asks = computed(() => ed.editable && !ed.sandbox)
 const lines = computed(() => props.items.filter((h) => !h.advice || asks.value))
 const hidden = computed(() => (asks.value ? hiddenOf(ed.game.id) : []))
 const open = ref(false)

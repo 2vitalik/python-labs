@@ -58,7 +58,7 @@ onBeforeUnmount(() => setSandbox(''))
         </span>
       </div>
       <div v-if="error" class="text-danger small mb-2">{{ error }}</div>
-      <GameEditor :key="round" full editable :game="box.game" :parts="box.parts" :claims="box.claims" :rules="box.rules" :tasks="box.tasks"
+      <GameEditor :key="round" editable :game="box.game" :parts="box.parts" :claims="box.claims" :rules="box.rules" :tasks="box.tasks"
                   :coins="box.coins" :reload />
     </template>
     <template v-else>
@@ -69,7 +69,7 @@ onBeforeUnmount(() => setSandbox(''))
           <RouterLink :to="{ path: '/login', query: { next: route.fullPath } }">Увійди</RouterLink>, щоб спробувати редагувати</span>
         <span v-if="error" class="text-danger small">{{ error }}</span>
       </div>
-      <GameEditor full :game="etalon.game" :parts="etalon.parts" :claims="etalon.claims" :rules="etalon.rules" :tasks="etalon.tasks" :coins="etalon.coins" />
+      <GameEditor :game="etalon.game" :parts="etalon.parts" :claims="etalon.claims" :rules="etalon.rules" :tasks="etalon.tasks" :coins="etalon.coins" />
     </template>
   </div>
 </template>

@@ -30,7 +30,7 @@ import '../partCard.css'
 // card passes (partCard.css). The owner changes the name, where it comes from, how many, the size and the properties, a
 // parameter and the description where they read (T306). The pencil opens no form (T310): it turns the card's tools on —
 // what is not said yet (where from, how many, the size, the field's properties a level may change — «як у поля»),
-// «＋ параметр», the map's editor. Folded (T296 §7) — the head, two lines and what is inside
+// «＋ параметр», the map's editor — while the map is a feature on (T319). Folded (T296 §7) — the head, two lines and what is inside
 const OVERRIDES = ['size', 'topology', 'view', 'time', 'control', 'gravity', 'wrap']  // what a level is offered to change
 const p = defineProps({ part: Object })
 const ed = useEd()
@@ -101,7 +101,7 @@ async function remove() {
                   placeholder="Коротко: що тут відбувається, чим рівень особливий…" :save="(description) => save({ description })">
         <template #empty><span class="more-field">＋ опис</span></template>
       </InlineText>
-      <LevelMap :text="values.map" :tools :save="(map) => setProp('map', map)" />
+      <LevelMap :text="values.map" :tools="tools && ed.has('map')" :save="(map) => setProp('map', map)" />
       <ShotStrip v-if="ed.editable || part.screenshots?.length" :part />
       <PartBlock v-if="claims.length || ed.editable" pic="card" zone="levels" title="Картки рівня">
         <template #after><CardPicker plus :kinds="['level']" :anchor="{ part: part.id }" label="картка рівня" /></template>

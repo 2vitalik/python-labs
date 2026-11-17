@@ -4,6 +4,7 @@ import { computed, ref, watch } from 'vue'
 import DelButton from '@core/components/DelButton.vue'
 import Icon from '@core/components/Icon.vue'
 import InlineText from '@core/components/InlineText.vue'
+import Reveal from '@core/components/Reveal.vue'
 import { vPeek } from '@core/peek.js'
 import { vToStart } from '@core/toStart.js'
 import { deletePart } from '../api.js'
@@ -34,7 +35,8 @@ import ToolsButton from './ToolsButton.vue'
 // map's: filled when there is a screenshot, in the colour of the window's type (T284 §1). The head is tinted and sticks
 // while the card passes (partCard.css). The owner changes the name, the type and the description where they read (T306).
 // The pencil opens no form (T310): it turns the card's tools on — the rows of «Переходи й дії» take theirs (MenuItems).
-// Folded (T296 §7) — the head, two lines and what is inside
+// Folded (T296 §7) — the head, two lines and what is inside. The elements are a feature of the page (T319): they come
+// with the switch, the advice with them
 const props = defineProps({ part: Object })
 const ed = useEd()
 const tools = computed(() => ed.editable && toolsOn(props.part.id))
@@ -94,16 +96,16 @@ async function remove() {
         <template #empty><span class="more" title="опису ще нема — додай пару слів"><Icon name="plus" /> опис</span></template>
       </InlineText>
       <ShotStrip :part need />
-      <template v-if="!ed.simple">
-        <MenuItems :window="part" :menu :tools />
-        <PartBlock v-if="claims.length || ed.editable" pic="widgets" zone="interface" title="Елементи" class="small">
+      <MenuItems :window="part" :menu :tools />
+      <Reveal :show="ed.has('elements') && (claims.length > 0 || ed.editable)" gap>
+        <PartBlock pic="widgets" zone="interface" title="Елементи" class="small">
           <template #after><CardPicker plus :kinds="['element']" :anchor="{ part: part.id }" label="елемент" /></template>
           <div v-if="claims.length" class="vstack gap-1">
             <ClaimRow v-for="c in claims" :key="c.id" :claim="c" />
           </div>
         </PartBlock>
-        <PairAdvice :part />
-      </template>
+      </Reveal>
+      <PairAdvice :part />
       <div v-if="error" class="text-danger small">{{ error }}</div>
     </div>
   </div>

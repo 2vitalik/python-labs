@@ -14,7 +14,7 @@ import TaskAdd from './TaskAdd.vue'
 
 // «в еталоні є, у тебе нема» (T280 Q7): the cards the base game's reference description claims and this game does not.
 // A quiet line under «чого бракує» opens the list by category; a card has the catalog's own plus and «не про мою гру»,
-// which hides it for this game as an advice is hidden (advice.js, back from «сховані поради»). The owner's full editor only
+// which hides it for this game as an advice is hidden (advice.js, back from «сховані поради»). The owner's, with «Еталон основи» on (T319)
 const ed = useEd()
 const etalon = ref(null)
 const open = ref(false)

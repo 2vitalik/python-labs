@@ -1,5 +1,6 @@
 import { answersOf, isHidden } from './advice.js'
-import { kindOf, missingParams, NEEDS_SCREEN, PAIRS } from './catalog.js'
+import { needsWhy } from './asked.js'
+import { kindOf, missingParams, NEEDS_SCREEN, PAIRS, vocab } from './catalog.js'
 import { isDraft } from './myGame.js'
 import { mentions } from './rules.js'
 import { dueSoon } from './videos.js'
@@ -14,21 +15,9 @@ const misplaced = (c, task, parts) => {
 const WAITS = { mechanic: 'Сутності', element: 'Вікна й переходи', rule: 'Правила' }  // the section whose strip a claim without a place waits in
 
 // a demo whose lab's deadline is two weeks away or gone, and no link yet (T318): the first thing to say
-function demoHint(videos, section = 'Супровід') {
+function demoHint(videos, section) {
   const v = dueSoon(videos)
   return v ? [{ to: `v-${v.slot}`, text: `🎬 Демка до лаби ${v.lab} — дедлайн ${new Date(v.due).toLocaleDateString('uk-UA', { day: 'numeric', month: 'long' })}: встав посилання на відео в секції «${section}».` }] : []
-}
-
-// what the short form still lacks (T270 §12): entities and windows only
-function simpleHints({ game, parts, videos }) {
-  const out = demoHint(videos, 'Відео')
-  const ents = parts.filter((p) => p.kind === 'entity'), wins = parts.filter((p) => p.kind === 'window')
-  if (!game.description) out.push({ to: 'about', text: 'Кілька речень опису вгорі: що за гра і чим відрізняється від основи.' })
-  if (!ents.length) out.push({ to: 'entities', text: 'Хто й що є на полі? У секції «Сутності» натисни «＋ сутність»: гравець, вороги, стіни, предмети.' })
-  if (!wins.length) out.push({ to: 'windows', text: 'Які екрани має гра? У секції «Вікна» натисни «＋ вікно»: ігровий екран, меню, кінець гри.' })
-  const bare = ents.find((e) => !e.description)
-  if (bare) out.push({ to: `p-${bare.id}`, text: `«${bare.title}» — допиши одним реченням, що це і як поводиться (олівець на картці).` })
-  return out
 }
 
 // a function of the game claimed with nothing on a window to work it: «є гучність — а де слайдер?» (the other way round
@@ -45,17 +34,20 @@ function reversePair({ game, claims, wins, info }) {
   }
 }
 
-// what the description still lacks — gentle, at most a handful, the most useful first, each naming the place and the button
-// `shots: false` — the sample's sandbox: no screenshots to add there, no head form to write the description in
-export function hints({ game, parts, rules, claims, videos, info, base, simple, shots = true }) {
-  if (simple) return simpleHints({ game, parts, videos }).slice(0, 4)
-  const out = demoHint(videos)
+// what the description still lacks — gentle, at most a handful, the base first, the most useful first, each naming the
+// place and the button; of a feature (T319) — only while it is shown (`has`). `sandbox` — the sample's scratch copy: no
+// screenshots to add there, no head form to write the description in, no why to give
+export function hints({ game, parts, rules, claims, videos, info, base, has, sandbox = false }) {
+  const out = demoHint(videos, has('support') ? 'Супровід' : 'Відео')
   const ents = parts.filter((p) => p.kind === 'entity'), wins = parts.filter((p) => p.kind === 'window')
   const effects = new Set(rules.flatMap((r) => r.then.map((e) => e.kind)))
   const puzzle = base?.klass === 'puzzle'
-  if (!parts.some((p) => p.kind === 'field')) out.push({ to: 'field', text: 'Опиши поле: у секції «Поле» натисни «Описати поле» — сітка, вид, час, керування.' })
-  if (!ents.some((p) => ['player', 'piece', 'mark'].includes(p.role))) out.push({ to: 'entities', text: 'Хто гравець? «＋ сутність» з типом «гравець» (або фігура чи розмітка).' })
-  // a field card without the field sits down by itself once the field is described: the field's hint above covers it
+  if (!sandbox && !game.description) out.push({ to: 'about', text: 'Кілька речень опису вгорі: що за гра і чим відрізняється від основи.' })
+  if (!ents.length) out.push({ to: 'entities', text: 'Хто й що є на полі? У секції «Сутності» натисни «＋ сутність»: гравець, вороги, стіни, предмети.' })
+  else if (!ents.some((p) => ['player', 'piece', 'mark'].includes(p.role))) out.push({ to: 'entities', text: 'Хто гравець? «＋ сутність» з типом «гравець» (або фігура чи розмітка).' })
+  if (!wins.length) out.push({ to: 'windows', text: 'Які екрани має гра? У секції «Вікна й переходи» натисни «＋ вікно»: ігровий екран, меню, кінець гри.' })
+  else if (!wins.some((w) => w.task === 'game-screen')) out.push({ to: 'windows', text: '«＋ вікно» з типом «Ігровий екран» і скриншотом гри.' })
+  // a field card without the field sits down by itself once the field is described: the field's hint below covers it
   const waiting = claims.filter((c) => isDraft(c, info(c.task)) && WAITS[kindOf(info(c.task))])
   if (waiting.length) {
     const c = waiting[0], kind = kindOf(info(c.task)), more = waiting.length > 1 ? ` (і ще ${waiting.length - 1})` : ''
@@ -66,20 +58,23 @@ export function hints({ game, parts, rules, claims, videos, info, base, simple, 
   if (empty) out.push({ to: `c-${empty.id}`, text: `«${info(empty.task).title}» чекає параметрів — натисни на рядок картки й заповни.` })
   const astray = claims.find((c) => info(c.task) && misplaced(c, info(c.task), parts))
   if (astray) out.push({ to: `c-${astray.id}`, text: `«${info(astray.task).title}» лежить не на своєму місці — натисни на неї, далі «Перемістити».` })
-  const lone = ents.find((e) => !claims.some((c) => c.part === e.id && !c.auto) && !rules.some((r) => mentions(r, e.id)))
-  if (lone) out.push({ to: `p-${lone.id}`, text: `«${lone.title}» ще ні в чому не бере участі: додай правило з нею — як рухається, що стається при контакті.` })
+  const unsaid = claims.find((c) => c.status === 'claimed' && !c.why && needsWhy(info(c.task), sandbox || vocab.value.features.free))
+  if (unsaid) out.push({ to: `c-${unsaid.id}`, text: `«${info(unsaid.task).title}» — картка за запитом без пояснення: допиши одним реченням, що саме в грі це робить.` })
   if (ents.length && !effects.has('win') && !puzzle) out.push({ to: 'rules', text: 'Як виграти? «＋ правило» з ефектом «перемога».' })
   if (ents.length && !effects.has('lose') && !puzzle) out.push({ to: 'rules', text: 'Як програти? «＋ правило» з ефектом «поразка».' })
-  if (!wins.some((w) => w.task === 'game-screen')) out.push({ to: 'windows', text: '«＋ вікно» з типом «Ігровий екран» і скриншотом гри.' })
-  if (ents.length && !parts.some((p) => p.kind === 'level')) out.push({ to: 'levels', text: 'Опиши рівні: «＋ рівень» — хоч один: звідки береться, розмір, скриншот.' })
-  const pair = reversePair({ game, claims, wins, info })
-  if (pair) out.push(pair)
-  const bare = shots && wins.find((w) => !w.screenshots.length)
+  if (has('field') && !parts.some((p) => p.kind === 'field')) out.push({ to: 'field', text: 'Опиши поле: у секції «Поле» натисни «Описати поле» — сітка, вид, час, керування.' })
+  if (has('levels') && ents.length && !parts.some((p) => p.kind === 'level')) out.push({ to: 'levels', text: 'Опиши рівні: «＋ рівень» — хоч один: звідки береться, розмір, скриншот.' })
+  const lone = ents.find((e) => !claims.some((c) => c.part === e.id && !c.auto) && !rules.some((r) => mentions(r, e.id)))
+  if (lone) out.push({ to: `p-${lone.id}`, text: `«${lone.title}» ще ні в чому не бере участі: додай правило з нею — як рухається, що стається при контакті.` })
+  const plain = ents.find((e) => !e.description)
+  if (plain) out.push({ to: `p-${plain.id}`, text: `«${plain.title}» — допиши одним реченням, що це і як поводиться («＋ опис» на картці).` })
+  const bare = !sandbox && wins.find((w) => !w.screenshots.length)
   if (bare) out.push({ to: `p-${bare.id}`, text: `Скриншот для вікна «${bare.title}» — рамка з плюсом на його картці.` })
+  const pair = has('elements') && reversePair({ game, claims, wins, info })
+  if (pair) out.push(pair)
   const star = claims.find((c) => info(c.task)?.tags?.includes('algo') && !c.link)
   if (star) out.push({ to: `c-${star.id}`, text: `⭐ «${info(star.task).title}» — додай посилання на код: алгоритмічні картки перевіряються по ньому.` })
-  const mute = parts.find((p) => p.kind === 'menu' && p.window && p.items.some((it) => !it.title))  // leads somewhere, says not how (T318)
-  if (mute) out.push({ to: `p-${mute.window}`, text: `У вікні «${wins.find((w) => w.id === mute.window)?.title || '…'}» є перехід без назви — допиши, як він відбувається: пункт меню, кнопка, клавіша.` })
-  if (shots && !game.description) out.push({ to: 'about', text: 'Кілька речень опису вгорі: що за гра і чим відрізняється від основи.' })
+  const nameless = parts.find((p) => p.kind === 'menu' && p.window && p.items.some((it) => !it.title))  // leads somewhere, says not how (T318)
+  if (nameless) out.push({ to: `p-${nameless.window}`, text: `У вікні «${wins.find((w) => w.id === nameless.window)?.title || '…'}» є перехід без назви — допиши, як він відбувається: пункт меню, кнопка, клавіша.` })
   return out.slice(0, 5)
 }

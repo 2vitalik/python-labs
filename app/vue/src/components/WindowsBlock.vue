@@ -23,16 +23,16 @@ defineExpose({ add })
     <WindowDraft v-if="adding" :key="adding.n" :prefill="adding.prefill" class="mb-2" @done="adding = null" @cancel="adding = null" />
     <Tip v-if="!ed.windows.length">
       Вікна — це екрани гри: ігровий екран, головне меню, пауза, налаштування, кінець гри…<br>
-      У кожного — тип, скриншот{{ ed.simple ? ' й опис' : ', елементи на ньому, переходи до інших вікон і дії' }}.
+      У кожного — тип, опис, скриншот{{ ed.has('elements') ? ', елементи на ньому' : '' }}, переходи до інших вікон і дії.
     </Tip>
     <StableColumns v-else v-slot="{ item }" :items="ed.windows" scope="windows">
       <WindowCard :part="item" />
     </StableColumns>
-    <div v-if="!ed.simple && orphans.length" class="small text-secondary mt-2">
+    <div v-if="orphans.length" class="small text-secondary mt-2">
       Меню без вікна: <span v-for="m in orphans" :key="m.id" class="me-2">«{{ m.title }}» ({{ m.items.length }} п.)</span>
       — відкрий вікно й додай пункти там.
     </div>
-    <div v-if="!ed.simple && ed.windows.length > 1" id="windows-graph" class="card mt-2">
+    <div v-if="ed.windows.length > 1" id="windows-graph" class="card mt-2">
       <div class="card-body p-2"><GameGraph /></div>
     </div>
   </div>

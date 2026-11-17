@@ -7,18 +7,17 @@ import Icon from '@core/components/Icon.vue'
 import GameEditor from '../components/GameEditor.vue'
 import GameHead from '../components/GameHead.vue'
 import MyGameForm from '../components/MyGameForm.vue'
-import { loadCatalog, vocab } from '../catalog.js'
+import { loadCatalog } from '../catalog.js'
 import { loadMyGame, myClaims, myCoins, myGame, myParts, myRules, myTasks, myVideos, reloadInsides } from '../myGame.js'
 import { useForm } from '@core/form.js'
 import { user } from '@core/user.js'
 import { wideOf } from '@core/wide.js'
 
-// the student's game: base, title, description — then its description proper (field, levels, entities, rules, windows, cards)
+// the student's game: base, title, description — then its description proper: the base sections and the features turned on
 const loaded = ref(false)
 const wide = wideOf('game').on
 const { form, dirty, changed, saved, error, fill, save, reset } = useForm({ title: '', base_game: '', base_custom: '', description: '' })
 const nick = computed(() => user.value?.nick)
-const intro = computed(() => (vocab.value.depth === 'simple' ? 'Далі опишеш, хто й що є на полі та які екрани має гра.' : 'Далі опишеш поле, рівні, сутності, правила, вікна й заявиш картки каталогу.'))
 
 // blank lines before and after the text say nothing and keep an empty row in the field (T301 §7); spaces that start the
 // first line stay — Markdown may need them
@@ -56,7 +55,7 @@ onMounted(async () => {
       <RouterLink v-if="myGame" :to="`/students/${nick}`" class="ms-auto small text-nowrap">Як це бачать інші →</RouterLink>
       <RouterLink v-if="myGame" to="/my/game/history" class="small text-nowrap" title="Хто що змінював у грі"><Icon name="clock" /> Історія</RouterLink>
     </GameHead>
-    <p v-if="!myGame" class="text-secondary">Обери основу з каталогу або опиши свою, дай назву — і гра твоя. {{ intro }}</p>
+    <p v-if="!myGame" class="text-secondary">Обери основу з каталогу або опиши свою, дай назву — і гра твоя. Далі опишеш основне — сутності, правила, вікна й код, а решту відкриєш, коли знадобиться.</p>
     <MyGameForm v-model="form" :dirty :changed :saved :error :fresh="!myGame" @save="submit" @reset="reset" />
     </div>
     <GameEditor v-if="myGame" :game="myGame" :parts="myParts" :claims="myClaims" :rules="myRules" :tasks="myTasks" :coins="myCoins" :videos="myVideos"

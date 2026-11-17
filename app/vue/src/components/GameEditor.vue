@@ -9,11 +9,11 @@ import Lightbox from '@core/components/Lightbox.vue'
 import PeekHost from '@core/components/PeekHost.vue'
 import Tip from '@core/components/Tip.vue'
 import Toc from '@core/components/Toc.vue'
-import { user } from '@core/user.js'
 import { wideOf } from '@core/wide.js'
 import { applyTemplate } from '../api.js'
-import { games, kindOf, taskIndex, templates, vocab } from '../catalog.js'
+import { games, kindOf, taskIndex, templates } from '../catalog.js'
 import { provideEd } from '../ed.js'
+import { features } from '../edFeatures.js'
 import { savers } from '../edSave.js'
 import { allMode, isFolded, isOwn, isShort, setAll, setFold, setShort } from '../fold.js'
 import { hints as makeHints } from '../hints.js'
@@ -22,7 +22,7 @@ import { canCols, colsMode, edWidth } from '../layout.js'
 import { cards as cardLooks, CARDS, ROWS, rows } from '../looks.js'
 import '../peeks.js'
 import { sandbox } from '../sandbox.js'
-import { catalogOf, foldKey, HEADS, sectionOf, SECTIONS, SIMPLE, ZONES } from '../sections.js'
+import { catalogOf, foldKey, HEADS, sectionOf, SECTIONS, shownOf, ZONES } from '../sections.js'
 import { editing } from '../teacher.js'
 import { anyTools, dropTools } from '../tools.js'
 import AddBar from './AddBar.vue'
@@ -32,6 +32,7 @@ import ColsSwitch from './ColsSwitch.vue'
 import DraftStrip from './DraftStrip.vue'
 import EntitiesBlock from './EntitiesBlock.vue'
 import EtalonGap from './EtalonGap.vue'
+import FeaturesPanel from './FeaturesPanel.vue'
 import FieldCard from './FieldCard.vue'
 import GameTotals from './GameTotals.vue'
 import GroupsFold from './GroupsFold.vue'
@@ -39,6 +40,8 @@ import Hints from './Hints.vue'
 import LevelsBlock from './LevelsBlock.vue'
 import LookSwitch from './LookSwitch.vue'
 import MomentsBlock from './MomentsBlock.vue'
+import MoreRow from './MoreRow.vue'
+import MoreSections from './MoreSections.vue'
 import RulesBlock from './RulesBlock.vue'
 import SectionHead from './SectionHead.vue'
 import UndoBar from './UndoBar.vue'
@@ -48,17 +51,15 @@ import ZoneSection from './ZoneSection.vue'
 
 // the description of a game — the same body for the owner's editor (`editable`) and a student's passport (read-only;
 // `judge` lets the teacher accept or return claims). It fills the editor context (ed.js) every piece below reads.
-// `full` — always the whole description, whatever depth the viewer's own editor has (a base game's reference description);
+// what of it shows — the base, the features turned on and those with data — the context's `has` decides (edFeatures.js, T319);
 // `reload` — the page's way to fetch the game again: `ed.changed()` awaits it, so a form closes onto fresh data;
 // `videos` — the rows of «Супровід» a student's game is asked for (T318): a sample and its sandbox have none
-const props = defineProps({ game: Object, parts: Array, claims: Array, rules: Array, tasks: Object, coins: Object, videos: Array, editable: Boolean, judge: Boolean, nick: String, full: Boolean, reload: Function })
+const props = defineProps({ game: Object, parts: Array, claims: Array, rules: Array, tasks: Object, coins: Object, videos: Array, editable: Boolean, judge: Boolean, nick: String, reload: Function })
 const error = ref('')
 const view = ref('desc')  // desc — the sections · cards — everything claimed as a tree (T270 §11)
-const simpleLook = ref(false)  // the teacher's preview of what a student sees in the short form
 const blocks = { entity: ref(), window: ref(), level: ref(), rule: ref() }
 const catalog = ref(null)  // what the catalog's window shows (CatalogWindow `scope`)
 const catalogOn = ref(false)
-const admin = computed(() => user.value?.status === 'admin')
 const cards = computed(() => Object.fromEntries(Object.entries(props.tasks || {}).map(([slug, t]) => [slug, { slug, ...taskIndex.value[slug], ...t }])))
 const ofKind = (kind) => computed(() => props.parts.filter((p) => p.kind === kind))
 
@@ -69,7 +70,7 @@ const ed = reactive({
   teacher: computed(() => !!editing.value && props.editable),  // the teacher edits a student's game (T282): no owner's aids
   field: computed(() => props.parts.find((p) => p.kind === 'field')),
   entities: ofKind('entity'), windows: ofKind('window'), levels: ofKind('level'), menus: ofKind('menu'),
-  simple: computed(() => !props.full && (simpleLook.value || vocab.value.depth === 'simple')), showRules: false,
+  showRules: false,
   info: (slug) => cards.value[slug] || taskIndex.value[slug],
   claimsOf: (id) => props.claims.filter((c) => c.part === id),
   ruleClaims: (id) => props.claims.filter((c) => c.rule === id),
@@ -80,6 +81,7 @@ const ed = reactive({
   last: null,
 })
 ed.save = savers(ed)
+Object.assign(ed, features(ed))
 provideEd(ed)
 // Esc with nothing open puts every card's tools away (tools.js); a field or a panel takes its own Esc first
 function esc(e) {
@@ -94,26 +96,27 @@ const own = computed(() => props.claims.filter((c) => !c.auto).length)
 const base = computed(() => games.value.find((g) => g.slug === props.game.base_game))
 const template = computed(() => templates.value[props.game.base_game])
 const empty = computed(() => !props.parts.length && !props.rules.length && !props.claims.length)
-const hints = computed(() => (props.editable ? makeHints({ game: props.game, parts: props.parts, rules: props.rules, claims: props.claims, videos: props.videos, info: ed.info, base: base.value, simple: ed.simple, shots: !ed.sandbox }) : []))
-// the sections in the catalog's order (T278 §9): their headings and the contents say the same; the short form's «Супровід»
-// is its videos alone — none (a sample), no section
-const shown = computed(() => (ed.simple ? SIMPLE.filter((id) => id !== 'zone-support' || props.videos) : SECTIONS))
+const hints = computed(() => (props.editable ? makeHints({ game: props.game, parts: props.parts, rules: props.rules, claims: props.claims, videos: props.videos, info: ed.info, base: base.value, has: ed.has, sandbox: ed.sandbox }) : []))
+// the sections in the catalog's order (T278 §9): their headings and the contents say the same
+const shown = computed(() => shownOf(ed.has, props.videos))
+const on = (id) => shown.value.includes(id)
 const linked = computed(() => (props.videos || []).filter((v) => v.versions.length).length)
 const counts = computed(() => ({ entities: ed.entities.length, rules: props.rules.length, levels: ed.levels.length, windows: ed.windows.length,
-  ...Object.fromEntries(ZONES.map((z) => [z.id, inZone(z)])), 'zone-support': (ed.simple ? 0 : inZone(zone('zone-support'))) + linked.value }))
+  ...Object.fromEntries(ZONES.map((z) => [z.id, inZone(z)])), 'zone-support': (ed.has('support') ? inZone(zone('zone-support')) : 0) + linked.value }))
 const LAID = ['entities', 'rules', 'levels', 'windows', ...ZONES.map((z) => z.id)]  // the sections that lay cards in columns
 const SHUT = ['entities', 'windows', 'levels']  // the sections whose cards fold to their heads (looks.js)
 const head = (id) => {
   const { icon, title, short, zone } = HEADS[id]
-  return { icon, title: (ed.simple && short) || title, zone, count: counts.value[id], fold: foldKey(id), anchor: id, layout: LAID.includes(id),
-           cardFold: SHUT.includes(id), catalog: ed.simple && id === 'zone-support' ? null : catalogOf(id) }
+  const videos = id === 'zone-support' && !ed.has('support')  // «Супровід» without its cards: the videos alone
+  return { icon, title: videos ? short : title, zone, count: counts.value[id], fold: foldKey(id), anchor: id, layout: LAID.includes(id),
+           cardFold: SHUT.includes(id), catalog: videos ? null : catalogOf(id) }
 }
 const zone = (id) => ZONES.find((z) => z.id === id)
 const cardsToc = ref([])  // «Картки» names its own contents: the categories on screen
 // the places inside a section a link may lead to (#rules-phases…): the section opens whole first; of them only the map of
 // windows is worth a line in the contents (T291 §3, T294 §10) — a sub-item, a step right of its section's title
 const partHome = { 'rules-phases': 'rules', 'levels-general': 'levels', 'windows-graph': 'windows' }
-const parts = computed(() => (ed.simple ? {} : { windows: ed.windows.length > 1 ? [['windows-graph', '🔀 Схема вікон']] : [] }))
+const parts = computed(() => ({ windows: ed.windows.length > 1 ? [['windows-graph', '🔀 Схема вікон']] : [] }))
 const toc = computed(() => (view.value === 'cards' ? cardsToc.value : shown.value.flatMap((id) => {
   const h = head(id)
   return [{ id, text: `${h.icon} ${h.title}${h.count === undefined ? '' : ` (${h.count})`}`, depth: 2 },
@@ -140,6 +143,7 @@ const pointer = matchMedia('(hover: hover)').matches  // a phone has no ⌥: it 
 const MODES = [['open', 'unfold', 'усе', 'Усі секції повністю'], ['short', 'short', 'коротко', 'Усі секції коротко: початок кожної і «Показати все»'], ['folded', 'fold', 'згорнуто', 'Згорнути всі секції до заголовків']]
 const totals = computed(() => ({ ...counts.value, cards: own.value }))
 const go = (k) => (k === 'cards' ? (view.value = 'cards') : jump(k))
+watch(() => ed.has('cards'), (yes) => yes || (view.value = 'desc'))
 // «show me where» lands in the description: back from «Картки», the section holding the place unfolded. A claim just
 // added is jumped to before the reload brings it, so its section is looked for again as the data comes
 let landed = ''  // its section is open: a later reload must not unfold it again
@@ -187,24 +191,22 @@ async function fromTemplate() {
 <template>
   <div ref="root" class="editor">
     <div :class="{ 'in-column': wide }">
-    <GameTotals :counts="totals" :coins :simple="ed.simple" class="mb-3" @go="go">
+    <GameTotals :counts="totals" :coins class="mb-3" @go="go">
       <!-- the tiles, then the look and the folding, then the layout — a line each, a word of what it does (T294 §3) -->
       <div class="d-flex flex-wrap align-items-center gap-2 small text-secondary">
-        <span v-if="!ed.simple" class="btn-group btn-group-sm">
+        <span v-if="ed.has('cards')" class="btn-group btn-group-sm">
           <button type="button" class="btn" :class="view === 'desc' ? 'btn-secondary' : 'btn-outline-secondary'" @click="view = 'desc'"><Icon name="list" /> Опис</button>
           <button type="button" class="btn" :class="view === 'cards' ? 'btn-secondary' : 'btn-outline-secondary'" title="Усе заявлене деревом: категорія → картка → де вона" @click="view = 'cards'"><Icon name="table" /> Картки</button>
         </span>
-        <span class="btn-group btn-group-sm" role="group" aria-label="секції">
+        <span v-if="ed.has('looks')" class="btn-group btn-group-sm" role="group" aria-label="секції">
           <button v-for="[m, icon, word, tip] in MODES" :key="m" type="button" class="btn btn-outline-secondary" :class="{ active: view === 'desc' && allMode('ed') === m }"
                   :disabled="view === 'cards'" :title="`${tip}${ownFolds ? ` · свої на заголовках: ${ownFolds}, клік їх скине` : ''}`" @click="setAll('ed', m)"><Icon :name="icon" /><span class="d-none d-sm-inline"> {{ word }}</span></button>
         </span>
-        <label v-if="admin && !full" class="form-check form-switch m-0" title="Як бачить студент, поки відкрито лише простий опис">
-          <input v-model="simpleLook" type="checkbox" class="form-check-input"> простий вигляд
-        </label>
+        <FeaturesPanel v-if="editable && !ed.sandbox" />
       </div>
       <!-- the reader's look of the sections as one framed group (T301 §3): its explanation, put away, leaves its icon at the
            caption's right end — right of the switches, left of the wallet — not a row of its own -->
-      <div v-if="view === 'desc'" class="looks group-box vstack gap-1 align-items-start" data-dock>
+      <div v-if="view === 'desc' && ed.has('looks')" class="looks group-box vstack gap-1 align-items-start" data-dock>
         <div class="group-cap">Вигляд<span class="tip-dock ms-auto" /></div>
         <ColsSwitch wordy />
         <LookSwitch wordy :look="rows" :modes="ROWS" label="Розкладка"
@@ -218,21 +220,21 @@ async function fromTemplate() {
 
     <template v-if="editable">
       <AddBar class="mb-2" @open="open" />
-      <div v-if="empty && template && !ed.simple && !ed.sandbox && !ed.teacher" class="alert alert-light border d-flex flex-wrap align-items-center gap-2 py-2 small">
+      <div v-if="empty && template && ed.has('etalon') && !ed.sandbox && !ed.teacher" class="alert alert-light border d-flex flex-wrap align-items-center gap-2 py-2 small">
         <span>Порожньо. Почати з еталона <b>{{ base?.icon }} {{ base?.title }}</b> — {{ template.entities }} сутностей, {{ template.rules }} правил, {{ template.windows }} вікон, {{ template.claims }} карток — і далі викреслювати й додавати своє?</span>
         <button type="button" class="btn btn-sm btn-add ms-auto" @click="fromTemplate"><Icon name="plus" /> Почати з еталона</button>
       </div>
       <Hints v-if="!ed.teacher" :items="hints" class="mb-3" />
-      <EtalonGap v-if="!ed.simple && !ed.sandbox && !ed.teacher && game.base_game" class="mb-3" />
+      <EtalonGap v-if="ed.has('etalon') && !ed.sandbox && !ed.teacher && game.base_game" class="mb-3" />
     </template>
     <div v-if="error" class="alert alert-danger py-2 small">{{ error }}</div>
     </div>
 
-    <ClaimsTable v-if="view === 'cards' && !ed.simple" :class="{ 'in-column': wide }" @toc="cardsToc = $event" />
+    <ClaimsTable v-if="view === 'cards'" :class="{ 'in-column': wide }" @toc="cardsToc = $event" />
     <!-- in SECTIONS' order (sections.js); folded bodies stay mounted (v-show): «＋» still opens their forms, «show me where»
          still finds what is inside -->
     <template v-else>
-      <section v-if="!ed.simple" id="field" class="mb-4">
+      <section v-if="on('field')" id="field" class="mb-4">
         <SectionHead v-bind="head('field')" />
         <Clamp v-show="!folded('field')" :on="short('field')" @open="unclamp('field')">
           <DraftStrip :kinds="['field']" hint="сядуть на поле самі, щойно його опишеш" />
@@ -246,9 +248,10 @@ async function fromTemplate() {
         <Clamp v-show="!folded('entities')" :on="short('entities')" @open="unclamp('entities')">
           <DraftStrip :kinds="['mechanic']" hint="привʼяжи до сутності: натисни на картку → «Перемістити»" />
           <EntitiesBlock :ref="blocks.entity" />
+          <MoreRow :ids="['stats', 'mechanics']" />
         </Clamp>
       </section>
-      <section v-if="!ed.simple" id="rules" class="mb-4">
+      <section id="rules" class="mb-4">
         <SectionHead v-bind="head('rules')">
           <template #default="{ keep }">
             <button v-if="editable" type="button" class="btn btn-sm btn-add" @click="open('rule')"><Icon name="plus" /> правило</button>
@@ -258,16 +261,20 @@ async function fromTemplate() {
         <Clamp v-show="!folded('rules')" :on="short('rules')" @open="unclamp('rules')">
           <DraftStrip :kinds="['rule']" hint="натисни на картку → «нове правило з цієї картки» або «привʼязати до наявного»" />
           <RulesBlock :ref="blocks.rule" />
+          <MoreRow :ids="['phases', 'tables']" />
         </Clamp>
       </section>
-      <ZoneSection v-if="!ed.simple" :z="zone('zone-game-logic')" :head="head('zone-game-logic')" />
-      <section v-if="!ed.simple" id="levels" class="mb-4">
+      <ZoneSection v-if="on('zone-game-logic')" :z="zone('zone-game-logic')" :head="head('zone-game-logic')" />
+      <section v-if="on('levels')" id="levels" class="mb-4">
         <SectionHead v-bind="head('levels')">
           <button v-if="editable" type="button" class="btn btn-sm btn-add" @click="open('level')"><Icon name="plus" /> рівень</button>
         </SectionHead>
-        <Clamp v-show="!folded('levels')" :on="short('levels')" @open="unclamp('levels')"><LevelsBlock :ref="blocks.level" /></Clamp>
+        <Clamp v-show="!folded('levels')" :on="short('levels')" @open="unclamp('levels')">
+          <LevelsBlock :ref="blocks.level" />
+          <MoreRow :ids="['map']" />
+        </Clamp>
       </section>
-      <section v-if="!ed.simple" id="moments" class="mb-4">
+      <section v-if="on('moments')" id="moments" class="mb-4">
         <SectionHead v-bind="head('moments')" />
         <Clamp v-show="!folded('moments')" :on="short('moments')" @open="unclamp('moments')"><MomentsBlock /></Clamp>
       </section>
@@ -278,9 +285,11 @@ async function fromTemplate() {
         <Clamp v-show="!folded('windows')" :on="short('windows')" @open="unclamp('windows')">
           <DraftStrip :kinds="['element']" hint="привʼяжи до вікна: натисни на картку → «Перемістити»" />
           <WindowsBlock :ref="blocks.window" />
+          <MoreRow :ids="['elements']" />
         </Clamp>
       </section>
-      <ZoneSection v-for="id in ['zone-interface', 'zone-code', 'zone-support'].filter((x) => shown.includes(x))" :key="id" :z="zone(id)" :head="head(id)" />
+      <ZoneSection v-for="id in ['zone-interface', 'zone-code', 'zone-support'].filter(on)" :key="id" :z="zone(id)" :head="head(id)" />
+      <MoreSections />
     </template>
 
     <Toc :items="toc" :side="!wide" :bar="view === 'cards'" />

@@ -3,20 +3,25 @@ import { computed } from 'vue'
 
 import { plural } from '@core/plural.js'
 import { COIN_NAMES, COIN_ORDER, COINS, vocab } from '../catalog.js'
+import { useEd } from '../ed.js'
 import { gradeOf, woodOf } from '../grade.js'
 
 // a game in numbers (T284 §4): what is described — a tile each, the number over its word — and the wallet: a line per
 // kind of coin, claimed and accepted, their sum in 🌱 under them; the slot under the tiles is the editor's controls.
-// The grade the accepted coins would give shows only to whom the API hands the scale (the teacher, while it is a draft)
-const props = defineProps({ counts: Object, coins: Object, simple: Boolean })
+// The grade the accepted coins would give shows only to whom the API hands the scale (the teacher, while it is a draft).
+// A tile per section that is shown (T319); the coins of cards asked for wait apart, under the sums — they are in none
+const props = defineProps({ counts: Object, coins: Object })
+const ed = useEd()
 defineEmits(['go'])  // a tile is the way to its section; «картки» — to everything claimed as a tree
 const WORDS = {
   entities: ['сутність', 'сутності', 'сутностей'], windows: ['вікно', 'вікна', 'вікон'], rules: ['правило', 'правила', 'правил'],
   levels: ['рівень', 'рівні', 'рівнів'], cards: ['картка', 'картки', 'карток'],
 }
-const tiles = computed(() => (props.simple ? ['entities', 'windows'] : Object.keys(WORDS)).map((k) => ({ k, n: props.counts[k] || 0, word: plural(props.counts[k] || 0, ...WORDS[k]) })))
+const FEATURES = ['levels', 'cards']  // the tiles that are features of their own name
+const tiles = computed(() => Object.keys(WORDS).filter((k) => !FEATURES.includes(k) || ed.has(k))
+  .map((k) => ({ k, n: props.counts[k] || 0, word: plural(props.counts[k] || 0, ...WORDS[k]) })))
 const rows = computed(() => COIN_ORDER.filter((c) => props.coins?.claimed?.[c] || props.coins?.accepted?.[c]))
-const sum = computed(() => ({ claimed: woodOf(props.coins?.claimed), accepted: woodOf(props.coins?.accepted) }))
+const sum = computed(() => ({ claimed: woodOf(props.coins?.claimed), accepted: woodOf(props.coins?.accepted), asked: woodOf(props.coins?.asked) }))
 const grade = computed(() => ({ claimed: gradeOf(sum.value.claimed), accepted: gradeOf(sum.value.accepted) }))
 const fmt = (n) => (n ? String(+n.toFixed(1)).replace('.', ',') : '—')
 </script>
@@ -29,7 +34,7 @@ const fmt = (n) => (n ? String(+n.toFixed(1)).replace('.', ',') : '—')
       </div>
       <slot />
     </div>
-    <div v-if="!simple && rows.length" class="wallet-box group-box">
+    <div v-if="rows.length || sum.asked" class="wallet-box group-box">
     <table class="wallet">
       <thead><tr><th>монетки</th><th title="картка рахується не більше разів, ніж дозволяє">заявлено</th><th title="після перевірки викладачем">зараховано</th></tr></thead>
       <tbody>
@@ -40,6 +45,7 @@ const fmt = (n) => (n ? String(+n.toFixed(1)).replace('.', ',') : '—')
         <tr v-if="grade.claimed !== null" class="grade" :title="vocab.grade.draft ? 'чернетка шкали: бачить лише викладач, поки шкалу не затверджено' : 'за шкалою курсу'">
           <td>оцінка<span v-if="vocab.grade.draft" class="draft"> · чернетка шкали</span></td><td>≈ {{ grade.claimed }}</td><td class="ok">≈ {{ grade.accepted }}</td>
         </tr>
+        <tr v-if="sum.asked" class="asked" title="картки за запитом: зарахуються, коли викладач відкриє картку"><td>за запитом</td><td>{{ fmt(sum.asked) }}</td><td /></tr>
       </tfoot>
     </table>
     </div>
@@ -65,5 +71,6 @@ const fmt = (n) => (n ? String(+n.toFixed(1)).replace('.', ',') : '—')
 .wallet .ok { color: var(--bs-success-text-emphasis); }
 .wallet .grade td { border-top: 0; font-weight: 400; color: var(--bs-secondary-color); }
 .wallet .grade .ok { color: var(--bs-success-text-emphasis); font-weight: 600; }
+.wallet .asked td { border-top: 1px dotted var(--bs-border-color); font-weight: 400; color: var(--bs-secondary-color); }
 .draft { font-size: .68rem; }
 </style>
