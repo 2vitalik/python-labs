@@ -6,22 +6,15 @@ import Pop from '@core/components/Pop.vue'
 import { vHint } from '@core/hint.js'
 import { useEd } from '../ed.js'
 import { BASE, FEATURES } from '../features.js'
-import { SECTIONS } from '../sections.js'
-import FeatureCheck from './FeatureCheck.vue'
+import FeatureMap from './FeatureMap.vue'
 
 // «Можливості» (T319): what the game page holds beyond its base — all of it, none, or one by one. Turning off takes away
 // only the empty: what has data stays, so nothing filled is ever hidden. The owner's only (GameEditor).
-// A map of the page (T348): the base on a line of its own, then the page from top to bottom — its own switches, then the
-// sections in the page's order: one that is a feature of its own is a box with its name, a base one is its name with the
-// features inside it on its line. What a thing means comes under the mouse (hint.js)
+// T348: the base on a line of its own, then a map of the page with what may be added (FeatureMap); what a thing means
+// comes under the mouse (hint.js)
 const ed = useEd()
 const open = ref(false)
 const busy = ref(false)
-const ROWS = [
-  { title: 'Сторінка', opts: FEATURES.filter((f) => f.place === 'page') },
-  ...SECTIONS.map((id) => ({ self: FEATURES.find((f) => f.section === id), base: BASE.find((b) => b.place === id), opts: FEATURES.filter((f) => f.place === id) }))
-    .filter((r) => r.self || r.opts.length),
-]
 const count = computed(() => FEATURES.filter((f) => ed.has(f.id)).length)
 const ids = (fn) => FEATURES.filter(fn).map((f) => f.id)
 const more = computed(() => ids((f) => !ed.has(f.id) && ed.offers(f.id)))
@@ -66,18 +59,7 @@ async function run(fn) {
             <Icon name="box" /> Нічого</button>
         </span>
       </div>
-      <div class="map">
-        <template v-for="r in ROWS" :key="r.self?.id || r.base?.place || r.title">
-          <div class="where" :class="{ wide: !r.opts.length }">
-            <FeatureCheck v-if="r.self" :f="r.self" :busy :run />
-            <span v-else-if="r.base" v-hint="{ title: r.base.title, text: `${r.base.text} — є завжди` }" class="place">{{ r.base.icon }} {{ r.base.title }}</span>
-            <span v-else class="place">{{ r.title }}</span>
-          </div>
-          <div v-if="r.opts.length" class="opts">
-            <FeatureCheck v-for="f in r.opts" :key="f.id" :f :busy :run />
-          </div>
-        </template>
-      </div>
+      <FeatureMap :busy :run />
     </div>
   </Pop>
 </template>
@@ -98,15 +80,4 @@ async function run(fn) {
 .bulk { padding: 0 .45rem; font-size: .78rem; }
 .tick { color: var(--bs-primary); }
 .bulk:disabled .tick { color: inherit; }
-.map { display: grid; grid-template-columns: max-content 1fr; align-items: start; column-gap: 1.1rem; row-gap: .15rem; }
-.where.wide { grid-column: 1 / -1; }
-/* a base section has no box: its name stands where the boxed names begin, level with the first line of its features */
-.place { display: inline-block; padding: .1rem 0 .1rem calc(1em + .4rem); font-weight: 600; cursor: default; }
-.where :deep(.name) { font-weight: 600; }
-.opts { display: flex; flex-wrap: wrap; column-gap: .9rem; row-gap: .1rem; min-width: 0; }
-/* a phone has one column, and its sheet (Pop) scrolls: the features go under their section's name */
-@media (max-width: 575px) {
-  .map { grid-template-columns: 1fr; }
-  .opts { padding-left: calc(1em + .4rem); margin-bottom: .25rem; }
-}
 </style>
