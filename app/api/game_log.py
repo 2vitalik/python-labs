@@ -13,8 +13,9 @@ from models.draft import Draft
 from models.game import Claim, Game, Part
 from models.rule import Rule
 from models.task import Task
+from models.video import Video
 
-INSIDES = (Part, Rule, Claim, Draft)  # each carries `game`, and record_new / record_delete log it: deleted ones are found by it
+INSIDES = (Part, Rule, Claim, Draft, Video)  # each carries `game`, and record_new / record_delete log it: deleted ones are found by it
 COLLS = [m.Settings.name for m in INSIDES]
 SCRIPTS = {"auto-sync": "синхронізація каталогу", "import": "імпорт каталогу"}  # actors with no account: scripts the teacher runs
 # a change of plumbing alone (order, an auto-claim adopted) is no row: filtered in Mongo, so a page stays `limit` long
@@ -68,6 +69,7 @@ async def names(snaps: dict, found: list[Change]) -> Names:
     kept = lambda coll: {str(i): s for i, (c, s) in snaps.items() if c == coll}  # noqa: E731
     values = [s for _, s in snaps.values()] + [{k: v.get(end) for k, v in c.changes.items()} for c in found for end in ("old", "new")]
     slugs = {d.get("task") for d in values} | {it.get("task") for d in values for it in d.get("items") or []}
+    slugs |= {d["slot"].removeprefix("gold:") for d in values if d.get("slot")}  # a gold card's video names its card (T318)
     cards = {t.slug: t for t in await Task.find({"slug": {"$in": list(slugs - {None, ""})}}).to_list()}
     bases = {g.slug: g.title for g in await BaseGame.find({"slug": {"$in": [d.get("base_game") for d in values]}}).to_list()}
     cat = await options.catalog(admin=True)

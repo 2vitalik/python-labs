@@ -2,6 +2,7 @@ from beanie import PydanticObjectId
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 from pydantic import BaseModel
 
+import videos
 from bot import game_alerts
 from core.deps import active_user, admin_user
 from core.models.history import record
@@ -34,6 +35,7 @@ async def game_summary(game: Game | None) -> dict:
         "waiting": sum(c.status == "claimed" and not c.auto for c in claims),  # the teacher's word is due
         "rules": await Rule.find(Rule.game == game.id).count(),
         "cover": f"/api/uploads/{game.id}/{shots[0]}" if shots else "",
+        "videos": (await videos.summary([game])).get(game.id, {}),  # the demos and defenses handed in (T318)
     }
 
 
@@ -59,7 +61,8 @@ async def student_game(nick: str, user: User = Depends(active_user)):
     game = await Game.find_one(Game.owner == owner.email)
     if not game:
         return {"student": owner.person(), "game": None}  # the student is there, the game is yet to come
-    return await passport(game) | {"student": owner.person(), "mine": game.owner == user.email}
+    p = await passport(game)
+    return p | {"student": owner.person(), "mine": game.owner == user.email, "videos": await videos.rows(game, owner, p["claims"], p["tasks"])}
 
 
 class VerdictIn(BaseModel):

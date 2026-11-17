@@ -5,6 +5,7 @@ from models.vocab import FIELD, LEVEL, sentence
 
 PARTS = {"field": "поле", "level": "рівень", "entity": "сутність", "window": "вікно", "menu": "переходи"}
 STATUS = {"claimed": "заявлено", "accepted": "зараховано", "returned": "повернуто"}
+NEED = {"must": "обовʼязково", "skip": "не потрібно"}  # the teacher's word on a video (T318)
 PROPS = {p["key"]: p for p in FIELD + LEVEL} | {"map": {"label": "мапа рівня"}}  # a level drawn in cells (T276)
 EMPTY = (None, "", [], {})
 
@@ -71,5 +72,7 @@ class Names:
             "items": lambda: "; ".join(map(self.item, v)), "props": lambda: "; ".join(self.prop(k, x) for k, x in v.items()),
             "stats": lambda: ", ".join(f"{s.get('label') or s.get('key')} {s.get('value', '')} {s.get('unit', '')}".strip() for s in v),
             "params": lambda: ", ".join(f"{slots.get(k, k)}: {plain(x)}" for k, x in v.items()),
+            "versions": lambda: v[-1]["link"] + (f" (версія {len(v)})" if len(v) > 1 else "") + (f" — {v[-1]['note']}" if v[-1].get("note") else ""),
+            "need": lambda: NEED.get(v, v),
         }
         return words[key]() if key in words else plain(v)

@@ -1,16 +1,18 @@
 """How a change of a student's game reads in its history (T278 §12): what the object is, what was done, its fields in
 Ukrainian with values in words (game_log_names.py)."""
+import videos
 from game_log_names import PARTS, Names
 
-WHAT = {"student_games": "гра", "rules": "правило", "claims": "заявка", "game_drafts": "✨ опис словами"}
+WHAT = {"student_games": "гра", "rules": "правило", "claims": "заявка", "game_drafts": "✨ опис словами", "videos": "відео"}
 LABELS = {
     "title": "назва", "description": "опис", "base_game": "основа", "base_custom": "своя основа", "phases": "порядок тіку",
     "task": "тип вікна", "role": "роль", "icon": "іконка", "screenshots": "скриншоти", "window": "вікно", "items": "переходи",
     "props": "властивості", "stats": "параметри", "states": "стани", "when": "коли", "cond": "якщо", "then": "то",
     "note": "нотатка", "part": "де", "rule": "правило", "params": "параметри", "link": "посилання", "shots": "докази", "status": "стан",
     "verdict": "коментар викладача", "moments": "як це грається", "text": "текст",
+    "versions": "посилання", "need": "чи потрібне", "why": "чому",
 }
-HIDDEN = ("game", "owner", "order", "kind", "auto", "poured", "created_at")  # the plumbing: nobody typed these
+HIDDEN = ("game", "owner", "order", "kind", "auto", "poured", "created_at", "slot")  # the plumbing: nobody typed these
 
 
 def what(coll: str, snap: dict) -> str:
@@ -28,6 +30,8 @@ def title(names: Names, coll: str, snap: dict) -> str:
         return proposals(len(items) - unknown) + (f" · не розпізнано {unknown}" if unknown else "")
     if coll == "rules":
         return names.sentence(snap)
+    if coll == "videos":
+        return videos.title(snap.get("slot") or "", names.card)
     if snap.get("kind") == "menu" and snap.get("window"):  # «Меню «Пауза»» says less than the window whose transitions these are
         return names.part(snap["window"])
     return names.card(snap.get("task", "")) if coll == "claims" else snap.get("title") or ""
@@ -39,7 +43,7 @@ def action(coll: str, changes: dict) -> str:
         return "added"
     if all(c.get("new") is None for c in changes.values()):
         return "deleted"
-    return changes["status"]["new"] if coll == "claims" and "status" in changes else "changed"
+    return changes["status"]["new"] if coll in ("claims", "videos") and "status" in changes else "changed"
 
 
 def fields(names: Names, coll: str, changes: dict, snap: dict) -> list[dict]:

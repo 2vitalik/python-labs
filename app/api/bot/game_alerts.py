@@ -1,8 +1,9 @@
 """Alerts about the student's game (T113): claims (kind `claim`); the card, parts and rules (kind `game`);
-ideas, words on a card or on the site (kind `idea`, T270, T274 §4)."""
+ideas, words on a card or on the site (kind `idea`, T270, T274 §4); the videos of «Супровід» go with the claims (T318)."""
 from aiogram import html
 from beanie import PydanticObjectId
 
+import videos
 from core.bot import notify
 from core.bot.alerts import arrow, event, level
 from core.models.user import User
@@ -10,6 +11,7 @@ from models.game import Claim, Game, Part
 from models.ref import Ref
 from models.rule import Rule
 from models.task import Task
+from models.video import Video
 from models.vocab import sentence
 from zones import ZONES
 
@@ -18,6 +20,7 @@ CARD = {"title": "🏷 Назва", "base_game": "🕹 Основа", "base_cust
 CLAIM = {"note": "📝 Нотатка", "link": "🔗 Лінк", "params": "⚙️ Параметри", "part": "🧩 Обʼєкт"}
 STATUS = {"claimed": "заявлено", "accepted": "✅ зараховано", "returned": "↩️ повернуто"}
 IDEA = {"idea": ("💡", "Ідея"), "fix": ("🛠", "Про картку"), "site": ("🐞", "Про сайт")}  # Ref.kind → icon, subject
+NEED = {"must": "обовʼязкове", "skip": "не потрібне", "": "як у всіх"}
 fmt = lambda v: html.quote(" → ".join(v) if isinstance(v, list) else str(v)) if v else ""  # noqa: E731 — phases are a list
 gone = lambda lvl: " → ✖️" if lvl == 2 else ""  # noqa: E731
 
@@ -53,6 +56,31 @@ async def verdict(owner: User, c: Claim, changes: dict) -> None:
     if c.verdict:
         rows.append(f"💬 {html.quote(c.verdict)}")
     await send("claim", event(1, "Заявка", owner, rows), owner.email)
+
+
+async def video_title(v: Video) -> str:
+    slug = v.slot.removeprefix(videos.MARK)
+    task = await Task.find_one(Task.slug == slug) if slug != v.slot else None
+    return html.quote(videos.title(v.slot, lambda s: task.title if task else s))
+
+
+async def video(user: User, v: Video) -> None:
+    """A link in «Супровід»: the first one, or a new version of it."""
+    last, n = v.versions[-1], len(v.versions)
+    rows = [f"🎬 {await video_title(v)}{f' · версія {n}' if n > 1 else ''}", f"🔗 {html.quote(last['link'])}"]
+    if last.get("note"):
+        rows.append(f"📝 {html.quote(last['note'])}")
+    await send("claim", event(0 if n == 1 else 1, "Відео", user, rows), user.email, v.game)
+
+
+async def video_word(owner: User, v: Video, changes: dict) -> None:
+    """The teacher's word on a video: the student's line in the game feed."""
+    rows = [f"🎬 {await video_title(v)}{f' — {STATUS.get(v.status, v.status)}' if 'status' in changes else ''}"]
+    if "need" in changes:
+        rows.append(f"📌 {NEED.get(v.need, v.need)}{f': {html.quote(v.why)}' if v.why else ''}")
+    if v.verdict and {"status", "verdict"} & changes.keys():
+        rows.append(f"💬 {html.quote(v.verdict)}")
+    await send("claim", event(1, "Відео", owner, rows), owner.email)
 
 
 async def game(user: User, g: Game, changes: dict | None = None) -> None:
