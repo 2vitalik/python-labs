@@ -35,6 +35,9 @@ class Settings(BaseSettings):
     ai_max_chars: int = 4000
     ai_budget_usd: float = 30  # a calendar month, everybody together — the admin too
     anthropic_api_key: str = ""  # .env; empty = «ще не підключено»
+    remark_coins: str = "off"  # a reward on a defense's remark (T329): off · draft — the teacher sees it · open — students too
+    ai_remarks: str = "off"  # a model sorts a defense's remarks (T328 §6): off · on — once the key is there
+    ai_remarks_model: str = "claude-haiku-5-5"  # a pick from a short list of tags: the cheapest model does it
 
     model_config = {"env_file": ("site.env", ".env"), "extra": "ignore"}
 
