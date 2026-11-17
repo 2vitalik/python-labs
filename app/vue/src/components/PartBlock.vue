@@ -25,5 +25,6 @@ defineProps({ pic: String, zone: String, title: String, inline: Boolean })
    that line and wraps inside it: a pill more must not send them all a line down */
 .inline { display: flex; flex-wrap: wrap; align-items: flex-start; gap: .25rem .5rem; }
 .inline > .cap { min-height: 1.3rem; }
+.inline > .cap > :slotted(.iact) { height: 1.3rem; }  /* a «＋» by the caption: no taller than a pill */
 .inline > .body { display: flex; flex: 1 1 9rem; min-width: 0; margin: 0; padding: 0; }
 </style>

@@ -1,7 +1,8 @@
 <script setup>
-import { computed, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 
 import DelButton from '@core/components/DelButton.vue'
+import Icon from '@core/components/Icon.vue'
 import InlinePop from '@core/components/InlinePop.vue'
 import InlineText from '@core/components/InlineText.vue'
 import Reveal from '@core/components/Reveal.vue'
@@ -21,6 +22,7 @@ import OptionCards from './OptionCards.vue'
 import PartBlock from './PartBlock.vue'
 import PropsList from './PropsList.vue'
 import ShotStrip from './ShotStrip.vue'
+import StatAdd from './StatAdd.vue'
 import StatList from './StatList.vue'
 import ToolsButton from './ToolsButton.vue'
 import '../partCard.css'
@@ -30,7 +32,8 @@ import '../partCard.css'
 // card passes (partCard.css). The owner changes the name, where it comes from, how many, the size and the properties, a
 // parameter and the description where they read (T306). The pencil opens no form (T310): it turns the card's tools on —
 // what is not said yet (where from, how many, the size, the field's properties a level may change — «як у поля»),
-// «＋ параметр», the map's editor — while the map is a feature on (T319). Folded (T296 §7) — the head, two lines and what is inside
+// «＋ параметр» by the caption (T350), the map's editor — while the map is a feature on (T319). Folded (T296 §7) — the
+// head, two lines and what is inside
 const OVERRIDES = ['size', 'topology', 'view', 'time', 'control', 'gravity', 'wrap']  // what a level is offered to change
 const p = defineProps({ part: Object })
 const ed = useEd()
@@ -53,6 +56,7 @@ const bits = computed(() => [['stats', p.part.stats?.length, 'параметри
 const save = (patch) => ed.save.part(p.part.id, patch)
 const setProp = (key, v) => save((now) => ({ props: { ...now.props, [key]: v } }))
 const setStats = (fn) => save((now) => ({ stats: fn(now.stats || []) }))
+const statList = ref()
 
 async function remove() {
   try {
@@ -94,12 +98,13 @@ async function remove() {
       <PropsList :props="values" :specs :can="ed.editable" :save="setProp" :all="tools" inherit />
       <Reveal :show="!!part.stats?.length || tools" gap>
         <PartBlock pic="stats" zone="levels" title="Параметри" inline class="small">
-          <StatList :stats="part.stats" :can="ed.editable" :tools free pills :save="setStats" />
+          <template #after><Transition name="tool"><StatAdd v-if="tools" free @pick="statList.begin($event)" /></Transition></template>
+          <StatList ref="statList" :stats="part.stats" :can="ed.editable" :tools free pills :save="setStats" />
         </PartBlock>
       </Reveal>
       <InlineText v-if="part.description || ed.editable" :value="part.description" multi block :can="ed.editable" class="small"
                   placeholder="Коротко: що тут відбувається, чим рівень особливий…" :save="(description) => save({ description })">
-        <template #empty><span class="more-field">＋ опис</span></template>
+        <template #empty><span class="more-field"><Icon name="plus" /> опис</span></template>
       </InlineText>
       <LevelMap :text="values.map" :tools="ed.has('map') && (tools || (ed.editable && !values.map))" :save="(map) => setProp('map', map)" />
       <ShotStrip v-if="ed.editable || part.screenshots?.length" :part />

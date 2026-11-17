@@ -22,8 +22,9 @@ import ToolsButton from './ToolsButton.vue'
 // rule's reason, a click goes to the rule. A window, a card or a rule named here shows its card under the mouse.
 // The owner changes an item's words and its note where they read (T306). No form (T310): the pencil by the caption — or
 // the card's own (`tools`) — turns the rows' tools on: a click on where a row leads changes it instead of going there,
-// «＋ нотатка», a minus by every row, «＋ перехід або дія» under them. A new row is typed where it will stand; Enter saves
-// it and the next one waits under it. A row may say where it leads before it says how (T318): the new row's target is
+// a minus by every row and, before it, the sign of a note where there is none yet: a click opens the note in its place —
+// the row stays one line (T350). «＋» by the caption — always the owner's, as by «Механіки» (T350) — turns them on and
+// starts a new row, typed where it will stand; Enter saves it and the next one waits under it. A row may say where it leads before it says how (T318): the new row's target is
 // picked at once, and a row with no name keeps a dashed «як?» in its place — the windows are joined first, the items and
 // the keys named later; a row made by its target brings the next one with the list of windows open already — a click a transition. The jumps of rules stand apart under a caption of their own; the game screen offers a new one.
 // `menu` — the Part of kind menu hosted on this window, made with its first row — its title stays «Меню «…»»: the
@@ -35,6 +36,7 @@ const on = computed(() => ed.editable && (props.tools || toolsOn(own.value)))
 const adding = ref(false)
 const n = ref(0)  // every saved row brings a fresh one to type
 const picking = ref(false)  // the new row's target is being picked: the row stays though its name field closed empty
+const noting = ref(-1)  // the row whose new note is being typed
 let kept = false  // …and was picked: the next row waits
 const items = computed(() => props.menu?.items || [])
 const all = useJumps()
@@ -42,6 +44,10 @@ const jumps = computed(() => all.value.filter((j) => j.from === props.window.id)
 const winTitle = (id) => ed.windows.find((w) => w.id === id)?.title
 const setItems = (fn) => ed.save.part(props.menu.id, (m) => ({ items: fn(m.items) }))
 const setItem = (i, patch) => setItems((list) => list.map((it, j) => (j === i ? { ...it, ...patch } : it)))
+async function addNote(i, note) {
+  await setItem(i, { note })
+  noting.value = -1
+}
 async function addItem(patch) {
   const item = { title: '', window: '', task: '', note: '', ...patch }
   if (props.menu) await setItems((list) => [...list, item])
@@ -63,7 +69,7 @@ watch(picking, (on) => {
 const dropNew = () => picking.value || (adding.value = false)
 const isGame = computed(() => props.window.task === 'game-screen')  // rules happen on the game screen: their jumps start here
 function begin() {
-  setTools(own.value, true)
+  if (!props.tools) setTools(own.value, true)
   adding.value = true
 }
 async function removeAll() {
@@ -79,10 +85,10 @@ async function removeAll() {
 <template>
   <div v-if="items.length || jumps.length || ed.editable" class="small">
     <PartBlock pic="goto" zone="interface" title="Переходи й дії">
-      <!-- by the caption (T294 §8): «＋» while there are none, the pencil once there are — unless the card's own is on -->
+      <!-- by the caption (T294 §8, T350): «＋» always, then the pencil once there are rows — unless the card's own is on -->
       <template v-if="ed.editable" #after>
+        <button type="button" class="iact add qtip" data-tip="＋ перехід або дія" aria-label="додати перехід або дію" @click="begin"><Icon name="plus" /></button>
         <ToolsButton v-if="items.length && !tools" :id="own" what="переходах і діях" />
-        <button v-else-if="!items.length && !adding" type="button" class="iact add qtip" data-tip="＋ перехід" aria-label="додати перехід" @click="begin"><Icon name="plus" /></button>
       </template>
       <Reveal :show="on">
         <Tip id="menu-form-rows" class="mb-1">Рядок — що натиснули чи що сталось, і куди це веде: інше вікно або дія — картка, що щось робить
@@ -99,11 +105,16 @@ async function removeAll() {
             <a v-else-if="winTitle(it.window)" v-peek="{ kind: 'window', id: it.window }" href="#" class="text-decoration-none" @click.prevent="jump('p-' + it.window)">→ <Icon name="win" /> {{ winTitle(it.window) }}</a>
             <span v-else-if="it.window" class="text-secondary">→ вікна вже нема</span>
             <span v-else-if="it.task">→ <CardSign :task="ed.info(it.task)" /> <span v-peek="{ kind: 'task', id: it.task }">{{ ed.info(it.task)?.title || it.task }}</span></span>
-            <span v-if="it.note || on" class="text-secondary"><template v-if="it.window || it.task || on"> · </template><InlineText :value="it.note || ''" :can="ed.editable"
-              placeholder="нотатка — як: клавіша, сам через 3 с…" :save="(note) => setItem(i, { note })"><template #empty><span class="more-field">＋ нотатка</span></template></InlineText></span>
+            <span v-if="it.note || (on && noting === i)" class="text-secondary"><template v-if="it.window || it.task || on"> · </template><InlineText v-if="it.note"
+              :value="it.note" :can="ed.editable" placeholder="нотатка — як: клавіша, сам через 3 с…" :save="(note) => setItem(i, { note })" /><InlineText v-else
+              value="" can fresh placeholder="нотатка — як: клавіша, сам через 3 с…" :save="(note) => addNote(i, note)" @drop="noting = -1" /></span>
           </span>
           <Transition name="tool">
-            <button v-if="on" type="button" class="iact del mini" :title="`Прибрати рядок «${it.title || 'без назви'}»`" @click="setItems((list) => list.filter((_, j) => j !== i))"><Icon name="minus" /></button>
+            <span v-if="on" class="acts">
+              <button v-if="!it.note" type="button" class="iact mini note-add qtip qtip-end" :class="{ gone: noting === i }" data-tip="＋ нотатка" aria-label="додати нотатку"
+                      @click="noting = i"><Icon name="note" /></button>
+              <button type="button" class="iact del mini" :title="`Прибрати рядок «${it.title || 'без назви'}»`" @click="setItems((list) => list.filter((_, j) => j !== i))"><Icon name="minus" /></button>
+            </span>
           </Transition>
         </div>
         <!-- outside the columns: a long placeholder must not push the rows' second column away. The name or the target —
@@ -120,11 +131,10 @@ async function removeAll() {
           </div>
         </template>
       </div>
-      <Reveal :show="on && !adding">
+      <Reveal :show="on && (isGame || items.length > 0)">
         <div class="d-flex flex-wrap align-items-center column-gap-3 mt-1">
-          <button type="button" class="more-field" @click="adding = true">＋ перехід або дія</button>
           <button v-if="isGame" type="button" class="more-field" title="Перехід, який робить гра сама: перемога → вікно кінця гри. Відкриє нове правило з ефектом «відкривається вікно»"
-                  @click="ed.open('rule', { then: [{ kind: 'window' }] })">＋ перехід за правилом</button>
+                  @click="ed.open('rule', { then: [{ kind: 'window' }] })"><Icon name="plus" /> перехід за правилом</button>
           <DelButton v-if="menu && items.length" class="ms-auto" what="усі переходи й дії цього вікна" title="Видалити всі переходи й дії" @yes="removeAll" />
         </div>
       </Reveal>
@@ -146,7 +156,10 @@ async function removeAll() {
 .by-rules { grid-column: 1 / -1; margin-top: .3rem; padding-top: .2rem; border-top: 1px dashed var(--bs-border-color-translucent); font-size: .68rem;
             letter-spacing: .03em; color: var(--bs-secondary-color); }
 .by-rules:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
-.mini { align-self: center; }
+.acts { display: inline-flex; align-self: center; justify-content: flex-end; gap: .15rem; }
+/* a note's sign is grey like the minus beside it, and violet under the mouse — it adds */
+.note-add.gone { visibility: hidden; }  /* its note is being typed: the minus stays where it was */
+.note-add:hover { background: color-mix(in srgb, var(--act-add) 12%, transparent); color: var(--act-add); }
 /* a jump a rule makes wears the rules' violet, as on the map */
 .rule { color: color-mix(in srgb, #8e24aa 70%, var(--bs-body-color)); cursor: pointer; }
 .rule:hover { background: var(--bs-tertiary-bg); }

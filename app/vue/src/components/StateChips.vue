@@ -8,8 +8,8 @@ import { useEd } from '../ed.js'
 
 // an entity's states, a pill each (T344). With `can` a click on a pill renames the state right in it — on the card and in
 // every rule that names it (my_states.py); «Повернути» takes both back. With `tools` (the card's pencil) every pill has its
-// minus, and «＋ стан» is a pill being typed: Enter makes it one and opens the next, a comma adds several at once.
-// A state taken away stays as a word in its rules, underlined there as unknown
+// minus, and «＋ стан» by the caption (T350, begin()) opens a pill being typed at the end: Enter makes it one and opens the
+// next, a comma adds several at once. A state taken away stays as a word in its rules, underlined there as unknown
 const props = defineProps({ part: Object, can: Boolean, tools: Boolean })
 const ed = useEd()
 const adding = ref(false)
@@ -33,6 +33,7 @@ async function add(line) {
   adding.value = true
 }
 const start = (on) => { again = false; adding.value = on }
+defineExpose({ begin: () => start(true) })
 </script>
 
 <template>
@@ -43,12 +44,9 @@ const start = (on) => { again = false; adding.value = on }
         <button v-if="tools" type="button" class="iact del mini" :title="`Прибрати стан «${st}»`" @click="set(part.states.filter((_, k) => k !== i))"><Icon name="minus" /></button>
       </Transition>
     </span>
-    <span v-if="adding" class="state draft" @keydown.enter.capture="again = true">
+    <span v-if="adding" class="state draft" title="Enter — ще один, кома — кілька одразу" @keydown.enter.capture="again = true">
       <InlineText value="" can fresh required placeholder="новий стан" :save="add" @drop="start(false)" />
     </span>
-    <Transition v-else name="tool">
-      <button v-if="tools" type="button" class="more-field" title="Enter — ще один, кома — кілька одразу" @click="start(true)">＋ стан</button>
-    </Transition>
   </span>
 </template>
 
