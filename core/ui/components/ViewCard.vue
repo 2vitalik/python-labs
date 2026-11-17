@@ -34,7 +34,7 @@ const origin = computed(() => originLine(p.view))
     <div v-if="view.folder" class="line"><Icon name="folder" /><span class="text-truncate">{{ view.folder }}</span></div>
     <div v-if="view.tags?.length" class="line"><Icon name="tag" /><span class="text-truncate">{{ view.tags.join(', ') }}</span></div>
     <div v-if="origin" class="line"><Icon name="branch" /><span class="text-truncate">{{ origin }}</span></div>
-    <div class="line"><Icon name="clock" /><span class="text-truncate">{{ workLine(view) }}</span></div>
+    <div class="line"><Icon name="clock" /><span>{{ workLine(view) }}</span></div>
   </div>
 </template>
 
@@ -46,5 +46,5 @@ const origin = computed(() => originLine(p.view))
 .parts { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .05rem .6rem; align-items: baseline; margin: .45rem 0 .35rem; }
 .parts dt { font-size: .72rem; font-weight: 400; color: var(--bs-secondary-color); }
 .parts dd { margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.line { display: flex; align-items: center; gap: .35rem; min-width: 0; margin-top: .1rem; color: var(--bs-secondary-color); }
+.line { display: flex; align-items: baseline; gap: .35rem; min-width: 0; margin-top: .1rem; color: var(--bs-secondary-color); }
 </style>

@@ -42,6 +42,8 @@ const number = () => set(range())
     <div v-else-if="picks(col)" class="d-flex flex-column">
       <button v-for="[id, o] in Object.entries(col.options || {})" :key="id" type="button" class="line" :class="{ on: chosen.includes(id), zero: !counts[id] }" @click="pick(id)">
         <span class="text-truncate">{{ optionLabel(o) }}</span><i>{{ counts[id] || 0 }}</i><Icon v-if="chosen.includes(id)" name="check" /></button>
+      <button type="button" class="line" :class="{ on: spec === '+', zero: rows.length === empty }" @click="flip('+')">
+        <span class="text-secondary">є будь-що</span><i>{{ rows.length - empty }}</i><Icon v-if="spec === '+'" name="check" /></button>
       <button type="button" class="line" :class="{ on: chosen.includes('-'), zero: !empty }" @click="pick('-')">
         <span class="text-secondary">порожньо</span><i>{{ empty }}</i><Icon v-if="chosen.includes('-')" name="check" /></button>
     </div>

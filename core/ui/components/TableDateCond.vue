@@ -10,8 +10,8 @@ const day = ref('')
 const n = ref('')
 const side = (ops) => (props.spec.length > 1 && ops.includes(props.spec[0]) ? props.spec[0] : '')
 watch(() => props.spec, () => {
-  if (side('<>')) day.value = props.spec.slice(1)
-  if (side('~^')) n.value = props.spec.slice(1)
+  if (side('<>')) [day.value, n.value] = [props.spec.slice(1), '']
+  if (side('~^')) [day.value, n.value] = ['', props.spec.slice(1)]
 }, { immediate: true })
 const toggle = (o, value) => emit('set', props.spec === o + value ? '' : o + value)
 const onDay = () => emit('set', day.value ? (side('<>') || '>') + day.value : '')

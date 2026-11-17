@@ -4,13 +4,21 @@ import { ref } from 'vue'
 import { useTable } from '../tableCtx.js'
 import { restoreVersion } from '../viewStore.js'
 import DateChip from './DateChip.vue'
+import Icon from './Icon.vue'
+import Pop from './Pop.vue'
 import Reveal from './Reveal.vue'
+import ViewName from './ViewName.vue'
 
 // a past version of the view on screen (?v=N, T315 §7): a bar says so, and offers to bring it back — it becomes one more
-// version on top, nothing is lost — or to go back to the current one
+// version on top, nothing is lost — to make a view of its own of it, or to go back to the current one
 const t = useTable()
 const busy = ref(false)
 const error = ref('')
+const forking = ref(false)
+const fork = async (body) => {
+  await t.fork({ ...body, emoji: body.emoji || t.view.emoji })
+  forking.value = false
+}
 
 async function restore() {
   busy.value = true
@@ -29,9 +37,15 @@ async function restore() {
 <template>
   <Reveal :show="!!t.peek">
     <div v-if="t.peek" class="peek d-flex flex-wrap align-items-center gap-2 small mt-2">
-      <span>Це версія {{ t.peek.n }}<template v-if="t.peek.name"> «{{ t.peek.name }}»</template> від <DateChip :at="t.peek.at" /> — не поточна</span>
+      <span>Це версія {{ t.peek.n }}<template v-if="t.peek.name"> «{{ t.peek.name }}»</template> від <DateChip :at="t.peek.at" /> — {{ t.peek.n === t.view.version ? 'поточна' : 'не поточна' }}</span>
       <button type="button" class="btn btn-sm btn-success ms-auto" :disabled="busy || t.peek.n === t.view.version"
               :title="t.peek.n === t.view.version ? 'Це й так поточна версія' : 'Ця версія стане новою зверху — нічого не загубиться'" @click="restore">Повернути цю версію</button>
+      <Pop v-model="forking" width="22rem">
+        <template #trigger="{ toggle }">
+          <button type="button" class="btn btn-sm btn-add" title="Те, що на екрані, — окремим видом, зробленим із цієї версії" @click="toggle"><Icon name="plus" /> як новий вид</button>
+        </template>
+        <ViewName :go="fork" @cancel="forking = false" />
+      </Pop>
       <button type="button" class="btn btn-sm btn-outline-secondary" @click="t.unpeek()">До поточної</button>
       <span v-if="error" class="w-100 text-danger">{{ error }}</span>
     </div>

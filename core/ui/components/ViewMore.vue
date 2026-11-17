@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 
 import { useTable } from '../tableCtx.js'
-import { archiveView, createView, liveViews, saveView } from '../viewStore.js'
+import { archiveView, copyView, liveViews, saveView } from '../viewStore.js'
 import Icon from './Icon.vue'
 import Pop from './Pop.vue'
 
@@ -27,10 +27,7 @@ async function run(work) {
   }
 }
 const copy = () => run(async () => {
-  const v = t.view
-  const c = await createView({ title: `${v.title} — копія`, emoji: v.emoji, about: v.about, query: v.query, folder: v.folder, tags: v.tags,
-                               parent: v.slug, parent_version: v.version })
-  t.open(c.slug)
+  t.open((await copyView(t.view)).slug)
 })
 const pin = () => run(() => saveView(t.slug, { pinned: !t.view.pinned }))
 const archive = () => run(async () => {
@@ -44,7 +41,7 @@ const archive = () => run(async () => {
 <template>
   <Pop v-model="open" width="15rem">
     <template #trigger="{ toggle }">
-      <button type="button" class="iact mini" title="Ще дії з видом" :aria-expanded="open" @click="toggle"><Icon name="more" /></button>
+      <button type="button" class="iact vmore" title="Ще дії з видом: дублювати, вкладки, історія, архів" :aria-expanded="open" @click="toggle"><Icon name="more" /></button>
     </template>
     <div class="menu" :class="{ 'opacity-50 pe-none': busy }">
       <button type="button" @click="copy"><Icon name="copy" /> Дублювати</button>
@@ -57,6 +54,7 @@ const archive = () => run(async () => {
 </template>
 
 <style scoped>
+.vmore { font-size: 1rem; vertical-align: middle; }
 .menu > * { display: flex; align-items: center; gap: .5rem; width: 100%; padding: .3rem .5rem; border: 0; border-radius: .3rem; background: none;
             color: var(--bs-body-color); text-align: start; text-decoration: none; }
 .menu > *:hover { background: var(--bs-tertiary-bg); }

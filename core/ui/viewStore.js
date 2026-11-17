@@ -26,6 +26,15 @@ function put(v) {
 }
 
 export const createView = async (body) => put(await api.postTableView(body))
+// a copy of a view as it is saved: it remembers what it was made from and stands right after it
+export async function copyView(v) {
+  const c = await createView({ title: `${v.title} (копія)`, emoji: v.emoji, about: v.about, query: v.query, folder: v.folder, tags: v.tags,
+                               pinned: v.pinned, parent: v.slug, parent_version: v.version })
+  const order = liveViews().map((x) => x.slug).filter((s) => s !== c.slug)
+  order.splice(order.indexOf(v.slug) + 1, 0, c.slug)
+  await orderViews(order)
+  return c
+}
 export const saveView = async (slug, patch) => put(await api.putTableView(slug, patch))
 export const archiveView = async (slug, on = true) => put(await api.archiveTableView(slug, on))
 export async function removeView(slug) {

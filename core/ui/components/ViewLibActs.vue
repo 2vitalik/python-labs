@@ -2,7 +2,7 @@
 import { inject, nextTick } from 'vue'
 
 import { flash } from '../anchors.js'
-import { archiveView, createView, liveViews, orderViews } from '../viewStore.js'
+import { archiveView, copyView } from '../viewStore.js'
 import Icon from './Icon.vue'
 import ViewLibFlag from './ViewLibFlag.vue'
 
@@ -14,12 +14,7 @@ const picked = () => lib.picks.includes(props.view.slug)
 
 // the copy remembers where it came from, stands right under its source and lights up there
 const copy = () => lib.act(async () => {
-  const v = props.view
-  const c = await createView({ title: `${v.title} (копія)`, emoji: v.emoji, about: v.about, query: v.query, folder: v.folder, tags: v.tags,
-                               pinned: v.pinned, parent: v.slug, parent_version: v.version })
-  const order = liveViews().map((x) => x.slug).filter((s) => s !== c.slug)
-  order.splice(order.indexOf(v.slug) + 1, 0, c.slug)
-  await orderViews(order)
+  const c = await copyView(props.view)
   await nextTick()
   flash(`view-${c.slug}`, { near: true })
 })

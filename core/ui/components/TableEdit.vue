@@ -26,7 +26,7 @@ const away = (e) => !box.value?.contains(e.target) && emit('close')
 const key = (e) => e.key === 'Escape' && emit('close')
 onMounted(() => {
   const r = props.anchor.getBoundingClientRect()
-  at.value = { left: `${Math.max(4, Math.min(r.left, innerWidth - 300))}px`, top: `${r.bottom + 2}px` }
+  at.value = { left: `${Math.max(4, Math.min(r.left, innerWidth - box.value.offsetWidth - 8))}px`, top: `${r.bottom + 2}px` }  // under its cell, inside the window
   input.value?.focus()
   setTimeout(() => (document.addEventListener('click', away), document.addEventListener('keydown', key)))
 })

@@ -26,12 +26,15 @@ async function saved(f) {
   const was = t.ui.field
   t.ui.field = null
   await t.reload()
-  if (!was.key) t.setCols([...t.state.cols, idOf(f)])
+  if (!was.key) t.shown.some((c) => c.field?.key === f.key) || t.setCols([...t.state.cols, idOf(f)])  // a family may have taken it in already
   else if (was.scope !== f.scope) t.setCols(t.state.cols.map((id) => (id === idOf(was) ? idOf(f) : id)))
 }
 async function dropped() {
+  const { key } = t.ui.field
   t.ui.field = null
   await t.reload()
+  const left = t.state.cols.filter((id) => id !== `f.${key}` && !id.startsWith(`f.${key}.`))
+  if (left.length < t.state.cols.length) t.setCols(left)
 }
 onMounted(() => find.value?.focus({ preventScroll: true }))
 </script>
