@@ -4,13 +4,14 @@ import { computed, ref } from 'vue'
 import Icon from '@core/components/Icon.vue'
 import { iconOf, statOf } from '../catalog.js'
 import { hasStat } from '../gameAdd.js'
-import { myParts } from '../myGame.js'
+import { useGameCtx } from '../gameCtx.js'
 
 // «＋» of a stat card asks whom to give it: the game's entities ticked (those that have it — ticked and locked) and the value;
 // emits send(parts, value)
 const props = defineProps({ task: Object, busy: Boolean })
 const emit = defineEmits(['send', 'cancel'])
-const entities = computed(() => myParts.value.filter((p) => p.kind === 'entity'))
+const { parts } = useGameCtx()
+const entities = computed(() => parts.value.filter((p) => p.kind === 'entity'))
 const picked = ref([])
 const value = ref('')
 const unit = computed(() => statOf(props.task.opt)?.unit || props.task.slots?.[0]?.unit || '')

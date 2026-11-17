@@ -1,26 +1,31 @@
 <script setup>
 import { computed } from 'vue'
 
-import { zones } from '../catalog.js'
 import { useTaskFilter } from '../taskFilter.js'
 import TaskGroups from './TaskGroups.vue'
 import ZoneNav from './ZoneNav.vue'
 
+// the catalog itself: the row of categories, then the cards by category and subcategory. On /tasks the filter is the
+// address; in a window over a game's page (T318) it is the window's own, the categories are the place's, and the sections
+// carry no ids — the page under the window has sections of the same names
 const props = defineProps({ game: { type: String, default: '' } })
-const { f, set, counts, grouped } = useTaskFilter(props.game)
+const { f, set, counts, grouped, zonesIn, subsIn, local } = useTaskFilter(props.game)
 const shown = computed(() => grouped.value.reduce((n, z) => n + z.subs.reduce((m, s) => m + s.list.length, 0), 0))
+// a place with one category has it chosen from the start: its subcategories are the row to pick from
+const only = computed(() => (local && Object.keys(zonesIn.value).length === 1 ? Object.keys(zonesIn.value)[0] : ''))
+const zone = computed(() => f.value.zone || only.value)
 </script>
 
 <template>
-  <ZoneNav :zones="zones" :counts="counts" :zone="f.zone" :sub="f.sub"
+  <ZoneNav :zones="zonesIn" :subs="subsIn" :counts="counts" :zone :sub="f.sub"
            @select="(z, s) => set({ zone: z, sub: s })" />
 
   <p v-if="!shown" class="text-secondary mt-3">Нічого не знайдено — спробуй інші слова чи зніми фільтри.</p>
-  <section v-for="z in grouped" :id="'zone-' + z.key" :key="z.key" class="zone noflash mb-4">
-    <h2 v-if="!f.zone" class="h6 zone-head" :style="{ '--zc': z.color }">
+  <section v-for="z in grouped" :id="local ? null : 'zone-' + z.key" :key="z.key" class="zone noflash mb-4">
+    <h2 v-if="!zone" class="h6 zone-head" :style="{ '--zc': z.color }">
       {{ z.icon }} {{ z.title }} <span class="count">{{ counts[z.key] || 0 }}</span>
     </h2>
-    <TaskGroups :zone="z.key" :color="z.color" :subs="z.subs" />
+    <TaskGroups :zone="z.key" :color="z.color" :subs="z.subs" :bare="local" />
   </section>
 </template>
 

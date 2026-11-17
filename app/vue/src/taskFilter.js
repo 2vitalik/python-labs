@@ -1,4 +1,4 @@
-import { computed, nextTick } from 'vue'
+import { computed, inject, nextTick, provide } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 import { aliasesOf, kidsOf, tasks, zones } from './catalog.js'
@@ -21,16 +21,30 @@ export function hl(text, q, escape = esc) {
 // the same over rendered html: only the text between tags (already escaped by the renderer)
 export const markHtml = (html, q) => (q ? html.split(/(<[^>]+>)/).map((s) => (s.startsWith('<') ? s : hl(s, q, (t) => t))).join('') : html)
 
+// the filter of a catalog not on /tasks (T318, CatalogWindow): its state lives in an object, not in the address —
+// reactive { q, game, algo, zone, sub } and `only(task)`: the cards the place is about
+const KEY = 'task-filter'
+export const provideTaskFilter = (state) => provide(KEY, state)
+// what a card marks in its text: the words searched for
+export function useTaskQuery() {
+  const local = inject(KEY, null)
+  const route = useRoute()
+  return computed(() => (local ? local.q : route.query.q) || '')
+}
+
 export function useTaskFilter(fixedGame = '') {
   const route = useRoute()
   const router = useRouter()
+  const local = inject(KEY, null)
+  const src = computed(() => local || route.query)
 
   const f = computed(() => ({
-    q: route.query.q || '', game: fixedGame || route.query.game || '', algo: route.query.algo === '1',
-    zone: route.query.zone || '', sub: route.query.sub || '',
+    q: src.value.q || '', game: fixedGame || src.value.game || '', algo: src.value.algo === '1',
+    zone: src.value.zone || '', sub: src.value.sub || '',
   }))
 
   async function set(patch) {
+    if (local) return Object.assign(local, patch)
     const q = { ...route.query, ...patch }
     for (const k in q) if (!q[k]) delete q[k]
     await router.replace({ query: q })
@@ -39,7 +53,11 @@ export function useTaskFilter(fixedGame = '') {
     document.getElementById('catalog')?.scrollIntoView()  // guide block above: keep the catalog head on top
   }
 
+  // a family is in when one of its cards is
+  const inScope = (t) => !local?.only || local.only(t) || (kidsOf.value[t.slug] || []).some(local.only)
+
   function matches(t) {
+    if (!inScope(t)) return false
     if (f.value.game === 'universal') { if (t.games.length) return false }
     else if (f.value.game && !t.games.includes(f.value.game)) return false
     if (f.value.algo && !t.tags.includes('algo')) return false
@@ -77,5 +95,11 @@ export function useTaskFilter(fixedGame = '') {
     return out
   })
 
-  return { f, set, counts, grouped }
+  // the categories and subcategories the catalog has cards of at all: every one on /tasks, the place's own in a window
+  const subsIn = computed(() => (local?.only ? new Set(tasks.value.filter((t) => !t.parent && inScope(t)).map((t) => `${t.zone}/${t.subzone}`)) : null))
+  const zonesIn = computed(() => (subsIn.value
+    ? Object.fromEntries(Object.entries(zones.value).filter(([zk]) => [...subsIn.value].some((k) => k.startsWith(`${zk}/`))))
+    : zones.value))
+
+  return { f, set, counts, grouped, zonesIn, subsIn, local: !!local }
 }

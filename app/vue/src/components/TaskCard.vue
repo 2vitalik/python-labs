@@ -1,11 +1,10 @@
 <script setup>
 import { computed, ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
 
 import InlineText from '@core/components/InlineText.vue'
 import { COINS, kidsOf, STATUSES } from '../catalog.js'
-import { claimedSlugs } from '../myGame.js'
-import { hl, norm } from '../taskFilter.js'
+import { useGameCtx } from '../gameCtx.js'
+import { hl, norm, useTaskQuery } from '../taskFilter.js'
 import { saveTask } from '../taskForm.js'
 import { addable } from '../taskMeta.js'
 import { covers, isUnfolded, order } from '../unfold.js'
@@ -20,9 +19,9 @@ import TierBadge from './TierBadge.vue'
 // a card of the catalog: a click on the header unfolds it. Unfolded, the teacher changes the title and the price where they
 // read (T306) — elsewhere on the header a click folds it back; the pencil turns it into its form in place and back
 const props = defineProps({ task: Object })
-const route = useRoute()
+const ctx = useGameCtx()
 const admin = computed(() => user.value?.status === 'admin')
-const q = computed(() => route.query.q || '')
+const q = useTaskQuery()
 const kids = computed(() => kidsOf.value[props.task.slug] || [])
 const scope = computed(() => `${props.task.zone}/${props.task.subzone}`)
 const open = ref(isUnfolded(scope.value))
@@ -35,7 +34,7 @@ function fold(e) {
   if (![pressed, e.target].some((el) => el?.closest('.pop-panel'))) open.value = !open.value
   pressed = null
 }
-const inGame = computed(() => claimedSlugs.value.has(props.task.slug) && addable(props.task))
+const inGame = computed(() => ctx.slugs.value.has(props.task.slug) && addable(props.task))
 // family shows the min‥max range of its children's coins instead of the card's reference coin
 const range = computed(() => {
   const present = Object.keys(COINS).filter((c) => kids.value.some((k) => k.coin === c))

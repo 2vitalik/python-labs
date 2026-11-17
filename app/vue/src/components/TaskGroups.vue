@@ -10,8 +10,9 @@ import TaskCard from './TaskCard.vue'
 import TaskEdit from './TaskEdit.vue'
 
 // a category's subcategories, each a full-width row (T274 §1): its cards dealt into as many columns as fit (≈320 px),
-// the first part of the list into the first column. The columns are separate stacks: an unfolded card lengthens only its own
-const props = defineProps({ zone: String, color: String, subs: Array })
+// the first part of the list into the first column. The columns are separate stacks: an unfolded card lengthens only its own.
+// `bare` — no ids on the subcategories: the catalog stands in a window over another page (T318)
+const props = defineProps({ zone: String, color: String, subs: Array, bare: Boolean })
 const admin = computed(() => user.value?.status === 'admin')
 const scope = (s) => `${props.zone}/${s.key}`
 const adding = ref('')  // the subcategory whose «＋» opened a new card's form over its columns
@@ -36,7 +37,7 @@ function split(list, n) {
 
 <template>
   <div ref="el">
-    <div v-for="s in subs" :id="`sub-${zone}-${s.key}`" :key="s.key" class="task-group noflash mb-3" :style="subStyle(color, s.i)">
+    <div v-for="s in subs" :id="bare ? null : `sub-${zone}-${s.key}`" :key="s.key" class="task-group noflash mb-3" :style="subStyle(color, s.i)">
       <div class="group-head d-flex align-items-center gap-1">
         <span>{{ s.icon }} {{ s.title }}</span>
         <span class="count">{{ s.list.length }}</span>

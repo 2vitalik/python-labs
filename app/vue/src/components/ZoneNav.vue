@@ -1,15 +1,17 @@
 <script setup>
 import { subStyle } from '../catalog.js'
 
-// the filter of /tasks: a row of categories, under the chosen one — a row of its subcategories, each with how many cards match
-defineProps({ zones: Object, counts: Object, zone: String, sub: String })
+// the filter of /tasks: a row of categories, under the chosen one — a row of its subcategories, each with how many cards match;
+// with one category to show (the catalog's window of a section, T318) its row says nothing — the subcategories alone,
+// and of them only `subs` (a Set of `zone/sub`), when given: the ones the place has cards of
+defineProps({ zones: Object, subs: Object, counts: Object, zone: String, sub: String })
 defineEmits(['select'])
 </script>
 
 <template>
   <nav class="mb-3">
-    <div class="cap">категорія</div>
-    <div class="d-flex flex-wrap gap-1">
+    <div v-if="Object.keys(zones).length > 1" class="cap">категорія</div>
+    <div v-if="Object.keys(zones).length > 1" class="d-flex flex-wrap gap-1">
       <button type="button" class="btn btn-sm zone-btn" :class="{ active: !zone }"
               @click="$emit('select', '', '')">
         Всі<sup class="count">{{ counts[''] || 0 }}</sup>
@@ -21,9 +23,9 @@ defineEmits(['select'])
       </button>
     </div>
     <template v-if="zones[zone]">  <!-- ?zone= in the URL comes before the zones load -->
-      <div class="cap mt-2">підкатегорія</div>
+      <div class="cap" :class="{ 'mt-2': Object.keys(zones).length > 1 }">підкатегорія</div>
       <div class="d-flex flex-wrap gap-1">
-        <button v-for="([st, si], sk, i) in zones[zone].subzones" :key="sk" type="button"
+        <button v-for="([st, si], sk, i) in zones[zone].subzones" v-show="!subs || subs.has(`${zone}/${sk}`)" :key="sk" type="button"
                 class="btn btn-sm sub-btn" :style="subStyle(zones[zone].color, i)"
                 :class="{ active: sub === sk, 'opacity-50': !counts[`${zone}/${sk}`] }"
                 @click="$emit('select', zone, sub === sk ? '' : sk)">

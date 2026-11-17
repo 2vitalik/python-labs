@@ -3,7 +3,7 @@ import { computed, ref } from 'vue'
 
 import Icon from '@core/components/Icon.vue'
 import { kindOf, vocab } from '../catalog.js'
-import { myGame } from '../myGame.js'
+import { useGameCtx } from '../gameCtx.js'
 import { PROOFS } from '../proof.js'
 import { saveTask } from '../taskForm.js'
 import { addable, addsTo } from '../taskMeta.js'
@@ -22,9 +22,10 @@ import TaskStatusPick from './TaskStatusPick.vue'
 // The teacher changes the status and the description where they read (T306); the pencil asks the card to turn into its form
 const props = defineProps({ task: Object, family: Boolean, q: String })
 defineEmits(['edit'])
+const ctx = useGameCtx()
 const admin = computed(() => user.value?.status === 'admin')
 const kind = computed(() => kindOf(props.task))
-const how = computed(() => (admin.value || myGame.value) && !props.family && addable(props.task))  // a family's plus is on its variants
+const how = computed(() => (admin.value || ctx.has.value) && !props.family && addable(props.task))  // a family's plus is on its variants
 const proof = computed(() => PROOFS[props.task.proof])
 const slotText = (s) => {
   const more = [s.unit, s.type === 'choice' && s.options?.join(' / '), s.required && 'обовʼязково'].filter(Boolean)
