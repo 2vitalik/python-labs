@@ -34,26 +34,23 @@ const close = (e) => (!e || !more.value?.contains(e.target)) && (open.value = fa
 watch(() => route.fullPath, () => close())
 watch(user, () => layout(), { flush: 'post' })  // the name appears/changes → re-fit
 
-// always in sight (T284 §3): the bar sticks to the top and, once the page is scrolled, gets lower; whatever sticks under
-// it reads its height as --nav-h. Two thresholds, so the bar does not flicker where it changes
+// always in sight (T284 §3): the bar stands on the shelf that sticks to the top (App.vue) and, once the page is scrolled,
+// gets lower. Two thresholds, so the bar does not flicker where it changes
 const small = ref(false)
 const scrolled = () => (small.value = scrollY > (small.value ? 40 : 120))
-const sized = new ResizeObserver(() => document.documentElement.style.setProperty('--nav-h', `${bar.value.offsetHeight}px`))
 onMounted(() => {
   document.addEventListener('click', close)
   addEventListener('scroll', scrolled, { passive: true })
-  sized.observe(bar.value, { box: 'border-box' })  // the bar's own padding is animated: the content box alone would miss it
 })
 onUnmounted(() => {
   document.removeEventListener('click', close)
   removeEventListener('scroll', scrolled)
-  sized.disconnect()
   clearTimeout(timer)
 })
 </script>
 
 <template>
-  <nav ref="bar" class="navbar navbar-expand bg-body-tertiary border-bottom sticky-top" :class="{ small }">
+  <nav ref="bar" class="navbar navbar-expand bg-body-tertiary border-bottom" :class="{ small }">
     <div class="page d-flex align-items-center">
       <RouterLink class="navbar-brand d-flex align-items-center" to="/" :title="site.name"><IconHome :size="20" /></RouterLink>
       <ul ref="list" class="navbar-nav">

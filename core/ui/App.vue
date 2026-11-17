@@ -1,5 +1,5 @@
 <script setup>
-import { computed, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 import { flash } from './anchors.js'
@@ -27,12 +27,22 @@ useRouter().afterEach((to, from) => {
 // a meta.wide page on the whole window: the reader's remembered choice (wide.js); 'admin' — always, for the admin (/week, T186)
 const wide = computed(() => (route.meta.wide === 'admin' ? user.value?.status === 'admin' : !!wideOf(route.meta.wide)?.on.value))
 watch(() => route.hash, (h) => h && flash(h.slice(1)))  // #target changed on a loaded page; page load is GuideText's job
+// the shelf at the top (T344): the menu and whatever is pinned under it stay in sight while the page scrolls, and what
+// sticks below — a page's headings, TocBar — reads the shelf's height as --nav-h. A page pins a strip of its own with
+// <Teleport defer to="#top-shelf">
+const shelf = ref()
+const sized = new ResizeObserver(() => document.documentElement.style.setProperty('--nav-h', `${shelf.value.offsetHeight}px`))
+onMounted(() => sized.observe(shelf.value, { box: 'border-box' }))  // the menu's own padding is animated: the content box alone would miss it
+onBeforeUnmount(() => sized.disconnect())
 </script>
 
 <template>
-  <NavBar />
+  <header ref="shelf" class="sticky-top">
+    <NavBar />
+    <ViewBar v-if="user?.viewing" />
+    <div id="top-shelf" />
+  </header>
   <TocBar :wide />
-  <ViewBar v-if="user?.viewing" />
   <main class="py-4" :class="wide ? 'container-fluid px-4' : 'page'">
     <DownBar v-if="down" />
     <!-- the API is silent and nobody is signed in: whether the page is theirs to see is unknown -->
