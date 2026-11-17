@@ -1,15 +1,19 @@
 #!/usr/bin/env python3
-"""prep.py <raw dir> [--offset HH:MM:SS] — zoom.txt and plaud.txt as «one fragment = one line» with clock time, into <raw dir>/../prep/.
+"""prep.py <raw dir> [--offset HH:MM:SS] — every raw source with time as «one fragment = one line» with clock time, into
+<raw dir>/../prep/: zoom*.txt and wispr*.txt («[Who] HH:MM:SS» and the text under it), zoom-cc*.txt (captions, a line
+each, no names), plaud.txt (counts from the start of its own recording).
 
-Plaud counts from the start of its own recording; the clock time of its 00:00:00 is found by matching early fragments
-against Zoom unless given with --offset. Prints what it found so the merge can start from facts, not from reading."""
+Plaud's clock time of 00:00:00 is found by matching early fragments against Zoom unless given with --offset. Prints what
+each source covers — its span and the gaps — so the merge starts from facts, not from reading."""
 import re
 import sys
 from pathlib import Path
 
 ZOOM = re.compile(r"^\[(?P<who>[^\]]+)\] (?P<t>\d\d:\d\d:\d\d)$")
 PLAUD = re.compile(r"^(?P<t>\d\d:\d\d:\d\d) (?P<who>Speaker \d+)$")
+CAPTION = re.compile(r"^(?P<t>\d\d:\d\d:\d\d) (?P<text>.+)$")
 WORD = re.compile(r"\w+")
+GAP = 300  # a silence longer than this is worth a line: a break, a source switched off
 
 
 def secs(t: str) -> int:
@@ -32,6 +36,10 @@ def fragments(path: Path, head: re.Pattern) -> list[tuple[int, str, str]]:
     return [(t, w, " ".join(x)) for t, w, x in out]
 
 
+def captions(path: Path) -> list[tuple[int, str, str]]:
+    return [(secs(m["t"]), "", m["text"]) for m in map(CAPTION.match, path.read_text().splitlines()) if m]
+
+
 def words(text: str) -> set[str]:
     return {w.lower() for w in WORD.findall(text) if len(w) > 3}
 
@@ -51,6 +59,14 @@ def offset_by_text(zoom, plaud) -> tuple[int, int]:
     return offsets[len(offsets) // 2], offsets[-1] - offsets[0]
 
 
+def write(out: Path, name: str, rows: list, shift: int = 0, note: str = ""):
+    (out / name).write_text("\n".join(f"{clock(t + shift)} {w}: {x}" if w else f"{clock(t + shift)} {x}" for t, w, x in rows) + "\n")
+    who = sorted({w for _, w, _ in rows if w})
+    gaps = [f"{clock(a + shift)[:5]}–{clock(b + shift)[:5]}" for (a, _, _), (b, _, _) in zip(rows, rows[1:]) if b - a > GAP]
+    print(f"{name}: {len(rows)} фрагментів · {clock(rows[0][0] + shift)}–{clock(rows[-1][0] + shift)}"
+          + (f" · {len(who)} мовців: {', '.join(who)}" if who else " · без імен") + (f" · прогалини: {', '.join(gaps)}" if gaps else "") + (f" · {note}" if note else ""))
+
+
 def main():
     args = sys.argv[1:]
     offset = None
@@ -61,12 +77,15 @@ def main():
     raw = Path(args[0])
     out = raw.parent / "prep"
     out.mkdir(exist_ok=True)
-    zoom = fragments(raw / "zoom.txt", ZOOM) if (raw / "zoom.txt").exists() else []
+    zoom = []
+    for p in sorted(raw.glob("*.txt")):
+        if p.name.startswith(("plaud", "chat")):
+            continue
+        rows = captions(p) if p.name.startswith("zoom-cc") else fragments(p, ZOOM)
+        if rows:
+            write(out, p.name, rows)
+            zoom = zoom or rows  # the first clocked source in name order: what Plaud is matched against
     plaud = fragments(raw / "plaud.txt", PLAUD) if (raw / "plaud.txt").exists() else []
-    if zoom:
-        (out / "zoom.txt").write_text("\n".join(f"{clock(t)} {w}: {x}" for t, w, x in zoom) + "\n")
-        who = sorted({w for _, w, _ in zoom})
-        print(f"zoom: {len(zoom)} фрагментів · {clock(zoom[0][0])}–{clock(zoom[-1][0])} · {len(who)} мовців: {', '.join(who)}")
     if plaud:
         note = "час відносний, зсув невідомий"
         if offset is None and zoom:
@@ -74,9 +93,7 @@ def main():
             note = f"Plaud 00:00:00 = {clock(offset)} (за текстом; розкид оцінок {spread} с — перевір на двох фразах)"
         elif offset is not None:
             note = f"Plaud 00:00:00 = {clock(offset)} (задано)"
-        shift = offset or 0
-        (out / "plaud.txt").write_text("\n".join(f"{clock(t + shift)} {w}: {x}" for t, w, x in plaud) + "\n")
-        print(f"plaud: {len(plaud)} фрагментів · {clock(plaud[0][0] + shift)}–{clock(plaud[-1][0] + shift)} · {note}")
+        write(out, "plaud.txt", plaud, offset or 0, note)
     print(f"→ {out}")
 
 
