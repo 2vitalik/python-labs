@@ -101,7 +101,8 @@ async def put_remark(id: PydanticObjectId, data: RemarkIn, request: Request, use
     if patch.get("kind", r.kind) not in V.PAID:
         patch |= {"coin": "", "amount": 0}
     await record(r, patch, actor=user.email)
-    return defenses.remark(r, reader(request))
+    owner = await User.find_one(User.email == r.student)
+    return defenses.remark(r, reader(request), owner.github if owner else "")
 
 
 @router.put("/remarks/{id}/check")
