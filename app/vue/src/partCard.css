@@ -8,6 +8,12 @@
               background: color-mix(in srgb, var(--z, var(--bs-secondary-color)) 11%, var(--bs-body-bg)); }
 /* a panel or an error opened in the head (T306) hangs over the cards below, their heads too: the head is a layer of its own */
 .pcard-head:has(.pop-panel, .inl-err) { z-index: 30; }
+/* the name and what stands by it (the type; where a level comes from): on one line while both fit — else the second goes
+   under the name whole, close to it; neither is cut in two beside the other (T310) */
+.pcard-names { display: flex; flex: 1 1 0; flex-wrap: wrap; align-items: baseline; gap: 0 .5rem; min-width: 0; line-height: 1.3; overflow-wrap: anywhere; }
+.pcard-names > * { max-width: 100%; }
+/* its tools are on (tools.js): the pencil is lit, and the card's edge says which card it is */
+.card.tools-on { --bs-card-border-color: color-mix(in srgb, var(--act-edit) 70%, var(--bs-border-color)); }
 .pcard > .card-body { padding: .6rem .65rem; }
 .pcard-acts { display: flex; flex-shrink: 0; margin-left: auto; align-self: flex-start; }
 /* an open form frames only what it edits (T291 §4, T294 §4): the blocks under it stay outside */

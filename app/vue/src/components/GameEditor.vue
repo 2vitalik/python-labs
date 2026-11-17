@@ -24,6 +24,7 @@ import '../peeks.js'
 import { sandbox } from '../sandbox.js'
 import { foldKey, HEADS, sectionOf, SECTIONS, SIMPLE, ZONES } from '../sections.js'
 import { editing } from '../teacher.js'
+import { anyTools, dropTools } from '../tools.js'
 import AddBar from './AddBar.vue'
 import ClaimsTable from './ClaimsTable.vue'
 import ColsSwitch from './ColsSwitch.vue'
@@ -75,6 +76,12 @@ const ed = reactive({
 })
 ed.save = savers(ed)
 provideEd(ed)
+// Esc with nothing open puts every card's tools away (tools.js); a field or a panel takes its own Esc first
+function esc(e) {
+  if (e.key === 'Escape' && anyTools() && !e.target.closest?.('input, textarea, select') && !document.querySelector('.pop-panel')) dropTools()
+}
+onMounted(() => document.addEventListener('keydown', esc))
+onBeforeUnmount(() => { document.removeEventListener('keydown', esc); dropTools() })
 
 const loose = computed(() => props.claims.filter((c) => !c.part && !c.rule && !c.auto))
 const inZone = (z) => loose.value.filter((c) => kindOf(ed.info(c.task)) === 'game' && z.zones.includes(ed.info(c.task)?.zone)).length
