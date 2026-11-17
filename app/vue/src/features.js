@@ -20,7 +20,7 @@ export const FEATURES = [
   { id: 'support', group: 'sections', section: 'zone-support', icon: '📣', title: 'Супровід: картки', text: 'сторінка гри, інструкція гравця, трейлер (відео — в основі)' },
   { id: 'cards', group: 'page', title: 'Вигляд «Картки»', text: 'усе заявлене деревом' },
   { id: 'looks', group: 'page', title: 'Налаштування вигляду', text: 'стовпці, розкладка, згорнуті картки, «усе / коротко / згорнуто»' },
-  { id: 'etalon', group: 'page', title: 'Еталон основи', text: '«почати з еталона» і «в еталоні є, а в тебе нема»' },
+  { id: 'etalon', group: 'page', title: 'Еталон основи', text: 'зразковий опис гри-основи: порожню гру можна почати з нього, а під «чого бракує» — «в еталоні є, а в тебе нема»' },
 ]
 export const FEATURE = Object.fromEntries(FEATURES.map((f) => [f.id, f]))
 // what every game has, whatever is turned on — the head of the panel

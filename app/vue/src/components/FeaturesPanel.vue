@@ -8,11 +8,16 @@ import { BASE, FEATURES, GROUPS } from '../features.js'
 import FeatureRow from './FeatureRow.vue'
 
 // «Можливості» (T319): what the game page holds beyond its base — all at once («Усе»), back to the base, or one by one.
-// Turning off takes away only the empty: what has data stays, so nothing filled is ever hidden. The owner's only (GameEditor)
+// Turning off takes away only the empty: what has data stays, so nothing filled is ever hidden. The owner's only (GameEditor).
+// Everything is in sight at once (T344): the names in two columns, a row each; what a row adds reads at the panel's foot
+// while the mouse is on it — nothing to scroll, nothing moves
 const ed = useEd()
 const open = ref(false)
 const busy = ref(false)
-const groups = GROUPS.map(([id, title]) => ({ id, title, list: FEATURES.filter((f) => f.group === id) }))
+const hint = ref(null)  // the row under the mouse: { icon, title, text }
+const TITLE = Object.fromEntries(GROUPS)
+const COLS = [['entities', 'rules', 'windows', 'page'], ['sections']]  // the long group stands alone: the columns come out even
+const cols = COLS.map((ids) => ids.map((id) => ({ id, title: TITLE[id], list: FEATURES.filter((f) => f.group === id) })))
 const count = computed(() => FEATURES.filter((f) => ed.has(f.id)).length)
 const ids = (fn) => FEATURES.filter(fn).map((f) => f.id)
 const more = computed(() => ids((f) => !ed.has(f.id) && ed.offers(f.id)))
@@ -25,13 +30,13 @@ async function run(fn) {
 </script>
 
 <template>
-  <Pop v-model="open" width="26rem">
+  <Pop v-model="open" width="35rem">
     <template #trigger="{ toggle }">
       <button type="button" class="btn btn-sm btn-outline-secondary" :aria-expanded="open" title="Що ще описати в грі: усе одразу чи галочками" @click="toggle">
         <Icon name="layers" /> Можливості <span class="cnt">{{ count ? `основа + ${count}` : 'основа' }}</span>
       </button>
     </template>
-    <div class="fp vstack gap-2">
+    <div class="fp vstack gap-2" @mouseleave="hint = null">
       <div class="d-flex flex-wrap gap-2">
         <button type="button" class="btn btn-sm btn-add py-0" :disabled="busy || !more.length" title="Увімкнути все, що відкрито"
                 @click="run(() => ed.turn(more, true))"><Icon name="plus" /> Усе</button>
@@ -39,12 +44,20 @@ async function run(fn) {
                 @click="run(() => ed.turn(ids((f) => !ed.filled(f.id)), false))">Лише основа</button>
       </div>
       <div class="base">
-        <div class="group-cap">Основа — є завжди</div>
-        <div v-for="[name, what] in BASE" :key="name"><b>{{ name }}</b> — {{ what }}</div>
+        <span class="group-cap">Основа — є завжди</span>
+        <span v-for="[title, text] in BASE" :key="title" class="b" @mouseenter="hint = { title, text }">{{ title }}</span>
       </div>
-      <div v-for="g in groups" :key="g.id">
-        <div class="group-cap">{{ g.title }}</div>
-        <FeatureRow v-for="f in g.list" :key="f.id" :f :busy :run />
+      <div class="cols">
+        <div v-for="(col, i) in cols" :key="i" class="vstack gap-2">
+          <div v-for="g in col" :key="g.id">
+            <div class="group-cap">{{ g.title }}</div>
+            <FeatureRow v-for="f in g.list" :key="f.id" :f :busy :run @mouseenter="hint = f" @focusin="hint = f" />
+          </div>
+        </div>
+      </div>
+      <div class="foot" aria-live="polite">
+        <template v-if="hint"><b>{{ hint.icon }} {{ hint.title }}</b> — {{ hint.text }}</template>
+        <template v-else>Наведи на рядок — тут буде, що він додає. Вимкнути можна лише порожнє: заповнене лишається на сторінці.</template>
       </div>
     </div>
   </Pop>
@@ -52,8 +65,13 @@ async function run(fn) {
 
 <style scoped>
 .cnt { font-size: .75rem; opacity: .7; }
-/* on a phone the panel is a sheet at the bottom (Pop): the list scrolls inside either way */
-.fp { max-height: min(32rem, 65vh); overflow-y: auto; font-size: .82rem; }
-.base { padding: .3rem .5rem .4rem; border-radius: .375rem; background: var(--bs-tertiary-bg); color: var(--bs-secondary-color); font-size: .78rem; }
-.base b { font-weight: 600; color: var(--bs-body-color); }
+.fp { font-size: .82rem; }
+.base { display: flex; flex-wrap: wrap; align-items: center; gap: .1rem .6rem; padding: .25rem .5rem; border-radius: .375rem; background: var(--bs-tertiary-bg); font-size: .78rem; }
+.b { font-weight: 600; white-space: nowrap; cursor: default; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; column-gap: 1.25rem; }
+/* two lines tall whatever it says: the panel keeps its height while the mouse goes down the rows */
+.foot { min-height: 2.6rem; padding-top: .35rem; border-top: 1px dashed var(--bs-border-color); color: var(--bs-secondary-color); font-size: .76rem; line-height: 1.35; }
+.foot b { font-weight: 600; color: var(--bs-body-color); }
+/* a phone has one column, and its sheet (Pop) scrolls */
+@media (max-width: 575px) { .cols { grid-template-columns: 1fr; row-gap: .5rem; } }
 </style>
