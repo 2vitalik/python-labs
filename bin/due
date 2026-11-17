@@ -1,0 +1,56 @@
+#!/usr/bin/env python3
+"""bin/due — a deadline's verdict in one screen (T340): who made it, who did not, the borderline ones by their case.
+
+  bin/due [-t prod] <lab>           counts by answer and case, the flags
+  bin/due [-t prod] <lab> --who     …and who is in every borderline case and under every flag: @telegram or the site's nick
+
+Reads GET /api/table of the site (labs[n].case — core/api/core/due_case.py); the words of the cases are the table's own
+(core/ui/dueCase.js). Names go to the terminal only."""
+import argparse
+import re
+from collections import defaultdict
+
+from siteapi import ROOT, call
+
+ANSWERS = (("yes", "✅ так"), ("no", "❌ ні"), ("ask", "❓ пограничне"), ("wait", "⏳ чекає"))
+WORDS = (ROOT / "core" / "ui" / "dueCase.js").read_text()
+CASE = dict(re.findall(r"^  (\w+): c\('([^']+)'", WORDS, re.M))  # code → «вчасно»
+FLAG = dict(re.findall(r"^  (\w+): \{ emoji: '[^']*', text: '([^']+)'", WORDS.partition("export const FLAG")[2], re.M))
+
+
+def who(r: dict) -> str:
+    return f"@{r['tg_username']}" if r.get("tg_username") else r["nick"]
+
+
+def late(h: float | None) -> str:
+    return "" if h is None else f" +{round(h * 60)} хв" if h < 1 else f" +{round(h)} год" if h < 48 else f" +{round(h / 24)} дн"
+
+
+def main():
+    p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    p.add_argument("-t", "--target", default="prod")
+    p.add_argument("lab", type=int)
+    p.add_argument("--who", action="store_true")
+    a = p.parse_args()
+    rows = call(a.target, "GET", "/table")["rows"]
+    cases, flags = defaultdict(lambda: defaultdict(list)), defaultdict(list)
+    for r in rows:
+        c = r["labs"][str(a.lab)].get("case")
+        if not c:
+            raise SystemExit("сайт ще не знає вердикту: потрібен деплой T340")
+        cases[c["answer"]][c["code"]].append(who(r) + late(c["late"]))
+        for f in c["flags"]:
+            flags[f].append(who(r))
+    print(f"Дедлайн {a.lab} · студентів {len(rows)} · {a.target}")
+    for answer, title in ANSWERS:
+        groups = sorted(cases[answer].items(), key=lambda g: -len(g[1]))
+        print(f"{title} {sum(len(g) for _, g in groups)}: " + " · ".join(f"{CASE.get(code, code)} {len(g)}" for code, g in groups))
+        if a.who and answer == "ask":
+            for code, g in groups:
+                print(f"   {CASE.get(code, code)}: {' '.join(g)}")
+    for f, g in sorted(flags.items(), key=lambda x: -len(x[1])):
+        print(f"🚩 {FLAG.get(f, f)} — {len(g)}" + (f": {' '.join(g)}" if a.who else ""))
+
+
+if __name__ == "__main__":
+    main()
