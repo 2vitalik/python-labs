@@ -29,6 +29,7 @@ class LabMark(Document):
     open: bool = False  # extended, the date not known yet
     reason: str = ""
     met: bool | None = None  # True — on time, False — not; None — as the site counts
+    grace: bool = False  # met by the teacher's leniency, once (T340): late or not quite, counted all the same
     note: str = ""
     asked: bool = False  # the student asked for an extension (T240) — whether or not one was given
     asked_for: str = ""  # …and for how long, in their words: «на тиждень», «до 5.11»
@@ -40,5 +41,5 @@ class LabMark(Document):
         indexes = [IndexModel([("user", 1), ("lab", 1)], unique=True)]
 
     def api(self) -> dict:
-        return {"until": when(self.until), "open": self.open, "reason": self.reason, "met": self.met, "note": self.note, "asked": self.asked, "asked_for": self.asked_for,
+        return {"until": when(self.until), "open": self.open, "reason": self.reason, "met": self.met, "grace": self.grace, "note": self.note, "asked": self.asked, "asked_for": self.asked_for,
                 "by": self.by.split("@")[0], "at": when(self.at)}

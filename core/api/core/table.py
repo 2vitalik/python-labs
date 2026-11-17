@@ -2,6 +2,7 @@
 the cells of the labs, the latest vote in every poll, the teacher's own fields, the site's part (students.EXTRAS)."""
 from core.attendance_read import summary
 from core.config import settings
+from core.due_case import fill
 from core.labs import Index
 from core.models.field import Field, FieldValue
 from core.models.history import stamp, when
@@ -51,6 +52,7 @@ async def table() -> dict:
         rows.append(u.person() | profile(u) | extras.get(u.email, {}) | {
             "repo": repo.api() if repo else None, "labs": index.cells(u.email, u.github, u.group, settings.labs),
             "polls": votes.get(u.email, {}), "fields": values.get(u.email, {}), "attendance": att.get(u.email)})
-    return {"rows": rows, "labs": labs_api(index.deadlines), "polls": [p.api() for p in polls],
+    says = {p.id: n for n, p in fill(rows, users, index, polls, votes, settings.labs).items()}  # the verdict of each deadline (T340)
+    return {"rows": rows, "labs": labs_api(index.deadlines), "polls": [p.api() | {"says_lab": says.get(p.id)} for p in polls],
             "fields": [f.api() for f in await Field.find_all().sort("order", "created_at").to_list()],
             "views": [v.api() for v in await all_views()], "prefs": await prefs()}

@@ -4,12 +4,14 @@ from typing import Literal
 
 from core.config import settings
 from core.deps import editor_user
+from core.due_case import fill
 from core.lab_marks import set_mark
 from core.labs import Index
 from core.models.history import record, record_new
 from core.models.repo import Commit, Kind, Repo, Review, Verdict
 from core.models.user import User
 from core.routes.labs import lab_no
+from core.table import answers
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
@@ -22,6 +24,7 @@ class MarkIn(BaseModel):
     open: bool = False
     reason: str = ""
     met: bool | None = None
+    grace: bool = False
     note: str = ""
     asked: bool = False
     asked_for: str = ""
@@ -63,6 +66,8 @@ async def student(nick: str) -> User:
 async def card(u: User) -> dict:
     index = await Index.load([u.email])
     cells = index.cells(u.email, u.github, u.group, settings.labs)
+    polls, votes = await answers([u])
+    fill([{"labs": cells}], [u], index, polls, votes, settings.labs)  # the verdict of each deadline (T340)
     repo = index.repos.get(u.email)
     return {"student": u.person(), "github": u.github, "repo": repo.api() if repo else None,
             "labs": [{"n": n} | cells[str(n)] for n in range(1, settings.labs + 1)]}

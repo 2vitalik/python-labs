@@ -16,8 +16,9 @@ TZ = ZoneInfo("Europe/Kyiv")
 END = time(23, 59)  # the day's deadline, when only a date is given
 WEEKDAY = ("понеділок", "вівторок", "середа", "четвер", "пʼятниця", "субота", "неділя")
 DATE = re.compile(r"^(\d{1,2})\.(\d{1,2})(?:\.(\d{2}|\d{4}))?$")
-FIELDS = ("until", "open", "reason", "met", "note", "asked", "asked_for")
+FIELDS = ("until", "open", "reason", "met", "grace", "note", "asked", "asked_for")
 MET = {True: "✅ вклався — слово викладача", False: "❌ не вклався — слово викладача", None: "↩️ вердикт — як рахує сайт"}
+GRACE = "🤝 вклався з поблажкою — слово викладача"
 
 
 def parse_due(text: str, today: datetime | None = None) -> datetime | None:
@@ -54,8 +55,8 @@ def lines(mark: LabMark, changed: set[str]) -> list[str]:
         out.append(f"⏳ до {kyiv(mark.until)}" if mark.until else "⏳ подовжено, дата поки невідома" if mark.open else "✖️ подовження знято")
     if "reason" in changed and mark.reason:
         out.append(f"💬 {html.quote(mark.reason)}")
-    if "met" in changed:
-        out.append(MET[mark.met])
+    if changed & {"met", "grace"}:
+        out.append(GRACE if mark.grace else MET[mark.met])
     if "note" in changed and mark.note:
         out.append(f"📝 {html.quote(mark.note)}")
     if changed & {"asked", "asked_for"}:
@@ -71,6 +72,10 @@ async def set_mark(student: User, lab: int, data: dict, actor: str) -> tuple[Lab
         patch["until"] = naive(patch["until"])
         if patch["until"]:
             patch["open"] = False  # a date closes the open-ended extension
+    if patch.get("grace"):
+        patch["met"] = True  # leniency is a way of «вклався»…
+    elif "met" in patch and patch["met"] is not True:
+        patch["grace"] = False  # …and goes with it
     mark = await LabMark.find_one(LabMark.user == student.email, LabMark.lab == lab)
     now = datetime.now(timezone.utc)
     if mark:
