@@ -1,3 +1,4 @@
+import { ANSWER, CASE, FLAG, SAYS, lateText } from './dueCase.js'
 import { STATES, doneOf, fmtWhen, labName } from './labs.js'
 import { site } from './site.js'
 
@@ -11,7 +12,8 @@ const col = (key, group, type, name, short, get, more = {}) => ({ key, group, ca
 export const REG = { full: { emoji: '✅', text: 'усе: сайт, бот, GitHub', color: 'green' }, part: { emoji: '🟡', text: 'частина', color: 'yellow' }, none: { emoji: '❌', text: 'нічого', color: 'red' } }
 export const REPO = { ok: { emoji: '🟢', text: 'клоновано, доступ є', color: 'green' }, err: { emoji: '⚠️', text: 'нема доступу', color: 'red' }, new: { emoji: '🐙', text: 'ще не тягнули' } }
 export const EXT = { until: { emoji: '⏳', text: 'подовжено до дати', color: 'yellow' }, open: { emoji: '⏳', text: 'подовжено, дата невідома', color: 'orange' } }
-export const MET = { yes: { emoji: '✅', text: 'вклався — слово викладача', color: 'green' }, no: { emoji: '❌', text: 'не вклався — слово викладача', color: 'red' } }
+export const MET = { yes: { emoji: '✅', text: 'вклався — слово викладача', color: 'green' }, grace: { emoji: '🤝', text: 'вклався з поблажкою — слово викладача', color: 'green' },
+                     no: { emoji: '❌', text: 'не вклався — слово викладача', color: 'red' } }
 export const VERDICT = { done: { emoji: '🟢', text: 'зроблено', color: 'green' }, partial: { emoji: '🟡', text: 'частково', color: 'yellow' }, none: { emoji: '🔴', text: 'нема', color: 'red' } }
 export const KIND = { game: { emoji: '🎮', text: 'гра на клітинках', color: 'green' }, tasks: { emoji: '📝', text: 'вправи без гри', color: 'yellow' }, other: { emoji: '🧩', text: 'інший код', color: 'orange' }, none: { emoji: '∅', text: 'коду нема', color: 'red' } }
 const TONE = { ok: 'green', bad: 'red', meh: 'yellow' }
@@ -35,6 +37,7 @@ const profile = () => [
   col('att', P, 'number', 'Був на парах', '🎓', (r) => r.attendance?.seen, { fam: 'att', sub: (r) => (r.attendance?.total ? `з ${r.attendance.total}` : ''),
       hint: (r) => r.attendance && `разом ${r.attendance.minutes} хв` }),
   col('attlast', P, 'date', 'Остання пара, де був', '🎓ⁿ', (r) => r.attendance?.last, { fam: 'att' }),
+  col('graces', P, 'number', 'Поблажок використано', '🤝', (r) => Object.values(r.labs).filter((c) => c.mark?.grace).length || null),
 ]
 const repo = () => [
   col('gh', R, 'link', 'Посилання на GitHub', '🐙', (r) => r.github, { fam: 'repo' }),
@@ -48,10 +51,16 @@ function lab(n) {
   const g = labName(n)
   const c = (r) => r.labs[n]
   const m = (r) => c(r).mark || {}
-  const L = (key, type, name, short, get, more = {}) => ({ ...col(`lab${n}${key}`, g, type, name, short, get, more), cat: 'Лаба', lab: n, title: `${g}: ${name.toLowerCase()}` })
+  const k = (r) => c(r).case || {}  // the verdict of the deadline (T340, core/due_case.py)
+  const L =(key, type, name, short, get, more = {}) => ({ ...col(`lab${n}${key}`, g, type, name, short, get, more), cat: 'Лаба', lab: n, title: `${g}: ${name.toLowerCase()}` })
   return [
     L('', 'lab', 'Стан', '📅', (r) => c(r).state, { fam: 'state', options: LAB, sub: (r) => (m(r).until ? { pre: '→', at: m(r).until } : c(r).facts.last && { at: c(r).facts.last }) }),
     L('.due', 'date', 'Дедлайн студента', '⏰', (r) => c(r).due, { fam: 'state' }),
+    L('.answer', 'enum', 'Вклався в дедлайн', '🏁', (r) => k(r).answer, { fam: 'verdict', options: ANSWER, sub: (r) => CASE[k(r).code]?.text, hint: (r) => CASE[k(r).code]?.why }),
+    L('.case', 'enum', 'Випадок', '🗂', (r) => k(r).code, { fam: 'verdict', options: CASE, sub: (r) => lateText(k(r).late), hint: (r) => CASE[k(r).code]?.why }),
+    L('.late', 'number', 'Запізнення, год', '⌛', (r) => k(r).late, { fam: 'verdict', sub: (r) => (k(r).late >= 48 ? lateText(k(r).late) : '') }),
+    L('.says', 'enum', 'Каже сам (опитування)', '🗣', (r) => k(r).says, { fam: 'verdict', options: SAYS, hint: (r) => k(r).said_at && `голос ${fmtWhen(k(r).said_at)}` }),
+    L('.flags', 'multi', 'На що глянути', '🚩', (r) => k(r).flags, { fam: 'verdict', options: FLAG }),
     L('.before', 'number', 'Комітів до дедлайну', '⎇←', (r) => c(r).facts.before, { fam: 'labc' }),
     L('.after', 'number', 'Комітів після дедлайну', '⎇→', (r) => c(r).facts.after, { fam: 'labc' }),
     L('.last', 'date', 'Останній коміт до дедлайну', '🕒', (r) => c(r).facts.last, { fam: 'labc' }),
@@ -61,7 +70,8 @@ function lab(n) {
     L('.asked', 'bool', 'Просив подовжити', '🙋', (r) => m(r).asked, { fam: 'ext', edit: 'mark', field: 'asked', sub: (r) => m(r).asked_for }),
     L('.asked_for', 'text', 'На скільки просив', '🙋…', (r) => m(r).asked_for, { fam: 'ext', edit: 'mark', field: 'asked_for' }),
     L('.ext', 'enum', 'Подовження', '⏳', (r) => (m(r).until ? 'until' : m(r).open ? 'open' : null), { fam: 'ext', options: EXT, sub: (r) => m(r).until && { at: m(r).until } }),
-    L('.met', 'enum', 'Слово викладача', '✍', (r) => (m(r).met === true ? 'yes' : m(r).met === false ? 'no' : null), { fam: 'ext', options: MET }),
+    L('.met', 'enum', 'Слово викладача', '✍', (r) => (m(r).met === true ? (m(r).grace ? 'grace' : 'yes') : m(r).met === false ? 'no' : null),
+      { fam: 'ext', options: MET, edit: 'mark', patch: (v) => ({ met: v ? v !== 'no' : null, grace: v === 'grace' }) }),
     L('.note', 'text', 'Нотатка', '📝', (r) => m(r).note, { edit: 'mark', field: 'note' }),
   ]
 }
@@ -73,7 +83,7 @@ const claims = (p) => Object.fromEntries(p.options.map((o, i) => [String(i), FAC
 const doubtful = (p, checks) => (r) => (r.polls[p.id]?.ids || []).map(String).filter((id) => checks[id] && !checks[id](r))
 function polls(list) {
   return list.flatMap((p) => {
-    const checks = claims(p)
+    const checks = p.says_lab ? {} : claims(p)  // a lab's status poll: its ✅ is «вклався», the verdict's flags weigh it (T340)
     const more = { tags: p.tags, poll: p, fam: `poll.${p.id}` }
     const poll = col(`poll.${p.id}`, 'Опитування', 'poll', p.title, p.title, (r) => r.polls[p.id]?.ids.map(String), { ...more,
       options: Object.fromEntries(p.options.map((o, i) => [String(i), { emoji: o.emoji || String(i + 1), text: o.text }])),

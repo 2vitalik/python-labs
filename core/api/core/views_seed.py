@@ -10,6 +10,12 @@ GONE = "table.seeds_gone"
 # the columns and the «для чого» of a lab's view; a site adds its own by the lab's number, 0 — any other lab
 LAB_COLS = {0: "reg,lab,lab.review,lab.required,lab.kind,lab.before,lab.after,lab.last,lab.asked,lab.ext,lab.met,lab.note,fields:lab,polls:lab"}
 LAB_ABOUT = {0: "Дедлайн лаби: стан кожного студента, звіт агента, подовження й відповіді опитувань."}
+# the verdict of a deadline (T340): who made it, who did not, and the borderline ones by their case
+DUE_COLS = ("lab.answer,lab.case,lab.late,lab.says,lab.flags,lab.met,lab.note,lab.due,lab.asked,lab.ext,lab.review,lab.required,"
+            "lab.before,lab.after,lab.last,reg,tg")
+DUE_ABOUT = ("Вклався чи ні: чіткі «так», чіткі «ні» й пограничні — групами за випадком. Сайт зводить звіт агента, коміти, подовження "
+             "й опитування; останнє слово — колонка ✍.")
+DUE_PINNED = 2  # the deadlines on the tabs from the start; the rest wait in the library
 
 
 def course_labs() -> list[int]:
@@ -24,7 +30,9 @@ def seeds(labs: list[int]) -> list[dict]:
              "about": "Лійка реєстрації: хто зайшов на сайт, привʼязав бота, дав GitHub і запушив перший коміт.",
              "query": {"cols": "reg,fio,seen,last,bot,tg,gh,repo,commits,lastc,polls:start", "group": "group"}},
             *({"slug": f"lab{n}", "title": f"Лаба {n}", "emoji": "📅", "about": LAB_ABOUT.get(n, LAB_ABOUT[0]),
-               "query": {"lab": str(n), "cols": LAB_COLS.get(n, LAB_COLS[0]), "group": "group"}} for n in labs)]
+               "query": {"lab": str(n), "cols": LAB_COLS.get(n, LAB_COLS[0]), "group": "group"}} for n in labs),
+            *({"slug": f"due{n}", "title": f"Дедлайн {n}", "emoji": "🏁", "about": DUE_ABOUT, "folder": "Дедлайни", "pinned": n <= DUE_PINNED,
+               "query": {"lab": str(n), "cols": DUE_COLS, "group": "lab.answer,lab.case"}} for n in labs)]
 
 
 async def ensure_seeds():

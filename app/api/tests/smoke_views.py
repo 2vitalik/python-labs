@@ -22,7 +22,7 @@ from core.config import settings  # noqa: E402
 ADMIN, VASYA = "admin@nure.ua", "vasya@nure.ua"
 settings.admin_emails, settings.tg_bot_token, settings.agent_tokens, settings.labs = ADMIN, "", "claude:tok", 5
 AGENT = {"Authorization": "Bearer tok"}
-SEEDS = ["all", "start", "lab1", "lab2", "lab3", "lab4", "lab5"]
+SEEDS = ["all", "start", "lab1", "lab2", "lab3", "lab4", "lab5", "due1", "due2", "due3", "due4", "due5"]
 now = datetime.now(timezone.utc)
 results = []
 
@@ -67,7 +67,7 @@ with TestClient(main.app) as c:
           and v1[0]["at"].replace(tzinfo=timezone.utc) - old["created_at"].replace(tzinfo=timezone.utc) < timedelta(seconds=1), v1)
     c.get("/api/table")
     c.get("/api/views")
-    check("read again: nothing doubled", db.views.count_documents({}) == 8 and db.view_versions.count_documents({}) == 8,
+    check("read again: nothing doubled", db.views.count_documents({}) == len(SEEDS) + 1 and db.view_versions.count_documents({}) == len(SEEDS) + 1,
           (db.views.count_documents({}), db.view_versions.count_documents({})))
 
     r = c.post("/api/views/start/archive", json={"on": True}).json()

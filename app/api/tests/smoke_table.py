@@ -20,7 +20,7 @@ ADMIN, VASYA, PETYA, TEST = "admin@nure.ua", "vasya@nure.ua", "petya@nure.ua", "
 settings.admin_emails, settings.tg_bot_token, settings.agent_tokens = ADMIN, "", "claude:tok"
 AGENT = {"Authorization": "Bearer tok"}
 REPO = "https://github.com/vasya/game"
-SEEDS = ["all", "start", "lab1", "lab2", "lab3", "lab4", "lab5"]  # core/views_seed.py
+SEEDS = ["all", "start", "lab1", "lab2", "lab3", "lab4", "lab5", "due1", "due2", "due3", "due4", "due5"]  # core/views_seed.py
 now = datetime.now(timezone.utc)
 results = []
 
