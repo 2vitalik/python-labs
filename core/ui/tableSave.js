@@ -8,10 +8,11 @@ import { createView, loadVersions, saveView, store } from './viewStore.js'
 // a look changed and not saved waits in the browser under its view, whatever way the page was left
 export function viewActs({ route, router, slug, view, peek, state, dirty }) {
   const bare = (s) => router.replace({ query: { view: s } })
-  watch(() => [slug.value, dirty.value, JSON.stringify(toSaved(state.value))], ([s, changed]) => {
+  // the sources apart: a getter's fresh array would always read as a change, and writing a draft would call this again
+  watch([slug, dirty, () => JSON.stringify(toSaved(state.value))], ([s, changed, look]) => {
     if (!view.value || route.query.v) return  // nothing read yet · a past version looked at is no draft
-    if (changed) setDraft(s, toSaved(state.value))
-    else if (drafts[s]) dropDraft(s)
+    if (!changed) return drafts[s] && dropDraft(s)
+    if (JSON.stringify(drafts[s]) !== look) setDraft(s, JSON.parse(look))
   })
   watch(() => route.query.v, (v) => v && !store.versions && loadVersions(), { immediate: true })
 
