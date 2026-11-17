@@ -1,5 +1,5 @@
 <script setup>
-import { nextTick, onBeforeUnmount, ref, watch } from 'vue'
+import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
 import GrowArea from './GrowArea.vue'
 
@@ -9,8 +9,11 @@ import GrowArea from './GrowArea.vue'
 // `save(value)` is awaited: the field stays till the fresh data is in — no flash of the old value — and an error stays by
 // it; once saved, the value flashes green. `multi` — a paragraph that wraps (a card's text is one paragraph: Enter saves
 // it too); `block` — a block of its own at rest. Slots: default — the value as it reads; `empty` — the owner's way in
-// while there is none. v-model:open — the page hides what would cover the field (a card under the mouse)
-const p = defineProps({ value: { type: String, default: '' }, save: Function, can: Boolean, multi: Boolean, block: Boolean, required: Boolean, placeholder: String })
+// while there is none. v-model:open — the page hides what would cover the field (a card under the mouse).
+// `fresh` (T310) — a new value typed where it will stand: the field is born open, and closed with nothing saved it says
+// `drop` — the page takes the unborn thing away
+const p = defineProps({ value: { type: String, default: '' }, save: Function, can: Boolean, multi: Boolean, block: Boolean, required: Boolean, placeholder: String, fresh: Boolean })
+const emit = defineEmits(['drop'])
 const open = defineModel('open', { type: Boolean, default: false })
 const draft = ref('')
 const busy = ref(false)
@@ -32,11 +35,7 @@ function caretAt(e) {
 }
 // words selected here with the mouse are to be copied, not edited
 const selecting = (e) => e.type === 'click' && !getSelection().isCollapsed && e.currentTarget.contains(getSelection().anchorNode)
-async function start(e) {
-  if (!p.can || e.target.closest('a')) return
-  e.stopPropagation()  // a row that opens a panel on click must not open it too
-  if (open.value || selecting(e)) return
-  const at = e.clientX ? caretAt(e) : p.value.length
+async function edit(at = p.value.length) {
   draft.value = p.value
   error.value = ''
   open.value = true
@@ -44,9 +43,18 @@ async function start(e) {
   input()?.focus()
   input()?.setSelectionRange(at, at)
 }
-function close() {
+function start(e) {
+  if (!p.can || e.target.closest('a')) return
+  e.stopPropagation()  // a row that opens a panel on click must not open it too
+  if (open.value || selecting(e)) return
+  edit(e.clientX ? caretAt(e) : p.value.length)
+}
+onMounted(() => p.fresh && p.can && edit())
+defineExpose({ edit })
+function close(kept = false) {
   open.value = false
   error.value = ''
+  if (p.fresh && !kept) emit('drop')
 }
 async function commit() {
   if (busy.value || !open.value) return
@@ -57,7 +65,7 @@ async function commit() {
   error.value = ''
   try {
     await p.save(v)
-    close()
+    close(true)
     saved.value = true
     setTimeout(() => (saved.value = false), 1400)
   } catch (err) {
@@ -91,7 +99,7 @@ function key(e) {
         <input ref="field" v-model="draft" size="1" class="inl-f" :class="{ busy, bad: error }" :readonly="busy" :placeholder :aria-label="placeholder"
                @keydown="key" @blur="commit()">
       </span>
-      <span v-if="error" class="inl-err">{{ error }} · <a href="#" @mousedown.prevent @click.prevent.stop="close">скасувати</a></span>
+      <span v-if="error" class="inl-err">{{ error }} · <a href="#" @mousedown.prevent @click.prevent.stop="close()">скасувати</a></span>
     </template>
   </component>
 </template>
@@ -109,7 +117,7 @@ function key(e) {
 .inl-f.bad { box-shadow: 0 0 0 1px var(--bs-danger), 0 0 0 .22rem color-mix(in srgb, var(--bs-danger) 18%, transparent); }
 .inl-ph { color: var(--bs-secondary-color); font-style: italic; }
 /* an error hangs under the field, over what follows: nothing moves */
-.inl-err { position: absolute; z-index: 35; top: calc(100% + .35rem); left: -.2rem; max-width: min(22rem, 90vw); padding: .15rem .45rem; border-radius: .3rem;
+.inl-err { position: absolute; z-index: 35; top: calc(100% + .35rem); left: -.2rem; width: max-content; max-width: min(22rem, 90vw); padding: .15rem .45rem; border-radius: .3rem;
            background: var(--bs-danger-bg-subtle); color: var(--bs-danger-text-emphasis); font-size: .75rem; font-style: normal; font-weight: 400;
            letter-spacing: 0; text-transform: none; white-space: normal; box-shadow: 0 .1rem .4rem rgb(0 0 0 / .12); }
 </style>
