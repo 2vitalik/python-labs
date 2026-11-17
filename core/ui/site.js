@@ -18,6 +18,7 @@ export const site = {
     asStudent: null,  // the same page for a student — a slice of it: { title, crumbs: [[to, text], …] } — its name and where it hangs; null = the admin's only
   },
   table: {
-    cols: [],  // /table (T240), the site's own columns: { key, type, title, short, get: (row) => …, link?: (row) => url }; `group` — the band above, default students.page
+    cols: [],  // /table (T240), the site's own columns: { key, type, title, short, get: (row) => …, link?: (row) => url }; `group` — the band above, default students.page; `fam` — like columns share a line of the catalog
+    emojiPanel: null,  // a picker for a view's icon: a component with props `icon`, `hint` and the event `pick`; null — a small palette
   },
 }
