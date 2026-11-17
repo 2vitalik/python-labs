@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T332** · тікетів: 331 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T340** · тікетів: 339 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -322,8 +322,8 @@
 | games | [T312](games/.t/T312-Q--inline-tools-choices.md) | ❓ | inline-tools-choices | Редагування без форм — вибори | 🔴 ⬜ |
 | games | [T313](games/.t/T313-Q--emoji-picker-choices.md) | ❓ | emoji-picker-choices | Вибори після віконця значків: значки вікон, шрифт емодзі, російські слова, інші місця | 🔴 ⬜ |
 | ods | [T314](ods/.t/T314-C--google-oauth-shared.md) | 🔆 | google-oauth-shared | Google OAuth: один проєкт на всі сайти | 🟢 ⬜ |
-| platform | [T315](platform/.t/T315-P--table-views-v2-design.md) | 💡 | table-views-v2-design | Звід v2: види як у Coda — налаштування, версії, папки, еталони — дизайн | 🟢 ⬜ |
-| platform | [T316](platform/.t/T316--table-v2/plan.md) | ⚙️ | table-v2 | Звід v2: рядок налаштувань, багаторівневі групи й сортування, версії й бібліотека видів — план і звіт — план | 🟢 ⬜ |
+| platform | [T315](platform/.t/T315-P--table-views-v2-design.md) | 💡 | table-views-v2-design | Звід v2: види як у Coda — налаштування, версії, папки, еталони — дизайн | 🟢 🟩 |
+| platform | [T316](platform/.t/T316--table-v2/plan.md) | ⚙️ | table-v2 | Звід v2: рядок налаштувань, багаторівневі групи й сортування, версії й бібліотека видів — план і звіт — план | 🟢 🟩 |
 | platform | [T317](platform/.t/T317-Q--table-v2-choices.md) | ❓ | table-v2-choices | Звід v2 — вибори й що розповісти про дедлайни | 🔴 ⬜ |
 | platform | [T318](platform/.t/T318--game-desc-v12/plan.md) | ⚙️ | game-desc-v12 | Опис гри v12 — відео в «Супроводі», простора панель каталогу, шлях до «Тасків», переходи без назви — план і звіт | 🟢 ⬜ |
 | games | [T319](games/.t/T319-P--base-and-more.md) | 💡 | base-and-more | Основа й більше: набори можливостей опису гри, кістяк каталогу й картки за запитом | 🟢 ⬜ |
@@ -333,9 +333,17 @@
 | games | [T323](games/.t/T323-P--game-desc-v12-design.md) | 💡 | game-desc-v12-design | Опис гри v12 — рішення: відео без карток у «Супроводі», каталог у вікні над грою, переходи без назви | 🟢 ⬜ |
 | games | [T324](games/.t/T324-Q--game-desc-v12-choices.md) | ❓ | game-desc-v12-choices | Опис гри v12 — вибори | 🔴 ⬜ |
 | reports | [T325](reports/.t/T325-C--video-archive.md) | 🔆 | video-archive | Як зберегти відео студентів, щоб не зникли — подумати й нагадати | 🟢 ⬜ |
-| defense | [T326](defense/.t/T326--defense-page/plan.md) | ⚙️ | defense-page | Сторінка захисту: час, враження, зауваження з тегами, відповіді студента, перевірка — план | 🟢 ⬜ |
-| defense | [T327](defense/.t/T327-P--defense-page-design.md) | 💡 | defense-page-design | Сторінка захисту — що на ній і як нею користуватись | 🟢 ⬜ |
-| remarks | [T328](remarks/.t/T328-P--remarks-design.md) | 💡 | remarks-design | Зауваження: теги, вид, життєвий цикл, ШІ-розкладання, доступ агента | 🟢 ⬜ |
+| defense | [T326](defense/.t/T326--defense-page/plan.md) | ⚙️ | defense-page | Сторінка захисту: час, враження, зауваження з тегами, відповіді студента, перевірка — план | 🟢 🟩 |
+| defense | [T327](defense/.t/T327-P--defense-page-design.md) | 💡 | defense-page-design | Сторінка захисту — що на ній і як нею користуватись | 🟢 🟩 |
+| remarks | [T328](remarks/.t/T328-P--remarks-design.md) | 💡 | remarks-design | Зауваження: теги, вид, життєвий цикл, ШІ-розкладання, доступ агента | 🟢 🟩 |
 | grading | [T329](grading/.t/T329-P--defense-grading.md) | 💡 | defense-grading | Як оцінювати захист: монетки за доробку, запобіжники, допуск і спроби | 🟢 ⬜ |
 | defense | [T330](defense/.t/T330-B--defense-more.md) | 🧠 | defense-more | Захисти: що ще може знадобитись викладачеві й студентам | 🟢 ⬜ |
-| defense | [T331](defense/.t/T331-Q--defense-choices.md) | ❓ | defense-choices | Вибори: сторінка захисту, зауваження, оцінювання захистів | 🟢 ⬜ |
+| defense | [T331](defense/.t/T331-Q--defense-choices.md) | ❓ | defense-choices | Вибори: сторінка захисту, зауваження, оцінювання захистів | 🔴 ⬜ |
+| lessons | [T332](lessons/.t/T332--lessons-day/plan.md) | ⚙️ | lessons-day | Заняття-день: частини, захисти, кліки по посиланнях, відвідування смужками, збирач із Zoom — план | 🟢 ⬜ |
+| lessons | [T333](lessons/.t/T333-P--lessons-day-design.md) | 💡 | lessons-day-design | Заняття-день: назви, частини, приватні захисти, що бачить студент | 🟢 ⬜ |
+| lessons | [T334](lessons/.t/T334-P--after-class-pipeline.md) | 💡 | after-class-pipeline | Після пари без рук: збирач, відео, обробка, нагадування | 🟢 ⬜ |
+| lessons | [T335](lessons/.t/T335-C--lesson-video-publish.md) | 🔆 | lesson-video-publish | Відео пари в Telegram і на Google Drive: що можна автоматизувати | 🟢 ⬜ |
+| lessons | [T336](lessons/.t/T336-C--zoom-no-admin.md) | 🔆 | zoom-no-admin | Zoom без адміністратора: відвідування, автотранскрипт, лист адміністраторам | 🟢 ⬜ |
+| lessons | [T337](lessons/.t/T337-C--transcript-automation.md) | 🔆 | transcript-automation | Джерела транскриптів: що забирається само, що варто додати | 🟢 ⬜ |
+| lessons | [T338](lessons/.t/T338-Q--lessons-day-choices.md) | ❓ | lessons-day-choices | Заняття-день: вибори | 🟢 ⬜ |
+| defense | [T339](defense/.t/T339-C--defense-research.md) | 🔆 | defense-research | Захист і зауваження: що кажуть дослідження й практика — шкали, категорії, стимули | 🟢 🟩 |
