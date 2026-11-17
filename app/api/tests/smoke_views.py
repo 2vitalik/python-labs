@@ -54,9 +54,10 @@ with TestClient(main.app) as c:
           and a["query"] == {"cols": "fio,seen,bot,tg,gh,repo,commits,lab1,lab2,lab3,lab4,lab5,fields:", "group": "group"} and a["about"].startswith("Усі студенти"), a)
     check("«Лаба 2»: lab 2, the site's columns for it (table_seed.py), its «для чого»", l2["title"] == "Лаба 2" and l2["emoji"] == "📅" and l2["query"]["lab"] == "2"
           and l2["query"]["cols"].startswith("lab,lab.review") and "gfill" in l2["query"]["cols"] and l2["about"].startswith("Дедлайн 2"), l2)
-    l1, l4 = views["lab1"], views["lab4"]
-    check("«Лаба 1» asks for the registration, a later lab — for the game's table", l1["query"]["cols"].startswith("reg,seen,bot,gh,repo,lab,")
-          and "gents" in l4["query"]["cols"] and l4["about"].startswith("Дедлайн лаби"), (l1["query"], l4["query"]))
+    l1, l3, l5 = views["lab1"], views["lab3"], views["lab5"]
+    check("«Лаба 1» asks for the registration, lab 3 — for a demo, a later lab — for the game's table", l1["query"]["cols"].startswith("reg,seen,bot,gh,repo,lab,")
+          and "demo3" in l3["query"]["cols"] and "gents" in l5["query"]["cols"] and "demo" not in l5["query"]["cols"]
+          and l5["about"].startswith("Дедлайн лаби"), (l1["query"], l3["query"], l5["query"]))
     check("api: every field, dates as ISO or null", {"about", "folder", "tags", "archived_at", "parent", "parent_version", "updated_at", "opens", "opened_at",
                                                      "uses", "used_at", "seconds", "order", "created_at"} <= set(a) and a["archived_at"] is None and "id" not in a, a)
     old = db.views.find_one({"slug": "old"})
