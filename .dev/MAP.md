@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T318** · тікетів: 317 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T326** · тікетів: 325 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -324,4 +324,12 @@
 | ods | [T314](ods/.t/T314-C--google-oauth-shared.md) | 🔆 | google-oauth-shared | Google OAuth: один проєкт на всі сайти | 🟢 ⬜ |
 | platform | [T315](platform/.t/T315-P--table-views-v2-design.md) | 💡 | table-views-v2-design | Звід v2: види як у Coda — налаштування, версії, папки, еталони — дизайн | 🟢 ⬜ |
 | platform | [T316](platform/.t/T316--table-v2/plan.md) | ⚙️ | table-v2 | Звід v2: рядок налаштувань, багаторівневі групи й сортування, версії й бібліотека видів — план і звіт — план | 🟢 ⬜ |
-| platform | [T317](platform/.t/T317-Q--table-v2-choices.md) | ❓ | table-v2-choices | Звід v2 — вибори й що розповісти про дедлайни | 🟢 ⬜ |
+| platform | [T317](platform/.t/T317-Q--table-v2-choices.md) | ❓ | table-v2-choices | Звід v2 — вибори й що розповісти про дедлайни | 🔴 ⬜ |
+| platform | [T318](platform/.t/T318--game-desc-v12/plan.md) | ⚙️ | game-desc-v12 | Опис гри v12 — відео в «Супроводі», простора панель каталогу, шлях до «Тасків», переходи без назви — план і звіт | 🟢 ⬜ |
+| games | [T319](games/.t/T319-P--base-and-more.md) | 💡 | base-and-more | Основа й більше: набори можливостей опису гри, кістяк каталогу й картки за запитом | 🟢 ⬜ |
+| tasks | [T320](tasks/.t/T320-C--catalog-core.md) | 🔆 | catalog-core | Кістяк каталогу: які картки в основі й чому | 🟢 ⬜ |
+| platform | [T321](platform/.t/T321--base-and-more/plan.md) | ⚙️ | base-and-more | Основа й більше: набори на «Грі», кістяк і запити на «Тасках» — план | 🟢 ⬜ |
+| games | [T322](games/.t/T322-Q--base-and-more-choices.md) | ❓ | base-and-more-choices | Основа й більше — вибори | 🟢 ⬜ |
+| games | [T323](games/.t/T323-P--game-desc-v12-design.md) | 💡 | game-desc-v12-design | Опис гри v12 — рішення: відео без карток у «Супроводі», каталог у вікні над грою, переходи без назви | 🟢 ⬜ |
+| games | [T324](games/.t/T324-Q--game-desc-v12-choices.md) | ❓ | game-desc-v12-choices | Опис гри v12 — вибори | 🔴 ⬜ |
+| reports | [T325](reports/.t/T325-C--video-archive.md) | 🔆 | video-archive | Як зберегти відео студентів, щоб не зникли — подумати й нагадати | 🟢 ⬜ |
