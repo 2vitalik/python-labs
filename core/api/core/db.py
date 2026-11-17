@@ -11,6 +11,7 @@ from core.models.field import Field, FieldValue
 from core.models.guide import Guide
 from core.models.history import Change
 from core.models.lesson import Lesson
+from core.models.lesson_click import LessonClick
 from core.models.lesson_file import LessonFile
 from core.models.message import TgMessage
 from core.models.note import Note
@@ -24,7 +25,7 @@ from core.models.view import View, ViewVersion
 from core.models.vote import TgChat, Vote
 from core.models.week import Week
 
-MODELS = [User, Change, Route, Activity, Guide, TgMessage, Note, Event, Error, PollTemplate, Poll, PollSend, Vote, TgChat, Week, Lesson, LessonFile, Attendance,
+MODELS = [User, Change, Route, Activity, Guide, TgMessage, Note, Event, Error, PollTemplate, Poll, PollSend, Vote, TgChat, Week, Lesson, LessonFile, LessonClick, Attendance,
           Deadline, LabMark, Repo, Review, Field, FieldValue, View, ViewVersion, Pref]
 mongo = AsyncMongoClient(settings.mongo_uri)  # connects lazily, so it is safe to build at import
 
