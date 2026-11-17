@@ -70,8 +70,9 @@
 - `fix: «Можливості» stay put as the page changes under them`
 - `feat(core): a light hint under a mouse that stopped`
 - `feat: «Можливості» as a map of the page, «Усе / Нічого», signs`
+- `refactor: the page map of «Можливості» is a file of its own`
 
 ## Файли
 
-- Сторінка гри: `features.js` (`place` замість `group`, `BASE` з `place`), `edFeatures.js` (`turnOn` прибрано), `ed.js`, `FeaturesPanel.vue`, `FeatureCheck.vue` (був `FeatureRow.vue`), `MoreRow.vue`, `GameEditor.vue`, `EntityStats.vue`, `LevelCard.vue`.
+- Сторінка гри: `features.js` (`place` замість `group`, `BASE` з `place`), `edFeatures.js` (`turnOn` прибрано), `ed.js`, `FeaturesPanel.vue`, `FeatureMap.vue` (новий), `FeatureCheck.vue` (був `FeatureRow.vue`), `MoreRow.vue`, `GameEditor.vue`, `EntityStats.vue`, `LevelCard.vue`.
 - Ядро: `core/ui/hint.js` (новий), `core/ui/style.css` (`.hint-box`), `core/ui/components/Icon.vue` (`boxcheck`, `box`, `lock`).
