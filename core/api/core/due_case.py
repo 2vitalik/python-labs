@@ -9,6 +9,7 @@ from core.models.deadline import Deadline, LabMark
 from core.models.poll import Poll
 from core.models.repo import Repo, Review
 from core.models.user import User
+from core.repos import EMPTY
 
 YES, NO, ASK, WAIT = "yes", "no", "ask", "wait"
 SLIP, NEAR, DAYS = 1, 24, 72  # hours late: a clock or a slow push · «трохи пізніше» · «на день-три»; beyond — «значно пізніше»
@@ -53,10 +54,10 @@ def decide(u: User, repo: Repo | None, mark: LabMark | None, review: Review | No
     at = sorted(utc(c.at) for c in repo.commits) if repo else []
     if review:  # «з подовженням» — work went on past the common deadline
         return by_review(repo, review, due, bool(mark and mark.until) and any(t <= due and (not base or t > utc(base.at)) for t in at))
+    if not at and repo and (repo.ok or repo.error == EMPTY):  # the pull calls an empty repository a failure too
+        return NO, "empty", None
     if not repo or not repo.ok:
         return ASK, "noaccess", None
-    if not at:
-        return NO, "empty", None
     if any(t <= due and (not since or t > since) for t in at):
         return WAIT, "unreviewed", None  # commits in the lab's window, nobody has read them yet
     after = [t for t in at if t > due]

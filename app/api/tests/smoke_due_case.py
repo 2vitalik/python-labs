@@ -42,6 +42,7 @@ CASES = {
     "norepo": dict(github=False, tg=False, says=3, want=("no", "norepo", None), flags={"nobot"}),
     "noaccess": dict(ok=False, want=("ask", "noaccess", None)),
     "empty": dict(commits=[], want=("no", "empty", None)),
+    "void": dict(ok=False, error="репозиторій порожній: жодного коміту", want=("no", "empty", None)),
     "unread": dict(commits=[-5], want=("wait", "unreviewed", None)),
     "after": dict(commits=[10.6], want=("ask", "after", 10.6)),
     "word": dict(commits=[90], mark={"met": True}, want=("yes", "word", None)),
@@ -64,7 +65,7 @@ def seed(i, nick, c):
                          "aliases": [], "tg_token": "", "tg_chat_id": tg, "tg_linked_at": c.get("tg_at", at(-200)) if tg else None,
                          "first_seen_at": at(-300) if c.get("seen", True) else None})
     if "commits" in c or "ok" in c:
-        db.repos.insert_one({"user": email, "url": "u", "ok": c.get("ok", True), "error": "", "branch": "main", "head": shas[-1] if shas else "", "pulled_at": NOW, "by": "",
+        db.repos.insert_one({"user": email, "url": "u", "ok": c.get("ok", True), "error": c.get("error", ""), "branch": "main", "head": shas[-1] if shas else "", "pulled_at": NOW, "by": "",
                              "commits": [{"sha": s, "at": at(h), "author": nick, "msg": "m", "files": 1, "add": 10, "rm": 0} for s, h in zip(shas, c["commits"])] if shas else []})
     if "review" in c:
         verdict, head_verdict, required, kind, head = (*c["review"], *("game", -1)[len(c["review"]) - 3:])
