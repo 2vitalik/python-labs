@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 
-import { facets, hasValue, picks } from '../table.js'
+import { facets, hasValue, picks, yes } from '../table.js'
 import { useTable } from '../tableCtx.js'
 
 // the line of totals under the headers (T315 §5) — the quick filter too. «✅ 84»: a click keeps those 84, again — those
@@ -9,14 +9,13 @@ import { useTable } from '../tableCtx.js'
 // Counted over the search and the other columns' filters (t.pool), so a column's own filter leaves its chips in place.
 // A sum and a count of filled cells are only read
 const t = useTable()
-const YES = ['bool', 'link']
 const answers = (spec) => (spec && spec !== '+' ? spec.split(',') : [])
 
 function chipsOf(c) {
   const rows = t.pool(c.id)
   const spec = t.state.filters[c.id] || ''
   const list = facets(c, rows)
-  if (YES.includes(c.type)) {
+  if (yes(c)) {
     const f = list[0]
     if (spec === '0') return [{ ...f, n: rows.length - f.n, on: true, not: true, title: `${c.title}: ні — ще клік знімає фільтр` }]
     return [{ ...f, on: spec === '1', title: `${c.title}: так — клік лишає цих, ще клік — тих, у кого нема` }]
@@ -30,7 +29,7 @@ function chipsOf(c) {
 const chips = computed(() => Object.fromEntries(t.shown.map((c) => [c.key, chipsOf(c)])))
 function flip(c, f) {
   const spec = t.state.filters[c.id] || ''
-  if (YES.includes(c.type)) return t.setFilter(c.id, spec === '' ? '1' : spec === '1' ? '0' : '')
+  if (yes(c)) return t.setFilter(c.id, spec === '' ? '1' : spec === '1' ? '0' : '')
   const on = answers(spec)
   t.setFilter(c.id, (on.includes(f.id) ? on.filter((x) => x !== f.id) : [...on, f.id]).join())
 }

@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref, watch } from 'vue'
 
-import { facets, hasValue, optionLabel, picks } from '../table.js'
+import { facets, hasValue, optionLabel, picks, yes as says } from '../table.js'
 import Icon from './Icon.vue'
 import TableDateCond from './TableDateCond.vue'
 
@@ -12,7 +12,7 @@ const props = defineProps({ col: { type: Object, required: true }, spec: { type:
 const emit = defineEmits(['set'])
 const set = (s) => emit('set', s)
 const flip = (s) => set(props.spec === s ? '' : s)
-const yes = computed(() => ['bool', 'link'].includes(props.col.type))
+const yes = computed(() => says(props.col))
 const empty = computed(() => props.rows.filter((r) => !hasValue(props.col.get(r))).length)
 const counts = computed(() => Object.fromEntries(facets(props.col, props.rows).map((f) => [f.id, f.n])))
 const chosen = computed(() => (props.spec && props.spec !== '+' ? props.spec.split(',') : []))

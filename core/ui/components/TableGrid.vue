@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref } from 'vue'
 
-import { groups } from '../table.js'
+import { groups } from '../tableOrder.js'
 import { useTable } from '../tableCtx.js'
 import Avatar from './Avatar.vue'
 import LabEdit from './LabEdit.vue'

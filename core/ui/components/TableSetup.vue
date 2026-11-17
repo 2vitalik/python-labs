@@ -1,7 +1,7 @@
 <script setup>
 import { computed, nextTick, ref, watch } from 'vue'
 
-import { filterText } from '../table.js'
+import { filterText } from '../tableFilter.js'
 import { useTable } from '../tableCtx.js'
 import { sortOf } from '../tableViews.js'
 import Icon from './Icon.vue'

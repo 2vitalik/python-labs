@@ -1,5 +1,5 @@
 import { plural } from './plural.js'
-import { filterText } from './table.js'
+import { filterText } from './tableFilter.js'
 import { canon, colOf, index, sortOf } from './tableViews.js'
 
 // a view in words, and what differs between two (T315 §7–§8): both read queries as tableViews.js canon() spells them

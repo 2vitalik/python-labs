@@ -1,7 +1,7 @@
 <script setup>
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 
-import { picks } from '../table.js'
+import { groupable } from '../table.js'
 import { useTable } from '../tableCtx.js'
 import { sortOf } from '../tableViews.js'
 import FilterControl from './FilterControl.vue'
@@ -20,7 +20,7 @@ const id = props.c.id
 const levels = computed(() => t.state.sort.map(sortOf))
 const mine = computed(() => levels.value.find((l) => l.id === id))
 const grouped = computed(() => t.state.group.includes(id))
-const groupable = props.c.key === 'group' || ['bool', 'link', 'date'].includes(props.c.type) || picks(props.c)
+const canGroup = groupable(props.c)
 
 function sort(desc) {
   if (mine.value?.desc === desc) t.set({ sort: t.state.sort.filter((s) => sortOf(s).id !== id) })  // the active way again — off
@@ -68,7 +68,7 @@ watch(() => t.state, place, { flush: 'post' })
           <Icon :name="desc ? 'down' : 'up'" /> Сортувати {{ desc ? 'за спаданням' : 'за зростанням' }}</button>
         <button v-if="!mine && levels.length" type="button" class="lvl" title="Лишити те сортування й додати це наступним рівнем" @click="t.sortBy(id, desc, true)">＋ рівнем</button>
       </div>
-      <button v-if="groupable" type="button" class="it" :class="{ on: grouped }" @click="group">
+      <button v-if="canGroup" type="button" class="it" :class="{ on: grouped }" @click="group">
         <Icon name="layers" /> Групувати за цим<Icon v-if="grouped" name="check" class="ms-auto" /></button>
       <div class="sec">
         <div class="cap"><Icon name="filter" /> Фільтр</div>

@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 
 import { moved, useDragSort } from '../dragSort.js'
-import { picks } from '../table.js'
+import { groupable } from '../table.js'
 import { useTable } from '../tableCtx.js'
 import ColPick from './ColPick.vue'
 import Icon from './Icon.vue'
@@ -16,7 +16,6 @@ const t = useTable()
 const adding = ref(false)
 const ids = () => t.groupCols.map((c) => c.id)
 const drag = useDragSort((from, to) => t.set({ group: moved(ids(), from.i, to.i) }))
-const fits = (c) => c.key === 'group' || ['bool', 'link', 'date'].includes(c.type) || picks(c)
 function add(col) {
   t.set({ group: [...ids(), col.id] })
   adding.value = false
@@ -30,7 +29,7 @@ function add(col) {
     </SetupRow>
     <div v-if="!t.groupCols.length" class="small text-secondary">Без груп</div>
     <button type="button" class="btn btn-sm btn-add py-0 mt-2" :class="{ active: adding }" :aria-expanded="adding" @click="adding = !adding"><Icon name="plus" /> рівень</button>
-    <Reveal :show="adding"><ColPick class="mt-2" :only="fits" :skip="ids()" @pick="add" /></Reveal>
+    <Reveal :show="adding"><ColPick class="mt-2" :only="groupable" :skip="ids()" @pick="add" /></Reveal>
   </div>
 </template>
 

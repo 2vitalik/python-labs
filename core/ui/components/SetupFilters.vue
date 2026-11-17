@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 
+import { yes } from '../table.js'
 import { useTable } from '../tableCtx.js'
 import ColPick from './ColPick.vue'
 import FilterControl from './FilterControl.vue'
@@ -13,7 +14,7 @@ import SetupName from './SetupName.vue'
 const t = useTable()
 const adding = ref(!t.filters.length)
 function add(col) {
-  t.setFilter(col.id, col.type === 'bool' || col.type === 'link' ? '1' : '+')
+  t.setFilter(col.id, yes(col) ? '1' : '+')
   adding.value = false
 }
 </script>
