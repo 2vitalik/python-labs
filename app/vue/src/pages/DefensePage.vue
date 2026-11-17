@@ -47,6 +47,13 @@ function changed(r) {
   }
 }
 const removed = (id) => (d.value.remarks = d.value.remarks.filter((r) => r.id !== id))
+// a model sorts the new lines a moment after they are added (remark_ai.py): the list is read again, the rest of the page stays
+async function added(rows) {
+  d.value.remarks.push(...rows)
+  if (!vocab.value.ai) return
+  for (const ms of [4000, 10000]) setTimeout(async () => { if (d.value) d.value.remarks = (await getDefense(d.value.id)).remarks }, ms)
+}
+const numberOf = (id) => d.value.remarks.findIndex((r) => r.id === id) + 1
 const coins = computed(() => {  // {coin: n} the remarks promise for the rework
   const sum = {}
   for (const r of d.value.remarks) if (r.coin) sum[r.coin] = (sum[r.coin] || 0) + r.amount
@@ -81,9 +88,9 @@ onMounted(async () => {
       </details>
 
       <h2 class="h6 mt-4 mb-1">Зауваження <span class="dhint">{{ d.remarks.length || '' }}</span></h2>
-      <RemarkRow v-for="(r, i) in d.remarks" :key="r.id" :r :n="i + 1" :start="d.started_at" can @changed="changed" @removed="removed" />
+      <RemarkRow v-for="(r, i) in d.remarks" :key="r.id" :r :n="i + 1" :start="d.started_at" :like="numberOf(r.hint?.like)" can @changed="changed" @removed="removed" />
       <p v-if="!d.remarks.length" class="dhint my-2">Поки жодного — перше зʼявиться тут, щойно додаси.</p>
-      <RemarkInput :id="d.id" class="mt-2" @added="(rows) => d.remarks.push(...rows)" />
+      <RemarkInput :id="d.id" class="mt-2" @added="added" />
       <div v-if="coins" class="dhint mt-1">Монетки за доробку, якщо прийняти все: {{ coins }} — у гаманець поки не входять</div>
 
       <h2 class="h6 mt-4 mb-1">Враження <span class="dhint">бачиш лише ти</span></h2>

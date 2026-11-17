@@ -1,0 +1,81 @@
+#!/usr/bin/env python3
+"""bin/defense — defenses and their remarks for an AI agent (T326, T328 §7): read, sort, give an opinion. Never decide.
+
+  bin/defense [-t dev] ls [nick]                               the defenses, the newest first
+  bin/defense [-t dev] show <id>                               one defense as Markdown: remarks, answers, links
+  bin/defense [-t dev] add <id> "рядок" ["рядок"…]             remarks as drafts — the teacher sends them
+  bin/defense [-t dev] tag <remark> [tag,tag] [--kind K] [--text "чистіше"] [--like <remark>]
+  bin/defense [-t dev] opinion <remark> ok|back "чому"         on the student's answer; the word stays the teacher's
+
+No -t = prod. Tags and kinds — `bin/defense words`. A tag or a kind the teacher set by hand stays as it is; a text is
+only ever a proposal the teacher takes with a click."""
+import argparse
+import sys
+
+from siteapi import SNAP, call
+
+STATES = {"draft": "чернетка", "open": "чекає відповіді", "answered": "є відповідь", "accepted": "прийнято", "returned": "повернуто"}
+
+
+def words(to: str) -> dict:
+    v = call(to, "GET", "/defenses/vocab")
+    return {k: {x["key"]: x["text"] for x in v[k]} for k in ("tags", "remark_kinds", "replies", "checks", "kinds", "results")}
+
+
+def show(to: str, id: str):
+    d, w = call(to, "GET", f"/defenses/{id}"), words(to)
+    s = d["student"]
+    print(f"# Захист · {s['name']} ({s['nick']}, {s['group']}) · лаби {d['labs']} · {w['kinds'][d['kind']]} · {(d['started_at'] or '')[:10]}"
+          f" · {w['results'].get(d['result'], 'результат не сказано')}\n\nрепозиторій: {s.get('github') or '—'}\n")
+    for title, rows in (("Зауваження", d["remarks"]), ("Не закрито з минулих захистів", d["debts"])):
+        if rows:
+            print(f"## {title}\n")
+        for n, r in enumerate(rows, 1):
+            tags = ", ".join(w["tags"][t] for t in r["tags"]) or "без тегу"
+            print(f"### {n} · {w['remark_kinds'][r['kind']]} · {tags} · {STATES[r['state']]} · `{r['id']}`\n\n{r['text']}\n")
+            if r["reply"]:
+                print(f"- студент: {w['replies'][r['reply']['state']]} · {r['reply'].get('link') or 'без посилання'}"
+                      f"{' (' + r['reply']['link_note'] + ')' if r['reply'].get('link_note') else ''} · {r['reply'].get('note', '')}")
+            for who, key in (("викладач", "check"), ("агент", "agent")):
+                if r[key]:
+                    print(f"- {who}: {w['checks'][r[key]['state']]} · {r[key].get('note', '')}")
+            print()
+
+
+def main():
+    p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    p.add_argument("-t", "--target", default=SNAP)
+    p.add_argument("cmd", choices=["ls", "show", "add", "tag", "opinion", "words"])
+    p.add_argument("args", nargs="*")
+    p.add_argument("--kind")
+    p.add_argument("--text")
+    p.add_argument("--like")
+    a = p.parse_args()
+    to = a.target
+    if a.cmd == "words":
+        for name, items in words(to).items():
+            print(f"{name}: " + " · ".join(f"{k} — {v}" for k, v in items.items()))
+    elif a.cmd == "ls":
+        for d in call(to, "GET", "/defenses" + (f"?nick={a.args[0]}" if a.args else "")):
+            c = d["counts"]
+            print(f"{d['id']}  {(d['started_at'] or '')[:16]}  {d['student']['nick']:<22} лаби {d['labs']}  {d['result'] or '—':<7}"
+                  f" прийнято {c['accepted']}/{c['all']}, чекають перевірки {c['answered']}")
+    elif a.cmd == "show" and len(a.args) == 1:
+        show(to, a.args[0])
+    elif a.cmd == "add" and len(a.args) > 1:
+        for r in call(to, "POST", f"/defenses/{a.args[0]}/remarks", {"text": "\n".join(a.args[1:])}):
+            print(f"{r['id']}  {r['kind']}  {r['tags']}  {r['text']}")
+    elif a.cmd == "tag" and a.args:
+        patch = {"tags": a.args[1].split(",")} if len(a.args) > 1 else {}
+        patch |= {k: v for k, v in (("kind", a.kind), ("text", a.text), ("like", a.like)) if v}
+        r = call(to, "PUT", f"/remarks/{a.args[0]}", patch)
+        print(f"{r['id']}  {r['kind']}  {r['tags']}  {r['hint'] or ''}")
+    elif a.cmd == "opinion" and len(a.args) >= 2 and a.args[1] in ("ok", "back"):
+        r = call(to, "PUT", f"/remarks/{a.args[0]}/check", {"state": "accepted" if a.args[1] == "ok" else "returned", "note": " ".join(a.args[2:])})
+        print(f"{r['id']}  думка: {r['agent']['state']} · {r['agent'].get('note', '')}")
+    else:
+        sys.exit(__doc__)
+
+
+if __name__ == "__main__":
+    main()

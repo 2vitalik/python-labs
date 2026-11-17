@@ -155,6 +155,21 @@ with TestClient(main.app) as c:
     c.post(f"{D}/{d2['id']}/remarks", json={"text": "чернетка"})
     check("a defense not sent yet goes away with its drafts", c.delete(f"{D}/{d2['id']}").status_code == 204 and c.get(f"{D}/{d2['id']}").status_code == 404
           and mongo[DB].remarks.count_documents({}) == 5)
+    import remark_ai  # noqa: E402
+
+    async def fake(model, system, user, schema):
+        fake.asked = user
+        return {"remarks": [{"n": 1, "tags": ["naming", "style", "dup"], "kind": "debt", "text": "Назви змінні за змістом", "like": 0},
+                            {"n": 2, "tags": ["dup"], "kind": "better", "text": "те саме про назви", "like": 1}]}, {"model": model}
+    check("no key — no model: the words say so", c.get(f"{D}/vocab").json()["ai"] is False)
+    remark_ai.ask, settings.ai_remarks, settings.anthropic_api_key = fake, "on", "key"
+    d3 = c.post(D, json={"nick": "stud"}).json()
+    c.post(f"{D}/{d3['id']}/remarks", json={"text": "ну оце назви змінних якісь не такі\nте саме про назви"})
+    got = c.get(f"{D}/{d3['id']}").json()["remarks"]
+    check("a model: tags (two at most) and kind land, the text is only a proposal, «the same as» names a remark",
+          got[0]["tags"] == ["naming", "style"] and got[0]["kind"] == "debt" and got[0]["text"].startswith("ну оце")
+          and got[0]["hint"] == {"text": "Назви змінні за змістом", "by": "model@agent"} and got[1]["hint"] == {"like": got[0]["id"], "by": "model@agent"}
+          and "(нове)" in fake.asked and c.get(f"{D}/vocab").json()["ai"] is True, got)
     hist = mongo[DB].history.count_documents({"coll": {"$in": ["defenses", "remarks"]}})
     check("every change is in the history", hist > 20, hist)
     events = [e["text"] for e in mongo[DB].events.find({"kind": "defense"})]

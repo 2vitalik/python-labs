@@ -13,7 +13,7 @@ import RemarkTags from './RemarkTags.vue'
 // a remark as the teacher works with it (T328): the text is edited where it reads, a click changes the kind and the tags,
 // a cleaner text proposed by a model or an agent waits under the line for one click; once it is sent — the student's
 // answer and the word on it
-const props = defineProps({ r: Object, n: Number, start: String, can: Boolean })
+const props = defineProps({ r: Object, n: Number, start: String, can: Boolean, like: Number })  // `like` — the number of a remark that says the same
 const emit = defineEmits(['changed', 'removed'])
 const error = ref('')
 const minute = computed(() => (props.start && new Date(props.r.at) >= new Date(props.start) ? mins(props.start, props.r.at) : null))
@@ -41,6 +41,7 @@ const drop = () => deleteRemark(props.r.id).then(() => emit('removed', props.r.i
         <span v-else-if="r.state !== 'draft'" class="state" :class="r.state">{{ STATES[r.state] }}</span>
         <span v-if="minute !== null" class="dim" title="Хвилина захисту — місце в записі розмови">{{ minute }}′</span>
         <span v-if="r.raw" class="dim" :title="`Як було надиктовано: ${r.raw}`">змінено</span>
+        <span v-if="can && like" class="dim" title="Пропозиція: ці два зауваження кажуть те саме — одне можна видалити">схоже на №{{ like }}</span>
       </div>
       <RemarkCheck v-if="r.state !== 'draft'" :r :can @changed="emit('changed', $event)" />
       <div v-if="error" class="text-danger small">{{ error }}</div>

@@ -9,6 +9,7 @@ from pydantic import BaseModel
 
 import defense_vocab as V
 import defenses
+import remark_ai
 import remark_guess
 from bot import defense_alerts
 from core.deps import admin_user, agent, editor_user
@@ -64,8 +65,9 @@ def clean(patch: dict) -> dict:
 
 
 @router.post("/defenses/{id}/remarks")
-async def post_remarks(id: PydanticObjectId, data: LinesIn, request: Request, user: User = Depends(editor_user)):
-    """A line — a remark, a draft till the defense is sent; its tags and kind are the first guess by its words."""
+async def post_remarks(id: PydanticObjectId, data: LinesIn, request: Request, tasks: BackgroundTasks, user: User = Depends(editor_user)):
+    """A line — a remark, a draft till the defense is sent; its tags and kind are the first guess by its words —
+    a model says them better a moment later, when there is one."""
     d = await Defense.get(id)
     rows = [t[:TEXT_MAX] for line in data.text.splitlines() if (t := MARKER.sub("", line).strip())]
     if not d:
@@ -73,13 +75,16 @@ async def post_remarks(id: PydanticObjectId, data: LinesIn, request: Request, us
     if not rows or len(rows) > LINES_MAX:
         raise HTTPException(422, "Напиши зауваження — кожен рядок стане окремим." if not rows else f"Забагато рядків за раз: до {LINES_MAX}.")
     last = await Remark.find(Remark.defense == d.id).sort("-order").first_or_none()
-    out = []
+    out, fresh = [], []
     for i, text in enumerate(rows, (last.order if last else 0) + 1):
         found = remark_guess.tags(text)
         r = Remark(defense=d.id, student=d.student, text=text, tags=found, kind=remark_guess.kind(text, found), order=i)
         await r.insert()
         await record_new(r, actor=user.email)
         out.append(defenses.remark(r, reader(request)))
+        fresh.append(r.id)
+    if not agent(request):  # an agent sorts its own lines
+        tasks.add_task(remark_ai.sort, d.id, fresh)
     return out
 
 

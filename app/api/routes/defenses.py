@@ -8,6 +8,7 @@ from pydantic import BaseModel
 
 import defense_vocab as V
 import defenses
+import remark_ai
 from bot import defense_alerts
 from core.config import settings
 from core.deps import admin_user, agent, editor_user
@@ -71,7 +72,7 @@ async def get(id: PydanticObjectId) -> Defense:
 
 @router.get("/vocab")
 async def get_vocab(user: User = Depends(editor_user)):
-    return V.vocab() | {"coins": settings.remark_coins, "labs": settings.labs}
+    return V.vocab() | {"coins": settings.remark_coins, "labs": settings.labs, "ai": remark_ai.on()}
 
 
 @router.get("")
