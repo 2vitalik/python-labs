@@ -13,7 +13,8 @@ from core.lesson_people import known, roster
 from core.models.lesson import Lesson, save
 from core.models.lesson_file import LessonFile, file_api
 from core.models.user import User
-from core.lesson_api import full, is_admin, lesson, reader, seen
+from core.lesson_api import lesson, reader, seen
+from core.lesson_view import full, is_admin
 
 router = APIRouter(prefix="/api/lessons/{slug}")
 MAX_BYTES = 15 * 2**20  # a Mongo document holds 16 MB
@@ -71,5 +72,5 @@ async def bundle(slug: str, user: User = Depends(editor_user)):
     """The lesson with its raw sources as text and the roster (Zoom names → students) — the folder bin/lesson pull writes."""
     l = await lesson(slug)
     sources = await LessonFile.find(LessonFile.lesson == slug, LessonFile.role == "source").sort("name").to_list()
-    return await full(l, True) | {"sources": [{"name": f.name, "text": f.data.decode("utf-8", "replace")} for f in sources],
+    return await full(l, user) | {"sources": [{"name": f.name, "text": f.data.decode("utf-8", "replace")} for f in sources],
                                   "roster": roster(await known())}

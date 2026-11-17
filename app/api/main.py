@@ -1,5 +1,6 @@
 from fastapi.staticfiles import StaticFiles
 
+import lesson_defenses  # noqa: F401 — defenses as parts of a lesson's day
 import table_seed  # noqa: F401 — the site's views of /table
 import uploads
 from core.app import create_app

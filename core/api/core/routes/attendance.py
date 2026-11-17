@@ -8,7 +8,8 @@ from pydantic import BaseModel
 from core import attendance as att
 from core import attendance_read as read
 from core.deps import admin_user, editor_user
-from core.lesson_api import is_admin, lesson, reader, seen
+from core.lesson_api import lesson, reader, seen
+from core.lesson_view import is_admin
 from core.models.attendance import Attendance
 from core.models.lesson import Lesson, Link, Meeting, save
 from core.models.user import User

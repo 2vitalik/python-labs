@@ -1,22 +1,25 @@
-"""What the lesson routes share: who reads, the input shapes, the lesson as the API shows it."""
+"""What the lesson routes share: who reads, the input shapes, a lesson found or 404. How a reader sees it — lesson_view.py."""
+from itertools import count
+
 from fastapi import Depends, HTTPException, Request
 from pydantic import BaseModel
 
 from core.deps import agent, allow, current_user
-from core.lesson_people import people, speakers
-from core.models.lesson import Lesson, Link
-from core.models.lesson_file import FileMeta, LessonFile, file_api
+from core.lesson_view import can_see, is_admin
+from core.models.lesson import PARTS, Lesson, Link, Part
 from core.models.user import Status, User
 
 
 class LessonIn(BaseModel):
-    kind: str = "pz"
+    date: str = ""  # a day's address is its date…
+    tag: str = ""  # …and a tag for a second stream on the same date: 2026-11-10-cpo
+    kind: str = ""  # an old address, kind + n (pz1), when given
     n: int | None = None  # None = the next of its kind
-    date: str = ""
     time: str = ""
     title: str = ""
     groups: list[str] = []
     links: list[Link] = []
+    parts: list[Part] = []
     video_start: str = ""
     context: str = ""
     meeting: str = ""
@@ -32,6 +35,7 @@ class LessonPatch(BaseModel):
     title: str | None = None
     groups: list[str] | None = None
     links: list[Link] | None = None
+    parts: list[Part] | None = None  # the whole list: what is not sent is gone
     video_start: str | None = None
     context: str | None = None
     transcript: str | None = None
@@ -46,10 +50,6 @@ async def reader(request: Request, user: User | None = Depends(current_user)) ->
     return agent(request) or allow(user, user and user.status != Status.pending)
 
 
-def is_admin(user: User) -> bool:
-    return user.status == Status.admin  # the agent comes built as an admin
-
-
 async def lesson(slug: str) -> Lesson:
     l = await Lesson.find_one(Lesson.slug == slug)
     if not l:
@@ -58,23 +58,37 @@ async def lesson(slug: str) -> Lesson:
 
 
 async def seen(slug: str, user: User) -> Lesson:
-    """A draft is nobody's but the admin's — not even a «нема доступу» for a student."""
+    """A draft or somebody's private day is not even a «нема доступу» for a student."""
     l = await lesson(slug)
-    if not l.published and not is_admin(user):
+    if not can_see(l, user, is_admin(user)):
         raise HTTPException(404)
     return l
 
 
-def fields(data: BaseModel) -> dict:
-    out = {k: v.strip() if isinstance(v, str) else v for k, v in data.model_dump(exclude={"rev", "note", "kind", "n"}, exclude_none=True).items()}
-    if "groups" in out:
-        out["groups"] = [g.strip() for g in out["groups"] if g.strip()]
-    if "links" in out:
-        out["links"] = [Link(label=l["label"].strip(), url=l["url"].strip()) for l in out["links"] if l["url"].strip()]
+def links(raw: list[dict]) -> list[Link]:
+    return [Link(label=l["label"].strip(), url=l["url"].strip()) for l in raw if l["url"].strip()]
+
+
+def parts(raw: list[dict]) -> list[Part]:
+    """Cleaned; a part sent without a key gets the next free p<n>."""
+    taken, free = {p["key"] for p in raw}, count(1)
+    out = []
+    for p in raw:
+        if p["kind"] not in PARTS:
+            raise HTTPException(422, f"Вид частини — один із: {', '.join(PARTS)}")
+        p = {k: v.strip() if isinstance(v, str) else v for k, v in p.items()}
+        key = p["key"] or next(k for k in (f"p{i}" for i in free) if k not in taken)
+        out.append(Part(**p | {"key": key, "links": links(p["links"]), "only": [e.strip().lower() for e in p["only"] if e.strip()]}))
     return out
 
 
-async def full(l: Lesson, admin: bool) -> dict:
-    files = await LessonFile.find(LessonFile.lesson == l.slug).sort("role", "name").project(FileMeta).to_list()
-    data = l.api(admin) | {"files": [file_api(f) for f in files if admin or f.role == "file"], "people": await people(l.transcript)}
-    return data | ({"speakers": speakers(l.transcript)} if admin else {})
+def fields(data: BaseModel) -> dict:
+    out = {k: v.strip() if isinstance(v, str) else v
+           for k, v in data.model_dump(exclude={"rev", "note", "kind", "n", "tag"}, exclude_none=True).items()}
+    if "groups" in out:
+        out["groups"] = [g.strip() for g in out["groups"] if g.strip()]
+    if "links" in out:
+        out["links"] = links(out["links"])
+    if "parts" in out:
+        out["parts"] = parts(out["parts"])
+    return out
