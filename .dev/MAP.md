@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T326** · тікетів: 325 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T332** · тікетів: 331 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -333,3 +333,9 @@
 | games | [T323](games/.t/T323-P--game-desc-v12-design.md) | 💡 | game-desc-v12-design | Опис гри v12 — рішення: відео без карток у «Супроводі», каталог у вікні над грою, переходи без назви | 🟢 ⬜ |
 | games | [T324](games/.t/T324-Q--game-desc-v12-choices.md) | ❓ | game-desc-v12-choices | Опис гри v12 — вибори | 🔴 ⬜ |
 | reports | [T325](reports/.t/T325-C--video-archive.md) | 🔆 | video-archive | Як зберегти відео студентів, щоб не зникли — подумати й нагадати | 🟢 ⬜ |
+| defense | [T326](defense/.t/T326--defense-page/plan.md) | ⚙️ | defense-page | Сторінка захисту: час, враження, зауваження з тегами, відповіді студента, перевірка — план | 🟢 ⬜ |
+| defense | [T327](defense/.t/T327-P--defense-page-design.md) | 💡 | defense-page-design | Сторінка захисту — що на ній і як нею користуватись | 🟢 ⬜ |
+| remarks | [T328](remarks/.t/T328-P--remarks-design.md) | 💡 | remarks-design | Зауваження: теги, вид, життєвий цикл, ШІ-розкладання, доступ агента | 🟢 ⬜ |
+| grading | [T329](grading/.t/T329-P--defense-grading.md) | 💡 | defense-grading | Як оцінювати захист: монетки за доробку, запобіжники, допуск і спроби | 🟢 ⬜ |
+| defense | [T330](defense/.t/T330-B--defense-more.md) | 🧠 | defense-more | Захисти: що ще може знадобитись викладачеві й студентам | 🟢 ⬜ |
+| defense | [T331](defense/.t/T331-Q--defense-choices.md) | ❓ | defense-choices | Вибори: сторінка захисту, зауваження, оцінювання захистів | 🟢 ⬜ |
