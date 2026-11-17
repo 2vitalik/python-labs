@@ -76,8 +76,8 @@ function newRule() {
            :placeholder="info?.zone === 'support' ? 'Посилання: відео, сторінка гри, документ' : 'GitHub: файл або коміт — за бажанням'">
     <ClaimShots :claim editable />
     <div v-if="!shown.note || !shown.link" class="d-flex gap-3">
-      <button v-if="!shown.note" type="button" class="more-field" @click="more('note')">＋ нотатка</button>
-      <button v-if="!shown.link" type="button" class="more-field" @click="more('link')">＋ посилання</button>
+      <button v-if="!shown.note" type="button" class="more-field" @click="more('note')"><Icon name="plus" /> нотатка</button>
+      <button v-if="!shown.link" type="button" class="more-field" @click="more('link')"><Icon name="plus" /> посилання</button>
     </div>
     <div class="d-flex gap-2">
       <button type="button" class="btn btn-sm btn-success" @click="save"><Icon name="check" /> Зберегти</button>

@@ -68,7 +68,7 @@ async function renew() {
             </span>
           </span>
           <InlineText v-if="can" :value="note" can block class="note" :placeholder="last ? 'що у відео, таймкоди' : 'коли буде, що в ньому'" :save="(note) => put({ note })">
-            <template #empty><span class="nadd">＋ нотатка</span></template>
+            <template #empty><span class="nadd"><Icon name="plus" /> нотатка</span></template>
           </InlineText>
           <span v-else class="note" :title="note">{{ note }}</span>
           <span class="state">

@@ -1,6 +1,8 @@
 <script setup>
 import { computed } from 'vue'
 
+import Icon from '@core/components/Icon.vue'
+
 import { COIN_NAMES, COINS, STATUSES, vocab } from '../catalog.js'
 import { OPT_HINT } from '../taskMeta.js'
 import { TIPS } from '../taskTips.js'
@@ -37,7 +39,7 @@ const tiered = computed(() => !!props.f.tiers?.length)
           <span v-else-if="f.max_count === 0" class="unlim">без ліміту</span>
         </span>
       </label>
-      <button v-if="!tiered" type="button" class="more-field mb-1" @click="f.tiers = [[3, 1], [0, 0.5]]">＋ спадна ціна за повтори</button>
+      <button v-if="!tiered" type="button" class="more-field mb-1" @click="f.tiers = [[3, 1], [0, 0.5]]"><Icon name="plus" /> спадна ціна за повтори</button>
     </div>
     <TierEditor v-if="tiered" v-model="f.tiers" :amount="f.amount" class="tiers" />
     <div class="row-f">

@@ -24,7 +24,7 @@ const drop = (i) => (slots.value = slots.value.filter((_, j) => j !== i))
       </select>
       <template v-if="s.type !== 'bool'">
         <input v-if="withUnit.has(s)" v-model="s.unit" class="form-control form-control-sm unit" placeholder="одиниця" :title="TIPS.slot.unit">
-        <button v-else type="button" class="more-field" :title="TIPS.slot.unit" @click="withUnit.add(s)">＋ одиниця</button>
+        <button v-else type="button" class="more-field" :title="TIPS.slot.unit" @click="withUnit.add(s)"><Icon name="plus" /> одиниця</button>
       </template>
       <input v-if="s.type === 'choice'" :value="(s.options || []).join(', ')" class="form-control form-control-sm grow"
              placeholder="варіанти через кому" :title="TIPS.slot.options" @change="s.options = csv($event.target.value)">

@@ -116,7 +116,7 @@ async function save() {
     </template>
     <template v-if="!noting">
       <span></span>
-      <div><button type="button" class="more-field" @click="addNote">＋ нотатка</button></div>
+      <div><button type="button" class="more-field" @click="addNote"><Icon name="plus" /> нотатка</button></div>
     </template>
     <span></span>
     <SaveCancel :disabled="!ready || busy" @save="save" @cancel="emit('cancel')" />

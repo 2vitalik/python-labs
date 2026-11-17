@@ -63,7 +63,7 @@ const tip = computed(() => {
             <span v-else class="muted">—</span>
           </span>
           <InlineText v-if="ed.editable" :value="claim.note" can block class="note" placeholder="як саме це зроблено" :save="(note) => save({ note })">
-            <template #empty><span class="nadd">＋ нотатка</span></template>
+            <template #empty><span class="nadd"><Icon name="plus" /> нотатка</span></template>
           </InlineText>
           <span v-else class="note" :title="claim.note">{{ claim.note }}</span>
           <span class="state">
@@ -104,9 +104,9 @@ const tip = computed(() => {
 .waits { opacity: .5; }  /* the coin of a request is not counted yet */
 .note { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; font-style: italic; color: var(--bs-secondary-color); }
 .note.open { display: block; overflow: visible; }  /* the field in place shows the whole note */
-/* an empty note's way in waits for the mouse over the row: a row without a note stays quiet */
-.nadd { color: var(--act-add); opacity: 0; }
-.tr:hover .nadd, .inl:focus-visible .nadd { opacity: .75; }
+/* an empty note's way in: pale at rest, clear under the mouse — as in the videos' table (T344, T350) */
+.nadd { color: var(--act-add); font-style: normal; opacity: .6; }
+.tr:hover .nadd, .inl:focus-visible .nadd { opacity: 1; }
 .state { display: inline-flex; align-self: center; align-items: center; justify-content: flex-end; gap: .15rem; }
 /* the trash of every list (ClaimRow): full size, its height given back so the row keeps the text's */
 .del-slot :deep(.trash) { margin-block: -.25rem; font-size: 1rem; opacity: .5; }

@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 
 import GrowArea from '@core/components/GrowArea.vue'
+import Icon from '@core/components/Icon.vue'
 import { useMomentEd } from '../momentEd.js'
 import MomentPalette from './MomentPalette.vue'
 import MomentResize from './MomentResize.vue'
@@ -25,7 +26,7 @@ const noting = ref(!!ed.frame.note)  // a note emptied while typing keeps its fi
     <div><MomentResize /></div>
     <GrowArea v-if="noting || ed.frame.note" v-model="ed.frame.note" class="form-control form-control-sm mt-2"
               placeholder="Примітка під кадром — сірою цитатою (markdown)" />
-    <button v-else type="button" class="more-field mt-2" @click="noting = true">＋ примітка</button>
+    <button v-else type="button" class="more-field mt-2" @click="noting = true"><Icon name="plus" /> примітка</button>
   </div>
 </template>
 

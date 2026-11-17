@@ -1,6 +1,7 @@
 <script setup>
 import { computed, ref } from 'vue'
 
+import Icon from '@core/components/Icon.vue'
 import { useEd } from '../ed.js'
 import { gameBrushes } from '../momentMap.js'
 import MomentField from './MomentField.vue'
@@ -40,7 +41,7 @@ async function commit() {
     <MomentField v-if="text" :text />
     <Transition name="tool">
       <button v-if="tools" type="button" class="more-field align-self-start" title="рівень клітинками зі значків сутностей — заявляє картку «Мапа рівня на сайті»"
-              @click="draw = text || ''">{{ text ? 'змінити мапу' : '＋ намалювати рівень' }}</button>
+              @click="draw = text || ''"><template v-if="text">змінити мапу</template><template v-else><Icon name="plus" /> намалювати рівень</template></button>
     </Transition>
   </template>
 </template>

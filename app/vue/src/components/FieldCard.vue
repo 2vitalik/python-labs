@@ -69,7 +69,7 @@ defineExpose({ add })
         </div>
         <InlineText v-if="ed.field.description || ed.editable" :value="ed.field.description" multi block :can="ed.editable" class="small"
                     placeholder="Коротко про поле: як генерується, камера…" :save="(description) => save({ description })">
-          <template #empty><span class="more-field">＋ опис</span></template>
+          <template #empty><span class="more-field"><Icon name="plus" /> опис</span></template>
         </InlineText>
         <ShotStrip v-if="ed.editable || ed.field.screenshots?.length" :part="ed.field" />
       </template>

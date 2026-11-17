@@ -46,7 +46,7 @@ const variant = computed(() => ({ zone: props.task.zone, subzone: props.task.sub
     <RuleShape v-if="kind === 'rule'" :rule="task.rule" />
     <InlineMd v-if="task.description || admin" :value="task.description" :can="admin" :q class="small" placeholder="що зробити і що я перевіряю"
               :save="(description) => saveTask(task, { description })">
-      <template #empty><span class="more-field" title="опису ще нема — додай пару слів">＋ опис</span></template>
+      <template #empty><span class="more-field" title="опису ще нема — додай пару слів"><Icon name="plus" /> опис</span></template>
     </InlineMd>
     <div v-if="task.slots?.length" class="line">
       Параметри заявки:
