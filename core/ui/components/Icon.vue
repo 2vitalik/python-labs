@@ -65,6 +65,17 @@ const PATHS = {
   play: '<path d="M5 3.5v9l7.5-4.5z"/>',
   pause: '<path d="M5.5 3.5v9M10.5 3.5v9"/>',
   star: '<path d="M8 2l1.8 3.9 4.2.5-3.1 2.9.8 4.2L8 11.4l-3.7 2.1.8-4.2L2 6.4l4.2-.5z"/>',
+  starfill: '<path d="M8 2l1.8 3.9 4.2.5-3.1 2.9.8 4.2L8 11.4l-3.7 2.1.8-4.2L2 6.4l4.2-.5z" fill="currentColor"/>',
+  // the views of /table (T315): put away, kept on the tabs, a folder, a tag, levels of sort, rows in groups, what a view
+  // was made from, two side by side
+  archive: '<rect x="2" y="3" width="12" height="3.2" rx=".8"/><path d="M3.2 6.2v6.3a1 1 0 0 0 1 1h7.6a1 1 0 0 0 1-1V6.2M6.5 9h3"/>',
+  pin: '<path d="M9.5 2.5l4 4-2 .6-2.3 2.3.3 2.8-1.2 1.2-5.6-5.6 1.2-1.2 2.8.3 2.3-2.3z"/><path d="M5.3 10.7L2.5 13.5"/>',
+  folder: '<path d="M2 4.5a1 1 0 0 1 1-1h3.2l1.5 1.7H13a1 1 0 0 1 1 1v5.8a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>',
+  tag: '<path d="M2.5 3.5a1 1 0 0 1 1-1h4.2l6 6-5.2 5.2-6-6z"/><path d="M5.6 5.6h.01" stroke-width="2"/>',
+  sort: '<path d="M4.5 13.5v-11M2 5l2.5-2.5L7 5"/><path d="M11.5 2.5v11M9 11l2.5 2.5L14 11"/>',
+  layers: '<path d="M2.5 3.5h11M5.5 8h8M5.5 12.5h8"/><path d="M2.5 6.2v6.3"/>',
+  branch: '<circle cx="4" cy="3.5" r="1.6"/><circle cx="4" cy="12.5" r="1.6"/><circle cx="12" cy="6" r="1.6"/><path d="M4 5.1v5.8M12 7.6c0 2.4-3 2.4-8 3.3"/>',
+  compare: '<rect x="2" y="3" width="4.5" height="10" rx="1"/><rect x="9.5" y="3" width="4.5" height="10" rx="1"/><path d="M7.3 8h1.4"/>',
   filter: '<path d="M2.5 3.5h11L9.5 8.5v4l-3 1.5V8.5z"/>',
   bell: '<path d="M4 11V7.5a4 4 0 0 1 8 0V11l1.2 1.5H2.8z"/><path d="M6.8 14a1.3 1.3 0 0 0 2.4 0"/>',
   grip: '<path d="M6 4h.01M10 4h.01M6 8h.01M10 8h.01M6 12h.01M10 12h.01" stroke-width="2"/>',
