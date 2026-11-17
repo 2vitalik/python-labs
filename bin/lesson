@@ -29,6 +29,7 @@ import yaml
 from siteapi import HOME, ROOT, SNAP, call, send
 
 FOLDER = Path(os.environ.get("LESSONS_DIR", ROOT / "data" / "transcripts"))  # another site keeps its folder elsewhere (ods)
+COURSE = os.environ.get("LESSONS_COURSE", "python")  # …and names itself: the transcript's front matter carries it
 TEXTS = {"context": "context.md", "transcript": "transcript.md", "summary": "summary.md", "report": "report.md", "notes": "notes.md"}
 META = ("title", "date", "time", "groups", "links", "video_start", "meeting")
 PART = ("key", "kind", "title", "start", "end", "note", "links", "only")  # of a part in meta.yml; its texts are files in parts/
@@ -62,7 +63,7 @@ def pull(to: str, slug: str):
     b = call(to, "GET", f"/lessons/{slug}/bundle")
     d = FOLDER / slug
     (d / "raw").mkdir(parents=True, exist_ok=True)
-    meta = {"course": to, "lesson": slug, "kind": SKILL_KINDS.get(b["kind"], "day"), **{k: b[k] for k in META},
+    meta = {"course": COURSE, "lesson": slug, "kind": SKILL_KINDS.get(b["kind"], "day"), **{k: b[k] for k in META},
             "parts": [{k: p[k] for k in PART} for p in own(b)], "teacher": "Віталій", "roster": b["roster"]}
     (d / "meta.yml").write_text(yaml.safe_dump(meta, allow_unicode=True, sort_keys=False))
     for key, name in TEXTS.items():
