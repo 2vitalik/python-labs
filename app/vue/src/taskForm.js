@@ -1,3 +1,4 @@
+import { putTask } from './api.js'
 import { tasks } from './catalog.js'
 import { byLang, OPT_HINT, subzoneKind } from './taskMeta.js'
 
@@ -41,3 +42,15 @@ export function toPayload(f, kind) {
 // loadCatalog() caches its promise: the API's answer goes into the loaded list, in the order the API sorts a subzone by
 const bySpot = (a, b) => a.order - b.order || (a.slug > b.slug) - (a.slug < b.slug)
 export const place = (t) => { tasks.value = [...tasks.value.filter((x) => x.id !== t.id), t].sort(bySpot) }
+
+// one value changed where it reads (T306): the server takes a card whole, so the rest goes back through the same form.
+// Saves run one after another, each from the card the save before brought back — two quick changes must not send the old copy
+let line = Promise.resolve()
+export function saveTask(task, patch) {
+  const run = line.then(async () => {
+    const f = { ...toForm(tasks.value.find((x) => x.id === task.id) || task), ...patch }
+    place(await putTask(task.id, toPayload(f, f.kind || subzoneKind(f.zone, f.subzone, csv(f.tags)))))
+  })
+  line = run.catch(() => {})
+  return run
+}

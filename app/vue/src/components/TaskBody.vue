@@ -5,19 +5,21 @@ import Icon from '@core/components/Icon.vue'
 import { kindOf, vocab } from '../catalog.js'
 import { myGame } from '../myGame.js'
 import { PROOFS } from '../proof.js'
+import { saveTask } from '../taskForm.js'
 import { addable, addsTo } from '../taskMeta.js'
 import { ladder, repeatable } from '../tiers.js'
 import { user } from '@core/user.js'
 import IdeaPop from './IdeaPop.vue'
-import Md from './Md.vue'
+import InlineMd from './InlineMd.vue'
 import RuleShape from './RuleShape.vue'
 import TaskAliases from './TaskAliases.vue'
 import TaskEdit from './TaskEdit.vue'
+import TaskStatusPick from './TaskStatusPick.vue'
 
 // a card unfolded (T274 §2), a row each at one spacing: its kind and what «＋» does with it, the rule it stands for, the
 // description, the claim's params, a family's variants (the slot), the price ladder of repeats (a line a step), games; at the bottom, quiet grey lines
 // one under another (T284 §6): the proof it asks for, the other names, a word about the card to the teacher.
-// The pencil asks the card to turn into its form
+// The teacher changes the status and the description where they read (T306); the pencil asks the card to turn into its form
 const props = defineProps({ task: Object, family: Boolean, q: String })
 defineEmits(['edit'])
 const admin = computed(() => user.value?.status === 'admin')
@@ -35,11 +37,15 @@ const variant = computed(() => ({ zone: props.task.zone, subzone: props.task.sub
 <template>
   <div class="px-2 py-2 border-top rounded-bottom vstack gap-2" :class="family ? 'bg-body' : 'bg-body-tertiary'">
     <div class="d-flex align-items-start gap-2">
-      <span class="line me-auto">{{ vocab.kinds[kind] || kind }}<template v-if="how"> · {{ addsTo(task) }}</template></span>
-      <button v-if="admin" type="button" class="iact" title="Редагувати картку" @click="$emit('edit')"><Icon name="pencil" /></button>
+      <span class="line me-auto">{{ vocab.kinds[kind] || kind }}<template v-if="how"> · {{ addsTo(task) }}</template><template v-if="admin"> ·
+        <TaskStatusPick :task can /></template></span>
+      <button v-if="admin" type="button" class="iact" title="Редагувати все разом" @click="$emit('edit')"><Icon name="pencil" /></button>
     </div>
     <RuleShape v-if="kind === 'rule'" :rule="task.rule" />
-    <Md v-if="task.description" :text="task.description" :q class="small" />
+    <InlineMd v-if="task.description || admin" :value="task.description" :can="admin" :q class="small" placeholder="що зробити і що я перевіряю"
+              :save="(description) => saveTask(task, { description })">
+      <template #empty><span class="more-field" title="опису ще нема — додай пару слів">＋ опис</span></template>
+    </InlineMd>
     <div v-if="task.slots?.length" class="line">
       Параметри заявки:
       <div v-for="s in task.slots" :key="s.key" class="ps-2">· {{ slotText(s) }}</div>
