@@ -3,17 +3,20 @@ import { computed, nextTick, ref, watch } from 'vue'
 
 import { back, close, leave, peek, peekView, pin, stay } from '../peek.js'
 import Icon from './Icon.vue'
+import PeekPace from './PeekPace.vue'
 
 // one floating card of the chain in peek.js: it hangs under its anchor, turned up or shifted left where the window ends;
-// clicked, it has a bar — back along the way it came, and a cross that closes it with the cards opened from it
+// clicked, it has a bar — back along the way it came, and a cross that closes it with the cards opened from it;
+// at its foot — how fast the cards come (PeekPace)
 const props = defineProps({ card: Object, k: Number })
 const panel = ref()
 const pos = ref(null)
 const top = computed(() => props.card.stack.at(-1))
 const view = computed(() => top.value && peekView(top.value.kind))
 
-async function place() {
-  pos.value = null
+// `again` — the card on screen changed its height: it is placed anew without a blink
+async function place(again = false) {
+  if (!again) pos.value = null
   await nextTick()
   if (!panel.value) return
   const a = props.card.at, p = panel.value.getBoundingClientRect(), gap = 6
@@ -24,7 +27,7 @@ async function place() {
     top: `${fitsBelow || above < scrollY + 8 ? below : above}px`,
   }
 }
-watch(() => [props.card.at, props.card.stack.length], place, { immediate: true, flush: 'post' })
+watch(() => [props.card.at, props.card.stack.length], () => place(), { immediate: true, flush: 'post' })
 </script>
 
 <template>
@@ -35,6 +38,7 @@ watch(() => [props.card.at, props.card.stack.length], place, { immediate: true, 
       <button type="button" class="nav ms-auto" title="Закрити (Esc)" @click.stop="close(k)"><Icon name="x" /></button>
     </div>
     <component :is="view" v-bind="top" :key="`${top.kind}:${top.id}`" />
+    <PeekPace @grew="place(true)" />
   </div>
 </template>
 
