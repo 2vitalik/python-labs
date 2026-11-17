@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T315** · тікетів: 314 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T318** · тікетів: 317 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -322,3 +322,6 @@
 | games | [T312](games/.t/T312-Q--inline-tools-choices.md) | ❓ | inline-tools-choices | Редагування без форм — вибори | 🔴 ⬜ |
 | games | [T313](games/.t/T313-Q--emoji-picker-choices.md) | ❓ | emoji-picker-choices | Вибори після віконця значків: значки вікон, шрифт емодзі, російські слова, інші місця | 🔴 ⬜ |
 | ods | [T314](ods/.t/T314-C--google-oauth-shared.md) | 🔆 | google-oauth-shared | Google OAuth: один проєкт на всі сайти | 🟢 ⬜ |
+| platform | [T315](platform/.t/T315-P--table-views-v2-design.md) | 💡 | table-views-v2-design | Звід v2: види як у Coda — налаштування, версії, папки, еталони — дизайн | 🟢 ⬜ |
+| platform | [T316](platform/.t/T316--table-v2/plan.md) | ⚙️ | table-v2 | Звід v2: рядок налаштувань, багаторівневі групи й сортування, версії й бібліотека видів — план і звіт — план | 🟢 ⬜ |
+| platform | [T317](platform/.t/T317-Q--table-v2-choices.md) | ❓ | table-v2-choices | Звід v2 — вибори й що розповісти про дедлайни | 🟢 ⬜ |
