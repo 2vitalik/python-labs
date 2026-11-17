@@ -1,0 +1,198 @@
+🚩 | старт фініш ціль чекпоінт позначка мітка сапер | start finish goal checkpoint marker minesweeper capture
+🏁 | ціль кінець перемога старт гонка чекпоінт вихід | goal end exit start checkpoint victory
+🏴‍☠️ | череп кістки ворог лут розбійник | skull crossbones enemy loot buccaneer
+🏳️ | здача капітуляція поразка перемирʼя старт фініш ціль чекпоінт | surrender truce lose forfeit start finish goal checkpoint
+🏴 | позначка база ворог старт фініш ціль чекпоінт | marker base enemy start finish goal checkpoint
+❌ | хрестики-нулики промах влучання помилка невірно поразка ікс | tic-tac-toe miss hit wrong error fail lose
+⭕ | нулик хрестики-нулики кружечок кільце позначка ціль промах | ring nought zero tic-tac-toe marker target miss
+✅ | так правильно успіх перемога квест завдання | yes correct success win quest passed
+☑️ | чекбокс вибір так завдання квест | checkbox yes quest task selected
+✔️ | так правильно успіх виконано перемога | yes correct success complete ok
+❎ | ні помилка скасувати закрити | wrong error close cancel
+❓ | загадка таємниця підказка невідомо секрет сюрприз бонус маріо | mystery riddle hint unknown secret surprise bonus mario
+❗ | увага тривога важливо квест небезпека завдання | alert attention important quest warning danger
+❔ | загадка таємниця підказка невідомо секрет сюрприз | mystery riddle hint unknown secret surprise
+❕ | увага важливо тривога | alert attention important
+‼️ | увага тривога важливо небезпека критично | alert attention important danger critical
+⁉️ | подив здивування шок | surprise confused shock
+⚠️ | небезпека пастка обережно тривога загроза зона | danger hazard trap alert attention zone
+⛔ | стоп стіна перешкода барʼєр блок непрохідно | stop wall obstacle barrier block closed
+🚫 | стоп перешкода барʼєр блок непрохідно закрито | stop obstacle barrier block banned closed
+☢️ | радіація отрута пастка ядерний зона токсичний | radiation nuclear hazard danger toxic poison trap zone
+☣️ | отрута токсичний вірус зараза пастка зона зомбі | toxic poison virus hazard danger infection zombie zone
+➕ | додати бонус лікування аптечка хп більше | add bonus heal health hp more
+➖ | відняти менше шкода втрата | subtract less damage penalty
+✖️ | хрестик множник комбо бонус закрити | times multiplier combo bonus close
+➗ | поділити | split
+🟰 | нічия | draw tie
+♾️ | безсмертя вічність безліміт безмежний цикл | infinite immortal endless unlimited loop eternal
+⬆️ | напрямок конвеєр рух вперед догори нагору стрибок | conveyor move forward jump upward wasd
+⬇️ | напрямок конвеєр рух назад донизу униз падіння спуск | conveyor move back fall drop downward wasd
+⬅️ | напрямок конвеєр рух назад наліво уліво поворот | conveyor move back previous turn wasd
+➡️ | напрямок конвеєр рух вперед направо управо поворот далі | conveyor move forward next turn wasd
+↗️ | напрямок діагональ навскіс конвеєр рух | diagonal conveyor move
+↘️ | напрямок діагональ навскіс конвеєр рух вправо | diagonal conveyor move
+↙️ | напрямок діагональ навскіс конвеєр рух вліво | diagonal conveyor move
+↖️ | напрямок діагональ навскіс конвеєр рух | diagonal conveyor move
+↕️ | напрямок вертикаль ліфт рух конвеєр патруль | vertical elevator lift patrol conveyor move
+↔️ | напрямок горизонталь рух конвеєр патруль | horizontal patrol conveyor move swap
+🔄 | поворот обертання перезапуск рестарт оновлення спочатку цикл заново | rotate restart reset retry loop cycle spin turn
+🔃 | поворот обертання рестарт цикл заново | rotate restart reset cycle spin turn
+↩️ | назад повернення відміна скасувати розворот вліво | back return undo turn u-turn
+↪️ | повторити розворот вправо вперед | redo turn u-turn forward
+▶️ | старт пуск запуск грати почати продовжити | start run go resume begin launch
+⏸️ | перерва зупинка меню | break freeze menu wait
+⏹️ | кінець вихід завершення | end halt quit exit
+⏺️ | кружечок крапка точка фішка | dot rec token
+⏩ | прискорення швидкість швидко пропустити бонус | speed boost faster skip haste powerup
+⏪ | відкат повернення сповільнення час | back undo slow time
+🔼 | вгору напрямок підвищення рівень апгрейд | level upgrade increase raise
+🔽 | напрямок зниження менше | decrease lower downgrade
+🔀 | перемішати випадково рандом обмін заміна | random swap mix randomize
+🔁 | цикл заново знову рестарт петля | loop again restart cycle retry
+♻️ | перетворення крафт сміття | convert craft reuse
+🔰 | новачок нуб туторіал навчання | newbie noob tutorial rookie
+⚜️ | герб лицар королівство | crest royal heraldry
+📛 | табличка нікнейм | nametag nickname tag
+📍 | мітка позначка точка ціль місце чекпоінт локація | marker goal target waypoint checkpoint place spot
+📌 | мітка позначка закріпити шпилька | marker tack thumbtack
+🎌 | свято турнір | festival tournament
+🏳️‍🌈 | прайд |
+🏳️‍⚧️ | |
+🚸 | зебра школа | crosswalk school zebra
+🚳 | |
+🚭 | куріння цигарка | cigarette
+🚯 | чистота | clean
+🚱 | отрута брудний | poison dirty toxic
+🚷 | непрохідно перешкода стоп | blocked obstacle impassable
+📵 | смартфон | smartphone
+🔞 | дорослий | adult
+⤴️ | стрибок підйом розворот напрямок | jump climb turn rise
+⤵️ | спуск падіння розворот напрямок | drop fall descend turn
+🔙 | повернення вихід меню відміна | return exit menu undo previous
+🔚 | фініш завершення фінал вихід | finish over exit final gameover
+🔛 | перемикач вмикач увімкнути | switch toggle enabled
+🔜 | скоро згодом | later coming
+🔝 | топ найкращий рекорд лідер рейтинг | best highscore record leaderboard rank
+〰️ | хвиля вода | wave water squiggle
+⚕️ | лікування аптечка здоровʼя хп лікар зцілення | heal medkit health hp doctor healer
+➰ | вузол мотузка спіраль | knot spiral twist
+➿ | вісімка вузол | knot twist
+〽️ | зигзаг | zigzag
+✳️ | сніжинка іскра бонус | star sparkle snowflake bonus
+✴️ | зірочка вибух бонус спалах | burst explosion bonus sparkle
+❇️ | іскра іскорка блиск бонус магія сяйво | glitter shine bonus magic spark twinkle
+©️ | |
+®️ | |
+™️ | |
+🔂 | заново цикл | again loop replay
+⏭️ | далі пропустити рівень | skip level forward
+⏯️ | старт перемикач продовжити | start toggle resume
+◀️ | напрямок конвеєр повернення | back previous direction conveyor
+⏮️ | початок спочатку назад рестарт | back beginning restart
+⏫ | прискорення апгрейд підвищення стрибок | boost upgrade level jump
+⏬ | падіння спуск зниження | drop fall descend
+⏏️ | вихід | exit
+🎦 | відео катсцена | video cutscene
+🔅 | темрява сутінки | darkness dusk
+🔆 | сонце світло день | sun day glow
+📶 | звʼязок шкала інтернет | level strength meter
+🛜 | |
+📳 | тряска | shake buzz
+📴 | |
+💱 | торгівля торговець магазин крамниця | trade shop merchant store
+💲 | золото монетка ціна очки рахунок магазин | gold coin price shop score points
+♀️ | |
+♂️ | |
+⚧️ | |
+🏧 | |
+🚮 | кошик видалити | trash garbage delete
+🚰 | джерело фонтан колонка | tap faucet fountain refill
+♿ | | accessibility
+🚹 | |
+🚺 | |
+🚻 | |
+🚼 | дитина малюк | child kid infant
+🚾 | |
+🛂 | кордон пропуск | border checkpoint
+🛃 | кордон огляд | border inspection
+🛄 | валіза | suitcase luggage
+🛅 | склад сховище інвентар шафка | storage stash inventory
+🛐 | храм | temple
+⚛️ | наука фізика енергія | science physics energy
+🕉️ | |
+✡️ | гексаграма | hexagram
+☸️ | |
+☯️ | баланс | balance
+✝️ | розпʼяття | crucifix
+☦️ | |
+☪️ | |
+☮️ | пацифік | pacifist
+🕎 | |
+🔯 | гексаграма | hexagram
+🪯 | |
+♈ | |
+♉ | |
+♊ | близнята |
+♋ | |
+♌ | |
+♍ | | maiden
+♎ | ваги |
+♏ | |
+♐ | лучник |
+♑ | |
+♒ | |
+♓ | |
+⛎ | |
+0️⃣ | число цифра сусід сапер рахунок | number digit neighbor minesweeper score
+1️⃣ | число цифра сусід сапер рахунок перший | number digit neighbor minesweeper score first
+2️⃣ | число цифра сусід сапер рахунок другий 2048 | number digit neighbor minesweeper score second 2048
+3️⃣ | число цифра сусід сапер рахунок третій | number digit neighbor minesweeper score third
+4️⃣ | число цифра сусід сапер рахунок 2048 | number digit neighbor minesweeper score 2048
+5️⃣ | число цифра сусід сапер рахунок | number digit neighbor minesweeper score
+6️⃣ | число цифра сусід сапер рахунок | number digit neighbor minesweeper score
+7️⃣ | число цифра сусід сапер рахунок джекпот | number digit neighbor minesweeper score jackpot
+8️⃣ | число цифра сусід сапер рахунок 2048 | number digit neighbor minesweeper score 2048
+9️⃣ | число цифра сусід сапер рахунок | number digit neighbor minesweeper score
+🔟 | десять десятка число рахунок | ten number score
+#️⃣ | решітка хештег номер сітка | hash hashtag pound number grid
+*️⃣ | зірочка астериск | asterisk star
+🔢 | число лічильник рахунок | digits counter score count
+🔤 | слово текст абетка | text word spelling
+🔠 | текст капс | text caps
+🔡 | текст | text
+🔣 | |
+🅰️ | геймпад джойстик | gamepad controller letter
+🅱️ | геймпад джойстик літера | gamepad controller letter
+🆎 | |
+🅾️ | нулик хрестики-нулики літера | letter nought tic-tac-toe
+🅿️ | стоянка парковка |
+Ⓜ️ | | metro subway
+ℹ️ | підказка інфо порада туторіал | info hint help tip tutorial
+🆔 | профіль картка посвідчення | profile card badge
+🆚 | бій поєдинок битва суперник | battle duel fight opponent pvp
+🆘 | порятунок тривога лихо | rescue emergency distress
+🆗 | добре гаразд так | yes fine accept
+🆕 | новинка | fresh
+🆙 | левелап рівень підвищення апгрейд | levelup level upgrade
+🆒 | класно кльово | nice awesome
+🆓 | халява подарунок бонус | gift bonus freebie
+🆖 | погано | bad
+🆑 | стерти скинути | clear reset erase
+🈁 | |
+🈂️ | |
+🈷️ | |
+🈶 | |
+🈯 | |
+🉐 | |
+🈹 | |
+🈚 | |
+🈲 | |
+🉑 | |
+🈸 | |
+🈴 | |
+🈳 | |
+㊗️ | |
+㊙️ | |
+🈺 | |
+🈵 | |

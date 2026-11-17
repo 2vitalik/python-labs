@@ -1,0 +1,130 @@
+🚀 | снаряд корабель гравець зореліт прискорення швидкість | missile projectile spaceship player boost speed
+🛸 | ворог прибулець інопланетянин тарілочка корабель бос | enemy invader spaceship mothership boss
+✈️ | літачок винищувач бомбардувальник гравець | fighter aircraft player shooter bomber
+🚁 | вертолітик гвинтокрил ворог гравець патруль | chopper player enemy gunship aircraft
+🚗 | машинка гравець гонка перегони тачка | player racer traffic auto
+🚕 | машина машинка автомобіль перешкода трафік | traffic obstacle auto
+🚙 | джип машинка автомобіль | suv jeep offroad
+🏎️ | болід гонка машинка гравець швидкість формула | racer player speed formula kart
+🚌 | трафік перешкода | traffic obstacle coach
+🚚 | танк машина курʼєр перешкода | tank lorry van traffic
+🚜 | танк танчик машина гусениця ферма | tank farm crawler
+🚒 | пожежник гасіння вода | firetruck firefighter extinguish water
+🚑 | лікування аптечка здоровʼя життя медик | heal medkit health medic
+🚓 | ворог погоня переслідувач коп охоронець | enemy chase pursuer guard
+🏍️ | байк мотик гравець швидкість | motorbike bike player speed
+🚲 | велик гравець швидкість | player speed
+🛴 | гравець швидкість | player speed
+🚂 | поїзд поїздик голова змійка гравець | head snake player
+🚃 | хвіст сегмент вагончик поїзд | tail segment carriage wagon coach
+🚢 | судно кораблик гравець морський бій флот | player battleship vessel fleet naval
+⛵ | кораблик парусник вітрило гравець пірат | player pirate ship
+🚤 | моторка човник гравець швидкість | player speed motorboat
+🛶 | байдарка човник пліт весло | kayak raft paddle
+⚓ | порт гавань пристань причал чекпоінт | port harbor dock checkpoint
+🛞 | коліщатко покришка | tyre spin
+⛽ | паливо бензин енергія ресурс бонус | refuel energy resource powerup petrol
+🚨 | тривога небезпека сигналізація попередження | warning danger hazard detection
+🛰️ | зонд орбіта станція | probe orbit spacecraft
+🪂 | десант десантник посилка падіння скидання | airdrop paratrooper supply fall
+🚄 | поїзд швидкість | speed express
+🚅 | поїзд швидкість голова | express speed head
+🚆 | поїзд електричка | rail locomotive
+🚇 | підземка тунель станція | underground tunnel
+🚈 | електричка | commuter
+🚉 | платформа перон старт фініш | platform depot start finish
+🚊 | трамвайчик | streetcar
+🚝 | поїзд рейка | train rail
+🚞 | потяг | train
+🚋 | вагончик хвіст сегмент | carriage wagon segment
+🚍 | трафік перешкода зустрічний | traffic obstacle
+🚎 | тролик |
+🚐 | бус фургон | minivan camper
+🚔 | ворог погоня переслідувач коп охоронець | enemy chase cop patrol pursuer guard
+🚖 | машина машинка трафік | traffic
+🚘 | машинка зустрічний трафік перешкода | traffic obstacle
+🛻 | танк джип машинка | tank jeep
+🚛 | фура танк | tank rig trailer
+🛵 | курʼєр доставка | moped delivery
+🦽 | крісло | disability
+🦼 | крісло | disability
+🛺 | таксі | tuktuk taxi
+🛹 | гравець швидкість трюк | trick player speed
+🛼 | швидкість прискорення бонус | speed boost powerup
+🚏 | чекпоінт | checkpoint waypoint
+🛣️ | траса шлях смуга підлога плитка | track lane path floor tile
+🛤️ | рейка шлях плитка підлога | rail path tile floor
+🛢️ | діжка вибух перешкода пальне | barrel explosive explosion obstacle fuel
+🚥 | сигнал перехрестя | semaphore crossing
+🛙 | орієнтир ціль чекпоінт вежа | landmark tower checkpoint goal
+🛟 | щит захист бонус бублик | shield powerup bonus respawn
+🛳️ | лайнер судно пароплав | cruise liner vessel
+⛴️ | переправа судно | crossing ship
+🛥️ | катер яхта | yacht speedboat
+🛩️ | кукурудзник гравець | player propeller
+🛫 | зліт старт | takeoff start
+🛬 | посадка фініш аеропорт | finish airport
+💺 | стілець |
+🚟 | вагончик | monorail
+🚠 | підйомник ліфт | cablecar elevator
+🚡 | підйомник ліфт | elevator lift
+🎲 | кістка кидок хід рандом випадковість шанс везіння | roll random chance luck boardgame
+♟️ | фішка пішачок солдатик шашка | piece token figure checker soldier
+🃏 | картка козир бонус блазень | trump jester bonus
+🀄 | плитка фішка кісточка | tile piece token
+🎴 | картка колода | deck hanafuda
+♠️ | вини колода покер | deck poker
+♥️ | серце серденько сердечко життя здоровʼя хп колода | life health hp love deck
+♦️ | ромб ромбик кристал діамант колода | rhombus gem crystal deck
+♣️ | хрестик конюшина колода | clover deck
+🎮 | геймпад приставка консоль керування гравець | gamepad console joystick controls gaming
+🕹️ | аркада автомат керування важіль | arcade controls lever retro
+🎰 | однорукий бандит рандом випадковість шанс | jackpot random chance luck
+🧩 | деталь фрагмент квест загадка предмет | fragment part quest riddle item
+🎱 | кулька мʼячик снаряд вісімка | snooker magic projectile
+🪀 | | yoyo
+🪁 | вітер | wind
+🪆 | |
+🪅 | лут приз нагорода | loot prize reward
+🪩 | кулька | discoball
+⚽ | мʼячик кулька куля снаряд гол | projectile goal kick bounce
+🏀 | мʼячик кулька куля снаряд баскетбол | projectile bounce
+🏐 | мʼячик кулька куля снаряд | projectile bounce
+🏈 | мʼячик снаряд регбі | projectile touchdown rugby
+⚾ | мʼячик кулька куля снаряд | projectile throw pitch
+🎾 | мʼячик кулька куля снаряд | projectile bounce
+🏓 | пінгпонг платформа арканоїд мʼячик | arkanoid breakout platform
+🏸 | |
+🏒 | гол | goal
+🥅 | гол фініш ціль | finish target score
+⛳ | фініш ціль прапор вихід позначка | finish goal exit target checkpoint
+🎳 | кулька мʼячик снаряд | pin skittle projectile
+🥌 | |
+🎈 | свято ціль | party target pop
+🎉 | перемога свято конфеті | win victory congrats
+🎊 | перемога свято | win victory
+🎄 | ялина ліс перешкода | xmas pine forest obstacle
+🎆 | вибух перемога | explosion win victory
+🎇 | гніт вибух | spark fuse
+🎀 | бантик подарунок | bow gift
+🥎 | мʼячик кулька куля снаряд | projectile
+🏉 | мʼячик снаряд | projectile
+🥏 | тарілочка снаряд | frisbee projectile
+🏏 | |
+🏑 | |
+🥍 | |
+⛸️ | ковзанка ковзання | slide slippery
+🤿 | водолаз дайвер кисень | diver oxygen underwater
+🎽 | майка | jersey
+🎿 | лижник | skiing
+🛷 | санки |
+🎋 | бамбук | bamboo
+🎍 | |
+🎎 | |
+🎏 | риба рибка | fish koi
+🎐 | |
+🎑 | ніч | night
+🧧 | приз нагорода бонус лут | reward prize bonus loot
+🎗️ | |
+🎟️ | пропуск перепустка доступ | pass access entry
+🎫 | пропуск перепустка талон доступ | pass access entry coupon

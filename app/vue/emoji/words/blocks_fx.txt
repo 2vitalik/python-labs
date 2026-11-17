@@ -1,0 +1,88 @@
+🧱 | блок перешкода мур кладка цеглинка маріо арканоїд танчики | block obstacle barrier breakout arkanoid mario minecraft
+🪨 | перешкода стіна камінчик руда ресурс сокобан | obstacle wall pebble ore resource sokoban
+🪵 | ресурс дрова поліно дошка перешкода майнкрафт | resource firewood plank obstacle minecraft
+🟫 | квадратик клітинка плитка блок земля ґрунт підлога ящик | tile cell block dirt ground floor crate pixel
+🟩 | квадратик клітинка плитка блок трава змійка сегмент тетріс | tile cell block grass snake segment tetris pixel
+🟦 | квадратик клітинка плитка блок вода лід тетріс | tile cell block water ice tetris pixel
+🟨 | квадратик клітинка плитка блок пісок золото тетріс | tile cell block sand gold tetris pixel
+🟥 | квадратик клітинка плитка блок лава небезпека пастка тетріс | tile cell block lava hazard trap tetris pixel
+🟧 | квадратик клітинка плитка блок тетріс лава | tile cell block tetris lava pixel
+🟪 | квадратик клітинка плитка блок тетріс портал | tile cell block tetris portal pixel
+⬛ | квадратик клітинка плитка блок стіна шахи шашки лабіринт | tile cell block wall chess checkers maze pixel
+⬜ | квадратик клітинка плитка підлога прохід шахи шашки лабіринт | tile cell floor empty chess checkers maze pixel
+🔲 | квадратик клітинка плитка чекбокс прапорець виділення курсор | tile cell frame checkbox selection cursor border
+🔳 | квадратик клітинка плитка рамка чекбокс виділення курсор | tile cell frame checkbox selection cursor border
+◼️ | квадратик клітинка плитка блок стіна піксель | tile cell block wall pixel
+◻️ | квадратик клітинка плитка підлога піксель | tile cell floor empty pixel
+◾ | квадратик клітинка піксель сегмент хвіст змійка | tile cell pixel segment tail snake
+◽ | квадратик клітинка піксель сегмент змійка | tile cell pixel segment snake
+▪️ | квадратик крапка піксель сегмент хвіст змійка їжа | dot pixel segment tail snake food bullet
+▫️ | квадратик крапка піксель сегмент змійка їжа | dot pixel segment snake food bullet
+🔴 | кружечок кулька фішка шашка куля крапка їжа | dot ball token piece checker disc bullet food
+🟠 | коло кружечок кулька фішка шашка крапка | dot ball token piece disc
+🟡 | коло кружечок кулька фішка монетка крапка пакмен | dot ball token piece coin pacman disc
+🟢 | коло кружечок кулька фішка крапка старт | dot ball token piece disc start
+🔵 | кружечок кулька фішка крапка шашка | dot ball token piece disc checker
+🟣 | коло кружечок кулька фішка крапка портал | dot ball token piece disc portal
+🟤 | коло кружечок кулька фішка крапка | dot ball token piece disc
+⚫ | кружечок кулька фішка шашка крапка діра яма реверсі | dot ball token piece checker stone hole reversi
+⚪ | кружечок кулька фішка шашка крапка пакмен реверсі | dot ball token piece checker pellet pacman reversi
+🔘 | кружечок важіль плита вибір радіокнопка | lever switch toggle pressure plate option
+🔶 | ромбик кристал самоцвіт коштовність фішка скарб | rhombus gem crystal jewel token loot
+🔷 | ромбик кристал самоцвіт коштовність фішка мана | rhombus gem crystal jewel token mana
+🔸 | ромбик кристалик самоцвіт фішка позначка | rhombus gem crystal shard marker
+🔹 | ромбик кристалик самоцвіт фішка позначка | rhombus gem crystal shard marker
+🔺 | трикутничок шип пастка стрілка вгору небезпека | spike trap arrow hazard cone warning
+🔻 | трикутничок шип пастка стрілка падіння | spike trap arrow hazard drop
+💠 | ромбик кристал самоцвіт руна артефакт плитка | rhombus gem crystal rune artifact tile
+🧊 | крига блок перешкода заморозка ковзанка сповільнення | block freeze frozen frost slippery obstacle
+🕳️ | яма пастка провалля нора отвір прірва | pit trap pitfall burrow abyss void gap
+🚧 | перешкода барʼєр шлагбаум блокада стіна | obstacle roadblock blockade fence wall
+🧡 | серденько сердечко життя здоровʼя хп | life health hp love
+💛 | серденько сердечко життя здоровʼя хп | life health hp
+💚 | серденько сердечко життя здоровʼя хп лікування | life health hp heal regen
+💙 | серденько сердечко життя здоровʼя хп мана | life health hp mana
+🩵 | серденько сердечко життя здоровʼя хп | life health hp
+💜 | серденько сердечко життя здоровʼя хп | life health hp
+🩷 | серденько сердечко життя здоровʼя хп | life health hp
+🤎 | серденько сердечко життя здоровʼя хп | life health hp love
+🖤 | серденько сердечко смерть прокляття темрява | life death curse darkness
+🩶 | серденько сердечко життя втрата порожнє | life lost empty hp
+🤍 | серденько сердечко життя порожнє хп | life empty hp health
+💔 | серденько життя втрата смерть поразка пошкодження | damage hurt death lose
+❤️‍🔥 | серденько життя вогонь бонус лють | life bonus rage powerup flame
+❤️‍🩹 | серденько аптечка відновлення регенерація хп життя | heal medkit regen restore health hp
+💖 | серденько сердечко бонус життя хп | life bonus extra powerup hp
+💗 | серденько сердечко життя бонус хп | life health bonus hp
+💓 | серденько життя хп здоровʼя | life health hp
+💞 | серденько сердечко життя бонус | life bonus hp
+💕 | серденько сердечко життя хп | life hp health
+💘 | серденько влучання пошкодження | hit damage
+💝 | серденько подарунок бонус | gift present bonus
+💟 | серденько сердечко | love
+❣️ | серденько увага тривога | alert warning
+🌟 | зірочка бонус непереможність нагорода очки маріо | powerup bonus invincibility reward points mario
+✨ | магія чари бонус сяйво блиск зірочка | glitter shine bonus powerup spell
+💫 | оглушення приголомшення зірочка удар | stun daze knockout hit
+🌠 | зірочка метеорит снаряд падіння | meteor meteorite projectile wish
+⚡ | енергія швидкість заряд бонус удар струм | energy speed power powerup charge shock
+🔥 | полумʼя вогник багаття пожежа небезпека пастка горіння | hazard trap blaze heat damage campfire
+💢 | лють злість ярість агресія | rage fury aggro
+💦 | втома витривалість калюжа | fatigue stamina puddle
+💨 | швидкість ривок прискорення дим втеча | speed boost sprint dodge wind
+💤 | пауза відпочинок очікування | idle pause rest afk
+💯 | рекорд перемога ідеально бонус | highscore record bonus win
+🫯 | битва сутичка зіткнення атака | battle combat clash attack melee
+🫟 | калюжа слиз клякса пастка | puddle slime goo splat trap
+💬 | репліка підказка нпс повідомлення | hint npc chat
+💭 | ідея мрія підказка | hint
+🗯️ | крик сварка вигук | shout yell
+🫧 | кисень повітря щит пухирець | air oxygen shield foam
+🎵 | музика мелодія звук пісня | melody song tune
+🎶 | мелодія звук пісня | melody song tune
+🌀 | портал телепорт вихор вир воронка | portal teleport vortex whirlpool spiral
+🌈 | райдуга бонус | bonus powerup
+☄️ | снаряд фаєрбол метеор удар | projectile fireball meteor asteroid
+💋 | цьомчик | smooch
+👁️‍🗨️ | огляд підказка | inspect look
+🗨️ | репліка нпс повідомлення | npc chat message

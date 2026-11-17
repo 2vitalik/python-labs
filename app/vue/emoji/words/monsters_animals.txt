@@ -1,0 +1,160 @@
+👾 | ворог моб чудовисько монстрик загарбник аркада інвейдер | enemy mob invader arcade sprite retro
+👻 | ворог пакмен привидик примара дух мара чудовисько | enemy pacman phantom spirit spook specter
+💀 | черепушка скелет ворог поразка небезпека пастка | skeleton enemy lose gameover hazard danger trap
+☠️ | отрута яд небезпека пастка поразка токсичний | poison toxic hazard danger pirate trap lose
+🧟 | ворог моб мертвяк чудовисько потвора майнкрафт | enemy mob monster ghoul corpse minecraft
+🧛 | ворог бос монстр чудовисько кровопивця вурдалак | enemy boss monster bloodsucker nosferatu lifesteal
+👹 | огр ворог бос чудовисько потвора демон оні | enemy boss oni demon brute giant
+👺 | ворог моб тенгу чудовисько потвора нечисть | enemy mob tengu imp demon minion
+😈 | ворог бос чорт чортик біс лиходій пекло | enemy boss imp villain fiend hell
+👿 | ворог бос чорт чортик біс злюка пекло | enemy boss fiend villain rage hell
+🤡 | блазень джокер жартівник нпс ворог | jester joker circus npc enemy
+👽 | інопланетянин іншопланетянин гуманоїд марсіанин ворог нпс космос | enemy npc martian invader humanoid
+🤖 | бот роботик андроїд кіборг автомат ворог нпс | bot android cyborg droid mech enemy npc ai
+🧌 | ворог бос велетень чудовисько потвора | enemy boss giant brute ogre
+🧞 | нпс союзник дух аладдін магія помічник | npc ally spirit aladdin magic helper
+🦹 | ворог бос антагоніст негідник | enemy boss antagonist nemesis baddie
+🫈 | ворог бос монстр чудовисько потвора бігфут | enemy boss monster beast snowman
+🎃 | гарбузик страшилка ворог бонус | spooky enemy bonus gourd
+🗿 | ідол істукан камінь брила перешкода скульптура | idol stone obstacle head totem sculpture
+💩 | какашка пастка перешкода | trap hazard
+🧟‍♂️ | ворог моб мертвяк чудовисько потвора майнкрафт | enemy mob monster ghoul corpse minecraft
+🧟‍♀️ | ворог моб мертвяк чудовисько потвора майнкрафт | enemy mob monster ghoul corpse minecraft
+🧛‍♂️ | ворог бос монстр чудовисько кровопивця вурдалак | enemy boss monster bloodsucker nosferatu lifesteal
+🧛‍♀️ | ворог бос монстр чудовисько кровопивця вурдалак | enemy boss monster bloodsucker nosferatu lifesteal
+🧞‍♂️ | нпс союзник дух аладдін магія помічник лампа бажання | npc ally spirit aladdin magic helper
+🧞‍♀️ | нпс союзник дух аладдін магія помічник лампа бажання | npc ally spirit aladdin magic helper
+🦹‍♂️ | ворог бос антагоніст негідник | enemy boss antagonist nemesis baddie
+🦹‍♀️ | ворог бос антагоніст негідник | enemy boss antagonist nemesis baddie
+🐉 | бос ворог чудовисько дракончик змій вогонь фентезі | boss enemy monster wyrm fire fantasy
+🐲 | бос ворог чудовисько дракончик змій вогонь | boss enemy monster wyrm fire fantasy
+🦖 | ворог бос діно динозаврик хижак ящір | enemy boss dino predator jurassic
+🦕 | діно динозаврик травоїдний нпс | dino herbivore longneck npc
+🕷️ | ворог моб павучок отрута тарантул | enemy mob arachnid tarantula venom
+🕸️ | пастка перешкода сповільнення тенета сітка | trap obstacle slow sticky cobweb net
+🦂 | ворог моб отрута жало пустеля | enemy mob poison venom stinger desert
+🦇 | ворог моб кажанчик летюча миша печера ніч | enemy mob cave flying night
+🐍 | змійка гравець голова ворог отрута кобра пітон | player head enemy poison viper cobra python
+🦈 | ворог бос хижак щелепи небезпека море | enemy boss predator jaws hazard sea
+🐊 | ворог моб небезпека болото річка | enemy mob hazard alligator gator swamp predator
+🐺 | ворог моб вовчик зграя ліс перевертень | enemy mob predator pack howl werewolf
+🐙 | ворог бос кракен спрут щупальце море чорнило | enemy boss kraken tentacle ink sea
+🦑 | ворог кракен щупальце чорнило море | enemy kraken tentacle ink sea
+🦠 | ворог моб зараза інфекція слайм слиз отрута | enemy mob germ infection slime blob poison
+🐛 | баг помилка гусениця ворог моб жучок | caterpillar larva enemy mob error glitch
+🪲 | ворог моб баг помилка скарабей | enemy mob scarab error glitch
+🐝 | бджілка джміль ворог моб жало мед вулик | enemy mob sting stinger hive swarm
+🦟 | ворог моб шкідник кровопивця комарик | enemy mob bloodsucker gnat buzz
+🪳 | ворог моб тарганчик гидота | enemy mob bug vermin
+🐀 | ворог моб гризун шкідник підземелля | enemy mob rodent vermin pest sewer dungeon
+🐗 | ворог моб ікло ліс дикий | enemy mob hog tusk wild forest
+🦍 | ворог бос конг примат силач | enemy boss kong ape primate
+🦅 | ворог беркут яструб сокіл гриф | enemy hawk falcon raptor
+🪼 | ворог пастка небезпека отрута | enemy trap hazard poison
+🦀 | ворог моб крабик клешня пляж | enemy mob claw pincer beach
+🐱 | котик кицька киця кішка гравець нпс | meow feline player npc
+🐶 | песик собачка цуценя цуцик гравець нпс | doggo pup woof player npc
+🐭 | мишка мишеня гризун | rodent squeak
+🐹 | хомʼячок гризун | rodent
+🐰 | зайчик зайка | hare hop
+🦊 | лисичка хитрун ворог | vixen sly enemy
+🐻 | ведмедик клишоногий ворог бос | teddy enemy boss
+🐼 | пандочка бамбук |
+🐸 | жабка ропуха фроггер гравець стрибок | toad frogger player jump hop
+🐵 | мавпочка примат | ape primate chimp
+🐷 | свинка хрюша ферма ворог | piggy oink hog enemy
+🐮 | корівка ферма молоко нпс | cattle npc
+🐔 | курочка кура ферма яйце нпс | hen farm egg cluck npc
+🐧 | пінгвінчик лід антарктида гравець | ice tux player
+🐦 | птиця пташечка горобець флеппі гравець | flappy birdie tweet sparrow player
+🐤 | пташеня ціпочка | birdie
+🐟 | рибка улов ресурс їжа рибалка | catch resource food
+🐠 | рибка акваріум немо | aquarium nemo reef
+🐢 | черепашка панцир повільний маріо ворог | shell slow koopa mario enemy
+🐞 | божа жук удача | bug luck
+🦋 | політ | flutter
+🐌 | повільний мушля | slow shell
+🐜 | мурашка мурашник колонія ворог | colony anthill worker enemy
+🐒 | мавпочка примат банан | ape primate chimp
+🦧 | орангутан |
+🐕 | песик собачка цуценя союзник нпс | doggo pup woof ally companion npc
+🦮 | песик союзник | ally companion
+🐕‍🦺 | песик союзник вівчарка охоронець | ally companion guard
+🐩 | песик собачка | doggo pup
+🦝 | єнотик злодюжка ворог | thief bandit enemy
+🐈 | котик кицька киця кішка гравець нпс | kitty meow feline player npc
+🐈‍⬛ | котик киця кицька прокляття відьма | kitty kitten curse witch
+🦁 | ворог бос цар звір грива | enemy boss king beast
+🐯 | ворог бос тигреня звір | enemy boss beast cub
+🐅 | ворог бос звір смугастий | enemy boss beast striped
+🐆 | гепард ягуар пантера ворог швидкість | cheetah jaguar panther enemy speed
+🐴 | конячка коник шахи фігура | pony knight chess piece
+🫎 | сохатий ліс | forest
+🫏 | віслючок вантаж |
+🐎 | конячка коник скакун верхи швидкість транспорт | pony steed mount ride speed
+🦄 | поні магія бонус фентезі ріг | pony magic bonus fantasy horn
+🦓 | савана | savanna
+🦌 | оленятко лань козуля ліс | fawn stag doe reindeer forest
+🦬 | прерія | prairie
+🐂 | бичок роги таран ворог | horns charge enemy
+🐃 | буйвол роги | horns
+🐄 | корівка худоба ресурс нпс | cattle resource npc
+🐖 | свинка хрюша ферма ресурс ворог | piggy hog oink resource enemy
+🐽 | хрюша нюх | oink sniff
+🐏 | баранчик роги таран ворог | charge enemy
+🐑 | овечка отара ресурс нпс | flock resource npc
+🐐 | коза кізка козеня нпс | npc
+🐪 | караван транспорт | caravan mount
+🐫 | сахара транспорт | caravan mount
+🦙 | плювок | spit
+🦒 | жираф савана | savanna
+🐘 | слоник слоненя хобот шахи | trunk
+🦣 | бос ворог льодовиковий | boss enemy ice
+🦏 | ворог бос таран ріг броня | rhino enemy boss charge armor
+🦛 | бегемотик річка | river
+🐁 | мишка мишеня гризун гравець | rodent squeak player
+🐇 | зайчик зайка гравець | hare hop player
+🐿️ | білочка горішок | nut
+🦫 | бобрик будівельник | builder
+🦔 | їжачок сонік шипи ворог | sonic spikes enemy
+🐻‍❄️ | ведмедик лід північ ворог | ice north enemy
+🐨 | австралія евкаліпт | eucalyptus
+🦥 | ледар лінь | sluggish
+🦦 | річка | river
+🦨 | вонючка смердюк газ отрута ворог | gas poison smelly enemy
+🦘 | боксер | hop boxer
+🦡 | нора | burrow
+🐾 | позначка шлях стежка маршрут | marker trail track path footprint
+🦃 | ферма | farm
+🐓 | півник ранок будильник ферма | cockerel morning alarm farm
+🐣 | яйце пташеня спавнер народження | hatchling spawner spawn birth
+🐥 | курчатко пташеня ціпа | birdie
+🕊️ | голубка голубок пошта вісник | pigeon messenger mail
+🦆 | качечка каченя ціль | quack duckling target
+🦢 | |
+🦉 | совушка мудрець підказка нпс | hint sage night npc
+🦤 | |
+🪶 | пушинка легкість стрибок бонус | quill float jump bonus
+🦩 | |
+🦚 | |
+🦜 | компаньйон союзник нпс | companion ally npc
+🪽 | крильце бонус підсилення стрибок швидкість | powerup bonus jump speed flight
+🐦‍⬛ | галка ворог | enemy
+🪿 | гусеня ферма ворог | gosling farm enemy
+🐦‍🔥 | вогонь воскресіння безсмертя бонус бос | fire respawn resurrection bonus boss
+🦎 | ворог моб гекон саламандра ящір | enemy mob gecko salamander
+🐳 | море докер | sea docker
+🐋 | море океан бос | sea boss
+🐬 | дельфінчик море союзник | sea ally
+🫍 | вбивця хижак ворог бос | killer predator enemy boss
+🦭 | тюленчик нерпа лід | ice
+🐡 | фугу отрута шипи ворог пастка | pufferfish fugu poison spikes enemy trap
+🐚 | черепашка раковина пляж предмет скарб | seashell item treasure
+🪸 | перешкода дно | obstacle seabed
+🦞 | ворог | enemy crayfish
+🦐 | | prawn
+🦪 | скарб предмет | treasure item
+🫌 | політ | flutter
+🦗 | сарана ворог моб стрибок | locust enemy mob jump
+🪰 | мушка ворог моб | housefly buzz enemy mob
+🪱 | хробачок червʼячок вормс змійка | worms bait snake

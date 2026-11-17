@@ -1,0 +1,111 @@
+🔑 | ключик відмичка предмет доступ | pickup item access keycard
+🗝️ | ключик відмичка предмет підземелля зельда | pickup item unlock dungeon skeleton zelda
+💎 | алмаз самоцвіт кристал скарб лут очки фішка майнкрафт | crystal treasure loot pickup points bonus token minecraft
+🪙 | монетка бонус очки рахунок лут ресурс маріо | pickup bonus score points loot currency mario
+💰 | мішечок скарб лут золото багатство здобич бонус очки | loot treasure pickup bonus score sack wealth
+🪎 | сундук скринька лут нагорода бонус предмет схованка | reward bonus item pickup stash coffer
+👑 | вінець дамка шашки лідер чемпіон перемога бонус | checkers draughts leader champion bonus
+🏆 | ціль фініш рекорд досягнення чемпіон рахунок | goal finish record achievement cup award highscore
+🥇 | перемога переможець чемпіон рекорд лідер нагорода | winner champion record leader award highscore
+🥈 | призер нагорода рейтинг пʼєдестал | award ranking podium
+🥉 | призер нагорода рейтинг пʼєдестал | award ranking podium
+🏅 | нагорода досягнення відзнака перемога бонус | achievement badge bonus prize reward
+🎖️ | орден досягнення звання ранг | achievement badge rank honor
+🎁 | бонус приз нагорода предмет лутбокс | bonus prize reward pickup powerup lootbox mystery
+📦 | ящик коробка вантаж предмет сокобан | crate sokoban cargo item supply
+💍 | перстень обручка кільце артефакт скарб предмет | artifact treasure item jewelry loot
+🧪 | зілля еліксир колба мана бонус отрута | potion elixir flask mana powerup poison
+⚗️ | колба зілля еліксир алхімія крафт | potion elixir flask alchemy crafting
+💊 | таблетка лікування здоровʼя хп бонус пакмен | heal health hp powerup capsule pacman
+🩹 | лікування здоровʼя хп аптечка бинт | heal health hp medkit plaster bandaid
+💉 | лікування здоровʼя хп аптечка стимулятор | heal health hp medkit stimpack injection
+🩸 | здоровʼя хп життя поранення шкода | health hp life damage wound
+🔮 | магія мана артефакт сфера орб чари | mana artifact orb sphere spell
+🪄 | заклинання мана зброя артефакт чари | spell mana weapon artifact sorcery
+📜 | заклинання квест завдання записка підказка предмет | spell quest note hint item parchment
+🗺️ | мапа рівень локація мінікарта | level location minimap atlas overworld
+🧭 | курс північ підказка предмет | heading north hint item bearing
+⏳ | час відлік ліміт хід бонус | time countdown limit turn bonus clock
+⌛ | ліміт кінець хід | countdown limit timeout turn
+🧿 | захист артефакт щит бонус | protection artifact shield ward
+🪬 | артефакт оберіг щит | artifact charm ward
+🔒 | двері перешкода блокування барʼєр | door obstacle blocked barrier
+🔓 | двері прохід доступ | door passage access
+🔐 | двері сейф доступ пароль | door safe access password
+🔏 | шифр | cipher
+💵 | готівка кеш ресурс лут бонус | cash resource loot pickup
+💴 | готівка | cash
+💶 | готівка | cash
+💷 | готівка | sterling
+💸 | витрата втрата штраф | spend loss penalty
+💳 | перепустка доступ оплата | keycard pass access payment
+🏺 | ваза горщик глечик скарб предмет зельда | vase pot urn treasure item breakable zelda
+📿 | амулет артефакт | amulet artifact rosary
+🧸 | ведмежа колекція | collectible
+💌 | записка послання листівка конверт | note message envelope
+📖 | заклинання підказка правила знання гримуар | spellbook grimoire tome hint rules lore
+🎒 | інвентар наплічник спорядження торба | inventory gear equipment storage
+🧳 | інвентар речі | inventory baggage
+👛 | гаманчик капшук золото лут | wallet pouch loot gold
+💼 | дипломат документи | business documents
+⏰ | час таймер тривога | timer countdown wakeup
+⏱️ | час таймер відлік рекорд швидкість | timer countdown speedrun record speed
+🔔 | сигнал тривога сповіщення | alarm signal notification ring
+🔋 | енергія заряд бонус ресурс | energy charge powerup cell
+💡 | підказка лампа освітлення перемикач | hint lamp switch tip
+🕯️ | вогник вогонь освітлення | fire flame lighting
+🔦 | освітлення промінь видимість ліхтар | lighting beam vision
+🧲 | магнітик бонус підсилювач | powerup bonus pull
+⭐ | зірочка бонус очки невразливість маріо рейтинг | bonus points score invincibility powerup mario rating
+❤️ | серденько сердечко життя здоровʼя хп лікування бонус зельда | life health hp heal pickup bonus zelda
+🍎 | яблучко змійка бонус очки | snake pickup bonus points
+🍄 | грибочок маріо бонус підсилювач життя | mario powerup bonus life shroom
+🧾 | |
+💹 | біржа | stock
+🩼 | поранення сповільнення | wound slow debuff
+🩺 | лікування здоровʼя медик | heal health medic
+🩻 | знімок просвічування | vision scan
+⚔️ | бій битва атака дуель арена сутичка | battle fight combat attack duel melee arena
+🗡️ | клинок атака удар лезо | blade sword melee attack stab
+🔪 | лезо клинок атака удар | blade melee attack stab
+🏹 | снаряд постріл стрільба мисливець | projectile ranged shot hunter
+🛡️ | захист броня оборона бонус невразливість | defense armor protection powerup bonus guard
+🔫 | постріл стрільба куля патрони бластер снаряд | shot bullet ammo blaster projectile shooter
+💣 | бомбочка міна сапер бомбермен небезпека пастка вибухівка | mine minesweeper bomberman hazard trap explosive tnt
+🧨 | бомба тротил пастка небезпека бомбермен | tnt bomb trap hazard bomberman
+🪓 | сокирка топірець зброя інструмент лісоруб майнкрафт | weapon tool lumberjack minecraft
+🔱 | зброя спис вила герб посейдон | weapon spear pitchfork neptune
+🪃 | снаряд кидок зельда | projectile throw return zelda
+🔨 | зброя будівництво крафт кувалда | weapon build crafting mallet warhammer
+⚒️ | крафт кузня шахта видобуток | crafting forge mining smithing
+🛠️ | ремонт крафт будівництво налаштування | repair crafting build settings fix
+⛏️ | кайло видобуток копання майнкрафт ресурс шахтар | pickaxe dig minecraft miner resource
+🪏 | розкопки скарб інструмент лопатка | excavate treasure tool
+🪚 | крафт будівництво | crafting build
+🔧 | налаштування крафт механік лагодження | settings repair fix mechanic crafting
+🪛 | лагодження налаштування | repair fix
+🔩 | деталь запчастина ресурс крафт | scrap resource crafting hardware
+⚙️ | шестерня механізм деталь опції | settings mechanism options machine
+🗜️ | лещата прес | press crusher
+🪝 | пастка гарпун пірат | grapple hookshot trap pirate
+⛓️ | кайдани полон пастка вʼязниця | shackles prisoner trap jail
+⛓️‍💥 | звільнення втеча | escape release unchained
+🔗 | лінк | chain connection url
+🪤 | капкан небезпека засідка | hazard ambush
+🧰 | ящик інвентар ремонт крафт | kit inventory repair crafting
+🪖 | броня захист танчики бонус | armor defense tanks powerup
+⛑️ | броня аптечка лікування медик | armor medic medkit heal
+🥊 | удар атака бій кулак | punch attack fight knockout fist
+🎣 | риболовля улов | rod catch angling
+🧯 | пожежник захист | firefighter safety
+✂️ | цуефа ножички | shears snip
+🧹 | очищення чистка | clear janitor
+🪣 | вода ресурс майнкрафт предмет | water resource minecraft item
+💥 | удар шкода влучання атака бабах | explosion hit damage impact blast crash
+🎯 | фініш приціл мета дартс | goal finish aim crosshair objective
+🥋 | боєць файтинг | fighter kimono
+🤺 | мечник воїн лицар дуель гравець ворог | swordsman warrior knight duel player enemy
+🪍 | ловля | capture
+⚖️ | баланс суд закон | judge court law
+🦯 | палиця ціпок | stick
+🪜 | сходи підйом вихід рівень драбинка платформер | stairs exit level ascend platformer

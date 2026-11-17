@@ -1,0 +1,128 @@
+🍒 | вишенька черешенька фрукт бонус очки пакмен | food pickup bonus points pacman
+🍓 | полуничка суниця фрукт бонус очки пакмен | food pickup bonus points pacman
+🍌 | бананчик бонус пастка шкірка | food pickup bonus trap peel
+🍇 | гроно китиця фрукт бонус | food bunch pickup bonus
+🍉 | кавунчик скибка фрукт бонус | food pickup bonus
+🍊 | мандаринка апельсин апельсинчик бонус очки пакмен | food mandarin clementine pickup bonus points pacman
+🍋 | лимончик кислятина фрукт їжа бонус | food pickup bonus
+🍑 | персичок бонус | food pickup bonus
+🍐 | грушка бонус | food pickup bonus
+🥕 | морквинка кролик бонус ферма урожай | rabbit bunny pickup bonus farm crop
+🌽 | качанчик ферма урожай врожай лабіринт | cob corncob harvest
+🍄‍🟫 | грибочок бонус ресурс майнкрафт ліс | powerup bonus resource minecraft forage
+🥔 | картоплина картопелька бульба урожай ферма | spud tater harvest farm crop
+🍅 | помідорчик черрі урожай ферма | harvest farm crop
+🌶️ | перчик пекучий вогонь бонус швидкість | chili chilli jalapeno spicy fire powerup speed
+🍞 | хлібчик батон буханка голод ситість лікування майнкрафт | hunger heal ration minecraft
+🧀 | сирок приманка миша мишоловка лабіринт ціль бонус | food bait mouse mousetrap maze goal pickup
+🍖 | мосол окіст лікування здоровʼя голод бонус | food ham heal health hunger bonus
+🍗 | стегенце гомілка курятина лікування здоровʼя бонус | food heal health bonus
+🥩 | біфштекс вирізка шмат лікування здоровʼя голод | food beef heal health hunger
+🥚 | яєчко яйко писанка крашанка спавнер вилуплення бонус | easter spawner hatch pickup bonus
+🍕 | скибочка фастфуд доставка бонус лікування | fastfood delivery bonus heal
+🍔 | котлета булка фастфуд бонус лікування | cheeseburger patty bun bonus heal
+🍟 | картопелька соломка фастфуд бонус | chips frites bonus
+🌭 | хотдог сосисочка булка фастфуд | wiener bun fastfood
+🍩 | донат пампушка ласощі солодощі бонус | treat pastry bonus
+🍪 | печенька печивко коржик ласощі бонус | biscuit treat bonus clicker
+🎂 | тортик днюха нагорода ціль фініш | reward prize goal finish party
+🍰 | тортик ласощі смаколик бонус нагорода | treat reward bonus
+🍫 | шоколадка ласощі бонус енергія | snack treat bonus energy
+🍬 | цукерочка карамелька ласощі бонус фішка | treat caramel toffee bonus pickup piece
+🍭 | чупачупс карамелька ласощі бонус | lolly sucker treat bonus
+🍯 | медок ведмідь вінні пух приманка бонус | pooh winnie bait bonus
+🥛 | молочко зілля лікування бонус | potion heal bonus
+☕ | кавочка чайок чашка горнятко енергія бонус швидкість | cup mug espresso java energy bonus speed
+🧃 | сочок коробочка зілля бонус | carton juicebox potion bonus
+🍺 | пивко таверна корчма | tavern inn pub
+🍷 | винце кубок зілля таверна | goblet potion tavern
+🍈 | динька бонус очки пакмен | food honeydew pickup bonus points pacman
+🍋‍🟩 | фрукт їжа бонус | food bonus
+🍍 | ананасик бонус | food pickup bonus
+🥭 | бонус | pickup bonus
+🍏 | яблучко бонус ціль отрута | food pickup bonus goal poison
+🫐 | ягідка чорничка голубика бонус | huckleberry pickup bonus
+🥝 | бонус | fruit pickup bonus
+🫒 | маслина маслинка | 
+🥥 | кокосик горіх острів бонус | nut island tropical bonus
+🥑 | гуакамоле | guacamole avo
+🍆 | урожай ферма | harvest farm
+🫑 | перчик урожай ферма | paprika harvest farm
+🥒 | огірочок урожай ферма | cuke harvest farm
+🫝 | огірочок соління | dill
+🥬 | салатик листочок урожай ферма | leaf harvest farm
+🥦 | брокколі кущик урожай ферма | bush harvest farm veggie
+🧄 | часничок вампір захист оберіг | vampire repel protection ward aura
+🧅 | цибулина цибулька сльози | tears layers
+🥜 | горішок білка бонус | groundnut squirrel bonus
+🫘 | квасолька насінина | seed
+🌰 | каштанчик жолудь горішок білка бонус | acorn nut squirrel bonus
+🫚 | інгредієнт алхімія зілля | ingredient alchemy potion
+🫛 | горошина стручечок снаряд | peashooter projectile
+🫜 | урожай ферма | harvest farm crop
+🥐 | рогалик круасанчик бонус | pastry bonus
+🥖 | батон лікування | loaf heal
+🫓 | перепічка коржик | tortilla roti
+🥨 | калач | knot
+🥯 | бейгель | 
+🥞 | млинчик оладка масниця | flapjack syrup
+🧇 | вафелька ласощі | treat
+🥓 | сало шкварка мʼясо | rasher strip
+🥪 | бутерброд канапка лікування бонус | sub heal bonus
+🌮 | | tortilla
+🌯 | бурито шаурма шаверма | shawarma roll
+🫔 | | tamal
+🥙 | шаурма шаверма донер гірос | shawarma doner pita
+🧆 | котлетка | 
+🍳 | сковорідка кухня кухар плита | skillet kitchen cook stove overcooked
+🥘 | паела казанок страва | dish stew
+🍲 | казанок казан юшка борщ варево | cauldron broth hotpot dish
+🫕 | казанок котел варево | cauldron brew
+🥣 | мисочка вівсянка пластівці тарілка | soup dish
+🥗 | салатик лікування здоровʼя | veggie diet heal health
+🍿 | кіно кінотеатр | cinema snack
+🧈 | маслечко | 
+🧂 | | seasoning
+🥫 | консерва бляшанка тушкованка припаси лікування | tin supplies ration heal
+🍱 | ланчбокс | lunchbox lunch
+🍘 | | senbei
+🍙 | онігірі | onigiri
+🍚 | | bowl
+🍛 | каррі | 
+🍜 | мівіна бічпакет | udon
+🍝 | спагетті макарони макаронина | macaroni noodle
+🍠 | картопля картоплина | yam
+🍢 | шашлик шпажка | 
+🍣 | рол | roll maki nigiri
+🍤 | креветочка | 
+🍥 | наруто камабоко | naruto kamaboko
+🥮 | | mooncake
+🍡 | моті | mochi
+🥟 | вареничок хінкалі | varenyk wonton dimsum
+🥠 | підказка доля удача | hint luck tip
+🥡 | вок | wok
+🍦 | морозивко ласощі | cone gelato treat
+🍧 | | snowcone slushie
+🍨 | морозивко пломбір ласощі | sundae gelato treat
+🧁 | кексик мафін бонус | muffin bonus
+🥧 | пиріжок шарлотка лікування бонус | tart heal bonus
+🍮 | флан | flan
+🍼 | соска малюк | formula
+🫖 | чайничок лампа джин | kettle lamp genie
+🍵 | матча зілля лікування | matcha potion heal
+🍶 | глечик пляшечка зілля | flask jug potion
+🍾 | перемога святкування салют | champagne celebration win victory
+🍸 | келих | 
+🍹 | пляж відпустка | beach vacation
+🍻 | таверна корчма | tavern inn
+🥂 | тост келих перемога | toast cheers win
+🥃 | шот таверна | tavern bourbon
+🫗 | калюжа пастка | puddle trap
+🥤 | газованка газівка кола лимонад зілля | cola lemonade potion
+🧋 | бабл тапіока | tapioca
+🧉 | | gourd yerba
+🥢 | | 
+🍽️ | ресторан їдальня трапеза | restaurant meal dining
+🍴 | їдальня трапеза | dining meal
+🥄 | ложечка | teaspoon
+🫙 | баночка слоїчок зілля | potion vessel mason

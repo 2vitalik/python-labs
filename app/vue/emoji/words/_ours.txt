@@ -1,0 +1,13 @@
+# our own additions and corrections on top of the batches (build.mjs adds every file's words together)
+🐍 | змійка хвіст сегмент голова | tail segment head
+🟢 | змійка хвіст сегмент голова | snake tail segment head
+🟩 | хвіст голова | tail head
+🌱 | трава травичка | grass
+🌾 | трава | grass
+🍀 | трава | grass
+🧱 | стінка | 
+🌊 | хвилі | 
+⭐ | зірка | 
+🚜 | танчик | 
+🧍 | головний | main
+👾 | прибулець монстрик | 

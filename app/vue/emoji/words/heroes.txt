@@ -1,0 +1,312 @@
+🧍 | гравець персонаж чоловічок нпс герой аватар | player character npc hero avatar idle
+🚶 | гравець персонаж чоловічок нпс перехожий мандрівник хода | player character npc traveler wanderer walker
+🏃 | гравець персонаж чоловічок бігун втікач спринт прискорення | player character runner sprint dash escape boost
+🧙 | герой персонаж ворог нпс бос мана заклинання відьмак | hero enemy npc boss mana caster warlock necromancer
+🥷 | гравець герой ворог персонаж розбійник злодій сюрікен | player hero enemy rogue thief shuriken shinobi
+🦸 | гравець персонаж рятівник захисник посилення непереможність | player character savior protector powerup invincible champion
+🧝 | герой персонаж союзник лучник нпс фентезі | hero character ally archer ranger npc
+🧚 | союзник помічник нпс феєчка лікування хілер зельда | ally helper npc heal healer sprite zelda
+🧜 | нпс ворог водяник тритон | npc enemy mermaid merman
+👼 | життя воскресіння душа херувим амур рай смерть | life respawn soul cherub cupid death heaven
+🤴 | герой персонаж нпс царевич рятівник | hero character npc heir rescuer
+👸 | ціль порятунок нпс персонаж царівна маріо зельда | goal rescue npc character peach mario zelda
+🫅 | бос правитель володар нпс фігура шахи | king queen boss ruler lord npc piece chess
+💂 | охоронець вартовий страж солдат ворог нпс патруль | sentry sentinel guardian soldier enemy npc patrol
+👮 | охоронець страж ворог нпс патруль шериф | guard enemy npc patrol policeman sheriff
+🕵️ | гравець персонаж нпс агент слідчий шерлок | player character npc agent investigator sherlock
+🧑‍🚀 | гравець герой персонаж астронавт космос скафандр | player hero character spaceman cosmonaut spacesuit
+🧑‍🌾 | фермер хлібороб нпс врожай ферма | npc peasant villager harvest crop
+🧑‍🍳 | нпс торговець їжа кухня кулінар | npc vendor food kitchen meal
+🧑‍🔧 | ремонтник інженер нпс ремонт маріо | repair engineer technician npc fixer mario
+🧑‍🚒 | гравець рятувальник пожежа вогонь гасіння шланг | player rescuer fireman extinguish hose water
+👷 | нпс майстер юніт будова інженер | npc builder engineer unit peon
+🧑‍✈️ | гравець персонаж льотчик авіатор капітан | player character aviator captain airplane
+🧑‍🔬 | нпс вчений лабораторія алхімік дослідження | npc researcher lab alchemist research
+🧑‍⚕️ | хілер цілитель лікування аптечка здоровʼя союзник нпс | healer heal medic medkit ally npc hp
+🧑‍💻 | хакер айтішник кодер гравець персонаж | hacker programmer geek nerd player
+🎅 | подарунок зима нпс | gift winter npc
+🏇 | вершник кавалерія наїзник | rider horseman cavalry race
+🧗 | гравець персонаж драбина підйом | player character ladder ascend
+🏊 | гравець персонаж пірнання басейн | player character water dive pool
+🚣 | гравець переправа пліт | player crossing ferry
+🤸 | стрибок сальто перемога радість | jump acrobat victory win
+👶 | малюк маля нпс порятунок | npc kid toddler rescue
+🧒 | гравець персонаж чоловічок малюк нпс | player character npc youngster
+👦 | гравець персонаж чоловічок герой нпс хлопчина | player character hero npc lad
+👧 | гравець персонаж героїня нпс дівча | player character heroine npc lass
+🧑 | гравець персонаж герой чоловічок нпс аватар | player character hero npc avatar human
+👨 | гравець персонаж герой чоловічок нпс аватар дядько | player character hero npc avatar guy human
+👩 | гравець персонаж героїня нпс аватар тітка | player character heroine npc avatar human
+🧓 | нпс мудрець старець наставник квест | npc sage elder mentor quest
+👴 | нпс мудрець старець дід наставник квест | npc sage elder mentor quest
+👵 | нпс знахарка баба квест | npc elder sage quest
+👤 | гравець профіль аватар користувач невідомий анонім нпс | player profile avatar user unknown anonymous npc account
+👥 | команда група натовп мультиплеєр союзник гравець | team group crowd multiplayer ally party
+👣 | шлях стежка маршрут позначка крок | path trail track marker step visited
+🤶 | подарунок нпс | gift winter npc
+🧑‍🎄 | подарунок зима нпс | gift winter npc
+🦸‍♂️ | гравець персонаж рятівник захисник посилення непереможність | player character savior protector powerup invincible champion
+🦸‍♀️ | гравець персонаж рятівник захисник посилення непереможність | player character savior protector powerup invincible champion
+🧙‍♂️ | маг герой персонаж ворог нпс бос мана заклинання | hero enemy npc boss mana caster warlock necromancer
+🧙‍♀️ | маг герой персонаж ворог нпс бос мана заклинання | hero enemy npc boss mana caster warlock necromancer
+🧚‍♂️ | союзник помічник нпс феєчка лікування хілер зельда | ally helper npc heal healer sprite zelda
+🧚‍♀️ | союзник помічник нпс феєчка лікування хілер зельда | ally helper npc heal healer sprite zelda
+🧜‍♂️ | нпс ворог водяник | npc enemy merfolk
+🧜‍♀️ | нпс ворог сирена | npc enemy merfolk
+🧝‍♂️ | герой персонаж союзник лучник нпс фентезі | hero character ally archer ranger npc
+🧝‍♀️ | герой персонаж союзник лучник нпс фентезі | hero character ally archer ranger npc
+👨‍⚕️ | хілер цілитель лікування аптечка союзник нпс | healer heal medic medkit ally npc hp
+👩‍⚕️ | хілер цілитель лікування аптечка союзник нпс | healer heal medic medkit ally npc hp
+🧑‍🎓 | учень навчання | pupil learner
+👨‍🎓 | учень навчання | pupil learner
+👩‍🎓 | учень навчання | pupil learner
+🧑‍🏫 | наставник нпс підказка навчання | mentor npc tutorial hint tutor
+👨‍🏫 | наставник нпс підказка навчання | mentor npc tutorial hint tutor
+👩‍🏫 | наставник нпс підказка навчання | mentor npc tutorial hint tutor
+🧑‍⚖️ | суд вирок арбітр | court verdict referee
+👨‍⚖️ | суд вирок арбітр | court verdict referee
+👩‍⚖️ | суд вирок арбітр | court verdict referee
+👨‍🌾 | селянин хлібороб нпс врожай ферма | npc peasant villager harvest crop
+👩‍🌾 | селянин хлібороб нпс врожай ферма | npc peasant villager harvest crop
+👨‍🍳 | куховар нпс торговець їжа кухня | npc vendor food kitchen meal
+👩‍🍳 | куховар нпс торговець їжа кухня | npc vendor food kitchen meal
+👨‍🔧 | ремонтник інженер нпс ремонт маріо | repair engineer technician npc fixer mario
+👩‍🔧 | ремонтник інженер нпс ремонт маріо | repair engineer technician npc fixer mario
+🧑‍🏭 | крафт виробництво нпс | craft production npc
+👨‍🏭 | крафт виробництво нпс | craft production npc
+👩‍🏭 | крафт виробництво нпс | craft production npc
+🧑‍💼 | нпс клерк банкір торговець | npc clerk banker trader
+👨‍💼 | нпс клерк банкір торговець | npc clerk banker trader
+👩‍💼 | нпс клерк банкір торговець | npc clerk banker trader
+👨‍🔬 | нпс вчений лабораторія алхімік дослідження | npc researcher lab alchemist research
+👩‍🔬 | нпс вчений лабораторія алхімік дослідження | npc researcher lab alchemist research
+👨‍💻 | хакер айтішник кодер гравець персонаж | hacker programmer geek nerd player
+👩‍💻 | хакер айтішник кодер гравець персонаж | hacker programmer geek nerd player
+🧑‍🎤 | бард музикант нпс | bard musician npc
+👨‍🎤 | бард музикант нпс | bard musician npc
+👩‍🎤 | бард музикант нпс | bard musician npc
+🧑‍🎨 | маляр малювання | painter painting
+👨‍🎨 | малювання | painter painting
+👩‍🎨 | малювання | painter painting
+👨‍✈️ | гравець персонаж | player character aviator captain airplane
+👩‍✈️ | гравець персонаж капітан | player character aviator captain airplane
+👨‍🚀 | гравець герой персонаж скафандр | player hero character spaceman cosmonaut spacesuit
+👩‍🚀 | гравець герой персонаж космос скафандр | player hero character spaceman cosmonaut spacesuit
+👨‍🚒 | гравець рятувальник пожежа вогонь гасіння шланг | player rescuer fireman extinguish hose water
+👩‍🚒 | гравець рятувальник пожежа вогонь гасіння шланг | player rescuer fireman extinguish hose water
+👮‍♂️ | коп охоронець страж ворог нпс патруль шериф | guard enemy npc patrol policeman sheriff
+👮‍♀️ | охоронець страж ворог нпс патруль шериф | guard enemy npc patrol policeman sheriff
+🕵️‍♂️ | гравець персонаж нпс агент слідчий шерлок | player character npc agent investigator sherlock
+🕵️‍♀️ | гравець персонаж нпс агент слідчий шерлок | player character npc agent investigator sherlock
+💂‍♂️ | охоронець солдат ворог нпс патруль | sentry sentinel guardian soldier enemy npc patrol
+💂‍♀️ | солдат ворог нпс патруль | sentry sentinel guardian soldier enemy npc patrol
+👷‍♂️ | нпс майстер юніт будова інженер | npc builder engineer unit peon
+👷‍♀️ | нпс майстер юніт будова інженер | npc builder engineer unit peon
+👳 | чалма султан нпс | sultan npc merchant
+👳‍♂️ | чалма султан нпс | sultan npc merchant
+👳‍♀️ | чалма султан нпс | sultan npc merchant
+👲 | тюбетейка нпс | npc
+🧕 | хустка нпс | scarf npc
+🤵 | дворецький агент нпс | butler agent npc suit
+🤵‍♂️ | дворецький агент нпс | butler agent npc suit
+🤵‍♀️ | дворецький агент нпс | butler agent npc suit
+👰 | шлюб | bride marriage
+👰‍♂️ | шлюб | marriage
+👰‍♀️ | наречена шлюб | marriage
+🤰 | мама | mother expecting
+🫃 | обжора товстун | glutton
+🫄 | обжора товстун | glutton
+🤱 | |
+👩‍🍼 | няня пляшечка | babysitter bottle
+👨‍🍼 | няня пляшечка | babysitter bottle
+🧑‍🍼 | няня пляшечка | babysitter bottle
+👱 | гравець персонаж нпс | player character npc
+🧔 | персонаж нпс гном дворф | character npc dwarf viking
+🧔‍♂️ | персонаж нпс гном дворф | character npc dwarf viking
+🧔‍♀️ | персонаж нпс гном дворф | character npc dwarf viking
+👨‍🦰 | гравець персонаж нпс | player character npc
+👨‍🦱 | гравець персонаж нпс | player character npc
+👨‍🦳 | гравець персонаж нпс | player character npc
+👨‍🦲 | гравець персонаж нпс | player character npc
+👩‍🦰 | гравець персонаж нпс | player character npc
+🧑‍🦰 | гравець персонаж нпс | player character npc
+👩‍🦱 | гравець персонаж нпс | player character npc
+🧑‍🦱 | гравець персонаж нпс | player character npc
+👩‍🦳 | гравець персонаж нпс | player character npc
+🧑‍🦳 | гравець персонаж нпс | player character npc
+👩‍🦲 | гравець персонаж нпс | player character npc
+🧑‍🦲 | гравець персонаж нпс | player character npc
+👱‍♀️ | гравець персонаж нпс | player character npc
+👱‍♂️ | гравець персонаж нпс | player character npc
+💆 | |
+💆‍♂️ | |
+💆‍♀️ | |
+💇 | |
+💇‍♂️ | |
+💇‍♀️ | |
+🚶‍♂️ | гравець персонаж чоловічок нпс перехожий мандрівник хода | player character npc traveler wanderer walker
+🚶‍♀️ | гравець персонаж чоловічок нпс перехожий мандрівник хода | player character npc traveler wanderer walker
+🚶‍➡️ | гравець персонаж чоловічок нпс перехожий мандрівник хода вправо | player character npc traveler wanderer walker direction
+🚶‍♀️‍➡️ | гравець персонаж чоловічок нпс перехожий мандрівник хода вправо | player character npc traveler wanderer walker direction
+🚶‍♂️‍➡️ | гравець персонаж чоловічок нпс перехожий мандрівник хода вправо | player character npc traveler wanderer walker direction
+🧍‍♂️ | гравець персонаж чоловічок нпс герой аватар | player character npc hero avatar idle
+🧍‍♀️ | гравець персонаж чоловічок нпс герой аватар | player character npc hero avatar idle
+🧎 | полонений молитва | prisoner surrender pray
+🧎‍♂️ | полонений молитва | prisoner surrender pray
+🧎‍♀️ | полонений молитва | prisoner surrender pray
+🧎‍➡️ | полонений молитва | prisoner surrender pray
+🧎‍♀️‍➡️ | полонений молитва | prisoner surrender pray
+🧎‍♂️‍➡️ | полонений молитва | prisoner surrender pray
+🧑‍🦯 | сліпий |
+🧑‍🦯‍➡️ | сліпий |
+👨‍🦯 | |
+👨‍🦯‍➡️ | |
+👩‍🦯 | |
+👩‍🦯‍➡️ | |
+🧑‍🦼 | |
+🧑‍🦼‍➡️ | |
+👨‍🦼 | |
+👨‍🦼‍➡️ | |
+👩‍🦼 | |
+👩‍🦼‍➡️ | |
+🧑‍🦽 | |
+🧑‍🦽‍➡️ | |
+👨‍🦽 | |
+👨‍🦽‍➡️ | |
+👩‍🦽 | |
+👩‍🦽‍➡️ | |
+🏃‍♂️ | гравець персонаж чоловічок бігун втікач спринт прискорення | player character runner sprint dash escape boost
+🏃‍♀️ | гравець персонаж чоловічок бігун втікач спринт прискорення | player character runner sprint dash escape boost
+🏃‍➡️ | гравець персонаж чоловічок бігун втікач спринт прискорення вправо | player character runner sprint dash escape boost direction
+🏃‍♀️‍➡️ | гравець персонаж чоловічок бігун втікач спринт прискорення вправо | player character runner sprint dash escape boost direction
+🏃‍♂️‍➡️ | гравець персонаж чоловічок бігун втікач спринт прискорення вправо | player character runner sprint dash escape boost direction
+🧑‍🩰 | балерина | ballerina
+💃 | вечірка перемога диско | party victory disco
+🕺 | вечірка перемога диско | party victory disco
+🕴️ | агент ворог нпс | agent enemy npc hover
+👯 | клон двійник | clone
+👯‍♂️ | клон двійник | clone
+👯‍♀️ | клон двійник | clone
+🧖 | |
+🧖‍♂️ | |
+🧖‍♀️ | |
+🧗‍♂️ | гравець персонаж драбина підйом альпініст | player character ladder ascend
+🧗‍♀️ | гравець персонаж драбина підйом альпініст | player character ladder ascend
+⛷️ | гравець спуск зима | player slope winter
+🏂 | гравець спуск зима | player slope winter
+🏌️ | |
+🏌️‍♂️ | |
+🏌️‍♀️ | |
+🏄 | |
+🏄‍♂️ | |
+🏄‍♀️ | |
+🚣‍♂️ | гравець переправа пліт | player crossing ferry
+🚣‍♀️ | гравець переправа пліт | player crossing ferry
+🏊‍♂️ | гравець персонаж пірнання басейн | player character water dive pool
+🏊‍♀️ | гравець персонаж пірнання басейн | player character water dive pool
+⛹️ | |
+⛹️‍♂️ | баскетбол |
+⛹️‍♀️ | |
+🏋️ | сила качок | strength buff
+🏋️‍♂️ | сила качок | strength buff
+🏋️‍♀️ | качок | strength buff
+🚴 | гонка | race
+🚴‍♂️ | гонка | race
+🚴‍♀️ | гонка | race
+🚵 | гонка | race
+🚵‍♂️ | гонка | race
+🚵‍♀️ | гонка | race
+🤸‍♂️ | стрибок перемога радість | jump acrobat victory win
+🤸‍♀️ | стрибок перемога радість | jump acrobat victory win
+🤼 | битва бійка файтинг суперник | fight battle brawl versus pvp
+🤼‍♂️ | битва бійка файтинг суперник | fight battle brawl versus pvp
+🤼‍♀️ | битва бійка файтинг суперник | fight battle brawl versus pvp
+🤽 | |
+🤽‍♂️ | |
+🤽‍♀️ | |
+🤾 | |
+🤾‍♂️ | |
+🤾‍♀️ | |
+🤹 | циркач фокусник блазень | juggler circus clown
+🤹‍♂️ | циркач фокусник блазень | juggler circus clown
+🤹‍♀️ | циркач фокусник блазень | juggler circus clown
+🙍 | поразка сум | defeat sad lose
+🙍‍♂️ | поразка сум | defeat sad lose
+🙍‍♀️ | поразка сум | defeat sad lose
+🙎 | образа гнів | angry mad
+🙎‍♂️ | образа гнів | angry mad
+🙎‍♀️ | образа гнів | angry mad
+🙅 | стоп відмова помилка | stop deny wrong block
+🙅‍♂️ | стоп відмова помилка | stop deny wrong block
+🙅‍♀️ | стоп відмова помилка | stop deny wrong block
+🙆 | успіх правильно так | success correct yes
+🙆‍♂️ | успіх правильно так | success correct yes
+🙆‍♀️ | успіх правильно так | success correct yes
+💁 | підказка нпс | hint info npc
+💁‍♂️ | підказка нпс | hint info npc
+💁‍♀️ | підказка нпс | hint info npc
+🙋 | учень питання | vote volunteer
+🙋‍♂️ | учень питання | vote volunteer
+🙋‍♀️ | учень питання | vote volunteer
+🧏 | |
+🧏‍♂️ | |
+🧏‍♀️ | |
+🙇 | вибачення подяка повага | thanks respect
+🙇‍♂️ | подяка | thanks respect
+🙇‍♀️ | подяка | thanks respect
+🤦 | помилка провал | fail mistake
+🤦‍♂️ | помилка провал | fail mistake
+🤦‍♀️ | помилка провал | fail mistake
+🤷 | питання | unknown question
+🤷‍♂️ | питання | unknown question
+🤷‍♀️ | питання | unknown question
+🧘 | відпочинок відновлення мана | rest regen mana
+🧘‍♂️ | відпочинок відновлення мана | rest regen mana
+🧘‍♀️ | відпочинок відновлення мана | rest regen mana
+🛀 | душ | shower
+🛌 | збереження відновлення привал чекпоінт | save checkpoint rest respawn inn
+🗣️ | діалог розмова репліка нпс | dialog talk speech npc voice
+🫂 | союзник | ally
+👪 | |
+🧑‍🧑‍🧒 | |
+🧑‍🧑‍🧒‍🧒 | |
+🧑‍🧒 | |
+🧑‍🧒‍🧒 | |
+🫆 | доказ сканер доступ замок | evidence scanner access lock
+🧑‍🤝‍🧑 | |
+👭 | |
+👫 | |
+👬 | |
+💏 | |
+👩‍❤️‍💋‍👨 | |
+👨‍❤️‍💋‍👨 | |
+👩‍❤️‍💋‍👩 | |
+💑 | |
+👩‍❤️‍👨 | |
+👨‍❤️‍👨 | |
+👩‍❤️‍👩 | |
+👨‍👩‍👦 | |
+👨‍👩‍👧 | |
+👨‍👩‍👧‍👦 | |
+👨‍👩‍👦‍👦 | |
+👨‍👩‍👧‍👧 | |
+👨‍👨‍👦 | |
+👨‍👨‍👧 | |
+👨‍👨‍👧‍👦 | |
+👨‍👨‍👦‍👦 | |
+👨‍👨‍👧‍👧 | |
+👩‍👩‍👦 | |
+👩‍👩‍👧 | |
+👩‍👩‍👧‍👦 | |
+👩‍👩‍👦‍👦 | |
+👩‍👩‍👧‍👧 | |
+👨‍👦 | |
+👨‍👦‍👦 | |
+👨‍👧 | |
+👨‍👧‍👦 | |
+👨‍👧‍👧 | |
+👩‍👦 | |
+👩‍👦‍👦 | |
+👩‍👧 | |
+👩‍👧‍👦 | |
+👩‍👧‍👧 | |

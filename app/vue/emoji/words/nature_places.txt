@@ -1,0 +1,141 @@
+🌲 | ліс перешкода хвоя деревина ресурс | obstacle woods wood lumber resource fir spruce
+🌳 | ліс перешкода дуб деревце деревина ресурс | obstacle woods oak wood lumber resource
+🌴 | острів пляж джунглі перешкода кокос | island jungle obstacle coconut
+🌵 | колючка шипи перешкода небезпека пастка | spikes thorn obstacle hazard trap
+🌱 | росток травичка насіння ферма урожай ресурс | grow growth seed farm crop resource
+🌿 | трава травичка зілля лікування інгредієнт кущ | grass heal potion ingredient bush
+🍀 | удача везіння щастя бонус талісман | luck bonus powerup charm fortune
+🌾 | зерно урожай ферма жито ресурс їжа | wheat harvest farm crop resource hay
+🌸 | сакура квіточка весна декор | sakura bloom decoration
+🌹 | роза квіточка подарунок кохання | gift thorn romance
+🌻 | насіння урожай ферма ресурс | seeds farm crop resource pvz
+🌷 | квіточка весна клумба | spring garden
+🍁 | листочок канада | autumn canada
+🍂 | листочок сухий | dry foliage
+🍃 | вітерець повітря швидкість | breeze air speed
+⛰️ | скеля перешкода стіна вершина камінь пагорб | rock cliff obstacle wall peak hill terrain
+🏔️ | вершина перешкода скеля лід | peak summit obstacle ice alps
+🌋 | вогонь небезпека пастка вибух | lava fire hazard trap explosion magma
+🏝️ | пляж суша скарб робінзон | beach land treasure castaway palm
+🏜️ | пісок дюна спека бархан | sand dune heat oasis wasteland
+🌊 | море річка небезпека перешкода цунамі повінь | sea river hazard obstacle tsunami flood
+💧 | вода краплинка сльоза мана ресурс | mana liquid resource
+❄️ | лід мороз заморозка сповільнення зима | ice freeze frost slow winter
+☀️ | день світло спека енергія | day light heat energy
+🌙 | ніч сон | night sleep
+☁️ | хмаринка небо платформа | sky platform
+🌧️ | злива негода | shower downpour
+⛈️ | гроза буря шторм небезпека | storm hazard
+🌪️ | смерч вихор буря небезпека пастка | twister hurricane storm hazard trap
+🌍 | планета карта мапа | planet map
+🪐 | космос всесвіт | space cosmos
+🪴 | квітка декорація | flowerpot houseplant
+☘️ | удача листочок | clover luck leaf
+🪹 | лігво | lair
+🪺 | спавнер лігво кладка | spawner lair clutch
+🪾 | перешкода моторошний ліс пень | obstacle spooky woods stump
+💐 | подарунок свято | gift present
+💮 | квіточка печатка відмінно | stamp excellent blossom
+🪷 | латаття ставок | waterlily pond
+🏵️ | нагорода медаль відзнака | award medal badge
+🥀 | поразка смерть смуток | lose sad withered
+🌺 | тропіки гаваї квіточка | tropical hawaii
+🌼 | квіточка кульбаба лютик | daisy
+🪻 | лаванда бузок квіточка | blossom
+🛘 | обвал пастка перешкода валун | rockfall trap hazard obstacle boulder
+🗻 | японія вулкан | japan volcano
+🏕️ | табір привал намет база чекпоінт | camp tent base rest checkpoint
+🏖️ | пісок море курорт літо | sand sea resort summer vacation
+🏞️ | природа краєвид річка ліс рівень | nature landscape river forest scenery level
+🌑 | темрява ніч фаза | night darkness phase
+🌒 | фаза ніч | phase night
+🌓 | фаза ніч половина | phase night half
+🌔 | фаза ніч | phase night
+🌕 | повня ніч фаза | phase night
+🌖 | фаза ніч | phase night
+🌗 | фаза ніч половина | phase night half
+🌘 | фаза ніч | phase night
+🌚 | ніч хитрий | night sly
+🌛 | ніч сон | night sleep
+🌜 | ніч сон | night sleep
+🌡️ | градусник жар спека | temperature heat fever
+🌝 | повня ніч | night
+🌞 | сонечко день світло | light smile happy
+🌌 | галактика зорі небо ніч | galaxy stars sky night
+⛅ | хмаринка | overcast
+🌤️ | хмаринка ясно | clear
+🌥️ | хмарно | overcast
+🌦️ | злива | shower
+🌨️ | снігопад хуртовина зима | snowfall blizzard winter
+🌩️ | гроза грім розряд небезпека | thunder storm zap hazard
+🌫️ | імла серпанок війни невидимість | mist haze war hidden
+🌬️ | подув дмухати поштовх | breeze gust push
+🌂 | | brolly
+☂️ | | brolly
+☔ | злива | brolly downpour
+⛱️ | тінь відпочинок | shade beach parasol
+☃️ | снігова баба ворог | winter frosty enemy
+⛄ | ворог | winter frosty enemy
+🪋 | астероїд комета снаряд небезпека удар | asteroid comet projectile hazard impact
+🌎 | карта мапа | planet map
+🌏 | планета карта мапа | planet map
+🌐 | інтернет мережа онлайн мова | network online language planet
+🗾 | архіпелаг | japan island archipelago
+🚪 | вихід прохід дверцята перехід | exit entrance passage gate
+🏠 | база хата домівка старт укриття | base start shelter spawn
+🏡 | база хата садиба ферма | base cottage farm
+🏰 | вежа цитадель королівство палац ціль фініш | fortress tower citadel kingdom palace goal finish
+🏯 | фортеця вежа цитадель | fortress tower pagoda
+🗼 | башта оборона антена | spire defense antenna
+⛺ | табір привал база кемпінг | camp base rest shelter
+🛖 | база халупа курінь укриття | base cabin shack
+🏚️ | руїна привид моторошний халупа | haunted ruin abandoned spooky
+🏭 | виробництво цех спавнер | production spawner industry workshop
+🏥 | лікування здоровʼя аптечка хп | heal health hp medkit clinic
+🏦 | гроші скарбниця золото сховище | money vault gold treasury
+🏪 | крамниця лавка торговець покупка | shop market merchant trade buy
+🏫 | навчання університет | academy education
+🏛️ | храм музей палац греція | temple museum columns greek ancient
+⛪ | храм воскресіння | temple respawn
+🕌 | храм | temple
+⛩️ | торії ворота японія портал | torii gate japan portal
+🌉 | переправа перехід | crossing passage
+⛲ | вода джерело лікування мана площа | water spring heal mana plaza
+🎪 | ярмарок вистава балаган | carnival fair show
+🎡 | атракціон ярмарок | attraction ride fair carnival
+🎢 | атракціон рейки швидкість | ride attraction track rails
+🪦 | могила поразка респаун спавнер | lose respawn spawner
+⚰️ | домовина поразка | casket lose
+⚱️ | глечик амфора | vase jar pot
+🪧 | вказівник підказка оголошення | hint signpost billboard
+🛑 | зупинка заборона пауза | halt forbidden pause
+🚦 | сигнал старт дорога | start go road
+🪟 | віконце шибка | pane glass
+🛗 | поверх рівень платформа | level platform storey
+🛏️ | відпочинок відновлення респаун майнкрафт | rest heal respawn minecraft
+🪑 | табурет перешкода | furniture stool obstacle
+🏟️ | арена турнір бій | arena tournament football
+🏗️ | будівництво кран ремонт покращення | wip progress repair upgrade
+🏘️ | село місто поселення район | village town settlement neighborhood
+🏢 | офіс хмарочос багатоповерхівка | skyscraper tower work
+🏣 | лист | mail
+🏤 | лист посилка | mail letter parcel
+🏨 | таверна корчма ночівля відпочинок | inn motel rest
+🏩 | | motel
+🏬 | магазин крамниця торговий центр | shop mall market
+💒 | церква шлюб | church marriage
+🗽 | америка памʼятник | america usa monument
+🛕 | індія святиня | india shrine
+🕍 | |
+🕋 | мекка | mecca
+🌁 | імла міст | mist bridge
+🌃 | місто небо зорі | city sky
+🏙️ | хмарочос мегаполіс | skyline downtown skyscraper
+🌄 | світанок краєвид | dawn landscape
+🌅 | море обрій | dawn sea horizon
+🌆 | хмарочос мегаполіс | skyline downtown
+🌇 | вечір | evening
+♨️ | пара лікування спека | steam heal heat onsen
+🎠 | атракціон ярмарок | ride fair
+🛝 | спуск ковзання | chute descent
+💈 | барбершоп | barbershop salon
