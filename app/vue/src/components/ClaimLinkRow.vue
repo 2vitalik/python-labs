@@ -8,6 +8,7 @@ import Pop from '@core/components/Pop.vue'
 import { deleteClaim } from '../api.js'
 import { missingParams, paramsText } from '../catalog.js'
 import { useEd } from '../ed.js'
+import { shortLink } from '../shortLink.js'
 import { factorsOf, repeatable } from '../tiers.js'
 import ClaimPop from './ClaimPop.vue'
 import CoinBadge from './CoinBadge.vue'
@@ -32,18 +33,6 @@ const tip = computed(() => {
   return md.replace(/\[([^\]]*)\]\([^)]*\)/g, '$1').replace(/[*_`#>]/g, '')
 })
 
-const VIDEO = /^(m\.)?(youtube\.com|youtu\.be|vimeo\.com|drive\.google\.com)(\/|$)/
-// the link as one reads it: no scheme, no www; a long one keeps its host and its last step, a video gets «▶»
-function shortLink(url, max = 32) {
-  let s = url.trim().replace(/^[a-z][\w+.-]*:\/\//i, '').replace(/^www\./, '').replace(/\/$/, '')
-  const video = VIDEO.test(s)
-  if (s.length > max) {
-    const host = s.split('/')[0]
-    const last = s.slice(s.lastIndexOf('/') + 1)
-    s = host.length + last.length + 3 <= max ? `${host}/…/${last}` : `${s.slice(0, max - 13)}…${s.slice(-12)}`
-  }
-  return video ? `▶ ${s}` : s
-}
 </script>
 
 <template>

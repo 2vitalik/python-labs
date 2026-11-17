@@ -74,7 +74,7 @@ onMounted(async () => {
       </div>
       </div>
       <GameEditor :key="nick" :game="data.game" :parts="data.parts" :claims="data.claims" :rules="data.rules" :tasks="data.tasks"
-                  :coins="data.coins" :editable="editor" :judge="admin && !data.mine" :nick :reload />
+                  :coins="data.coins" :videos="data.videos" :editable="editor" :judge="admin && !data.mine" :nick :reload />
     </template>
   </div>
 </template>

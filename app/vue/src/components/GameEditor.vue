@@ -48,8 +48,9 @@ import ZoneSection from './ZoneSection.vue'
 // the description of a game — the same body for the owner's editor (`editable`) and a student's passport (read-only;
 // `judge` lets the teacher accept or return claims). It fills the editor context (ed.js) every piece below reads.
 // `full` — always the whole description, whatever depth the viewer's own editor has (a base game's reference description);
-// `reload` — the page's way to fetch the game again: `ed.changed()` awaits it, so a form closes onto fresh data
-const props = defineProps({ game: Object, parts: Array, claims: Array, rules: Array, tasks: Object, coins: Object, editable: Boolean, judge: Boolean, nick: String, full: Boolean, reload: Function })
+// `reload` — the page's way to fetch the game again: `ed.changed()` awaits it, so a form closes onto fresh data;
+// `videos` — the rows of «Супровід» a student's game is asked for (T318): a sample and its sandbox have none
+const props = defineProps({ game: Object, parts: Array, claims: Array, rules: Array, tasks: Object, coins: Object, videos: Array, editable: Boolean, judge: Boolean, nick: String, full: Boolean, reload: Function })
 const error = ref('')
 const view = ref('desc')  // desc — the sections · cards — everything claimed as a tree (T270 §11)
 const simpleLook = ref(false)  // the teacher's preview of what a student sees in the short form
@@ -59,7 +60,7 @@ const cards = computed(() => Object.fromEntries(Object.entries(props.tasks || {}
 const ofKind = (kind) => computed(() => props.parts.filter((p) => p.kind === kind))
 
 const ed = reactive({
-  game: toRef(props, 'game'), parts: toRef(props, 'parts'), claims: toRef(props, 'claims'), rules: toRef(props, 'rules'),
+  game: toRef(props, 'game'), parts: toRef(props, 'parts'), claims: toRef(props, 'claims'), rules: toRef(props, 'rules'), videos: toRef(props, 'videos'),
   editable: toRef(props, 'editable'), judge: toRef(props, 'judge'), nick: toRef(props, 'nick'),
   sandbox: computed(() => !!sandbox.value && props.editable),  // the sample's scratch copy (T274 §7): no screenshots there
   teacher: computed(() => !!editing.value && props.editable),  // the teacher edits a student's game (T282): no owner's aids
@@ -89,11 +90,13 @@ const own = computed(() => props.claims.filter((c) => !c.auto).length)
 const base = computed(() => games.value.find((g) => g.slug === props.game.base_game))
 const template = computed(() => templates.value[props.game.base_game])
 const empty = computed(() => !props.parts.length && !props.rules.length && !props.claims.length)
-const hints = computed(() => (props.editable ? makeHints({ game: props.game, parts: props.parts, rules: props.rules, claims: props.claims, info: ed.info, base: base.value, simple: ed.simple, shots: !ed.sandbox }) : []))
-// the sections in the catalog's order (T278 §9): their headings and the contents say the same
-const shown = computed(() => (ed.simple ? SIMPLE : SECTIONS))
+const hints = computed(() => (props.editable ? makeHints({ game: props.game, parts: props.parts, rules: props.rules, claims: props.claims, videos: props.videos, info: ed.info, base: base.value, simple: ed.simple, shots: !ed.sandbox }) : []))
+// the sections in the catalog's order (T278 §9): their headings and the contents say the same; the short form's «Супровід»
+// is its videos alone — none (a sample), no section
+const shown = computed(() => (ed.simple ? SIMPLE.filter((id) => id !== 'zone-support' || props.videos) : SECTIONS))
+const linked = computed(() => (props.videos || []).filter((v) => v.versions.length).length)
 const counts = computed(() => ({ entities: ed.entities.length, rules: props.rules.length, levels: ed.levels.length, windows: ed.windows.length,
-  ...Object.fromEntries(ZONES.map((z) => [z.id, inZone(z)])) }))
+  ...Object.fromEntries(ZONES.map((z) => [z.id, inZone(z)])), 'zone-support': (ed.simple ? 0 : inZone(zone('zone-support'))) + linked.value }))
 const LAID = ['entities', 'rules', 'levels', 'windows', ...ZONES.map((z) => z.id)]  // the sections that lay cards in columns
 const SHUT = ['entities', 'windows', 'levels']  // the sections whose cards fold to their heads (looks.js)
 const head = (id) => {
@@ -154,7 +157,7 @@ watch(() => route.hash, (h) => {
   const home = partHome[id]  // a part of a section: the section opens whole first
   if (home) setFold(foldKey(home), false)
   if (home) setShort(foldKey(home), false)
-  if (home || /^[prc]-/.test(id) || SECTIONS.includes(id)) jump(id)
+  if (home || /^[prcv]-/.test(id) || SECTIONS.includes(id)) jump(id)
 }, { immediate: true })
 
 // «＋» anywhere: the section's own form of a new thing, in view and lit
@@ -273,9 +276,7 @@ async function fromTemplate() {
           <WindowsBlock :ref="blocks.window" />
         </Clamp>
       </section>
-      <template v-if="!ed.simple">
-        <ZoneSection v-for="id in ['zone-interface', 'zone-code', 'zone-support']" :key="id" :z="zone(id)" :head="head(id)" />
-      </template>
+      <ZoneSection v-for="id in ['zone-interface', 'zone-code', 'zone-support'].filter((x) => shown.includes(x))" :key="id" :z="zone(id)" :head="head(id)" />
     </template>
 
     <Toc :items="toc" :side="!wide" :bar="view === 'cards'" />

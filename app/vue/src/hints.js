@@ -2,6 +2,7 @@ import { answersOf, isHidden } from './advice.js'
 import { kindOf, missingParams, NEEDS_SCREEN, PAIRS } from './catalog.js'
 import { isDraft } from './myGame.js'
 import { mentions } from './rules.js'
+import { dueSoon } from './videos.js'
 
 // where a card of a kind must sit; a claim anchored elsewhere is «not in its place» (the catalog changed under it)
 const HOME = { mechanic: 'entity', element: 'window', field: 'field', level: 'level' }
@@ -12,9 +13,15 @@ const misplaced = (c, task, parts) => {
 }
 const WAITS = { mechanic: 'Сутності', element: 'Вікна й переходи', rule: 'Правила' }  // the section whose strip a claim without a place waits in
 
+// a demo whose lab's deadline is two weeks away or gone, and no link yet (T318): the first thing to say
+function demoHint(videos, section = 'Супровід') {
+  const v = dueSoon(videos)
+  return v ? [{ to: `v-${v.slot}`, text: `🎬 Демка до лаби ${v.lab} — дедлайн ${new Date(v.due).toLocaleDateString('uk-UA', { day: 'numeric', month: 'long' })}: встав посилання на відео в секції «${section}».` }] : []
+}
+
 // what the short form still lacks (T270 §12): entities and windows only
-function simpleHints({ game, parts }) {
-  const out = []
+function simpleHints({ game, parts, videos }) {
+  const out = demoHint(videos, 'Відео')
   const ents = parts.filter((p) => p.kind === 'entity'), wins = parts.filter((p) => p.kind === 'window')
   if (!game.description) out.push({ to: 'about', text: 'Кілька речень опису вгорі: що за гра і чим відрізняється від основи.' })
   if (!ents.length) out.push({ to: 'entities', text: 'Хто й що є на полі? У секції «Сутності» натисни «＋ сутність»: гравець, вороги, стіни, предмети.' })
@@ -40,9 +47,9 @@ function reversePair({ game, claims, wins, info }) {
 
 // what the description still lacks — gentle, at most a handful, the most useful first, each naming the place and the button
 // `shots: false` — the sample's sandbox: no screenshots to add there, no head form to write the description in
-export function hints({ game, parts, rules, claims, info, base, simple, shots = true }) {
-  if (simple) return simpleHints({ game, parts }).slice(0, 4)
-  const out = []
+export function hints({ game, parts, rules, claims, videos, info, base, simple, shots = true }) {
+  if (simple) return simpleHints({ game, parts, videos }).slice(0, 4)
+  const out = demoHint(videos)
   const ents = parts.filter((p) => p.kind === 'entity'), wins = parts.filter((p) => p.kind === 'window')
   const effects = new Set(rules.flatMap((r) => r.then.map((e) => e.kind)))
   const puzzle = base?.klass === 'puzzle'

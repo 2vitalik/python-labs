@@ -8,7 +8,7 @@ import GameEditor from '../components/GameEditor.vue'
 import GameHead from '../components/GameHead.vue'
 import MyGameForm from '../components/MyGameForm.vue'
 import { loadCatalog, vocab } from '../catalog.js'
-import { loadMyGame, myClaims, myCoins, myGame, myParts, myRules, myTasks, reloadInsides } from '../myGame.js'
+import { loadMyGame, myClaims, myCoins, myGame, myParts, myRules, myTasks, myVideos, reloadInsides } from '../myGame.js'
 import { useForm } from '@core/form.js'
 import { user } from '@core/user.js'
 import { wideOf } from '@core/wide.js'
@@ -59,7 +59,7 @@ onMounted(async () => {
     <p v-if="!myGame" class="text-secondary">Обери основу з каталогу або опиши свою, дай назву — і гра твоя. {{ intro }}</p>
     <MyGameForm v-model="form" :dirty :changed :saved :error :fresh="!myGame" @save="submit" @reset="reset" />
     </div>
-    <GameEditor v-if="myGame" :game="myGame" :parts="myParts" :claims="myClaims" :rules="myRules" :tasks="myTasks" :coins="myCoins"
+    <GameEditor v-if="myGame" :game="myGame" :parts="myParts" :claims="myClaims" :rules="myRules" :tasks="myTasks" :coins="myCoins" :videos="myVideos"
                 editable :nick :reload="() => loadMyGame(true)" />
   </div>
 </template>

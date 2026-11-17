@@ -11,6 +11,7 @@ export const myClaims = ref([])
 export const myRules = ref([])
 export const myTasks = ref({})  // the cards the game names, drafts too — the catalog gives a student only the active ones
 export const myCoins = ref({})  // {claimed, accepted} as the server counts them: a card no more times than its limit
+export const myVideos = ref([])  // the rows of «Супровід» nobody adds by hand: demos, defenses, gold cards' videos (T318)
 export const claimedSlugs = computed(() => new Set(myClaims.value.map((c) => c.task)))
 
 export async function loadMyGame(force = false) {
@@ -29,6 +30,7 @@ export async function reloadInsides() {
   myRules.value = full.rules
   myTasks.value = full.tasks
   myCoins.value = full.coins || {}
+  myVideos.value = full.videos || []
 }
 
 // a claim waiting for its place: not anchored, though its card lives on an entity, a window, the field or a rule (T270 §6)
