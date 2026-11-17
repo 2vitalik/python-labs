@@ -98,7 +98,7 @@
 - DNS: `ods.labs.in.ua` уже веде на vv3 — wildcard `*.labs.in.ua`.
 - `deploy` звіряє гілку статики з гілкою коду за назвами з маніфесту: пара `ods`/`www-ods` працює як `main`/`www`.
 - Сайт стартує з чистого чекауту на Python 3.12 без `.env` і без `sites/ods/data`; смоук 10/10.
-- Адреса для OAuth-клієнта Google: `https://ods.labs.in.ua/api/auth/callback`.
+- Адреса для OAuth-клієнта Google: `https://ods.labs.in.ua/api/auth/callback`. Проєкт Google — спільний на всі сайти (номер `616100985001`), клієнт `ods-labs prod` — свій, назва на екрані входу — нейтральна · [T314](.t/T314-C--google-oauth-shared.md).
 - Імена за планом: застосунок `ods-labs`, база `ods_labs`, порт 8035, гілки `ods` і `www-ods` · [T181](.t/T181-Q--ods-deploy-choices.md) Q2.
 
 **Повторна репетиція 2026-11-01 на HEAD `6581fc7`** ([T250](.t/T250-P--ods-deploy-go.md)): чистий клон → `uv sync --frozen` на 3.12 — 64 пакети (lock ods = lock python по пакетах); старт без `.env` і `data/` → `/api/health` 200 за 17 с, `redirect_uri` ods; смоук ods 10/10, смоук лаб 26/28 (колізія `/api/labs` — T238 Q6); `npm run build` 0.8 с; маніфест `apps/ods-labs` через `vv` з кодом 4e — без помилок. Усе поза сервером готове: маніфест, картка й runbook блоків 0–7 — vps-infra [T76](../../../../My/vps-infra/.dev/apps/ods-labs/.t/T76--ods-labs/plan.md); вибори перед стартом — [T251](.t/T251-Q--ods-deploy-go-choices.md). Сервера не торкались: ключ vv3 під `v6u` з passphrase — агент заходить лише у вікно `ssh-add`, `sudo` — Vitalik.

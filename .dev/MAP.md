@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T314** · тікетів: 313 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T315** · тікетів: 314 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -321,3 +321,4 @@
 | games | [T311](games/.t/T311-P--inline-edit-design.md) | 💡 | inline-edit-design | Редагування на місці — рішення по брифу T308: без режиму форми | 🟢 ⬜ |
 | games | [T312](games/.t/T312-Q--inline-tools-choices.md) | ❓ | inline-tools-choices | Редагування без форм — вибори | 🔴 ⬜ |
 | games | [T313](games/.t/T313-Q--emoji-picker-choices.md) | ❓ | emoji-picker-choices | Вибори після віконця значків: значки вікон, шрифт емодзі, російські слова, інші місця | 🔴 ⬜ |
+| ods | [T314](ods/.t/T314-C--google-oauth-shared.md) | 🔆 | google-oauth-shared | Google OAuth: один проєкт на всі сайти | 🟢 ⬜ |
