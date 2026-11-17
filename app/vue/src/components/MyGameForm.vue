@@ -8,11 +8,12 @@ import { games } from '../catalog.js'
 import MdField from './MdField.vue'
 
 // creating the game: base · title · description as three cards, the profile's way (ProfileForm);
-// once it exists the same fields fold into one compact card above the description's sections, and «змінити основу» opens
-// the choice with its own «Зберегти» / «Скасувати» (T274 §10). The description reads as the others see it, rendered, and
-// a click turns it into its Markdown in place (T304, MdField). A changed title or description brings the same pair right
-// under them, into a row that is always there — so nothing below moves when the first letter is typed. While a change waits
-// for «Зберегти», the card wears the frame of an open form (T291 §4)
+// once it exists the base and the description fold into one compact card above the description's sections (the name is
+// changed in the page's heading — GameHead, T310), and «змінити основу» opens the choice with its own «Зберегти» /
+// «Скасувати» (T274 §10). The description reads as the others see it, rendered, and a click turns it into its Markdown
+// in place (T304, MdField). A changed description brings the same pair right under it, into a row that is always there —
+// so nothing below moves when the first letter is typed. While a change waits for «Зберегти», the card wears the frame of
+// an open form (T291 §4)
 const props = defineProps({ dirty: Boolean, changed: { type: Array, default: () => [] }, saved: Boolean, error: String, fresh: Boolean })
 const emit = defineEmits(['save', 'reset'])
 const form = defineModel({ type: Object, required: true })
@@ -73,7 +74,6 @@ const showChips = computed(() => props.fresh || !!was.value)
           </div>
         </template>
         <template v-if="!fresh">
-          <input v-model="form.title" class="form-control form-control-lg fw-semibold soft-input px-2 mt-1" placeholder="Назва гри" title="Назва гри — можна редагувати" required>
           <MdField v-model="form.description" v-model:open="writing" :dirty="changed.includes('description')"
                    placeholder="Що за гра і чим відрізняється від основи — натисни й пиши" @save="$emit('save')" />
           <!-- the row is there from the moment the source opens, so nothing jumps when the first letter is typed -->

@@ -2,11 +2,13 @@
 import { computed } from 'vue'
 
 import Avatar from '@core/components/Avatar.vue'
+import InlineText from '@core/components/InlineText.vue'
 import { games } from '../catalog.js'
 
 // the top of «Моя гра» and of a student's game page, the profile's way (UserHead): a big icon, the title, a line on the base;
-// under it — the owner's checks on their own page, or the student whose game it is; the slot sits at the right edge
-const props = defineProps({ game: Object, title: String, checks: Boolean, student: Object })
+// under it — the owner's checks on their own page, or the student whose game it is; the slot sits at the right edge.
+// `rename(title)` — the owner changes the name right in the heading (T310), saved at once as a card's
+const props = defineProps({ game: Object, title: String, checks: Boolean, student: Object, rename: Function })
 const base = computed(() => games.value.find((g) => g.slug === props.game?.base_game))
 const icon = computed(() => (props.game ? base.value?.icon || '✨' : '🎮'))
 const checkList = computed(() => [['основа', props.game], ['назва', props.game], ['опис', props.game?.description]])
@@ -16,7 +18,7 @@ const checkList = computed(() => [['основа', props.game], ['назва', p
   <div class="d-flex align-items-center gap-3 mb-4">
     <span class="icon rounded-circle bg-secondary-subtle d-inline-flex align-items-center justify-content-center flex-shrink-0">{{ icon }}</span>
     <div>
-      <h1 class="h3 mb-0">{{ game?.title || title }}</h1>
+      <h1 class="h3 mb-0"><InlineText v-if="game && rename" :value="game.title" can required placeholder="Назва гри" :save="rename" /><template v-else>{{ game?.title || title }}</template></h1>
       <div class="text-secondary">
         <template v-if="!game">Гру ще не обрано</template>
         <template v-else-if="base">основа: <RouterLink :to="`/games/${base.slug}`">{{ base.title }}</RouterLink></template>

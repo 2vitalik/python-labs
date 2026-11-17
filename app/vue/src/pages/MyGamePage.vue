@@ -31,6 +31,13 @@ const submit = () => save(async (f) => {
   return myGame.value
 })
 
+// the name is changed in the big heading and saved at once (T310); a description still being written stays in its field
+async function rename(title) {
+  const g = myGame.value
+  myGame.value = await putMyGame({ title, base_game: g.base_game, base_custom: g.base_custom, description: g.description, phases: g.phases })
+  fill({ title: myGame.value.title })
+}
+
 onMounted(async () => {
   await Promise.all([loadCatalog(), loadMyGame(true)])
   if (myGame.value) fill(myGame.value)
@@ -45,7 +52,7 @@ onMounted(async () => {
     <Crumbs :items="['Моя гра']">
       <RouterLink to="/students?view=cards" class="btn btn-outline-secondary btn-sm"><Icon name="gamepad" /> Ігри студентів</RouterLink>
     </Crumbs>
-    <GameHead :game="myGame" title="Моя гра" :checks="!myGame">
+    <GameHead :game="myGame" title="Моя гра" :checks="!myGame" :rename>
       <RouterLink v-if="myGame" :to="`/students/${nick}`" class="ms-auto small text-nowrap">Як це бачать інші →</RouterLink>
       <RouterLink v-if="myGame" to="/my/game/history" class="small text-nowrap" title="Хто що змінював у грі"><Icon name="clock" /> Історія</RouterLink>
     </GameHead>
