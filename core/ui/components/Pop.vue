@@ -1,6 +1,8 @@
 <script setup>
 import { nextTick, onBeforeUnmount, ref, watch } from 'vue'
 
+import Icon from './Icon.vue'
+
 // a floating panel at its trigger: it opens over the page, so nothing around shifts; Esc or a click outside closes it.
 // <Pop v-model="open"><template #trigger="{ toggle }">…</template> panel content </Pop>
 const open = defineModel({ type: Boolean, default: false })
@@ -32,6 +34,7 @@ onBeforeUnmount(() => listen(false))
   <span ref="root" class="pop" :class="{ block }">
     <slot name="trigger" :open :toggle="() => (open = !open)" />
     <div v-if="open" ref="panel" class="pop-panel shadow border rounded bg-body" :class="side" :style="{ width }">
+      <button type="button" class="iact pop-x" title="Закрити" @click="open = false"><Icon name="x" /></button>
       <slot :close="() => (open = false)" />
     </div>
   </span>
@@ -44,8 +47,10 @@ onBeforeUnmount(() => listen(false))
              font-size: .875rem; font-weight: 400; text-align: start; cursor: auto; }
 .pop-panel.right { left: auto; right: 0; }
 .pop-panel.up { top: auto; bottom: calc(100% + .25rem); }
+.pop-x { display: none; }
 /* on a phone the panel is a sheet at the bottom of the screen: no room to hang it beside its trigger */
 @media (max-width: 575px) {
   .pop-panel { position: fixed; inset: auto .5rem .5rem .5rem; width: auto !important; max-height: 70vh; overflow-y: auto; }
+  .pop-x { display: flex; margin: -.3rem -.3rem .1rem auto; }  /* the sheet may lie over what opened it */
 }
 </style>
