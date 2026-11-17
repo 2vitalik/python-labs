@@ -101,7 +101,7 @@ async function remove() {
                   placeholder="Коротко: що тут відбувається, чим рівень особливий…" :save="(description) => save({ description })">
         <template #empty><span class="more-field">＋ опис</span></template>
       </InlineText>
-      <LevelMap :text="values.map" :tools="tools && ed.has('map')" :save="(map) => setProp('map', map)" />
+      <LevelMap :text="values.map" :tools="ed.has('map') && (tools || (ed.editable && !values.map))" :save="(map) => setProp('map', map)" />
       <ShotStrip v-if="ed.editable || part.screenshots?.length" :part />
       <PartBlock v-if="claims.length || ed.editable" pic="card" zone="levels" title="Картки рівня">
         <template #after><CardPicker plus :kinds="['level']" :anchor="{ part: part.id }" label="картка рівня" /></template>

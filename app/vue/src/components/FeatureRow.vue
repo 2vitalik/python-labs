@@ -16,7 +16,7 @@ const closed = computed(() => vocab.value.features.closed.includes(p.f.id))
 const note = computed(() => (filled.value ? 'є в описі' : closed.value && !vocab.value.features.free ? 'ще готується' : ''))  // the teacher reads «closed» off the eye
 // a change the server did not take leaves the box as the game has it
 const toggle = (e) => p.run(async () => {
-  await (e.target.checked ? ed.turnOn(p.f.id) : ed.turn(p.f.id, false))
+  await ed.turn(p.f.id, e.target.checked)
   e.target.checked = ed.has(p.f.id)
 })
 const lock = () => p.run(async () => {

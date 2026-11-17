@@ -6,8 +6,8 @@ import Reveal from '@core/components/Reveal.vue'
 import { useEd } from '../ed.js'
 import { FEATURE } from '../features.js'
 
-// «ще тут» (T319): under a base section, its features not shown yet — a click turns one on right here. The cards' tools
-// come on with it (ed.turnOn), so its empty blocks («＋ параметр», «＋ механіка», «＋ елемент») are there at once.
+// «ще тут» (T319): under a base section, its features not shown yet — a click turns one on right here, and its empty
+// place waits on each card as a quiet «＋» (T348: no card's pencil comes on by itself).
 // `ids` — the section's features; the owner's only, nothing to offer — no row
 const p = defineProps({ ids: Array })
 const ed = useEd()
@@ -15,7 +15,7 @@ const list = computed(() => (ed.editable && !ed.sandbox ? p.ids.filter((id) => !
 const busy = ref(false)
 async function open(f) {
   busy.value = true
-  await ed.turnOn(f.id)
+  await ed.turn(f.id, true)
   busy.value = false
 }
 </script>

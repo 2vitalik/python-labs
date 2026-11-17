@@ -5,7 +5,7 @@ import { inject, provide } from 'vue'
 //   info(slug) — the card behind a claim · claimsOf(partId) · ruleClaims(ruleId)
 //   editable — the owner edits · judge — the teacher gives verdicts · nick
 //   has(id) — a feature of the page is shown (features.js, T319) · offers(id) — it may be offered to this user (not closed)
-//   filled(id) — it has data: shown whatever the switch · turn(id | ids, on) — turned on or off, saved with the game · turnOn(id) — on, its cards' tools with it
+//   filled(id) — it has data: shown whatever the switch · turn(id | ids, on) — turned on or off, saved with the game
 //   sandbox — the editor works on the reader's scratch copy of a sample (T274 §7)
 //   teacher — the teacher edits a student's game (T282): `editable` and `judge` at once, without the owner's aids
 //   showRules — the rule lists on entity cards are all open
