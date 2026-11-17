@@ -71,7 +71,7 @@ const router = makeRouter([
   { path: '/students/:nick/history', component: GameHistoryPage, meta: { title: 'Історія гри', access: 'active' } },  // the API lets in the owner and the teacher
   { path: '/students/:nick/edit', component: StudentEditPage, meta: { title: 'Студенти', access: 'admin' } },
   { path: '/deadlines', component: DeadlinesPage, meta: { title: 'Дедлайни', access: 'admin', wide: true, filters: true } },  // students × labs: who met which deadline (T235)
-  { path: '/table', component: TablePage, meta: { title: 'Звід', access: 'admin', wide: true, filters: true } },  // students × anything, in views (T240, T315)
+  { path: '/table', component: TablePage, meta: { title: 'Звід', access: 'admin', wide: 'table', filters: true } },  // students × anything, in views (T240, T315)
   { path: '/table/views', component: ViewsPage, meta: { title: 'Види', access: 'admin', filters: true } },  // the library of those views: folders, origin, versions
   // defenses (T326): the teacher's list and the desk of one defense; a student's remarks with their answers
   { path: '/defenses', component: DefensesPage, meta: { title: 'Захисти', access: 'admin' } },

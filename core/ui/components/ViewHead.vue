@@ -4,7 +4,7 @@ import { ref } from 'vue'
 import { useTable } from '../tableCtx.js'
 import { originLine } from '../viewStats.js'
 import { saveView } from '../viewStore.js'
-import { toggleWide, wide } from '../wide.js'
+import { wideOf } from '../wide.js'
 import Icon from './Icon.vue'
 import IconArrows from './IconArrows.vue'
 import InlineText from './InlineText.vue'
@@ -17,6 +17,7 @@ import ViewSave from './ViewSave.vue'
 // ширину». Under them «для чого», and small after it: the version (its history in the library), where the view comes from,
 // the etalon star, «⋯». A past version on screen says so over that line; a change not saved — under it (ViewSave)
 const t = useTable()
+const { on: wide, toggle: toggleWide } = wideOf('table')
 const error = ref('')
 const save = (patch) => saveView(t.slug, patch)
 const flipEtalon = () => save({ etalon: !t.view.etalon }).then(() => (error.value = ''), (e) => (error.value = e.message))
