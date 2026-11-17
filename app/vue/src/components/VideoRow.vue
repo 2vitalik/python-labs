@@ -127,8 +127,8 @@ async function renew() {
 .note { display: -webkit-box; min-width: 0; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; font-style: italic; color: var(--bs-secondary-color); overflow-wrap: anywhere; }
 .note.open { display: block; overflow: visible; }
 /* a way in that is not seen is not found (T344): pale at rest, clear under the mouse */
-.nadd { color: var(--act-add); font-style: normal; opacity: .4; }
-.tr:hover .nadd, .inl:focus-visible .nadd { opacity: .85; }
+.nadd { color: var(--act-add); font-style: normal; opacity: .6; }
+.tr:hover .nadd, .inl:focus-visible .nadd { opacity: 1; }
 /* a gold card's name is a way to its place in the game: dotted, as every «show me where» */
 .where { color: inherit; text-decoration: underline dotted color-mix(in srgb, currentColor 45%, transparent); text-underline-offset: .2em; }
 .where:hover { color: var(--bs-link-color); text-decoration-style: solid; }
