@@ -2,11 +2,13 @@
 who was in the meeting and for how long; students see the published lesson's block, the admin the whole matrix."""
 from datetime import datetime, timedelta, timezone
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, UploadFile
 from pydantic import BaseModel
 
 from core import attendance as att
 from core import attendance_read as read
+from core.attendance_csv import participants
+from core.config import settings
 from core.deps import admin_user, editor_user
 from core.lesson_api import lesson, reader, seen
 from core.lesson_view import is_admin
@@ -67,6 +69,26 @@ async def pull(slug: str, data: PullIn, user: User = Depends(editor_user)):
     if data.sources:
         patch |= await sources(l, d["uuid"], user.email)
     await save(l, patch, user.email, "відвідування із Zoom")
+    return await read.attendance(l, True) | {"pulled": len(rows)}
+
+
+@router.post("/api/lessons/{slug}/attendance")
+async def from_csv(slug: str, file: UploadFile, user: User = Depends(editor_user)):
+    """The participants report the host exported from Zoom's site (attendance_csv.py): the same rows without any API."""
+    l = await lesson(slug)
+    try:
+        people, m = participants(await file.read(), settings.tz)
+    except ValueError as e:
+        raise HTTPException(422, str(e))
+    if not people:
+        raise HTTPException(422, "У файлі нема жодного рядка з часом входу й виходу")
+    start = m.get("start") or min(p["join_time"] for p in people)
+    end = m.get("end") or max(p["leave_time"] for p in people)
+    rows = att.rows(slug, "csv", att.parse(start), people)
+    await Attendance.find(Attendance.lesson == slug).delete()
+    await Attendance.insert_many(rows)
+    zoom = Meeting(uuid="csv", topic=m.get("topic", ""), start=start, end=end, pulled=datetime.now(timezone.utc).isoformat())
+    await save(l, {"zoom": zoom}, user.email, "відвідування з CSV Zoom")
     return await read.attendance(l, True) | {"pulled": len(rows)}
 
 

@@ -48,6 +48,7 @@ export const uploadLessonFile = (slug, file, role) => upload(`/api/lessons/${slu
 export const deleteLessonFile = (slug, id) => request(`/api/lessons/${slug}/files/${id}`, 'DELETE')
 export const getAttendance = (slug) => request(`/api/lessons/${slug}/attendance`)
 export const pullZoom = (slug, data) => request(`/api/lessons/${slug}/zoom`, 'POST', data)
+export const uploadAttendance = (slug, file) => upload(`/api/lessons/${slug}/attendance`, file)
 export const getAttendanceMatrix = () => request('/api/attendance')
 export const getLessonClicks = (slug) => request(`/api/lessons/${slug}/clicks`)
 export const getClicks = () => request('/api/lesson-clicks')

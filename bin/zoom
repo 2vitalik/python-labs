@@ -3,13 +3,17 @@
 
   bin/zoom [-t dev] pull <slug> [--meeting <id|uuid>] [--sources]   who was in the room and for how long → «👥 Були» of the lesson;
                                                                    --sources: the cloud recording's transcript, chat and link too
+  bin/zoom [-t dev] csv <slug> <file.csv>                           the same from the participants report exported on Zoom's site —
+                                                                   no keys and no admin needed (T336)
   bin/zoom [-t dev] show <slug>                                     the rows as the site sees them
 
 The meeting ID (of the recurring link) or one run's UUID is remembered on the lesson: the next pull needs none.
 No -t = prod. Zoom's keys live in the site's .env (ZOOM_ACCOUNT_ID, ZOOM_CLIENT_ID, ZOOM_CLIENT_SECRET), not here."""
 import argparse
+import sys
+from pathlib import Path
 
-from siteapi import SNAP, call
+from siteapi import SNAP, call, send
 
 
 def dur(s: int) -> str:
@@ -32,12 +36,17 @@ def report(slug: str, a: dict):
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("-t", "--target", default=SNAP)
-    parser.add_argument("cmd", choices=["pull", "show"])
+    parser.add_argument("cmd", choices=["pull", "csv", "show"])
     parser.add_argument("slug")
+    parser.add_argument("file", nargs="?")
     parser.add_argument("--meeting", default="")
     parser.add_argument("--sources", action="store_true")
     a = parser.parse_args()
-    if a.cmd == "pull":
+    if a.cmd == "csv":
+        got = send(a.target, f"/lessons/{a.slug}/attendance", Path(a.file or sys.exit("потрібен файл звіту: bin/zoom csv <slug> <file.csv>")))
+        print(f"{got['pulled']} рядків зі звіту ↓")
+        report(a.slug, got)
+    elif a.cmd == "pull":
         got = call(a.target, "POST", f"/lessons/{a.slug}/zoom", {"meeting": a.meeting, "sources": a.sources})
         print(f"{got['pulled']} рядків із Zoom ↓")
         report(a.slug, got)

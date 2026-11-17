@@ -1,10 +1,12 @@
 """What bin/guide and bin/catalog share (T153, T155): the sites and the agent's tokens from .site/.env, calls to the API,
 the working copy .site/<target>/<kind>/<slug>.md and the git snapshot in data/."""
 import json
+import mimetypes
 import sys
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
+from uuid import uuid4
 
 ROOT = Path(__file__).resolve().parents[1]
 HOME = ROOT / ".site"
@@ -32,6 +34,22 @@ def call(to: str, method: str, path: str, data: dict | None = None):
         sys.exit(f"{method} {path}: {e.code} · {e.read().decode()[:300]}")
     except URLError as e:
         sys.exit(f"{url} не відповідає · {e.reason}")
+
+
+def send(to: str, path: str, what: Path, fields: dict | None = None) -> dict:
+    """A file to the API as a form: the lesson's sources and attachments, a Zoom report."""
+    url, token = target(to)
+    b = uuid4().hex
+    head = "".join(f'--{b}\r\nContent-Disposition: form-data; name="{k}"\r\n\r\n{v}\r\n' for k, v in (fields or {}).items())
+    head += (f'--{b}\r\nContent-Disposition: form-data; name="file"; filename="{what.name}"\r\n'
+             f'Content-Type: {mimetypes.guess_type(what.name)[0] or "application/octet-stream"}\r\n\r\n')
+    request = Request(f"{url}/api{path}", method="POST", data=head.encode() + what.read_bytes() + f"\r\n--{b}--\r\n".encode(),
+                      headers={"Authorization": f"Bearer {token}", "Content-Type": f"multipart/form-data; boundary={b}"})
+    try:
+        with urlopen(request) as response:
+            return json.load(response)
+    except HTTPError as e:
+        sys.exit(f"POST {path}: {e.code} · {e.read().decode()[:300]}")
 
 
 def file(to: str, kind: str, slug: str) -> Path:

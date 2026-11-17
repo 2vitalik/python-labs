@@ -141,6 +141,27 @@ with TestClient(main.app) as c:
     c.post("/api/lessons/pz1/zoom", json={"sources": True})
     check("sources again: still one link", len(c.get("/api/lessons/pz1").json()["links"]) == 1)
 
+    # the participants report exported on Zoom's site (T336): local times, a row per join, the waiting room apart
+    head = "Name (original name),Email,Join time,Leave time,Duration (minutes),Guest,In waiting room\n"
+    people = ("Денис Конишев,,10/08/2026 06:39:00 PM,10/08/2026 06:40:10 PM,2,Yes,Yes\n"
+              "Денис Конишев,,10/08/2026 06:40:10 PM,10/08/2026 07:30:00 PM,50,Yes,No\n"
+              "Zoom Guy (zg),,10/08/2026 06:33:00 PM,10/08/2026 08:13:00 PM,100,Yes,No\n"
+              "Віталій,admin@nure.ua,10/08/2026 06:33:10 PM,10/08/2026 08:13:10 PM,100,No,No\n")
+    post = lambda text: c.post("/api/lessons/pz2/attendance", files={"file": ("participants.csv", text.encode(), "text/csv")})  # noqa: E731
+    r = post("﻿" + head + people)
+    a = r.json()
+    check("csv: 3 rows (the waiting room is not the class), local 18:33 is 15:33 UTC, the span from the first join to the last leave",
+          r.status_code == 200 and a["pulled"] == 3 and a["meeting"]["uuid"] == "csv" and a["meeting"]["start"].startswith("2026-10-08T15:33:00")
+          and a["seconds"] == 6010 and [p["person"]["nick"] for p in a["people"]] == ["stud", "stud"] and a["people"][0]["name"] == "Zoom Guy"
+          and a["teachers"][0]["email"] == "admin@nure.ua", r.text)
+    top = "Meeting ID,Topic,Start Time,End Time,User Email,Duration (Minutes),Participants,\n123 456 789,ПЗ Python,10/08/2026 06:30:00 PM,10/08/2026 08:15:00 PM,admin@nure.ua,105,3,\n\n"
+    a = post(top + head.replace("Join time", "Join Time").replace("Leave time", "Leave Time") + people).json()
+    check("csv with meeting data: the topic and the meeting's own span, rows replaced not doubled", a["meeting"]["topic"] == "ПЗ Python" and a["seconds"] == 6300
+          and mongo[DB].attendance.count_documents({"lesson": "pz2"}) == 3 and c.get("/api/lessons/pz2").json()["has"]["zoom"], a["meeting"])
+    check("csv: not a report → 422, «unique users» (no times) → 422 saying so, no rows → 422",
+          post("a,b\n1,2\n").status_code == 422 and "unique" in post("Name (original name),Email,Total duration (minutes),Guest\nX,,10,Yes\n").json()["detail"]
+          and post(head).status_code == 422)
+
     c.cookies.clear()
     r = c.post("/api/lessons/pz1/zoom", json={}, headers=AGENT)
     check("agent: pull by token, the lesson updated by claude", r.status_code == 200 and c.get("/api/lessons/pz1", headers=AGENT).json()["updated_by"] == "claude", r.text)
