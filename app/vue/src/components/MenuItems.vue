@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, watch } from 'vue'
+import { computed, nextTick, ref, watch } from 'vue'
 
 import DelButton from '@core/components/DelButton.vue'
 import Icon from '@core/components/Icon.vue'
@@ -25,7 +25,7 @@ import ToolsButton from './ToolsButton.vue'
 // «＋ нотатка», a minus by every row, «＋ перехід або дія» under them. A new row is typed where it will stand; Enter saves
 // it and the next one waits under it. A row may say where it leads before it says how (T318): the new row's target is
 // picked at once, and a row with no name keeps a dashed «як?» in its place — the windows are joined first, the items and
-// the keys named later. The jumps of rules stand apart under a caption of their own; the game screen offers a new one.
+// the keys named later; a row made by its target brings the next one with the list of windows open already — a click a transition. The jumps of rules stand apart under a caption of their own; the game screen offers a new one.
 // `menu` — the Part of kind menu hosted on this window, made with its first row — its title stays «Меню «…»»: the
 // samples find it by that; an item is { title, window, task, note }
 const props = defineProps({ window: Object, menu: Object, tools: Boolean })
@@ -49,9 +49,11 @@ async function addItem(patch) {
     await postPart({ kind: 'menu', title: `Меню «${props.window.title}»`, window: props.window.id, items: [item] })
     await ed.changed()
   }
-  kept = picking.value
+  const chain = kept = picking.value
   picking.value = false
   n.value++
+  await nextTick()
+  if (chain && adding.value) picking.value = true  // window after window: the next row's list is open at once
 }
 // the picker closed with nothing picked: the unborn row goes
 watch(picking, (on) => {
@@ -90,7 +92,7 @@ async function removeAll() {
         <div v-for="(it, i) in items" :key="i" class="move">
           <InlineText :value="it.title" :can="ed.editable" :required="!it.window && !it.task" placeholder="пункт, кнопка, клавіша" :save="(title) => setItem(i, { title })">
             <template #default>{{ it.title }}<span v-if="!it.title" class="how" title="як відбувається перехід — ще не сказано">як?</span></template>
-            <template #empty><span class="how can" title="Як це відбувається — пункт меню, кнопка, клавіша? Клік — дописати">як? пункт, кнопка, клавіша</span></template>
+            <template #empty><span class="how can" title="Як це відбувається — пункт меню, кнопка, клавіша? Клік — дописати">як?</span></template>
           </InlineText>
           <span>
             <MenuTarget v-if="on" :item="it" :host="window.id" :save="(to) => setItem(i, to)" />
