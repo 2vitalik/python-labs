@@ -5,12 +5,12 @@ import { fmtWhen } from '@core/labs.js'
 export const GROUPS = [
   { kind: 'demo', icon: '🎬', title: 'Демки', who: 'усім · умова дедлайну лаби',
     hint: 'Запис гри на 1–5 хвилин: запуск, як грається, виграш і програш' },
-  { kind: 'defense', icon: '🔒', title: 'Асинхронний захист', who: 'на 70+ · без дедлайну',
-    hint: 'Відео на 3–10 хвилин: пояснюєш свій код. Дедлайну нема — орієнтир лише підказує, коли зручно; після онлайн-захисту викладач може зняти' },
+  { kind: 'defense', icon: '🔒', title: 'Асинхронний захист', who: 'на 70+ · до кінця семестру',
+    hint: 'Відео на 3–10 хвилин: пояснюєш свій код. Свого дедлайну нема — лише загальна межа курсу, кінець семестру (дату скаже викладач); орієнтир підказує, коли зручно; після онлайн-захисту викладач може зняти' },
   { kind: 'gold', icon: '⭐', title: 'Золоті картки', who: 'на 85+ · відео на кожну',
-    hint: 'Окреме відео на кожну золоту картку: як працює алгоритм. Рядок зʼявляється сам, щойно картку заявлено' },
+    hint: 'Окреме відео на кожну золоту картку: як працює алгоритм. Рядок зʼявляється сам, щойно картку заявлено; клік по назві покаже, де вона в грі' },
 ]
-const AFTER = { 1: 3, 2: 4 }  // a defense has no deadline: the lab it usually follows
+const AFTER = { 1: 3, 2: 4 }  // a defense has no deadline of its own, only the course's end (T344): the lab it usually follows
 
 export const titleOf = (v, info) => (v.kind === 'demo' ? `Демка до лаби ${v.lab}` : v.kind === 'defense' ? `Захист ${v.n}` : info(v.task)?.title || v.task)
 export const anchorOf = (v) => `v-${v.slot}`
@@ -27,7 +27,7 @@ export function tagOf(v, now = Date.now()) {
     return new Date(v.due) < now ? { text: `дедлайн минув ${day}`, tone: 'bad', tip: full } : { text: `до ${day}`, tone: '', tip: full }
   }
   if (v.need === 'must') return { text: 'обовʼязково', tone: '', tip: v.why || 'викладач чекав це відео' }
-  if (v.kind === 'defense' && !filled) return { text: `орієнтовно після лаби ${AFTER[v.n] || v.n}`, tone: '', tip: 'не дедлайн: можна й пізніше' }
+  if (v.kind === 'defense' && !filled) return { text: `орієнтовно після лаби ${AFTER[v.n] || v.n}`, tone: '', tip: 'не дедлайн: можна й пізніше — до кінця семестру' }
   return null
 }
 
