@@ -11,11 +11,11 @@ from core.guide_io import seed
 from core.models.activity import Activity, client
 from core.routes import (activity, attendance, auth, fields, front_errors, guide, health, labs, lesson_files, lessons, me, my_week,
                          poll_actions, poll_chats, poll_results, poll_templates, polls, profile, student_labs, student_messages, students, table,
-                         view_as, views, weeks)
+                         view_as, view_folders, view_versions, views, weeks)
 
 ROUTERS = [health.router, auth.router, me.router, view_as.router, profile.router, students.router, student_messages.router, guide.router,
            activity.router, front_errors.router, my_week.router, weeks.router, lessons.router, lesson_files.router, attendance.router,
-           labs.router, student_labs.router, table.router, fields.router, views.router,
+           labs.router, student_labs.router, table.router, fields.router, views.router, view_versions.router, view_folders.router,
            # /api/polls/<word> before /api/polls/{id}: the path matches first, the id's type is checked after
            poll_templates.router, poll_chats.router, poll_results.router, polls.router, poll_actions.router]
 QUIET = {("GET", "/api/me"), ("POST", "/api/me/view")}  # session probe and page views: they have their own rows
@@ -36,7 +36,8 @@ async def footprint(request: Request, call_next):
         path, method = request.url.path, request.method
         email = request.session.get("email") or getattr(request.state, "agent", "")
         if email and path.startswith("/api/") and not path.startswith(SILENT) and (method, path) not in QUIET \
-                and not (method == "GET" and path.startswith(POLLED)) and "x-sandbox" not in request.headers:  # a scratch copy leaves no trace
+                and not (method == "GET" and path.startswith(POLLED)) and not path.endswith("/seen") \
+                and "x-sandbox" not in request.headers:  # a view's use count ticks by itself; a scratch copy leaves no trace
             await Activity(user=email, kind="api", method=method, path=path + (f"?{request.url.query}" if request.url.query else ""),
                            status=status, ms=int((perf_counter() - t) * 1000), **client(request)).insert()
 

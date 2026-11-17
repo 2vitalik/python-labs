@@ -1,5 +1,6 @@
 from fastapi.staticfiles import StaticFiles
 
+import table_seed  # noqa: F401 — the site's views of /table
 import uploads
 from core.app import create_app
 from db import MODELS

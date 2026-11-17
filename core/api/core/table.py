@@ -7,10 +7,10 @@ from core.models.history import stamp, when
 from core.models.poll import Poll
 from core.models.poll_send import PollSend
 from core.models.user import Status, User
-from core.models.view import View
 from core.polls_read import latest, votes_of
 from core.routes import students
 from core.routes.labs import labs_api
+from core.views import all_views, prefs
 
 
 async def answers(users: list[User]) -> tuple[list[Poll], dict[str, dict]]:
@@ -51,4 +51,4 @@ async def table() -> dict:
             "polls": votes.get(u.email, {}), "fields": values.get(u.email, {})})
     return {"rows": rows, "labs": labs_api(index.deadlines), "polls": [p.api() for p in polls],
             "fields": [f.api() for f in await Field.find_all().sort("order", "created_at").to_list()],
-            "views": [v.api() for v in await View.find_all().sort("order", "created_at").to_list()]}
+            "views": [v.api() for v in await all_views()], "prefs": await prefs()}
