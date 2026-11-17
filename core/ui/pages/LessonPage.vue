@@ -17,7 +17,7 @@ import LessonSources from '../components/LessonSources.vue'
 import LessonWho from '../components/LessonWho.vue'
 import Toc from '../components/Toc.vue'
 import Transcript from '../components/Transcript.vue'
-import { lessonName, parseTranscript, stats, summaryView, withInfo } from '../lesson.js'
+import { fmtWords, lessonName, parseTranscript, reportView, stats, summaryView, withInfo } from '../lesson.js'
 import { problem } from '../problem.js'
 import { useTitle } from '../title.js'
 import { user } from '../user.js'
@@ -29,7 +29,8 @@ const route = useRoute()
 const lesson = ref(null)
 const clicks = ref({})
 const open = ref(false)
-const editing = ref(false)
+const long = ref(false)  // the long report unfolded
+const editing = ref('')  // «transcript» or «report»: which text has its editor open
 const error = ref('')
 const slug = computed(() => route.params.slug)
 const admin = computed(() => user.value?.status === 'admin')
@@ -46,7 +47,7 @@ const putText = (key) => async (s, data) => {
   lesson.value = await putLesson(s, { [key]: data.body, rev: data.rev, note: data.note })
   return summary.value
 }
-const transcriptPage = computed(() => summary.value && { ...summary.value, body: lesson.value.transcript })
+const textPage = (key) => summary.value && { ...summary.value, body: lesson.value[key] }
 
 async function load() {
   try {
@@ -104,6 +105,19 @@ watch(() => route.hash, (h) => lesson.value && hash(h))  // a save replaces `les
         <GuideBody :page="summary" :view="summaryView" :put="putText('summary')" history="" placeholder="Конспекту ще нема — bin/lesson pull, /lesson summary, push" />
       </section>
 
+      <section v-if="lesson.report || admin" class="mt-4">
+        <div class="d-flex align-items-center gap-2">
+          <a v-if="lesson.report" href="#" class="fold text-decoration-none text-reset d-inline-flex align-items-center gap-1" @click.prevent="long = !long">
+            <IconChevron :dir="long ? 'down' : 'right'" :size="12" /><span class="fw-semibold">📖 Докладно</span>
+            <span class="text-secondary small">· для тих, хто не був · {{ fmtWords(lesson.report.split(/\s+/).length) }}</span>
+          </a>
+          <span v-else class="text-secondary small">📖 Докладного звіту ще нема</span>
+          <a v-if="admin && lesson.report" href="#" class="small text-secondary ms-auto" @click.prevent="editing = editing === 'report' ? '' : 'report'"><Icon name="pencil" /> докладно</a>
+        </div>
+        <GuideEditor v-if="editing === 'report'" :page="textPage('report')" :put="putText('report')" notitle @saved="editing = ''" @close="editing = ''" />
+        <GuideText v-if="long" :text="reportView(lesson.report)" class="mt-2" />
+      </section>
+
       <section v-if="lesson.transcript || admin" class="mt-4">
         <div class="d-flex align-items-center gap-2">
           <a v-if="lesson.transcript" href="#" class="fold text-decoration-none text-reset d-inline-flex align-items-center gap-1" @click.prevent="open = !open">
@@ -111,9 +125,9 @@ watch(() => route.hash, (h) => lesson.value && hash(h))  // a save replaces `les
             <span class="text-secondary small">· {{ sum.sections }} розділів · {{ sum.lines }} реплік · {{ sum.speakers }} мовців</span>
           </a>
           <span v-else class="text-secondary small">🗣 Транскрипту ще нема</span>
-          <a v-if="admin && lesson.transcript" href="#" class="small text-secondary ms-auto" @click.prevent="editing = !editing"><Icon name="pencil" /> транскрипт</a>
+          <a v-if="admin && lesson.transcript" href="#" class="small text-secondary ms-auto" @click.prevent="editing = editing === 'transcript' ? '' : 'transcript'"><Icon name="pencil" /> транскрипт</a>
         </div>
-        <GuideEditor v-if="editing" :page="transcriptPage" :put="putText('transcript')" notitle @saved="editing = false" @close="editing = false" />
+        <GuideEditor v-if="editing === 'transcript'" :page="textPage('transcript')" :put="putText('transcript')" notitle @saved="editing = ''" @close="editing = ''" />
         <Transcript v-if="open" :sections :people="lesson.people" :video :start="lesson.video_start" />
         <Toc :items="toc" />
       </section>

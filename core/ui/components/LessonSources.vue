@@ -53,7 +53,7 @@ onMounted(async () => (students.value = (await getStudents()).filter((s) => s.st
               <span class="text-body-tertiary">{{ fmtWords(f.words) }} · {{ f.by }} · {{ when(f.uploaded) }}</span>
               <a href="#" class="ms-auto text-body-tertiary text-decoration-none" title="Прибрати" @click.prevent="drop(f)"><Icon name="x" /></a>
             </li>
-            <li v-if="!sources.length" class="text-body-tertiary">ще нема — zoom.txt, plaud.txt, whisper.txt, chat.txt…</li>
+            <li v-if="!sources.length" class="text-body-tertiary">ще нема — zoom.txt, zoom-cc.txt, wispr.txt, plaud.txt, chat.txt…</li>
           </ul>
           <label class="btn btn-outline-secondary btn-sm"><Icon name="plus" /> сирий транскрипт<input type="file" multiple hidden @change="add($event, 'source')"></label>
           <div class="fw-semibold mt-3 mb-1">Файли для студентів</div>
@@ -81,11 +81,12 @@ onMounted(async () => (students.value = (await getStudents()).filter((s) => s.st
             <RouterLink :to="`/students/${lesson.people[w].nick}/edit`" class="text-body-tertiary">{{ lesson.people[w].name }} {{ lesson.people[w].group }}</RouterLink>
           </div>
           <div class="fw-semibold mt-3 mb-1">Обробка — локально, через Claude Code</div>
-          <pre class="mb-0 text-body-secondary">bin/lesson pull {{ lesson.slug }}
+          <pre class="mb-0 text-body-secondary">bin/lesson collect {{ lesson.slug }}   # тека Zoom і Wispr Flow → сирі джерела й частини
 /lesson merge data/transcripts/{{ lesson.slug }}
 /lesson summary data/transcripts/{{ lesson.slug }}
 bin/lesson push {{ lesson.slug }} -m "…"
-bin/zoom pull {{ lesson.slug }} [--meeting ID] [--sources]</pre>
+bin/lesson video {{ lesson.slug }}     # шматки запису → Drive і Telegram
+bin/zoom csv {{ lesson.slug }} звіт.csv</pre>
         </div>
       </div>
     </div>

@@ -105,6 +105,8 @@ export function parseChat(text) {
   return rows
 }
 
+// the long report for the page: without its own h1, a section's time leads to the same section of the transcript
+export const reportView = (md) => (md || '').replace(/^# .*\n+/, '').replace(/^(## .+?) · (\d{1,2}:\d{2})$/gm, (_, head, t) => `${head} · [${t}](#${timeId(t)})`)
 // the summary for the page: without its own h1 (the page has one), the times of «Теми» lead into the transcript
 export const summaryView = (md) => (md || '').replace(/^# .*\n+/, '')
   .replace(/^(- .+?) · (\d{1,2}:\d{2})( —|$)/gm, (_, head, t, tail) => `${head} · [${t}](#${timeId(t)})${tail}`)

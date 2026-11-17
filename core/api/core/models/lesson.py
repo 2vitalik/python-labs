@@ -57,7 +57,8 @@ class Lesson(Document):
     video_start: str = ""  # «HH:MM:SS» clock time where the recording starts: a line's time → a moment in the video
     context: str = ""  # the teacher's notes for the summary
     transcript: str = ""
-    summary: str = ""
+    summary: str = ""  # the short one: what was decided, what to do
+    report: str = ""  # the long one: topic by topic, for those who were not there
     notes: str = ""  # merge notes: clock offsets, unnamed speakers, doubts — the admin's
     chat: str = ""  # Zoom's chat as saved (meeting_saved_chat.txt)
     meeting: str = ""  # Zoom meeting ID (the recurring link's) or one instance's UUID — what «Оновити із Zoom» asks for
@@ -86,7 +87,7 @@ class Lesson(Document):
 
     def api(self, admin: bool) -> dict:
         data = self.row() | {"video_start": self.video_start, "transcript": self.transcript, "summary": self.summary,
-                             "chat": self.chat, "zoom": self.zoom.model_dump(), "rev": self.rev, "updated_by": self.updated_by.split("@")[0]}
+                             "report": self.report, "chat": self.chat, "zoom": self.zoom.model_dump(), "rev": self.rev, "updated_by": self.updated_by.split("@")[0]}
         return data | ({"context": self.context, "notes": self.notes, "meeting": self.meeting} if admin else {})
 
 

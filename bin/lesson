@@ -9,7 +9,7 @@
   bin/lesson [-t dev] video <slug> [--dry]        the recording pieces → Google Drive and Telegram, the links → the parts (lessonvideo.py)
   bin/lesson [-t dev] new <дата> [--tag …] [--title …] [--time 18:35–20:10] [--groups A,B]
   bin/lesson [-t dev] pull <slug>                 site → data/transcripts/<slug>/: meta.yml (the parts in it), context.md, transcript.md,
-                                                  summary.md, notes.md, raw/ (one file per service), parts/<key>.summary.md…
+                                                  summary.md, report.md, notes.md, raw/ (one file per service), parts/<key>.summary.md…
   bin/lesson [-t dev] push <slug> [-m "що змінив"] [--force]   the folder → site: texts and meta that differ, raw files the site lacks
   bin/lesson [-t dev] attach <slug> <file…>       files for students (what the class worked with)
   bin/lesson [-t dev] publish <slug> | hide <slug>
@@ -29,7 +29,7 @@ import yaml
 from siteapi import HOME, ROOT, SNAP, call, send
 
 FOLDER = Path(os.environ.get("LESSONS_DIR", ROOT / "data" / "transcripts"))  # another site keeps its folder elsewhere (ods)
-TEXTS = {"context": "context.md", "transcript": "transcript.md", "summary": "summary.md", "notes": "notes.md"}
+TEXTS = {"context": "context.md", "transcript": "transcript.md", "summary": "summary.md", "report": "report.md", "notes": "notes.md"}
 META = ("title", "date", "time", "groups", "links", "video_start", "meeting")
 PART = ("key", "kind", "title", "start", "end", "note", "links", "only")  # of a part in meta.yml; its texts are files in parts/
 SKILL_KINDS = {"pz": "practice", "lab": "lab", "lec": "lecture", "cons": "consult", "x": "other"}

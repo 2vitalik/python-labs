@@ -77,5 +77,5 @@ async def full(l: Lesson, user: User) -> dict:
 async def virtual(date: str, user: User) -> dict | None:
     """The page of a day without a lesson: only what the site gives this reader for the date."""
     parts = (await site_parts(user, is_admin(user))).get(date)
-    return parts and day(date, parts) | {"video_start": "", "transcript": "", "summary": "", "chat": "", "zoom": Meeting().model_dump(),
+    return parts and day(date, parts) | {"video_start": "", "transcript": "", "summary": "", "report": "", "chat": "", "zoom": Meeting().model_dump(),
                                          "rev": 0, "updated_by": "", "files": [], "people": {}}

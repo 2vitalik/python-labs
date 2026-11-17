@@ -48,7 +48,8 @@ def drive(file: Path, where: str, name: str, own_link: bool) -> str:
 def telegram(file: Path, caption: str, cfg: dict) -> str:
     """tgvideo.py in an environment of its own (kurigram is not the site's dependency); it prints the message's link."""
     env = os.environ | {k: cfg[k] for k in ("TG_API_ID", "TG_API_HASH", "TG_UPLOADER_TOKEN", "TG_CHAT")} | {"TG_TOPIC": cfg.get("TG_TOPIC", "0")}
-    got = subprocess.run(["uv", "run", "--no-project", "--isolated", "--with", "kurigram", "python", str(Path(__file__).with_name("tgvideo.py")), str(file), caption],
+    got = subprocess.run(["uv", "run", "--no-project", "--isolated", "--with", "kurigram", "--with", "tgcrypto", "python",  # tgcrypto: the upload is many times faster
+                          str(Path(__file__).with_name("tgvideo.py")), str(file), caption],
                          env=env, capture_output=True, text=True)
     if got.returncode:
         sys.exit(f"Telegram: {got.stderr.strip()[-400:]}")

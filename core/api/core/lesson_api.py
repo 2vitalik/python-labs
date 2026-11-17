@@ -40,6 +40,7 @@ class LessonPatch(BaseModel):
     context: str | None = None
     transcript: str | None = None
     summary: str | None = None
+    report: str | None = None
     notes: str | None = None
     chat: str | None = None
     meeting: str | None = None

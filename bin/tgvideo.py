@@ -1,7 +1,7 @@
 """A video into the group's Telegram topic by an uploader bot over MTProto (T335): the cloud Bot API takes 50 MB, a bot
 that speaks MTProto itself — about 2000 MiB. Run by lessonvideo.py in its own environment:
 
-  uv run --no-project --with kurigram python bin/tgvideo.py <file.mp4> "<caption>"
+  uv run --no-project --with kurigram --with tgcrypto python bin/tgvideo.py <file.mp4> "<caption>"
 
 Reads TG_API_ID, TG_API_HASH, TG_UPLOADER_TOKEN, TG_CHAT, TG_TOPIC from the environment; the session lives in
 ~/.config/python-labs (outside Dropbox). The last line it prints is the message's link."""
