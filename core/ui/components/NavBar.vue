@@ -2,6 +2,7 @@
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
+import { toTop } from '../anchors.js'
 import { icons, useNavFit } from '../navFit.js'
 import { site } from '../site.js'
 import { canAccess, user } from '../user.js'
@@ -38,6 +39,12 @@ watch(user, () => layout(), { flush: 'post' })  // the name appears/changes → 
 // gets lower. Two thresholds, so the bar does not flicker where it changes
 const small = ref(false)
 const scrolled = () => (small.value = scrollY > (small.value ? 40 : 120))
+// scrolled, a click on the bar's empty space takes the page to its top (T344) — as a stuck heading goes to its section's
+// start (toStart.js). «↑» shows while the mouse is on the bar and lights up over the empty space: a click there is the same
+const ACTIVE = 'a, button, input, select, label, [role=button]'
+const free = ref(false)
+const isFree = (e) => small.value && !e.target.closest(ACTIVE)
+const up = (e) => isFree(e) && toTop()
 onMounted(() => {
   document.addEventListener('click', close)
   addEventListener('scroll', scrolled, { passive: true })
@@ -50,7 +57,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <nav ref="bar" class="navbar navbar-expand bg-body-tertiary border-bottom" :class="{ small }">
+  <nav ref="bar" class="navbar navbar-expand bg-body-tertiary border-bottom" :class="{ small, free }" @click="up" @mousemove="free = isFree($event)" @mouseleave="free = false">
     <div class="page d-flex align-items-center">
       <RouterLink class="navbar-brand d-flex align-items-center" to="/" :title="site.name"><IconHome :size="20" /></RouterLink>
       <ul ref="list" class="navbar-nav">
@@ -86,6 +93,8 @@ onUnmounted(() => {
           <button type="button" class="nav-link look" data-tip="Меню словами: що не вміщається — у «Ще»" @click="setIcons(false)">Аа</button>
         </li>
       </ul>
+      <button type="button" class="to-top" :class="{ lit: free }" :tabindex="small ? 0 : -1" aria-label="Нагору"
+              data-tip="Нагору — можна й кліком по порожньому місцю меню" @click="toTop()"><Icon name="top" /></button>
       <NavUser :stage />
     </div>
   </nav>
@@ -134,6 +143,18 @@ onUnmounted(() => {
 /* scrolled, the bar has less air — so has its list (T294 §12) */
 .small .dropdown-menu { --bs-dropdown-item-padding-y: .1rem; --bs-dropdown-font-size: .9rem; --bs-dropdown-padding-y: .15rem; }
 .dropdown-item.active::before { content: ''; position: absolute; left: .3rem; top: .35rem; bottom: .35rem; width: 2px; border-radius: 1px; background: var(--bs-primary); }
+/* «↑» keeps its place whatever the bar's state, so the links never shift; a finger has no hover — and taps the bar itself */
+.navbar.free { cursor: pointer; }
+.to-top { position: relative; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: 1.75rem; height: 1.75rem; padding: 0;
+          border: 0; border-radius: .3rem; background: none; color: var(--bs-navbar-color); opacity: 0; pointer-events: none; transition: opacity .15s; }
+.small:hover .to-top, .small .to-top:focus-visible { opacity: .65; pointer-events: auto; }
+.small .to-top.lit, .small .to-top:hover { background: rgba(var(--bs-emphasis-color-rgb), .08); color: var(--bs-navbar-hover-color); opacity: 1; }
+.to-top::after { content: attr(data-tip); position: absolute; z-index: 5; top: calc(100% + .15rem); right: 0; padding: .1rem .45rem; border-radius: .3rem;
+                 background: var(--bs-emphasis-color); color: var(--bs-body-bg); font-size: .75rem; white-space: nowrap; opacity: 0; pointer-events: none; }
+/* its words wait a moment over the empty space: a mouse passing by to a link reads nothing */
+.small .to-top.lit::after { opacity: 1; transition: opacity .15s .5s; }
+.small .to-top:hover::after { opacity: 1; }
+@media (hover: none) { .to-top { display: none; } }
 .look { color: var(--bs-secondary-color); font-size: .8rem; }
 .dropdown-item.look { display: flex; align-items: center; gap: .35rem; }
 button.nav-link.look { border: 0; background: none; line-height: 1.5rem; }
