@@ -64,7 +64,8 @@ def pieces(folder: dict) -> list[dict]:
         at = started(v.with_suffix(".vtt"), clocks)
         start = day + timedelta(seconds=at) if at is not None else cursor
         cursor = start + timedelta(seconds=length)
-        out.append({"file": v, "seconds": round(length), "start": start, "end": cursor, "aligned": at is not None})
+        # captions were on, and this piece has none: nobody spoke in it — a break left recording
+        out.append({"file": v, "seconds": round(length), "start": start, "end": cursor, "quiet": bool(clocks) and not v.with_suffix(".vtt").exists()})
     return out
 
 

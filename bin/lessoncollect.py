@@ -55,7 +55,7 @@ def collect(to: str, date: str, tag: str, topic: str, dry: bool, folder: Path, p
     if not pieces:
         sys.exit(f"у {lessonzoom.ZOOM} нема запису за {date}" + (f" з темою «{topic}»" if topic else "") + " — bin/lesson scan покаже, що є")
     slug, start, end = "-".join(x for x in (date, tag) if x), pieces[0]["start"], pieces[-1]["end"]
-    parts = [{"kind": "pz", "start": f"{p['start']:%H:%M:%S}", "end": f"{p['end']:%H:%M:%S}"} for p in pieces if p["seconds"] >= SHORT]
+    parts = [{"kind": "break" if p["quiet"] else "pz", "start": f"{p['start']:%H:%M:%S}", "end": f"{p['end']:%H:%M:%S}"} for p in pieces if p["seconds"] >= SHORT]
     notes = wispr(start, end)
     print(f"{slug}: {start:%H:%M}–{end:%H:%M} · {len(pieces)} шматків запису → {len(parts)} частин · Wispr Flow: {len(notes)} зустрічей")
     if dry:
