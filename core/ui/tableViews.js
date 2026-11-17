@@ -53,6 +53,17 @@ export const without = (state, cols, id) => state.cols.flatMap((k) => {
   return ids.includes(id) ? ids.filter((x) => x !== id) : [k]
 })
 
+// a column put before another (`before` — its id, '' — the end): a family opens only when the move takes one out of it or
+// cuts into it — a column set down beside a family leaves it growing
+export function reorder(state, cols, id, before) {
+  const ids = (k) => open(k, cols, state.lab)
+  const cut = (k) => k.includes(':') && (ids(k).includes(id) || ids(k).indexOf(before) > 0)
+  const list = state.cols.flatMap((k) => (cut(k) ? ids(k) : [k])).filter((k) => k !== id)
+  const at = before ? list.findIndex((k) => k === before || (k.includes(':') && ids(k)[0] === before)) : -1
+  list.splice(at < 0 ? list.length : at, 0, id)
+  return list
+}
+
 export const filtersOf = (q) => Object.fromEntries(Object.entries(q).filter(([k, v]) => k.startsWith('f.') && v !== undefined && v !== '').map(([k, v]) => [k.slice(2), String(v)]))
 
 // the state out of the URL: a URL with `cols` says it all; one without takes the view's query and lays its own over it
@@ -76,13 +87,16 @@ export function toQuery(state, view) {
 // what a view keeps: the same shape the URL has, less the view's name and the search
 export const toSaved = (state) => Object.fromEntries(Object.entries(toQuery(state)).filter(([k, v]) => k !== 'view' && k !== 'q' && v !== undefined).map(([k, v]) => [k, String(v)]))
 
-// a query in one spelling, to compare two (tableDiff.js): families opened, ids said for «this lab» wherever they are of it —
-// so «Лаба 1» and its copy turned to lab 2 differ by the lab alone
+// a query in one spelling, to compare two (tableDiff.js): ids said for «this lab» wherever they are of it — so «Лаба 1» and
+// its copy turned to lab 2 differ by the lab alone. `parts` — the columns as the view names them: { token, ids }, a family
+// with what it opens into now; `cols` — all of them opened
 export function canon(query, cols) {
   const s = readState({}, query)
+  const byKey = index(cols)
   const say = (id) => rel(abs(id, s.lab), s.lab)
-  const out = { cols: shown(s, cols).map((c) => say(c.id)), group: s.group.map(say), sort: s.sort.map((x) => (sortOf(x).desc ? '-' : '') + say(sortOf(x).id)),
+  const family = (k) => abs(k, s.lab).replace(new RegExp(`^(polls|fields):lab${s.lab}$`), '$1:lab')
+  const parts = s.cols.map((k) => ({ token: k.includes(':') ? family(k) : say(k), ids: open(k, cols, s.lab).filter((id) => colOf(id, byKey, s.lab)).map(say) }))
+  const out = { cols: [...new Set(parts.flatMap((p) => p.ids))], group: s.group.map(say), sort: s.sort.map((x) => (sortOf(x).desc ? '-' : '') + say(sortOf(x).id)),
                 filters: Object.fromEntries(Object.entries(s.filters).map(([k, v]) => [say(k), v]).sort()) }
-  return { ...out, lab: usesLab(out) ? s.lab : 0 }
+  return { ...out, parts, lab: usesLab({ ...out, cols: [...out.cols, ...parts.map((p) => p.token)] }) ? s.lab : 0 }
 }
-export const changed = (state, query, cols) => JSON.stringify(canon(toSaved(state), cols)) !== JSON.stringify(canon(query, cols))

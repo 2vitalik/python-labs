@@ -42,11 +42,11 @@ eq('no groups', V.readState({ group: '-' }, base).group, [])
 eq('default group', V.readState({}, { cols: 'bot' }).group, ['group'])
 eq('url cols say it all', V.readState({ cols: 'bot' }, base).filters, {})
 eq('lab kept out without rel', V.toQuery(V.readState({}, { cols: 'bot,lab1', lab: '2' }), 'x').lab, undefined)
-eq('unchanged', V.changed(s, base, cols), false)
-eq('family vs explicit — same', V.changed({ ...s, cols: ['bot', 'lab', 'lab.before', 'poll.a', 'f.q.lab'] }, base, cols), false)
-eq('explicit lab — same', V.changed({ ...s, cols: ['bot', 'lab2', 'lab2.before', 'poll.a', 'f.q.2'] }, base, cols), false)
-eq('changed sort', V.changed({ ...s, sort: ['bot'] }, base, cols), true)
-eq('changed lab', V.changed({ ...s, lab: 1 }, base, cols), true)
+eq('unchanged', D.changed(s, base, cols), false)
+eq('family vs explicit — same', D.changed({ ...s, cols: ['bot', 'lab', 'lab.before', 'poll.a', 'f.q.lab'] }, base, cols), false)
+eq('explicit lab — same', D.changed({ ...s, cols: ['bot', 'lab2', 'lab2.before', 'poll.a', 'f.q.2'] }, base, cols), false)
+eq('changed sort', D.changed({ ...s, sort: ['bot'] }, base, cols), true)
+eq('changed lab', D.changed({ ...s, lab: 1 }, base, cols), true)
 
 // filters
 const row = { group: '25-1', bot: true, commits: 7, lab1: 'ok', last: new Date(Date.now() - 3 * 864e5).toISOString() }
@@ -69,10 +69,17 @@ eq('sorter', [...rows].sort(T.sorter([{ col: c('commits'), desc: true }, { col: 
 eq('hide one of a family', V.without(s, cols, 'poll.a'), ['bot', 'lab', 'lab.before', 'fields:lab'])
 eq('hide a plain column', V.without(s, cols, 'bot'), ['lab', 'lab.before', 'polls:lab', 'fields:lab'])
 
+// a column dragged: a family opens only when the move takes one out of it or cuts into it
+eq('drag beside a family', V.reorder(s, cols, 'lab.before', 'bot'), ['lab.before', 'bot', 'lab', 'polls:lab', 'fields:lab'])
+eq('drag to the end', V.reorder(s, cols, 'bot', ''), ['lab', 'lab.before', 'polls:lab', 'fields:lab', 'bot'])
+eq('drag before a family', V.reorder(s, cols, 'bot', 'poll.a'), ['lab', 'lab.before', 'bot', 'polls:lab', 'fields:lab'])
+eq('drag out of a family', V.reorder(s, cols, 'poll.a', 'bot'), ['poll.a', 'bot', 'lab', 'lab.before', 'fields:lab'])
+eq('a family against itself opened', D.changed({ ...s, cols: ['bot', 'lab', 'lab.before', 'poll.a', 'fields:lab'] }, base, cols), false)
+
 // a view in words, two views compared
 eq('describe', D.describe(base, cols).map((p) => p.text), ['лаба 2', '5 колонок', 'Група › 📅', '🤖 так', 'Σ ↓, 🤖 ↑'])
 const d1 = D.diff(base, { ...base, lab: '1' }, cols)
-eq('diff lab only', [d1.brief, d1.lines.length], [['лаба 2 → 1', '−1 колонка'], 2])  // the poll is tagged for lab 2 only
+eq('diff lab only', [d1.brief, d1.lines.length], [['лаба 2 → 1'], 1])  // the poll of lab 2 is of the same family: nothing was taken out
 const d2 = D.diff(base, { ...base, cols: 'lab,bot,commits', sort: '', 'f.bot': '0', 'f.commits': '5-' }, cols)
 eq('diff brief', d2.brief, ['＋1 колонка', '−3 колонки', 'порядок колонок', 'сортування', 'фільтри (2)'])
 eq('diff lines', d2.lines.map((l) => `${l.what}:${l.kind}:${l.text}`), ['Колонки:add:Σ Комітів', 'Колонки:del:⎇← До', 'Колонки:del:P Опит', 'Колонки:del:✨ Якість', 'Колонки:move:інший порядок',

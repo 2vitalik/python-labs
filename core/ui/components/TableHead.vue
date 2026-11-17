@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref, watch } from 'vue'
 
-import { moved, useDragSort } from '../dragSort.js'
+import { useDragSort } from '../dragSort.js'
 import { useTable } from '../tableCtx.js'
 import { sortOf } from '../tableViews.js'
 import Icon from './Icon.vue'
@@ -13,7 +13,7 @@ import TableHeadMenu from './TableHeadMenu.vue'
 const t = useTable()
 const menu = ref(null)  // { c, el } — the header whose menu is open
 let dropped = 0  // browsers send no click after a drag as a rule; this keeps a stray one from opening the menu
-const drag = useDragSort((from, to) => t.setCols(moved(t.shown.map((c) => c.id), from.i, to.i)), { axis: 'x' })
+const drag = useDragSort((from, to) => t.move(t.shown[from.i].id, t.shown[to.i]?.id || ''), { axis: 'x' })
 const bands = computed(() => t.shown.reduce((out, c) => {
   if (out.at(-1)?.name === c.group) out.at(-1).span++
   else out.push({ name: c.group, span: 1 })

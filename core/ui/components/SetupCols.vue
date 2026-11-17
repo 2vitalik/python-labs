@@ -1,5 +1,5 @@
 <script setup>
-import { moved, useDragSort } from '../dragSort.js'
+import { useDragSort } from '../dragSort.js'
 import { useTable } from '../tableCtx.js'
 import SetupCatalog from './SetupCatalog.vue'
 import SetupName from './SetupName.vue'
@@ -8,7 +8,7 @@ import SetupRow from './SetupRow.vue'
 // the panel «Колонки» (T315 §3): on the left the columns the view shows — dragged into order, ✕ hides one; on the right
 // the catalog of all there are
 const t = useTable()
-const drag = useDragSort((from, to) => t.setCols(moved(t.shown.map((c) => c.id), from.i, to.i)))
+const drag = useDragSort((from, to) => t.move(t.shown[from.i].id, t.shown[to.i]?.id || ''))
 </script>
 
 <template>

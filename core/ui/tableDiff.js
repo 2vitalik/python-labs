@@ -1,6 +1,6 @@
 import { plural } from './plural.js'
 import { filterText } from './tableFilter.js'
-import { canon, colOf, index, sortOf } from './tableViews.js'
+import { canon, colOf, index, sortOf, toSaved } from './tableViews.js'
 
 // a view in words, and what differs between two (T315 §7–§8): both read queries as tableViews.js canon() spells them
 const count = (n) => `${n} ${plural(n, 'колонка', 'колонки', 'колонок')}`
@@ -43,14 +43,19 @@ export function diff(a, b, all) {
   const lines = []
   const say = (what, kind, text) => lines.push({ what, kind, text })
   if (x.lab && y.lab && x.lab !== y.lab) brief.push(`лаба ${x.lab} → ${y.lab}`) && say('Лаба', 'chg', `${x.lab} → ${y.lab}`)
-  const added = y.cols.filter((id) => !x.cols.includes(id))
-  const gone = x.cols.filter((id) => !y.cols.includes(id))
+  // what both name alike is the same column — a family too, whatever it opens into for each; the rest go one by one
+  const tokens = (q) => q.parts.map((p) => p.token)
+  const both = new Set(tokens(x).filter((k) => tokens(y).includes(k)))
+  const rest = (q) => [...new Set(q.parts.filter((p) => !both.has(p.token)).flatMap((p) => p.ids))]
+  const seq = (q) => q.parts.flatMap((p) => (both.has(p.token) ? [p.token] : p.ids))
+  const added = rest(y).filter((id) => !rest(x).includes(id))
+  const gone = rest(x).filter((id) => !rest(y).includes(id))
   if (added.length) brief.push(`＋${count(added.length)}`)
   if (gone.length) brief.push(`−${count(gone.length)}`)
   added.forEach((id) => say('Колонки', 'add', ry.name(id)))
   gone.forEach((id) => say('Колонки', 'del', rx.name(id)))
   const kept = (list, other) => list.filter((id) => other.includes(id)).join()
-  if (kept(x.cols, y.cols) !== kept(y.cols, x.cols)) brief.push('порядок колонок') && say('Колонки', 'move', 'інший порядок')
+  if (kept(seq(x), seq(y)) !== kept(seq(y), seq(x))) brief.push('порядок колонок') && say('Колонки', 'move', 'інший порядок')
   if (x.group.join() !== y.group.join()) brief.push('групи') && say('Групи', 'chg', `${rx.path(x.group) || 'без груп'} → ${ry.path(y.group) || 'без груп'}`)
   if (x.sort.join() !== y.sort.join()) brief.push('сортування') && say('Сортування', 'chg', `${rx.sort(x.sort) || 'без сортування'} → ${ry.sort(y.sort) || 'без сортування'}`)
   const ids = [...new Set([...Object.keys(x.filters), ...Object.keys(y.filters)])].filter((id) => x.filters[id] !== y.filters[id])
@@ -62,3 +67,5 @@ export function diff(a, b, all) {
   if (ids.length) brief.push(ids.length === 1 ? `фільтр ${ry.mark(ids[0])}` : `фільтри (${ids.length})`)
   return { brief, lines, same: !lines.length }
 }
+// is what is on screen another look than the view keeps
+export const changed = (state, query, all) => !diff(query, toSaved(state), all).same
