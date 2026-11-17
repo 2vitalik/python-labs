@@ -109,6 +109,10 @@ with TestClient(main.app) as c:
     check("no bot linked → the vote is nobody's", rows["norepo"]["1"]["case"]["says"] is None)
     check("lab 2, no review yet → unreviewed, whenever the commits came", [rows[n]["2"]["case"]["code"] for n in ("ontime", "bit")] == ["unreviewed"] * 2, rows["ontime"]["2"])
     check("lab 2 read, not done, not a commit since lab 1 → nowork, a plain «ні»", (rows["near"]["2"]["case"]["answer"], rows["near"]["2"]["case"]["code"]) == ("no", "nowork"), rows["near"]["2"])
+    db.repos.update_one({"user": "near@nure.ua"}, {"$set": {"ok": False, "error": "нема доступу"}})
+    lost = c.get("/api/students/near/labs").json()["labs"][1]["case"]
+    check("…unless the repository closed since: nothing new may be nothing seen → noaccess", (lost["answer"], lost["code"], lost["flags"]) == ("ask", "noaccess", ["noaccess"]), lost)
+    db.repos.update_one({"user": "near@nure.ua"}, {"$set": {"ok": True, "error": ""}})
     check("lab 2 read, not done, but worked on → partial", rows["days"]["2"]["case"]["code"] == "partial", rows["days"]["2"])
     check("lab 3 ahead → wait", rows["ontime"]["3"]["case"] | {"flags": []} == {"answer": "wait", "code": "ahead", "late": None, "says": None, "said_at": None, "flags": []})
     check("lab 4 without a deadline → nodue", rows["ontime"]["4"]["case"]["code"] == "nodue")

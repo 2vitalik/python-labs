@@ -31,8 +31,8 @@ def by_review(repo: Repo | None, review: Review, due: datetime, extended: bool, 
         if late <= SLIP:  # ≤ 0 — the deadline moved after the review was cut
             return fine if late <= 0 else (YES, "slip", late)
         return ASK, "late_bit" if late <= NEAR else "late_days" if late <= DAYS else "late_far", late
-    if idle:  # not a commit since the previous deadline: what the review read is the previous lab's code
-        return NO, "nowork", None
+    if idle:  # not a commit since the previous deadline: the review read the previous lab's code — or we cannot pull any more
+        return (NO, "nowork", None) if repo and repo.ok else (ASK, "noaccess", None)
     if "partial" in (review.verdict, review.head_verdict):
         return ASK, "near" if [w for w in review.required if w != "done"] == ["partial"] else "partial", None
     return (ASK, "other", None) if review.kind in ("tasks", "other") else (NO, "nothing", None)
