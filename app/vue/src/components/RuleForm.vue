@@ -41,8 +41,8 @@ function fits(task) {
   return (!when || when === form.when.kind) && then.every((k) => form.then.some((e) => e.kind === k))
 }
 // a card picked before any word is written brings its blank — as a rule card picked from the catalog opens its rule
-function choose(task, params) {
-  chosen.value = { slug: task.slug, params }
+function choose(task, params, why) {
+  chosen.value = { slug: task.slug, params, why }
   const blank = task.rule || {}
   if (said() !== opened || !(blank.when?.kind || blank.then?.length)) return
   Object.assign(form, words(blank), blank.when?.kind ? {} : { when: form.when })
@@ -66,7 +66,7 @@ async function save() {
     let lost = ''  // the rule is in; a card that failed must not make a retry post the rule twice
     const c = moved.value
     const claim = c ? putClaim(c.id, { params: c.params, note: c.note, link: c.link, rule: saved.id })
-      : card.value && postClaim({ task: card.value, rule: saved.id, params: chosen.value?.params || {} })
+      : card.value && postClaim({ task: card.value, rule: saved.id, params: chosen.value?.params || {}, why: (chosen.value || props.prefill)?.why || '' })
     await Promise.resolve(claim).catch((e) => (lost = e.message))
     ed.changed()
     if (lost) ed.fail(`Правило збережено, а картку не додано: ${lost}`)

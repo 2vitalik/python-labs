@@ -1,4 +1,5 @@
 import { postClaim, postPart, putPart } from './api.js'
+import { needsWhy } from './asked.js'
 import { kindOf, statOf, vocab } from './catalog.js'
 import { myParts } from './myGame.js'
 
@@ -42,8 +43,9 @@ export const addPart = (task, { icon, title, description }) => (kindOf(task) ===
 export const addsMore = (task) => kindOf(task) === 'role'
 
 // what the plus does: `ask` — a panel asks first (params · stat · replace · part), else `run` writes at once.
+// `why` — the params' panel asks the sentence of a card «за запитом» too (asked.js; `free` — no one asks it).
 // `parts` — the game's (the reader's own unless told); `anchor` — { part } | { rule }: the claim is made there (gameCtx.js)
-export function plusOf(task, { parts = myParts.value, anchor } = {}) {
+export function plusOf(task, { parts = myParts.value, anchor, free } = {}) {
   const kind = kindOf(task)
   if (kind === 'stat') return { ask: 'stat' }
   if (kind === 'window' || kind === 'role') return { ask: 'part' }
@@ -51,5 +53,6 @@ export function plusOf(task, { parts = myParts.value, anchor } = {}) {
     const opt = fieldOpt(task, parts)
     return { ask: opt.now ? 'replace' : '', run: opt.write, opt }
   }
+  if (needsWhy(task, free)) return { ask: 'params', why: true }
   return task.slots?.length ? { ask: 'params' } : { run: () => postClaim({ task: task.slug, ...anchor, params: {} }) }
 }

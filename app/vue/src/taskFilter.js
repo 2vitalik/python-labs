@@ -1,7 +1,9 @@
 import { computed, inject, nextTick, provide } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
+import { asked } from './asked.js'
 import { aliasesOf, kidsOf, tasks, zones } from './catalog.js'
+import { isMore, stateOf } from './coreMode.js'
 
 // tolerant search over the RU/UA/EN mixed corpus: case + и/і + е/є folded
 export const norm = (s) => String(s).toLowerCase().replace(/и/g, 'і').replace(/є/g, 'е')
@@ -22,7 +24,7 @@ export function hl(text, q, escape = esc) {
 export const markHtml = (html, q) => (q ? html.split(/(<[^>]+>)/).map((s) => (s.startsWith('<') ? s : hl(s, q, (t) => t))).join('') : html)
 
 // the filter of a catalog not on /tasks (T318, CatalogWindow): its state lives in an object, not in the address —
-// reactive { q, game, algo, zone, sub } and `only(task)`: the cards the place is about
+// reactive { q, game, algo, zone, sub, all, more } and `only(task)`: the cards the place is about
 const KEY = 'task-filter'
 export const provideTaskFilter = (state) => provide(KEY, state)
 // what a card marks in its text: the words searched for
@@ -31,12 +33,21 @@ export function useTaskQuery() {
   const route = useRoute()
   return computed(() => (local ? local.q : route.query.q) || '')
 }
+// «Основа · Усі» (coreMode.js): its state — the window's own or the page's — and whether the cards «за запитом» wait
+// behind their rows now: a search by words finds among all of them
+export function useCardsMode() {
+  const s = stateOf(inject(KEY, null))
+  const q = useTaskQuery()
+  return { s, coreOnly: computed(() => !s.all && !q.value) }
+}
 
 export function useTaskFilter(fixedGame = '') {
   const route = useRoute()
   const router = useRouter()
   const local = inject(KEY, null)
   const src = computed(() => local || route.query)
+  const { s: mode, coreOnly } = useCardsMode()
+  const hidden = (t) => coreOnly.value && asked(t)
 
   const f = computed(() => ({
     q: src.value.q || '', game: fixedGame || src.value.game || '', algo: src.value.algo === '1',
@@ -71,9 +82,11 @@ export function useTaskFilter(fixedGame = '') {
   // roots only (a family counts as one card); everything except the zone filter — so the nav shows where matches live
   const found = computed(() => tasks.value.filter((t) => !t.parent && matches(t)))
 
+  // what is shown: the cards «за запитом» behind their rows are not counted
   const counts = computed(() => {
-    const c = { '': found.value.length }
-    for (const t of found.value) {
+    const shown = found.value.filter((t) => !hidden(t))
+    const c = { '': shown.length }
+    for (const t of shown) {
       c[t.zone] = (c[t.zone] || 0) + 1
       c[`${t.zone}/${t.subzone}`] = (c[`${t.zone}/${t.subzone}`] || 0) + 1
     }
@@ -88,7 +101,10 @@ export function useTaskFilter(fixedGame = '') {
       Object.entries(z.subzones).forEach(([sk, [title, icon]], i) => {
         if (f.value.sub && sk !== f.value.sub) return
         const list = found.value.filter((t) => t.zone === zk && t.subzone === sk)
-        if (list.length) subs.push({ key: sk, title, icon, i, list })
+        // `more` — how many wait behind the row, shown in place once it is opened; a subcategory with nothing in the core
+        // stays as its heading and that row: the taxonomy is whole
+        const more = list.filter(hidden).length
+        if (list.length) subs.push({ key: sk, title, icon, i, more, list: isMore(mode, `${zk}/${sk}`) ? list : list.filter((t) => !hidden(t)) })
       })
       if (subs.length) out.push({ key: zk, title: z.title, icon: z.icon, color: z.color, subs })
     }
@@ -101,5 +117,5 @@ export function useTaskFilter(fixedGame = '') {
     ? Object.fromEntries(Object.entries(zones.value).filter(([zk]) => [...subsIn.value].some((k) => k.startsWith(`${zk}/`))))
     : zones.value))
 
-  return { f, set, counts, grouped, zonesIn, subsIn, local: !!local }
+  return { f, set, counts, grouped, zonesIn, subsIn, local: !!local, mode, coreOnly, total: computed(() => found.value.length) }
 }

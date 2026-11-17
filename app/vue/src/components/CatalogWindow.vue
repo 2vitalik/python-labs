@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router'
 
 import Sheet from '@core/components/Sheet.vue'
 import { placesOf } from '../claimPlace.js'
+import { allRemembered } from '../coreMode.js'
 import { useEd } from '../ed.js'
 import { provideGameCtx } from '../gameCtx.js'
 import { jump } from '../jump.js'
@@ -19,8 +20,9 @@ const open = defineModel({ type: Boolean, default: false })
 const props = defineProps({ scope: Object })
 const ed = useEd()
 const router = useRouter()
-const filter = reactive({ q: '', game: '', algo: '', zone: '', sub: '', only: null })
-watch(() => open.value && props.scope, (s) => s && Object.assign(filter, { q: '', game: '', algo: '', zone: s.zone || '', sub: '', only: s.only }))
+// `all`, `more` — «Основа · Усі» of its own (coreMode.js), starting from the reader's choice on «Таски»
+const filter = reactive({ q: '', game: '', algo: '', zone: '', sub: '', only: null, all: false, more: {} })
+watch(() => open.value && props.scope, (s) => s && Object.assign(filter, { q: '', game: '', algo: '', zone: s.zone || '', sub: '', only: s.only, all: allRemembered(), more: {} }))
 provideTaskFilter(filter)
 
 const anchor = computed(() => props.scope?.anchor)
@@ -34,6 +36,7 @@ provideGameCtx({
   has: computed(() => true), get can() { return ed.editable }, claims, parts: computed(() => ed.parts), slugs: computed(() => new Set(claims.value.map((c) => c.task))),
   places: (slug) => placesOf(slug, { claims: claims.value, parts: ed.parts, rules: ed.rules, info: ed.info }),
   reload: () => ed.changed(), show, get anchor() { return anchor.value },
+  get free() { return ed.teacher || ed.sandbox },  // a card «за запитом» goes in without the sentence (asked.js)
 })
 const href = computed(() => (props.scope ? router.resolve(props.scope.to).href : ''))
 </script>

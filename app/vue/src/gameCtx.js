@@ -12,6 +12,7 @@ import { claimedSlugs, myClaims, myGame, myParts, myRules, myTasks, reloadInside
 //   places(slug) — where a card sits, for its tick · reload() — after a write
 //   show(id) — go to a place: null — the place is a link into «Моя гра»
 //   anchor — { part } | { rule }: the window was opened from a part's «＋»: cards are claimed there, `claims` are its own
+//   free — the teacher's hand or a sandbox: a card «за запитом» asks for no sentence (T319)
 const KEY = 'game-ctx'
 const mine = {
   has: computed(() => !!myGame.value), can: true, claims: myClaims, parts: myParts, slugs: claimedSlugs,

@@ -4,10 +4,12 @@ import { computed, ref } from 'vue'
 import Icon from '@core/components/Icon.vue'
 import Pop from '@core/components/Pop.vue'
 import { postClaim } from '../api.js'
+import { asked } from '../asked.js'
 import { addPart, addsMore, addStat, plusOf } from '../gameAdd.js'
 import { useGameCtx } from '../gameCtx.js'
-import { addable, addsTo, drawn } from '../taskMeta.js'
+import { addable, addsTo, closedHome, drawn } from '../taskMeta.js'
 import { factorOf, factorText, roomFor } from '../tiers.js'
+import { user } from '@core/user.js'
 import TaskAddParams from './TaskAddParams.vue'
 import TaskAddPart from './TaskAddPart.vue'
 import TaskAddStat from './TaskAddStat.vue'
@@ -16,18 +18,25 @@ import TaskAddStat from './TaskAddStat.vue'
 // in (an entity type keeps a small plus beside it — «ще одну»; so does a card with repeats while one more still counts,
 // T291 §13). What the plus does depends on the card's kind (gameAdd.js); a question it asks first — in a panel at it.
 // The game is the context's (gameCtx.js): the reader's own on /tasks, the edited one in the catalog's window — there a
-// tick goes to the place on the page under the window, and with an anchor the card is claimed on that part or rule (T318)
+// tick goes to the place on the page under the window, and with an anchor the card is claimed on that part or rule (T318).
+// A card «за запитом» (T319) has a dashed plus that asks its sentence first; one whose place in the game is closed by the
+// teacher — a grey plus that says why
 const props = defineProps({ task: Object, inGame: Boolean })
 const ctx = useGameCtx()
 const count = computed(() => ctx.claims.value.filter((c) => c.task === props.task.slug).length)
-const canAdd = computed(() => ctx.can && props.task.status === 'active' && !drawn(props.task)
+const closed = computed(() => ctx.can && !props.inGame && props.task.status === 'active' && !drawn(props.task) && closedHome(props.task))
+const canAdd = computed(() => ctx.can && !closed.value && props.task.status === 'active' && !drawn(props.task)
   && (!props.inGame || (!ctx.anchor && (addsMore(props.task) || roomFor(props.task, count.value)))))
 const moreTitle = computed(() => {
   if (addsMore(props.task)) return 'Ще одну сутність цього типу'
   const price = factorText(factorOf(props.task, count.value + 1))
   return `Ще раз — повтор (${count.value + 1}-й)${price ? `\nза ${price} ціни` : ''}`
 })
-const shown = computed(() => ctx.has.value && addable(props.task) && (props.inGame || canAdd.value))
+const isAsked = computed(() => asked(props.task))
+const addTitle = computed(() => [ctx.anchor ? 'Додати сюди' : `Додати у ${ctx.show ? 'гру' : 'мою гру'}\n${addsTo(props.task)}`,
+  isAsked.value && 'за запитом: монетка — коли викладач відкриє картку'].filter(Boolean).join('\n'))
+const free = computed(() => !!ctx.free || user.value?.status === 'admin')  // the server asks the teacher and a sandbox no sentence
+const shown = computed(() => ctx.has.value && (closed.value || (addable(props.task) && (props.inGame || canAdd.value))))
 const places = computed(() => (props.inGame ? ctx.places(props.task.slug) : []))
 const mineTip = computed(() => (ctx.show ? 'уже в грі' : 'уже в твоїй грі'))
 const where = ref(false)
@@ -38,7 +47,7 @@ const error = ref('')
 
 function add() {
   error.value = ''
-  plus.value = plusOf(props.task, { parts: ctx.parts.value, anchor: ctx.anchor })
+  plus.value = plusOf(props.task, { parts: ctx.parts.value, anchor: ctx.anchor, free: free.value })
   if (plus.value.ask) open.value = !open.value
   else write(plus.value.run)
 }
@@ -60,18 +69,19 @@ async function write(run) {
 
 <template>
   <span v-if="shown" class="marks" @click.stop>
-    <Pop v-if="canAdd" v-model="open" width="20rem">
+    <span v-if="closed" class="d-flex" title="ще готується"><button type="button" class="iact round add" disabled><Icon name="plus" /></button></span>
+    <Pop v-else-if="canAdd" v-model="open" width="20rem">
       <template #trigger>
-        <button type="button" class="iact round add" :class="{ more: inGame }" :disabled="busy" @click="add"
-                :title="inGame ? moreTitle : ctx.anchor ? 'Додати сюди' : `Додати у ${ctx.show ? 'гру' : 'мою гру'}\n${addsTo(task)}`">
+        <button type="button" class="iact round add" :class="{ more: inGame, ask: isAsked && !inGame }" :disabled="busy" @click="add"
+                :title="inGame ? moreTitle : addTitle">
           <Icon name="plus" />
         </button>
       </template>
       <TaskAddPart v-if="plus.ask === 'part'" :task :busy @send="(form) => write(() => addPart(task, form))" @cancel="open = false" />
       <TaskAddStat v-else-if="plus.ask === 'stat'" :task :busy @send="(parts, value) => write(() => addStat(task, parts, value))"
                    @cancel="open = false" />
-      <TaskAddParams v-else-if="plus.ask === 'params'" :task :busy @send="(params) => write(() => postClaim({ task: task.slug, ...ctx.anchor, params }))"
-                     @cancel="open = false" />
+      <TaskAddParams v-else-if="plus.ask === 'params'" :task :busy :why="plus.why"
+                     @send="(params, why) => write(() => postClaim({ task: task.slug, ...ctx.anchor, params, why }))" @cancel="open = false" />
       <template v-else-if="plus.ask === 'replace'">
         <div class="small mb-2">Зараз: «{{ plus.opt.now }}». Замінити на «{{ plus.opt.name }}»?</div>
         <div class="d-flex gap-2">
@@ -107,6 +117,9 @@ async function write(run) {
 /* plus and tick are one round shape at one spot of the header */
 .round { width: 1.5rem; height: 1.5rem; margin: -.05rem -.15rem; border-radius: 50%; font-size: 1.15rem; }
 .round.more { width: 1.1rem; height: 1.1rem; font-size: .85rem; }
+/* «за запитом»: the same plus in a hollow dashed ring; closed — grey, it cannot act */
+.round.ask { border: 1px dashed currentColor; font-size: .95rem; }
+.round:disabled { color: var(--bs-secondary-color); opacity: .45; }
 .done { color: var(--bs-success); }
 .done:hover { color: var(--bs-success); background: color-mix(in srgb, var(--bs-success) 12%, transparent); }
 /* the count hangs on the tick's shoulder, and the tick keeps a step from the coin after it (T296 §5) */

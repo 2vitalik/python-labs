@@ -9,7 +9,7 @@ import { putClaim, putPart, putRule } from './api.js'
 // same line (UndoBar.vue shows it for a few seconds)
 const PART = ['title', 'task', 'role', 'icon', 'description', 'window', 'items', 'props', 'stats', 'states', 'order']
 const NAMES = { title: 'назву', description: 'опис', role: 'тип', task: 'тип', icon: 'значок', stats: 'параметри', states: 'стани', props: 'властивості',
-  items: 'переходи й дії', note: 'нотатку', link: 'посилання' }
+  items: 'переходи й дії', note: 'нотатку', link: 'посилання', why: 'пояснення' }
 const pick = (o, keys) => Object.fromEntries(keys.map((k) => [k, o[k]]))
 const copy = (o) => JSON.parse(JSON.stringify(o))
 let line = Promise.resolve()

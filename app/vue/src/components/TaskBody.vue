@@ -13,6 +13,7 @@ import IdeaPop from './IdeaPop.vue'
 import InlineMd from './InlineMd.vue'
 import RuleShape from './RuleShape.vue'
 import TaskAliases from './TaskAliases.vue'
+import TaskCorePick from './TaskCorePick.vue'
 import TaskEdit from './TaskEdit.vue'
 import TaskStatusPick from './TaskStatusPick.vue'
 
@@ -39,7 +40,7 @@ const variant = computed(() => ({ zone: props.task.zone, subzone: props.task.sub
   <div class="px-2 py-2 border-top rounded-bottom vstack gap-2" :class="family ? 'bg-body' : 'bg-body-tertiary'">
     <div class="d-flex align-items-start gap-2">
       <span class="line me-auto">{{ vocab.kinds[kind] || kind }}<template v-if="how"> · {{ addsTo(task) }}</template><template v-if="admin"> ·
-        <TaskStatusPick :task can /></template></span>
+        <TaskStatusPick :task can /><template v-if="!family"> · <TaskCorePick :task /></template></template></span>
       <button v-if="admin" type="button" class="iact" title="Редагувати все разом" @click="$emit('edit')"><Icon name="pencil" /></button>
     </div>
     <RuleShape v-if="kind === 'rule'" :rule="task.rule" />

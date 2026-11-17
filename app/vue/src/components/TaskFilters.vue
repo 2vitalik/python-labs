@@ -3,20 +3,29 @@ import { computed } from 'vue'
 
 import Icon from '@core/components/Icon.vue'
 import { games, ruShown, setRuShown } from '../catalog.js'
+import { setAll } from '../coreMode.js'
 import { useTaskFilter } from '../taskFilter.js'
 import { isUnfolded, unfoldAll } from '../unfold.js'
 import { user } from '@core/user.js'
 
-// the search row of /tasks: words in any language, a game, ⭐; every card unfolded or folded at once; the teacher's
-// switch for the Russian synonyms on the cards (the search finds by them for everyone)
-const { f, set } = useTaskFilter()
+// the search row of /tasks: words in any language, «Основа · Усі» (T319), a game, ⭐; every card unfolded or folded at
+// once; the teacher's switch for the Russian synonyms on the cards (the search finds by them for everyone)
+const { f, set, mode } = useTaskFilter()
 const admin = computed(() => user.value?.status === 'admin')
+const MODES = [
+  [false, 'Основа', 'Картки, які заявляються одразу; решта — «за запитом», під рядком у кінці підкатегорії. Пошук шукає по всіх'],
+  [true, 'Усі', 'Усі картки, і ті, що за запитом'],
+]
 </script>
 
 <template>
   <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
     <input :value="f.q" class="form-control form-control-sm w-auto flex-grow-1" style="max-width: 28rem"
            placeholder="Пошук: назва, інші назви будь-якою мовою, опис…" @input="set({ q: $event.target.value })">
+    <div class="btn-group btn-group-sm" role="group" aria-label="які картки показати">
+      <button v-for="[all, label, tip] in MODES" :key="label" type="button" class="btn" :class="!mode.all === !all ? 'btn-secondary' : 'btn-outline-secondary'"
+              :aria-pressed="!mode.all === !all" :title="tip" @click="setAll(mode, all)">{{ label }}</button>
+    </div>
     <button type="button" class="btn btn-sm btn-outline-secondary" @click="unfoldAll('', !isUnfolded())">
       <Icon :name="isUnfolded() ? 'fold' : 'unfold'" /> {{ isUnfolded() ? 'згорнути всі' : 'розгорнути всі' }}
     </button>

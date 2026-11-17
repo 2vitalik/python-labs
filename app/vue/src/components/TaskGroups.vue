@@ -8,9 +8,11 @@ import { user } from '@core/user.js'
 import IdeaPop from './IdeaPop.vue'
 import TaskCard from './TaskCard.vue'
 import TaskEdit from './TaskEdit.vue'
+import TaskMoreRow from './TaskMoreRow.vue'
 
 // a category's subcategories, each a full-width row (T274 §1): its cards dealt into as many columns as fit (≈320 px),
 // the first part of the list into the first column. The columns are separate stacks: an unfolded card lengthens only its own.
+// Under «Основа» the cards «за запитом» wait behind a row at the end (T319, TaskMoreRow).
 // `bare` — no ids on the subcategories: the catalog stands in a window over another page (T318)
 const props = defineProps({ zone: String, color: String, subs: Array, bare: Boolean })
 const admin = computed(() => user.value?.status === 'admin')
@@ -53,11 +55,12 @@ function split(list, n) {
         </button>
       </div>
       <TaskEdit v-if="adding === s.key" :task="blank(s)" class="mb-2" @done="adding = ''" />
-      <div class="d-flex gap-3 align-items-start">
+      <div v-if="s.list.length" class="d-flex gap-3 align-items-start">
         <div v-for="(col, ci) in split(s.list, cols)" :key="ci" class="col-stack">
           <TaskCard v-for="t in col" :key="t.id" :task="t" />
         </div>
       </div>
+      <TaskMoreRow :scope="scope(s)" :n="s.more" class="mt-1" />
     </div>
   </div>
 </template>

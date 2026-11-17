@@ -23,6 +23,7 @@ import ViewsPage from '@core/pages/ViewsPage.vue'
 import WeekPage from '@core/pages/WeekPage.vue'
 import { makeRouter } from '@core/router.js'
 
+import AsksPage from './pages/AsksPage.vue'
 import CardHistoryPage from './pages/CardHistoryPage.vue'
 import Colors2Page from './pages/Colors2Page.vue'
 import ColorsPage from './pages/ColorsPage.vue'
@@ -98,6 +99,7 @@ const router = makeRouter([
   { path: '/colors2', component: Colors2Page, meta: { title: 'Кольори v2', access: 'admin' } },
   { path: '/tasks', component: TasksPage, meta: { title: 'Таски', wide: true, filters: true } },
   { path: '/tasks/history', component: CardHistoryPage, meta: { title: 'Історія завдань', kind: 'tasks', access: 'admin' } },
+  { path: '/tasks/asks', component: AsksPage, meta: { title: 'Запити', access: 'admin' } },  // the cards «за запитом» students added (T319)
   // a card is edited on itself now (T271): the old links land on the catalog, on the card when there is one
   { path: '/tasks/new', redirect: '/tasks' },
   { path: '/tasks/:slug/edit', redirect: (to) => ({ path: '/tasks', query: { q: to.params.slug } }) },

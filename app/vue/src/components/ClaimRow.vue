@@ -6,6 +6,7 @@ import Icon from '@core/components/Icon.vue'
 import Pop from '@core/components/Pop.vue'
 import { vPeek } from '@core/peek.js'
 import { deleteClaim } from '../api.js'
+import { asked, needsWhy } from '../asked.js'
 import { missingParams, paramsText } from '../catalog.js'
 import { claimPlace } from '../claimPlace.js'
 import { useEd } from '../ed.js'
@@ -18,11 +19,14 @@ import CoinBadge from './CoinBadge.vue'
 // one claim as one line (T270 §7, T296 §10): the card's sign · title · params · the student's note · link · status · the
 // coin at the end, as on «Таски»; what does not fit ends in «…» — the card under the mouse has it all (T284 §2) and says
 // what a click opens. The owner's trash stands at the very end of every row, as on a card's head (T301 §2): quieter until
-// the mouse is over the row, never an empty gap. `where` — name the anchor too, a click on it jumps there
+// the mouse is over the row, never an empty gap. `where` — name the anchor too, a click on it jumps there.
+// A claim of a card «за запитом» (T319) says «запит» by its coin, which waits; its sentence is in the panel
 const props = defineProps({ claim: Object, where: Boolean })
 const ed = useEd()
 const open = ref(false)
 const info = computed(() => ed.info(props.claim.task))
+const ask = computed(() => asked(info.value) && props.claim.status !== 'accepted')
+const noWhy = computed(() => ask.value && needsWhy(info.value) && !props.claim.why?.trim())
 // only a card with repeats: a once-only one claimed on five entities would read «×0» on four
 const factor = computed(() => (repeatable(info.value) ? factorsOf(props.claim.task, info.value, ed.claims)[props.claim.id] ?? 1 : 1))
 const ptext = computed(() => paramsText(info.value, props.claim.params))
@@ -42,6 +46,7 @@ const hint = computed(() => (ed.editable ? 'Клік по рядку — тво�
             <span class="title">{{ info?.title || claim.task }}</span>
             <span v-if="ptext" class="params">{{ ptext }}</span>
             <span v-if="missing" class="need" title="картка чекає обовʼязкових параметрів">параметри?</span>
+            <span v-if="noWhy" class="miss" title="картка за запитом чекає речення: що саме у грі це робить — клік по рядку">бракує пояснення</span>
             <span v-if="claim.note" class="note">{{ claim.note }}</span>
             <span v-if="claim.auto" class="auto" title="тримається сама — з типу, параметра, властивості чи намальованого">авто</span>
             <span v-if="claim.shots?.length" class="text-secondary" :title="`є доказ: ${claim.shots.length}`"><Icon name="image" /></span>
@@ -50,7 +55,8 @@ const hint = computed(() => (ed.editable ? 'Клік по рядку — тво�
               <span v-if="where && place" class="where" role="button" title="показати" @click.stop="jump(place.id)">{{ place.text }}</span>
               <span v-if="claim.status === 'accepted'" class="text-success" title="зараховано"><Icon name="done" /></span>
               <span v-else-if="claim.status === 'returned'" class="text-danger" title="повернуто — доробити"><Icon name="back" /></span>
-              <CoinBadge :coin="info?.coin" :amount="info?.amount" :factor />
+              <span v-if="ask" class="ask" title="картка за запитом: монетка зарахується, коли викладач відкриє картку">запит</span>
+              <CoinBadge :coin="info?.coin" :amount="info?.amount" :factor :class="{ waits: ask }" />
             </span>
           </div>
           <div v-if="claim.status === 'returned' && claim.verdict" class="verdict">{{ claim.verdict }}</div>
@@ -86,6 +92,9 @@ const hint = computed(() => (ed.editable ? 'Клік по рядку — тво�
 .note { flex-shrink: 4; }
 .params, .lnk, .where { color: var(--bs-secondary-color); }
 .need { padding: 0 .3rem; border-radius: .25rem; background: var(--bs-warning-bg-subtle); color: var(--bs-warning-text-emphasis); font-size: .72rem; }
+.miss { color: var(--act-miss); font-size: .72rem; }
+.ask { padding: 0 .25rem; border: 1px dashed var(--bs-border-color); border-radius: .25rem; color: var(--bs-secondary-color); font-size: .68rem; }
+.waits { opacity: .5; }  /* the coin of a request is not counted yet */
 .note { min-width: 3rem; overflow: hidden; padding: 0 .25rem; border-radius: .25rem; background: color-mix(in srgb, var(--bs-warning) 16%, var(--bs-body-bg));
         font-style: italic; text-overflow: ellipsis; white-space: nowrap; }
 .auto { padding: 0 .25rem; border: 1px solid var(--bs-border-color); border-radius: .25rem; color: var(--bs-secondary-color); font-size: .68rem; }

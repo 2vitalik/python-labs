@@ -5,7 +5,7 @@ import { PROOFS } from './proof.js'
 export const FIELDS = {
   slug: 'Slug', title: 'Назва', description: 'Опис', examples: 'Приклади', summary: 'Один рядок суті', icon: 'Іконка', klass: 'Клас', axes: 'Осі',
   zone: 'Зона', subzone: 'Підзона', tags: 'Теги', games: 'Ігри', parent: 'Батько', coin: 'Монетка', amount: 'Кількість',
-  max_count: 'Макс. зарахувань', slots: 'Параметри', status: 'Статус', order: 'Порядок', proof: 'Доказ',
+  max_count: 'Макс. зарахувань', slots: 'Параметри', status: 'Статус', order: 'Порядок', proof: 'Доказ', core: 'Основа',
 }
 const NAMES = {
   status: (v) => STATUSES[v],
@@ -13,6 +13,7 @@ const NAMES = {
   coin: (v) => COINS[v] && `${COINS[v]} ${COIN_NAMES[v]}`,
   zone: (v) => zones.value[v]?.title,
   proof: (v) => PROOFS[v] && `${PROOFS[v].icon} ${PROOFS[v].label}`,
+  core: (v) => (v ? 'в основі' : 'за запитом'),
 }
 
 export function show(field, value) {

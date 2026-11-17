@@ -4,6 +4,7 @@ import { computed, ref, watch } from 'vue'
 import Icon from '@core/components/Icon.vue'
 import Pop from '@core/components/Pop.vue'
 import { postClaim } from '../api.js'
+import { needsWhy, whyOk } from '../asked.js'
 import { kindOf, missingParams } from '../catalog.js'
 import { useEd } from '../ed.js'
 import { cardItems } from '../items.js'
@@ -11,11 +12,13 @@ import { landed } from '../jump.js'
 import Picker from './Picker.vue'
 import ProposeCard from './ProposeCard.vue'
 import SlotFields from './SlotFields.vue'
+import WhyField from './WhyField.vue'
 
 // «＋ механіка» and the like: the catalog's cards of these kinds in a panel; a picked one is claimed at `anchor`
-// ({ part } · { rule } · {}), its required params asked first. `suggest(task)` lifts a card under «підходять сюди».
-// `hold` — the anchor does not exist yet (a new rule's form, T291 §8): the card is only chosen — choose(task, params) — and
-// the caller claims it once the anchor is saved. `plus` — the trigger is a small violet «＋» by a block's caption (T294 §8),
+// ({ part } · { rule } · {}), its required params asked first, and the sentence of a card «за запитом» (T319).
+// `suggest(task)` lifts a card under «підходять сюди».
+// `hold` — the anchor does not exist yet (a new rule's form, T291 §8): the card is only chosen — choose(task, params, why) —
+// and the caller claims it once the anchor is saved. `plus` — the trigger is a small violet «＋» by a block's caption (T294 §8),
 // the label under the mouse. Under the list — the way to the same cards with room to read them: the catalog's window
 // (T318, CatalogWindow), where several are added one after another; `catalog` — the section's own scope of it
 const props = defineProps({ kinds: Array, anchor: { type: Object, default: () => ({}) }, label: String, suggest: Function, filter: Function,
@@ -23,8 +26,10 @@ const props = defineProps({ kinds: Array, anchor: { type: Object, default: () =>
 const emit = defineEmits(['choose'])
 const ed = useEd()
 const open = ref(false)
-const picked = ref(null)  // a row of the list waiting for its params
+const picked = ref(null)  // a row of the list waiting for its params or its sentence
 const params = ref({})
+const why = ref('')
+const asks = (t) => needsWhy(t, ed.teacher || ed.sandbox)
 const proposing = ref(false)
 const error = ref('')
 const here = (c) => (c.part || '') === (props.anchor.part || '') && (c.rule || '') === (props.anchor.rule || '')
@@ -34,7 +39,7 @@ const items = computed(() => {
   return [...all.filter(fit).map((it) => ({ ...it, group: 'підходять сюди' })), ...all.filter((it) => !fit(it))]
 })
 const anchored = computed(() => props.hold || !!(props.anchor.part || props.anchor.rule))
-const ready = computed(() => !missingParams(picked.value?.task, params.value).length)
+const ready = computed(() => !missingParams(picked.value?.task, params.value).length && (!asks(picked.value?.task) || whyOk(why.value)))
 const plain = (md) => (md || '').replace(/\[([^\]]*)\]\([^)]*\)/g, '$1').replace(/[*_`#>]/g, '')
 // the same cards in the catalog's window: claimed at this picker's anchor
 const ZONE = { mechanic: 'entities', element: 'interface', field: 'interface', level: 'levels', rule: 'game-logic' }
@@ -51,20 +56,21 @@ function roomy() {
 watch(open, () => { picked.value = null; proposing.value = false; error.value = '' })
 
 function pick(it) {
-  if (anchored.value && missingParams(it.task, {}).length) {
+  if (asks(it.task) || (anchored.value && missingParams(it.task, {}).length)) {
     picked.value = it
     params.value = {}
+    why.value = ''
   } else send(it.task, {})
 }
-async function send(task, p) {
+async function send(task, p, w = '') {
   error.value = ''
   if (props.hold) {
-    emit('choose', task, p)
+    emit('choose', task, p, w)
     open.value = false
     return
   }
   try {
-    const c = await postClaim({ task: task.slug, ...props.anchor, params: p })
+    const c = await postClaim({ task: task.slug, ...props.anchor, params: p, why: w })
     open.value = false
     ed.changed()
     landed(`c-${c.id}`)
@@ -86,9 +92,10 @@ async function send(task, p) {
     <div v-else-if="picked" class="vstack gap-2">
       <div class="fw-semibold">{{ picked.icon }} {{ picked.title }}</div>
       <div v-if="picked.desc" class="desc">{{ plain(picked.desc) }}</div>
-      <div class="d-flex flex-wrap gap-2 align-items-center"><SlotFields :specs="picked.task.slots" :params /></div>
+      <WhyField v-if="asks(picked.task)" v-model="why" />
+      <div v-if="picked.task.slots?.length" class="d-flex flex-wrap gap-2 align-items-center"><SlotFields :specs="picked.task.slots" :params /></div>
       <div class="d-flex gap-2">
-        <button type="button" class="btn btn-sm btn-add" :disabled="!ready" @click="send(picked.task, params)"><Icon name="plus" /> Додати</button>
+        <button type="button" class="btn btn-sm btn-add" :disabled="!ready" @click="send(picked.task, params, asks(picked.task) ? why.trim() : '')"><Icon name="plus" /> Додати</button>
         <button type="button" class="btn btn-sm btn-outline-secondary" @click="picked = null">Скасувати</button>
       </div>
     </div>

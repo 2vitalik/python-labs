@@ -6,6 +6,7 @@ import Icon from '@core/components/Icon.vue'
 import InlineText from '@core/components/InlineText.vue'
 import Pop from '@core/components/Pop.vue'
 import { deleteClaim } from '../api.js'
+import { asked, needsWhy } from '../asked.js'
 import { missingParams, paramsText } from '../catalog.js'
 import { useEd } from '../ed.js'
 import { shortLink } from '../shortLink.js'
@@ -17,11 +18,13 @@ import CoinBadge from './CoinBadge.vue'
 // panel, as ClaimRow does, and the owner's trash ends the row — always there, quieter until the mouse is over it (T301 §2).
 // The owner writes the link and the note right in their cells (T306): a click beside the link — its address in place, a
 // click on the link itself still leads there. Its columns are the table's (`--cols`, SubzoneRows); on a phone the card
-// takes a line of its own
+// takes a line of its own. A card «за запитом» (T319) says «запит», as ClaimRow does
 const props = defineProps({ claim: Object })
 const ed = useEd()
 const open = ref(false)
 const info = computed(() => ed.info(props.claim.task))
+const ask = computed(() => asked(info.value) && props.claim.status !== 'accepted')
+const noWhy = computed(() => ask.value && needsWhy(info.value) && !props.claim.why?.trim())
 const remove = () => deleteClaim(props.claim.id).then(() => ed.changed(), (e) => ed.fail(e.message))
 const save = (patch) => ed.save.claim(props.claim.id, patch)
 const factor = computed(() => (repeatable(info.value) ? factorsOf(props.claim.task, info.value, ed.claims)[props.claim.id] ?? 1 : 1))
@@ -41,11 +44,13 @@ const tip = computed(() => {
       <template #trigger="{ toggle }">
         <div class="tr" :class="claim.status" role="button" :title="tip" @click="toggle">
           <span class="card-cell">
-            <CoinBadge :coin="info?.coin" :amount="info?.amount" :factor />
+            <CoinBadge :coin="info?.coin" :amount="info?.amount" :factor :class="{ waits: ask }" />
             <span class="what">
               {{ info?.title || claim.task }}
               <span v-if="ptext" class="muted">{{ ptext }}</span>
               <span v-if="missing" class="need" title="картка чекає обовʼязкових параметрів">параметри?</span>
+              <span v-if="ask" class="ask" title="картка за запитом: монетка зарахується, коли викладач відкриє картку">запит</span>
+              <span v-if="noWhy" class="miss" title="картка за запитом чекає речення: що саме у грі це робить — клік по рядку">бракує пояснення</span>
             </span>
           </span>
           <span class="link-cell">
@@ -94,6 +99,9 @@ const tip = computed(() => {
 .add { color: var(--act-add); white-space: nowrap; }
 .add:hover { text-decoration: underline; }
 .need { padding: 0 .3rem; border-radius: .25rem; background: var(--bs-warning-bg-subtle); color: var(--bs-warning-text-emphasis); font-size: .72rem; }
+.miss { color: var(--act-miss); font-size: .72rem; white-space: nowrap; }
+.ask { padding: 0 .25rem; border: 1px dashed var(--bs-border-color); border-radius: .25rem; color: var(--bs-secondary-color); font-size: .68rem; }
+.waits { opacity: .5; }  /* the coin of a request is not counted yet */
 .note { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; font-style: italic; color: var(--bs-secondary-color); }
 .note.open { display: block; overflow: visible; }  /* the field in place shows the whole note */
 /* an empty note's way in waits for the mouse over the row: a row without a note stays quiet */
