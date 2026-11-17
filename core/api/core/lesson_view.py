@@ -1,7 +1,7 @@
 """A lesson as its reader sees it (T333): the admin — everything; a student — a published day with its open parts and
 the ones that are theirs. A site adds its own parts of a day (python: defenses) through SITE_PARTS."""
 from core.lesson_people import known, people, speakers
-from core.models.lesson import Lesson, Meeting, Part
+from core.models.lesson import HIDDEN, Lesson, Meeting, Part
 from core.models.lesson_file import FileMeta, LessonFile, file_api
 from core.models.user import Status, User
 
@@ -13,7 +13,7 @@ def is_admin(user: User) -> bool:
 
 
 def mine(l: Lesson, user: User, admin: bool) -> list[Part]:
-    return [p for p in l.parts if admin or (p.kind != "break" and (not p.only or user.email in p.only))]
+    return [p for p in l.parts if admin or (p.kind not in HIDDEN and (not p.only or user.email in p.only))]
 
 
 def can_see(l: Lesson, user: User, admin: bool) -> bool:

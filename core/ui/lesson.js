@@ -14,8 +14,10 @@ export const timeId = (t) => `t-${t.replace(':', '')}`  // «15:01» → t-1501:
 export const PARTS = {
   pz: { icon: 'cap', name: 'ПЗ', color: 'var(--bs-primary)' }, def: { icon: 'shield', name: 'Захист', color: 'var(--bs-orange)' },
   lec: { icon: 'book', name: 'Лекція', color: 'var(--bs-teal)' }, cons: { icon: 'clock', name: 'Додатковий час', color: 'var(--bs-indigo)' },
-  break: { icon: 'pause', name: 'Перерва', color: 'var(--bs-secondary)' }, x: { icon: 'more', name: 'Інше', color: 'var(--bs-secondary)' },
+  break: { icon: 'pause', name: 'Перерва', color: 'var(--bs-secondary)' }, off: { icon: 'eyeoff', name: 'Поза заняттям', color: 'var(--bs-secondary)' },
+  x: { icon: 'more', name: 'Інше', color: 'var(--bs-secondary)' },
 }
+export const HIDDEN = ['break', 'off']  // the teacher's alone: students never get these parts
 export const partOf = (p) => PARTS[p.kind] || PARTS.x
 export const hm = (t) => (t || '').slice(0, 5)
 export const clock = (t) => t.split(':').reduce((n, x, i) => n + Number(x) * [3600, 60, 1][i], 0)  // «16:41[:20]» → seconds of the day

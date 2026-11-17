@@ -8,7 +8,8 @@ from pydantic import BaseModel, Field
 from core.models.history import record, stamp
 
 KINDS = {"pz": "ПЗ", "lab": "Лаба", "lec": "Лекція", "cons": "Консультація", "x": "Зустріч"}  # the old addresses: pz1, lab2
-PARTS = {"pz": "ПЗ", "def": "Захист", "lec": "Лекція", "cons": "Додатковий час", "break": "Перерва", "x": "Інше"}
+PARTS = {"pz": "ПЗ", "def": "Захист", "lec": "Лекція", "cons": "Додатковий час", "break": "Перерва", "off": "Поза заняттям", "x": "Інше"}
+HIDDEN = ("break", "off")  # the teacher's alone: a break, a talk after the goodbye that was left recording
 DAY = re.compile(r"\d{4}-\d{2}-\d{2}(-[a-z0-9]+)?")  # a day of one stream; the tag tells a second one on the same date
 VIDEO = re.compile(r"//([\w.-]*\.)?(youtube\.com|youtu\.be|zoom\.us|google\.com|t\.me|dropbox\.com)/")
 

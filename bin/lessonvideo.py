@@ -8,7 +8,7 @@ uploader bot over MTProto, tgvideo.py); the links → the parts on the site. Wha
   TG_UPLOADER_TOKEN=             a bot of its own from @BotFather, an admin of the group (not the site's bot)
   TG_CHAT=-100…  TG_TOPIC=12     the group and its topic for recordings
 
-A private part never goes to Telegram; a break goes nowhere."""
+A private part never goes to Telegram; a break and a part «поза заняттям» go nowhere."""
 import json
 import os
 import subprocess
@@ -67,8 +67,8 @@ def publish(to: str, slug: str, folder: Path, dry: bool):
     day = f"{slug} {cur['title']}".strip().replace("/", "-").replace(":", " —")
     for n, piece in enumerate(yaml.safe_load(manifest.read_text()), 1):
         p, file = parts.get(piece["part"]), Path(piece["file"])
-        if not p or p["kind"] == "break" or not file.exists():
-            print(f"  {file.name}: пропущено — {'нема файла' if p and not file.exists() else 'перерва' if p else 'нема частини заняття'}")
+        if not p or p["kind"] in ("break", "off") or not file.exists():
+            print(f"  {file.name}: пропущено — {'нема файла' if p and not file.exists() else 'перерва або поза заняттям' if p else 'нема частини заняття'}")
             continue
         title = f"{KINDS.get(p['kind'], 'Запис')} {piece['start'][:5].replace(':', '.')}–{piece['end'][:5].replace(':', '.')} {p['title']}".strip().replace("/", "-")
         where = cfg.get("DRIVE_PRIVATE" if p["only"] else "DRIVE")

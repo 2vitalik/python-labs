@@ -89,11 +89,12 @@ with TestClient(main.app) as c:
     check("counts per hosting and per lesson", k["hostings"] == {"telegram": {"clicks": 3, "people": 2}, "drive": {"clicks": 1, "people": 1}}
           and k["lessons"] == {"2026-11-10": {"clicks": 4, "people": 2}}, k)
 
-    c.post("/api/lessons", json={"date": "2026-11-12", "published": True, "parts": [{"kind": "def", "only": ["stud@nure.ua"]}]})
+    c.post("/api/lessons", json={"date": "2026-11-12", "published": True, "parts": [{"kind": "def", "only": ["stud@nure.ua"]}, {"kind": "off", "title": "після пари"}]})
     login(c, "other@nure.ua", "student")
     check("a day of private parts only: not in the list, 404 by address", slugs(c) == ["2026-11-10"] and c.get("/api/lessons/2026-11-12").status_code == 404, slugs(c))
     login(c, "stud@nure.ua", "student")
-    check("…and its student has it", slugs(c) == ["2026-11-12", "2026-11-10"] and c.get("/api/lessons/2026-11-12").status_code == 200)
+    check("…and its student has it, without the part «поза заняттям»", slugs(c) == ["2026-11-12", "2026-11-10"]
+          and [p["kind"] for p in c.get("/api/lessons/2026-11-12").json()["parts"]] == ["def"])
 
     # defenses (T327) as the site's parts: 16:05 UTC is 18:05 by the classes' clock
     base = {"labs": [1, 2], "kind": "online", "result": "passed", "link": "", "created_at": datetime(2026, 11, 10)}

@@ -3,7 +3,7 @@ import { computed, ref } from 'vue'
 
 import { flash } from '../anchors.js'
 import { putLesson } from '../api.js'
-import { byStart, clock, fmtDur, hm, parseTranscript, partDur, partOf, partSpan } from '../lesson.js'
+import { HIDDEN, byStart, clock, fmtDur, hm, parseTranscript, partDur, partOf, partSpan } from '../lesson.js'
 import Avatar from './Avatar.vue'
 import DelButton from './DelButton.vue'
 import GuideText from './GuideText.vue'
@@ -47,7 +47,7 @@ const next = computed(() => ({ start: hm(byStart(own.value).at(-1)?.end) }))  //
       <div class="d-flex justify-content-between small text-body-tertiary"><span>{{ hm(timed[0].start) }}</span><span>{{ fmtDur(span) }}</span><span>{{ hm(timed.at(-1).end) }}</span></div>
     </div>
     <div v-if="error" class="text-danger small mb-2">{{ error }}</div>
-    <article v-for="p in parts" :id="`p-${p.key}`" :key="p.key" class="part" :class="{ rest: p.kind === 'break' }" :style="{ '--c': partOf(p).color }">
+    <article v-for="p in parts" :id="`p-${p.key}`" :key="p.key" class="part" :class="{ rest: HIDDEN.includes(p.kind) }" :style="{ '--c': partOf(p).color }">
       <LessonPartForm v-if="editing === p.key" :part="p" @save="save" @close="editing = ''" />
       <template v-else>
         <header class="d-flex flex-wrap align-items-center gap-2">

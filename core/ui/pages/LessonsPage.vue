@@ -5,7 +5,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { getClicks, getLessons } from '../api.js'
 import Crumbs from '../components/Crumbs.vue'
 import Icon from '../components/Icon.vue'
-import { PARTS, dayShort, hm, lacks } from '../lesson.js'
+import { HIDDEN, PARTS, dayShort, hm, lacks } from '../lesson.js'
 import { user } from '../user.js'
 
 // every day with students, newest first, month by month: what the day consisted of (its parts as chips), what is there
@@ -17,7 +17,7 @@ const router = useRouter()
 const all = ref([])
 const clicks = ref(null)
 const admin = computed(() => user.value?.status === 'admin')
-const kinds = computed(() => Object.keys(PARTS).filter((k) => k !== 'break' && all.value.some((l) => l.parts.some((p) => p.kind === k))))
+const kinds = computed(() => Object.keys(PARTS).filter((k) => !HIDDEN.includes(k) && all.value.some((l) => l.parts.some((p) => p.kind === k))))
 const part = computed(() => route.query.part || '')
 const rows = computed(() => all.value.filter((l) => !part.value || l.parts.some((p) => p.kind === part.value)))
 const pick = (k) => router.replace({ query: k ? { part: k } : {} })
@@ -26,7 +26,7 @@ const month = (l) => (l.date ? new Date(`${l.date}T00:00:00`).toLocaleDateString
 const title = (l) => l.title || (!l.virtual ? 'без назви' : admin.value ? l.parts.flatMap((p) => p.people || []).map((u) => u.name).join(', ') || 'Захист' : 'Мій захист')
 const head = (i) => (i === 0 || month(rows.value[i]) !== month(rows.value[i - 1]) ? month(rows.value[i]) : '')
 // one chip per kind: «Захист ×3»; the hint lists the parts
-const chips = (l) => Object.keys(PARTS).filter((k) => k !== 'break').map((k) => [k, l.parts.filter((p) => p.kind === k)]).filter(([, found]) => found.length)
+const chips = (l) => Object.keys(PARTS).filter((k) => !HIDDEN.includes(k)).map((k) => [k, l.parts.filter((p) => p.kind === k)]).filter(([, found]) => found.length)
   .map(([k, found]) => ({ ...PARTS[k], key: k, n: found.length, own: found.some((p) => p.private && !admin.value),
                          hint: found.map((p) => [hm(p.start), p.title, p.people?.map((u) => u.name).join(', ')].filter(Boolean).join(' ')).join('\n') }))
 const marks = (l) => [l.has.summary && ['📝', 'конспект'], l.has.transcript && ['🗣', 'транскрипт'], l.has.video && ['🎬', 'відео'],
