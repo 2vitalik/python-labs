@@ -97,7 +97,9 @@ with TestClient(main.app) as c:
     r = c.put(f"{V}/defense2", json={"link": "https://youtu.be/byteacher"}, headers={"X-Game-Of": "stud"})
     check("the teacher gives a link in the student's stead: signed by the teacher", r.status_code == 200 and r.json()["versions"][0]["by"] == "admin", r.text)
 
-    me = next(s for s in c.get("/api/students").json() if s["nick"] == "stud")["game"]["videos"]
+    row = next(s for s in c.get("/api/students").json() if s["nick"] == "stud")["game"]
+    check("the students' list: videos with a link wait for the teacher's word with the claims", row["waiting"] == 2 + 3, row["waiting"])  # 2 claims; demo4, defense2, gold
+    me = row["videos"]
     check("the students' list: what is handed in, by row", set(me) == {"demo3", "demo4", "defense1", "defense2"} and me["demo3"]["n"] == 2
           and me["demo3"]["link"].startswith("https://drive") and me["demo3"]["at"] < me["demo3"]["last"] and me["demo3"]["status"] == "returned", me)
     check("the students' list: the teacher's word with no link yet", me["defense1"] == {"at": None, "last": None, "n": 0, "link": "", "status": "claimed", "need": "skip"}, me["defense1"])

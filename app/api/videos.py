@@ -63,6 +63,11 @@ async def rows(game: Game, owner: User | None, claims: list[dict], tasks: dict) 
     return [row(s, docs.get(s["slot"]), due.get(s.get("lab"))) for s in specs(claims, tasks)]
 
 
+async def waiting(game: Game) -> int:
+    """The videos with a link the teacher has not spoken on yet."""
+    return sum(1 for v in await Video.find(Video.game == game.id, Video.status == "claimed").to_list() if v.versions and v.need != "skip")
+
+
 async def summary(games: list[Game]) -> dict:
     """game id → {slot: {at, last, n, link, status, need}} of the fixed rows that have a link or the teacher's word — for the
     lists of students. `at` — when the first link came: what a deadline looks at; `last` — the latest version."""

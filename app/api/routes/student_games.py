@@ -32,7 +32,7 @@ async def game_summary(game: Game | None) -> dict:
         "claims": len(claims), "accepted": sum(c.status == "accepted" for c in claims),
         "coins": coins["claimed"], "coins_accepted": coins["accepted"],
         "wood_claimed": wood(coins["claimed"]), "wood_accepted": wood(coins["accepted"]),
-        "waiting": sum(c.status == "claimed" and not c.auto for c in claims),  # the teacher's word is due
+        "waiting": sum(c.status == "claimed" and not c.auto for c in claims) + await videos.waiting(game),  # the teacher's word is due
         "rules": await Rule.find(Rule.game == game.id).count(),
         "cover": f"/api/uploads/{game.id}/{shots[0]}" if shots else "",
         "videos": (await videos.summary([game])).get(game.id, {}),  # the demos and defenses handed in (T318)
