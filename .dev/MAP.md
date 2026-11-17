@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T350** · тікетів: 349 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T351** · тікетів: 350 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -356,4 +356,5 @@
 | platform | [T346](platform/.t/T346-P--course-dates.md) | 💡 | course-dates | Дати курсу в одному місці: межа семестру й усе, що міняється з року в рік — пропозиція | 🟢 ⬜ |
 | platform | [T347](platform/.t/T347-Q--game-trifles-choices.md) | ❓ | game-trifles-choices | Сторінка гри: дрібниці — вибори | 🔴 ⬜ |
 | platform | [T348](platform/.t/T348--features-candy/plan.md) | ⚙️ | features-candy | «Можливості» — цукерка: мапа сторінки, «Усе / Нічого», значки й підказки під мишкою; олівець не вмикається сам; панель не скаче — план і звіт | 🟢 ⬜ |
-| platform | [T349](platform/.t/T349-Q--features-candy-choices.md) | ❓ | features-candy-choices | «Можливості» — вибори після T348 | 🟢 ⬜ |
+| platform | [T349](platform/.t/T349-Q--features-candy-choices.md) | ❓ | features-candy-choices | «Можливості» — вибори після T348 | 🔴 ⬜ |
+| platform | [T350](platform/.t/T350--game-plus/plan.md) | ⚙️ | game-plus | Плюси на сторінці «Гра» — «＋» біля підпису, значок нотатки переходу, один знак ⊕ — план | 🟢 ⬜ |
