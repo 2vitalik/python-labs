@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T340** · тікетів: 339 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T341** · тікетів: 340 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -347,3 +347,4 @@
 | lessons | [T337](lessons/.t/T337-C--transcript-automation.md) | 🔆 | transcript-automation | Джерела транскриптів: що забирається само, що варто додати | 🟢 ⬜ |
 | lessons | [T338](lessons/.t/T338-Q--lessons-day-choices.md) | ❓ | lessons-day-choices | Заняття-день: вибори | 🟢 ⬜ |
 | defense | [T339](defense/.t/T339-C--defense-research.md) | 🔆 | defense-research | Захист і зауваження: що кажуть дослідження й практика — шкали, категорії, стимули | 🟢 🟩 |
+| github | [T340](github/.t/T340--due-verdicts/plan.md) | ⚙️ | due-verdicts | Дедлайни: вердикт «вклався / ні» — зведення джерел, випадки, сторінка — план | 🟢 ⬜ |
