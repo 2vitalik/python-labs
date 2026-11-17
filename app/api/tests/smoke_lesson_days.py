@@ -116,6 +116,12 @@ with TestClient(main.app) as c:
     l = c.get("/api/lessons/2026-11-10").json()
     check("admin: both defenses of the date with the students, each leads to its page", [p["people"][0]["nick"] for p in l["parts"][3:]] == ["stud", "other"]
           and l["parts"][3]["to"].startswith("/defenses/") and "2026-11-14" in slugs(c), l["parts"][3:])
+    own = [p for p in l["parts"] if not p.get("site")]
+    own[2] |= {"start": "18:00", "end": "18:40", "title": ""}
+    l = c.put("/api/lessons/2026-11-10", json={"rev": l["rev"], "parts": own}).json()
+    p9 = next(p for p in l["parts"] if p["key"] == "p9")
+    check("a defense inside the student's private part joins its card: one card, the badge and the link there; the other stays its own",
+          len(l["parts"]) == 4 and p9["to"].startswith("/defenses/") and p9["title"] == "лаби 1, 2" and "site" not in p9 and l["parts"][3]["site"], l["parts"])
     check("a day that is not there and has no parts → 404", c.get("/api/lessons/2026-11-15").status_code == 404 and c.get("/api/lessons/nope").status_code == 404)
 
     # attendance summary for the table: 100 min meeting, stud 60 min, other 10 min (under a quarter)

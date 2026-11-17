@@ -7,6 +7,7 @@ from zoneinfo import ZoneInfo
 from core.config import settings
 from core.lesson_view import SITE_PARTS
 from core.models.user import User
+from defense_vocab import RESULTS
 from models.defense import Defense
 
 
@@ -25,9 +26,10 @@ async def parts(user: User, admin: bool) -> dict[str, list[dict]]:
         date, start = clock(d.started_at)
         out[date].append({"key": f"d-{d.id}", "kind": "def", "title": "лаби " + ", ".join(map(str, d.labs)) if d.labs else "",
                           "start": start, "end": clock(d.ended_at)[1] if d.ended_at else "", "note": "", "private": True,
-                          "links": [{"label": "Запис", "url": d.link}] if d.link else [], "result": d.result, "mode": d.kind,
+                          "links": [{"label": "Запис", "url": d.link}] if d.link else [], "result": d.result,
+                          "badge": " ".join(RESULTS[d.result]) if d.result in RESULTS else "",
                           "people": [owners[d.student].person()] if d.student in owners else [],
-                          "to": f"/defenses/{d.id}" if admin else "/my/remarks"})
+                          "to": f"/defenses/{d.id}" if admin else "/my/remarks", "more": "Сторінка захисту" if admin else "Зауваження й результат"})
     return out
 
 

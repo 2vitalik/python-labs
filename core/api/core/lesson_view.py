@@ -30,8 +30,23 @@ async def site_parts(user: User, admin: bool) -> dict[str, list[dict]]:
     out: dict[str, list[dict]] = {}
     for give in SITE_PARTS:
         for date, found in (await give(user, admin)).items():
-            out.setdefault(date, []).extend(found)
+            out.setdefault(date, []).extend(p | {"site": True} for p in found)
     return out
+
+
+def joined(own: list[dict], site: list[dict]) -> list[dict]:
+    """A site's part that starts inside a private part of the same kind and people is that part: its badge and its link
+    join the card instead of a second one (a defense recorded as a piece of the day and noted on the defense's page)."""
+    rest = []
+    for s in site:
+        who = {u["nick"] for u in s.get("people", [])}
+        host = next((p for p in own if p["private"] and p["kind"] == s["kind"] and p["end"] and p["start"][:5] <= s["start"][:5] < p["end"][:5]
+                     and (not who or "people" not in p or who & {u["nick"] for u in p["people"]})), None)
+        if host:
+            host |= {k: s[k] for k in ("badge", "to", "more") if s.get(k)} | {"title": host["title"] or s["title"]}
+        else:
+            rest.append(s)
+    return own + rest
 
 
 def day(date: str, parts: list[dict]) -> dict:
@@ -43,7 +58,7 @@ async def rows(lessons: list[Lesson], user: User) -> list[dict]:
     admin = is_admin(user)
     extra = await site_parts(user, admin)
     users = {u.email: u for u in await known()} if admin else {}
-    out = [l.row() | {"parts": [part(p, users, admin, False) for p in mine(l, user, admin)] + extra.pop(l.slug, [])}
+    out = [l.row() | {"parts": joined([part(p, users, admin, False) for p in mine(l, user, admin)], extra.pop(l.slug, []))}
            for l in lessons if can_see(l, user, admin)]
     return sorted(out + [day(d, parts) for d, parts in extra.items()], key=lambda r: (r["date"], r["slug"]), reverse=True)
 
@@ -55,7 +70,7 @@ async def full(l: Lesson, user: User) -> dict:
     own = mine(l, user, admin)
     text = "\n".join([l.transcript, *(p.transcript for p in own)])
     data = l.api(admin) | {"files": [file_api(f) for f in files if admin or f.role == "file"], "people": await people(text),
-                           "parts": [part(p, users, admin, True) for p in own] + (await site_parts(user, admin)).get(l.slug, [])}
+                           "parts": joined([part(p, users, admin, True) for p in own], (await site_parts(user, admin)).get(l.slug, []))}
     return data | ({"speakers": speakers(text)} if admin else {})
 
 
