@@ -1,15 +1,12 @@
 <script setup>
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 
 import { pace, PACES, setPace } from '../peek.js'
 import Icon from './Icon.vue'
 
 // the reader's pace of the cards under the mouse (T344), at the foot of every card: a quiet sign opens the choice right
-// there — so whoever is annoyed by the cards, or waits for them too long, finds the setting where the cards are.
-// `grew` — the card is taller now: it finds its place again
-const emit = defineEmits(['grew'])
+// there — so whoever is annoyed by the cards, or waits for them too long, finds the setting where the cards are
 const open = ref(false)
-watch(open, () => emit('grew'), { flush: 'post' })
 </script>
 
 <template>
@@ -31,6 +28,6 @@ watch(open, () => emit('grew'), { flush: 'post' })
 .say { flex: 1 1 100%; font-size: .72rem; color: var(--bs-secondary-color); }
 .btn { --bs-btn-padding-y: 0; --bs-btn-padding-x: .4rem; --bs-btn-font-size: .72rem; }
 .sign { display: inline-flex; align-items: center; justify-content: center; width: 1.1rem; height: 1.1rem; padding: 0; border: 0; border-radius: .25rem; background: none;
-        color: var(--bs-secondary-color); font-size: .75rem; opacity: .35; }
+        color: var(--bs-secondary-color); font-size: .75rem; opacity: .5; }
 .sign:hover, .sign.on { background: var(--bs-tertiary-bg); color: var(--bs-body-color); opacity: 1; }
 </style>

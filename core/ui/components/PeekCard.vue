@@ -1,5 +1,5 @@
 <script setup>
-import { computed, nextTick, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
 import { back, close, leave, peek, peekView, pin, stay } from '../peek.js'
 import Icon from './Icon.vue'
@@ -14,7 +14,8 @@ const pos = ref(null)
 const top = computed(() => props.card.stack.at(-1))
 const view = computed(() => top.value && peekView(top.value.kind))
 
-// `again` — the card on screen changed its height: it is placed anew without a blink
+// `again` — the card on screen changed its height (clicked, it got its bar; its pace row opened): it is placed anew
+// without a blink — still in the window, still off its anchor
 async function place(again = false) {
   if (!again) pos.value = null
   await nextTick()
@@ -28,6 +29,9 @@ async function place(again = false) {
   }
 }
 watch(() => [props.card.at, props.card.stack.length], () => place(), { immediate: true, flush: 'post' })
+const sized = new ResizeObserver(() => pos.value && place(true))
+onMounted(() => panel.value && sized.observe(panel.value))
+onBeforeUnmount(() => sized.disconnect())
 </script>
 
 <template>
@@ -38,7 +42,7 @@ watch(() => [props.card.at, props.card.stack.length], () => place(), { immediate
       <button type="button" class="nav ms-auto" title="Закрити (Esc)" @click.stop="close(k)"><Icon name="x" /></button>
     </div>
     <component :is="view" v-bind="top" :key="`${top.kind}:${top.id}`" />
-    <PeekPace @grew="place(true)" />
+    <PeekPace />
   </div>
 </template>
 
