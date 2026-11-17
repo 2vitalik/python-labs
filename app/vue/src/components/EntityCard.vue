@@ -66,7 +66,7 @@ async function remove() {
 <template>
   <div :id="`p-${part.id}`" class="card pcard" :style="{ '--z': zones.entities?.color }">
     <div v-if="!edit" v-to-start="'картки'" class="pcard-head">
-      <EmojiPick :can="ed.editable" :icon="part.icon" :fallback="role.icon" :save="(icon) => save({ icon })" />
+      <EmojiPick :can="ed.editable" :icon="part.icon" :fallback="role.icon" :hint="`${part.title} ${role.label || ''}`" :save="(icon) => save({ icon })" />
       <InlineText :value="part.title" :can="ed.editable" required placeholder="Назва" class="fw-semibold" :save="(title) => save({ title })" />
       <InlinePick :can="ed.editable" :items="roleItems" :current="part.role" placeholder="пошук типу…" tip="Клік — інший тип" :propose="PROPOSE"
                   :save="(r) => save({ role: r })">

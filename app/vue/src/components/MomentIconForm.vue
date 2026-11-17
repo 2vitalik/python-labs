@@ -25,7 +25,7 @@ function save() {
     <template #trigger="{ toggle }"><slot :toggle /></template>
     <div class="vstack gap-2" @keydown.enter.prevent="save">
       <div class="d-flex align-items-center gap-2">
-        <EmojiField v-if="fresh" v-model="f.icon" />
+        <EmojiField v-if="fresh" v-model="f.icon" :hint="f.name" legend />
         <span v-else class="fs-5">{{ icon }}</span>
         <input v-model="f.name" class="form-control form-control-sm" placeholder="**ключ** *(відчиняє двері)*">
       </div>

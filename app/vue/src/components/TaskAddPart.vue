@@ -23,7 +23,7 @@ onMounted(() => {
 <template>
   <div class="small mb-1">{{ isWindow ? 'Нове вікно' : 'Нова сутність' }} типу «{{ task.title }}»</div>
   <div class="d-flex gap-2 mb-2">
-    <EmojiField v-if="!isWindow" v-model="form.icon" :placeholder="roleOf(task.opt).icon" />
+    <EmojiField v-if="!isWindow" v-model="form.icon" :placeholder="roleOf(task.opt).icon" :hint="`${form.title} ${task.title}`" />
     <input ref="titleInput" v-model="form.title" class="form-control form-control-sm"
            :placeholder="isWindow ? 'Назва вікна' : 'Назва: Привид, Стіна…'" @keydown.enter="send">
   </div>

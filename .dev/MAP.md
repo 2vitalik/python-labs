@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T309** · тікетів: 308 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T314** · тікетів: 310 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -316,3 +316,5 @@
 | platform | [T306](platform/.t/T306--inline-edit/plan.md) | ⚙️ | inline-edit | Редагування на місці — картки гри, гра-основа; прилиплий заголовок — на початок — план і звіт | 🟢 ⬜ |
 | games | [T307](games/.t/T307-Q--inline-edit-choices.md) | ❓ | inline-edit-choices | Редагування на місці — вибори | 🔴 ⬜ |
 | games | [T308](games/.t/T308-S--inline-edit-fable-brief.md) | 📝 | inline-edit-fable-brief | Редагування на місці — бриф для Fable: що зроблено, що лишилось, складні питання | 🟢 ⬜ |
+| platform | [T309](platform/.t/T309--emoji-picker/plan.md) | ⚙️ | emoji-picker | Значки сутностей — велике віконце емодзі з пошуком, кольорами й ігровими категоріями — план і звіт | 🟢 ⬜ |
+| games | [T313](games/.t/T313-Q--emoji-picker-choices.md) | ❓ | emoji-picker-choices | Вибори після віконця значків: значки вікон, шрифт емодзі, російські слова, інші місця | 🔴 ⬜ |

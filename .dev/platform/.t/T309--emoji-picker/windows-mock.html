@@ -1,0 +1,123 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Значок вікна за типом — макет</title>
+<style>
+  :root { --win: #0288d1; --main: #e39a00; --game: #00897b; --ink: #212529; --mute: #6c757d; --line: #dee2e6; }
+  body { margin: 0; padding: 28px 32px 36px; width: 836px; background: #fff; color: var(--ink); font: 15px/1.45 system-ui, -apple-system, 'Segoe UI', sans-serif; }
+  h1 { margin: 0 0 4px; font-size: 22px; }
+  h2 { margin: 30px 0 4px; font-size: 16px; }
+  p { margin: 0 0 12px; color: var(--mute); font-size: 13.5px; max-width: 760px; }
+  .panel { padding: 16px 18px; border: 1px solid var(--line); border-radius: 10px; }
+  svg { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; vertical-align: -.125em; }
+  svg .g { stroke-width: 1.25; }
+  svg .f { fill: currentColor; stroke: none; }
+  .w { color: color-mix(in srgb, var(--w) 72%, var(--ink)); --w: var(--win); }
+  .w.main { --w: var(--main); } .w.game { --w: var(--game); }
+  .big { width: 26px; height: 26px; } .mid { width: 18px; height: 18px; } .sm { width: 14px; height: 14px; }
+  .row { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+  .cap { color: var(--mute); font-size: 12.5px; }
+  .now { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px 24px; }
+  .now > div { display: flex; align-items: center; gap: 10px; }
+  .types { display: grid; grid-template-columns: 1fr 1fr; gap: 9px 34px; }
+  .types > div { display: grid; grid-template-columns: 30px 22px 18px 1fr; align-items: center; gap: 8px; }
+  .types b { font-weight: 600; font-size: 14px; } .types small { display: block; color: var(--mute); font-size: 12px; line-height: 1.25; }
+  .head { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border: 1px solid color-mix(in srgb, #0288d1 35%, var(--line)); border-radius: 8px 8px 0 0;
+          background: color-mix(in srgb, #0288d1 8%, #fff); }
+  .head b { font-size: 16px; } .badge { padding: 2px 8px; border: 1px solid color-mix(in srgb, #0288d1 35%, var(--line)); border-radius: 6px; color: var(--mute); font-size: 12.5px; }
+  .body { padding: 8px 12px 10px; border: 1px solid var(--line); border-top: 0; border-radius: 0 0 8px 8px; color: var(--mute); font-size: 13px; }
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; }
+  .node { display: inline-flex; align-items: center; gap: 6px; padding: 3px 9px 3px 7px; border: 1px solid color-mix(in srgb, var(--w) 50%, #fff); border-radius: 6px;
+          background: color-mix(in srgb, var(--w) 9%, #fff); color: var(--ink); font-size: 13px; --w: var(--win); }
+  .node.main { --w: var(--main); background: color-mix(in srgb, var(--w) 20%, #fff); } .node.game { --w: var(--game); background: color-mix(in srgb, var(--w) 17%, #fff); }
+  .node svg { color: color-mix(in srgb, var(--w) 72%, var(--ink)); }
+  .map { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; }
+  .arrow { color: var(--mute); }
+</style>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <g id="frame"><rect x="1.5" y="2.5" width="13" height="11" rx="1.6"/><path d="M1.5 5.4h13"/></g>
+    <g id="shot"><path class="f" d="M3.1 2.5h9.8a1.6 1.6 0 0 1 1.6 1.6v1.3h-13V4.1a1.6 1.6 0 0 1 1.6-1.6z"/><rect x="1.5" y="2.5" width="13" height="11" rx="1.6"/></g>
+    <g id="old"><rect x="2" y="3" width="12" height="10" rx="1.5"/><path d="M2 6h12"/></g>
+    <g id="oldshot"><rect x="2" y="3" width="12" height="10" rx="1.5"/><path d="M2 6h12"/><rect class="f" x="4" y="7.6" width="8" height="3.6" rx=".5"/></g>
+    <g id="t-menu" class="g"><path d="M5 7.6h6M5 9.5h6M5 11.4h6"/></g>
+    <g id="t-game" class="g"><path d="M4.2 7.2h7.6v4.6H4.2zM6.7 7.2v4.6M9.3 7.2v4.6M4.2 9.5h7.6" stroke-width="1"/></g>
+    <g id="t-pause"><path d="M6.6 7.7v3.7M9.4 7.7v3.7" stroke-width="1.7"/></g>
+    <g id="t-end" class="g"><path d="M6 12.1V7l4.6 1.4L6 9.9"/></g>
+    <g id="t-settings" class="g"><path d="M4.4 8h7.2M4.4 11h7.2"/><circle class="f" cx="6.4" cy="8" r="1.25"/><circle class="f" cx="9.8" cy="11" r="1.25"/></g>
+    <g id="t-help" class="g"><path d="M6.8 8.1a1.25 1.25 0 1 1 2 1c-.5.4-.8.6-.8 1.1"/><path d="M8 12h.01" stroke-width="1.6"/></g>
+    <g id="t-records"><path d="M5.3 12v-1.8M8 12V7.4M10.7 12V9.2" stroke-width="1.7"/></g>
+    <g id="t-shop" class="g"><circle cx="8" cy="9.6" r="2.4"/><path d="M8 8.7v1.8"/></g>
+    <g id="t-bag" class="g"><rect x="4.6" y="7.2" width="2.9" height="2" rx=".3"/><rect x="8.5" y="7.2" width="2.9" height="2" rx=".3"/><rect x="4.6" y="10.1" width="2.9" height="2" rx=".3"/><rect x="8.5" y="10.1" width="2.9" height="2" rx=".3"/></g>
+    <g id="t-levels"><path d="M5.4 8.2h.01M8 8.2h.01M10.6 8.2h.01M5.4 11h.01M8 11h.01M10.6 11h.01" stroke-width="1.9"/></g>
+    <g id="t-editor" class="g"><path d="M5.3 12l.4-1.8 4.2-3.5 1.3 1.4-4.2 3.5z"/></g>
+    <g id="t-save" class="g"><path d="M8 6.9v3.3M6.3 8.7L8 10.3l1.7-1.6M5 12.2h6"/></g>
+    <g id="t-talk" class="g"><path d="M4.8 7.2h6.4v3.3H8.3L6.6 12v-1.5H4.8z"/></g>
+    <g id="t-people" class="g"><circle cx="8" cy="8.2" r="1.35"/><path d="M5.5 12.2c.3-1.5 1.2-2.1 2.5-2.1s2.2.6 2.5 2.1"/></g>
+    <g id="t-map" class="g"><path d="M4.6 11.8l2.1-3.6 2.2 2.2 2.4-3.3"/><path d="M4.6 11.8h.01M11.3 7.1h.01" stroke-width="1.9"/></g>
+    <g id="t-confirm" class="g"><rect x="4.2" y="8.6" width="3.2" height="2.4" rx=".5"/><rect class="f" x="8.6" y="8.6" width="3.2" height="2.4" rx=".5"/></g>
+    <g id="t-splash" class="g"><path d="M8 6.9l.8 1.9 1.9.7-1.9.7-.8 1.9-.8-1.9-1.9-.7 1.9-.7z"/></g>
+  </defs>
+</svg>
+
+<h1>Значок вікна за типом — макет</h1>
+<p>Думка з твоєї диктовки: «на вікно налаштувань — не просто значок віконця, а з шестеренькою». Рамка лишається (це — вікно), колір лишається (головне меню · гра · решта), а всередині рамки зʼявляється малюнок типу. Зліва направо — розмір у заголовку картки, у картці під мишкою, на схемі вікон.</p>
+
+<h2>Зараз</h2>
+<div class="panel now">
+  <div><svg class="big w main" viewBox="0 0 16 16"><use href="#old"/></svg><svg class="sm w main" viewBox="0 0 16 16"><use href="#old"/></svg><span class="cap">головне меню</span></div>
+  <div><svg class="big w game" viewBox="0 0 16 16"><use href="#old"/></svg><svg class="sm w game" viewBox="0 0 16 16"><use href="#old"/></svg><span class="cap">гра</span></div>
+  <div><svg class="big w" viewBox="0 0 16 16"><use href="#old"/></svg><svg class="sm w" viewBox="0 0 16 16"><use href="#old"/></svg><span class="cap">будь-яке інше</span></div>
+  <div><svg class="big w main" viewBox="0 0 16 16"><use href="#oldshot"/></svg><svg class="sm w main" viewBox="0 0 16 16"><use href="#oldshot"/></svg><span class="cap">є скриншот</span></div>
+  <div><svg class="big w game" viewBox="0 0 16 16"><use href="#oldshot"/></svg><svg class="sm w game" viewBox="0 0 16 16"><use href="#oldshot"/></svg><span class="cap">є скриншот</span></div>
+  <div><svg class="big w" viewBox="0 0 16 16"><use href="#oldshot"/></svg><svg class="sm w" viewBox="0 0 16 16"><use href="#oldshot"/></svg><span class="cap">є скриншот</span></div>
+</div>
+
+<h2>Пропозиція: 17 малюнків на 38 типів вікон</h2>
+<p>Рамка трохи більша, смужка заголовка тонша — малюнку лишається місце. «Є скриншот» — зафарбована смужка заголовка (зараз — зафарбоване нутро, але воно тепер зайняте малюнком).</p>
+<div class="panel types" id="types"></div>
+
+<h2>Як це виглядатиме на картках</h2>
+<div class="cards" id="cards"></div>
+
+<h2>І на схемі вікон</h2>
+<p>На схемі значок 14 px: списки, паузу, сітку й стовпчики ще видно, знак питання чи олівець — уже ні. Тому варіант «б» у питанні T313: малюнки — у заголовках карток і картках під мишкою, схема — як зараз.</p>
+<div class="panel map" id="map"></div>
+
+<script>
+  const TYPES = [
+    ['menu', 'main', 'Меню', 'головне меню · пауза-меню · вибір режиму, складності'],
+    ['game', 'game', 'Гра', 'ігровий екран · розстановка · демо-режим'],
+    ['pause', '', 'Пауза', 'меню паузи'],
+    ['end', '', 'Кінець', 'екран завершення · «Продовжити?»'],
+    ['settings', '', 'Налаштування', 'налаштування · налаштування партії'],
+    ['help', '', 'Довідка', 'довідка · навчання · «Про гру» · бестіарій'],
+    ['records', '', 'Рекорди', 'таблиця рекордів · статистика · досягнення'],
+    ['levels', '', 'Вибір рівня', 'вибір рівня · сітка пазлів · календар'],
+    ['shop', '', 'Магазин', 'магазин'],
+    ['bag', '', 'Інвентар', 'інвентар'],
+    ['editor', '', 'Редактор', 'редактор рівнів · редактор програми'],
+    ['save', '', 'Збереження', 'збереження й завантаження · пароль рівня'],
+    ['talk', '', 'Розмова', 'діалог · сценка · заставка рівня'],
+    ['people', '', 'Гравці', 'лобі · вибір персонажа · введення імені'],
+    ['map', '', 'Карта', 'повна карта рівня · перегляд повтору'],
+    ['confirm', '', 'Питання', 'діалог підтвердження · «передай пристрій»'],
+    ['splash', '', 'Заставка', 'заставка гри'],
+  ]
+  const sign = (t, size, tone, shot) => `<svg class="${size} w ${tone}" viewBox="0 0 16 16"><use href="#${shot ? 'shot' : 'frame'}"/>${t ? `<use href="#t-${t}"/>` : ''}</svg>`
+  document.getElementById('types').innerHTML = TYPES.map(([t, tone, name, what]) =>
+    `<div>${sign(t, 'big', tone)}${sign(t, 'mid', tone)}${sign(t, 'sm', tone)}<span><b>${name}</b><small>${what}</small></span></div>`).join('')
+    + `<div>${sign('', 'big', '')}${sign('', 'mid', '')}${sign('', 'sm', '')}<span><b>Своє</b><small>нестандартне вікно — порожня рамка</small></span></div>`
+  const card = (t, tone, title, type, shot, text) => `<div><div class="head">${sign(t, 'big', tone, shot)}<b>${title}</b><span class="badge">${type}</span></div><div class="body">${text}</div></div>`
+  document.getElementById('cards').innerHTML = [
+    card('menu', 'main', 'Головне меню', 'Головне меню', true, 'Нова гра · Продовжити · Налаштування · Рекорди · Вихід'),
+    card('game', 'game', 'Бій', 'Ігровий екран', true, 'Поле 13 × 13, лічильник життів, рахунок, рівень'),
+    card('settings', '', 'Налаштування', 'Вікно налаштувань', false, 'Гучність, керування, складність'),
+    card('pause', '', 'Пауза', 'Меню паузи', true, 'Продовжити · Заново · У меню'),
+    card('end', '', 'Перемога', 'Екран завершення', false, 'Рахунок, зірки за рівень, «Далі»'),
+    card('records', '', 'Найкращі', 'Таблиця рекордів', false, 'Десять найкращих результатів'),
+  ].join('')
+  const node = (t, tone, title, shot, typed) => `<span class="node ${tone}">${typed ? sign(t, 'sm', tone, shot).replace(/ w \w*/, '') : `<svg class="sm" viewBox="0 0 16 16"><use href="#${shot ? 'oldshot' : 'old'}"/></svg>`}${title}</span>`
+  const NODES = [['menu', 'main', 'Головне меню', true], ['game', 'game', 'Бій', true], ['pause', '', 'Пауза', true], ['settings', '', 'Налаштування', false], ['end', '', 'Перемога', false], ['records', '', 'Найкращі', false], ['help', '', 'Довідка', false]]
+  document.getElementById('map').innerHTML = `<div class="map"><span class="cap" style="width:100%">зараз</span>${NODES.map((n) => node(...n, false)).join('<span class="arrow">→</span>')}</div>`
+    + `<div class="map" style="margin-top:14px"><span class="cap" style="width:100%">з малюнками типу</span>${NODES.map((n) => node(...n, true)).join('<span class="arrow">→</span>')}</div>`
+</script>

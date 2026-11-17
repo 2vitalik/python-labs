@@ -4,6 +4,7 @@ import { ref } from 'vue'
 import { AXES, KLASSES, STATUSES } from '../catalog.js'
 import MdArea from '@core/components/MdArea.vue'
 import { load, save } from '@core/local.js'
+import EmojiField from './EmojiField.vue'
 import MomentEditor from './MomentEditor.vue'
 
 const form = defineModel({ type: Object })
@@ -29,7 +30,7 @@ const setView = (v) => { view.value = v; save('moments-view', v) }
           </div>
           <div class="col-md-3">
             <label class="form-label">Іконка</label>
-            <input v-model="form.icon" class="form-control" placeholder="емодзі">
+            <div><EmojiField v-model="form.icon" :hint="form.title" big /></div>
           </div>
           <div class="col-md-4">
             <label class="form-label">Клас</label>
