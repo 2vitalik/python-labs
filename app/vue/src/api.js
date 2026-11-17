@@ -28,6 +28,7 @@ export const putFeatures = (closed) => request('/api/features', 'PUT', { closed 
 export const applyTemplate = (slug = '') => request('/api/my/game/template', 'POST', { slug })
 export const postPart = (data) => request('/api/my/game/parts', 'POST', data)
 export const putPart = (id, data) => request(`/api/my/game/parts/${id}`, 'PUT', data)
+export const renameState = (id, old, name) => request(`/api/my/game/parts/${id}/states/rename`, 'POST', { old, new: name })  // its rules follow (T344)
 export const deletePart = (id) => request(`/api/my/game/parts/${id}`, 'DELETE')
 export const uploadShot = (id, file) => upload(`/api/my/game/parts/${id}/screenshot`, file)
 export const deleteShot = (id, name) => request(`/api/my/game/parts/${id}/screenshot/${name}`, 'DELETE')
