@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T344** · тікетів: 343 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T345** · тікетів: 344 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -339,15 +339,16 @@
 | grading | [T329](grading/.t/T329-P--defense-grading.md) | 💡 | defense-grading | Як оцінювати захист: монетки за доробку, запобіжники, допуск і спроби | 🟢 ⬜ |
 | defense | [T330](defense/.t/T330-B--defense-more.md) | 🧠 | defense-more | Захисти: що ще може знадобитись викладачеві й студентам | 🟢 ⬜ |
 | defense | [T331](defense/.t/T331-Q--defense-choices.md) | ❓ | defense-choices | Вибори: сторінка захисту, зауваження, оцінювання захистів | 🔴 ⬜ |
-| lessons | [T332](lessons/.t/T332--lessons-day/plan.md) | ⚙️ | lessons-day | Заняття-день: частини, захисти, кліки по посиланнях, відвідування смужками, збирач із Zoom — план | 🟢 ⬜ |
-| lessons | [T333](lessons/.t/T333-P--lessons-day-design.md) | 💡 | lessons-day-design | Заняття-день: назви, частини, приватні захисти, що бачить студент | 🟢 ⬜ |
-| lessons | [T334](lessons/.t/T334-P--after-class-pipeline.md) | 💡 | after-class-pipeline | Після пари без рук: збирач, відео, обробка, нагадування | 🟢 ⬜ |
-| lessons | [T335](lessons/.t/T335-C--lesson-video-publish.md) | 🔆 | lesson-video-publish | Відео пари в Telegram і на Google Drive: що можна автоматизувати | 🟢 ⬜ |
-| lessons | [T336](lessons/.t/T336-C--zoom-no-admin.md) | 🔆 | zoom-no-admin | Zoom без адміністратора: відвідування, автотранскрипт, лист адміністраторам | 🟢 ⬜ |
-| lessons | [T337](lessons/.t/T337-C--transcript-automation.md) | 🔆 | transcript-automation | Джерела транскриптів: що забирається само, що варто додати | 🟢 ⬜ |
-| lessons | [T338](lessons/.t/T338-Q--lessons-day-choices.md) | ❓ | lessons-day-choices | Заняття-день: вибори | 🟢 ⬜ |
+| lessons | [T332](lessons/.t/T332--lessons-day/plan.md) | ⚙️ | lessons-day | Заняття-день: частини, захисти, кліки по посиланнях, відвідування смужками, збирач із Zoom — план | 🟢 🟩 |
+| lessons | [T333](lessons/.t/T333-P--lessons-day-design.md) | 💡 | lessons-day-design | Заняття-день: назви, частини, приватні захисти, що бачить студент | 🟢 🟩 |
+| lessons | [T334](lessons/.t/T334-P--after-class-pipeline.md) | 💡 | after-class-pipeline | Після пари без рук: збирач, відео, обробка, нагадування | 🟢 🟩 |
+| lessons | [T335](lessons/.t/T335-C--lesson-video-publish.md) | 🔆 | lesson-video-publish | Відео пари в Telegram і на Google Drive: що можна автоматизувати | 🟢 🟩 |
+| lessons | [T336](lessons/.t/T336-C--zoom-no-admin.md) | 🔆 | zoom-no-admin | Zoom без адміністратора: відвідування, автотранскрипт, лист адміністраторам | 🟢 🟩 |
+| lessons | [T337](lessons/.t/T337-C--transcript-automation.md) | 🔆 | transcript-automation | Джерела транскриптів: що забирається само, що варто додати | 🟢 🟩 |
+| lessons | [T338](lessons/.t/T338-Q--lessons-day-choices.md) | ❓ | lessons-day-choices | Заняття-день: вибори | 🔴 ⬜ |
 | defense | [T339](defense/.t/T339-C--defense-research.md) | 🔆 | defense-research | Захист і зауваження: що кажуть дослідження й практика — шкали, категорії, стимули | 🟢 🟩 |
-| github | [T340](github/.t/T340--due-verdicts/plan.md) | ⚙️ | due-verdicts | Дедлайни: вердикт «вклався / ні» — зведення джерел, випадки, сторінка — план | 🟢 ⬜ |
-| github | [T341](github/.t/T341-P--due-verdict-model.md) | 💡 | due-verdict-model | Вердикт дедлайну: джерела, випадки, правила й поблажка | 🟢 ⬜ |
-| github | [T342](github/.t/T342-C--due-data-d1-d2.md) | 🔆 | due-data-d1-d2 | Дедлайни 1 і 2: що показали дані — випадки й лічильники | 🟢 ⬜ |
-| github | [T343](github/.t/T343-Q--due-verdict-choices.md) | ❓ | due-verdict-choices | Вердикт дедлайну — вибори: правила, поблажка, чого бракує | 🟢 ⬜ |
+| github | [T340](github/.t/T340--due-verdicts/plan.md) | ⚙️ | due-verdicts | Дедлайни: вердикт «вклався / ні» — зведення джерел, випадки, сторінка — план | 🟢 🟩 |
+| github | [T341](github/.t/T341-P--due-verdict-model.md) | 💡 | due-verdict-model | Вердикт дедлайну: джерела, випадки, правила й поблажка | 🟢 🟩 |
+| github | [T342](github/.t/T342-C--due-data-d1-d2.md) | 🔆 | due-data-d1-d2 | Дедлайни 1 і 2: що показали дані — випадки й лічильники | 🟢 🟩 |
+| github | [T343](github/.t/T343-Q--due-verdict-choices.md) | ❓ | due-verdict-choices | Вердикт дедлайну — вибори: правила, поблажка, чого бракує | 🔴 ⬜ |
+| platform | [T344](platform/.t/T344--game-trifles/plan.md) | ⚙️ | game-trifles | Сторінка гри: дрібниці — стани чипами, рядки відео, «Можливості» без прокрутки, картки під мишкою, нагору з меню, смужка «Очима студента» — план | 🟢 ⬜ |
