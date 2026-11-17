@@ -14,6 +14,7 @@ class Video(Document):
     game: Annotated[PydanticObjectId, Indexed()]
     slot: str  # demo3 · defense1 · gold:<card slug> (videos.py)
     versions: list[dict] = []  # {link, note, at, by} oldest first; the last one is the one shown
+    note: str = ""  # a line while there is no link yet; the first link takes it along as its own
     need: str = ""  # NEEDS: the teacher's word on whether it is wanted from this student
     why: str = ""  # …and a line with it: «показав на онлайн-захисті»
     status: str = "claimed"  # game.CLAIM_STATUSES, as on a claim

@@ -21,7 +21,7 @@ LINK_MAX, NOTE_MAX = 500, 300
 
 
 class LinkIn(BaseModel):
-    link: str
+    link: str = ""  # "" — the note alone, while the row has no link yet
     note: str = ""
 
 
@@ -60,19 +60,36 @@ async def answer(game: Game, spec: dict, doc: Video) -> dict:
     return videos.row(spec, doc, (await videos.dues(owner)).get(spec.get("lab")))
 
 
+async def put_note(game: Game, slot: str, doc: Video | None, note: str, user: User) -> Video:
+    """A line on a row that has no link yet (T344): a version is a link — «вчасно», the lists and the alerts count on it."""
+    if (doc and doc.versions) or not (note or (doc and doc.note)):
+        raise HTTPException(422, "Потрібне посилання на відео: YouTube, Google Drive, Loom…")
+    if doc:
+        await record(doc, {"note": note}, actor=user.email)
+        return doc
+    doc = Video(game=game.id, slot=slot, note=note)
+    await doc.insert()
+    await record_new(doc, actor=user.email)
+    return doc
+
+
 @router.put("/my/game/videos/{slot}")
 async def put_link(slot: str, data: LinkIn, tasks: BackgroundTasks, game: Game = Depends(my_game), user: User = Depends(author)):
-    """The same link again changes its note; another one is a new version."""
+    """The same link again changes its note; another one is a new version. No link — the row's own note."""
     if in_sandbox(user):
         raise HTTPException(422, "У пісочниці відео не здають — це копія зразка.")
     spec = await spec_of(game, slot)
-    link, note = clean_link(data.link), " ".join(data.note.split())[:NOTE_MAX]
+    note = " ".join(data.note.split())[:NOTE_MAX]
     doc = await Video.find_one(Video.game == game.id, Video.slot == slot)
+    if not data.link.strip():
+        return await answer(game, spec, await put_note(game, slot, doc, note, user))
+    link = clean_link(data.link)
     now = datetime.now(timezone.utc).replace(tzinfo=None)  # the way Mongo gives it back
     if doc and doc.versions and doc.versions[-1]["link"] == link:
         changes = await record(doc, {"versions": doc.versions[:-1] + [doc.versions[-1] | {"note": note}]}, actor=user.email)
-    elif doc:
-        changes = await record(doc, {"versions": doc.versions + [{"link": link, "note": note, "at": now, "by": user.email}]}, actor=user.email)
+    elif doc:  # the first link takes the row's note along
+        version = {"link": link, "note": note or ("" if doc.versions else doc.note), "at": now, "by": user.email}
+        changes = await record(doc, {"versions": doc.versions + [version], "note": ""}, actor=user.email)
     else:
         doc = Video(game=game.id, slot=slot, versions=[{"link": link, "note": note, "at": now, "by": user.email}])
         await doc.insert()

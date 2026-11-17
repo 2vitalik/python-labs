@@ -15,10 +15,12 @@ import VideoWord from './VideoWord.vue'
 // a video of «Супровід» (T318) as a row of the links' table: what it is and by when · the link — the last version, when it
 // came, how many there were · a note · the teacher's word. The owner pastes the link right in its cell: another link is a
 // new version, the earlier ones stay under «версій: N». The teacher marks «треба» / «не треба» in one click and opens the
-// rest — why, accepted, returned — by a click on the row. Its columns are the table's (`--cols`, VideoSlots)
+// rest — why, accepted, returned — by a click on the row. Its columns are the table's (`--cols`, VideoSlots).
+// The note is the last version's — or the row's own while there is no link yet (T344)
 const props = defineProps({ v: Object })
 const ed = useEd()
 const last = computed(() => props.v.versions.at(-1))
+const note = computed(() => (last.value ? last.value.note : props.v.note) || '')
 const card = computed(() => (props.v.kind === 'gold' ? ed.info(props.v.task) : null))
 const tag = computed(() => tagOf(props.v))
 const can = computed(() => ed.editable && !ed.sandbox)
@@ -26,7 +28,7 @@ const olds = ref(false)
 const word = ref(false)
 const field = ref()
 const fail = (e) => ed.fail(e.message)
-const put = (patch) => putVideo(props.v.slot, { link: last.value?.link || '', note: last.value?.note || '', ...patch }).then(() => ed.changed())
+const put = (patch) => putVideo(props.v.slot, { link: last.value?.link || '', note: note.value, ...patch }).then(() => ed.changed())
 const need = (k) => judgeVideo(ed.nick, props.v.slot, { need: props.v.need === k ? '' : k }).then(() => ed.changed(), fail)
 // «оновити»: the field opens with the old link selected — paste over it
 async function renew() {
@@ -58,10 +60,10 @@ async function renew() {
               <button v-if="can" type="button" class="more-field" title="Нове посилання стане новою версією — попередні лишаться" @click="renew">оновити</button>
             </span>
           </span>
-          <InlineText v-if="can && last" :value="last.note" can block class="note" placeholder="що у відео, таймкоди" :save="(note) => put({ note })">
+          <InlineText v-if="can" :value="note" can block class="note" :placeholder="last ? 'що у відео, таймкоди' : 'коли буде, що в ньому'" :save="(note) => put({ note })">
             <template #empty><span class="nadd">＋ нотатка</span></template>
           </InlineText>
-          <span v-else class="note" :title="last?.note">{{ last?.note }}</span>
+          <span v-else class="note" :title="note">{{ note }}</span>
           <span class="state">
             <span v-if="ed.judge" class="needs" @click.stop>
               <button type="button" :class="{ on: v.need === 'must' }" title="Від цього студента відео обовʼязкове" @click="need('must')">треба</button>
@@ -117,8 +119,9 @@ async function renew() {
 .add:hover { text-decoration: underline; }
 .note { display: -webkit-box; min-width: 0; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; font-style: italic; color: var(--bs-secondary-color); overflow-wrap: anywhere; }
 .note.open { display: block; overflow: visible; }
-.nadd { color: var(--act-add); opacity: 0; }
-.tr:hover .nadd, .inl:focus-visible .nadd { opacity: .75; }
+/* a way in that is not seen is not found (T344): pale at rest, clear under the mouse */
+.nadd { color: var(--act-add); font-style: normal; opacity: .4; }
+.tr:hover .nadd, .inl:focus-visible .nadd { opacity: .85; }
 .state { display: inline-flex; align-self: center; align-items: center; justify-content: flex-end; gap: .4rem; }
 .line { grid-column: 1 / -1; font-size: .75rem; color: var(--bs-secondary-color); }
 .line.bad { color: var(--bs-danger-text-emphasis); }

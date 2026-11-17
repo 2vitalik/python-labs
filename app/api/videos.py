@@ -46,7 +46,7 @@ def row(spec: dict, doc: Video | None, due: datetime | None = None) -> dict:
     first = utc(versions[0]["at"]) if versions else None
     return spec | {
         "versions": [{"link": v["link"], "note": v.get("note", ""), "at": stamp(v["at"]), "by": v.get("by", "").split("@")[0]} for v in versions],
-        "need": doc.need if doc else "", "why": doc.why if doc else "",
+        "note": doc.note if doc else "", "need": doc.need if doc else "", "why": doc.why if doc else "",
         "status": doc.status if doc else "claimed", "verdict": doc.verdict if doc else "",
         "due": when(due), "on_time": first <= due if first and due else None,
     }

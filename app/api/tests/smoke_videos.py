@@ -74,7 +74,12 @@ with TestClient(main.app) as c:
     r = rows(c)
     check("a gold card claimed: its row after the fixed ones, a cheaper card has none", list(r) == ["demo3", "demo4", "defense1", "defense2", slot]
           and r[slot]["kind"] == "gold" and r[slot]["task"] == gold["slug"], list(r))
-    check("a gold card's video", c.put(f"{V}/{slot}", json={"link": "https://youtu.be/gold"}).json()["versions"][0]["link"] == "https://youtu.be/gold")
+    r = c.put(f"{V}/{slot}", json={"note": "  зніму   після лаби 4 "})
+    check("a note with no link yet: the row's own, no version", r.status_code == 200 and (r.json()["note"], r.json()["versions"]) == ("зніму після лаби 4", []), r.text)
+    r = c.put(f"{V}/{slot}", json={"link": "https://youtu.be/gold"})
+    check("a gold card's video", r.json()["versions"][0]["link"] == "https://youtu.be/gold")
+    check("the first link takes the note along", (r.json()["note"], r.json()["versions"][0]["note"]) == ("", "зніму після лаби 4"), r.text)
+    check("no link on a row that has one → 422", c.put(f"{V}/{slot}", json={"note": "інша"}).status_code == 422)
     check("the word is the teacher's → 403", c.put(f"{WORD}/defense1", json={"need": "skip"}).status_code == 403)
 
     c.post("/api/games/sokoban/sandbox")
