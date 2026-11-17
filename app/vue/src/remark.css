@@ -1,0 +1,27 @@
+/* what a remark wears on every page it shows on (T328): the chip of a tag in its family's colour, the dot of a kind,
+   the list of a picker — a word and what it means, a line each */
+.rtag { --tone: var(--bs-secondary-color); display: inline-block; padding: 0 .4rem; border-radius: .7rem; font-size: .72rem; line-height: 1.35rem; white-space: nowrap;
+        background: color-mix(in srgb, var(--tone) 13%, transparent); color: color-mix(in srgb, var(--tone) 78%, var(--bs-body-color)); }
+.rtag.blue { --tone: var(--bs-blue); }
+.rtag.violet { --tone: var(--act-add); }
+.rtag.teal { --tone: var(--bs-teal); }
+.rtag.red { --tone: var(--bs-red); }
+.rtag.green { --tone: var(--bs-green); }
+.rtag.orange { --tone: var(--bs-orange); }
+.rtag.none { border: 1px dashed var(--bs-border-color); background: none; color: var(--bs-secondary-color); }
+
+.rkind { display: inline-flex; align-items: center; gap: .3rem; font-size: .76rem; white-space: nowrap; color: var(--bs-secondary-color); }
+.rkind::before { content: ''; width: .6rem; height: .6rem; flex-shrink: 0; border-radius: 50%; background: var(--dot, var(--bs-secondary-color)); }
+.rkind.debt { --dot: var(--bs-red); color: var(--bs-danger-text-emphasis); }
+.rkind.better { --dot: var(--bs-yellow); }
+.rkind.quest { --dot: var(--bs-green); }
+.rkind.tip { --dot: transparent; }
+.rkind.tip::before { border: 1.5px solid var(--bs-secondary-color); }
+
+.rpick { display: flex; flex-direction: column; }
+.rpick > button { display: grid; grid-template-columns: 7.2rem 1fr; gap: .5rem; align-items: baseline; padding: .25rem .4rem; border: 0; border-radius: .3rem;
+                  background: none; color: inherit; text-align: left; font-size: .8rem; }
+.rpick > button:hover { background: var(--bs-tertiary-bg); }
+.rpick > button.on { background: var(--bs-secondary-bg); }
+.rpick .hint { font-size: .74rem; color: var(--bs-secondary-color); }
+.rbare { padding: 0; border: 0; background: none; color: inherit; }

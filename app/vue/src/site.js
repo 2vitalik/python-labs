@@ -47,13 +47,13 @@ export default {
     ['/my/game', 'Гра', null, true, 'gamepad'],  // the student's own game — bold, right after the catalog of games «Ігри» (T291 §9)
     ...SECTIONS.slice(2).map(link), ['/lessons', 'Пари', 'admin', false, 'cap'],  // students see it later
     ['/ludopedia', 'Ігротека', 'admin', false, 'books'],  // the corpus of reference games — the teacher's while it is v1 (T260)
-    ['/students', 'Студи', 'admin', false, 'users'], ['/deadlines', 'Строки', null, false, 'alarm'], ['/table', 'Звід', null, false, 'table'],  // a student reaches /students as «Ігри студентів» from the games catalog
+    ['/students', 'Студи', 'admin', false, 'users'], ['/deadlines', 'Строки', null, false, 'alarm'], ['/defenses', 'Захисти', 'admin', false, 'shield'], ['/table', 'Звід', null, false, 'table'],  // a student reaches /students as «Ігри студентів» from the games catalog
     ['/activity', 'Актив', null, false, 'chart'], ['/polls', 'Polls', null, false, 'bars'], ['/week', 'Week', null, false, 'calendar'], ['/my/profile', 'Профіль', null, false, 'user'],
   ],
   guide: [...SECTIONS.flatMap((s) => (s.slug === 'labs' ? [s, ...LABS] : [s])), CHANGES],
   colls: {
     student_games: 'гра', game_parts: 'обʼєкт гри', claims: 'заявка', rules: 'правило',
-    tasks: 'картка каталогу', games: 'гра каталогу', refs: 'ідея',
+    tasks: 'картка каталогу', games: 'гра каталогу', refs: 'ідея', defenses: 'захист', remarks: 'зауваження',
   },
   profile: {
     repo: 'https://github.com/username/python-labs',

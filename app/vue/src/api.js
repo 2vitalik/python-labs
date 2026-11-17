@@ -42,3 +42,17 @@ export const postRef = (data) => request('/api/refs', 'POST', data)
 export const putRef = (id, data) => request(`/api/refs/${id}`, 'PUT', data)
 export const deleteRef = (id) => request(`/api/refs/${id}`, 'DELETE')
 export const judgeRef = (id, data) => request(`/api/refs/${id}/verdict`, 'PUT', data)  // the teacher: taken / dropped, a reply
+// defenses and their remarks (T326): the teacher's pages, then the student's answers
+export const getDefenseVocab = () => request('/api/defenses/vocab')
+export const getDefenses = () => request('/api/defenses')
+export const postDefense = (data) => request('/api/defenses', 'POST', data)  // { nick, labs, kind }: it starts now
+export const getDefense = (id) => request(`/api/defenses/${id}`)
+export const putDefense = (id, data) => request(`/api/defenses/${id}`, 'PUT', data)
+export const sendDefense = (id) => request(`/api/defenses/${id}/send`, 'POST')  // the drafts open to the student
+export const deleteDefense = (id) => request(`/api/defenses/${id}`, 'DELETE')
+export const postRemarks = (id, text) => request(`/api/defenses/${id}/remarks`, 'POST', { text })  // a line — a remark
+export const putRemark = (id, data) => request(`/api/remarks/${id}`, 'PUT', data)
+export const checkRemark = (id, data) => request(`/api/remarks/${id}/check`, 'PUT', data)  // { state, note }
+export const deleteRemark = (id) => request(`/api/remarks/${id}`, 'DELETE')
+export const getMyRemarks = () => request('/api/my/remarks')
+export const replyRemark = (id, data) => request(`/api/my/remarks/${id}`, 'PUT', data)  // { state, note, link }

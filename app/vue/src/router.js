@@ -26,6 +26,8 @@ import { makeRouter } from '@core/router.js'
 import CardHistoryPage from './pages/CardHistoryPage.vue'
 import Colors2Page from './pages/Colors2Page.vue'
 import ColorsPage from './pages/ColorsPage.vue'
+import DefensePage from './pages/DefensePage.vue'
+import DefensesPage from './pages/DefensesPage.vue'
 import GameEditPage from './pages/GameEditPage.vue'
 import GameHistoryPage from './pages/GameHistoryPage.vue'
 import GamePage from './pages/GamePage.vue'
@@ -34,6 +36,7 @@ import HomePage from './pages/HomePage.vue'
 import LudoGamePage from './pages/LudoGamePage.vue'
 import LudopediaPage from './pages/LudopediaPage.vue'
 import MyGamePage from './pages/MyGamePage.vue'
+import MyRemarksPage from './pages/MyRemarksPage.vue'
 import RefsPage from './pages/RefsPage.vue'
 import StudentGamePage from './pages/StudentGamePage.vue'
 import TasksPage from './pages/TasksPage.vue'
@@ -69,6 +72,10 @@ const router = makeRouter([
   { path: '/deadlines', component: DeadlinesPage, meta: { title: 'Дедлайни', access: 'admin', wide: true, filters: true } },  // students × labs: who met which deadline (T235)
   { path: '/table', component: TablePage, meta: { title: 'Звід', access: 'admin', wide: true, filters: true } },  // students × anything, in views (T240, T315)
   { path: '/table/views', component: ViewsPage, meta: { title: 'Види', access: 'admin', filters: true } },  // the library of those views: folders, origin, versions
+  // defenses (T326): the teacher's list and the desk of one defense; a student's remarks with their answers
+  { path: '/defenses', component: DefensesPage, meta: { title: 'Захисти', access: 'admin' } },
+  { path: '/defenses/:id', component: DefensePage, meta: { title: 'Захисти', access: 'admin' } },
+  { path: '/my/remarks', component: MyRemarksPage, meta: { title: 'Зауваження', access: 'active' } },
   { path: '/activity', component: ActivityPage, meta: { title: 'Активність', access: 'admin', filters: true } },
   { path: '/polls', component: PollsPage, meta: { title: 'Опитування', access: 'admin', filters: true } },
   { path: '/polls/new', component: PollEditPage, meta: { title: 'Нове опитування', access: 'admin' } },

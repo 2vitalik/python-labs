@@ -1,0 +1,17 @@
+/* the clicks of a defense's page (T327): a chip is a word to switch — grey at rest, filled once chosen; a row is a label
+   in a column of its own and what it labels beside */
+.dchip { padding: .05rem .5rem; border: 1px solid var(--bs-border-color); border-radius: .9rem; background: none; color: var(--bs-secondary-color);
+         font-size: .8rem; line-height: 1.4rem; white-space: nowrap; }
+.dchip:hover { border-color: var(--bs-secondary-color); color: var(--bs-body-color); }
+.dchip.on { border-color: var(--bs-primary-border-subtle); background: var(--bs-primary-bg-subtle); color: var(--bs-primary-text-emphasis); font-weight: 600; }
+.dchip.on.no { border-color: var(--bs-danger-border-subtle); background: var(--bs-danger-bg-subtle); color: var(--bs-danger-text-emphasis); }
+.dchip.on.partly { border-color: var(--bs-warning-border-subtle); background: var(--bs-warning-bg-subtle); color: var(--bs-warning-text-emphasis); }
+.dchip.on.yes { border-color: var(--bs-success-border-subtle); background: var(--bs-success-bg-subtle); color: var(--bs-success-text-emphasis); }
+.dchip.near { border-color: var(--bs-primary-border-subtle); color: var(--bs-primary-text-emphasis); }
+.drow { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); gap: .3rem .6rem; align-items: center; padding: .2rem 0; }
+.dlbl { font-size: .8rem; color: var(--bs-secondary-color); }
+.dhint { font-size: .76rem; color: var(--bs-secondary-color); }
+.dsub { margin: .9rem 0 .2rem; font-size: .72rem; letter-spacing: .04em; text-transform: uppercase; color: var(--bs-secondary-color); }
+@media (max-width: 575px) {
+  .drow { grid-template-columns: minmax(0, 1fr); gap: .1rem; }
+}
