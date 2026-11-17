@@ -7,6 +7,8 @@ export async function editCell(c, row, value) {
     if (r.value === null) delete row.fields[r.column]
     else row.fields[r.column] = r.value
   } else if (c.edit === 'mark') {
-    row.labs[c.lab] = await putStudentLab(row.nick, c.lab, { [c.field]: value ?? (c.type === 'bool' ? false : '') })  // a mark's text is '' when cleared
+    // one field of the lab's mark, '' when its text is cleared — or several at once: the column says them itself, `patch(value)`
+    const body = c.patch ? c.patch(value) : { [c.field]: value ?? (c.type === 'bool' ? false : '') }
+    row.labs[c.lab] = await putStudentLab(row.nick, c.lab, body)
   }
 }
