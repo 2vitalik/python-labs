@@ -52,6 +52,13 @@ html.toc-bar { --stick-h: 2rem; }  /* TocBar's row under the menu */
                                padding: .1rem .45rem; border-radius: .3rem; background: var(--bs-emphasis-color); color: var(--bs-body-bg);
                                font-size: .75rem; font-weight: 400; letter-spacing: 0; text-transform: none; white-space: nowrap; pointer-events: none; }
 .qtip.qtip-end[data-tip]:hover::after { left: auto; right: 0; transform: none; }
+/* what a thing means, under a mouse that stopped on it (hint.js, T348): the look of an explanation (Tip.vue) — light and
+   framed, not a black box */
+.hint-box { position: fixed; z-index: 1080; width: max-content; max-width: min(20rem, calc(100vw - 1rem)); padding: .25rem .5rem;
+            border: 1px solid var(--bs-info-border-subtle); border-radius: .375rem; background: var(--bs-body-bg); box-shadow: 0 .25rem .75rem rgb(0 0 0 / .12);
+            color: var(--bs-secondary-color); font-size: .76rem; font-weight: 400; line-height: 1.35; white-space: pre-line; pointer-events: none; animation: hint-in .12s ease-out; }
+.hint-box b { font-weight: 600; color: var(--bs-body-color); }
+@keyframes hint-in { from { opacity: 0; transform: translateY(2px); } }
 /* ⌥ / Alt held (allkey.js): the buttons that would act on all take a dashed ring — every one of them under the mouse
    in a `[data-all-host]` — and the one under the cursor says at once what it will do; below, as a heading sticks under
    the menu. A long press (T300): the words show and a ring fills while it is down. `.every-start` — a button on the

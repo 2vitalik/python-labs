@@ -6,6 +6,10 @@ const PATHS = {
   minus: '<circle cx="8" cy="8" r="6.5"/><path d="M5 8h6"/>',
   done: '<circle cx="8" cy="8" r="6.5"/><path d="M5 8.3l2.1 2.1L11 6"/>',
   check: '<path d="M3 8.5l3.2 3.2L13 4.8"/>',
+  // a checkbox ticked and empty — «all» and «none» of a list of them (T348); a lock — on for good
+  boxcheck: '<rect x="2.5" y="2.5" width="11" height="11" rx="2.2"/><path d="M5.2 8.2l2 2 3.7-4"/>',
+  box: '<rect x="2.5" y="2.5" width="11" height="11" rx="2.2"/>',
+  lock: '<rect x="3.5" y="7" width="9" height="6.5" rx="1.3"/><path d="M5.5 7V5.3a2.5 2.5 0 0 1 5 0V7"/>',
   x: '<path d="M4 4l8 8M12 4l-8 8"/>',
   pencil: '<path d="M11.2 2.3l2.5 2.5L5.5 13H3v-2.5z"/><path d="M9.7 3.8l2.5 2.5"/>',
   trash: '<path d="M2.5 4.5h11M6 4.5V3h4v1.5M4 4.5l.7 8.5h6.6l.7-8.5M6.7 7v4M9.3 7v4"/>',
