@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T341** · тікетів: 340 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T344** · тікетів: 343 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -326,9 +326,9 @@
 | platform | [T316](platform/.t/T316--table-v2/plan.md) | ⚙️ | table-v2 | Звід v2: рядок налаштувань, багаторівневі групи й сортування, версії й бібліотека видів — план і звіт — план | 🟢 🟩 |
 | platform | [T317](platform/.t/T317-Q--table-v2-choices.md) | ❓ | table-v2-choices | Звід v2 — вибори й що розповісти про дедлайни | 🔴 ⬜ |
 | platform | [T318](platform/.t/T318--game-desc-v12/plan.md) | ⚙️ | game-desc-v12 | Опис гри v12 — відео в «Супроводі», простора панель каталогу, шлях до «Тасків», переходи без назви — план і звіт | 🟢 ⬜ |
-| games | [T319](games/.t/T319-P--base-and-more.md) | 💡 | base-and-more | Основа й більше: набори можливостей опису гри, кістяк каталогу й картки за запитом | 🟢 ⬜ |
-| tasks | [T320](tasks/.t/T320-C--catalog-core.md) | 🔆 | catalog-core | Кістяк каталогу: які картки в основі й чому | 🟢 ⬜ |
-| platform | [T321](platform/.t/T321--base-and-more/plan.md) | ⚙️ | base-and-more | Основа й більше: набори на «Грі», кістяк і запити на «Тасках» — план | 🟢 ⬜ |
+| games | [T319](games/.t/T319-P--base-and-more.md) | 💡 | base-and-more | Основа й більше: набори можливостей опису гри, кістяк каталогу й картки за запитом | 🟢 🟩 |
+| tasks | [T320](tasks/.t/T320-C--catalog-core.md) | 🔆 | catalog-core | Кістяк каталогу: які картки в основі й чому | 🟢 🟩 |
+| platform | [T321](platform/.t/T321--base-and-more/plan.md) | ⚙️ | base-and-more | Основа й більше: набори на «Грі», кістяк і запити на «Тасках» — план | 🟢 🟩 |
 | games | [T322](games/.t/T322-Q--base-and-more-choices.md) | ❓ | base-and-more-choices | Основа й більше — вибори | 🔴 ⬜ |
 | games | [T323](games/.t/T323-P--game-desc-v12-design.md) | 💡 | game-desc-v12-design | Опис гри v12 — рішення: відео без карток у «Супроводі», каталог у вікні над грою, переходи без назви | 🟢 ⬜ |
 | games | [T324](games/.t/T324-Q--game-desc-v12-choices.md) | ❓ | game-desc-v12-choices | Опис гри v12 — вибори | 🔴 ⬜ |
@@ -348,3 +348,6 @@
 | lessons | [T338](lessons/.t/T338-Q--lessons-day-choices.md) | ❓ | lessons-day-choices | Заняття-день: вибори | 🟢 ⬜ |
 | defense | [T339](defense/.t/T339-C--defense-research.md) | 🔆 | defense-research | Захист і зауваження: що кажуть дослідження й практика — шкали, категорії, стимули | 🟢 🟩 |
 | github | [T340](github/.t/T340--due-verdicts/plan.md) | ⚙️ | due-verdicts | Дедлайни: вердикт «вклався / ні» — зведення джерел, випадки, сторінка — план | 🟢 ⬜ |
+| github | [T341](github/.t/T341-P--due-verdict-model.md) | 💡 | due-verdict-model | Вердикт дедлайну: джерела, випадки, правила й поблажка | 🟢 ⬜ |
+| github | [T342](github/.t/T342-C--due-data-d1-d2.md) | 🔆 | due-data-d1-d2 | Дедлайни 1 і 2: що показали дані — випадки й лічильники | 🟢 ⬜ |
+| github | [T343](github/.t/T343-Q--due-verdict-choices.md) | ❓ | due-verdict-choices | Вердикт дедлайну — вибори: правила, поблажка, чого бракує | 🟢 ⬜ |
