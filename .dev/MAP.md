@@ -329,7 +329,7 @@
 | games | [T319](games/.t/T319-P--base-and-more.md) | 💡 | base-and-more | Основа й більше: набори можливостей опису гри, кістяк каталогу й картки за запитом | 🟢 ⬜ |
 | tasks | [T320](tasks/.t/T320-C--catalog-core.md) | 🔆 | catalog-core | Кістяк каталогу: які картки в основі й чому | 🟢 ⬜ |
 | platform | [T321](platform/.t/T321--base-and-more/plan.md) | ⚙️ | base-and-more | Основа й більше: набори на «Грі», кістяк і запити на «Тасках» — план | 🟢 ⬜ |
-| games | [T322](games/.t/T322-Q--base-and-more-choices.md) | ❓ | base-and-more-choices | Основа й більше — вибори | 🟢 ⬜ |
+| games | [T322](games/.t/T322-Q--base-and-more-choices.md) | ❓ | base-and-more-choices | Основа й більше — вибори | 🔴 ⬜ |
 | games | [T323](games/.t/T323-P--game-desc-v12-design.md) | 💡 | game-desc-v12-design | Опис гри v12 — рішення: відео без карток у «Супроводі», каталог у вікні над грою, переходи без назви | 🟢 ⬜ |
 | games | [T324](games/.t/T324-Q--game-desc-v12-choices.md) | ❓ | game-desc-v12-choices | Опис гри v12 — вибори | 🔴 ⬜ |
 | reports | [T325](reports/.t/T325-C--video-archive.md) | 🔆 | video-archive | Як зберегти відео студентів, щоб не зникли — подумати й нагадати | 🟢 ⬜ |
