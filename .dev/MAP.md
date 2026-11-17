@@ -351,7 +351,7 @@
 | github | [T341](github/.t/T341-P--due-verdict-model.md) | 💡 | due-verdict-model | Вердикт дедлайну: джерела, випадки, правила й поблажка | 🟢 🟩 |
 | github | [T342](github/.t/T342-C--due-data-d1-d2.md) | 🔆 | due-data-d1-d2 | Дедлайни 1 і 2: що показали дані — випадки й лічильники | 🟢 🟩 |
 | github | [T343](github/.t/T343-Q--due-verdict-choices.md) | ❓ | due-verdict-choices | Вердикт дедлайну — вибори: правила, поблажка, чого бракує | 🔴 ⬜ |
-| platform | [T344](platform/.t/T344--game-trifles/plan.md) | ⚙️ | game-trifles | Сторінка гри: дрібниці — стани чипами, рядки відео, «Можливості» без прокрутки, картки під мишкою, нагору з меню, смужка «Очима студента» — план | 🟢 ⬜ |
+| platform | [T344](platform/.t/T344--game-trifles/plan.md) | ⚙️ | game-trifles | Сторінка гри: дрібниці — стани чипами, рядки відео, «Можливості» без прокрутки, картки під мишкою, нагору з меню, смужка «Очима студента» — план і звіт | 🟢 ⬜ |
 | games | [T345](games/.t/T345-P--state-looks.md) | 💡 | state-looks | Стани сутностей: кольори з набору й значки — пропозиція | 🟢 ⬜ |
 | platform | [T346](platform/.t/T346-P--course-dates.md) | 💡 | course-dates | Дати курсу в одному місці: межа семестру й усе, що міняється з року в рік — пропозиція | 🟢 ⬜ |
-| platform | [T347](platform/.t/T347-Q--game-trifles-choices.md) | ❓ | game-trifles-choices | Сторінка гри: дрібниці — вибори | 🟢 ⬜ |
+| platform | [T347](platform/.t/T347-Q--game-trifles-choices.md) | ❓ | game-trifles-choices | Сторінка гри: дрібниці — вибори | 🔴 ⬜ |
