@@ -11,8 +11,7 @@ GONE = "table.seeds_gone"
 LAB_COLS = {0: "reg,lab,lab.review,lab.required,lab.kind,lab.before,lab.after,lab.last,lab.asked,lab.ext,lab.met,lab.note,fields:lab,polls:lab"}
 LAB_ABOUT = {0: "Дедлайн лаби: стан кожного студента, звіт агента, подовження й відповіді опитувань."}
 # the verdict of a deadline (T340): who made it, who did not, and the borderline ones by their case
-DUE_COLS = ("lab.answer,lab.case,lab.late,lab.says,lab.flags,lab.met,lab.note,lab.due,lab.asked,lab.ext,lab.review,lab.required,"
-            "lab.before,lab.after,lab.last,reg,tg")
+DUE_COLS = "lab.answer,lab.case,lab.says,lab.flags,lab.met,lab.note,lab.due,lab.asked,lab.ext,lab.review,lab.before,lab.after,lab.last,reg,tg"
 DUE_ABOUT = ("Вклався чи ні: чіткі «так», чіткі «ні» й пограничні — групами за випадком. Сайт зводить звіт агента, коміти, подовження "
              "й опитування; останнє слово — колонка ✍.")
 DUE_PINNED = 2  # the deadlines on the tabs from the start; the rest wait in the library

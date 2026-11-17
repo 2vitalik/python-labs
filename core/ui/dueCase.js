@@ -1,10 +1,10 @@
 // a deadline's verdict as the table reads it (T340): the answer, the case, the student's own word, what else to look at —
 // the codes of core/due_case.py. A case has no emoji on purpose: its cell reads as words; `why` is the hover
 export const ANSWER = {
-  yes: { emoji: '✅', text: 'так — вклався', color: 'green' },
-  no: { emoji: '❌', text: 'ні — не вклався', color: 'red' },
-  ask: { emoji: '❓', text: 'пограничне — вирішити або спитати', color: 'yellow' },
-  wait: { emoji: '⏳', text: 'ще не час або чекає звіту' },
+  yes: { emoji: '✅', text: 'так', color: 'green' },
+  no: { emoji: '❌', text: 'ні', color: 'red' },
+  ask: { emoji: '❓', text: 'пограничне', color: 'yellow' },
+  wait: { emoji: '⏳', text: 'чекає' },
 }
 const c = (text, color, why) => ({ emoji: '', text, color, why })
 export const CASE = {
@@ -43,7 +43,7 @@ export const SAYS = {
 }
 export const FLAG = {
   says_more: { emoji: '⚖️', text: 'каже «вклався», сайт бачить інакше' },
-  says_less: { emoji: '🙂', text: 'каже «ще працюю» чи «не вклався», а зроблено — голос застарів' },
+  says_less: { emoji: '🕰️', text:'каже «ще працюю» чи «не вклався», а зроблено — голос застарів' },
   ext_unknown: { emoji: '📭', text: 'каже про подовження, якого в нас не записано' },
   fresh: { emoji: '🆕', text: 'є коміти, новіші за звіт агента, — варто перечитати' },
   noaccess: { emoji: '⚠️', text: 'доступ до репозиторію зник після звіту' },
