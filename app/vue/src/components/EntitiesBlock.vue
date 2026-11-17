@@ -4,25 +4,17 @@ import { ref } from 'vue'
 import Icon from '@core/components/Icon.vue'
 import Tip from '@core/components/Tip.vue'
 import { useEd } from '../ed.js'
-import { landed } from '../jump.js'
 import EntityCard from './EntityCard.vue'
-import EntityForm from './EntityForm.vue'
+import EntityDraft from './EntityDraft.vue'
 import StableColumns from './StableColumns.vue'
 
-// the body of «Сутності» (T270 §7): a new entity's form on top, the cards in two stable columns, one toggle for all their
-// rule lists. add(prefill?) opens the form, the type (and the name) already chosen: { role?, title? }
+// the body of «Сутності» (T270 §7): a new entity's draft on top (T310), the cards in two stable columns, one toggle for all
+// their rule lists. add(prefill?) opens the draft, the type (and the name) already chosen: { role?, title? }
 const ed = useEd()
-const adding = ref(null)  // the new form's prefill; null — no form
-const formKey = ref(0)
-function add(prefill = {}) {
-  adding.value = { ...prefill }
-  formKey.value++
-}
+const adding = ref(null)  // { n, prefill } while the draft is open; n starts a fresh one when add() comes again
+let n = 0
+const add = (prefill = {}) => (adding.value = { n: ++n, prefill })
 defineExpose({ add })
-function created(part) {
-  adding.value = null
-  if (part?.id) landed(`p-${part.id}`)
-}
 </script>
 
 <template>
@@ -32,11 +24,7 @@ function created(part) {
         <Icon :name="ed.showRules ? 'fold' : 'unfold'" /> {{ ed.showRules ? 'згорнути правила' : 'розгорнути правила' }}
       </button>
     </div>
-    <div v-if="ed.editable && adding" class="card mb-2 editing new">
-      <div class="card-body p-2">
-        <EntityForm :key="formKey" :prefill="adding" @done="created" @cancel="adding = null" />
-      </div>
-    </div>
+    <EntityDraft v-if="ed.editable && adding" :key="adding.n" :prefill="adding.prefill" class="mb-2" @done="adding = null" @cancel="adding = null" />
     <StableColumns v-if="ed.entities.length" v-slot="{ item }" :items="ed.entities" scope="entities">
       <EntityCard :part="item" />
     </StableColumns>

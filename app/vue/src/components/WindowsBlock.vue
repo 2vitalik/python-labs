@@ -6,12 +6,12 @@ import { useEd } from '../ed.js'
 import GameGraph from './GameGraph.vue'
 import StableColumns from './StableColumns.vue'
 import WindowCard from './WindowCard.vue'
-import WindowForm from './WindowForm.vue'
+import WindowDraft from './WindowDraft.vue'
 
-// the body of «Вікна й переходи»: the form of a new window on top, the window cards in stable columns, the map of transitions.
-// add(prefill?) opens the form; prefill = { task } — the window type already chosen (the top «＋ Додати» bar)
+// the body of «Вікна й переходи»: a new window's draft on top (T310), the window cards in stable columns, the map of
+// transitions. add(prefill?) opens the draft; prefill = { task } — the window type already chosen (the top «＋ Додати» bar)
 const ed = useEd()
-const adding = ref(null)  // { n, prefill } while the form is open; n remounts it when add() comes again
+const adding = ref(null)  // { n, prefill } while the draft is open; n starts a fresh one when add() comes again
 const orphans = computed(() => ed.menus.filter((m) => !ed.windows.some((w) => w.id === m.window)))
 let n = 0
 const add = (prefill = {}) => (adding.value = { n: ++n, prefill })
@@ -20,11 +20,7 @@ defineExpose({ add })
 
 <template>
   <div>
-    <div v-if="adding" class="card mb-2 editing new">
-      <div class="card-body p-2">
-        <WindowForm :key="adding.n" :prefill="adding.prefill" @done="adding = null" @cancel="adding = null" />
-      </div>
-    </div>
+    <WindowDraft v-if="adding" :key="adding.n" :prefill="adding.prefill" class="mb-2" @done="adding = null" @cancel="adding = null" />
     <Tip v-if="!ed.windows.length">
       Вікна — це екрани гри: ігровий екран, головне меню, пауза, налаштування, кінець гри…<br>
       У кожного — тип, скриншот{{ ed.simple ? ' й опис' : ', елементи на ньому, переходи до інших вікон і дії' }}.

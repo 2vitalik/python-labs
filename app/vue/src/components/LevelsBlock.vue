@@ -7,22 +7,21 @@ import { useEd } from '../ed.js'
 import CardPicker from './CardPicker.vue'
 import ClaimRow from './ClaimRow.vue'
 import LevelCard from './LevelCard.vue'
-import LevelForm from './LevelForm.vue'
+import LevelDraft from './LevelDraft.vue'
 import StableColumns from './StableColumns.vue'
 
-// the «Рівні» section's body (T270 §9): a new level's form on top, the levels in two steady columns, then the cards
+// the «Рівні» section's body (T270 §9): a new level's draft on top (T310), the levels in two steady columns, then the cards
 // about the levels in general (format, generation, editor…) that sit on no level
 const ed = useEd()
-const adding = ref(false)
+const adding = ref(0)  // the draft's number while it is open: add() again starts a fresh one
+let n = 0
 const general = computed(() => ed.claims.filter((c) => !c.part && !c.rule && kindOf(ed.info(c.task)) === 'level'))
-defineExpose({ add: () => (adding.value = true) })
+defineExpose({ add: () => (adding.value = ++n) })
 </script>
 
 <template>
   <div class="vstack gap-2">
-    <div v-if="adding" class="card editing new">
-      <div class="card-body p-2"><LevelForm @done="adding = false" @cancel="adding = false" /></div>
-    </div>
+    <LevelDraft v-if="adding" :key="adding" @done="adding = 0" @cancel="adding = 0" />
     <template v-if="!ed.levels.length && !adding">
       <Tip v-if="ed.editable">
         <div>Опиши кожен рівень або групу схожих: звідки він береться, розмір і параметри, скриншот. Генератор рівнів — теж рівень.</div>

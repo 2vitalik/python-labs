@@ -8,9 +8,10 @@ import Picker from './Picker.vue'
 import ProposeCard from './ProposeCard.vue'
 
 // an entity's type (T270 §7): a field-like button with the chosen type → the types with what each one is, by family;
-// none fits — propose one to the teacher, and meanwhile the entity is an «object», so nobody is stuck
+// none fits — propose one to the teacher, and meanwhile the entity is an «object», so nobody is stuck.
+// v-model:open — the list, for a page that opens it itself (EntityDraft: Enter before a type)
 const role = defineModel({ type: String, default: '' })
-const open = ref(false)
+const open = defineModel('open', { type: Boolean, default: false })
 const proposing = ref(false)
 const items = computed(() => roleItems().map((it) => ({ ...it, taken: it.key === role.value })))
 watch(open, () => (proposing.value = false))
