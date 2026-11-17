@@ -1,11 +1,13 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 import { ALL_HOW, toAll } from '@core/allkey.js'
 import HashLink from '@core/components/HashLink.vue'
 import Icon from '@core/components/Icon.vue'
 import { vToStart } from '@core/toStart.js'
 import { zones } from '../catalog.js'
+import { useEd } from '../ed.js'
 import { allMode, isFolded, isShort, ownShort, toggleFold, toggleShort } from '../fold.js'
 import { canCols, modeOf } from '../layout.js'
 import { cards, CARDS, ROWS, rows } from '../looks.js'
@@ -24,8 +26,14 @@ import WideSwitch from './WideSwitch.vue'
 // too, or a long press on it, does the same in every section (allkey.js); held ⌥ rings them all under the mouse.
 // An explanation put away inside the section leaves its icon by the title (`tip-dock`, Tip.vue).
 // The heading sticks under the menu while its section is on screen: the reader sees where they are and can fold it away;
-// a click on its empty space while it is stuck goes back to the section's start (T306, toStart.js)
-defineProps({ icon: String, title: String, count: [Number, String], note: String, fold: String, zone: String, layout: Boolean, anchor: String, cardFold: Boolean })
+// a click on its empty space while it is stuck goes back to the section's start (T306, toStart.js).
+// `catalog` — the catalog's cards the section is about (sections.js catalogOf, T318): a quiet sign opens them in a window
+// over the page; it is a link too — ⌘-click takes the same category to «Таски» in a new tab
+const props = defineProps({ icon: String, title: String, count: [Number, String], note: String, fold: String, zone: String, layout: Boolean, anchor: String, cardFold: Boolean,
+                            catalog: Object })
+const ed = useEd()
+const router = useRouter()
+const tasksHref = computed(() => (props.catalog ? router.resolve(props.catalog.to).href : ''))
 const el = ref()
 const WORD = { open: 'повністю', short: 'коротко', folded: 'згорнуто' }
 const shortTip = (key) => `${isShort(key) ? 'Зараз коротко: видно початок секції — показати всю' : 'Зараз уся секція — показати коротко, лише початок'}`
@@ -64,6 +72,9 @@ async function keep(change) {
     <span class="ms-auto d-flex align-items-center gap-1">
       <slot :keep />
       <template v-if="!(fold && isFolded(fold))">
+        <a v-if="catalog && ed" :href="tasksHref" target="_blank" rel="noopener" class="iact dim"
+           title="Картки каталогу для цієї секції — у вікні над сторінкою&#10;⌘- чи Ctrl-клік — та сама категорія на «Тасках», у новій вкладці"
+           @click.exact.prevent="ed.catalog(catalog)"><Icon name="puzzle" /></a>
         <ColsSwitch v-if="layout" quiet :scope="anchor" :around="keep" />
         <LookSwitch v-if="layout && canCols" quiet :look="rows" :modes="ROWS" label="Розкладка" :scope="anchor" :around="keep"
                     :off="modeOf(anchor) === 'one' ? 'Один стовпець — рядами нема чого вирівнювати' : ''" />

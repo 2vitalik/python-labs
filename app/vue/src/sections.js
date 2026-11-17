@@ -25,6 +25,24 @@ export const HEADS = {
 }
 export const foldKey = (id) => `ed:${id}`
 
+// the catalog's cards a section is about (T318) — what its window shows and where the same is on «Таски»:
+// { title, only(task), zone — the one category to start in, to — the route }; a section with no cards of its own — null
+const inZones = (z) => (t) => kindOf(t) === 'game' && z.zones.includes(t.zone)
+const SCOPES = {
+  field: { only: (t) => t.zone === 'field' || kindOf(t) === 'field' },
+  entities: { only: (t) => t.zone === 'entities', zone: 'entities' },
+  rules: { only: (t) => kindOf(t) === 'rule' },
+  levels: { only: (t) => t.zone === 'levels', zone: 'levels' },
+  windows: { only: (t) => ['window', 'element'].includes(kindOf(t)), zone: 'interface', sub: 'menus' },
+  ...Object.fromEntries(ZONES.map((z) => [z.id, { only: inZones(z), zone: z.zones.length === 1 ? z.zones[0] : '' }])),
+}
+export function catalogOf(id) {
+  const s = SCOPES[id], h = HEADS[id]
+  if (!s) return null
+  const query = { zone: h.zone, ...(s.sub ? { sub: s.sub } : {}) }
+  return { title: `Каталог · ${h.icon} ${h.title}`, only: s.only, zone: s.zone || '', to: { path: '/tasks', query } }
+}
+
 const OF_PART = { entity: 'entities', window: 'windows', menu: 'windows', level: 'levels', field: 'field' }
 const OF_LOOSE = { mechanic: 'entities', element: 'windows', rule: 'rules', field: 'field', level: 'levels' }  // DraftStrip's homes
 

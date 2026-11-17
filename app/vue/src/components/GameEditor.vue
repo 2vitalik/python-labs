@@ -22,10 +22,11 @@ import { canCols, colsMode, edWidth } from '../layout.js'
 import { cards as cardLooks, CARDS, ROWS, rows } from '../looks.js'
 import '../peeks.js'
 import { sandbox } from '../sandbox.js'
-import { foldKey, HEADS, sectionOf, SECTIONS, SIMPLE, ZONES } from '../sections.js'
+import { catalogOf, foldKey, HEADS, sectionOf, SECTIONS, SIMPLE, ZONES } from '../sections.js'
 import { editing } from '../teacher.js'
 import { anyTools, dropTools } from '../tools.js'
 import AddBar from './AddBar.vue'
+import CatalogWindow from './CatalogWindow.vue'
 import ClaimsTable from './ClaimsTable.vue'
 import ColsSwitch from './ColsSwitch.vue'
 import DraftStrip from './DraftStrip.vue'
@@ -55,6 +56,8 @@ const error = ref('')
 const view = ref('desc')  // desc — the sections · cards — everything claimed as a tree (T270 §11)
 const simpleLook = ref(false)  // the teacher's preview of what a student sees in the short form
 const blocks = { entity: ref(), window: ref(), level: ref(), rule: ref() }
+const catalog = ref(null)  // what the catalog's window shows (CatalogWindow `scope`)
+const catalogOn = ref(false)
 const admin = computed(() => user.value?.status === 'admin')
 const cards = computed(() => Object.fromEntries(Object.entries(props.tasks || {}).map(([slug, t]) => [slug, { slug, ...taskIndex.value[slug], ...t }])))
 const ofKind = (kind) => computed(() => props.parts.filter((p) => p.kind === kind))
@@ -72,6 +75,7 @@ const ed = reactive({
   ruleClaims: (id) => props.claims.filter((c) => c.rule === id),
   changed: () => { error.value = ''; return props.reload?.() },
   open: (block, prefill) => open(block, prefill),
+  catalog: (scope) => { catalog.value = scope; catalogOn.value = true },  // the catalog's cards of a place, in a window (T318)
   fail: (text) => (error.value = text),
   last: null,
 })
@@ -102,7 +106,7 @@ const SHUT = ['entities', 'windows', 'levels']  // the sections whose cards fold
 const head = (id) => {
   const { icon, title, short, zone } = HEADS[id]
   return { icon, title: (ed.simple && short) || title, zone, count: counts.value[id], fold: foldKey(id), anchor: id, layout: LAID.includes(id),
-           cardFold: SHUT.includes(id) }
+           cardFold: SHUT.includes(id), catalog: ed.simple && id === 'zone-support' ? null : catalogOf(id) }
 }
 const zone = (id) => ZONES.find((z) => z.id === id)
 const cardsToc = ref([])  // «Картки» names its own contents: the categories on screen
@@ -281,6 +285,7 @@ async function fromTemplate() {
 
     <Toc :items="toc" :side="!wide" :bar="view === 'cards'" />
     <UndoBar v-if="editable" />
+    <CatalogWindow v-model="catalogOn" :scope="catalog" />
     <Lightbox />
     <PeekHost />
   </div>

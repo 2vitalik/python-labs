@@ -4,7 +4,7 @@ import { computed, ref, watch } from 'vue'
 import Icon from '@core/components/Icon.vue'
 import Pop from '@core/components/Pop.vue'
 import { postClaim } from '../api.js'
-import { missingParams } from '../catalog.js'
+import { kindOf, missingParams } from '../catalog.js'
 import { useEd } from '../ed.js'
 import { cardItems } from '../items.js'
 import { landed } from '../jump.js'
@@ -16,9 +16,10 @@ import SlotFields from './SlotFields.vue'
 // ({ part } · { rule } · {}), its required params asked first. `suggest(task)` lifts a card under «підходять сюди».
 // `hold` — the anchor does not exist yet (a new rule's form, T291 §8): the card is only chosen — choose(task, params) — and
 // the caller claims it once the anchor is saved. `plus` — the trigger is a small violet «＋» by a block's caption (T294 §8),
-// the label under the mouse
+// the label under the mouse. Under the list — the way to the same cards with room to read them: the catalog's window
+// (T318, CatalogWindow), where several are added one after another; `catalog` — the section's own scope of it
 const props = defineProps({ kinds: Array, anchor: { type: Object, default: () => ({}) }, label: String, suggest: Function, filter: Function,
-                            hold: Boolean, plus: Boolean })
+                            hold: Boolean, plus: Boolean, catalog: Object })
 const emit = defineEmits(['choose'])
 const ed = useEd()
 const open = ref(false)
@@ -35,6 +36,17 @@ const items = computed(() => {
 const anchored = computed(() => props.hold || !!(props.anchor.part || props.anchor.rule))
 const ready = computed(() => !missingParams(picked.value?.task, params.value).length)
 const plain = (md) => (md || '').replace(/\[([^\]]*)\]\([^)]*\)/g, '$1').replace(/[*_`#>]/g, '')
+// the same cards in the catalog's window: claimed at this picker's anchor
+const ZONE = { mechanic: 'entities', element: 'interface', field: 'interface', level: 'levels', rule: 'game-logic' }
+const host = computed(() => ed.parts.find((p) => p.id === props.anchor.part)?.title)
+function roomy() {
+  open.value = false
+  ed.catalog(props.catalog || {
+    title: `Каталог · ${props.label}`, note: host.value ? `додається до «${host.value}»` : props.anchor.rule ? 'додається до правила' : '',
+    only: (t) => props.kinds.includes(kindOf(t)) && (!props.filter || props.filter(t)), anchor: anchored.value ? props.anchor : null,
+    to: { path: '/tasks', query: ZONE[props.kinds[0]] ? { zone: ZONE[props.kinds[0]] } : {} },
+  })
+}
 
 watch(open, () => { picked.value = null; proposing.value = false; error.value = '' })
 
@@ -69,7 +81,7 @@ async function send(task, p) {
       <button v-else type="button" class="btn btn-sm btn-add" @click="toggle"><Icon name="plus" /> {{ label }}</button>
     </template>
     <ProposeCard v-if="proposing" what="нову картку" @done="open = false" @cancel="proposing = false"
-                 :zone="{ mechanic: 'entities', element: 'interface', field: 'interface', level: 'levels', rule: 'game-logic' }[kinds[0]]"
+                 :zone="ZONE[kinds[0]]"
                  :subzone="{ element: 'hud', field: 'render' }[kinds[0]]" />
     <div v-else-if="picked" class="vstack gap-2">
       <div class="fw-semibold">{{ picked.icon }} {{ picked.title }}</div>
@@ -83,8 +95,9 @@ async function send(task, p) {
     <Picker v-else inline autofocus :items placeholder="пошук картки…" @pick="pick">
       <template #footer>
         <div class="foot">
-          Нема потрібного? Глянь <RouterLink to="/tasks">увесь каталог</RouterLink>
-          або <a href="#" @click.prevent="proposing = true">запропонуй картку</a>
+          <a v-if="!hold" href="#" title="Ці самі картки у вікні над сторінкою: з описами, підкатегоріями — і додавати можна кілька поспіль" @click.prevent="roomy">Переглянути всі просторо</a>
+          <RouterLink v-else to="/tasks" target="_blank">Увесь каталог ↗</RouterLink>
+          · нема потрібного — <a href="#" @click.prevent="proposing = true">запропонуй картку</a>
         </div>
       </template>
     </Picker>

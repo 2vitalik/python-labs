@@ -27,7 +27,7 @@ const videos = computed(() => p.z.zones.includes('support') && !!ed.videos)
 <template>
   <section :id="z.id" class="mb-4">
     <SectionHead v-bind="head">
-      <CardPicker v-if="ed.editable && !ed.simple" :kinds="['game']" :anchor="{}" label="картка" :filter="here" />
+      <CardPicker v-if="ed.editable && !ed.simple" :kinds="['game']" :anchor="{}" label="картка" :filter="here" :catalog="head.catalog" />
     </SectionHead>
     <Clamp v-show="!isFolded(head.fold)" :on="isShort(head.fold)" @open="setShort(head.fold, false)">
       <div class="vstack gap-3 align-items-start">
