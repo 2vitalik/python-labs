@@ -4,6 +4,7 @@ const HEAD = /^## (.+?)(?: · (\d{1,2}:\d{2}))?$/
 const NOTE = /^\*\[(.+)\]\*$/
 const CHAT = /^(\d\d:\d\d:\d\d)\s+From\s+(.+?)\s+to\s+(.+?):\s*(.*)$/
 const CHAT_CLOUD = /^(\d\d:\d\d:\d\d)\t([^\t]+?):\t?(.*)$/  // the cloud recording's chat file: no «From … to»
+const CHAT_LOCAL = /^(\d\d:\d\d:\d\d)\s+From\s+(.+?)\s+:\s?(.*)$/  // chat.txt of a recording on the computer: «From Who : text»
 
 export const KINDS = { pz: 'ПЗ', lab: 'Лаба', lec: 'Лекція', cons: 'Консультація', x: 'Зустріч' }
 export const KINDS_MANY = { pz: 'ПЗ', lab: 'Лаби', lec: 'Лекції', cons: 'Консультації', x: 'Зустрічі' }
@@ -97,7 +98,7 @@ export function parseChat(text) {
   for (const line of (text || '').split('\n')) {
     let m = line.match(CHAT)
     if (m) rows.push({ time: m[1].slice(0, 5), who: m[2], to: m[3] === 'Everyone' ? '' : m[3], text: m[4] })
-    else if ((m = line.match(CHAT_CLOUD))) rows.push({ time: m[1].slice(0, 5), who: m[2], to: '', text: m[3] })
+    else if ((m = line.match(CHAT_CLOUD) || line.match(CHAT_LOCAL))) rows.push({ time: m[1].slice(0, 5), who: m[2], to: '', text: m[3] })
     else if (rows.length && line.trim()) rows[rows.length - 1].text = `${rows[rows.length - 1].text}\n${line.trim()}`.trim()
     else if (line.trim()) rows.push({ time: '', who: '', to: '', text: line.trim() })
   }

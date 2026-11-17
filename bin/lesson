@@ -1,33 +1,37 @@
 #!/usr/bin/env python3
-"""bin/lesson — lessons of the site as a folder on disk, the way in for AI agents (T218).
+"""bin/lesson — lessons of the site as a folder on disk, the way in for AI agents (T218, T334).
 
   bin/lesson [-t dev] ls
-  bin/lesson [-t dev] new <slug> [--title …] [--date РРРР-ММ-ДД] [--time 18:35–20:10] [--groups A,B]
-  bin/lesson [-t dev] pull <slug>                 site → data/transcripts/<slug>/: meta.yml, context.md, transcript.md,
-                                                  summary.md, notes.md, raw/ (one file per service, chat.txt among them)
+  bin/lesson scan [--topic Python]                Zoom's recording folders on this Mac against the site: what is not collected yet
+  bin/lesson [-t dev] collect <дата> [--topic …] [--tag cpo] [--dry]
+                                                  the day's draft from Zoom's folder and Wispr Flow: parts by the recording
+                                                  pieces, raw sources, pieces.yml — then the folder is ready for /lesson merge
+  bin/lesson [-t dev] video <slug> [--dry]        the recording pieces → Google Drive and Telegram, the links → the parts (lessonvideo.py)
+  bin/lesson [-t dev] new <дата> [--tag …] [--title …] [--time 18:35–20:10] [--groups A,B]
+  bin/lesson [-t dev] pull <slug>                 site → data/transcripts/<slug>/: meta.yml (the parts in it), context.md, transcript.md,
+                                                  summary.md, notes.md, raw/ (one file per service), parts/<key>.summary.md…
   bin/lesson [-t dev] push <slug> [-m "що змінив"] [--force]   the folder → site: texts and meta that differ, raw files the site lacks
   bin/lesson [-t dev] attach <slug> <file…>       files for students (what the class worked with)
   bin/lesson [-t dev] publish <slug> | hide <slug>
 
+A slug is the day's date, 2026-11-10 (with a tag for a second class of the day: 2026-11-10-cpo); pz1-style ones still work.
 The folder is the one the /lesson skill works in (.claude/skills/lesson). No -t = prod. Nothing here goes to git:
 data/transcripts/ is ignored (names of students). The token's name on the server is who the site's history shows."""
 import argparse
 import json
-import mimetypes
 import os
 import re
 import sys
 from pathlib import Path
-from urllib.request import Request, urlopen
-from uuid import uuid4
 
 import yaml
 
-from siteapi import HOME, ROOT, SNAP, call, target
+from siteapi import HOME, ROOT, SNAP, call, send
 
 FOLDER = Path(os.environ.get("LESSONS_DIR", ROOT / "data" / "transcripts"))  # another site keeps its folder elsewhere (ods)
 TEXTS = {"context": "context.md", "transcript": "transcript.md", "summary": "summary.md", "notes": "notes.md"}
 META = ("title", "date", "time", "groups", "links", "video_start", "meeting")
+PART = ("key", "kind", "title", "start", "end", "note", "links", "only")  # of a part in meta.yml; its texts are files in parts/
 SKILL_KINDS = {"pz": "practice", "lab": "lab", "lec": "lecture", "cons": "consult", "x": "other"}
 
 
@@ -46,32 +50,41 @@ def keep(to: str, data: dict):
 
 
 def upload(to: str, slug: str, path: Path, role: str) -> dict:
-    url, token = target(to)
-    b = uuid4().hex
-    head = (f'--{b}\r\nContent-Disposition: form-data; name="role"\r\n\r\n{role}\r\n--{b}\r\n'
-            f'Content-Disposition: form-data; name="file"; filename="{path.name}"\r\n'
-            f'Content-Type: {mimetypes.guess_type(path.name)[0] or "application/octet-stream"}\r\n\r\n').encode()
-    request = Request(f"{url}/api/lessons/{slug}/files", method="POST", data=head + path.read_bytes() + f"\r\n--{b}--\r\n".encode(),
-                      headers={"Authorization": f"Bearer {token}", "Content-Type": f"multipart/form-data; boundary={b}"})
-    with urlopen(request) as response:
-        return json.load(response)
+    return send(to, f"/lessons/{slug}/files", path, {"role": role})
+
+
+def own(lesson: dict) -> list[dict]:
+    """The lesson's own parts: the site's ones (defenses) are not the folder's to keep."""
+    return [p for p in lesson["parts"] if not p.get("site")]
 
 
 def pull(to: str, slug: str):
     b = call(to, "GET", f"/lessons/{slug}/bundle")
     d = FOLDER / slug
     (d / "raw").mkdir(parents=True, exist_ok=True)
-    meta = {"course": to, "lesson": b["n"], "kind": SKILL_KINDS.get(b["kind"], "other"), **{k: b[k] for k in META},
-            "teacher": "Віталій", "roster": b["roster"]}
+    meta = {"course": to, "lesson": slug, "kind": SKILL_KINDS.get(b["kind"], "day"), **{k: b[k] for k in META},
+            "parts": [{k: p[k] for k in PART} for p in own(b)], "teacher": "Віталій", "roster": b["roster"]}
     (d / "meta.yml").write_text(yaml.safe_dump(meta, allow_unicode=True, sort_keys=False))
     for key, name in TEXTS.items():
         if b[key]:
             (d / name).write_text(b[key].rstrip("\n") + "\n")
+    for p in own(b):
+        for key in ("summary", "transcript"):
+            if p[key]:
+                (d / "parts").mkdir(exist_ok=True)
+                (d / "parts" / f"{p['key']}.{key}.md").write_text(p[key].rstrip("\n") + "\n")
     for s in b["sources"]:
         (d / "raw" / s["name"]).write_text(s["text"])
     keep(to, b)
-    print(f"{rel(d)}: rev {b['rev']} · {len(b['sources'])} сирих · "
+    print(f"{rel(d)}: rev {b['rev']} · {len(b['sources'])} сирих · {len(meta['parts'])} частин · "
           + " · ".join(name for key, name in TEXTS.items() if b[key]))
+
+
+def parts(d: Path, meta: list[dict], cur: list[dict]) -> list[dict]:
+    """The parts as meta.yml lists them; a part's texts — its files in parts/, else what the site has."""
+    site = {p["key"]: p for p in cur}
+    text = lambda p, key: f.read_text().strip() if (f := d / "parts" / f"{p.get('key')}.{key}.md").exists() else site.get(p.get("key"), {}).get(key, "")  # noqa: E731
+    return [{k: p.get(k, [] if k in ("links", "only") else "") for k in PART} | {"summary": text(p, "summary"), "transcript": text(p, "transcript")} for p in meta]
 
 
 def push(to: str, slug: str, note: str, force: bool):
@@ -93,6 +106,8 @@ def push(to: str, slug: str, note: str, force: bool):
             patch[key] = (d / name).read_text().strip()
     meta = yaml.safe_load((d / "meta.yml").read_text()) if (d / "meta.yml").exists() else {}
     patch |= {k: meta[k] for k in META if k in meta and meta[k] != cur[k]}
+    if "parts" in meta and (new := parts(d, meta["parts"], own(cur))) != [{k: p[k] for k in (*PART, "summary", "transcript")} for p in own(cur)]:
+        patch["parts"] = new
     if len(patch) > 2:
         cur = call(to, "PUT", f"/lessons/{slug}", patch)
         print(f"{slug}: rev {was['rev'] if was else '?'} → {cur['rev']} · {', '.join(k for k in patch if k not in ('rev', 'note'))}")
@@ -101,28 +116,44 @@ def push(to: str, slug: str, note: str, force: bool):
     keep(to, cur)
 
 
+def new(to: str, slug: str, a):
+    old, day = re.fullmatch(r"([a-z]+)(\d+)", slug), re.fullmatch(r"\d{4}-\d{2}-\d{2}", slug)
+    if not old and not day:
+        sys.exit("slug — дата заняття: 2026-11-10 (стара адреса — вид і номер: pz1)")
+    where = {"date": slug, "tag": a.tag} if day else {"kind": old[1], "n": int(old[2]), "date": a.date}
+    l = call(to, "POST", "/lessons", where | {"title": a.title, "time": a.time, "groups": [g.strip() for g in a.groups.split(",") if g.strip()]})
+    print(f"{l['slug']}: {l['title'] or 'без назви'} — чернетка; далі collect / pull / push")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("-t", "--target", default=SNAP)
-    parser.add_argument("cmd", choices=["ls", "new", "pull", "push", "attach", "publish", "hide"])
+    parser.add_argument("cmd", choices=["ls", "scan", "collect", "video", "new", "pull", "push", "attach", "publish", "hide"])
     parser.add_argument("args", nargs="*")
     parser.add_argument("-m", "--note", default="")
     parser.add_argument("--force", action="store_true")
-    for k in ("title", "date", "time", "groups"):
+    parser.add_argument("--dry", action="store_true")
+    for k in ("title", "date", "time", "groups", "tag", "topic"):
         parser.add_argument(f"--{k}", default="")
     a = parser.parse_args()
     slug = a.args[0] if a.args else ""
     if a.cmd == "ls":
         for l in call(a.target, "GET", "/lessons"):
-            marks = "".join(m for k, m in (("summary", "📝"), ("transcript", "🗣"), ("chat", "💬")) if l["has"][k]) + ("📎" if l["has"]["files"] else "")
-            print(f"{l['slug']:<7} {l['date'] or '----------'}  {l['label']:<9} {'' if l['published'] else '(чернетка) '}{l['title']}  {marks}")
+            marks = "".join(m for k, m in (("summary", "📝"), ("transcript", "🗣"), ("chat", "💬"), ("video", "🎬"), ("zoom", "👥")) if l["has"][k]) + ("📎" if l["has"]["files"] else "")
+            print(f"{l['slug']:<14} {'' if l['published'] else '(чернетка) '}{l['title']}  {len(l['parts'])} частин  {marks}")
+    elif a.cmd == "scan":
+        import lessoncollect
+        lessoncollect.scan(a.target, a.topic)
     elif not slug:
-        sys.exit("потрібен slug заняття: pz1, lab2…")
+        sys.exit("потрібен slug заняття — його дата: 2026-11-10")
+    elif a.cmd == "collect":
+        import lessoncollect
+        lessoncollect.collect(a.target, slug, a.tag, a.topic, a.dry, FOLDER, pull, push)
+    elif a.cmd == "video":
+        import lessonvideo
+        lessonvideo.publish(a.target, slug, FOLDER / slug, a.dry)
     elif a.cmd == "new":
-        m = re.fullmatch(r"([a-z]+)(\d+)", slug) or sys.exit("slug — вид і номер: pz1, lab2, lec3, cons1, x1")
-        l = call(a.target, "POST", "/lessons", {"kind": m[1], "n": int(m[2]), "title": a.title, "date": a.date, "time": a.time,
-                                                "groups": [g.strip() for g in a.groups.split(",") if g.strip()]})
-        print(f"{l['slug']}: {l['label']} · {l['title'] or 'без назви'} — чернетка; далі pull / push")
+        new(a.target, slug, a)
     elif a.cmd == "pull":
         pull(a.target, slug)
     elif a.cmd == "push":
