@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, nextTick, ref } from 'vue'
 
 import Icon from '@core/components/Icon.vue'
 import Pop from '@core/components/Pop.vue'
@@ -22,9 +22,15 @@ const count = computed(() => FEATURES.filter((f) => ed.has(f.id)).length)
 const ids = (fn) => FEATURES.filter(fn).map((f) => f.id)
 const more = computed(() => ids((f) => !ed.has(f.id) && ed.offers(f.id)))
 const less = computed(() => ids((f) => ed.has(f.id) && !ed.filled(f.id)))
+const button = ref()
+// a tile above may come or go with a feature (T348): the page scrolls by as much, and the panel stays under the mouse
 async function run(fn) {
   busy.value = true
+  const was = button.value.getBoundingClientRect().top
   await fn()
+  await nextTick()
+  const shift = button.value.getBoundingClientRect().top - was
+  if (shift) scrollBy({ top: shift, behavior: 'instant' })
   busy.value = false
 }
 </script>
@@ -32,7 +38,7 @@ async function run(fn) {
 <template>
   <Pop v-model="open" width="35rem">
     <template #trigger="{ toggle }">
-      <button type="button" class="btn btn-sm btn-outline-secondary" :aria-expanded="open" title="Що ще описати в грі: усе одразу чи галочками" @click="toggle">
+      <button ref="button" type="button" class="btn btn-sm btn-outline-secondary" :aria-expanded="open" title="Що ще описати в грі: усе одразу чи галочками" @click="toggle">
         <Icon name="layers" /> Можливості <span class="cnt">{{ count ? `основа + ${count}` : 'основа' }}</span>
       </button>
     </template>

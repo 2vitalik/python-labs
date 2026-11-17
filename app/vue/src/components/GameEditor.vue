@@ -192,8 +192,10 @@ async function fromTemplate() {
   <div ref="root" class="editor">
     <div :class="{ 'in-column': wide }">
     <GameTotals :counts="totals" :coins class="mb-3" @go="go">
-      <!-- the tiles, then the look and the folding, then the layout — a line each, a word of what it does (T294 §3) -->
+      <!-- the tiles, then the look and the folding, then the layout — a line each, a word of what it does (T294 §3).
+           «Можливості» first: what they switch on comes after them, and the button stays where it is (T348) -->
       <div class="d-flex flex-wrap align-items-center gap-2 small text-secondary">
+        <FeaturesPanel v-if="editable && !ed.sandbox" />
         <span v-if="ed.has('cards')" class="btn-group btn-group-sm">
           <button type="button" class="btn" :class="view === 'desc' ? 'btn-secondary' : 'btn-outline-secondary'" @click="view = 'desc'"><Icon name="list" /> Опис</button>
           <button type="button" class="btn" :class="view === 'cards' ? 'btn-secondary' : 'btn-outline-secondary'" title="Усе заявлене деревом: категорія → картка → де вона" @click="view = 'cards'"><Icon name="table" /> Картки</button>
@@ -202,7 +204,6 @@ async function fromTemplate() {
           <button v-for="[m, icon, word, tip] in MODES" :key="m" type="button" class="btn btn-outline-secondary" :class="{ active: view === 'desc' && allMode('ed') === m }"
                   :disabled="view === 'cards'" :title="`${tip}${ownFolds ? ` · свої на заголовках: ${ownFolds}, клік їх скине` : ''}`" @click="setAll('ed', m)"><Icon :name="icon" /><span class="d-none d-sm-inline"> {{ word }}</span></button>
         </span>
-        <FeaturesPanel v-if="editable && !ed.sandbox" />
       </div>
       <!-- the reader's look of the sections as one framed group (T301 §3): its explanation, put away, leaves its icon at the
            caption's right end — right of the switches, left of the wallet — not a row of its own -->
