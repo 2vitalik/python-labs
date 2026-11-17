@@ -1,5 +1,6 @@
 """The table of students (T240): a row per student with all the site knows about them, read once — the profile, the repository,
 the cells of the labs, the latest vote in every poll, the teacher's own fields, the site's part (students.EXTRAS)."""
+from core.attendance_read import summary
 from core.config import settings
 from core.labs import Index
 from core.models.field import Field, FieldValue
@@ -43,12 +44,13 @@ async def table() -> dict:
     for extra in students.EXTRAS:
         for email, more in (await extra(users)).items():
             extras.setdefault(email, {}).update(more)
+    att = await summary(users)
     rows = []
     for u in users:
         repo = index.repos.get(u.email)
         rows.append(u.person() | profile(u) | extras.get(u.email, {}) | {
             "repo": repo.api() if repo else None, "labs": index.cells(u.email, u.github, u.group, settings.labs),
-            "polls": votes.get(u.email, {}), "fields": values.get(u.email, {})})
+            "polls": votes.get(u.email, {}), "fields": values.get(u.email, {}), "attendance": att.get(u.email)})
     return {"rows": rows, "labs": labs_api(index.deadlines), "polls": [p.api() for p in polls],
             "fields": [f.api() for f in await Field.find_all().sort("order", "created_at").to_list()],
             "views": [v.api() for v in await all_views()], "prefs": await prefs()}

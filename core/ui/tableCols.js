@@ -31,6 +31,10 @@ const profile = () => [
   col('last', P, 'date', 'Останній візит', '👁', (r) => r.last_seen_at, { fam: 'site' }),
   col('bot', P, 'bool', 'Бот привʼязаний', '🤖', (r) => r.tg_linked, { fam: 'tg', hint: (r) => r.tg_linked_at && `з ${fmtWhen(r.tg_linked_at, true)}` }),
   col('tg', P, 'text', 'Нік у Telegram', '✈️', (r) => r.tg_username, { fam: 'tg', link: (r) => r.tg_username && `https://t.me/${r.tg_username}` }),
+  // the lessons with attendance taken (attendance_read.summary): how many the student was at, of how many for the group
+  col('att', P, 'number', 'Був на парах', '🎓', (r) => r.attendance?.seen, { fam: 'att', sub: (r) => (r.attendance?.total ? `з ${r.attendance.total}` : ''),
+      hint: (r) => r.attendance && `разом ${r.attendance.minutes} хв` }),
+  col('attlast', P, 'date', 'Остання пара, де був', '🎓ⁿ', (r) => r.attendance?.last, { fam: 'att' }),
 ]
 const repo = () => [
   col('gh', R, 'link', 'Посилання на GitHub', '🐙', (r) => r.github, { fam: 'repo' }),

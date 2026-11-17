@@ -6,7 +6,7 @@ from core.attendance import cell, span, view
 from core.lesson_people import known, match
 from core.models.attendance import Attendance
 from core.models.lesson import Lesson
-from core.models.user import Status
+from core.models.user import Status, User
 
 
 async def attendance(l: Lesson, admin: bool) -> dict:
@@ -28,6 +28,25 @@ async def attendance(l: Lesson, admin: bool) -> dict:
             out["others"] += 1
             if admin:
                 out["unknown"].append(view(a, None, total, admin))
+    return out
+
+
+async def summary(users: list[User]) -> dict[str, dict]:
+    """Per student, for the table of students: of the `total` lessons with attendance taken for the group they were at
+    `seen` (the threshold of «був» applies), `minutes` in all, `last` — the date of the latest one they were at."""
+    lessons = await Lesson.find({"zoom.uuid": {"$ne": ""}}).sort("date", "slug").to_list()
+    found = await Attendance.find({"lesson": {"$in": [l.slug for l in lessons]}}).to_list()
+    who = match(list({a.name for a in found}), users)
+    seconds: Counter = Counter()
+    for a in found:
+        if a.name in who:
+            seconds[(who[a.name].email, a.lesson)] += a.seconds
+    out = {}
+    for u in users:
+        own = [l for l in lessons if not l.groups or u.group in l.groups]
+        was = [l for l in own if seconds[(u.email, l.slug)] and cell(seconds[(u.email, l.slug)], span(l))["present"]]
+        out[u.email] = {"seen": len(was), "total": len(own), "minutes": sum(seconds[(u.email, l.slug)] for l in lessons) // 60,
+                        "last": (was[-1].date or None) if was else None}
     return out
 
 
