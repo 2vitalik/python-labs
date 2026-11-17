@@ -308,6 +308,9 @@ html:has(.editor) { --stick-h: 2.6rem; }
    next heading comes after a wider gap */
 .editor > section { margin-bottom: 2.5rem !important; scroll-margin-top: 1rem; }
 @media (min-width: 576px) { .editor > section > .clamp { padding-inline: .75rem; } }  /* a phone has no width to give away */
+/* «show me where» lands on a row inside a card or a group of rules: below their stuck heads, not under them (T344) */
+.editor .pcard .card-body [id] { scroll-margin-top: 2.5rem; }
+.editor .rgroup [id] { scroll-margin-top: 2rem; }
 /* the frame is as wide as its switches: the explanation wraps inside it instead of widening it */
 .editor .looks { align-self: flex-start; max-width: 100%; }
 .editor .looks > .group-cap { align-self: stretch; }
