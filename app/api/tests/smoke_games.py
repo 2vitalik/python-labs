@@ -91,6 +91,10 @@ with TestClient(main.app) as c:
     check("bad item target → 422",
           c.post("/api/my/game/parts", json={"kind": "menu", "title": "М",
                                              "items": [{"title": "x", "window": "000000000000000000000000"}]}).status_code == 422)
+    r = c.post("/api/my/game/parts", json={"kind": "menu", "title": "Меню без назв", "items": [{"window": win}, {"note": "сам"}]})
+    check("an item with no name keeps its target, one with a note alone goes (T318)",
+          r.status_code == 200 and r.json()["items"] == [{"title": "", "window": win, "task": "", "note": ""}], r.text)
+    c.delete(f"/api/my/game/parts/{r.json()['id']}")
 
     # the field: one per game, props by the vocab
     r = c.post("/api/my/game/parts", json={"kind": "field", "props": {"size": " 20×15 ", "topology": "square", "wrap": 1, "layers": "підлога, обʼєкти", "junk": "x", "view": ""}})

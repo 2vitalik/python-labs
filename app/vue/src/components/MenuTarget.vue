@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 
 import Icon from '@core/components/Icon.vue'
 import InlinePop from '@core/components/InlinePop.vue'
@@ -10,10 +10,11 @@ import Picker from './Picker.vue'
 
 // where a transition leads (T270 §10.1, T278 §4), picked where it reads (T310): nowhere, another window of the game, or a
 // card — an action that opens no window. `item` — the menu item ({ window, task }); `host` — the item's own window;
-// `save({ window, task })` is awaited. Shown while the tools are on: at rest the same place is a link that leads there
+// `save({ window, task })` is awaited. Shown while the tools are on: at rest the same place is a link that leads there.
+// v-model:open — a row not saved yet lives while its target is being picked (MenuItems, T318)
 const props = defineProps({ item: Object, host: String, save: Function })
 const ed = useEd()
-const open = ref(false)
+const open = defineModel('open', { type: Boolean, default: false })
 const ACTIONS = ['element', 'game', 'level', 'rule', 'mechanic', 'field']
 const items = computed(() => (open.value ? [
   { key: '', title: 'нікуди — просто рядок', icon: '·', taken: !props.item.window && !props.item.task },

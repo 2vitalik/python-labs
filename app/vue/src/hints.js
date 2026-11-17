@@ -71,6 +71,8 @@ export function hints({ game, parts, rules, claims, info, base, simple, shots = 
   if (bare) out.push({ to: `p-${bare.id}`, text: `Скриншот для вікна «${bare.title}» — рамка з плюсом на його картці.` })
   const star = claims.find((c) => info(c.task)?.tags?.includes('algo') && !c.link)
   if (star) out.push({ to: `c-${star.id}`, text: `⭐ «${info(star.task).title}» — додай посилання на код: алгоритмічні картки перевіряються по ньому.` })
+  const mute = parts.find((p) => p.kind === 'menu' && p.window && p.items.some((it) => !it.title))  // leads somewhere, says not how (T318)
+  if (mute) out.push({ to: `p-${mute.window}`, text: `У вікні «${wins.find((w) => w.id === mute.window)?.title || '…'}» є перехід без назви — допиши, як він відбувається: пункт меню, кнопка, клавіша.` })
   if (shots && !game.description) out.push({ to: 'about', text: 'Кілька речень опису вгорі: що за гра і чим відрізняється від основи.' })
   return out.slice(0, 5)
 }

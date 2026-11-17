@@ -45,7 +45,7 @@ const show = () => { close(); jump(`p-${props.id}`) }
     <div v-if="items.length || jumps.length">
       <PartLabel pic="goto" zone="interface">Переходи й дії</PartLabel>
       <div v-for="(it, i) in items" :key="i" class="pk-row">
-        <span>{{ it.title }}</span>
+        <span :class="{ 'text-secondary fst-italic': !it.title }">{{ it.title || 'як?' }}</span>
         <span v-if="title(it.window)">→ <Icon :name="sign(it.window)" class="gg-w" :class="tone(it.window)" /> <span v-peek="{ kind: 'window', id: it.window }">{{ title(it.window) }}</span></span>
         <span v-else-if="it.task">→ <CardSign :task="ed.info(it.task)" /> <span v-peek="{ kind: 'task', id: it.task }">{{ card(it.task) }}</span></span>
         <span v-if="it.note" class="text-secondary">· {{ it.note }}</span>

@@ -66,12 +66,13 @@ async def clean_menu(data: PartIn, game: Game) -> dict:
     items = []
     for it in data.items:
         item = {k: str(it.get(k) or "").strip() for k in ("title", "window", "task", "note")}
-        if not item["title"]:
+        if not (item["title"] or item["window"] or item["task"]):  # where it leads is enough: how — may come later (T318)
             continue
+        name = item["title"] or "без назви"
         if item["window"] and not await part_of(game, item["window"], kind="window"):
-            raise HTTPException(422, f"Пункт «{item['title']}»: цільове вікно не знайдено.")
+            raise HTTPException(422, f"Пункт «{name}»: цільове вікно не знайдено.")
         if item["task"] and not await Task.find_one(Task.slug == item["task"]):
-            raise HTTPException(422, f"Пункт «{item['title']}»: немає такої картки.")
+            raise HTTPException(422, f"Пункт «{name}»: немає такої картки.")
         items.append(item)
     return {"window": data.window, "items": items}
 

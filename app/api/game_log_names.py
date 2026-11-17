@@ -55,7 +55,7 @@ class Names:
 
     def item(self, it: dict) -> str:
         to = f" → 🪟 {self.part(it['window'])}" if it.get("window") else f" → ⚙ {self.card(it['task'])}" if it.get("task") else ""
-        return it.get("title", "") + to + (f" ({it['note']})" if it.get("note") else "")
+        return (it.get("title") or "без назви") + to + (f" ({it['note']})" if it.get("note") else "")
 
     def text(self, key: str, v, snap: dict) -> str | None:
         """A field's value in words; None — empty. `snap` — the object: a claim's card names its params, a rule's КОЛИ its sides."""
