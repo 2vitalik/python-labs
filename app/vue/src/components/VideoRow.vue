@@ -5,8 +5,11 @@ import Icon from '@core/components/Icon.vue'
 import InlineText from '@core/components/InlineText.vue'
 import Pop from '@core/components/Pop.vue'
 import { fmtWhen } from '@core/labs.js'
+import { vPeek } from '@core/peek.js'
 import { judgeVideo, putVideo } from '../api.js'
+import { placesOf } from '../claimPlace.js'
 import { useEd } from '../ed.js'
+import { jump } from '../jump.js'
 import { shortLink } from '../shortLink.js'
 import { anchorOf, tagOf, titleOf } from '../videos.js'
 import CoinBadge from './CoinBadge.vue'
@@ -16,12 +19,14 @@ import VideoWord from './VideoWord.vue'
 // came, how many there were · a note · the teacher's word. The owner pastes the link right in its cell: another link is a
 // new version, the earlier ones stay under «версій: N». The teacher marks «треба» / «не треба» in one click and opens the
 // rest — why, accepted, returned — by a click on the row. Its columns are the table's (`--cols`, VideoSlots).
-// The note is the last version's — or the row's own while there is no link yet (T344)
+// The note is the last version's — or the row's own while there is no link yet (T344). A gold card's row is made by the
+// card's claim: its name leads to where that claim is in the game
 const props = defineProps({ v: Object })
 const ed = useEd()
 const last = computed(() => props.v.versions.at(-1))
 const note = computed(() => (last.value ? last.value.note : props.v.note) || '')
 const card = computed(() => (props.v.kind === 'gold' ? ed.info(props.v.task) : null))
+const place = computed(() => (card.value ? placesOf(props.v.task, ed)[0] : null))
 const tag = computed(() => tagOf(props.v))
 const can = computed(() => ed.editable && !ed.sandbox)
 const olds = ref(false)
@@ -44,7 +49,9 @@ async function renew() {
         <div class="tr" :class="[v.status, { skip: v.need === 'skip', judge: ed.judge }]" :role="ed.judge ? 'button' : null"
              :title="ed.judge ? 'Клік — слово викладача: чи потрібне, зараховано, повернуто' : null" @click="ed.judge && toggle()">
           <span class="what">
-            <span><CoinBadge v-if="card" :coin="card.coin" :amount="card.amount" /> {{ titleOf(v, ed.info) }}</span>
+            <span><CoinBadge v-if="card" :coin="card.coin" :amount="card.amount" />{{ ' ' }}<a
+              v-if="place" v-peek="{ kind: 'task', id: v.task }" :href="`#${place.id}`" class="where" :title="`Клік — де ця картка в грі: ${place.text}`"
+              @click.stop.prevent="jump(place.id)">{{ titleOf(v, ed.info) }}</a><template v-else>{{ titleOf(v, ed.info) }}</template></span>
             <span v-if="tag" class="tag" :class="tag.tone" :title="tag.tip">{{ tag.text }}</span>
           </span>
           <span class="link-cell">
@@ -122,6 +129,9 @@ async function renew() {
 /* a way in that is not seen is not found (T344): pale at rest, clear under the mouse */
 .nadd { color: var(--act-add); font-style: normal; opacity: .4; }
 .tr:hover .nadd, .inl:focus-visible .nadd { opacity: .85; }
+/* a gold card's name is a way to its place in the game: dotted, as every «show me where» */
+.where { color: inherit; text-decoration: underline dotted color-mix(in srgb, currentColor 45%, transparent); text-underline-offset: .2em; }
+.where:hover { color: var(--bs-link-color); text-decoration-style: solid; }
 .state { display: inline-flex; align-self: center; align-items: center; justify-content: flex-end; gap: .4rem; }
 .line { grid-column: 1 / -1; font-size: .75rem; color: var(--bs-secondary-color); }
 .line.bad { color: var(--bs-danger-text-emphasis); }
