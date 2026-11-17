@@ -2,6 +2,7 @@ from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Request
 from pydantic import BaseModel
 
 import auto_claims
+import features
 from bot import game_alerts
 from core.deps import active_user
 from core.models.history import Change, record, record_new
@@ -21,6 +22,10 @@ class GameIn(BaseModel):
     description: str = ""
     phases: list[str] = []
     moments: str | None = None  # None — left as it is: the forms of the title and the phases do not send it
+
+
+class ExtrasIn(BaseModel):
+    extras: list[str]
 
 
 MOMENTS_MAX = 20_000
@@ -136,4 +141,14 @@ async def update_game(data: GameIn, tasks: BackgroundTasks, game: Game = Depends
         tasks.add_task(game_alerts.game, user, game, changes)
         if "moments" in changes:  # a scenario of three frames claims its card by itself (T276)
             await auto_claims.sync(game, user.email)
+    return game.api()
+
+
+@router.put("/extras")
+async def set_extras(data: ExtrasIn, game: Game = Depends(my_game), user: User = Depends(author)):
+    """The features turned on (T319). A closed one a student cannot add, only keep what the game had before it closed."""
+    if bad := [x for x in data.extras if x not in features.EXTRAS]:
+        raise HTTPException(422, f"Невідома можливість «{bad[0]}».")
+    shut = set() if user.status == Status.admin else set(await features.closed()) - set(game.extras)
+    await record(game, {"extras": [x for x in features.EXTRAS if x in data.extras and x not in shut]}, actor=user.email)
     return game.api()

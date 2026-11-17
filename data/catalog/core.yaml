@@ -1,0 +1,37 @@
+# Основа каталогу (T319, T320): картки, які студент заявляє одразу. Решта активних карток — «за запитом»: їх видно,
+# ними можна описати гру, але монетка зарахується, коли викладач відкриє картку (перенесе її сюди).
+# Категорія → підкатегорія → картки в порядку каталогу; сімʼя в основі, коли в основі хоч одна її картка.
+# import ставить `core` за цим файлом (картки, якої тут нема, — «за запитом»); без файла `core` не чіпає.
+field:
+  grid: [grid-square]
+  view: [view-top-down, view-side]
+  time: [time-turn, time-realtime]
+  control: [control-direct, control-click-cell]
+entities:
+  roles: [role-object, role-piece, role-player, role-static, role-pickup, role-terrain, role-enemy, role-hazard, role-mark, role-gate]
+  params: [stat-hp, stat-lives, stat-speed, stat-value, stat-count]
+  move: [chase-greedy, move-4dir, random-walk]
+  legality: [impassable-cells]
+  interact: [item-pickup]
+  death: [touch-death, respawn]
+game-logic:
+  win: [collect-all, reach-exit]
+  lose: [player-death]
+  score: [event-points, score-records]
+  history: [restart-level]
+  difficulty: [game-pause]
+levels:
+  format: [level-from-txt]
+  progression: [sequential-levels, extra-level]
+interface:
+  render: [console-render, gui-render]
+  hud: [status-panel, goal-counter]
+  menus: [main-menu, pause-menu, level-select, end-screen, game-screen, help-window, custom-window]
+  results: [profile-stats]
+code:
+  labs: [lab1-field-output, lab2-grid-matrix, lab3-classes, lab4-package, lab5-score-server, lab1-read-key, lab2-cell-dict, lab3-base-class, lab4-type-hints, lab5-database, lab1-move-player, lab2-direction-tuples, lab3-init-str, lab4-closures, lab5-jinja-page, lab1-cell-check, lab2-save-text, lab3-underscores, lab4-decorator, lab5-level-api, lab1-game-loop, lab2-string-methods, lab3-eq-hash, lab4-with-files, lab5-routers-tests, lab1-own-functions, lab2-slices-comprehensions, lab3-container-methods, lab4-parametrize, lab5-deploy, lab1-data-types, lab2-unpacking, lab3-property, lab4-sequence-slices, lab5-player-profile, lab1-conditions, lab2-sets, lab3-mixins, lab1-loops, lab2-dict-tricks, lab3-classmethods, lab1-function-params, lab2-binary-save, lab1-scope]
+  architecture: [logic-render-split]
+  python: [typing-mypy, generators-iterators, custom-exceptions]
+  tests: [unit-tests, fixture-level-tests, first-test]
+  git: [commit-history, project-readme, gitignore-clean]
+  packaging: [single-command-run]

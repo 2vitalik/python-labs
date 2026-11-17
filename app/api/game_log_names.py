@@ -1,6 +1,7 @@
 """Values of a game's history in words (T278 §12): names instead of ids and slugs, a rule as its sentence, lists in a line."""
 from types import SimpleNamespace
 
+from features import EXTRAS
 from models.vocab import FIELD, LEVEL, sentence
 
 PARTS = {"field": "поле", "level": "рівень", "entity": "сутність", "window": "вікно", "menu": "переходи"}
@@ -73,6 +74,6 @@ class Names:
             "stats": lambda: ", ".join(f"{s.get('label') or s.get('key')} {s.get('value', '')} {s.get('unit', '')}".strip() for s in v),
             "params": lambda: ", ".join(f"{slots.get(k, k)}: {plain(x)}" for k, x in v.items()),
             "versions": lambda: v[-1]["link"] + (f" (версія {len(v)})" if len(v) > 1 else "") + (f" — {v[-1]['note']}" if v[-1].get("note") else ""),
-            "need": lambda: NEED.get(v, v),
+            "need": lambda: NEED.get(v, v), "extras": lambda: ", ".join(EXTRAS.get(x, x) for x in v),
         }
         return words[key]() if key in words else plain(v)

@@ -84,7 +84,8 @@ with TestClient(main.app) as c:
     h = mongo[DB].history.find_one({"coll": "games", "changes.examples.old": grid})
     check("game: an edit of examples alone is in history", r.status_code == 200 and h and list(h["changes"]) == ["examples"], h)
     y = c.get("/api/catalog/snapshot", headers=CLAUDE)
-    check("snapshot: all four files, the cards in them", y.status_code == 200 and set(y.json()) == {"games.yaml", "tasks.yaml", "aliases.yaml", "proof.yaml"}
+    check("snapshot: all five files, the cards in them", y.status_code == 200
+          and set(y.json()) == {"games.yaml", "tasks.yaml", "aliases.yaml", "proof.yaml", "core.yaml"}
           and "agent-card: 🥈 Картка агента" in y.json()["tasks.yaml"] and "slug: agent-game" in y.json()["games.yaml"], y.text[:300])
     games = y.json()["games.yaml"]
     check("snapshot: texts line by line, read back the same", "  examples: |-\n    Хід гравця\n\n    ```field\n    ⬛ ▫️ ⬛\n    ⬛[😎]⬛\n" in games

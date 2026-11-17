@@ -23,7 +23,7 @@ async def catalog(admin: bool) -> dict[str, dict[str, Task]]:
 
 
 def card(t: Task) -> dict:
-    return {"label": t.title, "icon": t.icon, "desc": t.description, "slug": t.slug, "coin": t.coin}
+    return {"label": t.title, "icon": t.icon, "desc": t.description, "slug": t.slug, "coin": t.coin, "core": t.core}
 
 
 def unit(t: Task) -> str:
@@ -40,7 +40,6 @@ async def described(cat: dict) -> dict:
     return {
         "roles": {t.opt: card(t) | {"group": families[t.parent].title if t.parent in families else "", "amount": t.amount}
                   for t in sorted(roles, key=rank)},
-        "stats": [{"key": t.opt, "label": t.title, "icon": t.icon, "unit": unit(t), "desc": t.description, "slug": t.slug, "coin": t.coin}
-                  for t in cat["stat"].values()],
+        "stats": [{"key": t.opt} | card(t) | {"unit": unit(t)} for t in cat["stat"].values()],
         "field": field,
     }

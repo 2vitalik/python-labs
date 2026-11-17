@@ -2,14 +2,17 @@
 snapshot and the bulk-edit channel (upsert by slug, logged in `history` as `import`). games.yaml — flat dicts; tasks.yaml — a tree
 zone → subzone → one-line tasks (taskline.py), file position = order, family children nested, a card with price steps — a dict
 with `tiers: [[upto, factor], …]` (T291 §13); aliases.yaml — slug → names,
-a list (Ukrainian) or {uk, ru, en}; proof.yaml — slug → shot | gif | video | code (T284 §7), only the cards that ask for one.
-Usage: uv run python catalog_io.py export | import [--prune] (--prune: what the YAML lacks goes to the archive)"""
+a list (Ukrainian) or {uk, ru, en}; proof.yaml — slug → shot | gif | video | code (T284 §7), only the cards that ask for one;
+core.yaml — the catalog's core (T319, catalog_core.py).
+Usage: uv run python catalog_io.py export | import [--prune] | core (--prune: what the YAML lacks goes to the archive;
+core — only core.yaml onto the cards, for the server)"""
 import asyncio
 import sys
 from pathlib import Path
 
 import yaml
 
+import catalog_core
 from core.models.history import record, record_new
 from db import init_db
 from models.base_game import BaseGame
@@ -47,9 +50,9 @@ def reads_back(t) -> bool:
     return all(d[k] == getattr(t, k) for k in same) and sorted(d["tags"]) == sorted(t.tags)
 
 
-def task_node(t) -> dict | str:  # dict fallback for multi-line descriptions, slot specs, icons, opts, rule blanks, price steps; aliases and proofs live apart
+def task_node(t) -> dict | str:  # dict fallback for multi-line descriptions, slot specs, icons, opts, rule blanks, price steps; aliases, proofs, the core live apart
     if "\n" in t.description or t.slots or t.icon or t.opt or t.tiers or not plain(t.rule) or not reads_back(t):
-        node = dump(t, exclude=("id", "created_at", "slug", "zone", "subzone", "order", "parent", "aliases", "proof"))
+        node = dump(t, exclude=("id", "created_at", "slug", "zone", "subzone", "order", "parent", "aliases", "proof", "core"))
         return node | ({"tiers": Flow(node["tiers"])} if "tiers" in node else {})
     return render_line(t)
 
@@ -77,7 +80,8 @@ async def render() -> dict[str, str]:
     return {"games.yaml": yaml.dump([dump(g) for g in games], Dumper=Dumper, allow_unicode=True, sort_keys=False, width=120),
             "tasks.yaml": yaml.dump(tree, Dumper=Dumper, allow_unicode=True, sort_keys=False, width=200),
             "aliases.yaml": yaml.dump(aliases, Dumper=Dumper, allow_unicode=True, sort_keys=False, width=200, default_flow_style=None),
-            "proof.yaml": PROOF_HEAD + (yaml.dump(proofs, allow_unicode=True, sort_keys=False) if proofs else "")}
+            "proof.yaml": PROOF_HEAD + (yaml.dump(proofs, allow_unicode=True, sort_keys=False) if proofs else ""),
+            "core.yaml": catalog_core.render(tasks)}
 
 
 def alias_node(a: dict) -> list | dict:
@@ -100,7 +104,7 @@ def side(name: str) -> dict | None:
 
 def task_rows() -> list[dict]:
     tree = yaml.safe_load((CATALOG / "tasks.yaml").read_text()) or {}
-    aliases, proofs = side("aliases.yaml") or {}, side("proof.yaml")
+    aliases, proofs, core = side("aliases.yaml") or {}, side("proof.yaml"), catalog_core.slugs(CATALOG / "core.yaml")
     if bad := {s: v for s, v in (proofs or {}).items() if v and v not in PROOFS}:
         sys.exit(f"proof.yaml: невідомий доказ {bad} — можна {', '.join(PROOFS)}")
     rows = []
@@ -113,6 +117,7 @@ def task_rows() -> list[dict]:
                 for j, ch in enumerate(item.get("children") or [], 1):
                     cslug = next(iter(ch))
                     rows.append(to_row(cslug, ch[cslug], zone, sub, j * 10) | {"parent": slug})
+    catalog_core.unknown(core or set(), {r["slug"] for r in rows})
     for row in rows:
         try:
             row["tiers"] = clean_tiers(row.get("tiers"))
@@ -123,6 +128,8 @@ def task_rows() -> list[dict]:
         row["aliases"] = langs(aliases.get(row["slug"]))
         if proofs is not None:  # no file — the proofs stay as they are in Mongo
             row["proof"] = proofs.get(row["slug"]) or ""
+        if core is not None:  # …and so does the core
+            row["core"] = row["slug"] in core
     return rows
 
 
@@ -166,7 +173,7 @@ async def prune(slugs: set[str]) -> None:
 
 async def main():
     await init_db()
-    await {"export": export, "import": import_}[sys.argv[1]]()
+    await {"export": export, "import": import_, "core": lambda: catalog_core.apply(CATALOG / "core.yaml")}[sys.argv[1]]()
 
 
 if __name__ == "__main__":

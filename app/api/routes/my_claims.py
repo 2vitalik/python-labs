@@ -6,14 +6,14 @@ import field_claims
 import moments
 import uploads
 from bot import game_alerts
-from claims_clean import clean_params
+from claims_clean import clean_params, clean_why
 from core.models.history import record, record_delete, record_new
 from core.models.user import Status, User
 from models.game import Claim, Game
 from models.rule import Rule
 from models.task import Task
 from pricing import cap, repeatable
-from routes.my_game import author, my_game
+from routes.my_game import author, in_sandbox, my_game
 from routes.my_parts import part_of
 from zones import kind_of, misplaced
 
@@ -28,6 +28,7 @@ class ClaimIn(BaseModel):
     rule: str | None = None  # a rule's id — for cards of kind rule; the same None / "" as part
     params: dict | None = None  # None on PUT = leave as is
     note: str = ""
+    why: str | None = None  # a card outside the core: what in the game does it (T319); None on PUT = leave as is
     link: str = ""
 
 
@@ -69,6 +70,11 @@ async def check_unique(game: Game, slug: str, part: str, rule: str, task: Task |
         raise HTTPException(409, f"Цю картку вже заявлено {times(len(mine))} — більше не зараховується.")
 
 
+def free(user: User) -> bool:
+    """Who claims a card outside the core with no line why: the teacher (in a student's game too) and a sandbox."""
+    return user.status == Status.admin or in_sandbox(user)
+
+
 def times(n: int) -> str:
     few = n % 10 in (2, 3, 4) and n % 100 not in (12, 13, 14)
     return f"{n} " + ("раз" if n % 10 == 1 and n % 100 != 11 else "рази" if few else "разів")
@@ -93,7 +99,7 @@ async def create_claim(data: ClaimIn, tasks: BackgroundTasks, game: Game = Depen
     await check_place(game, task, part, rule)
     await check_unique(game, data.task, part, rule, task)
     claim = Claim(game=game.id, task=data.task, part=part, rule=rule, note=data.note.strip(), link=data.link.strip(),
-                  params=clean_params(task, data.params or {}, loose=loose))
+                  params=clean_params(task, data.params or {}, loose=loose), why=clean_why(task, data.why or "", free(user)))
     await claim.insert()
     await record_new(claim, actor=user.email)
     tasks.add_task(game_alerts.claim, user, claim, 0)
@@ -104,12 +110,14 @@ async def create_claim(data: ClaimIn, tasks: BackgroundTasks, game: Game = Depen
 async def update_claim(id: PydanticObjectId, data: ClaimIn, tasks: BackgroundTasks, game: Game = Depends(my_game),
                        user: User = Depends(author)):
     claim = await get_claim(id, game)
+    task = await Task.find_one(Task.slug == claim.task)
     patch = {"note": data.note.strip(), "link": data.link.strip()}
-    if claim.auto:  # its anchor and value are the part's: only the note and the link are the student's
+    if data.why is not None:
+        patch["why"] = clean_why(task, data.why, claim.auto or free(user))
+    if claim.auto:  # its anchor and value are the part's: only the note, the link and the line why are the student's
         if data.part not in (None, claim.part) or data.rule not in (None, claim.rule) or data.params not in (None, claim.params):
             raise HTTPException(422, HELD)
     else:
-        task = await Task.find_one(Task.slug == claim.task)
         part = data.part if data.part is not None else "" if data.rule else claim.part  # anchoring on one lets go of the other
         rule = data.rule if data.rule is not None else "" if data.part else claim.rule
         if (part, rule) != (claim.part, claim.rule):

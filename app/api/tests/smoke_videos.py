@@ -69,7 +69,7 @@ with TestClient(main.app) as c:
     check("an unknown row → 404", c.put(f"{V}/demo9", json={"link": "https://youtu.be/x"}).status_code == 404)
     slot = f"gold:{gold['slug']}"
     check("a gold card's row: none while the card is not claimed", slot not in rows(c) and c.put(f"{V}/{slot}", json={"link": "https://youtu.be/x"}).status_code == 404)
-    c.post("/api/my/claims", json={"task": gold["slug"]})
+    c.post("/api/my/claims", json={"task": gold["slug"], "why": "Ця картка є в моїй грі — покажу її на відео"})  # outside the core (T319)
     c.post("/api/my/claims", json={"task": "player-death"})
     r = rows(c)
     check("a gold card claimed: its row after the fixed ones, a cheaper card has none", list(r) == ["demo3", "demo4", "defense1", "defense2", slot]

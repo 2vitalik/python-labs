@@ -14,6 +14,7 @@ assert DB.endswith("_smoke"), "refuse to run on a non-smoke DB"
 mongo = MongoClient()
 mongo.drop_database(DB)
 subprocess.run(["uv", "run", "python", "catalog_io.py", "import"], check=True, capture_output=True)
+mongo[DB].tasks.update_many({"slug": {"$in": ["moment-frames", "level-map-drawn"]}}, {"$set": {"core": True}})  # their price, not a request (T319)
 
 from fastapi.testclient import TestClient  # noqa: E402
 

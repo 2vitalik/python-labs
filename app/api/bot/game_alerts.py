@@ -17,7 +17,7 @@ from zones import ZONES
 
 PART = {"field": "поле", "window": "вікно", "menu": "переходи", "entity": "сутність", "level": "рівень"}
 CARD = {"title": "🏷 Назва", "base_game": "🕹 Основа", "base_custom": "🕹 Основа (своя)", "description": "📄 Опис", "phases": "🔁 Фази"}
-CLAIM = {"note": "📝 Нотатка", "link": "🔗 Лінк", "params": "⚙️ Параметри", "part": "🧩 Обʼєкт"}
+CLAIM = {"note": "📝 Нотатка", "why": "🙋 Запит", "link": "🔗 Лінк", "params": "⚙️ Параметри", "part": "🧩 Обʼєкт"}
 STATUS = {"claimed": "заявлено", "accepted": "✅ зараховано", "returned": "↩️ повернуто"}
 IDEA = {"idea": ("💡", "Ідея"), "fix": ("🛠", "Про картку"), "site": ("🐞", "Про сайт")}  # Ref.kind → icon, subject
 NEED = {"must": "обовʼязкове", "skip": "не потрібне", "": "як у всіх"}
@@ -42,6 +42,8 @@ async def claim(user: User, c: Claim, lvl: int, changes: dict | None = None) -> 
         rows.append(f"🧩 {PART[part.kind]} «{html.quote(part.title)}»")
     if c.rule and (r := await Rule.get(PydanticObjectId(c.rule))):
         rows.append(f"📜 {await said(r)}")
+    if lvl == 0 and c.why:  # a card outside the core: the student's line is the news (T319)
+        rows.append(f"🙋 {html.quote(c.why)}")
     for key, label in CLAIM.items():
         if key in (changes or {}):
             old, new = changes[key]["old"], changes[key]["new"]

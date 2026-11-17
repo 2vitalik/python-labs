@@ -4,19 +4,23 @@
   bin/catalog [-t dev] ls tasks|games [text]
   bin/catalog [-t dev] pull                          every card of both kinds
   bin/catalog [-t dev] push [tasks/<slug> …]         the named cards; none = every changed one
-  bin/catalog [-t dev] snap [--to <dir>]             every YAML of the site's snapshot (games, tasks, aliases, proof) → data/catalog/, for git
+  bin/catalog [-t dev] snap [--to <dir>]             every YAML of the site's snapshot (games, tasks, aliases, proof, core) → data/catalog/, for git
   bin/catalog [-t dev] log tasks|games [slug]        the edits, newest first, each with its id
   bin/catalog [-t dev] undo tasks|games <id>         the fields of that edit back to what they were
+  bin/catalog [-t dev] asks [text] [--json]          the requests (T319): cards outside the core in students' games, the most asked first
+  bin/catalog [-t dev] open <slug> …                 the cards into the core: open for everyone, their requests count
+  bin/catalog [-t dev] reply <id> -m "…" [--return] [--to <slug>]   the teacher's line on a request; return it; move it to that card
 
 A card is .site/<target>/<kind>/<slug>.md: a line `field: JSON value` per field, a blank line, the description;
 a game with examples goes on with the line `=== examples ===` between blank lines and the examples.
-A new file becomes a new card only when named. No -t = prod, and a push there ends with a snap."""
+A new file becomes a new card only when named. No -t = prod, and a push, an undo or an open there ends with a snap."""
 import argparse
 import json
 import re
 import sys
 from pathlib import Path
 
+import asks
 from siteapi import HOME, ROOT, SNAP, call, file, keep, pull, snap, taken
 
 KINDS = ("tasks", "games")
@@ -78,10 +82,14 @@ def log(to: str, kind: str, slug: str):
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("-t", "--target", default=SNAP)
-    parser.add_argument("cmd", choices=["ls", "pull", "push", "snap", "log", "undo"])
+    parser.add_argument("cmd", choices=["ls", "pull", "push", "snap", "log", "undo", "asks", "open", "reply"])
     parser.add_argument("names", nargs="*")
-    parser.add_argument("--to", type=Path, default=ROOT / "data" / "catalog")
+    parser.add_argument("--to", help="snap: the folder, data/catalog/ by default · reply: the card to move the request to")
+    parser.add_argument("-m", dest="line", help="reply: the teacher's line")
+    parser.add_argument("--return", dest="back", action="store_true", help="reply: return the request")
+    parser.add_argument("--json", action="store_true", help="asks: as the API gives them")
     a = parser.parse_args()
+    folder = Path(a.to) if a.to and a.cmd != "reply" else ROOT / "data" / "catalog"
     if a.cmd == "ls":
         kind, find = kind_of(a.names), " ".join(a.names[1:]).lower()
         for c in call(a.target, "GET", f"/{kind}"):
@@ -94,19 +102,28 @@ def main():
                 pull(a.target, kind, card, text)
             print(f"{kind}: {len(cards)} → {(HOME / a.target / kind).relative_to(ROOT)}")
     elif a.cmd == "snap":
-        snap(a.to, call(a.target, "GET", "/catalog/snapshot"))
+        snap(folder, call(a.target, "GET", "/catalog/snapshot"))
     elif a.cmd == "log":
         log(a.target, kind_of(a.names), "".join(a.names[1:2]))
     elif a.cmd == "undo":
         card = call(a.target, "POST", f"/catalog/history/{kind_of(a.names)}/{''.join(a.names[1:2]) or 'x'}/revert")
         print(f"{a.names[0]}/{card['slug']}: відкочено → {pull(a.target, a.names[0], card, text).relative_to(ROOT)}")
         if a.target == SNAP:
-            snap(a.to, call(a.target, "GET", "/catalog/snapshot"))
+            snap(folder, call(a.target, "GET", "/catalog/snapshot"))
+    elif a.cmd == "asks":
+        asks.show(a.target, " ".join(a.names).lower(), a.json)
+    elif a.cmd == "open":
+        if not a.names:
+            sys.exit("open <slug> …")
+        if asks.open_cards(a.target, a.names, text) and a.target == SNAP:
+            snap(folder, call(a.target, "GET", "/catalog/snapshot"))
+    elif a.cmd == "reply":
+        asks.reply(a.target, a.names, a.line, a.back, a.to)
     else:
         names = a.names or changed(a.target)
         push(a.target, names)
         if names and a.target == SNAP:
-            snap(a.to, call(a.target, "GET", "/catalog/snapshot"))
+            snap(folder, call(a.target, "GET", "/catalog/snapshot"))
         if not names:
             print("нема змінених карток")
 

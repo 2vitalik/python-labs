@@ -16,6 +16,7 @@ class Game(Document):
     description: str = ""  # markdown
     phases: list[str] = []  # the order of one tick / turn: ввід → гравець → вороги → … (T257)
     moments: str = ""  # «Розкадровка»: scenarios of frames, markdown like a base game's examples (T276, moments.py)
+    extras: list[str] = []  # the page's features turned on beyond the core (features.EXTRAS, T319)
     poured: float = 0  # an etalon (owner `<slug>@etalon`): the mtime of the template it was poured from — routes/etalon.py
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
@@ -26,7 +27,8 @@ class Game(Document):
         return {
             "id": str(self.id), "owner": self.owner, "title": self.title,
             "base_game": self.base_game, "base_custom": self.base_custom,
-            "description": self.description, "phases": self.phases, "moments": self.moments, "created_at": self.created_at.isoformat(),
+            "description": self.description, "phases": self.phases, "moments": self.moments, "extras": self.extras,
+            "created_at": self.created_at.isoformat(),
         }
 
 
@@ -69,6 +71,7 @@ class Claim(Document):
     auto: bool = False  # made by the description itself (a window's type, a role, a stat, a field option): auto_claims.py
     params: dict = {}  # values for the card's slots {key: value}
     note: str = ""
+    why: str = ""  # the student's line to a card outside the core: what in the game does it (T319, claims_clean.clean_why)
     link: str = ""  # GitHub link (commit-pin normalization — later phase)
     shots: list[str] = []  # the proof (T284 §7): up to three pictures, file names under uploads/<game-id>/
     status: str = "claimed"  # CLAIM_STATUSES; the teacher sets accepted / returned
@@ -81,7 +84,7 @@ class Claim(Document):
     def api(self) -> dict:
         return {
             "id": str(self.id), "game": str(self.game), "task": self.task, "part": self.part, "rule": self.rule,
-            "auto": self.auto, "params": self.params, "note": self.note, "link": self.link, "shots": self.shots,
+            "auto": self.auto, "params": self.params, "note": self.note, "why": self.why, "link": self.link, "shots": self.shots,
             "status": self.status, "verdict": self.verdict,
             "created_at": self.created_at.isoformat(),
         }

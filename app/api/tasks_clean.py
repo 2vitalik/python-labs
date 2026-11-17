@@ -32,6 +32,7 @@ class TaskIn(BaseModel):
     aliases: list[str] | dict = []  # a plain list is Ukrainian
     proof: str | None = None
     status: str = "draft"
+    core: bool | None = None  # in the core (T319); None — as it is: the card forms before it do not send it
     order: int = 0
 
 

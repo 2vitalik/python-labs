@@ -12,20 +12,22 @@ def task_index(tasks: list[Task]) -> dict:
     return {t.slug: {"title": t.title, "coin": t.coin, "amount": t.amount, "slots": t.slots, "tags": t.tags,
                      "zone": t.zone, "subzone": t.subzone, "status": t.status, "kind": kind_of(t), "icon": t.icon,
                      "opt": t.opt, "description": t.description, "max_count": t.max_count, "tiers": t.tiers,
-                     "parent": t.parent, "rule": t.rule, "proof": t.proof} for t in tasks}
+                     "parent": t.parent, "rule": t.rule, "proof": t.proof, "core": t.core} for t in tasks}
 
 
 def coins_of(claims: list[Claim], tasks: list[Task]) -> dict:
     """What the claims are worth by kind of coin, claimed and accepted apart (T240; informational until grading).
     A card counts at most max_count times a game (0 — no cap): five enemies are one coin for the role «ворог» (T270);
-    its repeats get cheaper by its price steps, the accepted ones taking the dearest places (pricing.py, T291 §13)."""
-    out: dict[str, dict] = {"claimed": {}, "accepted": {}}
+    its repeats get cheaper by its price steps, the accepted ones taking the dearest places (pricing.py, T291 §13).
+    A card outside the core (T319) counts as claimed only what the teacher accepted; the rest is `asked` — waits for the card."""
+    out: dict[str, dict] = {"claimed": {}, "accepted": {}, "asked": {}}
     for t in tasks:
         if not t.coin:
             continue
         mine = [c for c in claims if c.task == t.slug]
-        for key, n in (("claimed", len(mine)), ("accepted", sum(c.status == "accepted" for c in mine))):
-            if w := worth(t, n):
+        every, ok = worth(t, len(mine)), worth(t, sum(c.status == "accepted" for c in mine))
+        for key, w in (("claimed", every if t.core else ok), ("accepted", ok), ("asked", 0 if t.core else every - ok)):
+            if w:
                 out[key][t.coin] = round(out[key].get(t.coin, 0) + w * t.amount, 2)
     return out
 

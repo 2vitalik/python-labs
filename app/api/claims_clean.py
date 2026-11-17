@@ -1,7 +1,18 @@
-"""What a claim may carry: slot values by the card's specs. Where it may live — zones.misplaced()."""
+"""What a claim may carry: slot values by the card's specs, the line to a card outside the core. Where it may live — zones.misplaced()."""
 from fastapi import HTTPException
 
 from models.task import Task
+
+WHY_MIN, WHY_MAX = 20, 600
+WHY = "Картка за запитом: напиши хоч одне речення, що саме у твоїй грі це робить (від 20 знаків)."
+
+
+def clean_why(task: Task | None, why: str, free: bool) -> str:
+    """A card outside the core asks the student why (T319); `free` — the teacher, a sandbox, a claim the description makes."""
+    why = why.strip()
+    if task and not task.core and not free and len(why) < WHY_MIN:
+        raise HTTPException(422, WHY)
+    return why[:WHY_MAX]
 
 
 def clean_params(task: Task, params: dict, loose: bool = False) -> dict:

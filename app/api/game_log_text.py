@@ -10,8 +10,9 @@ LABELS = {
     "props": "властивості", "stats": "параметри", "states": "стани", "when": "коли", "cond": "якщо", "then": "то",
     "note": "нотатка", "part": "де", "rule": "правило", "params": "параметри", "link": "посилання", "shots": "докази", "status": "стан",
     "verdict": "коментар викладача", "moments": "як це грається", "text": "текст",
-    "versions": "посилання", "need": "чи потрібне", "why": "чому",
+    "versions": "посилання", "need": "чи потрібне", "why": "чому", "extras": "можливості",
 }
+OWN = {("claims", "task"): "картка", ("claims", "why"): "пояснення"}  # a claim's fields named apart from the same keys elsewhere
 HIDDEN = ("game", "owner", "order", "kind", "auto", "poured", "created_at", "slot")  # the plumbing: nobody typed these
 
 
@@ -57,6 +58,6 @@ def fields(names: Names, coll: str, changes: dict, snap: dict) -> list[dict]:
             old, new = ({k: x for k, x in d.items() if k in diff} for d in (old, new))
         old, new = names.text(key, old, snap), names.text(key, new, snap)
         if old != new:
-            label = "картка" if (coll, key) == ("claims", "task") else LABELS.get(key, key)
+            label = OWN.get((coll, key)) or LABELS.get(key, key)
             out.append({"key": key, "label": label, "old": old, "new": new})
     return out

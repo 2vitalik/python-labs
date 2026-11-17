@@ -17,6 +17,7 @@ mongo.drop_database(DB)
 subprocess.run(["uv", "run", "python", "catalog_io.py", "import"], check=True, capture_output=True)
 # the catalog has no drafts any more (T213): two cards are made drafts here to test the lock on them
 mongo[DB].tasks.update_many({"slug": {"$in": ["settings-window", "sound-volume"]}}, {"$set": {"status": "draft"}})
+mongo[DB].tasks.update_many({}, {"$set": {"core": True}})  # every card in the core: the requests are smoke_asks's (T319)
 
 from fastapi.testclient import TestClient  # noqa: E402
 
@@ -48,7 +49,8 @@ with TestClient(main.app) as c:
           "terrain" in v["roles"] and "contact" in v["triggers"] and "free" in v["conditions"] and "disappear" in v["effects"]
           and v["field"][0]["key"] == "topology" and v["stats"][0]["key"] == "hp" and v["args"]["a"] == "хто"
           and [x["key"] for x in v["level"]] == ["mode", "count", "size"] and list(v["kinds"]) == list(zones.KINDS))
-    check("vocab: a guest gets the site's depth", v["depth"] == settings.game_depth == "simple", v["depth"])
+    check("vocab: a guest gets the features, closed ones by default, not free", "depth" not in v
+          and v["features"]["closed"] == ["map", "moments"] and v["features"]["free"] is False, v.get("features"))
     check("vocab: no arrows left in the templates", not any(ch in s["tpl"] for dic in ("triggers", "conditions", "effects")
                                                             for s in v[dic].values() for ch in "→←⇄"))
     check("vocab: no arg is called kind", all(a["name"] != "kind" for dic in ("triggers", "conditions", "effects") for s in v[dic].values() for a in s["args"]))
@@ -338,7 +340,7 @@ with TestClient(main.app) as c:
     check("vocab: the field's options are cards; time and control take several; no «нема»",
           f["topology"]["options"]["hex"]["slug"] == "grid-hex" and f["wrap"]["options"]["on"]["slug"] == "wrap-edges"
           and f["time"]["multi"] and f["control"]["multi"] and set(f["gravity"]["options"]) == {"down", "up", "per-type", "toward-center"})
-    check("vocab: a student's depth — the site's", v["depth"] == settings.game_depth)
+    check("vocab: a student is not free of the closed features", v["features"]["free"] is False)
     mongo[DB].tasks.update_one({"slug": "role-boss"}, {"$set": {"status": "draft"}})
     check("vocab: a draft role is not a student's", "boss" not in c.get("/api/vocab").json()["roles"])
     c.post("/api/my/game", json={"title": "Типи карток", "base_custom": "своя"})
@@ -464,10 +466,10 @@ with TestClient(main.app) as c:
 
     login(c, "tester@nure.ua", "student")
     mongo[DB].users.update_one({"email": "tester@nure.ua"}, {"$set": {"test": True}})
-    check("vocab: a test student — full depth", c.get("/api/vocab").json()["depth"] == "full")
+    check("vocab: a test student — not free either", c.get("/api/vocab").json()["features"]["free"] is False)
     login(c, "admin@nure.ua", "admin")
     v = c.get("/api/vocab").json()
-    check("vocab: the teacher — full depth, draft cards among the options", v["depth"] == "full" and "boss" in v["roles"])
+    check("vocab: the teacher — free of the closed features, draft cards among the options", v["features"]["free"] is True and "boss" in v["roles"])
     mongo[DB].tasks.update_one({"slug": "role-boss"}, {"$set": {"status": "active"}})
     card = {"slug": "push-blank", "title": "Штовхання", "zone": "entities", "subzone": "interact", "kind": "rule", "icon": " 📦 ",
             "rule": {"when": {"kind": "contact"}, "cond": [], "then": [{"kind": "push", "a": "@b"}]},

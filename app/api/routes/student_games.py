@@ -24,7 +24,7 @@ async def game_summary(game: Game | None) -> dict:
     shots = [s for p in parts for s in p.screenshots]
     claims = await Claim.find(Claim.game == game.id).to_list()
     tasks = await Task.find({"slug": {"$in": list({c.task for c in claims})}}).to_list()
-    coins = coins_of(claims, tasks)
+    coins, asked = coins_of(claims, tasks), {t.slug for t in tasks if not t.core}
     return game.api() | {
         "windows": sum(p.kind == "window" for p in parts), "menus": sum(p.kind == "menu" for p in parts),
         "entities": sum(p.kind == "entity" for p in parts), "levels": sum(p.kind == "level" for p in parts),
@@ -33,6 +33,7 @@ async def game_summary(game: Game | None) -> dict:
         "coins": coins["claimed"], "coins_accepted": coins["accepted"],
         "wood_claimed": wood(coins["claimed"]), "wood_accepted": wood(coins["accepted"]),
         "waiting": sum(c.status == "claimed" and not c.auto for c in claims) + await videos.waiting(game),  # the teacher's word is due
+        "asked": sum(c.task in asked and c.status != "accepted" for c in claims),  # on cards outside the core (T319)
         "rules": await Rule.find(Rule.game == game.id).count(),
         "cover": f"/api/uploads/{game.id}/{shots[0]}" if shots else "",
         "videos": (await videos.summary([game])).get(game.id, {}),  # the demos and defenses handed in (T318)
@@ -79,8 +80,13 @@ async def judge_claim(nick: str, id: PydanticObjectId, data: VerdictIn, tasks: B
     claim = game and await Claim.get(id)
     if not claim or claim.game != game.id:
         raise HTTPException(404)
-    if data.status not in CLAIM_STATUSES:
-        raise HTTPException(422, "Статус заявки — заявлено, зараховано або повернуто.")
-    if changes := await record(claim, {"status": data.status, "verdict": data.verdict.strip()}, actor=admin.email):
-        tasks.add_task(game_alerts.verdict, owner, claim, changes)
+    await judge(claim, owner, {"status": data.status, "verdict": data.verdict.strip()}, admin.email, tasks)
     return claim.api()
+
+
+async def judge(claim: Claim, owner: User, patch: dict, actor: str, tasks: BackgroundTasks) -> None:
+    """The teacher's word on a claim (its status, the line, a request moved to another card — routes/asks.py): the student hears it."""
+    if patch.get("status", claim.status) not in CLAIM_STATUSES:
+        raise HTTPException(422, "Статус заявки — заявлено, зараховано або повернуто.")
+    if changes := await record(claim, patch, actor=actor):
+        tasks.add_task(game_alerts.verdict, owner, claim, changes)

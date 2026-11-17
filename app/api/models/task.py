@@ -37,6 +37,7 @@ class Task(Document):
     aliases: dict = {k: [] for k in LANGS}  # other names people search by, per language — data/catalog/aliases.yaml
     proof: str = ""  # PROOFS: a hint to the claim, never a must — data/catalog/proof.yaml
     status: str = "draft"  # draft | active | archived
+    core: bool = False  # in the core: claimed at once; the rest of the active cards are «за запитом» (T319) — data/catalog/core.yaml
     order: int = 0  # manual order within subzone
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
@@ -54,5 +55,5 @@ class Task(Document):
             "zone": self.zone, "subzone": self.subzone, "kind": kind_of(self), "icon": self.icon, "opt": self.opt,
             "tags": self.tags, "games": self.games, "coin": self.coin, "amount": self.amount, "max_count": self.max_count,
             "tiers": self.tiers, "parent": self.parent, "slots": self.slots, "rule": self.rule, "aliases": self.aliases, "proof": self.proof,
-            "status": self.status, "order": self.order,
+            "status": self.status, "core": self.core, "order": self.order,
         }
