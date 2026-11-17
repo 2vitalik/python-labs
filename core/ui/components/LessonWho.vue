@@ -5,6 +5,7 @@ import { getAttendance, getStudents, postLessonAlias } from '../api.js'
 import { fmtDur } from '../lesson.js'
 import { byGroup } from '../studentFilter.js'
 import Avatar from './Avatar.vue'
+import LessonStrips from './LessonStrips.vue'
 import ZoomPull from './ZoomPull.vue'
 
 // «👥 Були»: who was in the Zoom meeting and for how long — avatars by group, minutes under each, pale under the threshold (T222);
@@ -14,6 +15,9 @@ const emit = defineEmits(['changed'])
 const data = ref(null)
 const students = ref([])
 const error = ref('')
+const strips = ref(false)  // the admin's other view: who was there when, a strip per person
+try { strips.value = localStorage.lessonStrips === '1' } catch { /* no storage */ }
+const turn = () => { strips.value = !strips.value; try { localStorage.lessonStrips = strips.value ? '1' : '' } catch { /* no storage */ } }
 const load = async () => (data.value = props.lesson.zoom.uuid ? await getAttendance(props.lesson.slug) : null)
 watch(() => props.lesson.zoom.pulled, load, { immediate: true })
 onMounted(async () => props.admin && (students.value = (await getStudents()).filter((s) => s.status === 'student')))
@@ -42,9 +46,11 @@ async function assign(name, nick) {
     <div v-if="data" class="d-flex flex-wrap align-items-baseline gap-2">
       <span class="fw-semibold">👥 Були · {{ present }} із {{ data.of }}</span>
       <span class="text-secondary small">· у середньому {{ fmtDur(average) }} · зустріч {{ fmtDur(data.seconds) }}<template v-if="when">, {{ when }}</template></span>
+      <a v-if="admin" href="#" class="small ms-auto" :title="strips ? 'Аватарки за групами' : 'Хто коли був: смужка на людину'" @click.prevent="turn">{{ strips ? 'аватарками' : 'смужками' }}</a>
     </div>
     <p v-else-if="admin" class="text-secondary small mb-2">👥 Відвідування ще не забрано із Zoom</p>
-    <div v-for="g in groups" :key="g.name" class="d-flex flex-wrap align-items-start gap-2 mt-2">
+    <LessonStrips v-if="data && admin && strips" :data :lesson />
+    <div v-for="g in (admin && strips ? [] : groups)" :key="g.name" class="d-flex flex-wrap align-items-start gap-2 mt-2">
       <span class="group small text-body-tertiary">{{ g.name || 'без групи' }}</span>
       <RouterLink v-for="p in g.list" :key="p.name" :to="`/students/${p.person.nick}`" class="who text-center text-decoration-none" :class="{ pale: !p.present }" :title="hint(p)">
         <Avatar :user="p.person" :size="36" />

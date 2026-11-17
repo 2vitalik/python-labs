@@ -6,16 +6,18 @@ import { deleteLesson, getLesson, getStudents, postLesson, putLesson } from '../
 import Crumbs from '../components/Crumbs.vue'
 import Icon from '../components/Icon.vue'
 import TagInput from '../components/TagInput.vue'
-import { KINDS } from '../lesson.js'
+import { lessonName } from '../lesson.js'
 import { problem } from '../problem.js'
 import { useTitle } from '../title.js'
 import { user } from '../user.js'
 
-// a new meeting or the meta of one (kind and number are fixed at birth: they are its address); the texts have their own editors
+// a new day or the meta of one (the date is fixed at birth: it is the address); the parts and the texts are edited on the day's page
 const route = useRoute()
 const router = useRouter()
 const slug = computed(() => route.params.slug || '')
-const form = reactive({ kind: 'pz', n: '', date: '', time: '', title: '', groups: [], links: [], video_start: '', meeting: '', context: '', published: false })
+const form = reactive({ date: '', tag: '', time: '', title: '', groups: [], links: [], video_start: '', meeting: '', context: '', published: false })
+const second = ref(false)  // one more class on the same date: its address gets a tag
+const fixed = ref(false)
 const rev = ref(0)
 const label = ref('')
 const groups = ref([])
@@ -29,10 +31,11 @@ onMounted(async () => {
   if (!slug.value) return addLink()
   try {
     const l = await getLesson(slug.value)
-    Object.assign(form, { kind: l.kind, n: l.n, date: l.date, time: l.time, title: l.title, groups: l.groups, links: l.links.map((x) => ({ ...x })),
+    Object.assign(form, { date: l.date, time: l.time, title: l.title, groups: l.groups, links: l.links.map((x) => ({ ...x })),
                           video_start: l.video_start, meeting: l.meeting, context: l.context, published: l.published })
     rev.value = l.rev
-    label.value = l.label
+    label.value = lessonName(l)
+    fixed.value = !l.kind  // an old address (pz1) may still get its date
     if (!form.links.length) addLink()
   } catch (e) {
     problem.value = e.status === 404 ? 'lost' : e.message
@@ -42,9 +45,9 @@ onMounted(async () => {
 async function save() {
   busy.value = true
   error.value = ''
-  const data = { ...form, n: form.n ? Number(form.n) : null, links: form.links.filter((l) => l.url.trim()) }
+  const { tag, ...data } = { ...form, links: form.links.filter((l) => l.url.trim()) }
   try {
-    const l = slug.value ? await putLesson(slug.value, { ...data, rev: rev.value }) : await postLesson(data)
+    const l = slug.value ? await putLesson(slug.value, { ...data, rev: rev.value }) : await postLesson({ ...data, tag: second.value ? tag : '' })
     router.push(`/lessons/${l.slug}`)
   } catch (e) {
     error.value = e.message
@@ -64,19 +67,18 @@ async function remove() {
     <h1 class="h3 mb-3">{{ slug ? `${label}: редагування` : 'Нова пара' }}</h1>
     <form @submit.prevent="save">
       <div class="row g-3">
-        <div class="col-6 col-md-3">
-          <label class="form-label">Вид</label>
-          <select v-model="form.kind" class="form-select" :disabled="!!slug">
-            <option v-for="(name, k) in KINDS" :key="k" :value="k">{{ name }}</option>
-          </select>
-        </div>
-        <div class="col-6 col-md-2">
-          <label class="form-label">Номер</label>
-          <input v-model="form.n" class="form-control" type="number" min="1" :disabled="!!slug" placeholder="наступний">
-        </div>
-        <div class="col-6 col-md-3">
+        <div class="col-6 col-md-4">
           <label class="form-label">Дата</label>
-          <input v-model="form.date" class="form-control" type="date">
+          <input v-model="form.date" class="form-control" type="date" :required="!slug" :disabled="fixed">
+          <div v-if="!slug" class="form-text">
+            Дата — адреса заняття: один день — одне заняття, його частини додаються на сторінці.
+            <a v-if="!second" href="#" class="dotted" @click.prevent="second = true">ще одне того ж дня</a>
+          </div>
+        </div>
+        <div v-if="second && !slug" class="col-6 col-md-3">
+          <label class="form-label">Мітка другого заняття</label>
+          <input v-model="form.tag" class="form-control" placeholder="cpo" pattern="[a-z0-9]+" required>
+          <div class="form-text">латиницею: стане хвостом адреси</div>
         </div>
         <div class="col-6 col-md-4">
           <label class="form-label">Час</label>
@@ -84,7 +86,7 @@ async function remove() {
         </div>
         <div class="col-12">
           <label class="form-label">Назва</label>
-          <input v-model="form.title" class="form-control" placeholder="Знайомство з курсом">
+          <input v-model="form.title" class="form-control" placeholder="Про лабу 3 і перші захисти">
         </div>
         <div class="col-12">
           <label class="form-label">Групи</label>
@@ -128,3 +130,7 @@ async function remove() {
   </div>
   <p v-else-if="user && user.status !== 'admin'" class="text-center mt-5">Сторінка доступна лише викладачу.</p>
 </template>
+
+<style scoped>
+.dotted { text-decoration: underline dashed; text-underline-offset: .2em; }
+</style>

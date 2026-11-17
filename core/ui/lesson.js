@@ -9,6 +9,28 @@ export const KINDS = { pz: 'ПЗ', lab: 'Лаба', lec: 'Лекція', cons: '
 export const KINDS_MANY = { pz: 'ПЗ', lab: 'Лаби', lec: 'Лекції', cons: 'Консультації', x: 'Зустрічі' }
 export const timeId = (t) => `t-${t.replace(':', '')}`  // «15:01» → t-1501: the anchor of a section, the summary's «Теми» point there
 
+// the parts of a day (models/lesson.py PARTS): the icon, the word, the colour — one per kind wherever a part shows
+export const PARTS = {
+  pz: { icon: 'cap', name: 'ПЗ', color: 'var(--bs-primary)' }, def: { icon: 'shield', name: 'Захист', color: 'var(--bs-orange)' },
+  lec: { icon: 'book', name: 'Лекція', color: 'var(--bs-teal)' }, cons: { icon: 'clock', name: 'Додатковий час', color: 'var(--bs-indigo)' },
+  break: { icon: 'pause', name: 'Перерва', color: 'var(--bs-secondary)' }, x: { icon: 'more', name: 'Інше', color: 'var(--bs-secondary)' },
+}
+export const partOf = (p) => PARTS[p.kind] || PARTS.x
+export const hm = (t) => (t || '').slice(0, 5)
+export const clock = (t) => t.split(':').reduce((n, x, i) => n + Number(x) * [3600, 60, 1][i], 0)  // «16:41[:20]» → seconds of the day
+export const partSpan = (p) => [hm(p.start), hm(p.end)].filter(Boolean).join('–')
+export const partDur = (p) => (p.start && p.end ? Math.max(0, clock(p.end) - clock(p.start)) : 0)
+export const byStart = (parts) => [...parts].sort((a, b) => (a.start || '99').localeCompare(b.start || '99'))
+// a day is called by its date, «вт, 10 листопада»; an old address (pz1) keeps its «ПЗ 1»
+export const lessonName = (l) => (l.kind || !l.date ? l.label : new Date(`${l.date}T00:00:00`).toLocaleDateString('uk-UA', { weekday: 'short', day: 'numeric', month: 'long' }))
+export const dayShort = (iso) => (iso ? new Date(`${iso}T00:00:00`).toLocaleDateString('uk-UA', { weekday: 'short', day: 'numeric', month: 'short' }) : '—')
+// what a day that has passed still lacks — the teacher's reminder
+export const lacks = (l) => (l.virtual || !l.date || l.date > new Date().toLocaleDateString('sv') ? []
+  : [!l.has.video && 'відео', !l.has.transcript && 'транскрипт', !l.has.summary && 'конспект', !l.has.zoom && 'відвідування'].filter(Boolean))
+// a link the reader follows is counted (routes/lesson_clicks.py); the browser goes on without waiting
+export const follow = (slug, url) => fetch(`/api/lessons/${slug}/click`, { method: 'POST', keepalive: true,
+  headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url }) }).catch(() => {})
+
 // [{id, title, time, items}], items: {who, time, text} a line · {note} a remark · {text} anything outside the grammar
 export function parseTranscript(md) {
   let body = md || ''

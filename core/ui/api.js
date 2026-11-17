@@ -49,6 +49,8 @@ export const deleteLessonFile = (slug, id) => request(`/api/lessons/${slug}/file
 export const getAttendance = (slug) => request(`/api/lessons/${slug}/attendance`)
 export const pullZoom = (slug, data) => request(`/api/lessons/${slug}/zoom`, 'POST', data)
 export const getAttendanceMatrix = () => request('/api/attendance')
+export const getLessonClicks = (slug) => request(`/api/lessons/${slug}/clicks`)
+export const getClicks = () => request('/api/lesson-clicks')
 export const getLabs = () => request('/api/labs')
 export const putDeadline = (n, data) => request(`/api/labs/${n}/deadline`, 'PUT', data)
 export const deleteDeadline = (id) => request(`/api/labs/deadlines/${id}`, 'DELETE')
