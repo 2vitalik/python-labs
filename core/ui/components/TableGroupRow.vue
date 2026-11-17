@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 
-import { facets } from '../table.js'
+import { facetText, facets } from '../table.js'
 import { useTable } from '../tableCtx.js'
 import IconChevron from './IconChevron.vue'
 
@@ -10,7 +10,9 @@ import IconChevron from './IconChevron.vue'
 const props = defineProps({ g: { type: Object, required: true }, level: { type: Number, default: 0 }, folded: Boolean })
 const emit = defineEmits(['fold'])
 const t = useTable()
-const sums = computed(() => Object.fromEntries(t.shown.map((c) => [c.key, facets(c, props.g.rows).map((f) => `${f.text}${f.n}`).join(' ')])))
+// words are told apart by a dot between them, emoji stand close
+const sumOf = (c) => { const list = facets(c, props.g.rows); return list.map(facetText).join(list.some((f) => f.word) ? ' · ' : ' ') }
+const sums = computed(() => Object.fromEntries(t.shown.map((c) => [c.key, sumOf(c)])))
 </script>
 
 <template>

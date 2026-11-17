@@ -24,13 +24,14 @@ function choose(id) {
 const submit = () => emit('save', props.col.type === 'number' && text.value !== '' ? Number(text.value) : text.value || null)
 const away = (e) => !box.value?.contains(e.target) && emit('close')
 const key = (e) => e.key === 'Escape' && emit('close')
+const gone = (e) => !box.value?.contains(e.target) && emit('close')  // the table scrolled: the cell is no longer under it
 onMounted(() => {
   const r = props.anchor.getBoundingClientRect()
   at.value = { left: `${Math.max(4, Math.min(r.left, innerWidth - box.value.offsetWidth - 8))}px`, top: `${r.bottom + 2}px` }  // under its cell, inside the window
   input.value?.focus()
-  setTimeout(() => (document.addEventListener('click', away), document.addEventListener('keydown', key)))
+  setTimeout(() => (document.addEventListener('click', away), document.addEventListener('keydown', key), window.addEventListener('scroll', gone, true)))
 })
-onUnmounted(() => (document.removeEventListener('click', away), document.removeEventListener('keydown', key)))
+onUnmounted(() => (document.removeEventListener('click', away), document.removeEventListener('keydown', key), window.removeEventListener('scroll', gone, true)))
 </script>
 
 <template>
@@ -52,7 +53,7 @@ onUnmounted(() => (document.removeEventListener('click', away), document.removeE
 </template>
 
 <style scoped>
-.tedit { position: fixed; z-index: 1030; min-width: 11rem; max-width: 18rem; max-height: 16rem; overflow-y: auto; font-size: .85rem; }
+.tedit { position: fixed; z-index: 1030; width: max-content; min-width: 11rem; max-width: min(22rem, calc(100vw - 1rem)); max-height: 16rem; overflow-y: auto; font-size: .85rem; }
 .tedit input { min-width: 7rem; }
 .opt { display: flex; align-items: center; gap: .4rem; padding: .2rem .5rem; border: 0; border-radius: .3rem; background: none; color: var(--bs-body-color); text-align: start; }
 .opt:hover { background: var(--bs-tertiary-bg); }

@@ -57,7 +57,7 @@ function lab(n) {
     L('.due', 'date', 'Дедлайн студента', '⏰', (r) => c(r).due, { fam: 'state' }),
     L('.answer', 'enum', 'Вклався в дедлайн', 'Вклався', (r) => k(r).answer, { fam: 'verdict', options: ANSWER, sub: (r) => CASE[k(r).code]?.text, hint: (r) => CASE[k(r).code]?.why }),
     L('.case', 'enum', 'Випадок', 'Випадок', (r) => k(r).code, { fam: 'verdict', options: CASE, sub: (r) => lateText(k(r).late), hint: (r) => CASE[k(r).code]?.why }),
-    L('.late', 'number', 'Запізнення, год', 'Пізніше', (r) => k(r).late, { fam: 'verdict', sub: (r) => (k(r).late >= 48 ? lateText(k(r).late) : '') }),
+    L('.late', 'number', 'Запізнення, год', 'Пізніше', (r) => k(r).late, { fam: 'verdict', sum: false, sub: (r) => (k(r).late >= 48 ? lateText(k(r).late) : '') }),
     L('.says', 'enum', 'Каже сам (опитування)', 'Каже сам', (r) => k(r).says, { fam: 'verdict', options: SAYS, hint: (r) => k(r).said_at && `голос ${fmtWhen(k(r).said_at)}` }),
     L('.flags', 'multi', 'На що глянути', 'Глянути', (r) => k(r).flags, { fam: 'verdict', options: FLAG }),
     L('.before', 'number', 'Комітів до дедлайну', '⎇←', (r) => c(r).facts.before, { fam: 'labc' }),

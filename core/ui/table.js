@@ -42,13 +42,16 @@ export function view(col, row) {
 }
 
 // what a column adds up to over some rows, as chips: { id, text, n } — `id` is the filter that keeps those rows («1» for
-// a checkmark, an answer's id); a number sums and a text counts into a chip without an id
+// a checkmark, an answer's id); a number sums and a text counts into a chip without an id. `sum: false` on a number
+// column — its sum says nothing (hours late): the filled cells are counted. `word` — the chip is a word, not an emoji
 export function facets(col, rows) {
   const vs = rows.map((r) => col.get(r))
-  if (col.type === 'number') return [{ id: '', text: 'Σ', n: Math.round(vs.reduce((s, v) => s + (numberOf(v) || 0), 0) * 10) / 10 }]
+  if (col.type === 'number' && col.sum !== false) return [{ id: '', text: 'Σ', n: Math.round(vs.reduce((s, v) => s + (numberOf(v) || 0), 0) * 10) / 10 }]
   if (yes(col)) return [{ id: '1', text: '✅', n: vs.filter(hasValue).length }]
   if (!picks(col)) return [{ id: '', text: '', n: vs.filter(hasValue).length }]
   const n = {}
   for (const v of vs) for (const id of answers(v)) n[id] = (n[id] || 0) + 1
-  return Object.keys(col.options || {}).filter((id) => n[id]).map((id) => ({ id, text: option(col, id).emoji || option(col, id).text, n: n[id], title: option(col, id).text }))
+  return Object.keys(col.options || {}).filter((id) => n[id])
+    .map((id) => ({ id, text: option(col, id).emoji || option(col, id).text, word: !option(col, id).emoji, n: n[id], title: option(col, id).text }))
 }
+export const facetText = (f) => `${f.text}${f.word ? ' ' : ''}${f.n}`  // «✅18» · «вчасно 47»

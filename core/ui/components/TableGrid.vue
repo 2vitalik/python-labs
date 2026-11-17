@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
 import { groups } from '../tableOrder.js'
 import { useTable } from '../tableCtx.js'
@@ -10,12 +10,27 @@ import TableFacets from './TableFacets.vue'
 import TableGroupRow from './TableGroupRow.vue'
 import TableHead from './TableHead.vue'
 
-// the grid of /table (T240, T315 §2): the head — bands, headers, the line of totals that filters — then the rows, in groups
+// the grid of /table (T240, T315 §2): the head — bands, headers, the line of totals that filters, stuck over the rows — then the rows, in groups
 // inside groups, each folding and adding up its own. A lab cell opens LabEdit under its row, an editable cell edits in place
 const t = useTable()
 const folded = ref(new Set())  // ids of the groups folded; a folded group hides the ones inside it too
 const picked = ref(null)  // { nick, lab, key } — the lab cell whose editor is open under its row
 const error = ref('')
+// the grid scrolls in a box of its own, as tall as the window has left under it — the head stays in sight over any row;
+// whatever grows above it (a line of «змінено», a version's bar) is seen through the page's size
+const wrap = ref()
+const room = ref('')
+const fit = () => wrap.value && (room.value = `${Math.max(360, innerHeight - (wrap.value.getBoundingClientRect().top + scrollY) - 28)}px`)
+const sized = new ResizeObserver(fit)
+onMounted(() => {
+  fit()
+  addEventListener('resize', fit)
+  sized.observe(wrap.value.closest('main') || document.body)
+})
+onBeforeUnmount(() => {
+  removeEventListener('resize', fit)
+  sized.disconnect()
+})
 const byGroup = computed(() => t.groupCols.some((c) => c.key === 'group'))
 // the groups laid out as lines: a group's head, then its groups or its rows
 function walk(list, level, out) {
@@ -38,7 +53,7 @@ const edit = (c, r, value) => t.edit(c, r, value).then(() => (error.value = ''),
 
 <template>
   <div>
-    <div class="wrap border rounded">
+    <div ref="wrap" class="wrap border rounded" :style="{ maxHeight: room }">
       <table class="table table-sm align-middle mb-0">
         <thead>
           <TableHead />
@@ -73,7 +88,8 @@ const edit = (c, r, value) => t.edit(c, r, value).then(() => (error.value = ''),
 </template>
 
 <style scoped>
-.wrap { overflow-x: auto; }
+.wrap { overflow: auto; }
+.wrap :deep(thead) { position: sticky; top: 0; z-index: 2; box-shadow: 0 1px 0 var(--bs-border-color); }
 .wrap :deep(th), .wrap :deep(td) { white-space: nowrap; }
 /* the name stays at the left as the table scrolls; its ground hides the cells that pass under it */
 .wrap :deep(.name) { position: sticky; left: 0; z-index: 1; min-width: 12rem; max-width: 18rem; overflow: hidden; text-overflow: ellipsis;
