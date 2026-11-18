@@ -1,4 +1,4 @@
-import { site } from './site.js'
+import { labPages } from './guide.js'
 
 // what a cell of students × labs says (core/labs.py STATES): the emoji, the word, the look
 export const STATES = {
@@ -18,7 +18,7 @@ export const KINDS = { game: 'гра', tasks: 'вправи без гри', othe
 export const doneOf = (required) => (required?.length ? `${required.filter((x) => x === 'done').length}/${required.length}` : '')  // «4/6»
 export const reviewLine = (r) => [VERDICTS[r.verdict], doneOf(r.required), KINDS[r.kind]].filter(Boolean).join(' · ')  // «частково · 4/6 · гра»
 export const labName = (n) => `Лаба ${n}`
-export const labPath = (n) => site.guide.find((g) => g.n === Number(n))?.path || ''
+export const labPath = (n) => labPages().find((g) => g.n === Number(n))?.path || ''
 export const hasWord = (cell) => cell.mark?.met === true || cell.mark?.met === false  // the teacher's word stands on the cell
 
 // «5 лист., 23:59» local; `day` — the date alone

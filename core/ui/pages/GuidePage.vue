@@ -10,7 +10,7 @@ import GuideFoot from '../components/GuideFoot.vue'
 import LabTabs from '../components/LabTabs.vue'
 import Toc from '../components/Toc.vue'
 import { textOf } from '../drafts.js'
-import { loadGuide, pages } from '../guide.js'
+import { labPages, loadGuide, pages } from '../guide.js'
 import { tocOf } from '../md.js'
 import { site } from '../site.js'
 import { useTitle } from '../title.js'
@@ -22,7 +22,7 @@ const slug = computed(() => route.meta.slug || `lab${route.params.n}`)
 const toc = computed(() => tocOf(textOf(page.value)))
 useTitle(() => page.value?.title)
 const admin = computed(() => user.value?.status === 'admin')
-const LABS = site.guide.filter((s) => s.n)
+const LABS = labPages()
 const lab = computed(() => LABS.find((l) => l.slug === slug.value))
 const prev = computed(() => lab.value && LABS[lab.value.n - 2])
 const next = computed(() => lab.value && LABS[lab.value.n])
