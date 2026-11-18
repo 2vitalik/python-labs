@@ -10,7 +10,7 @@ from core.models.user import User
 from labs_check import parse_line, verdict
 from models.lab import LabVariant
 
-router = APIRouter(prefix="/api/labs")
+router = APIRouter(prefix="/api/variants")  # /api/labs is the platform's: deadlines of labs
 NOTEBOOK = 300
 
 
