@@ -85,6 +85,9 @@ with TestClient(main.app) as c:
     check("A: a non-number → 422 naming the pair", r.status_code == 422 and "d1=abc" in r.json()["detail"], r.text)
     my = c.put("/api/variants/1/my", json={"line": "", "notebook": "https://colab/y"}).json()
     check("A: an empty line keeps the old verdict, saves the link", my["attempts"] == 2 and my["ok"] == 1 and my["notebook"] == "https://colab/y", my)
+    alerts = [e["text"] for e in mongo[DB].events.find({"kind": "lab"})]
+    check("an alert per checked line: 🟢 all right, 🟠 not yet", len(alerts) == 2 and alerts[0].startswith("🟢 Лаба 1") and "3 із 3" in alerts[0]
+          and alerts[1].startswith("🟠 Лаба 1") and "спроба 2" in alerts[1], alerts)
     check("A: GET /api/variants says mine=true for lab 1 only", c.get("/api/variants").json() == [{"n": 1, "mine": True}, {"n": 2, "mine": False}], c.get("/api/variants").text[:200])
     my2 = c.get("/api/variants/2/my").json()
     check("A: lab 2 hands out its own card with the same vid, untouched by lab 1", my2["vid"] == "КН-1-01" and "# lab 2" in my2["card"] and my2["attempts"] == 0, my2)

@@ -1,9 +1,10 @@
 """Lab variants on the site (T200): a student's card and answer line, the teacher's table and marks. Variants come from lab_io.py."""
 from datetime import datetime, timezone
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 from pydantic import BaseModel
 
+from bot import lab_alerts
 from core.deps import active_user, admin_user
 from core.models.history import record
 from core.models.user import User
@@ -50,7 +51,7 @@ async def get_my(lab: int, user: User = Depends(active_user)):
 
 
 @router.put("/{lab}/my")
-async def put_my(lab: int, data: MyIn, user: User = Depends(active_user)):
+async def put_my(lab: int, data: MyIn, tasks: BackgroundTasks, user: User = Depends(active_user)):
     """Check the answer line and keep it; an empty line keeps the old one and saves the notebook link alone."""
     v = await mine(lab, user)
     fields, note = {"notebook": data.notebook.strip()[:NOTEBOOK]}, ""
@@ -65,6 +66,8 @@ async def put_my(lab: int, data: MyIn, user: User = Depends(active_user)):
         fields |= {"line": line, "values": values, "verdict": got, "attempts": v.attempts + 1, "checked_at": datetime.now(timezone.utc)}
         note = f"{sum(x['ok'] for x in got.values())}/{len(v.answers)}"
     await record(v, fields, actor=user.email, note=note)
+    if note:
+        tasks.add_task(lab_alerts.checked, user, v)
     return v.api()
 
 
