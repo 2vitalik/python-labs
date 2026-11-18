@@ -7,6 +7,9 @@ from core.models.pref import get_pref, set_pref
 from core.models.view import View, ViewVersion
 
 GONE = "table.seeds_gone"
+# the columns of «Усе» and «Старт»; `{labs}` — the state of every lab. A site whose row differs puts its own here
+ALL_COLS = "fio,seen,bot,tg,gh,repo,commits,{labs},fields:"
+START_COLS = "reg,fio,seen,last,bot,tg,gh,repo,commits,lastc,polls:start"
 # the columns and the «для чого» of a lab's view; a site adds its own by the lab's number, 0 — any other lab
 LAB_COLS = {0: "reg,lab,lab.review,lab.required,lab.kind,lab.before,lab.after,lab.last,lab.asked,lab.ext,lab.met,lab.note,fields:lab,polls:lab"}
 LAB_ABOUT = {0: "Дедлайн лаби: стан кожного студента, звіт агента, подовження й відповіді опитувань."}
@@ -24,10 +27,10 @@ def course_labs() -> list[int]:
 def seeds(labs: list[int]) -> list[dict]:
     each = ",".join(f"lab{n}" for n in labs)
     return [{"slug": "all", "title": "Усе", "emoji": "📋", "about": "Усі студенти й стан кожної лаби — з цього зручно починати свій вид.",
-             "query": {"cols": f"fio,seen,bot,tg,gh,repo,commits,{each},fields:", "group": "group"}},
+             "query": {"cols": ALL_COLS.format(labs=each), "group": "group"}},
             {"slug": "start", "title": "Старт", "emoji": "🚀",
              "about": "Лійка реєстрації: хто зайшов на сайт, привʼязав бота, дав GitHub і запушив перший коміт.",
-             "query": {"cols": "reg,fio,seen,last,bot,tg,gh,repo,commits,lastc,polls:start", "group": "group"}},
+             "query": {"cols": START_COLS, "group": "group"}},
             *({"slug": f"lab{n}", "title": f"Лаба {n}", "emoji": "📅", "about": LAB_ABOUT.get(n, LAB_ABOUT[0]),
                "query": {"lab": str(n), "cols": LAB_COLS.get(n, LAB_COLS[0]), "group": "group"}} for n in labs),
             *({"slug": f"due{n}", "title": f"Дедлайн {n}", "emoji": "🏁", "about": DUE_ABOUT, "folder": "Дедлайни", "pinned": n <= DUE_PINNED,
