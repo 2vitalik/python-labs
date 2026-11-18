@@ -1,6 +1,6 @@
 """Smoke: lessons (T218) — drafts are the admin's, students read what is published, rev/409, history, files (sources stay
-the admin's, attachments open to readers), speakers → students by ПІБ and aliases, the agent's token, bundle. Run from app/api:
-DB_NAME=python_labs_smoke uv run python tests/smoke_lessons.py"""
+the admin's, attachments open to readers), speakers → students by ПІБ and aliases, the agent's token, bundle. Run from a site's api folder:
+DB_NAME=<db>_smoke ~/.venvs/python-labs/bin/python <repo>/core/api/tests/smoke_lessons.py"""
 import os
 import sys
 

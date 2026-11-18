@@ -1,5 +1,5 @@
-"""Smoke: the activity page (T146) — `events` journal, the 500 row, the merged feed, the people summary. Run from app/api:
-DB_NAME=python_labs_smoke uv run python tests/smoke_activity.py"""
+"""Smoke: the activity page (T146) — `events` journal, the 500 row, the merged feed, the people summary. Run from a site's api folder:
+DB_NAME=<db>_smoke ~/.venvs/python-labs/bin/python <repo>/core/api/tests/smoke_activity.py"""
 import os
 import sys
 from datetime import datetime, timedelta, timezone

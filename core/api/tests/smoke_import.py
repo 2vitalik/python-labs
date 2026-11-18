@@ -1,6 +1,6 @@
 """Smoke: student import tells CIST from DL per row (2026-10-23) — a DL paste with tabs and one flattened to spaces,
-the teacher skipped, groups from the row, re-import updates the group and leaves names alone. Run from app/api:
-DB_NAME=python_labs_smoke uv run python tests/smoke_import.py"""
+the teacher skipped, groups from the row, re-import updates the group and leaves names alone. Run from a site's api folder:
+DB_NAME=<db>_smoke ~/.venvs/python-labs/bin/python <repo>/core/api/tests/smoke_import.py"""
 import os
 import sys
 

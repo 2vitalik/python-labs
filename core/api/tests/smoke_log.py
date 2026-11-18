@@ -1,5 +1,5 @@
-"""Smoke: message log — incoming middleware, edited handler, outgoing session middleware. Run from app/api:
-DB_NAME=python_labs_smoke uv run python tests/smoke_log.py"""
+"""Smoke: message log — incoming middleware, edited handler, outgoing session middleware. Run from a site's api folder:
+DB_NAME=<db>_smoke ~/.venvs/python-labs/bin/python <repo>/core/api/tests/smoke_log.py"""
 import asyncio
 import os
 import sys

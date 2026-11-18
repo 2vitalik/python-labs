@@ -1,5 +1,6 @@
 """Smoke: /note and /hide from a student's chat (Chat Automation), the forum and the bot's chat; Telegram replaced by a recorder.
-Run from app/api: DB_NAME=python_labs_smoke uv run python tests/smoke_notes.py"""
+Run from a site's api folder:
+DB_NAME=<db>_smoke ~/.venvs/python-labs/bin/python <repo>/core/api/tests/smoke_notes.py"""
 import asyncio
 import os
 import sys

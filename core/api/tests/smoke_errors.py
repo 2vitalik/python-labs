@@ -1,5 +1,5 @@
-"""Smoke: the `errors` journal (T149) — API and bot failures whole, JS errors from the SPA with their limits, the feed. Run from app/api:
-DB_NAME=python_labs_smoke uv run python tests/smoke_errors.py"""
+"""Smoke: the `errors` journal (T149) — API and bot failures whole, JS errors from the SPA with their limits, the feed. Run from a site's api folder:
+DB_NAME=<db>_smoke ~/.venvs/python-labs/bin/python <repo>/core/api/tests/smoke_errors.py"""
 import os
 import sys
 from types import SimpleNamespace
@@ -102,7 +102,7 @@ with TestClient(main.app, raise_server_exceptions=False) as c:
     check("crash: the whole traceback", e["trace"].startswith("Traceback (most recent call last)") and "in boom" in e["trace"]
           and e["trace"].rstrip().endswith("second line"), e["trace"])
     check("crash: alert as before — head, ❗ first line, 📍 our frame",
-          sent[-1].startswith("💥 API · GET /api/boom · vasya\n❗ RuntimeError: boom\n📍 tests/smoke_errors.py:"), sent[-1])
+          sent[-1].startswith("💥 API · GET /api/boom · vasya\n❗ RuntimeError: boom\n📍 ") and "tests/smoke_errors.py:" in sent[-1], sent[-1])  # the frame's path is as the smoke was called
 
     try:
         raise ValueError("bot boom")

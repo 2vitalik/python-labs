@@ -1,5 +1,5 @@
-"""Smoke: `?next=` round-trip via dev-login, safe_path, 401 vs 403, activity rows (login ua/ip, api calls), /api/health. Run from app/api:
-DB_NAME=python_labs_smoke uv run python tests/smoke_auth.py"""
+"""Smoke: `?next=` round-trip via dev-login, safe_path, 401 vs 403, activity rows (login ua/ip, api calls), /api/health. Run from a site's api folder:
+DB_NAME=<db>_smoke ~/.venvs/python-labs/bin/python <repo>/core/api/tests/smoke_auth.py"""
 import os
 import sys
 
@@ -30,25 +30,25 @@ for path, want in [("/students/vasya", "/students/vasya"), ("/tasks?zone=ui&q=x"
                    ("//evil.com", "/"), ("/\\evil.com", "/"), ("https://evil.com", "/"), ("", "/")]:
     check(f"safe_path({path!r}) → {want}", safe_path(path) == want, safe_path(path))
 
-settings.fake_user_email = "dev@nure.ua"
+settings.fake_user_email, settings.admin_emails = "dev@nure.ua", ""  # pending, not an admin
 with TestClient(main.app, follow_redirects=False) as c:
     check("guest: /api/health → 200 ok", c.get("/api/health").json() == {"ok": True})
     check("guest: /students → 401", c.get("/api/students").status_code == 401)
-    check("guest: /my/game → 401", c.get("/api/my/game").status_code == 401)
+    check("guest: /my/week → 401", c.get("/api/my/week").status_code == 401)
 
     r = c.get("/api/auth/dev-login", params={"next": "/students/vasya"})
     check("dev-login → 307 to next", r.status_code == 307 and r.headers["location"] == "/students/vasya",
           r.headers.get("location"))
     check("session set", c.get("/api/me").json()["email"] == "dev@nure.ua")
     check("pending: /students → 403", c.get("/api/students").status_code == 403)
-    check("pending: /my/game → 403", c.get("/api/my/game").status_code == 403)
+    check("pending: /my/week → 403", c.get("/api/my/week").status_code == 403)
 
     def acts(**q):
         return list(mongo[DB].activity.find(q))
     login = acts(kind="login")[0]
     check("login row: user-agent + ip", login["ua"] == "testclient" and login["ip"] == "testclient", login)
     api = acts(kind="api")
-    check("api rows: the two 403s only — not the guest 401s, /api/me or /api/auth", sorted(a["path"] for a in api) == ["/api/my/game", "/api/students"]
+    check("api rows: the two 403s only — not the guest 401s, /api/me or /api/auth", sorted(a["path"] for a in api) == ["/api/my/week", "/api/students"]
           and all(a["status"] == 403 and a["method"] == "GET" and a["ms"] >= 0 for a in api), api)
     c.get("/api/students", params={"group": "x"})
     row = acts(kind="api", path="/api/students?group=x")

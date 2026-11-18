@@ -1,9 +1,10 @@
 """Smoke: /due from the student's chat (Chat Automation), the forum and the bot's chat (T235); the dates it takes; the line the student
-reads from the teacher's account (T245); Telegram replaced by a recorder. Run from app/api: DB_NAME=python_labs_smoke uv run python tests/smoke_due.py"""
+reads from the teacher's account (T245); Telegram replaced by a recorder. Run from a site's api folder:
+DB_NAME=<db>_smoke ~/.venvs/python-labs/bin/python <repo>/core/api/tests/smoke_due.py"""
 import asyncio
 import os
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from types import SimpleNamespace
 
 sys.path.insert(0, os.getcwd())
@@ -22,7 +23,7 @@ from core.models.deadline import Deadline, LabMark  # noqa: E402
 from core.models.user import Status, User  # noqa: E402
 from db import init_db  # noqa: E402
 
-settings.tg_bot_token = "fake"
+settings.tg_bot_token, settings.labs = "fake", 5
 sent, deleted, reacted, results = [], [], [], []
 
 
@@ -105,9 +106,12 @@ async def run():
     check("/due 1 7.11 without words → the date closes «?», the reason kept",
           mark.until == datetime(2026, 11, 7, 21, 59) and not mark.open and mark.reason == "хворів" and "⏳ до 7.11 23:59" in alert(), (mark, alert()))
     check("…the student hears the day", "1️⃣ дедлайн подовжено:  <b>7.11</b>  23:59  (субота)" in student()[-1][1], student())
+    soon = datetime.now(TZ) + timedelta(days=7)  # «ще є час» needs the extension still ahead
+    mark.until = parse_due(f"{soon:%d.%m.%Y}")
+    await mark.save()
     m, _ = fake(conn="c1")
     await due.due(m, cmd("1"), admin)
-    check("/due 1 → the line carries 🙋 and 💬", "⏱ ще є час · Лаба 1 · до 7.11 23:59 · 🙋 просив · 💬 хворів" in alert(), alert())
+    check("/due 1 → the line carries 🙋 and 💬", f"⏱ ще є час · Лаба 1 · до {soon:%-d.%m} 23:59 · 🙋 просив · 💬 хворів" in alert(), alert())
     m, _ = fake(conn="c1")
     await due.due(m, cmd("1 -"), admin)
     mark = await LabMark.find_one(LabMark.user == "vasya@nure.ua")
@@ -157,9 +161,11 @@ async def run():
     m, answers = fake(chat_id=7)
     await due.due(m, cmd("nobody 1 1.12"), admin)
     check("unknown nick → the hint as the answer", answers[0][0] == due.HINT, answers)
+    mark.until = parse_due(f"{soon:%d.%m.%Y}")  # still ahead whatever the day the smoke runs on
+    await mark.save()
     m, answers = fake(chat_id=7)
     await due.due(m, cmd("vasya"), admin)
-    check("bot's chat: /due nick → the labs answered", answers[0][0].startswith("📅 ") and "⏱ ще є час · Лаба 3 · до 1.12 23:59" in answers[0][0], answers)
+    check("bot's chat: /due nick → the labs answered", answers[0][0].startswith("📅 ") and f"⏱ ще є час · Лаба 3 · до {soon:%-d.%m} 23:59" in answers[0][0], answers)
     check("history: a row per change", await LabMark.find_all().count() == 3)
 
 

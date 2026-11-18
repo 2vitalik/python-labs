@@ -1,5 +1,6 @@
 """Smoke: polls on the bot's side (T176) — votes, Telegram's counts, the file copy and its replay, the places polls go to.
-Run from app/api: DB_NAME=python_labs_smoke uv run python tests/smoke_polls.py"""
+Run from a site's api folder:
+DB_NAME=<db>_smoke ~/.venvs/python-labs/bin/python <repo>/core/api/tests/smoke_polls.py"""
 import asyncio
 import os
 import sys

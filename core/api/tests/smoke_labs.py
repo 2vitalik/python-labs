@@ -1,5 +1,6 @@
 """Smoke: labs × students (T235) — the agent in the students' list, deadlines by group, the facts off a pushed commit log,
-the states of a cell, the teacher's word, the agent's review. Run from app/api: DB_NAME=python_labs_smoke uv run python tests/smoke_labs.py"""
+the states of a cell, the teacher's word, the agent's review. Run from a site's api folder:
+DB_NAME=<db>_smoke ~/.venvs/python-labs/bin/python <repo>/core/api/tests/smoke_labs.py"""
 import os
 import sys
 
@@ -16,7 +17,7 @@ import main  # noqa: E402
 from core.config import settings  # noqa: E402
 
 ADMIN, VASYA, PETYA, TEST = "admin@nure.ua", "vasya@nure.ua", "petya@nure.ua", "tst@nure.ua"
-settings.admin_emails, settings.tg_bot_token, settings.agent_tokens = ADMIN, "", "claude:tok"
+settings.admin_emails, settings.tg_bot_token, settings.agent_tokens, settings.labs = ADMIN, "", "claude:tok", 5
 AGENT = {"Authorization": "Bearer tok"}
 REPO = "https://github.com/vasya/game"
 results = []

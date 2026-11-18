@@ -1,6 +1,6 @@
 """Smoke: a Telegram chat pasted on the student's card (T230) — header formats, multi-line texts, a bad header, the student guess,
-the rows written, duplicates from a second paste and from the bot's own row, both sides in the student's feed. Run from app/api:
-DB_NAME=python_labs_smoke uv run python tests/smoke_tg_paste.py"""
+the rows written, duplicates from a second paste and from the bot's own row, both sides in the student's feed. Run from a site's api folder:
+DB_NAME=<db>_smoke ~/.venvs/python-labs/bin/python <repo>/core/api/tests/smoke_tg_paste.py"""
 import os
 import sys
 from datetime import datetime, timezone

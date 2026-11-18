@@ -1,5 +1,6 @@
 """Smoke: the table of students (T240) — a row from every source, the teacher's own fields of every type and scope, values checked
-against the type, saved views, 🙋 with its alert, the agent reading polls. Run from app/api: DB_NAME=python_labs_smoke uv run python tests/smoke_table.py"""
+against the type, saved views, 🙋 with its alert, the agent reading polls. Run from a site's api folder:
+DB_NAME=<db>_smoke ~/.venvs/python-labs/bin/python <repo>/core/api/tests/smoke_table.py"""
 import os
 import sys
 from datetime import datetime, timezone
@@ -17,7 +18,7 @@ import main  # noqa: E402
 from core.config import settings  # noqa: E402
 
 ADMIN, VASYA, PETYA, TEST = "admin@nure.ua", "vasya@nure.ua", "petya@nure.ua", "tst@nure.ua"
-settings.admin_emails, settings.tg_bot_token, settings.agent_tokens = ADMIN, "", "claude:tok"
+settings.admin_emails, settings.tg_bot_token, settings.agent_tokens, settings.labs = ADMIN, "", "claude:tok", 5
 AGENT = {"Authorization": "Bearer tok"}
 REPO = "https://github.com/vasya/game"
 SEEDS = ["all", "start", "lab1", "lab2", "lab3", "lab4", "lab5", "due1", "due2", "due3", "due4", "due5"]  # core/views_seed.py

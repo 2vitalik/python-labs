@@ -93,6 +93,15 @@ with TestClient(main.app) as c:
     r = c.put(f"/api/refs/{fix['id']}", json={"kind": "fix", "task": "console-render", "title": "Не там лежить", "note": "ще"})
     check("the author's edit keeps the teacher's word", r.json()["status"] == "linked" and r.json()["reply"] == "перенесу", r.text)
 
+    login(c, "admin@nure.ua", "admin")  # the four below came from the guide's smoke, which moved to the core (T352)
+    r = c.post("/api/refs", json={"note": "ідея без лінка"})
+    check("idea: kind idea, no url", r.status_code == 200 and r.json()["kind"] == "idea" and r.json()["url"] == "", r.text)
+    check("empty idea → 422", c.post("/api/refs", json={"note": " "}).status_code == 422)
+    check("bad url → 422", c.post("/api/refs", json={"url": "просто текст"}).status_code == 422)
+    link = c.post("/api/refs", json={"url": "https://x.com", "note": "лінк"}).json()["id"]
+    r = c.post("/api/refs", json={"note": "під лінком", "parent": link}).json()
+    check("idea under a find", r["parent"] == link and r["kind"] == "idea")
+
 ok = sum(results)
 print(f"\n{ok}/{len(results)} PASS")
 sys.exit(0 if ok == len(results) else 1)

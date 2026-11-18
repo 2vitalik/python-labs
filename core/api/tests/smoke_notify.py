@@ -1,5 +1,5 @@
-"""Smoke: admin alerts + /here routing on a scratch DB, Telegram replaced by a recorder. Run from app/api:
-DB_NAME=python_labs_smoke uv run python tests/smoke_notify.py"""
+"""Smoke: admin alerts + /here routing on a scratch DB, Telegram replaced by a recorder. Run from a site's api folder:
+DB_NAME=<db>_smoke ~/.venvs/python-labs/bin/python <repo>/core/api/tests/smoke_notify.py"""
 import asyncio
 import os
 import sys
@@ -151,16 +151,16 @@ async def run():
           and "очікує" in text, text)
 
     m, replies = msg(1, 1)
-    await here(m, SimpleNamespace(args="game", command="mute"))
-    check("/mute game → 🔇 + label", replies[-1] == "🔇 Вимкнено:\n🧩 game · гра студента: картка, обʼєкти, правила", replies[-1])
+    await here(m, SimpleNamespace(args="msg", command="mute"))
+    check("/mute msg → 🔇 + label", replies[-1] == "🔇 Вимкнено:\n💬 msg · повідомлення боту від студентів", replies[-1])
     n = len(sent)
-    await notify.send("game", "x")
+    await notify.send("msg", "x")
     await here(m, SimpleNamespace(args=None, command="here"))
     check("muted kind: nothing sent, status says 🔇",
-          len(sent) == n and "🧩 game · гра студента: картка, обʼєкти, правила → 🔇 вимкнено" in replies[-1])
-    await here(m, SimpleNamespace(args="game", command="here"))
-    await notify.send("game", "x")
-    check("/here game again → unmuted, goes here", len(sent) == n + 1 and last()[0] == 1)
+          len(sent) == n and "💬 msg · повідомлення боту від студентів → 🔇 вимкнено" in replies[-1])
+    await here(m, SimpleNamespace(args="msg", command="here"))
+    await notify.send("msg", "x")
+    check("/here msg again → unmuted, goes here", len(sent) == n + 1 and last()[0] == 1)
     await here(m, SimpleNamespace(args="off", command="mute"))
     check("/mute off → unknown kind, nothing unbound", replies[-1].startswith("❌") and await Route.count() == 1)
 

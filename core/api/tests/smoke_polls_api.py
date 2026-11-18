@@ -1,5 +1,6 @@
 """Smoke: polls on the site (T176) — templates, drafts, sending with a fake Telegram, results, the table, closing, deleting.
-Run from app/api: DB_NAME=python_labs_smoke uv run python tests/smoke_polls_api.py"""
+Run from a site's api folder:
+DB_NAME=<db>_smoke ~/.venvs/python-labs/bin/python <repo>/core/api/tests/smoke_polls_api.py"""
 import os
 import sys
 from datetime import datetime, timedelta, timezone

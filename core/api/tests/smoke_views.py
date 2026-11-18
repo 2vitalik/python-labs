@@ -1,7 +1,8 @@
 """Smoke: saved views v2 (T315/T316) — the site's own views made once and never brought back, version 1 on making, a new version
 on a new look and the 15-minute amend with its exceptions, restore, a version named and starred, archive, delete with the versions,
 where a view came from, the use count (text/plain too), folders, prefs, an old view's lazy version 1, access.
-Run from app/api: DB_NAME=python_labs_views_smoke uv run --frozen python tests/smoke_views.py"""
+Run from a site's api folder:
+DB_NAME=<db>_smoke ~/.venvs/python-labs/bin/python <repo>/core/api/tests/smoke_views.py"""
 import json
 import os
 import sys
@@ -17,6 +18,7 @@ db = MongoClient()[DB]
 from fastapi.testclient import TestClient  # noqa: E402
 
 import main  # noqa: E402
+from core import views_seed  # noqa: E402
 from core.config import settings  # noqa: E402
 
 ADMIN, VASYA = "admin@nure.ua", "vasya@nure.ua"
@@ -50,14 +52,13 @@ with TestClient(main.app) as c:
     check("the site's own views made, first in order, then the old one", [v["slug"] for v in t["views"]] == [*SEEDS, "old"], list(views))
     check("prefs ride in the table", t["prefs"] == {"quiet": [], "folders": []}, t["prefs"])
     a, l2 = views["all"], views["lab2"]
-    check("«Усе»: an etalon of the site, pinned, version 1, a lab column for every lab", a["by"] == "" and a["etalon"] and a["pinned"] and a["version"] == 1
-          and a["query"] == {"cols": "fio,seen,bot,tg,gh,repo,commits,lab1,lab2,lab3,lab4,lab5,fields:", "group": "group"} and a["about"].startswith("Усі студенти"), a)
-    check("«Лаба 2»: lab 2, the site's columns for it (table_seed.py), its «для чого»", l2["title"] == "Лаба 2" and l2["emoji"] == "📅" and l2["query"]["lab"] == "2"
-          and l2["query"]["cols"].startswith("lab,lab.review") and "gfill" in l2["query"]["cols"] and l2["about"].startswith("Дедлайн 2"), l2)
-    l1, l3, l5 = views["lab1"], views["lab3"], views["lab5"]
-    check("«Лаба 1» asks for the registration, lab 3 — for a demo, a later lab — for the game's table", l1["query"]["cols"].startswith("reg,seen,bot,gh,repo,lab,")
-          and "demo3" in l3["query"]["cols"] and "gents" in l5["query"]["cols"] and "demo" not in l5["query"]["cols"]
-          and l5["about"].startswith("Дедлайн лаби"), (l1["query"], l3["query"], l5["query"]))
+    seed = {s["slug"]: s for s in views_seed.seeds(views_seed.course_labs())}  # the site may replace the columns, so they come from there
+    check("«Усе»: an etalon of the site, pinned, version 1, the site's columns", a["by"] == "" and a["etalon"] and a["pinned"] and a["version"] == 1
+          and a["query"] == seed["all"]["query"] and a["about"] == seed["all"]["about"], a)
+    check("«Лаба 2»: lab 2, the site's columns for it, its «для чого»", l2["title"] == "Лаба 2" and l2["emoji"] == "📅" and l2["query"]["lab"] == "2"
+          and l2["query"] == seed["lab2"]["query"] and l2["about"] == seed["lab2"]["about"], l2)
+    check("«Лаба 1», 3, 5: the columns and «для чого» of each lab's number", all(views[s]["query"] == seed[s]["query"] and views[s]["about"] == seed[s]["about"]
+                                                                               for s in ("lab1", "lab3", "lab5")), [views[s]["query"] for s in ("lab1", "lab3", "lab5")])
     check("api: every field, dates as ISO or null", {"about", "folder", "tags", "archived_at", "parent", "parent_version", "updated_at", "opens", "opened_at",
                                                      "uses", "used_at", "seconds", "order", "created_at"} <= set(a) and a["archived_at"] is None and "id" not in a, a)
     old = db.views.find_one({"slug": "old"})

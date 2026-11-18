@@ -1,5 +1,5 @@
-"""Smoke: bot /start handlers on a scratch DB, no Telegram needed. Run from app/api:
-DB_NAME=python_labs_smoke uv run python tests/smoke_bot.py"""
+"""Smoke: bot /start handlers on a scratch DB, no Telegram needed. Run from a site's api folder:
+DB_NAME=<db>_smoke ~/.venvs/python-labs/bin/python <repo>/core/api/tests/smoke_bot.py"""
 import asyncio
 import os
 import sys

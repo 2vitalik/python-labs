@@ -1,6 +1,6 @@
 """Smoke: guide pages in Mongo — seed from files, admin PUT with rev/409, history with notes, drafts in the text (T157),
-«Що змінилось» draft and publish, export/import round trip in a temp dir, ideas in refs. Run from app/api:
-DB_NAME=python_labs_smoke uv run python tests/smoke_guide.py"""
+«Що змінилось» draft and publish, export/import round trip in a temp dir. Run from a site's api folder:
+DB_NAME=<db>_smoke ~/.venvs/python-labs/bin/python <repo>/core/api/tests/smoke_guide.py"""
 import os
 import subprocess
 import sys
@@ -18,9 +18,16 @@ mongo.drop_database(DB)
 from fastapi.testclient import TestClient  # noqa: E402
 
 import main  # noqa: E402
+from core import guide_io  # noqa: E402
 from core.config import settings  # noqa: E402
 
 results = []
+settings.guide_readers = "all"  # a guest reads too (T214)
+SEED = {"labs": "# Лаби\n\nтекст", "game": "# Ігри\n\n## Своя гра\n\nтекст", "lab1": "# Лаба 1\n\nтекст", "lab5": "# Лаба 5\n\nтекст",
+        "changes": "# Що змінилось\n\nНове на сайті, свіже зверху.\n\n- **2026-09-20** — методичка на сайті"}
+guide_io.ROOT = Path(tempfile.mkdtemp())  # its own pages: the site's guide files are the site's
+for slug, text in SEED.items():
+    (guide_io.ROOT / f"{slug}.md").write_text(text + "\n")
 IO = ("import asyncio, pathlib, sys\nfrom core import guide_io\nfrom db import init_db\nguide_io.ROOT = pathlib.Path(sys.argv[1])\n"
       "async def go():\n    await init_db()\n    await getattr(guide_io, sys.argv[2])()\nasyncio.run(go())")
 
@@ -37,7 +44,7 @@ def login(c, email, status):
 
 
 def io(root, cmd):
-    return subprocess.run(["uv", "run", "python", "-c", IO, str(root), cmd], capture_output=True, text=True)
+    return subprocess.run([sys.executable, "-c", IO, str(root), cmd], capture_output=True, text=True)
 
 
 with TestClient(main.app) as c:
@@ -52,7 +59,7 @@ with TestClient(main.app) as c:
 
     login(c, "admin@nure.ua", "admin")
     pages = c.get("/api/guide").json()
-    check("seed: pages from data/guide, no draft", len(pages) >= 10 and all(p["slug"] != "changes-draft" for p in pages))
+    check("seed: pages from the guide's files, no draft", len(pages) == len(SEED) and all(p["slug"] != "changes-draft" for p in pages))
     check("seed logged", mongo[DB].history.count_documents({"coll": "guide", "actor": "seed"}) == len(pages))
     g = c.get("/api/guide/game").json()
     check("page: title/body/rev 0", g["title"].endswith("Ігри") and g["rev"] == 0 and "## " in g["body"])
@@ -107,14 +114,6 @@ with TestClient(main.app) as c:
     lab1 = c.get("/api/guide/lab1").json()
     check("import: file → page, rev 1, actor import", r.returncode == 0 and lab1["title"] == "Лаба 1 нова"
           and lab1["rev"] == 1 and lab1["updated_by"] == "import", r.stderr)
-
-    r = c.post("/api/refs", json={"note": "ідея без лінка"})
-    check("idea: kind idea, no url", r.status_code == 200 and r.json()["kind"] == "idea" and r.json()["url"] == "", r.text)
-    check("empty idea → 422", c.post("/api/refs", json={"note": " "}).status_code == 422)
-    check("bad url → 422", c.post("/api/refs", json={"url": "просто текст"}).status_code == 422)
-    link = c.post("/api/refs", json={"url": "https://x.com", "note": "лінк"}).json()["id"]
-    r = c.post("/api/refs", json={"note": "під лінком", "parent": link}).json()
-    check("idea under a find", r["parent"] == link and r["kind"] == "idea")
 
 ok = sum(1 for _, p in results if p)
 print(f"\n{ok}/{len(results)} PASS")

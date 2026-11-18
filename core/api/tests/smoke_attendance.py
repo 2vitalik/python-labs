@@ -1,6 +1,7 @@
 """Smoke: attendance from Zoom (T222) with a fake Zoom — not set up → 503, the run by the lesson's date, segments merged,
 late, the threshold, the teacher apart, unknown names → alias, students see the published block only, the matrix,
-the recording's files as sources, the agent's token. Run from app/api: DB_NAME=python_labs_smoke uv run python tests/smoke_attendance.py"""
+the recording's files as sources, the agent's token. Run from a site's api folder:
+DB_NAME=<db>_smoke ~/.venvs/python-labs/bin/python <repo>/core/api/tests/smoke_attendance.py"""
 import os
 import sys
 

@@ -1,5 +1,6 @@
 """Smoke: a deadline's verdict (T340) — a student per case: the answer, the case, the hours late, the flags; the status poll;
-the teacher's word with leniency. Run from app/api: DB_NAME=python_labs_t340_case_smoke uv run python tests/smoke_due_case.py"""
+the teacher's word with leniency. Run from a site's api folder:
+DB_NAME=<db>_smoke ~/.venvs/python-labs/bin/python <repo>/core/api/tests/smoke_due_case.py"""
 import os
 import sys
 from datetime import datetime, timedelta, timezone

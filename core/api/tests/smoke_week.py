@@ -1,5 +1,6 @@
 """Smoke: «Мій тиждень» (T179) — the grid, marks put in order, «Готово» that asks for reasons, the alert, the history, the teacher's list.
-Run from app/api: DB_NAME=python_labs_smoke uv run python tests/smoke_week.py"""
+Run from a site's api folder:
+DB_NAME=<db>_smoke ~/.venvs/python-labs/bin/python <repo>/core/api/tests/smoke_week.py"""
 import os
 import sys
 
@@ -18,6 +19,7 @@ from core.config import settings  # noqa: E402
 
 ADMIN, VASYA, PETRO, TEST = "admin@nure.ua", "vasya@nure.ua", "petro@nure.ua", "test.student@nure.ua"
 settings.admin_emails, settings.tg_bot_token = ADMIN, "fake"
+settings.week_hours, settings.week_days = "15-23", 6
 sent, results = [], []
 db.users.insert_many([
     {"email": VASYA, "status": "student", "group": "ПЗПІ-25-1", "last_name": "Пупкін", "first_name": "Василь", "tg_username": "vasya_tg"},

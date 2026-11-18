@@ -1,6 +1,7 @@
 """Smoke: a lesson as a day (T333) — the address is the date, parts with keys, a private part is its student's, a break
-is the teacher's, a day of private parts only; defenses as the site's parts (a day without a lesson too); clicks on links;
-the attendance summary of the table. Run from app/api: DB_NAME=python_labs_smoke uv run python tests/smoke_lesson_days.py"""
+is the teacher's, a day of private parts only; clicks on links; the attendance summary of the table. A site's own parts
+(python's defenses) — the site's smoke_lesson_days.py. Run from a site's api folder:
+DB_NAME=<db>_smoke ~/.venvs/python-labs/bin/python <repo>/core/api/tests/smoke_lesson_days.py"""
 import os
 import sys
 from datetime import datetime
@@ -96,33 +97,7 @@ with TestClient(main.app) as c:
     check("…and its student has it, without the part «поза заняттям»", slugs(c) == ["2026-11-12", "2026-11-10"]
           and [p["kind"] for p in c.get("/api/lessons/2026-11-12").json()["parts"]] == ["def"])
 
-    # defenses (T327) as the site's parts: 16:05 UTC is 18:05 by the classes' clock
-    base = {"labs": [1, 2], "kind": "online", "result": "passed", "link": "", "created_at": datetime(2026, 11, 10)}
-    mongo[DB].defenses.insert_many([
-        base | {"student": "stud@nure.ua", "started_at": datetime(2026, 11, 10, 16, 5), "ended_at": datetime(2026, 11, 10, 16, 28), "sent_at": datetime(2026, 11, 10, 17)},
-        base | {"student": "other@nure.ua", "started_at": datetime(2026, 11, 10, 16, 30), "ended_at": None, "sent_at": None},
-        base | {"student": "stud@nure.ua", "started_at": datetime(2026, 11, 14, 9), "ended_at": datetime(2026, 11, 14, 9, 20), "sent_at": datetime(2026, 11, 14, 10)},
-        base | {"student": "other@nure.ua", "started_at": None, "ended_at": None, "sent_at": None}])
-    l = c.get("/api/lessons/2026-11-10").json()
-    d = l["parts"][-1]
-    check("student: own sent defense joins the day — 18:05–18:28, лаби 1, 2, leads to /my/remarks", len(l["parts"]) == 3 and d["kind"] == "def"
-          and (d["start"], d["end"], d["title"], d["to"], d["result"]) == ("18:05", "18:28", "лаби 1, 2", "/my/remarks", "passed"), l["parts"])
-    rows = c.get("/api/lessons").json()
-    check("student: a defense on a date without a lesson is a day too", rows[0]["slug"] == "2026-11-14" and rows[0]["virtual"]
-          and rows[0]["parts"][0]["start"] == "11:00" and c.get("/api/lessons/2026-11-14").json()["parts"][0]["to"] == "/my/remarks", rows[0])
-    login(c, "other@nure.ua", "student")
-    check("another student: a defense not sent yet is not shown, the foreign day is 404",
-          len(c.get("/api/lessons/2026-11-10").json()["parts"]) == 1 and c.get("/api/lessons/2026-11-14").status_code == 404 and slugs(c) == ["2026-11-10"])
     login(c, "admin@nure.ua", "admin")
-    l = c.get("/api/lessons/2026-11-10").json()
-    check("admin: both defenses of the date with the students, each leads to its page", [p["people"][0]["nick"] for p in l["parts"][3:]] == ["stud", "other"]
-          and l["parts"][3]["to"].startswith("/defenses/") and "2026-11-14" in slugs(c), l["parts"][3:])
-    own = [p for p in l["parts"] if not p.get("site")]
-    own[2] |= {"start": "18:00", "end": "18:40", "title": ""}
-    l = c.put("/api/lessons/2026-11-10", json={"rev": l["rev"], "parts": own}).json()
-    p9 = next(p for p in l["parts"] if p["key"] == "p9")
-    check("a defense inside the student's private part joins its card: one card, the badge and the link there; the other stays its own",
-          len(l["parts"]) == 4 and p9["to"].startswith("/defenses/") and p9["title"] == "лаби 1, 2" and "site" not in p9 and l["parts"][3]["site"], l["parts"])
     check("a day that is not there and has no parts → 404", c.get("/api/lessons/2026-11-15").status_code == 404 and c.get("/api/lessons/nope").status_code == 404)
 
     # attendance summary for the table: 100 min meeting, stud 60 min, other 10 min (under a quarter)

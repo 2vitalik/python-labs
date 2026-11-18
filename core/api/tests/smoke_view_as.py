@@ -1,6 +1,6 @@
 """Smoke: «Очима студента» (T148, T161) — only an admin; a test student can be edited, a real one is read-only;
-whose rights, whose footprint; test students in the lists. Run from app/api:
-DB_NAME=python_labs_smoke uv run python tests/smoke_view_as.py"""
+whose rights, whose footprint; test students in the lists. Run from a site's api folder:
+DB_NAME=<db>_smoke ~/.venvs/python-labs/bin/python <repo>/core/api/tests/smoke_view_as.py"""
 import os
 import sys
 
@@ -85,11 +85,11 @@ with TestClient(main.app) as c:
     check("real: /api/me is the student, not a test one", (me["email"], me["status"], me["test"]) == (PETRO, "student", False), me)
     check("real: no bot link, no token minted", "tg_link" not in r.json() and "tg_link" not in me
           and not db.users.find_one({"email": PETRO}).get("tg_token"))
-    check("real: reading works", c.get("/api/my/game").status_code == 200 and "petro" in nicks(c))
+    check("real: reading works", c.get("/api/my/week").status_code == 200 and "petro" in nicks(c))
     r = c.put("/api/profile", json={"last_name": "Зламав", "first_name": "Я", "github": "https://github.com/oops/labs"})
     check("real: saving the profile → 403 with a reason", r.status_code == 403 and r.json()["detail"].startswith("Лише перегляд"), r.text)
-    check("real: creating a game → 403, unlinking the bot → 403",
-          c.post("/api/my/game", json={"title": "x", "base_custom": "y"}).status_code == c.delete("/api/me/telegram").status_code == 403)
+    check("real: saving the week → 403, unlinking the bot → 403",
+          c.put("/api/my/week", json={"comment": "x"}).status_code == c.delete("/api/me/telegram").status_code == 403)
     petro = db.users.find_one({"email": PETRO})
     check("real: the student is as they were", petro["last_name"] == "Петренко" and not petro.get("github")
           and petro.get("last_seen_at") is None and db.history.count_documents({"actor": PETRO}) == 0, petro)
