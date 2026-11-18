@@ -19,6 +19,7 @@ DUE_COLS = "lab.answer,lab.case,lab.late,lab.says,lab.flags,lab.met,lab.note,lab
 DUE_ABOUT = ("Вклався чи ні: чіткі «так», чіткі «ні» й пограничні — групами за випадком. Сайт зводить звіт агента, коміти, подовження "
              "й опитування; останнє слово — колонка ✍.")
 DUE_PINNED = 2  # the deadlines on the tabs from the start; the rest wait in the library
+DUE = True  # the verdict reads repositories and the agent's reviews: a site without them turns «Дедлайн N» off
 
 
 def course_labs() -> list[int]:
@@ -34,7 +35,7 @@ def seeds(labs: list[int]) -> list[dict]:
             *({"slug": f"lab{n}", "title": f"Лаба {n}", "emoji": "📅", "about": LAB_ABOUT.get(n, LAB_ABOUT[0]),
                "query": {"lab": str(n), "cols": LAB_COLS.get(n, LAB_COLS[0]), "group": "group"}} for n in labs),
             *({"slug": f"due{n}", "title": f"Дедлайн {n}", "emoji": "🏁", "about": DUE_ABOUT, "folder": "Дедлайни", "pinned": n <= DUE_PINNED,
-               "query": {"lab": str(n), "cols": DUE_COLS, "group": "lab.answer,lab.case"}} for n in labs)]
+               "query": {"lab": str(n), "cols": DUE_COLS, "group": "lab.answer,lab.case"}} for n in labs if DUE)]
 
 
 async def ensure_seeds():

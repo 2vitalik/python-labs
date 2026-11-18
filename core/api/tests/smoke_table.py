@@ -15,12 +15,14 @@ db = MongoClient()[DB]
 from fastapi.testclient import TestClient  # noqa: E402
 
 import main  # noqa: E402
+from core import views_seed  # noqa: E402
 from core.config import settings  # noqa: E402
 
 ADMIN, VASYA, PETYA, TEST = "admin@nure.ua", "vasya@nure.ua", "petya@nure.ua", "tst@nure.ua"
 settings.admin_emails, settings.tg_bot_token, settings.agent_tokens, settings.labs = ADMIN, "", "claude:tok", 5
 AGENT = {"Authorization": "Bearer tok"}
 REPO = "https://github.com/vasya/game"
+views_seed.DUE = True  # a site may turn «Дедлайн N» off
 SEEDS = ["all", "start", "lab1", "lab2", "lab3", "lab4", "lab5", "due1", "due2", "due3", "due4", "due5"]  # core/views_seed.py
 now = datetime.now(timezone.utc)
 results = []

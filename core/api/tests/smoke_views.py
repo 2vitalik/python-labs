@@ -24,6 +24,7 @@ from core.config import settings  # noqa: E402
 ADMIN, VASYA = "admin@nure.ua", "vasya@nure.ua"
 settings.admin_emails, settings.tg_bot_token, settings.agent_tokens, settings.labs = ADMIN, "", "claude:tok", 5
 AGENT = {"Authorization": "Bearer tok"}
+views_seed.DUE = True  # a site may turn «Дедлайн N» off
 SEEDS = ["all", "start", "lab1", "lab2", "lab3", "lab4", "lab5", "due1", "due2", "due3", "due4", "due5"]
 now = datetime.now(timezone.utc)
 results = []
