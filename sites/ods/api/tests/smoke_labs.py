@@ -33,7 +33,7 @@ def variant(group, n, lab=1):
 
 snap = Path(tempfile.mkdtemp()) / "site.hid.json"
 snap.write_text(json.dumps([variant("КН-1", 1), variant("КН-1", 2), variant("ДЕМО", 0), variant("КН-1", 1, lab=2), variant("ДЕМО", 0, lab=2)], ensure_ascii=False))
-run = lambda: subprocess.run(["uv", "run", "python", "lab_io.py", str(snap)], check=True, capture_output=True, text=True).stdout
+run = lambda: subprocess.run([sys.executable, "lab_io.py", str(snap)], check=True, capture_output=True, text=True).stdout  # no `uv run`: it would re-sync a venv shared with running servers
 check("import: five new variants — the same vid in two labs lives twice", "нових 5" in run())
 check("import again: nothing changes", "без змін 5" in run())
 
