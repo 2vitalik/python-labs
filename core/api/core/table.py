@@ -42,7 +42,7 @@ async def table() -> dict:
     for v in await FieldValue.find_all().to_list():
         values.setdefault(v.user, {})[v.column] = v.value
     extras: dict[str, dict] = {}
-    for extra in students.EXTRAS:
+    for extra in students.EXTRAS + students.TEACHER:
         for email, more in (await extra(users)).items():
             extras.setdefault(email, {}).update(more)
     att = await summary(users)

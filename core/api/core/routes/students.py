@@ -14,7 +14,8 @@ GROUP_NAME_RE = re.compile(r"\S+-\d\d-\d+")  # a NURE group name in a DL row; «
 CELL_RE = re.compile(r"\t|\s{2,}")  # table cells: tabs from a browser, runs of spaces once an editor flattened them
 
 router = APIRouter(prefix="/api/students")
-EXTRAS = []  # the site's own part of a row in the list: async (users) → {email: {…}}
+EXTRAS = []  # the site's own part of a row in the list: async (users) → {email: {…}}; whoever sees the row sees it
+TEACHER = []  # the same for the teacher's eyes only — marks, notes, links: a student's list never carries it
 
 
 class StudentIn(ProfileIn):
@@ -67,7 +68,7 @@ async def list_students(user: User = Depends(lister)):
     users.sort(key=lambda u: u.test)  # stable: test students go last
     users = [u for u in users if can_see(user, u)]
     rows = {u.email: u.person() for u in users}
-    for extra in EXTRAS:
+    for extra in EXTRAS + (TEACHER if user.status == Status.admin else []):
         for email, more in (await extra(users)).items():
             rows[email] |= more
     if user.status == Status.admin:
