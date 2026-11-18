@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T352** · тікетів: 351 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T354** · тікетів: 353 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -358,4 +358,6 @@
 | platform | [T348](platform/.t/T348--features-candy/plan.md) | ⚙️ | features-candy | «Можливості» — цукерка: мапа сторінки, «Усе / Нічого», значки й підказки під мишкою; олівець не вмикається сам; панель не скаче — план і звіт | 🟢 ⬜ |
 | platform | [T349](platform/.t/T349-Q--features-candy-choices.md) | ❓ | features-candy-choices | «Можливості» — вибори після T348 | 🔴 ⬜ |
 | platform | [T350](platform/.t/T350--game-plus/plan.md) | ⚙️ | game-plus | Плюси на сторінці «Гра» — «＋» біля підпису, значок нотатки переходу, один знак ⊕ — план | 🟢 ⬜ |
-| platform | [T351](platform/.t/T351-Q--game-plus-choices.md) | ❓ | game-plus-choices | Плюси — вибір після T350 | 🟢 ⬜ |
+| platform | [T351](platform/.t/T351-Q--game-plus-choices.md) | ❓ | game-plus-choices | Плюси — вибір після T350 | 🔴 ⬜ |
+| platform | [T352](platform/.t/T352--shared-to-core/plan.md) | ⚙️ | shared-to-core | Спільне — в ядро: ods на всіх сторінках платформи, цеглинки python-сайту в core — план | 🟢 ⬜ |
+| platform | [T353](platform/.t/T353-Q--shared-to-core-choices.md) | ❓ | shared-to-core-choices | Спільне в ядрі: вибори — «Строки» ods, захисти, файли, ШІ-клієнт | 🟢 ⬜ |
