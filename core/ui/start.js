@@ -9,9 +9,12 @@ import App from './App.vue'
 import { report } from './problem.js'
 import { site } from './site.js'
 
+const plain = (v) => v && typeof v === 'object' && !Array.isArray(v)
+
 // `about` — the site's own site.js, `router` — makeRouter() over its routes
 export function start(about, router) {
-  Object.assign(site, about)
+  // a group (`students`, `table`, …) keeps the platform's defaults for what the site does not say
+  for (const [k, v] of Object.entries(about)) site[k] = plain(v) && plain(site[k]) ? { ...site[k], ...v } : v
   const app = createApp(App)
   app.config.errorHandler = report
   window.addEventListener('error', (e) => e.error && report(e.error))  // no `error` — not our code: a browser notice, a foreign script
