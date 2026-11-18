@@ -1,0 +1,395 @@
+<title>Спільне ядро #352 рев’ю</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=Manrope:wght@600;700;800&display=swap">
+<style>
+/* Layout: one reading column; pairs and grids stack on phones. Same look as the #126 and #134 review pages. */
+:root {
+  --bg: #f6f4f1; --surface: #ffffff; --ink: #1c2024; --muted: #5a6068; --line: #e3ded6;
+  --accent: #c94f18; --accent-soft: #fbe8dd; --brown: #b85a18;
+  --ok: #1d7448; --ok-soft: #e2f2e8; --warn: #96580a; --warn-soft: #f9eedb;
+  --bad: #b3302a; --bad-soft: #f9e3e1; --info: #2d5aa6; --info-soft: #e6edf8;
+  --code: #f1eee9;
+  --font-head: "Manrope", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141619; --surface: #1c1f23; --ink: #e8e6e3; --muted: #a3a8ae; --line: #30353b;
+    --accent: #ff7f45; --accent-soft: #3a2418; --brown: #e0874a;
+    --ok: #5cc98f; --ok-soft: #173225; --warn: #f0b25a; --warn-soft: #3a2c14;
+    --bad: #ff8277; --bad-soft: #3d1c1a; --info: #8fb3f0; --info-soft: #1b2638;
+    --code: #181b1f; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141619; --surface: #1c1f23; --ink: #e8e6e3; --muted: #a3a8ae; --line: #30353b;
+  --accent: #ff7f45; --accent-soft: #3a2418; --brown: #e0874a;
+  --ok: #5cc98f; --ok-soft: #173225; --warn: #f0b25a; --warn-soft: #3a2c14;
+  --bad: #ff8277; --bad-soft: #3d1c1a; --info: #8fb3f0; --info-soft: #1b2638;
+  --code: #181b1f; color-scheme: dark;
+}
+body { background: var(--bg); color: var(--ink); font: 15px/1.6 var(--font-body); }
+.page { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 72px; }
+h1, h2, h3, h4 { font-family: var(--font-head); text-wrap: balance; line-height: 1.25; }
+h1 { font-size: clamp(1.7rem, 4vw, 2.4rem); margin: 0 0 6px; letter-spacing: -0.01em; }
+h2 { font-size: 1.5rem; margin: 56px 0 10px; display: flex; gap: 12px; align-items: baseline; }
+h3 { font-size: 1.12rem; margin: 28px 0 8px; }
+h4 { font-size: 0.98rem; margin: 0 0 6px; }
+p { margin: 0 0 10px; }
+a { color: var(--accent); }
+code { font-family: var(--font-mono); font-size: 0.86em; background: var(--code); padding: 0.05em 0.35em; border-radius: 4px; overflow-wrap: anywhere; }
+.num { font-family: var(--font-mono); font-size: 0.9rem; color: var(--surface); background: var(--brown); border-radius: 6px; padding: 2px 9px; }
+.sub { color: var(--muted); margin: 0 0 18px; }
+.lead { color: var(--muted); max-width: 78ch; }
+.kicker { text-transform: uppercase; letter-spacing: 0.07em; font-size: 0.72rem; color: var(--muted); margin: 0 0 4px; font-weight: 600; }
+.verdict { border: 1px solid var(--line); border-left: 5px solid var(--ok); background: var(--surface); border-radius: 10px; padding: 16px 20px; }
+.verdict ul { margin: 6px 0 0; padding-left: 20px; }
+.verdict li { margin: 4px 0; }
+.stats { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; padding: 0; list-style: none; }
+.stats li { background: var(--ok-soft); color: var(--ok); border-radius: 999px; padding: 3px 12px; font-size: 0.85rem; font-weight: 600; margin: 0; }
+.stats li.red { background: var(--warn-soft); color: var(--warn); }
+nav.toc { margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.92rem; }
+nav.toc a { text-decoration: none; border-bottom: 1px dashed currentColor; }
+.chip { display: inline-block; font-size: 0.75rem; font-weight: 600; border-radius: 999px; padding: 1px 9px; white-space: nowrap; }
+.chip.ok { background: var(--ok-soft); color: var(--ok); }
+.chip.warn { background: var(--warn-soft); color: var(--warn); }
+.chip.bad { background: var(--bad-soft); color: var(--bad); }
+.chip.info { background: var(--info-soft); color: var(--info); }
+.chip.off { background: var(--code); color: var(--muted); }
+.pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; align-items: stretch; margin: 14px 0; }
+.pair > * { min-width: 0; }
+.box { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; }
+.box.now { border-color: var(--ok); }
+.box h4 { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.box ul { margin: 6px 0 0; padding-left: 18px; }
+.box li { margin: 3px 0; }
+.tree { font: 12.5px/1.55 var(--font-mono); background: var(--code); border-radius: 8px; padding: 10px 12px; margin: 8px 0; white-space: pre; overflow-x: auto; }
+.tree b { color: var(--accent); font-weight: 600; }
+.tree i { color: var(--muted); font-style: normal; }
+.scroll { overflow-x: auto; max-width: 100%; }
+table.grid { border-collapse: collapse; width: 100%; font-size: 0.9rem; background: var(--surface); }
+table.grid th, table.grid td { border: 1px solid var(--line); padding: 7px 10px; text-align: left; vertical-align: top; }
+table.grid th { background: var(--code); font-family: var(--font-head); font-size: 0.82rem; }
+table.grid td.c { white-space: nowrap; }
+table.grid td.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+table.grid tr.band td { background: var(--code); font-family: var(--font-head); font-weight: 700; font-size: 0.82rem; }
+.finding { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 20px; margin: 18px 0; }
+.finding.bad { border-left: 5px solid var(--bad); } .finding.warn { border-left: 5px solid var(--warn); } .finding.note { border-left: 5px solid var(--info); }
+.finding header { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.finding h3 { margin: 0; }
+dl { margin: 10px 0 0; display: grid; grid-template-columns: 10rem 1fr; gap: 6px 16px; }
+dt { font-weight: 600; color: var(--muted); font-size: 0.88rem; }
+dd { margin: 0; min-width: 0; }
+@media (max-width: 700px) { dl { grid-template-columns: 1fr; } dt { margin-top: 6px; } }
+figure.shot { margin: 12px 0 14px; }
+figure.shot img { display: block; max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+figcaption { color: var(--muted); font-size: 0.86rem; margin-top: 6px; max-width: 90ch; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin: 14px 0; }
+.cards > * { min-width: 0; }
+.callout { background: var(--code); border-radius: 8px; padding: 10px 14px; margin: 12px 0; }
+.callout p:last-child { margin: 0; }
+ol.next { padding-left: 22px; } ol.next li { margin: 6px 0; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+footer { margin-top: 56px; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 12px; }
+</style>
+
+<div class="page">
+<header>
+  <p class="kicker">python-labs · T352 · спільне — в ядро</p>
+  <h1>Спільне ядро #352 — що переїхало, що підключено, що лишилось своїм</h1>
+  <p class="sub">гілка <code>ods</code> · 17 комітів · без push · 19.11.2026 · вибори — тікет T353</p>
+
+  <div class="verdict">
+    <p><b>Готово: ods має ті самі сторінки платформи, що й python, спільне лежить у ядрі, python-сайт поводиться, як поводився.</b></p>
+    <ul>
+      <li><b>Підключено на ods.</b> «Строки», «Звід» з бібліотекою видів, опитування, тиждень, «Перші кроки» на домашній. «Моя лаба» знову працює.</li>
+      <li><b>Переїхало в ядро.</b> Цеглинки python-сайту, що не знають про ігри, і 24 смоуки платформи: той самий тест тепер проходить з обох сайтів.</li>
+      <li><b>ods узяв підходом.</b> Свої колонки «Зводу» і «Студентів», заводські види, сповіщення бота «здав рядок відповідей».</li>
+      <li><b>Закрита діра.</b> Студент побачив би чужі бали й нотатки викладача; знайдено й виправлено до будь-якого деплою.</li>
+      <li><b>Чекає тебе.</b> Два рішення про «Строки» ods (T353, питання 1 і 2) та оновлення видів у локальній базі <code>ods</code>.</li>
+    </ul>
+    <ul class="stats">
+      <li>смоуки платформи: 700 з 700 на кожному сайті</li><li>смоуки сайтів: 740 і 55</li><li>обидві збірки ✓</li>
+      <li>python у браузері: 9 сценаріїв ✓</li><li>ods у браузері: 10 сценаріїв ✓</li><li class="red">2 рішення і 1 команда — за тобою</li>
+    </ul>
+  </div>
+
+  <nav class="toc" aria-label="Зміст">
+    <a href="#what">1 Було і стало</a><a href="#pages">2 Сторінка за сторінкою</a><a href="#moved">3 Що переїхало в ядро</a>
+    <a href="#copied">4 Що ods узяв підходом</a><a href="#own">5 Що лишилось своїм</a><a href="#findings">6 Знахідки</a>
+    <a href="#checks">7 Як перевірено</a><a href="#next">8 Далі</a>
+  </nav>
+</header>
+
+<section id="what">
+  <h2><span class="num">1</span>Було і стало</h2>
+  <p class="lead">Ядро вже тримало майже всю платформу. Бракувало трьох речей: ods не підключив половини сторінок, у python-сайті лежали цеглинки, які нічого не знають про ігри, а смоуки платформи запускались лише з python.</p>
+
+  <div class="pair">
+    <div class="box">
+      <h4>Було <span class="chip info">до сьогодні</span></h4>
+      <div class="tree">core/            платформа
+├─ api/          вхід, бот, пари, опитування, тиждень,
+│                дедлайни, «Звід»
+└─ ui/           сторінки й компоненти платформи
+
+app/             python-сайт
+├─ api/tests/    <b>усі смоуки — і платформи теж</b>
+└─ vue/src/      ігри + <b>загальні цеглинки</b>
+                 (Markdown, список-вибір, «покажи де»…)
+
+sites/ods/       лекції, лаби, «Моя лаба»
+└─ router.js     <b>без</b> «Строків», «Зводу»,
+                 опитувань, тижня</div>
+      <ul>
+        <li><code>GET /api/labs</code> ядра перекривав список лаб ods: «Моя лаба» не працювала</li>
+        <li>ядро шукало лабу за номером і на ods знаходило лекцію</li>
+      </ul>
+    </div>
+    <div class="box now">
+      <h4>Стало <span class="chip ok">T352</span></h4>
+      <div class="tree">core/
+├─ api/tests/    <b>24 смоуки платформи</b>, з теки будь-якого сайту
+└─ ui/           + <b>цеглинки з python-сайту</b>
+                 + «Перші кроки» домашньої
+
+app/             лише ігрове: каталог, гра, захисти, ШІ
+└─ api/tests/    смоуки ігор і python-частини
+
+sites/ods/       лекції, лаби, «Моя лаба»
+├─ router.js     <b>ті самі сторінки ядра, що на python</b>
+├─ labCols.js    свої колонки «Зводу» і «Студентів»
+└─ api/          /api/variants, свої види, сповіщення бота</div>
+      <ul>
+        <li>фіча в сторінці ядра зʼявляється на обох сайтах одразу</li>
+        <li>python-сайт поводиться, як поводився: змінились лише рядки <code>import</code></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="pages">
+  <h2><span class="num">2</span>Сторінка за сторінкою</h2>
+  <p class="lead">Кожна сторінка й функція python-сайту: де живе її код і що з нею на ods.</p>
+  <div class="scroll">
+  <table class="grid">
+    <tr><th>Сторінка або функція</th><th>Код</th><th>ods</th></tr>
+    <tr class="band"><td colspan="3">Підключено сьогодні</td></tr>
+    <tr><td>«Строки» <code>/deadlines</code> — студенти × лаби, дедлайни по групах, подовження, слово викладача</td><td class="c">ядро</td><td><span class="chip ok">підключено</span> після дедлайну клітинки чекають твого слова — питання 1</td></tr>
+    <tr><td>«Звід» <code>/table</code> і бібліотека видів <code>/table/views</code></td><td class="c">ядро</td><td><span class="chip ok">підключено</span> + 7 своїх колонок на лабу</td></tr>
+    <tr><td>Опитування в Telegram <code>/polls…</code> — шаблони, відправка в гілки, результати, матриця</td><td class="c">ядро</td><td><span class="chip ok">підключено</span></td></tr>
+    <tr><td>Тиждень <code>/my/week</code>, <code>/week</code></td><td class="c">ядро</td><td><span class="chip ok">підключено</span> у «Перших кроках» ods не проситься — питання 4</td></tr>
+    <tr><td>«Перші кроки» на домашній</td><td class="c">python → <b>ядро</b></td><td><span class="chip ok">є</span> два кроки: вхід і бот</td></tr>
+    <tr class="band"><td colspan="3">Було на обох і раніше</td></tr>
+    <tr><td>Вхід Google, ролі, «Очима студента», токени агентів</td><td class="c">ядро</td><td><span class="chip off">було</span></td></tr>
+    <tr><td>Профіль, список студентів, картка студента, імпорт списків</td><td class="c">ядро</td><td><span class="chip off">було</span> + колонка «Лаби» і два фільтри</td></tr>
+    <tr><td>Бот: привʼязка, сповіщення з маршрутами <code>/here</code>, нотатки, <code>/due</code>, дайджест</td><td class="c">ядро</td><td><span class="chip off">було</span> + свій вид «здав рядок відповідей»</td></tr>
+    <tr><td>Пари <code>/lessons</code>, відвідування, Zoom</td><td class="c">ядро</td><td><span class="chip off">було</span></td></tr>
+    <tr><td>Активність, помилки, історія правок</td><td class="c">ядро</td><td><span class="chip off">було</span> + назва своєї колекції</td></tr>
+    <tr><td>Методичка: сторінки, редактор, чернетки</td><td class="c">ядро</td><td><span class="chip off">було</span> лекції й лаби — на ній</td></tr>
+    <tr><td>Прилипле меню й «Ще», крихти, «нагору» і «☰ зміст», рядок «де я», «#» біля заголовків, спалах якоря, картки під мишкою, світла підказка, тема</td><td class="c">ядро</td><td><span class="chip off">було</span> працює само, бо <code>App.vue</code> спільний</td></tr>
+    <tr class="band"><td colspan="3">Лишилось у python-сайті</td></tr>
+    <tr><td>Захисти <code>/defenses</code>, зауваження <code>/my/remarks</code></td><td class="c">python</td><td><span class="chip warn">питання 3</span> теги про код, відповідь комітом GitHub, монетки</td></tr>
+    <tr><td>Віконце емодзі</td><td class="c">python</td><td><span class="chip warn">питання 6</span> дані — ігрові категорії; ods має малу палітру</td></tr>
+    <tr><td>Завантаження картинок, клієнт ШІ, «Знахідки»</td><td class="c">python</td><td><span class="chip warn">питання 7</span> коли дійде до перевірки лаб ods</td></tr>
+    <tr><td>Ігри, таски, «Моя гра», ігротека, заявки, монетки, відео «Супроводу», ШІ «описати словами»</td><td class="c">python</td><td><span class="chip off">не потрібне</span></td></tr>
+    <tr><td>Машинерія сторінки гри: стовпці, вигляди секцій, інструменти картки, «Повернути»</td><td class="c">python</td><td><span class="chip off">не потрібне</span> зшите з редактором гри; поїде з іграми до третього сайту</td></tr>
+  </table>
+  </div>
+</section>
+
+<section id="moved">
+  <h2><span class="num">3</span>Що переїхало в ядро</h2>
+  <p class="lead">Файли перенесено з історією (<code>git mv</code>). Python-сайт бере їх через <code>@core/…</code>; ods може брати так само.</p>
+  <div class="scroll">
+  <table class="grid">
+    <tr><th>Що</th><th>Файли в <code>core/ui</code></th><th>Навіщо воно другому сайтові</th></tr>
+    <tr><td>Пошук у тексті</td><td><code>search.js</code></td><td>пошук без огляду на регістр і «и / і», підсвітка знайденого</td></tr>
+    <tr><td>Markdown-текст</td><td><code>Md.vue</code> · <code>MdField.vue</code> · <code>InlineMd.vue</code></td><td>текст, який редагується там, де читається: клік — джерело на місці</td></tr>
+    <tr><td>Список-вибір</td><td><code>Picker.vue</code> · <code>pick.js</code></td><td>один список із пошуком, рядок каже, чому знайшовся. Слово «за запитом» тепер дає сайт, у ядрі його нема</td></tr>
+    <tr><td>Мова дій</td><td><code>SaveCancel.vue</code> · <code>MoreFields.vue</code></td><td>пара «✕ ✓» під формою; тихий ряд «⊕ поле» для рідких полів</td></tr>
+    <tr><td>Сторінка, що згортається</td><td><code>fold.js</code> · <code>jump.js</code></td><td>памʼять «розгорнуто · коротко · згорнуто»; «покажи де» зі спалахом</td></tr>
+    <tr><td>Дрібне</td><td><code>shortLink.js</code> · <code>GuideHead.vue</code></td><td>посилання, як його читають; текст розділу над каталогом</td></tr>
+    <tr><td>Домашня</td><td><code>StartSteps.vue</code></td><td>кроки «увійти · бот»; тиждень і свій рядок сайт вмикає в паспорті</td></tr>
+    <tr><td>Смоуки платформи</td><td><code>core/api/tests/</code> — 24 файли</td><td>той самий файл запускається з теки кожного сайту</td></tr>
+  </table>
+  </div>
+  <h3>Що ядро навчилось заодно</h3>
+  <div class="cards">
+    <div class="box"><h4>Паспорт сайту зливається по групах</h4><p>Сайт пише в <code>students</code>, <code>table</code>, <code>start</code> лише своє; решта лишається за замовчуванням. Раніше неповна група ламала сторінку.</p></div>
+    <div class="box"><h4>Рядок студента «лише для викладача»</h4><p><code>students.TEACHER</code> поруч з <code>EXTRAS</code>: бали, нотатки й посилання йдуть у «Звід» і список викладача, але не у список, який бачить студент.</p></div>
+    <div class="box"><h4>Заводські види — сталі, які сайт замінює</h4><p>Колонки й «для чого» видів «Усе», «Старт», «Лаба N» сайт задає у своєму <code>table_seed.py</code>.</p></div>
+    <div class="box"><h4>Лаба серед сторінок за <code>kind</code></h4><p>Де номер мають і лекції, ядро більше не плутає лабу 1 з лекцією 1.</p></div>
+  </div>
+</section>
+
+<section id="copied">
+  <h2><span class="num">4</span>Що ods узяв підходом</h2>
+  <p class="lead">Код тут свій, бо йдеться про варіанти лаб. Механізм той самий, яким python-сайт додає ігри.</p>
+  <div class="scroll">
+  <table class="grid">
+    <tr><th>Механізм ядра</th><th>python</th><th>ods, зроблено сьогодні</th></tr>
+    <tr><td>Свої колонки «Зводу» <code>site.table.cols</code></td><td>назва гри, що заповнено, заявки, монетки, відео</td><td>на кожну лабу: 🎴 варіант · 🎯 відповіді «11/13» · 🔁 спроб · 📨 здано · 📓 ноутбук · 💯 бали · 🗒 нотатка. Працюють як «ця лаба» у виді</td></tr>
+    <tr><td>Рядок студента з бекенду</td><td><code>EXTRAS</code>: гра, видно всім</td><td><code>TEACHER</code>: картки лаб, лише викладачеві</td></tr>
+    <tr><td>Колонка й фільтри «Студентів»</td><td>«Гра»; «🎮 гра», «⏳ є що перевірити»</td><td>«Лаби»: «Л1 14б · Л2 2/3 · Л3 🎴»; «🎴 картка», «📨 рядок»</td></tr>
+    <tr><td>Заводські види <code>table_seed.py</code></td><td>колонки за дедлайнами: реєстрація, гра, демо</td><td>без репозиторію; «Усе» — відповіді й бали кожної лаби</td></tr>
+    <tr><td>Свій вид сповіщень бота</td><td>заявки, гра, ідеї, ШІ, захисти</td><td><code>lab</code>: «🟢 Лаба 1 · … · рядок відповідей: 13 із 13 ✅ · спроба 2»</td></tr>
+    <tr><td>Назви своїх колекцій в «Активності»</td><td>гра, заявка, правило…</td><td>«варіант лаби»</td></tr>
+  </table>
+  </div>
+  <h3>Як це виглядає на ods</h3>
+  <p class="lead">Знімки зі стенда: студенти, картки й тексти вигадані, справжні лекції й лаби на стенд не потрапляли.</p>
+  <figure class="shot"><img src="img/ods-table-lab1.png" alt="«Звід» ods, вид «Лаба 1»: колонки варіанта, відповідей, спроб, дати здачі, дедлайну, ноутбука, балів">
+    <figcaption>«Звід», заводський вид «Лаба 1». Зліва направо: 🎴 варіант · 🎯 відповіді · 🔁 спроб · 📨 здано · ⏰ дедлайн студента · 📓 ноутбук · 💯 бали · 🗒 нотатка, далі подовження і твоє слово. У меню — «Строки · Звід · Polls · Week».</figcaption></figure>
+  <figure class="shot"><img src="img/ods-students.png" alt="Список студентів ods з колонкою «Лаби» і фільтрами «картка» та «рядок»">
+    <figcaption>«Студенти»: колонка «Лаби» одним рядком на студента, фільтри «🎴 картка» і «📨 рядок».</figcaption></figure>
+  <figure class="shot"><img src="img/ods-home.png" alt="Домашня ods з блоком «Перші два кроки»">
+    <figcaption>Домашня: «Перші кроки» з ядра. На python їх три, з тижнем і рядком про GitHub.</figcaption></figure>
+  <figure class="shot"><img src="img/ods-mylab.png" alt="«Моя лаба»: картка варіанта, форма рядка відповідей, таблиця правильних і хибних">
+    <figcaption>«Моя лаба» очима тестового студента: знову працює після переїзду на <code>/api/variants</code>.</figcaption></figure>
+  <figure class="shot"><img src="img/ods-deadlines.png" alt="«Строки» ods: після дедлайну клітинки кажуть «без репозиторію»">
+    <figcaption>«Строки» працюють, але після дедлайну кажуть «🚫 без репозиторію» — і Бондаренко з усіма правильними відповідями теж. Тут потрібне твоє рішення: питання 1 у T353.</figcaption></figure>
+</section>
+
+<section id="own">
+  <h2><span class="num">5</span>Що лишилось своїм</h2>
+  <div class="pair">
+    <div class="box">
+      <h4>python</h4>
+      <ul>
+        <li>каталог ігор і тасків, «Моя гра», ігротека</li>
+        <li>заявки, монетки, оцінка</li>
+        <li>захисти й зауваження</li>
+        <li>відео «Супроводу», ШІ-помічник</li>
+        <li>репозиторії студентів: <code>bin/repos</code>, звіти агента</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h4>ods</h4>
+      <ul>
+        <li>лекції текстом і слайдами, формули</li>
+        <li>картки варіантів, «Моя лаба», перевірка рядка відповідей</li>
+        <li>таблиця результатів лаби з балами</li>
+        <li>картинки в базі, імпорт контенту з диска</li>
+        <li>перевірка лаб, яку ще будемо робити</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="findings">
+  <h2><span class="num">6</span>Знахідки по дорозі</h2>
+  <p class="lead">Сім речей знайшлось під час переносу. Шість виправлено й закрито перевірками, одна чекає твоєї команди.</p>
+
+  <div class="finding bad">
+    <header><h3>Студент бачив би чужі бали й нотатки викладача</h3><span class="chip ok">виправлено до деплою</span></header>
+    <dl>
+      <dt>Що видно</dt><dd>Список студентів ядро віддає і студентові: на python там гра, це задумано. Картки лаб ods пішли б тим самим шляхом, з балами, нотаткою викладача й посиланням на ноутбук однокурсника.</dd>
+      <dt>Хто знайшов</dt><dd>Помічник Opus, який писав колонки ods: перевірив запитом від імені студента іншої групи.</dd>
+      <dt>Виправлення</dt><dd>У ядрі два списки: <code>students.EXTRAS</code> бачить кожен, хто бачить рядок, <code>students.TEACHER</code> — лише викладач і «Звід». Картки ods ідуть у другий.</dd>
+      <dt>Доказ</dt><dd>Смоук ods: «список студентів не несе нічиїх карток, балів і ноутбуків». Те саме наживо на стенді: <code>GET /api/students</code> від студента — 7 рядків, жодного з <code>variants</code>.</dd>
+    </dl>
+  </div>
+
+  <div class="finding bad">
+    <header><h3>«Моя лаба» на ods не працювала: два власники <code>/api/labs</code></h3><span class="chip ok">виправлено</span></header>
+    <dl>
+      <dt>Що видно</dt><dd>Ядро віддавало за цією адресою матрицю дедлайнів для викладача, ods — список лаб студента. Студент отримував 403. Смоук лаб ods: 26 з 28.</dd>
+      <dt>Виправлення</dt><dd>Лаби ods переїхали на <code>/api/variants</code>. У T238 і T251 я радив перейменувати ядро; тепер обрав навпаки, бо ods ще не на сервері: python-сайт, його прод і <code>bin/repos</code> не зачеплено.</dd>
+      <dt>Доказ</dt><dd>Смоук лаб ods 29 з 29; на стенді студент узяв картку, здав рядок, побачив таблицю ✅ / ❌.</dd>
+    </dl>
+  </div>
+
+  <div class="finding bad">
+    <header><h3>Заводські види «Дедлайн N» судили ods за репозиторієм</h3><span class="chip ok">виправлено</span></header>
+    <dl>
+      <dt>Що видно</dt><dd>На стенді студентка з усіма правильними відповідями й 14 балами стояла в групі «❌ ні · без репозиторію».</dd>
+      <dt>Хто знайшов</dt><dd>Помічник, що перевіряв ods у браузері.</dd>
+      <dt>Виправлення</dt><dd>Сайт може вимкнути ці види (<code>views_seed.DUE</code>); ods вимкнув. «Усе», «Старт», «Лаба N» на ods — без колонок репозиторію; у «Лабі N» замість стану, який рахується з репозиторію, стоїть дедлайн студента поруч із датою здачі. Перевірено другим проходом на стенді.</dd>
+      <dt>Лишилось</dt><dd>Клітинка «Строків» після дедлайну каже «🚫 без репозиторію», доки не поставиш слово сам. Це питання 1 у T353.</dd>
+    </dl>
+  </div>
+
+  <div class="finding warn">
+    <header><h3>Ядро вело зі «Строків» на лекцію замість лаби</h3><span class="chip ok">виправлено</span></header>
+    <dl>
+      <dt>Що видно</dt><dd>Ядро шукало сторінку лаби за номером. На ods номери мають і лекції, тож «Лаба 1» вела б на «Лекцію 1».</dd>
+      <dt>Виправлення</dt><dd>Лаба — сторінка з номером і <code>kind</code> порожнім або <code>labs</code>. На python нічого не змінилось.</dd>
+    </dl>
+  </div>
+
+  <div class="finding warn">
+    <header><h3>Локальна база <code>ods</code> тримає старі заводські види</h3><span class="chip warn">чекає тебе</span></header>
+    <dl>
+      <dt>Що видно</dt><dd>У твоїй дев-базі <code>ods</code> 12 видів «Зводу» створено раніше, з колонками python. Ядро наявних видів не перезаписує, тож нових колонок ods там не буде.</dd>
+      <dt>Що зробити</dt><dd>Видалити колекції <code>views</code> і <code>view_versions</code> у базі <code>ods</code> і відкрити «Звід»: види створяться заново. Я в дев-базу не пишу; скажи — зроблю. Зробити це треба до переносу бази на сервер.</dd>
+    </dl>
+  </div>
+
+  <div class="finding note">
+    <header><h3>Три дрібниці в тестах</h3><span class="chip ok">виправлено</span></header>
+    <dl>
+      <dt>Мій коміт</dt><dd>Перший варіант виправлення про лаби зламав перевірку логіки «Зводу» в node: файл потягнув за собою Vue. Знайшов помічник, виправлено наступним комітом, 38 з 38.</dd>
+      <dt>Спільний venv</dt><dd>Смоук лаб ods сам викликав <code>uv run</code> і міг пересинхронізувати venv, на якому працюють твої дев-сервери. Тепер запускає той самий інтерпретатор.</dd>
+      <dt>Дати</dt><dd>Смоук дедлайнів упав би 2 грудня: чекав «ще є час» до 1.12. Дата тепер рахується від сьогодні.</dd>
+    </dl>
+  </div>
+</section>
+
+<section id="checks">
+  <h2><span class="num">7</span>Як перевірено</h2>
+  <p class="lead">Звіти помічників я не брав на віру: усі смоуки проганяв сам після їхньої роботи, сторінки дивились у браузері на окремих стендах.</p>
+  <div class="scroll">
+  <table class="grid">
+    <tr><th>Що</th><th>python</th><th>ods</th><th>Примітка</th></tr>
+    <tr><td>Смоуки платформи, 24 файли з <code>core/api/tests</code></td><td class="n">700 з 700</td><td class="n">700 з 700</td><td>той самий файл з теки кожного сайту; до переносу на ods їх ніхто не запускав</td></tr>
+    <tr><td>Смоуки сайту</td><td class="n">740 з 740</td><td class="n">55 з 55</td><td>python — 19 файлів про ігри, каталог, захисти, ШІ; ods — лаби, лекції, колонки «Зводу»</td></tr>
+    <tr><td>Логіка «Зводу» без браузера</td><td class="n" colspan="2">38 з 38</td><td><code>node core/ui/tests/smoke_table.mjs</code></td></tr>
+    <tr><td>Збірка фронту</td><td class="c">✓</td><td class="c">✓</td><td><code>npm run build</code> в обох</td></tr>
+    <tr><td>Сторінки в headless Chrome, стенд</td><td>9 сценаріїв ✓</td><td>10 сценаріїв ✓</td><td>python: домашня, текст над каталогом, пошук, список-вибір, редагування на місці, «✕ ✓», «покажи де», згортання, захисти, «Звід», темна тема і 390 px — регресій нема. ods: 9 з 10 одразу; провал («Дедлайн N») виправлено й пройдено вдруге</td></tr>
+    <tr><td>Чужі дані від імені студента</td><td class="c">—</td><td class="c">✓</td><td><code>GET /api/students</code> без карток лаб, <code>/api/table</code> — 403</td></tr>
+  </table>
+  </div>
+  <h3>Чого не перевірено</h3>
+  <ul>
+    <li>Справжній Telegram: сповіщення <code>lab</code> і опитування на ods перевірено до колекції подій, без бота.</li>
+    <li>Safari, Firefox, справжній телефон: лише headless Chrome, зокрема на 390 px і в темній темі.</li>
+    <li>Справжня база ods з лекціями: стенд працював на вигаданих сторінках, справжній контент не читався.</li>
+    <li>Сервер: нічого не пушилось і не деплоїлось.</li>
+  </ul>
+</section>
+
+<section id="next">
+  <h2><span class="num">8</span>Далі</h2>
+  <h3>Тобі</h3>
+  <ol class="next">
+    <li><b>Перезапустити дев-API обох сайтів</b> (нові модулі й маршрути), глянути ods на <code>127.0.0.1:5035</code>: домашня з «Першими кроками», меню «Строки · Звід · Polls · Week», «Моя лаба».</li>
+    <li><b>Оновити види в локальній базі <code>ods</code></b> (знахідка вище) — або сказати мені.</li>
+    <li><b>Відповісти на T353</b>, насамперед питання 1 і 2: звідки «Строки» ods знають, що лабу здано, і чи потрібен на ods GitHub. Решта — мовчання означає «лишити як є».</li>
+    <li><b>Щоб скрипти працювали з ods</b>: рядок <code>AGENT_TOKENS=claude:&lt;токен&gt;</code> у <code>sites/ods/api/.env</code> і пара <code>ODS_URL</code> / <code>ODS_TOKEN</code> у <code>.site/.env</code>. Далі <code>bin/lesson -t ods …</code> (з <code>LESSONS_DIR=sites/ods/transcripts</code>), <code>bin/zoom -t ods</code>, <code>bin/guide -t ods</code>.</li>
+    <li><b>Деплой</b>: python — як завжди, з перезапуском API; ods — за чеклістом T252, питання про колізію там уже закрите.</li>
+  </ol>
+  <h3>Що помітила перевірка, але я не чіпав</h3>
+  <div class="scroll">
+  <table class="grid">
+    <tr><th>Де</th><th>Що</th><th>Чому не чіпав</th></tr>
+    <tr><td>Профіль студента на ods</td><td>поле «GitHub — посилання на репозиторій»</td><td>питання 2: лишити чи прибрати</td></tr>
+    <tr><td>«Строки» на ods</td><td>колонка 🐙, «без репозиторію», підказки про <code>bin/repos</code></td><td>питання 1 і 2</td></tr>
+    <tr><td>Вхід і домашня, обидва сайти</td><td>тому, кого ще нема в списках, домашня каже «тебе ще нема в списку курсу», а сторінка входу — «ти в списку»</td><td>текст твій; скажи, який правильний</td></tr>
+    <tr><td>Меню, обидва сайти</td><td>«Polls» і «Week» англійською; студент бачить «Week»</td><td>питання 8</td></tr>
+    <tr><td>«Результати лаби» на ods</td><td>картка без рядка виглядає як здані «0 / 3»; відхилені 25 балів лишаються в полі</td><td>сторінка перевірки лаб — наступна тема</td></tr>
+    <tr><td>Домашня ods</td><td>«Лекції 15 · Лаби 5» рахуються з паспорта сайту, а не з опублікованих сторінок</td><td>так було; на справжній базі сторінки є</td></tr>
+  </table>
+  </div>
+  <h3>Далі я, за словом</h3>
+  <ul>
+    <li>«Строки» ods рахують самі з рядка відповідей (питання 1, S).</li>
+    <li>ods без GitHub параметром сайту (питання 2, S).</li>
+    <li>Кістяк захистів у ядро з лексикою сайту (питання 3, M–L).</li>
+    <li>Текст домашньої ods, який редагується на сайті, як на python (XS–S).</li>
+  </ul>
+</section>
+
+<footer>python-labs · T352 «Спільне — в ядро» · звіт у <code>.dev/platform/.t/T352--shared-to-core/</code> · зібрано <code>build_review.py</code></footer>
+</div>
