@@ -8,7 +8,9 @@ from models.lab import LabVariant
 
 
 async def checked(user: User, v: LabVariant) -> None:
-    """🟢 every answer is right · 🟠 some are not yet."""
+    """🟢 every answer is right · 🟠 some are not yet. A test student is the teacher trying the page: no news."""
+    if user.test:
+        return
     ok = sum(x["ok"] for x in v.verdict.values())
     rows = [f"📨 рядок відповідей: {ok} із {len(v.answers)} ✅ · спроба {v.attempts}", f"🎴 варіант {html.quote(v.vid)}"]
     if v.notebook:

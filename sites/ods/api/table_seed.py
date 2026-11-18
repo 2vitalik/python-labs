@@ -11,4 +11,5 @@ views_seed.START_ABOUT = "Лійка реєстрації: хто зайшов �
 VARIANT = "lab.vid,lab.ok,lab.tries,lab.checked,lab.nb,lab.points,lab.pnote"  # sites/ods/vue/src/labCols.js
 MARKS = "lab.asked,lab.ext,lab.met,lab.note,fields:lab,polls:lab"
 views_seed.LAB_COLS |= {0: f"lab,{VARIANT},{MARKS}"}
+views_seed.DUE = False  # «Дедлайн N» judges by repositories: here it would call a student with every answer right late
 views_seed.LAB_ABOUT |= {0: "Лаба: картка кожного студента, рядок відповідей і спроби, ноутбук, бали; подовження й відповіді опитувань."}

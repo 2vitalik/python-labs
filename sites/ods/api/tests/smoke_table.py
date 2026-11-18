@@ -63,7 +63,8 @@ with TestClient(main.app) as c:
     views = {v["slug"]: v["query"] for v in data["views"]}
     cols = {slug: q["cols"].split(",") for slug, q in views.items()}
     check("views: «Усе», «Старт» and every lab's are made", {"all", "start", *(f"lab{n}" for n in range(1, settings.labs + 1))} <= set(views), list(views))
-    check("views: no repository anywhere", not any(k in ks for ks in cols.values() for k in ("gh", "repo", "commits", "lastc")), cols)
+    check("views: no repository anywhere, no «Дедлайн N»", not any(k in ks for ks in cols.values() for k in ("gh", "repo", "commits", "lastc", "reg", "lab.before", "lab.review"))
+          and not any(slug.startswith("due") for slug in views), cols)
     check("views: «Усе» and «Старт» without reg", "reg" not in cols["all"] + cols["start"], cols)
     check("views: «Усе» — the answers and the points of every lab",
           all({f"lab{n}.ok", f"lab{n}.points"} <= set(cols["all"]) for n in range(1, settings.labs + 1)), cols["all"])
