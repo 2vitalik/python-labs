@@ -55,6 +55,7 @@ export default {
     student_games: 'гра', game_parts: 'обʼєкт гри', claims: 'заявка', rules: 'правило',
     tasks: 'картка каталогу', games: 'гра каталогу', refs: 'ідея', defenses: 'захист', remarks: 'зауваження',
   },
+  start: { week: true, note: '🐙 GitHub у профілі поки можна не заповнювати — репозиторій створиш, коли обереш гру й назву проєкту' },
   profile: {
     repo: 'https://github.com/username/python-labs',
     github: [

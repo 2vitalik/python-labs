@@ -5,6 +5,10 @@ export const site = {
   links: [],  // the menu: [path, text, access?, bold?, icon?]; access — when the entry is narrower than the page (a page students reach another way); icon — a name of Icon.vue: what stands for the word in a menu of icons
   guide: [],  // guide pages in the order of /method: { slug, path, nav }; `n` — a lab's number
   colls: {},  // /activity: what an edit in the site's own collection is called — { claims: 'заявка' }
+  start: {  // «Перші кроки» of a home page (StartSteps.vue): sign in and link the bot — always
+    week: false,  // …and mark the week: the site has /my/week and asks its students for it
+    note: '',  // the site's own line under the steps
+  },
   profile: {
     repo: '',  // the example in the GitHub field
     github: [],  // hints under it, HTML lines

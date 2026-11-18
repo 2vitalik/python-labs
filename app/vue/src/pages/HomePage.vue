@@ -5,7 +5,7 @@ import { useRouter } from 'vue-router'
 import { getGuidePage } from '@core/api.js'
 import GuideBody from '@core/components/GuideBody.vue'
 import GuideFoot from '@core/components/GuideFoot.vue'
-import StartSteps from '../components/StartSteps.vue'
+import StartSteps from '@core/components/StartSteps.vue'
 import { loadGuide, pages } from '@core/guide.js'
 import { canAccess, user } from '@core/user.js'
 

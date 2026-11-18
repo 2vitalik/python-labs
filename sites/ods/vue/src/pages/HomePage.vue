@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 
+import StartSteps from '@core/components/StartSteps.vue'
 import { site } from '@core/site.js'
 import { canAccess, user } from '@core/user.js'
 
@@ -15,6 +16,7 @@ const firstName = computed(() => user.value.first_name || user.value.name?.split
   <div>
     <h1 class="mb-1">Основи Data Science</h1>
     <p class="text-secondary mb-4">Лекції, слайди й лабораторні курсу<template v-if="user">. Привіт, {{ firstName }}!</template></p>
+    <StartSteps />
     <div v-if="active" class="row g-3">
       <div v-for="(title, kind) in KINDS" :key="kind" class="col-sm-6">
         <RouterLink :to="`/${kind}`" class="card h-100 text-decoration-none">
@@ -25,7 +27,5 @@ const firstName = computed(() => user.value.first_name || user.value.name?.split
         </RouterLink>
       </div>
     </div>
-    <p v-else-if="user">Акаунт чекає підтвердження викладача. Щойно підтвердить, тут зʼявляться лекції й лаби.</p>
-    <p v-else>Щоб читати, <RouterLink to="/login">увійди</RouterLink> з поштою NURE.</p>
   </div>
 </template>
