@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 
 import { wordsOf } from '../emoji/search.js'
-import { mark } from '../pick.js'
+import { mark } from '@core/pick.js'
 
 // the picker's bottom line (T309): the icon under the mouse or the keys with its two names — and why the search brought
 // it, or which entity of the game already wears it; at rest — the icon the entity has `now`. At the right — back to the

@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref, watch } from 'vue'
 
-import { hl, norm } from '../taskFilter.js'
+import { hl, norm } from '@core/search.js'
 import { byLang, LANGS, ruOn } from '../taskMeta.js'
 
 // a card's other names, folded under the quiet «🔎 інші назви (N)»: a line per language, under the word, not the emoji.

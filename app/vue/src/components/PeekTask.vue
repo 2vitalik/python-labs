@@ -9,7 +9,7 @@ import { useEd } from '../ed.js'
 import { PROOFS } from '../proof.js'
 import CardSign from './CardSign.vue'
 import CoinBadge from './CoinBadge.vue'
-import Md from './Md.vue'
+import Md from '@core/components/Md.vue'
 
 // a catalog card under the mouse (T284 §2): its sign and name with the price at the end (T296 §10, §14), what kind of card
 // it is and where it lives, its description, what a claim states and shows. `id` — the card's slug; `hint` — what a click

@@ -1,6 +1,6 @@
 <script setup>
 import { vPeek } from '@core/peek.js'
-import { jump } from '../jump.js'
+import { jump } from '@core/jump.js'
 
 // the pieces of one clause (rules.js: pieces), each looking like what it is: an entity in a frame, a number in bold,
 // a state as a pill, the student's own words on a yellowish ground (T270 §4.1); `sub` — a side's letter, a small badge in

@@ -4,7 +4,7 @@ import { computed, ref, watch } from 'vue'
 import Icon from '@core/components/Icon.vue'
 import Pop from '@core/components/Pop.vue'
 import { statItems } from '../items.js'
-import Picker from './Picker.vue'
+import Picker from '@core/components/Picker.vue'
 import ProposeCard from './ProposeCard.vue'
 
 // «＋ параметр» of a card with its tools on (T310) — a violet «＋» by the caption «Параметри» (T350): the catalog's stats

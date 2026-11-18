@@ -1,12 +1,12 @@
 <script setup>
 import { computed, nextTick, onMounted, ref } from 'vue'
 
-import Icon from '@core/components/Icon.vue'
+import Icon from './Icon.vue'
 import { mark, search, words } from '../pick.js'
 
 // one list to choose anything from (T270 §5): it opens with every option at once, typing filters it and each row says
-// why it matched. items: [{ key, title, icon?, hint?, desc?, group?, words?: [synonyms], taken?, asked? }] → emits pick(item);
-// `asked` — a card «за запитом» (T319): the row dimmed, with a quiet word.
+// why it matched. items: [{ key, title, icon?, hint?, desc?, group?, words?: [synonyms], taken?, tag?: { text, title } }]
+// → emits pick(item); `tag` — a quiet word by the title, its row dimmed.
 // `inline` — the list is part of the flow (inside a Pop); otherwise it drops under the field while the field has focus.
 const props = defineProps({ items: Array, placeholder: { type: String, default: 'пошук…' }, inline: Boolean, autofocus: Boolean, small: Boolean })
 const emit = defineEmits(['pick'])
@@ -46,11 +46,11 @@ defineExpose({ focus: () => input.value?.focus() })
     <div v-if="inline || open" ref="list" class="rows" :class="{ 'shadow border rounded bg-body': !inline }" @mousedown.prevent>
       <template v-for="(it, i) in rows" :key="it.key">
         <div v-if="!qs.length && it.group && it.group !== rows[i - 1]?.group" class="group">{{ it.group }}</div>
-        <button type="button" class="pick" :class="{ active: i === cursor, asked: it.asked }" @click="pick(it)" @mousemove="cursor = i">
+        <button type="button" class="pick" :class="{ active: i === cursor, tagged: it.tag }" @click="pick(it)" @mousemove="cursor = i">
           <span v-if="it.icon" class="ico">{{ it.icon }}</span>
           <span class="body">
             <span class="ttl" v-html="mark(it.title, qs)"></span>
-            <span v-if="it.asked" class="ask" title="картки ще нема в основі курсу: монетка — коли викладач відкриє картку">за запитом</span>
+            <span v-if="it.tag" class="tag" :title="it.tag.title">{{ it.tag.text }}</span>
             <span v-if="it.taken" class="text-success ms-1" title="уже є"><Icon name="done" /></span>
             <span v-if="it.why || it.desc" class="sub" v-html="mark(it.why || it.desc, qs)"></span>
           </span>
@@ -75,8 +75,8 @@ defineExpose({ focus: () => input.value?.focus() })
 .body { flex-grow: 1; min-width: 0; }
 .sub { display: block; overflow: hidden; font-size: .75rem; color: var(--bs-secondary-color); text-overflow: ellipsis; white-space: nowrap; }
 .hint { flex-shrink: 0; font-size: .72rem; color: var(--bs-secondary-color); white-space: nowrap; }
-.asked .ico, .asked .ttl { opacity: .7; }
-.ask { margin-left: .35rem; padding: 0 .25rem; border: 1px dashed var(--bs-border-color); border-radius: .25rem; font-size: .66rem;
+.tagged .ico, .tagged .ttl { opacity: .7; }
+.tag { margin-left: .35rem; padding: 0 .25rem; border: 1px dashed var(--bs-border-color); border-radius: .25rem; font-size: .66rem;
        color: var(--bs-secondary-color); white-space: nowrap; }
 .none { padding: .35rem .5rem; font-size: .8rem; color: var(--bs-secondary-color); }
 </style>

@@ -6,7 +6,7 @@ import { useEd } from '../ed.js'
 import { gameBrushes } from '../momentMap.js'
 import MomentField from './MomentField.vue'
 import MomentMap from './MomentMap.vue'
-import SaveCancel from './SaveCancel.vue'
+import SaveCancel from '@core/components/SaveCancel.vue'
 
 // a level's map drawn in cells (T276): to read — the picture. With the card's tools on (T310) — «змінити мапу» or
 // «＋ намалювати рівень» under it: the editor opens in the picture's place, framed alone, with its own «Зберегти /

@@ -4,7 +4,7 @@ import { reactive } from 'vue'
 import TagInput from '@core/components/TagInput.vue'
 import { LANGS } from '../taskMeta.js'
 import { TIPS } from '../taskTips.js'
-import MoreFields from './MoreFields.vue'
+import MoreFields from '@core/components/MoreFields.vue'
 
 // a card's other names by language {uk, en, ru}, a one-line field each: the search finds by all of them, the cards show
 // the Russian ones to the teacher only. Ukrainian is always there; an empty other language comes by «＋ en» (T291 §4)

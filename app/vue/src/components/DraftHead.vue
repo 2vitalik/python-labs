@@ -3,9 +3,9 @@ import { ref } from 'vue'
 
 import { postPart } from '../api.js'
 import { useEd } from '../ed.js'
-import { landed } from '../jump.js'
+import { landed } from '@core/jump.js'
 import { setTools } from '../tools.js'
-import SaveCancel from './SaveCancel.vue'
+import SaveCancel from '@core/components/SaveCancel.vue'
 
 // a new entity, window or level begins as the head of its card (T310): the sign, the name typed where it will stand, the
 // type by it, «✕ / ✓» — in the frame of «add», tinted as the card's head (`zone` — the category's colour). Enter or ✓ —

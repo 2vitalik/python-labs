@@ -6,7 +6,7 @@ import { postClaim, putPart } from '../api.js'
 import { whyOk } from '../asked.js'
 import { iconOf, kindOf, missingParams } from '../catalog.js'
 import { useEd } from '../ed.js'
-import { jump } from '../jump.js'
+import { jump } from '@core/jump.js'
 import SlotFields from './SlotFields.vue'
 import WhyField from './WhyField.vue'
 

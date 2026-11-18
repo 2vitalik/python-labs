@@ -13,7 +13,7 @@ import ClaimJudge from './ClaimJudge.vue'
 import ClaimOwner from './ClaimOwner.vue'
 import ClaimShots from './ClaimShots.vue'
 import CoinBadge from './CoinBadge.vue'
-import Md from './Md.vue'
+import Md from '@core/components/Md.vue'
 
 // a claim's panel (T270 §7): the card it claims — what it is, where it lives, its description — then by who looks:
 // the owner edits, moves or drops it, the teacher gives the verdict, anyone else reads the note, the link and the verdict;

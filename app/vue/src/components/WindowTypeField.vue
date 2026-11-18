@@ -5,7 +5,7 @@ import Pop from '@core/components/Pop.vue'
 import { useEd } from '../ed.js'
 import { windowTypeItems } from '../items.js'
 import CoinBadge from './CoinBadge.vue'
-import Picker from './Picker.vue'
+import Picker from '@core/components/Picker.vue'
 import ProposeCard from './ProposeCard.vue'
 
 // a window's type, as RoleField is an entity's: a field-like button with the chosen type → the window types of the catalog;

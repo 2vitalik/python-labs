@@ -9,10 +9,10 @@ import { kindOf, vocab } from '../catalog.js'
 import { useEd } from '../ed.js'
 import { homeOf } from '../features.js'
 import { cardItems, roleItems, statItems, windowTypeItems } from '../items.js'
-import { jump } from '../jump.js'
+import { jump } from '@core/jump.js'
 import AddStep from './AddStep.vue'
 import AiPanel from './AiPanel.vue'
-import Picker from './Picker.vue'
+import Picker from '@core/components/Picker.vue'
 
 // one «＋ Додати» over the whole description (T270 §11): type what the game has — a type of entity, a type of window,
 // a parameter, a card — and it lands where its kind says. The «＋» of each section does the same within the section.

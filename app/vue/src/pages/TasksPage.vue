@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router'
 
 import Crumbs from '@core/components/Crumbs.vue'
 import Icon from '@core/components/Icon.vue'
-import GuideHead from '../components/GuideHead.vue'
+import GuideHead from '@core/components/GuideHead.vue'
 import IconArrows from '@core/components/IconArrows.vue'
 import TaskCatalog from '../components/TaskCatalog.vue'
 import TaskFilters from '../components/TaskFilters.vue'

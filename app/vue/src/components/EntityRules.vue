@@ -3,7 +3,7 @@ import { computed, ref, watch } from 'vue'
 
 import Icon from '@core/components/Icon.vue'
 import { useEd } from '../ed.js'
-import { jump } from '../jump.js'
+import { jump } from '@core/jump.js'
 import { mentions } from '../rules.js'
 import PartBlock from './PartBlock.vue'
 import RuleText from './RuleText.vue'

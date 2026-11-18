@@ -3,7 +3,7 @@ import { computed } from 'vue'
 
 import Icon from '@core/components/Icon.vue'
 import { itemName, needsOf } from '../ai.js'
-import { jump } from '../jump.js'
+import { jump } from '@core/jump.js'
 import AiClaim from './AiClaim.vue'
 import AiEntity from './AiEntity.vue'
 import AiField from './AiField.vue'

@@ -1,5 +1,5 @@
 <script setup>
-import Icon from '@core/components/Icon.vue'
+import Icon from './Icon.vue'
 
 // «Зберегти / Скасувати» of a form in the description (T294 §5): the standard pair as two small drawn buttons at the
 // bottom right of the framed form — the green tick saves, the grey cross closes it unsaved; the words come under the

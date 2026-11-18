@@ -2,14 +2,14 @@
 import { computed, nextTick, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
-import { flash } from '@core/anchors.js'
-import { getGuidePage } from '@core/api.js'
-import GuideBody from '@core/components/GuideBody.vue'
-import Icon from '@core/components/Icon.vue'
-import IconChevron from '@core/components/IconChevron.vue'
-import { textOf } from '@core/drafts.js'
-import { load, save } from '@core/local.js'
-import { tocOf } from '@core/md.js'
+import { flash } from '../anchors.js'
+import { getGuidePage } from '../api.js'
+import GuideBody from './GuideBody.vue'
+import Icon from './Icon.vue'
+import IconChevron from './IconChevron.vue'
+import { textOf } from '../drafts.js'
+import { load, save } from '../local.js'
+import { tocOf } from '../md.js'
 
 // guide section on top of a catalog page, open to everyone with the catalog (T213): a framed block that folds
 // and remembers it, or, moved down, sits under the catalog in the page's #guide-low (remembered too).

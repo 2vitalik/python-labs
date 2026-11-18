@@ -1,7 +1,7 @@
 <script setup>
 import { nextTick, ref, watch } from 'vue'
 
-import GrowArea from '@core/components/GrowArea.vue'
+import GrowArea from './GrowArea.vue'
 import Md from './Md.vue'
 
 // a Markdown text shown as the others see it — rendered; a click turns it into its source in place, the cursor where the

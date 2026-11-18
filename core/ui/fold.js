@@ -1,6 +1,6 @@
 import { reactive } from 'vue'
 
-import { load, save } from '@core/local.js'
+import { load, save } from './local.js'
 
 // how the reader left a section stays so on the next visit: a section of the game editor, a block of a game's page —
 // open, folded away, or short (T284 §3: its beginning, fading into «Показати все»). The key names the place

@@ -6,7 +6,7 @@ import InlinePop from '@core/components/InlinePop.vue'
 import { useEd } from '../ed.js'
 import { cardItems } from '../items.js'
 import CardSign from './CardSign.vue'
-import Picker from './Picker.vue'
+import Picker from '@core/components/Picker.vue'
 
 // where a transition leads (T270 §10.1, T278 §4), picked where it reads (T310): nowhere, another window of the game, or a
 // card — an action that opens no window. `item` — the menu item ({ window, task }); `host` — the item's own window;

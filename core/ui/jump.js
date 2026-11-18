@@ -1,6 +1,6 @@
 import { nextTick, ref } from 'vue'
 
-import { flash } from '@core/anchors.js'
+import { flash } from './anchors.js'
 
 // «show me where» (T270 §3): whatever folds its content away watches `target` and opens when the id is inside it;
 // then the page scrolls there and the place flashes. `near` — a thing just added where the reader is (T296 §9): the page

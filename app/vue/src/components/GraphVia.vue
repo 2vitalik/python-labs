@@ -4,7 +4,7 @@ import { computed } from 'vue'
 import Icon from '@core/components/Icon.vue'
 import { vPeek } from '@core/peek.js'
 import { viaText } from '../graphTree.js'
-import { jump } from '../jump.js'
+import { jump } from '@core/jump.js'
 
 // what makes a transition on the map of windows, and the arrow after it: «☰ items» of «Переходи й дії» in a quiet ink,
 // «⚡ reason» of a rule in the rules' violet — a click on a reason goes to its rule, the mouse over it brings the rule's card.

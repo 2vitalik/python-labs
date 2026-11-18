@@ -5,7 +5,7 @@ import { useRoute, useRouter } from 'vue-router'
 import Crumbs from '@core/components/Crumbs.vue'
 import LudoTable from '../components/LudoTable.vue'
 import { FAMILIES, getLudoGames, KLASSES, STAGES } from '../ludopedia.js'
-import { norm } from '../taskFilter.js'
+import { norm } from '@core/search.js'
 
 // the corpus of reference games (data/ludopedia/): filters live in the URL — ?fam= ?klass= ?stage= ?mech= ?q=
 const route = useRoute()

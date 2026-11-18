@@ -4,7 +4,7 @@ import { ref } from 'vue'
 import { fmtWhen } from '@core/labs.js'
 import { checkRemark } from '../api.js'
 import { word } from '../defense.js'
-import { shortLink } from '../shortLink.js'
+import { shortLink } from '@core/shortLink.js'
 
 // the student's answer under a remark and the teacher's word on it (T328 §4): accepted in one click, returned with a line
 // why. An agent's opinion stands next to the answer — a click agrees with it, the word stays the teacher's

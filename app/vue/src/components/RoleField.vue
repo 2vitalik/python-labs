@@ -4,7 +4,7 @@ import { computed, ref, watch } from 'vue'
 import Pop from '@core/components/Pop.vue'
 import { roleOf } from '../catalog.js'
 import { roleItems } from '../items.js'
-import Picker from './Picker.vue'
+import Picker from '@core/components/Picker.vue'
 import ProposeCard from './ProposeCard.vue'
 
 // an entity's type (T270 §7): a field-like button with the chosen type → the types with what each one is, by family;

@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 
-import Icon from '@core/components/Icon.vue'
+import Icon from './Icon.vue'
 
 // the quiet row of a form's rare fields under it (T291 §4): «＋ нотатка · ＋ стани» — a click brings that field, so the
 // form holds no empty fields «just in case». `fields` — { key: label }; `shown` — which of them are in the form already

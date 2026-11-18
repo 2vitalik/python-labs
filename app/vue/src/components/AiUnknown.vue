@@ -6,7 +6,7 @@ import { vPeek } from '@core/peek.js'
 import { kindOf, taskIndex } from '../catalog.js'
 import { useEd } from '../ed.js'
 import { plusOf } from '../gameAdd.js'
-import { jump } from '../jump.js'
+import { jump } from '@core/jump.js'
 import CoinBadge from './CoinBadge.vue'
 import IdeaPop from './IdeaPop.vue'
 

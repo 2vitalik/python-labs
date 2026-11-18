@@ -4,7 +4,7 @@ import { computed, ref } from 'vue'
 import Icon from '@core/components/Icon.vue'
 import { hiddenOf, hide, unhide } from '../advice.js'
 import { useEd } from '../ed.js'
-import { jump } from '../jump.js'
+import { jump } from '@core/jump.js'
 
 // «чого бракує» — a few gentle lines; a click shows the place: the page scrolls there and it flashes.
 // An advice line (`advice`, T278 §11) can be hidden for this game; the hidden ones wait under the list with «повернути».

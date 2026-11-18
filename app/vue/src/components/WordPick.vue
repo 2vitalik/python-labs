@@ -5,7 +5,7 @@ import Icon from '@core/components/Icon.vue'
 import Pop from '@core/components/Pop.vue'
 import { wordItems } from '../items.js'
 import { specOf } from '../rules.js'
-import Picker from './Picker.vue'
+import Picker from '@core/components/Picker.vue'
 
 // a word of the sentence (trigger · condition · effect): a button with the chosen word, the searchable list in a panel over the page
 const props = defineProps({ dic: String, placeholder: { type: String, default: 'слово…' } })

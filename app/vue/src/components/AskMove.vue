@@ -3,7 +3,7 @@ import { computed, ref } from 'vue'
 
 import Pop from '@core/components/Pop.vue'
 import { cardItems } from '../items.js'
-import Picker from './Picker.vue'
+import Picker from '@core/components/Picker.vue'
 
 // «перенести на іншу картку» of a request (T319): a card of the same kind that already covers it — «це вже „Збирання“»;
 // emits pick(slug). The default slot is the trigger: it gets `toggle`

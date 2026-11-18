@@ -7,7 +7,7 @@ import { useEd } from '../ed.js'
 import { gameBrushes } from '../momentMap.js'
 import GameMoments from './GameMoments.vue'
 import MomentEditor from './MomentEditor.vue'
-import SaveCancel from './SaveCancel.vue'
+import SaveCancel from '@core/components/SaveCancel.vue'
 
 // «Розкадровка» (T276 «Те саме студентам», T291 §15): the owner draws the game's moments — scenarios of frames with the
 // game's entities for brushes — and saves them with the game; everyone else sees them step by step. A scenario of three

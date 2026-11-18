@@ -5,7 +5,7 @@ import Icon from '@core/components/Icon.vue'
 import Reveal from '@core/components/Reveal.vue'
 import { useEd } from '../ed.js'
 import { FEATURES } from '../features.js'
-import { jump } from '../jump.js'
+import { jump } from '@core/jump.js'
 
 // «Ще можна описати» (T319): after the last section, the sections of features not shown yet — a row each: its sign, name,
 // a line of what it holds and «＋ відкрити»; a click opens the section and goes there. One the teacher closed is grey,

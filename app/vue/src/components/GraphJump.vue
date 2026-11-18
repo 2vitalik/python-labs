@@ -1,7 +1,7 @@
 <script setup>
 import Icon from '@core/components/Icon.vue'
 import { vPeek } from '@core/peek.js'
-import { jump } from '../jump.js'
+import { jump } from '@core/jump.js'
 import GraphVia from './GraphVia.vue'
 
 // a transition the map's tree has no arrow for, in two lines read as a child of its node: «☰ item ↓» over its target —

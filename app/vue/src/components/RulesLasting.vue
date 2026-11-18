@@ -3,7 +3,7 @@ import { computed } from 'vue'
 
 import { statOf } from '../catalog.js'
 import { useEd } from '../ed.js'
-import { jump } from '../jump.js'
+import { jump } from '@core/jump.js'
 import { lasting, timedStats, whenText, whoPiece } from '../ruleViews.js'
 import Pieces from './Pieces.vue'
 import './ruleTable.css'

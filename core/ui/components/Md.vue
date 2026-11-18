@@ -2,7 +2,7 @@
 import { marked } from 'marked'
 import { computed } from 'vue'
 
-import { markHtml } from '../taskFilter.js'
+import { markHtml } from '../search.js'
 
 // `q` — search words to highlight in the rendered text
 const props = defineProps({ text: String, q: { type: String, default: '' } })

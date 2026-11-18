@@ -5,7 +5,7 @@ import GrowArea from '@core/components/GrowArea.vue'
 import Icon from '@core/components/Icon.vue'
 import Tip from '@core/components/Tip.vue'
 import { games } from '../catalog.js'
-import MdField from './MdField.vue'
+import MdField from '@core/components/MdField.vue'
 
 // creating the game: base · title · description as three cards, the profile's way (ProfileForm);
 // once it exists the base and the description fold into one compact card above the description's sections (the name is

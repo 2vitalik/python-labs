@@ -1,4 +1,4 @@
-import { norm } from './taskFilter.js'
+import { esc, norm } from './search.js'
 
 // the search behind Picker.vue: every word of the query must hit somewhere, and the row says where when it is not the title
 export const words = (q) => norm(q).split(/\s+/).filter(Boolean)
@@ -21,8 +21,6 @@ export function match(it, qs) {
 }
 
 export const search = (items, qs) => (qs.length ? items.map((it) => match(it, qs)).filter(Boolean).sort((a, b) => b.score - a.score) : items)
-
-const esc = (s) => s.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]))
 
 // every word of the query marked in the text; norm() keeps the length, so its indices fit the original
 export function mark(text, qs) {

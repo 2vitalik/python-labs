@@ -1,7 +1,7 @@
 <script setup>
 import { nextTick, onBeforeUnmount, ref, watch } from 'vue'
 
-import GrowArea from '@core/components/GrowArea.vue'
+import GrowArea from './GrowArea.vue'
 import Md from './Md.vue'
 
 // a Markdown text edited where it reads — InlineText's contract for a text of paragraphs (T306): rendered at rest, a click

@@ -3,7 +3,7 @@ import { ref } from 'vue'
 
 import Pop from '@core/components/Pop.vue'
 import CoinBadge from './CoinBadge.vue'
-import Md from './Md.vue'
+import Md from '@core/components/Md.vue'
 
 // «ⓘ» of an option tile (T278 §3): the whole description in a floating panel — on a phone the only way to read it
 defineProps({ o: Object })

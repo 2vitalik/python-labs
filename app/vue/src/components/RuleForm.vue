@@ -8,7 +8,7 @@ import { useEd } from '../ed.js'
 import { sidesFor, specOf } from '../rules.js'
 import CardPicker from './CardPicker.vue'
 import RuleLine from './RuleLine.vue'
-import SaveCancel from './SaveCancel.vue'
+import SaveCancel from '@core/components/SaveCancel.vue'
 
 // the rule's editor (T270 §4.3): КОЛИ, every condition and every effect on a line of its own, the card it stands for; the note
 // behind «＋ нотатка» until it has text (T291 §4). `rule` null — a new one, opened from `prefill` { when?, cond?, then?, card?,

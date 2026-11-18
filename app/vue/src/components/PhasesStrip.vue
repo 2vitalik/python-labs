@@ -7,8 +7,8 @@ import Tip from '@core/components/Tip.vue'
 import { putMyGame } from '../api.js'
 import { iconOf } from '../catalog.js'
 import { useEd } from '../ed.js'
-import { jump } from '../jump.js'
-import SaveCancel from './SaveCancel.vue'
+import { jump } from '@core/jump.js'
+import SaveCancel from '@core/components/SaveCancel.vue'
 
 // the order of one tick (T270 §4.2, T274 §6): the game's phases as numbered chips, edited in place; the trigger «почалась фаза
 // тіку» names them. A phase named as an entity of the game wears its icon and leads to it — a match of names, not a link

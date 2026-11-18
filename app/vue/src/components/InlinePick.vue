@@ -2,7 +2,7 @@
 import { computed, ref, watch } from 'vue'
 
 import InlinePop from '@core/components/InlinePop.vue'
-import Picker from './Picker.vue'
+import Picker from '@core/components/Picker.vue'
 import ProposeCard from './ProposeCard.vue'
 
 // a value chosen from a list right where it reads (T306) — a type of an entity or a window: InlinePop with the list of
