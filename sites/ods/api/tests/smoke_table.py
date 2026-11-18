@@ -70,8 +70,9 @@ with TestClient(main.app) as c:
           all({f"lab{n}.ok", f"lab{n}.points"} <= set(cols["all"]) for n in range(1, settings.labs + 1)), cols["all"])
     check("views: «Старт» says what it is on this site", "GitHub" not in next(v["about"] for v in data["views"] if v["slug"] == "start"))
     lab3 = cols["lab3"]
-    check("views: «Лаба 3» — its state, the card, the answers, the points, the teacher's word",
-          views["lab3"]["lab"] == "3" and lab3[:3] == ["lab", "lab.vid", "lab.ok"] and {"lab.points", "lab.pnote", "lab.met", "polls:lab"} <= set(lab3), lab3)
+    check("views: «Лаба 3» — the card, the answers, the deadline, the points, the teacher's word; no state off repositories",
+          views["lab3"]["lab"] == "3" and lab3[:2] == ["lab.vid", "lab.ok"] and "lab" not in lab3
+          and {"lab.due", "lab.points", "lab.pnote", "lab.met", "polls:lab"} <= set(lab3), lab3)
 
     login(c, "a@nure.ua", "student", "КН-1")
     check("student: /api/table is the teacher's", c.get("/api/table").status_code == 403)
