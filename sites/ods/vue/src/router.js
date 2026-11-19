@@ -24,8 +24,11 @@ import { makeRouter } from '@core/router.js'
 import DocPage from './pages/DocPage.vue'
 import DocsPage from './pages/DocsPage.vue'
 import HomePage from './pages/HomePage.vue'
+import LabPartPage from './pages/LabPartPage.vue'
 import LabResultsPage from './pages/LabResultsPage.vue'
+import LabReviewPage from './pages/LabReviewPage.vue'
 import MyLabPage from './pages/MyLabPage.vue'
+import MyNotebookPage from './pages/MyNotebookPage.vue'
 
 // lectures and labs are for signed-in NURE students (T166 Q4)
 const docs = (kind, title) => [
@@ -39,7 +42,12 @@ export default makeRouter([
   ...docs('lectures', 'Лекції'),
   ...docs('labs', 'Лаби'),
   { path: '/labs/:n/my', component: MyLabPage, meta: { title: 'Моя лаба', access: 'active' } },
-  { path: '/labs/:n/results', component: LabResultsPage, meta: { title: 'Результати', access: 'admin' } },
+  { path: '/labs/:n/my/nb/:id', component: MyNotebookPage, meta: { title: 'Мій ноутбук', access: 'active', wide: true } },  // the file as the teacher sees it (T354)
+  { path: '/labs/:n/results', component: LabResultsPage, meta: { title: 'Результати', access: 'admin', wide: true } },
+  { path: '/labs/:n/results/:vid', component: LabReviewPage, meta: { title: 'Перевірка', access: 'admin', wide: true } },  // the notebook next to the key and the marks
+  // the labs' pages beyond the task itself (labPages.js): /labs/3/guide — a part of a lab, /labs/about/grading — common to all labs
+  { path: '/labs/about/:part', component: LabPartPage, meta: { title: 'Лаби', access: 'active', about: true } },
+  { path: '/labs/:n(\\d+)/:part', component: LabPartPage, meta: { title: 'Лаби', access: 'active' } },
   { path: '/lessons', component: LessonsPage, meta: { title: 'Пари', access: 'active', filters: true } },
   { path: '/lessons/new', component: LessonEditPage, meta: { title: 'Нова пара', access: 'admin' } },
   { path: '/lessons/:slug', component: LessonPage, meta: { title: 'Пари', access: 'active' } },

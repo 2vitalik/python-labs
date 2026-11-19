@@ -9,6 +9,7 @@
   "dependencies": {
     "bootstrap": "^5.3.8",
     "katex": "^0.16.22",
+    "lz-string": "1.5.0",
     "marked": "^18.0.9",
     "vue": "^3.5.40",
     "vue-router": "^5.2.0"

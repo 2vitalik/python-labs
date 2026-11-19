@@ -5,6 +5,8 @@ const LABS = [1, 2, 3, 4, 5]  // as LABS in site.js, which imports this file
 const ANSWERS = { all: { emoji: '✅', text: 'усі відповіді правильні', color: 'green' }, some: { emoji: '🟡', text: 'частина правильна', color: 'yellow' },
                   none: { emoji: '❌', text: 'жодної правильної', color: 'red' } }
 const right = (v) => (!v?.attempts ? null : v.ok === v.total ? 'all' : v.ok ? 'some' : 'none')  // no line handed in — nothing to say
+const WAYS = { none: { emoji: '🚫', text: 'без захисту', color: 'gray' }, record: { emoji: '🎥', text: 'записом', color: 'blue' },
+               live: { emoji: '🎤', text: 'наживо', color: 'green' } }
 
 // a lab's columns stand in its band next to the platform's, and a view says them of «this lab»: lab.vid → lab3.vid
 function lab(n) {
@@ -13,12 +15,20 @@ function lab(n) {
   const L = (key, type, name, short, get, more = {}) => ({ key: `lab${n}.${key}`, type, name, title: `${g}: ${name.toLowerCase()}`, short, get,
     group: g, cat: 'Лаба', lab: n, ...more })
   return [
-    L('vid', 'text', 'Варіант', '🎴', (r) => v(r)?.vid, { fam: 'variant', link: (r) => v(r) && `/labs/${n}/results`,
+    L('vid', 'text', 'Варіант', '🎴', (r) => v(r)?.vid, { fam: 'variant', link: (r) => v(r) && `/labs/${n}/results/${v(r).vid}`,  // the teacher's desk for this work
       hint: (r) => v(r)?.assigned_at && `картку взято ${fmtWhen(v(r).assigned_at)}` }),
     L('ok', 'enum', 'Відповіді', '🎯', (r) => right(v(r)), { fam: 'variant', options: ANSWERS, sub: (r) => (right(v(r)) ? `${v(r).ok}/${v(r).total}` : '') }),
     L('tries', 'number', 'Спроб', '🔁', (r) => v(r)?.attempts, { fam: 'variant' }),
     L('checked', 'date', 'Здано', '📨', (r) => v(r)?.checked_at, { fam: 'variant', title: `${g}: коли перевірено останній рядок` }),
     L('nb', 'link', 'Ноутбук', '📓', (r) => v(r)?.notebook, { fam: 'variant' }),
+    L('file', 'date', 'Файл', '📎', (r) => v(r)?.file_at, { fam: 'variant', title: `${g}: коли завантажено останню версію ноутбука`,
+      sub: (r) => (v(r)?.files > 1 ? `версій ${v(r).files}` : '') }),
+    // what the rules of the lab give for this work: the hint is never the mark (sum: false — a total of hints says nothing)
+    L('work', 'number', 'Рівень роботи', '🪜', (r) => v(r)?.work, { fam: 'points', sum: false, title: `${g}: якого рівня сягає сама робота` }),
+    L('hint', 'number', 'Підказка', '💡', (r) => v(r)?.hint, { fam: 'points', sum: false, title: `${g}: підказка оцінки — рівень роботи й форма захисту` }),
+    L('way', 'enum', 'Захист', '🎓', (r) => v(r)?.defended || v(r)?.way || null, { fam: 'points', options: WAYS,
+      sub: (r) => (v(r)?.defended ? 'прийнято' : v(r)?.way ? 'намір' : '') }),
+    L('stars', 'number', 'Зірочок', '⭐', (r) => v(r)?.stars, { fam: 'points', sum: false }),
     L('points', 'number', 'Бали', '💯', (r) => v(r)?.points, { fam: 'points', hint: (r) => v(r)?.note }),
     L('pnote', 'text', 'Нотатка до балів', '🗒', (r) => v(r)?.note, { fam: 'points' }),
   ]

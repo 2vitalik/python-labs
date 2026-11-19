@@ -6,6 +6,7 @@ import Crumbs from '@core/components/Crumbs.vue'
 import { loadGuide, pages } from '@core/guide.js'
 import { site } from '@core/site.js'
 
+import LabParts from '../components/LabParts.vue'
 import { KINDS } from '../site.js'
 
 const route = useRoute()
@@ -18,6 +19,7 @@ loadGuide()
 <template>
   <Crumbs :items="[KINDS[kind]]" />
   <h1 class="h2 mb-3">{{ KINDS[kind] }}</h1>
+  <LabParts v-if="kind === 'labs'" />
   <ol class="docs list-unstyled">
     <li v-for="d in docs" :key="d.slug">
       <span class="n text-secondary">{{ d.n }}</span>

@@ -14,6 +14,8 @@ import { useTitle } from '@core/title.js'
 import { user } from '@core/user.js'
 
 import { getLabs } from '../api.js'
+import LabFiles from '../components/LabFiles.vue'
+import LabParts from '../components/LabParts.vue'
 import Slides from '../components/Slides.vue'
 import { KINDS } from '../site.js'
 import { slidesOf } from '../slides.js'
@@ -65,10 +67,12 @@ watch(doc, load, { immediate: true })
   </Crumbs>
   <div v-if="page">
     <h1 class="h2 mb-3">{{ page.title }}</h1>
+    <LabParts v-if="kind === 'labs'" :n="doc.n" />
     <Slides v-if="slide !== null && slides.length" v-model="slide" :slides />
     <template v-else>
       <GuideBody v-model:page="page" />
       <Toc :items="toc" />
+      <LabFiles v-if="kind === 'labs'" :slug="doc.slug" />
     </template>
     <nav class="docs-nav mt-4 pt-3 border-top">
       <RouterLink v-if="prev" :to="prev.path">← {{ prev.nav }}</RouterLink><span v-else></span>
