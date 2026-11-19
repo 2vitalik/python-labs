@@ -17,6 +17,9 @@ document.addEventListener('visibilitychange', async () => {
 
 // «Очима студента»: the whole site answers as to a test student; the reload drops what was loaded for the admin
 export const lookAs = (nick, to = '/') => viewAs(nick).then(() => location.assign(to))  // `to` — where to land as them
+// …as the site's test student (the API finds or makes one), from any page (`route` — the caller's: the router imports
+// this module): stay on it unless a student may not open it; reload, as assign() of a URL with a #hash only scrolls
+export const lookAsTest = (route) => viewAs().then(() => (route.meta.access === 'admin' ? location.assign('/') : location.reload()))
 export const lookBack = () => stopViewAs().then(() => location.assign('/students'))
 
 // route access: 'admin' | 'active' (student or admin) | undefined = public

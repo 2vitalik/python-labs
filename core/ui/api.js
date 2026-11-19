@@ -5,7 +5,7 @@ export const putProfile = (data) => request('/api/profile', 'PUT', data)
 export const unlinkTelegram = () => request('/api/me/telegram', 'DELETE')
 export const postView = (path) => request('/api/me/view', 'POST', { path })
 export const postError = (data) => request('/api/errors', 'POST', data)
-export const viewAs = (nick) => request(`/api/me/as/${nick}`, 'POST')
+export const viewAs = (nick) => request(`/api/me/as${nick ? `/${nick}` : ''}`, 'POST')  // no nick — the site's test student
 export const stopViewAs = () => request('/api/me/as', 'DELETE')
 export const getStudents = () => request('/api/students')
 export const getStudent = (nick) => request(`/api/students/${nick}`)

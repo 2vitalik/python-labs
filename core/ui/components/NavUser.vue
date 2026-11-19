@@ -3,11 +3,13 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
 import { down } from '../http.js'
-import { canAccess, user } from '../user.js'
+import { canAccess, lookAsTest, user } from '../user.js'
 import Avatar from './Avatar.vue'
+import Icon from './Icon.vue'
 import ThemeSwitch from './ThemeSwitch.vue'
 
-// right side of the menu: theme switch · avatar · name (both lead to the profile) · «Вийти», or the sign-in buttons; `stage` comes from useNavFit
+// right side of the menu: theme switch · the admin's eye «Очима студента» · avatar · name (both lead to the profile) ·
+// «Вийти», or the sign-in buttons; `stage` comes from useNavFit
 defineProps({ stage: Number })
 const isDev = import.meta.env.DEV
 const route = useRoute()
@@ -20,6 +22,8 @@ const next = computed(() => `?next=${encodeURIComponent(route.fullPath)}`)
   <div class="d-flex align-items-center gap-2 ms-2 flex-shrink-0 text-nowrap">
     <ThemeSwitch />
     <template v-if="user">
+      <button v-if="canAccess('admin') && !user.viewing" type="button" class="eye btn btn-sm border-0 p-1 d-inline-flex text-body-secondary fs-6"
+              title="Очима студента — тестовий студент" @click="lookAsTest(route)"><Icon name="eye" /></button>
       <component :is="profile ? 'RouterLink' : 'span'" :to="profile" class="d-flex align-items-center gap-2 text-reset text-decoration-none" title="Профіль">
         <Avatar :user />
         <span v-if="stage < 1">{{ user.name || user.email }}</span>
@@ -38,3 +42,8 @@ const next = computed(() => `?next=${encodeURIComponent(route.fullPath)}`)
     </template>
   </div>
 </template>
+
+<style scoped>
+/* as the theme switch beside it; a phone keeps :hover after a tap */
+@media (hover: hover) { .eye:hover { color: var(--bs-body-color) !important; } }
+</style>

@@ -1,5 +1,5 @@
 """Smoke: «Очима студента» (T148, T161) — only an admin; a test student can be edited, a real one is read-only;
-whose rights, whose footprint; test students in the lists. Run from a site's api folder:
+whose rights, whose footprint; test students in the lists; one click without a nick (T357). Run from a site's api folder:
 DB_NAME=<db>_smoke ~/.venvs/python-labs/bin/python <repo>/core/api/tests/smoke_view_as.py"""
 import os
 import sys
@@ -42,10 +42,12 @@ def nicks(c):
 
 with TestClient(main.app) as c:
     check("guest: start → 401", c.post("/api/me/as/test.student").status_code == 401)
+    check("guest: one click → 401", c.post("/api/me/as").status_code == 401)
     check("guest: stop → null", c.delete("/api/me/as").json() is None)
 
     sign_in(c, VASYA)
     check("student: start → 403", c.post("/api/me/as/test.student").status_code == 403)
+    check("student: one click → 403", c.post("/api/me/as").status_code == 403)
     check("student: the gallery hides the test student", nicks(c) == ["petro", "vasya"], nicks(c))
 
     sign_in(c, ADMIN)
@@ -107,6 +109,20 @@ with TestClient(main.app) as c:
     sign_in(c, ADMIN)
     r = c.put("/api/students/vasya", json={"group": "TEST", "status": "student", "test": True})
     check("admin: the flag is set in the student form", r.json()["test"] is True and c.post("/api/me/as/vasya").status_code == 200, r.text)
+
+    c.delete("/api/me/as")
+    r = c.post("/api/me/as")
+    check("one click: the first test student", r.status_code == 200 and (r.json()["email"], r.json()["viewing"]) == (TEST, True), r.text)
+    check("one click: /api/me is that student", c.get("/api/me").json()["email"] == TEST)
+    c.delete("/api/me/as")
+    db.users.delete_many({"test": True})
+    r = c.post("/api/me/as")
+    made = db.users.find_one({"email": TEST}) or {}
+    check("one click, no test student: one made up at the admin's domain", r.status_code == 200 and r.json()["email"] == TEST
+          and (made.get("status"), made.get("test"), made.get("last_name"), made.get("first_name")) == ("student", True, "Тестовий", "Студент"), made)
+    check("… its birth in history, by the admin", db.history.count_documents({"coll": "users", "doc_id": made.get("_id"), "actor": ADMIN}) == 1)
+    c.delete("/api/me/as")
+    check("… and the next click takes the same one", c.post("/api/me/as").json()["email"] == TEST and db.users.count_documents({"test": True}) == 1)
 
 ok = sum(results)
 print(f"\n{ok}/{len(results)} PASS")
