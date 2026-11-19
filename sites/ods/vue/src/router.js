@@ -21,33 +21,36 @@ import ViewsPage from '@core/pages/ViewsPage.vue'
 import WeekPage from '@core/pages/WeekPage.vue'
 import { makeRouter } from '@core/router.js'
 
-import DocPage from './pages/DocPage.vue'
-import DocsPage from './pages/DocsPage.vue'
 import HomePage from './pages/HomePage.vue'
-import LabPartPage from './pages/LabPartPage.vue'
+import LabPage from './pages/LabPage.vue'
 import LabResultsPage from './pages/LabResultsPage.vue'
 import LabReviewPage from './pages/LabReviewPage.vue'
+import LabsPage from './pages/LabsPage.vue'
+import LecturePage from './pages/LecturePage.vue'
+import LecturesPage from './pages/LecturesPage.vue'
 import MyLabPage from './pages/MyLabPage.vue'
 import MyNotebookPage from './pages/MyNotebookPage.vue'
+import OldLabsPage from './pages/OldLabsPage.vue'
 
+// the platform's pages stand here with the same addresses and meta as on the python site (app/vue/src/router.js);
 // lectures and labs are for signed-in NURE students (T166 Q4)
-const docs = (kind, title) => [
-  { path: `/${kind}`, component: DocsPage, meta: { title, kind, access: 'active' } },
-  { path: `/${kind}/:n`, component: DocPage, meta: { title, kind, access: 'active', filters: true } },
-]
-
-// the platform's pages stand here with the same addresses and meta as on the python site (app/vue/src/router.js)
 export default makeRouter([
   { path: '/', component: HomePage },
-  ...docs('lectures', 'Лекції'),
-  ...docs('labs', 'Лаби'),
+  { path: '/lectures', component: LecturesPage, meta: { title: 'Лекції', access: 'active' } },
+  // filters: a change of ?slide keeps the scroll — the text comes back to the slide's place (LecturePage)
+  { path: '/lectures/:n', component: LecturePage, meta: { title: 'Лекції', access: 'active', filters: true } },
+  { path: '/labs', component: LabsPage, meta: { title: 'Лаби', access: 'active' } },
+  { path: '/labs/old', component: OldLabsPage, meta: { title: 'Архів', access: 'admin' } },  // the labs as they were (old-labN)
+  { path: '/labs/old/:n(\\d+)', component: OldLabsPage, meta: { title: 'Архів', access: 'admin' } },
   { path: '/labs/:n/my', component: MyLabPage, meta: { title: 'Моя лаба', access: 'active' } },
   { path: '/labs/:n/my/nb/:id', component: MyNotebookPage, meta: { title: 'Мій ноутбук', access: 'active', wide: true } },  // the file as the teacher sees it (T354)
-  { path: '/labs/:n/results', component: LabResultsPage, meta: { title: 'Результати', access: 'admin', wide: true } },
-  { path: '/labs/:n/results/:vid', component: LabReviewPage, meta: { title: 'Перевірка', access: 'admin', wide: true } },  // the notebook next to the key and the marks
-  // the labs' pages beyond the task itself (labPages.js): /labs/3/guide — a part of a lab, /labs/about/grading — common to all labs
-  { path: '/labs/about/:part', component: LabPartPage, meta: { title: 'Лаби', access: 'active', about: true } },
-  { path: '/labs/:n(\\d+)/:part', component: LabPartPage, meta: { title: 'Лаби', access: 'active' } },
+  { path: '/labs/:n/results', component: LabResultsPage, meta: { title: 'Результати', access: 'admin', wide: 'table' } },
+  { path: '/labs/:n/results/:vid', component: LabReviewPage, meta: { title: 'Перевірка', access: 'admin', wide: 'table' } },  // the notebook next to the key and the marks
+  // a lab's pages (labPages.js): /labs/3 — its own, /labs/3/case1 — a part of it, /labs/about/grading — common to all labs.
+  // `:n` without (\\d+): a pattern would outrank the plain `:n` of /labs/:n/my and /labs/:n/results above
+  { path: '/labs/about/:part', component: LabPage, meta: { title: 'Лаби', access: 'active', about: true } },
+  { path: '/labs/:n', component: LabPage, meta: { title: 'Лаби', access: 'active' } },
+  { path: '/labs/:n/:part', component: LabPage, meta: { title: 'Лаби', access: 'active' } },
   { path: '/lessons', component: LessonsPage, meta: { title: 'Пари', access: 'active', filters: true } },
   { path: '/lessons/new', component: LessonEditPage, meta: { title: 'Нова пара', access: 'admin' } },
   { path: '/lessons/:slug', component: LessonPage, meta: { title: 'Пари', access: 'active' } },
