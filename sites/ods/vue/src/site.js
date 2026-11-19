@@ -15,6 +15,7 @@ export default {
     ['/students', 'Студи', null, false, 'users'], ['/deadlines', 'Строки', null, false, 'alarm'], ['/table', 'Звід', null, false, 'table'],
     ['/intake', 'Вхідні', null, false, 'send'], ['/activity', 'Актив', null, false, 'chart'], ['/polls', 'Polls', null, false, 'bars'], ['/week', 'Week', null, false, 'calendar'],
     ['/my/profile', 'Профіль', null, false, 'user']],
+  start: { note: '🧪 Далі — Лаби → Лаба 3 → «Моя лаба»: назви свій номер у списку потоку' },
   guide: [...LECTURES, ...LABS],
   colls: { variants: 'варіант лаби', lab_gates: 'доступ до лаби' },
   students: { page: 'Лаби', cols: STUDENT_COLS, facets: FACETS },
