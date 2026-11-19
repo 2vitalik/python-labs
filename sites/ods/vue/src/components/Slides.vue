@@ -27,28 +27,26 @@ function go(step) {
   const s = props.slides[at.value + step]
   if (s) n.value = s.n
 }
-const { idle, canFull, full, wake, touchDown, touchUp } = useSlideKeys(root, go)
+const { idle, canFull, full, wake, touchDown, touchUp } = useSlideKeys(root, body, go)
 
+// the sheet and its bar take the window from the sheet's own top down (slides.css: --top): scrolling the page to them would
+// not hold — the router takes the page to its top at every slide. On the whole screen the sheet is the window's
+const measure = () => document.fullscreenElement || root.value.style.setProperty('--top', `${Math.round(root.value.getBoundingClientRect().top + scrollY)}px`)
 let runs = 0
 async function place(hide) {
   const run = ++runs
   if (hide) ready.value = false
+  measure()
   await nextTick()
+  if (hide) body.value.scrollTop = 0  // the body stays the same element: a new slide starts from its top
   await fit(body.value)
   if (run === runs) ready.value = true
 }
 watch(text, () => place(true))
 const refit = () => place(false)
 const sized = new ResizeObserver(refit)
-onMounted(() => {
-  place(true)
-  sized.observe(sheet.value)
-  document.fonts.addEventListener('loadingdone', refit)
-})
-onUnmounted(() => {
-  sized.disconnect()
-  document.fonts.removeEventListener('loadingdone', refit)
-})
+onMounted(() => (place(true), sized.observe(sheet.value), document.fonts.addEventListener('loadingdone', refit)))
+onUnmounted(() => (sized.disconnect(), document.fonts.removeEventListener('loadingdone', refit)))
 
 function zoom(e) {
   const all = [...body.value.querySelectorAll('img')]
@@ -72,7 +70,7 @@ function zoom(e) {
     </div>
     <div class="slide-bar">
       <button class="btn btn-sm btn-outline-secondary" :disabled="!at" title="Попередній (←)" @click="go(-1)"><Icon name="left" /></button>
-      <span class="count">{{ at + 1 }} / {{ slides.length }}</span>
+      <span class="count" title="Номер слайда / останній">{{ cur.n }} / {{ slides[last].n }}</span>
       <button class="btn btn-sm btn-outline-secondary" :disabled="at === last" title="Наступний (→)" @click="go(1)"><Icon name="right" /></button>
       <span class="grow"></span>
       <button class="btn btn-sm btn-outline-secondary" title="Це місце в тексті" @click="emit('text', cur.n)"><Icon name="book" /><span>у тексті</span></button>

@@ -1,6 +1,8 @@
 /* one slide (Slides.vue, T359 §4): a 16:9 sheet whose type scales with its width (cqw) and with --fit (slideFit.js); the
-   frame steps out of the page's column to the window's size — by margins: a transform would trap the lightbox inside */
-.slides { --w: min(100vw - 2rem, 84rem, (100dvh - 12rem) * 16 / 9); width: var(--w); margin-inline: calc((100% - var(--w)) / 2); }
+   frame steps out of the page's column to the window's size — by margins: a transform would trap the lightbox inside.
+   The sheet and its bar (3.25rem) fit the window below the sheet's own top (--top, Slides.vue) */
+.slides { --w: min(100vw - 2rem, 84rem, (100dvh - var(--top, 9rem) - 3.25rem) * 16 / 9); width: var(--w);
+          margin-inline: calc((100% - var(--w)) / 2); }
 .slide { position: relative; aspect-ratio: 16 / 9; container-type: size; overflow: hidden; background: var(--lec-paper);
          border: 1px solid var(--bs-border-color-translucent); border-radius: .75rem;
          box-shadow: 0 1px 2px rgb(0 0 0 / .05), 0 12px 32px -18px rgb(0 0 0 / .35); }
@@ -14,7 +16,7 @@
 .slide-head .num { font-variant-numeric: tabular-nums; font-weight: 600; }
 .slide-body { position: absolute; inset: 10cqh 5cqw 7.5cqh; overflow: hidden; line-height: 1.42;
               font-size: max(12px, calc(var(--fit, 1) * 2.1cqw)); }
-.slide-body.scroll { overflow-y: auto; mask-image: linear-gradient(#000 calc(100% - 2.5em), transparent); padding-bottom: 2em; }
+.slide-body.scroll { overflow-y: auto; mask-image: linear-gradient(#000 calc(100% - 2.5em), transparent); padding-bottom: 2.5em; }
 .slide-progress { position: absolute; left: 0; bottom: 0; height: .35cqh; min-height: 2px; width: calc(var(--at, 0) * 100%);
                   background: var(--lec-accent); opacity: .65; transition: width .2s; }
 
@@ -46,7 +48,8 @@
 /* the cover: the course, «Тема N» and the name above the slide's own text (the plan) */
 .slide.cover .slide-body { display: flex; flex-direction: column; justify-content: center; inset: 8cqh 8cqw; }
 .slide.cover .eyebrow { font-size: .78em; letter-spacing: .14em; text-transform: uppercase; color: var(--lec-muted); }
-.slide.cover .title { font-size: 2.15em; font-weight: 750; line-height: 1.12; letter-spacing: -.015em; margin: .25em 0 .9em; }
+.slide.cover .title { font-size: 2.15em; font-weight: 750; line-height: 1.12; letter-spacing: -.015em; margin: .25em 0 .9em;
+                      hyphens: auto; overflow-wrap: anywhere; }  /* «Непараметричний» is wider than a phone's sheet */
 .slide.cover .title .topic { display: block; font-size: .5em; font-weight: 650; letter-spacing: .02em; color: var(--lec-accent); margin-bottom: .3em; }
 .slide.cover .guide { padding-left: 1.1em; border-left: 3px solid var(--lec-rule); }
 .slide.cover .guide > :first-child:is(h2, h3) { font-size: .72em; letter-spacing: .14em; text-transform: uppercase; color: var(--lec-muted); margin-bottom: .6em; }
@@ -69,13 +72,15 @@
 .slides:fullscreen.idle { cursor: none; }
 .slides:fullscreen.idle .slide-bar { opacity: 0; }
 
-/* a phone held upright: no 16:9 — a sheet as tall as the window, type in px, columns one under another */
+/* a phone held upright: no 16:9 — the sheet and its bar take the window below the sheet's top (a tall page head leaves at
+   least 20rem, the page scrolls then), type in px, columns one under another */
 @media (max-width: 575.98px) {
   .slides { --w: auto; width: auto; margin-inline: 0; }
-  .slide { aspect-ratio: auto; height: calc(100dvh - 10rem); }
+  .slide { aspect-ratio: auto; height: max(20rem, calc(100dvh - var(--top, 10rem) - 3.25rem)); }
   .slide-head { top: .8rem; left: 1rem; right: 1rem; font-size: .72rem; }
   .slide-body { inset: 2.6rem 1rem 1.2rem; font-size: max(13px, calc(var(--fit, 1) * 16px)); }
   .slide .guide .lec-cols { display: block; }
   .slide .guide .lec-col + .lec-col { margin-top: .6em; }
   .slide.cover .slide-body { inset: 2rem 1.25rem; }
+  .slide.cover .title { font-size: 1.6em; }
 }

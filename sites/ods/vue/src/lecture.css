@@ -62,6 +62,11 @@
 /* formulas: their own line with air; the number is quiet */
 .lecture .guide .katex-display { margin: 1rem 0 1.1rem; }
 :is(.lecture, .slide) .guide .katex-display .tag { color: var(--lec-muted); }
+/* a formula or a table wider than the column scrolls in its own block; a thin bar under it says so — the system's
+   bar on a Mac shows only while scrolling, and the cut end looked like the formula's end */
+:is(.lecture, .slide) .guide :is(.katex-display, .table-responsive)::-webkit-scrollbar { height: 6px; }
+:is(.lecture, .slide) .guide :is(.katex-display, .table-responsive)::-webkit-scrollbar-thumb { border-radius: 3px;
+  background: color-mix(in srgb, var(--lec-muted) 45%, transparent); }
 @media (max-width: 575.98px) {  /* a phone: the number follows a formula too wide for it instead of covering its end */
   :is(.lecture, .slide) .guide .katex-display > .katex > .katex-html > .tag { position: static; display: inline-block; margin-left: 1em; }
 }
