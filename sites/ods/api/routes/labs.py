@@ -7,6 +7,7 @@ from bot import lab_alerts
 from core.deps import active_user
 from core.models.history import record
 from core.models.user import User
+from intake_apply import settle
 from lab_claim import DEMO, claim, group_of, may_demo, mine
 from lab_gates import BY_TELEGRAM, gates, here, opened, teacher
 from lab_line import attempt
@@ -42,6 +43,7 @@ async def list_labs(user: User = Depends(active_user)):
 async def get_my(lab: int, soft: bool = False, user: User = Depends(opened)):
     """MY; no card yet — 404 with the words why, or with `soft` 200 {vid: None, why}: «Моя лаба» asks so, an ordinary
     first visit is not an error in the browser's console."""
+    await settle(user)  # notebooks the teacher forwarded before the student linked the bot become theirs here (T368)
     try:
         v = await mine(lab, user)
     except HTTPException as e:
