@@ -20,10 +20,13 @@ function click(e) {
   emit('edit', edit.dataset.id)
 }
 
-// the #target may live in this text: light it once the html is in the DOM (page load, section change)
-function lightHash() {
+// the #target may live in this text: light it once the html is in the DOM (page load, section change) and the text's
+// pictures have their height — a scroll started before that stops short of the target
+async function lightHash() {
   const el = route.hash && document.getElementById(route.hash.slice(1))
-  if (el && root.value.contains(el)) flash(el.id)
+  if (!el || !root.value.contains(el)) return
+  await Promise.all([...root.value.querySelectorAll('img')].map((img) => img.decode().catch(() => null)))
+  flash(el.id)
 }
 onMounted(lightHash)
 watch(html, lightHash, { flush: 'post' })

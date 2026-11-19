@@ -15,12 +15,26 @@ document.addEventListener('visibilitychange', async () => {
   if (now !== undefined && now?.email !== user.value?.email) location.reload()
 })
 
+// the page the menu's eye was clicked on (this tab): «Повернутись» comes back to it; a look from the students — to /students
+const FROM = 'look-from'
+const keepFrom = (path) => { try { path ? sessionStorage.setItem(FROM, path) : sessionStorage.removeItem(FROM) } catch { /* → /students */ } }
+const takeFrom = () => { try { return sessionStorage.getItem(FROM) } catch { return null } }
+// assign() of this very page with another #hash would only scroll, without the reload
+const land = (to) => (to.split('#')[0] === location.pathname + location.search ? location.reload() : location.assign(to))
+
 // «Очима студента»: the whole site answers as to a test student; the reload drops what was loaded for the admin
-export const lookAs = (nick, to = '/') => viewAs(nick).then(() => location.assign(to))  // `to` — where to land as them
+export const lookAs = (nick, to = '/') => { keepFrom(null); return viewAs(nick).then(() => location.assign(to)) }  // `to` — where to land as them
 // …as the site's test student (the API finds or makes one), from any page (`route` — the caller's: the router imports
-// this module): stay on it unless a student may not open it; reload, as assign() of a URL with a #hash only scrolls
-export const lookAsTest = (route) => viewAs().then(() => (route.meta.access === 'admin' ? location.assign('/') : location.reload()))
-export const lookBack = () => stopViewAs().then(() => location.assign('/students'))
+// this module): stay on it unless a student may not open it
+export function lookAsTest(route) {
+  const here = location.pathname + location.search + location.hash
+  keepFrom(here)
+  return viewAs().then(() => land(route.meta.access === 'admin' ? '/' : here))
+}
+export function lookBack() {
+  const to = takeFrom() || '/students'
+  return stopViewAs().then(() => { keepFrom(null); land(to) })
+}
 
 // route access: 'admin' | 'active' (student or admin) | undefined = public
 export function canAccess(access) {
