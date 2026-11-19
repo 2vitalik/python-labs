@@ -282,8 +282,9 @@ JS</pre>
     <p class="src">Має надрукувати: guide 47 · media 150 · lab_pages 27 · lab_shapes 5 · variants 310. Команду перевірено на пробній копії: числа саме такі, дев-база не змінилась. Якщо лекції заливатимуться в дев-базу пізніше — повторити.</p></li>
   <li class="done"><b>Правки сесії T368</b><p>Лаби 4–5 сховано, здача лаб 1–2 на сайті закрита: коміти <code>cf38ad0</code> і <code>9c0a119</code>. Налаштування їдуть разом із кодом, у копію бази нічого додавати не треба.</p></li>
   <li><b>Код</b><p>Після push перевірити, що тема останнього коміту <code>origin/www-ods</code> дорівнює sha <code>origin/ods</code>: сервер чекає саме на це.</p>
-<pre class="cmd">git push origin ods
-git fetch -q origin &amp;&amp; git log -1 --format=%s origin/www-ods &amp;&amp; git rev-parse origin/ods</pre></li>
+<pre class="cmd">git push origin 07f7f5f:ods
+git fetch -q origin &amp;&amp; git log -1 --format=%s origin/www-ods &amp;&amp; git rev-parse origin/ods</pre>
+    <p class="src"><code>07f7f5f</code> — код коміту <code>9c0a119</code>, на якому пройшли збірки й смоуки, плюс документи. Звичайне <code>git push origin ods</code> забере й те, що сесія T368 закомітить пізніше: вона ще пише перенос файлів із Telegram. Статика збирається з самого коміту, незакомічене в дереві в неї не потрапляє.</p></li>
 </ol>
 
 <h3>На сервері, <code>ssh vv3</code></h3>
@@ -691,7 +692,7 @@ sudo vv timer on ods-labs</pre></li>
 <ol class="next">
   <li><b>Ти:</b> слово про лекції — «лий» чи «не зараз». Від нього залежить, коли знімати копію бази.</li>
   <li><b>Ти:</b> бот ods у BotFather і рядок <code>BODY_MAX=20MB</code> у vps-infra.</li>
-  <li><b>Ти:</b> копія бази, <code>git push origin ods</code> (у гілці має бути <code>9c0a119</code> або новіший), сервер за кроками 10–15.</li>
+  <li><b>Ти:</b> копія бази, <code>git push origin 07f7f5f:ods</code>, сервер за кроками 10–15.</li>
   <li><b>Ти, після деплою:</b> список потоку, дедлайни, здача оком студента, оголошення в чат.</li>
   <li><b>До пари:</b> правило запізнення (T225 Q7–Q9) і <a href="https://claude.ai/artifact/Bzhdf84ycxk6pw1QktU59Y">сторінка для ПЗ</a> про лабу 3.</li>
   <li><b>Я, за словом:</b> залити лекції в дев-базу; дописати в правила проєкту «сплячих сесій записками не будити»; python-сайт — окремим деплоєм, коли скажеш.</li>
