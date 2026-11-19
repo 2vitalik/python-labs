@@ -33,9 +33,10 @@ const rows = computed(() => props.strips.map((s) => {
       </div>
     </div>
     <div class="legend">
-      <span><i class="cell ok moved" /> вчасно</span> · <span><i class="cell late moved" /> після дедлайну</span> ·
-      <span><i class="cell free moved" /> без дедлайну</span> · <span><i class="cell" /> файла нема</span> ·
-      <span><i class="cell ok moved" /> на сайті</span> · <span><i class="cell ok" /> ще ні</span>
+      <span>колір: <span><i class="cell ok moved" /> вчасно</span> · <span><i class="cell late moved" /> після дедлайну</span> ·
+        <span><i class="cell free moved" /> без дедлайну</span></span>
+      <span><span><i class="cell gray moved" /> залита — на сайті</span> · <span><i class="cell gray" /> рамка — ще ні</span> ·
+        <span><i class="cell" /> порожня — файла нема</span></span>
     </div>
   </section>
 </template>
@@ -53,11 +54,12 @@ button.cell:hover { outline: 2px solid var(--bs-secondary-color); outline-offset
 .cell.ok { --tone: var(--bs-success); }
 .cell.late { --tone: var(--bs-warning); }
 .cell.free { --tone: var(--bs-primary); }
+.cell.gray { --tone: var(--bs-secondary); }  /* the legend's sample of «filled or framed», whatever the colour */
 /* not on the site yet — a frame of the tone; on the site — filled too (border-box: the size stays) */
-.cell.ok, .cell.late, .cell.free { border: 2px solid color-mix(in srgb, var(--tone) 75%, var(--bs-body-bg)); color: var(--bs-body-color); font-weight: 600; }
+.cell.ok, .cell.late, .cell.free, .cell.gray { border: 2px solid color-mix(in srgb, var(--tone) 75%, var(--bs-body-bg)); color: var(--bs-body-color); font-weight: 600; }
 .cell.moved { border-width: 1px; border-color: color-mix(in srgb, var(--tone) 60%, var(--bs-body-bg)); background: color-mix(in srgb, var(--tone) 35%, var(--bs-body-bg)); }
-.legend { color: var(--bs-secondary-color); font-size: .75rem; }
-.legend span { white-space: nowrap; }
+.legend { display: flex; flex-wrap: wrap; column-gap: 1.5rem; color: var(--bs-secondary-color); font-size: .75rem; }  /* two measures, two groups */
+.legend span span { white-space: nowrap; }
 .legend .cell { width: .75rem; height: .75rem; vertical-align: -.1em; }
 @media (max-width: 575px) { .strip { grid-template-columns: minmax(0, 1fr); } .lbl { flex-direction: row; gap: .4rem; align-items: baseline; } }
 </style>

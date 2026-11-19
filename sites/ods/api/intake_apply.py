@@ -38,7 +38,7 @@ async def apply(f: Forward) -> bool:
     except HTTPException as e:
         await f.set({Forward.trouble: str(e.detail)})
         return False
-    await f.set({Forward.version: str(made.id), Forward.trouble: ""})
+    await f.set({Forward.version: str(made.id), Forward.trouble: "", Forward.vid: f.vid or made.vid})  # a file without a card: the card it went to
     return True
 
 

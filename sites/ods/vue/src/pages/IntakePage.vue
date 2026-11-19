@@ -47,11 +47,10 @@ async function go(id) {
   <div class="intake">
     <Crumbs :items="['Вхідні']" />
     <h1 class="h2 mb-1">Вхідні з Telegram</h1>
-    <IntakeHow />
+    <IntakeHow :force="!!data && !data.people.length" />
     <div v-if="error" class="alert alert-danger">{{ error }}</div>
     <p v-else-if="!data" class="text-secondary">Завантажую…</p>
-    <p v-else-if="!data.people.length" class="text-secondary my-4">Поки порожньо. Перешли боту повідомлення студента з особистого
-      чату — файл ноутбука і текст; бот відповість, що побачив, а тут зʼявиться, хто що надіслав.</p>
+    <p v-else-if="!data.people.length" class="text-secondary my-4">Поки порожньо.</p>
     <template v-else>
       <IntakeStrips v-if="data.strips.length" :strips="data.strips" @go="go" />
       <IntakeFilters :people="data.people" :f @set="set" />

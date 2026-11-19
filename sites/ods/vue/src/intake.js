@@ -50,6 +50,9 @@ const lateOf = (x) => (x.late === true ? 'late' : x.late === false ? 'ok' : 'fre
 const LATE = { late: 'після дедлайну', ok: 'вчасно' }
 const score = (x) => (x.total !== null && x.total !== undefined ? `${x.ok ?? 0}/${x.total} ✅` : '')
 
+// a card's number as said in a line: ПЗПІ-24-04 → 04, the whole of it under the mouse
+const short = (vid) => String(vid).split('-').pop()
+
 // «Лаба 2 · варіант 07 · 13/14 ✅ · вчасно»: what the site read in a notebook, a piece each; `lab` — the teacher may
 // correct it while the file is not a version yet
 export function factsOf(file) {
@@ -57,7 +60,7 @@ export function factsOf(file) {
   const late = lateOf(file)
   return [
     file.lab && { text: `Лаба ${file.lab}`, lab: !file.version },
-    file.vid && { text: `варіант ${file.vid}` },
+    file.vid && { text: `варіант ${short(file.vid)}`, hint: `картка ${file.vid}` },
     !file.line ? { text: 'без рядка відповідей', cls: 'quiet' }
       : score(file) ? { text: score(file) } : { text: 'рядок є', hint: 'ключа картки нема — перевірити нема з чим' },
     LATE[late] && { text: LATE[late], cls: late, hint: `дедлайн ${fmtWhen(file.due)}` },

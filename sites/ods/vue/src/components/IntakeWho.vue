@@ -21,9 +21,10 @@ const why = (w) => GUESS[w] || ['', '']
       <RouterLink :to="`/students/${p.student.nick}/edit`" class="fw-semibold">{{ p.student.name }}</RouterLink>
       <span v-if="p.student.group" class="text-secondary">· {{ p.student.group }}</span>
       <span v-if="HOW[p.how]" v-hint="HOW[p.how][1]" class="quiet">{{ HOW[p.how][0] }}</span>
+      <!-- «не він» first: after «це він» the next word under the mouse is «змінити», which only opens the list -->
       <template v-if="p.how !== 'tg'">
-        <IntakePick label="змінити" :busy @pick="set" />
         <button type="button" class="dot" :disabled="busy" @click="set('')">не він</button>
+        <IntakePick label="змінити" :busy @pick="set" />
       </template>
     </template>
     <template v-else-if="p.guess">

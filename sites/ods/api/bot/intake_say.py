@@ -21,7 +21,8 @@ def at(r: ForwardHead) -> str:
 def notebook(r: ForwardHead) -> list[str]:
     """📓 Лаба 2 · КН-1-07 · 13/14 ✅ · 14.11 21:03 · на сайті — and the reason in words when it did not go over."""
     state = "на сайті" if r.version else "не перенесено" if r.lab and r.student else ""
-    parts = [f"Лаба {r.lab}" if r.lab else "лаба ?", html.quote(r.vid), f"{r.ok}/{r.total} ✅" if r.total else "", at(r), state]
+    score = f"{r.ok}/{r.total} ✅" if r.total else "" if r.line else "без рядка"
+    parts = [f"Лаба {r.lab}" if r.lab else "Лаба ?", html.quote(r.vid), score, at(r), state]
     return [f"📓 {' · '.join(p for p in parts if p)}"] + ([f"⚠️ {html.quote(r.trouble)}"] if r.trouble else [])
 
 

@@ -32,7 +32,8 @@ const ASK = { true: 'просить більше часу — клік знім�
 </template>
 
 <style scoped>
-.msg { display: grid; grid-template-columns: 7rem minmax(0, 1fr) 6.5rem; grid-template-areas: 'when body tools'; column-gap: .75rem;
+/* the side columns as wide as what they hold: the file's line in the middle needs every rem */
+.msg { display: grid; grid-template-columns: 6rem minmax(0, 1fr) 6rem; grid-template-areas: 'when body tools'; column-gap: .6rem;
        padding: .35rem 0; border-top: 1px solid var(--bs-border-color-translucent); }
 .when { grid-area: when; color: var(--bs-secondary-color); font-size: .78rem; line-height: 1.5rem; white-space: nowrap; }
 .body { grid-area: body; min-width: 0; }

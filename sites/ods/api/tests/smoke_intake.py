@@ -277,7 +277,7 @@ with TestClient(main.app) as c:
     check("summary without the timer: the unknown by name and nick, the known with the reason in the teacher's words",
           "❓ Вася П. · не впізнаю" in say and "❓ Дмитро · @dmytro_tg · не впізнаю" in say and "Єременко Євген" in say
           and "⚠️ Картку КН-1-03 тримає Зінченко Зоя" in say and "Telegram не віддав файл: file is temporarily unavailable" in say
-          and "📓 Лаба 2 · КН-1-04 · 16.11 13:00" in say and len(tg.sent) == 1, say)
+          and "📓 Лаба 2 · КН-1-04 · без рядка · 16.11 13:00" in say and "📓 Лаба ? · без рядка" in say and len(tg.sent) == 1, say)
     check("summary: the guess next to the unknown, and why", "не впізнаю · схоже, Пупкін Василь (за карткою)" in say
           and "@dmytro_tg · не впізнаю · схоже, Дорошенко Дмитро (за ніком)" in say and "Петро Сидоренко · не впізнаю · схоже, Сидоренко Петро (за імʼям)" in say
           and "❓ Гліб · не впізнаю\n" in say, say)

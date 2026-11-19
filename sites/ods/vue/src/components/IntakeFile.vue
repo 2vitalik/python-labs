@@ -26,16 +26,18 @@ const apply = () => emit('act', () => applyIntakeRow(props.id))
 <template>
   <div class="file">
     <div class="line">
-      <span class="what">
-        <LabClip class="clip" />
-        <a v-if="file.kind" v-hint="`${file.name}${size} — скачати, як надіслано`" :href="intakeRawUrl(id)" download class="name">{{ file.name || 'ноутбук' }}</a>
-        <a v-else-if="file.link" v-hint="file.link" :href="file.link" target="_blank" rel="noopener" class="name">{{ file.name || 'посилання' }}</a>
-        <span v-else v-hint="`${file.name}${size}`" class="name">{{ file.name }}</span>
-        <span v-if="facts.length" class="facts">
-          <template v-for="(x, i) in facts" :key="x.text"><template v-if="i"> · </template><IntakeLab v-if="x.lab" :id :lab="file.lab" :busy
-            @act="emit('act', $event)" /><span v-else v-hint="x.hint" class="fact" :class="x.cls">{{ x.text }}</span></template>
+      <div class="what"><div class="flow">
+        <span class="piece first">
+          <LabClip class="clip" />
+          <a v-if="file.kind" v-hint="`${file.name}${size} — скачати, як надіслано`" :href="intakeRawUrl(id)" download class="name">{{ file.name || 'ноутбук' }}</a>
+          <a v-else-if="file.link" v-hint="file.link" :href="file.link" target="_blank" rel="noopener" class="name">{{ file.name || 'посилання' }}</a>
+          <span v-else v-hint="`${file.name}${size}`" class="name">{{ file.name }}</span>
         </span>
-      </span>
+        <span v-for="x in facts" :key="x.text" class="piece" :class="x.cls">
+          <IntakeLab v-if="x.lab" :id :lab="file.lab" :busy @act="emit('act', $event)" />
+          <span v-else v-hint="x.hint">{{ x.text }}</span>
+        </span>
+      </div></div>
       <span class="state">
         <RouterLink v-if="state === 'site'" v-hint="'версія «Моєї лаби» — до перевірки'" :to="`/labs/${file.lab}/results/${file.vid}`"
                     class="site"><Icon name="done" /> на сайті</RouterLink>
@@ -56,25 +58,29 @@ const apply = () => emit('act', () => applyIntakeRow(props.id))
 
 <style scoped>
 .file { font-size: .85rem; }
-.line { display: flex; align-items: flex-start; gap: .5rem; min-height: 1.5rem; }
-/* a long name gives way, down to a stub; the facts wrap between their pieces only when even that is not enough */
-.what { flex: 1 1 auto; display: flex; align-items: baseline; min-width: 0; line-height: 1.5rem; }
-.clip { flex-shrink: 0; align-self: center; margin-right: .2rem; color: var(--bs-secondary-color); }
-.name { flex: 0 1 auto; min-width: 2.5rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.facts { flex: 0 0 auto; max-width: calc(100% - 3.5rem); color: var(--bs-secondary-color); }  /* 3.5rem — the clip and the name's stub */
-.facts::before { content: '·'; margin: 0 .3em; }
-.fact { color: var(--bs-body-color); white-space: nowrap; }
-.fact.quiet { color: var(--bs-secondary-color); }
-@media (max-width: 575px) {  /* a phone: the name and the state, the facts under them across the whole width */
-  .line { flex-wrap: wrap; gap: 0 .3rem; }
-  .what { display: contents; }
-  .name { flex: 1 1 0; }
-  .facts { order: 1; flex-basis: 100%; max-width: none; }
-  .facts::before { content: none; }
+.line { display: flex; align-items: flex-start; gap: .5rem; line-height: 1.5rem; }
+/* whole pieces in a row that wraps between them; each piece's «·» lies in a strip left of the box and is clipped there,
+   so a piece that starts a line has none. The name keeps its width up to a cap and gives way only when alone on a line */
+.what { flex: 1 1 auto; min-width: 0; overflow: hidden; }
+.flow { display: flex; flex-wrap: wrap; margin-left: -1.1em; }
+.piece { position: relative; padding-left: 1.1em; white-space: nowrap; }
+.piece::before { content: '·'; position: absolute; left: 0; width: 1.1em; text-align: center; color: var(--bs-secondary-color); }
+.first { display: inline-flex; align-items: center; min-width: 0; }
+.clip { flex-shrink: 0; margin-right: .2rem; color: var(--bs-secondary-color); }
+.name { min-width: 0; max-width: 16rem; overflow: hidden; text-overflow: ellipsis; }
+.piece.ok { color: var(--bs-success-text-emphasis); }
+.piece.late { color: var(--bs-warning-text-emphasis); }
+.piece.quiet { color: var(--bs-secondary-color); font-size: inherit; }
+.state { flex: 0 0 auto; min-width: 5rem; display: flex; justify-content: flex-end; align-items: center; gap: .4rem; height: 1.5rem; white-space: nowrap; }
+/* a phone: the name beside the state, the facts under them across the whole width */
+@media (max-width: 575px) {
+  .file { overflow: hidden; }
+  .line { flex-wrap: wrap; gap: 0; margin-left: -1.1em; }
+  .what, .flow { display: contents; }
+  .first { flex: 1 1 0; }
+  .line::after { content: ''; order: 2; flex-basis: 100%; }
+  .piece:not(.first) { order: 3; }
 }
-.fact.ok { color: var(--bs-success-text-emphasis); }
-.fact.late { color: var(--bs-warning-text-emphasis); }
-.state { flex: 0 0 auto; min-width: 6.5rem; display: flex; justify-content: flex-end; align-items: center; gap: .4rem; height: 1.5rem; white-space: nowrap; }
 .site { text-decoration: none; color: var(--bs-success-text-emphasis); }
 .site:hover { text-decoration: underline; }
 .go { padding: 0 .5rem; font-size: .8rem; line-height: 1.35; }
