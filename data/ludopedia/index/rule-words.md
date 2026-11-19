@@ -1,6 +1,6 @@
 # Слова правил поза словниками (автоген)
 
-`scripts/rule_words.py` · слів у правилах: КОЛИ 25554 (поза словником 637) · ЯКЩО 14764 (поза словником 931) · ТО 40406 (поза словником 3408)
+`scripts/rule_words.py` · слів у правилах: КОЛИ 28112 (поза словником 637) · ЯКЩО 16219 (поза словником 931) · ТО 44117 (поза словником 3416)
 
 ## КОЛИ → `vocab/triggers.md` · невідомих слів 207
 
@@ -178,33 +178,33 @@
 - `hp_zero` ×98 🔥
 - `enter` ×85 🔥
 - `bk` ×69 🔥
-- `cell` ×63 🔥
+- `cell` ×64 🔥
 - `ln` ×59 🔥
 - `prob` ×52 🔥
 - `count` ×46 🔥
 - `died` ×45 🔥
-- `free` ×43 🔥
+- `free` ×44 🔥
 - `has` ×43 🔥
 - `mode` ×42 🔥
 - `blocked` ×36 🔥
+- `adjacent_count` ×36 🔥
 - `reach` ×36 🔥
 - `all_gone` ×35 🔥
 - `exec` ×34 🔥
-- `adjacent_count` ×33 🔥
 - `nm` ×33 🔥
 - `pattern` ×30 🔥
+- `after` ×29 🔥
 - `in_range` ×28 🔥
 - `tick` ×28 🔥
 - `rng` ×28 🔥
-- `after` ×27 🔥
 - `leave` ×27 🔥
 - `adjacent` ×25 🔥
 - `chase` ×21 🔥
 - `la` ×21 🔥
 - `chain` ×20 🔥
+- `destroyed` ×20 🔥
 - `cs` ×20 🔥
 - `edge` ×19 🔥
-- `destroyed` ×19 🔥
 - `same` ×17 🔥
 - `turn_end` ×17 🔥
 - `picked` ×17 🔥

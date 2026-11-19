@@ -1,13 +1,13 @@
 # Реєстр корпусу (автоген)
 
-`scripts/build_index.py` · 2026-11-09 · **1663 ігор** у 17 сімʼях.
+`scripts/build_index.py` · 2026-11-19 · **1838 ігор** у 17 сімʼях.
 
-- Зрілість: v1: 1643 · v2: 20
-- Класи: аватарна: 595 · курсорна: 496 · фігурна: 286 · пазл: 198 · гібрид: 88
-- Середнє покриття структурою: 62%
-- Механік-тегів унікальних: 10369 · пропозицій до словників: 17093
+- Зрілість: v1: 1818 · v2: 20
+- Класи: аватарна: 697 · курсорна: 522 · фігурна: 294 · пазл: 230 · гібрид: 95
+- Середнє покриття структурою: 61%
+- Механік-тегів унікальних: 11046 · пропозицій до словників: 18335
 
-## board-digital · 108
+## board-digital · 112
 
 | Гра | Клас | Рік | Осі | Стадія | Покриття | Тегів | ⭐ Вхід |
 |---|---|---|---|---|---|---|---|
@@ -21,6 +21,7 @@
 | [Avenue](../games/board-digital/avenue.md) | курсорна | 2016 | `square/turn/none/partial/runtime/score` | v1 | 70% | 28 | [other](https://www.ultraboardgames.com/avenue/game-rules.php) |
 | [Azul (Азул)](../games/board-digital/azul.md) | курсорна | 2017 | `square/turn/hotseat/full/runtime/score` | v2 | 70% | 16 | [other](https://www.ultraboardgames.com/azul/game-rules.php) |
 | [Battle Sheep](../games/board-digital/battle-sheep.md) | фігурна | 2010 | `hex/turn/hotseat/full/none/territory` | v1 | 75% | 28 | [other](https://www.ultraboardgames.com/battle-sheep/game-rules.php) |
+| [Beacon Patrol](../games/board-digital/beacon-patrol.md) | гібрид | 2025 | `square/turn/coop/partial/runtime/score` | v1 | 75% | 35 | [other](https://rulespal.com/beacon-patrol/rulebook) |
 | [Blokus (Блокус)](../games/board-digital/blokus.md) | курсорна | 2000 | `square/turn/hotseat/full/none/territory` | v1 | 70% | 22 | [wiki](https://en.wikipedia.org/wiki/Blokus) |
 | [Blue Lagoon](../games/board-digital/blue-lagoon.md) | курсорна | 2018 | `hex/turn/hotseat/full/setup/score` | v1 | 70% | 21 | [official](https://blueorangegames.eu/wp-content/uploads/2018/09/BLUE-LAGOON_rules_ML.pdf) |
 | [Bosk](../games/board-digital/bosk.md) | курсорна | 2019 | `square/turn/hotseat/full/none/score` | v1 | 60% | 24 | [other](https://www.ultraboardgames.com/bosk/game-rules.php) |
@@ -46,9 +47,11 @@
 | [Domino Grove](../games/board-digital/domino-grove.md) | курсорна | 2024 | `square/turn/none/full/both/score` | v1 | 55% | 17 | [itch](https://ezra-szanton.itch.io/domino-grove) |
 | [Dragon Castle](../games/board-digital/dragon-castle.md) | курсорна | 2017 | `layers/turn/hotseat/partial/setup/score` | v1 | 65% | 26 | [other](https://www.ultraboardgames.com/dragon-castle/game-rules.php) |
 | [Drunter und Drüber (Drunter & Drüber)](../games/board-digital/drunter-und-druber.md) | курсорна | 1991 | `square/turn/hotseat/hidden/setup/score` | v1 | 55% | 25 | [wiki](https://en.wikipedia.org/wiki/Drunter_und_Drüber) |
+| [Electrogical (エレクトロジカル)](../games/board-digital/electrogical.md) | курсорна | 2026 | `square/programmed/none/full/none/state` | v1 | 50% | 31 | [steam](https://store.steampowered.com/app/2501650/Electrogical/) |
 | [Encore! (Noch mal!)](../games/board-digital/noch-mal.md) | курсорна | 2016 | `square/turn/hotseat/full/runtime/score` | v1 | 65% | 21 | [other](https://www.ultraboardgames.com/encore/game-rules.php) |
 | [Escape from Atlantis](../games/board-digital/escape-from-atlantis.md) | фігурна | 1982 | `hex/turn/hotseat/hidden/both/score` | v1 | 70% | 26 | [other](https://www.ultraboardgames.com/survive-escape-from-atlantis/game-rules.php) |
 | [FITS](../games/board-digital/fits.md) | курсорна | 2009 | `square/turn/hotseat/full/runtime/score` | v1 | 70% | 18 | [wiki](https://en.wikipedia.org/wiki/FITS_(board_game)) |
+| [Feed the Scorchpot](../games/board-digital/feed-the-scorchpot.md) | курсорна | 2026 | `hex/turn/none/full/both/survive` | v1 | 45% | 36 | [steam](https://store.steampowered.com/app/3966510/Feed_the_Scorchpot/) |
 | [Five Tribes](../games/board-digital/five-tribes.md) | курсорна | 2014 | `square/turn/online/partial/both/score` | v1 | 55% | 23 | [other](https://www.ultraboardgames.com/five-tribes/game-rules.php) |
 | [Flamme Rouge](../games/board-digital/flamme-rouge.md) | фігурна | 2016 | `1d/wego/hotseat/partial/runtime/race` | v1 | 70% | 26 | [other](https://www.ultraboardgames.com/flamme-rouge/game-rules.php) |
 | [Flash Point: Fire Rescue](../games/board-digital/flash-point-fire-rescue.md) | фігурна | 2011 | `square/turn/coop/hidden/both/collect` | v1 | 75% | 35 | [other](https://world-of-board-games.com.sg/docs/Flash-Point-Fire-Rescue.pdf) |
@@ -102,6 +105,7 @@
 | [Takenoko (Такеноко)](../games/board-digital/takenoko.md) | гібрид | 2011 | `hex/turn/hotseat/partial/both/score` | v1 | 55% | 26 | [other](https://www.ultraboardgames.com/takenoko/game-rules.php) |
 | [Taluva (Талува)](../games/board-digital/taluva.md) | курсорна | 2006 | `layers/turn/hotseat/full/runtime/race` | v1 | 70% | 33 | [other](https://www.ultraboardgames.com/taluva/game-rules.php) |
 | [Tash-Kalar: Arena of Legends](../games/board-digital/tash-kalar.md) | гібрид | 2013 | `square/turn/online/hidden/runtime/score` | v1 | 65% | 27 | [other](https://rulespal.com/tash-kalar/rulebook) |
+| [TeenyShire](../games/board-digital/teenyshire.md) | курсорна | 2022 | `square/turn/none/partial/setup/score` | v1 | 80% | 25 | [itch](https://dr-d-king.itch.io/teenyshire) |
 | [Terraforming Mars (Тераформування Марса)](../games/board-digital/terraforming-mars-board.md) | курсорна | 2016 | `hex/turn/hotseat/hidden/runtime/score` | v1 | 55% | 36 | [other](https://www.ultraboardgames.com/terraforming-mars/game-rules.php) |
 | [Tetris Link](../games/board-digital/tetris-link.md) | курсорна | 2011 | `square/turn/hotseat/full/runtime/score` | v1 | 70% | 25 | [other](https://www.ultraboardgames.com/tetris-link/game-rules.php) |
 | [The Castles of Burgundy (Замки Бургундії)](../games/board-digital/the-castles-of-burgundy.md) | курсорна | 2011 | `hex/turn/hotseat/full/both/score` | v1 | 65% | 33 | [other](https://rulespal.com/the-castles-of-burgundy/rulebook) |
@@ -120,7 +124,7 @@
 | [Uptown (Blockers!)](../games/board-digital/uptown.md) | курсорна | 2007 | `square/turn/hotseat/partial/runtime/score` | v1 | 80% | 20 | [other](https://en.doc.boardgamearena.com/Gamehelpuptown) |
 | [Welcome To… (Ласкаво просимо до…)](../games/board-digital/welcome-to.md) | курсорна | 2018 | `1d/turn/hotseat/full/runtime/score` | v1 | 65% | 32 | [other](https://www.ultraboardgames.com/welcome-to/game-rules.php) |
 
-## build-sim · 112
+## build-sim · 113
 
 | Гра | Клас | Рік | Осі | Стадія | Покриття | Тегів | ⭐ Вхід |
 |---|---|---|---|---|---|---|---|
@@ -214,6 +218,7 @@
 | [Space Haven](../games/build-sim/space-haven.md) | курсорна | 2020 | `iso/realtime/ai/partial/both/survive` | v1 | 50% | 21 | [steam](https://store.steampowered.com/app/979110) |
 | [Stardew Valley — фермерська сітка](../games/build-sim/stardew-farm.md) | аватарна | 2016 | `square/realtime/none/full/runtime/score` | v1 | 70% | 25 | [fandom](https://stardewvalleywiki.com/Sprinkler) |
 | [Startopia](../games/build-sim/startopia.md) | курсорна | 2001 | `layers/realtime/ai/partial/runtime/state` | v1 | 30% | 20 | [wiki](https://en.wikipedia.org/wiki/Startopia) |
+| [SteamWorld Build](../games/build-sim/steamworld-build.md) | курсорна | 2023 | `layers/realtime/ai/partial/runtime/state` | v1 | 55% | 38 | [wiki](https://en.wikipedia.org/wiki/SteamWorld_Build) |
 | [Sugarscape (Цукрова земля)](../games/build-sim/sugarscape.md) | курсорна | 1996 | `square/programmed/none/full/both/none` | v1 | 60% | 27 | [other](https://ccl.northwestern.edu/netlogo/models/Sugarscape3WealthDistribution) |
 | [Terra Nil](../games/build-sim/terra-nil.md) | курсорна | 2023 | `square/realtime/none/full/both/state` | v1 | 50% | 28 | [wiki](https://en.wikipedia.org/wiki/Terra_Nil) |
 | [Terraria — рідини](../games/build-sim/terraria-liquids.md) | аватарна | 2011 | `square/realtime/none/partial/setup/none` | v1 | 60% | 20 | [fandom](https://terraria.wiki.gg/wiki/Liquids) |
@@ -237,7 +242,7 @@
 | [shapez](../games/build-sim/shapez.md) | курсорна | 2020 | `square/realtime/none/full/setup/collect` | v1 | 75% | 37 | [steam](https://store.steampowered.com/app/1318690) |
 | [Елементарні клітинні автомати (Rule 110, Rule 30, Rule 90)](../games/build-sim/elementary-cellular-automata.md) | курсорна | 1983 | `1d/programmed/none/full/none/none` | v1 | 80% | 20 | [wiki](https://en.wikipedia.org/wiki/Rule_110) |
 
-## chess-abstract · 116
+## chess-abstract · 117
 
 | Гра | Клас | Рік | Осі | Стадія | Покриття | Тегів | ⭐ Вхід |
 |---|---|---|---|---|---|---|---|
@@ -263,6 +268,7 @@
 | [Chess 2: The Sequel (Sirlin's Chess)](../games/chess-abstract/chess-2-sequel.md) | фігурна | 2014 | `square/turn/online/partial/none/state` | v1 | 55% | 35 | [wiki](https://en.wikipedia.org/wiki/Chess_2:_The_Sequel) |
 | [Chess Survivors](../games/chess-abstract/chess-survivors.md) | аватарна | 2022 | `square/turn/ai/full/both/survive` | v1 | 50% | 24 | [steam](https://store.steampowered.com/app/2065000) |
 | [Chess with Different Armies (шахи різних армій, Betza)](../games/chess-abstract/chess-with-different-armies.md) | фігурна | 1979 | `square/turn/hotseat/full/setup/state` | v1 | 60% | 29 | [wiki](https://en.wikipedia.org/wiki/Chess_with_different_armies) |
+| [Chessarama](../games/chess-abstract/chessarama.md) | фігурна | 2023 | `square/turn/ai/full/setup/state` | v1 | 55% | 38 | [steam](https://store.steampowered.com/app/1831830/Chessarama/) |
 | [Chessformer](../games/chess-abstract/chessformer.md) | фігурна | 2022 | `square/turn/none/full/none/state` | v1 | 65% | 24 | [steam](https://store.steampowered.com/app/1701190) |
 | [Circe chess (шахи «Цирцея»)](../games/chess-abstract/circe-chess.md) | фігурна | 1967 | `square/turn/hotseat/full/none/state` | v1 | 60% | 23 | [wiki](https://en.wikipedia.org/wiki/Circe_chess) |
 | [Congo (шахи «Конго»)](../games/chess-abstract/congo.md) | фігурна | 1982 | `square/turn/hotseat/full/none/state` | v1 | 60% | 22 | [wiki](https://en.wikipedia.org/wiki/Congo_(chess_variant)) |
@@ -437,11 +443,12 @@
 | [klocki](../games/connect-rotate/klocki.md) | курсорна | 2016 | `square/static/none/full/none/constraints` | v1 | 40% | 17 | [steam](https://store.steampowered.com/app/499440/klocki/) |
 | [self reflection](../games/connect-rotate/self-reflection.md) | аватарна | 2021 | `square/turn/none/full/none/state` | v1 | 40% | 14 | [itch](https://torcado.itch.io/self-reflection) |
 
-## dig-gravity · 73
+## dig-gravity · 74
 
 | Гра | Клас | Рік | Осі | Стадія | Покриття | Тегів | ⭐ Вхід |
 |---|---|---|---|---|---|---|---|
 | [10key Survival](../games/dig-gravity/10key-survival.md) | аватарна | 2026 | `square/realtime/none/full/runtime/survive` | v1 | 40% | 27 | [itch](https://houseduck.itch.io/10key-survival) |
+| [3D Lemmings](../games/dig-gravity/3d-lemmings.md) | курсорна | 1995 | `3d/realtime/none/full/none/collect` | v1 | 60% | 40 | [wiki](https://en.wikipedia.org/wiki/3D_Lemmings) |
 | [Banana](../games/dig-gravity/banana.md) | аватарна | 1986 | `square/realtime/none/full/none/collect` | v1 | 55% | 18 | [wiki](https://en.wikipedia.org/wiki/Banana_(1986_video_game)) |
 | [Bone Cruncher](../games/dig-gravity/bone-cruncher.md) | аватарна | 1987 | `square/realtime/none/full/none/collect` | v1 | 65% | 25 | [other](https://acorn.huininga.nl/pub/mirrors/8bs.com/elecgame/bonecruncher.htm) |
 | [Boulder Dash](../games/dig-gravity/boulder-dash.md) | аватарна | 1984 | `square/realtime/none/full/runtime/collect` | v2 | 75% | 25 | [fandom](https://boulder-dash.nl/chars.php?lang=en) |
@@ -643,17 +650,20 @@
 | [Zoop](../games/falling-match/zoop.md) | аватарна | 1995 | `square/realtime/none/full/runtime/survive` | v1 | 70% | 20 | [wiki](https://en.wikipedia.org/wiki/Zoop) |
 | [Zuma / Puzz Loop](../games/falling-match/zuma.md) | аватарна | 2003 | `1d/realtime/none/full/runtime/state` | v1 | 60% | 20 | [wiki](https://en.wikipedia.org/wiki/Zuma_(video_game)) |
 
-## grid-platformer · 82
+## grid-platformer · 86
 
 | Гра | Клас | Рік | Осі | Стадія | Покриття | Тегів | ⭐ Вхід |
 |---|---|---|---|---|---|---|---|
 | [A Short Bike](../games/grid-platformer/a-short-bike.md) | аватарна | 2025 | `square/turn/none/full/none/state` | v1 | 85% | 22 | [itch](https://werxzy.itch.io/a-short-bike) |
+| [Ahoist Cratey](../games/grid-platformer/ahoist-cratey.md) | аватарна | 2021 | `square/turn/none/full/none/state` | v1 | 80% | 20 | [itch](https://thinkycollective.itch.io/ahoist-cratey) |
+| [AmaZoo](../games/grid-platformer/amazoo.md) | аватарна | 2025 | `square/turn/none/full/none/state` | v1 | 45% | 37 | [steam](https://store.steampowered.com/app/3066360/AmaZoo/) |
 | [Battle Lode Runner](../games/grid-platformer/battle-lode-runner.md) | аватарна | 1993 | `square/realtime/hotseat/partial/runtime/survive` | v1 | 50% | 27 | [wiki](https://en.wikipedia.org/wiki/Battle_Lode_Runner) |
 | [Block Dude](../games/grid-platformer/block-dude.md) | аватарна | 2000 | `square/turn/none/full/none/state` | v1 | 75% | 14 | [itch](https://joyrider3774.itch.io/blockdude-playdate) |
 | [Blocks That Matter](../games/grid-platformer/blocks-that-matter.md) | аватарна | 2011 | `square/realtime/none/full/none/state` | v1 | 55% | 29 | [wiki](https://en.wikipedia.org/wiki/Blocks_That_Matter) |
 | [BoxBoy! (ハコボーイ!)](../games/grid-platformer/boxboy.md) | аватарна | 2015 | `square/realtime/none/full/none/state` | v1 | 65% | 32 | [wiki](https://en.wikipedia.org/wiki/BoxBoy!_(video_game)) |
 | [Bumpy](../games/grid-platformer/bumpy.md) | аватарна | 1989 | `square/realtime/none/full/none/collect` | v1 | 45% | 24 | [wiki](https://en.wikipedia.org/wiki/Bumpy%27s_Arcade_Fantasy) |
 | [BurgerTime](../games/grid-platformer/burgertime.md) | аватарна | 1982 | `square/realtime/none/full/none/state` | v1 | 60% | 26 | [wiki](https://en.wikipedia.org/wiki/BurgerTime) |
+| [CLONY](../games/grid-platformer/clony.md) | аватарна | 2024 | `square/turn/none/full/none/state` | v1 | 50% | 16 | [steam](https://store.steampowered.com/app/2953590/CLONY/) |
 | [Captain Toad: Treasure Tracker](../games/grid-platformer/captain-toad-treasure-tracker.md) | аватарна | 2014 | `3d/realtime/none/partial/none/state` | v1 | 55% | 38 | [wiki](https://en.wikipedia.org/wiki/Captain_Toad:_Treasure_Tracker) |
 | [Catrap (Pitman)](../games/grid-platformer/catrap.md) | аватарна | 1985 | `square/turn/none/full/none/collect` | v1 | 70% | 21 | [wiki](https://en.wikipedia.org/wiki/Catrap) |
 | [Chack'n Pop](../games/grid-platformer/chackn-pop.md) | аватарна | 1984 | `square/realtime/hotseat/full/none/state` | v1 | 60% | 32 | [wiki](https://en.wikipedia.org/wiki/Chack%27n_Pop) |
@@ -681,6 +691,7 @@
 | [Krusty's Fun House](../games/grid-platformer/krustys-fun-house.md) | аватарна | 1992 | `square/realtime/none/full/none/state` | v1 | 60% | 30 | [other](https://www.video-games-museum.com/en/faqs/Megadrive/3006-Krustys-Super-Fun-House.pdf) |
 | [Kula World (Roll Away, KulaQuest)](../games/grid-platformer/kula-world.md) | аватарна | 1998 | `3d/realtime/hotseat/partial/none/collect` | v1 | 60% | 30 | [wiki](https://en.wikipedia.org/wiki/Kula_World) |
 | [Levelhead](../games/grid-platformer/levelhead.md) | гібрид | 2020 | `square/realtime/coop/full/none/state` | v1 | 50% | 37 | [steam](https://store.steampowered.com/app/792710/Levelhead/) |
+| [Ligo](../games/grid-platformer/ligo.md) | аватарна | 2025 | `square/turn/none/full/none/state` | v1 | 45% | 23 | [steam](https://store.steampowered.com/app/2462810/Ligo/) |
 | [Lode Builder](../games/grid-platformer/lode-builder.md) | аватарна | 2026 | `square/realtime/ai/full/none/collect` | v1 | 35% | 21 | [steam](https://store.steampowered.com/app/3305720/Lode_Builder/) |
 | [Lode Runner](../games/grid-platformer/lode-runner.md) | аватарна | 1983 | `square/realtime/none/partial/runtime/collect` | v2 | 75% | 30 | [wiki](https://en.wikipedia.org/wiki/Lode_Runner) |
 | [Lode Runner 2 і Lode Runner 3-D](../games/grid-platformer/lode-runner-3d-sequels.md) | аватарна | 1998 | `iso/realtime/none/partial/none/collect` | v1 | 45% | 24 | [wiki](https://en.wikipedia.org/wiki/Lode_Runner_2) |
@@ -730,7 +741,7 @@
 | [Troddlers](../games/grid-platformer/troddlers.md) | гібрид | 1992 | `square/realtime/coop/full/none/collect` | v1 | 55% | 23 | [wiki](https://en.wikipedia.org/wiki/Troddlers) |
 | [Wrecking Crew](../games/grid-platformer/wrecking-crew.md) | аватарна | 1985 | `square/realtime/hotseat/full/none/state` | v1 | 70% | 32 | [fandom](https://www.mariowiki.com/Wrecking_Crew) |
 
-## hidden-deduction · 96
+## hidden-deduction · 98
 
 | Гра | Клас | Рік | Осі | Стадія | Покриття | Тегів | ⭐ Вхід |
 |---|---|---|---|---|---|---|---|
@@ -799,6 +810,7 @@
 | [Non-Euclidean Minesweeper](../games/hidden-deduction/non-euclidean-minesweeper.md) | курсорна | 2024 | `hyperbolic/static/none/hidden/setup/state` | v1 | 50% | 28 | [steam](https://store.steampowered.com/app/3380320/NonEuclidean_Minesweeper/) |
 | [Nuns on the Run](../games/hidden-deduction/nuns-on-the-run.md) | гібрид | 2010 | `graph/turn/hotseat/hidden/both/race` | v1 | 60% | 23 | [other](https://rulespal.com/nuns-on-the-run/rulebook) |
 | [Patterna](../games/hidden-deduction/patterna.md) | пазл | 2016 | `graph/static/none/hidden/setup/state` | v1 | 60% | 28 | [steam](https://store.steampowered.com/app/503860/) |
+| [Penultima (Пенультима)](../games/hidden-deduction/penultima.md) | фігурна | 1994 | `square/turn/hotseat/asymmetric/none/state` | v1 | 55% | 27 | [other](https://mayhematics.com/s/eureka.htm) |
 | [Phantom Go](../games/hidden-deduction/phantom-go.md) | фігурна | 2005 | `square/turn/online/hidden/none/territory` | v1 | 65% | 21 | [other](https://www.chessprogramming.org/Phantom_Go) |
 | [Polimines / Polimines 2](../games/hidden-deduction/polimines.md) | пазл | 2022 | `square/static/none/hidden/none/state` | v1 | 55% | 16 | [steam](https://store.steampowered.com/app/2328730/) |
 | [Popsweeper](../games/hidden-deduction/popsweeper.md) | курсорна | 2026 | `graph/realtime/none/hidden/setup/state` | v1 | 45% | 19 | [itch](https://mightysebas.itch.io/popsweeper) |
@@ -830,6 +842,7 @@
 | [hexceed](../games/hidden-deduction/hexceed.md) | курсорна | 2021 | `hex/static/none/hidden/none/state` | v1 | 50% | 13 | [steam](https://store.steampowered.com/app/1463920/) |
 | [mine1k](../games/hidden-deduction/mine1k.md) | курсорна | 2022 | `square/static/none/hidden/setup/state` | v1 | 80% | 13 | [itch](https://pancelor.itch.io/mine1k) |
 | [omegasweeper](../games/hidden-deduction/omegasweeper.md) | курсорна | 2023 | `square/static/none/hidden/setup/state` | v1 | 40% | 12 | [itch](https://duncanacnud.itch.io/omegasweeper) |
+| [Лабіринт (паперова гра з ведучим; цифрова Labirinth)](../games/hidden-deduction/labyrinth-paper-and-pencil.md) | аватарна | None | `square/turn/hotseat/asymmetric/setup/race` | v1 | 65% | 27 | [wiki](https://en.wikipedia.org/wiki/Labyrinth_(paper-and-pencil_game)) |
 
 ## maze-arcade · 114
 
@@ -950,10 +963,13 @@
 | [ZZT](../games/maze-arcade/zzt.md) | аватарна | 1991 | `square/realtime/ai/hidden/runtime/state` | v1 | 70% | 42 | [fandom](https://wiki.zzt.org/wiki/Elements) |
 | [Zoo Keeper (Taito, аркада)](../games/maze-arcade/zoo-keeper-taito.md) | аватарна | 1983 | `1d/realtime/ai/full/runtime/score` | v1 | 65% | 21 | [wiki](https://en.wikipedia.org/wiki/Zoo_Keeper_(1983_video_game)) |
 
-## pencil-logic · 121
+## pencil-logic · 150
 
 | Гра | Клас | Рік | Осі | Стадія | Покриття | Тегів | ⭐ Вхід |
 |---|---|---|---|---|---|---|---|
+| [13 Sticky Notes](../games/pencil-logic/13-sticky-notes.md) | пазл | 2025 | `square/static/none/full/none/constraints` | v1 | 45% | 8 | [itch](https://fachewachewa.itch.io/13-sticky-notes) |
+| [Angle Loop (鋭直鈍ループ)](../games/pencil-logic/angle-loop.md) | пазл | None | `graph/static/none/full/none/constraints` | v1 | 65% | 21 | [play](https://puzz.link/rules.html?angleloop) |
+| [Aqre](../games/pencil-logic/aqre.md) | пазл | 2020 | `square/static/none/full/none/constraints` | v1 | 70% | 23 | [other](https://www.janko.at/Raetsel/Aqre/index.htm) |
 | [Aquarium (Акваріум)](../games/pencil-logic/aquarium.md) | пазл | None | `square/static/none/full/setup/constraints` | v1 | 75% | 20 | [play](https://puzz.link/rules.html?aquarium) |
 | [Araf (相ダ部屋, Aidabeya)](../games/pencil-logic/araf.md) | пазл | 2007 | `square/static/none/full/none/constraints` | v1 | 70% | 14 | [other](https://puzz.link/js/pzpr-samples/araf.js) |
 | [Army Ants (Ґунтай-арі, «Армія мурах»)](../games/pencil-logic/army-ants.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 60% | 18 | [play](https://puzz.link/rules.html?armyants) |
@@ -962,11 +978,16 @@
 | [Bosanowa (ボサノワ)](../games/pencil-logic/bosanowa.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 65% | 12 | [other](https://puzz.link/js/pzpr-samples/bosanowa.js) |
 | [Building Walk (ビルウォーク)](../games/pencil-logic/building-walk.md) | пазл | 2021 | `square/static/none/full/none/constraints` | v1 | 55% | 19 | [other](https://puzz.link/rules.html?bdwalk) |
 | [Chained Block](../games/pencil-logic/chained-block.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 60% | 17 | [other](https://www.nikoli.co.jp/en/puzzles/chained-block/) |
+| [CiniCross](../games/pencil-logic/cinicross.md) | пазл | 2026 | `square/realtime/none/full/both/state` | v1 | 60% | 35 | [steam](https://store.steampowered.com/app/3933120/CiniCross/) |
+| [Coffee Milk (コーヒー牛乳, Milchkaffee)](../games/pencil-logic/coffee-milk.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 70% | 15 | [other](https://puzz.link/rules.html?coffeemilk) |
 | [Compass (コンパス)](../games/pencil-logic/compass.md) | пазл | 2014 | `square/static/none/full/none/constraints` | v1 | 70% | 14 | [other](https://puzz.link/rules.html?compass) |
 | [Context](../games/pencil-logic/context.md) | пазл | 2022 | `square/static/none/full/none/constraints` | v1 | 75% | 15 | [other](https://puzz.link/rules.html?context) |
 | [Country Road](../games/pencil-logic/country-road.md) | пазл | 1997 | `square/static/none/full/none/constraints` | v1 | 70% | 18 | [other](https://puzz.link/rules.html?country) |
+| [Creek (クリーク)](../games/pencil-logic/creek.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 75% | 21 | [other](https://www.janko.at/Raetsel/Creek/index.htm) |
+| [CrossCells](../games/pencil-logic/crosscells.md) | пазл | 2017 | `square/static/none/full/none/constraints` | v1 | 70% | 21 | [steam](https://store.steampowered.com/app/632000/CrossCells/) |
 | [Crossstitch](../games/pencil-logic/crossstitch.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 60% | 16 | [other](https://puzz.link/js/pzpr-samples/crossstitch.js) |
 | [Curve Data](../games/pencil-logic/curve-data.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 45% | 16 | [play](https://puzz.link/rules.html?curvedata) |
+| [Deddoanguru (Dead Angle, «Мертвий кут»)](../games/pencil-logic/deddoanguru.md) | пазл | 2003 | `square/static/none/full/none/constraints` | v1 | 60% | 8 | [other](https://www.janko.at/Raetsel/Deddoanguru/index.htm) |
 | [Detektivschach (Detective Chess)](../games/pencil-logic/detective-chess.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 65% | 18 | [other](https://www.janko.at/Raetsel/Detektivschach/index.htm) |
 | [Dominosa (Доміноза)](../games/pencil-logic/dominosa.md) | пазл | 1874 | `square/static/none/full/none/constraints` | v1 | 70% | 20 | [official](https://www.chiark.greenend.org.uk/~sgtatham/puzzles/doc/dominosa.html) |
 | [Doppelblock (Double Block)](../games/pencil-logic/doppelblock.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 70% | 18 | [other](https://puzz.link/js/pzpr-samples/doppelblock.js) |
@@ -986,10 +1007,15 @@
 | [Hexologic](../games/pencil-logic/hexologic.md) | пазл | 2018 | `hex/static/none/full/none/constraints` | v1 | 65% | 17 | [steam](https://store.steampowered.com/app/785890/Hexologic/) |
 | [Heyawake (Хеявакé, «поділені кімнати»)](../games/pencil-logic/heyawake.md) | пазл | 1992 | `square/static/none/full/none/constraints` | v1 | 75% | 18 | [wiki](https://en.wikipedia.org/wiki/Heyawake) |
 | [Hidato (Хідато)](../games/pencil-logic/hidato.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 60% | 16 | [wiki](https://en.wikipedia.org/wiki/Hidato) |
+| [Hidden Oxygen](../games/pencil-logic/hidden-oxygen.md) | пазл | 2020 | `square/static/none/full/none/constraints` | v1 | 60% | 10 | [play](https://www.crazygames.com/game/hidden-oxygen) |
 | [Hinge (Chōtsugai, ちょうつがい)](../games/pencil-logic/hinge.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 55% | 17 | [other](https://puzz.link/rules.html?hinge) |
 | [Hitori (Хіторі, Singles)](../games/pencil-logic/hitori.md) | пазл | 1990 | `square/static/none/full/none/constraints` | v1 | 80% | 21 | [wiki](https://en.wikipedia.org/wiki/Hitori) |
 | [Hitori-Ribashi (Одиночне реверсі)](../games/pencil-logic/hitori-ribashi.md) | пазл | 2006 | `square/static/none/full/none/constraints` | v1 | 60% | 15 | [other](https://www.janko.at/Raetsel/Hitori-Ribashi/index.htm) |
+| [Homgard](../games/pencil-logic/homgard.md) | пазл | 2026 | `square/static/none/full/none/constraints` | v1 | 50% | 28 | [steam](https://store.steampowered.com/app/4287570/Homgard/) |
 | [Icebarn (アイスバーン)](../games/pencil-logic/icebarn.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 65% | 13 | [other](https://puzz.link/rules.html?icebarn) |
+| [Ichimaga (イチマガ)](../games/pencil-logic/ichimaga.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 70% | 17 | [other](https://puzz.link/rules.html?ichimaga) |
+| [Is This Seat Taken?](../games/pencil-logic/is-this-seat-taken.md) | пазл | 2025 | `graph/static/none/full/none/constraints` | v1 | 55% | 19 | [steam](https://store.steampowered.com/app/3035120/Is_This_Seat_Taken/) |
+| [KaitoRamma (快刀乱麻)](../games/pencil-logic/kaitoramma.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 70% | 15 | [other](https://puzz.link/rules.html?kramma) |
 | [Kakuro (Cross Sums, Какуро)](../games/pencil-logic/kakuro.md) | пазл | 1966 | `square/static/none/full/none/constraints` | v1 | 70% | 19 | [wiki](https://en.wikipedia.org/wiki/Kakuro) |
 | [Karakiri](../games/pencil-logic/karakiri.md) | пазл | None | `graph/static/none/full/none/constraints` | v1 | 60% | 8 | [other](https://www.janko.at/Raetsel/Karakiri/index.htm) |
 | [KenKen (Keen, CalcuDoku, Кенкен)](../games/pencil-logic/kenken.md) | пазл | 2004 | `square/static/none/full/none/constraints` | v1 | 70% | 22 | [wiki](https://en.wikipedia.org/wiki/KenKen) |
@@ -997,15 +1023,19 @@
 | [Kouchoku (Коучоку, «Перетин — лише під прямим кутом»)](../games/pencil-logic/kouchoku.md) | пазл | None | `graph/static/none/full/none/constraints` | v1 | 60% | 17 | [other](https://puzz.link/js/pzpr-samples/kouchoku.js) |
 | [Krazydad (банк друкованих пазлів)](../games/pencil-logic/krazydad.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 55% | 12 | [official](https://www.krazydad.com/sudoku/) |
 | [Kuralin (クラリン)](../games/pencil-logic/kuralin.md) | пазл | 2025 | `square/static/none/full/none/constraints` | v1 | 60% | 12 | [official](https://www.nikoli.co.jp/en/puzzles/kuralin/) |
+| [Kuroclone (クロクローン)](../games/pencil-logic/kuroclone.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 70% | 22 | [other](https://www.janko.at/Raetsel/Kuroclone/index.htm) |
 | [Kuromasu (Kurodoko, Range) + Cave (Bag)](../games/pencil-logic/kuromasu.md) | пазл | 1991 | `square/static/none/full/none/constraints` | v1 | 75% | 24 | [wiki](https://en.wikipedia.org/wiki/Kuromasu) |
 | [LITS (Nuruomino)](../games/pencil-logic/lits.md) | пазл | 2004 | `square/static/none/full/none/constraints` | v1 | 75% | 18 | [official](https://www.nikoli.co.jp/en/puzzles/lits/) |
 | [Light Up (Akari, Бідзюцукан)](../games/pencil-logic/light-up.md) | пазл | 2001 | `square/static/none/full/none/constraints` | v1 | 80% | 21 | [wiki](https://en.wikipedia.org/wiki/Light_Up_(puzzle)) |
+| [Liquidum](../games/pencil-logic/liquidum.md) | пазл | 2024 | `square/static/none/full/setup/constraints` | v1 | 80% | 39 | [steam](https://store.steampowered.com/app/2716690/Liquidum/) |
+| [Logic Bombs](../games/pencil-logic/logic-bombs.md) | пазл | 2025 | `square/static/none/full/none/constraints` | v1 | 65% | 26 | [steam](https://store.steampowered.com/app/3816700/Logic_Bombs/) |
 | [Look-Air (るっくえあ)](../games/pencil-logic/look-air.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 65% | 16 | [other](https://www.janko.at/Raetsel/Rukkuea/index.htm) |
 | [Magic and Latin squares (Магічний і латинський квадрати)](../games/pencil-logic/magic-latin-squares.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 60% | 16 | [wiki](https://en.wikipedia.org/wiki/Magic_square) |
 | [Magnets (Tatham)](../games/pencil-logic/magnets.md) | пазл | None | `square/static/none/full/setup/constraints` | v1 | 60% | 20 | [other](https://www.chiark.greenend.org.uk/~sgtatham/puzzles/doc/magnets.html) |
 | [Map (Tatham)](../games/pencil-logic/map.md) | пазл | None | `graph/static/none/full/setup/constraints` | v1 | 60% | 18 | [other](https://www.chiark.greenend.org.uk/~sgtatham/puzzles/doc/map.html) |
 | [Masyu (Pearl, «Перлини»)](../games/pencil-logic/masyu.md) | пазл | 1999 | `square/static/none/full/none/constraints` | v1 | 75% | 18 | [official](https://www.nikoli.co.jp/en/puzzles/masyu/) |
 | [Mirror Block (Дзеркальні блоки, ミラーブロック)](../games/pencil-logic/mirror-block.md) | пазл | 2021 | `square/static/none/full/none/constraints` | v1 | 60% | 12 | [other](https://puzz.link/rules.html?mirrorbk) |
+| [Molekularis (Молекуляріс)](../games/pencil-logic/molekularis.md) | пазл | 2013 | `graph/static/none/full/none/constraints` | v1 | 65% | 13 | [other](https://www.janko.at/Raetsel/Molekularis/index.htm) |
 | [Moon or Sun (月か太陽)](../games/pencil-logic/moon-or-sun.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 65% | 16 | [official](https://www.nikoli.co.jp/en/puzzles/moon_or_sun/) |
 | [Murdoku](../games/pencil-logic/murdoku.md) | пазл | 2020 | `square/static/none/full/none/constraints` | v1 | 65% | 14 | [other](https://allthings.how/murdoku-explained-how-the-murder-mystery-sudoku-puzzle-works/) |
 | [Myopia (Короткозорість)](../games/pencil-logic/myopia.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 65% | 16 | [other](https://puzz.link/rules.html?myopia) |
@@ -1035,16 +1065,20 @@
 | [Ripple Effect (Hakyuu Kouka)](../games/pencil-logic/ripple-effect.md) | пазл | 1998 | `square/static/none/full/none/constraints` | v1 | 65% | 13 | [official](https://www.nikoli.co.jp/en/puzzles/ripple_effect/) |
 | [Saltatori (Стрибуни)](../games/pencil-logic/saltatori.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 55% | 11 | [other](https://www.janko.at/Raetsel/Saltatori/index.htm) |
 | [Satogaeri (Сатоґаері, «Повернення додому»)](../games/pencil-logic/satogaeri.md) | пазл | 2002 | `square/static/none/full/none/constraints` | v1 | 65% | 18 | [official](https://www.nikoli.co.jp/en/puzzles/satogaeri/) |
+| [Scrin (スクリン, «Екран»)](../games/pencil-logic/scrin.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 70% | 18 | [other](https://puzz.link/rules.html?scrin) |
 | [Shakashaka (シャカシャカ)](../games/pencil-logic/shakashaka.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 60% | 13 | [official](https://www.nikoli.co.jp/en/puzzles/shakashaka/) |
 | [Sherlock (Everett Kaser)](../games/pencil-logic/sherlock.md) | пазл | 1991 | `square/static/none/full/setup/constraints` | v1 | 60% | 14 | [official](https://www.kaser.com/sherwin.html) |
 | [Shikaku (Шікаку, Rectangles, Divide by Box)](../games/pencil-logic/shikaku.md) | пазл | 1989 | `square/static/none/full/none/constraints` | v1 | 75% | 21 | [official](https://www.nikoli.co.jp/en/puzzles/shikaku/) |
+| [Shinro (しんろ)](../games/pencil-logic/shinro.md) | пазл | 2007 | `square/static/none/full/none/constraints` | v1 | 70% | 19 | [wiki](https://en.wikipedia.org/wiki/Shinro) |
 | [Signpost (Pfeilpfad)](../games/pencil-logic/signpost.md) | пазл | None | `square/static/none/full/setup/constraints` | v1 | 65% | 18 | [other](https://www.chiark.greenend.org.uk/~sgtatham/puzzles/doc/signpost.html) |
 | [Simon Tatham's Portable Puzzle Collection](../games/pencil-logic/tatham-collection.md) | пазл | 2004 | `square/static/none/full/setup/constraints` | v1 | 65% | 32 | [official](https://www.chiark.greenend.org.uk/~sgtatham/puzzles/) |
 | [Skyscrapers (Towers, Хмарочоси)](../games/pencil-logic/skyscrapers.md) | пазл | 1992 | `square/static/none/full/none/constraints` | v1 | 70% | 23 | [official](https://www.chiark.greenend.org.uk/~sgtatham/puzzles/doc/towers.html) |
 | [Slant (Gokigen Naname)](../games/pencil-logic/slant.md) | пазл | None | `square/static/none/full/setup/constraints` | v1 | 65% | 21 | [other](https://www.chiark.greenend.org.uk/~sgtatham/puzzles/doc/slant.html) |
 | [Slitherlink (Слізерлінк, Loopy, Fences)](../games/pencil-logic/slitherlink.md) | пазл | 1989 | `graph/static/none/full/setup/constraints` | v1 | 80% | 12 | [play](https://www.chiark.greenend.org.uk/~sgtatham/puzzles/js/loopy.html) |
+| [SquareCells](../games/pencil-logic/squarecells.md) | пазл | 2015 | `square/static/none/full/none/constraints` | v1 | 70% | 18 | [steam](https://store.steampowered.com/app/416770/SquareCells/) |
 | [Star Battle (Зоряна битва, Two Not Touch)](../games/pencil-logic/star-battle.md) | пазл | 2003 | `square/static/none/full/none/constraints` | v1 | 80% | 18 | [official](https://www.gmpuzzles.com/blog/star-battle-rules-and-info/) |
 | [Statue Park](../games/pencil-logic/statue-park.md) | пазл | 2011 | `square/static/none/full/none/constraints` | v1 | 55% | 9 | [other](https://www.gmpuzzles.com/blog/statue-park-rules-and-info/) |
+| [Stitches (Стібки)](../games/pencil-logic/stitches.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 70% | 30 | [play](https://www.puzzle-stitches.com/) |
 | [Sto-stone (ストストーン)](../games/pencil-logic/sto-stone.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 60% | 13 | [official](https://www.nikoli.co.jp/en/puzzles/sto_stone/) |
 | [Str8ts (Стрейтс)](../games/pencil-logic/str8ts.md) | пазл | 2008 | `square/static/none/full/none/constraints` | v1 | 65% | 16 | [wiki](https://en.wikipedia.org/wiki/Str8ts) |
 | [Sudoku (Судоку, Number Place)](../games/pencil-logic/sudoku.md) | пазл | 1979 | `square/static/none/full/setup/constraints` | v1 | 75% | 24 | [play](https://sudoku.com/) |
@@ -1054,16 +1088,23 @@
 | [Sudoku variants (варіанти судоку, Cracking the Cryptic / SudokuPad)](../games/pencil-logic/sudoku-variants.md) | пазл | 2005 | `square/static/none/full/none/constraints` | v2 | 55% | 22 | [official](https://logic-masters.de/Raetselportal/Raetsel/zeigen.php?id=000OGK) |
 | [Sudokuvania: Digits of Despair](../games/pencil-logic/sudokuvania.md) | пазл | 2025 | `square/static/none/hidden/none/constraints` | v1 | 55% | 21 | [official](https://logic-masters.de/Raetselportal/Raetsel/zeigen.php?id=000MQQ) |
 | [Sukoro (数コロ)](../games/pencil-logic/sukoro.md) | пазл | 1992 | `square/static/none/full/none/constraints` | v1 | 75% | 24 | [other](https://www.janko.at/Raetsel/Sukoro/index.htm) |
+| [Super Sudokoid: Dark Inversion](../games/pencil-logic/super-sudokoid.md) | пазл | 2026 | `square/static/none/hidden/none/constraints` | v1 | 50% | 23 | [official](https://logic-masters.de/Raetselportal/Raetsel/zeigen.php?id=000SQ0) |
 | [Suraido (スライド)](../games/pencil-logic/suraido.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 65% | 17 | [other](https://www.janko.at/Raetsel/Suraido/index.htm) |
 | [Suraromu (Slalom)](../games/pencil-logic/suraromu.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 65% | 18 | [official](https://www.nikoli.co.jp/en/puzzles/suraromu/) |
+| [Survo Puzzle (Survo-ristikko)](../games/pencil-logic/survo-puzzle.md) | пазл | 2006 | `square/static/none/full/none/constraints` | v1 | 70% | 18 | [wiki](https://en.wikipedia.org/wiki/Survo_puzzle) |
 | [Tachiawase Block](../games/pencil-logic/tachiawase-block.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 60% | 12 | [other](https://puzz.link/js/pzpr-samples/tachibk.js) |
 | [Takuzu (Binairo, Unruly, Tic-Tac-Logic)](../games/pencil-logic/takuzu.md) | пазл | 2009 | `square/static/none/full/none/constraints` | v1 | 70% | 19 | [wiki](https://en.wikipedia.org/wiki/Takuzu) |
 | [Tapa (Тапа, T-Paint)](../games/pencil-logic/tapa.md) | пазл | 2007 | `square/static/none/full/none/constraints` | v1 | 75% | 17 | [other](https://www.gmpuzzles.com/blog/tapa-rules-and-info/) |
 | [Tawamurenga (たわむれんが)](../games/pencil-logic/tawamurenga.md) | пазл | None | `hex/static/none/full/none/constraints` | v1 | 65% | 18 | [other](https://puzz.link/rules.html?tawa) |
+| [Tenner Grid (Zehnergitter, Числобус)](../games/pencil-logic/tenner-grid.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 75% | 23 | [other](https://www.janko.at/Raetsel/Zehnergitter/index.htm) |
 | [Tentai Show (Galaxies, Spiral Galaxies)](../games/pencil-logic/tentai-show.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 65% | 22 | [official](https://www.nikoli.co.jp/en/puzzles/tentai_show/) |
 | [Tents (Tatham)](../games/pencil-logic/tents.md) | пазл | None | `square/static/none/full/setup/constraints` | v1 | 65% | 19 | [other](https://www.chiark.greenend.org.uk/~sgtatham/puzzles/doc/tents.html) |
+| [The Artisan of Glimmith](../games/pencil-logic/the-artisan-of-glimmith.md) | пазл | 2026 | `square/static/none/full/none/constraints` | v1 | 60% | 39 | [steam](https://store.steampowered.com/app/4160210/The_Artisan_of_Glimmith/) |
 | [Tracks (Tatham)](../games/pencil-logic/tracks.md) | пазл | None | `square/static/none/full/setup/constraints` | v1 | 65% | 20 | [other](https://www.chiark.greenend.org.uk/~sgtatham/puzzles/doc/tracks.html) |
+| [Train Stations](../games/pencil-logic/train-stations.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 65% | 24 | [play](https://puzz.link/rules.html?trainstations) |
 | [Tren](../games/pencil-logic/tren.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 60% | 11 | [other](https://puzz.link/js/pzpr-samples/tren.js) |
+| [Trilogik (Trilogic, Trilogy)](../games/pencil-logic/trilogik.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 75% | 22 | [other](https://www.janko.at/Raetsel/Trilogik/index.htm) |
+| [Türen (Doors, Seethrough)](../games/pencil-logic/tueren.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 70% | 19 | [other](https://www.janko.at/Raetsel/Tueren/index.htm) |
 | [Undead (Haunted Mirror Maze)](../games/pencil-logic/undead.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 65% | 23 | [official](https://www.chiark.greenend.org.uk/~sgtatham/puzzles/doc/undead.html) |
 | [Usowan (ウソワン)](../games/pencil-logic/usowan.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 65% | 19 | [official](https://www.nikoli.co.jp/en/puzzles/usowan/) |
 | [Yajilin (Яджилін, Arrow Ring)](../games/pencil-logic/yajilin.md) | пазл | 1999 | `square/static/none/full/none/constraints` | v1 | 75% | 17 | [official](https://www.nikoli.co.jp/en/puzzles/yajilin/) |
@@ -1073,15 +1114,17 @@
 | [Zahlenlabyrinth (Magic Labyrinth, Магічний лабіринт)](../games/pencil-logic/zahlenlabyrinth.md) | пазл | 2008 | `square/static/none/full/none/constraints` | v1 | 60% | 20 | [other](https://www.janko.at/Raetsel/Zahlenlabyrinth/index.htm) |
 | [Zebra Puzzle (Einstein's Riddle, Загадка Ейнштейна)](../games/pencil-logic/zebra-puzzle.md) | пазл | 1962 | `square/static/none/full/none/constraints` | v1 | 55% | 13 | [wiki](https://en.wikipedia.org/wiki/Zebra_Puzzle) |
 | [Zeiger (Pointers, Покажчики)](../games/pencil-logic/zeiger.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 55% | 12 | [other](https://www.janko.at/Raetsel/Zeiger/index.htm) |
+| [Zerko](../games/pencil-logic/zerko.md) | пазл | 2024 | `square/static/none/full/none/constraints` | v1 | 55% | 11 | [steam](https://store.steampowered.com/app/2862990/Zerko/) |
 | [Ziegelmauer (Bricks, Цегляна стіна)](../games/pencil-logic/ziegelmauer.md) | пазл | None | `square/static/none/full/none/constraints` | v1 | 65% | 19 | [other](https://www.janko.at/Raetsel/Ziegelmauer/index.htm) |
 | [puzz.link (pzprjs / pzprv3)](../games/pencil-logic/puzz-link.md) | пазл | 2016 | `square/static/none/full/none/constraints` | v1 | 60% | 40 | [official](https://puzz.link/list.html) |
 
-## program-robots · 87
+## program-robots · 100
 
 | Гра | Клас | Рік | Осі | Стадія | Покриття | Тегів | ⭐ Вхід |
 |---|---|---|---|---|---|---|---|
 | [7 Billion Humans](../games/program-robots/7-billion-humans.md) | аватарна | 2018 | `square/programmed/none/full/setup/state` | v1 | 60% | 22 | [wiki](https://en.wikipedia.org/wiki/7_Billion_Humans) |
 | [A=B](../games/program-robots/a-equals-b.md) | курсорна | 2022 | `1d/programmed/none/full/none/state` | v1 | 60% | 14 | [steam](https://store.steampowered.com/app/1720850/) |
+| [ABI-DOS](../games/program-robots/abi-dos.md) | курсорна | 2024 | `square/programmed/none/full/none/state` | v1 | 40% | 19 | [steam](https://store.steampowered.com/app/2180700/ABIDOS/) |
 | [Advent of Code 2016, день 22: Grid Computing](../games/program-robots/aoc-2016-grid-computing.md) | курсорна | 2016 | `square/programmed/none/full/setup/state` | v1 | 65% | 14 | [play](https://adventofcode.com/2016/day/22) |
 | [Advent of Code — сіткові пазли (збірка)](../games/program-robots/advent-of-code-grids.md) | гібрид | 2015 | `square/programmed/none/full/setup/state` | v1 | 70% | 38 | [play](https://adventofcode.com/2024/day/15) |
 | [Asteroyds](../games/program-robots/asteroyds.md) | аватарна | 2010 | `hex/programmed/hotseat/full/both/race` | v1 | 65% | 22 | [wiki](https://fr.wikipedia.org/wiki/Asteroyds) |
@@ -1090,6 +1133,7 @@
 | [Befunge (Befunge-93)](../games/program-robots/befunge.md) | курсорна | 1993 | `square/programmed/none/full/runtime/none` | v1 | 60% | 16 | [other](https://esolangs.org/wiki/Befunge) |
 | [Block Machine](../games/program-robots/block-machine.md) | курсорна | 2023 | `square/programmed/none/full/setup/state` | v1 | 35% | 20 | [steam](https://store.steampowered.com/app/1584170/Block_Machine/) |
 | [Blockly Games Maze і Code.org Classic Maze](../games/program-robots/block-maze-games.md) | аватарна | 2012 | `square/programmed/none/full/none/state` | v1 | 80% | 23 | [play](https://blockly.games/maze) |
+| [Cadence (Made With Monster Love)](../games/program-robots/cadence.md) | курсорна | 2026 | `square/programmed/none/full/none/state` | v1 | 40% | 25 | [steam](https://store.steampowered.com/app/362800/Cadence/) |
 | [Cargo-Bot](../games/program-robots/cargo-bot.md) | аватарна | 2012 | `1d/programmed/none/full/none/state` | v1 | 70% | 20 | [youtube](https://www.youtube.com/results?search_query=cargo-bot+gameplay) |
 | [Carnage Heart](../games/program-robots/carnage-heart.md) | фігурна | 1995 | `hex/programmed/ai/partial/runtime/territory` | v1 | 60% | 29 | [wiki](https://en.wikipedia.org/wiki/Carnage_Heart) |
 | [ChipWits](../games/program-robots/chipwits.md) | аватарна | 1984 | `square/programmed/none/partial/both/score` | v1 | 70% | 34 | [other](https://github.com/chipwits/chipwits-forth) |
@@ -1106,16 +1150,20 @@
 | [ComputerCraft (turtles)](../games/program-robots/computercraft-turtles.md) | аватарна | 2011 | `3d/programmed/none/partial/setup/none` | v1 | 60% | 31 | [official](https://tweaked.cc/module/turtle.html) |
 | [Core War](../games/program-robots/core-war.md) | курсорна | 1984 | `1d/programmed/online/partial/setup/survive` | v1 | 55% | 25 | [wiki](https://en.wikipedia.org/wiki/Core_War) |
 | [Craftomation 101](../games/program-robots/craftomation-101.md) | гібрид | 2024 | `square/realtime/none/full/setup/state` | v1 | 55% | 22 | [steam](https://store.steampowered.com/app/1724140/Craftomation_101_Programming_Craft/) |
+| [Cubetto](../games/program-robots/cubetto.md) | аватарна | 2016 | `square/programmed/none/full/runtime/state` | v1 | 55% | 16 | [official](https://primotoys.com/cubetto-user-manual/) |
 | [Cyborg Earthworm](../games/program-robots/cyborg-earthworm.md) | аватарна | 2020 | `square/programmed/none/full/setup/score` | v1 | 45% | 22 | [steam](https://store.steampowered.com/app/1212760/Cyborg_Earthworm/) |
 | [Deadhand](../games/program-robots/deadhand.md) | аватарна | None | `square/programmed/none/partial/runtime/state` | v1 | 50% | 19 | [steam](https://store.steampowered.com/app/5395820/Deadhand/) |
 | [Duskers](../games/program-robots/duskers.md) | фігурна | 2016 | `graph/realtime/ai/hidden/both/survive` | v1 | 60% | 33 | [wiki](https://en.wikipedia.org/wiki/Duskers) |
 | [EXAPUNKS](../games/program-robots/exapunks.md) | курсорна | 2018 | `graph/programmed/ai/full/both/state` | v1 | 60% | 34 | [wiki](https://en.wikipedia.org/wiki/Exapunks) |
+| [Elevator Saga](../games/program-robots/elevator-saga.md) | фігурна | 2015 | `1d/programmed/none/partial/runtime/collect` | v1 | 55% | 26 | [play](https://play.elevatorsaga.com/) |
 | [FORK BOMB: A Programming Game](../games/program-robots/fork-bomb.md) | аватарна | 2026 | `hex/programmed/none/partial/setup/collect` | v1 | 50% | 24 | [steam](https://store.steampowered.com/app/5189090/FORK_BOMB_A_Programming_Game/) |
 | [Factorio — circuit network](../games/program-robots/factorio-circuit-network.md) | курсорна | 2016 | `square/realtime/none/full/none/none` | v1 | 55% | 20 | [wiki](https://wiki.factorio.com/Circuit_network) |
 | [GVGAI (General Video Game AI)](../games/program-robots/gvgai.md) | аватарна | 2014 | `square/realtime/none/partial/both/score` | v1 | 65% | 38 | [official](https://github.com/GAIGResearch/GVGAI) |
 | [Gladiabots](../games/program-robots/gladiabots.md) | фігурна | 2019 | `free/programmed/online/full/both/score` | v1 | 65% | 37 | [other](https://wiki.gladiabots.com/index.php?title=Conditions_and_actions) |
 | [Google AI Challenge — Ants](../games/program-robots/ai-challenge-ants.md) | фігурна | 2011 | `square/programmed/online/hidden/both/score` | v1 | 75% | 34 | [official](https://github.com/aichallenge/aichallenge) |
+| [Great Permutator](../games/program-robots/great-permutator.md) | курсорна | 2014 | `square/programmed/none/full/runtime/state` | v1 | 45% | 33 | [steam](https://store.steampowered.com/app/319270/Great_Permutator/) |
 | [Gymnasium Toy Text: FrozenLake, Taxi, CliffWalking](../games/program-robots/gymnasium-toy-text.md) | аватарна | 2016 | `square/turn/none/full/both/state` | v1 | 80% | 29 | [official](https://gymnasium.farama.org/environments/toy_text/frozen_lake/) |
+| [Hard Chip](../games/program-robots/hard-chip.md) | курсорна | 2024 | `3d/programmed/none/full/none/constraints` | v1 | 70% | 37 | [official](https://hardchip.io/) |
 | [Human Resource Machine](../games/program-robots/human-resource-machine.md) | аватарна | 2015 | `1d/programmed/none/full/setup/state` | v1 | 70% | 22 | [steam](https://store.steampowered.com/app/375820/Human_Resource_Machine/) |
 | [Infinifactory](../games/program-robots/infinifactory.md) | курсорна | 2015 | `3d/programmed/none/full/none/collect` | v1 | 60% | 36 | [wiki](https://en.wikipedia.org/wiki/Infinifactory) |
 | [Infinite Turtles](../games/program-robots/infinite-turtles.md) | курсорна | 2022 | `nested/programmed/none/full/none/state` | v1 | 55% | 30 | [steam](https://store.steampowered.com/app/1952740/Infinite_Turtles/) |
@@ -1135,10 +1183,13 @@
 | [Mechs vs. Minions](../games/program-robots/mechs-vs-minions.md) | аватарна | 2016 | `square/programmed/coop/full/runtime/state` | v1 | 55% | 28 | [other](https://www.ultraboardgames.com/mechs-vs-minions/game-rules.php) |
 | [Mindustry — logic (mlog)](../games/program-robots/mindustry-logic.md) | гібрид | 2020 | `square/programmed/none/full/none/none` | v1 | 55% | 19 | [official](https://mindustrygame.github.io/wiki/logic/0-introduction/) |
 | [MiniGrid (з BabyAI)](../games/program-robots/minigrid.md) | аватарна | 2018 | `square/turn/none/partial/both/state` | v1 | 70% | 37 | [official](https://minigrid.farama.org/) |
+| [Neon Noodles](../games/program-robots/neon-noodles.md) | гібрид | 2023 | `square/programmed/none/full/none/collect` | v1 | 55% | 36 | [steam](https://store.steampowered.com/app/990900/Neon_Noodles/) |
 | [NetHack Learning Environment (NLE, MiniHack)](../games/program-robots/nethack-learning-environment.md) | аватарна | 2020 | `square/turn/ai/hidden/both/score` | v1 | 60% | 36 | [official](https://github.com/facebookresearch/nle) |
 | [Opus Magnum](../games/program-robots/opus-magnum.md) | курсорна | 2017 | `hex/programmed/none/full/none/state` | v1 | 65% | 32 | [wiki](https://en.wikipedia.org/wiki/Opus_Magnum_(video_game)) |
 | [Pac-Man Capture the Flag (UC Berkeley CS188)](../games/program-robots/pacman-capture-the-flag.md) | фігурна | 2009 | `square/programmed/ai/partial/both/score` | v1 | 70% | 30 | [official](https://github.com/aig-upf/pacman-contest) |
+| [Piet](../games/program-robots/piet.md) | курсорна | 2001 | `square/programmed/none/full/none/none` | v1 | 50% | 13 | [official](https://www.dangermouse.net/esoteric/piet.html) |
 | [Prime Mover](../games/program-robots/prime-mover.md) | курсорна | 2018 | `nested/programmed/none/full/none/state` | v1 | 60% | 26 | [steam](https://store.steampowered.com/app/693700/) |
+| [RUSH (Two Tribes)](../games/program-robots/rush-two-tribes.md) | курсорна | 2009 | `3d/programmed/none/full/none/state` | v1 | 65% | 28 | [steam](https://store.steampowered.com/app/38720/RUSH/) |
 | [Replicube](../games/program-robots/replicube.md) | пазл | 2025 | `3d/static/none/full/none/state` | v1 | 50% | 23 | [steam](https://store.steampowered.com/app/3401490/Replicube/) |
 | [Robo Instructus](../games/program-robots/robo-instructus.md) | аватарна | 2019 | `square/programmed/none/partial/none/state` | v1 | 55% | 25 | [steam](https://store.steampowered.com/app/1032170/Robo_Instructus/) |
 | [RoboMind](../games/program-robots/robomind.md) | аватарна | 2005 | `square/programmed/none/full/runtime/state` | v1 | 70% | 21 | [official](https://www.robomind.net/en/docBasicInstructions.htm) |
@@ -1152,6 +1203,7 @@
 | [Screeps (Screeps World, Screeps Arena)](../games/program-robots/screeps.md) | фігурна | 2016 | `square/programmed/online/partial/setup/territory` | v1 | 70% | 34 | [official](https://docs.screeps.com/introduction.html) |
 | [SpaceChem](../games/program-robots/spacechem.md) | курсорна | 2011 | `square/programmed/none/full/none/collect` | v1 | 60% | 34 | [wiki](https://en.wikipedia.org/wiki/SpaceChem) |
 | [Stack Machines](../games/program-robots/stack-machines.md) | курсорна | 2023 | `square/programmed/none/full/setup/constraints` | v1 | 35% | 15 | [steam](https://store.steampowered.com/app/2279060/Stack_Machines/) |
+| [Star Stuff](../games/program-robots/star-stuff.md) | гібрид | 2024 | `iso/realtime/none/full/none/state` | v1 | 60% | 26 | [steam](https://store.steampowered.com/app/1955110/Star_Stuff/) |
 | [Swift Playgrounds (Learn to Code, Byte)](../games/program-robots/swift-playgrounds.md) | аватарна | 2016 | `layers/programmed/none/full/setup/collect` | v1 | 65% | 25 | [wiki](https://en.wikipedia.org/wiki/Swift_Playgrounds) |
 | [TIS-100](../games/program-robots/tis-100.md) | курсорна | 2015 | `square/programmed/none/full/setup/state` | v1 | 65% | 29 | [wiki](https://en.wikipedia.org/wiki/TIS-100) |
 | [Terminal (Correlation One)](../games/program-robots/terminal-correlation-one.md) | курсорна | 2018 | `square/programmed/online/full/none/score` | v1 | 65% | 29 | [official](https://github.com/correlation-one/C1GamesStarterKit) |
@@ -1159,93 +1211,147 @@
 | [The Miner Was Replaced](../games/program-robots/the-miner-was-replaced.md) | аватарна | 2026 | `3d/programmed/none/hidden/setup/collect` | v1 | 60% | 36 | [other](https://github.com/ChristopheCVB/TheFarmerWasReplacedDocs) |
 | [Turing Complete](../games/program-robots/turing-complete.md) | курсорна | 2021 | `square/programmed/none/full/setup/state` | v1 | 50% | 26 | [steam](https://store.steampowered.com/app/1444480/Turing_Complete/) |
 | [Turing Tumble](../games/program-robots/turing-tumble.md) | курсорна | 2017 | `square/programmed/none/full/none/state` | v1 | 65% | 25 | [wiki](https://en.wikipedia.org/wiki/Turing_Tumble) |
+| [U.V.S. Nirmana](../games/program-robots/uvs-nirmana.md) | курсорна | 2026 | `square/programmed/none/full/none/state` | v1 | 40% | 28 | [steam](https://store.steampowered.com/app/2536720/UVS_Nirmana/) |
 | [Untrusted — or the Continuing Adventures of Dr. Eval](../games/program-robots/untrusted.md) | гібрид | 2014 | `square/programmed/none/full/setup/state` | v1 | 75% | 32 | [play](https://untrustedgame.com/) |
+| [Upalu Mundi](../games/program-robots/upalu-mundi.md) | курсорна | 2026 | `square/programmed/none/full/none/state` | v1 | 50% | 24 | [steam](https://store.steampowered.com/app/3623200/Upalu_Mundi/) |
 | [Vindinium](../games/program-robots/vindinium.md) | аватарна | 2014 | `square/programmed/online/full/setup/score` | v1 | 75% | 29 | [official](https://github.com/ornicar/vindinium) |
 | [Virtual Circuit Board (VCB)](../games/program-robots/virtual-circuit-board.md) | курсорна | 2023 | `square/programmed/none/full/none/none` | v1 | 55% | 18 | [steam](https://store.steampowered.com/app/1885690/) |
 | [Warp Factory](../games/program-robots/warp-factory.md) | курсорна | 2021 | `square/programmed/none/full/runtime/state` | v1 | 55% | 21 | [steam](https://store.steampowered.com/app/1601860/Warp_Factory/) |
 | [Word Factori](../games/program-robots/word-factori.md) | курсорна | 2023 | `graph/programmed/none/full/none/state` | v1 | 50% | 27 | [steam](https://store.steampowered.com/app/2072840/Word_Factori/) |
 | [Wumpus world («Світ Вампуса»)](../games/program-robots/wumpus-world.md) | аватарна | 1995 | `square/turn/none/hidden/setup/score` | v1 | 75% | 19 | [wiki](https://en.wikipedia.org/wiki/Wumpus_world) |
+| [YENDOR](../games/program-robots/yendor.md) | аватарна | 2025 | `square/programmed/ai/partial/both/collect` | v1 | 55% | 35 | [itch](https://olifog.itch.io/yendor) |
 | [tower.defense(): Program The Fight](../games/program-robots/tower-defense-program-the-fight.md) | курсорна | 2026 | `square/programmed/none/full/none/survive` | v1 | 45% | 28 | [steam](https://store.steampowered.com/app/4409920/Towerdefense_Program_The_Fight/) |
 | [Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode)](../games/program-robots/bot-arenas.md) | фігурна | 2011 | `square/programmed/online/hidden/setup/score` | v1 | 65% | 37 | [official](https://github.com/aichallenge/aichallenge) |
 
-## push-slide · 72
+## push-slide · 123
 
 | Гра | Клас | Рік | Осі | Стадія | Покриття | Тегів | ⭐ Вхід |
 |---|---|---|---|---|---|---|---|
 | [A Directionless Cycle](../games/push-slide/a-directionless-cycle.md) | фігурна | 2025 | `square/turn/none/full/none/state` | v1 | 50% | 23 | [steam](https://store.steampowered.com/app/3417520/A_Directionless_Cycle/) |
+| [A Monster's Snowball](../games/push-slide/a-monsters-snowball.md) | аватарна | 2021 | `square/turn/none/full/none/state` | v1 | 85% | 17 | [itch](https://competor.itch.io/a-monsters-snowball) |
+| [A Slug's Dream](../games/push-slide/a-slugs-dream.md) | аватарна | 2023 | `3d/turn/none/full/none/collect` | v1 | 35% | 20 | [steam](https://store.steampowered.com/app/2303290/A_Slugs_Dream/) |
 | [Advent of Code 2023, день 14: Parabolic Reflector Dish](../games/push-slide/aoc-2023-parabolic-reflector-dish.md) | курсорна | 2023 | `square/programmed/none/full/setup/state` | v1 | 75% | 14 | [play](https://adventofcode.com/2023/day/14) |
 | [Adventures of Lolo (Eggerland)](../games/push-slide/adventures-of-lolo.md) | аватарна | 1989 | `square/realtime/none/full/none/collect` | v1 | 70% | 25 | [wiki](https://en.wikipedia.org/wiki/Adventures_of_Lolo) |
+| [After Light Fades](../games/push-slide/after-light-fades.md) | аватарна | 2025 | `square/turn/none/full/none/state` | v1 | 35% | 37 | [steam](https://store.steampowered.com/app/1717940/After_Light_Fades/) |
+| [An Architect's Adventure](../games/push-slide/an-architects-adventure.md) | аватарна | 2023 | `3d/turn/none/full/none/state` | v1 | 45% | 24 | [steam](https://store.steampowered.com/app/1747510/An_Architects_Adventure/) |
 | [Animal Planner](../games/push-slide/animal-planner.md) | фігурна | 2023 | `square/turn/none/full/none/constraints` | v1 | 45% | 18 | [steam](https://store.steampowered.com/app/2479960/) |
 | [Atomix](../games/push-slide/atomix.md) | фігурна | 1990 | `square/realtime/none/full/none/state` | v1 | 75% | 19 | [wiki](https://en.wikipedia.org/wiki/Atomix_(video_game)) |
 | [AutomaticBox](../games/push-slide/automaticbox.md) | курсорна | 2026 | `square/turn/none/full/none/state` | v1 | 70% | 15 | [steam](https://store.steampowered.com/app/5257240/) |
+| [BOND](../games/push-slide/bond.md) | аватарна | 2024 | `3d/turn/none/full/none/state` | v1 | 40% | 15 | [steam](https://store.steampowered.com/app/2835670/BOND/) |
+| [BarrelBots](../games/push-slide/barrelbots.md) | аватарна | 2026 | `3d/turn/none/full/none/state` | v1 | 35% | 19 | [steam](https://store.steampowered.com/app/3851470/BarrelBots/) |
+| [Billy Bumbum: A Cheeky Puzzler](../games/push-slide/billy-bumbum.md) | аватарна | 2023 | `square/turn/none/full/none/state` | v1 | 40% | 21 | [steam](https://store.steampowered.com/app/1752730/Billy_Bumbum_A_Cheeky_Puzzler/) |
 | [Blast One Standing](../games/push-slide/blast-one-standing.md) | аватарна | 2023 | `square/turn/none/full/none/state` | v1 | 75% | 17 | [itch](https://thinkycollective.itch.io/blast-one-standing) |
 | [Block in the Lock](../games/push-slide/block-in-the-lock.md) | курсорна | 2019 | `square/turn/none/full/none/state` | v1 | 50% | 18 | [steam](https://store.steampowered.com/app/1138990/) |
 | [Bloxorz](../games/push-slide/bloxorz.md) | аватарна | 2007 | `square/static/none/full/none/state` | v1 | 75% | 25 | [play](https://www.coolmathgames.com/0-bloxorz) |
+| [Bloxpath](../games/push-slide/bloxpath.md) | аватарна | 2025 | `square/turn/none/full/none/state` | v1 | 45% | 27 | [steam](https://store.steampowered.com/app/3249900/Bloxpath/) |
 | [BoxUp (Clickmazes BoxUp)](../games/push-slide/boxup.md) | аватарна | 2003 | `square/turn/none/full/none/state` | v1 | 75% | 15 | [itch](https://clickmazes.itch.io/original-boxup) |
+| [Cat Squeeze](../games/push-slide/cat-squeeze.md) | аватарна | 2026 | `square/turn/none/full/none/collect` | v1 | 50% | 20 | [steam](https://store.steampowered.com/app/3739300/Cat_Squeeze/) |
 | [Chew Man Fu (Be Ball)](../games/push-slide/chew-man-fu.md) | аватарна | 1990 | `square/realtime/none/full/runtime/state` | v1 | 60% | 27 | [wiki](https://en.wikipedia.org/wiki/Chew_Man_Fu) |
 | [Color Block Jam](../games/push-slide/color-block-jam.md) | фігурна | None | `square/realtime/none/partial/none/state` | v1 | 50% | 31 | [other](https://rollic.helpshift.com/hc/en/24-color-block-jam/faq/1234-obstacles-in-color-block-jam/) |
 | [Colorboration](../games/push-slide/colorboration.md) | аватарна | 2026 | `square/turn/none/full/none/state` | v1 | 35% | 14 | [steam](https://store.steampowered.com/app/4042850/Colorboration/) |
+| [Conveyor Con-fusion](../games/push-slide/conveyor-confusion.md) | аватарна | 2022 | `layers/turn/none/full/none/state` | v1 | 75% | 34 | [itch](https://thinkycollective.itch.io/conveyor-confusion) |
+| [Couch Installation Service](../games/push-slide/couch-installation-service.md) | аватарна | 2020 | `square/turn/none/full/none/state` | v1 | 55% | 17 | [steam](https://store.steampowered.com/app/1412610/Couch_Installation_Service/) |
+| [Delicious Donut](../games/push-slide/delicious-donut.md) | аватарна | 2024 | `layers/turn/none/full/none/state` | v1 | 40% | 12 | [steam](https://store.steampowered.com/app/2791620/Delicious_Donut/) |
+| [Desperatea](../games/push-slide/desperatea.md) | фігурна | 2024 | `square/turn/none/full/none/state` | v1 | 55% | 33 | [itch](https://kr0tyara.itch.io/desperatea) |
 | [E9uations](../games/push-slide/e9uations.md) | аватарна | 2026 | `square/turn/none/full/none/state` | v1 | 60% | 22 | [steam](https://store.steampowered.com/app/3345810/E9uations/) |
 | [Escape (Tom 7)](../games/push-slide/escape-tom7.md) | аватарна | 2004 | `layers/turn/none/full/none/state` | v1 | 60% | 40 | [other](http://escape.spacebar.org/win32/escape.txt) |
+| [Evil Eye](../games/push-slide/evil-eye.md) | аватарна | 2026 | `square/turn/none/full/none/state` | v1 | 75% | 29 | [itch](https://iamshyguy.itch.io/evil-eye) |
 | [Gentoo Rescue](../games/push-slide/gentoo-rescue.md) | фігурна | 2025 | `square/turn/none/full/none/state` | v1 | 30% | 21 | [steam](https://store.steampowered.com/app/2830480/) |
+| [Golden Arrow](../games/push-slide/golden-arrow.md) | аватарна | 2025 | `square/turn/none/full/none/state` | v1 | 70% | 22 | [steam](https://store.steampowered.com/app/3633540/Golden_Arrow/) |
 | [HAMSTERMIND](../games/push-slide/hamstermind.md) | гібрид | 2026 | `square/turn/none/full/none/collect` | v1 | 35% | 19 | [steam](https://store.steampowered.com/app/3555520/HAMSTERMIND/) |
 | [Headlong Hunt](../games/push-slide/headlong-hunt.md) | аватарна | 2023 | `square/turn/none/full/none/state` | v1 | 65% | 21 | [play](https://toombler.itch.io/headlong-hunt) |
 | [Helltaker](../games/push-slide/helltaker.md) | аватарна | 2020 | `square/turn/none/full/none/state` | v1 | 75% | 20 | [steam](https://store.steampowered.com/app/1289310/Helltaker/) |
+| [Hex Pivot](../games/push-slide/hex-pivot.md) | аватарна | 2025 | `hex/turn/none/full/none/state` | v1 | 80% | 16 | [itch](https://jpojecp.itch.io/hex-pivot) |
+| [Hiding Spot](../games/push-slide/hiding-spot.md) | аватарна | 2018 | `3d/turn/none/full/none/state` | v1 | 65% | 27 | [steam](https://store.steampowered.com/app/950140/Hiding_Spot/) |
 | [Hitman GO (+ Lara Croft GO)](../games/push-slide/hitman-go.md) | аватарна | 2014 | `graph/turn/none/full/none/state` | v1 | 70% | 25 | [wiki](https://en.wikipedia.org/wiki/Hitman_Go) |
+| [Humbug](../games/push-slide/humbug.md) | фігурна | 2018 | `square/turn/none/full/none/collect` | v1 | 40% | 21 | [other](https://www.pocketgamer.com/humbug/review/) |
 | [Ice-sliding puzzles (Inertia і жанр «ковзай до упору»)](../games/push-slide/ice-sliding-puzzles.md) | аватарна | 2005 | `square/static/none/full/setup/collect` | v1 | 80% | 30 | [other](https://www.chiark.greenend.org.uk/~sgtatham/puzzles/doc/inertia.html) |
+| [Imprisoned!](../games/push-slide/imprisoned.md) | аватарна | 2026 | `square/turn/none/full/none/state` | v1 | 80% | 26 | [itch](https://monakrom.itch.io/imprisoned) |
 | [Kitten Kaboodle (Nyan Nyan Panic)](../games/push-slide/kitten-kaboodle.md) | аватарна | 1988 | `square/realtime/ai/partial/runtime/collect` | v1 | 55% | 33 | [wiki](https://ja.wikipedia.org/wiki/%E3%81%AB%E3%82%83%E3%82%93%E3%81%AB%E3%82%83%E3%82%93%E3%83%91%E3%83%8B%E3%83%83%E3%82%AF) |
 | [Klotski (Хуажунський шлях) + Lunar Lockout](../games/push-slide/klotski.md) | фігурна | 1909 | `square/static/none/full/none/state` | v1 | 75% | 27 | [wiki](https://en.wikipedia.org/wiki/Klotski) |
 | [Kwirk (Puzzle Boy)](../games/push-slide/kwirk.md) | аватарна | 1989 | `square/turn/none/full/none/state` | v2 | 75% | 19 | [wiki](https://en.wikipedia.org/wiki/Kwirk) |
 | [Kye](../games/push-slide/kye.md) | аватарна | 1992 | `square/realtime/none/full/none/collect` | v1 | 65% | 30 | [other](http://www.kye.me.uk/description.html) |
+| [Landflip](../games/push-slide/landflip.md) | курсорна | 2025 | `square/static/none/full/setup/state` | v1 | 65% | 13 | [itch](https://mattstark.itch.io/landflip) |
+| [Loot River](../games/push-slide/loot-river.md) | аватарна | 2022 | `square/realtime/ai/hidden/both/state` | v1 | 45% | 19 | [steam](https://store.steampowered.com/app/1494260/) |
+| [Lost in Cheese](../games/push-slide/lost-in-cheese.md) | аватарна | 2026 | `square/turn/none/full/none/state` | v1 | 40% | 19 | [steam](https://store.steampowered.com/app/2341100/Lost_in_Cheese/) |
+| [Magnet Block](../games/push-slide/magnet-block.md) | аватарна | 2022 | `3d/turn/none/full/none/state` | v1 | 50% | 24 | [steam](https://store.steampowered.com/app/2092660/Magnet_Block/) |
 | [Maxwell's puzzling demon](../games/push-slide/maxwells-puzzling-demon.md) | аватарна | 2024 | `nested/turn/none/full/none/state` | v1 | 65% | 26 | [steam](https://store.steampowered.com/app/2770160/) |
 | [MazezaM](../games/push-slide/mazezam.md) | аватарна | 2002 | `square/turn/none/full/none/state` | v1 | 80% | 14 | [play](https://www.puzzlescript.net/play.html?p=7718522) |
 | [Mendel Palace (Quinty)](../games/push-slide/mendel-palace.md) | аватарна | 1989 | `square/realtime/none/partial/runtime/state` | v1 | 65% | 30 | [wiki](https://en.wikipedia.org/wiki/Mendel_Palace) |
+| [Midwinter Springtime](../games/push-slide/midwinter-springtime.md) | аватарна | 2025 | `square/turn/none/full/none/state` | v1 | 85% | 16 | [itch](https://pap4qlxxlevb.itch.io/midwinter-springtime) |
+| [Mistified](../games/push-slide/mistified.md) | аватарна | 2025 | `square/turn/none/full/none/state` | v1 | 45% | 20 | [steam](https://store.steampowered.com/app/2338020/) |
 | [Nekograms](../games/push-slide/nekograms.md) | фігурна | 2021 | `layers/static/none/full/none/state` | v1 | 55% | 20 | [steam](https://store.steampowered.com/app/2478120/) |
 | [Newton's Crates (Andrey Shevchuk)](../games/push-slide/newtons-crates.md) | аватарна | 2016 | `square/turn/none/full/none/state` | v1 | 85% | 14 | [play](https://www.puzzlescript.net/play.html?p=9cf57ca82a0181de97e4e225bc9bf4ca) |
 | [Panex (Toshio Akanuma)](../games/push-slide/panex.md) | фігурна | 1983 | `graph/static/none/full/none/state` | v1 | 75% | 12 | [other](https://www.jaapsch.net/puzzles/panex.htm) |
 | [Paper Mario: The Origami King — бойова кільцева сітка](../games/push-slide/paper-mario-the-origami-king.md) | курсорна | 2020 | `graph/turn/ai/partial/both/state` | v1 | 60% | 23 | [wiki](https://www.mariowiki.com/Paper_Mario:_The_Origami_King) |
+| [Park It!](../games/push-slide/park-it.md) | аватарна | 2025 | `square/turn/none/full/none/state` | v1 | 45% | 18 | [steam](https://store.steampowered.com/app/2989830/Park_It/) |
 | [Pengo](../games/push-slide/pengo.md) | аватарна | 1982 | `square/realtime/ai/partial/setup/score` | v2 | 70% | 22 | [wiki](https://en.wikipedia.org/wiki/Pengo_(video_game)) |
 | [Pight](../games/push-slide/pight.md) | курсорна | 2026 | `square/turn/none/full/none/state` | v1 | 45% | 20 | [steam](https://store.steampowered.com/app/2682270/) |
 | [Pipe Push Paradise](../games/push-slide/pipe-push-paradise.md) | аватарна | 2018 | `3d/turn/none/full/none/constraints` | v1 | 55% | 21 | [other](https://www.electrondance.com/?p=13960) |
+| [Pluricubus](../games/push-slide/pluricubus.md) | аватарна | 2026 | `3d/turn/none/full/none/state` | v1 | 45% | 28 | [steam](https://store.steampowered.com/app/4866150/Pluricubus/) |
 | [Pokémon overworld puzzles (Gen I–II, лід, валуни Strength, спінери, телепорти)](../games/push-slide/pokemon-overworld-puzzles.md) | аватарна | 1996 | `layers/realtime/none/partial/none/state` | v1 | 60% | 29 | [other](https://www.ludo.guide/guide/pokemon-gold-and-silver/rising-badge-route-44-and-ice-path) |
+| [PortalBox](../games/push-slide/portalbox.md) | аватарна | 2024 | `graph/turn/none/full/none/state` | v1 | 40% | 20 | [steam](https://store.steampowered.com/app/2891210/) |
 | [Prickle (Sunbird Studio)](../games/push-slide/prickle.md) | аватарна | 2024 | `square/turn/none/full/none/state` | v1 | 45% | 12 | [steam](https://store.steampowered.com/app/2759760/) |
 | [Prince of Darkness Jr.](../games/push-slide/prince-of-darkness-jr.md) | аватарна | 2025 | `square/turn/none/full/none/state` | v1 | 50% | 21 | [steam](https://store.steampowered.com/app/3716870/) |
+| [Pull Chain](../games/push-slide/pull-chain.md) | аватарна | 2026 | `square/turn/none/full/none/state` | v1 | 45% | 25 | [itch](https://steven-miller.itch.io/pull-chain) |
 | [Punt mazes](../games/push-slide/punt-mazes.md) | аватарна | 2005 | `square/turn/none/full/none/state` | v1 | 80% | 16 | [itch](https://chz.itch.io/punt-mazes) |
+| [Push Blox / Push Blox 2](../games/push-slide/push-blox.md) | аватарна | 2018 | `square/realtime/none/full/none/state` | v1 | 55% | 29 | [steam](https://store.steampowered.com/app/894430/) |
+| [Pushing It](../games/push-slide/pushing-it.md) | аватарна | 2021 | `square/turn/none/full/none/state` | v1 | 55% | 18 | [play](https://www.puzzlescript.net/play.html?p=2fe3172d2b9fe684977d184f1b6226d5) |
 | [Pâquerette Down the Bunburrows](../games/push-slide/paquerette-down-the-bunburrows.md) | аватарна | 2023 | `layers/turn/none/full/none/collect` | v1 | 60% | 21 | [steam](https://store.steampowered.com/app/1628610/) |
 | [QBillion (Q Billion)](../games/push-slide/qbillion.md) | аватарна | 1989 | `layers/turn/none/full/none/state` | v1 | 50% | 13 | [wiki](https://en.wikipedia.org/wiki/QBillion) |
 | [Quell](../games/push-slide/quell.md) | аватарна | 2010 | `square/static/none/full/none/collect` | v1 | 65% | 28 | [wiki](https://en.wikipedia.org/wiki/Quell_(video_game)) |
 | [RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II)](../games/push-slide/rpg-dungeon-puzzle-rooms.md) | аватарна | 1986 | `square/realtime/none/full/none/state` | v1 | 65% | 32 | [wiki](https://en.wikipedia.org/wiki/Lufia_II:_Rise_of_the_Sinistrals) |
 | [Raking Sokoban (Ilija Biškup)](../games/push-slide/raking-sokoban.md) | аватарна | 2024 | `square/turn/none/full/none/state` | v1 | 85% | 16 | [play](https://www.puzzlescript.net/play.html?p=ea5982c0e23eb7f892325d003423f65f) |
+| [Remote Planets](../games/push-slide/remote-planets.md) | аватарна | 2023 | `square/turn/none/full/none/state` | v1 | 45% | 17 | [steam](https://store.steampowered.com/app/2197020/) |
 | [Ricochet Robots (Rasende Roboter)](../games/push-slide/ricochet-robots.md) | фігурна | 1999 | `square/realtime/hotseat/full/setup/score` | v1 | 75% | 17 | [wiki](https://en.wikipedia.org/wiki/Ricochet_Robots) |
+| [Riko](../games/push-slide/riko.md) | аватарна | 2020 | `square/turn/ai/full/none/state` | v1 | 70% | 29 | [itch](https://spyr.itch.io/riko) |
 | [Robbo](../games/push-slide/robbo.md) | аватарна | 1989 | `square/realtime/none/full/runtime/collect` | v1 | 75% | 37 | [wiki](https://en.wikipedia.org/wiki/Robbo_(video_game)) |
 | [Rodent's Revenge](../games/push-slide/rodents-revenge.md) | аватарна | 1991 | `square/realtime/ai/full/runtime/state` | v1 | 55% | 22 | [wiki](https://en.wikipedia.org/wiki/Rodent%27s_Revenge) |
 | [Room to Grow](../games/push-slide/room-to-grow.md) | аватарна | 2021 | `square/turn/none/full/none/state` | v1 | 60% | 19 | [steam](https://store.steampowered.com/app/1471960/) |
 | [Rush Hour (ThinkFun)](../games/push-slide/rush-hour.md) | фігурна | 1996 | `square/static/none/full/none/state` | v1 | 80% | 21 | [play](https://www.michaelfogleman.com/rush/) |
+| [SSSPICY!](../games/push-slide/ssspicy.md) | аватарна | 2022 | `square/turn/none/full/none/collect` | v1 | 80% | 29 | [itch](https://torcado.itch.io/ssspicy) |
 | [SUMOO](../games/push-slide/sumoo.md) | курсорна | 2026 | `square/turn/none/full/none/state` | v1 | 60% | 20 | [steam](https://store.steampowered.com/app/5108270/) |
 | [ScaleBox](../games/push-slide/scalebox.md) | аватарна | 2025 | `square/turn/none/full/none/state` | v1 | 55% | 21 | [steam](https://store.steampowered.com/app/3528380/) |
 | [Shackle](../games/push-slide/shackle.md) | аватарна | 2020 | `square/turn/none/full/none/state` | v1 | 45% | 22 | [itch](https://steven-miller.itch.io/shackle) |
+| [Shall We Golf? (みんなでGOLF！)](../games/push-slide/shall-we-golf.md) | аватарна | 2021 | `square/turn/none/full/none/state` | v1 | 80% | 20 | [itch](https://nebu-soku.itch.io/golfshall-we-golf) |
 | [Shrink Rooms](../games/push-slide/shrink-rooms.md) | аватарна | 2025 | `square/turn/none/full/none/state` | v1 | 55% | 25 | [steam](https://store.steampowered.com/app/3409430/Shrink_Rooms/) |
 | [Singleton Traffic (Toph Wells)](../games/push-slide/singleton-traffic.md) | курсорна | 2014 | `square/turn/none/full/none/state` | v1 | 85% | 12 | [play](https://www.puzzlescript.net/play.html?p=eb0f9102f85b5ea536b1) |
 | [Slayaway Camp](../games/push-slide/slayaway-camp.md) | аватарна | 2016 | `square/turn/none/full/none/state` | v1 | 65% | 26 | [other](https://www.imore.com/slayaway-camp-game-guide) |
 | [Slider](../games/push-slide/slider.md) | гібрид | 2024 | `square/realtime/none/full/runtime/state` | v1 | 60% | 33 | [itch](https://randomerz.itch.io/slider) |
 | [Sliding-tile permutation puzzles (пʼятнашки й родичі)](../games/push-slide/sliding-tile-permutation.md) | курсорна | 1880 | `square/static/none/full/setup/state` | v1 | 70% | 32 | [wiki](https://en.wikipedia.org/wiki/15_puzzle) |
+| [Sok7 (Kevin Cancienne)](../games/push-slide/sok7.md) | аватарна | 2013 | `square/turn/none/full/runtime/state` | v1 | 80% | 15 | [play](https://www.puzzlescript.net/play.html?p=6906326) |
+| [Soko Spectacle](../games/push-slide/soko-spectacle.md) | аватарна | 2025 | `square/turn/none/full/none/state` | v1 | 55% | 31 | [steam](https://store.steampowered.com/app/3359440/) |
 | [SokoChess (і SokoChess White / Black)](../games/push-slide/sokochess.md) | фігурна | 2022 | `square/turn/ai/full/none/state` | v1 | 55% | 23 | [steam](https://store.steampowered.com/app/1960400/SokoChess/) |
+| [SokoGhost: Unfinished Business](../games/push-slide/sokoghost-unfinished-business.md) | аватарна | 2026 | `square/turn/none/full/none/state` | v1 | 55% | 25 | [steam](https://store.steampowered.com/app/4254020/SokoGhost_Unfinished_Business/) |
 | [SokoSolitaire](../games/push-slide/sokosolitaire.md) | аватарна | 2023 | `square/turn/none/full/none/state` | v1 | 45% | 19 | [steam](https://store.steampowered.com/app/2318680/) |
 | [Sokoban (Сокобан)](../games/push-slide/sokoban.md) | аватарна | 1982 | `square/turn/none/full/none/state` | v1 | 80% | 25 | [wiki](https://en.wikipedia.org/wiki/Sokoban) |
+| [Sokobos 2](../games/push-slide/sokobos-2.md) | аватарна | 2025 | `square/turn/none/full/none/state` | v1 | 65% | 33 | [itch](https://martin-games.itch.io/sokobos-2-demo) |
 | [Sokoboxes Duo](../games/push-slide/sokoboxes-duo.md) | аватарна | 2023 | `square/turn/coop/full/none/state` | v1 | 70% | 17 | [steam](https://store.steampowered.com/app/2107780/Sokoboxes_Duo/) |
+| [Sokogram](../games/push-slide/sokogram.md) | гібрид | 2026 | `square/turn/none/full/none/constraints` | v1 | 60% | 20 | [itch](https://pressgtogeorge.itch.io/sokogram) |
 | [Spacecaps](../games/push-slide/spacecaps.md) | аватарна | 2025 | `square/turn/none/full/none/state` | v1 | 45% | 14 | [steam](https://store.steampowered.com/app/3288510/) |
 | [Spacekoban](../games/push-slide/spacekoban.md) | аватарна | 2014 | `square/turn/none/full/none/state` | v1 | 80% | 15 | [play](https://www.puzzlescript.net/play.html?p=6a6c07f71d7039e4155e) |
+| [Stick to the Plan](../games/push-slide/stick-to-the-plan.md) | аватарна | 2023 | `square/turn/none/full/none/state` | v1 | 50% | 19 | [itch](https://deadpixeltales.itch.io/stick-to-the-plan-jam) |
+| [Super Sokobot](../games/push-slide/super-sokobot.md) | аватарна | 2025 | `square/turn/none/full/none/state` | v1 | 85% | 28 | [itch](https://erikwmj.itch.io/super-sokobot) |
 | [Tactic Toe](../games/push-slide/tactic-toe.md) | фігурна | None | `square/turn/none/full/none/state` | v1 | 70% | 28 | [itch](https://bennyboybuggy.itch.io/tactic-toe) |
 | [The Brainies (Tiny Skweeks)](../games/push-slide/the-brainies.md) | фігурна | 1991 | `square/realtime/none/full/none/state` | v1 | 50% | 15 | [wiki](https://en.wikipedia.org/wiki/The_Brainies) |
+| [The Court of Wanderers](../games/push-slide/the-court-of-wanderers.md) | аватарна | 2024 | `layers/turn/none/full/none/state` | v1 | 40% | 12 | [steam](https://store.steampowered.com/app/1640370/) |
+| [The Flames](../games/push-slide/the-flames.md) | аватарна | 2017 | `square/turn/none/full/none/state` | v1 | 85% | 18 | [itch](https://rosden.itch.io/theflames) |
 | [Tomb of the Mask](../games/push-slide/tomb-of-the-mask.md) | аватарна | 2016 | `square/realtime/none/partial/setup/survive` | v1 | 65% | 25 | [wiki](https://en.wikipedia.org/wiki/Tomb_of_the_Mask) |
 | [Train shunting puzzle (Inglenook Sidings, Timesaver)](../games/push-slide/train-shunting-puzzle.md) | аватарна | 1972 | `graph/turn/none/full/setup/state` | v1 | 60% | 21 | [wiki](https://en.wikipedia.org/wiki/Train_shunting_puzzle) |
 | [Unblock Me і Parking Jam 3D (мобільні Rush Hour)](../games/push-slide/unblock-me.md) | фігурна | 2009 | `square/static/none/full/none/state` | v1 | 60% | 27 | [other](https://apps.apple.com/us/app/unblock-me/id315019111) |
 | [Unlock The King](../games/push-slide/unlock-the-king.md) | фігурна | 2019 | `square/turn/none/full/none/state` | v1 | 55% | 19 | [steam](https://store.steampowered.com/app/1172510/) |
+| [Vertebrae](../games/push-slide/vertebrae.md) | аватарна | 2020 | `square/turn/none/full/none/state` | v1 | 75% | 24 | [itch](https://draxes.itch.io/vertebrae) |
 | [Watch Your Step (Aaron Steed)](../games/push-slide/watch-your-step-steed.md) | аватарна | 2017 | `square/turn/none/full/none/state` | v1 | 85% | 13 | [play](https://www.puzzlescript.net/play.html?p=0e692c47ab0b18099c2485d644590b4e) |
+| [We Are Gum](../games/push-slide/we-are-gum.md) | аватарна | 2026 | `square/turn/none/full/none/state` | v1 | 35% | 14 | [steam](https://store.steampowered.com/app/4105470/) |
+| [What Gophers Go For](../games/push-slide/what-gophers-go-for.md) | аватарна | 2019 | `square/turn/none/full/none/collect` | v1 | 85% | 21 | [itch](https://thinkycollective.itch.io/what-gophers-go-for) |
+| [Where's My Egg?](../games/push-slide/wheres-my-egg.md) | аватарна | 2026 | `square/turn/none/full/none/state` | v1 | 80% | 28 | [itch](https://levelclear.itch.io/wheres-my-egg) |
+| [Wizard's Way Out](../games/push-slide/wizards-way-out.md) | аватарна | 2023 | `square/turn/none/full/none/state` | v1 | 60% | 29 | [play](https://kikimora.itch.io/wizards-way-out-free) |
 | [Wriggle (clickmazes)](../games/push-slide/wriggle.md) | фігурна | 2006 | `square/static/none/full/none/state` | v1 | 70% | 14 | [itch](https://clickmazes.itch.io/wriggle) |
 | [Yankai's Peak](../games/push-slide/yankais-peak.md) | аватарна | 2017 | `graph/turn/none/full/none/state` | v1 | 55% | 21 | [other](https://www.pocketgamer.com/yankais-peak/review/) |
+| [bansoko: Class Crossing (ばんそこクロスチェンジ)](../games/push-slide/bansoko-class-crossing.md) | аватарна | 2026 | `square/turn/ai/full/none/collect` | v1 | 30% | 9 | [steam](https://store.steampowered.com/app/4919110/) |
+| [micro6an](../games/push-slide/micro6an.md) | аватарна | 2025 | `square/turn/none/full/none/state` | v1 | 85% | 13 | [itch](https://stingby12.itch.io/micro6an) |
 
-## roguelike · 98
+## roguelike · 99
 
 | Гра | Клас | Рік | Осі | Стадія | Покриття | Тегів | ⭐ Вхід |
 |---|---|---|---|---|---|---|---|
@@ -1272,6 +1378,7 @@
 | [Desktop Dungeons](../games/roguelike/desktop-dungeons.md) | аватарна | 2013 | `square/turn/ai/hidden/setup/state` | v1 | 70% | 25 | [wiki](https://www.qcfdesign.com/wiki/DesktopDungeons/index.php?title=Strategy) |
 | [Donsol](../games/roguelike/donsol.md) | курсорна | 2015 | `1d/turn/none/hidden/both/survive` | v1 | 70% | 14 | [itch](https://hundredrabbits.itch.io/donsol) |
 | [DoomRL / DRL → Jupiter Hell](../games/roguelike/doomrl.md) | аватарна | 2002 | `square/turn/ai/hidden/both/state` | v1 | 60% | 48 | [wiki](https://en.wikipedia.org/wiki/DoomRL) |
+| [Dragon Crystal (ドラゴンクリスタル ツラニの迷宮)](../games/roguelike/dragon-crystal.md) | аватарна | 1990 | `square/turn/ai/hidden/both/state` | v1 | 70% | 40 | [other](https://shrines.rpgclassics.com/sms/dragoncrystal/manual.shtml) |
 | [Dungeon Crawl Stone Soup](../games/roguelike/dungeon-crawl-stone-soup.md) | аватарна | 2006 | `square/turn/ai/hidden/both/state` | v1 | 65% | 25 | [wiki](https://en.wikipedia.org/wiki/Dungeon_Crawl_Stone_Soup) |
 | [Dungeon Encounters](../games/roguelike/dungeon-encounters.md) | аватарна | 2021 | `square/turn/ai/hidden/runtime/state` | v1 | 60% | 24 | [wiki](https://en.wikipedia.org/wiki/Dungeon_Encounters) |
 | [Dungeon Hack](../games/roguelike/dungeon-hack.md) | аватарна | 1993 | `square/realtime/ai/hidden/both/state` | v1 | 50% | 47 | [wiki](https://en.wikipedia.org/wiki/Dungeon_Hack) |
@@ -1348,7 +1455,7 @@
 | [Wizardry: Proving Grounds of the Mad Overlord](../games/roguelike/wizardry.md) | аватарна | 1981 | `square/turn/ai/hidden/runtime/state` | v1 | 55% | 39 | [wiki](https://en.wikipedia.org/wiki/Wizardry:_Proving_Grounds_of_the_Mad_Overlord) |
 | [Z.H.P. Unlosing Ranger VS Darkdeath Evilman](../games/roguelike/zhp-unlosing-ranger.md) | аватарна | 2010 | `square/turn/ai/hidden/both/state` | v1 | 40% | 25 | [wiki](https://en.wikipedia.org/wiki/Z.H.P._Unlosing_Ranger_VS_Darkdeath_Evilman) |
 
-## tactics · 122
+## tactics · 124
 
 | Гра | Клас | Рік | Осі | Стадія | Покриття | Тегів | ⭐ Вхід |
 |---|---|---|---|---|---|---|---|
@@ -1440,9 +1547,11 @@
 | [Spybot: The Nightfall Incident (Lego Spybotics)](../games/tactics/spybot-nightfall.md) | фігурна | 2002 | `square/turn/ai/full/none/state` | v1 | 70% | 33 | [other](https://github.com/breakid/Spybotics-The-Nightfall-Incident) |
 | [Squad Leader](../games/tactics/squad-leader.md) | фігурна | 1977 | `hex/turn/hotseat/hidden/runtime/state` | v1 | 65% | 34 | [wiki](https://en.wikipedia.org/wiki/Squad_Leader) |
 | [Star Fleet Battles](../games/tactics/star-fleet-battles.md) | фігурна | 1979 | `hex/turn/hotseat/hidden/runtime/state` | v1 | 65% | 30 | [wiki](https://en.wikipedia.org/wiki/Star_Fleet_Battles) |
+| [StarVaders (Star★Vaders)](../games/tactics/starvaders.md) | аватарна | 2025 | `square/turn/ai/partial/both/survive` | v1 | 55% | 40 | [steam](https://store.steampowered.com/app/2097570/StarVaders/) |
 | [SteamWorld Heist](../games/tactics/steamworld-heist.md) | фігурна | 2015 | `square/turn/ai/partial/setup/state` | v1 | 60% | 38 | [wiki](https://en.wikipedia.org/wiki/SteamWorld_Heist) |
 | [Steel Panthers](../games/tactics/steel-panthers.md) | фігурна | 1995 | `hex/turn/ai/hidden/runtime/score` | v1 | 55% | 45 | [wiki](https://en.wikipedia.org/wiki/Steel_Panthers) |
 | [Summoner Wars](../games/tactics/summoner-wars.md) | фігурна | 2009 | `square/turn/hotseat/hidden/both/state` | v1 | 70% | 30 | [other](https://www.ultraboardgames.com/summoner-wars/game-rules.php) |
+| [Sunderfolk](../games/tactics/sunderfolk.md) | фігурна | 2025 | `hex/turn/coop/partial/runtime/state` | v1 | 60% | 40 | [other](https://dreamhaven.com/sunderfolk/beginners-guide) |
 | [Sunken Stones](../games/tactics/sunken-stones.md) | фігурна | 2025 | `square/turn/ai/full/both/survive` | v1 | 40% | 22 | [steam](https://store.steampowered.com/app/2601810/Sunken_Stones/) |
 | [Super Robot Wars](../games/tactics/super-robot-wars.md) | фігурна | 1991 | `square/turn/ai/full/runtime/state` | v1 | 60% | 34 | [wiki](https://en.wikipedia.org/wiki/Super_Robot_Wars) |
 | [Tactical Breach Wizards](../games/tactics/tactical-breach-wizards.md) | фігурна | 2024 | `square/turn/ai/partial/none/state` | v1 | 50% | 34 | [wiki](https://en.wikipedia.org/wiki/Tactical_Breach_Wizards) |
@@ -1475,60 +1584,98 @@
 | [Zombicide](../games/tactics/zombicide.md) | фігурна | 2012 | `graph/turn/coop/partial/runtime/state` | v1 | 65% | 40 | [wiki](https://en.wikipedia.org/wiki/Zombicide) |
 | [generals.io](../games/tactics/generals-io.md) | курсорна | 2016 | `square/realtime/online/hidden/setup/state` | v1 | 70% | 29 | [other](https://arxiv.org/html/2507.06825v2) |
 
-## thinky · 93
+## thinky · 151
 
 | Гра | Клас | Рік | Осі | Стадія | Покриття | Тегів | ⭐ Вхід |
 |---|---|---|---|---|---|---|---|
+| [0PLAYER](../games/thinky/0player.md) | курсорна | 2025 | `square/turn/none/full/none/state` | v1 | 45% | 28 | [itch](https://caveadventure.itch.io/0player) |
+| [2D Whale World](../games/thinky/2d-whale-world.md) | аватарна | 2013 | `square/turn/none/full/none/state` | v1 | 75% | 12 | [play](https://www.puzzlescript.net/play.html?p=6841165) |
 | [4D (Beekie & Corey Hardt) і 4D-Sokoban-родичі](../games/thinky/4d-sokoban.md) | аватарна | 2021 | `graph/turn/none/full/none/state` | v1 | 65% | 24 | [itch](https://coreyhardt.itch.io/4d) |
+| [5 Step Steve](../games/thinky/5-step-steve.md) | аватарна | 2019 | `square/turn/none/full/none/collect` | v1 | 75% | 24 | [itch](https://epicpikaguy.itch.io/5-step-steve) |
 | [A Good Snowman Is Hard to Build](../games/thinky/a-good-snowman-is-hard-to-build.md) | аватарна | 2015 | `square/turn/none/full/none/state` | v1 | 75% | 17 | [wiki](https://en.wikipedia.org/wiki/A_Good_Snowman_Is_Hard_to_Build) |
+| [A Little Perspective](../games/thinky/a-little-perspective.md) | аватарна | 2026 | `iso/turn/none/full/none/state` | v1 | 30% | 15 | [steam](https://store.steampowered.com/app/3485300/A_Little_Perspective/) |
+| [A Man Walks Into A Scrollbar](../games/thinky/a-man-walks-into-a-scrollbar.md) | аватарна | 2026 | `square/turn/none/hidden/none/state` | v1 | 80% | 18 | [itch](https://dee-3.itch.io/a-man-walks-into-a-scrollbar) |
 | [A Monster's Expedition](../games/thinky/a-monsters-expedition.md) | аватарна | 2020 | `square/turn/none/full/none/collect` | v1 | 75% | 23 | [wiki](https://en.wikipedia.org/wiki/A_Monster%27s_Expedition) |
 | [Alephant](../games/thinky/alephant.md) | аватарна | 2023 | `square/turn/none/full/none/state` | v1 | 35% | 19 | [steam](https://store.steampowered.com/app/1823730/Alephant/) |
 | [All the Gold in Fort Locks](../games/thinky/all-the-gold-in-fort-locks.md) | аватарна | 2026 | `layers/turn/none/full/none/state` | v1 | 70% | 23 | [itch](https://draknek.itch.io/all-the-gold-in-fort-locks) |
+| [Altered](../games/thinky/altered.md) | аватарна | 2021 | `square/turn/none/full/none/state` | v1 | 35% | 19 | [other](https://buried-treasure.org/2021/05/altered/) |
+| [Another Clone](../games/thinky/another-clone.md) | аватарна | 2022 | `square/turn/none/full/none/state` | v1 | 75% | 29 | [itch](https://knexator.itch.io/another-clone) |
 | [Arranger: A Role-Puzzling Adventure](../games/thinky/arranger.md) | аватарна | 2024 | `square/turn/none/full/none/state` | v1 | 55% | 23 | [steam](https://store.steampowered.com/app/2596420/Arranger_A_RolePuzzling_Adventure/) |
+| [Assassinvisible](../games/thinky/assassinvisible.md) | аватарна | 2024 | `square/turn/none/partial/none/state` | v1 | 30% | 18 | [steam](https://store.steampowered.com/app/2207460/Assassinvisible/) |
+| [At the Hedges of Time](../games/thinky/at-the-hedges-of-time.md) | аватарна | 2021 | `square/turn/none/full/none/state` | v1 | 75% | 19 | [itch](https://galactical.itch.io/at-the-hedges-of-time) |
 | [Baba Is You](../games/thinky/baba-is-you.md) | аватарна | 2019 | `square/turn/none/full/none/state` | v2 | 65% | 25 | [wiki](https://en.wikipedia.org/wiki/Baba_Is_You) |
 | [Bean and Nothingness](../games/thinky/bean-and-nothingness.md) | аватарна | 2021 | `square/turn/none/full/none/state` | v1 | 50% | 20 | [steam](https://store.steampowered.com/app/1706090/Bean_and_Nothingness/) |
+| [Bee Magic](../games/thinky/bee-magic.md) | аватарна | 2024 | `square/turn/none/full/none/collect` | v1 | 55% | 26 | [itch](https://epicpikaguy.itch.io/bee-magic) |
 | [Blue Prince](../games/thinky/blue-prince.md) | гібрид | 2025 | `square/turn/none/hidden/runtime/state` | v1 | 55% | 25 | [wiki](https://en.wikipedia.org/wiki/Blue_Prince_(video_game)) |
+| [Bomb Club Deluxe](../games/thinky/bomb-club-deluxe.md) | курсорна | 2022 | `square/static/none/full/none/state` | v1 | 35% | 25 | [steam](https://store.steampowered.com/app/1771440/Bomb_Club_Deluxe/) |
+| [Bombuzal](../games/thinky/bombuzal.md) | аватарна | 1988 | `square/realtime/none/full/runtime/state` | v1 | 70% | 36 | [other](https://www.c64-wiki.com/wiki/Bombuzal) |
 | [Bonfire Peaks](../games/thinky/bonfire-peaks.md) | аватарна | 2021 | `3d/turn/none/full/none/state` | v1 | 65% | 22 | [wiki](https://en.wikipedia.org/wiki/Bonfire_Peaks) |
 | [CIPHER ZERO](../games/thinky/cipher-zero.md) | пазл | 2025 | `graph/static/none/full/none/constraints` | v1 | 50% | 28 | [steam](https://store.steampowered.com/app/1332180/CIPHER_ZERO/) |
+| [CONSTRICTOR](../games/thinky/constrictor.md) | аватарна | 2024 | `square/turn/none/full/none/collect` | v1 | 90% | 19 | [itch](https://beepyeah.itch.io/constrictor) |
+| [Campfire Cooking](../games/thinky/campfire-cooking.md) | фігурна | 2017 | `square/turn/none/full/none/state` | v1 | 50% | 19 | [steam](https://store.steampowered.com/app/679500/Campfire_Cooking/) |
 | [Can of Wormholes](../games/thinky/can-of-wormholes.md) | аватарна | 2023 | `square/turn/none/full/none/state` | v1 | 40% | 17 | [steam](https://store.steampowered.com/app/1295320/Can_of_Wormholes/) |
 | [Candle Prick](../games/thinky/candle-prick.md) | аватарна | 2022 | `square/turn/none/full/none/state` | v1 | 70% | 28 | [steam](https://store.steampowered.com/app/1920700/Candle_Prick/) |
 | [Carto](../games/thinky/carto.md) | гібрид | 2020 | `layers/realtime/none/partial/none/state` | v1 | 55% | 19 | [other](https://www.gameinformer.com/review/carto/carto-review-putting-the-pieces-together) |
+| [Causality](../games/thinky/causality.md) | курсорна | 2017 | `square/turn/none/full/none/state` | v1 | 50% | 25 | [steam](https://store.steampowered.com/app/559930/Causality/) |
 | [Changes](../games/thinky/changes.md) | аватарна | 2021 | `square/turn/none/full/none/state` | v1 | 50% | 15 | [steam](https://store.steampowered.com/app/1654920/Changes/) |
 | [Chomp Garden](../games/thinky/chomp-garden.md) | аватарна | 2026 | `square/turn/none/full/none/state` | v1 | 45% | 21 | [play](https://lunardust.itch.io/chomp-garden) |
+| [Chronescher](../games/thinky/chronescher.md) | аватарна | 2022 | `iso/turn/none/full/none/state` | v1 | 40% | 30 | [steam](https://store.steampowered.com/app/1911170/Chronescher/) |
 | [Clover's Quadrants](../games/thinky/clovers-quadrants.md) | аватарна | 2026 | `square/turn/none/full/none/collect` | v1 | 65% | 26 | [steam](https://store.steampowered.com/app/3191170/Clovers_Quadrants/) |
+| [Corrypt](../games/thinky/corrypt.md) | аватарна | 2012 | `square/turn/none/full/none/state` | v1 | 40% | 13 | [itch](https://smestorp.itch.io/corrypt) |
+| [Croquet Conundrum](../games/thinky/croquet-conundrum.md) | аватарна | 2024 | `hex/turn/none/full/none/collect` | v1 | 65% | 35 | [itch](https://lummie-thief.itch.io/croquet-conundrum) |
 | [Deadly Rooms of Death (DROD: King Dugan's Dungeon)](../games/thinky/drod.md) | аватарна | 1996 | `square/turn/ai/full/none/state` | v2 | 75% | 37 | [wiki](https://en.wikipedia.org/wiki/Deadly_Rooms_of_Death) |
+| [Death Squared](../games/thinky/death-squared.md) | аватарна | 2017 | `3d/realtime/coop/partial/none/state` | v1 | 40% | 33 | [steam](https://store.steampowered.com/app/471810/Death_Squared/) |
+| [Droplets](../games/thinky/droplets.md) | курсорна | 2023 | `square/turn/none/full/none/state` | v1 | 75% | 29 | [itch](https://juner.itch.io/droplets) |
+| [Echochrome](../games/thinky/echochrome.md) | гібрид | 2008 | `3d/realtime/none/full/none/collect` | v1 | 45% | 24 | [wiki](https://en.wikipedia.org/wiki/Echochrome) |
+| [Edge Case](../games/thinky/edge-case.md) | гібрид | 2021 | `graph/turn/none/full/none/state` | v1 | 70% | 27 | [itch](https://parachor.itch.io/edgecase) |
 | [English Country Tune](../games/thinky/english-country-tune.md) | аватарна | 2011 | `3d/turn/none/full/none/state` | v1 | 45% | 19 | [other](https://jayisgames.com/review/english-country-tune.php) |
 | [Enigmash](../games/thinky/enigmash.md) | аватарна | 2019 | `square/turn/none/full/none/state` | v1 | 55% | 26 | [play](https://jacklance.github.io/PuzzleScript/play.html?p=cfdcc6e23f1fb3e9de2fd42fafaf4d4c) |
 | [Entwined Time](../games/thinky/entwined-time.md) | аватарна | 2024 | `square/turn/none/full/none/state` | v1 | 65% | 41 | [steam](https://store.steampowered.com/app/3147300/Entwined_Time/) |
 | [Euclidean Skies](../games/thinky/euclidean-skies.md) | аватарна | 2019 | `3d/turn/ai/full/setup/state` | v1 | 55% | 27 | [steam](https://store.steampowered.com/app/983980/Euclidean_Skies/) |
 | [Felix the Reaper](../games/thinky/felix-the-reaper.md) | аватарна | 2019 | `iso/turn/none/full/none/state` | v1 | 60% | 24 | [wiki](https://en.wikipedia.org/wiki/Felix_the_Reaper) |
 | [Fish Fillets](../games/thinky/fish-fillets.md) | аватарна | 1998 | `square/turn/none/full/none/state` | v1 | 60% | 29 | [wiki](https://en.wikipedia.org/wiki/Fish_Fillets) |
+| [Forever Wonder Colour](../games/thinky/forever-wonder-colour.md) | аватарна | 2025 | `square/turn/none/full/none/state` | v1 | 85% | 40 | [itch](https://patashu.itch.io/forever-wonder-colour) |
 | [GRAB-O](../games/thinky/grab-o.md) | аватарна | 2024 | `square/turn/none/full/none/state` | v1 | 60% | 15 | [itch](https://unlessgames.itch.io/grabo) |
+| [Give Up the Ghost: a puzzle checklist](../games/thinky/give-up-the-ghost.md) | аватарна | 2022 | `square/turn/none/full/none/state` | v1 | 70% | 38 | [itch](https://gate.itch.io/ghost) |
 | [Golf Peaks](../games/thinky/golf-peaks.md) | аватарна | 2018 | `iso/turn/none/full/none/state` | v1 | 70% | 25 | [other](https://gamingtrend.com/reviews/a-puzzle-thats-par-for-the-course-golf-peaks-review/) |
 | [Gorogoa](../games/thinky/gorogoa.md) | курсорна | 2017 | `graph/static/none/hidden/none/state` | v1 | 40% | 15 | [wiki](https://en.wikipedia.org/wiki/Gorogoa) |
 | [GridRacer](../games/thinky/gridracer.md) | аватарна | 2024 | `square/turn/none/full/none/race` | v1 | 65% | 19 | [itch](https://jackkutilek.itch.io/gridracer) |
 | [Gridmount](../games/thinky/gridmount.md) | аватарна | 2024 | `graph/turn/none/full/none/state` | v1 | 35% | 13 | [itch](https://hempuli.itch.io/gridmount) |
+| [Gridspech](../games/thinky/gridspech.md) | пазл | 2023 | `square/static/none/full/none/constraints` | v1 | 75% | 28 | [itch](https://krackocloud.itch.io/gridspech) |
+| [Growmi](../games/thinky/growmi.md) | аватарна | 2023 | `square/turn/none/full/none/collect` | v1 | 40% | 35 | [itch](https://carlospedroso.itch.io/growmi) |
 | [Hanano Puzzle (ハナノパズル)](../games/thinky/hanano-puzzle.md) | курсорна | 2011 | `square/turn/none/full/none/state` | v1 | 70% | 16 | [other](https://arxiv.org/html/2205.03400v3) |
+| [Handshakes](../games/thinky/handshakes.md) | аватарна | 2022 | `square/turn/none/full/none/state` | v1 | 55% | 32 | [itch](https://petpumpkin.itch.io/handshakes) |
 | [Hat Stack](../games/thinky/hat-stack.md) | курсорна | 2022 | `1d/turn/none/full/none/state` | v1 | 75% | 16 | [itch](https://knexator.itch.io/hat-stack) |
+| [Hat-tricks](../games/thinky/hat-tricks.md) | аватарна | 2022 | `square/turn/none/full/none/state` | v1 | 65% | 25 | [official](https://www.clickmazes.com/hattricks/hattricks.htm) |
 | [Heroes of Sokoban](../games/thinky/heroes-of-sokoban.md) | аватарна | 2013 | `square/turn/none/full/none/state` | v1 | 75% | 20 | [play](https://www.puzzlescript.net/play.html?p=6860122) |
+| [Heroes of Sokoban II: Monsters і III: The Bard and the Druid](../games/thinky/heroes-of-sokoban-sequels.md) | аватарна | 2013 | `square/turn/none/full/none/state` | v1 | 85% | 30 | [play](https://www.puzzlescript.net/play.html?p=6910207) |
+| [I am Two](../games/thinky/i-am-two.md) | аватарна | 2021 | `square/turn/none/full/none/state` | v1 | 75% | 16 | [itch](https://nebu-soku.itch.io/i-am-two) |
 | [Ice path](../games/thinky/ice-path.md) | аватарна | 2018 | `square/turn/none/full/none/state` | v1 | 80% | 19 | [itch](https://rosden.itch.io/ice-path) |
 | [Isaac and the Conservation of Momentum](../games/thinky/isaac-conservation-of-momentum.md) | аватарна | 2021 | `square/turn/none/full/none/state` | v1 | 70% | 20 | [itch](https://menderbug.itch.io/isaac-and-the-conservation-of-momentum) |
 | [Islands of Insight](../games/thinky/islands-of-insight.md) | гібрид | 2024 | `square/static/none/full/setup/constraints` | v1 | 45% | 23 | [other](https://freethoughtblogs.com/atrivialknot/2024/03/18/islands-of-insight-teaches-logic-puzzles) |
 | [Isles of Sea and Sky](../games/thinky/isles-of-sea-and-sky.md) | аватарна | 2024 | `square/turn/none/full/none/collect` | v1 | 55% | 25 | [wiki](https://en.wikipedia.org/wiki/Isles_of_Sea_and_Sky) |
 | [Jelly no Puzzle (ゼリーのパズル)](../games/thinky/jelly-no-puzzle.md) | курсорна | 2013 | `square/turn/none/full/none/state` | v1 | 75% | 18 | [other](https://arxiv.org/html/2501.12282v2) |
+| [Kukulcan](../games/thinky/kukulcan.md) | аватарна | 2025 | `3d/turn/none/full/none/state` | v1 | 35% | 11 | [official](http://www.black-spoon.com/press/sheet.php?p=kukulcan) |
 | [LOK Digital](../games/thinky/lok-digital.md) | пазл | 2024 | `square/static/none/full/none/state` | v1 | 60% | 23 | [wiki](https://en.wikipedia.org/wiki/LOK_Digital) |
+| [Lava and Aqua](../games/thinky/lava-and-aqua.md) | аватарна | 2022 | `square/turn/none/full/none/state` | v1 | 80% | 27 | [itch](https://rob1221.itch.io/lava-and-aqua) |
+| [Leaf's Odyssey](../games/thinky/leafs-odyssey.md) | аватарна | 2024 | `layers/turn/ai/full/none/state` | v1 | 40% | 40 | [steam](https://store.steampowered.com/app/2880750/Leafs_Odyssey/) |
 | [Leap Year](../games/thinky/leap-year.md) | аватарна | 2024 | `square/realtime/none/full/none/collect` | v1 | 45% | 13 | [wiki](https://en.wikipedia.org/wiki/Leap_Year_(video_game)) |
 | [Lime Rick](../games/thinky/lime-rick.md) | аватарна | 2013 | `square/turn/none/full/none/state` | v1 | 80% | 17 | [play](https://www.puzzlescript.net/play.html?p=6841210) |
 | [Linelith](../games/thinky/linelith.md) | пазл | 2022 | `square/static/none/full/none/constraints` | v1 | 35% | 9 | [steam](https://store.steampowered.com/app/1923790/Linelith) |
 | [Lock & Pin](../games/thinky/lock-and-pin.md) | аватарна | 2023 | `square/turn/none/full/none/state` | v1 | 65% | 16 | [itch](https://clickmazes.itch.io/locknpin) |
 | [Loophole](../games/thinky/loophole.md) | аватарна | 2025 | `square/turn/none/partial/none/state` | v1 | 60% | 27 | [steam](https://store.steampowered.com/app/3629400/Loophole/) |
+| [MC Escher's Equestrian Armageddon](../games/thinky/mc-eschers-equestrian-armageddon.md) | аватарна | 2013 | `square/turn/none/full/none/state` | v1 | 85% | 14 | [play](https://www.puzzlescript.net/play.html?p=6851495) |
+| [Mad Queens](../games/thinky/mad-queens.md) | аватарна | 2020 | `square/turn/none/full/none/state` | v1 | 80% | 17 | [play](https://www.puzzlescript.net/play.html?p=8ba10d6a0a5a0edd640e0b9431858259) |
 | [Magic Chalkboards](../games/thinky/magic-chalkboards.md) | аватарна | 2023 | `nested/turn/none/full/none/state` | v1 | 55% | 19 | [itch](https://coolnico.itch.io/magic-chalkboards) |
 | [Magiciban](../games/thinky/magiciban.md) | аватарна | 2022 | `square/turn/none/full/none/state` | v1 | 70% | 18 | [itch](https://auroriax.itch.io/magiciban) |
 | [Meet me at NooN](../games/thinky/meet-me-at-noon.md) | аватарна | 2022 | `square/turn/none/full/none/state` | v1 | 45% | 19 | [steam](https://store.steampowered.com/app/1880490/Meet_me_at_NooN/) |
+| [Mimic (Mimic Classic)](../games/thinky/mimic.md) | аватарна | 2021 | `square/realtime/none/full/none/state` | v1 | 80% | 27 | [itch](https://sourencho.itch.io/mimic) |
 | [Mirror Isles](../games/thinky/mirror-isles.md) | аватарна | 2014 | `square/turn/none/full/none/state` | v1 | 70% | 16 | [play](https://alan.draknek.org/games/puzzlescript/mirrors.php) |
 | [Monocre](../games/thinky/monocre.md) | аватарна | 2013 | `square/turn/none/full/none/state` | v1 | 35% | 11 | [steam](https://store.steampowered.com/app/4502500/Monocre/) |
 | [Monument Valley](../games/thinky/monument-valley.md) | гібрид | 2014 | `graph/static/none/full/none/state` | v1 | 45% | 20 | [wiki](https://en.wikipedia.org/wiki/Monument_Valley_(video_game)) |
 | [Mycelium Heaven](../games/thinky/mycelium-heaven.md) | курсорна | 2025 | `square/turn/none/full/none/collect` | v1 | 55% | 30 | [steam](https://store.steampowered.com/app/2656520/Mycelium_Heaven/) |
+| [N Step Steve (Part 1–2)](../games/thinky/n-step-steve.md) | аватарна | 2020 | `square/turn/none/full/none/collect` | v1 | 50% | 40 | [itch](https://epicpikaguy.itch.io/n-step-steve-part-1) |
+| [Omniban](../games/thinky/omniban.md) | курсорна | 2018 | `square/turn/none/full/none/state` | v1 | 80% | 15 | [play](https://www.puzzlescript.net/play.html?p=96608bd07725a3a105bb0027a7b73da3) |
 | [One More Button](../games/thinky/one-more-button.md) | аватарна | 2018 | `square/turn/none/full/none/state` | v1 | 45% | 20 | [steam](https://store.steampowered.com/app/3623490/) |
 | [Orakyubu](../games/thinky/orakyubu.md) | аватарна | 2021 | `3d/turn/none/full/none/state` | v1 | 75% | 29 | [steam](https://store.steampowered.com/app/1654900/Orakyubu/) |
 | [Order of the Sinking Star](../games/thinky/order-of-the-sinking-star.md) | аватарна | 2026 | `square/turn/none/full/none/state` | v1 | 50% | 33 | [steam](https://store.steampowered.com/app/499170/Order_of_the_Sinking_Star/) |
@@ -1536,19 +1683,29 @@
 | [Paklyx](../games/thinky/paklyx.md) | аватарна | 2026 | `square/turn/none/full/none/collect` | v1 | 40% | 14 | [steam](https://store.steampowered.com/app/4199860/Paklyx/) |
 | [Paper Trail](../games/thinky/paper-trail.md) | гібрид | 2024 | `layers/turn/none/partial/none/state` | v1 | 45% | 17 | [wiki](https://en.wikipedia.org/wiki/Paper_Trail_(video_game)) |
 | [Patrick's Parabox](../games/thinky/patricks-parabox.md) | аватарна | 2022 | `graph/turn/none/full/none/state` | v1 | 60% | 22 | [wiki](https://en.wikipedia.org/wiki/Patrick%27s_Parabox) |
+| [Pattern Counter](../games/thinky/pattern-counter.md) | аватарна | 2026 | `square/turn/none/full/none/state` | v1 | 70% | 30 | [itch](https://pulleybun.itch.io/pattern-counter-jam) |
 | [Puddle Knights](../games/thinky/puddle-knights.md) | аватарна | 2020 | `square/turn/none/full/none/state` | v1 | 55% | 18 | [youtube](https://www.youtube.com/watch?v=5Ghk4cZw-yU) |
+| [Pup Champs](../games/thinky/pup-champs.md) | фігурна | 2025 | `square/turn/none/full/none/state` | v1 | 50% | 25 | [steam](https://store.steampowered.com/app/2848800/Pup_Champs/) |
 | [Push The Cat with WASD](../games/thinky/push-the-cat-with-wasd.md) | курсорна | 2024 | `square/turn/none/full/none/state` | v1 | 45% | 21 | [steam](https://store.steampowered.com/app/2683570/) |
 | [PushTOOL](../games/thinky/pushtool.md) | аватарна | 2021 | `square/turn/none/full/none/state` | v1 | 60% | 15 | [itch](https://auroriax.itch.io/pushtool) |
 | [Quadrata](../games/thinky/quadrata.md) | аватарна | 2022 | `square/turn/none/full/none/collect` | v1 | 50% | 22 | [steam](https://store.steampowered.com/app/2066950/Quadrata/) |
 | [RE:COPY](../games/thinky/recopy.md) | аватарна | 2026 | `square/turn/none/full/none/state` | v1 | 55% | 22 | [steam](https://store.steampowered.com/app/5230820/RECOPY/) |
 | [Recursed](../games/thinky/recursed.md) | аватарна | 2016 | `graph/realtime/none/full/none/state` | v1 | 55% | 27 | [steam](https://store.steampowered.com/app/497780/Recursed/) |
+| [Reliquia Park](../games/thinky/reliquia-park.md) | аватарна | 2024 | `square/turn/none/full/none/constraints` | v1 | 70% | 39 | [itch](https://parachor.itch.io/reliquiapark) |
+| [Secure](../games/thinky/secure.md) | аватарна | 2021 | `square/turn/none/full/none/state` | v1 | 75% | 22 | [itch](https://toombler.itch.io/secure) |
 | [Snakebird](../games/thinky/snakebird.md) | аватарна | 2015 | `square/turn/none/full/none/collect` | v1 | 75% | 24 | [wiki](https://en.wikipedia.org/wiki/Snakebird_(video_game)) |
+| [Snekcross](../games/thinky/snekcross.md) | аватарна | 2025 | `square/turn/none/full/none/state` | v1 | 75% | 22 | [itch](https://justcamh.itch.io/snekcross) |
 | [Sokobond](../games/thinky/sokobond.md) | аватарна | 2013 | `square/turn/none/full/none/state` | v1 | 70% | 20 | [wiki](https://en.wikipedia.org/wiki/Sokobond) |
+| [Soliquid](../games/thinky/soliquid.md) | аватарна | 2019 | `square/turn/none/full/none/state` | v1 | 75% | 15 | [play](https://www.puzzlescript.net/play.html?p=4adc7b17c2c0449c3a8b6c730e8cbfc9) |
 | [Spooky Express](../games/thinky/spooky-express.md) | курсорна | 2025 | `square/programmed/none/full/none/state` | v1 | 35% | 18 | [official](https://spooky.express/) |
+| [Stamp Collecting on Planet Q](../games/thinky/stamp-collecting-on-planet-q.md) | аватарна | 2025 | `square/turn/none/full/none/state` | v1 | 80% | 27 | [itch](https://cassowary.itch.io/stamp-collecting-on-planet-q) |
+| [Stand Off](../games/thinky/stand-off.md) | аватарна | 2016 | `square/turn/none/full/none/state` | v1 | 85% | 19 | [play](https://www.puzzlescript.net/play.html?p=14a2f967a1978e28e91118126ac22d6a) |
 | [Starseed Pilgrim](../games/thinky/starseed-pilgrim.md) | аватарна | 2013 | `square/realtime/none/partial/runtime/collect` | v1 | 40% | 21 | [wiki](https://en.wikipedia.org/wiki/Starseed_Pilgrim) |
 | [Stephen's Sausage Roll](../games/thinky/stephens-sausage-roll.md) | аватарна | 2016 | `layers/turn/none/full/none/state` | v1 | 65% | 19 | [wiki](https://en.wikipedia.org/wiki/Stephen%27s_Sausage_Roll) |
+| [Stig](../games/thinky/stig.md) | аватарна | 2024 | `square/turn/none/full/none/state` | v1 | 45% | 25 | [steam](https://store.steampowered.com/app/2834830/) |
 | [Stoneman's Adventure](../games/thinky/stonemans-adventure.md) | аватарна | 2023 | `square/turn/none/full/none/state` | v1 | 60% | 24 | [steam](https://store.steampowered.com/app/2434860/) |
 | [Suikyo [Water Mirror]](../games/thinky/suikyo.md) | аватарна | 2023 | `square/turn/none/full/none/state` | v1 | 65% | 19 | [itch](https://competor.itch.io/suikyo) |
+| [SwapBot](../games/thinky/swapbot.md) | аватарна | 2014 | `square/turn/none/full/none/collect` | v1 | 75% | 22 | [itch](https://gate.itch.io/swapbot) |
 | [Taiji + The Witness (панелі)](../games/thinky/taiji-witness-panels.md) | пазл | 2022 | `square/static/none/full/none/constraints` | v1 | 70% | 25 | [wiki](https://en.wikipedia.org/wiki/The_Witness_(2016_video_game)) |
 | [Temple of Snek](../games/thinky/temple-of-snek.md) | аватарна | 2023 | `layers/rhythm/none/full/none/state` | v1 | 50% | 38 | [steam](https://store.steampowered.com/app/1208590/Temple_Of_Snek/) |
 | [Tetrobot and Co.](../games/thinky/tetrobot-and-co.md) | аватарна | 2013 | `square/turn/none/full/none/state` | v1 | 45% | 26 | [other](https://jayisgames.com/review/tetrobot-and-co.php) |
@@ -1559,19 +1716,29 @@
 | [Tome Tumble Tournament](../games/thinky/tome-tumble-tournament.md) | аватарна | 2024 | `square/turn/none/full/none/state` | v1 | 40% | 16 | [itch](https://terzalo.itch.io/tome-tumble-tournament) |
 | [Toodee and Topdee](../games/thinky/toodee-and-topdee.md) | гібрид | 2021 | `square/realtime/none/full/none/state` | v1 | 50% | 25 | [steam](https://store.steampowered.com/app/1303950/Toodee_and_Topdee/) |
 | [Toroban](../games/thinky/toroban.md) | аватарна | 2025 | `square/turn/none/full/none/state` | v1 | 50% | 25 | [steam](https://store.steampowered.com/app/1961850/) |
+| [Tres Undos](../games/thinky/tres-undos.md) | аватарна | 2021 | `square/turn/none/full/none/state` | v1 | 75% | 28 | [itch](https://knexator.itch.io/tres-undos) |
 | [Tricone Lab](../games/thinky/tricone-lab.md) | курсорна | 2017 | `graph/turn/none/full/none/state` | v1 | 40% | 22 | [other](https://www.gamespew.com/?p=7887) |
+| [Triga](../games/thinky/triga.md) | курсорна | 2022 | `tri/turn/none/full/none/collect` | v1 | 40% | 26 | [steam](https://store.steampowered.com/app/1890550/Triga/) |
+| [Two Worlds](../games/thinky/two-worlds.md) | аватарна | 2021 | `square/turn/none/full/none/state` | v1 | 70% | 25 | [itch](https://nebu-soku.itch.io/two-worlds) |
 | [Understand](../games/thinky/understand.md) | пазл | 2020 | `square/static/none/hidden/none/constraints` | v1 | 45% | 15 | [steam](https://store.steampowered.com/app/1299400/Understand/) |
+| [Undertoe](../games/thinky/undertoe.md) | курсорна | 2025 | `square/turn/ai/full/none/state` | v1 | 80% | 21 | [itch](https://irregularhex.itch.io/undertoe) |
+| [Vext Edit](../games/thinky/vext-edit.md) | гібрид | 2019 | `square/turn/none/full/none/state` | v1 | 75% | 29 | [play](https://www.puzzlescript.net/play.html?p=9eb8f8f3df4efb450b798a279eeba2e0) |
 | [Void Stranger](../games/thinky/void-stranger.md) | аватарна | 2023 | `square/turn/ai/full/none/state` | v1 | 70% | 26 | [fandom](https://voidstranger.miraheze.org/wiki/Enemies) |
 | [WOIM](../games/thinky/woim.md) | аватарна | 2026 | `square/turn/none/full/none/state` | v1 | 45% | 23 | [play](https://arussellsaw.itch.io/if-i-was-a-worm) |
+| [Walking Dots (てんてん虫)](../games/thinky/walking-dots.md) | аватарна | 2024 | `square/turn/none/full/none/state` | v1 | 70% | 19 | [itch](https://nebu-soku.itch.io/walking-dots) |
+| [Wilderplace](../games/thinky/wilderplace.md) | аватарна | 2022 | `iso/turn/ai/full/none/state` | v1 | 45% | 20 | [steam](https://store.steampowered.com/app/1769640/Wilderplace/) |
 | [Wildfire Swap](../games/thinky/wildfire-swap.md) | курсорна | 2021 | `square/turn/none/full/none/state` | v1 | 55% | 23 | [steam](https://store.steampowered.com/app/1216030/Wildfire_Swap/) |
+| [Woodworm](../games/thinky/woodworm.md) | аватарна | 2024 | `square/turn/none/full/none/state` | v1 | 75% | 29 | [itch](https://spratt.itch.io/woodworm-classic) |
 | [World's Hardest 15-Puzzle](../games/thinky/worlds-hardest-15-puzzle.md) | курсорна | 2021 | `square/static/none/hidden/setup/state` | v1 | 70% | 9 | [itch](https://elgregos.itch.io/worlds-hardest-15-puzzle) |
 | [Would You Love Me If I Was a Snake?](../games/thinky/would-you-love-me-if-i-was-a-snake.md) | аватарна | 2024 | `square/turn/none/full/none/state` | v1 | 45% | 30 | [steam](https://store.steampowered.com/app/4284670/Would_You_Love_Me_If_I_Was_a_Snake/) |
 | [Yoohoo](../games/thinky/yoohoo.md) | аватарна | 2024 | `square/turn/none/full/none/state` | v1 | 70% | 23 | [itch](https://competor.itch.io/yoohoo) |
 | [elephant-in-a-bottle](../games/thinky/elephant-in-a-bottle.md) | аватарна | 2021 | `square/turn/none/full/none/state` | v1 | 60% | 16 | [itch](https://pancelor.itch.io/elephant-in-a-bottle) |
 | [excellent](../games/thinky/excellent.md) | аватарна | 2025 | `square/turn/none/full/none/state` | v1 | 40% | 17 | [steam](https://store.steampowered.com/app/3706120/excellent/) |
+| [ilomilo](../games/thinky/ilomilo.md) | аватарна | 2010 | `3d/turn/none/full/none/state` | v1 | 50% | 22 | [wiki](https://en.wikipedia.org/wiki/Ilomilo) |
 | [inbento](../games/thinky/inbento.md) | курсорна | 2019 | `square/turn/none/full/none/state` | v1 | 60% | 20 | [steam](https://store.steampowered.com/app/1567440/inbento/) |
 | [increpare: Scalesoban і Explodoban](../games/thinky/increpare-sokoban-variants.md) | аватарна | 2019 | `square/turn/none/full/none/state` | v1 | 80% | 16 | [play](https://www.puzzlescript.net/play.html?p=08e343d25a15ad264003fdcb16f05763) |
 | [increpare: мікро-Sokoban-и (Crates move when you move · Pushy-V Pully-H · Muraphilic Monophobic Multiban)](../games/thinky/increpare-micro-puzzles.md) | аватарна | 2021 | `square/turn/none/full/none/state` | v1 | 80% | 19 | [play](https://www.puzzlescript.net/play.html?p=b8f93072878708ce91fb3e5126a02b0b) |
+| [nuworm](../games/thinky/nuworm.md) | аватарна | 2025 | `square/turn/none/full/none/state` | v1 | 55% | 28 | [itch](https://cubestudio.itch.io/nuworm) |
 
 ## tower-lanes · 91
 
@@ -1669,10 +1836,11 @@
 | [worDefense](../games/tower-lanes/wordefense.md) | курсорна | 2023 | `square/turn/none/full/runtime/score` | v1 | 75% | 27 | [itch](https://amidos2006.itch.io/wordefense) |
 | [Сучасні mazing-TD (Electromaze, Tower Maze Defense, Thornline TD, Maul Tactics, Back to the Roots 2)](../games/tower-lanes/mazing-td-modern.md) | курсорна | 2018 | `square/realtime/online/full/setup/survive` | v1 | 60% | 42 | [steam](https://store.steampowered.com/app/5300580/Thornline_TD_Maze_Tower_Defense/) |
 
-## word-number · 81
+## word-number · 89
 
 | Гра | Клас | Рік | Осі | Стадія | Покриття | Тегів | ⭐ Вхід |
 |---|---|---|---|---|---|---|---|
+| [12 Word Searches](../games/word-number/12-word-searches.md) | пазл | 2023 | `square/static/none/partial/none/collect` | v1 | 45% | 15 | [itch](https://playcebo.itch.io/12-word-searches) |
 | [Absurdle](../games/word-number/absurdle.md) | пазл | 2022 | `square/turn/ai/hidden/none/state` | v1 | 55% | 19 | [wiki](https://en.wikipedia.org/wiki/Absurdle) |
 | [Acrostic (Double-Crostic)](../games/word-number/acrostic.md) | пазл | 1934 | `graph/static/none/full/none/constraints` | v1 | 65% | 21 | [wiki](https://en.wikipedia.org/wiki/Acrostic_(puzzle)) |
 | [Alphabear](../games/word-number/alphabear.md) | курсорна | 2015 | `square/turn/none/hidden/runtime/score` | v1 | 55% | 22 | [wiki](https://en.wikipedia.org/wiki/Alphabear) |
@@ -1680,6 +1848,7 @@
 | [Arrowword (Сканворд)](../games/word-number/arrowword.md) | пазл | None | `square/static/none/hidden/none/constraints` | v1 | 55% | 23 | [wiki](https://en.wikipedia.org/wiki/Crossword) |
 | [Babble Royale](../games/word-number/babble-royale.md) | гібрид | 2021 | `square/realtime/online/partial/runtime/survive` | v1 | 65% | 32 | [other](https://biggieblog.com/?p=263) |
 | [Bananagrams](../games/word-number/bananagrams.md) | курсорна | 2006 | `square/realtime/hotseat/hidden/runtime/race` | v1 | 60% | 21 | [wiki](https://en.wikipedia.org/wiki/Bananagrams) |
+| [Beyond Words](../games/word-number/beyond-words.md) | курсорна | 2026 | `square/turn/none/partial/both/score` | v1 | 55% | 40 | [steam](https://store.steampowered.com/app/3823370/Beyond_Words/) |
 | [Bingo / Keno / Lotto (Бінго, Лото)](../games/word-number/bingo.md) | курсорна | 1929 | `square/realtime/online/full/both/race` | v1 | 70% | 19 | [wiki](https://en.wikipedia.org/wiki/Bingo_(American_version)) |
 | [Blockbusters](../games/word-number/blockbusters.md) | курсорна | 1983 | `hex/turn/hotseat/full/runtime/state` | v1 | 60% | 19 | [wiki](https://en.wikipedia.org/wiki/Blockbusters_(British_game_show)) |
 | [Boggle](../games/word-number/boggle.md) | пазл | 1973 | `square/realtime/hotseat/full/setup/score` | v1 | 70% | 26 | [wiki](https://en.wikipedia.org/wiki/Boggle) |
@@ -1694,6 +1863,8 @@
 | [Crossmath (математичний кросворд)](../games/word-number/crossmath.md) | пазл | 2023 | `square/static/none/full/setup/constraints` | v1 | 70% | 28 | [other](https://apps.apple.com/us/app/id6460980049) |
 | [Crosswordle](../games/word-number/crosswordle.md) | пазл | 2022 | `square/static/none/full/none/constraints` | v1 | 60% | 18 | [other](https://nerdschalk.com/how-to-play-crosswordle-rules-and-gameplay-explained/) |
 | [Cryptic crossword (Криптичний кросворд)](../games/word-number/cryptic-crossword.md) | пазл | 1925 | `square/static/none/hidden/none/constraints` | v1 | 50% | 32 | [wiki](https://en.wikipedia.org/wiki/Cryptic_crossword) |
+| [Cursed Words](../games/word-number/cursed-words.md) | курсорна | 2026 | `square/turn/none/full/runtime/score` | v1 | 55% | 39 | [steam](https://store.steampowered.com/app/3856460/) |
+| [Dave's Word Game](../games/word-number/daves-word-game.md) | курсорна | 2025 | `square/turn/none/full/both/score` | v1 | 45% | 24 | [other](https://www.electrondance.com/?p=18599) |
 | [Diagramless crossword (Кросворд без сітки)](../games/word-number/diagramless-crossword.md) | пазл | 1924 | `square/static/none/hidden/none/constraints` | v1 | 60% | 23 | [other](https://content.puzzazz.com/how-to/diagramless-crosswords) |
 | [Digits (The New York Times)](../games/word-number/nyt-digits.md) | пазл | 2023 | `1d/static/none/full/setup/state` | v1 | 65% | 13 | [other](https://alexanderell.is/posts/digits/) |
 | [Dropquote (Quotefall)](../games/word-number/dropquote.md) | пазл | 1975 | `square/static/none/full/none/constraints` | v1 | 70% | 19 | [wiki](https://en.wikipedia.org/wiki/Dropquote) |
@@ -1721,6 +1892,7 @@
 | [Number Munchers / Word Munchers](../games/word-number/number-munchers.md) | аватарна | 1986 | `square/realtime/ai/full/runtime/collect` | v1 | 70% | 31 | [wiki](https://en.wikipedia.org/wiki/Number_Munchers) |
 | [Overwords](../games/word-number/overwords.md) | пазл | 2025 | `square/static/none/partial/none/state` | v1 | 40% | 12 | [steam](https://store.steampowered.com/app/3902010/Overwords/) |
 | [Paperback Adventures](../games/word-number/paperback-adventures.md) | курсорна | 2023 | `1d/turn/ai/partial/runtime/state` | v1 | 55% | 28 | [other](https://c.tabletopia.com/games/paperback-adventures/rules/paperback-adventure-rulebook/en) |
+| [Pool Letter](../games/word-number/pool-letter.md) | пазл | 2025 | `square/static/none/full/none/state` | v1 | 65% | 20 | [itch](https://cisuthen.itch.io/pool-letter) |
 | [Puzzlejuice](../games/word-number/puzzlejuice.md) | гібрид | 2012 | `square/realtime/none/full/runtime/score` | v1 | 60% | 23 | [wiki](https://en.wikipedia.org/wiki/Puzzlejuice) |
 | [Puzzmo: Bongo](../games/word-number/bongo.md) | курсорна | 2024 | `square/static/none/partial/none/score` | v1 | 55% | 21 | [other](https://seths.blog/2024/11/bongo-is-here/) |
 | [Puzzmo: Pile-Up Poker](../games/word-number/pile-up-poker.md) | курсорна | 2024 | `square/turn/none/partial/runtime/score` | v1 | 55% | 18 | [other](https://punishedbacklog.com/love-balatro-try-puzzmos-new-browser-game-pile-up-poker/) |
@@ -1729,7 +1901,9 @@
 | [RSVP (Scrabble Brand RSVP)](../games/word-number/rsvp.md) | курсорна | 1958 | `square/turn/hotseat/full/none/race` | v1 | 65% | 16 | [wiki](https://en.wikipedia.org/wiki/RSVP_(board_game)) |
 | [Scrabble (цифрові версії; Words With Friends)](../games/word-number/scrabble.md) | курсорна | 1948 | `square/turn/online/hidden/runtime/score` | v1 | 65% | 25 | [wiki](https://en.wikipedia.org/wiki/Scrabble) |
 | [So Clover!](../games/word-number/so-clover.md) | пазл | 2021 | `square/turn/coop/hidden/setup/score` | v1 | 55% | 16 | [other](https://cdn.shopify.com/s/files/1/2003/4581/files/sc-en01-rules-16197761427wP8d.pdf) |
+| [Spell Slide](../games/word-number/spell-slide.md) | аватарна | 2025 | `square/turn/none/full/none/state` | v1 | 40% | 30 | [steam](https://store.steampowered.com/app/3330410/) |
 | [SpellTower](../games/word-number/spelltower.md) | курсорна | 2011 | `square/turn/none/full/both/score` | v1 | 70% | 29 | [wiki](https://en.wikipedia.org/wiki/SpellTower) |
+| [Spellsy](../games/word-number/spellsy.md) | курсорна | 2026 | `square/turn/none/full/none/state` | v1 | 80% | 40 | [play](https://youre-a-lemon-games.itch.io/spellsy) |
 | [Spiral puzzle (Спіральний кросворд)](../games/word-number/spiral-puzzle.md) | пазл | None | `1d/static/none/hidden/none/constraints` | v1 | 55% | 16 | [wiki](https://en.wikipedia.org/wiki/Spiral_puzzle) |
 | [Squabble](../games/word-number/squabble.md) | пазл | 2022 | `square/realtime/online/hidden/runtime/survive` | v1 | 60% | 29 | [wiki](https://en.wikipedia.org/wiki/Squabble_(video_game)) |
 | [Squaredle](../games/word-number/squaredle.md) | пазл | 2022 | `graph/static/none/full/none/collect` | v1 | 60% | 31 | [play](https://squaredle.app) |
@@ -1740,6 +1914,7 @@
 | [TypeShift](../games/word-number/typeshift.md) | пазл | 2017 | `square/static/none/full/none/collect` | v1 | 60% | 16 | [wiki](https://en.wikipedia.org/wiki/TypeShift) |
 | [Upwords](../games/word-number/upwords.md) | курсорна | 1981 | `layers/turn/hotseat/hidden/runtime/score` | v1 | 65% | 24 | [wiki](https://en.wikipedia.org/wiki/Upwords) |
 | [Waffle](../games/word-number/waffle.md) | пазл | 2022 | `square/turn/none/partial/setup/state` | v1 | 70% | 16 | [play](https://wafflegame.net/daily) |
+| [Watchword](../games/word-number/watchword.md) | курсорна | 2025 | `square/turn/none/partial/both/score` | v1 | 50% | 33 | [steam](https://store.steampowered.com/app/2906730/Watchword/) |
 | [Weaver (word ladder)](../games/word-number/weaver.md) | пазл | 2022 | `square/static/none/full/setup/state` | v1 | 70% | 18 | [wiki](https://en.wikipedia.org/wiki/Word_ladder) |
 | [Word on the Street](../games/word-number/word-on-the-street.md) | курсорна | 2009 | `square/turn/hotseat/full/runtime/collect` | v1 | 65% | 15 | [other](https://rulespal.com/word-on-the-street/rulebook) |
 | [Word search (Пошук слів)](../games/word-number/word-search.md) | пазл | 1968 | `square/static/none/full/setup/collect` | v1 | 70% | 23 | [wiki](https://en.wikipedia.org/wiki/Word_search) |

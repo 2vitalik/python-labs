@@ -1,20 +1,20 @@
-# Жнива по секціях (автоген) · 2026-11-09 · 1663 ігор
+# Жнива по секціях (автоген) · 2026-11-19 · 1838 ігор
 
 ## Вікна — слова словника `windows.md` у секції «Вікна, меню, HUD»
 
-Відомі: `game-screen` ×1642 · `end-screen` ×1156 · `main-menu` ×888 · `settings-window` ×558 · `help-window` ×515 · `custom-window` ×411 · `leaderboard` ×299 · `level-select` ×291 · `match-setup` ×275 · `mode-select` ×268 · `map-window` ×253 · `shop-window` ×238 · `pause-menu` ×222 · `splash-screen` ×201 · `editor-window` ×189 · `character-select` ×176 · `puzzle-select` ×164 · `achievements-window` ×156 · `tutorial-window` ×137 · `dialogue-window` ×134 · `lobby-window` ×131 · `difficulty-select` ×121 · `inventory-window` ×114 · `codex-window` ×100 · `stats-window` ×93 · `save-slots` ×90 · `confirm-dialog` ×84 · `upgrade-window` ×76 · `replay-window` ×72 · `attract-demo` ×71 · `level-password` ×48 · `game-over-continue` ×46 · `daily-window` ×34 · `hints-window` ×33 · `skin-select` ×27 · `profile-window` ×24 · `code-editor` ×20 · `log-window` ×18 · `about-window` ×18 · `chapter-select` ×12 · `credits-window` ×12 · `solutions-window` ×11 · `options-controls` ×11 · `loading-screen` ×6 · `options-accessibility` ×1
+Відомі: `game-screen` ×1817 · `end-screen` ×1215 · `main-menu` ×960 · `settings-window` ×626 · `help-window` ×546 · `custom-window` ×469 · `level-select` ×342 · `leaderboard` ×306 · `map-window` ×294 · `mode-select` ×279 · `match-setup` ×278 · `pause-menu` ×253 · `shop-window` ×249 · `splash-screen` ×226 · `editor-window` ×217 · `character-select` ×183 · `puzzle-select` ×183 · `achievements-window` ×175 · `dialogue-window` ×165 · `tutorial-window` ×159 · `lobby-window` ×132 · `difficulty-select` ×126 · `inventory-window` ×116 · `codex-window` ×107 · `stats-window` ×98 · `save-slots` ×97 · `confirm-dialog` ×96 · `upgrade-window` ×78 · `replay-window` ×76 · `attract-demo` ×71 · `level-password` ×53 · `game-over-continue` ×47 · `hints-window` ×40 · `daily-window` ×36 · `skin-select` ×28 · `profile-window` ×27 · `credits-window` ×25 · `code-editor` ×23 · `about-window` ×21 · `log-window` ×20 · `chapter-select` ×17 · `options-controls` ×13 · `solutions-window` ×11 · `loading-screen` ×7 · `options-accessibility` ×1
 
-Невідомі словнику (≥2 ігор): `score` ×307 · `turn-indicator` ×253 · `lives` ×153 · `legal-move-highlight` ×152 · `timer-countdown` ×152 · `hp-bar` ×150 · `remaining-counter` ×143 · `level-number` ×128 · `coins` ×120 · `conflict-highlight` ×113 · `undo-button` ×86 · `pocket` ×83 · `message-log` ×77 · `hi-score` ×76 · `last-move-highlight` ×73 · `tooltip` ×72 · `objective-text` ×68 · `popup-text` ×61 · `inventory-bar` ×61 · `timer-elapsed` ×59 · `move-list` ×57 · `selection-highlight` ×56 · `move-counter` ×56 · `threat-range` ×52 · `progress-bar` ×50 · `energy-bar` ×50 · `turn-counter` ×49 · `opponent-boards` ×48 · `minimap` ×44 · `world-map` ×43 · `restart-button` ×41 · `player-clock` ×41 · `pass-device` ×40 · `next-piece-preview` ×38 · `speed-slider` ×38 · `path-preview` ×35 · `captured-pieces` ×35 · `placement-screen` ×31 · `check-button` ×30 · `stat-panel` ×30 · `reachable-highlight` ×30 · `wave-counter` ×26 · `ability-buttons` ×26 · `action-points` ×24 · `toast` ×24 · `instruction-highlight` ×23 · `tool-palette` ×23 · `fog-overlay` ×23 · `score-preview` ×22 · `zoom-control` ×22 · `step-button` ×22 · `hint-button` ×22 · `end-turn-button` ×22 · `skill-bar` ×22 · `redo-button` ×22 · `telegraph-marker` ×20 · `status-panel` ×17 · `pencil-marks` ×17 · `round-summary` ×16 · `pause-button` ×15 · `drag-ghost` ×14 · `generation-counter` ×14 · `element-picker` ×14 · `theme-select` ×14 · `combo-meter` ×14 · `replay-viewer` ×14 · `card-hand` ×13 · `cell-coordinates` ×13 · `variant-select` ×13 · `hint-marker` ×13 · `danger-line` ×13 · `goal-counter` ×12 · `resign-button` ×12 · `choose` ×11 · `par-moves` ×11 · `message` ×11 · `cursor` ×11 · `character-create` ×11 · `hit-chance` ×11 · `piece-tray` ×10
+Невідомі словнику (≥2 ігор): `score` ×310 · `turn-indicator` ×255 · `timer-countdown` ×155 · `legal-move-highlight` ×154 · `lives` ×154 · `remaining-counter` ×152 · `hp-bar` ×151 · `level-number` ×141 · `conflict-highlight` ×129 · `coins` ×123 · `undo-button` ×95 · `pocket` ×85 · `message-log` ×78 · `tooltip` ×78 · `hi-score` ×76 · `last-move-highlight` ×73 · `objective-text` ×71 · `popup-text` ×67 · `move-counter` ×66 · `timer-elapsed` ×66 · `inventory-bar` ×65 · `selection-highlight` ×61 · `move-list` ×58 · `progress-bar` ×53 · `threat-range` ×53 · `energy-bar` ×52 · `restart-button` ×51 · `turn-counter` ×51 · `opponent-boards` ×48 · `world-map` ×46 · `minimap` ×46 · `player-clock` ×42 · `pass-device` ×41 · `speed-slider` ×40 · `next-piece-preview` ×38 · `path-preview` ×36 · `captured-pieces` ×35 · `tool-palette` ×32 · `placement-screen` ×31 · `check-button` ×30 · `stat-panel` ×30 · `reachable-highlight` ×30 · `toast` ×28 · `instruction-highlight` ×27 · `ability-buttons` ×27 · `hint-button` ×26 · `wave-counter` ×26 · `action-points` ×25 · `redo-button` ×25 · `fog-overlay` ×24 · `zoom-control` ×23 · `step-button` ×23 · `end-turn-button` ×23 · `score-preview` ×22 · `skill-bar` ×22 · `telegraph-marker` ×21 · `status-panel` ×19 · `pencil-marks` ×19 · `pause-button` ×18 · `title-screen` ×18 · `round-summary` ×16 · `drag-ghost` ×15 · `hint-marker` ×15 · `cell-coordinates` ×14 · `generation-counter` ×14 · `element-picker` ×14 · `theme-select` ×14 · `combo-meter` ×14 · `replay-viewer` ×14 · `card-hand` ×13 · `variant-select` ×13 · `par-moves` ×13 · `goal-counter` ×13 · `message` ×13 · `resign-button` ×13 · `danger-line` ×13 · `message-screen` ×13 · `choose` ×11 · `mode-indicator` ×11 · `cursor` ×11
 
 ## HUD-елементи — слова словника `ui-elements.md` у секції «Вікна, меню, HUD»
 
-Відомі: `score` ×307 · `turn-indicator` ×253 · `lives` ×153 · `legal-move-highlight` ×152 · `timer-countdown` ×152 · `hp-bar` ×150 · `remaining-counter` ×143 · `level-number` ×128 · `coins` ×120 · `conflict-highlight` ×113 · `undo-button` ×86 · `pocket` ×83 · `message-log` ×77 · `hi-score` ×76 · `tooltip` ×72 · `objective-text` ×68 · `popup-text` ×61 · `inventory-bar` ×61 · `timer-elapsed` ×59 · `move-list` ×57 · `selection-highlight` ×56 · `move-counter` ×56 · `threat-range` ×52 · `progress-bar` ×50 · `energy-bar` ×50 · `turn-counter` ×49 · `opponent-boards` ×48 · `minimap` ×44 · `restart-button` ×41 · `player-clock` ×41 · `next-piece-preview` ×38 · `speed-slider` ×38 · `path-preview` ×35 · `captured-pieces` ×35 · `check-button` ×30 · `stat-panel` ×30 · `wave-counter` ×26 · `ability-buttons` ×26 · `action-points` ×24 · `toast` ×24 · `instruction-highlight` ×23 · `tool-palette` ×23 · `fog-overlay` ×23 · `zoom-control` ×22 · `step-button` ×22 · `hint-button` ×22 · `end-turn-button` ×22 · `skill-bar` ×22 · `redo-button` ×22 · `telegraph-marker` ×20 · `pencil-marks` ×17 · `pause-button` ×15 · `drag-ghost` ×14 · `element-picker` ×14 · `combo-meter` ×14 · `cell-coordinates` ×13 · `hint-marker` ×13 · `danger-line` ×13 · `resign-button` ×12 · `par-moves` ×11
+Відомі: `score` ×310 · `turn-indicator` ×255 · `timer-countdown` ×155 · `legal-move-highlight` ×154 · `lives` ×154 · `remaining-counter` ×152 · `hp-bar` ×151 · `level-number` ×141 · `conflict-highlight` ×129 · `coins` ×123 · `undo-button` ×95 · `pocket` ×85 · `message-log` ×78 · `tooltip` ×78 · `hi-score` ×76 · `objective-text` ×71 · `popup-text` ×67 · `move-counter` ×66 · `timer-elapsed` ×66 · `inventory-bar` ×65 · `selection-highlight` ×61 · `move-list` ×58 · `progress-bar` ×53 · `threat-range` ×53 · `energy-bar` ×52 · `restart-button` ×51 · `turn-counter` ×51 · `opponent-boards` ×48 · `minimap` ×46 · `player-clock` ×42 · `speed-slider` ×40 · `next-piece-preview` ×38 · `path-preview` ×36 · `captured-pieces` ×35 · `tool-palette` ×32 · `check-button` ×30 · `stat-panel` ×30 · `toast` ×28 · `instruction-highlight` ×27 · `ability-buttons` ×27 · `hint-button` ×26 · `wave-counter` ×26 · `action-points` ×25 · `redo-button` ×25 · `fog-overlay` ×24 · `zoom-control` ×23 · `step-button` ×23 · `end-turn-button` ×23 · `skill-bar` ×22 · `telegraph-marker` ×21 · `pencil-marks` ×19 · `pause-button` ×18 · `drag-ghost` ×15 · `hint-marker` ×15 · `cell-coordinates` ×14 · `element-picker` ×14 · `combo-meter` ×14 · `par-moves` ×13 · `resign-button` ×13 · `danger-line` ×13
 
 ## Фічі поза полем — слова словника `features.md` у секції «Фічі поза полем»
 
-Відомі: `levels-sequential` ×353 · `undo` ×336 · `custom-rules` ×294 · `achievements` ×246 · `level-editor` ×245 · `difficulty-presets` ×243 · `ai-opponent-levels` ×233 · `online-multiplayer` ×231 · `hotseat` ×214 · `restart-level` ×197 · `leaderboard-online` ×178 · `cloud-save` ×173 · `level-unlock` ×164 · `puzzle-bank` ×156 · `autosave` ×152 · `localization` ×138 · `meta-progression` ×130 · `redo` ×122 · `share-code` ×121 · `replay` ×114 · `leaderboard-local` ×114 · `hint` ×114 · `save-slots` ×114 · `tutorial` ×108 · `custom-difficulty` ×106 · `pause` ×105 · `auto-check` ×105 · `mode-versus` ×101 · `stats` ×99 · `mode-coop` ×97 · `mode-endless` ×91 · `local-multiplayer` ×89 · `unlockables` ×89 · `speed-control` ×89 · `seed-input` ×88 · `level-sharing` ×82 · `rules-page` ×77 · `world-map` ×71 · `export-import` ×70 · `mode-sandbox` ×68 · `theme-select` ×67 · `daily-puzzle` ×65 · `mod-support` ×62 · `remap-controls` ×61 · `colorblind-palette` ×58 · `mode-daily` ×55 · `mode-classic` ×54 · `mode-time-attack` ×53 · `gamepad-support` ×53 · `continue` ×52 · `mode-puzzle` ×47 · `turn-timer` ×46 · `collectibles` ×43 · `stars-rating` ×41 · `show-solution` ×39 · `touch-controls` ×39 · `step-mode` ×39 · `operator-settings` ×39 · `sound-toggle` ×36 · `rank-tiers` ×35
+Відомі: `undo` ×453 · `levels-sequential` ×410 · `custom-rules` ×303 · `restart-level` ×301 · `achievements` ×296 · `level-editor` ×272 · `difficulty-presets` ×252 · `ai-opponent-levels` ×234 · `online-multiplayer` ×232 · `hotseat` ×217 · `cloud-save` ×201 · `leaderboard-online` ×191 · `level-unlock` ×188 · `autosave` ×182 · `puzzle-bank` ×168 · `localization` ×163 · `redo` ×152 · `hint` ×142 · `meta-progression` ×137 · `share-code` ×132 · `save-slots` ×126 · `auto-check` ×122 · `replay` ×119 · `leaderboard-local` ×114 · `tutorial` ×113 · `pause` ×112 · `stats` ×108 · `custom-difficulty` ×106 · `mode-coop` ×102 · `unlockables` ×101 · `mode-versus` ×101 · `world-map` ×98 · `speed-control` ×98 · `mode-endless` ×97 · `level-sharing` ×94 · `local-multiplayer` ×93 · `seed-input` ×90 · `gamepad-support` ×89 · `remap-controls` ×81 · `rules-page` ×79 · `theme-select` ×73 · `mode-sandbox` ×73 · `export-import` ×73 · `continue` ×71 · `colorblind-palette` ×70 · `daily-puzzle` ×69 · `mod-support` ×63 · `mode-daily` ×60 · `mode-time-attack` ×57 · `collectibles` ×56 · `mode-classic` ×55 · `touch-controls` ×48 · `mode-puzzle` ×48 · `turn-timer` ×47 · `show-solution` ×47 · `stars-rating` ×44 · `sound-toggle` ×44 · `step-mode` ×43 · `codex` ×39 · `music-toggle` ×39
 
-Невідомі словнику (≥2 ігор): `level-select` ×42 · `permadeath` ×41 · `save-progress` ×35 · `level-password` ×32 · `save-game` ×25 · `cheat-codes` ×19 · `mode-select` ×14 · `checkpoint` ×14 · `local-referee` ×14 · `score-records` ×13 · `bot-upload` ×13 · `rule-variants` ×12 · `solution-metrics` ×12 · `rating` ×11 · `async-multiplayer` ×11 · `progress-acceleration` ×10 · `card-collection` ×8 · `run-relics` ×8 · `handicap` ×8 · `league-promotion` ×8 · `ai-opponent` ×7 · `pass-device` ×7 · `seed` ×7 · `level-from-txt` ×7 · `field-size-picker` ×6 · `round-currency` ×6 · `rating-system` ×5 · `move-notation` ×5 · `shop-window` ×5 · `hard-mode` ×5 · `roster-carryover` ×5 · `expansion-toggle` ×4 · `level-bank` ×4 · `ability-gating` ×4 · `save-autosave` ×4 · `random-test-cases` ×4 · `tech-tree` ×4 · `dungeon-generation` ×4 · `multiple-endings` ×4 · `save-single-slot` ×3 · `side-swap-match` ×3 · `engine-analysis` ×3 · `setup-presets` ×3 · `editor-playtest` ×3 · `secret-area` ×3 · `fast-travel` ×3 · `personal-input` ×3 · `two-part-reveal` ×3 · `time-bank` ×3 · `gif-export` ×3 · `auto-explore` ×3 · `travel` ×3 · `new-game-plus` ×3 · `programmed-instruction` ×3 · `solo-rank-table` ×2 · `simultaneous-versus` ×2 · `tooltip` ×2 · `team-play` ×2 · `in-game-editor` ×2 · `move-timer` ×2 · `random-setup` ×2 · `role-swap` ×2 · `accessibility` ×2 · `auto-play` ×2 · `weekly-challenge` ×2 · `komi` ×2 · `level-solver` ×2 · `swap-rule` ×2 · `one-button-mode` ×2 · `difficulty-rating` ×2 · `in-round-upgrades` ×2 · `shop-between-levels` ×2 · `game-over-continue` ×2 · `story-chapters` ×2 · `shop` ×2 · `extra-life-threshold` ×2 · `respawn` ×2 · `no-guess` ×2 · `undo-after-death` ×2 · `daily-attempts` ×2
+Невідомі словнику (≥2 ігор): `level-select` ×58 · `permadeath` ×42 · `save-progress` ×41 · `level-password` ×35 · `save-game` ×25 · `cheat-codes` ×19 · `checkpoint` ×15 · `mode-select` ×14 · `local-referee` ×14 · `score-records` ×13 · `rule-variants` ×13 · `bot-upload` ×13 · `solution-metrics` ×12 · `rating` ×11 · `async-multiplayer` ×11 · `progress-acceleration` ×10 · `card-collection` ×8 · `run-relics` ×8 · `handicap` ×8 · `league-promotion` ×8 · `ai-opponent` ×7 · `pass-device` ×7 · `seed` ×7 · `level-from-txt` ×7 · `field-size-picker` ×6 · `round-currency` ×6 · `multiple-endings` ×6 · `rating-system` ×5 · `move-notation` ×5 · `level-bank` ×5 · `shop-window` ×5 · `hard-mode` ×5 · `roster-carryover` ×5 · `expansion-toggle` ×4 · `ability-gating` ×4 · `save-autosave` ×4 · `fast-travel` ×4 · `random-test-cases` ×4 · `tech-tree` ×4 · `dungeon-generation` ×4 · `save-single-slot` ×3 · `side-swap-match` ×3 · `engine-analysis` ×3 · `setup-presets` ×3 · `editor-playtest` ×3 · `story-chapters` ×3 · `secret-area` ×3 · `personal-input` ×3 · `two-part-reveal` ×3 · `time-bank` ×3 · `gif-export` ×3 · `auto-explore` ×3 · `travel` ×3 · `new-game-plus` ×3 · `programmed-instruction` ×3 · `sound-effects` ×3 · `solo-rank-table` ×2 · `simultaneous-versus` ×2 · `tooltip` ×2 · `team-play` ×2 · `in-game-editor` ×2 · `move-timer` ×2 · `random-setup` ×2 · `role-swap` ×2 · `accessibility` ×2 · `auto-play` ×2 · `weekly-challenge` ×2 · `komi` ×2 · `level-solver` ×2 · `swap-rule` ×2 · `one-button-mode` ×2 · `difficulty-rating` ×2 · `in-round-upgrades` ×2 · `shop-between-levels` ×2 · `game-over-continue` ×2 · `shop` ×2 · `extra-life-threshold` ×2 · `respawn` ×2 · `cartdata` ×2 · `no-guess` ×2
 
 ## Пропоновані картки з «Мапи на каталог» (рядок «`+slug` «Назва» · зона · монетка»)
 
@@ -27,9 +27,9 @@
 | `+day-night-cycle` | День/ніч міняє спавн | entities/spawn | 🌱📎🥈🥉 | 8 | Archon: The Light and the Dark, Dragon Quest Builders (rooms), Frostbite, Knight Lore, Lux AI Challenge, Mage Knight Boa |
 | `+friendly-fire` | Удар по області шкодить своїм | entities/combat | 🌱📎 | 8 | Boom Beach, Fights in Tight Spaces, Kitten Kaboodle (Nyan Nyan Panic), Robot Rumble, Shogun Showdown, Space Crusade, Ste |
 | `+tile-rotate` | Поворот плитки перед розміщенням | entities/state | 🌱📎 | 8 | Carto, Deflektor (+ Mindbender), Dorfromantik, Electric Box (+ Lazors), Infinity Loop + Net (Tatham), Trax, Tsuro (+ Ind |
+| `+knockback` | Відкидання від удару | entities/combat | 📎🥉 | 7 | Auro: A Monster-Bumping Adventure, Fort Triumph, HeroClix, Nebulus, Shotgun King: The Final Checkmate, Sunken Stones, Tr |
 | `+wrap-edges` | Вихід за край → протилежний бік | entities/move | 🌱📎 | 7 | Flow Free, Infinity Loop + Net (Tatham), Labyrinth (Das verrückte Labyrinth, Божевільний лабіринт), Pac-Man (Пекмен) і M |
 | `+bonus-stage` | Бонус-стадія кожні N рівнів зі зміненими правилами | levels/progression | 🌱📎🥉 | 6 | Clu Clu Land, Flappy (フラッピー), Libble Rabble, Met Mag (Jikai Shōnen Met Mag), Nebulus, Nuts & Milk |
-| `+knockback` | Відкидання від удару | entities/combat | 📎🥉 | 6 | Auro: A Monster-Bumping Adventure, Fort Triumph, HeroClix, Nebulus, Shotgun King: The Final Checkmate, Sunken Stones |
 | `+leader-death-lose` | Загибель лідера | game-logic/lose | 🌱 | 6 | Bokosuka Wars, Chaos: The Battle of Wizards (+ Chaos Reborn), Duelyst, Langrisser, Sunken Stones, The Battle for Wesnoth |
 | `+action-points` | Очки дії на хід | game-logic/opponent | 🌱📎🥉 | 5 | Hero Academy, HeroQuest + Space Hulk (настільні данжен-кроулери на сітці), Invisible, Inc., Quasimorph, XCOM: Enemy Unkn |
 | `+edge-walls` | Стіни на ребрах клітин | entities/legality | 📎🥉 | 5 | Das magische Labyrinth (Чарівний лабіринт), Kaggle Crawl, Lasergoose, Loophole, Quoridor (Кворидор) |
@@ -87,10 +87,12 @@
 | `+fill-hole` | Блок засипає дірку | entities/interact | 📎 | 3 | A Monster's Expedition, Isles of Sea and Sky, Kwirk (Puzzle Boy) |
 | `+first-person-grid` | Вид від першої особи на клітинній мапі | interface/render | 🥈 | 3 | Dungeon Master, Dungeons of Daggorath, Legend of Grimrock |
 | `+ghost-opponent` | Суперник — збережений білд іншого гравця | game-logic/opponent | 📎🥈 | 3 | Backpack Battles, Hearthstone Battlegrounds, The Bazaar |
+| `+group-split` | Група розпадається після зміни поля | game-logic/constraints | 📎🥉 | 3 | A Monster's Snowball, Taluva (Талува), Zombicide |
 | `+hand-limit` | Ліміт руки з примусовим скиданням | game-logic/economy | 🌱 | 3 | Castle Panic, Children of Zodiarcs, Copenhagen (Копенгаген) |
 | `+hand-of-tiles` | Прихована рука з N плиток з добором | game-logic | 🌱📎 | 3 | Qwirkle + Ingenious (Квіркл, Genial), Saboteur (+ Saboteur 2), Tsuro (+ Indigo) |
 | `+height-attack-bonus` | Удар згори сильніший | entities/combat | 🌱📎 | 3 | Azure Dreams, Heroscape, Triangle Strategy |
 | `+ladder-climb` | Драбини | entities/move | 📎 | 3 | Catrap (Pitman), Lode Runner, Toki Tori |
+| `+level-from-image` | Мапа з картинки за порогом яскравості | levels/format | 🌱📎 | 3 | GridRacer, Liquid War, Piet |
 | `+line-match-clear` | Зникнення лінії з N однакових | entities/legality | 📎 | 3 | Color Lines / Lines 98 (Лінії), Dr. Mario (Доктор Маріо), Klax |
 | `+lit-from-source` | Підсвітка живлених від джерела | interface/hud | 📎 | 3 | Electric Box (+ Lazors), Infinity Loop + Net (Tatham), Zenji |
 | `+meta-unlocks` | Відкриття між забігами незалежно від результату | game-logic/progression | 🌱📎🥉 | 3 | Blue Prince, Invisible, Inc., Shogun Showdown |
@@ -126,6 +128,7 @@
 | `+solution-metrics` | Метрики розвʼязку | game-logic/score | 📎 | 3 | 7 Billion Humans, Block Machine, Prelogate |
 | `+split-on-death` | Ворог ділиться на менших при смерті | entities/spawn | 🌱📎 | 3 | Desktop Tower Defense, Rift of the NecroDancer, Sproggiwood |
 | `+stack-limit` | Ліміт фігур у клітині | entities/legality | 🌱 | 3 | Cartagena, Ogre, Upwords |
+| `+sticky-floor` | Підлога, на якій застрягає все, що на неї потрапило | entities/interact | 🌱 | 3 | CLONY, CONSTRICTOR, Lode Runner: The Legend Returns |
 | `+summon-creature` | Виклик сутності закляттям | entities/spawn | 📎 | 3 | Archon: The Light and the Dark, Chaos: The Battle of Wizards (+ Chaos Reborn), Gloomhaven |
 | `+support-rule` | Новий шар лише на повній опорі, ≥2 тайли під | entities/legality | 🌱🥉 | 3 | Akropolis (Акрополіс), Diplomacy, Tawamurenga (たわむれんが) |
 | `+tank-controls` | Поворот на місці + рух уперед | interface/input | 🌱📎 | 3 | Bonfire Peaks, Knight Lore, Stephen's Sausage Roll |
@@ -147,6 +150,7 @@
 | `+all-must-exit` | Вийти мають усі | game-logic/win | 🌱 | 2 | Forbidden Island, Kwirk (Puzzle Boy) |
 | `+ammo-limit` | Обмежені постріли, 0 = поразка | entities/state | 🌱 | 2 | Hunt the Wumpus («Полювання на Вампуса»), Wumpus world («Світ Вампуса») |
 | `+ammo-reload` | Набої й перезарядка за хід | entities/combat | 🌱📎 | 2 | DoomRL / DRL → Jupiter Hell, Shotgun King: The Final Checkmate |
+| `+anchored-tether-body` | Тіло-шлях від бази | entities/move | 📎🥉 | 2 | Anteater (Мурахоїд), Growmi |
 | `+armor-absorb` | Броня поглинає шкоду до HP | entities/state | 🌱 | 2 | Dungeon Raid, Puzzle Quest: Challenge of the Warlords |
 | `+armor-by-facing` | Броня залежить від сторони удару | entities/combat | 🌱 | 2 | Rebelstar / Laser Squad, Steel Panthers |
 | `+armor-shred` | Броня по частинах і її зношування | entities/state | 🌱📎 | 2 | Phoenix Point, Wildermyth |
@@ -158,6 +162,7 @@
 | `+aura-buff` | Сутність посилює інших у зоні (мізок ×2 ATK) | entities/state | 📎🥉 | 2 | DROD RPG: Tendry's Tale (+ DROD RPG 2), Desktop Tower Defense |
 | `+auto-battle` | Бій без керування | game-logic | 🥈🥉 | 2 | Backpack Battles, Teamfight Tactics (TFT) |
 | `+auto-explore` | Автодослідження до найближчого невідомого | interface/input | 🥇🥉 | 2 | Brogue, Dungeon Crawl Stone Soup |
+| `+avatar-supports-blocks` | Аватар без гравітації тримає блоки знизу й піднімає їх | entities/move | 📎 | 2 | Push Blox / Push Blox 2, Woodworm |
 | `+backstab-facing` | Удар ззаду за орієнтацією | entities/combat | 📎 | 2 | Mewgenics, Telepath Tactics |
 | `+bare-king-win` | Перемога оголенням короля | game-logic/win | 🌱📎 | 2 | Chaturanga / Shatranj (Чатуранга / Шатрандж), Великі шогі — Chu shogi і Tenjiku shogi (Чу-шогі, Тендзіку-шогі) |
 | `+beam-color-mix` | Адитивне змішування кольорів променів | entities/interact | 🌱📎 | 2 | Chromatron (1–5), Prelogate |
@@ -184,6 +189,7 @@
 | `+challenge-card-setup` | Картка-завдання: стартові деталі на полі + список до додавання | levels/format | 🌱📎 | 2 | GraviTrax (+ THE GAME), ThinkFun Laser Maze і Gravity Maze |
 | `+challenge-modes` | Челенджі-обмеження з рангом відкриття | game-logic/settings | 📎 | 2 | Desktop Tower Defense, DoomRL / DRL → Jupiter Hell |
 | `+charge-meter-special` | Шкала супервміння (OB 0–3) | entities/state | 📎 | 2 | Rondo of Swords, Ticket to Earth |
+| `+chess-push` | Шахові фігури штовхають одна одну | entities/legality | 📎🥉 | 2 | Chessarama, SokoChess (і SokoChess White / Black) |
 | `+chiral-pieces` | Дзеркальні форми в різних гравців, віддзеркалювати не можна | entities/legality | 🌱 | 2 | Cathedral (Собор), Tori shogi (Пташине шогі) |
 | `+choose-upgrade` | Періодичний вибір 1 з 2 апгрейдів | game-logic/economy | 🌱 | 2 | Mini Metro, Mini Motorways |
 | `+climb-limit` | Підйом не більше ніж на N рівнів | movement | 🌱 | 2 | Lime Rick, Santorini (Санторіні) |
@@ -192,6 +198,7 @@
 | `+collision-halt` | Зіткнення зупиняє симуляцію | game-logic | 🌱📎 | 2 | Opus Magnum, SpaceChem |
 | `+color-clear-item` | Предмет очищує весь колір | entities/interact | 🌱 | 2 | Baku Baku Animal, Super Puzzle Fighter II Turbo |
 | `+color-group-count` | Лічильник групи кольору: лишилось / з них цілей | game-logic/constraints | 🌱📎 | 2 | Patterna, Tametsi |
+| `+color-matched-exit` | Вихід приймає лише свій колір | game-logic/win | 🌱 | 2 | Causality, RUSH (Two Tribes) |
 | `+combat-results-table` | Таблиця результатів за odds і кидком | entities/combat | 📎 | 2 | Ogre, Unity of Command: Stalingrad Campaign |
 | `+command-program` | Програма команд для аватара | entities/move | 🥉 | 2 | Karel the Robot (Reeborg's World), Lightbot (Light-Bot) |
 | `+command-slots-limit` | Ліміт слотів програми | game-logic/constraints | 📎 | 2 | Cargo-Bot, Lightbot (Light-Bot) |
@@ -257,7 +264,6 @@
 | `+graph-adjacency` | Поле-граф: сусідство за ребрами | field | 🥉 | 2 | Patterna, Tametsi |
 | `+graph-board` | Поле-граф міст | entities/move | 📎 | 2 | Pandemic, Pokémon Duel (Pokémon Comaster) |
 | `+group-move` | Хід групою фігур | entities/move | 📎🥉 | 2 | Abalone (Абалон), Stackrobats |
-| `+group-split` | Група розпадається після зміни поля | game-logic/constraints | 🥉 | 2 | Taluva (Талува), Zombicide |
 | `+grow-on-eat` | Їжа додає сегмент у хвіст | entities/move | 🌱📎 | 2 | CodinGame: Exotec (Winter Challenge 2026), Snakebird |
 | `+growing-wall` | Стіна росте зі стелі після тригера | entities/spawn | 📎 | 2 | King's Valley, King's Valley II: The Seal of El Giza |
 | `+growth-stages` | Стадії росту з цінами | entities/state | 🌱📎 | 2 | Photosynthesis (Фотосинтез), Stardew Valley — фермерська сітка |
@@ -285,15 +291,17 @@
 | `+latin-square` | Кожна цифра раз у рядку й стовпці | game-logic/constraints | 🌱 | 2 | KenKen (Keen, CalcuDoku, Кенкен), Sudoku line & dot variants (Thermo, Arrow, Kropki, German Whispers) |
 | `+layered-tile-stack` | Клітина — стос шарів, перевертання відкриває наступний | entities/state | 🌱📎 | 2 | Mendel Palace (Quinty), WordJong |
 | `+legacy-campaign` | Кампанія, що змінює правила між партіями | levels/progression | 🥈🥉 | 2 | Gloomhaven, My City |
+| `+length-budget` | Бюджет довжини; крок назад повертає | entities/legality | 🌱🥉 | 2 | Handshakes, Kukulcan |
 | `+letter-value-scoring` | Очки слова = сума вартостей літер | game-logic/score | 🌱 | 2 | Wordament, Wordatro! |
-| `+level-from-image` | Мапа з картинки за порогом яскравості | levels/editor | 🌱📎 | 2 | GridRacer, Liquid War |
 | `+liar-clue` | Підказка-брехун ±1 | game-logic/constraints | 📎 | 2 | 14 Minesweeper Variants, Usowan (ウソワン) |
+| `+limited-blocks` | Обмежений запас деталей рівня | game-logic/constraints | 🌱📎 | 2 | Emberward, Great Permutator |
 | `+line-paint-box-fill` | Пофарбувати 4 сторони → залити прямокутник | game-logic/win | 📎🥉 | 2 | Amidar, Pepper II |
 | `+line-sum-clue` | Підказка на лінії: скільки цілей у рядку/діагоналі | game-logic/constraints | 📎 | 2 | Hexcells / Hexcells Plus / Hexcells Infinite, Voltorb Flip |
 | `+line-win` | Лінія з N | game-logic/win | 🌱🥉 | 2 | Knights in the Nightmare, N-in-a-row (Хрестики-нулики, Gomoku, Connect Four, Pentago…) |
 | `+linked-cells` | Звʼязані клітини з однаковим значенням | game-logic/constraints | 📎 | 2 | Acrostic (Double-Crostic), Hexologic |
 | `+liquid-mixing` | Дві рідини → блок | entities/interact | 📎🥈 | 2 | Caves of Qud, Terraria — рідини |
 | `+liquid-volume` | Частковий рівень у клітині | entities/state | 🥈🥉 | 2 | Caves of Qud, Terraria — рідини |
+| `+live-edit-while-running` | Правка схеми під час виконання | game-logic/program | 📎🥇 | 2 | Cadence (Made With Monster Love), Kaizen: A Factory Story |
 | `+live-recount-clue` | Підказка рахує лише те, що ще на полі | game-logic/constraints | 📎 | 2 | Cargo Quest, Venom Sweep |
 | `+local-coop` | Двоє на одному полі одночасно | game-logic/opponent | 🥉 | 2 | Battle City (Танчики) і Tank Battalion, Toodee and Topdee |
 | `+lock-cell` | Замок на клітині | interface/input | 🌱 | 2 | Black Box (Чорна скринька), Infinity Loop + Net (Tatham) |
@@ -332,6 +340,7 @@
 | `+noise-attraction` | Шум притягує ворогів | entities/move | 📎 | 2 | They Are Billions, Zombicide |
 | `+number-combine` | Скласти ціль із чисел операціями | game-logic/constraints | 📎🥉 | 2 | Calculords, Digits (The New York Times) |
 | `+numbered-variations` | Номер гри = набір правил | game-logic/constraints | 📎 | 2 | Combat, Maze Craze |
+| `+off-board-removal` | Знімання за краєм поля | entities/death | 🌱 | 2 | Gess, Triga |
 | `+open-world-puzzles` | Відкритий світ пазлів замість списку рівнів | levels/progression | 🥈🥉 | 2 | A Monster's Expedition, Islands of Insight |
 | `+opportunity-fire` | Постріл у чужий хід, якщо лишилось ≥½ AP | entities/combat | 🥉 | 2 | Rebelstar / Laser Squad, Steel Panthers |
 | `+optional-collectibles` | Необовʼязкові колекційні предмети | levels/progression | 🌱 | 2 | Tetrobot and Co., Toki Tori 2 / Toki Tori 2+ |
@@ -343,9 +352,12 @@
 | `+paid-hint` | Підказка коштує очок/прогресу | game-logic/score | 🌱 | 2 | Chuzzle, Mekorama |
 | `+paint-cell` | Клітина-фарбувальник | entities/interact | 🌱📎 | 2 | Q*bert, Trainyard |
 | `+party-vote` | Члени загону голосують за прийом / вигнання | entities/state | 📎🥉 | 2 | Ishar: Legend of the Fortress, Triangle Strategy |
+| `+pattern-stamp` | Вирізати / вставити вікно конфігурації | levels/editor | 📎🥉 | 2 | Droplets, Greenberg–Hastings cellular automaton (модель Ґрінберга — Гастінгса) |
 | `+per-rule-feedback` | Перевірка показує стан кожного правила | game-logic/constraints | 📎 | 2 | CIPHER ZERO, Understand |
 | `+permadeath` | Одне життя, сейв стирається | rules/lose | 🌱 | 2 | Fire Emblem (GBA, The Blazing Blade як база), Rogue |
+| `+perspective-path` | Шлях за збігом проєкцій | entities/legality | 🥇 | 2 | Echochrome, Monument Valley |
 | `+photo-mode` | Фоторежим: вільна камера без HUD | interface/render | 📎 | 2 | Bonfire Peaks, Monument Valley |
+| `+picture-clue` | Картинка як підказка на блок клітин | interface/render | 🌱📎 | 2 | Arrowword (Сканворд), Spell Slide |
 | `+piece-drop` | Дроп взятої фігури | entities/legality | 🥈 | 2 | Lichess variants (варіанти шахів Lichess), Shogi (Сьоґі, японські шахи) |
 | `+piece-level-up` | Іменована фігура з апгрейдами між кімнатами | entities/state | 📎🥉 | 2 | Below the Crown, The Ouroboros King |
 | `+pipe-travel` | Прохід крізь трубу | entities/move | 🌱🥉 | 2 | Fire 'n Ice, Tetrobot and Co. |
@@ -354,6 +366,7 @@
 | `+placement-phase` | Окрема фаза розстановки фігур | game-logic/opponent | 🌱 | 2 | DVONN, Hey, That's My Fish! (Packeis am Pol) |
 | `+player-elimination` | Вибування без легального ходу, решта грає | game-logic/lose | 📎🥉 | 2 | Four-player chess (шахи на чотирьох), Taluva (Талува) |
 | `+player-market` | Прилавок для інших гравців | game-logic/opponent | 🥈 | 2 | Escape from Tarkov (inventory), FarmVille і Hay Day — ферма на годиннику |
+| `+player-written-rules` | Гравець пише правила виведення, гра застосовує їх | game-logic/program | 🥈🥉 | 2 | Bombe, Penultima (Пенультима) |
 | `+polyomino-fit` | Шаблон on/off має вкластися в поле | game-logic/constraints | 🥇🥉 | 2 | CIPHER ZERO, Taiji + The Witness (панелі) |
 | `+polyomino-placement` | Викладання поліоміно на сітку | entities/legality | 🥉 | 2 | Blokus (Блокус), Rampart |
 | `+power-grid` | Живлення через звʼязність мережі | game-logic | 📎🥉 | 2 | SimCity (1989) / Micropolis, They Are Billions |
@@ -384,6 +397,7 @@
 | `+rescue-carry` | Нести союзника | entities/interact | 📎 | 2 | Fire Emblem (GBA, The Blazing Blade як база), Frozen Synapse |
 | `+research-unlock` | Дослідження відкриває нові типи будівель | game-logic/economy | 📎 | 2 | Dungeon Keeper, Dungeon of the Endless |
 | `+reset-turn` | Відкат ходу раз за бій | game-logic/difficulty | 📎 | 2 | Into the Breach, Tactical Breach Wizards |
+| `+resolution-order` | Порядок розвʼязання одночасних сил і рухів (пріоритет, симетрія) | game-logic/rules | 🥇🥉 | 2 | Into the Breach, Magnet Block |
 | `+resource-regrowth` | Ресурс клітини відростає до місткості | entities/state | 🌱 | 2 | Lux AI Challenge, Sugarscape (Цукрова земля) |
 | `+retaliation` | Відповідь на атаку | entities/combat | 📎 | 2 | Dog in the Machine, The Battle for Wesnoth (Битва за Веснот) |
 | `+rhythm-sync-tempo` | Темп логіки від BPM треку | game-logic/waves | 🥉 | 2 | Lumines (Люмінес), Magical Beat |
@@ -420,6 +434,7 @@
 | `+skip-level` | Пропуск рівня з лімітом | levels/progression | 🌱 | 2 | Pushmo / Pullblox (引ク押ス) + Crashmo, Supaplex |
 | `+slide-into-gap` | Плитка зсувається в дірку | entities/move | 🌱📎 | 2 | Forbidden Desert, Sliding-tile permutation puzzles (пʼятнашки й родичі) |
 | `+sliding-tile-board` | Плитки зсуваються в дірку | entities/move | 📎🥉 | 2 | Cogs, Loco-Motion (Guttang Gottong) |
+| `+solution-slots` | Кілька збережених розвʼязків рівня | game-logic/save | 🌱 | 2 | Prelogate, Upalu Mundi |
 | `+solvable-deal` | Гарантовано розвʼязна роздача | levels/generation | 🥇 | 2 | Mahjong Solitaire (Shanghai, Маджонг-пасьянс), Shisen-Sho / Onet (Сісен-сьо, «зʼєднай пару») |
 | `+solvable-generation` | Генерація лише розвʼязних (не обовʼязково унікальних) | levels/generation | 🥇🥉 | 2 | Hands of Time (Final Fantasy XIII-2), SameGame / Clickomania + Flood (Tatham) |
 | `+source-to-sink-path` | Мета — шлях від джерела до приймача, не всі клітини | game-logic/win | 🌱🥉 | 2 | Gorby no Pipeline Daisakusen (Gorby's Pipeline), Plumber / Pipes / Water Connect (мобільний жанр) |
@@ -445,6 +460,8 @@
 | `+step-budget` | Бюджет кроків на хід | game-logic/opponent | 📎🥉 | 2 | Arimaa, Blue Prince |
 | `+step-climb-1` | Підйом на перешкоду висотою 1 | entities/move | 🌱 | 2 | Block Dude, Fire 'n Ice |
 | `+step-climb-one` | Автомат лізе лише на сходинку висотою 1 | entities/move | 🌱 | 2 | Gussun Oyoyo (ぐっすんおよよ), MouseCraft |
+| `+sticky-surface` | Липка поверхня: рух по стінах і стелі | entities/move | 📎 | 2 | Growmi, Gunbrick (Gunbrick: Reloaded) |
+| `+sticky-top` | Липкий блок везе вантаж на даху, неліпкий виїжджає з-під нього | entities/interact | 📎 | 2 | Conveyor Con-fusion, Entwined Time |
 | `+stipulation-solver` | Розвʼязувач задач: мат за N, допоміжний, самомат | game-logic/opponent | 🥇 | 2 | Circe chess (шахи «Цирцея»), Казкові умови шахів — Andernach, Madrasi, Grid |
 | `+streak-bonus` | Стрік ходів зі зчищенням | game-logic/score | 🌱 | 2 | Block Blast! (і родина 1010! / Woodoku), Teamfight Tactics (TFT) |
 | `+summon-ally` | Покликати нового героя з точки | entities/spawn | 🌱🥉 | 2 | It 2: They/Them, Shadowrun Returns |
@@ -455,6 +472,7 @@
 | `+symmetry-rule` | Заборона дзеркальної позиції | entities/legality | 📎 | 2 | Diagramless crossword (Кросворд без сітки), Epaminondas (Епамінонд) |
 | `+team-attack` | Союзники в стійці бʼють разом | entities/combat | 📎 | 2 | Chroma Squad, Disgaea: Hour of Darkness |
 | `+team-shared-vision` | Видно те, що бачить будь-хто з команди | interface/render | 🌱📎 | 2 | Pac-Man Capture the Flag (UC Berkeley CS188), generals.io |
+| `+tech-tree-unlock-language` | Конструкції мови відкриваються прогресією | game-logic/economy | 👑🥈 | 2 | The Farmer Was Replaced, YENDOR |
 | `+terrain-bonus` | Бонус від клітини | entities/combat | 🌱📎 | 2 | Archon: The Light and the Dark, Fire Emblem (GBA, The Blazing Blade як база) |
 | `+terrain-move-cost` | Режим руху × місцевість | entities/legality | 📎🥉 | 2 | Fire Emblem (GBA, The Blazing Blade як база), GearHead (GearHead: Arena) |
 | `+tether-tail` | Хвіст-привʼязь до бази | entities/move | 📎🥈 | 2 | Oil's Well, Shackle |
@@ -468,16 +486,19 @@
 | `+time-track-turns` | Черга ходів за треком часу | game-logic/opponent | 📎🥉 | 2 | Patchwork (Печворк), The Search for Planet X |
 | `+timeline-scrub` | Перемикання часового кроку | interface/input | 🌱📎 | 2 | Meet me at NooN, Minesweeper у вимірах: 4D Minesweeper, Tilesweeper, Timesweeper |
 | `+timer-freeze-pickup` | Предмет зупиняє таймер | entities/state | 🌱 | 2 | Chuckie Egg, Rocket Mania! |
+| `+tool-allotment` | Бюджет інструментів на рівень | entities/state | 🌱📎 | 2 | Toki Tori, Triga |
 | `+touch-move` | Зіграну плитку не можна посунути | game-logic/opponent | 🌱 | 2 | Continuo, Gobblet (Гоблет) |
 | `+town-hub` | Місто між експедиціями з закладами | interface/menus | 📎 | 2 | Etrian Odyssey, Tangledeep |
 | `+transition-table` | Модель світу як таблиця P[s][a] | code/architecture | 🥉 | 2 | Gymnasium Toy Text: FrozenLake, Taxi, CliffWalking, Kara (Кара — сонечко) |
 | `+trapdoor-fake-floor` | Фальшпідлога | entities/legality | 🌱 | 2 | Lode Runner, Lode Runner: The Legend Returns |
+| `+triangle-grid` | Трикутна сітка: координати і сусіди | entities/legality | 📎🥉 | 2 | Triga, Yankai's Peak |
 | `+two-hand-slots` | Рука дії й рука готовності | entities/state | 🌱 | 2 | Dungeon Master, Dungeons of Daggorath |
 | `+two-layer-field` | Два шари поля з переходом у точці копання | entities/legality | 🥈🥉 | 2 | Escape (Tom 7), Mole Mania |
 | `+two-phase-turn` | Хід із кількох обовʼязкових фаз | game-logic/opponent | 📎🥉 | 2 | Neutron (Нейтрон), Titanium Court |
 | `+two-sided-board` | Двосторонні поля: інша функція рахунку | levels/bank | 🌱🥉 | 2 | Harmonies, RSVP (Scrabble Brand RSVP) |
 | `+typed-targets` | Цілі свого типу для кожного виду | game-logic/win | 🌱 | 2 | Gentoo Rescue, Raking Sokoban (Ilija Biškup) |
 | `+uncapturable-piece` | Фігура, яку не можна взяти | entities/legality | 🌱 | 2 | Below the Crown, Chess 2: The Sequel (Sirlin's Chess) |
+| `+undo-immune-objects` | Обʼєкти, взаємодія з якими переживає undo/рестарт | game-logic/history | 🥈🥉 | 2 | Achronal Dungeon, Tres Undos |
 | `+user-procedures` | Власні процедури/функції в мові робота | game-logic | 🥈 | 2 | Karel the Robot (Reeborg's World), Lightbot (Light-Bot) |
 | `+victory-rank` | Оцінка місії за умовами | game-logic/score | 🌱 | 2 | Metal Gear Acid, Rondo of Swords |
 | `+wait-turn` | Пропуск ходу | entities/move | 🌱 | 2 | Baba Is You, Theseus and the Minotaur (Тесей і Мінотавр) |
@@ -499,6 +520,7 @@
 | `+ability-deck` | Колода здібностей на забіг | game-logic/economy | 📎 | 1 | Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel) |
 | `+ability-gated-areas` | Зони, доступні після нової здібності | levels/progression | 📎 | 1 | Deep Rune |
 | `+ability-loadout` | Слоти навичок з різних джобів | entities/state | 📎 | 1 | Tangledeep |
+| `+ability-merge-chimera` | Дві сутності з однаковим циклом обʼєднують здібності | entities/state | 🥉 | 1 | Mimic (Mimic Classic) |
 | `+ability-mods-budget` | Моди здібностей з бюджетом | interface/menus | 📎 | 1 | Atlas Reactor |
 | `+ability-modules` | Модуль згодовується роботу — нова команда | entities/state | 📎 | 1 | Craftomation 101 |
 | `+ability-per-character` | Своя сила в кожного героя загону | entities/state | 📎 | 1 | It 2: They/Them |
@@ -506,10 +528,12 @@
 | `+ability-pickup` | Підібрана здібність вмикає нове правило | entities/state | 🌱 | 1 | Wormspell |
 | `+ability-pickup-cooldown` | Навичка знаходиться як предмет і перезаряджається | entities/combat | 🌱 | 1 | Cardinal Quest |
 | `+ability-points-explore` | Очки за відкриті клітини | entities/state | 🌱 | 1 | Dungeon Encounters |
+| `+ability-relinquish` | Механіку дали, потім забрали назавжди | game-logic/rules | 🥈 | 1 | After Light Fades |
 | `+ability-split` | Вміння розподілені між аватарами | entities/state | 📎 | 1 | Head over Heels |
 | `+ability-tiles-flip` | Здібність використовується перевертанням, оновлюється дією | game-logic/economy | 📎 | 1 | Copenhagen (Копенгаген) |
 | `+ability-timing-slots` | Здібності сутності за моментом: поява / щоходу / смерть | entities/state | 📎 | 1 | Ghost Stories |
 | `+ability-triggers` | Здібності на подіях життєвого циклу (buy/sell/faint/hurt) | entities/state | 🥈 | 1 | Super Auto Pets |
+| `+ability-unlock` | Сила-ключ відкриває нову дію | levels/progression | 📎 | 1 | Growmi |
 | `+absent-clue-is-info` | Усі підказки показані, тож відсутність — теж обмеження | game-logic/constraints | 🌱 | 1 | Futoshiki (Unequal, Нерівності) |
 | `+absorb-release-cursor` | Курсор вбирає матерію й висипає деінде | entities/interact | 📎 | 1 | From Dust |
 | `+absorb-shoot` | Всмоктати обʼєкт променем і вистрілити ним | entities/interact | 🥉 | 1 | Tetrobot and Co. |
@@ -546,6 +570,7 @@
 | `+action-token-draft` | Спільні жетони дій, гравці розбирають по черзі | game-logic/turns | 📎 | 1 | Mr. Jack Pocket |
 | `+action-tokens-push` | Маркери дій і шкода за повтор | entities/state | 📎 | 1 | HeroClix |
 | `+action-total-budget` | Ліміт дій на хід з бюджету | game-logic/opponent | 🌱 | 1 | HeroClix |
+| `+activate-ally` | Дотик вмикає сплячого напарника | entities/interact | 📎 | 1 | BarrelBots |
 | `+active-event` | Подія діє до початку наступного ходу | game-logic/cards | 🌱 | 1 | Summoner Wars |
 | `+active-range-effect` | Ефект активний лише в діапазоні значення | entities/state | 📎 | 1 | Big Pharma |
 | `+active-skill-cooldown` | Активна навичка з перезарядкою в ходах | entities/state | 📎 | 1 | Puzzle & Dragons (PAD, Пазли і Дракони) |
@@ -559,6 +584,7 @@
 | `+ad-reward-energy` | Ресурс за перегляд реклами з денним лімітом | game-logic/economy | 🌱 | 1 | Diggy's Adventure |
 | `+adaptive-ai` | AI підлаштовується під результати | game-logic/opponent | 🥈 | 1 | Archon: The Light and the Dark |
 | `+adaptive-difficulty` | Перемога підвищує, поразка знижує складність | progression | 📎 | 1 | Petal Crash |
+| `+add-remove-cubes` | Плитка додає або забирає кубик фігури | entities/state | 🥉 | 1 | Pluricubus |
 | `+addiction` | Залежність і ломка | entities/state | 📎 | 1 | Cataclysm: Dark Days Ahead |
 | `+additive-room-buffs` | Предмети в зоні додають бусти до її дії | entities/state | 🌱 | 1 | Two Point Hospital |
 | `+addressing-modes` | Режими адресації операндів | game-logic/program | 🥉 | 1 | Core War |
@@ -568,6 +594,7 @@
 | `+adjacency-chain-goal` | Ціль на плитці: потрібні кольори в ланцюгах сусідів | game-logic/constraints | 🥉 | 1 | Nova Luna |
 | `+adjacency-crossbreed` | Апгрейд успадковує риси сусідніх клітин | progression/upgrades | 🥈 | 1 | Morphblade |
 | `+adjacency-discount` | Знижка утримання за сусідів свого типу | game-logic/economy | 🌱 | 1 | Lux AI Challenge |
+| `+adjacency-feedback` | Відгук "не в розвʼязку, але поруч" | game-logic/constraints | 📎 | 1 | Cursed Words |
 | `+adjacency-growth-penalty` | Сусіди того ж виду сповільнюють ріст | entities/state | 📎 | 1 | The Farmer Was Replaced |
 | `+adjacency-kill` | Смерть від сусідства з істотою | entities/death | 🌱 | 1 | Robbo |
 | `+adjacency-match-placement` | Постав, якщо всі сусіди збігаються за ознакою | entities/legality | 🌱 | 1 | Alchemy (PopCap) |
@@ -582,6 +609,7 @@
 | `+adjacent-empty-penalty` | Штраф за порожні клітини біля загрози | game-logic/score | 🌱 | 1 | Cartographers (Картографи) |
 | `+adjacent-fleet-damage` | Сусідні ворожі загони бʼють один одного | entities/combat | 🥉 | 1 | Kaggle Kore 2022 (Kore Fleets) |
 | `+adjacent-harvest` | Видобуток із сусідніх клітин і своєї | game-logic/economy | 🌱 | 1 | Lux AI Challenge |
+| `+adjacent-kill` | Нерухомий ворог убиває всіх вразливих сусідів наприкінці ходу | entities/combat | 📎 | 1 | Heroes of Sokoban II: Monsters і III: The Bard and the Druid |
 | `+adjacent-kill-after-move` | Удар по сусіду після руху | entities/combat | 📎 | 1 | Djambi (Джамбі, «Шахівниця Макіавеллі») |
 | `+adjacent-lock` | Відкритий ворог блокує сусідні плитки | entities/legality | 📎 | 1 | Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel) |
 | `+adjacent-room-upgrade` | Сусідні кімнати апгрейдять тип | entities/state | 🌱 | 1 | Dragon Quest Builders (rooms) |
@@ -619,6 +647,7 @@
 | `+ai-personality-types` | Набір AI-характерів різної точності | game-logic/opponent | 🥈 | 1 | Scorched Earth |
 | `+ai-takeover-on-quit` | AI замінює гравця, що вийшов | game-logic/opponent | 📎 | 1 | Quarrel |
 | `+aim-advantage` | Перевага того, хто прицілився раніше | entities/combat | 🥉 | 1 | Frozen Synapse |
+| `+aim-blocks-sight` | Приціл закриває ворогові лінію зору | entities/combat | 🌱 | 1 | Stand Off |
 | `+aim-jitter` | Прицілювання з випадковим розкидом | entities/ai | 🌱 | 1 | Robotron: 2084 |
 | `+aim-separate-from-move` | Приціл окремо від руху | interface/input | 📎 | 1 | Castle Wolfenstein |
 | `+aim-two-click` | Приціл і постріл двома кліками; снаряд стає рельєфом | interface/input | 🥉 | 1 | Lemmings 2: The Tribes |
@@ -645,10 +674,12 @@
 | `+all-kinds-present` | Кожен вид мусить бути на полі | game-logic/constraints | 🌱 | 1 | Alien Cartographer |
 | `+all-on-board-win` | Перемога: усі фігури типу на полі | game-logic/win | 🌱 | 1 | boop. |
 | `+all-once-goal` | Кожен обʼєкт виду має спрацювати хоч раз | game-logic/win | 🌱 | 1 | Log!cal |
+| `+all-or-nothing-group` | Група клітин — уся зафарбована або вся порожня | game-logic/constraints | 🌱 | 1 | Homgard |
 | `+all-sources-to-sink` | Усі джерела до одного приймача | game-logic/constraints | 🌱 | 1 | Plumber / Pipes / Water Connect (мобільний жанр) |
 | `+all-targets-hit` | Усі цілі одночасно на промені | game-logic/win | 🌱 | 1 | Electric Box (+ Lazors) |
 | `+all-types-bonus` | Бонус, якщо зібрано всі види | game-logic/score | 🌱 | 1 | Blue Lagoon |
 | `+allow-anywhere-mode` | Вимкнути перевірку | game-logic/difficulty | 🌱 | 1 | Unpacking |
+| `+allow-mistakes-toggle` | Відхиляти хибний хід чи пропускати й рахувати | game-logic/lose | 🌱 | 1 | Liquidum |
 | `+allowed-place-cells` | Ставити лише на дозволені плитки | entities/legality | 🌱 | 1 | Archaica: The Path of Light |
 | `+allowed-zone-per-item` | Дозволені місця речі | game-logic/constraints | 📎 | 1 | Unpacking |
 | `+ally-ai-slider` | Повзунок агресії союзника 1–5 | game-logic/opponent | 📎 | 1 | Azure Dreams |
@@ -669,6 +700,7 @@
 | `+alternating-color-order` | Кольори в ланцюжку чергуються | game-logic/constraints | 🌱 | 1 | Goishi Hiroi (Збирання каменів го) |
 | `+alternating-power-item` | Предмет із циклом ефектів | entities/state | 📎 | 1 | Pepper II |
 | `+alternating-region-type` | Тип області чергується вздовж шляху | game-logic/constraints | 📎 | 1 | Moon or Sun (月か太陽) |
+| `+alternating-router` | Маршрутизатор, що почергово міняє вихід | entities/interact | 📎 | 1 | Great Permutator |
 | `+alternating-side-turns` | Сторони ходять по одному юніту почергово | game-logic/opponent | 📎 | 1 | The Banner Saga |
 | `+alternating-species-update` | Почергове оновлення груп сутностей у межах тіку | code/architecture | 📎 | 1 | Biham–Middleton–Levine traffic model (модель трафіку BML) |
 | `+always-hit-damage` | Детермінована шкода без кидка | entities/combat | 🌱 | 1 | Telepath Tactics |
@@ -688,10 +720,10 @@
 | `+anchor-lock-tile` | Якір фіксує плитку від зсуву | entities/state | 🌱 | 1 | Slider |
 | `+anchored-piece` | Закріплений шматок, що передає нерухомість при злитті | entities/legality | 🌱 | 1 | Jelly no Puzzle (ゼリーのパズル) |
 | `+anchored-rewrite` | Правило діє лише на початку/кінці рядка або переносить туди результат | game-logic/program | 📎 | 1 | A=B |
-| `+anchored-tether-body` | Тіло-шлях від бази | entities/move | 📎 | 1 | Anteater (Мурахоїд) |
 | `+anchored-tile` | Нерухома плитка-приймач злиття | entities/legality | 🌱 | 1 | SUMOO |
 | `+anger-meter` | Ворог лютішає від повторних поразок в одному місці | game-logic/difficulty | 🥉 | 1 | Maze Keeper |
 | `+angered-guardian` | Страж за руйнування захищеного | entities/spawn | 📎 | 1 | Noita |
+| `+angle-class-clue` | Підказка-клас кута у вузлі шляху | game-logic/constraints | 🌱 | 1 | Angle Loop (鋭直鈍ループ) |
 | `+angle-power-aim` | Постріл за кутом і силою з балістикою й вітром | entities/combat | 🥉 | 1 | Scorched Earth |
 | `+angled-bounce` | Похила поверхня відбиває під кутом і забирає керування | entities/move | 📎 | 1 | Bumpy |
 | `+animal-breeding` | ≥2 одного виду → +1, якщо є місце | entities/state | 🌱 | 1 | Agricola — сітка ферми (Агрікола) |
@@ -709,7 +741,10 @@
 | `+anti-gravity-block` | Блок, що скасовує гравітацію над собою | entities/move | 📎 | 1 | Clockwiser |
 | `+anti-gravity-support` | Легкий обʼєкт має опору зверху | game-logic/constraints | 🌱 | 1 | Dosun-Fuwari (ドッスンフワリ) |
 | `+anti-magic-tile` | Клітина знімає активні бафи | entities/state | 🌱 | 1 | The Bard's Tale / Might and Magic — сіткові dungeon crawl 80-х |
+| `+anti-set-triple` | Трійка поспіль — ні всі однакові, ні всі різні | game-logic/constraints | 🌱 | 1 | Trilogik (Trilogic, Trilogy) |
+| `+anti-streak-rng` | Кидок, що уникає серій | levels/generation | 🥉 | 1 | Feed the Scorchpot |
 | `+anti-wild-remove` | Карта знімає чужу фішку, крім захищених | entities/interact | 🌱 | 1 | Sequence |
+| `+antipodal-wrap` | Проєктивна площина: вихід за край веде до діаметрально протилежної точки | entities/move | 🥉 | 1 | Molekularis (Молекуляріс) |
 | `+any-angle-segment` | Ребро — відрізок між точками під будь-яким кутом | interface/input | 📎 | 1 | Kouchoku (Коучоку, «Перетин — лише під прямим кутом») |
 | `+any-consistent-solution` | Зараховується будь-який розвʼязок, сумісний з підказками | game-logic/constraints | 🌱 | 1 | Laser Reflection (Reflection) |
 | `+any-distance-slide` | Хід на будь-яку відстань по прямій | entities/move | 📎 | 1 | Stratego (Стратего) |
@@ -733,6 +768,7 @@
 | `+area-chest` | Скриня за завершену зону | game-logic/economy | 🌱 | 1 | Homescapes / Gardenscapes / Royal Match (мета-шар ремонту) |
 | `+area-copy` | Скопіювати ділянку сітки | entities/state | 📎 | 1 | Please Fix The Road |
 | `+area-cost-limit` | Челендж: розвʼязок у межах площі/вартості | game-logic/score | 🌱 | 1 | OCTOPTICOM |
+| `+area-gate` | Ворота зони відчинені, доки всі цілі зони зайняті | entities/interact | 📎 | 1 | Hex Pivot |
 | `+area-majority` | Більшість у зоні: 1-ше і 2-ге місце | game-logic/score | 📎 | 1 | Kingdom Builder |
 | `+area-multiplier-income` | Дохід = сусіди 3×3 × кількість | game-logic/economy | 📎 | 1 | Five Tribes |
 | `+area-pattern-transform` | Фігура з клітин (3×3, хрест) → нова клітина | entities/interact | 🥈 | 1 | Loop Hero |
@@ -751,6 +787,7 @@
 | `+arith-cage` | Клітка з ціллю й операцією | game-logic/constraints | 📎 | 1 | KenKen (Keen, CalcuDoku, Кенкен) |
 | `+arithmetic-capture` | Взяття за числовим відношенням між фігурами | entities/combat | 🥉 | 1 | Rithmomachia (Ритмомахія) |
 | `+arithmetic-clue` | Підказка — арифметичний вираз або числовий факт | game-logic/constraints | 🌱 | 1 | Cross-figure (Crossnumber) |
+| `+arithmetic-path` | Значення змінюється на кожній фігурі шляху; ціль — точне число | game-logic/constraints | 📎 | 1 | Electrogical (エレクトロジカル) |
 | `+armor-break` | Атака по броні окремо від HP | entities/combat | 📎 | 1 | The Banner Saga |
 | `+armor-flat` | Плоска броня | entities/combat | 📎 | 1 | Сучасні mazing-TD (Electromaze, Tower Maze Defense, Thornline TD, Maul Tactics, Back to the Roots 2) |
 | `+armor-injury-roll` | Броня → травма двома кидками | entities/combat | 📎 | 1 | Blood Bowl |
@@ -772,6 +809,7 @@
 | `+array-world-building` | Масиви координат для обходу/побудови світу | game-logic/program | 📎 | 1 | Swift Playgrounds (Learn to Code, Byte) |
 | `+arrest-with-penalty` | Звинувачення без блоку, хибне — штраф ресурсу | game-logic/lose | 🌱 | 1 | Dupery: A Game of Solo Deduction |
 | `+arrow-flow-count` | Число = розмір басейну стрілок, що стікаються в клітинку | game-logic/constraints | 📎 | 1 | Arofuro (アローフロー, Arrow Flow) |
+| `+arrow-launch` | Блок зі стрілкою кидає чи несе тіло в напрямку стрілки | entities/move | 📎 | 1 | BOND |
 | `+arrow-limit-fifo` | N поставлених одночасно, нова стирає найстарішу | entities/legality | 🌱 | 1 | ChuChu Rocket! |
 | `+arrow-markings` | Мітки-стрілки на фігурі задають дозволені напрямки | entities/legality | 📎 | 1 | A Directionless Cycle |
 | `+arrow-path-clue` | Дана ламана-стрілка, що впорядковує обʼєкти, крізь які проходить | game-logic/constraints | 🌱 | 1 | Evolmino |
@@ -791,6 +829,7 @@
 | `+ascent-repopulate` | Після здобуття цілі пройдені рівні заповнюються новими ворогами | game-logic/waves | 🌱 | 1 | Harmless7DRL |
 | `+aspect-modifier` | Модифікатор на обʼєкті | entities/state | 🌱 | 1 | Reus |
 | `+assassin-card` | Клітина миттєвої поразки | game-logic/lose | 🌱 | 1 | Codenames |
+| `+assassinate-target` | Стерти ціль, зайшовши на її клітину | game-logic/win | 🌱 | 1 | Assassinvisible |
 | `+assault-displace` | Атака з витісненням захисника | entities/combat | 📎 | 1 | Tiny Metal |
 | `+assemble-shape-in-template` | Скласти фігуру з частин у точному положенні шаблону | game-logic/win | 🌱 | 1 | elephant-in-a-bottle |
 | `+asset-auction` | Аукціон клеймів, гексів, патентів | game-logic/economy | 📎 | 1 | Offworld Trading Company |
@@ -837,6 +876,7 @@
 | `+attack-target-strategy` | Стратегія вибору цілі атак | game-logic/opponent | 📎 | 1 | Pac-Man: сиквели 1983–2021 |
 | `+attack-then-move-phase` | Вороги спершу бʼють, потім ходять | game-logic/opponent | 🌱 | 1 | Terry The Skeleton |
 | `+attack-timer-bar` | Шкала real-time атаки ворога в покроковій грі | game-logic/opponent | 📎 | 1 | Bookworm Adventures |
+| `+attacked-square-death` | Хто стоїть на клітині під боєм — гине | entities/death | 📎 | 1 | Mad Queens |
 | `+attempts-pool` | Пул спроб на поле (помилка = −1, не смерть) | game-logic/lose | 🌱 | 1 | Asteroids Minesweeper |
 | `+attention-mask` | Працюють лише клітини під рухомою маскою | game-logic | 🥉 | 1 | The King Is Watching |
 | `+attention-split-actions` | Дії поза полем у real-time забирають увагу | design | 🥉 | 1 | Minesweeper Sonar |
@@ -848,10 +888,12 @@
 | `+attribute-match-line` | Лінія зі спільною ознакою | game-logic/win | 🌱 | 1 | Quarto |
 | `+attribute-points` | Розподіл очок атрибутів | entities/state | 🌱 | 1 | Soulestination (魂之归宿) |
 | `+audience-meter` | Рахунок за стиль, а не лише перемогу | game-logic/score | 🌱 | 1 | Chroma Squad |
+| `+audio-cue-per-command` | Звук на кожну команду (доступність) | interface/sound | 🌱 | 1 | Cubetto |
 | `+augment-choice` | Вибір 1 з 3 бонусів | game-logic/economy | 📎 | 1 | Teamfight Tactics (TFT) |
 | `+aura-block-placement` | Аура фігури забороняє спавн | entities/legality | 📎 | 1 | Pandemic |
 | `+aura-move-sharing` | Сусіди ділять патерни ходу | entities/legality | 🥈 | 1 | Chess 2: The Sequel (Sirlin's Chess) |
 | `+aura-slate` | Плита-аура на підлозі | entities/state | 📎 | 1 | Gem TD (Gem Tower Defense, Gem Tower Defense 2) |
+| `+authors-replay` | Авторський розвʼязок із повзунком | interface/results | 🌱 | 1 | Forever Wonder Colour |
 | `+auto-attach` | Аватар без ноші автоматично чіпляє сусідній обʼєкт, якщо вибір однозначний | entities/interact | 📎 | 1 | Shackle |
 | `+auto-attack-abilities` | Автозброя з cooldown | entities/combat | 🥉 | 1 | Chess Survivors |
 | `+auto-attack-in-range` | Автоатака в радіусі за кулдауном | entities/combat | 📎 | 1 | Nimble Quest |
@@ -886,10 +928,13 @@
 | `+auto-merge-toggle` | Автозлиття для задачі | interface/input | 📎 | 1 | Merge Mansion / Merge Dragons |
 | `+auto-new-round` | Новий раунд одразу після кінця, без меню | game-logic/win | 🌱 | 1 | Hurkle |
 | `+auto-notebook` | Автоблокнот дедукції | interface/hud | 🥈 | 1 | Cluedo (Clue; «Клуедо») |
+| `+auto-padding-sync` | Очікування дописуються, щоб програми йшли в ногу | game-logic/program | 🥈 | 1 | Neon Noodles |
 | `+auto-pathfind-command` | Команда — ціль-клітина, шлях будує рушій | entities/move | 📎 | 1 | CodinGame: Hypersonic |
 | `+auto-play-step` | Одна клавіша — розумний наступний крок | interface/input | 📎 | 1 | Path of Achra |
 | `+auto-resign` | Авто-поразка за неактивність | game-logic/opponent | 📎 | 1 | Yushino |
+| `+auto-resize-die` | Поле росте при будові, стискається після | entities/legality | 🌱 | 1 | Hard Chip |
 | `+auto-resolve-battle` | Автоперемога над слабшим | game-logic/opponent | 🌱 | 1 | Fort Triumph |
+| `+auto-retract` | Утримання — рука сама повертається слідом | entities/move | 🌱 | 1 | Stamp Collecting on Planet Q |
 | `+auto-return-block` | Висунутий блок повертається за часом | entities/state | 🌱 | 1 | Pushmo World / Stretchmo |
 | `+auto-rotate` | Само-обертна клітина | entities/move | 🌱 | 1 | Deflektor (+ Mindbender) |
 | `+auto-scroll-boundary` | Межа поля сама зсувається й знищує все позаду | levels/generation | 📎 | 1 | Kaggle Crawl |
@@ -899,9 +944,12 @@
 | `+auto-sort-pin` | Автосортування із закріпленими предметами | interface/input | 🥇 | 1 | Escape from Tarkov (inventory) |
 | `+auto-stop-marker` | Перша плитка біля будівлі отримує зупинку | entities/interact | 🌱 | 1 | Linie 1 (Streetcar) |
 | `+auto-sweep-cleared` | Миттєва зачистка вже підкореного рівня | game-logic/economy | 🌱 | 1 | Requiem of Reuinis (列乌尼斯的挽歌) |
+| `+auto-switch-on-empty` | Без ходів — керування переходить до іншої сутності | entities/state | 📎 | 1 | Croquet Conundrum |
 | `+auto-teleport` | Автотелепорт, коли нема безпечного ходу | game-logic/difficulty | 🌱 | 1 | Robots (BSD) / Chase / Daleks |
 | `+auto-undo-on-death` | Смерть = відкат ходу | game-logic/lose | 🌱 | 1 | Snakebird |
+| `+auto-undo-on-fall` | Падіння — автоматичний відкат ходу | game-logic/lose | 🌱 | 1 | Altered |
 | `+auto-walker-guide` | Вести автоходців до виходу | entities/move | 🥈 | 1 | Troddlers |
+| `+auto-walkers` | Самохідні сутності (жуки, тіні) крокують після гравця | entities/move | 📎 | 1 | After Light Fades |
 | `+auto-weapons` | Зброя діє сама за cooldown | entities/combat | 🥉 | 1 | Maze Mice |
 | `+autonomous-settlers` | Агенти самі засновують поселення біля ресурсу | entities/spawn | 📎 | 1 | Reus |
 | `+autopilot-return` | Після перемоги аватар сам іде на базу | entities/move | 🥉 | 1 | Serpentine |
@@ -909,12 +957,16 @@
 | `+autosweeper-mode` | Режим, де солвер грає замість гравця | game-logic/opponent | 🥉 | 1 | DemonCrawl |
 | `+aux-direction-marks` | Допоміжні позначки напрямків у клітинці (біт на напрямок) | interface/input | 🌱 | 1 | Arofuro (アローフロー, Arrow Flow) |
 | `+avalanche-stats` | Розміри каскадів і їхня гістограма | interface/results | 🥉 | 1 | Abelian sandpile model (модель піщаної купи Бака–Тана–Візенфельда) |
+| `+avatar-clones` | Кілька копій аватара на полі | entities/move | 🥉 | 1 | After Light Fades |
 | `+avatar-drags-line` | Крок аватара зсуває весь його рядок/стовпець по колу | entities/move | 📎 | 1 | Arranger: A Role-Puzzling Adventure |
 | `+avatar-forms` | Перемикання форм аватара з різними атаками | entities/state | 📎 | 1 | X-Morph: Defense |
 | `+avatar-gauge` | Індикатор ресурсу на самому аватарі | interface/render | 🌱 | 1 | Guzzler |
+| `+avatar-linked-objects` | Рух аватара рухає привʼязані блоки, турелі, цілі | entities/move | 🥉 | 1 | Death Squared |
 | `+avatar-mine-detector` | Детектор сусідніх мін для аватара | entities/state | 🌱 | 1 | Mined-Out |
+| `+avatar-mount` | Аватар сідає в обʼєкт і далі керує ним | entities/move | 🌱 | 1 | Vertebrae |
 | `+avatar-on-minefield` | Аватар іде мінним полем: відкриття = крок | entities/move | 🌱 | 1 | Minesweeper Genius |
 | `+avatar-only-obstacle` | Перешкода лише для гравця | entities/legality | 🌱 | 1 | K.C.'s Krazy Chase! |
+| `+avatar-plus-bots` | Аватар діє в реальному часі поруч із програмованими ботами | game-logic/program | 🥇 | 1 | Star Stuff |
 | `+avatar-protect` | Командир-аватар на полі: смерть = поразка | game-logic/lose | 🌱 | 1 | Inkulinati |
 | `+avatar-reveal-walk` | Аватар відкриває приховану клітину, стаючи на неї | entities/interact | 🌱 | 1 | Lizzi Crossing |
 | `+avatar-swap-hazard` | Сутність міняє аватарів місцями | entities/interact | 🌱 | 1 | Binary Land |
@@ -952,12 +1004,14 @@
 | `+ball-piece-lattice` | Фігура з кульок: одна форма для квадратної сітки й FCC-піраміди | entities/shape | 🥈 | 1 | IQ Puzzler Pro |
 | `+ball-scatter` | Розліт обʼєкта | entities/move | 📎 | 1 | Blood Bowl |
 | `+ball-stats-by-colour` | Параметри обʼєкта за кольором | entities/state | 🌱 | 1 | Chew Man Fu (Be Ball) |
+| `+ball-trap-tile` | Клітина тримає мʼяч до удару | entities/interact | 🌱 | 1 | Pup Champs |
 | `+ball-zone-push` | Штовхни мʼяч-зону у ворота | entities/interact | 🥉 | 1 | Armagetron Advanced |
 | `+balloon-lift` | Предмет піднімає аватара на N клітин | entities/move | 🌱 | 1 | Crazy Climber |
 | `+bamboo-stack-growth` | Стос на клітині росте до капу | entities/state | 🌱 | 1 | Takenoko (Такеноко) |
 | `+ban-from-pool` | Прибрати тип обʼєкта з генерації | levels/generation | 🌱 | 1 | Road Not Taken |
 | `+band-test-init` | Спеціальний старт-смуга для перевірки поширення хвилі | levels/generation | 🌱 | 1 | Greenberg–Hastings cellular automaton (модель Ґрінберга — Гастінгса) |
 | `+banish-cost-growth` | Ворог біля бази відкидається на старт за ціну, що росте | game-logic/lose | 📎 | 1 | GemCraft |
+| `+bank-at-exit` | Здобуте зараховується лише на виході з рівня | game-logic/economy | 📎 | 1 | YENDOR |
 | `+bank-baulk` | Банк з обмеженим запасом і збором при нестачі | game-logic/economy | 📎 | 1 | Hare and Tortoise (Заєць і черепаха) |
 | `+bank-break-end` | Кінець, коли спорожнів банк | game-logic/win | 🌱 | 1 | 18XX (1830: Railways & Robber Barons та родина) |
 | `+bank-cop-cycle` | Підбір породжує переслідувача, знищений переслідувач — новий підбір | entities/spawn | 🥉 | 1 | Bank Heist |
@@ -983,8 +1037,10 @@
 | `+base-production-lines` | Бази з лініями виробництва | game-logic/economy | 🥉 | 1 | Carnage Heart |
 | `+base-refuel-repair` | База: заправка будь-яка, ремонт лише своя | entities/interact | 🌱 | 1 | Tunneler |
 | `+base-row-race` | Перемога дотиком до бази / ряду суперника | game-logic/win | 🌱 | 1 | Wordbase |
+| `+base-times-mult` | Рахунок = база × множник з плиток і карт | game-logic/score | 📎 | 1 | Beyond Words |
 | `+base-turret-aim` | Зброя бази, яку наводить гравець, коли він у базі | entities/combat | 📎 | 1 | Dome Keeper |
 | `+bash-door` | Вибити двері коштом сили | entities/interact | 🌱 | 1 | Beneath Apple Manor |
+| `+basin-histogram-clue` | Підказка: скільки басейнів кожного обʼєму | game-logic/constraints | 📎 | 1 | Liquidum |
 | `+batch-trials` | Оцінка програми на N згенерованих світах | levels/solvability | 📎 | 1 | Wumpus world («Світ Вампуса») |
 | `+battery-charge` | Заряд, що витрачають дії | entities/state | 🌱 | 1 | Robot Odyssey |
 | `+battle-accolades` | Додаткові цілі бою з нагородою | game-logic/score | 🌱 | 1 | Cross Blitz |
@@ -1006,12 +1062,17 @@
 | `+beam-granted-ability` | Сила, поки стоїш у промені | entities/state | 🥈 | 1 | Order of the Sinking Star |
 | `+beam-logic-gate` | Вентиль на перетині променів | entities/interact | 🥈 | 1 | Prelogate |
 | `+beam-merge-level` | Злиття однакових променів у рівень | entities/interact | 📎 | 1 | La Pucelle: Tactics |
+| `+beam-no-self-cross` | Промінь не перетинає вже прокладений промінь | entities/combat | 📎 | 1 | Riko |
 | `+beam-perch` | Клітина, що зупиняє рух по променю раніше | entities/interact | 🌱 | 1 | Lasergoose |
 | `+beam-power-drain` | Промінь слабшає від кожного ворога й з відстанню | entities/combat | 🥉 | 1 | Lethal Geometry |
+| `+beam-powered-portal` | Портали працюють, поки в пару світить промінь | entities/interact | 🥉 | 1 | Where's My Egg? |
 | `+beam-push` | Обʼєкт рухається, коли гравець іде проти його променя | entities/interact | 🥉 | 1 | English Country Tune |
+| `+beam-receiver-door` | Освітлений приймач відчиняє двері свого кольору | entities/interact | 📎 | 1 | Where's My Egg? |
+| `+beam-relay` | Ретранслятор: освітлений з будь-якого боку світить у свій | entities/interact | 🥉 | 1 | Where's My Egg? |
 | `+beam-switch-gate` | Промінь керує проходом іншого променя (транзистор) | entities/interact | 🥉 | 1 | OCTOPTICOM |
 | `+beam-touches-all` | Промінь мусить торкнутися кожної деталі | game-logic/constraints | 🌱 | 1 | ThinkFun Laser Maze і Gravity Maze |
 | `+beam-triggered-mirror` | Дзеркало міняє стан від удару променя | entities/state | 📎 | 1 | SOLAS 128 |
+| `+beam-turner` | Обертач променя: ±90° чи 180° незалежно від кута входу | entities/combat | 📎 | 1 | Reliquia Park |
 | `+beat-synced-feedback` | Звуки вводу в такт музики | interface/sound | 📎 | 1 | Tetris Effect / Tetris Effect Connected |
 | `+beat-tick` | Тік = біт музики з вікном влучання | core/loop | 🥉 | 1 | Crypt of the NecroDancer |
 | `+beauty-score` | Краса вулиці як лічильник з порогами | game-logic | 🌱 | 1 | Minami Lane |
@@ -1044,6 +1105,7 @@
 | `+big-pickup-respawn` | Великий предмет переноситься й сипле дрібні | entities/spawn | 🌱 | 1 | Maze Mice |
 | `+big-piece-breakup` | Велика фігура розпадається на клітини при посадці | entities/state | 🥉 | 1 | Pictobits |
 | `+bigger-inside` | Внутрішня сітка більша за зовнішній розмір | entities/state | 📎 | 1 | Escape from Tarkov (inventory) |
+| `+bind-on-touch` | Обʼєкт поруч приєднується до тіла гравця й далі рухається з ним | entities/interact | 🥉 | 1 | BOND |
 | `+bingo-bonus` | Бонус за всю руку | game-logic/score | 🌱 | 1 | Scrabble (цифрові версії; Words With Friends) |
 | `+biome-climate-table` | Тип клітини з таблиці двох полів | entities/state | 📎 | 1 | SimEarth (сітковий шар і Daisyworld) |
 | `+biome-terraform` | Здібність перетворює ділянки навколо | entities/interact | 📎 | 1 | Reus |
@@ -1055,9 +1117,12 @@
 | `+black-hole` | Телепорт без пари знищує | entities/interact | 🌱 | 1 | LaserTank |
 | `+blame-colors` | Помилка фарбується кольором того, хто її зробив | interface/hud | 🌱 | 1 | Minesweeper Together |
 | `+blank-tile` | Джокер-плитка з призначеною літерою | entities/state | 📎 | 1 | Scrabble (цифрові версії; Words With Friends) |
+| `+blank-word-list` | Список слів із пропусками: довжина з моноширинного шрифту | interface/hud | 🌱 | 1 | 12 Word Searches |
 | `+blast-flings-blocks` | Вибух відкидає блоки як снаряди | entities/combat | 📎 | 1 | Rick Dangerous |
 | `+blast-patterns` | Бомби з різною формою вибуху | entities/combat | 📎 | 1 | Lode Runner 2 і Lode Runner 3-D |
+| `+blast-proof-floor` | Плитка, яку вибух не знищує | entities/combat | 🌱 | 1 | Bombuzal |
 | `+blast-size-by-lines` | Розмір вибуху за кількістю рядів | entities/combat | 🌱 | 1 | BomBliss (Tetris 2 + BomBliss, Tetris Blast) |
+| `+blast-stopper` | Клітина гасить вибух | entities/combat | 🌱 | 1 | Bombuzal |
 | `+blast-stops-at-first` | Вибух зупиняється на першій перешкоді, руйнуючи її | entities/combat | 📎 | 1 | CodinGame: Hypersonic |
 | `+bleed-out-revive` | Таймер стікання кровʼю й стабілізація | entities/combat | 🌱 | 1 | XCOM: Chimera Squad |
 | `+bleeding-bandage` | Кровотеча й перевʼязка | entities/combat | 🌱 | 1 | Jagged Alliance 2 |
@@ -1071,11 +1136,14 @@
 | `+blind-swap-box` | Сліпий обмін предмета | game-logic/economy | 🌱 | 1 | Not the Robots |
 | `+blind-tile-pool` | Спільна купа закритих плиток, бери по одній | game-logic/economy | 📎 | 1 | Galaxy Trucker |
 | `+blips` | Сигнал невідомого розміру | entities/spawn | 🥉 | 1 | HeroQuest + Space Hulk (настільні данжен-кроулери на сітці) |
+| `+block-as-bridge` | Тіло, що лягло в западину, стає підлогою | entities/legality | 📎 | 1 | Bloxpath |
 | `+block-breaker-enemy` | Ворог, що ламає блок, який на нього впав | entities/interact | 🌱 | 1 | Gussun Oyoyo (ぐっすんおよよ) |
 | `+block-climb-trick` | Підйом стрибком + перестановкою блока | entities/move | 📎 | 1 | Troddlers |
 | `+block-color` | Колір як властивість блока і тригер правил | entities/state | 🌱 | 1 | Townscaper |
 | `+block-components` | Розбити розмічені клітинки на 4-звʼязні блоки й перевіряти кожен окремо | game-logic/constraints | 🌱 | 1 | Hinge (Chōtsugai, ちょうつがい) |
 | `+block-count` | Блокування N ворогів | entities/combat | 🥈 | 1 | Arknights |
+| `+block-displaces-fluid` | Блок, заштовхнутий у рідину, витісняє її зі своєї клітини | entities/interact | 🌱 | 1 | Lava and Aqua |
+| `+block-goal` | Плитка, що блокує перемогу без блока на ній | game-logic/win | 🌱 | 1 | Forever Wonder Colour |
 | `+block-hardness` | Блоки різної міцності проти сили удару | entities/state | 📎 | 1 | 10key Survival |
 | `+block-meter` | Випадковий блок-метр героя з нагородою | entities/state | 🌱 | 1 | Plants vs. Zombies Heroes |
 | `+block-morph` | Предмет змінює тип блока | entities/interact | 🌱 | 1 | Lode Runner 2 і Lode Runner 3-D |
@@ -1083,13 +1151,17 @@
 | `+block-placement` | Розстановка блоків клавішею | interface/input | 🌱 | 1 | Diagramless crossword (Кросворд без сітки) |
 | `+block-placement-program` | Програма = розстановка механізмів | game-logic/program | 🥈 | 1 | Infinifactory |
 | `+block-signal` | Блоки колії й сигнали | game-logic | 🥇 | 1 | Factorio — клітинна логістика (конвеєри, маніпулятори, мережі) |
+| `+block-size-literal` | Число = площа блоку | game-logic/program | 🌱 | 1 | Piet |
+| `+block-split-components` | Блок, втративши клітину, ділиться на звʼязні частини | entities/state | 🥉 | 1 | Riko |
 | `+block-time-bomb` | Кожен блок має таймер-вибух | entities/state | 📎 | 1 | Stickets |
 | `+block-traversal-points` | Очки за повністю пройдене ребро | game-logic/score | 🌱 | 1 | Pac-Manhattan |
 | `+block-update` | Поширення оновлень сусідам | game-logic | 🥇 | 1 | Minecraft — редстоун |
 | `+blockable-leap` | Стрибок, що блокується проміжною клітиною | entities/legality | 🌱 | 1 | Xiangqi (Сянці, китайські шахи) |
 | `+blocked-cell-detection` | Клітини, куди вже нічого не ляже | levels/solvability | 🥉 | 1 | Carcassonne (Каркасон) |
 | `+blocked-digit-clue` | Підказка-заборона: цифра в чорній клітинці виключає себе з рядка і стовпця | game-logic/constraints | 🌱 | 1 | Str8ts (Стрейтс) |
+| `+blocked-move-flash` | Знак на обʼєкті: хід заблоковано | interface/hud | 🌱 | 1 | What Gophers Go For |
 | `+blocked-teleport-checkpoint` | Заблокований ворог перескакує до наступного чекпоінта | entities/move | 🌱 | 1 | Gem TD (Gem Tower Defense, Gem Tower Defense 2) |
+| `+blocker-creature` | Істота, що лише перекриває шлях | entities/legality | 🌱 | 1 | ilomilo |
 | `+blocker-die` | Клітина-блокер у графі слів | entities/legality | 🌱 | 1 | Boggle |
 | `+blocker-piece` | Нейтральна фігура блокує клітину | entities/interact | 🌱 | 1 | Catan |
 | `+blocker-relocation` | Перенос блокера: відкрити одне, закрити інше | entities/interact | 🌱 | 1 | Mr. Jack (Містер Джек) |
@@ -1099,6 +1171,7 @@
 | `+blocks-text-switch` | Програма блоками й текстом з перемиканням | interface/input | 🥇 | 1 | Robot Karol |
 | `+blood-pool-heal` | Калюжі-ресурс, що висихають | entities/interact | 🌱 | 1 | Golden Krone Hotel |
 | `+bloom-on-contact` | Ріст на контакт з однаковим | entities/interact | 🥉 | 1 | Hanano Puzzle (ハナノパズル) |
+| `+blot-hidden-letters` | Клякси ховають літери, їх виводять зі слів; частина клякс — оманки | game-logic/constraints | 📎 | 1 | 12 Word Searches |
 | `+blueprint-build` | Креслення на клітині, робітник добудовує | entities/spawn | 📎 | 1 | Dungeon Keeper |
 | `+blueprint-draft` | Випадкові блюпринти до покупки | game-logic/economy | 📎 | 1 | PlateUp! |
 | `+blueprint-ghost` | Креслення: виділити, скопіювати, вставити привидами | levels/editor | 🥈 | 1 | Factorio — клітинна логістика (конвеєри, маніпулятори, мережі) |
@@ -1106,6 +1179,7 @@
 | `+blueprints` | Збережені фрагменти схеми для вставки | levels/editor | 📎 | 1 | OCTOPTICOM |
 | `+bluff-declaration` | Гравець має право збрехати в оголошенні | game-logic/info | 🌱 | 1 | Escape from the Aliens in Outer Space |
 | `+bluff-marker` | Фальшивий маркер | game-logic/opponent | 🌱 | 1 | Heroscape |
+| `+board-carries-over` | Слова лишаються на полі між раундами | game-logic/economy | 🌱 | 1 | Beyond Words |
 | `+board-edge-links` | Вихід за край → сусідній екран | levels/progression | 🌱 | 1 | ZZT |
 | `+board-full-block` | Повне поле блокує спавн, а не програє | entities/spawn | 🌱 | 1 | Merge Mansion / Merge Dragons |
 | `+board-full-draw` | Нічия при заповненій дошці | game-logic/opponent | 🌱 | 1 | Quarto |
@@ -1126,11 +1200,13 @@
 | `+board-wipe-special` | Спецплитки, зібрані групою, зачищають усе поле | entities/interact | 🌱 | 1 | Teki Paki (洗脳ゲーム TEKI・PAKI) |
 | `+board-wipe-square` | Клітина, що стирає поле зі збереженням рахунку | entities/interact | 🌱 | 1 | Wordox |
 | `+board-wraparound-flow` | Вихід за край плати → на старт | game-logic/program | 🌱 | 1 | Carnage Heart |
+| `+boat-on-water` | Обʼєкт стоїть лише над рідиною й рахується окремо | game-logic/constraints | 🌱 | 1 | Liquidum |
 | `+bodies-are-ground` | Тіла інших сутностей — опора для падіння | entities/move | 📎 | 1 | CodinGame: Exotec (Winter Challenge 2026) |
 | `+body-as-bridge` | Тіло однієї сутності — підлога для інших | entities/interact | 🥉 | 1 | Puddle Knights |
 | `+body-as-hp` | Довжина тіла = здоровʼя | entities/state | 🥉 | 1 | Spybot: The Nightfall Incident (Lego Spybotics) |
 | `+body-extension` | Тіло з чужих сутностей | entities/move | 🥈 | 1 | Candle Prick |
 | `+body-gaps-passable` | Тіло з прохідними дірками | entities/legality | 📎 | 1 | Google Snake (Змійка в пошуку Google) |
+| `+body-length-upgrade` | Нагорода — довше тіло | entities/state | 🌱 | 1 | Growmi |
 | `+body-mod-grid` | Сітка-тіло для частин і підсилювачів | entities/state | 🥉 | 1 | Z.H.P. Unlosing Ranger VS Darkdeath Evilman |
 | `+body-part-armor` | Броня по частинах тіла | entities/state | 📎 | 1 | Kingdom Death: Monster |
 | `+body-parts-composition` | Юніт зібраний з частин з цінами | entities/state | 🥈 | 1 | Screeps (Screeps World, Screeps Arena) |
@@ -1144,6 +1220,7 @@
 | `+bomb-exchange-boss` | Бос: перекидання бомб, у кого менше | entities/combat | 🥉 | 1 | Kitten Kaboodle (Nyan Nyan Panic) |
 | `+bomb-flood-destroy` | Вибух знищує звʼязану групу | entities/combat | 🥉 | 1 | Wrecking Crew |
 | `+bomb-fuse` | Бомба із запалом | entities/combat | 📎 | 1 | Bomberman |
+| `+bomb-hat-modifier` | Модифікатор, який надівають на сутність (капелюх) | entities/state | 🥉 | 1 | Bomb Club Deluxe |
 | `+bomb-on-target` | Підірвати на клітині цілі | entities/combat | 🌱 | 1 | Beglitched |
 | `+bomb-punch` | Удар бомби кулаком | entities/combat | 📎 | 1 | Bomberman — battle mode (Super Bomberman, Super Bomberman R / R Online / R 2) |
 | `+bomb-remove-piece` | Бомба знищує всю фігуру | entities/combat | 📎 | 1 | MouseCraft |
@@ -1186,6 +1263,7 @@
 | `+bonus-stage-levelup` | Бонус-етап між боями дає рівні | game-logic/progress | 🌱 | 1 | Dungeon Hearts |
 | `+bonus-stage-search` | Бонус-етап: знайти приз раніше суперника | game-logic/score | 📎 | 1 | Wrecking Crew |
 | `+bonus-star` | Необовʼязкова зірка в незручному місці рівня | levels/progression | 🌱 | 1 | Meet me at NooN |
+| `+bonus-stars-ending` | Секретна кінцівка за бонусні зірки | game-logic/win | 🌱 | 1 | Growmi |
 | `+bonus-tile-tier` | Бонусна плитка за довжину слова | entities/spawn | 🌱 | 1 | Bookworm |
 | `+bonus-turn-full-set` | Повний набір атрибутів у лінії → ще хід | game-logic/score | 🌱 | 1 | Sumoku |
 | `+bonus-upgrades-dots` | Бонус змінює клітини на своєму шляху | entities/interact | 📎 | 1 | Pac-Man: сиквели 1983–2021 |
@@ -1205,10 +1283,12 @@
 | `+border-crawler` | Ворог по межі територій | entities/move | 🥇 | 1 | Xonix (Ксонікс) / Qix / Volfied |
 | `+border-death-no-loot` | Смерть від межі без здобичі | entities/death | 🌱 | 1 | Slither.io |
 | `+border-frame-pieces` | Окремі кутові й рамкові плитки з нейтральним краєм | entities/legality | 🌱 | 1 | Eternity II |
+| `+border-pattern-clue` | Клітина показує візерунок своїх меж, повороти дозволено | game-logic/constraints | 📎 | 1 | The Artisan of Glimmith |
 | `+border-timer` | Таймер-рамка навколо поля | interface/hud | 📎 | 1 | Lady Bug |
 | `+boredom-fatigue` | Штраф за повторне використання юніта між боями | game-logic/economy | 🌱 | 1 | Inkulinati |
 | `+borrowed-movement` | Фігура ходить патерном сусіда позаду | entities/legality | 🥈 | 1 | Шогі з твістом руху — Kyoto shogi і Annan shogi (Кіото-шогі, Аннан-шогі) |
 | `+boss-absorb-growth` | Бос поглинає ворогів з обваленого краю й росте | game-logic/waves | 🥉 | 1 | Ringfall |
+| `+boss-bribe` | Відкуп від боса валютою | game-logic/economy | 🌱 | 1 | Watchword |
 | `+boss-disruption` | Скриптові диверсії боса на полі гравця | game-logic/opponent | 📎 | 1 | Pokémon Trozei! (Pokémon Link!) |
 | `+boss-feeding` | Вороги несуть предмет босу, бос посилюється | entities/move | 📎 | 1 | Dig Dug: Digging Strike |
 | `+boss-floors` | Бос кожні N поверхів з ареною | game-logic/waves | 🥈 | 1 | Shattered Pixel Dungeon (і Pixel Dungeon) |
@@ -1224,9 +1304,11 @@
 | `+boss-rule-constraint` | Бос з умовою на маршрут/бої | entities/combat | 🌱 | 1 | Soulestination (魂之归宿) |
 | `+boss-rule-modifier` | Бос-раунд з особливим правилом | game-logic/opponent | 📎 | 1 | Passant: A Chess Roguelike |
 | `+bot-api-arena` | API для ботів + рейтинговий сервер | code/architecture | 🥈 | 1 | Reconnaissance Blind Chess (RBC) |
+| `+bot-breakdown` | Бот ламається й лишається перешкодою | entities/state | 📎 | 1 | Star Stuff |
 | `+bot-crafting-chain` | Бот збирається з крафтових частин | game-logic/economy | 🥉 | 1 | Autonauts |
 | `+bot-fill-slots` | Боти займають порожні слоти | game-logic/opponent | 🥉 | 1 | Battle Lode Runner |
 | `+bot-fuel` | Паливо бота, дозаправка | entities/state | 📎 | 1 | Autonauts |
+| `+bot-movement-models` | Боти з різною кінематикою | entities/move | 🥉 | 1 | Neon Noodles |
 | `+bot-scripting` | Користувацькі боти: API, бюджет обчислень, журнал | game-logic/opponent | 🥇 | 1 | Patternsight |
 | `+bot-self-learning` | Бот вчиться на своїх смертях | game-logic/opponent | 👑 | 1 | Armagetron Advanced |
 | `+bot-shout-signal` | Сигнали-крики між ботами | game-logic/program | 🥈 | 1 | Autonauts |
@@ -1236,6 +1318,7 @@
 | `+bot-upgrade-parts` | Апгрейд частин бота: памʼять, швидкість, дальність | entities/state | 🥉 | 1 | Autonauts |
 | `+bottom-pick-triple` | Бери нижні блоки стовпців трійками одного кольору | entities/interact | 📎 | 1 | Tumblestone |
 | `+bottom-shooter-only` | Стріляє лише нижній у колоні | entities/combat | 📎 | 1 | Space Invaders (Космічні загарбники) |
+| `+bottomless-hole` | Дірка не засипається: фігура без опори падає й зникає | entities/legality | 🌱 | 1 | nuworm |
 | `+bounce-back` | Відбиття від стіни з рештою руху | entities/move | 📎 | 1 | Golf Peaks |
 | `+bounce-bonus` | Очки снаряда ростуть з кожним відскоком | game-logic/score | 🌱 | 1 | Do! Run Run |
 | `+bounce-chain` | Рикошет: рух триває силою фігури, на яку стали | entities/move | 🥈 | 1 | Gyges |
@@ -1247,6 +1330,7 @@
 | `+bounty-economy` | Нагорода за голову кривдника | game-logic/economy | 📎 | 1 | The Castle Doctrine |
 | `+box-budget-crowns` | Бюджет дій на рівень за бонус | game-logic/score | 📎 | 1 | BoxBoy! (ハコボーイ!) |
 | `+box-chain-extrude` | Видавити ланцюг клітин від героя | entities/interact | 🥉 | 1 | BoxBoy! (ハコボーイ!) |
+| `+box-clear-3x3` | Порожній квадрат 3×3 у будь-якому положенні — бонус | game-logic/score | 🌱 | 1 | Dave's Word Game |
 | `+box-clone` | Клон — посилання на ту саму сітку | entities/state | 🥈 | 1 | Patrick's Parabox |
 | `+box-destroyer-enemy` | Ворог руйнує зроблене гравцем | entities/interact | 🌱 | 1 | Drelbs |
 | `+box-eat` | Ящик поглинає перешкоду | entities/legality | 🥉 | 1 | Patrick's Parabox |
@@ -1332,6 +1416,7 @@
 | `+build-to-exit` | Вихід будується з зібраного | game-logic/win | 🌱 | 1 | Frostbite |
 | `+build-where-standing` | Будувати лише в клітинці під аватаром | interface/input | 📎 | 1 | PixelJunk Monsters |
 | `+build-zone` | Зона, де дозволено ставити | levels/editor | 🌱 | 1 | Cell Machine |
+| `+building-boost-item` | Предмет-підсилення на одну будівлю | entities/state | 🌱 | 1 | SteamWorld Build |
 | `+building-charges` | Будівля з обмеженим виходом зникає | entities/state | 🌱 | 1 | The King Is Watching |
 | `+building-group-clear` | Влучання того ж кольору знищує всю звʼязну групу | entities/legality | 📎 | 1 | Land Maker (Builder's Block) |
 | `+building-link` | Процесор лінкує будівлі в радіусі, імена тип+N | entities | 📎 | 1 | Mindustry — logic (mlog) |
@@ -1342,7 +1427,9 @@
 | `+bull-rush` | Прорив крізь ворога дуеллю | entities/combat | 📎 | 1 | Tannhäuser |
 | `+bullet-dodge-cursor` | Курсор ухиляється від куль | entities/combat | 🥈 | 1 | Knights in the Nightmare |
 | `+bump-collect-from-below` | Удар знизу забирає блок | entities/interact | 🌱 | 1 | Blocks That Matter |
+| `+bump-counter` | Лічильник зіткнень як метрика | game-logic/score | 🌱 | 1 | Stick to the Plan |
 | `+bump-no-action` | Упор у стіну не витрачає хід | entities/legality | 🌱 | 1 | Rat King (torcado) |
+| `+bump-passes-turn` | Невдала спроба ходу теж віддає хід ворогам | game-logic/opponent | 🌱 | 1 | Riko |
 | `+bump-stun` | Поштовх оглушує на хід | entities/state | 🌱 | 1 | Auro: A Monster-Bumping Adventure |
 | `+buoyant-rise` | Обʼєкт падає вгору | entities/move | 🌱 | 1 | Heartlight |
 | `+burn-aura` | Фігура знімає ворожих сусідів після свого й чужого ходу | entities/combat | 🥈 | 1 | Великі шогі — Chu shogi і Tenjiku shogi (Чу-шогі, Тендзіку-шогі) |
@@ -1360,6 +1447,7 @@
 | `+buzz-in` | Хто перший натиснув — той відповідає | interface/input | 📎 | 1 | Blockbusters |
 | `+bytecode-limit` | Бюджет інструкцій на хід | game-logic | 🥈 | 1 | Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode) |
 | `+ca-enemy-colony` | Вороги — живі клітини CA, оновлюються циклами | entities/spawn | 🥉 | 1 | Yawnoc |
+| `+cage-vehicle` | Клітка-транспорт: тиснеш на стінку зсередини — їде вся клітка | entities/move | 🥈 | 1 | Imprisoned! |
 | `+caged-enemy-release` | Ворог у клітці вилітає з певного рівня | entities/spawn | 🌱 | 1 | Chuckie Egg |
 | `+calendar-events` | Події календаря змінюють потік гостей | game-logic/waves | 🌱 | 1 | Hot Springs Story |
 | `+call-and-explain` | Виклик + час на пояснення | game-logic/opponent | 🌱 | 1 | Krypto |
@@ -1372,17 +1460,20 @@
 | `+camera-relative-input` | Стрілки відносно ракурсу камери | interface/input | 🥉 | 1 | Orakyubu |
 | `+camera-rotate` | Поворот ізокамери на 90° | interface/render | 📎 | 1 | Hoshigami: Ruining Blue Earth |
 | `+camera-trigger` | Деталь, що за сигналом змінює камеру | interface/render | 📎 | 1 | Levelhead |
+| `+camera-view-toggle` | Перемикач камери 3/4 ↔ згори без зміни логіки | interface/render | 🌱 | 1 | After Light Fades |
 | `+camouflage-brush` | Клітини-невидимки з групами огляду | interface/render | 📎 | 1 | Atlas Reactor |
 | `+camp-deadline` | Вийти з табору за N ходів або програш | game-logic/lose | 🌱 | 1 | Halma / Chinese checkers (Хальма / Китайські шашки) |
 | `+camp-lock` | Фігура в цілі не може її покинути | entities/legality | 🌱 | 1 | Halma / Chinese checkers (Хальма / Китайські шашки) |
 | `+camp-menu` | Табір: відпочинок, заучування, збереження | interface/menus | 🌱 | 1 | Eye of the Beholder |
 | `+campaign-carryover` | Загін переходить у наступну мапу | levels/progression | 📎 | 1 | Rebuild 3: Gangs of Deadsville |
 | `+campaign-time-budget` | Бюджет часу кампанії | levels/progression | 📎 | 1 | Invisible, Inc. |
+| `+cancel-turn-if-blocked` | Хід без руху гравця скасовано цілком | game-logic/history | 🌱 | 1 | 2D Whale World |
 | `+cancelling-mine-pair` | Пара, що гаситься в підказці | game-logic/constraints | 📎 | 1 | omegasweeper |
 | `+candidate-buckets` | Групування кандидатів за патерном відгуку | game-logic/opponent | 🥈 | 1 | Absurdle |
 | `+canned-levels` | Заготовлені плани серед процедурних з імовірністю | levels/generation | 📎 | 1 | Larn |
 | `+cannon-charge-height` | Заряд визначає висоту польоту, перевантаження — смерть | entities/move | 📎 | 1 | Miner 2049er |
 | `+cannon-launch` | Гармата вистрілює аватара в іншу кімнату | entities/move | 📎 | 1 | Tetrobot and Co. |
+| `+capacitor-cell` | Коло-конденсатор: живить, гасне, коли накрите | entities/state | 📎 | 1 | 0PLAYER |
 | `+capacity-move` | Перелити вміст у сусіда, якщо вміщується | entities/interact | 📎 | 1 | Advent of Code 2016, день 22: Grid Computing |
 | `+cape-tear` | Розрив тіла-черги в притиснутій точці | entities/state | 🥈 | 1 | Puddle Knights |
 | `+capstone-flatten` | Особлива фігура сплющує стіну | entities/interaction | 📎 | 1 | Tak (Так) |
@@ -1407,6 +1498,7 @@
 | `+capture-no-split` | Захоплення лише без розриву групи власника | entities/legality | 📎 | 1 | Uptown (Blockers!) |
 | `+capture-only-move` | Фігура ходить лише взяттям | entities/legality | 🌱 | 1 | Three Musketeers (Три мушкетери) |
 | `+capture-only-opponent` | Суперник ходить лише коли може взяти | game-logic/opponent | 📎 | 1 | SokoChess (і SokoChess White / Black) |
+| `+capture-only-unprotected` | Бити можна лише незахищену фігуру | entities/legality | 📎 | 1 | Chessarama |
 | `+capture-priority` | Пріоритет серій взяття | entities/legality | 🥈 | 1 | Національні варіанти шашок |
 | `+capture-property` | Захоплення будівлі за кілька ходів | game-logic/economy | 📎 | 1 | Advance Wars |
 | `+capture-quota` | Перемога за квотою взять | game-logic/win | 🌱 | 1 | Atari Go (Capture Go, го до першого взяття) |
@@ -1426,6 +1518,7 @@
 | `+card-as-block` | Ящик-карта з мастю й лицем; ціль перевіряє властивість | entities/state | 🌱 | 1 | SokoSolitaire |
 | `+card-as-move` | Будь-яку карту можна спалити на рух | entities/move | 📎 | 1 | Metal Gear Acid |
 | `+card-battle-items` | Одна карта-предмет на бік у бою, ціна ≤ готівки | entities/combat | 📎 | 1 | Culdcept |
+| `+card-burn` | Карта понад ліміт ресурсу згоряє до кінця бою | game-logic/economy | 📎 | 1 | StarVaders (Star★Vaders) |
 | `+card-colors` | Тип ефекту за кольором карти | entities/combat | 🌱 | 1 | Children of Zodiarcs |
 | `+card-cycle-queue` | Рука з черги: зіграна — у кінець | game-logic/economy | 🌱 | 1 | Clash Royale |
 | `+card-cycling` | Скинути карту в колоду → +1 max ресурсу й колір | game-logic/economy | 📎 | 1 | Mythgard |
@@ -1466,6 +1559,7 @@
 | `+card-sets` | Набори малюнків | interface/settings | 🌱 | 1 | Memory / Concentration / Pairs («Мемо», «Знайди пару») |
 | `+card-sigils` | Модифікатори-здібності на юнітах | entities/combat | 🥈 | 1 | Inscryption (Act 1) |
 | `+card-slot-limit` | Не більше N активних карток-цілей | game-logic/economy | 🌱 | 1 | Harmonies |
+| `+card-throw-pickup` | Карта лягає на клітину поля й підбирається назад | entities/interact | 📎 | 1 | StarVaders (Star★Vaders) |
 | `+card-time-season` | Сезон закінчується за сумою часу карт | game-logic/waves | 🌱 | 1 | Cartographers (Картографи) |
 | `+card-to-cell-board` | Клітина поля = карта колоди; карта в руці відкриває доступ до своїх клітин | entities/legality | 🌱 | 1 | Sequence |
 | `+card-trade` | Обмін картами між гравцями з лімітом | game-logic/economy | 🌱 | 1 | Castle Panic |
@@ -1480,18 +1574,23 @@
 | `+career-years` | Забіг з N років-рівнів | levels/progression | 🌱 | 1 | Road Not Taken |
 | `+cargo-occupies-cells` | Захищуваний вантаж займає клітини | game-logic/win | 📎 | 1 | Space Run |
 | `+cargo-only-passage` | Прохід лише для певного типу сутностей | entities/legality | 🌱 | 1 | Doki Doki Penguin Land (ドキドキペンギンランド) |
+| `+cargo-push` | Контейнер везе все, що в ньому, при поштовху | entities/move | 📎 | 1 | Sokobos 2 |
+| `+cargo-route` | Вантаж від джерела до приймача | game-logic/win | 📎 | 1 | Upalu Mundi |
 | `+carriage-capacity` | Місткість носія | entities/state | 🌱 | 1 | Cosmic Express |
 | `+carried-food` | Аптечка в інвентарі, використати дією | entities/state | 🌱 | 1 | Dandy / Dark Chambers |
+| `+carrier-capacity` | Місткість транспорту за кількістю й вагою | entities/state | 🌱 | 1 | Elevator Saga |
 | `+carrier-dock-repair` | Посадка на носій: ремонт | entities/interact | 🌱 | 1 | Super Robot Wars |
 | `+carry-ally` | Нести союзника | entities/move | 📎 | 1 | Exit |
 | `+carry-and-deposit` | Підібране рахується лише після доставки на базу | game-logic/score | 🌱 | 1 | Pac-Man Capture the Flag (UC Berkeley CS188) |
 | `+carry-and-place` | Підняти, перенести, поставити, стос | entities/interact | 📎 | 1 | Felix the Reaper |
+| `+carry-cell-contents` | Курсор-істота везе вміст своєї клітини; відпустити — упором | entities/interact | 📎 | 1 | Omniban |
 | `+carry-cluster` | Нести групу плиток як одне тіло | entities/move | 🥉 | 1 | Wilmot's Warehouse |
 | `+carry-energy-cost` | Ноша коштує ресурсу за крок | entities/state | 🌱 | 1 | Road Not Taken |
 | `+carry-goal-object` | Донести обʼєкт до цілі | game-logic/win | 📎 | 1 | Levelhead |
 | `+carry-in-room` | Нести предмет лише в межах кімнати | entities/interact | 🌱 | 1 | Head over Heels |
 | `+carry-item-to-goal` | Донести предмет до цілі | game-logic/win | 🌱 | 1 | Persona 5 Tactica |
 | `+carry-objective` | Нести обʼєкт до виходу, носій уповільнений | game-logic/win | 🥉 | 1 | Dungeon of the Endless |
+| `+carry-objects-between-levels` | Обʼєкти переходять у наступний рівень разом із гравцем | levels/progression | 🥉 | 1 | Croquet Conundrum |
 | `+carry-off-loss` | Ворог виносить ядро — ще можна відбити | game-logic/win | 📎 | 1 | What Did I Do to Deserve This, My Lord? |
 | `+carry-on-back` | Ноша: предмет лежить на аватарі й рухається з ним | entities/interact | 🥉 | 1 | Fish Fillets |
 | `+carry-one` | Нести один обʼєкт і поставити | entities/interact | 📎 | 1 | Pushover (Push-Over) |
@@ -1504,6 +1603,8 @@
 | `+carry-tile-with-player` | Тайл переїжджає разом із аватаром | entities/move | 📎 | 1 | Carto |
 | `+carry-to-sockets` | Віднести N предметів у гнізда | game-logic/win | 🌱 | 1 | Devil World |
 | `+carve-by-hazard` | Пастка знищує частину групи — формує фігуру | entities/interact | 📎 | 1 | Block in the Lock |
+| `+carve-pattern` | Розвʼязок вирізають: прибирають зайве з повного поля, лічильник до видалення | interface/input | 🌱 | 1 | SquareCells |
+| `+carve-to-shape` | Вигризти зайве, щоб лишилась форма-зразок | game-logic/win | 🥉 | 1 | Woodworm |
 | `+cascade-death-subtree` | Смерть вузла вбиває все піддерево | entities/state | 📎 | 1 | CodinGame: Cellularena (Winter Challenge 2024) |
 | `+cascade-gravity` | Кожна клітина падає окремо | entities/move | 📎 | 1 | Puyo Puyo (Пуйо Пуйо) |
 | `+cascade-refill` | Осідання + поповнення згори | entities/spawn | 📎 | 1 | Bejeweled (1–3, Twist) |
@@ -1531,12 +1632,14 @@
 | `+catch-up-spawn-bonus` | Очки призову з кубиків + бонус за втрати | game-logic/economy | 🌱 | 1 | Dreamblade |
 | `+catch-up-stickers` | Лідеру — шкідливі зміни поля, іншим — корисні | game-logic/difficulty | 🌱 | 1 | My City |
 | `+catcher-swaps-role` | Хто впіймав — міняється роллю | game-logic/opponent | 📎 | 1 | Pac-Man: сиквели 1983–2021 |
+| `+category-clues` | Підказки за категорією обʼєктів | game-logic/constraints | 📎 | 1 | 13 Sticky Notes |
 | `+category-line-counts` | Лічильники ліній окремо для кожної категорії | game-logic/constraints | 🌱 | 1 | Cargo Quest |
 | `+category-score-table` | Очки за кожну категорію з насиченням і −1 за нуль | game-logic/score | 🌱 | 1 | Agricola — сітка ферми (Агрікола) |
 | `+category-word` | Слово має відповідати темі картки | game-logic/constraints | 📎 | 1 | Word on the Street |
 | `+caterpillar-follow` | Гусінь: решта групи заповнює звільнену клітину | entities/move | 🥉 | 1 | It 2: They/Them |
 | `+causal-inspection` | Пояснення рішення агента на кожен тік | interface/results | 🥇 | 1 | tower.defense(): Program The Fight |
 | `+cave-generation` | Печери шумом / random walk | levels/generation | 🥉 | 1 | Pixel Miner |
+| `+cave-in-support` | Нестабільна стеля: колони й укріплені стіни, інакше обвал | entities/legality | 🥉 | 1 | SteamWorld Build |
 | `+ceiling-crush-blocks` | Стеля трощить блоки на шляху | entities/interact | 🌱 | 1 | Tetris Plus |
 | `+ceiling-descend` | Стеля опускається / піднімається | game-logic/lose | 📎 | 1 | Wario's Woods |
 | `+ceiling-push` | Стеля штовхає новий ряд | game-logic/waves | 🌱 | 1 | Magical Drop (Chain Reaction) |
@@ -1545,6 +1648,7 @@
 | `+cell-capacity` | Клітина з місткістю: повна закривається | entities/legality | 🌱 | 1 | TAMSK |
 | `+cell-capacity-host` | Зона з місткістю: не ввійти в повну | entities/legality | 📎 | 1 | EXAPUNKS |
 | `+cell-coloring` | Кольорова розмітка клітинок | interface/input | 🌱 | 1 | Sudoku (Судоку, Number Place) |
+| `+cell-count-marker` | Протяжкою позначити клітини й бачити їх кількість | interface/input | 🌱 | 1 | Homgard |
 | `+cell-depletion` | Клітина має запас, вичерпалась — змінює тип | entities/state | 📎 | 1 | CodinGame: Keep Off the Grass (Fall Challenge 2022) |
 | `+cell-feature-clear` | Будова знищує фічу клітини | entities/state | 🌱 | 1 | Civilization VI — шар районів і бонусів суміжності |
 | `+cell-hidden-agent` | Клітина ховає ворога, що виходить при знищенні | entities/spawn | 📎 | 1 | Metavaxx |
@@ -1580,9 +1684,11 @@
 | `+chain-same-or-double` | Крок ланцюга: рівне або вдвічі більше | entities/legality | 🌱 | 1 | 2248: Number Puzzle |
 | `+chain-start-blocker` | Блок, що не може почати ланцюг | entities/legality | 🌱 | 1 | Trioncube |
 | `+chain-unique-shapes` | У ланцюгу всі форми різні з точністю до поворотів і дзеркал | game-logic/constraints | 📎 | 1 | Chained Block |
+| `+challenge-evaluator` | Умова рівня — функція null / true / false | game-logic/win | 📎 | 1 | Elevator Saga |
 | `+challenge-hand` | Випадкова ціль-збіг на час | game-logic/score | 📎 | 1 | Poker Smash |
 | `+challenge-link` | Лінк-виклик другу на той самий пазл | interface/results | 🌱 | 1 | Crosswordle |
 | `+challenge-list` | Челенджі-умови в пісочниці | game-logic/goals | 🌱 | 1 | Grain |
+| `+challenge-runs` | Забіг-виклик з модифікатором правил і заданим набором | game-logic/difficulty | 📎 | 1 | Cursed Words |
 | `+challenge-stage` | Стадія з умовою: нагорода лише за виконання | levels/progression | 📎 | 1 | Minato |
 | `+challenge-unlocks` | Багатосесійні цілі відкривають предмети | levels/progression | 📎 | 1 | Puzzlejuice |
 | `+challenge-vote` | Виклик ходу суперником і голосування більшістю | game-logic/opponent | 📎 | 1 | Word on the Street |
@@ -1596,11 +1702,13 @@
 | `+character-import` | Перенос героя в наступну частину | game-logic/save | 🌱 | 1 | Castle of the Winds |
 | `+character-start-kit` | Персонаж = стартова здібність | interface/settings | 🌱 | 1 | Maze Mice |
 | `+character-stat-caps` | Стелі прокачки персонажа | entities/state | 🌱 | 1 | Bomberman — battle mode (Super Bomberman, Super Bomberman R / R Online / R 2) |
+| `+character-unlock` | Нові персонажі з прогресом | levels/progression | 🌱 | 1 | Altered |
 | `+charge-attack` | Заряд атаки утриманням | interface/input | 📎 | 1 | Knights in the Nightmare |
 | `+charge-by-eating` | Здібність заряджається збором | entities/state | 🌱 | 1 | Not the Robots |
 | `+charge-by-pickup` | Снаряд заряджається зібраним | entities/combat | 📎 | 1 | Do! Run Run |
 | `+charge-countdown` | Збіг заряджається N ходів, потім спрацьовує | entities/state | 📎 | 1 | Might & Magic: Clash of Heroes |
 | `+charge-gauges` | Шкали систем заряджаються кроками | entities/state | 📎 | 1 | Captain Sonar |
+| `+charge-in-line` | Ворог біжить до гравця, щойно той у рядку/стовпці | entities/move | 📎 | 1 | Evil Eye |
 | `+charge-on-sight` | Ривок до упору на погляд | entities/move | 📎 | 1 | Void Stranger |
 | `+charge-on-wait` | Пропуск дії заряджає наступну | entities/state | 🌱 | 1 | Persona 5 Tactica |
 | `+charge-routing` | Заряд іде полем по прямій і активує клітини | entities/move | 🥈 | 1 | Backpack Hero |
@@ -1612,6 +1720,7 @@
 | `+charged-ultimate` | Ультимейт з умовою заряду | game-logic/economy | 📎 | 1 | Cross Blitz |
 | `+charges-per-item` | Предмет із кількома зарядами | entities/state | 🌱 | 1 | Alephant |
 | `+charisma-reactions` | Стат героя змінює реакцію монстрів | entities/state | 🌱 | 1 | Telengard |
+| `+charm-lead` | Обʼєкти в зоні навколо лідера крокують разом з ним | entities/move | 🥈 | 1 | Heroes of Sokoban II: Monsters і III: The Bard and the Druid |
 | `+chasm-cells` | Прірва: не пройти, але видно й можна стріляти | entities/legality | 🌱 | 1 | Rift Wizard |
 | `+check-counter` | Лічильник шахів | game-logic/win | 🌱 | 1 | Lichess variants (варіанти шахів Lichess) |
 | `+check-direction-announce` | Оголошення напрямку шаху | game-logic/constraints | 📎 | 1 | Kriegspiel + Dark Chess (Fog of War; «шахи наосліп із суддею» і «шахи в тумані») |
@@ -1621,9 +1730,11 @@
 | `+checkerboard-tile-parity` | Два типи тайлів чергуються шахівницею | entities/legality | 🌱 | 1 | Cacao (Какао) |
 | `+checkpoint-groups` | Чекпойнт = звʼязна група клітин | game-logic/win | 📎 | 1 | GridRacer |
 | `+checkpoint-reset` | Повернення на останню безпечну клітину | entities/death | 🌱 | 1 | Golf Peaks |
+| `+checkpoint-reveal` | Показати не взяті чекпойнти | interface/hud | 🌱 | 1 | A Monster's Snowball |
 | `+checkpoint-rewind` | Відкат до чекпоінта | game-logic/history | 🥉 | 1 | Defense Grid: The Awakening |
 | `+chess-move-constraint` | Anti-knight / anti-king | game-logic/constraints | 🌱 | 1 | Sudoku variants (варіанти судоку, Cracking the Cryptic / SudokuPad) |
-| `+chess-push` | Шахова фігура штовхає замість брати | entities/legality | 📎 | 1 | SokoChess (і SokoChess White / Black) |
+| `+chess-move-path` | Наступна клітина шляху — ходом шахової фігури | game-logic/constraints | 🥉 | 1 | Cursed Words |
+| `+chess-soccer` | Хід = рух фігури або пас; гол = очко | game-logic/win | 🥉 | 1 | Chessarama |
 | `+chest-press-puzzle` | Міні-пазл замкненої скрині | entities/interact | 📎 | 1 | Dynamine |
 | `+chest-trap-identify` | Пастка скрині: розпізнати (неточно) і зняти | entities/interact | 🌱 | 1 | Wizardry: Proving Grounds of the Mad Overlord |
 | `+chill-lockout` | Тимчасова заборона повертатися на рівень | game-logic/opponent | 🌱 | 1 | The Castle Doctrine |
@@ -1691,6 +1802,7 @@
 | `+clear-room-bonus` | Бонус за повну зачистку кімнати | game-logic/score | 🌱 | 1 | Berzerk |
 | `+clear-row-item` | Предмет зачищає ряд | entities/combat | 🌱 | 1 | Sol Cesto |
 | `+clear-to-bedrock` | Мета — вибрати все цінне з карти | game-logic/win | 🌱 | 1 | POUND SAND |
+| `+clear-triggers-refill` | Нові літери лише після очищення ділянки | entities/spawn | 📎 | 1 | Dave's Word Game |
 | `+clear-unlocks` | Зачистка відкриває двері | game-logic/win | 📎 | 1 | Deadly Rooms of Death (DROD: King Dugan's Dungeon) |
 | `+clear-zeros-key` | Масово прибрати безпечні 0-клітини однією клавішею | interface/input | 🌱 | 1 | Asteroids Minesweeper |
 | `+click-cycle-direction` | Клік по колу: напрямки → стерти | interface/input | 🌱 | 1 | Otomata |
@@ -1702,24 +1814,31 @@
 | `+click-to-move-avatar` | Клік по клітині — аватар іде туди сам | entities/move | 🥉 | 1 | TrapSweeper |
 | `+click-turn-walker` | Клік розвертає ходця | interface/input | 🌱 | 1 | Mario & Wario |
 | `+climb-cost` | Підйом коштує руху, спуск безкоштовний | entities/legality | 📎 | 1 | Heroscape |
+| `+climb-if-stuck` | Штовхнути, а якщо не зрушить — залізти | entities/legality | 🥉 | 1 | Ahoist Cratey |
 | `+climb-onto-piece` | NPC вилазить на фігуру, покладену на нього | entities/move | 📎 | 1 | Tetris Plus |
 | `+climb-stack` | Лізти на стос/стіну | entities/move | 🌱 | 1 | Wario's Woods |
 | `+climb-step` | Залізти на сходинку висоти 1 | entities/move | 📎 | 1 | Bonfire Peaks |
 | `+clip-composite` | Велика картина з малих пазлів | levels/progression | 📎 | 1 | Nonogram (Японський кросворд, Picross, Griddlers, Hanjie) |
 | `+clipboard-objects` | Копіювати/вирізати/вставити обʼєкт поля | entities/interact | 🥉 | 1 | Push The Cat with WASD |
+| `+cloak-invisible` | Невидимість для ворогів, поки джерело активне | entities/state | 🌱 | 1 | Super Sokobot |
 | `+clock-action-time` | Годинник: кожна дія має тривалість | game-logic/opponent | 🥈 | 1 | GearHead (GearHead: Arena) |
 | `+clock-reinforcement` | Годинник-розклад підкріплень | game-logic/waves | 📎 | 1 | Rodent's Revenge |
+| `+clock-source` | Генератор тактового сигналу | entities/spawn | 🌱 | 1 | Hard Chip |
 | `+clock-toggle` | Годинник: час доби ↔ час гри | interface/hud | 🌱 | 1 | Fill-In (Kriss Kross, Word Fit) |
 | `+clock-tower-events` | Дзвін у випадкову годину запускає здібності | game-logic/turns | 📎 | 1 | Dupery: A Game of Solo Deduction |
 | `+clog-on-full-output` | Машина стоїть, якщо вихід зайнятий | entities/interact | 📎 | 1 | shapez |
+| `+clone-above-head` | Аватар створює клона в клітині над головою; клон повторює кожен хід | entities/spawn | 📎 | 1 | CLONY |
+| `+clone-anchor` | Двійник-закладка: X ставить, друге X переносить на нього; двійник — тверда перешкода | entities/spawn | 🌱 | 1 | I am Two |
 | `+clone-isolated` | Клон, коли пари нема | entities/spawn | 🌱 | 1 | Animal Crossing — New Horizons (схрещування квітів) |
 | `+clone-machine` | Клон-машина за кнопкою | entities/spawn | 🥉 | 1 | Chip's Challenge |
 | `+clone-on-pass` | Клонер на шляху | entities/spawn | 🌱 | 1 | Freshly Frosted |
 | `+clone-or-jump` | Клон або стрибок | entities/move | 📎 | 1 | Ataxx |
+| `+cloner-copy` | Клонер копіює обʼєкт, що в нього потрапив | entities/spawn | 🥉 | 1 | BOND |
 | `+cloner-element` | Клітина копіює сусідній вид | entities/interact | 🌱 | 1 | Sandspiel |
 | `+close-behind-gate` | Ґрати: прохід лише раз | entities/legality | 🌱 | 1 | Mystic Balloon (みすてぃっく☆ばる〜ん) |
 | `+close-box-cells` | Замкнути клітинку чотирма стінками | game-logic/score | 📎 | 1 | Drelbs |
 | `+closed-loop-path` | Шлях має повернутись у старт | game-logic/win | 🌱 | 1 | Rytmos |
+| `+closed-loop-power` | Живлення лише в замкненій мережі | entities/state | 🥈 | 1 | 0PLAYER |
 | `+closed-shape-win` | Перемога — замкнена область свого кольору, більша за N | game-logic/win | 🥉 | 1 | Palago |
 | `+closest-wins` | Очки лише найближчому до цілі, нічия — обом | game-logic/opponent | 🌱 | 1 | Countdown — numbers round / Countle |
 | `+closing-entrance` | Вхід закривається за гравцем | entities/interact | 🌱 | 1 | MazezaM |
@@ -1758,12 +1877,14 @@
 | `+code-sharing-database` | Онлайн-база програм гравців | levels/bank | 🥈 | 1 | Autonauts |
 | `+code-size-metric` | Рахунок — розмір коду в інструкціях | score | 🥉 | 1 | Replicube |
 | `+code-snippets-library` | Бібліотека сніпетів коду гравця | interface/input | 📎 | 1 | FORK BOMB: A Programming Game |
+| `+coil-counter` | Котушка з лічильником: умова виходу, яку можна перевантажити | entities/interact | 🥉 | 1 | Magnet Block |
 | `+coil-trap` | Оточити тілом і стиснути | entities/combat | 🥈 | 1 | Slither.io |
 | `+coin-continue` | Продовження за ресурс із відліком | game-logic/lose | 📎 | 1 | Gauntlet (1985) |
 | `+coin-flip-predicate` | Випадкова умова в програмі | game-logic/program | 🌱 | 1 | RoboMind |
 | `+coin-hint` | Підказка за внутрішню валюту | game-logic/difficulty | 🌱 | 1 | Crossmath (математичний кросворд) |
 | `+coin-magnet` | Магніт: предмети в радіусі летять до гравця | entities/interact | 📎 | 1 | Tomb of the Mask |
 | `+coin-wallet` | Валюта між рівнями | game-logic/economy | 📎 | 1 | Wordscapes |
+| `+coincidence-gate` | Плитка спрацьовує від двох сигналів одночасно | game-logic | 📎 | 1 | Cadence (Made With Monster Love) |
 | `+coins-upgrade-items` | Монети покращують предмети | game-logic/economy | 🌱 | 1 | Magpie (7DRL 2023) |
 | `+collapse-on-step` | Блок обвалюється під ногами | entities/state | 🌱 | 1 | Blocks That Matter |
 | `+collapse-structure` | Обвал без опори | entities/interact | 🥉 | 1 | Fort Triumph |
@@ -1779,21 +1900,28 @@
 | `+collectible-gifts` | Нагорода за главу — колекційний предмет | levels/progression | 🌱 | 1 | Animal Planner |
 | `+collectible-secrets` | Прихована колекційка в рівні | levels/progression | 🌱 | 1 | Paper Trail |
 | `+collectible-unlock` | Колекційні предмети відкривають приховані рівні | levels/progression | 🌱 | 1 | TRAILS (PurpleSloth) |
+| `+collectible-unlocks-bonus` | Зібрані скарби відкривають бонусні рівні | levels/progress | 🌱 | 1 | ilomilo |
 | `+collector-zone` | Зона-стік рахує зібране | game-logic/score | 🌱 | 1 | Sandustry |
 | `+collide-match-burst` | Удар ковзного блока об свій колір → вибух групи | entities/interact | 📎 | 1 | Petal Crash |
+| `+collinear-lines` | ≥N обʼєктів на одній прямій | game-logic/constraints | 📎 | 1 | Reliquia Park |
 | `+collision-detect` | Виявлення зіткнення рухомих | entities/interact | 📎 | 1 | Advent of Code — сіткові пазли (збірка) |
 | `+collision-fail` | Зіткнення/сходження зупиняє симуляцію | game-logic/lose | 📎 | 1 | Railbound |
+| `+collision-fusion` | Два блоки, що одночасно в'їхали в клітину, зливаються; напрями додаються | entities/interact | 🥈 | 1 | Conveyor Con-fusion |
 | `+collision-junk` | Вороги гинуть від зіткнення між собою, лишають перешкоду | entities/death | 🌱 | 1 | Robots (BSD) / Chase / Daleks |
 | `+collision-kills-all` | Кілька юнітів в одній клітині — гинуть усі | entities/death | 📎 | 1 | Google AI Challenge — Ants |
+| `+collision-layers` | Шари колізій: обʼєкт блокує лише свій шар | entities/legality | 📎 | 1 | Omniban |
 | `+collision-lookup-table` | Зіткнення у вузлі як таблиця 2ⁿ входів | game-logic | 📎 | 1 | Lattice gas automaton (ґратковий газ HPP і FHP) |
 | `+collision-rotate` | Зіткнення в одній клітинці → поворот на 90° | entities/interact | 📎 | 1 | Otomata |
 | `+collision-stops-program` | Зіткнення скасовує решту програми | game-logic/program | 🌱 | 1 | Asteroyds |
 | `+collision-stun-ap-drain` | Зіткнення оглушує: −ОД наступного ходу | entities/combat | 📎 | 1 | Fort Triumph |
 | `+colony-needs-tiers` | Рівні потреб NPC-колоністів | game-logic/win | 🥈 | 1 | Autonauts |
 | `+color-affinity` | Колір бійця прискорює/сповільнює шкали | entities/state | 🌱 | 1 | Gyromancer |
+| `+color-battery-gates` | Кольорові батареї на кнопках свого кольору | entities/interact | 📎 | 1 | Growmi |
+| `+color-block-flood-fill` | Звʼязні плями кольору як одиниці коду | levels/format | 📎 | 1 | Piet |
 | `+color-bomb-block` | Бомба прибирає весь колір | entities/interact | 📎 | 1 | Lup Salad (Rupupu Cube) |
 | `+color-by-first-flip` | Сторона визначається першим відкриттям | game-logic/opponent | 🌱 | 1 | Banqi (Half Chess, Dark Chess) |
 | `+color-by-letter-flood` | Ефект на всі клітини класу | entities/interact | 🌱 | 1 | LOK Digital |
+| `+color-cell-rules` | Колір клітини додає своє правило поверх основного | game-logic/constraints | 📎 | 1 | Homgard |
 | `+color-changer-tile` | Плитка перефарбовує обʼєкт | entities/interact | 📎 | 1 | Yankai's Peak |
 | `+color-coded-powers` | Кольоровий код сили біля стату | entities/state | 📎 | 1 | HeroClix |
 | `+color-complement` | Інверсія кольору | entities/interact | 🌱 | 1 | Chromatron (1–5) |
@@ -1808,12 +1936,14 @@
 | `+color-grid-board` | Поле — мапа відтінків з координатами | interface/render | 📎 | 1 | Hues and Cues |
 | `+color-group-move` | Поштовх однієї частини рухає всі частини того ж кольору | entities/move | 🥉 | 1 | Lock & Pin |
 | `+color-group-to-letters` | Група одного кольору за тапом стає літерами | entities/state | 📎 | 1 | Puzzlejuice |
+| `+color-immunity` | Пастка свого кольору не шкодить аватару | entities/combat | 📎 | 1 | Death Squared |
 | `+color-injection-motion` | Колір задає вектор руху блока | entities/state | 📎 | 1 | Sutte Hakkun |
 | `+color-keyed-movement` | Колір перешкоди визначає, який кубик її рухає і як | entities/move | 🥉 | 1 | Asteroyds |
 | `+color-lanes` | Сутність ходить лише клітинами свого кольору | entities/legality | 🌱 | 1 | Colorboration |
 | `+color-match-support` | Хоч одна опора того ж кольору | entities/legality | 🌱 | 1 | Penguin Party |
 | `+color-matched-cargo` | Потяг бере лише вантаж свого кольору | entities/interact | 🌱 | 1 | Railway Islands - Puzzle (+ Railway Islands 2) |
 | `+color-matched-delivery` | Агенти кольору X доставляють до приймача кольору X | entities/interact | 📎 | 1 | Mini Motorways |
+| `+color-matched-pickup` | Підбирає лише сутність того ж кольору | entities/interact | 🌱 | 1 | Croquet Conundrum |
 | `+color-matched-target` | Ціль рахує лише ресурси свого кольору | game-logic/score | 🌱 | 1 | Avenue |
 | `+color-matched-targets` | Ціль приймає лише ящик свого кольору | game-logic/win | 🌱 | 1 | The Observer's Paradox |
 | `+color-meter-attack` | Метр кольору → атака супернику | game-logic/opponent | 🥈 | 1 | Hexic (Hexic HD, Hexic 2) |
@@ -1826,6 +1956,7 @@
 | `+color-ring-match` | Карта діє лише на клітину свого типу й кольору | entities/legality | 🌱 | 1 | Castle Panic |
 | `+color-runs` | Кольорові серії | game-logic/constraints | 🥉 | 1 | Nonogram (Японський кросворд, Picross, Griddlers, Hanjie) |
 | `+color-sensors` | Сенсори кольору сусідніх клітин | game-logic/program | 📎 | 1 | RoboMind |
+| `+color-sequence-walk` | Пройти кольори в порядку зразка | game-logic/win | 📎 | 1 | Stig |
 | `+color-set-complete` | Перший/другий заповнив усі клітини кольору | game-logic/score | 🌱 | 1 | The Castles of Burgundy (Замки Бургундії) |
 | `+color-set-win` | Перемога квотою кольору або набором | game-logic/win | 🌱 | 1 | ZÈRTZ |
 | `+color-stack-cell` | Клітина-стопка, що приймає ящики свого кольору | entities/legality | 📎 | 1 | SokoSolitaire |
@@ -1834,6 +1965,7 @@
 | `+color-switch-body` | Аватар перемикає власний колір кнопкою | entities/state | 🌱 | 1 | Gabbuchi |
 | `+color-switch-extend` | Перемикач діє на всі обʼєкти кольору | entities/interact | 📎 | 1 | Pushmo / Pullblox (引ク押ス) + Crashmo |
 | `+color-transfer` | Віддати / забрати колір у блока | entities/state | 📎 | 1 | Monocre |
+| `+color-transition-commands` | Команда = зміна кольору між блоками | game-logic/program | 📎 | 1 | Piet |
 | `+color-weighted-spawn` | Колір нової частіше з наявних на полі | entities/spawn | 🌱 | 1 | Soldam |
 | `+colorblind-palette` | Палітра для дальтоніків | interface/settings | 🌱 | 1 | Hextris (Гекстріс) |
 | `+colorblind-shapes` | Кольори дубльовано формами | interface/settings | 🌱 | 1 | Bean and Nothingness |
@@ -1856,6 +1988,7 @@
 | `+column-reel-shift` | Колонки-барабани з рядком читання | entities/move | 🌱 | 1 | TypeShift |
 | `+column-shift-drag` | Зсув блока лише в межах стовпця | interface/input | 🌱 | 1 | Meteos (Метеос) |
 | `+column-swap` | Обміняти два стовпці | entities/move | 🌱 | 1 | Hatris |
+| `+column-wave` | Хвиля стовпцями згори до першого блокера | entities/interact | 🥉 | 1 | Undertoe |
 | `+combat-animation` | Окрема сцена поєдинку | interface/render | 📎 | 1 | Battle Isle |
 | `+combat-arena` | Взяття вирішує мініігра | game-logic/opponent | 🥇 | 1 | Archon: The Light and the Dark |
 | `+combat-arrows` | Стрілка цілі атаки | entities/combat | 📎 | 1 | Artifact |
@@ -1871,6 +2004,7 @@
 | `+combo-chain` | Ланцюг тактик союзників з множником | entities/combat | 🥉 | 1 | Dynasty Tactics |
 | `+combo-gated-cards` | Карти з порогом combo і finisher | game-logic/score | 📎 | 1 | Fights in Tight Spaces |
 | `+combo-kill-rewards` | Бонус за кілька вбивств однією дією | game-logic/score | 🌱 | 1 | Shogun Showdown |
+| `+combo-lock-password` | Пароль набирається барабанами в самому світі | interface/menus | 🌱 | 1 | Reliquia Park |
 | `+combo-name-ladder` | Назви комбо за розміром | interface/hud | 🌱 | 1 | Puzzle Pirates — Alchemistry (Алхімія) |
 | `+combo-rewards` | Пороги комбо дають нагороди | game-logic/score | 📎 | 1 | Downwell |
 | `+combo-steal` | Комбо краде предмет | entities/interact | 🌱 | 1 | Hoshigami: Ruining Blue Earth |
@@ -1903,6 +2037,7 @@
 | `+companion-app-overlord` | Застосунок грає майстра | game-logic/opponent | 🥇 | 1 | Descent: Journeys in the Dark |
 | `+companion-app-referee` | Пристрій / застосунок веде приховану сутність для настолки | code/architecture | 🥉 | 1 | Stop Thief (Stop Thief!) |
 | `+companion-block` | Супутник-блок, що ходить синхронно з аватаром | entities/move | 🥉 | 1 | Monument Valley |
+| `+companion-blocker` | Супутник-барʼєр без атаки: займає клітину позаду | entities/move | 📎 | 1 | Dragon Crystal (ドラゴンクリスタル ツラニの迷宮) |
 | `+companion-clear` | Блок зникає лише разом із блоком-напарником в області | entities/interact | 📎 | 1 | Cleopatra Fortune |
 | `+comparator-modes` | Порівняння / віднімання сигналів | game-logic | 🌱 | 1 | Minecraft — редстоун |
 | `+compartment-graph` | Поле з камер, стінки — ребра | entities/legality | 🥉 | 1 | Tricone Lab |
@@ -1911,6 +2046,7 @@
 | `+compat-pairs` | Таблиця сумісності пар будівель у зоні: ±для сегментів | entities/state | 📎 | 1 | Hot Springs Story |
 | `+complement-merge` | Злиття доповнювальних | entities/legality | 🌱 | 1 | Threes! |
 | `+completion-certificate` | Нагорода поза грою за проходження | interface/menus | 🌱 | 1 | Championship Lode Runner і Lode Runner Legacy |
+| `+completion-gate` | Двері за кількістю пройдених рівнів | levels/progression | 🌱 | 1 | Give Up the Ghost: a puzzle checklist |
 | `+component-power-batteries` | Подвійні компоненти працюють лише з витратою батареї | entities/state | 🌱 | 1 | Galaxy Trucker |
 | `+component-wear-failure` | Знос модуля → шанс відмови | entities/state | 📎 | 1 | Duskers |
 | `+compound-piece` | Складена фігура = обʼєднання патернів | entities/legality | 🌱 | 1 | Capablanca chess (шахи Капабланки) і сімʼя 10×8 |
@@ -1924,10 +2060,12 @@
 | `+conditional-hand-swap` | Обмін руки лише за умови | game-logic/economy | 🌱 | 1 | Qwirkle + Ingenious (Квіркл, Genial) |
 | `+conditional-held-item` | Команда виконується за вмістом клешні/руки | game-logic/program | 📎 | 1 | Cargo-Bot |
 | `+conditional-rules` | Умовні правила ON/NEAR/FACING | game-logic/rules | 🥈 | 1 | Baba Is You |
+| `+conditional-switch` | Стрілка за станом потяга (порожній / навантажений) | entities/interact | 📎 | 1 | Upalu Mundi |
 | `+conduct-charge` | Метал заряджається й вмикає пристрої | entities/interact | 📎 | 1 | Tetrobot and Co. |
 | `+conductive-surface` | Поверхня, якої торкається гравець, стає заряженою й живить механізми | entities/state | 🥉 | 1 | ElecHead |
 | `+conductive-tool` | Інструмент проводить шкоду (струм) до гравця | entities/death | 📎 | 1 | The Electrifying Incident: A Monster Mini-Expedition |
 | `+conducts` | Добровільні обмеження, що відстежуються | interface/results | 📎 | 1 | NetHack |
+| `+confirm-to-win` | Мету досягнуто — гра сигналізує, гравець підтверджує клавішею | game-logic/win | 🌱 | 1 | Secure |
 | `+congruent-halves` | Блок з двох конгруентних частин | game-logic/constraints | 🥉 | 1 | Double Choco (Дабл-чоко) |
 | `+connect-all-win` | Зʼєднати всі свої фігури | game-logic/win | 📎 | 1 | Breakthrough і Lines of Action (Прорив і Лінії дії) |
 | `+connect-goals-win` | Перемога — зʼєднати цілі мережею | game-logic/win | 🥉 | 1 | Creeper World |
@@ -1977,9 +2115,12 @@
 | `+continuing-effect-card` | Тривалий ефект з призупиненням за умовою | entities/state | 🥉 | 1 | Knightmare Chess |
 | `+continuous-cell-state` | Неперервний стан клітини | game-logic | 📎 | 1 | Lenia |
 | `+contracts-and-orders` | Часткові контракти за рік проти повних замовлень | game-logic/economy | 📎 | 1 | Pipeline (Capstone Games) |
+| `+control-by-state` | Під керуванням усі сутності з певним станом; стан змінюється — змінюється й набір | entities/move | 🥉 | 1 | Desperatea |
+| `+control-handover` | Передати керування сутності, на якій стоїш | entities/state | 📎 | 1 | Vext Edit |
 | `+control-n-cells-win` | Перемога — N клітин під контролем наприкінці ходу | game-logic/win | 🌱 | 1 | The Eye of Judgment |
 | `+control-points-win` | Перемога утриманням точок | game-logic/win | 📎 | 1 | Archon: The Light and the Dark |
 | `+control-reverse-pickup` | Шкідливий предмет перевертає керування | entities/state | 🌱 | 1 | Snake Rattle 'n' Roll |
+| `+control-transfer` | Керування переходить до копії аватара | entities/state | 📎 | 1 | Give Up the Ghost: a puzzle checklist |
 | `+controllable-lift` | Ввід переходить з аватара на механізм | entities/move | 🥉 | 1 | Miner 2049er |
 | `+controller-level-unlocks` | Рівень бази відкриває споруди | game-logic/economy | 🥉 | 1 | Screeps (Screeps World, Screeps Arena) |
 | `+controls-as-objects` | Керування — обʼєкти на полі | entities/legality | 📎 | 1 | One More Button |
@@ -2009,10 +2150,13 @@
 | `+coop-split-control` | Два гравці керують двома аватарами одночасно; соло — перемикання | entities/move | 🥉 | 1 | Quadrax |
 | `+coop-turn-budget` | Кооператив зі спільним лімітом ходів (Duet) | game-logic/opponent | 📎 | 1 | Codenames |
 | `+coop-vs-boss` | Кооп проти AI-боса зі спільним полем | game-logic/opponent | 🥇 | 1 | Tetris Effect / Tetris Effect Connected |
+| `+coordinate-clues` | Підказка-координата клітини про одне слово | interface/hud | 🌱 | 1 | 12 Word Searches |
 | `+coordinate-input` | Ввід координат текстом замість кліку | interface/input | 🌱 | 1 | Hurkle |
 | `+coordinate-teleport` | Телепорт за введеними координатами; камінь = загибель | entities/interact | 🌱 | 1 | Wizardry: Proving Grounds of the Mad Overlord |
 | `+coordinate-warp` | Телепорт за координатами | entities/interact | 📎 | 1 | Dungeon Encounters |
 | `+coordinator-capture` | Взяття на перехресті з іншою своєю фігурою | entities/combat | 🥉 | 1 | Baroque chess / Ultima (Бароккові шахи) |
+| `+copy-arrow` | Стрілка копіює обʼєкт на клітину-приймач | entities/spawn | 🥉 | 1 | Give Up the Ghost: a puzzle checklist |
+| `+copy-counter-palette` | Палітра на полі: взірець + лічильник копій | entities/legality | 🥉 | 1 | Vext Edit |
 | `+copy-merge` | Кілька сканерів в один друк | entities/interact | 🥉 | 1 | RE:COPY |
 | `+copy-move-pattern` | Копіювання патерну сусіда | entities/legality | 🥉 | 1 | Hive (Вулик) |
 | `+copy-neighbor` | Сутність копіює тип іншої | entities/interact | 📎 | 1 | Random Dice (+ Rush Royale) |
@@ -2043,6 +2187,8 @@
 | `+corpse-recovery` | Загиблий загін лежить у світі до рятувальників | game-logic/lose | 📎 | 1 | Wizardry: Proving Grounds of the Mad Overlord |
 | `+corpse-revive` | Труп повстає, якщо не знищити | entities/death | 📎 | 1 | Cataclysm: Dark Days Ahead |
 | `+corpse-revive-window` | Труп з вікном воскресіння | entities/state | 🥉 | 1 | Hero Academy |
+| `+corpse-run` | Труп минулого забігу повертає частину втраченого | game-logic/economy | 🌱 | 1 | Loot River |
+| `+corpse-stepping-stone` | Тіло ворога у воді стає мостом | entities/interact | 🌱 | 1 | Leaf's Odyssey |
 | `+corpse-terrain` | Тіло після смерті стає рельєфом | entities/death | 📎 | 1 | Sandman: Every Death Builds |
 | `+corridor-majority-bonus` | Бонус за найбільшу групу серед гравців | game-logic/score | 🌱 | 1 | Cascadia + Calico (Каскадія, Калико) |
 | `+corruption-block` | Зона, що блокує промінь | entities/legality | 🌱 | 1 | SOLAS 128 |
@@ -2065,6 +2211,7 @@
 | `+counter-gate` | Ворота відчиняються на порозі глобального лічильника | entities/interact | 🌱 | 1 | It 2: They/Them |
 | `+counter-gem-countdown` | Сміття з лічильником ходів до дозрівання | game-logic/opponent | 🌱 | 1 | Super Puzzle Fighter II Turbo |
 | `+counter-move-all` | Поштовх зсуває всі інші обʼєкти назустріч | entities/move | 📎 | 1 | increpare: Scalesoban і Explodoban |
+| `+counter-scroll` | Обʼєкт прокручується в протилежний бік | entities/move | 🌱 | 1 | A Man Walks Into A Scrollbar |
 | `+counter-stance` | Стійка контратаки | entities/combat | 📎 | 1 | Fights in Tight Spaces |
 | `+counter-variables` | Змінні A–E з арифметикою в програмі юніта | game-logic/program | 📎 | 1 | Carnage Heart |
 | `+counterattack` | Ціль бʼє у відповідь | entities/combat | 📎 | 1 | Duelyst |
@@ -2105,6 +2252,7 @@
 | `+crash-fail` | Зіткнення в каскаді = провал | game-logic/lose | 📎 | 1 | Pushover (Push-Over) |
 | `+crash-grows-tail` | Аварія подовжує хвіст | entities/state | 🌱 | 1 | Hustle (Gremlin, 1977) |
 | `+crash-keeps-layout` | Провал симуляції не скидає розкладку | game-logic/history | 🌱 | 1 | Railway Islands - Puzzle (+ Railway Islands 2) |
+| `+crash-mat` | Клітина скасовує шкоду падіння | entities/state | 🌱 | 1 | 3D Lemmings |
 | `+crash-on-blocked` | Рух до упору в іншу фігуру — аварія/штраф | entities/death | 📎 | 1 | Unblock Me і Parking Jam 3D (мобільні Rush Hour) |
 | `+crash-on-obstacle` | Аварія зупиняє симуляцію | game-logic/lose | 🌱 | 1 | Trackastrophe! |
 | `+crash-transfers-board` | Аварія віддає суперникові очки поля | game-logic/score | 📎 | 1 | Hustle (Gremlin, 1977) |
@@ -2117,6 +2265,7 @@
 | `+creature-photo-codex` | Фото заповнює довідник | interface/menus | 📎 | 1 | Toki Tori 2 / Toki Tori 2+ |
 | `+crew-deck-mix` | Колода зі стартових наборів трьох персонажів | game-logic/economy | 📎 | 1 | Cobalt Core |
 | `+crew-hauling` | Агенти несуть ресурс від джерела до споживача | entities/move | 🥈 | 1 | Cosmoteer: Starship Architect & Commander |
+| `+crew-size-task` | Завдання виконується, коли поруч N агентів | game-logic | 🌱 | 1 | SteamWorld Build |
 | `+crit-meta-stat` | Мета-стат з прогресії діє в кожному матчі | game-logic/economy | 🌱 | 1 | Random Dice (+ Rush Royale) |
 | `+critical-failure` | Критичний промах: заклинило, впустив, влучив у себе | entities/combat | 🌱 | 1 | Fallout 1–2 (покроковий бій) |
 | `+critical-value` | Скільки атаки до меншої кількості раундів | interface/hud | 📎 | 1 | Tower of the Sorcerer / Magic Tower (魔塔) |
@@ -2129,6 +2278,7 @@
 | `+cross-color-push` | Групи різних кольорів штовхають одна одну ланцюгом | entities/legality | 📎 | 1 | PushTOOL |
 | `+cross-device-session` | Продовжити партію на іншому пристрої | code/architecture | 🥇 | 1 | Dota Underlords |
 | `+cross-floor-drop` | Обʼєкт провалюється на поверх нижче | entities/interact | 🥉 | 1 | Pokémon overworld puzzles (Gen I–II, лід, валуни Strength, спінери, телепорти) |
+| `+cross-layer-crate` | Ящик у двох шарах одразу | entities/legality | 🌱 | 1 | Vext Edit |
 | `+cross-mark` | Хрестик "точно порожньо" | interface/input | 🌱 | 1 | Nonogram (Японський кросворд, Picross, Griddlers, Hanjie) |
 | `+cross-mode-link` | Режими гри обмінюються ресурсами | code/architecture | 🥉 | 1 | ActRaiser (режим симуляції) |
 | `+cross-multiset-clue` | Підказка = мультимножина цифр клітинки та її сусідів, без порядку | game-logic/constraints | 🌱 | 1 | Suraido (スライド) |
@@ -2146,6 +2296,7 @@
 | `+crossover-letter` | Рівно одна спільна літера на позиції, окремий колір | game-logic/constraints | 🌱 | 1 | Xordle |
 | `+crossword-fragments` | Кросворд, розрізаний на фрагменти | entities/legality | 🥉 | 1 | Bonza Word Puzzle |
 | `+crossword-runs` | Усі горизонтальні й вертикальні відрізки мусять бути словами | game-logic/constraints | 🥉 | 1 | Knotwords |
+| `+crouch-height` | Поза героя змінює його висоту і висоту дії | entities/state | 📎 | 1 | Hiding Spot |
 | `+crouch-squeeze` | Присісти й пролізти в низький прохід | entities/move | 🌱 | 1 | Monster Max |
 | `+crow-raid` | Шкідник поза зоною захисту | entities/spawn | 📎 | 1 | Stardew Valley — фермерська сітка |
 | `+crowd-in-frame-reward` | Підказувач отримує по очку за кожну здогадку в рамці | game-logic/score | 🌱 | 1 | Hues and Cues |
@@ -2156,6 +2307,7 @@
 | `+crush-by-push` | Розчавити ворога присунутим обʼєктом | entities/combat | 📎 | 1 | Void Stranger |
 | `+crush-enemy-by-fall` | Ворог гине під падаючим обʼєктом | entities/death | 🌱 | 1 | Survivors |
 | `+crush-hierarchy` | У клітині сильніший тип знищує слабших | entities/combat | 🌱 | 1 | Kaggle Crawl |
+| `+crush-into-wall` | Обʼєкт, виштовхнутий у стіну, руйнується | entities/interact | 🌱 | 1 | Droplets |
 | `+crush-moving-block` | Рухомий блок розчавлює | entities/death | 🌱 | 1 | Chack'n Pop |
 | `+crush-transform` | Падіння каменя: обидва зникають, зʼявляється продукт за типом | entities/interact | 📎 | 1 | Troddlers |
 | `+crushed-enemy-prop` | Розчавлений ворог — тимчасова опора | entities/state | 📎 | 1 | Flappy (フラッピー) |
@@ -2188,11 +2340,13 @@
 | `+custom-element-rules` | Елемент, заданий правилами змін | entities/interact | 🥇 | 1 | Rocks'n'Diamonds |
 | `+custom-game-mode` | Партія з власними параметрами | interface/settings | 📎 | 1 | Sandtrix (Sandtrix+) |
 | `+custom-graph-generator` | Користувацькі генератори форми графа для рандом-рівнів | levels/generation | 🥈 | 1 | Patterna |
+| `+custom-palette` | Палітра фарб: авто на пазл, свої набори, випадковий колір, що уникає сусідів | interface/settings | 📎 | 1 | The Artisan of Glimmith |
 | `+custom-piece-stickers` | Конструктор власних фігур з наліпок-іконок | levels/editor | 🥈 | 1 | The Duke |
 | `+customer-orders` | Клієнти із замовленнями на касах | game-logic/opponent | 🥉 | 1 | Burger Maker |
 | `+cut-off-disconnected` | Плитки, відрізані від бази, втрачаються | game-logic/constraints | 📎 | 1 | Wordbase |
 | `+cut-part` | Розріз багатоклітинної деталі на дві | entities/interact | 🥉 | 1 | Kaizen: A Factory Story |
 | `+cut-support` | Атака зрізає підтримку | entities/combat | 📎 | 1 | Diplomacy |
+| `+cut-tail-to-block` | Відрізане тіло стає блоком-ланцюжком | entities/interact | 🥈 | 1 | Walking Dots (てんてん虫) |
 | `+cutoff-rules` | Достроковий кінець за домінуванням | game-logic | 📎 | 1 | Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode) |
 | `+cybernetic-slots` | Імпланти за частинами тіла з ліміт-очками | entities/state | 📎 | 1 | Caves of Qud |
 | `+cycle-budget` | Місія триває N циклів, оператори коштують цикли | game-logic/program | 🌱 | 1 | ChipWits |
@@ -2203,8 +2357,10 @@
 | `+cyclic-market` | Кільцевий ринок з вікном після фішки | game-logic/economy | 📎 | 1 | Patchwork (Печворк) |
 | `+cyclic-teleport-group` | Телепорти групами, перехід до наступного | entities/interact | 📎 | 1 | Robbo |
 | `+cylinder-tower-view` | Сітка-циліндр з рендером передньої половини | interface/render | 🥈 | 1 | Nebulus |
+| `+d20-combat` | Кидок d20 проти класу броні | entities/combat | 📎 | 1 | YENDOR |
 | `+daily-attempt-limit` | N спроб щоденного пазла | levels/bank | 🌱 | 1 | Puzzmo: Pile-Up Poker |
 | `+daily-attempts` | N спроб на добу зі скиданням за годинником | game-logic/save | 📎 | 1 | Mini Cactpot (Final Fantasy XIV) |
+| `+daily-attempts-limit` | N спроб щоденного пазла | levels/bank | 🌱 | 1 | TeenyShire |
 | `+daily-champion` | Звання за перший найвищий рахунок дня | interface/results | 🌱 | 1 | Puzzmo: Bongo |
 | `+daily-collectible-meter` | Збирати предмети в щоденних пазлах → шкала нагород місяця | levels/bank | 📎 | 1 | Wordscapes |
 | `+daily-dungeon-reset` | Рівень відновлюється щодня з ворогами й тимчасовими бонусами | levels/progression | 📎 | 1 | Requiem of Reuinis (列乌尼斯的挽歌) |
@@ -2216,6 +2372,8 @@
 | `+daily-reset-run` | Забіг-день: усе скидається, лишаються апгрейди | levels/progression | 🥉 | 1 | Blue Prince |
 | `+daily-shared-realm` | Спільна мапа дня з журналом | levels/bank | 📎 | 1 | Keepsweeper |
 | `+daily-solution-reveal` | Розвʼязок пазла дня — наступного дня | levels/bank | 🌱 | 1 | Dissembler |
+| `+daily-unlimited-retries` | Щоденне поле: спроби без ліміту, у таблицю — найкраща | interface/results | 🌱 | 1 | Dave's Word Game |
+| `+dam-water` | Тверда клітина перекриває потік / фонтан | entities/interact | 📎 | 1 | Kukulcan |
 | `+damage-allocation` | Пул клітини і розподіл шкоди | entities/combat | 📎 | 1 | Dreamblade |
 | `+damage-allocation-chart` | Таблиця розподілу пошкоджень | entities/state | 📎 | 1 | Star Fleet Battles |
 | `+damage-as-garbage-tile` | Отримана шкода падає плиткою в колодязь | entities/combat | 📎 | 1 | Mosaic (7DRL 2022) |
@@ -2246,6 +2404,7 @@
 | `+dark-zone` | Клітини постійної темряви: рух наосліп, гасять світло | interface/render | 🌱 | 1 | Wizardry: Proving Grounds of the Mad Overlord |
 | `+darkness-light-radius` | Темрява, коло світла навколо гравця | interface/render | 🥉 | 1 | Lode Runner: The Legend Returns |
 | `+darkness-needs-light` | Темна зона потребує ліхтаря | interface/render | 📎 | 1 | Exit |
+| `+darkness-spread` | Хвиля, що поглинає все поле крізь стіни | entities/interact | 🌱 | 1 | Evil Eye |
 | `+dash` | Ривок з перезарядкою | entities/move | 🌱 | 1 | Yawnoc |
 | `+dash-charge` | Ривок до клітини з дальністю, що падає від сусідів | entities/move | 🌱 | 1 | Stoneshard |
 | `+dash-dodge` | Ривок до фази атаки як ухилення | entities/move | 📎 | 1 | Atlas Reactor |
@@ -2264,8 +2423,10 @@
 | `+dead-end-abandon` | Глухий кут забирає джерело | game-logic/lose | 📎 | 1 | Gorby no Pipeline Daisakusen (Gorby's Pipeline) |
 | `+dead-end-avoid` | Втікач уникає видимих тупиків | entities/move | 🥉 | 1 | Pâquerette Down the Bunburrows |
 | `+dead-end-clue` | Підказка = тупик мережі | game-logic/constraints | 📎 | 1 | Nurimisaki (ぬりみさき) |
+| `+dead-end-reverse` | У глухому куті токен розвертається | entities/move | 🌱 | 1 | ABI-DOS |
 | `+dead-line` | Лінія поразки на полі | game-logic/lose | 🌱 | 1 | Land Maker (Builder's Block) |
 | `+dead-pieces` | Мертві фігури вибулого — перешкоди без очок | entities/death | 📎 | 1 | Four-player chess (шахи на чотирьох) |
+| `+dead-reckoning` | Позиція з власних ходів без показу | interface/hud | 🌱 | 1 | Assassinvisible |
 | `+dead-reckoning-position` | Програма сама рахує позицію і напрям | game-logic/program | 🥉 | 1 | ComputerCraft (turtles) |
 | `+dead-row-blocker` | Ворожий блок мертвить цілий ряд | entities/interact | 📎 | 1 | Mad Blocker Alpha |
 | `+dead-square-allowed` | Можна стати туди, звідки нема ходу | entities/legality | 🌱 | 1 | Шогі з твістом руху — Kyoto shogi і Annan shogi (Кіото-шогі, Аннан-шогі) |
@@ -2341,6 +2502,7 @@
 | `+defense-level-timer` | Програма мусить встигнути до атаки | game-logic/lose | 🥉 | 1 | SpaceChem |
 | `+defense-roll` | Захист кидком d12 ≥ порогу, раз на раунд | entities/combat | 🌱 | 1 | Mage Wars |
 | `+definition-plus-wordplay` | Підказка = означення + інструкція | game-logic/constraints | 🥈 | 1 | Cryptic crossword (Криптичний кросворд) |
+| `+deflector-block` | Блок повертає за гранню: 90° / 180° | entities/move | 📎 | 1 | 3D Lemmings |
 | `+defuser-token` | Жетон безпечного відкриття | entities/state | 📎 | 1 | Minesweeper Infinite |
 | `+degrading-shield` | Щит лише проти слабших за останнього заблокованого | entities/combat | 📎 | 1 | Donsol |
 | `+deity-devotion` | Відданість фракції відкриває навички | entities/state | 📎 | 1 | Hoshigami: Ruining Blue Earth |
@@ -2349,6 +2511,7 @@
 | `+delay-shift-program` | Затримка зсуває решту програми на слот | game-logic/program | 🌱 | 1 | Space Alert |
 | `+delayed-action` | Відкладена дія на таймлайні | entities/combat | 🥈 | 1 | Othercide |
 | `+delayed-claim-review` | Заявка перевіряється із затримкою; штраф за хибну | game-logic/info | 📎 | 1 | The Search for Planet X |
+| `+delayed-command-echo` | Супутники виконують команди лідера із затримкою k | entities/move | 🥉 | 1 | bansoko: Class Crossing (ばんそこクロスチェンジ) |
 | `+delayed-doom-status` | Відкладена шкода, що знімається дією | entities/state | 📎 | 1 | Inkulinati |
 | `+delayed-drowning` | Клітина вбиває, якщо лишився на ній довше одного ходу | entities/death | 📎 | 1 | Congo (шахи «Конго») |
 | `+delayed-infection` | Позначена клітина змінює тип через N тіків | entities/state | 🌱 | 1 | Sleeper Cells |
@@ -2380,6 +2543,7 @@
 | `+deploy-zone` | Зона висадки як дилатація забудови | game-logic | 🥉 | 1 | Clash of Clans — розстановка бази на сітці |
 | `+depot-service` | Депо: купівля, сервіс, розворот | game-logic/economy | 📎 | 1 | OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування) |
 | `+depth-biomes` | Біоми змінюються з глибиною | levels/generation | 🥉 | 1 | Dig Dig Boom |
+| `+depth-door` | Двері, відчинені на певній глибині пересимуляції | entities/legality | 📎 | 1 | Forever Wonder Colour |
 | `+depth-effects-table` | Ефекти глибини | entities/interact | 🌱 | 1 | Dwarf Fortress — призначення клітин і рідини |
 | `+depth-filtered-generator` | Генератор із солвером-суддею | levels/generation | 🥈 | 1 | Tactic Toe |
 | `+depth-gauge` | Шкала глибини кольорами | interface/hud | 🌱 | 1 | Blockout (Block Out) |
@@ -2396,9 +2560,12 @@
 | `+describe-button` | Показати формулу/рецепт вибраного елемента | interface/hud | 🌱 | 1 | Tricone Lab |
 | `+design-as-component` | Пройдений дизайн — компонент наступних | game-logic/program | 🥈 | 1 | ComPressure |
 | `+desk-computer-story` | Сюжет через вигаданий робочий компʼютер (пошта, теки, паролі) | interface/menus | 🥉 | 1 | Asteroids Minesweeper |
+| `+despawn-when-stuck` | Автомат, якому нема куди йти, зникає | entities/death | 🌱 | 1 | Mimic (Mimic Classic) |
 | `+desperation-finisher` | Супер-атака лише при малому життя, раз за бій | entities/combat | 🌱 | 1 | BattleCON |
+| `+destination-queue` | Черга цілей сутності з вставкою на початок | game-logic/program | 📎 | 1 | Elevator Saga |
 | `+destructible-block` | Руйнівний блок | entities/combat | 🌱 | 1 | LaserTank |
 | `+destructible-cover` | Укриття з HP | entities/combat | 📎 | 1 | SteamWorld Heist |
+| `+destructible-floor` | Вибух перетворює підлогу на провалля | entities/interact | 📎 | 1 | Bombuzal |
 | `+destructible-spawner` | Спавнер, якого можна зруйнувати | entities/spawn | 🥉 | 1 | Gauntlet (1985) |
 | `+destructible-terrain` | Руйнівні стіни, відбудова | entities/interact | 📎 | 1 | Cogmind |
 | `+destruction-stars` | Зірки за % руйнування + ключова ціль | game-logic/score | 🌱 | 1 | Clash of Clans — розстановка бази на сітці |
@@ -2406,18 +2573,22 @@
 | `+deterministic-physics` | Повністю детермінована клітинна фізика (рекорди й повтори відтворювані) | code/architecture | 🥈 | 1 | OxRox |
 | `+deterministic-rehearsal` | Детермінований прогін з перемоткою | game-logic/history | 🥈 | 1 | tower.defense(): Program The Fight |
 | `+deterministic-seed-run` | Той самий seed + програма = той самий прогін | game-logic/history | 🥉 | 1 | FORK BOMB: A Programming Game |
+| `+detonate-near-player` | Дія підриває всі бомби в радіусі N від гравця | entities/combat | 📎 | 1 | Conveyor Con-fusion |
 | `+device-copy` | Копіювальні пристрої теж копіюються; копії запускають копії | entities/spawn | 🥈 | 1 | RE:COPY |
 | `+device-disruptor-enemy` | Ворог збиває/перемішує будови гравця | entities/interact | 📎 | 1 | Lethal Geometry |
 | `+device-flip-midwave` | Перекинути дзеркало кліком посеред хвилі | interface/input | 🌱 | 1 | Lethal Geometry |
+| `+device-pairing` | Спарювання виконавця з пультом | interface/settings | 🌱 | 1 | Cubetto |
 | `+devolve-on-hit` | Ворог від влучання слабшає на рівень | entities/combat | 🌱 | 1 | Dandy / Dark Chambers |
 | `+devour-downed-enemy` | Поглинути поваленого ворога за ресурс | entities/interact | 🌱 | 1 | Shadow Labyrinth |
 | `+diagnosis-pipeline` | Агент проходить станції, доки параметр не досягне порогу | game-logic | 📎 | 1 | Theme Hospital |
 | `+diagonal-chain` | Групи, що торкаються кутом, утворюють ланцюг; самотня група — помилка | game-logic/constraints | 🌱 | 1 | Chained Block |
+| `+diagonal-conveyor` | Діагональний конвеєр із ковзанням уздовж вільної осі | entities/move | 📎 | 1 | Conveyor Con-fusion |
 | `+diagonal-cross-gaps` | Діагональний перетин сліду лише між ланками | entities/legality | 📎 | 1 | Snafu (Intellivision) |
 | `+diagonal-deflector` | Діагональний відбивач | entities/interact | 📎 | 1 | Ricochet Robots (Rasende Roboter) |
 | `+diagonal-gap-pass` | Діагональний прохід між кутами стін | entities/legality | 📎 | 1 | Ice-sliding puzzles (Inertia і жанр «ковзай до упору») |
 | `+diagonal-laser` | Промінь по діагоналі | entities/combat | 🌱 | 1 | Would You Love Me If I Was a Snake? |
 | `+diagonal-only-tile` | Плитка зникає лише в діагональній лінії | entities/interact | 🌱 | 1 | Wario's Woods |
+| `+diagonal-orientation` | Довгий предмет стоїть по діагоналі сітки | entities/state | 🥉 | 1 | Couch Installation Service |
 | `+diagonal-run-check` | Заборонений ряд у 8 напрямках з розривами | game-logic/constraints | 🌱 | 1 | Nondango (ノンダンゴ) |
 | `+dialogue-phrase-menu` | Розмова меню фраз з будь-якою істотою | entities/interact | 📎 | 1 | Bloodwych |
 | `+diamond-board` | Поле-ромб у квадратних координатах | levels/format | 🌱 | 1 | Terminal (Correlation One) |
@@ -2449,9 +2620,11 @@
 | `+dice-tray-shuffle` | Поле з кубиків: позиція + грань випадкові | levels/generation | 🌱 | 1 | Boggle |
 | `+dice-unfold-path` | Кубик розгортається в шматок поля | entities/legality | 🥉 | 1 | Yu-Gi-Oh! Dungeon Dice Monsters |
 | `+dichroic-mirror` | Дзеркало, що відбиває лише частину кольору | entities/interact | 📎 | 1 | OCTOPTICOM |
+| `+dictionary-bypass` | Реліквія знімає перевірку словника | game-logic/constraints | 📎 | 1 | Watchword |
 | `+die-modifier-tokens` | Жетони ±1 до кубика | game-logic/economy | 🌱 | 1 | The Castles of Burgundy (Замки Бургундії) |
 | `+die-selects-piece` | Кубик визначає, яку фігуру грати | game-logic/opponent | 🌱 | 1 | Tetris Link |
 | `+difficult-terrain` | Подвійна вартість руху | entities/move | 🌱 | 1 | D&D grid combat (Dungeons & Dragons 5e) |
+| `+difficulty-as-investment` | Гравець купує складність заради більшого доходу | game-logic/difficulty | 📎 | 1 | YENDOR |
 | `+difficulty-card-pick` | Вибір 1 з 2 правил-ускладнень | game-logic/difficulty | 📎 | 1 | PlateUp! |
 | `+difficulty-for-reward` | Важчий старт — більше ресурсу | game-logic/difficulty | 🌱 | 1 | Sagrada (Саграда) |
 | `+difficulty-ladder` | Кожна перемога піднімає складність наступної гри | game-logic/settings | 🌱 | 1 | Larn |
@@ -2459,6 +2632,7 @@
 | `+difficulty-runes` | Модифікатори складності, що комбінуються | game-logic/difficulty | 📎 | 1 | Dungeon Warfare |
 | `+difficulty-tiers` | Кольорові рівні складності груп | interface/hud | 🌱 | 1 | NYT Connections (+ Strands) |
 | `+difficulty-vote` | Голос гравців за складність | levels/bank | 📎 | 1 | RoboZZle |
+| `+dig-ambush` | Розкопав ділянку — вилізли вороги | entities/spawn | 🌱 | 1 | SteamWorld Build |
 | `+dig-by-input-gesture` | Копання жестом вводу | entities/move | 🌱 | 1 | Liero |
 | `+dig-down-layer` | Копання діри на рівень нижче | levels/progression | 📎 | 1 | Pâquerette Down the Bunburrows |
 | `+dig-out-first` | Спершу відкопатись | entities/legality | 🌱 | 1 | Forbidden Desert |
@@ -2470,6 +2644,7 @@
 | `+dig-to-target` | Прокопати до цільової клітини | game-logic/win | 📎 | 1 | Columns (Колонки) |
 | `+dig-wall` | Копання стіни інструментом за міцністю | entities/interact | 📎 | 1 | Crypt of the NecroDancer |
 | `+dig-walls` | Прокопування стін | entities/legality | 📎 | 1 | Caves of Qud |
+| `+digest-step` | Їжа просувається тілом за командою; з хвоста — нова клітина | entities/state | 🥉 | 1 | Walking Dots (てんてん虫) |
 | `+digit-highlight` | Підсвітка однакових цифр і peer-клітинок | interface/input | 📎 | 1 | Sudoku (Судоку, Number Place) |
 | `+dimension-phase` | Два шари предметів, сутність у одному з них | field | 🥉 | 1 | Google Snake (Змійка в пошуку Google) |
 | `+dip-combine` | Застосувати предмет до предмета/клітини | entities/interact | 🥉 | 1 | NetHack |
@@ -2478,13 +2653,17 @@
 | `+direction-arrow` | Стрілка задає старт і напрям слова | game-logic/constraints | 🌱 | 1 | Arrowword (Сканворд) |
 | `+direction-arrow-tile` | Стрілка на клітині розвертає того, хто став | entities/interact | 📎 | 1 | ChuChu Rocket! |
 | `+direction-hint` | Відгук-напрям до схованого (знак по кожній осі) | game-logic/constraints | 🌱 | 1 | Hurkle |
+| `+direction-indicator-boarding` | Індикатор напрямку вирішує, хто сідає | entities/interact | 🌱 | 1 | Elevator Saga |
 | `+direction-marker-growth` | Маркер напряму росту поселення | entities/spawn | 📎 | 1 | ActRaiser (режим симуляції) |
+| `+direction-pointer-codel-chooser` | Два вказівники вибору виходу (напрямок + бік) | game-logic/program | 📎 | 1 | Piet |
 | `+direction-restricted-moves` | Пазл дозволяє лише деякі напрямки | levels/rules | 🌱 | 1 | Petal Crash |
 | `+direction-slots` | Слот предмета на кожен напрямок руху | entities/state | 🥉 | 1 | Clover's Quadrants |
 | `+directional-armor` | Броня лише з одного боку | entities/combat | 📎 | 1 | worDefense |
 | `+directional-attacks` | Стрілки атак на гранях фігури | entities/combat | 📎 | 1 | Neuroshima Hex! |
 | `+directional-cover` | Укриття діє лише проти пострілу з протилежного боку | entities/combat | 📎 | 1 | CodinGame Summer Challenge 2025: Soak Overflow |
+| `+directional-fold-clue` | Ціль лінії = послідовне застосування операцій плиток від дальнього кінця до підказки; два кінці — дві цілі | game-logic/constraints | 🥉 | 1 | CrossCells |
 | `+directional-gate` | Прохід лише по осі | entities/legality | 🌱 | 1 | XOR |
+| `+directional-glue` | Склеювання лише вздовж осі, що залежить від типу блока | entities/interact | 📎 | 1 | An Architect's Adventure |
 | `+directional-gravity` | Гравітація за типом обʼєкта | entities/move | 🥉 | 1 | XOR |
 | `+directional-hit-arc` | Шкода лише в секторі напрямку руху | entities/combat | 🥉 | 1 | Hyper Chinese Chess (即时象棋：旧棋新弈, сянці в реальному часі) |
 | `+directional-line-clue` | Плитка-стрілка: підказка вздовж напрямку | game-logic/constraints | 📎 | 1 | hexceed |
@@ -2504,6 +2683,7 @@
 | `+discard-bonus-hand` | Скид як бонус-рука за умови | game-logic/score | 🌱 | 1 | Puzzmo: Pile-Up Poker |
 | `+discard-cooldown-piles` | Картка повертається через N ходів (черга купок) | game-logic/economy | 🌱 | 1 | BattleCON |
 | `+discard-for-mana` | Скинути карту з руки → +1 магії | game-logic/economy | 🌱 | 1 | Summoner Wars |
+| `+discard-for-move` | Скинути карту/плитку → безкоштовний крок | game-logic/economy | 🌱 | 1 | Beacon Patrol |
 | `+discard-limit` | Скидання з лімітом поспіль | game-logic/lose | 📎 | 1 | Alchemy (PopCap) |
 | `+discard-stack` | Викинути стос/тарілку з втратою chain | entities/interact | 🌱 | 1 | Burger Maker |
 | `+discard-to-activate` | Скинути карту, щоб активувати відповідні на полі | game-logic/turns | 📎 | 1 | Riftforce |
@@ -2523,9 +2703,11 @@
 | `+dismiss-for-recruit` | Звільнити члена загону за кращого рекрута | game-logic/economy | 🌱 | 1 | Sunken Stones |
 | `+dispatch-missions` | Відправити юніта на місію без бою | levels/progression | 📎 | 1 | Final Fantasy Tactics Advance |
 | `+dispatch-waves` | Хвилі поїздів з нагородою між ними (Rush Hour) | game-logic/waves | 📎 | 1 | Rail Route |
+| `+disposal-goal` | Мета — доставити всі обʼєкти в контейнер-утилізатор | game-logic/win | 🌱 | 1 | BarrelBots |
 | `+disqualify-return` | Дискваліфікований повертає ресурси в загальний пул | game-logic/lose | 🌱 | 1 | Bananagrams |
 | `+disrupt-vs-destroy` | Два пороги шкоди | entities/combat | 📎 | 1 | Dreamblade |
 | `+disruptor-cat` | Збурювач стану | entities | 📎 | 1 | A Little to the Left |
+| `+dissolve-block` | Перешкода зникає від рідини | entities/interact | 🌱 | 1 | Desperatea |
 | `+distance-field-flow` | Поле відстаней від цілі + крок униз по градієнту для багатьох агентів | entities/move | 🥉 | 1 | Liquid War |
 | `+distance-probe` | Зонд: кільця відстані до прихованих цілей | game-logic/constraints | 📎 | 1 | Triangulation |
 | `+distance-punt` | Удар переносить обʼєкт на відстань розгону | entities/interact | 📎 | 1 | Punt mazes |
@@ -2542,6 +2724,7 @@
 | `+district-product-scoring` | Райони × максимум у районі | game-logic/score | 🌱 | 1 | Next Station: London |
 | `+district-slots` | Ліміт спеціалізованих клітин від розміру міста | game-logic | 🌱 | 1 | Civilization VI — шар районів і бонусів суміжності |
 | `+district-unrest` | Неспокій регіонів → загальна анархія | progression | 📎 | 1 | XCOM: Chimera Squad |
+| `+divergence-emotes` | Реакція героя на розбіжність повтору | interface/hud | 🌱 | 1 | Forever Wonder Colour |
 | `+dividend-or-withhold` | Виплатити дохід чи залишити в казні | game-logic/economy | 🌱 | 1 | 18XX (1830: Railways & Robber Barons та родина) |
 | `+divine-punish-boon` | Кари й дари з таблиць за порогом очок | game-logic/economy | 📎 | 1 | POWDER |
 | `+division-gate` | Брама за частку ресурсу | entities/interact | 🌱 | 1 | Towers of Scale |
@@ -2568,13 +2751,18 @@
 | `+door-breach-opening` | Бій починається з прориву дверей | levels/progression | 🌱 | 1 | Tactical Breach Wizards |
 | `+door-connection-placement` | Тайл кладеться прорізом до прорізу | entities/legality | 🥉 | 1 | Castles of Mad King Ludwig (Замки божевільного короля Людвіга) |
 | `+door-cooldown` | Прохід закривається на час після використання | entities/legality | 📎 | 1 | Wizard of Wor |
+| `+door-crush` | Двері, що зачиняються, нищать сегмент і чавлять аватара; вантаж їх тримає | entities/interact | 📎 | 1 | Vertebrae |
+| `+door-cuts-line` | Двері, що зачиняються, стирають лінію | entities/interact | 🌱 | 1 | Edge Case |
 | `+door-hacking` | Захоплення сектора зламом дверей | entities/interact | 📎 | 1 | Startopia |
 | `+door-handle-side` | Двері відчиняються лише з одного боку | entities/legality | 🌱 | 1 | Door Door |
+| `+door-hold-open` | Кнопка утримання: двері відчинені, поки на ній щось є | entities/interact | 🌱 | 1 | Handshakes |
 | `+door-limit-per-region-pair` | Між будь-якими двома регіонами ≤ K переходів | game-logic/constraints | 📎 | 1 | One Room One Door (ワンルームワンドア) |
+| `+door-locks-behind` | Двері зачиняються за спиною | entities/interact | 🌱 | 1 | Imprisoned! |
 | `+door-passage` | Прохід крізь регіон за 1 дію | entities/move | 📎 | 1 | Torres |
 | `+door-swing-stun` | Двері відчиняються в бік ручки й оглушують | entities/interact | 📎 | 1 | Mappy |
 | `+door-turn` | Хід = відчинити двері | game-logic/waves | 🥈 | 1 | Dungeon of the Endless |
 | `+dormant-enemy` | Ворог прикидається обʼєктом | entities/state | 🌱 | 1 | Crystal Mines II |
+| `+dormant-platform-join` | Неактивний шматок оживає від дотику рухомої платформи й приєднується | entities/interact | 🥉 | 1 | Remote Planets |
 | `+dormant-until-move` | Ворог прокидається від першого руху гравця | entities/state | 🌱 | 1 | 3D Monster Maze |
 | `+dot-constraints` | Обмеження на ребрі (Kropki, XV) | game-logic/constraints | 📎 | 1 | Sudoku variants (варіанти судоку, Cracking the Cryptic / SudokuPad) |
 | `+dot-count-gate` | Двері за кількістю зібраного | entities/interact | 🌱 | 1 | Ms. Pac-Man Maze Madness |
@@ -2604,6 +2792,7 @@
 | `+draft-order-by-value` | Хто взяв цінніше — обирає пізніше | game-logic/opponent | 🌱 | 1 | Kingdomino (Кінґдоміно) |
 | `+draft-reroll` | Перетягнути пропозиції за ресурс | game-logic/economy | 🌱 | 1 | Blue Prince |
 | `+drafting-market` | Драфт: взяти всі одного типу, решта в центр | game-logic/economy | 📎 | 1 | Azul (Азул) |
+| `+drag-axis-lock` | Протяжка фіксується на одній осі | interface/input | 🌱 | 1 | Homgard |
 | `+drag-build-line` | Тягни — будуй лінію з автопідбором форми | interface/input | 🥉 | 1 | OpenTTD / Transport Tycoon — залізничний шар (колія, сигнали, резервування) |
 | `+drag-copy-colour` | Колір переноситься drag-ом з клітини/регіону, де він уже є | interface/input | 🌱 | 1 | Map (Tatham) |
 | `+drag-copy-value` | Протягування копіює значення в клітинки по дорозі | interface/input | 🌱 | 1 | Arofuro (アローフロー, Arrow Flow) |
@@ -2616,6 +2805,7 @@
 | `+drag-paint-line` | Протяжка станом по рядку/стовпцю | interface/input | 📎 | 1 | Nonogram (Японський кросворд, Picross, Griddlers, Hanjie) |
 | `+drag-path-swap` | Перетягнути плитку шляхом, міняючись з кожною | interface/input | 🥉 | 1 | Puzzle & Dragons (PAD, Пазли і Дракони) |
 | `+drag-rectangle` | Ввід прямокутника перетягуванням | interface/input | 📎 | 1 | Shikaku (Шікаку, Rectangles, Divide by Box) |
+| `+drag-to-hit` | Удар драгом від обʼєкта | interface/input | 🌱 | 1 | Croquet Conundrum |
 | `+drain-hazard` | Пастка забирає HP, не вбиває | entities/combat | 🌱 | 1 | Dandy / Dark Chambers |
 | `+draw-as-action` | Добір замість дії | game-logic | 🌱 | 1 | Children of Zodiarcs |
 | `+draw-from-any-discard` | Добір з верху будь-якого скиду | game-logic/economy | 🌱 | 1 | Arboretum (Дендропарк) |
@@ -2624,6 +2814,7 @@
 | `+draw-stack-timer` | Стопка тайлів як таймер + фаза добивання | game-logic/lose | 🌱 | 1 | The Night Cage |
 | `+draw-to-hand-size` | Добір до розміру руки | game-logic/cards | 🌱 | 1 | Summoner Wars |
 | `+draw-to-spawn` | Намалюй сутність — вона зʼявиться | entities/spawn | 🥉 | 1 | Magic Chalkboards |
+| `+drawer-extend` | Висувна частина змінює форму предмета | entities/state | 📎 | 1 | Hiding Spot |
 | `+drawing-sandbox` | Режим малювання на ігровому рушії | game-logic/constraints | 🌱 | 1 | Surround (Atari 2600) |
 | `+drift` | Дрейф за вітром, якщо стоїш | entities/move | 🌱 | 1 | Wooden Ships and Iron Men |
 | `+drill-block` | Бур: їде вбік, руйнує все на шляху, розвертається від стіни | entities/move | 📎 | 1 | Stomp! |
@@ -2631,6 +2822,7 @@
 | `+drill-to-inventory` | Видобути блок у запас | entities/interact | 📎 | 1 | Blocks That Matter |
 | `+drone-control` | Друге тіло за AP власника | entities/move | 📎 | 1 | Shadowrun Returns |
 | `+drone-roles` | Ролі дронів з різною ціллю | entities/move | 🥉 | 1 | Pixel Miner |
+| `+drop-and-regrip` | Покласти інструмент і взяти з іншого кінця | entities/interact | 📎 | 1 | Stick to the Plan |
 | `+drop-file-limit` | Ліміт однотипних фігур у вертикалі при дропі | entities/legality | 📎 | 1 | Tori shogi (Пташине шогі) |
 | `+drop-from-above-cursor` | Курсор-тінь скидає фігуру вглиб | interface/input | 📎 | 1 | Tetrisphere |
 | `+drop-height-bonus` | Очки за висоту скидання | game-logic/score | 🌱 | 1 | Blockout (Block Out) |
@@ -2642,6 +2834,7 @@
 | `+dropped-bonus-food` | Ворог випадково впускає бонус | entities/spawn | 🌱 | 1 | Hungry Horace |
 | `+drowning-tiles` | Клітина вбиває в кінці ходу без прапорця | entities/legality | 🌱 | 1 | Faeria |
 | `+drum-trap` | Падаючий обʼєкт-пастка накриває ворога | entities/interact | 📎 | 1 | Wrecking Crew |
+| `+drunken-walk-corridors` | Коридор випадковим блуканням з ухилом до цілі | levels/generation | 🥉 | 1 | YENDOR |
 | `+dual-armor` | Фізичний і магічний захист як шари перед HP | entities/combat | 📎 | 1 | Dungeon Encounters |
 | `+dual-attribute-groups` | Плитка належить до груп за двома ознаками одночасно | game-logic/score | 📎 | 1 | Domino Grove |
 | `+dual-board-view` | Свій і прицільний вигляд | interface/render | 🥉 | 1 | Battleship (Морський бій) |
@@ -2652,6 +2845,7 @@
 | `+dual-grid` | Два шари однієї сітки: клітини й перехрестя | field | 📎 | 1 | Guerrilla Checkers |
 | `+dual-health` | Дві шкали HP, кожну бʼє свій колір ворога | entities/state | 📎 | 1 | 868-HACK (+ Imbroglio, Cinco Paus — мікро-роглайки Michael Brough) |
 | `+dual-input-coop` | Дві підігри на двох пристроях / двох гравцях | game-logic/opponent | 📎 | 1 | Tetrisweeper |
+| `+dual-keyset-control` | Два аватари на двох наборах клавіш одночасно | interface/input | 📎 | 1 | Handshakes |
 | `+dual-lattice` | Фігури на вершинах, вплив на клітинах | interface/render | 📎 | 1 | Bosk |
 | `+dual-perspective-grid` | Одне поле — план і бічний вид водночас | levels/format | 🥉 | 1 | Hako-Oshimai: Sokoban Platformer |
 | `+dual-pool-target` | Удар обирає смугу: здоровʼя чи енергія | entities/combat | 📎 | 1 | Ash of Gods: Redemption |
@@ -2667,6 +2861,7 @@
 | `+duplicator-clone` | Дублікатор копіює сусіда | entities/spawn | 🥉 | 1 | ZZT |
 | `+dynamic-lighting` | Динамічне світло як правило видимості | interface/render | 🥇 | 1 | Brogue |
 | `+each-combo-once` | Кожне поєднання атрибутів — рівно один раз | game-logic/constraints | 🌱 | 1 | Chocolate Fix (ThinkFun) |
+| `+early-finish-bonus` | Квоту виконано раніше — бонус за невикористаний час | game-logic/score | 🌱 | 1 | Feed the Scorchpot |
 | `+early-race-end` | Забіг закінчується з першим фінішем, решта — за позицією | game-logic/win | 🌱 | 1 | CodinGame Summer Challenge 2024: Olymbits |
 | `+early-wave-bonus` | Виклик хвилі раніше за бонус | game-logic/waves | 🌱 | 1 | Dungeon Warfare |
 | `+earthquake-flatten` | Вирівнювання за порогом висоти | entities/state | 🌱 | 1 | Wetrix |
@@ -2678,7 +2873,10 @@
 | `+eat-rival-when-powered` | Посилений гравець їсть суперників | game-logic/opponent | 🥉 | 1 | Pac-Man Battle Royale |
 | `+eat-spawns-wall` | Кожна їжа ставить стіну | entities/spawn | 🌱 | 1 | Google Snake (Змійка в пошуку Google) |
 | `+eat-to-refuel` | Зʼїдене поповнює енергію, надлишок згорає | game-logic/economy | 🌱 | 1 | Mycelium Heaven |
+| `+eat-to-slide` | Зʼїдений предмет запускає ковзання в напрямку входу | entities/move | 📎 | 1 | What Gophers Go For |
+| `+eat-when-blocked` | Їжа штовхається, зʼїдається лише впершись | entities/interact | 🌱 | 1 | SSSPICY! |
 | `+eat-your-cover` | Зібране було укриттям | game-logic/win | 🌱 | 1 | Not the Robots |
+| `+eater-clears-obstacle` | Істота зʼїдає перешкоду, якщо її провести повз | entities/interact | 📎 | 1 | ilomilo |
 | `+eater-piece` | Фігура-пожирач: після приземлення рухається й знищує ворогів на шляху | entities/interact | 🥉 | 1 | Cosmo Gang the Puzzle (Pac-Attack) |
 | `+edge-barrier` | Барʼєр на ребрі між клітинами | entities/legality | 🌱 | 1 | Infinity Loop + Net (Tatham) |
 | `+edge-bump-sound` | Звук упору в край поля | interface/sound | 🌱 | 1 | Blind Sweeper |
@@ -2705,6 +2903,7 @@
 | `+edge-pick` | Брати фігуру лише з периметра | entities/legality | 🌱 | 1 | Quixo |
 | `+edge-rank-capture` | Захоплення сусіда числом на ребрі | entities/combat | 🌱 | 1 | Triple Triad |
 | `+edge-ray-markers` | Мітки портів на рамці поля | interface/hud | 📎 | 1 | Black Box (Чорна скринька) |
+| `+edge-rewiring` | Гравець сам склеює краї кімнат | entities/move | 🥇 | 1 | Edge Case |
 | `+edge-roll-gravity` | Перекочування через ребро змінює низ | entities/move | 🥇 | 1 | Kula World (Roll Away, KulaQuest) |
 | `+edge-side-block` | Перешкода на ребрі між клітинами | entities/legality | 📎 | 1 | Ogre |
 | `+edge-spawn` | Спавн з краю, протилежного ходу | entities/spawn | 🌱 | 1 | 2048 (+ Threes як предок) |
@@ -2716,6 +2915,8 @@
 | `+edge-walker` | Ворог по іншому шару/грані | entities/move | 🥈 | 1 | Q*bert |
 | `+edge-worker-activation` | Кількість на ребрі множить дію сусіда | entities/interact | 📎 | 1 | Cacao (Какао) |
 | `+editable-locked-code` | Код рівня із заблокованими й відкритими рядками | levels/format | 🥇 | 1 | Untrusted — or the Continuing Adventures of Dr. Eval |
+| `+edu-version` | Окрема безкоштовна версія для шкіл | project | 🌱 | 1 | Star Stuff |
+| `+effect-order-slots` | Слоти модифікаторів: порядок = черга застосування | game-logic/score | 📎 | 1 | Cursed Words |
 | `+effect-preview` | Прев'ю ходу при наведенні | interface/hud | 🥉 | 1 | Queen's Blood |
 | `+effect-slot-swap` | Обмін слотами властивостей між двома предметами | entities/interact | 📎 | 1 | Big Pharma |
 | `+efficiency-bonus` | Бонус за мінімум ресурсів | game-logic/score | 🌱 | 1 | Marble Drop |
@@ -2757,6 +2958,7 @@
 | `+elevator-cell` | Ліфт на N рівнів із виходом за межі | entities/interact | 🌱 | 1 | Omega |
 | `+elevator-depth-upgrade` | Доступна глибина купується кроками | game-logic/economy | 🌱 | 1 | MinerVGA |
 | `+elevator-dispatch` | Кабіна обслуговує виклики за алгоритмом, черги на поверхах | simulation/agents | 🥇 | 1 | Tiny Tower / SimTower |
+| `+elevator-physics-1d` | Розгін і гальмування на лінії | entities/move | 📎 | 1 | Elevator Saga |
 | `+eliminated-revenge-cart` | Вибулий атакує з краю | game-logic/opponent | 📎 | 1 | Bomberman — battle mode (Super Bomberman, Super Bomberman R / R Online / R 2) |
 | `+eliminated-still-answers` | Вибулий лишається відповідачем | game-logic/opponent | 🌱 | 1 | Cluedo (Clue; «Клуедо») |
 | `+elimination-rounds` | Серія раундів, після кожного проходить частина гравців | game-logic/opponent | 📎 | 1 | BoomBoomBattle |
@@ -2766,12 +2968,14 @@
 | `+embark` | Юніт сам переходить на воду | entities/state | 📎 | 1 | Civilization (бойовий шар юнітів, I–VI) |
 | `+emitter-beam-target` | Нерухомий актор діє променем на першу ціль | entities/interact | 🥉 | 1 | MOLEK-SYNTEZ |
 | `+emoji-share-grid` | Шер результату емодзі | interface/results | 🌱 | 1 | Mastermind (+ Bulls and Cows, «Бики й корови») |
+| `+empty-cell-as-terrain` | Порожня клітина — тип у правилах очок | game-logic/score | 🌱 | 1 | TeenyShire |
 | `+empty-cells-in-latin` | Латинський квадрат з порожніми клітинками | game-logic/constraints | 📎 | 1 | Easy as ABC (ABC End View) |
 | `+empty-cells-zero` | Порожні клітини у виділенні дають 0 | game-logic/constraints | 🌱 | 1 | Fruit Box (Apple Game) |
 | `+empty-hand-bonus` | Бонус за першу порожню руку | game-logic/score | 🌱 | 1 | Qwirkle + Ingenious (Квіркл, Genial) |
 | `+empty-hand-refund` | Порожня рука повертає N штрафів | game-logic/score | 🌱 | 1 | Penguin Party |
 | `+empty-pit-bonus` | Бонус за порожнє поле | game-logic/score | 🌱 | 1 | Blockout (Block Out) |
 | `+empty-row-collapse` | Порожній рядок зникає, нижні піднімаються | entities/move | 🌱 | 1 | Number Match / Take Ten (Numberzilla) |
+| `+empty-slot-terminates` | Програма закінчується на першому порожньому слоті | game-logic/program | 🌱 | 1 | Cubetto |
 | `+empty-zone-end` | Кінець гри, щойно чиясь зона порожня | game-logic/win | 🌱 | 1 | Martian Chess |
 | `+en-passant` | Взяття на проході | entities/legality | 🥉 | 1 | Chess (Шахи) — цифрова гра |
 | `+enchant-progression` | Прогрес лише через зачарування предметів | game-logic/economy | 📎 | 1 | Brogue |
@@ -2779,6 +2983,7 @@
 | `+encirclement-loss` | Лідер, оточений трупами, гине | game-logic/lose | 🥉 | 1 | Djambi (Джамбі, «Шахівниця Макіавеллі») |
 | `+encirclement-win` | Оточити всі фігури суперника | goals | 🥉 | 1 | Hnefatafl (Тафл, «королівська дошка») |
 | `+enclose-area-scoring` | Очки за огороджену область | game-logic/score | 🥈 | 1 | Through the Desert (Крізь пустелю) |
+| `+enclose-self` | Замкнути себе з усіх боків | game-logic/win | 🌱 | 1 | Hiding Spot |
 | `+enclose-upgrade` | Замкнений контур підвищує ступінь предметів усередині | entities/interact | 🥉 | 1 | Do! Run Run |
 | `+enclosure-capture` | Замкнена сутність без виходу гине/перетворюється | entities/interact | 🥉 | 1 | Triple Town |
 | `+enclosure-clear` | Обведення стирає вміст області | entities/interact | 🥉 | 1 | Cleopatra Fortune |
@@ -2813,6 +3018,7 @@
 | `+endless-random-puzzles` | Нескінченна серія згенерованих пазлів з міткою складності | levels/generation | 🥇 | 1 | Nekograms |
 | `+endless-research` | Нескінченні дослідження | game-logic/progression | 📎 | 1 | Infinitode 2 |
 | `+endless-streak` | Нескінченна серія з ростом складності | game-logic/waves | 📎 | 1 | Plants vs. Zombies: Vasebreaker і I, Zombie (режим Puzzle) |
+| `+endpoint-path` | Два кінці, зʼєднані лінією-регіоном без розгалужень | game-logic/constraints | 📎 | 1 | Gridspech |
 | `+enemy-attack-list` | Ворог обирає атаку з видимого списку | entities/combat | 🥉 | 1 | Bookworm Adventures |
 | `+enemy-behavior-table` | Вороги одного класу з таблицею параметрів | entities/move | 🥉 | 1 | King's Valley |
 | `+enemy-buff-items` | Предмет, що посилює ворогів за нагороду | game-logic/economy | 📎 | 1 | Chess Survivors |
@@ -2885,6 +3091,7 @@
 | `+enrage-on-low-remaining` | Ворог лютішає під кінець рівня | game-logic/waves | 📎 | 1 | Pac-Man (Пекмен) і Ms. Pac-Man |
 | `+enrage-wave` | Посилити хвилю за більшу нагороду | game-logic/waves | 🌱 | 1 | GemCraft |
 | `+entangled-pair` | Повʼязані пристрої передають промінь | entities/interact | 📎 | 1 | Chromatron (1–5) |
+| `+entity-stacking` | Стос сутностей у клітині з висотою | entities/state | 🥈 | 1 | Leaf's Odyssey |
 | `+entrenchment` | Окопування: росте на місці, падає від атак | entities/state | 🌱 | 1 | Panzer General |
 | `+entry-cage` | Клітка старту з таймером виходу | entities/spawn | 🌱 | 1 | Wizard of Wor |
 | `+entry-point-spawn` | Лава й вихід на поле лише через свої входи | entities/spawn | 🌱 | 1 | Pokémon Duel (Pokémon Comaster) |
@@ -2892,6 +3099,8 @@
 | `+enumeration` | Довжина й будова відповіді (7,9) у підказці | game-logic/constraints | 🌱 | 1 | Cryptic crossword (Криптичний кросворд) |
 | `+environment-clue` | Відповідь закодована в довкіллі | levels/format | 🥉 | 1 | Taiji + The Witness (панелі) |
 | `+environment-kill-only` | Вбити лише середовищем | entities/combat | 🥉 | 1 | ENYO |
+| `+environment-toggle` | Перемикач середовища змінює вимоги персонажів | entities/interact | 📎 | 1 | Is This Seat Taken? |
+| `+ephemeral-mark` | Знак на особливій клітині зникає одразу, але хід зараховано | entities/legality | 🌱 | 1 | Undertoe |
 | `+epidemic-pile-split` | Події, рівно розкладені по стосах колоди | levels/generation | 📎 | 1 | Pandemic |
 | `+epsilon-box` | Нескінченний вхід (ε) | entities/state | 👑 | 1 | Patrick's Parabox |
 | `+equal-bump-knockback` | Рівні при зіткненні відскакують | entities/interact | 📎 | 1 | Pac-Man Battle Royale |
@@ -2905,6 +3114,7 @@
 | `+equipment-cards` | Предмет додає карти в колоду | entities/state | 📎 | 1 | Card Hunter |
 | `+equipment-charges` | Спорядження із зарядами, розкрите або таємне | entities/state | 🌱 | 1 | Specter Ops |
 | `+equipment-durability` | Міцність зброї/броні | entities/state | 📎 | 1 | 'One Way Heroics (Mystery Chronicle: One Way Heroics)' |
+| `+equipment-rust` | Монстр псує спорядження | entities/combat | 🌱 | 1 | Dragon Crystal (ドラゴンクリスタル ツラニの迷宮) |
 | `+equipment-swap-drop` | Один слот на тип, старе лягає на підлогу | entities/state | 🌱 | 1 | DROD RPG: Tendry's Tale (+ DROD RPG 2) |
 | `+equipment-unlocks-api` | Предмет відкриває метод у коді | game-logic/program | 📎 | 1 | CodeCombat |
 | `+era-timer` | Партія фіксованої тривалості | game-logic | 🌱 | 1 | Reus |
@@ -2914,6 +3124,7 @@
 | `+eraser-token` | Символ, що очищує слот | entities/interact | 🌱 | 1 | Clover's Quadrants |
 | `+erodible-shield` | Укриття руйнується по шматочку | entities/combat | 🥉 | 1 | Space Invaders (Космічні загарбники) |
 | `+erosion-flow` | Вода зносить ґрунт і відкладає нижче | entities/interact | 🥇 | 1 | From Dust |
+| `+error-display-modes` | Показ помилок: на полі / лише на картці правила / вимкнено | interface/settings | 🌱 | 1 | The Artisan of Glimmith |
 | `+escalating-bonus-item` | Ціна бонусу росте з кожною появою | game-logic/score | 🌱 | 1 | Lock 'n' Chase |
 | `+escalating-continue-cost` | Продовження за валюту з ростом ціни | game-logic/economy | 🌱 | 1 | Nimble Quest |
 | `+escalating-cost` | Ціна зростає після першого використання | game-logic/economy | 🌱 | 1 | Sagrada (Саграда) |
@@ -2947,6 +3158,7 @@
 | `+event-cards-any-time` | Карти подій поза ходом | game-logic/opponent | 📎 | 1 | Pandemic |
 | `+event-choice` | Подія з вибором варіантів і наслідками | game-logic/progression | 🌱 | 1 | BroomSweeper |
 | `+event-deck` | Колода подій з негайним ефектом | game-logic | 📎 | 1 | Empire Builder (crayon rails) |
+| `+event-driven-program` | Програма — обробники подій симуляції | game-logic/program | 🥉 | 1 | Elevator Saga |
 | `+event-log` | Журнал знайдених подій | interface/hud | 🌱 | 1 | Dungeon Encounters |
 | `+event-order-clue` | Число = номер ходу, на якому з клітинкою має щось статися | game-logic/constraints | 📎 | 1 | Hitori-Ribashi (Одиночне реверсі) |
 | `+event-scripting` | Скрипти подій на клітинах у редакторі | levels/editor | 🥈 | 1 | H5mota (H5魔塔广场) — спільнота веб-веж |
@@ -2978,6 +3190,8 @@
 | `+exclusive-carry` | Предмети, що не несуться разом | entities/state | 📎 | 1 | Maziacs |
 | `+exclusive-memberships` | Одне членство з кожної категорії | game-logic/legality | 🌱 | 1 | Omega |
 | `+exclusive-track-variant` | Колії лише для власника | entities/legality | 🌱 | 1 | TransAmerica (+ TransEuropa) |
+| `+execute-threshold` | Страта: ціль з HP нижче порогу після удару гине | entities/combat | 🌱 | 1 | Sunderfolk |
+| `+execution-order-grid` | Порядок спрацювання елементів за такт | game-logic/program | 🥉 | 1 | ABI-DOS |
 | `+exhaust-card` | Карта зникає до кінця бою | entities/state | 🌱 | 1 | Cobalt Core |
 | `+exhaust-two-types-win` | Перемога: вичерпати два з трьох запасів | game-logic/win | 🌱 | 1 | Taluva (Талува) |
 | `+exhaustion-junk-card` | Штраф — сміттєва карта в колоду | game-logic/economy | 🌱 | 1 | Flamme Rouge |
@@ -2993,6 +3207,8 @@
 | `+exit-gap` | Вихід лише для фігури певного розміру | game-logic/win | 🌱 | 1 | Klotski (Хуажунський шлях) + Lunar Lockout |
 | `+exit-no-return` | Вихід без вороття в пройдену зону | levels | 🌱 | 1 | Bank Heist |
 | `+exit-opens-after-quota` | Двері відчиняються, коли зібрано всіх | game-logic/win | 🌱 | 1 | Moai-kun |
+| `+exit-opens-after-target` | Вихід відкривається після цілі | game-logic/win | 🌱 | 1 | Assassinvisible |
+| `+exit-opens-when-cleared` | Вихід відкривається, коли зібрано все | game-logic/win | 🌱 | 1 | SSSPICY! |
 | `+exit-triggered-toggle` | Перешкоди перемикаються/стрибають після кожного виходу блока | entities/state | 🥉 | 1 | Color Block Jam |
 | `+exit-unlocks-on-goal` | Вихід оживає після виконання умови | game-logic/win | 🌱 | 1 | Gridmount |
 | `+exits-as-move-points` | Кількість виходів тайла = очки руху | entities/move | 🌱 | 1 | Karuba (Каруба) |
@@ -3001,6 +3217,7 @@
 | `+expanding-wall` | Стіна, що росте | entities/spawn | 📎 | 1 | Boulder Dash |
 | `+expansion-modules` | Модулі правил: одне розширення за гру | game-logic/constraints | 📎 | 1 | Railroad Ink |
 | `+expected-moves-solver` | Порада ходу за мінімумом середньої кількості ходів | levels/solvability | 🥇 | 1 | Faux Hollows (Final Fantasy XIV) |
+| `+expected-output-diff` | Ряд виходу поруч з еталоном | interface/hud | 📎 | 1 | U.V.S. Nirmana |
 | `+experiment-sliders` | Ручні повзунки портів + графік | interface/input | 🥉 | 1 | ComPressure |
 | `+expiring-pickup` | Предмет зникає за N ходів | entities/death | 🌱 | 1 | Rocket Mania! |
 | `+explode-3x3` | Вибух 3×3 з результатом | entities/combat | 🥉 | 1 | Boulder Dash |
@@ -3016,6 +3233,9 @@
 | `+exposed-connector-bonus` | Бонус за найменше відкритих конекторів | game-logic/score | 🌱 | 1 | Galaxy Trucker |
 | `+extend-from-endpoints` | Продовжувати шлях лише з кінців | entities/legality | 🌱 | 1 | Next Station: London |
 | `+extend-retract-body` | Тіло висуває частину і відштовхується | entities/move | 🥉 | 1 | Kine |
+| `+extendable-arms` | Руки висуваються з тіла на N клітин | entities/state | 🥉 | 1 | Altered |
+| `+extending-arm` | Рука-шлях росте з якоря за краєм і втягується слідом | entities/move | 🥉 | 1 | Stamp Collecting on Planet Q |
+| `+extending-bridge` | Поставлений блок висувається мостом на N | entities/interact | 📎 | 1 | ilomilo |
 | `+external-editor-sync` | Код у файлах, підхоплення змін | code/architecture | 📎 | 1 | The Farmer Was Replaced |
 | `+external-level-editor` | Редактор рівнів окремим веб-застосунком | levels/editor | 🥈 | 1 | Loophole |
 | `+extinguish-by-block` | Блок гасить ціль ударом збоку чи згори | entities/interact | 🌱 | 1 | Fire 'n Ice |
@@ -3024,6 +3244,7 @@
 | `+extra-container-booster` | Додатковий порожній контейнер на вимогу | game-logic/difficulty | 🌱 | 1 | Water Sort / Ball Sort Puzzle (сортування кольорів у пробірках) |
 | `+extra-king-turn` | Необовʼязковий додатковий хід певною фігурою | game-logic/opponent | 📎 | 1 | Chess 2: The Sequel (Sirlin's Chess) |
 | `+extra-life` | Друге життя на рівень | game-logic/lose | 🌱 | 1 | Shotgun King: The Final Checkmate |
+| `+extra-life-per-level` | +1 життя за пройдений рівень | game-logic/score | 🌱 | 1 | Bombuzal |
 | `+extra-life-per-stage` | +1 життя за пройдений рівень | game-logic/score | 🌱 | 1 | Moai-kun |
 | `+extra-life-pickup` | Підбирання життя | entities/interact | 🌱 | 1 | Void Stranger |
 | `+extra-move-on-clear` | Бонусний хід за збіг | game-logic/opponent | 🌱 | 1 | Color Lines / Lines 98 (Лінії) |
@@ -3037,6 +3258,7 @@
 | `+extraction-keep-loot` | Лут зараховується лише після евакуації | game-logic/win | 📎 | 1 | Quasimorph |
 | `+extraction-run` | Забіг успішний лише після евакуації; провал — втрата зібраного | game-logic/win | 🌱 | 1 | Kinetype |
 | `+extraction-zone` | Вийти через зону евакуації до таймера | game-logic/win | 🌱 | 1 | Escape from Tarkov (inventory) |
+| `+extractor-on-vein` | Машина на жилі добуває сама | game-logic/economy | 📎 | 1 | SteamWorld Build |
 | `+extrude-numbered-tile` | Витягти пронумеровану клітину: блок росте, число −1 | entities/state | 🥉 | 1 | PushTOOL |
 | `+eyes-return-home` | Зʼїдений ворог повертається на базу | entities/death | 📎 | 1 | Pac-Man (Пекмен) і Ms. Pac-Man |
 | `+face-cooking` | Кожна грань обробляється рівно раз | game-logic/win | 🥉 | 1 | Stephen's Sausage Roll |
@@ -3044,6 +3266,7 @@
 | `+face-down-reveal` | Закрита плитка відкривається від сусіднього зникнення | entities/state | 🌱 | 1 | Uno Free Fall |
 | `+face-down-wild-play` | Закрита карта — будь-куди з фіксованою силою | entities/legality | 🌱 | 1 | Air, Land & Sea |
 | `+face-down-zero-tiles` | Закрита плитка = 0 і прозора для огляду | entities/interact | 🌱 | 1 | Topiary |
+| `+facility-stop-sign` | Стоп-знак, що гасне, коли обʼєкт оброблено | entities/state | 🥉 | 1 | Upalu Mundi |
 | `+facing-arc` | Сектор дії за орієнтацією | entities/combat | 📎 | 1 | Clash of Clans — розстановка бази на сітці |
 | `+facing-arcs` | Дуга атаки: фронт/бік/тил | entities/combat | 🥉 | 1 | BattleTech |
 | `+facing-attack-rows` | Атака з напрямку бʼє відповідний ряд | entities/combat | 🥉 | 1 | Legend of Grimrock |
@@ -3051,6 +3274,7 @@
 | `+facing-choice-after-move` | Вибір напрямку після руху | entities/state | 🌱 | 1 | Dynasty Tactics |
 | `+facing-harvester` | Збирач доїть клітину, на яку дивиться, раз на хід | game-logic/economy | 🌱 | 1 | CodinGame: Cellularena (Winter Challenge 2024) |
 | `+facing-kings` | Королі не бачать один одного | entities/legality | 🥉 | 1 | Xiangqi (Сянці, китайські шахи) |
+| `+facing-lock` | Розворот лише кроком; тягнення тримає погляд | entities/move | 🌱 | 1 | Hiding Spot |
 | `+facing-range` | Дальність-шаблон за напрямком | entities/combat | 🥉 | 1 | Arknights |
 | `+facing-reveal` | Аватар відкриває лише клітину, на яку дивиться | entities/interact | 🌱 | 1 | Venom Sweep |
 | `+facing-side-payout` | Кожен гравець отримує ресурс сторони тайла, що дивиться на нього | game-logic/economy | 🌱 | 1 | Lanterns: The Harvest Festival (Ліхтарі) |
@@ -3061,18 +3285,22 @@
 | `+factory-stock` | Склад юнітів у будівлі, що переходить до захопника | game-logic/economy | 🌱 | 1 | Nectaris (Military Madness) |
 | `+fail-code-checklist` | Перевірка розвʼязку списком правил із кодами помилок | game-logic/constraints | 🥉 | 1 | puzz.link (pzprjs / pzprv3) |
 | `+fail-reset-chain` | Помилки відкидають на початок серії | levels/progression | 🌱 | 1 | Beglitched |
+| `+failed-move-no-turn` | Хід у стіну не рахується | game-logic | 🌱 | 1 | Evil Eye |
 | `+failure-as-return-value` | Команда повертає false і причину замість помилки | game-logic/program | 🌱 | 1 | ComputerCraft (turtles) |
 | `+failure-dial` | Шкала помилок до поразки | game-logic/lose | 🌱 | 1 | Bomb Busters |
 | `+faint-state` | Непритомність: гравець не діє, вороги — так | entities/state | 🌱 | 1 | Dungeons of Daggorath |
 | `+fair-spawn-generation` | Генерація з мінімальною відстанню спавнів і ресурсом поруч | levels/generation | 🥇 | 1 | generals.io |
+| `+fairy-pieces` | Казкові фігури (Camel, Alfil, Dabbabah) | entities/legality | 📎 | 1 | Chessarama |
 | `+fake-door` | Фальшиві двері | entities/interact | 🌱 | 1 | Dandy / Dark Chambers |
 | `+fake-object` | Обʼєкт-двійник, що не підкоряється дії | entities/interact | 🌱 | 1 | Sutte Hakkun |
 | `+fake-wall` | Стіна-обманка | entities/legality | 🌱 | 1 | Chip's Challenge |
 | `+fake-wall-placement` | Поставити суперникові фальшиву стіну | entities/interact | 🌱 | 1 | Maze Craze |
 | `+fall-damage-by-height` | Шкода/смерть за кількістю поверхів падіння | entities/death | 🌱 | 1 | Prince of Persia |
+| `+fall-delay` | Блок без опори падає із затримкою — за неї його ще можна штовхнути | entities/move | 📎 | 1 | Push Blox / Push Blox 2 |
 | `+fall-distance-score` | Очки за глибину падіння ворога | game-logic/score | 🌱 | 1 | Mr. Do's Castle |
 | `+fall-height-death` | Смерть від висоти падіння | entities/death | 🌱 | 1 | Leap Year |
 | `+fall-height-kill` | Ворог гине від падіння на ≥ N поверхів | entities/death | 📎 | 1 | Space Panic |
+| `+fall-into-water` | Обʼєкт за краєм острова падає у воду й утрачений | entities/death | 🌱 | 1 | Delicious Donut |
 | `+fall-off-edge` | Крок за край — падіння | entities/death | 🌱 | 1 | Robo Instructus |
 | `+fall-off-map-death` | Випасти за нижній край — смерть; за бічні — можна | entities/move | 🌱 | 1 | CodinGame: Exotec (Winter Challenge 2026) |
 | `+fall-off-penalty` | Штраф за фігуру, що впала з поля | game-logic/score | 🌱 | 1 | Tricky Towers |
@@ -3093,6 +3321,7 @@
 | `+family-tree-sort` | Родовід із сортуванням за ознакою | interface/menus | 🥈 | 1 | Niche – a genetics survival game |
 | `+far-goal-placement` | Ціль генерується не ближче N кроків від старту | levels/generation | 📎 | 1 | Maziacs |
 | `+fare-by-distance` | Виручка за відстань між зупинками | game-logic/economy | 🌱 | 1 | A-Train (A列車で行こう) |
+| `+fart-propulsion` | Інструмент із боку тіла, що залежить від орієнтації | entities/interact | 🥉 | 1 | Billy Bumbum: A Cheeky Puzzler |
 | `+fast-forward` | Прискорення симуляції | game-logic/flow | 🌱 | 1 | MouseCraft |
 | `+fast-tiles` | Частина плиток кладеться додатково до звичайної, без ліміту | game-logic/opponent | 🌱 | 1 | Samurai (Самурай) |
 | `+fast-travel` | Швидка подорож між точками | levels/progression | 🌱 | 1 | Toki Tori 2 / Toki Tori 2+ |
@@ -3136,6 +3365,7 @@
 | `+fifo-inventory` | Інвентар-черга FIFO | entities/state | 🌱 | 1 | Starquake |
 | `+fight-on-meet` | Бій при зустрічі в одній кімнаті | entities/combat | 📎 | 1 | Spy vs. Spy |
 | `+fill-all-free-space` | Мета — заповнити тілом усе вільне | game-logic/win | 📎 | 1 | Cyborg Earthworm |
+| `+fill-ghost-shape` | Мета — тілом точно заповнити напівпрозору фігуру | game-logic/win | 📎 | 1 | BOND |
 | `+fill-hole-with-block` | Блок засипає воду/яму | entities/interact | 📎 | 1 | Kickle Cubicle (迷宮島) |
 | `+fill-marked-spots` | Поставити обʼєкт на кожну позначку | game-logic/win | 🌱 | 1 | Domino Man |
 | `+fill-meter-level` | Рівень = наповнити шкалу прибраними плитками | game-logic/win | 🌱 | 1 | Chuzzle |
@@ -3180,6 +3410,7 @@
 | `+first-touch-message` | Пояснення при першій зустрічі | interface/hud | 🌱 | 1 | Kroz |
 | `+first-turn-exception` | Обмежений перший хід | game-logic/opponent | 🌱 | 1 | Neutron (Нейтрон) |
 | `+fit-anywhere-check` | Чи влазить фігура хоч кудись | game-logic/lose | 🌱 | 1 | Block Blast! (і родина 1010! / Woodoku) |
+| `+fix-on-target` | Сутність на своїй цілі застигає стіною | entities/state | 📎 | 1 | Walking Dots (てんてん虫) |
 | `+fixed-arc-jump` | Стрибок фіксованою дугою без керування в повітрі | entities/move | 📎 | 1 | Manic Miner |
 | `+fixed-arrow-tile` | Неповоротна плитка | entities/state | 🌱 | 1 | Tidalis |
 | `+fixed-beat-mode` | Ритм-гра як покрокова | game-logic/difficulty | 🌱 | 1 | Cadence of Hyrule: Crypt of the NecroDancer Featuring The Legend of Zelda |
@@ -3188,6 +3419,8 @@
 | `+fixed-deck-size` | Колода незмінного розміру, змінюються лише карти | game-logic/progression | 🌱 | 1 | Pawnbarian |
 | `+fixed-hand-no-draw` | Рука на весь раунд без добору | game-logic/constraints | 🌱 | 1 | Air, Land & Sea |
 | `+fixed-hint-pieces` | Фіксовані плитки-підказки на полі | levels/generation | 🌱 | 1 | Eternity II |
+| `+fixed-length-tape` | Програма фіксованої довжини, яку переписують з будь-якого ходу | game-logic/program | 📎 | 1 | Another Clone |
+| `+fixed-orientation-tiles` | Плитки без повороту, єдина стрілка | entities/legality | 🌱 | 1 | Beacon Patrol |
 | `+fixed-pattern-deduction` | Розкладка з відомого скінченного списку; видимі блоки й відкриття фільтрують кандидатів | game-logic/constraints | 📎 | 1 | Faux Hollows (Final Fantasy XIV) |
 | `+fixed-peg` | Нерухома клітина в кільці обертання | entities/legality | 🌱 | 1 | Trouballs |
 | `+fixed-shape-slots` | Слоти фігур фіксованої форми, кольори випадкові | entities/spawn | 🌱 | 1 | Stickets |
@@ -3241,20 +3474,25 @@
 | `+flip-every-move` | Фігура перевертається на парний тип після кожного ходу | entities/state | 📎 | 1 | Шогі з твістом руху — Kyoto shogi і Annan shogi (Кіото-шогі, Аннан-шогі) |
 | `+flip-flop-branch` | Тригер-перемикач гілок | game-logic/program | 📎 | 1 | SpaceChem |
 | `+flip-flop-memory` | Тригер як памʼять 1 біт | entities/state | 🥉 | 1 | Robot Odyssey |
+| `+flip-furniture` | Перевернути предмет: інша форма й інша прохідність | entities/state | 🥉 | 1 | Hiding Spot |
 | `+flip-on-jump` | Перевертання перестрибнутих | entities/interact | 📎 | 1 | YINSH |
 | `+flip-part` | Дзеркальне перевертання фігури | entities/move | 📎 | 1 | Kaizen: A Factory Story |
 | `+flip-reveal` | Перевернути закриту карту/плитку | interface/input | 🌱 | 1 | Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel) |
 | `+flip-reveal-move` | Відкрити закриту фігуру як хід | entities/state | 🌱 | 1 | Banqi (Half Chess, Dark Chess) |
 | `+flip-set-on-group` | Група N+ однакових перевертається в очки і стає основою | game-logic/score | 📎 | 1 | Dragon Castle |
+| `+flip-swap` | Перекинути пару сусідніх плиток через спільне ребро: обмін + дзеркало кожної | entities/legality | 📎 | 1 | Landflip |
 | `+flip-tile` | Клітина перевертає ящик (лице ↔ сорочка) | entities/interact | 🌱 | 1 | SokoSolitaire |
 | `+flip-timer` | Хід перевертає годинник фігури | entities/state | 📎 | 1 | TAMSK |
 | `+flip-to-match-target` | Відкрий приховане, щоб збігтися з ціллю на полі | entities/interact | 🌱 | 1 | Zicke Zacke Hühnerkacke |
 | `+flip-view-alternate` | Той самий рівень удруге — перевернутий, іншим героєм | interface/render | 🥉 | 1 | Flip and Flop |
 | `+float-block` | Блок, що плаває на рівні рідини | entities/move | 📎 | 1 | Recursed |
+| `+float-drift` | Плавучий обʼєкт у воді зсувається течією щохід | entities/move | 📎 | 1 | Sokobos 2 |
 | `+float-in-water` | Спливання до поверхні | entities/move | 🌱 | 1 | It 2: They/Them |
 | `+float-threshold` | Компанія стартує після 60 % проданих акцій | game-logic/economy | 🌱 | 1 | 18XX (1830: Railways & Robber Barons та родина) |
+| `+floating-block` | Блок без гравітації серед падаючих | entities/move | 🌱 | 1 | Ahoist Cratey |
 | `+floating-clue-fragment` | Уривок без координат: справджується при якомусь зсуві | game-logic/constraints | 📎 | 1 | Chocolate Fix (ThinkFun) |
 | `+floating-garbage-start` | Стартова кладка L+1 рядів | levels/generation | 🌱 | 1 | Tetris Worlds (режими-варіанти) |
+| `+floating-gate-decay` | Нейтральний затвор гасне за N тіків | entities/state | 📎 | 1 | Hard Chip |
 | `+floating-stepping-pad` | Латаття: з каменем — сходинка, від сусіднього руху — відпливає | entities/interact | 🥉 | 1 | Order of the Sinking Star |
 | `+floating-target` | Ціль висить над клітиною й не рухається з підлогою | game-logic/win | 🌱 | 1 | Magiciban |
 | `+flood-container` | Контейнер у рідині заливає свій вміст | entities/interact | 📎 | 1 | Recursed |
@@ -3275,11 +3513,14 @@
 | `+floor-turn-limit` | Ліміт ходів на поверсі з попередженнями | game-logic/lose | 🌱 | 1 | Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon) |
 | `+flow-animation` | Анімація фронту потоку | interface/graphics | 📎 | 1 | Plumber / Pipes / Water Connect (мобільний жанр) |
 | `+flow-goal-3d` | Мета — звʼязний трубопровід у 3D від джерела до стоку | game-logic/win | 🥉 | 1 | Pipe Push Paradise |
+| `+flow-valve` | Клапан пропускає потік за сигналом | entities/interact | 📎 | 1 | U.V.S. Nirmana |
 | `+flowchart-program` | Програма як блок-схема з гілками | game-logic/program | 🥉 | 1 | Code Master (ThinkFun) |
 | `+fluid-contamination` | Рідина перетворює іншу при дотику | entities/interact | 📎 | 1 | Where's My Water? |
 | `+fluid-network` | Мережа труб | entities/interact | 🥈 | 1 | Factorio — клітинна логістика (конвеєри, маніпулятори, мережі) |
 | `+fluid-particles` | Рідина з безлічі крапель/клітин, що тече | entities/move | 🥉 | 1 | Where's My Water? |
 | `+fluid-sink-goal` | Стік з квотою й забороненими типами | game-logic/win | 🌱 | 1 | Where's My Water? |
+| `+fluid-stop-cell` | Клітина, куди рідина не тече, хоч гравець по ній ходить | entities/legality | 🌱 | 1 | Lava and Aqua |
+| `+fly-over-pits` | У польоті яма не діє; падіння — лише там, де зупинився | entities/move | 📎 | 1 | Midwinter Springtime |
 | `+fly-when-few` | Мало фігур — ходиш куди завгодно | entities/move | 🌱 | 1 | Nine men's morris (Млин) |
 | `+flying-avatar` | Аватар не підкоряється гравітації, обʼєкти — так | entities/move | 🌱 | 1 | Sub Terra Draconis |
 | `+flying-hazard` | Літаюча небезпека, що вбиває дотиком | entities/move | 🌱 | 1 | Rodent's Revenge |
@@ -3290,6 +3531,7 @@
 | `+focus-fire` | Групова атака з однією контратакою | entities/combat | 📎 | 1 | Tiny Metal |
 | `+focus-hint` | Підказка-зона без відповіді | interface/hud | 🥇 | 1 | 14 Minesweeper Variants |
 | `+fog-of-war-vision` | Туман з радіусом огляду юнітів | interface/render | 🥉 | 1 | Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode) |
+| `+fog-reset` | Стан, що знову ховає досліджену мапу | interface/render | 🌱 | 1 | Dragon Crystal (ドラゴンクリスタル ツラニの迷宮) |
 | `+fold-blockers` | Що забороняє згин | entities/legality | 📎 | 1 | Paper Trail |
 | `+fold-field` | Згин поля по лінії | entities/state | 🥈 | 1 | Paper Trail |
 | `+fold-preview` | Прев'ю результату ходу при перетягуванні | interface/hud | 📎 | 1 | Paper Trail |
@@ -3299,16 +3541,19 @@
 | `+follower-goal-path` | Підопічні йдуть до цілі самі, якщо є шлях | entities/move | 🥉 | 1 | From Dust |
 | `+follower-modes` | Глобальний режим поведінки натовпу | entities/move | 🥉 | 1 | Populous |
 | `+followers-as-boss-hp` | Врятовані в рівні стають HP у наступному | game-logic/score | 🌱 | 1 | Mario vs. Donkey Kong |
+| `+food-capacity` | Повний не їсть: їжа стає штовхальною | entities/interact | 🌱 | 1 | Walking Dots (てんてん虫) |
 | `+food-chain` | Харчовий ланцюг: хто кого їсть | entities/interact | 🥈 | 1 | What Did I Do to Deserve This, My Lord? |
 | `+food-chain-feed` | Менший годує більшого — більший лопається | entities/interact | 🌱 | 1 | Critter Crunch |
 | `+food-min-and-chance` | Спавн: добрати до мінімуму, інакше з шансом | entities/spawn | 🌱 | 1 | Battlesnake |
 | `+food-min-count` | Їжа доповнюється до мінімуму на полі | entities/spawn | 🌱 | 1 | Kaggle Hungry Geese |
+| `+food-regen-fuel` | Їжа живить регенерацію; без їжі HP тане | entities/state | 🌱 | 1 | Dragon Crystal (ドラゴンクリスタル ツラニの迷宮) |
 | `+food-spoilage` | Їжа гниє за рівнями з ефектами | entities/state | 🌱 | 1 | IVAN (Iter Vehemens ad Necem) |
 | `+food-upkeep` | Добове споживання й голод | game-logic/economy | 🌱 | 1 | Rebuild 3: Gangs of Deadsville |
 | `+food-variant-color` | Їжа змінює варіант сутності | entities/state | 🌱 | 1 | Viva Piñata |
 | `+food-web-view` | Жива діаграма, хто кого їсть | interface/hud | 🥈 | 1 | Grain |
 | `+footprint-metric` | Площа обмежувального прямокутника машини | game-logic/score | 🌱 | 1 | Block Machine |
 | `+footprint-piece` | Фігура = вікно 3×3 своїх каменів | entities/state | 🥉 | 1 | Gess |
+| `+forbidden-cells` | Клітина, де обʼєктові не можна лежати | game-logic/constraints | 🌱 | 1 | Reliquia Park |
 | `+forbidden-patterns` | Заборонені форми | entities/legality | 🥈 | 1 | N-in-a-row (Хрестики-нулики, Gomoku, Connect Four, Pentago…) |
 | `+forbidden-self-loop` | Заборона маршруту зі станції в неї саму, якщо є інше місце | entities/legality | 📎 | 1 | Metro (Iron Horse) |
 | `+forbidden-suicide` | Заборона самогубного ходу за наявності іншого | entities/legality | 📎 | 1 | Tsuro (+ Indigo) |
@@ -3332,6 +3577,7 @@
 | `+forced-next-move` | Наступний хід лише в тому самому напрямку | entities/move | 🌱 | 1 | All the Gold in Fort Locks |
 | `+forced-overlap-target` | Наступна фігура мусить накрити ціль | entities/legality | 📎 | 1 | Cartographers (Картографи) |
 | `+forced-piece-by-color` | Колір клітини обирає фігуру супернику | entities/legality | 📎 | 1 | Kamisado |
+| `+forced-pull` | Примусове тягнення: обʼєкт поруч їде слідом, коли відходиш | entities/move | 📎 | 1 | Corrypt |
 | `+forced-retreat` | Примусовий відступ | entities/combat | 📎 | 1 | Memoir '44 / Commands & Colors |
 | `+forced-scroll` | Камера/світ зсуваються щоходу | levels/generation | 📎 | 1 | 'One Way Heroics (Mystery Chronicle: One Way Heroics)' |
 | `+forced-space` | Вимушена клітина: заповнити першочергово | entities/legality | 📎 | 1 | Tantrix |
@@ -3367,6 +3613,8 @@
 | `+fraction-tiles` | Плитки-дроби й мішані числа | entities/state | 📎 | 1 | Equate |
 | `+fractional-range` | Евклідова дальність | entities/legality | 🌱 | 1 | Wildermyth |
 | `+fragile-egg` | Крихкий обʼєкт: ламається від неправильного руху | entities/state | 🥉 | 1 | WOIM |
+| `+fragile-object` | Крихкий обʼєкт: стани ціле → тріснуте → розбите, розбитий не береться | entities/state | 🌱 | 1 | AmaZoo |
+| `+fragile-target` | Ціль, яку можна знищити (розчавити) — провал | game-logic/lose | 🌱 | 1 | A Slug's Dream |
 | `+fragile-tile-moves` | Крихка плитка руйнується через N ходів | entities/state | 🌱 | 1 | Battle Chef Brigade |
 | `+fragile-under-state` | Плитка ламається під станом | entities/interact | 📎 | 1 | Bloxorz |
 | `+fragment-tiles` | Плитки-фрагменти з кількох літер | entities/state | 🌱 | 1 | Apple News+ Quartiles |
@@ -3382,6 +3630,7 @@
 | `+free-draw-notes` | Вільне малювання на полі як нотатки | interface/input | 📎 | 1 | Tametsi |
 | `+free-edit-sandbox` | Пісочниця без цілі тим самим інструментом | levels/editor | 📎 | 1 | Replicube |
 | `+free-game-threshold` | Безкоштовна гра за поріг очок | game-logic/score | 🌱 | 1 | Hustle (Gremlin, 1977) |
+| `+free-hero-order` | Герої ходять у будь-якому порядку в межах фази | game-logic/opponent | 📎 | 1 | Sunderfolk |
 | `+free-level-order` | Рівні в будь-якому порядку | levels/progression | 🌱 | 1 | Heartlight |
 | `+free-move-on-chain` | Ланцюг дій повертає очко руху | game-logic/opponent | 🌱 | 1 | Might & Magic: Clash of Heroes |
 | `+free-move-until-act` | Рух не фіксується до дії | game-logic/turns | 🌱 | 1 | Persona 5 Tactica |
@@ -3413,6 +3662,7 @@
 | `+friendly-fire-capture` | Фігура може брати свої | entities/combat | 🌱 | 1 | Chess 2: The Sequel (Sirlin's Chess) |
 | `+friendly-fire-splash` | Площинна атака бʼє і своїх | entities/combat | 🌱 | 1 | CodinGame Summer Challenge 2025: Soak Overflow |
 | `+friendly-fire-stun` | Постріл оглушує напарника | entities/combat | 🌱 | 1 | Devil World |
+| `+friends-gallery` | Екран зібраних персонажів | interface/menus | 🌱 | 1 | Billy Bumbum: A Cheeky Puzzler |
 | `+frighten-on-bite` | Укус ворога лякає інших | entities/state | 🌱 | 1 | K.C.'s Krazy Chase! |
 | `+front-ally-support` | Лікар/бафер діє на союзника прямо попереду | entities/combat | 🌱 | 1 | Monster Monpiece |
 | `+front-back-rows` | Два ряди на сторону: передній закриває задній, стрілки ззаду | entities/legality | 📎 | 1 | Cross Blitz |
@@ -3440,6 +3690,7 @@
 | `+full-row-to-letters` | Повний ряд перетворюється, а не зникає | entities/state | 🌱 | 1 | Puzzlejuice |
 | `+full-set-bonus` | Бонус за знаходження всіх спецслів | game-logic/score | 🌱 | 1 | Apple News+ Quartiles |
 | `+full-set-once` | Кожен елемент набору використаний рівно раз | game-logic/constraints | 📎 | 1 | Dominosa (Доміноза) |
+| `+full-span-cuts` | Розрізи — лише повні прямі від краю до краю | game-logic/constraints | 🌱 | 1 | KaitoRamma (快刀乱麻) |
 | `+full-tile-set-draw` | Мішок усіх комбінацій без повторів | levels/generation | 🌱 | 1 | Take It Easy |
 | `+fumble-crit-roll` | Послідовність кидків: влучання → fumble → крит | entities/combat | 📎 | 1 | Stoneshard |
 | `+function-block` | Блок-функція обчислює результат із сусідніх блоків-аргументів | entities/interact | 📎 | 1 | excellent |
@@ -3450,6 +3701,7 @@
 | `+fuse-avatars` | Два аватари зливаються в один з обʼєднаними вміннями | entities/move | 🥈 | 1 | Head over Heels |
 | `+fuse-chaser` | Переслідувач за бездіяльність по сліду | entities/move | 📎 | 1 | Xonix (Ксонікс) / Qix / Volfied |
 | `+fuse-timeline-items` | Шкала-запал часу з предметами на позначках | game-logic/waves | 🌱 | 1 | Zoo Keeper (Taito, аркада) |
+| `+fuse-trail` | Аватар розсипає провідну доріжку із запасу | entities/spawn | 📎 | 1 | Soko Spectacle |
 | `+fusion-fission-nodes` | Злиття/поділ атомів за атомним номером | entities/interact | 📎 | 1 | SpaceChem |
 | `+fusion-weight` | Злиття з важким: нижчий стрибок, нова сила | entities/state | 🥉 | 1 | Sutte Hakkun |
 | `+gacha-draw` | Випадкова винагорода за валюту | game-logic/economy | 📎 | 1 | Puzzle & Dragons (PAD, Пазли і Дракони) |
@@ -3465,6 +3717,8 @@
 | `+game-tree-solved` | Повний розвʼязок гри перебором | code/ai | 👑 | 1 | Pentomino (Пентаміно, гра Голомба) |
 | `+game-value-sum` | Значення позиції як число; сума незалежних частин | game-logic/opponent | 🥉 | 1 | Hackenbush (Хакенбуш) |
 | `+gamepad-support` | Керування геймпадом | interface/input | 📎 | 1 | SPIN Protocol |
+| `+gap-crossing-blast` | Вибух летить над проміжками, але не крізь бомби | entities/combat | 🌱 | 1 | Bomb Club Deluxe |
+| `+gap-flight` | Аватар перелітає ями до першої вільної підлоги | entities/move | 🌱 | 1 | Where's My Egg? |
 | `+gap-placement` | Літера в лінії наявної через порожні клітини | entities/legality | 📎 | 1 | RSVP (Scrabble Brand RSVP) |
 | `+gap-retraction` | Розрив стягується, якщо кінці одного кольору | entities/interact | 🥈 | 1 | Zuma / Puzz Loop |
 | `+gap-shot` | Бонус за постріл крізь розрив | game-logic/score | 🌱 | 1 | Zuma / Puzz Loop |
@@ -3479,6 +3733,7 @@
 | `+gardener-ring-selector` | Селектор ряду на колі | game-logic/economy | 📎 | 1 | Cottage Garden (Сільський сад) |
 | `+gas-to-water` | Газ-відходи перетворюються на ресурс | entities/interact | 📎 | 1 | POUND SAND |
 | `+gate-between-fields` | Ворота між полями гравців | levels/progression | 🥈 | 1 | Pac-Man spin-offs (Pac & Pal, Baby Pac-Man, Mega Tunnel Battle) |
+| `+gate-climb` | Ворота зачиняються під гравцем і піднімають його | entities/move | 📎 | 1 | Bee Magic |
 | `+gate-crossing` | Ворота-відрізок: перетнути рівно раз перпендикулярно | entities/legality | 🌱 | 1 | Suraromu (Slalom) |
 | `+gate-own-side` | Ворота: свої проходять, вороги — ні | entities/legality | 🌱 | 1 | Lock's Quest |
 | `+gatekeeper-level` | Рівень із сильнішим брамником | levels/progression | 🌱 | 1 | Dungeon Hack |
@@ -3514,6 +3769,7 @@
 | `+ghost-phase` | Ворог проходить крізь стіни в стані | entities/move | 📎 | 1 | Dig Dug |
 | `+ghost-piece` | Тінь падіння | interface/hud | 🌱 | 1 | Tetris (Тетрис, Tetris Guideline) |
 | `+ghost-preview-through-portal` | Превʼю обʼєкта на виході порталу | interface/hud | 🥉 | 1 | Warp Factory |
+| `+ghost-projection` | Привиди: позиції обʼєктів іншого світу | interface/hud | 📎 | 1 | Two Worlds |
 | `+ghost-revive` | Після смерті аватар стає привидом і згодом відроджується (зі скинутою ношею) | entities/death | 🥉 | 1 | Shackle |
 | `+ghost-tag` | Гравець за ворога ловить інших | multiplayer | 📎 | 1 | Ms. Pac-Man Maze Madness |
 | `+ghost-through-walls` | Ворог ігнорує стіни | entities/move | 🌱 | 1 | Maze Mice |
@@ -3527,6 +3783,7 @@
 | `+given-is-sea` | Дана підказка забороняє фігуру в клітинці | game-logic/constraints | 🌱 | 1 | Battleship Sudoku (Судоку «Морський бій») |
 | `+given-segments` | Частина лінії дана наперед; до таких клітинок нічого не додається | game-logic/constraints | 🌱 | 1 | Pipelink |
 | `+given-word-queue` | Рівень — задана черга слів для розміщення | levels/format | 🌱 | 1 | Overwords |
+| `+glass-wall` | Прозора стіна на ребрі клітинок | entities/legality | 🌱 | 1 | Bloxpath |
 | `+glide-traversal` | Планер/вміння руху як ключ до нових місць | entities/move | 🥉 | 1 | Islands of Insight |
 | `+global-action-budget` | Ліміт дії на всю гру | game-logic/lose | 🌱 | 1 | Imogen |
 | `+global-connectivity` | Усе зʼєднано в одну групу | game-logic/constraints | 📎 | 1 | Simon Tatham's Portable Puzzle Collection |
@@ -3534,9 +3791,11 @@
 | `+global-parameter-sliders` | Повзунки глобальної моделі | interface/settings | 🌱 | 1 | SimEarth (сітковий шар і Daisyworld) |
 | `+global-parameters` | Спільні глобальні параметри з ціллю | game-logic/score | 🥉 | 1 | Terraforming Mars (Тераформування Марса) |
 | `+global-strike-cooldown` | Удар по зоні з перезарядкою | entities/combat | 📎 | 1 | Defense Grid: The Awakening |
+| `+global-tile-freeze` | Заморозити клітину в усіх кімнатах | entities/state | 🥈 | 1 | Corrypt |
 | `+glove-drops-at-wall` | Снаряд, що влучив у стіну, лягає як предмет | entities/combat | 🌱 | 1 | The Bugs Bunny Crazy Castle |
 | `+glue-knock-free` | Клей: нова кулька вибиває стару | entities/interact | 🌱 | 1 | Marble Drop |
 | `+glued-block-group` | Наперед склеєна група блоків рухається цілою | entities/legality | 🥉 | 1 | Lup Salad (Rupupu Cube) |
+| `+glued-blocks` | Клітини склеєні; шматок без опори падає цілим | entities/move | 🥉 | 1 | Woodworm |
 | `+glued-edges` | Склеєні ребра клітин: поле як граф | entities/move | 🥈 | 1 | Gridmount |
 | `+glyph-merge` | Злиття форм у символ | entities/interact | 🥉 | 1 | Word Factori |
 | `+glyph-recognition` | Збіг бітової маски з таблицею гліфів | game-logic/rules | 🌱 | 1 | Magic Chalkboards |
@@ -3574,6 +3833,7 @@
 | `+grade-letter` | Літерна оцінка результату (A-, B…) | game-logic/score | 🌱 | 1 | Polarium |
 | `+grade-rank` | Грейд за порогами очок | game-logic/score | 🌱 | 1 | Tetris The Grand Master (TGM) |
 | `+grade-refining` | Ресурс піднімає гатунок, якщо сила ланцюга ≥ вартості кроків | game-logic/economy | 📎 | 1 | Pipeline (Capstone Games) |
+| `+grade-threshold` | Оцінка A+ за порогом метрики | game-logic/score | 🌱 | 1 | Great Permutator |
 | `+grade-to-gems` | Оцінка за порогами дає мета-валюту, перерахунок при рекорді | game-logic/score | 🌱 | 1 | Towers of Scale |
 | `+gradient-color-hint` | Колір кімнати показує напрям до мети | interface/hud | 📎 | 1 | Jacob's Matrix |
 | `+graph-coloring-houses` | Доми як довільні множини вузлів | game-logic/constraints | 🥉 | 1 | Sudoku Topology |
@@ -3592,6 +3852,7 @@
 | `+gravity-indicator` | Індикатор напряму гравітації на полі | interface/hud | 🌱 | 1 | That Gravity Glow |
 | `+gravity-support-check` | Обʼєкт має опору знизу (статична гравітація) | game-logic/constraints | 🌱 | 1 | Dosun-Fuwari (ドッスンフワリ) |
 | `+gravity-toggle` | Перемикач гравітації | entities/move | 🥉 | 1 | Supaplex |
+| `+gravity-turn-stairs` | Сходинка в куті повертає гравітацію героя на 90° | entities/move | 📎 | 1 | MC Escher's Equestrian Armageddon |
 | `+gravity-up` | Осідання вгору, до стелі | entities/move | 🌱 | 1 | Puzzle Link (Renketsu Puzzle Tsunagete Pon!) |
 | `+graze-reward` | Нагорода за близький проліт | entities/combat | 📎 | 1 | Knights in the Nightmare |
 | `+great-wall-lands` | Землі за прямими-стінами, генерація на льоту | levels/generation | 🥇 | 1 | HyperRogue |
@@ -3610,9 +3871,11 @@
 | `+grid-tilings` | Те саме правило на інших плитках | levels/format | 🥈 | 1 | Slitherlink (Слізерлінк, Loopy, Fences) |
 | `+grid-word-feedback` | Фідбек по рядку й стовпцю (Squardle) | game-logic/constraints | 🥈 | 1 | Wordle |
 | `+grinding-boost` | Прискорення біля стін | entities/state | 🥉 | 1 | Tron Light Cycles (Світлові мотоцикли) і нащадки |
+| `+grip-hold` | Хват, поки тримаєш клавішу; тягнути лише впоперек | entities/interact | 📎 | 1 | Stamp Collecting on Planet Q |
 | `+groove-meter` | Шкала суперздібності | entities/state | 🌱 | 1 | Wargroove |
 | `+ground-fly-teleport` | Типи руху: наземний / політ / телепорт | entities/legality | 📎 | 1 | Archon: The Light and the Dark |
 | `+group-collapse-booster` | Бустер: усі групи рівних зливаються разом | entities/interact | 📎 | 1 | 2248: Number Puzzle |
+| `+group-color-balance` | Склад кожної звʼязної групи: рівно 1 сірий, білих = чорних | game-logic/constraints | 📎 | 1 | Coffee Milk (コーヒー牛乳, Milchkaffee) |
 | `+group-count-clue` | Підказка: сума + кількість груп (1 / 2 / 3+) | game-logic/constraints | 🌱 | 1 | Picross-варіанти (Picross 3D, Round 2, Mega, Color, Clip) |
 | `+group-damage` | Шкода передається звʼязній групі однакових | entities/combat | 📎 | 1 | Shovel Knight Pocket Dungeon |
 | `+group-delivery-bonus` | Бонус за розмір групи, доставленої разом | game-logic/score | 🌱 | 1 | Flicky |
@@ -3630,12 +3893,15 @@
 | `+group-shape-check` | Кожна група зафарбованих має задану форму | game-logic/constraints | 🌱 | 1 | Look-Air (るっくえあ) |
 | `+group-size-specials` | Спецплитка за розміром групи | entities/spawn | 📎 | 1 | Toon Blast |
 | `+group-support` | Звʼязна група одного кольору падає як ціле | entities/move | 🥇 | 1 | Mr. Driller |
+| `+group-vanish` | Колір, зібраний в одну групу, зникає з поля | entities/interact | 🌱 | 1 | Push Blox / Push Blox 2 |
 | `+grow-board-cell` | Поле росте на клітину в обране гравцем місце | levels/generation | 📎 | 1 | Overwords |
 | `+grow-by-eating` | Ріст від їжі | entities/state | 🌱 | 1 | Can of Wormholes |
+| `+grow-every-step` | Тіло росте на 1 щоходу, ніколи не коротшає | entities/move | 🌱 | 1 | CONSTRICTOR |
 | `+grow-from-parent` | Нова сутність виростає з наявної в сусідню клітину, памʼятає батька | entities/spawn | 📎 | 1 | CodinGame: Cellularena (Winter Challenge 2024) |
 | `+grow-on-move` | Тіло росте при русі до максимуму | entities/move | 📎 | 1 | Spybot: The Nightfall Incident (Lego Spybotics) |
 | `+grow-on-terrain` | Обʼєкт росте, проходячи терен | entities/state | 📎 | 1 | A Good Snowman Is Hard to Build |
 | `+grow-own-board` | Гравець добудовує поле між хвилями | levels/generation | 🥉 | 1 | Morphblade |
+| `+grow-recoil` | Ріст у стіну відштовхує все тіло | entities/move | 🥈 | 1 | Walking Dots (てんてん虫) |
 | `+grow-spread` | Розростання в сусідні клітини (MORE) | entities/spawn | 📎 | 1 | Baba Is You |
 | `+growing-board` | Поле росте модулями | levels/generation | 🥉 | 1 | Bärenpark |
 | `+growing-polyomino-avatar` | Аватар-поліоміно, що росте від зібраного | entities/state | 🥉 | 1 | Prickle (Sunbird Studio) |
@@ -3674,6 +3940,7 @@
 | `+half-maze-refresh` | Половина поля оновлюється після бонусу | levels/generation | 🥉 | 1 | Pac-Man Championship Edition / DX (Пекмен: чемпіонське видання) |
 | `+half-support` | Опора на половину: обʼєкт не падає, доки спирається ≥ ½ | entities/move | 🥉 | 1 | Flappy (フラッピー) |
 | `+hall-of-fame-message` | Рекорд з повідомленням гравця | interface/results | 🌱 | 1 | Number Munchers / Word Munchers |
+| `+hall-of-masters` | Імена тих, хто пройшов усе, додаються в гру оновленнями | interface/results | 🌱 | 1 | Push Blox / Push Blox 2 |
 | `+halt-toggle` | Стоп/йти для автоматичного загону | interface/input | 🌱 | 1 | Ironclad Tactics |
 | `+halt-with-output` | Правило зупиняє програму й задає відповідь | game-logic/program | 🌱 | 1 | A=B |
 | `+hamiltonian-path` | Відвідати кожну клітину рівно раз | game-logic/win | 📎 | 1 | Hands of Time (Final Fantasy XIII-2) |
@@ -3729,6 +3996,7 @@
 | `+hat-shot-collectible` | Збитий з ворога предмет-колекція | entities/interact | 🌱 | 1 | SteamWorld Heist |
 | `+haunt-escalation-roll` | Кидок з порогом, що росте | game-logic/turns | 🌱 | 1 | Betrayal at House on the Hill |
 | `+haunt-line` | Ворог вимикає першу активну клітину своєї лінії | entities/interact | 🌱 | 1 | Ghost Stories |
+| `+haunt-pass-through` | Прохід крізь стіни за ліміт очок | entities/legality | 📎 | 1 | SokoGhost: Unfinished Business |
 | `+haunter-countdown` | Трек-лічильник перед ворогом: дійшов до краю — наслідок, ресет | entities/state | 🌱 | 1 | Ghost Stories |
 | `+hazard-mix-mode` | Режим з усіма видами небезпек | game-logic/difficulty | 🌱 | 1 | Cavern Sweeper |
 | `+hazard-notes-map` | Мапа з позначками гравця | interface/hud | 📎 | 1 | Hunt the Wumpus («Полювання на Вампуса») |
@@ -3738,6 +4006,7 @@
 | `+head-hop` | Стати на клітину персонажа | entities/legality | 📎 | 1 | Puddle Knights |
 | `+head-on-both-die` | Лоб у лоб — гинуть обидва, крім власної землі | entities/combat | 🌱 | 1 | Hexanaut.io |
 | `+head-on-collision` | Суперник навстріч | entities/combat | 🌱 | 1 | Head On |
+| `+head-split-on-self-push` | Самоштовх відриває голову від тіла | entities/move | 🥈 | 1 | nuworm |
 | `+head-tail-swap` | Голова й хвіст міняються, рух розвертається | entities/move | 🌱 | 1 | Google Snake (Змійка в пошуку Google) |
 | `+head-to-head-both-die` | Лоб у лоб гинуть обидва | entities/move | 🌱 | 1 | Kaggle Hungry Geese |
 | `+head-to-head-length-wins` | Зіткнення голів: виживає довша, рівні — обидві | entities/combat | 📎 | 1 | Battlesnake |
@@ -3789,6 +4058,7 @@
 | `+hidden-bonus-character` | Секретний бонус: зона й часове вікно | game-logic/score | 📎 | 1 | Tinkle Pit (ティンクルピット) |
 | `+hidden-bonus-npc` | Знайди переодягненого | entities/spawn | 🌱 | 1 | Minami Lane |
 | `+hidden-button` | Прихована кнопка в стіні | entities/interact | 🌱 | 1 | Legend of Grimrock |
+| `+hidden-challenge-word` | Приховане слово рівня за картинкою | levels/bank | 🌱 | 1 | Spell Slide |
 | `+hidden-checkpoint` | Невидимий чекпойнт з умовою | levels/progression | 📎 | 1 | All the Gold in Fort Locks |
 | `+hidden-chest-in-area` | Схований обʼєкт відкривається лише малою областю | entities/interact | 📎 | 1 | Libble Rabble |
 | `+hidden-clue-under-safe` | Число відкривається лише під безпечною клітиною | game-logic/constraints | 🌱 | 1 | Polimines / Polimines 2 |
@@ -3853,6 +4123,7 @@
 | `+hidden-value-pieces` | Фігури з прихованою цінністю, відкриваються наприкінці | game-logic/score | 🌱 | 1 | Escape from Atlantis |
 | `+hidden-value-rewards` | Призи з прихованою цінністю до кінця гри | game-logic/score | 🌱 | 1 | Memoarrr! |
 | `+hidden-victory-points` | Приховані очки | game-logic/score | 🌱 | 1 | Catan |
+| `+hide-from-gaze` | Сховатися від погляду, що заливає досяжні клітини | entities/legality | 🥉 | 1 | Evil Eye |
 | `+hide-spot` | Клітина-укриття | entities/interact | 🌱 | 1 | Hitman GO (+ Lara Croft GO) |
 | `+hide-word-breaks` | Варіант без меж слів | game-logic/difficulty | 🥉 | 1 | Dropquote (Quotefall) |
 | `+hiding-cover` | Укриття ховає, але не захищає | entities/legality | 🌱 | 1 | Combat |
@@ -3866,11 +4137,14 @@
 | `+hint-arrow` | Стрілка підказує напрям повороту для збігу | interface/hud | 🥉 | 1 | Gururin (ぐるりん) |
 | `+hint-arrows` | Підказка-стрілки частини розвʼязку на клітинах | game-logic/difficulty | 📎 | 1 | Blobun |
 | `+hint-best-move` | Підказка найкращого ходу | game-logic/opponent | 🥇 | 1 | Below the Crown |
+| `+hint-check-placed` | Підказка: які поставлені деталі правильні | game-logic/difficulty | 📎 | 1 | RUSH (Two Tribes) |
 | `+hint-currency` | Підказки як витратна валюта | game-logic/economy | 🌱 | 1 | Unblock Me і Parking Jam 3D (мобільні Rush Hour) |
 | `+hint-from-collectibles` | Підказка за зібрані предмети | game-logic/difficulty | 📎 | 1 | Archaica: The Path of Light |
+| `+hint-hologram` | Підказка показує, де стати й куди дивитись | interface/hud | 🌱 | 1 | A Little Perspective |
 | `+hint-item` | Предмет-підказка (аудіо при кидку) | interface/hud | 🌱 | 1 | Recursed |
 | `+hint-levels` | Спрощений рівень-підказка до кожного рівня | levels/progression | 📎 | 1 | Maxwell's puzzling demon |
 | `+hint-meter` | Підказка, зароблена побічними діями | game-logic/difficulty | 📎 | 1 | NYT Connections (+ Strands) |
+| `+hint-midpoint-state` | Підказка — проміжний стан розвʼязку | game-logic/history | 🌱 | 1 | Bloxpath |
 | `+hint-ministage` | Підказка — мінірівень | levels/progression | 📎 | 1 | Can of Wormholes |
 | `+hint-move` | Підказка ходу | interface/hud | 🌱 | 1 | Bejeweled (1–3, Twist) |
 | `+hint-penalty` | Підказка назавжди зменшує нагороду | game-logic/score | 🌱 | 1 | Sutte Hakkun |
@@ -3879,11 +4153,14 @@
 | `+hint-purchase` | Підказка за ігрову валюту | game-logic/economy | 📎 | 1 | BoxBoy! (ハコボーイ!) |
 | `+hint-reveal-word` | Підказка: відкрити одне слово розвʼязку | game-logic/difficulty | 🌱 | 1 | Bonza Word Puzzle |
 | `+hint-sequence` | Підказка — наступний крок еталонного розвʼязку | game-logic/difficulty | 🌱 | 1 | Paper Trail |
+| `+hint-solution-overlay` | Підказка малює розвʼязок поверх кімнати | interface/hud | 🌱 | 1 | Growmi |
 | `+hint-solution-steps` | Підказка — наступний крок розвʼязку | levels/solvability | 🥈 | 1 | LOK Digital |
 | `+hint-tile` | Клітина-підказка | interface/hud | 🌱 | 1 | Chip's Challenge |
 | `+hint-tokens` | Підказки за токени, токени за проходження | game-logic/difficulty | 📎 | 1 | Quell |
 | `+hired-squads` | Найм загонів, закріплених за героєм | progression | 📎 | 1 | Langrisser |
 | `+history-randomizer` | Рандомайзер з історією | levels/generation | 🌱 | 1 | Tetris The Grand Master (TGM) |
+| `+history-resimulation` | Пересимуляція історії ходів після зміни світу | game-logic/history | 🥇 | 1 | Forever Wonder Colour |
+| `+history-splice-point` | Квітка: новий нуль часу | game-logic/history | 🌱 | 1 | Forever Wonder Colour |
 | `+hit-chance-tiers` | Шанс 0/50/100 % за укриттям | entities/combat | 🌱 | 1 | Mario + Rabbids Kingdom Battle |
 | `+hit-invulnerability-window` | Невразливість після влучання | entities/state | 🌱 | 1 | Maze War |
 | `+hit-location-deck` | Колода частин тіла | entities/combat | 🥉 | 1 | Kingdom Death: Monster |
@@ -3899,6 +4176,7 @@
 | `+hold-to-charge` | Утримання = заряд дії | interface/input | 🌱 | 1 | Tapper |
 | `+hold-to-repeat` | Утримання кнопки повторює дію (undo серією) | interface/input | 🌱 | 1 | Blobun |
 | `+hold-to-repeat-move` | Утримання = серія кроків | interface/input | 🌱 | 1 | Flip and Flop |
+| `+hold-to-reset` | Рестарт утриманням клавіші з індикатором | interface/input | 🌱 | 1 | The Court of Wanderers |
 | `+hold-to-restart` | Рестарт утриманням із кільцем прогресу | interface/input | 🌱 | 1 | A Short Bike |
 | `+hold-up-from-behind` | Дія лише зі спини цілі | entities/combat | 🌱 | 1 | Metal Gear Acid |
 | `+hold-word-grow` | Готове слово можна тримати на полі й нарощувати | game-logic/score | 📎 | 1 | WordTactics |
@@ -3920,6 +4198,7 @@
 | `+hook-pull` | Гак: тягнення по лінії | entities/legality | 🥉 | 1 | ENYO |
 | `+hop-chain` | Ланцюг стрибків без взяття | entities/move | 📎 | 1 | Halma / Chinese checkers (Хальма / Китайські шашки) |
 | `+hop-over-opponent` | Рух перестрибує суперника на лінії | entities/legality | 🌱 | 1 | BattleCON |
+| `+hop-over-self` | Голова перестрибує власне тіло до першої вільної клітини | entities/move | 📎 | 1 | Snekcross |
 | `+hope-discontent` | Дві шкали настрою і бунт | game-logic | 🥉 | 1 | Frostpunk |
 | `+horde-massing` | Скупчення ворогів біля стіни → атака | entities/spawn | 🥉 | 1 | Rebuild 3: Gangs of Deadsville |
 | `+horizontal-trio-reorder` | Падає рядок із 3; лише зсув і перестановка | entities/move | 🌱 | 1 | Mad Blocker Alpha |
@@ -3958,6 +4237,8 @@
 | `+hub-room-doors` | Хаб: двері-рівні, відкриття за умовою | levels/progression | 🥉 | 1 | Krusty's Fun House |
 | `+hub-walk-to-level` | Хаб, де аватар іде до дверей рівня | levels/progression | 📎 | 1 | Daedalian Opus |
 | `+hub-world` | Хаб із постійним станом | levels/progression | 📎 | 1 | Starseed Pilgrim |
+| `+hud-cells` | HUD із клітинок поля: клік дописує розділ опису | interface/hud | 📎 | 1 | Super Sudokoid: Dark Inversion |
+| `+hud-in-field` | HUD зі шматків поля: лічильники — клітини рівня | interface/hud | 🌱 | 1 | SwapBot |
 | `+huffing` | Фук: штраф за пропущене взяття | game-logic/opponent | 📎 | 1 | Національні варіанти шашок |
 | `+hull-breach-vacuum` | Пробоїна: газ області витікає назовні | entities/state | 📎 | 1 | Space Haven |
 | `+human-interpreter` | Виконавець програми — інший гравець | game-logic/opponent | 🌱 | 1 | Robot Turtles |
@@ -3970,6 +4251,7 @@
 | `+hyperbolic-grid` | Гіперболічна сітка {7,3} як граф | levels/generation | 👑 | 1 | HyperRogue |
 | `+hyperlink-text-window` | Текст з пунктами вибору | interface/menus | 📎 | 1 | ZZT |
 | `+i-split-you-choose` | Гравець ділить набір, суперник обирає частину | game-logic/opponent | 📎 | 1 | Hanamikoji |
+| `+ice-floe` | Ковзний блок у воді стає тимчасовою підлогою | entities/interact | 🌱 | 1 | Sokobos 2 |
 | `+ice-sticks-to-wall` | Блок примерзає до бічного сусіда й не падає | entities/move | 🥉 | 1 | Fire 'n Ice |
 | `+ice-straight-path` | Лід: лінія не повертає, але може перетинатися | game-logic/constraints | 📎 | 1 | Icebarn (アイスバーン) |
 | `+icon-bar-commands` | Панель іконок з вибором стрілками | interface/input | 📎 | 1 | Imogen |
@@ -3981,11 +4263,13 @@
 | `+idle-automation` | Гра йде сама | game-logic/economy | 📎 | 1 | Pixel Miner |
 | `+idle-death` | Бездіяльність N хвилин = смерть | game-logic/lose | 🌱 | 1 | The Castle Doctrine |
 | `+idle-drift` | Поле зсувається і без дій, повільніше | entities/move | 📎 | 1 | Shovel Knight Pocket Dungeon |
+| `+idle-hint-overlay` | Інструкція проявляється після N с бездіяльності | interface/hud | 🌱 | 1 | Stamp Collecting on Planet Q |
 | `+idle-income` | Пасивний дохід між рівнями | game-logic/economy | 📎 | 1 | Unblock Me і Parking Jam 3D (мобільні Rush Hour) |
 | `+idle-lock-timer` | Бездіяльність накопичує таймер блокера | entities/spawn | 📎 | 1 | Chuzzle |
 | `+idle-punisher` | Кара за бездіяльність | game-logic/lose | 🌱 | 1 | Frogger (Жабка) / Crossy Road |
 | `+idol-row-targets` | По цілі в кінці кожного ряду; порожній ряд → удар по цілі | game-logic/lose | 🌱 | 1 | Caller's Bane (Scrolls) |
 | `+idol-trap` | Взяти скарб — спрацьовує пастка | entities/interact | 🌱 | 1 | Spelunky |
+| `+ignite-adjacent` | Обʼєкт поруч із джерелом вогню запалюється | entities/interact | 🌱 | 1 | Soko Spectacle |
 | `+ignition-threshold` | Займання від порогу температури суміші | entities/state | 🥈 | 1 | Combustor |
 | `+ignorable-npc-bots` | Ворожі NPC воюють між собою | entities/move | 🌱 | 1 | Kiki the Nano Bot |
 | `+illegal-instruction-death` | Виконав DAT — загинув | game-logic/lose | 🌱 | 1 | Core War |
@@ -3995,6 +4279,7 @@
 | `+image-as-save` | Сейв як PNG, дані в каналах кольору | game-logic/history | 📎 | 1 | Sandspiel |
 | `+immobile-on-enter` | Клітина заморожує фігуру, що увійшла | entities/legality | 🌱 | 1 | Luzhanqi (Лучжаньці, китайські армійські шахи) |
 | `+immobile-structures` | Споруди без руху поруч із рухомими юнітами | entities/move | 🌱 | 1 | Caller's Bane (Scrolls) |
+| `+immobilize-all-goal` | Перемога: жоден обʼєкт не можна зсунути | game-logic/win | 🥉 | 1 | Secure |
 | `+immobilize-win` | Перемога, коли всі фігури суперника без ходу | game-logic/win | 🌱 | 1 | Bagh-chal (Баґ-чал, «Тигри й кози») |
 | `+immobilizer-aura` | Аура паралічу сусідніх ворогів | entities/state | 🥉 | 1 | Baroque chess / Ultima (Бароккові шахи) |
 | `+immovable-blocker` | Нерухомий блок посеред рухомих плиток | entities/legality | 🌱 | 1 | Dungeon Hearts |
@@ -4003,11 +4288,13 @@
 | `+immune-enemy` | Імунітет до ефекту | entities/state | 🌱 | 1 | Flash Element TD |
 | `+immune-tile-type` | Тип плитки, що не піддається атаці (мідь) | entities/state | 🌱 | 1 | Waterworks |
 | `+immunity-allele-sickness` | Гомозигота за імунітетом = хворе дитя | entities/state | 🌱 | 1 | Niche – a genetics survival game |
+| `+immunity-pickup` | Предмет або клітина змінює імунітет до undo | entities/state | 📎 | 1 | Tres Undos |
 | `+impale-attach` | Проколота сутність стає частиною тіла | entities/interact | 🥈 | 1 | Candle Prick |
 | `+impasse-points` | Підрахунок очок при безвиході | game-logic/score | 📎 | 1 | Shogi (Сьоґі, японські шахи) |
 | `+implicit-hydrogen-valence` | Валентність як лічильник на атомі | entities/state | 🥉 | 1 | MOLEK-SYNTEZ |
 | `+imprison` | Знерухомлення зі зняттям за умовою | entities/state | 📎 | 1 | Archon: The Light and the Dark |
 | `+impulse-movement-chart` | Рух розподілено по імпульсах | entities/move | 🥉 | 1 | Star Fleet Battles |
+| `+in-field-ui` | Інструменти намальовано на полі | interface/hud | 🌱 | 1 | Droplets |
 | `+in-game-chat` | Чат у партії | game-logic/opponent | 📎 | 1 | Yushino |
 | `+in-world-tutorial` | Підказки, намальовані на самому полі | interface/menus | 🌱 | 1 | Orakyubu |
 | `+inbox-outbox-queues` | Вхідна й вихідна черги з очікуваним виходом | game-logic/program | 📎 | 1 | Human Resource Machine |
@@ -4029,9 +4316,12 @@
 | `+infect-convert` | Удар перетворює жертву, смерть перетвореного породжує ворога | entities/spawn | 📎 | 1 | UFO: Enemy Unknown (X-COM: UFO Defense) |
 | `+infection-spread` | Заражена будівля стає генератором ворогів | entities/spawn | 🥈 | 1 | They Are Billions |
 | `+infinite-board` | Поле, що росте від першої плитки | levels/generation | 🥉 | 1 | Trax |
+| `+infinite-loop-detect` | Виявлення нескінченного циклу реакцій | game-logic/constraints | 🥈 | 1 | Magnet Block |
+| `+infinite-loop-loss` | Поразка за нескінченну рекурсію | game-logic/lose | 📎 | 1 | Forever Wonder Colour |
 | `+infinite-tile` | Плитка, що не витрачається | entities/state | 🌱 | 1 | Kotoba no Puzzle: Mojipittan (ことばのパズル もじぴったん) |
 | `+infinite-tiling-view` | Тор показано нескінченною плиткою копій | interface/render | 📎 | 1 | Toroban |
 | `+infinity-box` | Нескінченний вихід (∞) | entities/state | 👑 | 1 | Patrick's Parabox |
+| `+inflatable-wall` | Стіна під струмом роздувається в 4 боки й штовхає | entities/interact | 📎 | 1 | Conveyor Con-fusion |
 | `+influence-map` | Поле-карта над сіткою | game-logic | 🥈 | 1 | SimCity (1989) / Micropolis |
 | `+influence-radius-growth` | Предмет у радіусі живить ріст сутності | entities/state | 📎 | 1 | Cloud Gardens |
 | `+influence-scoring` | Порожня клітина — тому, чиїх більше бачить | game-logic/score | 🌱 | 1 | Tumbleweed |
@@ -4065,9 +4355,11 @@
 | `+ink-budget` | Обмежений запас чорнила/крейди на рівень | entities/state | 🌱 | 1 | Magic Chalkboards |
 | `+inline-stack-view` | Значення змінних поруч із кодом під час виконання | interface/hud | 🥉 | 1 | Robo Instructus |
 | `+input-blinder` | Ворог ховає ввід — друкуєш наосліп | interface/hud | 🌱 | 1 | Kinetype |
+| `+input-buffer` | Буфер вводу й затримка повтору | interface/input | 🌱 | 1 | Bloxpath |
 | `+input-decay` | Гниття без входів | entities/state | 📎 | 1 | Block'hood |
 | `+input-display` | Екранна схема клавіш із підсвіткою натиснутих | interface/hud | 🌱 | 1 | A Short Bike |
 | `+input-lock` | Блокування вводу під час анімації/резолву | interface/input | 🌱 | 1 | Memory / Concentration / Pairs («Мемо», «Знайди пару») |
+| `+input-lock-test` | Вимкнути вхід, щоб перевірити частину машини | interface/input | 🌱 | 1 | Great Permutator |
 | `+input-repeat-delay` | Налаштування затримки автоповтору руху | interface/settings | 🌱 | 1 | excellent |
 | `+input-respawn` | Джерело відновлюється, коли вільне | entities/spawn | 🌱 | 1 | Opus Magnum |
 | `+input-scheme-toggle` | Схема вводу: дві кнопки / одна кнопка-цикл | interface/input | 🌱 | 1 | Hitori (Хіторі, Singles) |
@@ -4079,8 +4371,10 @@
 | `+inside-outside-coloring` | Розфарбування всередині/зовні петлі | interface/input | 📎 | 1 | Slitherlink (Слізерлінк, Loopy, Fences) |
 | `+insight-difficulty-score` | Стат гравця множить силу ворогів і фінальний рахунок | game-logic/difficulty | 📎 | 1 | Deep Rune |
 | `+insight-level` | Легша версія пазла як підказка | levels/progression | 🌱 | 1 | Entwined Time |
+| `+insight-puzzles` | Необовʼязкові пазли-пояснення ідеї | levels/bank | 🌱 | 1 | Electrogical (エレクトロジカル) |
 | `+inspire-flip` | Перевернути картку бійця за умовою | entities/state | 📎 | 1 | Warhammer Underworlds |
 | `+instant-consume` | Спорядження обирається роллю, зілля — миттєві | entities/state | 📎 | 1 | Jacob's Matrix |
+| `+instant-line` | Миттєве зʼєднання поряд із тактовим | entities/move | 🌱 | 1 | Cadence (Made With Monster Love) |
 | `+instant-loss-tile` | Плитка, влучання в яку — миттєва поразка | game-logic/lose | 🌱 | 1 | Bomb Busters |
 | `+instant-one-guess` | Режим однієї спроби | game-logic/difficulty | 🌱 | 1 | Nerdle |
 | `+instant-vs-ongoing` | Одноразові й постійні здібності | entities/state | 📎 | 1 | Air, Land & Sea |
@@ -4118,19 +4412,23 @@
 | `+invincible-guard` | Невразливий NPC карає агресію в безпечній зоні | entities/move | 📎 | 1 | Island of Kesmai |
 | `+invincible-pursuer` | Невразливий переслідувач за таймером | entities/spawn | 📎 | 1 | Berzerk |
 | `+invincible-wanderer` | Невразливий блукач | entities/move | 🌱 | 1 | Domino Man |
+| `+invisible-avatar` | Аватар не видно на екрані — гравець стежить за позицією сам | interface/render | 📎 | 1 | Assassinvisible |
 | `+invisible-enemies` | Вороги невидимі (режим-челендж) | interface/render | 🌱 | 1 | Lode Builder |
 | `+invisible-enemy` | Ворог видимий лише поруч / на радарі | entities/state | 🥉 | 1 | Wizard of Wor |
 | `+invisible-floor` | Невидимий міст, зійшов — на старт | entities/interact | 🌱 | 1 | Pokémon overworld puzzles (Gen I–II, лід, валуни Strength, спінери, телепорти) |
 | `+invisible-force-field` | Невидима стіна | entities/legality | 🌱 | 1 | Lode Runner 2 і Lode Runner 3-D |
 | `+invisible-levels` | Рівні без видимого поля | levels/progression | 🌱 | 1 | Tempest |
+| `+invisible-not-walkable` | Не можна ступити на те, чого не видно з камери | entities/legality | 🥈 | 1 | A Little Perspective |
 | `+invisible-pickup` | Невидимий предмет на клітині | entities/interact | 🌱 | 1 | Gyromite |
 | `+invisible-to-enemy-team` | Сутність не видна команді суперника | interface/render | 📎 | 1 | Crazy Arcade BnB (Bomb and Bubbles) |
 | `+invisible-until-fire` | Невидимий, доки не стріляє / не влучили | interface/render | 🌱 | 1 | Combat |
 | `+invite-wanderer` | Найняти мандрівника за ресурс | entities/interact | 🌱 | 1 | Niche – a genetics survival game |
+| `+invoke-action` | Дія фігури без переміщення | entities/interact | 📎 | 1 | Penultima (Пенультима) |
 | `+invuln-while-bouncing` | Невразливість у польоті | entities/state | 🌱 | 1 | Mappy |
 | `+invulnerable-enemy` | Ворог, якого не вбити, лише стримати | entities/combat | 🌱 | 1 | Robotron: 2084 |
 | `+inward-outward-chain` | Ланцюг, що читається в обидва боки двома наборами слів | game-logic/constraints | 📎 | 1 | Spiral puzzle (Спіральний кросворд) |
 | `+io-blocks` | Блок з входами й виходами ресурсів | game-logic/economy | 📎 | 1 | Block'hood |
+| `+ion-charge` | Заряд вузла зменшує валентність; заряджені не сусідять; заряджений звʼязаний з одним сусідом | game-logic/constraints | 📎 | 1 | Molekularis (Молекуляріс) |
 | `+ipt-speed-tiers` | Швидкість процесора — інструкцій за тік | game-logic/program | 🌱 | 1 | Mindustry — logic (mlog) |
 | `+ironman-save` | Ironman | game-logic/save | 🌱 | 1 | Battle Brothers |
 | `+irregular-board-mask` | Поле довільної форми з дірками | field/topology | 📎 | 1 | Hidato (Хідато) |
@@ -4157,6 +4455,7 @@
 | `+item-container` | Контейнер у інвентарі з власними правилами | entities/state | 🥈 | 1 | Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon) |
 | `+item-conversion` | Перетворити предмет на бонус | entities/interact | 📎 | 1 | Desktop Dungeons |
 | `+item-cooldown` | Предмет спрацьовує за кулдауном | entities/combat | 📎 | 1 | Backpack Battles |
+| `+item-destroyer` | Пристрій-знищувач предметів | entities/interact | 🌱 | 1 | Great Permutator |
 | `+item-dream` | Міні-данж усередині предмета, що підсилює його | levels/generation | 🥉 | 1 | Tangledeep |
 | `+item-durability` | Тріщина → ремонт або злам | entities/state | 🌱 | 1 | Shining Force |
 | `+item-filter-sort` | Сортер: фільтр прямо, решта вбік | entities/interact | 📎 | 1 | Mindustry — клітинна логістика й оборона |
@@ -4188,12 +4487,14 @@
 | `+items-as-hp` | Предмети замість HP | entities/state | 🌱 | 1 | Magpie (7DRL 2023) |
 | `+jam-mode` | Пісочниця-інструмент після рівня | interface/sound | 📎 | 1 | Rytmos |
 | `+jammer-attack` | Ворог-джамер у поле суперника | game-logic/opponent | 🥈 | 1 | Pac-Man: сиквели 1983–2021 |
+| `+jammer-zone` | Зона, де механізми не діють, і зона, що її скасовує | entities/state | 🥉 | 1 | Give Up the Ghost: a puzzle checklist |
 | `+jet-push` | Поштовх за циклічною програмою | entities/move | 🌱 | 1 | Advent of Code — сіткові пазли (збірка) |
 | `+jigsaw-collectible` | Шматки бічного пазла як секрети | levels/progression | 🌱 | 1 | WOIM |
 | `+job-priority-grid` | Таблиця пріоритетів агент × робота | game-logic | 📎 | 1 | Space Haven |
 | `+job-queue` | Черга робіт для агентів-будівельників | game-logic | 🥈 | 1 | Prison Architect — шар кімнат і зон |
 | `+join-attack-range` | Союзники в радіусі вступають у бій | entities/combat | 📎 | 1 | Valkyrie Profile: Covenant of the Plume |
 | `+joint-cast` | Спільна техніка однакових професій | entities/combat | 🌱 | 1 | Bahamut Lagoon |
+| `+judge-move-completion` | Суддя добудовує неповну спробу до справжнього ходу | entities/legality | 📎 | 1 | Penultima (Пенультима) |
 | `+judge-points` | Очки за дотримання правил | game-logic/economy | 🌱 | 1 | Final Fantasy Tactics Advance |
 | `+jumble` | Перемішати незаблоковані | interface/input | 🌱 | 1 | Infinity Loop + Net (Tatham) |
 | `+jump-arc` | Стрибок через N клітин | entities/move | 📎 | 1 | Golf Peaks |
@@ -4221,6 +4522,7 @@
 | `+jump-to-next-hidden` | Стрибок курсора до наступної закритої клітини | interface/input | 🌱 | 1 | Blind Sweeper |
 | `+jump-to-throw` | Кнопка стрибка кидає взятий предмет | entities/combat | 🌱 | 1 | Flicky |
 | `+junction-cross` | Перехрестя двох потоків без змішування | entities/move | 🌱 | 1 | Mindustry — клітинна логістика й оборона |
+| `+junk-cards` | Шкода додає мертві карти в колоду замість HP | game-logic/lose | 📎 | 1 | StarVaders (Star★Vaders) |
 | `+kamikaze-enemy` | Ворог гине разом з ударом | entities/combat | 🌱 | 1 | Gauntlet (1985) |
 | `+karma-alignment` | Карма за вбивства мирних змінює світогляд і доступ до місць | entities/state | 🌱 | 1 | Island of Kesmai |
 | `+keep-external-entrance` | Конструкція мусить лишати вільний зовнішній вхід | entities/legality | 🌱 | 1 | Castles of Mad King Ludwig (Замки божевільного короля Людвіга) |
@@ -4230,6 +4532,7 @@
 | `+key-before-lock` | Генератор кладе ключ раніше за його замок | levels/generation | 🥇 | 1 | Dungeon Hack |
 | `+key-cell-scoring` | Очки за утримання клітин | game-logic/score | 🌱 | 1 | Dreamblade |
 | `+key-courier` | Предмет доставляє інший персонаж | entities/interact | 📎 | 1 | Rabi Laby (Rabi×Rabi) |
+| `+key-dissolves-container` | Ключ знищує контейнер цілком | entities/interact | 📎 | 1 | Imprisoned! |
 | `+key-far-away` | Ключ далеко від цілі без стрілки назад | levels/generation | 🥉 | 1 | HyperRogue |
 | `+key-holder-enemy` | Ключ у конкретного ворога | entities/interact | 🌱 | 1 | Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel) |
 | `+key-number-die` | Параметр правил кидається раз на гру | game-logic/random | 🌱 | 1 | Sumoku |
@@ -4248,6 +4551,8 @@
 | `+keyword-unlock-by-chapter` | Нові конструкції мови відкриваються главами | levels/progression | 🌱 | 1 | A=B |
 | `+kick-along-line` | Пнути обʼєкт уздовж лінії графа | entities/combat | 📎 | 1 | Amazing Penguin (Osawagase! Penguin Boy) |
 | `+kick-destroy` | Обʼєкт гине, якщо нема куди зсунути | entities/interact | 🌱 | 1 | Helltaker |
+| `+kick-object` | Копняк: ящик відлітає або тріскає | entities/interact | 📎 | 1 | AmaZoo |
+| `+kick-patterns` | Удар за типом фігури | entities/move | 📎 | 1 | Pup Champs |
 | `+kick-slide` | Копнути: обʼєкт ковзає, гравець стоїть | entities/interact | 🌱 | 1 | Ice path |
 | `+kickball-minigame` | Футбол-міні-гра на механіці гри | game-logic/opponent | 🥉 | 1 | Chew Man Fu (Be Ball) |
 | `+kill-arena-mode` | Режим-арена: рейтинг за вбивствами | game-logic/score | 🌱 | 1 | Splix.io |
@@ -4276,9 +4581,11 @@
 | `+king-tower-wake` | Ціль-ядро прокидається від шкоди або падіння сусіда | entities/state | 🌱 | 1 | Clash Royale |
 | `+kingdom-leader-conflict` | Два однокольорові лідери в одній групі → конфлікт | game-logic/opponent | 🥈 | 1 | Tigris & Euphrates (Тигр і Євфрат) |
 | `+kingdom-meta` | Місто між забігами, будівлі відкривають контент | interface/menus | 🥉 | 1 | Desktop Dungeons |
+| `+knight-exclusion` | Дві позначки не на відстані ходу коня | game-logic/constraints | 🌱 | 1 | Liquidum |
 | `+knight-link` | Зʼєднання двох своїх фігур за шаблоном | entities/interact | 🥉 | 1 | TwixT (Твікст) |
 | `+knight-move-stone` | Камінь ходить конем від удару | entities/move | 📎 | 1 | Oxyd (+ Enigma) |
 | `+knight-relocate` | Кінь переставляє фігуру | entities/legality | 🌱 | 1 | SokoChess (і SokoChess White / Black) |
+| `+knight-tour-cover` | Покрий усі клітини ходами коня | game-logic/win | 📎 | 1 | Chessarama |
 | `+knight-tour-path` | Шлях фігурним ходом через усі клітинки рівно раз | game-logic/win | 📎 | 1 | N-queens і Knight's tour (задача ферзів, хід коня) |
 | `+knock-off-height` | Скинути з висоти: падіння + бонус | entities/legality | 📎 | 1 | Persona 5 Tactica |
 | `+knock-off-platform` | Скинути на нижню опору без смерті | entities/move | 📎 | 1 | Wrecking Crew |
@@ -4313,6 +4620,7 @@
 | `+land-rights` | Тайли: власні / право будови / чужі | entities/legality | 🌱 | 1 | RollerCoaster Tycoon |
 | `+landing-hit-crack` | Падіння на свій колір — удар | entities/interact | 🌱 | 1 | Emeraldia |
 | `+landing-odds-modifiers` | Реліквії зсувають шанси за типом клітини | game-logic/economy | 📎 | 1 | Sol Cesto |
+| `+landscape-slicing` | Згенерувати цілісну мапу й нарізати на плитки-пазл | levels/generation | 🥈 | 1 | Landflip |
 | `+lane-buff` | Карта посилює одну смугу | entities/state | 🌱 | 1 | Calculords |
 | `+lane-dodge-row` | Гравець ходить лише своїм рядом; ухилення = зміна смуги | entities/move | 🌱 | 1 | Mega Man Star Force (Ryuusei no Rockman) |
 | `+lane-electrify` | Періодично смертельна смуга | entities/hazard | 🌱 | 1 | Tempest |
@@ -4346,6 +4654,7 @@
 | `+laser-transforms-item` | Промінь перетворює предмет | entities/interact | 📎 | 1 | Oxyd (+ Enigma) |
 | `+lasso-capture` | Захоплення вмісту замкненої петлі | game-logic/score | 🥈 | 1 | Libble Rabble |
 | `+last-drone-standing` | Перемагає останній живий гравець / команда | game-logic/win | 🌱 | 1 | Quarries of Scred 2 |
+| `+last-input-arrow` | Стрілка останнього вводу на екрані | interface/hud | 🌱 | 1 | Assassinvisible |
 | `+last-item-bonus` | Бонус за останній предмет рівня | game-logic/score | 🌱 | 1 | Crystal Castles |
 | `+last-line-defense` | Разова очистка смуги | game-logic/lose | 🌱 | 1 | Plants vs. Zombies (Рослини проти зомбі) |
 | `+last-move-wins` | Нормальна гра: хто не може піти — програв | game-logic/opponent | 🌱 | 1 | Pentomino (Пентаміно, гра Голомба) |
@@ -4376,6 +4685,7 @@
 | `+layer-score` | Очки за зоною поля | game-logic/score | 🌱 | 1 | Dig Dug |
 | `+layer-stack-drop` | Складання шарів з падінням до опори | entities/state | 🥉 | 1 | shapez |
 | `+layer-via` | Зʼєднання шарів у клітині | entities/legality | 📎 | 1 | KOHCTPYKTOP: Engineer of the People |
+| `+layer-walls` | Стіни, що блокують лише свій шар | entities/legality | 📎 | 1 | Vext Edit |
 | `+layered-blocker` | Блокер із шарами | entities/state | 📎 | 1 | Candy Crush Saga |
 | `+layered-bottle` | Приймач-стек шарів: лише нижній | game-logic/win | 📎 | 1 | Puzzle Pirates — Alchemistry (Алхімія) |
 | `+layered-cell-score` | Клітина зі слотами-шарами, кожен дає бали | entities/state | 🌱 | 1 | Graveyard Keeper |
@@ -4412,6 +4722,7 @@
 | `+learning-curve` | Графік навчання AI за партіями | interface/results | 📎 | 1 | Hexapawn (гексапішак) і машина, що вчиться на сірникових коробках |
 | `+leash-no-cross` | Шлях не перетинає себе; згортання = undo | entities/move | 🌱 | 1 | Fidel Dungeon Rescue |
 | `+leave-cell-collect` | Клітина, з якої пішов, зникає і стає трофеєм | entities/interact | 🌱 | 1 | Hey, That's My Fish! (Packeis am Pol) |
+| `+leave-double` | Лишити дубль себе | entities/spawn | 📎 | 1 | Altered |
 | `+leave-member-behind` | Залишити члена загону й покликати назад | entities/move | 📎 | 1 | Bloodwych |
 | `+leave-no-trace` | Ціль: наприкінці не лишити своїх сутностей | game-logic/win | 🌱 | 1 | EXAPUNKS |
 | `+ledge-grab` | Вчепитися за край і підтягнутись | entities/move | 📎 | 1 | Prince of Persia |
@@ -4443,6 +4754,7 @@
 | `+letter-run-clue` | Однакові мітки — поспіль на шляху, різні — не впритул | game-logic/constraints | 📎 | 1 | Kouchoku (Коучоку, «Перетин — лише під прямим кутом») |
 | `+letter-selector-queue` | Селектор букв з доступною зоною і зсувом | entities/spawn | 📎 | 1 | Kotoba no Puzzle: Mojipittan (ことばのパズル もじぴったん) |
 | `+letter-shape-clue` | Літера-підказка = форма фігури | game-logic/constraints | 📎 | 1 | Pentominous («Пентамінус») |
+| `+letter-shift-cell` | Клітина зсуває літеру абеткою | entities/interact | 🌱 | 1 | Spell Slide |
 | `+letter-spot-summon` | Клітина-буква викликає носія букви | entities/spawn | 🌱 | 1 | Do! Run Run |
 | `+letter-swap` | Поміняти дві позиції набору | interface/input | 🌱 | 1 | worDefense |
 | `+letter-tracker` | Алфавіт з викресленими літерами | interface/hud | 🌱 | 1 | Codeword |
@@ -4452,6 +4764,7 @@
 | `+letter-wheel` | Колесо літер: шлях по повному графу, кожна літера раз | interface/input | 📎 | 1 | Wordscapes |
 | `+letter-wildcard` | Вільна літера-заповнювач (X) | game-logic/rules | 🌱 | 1 | LOK Digital |
 | `+letters-extra-life` | Збери літери слова — +1 життя | game-logic/score | 🌱 | 1 | Hopping Mappy |
+| `+letters-form-word` | Літери обʼєктів у ряду складають слово | game-logic/constraints | 🥉 | 1 | 13 Sticky Notes |
 | `+level-as-lives` | Рівень героя — водночас сила й запас життів | game-logic/lose | 🌱 | 1 | Super Puzzle Platformer Deluxe |
 | `+level-as-object` | Рівень як обʼєкт на мапі, що підпадає під правила | levels/progression | 👑 | 1 | Baba Is You |
 | `+level-as-qr` | Рівень як QR-код | levels/format | 🥉 | 1 | Mekorama |
@@ -4472,6 +4785,7 @@
 | `+level-generator-agent` | Програма генерує рівні для заданої гри | levels/generation | 🥇 | 1 | GVGAI (General Video Game AI) |
 | `+level-goal-points` | Рівень за goal-очками, а не рядами | game-logic/waves | 🌱 | 1 | Tetris Worlds (режими-варіанти) |
 | `+level-goals` | Ціль рівня з таксономії | game-logic/win | 🥉 | 1 | Candy Crush Saga |
+| `+level-intro-message` | Екран-повідомлення перед рівнем з новою механікою | interface/menus | 🌱 | 1 | CONSTRICTOR |
 | `+level-json-schema` | Рівень як JSON за опублікованою схемою з валідацією | levels/format | 🥉 | 1 | Loophole |
 | `+level-multiplier-scoring` | Очки = значення × рівень | game-logic/score | 🌱 | 1 | NMBR 9 |
 | `+level-objectives` | Додаткові цілі рівня (без шкоди, без втрат) | game-logic/score | 🌱 | 1 | Unstoppable Gorg |
@@ -4479,16 +4793,19 @@
 | `+level-password` | Вхід на рівень за паролем | interface/menus | 🌱 | 1 | Pipe Mania (Pipe Dream) |
 | `+level-phase-switch` | Подія перемикає правила рівня | game-logic | 📎 | 1 | Ice path |
 | `+level-preview` | Живе превʼю рівня на мапі | interface/menus | 📎 | 1 | Would You Love Me If I Was a Snake? |
+| `+level-preview-popup` | Біля вузла хабу — назва й мінікарта пазла | interface/menus | 🌱 | 1 | Remote Planets |
 | `+level-ratios` | % вбитих / таємниць / скарбів наприкінці | game-logic/score | 🌱 | 1 | Wolfenstein 3D |
 | `+level-regenerate` | Покинутий рівень зникає; новий на тій самій глибині | game-logic/levels | 📎 | 1 | Moria / Angband |
 | `+level-regenerate-on-return` | Рівень генерується знову при кожному вході | levels/generation | 🥉 | 1 | Sword of Fargoal |
 | `+level-repopulate` | Доспавн монстрів при поверненні на рівень | entities/spawn | 🌱 | 1 | Larn |
 | `+level-reset-execute` | Execute/Reset: перезбирання рівня з коду | interface/input | 📎 | 1 | Untrusted — or the Continuing Adventures of Dr. Eval |
 | `+level-reset-on-entry` | Герой щоразу з 1-го рівня | entities/state | 🌱 | 1 | Azure Dreams |
+| `+level-reward-piece` | Пройдений рівень дає будівельний блок на мапі світу | levels/progression | 🥉 | 1 | An Architect's Adventure |
 | `+level-score-multiplier` | Очки × номер рівня | game-logic/score | 🌱 | 1 | Nibbler |
 | `+level-share-code` | Код рівня для обміну | levels/editor | 📎 | 1 | Super Mario Maker 2 |
 | `+level-side-challenges` | Опційні виклики рівня (без X, на час) | game-logic/score | 🌱 | 1 | Warp Factory |
 | `+level-slices-view` | Показ 3D-поля зрізами 2D | interface/render | 📎 | 1 | Raumschach (просторові шахи) |
+| `+level-snapshot-restore` | Знімок рівня й відновлення без руху героя | game-logic/history | 🥉 | 1 | Chronescher |
 | `+level-special-quest` | Прихований квест рівня з бонусом досвіду | levels/progression | 🌱 | 1 | Eye of the Beholder |
 | `+level-speed-bonus` | Рівень за захоплене дає швидкість | entities/state | 🌱 | 1 | Hexanaut.io |
 | `+level-up-bonus-pick` | Новий рівень дає вибір з наступного тиру | game-logic/economy | 📎 | 1 | Super Auto Pets |
@@ -4519,6 +4836,8 @@
 | `+lift-other-avatar` | Аватар підіймає/штовхає іншого аватара | entities/interact | 🥉 | 1 | Kine |
 | `+lift-place-tile` | Підняти й покласти плитку підлоги | entities/interact | 🥉 | 1 | Void Stranger |
 | `+lift-throw` | Підняти й кинути юніт | entities/interact | 🥈 | 1 | Disgaea: Hour of Darkness |
+| `+lift-tile` | Підйомник піднімає один обʼєкт на верхній ярус, стос — ні | entities/interact | 📎 | 1 | Pull Chain |
+| `+lifting-door` | Двері під струмом піднімають вантаж на верхній рівень | entities/interact | 📎 | 1 | Conveyor Con-fusion |
 | `+light-and-darkness` | Освітленість клітин впливає на видимість | interface/render | 🥈 | 1 | Infra Arcana (огляд з The Ground Gives Way і Zorbus) |
 | `+light-attract-grow` | Сутність росте до джерела світла | entities/move | 🥉 | 1 | Chomp Garden |
 | `+light-chasing` | Алгоритм погоні за вогнями як підказка | levels/solvability | 📎 | 1 | Lights Out |
@@ -4537,10 +4856,10 @@
 | `+limit-line-bounce` | Межа району: ціль розвертається всередину | entities/move | 📎 | 1 | Code Name: Sector |
 | `+limited-active-doors` | Ліміт одночасних перешкод | entities/legality | 🌱 | 1 | Lock 'n' Chase |
 | `+limited-ammo-refill` | Ліміт набоїв з поповненням підбиранням | entities/state | 🌱 | 1 | Rick Dangerous |
-| `+limited-blocks` | Обмежений запас стін | game-logic/economy | 📎 | 1 | Emberward |
 | `+limited-escape-charges` | Аварійна дія з лімітом зарядів на рівень | entities/state | 🌱 | 1 | Amidar |
 | `+limited-ignitions` | Обмежений запас запусків | game-logic/lose | 🌱 | 1 | Rocket Mania! |
 | `+limited-jokers` | Джокер коштує одне поле ресурсу, залишок — очки й тай-брейк | game-logic/economy | 🌱 | 1 | Encore! (Noch mal!) |
+| `+limited-moves-piece` | Фігура з N ходами, потім перетворюється | entities/state | 📎 | 1 | Droplets |
 | `+limited-parts-inventory` | Набір деталей рівня з поверненням | entities/state | 📎 | 1 | Electric Box (+ Lazors) |
 | `+limited-placement-stock` | Обмежений запас предметів на рівень | game-logic/economy | 🌱 | 1 | Cloud Gardens |
 | `+limited-power-uses` | Здібність із N зарядами на партію | game-logic/economy | 🌱 | 1 | Stamps |
@@ -4566,6 +4885,7 @@
 | `+line-cut-scatter` | Ворог розрізає ланцюг — хвіст розбігається | entities/interact | 📎 | 1 | The Last Guy |
 | `+line-cutter-enemy` | Ворог перерізає слід/лінію гравця | entities/interact | 📎 | 1 | Tinkle Pit (ティンクルピット) |
 | `+line-edit-live` | Правка мережі під час руху, ресурси повертаються після звільнення | interface/input | 🥉 | 1 | Mini Metro |
+| `+line-fill-piece` | Фігура заливає промінь до перешкоди | entities/spawn | 📎 | 1 | Droplets |
 | `+line-graph-board` | Дошка-граф з намальованими лініями (алькерк) | field | 📎 | 1 | Bagh-chal (Баґ-чал, «Тигри й кози») |
 | `+line-hand-scoring` | Ряди/стовпці/кути як окремі руки | game-logic/score | 🌱 | 1 | Puzzmo: Pile-Up Poker |
 | `+line-immune-tile` | Клітина, яку не бере повний ряд | entities/interact | 🌱 | 1 | Cosmo Gang the Puzzle (Pac-Attack) |
@@ -4580,6 +4900,7 @@
 | `+line-of-sight-swap` | Обмін місцями з першим обʼєктом на лінії | entities/interact | 📎 | 1 | Heroes of Sokoban |
 | `+line-placement` | Викладання в одну лінію зі звʼязністю | entities/legality | 🥈 | 1 | Scrabble (цифрові версії; Words With Friends) |
 | `+line-placement-rule` | Усі плитки ходу — в одній лінії | entities/legality | 🌱 | 1 | Qwirkle + Ingenious (Квіркл, Genial) |
+| `+line-presses-plate` | Намальована лінія — вага для кнопки чи цілі | entities/interact | 📎 | 1 | Edge Case |
 | `+line-promotion` | Лінія з N фігур перетворює їх на сильніші в руці | entities/state | 📎 | 1 | boop. |
 | `+line-run-scoring` | Рахунок суцільних ліній | game-logic/score | 📎 | 1 | Take It Easy |
 | `+line-same-color-clue` | Лінія між парою — один колір | game-logic/constraints | 📎 | 1 | Alien Cartographer |
@@ -4597,10 +4918,12 @@
 | `+lingering-chain-residue` | Слід зникнення живе T і ланцюжить однакових, хто торкнувся | game-logic/score | 🥉 | 1 | Takoron (Octomania) |
 | `+link-group-scoring` | Очки за кожну фігуру групи ≥3, раз за фігуру | game-logic/score | 📎 | 1 | Tetris Link |
 | `+link-indicator` | Перемички між зʼєднаними сусідами | interface/render | 📎 | 1 | Blast One Standing |
+| `+link-pair-ban` | Заборонені пари кінців лінії | game-logic/constraints | 🌱 | 1 | Ichimaga (イチマガ) |
 | `+link-separate-groups` | Зʼєднати ≥2 окремі групи одного типу — вони зникають | entities/interact | 🥉 | 1 | Puzzle Link (Renketsu Puzzle Tsunagete Pon!) |
 | `+linked-blocks` | Зчеплені блоки, що розʼєднуються умовою | entities/legality | 📎 | 1 | Color Block Jam |
 | `+linked-boards` | Дві дошки з переходом фігури | entities/move | 🥈 | 1 | Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage) |
 | `+linked-boxes` | Ящики однієї групи рухаються разом | entities/legality | 📎 | 1 | Gridmount |
+| `+linked-detonation` | Група звʼязаних бомб вибухає разом | entities/combat | 📎 | 1 | Bombuzal |
 | `+linked-dive-objects` | Обʼєкти, що повторюють спецдію гравця | entities/interact | 🥉 | 1 | Suikyo [Water Mirror] |
 | `+linked-enemies-same-turn` | Звʼязані вороги: вбити всіх за один хід | entities/death | 🌱 | 1 | Sproggiwood |
 | `+linked-gates` | Звʼязки перемикач → ворота, задані в редакторі | levels/editor | 📎 | 1 | OxRox |
@@ -4609,6 +4932,7 @@
 | `+linked-puzzles` | Два пазли, що розвʼязують один одного | game-logic/constraints | 🥉 | 1 | Sudo Sweep |
 | `+linked-retract` | Група обʼєктів знімається одночасно | entities/interact | 🌱 | 1 | Hook |
 | `+linked-room-copies` | Копії кімнати зі спільним станом | entities/state | 🥇 | 1 | All the Gold in Fort Locks |
+| `+linked-worlds` | Два поля, зшиті відображенням: обʼєкти одного задають рельєф іншого | entities/state | 🥈 | 1 | Two Worlds |
 | `+lion-trading-rule` | Заборона невигідного обміну ключових фігур | entities/legality | 🥇 | 1 | Великі шогі — Chu shogi і Tenjiku shogi (Чу-шогі, Тендзіку-шогі) |
 | `+liquid-dirt-flow` | Рідка земля заповнює ями | entities/move | 🥈 | 1 | Scorched Earth |
 | `+liquid-flow` | Рідина з рівнем: падає й розтікається | entities/move | 🥈 | 1 | Terraria — рідини |
@@ -4622,8 +4946,8 @@
 | `+lit-bomb-trigger` | Бомба вибухає лише від вибуху запаленої | entities/combat | 🥉 | 1 | Bomberman: Panic Bomber (ぱにっくボンバー) |
 | `+lit-when-placed` | Підсвітка обʼєкта на правильному місці | interface/hud | 🌱 | 1 | World's Hardest 15-Puzzle |
 | `+litter-cleanup` | Сміття від агентів, прибиральники | entities/spawn | 📎 | 1 | RollerCoaster Tycoon |
-| `+live-edit-while-running` | Правка програми з миттєвим перерахунком симуляції | game-logic/program | 🥇 | 1 | Kaizen: A Factory Story |
 | `+live-market-prices` | Ціни з трендом і новинами | game-logic/economy | 🥈 | 1 | Kingdom.py |
+| `+live-score-delta` | Повний перерахунок після ходу з дельтами на клітинах | interface/hud | 📎 | 1 | TeenyShire |
 | `+lives-and-trophies` | Два лічильники: N перемог або M поразок | game-logic/win | 🌱 | 1 | Super Auto Pets |
 | `+lives-as-lenders` | Життя як іменовані речі | interface/hud | 🌱 | 1 | Hover Bovver |
 | `+lives-by-difficulty` | Запасні серця залежать від складності | game-logic/difficulty | 🌱 | 1 | Maze Keeper |
@@ -4686,8 +5010,10 @@
 | `+loop-clear` | Замкнена петля зникає з очками за розмір | entities/interact | 📎 | 1 | Loopz |
 | `+loop-clears-color` | Замкнений контур знімає весь колір | entities/interact | 📎 | 1 | Dots / Two Dots |
 | `+loop-closes-spawner` | Замкнена петля шляху гасить спавн | game-logic/waves | 🥉 | 1 | Hexguardian |
+| `+loop-count-gate` | Ворота пропускають після N кіл сигналу | entities/state | 📎 | 1 | Cadence (Made With Monster Love) |
 | `+loop-difficulty-scale` | Сила ворогів росте з номером кола | game-logic/waves | 🌱 | 1 | Loop Hero |
 | `+loop-gem-generation` | Цілі лише на досяжних петлях зі старту | levels/generation | 🥈 | 1 | Ice-sliding puzzles (Inertia і жанр «ковзай до упору») |
+| `+loop-markers` | Мітки початку й кінця циклу | game-logic/program | 🌱 | 1 | Neon Noodles |
 | `+loop-parity` | Перевірка парності для петлі | levels/solvability | 🥈 | 1 | Tantrix |
 | `+loop-passes-harder` | Ті самі рівні по колу з таблицею ускладнень | game-logic/progress | 🌱 | 1 | Chuckie Egg |
 | `+loop-path` | Автохід по замкненій петлі | entities/move | 📎 | 1 | Loop Hero |
@@ -4735,6 +5061,8 @@
 | `+magic-sum-check` | Усі лінії мають однакову суму | game-logic/constraints | 🌱 | 1 | Magic and Latin squares (Магічний і латинський квадрати) |
 | `+magic-weapons` | Зброя-нагорода за велике комбо з рівнями | entities/combat | 📎 | 1 | Tetrisphere |
 | `+magnet-attract` | Магніт тягне предмети | entities/interact | 📎 | 1 | Adventure (Atari 2600) |
+| `+magnet-chain-attach` | Зчеплення будь-якою гранню ланцюгом | entities/interact | 🥈 | 1 | Altered |
+| `+magnet-polarity` | Блоки-монополі: різні полюси притягуються, однакові відштовхуються | entities/interact | 🥈 | 1 | Magnet Block |
 | `+magnet-pull` | Магніт тягне гравця по чистій лінії | entities/interact | 🥉 | 1 | Robbo |
 | `+magnetic-attract-repel` | Магнітне притягання і відштовхування за полюсами | entities/move | 🥉 | 1 | Met Mag (Jikai Shōnen Met Mag) |
 | `+maintenance-check` | Періодична дія-обслуговування, пропуск карає всіх | game-logic/lose | 🌱 | 1 | Space Alert |
@@ -4779,6 +5107,7 @@
 | `+map-built-on-discovery` | Знайдене ребро стає видимою плиткою мапи | interface/render | 🌱 | 1 | Schnappt Hubi! |
 | `+map-choice-setup` | Вибір особистої мапи з кількох | levels/bank | 🌱 | 1 | Ark Nova |
 | `+map-completion-reward` | Нагорода за мапу, що збіглася з еталоном | game-logic/goals | 📎 | 1 | Etrian Odyssey |
+| `+map-from-markup` | Розмітка-пазл стає мапою для аватара | game-logic/constraints | 🥈 | 1 | Sokogram |
 | `+map-generation` | Генерація материків | levels/generation | 🥇 | 1 | Civilization (бойовий шар юнітів, I–VI) |
 | `+map-icon-limit` | Ліміт іконок на поверх | interface/input | 🌱 | 1 | Etrian Odyssey |
 | `+map-is-world` | Карта = рівень, редагування карти міняє світ | levels/format | 🥈 | 1 | Carto |
@@ -4822,6 +5151,7 @@
 | `+match-scoring` | Матч із суми партій або до цілі | game-logic/score | 🌱 | 1 | Surakarta (Roundabouts) |
 | `+match-series-score` | Серія партій: переможцю 5, переможеному — за кожну зону | game-logic/score | 🌱 | 1 | Schotten Totten / Battle Line |
 | `+match-size-setting` | Налаштування розміру збігу 3/4/5 | game-logic/difficulty | 🌱 | 1 | Hatris |
+| `+match-split` | Лінія з 3 зникає, середина дає 2 нових навпоперек | entities/interact | 🥉 | 1 | What Gophers Go For |
 | `+match-tray` | Лоток-буфер: N однакових зникають | entities/interact | 🌱 | 1 | Triple Match 3D / Tile Explorer |
 | `+match-trophies` | Матч до N перемог у раундах | game-logic/opponent | 🌱 | 1 | Bomberman |
 | `+match-yields-resource` | Збіг типу → ресурс цього типу | game-logic/economy | 🌱 | 1 | Titanium Court |
@@ -4856,9 +5186,12 @@
 | `+medal-rank` | Медаль за партію | interface/results | 🌱 | 1 | Quarrel |
 | `+medal-rating` | Медаль за час проходження | levels/progression | 🌱 | 1 | Puzzle Scape |
 | `+medal-victory` | Медалі до цілі | game-logic/win | 🌱 | 1 | Memoir '44 / Commands & Colors |
+| `+meet-goal` | Перемога — два аватари зустрілись | game-logic/win | 🌱 | 1 | Handshakes |
+| `+meet-partner` | Перемога, коли два аватари зустрілись | game-logic/win | 🌱 | 1 | ilomilo |
 | `+mega-clue` | Підказка на два ряди | game-logic/constraints | 🥇 | 1 | Nonogram (Японський кросворд, Picross, Griddlers, Hanjie) |
 | `+mega-crop-2x2` | Чотири однакові квадратом зливаються у великий обʼєкт | entities/legality | 📎 | 1 | Atomicrops |
 | `+melody-timing` | Ціль — правильна послідовність звуків у часі | game-logic/win | 🥈 | 1 | Cogs |
+| `+melt-near-light` | Блок поруч з увімкненим світлом зникає наприкінці ходу | entities/interact | 📎 | 1 | Pull Chain |
 | `+member-murder-chain` | Вбивство члена загону і помста друзів | entities/state | 📎 | 1 | Ishar: Legend of the Fortress |
 | `+memory-marker-trap` | Пастка-позначка, що лишає слід монстра | entities/interact | 🌱 | 1 | Dungeon Squire |
 | `+memory-pair-open` | Відкрити пару однакових (Memory на полі) | game-logic/win | 🌱 | 1 | Oxyd (+ Enigma) |
@@ -4889,11 +5222,14 @@
 | `+meta-currency` | Валюта поза раундом на підказки/паки | game-logic/economy | 📎 | 1 | Bonza Word Puzzle |
 | `+meta-currency-keep` | Частина валюти лишається після смерті | game-logic/economy | 🌱 | 1 | Shovel Knight Pocket Dungeon |
 | `+meta-currency-unlocks` | Окрема валюта за виклики відкриває предмети | game-logic/economy | 🌱 | 1 | Two Point Hospital |
+| `+meta-door` | Двері відчиняються, коли інших дверей не лишилось | entities/interact | 🌱 | 1 | Give Up the Ghost: a puzzle checklist |
 | `+meta-keep-logs` | Між забігами лишаються лише знання/логи | levels/progression | 🌱 | 1 | Duskers |
 | `+meta-level-quadrants` | Рівень, складений з окремих пазлів-квадрантів | levels/progression | 🥉 | 1 | Would You Love Me If I Was a Snake? |
 | `+meta-minigame` | Окрема мінігра-нагорода (Mt. Fortune) | game-logic/economy | 🥉 | 1 | Wordscapes |
 | `+meta-progression-tree` | Дерево постійних апгрейдів | game-logic/progression | 📎 | 1 | Grid Forge TD |
+| `+meta-puzzle` | Фінальний пазл з відповідей попередніх | levels/progression | 🥉 | 1 | 12 Word Searches |
 | `+meta-restart` | Рестарт глибший за рестарт: скинути все, крім знань/зарядів | game-logic/history | 🌱 | 1 | Achronal Dungeon |
+| `+meta-shape-puzzle` | Фінальний пазл: скласти фігуру з усіх елементів світу | levels/progression | 🥇 | 1 | Ligo |
 | `+meta-shop-stages` | Мета-прогрес стадіями за накопичені гроші | game-logic/economy | 🌱 | 1 | Torneko's Great Adventure: Mystery Dungeon |
 | `+meta-talents` | Таланти за токени між забігами | levels/progression | 🥉 | 1 | DemonCrawl |
 | `+meta-tier-unlock` | Тири дерева за порогами очок | levels/progression | 🌱 | 1 | Pixel Miner |
@@ -4906,8 +5242,10 @@
 | `+meter-summon-piece` | Шкала знищених викликає спецфігуру | game-logic/score | 🌱 | 1 | Cosmo Gang the Puzzle (Pac-Attack) |
 | `+meter-transform` | Шкала → тимчасове перетворення | entities/state | 🌱 | 1 | Shadow Labyrinth |
 | `+metric-charts` | Живі графіки метрик симуляції | interface/hud | 🥉 | 1 | Combustor |
+| `+metric-grades` | Пʼять оцінок за метрикою з порогами | game-logic/score | 🌱 | 1 | Hard Chip |
 | `+mg-penetration` | Кулемет бʼє кілька гексів по лінії | entities/combat | 📎 | 1 | Squad Leader |
 | `+microwave-door` | Двері-зброя: хвиля по рядку змітає ворогів | entities/combat | 📎 | 1 | Mappy |
+| `+mid-move-contact` | Зʼєднання в проміжних положеннях руху | entities/move | 👑 | 1 | 0PLAYER |
 | `+mid-path-entry` | Нестандартна точка входу хвилі | entities/spawn | 🌱 | 1 | Сучасні mazing-TD (Electromaze, Tower Maze Defense, Thornline TD, Maul Tactics, Back to the Roots 2) |
 | `+midas-touch-aura` | Аура перетворює сусідні клітини | entities/interact | 📎 | 1 | Midas (Wanderlands) |
 | `+midrow-objects` | Нейтральний ряд між сторонами: блок і дрон-фаза | entities/combat | 🥉 | 1 | Cobalt Core |
@@ -4919,6 +5257,7 @@
 | `+mill-removal` | Лінія з 3 дає право зняти чужу | entities/combat | 🌱 | 1 | Nine men's morris (Млин) |
 | `+mimic` | Обманка: скриня-монстр | entities/interact | 🌱 | 1 | Dragonsweeper |
 | `+mimic-entity` | Сутність повторює ввід гравця | entities/move | 🥉 | 1 | Toodee and Topdee |
+| `+mimic-pattern-transform` | Повтори цикл руху сутності — станеш нею | entities/state | 🥉 | 1 | Mimic (Mimic Classic) |
 | `+mimic-pickup` | Мімік-жетони стають взятим предметом | entities/interact | 📎 | 1 | Recursed |
 | `+min-card-sets-speed` | Найменша з одночасно зіграних карт задає швидкість поля | game-logic/economy | 🌱 | 1 | Niagara |
 | `+min-color-score` | Результат = мінімум з кількох рахунків | game-logic/score | 🌱 | 1 | Tash-Kalar: Arena of Legends |
@@ -5016,6 +5355,7 @@
 | `+money-and-item-goal` | Перемога: сума + унікальний предмет | game-logic/win | 🌱 | 1 | MinerVGA |
 | `+money-door` | Двері за гроші | entities/interact | 🌱 | 1 | DROD RPG: Tendry's Tale (+ DROD RPG 2) |
 | `+money-race` | Перегони до цільової суми грошей | game-logic/win | 🌱 | 1 | Stop Thief (Stop Thief!) |
+| `+mono-color-regions` | У кожній області ≥ 1 обʼєкт і лише одного виду | game-logic/constraints | 🌱 | 1 | KaitoRamma (快刀乱麻) |
 | `+mono-color-row-clear` | Ряд зникає, якщо весь одного кольору | entities/interact | 🌱 | 1 | Soldam |
 | `+monochromatic-clique-check` | Одноколірна кліка у фарбуванні ребер | game-logic/win | 🌱 | 1 | Sim (гра олівцем на K6) |
 | `+monster-ability-deck` | Спільна карта дій на тип монстрів | game-logic/opponent | 📎 | 1 | Gloomhaven |
@@ -5024,6 +5364,7 @@
 | `+monster-breeding` | Монстри розмножуються | entities/spawn | 🌱 | 1 | IVAN (Iter Vehemens ad Necem) |
 | `+monster-capture` | Зловити ворога й зробити союзником | entities/interact | 🥉 | 1 | Tangledeep |
 | `+monster-deck` | Вороги з колоди, що росте | levels/spawn | 📎 | 1 | Wildermyth |
+| `+monster-door` | Двері зникають, коли на рівні не лишилось монстрів | entities/interact | 🌱 | 1 | Heroes of Sokoban II: Monsters і III: The Bard and the Druid |
 | `+monster-event-tokens` | Мішок: вороги й події разом | game-logic/waves | 📎 | 1 | Castle Panic |
 | `+monster-evolve-potion` | Зілля перетворює юніта на сильнішого | entities/state | 🌱 | 1 | Maze Keeper |
 | `+monster-families` | Сімʼї юнітів зі спеціалізацією | entities/state | 🌱 | 1 | Maze Keeper |
@@ -5033,6 +5374,7 @@
 | `+monster-house` | Кімната-засідка зі сплячими монстрами | levels/generation | 📎 | 1 | Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon) |
 | `+monster-infighting` | Монстри ворожі між собою | game-logic/opponent | 🥈 | 1 | Infra Arcana (огляд з The Ground Gives Way і Zorbus) |
 | `+monster-level-up` | Монстр росте, вбиваючи інших | entities/state | 📎 | 1 | Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon) |
+| `+monster-nest` | Незнищенне гніздо шле атаки | entities/spawn | 📎 | 1 | SteamWorld Build |
 | `+monster-specials` | Модифікатори формули бою (перший удар, магія, N ударів, отрута) | entities/combat | 🥉 | 1 | Tower of the Sorcerer / Magic Tower (魔塔) |
 | `+monster-stacks` | Вороги стеками N × тип | entities/combat | 📎 | 1 | The Bard's Tale / Might and Magic — сіткові dungeon crawl 80-х |
 | `+monster-states` | Стани монстра: спить / блукає / полює / тікає | entities/move | 🥉 | 1 | Brogue |
@@ -5071,6 +5413,7 @@
 | `+move-as-start-square` | Закрита фігура ходить як тип своєї клітини | entities/legality | 🌱 | 1 | Jieqi (揭棋) |
 | `+move-attack` | Атака рухом (обхід/випад) | entities/combat | 🥉 | 1 | Hoplite |
 | `+move-budget` | Ліміт ходів на рівень | game-logic/lose | 🌱 | 1 | Waffle |
+| `+move-budget-actions` | Штовхнути / помінятися коштує ті самі очки руху | entities/move | 📎 | 1 | Sunderfolk |
 | `+move-count-draw` | Правило N ходів | game-logic/constraints | 🌱 | 1 | Chess (Шахи) — цифрова гра |
 | `+move-counter-scrub` | Лічильник кроків як шкала перемотки | interface/hud | 📎 | 1 | Catrap (Pitman) |
 | `+move-driven-time` | Час іде лише під час руху гравця | code/architecture | 🥉 | 1 | Maze Mice |
@@ -5088,9 +5431,12 @@
 | `+move-or-sprint` | Рух+дія або далекий рух без дії | entities/legality | 📎 | 1 | SteamWorld Heist |
 | `+move-period-per-type` | Рух раз на N ходів за типом | entities/state | 🌱 | 1 | Kaggle Crawl |
 | `+move-preview` | Перегляд результату ходу без виконання | interface/input | 📎 | 1 | 2048 (+ Threes як предок) |
+| `+move-priority` | Порядок пріоритетів, коли рух можна розвʼязати кількома способами | entities/legality | 🥇 | 1 | PortalBox |
 | `+move-priority-by-direction` | Конфлікт за клітину: перемагає напрямок за пріоритетом | entities/legality | 🌱 | 1 | Robot Rumble |
 | `+move-priority-number` | Пріоритет на фігурі вирішує конфлікт руху | entities/move | 📎 | 1 | Asteroyds |
 | `+move-push-counters` | Лічильники ходів і поштовхів | game-logic/score | 🌱 | 1 | Sokoban (Сокобан) |
+| `+move-sequence-spell` | Закляття = послідовність кроків | entities/state | 🥉 | 1 | Bee Magic |
+| `+move-slows-timer` | Поки рухаєшся, таймер іде повільніше | game-logic/score | 🌱 | 1 | Bombuzal |
 | `+move-string` | Хід як рядок (interpret → execute) | code/architecture | 🥉 | 1 | Simon Tatham's Portable Puzzle Collection |
 | `+move-synced-hazards` | Пастки роблять крок разом із гравцем | entities/move | 🥉 | 1 | Gunbrick (Gunbrick: Reloaded) |
 | `+move-then-act` | Спершу рух, після дії рух заборонено | game-logic/turns | 🌱 | 1 | Metal Slug Tactics |
@@ -5130,8 +5476,10 @@
 | `+multi-board-modes` | Кілька полів у грі, один набір фігур | game-flow | 🌱 | 1 | IQ Puzzler Pro |
 | `+multi-board-placement` | Кілька особистих полів з одним рушієм | entities/legality | 🥉 | 1 | A Feast for Odin (Бенкет для Одіна) і поліоміно-заповнення |
 | `+multi-board-turn` | Хід на кількох дошках за один хід | game-logic/opponent | 🥈 | 1 | 5D Chess with Multiverse Time Travel |
+| `+multi-camera` | Кілька незалежних камер з перемиканням | interface/render | 🥈 | 1 | 3D Lemmings |
 | `+multi-card-play` | Кілька полів одного гравця, один потік подій | game-logic/opponent | 📎 | 1 | Bingo / Keno / Lotto (Бінго, Лото) |
 | `+multi-character-program` | Одна програма керує кількома різними акторами | game-logic/program | 🥉 | 1 | Swift Playgrounds (Learn to Code, Byte) |
+| `+multi-checkpoint-respawn` | Відродження на кожному засвіченому checkpoint — аватарів стає більше | game-logic/lose | 🥉 | 1 | N Step Steve (Part 1–2) |
 | `+multi-color-control` | Гравець веде кілька сторін | game-logic/opponent | 🌱 | 1 | Blokus (Блокус) |
 | `+multi-compartment-grid` | Поле з кількох сіток-відсіків з власними масками | levels/format | 🌱 | 1 | Outpacked |
 | `+multi-cube-tracks` | Кілька кубиків на треку | game-logic/score | 🥉 | 1 | Cottage Garden (Сільський сад) |
@@ -5145,6 +5493,7 @@
 | `+multi-god-watch` | Побожність до кількох богів одночасно за таблицею дій | game-logic/score | 🥉 | 1 | POWDER |
 | `+multi-group-ownership` | У гравця кілька груп різних кольорів | entities/state | 🌱 | 1 | Through the Desert (Крізь пустелю) |
 | `+multi-head-body` | Тіло з кількома головами росту | entities/move | 🥉 | 1 | Room to Grow |
+| `+multi-hit-state` | Ціль показує, скільки разів її зачеплено: 0 / 1 / 2+ | interface/hud | 🌱 | 1 | Logic Bombs |
 | `+multi-jump` | Серія взяттів однією фігурою | entities/combat | 🥉 | 1 | Draughts / Checkers (Шашки) |
 | `+multi-jump-turns` | Стрибок як N покрокових підйомів | entities/move | 🌱 | 1 | Stomp! |
 | `+multi-kill-extra-life` | Життя за N ворогів одним ударом | game-logic/score | 🌱 | 1 | Rompers |
@@ -5153,6 +5502,7 @@
 | `+multi-launch-bonus` | Бонус за N цілей одним ходом | game-logic/score | 🌱 | 1 | Rocket Mania! |
 | `+multi-letter-face` | Клітина з диграфом (Qu, Th) | entities/state | 🌱 | 1 | Boggle |
 | `+multi-level-puzzle` | Ключ на одному рівні, замок на іншому | levels/generation | 🥈 | 1 | Dungeon Hack |
+| `+multi-level-undo` | Undo кількох глибин: глибше скасовує й мілкіші undo | game-logic/history | 🥇 | 1 | Tres Undos |
 | `+multi-move-turn` | Серія ходів за хід | game-logic/opponent | 📎 | 1 | Шахи з серіями ходів (Marseillais, Progressive) |
 | `+multi-neighbor-merge` | Злиття з усіма однаковими сусідами за один крок | entities/legality | 📎 | 1 | X2 Blocks |
 | `+multi-network-types` | Кілька мереж на одній сітці | entities/state | 📎 | 1 | Please Fix The Road |
@@ -5162,11 +5512,13 @@
 | `+multi-planet-network` | Кілька полів-планет зі спільною мережею ресурсів | game-logic/economy | 🥈 | 1 | Before We Leave |
 | `+multi-player-sync` | Кілька аватарів ходять одночасно | entities/move | 📎 | 1 | Patrick's Parabox |
 | `+multi-plot-expansion` | Докуповувані ділянки розширюють поле | levels | 🌱 | 1 | Two Point Hospital |
+| `+multi-port-device` | Пристрій на кілька клітин з портами входу й виходу | entities/state | 🥉 | 1 | Great Permutator |
 | `+multi-purpose-key` | Одна клавіша — дія за контекстом клітини | interface/input | 🌱 | 1 | Cardinal Quest |
 | `+multi-pusher` | Кілька штовхачів на одному полі, рівень вимагає обох | entities/move | 🥉 | 1 | Sokoboxes Duo |
 | `+multi-resource-cost` | Таблиця цін у кількох ресурсах | game-logic/economy | 🌱 | 1 | CodinGame: Cellularena (Winter Challenge 2024) |
 | `+multi-resource-max` | Окремі пули ресурсів з max, що поповнюються щохід | game-logic/economy | 📎 | 1 | Caller's Bane (Scrolls) |
 | `+multi-resource-quota` | Квота кількох видів ресурсів | game-logic/win | 🌱 | 1 | Joshua & the Battle of Jericho |
+| `+multi-room-level` | Рівень з кількох кімнат, повʼязаних порталами | levels/format | 📎 | 1 | Give Up the Ghost: a puzzle checklist |
 | `+multi-round-total` | Сума за N партій, роль по колу | game-logic/score | 🌱 | 1 | Take It Easy |
 | `+multi-screen-maze-exits` | Рівень із кількох екранів-лабіринтів, звʼязаних виходами | levels/progression | 🥉 | 1 | Pepper II |
 | `+multi-select` | Мультивиділення клітинок | interface/input | 📎 | 1 | Sudoku (Судоку, Number Place) |
@@ -5191,9 +5543,11 @@
 | `+multiple-valid-paths` | Генерація з гарантією ≥1 безпечного шляху | levels/generation | 🥉 | 1 | Don't Step Wrong |
 | `+multiplier-drain` | Множник спадає після затримки | game-logic/score | 🌱 | 1 | Tetrisweeper |
 | `+multiplier-pickup` | Бонус множить характеристику, а не додає | entities/state | 🌱 | 1 | Towers of Scale |
+| `+multitrack-sequencer` | Секвенсор до N доріжок | interface/sound | 🥈 | 1 | Cadence (Made With Monster Love) |
 | `+mushroom-eater` | Ворог, що йде до найближчої клітини мережі й зʼїдає її | entities/move | 📎 | 1 | Mycelium Heaven |
 | `+must-capture-legality` | Хід легальний лише зі взяттям | entities/legality | 📎 | 1 | Reversi / Othello (Реверсі) |
 | `+must-feed-rule` | Нагодуй суперника | game-logic/legality | 📎 | 1 | Oware (Оваре, Авале) |
+| `+must-leave-container` | Перемога лише поза кліткою | game-logic/win | 🌱 | 1 | Imprisoned! |
 | `+must-not-kill` | Сутність, загибель якої = поразка | game-logic/lose | 🌱 | 1 | Slayaway Camp |
 | `+must-play-if-able` | Пас заборонено, якщо є легальний хід | game-logic/opponent | 🌱 | 1 | Spectrangle |
 | `+must-spend-all-items` | Фініш лише після використання всіх предметів | game-logic/win | 🌱 | 1 | Hare and Tortoise (Заєць і черепаха) |
@@ -5206,9 +5560,11 @@
 | `+mutual-destruction` | Два типи сигналів стирають клітини одне одного | game-logic | 🌱 | 1 | Von Neumann cellular automaton (автомат фон Неймана, 29 станів) і Codd's CA |
 | `+mutual-destruction-piece` | Фігура, що в бою гине разом із суперником | entities/combat | 🌱 | 1 | Luzhanqi (Лучжаньці, китайські армійські шахи) |
 | `+mutual-paralysis` | Атакована однойменною ворожою — паралізована | entities/legality | 🥉 | 1 | Казкові умови шахів — Andernach, Madrasi, Grid |
+| `+mux-demux-routing` | Перемикач входу чи виходу за сигналом | entities/interact | 📎 | 1 | U.V.S. Nirmana |
 | `+mvp-scoring` | Кооп-перемога + особистий найкращий | game-logic/score | 🌱 | 1 | Castle Panic |
 | `+mystery-bonus-ship` | Бонусний ворог-перелітник | entities/spawn | 📎 | 1 | Space Invaders (Космічні загарбники) |
 | `+mystery-events` | Випадкові тимчасові модифікатори правил | game-logic/difficulty | 🥈 | 1 | Tetris Effect / Tetris Effect Connected |
+| `+mystery-pack` | Пак із випадковим вмістом у магазині | game-logic/economy | 🌱 | 1 | Beyond Words |
 | `+mystery-value-pickup` | Предмет з прихованим значенням ± | entities/interact | 🌱 | 1 | Hustle (Gremlin, 1977) |
 | `+n-dimensional-neighborhood` | Сусідство в N вимірах | game-logic/constraints | 📎 | 1 | Minesweeper у вимірах: 4D Minesweeper, Tilesweeper, Timesweeper |
 | `+n-moves-away-check` | Підказка "чи за N ходів" | levels/solvability | 🥉 | 1 | Tactic Toe |
@@ -5216,6 +5572,7 @@
 | `+n-or-adjacent-win` | Перемога: N будь-яких або K сусідніх зон | game-logic/win | 🌱 | 1 | Schotten Totten / Battle Line |
 | `+name-entry-on-field` | Ввід імені рекорду ходінням по полю | interface/results | 🌱 | 1 | Heiankyo Alien (Digger) |
 | `+named-resource-all-place` | Один називає — всі кладуть | game-logic/opponent | 📎 | 1 | Tiny Towns (Крихітні містечка) |
+| `+named-target-commands` | Команди з іменованою ціллю замість кроків | game-logic/program | 🥉 | 1 | Star Stuff |
 | `+nap-state` | Сон: юніт пропускає хід, будиться вмінням | entities/state | 🌱 | 1 | Inkulinati |
 | `+natural-disasters` | Землетрус, метеор, торнадо над полем | game-logic/events | 🥉 | 1 | Grain |
 | `+near-correct-chime` | Сигнал близькості | interface/sound | 🌱 | 1 | A Little to the Left |
@@ -5228,9 +5585,12 @@
 | `+nearest-row-control` | Ходити можна лише фігурами найближчого непорожнього ряду | entities/legality | 🌱 | 1 | Gyges |
 | `+nearest-target-in-zone` | Зброя бʼє найближчу ціль у своїй зоні | entities/combat | 🌱 | 1 | Space Alert |
 | `+nearest-value-fallback` | Нема фігури з випалим числом — найближча вища чи нижча | game-logic/opponent | 🌱 | 1 | EinStein würfelt nicht! |
+| `+nearest-variable` | Змінна = найближчий обʼєкт виду | game-logic/program | 🥉 | 1 | Star Stuff |
+| `+negation-block` | Блок-заперечення наступної дії | game-logic/program | 🌱 | 1 | Cubetto |
 | `+negative-constraint` | Відсутність підказки — теж підказка | game-logic/constraints | 🌱 | 1 | Sudoku line & dot variants (Thermo, Arrow, Kropki, German Whispers) |
 | `+negative-mana` | Каст у борг з ризиком для стату | entities/state | 🌱 | 1 | Castle of the Winds |
 | `+negative-points-for-killing` | Середовище карає за атаку | game-logic/score | 🌱 | 1 | ChipWits |
+| `+negative-score-mode` | Режим, де ціль — мінусовий рахунок | game-logic/score | 📎 | 1 | Beyond Words |
 | `+negative-values` | Відʼємні значення плиток | entities/state | 🌱 | 1 | SUMOO |
 | `+neighbor-color-dots` | Набір кольорових точок = кольори серед сусідів (без позицій, неповний) | game-logic/constraints | 📎 | 1 | RYB |
 | `+neighbor-diff-sum` | Число = сума різниць із сусідами | game-logic/constraints | 🌱 | 1 | Bosanowa (ボサノワ) |
@@ -5238,6 +5598,7 @@
 | `+neighbor-tour` | Обхід 8 сусідів по колу з озвученням | interface/input | 📎 | 1 | Blind Sweeper |
 | `+neighbor-variety-scoring` | Очки за різноманіття сусідів | game-logic/score | 📎 | 1 | Cascadia + Calico (Каскадія, Калико) |
 | `+neighborhood-goal` | Ціль на склад 6 сусідів клітини | game-logic/score | 📎 | 1 | Cascadia + Calico (Каскадія, Калико) |
+| `+neighbour-clone` | Копія сусідства як новий шаблон | entities/spawn | 🥉 | 1 | Droplets |
 | `+neighbour-sabotage` | Сусід розміщує шкоду на твоєму полі | game-logic/opponent | 🥉 | 1 | Cartographers (Картографи) |
 | `+nest-birth` | Народження лише в гнізді вночі | entities/spawn | 🌱 | 1 | Niche – a genetics survival game |
 | `+nest-blocking` | Зайняте гніздо не приймає повернення | entities/legality | 🌱 | 1 | The Observer's Paradox |
@@ -5248,6 +5609,7 @@
 | `+nested-boards` | Поле з полів | entities/state | 🥉 | 1 | N-in-a-row (Хрестики-нулики, Gomoku, Connect Four, Pentago…) |
 | `+nested-chips` | Вкладені чипи з пінами й затримкою на межі | game-logic | 🥇 | 1 | Robot Odyssey |
 | `+nested-containers` | Контейнери в контейнерах із власними лімітами й забороною циклів | entities/inventory | 🥉 | 1 | Castle of the Winds |
+| `+nested-editors` | Курсор редактора й мета-курсор як режими гравця | levels/editor | 🥈 | 1 | Vext Edit |
 | `+nested-level-gate` | Ворота у вкладений наступний рівень | levels/progression | 🥈 | 1 | Pix the Cat |
 | `+nested-room-memory` | Згорнуті вкладені кімнати відновлюються | entities/state | 🥇 | 1 | All the Gold in Fort Locks |
 | `+nested-room-stack` | Вкладені кімнати зі збереженим станом і поверненням угору | levels/progression | 🥉 | 1 | self reflection |
@@ -5279,7 +5641,9 @@
 | `+no-crossing-lines` | Заборона перетину ліній, зокрема діагоналей | entities/legality | 🌱 | 1 | LYNE |
 | `+no-dead-end-border` | Межа не обривається всередині області | game-logic/constraints | 🥉 | 1 | Palisade (Five Cells, «Частокіл») |
 | `+no-dead-ends` | Дизайн без софтлоку: поразка лише відкладає | levels/solvability | 📎 | 1 | Requiem of Reuinis (列乌尼斯的挽歌) |
+| `+no-death-puzzle` | Пазл без смерті: неможливий хід просто не відбувається | game-logic | 🌱 | 1 | Billy Bumbum: A Cheeky Puzzler |
 | `+no-dice-combat` | Детермінований бій без шансу влучання | entities/combat | 🌱 | 1 | Ash of Gods: Redemption |
+| `+no-direct-push` | Обʼєкт не штовхається дотиком, лише здалеку | entities/legality | 🌱 | 1 | 2D Whale World |
 | `+no-draw-parity` | Нічиєї нема через непарну зону підрахунку | game-logic/score | 🌱 | 1 | Trike |
 | `+no-draws` | Без нічиїх (повторення, нестача матеріалу) | game-logic/win | 🌱 | 1 | Really Bad Chess |
 | `+no-drop-mate` | Заборона мату дропом | entities/legality | 🥇 | 1 | Tori shogi (Пташине шогі) |
@@ -5293,6 +5657,7 @@
 | `+no-hint-tile` | Відкрита плитка без числа (?) | game-logic/constraints | 🌱 | 1 | Rock Paper Sweeper |
 | `+no-immediate-return` | Заборона одразу повернути фігуру суперника на клітину, з якої вона прийшла | entities/legality | 🌱 | 1 | Martian Chess |
 | `+no-immediate-undo` | Не можна просто скасувати попередній хід | game-logic/constraints | 📎 | 1 | Dynamo chess (Динамо-шахи) |
+| `+no-invalid-words-rule` | Хід не може збільшити кількість неправильних слів | entities/legality | 📎 | 1 | Spell Slide |
 | `+no-jump` | Платформер без стрибка | entities/move | 🌱 | 1 | The Bugs Bunny Crazy Castle |
 | `+no-jump-avatar` | Аватар без стрибка: вертикаль лише через обʼєкти | entities/move | 🌱 | 1 | Captain Toad: Treasure Tracker |
 | `+no-jump-cell` | Клітина, з якої не можна стрибати | entities/legality | 🌱 | 1 | Mystic Balloon (みすてぃっく☆ばる〜ん) |
@@ -5306,6 +5671,7 @@
 | `+no-money-economy` | Економіка лише ресурсів і праці | game-logic/economy | 🌱 | 1 | Urbek City Builder |
 | `+no-moves-detection` | Детектор нема ходів + reshuffle | game-logic/constraints | 🥉 | 1 | Bejeweled (1–3, Twist) |
 | `+no-moves-win` | Перемога — ніщо на полі не може рухатись | game-logic/win | 📎 | 1 | Singleton Traffic (Toph Wells) |
+| `+no-op-move-cancel` | Хід без зміни позиції не віддає тік ворогам | game-logic/turn | 🌱 | 1 | Heroes of Sokoban II: Monsters і III: The Bard and the Druid |
 | `+no-pass-move` | Пас заборонено, хід обовʼязковий | entities/legality | 🌱 | 1 | Auro: A Monster-Bumping Adventure |
 | `+no-pass-rule` | Пас заборонений: нема ходу = поразка | game-logic/opponent | 🌱 | 1 | Gonnect |
 | `+no-place-cells` | Клітини, куди не можна ставити | entities/legality | 🌱 | 1 | SOLAS 128 |
@@ -5328,12 +5694,14 @@
 | `+no-stop-cells` | Клітинки, через які можна пройти, але не зупинитись | entities/legality | 🌱 | 1 | Herugolf (Хелгольф) |
 | `+no-three-in-row` | Не більше K однакових поспіль у ряду | game-logic/constraints | 🌱 | 1 | Tawamurenga (たわむれんが) |
 | `+no-touch-8` | Однакові обʼєкти не торкаються навіть по діагоналі | game-logic/constraints | 🌱 | 1 | Tents (Tatham) |
+| `+no-touch-across-border` | Чорні клітинки різних областей не сусідять сторонами | game-logic/constraints | 🌱 | 1 | Kuroclone (クロクローン) |
 | `+no-touch-crown` | Нагорода за рівень без жодного дотику до цілі | game-logic/score | 🌱 | 1 | Castle Doombad |
 | `+no-touch-placement` | Обʼєкти не торкаються (вкл. діагональ) | game-logic/constraints | 📎 | 1 | Battleship (Морський бій) |
 | `+no-touch-same-color-rival` | Не можна торкатися чужої групи того ж кольору | entities/legality | 📎 | 1 | Through the Desert (Крізь пустелю) |
 | `+no-triple-run` | Заборона k однакових підряд | game-logic/constraints | 🌱 | 1 | Takuzu (Binairo, Unruly, Tic-Tac-Logic) |
 | `+no-turn-zone` | Зона заборони повороту | entities/legality | 🌱 | 1 | Pac-Man (Пекмен) і Ms. Pac-Man |
 | `+no-undo-push` | Заборона скасувати попередній зсув | entities/legality | 🌱 | 1 | Labyrinth (Das verrückte Labyrinth, Божевільний лабіринт) |
+| `+no-validation` | Гра не перевіряє розвʼязок | game-logic/constraints | 🌱 | 1 | 13 Sticky Notes |
 | `+no-walk-under-falling` | Не ступити під падаюче | entities/legality | 🌱 | 1 | Boulder Dash — DOS-клони (bd-fans) |
 | `+node-graph-program` | Програма як граф нодів зі звʼязками | game-logic/program | 🥇 | 1 | Craftomation 101 |
 | `+node-grid-network` | Сітка процесорів, звʼязок лише з сусідами | game-logic/program | 🥈 | 1 | TIS-100 |
@@ -5345,24 +5713,34 @@
 | `+noise-roll-hearing` | Шум: кидок + модифікатор проти відстані | entities/state | 📎 | 1 | Nuns on the Run |
 | `+noise-stealth` | Шум дій будить монстрів | entities/ai | 📎 | 1 | Dungeon Crawl Stone Soup |
 | `+noisy-distance-sensor` | Відстань до прихованого ворога з рівномірним шумом | interface/render | 📎 | 1 | Pac-Man Capture the Flag (UC Berkeley CS188) |
+| `+non-attacking-placement` | Розставити фігури так, щоб ніхто нікого не бив | game-logic/constraints | 🥉 | 1 | Reliquia Park |
 | `+non-binding-deals` | переговори без примусу | game-logic/opponent | 🌱 | 1 | Diplomacy |
 | `+non-orientable-wrap` | Склейка країв з віддзеркаленням (Клейн, проєктивна площина) | entities/move | 📎 | 1 | Biham–Middleton–Levine traffic model (модель трафіку BML) |
 | `+non-unique-mode` | Пазл без гарантії єдиності | levels/generation | 🌱 | 1 | Dominosa (Доміноза) |
+| `+nonlinear-progress` | Іти далі можна, не розвʼязавши всіх пазлів | levels/progression | 🌱 | 1 | BarrelBots |
 | `+normal-play-win` | Хто не може ходити — програв | game-logic/win | 🌱 | 1 | Kōnane (Конане) |
+| `+notebook-story-pages` | Історія сторінками між рівнями | interface/menus | 🌱 | 1 | Assassinvisible |
 | `+notepad` | Нотатник гравця в грі | interface | 🌱 | 1 | Untrusted — or the Continuing Adventures of Dr. Eval |
 | `+noun-transform` | Масове перетворення типу X → Y | entities/state | 🥉 | 1 | Baba Is You |
 | `+noun-verb-ui` | Спершу предмет, потім дія | interface/input | 📎 | 1 | POWDER |
+| `+novel-solution-alert` | Гра помічає розвʼязок, якого не знав автор | levels/solvability | 🌱 | 1 | Gridspech |
+| `+npc-dialogue-hints` | NPC у хабі дають натяки | interface/menus | 🌱 | 1 | Lost in Cheese |
+| `+npc-fetch-quest` | Принеси предмет мешканцю — отримай нагороду | levels/progression | 🌱 | 1 | Growmi |
 | `+npc-moved-by-players` | Нейтральний NPC, якого рухають карти гравців | entities/move | 🌱 | 1 | Colt Express |
+| `+npc-own-goals` | NPC зі своєю метою змінює мапу | entities/move | 🥈 | 1 | Wilderplace |
 | `+npc-path-hint` | NPC показує шлях до цілі на N ходів | interface/hud | 🥉 | 1 | Maziacs |
 | `+npc-pusher` | Неігровий обʼєкт штовхає інші | entities/legality | 📎 | 1 | Kye |
 | `+npc-reach-bottom` | Ціль — довести NPC до дна/виходу | game-logic/win | 🌱 | 1 | Tetris Plus |
 | `+npc-recruit` | NPC приєднується до загону | entities/party | 📎 | 1 | Eye of the Beholder |
+| `+npc-tips` | Підказка рівня — репліка персонажа за кнопкою | interface/hud | 🌱 | 1 | Desperatea |
 | `+npc-to-enemy-convert` | Ворог перетворює NPC на ворога | entities/state | 📎 | 1 | Robotron: 2084 |
 | `+nuisance-queue-icons` | Черга атаки іконками-номіналами | interface/hud | 📎 | 1 | Puyo Puyo (Пуйо Пуйо) |
 | `+nuke-all` | Нюк: усі підриваються | game-logic/lose | 🌱 | 1 | Lemmings |
 | `+nul-terminated-lists` | Список як черга токенів з Nul у кінці | game-logic/program | 🥉 | 1 | Infinite Turtles |
 | `+null-move-ban` | Хід, що лишає позицію незмінною, заборонено | entities/legality | 🌱 | 1 | Шахи без країв — циліндричні (Cylinder) і кругові (Circular / Byzantine) |
+| `+number-goal` | Ціль: рівно N обʼєктів довкола | game-logic/win | 🌱 | 1 | Droplets |
 | `+number-list-fill` | Вписати всі елементи списку в скелет | game-logic/constraints | 🌱 | 1 | Nansuke (Number Skeleton) |
+| `+number-lock` | Двері відмикає блок з точним числом | entities/interact | 📎 | 1 | Give Up the Ghost: a puzzle checklist |
 | `+numbered-loops` | Кілька петель; числа визначають, які точки на одній петлі | game-logic/constraints | 📎 | 1 | Pipelink |
 | `+numbered-monster-marks` | Мітка — число-рівень, а не прапорець | interface/input | 🌱 | 1 | Mamono Sweeper |
 | `+numbered-net-quota` | Рамка з числом N: N однакових на її клітинах → зникнення | entities/interact | 📎 | 1 | Takoron (Octomania) |
@@ -5375,6 +5753,7 @@
 | `+nutrient-conservation` | Ресурс не зникає, а переходить | game-logic/economy | 🥉 | 1 | What Did I Do to Deserve This, My Lord? |
 | `+nutrient-diffusion` | Ресурс у клітинах і його перенесення сутностями | entities/state | 🥈 | 1 | What Did I Do to Deserve This, My Lord? |
 | `+object-definition-api` | Новий тип обʼєкта з поведінкою на рівень | entities | 🥈 | 1 | Untrusted — or the Continuing Adventures of Dr. Eval |
+| `+object-loss-restart` | Втрата важливого обʼєкта — миттєвий рестарт | game-logic/lose | 🌱 | 1 | CONSTRICTOR |
 | `+object-on-head` | Носити камінь на голові | entities/state | 🌱 | 1 | Earth Shaker |
 | `+object-possession` | Вселення в обʼєкт поля | entities/combat | 🥉 | 1 | Wildermyth |
 | `+object-scripting` | Обʼєкт з власною програмою подій | game-logic/program | 🥇 | 1 | ZZT |
@@ -5383,6 +5762,7 @@
 | `+objective-flags` | Прапори-цілі з очками | game-logic/win | 🌱 | 1 | Steel Panthers |
 | `+objective-hand-limit` | Ліміт карт цілей у руці | entities/legality | 🌱 | 1 | Takenoko (Такеноко) |
 | `+objectives-then-escape` | Виконати K з N місій, потім дійти до виходу | game-logic/win | 🌱 | 1 | Specter Ops |
+| `+observation-journal` | Журнал відкривається спостереженням | interface/menus | 🥉 | 1 | Leaf's Odyssey |
 | `+observation-wrappers` | Один світ — кілька форм спостереження | code/architecture | 🥉 | 1 | MiniGrid (з BabyAI) |
 | `+observational-move` | Нелегальна спроба розкриває, що в точці, хід не втрачено | entities/legality | 📎 | 1 | Phantom Go |
 | `+observer-sensor` | Сенсор зміни сусідньої клітини | entities/state | 📎 | 1 | Minecraft — редстоун |
@@ -5392,6 +5772,7 @@
 | `+obstacle-throw` | Кинути перешкоду перед суперником | entities/interact | 📎 | 1 | Yamainu no Kan (山犬の勘) |
 | `+obstacle-tile` | Плитка, яку не можна взяти | entities/legality | 🌱 | 1 | Pictobits |
 | `+occlusion-by-walls` | Непрозорі клітини затуляють, що за ними | interface/render | 🥉 | 1 | MiniGrid (з BabyAI) |
+| `+occlusion-logic` | Що сховано від камери — того нема | entities/legality | 🥇 | 1 | Echochrome |
 | `+occupiable-objects` | Обʼєкти: можна / не можна стати | entities/legality | 🌱 | 1 | Murdoku |
 | `+occupy-all-goals` | Кожна ціль зайнята будь-якою фігурою | game-logic/win | 🌱 | 1 | PANIK |
 | `+occupy-and-leave-win` | Перемога — зайти фігурою на клітину-ціль і наступним ходом вийти | game-logic/win | 🌱 | 1 | Jeson Mor (Девʼять коней) |
@@ -5399,13 +5780,15 @@
 | `+octagon-square-board` | Паркет восьмикутник + квадрат: плитки на восьмикутниках, цілі в квадратах | interface/render | 📎 | 1 | Carat |
 | `+odds-ratio` | Співвідношення сили до захисту з округленням на користь цілі | entities/combat | 🌱 | 1 | Ogre |
 | `+off-beat-movement` | Рух на офбіт / рідше за біт | entities/move | 🌱 | 1 | Rift of the NecroDancer |
-| `+off-board-removal` | Знімання за краєм поля | entities/death | 🌱 | 1 | Gess |
 | `+off-grid-tabs` | Предмети поза сіткою (ключі, скарби) | entities/state | 🌱 | 1 | Resident Evil 4 (attaché case) |
 | `+off-map-connection` | Край карти — джерело/стік потоків | levels/generation | 🌱 | 1 | A-Train (A列車で行こう) |
+| `+offcenter-push-rotate` | Поштовх не по центру повертає обʼєкт на малий кут | entities/move | 🥇 | 1 | Pushing It |
 | `+offer-refresh` | Замінити запропоновані фігури новими | entities/spawn | 🌱 | 1 | Hexa Sort |
 | `+office-end-payout` | Виплата за завершене поле + бонус за чистоту | game-logic/score | 🌱 | 1 | BroomSweeper |
 | `+offline-dataset` | Датасет записаних ігор для навчання агентів | code/architecture | 🥉 | 1 | NetHack Learning Environment (NLE, MiniHack) |
+| `+offscreen-content` | Рівень більший за кадр, приховане приїздить прокруткою | interface/render | 📎 | 1 | A Man Walks Into A Scrollbar |
 | `+offscreen-errands` | Неактивні юніти на дорученнях між боями | game-logic/economy | 🥉 | 1 | Rondo of Swords |
+| `+offscreen-return` | Вийшов за екран — тебе повертають на поле | entities/move | 🌱 | 1 | Woodworm |
 | `+offscreen-simulation` | Світ рухається поза екраном | game-logic/loop | 🥉 | 1 | Adventure (Atari 2600) |
 | `+offset-lie-numbers` | Брехливі числа зі спільним невідомим зсувом | game-logic/constraints | 🥈 | 1 | BroomSweeper |
 | `+offset-phases` | Зсунуті фази: Рух одного ‖ Дія іншого | game-logic/opponent | 🥉 | 1 | Battle Isle |
@@ -5430,6 +5813,7 @@
 | `+one-hit-shield` | Щит на один удар, знищує нападника | entities/state | 🌱 | 1 | Oh Mummy |
 | `+one-hive-rule` | Звʼязність поля після ходу | entities/legality | 🥈 | 1 | Hive (Вулик) |
 | `+one-input-many-games` | Одна дія застосовується в кількох мініграх одразу | game-logic/opponent | 🥉 | 1 | CodinGame Summer Challenge 2024: Olymbits |
+| `+one-king-per-region` | Рівно один символ-власник на регіон кольору | game-logic/constraints | 📎 | 1 | Gridspech |
 | `+one-lane-battlefield` | Поле — одна лінія з напрямком погляду | entities/movement | 🌱 | 1 | Shogun Showdown |
 | `+one-letter-step` | Хід = слово, що відрізняється на одну літеру | game-logic/legality | 🌱 | 1 | Weaver (word ladder) |
 | `+one-life-run` | Одне життя на всю гру, без продовжень | game-logic/lose | 🌱 | 1 | Treasure Island Dizzy |
@@ -5450,6 +5834,7 @@
 | `+one-tip-per-npc` | Кожен NPC дає одну підказку за гру | game-logic/difficulty | 🌱 | 1 | Schnappt Hubi! |
 | `+one-type-per-pasture` | В області — лише один вид | game-logic/constraints | 🌱 | 1 | Agricola — сітка ферми (Агрікола) |
 | `+one-type-remains-win` | Перемога, коли лишився один тип клітин | game-logic/goals | 🌱 | 1 | Metavaxx |
+| `+one-ultimate-per-round` | Одна ультимативна здібність на раунд на всю партію | game-logic/opponent | 🌱 | 1 | Sunderfolk |
 | `+one-unit-per-tile` | Один військовий юніт на клітину | entities/legality | 🌱 | 1 | Civilization (бойовий шар юнітів, I–VI) |
 | `+one-use-actions` | Набір дій, кожна раз за раунд | game-logic/opponent | 🌱 | 1 | Hanamikoji |
 | `+one-use-platform` | Платформа-трамплін на одне використання | entities/interact | 🌱 | 1 | Rabi Laby (Rabi×Rabi) |
@@ -5467,10 +5852,12 @@
 | `+open-letter-pool` | Відкритий спільний пул, з якого береш будь-яку літеру | entities/spawn | 🌱 | 1 | RSVP (Scrabble Brand RSVP) |
 | `+open-progression` | Усі рівні відкриті від старту | levels/progression | 🌱 | 1 | Changes |
 | `+open-side-box` | Коробка, відкрита з одного боку: вхід і вихід лише через нього | entities/legality | 🌱 | 1 | BoxUp (Clickmazes BoxUp) |
+| `+open-world-hub` | Відкритий світ із кількома доступними пазлами | levels/progression | 📎 | 1 | Altered |
 | `+opening-ballot` | Жереб дебюту | game-logic/opponent | 🌱 | 1 | Draughts / Checkers (Шашки) |
 | `+opening-book` | Бібліотека дебютів AI | game-logic/opponent | 🥉 | 1 | Battle Chess |
 | `+opening-removal` | Відкриття зніманням своїх фігур | game-logic/opponent | 🌱 | 1 | Kōnane (Конане) |
 | `+opening-restriction` | Перший хід не на бонусну клітину | entities/legality | 🌱 | 1 | Spectrangle |
+| `+opening-trails-back` | Вільний отвір блока після руху дивиться назад | entities/state | 📎 | 1 | nuworm |
 | `+operator-precedence` | Обчислення виразу з пріоритетом операцій | game-logic/constraints | 🌱 | 1 | Crossmath (математичний кросворд) |
 | `+operator-squares` | Клітина задає дозволену операцію | entities/legality | 🌱 | 1 | Mathable |
 | `+opponent-guess-board` | Нотатки-привиди ворожих фігур | interface/hud | 🌱 | 1 | Kriegspiel + Dark Chess (Fog of War; «шахи наосліп із суддею» і «шахи в тумані») |
@@ -5485,11 +5872,14 @@
 | `+opposed-skill-roll` | Протиставлений кидок навичка+кістка проти навичка+кістка | game-logic/combat | 🌱 | 1 | Sil |
 | `+opposite-column-clear` | Поставлене значення знищує такі самі в стовпці навпроти | entities/combat | 🌱 | 1 | Knucklebones (Cult of the Lamb) |
 | `+opposite-pit-capture` | Захоплення лунки навпроти | entities/combat | 🌱 | 1 | Bao la Kiswahili (Бао) |
+| `+ops-limit-timeout` | Ліміт операцій програми = нескінченний цикл | game-logic/program | 🌱 | 1 | YENDOR |
 | `+optimal-bisection-ai` | AI, що ділить кандидатів навпіл | ai | 📎 | 1 | Guess Who? (Вгадай, хто?) |
+| `+optimal-curve-chart` | Графік рішень проти кривої оптимуму | interface/results | 🥉 | 1 | Upalu Mundi |
 | `+optimal-path-par` | Порівняти шлях гравця з найкоротшим | game-logic/score | 📎 | 1 | Weaver (word ladder) |
 | `+optional-capture` | Взяття за вибором при стрибку | entities/combat | 📎 | 1 | Octi (Окті) |
 | `+optional-capture-chain` | Серія взяттів за вибором | entities/combat | 🥉 | 1 | Fanorona (Фанорона) |
 | `+optional-challenge` | Випадковий челендж на бій | game-logic/score | 🥉 | 1 | Dofus (бойова система) |
+| `+optional-challenge-levels` | Необовʼязкові важкі рівні після основних | levels/progression | 🌱 | 1 | Reliquia Park |
 | `+optional-challenges` | Додаткові умови рівня (час, ліміт дій, пацифізм) | game-logic/score | 📎 | 1 | Toodee and Topdee |
 | `+optional-end-call` | Гравець може оголосити кінець, коли умова виконана | game-logic/win | 🌱 | 1 | Acquire |
 | `+optional-extra-levels` | Додаткові складні рівні поза обовʼязковими | levels/progression | 🌱 | 1 | Maxwell's puzzling demon |
@@ -5504,6 +5894,7 @@
 | `+optional-treasure-unlock` | Необовʼязкові скарби відкривають екстри на титулі | levels/progression | 🌱 | 1 | Majokko Princess: Mefi (魔城っ娘プリンセス) |
 | `+orb-charges` | Сила із зарядами, що тануть щохід | entities/state | 📎 | 1 | HyperRogue |
 | `+orb-count-skill-tier` | Кількість узятих куль обирає рівень навички | game-logic/score | 📎 | 1 | Sdorica |
+| `+orb-gate` | Ворота, що відкриває зібране / сила | entities/interact | 🌱 | 1 | Growmi |
 | `+orb-refill-random` | На місце взятих — нові випадкові | entities/spawn | 🌱 | 1 | Sdorica |
 | `+orbit-camera` | Обертання камери навколо 3D-поля | interface/render | 🥉 | 1 | Picross-варіанти (Picross 3D, Round 2, Mega, Color, Clip) |
 | `+orbit-rotation` | Аватар обертається навколо точки | entities/move | 📎 | 1 | Spin Doctor / ClockWerx |
@@ -5516,6 +5907,7 @@
 | `+order-markers` | Таємні маркери черговості на картах | game-logic/opponent | 📎 | 1 | Heroscape |
 | `+order-queue` | Черга замовлень із таймером терпіння | game-logic | 📎 | 1 | Wilmot's Warehouse |
 | `+order-reader-routing` | Замовлення запускає видачу порції | game-logic/program | 🥉 | 1 | Automachef |
+| `+order-validator` | Перевірка порядку подій | game-logic/win | 🥉 | 1 | Cadence (Made With Monster Love) |
 | `+ordered-arrival` | Прибуття в заданому порядку | game-logic/win | 🌱 | 1 | Railbound |
 | `+ordered-auto-step` | Обʼєкти крокують самі в порядку номерів | entities/move | 📎 | 1 | AutomaticBox |
 | `+ordered-bin-slots` | Ціль зі слотами в порядку | game-logic/win | 🌱 | 1 | Marble Drop |
@@ -5523,6 +5915,7 @@
 | `+ordered-cover-income` | Покривай значення по порядку — дохід = найменше відкрите | game-logic/economy | 🌱 | 1 | A Feast for Odin (Бенкет для Одіна) і поліоміно-заповнення |
 | `+ordered-fill-lights` | Порядок кольорів для виконання цілей | game-logic/win | 📎 | 1 | Log!cal |
 | `+ordered-hit-bonus` | Приз за дії в заданому порядку | game-logic/score | 🌱 | 1 | Wrecking Crew |
+| `+ordered-output` | Вихід приймає стос у заданому порядку | game-logic/win | 📎 | 1 | Great Permutator |
 | `+ordered-tool-list` | Дії рівня в заданому порядку | game-logic/legality | 📎 | 1 | Please Fix The Road |
 | `+ordered-train-goal` | Ціль — N обʼєктів поспіль у заданому порядку | game-logic/win | 🌱 | 1 | Train shunting puzzle (Inglenook Sidings, Timesaver) |
 | `+ore-drill` | Бур на рудній клітині видає предмет | entities/spawn | 📎 | 1 | Mindustry — клітинна логістика й оборона |
@@ -5556,6 +5949,7 @@
 | `+overflow-roll` | Частина фігури понад лінією відламується й котиться | entities/move | 📎 | 1 | Emeraldia |
 | `+overflow-spread` | Переповнення клітини розходиться до сусідів | game-logic/score | 🥉 | 1 | Pandemic |
 | `+overflow-top-lose` | Стос вище поля = поразка | game-logic/lose | 🌱 | 1 | Tidalis |
+| `+overhang-landing` | Порожнеча: ступити не можна, приземлитися після стрибка — можна | entities/legality | 🌱 | 1 | Snekcross |
 | `+overheat-fire` | Перегрів → пожежа, що поширюється по ланцюгу | entities/state | 📎 | 1 | Unrailed! |
 | `+overheat-meter` | Шкала перегріву | game-logic/lose | 📎 | 1 | Deflektor (+ Mindbender) |
 | `+overkill-damage` | Шкода всім сусідам одночасно | entities/combat | 🥉 | 1 | Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode) |
@@ -5564,6 +5958,7 @@
 | `+overlap-fuse-letters` | Слово лягає поверх наявних літер, якщо вони збігаються | entities/interact | 📎 | 1 | Overwords |
 | `+overlap-placement` | Нова фігура/карта може перекрити частину старих | entities/legality | 📎 | 1 | Sprawlopolis |
 | `+overlap-rule-toggle` | Перемикач правила повторного візиту | game-logic/constraints | 🌱 | 1 | Blobun |
+| `+overlap-subtract` | Фігура віднімає своє значення від кожної області, яку накриває, — раз на область | game-logic/constraints | 📎 | 1 | Zerko |
 | `+overlapping-grids` | Перекриті сітки (гаттай) на одній мапі | game-logic/constraints | 🥉 | 1 | Sudokuvania: Digits of Despair |
 | `+overlapping-square-reuse` | Нова фігура може брати клітини вже зібраних квадратів | entities/interact | 📎 | 1 | Trioncube |
 | `+overlay-size-clash` | Заборона перекриття однакових за розміром при накладанні сіток | game-logic/constraints | 📎 | 1 | Tachiawase Block |
@@ -5573,6 +5968,7 @@
 | `+overlord-mode` | Один гравець за ворогів | game-logic/opponent | 🥉 | 1 | Castle Panic |
 | `+overpass-cells` | Естакада: міст над коридором | board/field | 🥉 | 1 | Make Trax (Crush Roller) |
 | `+overtake-steal` | Наздогнав і перестрибнув — забрав трофеї суперника | game-logic/score | 📎 | 1 | Zicke Zacke Hühnerkacke |
+| `+overtime-damage` | Час вичерпано — шкода періодично, доки не розвʼяжеш | game-logic/lose | 🌱 | 1 | CiniCross |
 | `+overwhelm-bonus` | Бонус за повторну атаку цілі | entities/combat | 🌱 | 1 | Battle Brothers |
 | `+overworld-travel` | Карта світу як окремий масштаб, вхід у локації | levels/progression | 🥉 | 1 | Ancient Domains of Mystery (ADOM) |
 | `+overwrite-placement` | Нова фігура накриває покладене | entities/legality | 📎 | 1 | inbento |
@@ -5585,12 +5981,14 @@
 | `+owner-arrow` | Стрілка-нагадування від клітинки до її власника | interface/input | 📎 | 1 | Tentai Show (Galaxies, Spiral Galaxies) |
 | `+owner-revealed-at-goal` | Власник фігури зʼясовується на фініші | game-logic/win | 🌱 | 1 | Geistertreppe |
 | `+pacifist-bonus` | Бонус за раунд без жодного вбивства | game-logic/score | 🌱 | 1 | Chack'n Pop |
+| `+pacify-floor` | Підлога вимикає атаку | entities/state | 🌱 | 1 | Leaf's Odyssey |
 | `+pack-behaviour` | Поведінка залежить від зграї | entities/move | 🥈 | 1 | Deadly Rooms of Death (DROD: King Dugan's Dungeon) |
 | `+pack-choice` | Вибір 1 з 2 паків | game-logic/economy | 🌱 | 1 | Islanders |
 | `+pack-rank-feeding` | Черга годування за рангом при нестачі | game-logic/economy | 🌱 | 1 | Niche – a genetics survival game |
 | `+pack-select` | Набір контенту на партію | game-logic/constraints | 🌱 | 1 | Super Auto Pets |
 | `+packet-delivery` | Ресурс летить мережею пакетами до споживача | entities/move | 🥇 | 1 | Creeper World |
 | `+pagoda-function` | Інваріант-доказ нерозвʼязності | levels/solvability | 🥇 | 1 | Peg solitaire (Пег-солітер) |
+| `+paid-continue` | Продовження за ігрову валюту з ростом ціни | game-logic/lose | 🌱 | 1 | Dragon Crystal (ドラゴンクリスタル ツラニの迷宮) |
 | `+paid-level-packs` | Пакети рівнів, що відкриваються окремо | levels/progression | 🌱 | 1 | Pushmo World / Stretchmo |
 | `+paid-preview` | Next за очки | interface/hud | 🌱 | 1 | Welltris |
 | `+paid-redraw` | Перебір руки за ресурс з перезарядкою | game-logic/economy | 🌱 | 1 | Necronator: Dead Wrong |
@@ -5601,12 +5999,14 @@
 | `+paint-cell-command` | Команда фарбує клітину | entities/interact | 📎 | 1 | RoboZZle |
 | `+paint-cycle-rules` | Правило зміни кольору як параметр | entities/interact | 🥉 | 1 | Q*bert |
 | `+paint-on-place-goal` | Клітина фарбується назавжди, мета — усе поле | game-logic/constraints | 🌱 | 1 | Alchemy (PopCap) |
+| `+paint-overlay` | Вільне малювання поверх поля без впливу на перевірку | interface/input | 🌱 | 1 | Liquidum |
 | `+paint-revert-enemy` | Ворог стирає прогрес | entities/interact | 📎 | 1 | Q*bert |
 | `+paint-trail-brush` | Пензель: робот лишає слід кольором, поки пензель опущено | entities/move | 📎 | 1 | RoboMind |
 | `+pair-by-color` | Пари за кольором у регіоні (зірки/діаманти) | game-logic/constraints | 📎 | 1 | Taiji + The Witness (панелі) |
 | `+pair-choice-market` | Вибір з N пар "значення + дія" | game-logic/economy | 🌱 | 1 | Welcome To… (Ласкаво просимо до…) |
 | `+pair-flip-match` | Відкрий дві — однакові лишаються | entities/interact | 🌱 | 1 | Memory / Concentration / Pairs («Мемо», «Знайди пару») |
 | `+pair-match-removal` | Зняти пару однакових | entities/interact | 🌱 | 1 | Mahjong Solitaire (Shanghai, Маджонг-пасьянс) |
+| `+pair-mimic-big` | Пара, що крокує поруч у такт, повторює велику сутність | entities/state | 🥈 | 1 | Mimic (Mimic Classic) |
 | `+pair-shuffle-on-death` | Перемішати кольори пар після поразки | game-logic/lose | 🌱 | 1 | Oxyd (+ Enigma) |
 | `+pair-sum-match` | Пара: рівні або в сумі N | entities/interact | 🌱 | 1 | Number Match / Take Ten (Numberzilla) |
 | `+pair-under-letter` | Обʼєкт під обʼєктом утворює пару | entities/interact | 📎 | 1 | Alephant |
@@ -5637,6 +6037,7 @@
 | `+par-time` | Еталонний час рівня з бонусом | game-logic/score | 🌱 | 1 | Wolfenstein 3D |
 | `+par-time-score` | Рахунок проти пар-часу | game-logic/score | 🌱 | 1 | Exit |
 | `+paradox-bonus` | Парадокс веде в секретний рівень | levels/progression | 🥉 | 1 | Recursed |
+| `+paradox-check` | Парадокс: минуле мусить привести копію в портал | game-logic/constraints | 🥈 | 1 | Causality |
 | `+paradox-sighting` | Копія бачить оригінал — парадокс | game-logic/lose | 🥉 | 1 | Loophole |
 | `+parallel-block-eval` | Усі блоки поля виконуються одночасно щотакту | game-logic/program | 🥇 | 1 | Block Machine |
 | `+parallel-edge-lock` | Подвійне ребро: одне на гравця, закрите при малій кількості гравців | entities/legality | 🌱 | 1 | Ticket to Ride |
@@ -5644,9 +6045,11 @@
 | `+parameter-sweep` | Прогін симуляції по сітці параметра і графік результату | code/tests | 🥉 | 1 | Biham–Middleton–Levine traffic model (модель трафіку BML) |
 | `+parity-check` | Перевірка розвʼязності за парністю | levels/solvability | 📎 | 1 | Sliding-tile permutation puzzles (пʼятнашки й родичі) |
 | `+parity-domino` | Пара клітинок зі змішаною парністю | game-logic/constraints | 🌱 | 1 | Ziegelmauer (Bricks, Цегляна стіна) |
+| `+parity-prime-bonus` | Бонус за парні / непарні / прості значення | game-logic/score | 🌱 | 1 | Electrogical (エレクトロジカル) |
 | `+parity-reveal` | Предмет перевертається при кожному проході | entities/state | 🌱 | 1 | Clu Clu Land |
 | `+parity-start-cell` | Стартова клітина за шаховою парністю, щоб поле було заповнюване доміно | levels/generation | 🌱 | 1 | Domino Grove |
 | `+parity-sublattice` | Вершини двох класів шахової парності; діагоналі — ребра двох окремих графів | game-logic/constraints | 📎 | 1 | Crossstitch |
+| `+parry-counter` | Парирування в точний момент відкриває контрудар | entities/combat | 📎 | 1 | Loot River |
 | `+part-destroyed-overflow` | Надлишок шкоди переходить на інші частини | entities/combat | 📎 | 1 | Cogmind |
 | `+part-loadout` | Завантаження деталей перед етапом | game-logic/economy | 🥉 | 1 | Motos |
 | `+part-modifiers` | Модифікатори деталей (крила, парашут, великий, ключ) | levels/editor | 🥈 | 1 | Super Mario Maker 2 |
@@ -5657,6 +6060,7 @@
 | `+partial-pattern-clue` | Підказка — частковий шаблон з масками атрибутів | game-logic/constraints | 📎 | 1 | Chocolate Fix (ThinkFun) |
 | `+partial-pool-use` | Не обовʼязково використати всі літери | game-logic/constraints | 🌱 | 1 | Puzzmo: Bongo |
 | `+partial-solve-reward` | Частковий розвʼязок — пропорційний ефект | game-logic/score | 📎 | 1 | Minesweeper Sonar |
+| `+partial-support-bridge` | Багатоклітинний блок падає в провалля, лише коли під усіма клітинами порожньо | entities/interact | 📎 | 1 | Riko |
 | `+particle-bitfield-cell` | Стан клітини — біти частинок за напрямками | entities/state | 📎 | 1 | Lattice gas automaton (ґратковий газ HPP і FHP) |
 | `+particle-sand-flow` | Частинки падають і сиплються купками | entities/move | 📎 | 1 | Sugar, Sugar |
 | `+partisan-orientation` | Кожна сторона кладе фігуру лише своєю орієнтацією | entities/legality | 🌱 | 1 | Domineering |
@@ -5678,6 +6082,9 @@
 | `+pass-by-shuffle` | Пас ходом туди-назад (jitto) | game-logic/opponent | 🌱 | 1 | Великі шогі — Chu shogi і Tenjiku shogi (Чу-шогі, Тендзіку-шогі) |
 | `+pass-end` | Пас і кінець гри двома пасами | game-logic/win | 🌱 | 1 | Go (Ґо, вейці, бадук) |
 | `+pass-hand-left` | Передати решту руки сусіду | game-logic/opponent | 🌱 | 1 | Sprawlopolis |
+| `+pass-item-to-partner` | Передати предмет іншому аватару поруч | entities/interact | 🌱 | 1 | ilomilo |
+| `+pass-needs-receiver` | Удар лише за наявності приймача | entities/legality | 🥉 | 1 | Pup Champs |
+| `+pass-over-target` | Ковзний обʼєкт минає ціль, якщо за нею нема упору | entities/move | 🌱 | 1 | Shall We Golf? (みんなでGOLF！) |
 | `+pass-through-attack` | Удар кожного ворога на маршруті | entities/combat | 🥉 | 1 | Rondo of Swords |
 | `+pass-through-door` | Двері, крізь які проходять на клітину далі | entities/legality | 📎 | 1 | Emerald Mine |
 | `+pass-through-nodes` | Вузли-цілі не розривають мережу | game-logic/constraints | 🌱 | 1 | Avenue |
@@ -5731,15 +6138,17 @@
 | `+patrol-route-cards` | Маршрут ворога з колоди карт | entities/move | 📎 | 1 | Nuns on the Run |
 | `+pattern-anywhere` | Ціль — шаблон будь-де на полі | game-logic/win | 📎 | 1 | Atomix |
 | `+pattern-as-unit` | Патерн автомата як юніт/будівля з ціною, відбитком і стадією | entities | 🥉 | 1 | Patternsight |
+| `+pattern-count-life` | Лічильник = кількість копій зразка на полі, 0 — смерть | game-logic/lose | 🥉 | 1 | Pattern Counter |
 | `+pattern-digger` | Сутність їсть землю, рухаючись за патерном | entities/move | 📎 | 1 | Gem Worlds |
 | `+pattern-directions` | Напрямки й дальність з візерунка фігури | entities/legality | 🥉 | 1 | Gess |
+| `+pattern-frame` | Зразок задано вмістом рамки на полі; його міняють тими самими поштовхами | game-logic/constraints | 🥉 | 1 | Pattern Counter |
 | `+pattern-goal` | Скласти заданий візерунок на полі | game-logic/win | 📎 | 1 | Chuzzle |
 | `+pattern-library` | Бібліотека патернів | levels/bank | 📎 | 1 | Conway's Game of Life (Гра «Життя») |
 | `+pattern-lines` | Буферні лінії перед полем | game-logic/constraints | 🥉 | 1 | Azul (Азул) |
 | `+pattern-lookup-table` | Передобчислена таблиця шаблонів сусідства | game-logic/constraints | 🥉 | 1 | Tapa (Тапа, T-Paint) |
 | `+pattern-objective` | Ціль — візерунок на полі | game-logic/win | 🥈 | 1 | Takenoko (Такеноко) |
+| `+pattern-rewrite-on-block` | Автомат обходить перешкоду і переписує свій цикл | entities/move | 🥉 | 1 | Mimic (Mimic Classic) |
 | `+pattern-rule-program` | Програма — список шаблонів околиці → дія | game-logic/program | 🥉 | 1 | Cyborg Earthworm |
-| `+pattern-stamp` | Вирізати / вставити вікно конфігурації | levels/editor | 📎 | 1 | Greenberg–Hastings cellular automaton (модель Ґрінберга — Гастінгса) |
 | `+pattern-stamp-carve` | Шаблон-штамп, далі доріжування гумкою | entities/legality | 📎 | 1 | POUND SAND |
 | `+pattern-stats` | Статистика патерна | interface/hud | 🥈 | 1 | Lenia |
 | `+pattern-summon` | Візерунок з фішок → нова фігура в позначеній клітині + ефект | entities/spawn | 🥉 | 1 | Tash-Kalar: Arena of Legends |
@@ -5756,6 +6165,7 @@
 | `+peek` | Підглянути за двері/ріг | interface/render | 📎 | 1 | Invisible, Inc. |
 | `+peek-around-corner` | Підглянути без руху | entities/state | 📎 | 1 | Maze War |
 | `+peek-card` | Таємно підглянути закриту карту | interface/hud | 🌱 | 1 | Saboteur (+ Saboteur 2) |
+| `+peek-floor` | Тримай клавішу — сховати обʼєкти, побачити підлогу | interface/render | 🌱 | 1 | Give Up the Ghost: a puzzle checklist |
 | `+peek-hidden-cell` | Таємно подивитись закриту клітину | game-logic/info | 🌱 | 1 | Memoarrr! |
 | `+peek-next-objective` | Раз на раунд підглянути наступну ціль замість ходу | game-logic/opponent | 📎 | 1 | Avenue |
 | `+peek-reveal` | Підглянути мапу на мить | interface/render | 🌱 | 1 | Maze Craze |
@@ -5773,14 +6183,18 @@
 | `+per-cell-result-grid` | Сітка якості по кожній клітині (без помилок / з помилкою / з підказкою) | interface/results | 🌱 | 1 | Clues by Sam |
 | `+per-character-hazard` | Пастка шкодить лише одній формі | entities/death | 🌱 | 1 | Stoneman's Adventure |
 | `+per-character-timeline` | Окремий undo-стек на кожного персонажа | game-logic/history | 🥈 | 1 | Entwined Time |
+| `+per-class-referees` | Кожен клас фігур судить свій суддя | game-logic/opponent | 🥈 | 1 | Penultima (Пенультима) |
 | `+per-color-neighbourhood` | Сусідство залежить від типу клітини | game-logic/constraints | 🥉 | 1 | Alien Cartographer |
 | `+per-color-tracks` | Окремий рахунок на кожен колір | game-logic/score | 🌱 | 1 | Qwirkle + Ingenious (Квіркл, Genial) |
+| `+per-level-abilities` | Набір здібностей задає рівень | levels/format | 🌱 | 1 | Chronescher |
+| `+per-level-collectible` | Кожен рівень дарує унікальний колекційний предмет | levels/progression | 🌱 | 1 | Where's My Egg? |
 | `+per-level-physics` | Гравітація й сила запуску — параметри рівня | levels/format | 📎 | 1 | Meteos (Метеос) |
 | `+per-level-ruleset` | Окреме правило для кожного рівня | game-logic | 🥈 | 1 | Tactic Toe |
 | `+per-limb-attributes` | Атрибути належать кінцівкам | entities/state | 📎 | 1 | IVAN (Iter Vehemens ad Necem) |
 | `+per-object-gravity` | Окрема гравітація кожного обʼєкта, задана поштовхом | entities/move | 🥉 | 1 | English Country Tune |
 | `+per-object-timer` | Таймер на окремий обʼєкт | game-logic/lose | 🌱 | 1 | Log!cal |
 | `+per-player-rules` | Кожен гравець — своє правило зникнення | game-logic/opponent | 🌱 | 1 | Kunio no Oden (くにおのおでん) |
+| `+per-room-undo` | Undo в межах кімнати | game-logic/history | 🌱 | 1 | Corrypt |
 | `+per-round-scoring-board` | Своя таблиця рахунку на кожен раунд | game-logic/score | 📎 | 1 | FITS |
 | `+per-tower-controller` | Кожна вежа має власну програму | game-logic/program | 🥉 | 1 | tower.defense(): Program The Fight |
 | `+per-turn-income` | Генератори дають ресурс за хід | game-logic/economy | 📎 | 1 | Dungeon of the Endless |
@@ -5802,6 +6216,7 @@
 | `+perfect-placement-bonus` | Бонус за повний збіг | game-logic/score | 🌱 | 1 | Dorfromantik |
 | `+perfect-rating` | Оцінка perfect за мінімум ходів | game-logic/score | 🌱 | 1 | Flow Free |
 | `+perfect-stage-life` | Життя за ідеальне проходження стадії | game-logic/score | 📎 | 1 | Diamond Rush |
+| `+performance-grade` | Оцінка S–F за пазл визначає нагороду | game-logic/score | 🌱 | 1 | CiniCross |
 | `+perimeter-color-check` | Кількість змін кольору вздовж периметра | game-logic/constraints | 🌱 | 1 | Yin-Yang (Інь-Ян, Shiromaru-Kuromaru) |
 | `+perimeter-track-move` | Фігура ходить по периметру поля, дивиться всередину | entities/move | 🌱 | 1 | Mr. Jack Pocket |
 | `+periodic-block` | Блок, що циклічно росте/зникає | entities/state | 📎 | 1 | Mario & Wario |
@@ -5819,6 +6234,7 @@
 | `+permeable-cell` | Проникна клітина | entities/interact | 📎 | 1 | Boulder Dash |
 | `+permit-item` | Предмет-дозвіл на тип підлоги | entities/state | 📎 | 1 | Chip's Challenge |
 | `+permutation-grid` | Поле — випадкова перестановка 1…N | levels/generation | 🌱 | 1 | Mini Cactpot (Final Fantasy XIV) |
+| `+perpendicular-arms` | Руки лише в перпендикулярних напрямках | entities/legality | 📎 | 1 | Altered |
 | `+perpetual-ban` | Заборона вічного шаху/переслідування | game-logic/constraints | 👑 | 1 | Xiangqi (Сянці, китайські шахи) |
 | `+perpetual-route` | Маршрут, що відтворюється сам | entities/state | 📎 | 1 | Rail Route |
 | `+persistent-anchors` | Фішки-якорі переживають скидання фази | entities/state | 🌱 | 1 | Blue Lagoon |
@@ -5837,13 +6253,14 @@
 | `+personal-grid` | Кожен будує своє поле з особистої руки | levels/generation | 📎 | 1 | Bananagrams |
 | `+personal-setup-offset` | Розстановка гравця = спільна послідовність зі зсувом по колу | levels/generation | 🌱 | 1 | Trails of Tucana |
 | `+personal-stack-board` | Особисте поле, де плитки стають одна на одну | entities/legality | 📎 | 1 | Dragon Castle |
-| `+perspective-path` | Шлях за збігом проєкцій | entities/legality | 🥇 | 1 | Monument Valley |
+| `+perspective-landing` | Приземлення на те, що на екрані під тобою | entities/move | 🥈 | 1 | Echochrome |
 | `+perspective-switch` | Перемикання жанру/проєкції кімнати | entities/move | 🥈 | 1 | Toodee and Topdee |
 | `+pet-ally` | Улюбленець-союзник з AI | entities/move | 🥈 | 1 | NetHack |
 | `+pet-breeding` | Схрещування петів з успадкуванням рис | entities/state | 🥈 | 1 | Tangledeep |
 | `+phalanx-length-move` | Лінія рухається вздовж себе на свою довжину | entities/move | 📎 | 1 | Epaminondas (Епамінонд) |
 | `+phalanx-move` | Рух шеренгою | entities/move | 🥉 | 1 | Національні варіанти шашок |
 | `+phase-alternating-control` | Фази таймлайну визначають, хто керований | game-logic/opponent | 📎 | 1 | Meet me at NooN |
+| `+phase-blocks` | Блоки, що зникають і зʼявляються за перемиканням | entities/state | 📎 | 1 | After Light Fades |
 | `+phase-board-elements` | Елементи поля діють після руху в фіксованому порядку | game-logic | 🥈 | 1 | RoboRally |
 | `+phase-change-threshold` | Фаза за температурою з гістерезисом | entities/state | 📎 | 1 | Oxygen Not Included — клітинна фізика (гази, рідини, тепло) |
 | `+phase-cycle` | Цикл фаз гри | game-logic/waves | 🥉 | 1 | Rampart |
@@ -5859,12 +6276,15 @@
 | `+phased-seasons` | Партія з фаз з різними діями й підрахунками | game-logic/score | 🌱 | 1 | Bosk |
 | `+pheromone-field` | Поле запахів на клітинах | entities/state | 📎 | 1 | SimAnt |
 | `+phone-callback` | Предмет = користувацька функція на клавіші | entities/state | 📎 | 1 | Untrusted — or the Continuing Adventures of Dr. Eval |
+| `+phone-controller` | Телефон як контролер і приватна рука | interface/input | 🥇 | 1 | Sunderfolk |
 | `+photo-match-goal` | Мета — знімок обʼєкта з заданого ракурсу | game-logic/win | 🥉 | 1 | 4D (Beekie & Corey Hardt) і 4D-Sokoban-родичі |
 | `+physical-code-cards` | Фізична картка-код відкриває вміст | game-logic/economy | 🌱 | 1 | Mega Man Star Force (Ryuusei no Rockman) |
+| `+physical-reference` | Зразок цілі стоїть на полі як тверде тіло | interface/hud | 🌱 | 1 | Woodworm |
 | `+physical-resist` | Тип ворога обмежує, хто може його бити | entities/combat | 📎 | 1 | Crystal Defenders: Vanguard Storm |
 | `+physical-robot-input` | Фізичний пристрій як канал вводу | interface/input | 🥈 | 1 | Gyromite |
 | `+physics-body-avatar` | Аватар — фізичне тіло на клітинному полі | entities/move | 🥈 | 1 | Mekorama |
 | `+physics-merge` | Злиття фізичних тіл при дотику | entities/interact | 🥉 | 1 | Suika Game (Кавунова гра) |
+| `+physics-mode` | Перемикач правила опори фігури | game-logic/difficulty | 🥉 | 1 | Pluricubus |
 | `+physics-reshuffle` | Поле осідає й міняє суміжність після ходу | entities/move | 🥈 | 1 | Popsweeper |
 | `+pick-one-box` | Одна з N скринь з призом | game-logic/score | 🌱 | 1 | Devil World |
 | `+pick-spots-ahead` | Гравець обирає числа до тиражу | game-logic/random | 🌱 | 1 | Bingo / Keno / Lotto (Бінго, Лото) |
@@ -5873,7 +6293,6 @@
 | `+pickup-and-deliver` | Взяти вантаж у джерелі, здати в цілі | entities/interact | 🥉 | 1 | Empire Builder (crayon rails) |
 | `+pickup-overflow-choice` | Нема місця — обери, що викинути/використати | entities/interact | 🌱 | 1 | Resident Evil 4 (attaché case) |
 | `+pickup-restores-floor` | Предмет відновлює зруйновані клітини | entities/interact | 🌱 | 1 | Knight Move |
-| `+picture-clue` | Картинка як підказка на блок клітин | interface/render | 📎 | 1 | Arrowword (Сканворд) |
 | `+piece-cooldown` | Кулдаун фігури після ходу | game-logic/opponent | 🥈 | 1 | Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage) |
 | `+piece-copy` | Копіювання суперника | entities/combat | 📎 | 1 | Archon: The Light and the Dark |
 | `+piece-crush-stack` | Фігура тоне крізь стос, роздавлюючи його | entities/interact | 🥉 | 1 | Puyo Puyo Tetris |
@@ -5886,6 +6305,7 @@
 | `+piece-pattern-blast` | Вибух за патерном шахової фігури | entities/combat | 🥉 | 1 | Chessplosion |
 | `+piece-queue` | Черга наступних фігур | entities/spawn | 📎 | 1 | Pipe Mania (Pipe Dream) |
 | `+piece-rank-up` | Ранги фігури за перемоги | entities/state | 📎 | 1 | Kamisado |
+| `+piece-renaming` | Нові імена фігур як натяк на правило | interface/hud | 🌱 | 1 | Penultima (Пенультима) |
 | `+piece-rotate-flip` | Поворот і дзеркало фігури | entities/state | 📎 | 1 | Blokus (Блокус) |
 | `+piece-set-placement` | Розставити заданий набір фігур на позначені клітинки | entities/legality | 🌱 | 1 | Detektivschach (Detective Chess) |
 | `+piece-set-select` | Вибір набору фігур | interface/settings | 🌱 | 1 | Blockout (Block Out) |
@@ -5910,21 +6330,26 @@
 | `+pipeline-length-value` | Довжина одноколірного ланцюга = сила дії | game-logic/constraints | 🥉 | 1 | Pipeline (Capstone Games) |
 | `+pips-as-shots` | Рівень = кількість одночасних снарядів | entities/combat | 🌱 | 1 | Random Dice (+ Rush Royale) |
 | `+piston` | Поршень: клік висуває й штовхає ряд, ще клік втягує | entities/interact | 🥉 | 1 | Pight |
+| `+piston-recoil` | Заблокований поршень відштовхує сам себе й те, що позаду | entities/interact | 🥉 | 1 | Pushing It |
 | `+pit-drop` | Провал на нижній поверх | entities/interact | 🌱 | 1 | Labyrinth of Refrain: Coven of Dusk |
 | `+pit-fall-check` | Яма: кидок спритності — впав чи спустився сам | entities/interact | 🌱 | 1 | Telengard |
 | `+pit-fall-relocate` | Падіння в яму: поза полем, приземлення в рядку/стовпці | entities/interact | 📎 | 1 | The Night Cage |
 | `+pit-kill` | Смерть від падіння в прірву/лаву після переміщення | entities/death | 📎 | 1 | Dungeon Warfare |
 | `+pit-knockoff` | Скинути ворога в яму | entities/combat | 🌱 | 1 | Twinfold |
 | `+pit-rewind-offer` | Падіння в яму — пропозиція перемотати замість смерті | game-logic/lose | 🌱 | 1 | Full Bore |
+| `+pit-swallow` | Провалля: обʼєкт зникає, аватар гине | entities/interact | 🌱 | 1 | Riko |
 | `+pit-trap-enemy` | Викопана яма ловить ворога | entities/interact | 📎 | 1 | Doki Doki Penguin Land (ドキドキペンギンランド) |
 | `+pit-trapdoor` | Яма-люк на поверх нижче | entities/interact | 📎 | 1 | Legend of Grimrock |
 | `+pit-trick` | Ворог падає в прогалину рухомого перехрестя | entities/death | 📎 | 1 | Marvin's Maze |
+| `+pit-underlayer` | Яма як нижній шар: упав — ходиш там | entities/move | 📎 | 1 | Vext Edit |
 | `+pitch-by-position` | Висота ноти за координатою події | interface/sound | 🌱 | 1 | Otomata |
 | `+pity-discount` | Прихований лічильник помилок → знижки/допомога | game-logic/difficulty | 🌱 | 1 | Paper Mario: The Origami King — бойова кільцева сітка |
 | `+pivot-hop` | Перескок опори на точку під вільним кінцем | entities/move | 📎 | 1 | Spin Doctor / ClockWerx |
 | `+pixel-circuit-drawing` | Схема — малюнок; колір пікселя = тип компонента | interface/input | 🥉 | 1 | Virtual Circuit Board (VCB) |
+| `+pixel-collision` | Зіткнення за непрозорими пікселями спрайта | entities/legality | 🥈 | 1 | Pushing It |
 | `+pixel-machine` | Машина як група реактивних клітин симуляції | entities/interact | 🥈 | 1 | POUND SAND |
 | `+pixel-terrain-mask` | Рельєф як бітова маска + маска незнищенного | entities/interact | 🥈 | 1 | Lemmings |
+| `+placate-or-banish` | Два способи впоратися з ворогом з різними наслідками | game-logic/win | 📎 | 1 | Wilderplace |
 | `+place-block` | Поставити блок у клітину | entities/interact | 📎 | 1 | Toki Tori |
 | `+place-bridge` | Міст над прірвою | entities/interact | 📎 | 1 | Toki Tori |
 | `+place-from-slot` | Поставити блок з вибраного слота в сусідню клітину | entities/interact | 🌱 | 1 | ComputerCraft (turtles) |
@@ -5933,7 +6358,10 @@
 | `+place-or-discard-for-action` | Компонент або кладеться, або скидається заради дії | game-logic/economy | 🌱 | 1 | Karuba (Каруба) |
 | `+place-or-move-turn` | Хід на вибір: поставити нову фігуру або рушити наявну | game-logic/turns | 🌱 | 1 | Phutball (Philosopher's Football, Хутбол) |
 | `+place-push-neighbors` | Поставлена фігура відштовхує всіх сусідів на 1 | entities/interact | 🌱 | 1 | boop. |
+| `+place-then-enter` | Покладена плитка одразу переносить аватар | entities/move | 🌱 | 1 | Beacon Patrol |
 | `+place-then-run` | Розстав і запусти: ввід лише до старту симуляції | game-logic/program | 🥉 | 1 | ChuChu Rocket! |
+| `+placeable-numbers` | Лічильник — теж обʼєкт: створи нову палітру | entities/interact | 🥈 | 1 | Vext Edit |
+| `+placeable-portal` | Гравець ставить портал і повертається до нього | entities/interact | 📎 | 1 | Chronescher |
 | `+placement-adjacency` | Ставити лише поруч із покладеним або на краю | entities/legality | 🌱 | 1 | Metro (Iron Horse) |
 | `+placement-blocker` | Клітина, куди не можна ставити, але промінь проходить | entities/legality | 🌱 | 1 | ThinkFun Laser Maze і Gravity Maze |
 | `+placement-bonus-cells` | Бонус за накриту клітину | entities/interact | 🌱 | 1 | Ark Nova |
@@ -5958,12 +6386,14 @@
 | `+plant-seed-growth` | Посаджене насіння росте блоками за патерном типу | entities/spawn | 🥉 | 1 | Starseed Pilgrim |
 | `+plate-drift` | Поле течій зсуває блоки клітин | entities/move | 🥈 | 1 | SimEarth (сітковий шар і Daisyworld) |
 | `+platform-jump` | Стрибок з опори | entities/move | 📎 | 1 | Hako-Oshimai: Sokoban Platformer |
+| `+platform-lock-enemy` | Ворог замикає платформу, доки живий | entities/state | 🌱 | 1 | Loot River |
 | `+platform-shell` | Спільна оболонка для кількох ігор | code/architecture | 🥇 | 1 | Simon Tatham's Portable Puzzle Collection |
 | `+platform-wait-queue` | Чекання перед зайнятою платформою, FIFO | entities/move | 📎 | 1 | Rail Route |
 | `+play-limit-vs-opponent` | Не більше спецкарт, ніж у суперника + 1 | game-logic/opponent | 🌱 | 1 | Schotten Totten / Battle Line |
 | `+play-n-of-hand` | З руки в K карт зіграти лише N | game-logic/legality | 🌱 | 1 | SolForge |
 | `+play-or-draw-choice` | На ході: зіграти карту або добрати 3 | game-logic | 🌱 | 1 | Colt Express |
 | `+playability-constraints` | Фільтр рівня: агенти-тестери, покриття, довжина розвʼязку | levels/solvability | 🥈 | 1 | GVGAI (General Video Game AI) |
+| `+playable-cutscene` | Сцена як міні-рівень із власною умовою | levels/progression | 📎 | 1 | Evil Eye |
 | `+player-board-cost-track` | Планшет-драбина цін | game-logic/economy | 🥉 | 1 | Photosynthesis (Фотосинтез) |
 | `+player-built-board` | Гравці по черзі збирають поле з плиток | levels/generation | 🥉 | 1 | Battle Sheep |
 | `+player-built-maze` | Гравці будують приховану розкладку перед партією | levels/editor | 📎 | 1 | Das magische Labyrinth (Чарівний лабіринт) |
@@ -5972,12 +6402,12 @@
 | `+player-count-scales-arena` | Розмір арени від кількості гравців | levels/format | 📎 | 1 | Bomberman — мультиплеєрні гілки (Dyna Blaster, Saturn Bomberman, Atomic Bomberman, Bomberman Blast) |
 | `+player-hp-race` | HP гравця падає за програні раунди | game-logic/lose | 🌱 | 1 | Mechabellum |
 | `+player-is-symbol` | Аватар — символ, який правила копіюють/стирають | entities/state | 🥈 | 1 | Markov Alg |
+| `+player-lock-tile` | Замок гравця на клітині, клік її не змінює | interface/input | 🌱 | 1 | Gridspech |
 | `+player-made-detonator` | Гравець сам перетворює падаючу фігуру на детонатор | entities/state | 🌱 | 1 | Pochi and Nyaa |
 | `+player-notes` | Нотатки гравця | interface/input | 🌱 | 1 | Sudoku Mansion |
 | `+player-only-passable` | Клітина пропускає гравця, але не обʼєкти | entities/legality | 🌱 | 1 | Tome Tumble Tournament |
 | `+player-placed-door` | Гравець зачиняє прохід позаду | entities/interact | 📎 | 1 | Lock 'n' Chase |
 | `+player-traps` | Пастки, які ставить гравець | entities/combat | 📎 | 1 | Dungeons of Dredmor |
-| `+player-written-rules` | Гравець пише правила виведення, гра застосовує їх | game-logic/program | 🥈 | 1 | Bombe |
 | `+player-zone` | Гравець обмежений зоною поля | entities/legality | 🌱 | 1 | Centipede (Багатоніжка) |
 | `+plaza-multiplier` | Окремі клітини-множники для типу | game-logic/score | 📎 | 1 | Akropolis (Акрополіс) |
 | `+plug-generator` | Заткнути генератор | game-logic/win | 📎 | 1 | Dot Valley |
@@ -5997,6 +6427,8 @@
 | `+poison-per-step` | Отрута шкодить за кожен крок | entities/state | 🌱 | 1 | Maze Keeper |
 | `+poison-pickup` | Предмет, якого не можна торкатись серед потрібних | entities/death | 🌱 | 1 | Quell |
 | `+poison-random-steer` | Отрута — тимчасовий випадковий напрям | entities/state | 🌱 | 1 | Google Snake (Змійка в пошуку Google) |
+| `+poison-trail` | Слід, що вбиває інших | entities/interact | 📎 | 1 | Leaf's Odyssey |
+| `+poke-to-move` | Клік по сутності штовхає її на крок уперед | interface/input | 🌱 | 1 | Undertoe |
 | `+poker-hand-bonus` | Збіг дає карту, комбінація карт — бонус | game-logic/score | 📎 | 1 | Six Match |
 | `+poker-hand-eval` | Оцінка покерної комбінації | game-logic/score | 🌱 | 1 | Puzzmo: Pile-Up Poker |
 | `+poker-hand-match` | Лінія карт зникає, якщо утворює покерну комбінацію | entities/interact | 🥉 | 1 | Poker Smash |
@@ -6027,16 +6459,25 @@
 | `+population-xp` | Населення як досвід героя | game-logic/economy | 🌱 | 1 | ActRaiser (режим симуляції) |
 | `+popup-wall` | Прохід один раз | entities/legality | 🌱 | 1 | Chip's Challenge |
 | `+port-blocking-message` | Блокувальний обмін через порт сусіда | game-logic/program | 🥇 | 1 | TIS-100 |
+| `+port-powerups` | Предмет на порті вмикає ефект аватара | entities/state | 🥉 | 1 | Super Sokobot |
 | `+port-spec-tests` | Тест-кейси: черги на портах | game-logic/win | 🥉 | 1 | Infinite Turtles |
 | `+portage-weight` | Вага зброї зʼїдає рух | entities/state | 🌱 | 1 | Squad Leader |
+| `+portal-collision-explode` | Портал у власну пару — вибух | entities/combat | 📎 | 1 | Give Up the Ghost: a puzzle checklist |
 | `+portal-keep-direction` | Портал із збереженням напряму | entities/interact | 🌱 | 1 | Trackastrophe! |
 | `+portal-los` | Гравець ставить пару порталів; LOS наскрізь | entities/interact | 🥉 | 1 | Jacob's Matrix |
+| `+portal-on-box` | Портал на грані рухомого ящика | entities/interact | 🥈 | 1 | PortalBox |
 | `+portal-on-object` | Портал на рухомому ящику | entities/interact | 🥉 | 1 | ScaleBox |
+| `+portal-paradox` | Портал проходить крізь себе: виявлення циклу | entities/legality | 👑 | 1 | PortalBox |
 | `+portal-push-force` | Вихід із порталу штовхає будь-що | entities/interact | 📎 | 1 | ScaleBox |
+| `+portal-recoil` | Заблокований вихід відштовхує сам портал назад | entities/interact | 📎 | 1 | Hat-tricks |
+| `+portal-reverse-on-block` | Вихід і віддача заблоковані — повернення крізь вхідний портал | entities/interact | 📎 | 1 | Hat-tricks |
 | `+portal-rotate-reflect` | Портал повертає/віддзеркалює обʼєкт | entities/interact | 🥈 | 1 | Warp Factory |
+| `+portal-sets-orientation` | Вихід із порталу задає орієнтацію за його отвором | entities/interact | 🥉 | 1 | Hat-tricks |
+| `+portal-swallow` | Портал, яким штовхають, переносить предмет перед собою до пари | entities/interact | 🥉 | 1 | Give Up the Ghost: a puzzle checklist |
 | `+portal-through-portal` | Портал — рухомий обʼєкт, проходить крізь інші портали | entities/interact | 🥇 | 1 | Warp Factory |
 | `+portal-toggle-by-code` | Стан порталу як змінна | entities/interact | 🌱 | 1 | Swift Playgrounds (Learn to Code, Byte) |
 | `+portal-toggle-by-wire` | Портал вмикається/вимикається сигналом | entities/interact | 📎 | 1 | Warp Factory |
+| `+portal-turn` | Вихід із порталу повертає напрямок і орієнтацію | entities/move | 🥉 | 1 | PortalBox |
 | `+portal-twist` | Поле-граф: довільні сусіди, зшивання з поворотом | levels/format | 🥇 | 1 | Jacob's Matrix |
 | `+portrait-reward` | Картинка-нагорода за подію | interface/menus | 🌱 | 1 | Cleopatra Fortune |
 | `+portrait-tate-mode` | Портретна розкладка інтерфейсу | interface/settings | 📎 | 1 | Non-Euclidean Minesweeper |
@@ -6044,9 +6485,12 @@
 | `+position-match-highlight` | Підсвітити літери, що вже збігаються з ціллю | interface/hud | 🌱 | 1 | Weaver (word ladder) |
 | `+position-rank-bonus` | Бонус, якщо місце в гонці збігається з номером клітини | game-logic/score | 📎 | 1 | Hare and Tortoise (Заєць і черепаха) |
 | `+position-rows-roles` | Ряд героя = роль і колір | entities/state | 🌱 | 1 | Sdorica |
+| `+position-swap` | Обмін місцями двох тіл | entities/interact | 📎 | 1 | CLONY |
 | `+position-swap-enemy` | Ворог міняє місцями два аватари | entities/interact | 🌱 | 1 | Libble Rabble |
 | `+positional-crit` | Крит за позицією | entities/combat | 📎 | 1 | Wargroove |
 | `+positional-targeting` | Ефект адресує позицію в ряду (сусід, найлівіший) | entities/interact | 📎 | 1 | The Bazaar |
+| `+positional-wildcard` | Джокер лише на N-й позиції слова | game-logic/constraints | 🌱 | 1 | Cursed Words |
+| `+possess-by-flight` | Керована фігура — та, у яку залетів гравець | entities/move | 🥉 | 1 | nuworm |
 | `+possessed-block-boss` | Бос вселяється в клітину й перестрибує | entities/state | 📎 | 1 | Emeraldia |
 | `+possible-moves-hint` | Показати ще можливі ходи/зʼєднання | interface/hud | 📎 | 1 | Hashiwokakero (Hashi, Bridges, Мости) |
 | `+post-burst-weakness` | Після сплеску — спад | entities/state | 🌱 | 1 | Soulestination (魂之归宿) |
@@ -6059,8 +6503,10 @@
 | `+potion-effects` | Зілля різних ефектів (лікування, отрута, max HP, ширяння) | entities/state | 🌱 | 1 | Prince of Persia |
 | `+potion-of-three` | Невідоме зілля — одне з трьох | entities/interact | 🌱 | 1 | Golden Krone Hotel |
 | `+potion-sickness` | Лікування підряд не діє | entities/state | 🌱 | 1 | Donsol |
+| `+pour-into-vessel` | Наливання: аватар віддає рідину сусідній посудині, витрачаючи запас | entities/interact | 📎 | 1 | Desperatea |
 | `+pour-run` | Перелити верхній однокольоровий відрізок | entities/interact | 📎 | 1 | Water Sort / Ball Sort Puzzle (сортування кольорів у пробірках) |
 | `+pour-terrain` | Рідкий рельєф: тече й застигає | entities/interact | 🥈 | 1 | Lemmings 2: The Tribes |
+| `+pour-through-chain` | Рідина проходить крізь повні посудини до першої порожньої в ряду | entities/interact | 📎 | 1 | Desperatea |
 | `+power-armor` | Броня-костюм з пілотом усередині | entities/state | 📎 | 1 | Silent Storm |
 | `+power-battery-delivery` | Енергія як фізичні батареї | entities/state | 📎 | 1 | Cosmoteer: Starship Architect & Commander |
 | `+power-budget-blackout` | Енергія від швидкості машин, блекаут | game-logic/economy | 🥉 | 1 | Automachef |
@@ -6074,8 +6520,10 @@
 | `+power-pieces` | Фігури-підсилювачі після очистки | entities/state | 🥈 | 1 | Tetrisphere |
 | `+power-purge-gate` | Ворота, що знімають сили | entities/state | 🌱 | 1 | Levelhead |
 | `+power-routing` | Живлення кімнат і дверей від входу | entities/interact | 🥈 | 1 | Duskers |
+| `+power-steps` | Довжина ходу = сума зарядів | entities/move | 📎 | 1 | Super Sokobot |
 | `+power-tiers` | Рівні зброї, що скидаються після смерті | entities/state | 📎 | 1 | Battle City (Танчики) і Tank Battalion |
 | `+power-up-colour-mode` | Предмет переводить гравця й обʼєкти в інший режим правил | entities/state | 📎 | 1 | Would You Love Me If I Was a Snake? |
+| `+power-up-phase` | Фаза ініціалізації до тесту | game-logic | 📎 | 1 | Hard Chip |
 | `+powered-by-adjacent` | Механізм працює лише поряд з джерелом живлення | entities/state | 📎 | 1 | Pight |
 | `+powered-drill` | Машина на клітині сама видобуває сусідній ресурс, поки живлена | simulation/automation | 📎 | 1 | Core Keeper — сітковий шар (копання, ферма, автоматизація) |
 | `+powerup-balls` | Бонус спрацьовує, коли його куля у вибуху | entities/interact | 📎 | 1 | Zuma / Puzz Loop |
@@ -6134,6 +6582,7 @@
 | `+probability-density-ai` | AI за щільністю імовірностей | game-logic/opponent | 🥇 | 1 | Battleship (Морський бій) |
 | `+probability-ring` | Індикатор частки фігури | interface/render | 📎 | 1 | Quantum Chess (Квантові шахи, Cantwell) |
 | `+probe-ammo-lives` | Відкриття — постріл зі скінченного запасу | entities/state | 🌱 | 1 | Tacticsweeper |
+| `+probe-breakpoint` | Проба-індикатор із паузою за значенням | interface/hud | 🥉 | 1 | Hard Chip |
 | `+probe-cost-score` | Рахунок за кількість запитів і штраф за помилку | game-logic/score | 🌱 | 1 | Black Box (Чорна скринька) |
 | `+probe-count-challenge` | Рахунок за кількістю використаних зондів | game-logic/score | 🌱 | 1 | Triangulation |
 | `+probe-reveals-next` | Знахідка відкриває наступну ціль на мапі | levels/progression | 🌱 | 1 | Captive |
@@ -6162,14 +6611,19 @@
 | `+program-ahead-mode` | Скласти всю програму, потім запуск | game-logic/program | 📎 | 1 | Robot Turtles |
 | `+program-blueprints` | Зберегти програму як шаблон, локальні копії | game-logic/program | 📎 | 1 | tower.defense(): Program The Fight |
 | `+program-copy-chip` | Копіювання програми між ботами | game-logic/program | 🌱 | 1 | Autonauts |
+| `+program-linking` | Звʼязати програми кількох ботів | game-logic/program | 📎 | 1 | Neon Noodles |
+| `+program-restart-on-level` | Програма бота стартує заново на кожному рівні | game-logic/program | 🌱 | 1 | YENDOR |
 | `+program-text-clipboard` | Програма текстом у буфер обміну | levels/format | 📎 | 1 | Human Resource Machine |
 | `+program-variables` | Змінні в програмі робота | game-logic/program | 📎 | 1 | Craftomation 101 |
 | `+programmed-maneuvers` | До N маневрів наперед на планшеті | game-logic/program | 📎 | 1 | Asteroyds |
+| `+progress-gate` | Ворота за кількість зірок | levels/progression | 🌱 | 1 | Growmi |
 | `+progress-perks` | Підказки відкриваються порогами прогресу | game-logic/score | 🌱 | 1 | Squaredle |
 | `+progress-recolor` | Виконана частина цілі змінює колір | interface/hud | 🌱 | 1 | Alephant |
 | `+progress-tiebreak` | Залік за часткою виконаного й часом, коли ціль не досягнута | game-logic/score | 🌱 | 1 | BoomBoomBattle |
 | `+progression-gates` | Ворота між блоками рівнів | levels/progression | 🌱 | 1 | SILO 7 |
 | `+progression-win` | Перемога: свої числа на прямій утворюють прогресію | game-logic/win | 🥉 | 1 | Rithmomachia (Ритмомахія) |
+| `+progressive-clues` | Поступові підказки до слова | levels/solvability | 🌱 | 1 | Spell Slide |
+| `+progressive-controls-unlock` | Клавіші відкриваються з рівнями | interface/input | 🌱 | 1 | Tres Undos |
 | `+projection-model` | Модель проєкції поля (Пуанкаре, Клейн) | interface/render | 🥇 | 1 | HyperRogue |
 | `+projection-view` | Проєкція вищого виміру на 3D/2D з обертанням камери | interface/render | 🥈 | 1 | 4D (Beekie & Corey Hardt) і 4D-Sokoban-родичі |
 | `+promote-currency` | Валюта за гру для просування рівнів | levels/bank | 🥈 | 1 | Levelhead |
@@ -6177,16 +6631,19 @@
 | `+promotion-zone` | Зона перетворення | entities/state | 🥉 | 1 | Shogi (Сьоґі, японські шахи) |
 | `+proof-claim` | Достроковий захват з доказом неперемоги суперника | game-logic/win | 🥉 | 1 | Schotten Totten / Battle Line |
 | `+proof-game` | Доказова партія: найкоротша гра до заданої позиції | levels/solvability | 👑 | 1 | Казкові умови шахів — Andernach, Madrasi, Grid |
+| `+propagation-delay` | Сигнал іде на клітину за тік, ключ вмикається з затримкою | entities/interact | 🥉 | 1 | Hard Chip |
 | `+property-flags` | Поведінка = набір властивостей типу | entities/state | 🥈 | 1 | Baba Is You |
 | `+prospect-direction` | Сенсор: напрям до найближчого ресурсу за ціну | game-logic/program | 📎 | 1 | The Miner Was Replaced |
 | `+prospect-distance-trilateration` | Сенсор відстані, пошук перетином сфер | game-logic/program | 👑 | 1 | The Miner Was Replaced |
 | `+prospecting-radar` | Радар показує відстань до цінного блока в напрямку погляду | interface/hud | 🥉 | 1 | Infiniminer |
+| `+protect-adjacent` | Аура: носій і його сусіди не гинуть | entities/state | 📎 | 1 | Heroes of Sokoban II: Monsters і III: The Bard and the Druid |
 | `+protect-core` | Захисти ядро: поразка, коли ціль у центрі знищена | game-logic/lose | 🌱 | 1 | The Last Spell |
 | `+protect-mark` | Мітка, що захищає від руйнівної дії | interface/input | 🌱 | 1 | Picross-варіанти (Picross 3D, Round 2, Mega, Color, Clip) |
 | `+protect-structures` | Захистити споруди (спільний ресурс) | game-logic/lose | 📎 | 1 | Into the Breach |
 | `+protect-target` | Захистити союзну ціль | game-logic/win | 🌱 | 1 | Front Mission |
 | `+protected-cell-improvement` | Поліпшення клітини блокує ворожий ефект | entities/state | 🌱 | 1 | Takenoko (Такеноко) |
 | `+protected-from-cover` | Не можна накривати певне (храм, вежа, ціле поселення) | entities/legality | 📎 | 1 | Taluva (Талува) |
+| `+protected-target` | Заборонена ціль: промінь не має її зачепити | game-logic/constraints | 🌱 | 1 | Logic Bombs |
 | `+provoke-zone` | Рух повз ворога провокує атаку | entities/combat | 📎 | 1 | Mage Knight Board Game |
 | `+proximity-beep` | Звук, що частішає з наближенням загрози | interface/sound | 🌱 | 1 | Gotcha (Atari, 1973) |
 | `+proximity-ring-scoring` | Очки за кільцями відстані до цілі | game-logic/score | 🌱 | 1 | Hues and Cues |
@@ -6201,17 +6658,22 @@
 | `+public-stone-count` | Публічні лічильники прихованих фігур | interface/hud | 🌱 | 1 | Phantom Go |
 | `+public-task-queue` | Спільна черга завдань: N поточних + наступне | game-logic/score | 📎 | 1 | Tash-Kalar: Arena of Legends |
 | `+pull-around-corner` | Тягнення за ріг | entities/legality | 📎 | 1 | Chew Man Fu (Be Ball) |
+| `+pull-chain-toggle` | Привʼязаний обʼєкт не встиг за аватаром — аватар відскакує, обʼєкт перемикає стан | entities/interact | 🥉 | 1 | Pull Chain |
 | `+pull-enemy-to-lane` | Вдарити в сусідній смузі й перетягнути ціль до себе | entities/combat | 🌱 | 1 | Riftforce |
 | `+pull-off-kamikaze` | Pull за край знімає обох | entities/combat | 📎 | 1 | Dynamo chess (Динамо-шахи) |
 | `+pull-order-dependency` | Зняти лише непокритий: порядок за перекриттям | entities/legality | 📎 | 1 | Hook |
+| `+pull-out-edge-goal` | Перемога: витягти обʼєкт за край поля | game-logic/win | 📎 | 1 | Stamp Collecting on Planet Q |
 | `+pull-out-spear` | Висмикнути спис рухом назад | entities/interact | 📎 | 1 | Candle Prick |
+| `+pull-over-head` | Тягнути предмет над собою, коли позаду упор | entities/legality | 📎 | 1 | Hiding Spot |
 | `+pull-to-anchor` | Тіло підтягується до закріпленого кінчика | entities/move | 🥉 | 1 | GRAB-O |
 | `+pull-to-self` | Притягнути ворога до себе | entities/combat | 🌱 | 1 | Chroma Squad |
 | `+pulse-collision-merge` | Злиття променів при збігу фаз | entities/interact | 🥈 | 1 | SOLAS 128 |
 | `+pulse-edge` | Дія на фронті / спаді сигналу | game-logic | 🌱 | 1 | Minecraft — редстоун |
+| `+pulse-generator` | Генератор імпульсів із видимим блокуванням | entities/spawn | 🌱 | 1 | Cadence (Made With Monster Love) |
 | `+pulse-on-beat` | Імпульси променя в такт | entities/combat | 📎 | 1 | SOLAS 128 |
 | `+pump-inflate` | Атака в кілька натискань з відкатом | entities/combat | 🥉 | 1 | Dig Dug |
 | `+punch-knockback-drop` | Удар вибиває здобич і відкидає | entities/combat | 🌱 | 1 | Colt Express |
+| `+purchasable-sensors` | Сенсори бота відкриваються апгрейдами | game-logic/program | 🥉 | 1 | YENDOR |
 | `+pure-run-bonus` | Бонус за забіг без мета-допомоги | progression/meta | 🌱 | 1 | Tactical Nexus |
 | `+purify-portal` | Закрити джерело силою проти HP | entities/combat | 🌱 | 1 | La Pucelle: Tactics |
 | `+push-back-combat` | Юніт відкидає ворога назад смугою | entities/combat | 📎 | 1 | Calculords |
@@ -6239,6 +6701,12 @@
 | `+push-vertical-neighbour` | Зсунути сусіда над/під собою вбік | entities/legality | 🌱 | 1 | Dot Valley |
 | `+push-your-luck-bonus` | Бонус росте, поки ризикуєш | game-logic/score | 🌱 | 1 | Domino Man |
 | `+push-your-luck-dice` | Кинути N кубиків: узяти один або перекинути решту без нього | game-logic | 📎 | 1 | Linie 1 (Streetcar) |
+| `+pushable-checkpoint` | Checkpoint — сутність, яку можна посунути іншими обʼєктами | entities/interact | 🌱 | 1 | N Step Steve (Part 1–2) |
+| `+pushable-exit` | Вихід — рухомий обʼєкт | game-logic/win | 🌱 | 1 | Hat-tricks |
+| `+pushable-fire-source` | Рухоме джерело вогню | entities/interact | 📎 | 1 | The Flames |
+| `+pushable-portal` | Портал — штовхуваний обʼєкт: прохід або поштовх | entities/interact | 🥉 | 1 | Give Up the Ghost: a puzzle checklist |
+| `+pushable-portals` | Портали — рухомі блоки: їх штовхають і обертають | entities/interact | 🥈 | 1 | A Slug's Dream |
+| `+pushable-spawner` | Спавнер — штовхуваний обʼєкт | entities/spawn | 📎 | 1 | Another Clone |
 | `+pushable-walls` | Стіни теж штовхаються | entities/legality | 🌱 | 1 | increpare: мікро-Sokoban-и (Crates move when you move · Pushy-V Pully-H · Muraphilic Monophobic Multiban) |
 | `+pusher-on-phase` | Штовхач, активний у задані фази | entities/interact | 📎 | 1 | RoboRally |
 | `+pusher-relative-gravity` | Штовхнутий падає в низ штовхача | entities/move | 🥉 | 1 | Kiki the Nano Bot |
@@ -6250,6 +6718,7 @@
 | `+puzzle-mode-no-enemies` | Той самий рушій без ворогів як пазл-режим | game-logic/modes | 📎 | 1 | Championship Lode Runner і Lode Runner Legacy |
 | `+puzzle-race` | Перегони на тій самій головоломці | multiplayer | 🥈 | 1 | Tumblestone |
 | `+puzzle-refresh` | Розвʼязані пазли періодично замінюються новими | levels/generation | 🥉 | 1 | Islands of Insight |
+| `+puzzle-replay` | Повторити розвʼязаний пазл з хабу | levels/progression | 🌱 | 1 | Bloxpath |
 | `+puzzle-run` | Забіг: серія пазлів до першої поразки | levels/progression | 🌱 | 1 | Lexilotl: Crossword Puzzle Run |
 | `+puzzle-scripting-api` | Пазл описується скриптом з API | levels/editor | 🥈 | 1 | EXAPUNKS |
 | `+pvp-zones` | PvP дозволено лише в окремих зонах | game-logic/opponent | 🌱 | 1 | Island of Kesmai |
@@ -6306,7 +6775,9 @@
 | `+rail-graph` | Поле — граф колій зі стрілками | field | 🥉 | 1 | Train shunting puzzle (Inglenook Sidings, Timesaver) |
 | `+rail-line-movement` | Рух лінією на будь-яку відстань, з поворотами для спецфігури | entities/move | 🥉 | 1 | Luzhanqi (Лучжаньці, китайські армійські шахи) |
 | `+rail-mode-switch` | Дотик до рейки перемикає модель руху | entities/move | 🥉 | 1 | Shadow Labyrinth |
+| `+rail-only-move` | Обʼєкт рухається лише пазом / рейкою | entities/legality | 📎 | 1 | Bombuzal |
 | `+rail-placement` | Рейки за напрямком руху | entities/move | 📎 | 1 | Dynamine |
+| `+rail-slider` | Фігура їде рейкою, коли поруч сигнал | entities/move | 📎 | 1 | Electrogical (エレクトロジカル) |
 | `+rain-fill` | Дощ додає воду в клітини згори | entities/spawn | 🌱 | 1 | Dig or Die |
 | `+rainbow-set-bonus` | Бонус за повний набір кольорів | game-logic/score | 🌱 | 1 | Cascadia + Calico (Каскадія, Калико) |
 | `+raise-undead` | Ворог біля могили породжує інших | entities/spawn | 📎 | 1 | HyperRogue |
@@ -6325,6 +6796,7 @@
 | `+random-branch-chip` | Випадкове розгалуження з шансом | game-logic/program | 🌱 | 1 | Carnage Heart |
 | `+random-cave-in` | Випадкова подія під час копання шкодить і забирає здобич | entities/state | 📎 | 1 | MinerVGA |
 | `+random-collision-choice` | Кілька виходів зіткнення — вибір випадково / почергово | game-logic | 🌱 | 1 | Lattice gas automaton (ґратковий газ HPP і FHP) |
+| `+random-command-block` | Блок випадкової дії | game-logic/program | 🌱 | 1 | Cubetto |
 | `+random-daily-event` | Раз на день випадкова катастрофа | game-logic/waves | 🌱 | 1 | Dig or Die |
 | `+random-deflector` | Випадковий відхилювач (призма) | entities/interact | 🌱 | 1 | Deflektor (+ Mindbender) |
 | `+random-demand-modules` | Нейтральний споживач з модулями попиту, що зʼявляються випадково | game-logic/economy | 📎 | 1 | Offworld Trading Company |
@@ -6360,6 +6832,7 @@
 | `+random-weapon-crate` | Ящик з випадковою зброєю | entities/interact | 🌱 | 1 | Mine Bombers |
 | `+random-world-variants` | Кілька стартових варіантів одного рівня | levels/generation | 📎 | 1 | Karel the Robot (Reeborg's World) |
 | `+randomized-setup` | Випадкове розміщення предметів і ворогів на старті | levels/generation | 📎 | 1 | Adventure (Atari 2600) |
+| `+randomizer-block` | Блок випадкового вибору | entities/interact | 📎 | 1 | Great Permutator |
 | `+range-bands` | Дальність як смуги short/medium/long | entities/combat | 📎 | 1 | Gladiabots |
 | `+range-blind-spot` | Радіус дії з мінімумом (сліпа зона) | entities/combat | 📎 | 1 | Clash of Clans — розстановка бази на сітці |
 | `+range-broadcast-message` | Повідомлення в радіусі зі скринькою | game-logic/program | 📎 | 1 | FORK BOMB: A Programming Game |
@@ -6415,9 +6888,11 @@
 | `+reaction-attacks` | Вільний удар за геометрію руху (фланг, відступ, зона контролю) | entities/combat | 🥉 | 1 | Sil |
 | `+reaction-card-window` | Фаза реакцій: карти по колу до загального пасу | game-logic/opponent | 📎 | 1 | Top Secret Spies (Heimlich & Co.) |
 | `+reaction-cards` | Хід поза чергою у відповідь на атаку | game-logic/opponent | 🥉 | 1 | Escape from Atlantis |
+| `+reaction-feedback` | Обличчя й репліка персонажа показують стан обмеження | interface/hud | 🌱 | 1 | Is This Seat Taken? |
 | `+reaction-initiative` | Реакція порівнянням ініціатив | entities/combat | 🥉 | 1 | UFO: Enemy Unknown (X-COM: UFO Defense) |
 | `+reaction-table` | Реакції пар елементів з умовами | entities/interact | 📎 | 1 | Sandboxels |
 | `+reactive-cards` | Карти, що спрацьовують з руки на подію | game-logic/opponent | 🥉 | 1 | Card Hunter |
+| `+reactive-portrait` | Портрет героя реагує на стан гри | interface/hud | 🌱 | 1 | Pattern Counter |
 | `+reactor-pipeline-layer` | Мережа машин: вихід однієї — вхід іншої | game-logic/program | 🥈 | 1 | SpaceChem |
 | `+reading-order-tiebreak` | Порядок читання для ходів і рівних варіантів | game-logic | 📎 | 1 | Advent of Code — сіткові пазли (збірка) |
 | `+ready-action` | Підготовлена дія на тригер | game-logic/turns | 📎 | 1 | D&D grid combat (Dungeons & Dragons 5e) |
@@ -6447,11 +6922,13 @@
 | `+recipe-unlock-by-neighbors` | Набір сусідів відкриває властивість | entities/state | 📎 | 1 | Hot Springs Story |
 | `+recoil-jump` | Віддача пострілу рухає стрільця | entities/move | 🥉 | 1 | Gunbrick (Gunbrick: Reloaded) |
 | `+recoil-push` | Віддача: гравець і ящик розлітаються в протилежні боки | entities/interact | 🌱 | 1 | Spacekoban |
+| `+recoil-slide` | Віддача: аватар ковзає назад до упору | entities/move | 📎 | 1 | SSSPICY! |
 | `+recolor-all-switch` | Плита перефарбовує всі джерела кольору | entities/interact | 📎 | 1 | Sutte Hakkun |
 | `+recolor-capture` | Захоплення перефарбуванням групи | entities/combat | 📎 | 1 | Sygo (Сіґо) |
 | `+recolor-guide` | Превʼю наслідків приземлення | interface/hud | 📎 | 1 | Soldam |
 | `+recolor-on-stick` | Прилиплий снаряд перефарбовує сусідів | entities/interact | 🥉 | 1 | Land Maker (Builder's Block) |
 | `+recolor-power` | Павер-ап перефарбовує блоки | entities/interact | 🌱 | 1 | Puzzle Scape |
+| `+record-replay-programming` | Програма = записаний ввід гравця | game-logic/program | 🥉 | 1 | Neon Noodles |
 | `+recruit-companion` | Завербувати істоту в союзники | entities/interact | 📎 | 1 | Infra Arcana (огляд з The Ground Gives Way і Zorbus) |
 | `+recruit-defeated` | Переможений ворог поповнює колекцію | entities/state | 📎 | 1 | Gyromancer |
 | `+recruit-followers` | Вербування за лідером | entities/move | 🌱 | 1 | SimAnt |
@@ -6475,6 +6952,7 @@
 | `+referee-arbiter` | Арбітр відповідає на спроби ходу | game-logic/constraints | 🥈 | 1 | Шахи з твістом правил (Duck, Kung-Fu, Quantum, Kriegspiel/Dark, Alice, Avalanche, Hostage) |
 | `+referee-hidden-combat` | Суддя порівнює приховані ранги, гравцям — лише результат | game-logic/info | 🥉 | 1 | Luzhanqi (Лучжаньці, китайські армійські шахи) |
 | `+reference-replication` | Відтворити еталон точно | game-logic/win | 🌱 | 1 | Replicube |
+| `+reference-schematic` | Еталонна схема поруч | interface/hud | 🌱 | 1 | Hard Chip |
 | `+refill-from-top` | Поповнення поля згори випадковими плитками | entities/spawn | 🌱 | 1 | Rocket Mania! |
 | `+refill-on-exhaustion` | Резервне джерело, коли звичайні вичерпано | entities/spawn | 🌱 | 1 | Guzzler |
 | `+refill-preview` | Шкала показує, скільки поповниться на виході | interface/hud | 🌱 | 1 | Bank Heist |
@@ -6490,6 +6968,7 @@
 | `+regen-unseen-map` | Невидима частина мапи перегенеровується | levels/generation | 🥈 | 1 | Myst (7DRL) |
 | `+regenerating-pickup` | Предмет відроджується, коли гравець далеко | entities/spawn | 🌱 | 1 | ChipWits |
 | `+region-1-to-n` | Регіон розміру k містить 1…k | game-logic/constraints | 🌱 | 1 | Ripple Effect (Hakyuu Kouka) |
+| `+region-area-hover` | Утримати клавішу й навести — підсвітити регіон і показати його площу | interface/hud | 🌱 | 1 | The Artisan of Glimmith |
 | `+region-blackout` | Регіон запечатується в стіну | entities/interact | 🌱 | 1 | Enigmash |
 | `+region-clue` | Регіон: множина клітин + кількість цілей | game-logic/constraints | 📎 | 1 | Bombe |
 | `+region-color-reveal` | Відгук — колір/зона, де стоїть прихований | game-logic/constraints | 🌱 | 1 | Clue: The Great Museum Caper |
@@ -6503,11 +6982,14 @@
 | `+region-labels` | Перемикач номерів регіонів на полі | interface/hud | 🌱 | 1 | Map (Tatham) |
 | `+region-letter-pool` | Регіон з пулом літер/цифр, які треба розкласти | game-logic/constraints | 📎 | 1 | Knotwords |
 | `+region-mine-count` | Регіон із заданою кількістю цілей | game-logic/constraints | 🌱 | 1 | Sudo Sweep |
+| `+region-pair-stitches` | Рівно K звʼязків між кожною парою сусідніх регіонів | game-logic/constraints | 🥉 | 1 | Stitches (Стібки) |
 | `+region-polyomino-shading` | У кожному регіоні — звʼязна фігура заданого розміру | game-logic/constraints | 🌱 | 1 | LITS (Nuruomino) |
 | `+region-quota` | Рівно N обʼєктів у кожній зоні | game-logic/constraints | 🌱 | 1 | Star Battle (Зоряна битва, Two Not Touch) |
 | `+region-runes` | Ефект частини фігури діє лише в певному сегменті поля | entities/interact | 📎 | 1 | Moonsigil Atlas |
+| `+region-shape-clue` | Гліф-поліоміно задає форму свого регіону | game-logic/constraints | 🥉 | 1 | The Artisan of Glimmith |
 | `+region-size-check` | Розмір компонент і одна підказка на компоненту | game-logic/constraints | 📎 | 1 | Nurikabe (Нурікабе, Islands in the Stream) |
 | `+region-split-sink` | Відрізана частина поля зникає з умістом | entities/interact | 🥇 | 1 | Dig Dug II |
+| `+region-symbol-count` | Скільки символів у регіоні | game-logic/constraints | 📎 | 1 | Gridspech |
 | `+region-transfer` | Обʼєкти переходять між вкладеним пазлом і зовнішнім світом | levels/progression | 🥈 | 1 | Toroban |
 | `+region-visit-index` | Номер заходу шляху в область: клітинка N — на N-му візиті | game-logic/constraints | 📎 | 1 | Haisu |
 | `+region-visit-once` | Шлях входить у кожну область рівно раз | game-logic/constraints | 📎 | 1 | Country Road |
@@ -6531,6 +7013,8 @@
 | `+relay-sowing` | Естафетний розсів | entities/state | 📎 | 1 | Bao la Kiswahili (Бао) |
 | `+release-on-reveal` | Відкриття випускає ворога | entities/spawn | 📎 | 1 | Oh Mummy |
 | `+release-rate` | Ручка темпу спавну | entities/spawn | 🌱 | 1 | Lemmings |
+| `+release-threat-on-demand` | Гравець сам випускає загрозу (X), коли готовий | game-logic | 🌱 | 1 | Evil Eye |
+| `+relic-edit` | Редагування значень реліквії | game-logic/economy | 📎 | 1 | Watchword |
 | `+reload-action` | Перезарядка як дія | entities/combat | 🌱 | 1 | Shadowrun Returns |
 | `+reload-from-rig` | Перезарядка лише з певних сіток | entities/state | 📎 | 1 | Escape from Tarkov (inventory) |
 | `+reload-time` | Перезарядка обойми замість скінченних патронів | entities/combat | 🌱 | 1 | Liero |
@@ -6543,8 +7027,10 @@
 | `+remix-generator` | Перегенерувати рівень, зберігши ритм | levels/generation | 🥇 | 1 | Rift of the NecroDancer |
 | `+remix-tree` | Ремікс памʼятає батька | levels/editor | 📎 | 1 | Sandspiel Studio |
 | `+remote-camera` | Дистанційна камера з окремим вʼюпортом | interface/render | 🥉 | 1 | Captive |
+| `+remote-control-block` | Поштовх блока-пульта зсуває всі платформи рівня | entities/interact | 📎 | 1 | Remote Planets |
 | `+remote-cursors` | Курсори інших гравців з іменами | interface/hud | 📎 | 1 | Minesweeper Together |
 | `+remote-deposit` | Здача ресурсу без повернення на базу | game-logic/economy | 🌱 | 1 | Pixel Miner |
+| `+remote-pull` | Притягнути обʼєкт здалеку по лінії | entities/interact | 📎 | 1 | Wizard's Way Out |
 | `+remote-push` | Штовхання здалеку здібністю | entities/interact | 📎 | 1 | RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II) |
 | `+remote-switch-shot` | Кнопка натискається пострілом | entities/interact | 🌱 | 1 | Gunbrick (Gunbrick: Reloaded) |
 | `+removal-refund` | Зняти структуру з частковим поверненням | game-logic/economy | 🌱 | 1 | Terminal (Correlation One) |
@@ -6597,6 +7083,7 @@
 | `+rescue-captive` | Визволити полонених (клітки) | game-logic/win | 🌱 | 1 | Cave Noire |
 | `+rescue-fallen` | Тіло полеглого треба забрати | entities/interact | 📎 | 1 | Dungeon Encounters |
 | `+rescue-followers` | Розбудити й вивести людей | entities/interact | 📎 | 1 | Exit |
+| `+rescue-friends` | Рівень = звільнити персонажа, він поповнює колекцію | levels/progression | 🌱 | 1 | Billy Bumbum: A Cheeky Puzzler |
 | `+rescue-npc` | Врятувати NPC дотиком | entities/interaction | 🌱 | 1 | Robotron: 2084 |
 | `+rescue-password` | Порятунок паролем від іншого гравця | game-logic/save | 🥇 | 1 | Mystery Dungeon (Shiren the Wanderer, Pokémon Mystery Dungeon) |
 | `+rescue-penalty` | Провал повертає на базу й забирає знахідки | game-logic/lose | 🌱 | 1 | Gem Miner 2 |
@@ -6617,6 +7104,7 @@
 | `+reservoir-delay` | Клітина-затримка потоку | entities/interact | 🌱 | 1 | Pipe Mania (Pipe Dream) |
 | `+reset-costs-life` | Рестарт рівня коштує життя | game-logic/lose | 🌱 | 1 | Moai-kun |
 | `+reset-counter` | Лічильник рестартів на екрані | interface/hud | 🌱 | 1 | Lup Salad (Rupupu Cube) |
+| `+reset-overlap-priority` | Хто кого розбиває, коли скидання ставить двох в одну клітину | entities/interact | 📎 | 1 | Forever Wonder Colour |
 | `+reset-persistent-objects` | Частина обʼєктів переживає рестарт | game-logic/history | 🥈 | 1 | Maxwell's puzzling demon |
 | `+reset-switch` | Клітина-скидання рівня | entities/interact | 🌱 | 1 | Pushmo / Pullblox (引ク押ス) + Crashmo |
 | `+reset-to-start` | Клік повертає обʼєкт у стартову клітину | entities/interact | 🌱 | 1 | AutomaticBox |
@@ -6627,10 +7115,10 @@
 | `+reshuffle-delay` | Перетасування колоди займає час ∝ розміру | game-logic/turns | 🌱 | 1 | One Step From Eden |
 | `+reshuffle-remaining` | Перемішати лишки на тих самих місцях | levels/generation | 🌱 | 1 | Mahjong Solitaire (Shanghai, Маджонг-пасьянс) |
 | `+resident-auto-craft` | Жителі виробляють у скриню за типом кімнати | entities/spawn | 📎 | 1 | Dragon Quest Builders (rooms) |
+| `+resim-depth` | Вкладені пересимуляції з глибиною | game-logic/history | 🥈 | 1 | Forever Wonder Colour |
 | `+resizable-board-metric` | Розмір дошки — метрика рішення | game-logic/score | 🌱 | 1 | Stack Machines |
 | `+resize-portal` | Портал змінює розмір того, хто пройшов | entities/interact | 🥈 | 1 | ScaleBox |
 | `+reskin-per-level` | Вигляд перешкод змінюється з рівнем | interface/render | 🌱 | 1 | Targ / Spectar |
-| `+resolution-order` | Впорядкована фаза ворога | game-logic/opponent | 🥉 | 1 | Into the Breach |
 | `+resource-conveyor-feed` | Окремий шар конвеєрів постачання | entities/move | 📎 | 1 | Production Line |
 | `+resource-drain-cell` | Клітина забирає ресурс при проході | entities/interact | 🌱 | 1 | Feed All Monsters |
 | `+resource-from-objects` | Ресурс з обʼєктів поля | entities/cells | 📎 | 1 | Warhammer 40,000: Mechanicus |
@@ -6649,6 +7137,7 @@
 | `+resource-wells` | Дохід від точки за сусідню свою фігуру | game-logic/economy | 🌱 | 1 | Faeria |
 | `+respawn-death-loop` | Відродження на вході й цикл смертей | entities/death | 📎 | 1 | Jet Set Willy |
 | `+respawn-lock` | Респавн заборонено, поки виконано умову (є король) | entities/death | 🌱 | 1 | Hexanaut.io |
+| `+respawn-per-checkpoint` | По аватару на кожен активний чекпойнт | entities/spawn | 🥉 | 1 | 5 Step Steve |
 | `+rest-mode` | Прискорений відпочинок | game-logic/save | 🌱 | 1 | Stoneshard |
 | `+rest-particle` | Нерухома частинка, що бере участь у зіткненнях | entities/state | 🌱 | 1 | Lattice gas automaton (ґратковий газ HPP і FHP) |
 | `+rest-recover` | Відпочинок повертає скидання ціною карти | entities/state | 📎 | 1 | Gloomhaven |
@@ -6689,6 +7178,7 @@
 | `+retrograde-solver` | Ретроградний розвʼязок усієї гри | levels/solvability | 🥇 | 1 | Dōbutsu shōgi (Звіряче шогі, Let's Catch the Lion!) |
 | `+retry-costs-life` | Рестарт рівня коштує життя | game-logic/lose | 🌱 | 1 | SILO 7 |
 | `+retry-menu` | Retry як ресурс | levels/progression | 🌱 | 1 | Puzznic |
+| `+retry-then-halt` | Програма зупиняється після N невдалих спроб руху | game-logic/program | 🌱 | 1 | Piet |
 | `+retry-token` | Жетон повтору зі знімка перед запуском | game-logic/save | 🥉 | 1 | Pushover (Push-Over) |
 | `+retry-wrong-letter` | Хибна літера позначається, клітина приймає нову спробу | game-logic/history | 🌱 | 1 | Keyword (The Washington Post) |
 | `+return-fire` | Відповідний вогонь на постріл | entities/combat | 🌱 | 1 | Phoenix Point |
@@ -6709,9 +7199,11 @@
 | `+reveal-loses` | Відкрив лінію суперника — програв | game-logic/lose | 📎 | 1 | Gobblet (Гоблет) |
 | `+reveal-number-on-correct` | Правильна відповідь відкриває число | game-logic/constraints | 🌱 | 1 | Alien Cartographer |
 | `+reveal-on-lift` | Зняв верхню — відкрив нижню | entities/interact | 🌱 | 1 | Gobblet (Гоблет) |
+| `+reveal-on-traverse` | Прохід зʼявляється після першого проходу з іншого боку | levels/progression | 🌱 | 1 | Croquet Conundrum |
 | `+reveal-order-priority` | Порядок розкриття: лідер першим, далі — порядок дій | game-logic/opponent | 🥉 | 1 | Marvel Snap |
 | `+reveal-scroll` | Предмет: показати/знешкодити всіх одного виду | entities/interact | 📎 | 1 | Dragonsweeper |
 | `+reveal-solution` | Показати розвʼязок ціною балу | game-logic/difficulty | 📎 | 1 | Digits (The New York Times) |
+| `+reveal-terrain-on-pickup` | Предмет відкриває нову ділянку поля | levels/progression | 🌱 | 1 | Snekcross |
 | `+reveal-voids-streak` | Reveal до порогу не зараховує пазл | interface/results | 🌱 | 1 | Apple News+ Quartiles |
 | `+revealed-by-step` | Мапа зʼявляється під кроками | interface/render | 🌱 | 1 | Dungeon Encounters |
 | `+revealed-corners-start` | Старт із відкритими опорними клітинами | levels/generation | 🌱 | 1 | Rock Paper Sweeper |
@@ -6733,6 +7225,7 @@
 | `+reversed-input-zone` | Ліво/право інвертовано для одного актора | entities/move | 🌱 | 1 | Quadrata |
 | `+reversible-step` | Крок назад оберненим правилом, без історії | game-logic/history | 🥉 | 1 | Critters і блокові автомати (Margolus) |
 | `+revert-until-reveal` | Відкат дій до моменту відкриття інформації | game-logic/undo | 🥈 | 1 | Mage Knight Board Game |
+| `+revisit-resets-cell` | Повторний візит скасовує позначку клітини | entities/interact | 🌱 | 1 | Chessarama |
 | `+revive-after-wave` | Полеглий юніт встає після хвилі | entities/death | 🌱 | 1 | Crystal Defenders: Vanguard Storm |
 | `+revive-ally` | Воскресіння союзника | entities/death | 📎 | 1 | Dandy / Dark Chambers |
 | `+revive-at-church` | Воскресіння полеглих за гроші | game-logic/economy | 🌱 | 1 | Shining Force |
@@ -6755,6 +7248,7 @@
 | `+rhythm-only-in-combat` | Ритм-тік лише за присутності ворогів | core/loop | 🌱 | 1 | Cadence of Hyrule: Crypt of the NecroDancer Featuring The Legend of Zelda |
 | `+ricochet-ballistics` | Траєкторія, пробиття, рикошет | entities/combat | 🥇 | 1 | Silent Storm |
 | `+ricochet-shot` | Снаряд відбивається від стін | entities/combat | 📎 | 1 | Combat |
+| `+ride-and-steer-platform` | Аватар веде платформу, на якій стоїть | entities/move | 🥉 | 1 | Loot River |
 | `+ride-falling-piece` | Падаючий керований блок підвозить/штовхає сутність | entities/interact | 🥈 | 1 | Gussun Oyoyo (ぐっすんおよよ) |
 | `+ride-on-bot` | Їхати на іншому боті | entities/move | 📎 | 1 | Mekorama |
 | `+ride-on-tile` | Обʼєкти їдуть разом з рухомою підлогою | entities/move | 📎 | 1 | Magiciban |
@@ -6782,6 +7276,7 @@
 | `+ring-slots-around-grid` | Слоти ворогів по периметру сітки, кожен дивиться на свою лінію | fields/topology | 📎 | 1 | Ghost Stories |
 | `+ring-survival-win` | Програє той, у кого не лишилось шаблону-короля | game-logic/win | 📎 | 1 | Gess |
 | `+ring-turntable` | Кільце стосів, що обертається під точку падіння | entities/move | 🌱 | 1 | Burger Maker |
+| `+rising-block` | Блок піднімається на 1 після проходу | entities/state | 📎 | 1 | The Court of Wanderers |
 | `+rising-field` | Поле підіймається знизу рядами | entities/move | 🌱 | 1 | Gunpey (Гунпей) |
 | `+rising-garbage-row` | Ряд сміття знизу піднімає стос | game-logic/waves | 📎 | 1 | Drop7 |
 | `+rising-hazard` | Смертельна межа наступає | game-logic/lose | 🥉 | 1 | Tomb of the Mask |
@@ -6797,6 +7292,8 @@
 | `+rival-collector` | Ворог збирає ті самі цілі | entities/interact | 📎 | 1 | Crystal Castles |
 | `+rival-spreader` | Суперник з тими самими правилами росту | game-logic/opponent | 🥈 | 1 | Mycelium Heaven |
 | `+river-board` | Ріка посеред дошки змінює ходи фігур | entities/legality | 📎 | 1 | Congo (шахи «Конго») |
+| `+river-drift` | Течія зносить на N клітин, пропуск — дрейф | entities/move | 🥉 | 1 | Лабіринт (паперова гра з ведучим; цифрова Labirinth) |
+| `+river-flow-priority` | Річки з течією, загати й перетин із пріоритетом | entities/interact | 🥈 | 1 | Mistified |
 | `+river-jump` | Стрибок через область, який блокує фігура в ній | entities/move | 📎 | 1 | Jungle (Dou Shou Qi, «Джунглі», звірині шахи) |
 | `+river-split-field` | Поле, поділене смугою, яку фігура не може перетнути | entities/legality | 🌱 | 1 | My City |
 | `+rle-string-sprites` | Спрайти рядком з RLE | interface/render | 📎 | 1 | mine1k |
@@ -6815,6 +7312,7 @@
 | `+roaming-boss` | Бос-переслідувач між рівнями | entities/move | 📎 | 1 | 'One Way Heroics (Mystery Chronicle: One Way Heroics)' |
 | `+robbery-list` | Список чужих рівнів з лічильниками спроб і смертей | levels/bank | 🌱 | 1 | The Castle Doctrine |
 | `+robot-color-tiers` | Тир ворога за кольором | entities/state | 📎 | 1 | Berzerk |
+| `+robot-companion` | Напарник-робот у рівні | entities/move | 📎 | 1 | Spell Slide |
 | `+robot-ecosystem` | Нейтральні роботи з власними завданнями | entities/move | 🥇 | 1 | Cogmind |
 | `+robot-ride-inside` | Аватар усередині сутності; кімната-нутрощі | entities/interact | 🥉 | 1 | Robot Odyssey |
 | `+robot-turn-order` | Вороги ходять у фіксованому порядку після гравця | entities/move | 📎 | 1 | Escape (Tom 7) |
@@ -6826,9 +7324,11 @@
 | `+role-statements` | Розслідування дає заяву ролі (назва + інформація здібності) | game-logic/info | 📎 | 1 | Dupery: A Game of Solo Deduction |
 | `+roll-and-move` | Кидок кубика → до N кроків | entities/move | 🌱 | 1 | Das magische Labyrinth (Чарівний лабіринт) |
 | `+roll-off-rounded` | Скочування з круглих | entities/move | 🥉 | 1 | Boulder Dash |
+| `+roll-par` | Нагорода за кількість ходів, що відкриває рівні | game-logic/score | 🌱 | 1 | Lost in Cheese |
 | `+rolling-ball` | Куля котиться й відбивається до зупинки | entities/move | 📎 | 1 | Mekorama |
 | `+rolling-boulder` | Обʼєкт котиться до першої перешкоди й руйнує її | entities/move | 📎 | 1 | Castle Panic |
 | `+rolling-boulder-chase` | Валун котиться за гравцем | entities/move | 📎 | 1 | Rick Dangerous |
+| `+rolling-box` | Колісний ящик котиться від поштовху й передає рух іншому | entities/move | 📎 | 1 | AmaZoo |
 | `+rolling-log-trap` | Обʼєкт на опорі котиться схилом і давить усіх | entities/move | 📎 | 1 | Do! Run Run |
 | `+rolling-wave` | Хвиля обʼєктів синхронно котиться на гравця | entities/move | 🥉 | 1 | I.Q.: Intelligent Qube (Kurushi) |
 | `+romance-npc` | Місто між забігами: пожертви на будівлі відкривають мінігри й NPC | game-logic/economy | 🥈 | 1 | Azure Dreams |
@@ -6842,6 +7342,7 @@
 | `+room-code` | Кімната за кодом для онлайн-партії | game-logic/opponent | 📎 | 1 | Yamainu no Kan (山犬の勘) |
 | `+room-collapse` | Ключ назовні згортає кімнату | entities/interact | 🥈 | 1 | All the Gold in Fort Locks |
 | `+room-completion-reward` | Усі прорізи зʼєднані → нагорода типу кімнати | game-logic/score | 📎 | 1 | Castles of Mad King Ludwig (Замки божевільного короля Людвіга) |
+| `+room-copy-portal` | Портал у щойно створену копію кімнати | levels/generation | 🥇 | 1 | Give Up the Ghost: a puzzle checklist |
 | `+room-crawl-events` | Підземелля кімнат з подіями | levels/progression | 🥉 | 1 | Warhammer 40,000: Mechanicus |
 | `+room-draft` | Драфт клітини: 1 з 3 планів | levels/generation | 🥉 | 1 | Blue Prince |
 | `+room-effect-no-stack` | Ефекти одного виду не сумуються | entities/state | 🌱 | 1 | Dragon Quest Builders (rooms) |
@@ -6851,17 +7352,20 @@
 | `+room-grading` | Оцінка якості кімнати за обʼєктами | game-logic/score | 📎 | 1 | Prison Architect — шар кімнат і зон |
 | `+room-graph-doors` | Поле-граф кімнат і дверей | entities/legality | 🥈 | 1 | Duskers |
 | `+room-graph-world` | Світ з кімнат-сіток | levels | 🥉 | 1 | Screeps (Screeps World, Screeps Arena) |
+| `+room-grid-world` | Світ — сітка кімнат, перехід через край | levels/progression | 🥉 | 1 | Growmi |
 | `+room-material-upgrade` | Поліпшення всіх будівель разом за матеріалом | entities/state | 🌱 | 1 | Agricola — сітка ферми (Агрікола) |
 | `+room-memory` | Непідкорена кімната скидається при виході | levels/progression | 🥉 | 1 | Deadly Rooms of Death (DROD: King Dugan's Dungeon) |
 | `+room-merge` | Сусідні однакові кімнати зливаються до N | entities/legality | 📎 | 1 | Fallout Shelter |
 | `+room-of-cards` | Кімната з N карт, одна переходить далі | game-logic/waves | 🌱 | 1 | Card dungeons (Dungelot, Card Crawl, Card Thief, Mini Rogue, Scoundrel) |
 | `+room-painting` | Кімната = зафарбовані власні клітини одного типу; сусідні зливаються | entities/state | 🥉 | 1 | Dungeon Keeper |
+| `+room-pipes` | Кімнати сполучені трубами: вихід однієї — вхід наступної | levels/progression | 🌱 | 1 | nuworm |
 | `+room-power-grid` | Живлення звʼязних кімнат з бюджету | game-logic/economy | 🥈 | 1 | Dungeon of the Endless |
 | `+room-recipe-catalog` | Тип кімнати за рецептом з таблиці предметів | entities/state | 📎 | 1 | Dragon Quest Builders (rooms) |
 | `+room-reentry-ban` | Не можна одразу повернутись у кімнату | entities/legality | 🌱 | 1 | Venture |
 | `+room-requirements` | Кімната = регіон із вимогами | game-logic/constraints | 🥉 | 1 | Prison Architect — шар кімнат і зон |
 | `+room-reset` | Скинути лише поточну кімнату | game-logic/history | 📎 | 1 | It 2: They/Them |
 | `+room-reset-on-enter` | Кімната — модель, вхід створює свіжу копію | entities/state | 🥈 | 1 | Recursed |
+| `+room-reset-on-respawn` | Відродження скидає кімнату | levels/progression | 📎 | 1 | 5 Step Steve |
 | `+room-restricted-placement` | Розміщення за типом зони | entities/legality | 📎 | 1 | Happy Home (Щасливий дім) |
 | `+room-role-scoring` | Роль кімнати = найбільший бал за вмістом | game-logic | 🌱 | 1 | RimWorld — шар кімнат і температури |
 | `+room-rotate` | Поворот секції поля разом з аватаром і вмістом | entities/state | 🥉 | 1 | HAMSTERMIND |
@@ -6874,14 +7378,17 @@
 | `+room-type-adjacency-score` | Очки за суміжні типи кімнат | game-logic/score | 📎 | 1 | Castles of Mad King Ludwig (Замки божевільного короля Людвіга) |
 | `+room-zone-entry` | Кімната-зона: вхід через двері зупиняє рух | entities/legality | 📎 | 1 | Cluedo (Clue; «Клуедо») |
 | `+rope-climb-release` | Мотузка: лізти, відпустити — падіння | entities/move | 🌱 | 1 | Spelunker |
+| `+rope-slide` | Транспорт в один бік, одна сутність за раз | entities/move | 🌱 | 1 | 3D Lemmings |
 | `+rope-swing` | Мотузка-маятник | entities/move | 🥉 | 1 | Jet Set Willy |
 | `+rope-throw` | Мотузка за ресурс як нова вертикаль | entities/move | 📎 | 1 | Spelunky |
+| `+roquet-charge` | Воротця заряджають кулі; удар по зарядженій — постріли й підкладання | entities/interact | 📎 | 1 | Croquet Conundrum |
 | `+roster-league` | Ліга з персистентним ростером | levels/progression | 🥈 | 1 | Blood Bowl |
 | `+rotary-junction` | Обертне перехрестя/колесо перемикає звʼязки | entities/state | 📎 | 1 | Hook |
 | `+rotary-spinner-input` | Крутильна ручка: дельта кута → крок | interface/input | 🌱 | 1 | Tempest |
 | `+rotatable-control` | Поворот кнопки-напрямку змінює дозволений рух | entities/state | 🌱 | 1 | One More Button |
 | `+rotate-2x2` | Обертання блоку 2×2 | interface/input | 📎 | 1 | Bejeweled (1–3, Twist) |
 | `+rotate-block-2x2` | Обертання блоку 2×2 плиток | entities/move | 📎 | 1 | Slider |
+| `+rotate-by-push` | Поштовх у край довгого блока повертає його | entities/move | 🥉 | 1 | A Slug's Dream |
 | `+rotate-costs-action` | Поворот фігури — дія за ресурс | entities/move | 🌱 | 1 | The Eye of Judgment |
 | `+rotate-field-not-piece` | Гравець обертає поле, а не фігуру | entities/move | 🌱 | 1 | Hextris (Гекстріс) |
 | `+rotate-lock` | Фігура з замком не обертається | entities/legality | 🌱 | 1 | inbento |
@@ -6927,6 +7434,7 @@
 | `+round-stamp` | Позначка раунду — фіксація ходу | game-logic/history | 🌱 | 1 | Railroad Ink |
 | `+round-track-leftovers` | Залишки раунду на трек раундів | game-logic/economy | 🌱 | 1 | Sagrada (Саграда) |
 | `+round-trip-race` | Туди й назад: перегони з розворотом на краю | game-logic/win | 🌱 | 1 | Squadro |
+| `+round-trophies` | Трофеї за пройдені раунди 3 / 6 / 9 | levels/progression | 🌱 | 1 | Beyond Words |
 | `+round-win-track` | Перемога за кількістю виграних раундів | game-logic/win | 🌱 | 1 | Dreamblade |
 | `+round-wins-match` | Матч до N виграних раундів | game-logic/win | 🌱 | 1 | Pac-Man Battle Royale |
 | `+roundabout-chaser` | Ворог іде обхідним маршрутом | entities/move | 📎 | 1 | Door Door |
@@ -6947,6 +7455,7 @@
 | `+row-col-clue-locate` | Дві підказки — рядок і стовпець — дають клітину | levels/generation | 📎 | 1 | Forbidden Desert |
 | `+row-col-complete-scoring` | Очки за повні ряди/стовпці | game-logic/score | 🌱 | 1 | Cartographers (Картографи) |
 | `+row-col-insert` | Зсув ряду/стовпця плиток-коридорів з виходом за край (Labyrinth) | entities/move | 🌱 | 1 | SlideMaze |
+| `+row-col-placement` | Класти лише в заданий рядок/стовпець | entities/legality | 🌱 | 1 | TeenyShire |
 | `+row-col-region-placement` | Плитка лягає лише у свій рядок/стовпець/регіон | entities/legality | 🌱 | 1 | Uptown (Blockers!) |
 | `+row-col-shift-letters` | Свайп зсуває ряд/стовпець літер | interface/input | 🌱 | 1 | Gridwordy |
 | `+row-col-slide-wrap` | Хід — зсув рядка/стовпця з загортанням | entities/move | 🌱 | 1 | Chuzzle |
@@ -6998,6 +7507,7 @@
 | `+rules-on-field` | Правила складені з символів поля й перечитуються | game-logic/program | 🥈 | 1 | Markov Alg |
 | `+rules-panel` | Панель правил поруч з полем | interface/hud | 🌱 | 1 | Sudokuvania: Digits of Despair |
 | `+rules-reminder` | Нагадування правил на недозволений хід | interface/hud | 🌱 | 1 | QBillion (Q Billion) |
+| `+rules-reveal-at-end` | Розкриття таємних правил після партії | interface/menus | 🌱 | 1 | Penultima (Пенультима) |
 | `+rules-without-text` | Правила вчать рівні, без тексту | interface/onboarding | 🥉 | 1 | klocki |
 | `+ruleset-swap` | Той самий рівень за іншим набором правил | game-logic/constraints | 🥈 | 1 | Sudoku Mansion |
 | `+ruleset-toggle` | Плитка міняє набір правил регіону | entities/interact | 🥉 | 1 | Enigmash |
@@ -7014,7 +7524,9 @@
 | `+run-rating` | Словесна оцінка забігу | interface/results | 🌱 | 1 | TrapSweeper |
 | `+run-relics` | Реліквії забігу | game-logic/economy | 🥉 | 1 | Isle of Arrows |
 | `+run-relics-on-board` | Реліквії-тотеми лежать на полі й можуть рухатись | entities/state | 📎 | 1 | Maze Keeper |
+| `+run-setup-deck` | Колода забігу з лімітом очок | game-logic/economy | 📎 | 1 | Feed the Scorchpot |
 | `+run-shape-scoring` | Ланцюг, де кожен має ≤2 однакових сусідів | game-logic/score | 🥉 | 1 | Cascadia + Calico (Каскадія, Калико) |
+| `+run-to-cursor` | Бот сам іде до клітини під курсором | interface/input | 📎 | 1 | Neon Noodles |
 | `+run-until-blocked` | Біг до першої перешкоди | entities/move | 🌱 | 1 | Achronal Dungeon |
 | `+rune-crafting` | Заклинання з набору знайдених рун, руни витрачаються | entities/state | 📎 | 1 | Harmless7DRL |
 | `+rune-gate-color-key` | Ворота пропускають рух лише своєї стихії | entities/interact | 🌱 | 1 | Mechs vs. Minions |
@@ -7075,12 +7587,15 @@
 | `+save-delete-on-load` | Сейв видаляється при завантаженні | game-logic/save | 🌱 | 1 | Infra Arcana (огляд з The Ground Gives Way і Zorbus) |
 | `+save-migration` | Перенесення збереження в нову версію рівня | game-logic/save | 🥈 | 1 | Sudokuvania: Digits of Despair |
 | `+saved-action-points` | Невитрачені очки дій переходять на наступний хід (до ліміту) | game-logic/opponent | 🌱 | 1 | Flash Point: Fire Rescue |
+| `+scale-locked-notes` | Плитки самі беруть ноти з гами | interface/sound | 📎 | 1 | Cadence (Made With Monster Love) |
 | `+scale-tug-of-war` | Шкала перетягування | game-logic/win | 🌱 | 1 | Inscryption (Act 1) |
 | `+scan-charges` | Безпечний погляд із зарядами, що поповнюються між рівнями | game-logic/economy | 🌱 | 1 | Cargo Quest |
 | `+scan-order` | Порядок обробки клітин за тік | code/architecture | 🥉 | 1 | Boulder Dash |
 | `+scare-away` | Новий блок поруч — автомат розвертається й тікає | entities/move | 📎 | 1 | Gussun Oyoyo (ぐっすんおよよ) |
 | `+scare-or-kill` | Друга шкала (мораль): ворог тікає на нулі, окрема нагорода | entities/state | 📎 | 1 | Legend of Keepers |
+| `+scared-of-heights` | Аватар не сходить з уступу вниз | entities/legality | 🌱 | 1 | Magnet Block |
 | `+scatter-chase-schedule` | Розклад режимів ворогів | entities/state | 🥉 | 1 | Pac-Man (Пекмен) і Ms. Pac-Man |
+| `+scatter-tiles` | Розкидати особливі плитки на нову сітку | levels/generation | 🌱 | 1 | Cursed Words |
 | `+scenario-goals` | Сценарій = поріг очок + обмеження | levels/bank | 📎 | 1 | Cascadia + Calico (Каскадія, Калико) |
 | `+scenario-level-scaling` | Рівень сценарію від рівня партії | game-logic/difficulty | 🌱 | 1 | Gloomhaven |
 | `+scenario-timed` | Сценарій з метою на час | game-logic | 🌱 | 1 | SimCity (1989) / Micropolis |
@@ -7091,6 +7606,7 @@
 | `+score-as-currency` | Очки як валюта | game-logic/economy | 📎 | 1 | Marble Drop |
 | `+score-as-lives` | Очки як життя: штраф за смерть, <0 — кінець | game-logic/lose | 📎 | 1 | Kula World (Roll Away, KulaQuest) |
 | `+score-attack-timer` | Забіг на фіксований час | game-logic/lose | 🌱 | 1 | Pac-Man Championship Edition / DX (Пекмен: чемпіонське видання) |
+| `+score-board-at-round-end` | Рахунок усієї дошки в кінці раунду | game-logic/score | 🥉 | 1 | Watchword |
 | `+score-cap-progress` | Стеля очок дає мета-прогрес | game-logic/score | 🌱 | 1 | My City |
 | `+score-decay` | Рахунок тане з часом | game-logic/score | 🌱 | 1 | Minesweeper Infinite |
 | `+score-drain` | Рахунок тане, доки не діяти | game-logic/score | 🌱 | 1 | Drelbs |
@@ -7101,7 +7617,9 @@
 | `+score-field-move` | Крок за оцінкою клітин | entities/move | 🥈 | 1 | Deadly Rooms of Death (DROD: King Dugan's Dungeon) |
 | `+score-into-goal` | Завести мʼяч у ворота суперника; у свої — поразка | game-logic/win | 🌱 | 1 | Paper soccer (Футбол на папері) |
 | `+score-modes` | Кілька режимів оцінки розвʼязку | game-logic/score | 📎 | 1 | ComPressure |
+| `+score-multiplier-stack` | Очки = база × кілька незалежних множників | game-logic/score | 📎 | 1 | Feed the Scorchpot |
 | `+score-preview` | Превʼю очок до ходу | interface/hud | 📎 | 1 | Islanders |
+| `+score-refills-supply` | Очки поповнюють запас — гра, доки рахуєш | game-logic/win | 📎 | 1 | Beacon Patrol |
 | `+score-threshold-descent` | Спуск лише після порогу очок | levels/progression | 🌱 | 1 | ENYO |
 | `+score-track-bump` | Зайнята клітина треку → наступна | game-logic/score | 🌱 | 1 | Torres |
 | `+score-verification-code` | Код-підтвердження рекорду | game-logic/score | 📎 | 1 | Splat! |
@@ -7113,6 +7631,7 @@
 | `+scramble-by-moves` | Перемішування N ходами від розвʼязку | levels/generation | 📎 | 1 | Sliding-tile permutation puzzles (пʼятнашки й родичі) |
 | `+scramble-solution-rotations` | Генерація: розвʼязок → випадкові повороти | levels/generation | 🥉 | 1 | Plumber / Pipes / Water Connect (мобільний жанр) |
 | `+scrap-refund` | Розібрати юніт — частина вартості назад | game-logic/economy | 🌱 | 1 | Mech Armada |
+| `+screen-anchored` | Обʼєкт привʼязаний до екрана, прокрутка його не зсуває | entities/move | 🌱 | 1 | A Man Walks Into A Scrollbar |
 | `+screen-bomb` | Бонус знищує всіх ворогів на екрані | entities/combat | 🌱 | 1 | Battle City (Танчики) і Tank Battalion |
 | `+screen-capture` | Взяття через екран | entities/combat | 📎 | 1 | Xiangqi (Сянці, китайські шахи) |
 | `+screen-clear-pickup` | Предмет очищає поле від ворогів | entities/interact | 🌱 | 1 | Anteater (Мурахоїд) |
@@ -7140,6 +7659,7 @@
 | `+season-crop-rule` | Сезон дозволяє/забороняє культуру | game-logic | 🌱 | 1 | Harvest Moon (SNES) |
 | `+season-kill` | Зміна сезону вбиває | game-logic | 🌱 | 1 | Stardew Valley — фермерська сітка |
 | `+season-quota-lose` | Квота за сезон, інакше програш | game-logic/lose | 🌱 | 1 | Chroma Squad |
+| `+seasonal-event-levels` | Сезонні рівні на обмежений час | levels/bank | 📎 | 1 | Chronescher |
 | `+seasonal-flood` | Клітини міняють тип за календарем | entities/state | 📎 | 1 | Pharaoh |
 | `+seasonal-modifier` | Значення тайла залежить від сезону/часу доби | entities/state | 🌱 | 1 | Hot Springs Story |
 | `+seasonal-ranking` | Рейтинг із сезонами (місяць) | game-logic/score | 🥉 | 1 | 10key Survival |
@@ -7209,8 +7729,10 @@
 | `+selective-permeable-tile` | Клітина-фільтр: газ/рідина/ходьба | entities/legality | 📎 | 1 | Oxygen Not Included — клітинна фізика (гази, рідини, тепло) |
 | `+self-built-level` | Гравець будує рівень, який потім розвʼязує | levels/generation | 🥉 | 1 | Ice path |
 | `+self-collision` | Зіткнення з власним тілом | entities/death | 🌱 | 1 | Snake (Змійка) / Nibbles / Nokia Snake |
+| `+self-confirming-solutions` | Розвʼязок без перевірки грою | game-logic/win | 🌱 | 1 | 0PLAYER |
 | `+self-copy` | Аватар копіюється разом із ділянкою | entities/spawn | 🥉 | 1 | RE:COPY |
 | `+self-cost-ability` | Здібність коштує власного HP | entities/combat | 🌱 | 1 | Spybot: The Nightfall Incident (Lego Spybotics) |
+| `+self-cross-bridge` | Клітина, де тіло може перетнути себе | entities/legality | 📎 | 1 | Growmi |
 | `+self-crossing-path` | Лінія може перетинати себе | interface/input | 🌱 | 1 | Rytmos |
 | `+self-crowding` | Кожна дія додає перешкоду, мета — встигнути до замурування | game-logic/lose | 🌱 | 1 | Watch Your Step (Aaron Steed) |
 | `+self-damage-blast` | Власний вибух шкодить гравцеві | entities/combat | 🌱 | 1 | Chack'n Pop |
@@ -7223,6 +7745,7 @@
 | `+self-organised-storage` | Гравець сам задає порядок, гра перевіряє швидкістю | game-logic | 🥈 | 1 | Wilmot's Warehouse |
 | `+self-play-balance` | Баланс сторін самогрою AI | game-logic/opponent | 🥇 | 1 | Chess with Different Armies (шахи різних армій, Betza) |
 | `+self-pricing-auction` | Продавець сам ставить ціну, покупець платить продавцю, некуплене викуповує власник | game-logic/economy | 📎 | 1 | Isle of Skye: From Chieftain to King (Острів Скай) |
+| `+self-propelled-block` | Обʼєкт сам їде у свій бік, доки попереду порожньо | entities/move | 📎 | 1 | Golden Arrow |
 | `+self-recursion-downie` | Дизайн вкладає сам себе | game-logic/program | 🥇 | 1 | Infinite Turtles |
 | `+self-referential-clues` | Вписані гравцем значення самі є підказками й рахують одне одного | game-logic/constraints | 📎 | 1 | Sukoro (数コロ) |
 | `+self-relocate-attack` | Юніт переходить у іншу смугу й бʼє там | entities/move | 🌱 | 1 | Riftforce |
@@ -7259,7 +7782,10 @@
 | `+sequence-match-combo` | Збіг з послідовністю-ціллю нарощує комбо | game-logic/score | 🌱 | 1 | CodinGame Summer Challenge 2024: Olymbits |
 | `+sequence-overlap` | Перекриття цільових послідовностей у буфері | game-logic/win | 🥉 | 1 | Cyberpunk 2077 — Breach Protocol |
 | `+sequence-reproduce` | Відтворити почуту послідовність | game-logic/win | 📎 | 1 | Alephant |
+| `+sequence-reverse-tile` | Клітина реверсує порядок набору | game-logic/constraints | 📎 | 1 | Stig |
+| `+sequential-actor-order` | Дії кількох акторів у ході — по черзі за віком | entities/move | 📎 | 1 | Another Clone |
 | `+sequential-offer-distribution` | Відкрита карта по черзі власникам позначок: беру / пас | game-logic/economy | 📎 | 1 | Tobago |
+| `+sequential-rooms` | Кілька кімнат на одному екрані, активна — по черзі | levels/progression | 🌱 | 1 | micro6an |
 | `+series-average-score` | Серія запусків і середній рахунок | game-logic/score | 🌱 | 1 | ChipWits |
 | `+server-config-unlimited-fuel` | Налаштування сервера знімає ліміт палива | game-logic/difficulty | 🌱 | 1 | ComputerCraft (turtles) |
 | `+server-rules-config` | Сервер задає правила партії | game-logic/opponent | 📎 | 1 | TetriNET |
@@ -7274,6 +7800,7 @@
 | `+set-completion-reward` | Нагорода за серію рівнів: життя або очки | game-logic/score | 🌱 | 1 | Oh Mummy |
 | `+set-membership-clue` | Підказка задає множину: просте, квадрат, паліндром | game-logic/constraints | 🌱 | 1 | Cross-figure (Crossnumber) |
 | `+set-size-score-table` | Таблиця очок за розмір групи | game-logic/score | 🌱 | 1 | Dragon Castle |
+| `+set-triple` | Трійка: кожна ознака однакова або вся різна | game-logic/constraints | 📎 | 1 | Reliquia Park |
 | `+settle-then-merge` | Каскад падіння і злиття до стабільного стану | entities/move | 🥉 | 1 | Jelly no Puzzle (ゼリーのパズル) |
 | `+settlement-groups` | Групи-поселення з квотою типів (рівно 1 ядро) | game-logic/constraints | 🥉 | 1 | Alien Cartographer |
 | `+settlement-timeline` | Таймлайн подій кампанії | levels/progression | 🥉 | 1 | Kingdom Death: Monster |
@@ -7281,6 +7808,7 @@
 | `+setup-constraints` | Випадкова розстановка з обмеженнями | levels/generation | 📎 | 1 | Capablanca chess (шахи Капабланки) і сімʼя 10×8 |
 | `+setup-symmetry-choice` | Вибір дзеркальних варіантів розстановки перед партією | levels/generation | 🌱 | 1 | Baroque chess / Ultima (Бароккові шахи) |
 | `+setup-zone-placement` | Розстановка у своїй зоні перед грою | entities/legality | 📎 | 1 | Stratego (Стратего) |
+| `+severed-hand-box` | Відрізана частина стає обʼєктом-ящиком | entities/interact | 📎 | 1 | Handshakes |
 | `+shadow-casting` | Тінь від обʼєктів за напрямком світла | entities/state | 🥉 | 1 | Felix the Reaper |
 | `+shadow-reveal` | Тінь видає позицію поза лінією огляду | interface/render | 🥉 | 1 | Hard West |
 | `+shadow-walk` | Ходити лише по тіні | entities/legality | 🥉 | 1 | Felix the Reaper |
@@ -7297,10 +7825,12 @@
 | `+shape-shifting-body` | Тіло змінює форму між станами | entities/state | 🥉 | 1 | Kine |
 | `+shape-stack-height` | Висота стосу залежить від форм елементів | entities/legality | 📎 | 1 | Hatris |
 | `+shape-summon-ally` | Фігура з особливих плиток викликає союзника | entities/spawn | 📎 | 1 | The World Next Door |
+| `+shape-toggle-tile` | Клітина міняє форму обʼєкта: крок ↔ котіння | entities/state | 🥉 | 1 | Stig |
 | `+shape-touch-match` | Збіг за формою з правилом дотику | entities/interact | 🥉 | 1 | Tetrisphere |
 | `+shaped-board` | Поле довільної форми-маски | levels/format | 🌱 | 1 | Minesweeper у вимірах: 4D Minesweeper, Tilesweeper, Timesweeper |
 | `+shaped-grid` | Фігурна сітка за обрисом | levels/format | 📎 | 1 | Diagramless crossword (Кросворд без сітки) |
 | `+shaped-items` | Предмети-фігури в сітці інвентаря | entities/state | 📎 | 1 | Backpack Hero |
+| `+shapeshift-form` | Форма гравця змінює дозволені дії | entities/state | 📎 | 1 | Bee Magic |
 | `+share-result` | Поширення результату емодзі-сіткою | interface/results | 🌱 | 1 | Wordle |
 | `+shared-activation` | Новий тайл будить сусідніх робітників усіх гравців | game-logic/opponent | 🥉 | 1 | Cacao (Какао) |
 | `+shared-bank` | Сховище, спільне для всіх персонажів | game-logic/save | 🌱 | 1 | Tangledeep |
@@ -7320,6 +7850,7 @@
 | `+shared-goal` | Спільні ворота двох гравців | game-logic/score | 🌱 | 1 | Tsuro (+ Indigo) |
 | `+shared-hp-duo` | Спільні HP і ресурс пари | game-logic/opponent | 🥉 | 1 | Dota Underlords |
 | `+shared-info-rival-hunters` | Мисливці-суперники бачать відгуки одне одного | game-logic/players | 🌱 | 1 | Code Name: Sector |
+| `+shared-keyboard-coop` | Кооп на одній клавіатурі: кожен бере свій аватар | game-logic/opponent | 🌱 | 1 | Handshakes |
 | `+shared-keyboard-multiplayer` | Багато гравців на одній клавіатурі | interface/input | 📎 | 1 | Achtung, die Kurve! (Увага, поворот!) |
 | `+shared-legend-pool` | Спільна колода сильних карт для всіх | game-logic/economy | 🌱 | 1 | Tash-Kalar: Arena of Legends |
 | `+shared-letter-rack` | Обом гравцям ті самі плитки | entities/state | 🌱 | 1 | Quarrel |
@@ -7362,6 +7893,7 @@
 | `+shield-block` | Обʼєкт перекриває промінь | entities/combat | 📎 | 1 | BoxBoy! (ハコボーイ!) |
 | `+shield-blocks-actions` | Щит знерухомлює власника | entities/state | 🌱 | 1 | Monster Max |
 | `+shield-break-pierce` | Пробиття / пронизування щита | entities/combat | 📎 | 1 | Sdorica |
+| `+shield-by-box` | Обʼєкт на лінії вогню гине замість гравця | entities/combat | 🌱 | 1 | Super Sokobot |
 | `+shield-facing-block` | Щит блокує загрозу лише з боку погляду | entities/combat | 📎 | 1 | The Tower of Druaga |
 | `+shield-layer` | Щит поверх HP | entities/combat | 📎 | 1 | Defense Grid: The Awakening |
 | `+shield-regen-delay` | Щит відновлюється після паузи без шкоди | entities/state | 📎 | 1 | Gladiabots |
@@ -7394,10 +7926,13 @@
 | `+shop-survey` | Опитування магазину змінює асортимент | game-logic/economy | 📎 | 1 | La Pucelle: Tactics |
 | `+shopkeeper-aggro` | Нейтрал стає ворогом на весь забіг | entities/state | 📎 | 1 | Spelunky |
 | `+shopkeeper-shop` | Крамниця на мапі з крамарем-охоронцем | game-logic/economy | 🥈 | 1 | NetHack |
+| `+short-circuit-error` | Зіткнення 0 і 1 — стан помилки | game-logic/constraints | 📎 | 1 | Hard Chip |
+| `+short-hit-terrain` | З клітини-пастки удар лише на 1 клітину | entities/interact | 🌱 | 1 | Shall We Golf? (みんなでGOLF！) |
 | `+short-spray` | Короткий спрей перед собою | entities/combat | 🌱 | 1 | Binary Land |
 | `+shorter-is-faster` | Швидкість залежить від довжини | entities/state | 📎 | 1 | Jungler |
 | `+shortest-solution-board` | Рекорд найкоротшої програми | game-logic/score | 🌱 | 1 | RoboZZle |
 | `+shot-becomes-block` | Снаряд перетворюється на блок там, де зупинився | entities/spawn | 📎 | 1 | Magicube |
+| `+shot-economy` | Бюджет ударів із поповненням | entities/legality | 🥉 | 1 | Croquet Conundrum |
 | `+shot-feedback` | Постріл з відгуком | game-logic/opponent | 🌱 | 1 | Battleship (Морський бій) |
 | `+shot-knockback` | Постріл відштовхує ціль | entities/combat | 🌱 | 1 | Robotron: 2084 |
 | `+shot-leaves-obstacle` | Збитий ворог лишає перешкоду | entities/death | 🌱 | 1 | Centipede (Багатоніжка) |
@@ -7413,6 +7948,7 @@
 | `+shredder-sink` | Клітина-злив знищує предмет | entities/interact | 🌱 | 1 | 7 Billion Humans |
 | `+shrine-upgrade` | Клітина, що модифікує дію з тегом | entities/interact | 📎 | 1 | Rift Wizard |
 | `+shrink-to-death` | Скорочення в пастці | entities/state | 📎 | 1 | Deadly Rooms of Death (DROD: King Dugan's Dungeon) |
+| `+shrink-to-head` | Стиснути тіло до голови | entities/move | 📎 | 1 | Growmi |
 | `+shrinking-field` | Поле зменшується в ході гри | levels | 📎 | 1 | CodinGame: Keep Off the Grass (Fall Challenge 2022) |
 | `+shrinking-hazard-zone` | Зона безпеки звужується з випадкової сторони | game-logic/waves | 📎 | 1 | Battlesnake |
 | `+shrinking-match-window` | Після збігу поріг знижується у вікні часу | game-logic/score | 🥉 | 1 | Pokémon Trozei! (Pokémon Link!) |
@@ -7427,8 +7963,12 @@
 | `+shuffled-action-meaning` | Значення дій перемішується щоходу | game-logic/opponent | 📎 | 1 | CodinGame Summer Challenge 2024: Olymbits |
 | `+shutter-door` | Двері відкриваються умовою кімнати | game-logic/win | 🥉 | 1 | RPG dungeon puzzle rooms (Pokémon, Zelda, Golden Sun, Lufia II) |
 | `+side-attack-factor` | Множник шкоди за напрямком удару | entities/combat | 📎 | 1 | Liquid War |
+| `+side-claw-carry` | Хапання вантажу клешнею збоку: аватар і вантаж рухаються разом | entities/interact | 🥉 | 1 | BarrelBots |
+| `+side-cling` | Середній сегмент чіпляється за опору збоку | entities/move | 🌱 | 1 | Woodworm |
+| `+side-puzzles` | Бічні необовʼязкові пазли, складніші за основні | levels/progression | 🌱 | 1 | Remote Planets |
 | `+side-quest-giver` | Обʼєкт видає побічний квест із шаблонів | game-logic/win | 📎 | 1 | Dungeons of Dredmor |
 | `+side-swap-match` | Матч з обміном сторін | players | 🌱 | 1 | Hnefatafl (Тафл, «королівська дошка») |
+| `+side-turn` | Бічний поворот: розворот на 90° із заїздом у сусідню клітину | entities/move | 📎 | 1 | Park It! |
 | `+sideload` | Злиття збоку / автоповорот | entities/move | 🥉 | 1 | Factorio — клітинна логістика (конвеєри, маніпулятори, мережі) |
 | `+sideways-gravity-level` | Рівень з гравітацією лише для гравця | levels/progression | 📎 | 1 | Kroz |
 | `+sideways-play` | Будь-яка карта боком = 1 будь-чого | game-logic/economy | 🌱 | 1 | Mage Knight Board Game |
@@ -7437,6 +7977,7 @@
 | `+sight-count-height` | Сила постановки = кількість своїх, що бачать клітину | entities/legality | 📎 | 1 | Tumbleweed |
 | `+sight-line-ambush` | Ворог помічає на лінії зору й підходить | entities/combat | 🌱 | 1 | Pokémon overworld puzzles (Gen I–II, лід, валуни Strength, спінери, телепорти) |
 | `+sight-line-reveal` | Побачив по лінії без перешкод — прихована сутність виходить на поле | entities/interact | 📎 | 1 | Clue: The Great Museum Caper |
+| `+sight-lure` | Сутність, що бачить приманку по прямій, рухається до неї до упору | entities/move | 🥉 | 1 | Pull Chain |
 | `+sight-penalty` | Обʼєкт у полі зору агента змінює його стан | entities/state | 🥉 | 1 | Parkitect |
 | `+sign-router` | Маршрутизація за знаком числа | game-logic/program | 🌱 | 1 | Prime Mover |
 | `+signal-channels` | Перемикачі й цілі звʼязані номером каналу | entities/interact | 🥉 | 1 | Levelhead |
@@ -7444,6 +7985,7 @@
 | `+signal-decay` | Сигнал, що слабне з відстанню | game-logic | 📎 | 1 | Minecraft — редстоун |
 | `+signal-gate-library` | Бібліотека вентилів-патернів з тестами | levels/bank | 📎 | 1 | Wireworld |
 | `+signal-lock` | Засувка: бічний сигнал заморожує вихід | game-logic | 📎 | 1 | Minecraft — редстоун |
+| `+signal-matrix` | Матриця керування: рядки-сигнали × стовпчики-деталі | game-logic/program | 🥉 | 1 | U.V.S. Nirmana |
 | `+signal-row-match` | Сигнальний ряд під полем зі зразком | game-logic/score | 🥉 | 1 | Magical Tetris Challenge |
 | `+signal-vector-bus` | Сигнал — вектор цілих по каналах, відправники сумуються | game-logic/program | 🥉 | 1 | Factorio — circuit network |
 | `+signal-visualization` | Стан дротів кольором | interface/graphics | 📎 | 1 | Robot Odyssey |
@@ -7473,6 +8015,7 @@
 | `+sin-quota-penalty` | Квота оверкілів, недобір — сильний ворог далі | game-logic/score | 🥉 | 1 | Valkyrie Profile: Covenant of the Plume |
 | `+single-block-per-turn` | Запис за хід — одна звʼязна група в одному блоці | entities/legality | 📎 | 1 | Encore! (Noch mal!) |
 | `+single-capture-limit` | Захоплення лише при рівно N фігурах усередині | entities/combat | 📎 | 1 | Cathedral (Собор) |
+| `+single-chain-clear` | Очистити поле одним ланцюгом | game-logic/win | 📎 | 1 | Bomb Club Deluxe |
 | `+single-consumable-slot` | Один слот: використати / залишити / продати | entities/state | 🌱 | 1 | Sproggiwood |
 | `+single-die-roll` | Хід — кидок одного кубика | game-logic/random | 🌱 | 1 | Knucklebones (Cult of the Lamb) |
 | `+single-interrupt` | Одне переривання програми за спробу зі штрафом | game-logic/program | 📎 | 1 | Deadhand |
@@ -7483,6 +8026,7 @@
 | `+single-source-pile` | Велика купа в одній клітині → фрактал | levels/generation | 🥈 | 1 | Abelian sandpile model (модель піщаної купи Бака–Тана–Візенфельда) |
 | `+single-stat-power` | Одна характеристика замість HP/ATK/DEF | entities/state | 🌱 | 1 | Towers of Scale |
 | `+single-tile-hole-rule` | Однокліткову дірку заповнювати лише виграшно | entities/legality | 📎 | 1 | Palago |
+| `+single-use-patterns` | Кожен шаблон — один раз | game-logic/economy | 🌱 | 1 | Droplets |
 | `+single-vs-area` | Найближчий проти всіх у дальності | entities/combat | 🌱 | 1 | The Battle Cats |
 | `+single-weapon-slot` | Нова зброя замінює стару | entities/state | 🌱 | 1 | SlideMaze |
 | `+sink-count-shrink` | Менше приймачів з кожним етапом | game-logic/difficulty | 🌱 | 1 | Gorby no Pipeline Daisakusen (Gorby's Pipeline) |
@@ -7497,6 +8041,7 @@
 | `+skeleton-fill` | Вписати всі елементи списку в скелет за довжинами й перетинами | game-logic/constraints | 🌱 | 1 | Fill-In (Kriss Kross, Word Fit) |
 | `+skewer-carry` | Наколоти обʼєкт і нести | entities/interact | 🥉 | 1 | Stephen's Sausage Roll |
 | `+skewer-garbage` | Сміття-шпажка пронизує плитку під собою | game-logic/opponent | 🥉 | 1 | Kunio no Oden (くにおのおでん) |
+| `+skewer-piece` | Шампур: довга фігура з їжею на кінці, рух убік перевертає їжу | entities/move | 🥉 | 1 | Campfire Cooking |
 | `+skill-by-practice` | Навичка росте від дії, швидкість навчання — фокус | entities/state | 📎 | 1 | Cataclysm: Dark Days Ahead |
 | `+skill-chain` | Ланцюг, що триває під час анімацій | game-logic/score | 🥈 | 1 | Panel de Pon (Tetris Attack, Puzzle League) |
 | `+skill-charge` | Навичка з зарядом | entities/state | 🥉 | 1 | Arknights |
@@ -7529,6 +8074,7 @@
 | `+skyline-visibility-scoring` | Видимість уздовж лінії: більший заступає рівних і менших за собою | game-logic/score | 📎 | 1 | Topiary |
 | `+slap-boost` | Ляпас: швидше ціною HP | entities/state | 🌱 | 1 | Dungeon Keeper |
 | `+slash-command-settings` | Налаштування як команди в полі вводу | interface/settings | 🌱 | 1 | Kinetype |
+| `+slayer-weapon` | Зброя проти типу ворогів | entities/combat | 🌱 | 1 | Dragon Crystal (ドラゴンクリスタル ツラニの迷宮) |
 | `+sleep-regen` | Сон прискорює відновлення, перериває атака | entities/state | 🌱 | 1 | Dungeon Master |
 | `+sleep-when-no-path` | Переслідувач без шляху засинає до наближення | entities/move | 🌱 | 1 | The Snake That Eats Puzzle Game Mechanics (Thinky Collective) |
 | `+sleeping-enemy` | Сплячий ворог прокидається поруч | entities/state | 📎 | 1 | Pac-Man Championship Edition / DX (Пекмен: чемпіонське видання) |
@@ -7538,6 +8084,7 @@
 | `+slide-charges` | Обмежені зсуви з перезарядкою за ходи | entities/state | 🌱 | 1 | SlideMaze |
 | `+slide-ends-turn` | Зсув плитки = хід, потім ходять юніти | game-logic/opponent | 🥉 | 1 | Slider |
 | `+slide-needs-blocker` | Ковзання лише до іншої фігури | entities/legality | 🌱 | 1 | Klotski (Хуажунський шлях) + Lunar Lockout |
+| `+slide-over-pit` | Ковзний обʼєкт перетинає ями, нерухомий падає | entities/interact | 🌱 | 1 | What Gophers Go For |
 | `+slide-refill-market` | Ринок зсувається до дешевих слотів, доповнюється в кінці раунду | game-logic/economy | 🌱 | 1 | Queendomino (Квіндоміно) |
 | `+slide-structure` | Повзунок зсуває частину поля | entities/state | 📎 | 1 | Monument Valley |
 | `+slide-to-assemble` | Зсунути панелі, щоб склалась задана форма | game-logic/win | 📎 | 1 | Rectangle-Slider |
@@ -7556,6 +8103,7 @@
 | `+slot-categories` | Слоти за категоріями (живлення/рух/утиліта/зброя) | entities/state | 🥉 | 1 | Cogmind |
 | `+slot-direction-weapons` | Зброя в слоті з боку, патерн за напрямком | entities/combat | 📎 | 1 | Magpie (7DRL 2023) |
 | `+slot-machine-gamble` | Слот-машина: ставка грошей | game-logic/economy | 📎 | 1 | Kitten Kaboodle (Nyan Nyan Panic) |
+| `+slot-merge` | Частини з непересічними гніздами зливаються в одну | entities/legality | 🌱 | 1 | Soko Spectacle |
 | `+slot-override-discard` | Інша стихія в слоті скидає весь стос | game-logic/program | 🌱 | 1 | Mechs vs. Minions |
 | `+slot-regrow` | Слот відновлюється через t після продажу | entities/state | 🌱 | 1 | PixelJunk Monsters |
 | `+slot-spin-layout` | Мішок розкладається у випадкові клітини | entities/spawn | 📎 | 1 | Luck be a Landlord |
@@ -7569,6 +8117,7 @@
 | `+smoke-fire-escalation` | Загроза має стадії: дим → вогонь → вибух за правилами накладання й сусідства | entities/state | 📎 | 1 | Flash Point: Fire Rescue |
 | `+smoke-screen` | Дим блокує огляд | entities/state | 🌱 | 1 | Steel Panthers |
 | `+smoke-screen-stun` | Дим позаду оглушує переслідувача | entities/combat | 📎 | 1 | Rally-X |
+| `+snake-constraint` | Позначене — одна змійка без дотиків до себе | game-logic/constraints | 📎 | 1 | Liquidum |
 | `+snake-draft-order` | Змійковий порядок вибору | game-logic/opponent | 🌱 | 1 | Sagrada (Саграда) |
 | `+snake-gaze-ban` | Голова фігури дивиться вздовж тіла; на промені до стіни не можна мати чужої фігури | game-logic/constraints | 📎 | 1 | Hebi-Ichigo (へびいちご) |
 | `+snake-guess-order` | Друге коло — у зворотному порядку | game-logic/opponent | 🌱 | 1 | Hues and Cues |
@@ -7579,11 +8128,13 @@
 | `+snare-roots` | Пута: N дій до звільнення | entities/state | 🌱 | 1 | Ringfall |
 | `+sneak-attack` | Удар по неуважному ×3 | entities/combat | 🌱 | 1 | Brogue |
 | `+socket-item` | Предмет у гнізді визначає поведінку споруди | entities/state | 📎 | 1 | GemCraft |
+| `+soft-fail-progress` | Іти далі можна з невиконаними обмеженнями; нагорода — лише за все | levels/progression | 🌱 | 1 | Is This Seat Taken? |
 | `+softlock-guard` | Автовідкат самоблокування з поясненням | game-logic/history | 🌱 | 1 | Enigmash |
 | `+softlock-possible` | Гру можна зробити непрохідною | game-logic/lose | 🌱 | 1 | Imogen |
 | `+soil-fertility` | Клітини виснажуються від захоплень | entities/state | 🥉 | 1 | Libble Rabble |
 | `+soil-tiers` | Ланцюг станів ґрунту з ресурсом розширення | entities/interact | 🌱 | 1 | Atomicrops |
 | `+sokoban-plus-exit` | Цілі Sokoban + ключ + вихід як одна умова | game-logic/win | 📎 | 1 | Hako-Oshimai: Sokoban Platformer |
+| `+solid-hand-only-arms` | Тверда лише долоня на кінці руки | entities/legality | 📎 | 1 | Altered |
 | `+solid-pickup-support` | Предмет є опорою, доки його не зʼїли | entities/move | 🌱 | 1 | CodinGame: Exotec (Winter Challenge 2026) |
 | `+solidify-after-pass` | Контур стає твердим після проходу | entities/legality | 🌱 | 1 | Monocre |
 | `+solo-automa` | Соло-суперник з колоди правил | game-logic/opponent | 🥉 | 1 | The Isle of Cats |
@@ -7594,23 +8145,27 @@
 | `+solution-files` | Кілька збережених розвʼязків рівня | game-logic/save | 🌱 | 1 | SOKOBOT |
 | `+solution-on-back` | Розвʼязок поруч із завданням (перевірка розворотом) | levels/bank | 🌱 | 1 | Chocolate Fix (ThinkFun) |
 | `+solution-path-gen` | Генерація гарантованого шляху кімнатами | levels/generation | 🥉 | 1 | Spelunky |
+| `+solution-path-replay` | Логічний шлях розвʼязання як список ходів, який можна програти | interface/hud | 📎 | 1 | Tenner Grid (Zehnergitter, Числобус) |
 | `+solution-proof` | Рекорд/рівень приймається лише з записом розвʼязку | levels/solvability | 📎 | 1 | LaserTank |
 | `+solution-replay` | Показ свого розвʼязку після проходження | game-logic/history | 📎 | 1 | Colorboration |
 | `+solution-sharing` | Публікація розвʼязку й рейтинг за ресурсом | support/sites | 🥈 | 1 | Trainyard |
 | `+solution-size-metrics` | Метрики розвʼязку: час, розмір AST, операції | game-logic/score | 🥈 | 1 | Robo Instructus |
-| `+solution-slots` | Кілька збережених розвʼязків рівня | game-logic/save | 🌱 | 1 | Prelogate |
 | `+solution-upload` | Розвʼязок як доказ розвʼязності при вивантаженні | levels/solvability | 🥈 | 1 | Escape (Tom 7) |
 | `+solution-video-record` | Запис розвʼязку у відео | interface/results | 🥈 | 1 | Cargo-Bot |
 | `+solution-word-cells` | Позначені клітини складають ключове слово | game-logic/win | 🌱 | 1 | Arrowword (Сканворд) |
+| `+solvability-hint` | Підказка: чи розвʼязно звідси і як близько був | levels/solvability | 🥇 | 1 | Croquet Conundrum |
 | `+solvability-parity` | Розвʼязність за інваріантом парності | levels/solvability | 🥈 | 1 | Lights Out |
 | `+solvable-proof-on-submit` | Публікація лише з розвʼязком автора | levels/editor | 🥉 | 1 | RoboZZle |
 | `+solvable-random-cave` | Випадкова печера з гарантією розвʼязності | levels/generation | 🥇 | 1 | Boulder Dash — DOS-клони (bd-fans) |
 | `+solve-animation` | Анімація проходження розвʼязку | interface/graphics | 🌱 | 1 | Please Fix The Road |
+| `+solve-counter` | Лічильник розвʼязаних нескінченних пазлів із нагородою на порозі | game-logic/score | 🌱 | 1 | Landflip |
+| `+solve-detonation` | Розвʼязок підтверджує анімація: бомби вибухають своїми променями, поле заливається | interface/render | 🥉 | 1 | Logic Bombs |
 | `+solve-hint` | Підказка напряму / автопроходження | game-logic/difficulty | 🥉 | 1 | SUMOO |
 | `+solve-into-undo` | Розвʼязок як крок історії | game-logic/flow | 📎 | 1 | Simon Tatham's Portable Puzzle Collection |
 | `+solve-no-record` | Автовирішення без запису рекорду | game-logic/score | 🌱 | 1 | TetraVex |
 | `+solve-order-hint` | Підказка = номери кроків розвʼязувача | interface/hud | 🥉 | 1 | Krazydad (банк друкованих пазлів) |
 | `+solve-to-clear-line` | Ряд зникає лише розвʼязаним (клітини-сапери) | game-logic/constraints | 📎 | 1 | Tetrisweeper |
+| `+solved-level-freeze` | Розвʼязаний рівень застигає | levels/progression | 🌱 | 1 | Wilderplace |
 | `+solver-par` | Ліміт = розвʼязок солвера + запас | levels/generation | 🥇 | 1 | SameGame / Clickomania + Flood (Tatham) |
 | `+solver-verified-levels` | Рівень перевірено на виграшність за всіх змін | levels/solvability | 🥇 | 1 | Deadhand |
 | `+sonar-sector-query` | Запит так/ні про сектор | entities/interact | 📎 | 1 | Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode) |
@@ -7618,6 +8173,7 @@
 | `+song-select` | Вибір пісні = вибір темпу партії | interface/menus | 🌱 | 1 | Magical Beat |
 | `+song-timer` | Довжина пісні = ліміт поверху | rules/lose | 🌱 | 1 | Crypt of the NecroDancer |
 | `+song-upkeep` | Пісня-аура: щохід ціна в voice і шум | entities/state | 📎 | 1 | Sil |
+| `+sonified-error` | Звук кодує величину й знак помилки | interface/sound | 📎 | 1 | Survo Puzzle (Survo-ristikko) |
 | `+sonified-numbers` | Число як висота ноти | interface/sound | 📎 | 1 | Blind Sweeper |
 | `+sort-by-swap` | Сортування сітки обмінами сусідів | game-logic/constraints | 🥈 | 1 | The Farmer Was Replaced |
 | `+sort-into-bins` | Кожну приховану клітину треба віднести до однієї з категорій-кошиків | game-logic/win | 📎 | 1 | Cargo Quest |
@@ -7660,6 +8216,7 @@
 | `+spawn-zone-clear` | Перед спавном зона очищується від юнітів | entities/spawn | 🌱 | 1 | Robot Rumble |
 | `+spear-grab` | Підібрати спис наступом, він стирчить у бік руху | entities/interact | 📎 | 1 | Candle Prick |
 | `+spear-retrieve` | Кинута зброя, яку треба підібрати | entities/combat | 📎 | 1 | Hoplite |
+| `+spec-documentation` | Специфікація рівня як документ у грі | interface/menus | 🌱 | 1 | ABI-DOS |
 | `+special-attack-cooldown` | Глобальна атака з перезарядкою | entities/combat | 🌱 | 1 | Age of War / Stick War |
 | `+special-blocks-in-stack` | Клітини-предмети в стеку, що беруться очисткою ряду | entities/interact | 📎 | 1 | TetriNET |
 | `+special-cards` | Спецкартки: wild / take / forfeit | entities/interact | 📎 | 1 | Memory / Concentration / Pairs («Мемо», «Знайди пару») |
@@ -7670,6 +8227,7 @@
 | `+special-level-stairs` | Спецсходи у бічний рівень | game-logic/levels | 🌱 | 1 | DoomRL / DRL → Jupiter Hell |
 | `+special-meter-blast` | Шкала → вибух навколо точки з розміром за повнотою | entities/combat | 🌱 | 1 | Puzzled (Joy Joy Kid) |
 | `+special-rooms` | Кімнати-шаблони: магазин, зоопарк, сховище | levels/generation | 🥉 | 1 | Hack |
+| `+special-tools-per-level` | 1–2 особливі інструменти пазла | levels | 🌱 | 1 | U.V.S. Nirmana |
 | `+specialist-start` | Стартовий модифікатор з балансом HP | game-logic/difficulty | 🌱 | 1 | Mechabellum |
 | `+specialist-step` | Приєднаний спеціаліст із властивістю | entities/state | 📎 | 1 | Unity of Command: Stalingrad Campaign |
 | `+species-competition` | Вищий за рангом витісняє з клітини | entities/interact | 📎 | 1 | SimEarth (сітковий шар і Daisyworld) |
@@ -7692,7 +8250,9 @@
 | `+speed-solve-ranking` | Очки за місце за часом розвʼязання | scoring | 🌱 | 1 | Laser Reflection (Reflection) |
 | `+speed-stat-cooldown` | Стат швидкості скорочує перезарядку | entities/state | 🌱 | 1 | Cardinal Quest |
 | `+speed-tiebreak` | Нічию вирішує швидкість подачі | game-logic/opponent | 📎 | 1 | Quarrel |
+| `+speed-upgrades` | Максимальна швидкість симуляції купується | game-logic/economy | 🌱 | 1 | YENDOR |
 | `+speed-zones` | Зона змінює швидкість | entities/state | 📎 | 1 | Pac-Man (Пекмен) і Ms. Pac-Man |
+| `+speedrun-timer` | Таймер усієї гри для спідрану | interface/hud | 🌱 | 1 | Handshakes |
 | `+speedsolve-timer` | Секундомір спідсолву від першого ходу | interface/hud | 🌱 | 1 | Sliding-tile permutation puzzles (пʼятнашки й родичі) |
 | `+spell-charges` | Заклинання із зарядами, поповнення на рівні | entities/state | 📎 | 1 | Rift Wizard |
 | `+spell-code-entry` | Заклинання вводом коду | interface/input | 🌱 | 1 | The Bard's Tale / Might and Magic — сіткові dungeon crawl 80-х |
@@ -7706,6 +8266,7 @@
 | `+spell-on-open` | Досягнення стану запускає глобальну зміну правил | game-logic/constraints | 🥉 | 1 | Tome Tumble Tournament |
 | `+spell-once` | Здібність раз за гру | entities/state | 🌱 | 1 | Archon: The Light and the Dark |
 | `+spell-opens-walls` | Заклинання відкриває групу стін | entities/interact | 📎 | 1 | Kroz |
+| `+spell-orb-learn` | Куля вчить закляття | entities/interact | 🌱 | 1 | Bee Magic |
 | `+spell-per-level` | Одне нове закляття за рівень, без класів | entities/state | 🌱 | 1 | Castle of the Winds |
 | `+spell-queue` | Зброя як черга команд-модифікаторів | entities/combat | 🥇 | 1 | Noita |
 | `+spell-range-min-max` | Дальність від–до | entities/combat | 🌱 | 1 | Dofus (бойова система) |
@@ -7720,6 +8281,7 @@
 | `+spherical-grid` | Сітка на поверхні сфери | levels/generation | 🥈 | 1 | Globesweeper |
 | `+spike-behind` | Покинута клітина стає шипами | entities/interact | 🌱 | 1 | Euclidean Skies |
 | `+spike-trail` | Ворог лишає шип у смузі; постріли вкорочують | entities/interact | 📎 | 1 | Tempest |
+| `+spin-steps` | Серія кроків повертає на 90° щокроку | entities/move | 🌱 | 1 | Super Sokobot |
 | `+spin-wheel-battle` | Бій рулетками: сектор = атака, розмір = ймовірність | entities/combat | 📎 | 1 | Pokémon Duel (Pokémon Comaster) |
 | `+spinner-action` | Вертушка задає кількість дій / подію ходу | game-logic/opponent | 🌱 | 1 | Schnappt Hubi! |
 | `+spinner-arrow` | Плитка примусового руху до стоп-клітини | entities/move | 🌱 | 1 | Pokémon overworld puzzles (Gen I–II, лід, валуни Strength, спінери, телепорти) |
@@ -7727,6 +8289,7 @@
 | `+spiral-fill-generator` | Генерація спіралі зі словника | levels/generation | 🥇 | 1 | Spiral puzzle (Спіральний кросворд) |
 | `+spiral-tower-level` | Рівень-спіраль навколо вежі | levels/format | 🥈 | 1 | Lode Runner 2 і Lode Runner 3-D |
 | `+spirit-commands` | Разові бафи пілота за SP | entities/state | 🥉 | 1 | Super Robot Wars |
+| `+spirit-parasite` | Дух робить найближчу істоту домівкою | entities/move | 🥉 | 1 | Wilderplace |
 | `+spirit-power-card` | Спільна сила на партію, оплачена ресурсом | game-logic/constraints | 🥉 | 1 | Dragon Castle |
 | `+splash-adjacent-lanes` | Удар по першому в своїй і сусідніх смугах | entities/combat | 🌱 | 1 | Riftforce |
 | `+splay-direction` | Напрямок розкладу вирішує, які значки рахуються | game-logic/score | 📎 | 1 | Paperback Adventures |
@@ -7734,8 +8297,11 @@
 | `+split-action-control` | Дії розподілено між гравцями, фігури спільні | game-logic/opponent | 🥉 | 1 | Magic Maze |
 | `+split-boards-one-input` | Два поля, один ввід | entities/move | 📎 | 1 | Quadrata |
 | `+split-bonus` | Розділити ворогів по областях | game-logic/win | 🥉 | 1 | Xonix (Ксонікс) / Qix / Volfied |
+| `+split-by-one-way` | Одностороння платформа розрізає тіло | entities/interact | 🥈 | 1 | Ligo |
+| `+split-card-pairing` | Варіант склеєний з двох карт: що класти + куди | game-logic/economy | 🌱 | 1 | TeenyShire |
 | `+split-field-halves` | Поле з власником кожної клітини, ступати лише на своє | entities/legality | 📎 | 1 | Mega Man Battle Network (Rockman.EXE) |
 | `+split-fire` | Розподіл шкоди між цілями | entities/combat | 📎 | 1 | Space Crusade |
+| `+split-instead-of-attack` | Ворог інколи ділиться замість удару | entities/spawn | 📎 | 1 | Dragon Crystal (ドラゴンクリスタル ツラニの迷宮) |
 | `+split-keyboard-state` | Клавіша зі станом по кожному з N полів | interface/hud | 📎 | 1 | Quordle / Octordle |
 | `+split-merge` | Розщеплення аватара й злиття при дотику | entities/state | 🥈 | 1 | Bloxorz |
 | `+split-mission-code` | Ціль складається з двох половин у двох гравців | game-logic/goals | 🌱 | 1 | Inkognito |
@@ -7747,6 +8313,7 @@
 | `+split-screen-coop` | Двоє на розділеному екрані в одному світі | interface/render | 🥈 | 1 | Bloodwych |
 | `+split-screen-duel` | Дві камери на одному полі | interface/render | 📎 | 1 | Liero |
 | `+split-screen-versus` | Два поля на одному екрані | game-logic/opponent | 📎 | 1 | Swords & Soldiers |
+| `+split-stick-dual-avatar` | Один гравець — два аватари, кожен на своєму стіку | interface/input | 📎 | 1 | Death Squared |
 | `+split-times` | Спліти проти особистого рекорду | interface/hud | 📎 | 1 | GridRacer |
 | `+splitter-balance` | Розгалужувач 1:1 з пріоритетом/фільтром | entities/interact | 🥉 | 1 | Factorio — клітинна логістика (конвеєри, маніпулятори, мережі) |
 | `+splitter-push-blast` | Вибух штовхає осколками вздовж осей | entities/combat | 🥉 | 1 | Kiki the Nano Bot |
@@ -7760,6 +8327,7 @@
 | `+spread-delay-by-type` | Затримка поширення за типом клітини | entities/state | 📎 | 1 | Wildfire Swap |
 | `+spread-network` | Мережа росте з клітин-вузлів на сусідні | entities/state | 🥉 | 1 | Mycelium Heaven |
 | `+spreading-blocker` | Блокер, що розростається | entities/spawn | 📎 | 1 | Candy Crush Saga |
+| `+spring-launch` | Пружина-катапульта: стиснути об опору, зійти геть — і полетіти до упору | entities/interact | 🥉 | 1 | Midwinter Springtime |
 | `+spring-over-wall` | Пружина перекидає через стіну | entities/move | 📎 | 1 | Ms. Pac-Man Maze Madness |
 | `+sprint-no-action` | Без дії — довший рух | game-logic/turns | 🌱 | 1 | Atlas Reactor |
 | `+sprint-toggle` | Швидкість анімації ходу кнопкою / за замовчуванням | interface/settings | 🌱 | 1 | Blobun |
@@ -7774,11 +8342,13 @@
 | `+square-color-blast` | Вибух лише по клітинах певного кольору | entities/combat | 📎 | 1 | Chessplosion |
 | `+square-detection` | Пошук повного квадрата k×k | game-logic/constraints | 📎 | 1 | Patchwork (Печворк) |
 | `+square-group-match` | Одноколірний квадрат 2×2 з перекриттям | entities/interact | 🌱 | 1 | Lumines (Люмінес) |
+| `+squeeze-blast` | Аватар вибухає, коли вихід із труби затісний | entities/combat | 🥉 | 1 | Cat Squeeze |
 | `+srs-wall-kicks` | Поворот із кіками | entities/legality | 🥈 | 1 | Tetris (Тетрис, Tetris Guideline) |
 | `+stab-to-win` | Проколоти ціль = перемога | game-logic/win | 🌱 | 1 | Candle Prick |
 | `+stability-cave-in` | Каскадний обвал за різницею висот | entities/interact | 🥈 | 1 | The Miner Was Replaced |
 | `+stability-knockdown` | Стабільна шкода і падіння | entities/state | 📎 | 1 | BattleTech |
 | `+stable-doubles-capacity` | Будівля в області множить ємність | entities/state | 🌱 | 1 | Agricola — сітка ферми (Агрікола) |
+| `+stable-state-check` | Перевірка лише після стабілізації | game-logic/win | 📎 | 1 | Hard Chip |
 | `+stack-bonus` | Бонус за накладання фігур одна на одну | entities/legality | 📎 | 1 | Grid Forge TD |
 | `+stack-breed` | Дві сутності в клітині → стос + приплід | entities/spawn | 📎 | 1 | Pâquerette Down the Bunburrows |
 | `+stack-by-size` | Стекування менше на більше | entities/legality | 🥉 | 1 | A Good Snowman Is Hard to Build |
@@ -7828,6 +8398,7 @@
 | `+stage-stars` | Зірки рівня за повноту збору | levels/progression | 🌱 | 1 | Tomb of the Mask |
 | `+staged-objectives` | Цілі відкриваються по черзі | game-logic/win | 📎 | 1 | Yggdra Union: We'll Never Fight Alone |
 | `+staged-rules-unlock` | Правила вмикаються поступово | levels/progression | 📎 | 1 | Robot Turtles |
+| `+staggered-clone-spawn` | Копії стартують ту саму програму кожні D ходів | entities/spawn | 🥉 | 1 | Another Clone |
 | `+stain-status` | Статус від контакту з рідиною | entities/state | 📎 | 1 | Noita |
 | `+stain-terrain` | Мертвий ворог лишає клітину-ефект | entities/spawn | 📎 | 1 | Sproggiwood |
 | `+stairs-diagonal` | Діагональні сходи | entities/move | 📎 | 1 | King's Valley |
@@ -7840,6 +8411,7 @@
 | `+stale-clue` | Число стає невідомим, доки його не підтвердять | game-logic/constraints | 🌱 | 1 | Venom Sweep |
 | `+stalemate-end` | Кінець, коли N ходів нічого не змінюється | game-logic/win | 🌱 | 1 | CodinGame: Keep Off the Grass (Fall Challenge 2022) |
 | `+stalemate-partial-score` | Пат з частковим рахунком | game-logic/score | 🌱 | 1 | Gliński's hexagonal chess (Гексагональні шахи Глінського) |
+| `+stalker-enemy` | Ворог іде слідом | entities/move | 📎 | 1 | Causality |
 | `+stalker-mine` | Рухома міна-переслідувач | entities/move | 🥉 | 1 | Mined-Out |
 | `+stall-exits` | Після затримки все стає виходом | levels/progression | 🌱 | 1 | Gauntlet (1985) |
 | `+stall-for-piece` | Свідоме стояння на годиннику в очікуванні резерву | game-logic/opponent | 🌱 | 1 | Bughouse (Бʼюгхаус, шахи вдвох на двох дошках) |
@@ -7885,6 +8457,7 @@
 | `+stash-storage` | Неактивний сховок поза полем бою | entities/state | 🌱 | 1 | The Bazaar |
 | `+stash-upgrade` | Схрон росте апгрейдами | game-logic/economy | 🌱 | 1 | Escape from Tarkov (inventory) |
 | `+stat-check-barrier` | Прохід за перевіркою риси | entities/legality | 🌱 | 1 | Betrayal at House on the Hill |
+| `+stat-drain` | Постійна втрата характеристики (макс. HP, сила, рівень) | entities/combat | 📎 | 1 | Dragon Crystal (ドラゴンクリスタル ツラニの迷宮) |
 | `+stat-gems` | Постійні +ATK/+DEF/+HP предмети | entities/state | 🌱 | 1 | Tower of the Sorcerer / Magic Tower (魔塔) |
 | `+stat-pool-production` | Виробництво = пул суми навичок працівників | game-logic/economy | 🌱 | 1 | Fallout Shelter |
 | `+stat-pools` | Кожна дія витрачає свій стат-пул | entities/state | 🌱 | 1 | Beneath Apple Manor |
@@ -7900,12 +8473,15 @@
 | `+state-string` | Стан поля одним рядком | levels/format | 🌱 | 1 | Rush Hour (ThinkFun) |
 | `+state-token` | Токен перемикає стан аватара; стан визначає дозволені клітини | entities/state | 🥉 | 1 | Blobun |
 | `+static-enemies` | Вороги стоять, бій лише з ініціативи гравця | entities/move | 🌱 | 1 | Desktop Dungeons |
+| `+static-image-game` | Гра як статична картинка без вводу | interface/render | 🥇 | 1 | 0PLAYER |
 | `+static-target-king` | Нерухома ціль-король | game-logic/win | 🌱 | 1 | Chessformer |
 | `+station-borrow-edge` | Ризикова доплата / обовʼязкові джокери / позичене ребро | entities/legality | 🌱 | 1 | Ticket to Ride |
 | `+station-countdown` | Ціль із таймером: бонус або покарання | game-logic/score | 📎 | 1 | Loco-Motion (Guttang Gottong) |
+| `+station-double-use-error` | Дві дії на одній станції в такті — помилка | game-logic | 📎 | 1 | Neon Noodles |
 | `+station-pass` | Станція зараховується проїздом | game-logic/win | 🌱 | 1 | Tricky Tangled Train Tracks |
 | `+station-token-block` | Станція блокує проїзд чужим | entities/legality | 📎 | 1 | 18XX (1830: Railways & Robber Barons та родина) |
 | `+stationary-push` | Поштовх без руху штовхача | entities/legality | 📎 | 1 | Dynamo chess (Динамо-шахи) |
+| `+statue-at-zero` | 0 кроків → аватар-статуя, вихід лише перемотуванням | entities/state | 🌱 | 1 | At the Hedges of Time |
 | `+status-blind-relight` | Сліпота до контакту з союзником | entities/state | 📎 | 1 | The Night Cage |
 | `+status-displacement` | Дебаф, що переміщує ціль (здути, стягнути, заманити) | entities/move | 🥉 | 1 | Persona 5 Tactica |
 | `+status-effects` | Статуси з тривалістю | entities/state | 🥉 | 1 | The Battle for Wesnoth (Битва за Веснот) |
@@ -7930,6 +8506,7 @@
 | `+steam-flow` | Потік від джерела по трубах до приймачів | entities/interact | 📎 | 1 | Cogs |
 | `+step-and-length-limits` | Ліміти кроків і довжини стану як аварія програми | game-logic/program | 🌱 | 1 | A=B |
 | `+step-blocking-advance` | Наступ кроком із блокуванням чергою | entities/move | 🌱 | 1 | worDefense |
+| `+step-budget-refill` | Запас кроків, який прапорець виставляє на своє число | entities/state | 🌱 | 1 | N Step Steve (Part 1–2) |
 | `+step-cost-cell` | Клітина з ціною ходу | entities/interact | 📎 | 1 | Helltaker |
 | `+step-dance` | Обхід ворога по квадрату (ШІ-експлойт як механіка) | entities/move | 🌱 | 1 | Legend of Grimrock |
 | `+step-equals-size` | Крок дорівнює розміру аватара | entities/move | 📎 | 1 | ScaleBox |
@@ -7938,18 +8515,19 @@
 | `+step-hints` | Ланцюжок підказок-кроків до пазла | interface/hud | 📎 | 1 | Sudoku Topology |
 | `+step-limit-timeout` | Ліміт кроків виконання → таймаут | game-logic/program | 🌱 | 1 | Blockly Games Maze і Code.org Classic Maze |
 | `+step-limit-truncation` | Епізод обрізається після N кроків | game-logic/goals | 🌱 | 1 | MiniGrid (з BabyAI) |
+| `+step-off-fuse` | Бомба вибухає, щойно з неї зійшов | entities/combat | 🌱 | 1 | Bombuzal |
 | `+step-penalty-score` | Кроки зменшують рахунок | game-logic/score | 🌱 | 1 | Banana |
+| `+step-refill-flag` | Прапорець поповнює запас кроків | entities/interact | 🌱 | 1 | 5 Step Steve |
 | `+step-run-speed` | Крок / запуск / швидкість | interface/input | 🌱 | 1 | Conway's Game of Life (Гра «Життя») |
+| `+step-stamp-history` | Історія як номери кроків на клітинах | game-logic/history | 🥉 | 1 | At the Hedges of Time |
 | `+step-strength` | Сила кроками: активні й пригнічені | entities/state | 📎 | 1 | Unity of Command: Stalingrad Campaign |
+| `+sticky-avatar` | Аватар прилипає до стін, блоків і кутів | entities/interact | 🥉 | 1 | We Are Gum |
 | `+sticky-block` | Липка клітина тримає всіх | entities/interact | 🌱 | 1 | Mario & Wario |
-| `+sticky-floor` | Липка підлога сповільнює всіх | entities/interact | 🌱 | 1 | Lode Runner: The Legend Returns |
 | `+sticky-group` | Липкі блоки зчеплюють сусідів у групу | entities/interact | 🥈 | 1 | Pight |
 | `+sticky-majority-markers` | Маркер більшості лишається між раундами | game-logic/score | 🌱 | 1 | Hanamikoji |
 | `+sticky-platform` | Липка платформа: зірватися можна лише вчасною дією | entities/move | 🌱 | 1 | Bumpy |
 | `+sticky-side` | Липка грань блока | entities/state | 📎 | 1 | Tetrobot and Co. |
-| `+sticky-surface` | Липка поверхня: рух по стінах і стелі | entities/move | 📎 | 1 | Gunbrick (Gunbrick: Reloaded) |
 | `+sticky-tile` | Клітина, що тримає того, хто став | entities/interact | 🌱 | 1 | Yankai's Peak |
-| `+sticky-top` | Хто стоїть на обʼєкті, їде з ним | entities/move | 📎 | 1 | Entwined Time |
 | `+sticky-trap-cell` | Одноразова липка клітина для всіх | entities/interact | 📎 | 1 | Flip and Flop |
 | `+stochastic-cell-rule` | Перехід клітини з імовірністю | game-logic | 🌱 | 1 | Forest-fire model (модель лісової пожежі Дроссель — Швабля) |
 | `+stock-and-operating-rounds` | Чергування біржових і операційних раундів | game-logic | 📎 | 1 | 18XX (1830: Railways & Robber Barons та родина) |
@@ -7963,12 +8541,15 @@
 | `+stomp-attack` | Стрибок на ворога знищує його | entities/combat | 📎 | 1 | Snake Rattle 'n' Roll |
 | `+stomp-column` | Тупіт: удар униз крізь стовпець суцільних клітин | entities/combat | 📎 | 1 | Stomp! |
 | `+stomp-on-enter` | Вхід у клітину ворога вбиває його | entities/combat | 🌱 | 1 | Mechs vs. Minions |
+| `+stomp-trap` | Стати на пастку — вимкнути її | entities/interact | 🌱 | 1 | Mistified |
 | `+stone-blocker-tile` | Незнищенна плитка-сміття заповнює поле | entities/state | 🌱 | 1 | WordTactics |
 | `+stone-portal-keys` | Типізовані ключі до порталів-телепортів | entities/interaction | 🌱 | 1 | Eye of the Beholder |
 | `+stop-behind-king` | Дамка зупиняється за збитою | entities/move | 📎 | 1 | Національні варіанти шашок |
 | `+stop-cell` | Клітина-гальмо | entities/interact | 🌱 | 1 | Ice-sliding puzzles (Inertia і жанр «ковзай до упору») |
 | `+stop-graph` | Граф точок зупинки | levels/solvability | 🥉 | 1 | Ice-sliding puzzles (Inertia і жанр «ковзай до упору») |
 | `+stop-on-entity` | Ковзання зупиняється об іншу фігуру | entities/move | 🌱 | 1 | Ricochet Robots (Rasende Roboter) |
+| `+stop-sequence` | Рівень із кількох зупинок: висадка, нові пасажири, розсадка лишається | levels/progression | 🥉 | 1 | Is This Seat Taken? |
+| `+stop-sign-delay` | Плитка тримає того, хто став, N тіків | entities/interact | 🌱 | 1 | RUSH (Two Tribes) |
 | `+stop-timer` | Стоп-час як нагорода | game-logic/waves | 🌱 | 1 | Panel de Pon (Tetris Attack, Puzzle League) |
 | `+stop-to-collect` | Бонус береться лише при зупинці на клітині | entities/interact | 🌱 | 1 | Karuba (Каруба) |
 | `+stopper-ball` | Куля-стоп забирає хід | game-logic/random | 🌱 | 1 | Lingo (телешоу; Motus у Франції) |
@@ -7981,6 +8562,7 @@
 | `+story-choices` | Рішення в подіях змінюють ресурси й сюжет | interface/menus | 📎 | 1 | The Banner Saga |
 | `+story-clues` | Підказки — текстова задача | levels/format | 📎 | 1 | Cross-figure (Crossnumber) |
 | `+story-journal` | Запис журналу після рівня | interface/menus | 🌱 | 1 | The Machine's Garden |
+| `+story-panels` | Панелі історії відкриваються проходженням | interface/menus | 🌱 | 1 | Chronescher |
 | `+story-world-change` | Сюжетні події переставляють світ | levels/progression | 📎 | 1 | Myth Bearer |
 | `+straight-chain-only` | Ланцюг стрибків лише по прямій | entities/legality | 🌱 | 1 | Kōnane (Конане) |
 | `+straight-compartment` | Відсік між чорними клітинками — набір послідовних цифр у будь-якому порядку | game-logic/constraints | 📎 | 1 | Str8ts (Стрейтс) |
@@ -8008,6 +8590,7 @@
 | `+strength-vs-weight` | Сила того, хто штовхає, проти ваги обʼєкта | entities/legality | 📎 | 1 | Entwined Time |
 | `+stress-meter` | Другий ресурс героя з порогами зриву | entities/state | 🥉 | 1 | Darkest Dungeon |
 | `+stretch-limb-path` | Кінцівка росте шляхом з кінчика | entities/move | 📎 | 1 | GRAB-O |
+| `+stretchy-body` | Рідке тіло тягнеться за рухом і сплющується об упор | entities/state | 🥉 | 1 | Soliquid |
 | `+strike-colors` | Здача замість знищення | game-logic/win | 🌱 | 1 | Wooden Ships and Iron Men |
 | `+strike-limit` | N помилок — рестарт | game-logic/lose | 🌱 | 1 | Picross-варіанти (Picross 3D, Round 2, Mega, Color, Clip) |
 | `+strike-order` | Хто бʼє першим: рівень/риса | entities/combat | 🌱 | 1 | Desktop Dungeons |
@@ -8047,6 +8630,7 @@
 | `+sub-grid-canvas` | Вкладене полотно N×N у клітині з окремим курсором | interface/input | 📎 | 1 | Magic Chalkboards |
 | `+sub-grid-layout` | Сітка контейнера з окремих підсіток | entities/state | 📎 | 1 | Escape from Tarkov (inventory) |
 | `+sub-lower-dice-tray` | Кубики менші за обраний відходять іншим | game-logic/opponent | 🌱 | 1 | Ganz Schön Clever (That's Pretty Clever) |
+| `+subcell-position` | Позиції в долях клітини: рух зупиняється там, де вперся | entities/move | 🥈 | 1 | Pushing It |
 | `+subclass-slots` | Основний клас + підклас + пасиви | entities/state | 📎 | 1 | Fell Seal: Arbiter's Mark |
 | `+subdivide-region` | Розділити наявну область внутрішньою межею | game-logic/constraints | 📎 | 1 | Agricola — сітка ферми (Агрікола) |
 | `+subdue-capture` | Затримати замість убити | entities/combat | 🌱 | 1 | XCOM: Chimera Squad |
@@ -8101,6 +8685,7 @@
 | `+support-energy-pool` | Пул енергії на удари підтримки | game-logic/economy | 🌱 | 1 | Boom Beach |
 | `+support-fire` | Сусідня артилерія стріляє по атакувальнику | entities/combat | 📎 | 1 | Panzer General |
 | `+support-pass-buff` | Прохід крізь союзника дає бафф | entities/state | 🌱 | 1 | Rondo of Swords |
+| `+support-spread` | Опора поширюється на звʼязну конструкцію | entities/legality | 📎 | 1 | Imprisoned! |
 | `+support-strike-call` | Виклик авіаудару/артилерії | entities/spawn | 📎 | 1 | Metal Slug Tactics |
 | `+suppression-pin` | Придушення → піннінг → відступ | entities/state | 📎 | 1 | Steel Panthers |
 | `+surface-auto-deposit` | Здобич зараховується, коли носій повернувся в зону | game-logic/economy | 📎 | 1 | Infiniminer |
@@ -8126,6 +8711,7 @@
 | `+survival-points` | Очко кожному живому за кожне вибування | game-logic/score | 🌱 | 1 | Achtung, die Kurve! (Увага, поворот!) |
 | `+survival-reactions` | Ресурс реакцій | entities/state | 📎 | 1 | Kingdom Death: Monster |
 | `+survival-time-reward` | Нагорода = час виживання, довжина — тай-брейк | game-logic/score | 🌱 | 1 | Kaggle Hungry Geese |
+| `+survive-final-blast` | Після останнього вибуху треба стояти на цілому | game-logic/win | 🌱 | 1 | Bombuzal |
 | `+survive-timer` | Перемога — протриматися до кінця відліку | game-logic/win | 🌱 | 1 | Lock's Quest |
 | `+survive-timer-level` | Рівень пройдено, якщо протримався N секунд | game-logic/win | 🌱 | 1 | Splat! |
 | `+survive-turns` | Вижити N ходів | game-logic/win | 🌱 | 1 | Chess Survivors |
@@ -8144,6 +8730,7 @@
 | `+swap-entrance-exit` | Поміняти старт і фініш місцями | levels/progression | 🌱 | 1 | Fidel Dungeon Rescue |
 | `+swap-hidden-for-hand` | Взяти закриту плитку з лінії, покласти з руки відкритою | entities/interact | 🌱 | 1 | Topiary |
 | `+swap-hidden-tokens` | Рух прихованої цілі обміном закритих фішок | entities/move | 📎 | 1 | Schnappt Hubi! |
+| `+swap-local-search` | Розвʼязування обмінами пар, що зменшують похибку | levels/solvability | 🥉 | 1 | Survo Puzzle (Survo-ristikko) |
 | `+swap-must-match` | Обмін дозволено лише зі збігом | entities/legality | 🌱 | 1 | Shariki (Шарики) |
 | `+swap-pass-through` | Зустрічні проходять крізь один одного | entities/move | 🌱 | 1 | Kaggle Crawl |
 | `+swap-pieces` | Обмін двох своїх фігур | entities/move | 🌱 | 1 | Archon: The Light and the Dark |
@@ -8156,6 +8743,7 @@
 | `+swarm-same-program` | Багато акторів виконують одну програму | entities/move | 🥇 | 1 | 7 Billion Humans |
 | `+sweep-cursor-claim` | Курсор біжить по сітці — натисни, щоб забрати клітину | interface/input | 📎 | 1 | M.U.L.E. |
 | `+sweep-line-clear` | Лінія-розгортка стирає позначене | entities/interact | 📎 | 1 | Lumines (Люмінес) |
+| `+sweep-undefended` | Після події гинуть усі незахищені | entities/combat | 📎 | 1 | Chessarama |
 | `+sweeper-drone` | Дрон-збирач розсипаного | entities/move | 📎 | 1 | Sandustry |
 | `+swim-on-sink` | Фігура на знищеній клітині мусить перейти на сусідню, інакше смерть | entities/death | 🌱 | 1 | Forbidden Island |
 | `+swim-only-avatar` | Вода прохідна лише для аватара | entities/legality | 🌱 | 1 | Exit |
@@ -8167,12 +8755,14 @@
 | `+switch-points` | Стрілка: стан визначає гілку руху | entities/move | 🌱 | 1 | Train shunting puzzle (Inglenook Sidings, Timesaver) |
 | `+switch-sequence` | Кнопки треба натиснути в порядку | entities/interact | 📎 | 1 | Gunbrick (Gunbrick: Reloaded) |
 | `+switchback-start` | Стартові ходи туди-назад | game-logic/opponent | 🌱 | 1 | Empire Builder (crayon rails) |
+| `+switching-blocker` | Перешкода перескакує між двома норами | entities/interact | 🌱 | 1 | Pup Champs |
 | `+sword-cell` | Зброя в сусідній клітині | entities/combat | 🥉 | 1 | Deadly Rooms of Death (DROD: King Dugan's Dungeon) |
 | `+sword-drawn-state` | Зброя як стан: витягнута шкодить при контакті | entities/combat | 📎 | 1 | The Tower of Druaga |
 | `+sword-duel` | Дуель удар/блок з HP | entities/combat | 🥉 | 1 | Prince of Persia |
 | `+symbol-cipher-clue` | Числа-підказки записані символами з випадковим ключем на гру | game-logic/constraints | 🌱 | 1 | Tales from the Crypt Sweeper |
 | `+symbol-destroy` | Сусід-їдець знищує ціль за бонус | entities/interact | 📎 | 1 | Luck be a Landlord |
 | `+symbol-group-clear` | Група з 4 однакових символів зникає | entities/interact | 🥉 | 1 | QBillion (Q Billion) |
+| `+symbol-tiles` | Плитки-символи зі здібностями | entities/state | 📎 | 1 | Watchword |
 | `+symbol-transform` | Перетворення символу з шансом/часом | entities/state | 📎 | 1 | Luck be a Landlord |
 | `+symmetric-map-generation` | Симетрична карта для чесного старту | levels/generation | 🥉 | 1 | Арени ботів на сітці (CodinGame, AI Challenge Ants, Halite, Battlecode) |
 | `+symmetric-region` | Область симетрична навколо центру | game-logic/constraints | 📎 | 1 | Tentai Show (Galaxies, Spiral Galaxies) |
@@ -8180,6 +8770,7 @@
 | `+symmetry-generation` | Симетрія розстановки при генерації | levels/generation | 📎 | 1 | Light Up (Akari, Бідзюцукан) |
 | `+symmetry-reduction` | Злиття симетричних позицій в один ключ | code/architecture | 📎 | 1 | Hexapawn (гексапішак) і машина, що вчиться на сірникових коробках |
 | `+sync-attack` | Союзники з лінією огляду атакують разом | entities/combat | 🥉 | 1 | Metal Slug Tactics |
+| `+sync-avatars` | Один ввід рухає кілька аватарів одночасно | entities/move | 📎 | 1 | Pluricubus |
 | `+sync-barrier` | Барʼєр синхронізації потоків | game-logic/program | 🥈 | 1 | SpaceChem |
 | `+sync-clear-coop` | Ряд зникає лише разом із рядом партнера | game-logic/opponent | 📎 | 1 | Magical Tetris Challenge |
 | `+synced-global-rounds` | Безперервні раунди на одному полі для всіх онлайн | game-logic/opponent | 🥈 | 1 | Wordament |
@@ -8209,6 +8800,7 @@
 | `+talent-tree` | Таланти за рівні, тири, підкласи | game-logic/economy | 🥈 | 1 | Shattered Pixel Dungeon (і Pixel Dungeon) |
 | `+talisman-puzzle` | Гнізда-фрагменти складаються як пазл | game-logic/economy | 🥉 | 1 | GemCraft |
 | `+taming-by-territory` | Нейтральна сутність переходить до того, чия територія її накрила | entities/interact | 📎 | 1 | Patternsight |
+| `+tangible-program-board` | Програма з фізичних блоків у слотах дошки | game-logic/program | 📎 | 1 | Cubetto |
 | `+tank-steering` | Поворот корпусу + рух уперед | entities/move | 🌱 | 1 | Combat |
 | `+tap-activate-special` | Спецплитка спрацьовує дотиком, без збігу | entities/interact | 🌱 | 1 | Homescapes / Gardenscapes / Royal Match (мета-шар ремонту) |
 | `+tap-select-then-confirm` | Тач: перший дотик вибирає, другий діє | interface/input | 🌱 | 1 | Blind Sweeper |
@@ -8222,6 +8814,7 @@
 | `+target-count-goal` | Засвітити рівно N цілей (обрати які) | game-logic/win | 🌱 | 1 | ThinkFun Laser Maze і Gravity Maze |
 | `+target-draw` | Ціль раунду з колоди | game-logic/win | 🌱 | 1 | Ricochet Robots (Rasende Roboter) |
 | `+target-forcing-mode` | Загнати адверсарія в задану відповідь | game-logic/win | 🥇 | 1 | Absurdle |
+| `+target-locks-piece` | Фігура на цілі завмирає й стає стіною | game-logic/win | 🌱 | 1 | Desperatea |
 | `+target-pattern-panel` | Цільова фігура на панелі поза полем | interface/hud | 🌱 | 1 | RE:COPY |
 | `+target-position` | Уміння бʼє позицію шеренги (перед/центр/тил) або всіх | entities/combat | 📎 | 1 | Legend of Keepers |
 | `+target-preference` | Пріоритет цілі за типом | entities/move | 🥉 | 1 | Clash of Clans — розстановка бази на сітці |
@@ -8237,6 +8830,7 @@
 | `+targeted-reveal` | Хінт: відкрити обрану клітину | game-logic/history | 🌱 | 1 | Wordscapes |
 | `+targeting-priorities` | Пріоритети вибору цілі | entities/combat | 📎 | 1 | Rogue Tower |
 | `+targeting-priority` | Пріоритет цілей вежі / групи веж | entities/combat | 📎 | 1 | Grid Forge TD |
+| `+targets-open-doors` | Проходи відчинені, поки всі цілі кімнати накриті | entities/interact | 🌱 | 1 | At the Hedges of Time |
 | `+task-activates-exit` | Довільне завдання рівня вмикає вихід | game-logic/win | 📎 | 1 | Kiki the Nano Bot |
 | `+task-list-meta` | Список задач зони зі скринею за завершення | levels/progression | 🥉 | 1 | Homescapes / Gardenscapes / Royal Match (мета-шар ремонту) |
 | `+taunt-button` | Дражнилка суперникові | interface/input | 🌱 | 1 | ChuChu Rocket! |
@@ -8276,7 +8870,6 @@
 | `+tech-tier-unlock-by-score` | Покоління за порогами очок | game-logic/score | 🌱 | 1 | New York 1901 (Нью-Йорк 1901) |
 | `+tech-tree-colors` | Дерево технологій з кількома видами досвіду | levels/progression | 📎 | 1 | Graveyard Keeper |
 | `+tech-tree-unlock` | Дерево технологій за очки доставки | levels/progression | 🥉 | 1 | Craftomation 101 |
-| `+tech-tree-unlock-language` | Конструкції мови відкриваються прогресією | game-logic/economy | 👑 | 1 | The Farmer Was Replaced |
 | `+tech-unlock-by-turn` | Техніка відкривається за номером ходу | levels/progression | 📎 | 1 | Carnage Heart |
 | `+tech-unlock-per-mission` | Апгрейди відкриваються за пройдену місію | levels/progression | 🌱 | 1 | X-Morph: Defense |
 | `+technique-bonus` | Бонус бездоганності: мінус за кожен дотик | game-logic/score | 🌱 | 1 | Nebulus |
@@ -8284,18 +8877,22 @@
 | `+telegraphed-disaster` | Катастрофа з попередженням і відліком | game-logic/waves | 🌱 | 1 | From Dust |
 | `+teleport-ambusher` | Ворог телепортується до вузького місця на шляху | entities/move | 📎 | 1 | Crazy Climber |
 | `+teleport-code-word` | Телепорт за словом-адресою | entities/interact | 🌱 | 1 | Starquake |
+| `+teleport-cycle` | Телепорти ланцюгом: з останнього — на перший | entities/interact | 🌱 | 1 | Лабіринт (паперова гра з ведучим; цифрова Labirinth) |
 | `+teleport-move` | Хід на будь-яку порожню клітину | entities/move | 🌱 | 1 | Chess 2: The Sequel (Sirlin's Chess) |
 | `+teleport-single-use` | Одноразовий телепорт | entities/interact | 🌱 | 1 | Repton 1–3 |
 | `+teleporting-neutral` | Сутність тікає на клік | entities/move | 📎 | 1 | Dragonsweeper |
 | `+temperature-field` | Температура обʼєктів з порогами й дрейфом | entities/state | 🥈 | 1 | Caves of Qud |
 | `+tenant-stress` | Стрес агента росте від очікування, при порозі — виїзд | game-logic/agents | 🥉 | 1 | Tiny Tower / SimTower |
 | `+tentative-mark` | Попередня позначка без перевірки | interface/input | 🌱 | 1 | Patterna |
+| `+terminal-commands` | Текстові команди машин у світі | interface/input | 📎 | 1 | Hard Chip |
 | `+terminal-hack-switch` | Хакнутий термінал перемикає двері/турелі | entities/interact | 📎 | 1 | Shadowrun Returns |
 | `+terminal-hacking` | Хакінг термінала з % успіху | entities/interact | 🥉 | 1 | Cogmind |
+| `+terminal-screen` | Термінал перемикає керування на окремий екран-схему | interface/input | 📎 | 1 | Edge Case |
 | `+terminal-tile-end` | Фінальна плитка завершує гру | game-logic/win | 🌱 | 1 | Threes! |
 | `+terraform-altitude` | Змінити висоту клітини | entities/interact | 📎 | 1 | SimCity 2000 |
 | `+terraform-cell` | Змінити висоту клітини | entities/interact | 📎 | 1 | Creeper World |
 | `+terraformer-emitter` | Поставлена сутність постійно змінює глобальний параметр | entities/spawn | 📎 | 1 | SimEarth (сітковий шар і Daisyworld) |
+| `+terrain-absorb-heal` | Поглинути клітини-стихію заради лікування | entities/interact | 📎 | 1 | Sunderfolk |
 | `+terrain-adaptation` | Рейтинг юніта для 4 типів місцевості | entities/state | 📎 | 1 | Super Robot Wars |
 | `+terrain-area-share` | Умова на частку площі покриву | game-logic/constraints | 🌱 | 1 | Viva Piñata |
 | `+terrain-as-defense` | Тайли поля — рельєф для шляху ворогів | entities/move | 🥈 | 1 | Titanium Court |
@@ -8332,6 +8929,7 @@
 | `+theater-assets` | Обмежені засоби щоходу (авіаудар, мости) | game-logic/economy | 📎 | 1 | Unity of Command: Stalingrad Campaign |
 | `+theme-clue` | Одна тематична підказка на рівень | interface/hud | 🌱 | 1 | Bonza Word Puzzle |
 | `+theme-word-bonus` | Бонус за слова теми/з літер | game-logic/score | 📎 | 1 | Bookworm Adventures |
+| `+theme-word-solution` | Пазл із тематичними словами розвʼязку | levels/bank | 🌱 | 1 | Dave's Word Game |
 | `+themed-crossword-gen` | Генерація кросворду зі слів на тему | levels/generation | 🥇 | 1 | Lexilotl: Crossword Puzzle Run |
 | `+themed-word-list` | Тема пазла задає список | levels/bank | 🌱 | 1 | Word search (Пошук слів) |
 | `+thermal-scope` | Режим бачення: видно приховане, не видно ворогів | interface/render | 🌱 | 1 | The Last Guy |
@@ -8339,6 +8937,7 @@
 | `+thin-ice` | Клітина руйнується після проходу | entities/interact | 🌱 | 1 | LaserTank |
 | `+thin-walls` | Стіни на ребрах між клітинами | entities/legality | 📎 | 1 | Gymnasium Toy Text: FrozenLake, Taxi, CliffWalking |
 | `+thirst-clock` | Спрага окремо від голоду | entities/state | 🌱 | 1 | Dungeon Master |
+| `+threat-block-ai` | Суперник закриває кожну загрозу з останнім ходом | game-logic/opponent | 📎 | 1 | Undertoe |
 | `+threat-economy` | Загроза оверлорда від дій героїв | game-logic/economy | 📎 | 1 | Descent: Journeys in the Dark |
 | `+threat-forecast` | Попередження про загрозу наступного рівня | interface/hud | 🌱 | 1 | Revenge of the Titans |
 | `+threat-meter` | Глобальна загроза з джерел і порогів | game-logic | 🌱 | 1 | Against the Storm |
@@ -8389,6 +8988,7 @@
 | `+tier-by-turn` | Тир магазину росте з ходом | game-logic/economy | 🌱 | 1 | Super Auto Pets |
 | `+tier-ladder` | Сходинка рівнів злиття з фіналом | entities/state | 🌱 | 1 | Suika Game (Кавунова гра) |
 | `+tier-upgrade-discount` | Апгрейд дешевшає з кожним раундом очікування | game-logic/economy | 🌱 | 1 | Hearthstone Battlegrounds |
+| `+tiered-goals` | Кілька рівнів цілі на етап | game-logic/win | 🌱 | 1 | Triga |
 | `+tiered-hints` | Підказки рівнями: від натяку до розвʼязку | game-logic/difficulty | 📎 | 1 | Gentoo Rescue |
 | `+tiered-overshoot-bonus` | Бонус за перевиконання з порогами | game-logic/score | 🌱 | 1 | JezzBall |
 | `+tile-action` | Дія клітини для того, хто закінчив хід на ній | entities/interact | 📎 | 1 | Five Tribes |
@@ -8411,16 +9011,19 @@
 | `+tile-exchange` | Обмін плиток замість ходу | game-logic/opponent | 🌱 | 1 | Scrabble (цифрові версії; Words With Friends) |
 | `+tile-expansion-choice` | Гравець обирає, де прибудувати плитку | interface/input | 📎 | 1 | Rogue Tower |
 | `+tile-fade-when-exhausted` | Клітина згасає, коли всі її слова знайдено | interface/hud | 📎 | 1 | Squaredle |
+| `+tile-fix-mode` | Полагодь поле: вилучені плитки ставить гравець, рахунок за невикористані | levels/progression | 🥈 | 1 | Pluricubus |
 | `+tile-flip-disable` | Перевернута клітина втрачає дію; дія/жетон повертає | entities/state | 🌱 | 1 | Ghost Stories |
 | `+tile-flip-knockback` | Перевернути плитку під ворогом — його відкидає | entities/combat | 📎 | 1 | Mendel Palace (Quinty) |
 | `+tile-goals` | Цілі надруковано на самих плитках | game-logic/score | 📎 | 1 | Nova Luna |
 | `+tile-height-tool` | Підняти / опустити плитку | entities/state | 🌱 | 1 | Please Fix The Road |
 | `+tile-ignite` | Підпал клітини на N ходів | entities/interact | 📎 | 1 | Stoneshard |
 | `+tile-memo` | Нотатка гравця на клітині, якою можна поділитись | interface/input | 🌱 | 1 | Tactical Nexus |
+| `+tile-power-on-use` | Літера в слові запускає силу своєї плитки | entities/interact | 📎 | 1 | Spellsy |
 | `+tile-preview-queue` | Видно N наступних плиток | interface/hud | 🌱 | 1 | Dorfromantik |
 | `+tile-rack` | Рука з N плиток | entities/state | 📎 | 1 | Scrabble (цифрові версії; Words With Friends) |
 | `+tile-removal-card` | Картка-гумка стирає клітину | entities/interact | 🌱 | 1 | Loop Hero |
 | `+tile-reserve-slots` | ≤2 плитки відкласти на потім | entities/state | 🌱 | 1 | Galaxy Trucker |
+| `+tile-retrigger` | Плитка спрацьовує ще раз | game-logic/score | 🌱 | 1 | Beyond Words |
 | `+tile-reveal-reward` | Новий тайл — нагорода за пазл | levels/progression | 🌱 | 1 | Carto |
 | `+tile-rotate-45` | Поворот кроком 45° | entities/state | 🌱 | 1 | Chromatron (1–5) |
 | `+tile-stack-resource` | Стос плиток як ресурс | game-logic/economy | 🌱 | 1 | Dorfromantik |
@@ -8453,11 +9056,13 @@
 | `+time-void-room` | Кімната, де зовнішній час стоїть | levels/progression | 📎 | 1 | Downwell |
 | `+time-warning-forfeit` | Попередження за повільний хід, N попереджень = поразка | game-logic/opponent | 🌱 | 1 | Pac-Man Capture the Flag (UC Berkeley CS188) |
 | `+timed-auto-promote` | Контейнер з часом підвищує / клонує / очищує плитки | entities/state | 🌱 | 1 | Battle Chef Brigade |
+| `+timed-board-half-score` | Таймова дошка: кінець часу — половина очок | game-logic/score | 🌱 | 1 | Beyond Words |
 | `+timed-bomb-drop` | Покласти бомбу з таймером | entities/combat | 📎 | 1 | Supaplex |
 | `+timed-bonus-stage` | Бонус-стадія на час без ворогів | levels/progression | 🌱 | 1 | Super Pac-Man |
 | `+timed-button` | Кнопка тримає стан N тіків після сходження | entities/interact | 📎 | 1 | Temple of Snek |
 | `+timed-card-draft` | Драфт під таймером, невзяте роздається випадково | game-logic/opponent | 📎 | 1 | Mechs vs. Minions |
 | `+timed-gate` | Ворота відкриті на N тіків після плити | entities/interact | 📎 | 1 | Prince of Persia |
+| `+timed-hazard` | Пастка спрацьовує в певний момент часу | entities/death | 📎 | 1 | Causality |
 | `+timed-hint` | Підказка відкривається після N часу на рівні | game-logic/difficulty | 🌱 | 1 | ScaleBox |
 | `+timed-portal` | Тимчасовий портал на інший екран | levels/transition | 📎 | 1 | Drelbs |
 | `+timed-purge-flag` | Прапорець — дія з тривалістю й перевіркою | entities/interact | 📎 | 1 | Venom Sweep |
@@ -8491,18 +9096,20 @@
 | `+toggle-neighbors` | Натиск перемикає клітину й сусідів за шаблоном | entities/state | 🌱 | 1 | Lights Out |
 | `+toggle-spikes` | Шипи, що циклічно висуваються | entities/state | 📎 | 1 | Tomb of the Mask |
 | `+token-flow-paths` | Токени біжать доріжками між блоками | game-logic/program | 🥈 | 1 | Infinite Turtles |
+| `+token-merge-sum` | Токени в одній клітині зливаються, значення додаються | entities/interact | 📎 | 1 | ABI-DOS |
 | `+token-supply-per-level` | Рівень видає конкретний набір команд | levels/bank | 🌱 | 1 | Code Master (ThinkFun) |
 | `+token-top-up` | Докрити нестачу кидка жетонами | entities/combat | 🌱 | 1 | Ghost Stories |
 | `+toll-on-landing` | Мито за зупинку на чужій клітині | game-logic/economy | 📎 | 1 | Culdcept |
 | `+tongue-attack` | Язик: удар/збір на відстані | entities/combat | 📎 | 1 | Snake Rattle 'n' Roll |
-| `+tool-allotment` | Бюджет інструментів на рівень | entities/state | 📎 | 1 | Toki Tori |
 | `+tool-area-charge` | Інструмент із зарядом області | interface/input | 🥉 | 1 | Stardew Valley — фермерська сітка |
 | `+tool-block` | Стан гравця забороняє тип ходу | entities/state | 🌱 | 1 | Saboteur (+ Saboteur 2) |
 | `+tool-budget` | Обмежений набір інструментів і плиток на рівень | game-logic | 🌱 | 1 | Please Fix The Road |
 | `+tool-clears-obstacle` | Інструмент знімає тип перешкоди | entities/interact | 🌱 | 1 | Exit |
 | `+tool-durability` | Інструмент на N застосувань, кінець — кінець забігу | entities/state | 🌱 | 1 | Pocket Mine |
 | `+tool-gated-cell` | Клітина проходиться лише з потрібним предметом | entities/legality | 🌱 | 1 | MinerVGA |
+| `+tool-only-passage` | Перешкода пропускає інструмент, але не аватара | entities/legality | 🌱 | 1 | Stick to the Plan |
 | `+tool-per-block` | Блок добувається відповідним інструментом | entities/interact | 📎 | 1 | Mine Blocks |
+| `+tool-relay` | Інструмент дії передається сусідові по ланцюжку | entities/interact | 📎 | 1 | Shall We Golf? (みんなでGOLF！) |
 | `+tool-upgrade-sides` | Два боки для інструментів-апгрейдів, обмін з інвентарем | entities/state | 📎 | 1 | ComputerCraft (turtles) |
 | `+tool-upgrade-tree` | Дерево апгрейдів інструмента | game-logic/economy | 📎 | 1 | Mineshaft |
 | `+tool-upgrade-unlocks-material` | Апгрейд інструмента відкриває матеріал | levels/progression | 📎 | 1 | Blocks That Matter |
@@ -8525,9 +9132,11 @@
 | `+touch-move-platform` | Рух обʼєкта поля прямим дотиком гравця | interface/input | 📎 | 1 | Captain Toad: Treasure Tracker |
 | `+touch-to-activate` | Під погонею бонус береться лише дотиком до знака | entities/interact | 🌱 | 1 | Pac-Manhattan |
 | `+touch-upgrade-minigame` | Прокачка карти міні-грою дотиків | game-logic/economy | 🥉 | 1 | Monster Monpiece |
+| `+touching-regions-count` | Число = скільки регіонів торкається підказки | game-logic/constraints | 📎 | 1 | The Artisan of Glimmith |
 | `+tournament-opening-rule` | Обмеження раннього ходу першого гравця | game-logic/opponent | 🌱 | 1 | Pente (Пенте) |
 | `+tournaments` | Турніри гравців | interface/results | 🥈 | 1 | Gladiabots |
 | `+tow-disabled-unit` | Буксирування непрацюючого юніта | entities/move | 📎 | 1 | Duskers |
+| `+tow-to-sea` | Стихія тягне обʼєкт до краю, доки не впреться | entities/move | 🌱 | 1 | Undertoe |
 | `+tower-branch-upgrade` | Гілка апгрейда на рівні N | game-logic/economy | 📎 | 1 | Сучасні mazing-TD (Electromaze, Tower Maze Defense, Thornline TD, Maul Tactics, Back to the Roots 2) |
 | `+tower-evolve` | Вежа апгрейдиться в іншу форму | entities/state | 📎 | 1 | Legion TD / Legion TD 2 |
 | `+tower-exchange` | Обміняти два стоси через третій | game-logic/win | 🌱 | 1 | Panex (Toshio Akanuma) |
@@ -8551,6 +9160,7 @@
 | `+track-builder` | Колія зі шматків зі станом кінця | entities/legality | 🥈 | 1 | RollerCoaster Tycoon |
 | `+track-cap-bonus-turn` | Стеля доріжки → додатковий хід | game-logic/score | 🌱 | 1 | Qwirkle + Ingenious (Квіркл, Genial) |
 | `+track-capacity` | Ємність відрізка в одиницях | entities/legality | 📎 | 1 | Train shunting puzzle (Inglenook Sidings, Timesaver) |
+| `+track-cost-score` | Вартість колії як метрика, зі штрафом за місцевість | game-logic/score | 🌱 | 1 | Upalu Mundi |
 | `+track-follow` | Сутність їде за зʼєднаннями плитки під собою | entities/move | 🥉 | 1 | Loco-Motion (Guttang Gottong) |
 | `+track-fork-alternate` | Розвилка треку з чергуванням | entities/move | 📎 | 1 | Niagara |
 | `+track-milestone-events` | Події при проходженні клітин треку | game-logic/economy | 🥉 | 1 | Patchwork (Печворк) |
@@ -8564,6 +9174,7 @@
 | `+trade-offer` | Обмін між гравцями з пропозиціями | game-logic/economy | 🥉 | 1 | Catan |
 | `+trade-rule-stakes` | Ставка партії: що переможець забирає | game-logic/economy | 📎 | 1 | Triple Triad |
 | `+traffic-light-cycle` | Світлофор чергує потоки на перехресті | entities/move | 🥉 | 1 | Mini Motorways |
+| `+trail-carryover` | Слід кімнати N стає стінами кімнати N+1 | entities/move | 📎 | 1 | micro6an |
 | `+trail-dirtying-intruder` | Нарушник бруднить зроблене | entities/ai | 📎 | 1 | Make Trax (Crush Roller) |
 | `+trail-drain-enemy` | Ворог повзе слідом гравця й краде ресурс | entities/move | 🥉 | 1 | Kinetype |
 | `+trail-eraser-enemy` | Ворог стирає незавершений слід | entities/move | 📎 | 1 | Pepper II |
@@ -8571,6 +9182,7 @@
 | `+trail-fade` | Слід зникає за спиною | entities/state | 🌱 | 1 | Mined-Out |
 | `+trail-follower` | Ворог іде по сліду гравця | entities/move | 📎 | 1 | Harmless7DRL |
 | `+trail-gaps` | Випадкові дірки в сліді | entities/move | 🌱 | 1 | Achtung, die Kurve! (Увага, поворот!) |
+| `+trail-line-spawn` | N клітин сліду в лінію породжують обʼєкт | entities/spawn | 📎 | 1 | Sok7 (Kevin Cancienne) |
 | `+trail-marker` | Фігура лишає слід-маркер | entities/move | 🌱 | 1 | YINSH |
 | `+trail-of-locations` | Стрічка N останніх прихованих місць | game-logic/info | 📎 | 1 | The Fury of Dracula |
 | `+trail-reveal-on-visit` | Відвідане місто відкриває карту сліду | game-logic/info | 🌱 | 1 | The Fury of Dracula |
@@ -8588,6 +9200,7 @@
 | `+train-split` | Розщеплення на два | entities/interact | 📎 | 1 | Trainyard |
 | `+training-tower` | Необовʼязкові бої для прокачки | levels/progression | 🌱 | 1 | Hoshigami: Ruining Blue Earth |
 | `+training-vs-arena` | Тренування без рейтингу проти випадкових ботів і рейтингова арена | game-logic/opponent | 🥉 | 1 | Vindinium |
+| `+trait-aura` | Риса персонажа впливає на сусідів | entities/interact | 📎 | 1 | Is This Seat Taken? |
 | `+trait-counters` | Трейти ворогів і контр-юніти | entities/combat | 🥉 | 1 | The Battle Cats |
 | `+trait-elimination-grid` | Сітка кандидатів, відповідь опускає невідповідних | interface/hud | 🌱 | 1 | Guess Who? (Вгадай, хто?) |
 | `+trait-pick` | Вибір трейта за рівень з деревом | game-logic/economy | 📎 | 1 | DoomRL / DRL → Jupiter Hell |
@@ -8603,6 +9216,7 @@
 | `+transit-limit` | Не більше N рухомих обʼєктів одночасно | game-logic | 🌱 | 1 | Log!cal |
 | `+transmutation` | Комбінація модифікаторів → новий обʼєкт | entities/interact | 📎 | 1 | Reus |
 | `+transmute-material` | Змінити матеріал предмета або частини тіла | entities/interact | 📎 | 1 | IVAN (Iter Vehemens ad Necem) |
+| `+transmute-on-bump` | Хід у ціль перетворює її за таблицею типів | entities/interact | 📎 | 1 | Heroes of Sokoban II: Monsters і III: The Bard and the Druid |
 | `+transparent-block` | Прозорий блок: штовхається, світло пропускає | entities/legality | 🌱 | 1 | Prince of Darkness Jr. |
 | `+transport-load` | Транспорт з місткістю | entities/interact | 📎 | 1 | Advance Wars |
 | `+trap-behind-door` | Заманити ворога за двері й зачинити | entities/interact | 📎 | 1 | Door Door |
@@ -8627,6 +9241,7 @@
 | `+trap-surfaces` | Пастка лише на свій тип поверхні (підлога/стіна/стеля) | entities/legality | 🥉 | 1 | Orcs Must Die! |
 | `+trap-tile-owner-income` | Плитка на треку зсуває того, хто став, і платить власнику | entities/interact | 🌱 | 1 | Camel Up |
 | `+trap-to-convert` | Замуруй ворога → ресурс | entities/interact | 📎 | 1 | Bone Cruncher |
+| `+trapdoor-flip` | Люк: провал на протилежний бік конструкції | entities/move | 📎 | 1 | ilomilo |
 | `+trapped-treasure` | Предмет-пастка спавнить ворогів | entities/spawn | 🌱 | 1 | Venture |
 | `+trauma-weakness` | Причина смерті → слабкість наступного забігу | entities/state | 📎 | 1 | Z.H.P. Unlosing Ranger VS Darkdeath Evilman |
 | `+travel-command` | Подорож до точки/поверху найкоротшим шляхом | interface/input | 🥈 | 1 | Dungeon Crawl Stone Soup |
@@ -8649,7 +9264,6 @@
 | `+trial-mode` | Шар припущень: увійти / прийняти / відкинути | game-logic/history | 🥉 | 1 | puzz.link (pzprjs / pzprv3) |
 | `+trial-scenarios` | Задані ситуації на дошці | levels/bank | 📎 | 1 | Caller's Bane (Scrolls) |
 | `+triangle-formation-attack` | Атака площею трикутника з трьох союзників | entities/combat | 🥉 | 1 | Persona 5 Tactica |
-| `+triangle-grid` | Трикутна сітка: координати і сусіди | entities/legality | 🥉 | 1 | Yankai's Peak |
 | `+triangle-grid-render` | Рендер і координати трикутної сітки | interface/render | 📎 | 1 | Spectrangle |
 | `+triangle-subgrid` | Клітинка, поділена на 4 трикутники; сусідство по ребру й по точці | entities/legality | 📎 | 1 | Ququ |
 | `+triangular-move-cost` | Ціна руху росте як n(n+1)/2 | game-logic/economy | 🌱 | 1 | Hare and Tortoise (Заєць і черепаха) |
@@ -8661,6 +9275,7 @@
 | `+trigger-hopper-loop` | Вихід унизу запускає наступну кульку згори | game-logic/program | 🥉 | 1 | Turing Tumble |
 | `+trigger-reveals-hidden` | Тригер перетворює приховані мітки | entities/interact | 🥉 | 1 | Kroz |
 | `+trip-generation` | Поїздки між зонами по дорогах | game-logic | 🥇 | 1 | SimCity (1989) / Micropolis |
+| `+triple-ban` | Заборонені трійки поспіль: усі однакові / усі різні | game-logic/constraints | 📎 | 1 | Reliquia Park |
 | `+triple-collectible-set` | Три однакові колекції → бонус | levels/progression | 🌱 | 1 | Where's My Water? |
 | `+triple-summon-upgrade` | Призов за збігом граней, 3 збіги — рівень +1 | entities/spawn | 🌱 | 1 | Yu-Gi-Oh! Dungeon Dice Monsters |
 | `+tripwire-trap` | Розтяжка запускає механізм | entities/interact | 🌱 | 1 | Lode Runner 2 і Lode Runner 3-D |
@@ -8668,6 +9283,7 @@
 | `+troop-type-triangle` | Трикутник родів військ | entities/combat | 🌱 | 1 | Langrisser |
 | `+troops-cap-word-length` | Розмір армії = макс. довжина слова | game-logic/constraints | 🌱 | 1 | Quarrel |
 | `+trophy-bonuses` | Досягнення дають бонуси в грі | game-logic/progression | 🌱 | 1 | Infinitode 2 |
+| `+trophy-shelf` | Вибір рівня — полиця з пройденими фігурками | interface/menus | 🌱 | 1 | Woodworm |
 | `+truchet-tiles` | Плитки Трюше: зʼєднання сторін попарно | entities/state | 🌱 | 1 | Black Path Game |
 | `+true-false-clue` | Відповідь із двох фактів: один правда, один брехня | game-logic/constraints | 📎 | 1 | Captain Sonar |
 | `+true-false-wires` | Кожна перевірка має два виходи T/F | game-logic/program | 📎 | 1 | ChipWits |
@@ -8678,6 +9294,7 @@
 | `+ttyrec-recording` | Запис терміналу епізоду для повтору | interface/results | 📎 | 1 | NetHack Learning Environment (NLE, MiniHack) |
 | `+tug-of-war-meter` | Спільна шкала: маркер до того, хто відстає | game-logic/opponent | 🥉 | 1 | Petal Crash |
 | `+tug-of-war-tiles` | Перетягування плиток між двома сторонами по доріжках | game-logic/opponent | 🌱 | 1 | Word on the Street |
+| `+tumble-disc` | Диск перекидається: лежить ↔ стоїть на ребрі, на ребрі котиться | entities/move | 🥉 | 1 | Delicious Donut |
 | `+turbulent-air` | Клітина, що зносить на сусідню з імовірністю | entities/move | 🌱 | 1 | Harmless7DRL |
 | `+turmite-agent` | Агент на клітинах: читає колір → пише колір, повертає, крокує | game-logic | 📎 | 1 | Langton's Ant (Мураха Ленгтона) і турміти |
 | `+turn-ability-limit` | Ліміт поворотів за хід, 1 на гекс | entities/move | 🌱 | 1 | Wooden Ships and Iron Men |
@@ -8704,6 +9321,7 @@
 | `+turn-track-solo` | Лічильник ходів соло на самому аркуші (півхрестики) | game-logic/score | 🌱 | 1 | Encore! (Noch mal!) |
 | `+turn-when-blocked` | Поворот при упорі | entities/move | 📎 | 1 | Chip's Challenge |
 | `+turnaround-stop` | На краю — розворот і зупинка, залишок ходу згорає | entities/move | 🌱 | 1 | Squadro |
+| `+turner-redirect` | Сутність-стрілка повертає інших на 90° | entities/move | 📎 | 1 | 3D Lemmings |
 | `+turning-radius` | Мінімальний радіус повороту | entities/legality | 🥉 | 1 | Tricky Tangled Train Tracks |
 | `+turnover` | Провал завершує хід | game-logic/opponent | 🌱 | 1 | Blood Bowl |
 | `+turnstile` | Турнікет: обертання навколо осі від поштовху | entities/interact | 🥉 | 1 | Kwirk (Puzzle Boy) |
@@ -8718,6 +9336,7 @@
 | `+twin-stick-aim` | Рух і постріл окремими напрямками | interface/input | 🌱 | 1 | Robotron: 2084 |
 | `+twin-stick-fire` | Друга рукоятка — напрям пострілу | interface/input | 📎 | 1 | Tutankham |
 | `+twin-stick-shooter` | Рух і приціл двома стіками | interface/input | 🥉 | 1 | X-Morph: Defense |
+| `+twin-sync-move` | Один хід рухає дві фігури синхронно | entities/move | 🥉 | 1 | Chessarama |
 | `+two-attempt-check` | Перевірка зі зняттям хибних і другою спробою | game-logic/score | 🌱 | 1 | So Clover! |
 | `+two-attribute-cell` | Клітина з двома прихованими ознаками (тип + колір) | entities/state | 📎 | 1 | Alien Cartographer |
 | `+two-card-turn` | Хід = верх однієї + низ іншої карти | game-logic/opponent | 🥉 | 1 | Gloomhaven |
@@ -8790,13 +9409,15 @@
 | `+underground-link` | Тунель-пара в межах N | entities/move | 📎 | 1 | Factorio — клітинна логістика (конвеєри, маніпулятори, мережі) |
 | `+undo-after-death` | Відкат після програшу з лічильником смертей | game-logic/lose | 📎 | 1 | Kaboom (+ LuckSweeper, Pure Skill Minesweeper, Tatham Mines — сапер, що карає або прощає вгадування) |
 | `+undo-immune-avatar` | Аватар поза undo: світ відкочується, герой ні | game-logic/history | 🥈 | 1 | Achronal Dungeon |
-| `+undo-immune-objects` | Обʼєкти, взаємодія з якими переживає undo/рестарт | game-logic/history | 🥈 | 1 | Achronal Dungeon |
 | `+undo-keeps-progress` | Undo не відкочує метапрогрес | game-logic/history | 📎 | 1 | Pâquerette Down the Bunburrows |
 | `+undo-limited` | Undo на N кроків (кільцевий буфер) | game-logic/history | 📎 | 1 | Soulestination (魂之归宿) |
+| `+undo-reopens-hole` | Undo відкриває діру під імунним | game-logic/history | 📎 | 1 | Tres Undos |
 | `+undo-through-reset` | Рестарт як скасовний хід | game-logic/history | 🌱 | 1 | Gentoo Rescue |
 | `+undo-through-restart` | Undo відкочує й рестарт | game-logic/history | 🌱 | 1 | Headlong Hunt |
 | `+undo-tokens` | Undo як колекційний ресурс | game-logic/history | 📎 | 1 | Below the Crown |
 | `+undo-whole-tick` | Заборонена колізія відкочує весь тік | entities/legality | 📎 | 1 | GVGAI (General Video Game AI) |
+| `+undoable-reset` | Рестарт як хід, що скасовується undo | game-logic/history | 🌱 | 1 | Altered |
+| `+undoable-restart` | Рестарт як крок історії | game-logic/history | 🌱 | 1 | Pattern Counter |
 | `+uneven-deck-odds` | Нерівний склад колоди як ресурс планування (вода рідка) | levels/generation | 🌱 | 1 | Trails of Tucana |
 | `+union-formation` | Учасники бою за формою навколо лідера | entities/combat | 🥉 | 1 | Yggdra Union: We'll Never Fight Alone |
 | `+union-merge` | Злиття груп: більша поглинає меншу, нічия — вибір | entities/interact | 🥉 | 1 | Acquire |
@@ -8843,7 +9464,9 @@
 | `+unsolvable-warning` | Попередити, що виграти вже неможливо | levels/solvability | 🥇 | 1 | Shisen-Sho / Onet (Сісен-сьо, «зʼєднай пару») |
 | `+unstoppable-level-timer` | Таймер рівня, що не ставиться на паузу | game-logic/score | 🌱 | 1 | Daedalian Opus |
 | `+untargetable-on-entry` | Укриття на хід для щойно виставленої фігури | entities/state | 🌱 | 1 | The Elder Scrolls: Legends |
+| `+untouchable-object` | Обʼєкт, якого не можна торкатись — лише штовхати посередником | entities/legality | 🌱 | 1 | Stamp Collecting on Planet Q |
 | `+unused-cell-penalty` | −1 за кожну порожню клітину особистого поля | game-logic/score | 🌱 | 1 | Agricola — сітка ферми (Агрікола) |
+| `+unused-turns-payout` | Невикористані спроби → гроші | game-logic/economy | 🌱 | 1 | Cursed Words |
 | `+unvisited-border-ban` | Сусіди через межу не можуть обидва бути поза шляхом | game-logic/constraints | 🌱 | 1 | Country Road |
 | `+update-clock-bit` | Біт тіку проти подвійного оновлення при скані | code/python | 🌱 | 1 | Sandspiel |
 | `+update-order` | Порядок оновлення сутностей у тіку | code/architecture | 🥈 | 1 | Cell Machine |
@@ -8859,6 +9482,7 @@
 | `+upkeep-decay` | Без утримання — деградація | game-logic/economy | 🌱 | 1 | SimCity (1989) / Micropolis |
 | `+upkeep-or-die` | Утримання паливом щоходу, нестача — загибель | game-logic/economy | 📎 | 1 | Lux AI Challenge |
 | `+urethane-trap` | Заряд заповнює простір піною, гравець застрягає | entities/combat | 📎 | 1 | Mine Bombers |
+| `+url-hash-state` | Рівень і налаштування в URL | interface/settings | 🌱 | 1 | Elevator Saga |
 | `+url-puzzle-encoding` | Пазл у URL: жанр/розмір/дані | levels/format | 📎 | 1 | puzz.link (pzprjs / pzprv3) |
 | `+use-all-exactly-once` | Розвʼязок має вжити кожен елемент рівно раз | game-logic/win | 🌱 | 1 | Krypto |
 | `+use-all-numbers-bonus` | Бонус і новий набір за витрачений увесь ресурс | game-logic/score | 🌱 | 1 | Calculords |
@@ -8867,12 +9491,14 @@
 | `+use-identify-wand` | Ефекти предмета генеруються і пізнаються вжитком | entities/state | 🥇 | 1 | 868-HACK (+ Imbroglio, Cinco Paus — мікро-роглайки Michael Brough) |
 | `+use-key-front-tile` | Кнопка Use діє на клітину попереду | interface/input | 🌱 | 1 | Wolfenstein 3D |
 | `+use-order-frees-space` | Використання предмета звільняє клітини | game-logic/constraints | 🌱 | 1 | Save Room – Organization Puzzle |
+| `+used-set-tracker` | Табло використаних можливостей | interface/hud | 🌱 | 1 | Bee Magic |
 | `+user-defined-elements` | Гравець додає нові види клітин | levels/editor | 🥈 | 1 | Sandspiel Studio |
 | `+user-puzzles` | Пазли з наборів підказок від гравців | levels/bank | 📎 | 1 | Tiled Words |
 | `+vacuum-cell` | Вакуум: порожня клітина без теплообміну | entities/state | 🌱 | 1 | Oxygen Not Included — клітинна фізика (гази, рідини, тепло) |
 | `+valence-bonds` | Валентність: ліміт звʼязків на сутності | entities/interact | 🥉 | 1 | Sokobond |
 | `+validate-on-finish` | Перевірка лише в кінці | game-logic/win | 🌱 | 1 | Unpacking |
 | `+validation-run` | Рівень публікується лише після проходження автором | levels/editor | 🥉 | 1 | OxRox |
+| `+value-clamp` | Значення затискається в діапазон | entities/state | 🌱 | 1 | ABI-DOS |
 | `+value-goal` | Мета рівня — отримати значення | game-logic/win | 🌱 | 1 | excellent |
 | `+value-highlight` | Підсвітити всі клітинки з обраним значенням | interface/hud | 🌱 | 1 | Dominosa (Доміноза) |
 | `+value-hint` | Підказка: значення позиції після кожного можливого ходу | game-logic/difficulty | 🌱 | 1 | Hackenbush (Хакенбуш) |
@@ -8882,6 +9508,7 @@
 | `+value-wrap-0-7` | Числа програми — 3 біти по колу | game-logic/program | 🌱 | 1 | ChipWits |
 | `+vanish-after-n-uses` | Клітина зникає після N проходів | entities/interact | 📎 | 1 | King's Valley II: The Seal of El Giza |
 | `+vanish-when-unlit` | Тайли існують лише в радіусі світла | entities/state | 🥈 | 1 | The Night Cage |
+| `+variable-bomb` | Бомба циклічно міняє розмір | entities/state | 🌱 | 1 | Bombuzal |
 | `+variable-jump-hold` | Довжина стрибка від утримання | entities/move | 📎 | 1 | Imogen |
 | `+variable-player-powers` | Ролі змінюють базові дії | entities/state | 🥉 | 1 | Forbidden Desert |
 | `+variant-mission-choice` | Дві таємні цілі, вибір однієї посеред гри | game-logic/win | 🌱 | 1 | Drunter und Drüber (Drunter & Drüber) |
@@ -8924,6 +9551,7 @@
 | `+virtual-gravity-check` | Перевірка розвʼязку уявним падінням | game-logic/constraints | 🥉 | 1 | Sto-stone (ストストーン) |
 | `+virtual-memory-bus` | Памʼять, підключена до латчів адреси й даних | game-logic/program | 🥈 | 1 | Virtual Circuit Board (VCB) |
 | `+virus-board-generation` | Стартове поле з цілей без готових збігів | levels/generation | 📎 | 1 | Dr. Mario (Доктор Маріо) |
+| `+virus-tile` | Мутація, що поширюється сусідніми плитками | entities/state | 📎 | 1 | Beyond Words |
 | `+visibility-by-moves` | Туман: видно лише досяжні клітини | interface/render | 🥉 | 1 | Kriegspiel + Dark Chess (Fog of War; «шахи наосліп із суддею» і «шахи в тумані») |
 | `+visibility-count-clue` | Число = скільки клітинок видно до перешкоди | game-logic/constraints | 🌱 | 1 | Kuromasu (Kurodoko, Range) + Cave (Bag) |
 | `+visible-timer-entity` | Таймер як сутність на полі | game-logic/lose | 🌱 | 1 | The Pit |
@@ -8932,11 +9560,13 @@
 | `+visit-all-nodes` | Шлях через усі вузли свого типу рівно раз | game-logic/constraints | 🥉 | 1 | LYNE |
 | `+visited-mark` | Позначка відкритого тому/рівня | levels/bank | 🌱 | 1 | Krazydad (банк друкованих пазлів) |
 | `+visited-trail` | Слід пройдених клітин | entities/state | 🌱 | 1 | Mined-Out |
+| `+visiting-trader` | Торговець приходить періодично з обмеженою пропозицією | game-logic/economy | 📎 | 1 | SteamWorld Build |
 | `+visitor-boost` | Шанс росте від дій інших гравців | game-logic | 🌱 | 1 | Animal Crossing — New Horizons (схрещування квітів) |
 | `+visitor-needs` | Відвідувачі з потребами самі обирають споруду | entities/move | 🥉 | 1 | Startopia |
 | `+visual-novel-layer` | Новельний шар між рівнями | interface/menus | 🥉 | 1 | The World Next Door |
 | `+visual-rule-blocks` | Правило з візуальних блоків без синтаксису | game-logic/program | 🥉 | 1 | tower.defense(): Program The Fight |
 | `+voice-callouts` | Голосові репліки на події | interface/sound | 🌱 | 1 | K.C.'s Krazy Chase! |
+| `+void-fall` | Над порожнечею — падає й зникає | entities/death | 🌱 | 1 | Droplets |
 | `+void-portal` | Портал без пари знищує обʼєкт | entities/interact | 🌱 | 1 | E9uations |
 | `+voluntary-dropout` | Вийти з раунду безкоштовно, замість штрафного пасу | game-logic/opponent | 🌱 | 1 | My City |
 | `+voluntary-pass` | Пас за бажанням як інструмент блефу | game-logic/turns | 🌱 | 1 | Reconnaissance Blind Chess (RBC) |
@@ -8951,12 +9581,15 @@
 | `+wager-coins` | Ставка валюти гри на партію | game-logic/economy | 🌱 | 1 | Knucklebones (Cult of the Lamb) |
 | `+wagon-collect-grow` | Склад росте з кожним вагоном | entities/state | 📎 | 1 | Trackastrophe! |
 | `+wait-at-wall` | Упор у стіну зупиняє, а не вбиває | entities/move | 🌱 | 1 | Nibbler |
+| `+wait-for-condition` | Команда чекає, доки обʼєкт стане on | game-logic/program | 📎 | 1 | Star Stuff |
+| `+wait-time-metrics` | Середнє й максимальне очікування агентів | game-logic/score | 🌱 | 1 | Elevator Saga |
 | `+wait-until-end` | Чекати до розвʼязки з бонусом/ризиком | game-logic/score | 📎 | 1 | Robots (BSD) / Chase / Daleks |
 | `+wake-on-noise` | Ворог прокидається від шуму | entities/move | 🌱 | 1 | Hunt the Wumpus («Полювання на Вампуса») |
 | `+walk-cost-terrain` | Вартість кроку за типом клітини | entities/move | 📎 | 1 | Against the Storm |
 | `+walk-distance-score` | Оцінка за довжиною шляху | game-logic | 📎 | 1 | Afterlife |
 | `+walk-on-built-only` | Ходити лише по збудованих клітинах | entities/move | 🌱 | 1 | Yu-Gi-Oh! Dungeon Dice Monsters |
 | `+walk-on-panel` | Панель, по якій ходиш ногами | interface/input | 📎 | 1 | Taiji + The Witness (панелі) |
+| `+walk-only-cells` | Клітини лише для гравця: обʼєкти туди не зсуваються | entities/legality | 🌱 | 1 | Reliquia Park |
 | `+walk-over-to-drop` | Пройти обʼєкт по всіх секціях — він падає | entities/interact | 📎 | 1 | BurgerTime |
 | `+walk-over-trap` | Пастка шкодить, але не зупиняє | entities/interact | 🌱 | 1 | TrapSweeper |
 | `+walkability-modifier` | Блок під блоком змінює прохідність | entities/legality | 📎 | 1 | Mekorama |
@@ -8969,6 +9602,7 @@
 | `+wall-breaker-ai` | Ворог ламає перешкоду, коли шляху нема | entities/move | 🥉 | 1 | Dig or Die |
 | `+wall-builder-two-ends` | Стіна росте від точки двома половинами | entities/spawn | 📎 | 1 | JezzBall |
 | `+wall-cell` | Стіна рве сусідство й лінії підказок | game-logic/constraints | 🌱 | 1 | hexceed |
+| `+wall-cells` | Клітинки-винятки із загальних правил | game-logic/constraints | 📎 | 1 | Super Sudokoid: Dark Inversion |
 | `+wall-crush-damage` | Удар об стіну під час зсуву — шкода | entities/combat | 🌱 | 1 | Twinfold |
 | `+wall-damage-collapse` | Стіни на ребрах з HP; спільний запас пошкоджень — програш | entities/legality | 🥉 | 1 | Flash Point: Fire Rescue |
 | `+wall-edge-constraint` | Ребро впритул до стіни | entities/legality | 📎 | 1 | Happy Home (Щасливий дім) |
@@ -9046,11 +9680,17 @@
 | `+weather-changes-routes` | Погода змінює прохідність клітин | entities/state | 🥉 | 1 | Keepsweeper |
 | `+weather-die` | Кубик-модифікатор ходу | game-logic/economy | 📎 | 1 | Takenoko (Такеноко) |
 | `+weather-modifier` | Погода змінює виробіток | game-logic | 🌱 | 1 | Block'hood |
+| `+web-pin` | Клітина-павутина: обʼєкт на ній не зрушити | entities/legality | 🌱 | 1 | Pull Chain |
+| `+weekday-themes` | Щоденний пазл з темою за днем тижня | levels/bank | 🌱 | 1 | Liquidum |
 | `+weekly-attempt` | Одна спроба на тиждень + бонусна | levels/bank | 🌱 | 1 | Faux Hollows (Final Fantasy XIV) |
+| `+weekly-gauntlet` | Тижневий турнір з динамічними порогами | interface/results | 🥉 | 1 | Hard Chip |
+| `+weekly-marathon` | 10 рівнів поспіль раз на тиждень | levels/bank | 🌱 | 1 | Liquidum |
 | `+weekly-schedule` | Стратегічний календар: один вибір події на тиждень | game-logic/economy | 🥉 | 1 | Legend of Keepers |
 | `+wego-turns` | Одночасне виконання планів обох сторін | game-logic/opponent | 🥈 | 1 | Frozen Synapse |
 | `+weigh-exit` | Вихід відкривається масою/довжиною | game-logic/win | 🌱 | 1 | Snake Rattle 'n' Roll |
 | `+weight-and-bulk` | Ліміт інвентаря двома величинами: вага й обʼєм | entities/inventory | 📎 | 1 | Castle of the Winds |
+| `+weight-classes` | Класи ваги визначають наслідок зіткнення | entities/state | 🥉 | 1 | Wizard's Way Out |
+| `+weight-compare` | Вага тіла = кількість злитих частин; розчавлює лише важче | entities/interact | 📎 | 1 | Ligo |
 | `+weight-encumbrance` | Вага сповільнює | entities/state | 🌱 | 1 | Escape from Tarkov (inventory) |
 | `+weight-speed` | Вага сповільнює чергу | entities/state | 🌱 | 1 | Tactics Ogre |
 | `+weighted-deck` | Колода з частотами: більше малих чисел | levels/generation | 🌱 | 1 | Krypto |
@@ -9058,6 +9698,7 @@
 | `+weighted-secret-vote` | Таємне одночасне голосування картами з вагою | game-logic/opponent | 📎 | 1 | Drunter und Drüber (Drunter & Drüber) |
 | `+weighted-spawn` | Спавн зі зваженими значеннями | entities/spawn | 🌱 | 1 | 2048 (+ Threes як предок) |
 | `+weld-adjacent` | Зварювання сусідніх блоків назавжди | entities/interact | 🥉 | 1 | Infinifactory |
+| `+weld-cut-by-barrier` | Барʼєр, закриваючись, розрізає зварку | entities/interact | 📎 | 1 | 0PLAYER |
 | `+wfc-level-generation` | Рівень з wave function collapse за зразком | levels/generation | 🥇 | 1 | MiniGrid (з BabyAI) |
 | `+wfc-solver` | Wave Function Collapse | levels/generation | 🥇 | 1 | Townscaper |
 | `+whack-a-mole-bonus` | Бонус-етап: збивати кротів | levels/progression | 📎 | 1 | Kitten Kaboodle (Nyan Nyan Panic) |
@@ -9065,6 +9706,7 @@
 | `+wheel-four-match` | Контейнер на N гнізд: N однакових — вибух | entities/interact | 📎 | 1 | Log!cal |
 | `+whip-adjacent-attack` | Витратна атака по всіх сусідах | entities/combat | 📎 | 1 | Kroz |
 | `+white-run-border-limit` | Біла серія в лінії перетинає ≤ K меж регіонів | game-logic/constraints | 📎 | 1 | Heyawake (Хеявакé, «поділені кімнати») |
+| `+whole-line-toggle` | Протяжка по ребру перемикає всю пряму до вузла-зупинки | interface/input | 📎 | 1 | KaitoRamma (快刀乱麻) |
 | `+width-slider-challenge` | Розмір задачі задається повзунком | game-logic/difficulty | 🌱 | 1 | Ubongo + Katamino / IQ Puzzler (Убонго) |
 | `+wild-die` | Кубик-джокер для будь-якого кольору | entities/state | 🌱 | 1 | Ganz Schön Clever (That's Pretty Clever) |
 | `+wild-face` | Грань-джокер на кубику | entities/combat | 🌱 | 1 | Ghost Stories |
@@ -9106,8 +9748,12 @@
 | `+word-category-book` | Колекції слів за категоріями | levels/progression | 📎 | 1 | Bookworm |
 | `+word-chain-overlap` | Остання літера = перша наступного | game-logic/constraints | 🌱 | 1 | Spiral puzzle (Спіральний кросворд) |
 | `+word-clear-refill` | Слово зникає, поле падає й поповнюється | entities/move | 🌱 | 1 | Gridwordy |
+| `+word-color-validity` | Ряди літер фарбуються: слово / не слово | interface/hud | 🌱 | 1 | Spell Slide |
+| `+word-door` | Двері відкриті, поки поруч складено слово | entities/interact | 📎 | 1 | Spell Slide |
 | `+word-duel` | Двобій словами на однакових літерах | game-logic/opponent | 🥉 | 1 | Quarrel |
+| `+word-from-anywhere` | Слово з літер будь-де на полі | game-logic/constraints | 🌱 | 1 | Dave's Word Game |
 | `+word-from-free-tiles` | Слово лише з вільних плиток | game-logic/constraints | 🌱 | 1 | WordJong |
+| `+word-length-levels` | Рівень бази для кожної довжини слова | game-logic/score | 🌱 | 1 | Beyond Words |
 | `+word-length-scoring` | Рахунок слова: Σ вартостей × довжина | game-logic/score | 🌱 | 1 | SpellTower |
 | `+word-list-checkoff` | Список цілей, що викреслюються | interface/hud | 🌱 | 1 | Word search (Пошук слів) |
 | `+word-of-recall` | Відкладений телепорт хаб ⇄ максимальна глибина | entities/interact | 🌱 | 1 | Moria / Angband |
@@ -9140,6 +9786,8 @@
 | `+world-is-sliding-puzzle` | Світ із шматків-плиток: ходиш по них і переставляєш | world/levels | 🥈 | 1 | Slider |
 | `+world-map-travel` | Карта світу з переходом у зони | levels/generation | 🥉 | 1 | Caves of Qud |
 | `+world-rule-modifiers` | Правило світу | game-logic/waves | 🥉 | 1 | Сучасні mazing-TD (Electromaze, Tower Maze Defense, Thornline TD, Maul Tactics, Back to the Roots 2) |
+| `+world-scroll` | Бігунок прокручує весь рівень | entities/move | 🥉 | 1 | A Man Walks Into A Scrollbar |
+| `+world-shift-layer` | Перемикання на світ-двійник | levels/progression | 🥉 | 1 | Wilderplace |
 | `+world-slice-rotate` | Обертання зрізу 3D-сітки з усім вмістом і орієнтаціями | entities/move | 🥈 | 1 | Euclidean Skies |
 | `+world-split-on-conflict` | Конфлікт ефектів розщеплює світ на гілки | game-logic/history | 🥇 | 1 | Theta and Paralldox on Worldlines |
 | `+world-transpose` | Ввід переставляє координати всього світу | entities/move | 📎 | 1 | 4D (Beekie & Corey Hardt) і 4D-Sokoban-родичі |
@@ -9147,6 +9795,7 @@
 | `+wound-cards` | Шкода як мертві карти в руці | entities/combat | 📎 | 1 | Mage Knight Board Game |
 | `+wound-slowdown` | Поранений стоїть, потім розганяється | entities/state | 📎 | 1 | Maze Craze |
 | `+wound-slows` | Поранений ворог повільніший і слабший | entities/state | 🌱 | 1 | The Last Spell |
+| `+wound-state` | Поранений: без зброї й вантажу до госпіталю | entities/state | 🌱 | 1 | Лабіринт (паперова гра з ведучим; цифрова Labirinth) |
 | `+wounded-weight-distance` | Поранений юніт контролює менше: відстань ×2 | game-logic/score | 🌱 | 1 | CodinGame Summer Challenge 2025: Soak Overflow |
 | `+wounds-need-treatment` | Рани, що не гояться без ліків | entities/state | 📎 | 1 | Infra Arcana (огляд з The Ground Gives Way і Zorbus) |
 | `+xp-for-discovery` | Досвід за перше побачене / глибину / ідентифікацію, а не лише вбивства | game-logic/progression | 🌱 | 1 | Sil |
@@ -9185,58 +9834,60 @@
 | `+zone-paint` | Розфарбувати клітини як зону/кімнату | interface/input | 🌱 | 1 | Prison Architect — шар кімнат і зон |
 | `+zone-progression` | Зони забігу з вибором між ними | levels/progression | 📎 | 1 | Sunken Stones |
 | `+zone-rulesets` | Регіони мапи з різними правилами для тих самих обʼєктів | game-logic | 🥈 | 1 | Enigmash |
+| `+zone-skins` | Зона змінює спрайти без зміни правил | interface/graphics | 🌱 | 1 | Evil Eye |
 | `+zone-stay-punisher` | Задовго в зоні → карач | game-logic/lose | 📎 | 1 | Snake Rattle 'n' Roll |
 | `+zone-time-stop` | Зупинка часу за заряд | game-logic/score | 🥉 | 1 | Tetris Effect / Tetris Effect Connected |
+| `+zone-train-limit` | Зона з лімітом потягів | entities/legality | 📎 | 1 | Upalu Mundi |
 
 ## Таксономія
 
 | Сімʼя | avatar | cursor | figure | puzzle | hybrid |
 |---|---|---|---|---|---|
-| board-digital | 2 | 79 | 15 | 7 | 5 |
-| build-sim | 12 | 82 | 1 | 4 | 13 |
-| chess-abstract | 3 | 4 | 108 |  | 1 |
+| board-digital | 2 | 82 | 15 | 7 | 6 |
+| build-sim | 12 | 83 | 1 | 4 | 13 |
+| chess-abstract | 3 | 4 | 109 |  | 1 |
 | connect-rotate | 10 | 47 | 1 | 9 | 7 |
-| dig-gravity | 56 | 13 |  |  | 4 |
+| dig-gravity | 56 | 14 |  |  | 4 |
 | falling-match | 48 | 66 |  | 1 | 8 |
-| grid-platformer | 74 | 2 | 1 |  | 5 |
-| hidden-deduction | 17 | 46 | 12 | 10 | 11 |
+| grid-platformer | 78 | 2 | 1 |  | 5 |
+| hidden-deduction | 18 | 46 | 13 | 10 | 11 |
 | maze-arcade | 109 | 2 |  |  | 3 |
-| pencil-logic |  |  |  | 121 |  |
-| program-robots | 36 | 27 | 17 | 1 | 6 |
-| push-slide | 46 | 8 | 16 |  | 2 |
-| roguelike | 92 | 2 |  |  | 4 |
-| tactics | 11 | 2 | 106 |  | 3 |
-| thinky | 70 | 11 | 1 | 5 | 6 |
+| pencil-logic |  |  |  | 150 |  |
+| program-robots | 38 | 35 | 18 | 1 | 8 |
+| push-slide | 93 | 9 | 18 |  | 3 |
+| roguelike | 93 | 2 |  |  | 4 |
+| tactics | 12 | 2 | 107 |  | 3 |
+| thinky | 115 | 18 | 3 | 6 | 9 |
 | tower-lanes | 7 | 69 | 8 |  | 7 |
-| word-number | 2 | 36 |  | 40 | 3 |
+| word-number | 3 | 41 |  | 42 | 3 |
 
-- `field`: square ×1238 · hex ×102 · graph ×91 · 1d ×62 · layers ×56 · free ×41 · 3d ×34 · iso ×33 · nested ×5 · hyperbolic ×1
-- `time`: turn ×741 · realtime ×553 · static ×232 · programmed ×117 · wego ×12 · rhythm ×8
-- `opponent`: none ×825 · ai ×398 · hotseat ×287 · online ×112 · coop ×41
-- `info`: full ×1079 · hidden ×349 · partial ×235
-- `random`: none ×682 · runtime ×485 · setup ×252 · both ×244
-- `goal`: state ×736 · score ×297 · constraints ×175 · collect ×164 · survive ×148 · race ×56 · territory ×44 · none ×43
-- `also`: thinky ×148 · board-digital ×124 · push-slide ×122 · build-sim ×97 · roguelike ×91 · maze-arcade ×72 · pencil-logic ×68 · connect-rotate ×61 · chess-abstract ×53 · tactics ×49 · falling-match ×36 · grid-platformer ×35 · hidden-deduction ×31 · program-robots ×28 · word-number ×26 · tower-lanes ×24 · dig-gravity ×22
+- `field`: square ×1379 · hex ×106 · graph ×96 · 1d ×63 · layers ×61 · 3d ×48 · free ×41 · iso ×37 · nested ×5 · hyperbolic ×1 · tri ×1
+- `time`: turn ×860 · realtime ×563 · static ×265 · programmed ×130 · wego ×12 · rhythm ×8
+- `opponent`: none ×984 · ai ×409 · hotseat ×289 · online ×112 · coop ×44
+- `info`: full ×1236 · hidden ×353 · partial ×247 · asymmetric ×2
+- `random`: none ×834 · runtime ×494 · setup ×257 · both ×253
+- `goal`: state ×849 · score ×303 · constraints ×207 · collect ×184 · survive ×150 · race ×57 · territory ×44 · none ×44
+- `also`: thinky ×190 · push-slide ×164 · board-digital ×125 · build-sim ×102 · roguelike ×99 · maze-arcade ×75 · connect-rotate ×73 · pencil-logic ×72 · chess-abstract ×56 · tactics ×50 · grid-platformer ×39 · falling-match ×37 · hidden-deduction ×32 · program-robots ×29 · word-number ×27 · tower-lanes ×26 · dig-gravity ×25
 
 ## Щільність `custom` у правилах і покриття по сімʼях
 
 | Сімʼя | Ігор | Рядків правил | з `custom` | % custom | Середнє покриття |
 |---|---|---|---|---|---|
-| board-digital | 108 | 1770 | 1036 | 59% | 66% |
-| build-sim | 112 | 1999 | 1115 | 56% | 60% |
-| chess-abstract | 116 | 1674 | 797 | 48% | 67% |
+| board-digital | 112 | 1843 | 1078 | 58% | 66% |
+| build-sim | 113 | 2038 | 1130 | 55% | 60% |
+| chess-abstract | 117 | 1704 | 808 | 47% | 67% |
 | connect-rotate | 74 | 1086 | 552 | 51% | 59% |
-| dig-gravity | 73 | 1312 | 527 | 40% | 55% |
+| dig-gravity | 74 | 1341 | 543 | 40% | 55% |
 | falling-match | 123 | 1868 | 802 | 43% | 62% |
-| grid-platformer | 82 | 1391 | 554 | 40% | 60% |
-| hidden-deduction | 96 | 1345 | 663 | 49% | 63% |
+| grid-platformer | 86 | 1463 | 574 | 39% | 59% |
+| hidden-deduction | 98 | 1398 | 695 | 50% | 63% |
 | maze-arcade | 114 | 1969 | 745 | 38% | 64% |
-| pencil-logic | 121 | 1630 | 682 | 42% | 66% |
-| program-robots | 87 | 1458 | 874 | 60% | 63% |
-| push-slide | 72 | 1001 | 381 | 38% | 63% |
-| roguelike | 98 | 2010 | 1101 | 55% | 56% |
-| tactics | 122 | 2585 | 1705 | 66% | 60% |
-| thinky | 93 | 1235 | 513 | 42% | 57% |
+| pencil-logic | 150 | 2058 | 870 | 42% | 66% |
+| program-robots | 100 | 1691 | 997 | 59% | 61% |
+| push-slide | 123 | 1782 | 610 | 34% | 61% |
+| roguelike | 99 | 2050 | 1122 | 55% | 56% |
+| tactics | 124 | 2661 | 1744 | 66% | 60% |
+| thinky | 151 | 2187 | 853 | 39% | 60% |
 | tower-lanes | 91 | 1742 | 1055 | 61% | 59% |
-| word-number | 81 | 1168 | 655 | 56% | 62% |
-| **разом** | 1663 | 27243 | 13757 | 50% | 62% |
+| word-number | 89 | 1289 | 724 | 56% | 62% |
+| **разом** | 1838 | 30170 | 14902 | 49% | 61% |
