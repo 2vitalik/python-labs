@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T363** · тікетів: 362 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T364** · тікетів: 363 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -239,8 +239,8 @@
 | .rounds | [T229](.rounds/.t/T229-R--ods-live-defense-no-recording.md) | ✔️ | ods-live-defense-no-recording | ODS: онлайн-захист без окремого запису — доповнення до T228 | 🟢 ⬜ |
 | tgbot | [T230](tgbot/.t/T230-P--tg-paste-import.md) | 💡 | tg-paste-import | Імпорт листування з Telegram вставкою тексту | 🟢 🟩 |
 | tgbot | [T231](tgbot/.t/T231--tg-paste/plan.md) | ⚙️ | tg-paste | Імпорт листування з Telegram вставкою тексту — код — план | 🟢 🟩 |
-| ods | [T232](ods/.t/T232-C--ods-lab-on-site.md) | 🔆 | ods-lab-on-site | ODS: лаба на сайті — де виконувати, що здавати, що перевіряти (варіанти) | 🟢 ⬜ |
-| ods | [T233](ods/.t/T233-Q--ods-lab-on-site-questions.md) | ❓ | ods-lab-on-site-questions | ODS: лаба на сайті — вибори | 🔴 ⬜ |
+| ods | [T232](ods/.t/T232-C--ods-lab-on-site.md) | 🔆 | ods-lab-on-site | ODS: лаба на сайті — де виконувати, що здавати, що перевіряти (варіанти) | 🟢 🟩 |
+| ods | [T233](ods/.t/T233-Q--ods-lab-on-site-questions.md) | ❓ | ods-lab-on-site-questions | ODS: лаба на сайті — вибори | 🔴 🟩 |
 | ods | [T234](ods/.t/T234--ods-labs-2-5-ready/plan.md) | ⚙️ | ods-labs-2-5-ready | ODS, лаби 2–5: перевірка, guide, marimo, картки — план | 🟢 🟩 |
 | github | [T235](github/.t/T235-P--lab-deadlines-design.md) | 💡 | lab-deadlines-design | Дедлайни лаб, репозиторії студентів і звіти — дизайн v1 | 🟢 🟩 |
 | github | [T236](github/.t/T236-Q--lab-deadlines-questions.md) | ❓ | lab-deadlines-questions | Дедлайни лаб і репозиторії — вибори | 🔴 ⬜ |
@@ -361,12 +361,13 @@
 | platform | [T351](platform/.t/T351-Q--game-plus-choices.md) | ❓ | game-plus-choices | Плюси — вибір після T350 | 🔴 ⬜ |
 | platform | [T352](platform/.t/T352--shared-to-core/plan.md) | ⚙️ | shared-to-core | Спільне — в ядро: ods на всіх сторінках платформи, цеглинки python-сайту в core — план | 🟢 🟩 |
 | platform | [T353](platform/.t/T353-Q--shared-to-core-choices.md) | ❓ | shared-to-core-choices | Спільне в ядрі: вибори — «Строки» ods, захисти, файли, ШІ-клієнт | 🔴 ⬜ |
-| ods | [T354](ods/.t/T354--ods-lab-handin/plan.md) | ⚙️ | ods-lab-handin | Здача й перевірка лаб ods — файл ноутбука, показ без запуску, підказка оцінки, marimo в браузері, локальний перезапуск, check() → сайт — план | 🟢 ⬜ |
+| ods | [T354](ods/.t/T354--ods-lab-handin/plan.md) | ⚙️ | ods-lab-handin | Здача й перевірка лаб ods — файл ноутбука, показ без запуску, підказка оцінки, marimo в браузері, локальний перезапуск, check() → сайт — план | 🟢 🟩 |
 | ods | [T355](ods/.t/T355--ods-lab3-site/plan.md) | ⚙️ | ods-lab3-site | Лаба 3 ods: причіпки, версія для сайту (спільні сторінки + сторінки лаби), сторінка-пояснення для ПЗ — план | 🟢 ⬜ |
 | ods | [T356](ods/.t/T356-C--ods-lab-check-org.md) | 🔆 | ods-lab-check-org | ODS: як організувати перевірку лаб — GitHub чи сайт, шари перевірки, ідеї | 🟢 ⬜ |
-| ods | [T357](ods/.t/T357--ods-site/plan.md) | ⚙️ | ods-site | Сайт ods цілком: сторінки лаб і спільні сторінки, лекції, пари, архів старих лаб, «Очима студента» одним кліком, імпорт через API — план | 🟢 ⬜ |
+| ods | [T357](ods/.t/T357--ods-site/plan.md) | ⚙️ | ods-site | Сайт ods цілком: сторінки лаб і спільні сторінки, лекції, пари, архів старих лаб, «Очима студента» одним кліком, імпорт через API — план | 🟢 🟩 |
 | ods | [T358](ods/.t/T358-Q--ods-lab3-site-choices.md) | ❓ | ods-lab3-site-choices | ODS, лаба 3 у версії для сайту: вибори після причіпок | 🔴 ⬜ |
 | ods | [T359](ods/.t/T359--ods-lectures-polish/plan.md) | ⚙️ | ods-lectures-polish | Лекції ods: вичитка 15 текстів проти слайдів, журнал правок, розмітка й вигляд слайдів, типографіка — план | 🟢 ⬜ |
-| ods | [T360](ods/.t/T360-C--ods-site-review.md) | 🔆 | ods-site-review | Сайт ods: що є, чого бракує, що варто додати — огляд після T357 | 🟢 ⬜ |
-| ods | [T361](ods/.t/T361-Q--ods-site-choices.md) | ❓ | ods-site-choices | Сайт ods: вибори після T357 — пари, лекції, лаби, «Очима студента» | 🟢 ⬜ |
-| ods | [T362](ods/.t/T362-Q--ods-lab-handin-choices.md) | ❓ | ods-lab-handin-choices | ODS, здача й перевірка лаб: вибори | 🟢 ⬜ |
+| ods | [T360](ods/.t/T360-C--ods-site-review.md) | 🔆 | ods-site-review | Сайт ods: що є, чого бракує, що варто додати — огляд після T357 | 🟢 🟩 |
+| ods | [T361](ods/.t/T361-Q--ods-site-choices.md) | ❓ | ods-site-choices | Сайт ods: вибори після T357 — пари, лекції, лаби, «Очима студента» | 🔴 ⬜ |
+| ods | [T362](ods/.t/T362-Q--ods-lab-handin-choices.md) | ❓ | ods-lab-handin-choices | ODS, здача й перевірка лаб: вибори | 🔴 🟩 |
+| ods | [T363](ods/.t/T363-Q--ods-lectures-choices.md) | ❓ | ods-lectures-choices | Вибори після вичитки лекцій ods: терміни, виділення, слайди, сумнівні місця, заливка | 🟢 ⬜ |
