@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T364** · тікетів: 363 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T365** · тікетів: 364 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -366,8 +366,9 @@
 | ods | [T356](ods/.t/T356-C--ods-lab-check-org.md) | 🔆 | ods-lab-check-org | ODS: як організувати перевірку лаб — GitHub чи сайт, шари перевірки, ідеї | 🟢 ⬜ |
 | ods | [T357](ods/.t/T357--ods-site/plan.md) | ⚙️ | ods-site | Сайт ods цілком: сторінки лаб і спільні сторінки, лекції, пари, архів старих лаб, «Очима студента» одним кліком, імпорт через API — план | 🟢 🟩 |
 | ods | [T358](ods/.t/T358-Q--ods-lab3-site-choices.md) | ❓ | ods-lab3-site-choices | ODS, лаба 3 у версії для сайту: вибори після причіпок | 🔴 ⬜ |
-| ods | [T359](ods/.t/T359--ods-lectures-polish/plan.md) | ⚙️ | ods-lectures-polish | Лекції ods: вичитка 15 текстів проти слайдів, журнал правок, розмітка й вигляд слайдів, типографіка — план | 🟢 ⬜ |
+| ods | [T359](ods/.t/T359--ods-lectures-polish/plan.md) | ⚙️ | ods-lectures-polish | Лекції ods: вичитка 15 текстів проти слайдів, журнал правок, розмітка й вигляд слайдів, типографіка — план | 🟢 🟩 |
 | ods | [T360](ods/.t/T360-C--ods-site-review.md) | 🔆 | ods-site-review | Сайт ods: що є, чого бракує, що варто додати — огляд після T357 | 🟢 🟩 |
 | ods | [T361](ods/.t/T361-Q--ods-site-choices.md) | ❓ | ods-site-choices | Сайт ods: вибори після T357 — пари, лекції, лаби, «Очима студента» | 🔴 ⬜ |
 | ods | [T362](ods/.t/T362-Q--ods-lab-handin-choices.md) | ❓ | ods-lab-handin-choices | ODS, здача й перевірка лаб: вибори | 🔴 🟩 |
-| ods | [T363](ods/.t/T363-Q--ods-lectures-choices.md) | ❓ | ods-lectures-choices | Вибори після вичитки лекцій ods: терміни, виділення, слайди, сумнівні місця, заливка | 🟢 ⬜ |
+| ods | [T363](ods/.t/T363-Q--ods-lectures-choices.md) | ❓ | ods-lectures-choices | Вибори після вичитки лекцій ods: терміни, виділення, слайди, сумнівні місця, заливка | 🔴 ⬜ |
+| games | [T364](games/.t/T364--ludopedia-wave4/plan.md) | ⚙️ | ludopedia-wave4 | Лудопедія: хвиля 4 — дописати залишок черг хвилі 3 — план | 🟢 ⬜ |
