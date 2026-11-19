@@ -125,7 +125,7 @@
 | Gabbuchi | 2019 | герой зʼїдає блоки свого кольору, решта — опора; ліміт змін кольору | https://ja.wikipedia.org/wiki/%E3%82%AC%E3%83%96%E3%83%83%E3%83%81 | https://www.youtube.com/results?search_query=Gabbuchi+gameplay | 2 |
 | The Bugs Bunny Crazy Castle (Roger Rabbit / Mickey Mouse) | 1989 | без стрибка; двері, труби й сходи по-різному пропускають ворогів; сейфи й гирі як зброя | W:The_Bugs_Bunny_Crazy_Castle | https://www.youtube.com/results?search_query=Bugs+Bunny+Crazy+Castle+NES+gameplay | 2 |
 | Mappy | 1983 | батут ламається на 4-й відскок; двері оглушують, мікрохвильові двері змітають котів | W:Mappy | https://www.youtube.com/results?search_query=Mappy+arcade+gameplay | 2 |
-| Gridvania | 2024 | метроїдванія: предмети кладуться на сітку й піднімаються як будівельний інструмент | https://store.steampowered.com/app/3303560/Gridvania/ | — | 2 |
+| ~~Gridvania~~ | 2024 | метроїдванія: предмети кладуться на сітку й піднімаються як будівельний інструмент | https://store.steampowered.com/app/3303560/Gridvania/ | — · ⊘ 2026-11-19: нема джерела правил (хвиля 3) | 2 |
 | Crazy Climber | 1980 | два джойстики — дві пари кінцівок; вікна-клітини зачиняються, згори падають предмети | W:Crazy_Climber | https://www.youtube.com/results?search_query=Crazy+Climber+arcade+gameplay | 2 |
 | Stackrobats | ? | ланцюг звʼязаних акробатів рухається разом: драбини, канат униз, батути, бочки | https://beepyeah.itch.io/stackrobats | — | 2 |
 | Bagman | 1982 | мішки нести до тачки нагору; мішок скинути на охоронця на драбині | W:Bagman_(video_game) | https://www.youtube.com/results?search_query=Bagman+arcade+gameplay | 3 |

@@ -23,7 +23,7 @@
 | Emberward | 2024 | лабіринт з тетроміно: кожну хвилю кладеш фігури, вежі на них | https://www.pcgamer.com/games/strategy/drop-blocks-to-make-your-own-maze-in-the-demo-for-tower-defense-game-emberward | https://weloveeverygame.com/games/2459550-emberward.html · https://www.familygamingdatabase.com/game/Emberward | 1 |
 | Grid Forge TD | 2025 | тетроміно формують шлях ворога + випадкові лава-клітинки | https://yarrichar.itch.io/grid-forge-td | https://store.steampowered.com/app/4099130/Grid_Forge_TD_Demo | 3 |
 | Pathless Maze TD / Electromaze Defense / Maul Tactics | 202x | сучасні «шляху нема, доки не збудуєш» — пачка mazing-клонів | — | — | 3 |
-| Tower Defence: Back to the Roots 2 | 202x | змагальний 1v1 mazing: економіка й маршрут як дуель | — | — | 3 |
+| ~~Tower Defence: Back to the Roots 2~~ | 202x | змагальний 1v1 mazing: економіка й маршрут як дуель | — | — · ⊘ 2026-11-19: покрито `tower-lanes/mazing-td-modern` | 3 |
 | Dungeon Warfare | 2015 | пастки на тайлах підземелля; штовхання в ями й лаву | https://store.steampowered.com/app/355980 | https://store.steampowered.com/app/3419220/Dungeon_Warfare_3/ (DW3 — сам кладеш тайли-коридори) | 1 |
 | Orcs Must Die! | 2011 | пастки на підлогу/стіну/стелю клітинками; повернення з рефандом | https://en.wikipedia.org/wiki/Orcs_Must_Die! | — | 2 |
 | Rampart | 1990 | фаза будування: стіни-тетроміно замикають замок; фаза стрільби; PvP | https://en.wikipedia.org/wiki/Rampart_(video_game) | https://strategywiki.org/wiki/Rampart · https://tvtropes.org/pmwiki/pmwiki.php/VideoGame/Rampart | 1 |

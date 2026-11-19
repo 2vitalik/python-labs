@@ -34,7 +34,7 @@
 | Nibbler | 1982 | змійка в лабіринті Pac-Man-типу: рух без зупинок, коридори завширшки 1 | [W](https://en.wikipedia.org/wiki/Nibbler_(video_game)) | [Snake Byte](https://en.wikipedia.org/wiki/Snake_Byte) | 2 |
 | Nibbles (QBasic) | 1991 | змійка-програма для навчання: 2 гравці, рівні-лабіринти, текст. режим | [W](https://en.wikipedia.org/wiki/Nibbles_(video_game)) | [Sssnake](https://en.wikipedia.org/wiki/Sssnake) | 2 |
 | Snake Rattle 'n' Roll | 1990 | ізометрична змійка з висотою: стрибки, вага-ваги на виході | [W](https://en.wikipedia.org/wiki/Snake_Rattle_%27n%27_Roll) | — | 3 |
-| Snake Pass | 2017 | змійка з фізикою тіла: обвивання, хват — без сітки | [W](https://en.wikipedia.org/wiki/Snake_Pass_(video_game)) | — · ✔ виправлено 2026-11-09 | 3 |
+| ~~Snake Pass~~ | 2017 | змійка з фізикою тіла: обвивання, хват — без сітки | [W](https://en.wikipedia.org/wiki/Snake_Pass_(video_game)) | — · ✔ виправлено 2026-11-09 · ⊘ 2026-11-19: фізика тіла, не сітка (хвилі 2–3) | 3 |
 | Anteater | 1982 | «язик» як змійка, що втягується назад; удар лише кінчиком | [W](https://en.wikipedia.org/wiki/Anteater_(video_game)) | — | 2 |
 | Tron (Light Cycles) | 1982 | слід = стіна на швидкості, ШІ-суперники, повороти лише на 90° | [W](https://en.wikipedia.org/wiki/Tron_(video_game)) | [Discs of Tron](https://en.wikipedia.org/wiki/Discs_of_Tron) · [Deadly Discs](https://en.wikipedia.org/wiki/Tron:_Deadly_Discs) | 1 |
 | Armagetron Advanced | 2001 | 3D light cycles: «грайнд» біля стін для прискорення, командні бої | [W](https://en.wikipedia.org/wiki/Armagetron_Advanced) | — | 3 |

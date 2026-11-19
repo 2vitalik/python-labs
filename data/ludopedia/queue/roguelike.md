@@ -53,7 +53,7 @@
 | Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
 |---|---|---|---|---|---|
 | Desktop Dungeons | 2010/2013 | одноекранний пазл: ресурс = невідкриті клітини (регенерація за відкриття) | https://qcf-design.itch.io/desktop-dungeons | https://store.steampowered.com/app/226620 · https://videogamegeek.com/videogame/73739/desktop-dungeons | 1 |
-| Desktop Dungeons: Rewind | 2023 | ремейк з перепланованим маршрутом через «укуси» данжу | — | — | 3 |
+| ~~Desktop Dungeons: Rewind~~ | 2023 | ремейк з перепланованим маршрутом через «укуси» данжу | — | — · ⊘ 2026-11-19: покрито `roguelike/desktop-dungeons` | 3 |
 | Zaga-33 | 2012 | перший Brough-роглайк на 9×9 | https://en.wikipedia.org/wiki/Michael_Brough_(game_designer) | — | 2 |
 | 868-HACK | 2013 | 6×6: «сифон» дає ресурс, але спавнить ворогів; програми-здібності | https://en.wikipedia.org/wiki/Michael_Brough_(game_designer) | https://thinkygames.com/lists/latest-broughlike-games/ | 1 |
 | 868-BACK | 2026 | сиквел 868-HACK | https://en.wikipedia.org/wiki/Michael_Brough_(game_designer) | https://thinkygames.com/lists/latest-broughlike-games/ | 3 |
@@ -65,7 +65,7 @@
 | Twinfold | 2020-ті | злиття як у 2048 + вороги-роглайк | https://thinkygames.com/games/twinfold/similar/ | — | 1 |
 | Rat King | 2020-ті | свіжий broughlike з списку Thinky | https://thinkygames.com/lists/latest-broughlike-games/ | — | 3 |
 | Morphblade | 2017 | гекси, зброя-морф після кожного удару | https://thinkygames.com/games/morphblade/similar/ | — | 2 |
-| Wyrmspace Tactics | 2020-ті | роглайк-декбілдер на сітці 3×3 | https://thinkygames.com/games/wyrmspace-tactics/similar/ | — | 2 |
+| ~~Wyrmspace Tactics~~ | 2020-ті | роглайк-декбілдер на сітці 3×3 | https://thinkygames.com/games/wyrmspace-tactics/similar/ | — · ⊘ 2026-11-19: гра не вийшла (хвилі 2–3) | 2 |
 | Shogun Showdown | 2023/2024 | бій на одній горизонтальній лінії, черга атак як таймлайн | https://store.steampowered.com/app/2084000/Shogun_Showdown/ | — | 1 |
 | Pawnbarian | 2020 | герой ходить картами-фігурами шахів | https://store.steampowered.com/app/1142080/Pawnbarian | — | 1 |
 | Shotgun King: The Final Checkmate | 2022 | ти — чорний король з дробовиком проти білої армії | https://store.steampowered.com/app/1326310 | https://www.pcgamer.com/indie-roguelike-shotgun-king-takes-chess-and-adds-hot-lead-and-a-grudge | 2 |
@@ -170,7 +170,7 @@
 | Quasimorph | 2026 | екстракція: лут лишається, лише якщо вивіз; смерть клона — втрата всього взятого | https://store.steampowered.com/app/2059170/Quasimorph/ | — | 2 |
 | Magic Tower: Legion | 2026 | Magic Tower загоном: порядок виходу героїв у бій, поранений відступає, наступний продовжує | https://store.steampowered.com/app/4012830/Magic_Tower_Legion/ | — | 2 |
 | Terry The Skeleton | 2019 | гравець рухається в реальному часі, вороги — фазами за таймером; позначені клітини атак; ривок до стіни | https://amidos2006.itch.io/terry-the-skeleton | — | 2 |
-| Daedalike | ? | гравець сам викладає плитки рівня, кожна викладка — хід; деякі плитки спавнять ворогів | https://tomtl.itch.io/daedalike | — | 2 |
+| ~~Daedalike~~ | ? | гравець сам викладає плитки рівня, кожна викладка — хід; деякі плитки спавнять ворогів | https://tomtl.itch.io/daedalike | — · ⊘ 2026-11-19: на itch пʼять речень, правил нема (хвиля 3) | 2 |
 | SlideMaze | ? | зсув цілих рядів і стовпців лабіринту як у Labyrinth; ключ → двері | https://squaredev.itch.io/slidemaze | — | 2 |
 | Tactical Tetrominoes (7DRL) | 2022 | тетроміно-штампи: літера фігури задає ефект на клітинах під нею; заповнені лінії множать монети | https://notester82.itch.io/tactical-tetrominoes | — | 2 |
 | Switch Hook (7DRL) | 2016 | атака = обмін місцями з ворогом на гексах (гак-постріл), 1 урон | https://roguetemple.com/7drl/2016 | — | 2 |

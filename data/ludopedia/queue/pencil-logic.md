@@ -69,7 +69,7 @@
 | Doppelblock | — | дві чорні в рядку; ззовні сума між ними | pz:doppelblock | — | 2 |
 | Bosanowa | Nikoli vol.119 | поле з кружечків; число = сума різниць із сусідами | pz:bosanowa | — | 2 |
 | Magic / Latin squares | — | класична математика: суми рядків/діагоналей, латинськість | — | — | 3 |
-| Zebra (Einstein) puzzle | — | дедукція в таблиці атрибутів, а не на полі гри | — | — | 2 |
+| ~~Zebra (Einstein) puzzle~~ | — | дедукція в таблиці атрибутів, а не на полі гри | — | — · ⊘ 2026-11-19: покрито `pencil-logic/zebra-puzzle` | 2 |
 | Sherlock | 1992 | 6×6 атрибутів, підказки «поруч/лівіше/між» | — | — | 2 |
 
 ## Поділ на області (region division)
@@ -119,10 +119,10 @@
 | Kropki | — | білі крапки — сусідні цифри, чорні — подвоєння | pz:kropki | gm:consecutive-pairs-sudoku | 1 |
 | German Whispers | — | сусіди на лінії різняться щонайменше на 5 | — | — | 1 |
 | Renban | — | лінія містить послідовні цифри в будь-якому порядку | — | — | 2 |
-| Sandwich Sudoku | — | ззовні сума між 1 і 9 у рядку | — | — | 2 |
+| ~~Sandwich Sudoku~~ | — | ззовні сума між 1 і 9 у рядку | — | — · ⊘ 2026-11-19: покрито `pencil-logic/sudoku-variants` | 2 |
 | Fog of War | — | поле під туманом розкривається правильними цифрами | — | — | 1 |
 | Jigsaw / Samurai (Gattai) | — | нерегулярні блоки; пʼять сіток, що перекриваються | https://en.wikipedia.org/wiki/Sudoku | cp:sudoku | 2 |
-| Anti-knight / Anti-king (Miracle) | — | шахові ходи як обмеження на цифри | — | — | 2 |
+| ~~Anti-knight / Anti-king (Miracle)~~ | — | шахові ходи як обмеження на цифри | — | — · ⊘ 2026-11-19: покрито `pencil-logic/sudoku-variants` | 2 |
 | Battleship Sudoku | — | судоку + флот у тій самій сітці | gm:battleship-sudoku | — | 3 |
 
 ## Інструменти й банки

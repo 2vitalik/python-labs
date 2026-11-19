@@ -11,7 +11,7 @@
 | Tetris | 1984 | еталон: randomizer 7-bag, ghost, hold, T-spin, lock delay, Guideline | https://tetris.wiki/Tetris_Guideline | W:Tetris · https://tetris.wiki/Super_Rotation_System · https://harddrop.com/wiki/T-Spin | 1 |
 | Tetris: The Grand Master | 1998 | 20G-гравітація, ARS-обертання, грейди, invisible-роллі | W:Tetris:_The_Grand_Master | — | 2 |
 | Tetris Effect / Connected | 2018 | Zone — заморозка часу, зчищені лінії осідають униз | W:Tetris_Effect | https://store.steampowered.com/app/1003590/ | 2 |
-| Tetris 99 | 2019 | battle royale на 99 полів, таргетинг атак сміттям | W:Tetris_99 | — | 2 |
+| ~~Tetris 99~~ | 2019 | battle royale на 99 полів, таргетинг атак сміттям | W:Tetris_99 | — · ⊘ 2026-11-19: покрито `falling-match/tetris` | 2 |
 | TetriNET | 1997 | мультиплеєр із предметами-спецблоками, що псують чуже поле | W:TetriNET | — | 2 |
 | Hatris | 1990 | падають капелюхи на голови, збіг 5 однакових у стосі | W:Hatris | — | 3 |
 | Welltris | 1989 | 3D-колодязь: фігури сповзають чотирма стінами в 2D-дно | W:Welltris | — | 2 |
@@ -61,8 +61,8 @@
 | Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
 |---|---|---|---|---|---|
 | Shariki | 1994 | перший match-3 (свап сусідів) — точка відліку | W:Shariki | — | 2 |
-| Bejeweled 1–3 / Blitz | 2001 | еталон swap-match-3, спец-самоцвіти, 1-хв Blitz | W:Bejeweled | W:Bejeweled_Blitz | 1 |
-| Bejeweled Twist | 2008 | обертання 2×2 за годинниковою замість свапу | W:Bejeweled_Twist | — | 2 |
+| ~~Bejeweled 1–3 / Blitz~~ | 2001 | еталон swap-match-3, спец-самоцвіти, 1-хв Blitz | W:Bejeweled | W:Bejeweled_Blitz · ⊘ 2026-11-19: покрито `falling-match/bejeweled` | 1 |
+| ~~Bejeweled Twist~~ | 2008 | обертання 2×2 за годинниковою замість свапу | W:Bejeweled_Twist | — · ⊘ 2026-11-19: покрито `falling-match/bejeweled` і `gyromancer` | 2 |
 | Zoo Keeper | 2003 | квоти по видах тварин, лічильники | W:Zoo_Keeper_(2003_video_game) | — | 3 |
 | Hexic | 2003 | гекс-поле, обертання трійки, «квітка» з 6 | W:Hexic | — | 2 |
 | Chuzzle | 2005 | зсув цілого рядка/стовпчика з загортанням | W:Chuzzle | — | 2 |

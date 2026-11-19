@@ -19,7 +19,7 @@
 |---|---|---|---|---|---|
 | Boulder Dash | 1984 | еталон: каміння падає й котиться, метелики→діаманти, світлячки, аміба, магічна стіна | https://en.wikipedia.org/wiki/Boulder_Dash_(video_game) | https://www.youtube.com/results?search_query=Boulder+Dash+1984+C64+gameplay | 1 |
 | Boulder Dash II–3, Rockford, Boulder Dash Deluxe | 1985–2021 | серія: нові печери й скіни на тому ж двіжку; Deluxe — сучасна версія | https://en.wikipedia.org/wiki/Boulder_Dash_(video_game) | https://store.steampowered.com/search/?term=Boulder+Dash | 3 |
-| Boulder Dash Construction Kit | 1986 | редактор печер як частина гри; на ньому зроблено 25 фан-клонів | https://en.wikipedia.org/wiki/Category:Rocks-and-diamonds_games | https://dazeland.com/en/Amiga/Boulderdash_Mega-Collection.html | 3 |
+| ~~Boulder Dash Construction Kit~~ | 1986 | редактор печер як частина гри; на ньому зроблено 25 фан-клонів | https://en.wikipedia.org/wiki/Category:Rocks-and-diamonds_games | https://dazeland.com/en/Amiga/Boulderdash_Mega-Collection.html · ⊘ 2026-11-19: покрито `dig-gravity/boulder-dash` (редактор) | 3 |
 | Supaplex | 1991 | порти-напрямки, кольорові дискети з різною поведінкою, термінали, «баги»-дуги, прихована гравітація | https://en.wikipedia.org/wiki/Supaplex | https://www.youtube.com/results?search_query=Supaplex+gameplay | 1 |
 | Emerald Mine | 1987 | кооператив на двох в одній печері, кислота, динаміт | https://en.wikipedia.org/wiki/Emerald_Mine | https://www.youtube.com/results?search_query=Emerald+Mine+Amiga+gameplay | 1 |
 | Rocks'n'Diamonds | 1995 | уніфікований двіжок BD+EM+SP+Sokoban; 128 програмованих custom-елементів | https://www.artsoft.org/rocksndiamonds/manual/reference.html | https://en.wikipedia.org/wiki/Rocks%27n%27Diamonds | 1 |

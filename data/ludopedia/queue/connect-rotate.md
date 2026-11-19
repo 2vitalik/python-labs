@@ -19,7 +19,7 @@
 | Twiddle (Tatham) | 2000-ні(?) | хід — обертання блоку k×k плиток на місці | https://www.chiark.greenend.org.uk/~sgtatham/puzzles/js/twiddle.html | — | 2 |
 | Untangle (Tatham) | 2000-ні(?) | перетягування вершин графа, поки ребра не перестануть перетинатись | https://www.chiark.greenend.org.uk/~sgtatham/puzzles/js/untangle.html | — | 1 |
 | Spin Doctor / ClockWerx | 1995 | паличка безперервно крутиться, перескок між точками на таймінгу | https://en.wikipedia.org/wiki/Spin_Doctor_(video_game) | https://www.youtube.com/results?search_query=ClockWerx+gameplay | 2 |
-| Rotastic | 2012(?) | обертання навколо кілків, відпускання з інерцією (?) | https://www.youtube.com/results?search_query=Rotastic+gameplay | https://store.steampowered.com/search/?term=Rotastic | 3 |
+| ~~Rotastic~~ | 2012(?) | обертання навколо кілків, відпускання з інерцією (?) | https://www.youtube.com/results?search_query=Rotastic+gameplay | https://store.steampowered.com/search/?term=Rotastic · ⊘ 2026-11-19: не клітинна (хвиля 2) | 3 |
 
 ## Лінії між парами, шляхи пальцем
 
@@ -63,12 +63,12 @@
 | Laser Maze (ThinkFun) | 2013(?) | фізична настолка-задача: дзеркала, розщеплювачі, контрольна точка, блокер | https://legacy.thinkfun.com/products/laser-maze/ | https://www.thinkfun.com/lasermaze · https://legacy.thinkfun.com/products/laser-maze-jr/ | 1 |
 | SOLAS 128 | 2022(?) | імпульси світла в ритмі через велику зʼєднану машину | https://thinkygames.com/lists/latest-beam-reflection-games/ | https://store.steampowered.com/search/?term=SOLAS+128 | 2 |
 | Archaica: The Path of Light | 2017(?) | класичні дзеркала/призми в пригодницькій оболонці | https://thinkygames.com/games/archaica-the-path-of-light/similar | https://store.steampowered.com/search/?term=Archaica | 2 |
-| Photon Engineer | ? | промені й прилади (?) — перевірити | https://thinkygames.com/games/photon-engineer/similar/ | — | 3 |
+| ~~Photon Engineer~~ | ? | промені й прилади (?) — перевірити | https://thinkygames.com/games/photon-engineer/similar/ | — · ⊘ 2026-11-19: 3D від першої особи без сітки (хвилі 2–3) | 3 |
 | Octopticom | ? | beam reflection (?) — перевірити | https://thinkygames.com/lists/latest-beam-reflection-games/ | — | 3 |
-| ReThink | ? | відбиття променів від першої особи | https://thinkygames.com/games/rethink/ | — | 3 |
+| ~~ReThink~~ | ? | відбиття променів від першої особи | https://thinkygames.com/games/rethink/ | — · ⊘ 2026-11-19: не клітинна (хвиля 2) | 3 |
 | Lasergoose | 2025 | одноекранний пазл відбиття (Confounding Calendar 2025) | https://thinkygames.com/games/lasergoose/ | — | 3 |
 | Spin Protocol | ? | у списку схожих на beam reflection; механіку не бачив (?) | https://thinkygames.com/games/spin-protocol/similar/ | — | 3 |
-| The Talos Principle | 2014 | промені-конектори в 3D (межа: не сітка) | https://thinkygames.com/lists/best-beam-reflection-games | — | 3 |
+| ~~The Talos Principle~~ | 2014 | промені-конектори в 3D (межа: не сітка) | https://thinkygames.com/lists/best-beam-reflection-games | — · ⊘ 2026-11-19: 3D без сітки, межа (хвиля 2) | 3 |
 | Oxyd | 1990 | кулька серед блоків, серед них лазери й дзеркала (межа) | https://en.wikipedia.org/wiki/Oxyd | — | 3 |
 | Light Up / Akari | — | лампочки освітлюють ряди (→ pencil-logic) | https://www.chiark.greenend.org.uk/~sgtatham/puzzles/js/lightup.html | — | 3 |
 | Black Box (Tatham) | — | промінь-зонд відбивається від прихованих куль (→ hidden-deduction) | https://www.chiark.greenend.org.uk/~sgtatham/puzzles/js/blackbox.html | — | 2 |

@@ -1,5 +1,6 @@
 """index/queue-status.md + .json: which queue candidates are already described (title / aka / slug / ⭐-URL match),
-what remains per family and priority. `maybe` = close but not exact — the curator eyeballs those."""
+what remains per family and priority. `maybe` = close but not exact — the curator eyeballs those.
+`skipped` = struck-through row (`~~Name~~`, reason after ⊘ in the «інші» column): decided not to describe."""
 import json
 import re
 import sys
@@ -91,15 +92,20 @@ def main():
         fam = q.stem
         items = []
         for row in rows(q):
-            row["status"], row["match"] = classify(row, games)
+            row["status"], row["match"] = ("skipped", None) if row["name"].startswith("~~") else classify(row, games)
             items.append(row)
         status[fam] = items
         c = Counter((r["status"], r["prio"]) for r in items)
         rem = [r for r in items if r["status"] == "remaining"]
+        skipped = [r["name"].strip("~ ") for r in items if r["status"] == "skipped"]
         for r in rem:
             total[r["prio"]] += 1
+        total["skipped"] += len(skipped)
         out += [f"## {fam} · у черзі {len(items)} · описано {sum(1 for r in items if r['status'] == 'described')} · "
-                f"лишилось {len(rem)} (п1 {c[('remaining', 1)]} · п2 {c[('remaining', 2)]} · п3 {c[('remaining', 3)]})", ""]
+                f"лишилось {len(rem)} (п1 {c[('remaining', 1)]} · п2 {c[('remaining', 2)]} · п3 {c[('remaining', 3)]})"
+                + (f" · пропущено {len(skipped)}" if skipped else ""), ""]
+        if skipped:
+            out += ["Пропущено свідомо (⊘ у черзі): " + " · ".join(skipped), ""]
         if rem:
             out += ["| Назва | рік | чим нова | ⭐ | інші | п |", "|---|---|---|---|---|---|"]
             out += [f"| {r['name']} | {r['year']} | {r['why']} | {r['star']} | {r['other']} | {r['prio']} |" for r in sorted(rem, key=lambda r: r["prio"])]
@@ -107,10 +113,11 @@ def main():
         maybe = [r for r in items if r["status"] == "maybe"]
         if maybe:
             out += ["Можливо вже описані (перевірити): " + " · ".join(f"{r['name']} ≈ `{r['match']}`" for r in maybe), ""]
-    out.insert(3, f"Лишилось описати: п1 {total[1]} · п2 {total[2]} · п3 {total[3]} = {sum(total.values())}.")
+    out.insert(3, f"Лишилось описати: п1 {total[1]} · п2 {total[2]} · п3 {total[3]} = {total[1] + total[2] + total[3]} · "
+                  f"пропущено свідомо {total['skipped']}.")
     (ROOT / "index" / "queue-status.md").write_text("\n".join(out))
     (ROOT / "index" / "queue-status.json").write_text(json.dumps(status, ensure_ascii=False, indent=1))
-    print(f"queue-status: remaining p1 {total[1]} · p2 {total[2]} · p3 {total[3]}")
+    print(f"queue-status: remaining p1 {total[1]} · p2 {total[2]} · p3 {total[3]} · skipped {total['skipped']}")
 
 
 if __name__ == "__main__":

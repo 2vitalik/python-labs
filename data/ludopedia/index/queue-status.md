@@ -1,7 +1,7 @@
 # Стан черг (автоген)
 
 `scripts/queue_status.py` · 1663 описаних ігор у корпусі.
-Лишилось описати: п1 9 · п2 163 · п3 136 = 308.
+Лишилось описати: п1 7 · п2 156 · п3 120 = 283 · пропущено свідомо 31.
 
 ## board-digital · у черзі 126 · описано 118 · лишилось 7 (п1 0 · п2 4 · п3 3)
 
@@ -17,25 +17,26 @@
 
 Можливо вже описані (перевірити): Dogs Organized Neatly ≈ `cats-organized-neatly`
 
-## build-sim · у черзі 117 · описано 115 · лишилось 0 (п1 0 · п2 0 · п3 0)
+## build-sim · у черзі 117 · описано 115 · лишилось 0 (п1 0 · п2 0 · п3 0) · пропущено 1
 
-Можливо вже описані (перевірити): shapez 2 ≈ `shapez` · SteamWorld Build ≈ `steamworld-dig`
+Пропущено свідомо (⊘ у черзі): shapez 2
 
-## chess-abstract · у черзі 145 · описано 142 · лишилось 3 (п1 1 · п2 1 · п3 1)
+Можливо вже описані (перевірити): SteamWorld Build ≈ `steamworld-dig`
+
+## chess-abstract · у черзі 145 · описано 142 · лишилось 1 (п1 0 · п2 1 · п3 0) · пропущено 2
+
+Пропущено свідомо (⊘ у черзі): Шашки: російські / міжнародні / англійські · Піддавки
 
 | Назва | рік | чим нова | ⭐ | інші | п |
 |---|---|---|---|---|---|
-| Шашки: російські / міжнародні / англійські | трад. | обовʼязкове взяття, ланцюги, дамка, правило більшості | yt-пошук | — | 1 |
 | Chessarama | 2023 | 8 мініігор зі звичайними ходами фігур і новими цілями: Sokoban-шахи, дракон | https://store.steampowered.com/app/1831830/Chessarama/ | — | 2 |
-| Піддавки | трад. | інвертована мета шашок | yt-пошук | — | 3 |
 
-## connect-rotate · у черзі 119 · описано 105 · лишилось 10 (п1 0 · п2 0 · п3 10)
+## connect-rotate · у черзі 119 · описано 105 · лишилось 7 (п1 0 · п2 0 · п3 7) · пропущено 4
+
+Пропущено свідомо (⊘ у черзі): Rotastic · Photon Engineer · ReThink · The Talos Principle
 
 | Назва | рік | чим нова | ⭐ | інші | п |
 |---|---|---|---|---|---|
-| Photon Engineer | ? | промені й прилади (?) — перевірити | https://thinkygames.com/games/photon-engineer/similar/ | — | 3 |
-| ReThink | ? | відбиття променів від першої особи | https://thinkygames.com/games/rethink/ | — | 3 |
-| The Talos Principle | 2014 | промені-конектори в 3D (межа: не сітка) | https://thinkygames.com/lists/best-beam-reflection-games | — | 3 |
 | Station to Station | 2023 | ставиш станції й колії між будівлями, ланцюжки оживляють місцевість; оптимізація маршрутів (?) | https://store.steampowered.com/app/2272400/Station_to_Station/ | https://www.youtube.com/results?search_query=Station+to+Station+game+gameplay | 3 |
 | Trans Neuronica | 2024 | Flow-подібні зʼєднання кольорів без перетину плюс перемикачі, спецвузли, обмежувачі, боси | https://store.steampowered.com/app/2390520/Trans_Neuronica/ | https://www.youtube.com/results?search_query=Trans+Neuronica+gameplay | 3 |
 | Jetstream | 2019 | літак ведеш сіткою до мети; 14 механік у взаємодії (деталі — ?) | https://store.steampowered.com/app/738860/Jetstream/ | https://www.youtube.com/results?search_query=Jetstream+puzzle+gameplay | 3 |
@@ -44,26 +45,28 @@
 | Tezzel: The Tilemaker's Tale | 2026 | розписати плитку-мозаїку на сітці інструментами з власними правилами (механіка — ?) | https://store.steampowered.com/app/3703730/Tezzel_The_Tilemakers_Tale/ | https://www.youtube.com/results?search_query=Tezzel+gameplay | 3 |
 | Transmission: Information Age | 2014 | поле-граф: сигнали між вузлами; круглі — трансивери (транзит), квадратні — кінцеві приймачі | https://loju.co.uk/transmission.html | https://apps.apple.com/app/id917778256 | 3 |
 
-Можливо вже описані (перевірити): Rotastic ≈ `acrostic` · catAnod ≈ `catan` · Tiny Connections ≈ `nyt-connections` · Reflexions (YoYo Games) ≈ `khet`
+Можливо вже описані (перевірити): catAnod ≈ `catan` · Tiny Connections ≈ `nyt-connections` · Reflexions (YoYo Games) ≈ `khet`
 
-## dig-gravity · у черзі 102 · описано 99 · лишилось 2 (п1 0 · п2 1 · п3 1)
+## dig-gravity · у черзі 102 · описано 99 · лишилось 1 (п1 0 · п2 1 · п3 0) · пропущено 1
+
+Пропущено свідомо (⊘ у черзі): Boulder Dash Construction Kit
 
 | Назва | рік | чим нова | ⭐ | інші | п |
 |---|---|---|---|---|---|
 | Mystic Tesserae | 2025 | falling-sand у 2.5D: шари вглиб, схеми з металів у третьому вимірі, закляття | https://store.steampowered.com/app/3466370/Mystic_Tesserae/ | https://store.steampowered.com/app/3680320/Mystic_Tesserae_Demo/ | 2 |
-| Boulder Dash Construction Kit | 1986 | редактор печер як частина гри; на ньому зроблено 25 фан-клонів | https://en.wikipedia.org/wiki/Category:Rocks-and-diamonds_games | https://dazeland.com/en/Amiga/Boulderdash_Mega-Collection.html | 3 |
 
 Можливо вже описані (перевірити): 3D Lemmings ≈ `lemmings`
 
-## falling-match · у черзі 125 · описано 122 · лишилось 0 (п1 0 · п2 0 · п3 0)
+## falling-match · у черзі 125 · описано 122 · лишилось 0 (п1 0 · п2 0 · п3 0) · пропущено 3
 
-Можливо вже описані (перевірити): Tetris 99 ≈ `bombliss` · Bejeweled 1–3 / Blitz ≈ `bejeweled` · Bejeweled Twist ≈ `bejeweled`
+Пропущено свідомо (⊘ у черзі): Tetris 99 · Bejeweled 1–3 / Blitz · Bejeweled Twist
 
-## grid-platformer · у черзі 103 · описано 95 · лишилось 6 (п1 0 · п2 1 · п3 5)
+## grid-platformer · у черзі 103 · описано 95 · лишилось 5 (п1 0 · п2 0 · п3 5) · пропущено 1
+
+Пропущено свідомо (⊘ у черзі): Gridvania
 
 | Назва | рік | чим нова | ⭐ | інші | п |
 |---|---|---|---|---|---|
-| Gridvania | 2024 | метроїдванія: предмети кладуться на сітку й піднімаються як будівельний інструмент | https://store.steampowered.com/app/3303560/Gridvania/ | — | 2 |
 | Booty | 1984 | 20 екранів корабля; двері з номером відкриває лише ключ із тим самим номером | W:Booty_(video_game) | https://www.youtube.com/results?search_query=Booty+ZX+Spectrum+gameplay | 3 |
 | Ruins & Switch | 2022 | перемикач міняє місцями порожні й тверді блоки рівня | https://store.steampowered.com/app/1898410/ | — | 3 |
 | Dwarfer | 2022 | двоє гномів: кожен крок одного дзеркально повторює інший | https://store.steampowered.com/app/2206450/Dwarfer/ | — | 3 |
@@ -81,19 +84,16 @@
 
 Можливо вже описані (перевірити): Penultima ≈ `baroque-chess`
 
-## maze-arcade · у черзі 127 · описано 126 · лишилось 1 (п1 0 · п2 0 · п3 1)
+## maze-arcade · у черзі 127 · описано 126 · лишилось 0 (п1 0 · п2 0 · п3 0) · пропущено 1
+
+Пропущено свідомо (⊘ у черзі): Snake Pass
+
+## pencil-logic · у черзі 182 · описано 135 · лишилось 42 (п1 0 · п2 23 · п3 19) · пропущено 3
+
+Пропущено свідомо (⊘ у черзі): Zebra (Einstein) puzzle · Sandwich Sudoku · Anti-knight / Anti-king (Miracle)
 
 | Назва | рік | чим нова | ⭐ | інші | п |
 |---|---|---|---|---|---|
-| Snake Pass | 2017 | змійка з фізикою тіла: обвивання, хват — без сітки | [W](https://en.wikipedia.org/wiki/Snake_Pass_(video_game)) | — · ✔ виправлено 2026-11-09 | 3 |
-
-## pencil-logic · у черзі 182 · описано 135 · лишилось 45 (п1 0 · п2 26 · п3 19)
-
-| Назва | рік | чим нова | ⭐ | інші | п |
-|---|---|---|---|---|---|
-| Zebra (Einstein) puzzle | — | дедукція в таблиці атрибутів, а не на полі гри | — | — | 2 |
-| Sandwich Sudoku | — | ззовні сума між 1 і 9 у рядку | — | — | 2 |
-| Anti-knight / Anti-king (Miracle) | — | шахові ходи як обмеження на цифри | — | — | 2 |
 | Tenner Grid (Zehnergitter) | ? | у кожному рядку 0–9, однакові не торкаються навіть кутом; суми стовпців | https://www.janko.at/Raetsel/Zehnergitter/index.htm | — | 2 |
 | Survo puzzle | 2006 | розставити 1…m×n по разу, щоб збіглися суми рядків і стовпців | W:Survo_puzzle | — | 2 |
 | Shinro | 2007 | 12 лунок на полі 8×8; кожна стрілка вказує хоча б на одну | W:Shinro | — | 2 |
@@ -163,7 +163,9 @@
 | You Are The Code | 2025 | код не пишеш: курсор ходить готовими рядками й виконує їх, баги-вороги поїдають символи | https://store.steampowered.com/app/3333330/You_Are_The_Code/ | https://www.youtube.com/results?search_query=You+Are+The+Code+gameplay | 3 |
 | Fractal Factory | ? | конвеєри й поворотні руки; блоки діляться на дедалі дрібніші фрактальні шари (?) | https://bcat112a.itch.io/fractalfactory | https://www.youtube.com/results?search_query=Fractal+Factory+puzzle+gameplay | 3 |
 
-## push-slide · у черзі 201 · описано 101 · лишилось 100 (п1 0 · п2 50 · п3 50)
+## push-slide · у черзі 201 · описано 101 · лишилось 96 (п1 0 · п2 50 · п3 46) · пропущено 4
+
+Пропущено свідомо (⊘ у черзі): Boxxle · Bomb puzzles (Zelda: Oracle of Ages) · Rubik's Race · Courtyard
 
 | Назва | рік | чим нова | ⭐ | інші | п |
 |---|---|---|---|---|---|
@@ -217,10 +219,6 @@
 | SokoGhost: Unfinished Business | 2026 | привид-штовхач проходить крізь стіни, ящики й ворота; кожен рівень — свій тип проходу | https://store.steampowered.com/app/4254020/SokoGhost_Unfinished_Business/ | https://www.youtube.com/results?search_query=SokoGhost+Unfinished+Business | 2 |
 | Humbug (+ Humbug 2) | 2018 | жуки з різним рухом: павук ковзає до упору, равлик по клітинці, цвіркун стрибає через стіни | https://www.pocketgamer.com/humbug/review/ | https://apps.apple.com/app/id1436145670 | 2 |
 | The Flames | 2017 | PuzzleScript: штовхати бочки й дрова, щоб розносити вогонь і не підпалити зайве | https://rosden.itch.io/theflames | https://www.bontegames.com/2017/12/the-flames-browser.html | 2 |
-| Boxxle | 1989 | ліцензійний Sokoban на GB; 108 рівнів без нових правил — база порівняння | https://en.wikipedia.org/wiki/Boxxle | https://www.youtube.com/results?search_query=Boxxle+Game+Boy+gameplay | 3 |
-| Bomb puzzles (Zelda: Oracle of Ages) | 2001 | бомба руйнує тріснуті стіни — штовхання + підрив | https://en.wikipedia.org/wiki/The_Legend_of_Zelda:_Oracle_of_Seasons_and_Oracle_of_Ages | https://zeldawiki.wiki/wiki/Block | 3 |
-| Rubik's Race | 1980-ті (?) | 5×5 «пʼятнашки» на швидкість під випадковий цільовий патерн | https://www.youtube.com/results?search_query=Rubik%27s+Race+game | — | 3 |
-| Courtyard | — (?) | мережа крихітних кімнат-пазлів, повʼязаних між собою | https://store.steampowered.com/search/?term=Courtyard+sokoban | — | 3 |
 | Sok7 (Kevin Cancienne) | 2013 | Sokoban + Drop7: диск з числом зникає, коли довжина його ряду дорівнює числу | https://www.puzzlescript.net/play.html?p=6906326 | — | 3 |
 | Sokogram | 2026 | гібрид нонограми й Sokoban (як саме поєднано — перевірити) | https://store.steampowered.com/app/4054100/ | — | 3 |
 | Stick to the Plan | 2023 | пес носить довгу палицю: поворот, підняти, покласти — габарит змінюється | https://store.steampowered.com/app/2334280/ | — | 3 |
@@ -268,15 +266,15 @@
 | Pygmalion | 2023 | зіштовхнути кольорові блоки між собою, щоб зникли всі, за ліміт ходів | https://store.steampowered.com/app/2234960/Pygmalion/ | https://www.youtube.com/results?search_query=Pygmalion+CandLE+gameplay | 3 |
 | Covemount | 2024 | Hempuli: малі sokoban-рівні з блоками-цифрами й лічильником ходів | https://hempuli.itch.io/covemount | https://itch.io/games-like/2458407/covemount | 3 |
 
-## roguelike · у черзі 133 · описано 128 · лишилось 3 (п1 0 · п2 2 · п3 1)
+## roguelike · у черзі 133 · описано 128 · лишилось 1 (п1 0 · п2 0 · п3 1) · пропущено 3
+
+Пропущено свідомо (⊘ у черзі): Desktop Dungeons: Rewind · Wyrmspace Tactics · Daedalike
 
 | Назва | рік | чим нова | ⭐ | інші | п |
 |---|---|---|---|---|---|
-| Wyrmspace Tactics | 2020-ті | роглайк-декбілдер на сітці 3×3 | https://thinkygames.com/games/wyrmspace-tactics/similar/ | — | 2 |
-| Daedalike | ? | гравець сам викладає плитки рівня, кожна викладка — хід; деякі плитки спавнять ворогів | https://tomtl.itch.io/daedalike | — | 2 |
 | Vapormancer | 2025 | однокімнатна magic-tower: стати фліп-флопом міняються на протилежні замість росту | https://hazelstorm.itch.io/vapormancer | — | 3 |
 
-Можливо вже описані (перевірити): Desktop Dungeons: Rewind ≈ `desktop-dungeons` · Dragon Crystal ≈ `dragon-castle`
+Можливо вже описані (перевірити): Dragon Crystal ≈ `dragon-castle`
 
 ## tactics · у черзі 136 · описано 128 · лишилось 8 (п1 0 · п2 2 · п3 6)
 
@@ -291,7 +289,9 @@
 | Inkshade | 2025 | гекс-тактика дерев'яних мініатюр проти гейм-майстра; переможених ворогів можна вербувати | https://store.steampowered.com/app/3141310/Inkshade/ | https://www.youtube.com/results?search_query=Inkshade+gameplay | 3 |
 | Death Howl | 2025 | карти рухають і бʼють на сітці; тотеми, відкритий світ духів | https://store.steampowered.com/app/2825880/Death_Howl/ | https://www.youtube.com/results?search_query=Death+Howl+gameplay | 3 |
 
-## thinky · у черзі 197 · описано 110 · лишилось 83 (п1 5 · п2 55 · п3 23)
+## thinky · у черзі 197 · описано 110 · лишилось 78 (п1 5 · п2 54 · п3 19) · пропущено 5
+
+Пропущено свідомо (⊘ у черзі): Mosa Lina · Oeuf (increpare) · Hat Tricks: Hare in Box · Logicraft · DITTORI / He Who Watches
 
 | Назва | рік | чим нова | ⭐ | інші | п |
 |---|---|---|---|---|---|
@@ -300,7 +300,6 @@
 | Tres Undos | 2022 | кілька рівнів undo: Z скасовує хід, X/C/V — глибші відкати; статуї в ями | https://knexator.itch.io/tres-undos | https://www.familygamingdatabase.com/game/Tres+Undos | 1 |
 | 0PLAYER | 2025 | уся гра — одна статична картинка-мапа; правила й розвʼязки гравець виводить сам | https://caveadventure.itch.io/0player | https://www.youtube.com/results?search_query=0PLAYER+caveadventure | 1 |
 | Triga | 2022 | трикутна сітка: інструменти-трикутники вибухають чи штовхають сусідів, ланцюгом збити золоті трикутники | https://store.steampowered.com/app/1890550/Triga/ | https://www.youtube.com/results?search_query=Triga+puzzle+gameplay | 1 |
-| Mosa Lina | 2023 | випадковий набір інструментів на кожну спробу рівня | https://store.steampowered.com/app/2477090/Mosa_Lina/ | https://www.youtube.com/results?search_query=Mosa+Lina+gameplay | 2 |
 | Echochrome | 2008 | ракурс визначає шлях: схований розрив вважається цілим, стрибок падає на видиме | W:Echochrome | https://www.youtube.com/results?search_query=Echochrome+gameplay | 2 |
 | Corrypt (Michael Brough) | 2013 | Sokoban, де магія заморожує плитку в усіх кімнатах одразу й ламає світ | https://smestorp.itch.io/corrypt | https://gamedeveloper.com/design/road-to-the-igf-michael-brough-s-i-corrypt-i- | 2 |
 | Bombuzal | 1988 | підпалити бомбу ступивши й утекти; ланцюгові вибухи; бомби рухаються лише рейками | W:Bombuzal | https://www.youtube.com/results?search_query=Bombuzal+gameplay | 2 |
@@ -356,10 +355,6 @@
 | Droplets | 2023 | штампи-патерни (поворот, дзеркало) створюють, знищують і зсувають краплі на цілі | https://juner.itch.io/droplets | https://www.youtube.com/results?search_query=Droplets+juner+puzzle | 2 |
 | Woodworm | 2025 | личинка вигризає деревʼяний блок, щоб лишилась задана фігура-скульптура; розширення PICO-8-гри | https://store.steampowered.com/app/3404590/Woodworm/ | https://www.youtube.com/results?search_query=Woodworm+puzzle+gameplay | 2 |
 | Countless Rooms of Death | 2015 | рядок хибний: Steam 341380 — хорор-квест, не DROD-гра; описувати нема чого | https://store.steampowered.com/app/341380/Countless_Rooms_of_Death/ | — · ✔ виправлено 2026-11-09 | 3 |
-| Oeuf (increpare) | 2026 | комерційна гра increpare, механіка не з'ясована (?) | https://store.steampowered.com/app/3831080/Oeuf/ | https://www.increpare.com/game/oeuf.html | 3 |
-| Hat Tricks: Hare in Box | 2024 (?) | капелюхи на обʼєктах змінюють їхню поведінку | https://patrickgh3.itch.io/hat-tricks-hare-in-box | — | 3 |
-| Logicraft | 2025 (?) | крафт з несподіваними правилами комбінування | https://galactical.itch.io/logicraft | — | 3 |
-| DITTORI / He Who Watches | — (?) | анонсовані Draknek-видання; механіка не описана на сайтах | https://dittori.com/ | https://hewhowatches.com/ | 3 |
 | Hat-tricks (Andrea Gilbert) | 2022 | штовхач 2×1 міняє орієнтацію лише крізь капелюх-портал; мету треба відкрити | https://www.clickmazes.com/hattricks/hattricks.htm | — | 3 |
 | nuworm (noa) | ? | черв'як росте; відокремитись може лише голова; 50+ пазлів «навчись рухатись» | https://cubestudio.itch.io/nuworm | — | 3 |
 | Death Squared | 2017 | кольорові роботи-куби; кожен рух може зсунути платформи, підняти шипи, увімкнути лазери | W:Death_Squared | https://www.youtube.com/results?search_query=Death+Squared+gameplay | 3 |
@@ -381,18 +376,17 @@
 
 Можливо вже описані (перевірити): Linelight ≈ `linelith` · Bubble Sort (Patrick Traynor) ≈ `puzzle-bobble` · Spring Falls ≈ `ringfall` · Tower of Square ≈ `towers-of-scale`
 
-## tower-lanes · у черзі 98 · описано 97 · лишилось 1 (п1 0 · п2 0 · п3 1)
+## tower-lanes · у черзі 98 · описано 97 · лишилось 0 (п1 0 · п2 0 · п3 0) · пропущено 1
 
-| Назва | рік | чим нова | ⭐ | інші | п |
-|---|---|---|---|---|---|
-| Tower Defence: Back to the Roots 2 | 202x | змагальний 1v1 mazing: економіка й маршрут як дуель | — | — | 3 |
+Пропущено свідомо (⊘ у черзі): Tower Defence: Back to the Roots 2
 
-## word-number · у черзі 109 · описано 90 · лишилось 18 (п1 2 · п2 8 · п3 8)
+## word-number · у черзі 109 · описано 90 · лишилось 16 (п1 1 · п2 8 · п3 7) · пропущено 2
+
+Пропущено свідомо (⊘ у черзі): Swixle · Thiruthamizh
 
 | Назва | рік | чим нова | ⭐ | інші | п |
 |---|---|---|---|---|---|
 | Балда (Balda) | трад. | слово в центрі 5×5; хід — одна літера в сусідню клітину, слово — шлях через неї | https://ru.wikipedia.org/wiki/Балда_(игра) | https://www.youtube.com/results?search_query=Балда+игра | 1 |
-| Thiruthamizh | 1990 | тамільський Scrabble 21×21: прозора плитка-діакритика накладається на літеру → новий склад | W:Thiruthamizh | — | 1 |
 | Чайнворд (Chainword) | трад. | лінійний кросворд: кінець слова — початок наступного, ланцюг або змійка | https://ru.wikipedia.org/wiki/Линейный_кроссворд | — | 2 |
 | Spell Slide | 2025 | штовхання літер складає й ламає слова; двері-слова, роботи-помічники, редактор | https://store.steampowered.com/app/3330410/ | — | 2 |
 | Spellsy | 2026 | слово з сусідніх літер прибирає плитки; спецплитки зсувають сусідів і вибухають ланцюгом | https://store.steampowered.com/app/4171910/Spellsy/ | https://www.youtube.com/results?search_query=Spellsy+gameplay | 2 |
@@ -401,7 +395,6 @@
 | Watchword | 2025 | anagram-роглайк: слова кросвордом на дошці; особливе слово розширює дошку на наступні раунди | https://store.steampowered.com/app/2906730/Watchword/ | https://www.youtube.com/results?search_query=Watchword+gameplay | 2 |
 | Cursed Words | 2026 | розкидані «зіпсовані» сітки літер-плиток; з часом слова стають числами чи шаховими знаками | https://store.steampowered.com/app/3856460/ | https://store.steampowered.com/app/4264890/ | 2 |
 | Pool Letter | 2025 | лабіринт із літер: ланцюжком слів прокласти шлях до цілі; підказка — чи лишились слова | https://cisuthen.itch.io/pool-letter | https://www.youtube.com/results?search_query=Pool+Letter+word+maze | 2 |
-| Swixle | 2020-ті | щоденна сітка 6×6, слова свайпом на 90 с, прихована тема | https://www.producthunt.com/p/swixle | — | 3 |
 | King's Cribbage | ? | плитки-карти хрест-навхрест: кожен ряд — комбінація криббеджа з 5 карт | W:Scrabble_variants | — | 3 |
 | LinkedIn Crossclimb | 2024 | драбина слів з тривіа-підказками: рядки перетягнути в порядок, кінці відкриваються останніми | https://www.askdavetaylor.com/how-to-play-the-linkedin-puzzle-game-crossclimb/ | https://crossclimb-site.pages.dev/how-to-play | 3 |
 | Hollywood Squares | 1966 | хрестики-нулики 3×3: клітина твоя, якщо правильно оцінив відповідь знаменитості | W:Hollywood_Squares | — | 3 |

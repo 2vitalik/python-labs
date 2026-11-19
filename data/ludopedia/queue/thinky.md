@@ -55,8 +55,8 @@
 | Felix the Reaper | 2019 | ходити лише в тіні; поворот сонця переміщує тіні | https://store.steampowered.com/app/919410/Felix_The_Reaper/ | https://www.youtube.com/results?search_query=Felix+the+Reaper+gameplay | 1 |
 | Fish Fillets | 1998 | дві рибки різної сили, гравітація, падіння на рибу = смерть | https://en.wikipedia.org/wiki/Fish_Fillets | https://www.youtube.com/results?search_query=Fish+Fillets+gameplay | 2 |
 | Monument Valley | 2014 | неможливі обʼєкти: шлях існує, якщо вузли збігаються з ракурсу | https://en.wikipedia.org/wiki/Monument_Valley_(video_game) | https://www.youtube.com/results?search_query=Monument+Valley+gameplay | 2 |
-| Mosa Lina | 2023 | випадковий набір інструментів на кожну спробу рівня | https://store.steampowered.com/app/2477090/Mosa_Lina/ | https://www.youtube.com/results?search_query=Mosa+Lina+gameplay | 2 |
-| Oeuf (increpare) | 2026 | комерційна гра increpare, механіка не з'ясована (?) | https://store.steampowered.com/app/3831080/Oeuf/ | https://www.increpare.com/game/oeuf.html | 3 |
+| ~~Mosa Lina~~ | 2023 | випадковий набір інструментів на кожну спробу рівня | https://store.steampowered.com/app/2477090/Mosa_Lina/ | https://www.youtube.com/results?search_query=Mosa+Lina+gameplay · ⊘ 2026-11-19: фізичні інструменти, не сітка (хвилі 2–3) | 2 |
+| ~~Oeuf (increpare)~~ | 2026 | комерційна гра increpare, механіка не з'ясована (?) | https://store.steampowered.com/app/3831080/Oeuf/ | https://www.increpare.com/game/oeuf.html · ⊘ 2026-11-19: механіка невідома, джерел нема (хвиля 2) | 3 |
 | Sokoban[Sokoban[Sokoban]]] (increpare) | 2021 | рекурсія Sokoban у PuzzleScript-мініатюрі (за назвою, ?) | https://www.increpare.com/ | — | 3 |
 | Crates move when you move (increpare) | 2021 | ящики дзеркалять рух гравця, а не штовхаються (за назвою, ?) | https://www.increpare.com/ | — | 2 |
 | Pushy-V Pully-H (increpare) | 2021 | по вертикалі штовхає, по горизонталі тягне (за назвою, ?) | https://www.increpare.com/ | — | 2 |
@@ -76,12 +76,12 @@
 | Tome Tumble Tournament | 2024 | перекочування блоку-книги з твістом | https://terzalo.itch.io/tome-tumble-tournament | — · ✔ виправлено 2026-11-09 | 3 |
 | GRAB-O | 2025 (?) | скелелазіння: окремо керуєш руками й ногами на сітці | https://unlessgames.itch.io/grabo | — | 2 |
 | PushTOOL | 2021 | мультиблочний Sokoban: фігури з кількох клітин | https://auroriax.itch.io/pushtool | — · ✔ виправлено 2026-11-09 | 3 |
-| Hat Tricks: Hare in Box | 2024 (?) | капелюхи на обʼєктах змінюють їхню поведінку | https://patrickgh3.itch.io/hat-tricks-hare-in-box | — | 3 |
+| ~~Hat Tricks: Hare in Box~~ | 2024 (?) | капелюхи на обʼєктах змінюють їхню поведінку | https://patrickgh3.itch.io/hat-tricks-hare-in-box | — · ⊘ 2026-11-19: нема джерела правил (хвиля 2) | 3 |
 | elephant-in-a-bottle | 2021 | зібрати фігуру (слона) всередині обмеженої «пляшки» | https://pancelor.itch.io/elephant-in-a-bottle | — · ✔ виправлено 2026-11-09 | 3 |
 | Magic Chalkboards | 2023 | гравець малює потрібні обʼєкти на дошці | https://coolnico.itch.io/magic-chalkboards | — · ✔ виправлено 2026-11-09 | 3 |
-| Logicraft | 2025 (?) | крафт з несподіваними правилами комбінування | https://galactical.itch.io/logicraft | — | 3 |
+| ~~Logicraft~~ | 2025 (?) | крафт з несподіваними правилами комбінування | https://galactical.itch.io/logicraft | — · ⊘ 2026-11-19: крафт у слотах, не сітка (хвиля 2) | 3 |
 | Spooky Express | — (?) | новий проєкт авторів Cosmic Express (дата/механіка невідомі) | https://spooky.express/ | https://www.draknek.org/ | 3 |
-| DITTORI / He Who Watches | — (?) | анонсовані Draknek-видання; механіка не описана на сайтах | https://dittori.com/ | https://hewhowatches.com/ | 3 |
+| ~~DITTORI / He Who Watches~~ | — (?) | анонсовані Draknek-видання; механіка не описана на сайтах | https://dittori.com/ | https://hewhowatches.com/ · ⊘ 2026-11-19: лише анонси, механіка не описана (хвиля 2) | 3 |
 
 ## Межові випадки
 

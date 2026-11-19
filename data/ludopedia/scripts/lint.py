@@ -10,10 +10,10 @@ ROOT = Path(__file__).resolve().parents[1]
 FAMILIES = {p.name for p in (ROOT / "games").iterdir() if p.is_dir()}
 KLASS = {"avatar", "cursor", "figure", "puzzle", "hybrid"}
 AXES = {
-    "field": {"square", "hex", "graph", "free", "iso", "layers", "1d", "3d", "nested", "hyperbolic"},
+    "field": {"square", "hex", "graph", "free", "iso", "layers", "1d", "3d", "nested", "hyperbolic", "pyramid", "tri", "tube"},
     "time": {"turn", "realtime", "static", "rhythm", "programmed", "wego"},
-    "opponent": {"none", "ai", "hotseat", "online", "coop"},
-    "info": {"full", "hidden", "partial"},
+    "opponent": {"none", "ai", "hotseat", "online", "coop", "live"},
+    "info": {"full", "hidden", "partial", "asymmetric"},
     "random": {"none", "setup", "runtime", "both"},
     "goal": {"score", "survive", "state", "constraints", "race", "territory", "collect", "none"},
 }

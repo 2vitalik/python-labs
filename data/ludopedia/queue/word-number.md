@@ -51,7 +51,7 @@
 | Word search | 1968 | пошук прямих рядків слів у сітці у 8 напрямках | — | — | 3 |
 | Codenames | 2015 | 5×5 слів, ключ-карта у ведучого, асоціативна підказка «слово + число» | https://en.wikipedia.org/wiki/Codenames_(board_game) | https://www.meeplelikeus.co.uk/codenames-2015/ | 1 |
 | Weaver (word ladder) | 2022 | драбина Керролла: міняй одну літеру, кожен крок — слово | https://www.womanandhome.com/life/news-entertainment/weaver-tips-and-hacks-to-help-you-master-this-addictive-new-wordle-spin-off/ | — | 2 |
-| Swixle | 2020-ті | щоденна сітка 6×6, слова свайпом на 90 с, прихована тема | https://www.producthunt.com/p/swixle | — | 3 |
+| ~~Swixle~~ | 2020-ті | щоденна сітка 6×6, слова свайпом на 90 с, прихована тема | https://www.producthunt.com/p/swixle | — · ⊘ 2026-11-19: нема джерела правил (хвиля 2) | 3 |
 | Griddle Words | 2020-ті | треба знайти всі задані слова так, щоб очистити поле — планування порядку | https://apps.apple.com/app/griddle-words/id6755901046 | — | 3 |
 | Number Match / Take Ten (Numberzilla) | паперова класика; апп 2019 | пари рівних або з сумою 10 у «рядку-змійці», порожні рядки зникають, дописування | https://apps.apple.com/us/app/numberzilla/id1482131986 | https://toucharcade.com/community/threads/numbers-game-2-number-match-by-lars-fessen-fallsehr.428158/ | 1 |
 | Crossmath | 2020-ті | кросворд із рівнянь: перетягни числа, щоб рядки й стовпці були правильні | https://apps.apple.com/us/app/id6460980049 | https://apps.apple.com/mx/app/crossmath-math-logic-game/id6740814784 | 2 |
@@ -85,7 +85,7 @@
 | Kotoba no Puzzle: Mojipittan | 2001 | одна кана за хід, одна плитка дає слова в кількох напрямках (ланцюг) | W:Kotoba_no_Puzzle:_Mojipittan | https://store.steampowered.com/search/?term=Mojipittan | 1 |
 | Wordox | 2000 | Scrabble + Othello: плитки мають колір гравця, слово перефарбовує чужі | W:Scrabble_variants | https://fr.wikipedia.org/wiki/Wordox | 1 |
 | RSVP | 1958 | вертикальна рамка 11×11 з двох боків: кубик у дірці будує слово тобі й блокує суперника | W:RSVP_(board_game) | — | 1 |
-| Thiruthamizh | 1990 | тамільський Scrabble 21×21: прозора плитка-діакритика накладається на літеру → новий склад | W:Thiruthamizh | — | 1 |
+| ~~Thiruthamizh~~ | 1990 | тамільський Scrabble 21×21: прозора плитка-діакритика накладається на літеру → новий склад | W:Thiruthamizh | — · ⊘ 2026-11-19: нема джерела правил (двічі: D010, G005) | 1 |
 | Dropquote | 1975 | літери кожного стовпця опускаються в клітини того ж стовпця — скласти цитату | W:Dropquote | — | 1 |
 | Acrostic (Double-Crostic) | трад. | дві сітки: літери відповідей переносяться за номерами в сітку цитати; перші літери — автор | W:Acrostic_(puzzle) | — | 1 |
 | Fill-In (Kriss Kross) | трад. | дано слова без підказок, згруповані за довжиною — вписати в сітку за перетинами | W:Fill-In_(puzzle) | — | 1 |

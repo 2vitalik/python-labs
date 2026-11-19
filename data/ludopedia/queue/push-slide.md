@@ -9,7 +9,7 @@
 | Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
 |---|---|---|---|---|---|
 | Sokoban | 1982 | канон: лише штовхати, по одному ящику; deadlock; формат .xsb | https://en.wikipedia.org/wiki/Sokoban | https://www.youtube.com/results?search_query=Sokoban+1982+gameplay | 1 |
-| Boxxle | 1989 | ліцензійний Sokoban на GB; 108 рівнів без нових правил — база порівняння | https://en.wikipedia.org/wiki/Boxxle | https://www.youtube.com/results?search_query=Boxxle+Game+Boy+gameplay | 3 |
+| ~~Boxxle~~ | 1989 | ліцензійний Sokoban на GB; 108 рівнів без нових правил — база порівняння | https://en.wikipedia.org/wiki/Boxxle | https://www.youtube.com/results?search_query=Boxxle+Game+Boy+gameplay · ⊘ 2026-11-19: покрито `push-slide/sokoban` (ліцензійний Sokoban без нових правил) | 3 |
 | Microban / Sokoban Plus | 2000 (?) | набори рівнів: навчальна крива, без нових сутностей | https://en.wikipedia.org/wiki/Sokoban | https://www.youtube.com/results?search_query=Microban+sokoban | 3 |
 | Hexoban / Trioban | — | ті самі правила на гексах і трикутниках — інша топологія поля | https://en.wikipedia.org/wiki/Sokoban | https://www.youtube.com/results?search_query=Hexoban | 2 |
 | Pukoban (Sokoban з тягненням) | — | персонаж і штовхає, і тягне — deadlock-и зникають | https://en.wikipedia.org/wiki/Sokoban | https://www.youtube.com/results?search_query=Pukoban | 2 |
@@ -25,7 +25,7 @@
 | Inertia (Tatham) | — | куля ковзає до стоп-клітини, збирає діаманти, міни вбивають | https://www.chiark.greenend.org.uk/~sgtatham/puzzles/js/inertia.html | https://www.chiark.greenend.org.uk/~sgtatham/puzzles/doc/inertia.html | 1 |
 | Pokémon ice puzzles / Strength boulders | 1996–1999 | лід-ковзання і валуни як вставки в RPG-світ | https://www.youtube.com/results?search_query=Pokemon+ice+path+puzzle | https://www.youtube.com/results?search_query=Pokemon+strength+boulder+puzzle | 2 |
 | Zelda block puzzles (Link's Awakening, Oracle) | 1993 / 2001 | блоки, що штовхаються раз; плити-перемикачі; кольорові плитки | https://zeldawiki.wiki/wiki/Block | https://en.wikipedia.org/wiki/The_Legend_of_Zelda:_Link%27s_Awakening | 2 |
-| Bomb puzzles (Zelda: Oracle of Ages) | 2001 | бомба руйнує тріснуті стіни — штовхання + підрив | https://en.wikipedia.org/wiki/The_Legend_of_Zelda:_Oracle_of_Seasons_and_Oracle_of_Ages | https://zeldawiki.wiki/wiki/Block | 3 |
+| ~~Bomb puzzles (Zelda: Oracle of Ages)~~ | 2001 | бомба руйнує тріснуті стіни — штовхання + підрив | https://en.wikipedia.org/wiki/The_Legend_of_Zelda:_Oracle_of_Seasons_and_Oracle_of_Ages | https://zeldawiki.wiki/wiki/Block · ⊘ 2026-11-19: покрито `push-slide/rpg-dungeon-puzzle-rooms` | 3 |
 | Kwirk (Puzzle Boy) | 1989 | турнікети, що обертаються від поштовху; блоки засипають ями | https://en.wikipedia.org/wiki/Kwirk | https://www.youtube.com/results?search_query=Kwirk+Game+Boy+gameplay | 1 |
 | Loopover | 2019 (?) | зсув рядків/стовпців на торі — «Рубік 2D» | https://www.loopover.xyz/ | https://www.youtube.com/results?search_query=Loopover | 1 |
 | 15-puzzle / Fifteen | 1880 | одна дірка, парність перестановки — нерозвʼязні стани | https://en.wikipedia.org/wiki/15_puzzle | https://www.chiark.greenend.org.uk/~sgtatham/puzzles/js/fifteen.html | 1 |
@@ -56,9 +56,9 @@
 | Train shunting puzzle (Inglenook, Timesaver) | XX ст. | вагони на графі колій, тепловоз тягне й штовхає, стрілки | https://en.wikipedia.org/wiki/Shunting_puzzle | https://www.youtube.com/results?search_query=Inglenook+sidings+shunting+puzzle | 2 |
 | Golden Sun (Psynergy Move/Pound/Freeze) | 2001 | дистанційне штовхання магією; стовпи з калюж — ситуативні сутності | https://en.wikipedia.org/wiki/Golden_Sun | https://www.youtube.com/results?search_query=Golden+Sun+psynergy+puzzles | 3 |
 | Tilt (ThinkFun) | 2010-ті (?) | нахил усього поля: усі фігури ковзають разом | https://www.youtube.com/results?search_query=ThinkFun+Tilt+puzzle | — | 2 |
-| Rubik's Race | 1980-ті (?) | 5×5 «пʼятнашки» на швидкість під випадковий цільовий патерн | https://www.youtube.com/results?search_query=Rubik%27s+Race+game | — | 3 |
+| ~~Rubik's Race~~ | 1980-ті (?) | 5×5 «пʼятнашки» на швидкість під випадковий цільовий патерн | https://www.youtube.com/results?search_query=Rubik%27s+Race+game | — · ⊘ 2026-11-19: покрито `push-slide/sliding-tile-permutation` | 3 |
 | SokoChess | — (?) | Sokoban, де ящики — шахові фігури з власними ходами | https://store.steampowered.com/search/?term=SokoChess | https://thinkygames.com/lists/latest-sokoban-games/?page=3 | 3 |
-| Courtyard | — (?) | мережа крихітних кімнат-пазлів, повʼязаних між собою | https://store.steampowered.com/search/?term=Courtyard+sokoban | — | 3 |
+| ~~Courtyard~~ | — (?) | мережа крихітних кімнат-пазлів, повʼязаних між собою | https://store.steampowered.com/search/?term=Courtyard+sokoban | — · ⊘ 2026-11-19: не клітинна, джерел нема (хвиля 2) | 3 |
 | Can of Wormholes | 2023 (?) | хробак, що врізається в обʼєкти (?) — механіку перевірити | https://store.steampowered.com/search/?term=Can+of+Wormholes | https://www.youtube.com/results?search_query=Can+of+Wormholes+gameplay | 3 |
 | Unblock Me / Parking Jam (мобільні) | 2009+ (?) | Rush Hour з генератором рівнів і таймером | https://www.youtube.com/results?search_query=Unblock+Me+gameplay | https://en.wikipedia.org/wiki/Sliding_puzzle | 3 |
 
