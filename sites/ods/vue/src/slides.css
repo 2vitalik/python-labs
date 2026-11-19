@@ -1,0 +1,81 @@
+/* one slide (Slides.vue, T359 §4): a 16:9 sheet whose type scales with its width (cqw) and with --fit (slideFit.js); the
+   frame steps out of the page's column to the window's size — by margins: a transform would trap the lightbox inside */
+.slides { --w: min(100vw - 2rem, 84rem, (100dvh - 12rem) * 16 / 9); width: var(--w); margin-inline: calc((100% - var(--w)) / 2); }
+.slide { position: relative; aspect-ratio: 16 / 9; container-type: size; overflow: hidden; background: var(--lec-paper);
+         border: 1px solid var(--bs-border-color-translucent); border-radius: .75rem;
+         box-shadow: 0 1px 2px rgb(0 0 0 / .05), 0 12px 32px -18px rgb(0 0 0 / .35); }
+.slide :is(.slide-head, .slide-body) { transition: opacity .12s; }
+.slide.wait :is(.slide-head, .slide-body) { opacity: 0; transition: none; }
+
+/* the running head, as on the lecturer's slides: the section on the left, the slide's number on the right */
+.slide-head { position: absolute; top: 3.4cqh; left: 5cqw; right: 3.6cqw; display: flex; gap: 1em; justify-content: space-between;
+              font-size: 1.25cqw; color: var(--lec-muted); letter-spacing: .02em; }
+.slide-head .sec { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.slide-head .num { font-variant-numeric: tabular-nums; font-weight: 600; }
+.slide-body { position: absolute; inset: 10cqh 5cqw 7.5cqh; overflow: hidden; line-height: 1.42;
+              font-size: max(12px, calc(var(--fit, 1) * 2.1cqw)); }
+.slide-body.scroll { overflow-y: auto; mask-image: linear-gradient(#000 calc(100% - 2.5em), transparent); padding-bottom: 2em; }
+.slide-progress { position: absolute; left: 0; bottom: 0; height: .35cqh; min-height: 2px; width: calc(var(--at, 0) * 100%);
+                  background: var(--lec-accent); opacity: .65; transition: width .2s; }
+
+/* inside: the first heading is the slide's title, bold is the accent, lists and paragraphs close together */
+/* the title grows with the type down to the small steps, not above the base: a short slide is not to shout */
+.slide .guide > :first-child:is(h2, h3, h4) { font-size: calc(1.5em * min(1, 1 / var(--fit, 1))); font-weight: 700; letter-spacing: -.01em; line-height: 1.2;
+                                               color: var(--lec-accent); margin: 0 0 .6em; }
+.slide .guide :is(h2, h3, h4) { font-size: 1.12em; font-weight: 650; margin: .7em 0 .35em; }
+.slide .guide :is(.link, .edit) { display: none; }
+.slide .guide :is(p, ul, ol, blockquote) { margin-bottom: .5em; }
+.slide .guide li { margin-bottom: .15em; }
+.slide .guide li > p { margin-bottom: .2em; }
+.slide .guide :is(ul, ol) { padding-left: 1.3em; }
+.slide .guide strong { color: var(--lec-accent); }
+.slide .guide .role { padding: .3em .7em; margin-bottom: .55em; }
+.slide .guide .role strong { color: inherit; }
+.slide .guide .katex-display { margin: .4em 0; }
+.slide .guide img { max-height: calc(var(--fit, 1) * 64cqh); cursor: zoom-in; }
+.slide-body.pic .guide p.fig img { max-height: 70cqh; }
+.slide .guide p.fig { margin: .3em 0 .15em; }
+.slide .guide p.cap { margin-bottom: .5em; }
+.slide .guide .table-responsive { margin-bottom: .5em; }
+.slide .guide table { font-size: .82em; line-height: 1.25; }
+.slide .guide table :is(td, th) { padding: .12em .55em; }
+.slide .guide .lec-text { display: none; }
+.slide .guide .lec-cols { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; grid-template-columns: var(--cols, none);
+                          gap: 1.6em; align-items: center; margin-bottom: .5em; }
+
+/* the cover: the course, «Тема N» and the name above the slide's own text (the plan) */
+.slide.cover .slide-body { display: flex; flex-direction: column; justify-content: center; inset: 8cqh 8cqw; }
+.slide.cover .eyebrow { font-size: .78em; letter-spacing: .14em; text-transform: uppercase; color: var(--lec-muted); }
+.slide.cover .title { font-size: 2.15em; font-weight: 750; line-height: 1.12; letter-spacing: -.015em; margin: .25em 0 .9em; }
+.slide.cover .title .topic { display: block; font-size: .5em; font-weight: 650; letter-spacing: .02em; color: var(--lec-accent); margin-bottom: .3em; }
+.slide.cover .guide { padding-left: 1.1em; border-left: 3px solid var(--lec-rule); }
+.slide.cover .guide > :first-child:is(h2, h3) { font-size: .72em; letter-spacing: .14em; text-transform: uppercase; color: var(--lec-muted); margin-bottom: .6em; }
+.slide.cover .guide :is(ol, ul) { margin: 0; }
+.slide.cover .guide li { margin-bottom: .25em; }
+.slide.cover .guide ol > li::marker { font-weight: 650; }
+
+/* the bar under the sheet: walk · where · back to the text · the whole screen; nothing in it moves */
+.slide-bar { display: flex; align-items: center; gap: .5rem; margin-top: .6rem; color: var(--bs-secondary-color); font-size: .875rem; }
+.slide-bar .count { min-width: 4.5rem; text-align: center; font-variant-numeric: tabular-nums; }
+.slide-bar .btn { display: inline-flex; align-items: center; gap: .35rem; }
+.slide-bar .grow { flex: 1; }
+
+/* the whole screen: the sheet as big as it gets, on the page's ground; the bar over its foot */
+.slides:fullscreen { --w: min(100vw, 100vh * 16 / 9); width: 100vw; margin: 0; display: grid; place-content: center;
+                     background: var(--bs-body-bg); }
+.slides:fullscreen .slide { width: var(--w); border: 0; border-radius: 0; box-shadow: none; }
+.slides:fullscreen .slide-bar { position: absolute; left: 1rem; right: 1rem; bottom: .75rem; margin: 0; transition: opacity .3s; }
+.slides:fullscreen .slide-bar .btn { background: var(--bs-body-bg); }
+.slides:fullscreen.idle { cursor: none; }
+.slides:fullscreen.idle .slide-bar { opacity: 0; }
+
+/* a phone held upright: no 16:9 — a sheet as tall as the window, type in px, columns one under another */
+@media (max-width: 575.98px) {
+  .slides { --w: auto; width: auto; margin-inline: 0; }
+  .slide { aspect-ratio: auto; height: calc(100dvh - 10rem); }
+  .slide-head { top: .8rem; left: 1rem; right: 1rem; font-size: .72rem; }
+  .slide-body { inset: 2.6rem 1rem 1.2rem; font-size: max(13px, calc(var(--fit, 1) * 16px)); }
+  .slide .guide .lec-cols { display: block; }
+  .slide .guide .lec-col + .lec-col { margin-top: .6em; }
+  .slide.cover .slide-body { inset: 2rem 1.25rem; }
+}

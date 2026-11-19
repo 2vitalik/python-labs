@@ -5,6 +5,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { getGuidePage } from '@core/api.js'
 import Crumbs from '@core/components/Crumbs.vue'
 import GuideBody from '@core/components/GuideBody.vue'
+import Lightbox from '@core/components/Lightbox.vue'
 import Toc from '@core/components/Toc.vue'
 import { textOf } from '@core/drafts.js'
 import { tocOf } from '@core/md.js'
@@ -87,12 +88,13 @@ watch(doc, load, { immediate: true })
       Потрібна для:
       <RouterLink v-for="lab in labs" :key="lab" :to="`/labs/${lab}`" class="lab badge rounded-pill border fw-normal text-body-secondary">Лаба {{ lab }}</RouterLink>
     </div>
-    <Slides v-if="slide !== null && slides.length" v-model="slide" :slides @text="toText" />
+    <Slides v-if="slide !== null && slides.length" v-model="slide" :slides :title="page.title" @text="toText" />
     <template v-else>
       <div ref="body" v-rich="doc.slug" class="lecture" @click="clickMark">
         <GuideBody v-model:page="page" :view="withMarks" />
       </div>
       <Toc :items="toc" />
+      <Lightbox />  <!-- the text's own: the slides have theirs, and two at once would both take ← → -->
     </template>
     <nav class="docs-nav mt-4 pt-3 border-top">
       <RouterLink v-if="prev" :to="prev.path">← {{ prev.nav }}</RouterLink><span v-else></span>

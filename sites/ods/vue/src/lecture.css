@@ -1,0 +1,75 @@
+/* a lecture's text (.lecture .guide) and what slideMd.js marks in it, here and on a slide (T359 §5). Three colours, each one
+   thing: accent — structure (headings, list marks, rules, bold on a slide), green — an example, amber — a note; the rest is
+   ink and greys. slideMd's classes land on the lab pages too: there, outside .lecture and .slide, nothing styles them */
+:root {
+  --lec-accent: #2b47b3;
+  --lec-example: #1c7c45;
+  --lec-note: #a65b00;
+  --lec-muted: #6c727c;
+  --lec-paper: #fffdf8;
+  --lec-rule: color-mix(in srgb, var(--lec-accent) 22%, transparent);
+}
+[data-bs-theme=dark] {
+  --lec-accent: #95a9ff;
+  --lec-example: #6fd09a;
+  --lec-note: #f1b65e;
+  --lec-muted: #9aa1ab;
+  --lec-paper: #1d2128;
+}
+
+/* the text: a size above the platform's, air between lines; the headings keep the platform's margins — the slides' numbers
+   on the margin stand by them */
+.lecture .guide { font-size: 1.0625rem; line-height: 1.7; }
+.lecture .guide h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -.01em; color: var(--lec-accent); }
+.lecture .guide h3 { font-size: 1.2rem; font-weight: 650; }
+.lecture .guide h4 { font-size: 1.05rem; font-weight: 650; color: var(--bs-secondary-color); }
+.lecture .guide p { margin-bottom: .85rem; }
+:is(.lecture, .slide) .guide strong { font-weight: 650; }
+:is(.lecture, .slide) .guide li::marker { color: var(--lec-accent); }
+.lecture .guide ol > li::marker { font-weight: 650; }
+
+/* roles: a bold label at the start of a paragraph or a quote — the edge and the label take the role's colour */
+:is(.lecture, .slide) .guide .role { --role: var(--lec-accent); color: inherit; border: 0; border-left: 3px solid var(--role);
+                                     border-radius: 0 .5rem .5rem 0; background: color-mix(in srgb, var(--role) 7%, transparent); }
+:is(.lecture, .slide) .guide .role.example { --role: var(--lec-example); }
+:is(.lecture, .slide) .guide .role.note { --role: var(--lec-note); }
+:is(.lecture, .slide) .guide .role > :last-child { margin-bottom: 0; }
+:is(.lecture, .slide) .guide :is(p.role, .role > p:first-child) > strong:first-child { color: var(--role); }
+.lecture .guide .role { margin: 0 0 1rem; padding: .5rem .95rem; }
+/* «Рішення.» / «Відповідь:» inside a quoted example: its label in colour, no box inside the box */
+:is(.lecture, .slide) .guide .role .role { padding: 0; border: 0; border-radius: 0; background: none; }
+.lecture .guide li > .role { margin-top: .35rem; }
+
+/* pictures: centred and framed, never bigger than drawn; in the dark theme on a white sheet — scans and charts are for paper */
+:is(.lecture, .slide) .guide p.fig { text-align: center; }
+:is(.lecture, .slide) .guide p.fig img { border-radius: .4rem; box-shadow: 0 0 0 1px var(--bs-border-color-translucent); }
+[data-bs-theme=dark] :is(.lecture, .slide) .guide p.fig img { background: #fff; padding: .35rem; }
+.lecture .guide p.fig { margin: 1.25rem 0 .35rem; }
+.lecture .guide p.fig img { max-height: 24rem; }
+:is(.lecture, .slide) .guide p.cap { text-align: center; font-size: .875em; color: var(--lec-muted); line-height: 1.4; }
+:is(.lecture, .slide) .guide p.cap em { font-style: normal; }
+.lecture .guide p.cap { margin: 0 0 1.25rem; }
+.lecture .guide p.cap:has(+ :is(p.fig, .table-responsive, .lec-slide, .lec-text)) { margin: 1rem 0 .35rem; }  /* «Табл. 1» above its table */
+
+/* tables: as wide as their numbers, centred, numbers in columns */
+:is(.lecture, .slide) .guide .table-responsive > table { width: auto; margin-inline: auto; font-variant-numeric: tabular-nums;
+                                                         --bs-table-bg: transparent; }
+:is(.lecture, .slide) .guide table > thead th { border-bottom: 2px solid var(--lec-rule); font-weight: 600; }
+.lecture .guide .table-responsive { margin: .5rem 0 1.25rem; }
+.lecture .guide .table-responsive > table { font-size: .9em; }
+.lecture .guide table :is(td, th) { padding: .25rem .65rem; }
+
+/* formulas: their own line with air; the number is quiet */
+.lecture .guide .katex-display { margin: 1rem 0 1.1rem; }
+:is(.lecture, .slide) .guide .katex-display .tag { color: var(--lec-muted); }
+@media (max-width: 575.98px) {  /* a phone: the number follows a formula too wide for it instead of covering its end */
+  :is(.lecture, .slide) .guide .katex-display > .katex > .katex-html > .tag { position: static; display: inline-block; margin-left: 1em; }
+}
+
+/* the fences: a slide's own block is not in the text, columns follow one another there (side by side on a slide: slides.css) */
+/* hidden, yet with a box: «у тексті» of a slide that starts with it scrolls here (a display: none block has no place) */
+.lecture .guide .lec-slide { height: 0; margin: 0; overflow: hidden; visibility: hidden; }
+:is(.lecture, .slide) .guide .lec-col { min-width: 0; }
+:is(.lecture, .slide) .guide .lec-col > :last-child { margin-bottom: 0; }
+.lecture .guide .lec-col + .lec-col { margin-top: 1rem; }
+.lecture .guide .lec-cols { margin-bottom: 1rem; }

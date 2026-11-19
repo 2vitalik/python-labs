@@ -87,6 +87,7 @@ const PATHS = {
   grid: '<rect x="2.5" y="2.5" width="4.5" height="4.5" rx="1"/><rect x="9" y="2.5" width="4.5" height="4.5" rx="1"/><rect x="2.5" y="9" width="4.5" height="4.5" rx="1"/><rect x="9" y="9" width="4.5" height="4.5" rx="1"/>',
   // the menu as icons (T291 §9): one drawing per page, the same on every system
   book: '<path d="M8 4.2C6.5 3.2 4.5 3 2.5 3.3v8.9c2-.3 4-.1 5.5.9 1.5-1 3.5-1.2 5.5-.9V3.3c-2-.3-4-.1-5.5.9zM8 4.2v8.9"/>',
+  full: '<path d="M3 6.5V3h3.5M13 6.5V3H9.5M3 9.5V13h3.5M13 9.5V13H9.5"/>',
   // the student's own game: a controller with grips — as tall as the other drawings (T296 §1)
   gamepad: '<path d="M4.8 3.8h6.4a3.7 3.7 0 0 1 3.7 3.7v1.9a3 3 0 0 1-5.3 1.9l-.6-.8H7l-.6.8a3 3 0 0 1-5.3-1.9V7.5a3.7 3.7 0 0 1 3.7-3.7z"/><path d="M3.9 7.6h2.7M5.25 6.25v2.7"/><path d="M10.3 6.9h.01M11.9 8.4h.01" stroke-width="2"/>',
   // many games — the catalog to choose from (T294 §16): a game's face on a card in front of another; «Гра» — one's own, the gamepad

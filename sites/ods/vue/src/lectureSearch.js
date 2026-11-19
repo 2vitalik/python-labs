@@ -18,7 +18,8 @@ const inline = (md) => md.replace(FORMULA, (_, block, line) => ` ${letters(block
   .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ').replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
   .replace(/<!--\s*слайд[^>]*-->|<!--|-->|<\/?[a-zA-Z][^>]*>|\{#[\w-]+\}/g, ' ')
   .replace(/[*`\\]/g, '').replace(/\|/g, ' ').replace(/\s+/g, ' ').trim()
-const words = (md) => inline(md.replace(/^[ \t]*(#{1,6}|>|[-*+]|\d+\.)[ \t]+/gm, '').replace(/^[ \t|:-]+$/gm, ' '))
+const words = (md) => inline(md.replace(/^:::.*$/gm, ' ')  // the slides' fences (slideMd.js): «::: колонки» is markup, not words
+  .replace(/^[ \t]*(#{1,6}|>|[-*+]|\d+\.)[ \t]+/gm, '').replace(/^[ \t|:-]+$/gm, ' '))
 
 // a lecture cut at its h2/h3 — the sections of its contents, with tocOf's ids; the part before them belongs to the title
 function cut(text, title) {
