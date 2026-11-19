@@ -985,7 +985,7 @@
    "year": "2016",
    "why": "кубик колір+число: хрестики одним звʼязним блоком від стартової колонки; перший закрив — більше",
    "star": "https://www.ultraboardgames.com/encore/game-rules.php",
-   "other": "https://de.wikipedia.org/wiki/Noch_mal! ; https://www.youtube.com/results?search_query=Encore+Noch+mal+how+to+play",
+   "other": "https://de.wikipedia.org/wiki/Noch_mal! ; https://www.youtube.com/results?search_query=Encore+Noch+mal+how+to+play · ✔ 2026-11-19: 2017 — аркуші-розширення Noch mal (DE-wiki)",
    "prio": 2,
    "status": "described",
    "match": "noch-mal"
@@ -1085,7 +1085,7 @@
    "year": "1982",
    "why": "карти-квадрати 4×4 кольорів; кольори на стику збігаються, очки за довжину ланцюгів",
    "star": "W:Continuo_(game)",
-   "other": "https://www.youtube.com/results?search_query=Continuo+game+Maureen+Hiron",
+   "other": "https://www.youtube.com/results?search_query=Continuo+game+Maureen+Hiron · ✔ 2026-11-19: правило збігу кольорів не підтверджено",
    "prio": 2,
    "status": "described",
    "match": "continuo"
@@ -1105,7 +1105,7 @@
    "year": "1982",
    "why": "кожна клітина — карта колоди (двічі); валети: дикий хід і зняття фішки",
    "star": "https://www.ultraboardgames.com/sequence/game-rules.php",
-   "other": "W:Sequence_(game) ; https://www.youtube.com/results?search_query=Sequence+board+game+how+to+play",
+   "other": "W:Sequence_(game) ; https://www.youtube.com/results?search_query=Sequence+board+game+how+to+play · ✔ 2026-11-19: рік не підтверджено",
    "prio": 2,
    "status": "described",
    "match": "sequence"
@@ -1152,10 +1152,10 @@
   },
   {
    "name": "Domino Grove",
-   "year": "?",
+   "year": "2024",
    "why": "доміно з двох дерев (форма і колір); регіон рахується за формою або кольором (≠ Kingdomino)",
    "star": "https://ezra-szanton.itch.io/domino-grove",
-   "other": "https://ezra-szanton.itch.io/domino-grove/devlog/846299/domino-grove-development-log",
+   "other": "https://ezra-szanton.itch.io/domino-grove/devlog/846299/domino-grove-development-log · ✔ 2026-11-19: рік було ?",
    "prio": 1,
    "status": "described",
    "match": "domino-grove"
@@ -1182,10 +1182,10 @@
   },
   {
    "name": "Stamps",
-   "year": "?",
+   "year": "2025",
    "why": "марки в сітці: правило країни зсуває, прибирає чи міняє сусідні марки; цілі за країною й ціною",
    "star": "https://hatemyury.itch.io/stamps",
-   "other": "https://www.youtube.com/results?search_query=Stamps+puzzle+game",
+   "other": "https://www.youtube.com/results?search_query=Stamps+puzzle+game · ✔ 2026-11-19: рік було ?",
    "prio": 2,
    "status": "described",
    "match": "stamps"
@@ -1197,8 +1197,8 @@
    "star": "https://dr-d-king.itch.io/teenyshire",
    "other": "https://www.youtube.com/results?search_query=TeenyShire",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "teenyshire"
   },
   {
    "name": "Beacon Patrol",
@@ -1207,18 +1207,18 @@
    "star": "https://store.steampowered.com/app/2273850/Beacon_Patrol/",
    "other": "https://www.youtube.com/results?search_query=Beacon+Patrol+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "beacon-patrol"
   },
   {
-   "name": "Dogs Organized Neatly",
+   "name": "~~Dogs Organized Neatly~~",
    "year": "2021",
    "why": "вкласти фігурки тварин (з поворотом) у сітку без порожнеч; сиквел Birds — нові форми",
    "star": "https://store.steampowered.com/app/1597730/Dogs_Organized_Neatly/",
-   "other": "https://store.steampowered.com/app/2707110/Birds_Organized_Neatly/",
+   "other": "https://store.steampowered.com/app/2707110/Birds_Organized_Neatly/ · ⊘ 2026-11-19: покрито `board-digital/cats-organized-neatly` (підрозділ, хвиля 4)",
    "prio": 2,
-   "status": "maybe",
-   "match": "cats-organized-neatly"
+   "status": "skipped",
+   "match": null
   },
   {
    "name": "Electrogical",
@@ -1227,8 +1227,8 @@
    "star": "https://store.steampowered.com/app/2501650/Electrogical/",
    "other": "https://www.youtube.com/results?search_query=Electrogical+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "electrogical"
   },
   {
    "name": "Feed the Scorchpot",
@@ -1237,8 +1237,8 @@
    "star": "https://store.steampowered.com/app/3966510/Feed_the_Scorchpot/",
    "other": "https://www.youtube.com/results?search_query=Feed+the+Scorchpot+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "feed-the-scorchpot"
   },
   {
    "name": "Tiny Islands",
@@ -2269,8 +2269,8 @@
    "star": "W:SteamWorld_Build",
    "other": "https://store.steampowered.com/search/?term=SteamWorld+Build",
    "prio": 2,
-   "status": "maybe",
-   "match": "steamworld-dig"
+   "status": "described",
+   "match": "steamworld-build"
   },
   {
    "name": "Rebuild 3: Gangs of Deadsville",
@@ -2334,10 +2334,10 @@
   },
   {
    "name": "Hot Springs Story (Kairosoft)",
-   "year": "2010 (?)",
+   "year": "2009",
    "why": "сумісні кімнати поруч дають бонус; декор діє в радіусі 2 клітин зі спадом",
    "star": "https://www.pocketgamer.co.uk/articles/027950/r/",
-   "other": "https://kairosoft.wiki.gg/wiki/Hot_Springs_Story · https://kairosoft.wiki.gg/wiki/Combos_(Dream_Town_Story)",
+   "other": "https://kairosoft.wiki.gg/wiki/Hot_Springs_Story · https://kairosoft.wiki.gg/wiki/Combos_(Dream_Town_Story) · ✔ 2026-11-19: рік було 2010 (?); «згасання з відстанню» не підтверджено (лише зона 5×5)",
    "prio": 2,
    "status": "described",
    "match": "hot-springs-story"
@@ -2377,7 +2377,7 @@
    "year": "1985",
    "why": "залізниця везе будматеріали — місто росте біля станцій; пасажири як дохід",
    "star": "W:A-Train",
-   "other": "https://www.youtube.com/results?search_query=Take+the+A-Train+III+gameplay",
+   "other": "https://www.youtube.com/results?search_query=Take+the+A-Train+III+gameplay · ✔ 2026-11-19: рядок змішує головоломку 1985 з A-Train III (1990); файл — огляд серії",
    "prio": 2,
    "status": "described",
    "match": "a-train"
@@ -3769,7 +3769,7 @@
    "year": "2005",
    "why": "анти-го: після ходу кожна група мусить мати дихання; хто не може поставити — програв",
    "star": "https://ludii.games/details.php?keyword=NoGo",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: джерела авторства суперечать",
    "prio": 2,
    "status": "described",
    "match": "nogo"
@@ -3816,20 +3816,20 @@
   },
   {
    "name": "Diaballik",
-   "year": "2004",
+   "year": "2002",
    "why": "2 кроки + 1 пас мʼяча прямою чи діагоналлю; анти-гра карає за глуху стіну",
    "star": "W:Diaballik",
-   "other": "https://ludii.games/details.php?keyword=Diaballik",
+   "other": "https://ludii.games/details.php?keyword=Diaballik · ✔ 2026-11-19: рік було 2004",
    "prio": 2,
    "status": "described",
    "match": "diaballik"
   },
   {
    "name": "TZAAR",
-   "year": "?",
+   "year": "2007/08",
    "why": "три типи фішок; спершу обовʼязкове взяття, далі стос; втратив тип — програв",
    "star": "W:TZAAR",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: рік було ?",
    "prio": 2,
    "status": "described",
    "match": "tzaar"
@@ -3839,17 +3839,17 @@
    "year": "≤1969",
    "why": "3 мушкетери лише бʼють сусідніх; 22 вороги виграють, вишикувавши їх в одну лінію",
    "star": "W:Three_Musketeers_(game)",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: W:Three_Musketeers_(game) — редірект на «A Gamut of Games»",
    "prio": 2,
    "status": "described",
    "match": "three-musketeers"
   },
   {
    "name": "Trike",
-   "year": "?",
+   "year": "2020",
    "why": "спільна пішка: ставиш камінь на її прямій і переносиш її туди; очки довкола",
    "star": "https://ludii.games/details.php?keyword=Trike",
-   "other": "https://www.boardspace.net/english/about_trike.html",
+   "other": "https://www.boardspace.net/english/about_trike.html · ✔ 2026-11-19: рік було ?",
    "prio": 2,
    "status": "described",
    "match": "trike"
@@ -3866,10 +3866,10 @@
   },
   {
    "name": "Barca",
-   "year": "?",
+   "year": "2007",
    "why": "без взяття: слон, лев, миша лякають за камінь-ножиці-папір; зайняти 3 водопої",
    "star": "W:Barca_(board_game)",
-   "other": "https://ludii.games/details.php?keyword=Barca",
+   "other": "https://ludii.games/details.php?keyword=Barca · ✔ 2026-11-19: рік було ?",
    "prio": 2,
    "status": "described",
    "match": "barca"
@@ -3881,8 +3881,8 @@
    "star": "https://store.steampowered.com/app/1831830/Chessarama/",
    "other": "—",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "chessarama"
   }
  ],
  "connect-rotate": [
@@ -4788,10 +4788,10 @@
   },
   {
    "name": "Strata",
-   "year": "2014",
+   "year": "2013 (iOS)",
    "why": "кольорові стрічки шарами; колір клітини — від верхньої стрічки, тож розвʼязок — порядок кладення",
    "star": "https://store.steampowered.com/app/286380/Strata/",
-   "other": "https://www.youtube.com/results?search_query=Strata+Graveck+gameplay",
+   "other": "https://www.youtube.com/results?search_query=Strata+Graveck+gameplay · ✔ 2026-11-19: рік було 2014",
    "prio": 2,
    "status": "described",
    "match": "strata"
@@ -4901,7 +4901,7 @@
    "year": "2025",
    "why": "торкнутися кожної клітини (гамільтонів шлях) слизовим слідом; токени перемикають стан, лава, блоки-перемикачі",
    "star": "https://store.steampowered.com/app/3284270/Blobun/",
-   "other": "https://store.steampowered.com/app/3827340/Blobun_Mini/",
+   "other": "https://store.steampowered.com/app/3827340/Blobun_Mini/ · ✔ 2026-11-19: «гамільтонів» не підтверджено",
    "prio": 1,
    "status": "described",
    "match": "blobun"
@@ -5815,8 +5815,8 @@
    "star": "W:3D_Lemmings",
    "other": "https://www.youtube.com/results?search_query=3D+Lemmings+gameplay",
    "prio": 2,
-   "status": "maybe",
-   "match": "lemmings"
+   "status": "described",
+   "match": "3d-lemmings"
   },
   {
    "name": "Dig Dug: Digging Strike",
@@ -5909,13 +5909,13 @@
    "match": "sub-terra-draconis"
   },
   {
-   "name": "Mystic Tesserae",
+   "name": "~~Mystic Tesserae~~",
    "year": "2025",
    "why": "falling-sand у 2.5D: шари вглиб, схеми з металів у третьому вимірі, закляття",
    "star": "https://store.steampowered.com/app/3466370/Mystic_Tesserae/",
-   "other": "https://store.steampowered.com/app/3680320/Mystic_Tesserae_Demo/",
+   "other": "https://store.steampowered.com/app/3680320/Mystic_Tesserae_Demo/ · ⊘ 2026-11-19: нема джерела правил: Steam лише перелік фіч, itch-демо 404 (хвиля 4)",
    "prio": 2,
-   "status": "remaining",
+   "status": "skipped",
    "match": null
   },
   {
@@ -5950,10 +5950,10 @@
   },
   {
    "name": "Dig Dig Boom",
-   "year": "2027 (демо 2024)",
+   "year": "2027/TBA (Steam)",
    "why": "покроковий роглайк-копач: гравітація діє лише з твоїм ходом; бій як шаховий пазл",
    "star": "https://store.steampowered.com/app/2026040/Dig_Dig_Boom/",
-   "other": "https://playtester.io/dig-dig-boom",
+   "other": "https://playtester.io/dig-dig-boom · ✔ 2026-11-19: рік було 2027 (демо 2024)",
    "prio": 2,
    "status": "described",
    "match": "dig-dig-boom"
@@ -6053,7 +6053,7 @@
    "year": "2015",
    "why": "BD-подібний на 1–4 гравців: режими контролю зон, гонки, «останній дрон»",
    "star": "https://darkestkale.itch.io/quarries-of-scred-2",
-   "other": "https://kactusgames.itch.io/qos-1982",
+   "other": "https://kactusgames.itch.io/qos-1982 · ✔ 2026-11-19: «інший» лінк — фанатська версія QoS1",
    "prio": 3,
    "status": "described",
    "match": "quarries-of-scred-2"
@@ -6090,10 +6090,10 @@
   },
   {
    "name": "Subterrarium",
-   "year": "?",
+   "year": "2016",
    "why": "копаєш за гроші, поливаєш насіння-інструменти; кожен хід послаблює ґрунт до обвалу",
    "star": "https://slimefriend.itch.io/subterrarium",
-   "other": "https://store.steampowered.com/app/467170/",
+   "other": "https://store.steampowered.com/app/467170/ · ✔ 2026-11-19: рік було ?",
    "prio": 2,
    "status": "described",
    "match": "subterrarium"
@@ -7025,7 +7025,7 @@
    "year": "2023",
    "why": "фігури розсипаються піском-клітинами; зникає однокольорова пляма, що зʼєднала лівий і правий край",
    "star": "https://msky-dev.itch.io/sandtrix",
-   "other": "https://phaser.io/news/2024/10/setris",
+   "other": "https://phaser.io/news/2024/10/setris · ✔ 2026-11-19: окремий клон, не Sandtrix (в aka)",
    "prio": 1,
    "status": "described",
    "match": "sandtrix"
@@ -7135,27 +7135,27 @@
    "year": "2019",
    "why": "герой ходить полем рун; трійка рун, яких торкнувся, — заклинання в реальному часі",
    "star": "W:The_World_Next_Door_(video_game)",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: руна береться й кидається, не торкається",
    "prio": 2,
    "status": "described",
    "match": "the-world-next-door"
   },
   {
    "name": "Six Match",
-   "year": "2018",
+   "year": "2017",
    "why": "аватар міняється місцями з монетою, на яку ступив; збіг обовʼязковий за 6 кроків",
    "star": "https://st33d.itch.io/six-match",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: рік було 2018",
    "prio": 2,
    "status": "described",
    "match": "six-match"
   },
   {
    "name": "2248 (Number Puzzle)",
-   "year": "?",
+   "year": "2018",
    "why": "шлях через 8 сусідів: рівні або подвоєні числа, ланцюг зливається в суму",
    "star": "https://apps.apple.com/us/app/2248-linked-number-puzzle/id1356679402",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: рік було ?",
    "prio": 2,
    "status": "described",
    "match": "2248"
@@ -7172,10 +7172,10 @@
   },
   {
    "name": "X2 Blocks (Drop the Number)",
-   "year": "?",
+   "year": "2019",
    "why": "кидаєш числовий блок у смугу; зливається з усіма однаковими сусідами, ланцюги подвоєнь",
    "star": "https://apps.apple.com/us/app/x2-blocks-2048-merge-puzzle/id1480338372",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: рік було ?",
    "prio": 2,
    "status": "described",
    "match": "x2-blocks"
@@ -7185,7 +7185,7 @@
    "year": "2024",
    "why": "падаючі числові блоки; рядок чи стовпчик із сумою, кратною 10, зникає",
    "star": "https://store.steampowered.com/app/2859060/Tashikani/",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: сегмент зливається у блок суми, а не зникає",
    "prio": 2,
    "status": "described",
    "match": "tashikani"
@@ -7205,7 +7205,7 @@
    "year": "2006",
    "why": "картки Uno зникають трійкою за кольором, числом або символом; закриті відкриваються поряд",
    "star": "W:Uno_Free_Fall",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: Java 2008, правила SameGame",
    "prio": 2,
    "status": "described",
    "match": "uno-free-fall"
@@ -7295,7 +7295,7 @@
    "year": "2007",
    "why": "куля з числом N зникає, коли навколо зібрано ≥ N восьминогів її кольору",
    "star": "https://ja.wikipedia.org/wiki/たころん",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: восьминоги збігаються між собою, куля лише несе число",
    "prio": 3,
    "status": "described",
    "match": "takoron"
@@ -8224,10 +8224,10 @@
   },
   {
    "name": "Stackrobats",
-   "year": "?",
+   "year": "2026",
    "why": "ланцюг звʼязаних акробатів рухається разом: драбини, канат униз, батути, бочки",
    "star": "https://beepyeah.itch.io/stackrobats",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: рік було ?",
    "prio": 2,
    "status": "described",
    "match": "stackrobats"
@@ -8247,17 +8247,17 @@
    "year": "1989",
    "why": "керуєш мʼячем, що скаче платформами; руйнівні та вогняні плитки, крапля-захист",
    "star": "W:Bumpy%27s_Arcade_Fantasy",
-   "other": "https://www.youtube.com/results?search_query=Bumpy+Loriciels+gameplay",
+   "other": "https://www.youtube.com/results?search_query=Bumpy+Loriciels+gameplay · ✔ 2026-11-19: рік було 1989; Bumpy's Arcade Fantasy (1992) — ремейк",
    "prio": 3,
    "status": "described",
    "match": "bumpy"
   },
   {
    "name": "Stomp!",
-   "year": "?",
+   "year": "2021",
    "why": "покроковий роглайк-платформер на 300 ходів: топіт запускає камені, шипи, бомби",
    "star": "https://st33d.itch.io/stomp",
-   "other": "https://st33d.itch.io/bump",
+   "other": "https://st33d.itch.io/bump · ✔ 2026-11-19: рік було ?",
    "prio": 3,
    "status": "described",
    "match": "stomp"
@@ -8334,10 +8334,10 @@
   },
   {
    "name": "A Short Bike",
-   "year": "?",
+   "year": "2025",
    "why": "заднім колесом велосипеда піднімаєш ящики й розвертаєш його, щоб виїхати на скелю",
    "star": "https://werxzy.itch.io/a-short-bike",
-   "other": "https://www.youtube.com/results?search_query=A+Short+Bike+gameplay",
+   "other": "https://www.youtube.com/results?search_query=A+Short+Bike+gameplay · ✔ 2026-11-19: рік було ?",
    "prio": 2,
    "status": "described",
    "match": "a-short-bike"
@@ -9141,8 +9141,8 @@
    "star": "https://red23714.itch.io/labirinth",
    "other": "—",
    "prio": 1,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "labyrinth-paper-and-pencil"
   },
   {
    "name": "Code Name: Sector",
@@ -9326,10 +9326,10 @@
   },
   {
    "name": "Hurkle",
-   "year": "1978",
+   "year": "1973",
    "why": "сховане на сітці 10×10; після промаху — лише напрям, куди шукати",
    "star": "https://raw.githubusercontent.com/coding-horror/basic-computer-games/main/51_Hurkle/README.md",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: рік було 1978",
    "prio": 2,
    "status": "described",
    "match": "hurkle"
@@ -9381,8 +9381,8 @@
    "star": "W:Penultima_(game)",
    "other": "—",
    "prio": 2,
-   "status": "maybe",
-   "match": "baroque-chess"
+   "status": "described",
+   "match": "penultima"
   },
   {
    "name": "Top Secret Spies (Heimlich & Co.)",
@@ -10651,7 +10651,7 @@
    "year": "1994",
    "why": "кульки-ланцюг лягають за героєм; відпустив кнопку — летять назад і бʼють ворогів",
    "star": "W:Tinkle_Pit",
-   "other": "https://www.youtube.com/results?search_query=Tinkle+Pit+Namco",
+   "other": "https://www.youtube.com/results?search_query=Tinkle+Pit+Namco · ✔ 2026-11-19: одна куля + лінія",
    "prio": 2,
    "status": "described",
    "match": "tinkle-pit"
@@ -10668,10 +10668,10 @@
   },
   {
    "name": "Hexanaut.io",
-   "year": "?",
+   "year": "2022",
    "why": "paper.io на гексах: «король» при 20 % мапи, утримати 3 хв; тотеми-телепорти, без респавну",
    "star": "https://iogames.space/hexanautio",
-   "other": "https://www.youtube.com/results?search_query=Hexanaut.io+gameplay",
+   "other": "https://www.youtube.com/results?search_query=Hexanaut.io+gameplay · ✔ 2026-11-19: рік було ?",
    "prio": 2,
    "status": "described",
    "match": "hexanaut-io"
@@ -12000,10 +12000,10 @@
   },
   {
    "name": "Zahlenlabyrinth (Magic Labyrinth)",
-   "year": "?",
+   "year": "2008",
    "why": "латинський квадрат, де вздовж шляху лабіринту числа йдуть циклом 1…N",
    "star": "https://www.janko.at/Raetsel/Zahlenlabyrinth/index.htm",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: рік було ?",
    "prio": 2,
    "status": "described",
    "match": "das-magische-labyrinth"
@@ -12020,10 +12020,10 @@
   },
   {
    "name": "Zeiger",
-   "year": "?",
+   "year": "≥2007",
    "why": "число в стрілці = скільки різних чисел лежить у напрямку стрілки",
    "star": "https://www.janko.at/Raetsel/Zeiger/index.htm",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: рік було ?",
    "prio": 2,
    "status": "described",
    "match": "zeiger"
@@ -12033,7 +12033,7 @@
    "year": "2008",
    "why": "стрілка в кожній клітинці; число = скільки стрілок ведуть сюди, зокрема ланцюжком",
    "star": "https://www.janko.at/Raetsel/Arofuro/index.htm",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: індекс Janko підписаний чужою JA-назвою",
    "prio": 2,
    "status": "described",
    "match": "arofuro"
@@ -12073,17 +12073,17 @@
    "year": "?",
    "why": "спрямована петля: число регіону задає довжину візиту в наступний регіон",
    "star": "https://puzz.link/rules.html?remlen",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: автор — Palmer Mebane",
    "prio": 2,
    "status": "described",
    "match": "remembered-length"
   },
   {
    "name": "Pipelink (パイプリンク)",
-   "year": "Nikoli vol.45",
+   "year": "1993",
    "why": "петля крізь усі клітинки з прямими перехрестями будь-де; дано шматки труб",
    "star": "https://puzz.link/rules.html?pipelink",
-   "other": "https://www.janko.at/Raetsel/Pipelink/index.htm",
+   "other": "https://www.janko.at/Raetsel/Pipelink/index.htm · ✔ 2026-11-19: рік було Nikoli vol.45",
    "prio": 2,
    "status": "described",
    "match": "pipelink"
@@ -12140,10 +12140,10 @@
   },
   {
    "name": "Kuralin",
-   "year": "?",
+   "year": "2025 (Nikoli 191)",
    "why": "петля, решта клітинок чорна; кружок торкається більше клітинок свого кольору",
    "star": "https://www.nikoli.co.jp/en/puzzles/kuralin/",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: рік було ?",
    "prio": 2,
    "status": "described",
    "match": "kuralin"
@@ -12155,8 +12155,8 @@
    "star": "https://www.janko.at/Raetsel/Zehnergitter/index.htm",
    "other": "—",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "tenner-grid"
   },
   {
    "name": "Survo puzzle",
@@ -12165,8 +12165,8 @@
    "star": "W:Survo_puzzle",
    "other": "—",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "survo-puzzle"
   },
   {
    "name": "Shinro",
@@ -12175,8 +12175,8 @@
    "star": "W:Shinro",
    "other": "—",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "shinro"
   },
   {
    "name": "Trilogik",
@@ -12185,8 +12185,8 @@
    "star": "https://www.janko.at/Raetsel/Trilogik/index.htm",
    "other": "—",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "trilogik"
   },
   {
    "name": "KaitoRamma (快刀乱麻)",
@@ -12195,8 +12195,8 @@
    "star": "https://puzz.link/rules.html?kramma",
    "other": "—",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "kaitoramma"
   },
   {
    "name": "Deddoanguru (Dead Angle)",
@@ -12205,8 +12205,8 @@
    "star": "https://www.janko.at/Raetsel/Deddoanguru/index.htm",
    "other": "—",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "deddoanguru"
   },
   {
    "name": "Scrin (スクリン)",
@@ -12215,8 +12215,8 @@
    "star": "https://puzz.link/rules.html?scrin",
    "other": "https://www.janko.at/Raetsel/Scrin/index.htm",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "scrin"
   },
   {
    "name": "Ichimaga (イチマガ)",
@@ -12225,8 +12225,8 @@
    "star": "https://puzz.link/rules.html?ichimaga",
    "other": "https://www.janko.at/Raetsel/Ichimaga/index.htm",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "ichimaga"
   },
   {
    "name": "Coffee Milk (コーヒー牛乳)",
@@ -12235,8 +12235,8 @@
    "star": "https://puzz.link/rules.html?coffeemilk",
    "other": "https://www.janko.at/Raetsel/Milchkaffee/index.htm",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "coffee-milk"
   },
   {
    "name": "Molekularis",
@@ -12245,8 +12245,8 @@
    "star": "https://www.janko.at/Raetsel/Molekularis/index.htm",
    "other": "—",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "molekularis"
   },
   {
    "name": "Stitches",
@@ -12255,8 +12255,8 @@
    "star": "https://www.janko.at/Raetsel/Stitches/index.htm",
    "other": "—",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "stitches"
   },
   {
    "name": "Türen (Doors, Seethrough)",
@@ -12265,8 +12265,8 @@
    "star": "https://www.janko.at/Raetsel/Tueren/index.htm",
    "other": "—",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "tueren"
   },
   {
    "name": "Angle Loop (鋭直鈍ループ)",
@@ -12400,10 +12400,10 @@
   },
   {
    "name": "Murdoku",
-   "year": "2025",
+   "year": "2020",
    "why": "підозрювані по кімнатах, один на рядок і колонку; убивця — сам на сам з жертвою",
    "star": "https://allthings.how/murdoku-explained-how-the-murder-mystery-sudoku-puzzle-works/",
-   "other": "https://murdoku.com/play",
+   "other": "https://murdoku.com/play · ✔ 2026-11-19: рік було 2025",
    "prio": 1,
    "status": "described",
    "match": "murdoku"
@@ -12425,8 +12425,8 @@
    "star": "https://logic-masters.de/Raetselportal/Raetsel/zeigen.php?id=000SQ0",
    "other": "Final Transmission (перша частина): https://logic-masters.de/Raetselportal/Raetsel/zeigen.php?id=000RPZ",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "super-sudokoid"
   },
   {
    "name": "Hidden Oxygen",
@@ -12435,8 +12435,8 @@
    "star": "https://www.crazygames.com/game/hidden-oxygen",
    "other": "https://www.youtube.com/results?search_query=Hidden+Oxygen+puzzle",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "hidden-oxygen"
   },
   {
    "name": "13 Sticky Notes",
@@ -12445,8 +12445,8 @@
    "star": "https://fachewachewa.itch.io/13-sticky-notes",
    "other": "—",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "13-sticky-notes"
   },
   {
    "name": "Is This Seat Taken?",
@@ -12455,8 +12455,8 @@
    "star": "https://store.steampowered.com/app/3035120/Is_This_Seat_Taken/",
    "other": "https://www.youtube.com/results?search_query=Is+This+Seat+Taken+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "is-this-seat-taken"
   },
   {
    "name": "CrossCells",
@@ -12475,8 +12475,8 @@
    "star": "https://store.steampowered.com/app/416770/SquareCells/",
    "other": "https://www.youtube.com/results?search_query=SquareCells+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "squarecells"
   },
   {
    "name": "Liquidum",
@@ -12485,8 +12485,8 @@
    "star": "https://store.steampowered.com/app/2716690/Liquidum/",
    "other": "https://www.youtube.com/results?search_query=Liquidum+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "liquidum"
   },
   {
    "name": "Homgard",
@@ -12495,8 +12495,8 @@
    "star": "https://store.steampowered.com/app/4287570/Homgard/",
    "other": "https://www.youtube.com/results?search_query=Homgard+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "homgard"
   },
   {
    "name": "CiniCross",
@@ -12505,8 +12505,8 @@
    "star": "https://store.steampowered.com/app/3933120/CiniCross/",
    "other": "https://www.youtube.com/results?search_query=CiniCross+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "cinicross"
   },
   {
    "name": "The Artisan of Glimmith",
@@ -13605,7 +13605,7 @@
    "year": "2020",
    "why": "NetHack як gym-середовище: Python-агент грає роглайк; MiniHack — власні міні-рівні",
    "star": "https://github.com/facebookresearch/nle",
-   "other": "W:Rog-O-Matic (1981, експертна система виграла Rogue з ASCII-екрана)",
+   "other": "W:Rog-O-Matic (1981, експертна система виграла Rogue з ASCII-екрана) · ✔ 2026-11-19: репозиторії переїхали: heiner/nle, samvelyan/minihack",
    "prio": 2,
    "status": "described",
    "match": "nethack-learning-environment"
@@ -13665,7 +13665,7 @@
    "year": "2026",
    "why": "сиквел TFWR: копання під землею, руїни без пошкоджень, динаміт, сортування грибів (перевірити: ≈ `the-farmer-was-replaced`)",
    "star": "https://store.steampowered.com/app/4521700/The_Miner_Was_Replaced/",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: DLC, не сиквел",
    "prio": 2,
    "status": "described",
    "match": "the-miner-was-replaced"
@@ -13697,8 +13697,8 @@
    "star": "https://olifog.itch.io/yendor",
    "other": "—",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "yendor"
   },
   {
    "name": "Elevator Saga",
@@ -13707,8 +13707,8 @@
    "star": "https://play.elevatorsaga.com/",
    "other": "—",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "elevator-saga"
   },
   {
    "name": "Piet",
@@ -13717,8 +13717,8 @@
    "star": "https://esolangs.org/wiki/Piet",
    "other": "https://esolangs.org/wiki/Hexagony (Hexagony 2015: гекс-сітка, 6 вказівників, памʼять на ребрах)",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "piet"
   },
   {
    "name": "Cubetto",
@@ -13727,8 +13727,8 @@
    "star": "https://www.primotoys.com/",
    "other": "—",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "cubetto"
   },
   {
    "name": "[the Sequence]",
@@ -13787,8 +13787,8 @@
    "star": "https://store.steampowered.com/app/2180700/ABIDOS/",
    "other": "https://www.youtube.com/results?search_query=ABI-DOS+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "abi-dos"
   },
   {
    "name": "Great Permutator",
@@ -13797,8 +13797,8 @@
    "star": "https://store.steampowered.com/app/319270/Great_Permutator/",
    "other": "https://www.youtube.com/results?search_query=Great+Permutator+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "great-permutator"
   },
   {
    "name": "Hard Chip",
@@ -13807,8 +13807,8 @@
    "star": "https://store.steampowered.com/app/2844290/Hard_Chip/",
    "other": "https://www.youtube.com/results?search_query=Hard+Chip+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "hard-chip"
   },
   {
    "name": "Neon Noodles",
@@ -13817,8 +13817,8 @@
    "star": "https://store.steampowered.com/app/990900/Neon_Noodles/",
    "other": "https://www.youtube.com/results?search_query=Neon+Noodles+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "neon-noodles"
   },
   {
    "name": "Star Stuff",
@@ -13827,8 +13827,8 @@
    "star": "https://store.steampowered.com/app/1955110/Star_Stuff/",
    "other": "https://www.youtube.com/results?search_query=Star+Stuff+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "star-stuff"
   },
   {
    "name": "U.V.S. Nirmana",
@@ -13837,8 +13837,8 @@
    "star": "https://store.steampowered.com/app/2536720/UVS_Nirmana/",
    "other": "https://www.youtube.com/results?search_query=U.V.S.+Nirmana+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "uvs-nirmana"
   },
   {
    "name": "Upalu Mundi",
@@ -13847,8 +13847,8 @@
    "star": "https://store.steampowered.com/app/3623200/Upalu_Mundi/",
    "other": "https://www.youtube.com/results?search_query=Upalu+Mundi+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "upalu-mundi"
   },
   {
    "name": "RUSH (Two Tribes)",
@@ -13857,8 +13857,8 @@
    "star": "https://store.steampowered.com/app/38720/RUSH/",
    "other": "https://en.wikipedia.org/wiki/Two_Tribes_(company)",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "rush-two-tribes"
   },
   {
    "name": "Cadence",
@@ -13867,8 +13867,8 @@
    "star": "https://store.steampowered.com/app/362800/Cadence/",
    "other": "https://www.youtube.com/results?search_query=Cadence+Made+With+Monster+Love+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "cadence"
   },
   {
    "name": "NULLPTR",
@@ -14707,7 +14707,7 @@
    "year": "2019",
    "why": "усі блоки рухаються одночасно в один бік; скласти фігуру-візерунок замка",
    "star": "https://store.steampowered.com/app/1138990/",
-   "other": "https://store.steampowered.com/app/2598490/",
+   "other": "https://store.steampowered.com/app/2598490/ · ✔ 2026-11-19: «інший» лінк app/2598490 — це ColorCoordination",
    "prio": 2,
    "status": "described",
    "match": "block-in-the-lock"
@@ -14757,7 +14757,7 @@
    "year": "2026",
    "why": "ящики рухаються самі без героя; керуєш лише порядком і напрямом, дивишся й скидаєш",
    "star": "https://store.steampowered.com/app/5257240/",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: ⭐ — id демо",
    "prio": 2,
    "status": "described",
    "match": "automaticbox"
@@ -14889,8 +14889,8 @@
    "star": "https://store.steampowered.com/app/4866150/Pluricubus/",
    "other": "https://www.youtube.com/results?search_query=Pluricubus+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "pluricubus"
   },
   {
    "name": "A Directionless Cycle",
@@ -14944,10 +14944,10 @@
   },
   {
    "name": "Nekograms",
-   "year": "2025",
+   "year": "2021",
    "why": "коти ходять лише горизонтально, подушки лише вертикально; кожен кіт має лягти на подушку",
    "star": "https://store.steampowered.com/app/2478120/",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: рік було 2025",
    "prio": 1,
    "status": "described",
    "match": "nekograms"
@@ -14984,10 +14984,10 @@
   },
   {
    "name": "Slider",
-   "year": "2024",
+   "year": "2021 (джем; 1.0 — 2024)",
    "why": "увесь світ — пазл «8»: зсуваєш шматки мапи; обертання, 3D-сітки, подорожі в часі",
    "star": "https://randomerz.itch.io/slider",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: рік було 2024",
    "prio": 1,
    "status": "described",
    "match": "slider"
@@ -15029,8 +15029,8 @@
    "star": "https://jpojecp.itch.io/hex-pivot",
    "other": "https://jpojecp.itch.io/hex-pivot/devlog/1133745/making-a-hex-grid-in-puzzlescript",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "hex-pivot"
   },
   {
    "name": "Golden Arrow",
@@ -15039,8 +15039,8 @@
    "star": "https://store.steampowered.com/app/3633540/Golden_Arrow/",
    "other": "https://www.youtube.com/results?search_query=Golden+Arrow+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "golden-arrow"
   },
   {
    "name": "Couch Installation Service",
@@ -15049,8 +15049,8 @@
    "star": "https://store.steampowered.com/app/1412610/Couch_Installation_Service/",
    "other": "https://www.youtube.com/results?search_query=Couch+Installation+Service+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "couch-installation-service"
   },
   {
    "name": "micro6an",
@@ -15059,8 +15059,8 @@
    "star": "https://stingby12.itch.io/micro6an",
    "other": "https://www.bontegames.com/2025/12/micro6an-browser.html",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "micro6an"
   },
   {
    "name": "imprisoned!",
@@ -15069,8 +15069,8 @@
    "star": "https://monakrom.itch.io/imprisoned",
    "other": "https://www.bontegames.com/2026/07/imprisoned-browser.html",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "imprisoned"
   },
   {
    "name": "Evil Eye",
@@ -15079,8 +15079,8 @@
    "star": "https://iamshyguy.itch.io/evil-eye",
    "other": "https://www.bontegames.com/2026/08/evil-eye-browser.html",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "evil-eye"
   },
   {
    "name": "Bloxpath",
@@ -15089,8 +15089,8 @@
    "star": "https://store.steampowered.com/app/3249900/Bloxpath/",
    "other": "https://www.youtube.com/results?search_query=Bloxpath+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "bloxpath"
   },
   {
    "name": "Billy Bumbum: A Cheeky Puzzler",
@@ -15099,8 +15099,8 @@
    "star": "https://store.steampowered.com/app/1752730/Billy_Bumbum_A_Cheeky_Puzzler/",
    "other": "https://www.youtube.com/results?search_query=Billy+Bumbum%3A+A+Cheeky+Puzzler+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "billy-bumbum"
   },
   {
    "name": "Lost in Cheese",
@@ -15109,8 +15109,8 @@
    "star": "https://store.steampowered.com/app/2341100/Lost_in_Cheese/",
    "other": "https://www.youtube.com/results?search_query=Lost+in+Cheese+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "lost-in-cheese"
   },
   {
    "name": "Delicious Donut",
@@ -15119,8 +15119,8 @@
    "star": "https://store.steampowered.com/app/2791620/Delicious_Donut/",
    "other": "https://www.youtube.com/results?search_query=Delicious+Donut+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "delicious-donut"
   },
   {
    "name": "Magnet Block",
@@ -15129,8 +15129,8 @@
    "star": "https://store.steampowered.com/app/2092660/Magnet_Block/",
    "other": "https://www.youtube.com/results?search_query=Magnet+Block+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "magnet-block"
   },
   {
    "name": "BarrelBots",
@@ -15139,8 +15139,8 @@
    "star": "https://store.steampowered.com/app/3851470/BarrelBots/",
    "other": "https://www.youtube.com/results?search_query=BarrelBots+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "barrelbots"
   },
   {
    "name": "BOND",
@@ -15149,8 +15149,8 @@
    "star": "https://store.steampowered.com/app/2835670/",
    "other": "https://www.youtube.com/results?search_query=BOND+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "bond"
   },
   {
    "name": "CLONY",
@@ -15159,8 +15159,8 @@
    "star": "https://store.steampowered.com/app/2953590/CLONY/",
    "other": "https://www.youtube.com/results?search_query=CLONY+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "clony"
   },
   {
    "name": "Cat Squeeze",
@@ -15169,8 +15169,8 @@
    "star": "https://store.steampowered.com/app/3739300/Cat_Squeeze/",
    "other": "https://www.youtube.com/results?search_query=Cat+Squeeze+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "cat-squeeze"
   },
   {
    "name": "A Monster's Snowball",
@@ -15179,8 +15179,8 @@
    "star": "https://competor.itch.io/a-monsters-snowball",
    "other": "https://www.bontegames.com/2021/06/a-monsters-snowball-browser.html",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "a-monsters-snowball"
   },
   {
    "name": "Ahoist Cratey",
@@ -15189,8 +15189,8 @@
    "star": "https://thinkycollective.itch.io/ahoist-cratey",
    "other": "https://www.bontegames.com/2021/01/ahoist-cratey-browser.html",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "ahoist-cratey"
   },
   {
    "name": "Conveyor Con-fusion",
@@ -15199,8 +15199,8 @@
    "star": "https://thinkycollective.itch.io/conveyor-confusion",
    "other": "https://www.youtube.com/results?search_query=Conveyor+Con-fusion+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "conveyor-confusion"
   },
   {
    "name": "An Architect's Adventure",
@@ -15639,8 +15639,8 @@
    "star": "https://thinkycollective.itch.io/indiana-hat-and-the-temple-of-puzz",
    "other": "https://www.youtube.com/results?search_query=Indiana+Hat+and+the+Temple+of+Puzz+gameplay",
    "prio": 3,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "ahoist-cratey"
   },
   {
    "name": "Islands",
@@ -16399,7 +16399,7 @@
    "year": "2020-ті",
    "why": "свіжий broughlike з списку Thinky",
    "star": "https://thinkygames.com/lists/latest-broughlike-games/",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: є на itch (torcado)",
    "prio": 3,
    "status": "described",
    "match": "rat-king"
@@ -16891,8 +16891,8 @@
    "star": "W:Dragon_Crystal",
    "other": "—",
    "prio": 2,
-   "status": "maybe",
-   "match": "dragon-castle"
+   "status": "described",
+   "match": "dragon-crystal"
   },
   {
    "name": "Azure Dreams",
@@ -16966,10 +16966,10 @@
   },
   {
    "name": "Quasimorph",
-   "year": "2026",
+   "year": "2023 (EA; 1.0 — 2026)",
    "why": "екстракція: лут лишається, лише якщо вивіз; смерть клона — втрата всього взятого",
    "star": "https://store.steampowered.com/app/2059170/Quasimorph/",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: рік було 2026",
    "prio": 2,
    "status": "described",
    "match": "quasimorph"
@@ -17006,10 +17006,10 @@
   },
   {
    "name": "SlideMaze",
-   "year": "?",
+   "year": "2024",
    "why": "зсув цілих рядів і стовпців лабіринту як у Labyrinth; ключ → двері",
    "star": "https://squaredev.itch.io/slidemaze",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: рік було ?",
    "prio": 2,
    "status": "described",
    "match": "slidemaze"
@@ -17206,10 +17206,10 @@
   },
   {
    "name": "DROD RPG: Tendry's Tale (+ DROD RPG 2)",
-   "year": "2016",
+   "year": "2008",
    "why": "DROD-кімнати з детермінованими дуелями magic-tower: кого бити зараз, кого — сильнішим",
    "star": "https://store.steampowered.com/app/351330/",
-   "other": "https://store.steampowered.com/app/3661610/",
+   "other": "https://store.steampowered.com/app/3661610/ · ✔ 2026-11-19: рік було 2016",
    "prio": 2,
    "status": "described",
    "match": "drod-rpg"
@@ -18261,7 +18261,7 @@
    "year": "2004",
    "why": "кімнати поля обертаються парами в протилежні боки; ОД з карт дій; втеча через край",
    "star": "https://rulespal.com/dungeon-twister/rulebook",
-   "other": "W:Dungeon_Twister",
+   "other": "W:Dungeon_Twister · ✔ 2026-11-19: одна кімната за AP",
    "prio": 1,
    "status": "described",
    "match": "dungeon-twister"
@@ -18311,17 +18311,17 @@
    "year": "2017",
    "why": "покрокова тактика: ходити лише по плитках свого кольору, збіг заряджає вміння",
    "star": "W:Ticket_to_Earth",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: шлях — будь-який один колір, не «свій»",
    "prio": 2,
    "status": "described",
    "match": "ticket-to-earth"
   },
   {
    "name": "generals.io",
-   "year": "?",
+   "year": "2016",
    "why": "real-time захоплення клітин арміями: генерал і міста ростять військо; ціль — чужий генерал",
    "star": "https://wiki.generals.io/1v1guide",
-   "other": "https://arxiv.org/html/2507.06825v2",
+   "other": "https://arxiv.org/html/2507.06825v2 · ✔ 2026-11-19: рік було ?; ⭐ 1v1guide — стратегія, не правила (краще arXiv 2507.06825)",
    "prio": 2,
    "status": "described",
    "match": "generals-io"
@@ -18351,7 +18351,7 @@
    "year": "1996",
    "why": "драконам лише загальні накази «вперед/чекай»; годування предметами змінює їхню форму",
    "star": "W:Bahamut_Lagoon",
-   "other": "https://www.youtube.com/results?search_query=Bahamut+Lagoon+gameplay",
+   "other": "https://www.youtube.com/results?search_query=Bahamut+Lagoon+gameplay · ✔ 2026-11-19: 3 накази дракону",
    "prio": 2,
    "status": "described",
    "match": "bahamut-lagoon"
@@ -18388,10 +18388,10 @@
   },
   {
    "name": "Fort Triumph",
-   "year": "2019",
+   "year": "2020 (повний реліз)",
    "why": "копняк кидає ворога в інших по лінії; дерева й валуни — ланцюгові відкидання",
    "star": "https://store.steampowered.com/app/612570",
-   "other": "https://www.youtube.com/results?search_query=Fort+Triumph+gameplay",
+   "other": "https://www.youtube.com/results?search_query=Fort+Triumph+gameplay · ✔ 2026-11-19: рік було 2019",
    "prio": 2,
    "status": "described",
    "match": "fort-triumph"
@@ -18428,10 +18428,10 @@
   },
   {
    "name": "Bokosuka Wars",
-   "year": "1983",
+   "year": "1984",
    "why": "уся армія рухається разом за королем; зіткнення вирішує різниця сил; полонених визволяють",
    "star": "W:Bokosuka_Wars",
-   "other": "https://www.youtube.com/results?search_query=Bokosuka+Wars+gameplay",
+   "other": "https://www.youtube.com/results?search_query=Bokosuka+Wars+gameplay · ✔ 2026-11-19: рік було 1983",
    "prio": 2,
    "status": "described",
    "match": "bokosuka-wars"
@@ -18491,7 +18491,7 @@
    "year": "2017",
    "why": "3 раунди по 4 активації; боєць «надихається» за умовою й перевертає картку",
    "star": "https://rulespal.com/warhammer-underworlds/rulebook",
-   "other": "https://www.youtube.com/results?search_query=Warhammer+Underworlds+how+to+play",
+   "other": "https://www.youtube.com/results?search_query=Warhammer+Underworlds+how+to+play · ✔ 2026-11-19: ⭐ — правила поточного видання, а рядок про 2017",
    "prio": 2,
    "status": "described",
    "match": "warhammer-underworlds"
@@ -18603,8 +18603,8 @@
    "star": "https://store.steampowered.com/app/2097570/StarVaders/",
    "other": "https://www.youtube.com/results?search_query=StarVaders+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "starvaders"
   },
   {
    "name": "Sunderfolk",
@@ -18613,8 +18613,8 @@
    "star": "https://store.steampowered.com/app/2414270/Sunderfolk/",
    "other": "https://www.youtube.com/results?search_query=Sunderfolk+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "sunderfolk"
   },
   {
    "name": "Inkshade",
@@ -19530,10 +19530,10 @@
   },
   {
    "name": "Monocre",
-   "year": "2026",
+   "year": "2013 (Steam 2026 — перевидання)",
    "why": "герой білий або чорний: проходить крізь блоки протилежного кольору, бере й віддає колір",
    "star": "https://store.steampowered.com/app/4502500/Monocre/",
-   "other": "https://www.youtube.com/results?search_query=Monocre+gameplay",
+   "other": "https://www.youtube.com/results?search_query=Monocre+gameplay · ✔ 2026-11-19: рік було 2026",
    "prio": 2,
    "status": "described",
    "match": "monocre"
@@ -19585,8 +19585,8 @@
    "star": "W:Echochrome",
    "other": "https://www.youtube.com/results?search_query=Echochrome+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "echochrome"
   },
   {
    "name": "Corrypt (Michael Brough)",
@@ -19595,8 +19595,8 @@
    "star": "https://smestorp.itch.io/corrypt",
    "other": "https://gamedeveloper.com/design/road-to-the-igf-michael-brough-s-i-corrypt-i-",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "corrypt"
   },
   {
    "name": "Bombuzal",
@@ -19605,8 +19605,8 @@
    "star": "W:Bombuzal",
    "other": "https://www.youtube.com/results?search_query=Bombuzal+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "bombuzal"
   },
   {
    "name": "ilomilo",
@@ -19615,8 +19615,8 @@
    "star": "W:Ilomilo",
    "other": "https://www.youtube.com/results?search_query=ilomilo+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "ilomilo"
   },
   {
    "name": "2D Whale World (increpare)",
@@ -19625,8 +19625,8 @@
    "star": "https://www.puzzlescript.net/play.html?p=6841165",
    "other": "https://www.increpare.com/",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "2d-whale-world"
   },
   {
    "name": "MC Escher's Equestrian Armageddon (Anna Clarke)",
@@ -19635,8 +19635,8 @@
    "star": "https://www.puzzlescript.net/play.html?p=6851495",
    "other": "—",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "mc-eschers-equestrian-armageddon"
   },
   {
    "name": "SwapBot (John M. Williams)",
@@ -19645,8 +19645,8 @@
    "star": "https://www.puzzlescript.net/play.html?p=0590a6662f9e8e6afe4a",
    "other": "https://gate.itch.io/",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "swapbot"
   },
   {
    "name": "Mad Queens (Chris Pickel)",
@@ -19655,8 +19655,8 @@
    "star": "https://www.puzzlescript.net/play.html?p=8ba10d6a0a5a0edd640e0b9431858259",
    "other": "https://sfiera.net/",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "mad-queens"
   },
   {
    "name": "Soliquid (Anton Klinger)",
@@ -19665,8 +19665,8 @@
    "star": "https://www.puzzlescript.net/play.html?p=4adc7b17c2c0449c3a8b6c730e8cbfc9",
    "other": "—",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "soliquid"
   },
   {
    "name": "Omniban (Patrickgh3)",
@@ -19675,8 +19675,8 @@
    "star": "https://www.puzzlescript.net/play.html?p=96608bd07725a3a105bb0027a7b73da3",
    "other": "—",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "omniban"
   },
   {
    "name": "Stand Off (Mark Richardson)",
@@ -19685,8 +19685,8 @@
    "star": "https://www.puzzlescript.net/play.html?p=14a2f967a1978e28e91118126ac22d6a",
    "other": "—",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "stand-off"
   },
   {
    "name": "A Man Walks Into A Scrollbar (Dee)",
@@ -19695,8 +19695,8 @@
    "star": "https://dee-3.itch.io/a-man-walks-into-a-scrollbar",
    "other": "—",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "a-man-walks-into-a-scrollbar"
   },
   {
    "name": "Linelight",
@@ -19750,10 +19750,10 @@
   },
   {
    "name": "Ice path (Rosden Shadow)",
-   "year": "?",
+   "year": "2018",
    "why": "гравець сам прокладає підлогу, щоб рівень із льодом став розвʼязним",
    "star": "https://rosden.itch.io/ice-path",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: рік було ?",
    "prio": 2,
    "status": "described",
    "match": "pokemon-overworld-puzzles"
@@ -19810,10 +19810,10 @@
   },
   {
    "name": "One More Button",
-   "year": "2025",
+   "year": "2018 (iOS)",
    "why": "гравець — кнопка; ходити можна лише кнопками-стрілками, що лежать на рівні",
    "star": "https://store.steampowered.com/app/3623490/",
-   "other": "https://swiftified.itch.io/one-more-button",
+   "other": "https://swiftified.itch.io/one-more-button · ✔ 2026-11-19: рік було 2025; itch-лінк — інша гра",
    "prio": 1,
    "status": "described",
    "match": "one-more-button"
@@ -19945,8 +19945,8 @@
    "star": "https://lummie-thief.itch.io/croquet-conundrum",
    "other": "https://www.bontegames.com/2024/09/croquet-conundrum-browser.html",
    "prio": 1,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "croquet-conundrum"
   },
   {
    "name": "Vext Edit",
@@ -19955,8 +19955,8 @@
    "star": "https://www.puzzlescript.net/play.html?p=9eb8f8f3df4efb450b798a279eeba2e0",
    "other": "https://api.github.com/gists/9eb8f8f3df4efb450b798a279eeba2e0 · https://www.bontegames.com/2019/07/vext-edit-browser.html",
    "prio": 1,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "vext-edit"
   },
   {
    "name": "Tres Undos",
@@ -19965,8 +19965,8 @@
    "star": "https://knexator.itch.io/tres-undos",
    "other": "https://www.familygamingdatabase.com/game/Tres+Undos",
    "prio": 1,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "tres-undos"
   },
   {
    "name": "0PLAYER",
@@ -19975,8 +19975,8 @@
    "star": "https://caveadventure.itch.io/0player",
    "other": "https://www.youtube.com/results?search_query=0PLAYER+caveadventure",
    "prio": 1,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "0player"
   },
   {
    "name": "Triga",
@@ -19985,8 +19985,8 @@
    "star": "https://store.steampowered.com/app/1890550/Triga/",
    "other": "https://www.youtube.com/results?search_query=Triga+puzzle+gameplay",
    "prio": 1,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "triga"
   },
   {
    "name": "Edge Case",
@@ -19995,8 +19995,8 @@
    "star": "https://parachor.itch.io/edgecase",
    "other": "https://www.youtube.com/results?search_query=Edge+Case+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "edge-case"
   },
   {
    "name": "Enigmash",
@@ -20015,8 +20015,8 @@
    "star": "https://store.steampowered.com/app/3485300/A_Little_Perspective/",
    "other": "https://www.youtube.com/results?search_query=A+Little+Perspective+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "a-little-perspective"
   },
   {
    "name": "Campfire Cooking",
@@ -20025,8 +20025,8 @@
    "star": "https://store.steampowered.com/app/679500/Campfire_Cooking/",
    "other": "https://www.youtube.com/results?search_query=Campfire+Cooking+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "campfire-cooking"
   },
   {
    "name": "Handshakes",
@@ -21502,10 +21502,10 @@
   },
   {
    "name": "worDefense",
-   "year": "?",
+   "year": "2023",
    "why": "літери на полі стріляють; вороги наступають клітинами після кожного слова; свап двох літер",
    "star": "https://amidos2006.itch.io/wordefense",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: рік було ?",
    "prio": 2,
    "status": "described",
    "match": "wordefense"
@@ -22317,7 +22317,7 @@
    "year": "2022",
    "why": "Wordle, де в кожному рядку фідбеку рівно одна плитка бреше",
    "star": "https://drchangliu.github.io/FibbleArena",
-   "other": "https://kotaku.com/wordle-today-games-like-alternatives-best-nerdle-heardl-1848782927/3",
+   "other": "https://kotaku.com/wordle-today-games-like-alternatives-best-nerdle-heardl-1848782927/3 · ✔ 2026-11-19: ⭐ веде на бенчмарк FibbleArena; гра — fibble.xyz",
    "prio": 2,
    "status": "described",
    "match": "fibble"
@@ -22354,40 +22354,40 @@
   },
   {
    "name": "Duplicate Scrabble",
-   "year": "?",
+   "year": "1972",
    "why": "усі гравці мають ту саму дошку й літери; на час, на дошку йде найкращий хід",
    "star": "W:Duplicate_Scrabble",
-   "other": "W:Scrabble_variants",
+   "other": "W:Scrabble_variants · ✔ 2026-11-19: рік було ?",
    "prio": 2,
    "status": "described",
    "match": "duplicate-scrabble"
   },
   {
    "name": "Equate",
-   "year": "?",
+   "year": "1996",
    "why": "рівності хрест-навхрест на дошці 19×19 з плиток-цифр і знаків",
    "star": "W:Equate_(game)",
-   "other": "згадано в mathable.md як родич",
+   "other": "згадано в mathable.md як родич · ✔ 2026-11-19: рік було ?",
    "prio": 2,
    "status": "described",
    "match": "equate"
   },
   {
    "name": "Triolet",
-   "year": "?",
+   "year": "1996 (?)",
    "why": "Scrabble з числами: пари з сумою до 15, трійки — рівно 15",
    "star": "W:Scrabble_variants",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: рік було ?",
    "prio": 2,
    "status": "described",
    "match": "triolet"
   },
   {
    "name": "Yushino",
-   "year": "?",
+   "year": "2012",
    "why": "ряди чисел, де кожне — остання цифра суми двох попередніх (Фібоначчі mod 10)",
    "star": "W:Scrabble_variants",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: рік було ?",
    "prio": 2,
    "status": "described",
    "match": "yushino"
@@ -22434,10 +22434,10 @@
   },
   {
    "name": "Washington Post Keyword",
-   "year": "?",
+   "year": "2023",
    "why": "6 вертикальних слів з пропуском перетинає ключове слово; літера мусить пасувати обом",
    "star": "https://helpcenter.washingtonpost.com/hc/en-us/articles/16190753288475-What-is-Keyword",
-   "other": "https://www.askdavetaylor.com/how-to-play-keyword-game-from-the-washington-post/",
+   "other": "https://www.askdavetaylor.com/how-to-play-keyword-game-from-the-washington-post/ · ✔ 2026-11-19: рік було ?",
    "prio": 2,
    "status": "described",
    "match": "wapo-keyword"
@@ -22507,7 +22507,7 @@
    "year": "2025",
    "why": "слова накладаються на дошку: перекриті літери мають утворити нові слова, дошка росте",
    "star": "https://store.steampowered.com/app/3902010/Overwords/",
-   "other": "—",
+   "other": "— · ✔ 2026-11-19: опис неточний — правда у файлі корпусу",
    "prio": 2,
    "status": "described",
    "match": "overwords"
@@ -22589,8 +22589,8 @@
    "star": "https://playcebo.itch.io/12-word-searches",
    "other": "—",
    "prio": 2,
-   "status": "maybe",
-   "match": "word-search"
+   "status": "described",
+   "match": "12-word-searches"
   },
   {
    "name": "Dave's Word Game",
@@ -22629,8 +22629,8 @@
    "star": "https://store.steampowered.com/app/3856460/",
    "other": "https://store.steampowered.com/app/4264890/",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "cursed-words"
   },
   {
    "name": "Pool Letter",
@@ -22639,8 +22639,8 @@
    "star": "https://cisuthen.itch.io/pool-letter",
    "other": "https://www.youtube.com/results?search_query=Pool+Letter+word+maze",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "pool-letter"
   },
   {
    "name": "Letter Coins",

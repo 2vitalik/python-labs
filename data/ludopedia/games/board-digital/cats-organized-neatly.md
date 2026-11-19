@@ -74,9 +74,15 @@ date: 2026-11-09
 - Undo/підказки/редактор — не згадані (?).
 
 ## Варіації й родичі
-- Серія DU&I з тим самим ядром (кожна — 30 тварин, 80 рівнів, ЛКМ/ПКМ): Dogs Organized Neatly (2021), Birds Organized Neatly (2024, + Daily Puzzle), Cats Organized Neatly 2 (анонс); у кожної є Paper Edition. Сиквели описуються іншою пачкою.
+- Серія DU&I з тим самим ядром (кожна — 30 тварин, 80 рівнів, ЛКМ/ПКМ): Dogs Organized Neatly (2021), Birds Organized Neatly (2024, + Daily Puzzle), Cats Organized Neatly 2 (анонс); у кожної є Paper Edition. Сиквели без нових механік — підрозділ нижче, окремих файлів нема.
 - Осі варіацій: **перетворення фігури** (лише поворот / поворот + дзеркало — Blokus, Ubongo) · **поле** (точне покриття / з порожніми клітинами) · **набір** (фіксований на рівень / вибір з більшого запасу — Outpacked).
 - Родичі в корпусі: `ubongo.md` (вкласти задані поліміно в контур), `iq-puzzler-pro.md`, `pentomino.md`, `daedalian-opus.md` (тайлінг поліміно), `patchwork.md`, `the-isle-of-cats.md` (коти-поліміно на кораблі), `outpacked.md` (пакування з обмеженнями).
+
+### Dogs Organized Neatly (2021) і Birds Organized Neatly (2024) — лише відмінності
+- **Dogs** (DU&I, 01.11.2021): те саме ядро — 30 нових собак «у всіх формах і розмірах», 80 нових рівнів, «взяти й покласти на сітку», поворот, лише ліва й права кнопки миші; 20 досягнень, картки Steam, DLC Paper Edition. Нових правил чи елементів поля опис не згадує — окремого файла нема (пачка I007, 2026-11-19).
+- **Birds** (DU&I, 16.12.2024): 30 птахів, 80 рівнів і **Daily Puzzle** — «щодня новий пазл» (`daily-puzzle`); решта — як у Cats.
+- Steam-категорії всіх трьох однакові (Mouse Only, Touch Only, Steam Cloud, Trading Cards) — схоже, один рушій (?).
+- Джерела: [Steam: Dogs](https://store.steampowered.com/app/1597730/Dogs_Organized_Neatly/) · [Steam: Birds](https://store.steampowered.com/app/2707110/Birds_Organized_Neatly/).
 
 ## Цікавинки для курсу
 - Фігура як множина клітин + поворот на 90° (x, y) → (y, −x) з нормалізацією — 🌱.
