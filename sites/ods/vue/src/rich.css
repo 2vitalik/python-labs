@@ -1,0 +1,51 @@
+/* the lab pages' markup (rich.js, richMd.js — T357 §4); all under .rich, so the rest of the site keeps the platform's look */
+
+/* callouts: the colour says what the note is — a tip · a trap · the answers */
+.rich .guide blockquote.callout.tip { border-color: var(--bs-info-border-subtle);
+                                      background: color-mix(in srgb, var(--bs-info-bg-subtle) 55%, var(--bs-body-bg)); }
+.rich .guide blockquote.callout.trap { border-color: var(--bs-danger-border-subtle);
+                                       background: color-mix(in srgb, var(--bs-danger-bg-subtle) 45%, var(--bs-body-bg)); }
+.rich .guide blockquote.callout.check { border-color: var(--bs-success-border-subtle);
+                                        background: color-mix(in srgb, var(--bs-success-bg-subtle) 55%, var(--bs-body-bg)); }
+
+/* the case's passport: the first 🎯 as a strip of chips «підпис: значення» */
+.rich .guide blockquote.callout.passport { padding: 0; border: 0; background: none; }
+.rich .guide .chips { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; }
+.rich .guide .chip { padding: .15rem .65rem; border: 1px solid var(--bs-success-border-subtle); border-radius: 1rem; font-size: .9rem;
+                     background: color-mix(in srgb, var(--bs-success-bg-subtle) 55%, var(--bs-body-bg)); }
+.rich .guide .chip > strong:first-child { font-weight: 500; color: var(--bs-success-text-emphasis); }
+
+/* folds: the whole summary is the button; the content keeps the box's padding */
+.rich .guide details { padding: 0 1rem; border-radius: .5rem; }
+.rich .guide details[open] { padding-bottom: .75rem; }
+.rich .guide summary { margin: 0 -1rem; padding: .45rem 1rem; list-style: none; font-weight: 500; border-radius: calc(.5rem - 1px); }
+.rich .guide summary::-webkit-details-marker { display: none; }
+.rich .guide summary:hover { background: var(--bs-tertiary-bg); }
+.rich .guide details[open] > summary { margin-bottom: .75rem; border-bottom: 1px solid var(--bs-border-color-translucent);
+                                       border-radius: calc(.5rem - 1px) calc(.5rem - 1px) 0 0; }
+.rich .guide :is(.fold-mark, .fold-ico) { display: inline-block; margin-right: .4rem; color: var(--bs-secondary-color); }
+.rich .guide .fold-mark svg { transition: transform .15s; }
+.rich .guide details[open] > summary > .fold-mark svg { transform: rotate(90deg); }
+.rich .guide details details { margin: .5rem 0; }  /* hints in levels: a fold inside a fold */
+
+/* tabs: the summaries are hidden, the open panel hangs under the row */
+.rich .guide .tabs { margin-bottom: 1rem; }
+.rich .guide .tabs .nav-link { padding: .35rem .85rem; }
+.rich .guide .tabs > details { margin: 0; padding: .75rem 1rem; border-top: 0; border-radius: 0 0 .5rem .5rem; }
+.rich .guide .tabs > details:not([open]), .rich .guide .tabs > details > summary { display: none; }
+.rich .guide .tabs > details > :last-child { margin-bottom: 0; }
+.rich .guide .tab-lead { color: var(--bs-secondary-color); }
+
+/* code: a quiet box; «копіювати» in its corner comes under the mouse (always there on a touch screen) */
+.rich .guide .code { position: relative; margin-bottom: 1rem; }
+.rich .guide pre { padding: .75rem 1rem; border-radius: .5rem; background: var(--bs-tertiary-bg); }
+.rich .guide .code > pre { margin-bottom: 0; }
+.rich .guide .copy { position: absolute; top: .4rem; right: .4rem; display: inline-flex; align-items: center; gap: .3rem; padding: .1rem .5rem;
+                     border: 1px solid var(--bs-border-color); border-radius: .375rem; background: var(--bs-body-bg);
+                     color: var(--bs-secondary-color); font-size: .75rem; opacity: 0; transition: opacity .15s; }
+.rich .guide .code:hover > .copy, .rich .guide .copy:focus-visible, .rich .guide .copy.done { opacity: 1; }
+.rich .guide .copy:hover { color: var(--bs-body-color); }
+.rich .guide .copy.done { color: var(--bs-success-text-emphasis); border-color: var(--bs-success-border-subtle); }
+@media (hover: none) { .rich .guide .copy { opacity: .8; } }
+
+.rich .guide img.zoom { cursor: zoom-in; }
