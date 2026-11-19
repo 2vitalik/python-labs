@@ -1,0 +1,107 @@
+#!/usr/bin/env python3
+"""bin/nbrun — students' lab notebooks re-run on this Mac in a locked Docker box, the result → the site (T354).
+
+  bin/nbrun build                      the image ods-nbrun from bin/nbrun.d/ — the only step that needs the network
+  bin/nbrun file <шлях> [--kind ipynb|marimo] [--with DIR] [--save out.ipynb]
+                                       one notebook from the disk, no site: the line, the errors, the seconds
+  bin/nbrun <лаба> [-t ods] [--vid V] [--all] [--with DIR]
+                                       the latest file of every variant that has no run yet (--all — of every variant):
+                                       download → run → PUT /api/variants/file/{id}/run; a line per work, a count at the end
+
+--with DIR: the lab's own files the notebook opens (lab 5 reads img/image-N.png) go into the box next to it under DIR's
+name; for a lab the default is sites/ods/data/labs/new/lab<N>/img, when it exists.
+
+The box (bin/nbrun.d/box.py): no network, read-only root, /tmp 512 MB, 1 GB of memory, 1 CPU, 256 processes, no
+capabilities, uid 1000, nothing of the host mounted; the notebook goes in on stdin, one JSON comes out on stdout;
+5 minutes per notebook, 2 per cell."""
+import argparse
+import base64
+import sys
+import zlib
+from pathlib import Path
+from urllib.request import Request, urlopen
+
+sys.path.insert(0, str(Path(__file__).resolve().parent / "nbrun.d"))
+import box
+from siteapi import ROOT, call, target
+
+
+def files(folder: Path | None) -> dict[str, bytes]:
+    if not folder or not folder.is_dir():
+        return {}
+    return {f"{folder.name}/{p.relative_to(folder)}": p.read_bytes() for p in sorted(folder.rglob("*")) if p.is_file()}
+
+
+def summary(r: dict) -> str:
+    state = "✅ без помилок" if r["ok"] else f"❌ помилок {len(r['errors'])}" if r["errors"] else "❌ не виконано"
+    lines = [f"{state} · {r['seconds']:.0f} с", f"рядок: {r['line']}" if r["line"] else "рядка LAB… у виводі нема"]
+    lines += [f"  клітинка {e['key']} · {e['name']}: {e['text']}" for e in r["errors"]]
+    if not r["ok"] and r["log"].strip():
+        log = r["log"].strip().splitlines()  # the first line says what broke, the rest is the box's log tail
+        lines.append("журнал: " + "\n  ".join(log[:1] + log[1:][-5:]))
+    return "\n".join(lines + [f"рушій: {r['engine']}"])
+
+
+def one(a):
+    path = Path(a.path)
+    r = box.run(path.read_bytes(), a.kind or ("marimo" if path.suffix == ".py" else "ipynb"), files(a.with_))
+    print(f"{path.name} · {summary(r)}")
+    if a.save and r.get("executed"):
+        Path(a.save).write_bytes(zlib.decompressobj().decompress(base64.b64decode(r["executed"]), box.CAP))
+        print(f"виконана копія → {a.save}")
+
+
+def raw(to: str, fid: str) -> bytes:
+    url, token = target(to)
+    with urlopen(Request(f"{url}/api/variants/file/{fid}/raw", headers={"Authorization": f"Bearer {token}"})) as response:
+        return response.read()
+
+
+def verdict(run: dict) -> str:
+    said = f"{run['right']} із {run['total']} збіглося" if run.get("total") else "рядка нема"
+    more = [f"помилок {len(run['errors'])}"] * bool(run.get("errors")) + ["≠ рядок студента"] * (run.get("same") is False)
+    return " · ".join([f"{'✅' if run.get('ok') else '❌'} {said}", *more, f"{run.get('seconds', 0):.0f} с"])
+
+
+def lab(a):
+    todo = call(a.target, "GET", f"/variants/{a.lab}/files" + ("" if a.all else "?todo=1"))
+    todo = [f for f in (todo if isinstance(todo, list) else todo.get("files", [])) if not a.vid or f["vid"] == a.vid]
+    extra = files(a.with_ or ROOT / "sites" / "ods" / "data" / "labs" / "new" / f"lab{a.lab}" / "img")
+    print(f"Лаба {a.lab} · {a.target} · до перезапуску {len(todo)}" + (f" · з файлами: {', '.join(extra)}" if extra else ""))
+    done = ok = 0
+    for f in todo:
+        try:
+            run = call(a.target, "PUT", f"/variants/file/{f['id']}/run", box.run(raw(a.target, f["id"]), f["kind"], extra))
+        except (SystemExit, OSError) as e:  # siteapi.call exits on an HTTP error: one work's trouble, not the whole batch
+            print(f"{f['vid']} · ⚠ {e}")
+            continue
+        run = run.get("run", run)
+        done, ok = done + 1, ok + bool(run.get("ok"))
+        print(f"{f['vid']} · {verdict(run)}", flush=True)
+    print(f"Перезапущено {done} із {len(todo)} · без помилок {ok}")
+
+
+def main():
+    if sys.argv[1:2] == ["build"]:
+        return box.build()
+    p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    if sys.argv[1:2] == ["file"]:
+        p.add_argument("file")
+        p.add_argument("path")
+        p.add_argument("--kind", choices=("ipynb", "marimo"))
+        p.add_argument("--save")
+        go = one
+    else:
+        p.add_argument("lab", type=int)
+        p.add_argument("-t", "--target", default="ods")
+        p.add_argument("--vid")
+        p.add_argument("--all", action="store_true")
+        go = lab
+    p.add_argument("--with", dest="with_", type=Path, metavar="DIR")
+    a = p.parse_args()
+    box.ready()
+    go(a)
+
+
+if __name__ == "__main__":
+    main()
