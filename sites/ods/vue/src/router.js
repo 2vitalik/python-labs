@@ -56,8 +56,9 @@ export default makeRouter([
   { path: '/lessons/:slug', component: LessonPage, meta: { title: 'Пари', access: 'active' } },
   { path: '/lessons/:slug/edit', component: LessonEditPage, meta: { title: 'Пари', access: 'admin' } },
   { path: '/attendance', component: AttendancePage, meta: { title: 'Відвідування', access: 'admin', wide: true, filters: true } },  // students × lessons, from Zoom (T222)
-  { path: '/my/week', component: MyWeekPage, meta: { title: 'Мій тиждень', access: 'active' } },
-  { path: '/week/:day(\\d)?', component: WeekPage, meta: { title: 'Тиждень', access: 'active', filters: true, stay: true, wide: 'admin' } },
+  // the week is the teacher's alone for now: 'active' on both routes gives it back to students, with the menu entry
+  { path: '/my/week', component: MyWeekPage, meta: { title: 'Мій тиждень', access: 'admin' } },
+  { path: '/week/:day(\\d)?', component: WeekPage, meta: { title: 'Тиждень', access: 'admin', filters: true, stay: true, wide: 'admin' } },
   { path: '/method/history', component: HistoryPage, meta: { title: 'Історія правок', access: 'admin' } },
   { path: '/login', component: LoginPage, meta: { title: 'Вхід' } },
   { path: '/my/profile', component: ProfilePage, meta: { title: 'Профіль', access: 'active' } },
