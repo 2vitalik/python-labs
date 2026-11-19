@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T354** · тікетів: 353 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T355** · тікетів: 354 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -361,3 +361,4 @@
 | platform | [T351](platform/.t/T351-Q--game-plus-choices.md) | ❓ | game-plus-choices | Плюси — вибір після T350 | 🔴 ⬜ |
 | platform | [T352](platform/.t/T352--shared-to-core/plan.md) | ⚙️ | shared-to-core | Спільне — в ядро: ods на всіх сторінках платформи, цеглинки python-сайту в core — план | 🟢 🟩 |
 | platform | [T353](platform/.t/T353-Q--shared-to-core-choices.md) | ❓ | shared-to-core-choices | Спільне в ядрі: вибори — «Строки» ods, захисти, файли, ШІ-клієнт | 🔴 ⬜ |
+| ods | [T354](ods/.t/T354--ods-lab-handin/plan.md) | ⚙️ | ods-lab-handin | Здача й перевірка лаб ods — файл ноутбука, показ без запуску, підказка оцінки, marimo в браузері, локальний перезапуск, check() → сайт — план | 🟢 ⬜ |
