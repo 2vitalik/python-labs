@@ -215,15 +215,15 @@
 | Tori shogi | 1799 | пташине шогі 7×7 з дропами; лівий і правий перепели ходять дзеркально різно | W:Tori_shogi | — | 2 |
 | Hyper Chinese Chess | 2025 | real-time сянці без черги: спільний запас очок дій регенерує, режим туману | https://store.steampowered.com/app/4059530/ | — | 2 |
 | Gonnect | 2000 | правила го, але мета — одна група, що зʼєднує протилежні сторони | W:Gonnect | https://ludii.games/details.php?keyword=Gonnect | 2 |
-| NoGo | 2005 | анти-го: після ходу кожна група мусить мати дихання; хто не може поставити — програв | https://ludii.games/details.php?keyword=NoGo | — | 2 |
+| NoGo | 2005 | анти-го: після ходу кожна група мусить мати дихання; хто не може поставити — програв | https://ludii.games/details.php?keyword=NoGo | — · ✔ 2026-11-19: джерела авторства суперечать | 2 |
 | Sygo | 2010 | го Фрілінга: оточені камені перефарбовуються, не знімаються; або ріст усіх своїх груп | W:Sygo | — | 2 |
 | Bao la Kiswahili | трад. | манкала 4×8: фаза з руки, естафетний розсів захоплених із kichwa, будинок nyumba | W:Bao_(game) | https://ludii.games/details.php?keyword=Bao%20Kiswahili%20(East%20Africa) | 2 |
 | Togyzkumalak | трад. | казахська манкала 2×9: туздик — ворожа лунка назавжди стає твоєю коморою | W:Togyzkumalak | — | 2 |
 | Octi | 1999 | додаєш капсулі «зубці» — так будуєш її дозволені напрямки руху (?) | W:Octi | https://www.youtube.com/results?search_query=Octi+board+game | 2 |
-| Diaballik | 2004 | 2 кроки + 1 пас мʼяча прямою чи діагоналлю; анти-гра карає за глуху стіну | W:Diaballik | https://ludii.games/details.php?keyword=Diaballik | 2 |
-| TZAAR | ? | три типи фішок; спершу обовʼязкове взяття, далі стос; втратив тип — програв | W:TZAAR | — | 2 |
-| Three Musketeers | ≤1969 | 3 мушкетери лише бʼють сусідніх; 22 вороги виграють, вишикувавши їх в одну лінію | W:Three_Musketeers_(game) | — | 2 |
-| Trike | ? | спільна пішка: ставиш камінь на її прямій і переносиш її туди; очки довкола | https://ludii.games/details.php?keyword=Trike | https://www.boardspace.net/english/about_trike.html | 2 |
+| Diaballik | 2002 | 2 кроки + 1 пас мʼяча прямою чи діагоналлю; анти-гра карає за глуху стіну | W:Diaballik | https://ludii.games/details.php?keyword=Diaballik · ✔ 2026-11-19: рік було 2004 | 2 |
+| TZAAR | 2007/08 | три типи фішок; спершу обовʼязкове взяття, далі стос; втратив тип — програв | W:TZAAR | — · ✔ 2026-11-19: рік було ? | 2 |
+| Three Musketeers | ≤1969 | 3 мушкетери лише бʼють сусідніх; 22 вороги виграють, вишикувавши їх в одну лінію | W:Three_Musketeers_(game) | — · ✔ 2026-11-19: W:Three_Musketeers_(game) — редірект на «A Gamut of Games» | 2 |
+| Trike | 2020 | спільна пішка: ставиш камінь на її прямій і переносиш її туди; очки довкола | https://ludii.games/details.php?keyword=Trike | https://www.boardspace.net/english/about_trike.html · ✔ 2026-11-19: рік було ? | 2 |
 | Squadro | 2018 | 5 фішок перетинають шляхи суперника; швидкість від лунки, перескок відкидає ворога | https://ludii.games/details.php?keyword=Squadro | — | 2 |
-| Barca | ? | без взяття: слон, лев, миша лякають за камінь-ножиці-папір; зайняти 3 водопої | W:Barca_(board_game) | https://ludii.games/details.php?keyword=Barca | 2 |
+| Barca | 2007 | без взяття: слон, лев, миша лякають за камінь-ножиці-папір; зайняти 3 водопої | W:Barca_(board_game) | https://ludii.games/details.php?keyword=Barca · ✔ 2026-11-19: рік було ? | 2 |
 | Chessarama | 2023 | 8 мініігор зі звичайними ходами фігур і новими цілями: Sokoban-шахи, дракон | https://store.steampowered.com/app/1831830/Chessarama/ | — | 2 |

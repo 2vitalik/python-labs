@@ -155,7 +155,7 @@
 | Puzzle Pirates — Alchemistry | 2003 | витягти: крутиш труби, кольори з колб змішуються дорогою до пляшок; без таймера | https://yppedia.puzzlepirates.com/Official:Alchemistry | W:Puzzle_Pirates | 2 |
 | Cyberpunk 2077 — Breach Protocol | 2020 | витягти: матриця кодів, вибір чергує рядок і стовпець, послідовності збираються в буфері | https://timiskhakov.github.io/posts/breaching-breach-protocol | https://primagames.com/gaming/cyberpunk-2077-hacking-breach-protocol-guide | 2 |
 | Rail Route | 2024 (EA 2021) | диспетчер: будуєш колію й сигнали, вручну задаєш маршрути, потім автоматизуєш сенсорами й роутерами | https://store.steampowered.com/app/1124180/Rail_Route/ | https://www.youtube.com/results?search_query=Rail+Route+gameplay | 2 |
-| Strata | 2014 | кольорові стрічки шарами; колір клітини — від верхньої стрічки, тож розвʼязок — порядок кладення | https://store.steampowered.com/app/286380/Strata/ | https://www.youtube.com/results?search_query=Strata+Graveck+gameplay | 2 |
+| Strata | 2013 (iOS) | кольорові стрічки шарами; колір клітини — від верхньої стрічки, тож розвʼязок — порядок кладення | https://store.steampowered.com/app/286380/Strata/ | https://www.youtube.com/results?search_query=Strata+Graveck+gameplay · ✔ 2026-11-19: рік було 2014 | 2 |
 | Piping Hot | 2019 | труби на кількох поверхах одночасно; шлях мусить пройти нагрівач, вода наздоганяє | https://store.steampowered.com/app/1168160/Piping_Hot/ | https://www.youtube.com/results?search_query=Piping+Hot+Odd+Digs | 2 |
 | Some lines were meant to be crossed (PuzzleScript) | 2016 | ейлерів цикл: пройти кожну лінію раз і повернутися на старт; пройдене стає стіною | https://www.puzzlescript.net/play.html?p=33eee323d8edfbdc20ee2d584cee2b4b | https://gist.github.com/33eee323d8edfbdc20ee2d584cee2b4b | 2 |
 | Pipeline (Capstone) | 2019 | особиста мережа труб на планшеті; довжина трубопроводу кожного сорту нафти — окремий трек | https://rulespal.com/pipeline/rulebook | https://opinionatedgamers.com/2019/09/23/dale-yu-first-impressions-of-pipeline/ | 3 |
@@ -171,7 +171,7 @@
 
 | Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
 |---|---|---|---|---|---|
-| Blobun | 2025 | торкнутися кожної клітини (гамільтонів шлях) слизовим слідом; токени перемикають стан, лава, блоки-перемикачі | https://store.steampowered.com/app/3284270/Blobun/ | https://store.steampowered.com/app/3827340/Blobun_Mini/ | 1 |
+| Blobun | 2025 | торкнутися кожної клітини (гамільтонів шлях) слизовим слідом; токени перемикають стан, лава, блоки-перемикачі | https://store.steampowered.com/app/3284270/Blobun/ | https://store.steampowered.com/app/3827340/Blobun_Mini/ · ✔ 2026-11-19: «гамільтонів» не підтверджено | 1 |
 | Trails | 2025 | маршрути кораблів малюються наперед, усі рухаються одночасно по клітині; без зіткнень і повторних клітин | https://store.steampowered.com/app/3605120/Trails/ | https://purplesloth.itch.io/trails | 1 |
 | self reflection | 2021 | переставити дзеркала, щоб власний погляд-промінь повернувся до тебе (LD48) | https://torcado.itch.io/self-reflection | https://ldjam.com/events/ludum-dare/48/self-reflection | 2 |
 | Water Me Please! | ≤2016 | зсувати блоки з трубами, щоб вода дійшла до квітки (від авторів Unblock Me) | https://apps.apple.com/us/app/water-me-please/id920743929 | — | 2 |

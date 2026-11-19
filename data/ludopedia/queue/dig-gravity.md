@@ -151,7 +151,7 @@
 | Teztlotzl | ? | дуель магів картами-закляттями на falling-sand арені з 17 матеріалів | https://petri-dish-games.itch.io/teztlotzl | https://www.youtube.com/results?search_query=Teztlotzl+gameplay | 2 |
 | Grain | 2026 | falling-sand банка з харчовою мережею: 16 видів тварин їдять, плодяться, гниють у ґрунт | https://frizzle3.itch.io/grain | https://frizzle3.itch.io/grain-demo | 2 |
 | Sandman: Every Death Builds | 2026 | смерть перетворює тіло на купу піску-рельєфу; самогубство кнопкою як інструмент | https://store.steampowered.com/app/4484250/Sandman_Every_Death_Builds/ | https://www.youtube.com/results?search_query=Sandman+Every+Death+Builds | 2 |
-| Dig Dig Boom | 2027 (демо 2024) | покроковий роглайк-копач: гравітація діє лише з твоїм ходом; бій як шаховий пазл | https://store.steampowered.com/app/2026040/Dig_Dig_Boom/ | https://playtester.io/dig-dig-boom | 2 |
+| Dig Dig Boom | 2027/TBA (Steam) | покроковий роглайк-копач: гравітація діє лише з твоїм ходом; бій як шаховий пазл | https://store.steampowered.com/app/2026040/Dig_Dig_Boom/ | https://playtester.io/dig-dig-boom · ✔ 2026-11-19: рік було 2027 (демо 2024) | 2 |
 | Combustor | 2026 | клітинна симуляція газів: тиск, температура, займання від 700 K; конструюєш двигун | https://store.steampowered.com/app/5047230/Combustor/ | — | 2 |
 | Infiniminer | 2009 | командне копання вокселів за руду й гроші — предок Minecraft | W:Infiniminer | https://www.youtube.com/results?search_query=Infiniminer+gameplay | 3 |
 | Teardown | 2022 | руйнівний воксельний світ: підготовка без ліміту, після тривоги — 60 с на втечу | W:Teardown_(video_game) | https://store.steampowered.com/search/?term=Teardown | 3 |
@@ -161,7 +161,7 @@
 | Full Bore | 2014 | відкритий світ блочних пазлів: поведінку блоків шахти відкриваєш сам (сітка — ?) | https://store.steampowered.com/app/264060/Full_Bore/ | https://www.youtube.com/results?search_query=Full+Bore+gameplay | 3 |
 | SILO 7 | 2026 | BD під таймером: монітори скидаєш у переробник у 20-с вікно → паливо | https://lythande.itch.io/silo-7 | — | 3 |
 | OxRox | 2024 | детермінований BD на двох Threshers: окремі кооп-рівні й редактор у Workshop | https://store.steampowered.com/app/2866410/OxRox/ | https://rawg.io/games/oxrox | 3 |
-| Quarries of Scred 2 | 2015 | BD-подібний на 1–4 гравців: режими контролю зон, гонки, «останній дрон» | https://darkestkale.itch.io/quarries-of-scred-2 | https://kactusgames.itch.io/qos-1982 | 3 |
+| Quarries of Scred 2 | 2015 | BD-подібний на 1–4 гравців: режими контролю зон, гонки, «останній дрон» | https://darkestkale.itch.io/quarries-of-scred-2 | https://kactusgames.itch.io/qos-1982 · ✔ 2026-11-19: «інший» лінк — фанатська версія QoS1 | 3 |
 | 10key Survival | 2026 | поле — 3D-клавіатура: numpad копає клавіші вниз, уміння на інших клавішах | https://houseduck.itch.io/10key-survival | — | 3 |
 | POUND SAND | 2027 | falling-sand копання й фабрика; газ від інструментів забиває машини, з нього роблять воду | https://store.steampowered.com/app/4568000/POUND_SAND/ | https://store.steampowered.com/app/4740620/POUND_SAND_Demo/ | 3 |
 | Pixel Miner | 2026 | інвентар — falling-sand контейнер: руда пересипається в рюкзаку; дрони копають самі | https://store.steampowered.com/app/4809600/Pixel_Miner/ | — | 3 |
@@ -170,4 +170,4 @@
 
 | Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
 |---|---|---|---|---|---|
-| Subterrarium | ? | копаєш за гроші, поливаєш насіння-інструменти; кожен хід послаблює ґрунт до обвалу | https://slimefriend.itch.io/subterrarium | https://store.steampowered.com/app/467170/ | 2 |
+| Subterrarium | 2016 | копаєш за гроші, поливаєш насіння-інструменти; кожен хід послаблює ґрунт до обвалу | https://slimefriend.itch.io/subterrarium | https://store.steampowered.com/app/467170/ · ✔ 2026-11-19: рік було ? | 2 |

@@ -151,13 +151,13 @@
 | CodinGame Summer Challenge 2024: Olymbits | 2024 | одна команда щоходу йде у 4 мініігри одразу; 1D-доріжка з барʼєрами | https://github.com/CodinGame/SummerChallenge2024Olymbits | — | 2 |
 | CodinGame Summer Challenge 2025: Soak Overflow | 2025 | водяний бій загонів: вологість до 100, укриття, бомби-бризки, дальність за Мангеттеном | https://github.com/CodinGame/SummerChallenge2025-SoakOverflow | — | 2 |
 | Pac-Man Capture the Flag (UC Berkeley CS188) | ? | команди Python-агентів: удома ти привид, на чужій половині — пакмен, що носить їжу | https://github.com/ssardina-teaching/pacman-contest | https://www.youtube.com/results?search_query=pacman+capture+the+flag+contest | 2 |
-| NetHack Learning Environment (NLE, MiniHack) | 2020 | NetHack як gym-середовище: Python-агент грає роглайк; MiniHack — власні міні-рівні | https://github.com/facebookresearch/nle | W:Rog-O-Matic (1981, експертна система виграла Rogue з ASCII-екрана) | 2 |
+| NetHack Learning Environment (NLE, MiniHack) | 2020 | NetHack як gym-середовище: Python-агент грає роглайк; MiniHack — власні міні-рівні | https://github.com/facebookresearch/nle | W:Rog-O-Matic (1981, експертна система виграла Rogue з ASCII-екрана) · ✔ 2026-11-19: репозиторії переїхали: heiner/nle, samvelyan/minihack | 2 |
 | GVGAI (General Video Game AI) | 2014 (?) | аркади описано мовою VGDL; бот грає в незнайому гру; треки генерації рівнів і правил | https://github.com/GAIGResearch/GVGAI | — | 2 |
 | A=B | 2022 | єдина інструкція — заміна підрядка: нормальний алгоритм Маркова на 1D-рядку | https://store.steampowered.com/app/1720850/ | — | 2 |
 | Prime Mover | 2018 | схема з плиток на платі; плати вкладаються в плати як підпрограми | https://store.steampowered.com/app/693700/ | — | 2 |
 | Virtual Circuit Board (VCB) | 2023 | логіка малюється пікселями-«чорнилами»; сигнал іде потактово; власний асемблер | https://store.steampowered.com/app/1885690/ | — | 2 |
 | Kingdom.py | 2026 | місто на справжньому Python: build(House, 3, 4); скрипти героїв і городян | https://store.steampowered.com/app/5430920/Kingdompy/ | — | 2 |
-| The Miner Was Replaced | 2026 | сиквел TFWR: копання під землею, руїни без пошкоджень, динаміт, сортування грибів (перевірити: ≈ `the-farmer-was-replaced`) | https://store.steampowered.com/app/4521700/The_Miner_Was_Replaced/ | — | 2 |
+| The Miner Was Replaced | 2026 | сиквел TFWR: копання під землею, руїни без пошкоджень, динаміт, сортування грибів (перевірити: ≈ `the-farmer-was-replaced`) | https://store.steampowered.com/app/4521700/The_Miner_Was_Replaced/ | — · ✔ 2026-11-19: DLC, не сиквел | 2 |
 | Deadhand | ? | уся черга команд наперед; після запуску рівень змінюється; одне переривання за спробу | https://store.steampowered.com/app/5395820/Deadhand/ | — | 2 |
 | tower.defense(): Program The Fight | 2026 | кожна вежа має свій IF/ELSE-контролер; висота й лінія видимості на дошці | https://store.steampowered.com/app/4409920/Towerdefense_Program_The_Fight/ | — | 2 |
 | YENDOR | ? | бот мовою nh проходить NetHack-подібні підземелля; апгрейди за здобуте золото | https://olifog.itch.io/yendor | — | 2 |

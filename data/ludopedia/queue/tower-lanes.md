@@ -118,7 +118,7 @@
 | Spirit Island | 2017 | граф земель: карти загарбників Explore/Build/Ravage за типом землі, блайт | W:Spirit_Island_(board_game) | https://www.youtube.com/results?search_query=Spirit+Island+how+to+play | 2 |
 | The Bazaar | 2025 | автобій на 1D-дошці до 10 слотів: предмети на 1–3 слоти, кулдауни, сусідні бафи | https://store.steampowered.com/app/1617400/The_Bazaar/ | https://mobalytics.gg/the-bazaar/guides/keywords-and-terms | 2 |
 | Darkest Dungeon | 2016 | 4 ранги на бік: вміння діють лише з певних позицій і на певні, зсув шеренги | W:Darkest_Dungeon | https://www.youtube.com/results?search_query=Darkest+Dungeon+combat+positions | 2 |
-| worDefense | ? | літери на полі стріляють; вороги наступають клітинами після кожного слова; свап двох літер | https://amidos2006.itch.io/wordefense | — | 2 |
+| worDefense | 2023 | літери на полі стріляють; вороги наступають клітинами після кожного слова; свап двох літер | https://amidos2006.itch.io/wordefense | — · ✔ 2026-11-19: рік було ? | 2 |
 | Calculords | 2014 | числа-карти + арифметика = вартість юніта; юніти йдуть трьома смугами | W:Calculords | https://www.gamezebo.com/reviews/calculords-review/ | 2 |
 | Maze Keeper | 2024 | реверс-кроулер-автобатлер: процедурний лабіринт, карти монстрів посилюють тайли | https://store.steampowered.com/app/2940990/Maze_Keeper/ | https://www.youtube.com/results?search_query=Maze+Keeper+gameplay | 3 |
 | Castle Doombad | 2014 | лиходій-оборонець: автоматичні й ручні пастки на таймінг проти героїв | W:Castle_Doombad | https://store.steampowered.com/app/2888470/Castle_Doombad_Classic/ | 3 |

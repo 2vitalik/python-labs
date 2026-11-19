@@ -63,7 +63,7 @@
 | Mosaic | 2020-ті | крихітні сітки, тактично отримати урон — ключ | https://thinkygames.com/games/mosaic | https://thinkygames.com/lists/latest-broughlike-games/ | 2 |
 | Magpie | 2020-ті | дрібнички дають напрямлені здібності на мікро-сітці | https://thinkygames.com/games/magpie/similar/ | — | 2 |
 | Twinfold | 2020-ті | злиття як у 2048 + вороги-роглайк | https://thinkygames.com/games/twinfold/similar/ | — | 1 |
-| Rat King | 2020-ті | свіжий broughlike з списку Thinky | https://thinkygames.com/lists/latest-broughlike-games/ | — | 3 |
+| Rat King | 2020-ті | свіжий broughlike з списку Thinky | https://thinkygames.com/lists/latest-broughlike-games/ | — · ✔ 2026-11-19: є на itch (torcado) | 3 |
 | Morphblade | 2017 | гекси, зброя-морф після кожного удару | https://thinkygames.com/games/morphblade/similar/ | — | 2 |
 | ~~Wyrmspace Tactics~~ | 2020-ті | роглайк-декбілдер на сітці 3×3 | https://thinkygames.com/games/wyrmspace-tactics/similar/ | — · ⊘ 2026-11-19: гра не вийшла (хвилі 2–3) | 2 |
 | Shogun Showdown | 2023/2024 | бій на одній горизонтальній лінії, черга атак як таймлайн | https://store.steampowered.com/app/2084000/Shogun_Showdown/ | — | 1 |
@@ -167,11 +167,11 @@
 | Jacob's Matrix | 2009 | гравець стріляє порталами-ярликами; мана й ліміт рівня йдуть за реальним годинником | https://www.roguebasin.com/index.php/Jacob%27s_Matrix | — | 2 |
 | Cataclysm: Dark Days Ahead | 2013 | авто збирається з деталей у меню будівництва; сезони й ферма, мутації, зламані кінцівки | W:Cataclysm:_Dark_Days_Ahead | — | 2 |
 | Stoneshard | 2020 | біль, мораль, розсудливість, інтоксикація — окремі шкали; караван як пересувна база | https://store.steampowered.com/app/625960/Stoneshard/ | — | 2 |
-| Quasimorph | 2026 | екстракція: лут лишається, лише якщо вивіз; смерть клона — втрата всього взятого | https://store.steampowered.com/app/2059170/Quasimorph/ | — | 2 |
+| Quasimorph | 2023 (EA; 1.0 — 2026) | екстракція: лут лишається, лише якщо вивіз; смерть клона — втрата всього взятого | https://store.steampowered.com/app/2059170/Quasimorph/ | — · ✔ 2026-11-19: рік було 2026 | 2 |
 | Magic Tower: Legion | 2026 | Magic Tower загоном: порядок виходу героїв у бій, поранений відступає, наступний продовжує | https://store.steampowered.com/app/4012830/Magic_Tower_Legion/ | — | 2 |
 | Terry The Skeleton | 2019 | гравець рухається в реальному часі, вороги — фазами за таймером; позначені клітини атак; ривок до стіни | https://amidos2006.itch.io/terry-the-skeleton | — | 2 |
 | ~~Daedalike~~ | ? | гравець сам викладає плитки рівня, кожна викладка — хід; деякі плитки спавнять ворогів | https://tomtl.itch.io/daedalike | — · ⊘ 2026-11-19: на itch пʼять речень, правил нема (хвиля 3) | 2 |
-| SlideMaze | ? | зсув цілих рядів і стовпців лабіринту як у Labyrinth; ключ → двері | https://squaredev.itch.io/slidemaze | — | 2 |
+| SlideMaze | 2024 | зсув цілих рядів і стовпців лабіринту як у Labyrinth; ключ → двері | https://squaredev.itch.io/slidemaze | — · ✔ 2026-11-19: рік було ? | 2 |
 | Tactical Tetrominoes (7DRL) | 2022 | тетроміно-штампи: літера фігури задає ефект на клітинах під нею; заповнені лінії множать монети | https://notester82.itch.io/tactical-tetrominoes | — | 2 |
 | Switch Hook (7DRL) | 2016 | атака = обмін місцями з ворогом на гексах (гак-постріл), 1 урон | https://roguetemple.com/7drl/2016 | — | 2 |
 | Billiard Dungeon / Pinball Dungeon (7DRL) | 2016 / 2019 | герой — більярдна куля: напрям і сила, відскоки від стін і ворогів | https://roguetemple.com/7drl/2016 | https://roguetemple.com/7drl/2019 | 2 |
@@ -201,7 +201,7 @@
 | Fidel Dungeon Rescue | 2017 | пес на повідку: шлях не перетинає себе, бій коштує HP, перемотка, процедурні рівні | https://store.steampowered.com/app/573170/Fidel_Dungeon_Rescue/ | https://www.youtube.com/results?search_query=Fidel+Dungeon+Rescue+gameplay | 1 |
 | Achronal Dungeon | 2022 | однокімнатна magic-tower: «зелені» предмети діють ретроактивно й створюють нові таймлайни | https://patashu.itch.io/achronal-dungeon | https://patashu.itch.io/achronal-dungeon/devlog/469939/v13-secret-endings | 1 |
 | Sol Cesto | 2026 | обрати один із 4 рядів — гравець падає на випадкову клітинку; зуби міняють ймовірності | https://store.steampowered.com/app/2738490/Sol_Cesto/ | https://www.youtube.com/results?search_query=Sol+Cesto+gameplay | 1 |
-| DROD RPG: Tendry's Tale (+ DROD RPG 2) | 2016 | DROD-кімнати з детермінованими дуелями magic-tower: кого бити зараз, кого — сильнішим | https://store.steampowered.com/app/351330/ | https://store.steampowered.com/app/3661610/ | 2 |
+| DROD RPG: Tendry's Tale (+ DROD RPG 2) | 2008 | DROD-кімнати з детермінованими дуелями magic-tower: кого бити зараз, кого — сильнішим | https://store.steampowered.com/app/351330/ | https://store.steampowered.com/app/3661610/ · ✔ 2026-11-19: рік було 2016 | 2 |
 | Towers of Scale | 2026 | ключі, кирки, золото, односторонні шляхи; рекорди дають геми на нові ресурси | https://store.steampowered.com/app/3962750/Towers_of_Scale/ | https://www.youtube.com/results?search_query=Towers+of+Scale+gameplay | 2 |
 | Requiem of Reuinis | 2026 | magic-tower з добовим циклом: розвідка руїн, алхімія, дослідження в постійні стати | https://store.steampowered.com/app/3371260/Requiem_of_Reuinis/ | https://www.youtube.com/results?search_query=Requiem+of+Reuinis+gameplay | 3 |
 | Soulestination | 2021 | magic-tower: 200+ ворогів зі скілами, боси, мета-пазли | https://store.steampowered.com/app/1477330/Soulestination/ | https://www.youtube.com/results?search_query=Soulestination+gameplay | 3 |

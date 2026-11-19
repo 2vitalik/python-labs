@@ -145,7 +145,7 @@
 | Don't Step Wrong | 2025 | перейти сітку блоків за схованим правилом безпеки; помилка — нові значення, те саме правило | https://adrianocastro.itch.io/dont-step-wrong | — | 2 |
 | Faux Hollows (FFXIV) | 2020 (?) | 6×6 з 5 блоками, 11 відкриттів: знайти сховані фігури 2×3, 2×2, 1×1 | https://ffxiv.consolegameswiki.com/wiki/Faux_Hollows | — | 2 |
 | Mini Cactpot (FFXIV) | 2015 | 3×3 перестановка 1–9: відкрити 3, обрати лінію, виграш за таблицею сум | https://ffxiv.consolegameswiki.com/wiki/Mini_Cactpot | — | 2 |
-| Hurkle | 1978 | сховане на сітці 10×10; після промаху — лише напрям, куди шукати | https://raw.githubusercontent.com/coding-horror/basic-computer-games/main/51_Hurkle/README.md | — | 2 |
+| Hurkle | 1973 | сховане на сітці 10×10; після промаху — лише напрям, куди шукати | https://raw.githubusercontent.com/coding-horror/basic-computer-games/main/51_Hurkle/README.md | — · ✔ 2026-11-19: рік було 1978 | 2 |
 | Depth Charge | 1978 | 3D-куб води: після вибуху — положення відносно субмарини по осях | https://raw.githubusercontent.com/coding-horror/basic-computer-games/main/31_Depth_Charge/README.md | — | 2 |
 | Schnappt Hubi! | 2012 | 4×4 кімнати, межі невідомі: електронний компас голосом каже, що між кімнатами | https://de.wikipedia.org/wiki/Schnappt_Hubi! | https://www.youtube.com/results?search_query=Schnappt+Hubi+Spiel | 2 |
 | Clue: The Great Museum Caper | 1991 | невидимий злодій у музеї з камерами й датчиками руху; злодієм бувають по черзі | W:Clue:_The_Great_Museum_Caper | — | 2 |

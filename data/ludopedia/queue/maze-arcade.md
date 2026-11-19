@@ -139,9 +139,9 @@
 | Crazy Arcade (BnB) | 2001 | водяні кулі замість бомб: суперник у бульбашці, союзник рятує дотиком, ворог лопає | W:Crazy_Arcade | https://www.youtube.com/results?search_query=Crazy+Arcade+BnB+gameplay | 2 |
 | Bombergirl | 2018 | командний Bomberman 4 на 4: зруйнувати базу суперника; ролі з уміннями, рівні в матчі | W:Bombergirl | https://www.youtube.com/results?search_query=Bombergirl+gameplay | 2 |
 | Snafu | 1981 | дві змійки: режим Trap — загнати в стіну, Bite — укус у хвіст забирає сегмент | W:Snafu_(video_game) | https://www.youtube.com/results?search_query=Snafu+Intellivision | 2 |
-| Tinkle Pit | 1994 | кульки-ланцюг лягають за героєм; відпустив кнопку — летять назад і бʼють ворогів | W:Tinkle_Pit | https://www.youtube.com/results?search_query=Tinkle+Pit+Namco | 2 |
+| Tinkle Pit | 1994 | кульки-ланцюг лягають за героєм; відпустив кнопку — летять назад і бʼють ворогів | W:Tinkle_Pit | https://www.youtube.com/results?search_query=Tinkle+Pit+Namco · ✔ 2026-11-19: одна куля + лінія | 2 |
 | Live Wire! | 1999 | чотири гравці обводять квадрати сітки на час; павер-апи крадуть чужі клітини | W:Live_Wire! | https://www.youtube.com/results?search_query=Live+Wire+PS1+gameplay | 2 |
-| Hexanaut.io | ? | paper.io на гексах: «король» при 20 % мапи, утримати 3 хв; тотеми-телепорти, без респавну | https://iogames.space/hexanautio | https://www.youtube.com/results?search_query=Hexanaut.io+gameplay | 2 |
+| Hexanaut.io | 2022 | paper.io на гексах: «король» при 20 % мапи, утримати 3 хв; тотеми-телепорти, без респавну | https://iogames.space/hexanautio | https://www.youtube.com/results?search_query=Hexanaut.io+gameplay · ✔ 2026-11-19: рік було ? | 2 |
 | Castle Wolfenstein | 1981 | процедурний замок ~60 кімнат; ключі й скрині; постріл у замок кличе охорону | W:Castle_Wolfenstein | https://www.youtube.com/results?search_query=Castle+Wolfenstein+1981 | 2 |
 | Tempest | 1981 | поле — труба зі смуг; гравець на ободі, вороги лізуть смугами з глибини | W:Tempest_(video_game) | https://www.youtube.com/results?search_query=Tempest+arcade+1981 | 2 |
 | Pac-Manhattan | 2004 | Pac-Man на реальних вулицях 6×4 квартали; генерали бачать дошку, бігуни — лише перехрестя | http://pacmanhattan.com/rules.php | http://pacmanhattan.com/ | 2 |

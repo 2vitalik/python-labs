@@ -123,7 +123,7 @@
 | excellent | 2025 | сокобан з блоками даних і функцій-формул; напрям зʼєднання змінює результат | https://store.steampowered.com/app/3706120/excellent/ | — | 2 |
 | 4D Intuition | 2026 | Sokoban у 4D: штовхати гіперкуби, бачиш 3D-зрізи на «дисплеї», фото 4D-обʼєктів | https://store.steampowered.com/app/3635130/4D_Intuition/ | https://www.youtube.com/results?search_query=4D+Intuition+gameplay | 2 |
 | 4D (Corey Hardt) | 2023 | PuzzleScript-Sokoban у чотиривимірній сітці; клавіша перемикає пару осей руху | https://coreyhardt.itch.io/4d | — | 2 |
-| Monocre | 2026 | герой білий або чорний: проходить крізь блоки протилежного кольору, бере й віддає колір | https://store.steampowered.com/app/4502500/Monocre/ | https://www.youtube.com/results?search_query=Monocre+gameplay | 2 |
+| Monocre | 2013 (Steam 2026 — перевидання) | герой білий або чорний: проходить крізь блоки протилежного кольору, бере й віддає колір | https://store.steampowered.com/app/4502500/Monocre/ | https://www.youtube.com/results?search_query=Monocre+gameplay · ✔ 2026-11-19: рік було 2026 | 2 |
 | WOIM | 2026 | черв'як розрізає себе навпіл — друга половина стає помічником | https://store.steampowered.com/app/4272020/WOIM/ | https://www.youtube.com/results?search_query=WOIM+worm+puzzle+gameplay | 2 |
 | Chomp Garden | 2026 | герой-лампа: рослини ростуть до світла, злодії тікають від нього, кущі ховають | https://store.steampowered.com/app/4457150/Chomp_Garden/ | https://www.youtube.com/results?search_query=Chomp+Garden+gameplay | 2 |
 | inbento | 2019 | зібрати бенто за зразком: обертати, вкладати, міняти, копіювати шматки в порядку | https://store.steampowered.com/app/1567440/inbento/ | https://www.youtube.com/results?search_query=inbento+gameplay | 2 |
@@ -150,7 +150,7 @@
 | Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
 |---|---|---|---|---|---|
 | Starseed Pilgrim | 2013 | насіння вирощує блоки за правилом свого кольору; корупція інвертує рівень | W:Starseed_Pilgrim | https://www.youtube.com/results?search_query=Starseed+Pilgrim+gameplay | 1 |
-| Ice path (Rosden Shadow) | ? | гравець сам прокладає підлогу, щоб рівень із льодом став розвʼязним | https://rosden.itch.io/ice-path | — | 2 |
+| Ice path (Rosden Shadow) | 2018 | гравець сам прокладає підлогу, щоб рівень із льодом став розвʼязним | https://rosden.itch.io/ice-path | — · ✔ 2026-11-19: рік було ? | 2 |
 
 ## Хвиля 3 — 2026-11-09: нові кандидати (пошукові агенти Opus)
 
@@ -161,7 +161,7 @@
 | Candle Prick | 2022 | проколотий ворог стає продовженням тіла героя; гасити всі свічки | https://store.steampowered.com/app/1920700/Candle_Prick/ | https://www.youtube.com/results?search_query=Candle+Prick+gameplay | 1 |
 | Gridmount | 2024 | «проклята» сітка: кожна плитка має свою «північ», ящики їдуть лініями між плитками | https://hempuli.itch.io/gridmount | https://www.youtube.com/results?search_query=Gridmount+gameplay | 1 |
 | All the Gold in Fort Locks | 2026 | штовхаєш ключі в двері — відкриваються кімнати, вкладені в інші кімнати | https://draknek.itch.io/all-the-gold-in-fort-locks | https://www.bontegames.com/2026/07/all-gold-in-fort-locks-browser.html | 1 |
-| One More Button | 2025 | гравець — кнопка; ходити можна лише кнопками-стрілками, що лежать на рівні | https://store.steampowered.com/app/3623490/ | https://swiftified.itch.io/one-more-button | 1 |
+| One More Button | 2018 (iOS) | гравець — кнопка; ходити можна лише кнопками-стрілками, що лежать на рівні | https://store.steampowered.com/app/3623490/ | https://swiftified.itch.io/one-more-button · ✔ 2026-11-19: рік було 2025; itch-лінк — інша гра | 1 |
 | Push The Cat with WASD | 2024 | рівень — текст оповіді: літери W/A/S/D у тексті штовхають кота | https://store.steampowered.com/app/2683570/ | — | 1 |
 | Stoneman's Adventure | 2023 | сокобан і малювання одним розчерком: прокладений шлях стає рядом каменів, які штовхаєш | https://store.steampowered.com/app/2434860/ | https://akacmd.itch.io/stoneman-adventure | 1 |
 | Theta and Paralldox on Worldlines | 2026 | героїня повертає ліворуч біля стін; виделка розщеплює її на копії в паралельних світах | https://store.steampowered.com/app/3219580/ | https://xexlax.itch.io/paralldox | 1 |

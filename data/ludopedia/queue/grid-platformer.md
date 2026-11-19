@@ -127,10 +127,10 @@
 | Mappy | 1983 | батут ламається на 4-й відскок; двері оглушують, мікрохвильові двері змітають котів | W:Mappy | https://www.youtube.com/results?search_query=Mappy+arcade+gameplay | 2 |
 | ~~Gridvania~~ | 2024 | метроїдванія: предмети кладуться на сітку й піднімаються як будівельний інструмент | https://store.steampowered.com/app/3303560/Gridvania/ | — · ⊘ 2026-11-19: нема джерела правил (хвиля 3) | 2 |
 | Crazy Climber | 1980 | два джойстики — дві пари кінцівок; вікна-клітини зачиняються, згори падають предмети | W:Crazy_Climber | https://www.youtube.com/results?search_query=Crazy+Climber+arcade+gameplay | 2 |
-| Stackrobats | ? | ланцюг звʼязаних акробатів рухається разом: драбини, канат униз, батути, бочки | https://beepyeah.itch.io/stackrobats | — | 2 |
+| Stackrobats | 2026 | ланцюг звʼязаних акробатів рухається разом: драбини, канат униз, батути, бочки | https://beepyeah.itch.io/stackrobats | — · ✔ 2026-11-19: рік було ? | 2 |
 | Bagman | 1982 | мішки нести до тачки нагору; мішок скинути на охоронця на драбині | W:Bagman_(video_game) | https://www.youtube.com/results?search_query=Bagman+arcade+gameplay | 3 |
-| Bumpy's Arcade Fantasy | 1989 | керуєш мʼячем, що скаче платформами; руйнівні та вогняні плитки, крапля-захист | W:Bumpy%27s_Arcade_Fantasy | https://www.youtube.com/results?search_query=Bumpy+Loriciels+gameplay | 3 |
-| Stomp! | ? | покроковий роглайк-платформер на 300 ходів: топіт запускає камені, шипи, бомби | https://st33d.itch.io/stomp | https://st33d.itch.io/bump | 3 |
+| Bumpy's Arcade Fantasy | 1989 | керуєш мʼячем, що скаче платформами; руйнівні та вогняні плитки, крапля-захист | W:Bumpy%27s_Arcade_Fantasy | https://www.youtube.com/results?search_query=Bumpy+Loriciels+gameplay · ✔ 2026-11-19: рік було 1989; Bumpy's Arcade Fantasy (1992) — ремейк | 3 |
+| Stomp! | 2021 | покроковий роглайк-платформер на 300 ходів: топіт запускає камені, шипи, бомби | https://st33d.itch.io/stomp | https://st33d.itch.io/bump · ✔ 2026-11-19: рік було ? | 3 |
 | It 2: They/Them | 2025 | покроково: загін із 7 героїв ділиться на групи, у кожного своя здібність | https://twinbeard.itch.io/it2 | — | 3 |
 | Mystic Balloon (Misutikku Barūn) | 2002 | повітряні кульки — головний елемент: носити предмети; лід, конвеєри, клітки | https://ja.wikipedia.org/wiki/%E3%81%BF%E3%81%99%E3%81%A6%E3%81%83%E3%81%A3%E3%81%8F%E2%98%86%E3%81%B0%E3%82%8B%E3%80%9C%E3%82%93 | — | 3 |
 | Lode Builder | 2026 | наступник Lode Runner: з обмежених ресурсів будувати драбини й ланцюги (ще не вийшла) | https://store.steampowered.com/app/3305720/Lode_Builder/ | — | 3 |
@@ -143,7 +143,7 @@
 
 | Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
 |---|---|---|---|---|---|
-| A Short Bike | ? | заднім колесом велосипеда піднімаєш ящики й розвертаєш його, щоб виїхати на скелю | https://werxzy.itch.io/a-short-bike | https://www.youtube.com/results?search_query=A+Short+Bike+gameplay | 2 |
+| A Short Bike | 2025 | заднім колесом велосипеда піднімаєш ящики й розвертаєш його, щоб виїхати на скелю | https://werxzy.itch.io/a-short-bike | https://www.youtube.com/results?search_query=A+Short+Bike+gameplay · ✔ 2026-11-19: рік було ? | 2 |
 | Magicube | 2023 | PICO-8: заклинання, націлене стрілками, створює жовтий блок-опору; стрибки з плануванням | https://store.steampowered.com/app/2216120/Magicube/ | https://www.youtube.com/results?search_query=Magicube+gameplay | 2 |
 | AkiRobots | 2020 | керуєш кількома роботами одночасно, щоб довести Акі до розетки; сітка (?) | https://store.steampowered.com/app/861520/AkiRobots/ | https://www.youtube.com/results?search_query=AkiRobots+gameplay | 3 |
 | UltraNothing | 2024 | покроковий сокобан-платформер (лише теги Steam, опис скупий) | https://store.steampowered.com/app/2662590/ | — | 3 |

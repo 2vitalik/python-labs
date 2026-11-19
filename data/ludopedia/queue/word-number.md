@@ -101,26 +101,26 @@
 | Puzzlejuice | 2012 | тетроміно → ряд одного кольору стає літерами → слово Boggle-шляхом очищає | W:Puzzlejuice | згадано в spelltower.md як предок, не описано | 1 |
 | Nansuke (Number Skeleton) | ? | вписати числа зі списку в кросворд-скелет без жодних визначень | https://www.nikoli.co.jp/en/puzzles/nansuke/ | — | 2 |
 | Wordbase | 2014 | слова-шляхи від своєї бази; клітини стають твоїми, мета — торкнутись бази суперника | https://www.androidpolice.com/2014/06/03/new-game-wordbase-is-a-strategic-game-of-vocabulary-vengeance/ | https://www.producthunt.com/products/wordbase-app · згадано в letterpress.md з (?) | 2 |
-| Fibble | 2022 | Wordle, де в кожному рядку фідбеку рівно одна плитка бреше | https://drchangliu.github.io/FibbleArena | https://kotaku.com/wordle-today-games-like-alternatives-best-nerdle-heardl-1848782927/3 | 2 |
+| Fibble | 2022 | Wordle, де в кожному рядку фідбеку рівно одна плитка бреше | https://drchangliu.github.io/FibbleArena | https://kotaku.com/wordle-today-games-like-alternatives-best-nerdle-heardl-1848782927/3 · ✔ 2026-11-19: ⭐ веде на бенчмарк FibbleArena; гра — fibble.xyz | 2 |
 | Xordle | 2022 | два слова без спільних літер на одному полі: кожна підказка стосується лише одного | https://www.hey.gg/blog/xordle | https://playpile.gg/games/xordle | 2 |
 | Squabble | 2022 | Wordle-баттл-рояль до 99 гравців: HP тане щосекунди, вгадані літери б'ють суперника | W:Squabble_(video_game) | — | 2 |
 | WordJong | 2007 | маджонг-розкладка літер: слово лише з відкритих плиток, очистити всю розкладку | https://www.gamespot.com/reviews/wordjong-review/1900-6184115/ | W:WordJong · https://www.engadget.com/2007/11/02/ds-fanboy-review-wordjong/ | 2 |
-| Duplicate Scrabble | ? | усі гравці мають ту саму дошку й літери; на час, на дошку йде найкращий хід | W:Duplicate_Scrabble | W:Scrabble_variants | 2 |
-| Equate | ? | рівності хрест-навхрест на дошці 19×19 з плиток-цифр і знаків | W:Equate_(game) | згадано в mathable.md як родич | 2 |
-| Triolet | ? | Scrabble з числами: пари з сумою до 15, трійки — рівно 15 | W:Scrabble_variants | — | 2 |
-| Yushino | ? | ряди чисел, де кожне — остання цифра суми двох попередніх (Фібоначчі mod 10) | W:Scrabble_variants | — | 2 |
+| Duplicate Scrabble | 1972 | усі гравці мають ту саму дошку й літери; на час, на дошку йде найкращий хід | W:Duplicate_Scrabble | W:Scrabble_variants · ✔ 2026-11-19: рік було ? | 2 |
+| Equate | 1996 | рівності хрест-навхрест на дошці 19×19 з плиток-цифр і знаків | W:Equate_(game) | згадано в mathable.md як родич · ✔ 2026-11-19: рік було ? | 2 |
+| Triolet | 1996 (?) | Scrabble з числами: пари з сумою до 15, трійки — рівно 15 | W:Scrabble_variants | — · ✔ 2026-11-19: рік було ? | 2 |
+| Yushino | 2012 | ряди чисел, де кожне — остання цифра суми двох попередніх (Фібоначчі mod 10) | W:Scrabble_variants | — · ✔ 2026-11-19: рік було ? | 2 |
 | Spiral puzzle | трад. | ланцюг клітин спіраллю: одні відповіді читаються 1→100, інші 100→1 | W:Spiral_puzzle | — | 2 |
 | Чайнворд (Chainword) | трад. | лінійний кросворд: кінець слова — початок наступного, ланцюг або змійка | https://ru.wikipedia.org/wiki/Линейный_кроссворд | — | 2 |
 | Diagramless crossword (Carte Blanche) | трад. | дано лише розмір: чорні клітини й нумерацію розвідує сам розвʼязувач | W:Crossword | — | 2 |
 | Wordscapes | 2017 | свайп по колесу з літер → слова заповнюють кросвордну сітку | W:Wordscapes | — | 2 |
-| Washington Post Keyword | ? | 6 вертикальних слів з пропуском перетинає ключове слово; літера мусить пасувати обом | https://helpcenter.washingtonpost.com/hc/en-us/articles/16190753288475-What-is-Keyword | https://www.askdavetaylor.com/how-to-play-keyword-game-from-the-washington-post/ | 2 |
+| Washington Post Keyword | 2023 | 6 вертикальних слів з пропуском перетинає ключове слово; літера мусить пасувати обом | https://helpcenter.washingtonpost.com/hc/en-us/articles/16190753288475-What-is-Keyword | https://www.askdavetaylor.com/how-to-play-keyword-game-from-the-washington-post/ · ✔ 2026-11-19: рік було ? | 2 |
 | Quarrel | 2011 | карта територій як Risk; атака — анаграмний двобій з однакових виданих літер | W:Quarrel_(video_game) | https://gameinformer.com/games/quarrel/b/xbox360/archive/2012/02/02/quarrel-review-turning-words-into-war | 2 |
 | So Clover! | 2021 | конюшина 2×2 з карт по 4 слова: підказки на стиках, інші обертають і розкладають карти назад | https://cdn.shopify.com/s/files/1/2003/4581/files/sc-en01-rules-16197761427wP8d.pdf | https://rulespal.com/so-clover/rulebook | 2 |
 | Cross Clues | 2020 | осі-слова 3×3…5×5: однослівна підказка → вгадати координату перетину, таймер | https://blueorangegames.eu/wp-content/uploads/2023/05/CrossClues-Rules-EN.pdf | https://rulespal.com/cross-clues/rulebook | 2 |
 | Word on the Street | ? | смуга з 17 приголосних: кожна літера слова зсуває плитку на клітину до своєї команди | https://rulespal.com/word-on-the-street/rulebook | https://www.majorfun.com/word-on-the-street/ | 2 |
 | WordTactics | 2020 | трей із 6 літер ставиш у сітку; слово можна не здавати, а нарощувати; спецплитки | https://store.steampowered.com/app/1463350/WordTactics/ | — | 2 |
 | Lexilotl: Crossword Puzzle Run | 2026 | забіг міні-кросвордів: вгадана літера відкривається в усіх словах, 3 промахи — кінець | https://store.steampowered.com/app/4735750/Lexilotl_Crossword_Puzzle_Run/ | — | 2 |
-| Overwords | 2025 | слова накладаються на дошку: перекриті літери мають утворити нові слова, дошка росте | https://store.steampowered.com/app/3902010/Overwords/ | — | 2 |
+| Overwords | 2025 | слова накладаються на дошку: перекриті літери мають утворити нові слова, дошка росте | https://store.steampowered.com/app/3902010/Overwords/ | — · ✔ 2026-11-19: опис неточний — правда у файлі корпусу | 2 |
 | Wormspell | ? | черв'як ходить клітинами, вписує слова на порожні — слова стають місциною, оточення ламає обʼєкти | https://chriswade.itch.io/wormspell | — | 2 |
 | King's Cribbage | ? | плитки-карти хрест-навхрест: кожен ряд — комбінація криббеджа з 5 карт | W:Scrabble_variants | — | 3 |
 | LinkedIn Crossclimb | 2024 | драбина слів з тривіа-підказками: рядки перетягнути в порядок, кінці відкриваються останніми | https://www.askdavetaylor.com/how-to-play-the-linkedin-puzzle-game-crossclimb/ | https://crossclimb-site.pages.dev/how-to-play | 3 |

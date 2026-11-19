@@ -116,12 +116,12 @@
 | Gentoo Rescue | 2025 | ковзні пінгвіни й моржі з протилежними цілями; молот, пружина, магніт міняють правила | https://store.steampowered.com/app/2830480/ | — | 2 |
 | Prickle | 2024 | зібрані їжачата прилипають у поліоміно, яке треба протягти крізь живопліт | https://store.steampowered.com/app/2759760/ | — | 2 |
 | Maxwell's puzzling demon | 2024 | гарячі блоки печуть демона й остигають біля холодних; розвʼязані рівні стають ящиками | https://store.steampowered.com/app/2770160/ | — | 2 |
-| Block in the Lock | 2019 | усі блоки рухаються одночасно в один бік; скласти фігуру-візерунок замка | https://store.steampowered.com/app/1138990/ | https://store.steampowered.com/app/2598490/ | 2 |
+| Block in the Lock | 2019 | усі блоки рухаються одночасно в один бік; скласти фігуру-візерунок замка | https://store.steampowered.com/app/1138990/ | https://store.steampowered.com/app/2598490/ · ✔ 2026-11-19: «інший» лінк app/2598490 — це ColorCoordination | 2 |
 | Animal Planner | 2023 | тварини — ковзні блоки з умовами сусідства (ведмідь сам, риби разом) | https://store.steampowered.com/app/2479960/ | — | 2 |
 | Unlock The King | 2019 | шахові фігури як ковзні блоки розчищають королю шлях; кнопки й рухомі частини | https://store.steampowered.com/app/1172510/ | — | 2 |
 | Pight | 2026 | поршні штовхають і тягнуть блоки; липкі блоки, динаміт, портали — редстоун без коду | https://store.steampowered.com/app/2682270/ | — | 2 |
 | SUMOO | 2026 | числа ковзають, зустрічаються й додаються; ями, портали, множники; потрібне точне число | https://store.steampowered.com/app/5108270/ | — | 2 |
-| AutomaticBox | 2026 | ящики рухаються самі без героя; керуєш лише порядком і напрямом, дивишся й скидаєш | https://store.steampowered.com/app/5257240/ | — | 2 |
+| AutomaticBox | 2026 | ящики рухаються самі без героя; керуєш лише порядком і напрямом, дивишся й скидаєш | https://store.steampowered.com/app/5257240/ | — · ✔ 2026-11-19: ⭐ — id демо | 2 |
 | Robbo (Janusz Pelc, LK Avalon) | 1989 | Boulder Dash без гравітації: ящики, магніти, гармати, бомби, дзеркала-телепорти | W:Robbo_(video_game) | https://www.youtube.com/results?search_query=Robbo+Atari+1989 | 2 |
 | The Brainies (Tiny Skweeks) | 1991 | задаєш лише напрям — бобик іде до перешкоди; стрілки розвертають; ліміт часу | W:The_Brainies | https://www.youtube.com/results?search_query=The+Brainies+gameplay | 2 |
 | Color Block Jam (Rollic) | ? | кольорові блоки ведеш до дверей свого кольору — зникають; блокери, таймер | https://apps.apple.com/us/app/color-block-jam/id6504332779 | https://rollic.helpshift.com/hc/en/24-color-block-jam/faq/1222-how-do-i-play-color-block-jam | 2 |
@@ -150,11 +150,11 @@
 | E9uations | 2026 | гравець — знак «=»: штовхає числа й оператори, результат рівняння зʼявляється блоком з іншого боку | https://store.steampowered.com/app/3345810/E9uations/ | https://www.youtube.com/results?search_query=E9uations+gameplay | 1 |
 | Headlong Hunt | 2023 | загнати в пастку полохливу істоту: вона тікає з поля зору, плануєш на два кроки | https://store.steampowered.com/app/2323660/Headlong_Hunt/ | https://www.youtube.com/results?search_query=Headlong+Hunt+gameplay | 1 |
 | Blast One Standing | 2023 | поштовх блока в сусіда запускає ланцюговий вибух; мета — лишити рівно один блок (перевірити: ≈ `easy-as-abc`) | https://thinkycollective.itch.io/blast-one-standing | https://www.bontegames.com/2023/03/blast-one-standing-browser.html | 1 |
-| Nekograms | 2025 | коти ходять лише горизонтально, подушки лише вертикально; кожен кіт має лягти на подушку | https://store.steampowered.com/app/2478120/ | — | 1 |
+| Nekograms | 2021 | коти ходять лише горизонтально, подушки лише вертикально; кожен кіт має лягти на подушку | https://store.steampowered.com/app/2478120/ | — · ✔ 2026-11-19: рік було 2025 | 1 |
 | Prince of Darkness Jr. | 2025 | світло вбиває: блоки відкидають тіні від ламп, і тінь стає проходом | https://store.steampowered.com/app/3716870/ | https://elphyl.itch.io/princeofdarknessjr | 1 |
 | ScaleBox | 2025 | гравець і ящики займають кілька клітин; штовхаєш сумарний розмір ≤ свого, крок дорівнює розміру | https://store.steampowered.com/app/3528380/ | https://eggnisi.itch.io/scalebox | 1 |
 | Shrink Rooms | 2025 | стіни кімнати стискаються щораунду, тож ліміт кроків задає саме поле; слиз, портали | https://ponegames.itch.io/shrink-rooms | — | 1 |
-| Slider | 2024 | увесь світ — пазл «8»: зсуваєш шматки мапи; обертання, 3D-сітки, подорожі в часі | https://randomerz.itch.io/slider | — | 1 |
+| Slider | 2021 (джем; 1.0 — 2024) | увесь світ — пазл «8»: зсуваєш шматки мапи; обертання, 3D-сітки, подорожі в часі | https://randomerz.itch.io/slider | — · ✔ 2026-11-19: рік було 2024 | 1 |
 | SokoSolitaire | 2023 | штовхаєш карти: складаєш у стопки й перевертаєш за правилами пасьянсу | https://store.steampowered.com/app/2318680/ | — | 1 |
 | Spacecaps | 2025 | рух лише «вліво-вправо», але лівим і правим може стати будь-який напрямок | https://store.steampowered.com/app/3288510/ | https://artless.itch.io/spacecaps | 1 |
 | Yankai's Peak | 2017 | штовхання пірамід на трикутній сітці, 7 частин по механіці | https://store.steampowered.com/app/654910/ | — | 1 |

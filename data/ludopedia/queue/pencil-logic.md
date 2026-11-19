@@ -184,21 +184,21 @@ Norinori, Kurotto, Coral, Kurochute, Mannequin Gate, Canal View, Ant Mill, Choco
 | Crossstitch | ? | дві петлі з діагоналей, що можуть перетинати одна одну; стрілки рахують перетини | https://puzz.link/rules.html?crossstitch | — | 2 |
 | SquarO | ? | фарбуються вузли сітки, а не клітинки; число = скільки кутів клітинки чорні | https://www.janko.at/Raetsel/SquarO/index.htm | — | 2 |
 | Ziegelmauer (Brick Wall) | ? | латинський квадрат з цеглин «парне + непарне»; півцеглини країв рядка зшиваються | https://www.janko.at/Raetsel/Ziegelmauer/index.htm | — | 2 |
-| Zahlenlabyrinth (Magic Labyrinth) | ? | латинський квадрат, де вздовж шляху лабіринту числа йдуть циклом 1…N | https://www.janko.at/Raetsel/Zahlenlabyrinth/index.htm | — | 2 |
+| Zahlenlabyrinth (Magic Labyrinth) | 2008 | латинський квадрат, де вздовж шляху лабіринту числа йдуть циклом 1…N | https://www.janko.at/Raetsel/Zahlenlabyrinth/index.htm | — · ✔ 2026-11-19: рік було ? | 2 |
 | Sukoro (数コロ) | Nikoli vol.40 | число = скільки сусідніх клітинок теж мають число; усі числа звʼязні | https://puzz.link/rules.html?sukoro | https://www.janko.at/Raetsel/Sukoro/index.htm | 2 |
-| Zeiger | ? | число в стрілці = скільки різних чисел лежить у напрямку стрілки | https://www.janko.at/Raetsel/Zeiger/index.htm | — | 2 |
-| Arofuro (Arrow Flow) | 2008 | стрілка в кожній клітинці; число = скільки стрілок ведуть сюди, зокрема ланцюжком | https://www.janko.at/Raetsel/Arofuro/index.htm | — | 2 |
+| Zeiger | ≥2007 | число в стрілці = скільки різних чисел лежить у напрямку стрілки | https://www.janko.at/Raetsel/Zeiger/index.htm | — · ✔ 2026-11-19: рік було ? | 2 |
+| Arofuro (Arrow Flow) | 2008 | стрілка в кожній клітинці; число = скільки стрілок ведуть сюди, зокрема ланцюжком | https://www.janko.at/Raetsel/Arofuro/index.htm | — · ✔ 2026-11-19: індекс Janko підписаний чужою JA-назвою | 2 |
 | Mirror Block (ミラーブロック) | Nikoli vol.177 | товста лінія-дзеркало: області обабіч неї — дзеркальні копії | https://puzz.link/rules.html?mirrorbk | — | 2 |
 | Chained Block (チェンブロ) | Nikoli vol.173 | блоки, що торкаються кутами, утворюють ланцюг без однакових форм | https://www.nikoli.co.jp/en/puzzles/chained-block/ | https://puzz.link/rules.html?chainedb · https://www.janko.at/Raetsel/Chained-Blocks/index.htm | 2 |
 | Curve Data (カーブデータ) | ? | фігура з ліній топологічно збігається зі схемою-підказкою; довжини відрізків гнучкі | https://puzz.link/rules.html?curvedata | — | 2 |
-| Remembered Length | ? | спрямована петля: число регіону задає довжину візиту в наступний регіон | https://puzz.link/rules.html?remlen | — | 2 |
-| Pipelink (パイプリンク) | Nikoli vol.45 | петля крізь усі клітинки з прямими перехрестями будь-де; дано шматки труб | https://puzz.link/rules.html?pipelink | https://www.janko.at/Raetsel/Pipelink/index.htm | 2 |
+| Remembered Length | ? | спрямована петля: число регіону задає довжину візиту в наступний регіон | https://puzz.link/rules.html?remlen | — · ✔ 2026-11-19: автор — Palmer Mebane | 2 |
+| Pipelink (パイプリンク) | 1993 | петля крізь усі клітинки з прямими перехрестями будь-де; дано шматки труб | https://puzz.link/rules.html?pipelink | https://www.janko.at/Raetsel/Pipelink/index.htm · ✔ 2026-11-19: рік було Nikoli vol.45 | 2 |
 | Nagenawa (なげなわ) | Nikoli vol.123 | кілька прямокутних петель-ласо, що перетинаються; число = клітинки петель у кімнаті | https://puzz.link/rules.html?nagenawa | https://www.janko.at/Raetsel/Nagewawa/index.htm | 2 |
 | Myopia | ? | петля по ребрах; стрілки показують напрям(и) до найближчого відрізка петлі | https://puzz.link/rules.html?myopia | — | 2 |
 | Look-Air (るっくえあ) | Nikoli vol.136 | чорні блоки — квадрати; два рівні квадрати не бачать один одного по прямій | https://puzz.link/rules.html?lookair | https://www.janko.at/Raetsel/Rukkuea/index.htm | 2 |
 | No Three (ノースリー) | Nikoli vol.158 | будь-які три чорні підряд по лінії мають різні проміжки між собою | https://puzz.link/rules.html?nothree | — | 2 |
 | One Room One Door (ワンルームワンドア) | Nikoli vol.169 | між двома кімнатами щонайбільше одні «двері» — пара білих через межу | https://puzz.link/rules.html?oneroom | https://www.janko.at/Raetsel/Wanrumuwandoa/index.htm | 2 |
-| Kuralin | ? | петля, решта клітинок чорна; кружок торкається більше клітинок свого кольору | https://www.nikoli.co.jp/en/puzzles/kuralin/ | — | 2 |
+| Kuralin | 2025 (Nikoli 191) | петля, решта клітинок чорна; кружок торкається більше клітинок свого кольору | https://www.nikoli.co.jp/en/puzzles/kuralin/ | — · ✔ 2026-11-19: рік було ? | 2 |
 | Tenner Grid (Zehnergitter) | ? | у кожному рядку 0–9, однакові не торкаються навіть кутом; суми стовпців | https://www.janko.at/Raetsel/Zehnergitter/index.htm | — | 2 |
 | Survo puzzle | 2006 | розставити 1…m×n по разу, щоб збіглися суми рядків і стовпців | W:Survo_puzzle | — | 2 |
 | Shinro | 2007 | 12 лунок на полі 8×8; кожна стрілка вказує хоча б на одну | W:Shinro | — | 2 |
@@ -234,7 +234,7 @@ Norinori, Kurotto, Coral, Kurochute, Mannequin Gate, Canal View, Ant Mill, Choco
 | Sudokuvania: Digits of Despair | 2025 | мапа 40×50 гаттай-судоку під туманом; правила відкриваються як здібності, боси-підпазли | https://logic-masters.de/Raetselportal/Raetsel/zeigen.php?id=000MQQ | https://www.youtube.com/results?search_query=Sudokuvania+Digits+of+Despair | 1 |
 | Sudoku Mansion | 2026 | «класи» перечитують ту саму кімнату-судоку за іншим правилом (Whisper → Region Sum) | https://store.steampowered.com/app/5005590/Sudoku_Mansion/ | https://www.youtube.com/results?search_query=Sudoku+Mansion+gameplay | 1 |
 | Sudoku Topology | 2024 | судоку з лініями-варіантами на сфері, торі, стрічці Мебіуса, пляшці Клейна | https://store.steampowered.com/app/3051910/Sudoku_Topology/ | https://www.youtube.com/results?search_query=Sudoku+Topology+gameplay | 1 |
-| Murdoku | 2025 | підозрювані по кімнатах, один на рядок і колонку; убивця — сам на сам з жертвою | https://allthings.how/murdoku-explained-how-the-murder-mystery-sudoku-puzzle-works/ | https://murdoku.com/play | 1 |
+| Murdoku | 2020 | підозрювані по кімнатах, один на рядок і колонку; убивця — сам на сам з жертвою | https://allthings.how/murdoku-explained-how-the-murder-mystery-sudoku-puzzle-works/ | https://murdoku.com/play · ✔ 2026-11-19: рік було 2025 | 1 |
 | Nodes of a Feather | 2022 | у кожній парі ребер рівно одне, червоне чи синє; число вузла = розмір компоненти | https://sharkwithlasers.itch.io/nodes-of-a-feather | — | 1 |
 | Super Sudokoid: Dark Inversion | 2026 | сиквел жанру Sudokuvania: 16 секторів 9×9 у тумані, стіни, HUD-боси дають цифри | https://logic-masters.de/Raetselportal/Raetsel/zeigen.php?id=000SQ0 | Final Transmission (перша частина): https://logic-masters.de/Raetselportal/Raetsel/zeigen.php?id=000RPZ | 2 |
 | Hidden Oxygen | 2020 | кисні не торкаються навіть діагонально, лічильники рядків, кожен вуглець — 2 сусіди-кисні | https://www.crazygames.com/game/hidden-oxygen | https://www.youtube.com/results?search_query=Hidden+Oxygen+puzzle | 2 |
