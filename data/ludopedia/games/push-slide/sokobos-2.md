@@ -24,7 +24,7 @@ links:
   - {kind: youtube, url: "https://www.youtube.com/results?search_query=Sokobos+2+gameplay", note: "пошук; геймплей"}
 stage: v1
 coverage: 65
-mechanics: [move-4dir, keyboard-controls, push-object, multi-cell-size, carrier-platform, inertia-slide, fill-hole, button-toggle, goal-counter, move-counter, undo-unlimited, restart-level, world-map, level-unlock, main-menu, pause-menu, settings-window, controls-remap, language-picker, volume-control, save-progress, movement-animation, particles, sound-effects, background-music, +transport-load, +push-from-inside, +pressure-plate, +branching-campaign, +intermission-cutscene, +float-drift, +ice-floe]
+mechanics: [move-4dir, keyboard-controls, push-object, multi-cell-size, carrier-platform, inertia-slide, fill-hole, button-toggle, goal-counter, move-counter, undo-unlimited, restart-level, world-map, level-unlock, main-menu, pause-menu, settings-window, controls-remap, language-picker, volume-control, save-progress, movement-animation, particles, sound-effects, background-music, +transport-load, +push-from-inside, +pressure-plate, +branching-campaign, +intermission-cutscene, +float-drift, +ice-floe, +cargo-push]
 proposes: ["+effect:sink", "+effect:drift", "+trigger:stream_tick", "+feature:grid-visibility", "+card:float-drift", "+card:ice-floe", "+card:cargo-push"]
 author: opus
 date: 2026-11-19
@@ -35,7 +35,7 @@ date: 2026-11-19
 ## Суть
 Покараний богами герой Стародавньої Греції мусить вічно збирати вази. У кожній невеликій кімнаті всі вази треба заштовхати у візок 2×2 — а візок і сам їде, коли його штовхнути ззовні або зсередини, везучи вантаж (і героя). Довкола — вода: камінь тоне й стає опорою, ваза пливе й дрейфує течією, крижаний блок ковзає до упору, а у воді стає тимчасовим плотом; плити відчиняють ворота.
 
-Martin Games (Godot), сиквел Sokobos (2021): менші, сфокусовані рівні, сюжет «трагедії» з персонажами між рівнями, нелінійна мапа.
+Martin Games (Godot), сиквел Sokobos: менші, сфокусовані рівні, сюжет «трагедії» з персонажами між рівнями, нелінійна мапа.
 
 ## Поле і час
 - Квадратна сітка клітин 18 px; кімнати невеликі (у демо — кілька десятків клітин підлоги); тайли: стіна, підлога, вода, течія вгору / вниз / ліворуч / праворуч.
@@ -71,10 +71,12 @@ Martin Games (Godot), сиквел Sokobos (2021): менші, сфокусов�
 - КОЛИ `after(move)` → ЯКЩО `state(item, floating)` and `cell(item_cell, stream)` → ТО `move(item, stream_dir)` — течія несе плавуче, камінь — ні.
 - КОЛИ `contact(hero, ice)` → ЯКЩО `free(cell_behind)` → ТО `slide(ice, dir)` — до першої перешкоди.
 - КОЛИ `enter(ice, water)` → ТО `transform(ice, floe)` — тимчасовий плаский шлях; (?) згодом тане (`disappear`).
-- КОЛИ `enter(any, plate)` → ТО `set_state(linked_gates, open)`; КОЛИ `leave(any, plate)` → ТО `set_state(linked_gates, closed)`.
+- КОЛИ `enter(any, plate)` → ТО `set_state(linked_gates, open)`.
+- КОЛИ `leave(any, plate)` → ТО `set_state(linked_gates, closed)`.
 - КОЛИ `custom: «ваза розбита (вибух)»` → ТО `set_state(hero, crying)` — рівень не пройти, лише undo.
 - КОЛИ `all_on(vase, cart)` → ТО `win`, `next_level` — герой радіє, назад на мапу.
-- КОЛИ `input(undo)` → ТО `undo`; КОЛИ `input(restart)` → ТО `restart`.
+- КОЛИ `input(undo)` → ТО `undo`.
+- КОЛИ `input(restart)` → ТО `restart`.
 - Перемога: усі вази (чи золотий уламок) у візку. · Поразка: формально нема — розбита ваза чи глухий кут лише просять undo. · Рахунок: лічильник ходів «Moves N» без оцінки.
 
 ## Керування і ввід
@@ -98,7 +100,7 @@ Martin Games (Godot), сиквел Sokobos (2021): менші, сфокусов�
 - Повна гра ~2–3 год, 65 пазлів кампанії (за оглядом 3rd Strike); демо — 13 рівнів у групах «Beginning», «Streams», «Ice», «Trial A».
 
 ## Варіації й родичі
-- Sokobos (2021) — попередник: більші рівні старого зразка, без візка, тонення, плавання й течій (слова автора на itch).
+- [Sokobos](https://store.steampowered.com/app/1655890/Sokobos/) — попередник: більші рівні старого зразка, без візка, тонення, плавання й течій (слова автора на itch).
 - Родичі: [sokoban](sokoban.md); [a-monsters-expedition](../thinky/a-monsters-expedition.md) — колоди у воді як плоти; [kwirk](kwirk.md) і [chips-challenge](../maze-arcade/chips-challenge.md) — блок у воді стає підлогою; [ice-sliding-puzzles](ice-sliding-puzzles.md) і [pokemon-overworld-puzzles](pokemon-overworld-puzzles.md) — лід і валуни.
 - Осі варіацій:
   - **ціль**: клітини-цілі (Sokoban) / рухомий контейнер, що теж штовхається (тут);

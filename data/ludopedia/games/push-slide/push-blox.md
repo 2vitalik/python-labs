@@ -26,7 +26,7 @@ links:
 stage: v1
 coverage: 55
 mechanics: [move-4dir, keyboard-controls, push-object, gravity-fall, stick-together, multi-cell-size, dig-terrain, connectivity-check, completion-detection, beam-tracing, mirror-reflect, environment-death, player-death, key-and-door, undo-unlimited, restart-level, sequential-levels, level-select, level-password, keep-playing-after-win, +connectivity-goal, +laser-blocking, +undo-after-death, +conveyor-belt, +pressure-plate, +avatar-supports-blocks, +fall-delay, +group-vanish, +hall-of-masters]
-proposes: ["+trigger:beam_hit", "+effect:emit_beam", "+effect:reflect", "+axis:time", "+card:avatar-supports-blocks", "+card:fall-delay", "+card:group-vanish", "+feature:hall-of-masters", "+feature:completion-threshold"]
+proposes: ["+trigger:beam_hit", "+effect:emit_beam", "+effect:reflect", "+axis:time=hybrid", "+card:avatar-supports-blocks", "+card:fall-delay", "+card:group-vanish", "+feature:hall-of-masters", "+feature:completion-threshold"]
 author: opus
 date: 2026-11-19
 ---
@@ -127,7 +127,7 @@ date: 2026-11-19
 ## Пропозиції до словників
 - `+trigger:beam_hit` — промінь досяг сутності (аватар у промені гине).
 - `+effect:emit_beam` — випромінювач прокладає промінь до першої перешкоди; `+effect:reflect` — дзеркало повертає промінь.
-- `+axis:time` — покроковий рух аватара, але падіння й конвеєри йдуть за таймером (гібрид `turn` і `realtime`).
+- `+axis:time=hybrid` — покроковий рух аватара, але падіння й конвеєри йдуть за таймером (між `turn` і `realtime`; у шапці — `realtime`).
 - `+feature:completion-threshold` — гру «виграно» на 75 % рівнів, решта — для 100 %; `+feature:hall-of-masters`.
 - `+card:avatar-supports-blocks`, `+card:fall-delay`, `+card:group-vanish` — див. «Мапу на каталог».
 

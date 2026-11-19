@@ -1,7 +1,7 @@
 # Стан черг (автоген)
 
-`scripts/queue_status.py` · 1824 описаних ігор у корпусі.
-Лишилось описати: п1 2 · п2 23 · п3 118 = 143 · пропущено свідомо 37.
+`scripts/queue_status.py` · 1838 описаних ігор у корпусі.
+Лишилось описати: п1 2 · п2 9 · п3 118 = 129 · пропущено свідомо 37.
 
 ## board-digital · у черзі 126 · описано 122 · лишилось 3 (п1 0 · п2 0 · п3 3) · пропущено 1
 
@@ -75,14 +75,13 @@
 
 Пропущено свідомо (⊘ у черзі): Snake Pass
 
-## pencil-logic · у черзі 189 · описано 163 · лишилось 21 (п1 1 · п2 2 · п3 18) · пропущено 3
+## pencil-logic · у черзі 189 · описано 164 · лишилось 20 (п1 1 · п2 1 · п3 18) · пропущено 3
 
 Пропущено свідомо (⊘ у черзі): Zebra (Einstein) puzzle · Sandwich Sudoku · Anti-knight / Anti-king (Miracle)
 
 | Назва | рік | чим нова | ⭐ | інші | п |
 |---|---|---|---|---|---|
 | Inkwell Fields (Light and Shadow) | 2025 | Light and Shadow: два кольори, число = розмір своєї області; однокольорові не торкаються (?) | https://inkwellgames.com/games/fields/intro | https://inkwellgames.com/faq · https://daverupert.com/2025/11/inkwell-games/ | 1 |
-| The Artisan of Glimmith | 2026 | вітражі: фарбувати, різати й зʼєднувати регіони за 20+ типами правил | https://store.steampowered.com/app/4160210/The_Artisan_of_Glimmith/ | https://www.youtube.com/results?search_query=The+Artisan+of+Glimmith+gameplay | 2 |
 | Dungeons & Diagrams (Last Call BBS) | 2022 | лічильники стін у рядках і стовпцях; монстри в тупиках, скарб у кімнаті 3×3 (?) | https://store.steampowered.com/app/1511780/ | https://www.zachtronics.com/last-call-bbs/ · https://www.youtube.com/results?search_query=Dungeons+and+Diagrams+Last+Call+BBS | 2 |
 | Tilepaint (タイルペイント) | Nikoli vol.53 | плитки фарбуються цілком; какуро-підказки рахують чорні до наступної підказки | https://www.nikoli.co.jp/en/puzzles/tilepaint/ | https://puzz.link/rules.html?tilepaint · https://www.janko.at/Raetsel/Tairupeinto/index.htm | 3 |
 | Cake Table | ? | три кольори; число = скільки клітинок того ж кольору в 3×3 навколо | https://www.janko.at/Raetsel/Cake-Table/index.htm | — | 3 |
@@ -118,22 +117,12 @@
 | Quantum Odyssey | 2025 | квантові схеми: вентилі Hadamard, CNOT, фазові на лініях кубітів, візуалізація станів (сітка ?) | https://store.steampowered.com/app/2802710/ | https://www.youtube.com/results?search_query=Quantum+Odyssey+gameplay | 3 |
 | Silicon Zeroes | 2017 | процесор з компонентів рівня слів: суматори, засувки, мультиплексори; 70+ пазлів (сітка ?) | https://store.steampowered.com/app/684270/ | https://www.youtube.com/results?search_query=Silicon+Zeroes+gameplay | 3 |
 
-## push-slide · у черзі 202 · описано 147 · лишилось 51 (п1 0 · п2 11 · п3 40) · пропущено 4
+## push-slide · у черзі 202 · описано 157 · лишилось 41 (п1 0 · п2 1 · п3 40) · пропущено 4
 
 Пропущено свідомо (⊘ у черзі): Boxxle · Bomb puzzles (Zelda: Oracle of Ages) · Rubik's Race · Courtyard
 
 | Назва | рік | чим нова | ⭐ | інші | п |
 |---|---|---|---|---|---|
-| Pull Chain | 2026 | світильник на ланцюгу тягнеш за собою; він приманює метеликів і тисне кнопки | https://steven-miller.itch.io/pull-chain | — | 2 |
-| Push Blox 2 / Push Blox | 2020 | зʼєднати всі однокольорові блоки, що злипаються; замки, конвеєри, лазери | https://store.steampowered.com/app/894430/ | https://store.steampowered.com/app/1366070/ | 2 |
-| Pushing It | 2021 | поршні виштовхують гравця, гравець штовхає поршні; півпоштовхи (Jack Lance, PuzzleScript) | https://www.puzzlescript.net/play.html?p=2fe3172d2b9fe684977d184f1b6226d5 | https://api.github.com/gists/2fe3172d2b9fe684977d184f1b6226d5 | 2 |
-| Remote Planets | 2023 | інопланетна техніка перекроює сам простір рівня під час штовхання | https://store.steampowered.com/app/2197020/ | — | 2 |
-| Riko | ? | поворот героїні з лазерною гарматою; передбачуваний ворог як інструмент (за SSR і DROD) | https://spyr.itch.io/riko | — | 2 |
-| Soko Spectacle | 2025 | ящики феєрверків до вогню; доріжки пороху передають підпал; ящики треба зібрати | https://store.steampowered.com/app/3359440/ | https://jebouin.itch.io/soko-spectacle | 2 |
-| Sokobos 2 | 2025 | вази вантажити у візок, який теж штовхається; предмети тонуть мостом або пливуть течією | https://store.steampowered.com/app/3422180/ | https://martin-games.itch.io/sokobos-2-demo | 2 |
-| Park It! | 2025 | заїхати авто в місце з правильним напрямком; кожен хід палить пальне, бокові повороти | https://store.steampowered.com/app/2989830/Park_It/ | https://www.youtube.com/results?search_query=Park+It+Mishleto+gameplay | 2 |
-| SokoGhost: Unfinished Business | 2026 | привид-штовхач проходить крізь стіни, ящики й ворота; кожен рівень — свій тип проходу | https://store.steampowered.com/app/4254020/SokoGhost_Unfinished_Business/ | https://www.youtube.com/results?search_query=SokoGhost+Unfinished+Business | 2 |
-| Humbug (+ Humbug 2) | 2018 | жуки з різним рухом: павук ковзає до упору, равлик по клітинці, цвіркун стрибає через стіни | https://www.pocketgamer.com/humbug/review/ | https://apps.apple.com/app/id1436145670 | 2 |
 | Dino Sort | 2025 | динозаврів зсувають по сітці, щоб кожен вид мав свою нішу (їжа, зграя ?) | https://adamatomic.itch.io/dino-sort | https://www.lexaloffle.com/bbs/?pid=169379 · https://www.bontegames.com/2025/06/dino-sort-browser.html | 2 |
 | Nintendo Tumbler Puzzle (Gunpei Yokoi) | 1980 | циліндр-сітка з кульками: стовпці зсуваються вгору-вниз, кільця обертаються | W:Nintendo_Tumbler_Puzzle | — | 3 |
 | X-It (Zonked) | 1994 | ящики різної ваги засипають ями; лід, тягові промені, ліміт часу | W:X-It | — | 3 |
@@ -195,15 +184,12 @@
 | Inkshade | 2025 | гекс-тактика дерев'яних мініатюр проти гейм-майстра; переможених ворогів можна вербувати | https://store.steampowered.com/app/3141310/Inkshade/ | https://www.youtube.com/results?search_query=Inkshade+gameplay | 3 |
 | Death Howl | 2025 | карти рухають і бʼють на сітці; тотеми, відкритий світ духів | https://store.steampowered.com/app/2825880/Death_Howl/ | https://www.youtube.com/results?search_query=Death+Howl+gameplay | 3 |
 
-## thinky · у черзі 205 · описано 166 · лишилось 26 (п1 0 · п2 6 · п3 20) · пропущено 9
+## thinky · у черзі 205 · описано 169 · лишилось 23 (п1 0 · п2 3 · п3 20) · пропущено 9
 
 Пропущено свідомо (⊘ у черзі): Mosa Lina · Oeuf (increpare) · Hat Tricks: Hare in Box · Logicraft · DITTORI / He Who Watches · Jelly Is Sticky · Heikō · Increasingly Cursed Knight Puzzles · Sepapu
 
 | Назва | рік | чим нова | ⭐ | інші | п |
 |---|---|---|---|---|---|
-| 5 Step Steve | 2019 | лише 5 кроків між чекпойнтами; кілька Стівів, воскресіння загиблих | https://epicpikaguy.itch.io/5-step-steve | https://www.bontegames.com/2019/05/5-step-steve-browser.html | 2 |
-| N Step Steve (Part 1–2) | 2020 | сиквел 5 Step Steve: лічильник N скидають прапорці, N треба вивести; мапа кімнат | https://epicpikaguy.itch.io/n-step-steve-part-1 | https://epicpikaguy.itch.io/n-step-steve-part-2 | 2 |
-| Kukulcan | 2025 | змій-божество скидає частини тіла, що стають сходами, мостами й дамбами | https://skich.app/games/kukulcan | https://www.youtube.com/results?search_query=Kukulcan+Black+Spoon+gameplay | 2 |
 | D-topia | 2026 | числові сітки: блок +1 за крок до значення виходу, лінії-суми, зсув сітки | https://store.steampowered.com/app/1895460/ | https://www.nintendoworldreport.com/review/75486/d-topia-switch-2-review · https://www.shacknews.com/article/150322/d-topia-review-score | 2 |
 | DROD: Journey to Rooted Hold | 2005 | сиквел DROD (drod.md — лише набір KDD): 17 монстрів, 15 елементів — зілля, вибухівка, тунелі | https://store.steampowered.com/app/422181/ | https://forum.caravelgames.com/viewsiteboard.php?b=59 | 2 |
 | DROD: The Second Sky | 2014 | сиквел DROD: понад 12 нових елементів — нова зброя й монстри, мапи-континенти | https://store.steampowered.com/app/351320/ | https://forum.caravelgames.com/viewsiteboard.php?b=59 | 2 |

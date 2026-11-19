@@ -12545,8 +12545,8 @@
    "star": "https://store.steampowered.com/app/4160210/The_Artisan_of_Glimmith/",
    "other": "https://www.youtube.com/results?search_query=The+Artisan+of+Glimmith+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "the-artisan-of-glimmith"
   },
   {
    "name": "Zerko",
@@ -15449,8 +15449,8 @@
    "star": "https://steven-miller.itch.io/pull-chain",
    "other": "—",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "pull-chain"
   },
   {
    "name": "Push Blox 2 / Push Blox",
@@ -15459,8 +15459,8 @@
    "star": "https://store.steampowered.com/app/894430/",
    "other": "https://store.steampowered.com/app/1366070/",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "push-blox"
   },
   {
    "name": "Pushing It",
@@ -15469,8 +15469,8 @@
    "star": "https://www.puzzlescript.net/play.html?p=2fe3172d2b9fe684977d184f1b6226d5",
    "other": "https://api.github.com/gists/2fe3172d2b9fe684977d184f1b6226d5",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "pushing-it"
   },
   {
    "name": "Remote Planets",
@@ -15479,8 +15479,8 @@
    "star": "https://store.steampowered.com/app/2197020/",
    "other": "—",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "remote-planets"
   },
   {
    "name": "Riko",
@@ -15489,8 +15489,8 @@
    "star": "https://spyr.itch.io/riko",
    "other": "—",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "riko"
   },
   {
    "name": "Shack-o'-Lantern",
@@ -15519,8 +15519,8 @@
    "star": "https://store.steampowered.com/app/3359440/",
    "other": "https://jebouin.itch.io/soko-spectacle",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "soko-spectacle"
   },
   {
    "name": "Sokobos 2",
@@ -15529,8 +15529,8 @@
    "star": "https://store.steampowered.com/app/3422180/",
    "other": "https://martin-games.itch.io/sokobos-2-demo",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "sokobos-2"
   },
   {
    "name": "SSSPICY!",
@@ -15629,8 +15629,8 @@
    "star": "https://store.steampowered.com/app/2989830/Park_It/",
    "other": "https://www.youtube.com/results?search_query=Park+It+Mishleto+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "park-it"
   },
   {
    "name": "SokoGhost: Unfinished Business",
@@ -15639,8 +15639,8 @@
    "star": "https://store.steampowered.com/app/4254020/SokoGhost_Unfinished_Business/",
    "other": "https://www.youtube.com/results?search_query=SokoGhost+Unfinished+Business",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "sokoghost-unfinished-business"
   },
   {
    "name": "Humbug (+ Humbug 2)",
@@ -15649,8 +15649,8 @@
    "star": "https://www.pocketgamer.com/humbug/review/",
    "other": "https://apps.apple.com/app/id1436145670",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "humbug"
   },
   {
    "name": "The Flames",
@@ -20475,8 +20475,8 @@
    "star": "https://epicpikaguy.itch.io/5-step-steve",
    "other": "https://www.bontegames.com/2019/05/5-step-steve-browser.html",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "5-step-steve"
   },
   {
    "name": "N Step Steve (Part 1–2)",
@@ -20485,8 +20485,8 @@
    "star": "https://epicpikaguy.itch.io/n-step-steve-part-1",
    "other": "https://epicpikaguy.itch.io/n-step-steve-part-2",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "n-step-steve"
   },
   {
    "name": "Undertoe",
@@ -20515,8 +20515,8 @@
    "star": "https://skich.app/games/kukulcan",
    "other": "https://www.youtube.com/results?search_query=Kukulcan+Black+Spoon+gameplay",
    "prio": 2,
-   "status": "remaining",
-   "match": null
+   "status": "described",
+   "match": "kukulcan"
   },
   {
    "name": "Lava and Aqua",

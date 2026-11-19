@@ -1,7 +1,7 @@
 ---
 title: "5 Step Steve"
 slug: "5-step-steve"
-aka: [5 Step Steve (jam version), Five Step Steve]
+aka: [5 Step Steve (jam version)]
 family: thinky
 also: [push-slide]
 klass: avatar

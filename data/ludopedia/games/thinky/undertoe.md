@@ -61,7 +61,8 @@ date: 2026-11-19
 - КОЛИ `after(mark X)` → ЯКЩО `occupied(neighbor8, crab)` → ТО `slide(crab, dir_from_X)` — краб тікає по прямій (і діагоналі) до упору.
 - КОЛИ `after(mark X)` → ЯКЩО `occupied(neighbor8, fish)` → ТО `move(fish, dir_from_X)` ×2, доки не впреться.
 - КОЛИ `contact(creature, X|O)` → ТО `disappear_b` — тварина проходить крізь знак і стирає його.
-- КОЛИ `contact(creature, rock|castle|plant|creature)` → ТО `block`; виняток: КОЛИ `contact(turtle, reed|seaweed)` → ТО `disappear_b` (зʼїла).
+- КОЛИ `contact(creature, rock|castle|plant|creature)` → ТО `block`.
+- КОЛИ `contact(turtle, reed|seaweed)` → ТО `disappear_b` — черепаха зʼїдає рослину (виняток з попереднього).
 - КОЛИ `reach(creature, sea)` або `edge(creature)` → ТО `disappear_a`.
 - КОЛИ `after(mark X)` → ЯКЩО `custom: «у трійці клітин (ряд, стовпець, діагональ) з цим X ≥2 X»` → ТО `spawn_at(O, кожна не-X клітина трійки)`.
 - КОЛИ `custom: «O ставиться на клітину з рослиною чи замком»` → ТО `disappear_b`, потім O займає клітину; на камінь, X і поза ігровою смугою нулик не ставиться.
@@ -73,7 +74,10 @@ date: 2026-11-19
 - КОЛИ `reach(fish, sea)` → ТО `disappear_a` — рибу винесло в море.
 - КОЛИ `pattern(line(3), O)` → ТО `custom: «перемогу заблоковано, доки лінію O не розбито»`.
 - КОЛИ `pattern(line(3), X)` → ЯКЩО `not custom: «є три O в лінію»` → ТО `win`; клік → `window(level-select)`.
-- КОЛИ `input(Z)` → ТО `undo(1)`; `input(Shift+Z)` → `custom: «redo»`; `input(R)` → `restart`; `input(Esc)` → `window(level-select)`.
+- КОЛИ `input(Z)` → ТО `undo(1)`.
+- КОЛИ `input(Shift+Z)` → ТО `custom: «redo»`.
+- КОЛИ `input(R)` → ТО `restart`.
+- КОЛИ `input(Esc)` → ТО `window(level-select)`.
 - Перемога: три X підряд (будь-який напрям), трьох O підряд нема. Поразки як кінця гри нема — три O лише блокують перемогу. Рахунку нема.
 
 ## Керування і ввід

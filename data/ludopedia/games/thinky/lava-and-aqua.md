@@ -59,15 +59,21 @@ date: 2026-11-19
 - КОЛИ `input(dir)` → ЯКЩО `free(next)` (не стіна, не камінь, не зачинена стіна, не стіна з таймером) → ТО `move(player, dir)`; інакше `block`.
 - КОЛИ `contact(player, block)` → ЯКЩО `free(cell_behind)` і `not occupied(cell_behind, block)` → ТО `push`, `move(player, dir)`; інакше `block`.
 - КОЛИ `enter(player, exit)` → ЯКЩО `state(exit, active)` → ТО `win`, `next_level` (Level NN → наступна сцена).
-- КОЛИ `enter(player, key)` → ТО `pickup`; КОЛИ `all_gone(key)` → ТО `set_state(exit, active)`.
+- КОЛИ `enter(player, key)` → ТО `pickup`.
+- КОЛИ `all_gone(key)` → ТО `set_state(exit, active)` (на старті рівня з ключами вихід неактивний).
 - КОЛИ `enter(block, water|lava)` → ТО `set_cell(cell, empty)` — блок витісняє рідину зі своєї клітини.
 - КОЛИ `after(move)` → ЯКЩО `occupied(any_switch, player|block)` → ТО `set_state(switch_walls, open)`; інакше `set_state(switch_walls, closed)`.
-- КОЛИ `after(move)` → ТО для кожної клітини води `custom: «вода займає кожну сусідню (4) порожню клітину»`; ЯКЩО `cell(neighbor, lava)` → ТО `set_cell(neighbor, stone)`.
-- КОЛИ `after(water)` → ТО для кожної клітини лави `custom: «лава займає кожну сусідню (4) порожню клітину»`; ЯКЩО `cell(neighbor, water)` → ТО `set_cell(neighbor, stone)`.
+- КОЛИ `after(move)` → ТО `custom: «вода займає кожну сусідню (4) порожню клітину»` — усі клітини води одночасно, за знімком стану.
+- КОЛИ `after(move)` → ЯКЩО `cell(water_neighbor, lava)` → ТО `set_cell(water_neighbor, stone)` — вода застуджує лаву в камінь.
+- КОЛИ `after(water)` → ТО `custom: «лава займає кожну сусідню (4) порожню клітину»` — після води, теж за знімком.
+- КОЛИ `after(water)` → ЯКЩО `cell(lava_neighbor, water)` → ТО `set_cell(lava_neighbor, stone)`.
 - Рідина не тече в клітини з блоком, стіною, каменем, стіною з таймером, зачиненою стіною-перемикачем і стоком; у клітину гравця — тече.
-- КОЛИ `after(move)` → ТО `counter(timer_wall, -1)`; КОЛИ `counter(timer_wall, ==, 0)` → ТО `disappear_a`.
+- КОЛИ `after(move)` → ТО `counter(timer_wall, -1)` — число на стіні меншає.
+- КОЛИ `counter(timer_wall, ==, 0)` → ТО `disappear_a` — стіна згасає й звільняє клітину.
 - КОЛИ `enter(lava, player_cell)` або `custom: «клітина гравця застигла каменем»` → ТО `lose` (анімація смерті; далі лише undo або рестарт).
-- КОЛИ `input(Z|U)` → ТО `undo(1)` — відкочує крок, рідини, камінь, ключ, перемикачі й таймери; `input(R)` → `restart`; `input(Esc|B)` → `window(level-select)`.
+- КОЛИ `input(Z|U)` → ТО `undo(1)` — відкочує крок, рідини, камінь, ключ, перемикачі й таймери.
+- КОЛИ `input(R)` → ТО `restart`.
+- КОЛИ `input(Esc|B)` → ТО `window(level-select)`.
 - Перемога: гравець на активному виході. · Поразка: торкнувся лави / замурований каменем (тимчасова — undo). · Рахунку нема; ліміту ходів нема.
 
 ## Керування і ввід

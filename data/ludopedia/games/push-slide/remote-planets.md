@@ -22,7 +22,7 @@ links:
 stage: v1
 coverage: 45
 mechanics: [move-4dir, keyboard-controls, push-object, all-on-targets, carrier-platform, stick-together, undo-unlimited, restart-level, sequential-levels, level-unlock, world-map, achievements-window, +hub-world, +remote-control-block, +dormant-platform-join, +level-preview-popup, +side-puzzles]
-proposes: ["+axis:control", "+card:remote-control-block", "+card:dormant-platform-join", "+ui:level-preview"]
+proposes: ["+axis:control=remote", "+card:remote-control-block", "+card:dormant-platform-join", "+ui:level-preview"]
 author: opus
 date: 2026-11-19
 ---
@@ -116,7 +116,7 @@ zuza (Zuza Games), Steam, 24.04.2023; 120+ пазлів на хабі-світі
   - `+side-puzzles` «Бічні необовʼязкові пазли, складніші за основні» · levels/progression · 🌱.
 
 ## Пропозиції до словників
-- `+axis:control` — `remote`: гравець рухає не обʼєкт, а далекі платформи через пульт.
+- `+axis:control=remote` — гравець рухає не обʼєкт, а далекі платформи через пульт.
 - `+ui:level-preview` — спливна мінікарта рівня над вузлом хабу.
 - `+card:remote-control-block`, `+card:dormant-platform-join` — див. «Мапу на каталог».
 

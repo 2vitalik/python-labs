@@ -70,24 +70,30 @@ date: 2026-11-19
 - КОЛИ `input(dir)` → ЯКЩО `free(next)` → ТО `move(sokobot, dir)`.
 - КОЛИ `contact(sokobot, box)` → ЯКЩО `free(cell_behind_row)` → ТО `push` — ящики, батарейки, вартові, науковець; ряд їде весь; інакше `block`.
 - КОЛИ `contact(sokobot, heavy_crate)` → ЯКЩО `counter(power, <, 2)` → ТО `block` — хід скасовано повністю.
-- КОЛИ `enter(battery, port)` → ТО `counter(power, +1|+2)` (мала / велика); КОЛИ `leave(battery, port)` → ТО `counter(power, −1|−2)`.
+- КОЛИ `enter(battery, port)` → ТО `counter(power, +1|+2)` (мала / велика).
+- КОЛИ `leave(battery, port)` → ТО `counter(power, −1|−2)`.
 - КОЛИ `enter(poison_battery, port)` → ТО `counter(power, −1)` — отрута гасить один заряд однієї батарейки з портів.
 - КОЛИ `input(dir)` → ЯКЩО `counter(power, >=, 2)` → ТО `move(sokobot, dir)` і ще `custom: «power − 1 автоматичних кроків у тому ж напрямку»`.
 - КОЛИ `turn_end` → ЯКЩО `counter(power, ==, 0)` → ТО `set_state(sokobot, powered_off)`, `lose`.
 - КОЛИ `input(dir)` → ЯКЩО `occupied(port, magnet_battery)` and `occupied(cell_behind_sokobot, box)` → ТО `pull` — на кожному кроці серії.
-- КОЛИ `enter(key_battery, port)` → ТО `set_state(doors_of_colour, open)`; КОЛИ `leave(key_battery, port)` → ТО `set_state(doors_of_colour, closed)`, ящик у проході → `transform(box, rubble)`, робот у проході → `lose`.
-- КОЛИ `enter(reverse_battery, port)` → ТО `set_state(brown_doors, closed)` (з тим самим розчавлюванням); КОЛИ `leave(reverse_battery, port)` → ТО `set_state(brown_doors, open)`.
-- КОЛИ `enter(cloak_battery, port)` → ТО `set_state(sokobot, invisible)`; КОЛИ `leave(cloak_battery, port)` → ТО `clear_state(sokobot, invisible)`.
+- КОЛИ `enter(key_battery, port)` → ТО `set_state(doors_of_colour, open)`.
+- КОЛИ `leave(key_battery, port)` → ТО `set_state(doors_of_colour, closed)`, ящик у проході → `transform(box, rubble)`, робот у проході → `lose`.
+- КОЛИ `enter(reverse_battery, port)` → ТО `set_state(brown_doors, closed)` (з тим самим розчавлюванням).
+- КОЛИ `leave(reverse_battery, port)` → ТО `set_state(brown_doors, open)`.
+- КОЛИ `enter(cloak_battery, port)` → ТО `set_state(sokobot, invisible)`.
+- КОЛИ `leave(cloak_battery, port)` → ТО `clear_state(sokobot, invisible)`.
 - КОЛИ `line_of_sight(guard, sokobot)` → ЯКЩО `not state(sokobot, invisible)` → ТО `lose` — постріл; стіни, кабелі й зачинені двері лінію закривають.
 - КОЛИ `line_of_sight(guard, sokobot)` → ЯКЩО `custom: «між ними ящик або батарейка»` → ТО `transform(box, rubble)`, `set_state(guard, reloading, 1)` — цього ходу робот живий.
-- КОЛИ `enter(ice_battery, port)` → ТО `set_state(sokobot, cold)` — рівень = кількість крижаних батарейок на портах; КОЛИ `counter(cold, ==, 3)` → ТО `lose` (замерз).
+- КОЛИ `enter(ice_battery, port)` → ТО `set_state(sokobot, cold)` — рівень = кількість крижаних батарейок на портах.
+- КОЛИ `counter(cold, ==, 3)` → ТО `lose` — робот замерз.
 - КОЛИ `enter(sokobot, lava)` → ЯКЩО `not state(sokobot, cold)` → ТО `lose`; холод 1 рятує лише посеред серії кроків (пролетіти, не стати), холод 2 — завжди.
-- КОЛИ `enter(box, lava)` → ТО `disappear(box)` — уперше науковець обурюється: «Those batteries are exceedingly expensive!».
+- КОЛИ `enter(box, lava)` → ТО `disappear(box)` — у сюжетній кімнаті науковець обурюється: «Those batteries are exceedingly expensive!».
 - КОЛИ `input(dir)` → ЯКЩО `occupied(port, spin_battery)` and `counter(power, >=, 2)` → ТО кожен автокрок `face(sokobot, cw)`, `move(sokobot, dir)` — серія вгору → праворуч → вниз → ліворуч.
 - КОЛИ `contact(sokobot, cracked_wall)` → ТО `transform(cracked_wall, broken_wall)`, `move(sokobot, dir)`.
 - КОЛИ `enter(sokobot, story_trigger)` → ТО `message(…)` — репліки науковця; деякі тригери рушають і його самого.
 - КОЛИ `enter(sokobot, stairs)` → ЯКЩО `custom: «серія кроків завершилась і робот цілий»` → ТО `win`, `next_level`.
-- КОЛИ `input(z)` → ТО `undo`; КОЛИ `input(r)` → ТО `restart`.
+- КОЛИ `input(z)` → ТО `undo`.
+- КОЛИ `input(r)` → ТО `restart`.
 - Перемога: робот на сходах після завершеної серії, не вимкнений, не зламаний, не замерзлий. · Поразка: нуль заряду, лава, постріл, двері, три холоди — робот лишається на полі мертвим, далі undo. · Рахунку нема.
 
 ## Керування і ввід
@@ -100,7 +106,7 @@ date: 2026-11-19
 - `tutorial-window` — текстові екрани: «Sokobot is a highly advanced puzzle-solving robot…», «Guide Sokobot to the stairs… Press Z to undo a move or R to restart a room», сюжет про корпорацію й утечу; фінал «SO THIS IS THE SKY… IT'S BEAUTIFUL… BEEP BOOP.» і «~Fin».
 - `game-screen`: кімната; верхній ряд — напис POWER і 4 комірки заряду (`energy-bar`); нижній — смуга стану (норма / рух зі стрілкою напрямку й лічильником кроків, що лишились / вимкнений / зламаний / замерзлий; значки магніту й оберту) і `level-number` «n/52».
 - Сюжетні `message`-вікна посеред кімнати — репліки науковця.
-- Переходи: титул → текст → кімната → сходи → наступна; кімнати 48–52 — назовні (трава, дерева, чайки), далі фінальна сцена.
+- Переходи: титул → текст → кімната → сходи → наступна; останні кімнати — назовні (трава, дерева, урвище), далі фінальні сцени з хмарами й чайками.
 
 ## Фічі поза полем
 - `undo` без ліміту, `restart-level`, `levels-sequential` (52 кімнати), `continue` — стандарт PuzzleScript.

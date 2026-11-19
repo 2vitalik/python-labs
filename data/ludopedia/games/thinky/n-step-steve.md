@@ -68,12 +68,14 @@ date: 2026-11-19
 - КОЛИ `input(dir)` → ТО `move(steve, dir)` для кожного живого Стіва одночасно, `counter(steps, -1)`.
 - КОЛИ `contact(steve, rock|corpse)` → ЯКЩО `free(cell_behind)` → ТО `push`; інакше `block`.
 - КОЛИ `contact(rock, flag)` → ЯКЩО `free(cell_behind)` → ТО `push` — прапорці зсувають лише штовханими сутностями.
-- КОЛИ `enter(steve, flag)` → ТО `set_value(steps, pips)` — лічильник = кількість крапок; ЯКЩО `custom: «Стіви стоять на кількох прапорцях»` → ТО `custom: «береться більше число»`.
+- КОЛИ `enter(steve, flag)` → ТО `set_value(steps, pips)` — лічильник = кількість крапок.
+- КОЛИ `enter(steve, flag)` → ЯКЩО `custom: «Стіви стоять на кількох прапорцях»` → ТО `custom: «береться більше число»`.
 - КОЛИ `enter(steve, pink_flag)` → ТО `checkpoint`, `set_state(pink_flag, lit)`; `custom: «засвічуються рожеві прапорці, на яких Стіви стоять разом; новий дотик перезаписує набір»` (?).
 - КОЛИ `counter(steps, ==, 0)` → ЯКЩО `not cell(steve_cell, flag)` → ТО `transform(steve, corpse)` (усі живі Стіви).
 - КОЛИ `enter(steve, spikes)` → ТО `transform(steve, corpse)`.
 - КОЛИ `input(dir)` → ЯКЩО `count(live_steve, ==, 0)` → ТО `respawn(steve, кожен засвічений рожевий прапорець)` («Move again to restart»).
-- КОЛИ `enter(x, ice)` → ТО `slide(x, dir)`; ЯКЩО `custom: «шлях ковзання проходить через прапорець»` → ТО `set_value(steps, pips)`.
+- КОЛИ `enter(x, ice)` → ТО `slide(x, dir)`.
+- КОЛИ `enter(steve, ice)` → ЯКЩО `custom: «шлях ковзання проходить через прапорець»` → ТО `set_value(steps, pips)`.
 - КОЛИ `enter(x, conveyor)` → ТО `move(x, arrow_dir)` щоходу.
 - КОЛИ `custom: «сутність заштовхнуто в клонер»` → ЯКЩО `free(cells_beside)` → ТО `clone(x)` (?).
 - КОЛИ `contact(steve, kitten)` → ТО `pickup`, `counter(kittens, +1)`, `message(kitten_dialog)`.
@@ -81,7 +83,8 @@ date: 2026-11-19
 - КОЛИ `contact(steve, lock)` → ЯКЩО `counter(kittens|stars, >=, N)` → ТО `disappear_b`; інакше `block`, `message(«N more …»)`.
 - КОЛИ `edge(steve)` → ТО `custom: «Стів переходить у сусідню кімнату»`.
 - КОЛИ `input(Enter)` → ТО `window(map-window)`; вибір відкритої бази → `teleport(steve, base)`.
-- КОЛИ `enter(steve, wormhole)` (Part 2) → ТО `teleport(steve, pair)`; КОЛИ `custom: «два Стіви одночасно проходять два різні переходи»` → ТО `teleport(steve, cryptid_room)`.
+- КОЛИ `enter(steve, wormhole)` (Part 2) → ТО `teleport(steve, pair)`.
+- КОЛИ `custom: «два Стіви одночасно проходять два різні переходи (краї чи червоточини)»` → ТО `teleport(steve, cryptid_room)` (Part 2).
 - КОЛИ `input(Z)` → ТО `undo(1)` (Part 1 — у межах кімнати, Part 2 — і між кімнатами); пауза → Restart Room → `restart`.
 - Перемога: врятовано всіх кошенят → фінал; додатково — секретні кінцівки (зламаний телепорт, коза). Поразка тимчасова: смерть — частина розвʼязку, undo без ліміту.
 
