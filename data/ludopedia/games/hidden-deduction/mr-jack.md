@@ -13,13 +13,13 @@ axes:
   random: both
   goal: state
 year: 2006
-platforms: [board (Hurrican 2006, Asmodee), web (Board Game Arena), iOS/Android (Mr Jack Pocket, 2014)]
+platforms: [board (Hurrican 2006, Asmodee), web (Board Game Arena)]
 links:
   - {kind: other, url: "https://www.ultraboardgames.com/mr-jack/game-rules.php", best: true, note: "правила: компоненти, порядок A-B-B-A / B-A-A-B, виклик свідків, ліхтарі, кордони, люки, три кінцівки"}
   - {kind: other, url: "https://www.ultraboardgames.com/mr-jack/the-characters.php", note: "8 персонажів: рух 1–3 (Stealthy 1–4) і здібності з таймінгом"}
   - {kind: other, url: "https://en.doc.boardgamearena.com/Gamehelpmrjack", note: "довідка BGA: Watson і ліхтар, вихід у кутах, одне обвинувачення за гру"}
   - {kind: play, url: "https://en.boardgamearena.com/gamepanel?game=mrjack", note: "грати в браузері (Board Game Arena)"}
-  - {kind: other, url: "https://apps.apple.com/app/id853246110", note: "Mr Jack Pocket (Asmodee Digital, 2014): соло проти AI і онлайн"}
+  - {kind: other, url: "https://apps.apple.com/app/id853246110", note: "застосунок окремої настілки Mr. Jack Pocket (2010; Asmodee Digital, 2014): соло проти AI і онлайн"}
   - {kind: youtube, url: "https://www.youtube.com/results?search_query=mr+jack+board+game+how+to+play", note: "пошук; правила"}
 stage: v1
 coverage: 65
@@ -95,12 +95,12 @@ date: 2026-11-09
 - Переходи: main-menu → character-select → game-screen (draft ↔ хід ↔ свідки) → end-screen.
 
 ## Фічі поза полем
-- `online-multiplayer` (BGA, мобільна Pocket), `ai-opponent-levels` (?) у Mr Jack Pocket (соло офлайн).
-- `tutorial` (Mr Jack Pocket).
+- `online-multiplayer` (BGA); у застосунку окремої гри Mr. Jack Pocket — ще `ai-opponent-levels` (?) (соло офлайн).
+- `tutorial` (застосунок Mr. Jack Pocket).
 - Розширення й редакції — нові персонажі (?) і Revised Edition.
 
 ## Варіації й родичі
-- Mr. Jack Pocket — коротка версія на вуличних плитках замість гексів (?); Mr. Jack in New York — інша мапа й персонажі (?).
+- Mr. Jack Pocket (2010) — окрема настілка тих самих авторів: 9 плиток кварталів 3×3, детективи ходять по краю (?); Mr. Jack in New York — інша мапа й персонажі (?).
 - Родичі: [Cluedo](cluedo.md) — дедукція особи через спростування; [Guess Who?](guess-who.md) — так/ні відсікає підмножину облич; [Scotland Yard](scotland-yard.md) — асиметрія «один знає, інші шукають»; [Stratego](stratego.md) — особа фігури прихована.
 - **Осі варіацій**: хто ходить персонажами «спільні для обох / власні»; запитання «одне за раунд, фіксоване (видимість) / вільне (Guess Who)»; сигнал «світло ліхтарів / сусідство / промінь»; виграш Джека «втеча / виживання / хибне звинувачення».
 
@@ -140,7 +140,7 @@ date: 2026-11-09
 - [UltraBoardGames: персонажі](https://www.ultraboardgames.com/mr-jack/the-characters.php) — рух і здібності 8 персонажів із таймінгом.
 - [BGA: довідка Mr. Jack](https://en.doc.boardgamearena.com/Gamehelpmrjack) — ліхтар Watson, кутові виходи, одне обвинувачення, умова втечі.
 - [BGA: Mr. Jack](https://en.boardgamearena.com/gamepanel?game=mrjack) — онлайн-версія.
-- [App Store: Mr Jack Pocket](https://apps.apple.com/app/id853246110) — мобільна адаптація (Asmodee Digital, 2014).
+- [App Store: Mr Jack Pocket](https://apps.apple.com/app/id853246110) — застосунок окремої настілки Mr. Jack Pocket (2010), не цієї гри (Asmodee Digital, 2014).
 - Автори: Bruno Cathala, Ludovic Maublanc; видавець Hurrican (з результатів пошуку).
 
 ## Непевне
@@ -150,3 +150,4 @@ date: 2026-11-09
 - (?) Чи отримує Джек щось від алібі-карти, яку взяв Holmes на його ході (у деяких редакціях — пісочні годинники), — не перевірено.
 - (?) Mr. Jack Pocket і Mr. Jack in New York — правила не читав; назва «Mr. Jack London» — з памʼяті.
 - (?) Інтерфейс цифрових версій описано як «(цифрова версія)», а не з побаченого.
+- Виправлено 2026-11-19 (T364, знахідка хвилі 3): Mr. Jack Pocket — окрема настілка 2010, а не мобільна адаптація Mr. Jack.

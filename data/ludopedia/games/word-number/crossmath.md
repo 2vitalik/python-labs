@@ -1,7 +1,7 @@
 ---
 title: Crossmath (математичний кросворд)
 slug: crossmath
-aka: [Cross Math, Crossmath Puzzle, Math Crossword, Number Sums Crossword, Математичний кросворд]
+aka: [Cross Math, Crossmath Puzzle, Math Crossword, Математичний кросворд]
 family: word-number
 also: [pencil-logic]
 klass: puzzle
@@ -128,3 +128,4 @@ date: 2026-11-09
 - (?) Чи є в ⭐-застосунку таймер, ліміт помилок і миттєва підсвітка помилок.
 - (?) Чи гарантовано унікальний розвʼязок у генерованих задачах.
 - (?) Розміри сіток за складністю — не бачив чисел.
+- 2026-11-19 (T364, знахідка хвилі 3): alias «Number Sums Crossword» знято — Number Sums ближча до Sumplete.
