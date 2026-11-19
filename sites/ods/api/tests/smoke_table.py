@@ -36,9 +36,9 @@ with TestClient(main.app) as c:
     mongo[DB].variants.insert_many([{"lab": lab, "vid": f"КН-1-{n:02d}", "group": "КН-1", "n": n, "card": "", "answers": ANSWERS, "student": ""}
                                     for lab, n in [(1, 1), (1, 2), (2, 1)]])
     login(c, "a@nure.ua", "student", "КН-1")
-    c.get("/api/variants/1/my")
-    c.put("/api/variants/1/my", json={"line": "LAB1 КН-1-01 x=1 y=5", "notebook": "https://colab/a"})
-    c.get("/api/variants/2/my")  # a card of lab 2 taken, no line yet
+    c.post("/api/variants/1/my/claim", json={"n": 1})
+    c.put("/api/variants/1/my", json={"line": "LAB1 КН-1-01 x=1 y=5", "notebook": "https://colab/a", "way": "record"})
+    c.get("/api/variants/2/my")  # the same number of lab 2 taken silently, no line yet
     login(c, "b@nure.ua", "student", "КН-1")
     login(c, "admin@nure.ua", "admin")
     c.put("/api/variants/1/results/КН-1-01", json={"points": 14, "note": "охайно"})
@@ -53,6 +53,9 @@ with TestClient(main.app) as c:
     check("table: A's lab 2 — a card without a line", a["2"]["vid"] == "КН-1-01" and a["2"]["attempts"] == 0 and a["2"]["checked_at"] is None
           and a["2"]["points"] is None, a)
     check("table: A holds labs 1 and 2 only, nothing of the key", set(a) == {"1", "2"} and "answers" not in a["1"] and "card" not in a["1"], a)
+    check("table: A's lab 1 — the defence, no file yet, no hint (no answers right, no notebook)",
+          (a["1"]["way"], a["1"]["defended"], a["1"]["stars"], a["1"]["files"], a["1"]["file_at"], a["1"]["work"], a["1"]["hint"])
+          == ("record", "", None, 0, None, None, None), a["1"])
     check("table: B without a card → {}", b == {}, b)
     check("table: the teacher is not a row", "admin@nure.ua" not in rows)
 

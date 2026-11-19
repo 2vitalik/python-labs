@@ -1,5 +1,5 @@
-"""Smoke: lab variants (T200) — cards handed out per group, answer lines checked, the teacher's marks.
-Run from sites/ods/api: DB_NAME=ods_smoke uv run python tests/smoke_labs.py"""
+"""Smoke: lab variants (T200, T354) — a card claimed by number, the same number in another lab, the demo; answer lines checked,
+the teacher's marks and the defence. Run from sites/ods/api: DB_NAME=ods_smoke ~/.venvs/python-labs/bin/python tests/smoke_labs.py"""
 import json
 import os
 import subprocess
@@ -55,21 +55,35 @@ with TestClient(main.app) as c:
     check("pending: 403", c.get("/api/variants/1/my").status_code == 403)
 
     login(c, "a@nure.ua", "student", "КН-1")
-    my = c.get("/api/variants/1/my").json()
-    check("A takes the first free card of the group", my["vid"] == "КН-1-01" and 'VARIANT = "КН-1-01"' in my["card"] and len(my["ask"]) == 2, my)
-    check("A: the card keeps nothing of the key", "answers" not in my and "traps" not in json.dumps(my) and my["total"] == 3 and my["ok"] == 0)
-    check("A opens again: the same card", c.get("/api/variants/1/my").json()["vid"] == "КН-1-01")
-    login(c, "b@nure.ua", "student", "КН-1")
-    check("B takes the next one", c.get("/api/variants/1/my").json()["vid"] == "КН-1-02")
-    login(c, "c@nure.ua", "student", "КН-1")
     r = c.get("/api/variants/1/my")
-    check("C: no cards left → 404 with the group named", r.status_code == 404 and r.json()["detail"].startswith("Карток для групи КН-1"), r.text)
+    check("A before naming a number: 404 asking for it", r.status_code == 404 and r.json()["detail"].startswith("Ще не знаю твого варіанта"), r.text)
+    check("A: the free numbers of the stream", c.get("/api/variants/1/free").json() == {"group": "КН-1", "free": [1, 2], "same": None, "demo": False},
+          c.get("/api/variants/1/free").text)
+    my = c.post("/api/variants/1/my/claim", json={"n": 1}).json()
+    check("A claims number 1", my["vid"] == "КН-1-01" and 'VARIANT = "КН-1-01"' in my["card"] and len(my["ask"]) == 2, my)
+    check("A: the card keeps nothing of the key", "answers" not in my and "traps" not in json.dumps(my) and my["total"] == 3 and my["ok"] == 0)
+    check("A: MY carries the new parts", all(k in my for k in ("way", "video", "defended", "file", "files", "facts", "grade", "live", "formats", "due", "late"))
+          and my["files"] == [] and my["file"] is None and my["grade"]["work"] is None and my["formats"] == {"jupyter": False, "marimo": False, "live": False}, my)
+    check("A opens again: the same card", c.get("/api/variants/1/my").json()["vid"] == "КН-1-01")
+    check("A claims number 1 again: the same card", c.post("/api/variants/1/my/claim", json={"n": 1}).json()["vid"] == "КН-1-01")
+    r = c.post("/api/variants/1/my/claim", json={"n": 2})
+    check("A claims another number: 409 with words", r.status_code == 409 and "КН-1-01" in r.json()["detail"], r.text)
+    login(c, "b@nure.ua", "student", "кн-1-3")
+    check("B (group кн-1-3 of the stream КН-1): only number 2 is free", c.get("/api/variants/1/free").json()["free"] == [2])
+    r = c.post("/api/variants/1/my/claim", json={"n": 1})
+    check("B claims A's number: 409 with words", r.status_code == 409 and r.json()["detail"].startswith("Номер 1 уже взяв"), r.text)
+    check("B claims number 2", c.post("/api/variants/1/my/claim", json={"n": 2}).json()["vid"] == "КН-1-02")
+    login(c, "c@nure.ua", "student", "КН-1")
+    r = c.post("/api/variants/1/my/claim", json={"n": 5})
+    check("C: a number not in the list → 404 naming it", r.status_code == 404 and r.json()["detail"].startswith("Номера 5"), r.text)
+    check("C: nothing free, 404 on «my»", c.get("/api/variants/1/free").json()["free"] == [] and c.get("/api/variants/1/my").status_code == 404)
     check("C: GET /api/variants says mine=false for both labs", c.get("/api/variants").json() == [{"n": 1, "mine": False}, {"n": 2, "mine": False}], c.get("/api/variants").text[:200])
     login(c, "d@nure.ua", "student", "")
     r = c.get("/api/variants/1/my")
     check("D: no group → 404 saying so", r.status_code == 404 and r.json()["detail"].startswith("У профілі немає групи"), r.text)
     login(c, "e@nure.ua", "student", "ДЕМО")
-    check("the demo card 00 is never handed out", c.get("/api/variants/1/my").status_code == 404)
+    r = c.post("/api/variants/1/my/claim", json={"n": 0})
+    check("a student may not take the demo card", r.status_code == 403 and "Демо" in r.json()["detail"], r.text)
 
     login(c, "a@nure.ua", "student", "КН-1")
     my = c.put("/api/variants/1/my", json={"line": "LAB1 КН-1-01  d1=0.2049 pi=3 out=1.0", "notebook": " https://colab/x "}).json()
@@ -89,9 +103,14 @@ with TestClient(main.app) as c:
     check("an alert per checked line: 🟢 all right, 🟠 not yet", len(alerts) == 2 and alerts[0].startswith("🟢 Лаба 1") and "3 із 3" in alerts[0]
           and alerts[1].startswith("🟠 Лаба 1") and "спроба 2" in alerts[1], alerts)
     check("A: GET /api/variants says mine=true for lab 1 only", c.get("/api/variants").json() == [{"n": 1, "mine": True}, {"n": 2, "mine": False}], c.get("/api/variants").text[:200])
+    check("A: lab 2 says which number A holds", c.get("/api/variants/2/free").json()["same"] == 1)
     my2 = c.get("/api/variants/2/my").json()
-    check("A: lab 2 hands out its own card with the same vid, untouched by lab 1", my2["vid"] == "КН-1-01" and "# lab 2" in my2["card"] and my2["attempts"] == 0, my2)
+    check("A: lab 2 takes the same number silently, a card of its own", my2["vid"] == "КН-1-01" and "# lab 2" in my2["card"] and my2["attempts"] == 0, my2)
     check("A: lab 1 is still A's, with the line", c.get("/api/variants/1/my").json()["attempts"] == 2)
+    my = c.put("/api/variants/1/my", json={"way": "live", "video": " https://youtu.be/x "}).json()
+    check("A: the form of defence and the video; absent fields stay", my["way"] == "live" and my["video"] == "https://youtu.be/x"
+          and my["notebook"] == "https://colab/y" and my["attempts"] == 2 and my["grade"]["cap"] == 20, my)
+    check("A: a form of defence not in the list → 422", c.put("/api/variants/1/my", json={"way": "zoom"}).status_code == 422)
     check("A: results are the teacher's", c.get("/api/variants/1/results").status_code == 403
           and c.put("/api/variants/1/results/КН-1-01", json={"points": 20}).status_code == 403)
 
@@ -104,10 +123,23 @@ with TestClient(main.app) as c:
     check("admin: 21 points → 422", c.put("/api/variants/1/results/КН-1-01", json={"points": 21, "note": ""}).status_code == 422)
     check("admin: unknown variant → 404", c.put("/api/variants/1/results/КН-9-01", json={"points": 1, "note": ""}).status_code == 404)
     check("history keeps the trail", mongo[DB].history.count_documents({"coll": "variants"}) >= 5)
+    r = c.put("/api/variants/1/results/КН-1-01", json={"defended": "record", "stars": 2})
+    check("admin: the defence and the stars; the points stay", r.json()["defended"] == "record" and r.json()["stars"] == 2 and r.json()["points"] == 14
+          and r.json()["grade"]["cap"] == 16, r.text)
+    check("admin: a defence not in the list → 422", c.put("/api/variants/1/results/КН-1-01", json={"defended": "zoom"}).status_code == 422)
+    check("admin: free numbers are the student's word — admin has no group, may take the demo",
+          c.get("/api/variants/1/free").json() == {"group": "", "free": [], "same": None, "demo": True})
+    check("admin takes the demo card", c.post("/api/variants/1/my/claim", json={"n": 0}).json()["vid"] == "ДЕМО-00")
+    check("admin: lab 2 takes the demo silently too", c.get("/api/variants/2/my").json()["vid"] == "ДЕМО-00")
+    settings.fake_user_email = "t@nure.ua"
+    c.get("/api/auth/dev-login")
+    mongo[DB].users.update_one({"email": "t@nure.ua"}, {"$set": {"status": "student", "test": True}})
+    check("a test student takes the demo over from the admin", c.post("/api/variants/1/my/claim", json={"n": 0}).json()["vid"] == "ДЕМО-00"
+          and mongo[DB].variants.find_one({"lab": 1, "vid": "ДЕМО-00"})["student"] == "t@nure.ua")
 
     login(c, "a@nure.ua", "student", "КН-1")
     my = c.get("/api/variants/1/my").json()
-    check("A sees the mark", my["points"] == 14 and my["note"] == "охайно", my)
+    check("A sees the mark", my["points"] == 14 and my["note"] == "охайно" and my["defended"] == "record", my)
 
 print(f"\n{sum(ok for _, ok in results)}/{len(results)} PASS")
 sys.exit(not all(ok for _, ok in results))
