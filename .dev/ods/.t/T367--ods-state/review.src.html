@@ -1,0 +1,716 @@
+<title>Стан ods #367 рев’ю</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=Manrope:wght@600;700;800&display=swap">
+<style>
+/* Layout: one reading column; maps, flows, cards and phones stack on narrow screens. Same look as the #126, #134, #352 and #354 review pages. */
+:root {
+  --bg: #f6f4f1; --surface: #ffffff; --ink: #1c2024; --muted: #5a6068; --line: #e3ded6;
+  --accent: #c94f18; --accent-soft: #fbe8dd; --brown: #b85a18;
+  --ok: #1d7448; --ok-soft: #e2f2e8; --warn: #96580a; --warn-soft: #f9eedb;
+  --bad: #b3302a; --bad-soft: #f9e3e1; --info: #2d5aa6; --info-soft: #e6edf8;
+  --code: #f1eee9; --shot-bg: #ffffff; --scrim: rgba(20, 22, 25, 0.88); --scrim-ink: #e8e6e3;
+  --font-head: "Manrope", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141619; --surface: #1c1f23; --ink: #e8e6e3; --muted: #a3a8ae; --line: #30353b;
+    --accent: #ff7f45; --accent-soft: #3a2418; --brown: #e0874a;
+    --ok: #5cc98f; --ok-soft: #173225; --warn: #f0b25a; --warn-soft: #3a2c14;
+    --bad: #ff8277; --bad-soft: #3d1c1a; --info: #8fb3f0; --info-soft: #1b2638;
+    --code: #181b1f; --scrim: rgba(8, 9, 10, 0.92); color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141619; --surface: #1c1f23; --ink: #e8e6e3; --muted: #a3a8ae; --line: #30353b;
+  --accent: #ff7f45; --accent-soft: #3a2418; --brown: #e0874a;
+  --ok: #5cc98f; --ok-soft: #173225; --warn: #f0b25a; --warn-soft: #3a2c14;
+  --bad: #ff8277; --bad-soft: #3d1c1a; --info: #8fb3f0; --info-soft: #1b2638;
+  --code: #181b1f; --scrim: rgba(8, 9, 10, 0.92); color-scheme: dark;
+}
+body { background: var(--bg); color: var(--ink); font: 15px/1.6 var(--font-body); }
+.page { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 72px; }
+h1, h2, h3, h4 { font-family: var(--font-head); text-wrap: balance; line-height: 1.25; }
+h1 { font-size: clamp(1.7rem, 4vw, 2.4rem); margin: 0 0 6px; letter-spacing: -0.01em; }
+h2 { font-size: 1.5rem; margin: 56px 0 10px; display: flex; gap: 12px; align-items: baseline; }
+h3 { font-size: 1.12rem; margin: 28px 0 8px; }
+h4 { font-size: 0.98rem; margin: 0 0 6px; }
+p { margin: 0 0 10px; }
+a { color: var(--accent); }
+code { font-family: var(--font-mono); font-size: 0.86em; background: var(--code); padding: 0.05em 0.35em; border-radius: 4px; overflow-wrap: anywhere; }
+.num { font-family: var(--font-mono); font-size: 0.9rem; color: var(--surface); background: var(--brown); border-radius: 6px; padding: 2px 9px; }
+.sub { color: var(--muted); margin: 0 0 18px; }
+.lead { color: var(--muted); max-width: 78ch; }
+.kicker { text-transform: uppercase; letter-spacing: 0.07em; font-size: 0.72rem; color: var(--muted); margin: 0 0 4px; font-weight: 600; }
+.verdict { border: 1px solid var(--line); border-left: 5px solid var(--ok); background: var(--surface); border-radius: 10px; padding: 16px 20px; }
+.verdict ul { margin: 6px 0 0; padding-left: 20px; }
+.verdict li { margin: 4px 0; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; margin: 16px 0 0; }
+.tile { background: var(--ok-soft); border-radius: 10px; padding: 10px 14px; }
+.tile b { display: block; font: 800 1.9rem/1.1 var(--font-head); color: var(--ok); font-variant-numeric: tabular-nums; }
+.tile span { font-size: 0.88rem; }
+.wait { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 14px 0 0; }
+.wait > b { font-family: var(--font-head); font-size: 0.85rem; margin-right: 4px; }
+nav.toc { margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.92rem; }
+nav.toc a { text-decoration: none; border-bottom: 1px dashed currentColor; }
+.chip { display: inline-block; font-size: 0.75rem; font-weight: 600; border-radius: 999px; padding: 1px 9px; white-space: nowrap; }
+.chip.big { font-size: 0.85rem; padding: 3px 12px; white-space: normal; }
+.chip.ok { background: var(--ok-soft); color: var(--ok); }
+.chip.warn { background: var(--warn-soft); color: var(--warn); }
+.chip.bad { background: var(--bad-soft); color: var(--bad); }
+.chip.info { background: var(--info-soft); color: var(--info); }
+.chip.off { background: var(--code); color: var(--muted); }
+.pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; align-items: stretch; margin: 14px 0; }
+.pair > * { min-width: 0; }
+.box { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; }
+.box.now { border-color: var(--ok); }
+.box.miss { border-color: var(--warn); }
+.box h4 { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.box ul { margin: 6px 0 0; padding-left: 18px; }
+.box li { margin: 3px 0; }
+.scroll { overflow-x: auto; max-width: 100%; }
+table.grid { border-collapse: collapse; width: 100%; font-size: 0.9rem; background: var(--surface); }
+table.grid th, table.grid td { border: 1px solid var(--line); padding: 7px 10px; text-align: left; vertical-align: top; }
+table.grid th { background: var(--code); font-family: var(--font-head); font-size: 0.82rem; }
+table.grid td.c { white-space: nowrap; }
+table.grid tr.first td { background: var(--warn-soft); }
+/* site map: a column per section, a node per address; new nodes green, gone ones struck */
+.maps { display: grid; gap: 14px; margin: 14px 0; }
+.map { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; min-width: 0; }
+.map > header { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; margin-bottom: 10px; }
+.map > header h4 { margin: 0; }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.col { min-width: 0; }
+.col h5 { font: 700 0.82rem var(--font-head); margin: 0 0 6px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.node { border: 1px solid var(--line); background: var(--code); border-radius: 8px; padding: 5px 9px; margin: 0 0 6px; font-size: 0.84rem; line-height: 1.35; }
+.node code { background: none; padding: 0; font-size: 0.8rem; }
+.node small { display: block; color: var(--muted); font-size: 0.76rem; }
+.node.new { border-color: var(--ok); background: var(--ok-soft); }
+.node.gone { color: var(--muted); border-style: dashed; }
+.node.gone code { text-decoration: line-through; }
+.node.lock { border-color: var(--warn); background: var(--warn-soft); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 0.8rem; color: var(--muted); margin: 10px 0 0; }
+.legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; border: 1px solid var(--line); background: var(--code); }
+.legend .l-new::before { border-color: var(--ok); background: var(--ok-soft); }
+.legend .l-lock::before { border-color: var(--warn); background: var(--warn-soft); }
+.legend .l-gone::before { border-style: dashed; }
+/* flow: a row per path, its steps as a chain of arrows */
+.flow { display: grid; grid-template-columns: 9rem 1fr; gap: 12px 16px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; margin: 14px 0; }
+.flow > * { min-width: 0; }
+.flow .who { font-family: var(--font-head); font-weight: 700; font-size: 0.92rem; }
+.flow .who small { display: block; font-family: var(--font-body); font-weight: 400; color: var(--muted); font-size: 0.78rem; }
+.flow hr { grid-column: 1 / -1; border: 0; border-top: 1px dashed var(--line); margin: 2px 0; width: 100%; }
+ol.chain { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 0; align-items: stretch; }
+ol.chain li { display: flex; align-items: center; }
+ol.chain li:not(:last-child)::after { content: "→"; color: var(--muted); font-weight: 600; padding: 0 8px; }
+.step { border: 1px solid var(--ok); background: var(--ok-soft); border-radius: 8px; padding: 5px 10px; font-size: 0.88rem; line-height: 1.3; }
+.step b { display: block; font-weight: 600; }
+.step small { color: var(--muted); font-size: 0.76rem; }
+.step.gate { border-color: var(--warn); background: var(--warn-soft); }
+.was .step { border-color: var(--line); background: var(--code); }
+/* screenshots: one per card, stacked; a click opens the full picture */
+.shots { display: grid; gap: 22px; margin: 14px 0; }
+.shot { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px 18px; min-width: 0; }
+.shot header { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; margin-bottom: 6px; }
+.shot h4 { margin: 0; font-size: 1.02rem; }
+.shot dl { margin: 0 0 10px; display: grid; grid-template-columns: 6.5rem 1fr; gap: 3px 12px; font-size: 0.9rem; }
+.shot dt { color: var(--muted); font-weight: 600; font-size: 0.82rem; padding-top: 1px; }
+.shot dd { margin: 0; min-width: 0; }
+a.zoom { display: block; cursor: zoom-in; border-radius: 8px; }
+a.zoom:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+a.zoom img { display: block; width: 100%; max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--shot-bg); }
+a.zoom.tall img { max-height: 760px; object-fit: cover; object-position: top; }
+a.zoom.mid { max-width: 760px; }
+a.zoom.phone { max-width: 300px; }
+a.zoom.tiny { max-width: 240px; display: inline-block; vertical-align: middle; }
+.phones { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; align-items: start; }
+.phones figure { margin: 0; min-width: 0; }
+.phones figcaption { font-size: 0.82rem; color: var(--muted); margin: 0 0 6px; }
+.phones a.zoom.phone img { max-height: 620px; object-fit: cover; object-position: top; }
+.cut { color: var(--muted); font-size: 0.8rem; margin: 6px 0 0; }
+.zoombox { position: fixed; inset: 0; z-index: 50; background: var(--scrim); overflow: auto; cursor: zoom-out; padding: max(12px, env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) max(12px, env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px)); }
+.zoombox img { display: block; margin: 0 auto; max-width: 100%; height: auto; background: var(--shot-bg); border-radius: 6px; }
+.zoombox p { color: var(--scrim-ink); text-align: center; font-size: 0.82rem; margin: 0 0 8px; }
+.honest { border-left: 5px solid var(--warn); }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 14px 0; }
+.cards > * { min-width: 0; }
+.rough { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; }
+.rough header { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; flex-wrap: wrap; margin-bottom: 4px; }
+.rough h4 { margin: 0; }
+.rough p { font-size: 0.88rem; margin: 0 0 6px; }
+.rough .do { color: var(--muted); font-size: 0.84rem; margin: 0; }
+ol.next { padding-left: 22px; } ol.next li { margin: 6px 0; }
+@media (max-width: 700px) {
+  .flow { grid-template-columns: 1fr; }
+  .shot dl { grid-template-columns: 1fr; } .shot dt { margin-top: 4px; }
+}
+footer { margin-top: 56px; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 12px; }
+/* T367: the night as a timeline — one row per session, one scale for all rows (25 h from 00:00 of 19.11) */
+.tl { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; margin: 14px 0; }
+.tl-row { display: grid; grid-template-columns: 12.5rem 1fr; gap: 2px 14px; align-items: center; padding: 6px 0; }
+.tl-row > * { min-width: 0; }
+.tl-row + .tl-row { border-top: 1px dashed var(--line); }
+.tl-name { font: 700 0.88rem/1.3 var(--font-head); }
+.tl-name small { display: block; font: 400 0.76rem/1.35 var(--font-body); color: var(--muted); }
+.tl-track { position: relative; height: 22px; background: var(--code); border-radius: 5px; }
+.tl-seg { position: absolute; top: 3px; bottom: 3px; border-radius: 4px; background: var(--ok); min-width: 4px; }
+.tl-seg.cut { background: var(--bad); }
+.tl-seg.wake { background: var(--warn); }
+.tl-seg.aid { background: var(--info); }
+.tl-axis { position: relative; height: 18px; font: 0.72rem var(--font-mono); color: var(--muted); }
+.tl-axis span { position: absolute; transform: translateX(-50%); }
+.tl-axis span:first-child { transform: none; }
+.legend .l-ok::before { border-color: var(--ok); background: var(--ok); }
+.legend .l-cut::before { border-color: var(--bad); background: var(--bad); }
+.legend .l-wake::before { border-color: var(--warn); background: var(--warn); }
+.legend .l-aid::before { border-color: var(--info); background: var(--info); }
+/* a session as a card: the same five rows in the same order on each */
+.sess { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px 16px; min-width: 0; }
+.sess header { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; margin-bottom: 2px; }
+.sess h4 { margin: 0; font-size: 1.02rem; }
+.sess .when { color: var(--muted); font-size: 0.82rem; margin: 0 0 8px; }
+.sess dl { margin: 0; display: grid; grid-template-columns: 6.6rem 1fr; gap: 5px 12px; font-size: 0.9rem; }
+.sess dt { color: var(--muted); font-weight: 600; font-size: 0.8rem; padding-top: 2px; }
+.sess dd { margin: 0; min-width: 0; }
+.sess .links { margin: 10px 0 0; font-size: 0.88rem; display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.sgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 14px; margin: 14px 0; }
+/* steps of the night: a status, what to do, the command */
+ol.steps { list-style: none; margin: 14px 0; padding: 0; display: grid; gap: 8px; counter-reset: st; }
+ol.steps > li { counter-increment: st; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px 10px 46px; position: relative; min-width: 0; }
+ol.steps > li::before { content: counter(st); position: absolute; left: 12px; top: 10px; width: 24px; height: 24px; border-radius: 50%; background: var(--code); color: var(--muted); font: 600 0.8rem/24px var(--font-mono); text-align: center; }
+ol.steps > li.done { border-color: var(--ok); }
+ol.steps > li.done::before { content: "✓"; background: var(--ok-soft); color: var(--ok); }
+ol.steps > li.ask { border-color: var(--warn); }
+ol.steps > li b { font-family: var(--font-head); }
+ol.steps > li p { margin: 2px 0 0; font-size: 0.9rem; }
+ol.steps > li .src { color: var(--muted); font-size: 0.78rem; }
+pre.cmd { font: 0.82rem/1.5 var(--font-mono); background: var(--code); border-radius: 6px; padding: 8px 10px; margin: 6px 0 0; overflow-x: auto; white-space: pre; }
+/* words to say: the text itself and a copy button */
+.say { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; margin: 14px 0; }
+.say header { display: flex; justify-content: space-between; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 8px; }
+.say h4 { margin: 0; }
+.say pre { font: 0.95rem/1.6 var(--font-body); white-space: pre-wrap; margin: 0; background: var(--code); border-radius: 8px; padding: 12px 14px; }
+button.copy { font: 600 0.8rem var(--font-head); color: var(--accent); background: var(--accent-soft); border: 1px solid transparent; border-radius: 999px; padding: 4px 12px; cursor: pointer; }
+button.copy:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* what a wake-up cost: bars on one scale, the number at the end */
+.bars { display: grid; grid-template-columns: 12.5rem 1fr 4.2rem; gap: 7px 12px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; margin: 14px 0; font-size: 0.88rem; }
+.bars > * { min-width: 0; }
+.bars i { display: block; height: 14px; border-radius: 4px; background: var(--warn); }
+.bars .n { font: 600 0.86rem var(--font-mono); text-align: right; font-variant-numeric: tabular-nums; }
+.bars .sum { grid-column: 1 / -1; border-top: 1px dashed var(--line); padding-top: 8px; color: var(--muted); }
+details.more { margin: 14px 0; }
+details.more > summary { cursor: pointer; font: 700 0.95rem var(--font-head); color: var(--accent); }
+.diff { font: 0.82rem/1.55 var(--font-mono); background: var(--code); border-radius: 8px; padding: 10px 12px; overflow-x: auto; white-space: pre; margin: 8px 0 0; }
+.diff .del { color: var(--bad); } .diff .add { color: var(--ok); }
+a.zoom.strip img { aspect-ratio: 1200 / 60; object-fit: cover; object-position: top; }
+@media (max-width: 700px) {
+  .tl-row { grid-template-columns: 1fr; }
+  .sess dl { grid-template-columns: 1fr; } .sess dt { margin-top: 4px; }
+  .bars { grid-template-columns: 1fr 4.2rem; } .bars .who { grid-column: 1 / -1; margin-bottom: -4px; }
+}
+</style>
+
+<div class="page">
+<header>
+  <p class="kicker">python-labs · T367 · стан сайту ods після ночі 19.11</p>
+  <h1>Стан ods #367 рев’ю</h1>
+  <p class="sub">гілка <code>ods</code> · 226 комітів без push · 20.11.2026, ніч · сесії не будились: стан зібрано з їхніх витягів, git і дерева</p>
+
+  <div class="verdict">
+    <p><b>Усі чотири сесії довели роботу до кінця, і все закомічено. Студенти досі нічого не бачать: ods ще не на сервері. До нього двадцять кроків, три з них зроблено.</b></p>
+    <ul>
+      <li><b>Обірвалась одна сесія</b>, лекції, о 06:46. Опівночі вона прокинулась від чужої записки й доробила.</li>
+      <li><b>Лаби:</b> здача файлом, автоперевірка й стіл викладача готові для всіх п’яти; нова розкладка текстів — у лаби 3.</li>
+      <li><b>Три речі зламають перший день</b>, якщо їх пропустити: неповна копія бази для сервера, межа розміру файла 1100 КБ, список потоку на сайті.</li>
+      <li><b>Вичитані лекції в базу не залито.</b> Без твого слова на сервер поїдуть старі тексти.</li>
+      <li><b>Тиждень</b> на ods тепер бачить лише викладач.</li>
+      <li><b>Працює шоста сесія</b>, T368: ховає лаби 4–5 і закриває здачу лаб 1–2 на сайті. Її коміт має встигнути в перший деплой.</li>
+    </ul>
+    <div class="tiles">
+      <div class="tile"><b>4 з 4</b><span>сесії завершили й закомітили; одна — після обриву</span></div>
+      <div class="tile"><b>2 395 ✓</b><span>перевірок смоуків обох сайтів на копії гілки; обидва фронти збираються</span></div>
+      <div class="tile"><b>3 з 20</b><span>кроків першого деплою ods зроблено</span></div>
+      <div class="tile"><b>49</b><span>виборів без відповіді; три не закриваються мовчанням</span></div>
+    </div>
+    <div class="wait"><b>Чекає тебе</b><span class="chip big warn">слово про лекції</span><span class="chip big warn">бот ods у BotFather</span><span class="chip big warn">межа розміру у vps-infra</span><span class="chip big warn">список потоку</span><span class="chip big warn">правило запізнення до пари</span></div>
+  </div>
+
+  <nav class="toc" aria-label="Зміст">
+    <a href="#night">Цієї ночі: деплой</a>
+    <a href="#labs">Завтра на парі: лаби</a>
+    <a href="#who">Хто що зробив</a>
+    <a href="#week">Тиждень сховано</a>
+    <a href="#choices">Вибори, що чекають</a>
+    <a href="#wake">Чи дорого будити сесію</a>
+    <a href="#proof">Як перевірено</a>
+    <a href="#next">Що далі</a>
+  </nav>
+</header>
+
+<h2 id="night"><span class="num">1</span>Цієї ночі: деплой</h2>
+<p class="lead">Сайту ods на сервері ще нема: домен <code>ods.labs.in.ua</code> уже дивиться на машину, але вона на нього не відповідає. Нижче — порядок за планом деплою у vps-infra (T76), звірений із тим, що нічні сесії додали після нього.</p>
+
+<div class="pair">
+  <div class="box now"><h4>Деплой ods не чіпає python</h4>
+    <p>Push гілки <code>ods</code> збирає лише статику ods. Python їде з <code>main</code>, а <code>main</code> на GitHub стоїть на 29.10. Тож цієї ночі можна викласти тільки ods.</p>
+    <p class="cut">Python — це 271 коміт за три тижні й окрема розмова, див. нижче.</p>
+  </div>
+  <div class="box miss"><h4>Пастка в старих документах</h4>
+    <p>План і три README радили <code>git push origin main main:ods</code>. Тепер уся робота на гілці <code>ods</code>, а локальна <code>main</code> відстала: така команда не привезе на ods нічого нового і відвезе на python стан 13.11.</p>
+    <p class="cut">Правильно: <code>git push origin ods</code>. README я виправив; у плані T76 у vps-infra рядок лишився старий.</p>
+  </div>
+</div>
+
+<h3>На ноутбуці</h3>
+<ol class="steps">
+  <li class="done"><b>Хук push</b><p>Push <code>ods</code> сам збирає й публікує статику в <code>www-ods</code>.</p></li>
+  <li class="done"><b>Вхід через Google</b><p>Клієнт «ods-labs prod» створено 17.11, ключі в 1Password. Входять лише пошти @nure.ua, тож і <code>ADMIN_EMAILS</code> — твоя пошта @nure.ua.</p></li>
+  <li class="done"><b>Токен агента</b><p>Згенеровано 19.11. Якщо не встиг зберегти в 1Password: значення для сервера — <code>claude:</code> плюс те, що стоїть у <code>ODS_TOKEN</code> у <code>.site/.env</code>.</p></li>
+  <li class="ask"><b>Бот ods у BotFather</b><p>Слідів, що його створено, я не знайшов. <code>TG_BOT_TOKEN</code> на сервері обов’язковий: без нього крок із ключами не завершиться.</p></li>
+  <li><b>Межа розміру файла</b><p>У vps-infra, файл <code>apps/ods-labs/units/ods-labs-web.conf</code>, дописати рядок і запушити vps-infra. Зараз діє стандартні 1100 КБ.</p><pre class="cmd">BODY_MAX=20MB</pre></li>
+  <li class="ask"><b>Лекції: твоє слово</b><p>Вичитані тексти лежать на диску. Скажеш «лий» — заллю їх у дев-базу до наступного кроку, і старі тексти на сервер не потраплять. Запасний шлях — після деплою: <code>bin/content -t ods push lectures</code>.</p></li>
+  <li><b>База для сервера</b><p>Дев-база цілком не їде: у ній дев-адмін і твої кліки. Їде копія змісту. План T76 бере лише сторінки й картинки; без карток, будови ноутбуків і сторінок лаб здача не працює, тому перелік розширено. Чотири тестові картки лаби 1 відсіяно.</p>
+<pre class="cmd">mongosh ods --quiet &lt;&lt;'JS'
+const seed = "ods_seed", plain = ["guide", "media", "lab_pages", "lab_shapes"];
+db.getSiblingDB(seed).dropDatabase();
+for (const c of plain) db[c].aggregate([{ $out: { db: seed, coll: c } }]);
+db.variants.aggregate([{ $match: { group: { $ne: "ТЕСТ" } } }, { $out: { db: seed, coll: "variants" } }]);
+const s = db.getSiblingDB(seed);
+print([...plain, "variants"].map((c) => c + " " + s[c].countDocuments()).join(" · "));
+JS</pre>
+    <p class="src">Має надрукувати: guide 47 · media 150 · lab_pages 27 · lab_shapes 5 · variants 310. Команду перевірено на пробній копії: числа саме такі, дев-база не змінилась. Якщо лекції заливатимуться в дев-базу пізніше — повторити.</p></li>
+  <li class="ask"><b>Дочекатись сесії T368</b><p>Вона ховає лаби 4–5 і закриває здачу лаб 1–2. Налаштування їдуть разом із кодом, у копію бази нічого додавати не треба. Орієнтир від неї — 40–60 хвилин від 01:00; смоуки й збірку обіцяла прогнати сама й назвати хеш.</p></li>
+  <li><b>Код</b><p>Після push перевірити, що тема останнього коміту <code>origin/www-ods</code> дорівнює sha <code>origin/ods</code>: сервер чекає саме на це.</p>
+<pre class="cmd">git push origin ods
+git fetch -q origin &amp;&amp; git log -1 --format=%s origin/www-ods &amp;&amp; git rev-parse origin/ods</pre></li>
+</ol>
+
+<h3>На сервері, <code>ssh vv3</code></h3>
+<ol class="steps" style="counter-reset: st 9">
+  <li><b>Оновити vv і подивитись, що він не зачепить python</b><p>Push vps-infra везе 17 комітів, серед них команда <code>vv up</code>, якої на сервері ще не запускали. План має показати лише <code>[=]</code>.</p>
+<pre class="cmd">sudo vv self-update
+sudo vv up python-labs --plan
+sudo vv check --all</pre></li>
+  <li><b>Користувач і код</b><p>Перший <code>repo init</code> вийде з кодом 77 і покаже ключ: додати його в GitHub, Deploy keys, без права запису. Потім повторити.</p>
+<pre class="cmd">sudo vv tenant add ods-labs
+sudo vv repo init ods-labs
+sudo vv venv sync ods-labs</pre></li>
+  <li><b>База й ключі</b><p>У редакторі: <code>GOOGLE_CLIENT_ID</code>, <code>ADMIN_EMAILS</code>, <code>TG_BOT_NAME</code>; <code>FAKE_USER_EMAIL</code> порожній. Потім прихованим вводом: <code>GOOGLE_CLIENT_SECRET</code>, <code>TG_BOT_TOKEN</code>, <code>AGENT_TOKENS</code>. Останній рядок — з ноутбука, до першого старту.</p>
+<pre class="cmd">sudo vv db add ods-labs
+sudo vv env edit ods-labs
+cd vps-infra &amp;&amp; ./vv/bin/vv db push ods-labs vv3 --from ods_seed</pre></li>
+  <li><b>Служби</b><p>Спершу <code>free -m</code>: вільно менше 400 МБ — зупинитись. ods додає близько 375 МБ на машині з 1,9 ГБ.</p>
+<pre class="cmd">sudo vv unit apply ods-labs
+sudo vv start ods-labs --kill-test
+sudo etckeeper commit "vv: unit apply + start ods-labs"</pre></li>
+  <li><b>Адреса й сертифікат</b><p>Чекаємо відповідь 200 і <code>server: uvicorn</code>.</p>
+<pre class="cmd">sudo vv site apply ods-labs
+curl -sI https://ods.labs.in.ua/api/me</pre></li>
+  <li><b>Перший деплой</b><p>У vps-infra, <code>apps/ods-labs/app.conf</code>, прибрати рядок <code>STATE=planned</code>, запушити. Чекаємо <code>ok &lt;sha&gt;</code>.</p>
+<pre class="cmd">sudo vv self-update
+sudo deploy ods-labs
+sudo vv timer on ods-labs</pre></li>
+</ol>
+
+<h3>Після деплою, до оголошення студентам</h3>
+<ol class="steps" style="counter-reset: st 15">
+  <li><b>Список потоку</b><p>Увійти адміном, на <code>/students</code> імпортувати список із групами <code>ПЗПІ-24-N</code>. Без нього кожен новий студент «очікує» і лаб не бачить. Списку потоку ods на диску я не знайшов.</p></li>
+  <li><b>Дедлайни</b><p>На <code>/deadlines</code> поставити строк лаби 2 і лаби 3: у базі їх нема.</p></li>
+  <li><b>Здача оком студента</b><p>Око в меню → <code>/labs/3/my</code>: взяти картку, здати ноутбук, більший за 1,1 МБ. Це перевіряє межу розміру. Виконаний ноутбук лаби 3 має дати рядок «Ноутбук на зв’язку».</p></li>
+  <li><b>Сторінки</b><p>Має показати 47 сторінок; план T76 каже 20, це застаріло.</p><pre class="cmd">~/.venvs/python-labs/bin/python bin/guide -t ods ls</pre></li>
+  <li><b>Перезапуск робіт і бот</b><p>Один раз зібрати образ; у боті — «Прив’язати бота», потім <code>/here</code>.</p><pre class="cmd">~/.venvs/python-labs/bin/python bin/nbrun build</pre></li>
+</ol>
+<p class="cut">Кроки 10–15 — блоки 1–6 плану <code>vps-infra/.dev/apps/ods-labs/.t/T76--ods-labs/log/</code>; очікувані відповіді кожної команди — там.</p>
+
+<details class="more"><summary>Python-сайт: чому окремо і що його чекає</summary>
+  <div class="box miss" style="margin-top:10px">
+    <ul>
+      <li>Викладається командою <code>git push origin ods:main</code>: 271 коміт, злиття не потрібне. Сервер сам оновить залежності й перезапустить сайт і бота.</li>
+      <li>Одразу після нього на сервері треба виконати <code>catalog_io.py core</code>. Інакше жодна картка не в основі, і все у студентів стане «за запитом» (звіт T321).</li>
+      <li>Сумісність зі справжньою базою перевіряли лише на стендах зі знімка. Бекапу поза сервером нема.</li>
+      <li>Блок відео на сторінці гри студенти побачать одразу: T324 Q1–Q3 просили відповісти до деплою.</li>
+      <li>Ключ <code>ANTHROPIC_API_KEY</code> необов’язковий; без нього панель ШІ пише «ще не підключено».</li>
+    </ul>
+  </div>
+</details>
+
+<h3>Чого ніхто не пробував проти справжнього сервера</h3>
+<div class="wait"><span class="chip big warn">ноутбук 12 МБ через межу розміру</span><span class="chip big warn">bin/content через HTTPS</span><span class="chip big warn">check() із Colab</span><span class="chip big warn">сповіщення в Telegram</span><span class="chip big warn">bin/nbrun на сервер</span><span class="chip big warn">vv up на vv3</span></div>
+
+<h2 id="labs"><span class="num">2</span>Завтра на парі: лаби</h2>
+<p class="lead">Механізм здачі й перевірки готовий для всіх п’яти лаб, нова розкладка текстів — поки лише в лаби 3. Студенти побачать це після деплою. Знімки нижче зроблено на стенді з вигаданими лабою й студентами.</p>
+
+<div class="verdict" style="border-left-color: var(--info)">
+  <p><b>Твоє рішення з диктовки 00:24 — його зараз втілює нова сесія T368 «Лабораторні звіти і реєстрація студентів».</b></p>
+  <ul>
+    <li>Лаби 4 і 5 від студентів сховати.</li>
+    <li>Лаби 1 і 2 видно, але здача на сайті закрита: надсилають тобі в Telegram, як раніше.</li>
+    <li>Лаба 3 здається на сайті.</li>
+    <li>Сьогодні студентам — лише реєстрація на сайті й у боті.</li>
+  </ul>
+  <p class="cut">Переказую за запискою тієї сесії. У гілці цього ще нема: зараз здача відкрита для всіх п’яти лаб і лаби 4–5 видно. Її коміт має потрапити в перший деплой.</p>
+</div>
+
+<div class="scroll" style="margin-top:14px"><table class="grid">
+  <tr><th>Лаба</th><th>Видано</th><th>Дедлайн</th><th>Тексти на сайті</th><th>Здача після правок T368</th><th>Застереження</th></tr>
+  <tr><td class="c"><b>1</b></td><td>так, через чат</td><td>у базі не задано</td><td>стара розкладка: умова, розбір, marimo</td><td>на сайті закрита — тобі в Telegram</td><td>—</td></tr>
+  <tr class="first"><td class="c"><b>2</b></td><td>так</td><td>≈ 21.11 з твоїх слів; у базі не задано</td><td>стара розкладка</td><td>на сайті закрита — тобі в Telegram</td><td>дедлайн наступного дня після пари</td></tr>
+  <tr><td class="c"><b>3</b></td><td>видаєш зараз</td><td>у базі не задано</td><td><span class="chip ok">нова</span> огляд, справи 1–4, «Ноутбук», «Захист»</td><td>файлом на «Моїй лабі»; <code>check()</code> сам шле результат на сайт</td><td>надсилання з токеном наживо ніхто не пробував</td></tr>
+  <tr><td class="c"><b>4</b></td><td>ні</td><td>—</td><td>стара розкладка</td><td><span class="chip off">сховано від студентів</span></td><td>нова розкладка — після твого погляду на лабу 3</td></tr>
+  <tr><td class="c"><b>5</b></td><td>ні</td><td>—</td><td>стара розкладка</td><td><span class="chip off">сховано від студентів</span></td><td>у marimo в браузері падає перша зірочка</td></tr>
+</table></div>
+<p class="cut">У дев-базі на кожну лабу 60 карток потоку, одна демо й одна нульова; карток ще ніхто не взяв, жодного файла не здано. Механізм здачі готовий для всіх п’яти лаб — відкрити лабу потім можна без нового коду.</p>
+
+<h3>Шлях студента</h3>
+<div class="flow">
+  <div class="who">Jupyter / Colab<small>основний шлях</small></div>
+  <ol class="chain">
+    <li><div class="step"><b>Вхід</b><small>Google, пошта @nure.ua</small></div></li>
+    <li><div class="step gate"><b>Ти відкриваєш доступ</b><small>новий користувач «очікує», доки його нема в списку</small></div></li>
+    <li><div class="step"><b>«Моя лаба»</b><small>називає номер варіанта, раз на всі лаби</small></div></li>
+    <li><div class="step"><b>Бере ноутбук</b><small>картка вже вставлена</small></div></li>
+    <li><div class="step"><b>Перетягує файл</b><small>можна кілька разів, рахується остання версія</small></div></li>
+    <li><div class="step"><b>Бачить результат</b><small>✅ / ❌, драбина рівнів, «тягне на рівень N»</small></div></li>
+  </ol>
+  <hr>
+  <div class="who">marimo<small>для охочих</small></div>
+  <ol class="chain">
+    <li><div class="step"><b>Локально або в браузері</b><small>у браузері робота живе в одному браузері</small></div></li>
+    <li><div class="step"><b>Export → Python</b><small>файл <code>.py</code></small></div></li>
+    <li><div class="step gate"><b>Рядок відповідей руками</b><small>marimo не зберігає виводів</small></div></li>
+    <li><div class="step gate"><b>Рівні «?»</b><small>з’являться після твого перезапуску</small></div></li>
+  </ol>
+  <hr>
+  <div class="who">Ти<small>перевірка</small></div>
+  <ol class="chain">
+    <li><div class="step"><b><code>/labs/N/results</code></b><small>потік і «Де помиляються»</small></div></li>
+    <li><div class="step"><b>Одна робота</b><small>ноутбук як запущений, ключ, версії</small></div></li>
+    <li><div class="step"><b>Підказка оцінки</b><small>менше з двох: рівень роботи і стеля захисту</small></div></li>
+    <li><div class="step"><b>Бали</b><small>ставиш ти; число сайту — лише підказка</small></div></li>
+    <li><div class="step"><b><code>bin/nbrun</code></b><small>перезапуск у Docker: числа справді дає код</small></div></li>
+  </ol>
+</div>
+
+<div class="shots">
+  <article class="shot">
+    <header><h4>«Моя лаба» очима студента</h4><span class="chip info">стенд, вигадані дані</span></header>
+    <dl><dt>Що видно</dt><dd>Картка варіанта, кнопки старту, здача файлом, «що бачить сайт», рівні, захист, оцінка.</dd></dl>
+    <a class="zoom tall mid" href="#"><img src="img/my-lab.png" alt="Сторінка «Моя лаба»: картка, кнопки старту, здача файлом, рівні, захист, оцінка"></a>
+    <p class="cut">знімок обрізано по висоті — клік відкриває повний</p>
+  </article>
+  <article class="shot">
+    <header><h4>Потік і одна робота очима викладача</h4><span class="chip info">стенд, вигадані дані</span></header>
+    <dl><dt>Що видно</dt><dd>Таблиця результатів із блоком «Де помиляються»; нижче — стіл перевірки: ноутбук ліворуч, ключ і рівні праворуч.</dd></dl>
+    <a class="zoom" href="#"><img src="img/results.png" alt="Таблиця результатів лаби з блоком «Де помиляються»"></a>
+    <p></p>
+    <a class="zoom tall" href="#"><img src="img/review.png" alt="Стіл перевірки: ноутбук ліворуч, панель із ключем і рівнями праворуч"></a>
+  </article>
+</div>
+
+<h3>Оцінка: що сказати вголос</h3>
+<div class="pair">
+  <div class="box"><h4>Драбина рівнів</h4>
+    <div class="scroll"><table class="grid">
+      <tr><th>Рівень</th><th>За що</th></tr>
+      <tr><td class="c"><b>12</b></td><td>усі відповіді ✅, ноутбук виконано згори донизу без помилок</td></tr>
+      <tr><td class="c"><b>14</b></td><td>плюс усі кроки, графіки, висновки й рапорт</td></tr>
+      <tr><td class="c"><b>16 · 18 · 19 · 20</b></td><td>плюс одна, дві, три, усі чотири зірочки</td></tr>
+      <tr><td class="c"><b>13</b></td><td>неповна робота рівня 14 — сформульовано трьома способами, див. вибори</td></tr>
+    </table></div>
+  </div>
+  <div class="box"><h4>Стеля за формою захисту</h4>
+    <div class="scroll"><table class="grid">
+      <tr><th>Захист</th><th>Не вище</th></tr>
+      <tr><td>без захисту</td><td class="c"><b>12</b></td></tr>
+      <tr><td>записом</td><td class="c"><b>16</b></td></tr>
+      <tr><td>наживо</td><td class="c"><b>20</b></td></tr>
+    </table></div>
+    <p class="cut">Підказка сайту — менше з двох чисел: рівень самої роботи і стеля. Не зарахували захист — лишається рівень без захисту, повтор без штрафу.</p>
+  </div>
+</div>
+
+<div class="say">
+  <header><h4>Сказати на парі</h4><button class="copy" type="button" data-for="say-talk">Скопіювати</button></header>
+  <pre id="say-talk">1. Сайт курсу запрацював: лекції, тексти лаб і здача лаби 3
+2. Сьогодні — зареєструйся: вхід через Google з поштою @nure.ua і прив’яжи бота
+3. Лаби 1 і 2 — як раніше, мені в Telegram
+4. Лаба 3 здається на сайті: «Моя лаба» → номер варіанта → ноутбук із карткою → файл
+5. Номер варіанта — твій номер у списку потоку; назвав раз — далі сайт пам’ятає
+6. Перед здачею — «Перезапустити й виконати все»; без цього нема рівня 12
+7. Здавати можна кілька разів, рахується остання версія
+8. Число на сайті — підказка; бали ставлю я, а все вище 12 відкриває лише захист
+9. marimo: рядок відповідей встав руками через «інший спосіб»; рівні з’являться після мого перезапуску</pre>
+</div>
+
+<div class="say">
+  <header><h4>Оголошення в чат потоку — після деплою</h4><button class="copy" type="button" data-for="say-chat">Скопіювати</button></header>
+  <pre id="say-chat">👋 Сайт курсу запрацював: https://ods.labs.in.ua
+🔑 Зайди через Google з поштою @nure.ua
+🤖 Прив’яжи бота — кнопка на домашній сторінці
+📚 Лекції й тексти лаб уже там
+🧪 Лаба 3 здається на сайті: «Моя лаба» → свій номер зі списку потоку → файл ноутбука
+✉️ Лаби 1 і 2 — як раніше, мені в Telegram
+⏰ Лаба 2 — до 21.11</pre>
+  <p class="cut">Чернетка за твоїм рішенням із диктовки 00:24; остаточний текст обіцяла сесія T368. Дата лаби 2 — та, яку ти назвав 19.11. Якщо список потоку на сервер не імпортуєш, допиши рядок «доступ відкрию протягом дня».</p>
+</div>
+
+<h3>Показати наживо за п’ять хвилин</h3>
+<div class="flow">
+  <div class="who">На проєкторі</div>
+  <ol class="chain">
+    <li><div class="step"><b><code>/labs</code></b><small>перелік і «Про лаби» → оцінювання</small></div></li>
+    <li><div class="step"><b><code>/labs/3</code> → «Справа 1»</b><small>як виглядає нова лаба</small></div></li>
+    <li><div class="step"><b>Око → <code>/labs/3/my</code></b><small>тестовий студент бере демо-картку, кидає порожній ноутбук</small></div></li>
+    <li><div class="step"><b>«Що бачить сайт»</b><small>і «до рівня 12 бракує…»</small></div></li>
+    <li><div class="step gate"><b><code>/labs/3/results</code> не виводити</b><small>там імена студентів</small></div></li>
+  </ol>
+</div>
+<p>Сам зміст лаби 3 для розповіді — на <a href="https://claude.ai/artifact/Bzhdf84ycxk6pw1QktU59Y">сторінці для ПЗ</a>: ліворуч те, що бачать студенти, праворуч простими словами.</p>
+
+<h3>Що ризиковане на завтра</h3>
+<div class="cards">
+  <div class="rough"><header><h4>Перший вхід</h4><span class="chip bad">зламає здачу</span></header><p>Новий користувач «очікує» і лаб не бачить, доки ти його не активуєш або не імпортуєш список потоку з групами <code>ПЗПІ-24-N</code>.</p><p class="do">Зробити на сервері до оголошення: <code>/students</code>.</p></div>
+  <div class="rough"><header><h4>Розмір файла</h4><span class="chip bad">зламає здачу</span></header><p>Сервер приймає тіло запиту до 1100 КБ. Ноутбук із графіками більший, студент побачить «Помилка 413».</p><p class="do">Підняти межу до ≈ 20 МБ у налаштуваннях ods на сервері.</p></div>
+  <div class="rough"><header><h4>Дедлайни</h4><span class="chip warn">порожньо</span></header><p>У базі не задано жодного. На «Моїй лабі» рядка «Дедлайн» не буде.</p><p class="do">Поставити на <code>/deadlines</code> після деплою.</p></div>
+  <div class="rough"><header><h4>Colab</h4><span class="chip warn">не перевірено</span></header><p>Ніхто не відкривав шаблон у справжньому Colab і не здавав файл звідти.</p><p class="do">Один прогін після деплою: взяти ноутбук лаби 3, виконати, здати.</p></div>
+  <div class="rough"><header><h4>marimo в браузері</h4><span class="chip warn">крихке</span></header><p>Одна копія на браузер: повторне відкриття чистого шаблону стирає роботу. Експорт до збереження дає порожній файл.</p><p class="do">Сказати вголос або сховати кнопку — T362 Q5.</p></div>
+  <div class="rough"><header><h4>Правки T368</h4><span class="chip warn">ще в роботі</span></header><p>Сховати лаби 4–5 і закрити здачу лаб 1–2 зараз пише інша сесія. Поки її коміту нема, у гілці все відкрито.</p><p class="do">Не пушити <code>ods</code> до її коміту й перевірки.</p></div>
+</div>
+
+<h2 id="who"><span class="num">3</span>Хто що зробив</h2>
+<p class="lead">Сесій було чотири, перед ними п’ята — вона винесла спільне в ядро, і на цьому стоять усі інші. Три сесії закінчили самі, з підсумком і комітами, між 04:55 і 05:56. Обірвалась одна, лекції: о 06:46 двічі впав запит до моделі, і підсумку вона не написала.</p>
+
+<div class="tl" role="img" aria-label="Шкала часу: коли працювала кожна сесія 19 листопада">
+  <div class="tl-row"><div class="tl-name">Спільне — в ядро<small>T352 · 00:56 – 01:59</small></div>
+    <div class="tl-track"><i class="tl-seg" style="left:3.73%;width:4.2%"></i><i class="tl-seg wake" style="left:61.87%;width:0.4%"></i></div></div>
+  <div class="tl-row"><div class="tl-name">Здача й перевірка лаб<small>T354 · 03:26 – 05:26</small></div>
+    <div class="tl-track"><i class="tl-seg" style="left:13.73%;width:8%"></i><i class="tl-seg wake" style="left:61.87%;width:0.4%"></i></div></div>
+  <div class="tl-row"><div class="tl-name">Лаба 3: тексти<small>T355 · 03:53 – 04:55</small></div>
+    <div class="tl-track"><i class="tl-seg" style="left:15.53%;width:4.13%"></i><i class="tl-seg wake" style="left:61.87%;width:0.4%"></i></div></div>
+  <div class="tl-row"><div class="tl-name">Сайт цілком<small>T357 · 04:13 – 05:56</small></div>
+    <div class="tl-track"><i class="tl-seg" style="left:16.87%;width:6.87%"></i><i class="tl-seg wake" style="left:61.87%;width:0.4%"></i></div></div>
+  <div class="tl-row"><div class="tl-name">Лекції<small>T359 · 04:29 – 06:46 обрив · 23:51 – 00:26</small></div>
+    <div class="tl-track"><i class="tl-seg" style="left:17.93%;width:8.74%"></i><i class="tl-seg cut" style="left:26.67%;width:0.5%"></i><i class="tl-seg wake" style="left:61.87%;width:0.4%"></i><i class="tl-seg" style="left:95.4%;width:2.33%"></i></div></div>
+  <div class="tl-row"><div class="tl-name">Дві короткі<small>токен агента 19:45 · коміт залишку лекцій 23:51</small></div>
+    <div class="tl-track"><i class="tl-seg aid" style="left:79%;width:0.4%"></i><i class="tl-seg aid" style="left:95.4%;width:1.13%"></i></div></div>
+  <div class="tl-row"><div></div>
+    <div class="tl-axis"><span style="left:0">00:00</span><span style="left:12%">03</span><span style="left:24%">06</span><span style="left:36%">09</span><span style="left:48%">12</span><span style="left:60%">15</span><span style="left:72%">18</span><span style="left:84%">21</span><span style="left:96%">00:00</span></div></div>
+  <div class="legend"><span class="l-ok">працювала</span><span class="l-cut">обрив: збій запиту до моделі</span><span class="l-wake">15:28 — прокинулась від чужої записки</span><span class="l-aid">допоміжні сесії</span></div>
+</div>
+
+<p>Чому сесія лекцій «запрацювала знову»: сплячу сесію будить записка від іншої сесії. О 15:28 прийшла записка від сесії ігротеки, лекції прокинулись і вперлись у ліміт. О 23:51 сесія «Незакомічені зміни ігор» на твоє прохання закомітила їхні залишені документи й написала про це, лекції прокинулись удруге й довели роботу до кінця: коміти <code>07ce081</code> і <code>b106134</code> о 00:26.</p>
+
+<div class="sgrid">
+  <article class="sess">
+    <header><h4>Здача й перевірка лаб</h4><span class="chip ok">завершила</span></header>
+    <p class="when">«Формочка для завантаження лабораторних ОДС» · T354, T356, T362</p>
+    <dl>
+      <dt>Ти просив</dt><dd>Щоб студент завантажував ноутбук на сайт, а ти бачив його вже запущеним; marimo; перезапуск робіт на твоєму ноутбуці; підказку оцінки.</dd>
+      <dt>Зроблено</dt><dd>«Моя лаба» приймає <code>.ipynb</code> і marimo <code>.py</code>, показує ✅ / ❌ і рівень. Тобі — таблиця потоку з «Де помиляються» і стіл перевірки однієї роботи. <code>bin/nbrun</code> перезапускає роботи в Docker без мережі. У дев-базі 314 карток і будова п’яти лаб.</dd>
+      <dt>Перевірено</dt><dd>Смоуки зелені; 26 сценаріїв студента й викладача на стенді; 20 з 20 розв’язків у пісочниці, 9 «ворожих» ноутбуків стримано.</dd>
+      <dt>Не перевірено</dt><dd>Справжній Colab, Firefox і Safari, Telegram, сервер.</dd>
+      <dt>Чекає тебе</dt><dd>T362 — десять виборів; розмір тіла запиту на сервері; <code>bin/nbrun build</code>.</dd>
+    </dl>
+    <p class="links"><a href="https://claude.ai/artifact/QZAj5fss7Rd7uEJ8dFbFKP">сторінка-звіт зі знімками</a><span>стенд: <code>127.0.0.1:5032</code></span></p>
+  </article>
+
+  <article class="sess">
+    <header><h4>Лаба 3: тексти</h4><span class="chip ok">завершила</span></header>
+    <p class="when">«Третя лабораторна: перевірка і сайт» · T355, T358</p>
+    <dl>
+      <dt>Ти просив</dt><dd>Причепитись до лаби 3, винести спільне для всіх лаб і дати сторінку, з якої можна вести ПЗ, не знаючи матеріалу.</dd>
+      <dt>Зроблено</dt><dd>Три рецензенти: числа правильні, чотири місця навчали неправильного — переписано. Нова розкладка: 8 спільних сторінок і 7 сторінок лаби 3. Ноутбуки перезібрано, <code>check()</code> сам шле результат на сайт.</dd>
+      <dt>Перевірено</dt><dd>«Свіжий студент» пройшов лабу лише за новими сторінками на двох варіантах: 14 ✅ із 14.</dd>
+      <dt>Не перевірено</dt><dd>Справжній Colab, marimo в браузері, надсилання з токеном картки.</dd>
+      <dt>Чекає тебе</dt><dd>T358 — дев’ять виборів, насамперед Q1–Q3.</dd>
+    </dl>
+    <p class="links"><a href="https://claude.ai/artifact/Bzhdf84ycxk6pw1QktU59Y">сторінка для ПЗ</a><a href="https://claude.ai/artifact/SUeA9WnGiKoUyW3RVtWF5h">сторінка-звіт</a></p>
+  </article>
+
+  <article class="sess">
+    <header><h4>Сайт цілком</h4><span class="chip ok">завершила</span></header>
+    <p class="when">«Сторінки лабораторних і лекцій» · T357, T360, T361</p>
+    <dl>
+      <dt>Ти просив</dt><dd>Сторінки лаб і спільні сторінки, архів старих лаб, лекції, пари, погляд очима студента, імпорт текстів.</dd>
+      <dt>Зроблено</dt><dd><code>/labs</code> з розділом «Про лаби» і лабою 3 на сім сторінок; архів старих лаб лише тобі; лекції з пошуком; око «Очима студента» в меню; <code>bin/content push</code>; три пари зведено чернетками.</dd>
+      <dt>Перевірено</dt><dd>Смоуки ods, ядра й python; 15 сценаріїв у браузері, дві теми, 1440 і 390 px.</dd>
+      <dt>Не перевірено</dt><dd>Збереження правок редактором на нових сторінках; <code>bin/content</code> проти сервера.</dd>
+      <dt>Чекає тебе</dt><dd>T361 — пари (Q1–Q3), Q5, Q8; 13 картинок-сиріт; посилання на відео пар.</dd>
+    </dl>
+    <p class="links"><a href="https://claude.ai/artifact/C78x5ALuaofTPQoqo1fwqz">сторінка-звіт зі знімками</a><span>стенд: <code>127.0.0.1:5033</code></span></p>
+  </article>
+
+  <article class="sess">
+    <header><h4>Лекції</h4><span class="chip warn">обірвалась, потім доробила</span></header>
+    <p class="when">«Перевірка та оформлення лекцій» · T359, T363</p>
+    <dl>
+      <dt>Ти просив</dt><dd>Вичитати 15 лекцій, зберегти оригінал і кожну правку, зробити слайди схожими на слайди.</dd>
+      <dt>Зроблено</dt><dd>316 слайдів вичитано проти знімків: 118 помилок змісту виправлено, 1 230 мовних правок. Слайди — аркуш 16:9. Оригінал і правки — у власному git теки лекцій.</dd>
+      <dt>Перевірено</dt><dd>П’ять агентів незалежно перерахували правки змісту; QA на сайті зі стенд-базою, його п’ять дрібниць полагоджено.</dd>
+      <dt>Не залито</dt><dd>Вичитані тексти лежать на диску. У базі, і дев, і майбутній серверній, — старі.</dd>
+      <dt>Чекає тебе</dt><dd>T363 — Q1 (лити тексти) і Q2 (154 сумнівні місця).</dd>
+    </dl>
+    <p class="links"><a href="https://claude.ai/artifact/FKTtdHtF27AcAkv2kbtiz8">сторінка-огляд</a><span>переглядач: <code>127.0.0.1:5036/?lec=7&amp;mode=slides</code></span></p>
+  </article>
+
+  <article class="sess">
+    <header><h4>Спільне — в ядро</h4><span class="chip ok">завершила</span><span class="chip off">до чотирьох</span></header>
+    <p class="when">«Перенос спільного коду Python Labs в ODS» · T352, T353</p>
+    <dl>
+      <dt>Ти просив</dt><dd>Щоб ods мав ті самі сторінки платформи, що й python.</dd>
+      <dt>Зроблено</dt><dd>На ods з’явились «Строки», «Звід» з видами, опитування, тиждень, «Перші кроки». 24 смоуки платформи ганяються з будь-якого сайту.</dd>
+      <dt>Перевірено</dt><dd>Усі смоуки обох сайтів, обидві збірки, сторінки обох сайтів на стендах.</dd>
+      <dt>Не перевірено</dt><dd>Справжній Telegram, Safari, Firefox, телефон.</dd>
+      <dt>Чекає тебе</dt><dd>T353 — Q1–Q2; перезапуск API обох сайтів.</dd>
+    </dl>
+    <p class="links"><a href="https://claude.ai/artifact/Eq6kVe2oKoDQ5NCwkPbFQg">сторінка-звіт</a></p>
+  </article>
+</div>
+
+<h2 id="week"><span class="num">4</span>Тиждень сховано від студентів</h2>
+<p class="lead">На ods сторінки «Тиждень» і «Мій тиждень» тепер відкриваються лише викладачеві. Пункт «Week» у меню студента зник сам: меню бере доступ із маршруту. На python нічого не змінилось.</p>
+
+<div class="pair">
+  <div class="box"><h4>Що змінено</h4>
+    <pre class="diff">sites/ods/vue/src/router.js
+<span class="del">- '/my/week'   … access: 'active'</span>
+<span class="del">- '/week/:day' … access: 'active'</span>
+<span class="add">+ '/my/week'   … access: 'admin'</span>
+<span class="add">+ '/week/:day' … access: 'admin'</span></pre>
+    <p class="cut">Коміт <code>4a33404</code>. Повернути студентам — ті самі два слова назад.</p>
+  </div>
+  <div class="box"><h4>Студент за прямою адресою</h4>
+    <p>Бачить сторінку «Лише для викладача» з рядком «Сторінка /week студентам поки недоступна» і кнопкою «На головну».</p>
+    <p class="cut">Запис власного тижня в API лишився: студент дістав би тільки свою сітку, чужих даних не видно.</p>
+  </div>
+</div>
+
+<div class="shots">
+  <article class="shot">
+    <header><h4>Меню студента</h4><span class="chip ok">«Week» нема</span></header>
+    <a class="zoom strip" href="#"><img src="img/week-student.png" alt="Меню студента на ods: Лекції, Лаби, Профіль"></a>
+  </article>
+  <article class="shot">
+    <header><h4>Меню викладача</h4><span class="chip info">«Week» на місці</span></header>
+    <a class="zoom strip" href="#"><img src="img/week-admin.png" alt="Меню викладача на ods: Лекції, Лаби, Пари, Студи, Строки, Звід, Актив, Polls, Week, Ще"></a>
+    <p class="cut">стенд зі зібраного фронту, вигадані користувачі · клік відкриває весь знімок</p>
+  </article>
+</div>
+
+<h2 id="choices"><span class="num">5</span>Вибори, що чекають</h2>
+<p class="lead">П’ять сесій лишили п’ять тікетів із 49 питаннями; відповідей поки нема в жодному. Скрізь діє «мовчання = a», і «a» вже стоїть у коді й текстах. Три питання мовчанням не закриваються.</p>
+
+<h3>Мовчати не можна</h3>
+<div class="cards">
+  <div class="rough"><header><h4>T363 Q1 · лити вичитані лекції?</h4><span class="chip bad">до деплою</span></header><p>Без твого слова на сервер поїдуть тексти від 29.09: зі 118 помилками змісту, які на диску вже виправлено, і з російськими фрагментами.</p><p class="do">Раджу «так», і до того, як знімати базу для сервера.</p></div>
+  <div class="rough"><header><h4>T361 Q10 · що їде на сервер</h4><span class="chip bad">до деплою</span></header><p>План деплою копіює з дев-бази лише сторінки й картинки. Картки варіантів, будова ноутбуків і сторінки лаб у нього не входять, а без них «Моя лаба» порожня.</p><p class="do">Розширити перелік; подробиці — в розділі про деплой.</p></div>
+  <div class="rough"><header><h4>T358 Q9 · запізнення</h4><span class="chip warn">до пари</span></header><p>Сторінка «Оцінювання» обіцяє: «викладач оголосить на занятті». Дедлайн лаби 2 — наступного дня після пари. Варіанта «a» тут нема.</p><p class="do">Правило — у T225 Q7–Q9; там рекомендовано «a».</p></div>
+</div>
+
+<p>Два питання ти вже закрив диктовкою 00:24: T361 Q7 — лаби 4–5 сховати, і T362 Q1 — лаби 1–2 у Telegram, з лаби 3 файл на сайті. Трете, тиждень на ods (T353 Q4), закрито твоїм проханням у цій сесії.</p>
+
+<h3>Варто пробігти очима — «a» вже стоїть</h3>
+<div class="scroll"><table class="grid">
+  <tr><th>Питання</th><th>Що стоїть зараз</th><th>Чому глянути</th></tr>
+  <tr><td class="c">T358 Q3</td><td>П’ять речень політики на спільних сторінках: стеля 12 без захисту, ШІ, перездачі</td><td>студенти вперше прочитають їх письмово</td></tr>
+  <tr><td class="c">T358 Q1–Q2</td><td>Що радити у Справі 4, коли дані варіанта поводяться інакше, ніж у демо</td><td>за цим пишуть висновок лаби 3; міняти після видачі — плутанина</td></tr>
+  <tr><td class="c">T362 Q2, Q4</td><td>Студент бачить «робота тягне на рівень N» з першого завантаження</td><td>можуть сприйняти як обіцянку; «b» — лише драбина</td></tr>
+  <tr><td class="c">T362 Q5</td><td>Кнопка «marimo в браузері» є в усіх, з попередженням</td><td>робота живе в одному браузері</td></tr>
+  <tr><td class="c">T363 Q14, Q15</td><td>Оргслайди лекції 1 — з іншого семестру; у лекції 12 стоїть «Тема 13»</td><td>студент побачить чужі правила курсу</td></tr>
+  <tr><td class="c">T353 Q2</td><td>Поле GitHub у профілі ods лишилось</td><td>цим лабам GitHub не потрібен</td></tr>
+</table></div>
+
+<h3>Де тікети суперечать один одному</h3>
+<div class="pair">
+  <div class="box miss"><h4>«Строки» ods</h4><p>T353 Q1 і T362 Q8 питають про одне, а «a» в них протилежні: «лише твоє слово» і «сайт рахує сам». У коді зараз лише твоє слово: після дедлайну лаби 2 «Строки» покажуть усім «без репозиторію». Бачиш це тільки ти.</p></div>
+  <div class="box miss"><h4>Рівень 13</h4><p>Три формулювання: «3–4 пункти з п’яти» в рішенні про рівні, «робота рівня 14 неповна» на сторінці оцінювання, «не менше половини пунктів рівня 14» у коді. Потрібне одне.</p></div>
+</div>
+<p class="cut">Решта, близько тридцяти питань, може чекати. Тікети: <code>.dev/ods/.t/T358-Q…</code>, <code>T361-Q…</code>, <code>T362-Q…</code>, <code>T363-Q…</code>, <code>.dev/platform/.t/T353-Q…</code>.</p>
+
+<h2 id="wake"><span class="num">6</span>Чи дорого будити велику сесію</h2>
+<p class="lead">Так, і це видно з учорашнього. О 15:28 одна записка «я працюю над ігротекою, мої файли такі» пішла всім живим сесіям. П’ять сесій ods прокинулись, перечитали весь свій контекст і відповіли трьома рядками: «мене це не зачіпає».</p>
+
+<div class="bars" role="img" aria-label="Скільки токенів контексту перечитала кожна сесія о 15:28">
+  <div class="who">Спільне — в ядро</div><i style="width:100%"></i><div class="n">627 тис.</div>
+  <div class="who">Лаба 3: тексти</div><i style="width:96%"></i><div class="n">602 тис.</div>
+  <div class="who">Здача й перевірка лаб</div><i style="width:87.2%"></i><div class="n">547 тис.</div>
+  <div class="who">Сайт цілком</div><i style="width:67.8%"></i><div class="n">425 тис.</div>
+  <div class="who">Лекції</div><i style="width:64.3%"></i><div class="n">403 тис.</div>
+  <div class="sum">Разом 2,6 млн токенів контексту Fable на п’ять відповідей по три рядки. Числа — з журналів самих сесій, поле <code>usage</code> ходу о 15:28.</div>
+</div>
+
+<div class="pair">
+  <div class="box"><h4>Що саме дороге</h4>
+    <ul>
+      <li>Перший хід після паузи. Кеш контексту живе годину; далі сесія читає все наново, 400–630 тис. токенів за раз.</li>
+      <li>Наступні ходи в теплій сесії дешеві: контекст береться з кешу.</li>
+      <li>Розмір файла сесії (6–19 МБ) не мірило. У файлі вся історія; платиш за контекст, який лишився після стискань.</li>
+    </ul>
+  </div>
+  <div class="box now"><h4>Що з цього випливає</h4>
+    <ul>
+      <li>Стан сесії читати з витягу в <code>.dev/.sessions/</code>. Чотири витяги разом — 190 КБ тексту, цей звіт зібрано з них.</li>
+      <li>Сплячим сесіям записок не слати. Я написав лише сесії лекцій, бо вона саме працювала.</li>
+      <li>Варто дописати це в правило про записку на старті: зараз воно каже писати «кожній живій сесії».</li>
+    </ul>
+  </div>
+</div>
+
+<h2 id="proof"><span class="num">7</span>Як перевірено</h2>
+<div class="scroll"><table class="grid">
+  <tr><th>Що</th><th>Чим</th><th>Результат</th></tr>
+  <tr><td>Стан сесій</td><td>витяги <code>.dev/.sessions/</code>, фінальні репліки, <code>git log</code>, дерево</td><td>чотири з чотирьох завершили; незакоміченого коду нема</td></tr>
+  <tr><td>Збірка обох фронтів</td><td><code>vite build</code> на копії гілки з правкою тижня</td><td>проходить</td></tr>
+  <tr><td>Смоуки ods</td><td>6 файлів</td><td class="c">195 / 195</td></tr>
+  <tr><td>Смоуки платформи</td><td>24 файли, запущені з кожного сайту</td><td class="c">711 / 711 двічі</td></tr>
+  <tr><td>Смоуки python</td><td>19 файлів і перевірка таблиці в node</td><td class="c">740 / 740 · 38 / 38</td></tr>
+  <tr><td>Тиждень</td><td>стенд зі зібраного фронту, headless Chrome: студент, «Очима студента», викладач</td><td>консоль і мережа чисті</td></tr>
+  <tr><td>Команда копії бази</td><td>прогін у пробну базу</td><td>числа збіглись, дев-база не змінилась</td></tr>
+  <tr><td>Сервер</td><td><code>dig</code>, <code>curl</code></td><td>домен є, сайт не відповідає</td></tr>
+  <tr><td>Ціна пробудження</td><td>поле <code>usage</code> в журналах сесій</td><td>403–627 тис. токенів на сесію</td></tr>
+</table></div>
+<p class="cut">Один смоук платформи на копії без git дав 26 із 27: він читає останній коміт. З git — 27 із 27; на сервері код стоїть із git.</p>
+
+<div class="box honest" style="margin-top:14px"><h4>Чого не перевірено</h4>
+  <ul>
+    <li>Жодної серверної команди я не запускав: чеклист звірено з документами й маніфестами, не з машиною.</li>
+    <li>Правок сесії T368 ще нема в гілці; числа вище — до них. Після свого коміту вона проганяє смоуки сама.</li>
+    <li>Рішення з диктовки 00:24 переказано за запискою сесії T368, не з твоїх слів напряму.</li>
+    <li>Телефон, Firefox, Safari, справжній вхід через Google, Colab, Telegram.</li>
+    <li>Зміст лаб і лекцій на стенд не потрапляв: перевірено механіку на вигаданих даних.</li>
+  </ul>
+</div>
+
+<h2 id="next"><span class="num">8</span>Що далі</h2>
+<ol class="next">
+  <li><b>Ти:</b> слово про лекції — «лий» чи «не зараз». Від нього залежить, коли знімати копію бази.</li>
+  <li><b>Ти:</b> бот ods у BotFather і рядок <code>BODY_MAX=20MB</code> у vps-infra.</li>
+  <li><b>Сесія T368:</b> коміт правок про лаби 1–2 і 4–5 з хешем; смоуки й збірку проганяє сама.</li>
+  <li><b>Ти:</b> копія бази, <code>git push origin ods</code>, сервер за кроками 10–15.</li>
+  <li><b>Ти, після деплою:</b> список потоку, дедлайни, здача оком студента, оголошення в чат.</li>
+  <li><b>До пари:</b> правило запізнення (T225 Q7–Q9) і <a href="https://claude.ai/artifact/Bzhdf84ycxk6pw1QktU59Y">сторінка для ПЗ</a> про лабу 3.</li>
+  <li><b>Я, за словом:</b> залити лекції в дев-базу; дописати в правила проєкту «сплячих сесій записками не будити»; python-сайт — окремим деплоєм, коли скажеш.</li>
+</ol>
+
+<footer>T367 · python-labs, гілка <code>ods</code> · зібрано з витягів сесій, git і дерева; сесії не будились · зміст лаб і лекцій на цю сторінку не потрапляє</footer>
+</div>
+
+<div id="zoombox" class="zoombox" hidden tabindex="-1" role="dialog" aria-label="Знімок на весь екран"><p>клік або Esc — закрити</p><img id="zoomimg" alt=""></div>
+<script>
+const zoombox = document.getElementById("zoombox"), zoomimg = document.getElementById("zoomimg");
+document.querySelectorAll("a.zoom").forEach(a => a.addEventListener("click", e => {
+  e.preventDefault();
+  const img = a.querySelector("img");
+  zoomimg.src = img.src; zoomimg.alt = img.alt;
+  zoombox.hidden = false; zoombox.scrollTop = 0; zoombox.focus();
+}));
+zoombox.addEventListener("click", () => { zoombox.hidden = true; });
+document.addEventListener("keydown", e => { if (e.key === "Escape") zoombox.hidden = true; });
+document.querySelectorAll("button.copy").forEach(b => b.addEventListener("click", () => {
+  const pre = document.getElementById(b.dataset.for);
+  const done = () => { const was = b.textContent; b.textContent = "Скопійовано"; setTimeout(() => { b.textContent = was; }, 1500); };
+  const pick = () => { const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+  try { navigator.clipboard.writeText(pre.textContent).then(done, pick); } catch (e) { pick(); }
+}));
+</script>

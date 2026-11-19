@@ -251,7 +251,7 @@
   - `bin/hooks/pre-push` робить це на push гілки деплою: `main` → python, `ods` → ods; увімкнути раз на клон — `git config core.hooksPath bin/hooks`;
   - гілка статики завжди з одного коміту, історія не росте;
   - відстала — `bin/www python origin/main` або `bin/www ods origin/ods`;
-  - оновити ods — `git push origin main:ods`;
+  - оновити ods — `git push origin ods`, python — `git push origin ods:main`: з 2026-11-14 робота йде на гілці `ods`, локальна `main` відстала (стара порада `main:ods` — пастка, T367);
   - чому так — [T140](.t/T140-C--www-branch-hook.md), розбір у vps-infra T63.
 - **Env проду** (2026-09-26, [T141](.t/T141-C--env-secret-uploads.md)): `SESSION_SECRET` підписує session-cookie (у ній `email` + `next`) — обовʼязковий, Vitalik генерує сам `openssl rand -hex 32`, для проду **новий**, не з локального `.env`, через 1Password → `shared/env`; `UPLOADS_DIR` — тека скриншотів «Моєї гри», у коді необовʼязковий (порожньо = `app/api/uploads/`), на VPS обовʼязковий: `/srv/python-labs/shared/uploads` поза релізним чекаутом, кошик `.trash` код виводить сам.
 
