@@ -35,8 +35,8 @@ const rows = computed(() => props.strips.map((s) => {
     <div class="legend">
       <span>колір: <span><i class="cell ok moved" /> вчасно</span> · <span><i class="cell late moved" /> після дедлайну</span> ·
         <span><i class="cell free moved" /> без дедлайну</span></span>
-      <span><span><i class="cell gray moved" /> залита — на сайті</span> · <span><i class="cell gray" /> рамка — ще ні</span> ·
-        <span><i class="cell" /> порожня — файла нема</span></span>
+      <span>заливка: <span><i class="cell gray moved" /> на сайті</span> · <span><i class="cell gray" /> ще ні</span> ·
+        <span><i class="cell" /> файла нема</span></span>
     </div>
   </section>
 </template>
