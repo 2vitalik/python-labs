@@ -1,0 +1,406 @@
+<title>Здача лаб ods #354 рев’ю</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=Manrope:wght@600;700;800&display=swap">
+<style>
+/* Layout: one reading column; flows, tiles and cards stack on phones. Same look as the #126, #134 and #352 review pages. */
+:root {
+  --bg: #f6f4f1; --surface: #ffffff; --ink: #1c2024; --muted: #5a6068; --line: #e3ded6;
+  --accent: #c94f18; --accent-soft: #fbe8dd; --brown: #b85a18;
+  --ok: #1d7448; --ok-soft: #e2f2e8; --warn: #96580a; --warn-soft: #f9eedb;
+  --bad: #b3302a; --bad-soft: #f9e3e1; --info: #2d5aa6; --info-soft: #e6edf8;
+  --code: #f1eee9; --shot-bg: #ffffff; --scrim: rgba(20, 22, 25, 0.88); --scrim-ink: #e8e6e3;
+  --font-head: "Manrope", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141619; --surface: #1c1f23; --ink: #e8e6e3; --muted: #a3a8ae; --line: #30353b;
+    --accent: #ff7f45; --accent-soft: #3a2418; --brown: #e0874a;
+    --ok: #5cc98f; --ok-soft: #173225; --warn: #f0b25a; --warn-soft: #3a2c14;
+    --bad: #ff8277; --bad-soft: #3d1c1a; --info: #8fb3f0; --info-soft: #1b2638;
+    --code: #181b1f; --scrim: rgba(8, 9, 10, 0.92); color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141619; --surface: #1c1f23; --ink: #e8e6e3; --muted: #a3a8ae; --line: #30353b;
+  --accent: #ff7f45; --accent-soft: #3a2418; --brown: #e0874a;
+  --ok: #5cc98f; --ok-soft: #173225; --warn: #f0b25a; --warn-soft: #3a2c14;
+  --bad: #ff8277; --bad-soft: #3d1c1a; --info: #8fb3f0; --info-soft: #1b2638;
+  --code: #181b1f; --scrim: rgba(8, 9, 10, 0.92); color-scheme: dark;
+}
+body { background: var(--bg); color: var(--ink); font: 15px/1.6 var(--font-body); }
+.page { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 72px; }
+h1, h2, h3, h4 { font-family: var(--font-head); text-wrap: balance; line-height: 1.25; }
+h1 { font-size: clamp(1.7rem, 4vw, 2.4rem); margin: 0 0 6px; letter-spacing: -0.01em; }
+h2 { font-size: 1.5rem; margin: 56px 0 10px; display: flex; gap: 12px; align-items: baseline; }
+h3 { font-size: 1.12rem; margin: 28px 0 8px; }
+h4 { font-size: 0.98rem; margin: 0 0 6px; }
+p { margin: 0 0 10px; }
+a { color: var(--accent); }
+code { font-family: var(--font-mono); font-size: 0.86em; background: var(--code); padding: 0.05em 0.35em; border-radius: 4px; overflow-wrap: anywhere; }
+.num { font-family: var(--font-mono); font-size: 0.9rem; color: var(--surface); background: var(--brown); border-radius: 6px; padding: 2px 9px; }
+.sub { color: var(--muted); margin: 0 0 18px; }
+.lead { color: var(--muted); max-width: 78ch; }
+.kicker { text-transform: uppercase; letter-spacing: 0.07em; font-size: 0.72rem; color: var(--muted); margin: 0 0 4px; font-weight: 600; }
+.verdict { border: 1px solid var(--line); border-left: 5px solid var(--ok); background: var(--surface); border-radius: 10px; padding: 16px 20px; }
+.verdict ul { margin: 6px 0 0; padding-left: 20px; }
+.verdict li { margin: 4px 0; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; margin: 16px 0 0; }
+.tile { background: var(--ok-soft); border-radius: 10px; padding: 10px 14px; }
+.tile b { display: block; font: 800 1.9rem/1.1 var(--font-head); color: var(--ok); font-variant-numeric: tabular-nums; }
+.tile span { font-size: 0.88rem; }
+.wait { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 14px 0 0; }
+.wait > b { font-family: var(--font-head); font-size: 0.85rem; margin-right: 4px; }
+nav.toc { margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.92rem; }
+nav.toc a { text-decoration: none; border-bottom: 1px dashed currentColor; }
+.chip { display: inline-block; font-size: 0.75rem; font-weight: 600; border-radius: 999px; padding: 1px 9px; white-space: nowrap; }
+.chip.big { font-size: 0.85rem; padding: 3px 12px; }
+.chip.ok { background: var(--ok-soft); color: var(--ok); }
+.chip.warn { background: var(--warn-soft); color: var(--warn); }
+.chip.bad { background: var(--bad-soft); color: var(--bad); }
+.chip.info { background: var(--info-soft); color: var(--info); }
+.chip.off { background: var(--code); color: var(--muted); }
+.pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; align-items: stretch; margin: 14px 0; }
+.pair > * { min-width: 0; }
+.box { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; }
+.box.now { border-color: var(--ok); }
+.box.miss { border-color: var(--warn); }
+.box h4 { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.box ul { margin: 6px 0 0; padding-left: 18px; }
+.box li { margin: 3px 0; }
+.scroll { overflow-x: auto; max-width: 100%; }
+table.grid { border-collapse: collapse; width: 100%; font-size: 0.9rem; background: var(--surface); }
+table.grid th, table.grid td { border: 1px solid var(--line); padding: 7px 10px; text-align: left; vertical-align: top; }
+table.grid th { background: var(--code); font-family: var(--font-head); font-size: 0.82rem; }
+table.grid td.c { white-space: nowrap; }
+/* flow: a row per actor, its steps as a chain of arrows */
+.flow { display: grid; grid-template-columns: 9rem 1fr; gap: 12px 16px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; margin: 14px 0; }
+.flow > * { min-width: 0; }
+.flow .who { font-family: var(--font-head); font-weight: 700; font-size: 0.92rem; }
+.flow .who small { display: block; font-family: var(--font-body); font-weight: 400; color: var(--muted); font-size: 0.78rem; }
+.flow hr { grid-column: 1 / -1; border: 0; border-top: 1px dashed var(--line); margin: 2px 0; width: 100%; }
+ol.chain { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 0; align-items: stretch; }
+ol.chain li { display: flex; align-items: center; }
+ol.chain li:not(:last-child)::after { content: "→"; color: var(--muted); font-weight: 600; padding: 0 8px; }
+.step { border: 1px solid var(--ok); background: var(--ok-soft); border-radius: 8px; padding: 5px 10px; font-size: 0.88rem; line-height: 1.3; }
+.step b { display: block; font-weight: 600; }
+.step small { color: var(--muted); font-size: 0.76rem; }
+.was .step { border-color: var(--line); background: var(--code); }
+.layers { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin: 6px 0 0; background: var(--surface); }
+.layer { padding: 12px 14px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); min-width: 0; }
+.layer h4 { display: flex; gap: 8px; align-items: baseline; }
+.layer h4 i { font-style: normal; font-family: var(--font-mono); font-size: 0.8rem; color: var(--surface); background: var(--info); border-radius: 5px; padding: 0 6px; }
+.layer p { font-size: 0.86rem; margin: 0 0 4px; }
+.layer .cost { color: var(--muted); font-size: 0.8rem; }
+/* screenshots: one per card, stacked; a click opens the full picture */
+.shots { display: grid; gap: 22px; margin: 14px 0; }
+.shot { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px 18px; min-width: 0; }
+.shot header { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; margin-bottom: 6px; }
+.shot h4 { margin: 0; font-size: 1.02rem; }
+.shot dl { margin: 0 0 10px; display: grid; grid-template-columns: 6.5rem 1fr; gap: 3px 12px; font-size: 0.9rem; }
+.shot dt { color: var(--muted); font-weight: 600; font-size: 0.82rem; padding-top: 1px; }
+.shot dd { margin: 0; min-width: 0; }
+a.zoom { display: block; cursor: zoom-in; border-radius: 8px; }
+a.zoom:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+a.zoom img { display: block; width: 100%; max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--shot-bg); }
+a.zoom.tall img { max-height: 760px; object-fit: cover; object-position: top; }
+a.zoom.phone { max-width: 300px; }
+.cut { color: var(--muted); font-size: 0.8rem; margin: 6px 0 0; }
+.zoombox { position: fixed; inset: 0; z-index: 50; background: var(--scrim); overflow: auto; cursor: zoom-out; padding: max(12px, env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) max(12px, env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px)); }
+.zoombox img { display: block; margin: 0 auto; max-width: 100%; height: auto; background: var(--shot-bg); border-radius: 6px; }
+.zoombox p { color: var(--scrim-ink); text-align: center; font-size: 0.82rem; margin: 0 0 8px; }
+.honest { border-left: 5px solid var(--warn); }
+ol.steps { margin: 8px 0 0; padding-left: 22px; } ol.steps li { margin: 6px 0; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 14px 0; }
+.cards > * { min-width: 0; }
+.rough { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; }
+.rough header { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; flex-wrap: wrap; margin-bottom: 4px; }
+.rough h4 { margin: 0; }
+.rough p { font-size: 0.88rem; margin: 0 0 6px; }
+.rough .do { color: var(--muted); font-size: 0.84rem; margin: 0; }
+ol.next { padding-left: 22px; } ol.next li { margin: 6px 0; }
+@media (max-width: 700px) {
+  .flow { grid-template-columns: 1fr; }
+  .shot dl { grid-template-columns: 1fr; } .shot dt { margin-top: 4px; }
+}
+footer { margin-top: 56px; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 12px; }
+</style>
+
+<div class="page">
+<header>
+  <p class="kicker">python-labs · T354 · здача й перевірка лаб ods</p>
+  <h1>Здача лаб ods #354 — файл ноутбука на сайті, перевірка на одній сторінці</h1>
+  <p class="sub">гілка <code>ods</code> · 8 комітів T354 · без push · 19.11.2026 · вибори — тікет T362</p>
+
+  <div class="verdict">
+    <p><b>Готово локально: студент здає лабу файлом ноутбука й одразу бачить те, що бачить сайт; ти перевіряєш потік з однієї таблиці й однієї сторінки на роботу. Сервер коду студентів не виконує.</b></p>
+    <ul>
+      <li><b>Студент</b> називає номер варіанта, завантажує <code>.ipynb</code> чи marimo <code>.py</code> і бачить ✅ / ❌, пункти рівнів і «сама робота тягне на рівень N».</li>
+      <li><b>Ти</b> бачиш, де помиляється потік, і перевіряєш роботу поруч із ключем, рівнями й версіями. Бали ставиш ти.</li>
+      <li><b>Перезапуск</b> іде на твоєму ноутбуці: <code>bin/nbrun</code> виконує кожну роботу в Docker без мережі й без дисків.</li>
+      <li><b>Студенти поки нічого не бачать</b>, бо ods не на сервері.</li>
+    </ul>
+    <div class="tiles">
+      <div class="tile"><b>26</b><span>сценаріїв на стенді студентом і викладачем</span></div>
+      <div class="tile"><b>20 / 20</b><span>розвʼязаних ноутбуків у пісочниці дали той самий рядок</span></div>
+      <div class="tile"><b>9 / 9</b><span>ворожих ноутбуків стримано</span></div>
+    </div>
+    <div class="wait"><b>Чекає тебе</b><span class="chip big warn">відповісти на T362</span><span class="chip big warn">деплой з BODY_MAX ≈ 20 МБ</span><span class="chip big warn">оголошення студентам</span></div>
+  </div>
+
+  <nav class="toc" aria-label="Зміст">
+    <a href="#flow">1 Було → стало</a><a href="#pages">2 Сторінки</a><a href="#box">3 Пісочниця</a>
+    <a href="#marimo">4 marimo в браузері</a><a href="#checks">5 Перевірено</a><a href="#rough">6 Шорсткості</a><a href="#next">7 Що далі</a>
+  </nav>
+</header>
+
+<section id="flow">
+  <h2><span class="num">1</span>Було → стало</h2>
+  <p class="lead">Раніше лаба приходила посиланням у чат, і все далі робилось руками. Тепер файл лежить на сайті, а все, що можна порахувати, сайт рахує сам.</p>
+
+  <div class="flow">
+    <div class="who">Було<small>лаби 1–2</small></div>
+    <ol class="chain was">
+      <li><div class="step"><b>ноутбук у чат</b><small>посилання чи файл</small></div></li>
+      <li><div class="step"><b>відкрити посилання</b><small>кожне окремо, «нема доступу»</small></div></li>
+      <li><div class="step"><b>бали в табличку</b><small>руками</small></div></li>
+    </ol>
+    <hr>
+    <div class="who">Стало: студент<small><code>/labs/N/my</code></small></div>
+    <ol class="chain">
+      <li><div class="step"><b>номер варіанта</b><small>раз, у всіх лабах той самий</small></div></li>
+      <li><div class="step"><b>ноутбук із карткою</b><small>Colab, marimo чи браузер</small></div></li>
+      <li><div class="step"><b>файл на сайт</b><small>кожна здача — версія</small></div></li>
+      <li><div class="step"><b>що бачить сайт</b><small>✅ / ❌, пункти, рівень</small></div></li>
+      <li><div class="step"><b>захист</b><small>записом чи наживо</small></div></li>
+    </ol>
+    <div class="who">Стало: ти<small><code>/labs/N/results</code></small></div>
+    <ol class="chain">
+      <li><div class="step"><b>таблиця потоку</b><small>де помиляються</small></div></li>
+      <li><div class="step"><b>стіл перевірки</b><small>ноутбук, ключ, рівні, версії</small></div></li>
+      <li><div class="step"><b>бали</b><small>підказка поруч, ставиш ти</small></div></li>
+    </ol>
+  </div>
+
+  <h3>Чотири шари перевірки</h3>
+  <p class="lead">Кожен шар коштує тобі менше за наступний. Розуміння перевіряє лише захист, а три перші шари прибирають усе, що можна порахувати (тікет T356).</p>
+  <div class="layers">
+    <div class="layer"><h4><i>1</i>Завантаження</h4><p><b>сайт</b> — ✅ / ❌ з назвою помилки, кроки, графіки, висновки, зірочки, «згори донизу», підказка рівня</p><p class="cost">секунди, без тебе</p></div>
+    <div class="layer"><h4><i>2</i>Перезапуск</h4><p><b><code>bin/nbrun</code></b> на твоєму ноутбуці — чи числа справді виходять із коду; виводи для marimo</p><p class="cost">хвилини на потік, без тебе</p></div>
+    <div class="layer"><h4><i>3</i>Око</h4><p><b>ти</b> — якість висновків і графіків; режим «висновки» збирає їх підряд</p><p class="cost">1–2 хвилини на роботу</p></div>
+    <div class="layer"><h4><i>4</i>Захист</h4><p><b>ти й студент</b> — розуміння; питання з картки на тій самій сторінці</p><p class="cost">як і було</p></div>
+  </div>
+</section>
+
+<section id="pages">
+  <h2><span class="num">2</span>Сторінки</h2>
+  <p class="lead">Знімки зі стенда: лаба, студенти й числа вигадані, справжній зміст лаб туди не потрапляв. Клік по знімку відкриває його повністю.</p>
+
+  <h3>Студент</h3>
+  <div class="shots">
+    <article class="shot">
+      <header><h4>«Моя лаба» без картки</h4><code>/labs/1/my</code></header>
+      <dl><dt>Що видно</dt><dd>«Який у тебе варіант?»: вільні номери потоку або файл у поле.</dd>
+          <dt>Навіщо</dt><dd>Номер той самий у всіх лабах. Хто його не памʼятає, просто кидає ноутбук, і сайт читає варіант із картки у файлі.</dd></dl>
+      <a class="zoom" href="img/my-claim.png"><img src="img/my-claim.png" alt="«Моя лаба» без картки: вибір номера варіанта й поле для файла ноутбука" loading="lazy"></a>
+    </article>
+    <article class="shot">
+      <header><h4>«Моя лаба» з карткою</h4><code>/labs/1/my</code></header>
+      <dl><dt>Що видно</dt><dd>Картка з «Скопіювати», «Почати» (Jupyter, marimo, у браузері), «Здати» з дедлайном, «Що бачить сайт» (файл, перезапуск, ✅ по відповідях, драбина рівнів, версії), захист трьома виборами, оцінка.</dd>
+          <dt>Навіщо</dt><dd>Студент сам бачить, чого бракує до наступного рівня, ще до захисту.</dd></dl>
+      <a class="zoom tall" href="img/my-lab.png"><img src="img/my-lab.png" alt="«Моя лаба» цілком: картка, кнопки старту, здача файлом, що бачить сайт, рівні 12–20, захист, оцінка" loading="lazy"></a>
+      <p class="cut">Сторінка довга — повністю по кліку.</p>
+    </article>
+    <article class="shot">
+      <header><h4>«Мій ноутбук»</h4><code>/labs/1/my/nb/&lt;id&gt;</code></header>
+      <dl><dt>Що видно</dt><dd>Ноутбук, як запущений: мітки завдань ліворуч, ✅ зеленим, графік, формули в тексті.</dd>
+          <dt>Навіщо</dt><dd>Студент бачить свій файл так само, як ти.</dd></dl>
+      <a class="zoom" href="img/my-notebook.png"><img src="img/my-notebook.png" alt="Ноутбук студента на сайті: код, вивід із галочками, графік" loading="lazy"></a>
+    </article>
+    <article class="shot">
+      <header><h4>Телефон</h4><span class="chip off">390 px</span></header>
+      <dl><dt>Що видно</dt><dd>Та сама «Моя лаба» в один стовпчик, нічого не ширше екрана.</dd>
+          <dt>Навіщо</dt><dd>Глянути результат і здати файл можна й з телефона.</dd></dl>
+      <a class="zoom tall phone" href="img/my-phone.png"><img src="img/my-phone.png" alt="«Моя лаба» на телефоні" loading="lazy"></a>
+    </article>
+  </div>
+
+  <h3>Ти</h3>
+  <div class="shots">
+    <article class="shot">
+      <header><h4>Результати лаби</h4><code>/labs/1/results</code></header>
+      <dl><dt>Що видно</dt><dd>«Де помиляються»: смуга ✅ / ❌ на кожну відповідь із назвою типової помилки. Нижче таблиця: файл, пункти пігулками, перезапуск, захист, підказка, бали й нотатка в рядку; фільтри «з файлом · без файла · без балів».</dd>
+          <dt>Навіщо</dt><dd>Перед ПЗ видно, що пояснити. Бали ставляться просто в таблиці.</dd></dl>
+      <a class="zoom" href="img/results.png"><img src="img/results.png" alt="Таблиця результатів лаби з блоком «Де помиляються»" loading="lazy"></a>
+    </article>
+    <article class="shot">
+      <header><h4>Стіл перевірки</h4><code>/labs/1/results/&lt;варіант&gt;</code></header>
+      <dl><dt>Що видно</dt><dd>Ноутбук ліворуч, ❌ червоним. Праворуч: підказка й «Поставити», бали, захист і зірочки, відповіді студента поруч із ключем і назвою помилки, рівні.</dd>
+          <dt>Навіщо</dt><dd>Одна сторінка на роботу; <code>[</code> <code>]</code> — до сусіднього студента.</dd></dl>
+      <a class="zoom" href="img/review.png"><img src="img/review.png" alt="Стіл перевірки: ноутбук ліворуч, панель із ключем і рівнями праворуч" loading="lazy"></a>
+    </article>
+    <article class="shot">
+      <header><h4>Порівняти з попередньою</h4><span class="chip info">версії</span></header>
+      <dl><dt>Що видно</dt><dd>Друга версія: змінені клітинки — жовта смуга й «змінено». Праворуч перезапуск «рядок збігся», версії #1 і #2, «звільнити картку».</dd>
+          <dt>Навіщо</dt><dd>Після зауваження видно, що саме студент виправив.</dd></dl>
+      <a class="zoom" href="img/review-diff.png"><img src="img/review-diff.png" alt="Друга версія ноутбука зі зміненими клітинками, позначеними жовтим" loading="lazy"></a>
+    </article>
+    <article class="shot">
+      <header><h4>Перезапуск</h4><code>bin/nbrun</code></header>
+      <dl><dt>Що видно</dt><dd>Ліворуч копія, виконана на твоєму ноутбуці. Рядка відповідей у студента не було, тож сайт пише «порівнювати нема з чим», але перезапуск дав 5 / 5 ✅.</dd>
+          <dt>Навіщо</dt><dd>Видно, чи числа справді виходять із коду. Робота в marimo, яка не зберігає виводів, отримує графіки й ✅.</dd></dl>
+      <a class="zoom" href="img/review-run.png"><img src="img/review-run.png" alt="Стіл перевірки з виконаною копією ноутбука і блоком перезапуску" loading="lazy"></a>
+    </article>
+    <article class="shot">
+      <header><h4>«Звід», вид «Лаба 1»</h4><code>/table</code></header>
+      <dl><dt>Що видно</dt><dd>Нові колонки: файл, рівень роботи, підказка, захист (намір і прийнятий), зірочки «з файла», бали.</dd>
+          <dt>Навіщо</dt><dd>Уся лаба одним поглядом, поруч із дедлайнами й опитуваннями.</dd></dl>
+      <a class="zoom" href="img/zvid.png"><img src="img/zvid.png" alt="«Звід» з колонками лаби 1" loading="lazy"></a>
+    </article>
+  </div>
+</section>
+
+<section id="box">
+  <h2><span class="num">3</span>Пісочниця</h2>
+  <p class="lead">Один ноутбук — один контейнер Docker: без мережі й без жодної теки хоста, корінь лише для читання, 1 ГБ памʼяті, одне ядро, 256 процесів, 5 хвилин, до 60 МБ виводу. Ноутбук заходить через stdin. Версії закріплено: Python 3.12, numpy 2.5, scipy 1.18, sympy 1.14, matplotlib 3.11, pandas 3.1, scikit-learn 1.9, marimo 0.25.2.</p>
+  <div class="scroll">
+  <table class="grid">
+    <tr><th>Що пробував ноутбук</th><th>Що сталося</th></tr>
+    <tr><td>вийти в мережу</td><td><span class="chip ok">стримано</span> помилка всередині, назовні нічого</td></tr>
+    <tr><td>прочитати файли хоста</td><td><span class="chip ok">стримано</span> хоста в контейнері нема</td></tr>
+    <tr><td>записати на диск</td><td><span class="chip ok">стримано</span> корінь лише для читання, <code>/tmp</code> — до 512 МБ</td></tr>
+    <tr><td>fork-бомба</td><td><span class="chip ok">стримано</span> зупинено за 4–6 с</td></tr>
+    <tr><td>зайняти 4 ГБ памʼяті</td><td><span class="chip ok">стримано</span> ядро Jupyter убито, решта жива</td></tr>
+    <tr><td>нескінченний цикл</td><td><span class="chip ok">стримано</span> клітинка — 120 с, ноутбук — 270 с, далі <code>docker kill</code></td></tr>
+    <tr><td>надрукувати 500 МБ</td><td><span class="chip ok">стримано</span> обрізано</td></tr>
+    <tr><td>підробити результат</td><td><span class="chip ok">стримано</span> перезапуск усе одно каже правду</td></tr>
+    <tr><td><code>pip install</code>, <code>input()</code></td><td><span class="chip ok">стримано</span> не зависає</td></tr>
+  </table>
+  </div>
+  <div class="box honest" style="margin-top:14px">
+    <h4>Чого коробка не тримає</h4>
+    <p>Діри в ядрі Linux чи в самому Docker. Контейнер ділить ядро з віртуальною машиною Docker Desktop, а в неї за замовчуванням спільна тека <code>/Users</code>. Тримай Docker Desktop оновленим; якщо жоден інший проєкт не монтує теки, прибери <code>/Users</code> у Settings → Resources → File sharing (T362, питання 9).</p>
+    <p>Скрипти <code>bin/</code> хочуть Python ≥ 3.10, а системний <code>python3</code> macOS — 3.9: запускати <code>~/.venvs/python-labs/bin/python bin/nbrun …</code>.</p>
+  </div>
+</section>
+
+<section id="marimo">
+  <h2><span class="num">4</span>marimo в браузері</h2>
+  <div class="pair">
+    <div class="box now">
+      <h4>Вердикт: давати можна, з інструкцією <span class="chip ok">так, але</span></h4>
+      <ul>
+        <li>Посилання з карткою відкривається на <code>marimo.app</code>, ноутбук виконується сам за 10–30 с, графіки малюються.</li>
+        <li>Рядок відповідей збігся з локальним до символа (лаби 1 і 5).</li>
+        <li>Робота живе в одній комірці браузера: друге відкриття кнопки й перша правка стирають попередню.</li>
+        <li>Експорт <code>.py</code> до першого збереження дає порожній файл.</li>
+        <li>У лабі 5 перша зірочка читає картинки з теки — у браузері клітинка падає.</li>
+        <li>З телефона — лише подивитись.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h4>Інструкція студентам</h4>
+      <ol class="steps">
+        <li>«Відкрити в браузері»: за 10–30 с ноутбук сам виконається, картка вже вставлена.</li>
+        <li>Працюй на компʼютері, в одному браузері: робота зберігається сама, але лише тут, і копія одна.</li>
+        <li>Повертаєшся — відкривай просто <b>marimo.app</b>. Кнопка на сайті дає чистий шаблон, і перша правка в ньому зітре попередню роботу.</li>
+        <li>Наприкінці сеансу: Ctrl / Cmd + S, потім ☰ → Export… → Python → Export notebook source.</li>
+        <li>Перевір, що <code>notebook.py</code> не порожній (≈ 20 КБ), і здай його на сайт.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="checks">
+  <h2><span class="num">5</span>Перевірено і не перевірено</h2>
+  <div class="pair">
+    <div class="box now">
+      <h4>Перевірено <span class="chip ok">✓</span></h4>
+      <ul>
+        <li>Смоуки сайту ods: 46 · 17 · 10 · 39 · 49 — усі ✅; 24 смоуки платформи з теки ods ✅; <code>vite build</code> ✅.</li>
+        <li>26 сценаріїв у headless Chrome: ≈ 16 одразу, решту виправлено й пройдено вдруге.</li>
+        <li>Справжні розвʼязки пʼяти лаб (лише числа): усі кроки й усі відповіді; рівень роботи 20 у лабах 1, 3, 4, 5 і 13 у лабі 2 — її розвʼязок на диску виконано без картинок.</li>
+        <li>20 розвʼязаних ноутбуків у пісочниці: 4–10 с кожен, рядок той самий.</li>
+        <li>Перезапуск проти стенда: «збігся», «не збігся», «рядка не було».</li>
+        <li>Markdown студента: HTML, <code>javascript:</code> і <code>\href</code> виходять текстом.</li>
+      </ul>
+    </div>
+    <div class="box miss">
+      <h4>Не перевірено <span class="chip warn">!</span></h4>
+      <ul>
+        <li>Сам Colab: шаблон, ноутбук зі своєю карткою, <code>check()</code> → сайт.</li>
+        <li>Firefox і Safari; телефон — лише один знімок.</li>
+        <li>Справжні сповіщення Telegram — тексти перевіряє смоук.</li>
+        <li>Справжній <code>https://ods.labs.in.ua</code>.</li>
+        <li>Файл за справжнім посиланням Colab / Drive — лише із заглушкою.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="rough">
+  <h2><span class="num">6</span>Шорсткості</h2>
+  <div class="cards">
+    <div class="rough"><header><h4>Маршрути «Моєї лаби»</h4><span class="chip ok">полагоджено</span></header><p>У коміті <code>31ca915</code> <code>/labs/N/my</code> і <code>/labs/N/results</code> відкривали чужу сторінку.</p><p class="do">Виправлено в HEAD комітом <code>27fb533</code> (сесія T357).</p></div>
+    <div class="rough"><header><h4>«Графіки n із N»</h4><span class="chip warn">питання 3</span></header><p>Рахує клітинки з графіком у розвʼязку: 2 · 2 · 5 · 2 · 8. Тексти лаб кажуть 3 · 2 · 4 · 2 (+1) · 6.</p><p class="do">Вибрати правило в T362.</p></div>
+    <div class="rough"><header><h4>Лаба 5 у браузері</h4><span class="chip warn">питання 5</span></header><p>Перша зірочка читає картинки з теки: у браузері клітинка падає, перезапуск теку дає.</p><p class="do">Вибрати, кому показувати кнопку.</p></div>
+    <div class="rough"><header><h4>marimo-шаблон лаби 1</h4><span class="chip info">текст лаби</span></header><p>Перша клітинка досі пише про меню Colab.</p><p class="do">Поправити в тексті — сесії T357 / T355.</p></div>
+    <div class="rough"><header><h4>Файл за посиланням</h4><span class="chip info">після деплою</span></header><p>Colab / Drive написано й перевірено із заглушкою, на справжньому посиланні — ні.</p><p class="do">Спробувати на одному своєму посиланні.</p></div>
+    <div class="rough"><header><h4>ods не на сервері</h4><span class="chip bad">деплой</span></header><p>Студенти нічого з цього не бачать.</p><p class="do">Деплой ods із Google-ключами.</p></div>
+    <div class="rough"><header><h4><code>BODY_MAX</code> = 1100 КБ</h4><span class="chip bad">vps-infra</span></header><p>Ноутбук із графіками більший; звіт перезапуску з виконаною копією — до ≈ 16 МБ.</p><p class="do">Підняти до ≈ 20 МБ у <code>apps/ods-labs</code>.</p></div>
+    <div class="rough"><header><h4>Не перевірено</h4><span class="chip off">список</span></header><p>Colab, Firefox / Safari, телефон, Telegram, справжній домен.</p><p class="do">Розділ 5.</p></div>
+  </div>
+</section>
+
+<section id="next">
+  <h2><span class="num">7</span>Що далі</h2>
+  <h3>Тобі, по порядку</h3>
+  <ol class="next">
+    <li><b>Глянути стенд</b> (вигадані студенти й лаба): <code>http://127.0.0.1:5032/api/auth/dev-login?next=/labs/1/results</code>. З нуля — <code>cd .dev/.drafts/T354/stand &amp;&amp; bash down.sh; bash seed.sh &amp;&amp; bash up.sh</code>.</li>
+    <li><b>Відповісти на T362</b>; мовчання = «a».</li>
+    <li><b>Деплой ods</b> (Google-ключі) з <code>BODY_MAX</code> ≈ 20 МБ і <code>AGENT_TOKENS</code>.</li>
+    <li><b><code>ODS_URL</code> / <code>ODS_TOKEN</code></b> у <code>.site/.env</code>, потім <code>bin/nbrun build</code> — один раз, ≈ 47 с.</li>
+    <li><b>Одне оголошення студентам</b>: «зайди на сайт, назви номер свого варіанта, завантаж файл ноутбука». Дедлайн лаби 2 — 21 листопада.</li>
+  </ol>
+
+  <h3>Вибори — T362</h3>
+  <div class="scroll">
+  <table class="grid">
+    <tr><th>№</th><th>Про що</th><th>«a» — так зараз або так раджу</th></tr>
+    <tr><td class="c">Q1</td><td>що студент здає</td><td>з лаби 3 — файл; за лаби 1–2 файл один раз</td></tr>
+    <tr><td class="c">Q2</td><td>підказка рівня студентові</td><td>драбина й «тягне на рівень N»</td></tr>
+    <tr><td class="c">Q3</td><td>графіки для 14</td><td>клітинки з графіком у розвʼязку</td></tr>
+    <tr><td class="c">Q4</td><td>рівень 13</td><td>не менше половини пунктів 14</td></tr>
+    <tr><td class="c">Q5</td><td>marimo в браузері</td><td>кнопка для всіх із попередженням</td></tr>
+    <tr><td class="c">Q6</td><td><code>check()</code> → сайт у лабах 4–5</td><td>разом з їхніми версіями для сайту</td></tr>
+    <tr><td class="c">Q7</td><td>перезапуск</td><td>руками перед парою</td></tr>
+    <tr><td class="c">Q8</td><td>«Строки» ods зі здачі</td><td>так, вчасно = файл чи всі ✅ до дедлайну (S)</td></tr>
+    <tr><td class="c">Q9</td><td><code>/Users</code> у Docker Desktop</td><td>прибрати, якщо ніхто не монтує</td></tr>
+    <tr><td class="c">Q10</td><td>банк ідей</td><td>три перші, нижче</td></tr>
+  </table>
+  </div>
+
+  <h3>Наступні ідеї</h3>
+  <div class="cards">
+    <div class="box"><h4>Зауваження до клітинки <span class="chip off">M</span></h4><p>Клацнув клітинку — написав. Студент бачить зауваження у своєму ноутбуці, нова версія показує, що виправлено.</p></div>
+    <div class="box"><h4>Бот студентові <span class="chip off">XS–S</span></h4><p>«Поставлено бали», «є зауваження»: студент не перевіряє сайт навмання.</p></div>
+    <div class="box"><h4>«Строки» з файла <span class="chip off">S</span></h4><p>Вчасно = файл чи рядок з усіма ✅ до дедлайну; «без репозиторію» зникає.</p></div>
+  </div>
+</section>
+
+<footer>python-labs · T354 «Здача й перевірка лаб ods» · звіт у <code>.dev/ods/.t/T354--ods-lab-handin/</code> · вибори — <code>.dev/ods/.t/T362-Q--ods-lab-handin-choices.md</code> · зібрано <code>build_review.py</code></footer>
+</div>
+
+<div class="zoombox" id="zoombox" hidden tabindex="-1"><p>клік або Esc — закрити</p><img id="zoomimg" alt=""></div>
+<script>
+const zoombox = document.getElementById("zoombox"), zoomimg = document.getElementById("zoomimg");
+document.querySelectorAll("a.zoom").forEach(a => a.addEventListener("click", e => {
+  e.preventDefault();
+  const img = a.querySelector("img");
+  zoomimg.src = img.src; zoomimg.alt = img.alt;
+  zoombox.hidden = false; zoombox.scrollTop = 0; zoombox.focus();
+}));
+zoombox.addEventListener("click", () => { zoombox.hidden = true; });
+document.addEventListener("keydown", e => { if (e.key === "Escape") zoombox.hidden = true; });
+</script>
