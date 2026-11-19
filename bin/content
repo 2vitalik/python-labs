@@ -1,0 +1,112 @@
+#!/usr/bin/env python3
+"""bin/content — the ods lectures and labs from disk (sites/ods/data, outside git) to a site through its API (T357).
+
+  bin/content -t <target> ls   [lectures | labs | old | <slug>…]                 what on disk differs from the site
+  bin/content -t <target> push [lectures | labs | old | <slug>…] [--dry] [-m "нотатка"]
+
+Nothing named = everything. Only what differs by sha1 goes: pages, their pictures and files; pushing a lab's page
+ends with the list of the labs' pages. The target is a must — the scripts' default (bin/siteapi.py) is the python
+site's prod, no place for ods texts; its URL and an agent's token are in .site/.env (<TARGET>_URL, <TARGET>_TOKEN)."""
+import argparse
+import hashlib
+import json
+import sys
+from urllib.error import HTTPError, URLError
+from urllib.parse import quote
+from urllib.request import Request, urlopen
+
+from siteapi import ROOT, SNAP, call, target
+
+sys.path.insert(0, str(ROOT / "sites/ods/api"))
+import content_disk as disk  # noqa: E402
+
+
+def sha(data: bytes) -> str:
+    return hashlib.sha1(data).hexdigest()
+
+
+def put(to: str, path: str, data: bytes, kind: str) -> dict:
+    """Bytes as they are: siteapi.call sends JSON only."""
+    url, token = target(to)
+    request = Request(f"{url}/api{quote(path)}", method="PUT", data=data, headers={"Authorization": f"Bearer {token}", "Content-Type": kind})
+    try:
+        with urlopen(request) as response:
+            return json.load(response)
+    except HTTPError as e:
+        sys.exit(f"PUT {path}: {e.code} · {e.read().decode()[:300]}")
+    except URLError as e:
+        sys.exit(f"{url} не відповідає · {e.reason}")
+
+
+def pick(groups: dict[str, list], what: list[str]) -> list[dict]:
+    every = [p for g in groups.values() for p in g]
+    out = []
+    for w in what or groups:
+        found = groups.get(w) or [p for p in every if p["slug"] == w]
+        if not found:
+            sys.exit(f"на диску нема: {w}")
+        out += [p for p in found if p not in out]
+    return out
+
+
+def diff(chosen: list[dict], have: dict) -> tuple[list, list]:
+    """(pages, files) that differ, each with its sign: + new · ~ changed; the same are left out."""
+    def sign(was, now):
+        return "" if was == now else "~" if was else "+"
+    texts, files = [], []
+    for p in chosen:
+        title, body, pics = disk.parse(p["slug"], p["file"])
+        if s := sign(have["pages"].get(p["slug"]), sha(f"{title}\n{body}".encode())):
+            texts.append((s, p["slug"], title, body))
+        for path, file in disk.media(p, pics).items():
+            if s := sign(have["media"].get(path), sha(file.read_bytes())):
+                files.append((s, path, file))
+    return texts, files
+
+
+def labpages(labs: list[dict], chosen: list[dict], have: dict) -> list[dict] | None:
+    """The disk's list of the labs' pages when one of them is chosen and the site's list differs; None — nothing to send."""
+    rows = sorted((disk.row(p) for p in labs), key=lambda r: r["slug"])
+    if rows and any(p in labs for p in chosen) and rows != sorted(have["labpages"], key=lambda r: r["slug"]):
+        return rows
+    return None
+
+
+def show(chosen: list, texts: list, files: list, rows: list | None):
+    count = lambda items, s: sum(i[0] == s for i in items)  # noqa: E731
+    print(f"сторінок {len(chosen)}: нових {count(texts, '+')} · змінених {count(texts, '~')} · тих самих {len(chosen) - len(texts)}")
+    print("".join(f"  {s} {slug}\n" for s, slug, *_ in texts), end="")
+    print(f"файлів до відправки: нових {count(files, '+')} · змінених {count(files, '~')}")
+    print("".join(f"  {s} {path}\n" for s, path, _ in files), end="")
+    print(f"перелік сторінок лаб: {f'інший · рядків {len(rows)}' if rows else 'той самий або не чіпаємо'}")
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("-t", "--target")
+    parser.add_argument("cmd", choices=["ls", "push"])
+    parser.add_argument("what", nargs="*")
+    parser.add_argument("-m", "--note", default="")
+    parser.add_argument("--dry", action="store_true")
+    a = parser.parse_args()
+    if not a.target or a.target == SNAP:
+        sys.exit(f"вкажи ціль -t <ціль> з .site/.env, не {SNAP}: типова ціль скриптів — прод сайту python, контенту ods там не місце")
+    have = call(a.target, "GET", "/content")
+    groups = {"lectures": disk.lectures(), "labs": disk.lab_pages(), "old": disk.old_labs()}
+    chosen = pick(groups, a.what)
+    texts, files = diff(chosen, have)
+    rows = labpages(groups["labs"], chosen, have)
+    show(chosen, texts, files, rows)
+    if a.cmd == "ls" or a.dry:
+        return
+    for _, path, file in files:  # pictures before the pages that show them
+        print(f"{path}: {put(a.target, f'/content/media/{path}', file.read_bytes(), disk.mime(file))['state']}")
+    for _, slug, title, body in texts:
+        r = call(a.target, "PUT", f"/content/pages/{slug}", {"title": title, "body": body, "note": a.note})
+        print(f"{slug}: {r['state']} · rev {r['rev']}")
+    if rows:
+        print(f"перелік сторінок лаб записано · рядків {call(a.target, 'PUT', '/content/labpages', rows)['count']}")
+
+
+if __name__ == "__main__":
+    main()
