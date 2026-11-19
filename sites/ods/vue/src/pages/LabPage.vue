@@ -15,6 +15,7 @@ import { user } from '@core/user.js'
 
 import LabFiles from '../components/LabFiles.vue'
 import LabNav from '../components/LabNav.vue'
+import { gates, loadGates } from '../labGates.js'
 import { labsWithCards, lineOf, loadLabPages, pageWord, pathOf } from '../labPages.js'
 import { vRich } from '../rich.js'
 
@@ -41,12 +42,23 @@ const middle = computed(() => (part.value && !about.value ? [`/labs/${n.value}`,
 const plain = (text) => text.replace(/\$([^$]+)\$/g, (_, tex) => tex.replace(/[{}\\]/g, ''))  // the contents are text: $R^{2}$ → R^2
 const toc = computed(() => tocOf(textOf(page.value)).map((h) => ({ ...h, text: plain(h.text) })))
 const fmt = (d) => new Date(d).toLocaleDateString('uk-UA')
+// how the lab is open (labGates.js), in words under the pills: the teacher sees a hidden lab and should know it is one
+const note = computed(() => {
+  const gate = !about.value && gates.value?.[n.value]
+  if (gate === 'hidden') return 'Студенти цієї лаби не бачать — стан міняється на сторінці «Лаби»'
+  return gate === 'telegram' ? 'Файл цієї лаби здаємо викладачеві в Telegram' : ''
+})
 useTitle(() => page.value?.title)
 
 // all at once: the crumbs, the pills and the buttons come with the text, nothing moves after it. The page before stays
-// until the next one is here — no blank flash between the parts of a lab
+// until the next one is here — no blank flash between the parts of a lab. A lab this reader has no gate of — hidden
+// from students, or none at all — is not asked for
 async function load() {
   const s = slug.value
+  if (!about.value && !(await loadGates())[n.value]) {
+    if (s === slug.value) problem.value = 'lost'
+    return
+  }
   try {
     const [p, held] = await Promise.all([getGuidePage(s), labsWithCards(), loadLabPages().catch(() => null)])
     if (s !== slug.value) return  // the reader has gone on to another page meanwhile
@@ -70,6 +82,7 @@ watch(slug, load, { immediate: true })
     </Crumbs>
     <h1 class="h2 mb-3">{{ page.title }}</h1>
     <LabNav :n class="mb-3" />
+    <p v-if="note" class="small text-secondary mb-3">{{ note }}</p>
     <!-- keyed by the page shown: an editor left open on the page before must not save into this one -->
     <div :key="page.slug" v-rich="page.slug"><GuideBody v-model:page="page" /></div>
     <Toc :items="toc" />

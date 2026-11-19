@@ -6,6 +6,7 @@ import Crumbs from '@core/components/Crumbs.vue'
 import { fmtWhen } from '@core/labs.js'
 import { problem } from '@core/problem.js'
 import { useTitle } from '@core/title.js'
+import { user } from '@core/user.js'
 
 import { findMyLab } from '../api.js'
 import LabByTelegram from '../components/LabByTelegram.vue'
@@ -24,6 +25,7 @@ const route = useRoute()
 const n = computed(() => Number(route.params.n))
 const lab = ref(null)
 const gone = ref('')  // why there is no card for them: the API's own words
+const here = computed(() => user.value?.status === 'admin' || gates.value?.[n.value] === 'site')  // files go through the site
 useTitle(() => `Моя лаба ${n.value}`)
 
 const live = computed(() => {
@@ -41,7 +43,7 @@ async function load() {
     else gone.value = my.why
   } catch (e) {
     if (e.status !== 404) throw e
-    gone.value = e.message
+    problem.value = 'lost'  // «no card yet» comes softly; a 404 is a lab hidden since the gates were read
   }
 }
 function got(my) {
@@ -55,7 +57,7 @@ watch(n, load, { immediate: true })
   <div>
     <Crumbs :items="[['/labs', 'Лаби'], [`/labs/${n}`, `Лаба ${n}`], 'Моя лаба']" />
     <h1 class="h2 mb-3">Моя лаба {{ n }}</h1>
-    <LabClaim v-if="gone" :n :why="gone" :drop="gates[n] === 'site'" @got="got" />
+    <LabClaim v-if="gone" :n :why="gone" :drop="here" @got="got" />
     <template v-else-if="lab">
       <LabCard :n :lab />
       <section v-if="lab.ask?.length" class="mb-4">

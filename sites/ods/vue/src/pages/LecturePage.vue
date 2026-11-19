@@ -68,11 +68,12 @@ async function toText(n) {
   timer = setTimeout(() => blocks.forEach((el) => el.classList.remove('flash')), 2500)
 }
 
-loadGuide()  // «Потрібна для»: only the labs this reader has pages of
+// the guide's list comes with the text: «Потрібна для» names only the labs this reader has pages of, and nothing moves after
 async function load() {
   page.value = null
   if (!doc.value) return (problem.value = 'lost')
-  page.value = await getGuidePage(doc.value.slug)
+  const [p] = await Promise.all([getGuidePage(doc.value.slug), loadGuide()])
+  page.value = p
 }
 watch(doc, load, { immediate: true })
 </script>

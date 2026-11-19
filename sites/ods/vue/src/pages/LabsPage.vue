@@ -51,12 +51,13 @@ Promise.all([loadGuide(), loadGates(), labsWithCards().then((l) => (held.value =
 </template>
 
 <style scoped>
-.labs li { display: flex; align-items: center; gap: .75rem; padding: .45rem .5rem; border-bottom: 1px solid var(--bs-border-color-translucent); }
+/* on a narrow screen the row's actions go under the title, to the right, and wrap among themselves */
+.labs li { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .75rem; padding: .45rem .5rem; border-bottom: 1px solid var(--bs-border-color-translucent); }
 .labs li:hover { background: var(--bs-tertiary-bg); }
 .labs .n { min-width: 1.5rem; text-align: right; font-variant-numeric: tabular-nums; }
-.labs a.stretched-link { text-decoration: none; }
+.labs a.stretched-link { flex: 1 1 12rem; min-width: 0; text-decoration: none; }
 .labs .shut a.stretched-link { color: var(--bs-secondary-color); }  /* students do not see this lab */
-.acts { position: relative; z-index: 2; }  /* above the row's link, which covers the whole row */
+.acts { position: relative; z-index: 2; flex-wrap: wrap; justify-content: flex-end; }  /* above the row's link, which covers the whole row */
 .old { color: var(--bs-secondary-color); text-decoration: underline dashed; text-underline-offset: .2em; }
 .old:hover { color: var(--bs-body-color); }
 </style>

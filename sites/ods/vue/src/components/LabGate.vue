@@ -14,3 +14,9 @@ defineProps({ n: Number })
             @click="setGate(n, state)">{{ word }}</button>
   </span>
 </template>
+
+<style scoped>
+/* a word not in force stays light under the mouse: only the one in force is filled */
+.btn-outline-secondary { --bs-btn-hover-bg: var(--bs-tertiary-bg); --bs-btn-hover-color: var(--bs-body-color);
+                         --bs-btn-active-bg: var(--bs-secondary-bg); --bs-btn-active-color: var(--bs-body-color); }
+</style>

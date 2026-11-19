@@ -66,5 +66,6 @@ async function claim(num) {
       <p class="mt-3 mb-2">…або просто завантаж свій ноутбук — сайт прочитає варіант із нього:</p>
       <LabDrop :n @got="emit('got', $event)" />
     </template>
+    <p v-else-if="!drop" class="small text-secondary mt-3 mb-0">Файл цієї лаби здаємо викладачеві в Telegram — тут лише картка.</p>
   </section>
 </template>
