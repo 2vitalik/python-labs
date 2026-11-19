@@ -1,5 +1,5 @@
 """Smoke: guide pages in Mongo — seed from files, admin PUT with rev/409, history with notes, drafts in the text (T157),
-«Що змінилось» draft and publish, export/import round trip in a temp dir. Run from a site's api folder:
+«Що змінилось» draft and publish, export/import round trip in a temp dir, the staff's pages (T357). Run from a site's api folder:
 DB_NAME=<db>_smoke ~/.venvs/python-labs/bin/python <repo>/core/api/tests/smoke_guide.py"""
 import os
 import subprocess
@@ -23,7 +23,9 @@ from core.config import settings  # noqa: E402
 
 results = []
 settings.guide_readers = "all"  # a guest reads too (T214)
+settings.guide_staff, settings.agent_tokens = "old-", "smoke:tok-smoke"  # the staff's pages (T357)
 SEED = {"labs": "# Лаби\n\nтекст", "game": "# Ігри\n\n## Своя гра\n\nтекст", "lab1": "# Лаба 1\n\nтекст", "lab5": "# Лаба 5\n\nтекст",
+        "old-lab1": "# Стара лаба 1\n\nтекст",
         "changes": "# Що змінилось\n\nНове на сайті, свіже зверху.\n\n- **2026-09-20** — методичка на сайті"}
 guide_io.ROOT = Path(tempfile.mkdtemp())  # its own pages: the site's guide files are the site's
 for slug, text in SEED.items():
@@ -47,17 +49,26 @@ def io(root, cmd):
     return subprocess.run([sys.executable, "-c", IO, str(root), cmd], capture_output=True, text=True)
 
 
+def staff_seen(c, **kw):
+    """The staff's page: (in the list, its status code)."""
+    return "old-lab1" in [p["slug"] for p in c.get("/api/guide", **kw).json()], c.get("/api/guide/old-lab1", **kw).status_code
+
+
 with TestClient(main.app) as c:
     r = c.get("/api/guide/labs")
     check("guest: the guide is open (T214), body = public", c.get("/api/guide").status_code == 200
           and r.status_code == 200 and r.json()["body"] == r.json()["public"], r.text)
     check("guest: draft page 404, history 401",
           c.get("/api/guide/changes-draft").status_code == 404 and c.get("/api/guide/history").status_code == 401)
+    check("guest: a staff page is neither listed nor opened", staff_seen(c) == (False, 404), staff_seen(c))
+    check("agent: the staff page listed and open", staff_seen(c, headers={"Authorization": "Bearer tok-smoke"}) == (True, 200))
     login(c, "stud@nure.ua", "student")
     check("student: list and page 200, draft page 404, history 403",
           [c.get(f"/api/guide{p}").status_code for p in ("", "/labs", "/changes-draft", "/history")] == [200, 200, 404, 403])
+    check("student: the staff page — neither listed nor opened", staff_seen(c) == (False, 404), staff_seen(c))
 
     login(c, "admin@nure.ua", "admin")
+    check("admin: the staff page listed and open", staff_seen(c) == (True, 200), staff_seen(c))
     pages = c.get("/api/guide").json()
     check("seed: pages from the guide's files, no draft", len(pages) == len(SEED) and all(p["slug"] != "changes-draft" for p in pages))
     check("seed logged", mongo[DB].history.count_documents({"coll": "guide", "actor": "seed"}) == len(pages))

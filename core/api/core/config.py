@@ -17,6 +17,7 @@ class Settings(BaseSettings):
     site_url: str = "http://127.0.0.1:5000"  # links in bot messages; Telegram won't link `localhost`
     guide_dir: str = "data/guide"  # the guide's seed and snapshot, *.md
     guide_readers: str = "admin"  # who reads the guide: admin — while it is unfinished (T136) · active — students too · all — anyone (T214); drafts stay the admin's
+    guide_staff: str = ""  # slug prefixes, comma-separated: pages for admins and agents only, the rest get 404 (T357; ods: `old-`)
     uploads_dir: str = ""  # files people upload; what they are and the default folder — the site's
     agent_tokens: str = ""  # `name:token,…` — AI agents that edit the site's texts (deps.editor_user); empty = no such way in
     week_hours: str = "15-23"  # «Мій тиждень» (T177): the hours of the grid, from-to
@@ -44,6 +45,10 @@ class Settings(BaseSettings):
     @property
     def admin_list(self) -> list[str]:
         return [e.strip() for e in self.admin_emails.split(",") if e.strip()]
+
+    @property
+    def staff_pages(self) -> tuple[str, ...]:
+        return tuple(p.strip() for p in self.guide_staff.split(",") if p.strip())
 
     @property
     def agents(self) -> dict[str, str]:

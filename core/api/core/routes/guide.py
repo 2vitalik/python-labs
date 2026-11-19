@@ -2,7 +2,8 @@
 (T153, `bin/guide`); every save goes to `history` with a note, and a note also lands in the «Що змінилось» draft page
 until published — by an admin only.
 Who reads is the site's `guide_readers`: admins and agents only while the guide is unfinished (T136), students too (`active`),
-or anyone, a guest too (`all`, T214); a non-admin gets `public` as the body and 404 for DRAFT (T157, drafts.py)."""
+or anyone, a guest too (`all`, T214); a non-admin gets `public` as the body and 404 for DRAFT (T157, drafts.py)
+and for the staff's pages (`guide_staff`, T357)."""
 from datetime import date
 
 from fastapi import APIRouter, Depends, HTTPException, Request
@@ -44,9 +45,15 @@ async def reader(request: Request, user: User | None = Depends(current_user)) ->
     return await editor_user(request, user)
 
 
+def staff_page(slug: str) -> bool:
+    """A page for admins and agents only (`guide_staff`): the old labs on ods."""
+    return slug.startswith(settings.staff_pages)
+
+
 @router.get("")
 async def list_pages(user: User | None = Depends(reader)):
-    pages = await Guide.find(Guide.slug != DRAFT).to_list()
+    staff = user and user.status == Status.admin
+    pages = [g for g in await Guide.find(Guide.slug != DRAFT).to_list() if staff or not staff_page(g.slug)]
     return [{"slug": g.slug, "title": g.title, "updated": stamp(g.updated_at)} for g in pages]
 
 
@@ -68,7 +75,7 @@ async def history(slug: str = "", user: User = Depends(editor_user)):
 async def get_page(slug: str, user: User | None = Depends(reader)):
     if user and user.status == Status.admin:
         return (await page(slug)).api()
-    if slug == DRAFT:
+    if slug == DRAFT or staff_page(slug):
         raise HTTPException(404)
     data = (await page(slug)).api()
     return data | {"body": data["public"]}
