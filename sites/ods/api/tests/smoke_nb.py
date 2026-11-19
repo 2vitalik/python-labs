@@ -98,13 +98,18 @@ check("outputs: a picture that is not a PNG, or not base64, is no picture", not 
 check("not a notebook", all(labs_nb.NOT_NB == raises(labs_nb.read, b) for b in (b"hello", b"{}", b'{"cells": 1}', b"print(1)\n")))
 check("marimo that is not Python names the line", "рядок" in raises(labs_nb.read, b"import marimo\napp = marimo.App(\n"))
 
-ok = grade(2, 2, True, f, None, "record")
-check("grade: everything done, one star — the work reaches 16, a recording lets in 16", (ok["work"], ok["cap"], ok["hint"]) == (16, 16, 16)
+f4 = json.loads(json.dumps(f))
+f4["count"]["stars"] = [1, 4]  # one star of four, as in the real labs
+ok = grade(2, 2, True, f4, None, "record")
+check("grade: everything done, one star of four — the work reaches 16, a recording lets in 16", (ok["work"], ok["cap"], ok["hint"]) == (16, 16, 16)
       and [s["level"] for s in ok["steps"]] == [12, 13, 14, 16, 18, 19, 20], ok)
-check("grade: needs in words", [n["text"] for n in ok["steps"][0]["needs"]] == ["2 із 2 ✅", "виконано згори донизу без помилок"]
+check("grade: needs in words", [n["text"] for n in ok["steps"][0]["needs"]] == ["відповіді 2 із 2", "виконано згори донизу без помилок"]
       and [n["text"] for n in ok["steps"][2]["needs"]] == ["кроки 2 із 2", "графіки 1 із 1", "висновки 1 із 1", "рапорт"])
-check("grade: no defence named — no cap; none — 12; the teacher's stars over the file", grade(2, 2, True, f, None, "")["hint"] == 16
-      and grade(2, 2, True, f, None, "none")["hint"] == 12 and grade(2, 2, True, f, 1, "live")["work"] == 16 and grade(2, 2, True, f, 0, "live")["work"] == 14)
+one = grade(2, 2, True, f, None, "live")
+check("grade: a lab of one star has no levels of two and three — its one star is all, 20", [s["level"] for s in one["steps"]] == [12, 13, 14, 16, 20]
+      and one["work"] == 20 and grade(2, 2, True, f, None, "record")["hint"] == 16, one)
+check("grade: no defence named — no cap; none — 12; the teacher's stars over the file", grade(2, 2, True, f4, None, "")["hint"] == 16
+      and grade(2, 2, True, f4, None, "none")["hint"] == 12 and grade(2, 2, True, f4, 1, "live")["work"] == 16 and grade(2, 2, True, f4, 0, "live")["work"] == 14)
 check("grade: a wrong answer or an error — not even 12", grade(1, 2, True, f, None, "live")["work"] is None and grade(2, 2, True, bad, None, "live")["work"] is None)
 half = json.loads(json.dumps(f))
 half["count"] |= {"plots": [0, 1], "report": False}  # 3 of 5 items

@@ -1,5 +1,6 @@
 """MY — «Моя лаба» of one student (T354 §5): the card, the line, the versions of the notebook, what the site sees in the file,
 the grade hint, the formats to start in, the student's deadline."""
+import secrets
 from datetime import datetime, timezone
 
 from pydantic import BaseModel
@@ -31,11 +32,21 @@ async def due_of(lab: int, user: User) -> datetime | None:
     return effective(await LabMark.find_one(LabMark.user == user.email, LabMark.lab == lab), base)
 
 
+async def card_of(v: LabVariant, live: bool) -> str:
+    """The card to paste; a lab whose check() reports to the site adds the card's token (made on the first ask)."""
+    if not live:
+        return v.card
+    if not v.token:
+        await v.set({LabVariant.token: secrets.token_urlsafe(9)})
+    return f'{v.card}\nTOKEN = "{v.token}"'
+
+
 async def my(v: LabVariant, user: User) -> dict:
     f = await LabShape.find_one(LabShape.lab == v.lab).project(Formats)
     files = await heads(v)
     due = await due_of(v.lab, user)
     handed = max((utc(at) for at in (v.checked_at, files[0].at if files else None) if at), default=None)
     late = None if not due else (handed or datetime.now(timezone.utc)) > due
-    return v.api() | {"files": [file_api(x) for x in files], "due": when(due), "late": late,
+    return v.api() | {"card": await card_of(v, bool(f and f.live)), "files": [file_api(x) for x in files], "due": when(due),
+                      "late": late,
                       "formats": {"jupyter": bool(f and f.jupyter), "marimo": bool(f and f.marimo), "live": bool(f and f.live)}}

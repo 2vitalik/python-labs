@@ -1,7 +1,9 @@
 <script setup>
 import { computed } from 'vue'
 
-import { markOf } from '../labText.js'
+import { vHint } from '@core/hint.js'
+
+import { markOf, numOf } from '../labText.js'
 
 // the answers of a work next to the key (the teacher's eyes only): the student's number, the mark, the key ± its step,
 // and under a wrong one the trap it fell into, when the site knows it
@@ -22,7 +24,7 @@ const rows = computed(() => Object.entries(props.answers || {}).map(([name, a]) 
           <td><code>{{ r.name }}</code></td>
           <td class="num">{{ r.got ?? '—' }}</td>
           <td>{{ r.mark }}</td>
-          <td class="num">{{ r.a.value }}<span v-if="r.a.step" class="text-secondary small"> ± {{ r.a.step }}</span></td>
+          <td v-hint="String(r.a.value)" class="num">{{ numOf(r.a.value, r.a.step) }}<span v-if="r.a.step" class="text-secondary small"> ± {{ r.a.step }}</span></td>
         </tr>
         <tr v-if="r.trap" class="trap"><td></td><td colspan="3">{{ r.trap }}</td></tr>
       </template>

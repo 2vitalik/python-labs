@@ -35,7 +35,7 @@ const open = ref(false)
 .nb-line.ok { color: var(--bs-success-text-emphasis); background: var(--bs-success-bg-subtle); }
 .nb-line.bad { color: var(--bs-danger-text-emphasis); background: var(--bs-danger-bg-subtle); }
 .nb-line.none { color: var(--bs-secondary-color); background: var(--bs-tertiary-bg); }
-.nb-img { display: block; max-width: 100%; height: auto; margin: .35rem 0 0 .5rem; cursor: zoom-in; background: #fff; border-radius: .2rem; }
+.nb-img { display: block; max-width: min(100%, 44rem); height: auto; margin: .35rem 0 0 .5rem; cursor: zoom-in; background: #fff; border-radius: .2rem; }
 .nb-latex { margin: .25rem 0 0 .5rem; overflow-x: auto; }
 .nb-err { margin-top: .25rem; padding: .3rem .5rem; border-radius: .3rem; background: var(--bs-danger-bg-subtle); color: var(--bs-danger-text-emphasis); font-size: .85rem; }
 .nb-trace { padding: .25rem 0 0; color: inherit; }

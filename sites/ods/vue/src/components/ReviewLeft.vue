@@ -5,6 +5,7 @@ import { flash } from '@core/anchors.js'
 import { vHint } from '@core/hint.js'
 import { fmtWhen } from '@core/labs.js'
 
+import { keyWord } from '../labText.js'
 import NotebookModes from './NotebookModes.vue'
 import NotebookView from './NotebookView.vue'
 
@@ -36,7 +37,7 @@ async function go(t) {
     </div>
     <div v-if="nb && pills.length" class="d-flex flex-wrap gap-1 mb-2">
       <button v-for="t in pills" :key="t.key" v-hint="tip(t)" type="button" class="tk" :class="look(t)" :disabled="!t.cell" @click="go(t)">
-        {{ t.role === 'star' && !String(t.key).startsWith('★') ? `★ ${t.key}` : t.key }}</button>
+        {{ keyWord(t.key, t.role) }}</button>
     </div>
     <NotebookView v-if="nb" :cells="nb.cells" :mode :other :tasks="nb.facts?.tasks" />
     <p v-else-if="loading" class="text-secondary">Завантажую ноутбук…</p>

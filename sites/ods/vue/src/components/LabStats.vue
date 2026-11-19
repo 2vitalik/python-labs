@@ -46,7 +46,7 @@ const who = (w) => w.who?.map((x) => `${x.name || x.nick} (${x.vid})`).join('\n'
           <span class="st-n">✅ {{ s.ok }} · ❌ {{ s.bad }}</span>
           <ul v-if="s.why?.length" class="st-why list-unstyled mb-0">
             <li v-for="w in s.why" :key="w.text" :class="{ quiet: !w.text || w.text === MISSING }">
-              <span v-hint="who(w)">{{ cause(w) }} — {{ w.n }}</span>
+              <span v-hint="who(w)"><b>{{ w.n }}</b> × {{ cause(w) }}</span>
             </li>
           </ul>
         </div>

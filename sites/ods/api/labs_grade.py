@@ -42,20 +42,25 @@ def grade(ok: int, total: int, checked: bool, facts: dict | None, stars: int | N
     """GRADE = {steps: [{level, title, way, needs, ok}], work, way, cap, hint}; `stars` — the teacher's word over the file."""
     facts = facts or {}
     count = facts.get("count") or {}
-    of_stars = (count.get("stars") or [None, None])[1] or 4
+    of_stars = (count.get("stars") or [None, None])[1]
     got = stars if stars is not None else (count.get("stars") or [None])[0]
-    needs = {12: [need("answers", checked and total > 0 and ok == total, f"{ok} із {total} ✅"),
+    needs = {12: [need("answers", checked and total > 0 and ok == total, f"відповіді {ok} із {total}"),
                   need("ran", ran_ok(facts) if facts else None, "виконано згори донизу без помилок")],
              13: [half(count)],
              14: [pair(count, "tasks", "кроки"), pair(count, "plots", "графіки"), pair(count, "conclusions", "висновки"),
                   need("report", count.get("report"), "рапорт")]}
-    for level, k in ((16, 1), (18, 2), (19, 3), (20, of_stars)):
-        needs[level] = [need("stars", None if got is None else got >= k, f"зірочок {k}")]
-    steps = [{"level": lv, "title": title, "way": w, "needs": needs[lv], "ok": all3(n["ok"] for n in needs[lv])} for lv, title, w in STEPS]
+    star = {16: 1, 18: 2, 19: 3, 20: of_stars or 4}
+    for level, k in star.items():
+        needs[level] = [need("stars", None if got is None else got >= k, f"зірочок {k}" if level < 20 or of_stars else "усі зірочки")]
+    # a lab with fewer stars than a level asks for has no such level: «усі» of a two-star lab are two
+    shown = [x for x in STEPS if not (of_stars and x[0] in star and star[x[0]] > of_stars)]
+    steps = [{"level": lv, "title": title, "way": w, "needs": needs[lv], "ok": all3(n["ok"] for n in needs[lv])} for lv, title, w in shown]
     ok_at = {s["level"]: s["ok"] is True for s in steps}
     reach = {12: ok_at[12], 13: ok_at[12] and ok_at[13], 14: ok_at[12] and ok_at[14]}
-    for prev, lv in ((14, 16), (16, 18), (18, 19), (19, 20)):  # each star level stands on the one below
-        reach[lv] = reach[prev] and ok_at[lv]
+    prev = 14
+    for lv in (16, 18, 19, 20):  # each star level stands on the one below it in this lab
+        if lv in ok_at:
+            reach[lv], prev = reach[prev] and ok_at[lv], lv
     work = max((lv for lv, yes in reach.items() if yes), default=None)
     cap = CAPS.get(way)
     return {"steps": steps, "work": work, "way": way, "cap": cap, "hint": None if work is None else min(work, cap or 20)}

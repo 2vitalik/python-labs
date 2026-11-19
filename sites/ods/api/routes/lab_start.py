@@ -1,6 +1,5 @@
 """«Мій ноутбук» (T354 §5, §8, §9): the lab's template with the student's card in it, as a file — Jupyter or marimo;
 a lab whose check() reports to the site gets the card's token too."""
-import secrets
 from urllib.parse import quote
 
 from fastapi import APIRouter, Depends, HTTPException, Query, Response
@@ -9,7 +8,7 @@ import labs_start
 from core.deps import active_user
 from core.models.user import User
 from lab_claim import mine
-from models.lab import LabVariant
+from lab_my import card_of
 from models.lab_shape import LabShape
 
 router = APIRouter(prefix="/api/variants")
@@ -25,13 +24,8 @@ async def start(lab: int, kind: str = Query("jupyter", alias="as"), user: User =
     tpl = shape and (shape.jupyter if kind == "jupyter" else shape.marimo)
     if not tpl:
         raise HTTPException(404, f"Шаблону {kind} для лаби {lab} ще нема — скажи викладачеві")
-    card = v.card.split("\n")
-    if shape.live:
-        if not v.token:
-            await v.set({LabVariant.token: secrets.token_urlsafe(9)})
-        card.append(f'TOKEN = "{v.token}"')
     try:
-        body = labs_start.made(kind, tpl, card)
+        body = labs_start.made(kind, tpl, (await card_of(v, shape.live)).split("\n"))
     except ValueError:
         raise HTTPException(404, f"У шаблоні {kind} лаби {lab} нема місця для картки — скажи викладачеві") from None
     ext, mime = FILES[kind]

@@ -1,5 +1,8 @@
 <script setup>
+import { vHint } from '@core/hint.js'
 import { fmtWhen } from '@core/labs.js'
+
+import { sameOf } from '../labText.js'
 
 // the teacher's rerun of the file (bin/nbrun, RUN): when, in what, how long, whether its line says what the student's
 // did, the errors; `show` — the executed copy into the left column
@@ -10,9 +13,10 @@ defineEmits(['show'])
 <template>
   <p v-if="!run" class="small text-secondary mb-0">Ще не перезапускали: <code>bin/nbrun</code> на ноутбуці викладача.</p>
   <div v-else class="small">
-    <div>{{ fmtWhen(run.at) }}<template v-if="run.engine"> · {{ run.engine }}</template><template v-if="run.seconds"> · {{ run.seconds }} с</template></div>
+    <div>{{ fmtWhen(run.at) }}<template v-if="run.seconds"> · {{ Math.max(1, Math.round(run.seconds)) }} с</template>
+      <template v-if="run.engine"> · <span v-hint="run.engine" class="rv-dot">у чому</span></template></div>
     <div>
-      <span :class="run.same ? 'text-success' : 'text-danger'">{{ run.same ? '✅ рядок збігся з рядком студента' : '≠ рядок не збігся з рядком студента' }}</span>
+      <span :class="sameOf(run).cls">{{ sameOf(run).text }}</span>
       <template v-if="run.total"> · {{ run.right }} / {{ run.total }} ✅</template>
     </div>
     <code v-if="run.line" class="d-block text-break mt-1">{{ run.line }}</code>

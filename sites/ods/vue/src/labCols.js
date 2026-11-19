@@ -28,7 +28,8 @@ function lab(n) {
     L('hint', 'number', 'Підказка', '💡', (r) => v(r)?.hint, { fam: 'points', sum: false, title: `${g}: підказка оцінки — рівень роботи й форма захисту` }),
     L('way', 'enum', 'Захист', '🎓', (r) => v(r)?.defended || v(r)?.way || null, { fam: 'points', options: WAYS,
       sub: (r) => (v(r)?.defended ? 'прийнято' : v(r)?.way ? 'намір' : '') }),
-    L('stars', 'number', 'Зірочок', '⭐', (r) => v(r)?.stars, { fam: 'points', sum: false }),
+    L('stars', 'number', 'Зірочок', '⭐', (r) => v(r)?.stars, { fam: 'points', sum: false, sub: (r) => (v(r)?.stars_file && v(r).stars ? 'з файла' : ''),
+      title: `${g}: зірочки, що враховуються — слово викладача, а без нього — з файла` }),
     L('points', 'number', 'Бали', '💯', (r) => v(r)?.points, { fam: 'points', hint: (r) => v(r)?.note }),
     L('pnote', 'text', 'Нотатка до балів', '🗒', (r) => v(r)?.note, { fam: 'points' }),
   ]

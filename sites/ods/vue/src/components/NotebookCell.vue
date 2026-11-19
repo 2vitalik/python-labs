@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 
 import { nbMd } from '../labMd.js'
+import { keyWord } from '../labText.js'
 import NotebookOut from './NotebookOut.vue'
 
 // one cell: the task's key and the run's counter in the gutter, the text or the code, the outputs under the code.
@@ -10,10 +11,7 @@ const props = defineProps({ c: Object, changed: Boolean })
 const code = computed(() => props.c.kind === 'code')
 const md = computed(() => props.c.kind === 'markdown')
 const html = computed(() => (md.value ? nbMd(props.c.source) : ''))
-const key = computed(() => {
-  const k = props.c.key && String(props.c.key)
-  return k && props.c.role === 'star' && !k.startsWith('★') ? `★ ${k}` : k
-})
+const key = computed(() => props.c.key && keyWord(props.c.key, props.c.role))
 </script>
 
 <template>

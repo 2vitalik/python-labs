@@ -12,8 +12,10 @@ async def variants(users: list[User]) -> dict:
     out = {u.email: {"variants": {}} for u in users}
     for v in await LabVariant.find({"student": {"$in": list(out)}}).to_list():
         row = v.row()
+        own = ((row["count"] or {}).get("stars") or [None])[0]  # the stars that count: the teacher's word, else the file's
         out[v.student]["variants"][str(v.lab)] = {k: row[k] for k in KEYS} | {
-            "file_at": (row["file"] or {}).get("at"), "work": row["grade"]["work"], "hint": row["grade"]["hint"]}
+            "file_at": (row["file"] or {}).get("at"), "work": row["grade"]["work"], "hint": row["grade"]["hint"],
+            "stars": own if v.stars is None else v.stars, "stars_file": v.stars is None and own is not None}
     return out
 
 

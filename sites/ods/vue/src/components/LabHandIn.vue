@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 
 import Reveal from '@core/components/Reveal.vue'
+import { fmtWhen } from '@core/labs.js'
 
 import { pullLabFile, putMyLab } from '../api.js'
 import LabDrop from './LabDrop.vue'
@@ -10,7 +11,8 @@ import LabDrop from './LabDrop.vue'
 // «інший спосіб» — open from the start for someone who has handed in a line before and no file
 const props = defineProps({ n: Number, lab: Object })
 const emit = defineEmits(['got'])
-const other = ref(!!props.lab.line && !props.lab.file?.id)
+// open from the start for a line without a file, and for a marimo file: it keeps no outputs, the line comes here
+const other = ref((!!props.lab.line && !props.lab.file?.id) || (props.lab.file?.kind === 'marimo' && !props.lab.attempts))
 const link = ref(props.lab.notebook || '')
 const line = ref(props.lab.line || '')
 const busy = ref('')  // which of the two is being sent
@@ -41,6 +43,8 @@ const check = () => run('line', async () => {
 <template>
   <section class="mb-4">
     <h2 class="h5">Здати</h2>
+    <p v-if="lab.due" class="small text-secondary mb-2">Дедлайн {{ fmtWhen(lab.due) }}<template v-if="lab.late"> ·
+      <span class="text-danger">після дедлайну</span></template></p>
     <LabDrop :n @got="emit('got', $event)" />
     <a href="#" class="lab-dot small d-inline-block mt-1" @click.prevent="other = !other">інший спосіб</a>
     <Reveal :show="other">

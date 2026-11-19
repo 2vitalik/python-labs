@@ -29,6 +29,7 @@ const real = computed(() => rows.value.filter((r) => r.n > 0 && inGroup(r)))  //
 const taken = computed(() => rows.value.filter((r) => r.student && inGroup(r)))
 const shown = computed(() => taken.value.filter((r) => !picked.value || picked.value.has(r.vid)))
 const count = (k) => taken.value.filter(QUICK[k][1]).length
+const runs = computed(() => rows.value.some((r) => r.file?.run))  // the rerun column only once there is a rerun
 
 function choose(k) {
   quick.value = k
@@ -50,6 +51,7 @@ onMounted(async () => (rows.value = await getLabResults(n.value)))
       <span class="small text-secondary">картки взяли {{ taken.filter((r) => r.n > 0).length }} із {{ real.length }}</span>
     </div>
     <div v-if="taken.length" class="d-flex flex-wrap align-items-center gap-1 mb-3">
+      <span class="small text-secondary me-1">показати</span>
       <button v-for="(q, k) in QUICK" :key="k" type="button" class="btn btn-sm chip" :class="quick === k ? 'btn-secondary' : 'btn-outline-secondary'"
               @click="choose(k)">{{ q[0] }} <span class="opacity-75">{{ count(k) }}</span></button>
     </div>
@@ -58,11 +60,11 @@ onMounted(async () => (rows.value = await getLabResults(n.value)))
     <div v-else-if="rows.length" class="table-responsive">
       <table class="table table-sm align-middle">
         <thead class="small">
-          <tr><th>Студент</th><th>Варіант</th><th>Відповіді</th><th>Файл</th><th>Пункти</th><th>Перезапуск</th><th>Захист</th>
+          <tr><th>Студент</th><th>Варіант</th><th>Відповіді</th><th>Файл</th><th>Пункти</th><th v-if="runs">Перезапуск</th><th>Захист</th>
             <th>Підказка</th><th>Бали</th><th>Нотатка</th><th></th></tr>
         </thead>
         <tbody>
-          <LabResultsRow v-for="r in shown" :key="r.vid" :n :r />
+          <LabResultsRow v-for="r in shown" :key="r.vid" :n :r :runs />
         </tbody>
       </table>
     </div>

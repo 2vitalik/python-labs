@@ -99,8 +99,8 @@ with TestClient(main.app) as c:
     my = r.json()
     check("A's first file names the card and checks its line", r.status_code == 200 and my["vid"] == "КН-1-01" and my["attempts"] == 1
           and my["ok"] == 2 and len(my["files"]) == 1 and my["file"]["line"] and my["file"]["kind"] == "ipynb", r.text[:300])
-    check("A: the facts and the grade hint off the file", my["facts"]["count"]["tasks"] == [2, 2] and my["facts"]["tool"] == "colab"
-          and (my["grade"]["work"], my["grade"]["hint"]) == (16, 16) and my["formats"] == {"jupyter": True, "marimo": True, "live": True}, my["grade"])
+    check("A: the facts and the grade hint off the file (a one-star lab: its star is all of them)", my["facts"]["count"]["tasks"] == [2, 2]
+          and my["facts"]["tool"] == "colab" and (my["grade"]["work"], my["grade"]["hint"]) == (20, 20) and my["formats"] == {"jupyter": True, "marimo": True, "live": True}, my["grade"])
     first = my["file"]["id"]
     my = send(c, nb(line="x=5 y=3")).json()
     check("A: a second version, its line a second attempt with the trap named", len(my["files"]) == 2 and my["attempts"] == 2
@@ -121,7 +121,7 @@ with TestClient(main.app) as c:
           and my["file"]["kind"] == "marimo" and my["facts"]["ran"] is None and my["grade"]["work"] is None, my["facts"]["count"])
     marimo_id = my["file"]["id"]
     alerts = [e["text"] for e in mongo[DB].events.find({"kind": "lab"})]
-    check("an alert per file", len(alerts) == 3 and "📎 ноутбук: 2/2 ✅" in alerts[0] and "підказка 16" in alerts[0] and "версія 3" in alerts[2], alerts)
+    check("an alert per file", len(alerts) == 3 and "📎 ноутбук: 2/2 ✅" in alerts[0] and "підказка 20" in alerts[0] and "версія 3" in alerts[2], alerts)
 
     v = c.get(f"/api/variants/file/{first}").json()
     check("viewer: the notebook with roles, tasks and outputs", v["lab"] == 1 and v["vid"] == "КН-1-01" and v["tool"] == "colab"
@@ -195,7 +195,7 @@ with TestClient(main.app) as c:
     rv = c.get("/api/variants/1/results/КН-1-01").json()
     check("review: the key, the values, the versions, the facts, the ladder, the tasks, the neighbours",
           rv["answers"]["x"]["value"] == 2 and rv["values"] == {"x": 5, "y": 3} and len(rv["files"]) == 3 and rv["facts"]["count"]
-          and len(rv["grade"]["steps"]) == 7 and [t["key"] for t in rv["shape"]["tasks"]][:2] == ["1.1", "1.2"]
+          and len(rv["grade"]["steps"]) == 5 and [t["key"] for t in rv["shape"]["tasks"]][:2] == ["1.1", "1.2"]
           and rv["prev"] is None and rv["next"] == "КН-1-02", {k: rv[k] for k in ("prev", "next")})
     st = {s["name"]: s for s in c.get("/api/variants/1/stats").json()}
     check("stats: where they go wrong, by answer, with the cause and who", (st["x"]["ok"], st["x"]["bad"]) == (0, 2)

@@ -8,9 +8,11 @@ LABS = ",".join(f"lab{n}.ok,lab{n}.points" for n in range(1, settings.labs + 1))
 views_seed.ALL_COLS = f"fio,seen,bot,tg,{LABS},fields:"
 views_seed.START_COLS = "fio,seen,last,bot,tg,polls:start"
 views_seed.START_ABOUT = "Лійка реєстрації: хто зайшов на сайт і привʼязав бота."
-# «Лаба N»: when the line came next to the student's deadline; the platform's state column reads repositories — left out
-VARIANT = "lab.vid,lab.ok,lab.tries,lab.checked,lab.due,lab.nb,lab.points,lab.pnote"  # sites/ods/vue/src/labCols.js
+# «Лаба N»: when the line came next to the student's deadline, the notebook file and what the rules give for it (T354);
+# the platform's state column reads repositories — left out
+VARIANT = "lab.vid,lab.ok,lab.tries,lab.checked,lab.due,lab.nb,lab.file,lab.work,lab.hint,lab.way,lab.stars,lab.points,lab.pnote"  # labCols.js
 MARKS = "lab.asked,lab.ext,lab.met,lab.note,fields:lab,polls:lab"
 views_seed.LAB_COLS |= {0: f"{VARIANT},{MARKS}"}
 views_seed.DUE = False  # «Дедлайн N» judges by repositories: here it would call a student with every answer right late
-views_seed.LAB_ABOUT |= {0: "Лаба: картка кожного студента, рядок відповідей і спроби, ноутбук, бали; подовження й відповіді опитувань."}
+views_seed.LAB_ABOUT |= {0: "Лаба: картка кожного студента, рядок відповідей і спроби, ноутбук і його файл, "
+                                  "підказка за правилами, захист і зірочки, бали; подовження й відповіді опитувань."}
