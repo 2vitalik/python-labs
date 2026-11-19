@@ -1,0 +1,402 @@
+<title>Ігротека #365 рев’ю</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=Manrope:wght@600;700;800&display=swap">
+<style>
+/* Layout: one reading column; charts, chains and cards stack on narrow screens. Same look as the #126, #134, #352, #354 and #357 review pages. */
+:root {
+  --bg: #f6f4f1; --surface: #ffffff; --ink: #1c2024; --muted: #5a6068; --line: #e3ded6;
+  --accent: #c94f18; --accent-soft: #fbe8dd; --brown: #b85a18;
+  --ok: #1d7448; --ok-soft: #e2f2e8; --warn: #96580a; --warn-soft: #f9eedb;
+  --bad: #b3302a; --bad-soft: #f9e3e1; --info: #2d5aa6; --info-soft: #e6edf8;
+  --code: #f1eee9; --bar: #c94f18; --grid: #e9e4dc; --skip: #b9b3aa;
+  --font-head: "Manrope", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141619; --surface: #1c1f23; --ink: #e8e6e3; --muted: #a3a8ae; --line: #30353b;
+    --accent: #ff7f45; --accent-soft: #3a2418; --brown: #e0874a;
+    --ok: #5cc98f; --ok-soft: #173225; --warn: #f0b25a; --warn-soft: #3a2c14;
+    --bad: #ff8277; --bad-soft: #3d1c1a; --info: #8fb3f0; --info-soft: #1b2638;
+    --code: #181b1f; --bar: #f08a52; --grid: #2a2f35; --skip: #5d636a; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141619; --surface: #1c1f23; --ink: #e8e6e3; --muted: #a3a8ae; --line: #30353b;
+  --accent: #ff7f45; --accent-soft: #3a2418; --brown: #e0874a;
+  --ok: #5cc98f; --ok-soft: #173225; --warn: #f0b25a; --warn-soft: #3a2c14;
+  --bad: #ff8277; --bad-soft: #3d1c1a; --info: #8fb3f0; --info-soft: #1b2638;
+  --code: #181b1f; --bar: #f08a52; --grid: #2a2f35; --skip: #5d636a; color-scheme: dark;
+}
+body { background: var(--bg); color: var(--ink); font: 15px/1.6 var(--font-body); }
+.page { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 72px; }
+h1, h2, h3, h4 { font-family: var(--font-head); text-wrap: balance; line-height: 1.25; }
+h1 { font-size: clamp(1.7rem, 4vw, 2.4rem); margin: 0 0 6px; letter-spacing: -0.01em; }
+h2 { font-size: 1.5rem; margin: 56px 0 10px; display: flex; gap: 12px; align-items: baseline; }
+h3 { font-size: 1.12rem; margin: 28px 0 8px; }
+h4 { font-size: 0.98rem; margin: 0 0 6px; }
+p { margin: 0 0 10px; }
+a { color: var(--accent); }
+code { font-family: var(--font-mono); font-size: 0.86em; background: var(--code); padding: 0.05em 0.35em; border-radius: 4px; overflow-wrap: anywhere; }
+.num { font-family: var(--font-mono); font-size: 0.9rem; color: var(--surface); background: var(--brown); border-radius: 6px; padding: 2px 9px; }
+.sub { color: var(--muted); margin: 0 0 18px; }
+.lead { color: var(--muted); max-width: 78ch; }
+.kicker { text-transform: uppercase; letter-spacing: 0.07em; font-size: 0.72rem; color: var(--muted); margin: 0 0 4px; font-weight: 600; }
+.verdict { border: 1px solid var(--line); border-left: 5px solid var(--ok); background: var(--surface); border-radius: 10px; padding: 16px 20px; }
+.verdict ul { margin: 6px 0 0; padding-left: 20px; }
+.verdict li { margin: 4px 0; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; margin: 16px 0 0; }
+.tile { background: var(--ok-soft); border-radius: 10px; padding: 10px 14px; }
+.tile b { display: block; font: 800 1.9rem/1.1 var(--font-head); color: var(--ok); font-variant-numeric: tabular-nums; }
+.tile span { font-size: 0.88rem; }
+.tile.w { background: var(--warn-soft); } .tile.w b { color: var(--warn); }
+.wait { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 14px 0 0; }
+.wait > b { font-family: var(--font-head); font-size: 0.85rem; margin-right: 4px; }
+nav.toc { margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.92rem; }
+nav.toc a { text-decoration: none; border-bottom: 1px dashed currentColor; }
+.chip { display: inline-block; font-size: 0.75rem; font-weight: 600; border-radius: 999px; padding: 1px 9px; white-space: nowrap; }
+.chip.big { font-size: 0.85rem; padding: 3px 12px; white-space: normal; }
+.chip.ok { background: var(--ok-soft); color: var(--ok); }
+.chip.warn { background: var(--warn-soft); color: var(--warn); }
+.chip.bad { background: var(--bad-soft); color: var(--bad); }
+.chip.info { background: var(--info-soft); color: var(--info); }
+.chip.off { background: var(--code); color: var(--muted); }
+.pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; align-items: stretch; margin: 14px 0; }
+.pair > * { min-width: 0; }
+.box { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; }
+.box.now { border-color: var(--ok); }
+.box.miss { border-color: var(--warn); }
+.box h4 { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.box ul { margin: 6px 0 0; padding-left: 18px; }
+.box li { margin: 3px 0; }
+.box p { font-size: 0.92rem; }
+.scroll { overflow-x: auto; max-width: 100%; }
+table.grid { border-collapse: collapse; width: 100%; font-size: 0.9rem; background: var(--surface); }
+table.grid th, table.grid td { border: 1px solid var(--line); padding: 7px 10px; text-align: left; vertical-align: top; }
+table.grid th { background: var(--code); font-family: var(--font-head); font-size: 0.82rem; }
+table.grid td.n, table.grid th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+table.grid td.c { white-space: nowrap; }
+table.grid td.z { color: var(--muted); }
+table.grid tr.hl td { background: var(--warn-soft); }
+table.grid tfoot td { font-weight: 600; background: var(--code); }
+/* flow: a row per path, its steps as a chain of arrows */
+.flow { display: grid; grid-template-columns: 9rem 1fr; gap: 12px 16px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; margin: 14px 0; }
+.flow > * { min-width: 0; }
+.flow .who { font-family: var(--font-head); font-weight: 700; font-size: 0.92rem; }
+.flow .who small { display: block; font-family: var(--font-body); font-weight: 400; color: var(--muted); font-size: 0.78rem; }
+.flow hr { grid-column: 1 / -1; border: 0; border-top: 1px dashed var(--line); margin: 2px 0; width: 100%; }
+ol.chain { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 0; align-items: stretch; }
+ol.chain li { display: flex; align-items: center; }
+ol.chain li:not(:last-child)::after { content: "→"; color: var(--muted); font-weight: 600; padding: 0 8px; }
+.step { border: 1px solid var(--ok); background: var(--ok-soft); border-radius: 8px; padding: 5px 10px; font-size: 0.88rem; line-height: 1.3; }
+.step b { display: block; font-weight: 600; }
+.step small { color: var(--muted); font-size: 0.76rem; }
+.step.gate { border-color: var(--warn); background: var(--warn-soft); }
+.step.bad { border-color: var(--bad); background: var(--bad-soft); }
+.step.me { border-color: var(--info); background: var(--info-soft); }
+/* queue bar: one row = all queue rows, segment width = share */
+.qbar { display: flex; height: 30px; border-radius: 6px; overflow: hidden; gap: 2px; background: var(--surface); margin: 12px 0 8px; }
+.qbar span { display: block; min-width: 4px; }
+.q-done { background: var(--ok); } .q-skip { background: var(--skip); } .q-maybe { background: var(--info); }
+.q-imp { background: var(--warn); } .q-p3 { background: var(--bar); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 0.84rem; color: var(--muted); margin: 0 0 6px; }
+.legend i { display: inline-block; width: 11px; height: 11px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+.legend b { color: var(--ink); font-variant-numeric: tabular-nums; }
+/* charts: single-series bars, one scale per chart */
+.charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 16px; margin: 14px 0; }
+.chart { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px 10px; min-width: 0; }
+.chart h4 { margin: 0 0 2px; }
+.chart p.unit { color: var(--muted); font-size: 0.82rem; margin: 0 0 6px; }
+.chart svg { display: block; width: 100%; height: auto; }
+.chart .gl { stroke: var(--grid); stroke-width: 1; }
+.chart .base { stroke: var(--muted); stroke-width: 1; }
+.chart .bar { fill: var(--bar); }
+.chart .bar:hover { opacity: 0.8; }
+.chart text { fill: var(--muted); font: 11px var(--font-body); }
+.chart text.v { fill: var(--ink); font: 600 12px var(--font-mono); }
+.chart text.x { fill: var(--ink); font-weight: 600; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 14px 0; }
+.cards > * { min-width: 0; }
+.answer { border-left: 5px solid var(--info); }
+ol.next { padding-left: 22px; } ol.next li { margin: 6px 0; }
+@media (max-width: 700px) { .flow { grid-template-columns: 1fr; } }
+footer { margin-top: 56px; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 12px; }
+</style>
+
+<div class="page">
+<header>
+  <p class="kicker">python-labs · T365 · ігротека після хвилі 4</p>
+  <h1>Ігротека #365 рев’ю</h1>
+  <p class="sub">гілка <code>ods</code> · 6 комітів цієї сесії · без push · 20.11.2026 · хвиля — T364 · твої рішення — T366</p>
+
+  <div class="verdict">
+    <p><b>Важливе в ігротеці майже дописано: з 172 рядків п1–п2 на старті хвилі лишилось 11. Корпус — 1838 ігор у 17 родинах. Ширше описувати вже мало сенсу, бо кожна нова гра дає в 3,5 раза менше нового, ніж у першій хвилі. Час переходити від збирання до використання.</b></p>
+    <ul>
+      <li><b>Сесія хвилі 4 відпрацювала добре.</b> За 1,5 години вона додала 175 ігор і комітила на чистих точках, тож обрив на ліміті о 16:47 забрав лише одну гру й дрібні правки. Тепер вони в git.</li>
+      <li><b>Не встигла вона закінчення:</b> звіт, індекси, заливку в дев-базу й відповідь на твоє питання о 18:16. Індекси я перебудував, звіт — цей.</li>
+      <li><b>У дереві був і чужий залишок</b>: документи вичитки лекцій ods (T359 і T363). Закомітив його окремо, тексти не правив.</li>
+      <li><b>Моя рекомендація:</b> дописати 11 важливих рядків (≈15 хв Opus), 118 рядків п3 хвилею не описувати, а далі показати корпус там, де він потрібен: «як це буває в іграх» на картці каталогу.</li>
+    </ul>
+    <div class="tiles">
+      <div class="tile"><b>1838</b><span>ігор у корпусі, з них +175 за хвилю 4 · лінт — 0 проблем</span></div>
+      <div class="tile"><b>11</b><span>важливих рядків (п1–п2) лишилось із 172 на старті хвилі</span></div>
+      <div class="tile w"><b>118</b><span>рядків п3 у черзі · ще 11 «можливо вже описані»</span></div>
+      <div class="tile w"><b>16,5 → 4,7</b><span>нових пропозицій до словників на одну гру: хвиля 1 → хвиля 4</span></div>
+    </div>
+    <div class="wait"><b>Чекає тебе</b><span class="chip big warn">T366: Q1–Q5</span><span class="chip big warn">хвиля 4 — у дев-базу</span><span class="chip big warn">push гілки ods</span><span class="chip big off">стенд лекцій 8036 / 5038 ще живий</span></div>
+  </div>
+
+  <nav class="toc" aria-label="Зміст">
+    <a href="#commits">1 Що закомічено</a><a href="#session">2 Сесія хвилі 4</a><a href="#numbers">3 Ігротека в цифрах</a>
+    <a href="#worth">4 Скільки ще варто</a><a href="#overall">5 Загальний висновок</a><a href="#checks">6 Як перевірено</a><a href="#next">7 Що далі</a>
+  </nav>
+</header>
+
+<section id="commits">
+  <h2><span class="num">1</span>Що закомічено цієї ночі</h2>
+  <p class="lead">У дереві лишились залишки двох сесій, що впали на ліміті. Кожну закомітив окремо, за шляхами, чужого в коміти не брав.</p>
+  <div class="scroll"><table class="grid">
+    <thead><tr><th>Коміт</th><th>Що</th><th>Чиє</th></tr></thead>
+    <tbody>
+      <tr><td class="c"><code>f974f56</code></td><td>Звіт вичитки лекцій ods (T359), 15 виборів T363, README вузла ods, рядок CHANGELOG</td><td>сесія лекцій, як є</td></tr>
+      <tr><td class="c"><code>56f87cd</code></td><td>Остання описана гра (Riko), правки куратора в 13 описах, нотатки хвилі 4, стан черг</td><td>сесія хвилі 4</td></tr>
+      <tr><td class="c"><code>a1bfad9</code></td><td>Сім індексів корпусу перебудовано: востаннє їх рахували 9.11 на 1663 іграх</td><td>я</td></tr>
+      <tr><td class="c"><code>12e43d8</code> · <code>ae57047</code></td><td>Тікет цього звіту T365 і твої рішення T366</td><td>я</td></tr>
+      <tr><td class="c">останній</td><td>Звіт T365, ця сторінка, README вузла games, CHANGELOG, STATUS</td><td>я</td></tr>
+    </tbody>
+  </table></div>
+  <div class="pair">
+    <div class="box miss"><h4>Не чіпав <span class="chip warn">чуже</span></h4>
+      <ul>
+        <li>Код слайдів ods (<code>Slides.vue</code>, <code>slides.css</code>, <code>slideFit.js</code>…) змінено в дереві просто зараз. Схоже, сесія лекцій прокинулась від моєї записки й править знахідки свого QA.</li>
+        <li>Стенд лекцій живий: API 8036, сайт 5038, переглядач 5036, база <code>ods_t359_stand</code>. Висновки QA — у <code>.dev/.drafts/T359/qa.md</code>: 31 слайд прокручується, на телефоні смуга ‹ › нижче екрана, <code>lec12.md</code> названо «Тема 13».</li>
+      </ul>
+    </div>
+    <div class="box"><h4>Push <span class="chip off">не робив</span></h4>
+      <p>Гілка <code>ods</code> випереджає <code>origin/ods</code> на понад 220 комітів (останній push — 13.11). Хвиля 3 на сервері вже є; хвиля 4 і все ods — лише локально. Push і деплой — твоє слово.</p>
+    </div>
+  </div>
+</section>
+
+<section id="session">
+  <h2><span class="num">2</span>Сесія хвилі 4: висновок</h2>
+  <p class="lead">Сесія «Ігри для системи правил», 19.11, 15:21–16:47. Запит: опрацювати неописані ігри «за стандартною схемою», порціями, з максимальним ефортом, а покращення процесу записати.</p>
+
+  <div class="flow">
+    <div class="who">Як ішло<small>з комітів і витягу сесії</small></div>
+    <ol class="chain">
+      <li><div class="step"><b>15:21 запит</b><small>308 рядків + 23 «maybe»</small></div></li>
+      <li><div class="step"><b>15:29 план T364</b><small>п1–п2 спершу</small></div></li>
+      <li><div class="step"><b>15:34 ⊘ і яруси</b><small>31 рядок більше не крутиться</small></div></li>
+      <li><div class="step"><b>15:37–15:39 правки</b><small>5 помилок корпусу, 68 рядків черг</small></div></li>
+      <li><div class="step"><b>16:11 +88 ігор</b><small>коміт, чиста точка 1</small></div></li>
+      <li><div class="step"><b>16:46 +86 ігор</b><small>коміт, чиста точка 2</small></div></li>
+      <li><div class="step bad"><b>16:47 ліміт</b><small>до 20 пачок у роботі</small></div></li>
+      <li><div class="step gate"><b>18:16 твоє питання</b><small>без відповіді</small></div></li>
+      <li><div class="step me"><b>23:56 залишок</b><small>Riko + правки — у git</small></div></li>
+    </ol>
+  </div>
+
+  <div class="pair">
+    <div class="box now"><h4>Вдалось <span class="chip ok">добре</span></h4>
+      <ul>
+        <li><b>Порції з комітами</b>: обрив забрав одну гру з 175.</li>
+        <li><b>Яруси важливості</b>: спершу всі пачки п1–п2. Тому важливе майже закрите, хоч хвиля й не дійшла до кінця.</li>
+        <li><b>Позначка ⊘</b> для свідомо пропущених: 37 рядків більше не повертаються в пачки.</li>
+        <li><b>Змішані пачки</b> з хвостиків родин: 71 → 62 пачки.</li>
+        <li><b>Агенти читали сирці ігор</b> (HTML5-збірки Riko, Bee Magic, PuzzleScript Midwinter) і перевірили ⭐-лінки: 5 з 5 у пачці.</li>
+        <li><b>Помилки корпусу виправлялись дорогою</b>: у серію DROD хибно потрапив хорор-квест Countless Rooms of Death.</li>
+        <li>Нотатки <code>analysis/08</code> з рецептом продовження, лінт — 0.</li>
+      </ul>
+    </div>
+    <div class="box miss"><h4>Не встигла або схибила <span class="chip warn">хвіст</span></h4>
+      <ul>
+        <li>Агент I001 запустив <code>rule_words.py</code> і перезаписав спільний індекс. Куратор помітив і заборонив це в брифі v1.4, а я перебудував індекс повністю.</li>
+        <li>Важкі індекси не перебудовувались з 9.11. Тепер перебудовано.</li>
+        <li>Дев-база досі має 1663 гри: хвилю 4 не залито, смоук не гнали.</li>
+        <li>Нема <code>report.md</code>, README вузла, CHANGELOG і STATUS; галочки в плані T364 не стоять.</li>
+        <li>У нотатках стоїть «≈18:25», а коміт був о 16:46.</li>
+        <li>Твоє питання «Всі ліміти завершились правильно?» лишилось без відповіді. Відповідь — нижче.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box answer">
+    <h4>«Всі ліміти завершились правильно?» <span class="chip info">так</span></h4>
+    <p>Нічого не зламалось. Коміт о 16:46 зафіксував усе готове. Агенти, що працювали в момент обриву, напівфайлів не лишили: новий <code>riko.md</code> цілий (141 рядок, усі секції), 13 правок — завершені, лінт на 1838 файлах — 0 проблем. Пачки, що були в роботі, просто не дописані, а їхні рядки лишились у черзі як «remaining». Звідси ці 11 рядків п1–п2.</p>
+  </div>
+
+  <h3>Цікаве з хвилі 4</h3>
+  <div class="cards">
+    <div class="box"><h4>Riko</h4><p>Гармата стирчить перед героїнею: поворот замітає кут і розштовхує два предмети в різні боки. Єдиний ворог ходить передбачувано, тож гра робить його інструментом.</p></div>
+    <div class="box"><h4>Midwinter Springtime</h4><p>Пружини пружні вздовж осі й жорсткі поперек. Стиснув об стіну й зійшов — летиш над ямами до упору.</p></div>
+    <div class="box"><h4>PortalBox</h4><p>Портали сидять на гранях ящиків і їздять разом із ними. Вихід повертає напрям руху й орієнтацію ящика.</p></div>
+    <div class="box"><h4>Bee Magic</h4><p>Закляття — це маршрут: щойно останні кроки збіглися з візерунком, воно спрацьовує саме, навіть мимохіть.</p></div>
+  </div>
+</section>
+
+<section id="numbers">
+  <h2><span class="num">3</span>Ігротека в цифрах</h2>
+  <p class="lead">Чотири хвилі за 17 днів. Кожен опис — один шаблон: суть, поле, сутності, правила КОЛИ → ЯКЩО → ТО, вікна, фічі, варіації, мапа на каталог і пропозиції до словників.</p>
+
+  <div class="scroll"><table class="grid">
+    <thead><tr><th>Хвиля</th><th>Тікет</th><th>Дата</th><th class="n">Нових ігор</th><th class="n">Корпус</th><th class="n">Покриття, %</th><th class="n">Правил на гру</th><th class="n">Нових пропозицій на гру</th><th class="n">Нових «+»-тегів на гру</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>T253</td><td class="c">02.11</td><td class="n">275</td><td class="n">275</td><td class="n">68</td><td class="n">11,0</td><td class="n">16,5</td><td class="n">9,8</td></tr>
+      <tr><td>2</td><td>T260</td><td class="c">09.11</td><td class="n">681</td><td class="n">956</td><td class="n">61</td><td class="n">12,9</td><td class="n">7,9</td><td class="n">6,6</td></tr>
+      <tr><td>3</td><td>T265</td><td class="c">09.11</td><td class="n">707</td><td class="n">1663</td><td class="n">60</td><td class="n">14,2</td><td class="n">6,0</td><td class="n">6,2</td></tr>
+      <tr class="hl"><td>4</td><td>T364</td><td class="c">19.11</td><td class="n">175</td><td class="n">1838</td><td class="n">60</td><td class="n">14,0</td><td class="n">4,7</td><td class="n">4,0</td></tr>
+    </tbody>
+  </table></div>
+  <p class="lead">«Нова пропозиція» — назва, якої не було в жодній грі попередніх хвиль. Хвиля визначена за комітом, що додав файл гри.</p>
+
+  <h3>Скільки нового дає одна гра</h3>
+  <div class="charts">
+    <figure class="chart" role="img" aria-label="Нових пропозицій до словників на гру: хвиля 1 — 16,5; хвиля 2 — 7,9; хвиля 3 — 6,0; хвиля 4 — 4,7">
+      <h4>Нових пропозицій до словників</h4><p class="unit">на одну гру, за хвилями</p>
+      <svg viewBox="0 0 320 200" aria-hidden="true">
+        <line class="gl" x1="40" x2="310" y1="20" y2="20"/><line class="gl" x1="40" x2="310" y1="66.7" y2="66.7"/><line class="gl" x1="40" x2="310" y1="113.3" y2="113.3"/>
+        <text x="32" y="24" text-anchor="end">18</text><text x="32" y="70.7" text-anchor="end">12</text><text x="32" y="117.3" text-anchor="end">6</text><text x="32" y="164" text-anchor="end">0</text>
+        <path class="bar" d="M55.75,160 V35.7 Q55.75,31.7 59.75,31.7 H87.75 Q91.75,31.7 91.75,35.7 V160 Z"><title>Хвиля 1 (275 ігор): 16,5 на гру</title></path>
+        <path class="bar" d="M123.25,160 V102.6 Q123.25,98.6 127.25,98.6 H155.25 Q159.25,98.6 159.25,102.6 V160 Z"><title>Хвиля 2 (681 гра): 7,9 на гру</title></path>
+        <path class="bar" d="M190.75,160 V117.3 Q190.75,113.3 194.75,113.3 H222.75 Q226.75,113.3 226.75,117.3 V160 Z"><title>Хвиля 3 (707 ігор): 6,0 на гру</title></path>
+        <path class="bar" d="M258.25,160 V127.4 Q258.25,123.4 262.25,123.4 H290.25 Q294.25,123.4 294.25,127.4 V160 Z"><title>Хвиля 4 (175 ігор): 4,7 на гру</title></path>
+        <line class="base" x1="40" x2="310" y1="160" y2="160"/>
+        <text class="v" x="73.75" y="26" text-anchor="middle">16,5</text><text class="v" x="141.25" y="92.6" text-anchor="middle">7,9</text><text class="v" x="208.75" y="107.3" text-anchor="middle">6,0</text><text class="v" x="276.25" y="117.4" text-anchor="middle">4,7</text>
+        <text class="x" x="73.75" y="177" text-anchor="middle">хвиля 1</text><text class="x" x="141.25" y="177" text-anchor="middle">хвиля 2</text><text class="x" x="208.75" y="177" text-anchor="middle">хвиля 3</text><text class="x" x="276.25" y="177" text-anchor="middle">хвиля 4</text>
+        <text x="73.75" y="192" text-anchor="middle">275 ігор</text><text x="141.25" y="192" text-anchor="middle">681</text><text x="208.75" y="192" text-anchor="middle">707</text><text x="276.25" y="192" text-anchor="middle">175</text>
+      </svg>
+    </figure>
+    <figure class="chart" role="img" aria-label="Нових «+»-тегів механік на гру: хвиля 1 — 9,8; хвиля 2 — 6,6; хвиля 3 — 6,2; хвиля 4 — 4,0">
+      <h4>Нових «+»-тегів механік</h4><p class="unit">тегів поза каталогом, на одну гру</p>
+      <svg viewBox="0 0 320 200" aria-hidden="true">
+        <line class="gl" x1="40" x2="310" y1="20" y2="20"/><line class="gl" x1="40" x2="310" y1="90" y2="90"/>
+        <text x="32" y="24" text-anchor="end">10</text><text x="32" y="94" text-anchor="end">5</text><text x="32" y="164" text-anchor="end">0</text>
+        <path class="bar" d="M55.75,160 V26.8 Q55.75,22.8 59.75,22.8 H87.75 Q91.75,22.8 91.75,26.8 V160 Z"><title>Хвиля 1: 9,8 на гру</title></path>
+        <path class="bar" d="M123.25,160 V71.6 Q123.25,67.6 127.25,67.6 H155.25 Q159.25,67.6 159.25,71.6 V160 Z"><title>Хвиля 2: 6,6 на гру</title></path>
+        <path class="bar" d="M190.75,160 V77.2 Q190.75,73.2 194.75,73.2 H222.75 Q226.75,73.2 226.75,77.2 V160 Z"><title>Хвиля 3: 6,2 на гру</title></path>
+        <path class="bar" d="M258.25,160 V108 Q258.25,104 262.25,104 H290.25 Q294.25,104 294.25,108 V160 Z"><title>Хвиля 4: 4,0 на гру</title></path>
+        <line class="base" x1="40" x2="310" y1="160" y2="160"/>
+        <text class="v" x="73.75" y="17" text-anchor="middle">9,8</text><text class="v" x="141.25" y="61.6" text-anchor="middle">6,6</text><text class="v" x="208.75" y="67.2" text-anchor="middle">6,2</text><text class="v" x="276.25" y="98" text-anchor="middle">4,0</text>
+        <text class="x" x="73.75" y="177" text-anchor="middle">хвиля 1</text><text class="x" x="141.25" y="177" text-anchor="middle">хвиля 2</text><text class="x" x="208.75" y="177" text-anchor="middle">хвиля 3</text><text class="x" x="276.25" y="177" text-anchor="middle">хвиля 4</text>
+        <text x="73.75" y="192" text-anchor="middle">275 ігор</text><text x="141.25" y="192" text-anchor="middle">681</text><text x="208.75" y="192" text-anchor="middle">707</text><text x="276.25" y="192" text-anchor="middle">175</text>
+      </svg>
+    </figure>
+  </div>
+
+  <h3>Черги: 2288 рядків-кандидатів</h3>
+  <div class="qbar" role="img" aria-label="Описано 2111, пропущено свідомо 37, можливо вже описані 11, важливі п1–п2 11, п3 118">
+    <span class="q-done" style="flex: 2111" title="Описано: 2111"></span><span class="q-skip" style="flex: 37" title="Пропущено свідомо: 37"></span><span class="q-maybe" style="flex: 11" title="Можливо вже описані: 11"></span><span class="q-imp" style="flex: 11" title="Лишилось п1–п2: 11"></span><span class="q-p3" style="flex: 118" title="Лишилось п3: 118"></span>
+  </div>
+  <div class="legend">
+    <span><i class="q-done"></i>описано <b>2111</b> (92 %)</span><span><i class="q-skip"></i>пропущено ⊘ <b>37</b></span><span><i class="q-maybe"></i>«можливо вже описані» <b>11</b></span><span><i class="q-imp"></i>лишилось п1–п2 <b>11</b></span><span><i class="q-p3"></i>лишилось п3 <b>118</b> (5 %)</span>
+  </div>
+  <p class="lead">Рядків черг більше, ніж ігор: кілька рядків можуть вести на одну гру, а частину ігор хвилі 1 описали без черги.</p>
+
+  <h3>За родинами</h3>
+  <div class="scroll"><table class="grid">
+    <thead><tr><th>Родина</th><th class="n">Ігор</th><th class="n">+ хвиля 4</th><th class="n">Лишилось п1–п2</th><th class="n">Лишилось п3</th><th class="n">⊘</th><th class="n">«можливо»</th></tr></thead>
+    <tbody>
+      <tr><td>thinky</td><td class="n">151</td><td class="n">58</td><td class="n">3</td><td class="n">20</td><td class="n">9</td><td class="n">4</td></tr>
+      <tr><td>pencil-logic</td><td class="n">150</td><td class="n">29</td><td class="n">2</td><td class="n">18</td><td class="n">3</td><td class="n">2</td></tr>
+      <tr><td>tactics</td><td class="n">124</td><td class="n">2</td><td class="n z">0</td><td class="n">6</td><td class="n z">0</td><td class="n z">0</td></tr>
+      <tr><td>falling-match</td><td class="n">123</td><td class="n z">0</td><td class="n">1</td><td class="n z">0</td><td class="n">3</td><td class="n z">0</td></tr>
+      <tr><td>push-slide</td><td class="n">123</td><td class="n">51</td><td class="n">1</td><td class="n">40</td><td class="n">4</td><td class="n z">0</td></tr>
+      <tr><td>chess-abstract</td><td class="n">117</td><td class="n">1</td><td class="n z">0</td><td class="n z">0</td><td class="n">2</td><td class="n z">0</td></tr>
+      <tr><td>maze-arcade</td><td class="n">114</td><td class="n z">0</td><td class="n z">0</td><td class="n z">0</td><td class="n">1</td><td class="n z">0</td></tr>
+      <tr><td>build-sim</td><td class="n">113</td><td class="n">1</td><td class="n z">0</td><td class="n z">0</td><td class="n">1</td><td class="n z">0</td></tr>
+      <tr><td>board-digital</td><td class="n">112</td><td class="n">4</td><td class="n z">0</td><td class="n">3</td><td class="n">1</td><td class="n z">0</td></tr>
+      <tr><td>program-robots</td><td class="n">100</td><td class="n">13</td><td class="n z">0</td><td class="n">8</td><td class="n z">0</td><td class="n z">0</td></tr>
+      <tr><td>roguelike</td><td class="n">99</td><td class="n">1</td><td class="n z">0</td><td class="n">1</td><td class="n">3</td><td class="n z">0</td></tr>
+      <tr><td>hidden-deduction</td><td class="n">98</td><td class="n">2</td><td class="n z">0</td><td class="n">1</td><td class="n z">0</td><td class="n z">0</td></tr>
+      <tr><td>tower-lanes</td><td class="n">91</td><td class="n z">0</td><td class="n z">0</td><td class="n z">0</td><td class="n">1</td><td class="n z">0</td></tr>
+      <tr><td>word-number</td><td class="n">89</td><td class="n">8</td><td class="n">3</td><td class="n">8</td><td class="n">2</td><td class="n z">0</td></tr>
+      <tr><td>grid-platformer</td><td class="n">86</td><td class="n">4</td><td class="n z">0</td><td class="n">5</td><td class="n">1</td><td class="n">2</td></tr>
+      <tr><td>connect-rotate</td><td class="n">74</td><td class="n z">0</td><td class="n">1</td><td class="n">8</td><td class="n">4</td><td class="n">3</td></tr>
+      <tr><td>dig-gravity</td><td class="n">74</td><td class="n">1</td><td class="n z">0</td><td class="n z">0</td><td class="n">2</td><td class="n z">0</td></tr>
+    </tbody>
+    <tfoot><tr><td>Разом</td><td class="n">1838</td><td class="n">175</td><td class="n">11</td><td class="n">118</td><td class="n">37</td><td class="n">11</td></tr></tfoot>
+  </table></div>
+</section>
+
+<section id="worth">
+  <h2><span class="num">4</span>Скільки ще варто обробити</h2>
+  <p class="lead">Оцінка ціни — за нотатками хвилі 3: пачка з 5 ігор ≈ 180 тис. токенів Opus. Ліміт бачиш лише ти (<code>/usage</code>).</p>
+  <div class="scroll"><table class="grid">
+    <thead><tr><th>Що</th><th class="n">Рядків</th><th class="n">Пачок</th><th class="n">Токенів</th><th>Варто?</th></tr></thead>
+    <tbody>
+      <tr><td><b>п1–п2</b>: Балда, Inkwell Fields, Чайнворд, The Stupefying Sweater, Shareflakes, Drop Duchy, Dungeons &amp; Diagrams, Dino Sort, D-topia, два сиквели DROD</td><td class="n">11</td><td class="n">3</td><td class="n">≈ 0,5 млн</td><td><span class="chip ok">так</span> 15 хвилин, і ярус закритий. Балда й Чайнворд — наша класика: простий старт для студентів</td></tr>
+      <tr><td><b>«можливо вже описані»</b>: Tatami ≈ infinity-loop, catAnod ≈ catan, Bagman ≈ what-did-i-do…</td><td class="n">11</td><td class="n">—</td><td class="n">—</td><td><span class="chip ok">так</span> руками за 10 хвилин, без агентів: перейменувати рядок або викреслити</td></tr>
+      <tr><td><b>п3</b>: push-slide 40, thinky 20, pencil-logic 18, program-robots 8, word-number 8…</td><td class="n">118</td><td class="n">≈ 24</td><td class="n">≈ 4 млн</td><td><span class="chip warn">потім, точково</span> 24 рядки самі мають «?» у механіці. Брати гру, коли її механіка знадобиться картці чи студентській грі</td></tr>
+      <tr><td><b>новий пошук ігор</b> (хвиля пошуку 5)</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td><span class="chip bad">ні</span> черги на 94 % вичерпані, нового на гру дедалі менше</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="overall">
+  <h2><span class="num">5</span>Загальний висновок щодо ігротеки</h2>
+  <p class="lead">Мета ігротеки — єдина мова опису ігор, на якій студенти описують свою гру, а система правил її розуміє (T98, T257).</p>
+  <div class="pair">
+    <div class="box now"><h4>Що корпус уже дав <span class="chip ok">дійшло в код</span></h4>
+      <ul>
+        <li><b>Мова тримає все.</b> Аркади, пазли, шахи, тактики, настолки, програмування: жодна з 1838 ігор не випала з шаблону.</li>
+        <li><b>Словники правил у коді</b> тепер мають 38 тригерів, 33 умови й 65 ефектів. До корпусу було 2 тригери, умов не було, ефектів було 15.</li>
+        <li><b>Поле як частина гри, стани, фази, обмеження пазлів</b> і картка <code>undo-redo</code> взяті з висновків корпусу (T259, T270, T321).</li>
+        <li><b>Сторінка «Ігротека»</b> (лише адмін) і API <code>/api/ludopedia</code>.</li>
+        <li>Слів правил поза нинішніми словниками: у описах хвилі 1 — 16 %, хвилі 4 — 0,1 % (агенти хвилі 4 звіряли слова зі словниками).</li>
+      </ul>
+    </div>
+    <div class="box miss"><h4>Що лежить невикористаним <span class="chip warn">борг</span></h4>
+      <ul>
+        <li><b>Д3 «як це буває в іграх»</b> на картці каталогу. API <code>by-card</code> і сід готові, але жодна сторінка їх не показує.</li>
+        <li><b>957 кандидатів у картки</b>: «+»-теги, що трапляються в 3 і більше іграх (<code>+deck-draw</code> ×69, <code>+hex-grid-render</code> ×64, <code>+push-chain</code> ×43…). Каталог має 334 картки.</li>
+        <li><b>8895 «+»-тегів трапляються один раз</b> (83 %). Це здебільшого нові написання вже відомого, а не нові ідеї. Без зведення синонімів правило трьох їх не бачить.</li>
+        <li><b>19 582 позначки «(?)»</b>, близько 10 на гру. Для Д3 важливі назви й ⭐-лінки, а вони перевірені.</li>
+        <li>Питання T258, T264 і T266 стоять без відповідей з 2 і 9 листопада.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="verdict">
+    <p><b>Корпус переріс продукт: 1838 описів проти 334 карток каталогу, а студент поки не бачить з корпусу нічого.</b> Ще одна хвиля описів дешева для мене, але дорога для ліміту Opus і нічого не додасть студентові, доки корпус не підключено. Тому раджу так: закрити 11 важливих рядків, зупинити хвилі, показати Д3 на картках і розібрати правило трьох у картки. Черги п3 лишаються в git і нікуди не дінуться.</p>
+  </div>
+</section>
+
+<section id="checks">
+  <h2><span class="num">6</span>Як перевірено і чого не перевірено</h2>
+  <div class="pair">
+    <div class="box now"><h4>Перевірено</h4>
+      <ul>
+        <li>Лінт корпусу: 1838 файлів, 0 проблем, до комітів і після.</li>
+        <li>Прочитано диф усіх 13 правок куратора. Вони дрібні й завершені: одне правило на рядок, <code>+axis:&lt;вісь&gt;=&lt;значення&gt;</code>, уточнення фактів.</li>
+        <li><code>riko.md</code> прочитано: шапка, усі секції, джерела, «Непевне».</li>
+        <li>Усі шість скриптів індексів прогнано; стан черг перераховано.</li>
+        <li>Дев-базу лише прочитано: <code>ludo_games</code> — 1663, останній імпорт 9.11.</li>
+        <li>Цифри хвиль пораховано скриптом: хвиля — за комітом, що додав файл; пропозиції й теги — з шапок.</li>
+      </ul>
+    </div>
+    <div class="box miss"><h4>Не перевірено</h4>
+      <ul>
+        <li>Зміст описів по суті: з іграми не звіряв.</li>
+        <li>Смоук <code>smoke_ludopedia</code> не ганяв, бо імпорту не було.</li>
+        <li>Прод-базу не дивився.</li>
+        <li>Чи підхопить сесія хвилі 4 свої пачки, якщо її розбудити. Рецепт продовження лежить в <code>analysis/08</code>: нові пачки з префіксом K.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="next">
+  <h2><span class="num">7</span>Що далі</h2>
+  <ol class="next">
+    <li><b>Ти</b>: відповіді в T366, Q1–Q5; мовчання = «a».</li>
+    <li><b>Я, за словом</b>: хвилю 4 — у дев-базу й смоук на окремій базі <span class="chip off">XS</span></li>
+    <li><b>Я, за словом</b>: 11 рядків п1–п2 і 11 «можливо» <span class="chip off">XS · ≈ 0,5 млн токенів</span></li>
+    <li><b>Я, за словом</b>: Д3 «як це буває в іграх» на картці каталогу <span class="chip off">S</span></li>
+    <li><b>Я, за словом</b>: правило трьох — зведення синонімів «+»-тегів, топ-50 кандидатів у картки окремим Q-тікетом <span class="chip off">M</span></li>
+    <li><b>Ти</b>: push гілки <code>ods</code> і деплой; на сервері <code>ludopedia_io.py import --prune</code>.</li>
+  </ol>
+</section>
+
+<footer>python-labs · T365 «Ігротека: підсумок хвилі 4 і стан корпусу» · звіт у <code>.dev/games/.t/T365--ludopedia-state/</code> · хвиля — <code>T364--ludopedia-wave4/</code>, нотатки — <code>data/ludopedia/analysis/08-wave4-curator-notes.md</code> · рішення — <code>T366-Q--ludopedia-next.md</code> · зібрано <code>build_review.py</code></footer>
+</div>

@@ -7,4 +7,4 @@
 - [x] Залишок у дереві: лекції ods (T359 / T363) — окремим комітом; хвиля 4 — `riko.md`, правки куратора, нотатки `08`, `queue-status`.
 - [x] Важкі індекси корпусу перебудувати (востаннє — 2026-11-09, 1663 гри).
 - [x] Цифри: хвилі, родини, черги, насичення (нового на гру), що з корпусу дійшло до продукту.
-- [ ] Звіт `report.md` + сторінка-огляд (`review.src.html` → `review.html`), README вузла, CHANGELOG, STATUS.
+- [x] Звіт [report.md](report.md) + сторінка-огляд [«Ігротека #365 рев’ю»](https://claude.ai/artifact/FcuecUArhsotsgkGPSzEVh) (`review.src.html` → `review.html`), README вузла, CHANGELOG, STATUS.
