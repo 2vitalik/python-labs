@@ -189,3 +189,10 @@
 | Sushi for Robots | 2023 | страви їдуть конвеєром по клітинах ресторану; наліпки змінюють поведінку страв (сітка — зі скріншота) | https://store.steampowered.com/app/2160240/Sushi_For_Robots/ | https://www.youtube.com/results?search_query=Sushi+for+Robots+gameplay | 3 |
 | You Are The Code | 2025 | код не пишеш: курсор ходить готовими рядками й виконує їх, баги-вороги поїдають символи | https://store.steampowered.com/app/3333330/You_Are_The_Code/ | https://www.youtube.com/results?search_query=You+Are+The+Code+gameplay | 3 |
 | Fractal Factory | ? | конвеєри й поворотні руки; блоки діляться на дедалі дрібніші фрактальні шари (?) | https://bcat112a.itch.io/fractalfactory | https://www.youtube.com/results?search_query=Fractal+Factory+puzzle+gameplay | 3 |
+
+## Хвиля 4 — 2026-11-19: нові кандидати (пошукові агенти Opus)
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| Quantum Odyssey | 2025 | квантові схеми: вентилі Hadamard, CNOT, фазові на лініях кубітів, візуалізація станів (сітка ?) | https://store.steampowered.com/app/2802710/ | https://www.youtube.com/results?search_query=Quantum+Odyssey+gameplay | 3 |
+| Silicon Zeroes | 2017 | процесор з компонентів рівня слів: суматори, засувки, мультиплексори; 70+ пазлів (сітка ?) | https://store.steampowered.com/app/684270/ | https://www.youtube.com/results?search_query=Silicon+Zeroes+gameplay | 3 |

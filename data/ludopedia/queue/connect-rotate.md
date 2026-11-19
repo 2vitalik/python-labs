@@ -189,3 +189,10 @@
 | Juurru | 2023 | вирощувати коріння крізь стіни, щоб переходити з печери в печеру; 24 міні-печери, GGJ | https://kultisti.itch.io/juurru | https://bontegames.com/2023/03/juurru-browser.html | 3 |
 | Tezzel: The Tilemaker's Tale | 2026 | розписати плитку-мозаїку на сітці інструментами з власними правилами (механіка — ?) | https://store.steampowered.com/app/3703730/Tezzel_The_Tilemakers_Tale/ | https://www.youtube.com/results?search_query=Tezzel+gameplay | 3 |
 | Transmission: Information Age | 2014 | поле-граф: сигнали між вузлами; круглі — трансивери (транзит), квадратні — кінцеві приймачі | https://loju.co.uk/transmission.html | https://apps.apple.com/app/id917778256 | 3 |
+
+## Хвиля 4 — 2026-11-19: нові кандидати (пошукові агенти Opus)
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| Shareflakes | 2025 | лінія з N-кратною симетрією (6, 5 променів): відтворити сніжинку-зразок, назад не можна | https://irregularhex.itch.io/shareflakes | https://confoundingcalendar.itch.io/ · https://www.youtube.com/results?search_query=Shareflakes+Irregular+Hex | 2 |
+| Filament | 2020 | кабель тягнеться за героєм і обмотує стовпи; 300+ кабельних пазлів (рух вільний ?) | https://store.steampowered.com/app/1137350/ | https://www.youtube.com/results?search_query=Filament+game+cable+puzzle | 3 |

@@ -189,7 +189,7 @@
 | CONSTRICTOR | ? | змія мусить зʼїсти всі яблука й придушити кожного гризуна, ставши по обидва боки | https://beepyeah.itch.io/constrictor | https://www.youtube.com/results?search_query=CONSTRICTOR+gameplay | 2 |
 | Forever Wonder Colour | 2025 | однокімнатний сокобан з маніпуляцією часом; блоки різних кольорів по-різному реагують на час | https://patashu.itch.io/forever-wonder-colour | https://www.youtube.com/results?search_query=Forever+Wonder+Colour+gameplay | 2 |
 | At the Hedges of Time | ? | лицар перемотує час як здібність у взаємоповʼязаному лабіринті живоплоту; PuzzleScript | https://galactical.itch.io/at-the-hedges-of-time | https://www.youtube.com/results?search_query=At+the+Hedges+of+Time+gameplay | 2 |
-| Jelly Is Sticky | 2022 | желейні блоки деформуються й злипаються; колір задає липкість, жорсткість, пластичність | https://store.steampowered.com/app/1492620/Jelly_Is_Sticky/ | https://www.youtube.com/results?search_query=Jelly+Is+Sticky+gameplay | 2 |
+| ~~Jelly Is Sticky~~ | 2022 | желейні блоки деформуються й злипаються; колір задає липкість, жорсткість, пластичність | https://store.steampowered.com/app/1492620/Jelly_Is_Sticky/ | https://www.youtube.com/results?search_query=Jelly+Is+Sticky+gameplay · ⊘ 2026-11-19: нема джерела правил: Steam і RAWG — лише рекламний опис, гайд — розвʼязки без правил (хвиля 4) | 2 |
 | Heroes of Sokoban II: Monsters | ? | сиквел Heroes of Sokoban: дракони стріляють вогнем, гобліни вбивають сусідів, жрець рятує | https://www.puzzlescript.net/play.html?p=6910207 | https://api.github.com/gists/6910207 | 2 |
 | Heroes of Sokoban III: The Bard and the Druid | ? | сиквел: бард нотами зачаровує ящики й монстрів, друїд міняє ящики↔стіни, героїв у камінь | https://www.puzzlescript.net/play.html?p=7072276 | https://api.github.com/gists/7072276 | 2 |
 | Mimic (Mimic Classic) | 2021 | повтори рисунок руху тварини — набудеш її форми й здібності (PICO-8) | https://sourencho.itch.io/mimic | — | 2 |
@@ -200,9 +200,9 @@
 | Two Worlds (nebu soku) | 2021 | сокобан згори будує внутрішній світ-платформер збоку для компаньйона (PuzzleScript) | https://nebu-soku.itch.io/two-worlds | — | 2 |
 | Walking Dots (てんてん虫) | 2024 | черв'як із крапок їсть, перетравлює й росте (PuzzleScript) | https://nebu-soku.itch.io/walking-dots | https://www.puzzlescript.net/editor.html?hack=7994d9b1bf4dafee95b5b3ff5357b2da | 2 |
 | Gridspech | 2023 | фарбування клітин за символами (корони, ромби), правило кожного символу виводиш сам | https://krackocloud.itch.io/gridspech | https://www.electrondance.com/puzzleworks-10-gridspech/ | 2 |
-| Heikō | 2024 | гекс-клітини білі/чорні, спінери обертають фігури; накладені обмеження без тексту | https://mimhufford.itch.io/heiko | — | 2 |
-| Increasingly Cursed Knight Puzzles | 2025 | 120 PDF-пазлів шахового коня з «проклятими» правилами стін і блоків | https://koo-koo.itch.io/ickp | сиквел https://viqivi.itch.io/iskp | 2 |
-| Sepapu | 2026 | пакування каменів у візерунки на піску; правила лише з реакцій поля | https://store.steampowered.com/app/4492410 | — | 2 |
+| ~~Heikō~~ | 2024 | гекс-клітини білі/чорні, спінери обертають фігури; накладені обмеження без тексту | https://mimhufford.itch.io/heiko | — · ⊘ 2026-11-19: нема джерела правил: лише опис на itch і 5 коментарів (хвиля 4) | 2 |
+| ~~Increasingly Cursed Knight Puzzles~~ | 2025 | 120 PDF-пазлів шахового коня з «проклятими» правилами стін і блоків | https://koo-koo.itch.io/ickp | сиквел https://viqivi.itch.io/iskp · ⊘ 2026-11-19: правила лише в PDF, який itch віддає POST-запитом (агентам заблоковано); скачати руками — і зняти ⊘ (хвиля 4) | 2 |
+| ~~Sepapu~~ | 2026 | пакування каменів у візерунки на піску; правила лише з реакцій поля | https://store.steampowered.com/app/4492410 | — · ⊘ 2026-11-19: правила навмисно не названо, джерел нема (хвиля 4) | 2 |
 | Bomb Club Deluxe | 2022 | 20+ бомб з ефектами й «капелюхами» — очистити поле одним ланцюгом | https://store.steampowered.com/app/1771440/Bomb_Club_Deluxe/ | https://www.youtube.com/results?search_query=Bomb+Club+Deluxe+gameplay | 2 |
 | Chronescher | 2022 | ізометрична покрокова сітка: портали, якір-знімок рівня, зміна ракурсу (Ешер) відкриває шляхи | https://store.steampowered.com/app/1911170/Chronescher/ | https://www.youtube.com/results?search_query=Chronescher+gameplay | 2 |
 | Another Clone | 2022 | записані ходи циклічно повторюють копії гравця; блоки різних кольорів поводяться по-різному | https://knexator.itch.io/another-clone | https://www.bontegames.com/2022/11 | 2 |
@@ -241,3 +241,16 @@
 | Stoff_OS | 2019 | мишею «ткати» тканину 4×4 незнайомими інструментами; правила відкриваються спробами | https://tilmannr.itch.io/stoff-os | https://tilmannr.itch.io/stoff-os/devlog/257223/improvement-plans | 3 |
 | Observe | 2025 | дії з пройдених кімнат повторюються в нових; плануєш реплеї для себе майбутнього; сітка (?) | https://store.steampowered.com/app/2738190/Observe/ | https://www.youtube.com/results?search_query=Observe+puzzle+gameplay | 3 |
 | Induction | 2017 | дії в кількох таймлайнах і парадоксальні петлі причинності; сітка (?) | https://store.steampowered.com/app/381890/Induction/ | https://www.youtube.com/results?search_query=Induction+Bryan+Gale+gameplay | 3 |
+
+## Хвиля 4 — 2026-11-19: нові кандидати (пошукові агенти Opus)
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| D-topia | 2026 | числові сітки: блок +1 за крок до значення виходу, лінії-суми, зсув сітки | https://store.steampowered.com/app/1895460/ | https://www.nintendoworldreport.com/review/75486/d-topia-switch-2-review · https://www.shacknews.com/article/150322/d-topia-review-score | 2 |
+| DROD: Journey to Rooted Hold | 2005 | сиквел DROD (drod.md — лише набір KDD): 17 монстрів, 15 елементів — зілля, вибухівка, тунелі | https://store.steampowered.com/app/422181/ | https://forum.caravelgames.com/viewsiteboard.php?b=59 | 2 |
+| DROD: The Second Sky | 2014 | сиквел DROD: понад 12 нових елементів — нова зброя й монстри, мапи-континенти | https://store.steampowered.com/app/351320/ | https://forum.caravelgames.com/viewsiteboard.php?b=59 | 2 |
+| A Confusing Map | 2025 | намалювати карту маршруту за навмисно розмитими текстовими вказівками оповідача (сітка ?) | https://ludipe.itch.io/a-confusing-map | https://confoundingcalendar.itch.io/ | 3 |
+| IKA | 2025 | фан-продовження LOK Digital: 16 нових механік стрілок у двох арках, PDF-книжка | https://nitrrose.itch.io/ika | https://nitrrose.itch.io/ika/devlog/891377/improved-wording-of-rules | 3 |
+| Clockwork Rabbit | 2025 | ізометричні пазли: план ходів в обидва боки часу, програмовані роботи-помічники (сітка ?) | https://store.steampowered.com/app/2747980/ | https://apps.apple.com/app/clockwork-rabbit/id6747708197 | 3 |
+| squish os | 2025 | вигадана ОС: кілька вікон на одному екрані, одне зображення ріжуть (з коментарів, ?) | https://bcat112a.itch.io/squish-os | https://confoundingcalendar.itch.io/ | 3 |
+| Logica Emotica | 2022 | 50 рівнів, у кожному своє правило; мету показує емодзі; сітка (?) | https://store.steampowered.com/app/1979700/ | https://www.youtube.com/results?search_query=Logica+Emotica+Bart+Bonte | 3 |

@@ -1,5 +1,7 @@
 """index/known-names.txt — every name the corpus or the queues already know (titles, aka, slugs, queue rows), one per line
-`назва | нормалізована | game:<сімʼя>/<slug> або queue:<файл>`. Search agents grep it before adding a candidate."""
+`назва | нормалізована | game:<сімʼя>/<slug> або queue:<файл>`; plus names search agents rejected (`- Назва — причина` in
+queue/_*checked*.md → `skipped:<файл>`). Search agents grep it before adding a candidate."""
+import re
 import sys
 from pathlib import Path
 
@@ -19,6 +21,8 @@ def main():
             continue
         ref = f"queue:{q.relative_to(ROOT / 'queue').with_suffix('')}"
         out |= {f"{r['name']} | {norm(r['name'])} | {ref}" for r in rows(q) if r["name"]}
+    for q in sorted((ROOT / "queue").glob("_*checked*.md")):
+        out |= {f"{n} | {norm(n)} | skipped:{q.stem}" for n in re.findall(r"^- (.+?) — ", q.read_text(), re.M)}
     lines = sorted(out, key=str.lower)
     (ROOT / "index" / "known-names.txt").write_text("\n".join(lines) + "\n")
     print(f"known-names: {len(lines)} рядків")

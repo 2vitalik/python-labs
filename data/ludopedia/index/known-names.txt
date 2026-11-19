@@ -1,5 +1,6 @@
 'One Way Heroics (Mystery Chronicle: One Way Heroics)' | one way heroics mystery chronicle one way heroics | game:roguelike/one-way-heroics
 000 mechanicus | 000 mechanicus | game:tactics/warhammer-40k-mechanicus
+0PLAYER | 0player | game:thinky/0player
 0PLAYER | 0player | queue:thinky
 1 5 schlange | 1 5 schlange | game:pencil-logic/hebi-ichigo
 10000000 / You Must Build a Boat | 10000000 you must build a boat | queue:falling-match
@@ -8,8 +9,11 @@
 10key Survival | 10key survival | game:dig-gravity/10key-survival
 10key Survival | 10key survival | queue:dig-gravity
 10m | 10m | game:falling-match/10000000
+12 Word Searches | 12 word searches | game:word-number/12-word-searches
 12 Word Searches | 12 word searches | queue:word-number
+13 Sticky Notes | 13 sticky notes | game:pencil-logic/13-sticky-notes
 13 Sticky Notes | 13 sticky notes | queue:pencil-logic
+13 липких нотаток | 13 липких нотаток | game:pencil-logic/13-sticky-notes
 14 Minesweeper Variants 2 | 14 minesweeper variants 2 | queue:hidden-deduction
 14 Minesweeper Variants | 14 minesweeper variants | game:hidden-deduction/14-minesweeper-variants
 14 Minesweeper Variants | 14 minesweeper variants | queue:hidden-deduction
@@ -47,6 +51,7 @@
 2013 edition | 2013 edition | game:tower-lanes/ghost-stories
 2018 | 2018 | game:tactics/battletech
 2021 | 2021 | game:maze-arcade/pac-man-sequels
+2024: Mosaic Retrospective | 2024 mosaic retrospective | skipped:_thinky-dump-checked
 2025 | 2025 | game:program-robots/chipwits
 2048 (+ hex, fibonacci) | 2048 hex fibonacci | queue:falling-match
 2048 (+ Threes як предок) | 2048 threes як предок | game:falling-match/2048
@@ -61,6 +66,7 @@
 29 станний автомат | 29 станний автомат | game:build-sim/von-neumann-ca
 29 станів | 29 станів | game:build-sim/von-neumann-ca
 2D Whale World (increpare) | 2d whale world increpare | queue:thinky
+2D Whale World | 2d whale world | game:thinky/2d-whale-world
 3 4 shogi | 3 4 shogi | game:chess-abstract/dobutsu-shogi
 3 d scrabble | 3 d scrabble | game:word-number/rsvp
 3 d | 3 d | game:grid-platformer/lode-runner-3d-sequels
@@ -68,6 +74,7 @@
 3 tiles | 3 tiles | game:falling-match/triple-match-3d
 3d chess 5 5 5 | 3d chess 5 5 5 | game:chess-abstract/raumschach
 3d game of life | 3d game of life | game:build-sim/3d-life
+3D Lemmings | 3d lemmings | game:dig-gravity/3d-lemmings
 3D Lemmings | 3d lemmings | queue:dig-gravity
 3D Life (Carter Bays) | 3d life carter bays | queue:build-sim
 3D Life (тривимірне «Життя» Картера Бейза) | 3d life тривимірне життя картера бейза | game:build-sim/3d-life
@@ -75,6 +82,7 @@
 3D Monster Maze | 3d monster maze | game:maze-arcade/3d-monster-maze
 3D Monster Maze | 3d monster maze | queue:maze-arcade
 3d tetris | 3d tetris | game:falling-match/blockout
+3d лемінги | 3d лемінги | game:dig-gravity/3d-lemmings
 4 player chess | 4 player chess | game:chess-abstract/four-player-chess
 4D (Beekie & Corey Hardt) і 4D-Sokoban-родичі | 4d beekie corey hardt і 4d sokoban родичі | game:thinky/4d-sokoban
 4D (Corey Hardt) | 4d corey hardt | queue:thinky
@@ -108,6 +116,7 @@
 90 ball bingo | 90 ball bingo | game:word-number/bingo
 [the Sequence] | the sequence | queue:program-robots
 a b artless games | a b artless games | game:program-robots/a-equals-b
+A Confusing Map | confusing map | queue:thinky
 A Directionless Cycle | directionless cycle | game:push-slide/a-directionless-cycle
 A Directionless Cycle | directionless cycle | queue:push-slide
 A Feast for Odin (Бенкет для Одіна) і поліоміно-заповнення | feast for odin бенкет для одіна і поліоміно заповнення | game:board-digital/a-feast-for-odin-polyomino
@@ -115,17 +124,22 @@ A Feast for Odin | feast for odin | queue:board-digital
 A Good Snowman Is Hard to Build | good snowman is hard to build | game:thinky/a-good-snowman-is-hard-to-build
 A Good Snowman Is Hard to Build | good snowman is hard to build | queue:push-slide
 A Good Snowman Is Hard to Build | good snowman is hard to build | queue:thinky
+A Little Perspective | little perspective | game:thinky/a-little-perspective
 A Little Perspective | little perspective | queue:thinky
 A Little to the Left | little to the left | game:build-sim/a-little-to-the-left
 A Little to the Left | little to the left | queue:build-sim
 A Man Walks Into A Scrollbar (Dee) | man walks into a scrollbar dee | queue:thinky
+A Man Walks Into A Scrollbar | man walks into a scrollbar | game:thinky/a-man-walks-into-a-scrollbar
+A Man Walks into a Scrollbar | man walks into a scrollbar | skipped:_thinky-dump-checked
 A Monster's Expedition | monsters expedition | game:thinky/a-monsters-expedition
 A Monster's Expedition | monsters expedition | queue:push-slide
 A Monster's Expedition | monsters expedition | queue:thinky
+A Monster's Snowball | monsters snowball | game:push-slide/a-monsters-snowball
 A Monster's Snowball | monsters snowball | queue:push-slide
 A Rule-Explorer's Adventure | rule explorers adventure | queue:pencil-logic
 A Short Bike | short bike | game:grid-platformer/a-short-bike
 A Short Bike | short bike | queue:grid-platformer
+A Slug's Dream | slugs dream | game:push-slide/a-slugs-dream
 A Slug's Dream | slugs dream | queue:push-slide
 a train iii | a train iii | game:build-sim/a-train
 a train pc classic | a train pc classic | game:build-sim/a-train
@@ -147,7 +161,9 @@ Abelian sandpile model (Bak–Tang–Wiesenfeld) | abelian sandpile model bak ta
 Abelian sandpile model (модель піщаної купи Бака–Тана–Візенфельда) | abelian sandpile model модель піщаної купи бака тана візенфельда | game:build-sim/abelian-sandpile
 abelian sandpile model | abelian sandpile model | game:build-sim/abelian-sandpile
 abelian sandpile | abelian sandpile | game:build-sim/abelian-sandpile
+ABI-DOS | abi dos | game:program-robots/abi-dos
 ABI-DOS | abi dos | queue:program-robots
+abidos | abidos | game:program-robots/abi-dos
 absolute hero modding project | absolute hero modding project | game:roguelike/zhp-unlosing-ranger
 Absurdle | absurdle | game:word-number/absurdle
 Absurdle | absurdle | queue:word-number
@@ -199,6 +215,7 @@ Adventures of Lolo (Eggerland) | adventures of lolo eggerland | game:push-slide/
 Adventures of Lolo / Eggerland | adventures of lolo eggerland | queue:push-slide
 adventures of lolo | adventures of lolo | game:push-slide/adventures-of-lolo
 adventures of robbo | adventures of robbo | game:push-slide/robbo
+After Light Fades | after light fades | game:push-slide/after-light-fades
 After Light Fades | after light fades | queue:push-slide
 afterlife the last word in sims | afterlife the last word in sims | game:build-sim/afterlife
 Afterlife | afterlife | game:build-sim/afterlife
@@ -213,6 +230,8 @@ agricola farmyard | agricola farmyard | game:board-digital/agricola-farm-grid
 agricola | agricola | game:board-digital/agricola-farm-grid
 Agricola | agricola | queue:board-digital
 Agricola — сітка ферми (Агрікола) | agricola сітка ферми агрікола | game:board-digital/agricola-farm-grid
+Aha Alphabet | aha alphabet | skipped:_thinky-dump-checked
+Ahoist Cratey | ahoist cratey | game:grid-platformer/ahoist-cratey
 Ahoist Cratey | ahoist cratey | queue:push-slide
 ai challenge 2011 | ai challenge 2011 | game:program-robots/ai-challenge-ants
 ai challenge ants | ai challenge ants | game:program-robots/ai-challenge-ants
@@ -230,6 +249,7 @@ AkiRobots | akirobots | queue:grid-platformer
 Akropolis (Акрополіс) | akropolis акрополіс | game:board-digital/akropolis
 akropolis | akropolis | game:board-digital/akropolis
 Akropolis | akropolis | queue:board-digital
+Alan's Automaton Workshop | alans automaton workshop | skipped:_thinky-dump-checked
 alchemistry | alchemistry | game:connect-rotate/puzzle-pirates-alchemistry
 Alchemy (PopCap) | alchemy popcap | game:falling-match/alchemy-popcap
 Alchemy (PopCap) | alchemy popcap | queue:connect-rotate
@@ -238,6 +258,7 @@ alchemy | alchemy | game:falling-match/alchemy-popcap
 alea evangelii | alea evangelii | game:chess-abstract/hnefatafl
 Alephant | alephant | game:thinky/alephant
 Alephant | alephant | queue:thinky
+alf | alf | game:push-slide/after-light-fades
 Alhambra (Альгамбра) | alhambra альгамбра | game:board-digital/alhambra
 alhambra | alhambra | game:board-digital/alhambra
 Alhambra | alhambra | queue:board-digital
@@ -252,16 +273,19 @@ alphabear 2 | alphabear 2 | game:word-number/alphabear
 alphabear hardcover edition | alphabear hardcover edition | game:word-number/alphabear
 Alphabear | alphabear | game:word-number/alphabear
 Alphabear | alphabear | queue:word-number
+Altered | altered | game:thinky/altered
 Altered | altered | queue:thinky
 alttl | alttl | game:build-sim/a-little-to-the-left
 Amazing Penguin (Osawagase! Penguin Boy) | amazing penguin osawagase penguin boy | game:maze-arcade/amazing-penguin
 Amazing Penguin (Osawagase! Penguin Boy) | amazing penguin osawagase penguin boy | queue:maze-arcade
 amazing penguin | amazing penguin | game:maze-arcade/amazing-penguin
 amazons | amazons | game:chess-abstract/amazons
+AmaZoo | amazoo | game:grid-platformer/amazoo
 AmaZoo | amazoo | queue:push-slide
 ameisenarmee | ameisenarmee | game:pencil-logic/army-ants
 Amidar | amidar | game:maze-arcade/amidar
 Amidar | amidar | queue:maze-arcade
+An Architect's Adventure | architects adventure | game:push-slide/an-architects-adventure
 An Architect's Adventure | architects adventure | queue:push-slide
 anacrostic | anacrostic | game:word-number/acrostic
 Anastomosis | anastomosis | queue:thinky
@@ -301,7 +325,6 @@ Anteater | anteater | queue:maze-arcade
 anti andernach | anti andernach | game:chess-abstract/fairy-chess-conditions
 anti gang | anti gang | game:hidden-deduction/stop-thief
 anti go | anti go | game:chess-abstract/nogo
-Anti-knight / Anti-king (Miracle) | anti knight anti king miracle | queue:pencil-logic
 Antichess | antichess | queue:chess-abstract
 anticirce | anticirce | game:chess-abstract/circe-chess
 ants | ants | game:program-robots/ai-challenge-ants
@@ -412,6 +435,7 @@ Asteroids Minesweeper | asteroids minesweeper | queue:hidden-deduction
 Asteroyds | asteroyds | game:program-robots/asteroyds
 Asteroyds | asteroyds | queue:program-robots
 asymmetrical str8ts | asymmetrical str8ts | game:pencil-logic/str8ts
+At the Hedges of Time | at the hedges of time | game:thinky/at-the-hedges-of-time
 At the Hedges of Time | at the hedges of time | queue:thinky
 atari 2600 | atari 2600 | game:maze-arcade/atari-adventure
 atari 2600 | atari 2600 | game:maze-arcade/surround
@@ -446,6 +470,7 @@ auto chess | auto chess | game:tower-lanes/dota-auto-chess
 autodog | autodog | game:tactics/dog-in-the-machine
 Automachef | automachef | game:build-sim/automachef
 Automachef | automachef | queue:build-sim
+Automate It | automate it | skipped:_thinky-dump-checked
 Automate It: Factory Puzzle | automate it factory puzzle | queue:program-robots
 automatic box | automatic box | game:push-slide/automaticbox
 AutomaticBox | automaticbox | game:push-slide/automaticbox
@@ -533,6 +558,8 @@ bards tale | bards tale | game:roguelike/bards-tale
 barenpark | barenpark | game:board-digital/barenpark
 Baroque chess / Ultima (Бароккові шахи) | baroque chess ultima бароккові шахи | game:chess-abstract/baroque-chess
 baroque chess | baroque chess | game:chess-abstract/baroque-chess
+barrel bots | barrel bots | game:push-slide/barrelbots
+BarrelBots | barrelbots | game:push-slide/barrelbots
 BarrelBots | barrelbots | queue:push-slide
 battle 64 | battle 64 | game:maze-arcade/bomberman-battle-mode
 Battle Brothers | battle brothers | game:tactics/battle-brothers
@@ -596,6 +623,7 @@ bcb | bcb | game:falling-match/battle-chef-brigade
 bd fans | bd fans | game:dig-gravity/boulder-dash-dos-clones
 bdwalk | bdwalk | game:pencil-logic/building-walk
 be ball | be ball | game:push-slide/chew-man-fu
+Beacon Patrol | beacon patrol | game:board-digital/beacon-patrol
 Beacon Patrol | beacon patrol | queue:board-digital
 Bean and Nothingness | bean and nothingness | game:thinky/bean-and-nothingness
 Bean and Nothingness | bean and nothingness | queue:thinky
@@ -615,8 +643,6 @@ Befunge | befunge | queue:program-robots
 Beglitched | beglitched | game:falling-match/beglitched
 Beglitched | beglitched | queue:falling-match
 Bejeweled (1–3, Twist) | bejeweled 1 3 twist | game:falling-match/bejeweled
-Bejeweled 1–3 / Blitz | bejeweled 1 3 blitz | queue:falling-match
-Bejeweled Twist | bejeweled twist | queue:falling-match
 bejeweled | bejeweled | game:falling-match/bejeweled
 Below the Crown | below the crown | game:chess-abstract/below-the-crown
 Below the Crown | below the crown | queue:tactics
@@ -635,6 +661,7 @@ betrayal | betrayal | game:tactics/betrayal-at-house-on-the-hill
 betutorony | betutorony | game:word-number/upwords
 betza | betza | game:chess-abstract/chess-with-different-armies
 betzas chess | betzas chess | game:chess-abstract/chess-with-different-armies
+Beyond Words | beyond words | game:word-number/beyond-words
 Beyond Words | beyond words | queue:word-number
 bi | bi | game:tactics/battle-isle
 big boggle | big boggle | game:word-number/boggle
@@ -644,6 +671,9 @@ biham | biham | game:build-sim/bml-traffic
 Biham–Middleton–Levine traffic model (модель трафіку BML) | biham middleton levine traffic model модель трафіку bml | game:build-sim/bml-traffic
 Biham–Middleton–Levine traffic model | biham middleton levine traffic model | queue:build-sim
 Billiard Dungeon / Pinball Dungeon (7DRL) | billiard dungeon pinball dungeon 7drl | queue:roguelike
+billy bum bum | billy bum bum | game:push-slide/billy-bumbum
+billy bumbum | billy bumbum | game:push-slide/billy-bumbum
+Billy Bumbum: A Cheeky Puzzler | billy bumbum a cheeky puzzler | game:push-slide/billy-bumbum
 Billy Bumbum: A Cheeky Puzzler | billy bumbum a cheeky puzzler | queue:push-slide
 binairo | binairo | game:pencil-logic/takuzu
 Binary Land | binary land | game:maze-arcade/binary-land
@@ -660,6 +690,8 @@ binoxxo | binoxxo | game:pencil-logic/takuzu
 biohazard 4 | biohazard 4 | game:build-sim/re4-attache-case
 BioShock — злом (міні-гра) | bioshock злом міні гра | queue:connect-rotate
 bird shogi | bird shogi | game:chess-abstract/tori-shogi
+Birdigo | birdigo | skipped:_thinky-dump-checked
+Birds Organized Neatly | birds organized neatly | skipped:_thinky-dump-checked
 bitlock | bitlock | game:push-slide/block-in-the-lock
 Black Box (Eric Solomon) | black box eric solomon | queue:hidden-deduction
 Black Box (Tatham) | black box tatham | queue:connect-rotate
@@ -677,6 +709,7 @@ blazing blade як база | blazing blade як база | game:tactics/fire-em
 Blind Sweeper | blind sweeper | game:hidden-deduction/blind-sweeper
 Blind Sweeper | blind sweeper | queue:hidden-deduction
 blob | blob | game:grid-platformer/starquake
+Blobs | blobs | skipped:_thinky-dump-checked
 blobun mini | blobun mini | game:connect-rotate/blobun
 Blobun | blobun | game:connect-rotate/blobun
 Blobun | blobun | queue:connect-rotate
@@ -731,6 +764,7 @@ Bloodwych | bloodwych | game:roguelike/bloodwych
 Bloodwych | bloodwych | queue:roguelike
 Bloxorz | bloxorz | game:push-slide/bloxorz
 Bloxorz | bloxorz | queue:push-slide
+Bloxpath | bloxpath | game:push-slide/bloxpath
 Bloxpath | bloxpath | queue:push-slide
 Blue Lagoon | blue lagoon | game:board-digital/blue-lagoon
 Blue Lagoon | blue lagoon | queue:board-digital
@@ -748,6 +782,7 @@ bml traffic | bml traffic | game:build-sim/bml-traffic
 bml | bml | game:build-sim/bml-traffic
 bn | bn | game:tower-lanes/mega-man-battle-network
 bnb | bnb | game:maze-arcade/crazy-arcade-bnb
+Bobogram | bobogram | skipped:_thinky-dump-checked
 boggle master | boggle master | game:word-number/boggle
 Boggle | boggle | game:word-number/boggle
 Boggle | boggle | queue:word-number
@@ -759,7 +794,7 @@ bomb and bubbles | bomb and bubbles | game:maze-arcade/crazy-arcade-bnb
 Bomb Busters | bomb busters | game:hidden-deduction/bomb-busters
 Bomb Busters | bomb busters | queue:hidden-deduction
 Bomb Club Deluxe | bomb club deluxe | queue:thinky
-Bomb puzzles (Zelda: Oracle of Ages) | bomb puzzles zelda oracle of ages | queue:push-slide
+bomb uzal | bomb uzal | game:thinky/bombuzal
 bomb | bomb | game:maze-arcade/crazy-arcade-bnb
 Bombe | bombe | game:hidden-deduction/bombe
 Bombe | bombe | queue:hidden-deduction
@@ -783,7 +818,11 @@ Bomberman: Panic Bomber | bomberman panic bomber | queue:falling-match
 BomBliss (Tetris 2 + BomBliss / Tetris Blast) | bombliss tetris 2 bombliss tetris blast | queue:falling-match
 BomBliss (Tetris 2 + BomBliss, Tetris Blast) | bombliss tetris 2 bombliss tetris blast | game:falling-match/bombliss
 bombliss | bombliss | game:falling-match/bombliss
+Bombuzal | bombuzal | game:thinky/bombuzal
 Bombuzal | bombuzal | queue:thinky
+bond lite block push puzzle | bond lite block push puzzle | game:push-slide/bond
+bond lite | bond lite | game:push-slide/bond
+BOND | bond | game:push-slide/bond
 BOND | bond | queue:push-slide
 Bone Cruncher | bone cruncher | game:dig-gravity/bone-cruncher
 Bone Cruncher | bone cruncher | queue:dig-gravity
@@ -791,6 +830,7 @@ bonecruncher | bonecruncher | game:dig-gravity/bone-cruncher
 Bonfire Peaks | bonfire peaks | game:thinky/bonfire-peaks
 Bonfire Peaks | bonfire peaks | queue:push-slide
 Bonfire Peaks | bonfire peaks | queue:thinky
+Bonfire Peaks: Lost Memories | bonfire peaks lost memories | skipped:_thinky-dump-checked
 bongo | bongo | game:word-number/bongo
 Bonza Word Puzzle | bonza word puzzle | game:word-number/bonza
 Bonza Word Puzzle | bonza word puzzle | queue:word-number
@@ -819,7 +859,6 @@ Bosk | bosk | game:board-digital/bosk
 Bosk | bosk | queue:board-digital
 bot arenas | bot arenas | game:program-robots/bot-arenas
 Boulder Dash 12h / Boulder Dash 2000 | boulder dash 12h boulder dash 2000 | queue:dig-gravity
-Boulder Dash Construction Kit | boulder dash construction kit | queue:dig-gravity
 boulder dash dos clones | boulder dash dos clones | game:dig-gravity/boulder-dash-dos-clones
 Boulder Dash II–3, Rockford, Boulder Dash Deluxe | boulder dash ii 3 rockford boulder dash deluxe | queue:dig-gravity
 boulder dash professional | boulder dash professional | game:dig-gravity/boulder-dash-dos-clones
@@ -836,12 +875,14 @@ BoxBoy! (ハコボーイ!) | boxboy | game:grid-platformer/boxboy
 BoxBoy! + BoxGirl! | boxboy boxgirl | queue:grid-platformer
 BoxBoy! | boxboy | queue:grid-platformer
 Boxception (joszs) | boxception joszs | queue:thinky
+Boxception | boxception | skipped:_thinky-dump-checked
 boxes | boxes | game:chess-abstract/dots-and-boxes
 BoxUp (Andrea Gilbert) | boxup andrea gilbert | queue:push-slide
 BoxUp (Clickmazes BoxUp) | boxup clickmazes boxup | game:push-slide/boxup
 boxup | boxup | game:push-slide/boxup
-Boxxle | boxxle | queue:push-slide
 boy | boy | game:maze-arcade/amazing-penguin
+Bracket City | bracket city | skipped:_thinky-dump-checked
+Braid | braid | skipped:_thinky-dump-checked
 brainies | brainies | game:push-slide/the-brainies
 brainvita | brainvita | game:chess-abstract/peg-solitaire
 brainwashing game teki paki | brainwashing game teki paki | game:falling-match/teki-paki
@@ -875,6 +916,7 @@ btw model | btw model | game:build-sim/abelian-sandpile
 bubble buster | bubble buster | game:falling-match/puzzle-bobble
 bubble shooter | bubble shooter | game:falling-match/puzzle-bobble
 Bubble Sort (Patrick Traynor) | bubble sort patrick traynor | queue:thinky
+Bubble Sort | bubble sort | skipped:_thinky-dump-checked
 bubbles | bubbles | game:maze-arcade/crazy-arcade-bnb
 buchstabensalat | buchstabensalat | game:pencil-logic/easy-as-abc
 bug | bug | game:chess-abstract/bughouse
@@ -919,9 +961,11 @@ c3 | c3 | game:build-sim/caesar-3
 Cacao (Какао) | cacao какао | game:board-digital/cacao
 cacao | cacao | game:board-digital/cacao
 Cacao | cacao | queue:board-digital
+Cadence (Made With Monster Love) | cadence made with monster love | game:program-robots/cadence
 cadence of hyrule | cadence of hyrule | game:roguelike/cadence-of-hyrule
 Cadence of Hyrule | cadence of hyrule | queue:roguelike
 Cadence of Hyrule: Crypt of the NecroDancer Featuring The Legend of Zelda | cadence of hyrule crypt of the necrodancer featuring the legend of zelda | game:roguelike/cadence-of-hyrule
+cadence | cadence | game:program-robots/cadence
 Cadence | cadence | queue:program-robots
 caesar 3 | caesar 3 | game:build-sim/caesar-3
 Caesar III | caesar iii | game:build-sim/caesar-3
@@ -938,8 +982,10 @@ callers bane | callers bane | game:tower-lanes/callers-bane
 camel up second edition | camel up second edition | game:board-digital/camel-up
 Camel Up | camel up | game:board-digital/camel-up
 Camel Up | camel up | queue:board-digital
+Campfire Cooking | campfire cooking | game:thinky/campfire-cooking
 Campfire Cooking | campfire cooking | queue:thinky
 campo minado | campo minado | game:hidden-deduction/mined-out
+Can of Words | can of words | queue:word-number
 Can of Wormholes | can of wormholes | game:thinky/can-of-wormholes
 Can of Wormholes | can of wormholes | queue:push-slide
 Can of Wormholes | can of wormholes | queue:thinky
@@ -1023,6 +1069,7 @@ castles of mad king ludwig 2nd edition | castles of mad king ludwig 2nd edition 
 castles of mad king ludwig | castles of mad king ludwig | game:board-digital/castles-of-mad-king-ludwig
 Castles of Mad King Ludwig | castles of mad king ludwig | queue:board-digital
 castles | castles | game:build-sim/kingdoms-and-castles
+Cat Squeeze | cat squeeze | game:push-slide/cat-squeeze
 Cat Squeeze | cat squeeze | queue:push-slide
 Cataclismo | cataclismo | game:tower-lanes/cataclismo
 Cataclismo | cataclismo | queue:tower-lanes
@@ -1045,6 +1092,7 @@ catrap | catrap | game:grid-platformer/catrap
 Cats Love Boxes | cats love boxes | queue:push-slide
 Cats Organized Neatly | cats organized neatly | game:board-digital/cats-organized-neatly
 Cats Organized Neatly | cats organized neatly | queue:board-digital
+Causal Loop | causal loop | skipped:_thinky-dump-checked
 Causality | causality | queue:thinky
 Cave Noire | cave noire | game:roguelike/cave-noire
 Cave Noire | cave noire | queue:roguelike
@@ -1073,6 +1121,7 @@ cellularena | cellularena | game:program-robots/codingame-cellularena
 Centipede (Багатоніжка) | centipede багатоніжка | game:maze-arcade/centipede
 Centipede / Millipede | centipede millipede | queue:maze-arcade
 centipede | centipede | game:maze-arcade/centipede
+CERT | cert | queue:pencil-logic
 ch tsugai | ch tsugai | game:pencil-logic/hinge
 Chack'n Pop | chackn pop | game:grid-platformer/chackn-pop
 Chack'n Pop | chackn pop | queue:grid-platformer
@@ -1125,6 +1174,7 @@ chess with different armies | chess with different armies | game:chess-abstract/
 Chess with different armies | chess with different armies | queue:chess-abstract
 chess | chess | game:chess-abstract/chess
 Chess960 | chess960 | queue:chess-abstract
+Chessarama | chessarama | game:chess-abstract/chessarama
 Chessarama | chessarama | queue:chess-abstract
 Chessformer | chessformer | game:chess-abstract/chessformer
 Chessformer | chessformer | queue:chess-abstract
@@ -1176,6 +1226,7 @@ Chuzzle | chuzzle | game:falling-match/chuzzle
 Chuzzle | chuzzle | queue:falling-match
 cinco paus | cinco paus | game:roguelike/868-hack
 Cinco Paus | cinco paus | queue:roguelike
+CiniCross | cinicross | game:pencil-logic/cinicross
 CiniCross | cinicross | queue:pencil-logic
 cip | cip | game:thinky/excellent
 cipher crossword | cipher crossword | game:word-number/codeword
@@ -1188,6 +1239,7 @@ Circe chess | circe chess | queue:chess-abstract
 circe parrain | circe parrain | game:chess-abstract/circe-chess
 circe rex inclusive | circe rex inclusive | game:chess-abstract/circe-chess
 circe | circe | game:chess-abstract/circe-chess
+Circuit Breaker | circuit breaker | skipped:_thinky-dump-checked
 Circuit Maze | circuit maze | game:tower-lanes/circuit-maze
 Circuit Maze | circuit maze | queue:tower-lanes
 circuit network | circuit network | game:program-robots/factorio-circuit-network
@@ -1244,6 +1296,8 @@ clockwerx | clockwerx | game:connect-rotate/spin-doctor
 clockwiser time is running out | clockwiser time is running out | game:connect-rotate/clockwiser
 Clockwiser | clockwiser | game:connect-rotate/clockwiser
 Clockwiser | clockwiser | queue:connect-rotate
+Clockwork Rabbit | clockwork rabbit | queue:thinky
+CLONY | clony | game:grid-platformer/clony
 CLONY | clony | queue:push-slide
 Cloud Gardens | cloud gardens | game:build-sim/cloud-gardens
 Cloud Gardens | cloud gardens | queue:build-sim
@@ -1317,6 +1371,9 @@ CodinGame: The Great Escape | codingame the great escape | queue:program-robots
 CodinGame: Tron Battle | codingame tron battle | queue:program-robots
 CodinGame: Ultimate Tic-Tac-Toe | codingame ultimate tic tac toe | queue:program-robots
 Coffee Milk (コーヒー牛乳) | coffee milk | queue:pencil-logic
+Coffee Milk (コーヒー牛乳, Milchkaffee) | coffee milk milchkaffee | game:pencil-logic/coffee-milk
+coffee milk | coffee milk | game:pencil-logic/coffee-milk
+coffee with milk | coffee with milk | game:pencil-logic/coffee-milk
 cogency | cogency | game:connect-rotate/logical
 Cogmind | cogmind | game:roguelike/cogmind
 Cogmind | cogmind | queue:roguelike
@@ -1371,6 +1428,7 @@ conflict of heroes price of honour | conflict of heroes price of honour | game:t
 conflict of heroes storms of steel | conflict of heroes storms of steel | game:tactics/conflict-of-heroes
 Conflict of Heroes | conflict of heroes | game:tactics/conflict-of-heroes
 Conflict of Heroes | conflict of heroes | queue:tactics
+Confusion Conveyed | confusion conveyed | skipped:_thinky-dump-checked
 Congo (шахи «Конго») | congo шахи конго | game:chess-abstract/congo
 congo chess | congo chess | game:chess-abstract/congo
 congo | congo | game:chess-abstract/congo
@@ -1380,6 +1438,7 @@ connect four | connect four | game:chess-abstract/line-games
 connect | connect | game:falling-match/soldam
 consecutive pairs sudoku | consecutive pairs sudoku | game:pencil-logic/sudoku-line-dot-variants
 conservation of momentum | conservation of momentum | game:thinky/isaac-conservation-of-momentum
+CONSTRICTOR | constrictor | game:thinky/constrictor
 CONSTRICTOR | constrictor | queue:thinky
 construction kingdom | construction kingdom | game:tower-lanes/locks-quest
 Context | context | game:pencil-logic/context
@@ -1388,7 +1447,9 @@ continuo cards | continuo cards | game:board-digital/continuo
 Continuo | continuo | game:board-digital/continuo
 Continuo | continuo | queue:board-digital
 continuous game of life | continuous game of life | game:build-sim/lenia
+Conveyor Con-fusion | conveyor con fusion | game:push-slide/conveyor-confusion
 Conveyor Con-fusion | conveyor con fusion | queue:push-slide
+conveyor confusion | conveyor confusion | game:push-slide/conveyor-confusion
 Conway's Game of Life (Гра «Життя») | conways game of life гра життя | game:build-sim/game-of-life
 Conway's Game of Life | conways game of life | queue:build-sim
 conways game of life | conways game of life | game:build-sim/game-of-life
@@ -1409,6 +1470,8 @@ corewar | corewar | game:program-robots/core-war
 corey hardt | corey hardt | game:thinky/4d-sokoban
 correlation one | correlation one | game:program-robots/terminal-correlation-one
 Corrypt (Michael Brough) | corrypt michael brough | queue:thinky
+corrypt michael brough | corrypt michael brough | game:thinky/corrypt
+Corrypt | corrypt | game:thinky/corrypt
 corsixth | corsixth | game:build-sim/theme-hospital
 Cosmic Express | cosmic express | game:connect-rotate/cosmic-express
 Cosmic Express | cosmic express | queue:connect-rotate
@@ -1422,6 +1485,7 @@ Cottage Garden (Сільський сад) | cottage garden сільський �
 cottage garden | cottage garden | game:board-digital/cottage-garden
 Cottage Garden | cottage garden | queue:board-digital
 cotw | cotw | game:roguelike/castle-of-the-winds
+Couch Installation Service | couch installation service | game:push-slide/couch-installation-service
 Couch Installation Service | couch installation service | queue:push-slide
 countdown numbers game | countdown numbers game | game:word-number/countdown-numbers
 countdown numbers | countdown numbers | game:word-number/countdown-numbers
@@ -1433,7 +1497,6 @@ countle | countle | game:word-number/countdown-numbers
 Countless Rooms of Death | countless rooms of death | queue:thinky
 Country Road | country road | game:pencil-logic/country-road
 Country Road | country road | queue:pencil-logic
-Courtyard | courtyard | queue:push-slide
 Covemount | covemount | queue:push-slide
 cowboy checkers | cowboy checkers | game:chess-abstract/nine-mens-morris
 cows | cows | game:hidden-deduction/mastermind
@@ -1475,6 +1538,7 @@ Critters (block cellular automaton, Margolus) | critters block cellular automato
 critters block ca | critters block ca | game:build-sim/critters-block-ca
 critters | critters | game:build-sim/critters-block-ca
 Critters і блокові автомати (Margolus) | critters і блокові автомати margolus | game:build-sim/critters-block-ca
+Croquet Conundrum | croquet conundrum | game:thinky/croquet-conundrum
 Croquet Conundrum | croquet conundrum | queue:thinky
 Cross Blitz | cross blitz | game:tower-lanes/cross-blitz
 Cross Blitz | cross blitz | queue:tower-lanes
@@ -1522,6 +1586,7 @@ cryptic puzzle | cryptic puzzle | game:word-number/cryptic-crossword
 cryptic | cryptic | game:word-number/cryptic-crossword
 Cryptid | cryptid | game:hidden-deduction/cryptid
 Cryptid | cryptid | queue:hidden-deduction
+Cryptmaster | cryptmaster | skipped:_thinky-dump-checked
 cryptsweeper | cryptsweeper | game:hidden-deduction/tales-from-the-crypt-sweeper
 Crystal Castles | crystal castles | game:maze-arcade/crystal-castles
 Crystal Castles | crystal castles | queue:maze-arcade
@@ -1540,6 +1605,8 @@ cs | cs | game:build-sim/cities-skylines-zoning
 cs1 | cs1 | game:build-sim/cities-skylines-zoning
 csupa csupasz ty kesz | csupa csupasz ty kesz | game:hidden-deduction/zicke-zacke-huehnerkacke
 Cube (Tatham) | cube tatham | queue:push-slide
+cubetto playset | cubetto playset | game:program-robots/cubetto
+Cubetto | cubetto | game:program-robots/cubetto
 Cubetto | cubetto | queue:program-robots
 Cuboid / Bloxorz | cuboid bloxorz | queue:thinky
 Cuboid / Edge | cuboid edge | queue:push-slide
@@ -1548,6 +1615,8 @@ culdcept the first | culdcept the first | game:board-digital/culdcept
 Culdcept | culdcept | game:board-digital/culdcept
 Culdcept | culdcept | queue:board-digital
 cult of the lamb | cult of the lamb | game:tower-lanes/knucklebones
+cursed words the word game that isnt | cursed words the word game that isnt | game:word-number/cursed-words
+Cursed Words | cursed words | game:word-number/cursed-words
 Cursed Words | cursed words | queue:word-number
 Curve Data (カーブデータ) | curve data | queue:pencil-logic
 Curve Data | curve data | game:pencil-logic/curve-data
@@ -1572,15 +1641,16 @@ d d grid combat | d d grid combat | game:tactics/dnd-grid-combat
 d d | d d | game:tactics/dnd-grid-combat
 D&D grid combat (Dungeons & Dragons 5e) | d d grid combat dungeons dragons 5e | game:tactics/dnd-grid-combat
 D&D grid combat | d d grid combat | queue:tactics
+D-topia | d topia | queue:thinky
 d2 | d2 | game:build-sim/diablo2-inventory
 d2r | d2r | game:build-sim/diablo2-inventory
 daburu choko | daburu choko | game:pencil-logic/double-choco
 dac | dac | game:tower-lanes/dota-auto-chess
 Daedalian Opus | daedalian opus | game:board-digital/daedalian-opus
 Daedalian Opus | daedalian opus | queue:grid-platformer
-Daedalike | daedalike | queue:roguelike
 daggorath | daggorath | game:roguelike/dungeons-of-daggorath
 dai shogi | dai shogi | game:chess-abstract/large-shogi-variants
+Daily Akari | daily akari | skipped:_thinky-dump-checked
 daisyworld | daisyworld | game:build-sim/simearth
 daleks | daleks | game:roguelike/robots
 dama | dama | game:chess-abstract/checkers-variants
@@ -1607,6 +1677,7 @@ das magische labyrinth | das magische labyrinth | game:hidden-deduction/das-magi
 Das magische Labyrinth | das magische labyrinth | queue:hidden-deduction
 das verr ckte labyrinth | das verr ckte labyrinth | game:board-digital/labyrinth
 dashes | dashes | game:chess-abstract/dots-and-boxes
+Dave's Word Game | daves word game | game:word-number/daves-word-game
 Dave's Word Game | daves word game | queue:word-number
 dawsons chess | dawsons chess | game:chess-abstract/hexapawn
 dbchoco | dbchoco | game:pencil-logic/double-choco
@@ -1614,6 +1685,7 @@ dc heroclix | dc heroclix | game:tactics/heroclix
 dd | dd | game:tower-lanes/darkest-dungeon
 ddb | ddb | game:dig-gravity/dig-dig-boom
 ddm | ddm | game:tactics/dungeon-dice-monsters
+dead angle | dead angle | game:pencil-logic/deddoanguru
 Deadhand | deadhand | game:program-robots/deadhand
 Deadhand | deadhand | queue:program-robots
 Deadly Rooms of Death (DROD) | deadly rooms of death drod | queue:thinky
@@ -1621,7 +1693,10 @@ Deadly Rooms of Death (DROD: King Dugan's Dungeon) | deadly rooms of death drod 
 deadly rooms of death | deadly rooms of death | game:thinky/drod
 Death Howl | death howl | queue:tactics
 Death Squared | death squared | queue:thinky
+Decipher The Deck | decipher the deck | skipped:_thinky-dump-checked
 Deddoanguru (Dead Angle) | deddoanguru dead angle | queue:pencil-logic
+Deddoanguru (Dead Angle, «Мертвий кут») | deddoanguru dead angle мертвий кут | game:pencil-logic/deddoanguru
+deddoanguru | deddoanguru | game:pencil-logic/deddoanguru
 deductomino | deductomino | game:pencil-logic/dominosa
 Deep Rune | deep rune | game:roguelike/deep-rune
 Deep Rune | deep rune | queue:roguelike
@@ -1637,6 +1712,7 @@ Deflektor (+ Mindbender) | deflektor mindbender | game:connect-rotate/deflektor
 deflektor | deflektor | game:connect-rotate/deflektor
 Deflektor | deflektor | queue:connect-rotate
 deflexion | deflexion | game:connect-rotate/khet
+Delicious Donut | delicious donut | game:push-slide/delicious-donut
 Delicious Donut | delicious donut | queue:push-slide
 demon crawl | demon crawl | game:hidden-deduction/demoncrawl
 DemonCrawl | demoncrawl | game:hidden-deduction/demoncrawl
@@ -1657,9 +1733,10 @@ Descent: Journeys in the Dark | descent journeys in the dark | game:tactics/desc
 Descent: Journeys in the Dark | descent journeys in the dark | queue:tactics
 Desktop Dungeons | desktop dungeons | game:roguelike/desktop-dungeons
 Desktop Dungeons | desktop dungeons | queue:roguelike
-Desktop Dungeons: Rewind | desktop dungeons rewind | queue:roguelike
 Desktop Tower Defense | desktop tower defense | game:tower-lanes/desktop-tower-defense
 Desktop Tower Defense | desktop tower defense | queue:tower-lanes
+desperatea classic | desperatea classic | game:push-slide/desperatea
+Desperatea | desperatea | game:push-slide/desperatea
 Desperatea | desperatea | queue:push-slide
 detective chess | detective chess | game:pencil-logic/detective-chess
 detective co | detective co | game:hidden-deduction/top-secret-spies
@@ -1694,6 +1771,7 @@ diamond game | diamond game | game:chess-abstract/halma-chinese-checkers
 Diamond Mine / Diamond Caves II | diamond mine diamond caves ii | queue:dig-gravity
 Diamond Rush | diamond rush | game:dig-gravity/diamond-rush
 Diamond Rush | diamond rush | queue:dig-gravity
+Dice of Dusk | dice of dusk | queue:pencil-logic
 Dicevaders | dicevaders | queue:board-digital
 die burgen von burgund | die burgen von burgund | game:board-digital/the-castles-of-burgundy
 die g rten der alhambra | die g rten der alhambra | game:board-digital/carat
@@ -1722,6 +1800,7 @@ Digits (The New York Times) | digits the new york times | game:word-number/nyt-d
 digits of despair | digits of despair | game:pencil-logic/sudokuvania
 digits | digits | game:word-number/number-match
 digits | digits | game:word-number/nyt-digits
+Dino Sort | dino sort | queue:push-slide
 dip | dip | game:tactics/diplomacy
 diplomacy game | diplomacy game | game:tactics/diplomacy
 Diplomacy | diplomacy | game:tactics/diplomacy
@@ -1731,7 +1810,6 @@ Disgaea | disgaea | queue:tactics
 Disgaea: Hour of Darkness | disgaea hour of darkness | game:tactics/disgaea
 Dissembler | dissembler | game:falling-match/dissembler
 Dissembler | dissembler | queue:falling-match
-DITTORI / He Who Watches | dittori he who watches | queue:thinky
 divide by box | divide by box | game:pencil-logic/shikaku
 dizzy ii | dizzy ii | game:grid-platformer/treasure-island-dizzy
 Djambi (Джамбі, «Шахівниця Макіавеллі») | djambi джамбі шахівниця макіавеллі | game:chess-abstract/djambi
@@ -1758,7 +1836,6 @@ dofus | dofus | game:tactics/dofus
 Dofus | dofus | queue:tactics
 Dog in the Machine | dog in the machine | game:tactics/dog-in-the-machine
 Dog in the Machine | dog in the machine | queue:tactics
-Dogs Organized Neatly | dogs organized neatly | queue:board-digital
 Doki Doki Penguin Land (ドキドキペンギンランド) | doki doki penguin land | game:dig-gravity/doki-doki-penguin-land
 doki doki penguin land uchuu daibouken | doki doki penguin land uchuu daibouken | game:dig-gravity/doki-doki-penguin-land
 Doki Doki Penguin Land | doki doki penguin land | queue:dig-gravity
@@ -1795,6 +1872,7 @@ doomrl | doomrl | game:roguelike/doomrl
 door door mkii | door door mkii | game:grid-platformer/door-door
 Door Door | door door | game:grid-platformer/door-door
 Door Door | door door | queue:grid-platformer
+doors | doors | game:pencil-logic/tueren
 doplo | doplo | game:pencil-logic/doppelblock
 Doppelblock (Double Block) | doppelblock double block | game:pencil-logic/doppelblock
 doppelblock | doppelblock | game:pencil-logic/doppelblock
@@ -1849,7 +1927,10 @@ Dr. Mario (Доктор Маріо) | dr mario доктор маріо | game:fa
 Dr. Mario | dr mario | queue:falling-match
 Dragon Castle | dragon castle | game:board-digital/dragon-castle
 Dragon Castle | dragon castle | queue:board-digital
+Dragon Crystal (ドラゴンクリスタル ツラニの迷宮) | dragon crystal | game:roguelike/dragon-crystal
+dragon crystal tsurani no meiky | dragon crystal tsurani no meiky | game:roguelike/dragon-crystal
 Dragon Crystal | dragon crystal | queue:roguelike
+dragon fodder | dragon fodder | game:board-digital/feed-the-scorchpot
 Dragon Quest Builders (rooms) | dragon quest builders rooms | game:build-sim/dragon-quest-builders-rooms
 dragon quest builders 2 | dragon quest builders 2 | game:build-sim/dragon-quest-builders-rooms
 dragon quest builders | dragon quest builders | game:build-sim/dragon-quest-builders-rooms
@@ -1879,6 +1960,11 @@ drod rpg | drod rpg | game:roguelike/drod-rpg
 DROD RPG: Tendry's Tale (+ DROD RPG 2) | drod rpg tendrys tale drod rpg 2 | game:roguelike/drod-rpg
 DROD RPG: Tendry's Tale (+ DROD RPG 2) | drod rpg tendrys tale drod rpg 2 | queue:roguelike
 drod | drod | game:thinky/drod
+DROD: Gunthro and the Epic Blunder | drod gunthro and the epic blunder | skipped:_thinky-dump-checked
+DROD: Journey to Rooted Hold | drod journey to rooted hold | queue:thinky
+DROD: The City Beneath | drod the city beneath | skipped:_thinky-dump-checked
+DROD: The Second Sky | drod the second sky | queue:thinky
+Drop Duchy | drop duchy | queue:falling-match
 Drop7 | drop7 | game:falling-match/drop7
 Drop7 | drop7 | queue:falling-match
 Droplets | droplets | queue:thinky
@@ -1888,6 +1974,7 @@ Dropquote | dropquote | queue:word-number
 drossel schwabl forest fire model | drossel schwabl forest fire model | game:build-sim/forest-fire-model
 drossel | drossel | game:build-sim/forest-fire-model
 druaga | druaga | game:maze-arcade/the-tower-of-druaga
+druid | druid | game:thinky/heroes-of-sokoban-sequels
 drunter dr ber | drunter dr ber | game:board-digital/drunter-und-druber
 drunter und dr ber | drunter und dr ber | game:board-digital/drunter-und-druber
 drunter und druber | drunter und druber | game:board-digital/drunter-und-druber
@@ -1897,6 +1984,7 @@ ds ffm | ds ffm | game:build-sim/forest-fire-model
 dsp | dsp | game:build-sim/dyson-sphere-planet-grid
 dsw | dsw | game:hidden-deduction/dont-step-wrong
 dt | dt | game:tactics/dungeon-twister
+Dual Threaded | dual threaded | skipped:_thinky-dump-checked
 Duck Chess (Качині шахи) | duck chess качині шахи | game:chess-abstract/duck-chess
 duck chess | duck chess | game:chess-abstract/duck-chess
 Duck Chess | duck chess | queue:chess-abstract
@@ -1937,6 +2025,8 @@ dungeon warfare 3 | dungeon warfare 3 | game:tower-lanes/dungeon-warfare
 Dungeon Warfare | dungeon warfare | game:tower-lanes/dungeon-warfare
 Dungeon Warfare | dungeon warfare | queue:tower-lanes
 dungeondice monsters | dungeondice monsters | game:tactics/dungeon-dice-monsters
+Dungeons & Diagrams (Last Call BBS) | dungeons diagrams last call bbs | queue:pencil-logic
+Dungeons & Diagrams досі стояв лише в «Межових» нотатках черг program-robots і hidden-deduction | dungeons diagrams досі стояв лише в межових нотатках черг program robots і hidden deduction | skipped:_thinky-dump-checked
 dungeons dragons 5e | dungeons dragons 5e | game:tactics/dnd-grid-combat
 dungeons dragons | dungeons dragons | game:tactics/dnd-grid-combat
 Dungeons of Daggorath | dungeons of daggorath | game:roguelike/dungeons-of-daggorath
@@ -1970,6 +2060,7 @@ Dwarf Fortress | dwarf fortress | queue:build-sim
 Dwarf Fortress | dwarf fortress | queue:dig-gravity
 Dwarf Fortress — призначення клітин і рідини | dwarf fortress призначення клітин і рідини | game:build-sim/dwarf-fortress-tiles
 Dwarfer | dwarfer | queue:grid-platformer
+dwg | dwg | game:word-number/daves-word-game
 dyna blaster | dyna blaster | game:maze-arcade/bomberman-multiplayer-variants
 Dynablaster / Bomberman Blast | dynablaster bomberman blast | queue:maze-arcade
 dynablaster | dynablaster | game:maze-arcade/bomberman-multiplayer-variants
@@ -1998,8 +2089,11 @@ Easy as ABC (ABC End View) | easy as abc abc end view | game:pencil-logic/easy-a
 easy as abc | easy as abc | game:pencil-logic/easy-as-abc
 Easy as ABC | easy as abc | queue:pencil-logic
 eca | eca | game:build-sim/elementary-cellular-automata
+echochrome micro | echochrome micro | game:thinky/echochrome
+Echochrome | echochrome | game:thinky/echochrome
 Echochrome | echochrome | queue:thinky
 ect | ect | game:thinky/english-country-tune
+Edge Case | edge case | game:thinky/edge-case
 Edge Case | edge case | queue:thinky
 EDGE | edge | queue:grid-platformer
 eft | eft | game:build-sim/tarkov-inventory
@@ -2020,6 +2114,7 @@ Electric Box (+ Lazors) | electric box lazors | game:connect-rotate/electric-box
 electric box | electric box | game:connect-rotate/electric-box
 Electric Box | electric box | queue:connect-rotate
 electrifying incident | electrifying incident | game:thinky/the-electrifying-incident
+Electrogical (エレクトロジカル) | electrogical | game:board-digital/electrogical
 Electrogical | electrogical | queue:board-digital
 electromaze defense | electromaze defense | game:tower-lanes/mazing-td-modern
 electromaze | electromaze | game:tower-lanes/mazing-td-modern
@@ -2031,6 +2126,7 @@ elementary cellular automata | elementary cellular automata | game:build-sim/ele
 elementary cellular automaton | elementary cellular automaton | game:build-sim/elementary-cellular-automata
 elephant-in-a-bottle | elephant in a bottle | game:thinky/elephant-in-a-bottle
 elephant-in-a-bottle | elephant in a bottle | queue:thinky
+Elevator Saga | elevator saga | game:program-robots/elevator-saga
 Elevator Saga | elevator saga | queue:program-robots
 embassy chess | embassy chess | game:chess-abstract/capablanca-chess
 Emberward | emberward | game:tower-lanes/emberward
@@ -2042,6 +2138,7 @@ Emeraldia | emeraldia | queue:falling-match
 Empire Builder (crayon rails) | empire builder crayon rails | game:connect-rotate/empire-builder
 Empire Builder (crayon rails) | empire builder crayon rails | queue:connect-rotate
 empire builder | empire builder | game:connect-rotate/empire-builder
+EmuDevz | emudevz | skipped:_thinky-dump-checked
 encore | encore | game:board-digital/noch-mal
 Encore! (Noch mal!) | encore noch mal | game:board-digital/noch-mal
 Encore! (Noch mal!) | encore noch mal | queue:board-digital
@@ -2111,6 +2208,8 @@ Euclidean Skies | euclidean skies | game:thinky/euclidean-skies
 euphrat tigris | euphrat tigris | game:board-digital/tigris-and-euphrates
 everett kaser | everett kaser | game:pencil-logic/sherlock
 everyone can code puzzles | everyone can code puzzles | game:program-robots/swift-playgrounds
+evil eye iamshyguy | evil eye iamshyguy | game:push-slide/evil-eye
+Evil Eye | evil eye | game:push-slide/evil-eye
 Evil Eye | evil eye | queue:push-slide
 Evolmino | evolmino | game:pencil-logic/evolmino
 Evolmino | evolmino | queue:pencil-logic
@@ -2191,6 +2290,7 @@ feast for odin polyomino | feast for odin polyomino | game:board-digital/a-feast
 feast for odin | feast for odin | game:board-digital/a-feast-for-odin-polyomino
 Feed All Monsters | feed all monsters | game:connect-rotate/feed-all-monsters
 Feed All Monsters | feed all monsters | queue:connect-rotate
+Feed the Scorchpot | feed the scorchpot | game:board-digital/feed-the-scorchpot
 Feed the Scorchpot | feed the scorchpot | queue:board-digital
 Felix the Reaper | felix the reaper | game:thinky/felix-the-reaper
 Felix the Reaper | felix the reaper | queue:thinky
@@ -2225,6 +2325,7 @@ Fights in Tight Spaces | fights in tight spaces | game:tactics/fights-in-tight-s
 Fights in Tight Spaces | fights in tight spaces | queue:tactics
 figure logic | figure logic | game:word-number/cross-figure
 figure logics | figure logics | game:word-number/cross-figure
+Filament | filament | queue:connect-rotate
 fill a pix minesweeper | fill a pix minesweeper | game:pencil-logic/fill-a-pix
 fill a pix | fill a pix | game:pencil-logic/fill-a-pix
 fill in | fill in | game:word-number/fill-in
@@ -2263,6 +2364,7 @@ firing squad synchronization problem | firing squad synchronization problem | ga
 Firing squad synchronization problem | firing squad synchronization problem | queue:build-sim
 firing squad synchronization | firing squad synchronization | game:build-sim/firing-squad-synchronization
 first capture go | first capture go | game:chess-abstract/atari-go
+Fish Fillets 2 | fish fillets 2 | skipped:_thinky-dump-checked
 fish fillets next generation | fish fillets next generation | game:thinky/fish-fillets
 fish fillets ng | fish fillets ng | game:thinky/fish-fillets
 Fish Fillets | fish fillets | game:thinky/fish-fillets
@@ -2274,6 +2376,7 @@ FITS | fits | queue:board-digital
 five cells | five cells | game:pencil-logic/palisade
 Five Tribes | five tribes | game:board-digital/five-tribes
 Five Tribes | five tribes | queue:board-digital
+Fivefold | fivefold | skipped:_thinky-dump-checked
 Fjords | fjords | queue:board-digital
 fl exploration of space zackman the pit | fl exploration of space zackman the pit | game:dig-gravity/the-pit
 Flamme Rouge | flamme rouge | game:board-digital/flamme-rouge
@@ -2301,6 +2404,7 @@ Flow Free (+ Bridges, Hexes, Warps, Shapes) | flow free bridges hexes warps shap
 Flow Free | flow free | game:connect-rotate/flow-free
 flower breeding | flower breeding | game:build-sim/acnh-flowers
 flowing loop | flowing loop | game:pencil-logic/nagareru-loop
+FMTC | fmtc | skipped:_thinky-dump-checked
 fo1 | fo1 | game:tactics/fallout-classic-combat
 fo2 | fo2 | game:tactics/fallout-classic-combat
 fog of war | fog of war | game:hidden-deduction/dark-chess-kriegspiel
@@ -2316,6 +2420,7 @@ forest fire cellular automaton | forest fire cellular automaton | game:build-sim
 forest fire model | forest fire model | game:build-sim/forest-fire-model
 Forest-fire model (Drossel–Schwabl) | forest fire model drossel schwabl | queue:build-sim
 Forest-fire model (модель лісової пожежі Дроссель — Швабля) | forest fire model модель лісової пожежі дроссель швабля | game:build-sim/forest-fire-model
+Forever Wonder Colour | forever wonder colour | game:thinky/forever-wonder-colour
 Forever Wonder Colour | forever wonder colour | queue:thinky
 forgotten realms dungeon hack | forgotten realms dungeon hack | game:roguelike/dungeon-hack
 fork bomb | fork bomb | game:program-robots/fork-bomb
@@ -2334,6 +2439,7 @@ four player chess | four player chess | game:chess-abstract/four-player-chess
 four rivers | four rivers | game:falling-match/shisen-sho
 Four-player chess (шахи на чотирьох) | four player chess шахи на чотирьох | game:chess-abstract/four-player-chess
 Four-player chess | four player chess | queue:chess-abstract
+Fourteen Definitions | fourteen definitions | skipped:_thinky-dump-checked
 fowers games | fowers games | game:word-number/paperback-adventures
 Fractal Factory | fractal factory | queue:program-robots
 frenzy | frenzy | game:maze-arcade/berzerk
@@ -2346,6 +2452,7 @@ frisian draughts | frisian draughts | game:chess-abstract/checkers-variants
 Frogger (Жабка) / Crossy Road | frogger жабка crossy road | game:maze-arcade/frogger
 frogger | frogger | game:maze-arcade/frogger
 Frogger | frogger | queue:maze-arcade
+from 1 to 10 | from 1 to 10 | game:pencil-logic/tenner-grid
 From Dust | from dust | game:dig-gravity/from-dust
 From Dust | from dust | queue:dig-gravity
 front mission 1st remake | front mission 1st remake | game:tactics/front-mission
@@ -2385,6 +2492,7 @@ fury of dracula digital edition | fury of dracula digital edition | game:hidden-
 Futoshiki (Unequal, Нерівності) | futoshiki unequal нерівності | game:pencil-logic/futoshiki
 Futoshiki / Unequal | futoshiki unequal | queue:pencil-logic
 futoshiki | futoshiki | game:pencil-logic/futoshiki
+fwc | fwc | game:thinky/forever-wonder-colour
 g mode archives 34 | g mode archives 34 | game:grid-platformer/majokko-princess-mefi
 Gabbuchi | gabbuchi | game:grid-platformer/gabbuchi
 Gabbuchi | gabbuchi | queue:grid-platformer
@@ -2474,6 +2582,7 @@ gi anvil of victory | gi anvil of victory | game:tactics/squad-leader
 giotto | giotto | game:hidden-deduction/jotto
 GIPF | gipf | game:chess-abstract/gipf
 GIPF | gipf | queue:chess-abstract
+Give Up the Ghost | give up the ghost | skipped:_thinky-dump-checked
 Give Up the Ghost: a puzzle checklist | give up the ghost a puzzle checklist | queue:thinky
 gkh | gkh | game:roguelike/golden-krone-hotel
 Gladiabots | gladiabots | game:program-robots/gladiabots
@@ -2488,6 +2597,7 @@ Globesweeper: Hex Puzzler | globesweeper hex puzzler | queue:hidden-deduction
 gloomhaven digital | gloomhaven digital | game:tactics/gloomhaven
 Gloomhaven | gloomhaven | game:tactics/gloomhaven
 Gloomhaven | gloomhaven | queue:tactics
+Glowkeeper | glowkeeper | skipped:_thinky-dump-checked
 gmtk2024 jam tower of scale | gmtk2024 jam tower of scale | game:roguelike/towers-of-scale
 gmtk2024 jam | gmtk2024 jam | game:roguelike/towers-of-scale
 gnome robots | gnome robots | game:roguelike/robots
@@ -2513,6 +2623,7 @@ gokigen naname | gokigen naname | game:pencil-logic/slant
 gokigen | gokigen | game:pencil-logic/slant
 gold hunt | gold hunt | game:dig-gravity/boulder-dash-dos-clones
 Gold Hunt | gold hunt | queue:dig-gravity
+Golden Arrow | golden arrow | game:push-slide/golden-arrow
 Golden Arrow | golden arrow | queue:push-slide
 Golden Krone Hotel | golden krone hotel | game:roguelike/golden-krone-hotel
 Golden Krone Hotel | golden krone hotel | queue:roguelike
@@ -2567,6 +2678,7 @@ gravity maze | gravity maze | game:board-digital/thinkfun-logic-mazes
 Gravity Maze | gravity maze | queue:board-digital
 great escape | great escape | game:program-robots/codingame-great-escape
 great museum caper | great museum caper | game:hidden-deduction/clue-the-great-museum-caper
+Great Permutator | great permutator | game:program-robots/great-permutator
 Great Permutator | great permutator | queue:program-robots
 green hackenbush | green hackenbush | game:connect-rotate/hackenbush
 greenberg hastings model | greenberg hastings model | game:build-sim/greenberg-hastings
@@ -2583,6 +2695,7 @@ grid computing | grid computing | game:program-robots/aoc-2016-grid-computing
 Grid Forge TD | grid forge td | game:tower-lanes/grid-forge-td
 Grid Forge TD | grid forge td | queue:tower-lanes
 grid racer | grid racer | game:thinky/gridracer
+grid ten | grid ten | game:pencil-logic/tenner-grid
 grid | grid | game:chess-abstract/fairy-chess-conditions
 Griddle Words | griddle words | game:word-number/griddle-words
 Griddle Words | griddle words | queue:word-number
@@ -2593,13 +2706,14 @@ Gridmount | gridmount | queue:thinky
 Gridogram | gridogram | queue:word-number
 GridRacer | gridracer | game:thinky/gridracer
 GridRacer | gridracer | queue:thinky
+Gridspech | gridspech | game:thinky/gridspech
 Gridspech | gridspech | queue:thinky
-Gridvania | gridvania | queue:grid-platformer
 Gridwordy | gridwordy | game:word-number/gridwordy
 Gridwordy | gridwordy | queue:word-number
 griffeaths cyclic automaton | griffeaths cyclic automaton | game:build-sim/cyclic-cellular-automaton
 ground gives way | ground gives way | game:roguelike/infra-arcana
 growing artificial societies | growing artificial societies | game:build-sim/sugarscape
+Growmi | growmi | game:thinky/growmi
 Growmi | growmi | queue:thinky
 gsc | gsc | game:board-digital/ganz-schon-clever
 gtd2 | gtd2 | game:tower-lanes/gem-td
@@ -2617,6 +2731,7 @@ gunbrick reloaded | gunbrick reloaded | game:grid-platformer/gunbrick
 gunbrick | gunbrick | game:grid-platformer/gunbrick
 Gunbrick: Reloaded | gunbrick reloaded | queue:grid-platformer
 Gunjin Shōgi | gunjin sh gi | queue:hidden-deduction
+Gunning for the Exit | gunning for the exit | skipped:_thinky-dump-checked
 Gunpey (Гунпей) | gunpey гунпей | game:falling-match/gunpey
 gunpey ds | gunpey ds | game:falling-match/gunpey
 gunpey ex | gunpey ex | game:falling-match/gunpey
@@ -2691,11 +2806,13 @@ Hanano Puzzle (ハナノパズル) | hanano puzzle | game:thinky/hanano-puzzle
 Hanano Puzzle | hanano puzzle | queue:push-slide
 Hands of Time (Final Fantasy XIII-2) | hands of time final fantasy xiii 2 | game:connect-rotate/hands-of-time
 hands of time | hands of time | game:connect-rotate/hands-of-time
+Handshakes | handshakes | game:thinky/handshakes
 Handshakes | handshakes | queue:thinky
 hanjie | hanjie | game:pencil-logic/nonogram
 Happy Home (Щасливий дім) | happy home щасливий дім | game:board-digital/happy-home
 happy home | happy home | game:board-digital/happy-home
 Happy Home | happy home | queue:board-digital
+Hard Chip | hard chip | game:program-robots/hard-chip
 Hard Chip | hard chip | queue:program-robots
 hard west 2 | hard west 2 | game:tactics/hard-west
 Hard West | hard west | game:tactics/hard-west
@@ -2708,6 +2825,7 @@ Hare and Tortoise | hare and tortoise | queue:board-digital
 hare | hare | game:board-digital/hare-and-tortoise
 Harmless (7DRL, Kaw) | harmless 7drl kaw | queue:roguelike
 harmless 7drl | harmless 7drl | game:roguelike/harmless-7drl
+Harmless Drudge | harmless drudge | skipped:_thinky-dump-checked
 harmless | harmless | game:roguelike/harmless-7drl
 Harmless7DRL | harmless7drl | game:roguelike/harmless-7drl
 Harmonies | harmonies | game:board-digital/harmonies
@@ -2726,10 +2844,10 @@ hastings cellular automaton | hastings cellular automaton | game:build-sim/green
 hastings model | hastings model | game:build-sim/greenberg-hastings
 Hat Stack (knexator) | hat stack knexator | queue:thinky
 Hat Stack | hat stack | game:thinky/hat-stack
-Hat Tricks: Hare in Box | hat tricks hare in box | queue:thinky
 Hat-tricks (Andrea Gilbert) | hat tricks andrea gilbert | queue:thinky
 Hatris | hatris | game:falling-match/hatris
 Hatris | hatris | queue:falling-match
+Hatsune Miku Bomb Squad! | hatsune miku bomb squad | queue:pencil-logic
 haunted mirror maze | haunted mirror maze | game:pencil-logic/undead
 Havannah | havannah | queue:chess-abstract
 hawaiian checkers | hawaiian checkers | game:chess-abstract/konane
@@ -2781,8 +2899,15 @@ Heroes of Might and Magic III | heroes of might and magic iii | queue:tactics
 heroes of might | heroes of might | game:tactics/heroes-of-might-and-magic-3
 Heroes of Sokoban (PuzzleScript) | heroes of sokoban puzzlescript | queue:thinky
 heroes of sokoban i | heroes of sokoban i | game:thinky/heroes-of-sokoban
+heroes of sokoban ii monsters | heroes of sokoban ii monsters | game:thinky/heroes-of-sokoban-sequels
+heroes of sokoban ii | heroes of sokoban ii | game:thinky/heroes-of-sokoban-sequels
 Heroes of Sokoban II: Monsters | heroes of sokoban ii monsters | queue:thinky
+Heroes of Sokoban II: Monsters і III: The Bard and the Druid | heroes of sokoban ii monsters і iii the bard and the druid | game:thinky/heroes-of-sokoban-sequels
+heroes of sokoban iii the bard and the druid | heroes of sokoban iii the bard and the druid | game:thinky/heroes-of-sokoban-sequels
+heroes of sokoban iii the bard | heroes of sokoban iii the bard | game:thinky/heroes-of-sokoban-sequels
+heroes of sokoban iii | heroes of sokoban iii | game:thinky/heroes-of-sokoban-sequels
 Heroes of Sokoban III: The Bard and the Druid | heroes of sokoban iii the bard and the druid | queue:thinky
+heroes of sokoban sequels | heroes of sokoban sequels | game:thinky/heroes-of-sokoban-sequels
 Heroes of Sokoban | heroes of sokoban | game:thinky/heroes-of-sokoban
 HeroQuest + Space Hulk (настільні данжен-кроулери на сітці) | heroquest space hulk настільні данжен кроулери на сітці | game:tactics/heroquest-space-hulk
 heroquest space hulk | heroquest space hulk | game:tactics/heroquest-space-hulk
@@ -2796,6 +2921,7 @@ herugolf | herugolf | game:pencil-logic/herugolf
 Herugolf | herugolf | queue:pencil-logic
 Hex (Гекс) | hex гекс | game:chess-abstract/hex
 hex gonnect | hex gonnect | game:chess-abstract/gonnect
+Hex Pivot | hex pivot | game:push-slide/hex-pivot
 Hex Pivot | hex pivot | queue:push-slide
 hex stack sort | hex stack sort | game:falling-match/hexa-sort
 hex uwca | hex uwca | game:build-sim/ulam-warburton-automaton
@@ -2804,6 +2930,7 @@ Hex | hex | queue:chess-abstract
 Hexa Sort | hexa sort | game:falling-match/hexa-sort
 Hexa Sort | hexa sort | queue:falling-match
 hexa stack | hexa stack | game:falling-match/hexa-sort
+Hexa-World-3D | hexa world 3d | skipped:_thinky-dump-checked
 hexago continuo | hexago continuo | game:board-digital/continuo
 hexagonal chess | hexagonal chess | game:chess-abstract/glinski-hex-chess
 Hexahedra | hexahedra | queue:program-robots
@@ -2849,6 +2976,7 @@ hi q | hi q | game:chess-abstract/peg-solitaire
 Hidato (Хідато) | hidato хідато | game:pencil-logic/hidato
 hidato | hidato | game:pencil-logic/hidato
 Hidato | hidato | queue:pencil-logic
+Hidden Oxygen | hidden oxygen | game:pencil-logic/hidden-oxygen
 Hidden Oxygen | hidden oxygen | queue:pencil-logic
 Hiding Spot | hiding spot | queue:push-slide
 hidoku | hidoku | game:pencil-logic/hidato
@@ -2886,6 +3014,8 @@ homecoming | homecoming | game:pencil-logic/satogaeri
 Homescapes / Gardenscapes / Royal Match (мета-шар ремонту) | homescapes gardenscapes royal match мета шар ремонту | game:falling-match/match3-meta-renovation
 Homescapes / Gardenscapes / Royal Match | homescapes gardenscapes royal match | queue:falling-match
 homescapes | homescapes | game:falling-match/match3-meta-renovation
+homgard book 1 | homgard book 1 | game:pencil-logic/homgard
+Homgard | homgard | game:pencil-logic/homgard
 Homgard | homgard | queue:pencil-logic
 homm3 | homm3 | game:tactics/heroes-of-might-and-magic-3
 hook 2 | hook 2 | game:connect-rotate/hook
@@ -2907,15 +3037,18 @@ Hoshigami: Ruining Blue Earth | hoshigami ruining blue earth | game:tactics/hosh
 Hoshigami: Ruining Blue Earth | hoshigami ruining blue earth | queue:tactics
 Hostage Chess | hostage chess | queue:chess-abstract
 hostage | hostage | game:chess-abstract/chess-rule-twists
+hot box | hot box | game:pencil-logic/survo-puzzle
 hot pop | hot pop | game:grid-platformer/nuts-and-milk
 Hot Springs Story (Kairosoft) | hot springs story kairosoft | queue:build-sim
 Hot Springs Story | hot springs story | game:build-sim/hot-springs-story
 hour of code maze | hour of code maze | game:program-robots/block-maze-games
+Hourglass | hourglass | skipped:_thinky-dump-checked
 house | house | game:pencil-logic/haisu
 housie | housie | game:word-number/bingo
 hover bover | hover bover | game:maze-arcade/hover-bovver
 Hover Bovver | hover bovver | game:maze-arcade/hover-bovver
 Hover Bovver | hover bovver | queue:maze-arcade
+How Hungry? | how hungry | skipped:_thinky-dump-checked
 hpp model | hpp model | game:build-sim/lattice-gas-hpp-fhp
 hrm | hrm | game:program-robots/human-resource-machine
 hsbg | hsbg | game:tower-lanes/hearthstone-battlegrounds
@@ -2928,6 +3061,8 @@ hues | hues | game:board-digital/hues-and-cues
 Human Resource Machine | human resource machine | game:program-robots/human-resource-machine
 Human Resource Machine | human resource machine | queue:program-robots
 Humbug (+ Humbug 2) | humbug humbug 2 | queue:push-slide
+Humbug 2 | humbug 2 | skipped:_thinky-dump-checked
+Humbug | humbug | skipped:_thinky-dump-checked
 hungry geese | hungry geese | game:program-robots/kaggle-hungry-geese
 Hungry Horace | hungry horace | game:maze-arcade/hungry-horace
 Hungry Horace | hungry horace | queue:maze-arcade
@@ -2952,10 +3087,12 @@ HyperRogue | hyperrogue | game:roguelike/hyperrogue
 HyperRogue | hyperrogue | queue:roguelike
 hypersonic | hypersonic | game:program-robots/codingame-hypersonic
 I am Two (nebu soku) | i am two nebu soku | queue:thinky
+I Made Some Paper Puzzles | i made some paper puzzles | skipped:_thinky-dump-checked
 i zombie | i zombie | game:tower-lanes/pvz-puzzle-modes
 I.Q.: Intelligent Qube (Kurushi) | iq intelligent qube kurushi | game:falling-match/intelligent-qube
 I.Q.: Intelligent Qube (Kurushi) | iq intelligent qube kurushi | queue:falling-match
 ia | ia | game:roguelike/infra-arcana
+iamshyguy | iamshyguy | game:push-slide/evil-eye
 ibol | ibol | game:program-robots/chipwits
 ice barn | ice barn | game:pencil-logic/icebarn
 Ice path (Rosden Shadow) | ice path rosden shadow | queue:thinky
@@ -2966,19 +3103,27 @@ Ice-sliding puzzles (Inertia і жанр «ковзай до упору») | ice
 Icebarn (アイスバーン) | icebarn | game:pencil-logic/icebarn
 Icebarn | icebarn | queue:pencil-logic
 icehouse the martian chess set | icehouse the martian chess set | game:chess-abstract/martian-chess
+Ichimaga (イチマガ) | ichimaga | game:pencil-logic/ichimaga
 Ichimaga (イチマガ) | ichimaga | queue:pencil-logic
 if i was a worm | if i was a worm | game:thinky/woim
+iii the bard | iii the bard | game:thinky/heroes-of-sokoban-sequels
 iix | iix | game:falling-match/super-puzzle-fighter-ii-turbo
+IKA | ika | queue:thinky
 ikasuze ai no doki doki penguin land md | ikasuze ai no doki doki penguin land md | game:dig-gravity/doki-doki-penguin-land
 il codex mozione | il codex mozione | game:connect-rotate/marble-drop
 ilija bi kup | ilija bi kup | game:push-slide/raking-sokoban
+ilomilo autumn tale | ilomilo autumn tale | game:thinky/ilomilo
+ilomilo plus | ilomilo plus | game:thinky/ilomilo
+ilomilo | ilomilo | game:thinky/ilomilo
 ilomilo | ilomilo | queue:thinky
 imbroglio | imbroglio | game:roguelike/868-hack
 Imbroglio | imbroglio | queue:roguelike
 Imogen | imogen | game:grid-platformer/imogen
 Imogen | imogen | queue:grid-platformer
 imperium | imperium | game:chess-abstract/ploy
+Imprisoned! | imprisoned | game:push-slide/imprisoned
 imprisoned! | imprisoned | queue:push-slide
+In a Pickle | in a pickle | skipped:_thinky-dump-checked
 inbento | inbento | game:thinky/inbento
 inbento | inbento | queue:thinky
 inc | inc | game:tactics/invisible-inc
@@ -3021,6 +3166,9 @@ Inkognito | inkognito | queue:hidden-deduction
 Inkshade | inkshade | queue:tactics
 Inkulinati | inkulinati | game:tactics/inkulinati
 Inkulinati | inkulinati | queue:tactics
+Inkwell Fields (Light and Shadow) | inkwell fields light and shadow | queue:pencil-logic
+Inkwell Lazy River (Loopy River) | inkwell lazy river loopy river | queue:pencil-logic
+Inkwell Stars | inkwell stars | skipped:_thinky-dump-checked
 Inner Tao | inner tao | queue:thinky
 Inscryption (Act 1) | inscryption act 1 | game:tower-lanes/inscryption
 inscryption | inscryption | game:tower-lanes/inscryption
@@ -3056,6 +3204,7 @@ iron horse | iron horse | game:connect-rotate/metro-iron-horse
 iron men | iron men | game:tactics/wooden-ships-and-iron-men
 Ironclad Tactics | ironclad tactics | game:tower-lanes/ironclad-tactics
 Ironclad Tactics | ironclad tactics | queue:tower-lanes
+Is This Seat Taken? | is this seat taken | game:pencil-logic/is-this-seat-taken
 Is This Seat Taken? | is this seat taken | queue:pencil-logic
 Isaac and the Conservation of Momentum | isaac and the conservation of momentum | game:thinky/isaac-conservation-of-momentum
 Isaac and the Conservation of Momentum | isaac and the conservation of momentum | queue:thinky
@@ -3072,6 +3221,7 @@ island | island | game:board-digital/escape-from-atlantis
 islanders console edition | islanders console edition | game:build-sim/islanders
 Islanders | islanders | game:build-sim/islanders
 Islanders | islanders | queue:build-sim
+Islanders: New Shores | islanders new shores | skipped:_thinky-dump-checked
 islands in the stream | islands in the stream | game:pencil-logic/nurikabe
 Islands of Insight | islands of insight | game:thinky/islands-of-insight
 Islands of Insight | islands of insight | queue:thinky
@@ -3167,18 +3317,22 @@ jupiter hell | jupiter hell | game:roguelike/doomrl
 Just Get 10 | just get 10 | game:falling-match/just-get-10
 Just Get 10 | just get 10 | queue:falling-match
 just get ten | just get ten | game:falling-match/just-get-10
+Juufuutei Raden's Guide for Pixel Museum | juufuutei radens guide for pixel museum | skipped:_thinky-dump-checked
 Juurru | juurru | queue:connect-rotate
 jvn29 | jvn29 | game:build-sim/von-neumann-ca
 k benhavn | k benhavn | game:board-digital/copenhagen
 k c | k c | game:build-sim/kingdoms-and-castles
 k choku | k choku | game:pencil-logic/kouchoku
+k h gy ny | k h gy ny | game:pencil-logic/coffee-milk
 k nane | k nane | game:chess-abstract/konane
 K.C.'s Krazy Chase! | kcs krazy chase | game:maze-arcade/kcs-krazy-chase
 K.C.'s Krazy Chase! | kcs krazy chase | queue:maze-arcade
+ka blooey | ka blooey | game:thinky/bombuzal
 Kaboom (+ LuckSweeper, Pure Skill Minesweeper, Tatham Mines — сапер, що карає або прощає вгадування) | kaboom lucksweeper pure skill minesweeper tatham mines сапер що карає або прощає вгадування | game:hidden-deduction/kaboom
 Kaboom (Paweł Marczewski) | kaboom pawe marczewski | queue:hidden-deduction
 kaboom | kaboom | game:hidden-deduction/kaboom
 kac | kac | game:build-sim/kingdoms-and-castles
+kafka | kafka | game:pencil-logic/tueren
 Kaggle Crawl | kaggle crawl | game:program-robots/kaggle-crawl
 Kaggle Crawl | kaggle crawl | queue:program-robots
 Kaggle Hungry Geese | kaggle hungry geese | game:program-robots/kaggle-hungry-geese
@@ -3188,6 +3342,8 @@ Kaggle Kore 2022 (Kore Fleets) | kaggle kore 2022 kore fleets | queue:program-ro
 kaggle kore 2022 | kaggle kore 2022 | game:program-robots/kaggle-kore-fleets
 kaggle kore fleets | kaggle kore fleets | game:program-robots/kaggle-kore-fleets
 kaidoku | kaidoku | game:word-number/codeword
+kaito ranma | kaito ranma | game:pencil-logic/kaitoramma
+KaitoRamma (快刀乱麻) | kaitoramma | game:pencil-logic/kaitoramma
 KaitoRamma (快刀乱麻) | kaitoramma | queue:pencil-logic
 kaizen | kaizen | game:program-robots/kaizen-a-factory-story
 Kaizen: A Factory Story | kaizen a factory story | game:program-robots/kaizen-a-factory-story
@@ -3345,6 +3501,7 @@ Kotoba no Puzzle: Mojipittan | kotoba no puzzle mojipittan | queue:word-number
 Kouchoku (Коучоку, «Перетин — лише під прямим кутом») | kouchoku коучоку перетин лише під прямим кутом | game:pencil-logic/kouchoku
 Kouchoku (交差は直角に限る) | kouchoku | queue:pencil-logic
 kouchoku | kouchoku | game:pencil-logic/kouchoku
+kramma | kramma | game:pencil-logic/kaitoramma
 Krazydad (банк друкованих пазлів) | krazydad банк друкованих пазлів | game:pencil-logic/krazydad
 krazydad | krazydad | game:pencil-logic/krazydad
 krazydadcom | krazydadcom | game:pencil-logic/krazydad
@@ -3419,6 +3576,7 @@ la pucelle | la pucelle | game:tactics/la-pucelle-tactics
 La Pucelle: Tactics | la pucelle tactics | game:tactics/la-pucelle-tactics
 La Pucelle: Tactics | la pucelle tactics | queue:tactics
 Lab Rat | lab rat | queue:push-slide
+labirinth | labirinth | game:hidden-deduction/labyrinth-paper-and-pencil
 Labyrinth (Das verrückte Labyrinth, Божевільний лабіринт) | labyrinth das verr ckte labyrinth божевільний лабіринт | game:board-digital/labyrinth
 Labyrinth (Ravensburger) | labyrinth ravensburger | queue:board-digital
 Labyrinth (Ravensburger) | labyrinth ravensburger | queue:connect-rotate
@@ -3426,7 +3584,10 @@ labyrinth of death | labyrinth of death | game:roguelike/fatal-labyrinth
 labyrinth of refrain | labyrinth of refrain | game:roguelike/labyrinth-of-refrain
 Labyrinth of Refrain: Coven of Dusk | labyrinth of refrain coven of dusk | game:roguelike/labyrinth-of-refrain
 Labyrinth of Refrain: Coven of Dusk | labyrinth of refrain coven of dusk | queue:roguelike
+labyrinth paper and pencil game | labyrinth paper and pencil game | game:hidden-deduction/labyrinth-paper-and-pencil
+labyrinth paper and pencil | labyrinth paper and pencil | game:hidden-deduction/labyrinth-paper-and-pencil
 labyrinth | labyrinth | game:board-digital/labyrinth
+labyrinth | labyrinth | game:hidden-deduction/labyrinth-paper-and-pencil
 laddergram | laddergram | game:word-number/weaver
 Lady Bug | lady bug | game:maze-arcade/lady-bug
 Lady Bug | lady bug | queue:maze-arcade
@@ -3482,6 +3643,7 @@ LaserTank | lasertank | game:connect-rotate/laser-tank
 LaserTank | lasertank | queue:connect-rotate
 laska | laska | game:chess-abstract/lasca
 lasso | lasso | game:pencil-logic/nagenawa
+Last Call BBS | last call bbs | skipped:_thinky-dump-checked
 last guy premium japan | last guy premium japan | game:maze-arcade/the-last-guy
 last man standing | last man standing | game:pencil-logic/easy-as-abc
 Latent Tic-Tac-Toe | latent tic tac toe | game:hidden-deduction/latent-tic-tac-toe
@@ -3522,14 +3684,17 @@ lemmings 1991 | lemmings 1991 | game:dig-gravity/lemmings
 lemmings 2 | lemmings 2 | game:dig-gravity/lemmings-2-the-tribes
 Lemmings 2: The Tribes | lemmings 2 the tribes | game:dig-gravity/lemmings-2-the-tribes
 Lemmings 2: The Tribes | lemmings 2 the tribes | queue:dig-gravity
+lemmings 3d | lemmings 3d | game:dig-gravity/3d-lemmings
 Lemmings | lemmings | game:dig-gravity/lemmings
 Lemmings | lemmings | queue:dig-gravity
 Lenia | lenia | game:build-sim/lenia
 Lenia | lenia | queue:build-sim
+Lenrual | lenrual | skipped:_thinky-dump-checked
 les aventuriers du rail | les aventuriers du rail | game:board-digital/ticket-to-ride
 less | less | game:pencil-logic/futoshiki
 Lethal Geometry | lethal geometry | game:tower-lanes/lethal-geometry
 Lethal Geometry | lethal geometry | queue:tower-lanes
+Letibus Advent Calendar 2025 | letibus advent calendar 2025 | skipped:_thinky-dump-checked
 lets catch the lion | lets catch the lion | game:chess-abstract/dobutsu-shogi
 Letter Coins | letter coins | queue:word-number
 letter quest grimms journey remastered | letter quest grimms journey remastered | game:word-number/word-rpg-battlers
@@ -3537,6 +3702,7 @@ letter quest grimms journey | letter quest grimms journey | game:word-number/wor
 letter quest | letter quest | game:word-number/word-rpg-battlers
 Letter Quest і Spellspire — словесні RPG-бої | letter quest і spellspire словесні rpg бої | game:word-number/word-rpg-battlers
 Letter Quest: Grimm's Journey | letter quest grimms journey | queue:word-number
+Letterlike | letterlike | skipped:_thinky-dump-checked
 Letterpress | letterpress | game:word-number/letterpress
 Letterpress | letterpress | queue:word-number
 levelhead platformer maker | levelhead platformer maker | game:grid-platformer/levelhead
@@ -3575,6 +3741,7 @@ Ligo | ligo | queue:push-slide
 Lime Rick (PuzzleScript) | lime rick puzzlescript | queue:thinky
 Lime Rick | lime rick | game:thinky/lime-rick
 line games | line games | game:chess-abstract/line-games
+Linea | linea | skipped:_thinky-dump-checked
 Linelight | linelight | queue:thinky
 Linelith | linelith | game:thinky/linelith
 Linelith | linelith | queue:connect-rotate
@@ -3584,6 +3751,7 @@ lines 98 | lines 98 | game:falling-match/lines-98
 lines of action | lines of action | game:chess-abstract/breakthrough-loa
 Lines of Action | lines of action | queue:chess-abstract
 Lingo (телешоу; Motus у Франції) | lingo телешоу motus у франції | game:word-number/lingo
+Lingo 2 | lingo 2 | skipped:_thinky-dump-checked
 lingo nl | lingo nl | game:word-number/lingo
 lingo us | lingo us | game:word-number/lingo
 lingo | lingo | game:word-number/lingo
@@ -3597,6 +3765,8 @@ liquid war 5 | liquid war 5 | game:dig-gravity/liquid-war
 liquid war 6 | liquid war 6 | game:dig-gravity/liquid-war
 Liquid War | liquid war | game:dig-gravity/liquid-war
 Liquid War | liquid war | queue:dig-gravity
+liquidum lite | liquidum lite | game:pencil-logic/liquidum
+Liquidum | liquidum | game:pencil-logic/liquidum
 Liquidum | liquidum | queue:pencil-logic
 LITS (Nuruomino) | lits nuruomino | game:pencil-logic/lits
 lits | lits | game:pencil-logic/lits
@@ -3639,13 +3809,14 @@ Lode Runner: The Legend Returns | lode runner the legend returns | game:grid-pla
 Lode Runner: The Legend Returns | lode runner the legend returns | queue:grid-platformer
 Log!cal | logcal | game:connect-rotate/logical
 Log!cal | logcal | queue:connect-rotate
+Logiart Grimoire | logiart grimoire | skipped:_thinky-dump-checked
 Logic Bombs | logic bombs | queue:pencil-logic
 logic grid puzzle | logic grid puzzle | game:pencil-logic/zebra-puzzle
 Logic Pic / Krazydad | logic pic krazydad | queue:pencil-logic
 logic pic | logic pic | game:pencil-logic/krazydad
 logic | logic | game:program-robots/mindustry-logic
+Logica Emotica | logica emotica | queue:thinky
 logical | logical | game:connect-rotate/logical
-Logicraft | logicraft | queue:thinky
 LOK Digital | lok digital | game:thinky/lok-digital
 LOK Digital | lok digital | queue:thinky
 lok | lok | game:tower-lanes/legend-of-keepers
@@ -3665,6 +3836,7 @@ Loopz | loopz | queue:connect-rotate
 Loot River | loot river | queue:push-slide
 lor | lor | game:roguelike/labyrinth-of-refrain
 lost adventures of kroz | lost adventures of kroz | game:maze-arcade/kroz
+Lost in Cheese | lost in cheese | game:push-slide/lost-in-cheese
 Lost in Cheese | lost in cheese | queue:push-slide
 lotto | lotto | game:word-number/bingo
 lq | lq | game:chess-abstract/l-game
@@ -3723,6 +3895,8 @@ Mad Blocker Alpha | mad blocker alpha | game:falling-match/mad-blocker-alpha
 Mad Blocker Alpha | mad blocker alpha | queue:falling-match
 mad blocker hd | mad blocker hd | game:falling-match/mad-blocker-alpha
 Mad Queens (Chris Pickel) | mad queens chris pickel | queue:thinky
+Mad Queens | mad queens | game:thinky/mad-queens
+made with monster love | made with monster love | game:program-robots/cadence
 madrasi chess | madrasi chess | game:chess-abstract/fairy-chess-conditions
 Madrasi chess | madrasi chess | queue:chess-abstract
 madrasi rex inclusive | madrasi rex inclusive | game:chess-abstract/fairy-chess-conditions
@@ -3771,6 +3945,7 @@ Magicube | magicube | queue:grid-platformer
 magipic | magipic | game:pencil-logic/fill-a-pix
 magische spirale | magische spirale | game:pencil-logic/zahlenlabyrinth
 magisches labyrinth | magisches labyrinth | game:pencil-logic/zahlenlabyrinth
+Magnet Block | magnet block | game:push-slide/magnet-block
 Magnet Block | magnet block | queue:push-slide
 magnetic boy met mag | magnetic boy met mag | game:grid-platformer/met-mag
 Magnets (Tatham) | magnets tatham | game:pencil-logic/magnets
@@ -3810,6 +3985,7 @@ Mamono Sweeper | mamono sweeper | game:hidden-deduction/mamono-sweeper
 mamono | mamono | game:hidden-deduction/mamono-sweeper
 Manic Miner | manic miner | game:grid-platformer/manic-miner
 Manic Miner | manic miner | queue:grid-platformer
+Manufactoria 2022 | manufactoria 2022 | skipped:_thinky-dump-checked
 Manufactoria | manufactoria | game:program-robots/manufactoria
 Manufactoria | manufactoria | queue:program-robots
 Map (Tatham) | map tatham | game:pencil-logic/map
@@ -3907,6 +4083,7 @@ mazing td modern | mazing td modern | game:tower-lanes/mazing-td-modern
 mazing tower defense | mazing tower defense | game:tower-lanes/mazing-td-modern
 mb | mb | game:dig-gravity/mine-bombers
 MC Escher's Equestrian Armageddon (Anna Clarke) | mc eschers equestrian armageddon anna clarke | queue:thinky
+MC Escher's Equestrian Armageddon | mc eschers equestrian armageddon | game:thinky/mc-eschers-equestrian-armageddon
 meander | meander | game:pencil-logic/meander
 Mech Armada | mech armada | game:tactics/mech-armada
 Mech Armada | mech armada | queue:tactics
@@ -3982,10 +4159,14 @@ metro | metro | game:connect-rotate/metro-iron-horse
 Mewgenics | mewgenics | game:tactics/mewgenics
 Mewgenics | mewgenics | queue:tactics
 mga | mga | game:tactics/metal-gear-acid
+MHRD | mhrd | skipped:_thinky-dump-checked
+michael brough | michael brough | game:thinky/corrypt
 mickey mouse game boy jp | mickey mouse game boy jp | game:grid-platformer/bugs-bunny-crazy-castle
 mickey mouse | mickey mouse | game:grid-platformer/bugs-bunny-crazy-castle
+micro6an | micro6an | game:push-slide/micro6an
 micro6an | micro6an | queue:push-slide
 Microban / Sokoban Plus | microban sokoban plus | queue:push-slide
+Microban | microban | skipped:_thinky-dump-checked
 micropolis | micropolis | game:build-sim/simcity-1989
 microsoft entertainment pack 2 rodents revenge | microsoft entertainment pack 2 rodents revenge | game:push-slide/rodents-revenge
 microsoft entertainment pack 2 | microsoft entertainment pack 2 | game:push-slide/rodents-revenge
@@ -4005,14 +4186,19 @@ might and magic the secret of the inner sanctum | might and magic the secret of 
 might magic clash of heroes definitive edition | might magic clash of heroes definitive edition | game:falling-match/clash-of-heroes
 might magic clash of heroes hd | might magic clash of heroes hd | game:falling-match/clash-of-heroes
 might | might | game:roguelike/bards-tale
+milchkaffee | milchkaffee | game:pencil-logic/coffee-milk
 military madness 2 | military madness 2 | game:tactics/nectaris
 military madness nectaris | military madness nectaris | game:tactics/nectaris
 military madness | military madness | game:tactics/nectaris
 milk nuts | milk nuts | game:grid-platformer/nuts-and-milk
 mill | mill | game:chess-abstract/nine-mens-morris
 mills | mills | game:chess-abstract/nine-mens-morris
+Mimic (Mimic Classic) | mimic mimic classic | game:thinky/mimic
 Mimic (Mimic Classic) | mimic mimic classic | queue:thinky
+mimic classic | mimic classic | game:thinky/mimic
 Mimic Logic | mimic logic | queue:hidden-deduction
+mimic | mimic | game:thinky/mimic
+Mimic | mimic | skipped:_thinky-dump-checked
 Minami Lane | minami lane | game:build-sim/minami-lane
 Minami Lane | minami lane | queue:build-sim
 Minato | minato | game:hidden-deduction/minato
@@ -4086,6 +4272,7 @@ MiniGrid (з BabyAI) | minigrid з babyai | queue:program-robots
 minigrid | minigrid | game:program-robots/minigrid
 minihack | minihack | game:program-robots/nethack-learning-environment
 minotaur | minotaur | game:roguelike/theseus-and-the-minotaur
+Minute Cryptic | minute cryptic | skipped:_thinky-dump-checked
 mir burokku | mir burokku | game:pencil-logic/mirror-block
 Mirror Block (Дзеркальні блоки, ミラーブロック) | mirror block дзеркальні блоки | game:pencil-logic/mirror-block
 Mirror Block (ミラーブロック) | mirror block | queue:pencil-logic
@@ -4120,6 +4307,8 @@ Mole Mania | mole mania | queue:push-slide
 mole mole | mole mole | game:dig-gravity/banana
 MOLEK-SYNTEZ | molek syntez | game:program-robots/molek-syntez
 MOLEK-SYNTEZ | molek syntez | queue:program-robots
+Molekularis (Молекуляріс) | molekularis молекуляріс | game:pencil-logic/molekularis
+molekularis | molekularis | game:pencil-logic/molekularis
 Molekularis | molekularis | queue:pencil-logic
 momentum puzzlescript | momentum puzzlescript | game:thinky/isaac-conservation-of-momentum
 momentum | momentum | game:thinky/isaac-conservation-of-momentum
@@ -4161,10 +4350,10 @@ moria | moria | game:roguelike/angband
 Morphblade | morphblade | game:roguelike/morphblade
 Morphblade | morphblade | queue:roguelike
 morris | morris | game:chess-abstract/nine-mens-morris
-Mosa Lina | mosa lina | queue:thinky
 Mosaic (7DRL 2022) | mosaic 7drl 2022 | game:roguelike/mosaic-broughlike
 Mosaic / Kami | mosaic kami | queue:thinky
 mosaic broughlike | mosaic broughlike | game:roguelike/mosaic-broughlike
+Mosaic of the Strange | mosaic of the strange | skipped:_thinky-dump-checked
 mosaic | mosaic | game:pencil-logic/fill-a-pix
 mosaic | mosaic | game:roguelike/mosaic-broughlike
 Mosaic | mosaic | queue:roguelike
@@ -4173,6 +4362,7 @@ mota js | mota js | game:roguelike/h5mota
 Motherload / Super Motherload | motherload super motherload | queue:dig-gravity
 motherload goldium edition | motherload goldium edition | game:dig-gravity/motherload
 Motherload | motherload | game:dig-gravity/motherload
+MotionRec | motionrec | skipped:_thinky-dump-checked
 motors spanner | motors spanner | game:maze-arcade/motos
 Motos | motos | game:maze-arcade/motos
 Motos | motos | queue:maze-arcade
@@ -4212,6 +4402,7 @@ Ms. Pac-Man Maze Madness | ms pac man maze madness | queue:maze-arcade
 Ms. Pac-Man | ms pac man | game:maze-arcade/ms-pac-man
 Ms. Pac-Man | ms pac man | queue:maze-arcade
 mst | mst | game:tactics/metal-slug-tactics
+mugen kair | mugen kair | game:thinky/echochrome
 mule online | mule online | game:build-sim/mule
 mule returns | mule returns | game:build-sim/mule
 multi move chess | multi move chess | game:chess-abstract/multi-move-chess
@@ -4220,6 +4411,7 @@ Mummy Maze (PopCap) | mummy maze popcap | queue:roguelike
 munchers | munchers | game:word-number/number-munchers
 Muraphilic Monophobic Multiban (increpare) | muraphilic monophobic multiban increpare | queue:thinky
 muraphilic monophobic multiban | muraphilic monophobic multiban | game:thinky/increpare-micro-puzzles
+Murder by Numbers | murder by numbers | skipped:_thinky-dump-checked
 murder mystery puzzle | murder mystery puzzle | game:pencil-logic/murdoku
 Murdoku | murdoku | game:pencil-logic/murdoku
 Murdoku | murdoku | queue:pencil-logic
@@ -4253,7 +4445,6 @@ mystery word | mystery word | game:word-number/word-search
 Mystic Balloon (Misutikku Barūn) | mystic balloon misutikku bar n | queue:grid-platformer
 Mystic Balloon (みすてぃっく☆ばる〜ん) | mystic balloon | game:grid-platformer/mystic-balloon
 mystic balloon vercircus | mystic balloon vercircus | game:grid-platformer/mystic-balloon
-Mystic Tesserae | mystic tesserae | queue:dig-gravity
 Myth Bearer | myth bearer | game:roguelike/myth-bearer
 Myth Bearer | myth bearer | queue:roguelike
 Mythgard | mythgard | game:tower-lanes/mythgard
@@ -4265,6 +4456,8 @@ n in a row | n in a row | game:chess-abstract/line-games
 n queens knights tour | n queens knights tour | game:pencil-logic/n-queens-knights-tour
 n queens | n queens | game:pencil-logic/n-queens-knights-tour
 N Step Steve (Part 1–2) | n step steve part 1 2 | queue:thinky
+N Step Steve: Part 1 | n step steve part 1 | skipped:_thinky-dump-checked
+N Step Steve: Part 2 | n step steve part 2 | skipped:_thinky-dump-checked
 n suriichi | n suriichi | game:pencil-logic/no-three
 N-Chessmen (Ben Matthews) | n chessmen ben matthews | queue:pencil-logic
 N-in-a-row (Хрестики-нулики, Gomoku, Connect Four, Pentago…) | n in a row хрестики нулики gomoku connect four pentago | game:chess-abstract/line-games
@@ -4283,6 +4476,7 @@ Nagenawa (なげなわ) | nagenawa | queue:pencil-logic
 Nagenawa | nagenawa | game:pencil-logic/nagenawa
 naito m bu | naito m bu | game:maze-arcade/knight-move
 nanba sukereton | nanba sukereton | game:word-number/nansuke
+NandGame | nandgame | skipped:_thinky-dump-checked
 Nansuke (Number Skeleton) | nansuke number skeleton | game:word-number/nansuke
 Nansuke (Number Skeleton) | nansuke number skeleton | queue:word-number
 nansuke | nansuke | game:word-number/nansuke
@@ -4303,6 +4497,8 @@ nectaris | nectaris | game:tactics/nectaris
 Nekograms | nekograms | game:push-slide/nekograms
 Nekograms | nekograms | queue:push-slide
 neo nectaris | neo nectaris | game:tactics/nectaris
+neon noodles cyberpunk kitchen automation | neon noodles cyberpunk kitchen automation | game:program-robots/neon-noodles
+Neon Noodles | neon noodles | game:program-robots/neon-noodles
 Neon Noodles | neon noodles | queue:program-robots
 nerdle classic | nerdle classic | game:word-number/nerdle
 Nerdle | nerdle | game:word-number/nerdle
@@ -4337,6 +4533,7 @@ next station paris | next station paris | game:board-digital/next-station-london
 next station tokyo | next station tokyo | game:board-digital/next-station-london
 Next Station: London | next station london | game:board-digital/next-station-london
 Next Station: London | next station london | queue:board-digital
+nh | nh | game:program-robots/yendor
 Niagara | niagara | game:board-digital/niagara
 Niagara | niagara | queue:board-digital
 Nibbler | nibbler | game:maze-arcade/nibbler
@@ -4376,6 +4573,7 @@ NoGo | nogo | queue:chess-abstract
 Noita | noita | game:dig-gravity/noita
 Noita | noita | queue:dig-gravity
 nokia snake | nokia snake | game:maze-arcade/snake
+Nomori | nomori | skipped:_thinky-dump-checked
 Non-Euclidean Minesweeper | non euclidean minesweeper | game:hidden-deduction/non-euclidean-minesweeper
 Non-Euclidean Minesweeper | non euclidean minesweeper | queue:hidden-deduction
 Nondango (ノンダンゴ) | nondango | game:pencil-logic/nondango
@@ -4406,7 +4604,6 @@ number place | number place | game:pencil-logic/sudoku
 number skeleton | number skeleton | game:word-number/nansuke
 number snake | number snake | game:pencil-logic/hidato
 number spiral | number spiral | game:pencil-logic/zahlenlabyrinth
-number sums crossword | number sums crossword | game:word-number/crossmath
 Numberlink (Nikoli) | numberlink nikoli | queue:connect-rotate
 Numberlink (≈ Flow Free) | numberlink flow free | queue:pencil-logic
 numbers round | numbers round | game:word-number/countdown-numbers
@@ -4421,6 +4618,7 @@ Nuri-Maze (Nurimeizu) | nuri maze nurimeizu | queue:pencil-logic
 Nuri-Maze (Nurimeizu, ぬりめいず) | nuri maze nurimeizu | game:pencil-logic/nuri-maze
 nurie puzzle | nurie puzzle | game:pencil-logic/fill-a-pix
 Nurikabe (Нурікабе, Islands in the Stream) | nurikabe нурікабе islands in the stream | game:pencil-logic/nurikabe
+Nurikabe World | nurikabe world | skipped:_thinky-dump-checked
 nurikabe | nurikabe | game:pencil-logic/nurikabe
 Nurikabe | nurikabe | queue:pencil-logic
 nurimaze | nurimaze | game:pencil-logic/nuri-maze
@@ -4432,6 +4630,7 @@ Nuts & Milk | nuts milk | game:grid-platformer/nuts-and-milk
 Nuts & Milk | nuts milk | queue:grid-platformer
 nuts and milk | nuts and milk | game:grid-platformer/nuts-and-milk
 nuworm (noa) | nuworm noa | queue:thinky
+Nuworm | nuworm | skipped:_thinky-dump-checked
 ny1901 | ny1901 | game:board-digital/new-york-1901
 nyaa | nyaa | game:falling-match/pochi-and-nyaa
 nyan nyan panic | nyan nyan panic | game:push-slide/kitten-kaboodle
@@ -4463,7 +4662,6 @@ octopticom 3d | octopticom 3d | game:connect-rotate/octopticom
 OCTOPTICOM | octopticom | game:connect-rotate/octopticom
 Octopticom | octopticom | queue:connect-rotate
 octordle | octordle | game:word-number/quordle
-Oeuf (increpare) | oeuf increpare | queue:thinky
 Offworld Trading Company | offworld trading company | game:build-sim/offworld-trading-company
 Offworld Trading Company | offworld trading company | queue:build-sim
 offworld | offworld | game:build-sim/offworld-trading-company
@@ -4487,12 +4685,14 @@ Omega | omega | queue:roguelike
 omegasweeper | omegasweeper | game:hidden-deduction/omegasweeper
 omegasweeper | omegasweeper | queue:hidden-deduction
 Omniban (Patrickgh3) | omniban patrickgh3 | queue:thinky
+Omniban | omniban | game:thinky/omniban
 One More Button | one more button | game:thinky/one-more-button
 One More Button | one more button | queue:thinky
 One Room One Door (ワンルームワンドア) | one room one door | game:pencil-logic/one-room-one-door
 One Room One Door (ワンルームワンドア) | one room one door | queue:pencil-logic
 One Step From Eden | one step from eden | game:tower-lanes/one-step-from-eden
 One Step From Eden | one step from eden | queue:tower-lanes
+One to Three | one to three | queue:pencil-logic
 one way heroics | one way heroics | game:roguelike/one-way-heroics
 One-Armed Bandit | one armed bandit | queue:push-slide
 oneroom | oneroom | game:pencil-logic/one-room-one-door
@@ -4501,6 +4701,7 @@ onet | onet | game:falling-match/shisen-sho
 Onitama | onitama | game:chess-abstract/onitama
 Onitama | onitama | queue:chess-abstract
 ootss | ootss | game:thinky/order-of-the-sinking-star
+open doors | open doors | game:pencil-logic/tueren
 openai gym toy text | openai gym toy text | game:program-robots/gymnasium-toy-text
 openduelyst | openduelyst | game:tactics/duelyst
 openliero | openliero | game:dig-gravity/liero
@@ -4511,6 +4712,7 @@ openttd rails | openttd rails | game:build-sim/openttd-rails
 openttd | openttd | game:build-sim/openttd-rails
 Opus Magnum | opus magnum | game:program-robots/opus-magnum
 Opus Magnum | opus magnum | queue:program-robots
+Opus Magnum: De Re Metallica | opus magnum de re metallica | skipped:_thinky-dump-checked
 or the continuing adventures of dr eval | or the continuing adventures of dr eval | game:program-robots/untrusted
 Orakyubu | orakyubu | game:thinky/orakyubu
 Orakyubu | orakyubu | queue:thinky
@@ -4538,6 +4740,7 @@ ouke no tani el giza no fuuin | ouke no tani el giza no fuuin | game:grid-platfo
 ouke no tani | ouke no tani | game:grid-platformer/kings-valley
 Our Great Journey | our great journey | queue:push-slide
 ouroboros chess | ouroboros chess | game:chess-abstract/ouroboros-king
+Ouros | ouros | skipped:_thinky-dump-checked
 Outpacked | outpacked | game:board-digital/outpacked
 Outpacked | outpacked | queue:board-digital
 Overblock | overblock | queue:pencil-logic
@@ -4613,6 +4816,7 @@ pacman ctf | pacman ctf | game:program-robots/pacman-capture-the-flag
 pacmanhattan | pacmanhattan | game:maze-arcade/pac-manhattan
 pad | pad | game:falling-match/puzzle-and-dragons
 paint roller | paint roller | game:maze-arcade/make-trax
+Paintban | paintban | skipped:_thinky-dump-checked
 pairs | pairs | game:hidden-deduction/memory-concentration
 Paklyx | paklyx | game:thinky/paklyx
 Paklyx | paklyx | queue:thinky
@@ -4644,6 +4848,7 @@ PANIK | panik | queue:thinky
 panzer general 1994 | panzer general 1994 | game:tactics/panzer-general
 Panzer General | panzer general | game:tactics/panzer-general
 Panzer General | panzer general | queue:tactics
+paper and pencil game | paper and pencil game | game:hidden-deduction/labyrinth-paper-and-pencil
 paper hockey | paper hockey | game:chess-abstract/paper-soccer
 paper io | paper io | game:maze-arcade/paper-io
 paper mario origami king | paper mario origami king | game:push-slide/paper-mario-the-origami-king
@@ -4674,6 +4879,7 @@ parking jam 3d | parking jam 3d | game:push-slide/unblock-me
 parking | parking | game:pencil-logic/tren
 Parkitect | parkitect | game:build-sim/parkitect
 Parkitect | parkitect | queue:build-sim
+Parseword | parseword | skipped:_thinky-dump-checked
 partitioning cellular automaton | partitioning cellular automaton | game:build-sim/critters-block-ca
 pass on chess | pass on chess | game:chess-abstract/bughouse
 passant | passant | game:chess-abstract/passant
@@ -4729,9 +4935,13 @@ pentominous | pentominous | game:pencil-logic/pentominous
 Pentominous | pentominous | queue:pencil-logic
 Pentopia | pentopia | game:pencil-logic/pentopia
 Pentopia | pentopia | queue:pencil-logic
+Penultima (Пенультима) | penultima пенультима | game:hidden-deduction/penultima
+penultima | penultima | game:hidden-deduction/penultima
 Penultima | penultima | queue:hidden-deduction
 Pepper II | pepper ii | game:maze-arcade/pepper-ii
 Pepper II | pepper ii | queue:maze-arcade
+Pepper's Puzzles | peppers puzzles | skipped:_thinky-dump-checked
+Perimeter | perimeter | skipped:_thinky-dump-checked
 peroxyd | peroxyd | game:connect-rotate/oxyd
 Persona 5 Tactica | persona 5 tactica | game:tactics/persona-5-tactica
 Persona 5 Tactica | persona 5 tactica | queue:tactics
@@ -4755,7 +4965,6 @@ philosophers football | philosophers football | game:chess-abstract/phutball
 philosophers game | philosophers game | game:chess-abstract/rithmomachia
 Phoenix Point | phoenix point | game:tactics/phoenix-point
 Phoenix Point | phoenix point | queue:tactics
-Photon Engineer | photon engineer | queue:connect-rotate
 Photosynthesis (Фотосинтез) | photosynthesis фотосинтез | game:board-digital/photosynthesis
 photosynthesis | photosynthesis | game:board-digital/photosynthesis
 Photosynthesis | photosynthesis | queue:board-digital
@@ -4767,6 +4976,8 @@ picopict | picopict | game:falling-match/pictobits
 picross 3d but with coding | picross 3d but with coding | game:program-robots/replicube
 picross 3d round 2 | picross 3d round 2 | game:pencil-logic/picross-variants
 picross 3d | picross 3d | game:pencil-logic/picross-variants
+Picross S+ | picross s | skipped:_thinky-dump-checked
+Picross S9 | picross s9 | skipped:_thinky-dump-checked
 picross variants | picross variants | game:pencil-logic/picross-variants
 picross | picross | game:pencil-logic/nonogram
 picross варіанти | picross варіанти | game:pencil-logic/picross-variants
@@ -4775,6 +4986,10 @@ Picross-варіанти (Picross 3D, Round 2, Mega, Color, Clip) | picross ва
 Pictobits | pictobits | game:falling-match/pictobits
 Pictobits | pictobits | queue:falling-match
 pictopict | pictopict | game:falling-match/pictobits
+Pictopix | pictopix | skipped:_thinky-dump-checked
+Piczle Cross Adventure | piczle cross adventure | skipped:_thinky-dump-checked
+piet programming language | piet programming language | game:program-robots/piet
+Piet | piet | game:program-robots/piet
 Piet | piet | queue:program-robots
 Pight | pight | game:push-slide/pight
 Pight | pight | queue:push-slide
@@ -4817,6 +5032,7 @@ pixeljunk monsters deluxe | pixeljunk monsters deluxe | game:tower-lanes/pixelju
 pixeljunk monsters ultimate | pixeljunk monsters ultimate | game:tower-lanes/pixeljunk-monsters
 PixelJunk Monsters | pixeljunk monsters | game:tower-lanes/pixeljunk-monsters
 PixelJunk Monsters | pixeljunk monsters | queue:tower-lanes
+Pixelogic | pixelogic | skipped:_thinky-dump-checked
 pjm | pjm | game:tower-lanes/pixeljunk-monsters
 Planet (Планета) | planet планета | game:board-digital/planet-blue-orange
 planet blue orange | planet blue orange | game:board-digital/planet-blue-orange
@@ -4839,6 +5055,7 @@ PlateUp! | plateup | game:build-sim/plateup
 PlateUp! | plateup | queue:build-sim
 platzwechsel circe | platzwechsel circe | game:chess-abstract/circe-chess
 play snake | play snake | game:maze-arcade/google-snake
+Playback Loop | playback loop | skipped:_thinky-dump-checked
 Please Fix The Road | please fix the road | game:connect-rotate/please-fix-the-road
 Please Fix The Road | please fix the road | queue:connect-rotate
 Plotting (Flipull) | plotting flipull | game:falling-match/plotting
@@ -4852,6 +5069,7 @@ Plumber / Pipes / Water Connect (мобільний жанр) | plumber pipes wa
 Plumber / Pipes / Water Connect (мобільні) | plumber pipes water connect мобільні | queue:connect-rotate
 plumber pipe rotation | plumber pipe rotation | game:connect-rotate/plumber-pipe-rotation
 plumber | plumber | game:connect-rotate/plumber-pipe-rotation
+Pluricubus | pluricubus | game:push-slide/pluricubus
 Pluricubus | pluricubus | queue:push-slide
 pmbr | pmbr | game:maze-arcade/pac-man-battle-royale
 pmce | pmce | game:maze-arcade/pac-man-championship-edition
@@ -4900,6 +5118,7 @@ polyominous | polyominous | game:pencil-logic/pentominous
 polytopia | polytopia | game:tactics/polytopia
 pomeau | pomeau | game:build-sim/lattice-gas-hpp-fhp
 pool checkers | pool checkers | game:chess-abstract/checkers-variants
+Pool Letter | pool letter | game:word-number/pool-letter
 Pool Letter | pool letter | queue:word-number
 pop up | pop up | game:grid-platformer/bumpy
 pop | pop | game:grid-platformer/prince-of-persia
@@ -4936,6 +5155,7 @@ prickle | prickle | game:push-slide/prickle
 Prickle | prickle | queue:push-slide
 Prime Mover | prime mover | game:program-robots/prime-mover
 Prime Mover | prime mover | queue:program-robots
+primo | primo | game:program-robots/cubetto
 Prince of Darkness Jr. | prince of darkness jr | game:push-slide/prince-of-darkness-jr
 Prince of Darkness Jr. | prince of darkness jr | queue:push-slide
 prince of darkness junior | prince of darkness junior | game:push-slide/prince-of-darkness-jr
@@ -4961,6 +5181,7 @@ project triangle strategy | project triangle strategy | game:tactics/triangle-st
 promontory | promontory | game:pencil-logic/nurimisaki
 Pronoun Palace | pronoun palace | queue:word-number
 prototype | prototype | game:thinky/stonemans-adventure
+Proverbs | proverbs | skipped:_thinky-dump-checked
 psp | psp | game:tower-lanes/eye-of-judgment
 Puddle Knights | puddle knights | game:thinky/puddle-knights
 Puddle Knights | puddle knights | queue:push-slide
@@ -4977,6 +5198,8 @@ pure skill minesweeper | pure skill minesweeper | game:hidden-deduction/kaboom
 Pure Skill Minesweeper | pure skill minesweeper | queue:hidden-deduction
 purplesloth | purplesloth | game:connect-rotate/trails-purplesloth
 Push Blox 2 / Push Blox | push blox 2 push blox | queue:push-slide
+Push Blox 2 | push blox 2 | skipped:_thinky-dump-checked
+Push Blox | push blox | skipped:_thinky-dump-checked
 push over | push over | game:grid-platformer/pushover
 Push The Cat with WASD | push the cat with wasd | game:thinky/push-the-cat-with-wasd
 Push The Cat with WASD | push the cat with wasd | queue:thinky
@@ -5039,6 +5262,7 @@ Puzzle Quest: Challenge of the Warlords | puzzle quest challenge of the warlords
 puzzle rpg | puzzle rpg | game:falling-match/gems-of-war
 Puzzle Scape | puzzle scape | game:falling-match/puzzle-scape
 Puzzle Scape | puzzle scape | queue:falling-match
+Puzzle Spy International | puzzle spy international | skipped:_thinky-dump-checked
 puzzle square jp applet | puzzle square jp applet | game:pencil-logic/puzz-link
 Puzzled (Joy Joy Kid) | puzzled joy joy kid | game:falling-match/puzzled
 Puzzled (Joy Joy Kid) | puzzled joy joy kid | queue:falling-match
@@ -5091,7 +5315,9 @@ Quantum Chess (Квантові шахи, Cantwell) | quantum chess кванто
 quantum chess remastered | quantum chess remastered | game:chess-abstract/quantum-chess
 quantum chess | quantum chess | game:chess-abstract/quantum-chess
 Quantum Chess | quantum chess | queue:chess-abstract
+Quantum Odyssey | quantum odyssey | queue:program-robots
 quantum | quantum | game:chess-abstract/chess-rule-twists
+QuantumPulse 2A | quantumpulse 2a | skipped:_thinky-dump-checked
 quarrel deluxe | quarrel deluxe | game:word-number/quarrel
 Quarrel | quarrel | game:word-number/quarrel
 Quarrel | quarrel | queue:word-number
@@ -5193,6 +5419,7 @@ rbc | rbc | game:chess-abstract/really-bad-chess
 rbc | rbc | game:hidden-deduction/reconnaissance-blind-chess
 rct | rct | game:build-sim/rollercoaster-tycoon
 rct1 | rct1 | game:build-sim/rollercoaster-tycoon
+Re-Taped | re taped | skipped:_thinky-dump-checked
 re4 attache case | re4 attache case | game:build-sim/re4-attache-case
 re4 | re4 | game:build-sim/re4-attache-case
 RE:COPY | recopy | game:thinky/recopy
@@ -5265,7 +5492,6 @@ Resident Evil 4 (attaché case) | resident evil 4 attach case | queue:build-sim
 resident evil 4 remake | resident evil 4 remake | game:build-sim/re4-attache-case
 resident evil 4 | resident evil 4 | game:build-sim/re4-attache-case
 restoration of erathia | restoration of erathia | game:tactics/heroes-of-might-and-magic-3
-ReThink | rethink | queue:connect-rotate
 return to the roots rttr | return to the roots rttr | game:build-sim/settlers-2
 return to the roots | return to the roots | game:build-sim/settlers-2
 Reus | reus | game:build-sim/reus
@@ -5305,6 +5531,7 @@ ripple effect | ripple effect | game:pencil-logic/ripple-effect
 Ripple Effect | ripple effect | queue:pencil-logic
 ripple | ripple | game:pencil-logic/ripple-effect
 risky challenge | risky challenge | game:dig-gravity/gussun-oyoyo
+Rita | rita | skipped:_thinky-dump-checked
 Rithmomachia (Ритмомахія) | rithmomachia ритмомахія | game:chess-abstract/rithmomachia
 rithmomachia | rithmomachia | game:chess-abstract/rithmomachia
 Rithmomachia | rithmomachia | queue:chess-abstract
@@ -5364,6 +5591,7 @@ Rocks'n'Diamonds | rocksndiamonds | game:dig-gravity/rocks-n-diamonds
 Rocks'n'Diamonds | rocksndiamonds | queue:dig-gravity
 Rodent's Revenge | rodents revenge | game:push-slide/rodents-revenge
 Rodent's Revenge | rodents revenge | queue:push-slide
+Rodocodo: Code Hour | rodocodo code hour | skipped:_thinky-dump-checked
 roger rabbit fds | roger rabbit fds | game:grid-platformer/bugs-bunny-crazy-castle
 roger rabbit | roger rabbit | game:grid-platformer/bugs-bunny-crazy-castle
 Rogue Kudzu (7DRL) | rogue kudzu 7drl | queue:roguelike
@@ -5392,7 +5620,7 @@ Room to Grow | room to grow | game:push-slide/room-to-grow
 Room to Grow | room to grow | queue:push-slide
 rooms | rooms | game:build-sim/dragon-quest-builders-rooms
 root beer tapper | root beer tapper | game:maze-arcade/tapper
-Rotastic | rotastic | queue:connect-rotate
+Rorschach's River | rorschachs river | skipped:_thinky-dump-checked
 rotn | rotn | game:tower-lanes/rift-of-the-necrodancer
 rott | rott | game:tower-lanes/revenge-of-the-titans
 round 2 | round 2 | game:pencil-logic/picross-variants
@@ -5409,7 +5637,7 @@ rsvp vertical crossword game | rsvp vertical crossword game | game:word-number/r
 rsvp | rsvp | game:word-number/rsvp
 RSVP | rsvp | queue:word-number
 rttr | rttr | game:build-sim/settlers-2
-Rubik's Race | rubiks race | queue:push-slide
+rubiks puzzle galaxy rush | rubiks puzzle galaxy rush | game:program-robots/rush-two-tribes
 Ruins & Switch | ruins switch | queue:grid-platformer
 rukkuea | rukkuea | game:pencil-logic/look-air
 Rule 110 (елементарні 1D автомати) | rule 110 елементарні 1d автомати | queue:build-sim
@@ -5420,12 +5648,15 @@ rule 90 | rule 90 | game:build-sim/elementary-cellular-automata
 rumblebot | rumblebot | game:program-robots/robot-rumble
 rupupu cube lup salad | rupupu cube lup salad | game:grid-platformer/lup-salad
 rupupu cube | rupupu cube | game:grid-platformer/lup-salad
+RUSH (Two Tribes) | rush two tribes | game:program-robots/rush-two-tribes
 RUSH (Two Tribes) | rush two tribes | queue:program-robots
 Rush Hour (ThinkFun) | rush hour thinkfun | game:push-slide/rush-hour
 rush hour | rush hour | game:push-slide/rush-hour
 Rush Hour | rush hour | queue:push-slide
 rush royale | rush royale | game:tower-lanes/random-dice
 Rush Royale | rush royale | queue:tower-lanes
+rush | rush | game:program-robots/rush-two-tribes
+Rush | rush | skipped:_thinky-dump-checked
 RYB | ryb | game:hidden-deduction/ryb
 RYB | ryb | queue:hidden-deduction
 Rytmos | rytmos | game:connect-rotate/rytmos
@@ -5477,7 +5708,6 @@ Sandtrix / Setris | sandtrix setris | queue:falling-match
 sandtrix | sandtrix | game:falling-match/sandtrix
 Sandustry | sandustry | game:dig-gravity/sandustry
 Sandustry | sandustry | queue:dig-gravity
-Sandwich Sudoku | sandwich sudoku | queue:pencil-logic
 sangokushi senki | sangokushi senki | game:tactics/dynasty-tactics
 Santorini (Санторіні) | santorini санторіні | game:chess-abstract/santorini
 santorini | santorini | game:chess-abstract/santorini
@@ -5529,24 +5759,30 @@ scrabble brand rsvp | scrabble brand rsvp | game:word-number/rsvp
 scrabble duplicate | scrabble duplicate | game:word-number/duplicate-scrabble
 scrabble upwords | scrabble upwords | game:word-number/upwords
 scrabble | scrabble | game:word-number/scrabble
+screen | screen | game:pencil-logic/scrin
 Screeps (Screeps World, Screeps Arena) | screeps screeps world screeps arena | game:program-robots/screeps
 screeps arena | screeps arena | game:program-robots/screeps
 screeps world | screeps world | game:program-robots/screeps
 screeps | screeps | game:program-robots/screeps
 Screeps | screeps | queue:program-robots
 Scrin (スクリン) | scrin | queue:pencil-logic
+Scrin (スクリン, «Екран») | scrin екран | game:pencil-logic/scrin
+scrin | scrin | game:pencil-logic/scrin
 scrolls | scrolls | game:tower-lanes/callers-bane
 sdorica sunset | sdorica sunset | game:falling-match/sdorica
 Sdorica | sdorica | game:falling-match/sdorica
 Sdorica | sdorica | queue:falling-match
 sea | sea | game:tower-lanes/air-land-and-sea
+Secure | secure | game:thinky/secure
 Secure | secure | queue:thinky
 sedecordle | sedecordle | game:word-number/quordle
 seeds | seeds | game:build-sim/brians-brain-seeds
+seethrough | seethrough | game:pencil-logic/tueren
 sekaiju no meikyuu | sekaiju no meikyuu | game:roguelike/etrian-odyssey
 self reflection | self reflection | game:connect-rotate/self-reflection
 self reflection | self reflection | queue:connect-rotate
 self reproducing loop | self reproducing loop | game:build-sim/langtons-loops
+semipenultima | semipenultima | game:hidden-deduction/penultima
 sennou game teki paki | sennou game teki paki | game:falling-match/teki-paki
 Sepapu | sepapu | queue:thinky
 sequence five | sequence five | game:board-digital/sequence
@@ -5568,6 +5804,7 @@ Shack-o'-Lantern | shack o lantern | queue:push-slide
 Shackle (Steven Miller) | shackle steven miller | queue:push-slide
 shackle steven miller | shackle steven miller | game:push-slide/shackle
 Shackle | shackle | game:push-slide/shackle
+Shadow Gambit: The Cursed Crew | shadow gambit the cursed crew | skipped:_thinky-dump-checked
 Shadow Labyrinth | shadow labyrinth | game:maze-arcade/shadow-labyrinth
 Shadow Labyrinth | shadow labyrinth | queue:maze-arcade
 shadowrun dragonfall | shadowrun dragonfall | game:tactics/shadowrun-returns
@@ -5577,16 +5814,17 @@ Shadowrun Returns | shadowrun returns | queue:tactics
 Shakashaka (シャカシャカ) | shakashaka | game:pencil-logic/shakashaka
 Shakashaka | shakashaka | queue:pencil-logic
 Shall We Golf? (みんなでGOLF！) | shall we golf golf | queue:push-slide
+Shall We Golf? | shall we golf | skipped:_thinky-dump-checked
 shanghai solitaire | shanghai solitaire | game:falling-match/mahjong-solitaire
 shanghai | shanghai | game:falling-match/mahjong-solitaire
 Shannon switching game / Bridg-It (+ Untangle) | shannon switching game bridg it untangle | game:connect-rotate/shannon-switching
 Shannon switching game / Bridg-It | shannon switching game bridg it | queue:connect-rotate
 shannon switching game | shannon switching game | game:connect-rotate/shannon-switching
 shannon switching | shannon switching | game:connect-rotate/shannon-switching
-shapez 2 | shapez 2 | queue:build-sim
 shapez | shapez | game:build-sim/shapez
 shapez | shapez | queue:build-sim
 shapezio | shapezio | game:build-sim/shapez
+Shareflakes | shareflakes | queue:connect-rotate
 Shariki (Шарики) | shariki шарики | game:falling-match/shariki
 shariki for windows | shariki for windows | game:falling-match/shariki
 shariki | shariki | game:falling-match/shariki
@@ -5598,6 +5836,7 @@ shatranj | shatranj | game:chess-abstract/chaturanga-shatranj
 Shattered Pixel Dungeon (і Pixel Dungeon) | shattered pixel dungeon і pixel dungeon | game:roguelike/pixel-dungeon
 shattered pixel dungeon | shattered pixel dungeon | game:roguelike/pixel-dungeon
 sheep a sheep | sheep a sheep | game:falling-match/triple-match-3d
+Shenzhen I/O | shenzhen i o | skipped:_thinky-dump-checked
 Sherlock (Everett Kaser) | sherlock everett kaser | game:pencil-logic/sherlock
 sherlock the game of logic | sherlock the game of logic | game:pencil-logic/sherlock
 sherlock | sherlock | game:pencil-logic/sherlock
@@ -5611,6 +5850,7 @@ shining force resurrection of the dark dragon | shining force resurrection of th
 shining force the legacy of great intention | shining force the legacy of great intention | game:tactics/shining-force
 Shining Force | shining force | game:tactics/shining-force
 Shining Force | shining force | queue:tactics
+Shinro (しんろ) | shinro | game:pencil-logic/shinro
 Shinro | shinro | queue:pencil-logic
 Shiren the Wanderer / Mystery Dungeon | shiren the wanderer mystery dungeon | queue:roguelike
 shiren the wanderer | shiren the wanderer | game:roguelike/mystery-dungeon
@@ -5636,11 +5876,13 @@ Shotgun King: The Final Checkmate | shotgun king the final checkmate | queue:rog
 Shovel Knight Pocket Dungeon | shovel knight pocket dungeon | game:roguelike/shovel-knight-pocket-dungeon
 Shovel Knight Pocket Dungeon | shovel knight pocket dungeon | queue:falling-match
 Shovel Knight Pocket Dungeon | shovel knight pocket dungeon | queue:roguelike
+Showy Homes | showy homes | skipped:_thinky-dump-checked
 Shrink Rooms | shrink rooms | game:push-slide/shrink-rooms
 Shrink Rooms | shrink rooms | queue:push-slide
 shunting puzzle | shunting puzzle | game:push-slide/train-shunting-puzzle
 Shōbu (Шобу) | sh bu шобу | game:chess-abstract/shobu
 siamese chess | siamese chess | game:chess-abstract/bughouse
+SIC-1 | sic 1 | skipped:_thinky-dump-checked
 sichtlinie | sichtlinie | game:pencil-logic/look-air
 sid meiers civilization vi | sid meiers civilization vi | game:build-sim/civ6-districts
 sid meiers civilization | sid meiers civilization | game:tactics/civilization
@@ -5654,6 +5896,7 @@ Sil | sil | queue:roguelike
 silent storm sentinels | silent storm sentinels | game:tactics/silent-storm
 Silent Storm | silent storm | game:tactics/silent-storm
 Silent Storm | silent storm | queue:tactics
+Silicon Zeroes | silicon zeroes | queue:program-robots
 SILO 7 | silo 7 | game:dig-gravity/silo-7
 SILO 7 | silo 7 | queue:dig-gravity
 Sim (pencil game) | sim pencil game | queue:connect-rotate
@@ -5735,13 +5978,14 @@ Snafu | snafu | queue:maze-arcade
 Snake (Змійка) / Nibbles / Nokia Snake | snake змійка nibbles nokia snake | game:maze-arcade/snake
 Snake / Snake II (Nokia) | snake snake ii nokia | queue:maze-arcade
 snake game google | snake game google | game:maze-arcade/google-snake
-Snake Pass | snake pass | queue:maze-arcade
 Snake Rattle 'n' Roll | snake rattle n roll | game:maze-arcade/snake-rattle-n-roll
 Snake Rattle 'n' Roll | snake rattle n roll | queue:maze-arcade
 snake that eats puzzle game mechanics | snake that eats puzzle game mechanics | game:thinky/the-snake-that-eats-puzzle-game-mechanics
 snake | snake | game:maze-arcade/snake
 snake | snake | game:thinky/the-snake-that-eats-puzzle-game-mechanics
 Snake | snake | queue:pencil-logic
+Snakebird Complete | snakebird complete | skipped:_thinky-dump-checked
+Snakebird Primer | snakebird primer | skipped:_thinky-dump-checked
 Snakebird | snakebird | game:thinky/snakebird
 Snakebird | snakebird | queue:thinky
 snakebots | snakebots | game:program-robots/codingame-exotec
@@ -5799,6 +6043,7 @@ soldiers | soldiers | game:tower-lanes/swords-and-soldiers
 SolForge | solforge | game:tower-lanes/solforge
 SolForge | solforge | queue:tower-lanes
 Soliquid (Anton Klinger) | soliquid anton klinger | queue:thinky
+Soliquid | soliquid | game:thinky/soliquid
 solitaire dominoes | solitaire dominoes | game:pencil-logic/dominosa
 solo noble | solo noble | game:chess-abstract/peg-solitaire
 solo sumoku | solo sumoku | game:word-number/sumoku
@@ -5810,6 +6055,7 @@ Solstice | solstice | game:grid-platformer/solstice
 Solstice | solstice | queue:grid-platformer
 Some Dogs Go To Hell (7DRL) | some dogs go to hell 7drl | queue:roguelike
 Some lines were meant to be crossed (PuzzleScript) | some lines were meant to be crossed puzzlescript | queue:connect-rotate
+Songs of Conquest | songs of conquest | skipped:_thinky-dump-checked
 sopa de letras | sopa de letras | game:word-number/word-search
 soromon no kagi 2 | soromon no kagi 2 | game:grid-platformer/fire-n-ice
 Soulestination (魂之归宿) | soulestination | game:roguelike/soulestination
@@ -5850,9 +6096,12 @@ Specter Ops | specter ops | queue:hidden-deduction
 Spectrangle | spectrangle | game:board-digital/spectrangle
 Spectrangle | spectrangle | queue:board-digital
 speed sumoku | speed sumoku | game:word-number/sumoku
+Spell Slide | spell slide | game:word-number/spell-slide
 Spell Slide | spell slide | queue:word-number
+Spelling Bee | spelling bee | skipped:_thinky-dump-checked
 spellspire | spellspire | game:word-number/word-rpg-battlers
 Spellspire | spellspire | queue:word-number
+Spellsy | spellsy | game:word-number/spellsy
 Spellsy | spellsy | queue:word-number
 SpellTower | spelltower | game:word-number/spelltower
 SpellTower | spelltower | queue:word-number
@@ -5917,14 +6166,18 @@ Squad Leader | squad leader | queue:tactics
 Squadro | squadro | game:chess-abstract/squadro
 Squadro | squadro | queue:chess-abstract
 Squardle | squardle | queue:word-number
+square cells | square cells | game:pencil-logic/squarecells
+SquareCells | squarecells | game:pencil-logic/squarecells
 SquareCells | squarecells | queue:pencil-logic
 squaredle express | squaredle express | game:word-number/squaredle
 squaredle squared | squaredle squared | game:word-number/squaredle
 Squaredle | squaredle | game:word-number/squaredle
 Squaredle | squaredle | queue:word-number
 SquarO | squaro | queue:pencil-logic
+Squeakross: Home Squeak Home | squeakross home squeak home | skipped:_thinky-dump-checked
 Squiggle / Psyche-Paths / Kaliko | squiggle psyche paths kaliko | queue:connect-rotate
 squire | squire | game:hidden-deduction/dungeon-squire
+squish os | squish os | queue:thinky
 SquishCraft | squishcraft | queue:push-slide
 sr loop | sr loop | game:build-sim/langtons-loops
 srd 51 combat | srd 51 combat | game:tactics/dnd-grid-combat
@@ -5941,6 +6194,7 @@ stamps by hatem yury | stamps by hatem yury | game:board-digital/stamps
 Stamps | stamps | game:board-digital/stamps
 Stamps | stamps | queue:board-digital
 Stand Off (Mark Richardson) | stand off mark richardson | queue:thinky
+Stand Off | stand off | game:thinky/stand-off
 stapelwoord | stapelwoord | game:word-number/upwords
 Star Battle (Зоряна битва, Two Not Touch) | star battle зоряна битва two not touch | game:pencil-logic/star-battle
 star battle | star battle | game:pencil-logic/star-battle
@@ -5949,7 +6203,10 @@ star fleet battles captains edition | star fleet battles captains edition | game
 Star Fleet Battles | star fleet battles | game:tactics/star-fleet-battles
 Star Fleet Battles | star fleet battles | queue:tactics
 star force | star force | game:tower-lanes/mega-man-star-force
+star stuff edu | star stuff edu | game:program-robots/star-stuff
+Star Stuff | star stuff | game:program-robots/star-stuff
 Star Stuff | star stuff | queue:program-robots
+star vaders | star vaders | game:tactics/starvaders
 stardew farm | stardew farm | game:build-sim/stardew-farm
 stardew valley | stardew valley | game:build-sim/stardew-farm
 Stardew Valley | stardew valley | queue:build-sim
@@ -5961,14 +6218,18 @@ Starseed Pilgrim | starseed pilgrim | game:thinky/starseed-pilgrim
 Starseed Pilgrim | starseed pilgrim | queue:thinky
 Startopia | startopia | game:build-sim/startopia
 Startopia | startopia | queue:build-sim
+StarVaders (Star★Vaders) | starvaders star vaders | game:tactics/starvaders
+starvaders | starvaders | game:tactics/starvaders
 StarVaders | starvaders | queue:tactics
 Station to Station | station to station | queue:connect-rotate
 Statue Park | statue park | game:pencil-logic/statue-park
 Statue Park | statue park | queue:pencil-logic
 stax | stax | game:chess-abstract/lasca
+SteamWorld Build | steamworld build | game:build-sim/steamworld-build
 SteamWorld Build | steamworld build | queue:build-sim
 SteamWorld Dig | steamworld dig | game:dig-gravity/steamworld-dig
 SteamWorld Dig | steamworld dig | queue:dig-gravity
+SteamWorld Heist II | steamworld heist ii | skipped:_thinky-dump-checked
 SteamWorld Heist | steamworld heist | game:tactics/steamworld-heist
 SteamWorld Heist | steamworld heist | queue:tactics
 steel panthers ii modern battles | steel panthers ii modern battles | game:tactics/steel-panthers
@@ -5990,6 +6251,8 @@ stick war | stick war | game:tower-lanes/age-of-war-stick-war
 Stickets | stickets | game:falling-match/stickets
 Stickets | stickets | queue:falling-match
 Stig | stig | queue:thinky
+Stitches (Стібки) | stitches стібки | game:pencil-logic/stitches
+stitches | stitches | game:pencil-logic/stitches
 Stitches | stitches | queue:pencil-logic
 Sto-stone (ストストーン) | sto stone | game:pencil-logic/sto-stone
 Sto-stone | sto stone | queue:pencil-logic
@@ -6048,6 +6311,7 @@ sudoku | sudoku | game:pencil-logic/sudoku
 Sudoku-variants (парасоля): Killer, Thermo, Arrow, Sandwich, Kropki, German Whispers, Renban, Little Killer, X-Sums, Skyscraper, Fog of War, Yin-Yang, Between Lines, Palindrome, XV, Odd/Even, Anti-knight/Anti-king, Jigsaw, Samurai, Region Sum, Zipper, Entropy, Nabner, Doublers, Schrödinger | sudoku variants парасоля killer thermo arrow sandwich kropki german whispers renban little killer x sums skyscraper fog of war yin yang between lines palindrome xv odd even anti knight anti king jigsaw samurai region sum zipper entropy nabner doublers schr dinger | queue:pencil-logic
 SudokuPad / f-puzzles / Penpa+ | sudokupad f puzzles penpa | queue:pencil-logic
 sudokupad | sudokupad | game:pencil-logic/sudoku-variants
+Sudokuvania 2: Lineage of Logic | sudokuvania 2 lineage of logic | skipped:_thinky-dump-checked
 sudokuvania | sudokuvania | game:pencil-logic/sudokuvania
 Sudokuvania: Digits of Despair | sudokuvania digits of despair | game:pencil-logic/sudokuvania
 Sudokuvania: Digits of Despair | sudokuvania digits of despair | queue:pencil-logic
@@ -6071,6 +6335,7 @@ suikyo | suikyo | game:thinky/suikyo
 Suikyo | suikyo | queue:thinky
 Sukoro (数コロ) | sukoro | game:pencil-logic/sukoro
 Sukoro (数コロ) | sukoro | queue:pencil-logic
+sukurin | sukurin | game:pencil-logic/scrin
 summer challenge 2024 | summer challenge 2024 | game:program-robots/codingame-olymbits
 summer challenge 2025 | summer challenge 2025 | game:program-robots/codingame-soak-overflow
 summoner wars master set | summoner wars master set | game:tactics/summoner-wars
@@ -6086,6 +6351,7 @@ Sumplete | sumplete | game:word-number/sumplete
 Sumplete | sumplete | queue:word-number
 sun | sun | game:pencil-logic/moon-or-sun
 sunbird studio | sunbird studio | game:push-slide/prickle
+Sunderfolk | sunderfolk | game:tactics/sunderfolk
 Sunderfolk | sunderfolk | queue:tactics
 sunflower seeds | sunflower seeds | game:word-number/number-match
 Sunken Stones | sunken stones | game:tactics/sunken-stones
@@ -6126,7 +6392,11 @@ Super Robot Wars | super robot wars | game:tactics/super-robot-wars
 Super Robot Wars | super robot wars | queue:tactics
 super shariki | super shariki | game:falling-match/shariki
 Super Sokobot | super sokobot | queue:push-slide
+super sudokoid final transmission | super sudokoid final transmission | game:pencil-logic/super-sudokoid
+super sudokoid | super sudokoid | game:pencil-logic/super-sudokoid
+Super Sudokoid: Dark Inversion | super sudokoid dark inversion | game:pencil-logic/super-sudokoid
 Super Sudokoid: Dark Inversion | super sudokoid dark inversion | queue:pencil-logic
+Super Sudokoid: Final Transmission | super sudokoid final transmission | skipped:_thinky-dump-checked
 super zzt | super zzt | game:maze-arcade/zzt
 Suraido (スライド) | suraido | game:pencil-logic/suraido
 Suraido | suraido | queue:pencil-logic
@@ -6144,7 +6414,11 @@ survive escape from atlantis | survive escape from atlantis | game:board-digital
 survive | survive | game:board-digital/escape-from-atlantis
 Survivors | survivors | game:dig-gravity/survivors
 Survivors | survivors | queue:dig-gravity
+survo cross sum puzzle | survo cross sum puzzle | game:pencil-logic/survo-puzzle
+Survo Puzzle (Survo-ristikko) | survo puzzle survo ristikko | game:pencil-logic/survo-puzzle
+survo puzzle | survo puzzle | game:pencil-logic/survo-puzzle
 Survo puzzle | survo puzzle | queue:pencil-logic
+survo ristikko | survo ristikko | game:pencil-logic/survo-puzzle
 Sushi for Robots | sushi for robots | queue:program-robots
 susume kinopio taich | susume kinopio taich | game:grid-platformer/captain-toad-treasure-tracker
 Sutte Hakkun | sutte hakkun | game:grid-platformer/sutte-hakkun
@@ -6152,6 +6426,8 @@ Sutte Hakkun | sutte hakkun | queue:grid-platformer
 suttehakkun | suttehakkun | game:grid-platformer/sutte-hakkun
 swap chess | swap chess | game:chess-abstract/bughouse
 SwapBot (John M. Williams) | swapbot john m williams | queue:thinky
+SwapBot | swapbot | game:thinky/swapbot
+swb | swb | game:build-sim/steamworld-build
 swedish crossword | swedish crossword | game:word-number/arrowword
 swh | swh | game:tactics/steamworld-heist
 Swift Playgrounds (Byte) | swift playgrounds byte | queue:program-robots
@@ -6159,7 +6435,6 @@ Swift Playgrounds (Learn to Code, Byte) | swift playgrounds learn to code byte |
 swift playgrounds | swift playgrounds | game:program-robots/swift-playgrounds
 Switch Hook (7DRL) | switch hook 7drl | queue:roguelike
 switching puzzle | switching puzzle | game:push-slide/train-shunting-puzzle
-Swixle | swixle | queue:word-number
 sword of fargoal legends | sword of fargoal legends | game:roguelike/sword-of-fargoal
 Sword of Fargoal | sword of fargoal | game:roguelike/sword-of-fargoal
 Sword of Fargoal | sword of fargoal | queue:roguelike
@@ -6177,6 +6452,7 @@ szachy heksagonalne | szachy heksagonalne | game:chess-abstract/glinski-hex-ches
 t e | t e | game:board-digital/tigris-and-euphrates
 t engine 4 | t engine 4 | game:roguelike/tales-of-maj-eyal
 t paint | t paint | game:pencil-logic/tapa
+t ren | t ren | game:pencil-logic/tueren
 tab | tab | game:tower-lanes/they-are-billions
 tablut | tablut | game:chess-abstract/hnefatafl
 Tachiawase Block | tachiawase block | game:pencil-logic/tachiawase-block
@@ -6303,6 +6579,8 @@ Teamfight Tactics | teamfight tactics | queue:tower-lanes
 Teardown | teardown | game:dig-gravity/teardown
 Teardown | teardown | queue:dig-gravity
 tec | tec | game:falling-match/tetris-effect
+teeny shire | teeny shire | game:board-digital/teenyshire
+TeenyShire | teenyshire | game:board-digital/teenyshire
 TeenyShire | teenyshire | queue:board-digital
 Teki Paki (洗脳ゲーム TEKI・PAKI) | teki paki teki paki | game:falling-match/teki-paki
 teki paki | teki paki | game:falling-match/teki-paki
@@ -6326,11 +6604,15 @@ tendrys tale | tendrys tale | game:roguelike/drod-rpg
 tenjiku shogi | tenjiku shogi | game:chess-abstract/large-shogi-variants
 Tenjiku shogi | tenjiku shogi | queue:chess-abstract
 Tenner Grid (Zehnergitter) | tenner grid zehnergitter | queue:pencil-logic
+Tenner Grid (Zehnergitter, Числобус) | tenner grid zehnergitter числобус | game:pencil-logic/tenner-grid
+tenner grid | tenner grid | game:pencil-logic/tenner-grid
+tenner | tenner | game:pencil-logic/tenner-grid
 Tentai Show (Galaxies) | tentai show galaxies | queue:pencil-logic
 Tentai Show (Galaxies, Spiral Galaxies) | tentai show galaxies spiral galaxies | game:pencil-logic/tentai-show
 tentai show | tentai show | game:pencil-logic/tentai-show
 tentaisho | tentaisho | game:pencil-logic/tentai-show
 Tentaizu | tentaizu | queue:hidden-deduction
+tenten mushi | tenten mushi | game:thinky/walking-dots
 Tents (Tatham) | tents tatham | game:pencil-logic/tents
 tents and trees | tents and trees | game:pencil-logic/tents
 tents trees | tents trees | game:pencil-logic/tents
@@ -6366,7 +6648,6 @@ Tetris (Тетрис, Tetris Guideline) | tetris тетрис tetris guideline |
 Tetris 2 (NES) | tetris 2 nes | queue:falling-match
 tetris 2 bombliss | tetris 2 bombliss | game:falling-match/bombliss
 tetris 2 | tetris 2 | game:falling-match/bombliss
-Tetris 99 | tetris 99 | queue:falling-match
 tetris attack | tetris attack | game:falling-match/panel-de-pon
 tetris blast | tetris blast | game:falling-match/bombliss
 Tetris Effect / Connected | tetris effect connected | queue:falling-match
@@ -6431,12 +6712,16 @@ The Brainies (Tiny Skweeks) | brainies tiny skweeks | game:push-slide/the-braini
 The Brainies (Tiny Skweeks) | brainies tiny skweeks | queue:push-slide
 The Bugs Bunny Crazy Castle (Roger Rabbit / Mickey Mouse) | bugs bunny crazy castle roger rabbit mickey mouse | queue:grid-platformer
 The Bugs Bunny Crazy Castle | bugs bunny crazy castle | game:grid-platformer/bugs-bunny-crazy-castle
+The Case of the Worst Day Ever | case of the worst day ever | skipped:_thinky-dump-checked
 The Castle Doctrine | castle doctrine | game:roguelike/castle-doctrine
 The Castle Doctrine | castle doctrine | queue:roguelike
 The Castle | castle | queue:grid-platformer
 The Castles of Burgundy (Замки Бургундії) | castles of burgundy замки бургундії | game:board-digital/the-castles-of-burgundy
 The Castles of Burgundy | castles of burgundy | queue:board-digital
+The Codex of Alchemical Engineering | codex of alchemical engineering | skipped:_thinky-dump-checked
 The Court of Wanderers | court of wanderers | queue:push-slide
+The Daily Spell | daily spell | skipped:_thinky-dump-checked
+The Descent of King Hesper | descent of king hesper | skipped:_thinky-dump-checked
 The Domino Lockpicking Company | domino lockpicking company | queue:pencil-logic
 The Duke | duke | game:chess-abstract/the-duke
 The Duke | duke | queue:chess-abstract
@@ -6444,6 +6729,7 @@ The Elder Scrolls: Legends | elder scrolls legends | game:tower-lanes/elder-scro
 The Elder Scrolls: Legends | elder scrolls legends | queue:tower-lanes
 The Electrifying Incident: A Monster Mini-Expedition | electrifying incident a monster mini expedition | game:thinky/the-electrifying-incident
 The Electrifying Incident: A Monster Mini-Expedition | electrifying incident a monster mini expedition | queue:thinky
+The Entropy Centre | entropy centre | skipped:_thinky-dump-checked
 The Eye of Judgment | eye of judgment | game:tower-lanes/eye-of-judgment
 The Eye of Judgment | eye of judgment | queue:tower-lanes
 The Farmer Was Replaced | farmer was replaced | game:program-robots/the-farmer-was-replaced
@@ -6462,6 +6748,7 @@ The Last Guy | last guy | queue:maze-arcade
 The Last Spell | last spell | game:tactics/the-last-spell
 The Last Spell | last spell | queue:tactics
 The Legend of Lumina | legend of lumina | queue:push-slide
+The Looker | looker | skipped:_thinky-dump-checked
 The Machine's Garden | machines garden | game:connect-rotate/the-machines-garden
 The Machine's Garden | machines garden | queue:connect-rotate
 The Miner Was Replaced | miner was replaced | game:program-robots/the-miner-was-replaced
@@ -6479,13 +6766,15 @@ The Powder Toy | powder toy | queue:dig-gravity
 The Prancing Bard (7DRL) | prancing bard 7drl | queue:roguelike
 The Search for Planet X | search for planet x | game:hidden-deduction/the-search-for-planet-x
 The Search for Planet X | search for planet x | queue:hidden-deduction
+The Sequence [2] | sequence 2 | skipped:_thinky-dump-checked
 The Settlers II (Die Siedler II) | settlers ii die siedler ii | game:build-sim/settlers-2
 The Settlers II | settlers ii | queue:build-sim
 The Snake Is the Tower | snake is the tower | game:maze-arcade/the-snake-is-the-tower
 The Snake Is the Tower | snake is the tower | queue:maze-arcade
 The Snake That Eats Puzzle Game Mechanics (Thinky Collective) | snake that eats puzzle game mechanics thinky collective | game:thinky/the-snake-that-eats-puzzle-game-mechanics
 The Snake That Eats Puzzle Game Mechanics (Thinky Collective) | snake that eats puzzle game mechanics thinky collective | queue:thinky
-The Talos Principle | talos principle | queue:connect-rotate
+The Stupefying Sweater | stupefying sweater | queue:word-number
+The Talos Principle 2 | talos principle 2 | skipped:_thinky-dump-checked
 The Tower of Druaga | tower of druaga | game:maze-arcade/the-tower-of-druaga
 The Tower of Druaga | tower of druaga | queue:maze-arcade
 The Trapped Heart (7DRL) | trapped heart 7drl | queue:roguelike
@@ -6518,7 +6807,7 @@ thinkfun | thinkfun | game:board-digital/chocolate-fix
 thinkfun | thinkfun | game:board-digital/code-master
 thinkfun | thinkfun | game:push-slide/rush-hour
 thinky collective | thinky collective | game:thinky/the-snake-that-eats-puzzle-game-mechanics
-Thiruthamizh | thiruthamizh | queue:word-number
+Thinky Dailies | thinky dailies | skipped:_thinky-dump-checked
 This Bubble Tea Troubles Me | this bubble tea troubles me | queue:push-slide
 this game is full of snakes | this game is full of snakes | game:thinky/would-you-love-me-if-i-was-a-snake
 thornline td | thornline td | game:tower-lanes/mazing-td-modern
@@ -6654,7 +6943,7 @@ Torres | torres | queue:board-digital
 tortoise | tortoise | game:board-digital/hare-and-tortoise
 torus chess | torus chess | game:chess-abstract/wraparound-chess
 toshio akanuma | toshio akanuma | game:push-slide/panex
-Tower Defence: Back to the Roots 2 | tower defence back to the roots 2 | queue:tower-lanes
+toter winkel | toter winkel | game:pencil-logic/deddoanguru
 tower defense program the fight | tower defense program the fight | game:program-robots/tower-defense-program-the-fight
 tower ii | tower ii | game:build-sim/tiny-tower-simtower
 tower maze defense | tower maze defense | game:tower-lanes/mazing-td-modern
@@ -6709,6 +6998,7 @@ transamerica | transamerica | game:connect-rotate/transamerica
 TransAmerica | transamerica | queue:connect-rotate
 transeuropa | transeuropa | game:connect-rotate/transamerica
 transfer chess | transfer chess | game:chess-abstract/bughouse
+Transmission | transmission | skipped:_thinky-dump-checked
 Transmission: Information Age | transmission information age | queue:connect-rotate
 transport tycoon | transport tycoon | game:build-sim/openttd-rails
 trap sweeper | trap sweeper | game:hidden-deduction/trapsweeper
@@ -6726,6 +7016,7 @@ treasure tracker | treasure tracker | game:grid-platformer/captain-toad-treasure
 trees | trees | game:pencil-logic/tents
 Tren | tren | game:pencil-logic/tren
 Tren | tren | queue:pencil-logic
+Tres Undos | tres undos | game:thinky/tres-undos
 Tres Undos | tres undos | queue:thinky
 Triangle Strategy | triangle strategy | game:tactics/triangle-strategy
 Triangle Strategy | triangle strategy | queue:tactics
@@ -6740,11 +7031,16 @@ Tricky Towers | tricky towers | game:falling-match/tricky-towers
 Tricky Towers | tricky towers | queue:falling-match
 Tricone Lab | tricone lab | game:thinky/tricone-lab
 Tricone Lab | tricone lab | queue:thinky
+Triga | triga | game:thinky/triga
 Triga | triga | queue:thinky
 Trike | trike | game:chess-abstract/trike
 Trike | trike | queue:chess-abstract
 trilateration | trilateration | game:hidden-deduction/triangulation
+trilogic | trilogic | game:pencil-logic/trilogik
+Trilogik (Trilogic, Trilogy) | trilogik trilogic trilogy | game:pencil-logic/trilogik
+trilogik | trilogik | game:pencil-logic/trilogik
 Trilogik | trilogik | queue:pencil-logic
+trilogy | trilogy | game:pencil-logic/trilogik
 Triolet | triolet | game:word-number/triolet
 Triolet | triolet | queue:word-number
 Trioncube | trioncube | game:falling-match/trioncube
@@ -6757,6 +7053,7 @@ Triple Town | triple town | game:falling-match/triple-town
 Triple Town | triple town | queue:falling-match
 Triple Triad | triple triad | game:board-digital/triple-triad
 Triple Triad | triple triad | queue:board-digital
+trms | trms | skipped:_thinky-dump-checked
 Troddlers | troddlers | game:grid-platformer/troddlers
 Troddlers | troddlers | queue:grid-platformer
 Tron (Light Cycles) | tron light cycles | queue:maze-arcade
@@ -6778,6 +7075,7 @@ tt | tt | game:program-robots/turing-tumble
 tt2 | tt2 | game:grid-platformer/toki-tori-2
 ttr | ttr | game:board-digital/ticket-to-ride
 ttt | ttt | game:thinky/tome-tumble-tournament
+tueren | tueren | game:pencil-logic/tueren
 Tumblestone | tumblestone | game:falling-match/tumblestone
 Tumblestone | tumblestone | queue:falling-match
 Tumbleweed | tumbleweed | game:chess-abstract/tumbleweed
@@ -6785,6 +7083,7 @@ Tumbleweed | tumbleweed | queue:chess-abstract
 tunneler 20 | tunneler 20 | game:dig-gravity/tunneler
 Tunneler | tunneler | game:dig-gravity/tunneler
 Tunneler | tunneler | queue:dig-gravity
+Tunnels | tunnels | skipped:_thinky-dump-checked
 tur mite | tur mite | game:build-sim/langtons-ant
 Turing Complete | turing complete | game:program-robots/turing-complete
 Turing Complete | turing complete | queue:program-robots
@@ -6815,13 +7114,18 @@ Two Dots | two dots | queue:falling-match
 two not touch | two not touch | game:pencil-logic/star-battle
 Two Point Hospital | two point hospital | game:build-sim/two-point-hospital
 Two Point Hospital | two point hospital | queue:build-sim
+two tribes | two tribes | game:program-robots/rush-two-tribes
 Two Worlds (nebu soku) | two worlds nebu soku | queue:thinky
+Two Worlds | two worlds | skipped:_thinky-dump-checked
 type shift | type shift | game:word-number/typeshift
+Type Word | type word | skipped:_thinky-dump-checked
 TypeShift | typeshift | game:word-number/typeshift
 Typeshift | typeshift | queue:word-number
 TZAAR | tzaar | game:chess-abstract/tzaar
 TZAAR | tzaar | queue:chess-abstract
+Türen (Doors, Seethrough) | t ren doors seethrough | game:pencil-logic/tueren
 Türen (Doors, Seethrough) | t ren doors seethrough | queue:pencil-logic
+U.V.S. Nirmana | uvs nirmana | game:program-robots/uvs-nirmana
 U.V.S. Nirmana | uvs nirmana | queue:program-robots
 Ubongo + Katamino / IQ Puzzler (Убонго) | ubongo katamino iq puzzler убонго | game:board-digital/ubongo
 ubongo | ubongo | game:board-digital/ubongo
@@ -6829,6 +7133,7 @@ Ubongo | ubongo | queue:board-digital
 uc berkeley cs188 | uc berkeley cs188 | game:program-robots/pacman-capture-the-flag
 udlr modify | udlr modify | game:thinky/clovers-quadrants
 UDLR_Modify | udlr modify | queue:thinky
+UFO 50 Nonograms | ufo 50 nonograms | skipped:_thinky-dump-checked
 ufo enemy unknown | ufo enemy unknown | game:tactics/ufo-enemy-unknown
 ufo | ufo | game:tactics/ufo-enemy-unknown
 UFO: Enemy Unknown (X-COM) | ufo enemy unknown x com | queue:tactics
@@ -6884,6 +7189,7 @@ Unpacking | unpacking | game:build-sim/unpacking
 Unpacking | unpacking | queue:build-sim
 Unrailed! | unrailed | game:connect-rotate/unrailed
 Unrailed! | unrailed | queue:connect-rotate
+unreturning void ship nirmana | unreturning void ship nirmana | game:program-robots/uvs-nirmana
 unruly | unruly | game:pencil-logic/takuzu
 Unstoppable Gorg | unstoppable gorg | game:tower-lanes/unstoppable-gorg
 Unstoppable Gorg | unstoppable gorg | queue:tower-lanes
@@ -6894,6 +7200,7 @@ Untrusted | untrusted | queue:program-robots
 Untrusted — or the Continuing Adventures of Dr. Eval | untrusted or the continuing adventures of dr eval | game:program-robots/untrusted
 uoc | uoc | game:tactics/unity-of-command
 uoc2 | uoc2 | game:tactics/unity-of-command
+Upalu Mundi | upalu mundi | game:program-robots/upalu-mundi
 Upalu Mundi | upalu mundi | queue:program-robots
 Uptown (Blockers!) | uptown blockers | game:board-digital/uptown
 Uptown (Blockers!) | uptown blockers | queue:board-digital
@@ -6929,12 +7236,14 @@ Venture | venture | game:maze-arcade/venture
 Venture | venture | queue:maze-arcade
 Vertebrae | vertebrae | queue:push-slide
 Very Normal Lock Opening Game | very normal lock opening game | queue:push-slide
+Vext Edit | vext edit | game:thinky/vext-edit
 Vext Edit | vext edit | queue:thinky
 vgdl | vgdl | game:program-robots/gvgai
 vici | vici | game:build-sim/settlers-2
 video game description language | video game description language | game:program-robots/gvgai
 videopac 44 crazy chase | videopac 44 crazy chase | game:maze-arcade/kcs-krazy-chase
 vidi | vidi | game:build-sim/settlers-2
+Viewfinder | viewfinder | skipped:_thinky-dump-checked
 viking chess | viking chess | game:chess-abstract/hnefatafl
 Vindinium | vindinium | game:program-robots/vindinium
 Vindinium | vindinium | queue:program-robots
@@ -6961,6 +7270,8 @@ Von Neumann cellular automaton (+ Codd) | von neumann cellular automaton codd | 
 Von Neumann cellular automaton (автомат фон Неймана, 29 станів) і Codd's CA | von neumann cellular automaton автомат фон неймана 29 станів і codds ca | game:build-sim/von-neumann-ca
 von neumann cellular automaton | von neumann cellular automaton | game:build-sim/von-neumann-ca
 von neumann universal constructor | von neumann universal constructor | game:build-sim/von-neumann-ca
+Voxelgram 2 | voxelgram 2 | skipped:_thinky-dump-checked
+Voxelgram | voxelgram | skipped:_thinky-dump-checked
 vpcotp | vpcotp | game:tactics/valkyrie-profile-covenant-of-the-plume
 vs battle city | vs battle city | game:maze-arcade/battle-city
 vs clu clu land | vs clu clu land | game:maze-arcade/clu-clu-land
@@ -6972,6 +7283,8 @@ wacky wacky west | wacky wacky west | game:board-digital/drunter-und-druber
 Waffle | waffle | game:word-number/waffle
 Waffle | waffle | queue:word-number
 Wait For It (7DRL) | wait for it 7drl | queue:roguelike
+Walfie's Nonograms | walfies nonograms | skipped:_thinky-dump-checked
+Walking Dots (てんてん虫) | walking dots | game:thinky/walking-dots
 Walking Dots (てんてん虫) | walking dots | queue:thinky
 Wall World | wall world | game:dig-gravity/wall-world
 Wall World | wall world | queue:dig-gravity
@@ -7013,6 +7326,7 @@ Watch Your Step (Aaron Steed) | watch your step aaron steed | game:push-slide/wa
 Watch Your Step (Aaron Steed) | watch your step aaron steed | queue:push-slide
 watch your step steed | watch your step steed | game:push-slide/watch-your-step-steed
 watch your step | watch your step | game:push-slide/watch-your-step-steed
+Watchword | watchword | game:word-number/watchword
 Watchword | watchword | queue:word-number
 water connect | water connect | game:connect-rotate/plumber-pipe-rotation
 Water Me Please! | water me please | game:connect-rotate/water-me-please
@@ -7030,6 +7344,7 @@ Waterworks | waterworks | game:connect-rotate/waterworks
 Waterworks | waterworks | queue:connect-rotate
 wator | wator | game:build-sim/wa-tor
 We Are Gum | we are gum | queue:push-slide
+We Surrender! | we surrender | skipped:_thinky-dump-checked
 Weaver (word ladder) | weaver word ladder | game:word-number/weaver
 Weaver (word ladder) | weaver word ladder | queue:word-number
 weaver | weaver | game:word-number/weaver
@@ -7056,6 +7371,7 @@ Where's My Water? | wheres my water | game:dig-gravity/wheres-my-water
 Where's My Water? | wheres my water | queue:dig-gravity
 wheres my perry | wheres my perry | game:dig-gravity/wheres-my-water
 wheres my water 2 | wheres my water 2 | game:dig-gravity/wheres-my-water
+While True: Learn() | while true learn | skipped:_thinky-dump-checked
 whu | whu | game:tactics/warhammer-underworlds
 wi fi 8 nin battle bomberman | wi fi 8 nin battle bomberman | game:maze-arcade/bomberman-multiplayer-variants
 wie is het | wie is het | game:hidden-deduction/guess-who
@@ -7079,6 +7395,7 @@ Wireworld | wireworld | game:build-sim/wireworld
 Wireworld | wireworld | queue:build-sim
 Wireworld | wireworld | queue:program-robots
 witcher 3 gwent | witcher 3 gwent | game:tower-lanes/gwent
+Witless - A Puzzling Journey | witless a puzzling journey | skipped:_thinky-dump-checked
 witness | witness | game:thinky/taiji-witness-panels
 Wizard of Wor | wizard of wor | game:maze-arcade/wizard-of-wor
 Wizard of Wor | wizard of wor | queue:maze-arcade
@@ -7116,6 +7433,7 @@ word munchers deluxe | word munchers deluxe | game:word-number/number-munchers
 word munchers | word munchers | game:word-number/number-munchers
 Word on the Street | word on the street | game:word-number/word-on-the-street
 Word on the Street | word on the street | queue:word-number
+Word Play | word play | skipped:_thinky-dump-checked
 word rpg battlers | word rpg battlers | game:word-number/word-rpg-battlers
 Word search (Пошук слів) | word search пошук слів | game:word-number/word-search
 word search | word search | game:word-number/word-search
@@ -7172,7 +7490,6 @@ Wumpus world («Світ Вампуса») | wumpus world світ вампус�
 wumpus world | wumpus world | game:program-robots/wumpus-world
 Wumpus world | wumpus world | queue:program-robots
 wumpusworld | wumpusworld | game:program-robots/wumpus-world
-Wyrmspace Tactics | wyrmspace tactics | queue:roguelike
 x com 1994 | x com 1994 | game:tactics/ufo-enemy-unknown
 x com ufo defense | x com ufo defense | game:tactics/ufo-enemy-unknown
 x com | x com | game:tactics/ufo-enemy-unknown
@@ -7229,6 +7546,7 @@ Yankai's Peak | yankais peak | queue:push-slide
 yawnoc jam version | yawnoc jam version | game:build-sim/yawnoc
 Yawnoc | yawnoc | game:build-sim/yawnoc
 Yawnoc | yawnoc | queue:build-sim
+YENDOR | yendor | game:program-robots/yendor
 YENDOR | yendor | queue:program-robots
 yggdra union | yggdra union | game:tactics/yggdra-union
 Yggdra Union | yggdra union | queue:tactics
@@ -7255,6 +7573,7 @@ You Are The Code | you are the code | queue:program-robots
 ypp alchemistry | ypp alchemistry | game:connect-rotate/puzzle-pirates-alchemistry
 Yu-Gi-Oh! Dungeon Dice Monsters | yu gi oh dungeon dice monsters | game:tactics/dungeon-dice-monsters
 Yu-Gi-Oh! Dungeon Dice Monsters | yu gi oh dungeon dice monsters | queue:tactics
+Yugo Puzzle | yugo puzzle | skipped:_thinky-dump-checked
 yukemuri onsenkyo | yukemuri onsenkyo | game:build-sim/hot-springs-story
 Yushino | yushino | game:word-number/yushino
 Yushino | yushino | queue:word-number
@@ -7271,9 +7590,9 @@ Zahlenlabyrinth (Magic Labyrinth, Магічний лабіринт) | zahlenlab
 zahlenlabyrinth | zahlenlabyrinth | game:pencil-logic/zahlenlabyrinth
 zahlenspirale | zahlenspirale | game:pencil-logic/zahlenlabyrinth
 zatacka | zatacka | game:maze-arcade/achtung-die-kurve
-Zebra (Einstein) puzzle | zebra einstein puzzle | queue:pencil-logic
 Zebra Puzzle (Einstein's Riddle, Загадка Ейнштейна) | zebra puzzle einsteins riddle загадка ейнштейна | game:pencil-logic/zebra-puzzle
 zebra puzzle | zebra puzzle | game:pencil-logic/zebra-puzzle
+zehnergitter | zehnergitter | game:pencil-logic/tenner-grid
 Zeiger (Pointers, Покажчики) | zeiger pointers покажчики | game:pencil-logic/zeiger
 zeiger | zeiger | game:pencil-logic/zeiger
 Zeiger | zeiger | queue:pencil-logic
@@ -7329,6 +7648,39 @@ zzt oop | zzt oop | game:maze-arcade/zzt
 ZZT | zzt | game:maze-arcade/zzt
 ZÈRTZ | z rtz | game:chess-abstract/zertz
 ZÈRTZ | z rtz | queue:chess-abstract
+~~Anti-knight / Anti-king (Miracle)~~ | anti knight anti king miracle | queue:pencil-logic
+~~Bejeweled 1–3 / Blitz~~ | bejeweled 1 3 blitz | queue:falling-match
+~~Bejeweled Twist~~ | bejeweled twist | queue:falling-match
+~~Bomb puzzles (Zelda: Oracle of Ages)~~ | bomb puzzles zelda oracle of ages | queue:push-slide
+~~Boulder Dash Construction Kit~~ | boulder dash construction kit | queue:dig-gravity
+~~Boxxle~~ | boxxle | queue:push-slide
+~~Courtyard~~ | courtyard | queue:push-slide
+~~Daedalike~~ | daedalike | queue:roguelike
+~~Desktop Dungeons: Rewind~~ | desktop dungeons rewind | queue:roguelike
+~~DITTORI / He Who Watches~~ | dittori he who watches | queue:thinky
+~~Dogs Organized Neatly~~ | dogs organized neatly | queue:board-digital
+~~Gridvania~~ | gridvania | queue:grid-platformer
+~~Hat Tricks: Hare in Box~~ | hat tricks hare in box | queue:thinky
+~~Logicraft~~ | logicraft | queue:thinky
+~~Mosa Lina~~ | mosa lina | queue:thinky
+~~Mystic Tesserae~~ | mystic tesserae | queue:dig-gravity
+~~Oeuf (increpare)~~ | oeuf increpare | queue:thinky
+~~Photon Engineer~~ | photon engineer | queue:connect-rotate
+~~ReThink~~ | rethink | queue:connect-rotate
+~~Rotastic~~ | rotastic | queue:connect-rotate
+~~Rubik's Race~~ | rubiks race | queue:push-slide
+~~Sandwich Sudoku~~ | sandwich sudoku | queue:pencil-logic
+~~shapez 2~~ | shapez 2 | queue:build-sim
+~~Snake Pass~~ | snake pass | queue:maze-arcade
+~~Swixle~~ | swixle | queue:word-number
+~~Tetris 99~~ | tetris 99 | queue:falling-match
+~~The Talos Principle~~ | the talos principle | queue:connect-rotate
+~~Thiruthamizh~~ | thiruthamizh | queue:word-number
+~~Tower Defence: Back to the Roots 2~~ | tower defence back to the roots 2 | queue:tower-lanes
+~~Wyrmspace Tactics~~ | wyrmspace tactics | queue:roguelike
+~~Zebra (Einstein) puzzle~~ | zebra einstein puzzle | queue:pencil-logic
+~~Піддавки~~ | піддавки | queue:chess-abstract
+~~Шашки: російські / міжнародні / англійські~~ | шашки російські міжнародні англійські | queue:chess-abstract
 абалон | абалон | game:chess-abstract/abalone
 авале | авале | game:chess-abstract/oware
 автомат кодда | автомат кодда | game:build-sim/von-neumann-ca
@@ -7472,6 +7824,7 @@ ZÈRTZ | z rtz | queue:chess-abstract
 гіроміт | гіроміт | game:grid-platformer/gyromite
 дабл чоко | дабл чоко | game:pencil-logic/double-choco
 дальність сервісів по дорогах | дальність сервісів по дорогах | game:build-sim/anno-1800-service-roads
+двері | двері | game:pencil-logic/tueren
 двонн | двонн | game:chess-abstract/dvonn
 дві точки | дві точки | game:falling-match/dots-two-dots
 де моя вода | де моя вода | game:dig-gravity/wheres-my-water
@@ -7505,6 +7858,7 @@ ZÈRTZ | z rtz | queue:chess-abstract
 дуплікат | дуплікат | game:word-number/duplicate-scrabble
 діабалік | діабалік | game:chess-abstract/diaballik
 ейнштейн не грає в кості | ейнштейн не грає в кості | game:chess-abstract/einstein-wurfelt-nicht
+екран | екран | game:pencil-logic/scrin
 Елементарні клітинні автомати (Rule 110, Rule 30, Rule 90) | елементарні клітинні автомати rule 110 rule 30 rule 90 | game:build-sim/elementary-cellular-automata
 елементарні клітинні автомати | елементарні клітинні автомати | game:build-sim/elementary-cellular-automata
 ентропія | ентропія | game:chess-abstract/entropy
@@ -7513,12 +7867,14 @@ ZÈRTZ | z rtz | queue:chess-abstract
 епоха війни | епоха війни | game:tower-lanes/age-of-war-stick-war
 ес н морь | ес н морь | game:chess-abstract/jeson-mor
 жабка | жабка | game:maze-arcade/frogger
+Жанр «правила не сказано | жанр правила не сказано | skipped:_thinky-dump-checked
 жанр ковзай до упору | жанр ковзай до упору | game:push-slide/ice-sliding-puzzles
 з babyai | з babyai | game:program-robots/minigrid
 з єднай пару | з єднай пару | game:falling-match/shisen-sho
 заборонена пустеля | заборонена пустеля | game:board-digital/forbidden-desert
 заборонений острів | заборонений острів | game:board-digital/forbidden-island
 загадка ейнштейна | загадка ейнштейна | game:pencil-logic/zebra-puzzle
+загублені в сирі | загублені в сирі | game:push-slide/lost-in-cheese
 задача майгілла | задача майгілла | game:build-sim/firing-squad-synchronization
 задача про вісім ферзів | задача про вісім ферзів | game:pencil-logic/n-queens-knights-tour
 задача про розстрільну команду | задача про розстрільну команду | game:build-sim/firing-squad-synchronization
@@ -7550,7 +7906,9 @@ ZÈRTZ | z rtz | queue:chess-abstract
 зонування | зонування | game:build-sim/cities-skylines-zoning
 зоряна битва | зоряна битва | game:pencil-logic/star-battle
 зрада в будинку на пагорбі | зрада в будинку на пагорбі | game:tactics/betrayal-at-house-on-the-hill
+Зріз майже весь | зріз майже весь | skipped:_thinky-dump-checked
 йінш | йінш | game:chess-abstract/yinsh
+кава з молоком | кава з молоком | game:pencil-logic/coffee-milk
 каверна | каверна | game:board-digital/caverna
 кавунова гра | кавунова гра | game:falling-match/suika-game
 казкові умови | казкові умови | game:chess-abstract/fairy-chess-conditions
@@ -7648,6 +8006,9 @@ ZÈRTZ | z rtz | queue:chess-abstract
 кінґдоміно | кінґдоміно | game:board-digital/kingdomino
 кіото шогі | кіото шогі | game:chess-abstract/shogi-rule-twists
 Лабиринт (паперова гра з ведучим; цифрова Labirinth) | лабиринт паперова гра з ведучим цифрова labirinth | queue:hidden-deduction
+лабиринт | лабиринт | game:hidden-deduction/labyrinth-paper-and-pencil
+Лабіринт (паперова гра з ведучим; цифрова Labirinth) | лабіринт паперова гра з ведучим цифрова labirinth | game:hidden-deduction/labyrinth-paper-and-pencil
+лабіринт | лабіринт | game:hidden-deduction/labyrinth-paper-and-pencil
 лазерний лабіринт | лазерний лабіринт | game:board-digital/thinkfun-logic-mazes
 лайв вайр | лайв вайр | game:maze-arcade/live-wire
 ласка | ласка | game:chess-abstract/lasca
@@ -7661,6 +8022,7 @@ ZÈRTZ | z rtz | queue:chess-abstract
 лемінги 2 | лемінги 2 | game:dig-gravity/lemmings-2-the-tribes
 лемінги | лемінги | game:dig-gravity/lemmings
 ленія | ленія | game:build-sim/lenia
+лихе око | лихе око | game:push-slide/evil-eye
 лише під прямим кутом | лише під прямим кутом | game:pencil-logic/kouchoku
 логіка mindustry | логіка mindustry | game:program-robots/mindustry-logic
 логічна таблиця | логічна таблиця | game:pencil-logic/zebra-puzzle
@@ -7676,6 +8038,7 @@ ZÈRTZ | z rtz | queue:chess-abstract
 лісова пожежа | лісова пожежа | game:build-sim/forest-fire-model
 ліхтарі | ліхтарі | game:board-digital/lanterns
 магніти | магніти | game:pencil-logic/magnets
+магнітний блок | магнітний блок | game:push-slide/magnet-block
 магічний | магічний | game:pencil-logic/magic-latin-squares
 магічний квадрат | магічний квадрат | game:pencil-logic/magic-latin-squares
 магічний лабіринт | магічний лабіринт | game:board-digital/magic-maze
@@ -7702,6 +8065,7 @@ ZÈRTZ | z rtz | queue:chess-abstract
 мемуари 44 | мемуари 44 | game:tactics/memoir-44
 мердоку | мердоку | game:pencil-logic/murdoku
 мережі | мережі | game:build-sim/factorio-belts
+мертвий кут | мертвий кут | game:pencil-logic/deddoanguru
 мета шар ремонту | мета шар ремонту | game:falling-match/match3-meta-renovation
 метеос | метеос | game:falling-match/meteos
 метро | метро | game:connect-rotate/metro-iron-horse
@@ -7725,6 +8089,7 @@ ZÈRTZ | z rtz | queue:chess-abstract
 мозаїка | мозаїка | game:pencil-logic/fill-a-pix
 мозок браяна | мозок браяна | game:build-sim/brians-brain-seeds
 молек синтез | молек синтез | game:program-robots/molek-syntez
+молекуляріс | молекуляріс | game:pencil-logic/molekularis
 монумент веллі | монумент веллі | game:thinky/monument-valley
 морський бій | морський бій | game:hidden-deduction/battleship
 мости | мости | game:pencil-logic/hashiwokakero
@@ -7746,11 +8111,13 @@ ZÈRTZ | z rtz | queue:chess-abstract
 місяць | місяць | game:pencil-logic/moon-or-sun
 місяць або сонце | місяць або сонце | game:pencil-logic/moon-or-sun
 найважчі п ятнашки у світі | найважчі п ятнашки у світі | game:thinky/worlds-hardest-15-puzzle
+Найпродуктивніші джерела: Steam `api/storesearch` (id за один дешевий запит) і `confoundingcalendar.itch.io` | найпродуктивніші джерела steam api storesearch id за один дешевий запит і confoundingcalendaritchio | skipped:_thinky-dump-checked
 намети | намети | game:pencil-logic/tents
 напівшахи | напівшахи | game:chess-abstract/banqi
 настолка 1984 | настолка 1984 | game:tactics/battletech
 настільні данжен кроулери на сітці | настільні данжен кроулери на сітці | game:tactics/heroquest-space-hulk
 Національні варіанти шашок | національні варіанти шашок | game:chess-abstract/checkers-variants
+Не додав навмисно: 5 нонограм без нового правила, Proverbs (це Fill-a-Pix) і Voxelgram 2 (дві барви | не додав навмисно 5 нонограм без нового правила proverbs це fill a pix і voxelgram 2 дві барви | skipped:_thinky-dump-checked
 небулус | небулус | game:grid-platformer/nebulus
 неевклідів сапер | неевклідів сапер | game:hidden-deduction/non-euclidean-minesweeper
 нейрошіма гекс | нейрошіма гекс | game:tactics/neuroshima-hex
@@ -7798,6 +8165,7 @@ ZÈRTZ | z rtz | queue:chess-abstract
 пандемія | пандемія | game:board-digital/pandemic
 панелі | панелі | game:thinky/taiji-witness-panels
 паніка в замку | паніка в замку | game:tower-lanes/castle-panic
+паперова гра з ведучим | паперова гра з ведучим | game:hidden-deduction/labyrinth-paper-and-pencil
 параболічний дзеркальний рефлектор | параболічний дзеркальний рефлектор | game:push-slide/aoc-2023-parabolic-reflector-dish
 парк статуй | парк статуй | game:pencil-logic/statue-park
 паркінг | паркінг | game:pencil-logic/tren
@@ -7814,6 +8182,7 @@ ZÈRTZ | z rtz | queue:chess-abstract
 пентамінус | пентамінус | game:pencil-logic/pentominous
 пенте | пенте | game:chess-abstract/pente
 пентопія | пентопія | game:pencil-logic/pentopia
+пенультима | пенультима | game:hidden-deduction/penultima
 пеппер ii | пеппер ii | game:maze-arcade/pepper-ii
 перекотиполе | перекотиполе | game:chess-abstract/tumbleweed
 перетин | перетин | game:pencil-logic/kouchoku
@@ -7825,6 +8194,7 @@ ZÈRTZ | z rtz | queue:chess-abstract
 печворк | печворк | game:board-digital/patchwork
 планета | планета | game:board-digital/planet-blue-orange
 побег из таркова | побег из таркова | game:build-sim/tarkov-inventory
+Побічно, поза зрізом: Hexcross (Steam 2127720, 2022) | побічно поза зрізом hexcross steam 2127720 2022 | skipped:_thinky-dump-checked
 повернення додому | повернення додому | game:pencil-logic/satogaeri
 поворот | поворот | game:maze-arcade/achtung-die-kurve
 поганий готель | поганий готель | game:tower-lanes/bad-hotel
@@ -7850,6 +8220,7 @@ ZÈRTZ | z rtz | queue:chess-abstract
 принц персії | принц персії | game:grid-platformer/prince-of-persia
 принцеса мефі | принцеса мефі | game:grid-platformer/majokko-princess-mefi
 притча про багатокутники | притча про багатокутники | game:build-sim/schelling-segregation
+прихований кисень | прихований кисень | game:pencil-logic/hidden-oxygen
 програма сфери дайсона | програма сфери дайсона | game:build-sim/dyson-sphere-planet-grid
 прогресивні шахи | прогресивні шахи | game:chess-abstract/multi-move-chess
 прогулянка будинком | прогулянка будинком | game:pencil-logic/building-walk
@@ -7859,7 +8230,6 @@ ZÈRTZ | z rtz | queue:chess-abstract
 проєкт l | проєкт l | game:board-digital/project-l
 пташине шогі | пташине шогі | game:chess-abstract/tori-shogi
 пуйо пуйо | пуйо пуйо | game:falling-match/puyo-puyo
-Піддавки | піддавки | queue:chess-abstract
 підземелля | підземелля | game:tactics/dnd-grid-combat
 підземелля і дракони | підземелля і дракони | game:tactics/dnd-grid-combat
 пішаків | пішаків | game:chess-abstract/apocalypse
@@ -7889,6 +8259,7 @@ ZÈRTZ | z rtz | queue:chess-abstract
 роллербол | роллербол | game:chess-abstract/rollerball-chess
 рослини проти зомбі | рослини проти зомбі | game:tower-lanes/plants-vs-zombies
 рослини проти зомбі герої | рослини проти зомбі герої | game:tower-lanes/plants-vs-zombies-heroes
+рукостискання | рукостискання | game:thinky/handshakes
 рідини | рідини | game:build-sim/dwarf-fortress-tiles
 рідини | рідини | game:build-sim/oxygen-not-included-cells
 рідини | рідини | game:build-sim/terraria-liquids
@@ -7920,6 +8291,7 @@ ZÈRTZ | z rtz | queue:chess-abstract
 словесні rpg бої | словесні rpg бої | game:word-number/word-rpg-battlers
 слізер іо | слізер іо | game:maze-arcade/slither-io
 слізерлінк | слізерлінк | game:pencil-logic/slitherlink
+смачний пончик | смачний пончик | game:push-slide/delicious-donut
 снафу | снафу | game:maze-arcade/snafu
 собор | собор | game:chess-abstract/cathedral
 сокобан | сокобан | game:push-slide/sokoban
@@ -7942,6 +8314,7 @@ ZÈRTZ | z rtz | queue:chess-abstract
 стрілка провідник | стрілка провідник | game:pencil-logic/guide-arrow
 стрілкове судоку | стрілкове судоку | game:pencil-logic/sudoku-line-dot-variants
 стрілковий шлях | стрілковий шлях | game:pencil-logic/signpost
+стібки | стібки | game:pencil-logic/stitches
 судоку | судоку | game:pencil-logic/sudoku
 Судоку класичне (Number Place) | судоку класичне number place | queue:pencil-logic
 судоку маєток | судоку маєток | game:pencil-logic/sudoku-mansion
@@ -7949,9 +8322,12 @@ ZÈRTZ | z rtz | queue:chess-abstract
 судоку топологія | судоку топологія | game:pencil-logic/sudoku-topology
 судокуванія | судокуванія | game:pencil-logic/sudokuvania
 сукоро | сукоро | game:pencil-logic/sukoro
+Сумніви черги: «Transmission» з Thinky | сумніви черги transmission з thinky | skipped:_thinky-dump-checked
 сумоку | сумоку | game:word-number/sumoku
 супер пекмен | супер пекмен | game:maze-arcade/super-pac-man
+супер судокоїд | супер судокоїд | game:pencil-logic/super-sudokoid
 сураунд | сураунд | game:maze-arcade/surround
+сурво | сурво | game:pencil-logic/survo-puzzle
 сусідство марголуса | сусідство марголуса | game:build-sim/critters-block-ca
 сутте хаккун | сутте хаккун | game:grid-platformer/sutte-hakkun
 сучасні mazing td | сучасні mazing td | game:tower-lanes/mazing-td-modern
@@ -7991,6 +8367,7 @@ ZÈRTZ | z rtz | queue:chess-abstract
 температури | температури | game:build-sim/rimworld-rooms
 темпест | темпест | game:maze-arcade/tempest
 тендзіку шогі | тендзіку шогі | game:chess-abstract/large-shogi-variants
+тентен муші | тентен муші | game:thinky/walking-dots
 тепло | тепло | game:build-sim/oxygen-not-included-cells
 тераформування марса | тераформування марса | game:board-digital/terraforming-mars-board
 термометр судоку | термометр судоку | game:pencil-logic/sudoku-line-dot-variants
@@ -8025,9 +8402,11 @@ ZÈRTZ | z rtz | queue:chess-abstract
 тімберборн | тімберборн | game:build-sim/timberborn
 тінкл піт | тінкл піт | game:maze-arcade/tinkle-pit
 убонго | убонго | game:board-digital/ubongo
+ув язнений | ув язнений | game:push-slide/imprisoned
 увага | увага | game:maze-arcade/achtung-die-kurve
 увага поворот | увага поворот | game:maze-arcade/achtung-die-kurve
 уголки | уголки | game:chess-abstract/halma-chinese-checkers
+удав | удав | game:thinky/constrictor
 ультима | ультима | game:chess-abstract/baroque-chess
 універсальний конструктор | універсальний конструктор | game:build-sim/von-neumann-ca
 фан рушій | фан рушій | game:build-sim/caesar-3
@@ -8071,6 +8450,7 @@ ZÈRTZ | z rtz | queue:chess-abstract
 хідато | хідато | game:pencil-logic/hidato
 хіторі | хіторі | game:pencil-logic/hitori
 цаар | цаар | game:chess-abstract/tzaar
+це місце зайняте | це місце зайняте | game:pencil-logic/is-this-seat-taken
 цеглина гармата | цеглина гармата | game:grid-platformer/gunbrick
 цегляна стіна | цегляна стіна | game:pencil-logic/tawamurenga
 цегляна стіна | цегляна стіна | game:pencil-logic/ziegelmauer
@@ -8082,6 +8462,7 @@ ZÈRTZ | z rtz | queue:chess-abstract
 циліндричні | циліндричні | game:chess-abstract/wraparound-chess
 циліндричні шахи | циліндричні шахи | game:chess-abstract/wraparound-chess
 цирцея | цирцея | game:chess-abstract/circe-chess
+цифрова labirinth | цифрова labirinth | game:hidden-deduction/labyrinth-paper-and-pencil
 цифрова гра | цифрова гра | game:chess-abstract/chess
 цифровий раунд countdown | цифровий раунд countdown | game:word-number/countdown-numbers
 цифрові версії | цифрові версії | game:word-number/scrabble
@@ -8097,6 +8478,7 @@ ZÈRTZ | z rtz | queue:chess-abstract
 червоний прапор | червоний прапор | game:board-digital/flamme-rouge
 черепаха computercraft | черепаха computercraft | game:program-robots/computercraft-turtles
 черепаха | черепаха | game:board-digital/hare-and-tortoise
+числобус | числобус | game:pencil-logic/tenner-grid
 числовий кросворд | числовий кросворд | game:word-number/cross-figure
 чистилище | чистилище | game:pencil-logic/araf
 чорна скринька | чорна скринька | game:hidden-deduction/black-box
@@ -8136,7 +8518,6 @@ ZÈRTZ | z rtz | queue:chess-abstract
 шаховий варіант | шаховий варіант | game:chess-abstract/rollerball-chess
 шахівниця макіавеллі | шахівниця макіавеллі | game:chess-abstract/djambi
 шашки | шашки | game:chess-abstract/checkers
-Шашки: російські / міжнародні / англійські | шашки російські міжнародні англійські | queue:chess-abstract
 швабля | швабля | game:build-sim/forest-fire-model
 шедоу лабіринт | шедоу лабіринт | game:maze-arcade/shadow-labyrinth
 шейпз | шейпз | game:build-sim/shapez
@@ -8149,6 +8530,7 @@ ZÈRTZ | z rtz | queue:chess-abstract
 шпигун проти шпигуна | шпигун проти шпигуна | game:maze-arcade/spy-vs-spy
 шрекенберга | шрекенберга | game:build-sim/nagel-schreckenberg
 шікаку | шікаку | game:pencil-logic/shikaku
+шінро | шінро | game:pencil-logic/shinro
 щасливий дім | щасливий дім | game:board-digital/happy-home
 що бреше | що бреше | game:word-number/fibble
 що вчиться на сірникових коробках | що вчиться на сірникових коробках | game:chess-abstract/hexapawn
@@ -8179,6 +8561,7 @@ ZÈRTZ | z rtz | queue:chess-abstract
 і турміти | і турміти | game:build-sim/langtons-ant
 інь ян | інь ян | game:pencil-logic/yin-yang
 історії привидів | історії привидів | game:tower-lanes/ghost-stories
+ічімага | ічімага | game:pencil-logic/ichimaga
 ґотча | ґотча | game:maze-arcade/gotcha
 ґратковий газ hpp | ґратковий газ hpp | game:build-sim/lattice-gas-hpp-fhp
 ґратковий газ | ґратковий газ | game:build-sim/lattice-gas-hpp-fhp

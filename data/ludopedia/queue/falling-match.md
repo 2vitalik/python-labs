@@ -202,3 +202,9 @@
 | Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
 |---|---|---|---|---|---|
 | Dissembler | 2018 | міняти пари сусідніх плиток, групи кольору зникають без доливу — очистити поле | https://store.steampowered.com/app/797620/Dissembler/ | https://www.youtube.com/results?search_query=Dissembler+gameplay | 2 |
+
+## Хвиля 4 — 2026-11-19: нові кандидати (пошукові агенти Opus)
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| Drop Duchy | 2025 | Tetris-падіння плиток ландшафту з колоди; сусідство дає ресурси й військо, лінії — бонус | https://store.steampowered.com/app/2525310/ | https://www.youtube.com/results?search_query=Drop+Duchy+gameplay | 2 |

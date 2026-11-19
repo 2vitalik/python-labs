@@ -258,3 +258,15 @@ Norinori, Kurotto, Coral, Kurochute, Mannequin Gate, Canal View, Ant Mill, Choco
 | Loopmaker | 2025 | одна картинка, 25 рівнів: петлі між синіми точками, правила відкриваєш сам | https://torcado.itch.io/loopmaker | — | 3 |
 | The Domino Lockpicking Company | 2025 | PDF: лінії через доміно-сітки з очками; правила виводиш, розвʼязок не завжди єдиний | https://garth-sidious.itch.io/domino-lockpicking-company | — | 3 |
 | Stencil Revamped | 2025 | архів пазлів, де правила перекреслені й дописані графіті — відновити набір | https://hutt3.itch.io/stencil-revamped | https://hutthutthuttspuzzledump.blogspot.com/2025/06/the-making-of-stencil-revamped.html | 3 |
+
+## Хвиля 4 — 2026-11-19: нові кандидати (пошукові агенти Opus)
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| Inkwell Fields (Light and Shadow) | 2025 | Light and Shadow: два кольори, число = розмір своєї області; однокольорові не торкаються (?) | https://inkwellgames.com/games/fields/intro | https://inkwellgames.com/faq · https://daverupert.com/2025/11/inkwell-games/ | 1 |
+| Dungeons & Diagrams (Last Call BBS) | 2022 | лічильники стін у рядках і стовпцях; монстри в тупиках, скарб у кімнаті 3×3 (?) | https://store.steampowered.com/app/1511780/ | https://www.zachtronics.com/last-call-bbs/ · https://www.youtube.com/results?search_query=Dungeons+and+Diagrams+Last+Call+BBS | 2 |
+| Inkwell Lazy River (Loopy River) | ? | щоденна: одна петля-річка через усі клітинки, без розгалужень, повз стіни й острови | https://inkwellgames.com/ | — | 3 |
+| One to Three | 2025 | шлях по плитках-кубиках; правила кольорових граней не дано — вивести з єдиності розвʼязку | https://parasectw.itch.io/one-to-three | — | 3 |
+| Hatsune Miku Bomb Squad! | 2024 | код бомби: розставити символи в сітці за довідником-підказками, ужити всі символи | https://mksf-birdup.itch.io/hatsune-miku-bomb-squad | https://mksf-birdup.itch.io/hatsune-miku-bomb-squad/devlog/778123/hatsune-miku-puzzle-game-for-gbc | 3 |
+| Dice of Dusk | ? | розставити кубики 20+ типів за правилами сусідства, злиття типів; правила — з коментарів (?) | https://kultisti.itch.io/dice-of-dusk | https://itch.io/event/39694937 · https://www.youtube.com/results?search_query=Dice+of+Dusk+Kultisti | 3 |
+| CERT | 2023 | книга-гра LD54: розвʼязки паперових пазлів — слова, що ведуть на сторінки-розгалуження (шейп-пекінг?) | https://tjm35.itch.io/cert | https://itch.io/games-like/2293160/cert | 3 |

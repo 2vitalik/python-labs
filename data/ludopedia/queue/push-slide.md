@@ -250,3 +250,9 @@
 | Herd | 2025 | книжка з фігурками: пастухи й вівці ковзають, стрибають, стають у стос | https://www.letibus.com/herd | — | 3 |
 | Pygmalion | 2023 | зіштовхнути кольорові блоки між собою, щоб зникли всі, за ліміт ходів | https://store.steampowered.com/app/2234960/Pygmalion/ | https://www.youtube.com/results?search_query=Pygmalion+CandLE+gameplay | 3 |
 | Covemount | 2024 | Hempuli: малі sokoban-рівні з блоками-цифрами й лічильником ходів | https://hempuli.itch.io/covemount | https://itch.io/games-like/2458407/covemount | 3 |
+
+## Хвиля 4 — 2026-11-19: нові кандидати (пошукові агенти Opus)
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| Dino Sort | 2025 | динозаврів зсувають по сітці, щоб кожен вид мав свою нішу (їжа, зграя ?) | https://adamatomic.itch.io/dino-sort | https://www.lexaloffle.com/bbs/?pid=169379 · https://www.bontegames.com/2025/06/dino-sort-browser.html | 2 |

@@ -143,3 +143,10 @@
 | Gridogram | 2025 | щоденна цитата схована в сітці 4×4–5×4; свайп сусідніх літер, слова цитати золоті в алфавітному списку | https://www.gridogram.com/blah/playing | https://www.gridogram.com/blah/words | 3 |
 | Pronoun Palace | 2026 | бій правописом: деревʼяні плитки атакують, пластикові захищають; заклинання зсувають літери абеткою | https://store.steampowered.com/app/3618850/Pronoun_Palace/ | https://www.youtube.com/results?search_query=Pronoun+Palace+gameplay | 3 |
 | Tomb of the Bloodletter | 2026 | поле — QWERTY-клавіатура: на клавішах-літерах лежать магії, набране слово запускає їхні ефекти | https://store.steampowered.com/app/3531630/Tomb_of_the_Bloodletter/ | https://www.youtube.com/results?search_query=Tomb+of+the+Bloodletter+gameplay | 3 |
+
+## Хвиля 4 — 2026-11-19: нові кандидати (пошукові агенти Opus)
+
+| Назва | рік | чим нова для корпусу | лінк-⭐ | інші лінки | пріоритет |
+|---|---|---|---|---|---|
+| The Stupefying Sweater | 2025 | пошук слів 6×6, де тло клітинок перефарбовують: кольори теж складають слова свого кольору | https://jinandangor.itch.io/the-stupefying-sweater | https://confoundingcalendar.itch.io/ | 2 |
+| Can of Words | 2025 | Boggle-збірка з 10 режимів: вежа осипається знизу, муха блокує літери, гекс-поле | https://werxzy.itch.io/can-of-words | https://werxzy.itch.io/can-of-words/devlog/1030523/can-of-words-v11-update | 3 |
