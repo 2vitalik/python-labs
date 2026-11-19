@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T365** · тікетів: 364 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T366** · тікетів: 365 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -372,3 +372,4 @@
 | ods | [T362](ods/.t/T362-Q--ods-lab-handin-choices.md) | ❓ | ods-lab-handin-choices | ODS, здача й перевірка лаб: вибори | 🔴 🟩 |
 | ods | [T363](ods/.t/T363-Q--ods-lectures-choices.md) | ❓ | ods-lectures-choices | Вибори після вичитки лекцій ods: терміни, виділення, слайди, сумнівні місця, заливка | 🔴 ⬜ |
 | games | [T364](games/.t/T364--ludopedia-wave4/plan.md) | ⚙️ | ludopedia-wave4 | Лудопедія: хвиля 4 — дописати залишок черг хвилі 3 — план | 🟢 ⬜ |
+| games | [T365](games/.t/T365--ludopedia-state/plan.md) | ⚙️ | ludopedia-state | Ігротека: підсумок хвилі 4 і стан корпусу — скільки описано, скільки лишилось, що далі — план | 🟢 ⬜ |
