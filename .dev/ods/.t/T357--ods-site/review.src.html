@@ -1,0 +1,494 @@
+<title>Сайт ods #357 рев’ю</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=Manrope:wght@600;700;800&display=swap">
+<style>
+/* Layout: one reading column; maps, flows, cards and phones stack on narrow screens. Same look as the #126, #134, #352 and #354 review pages. */
+:root {
+  --bg: #f6f4f1; --surface: #ffffff; --ink: #1c2024; --muted: #5a6068; --line: #e3ded6;
+  --accent: #c94f18; --accent-soft: #fbe8dd; --brown: #b85a18;
+  --ok: #1d7448; --ok-soft: #e2f2e8; --warn: #96580a; --warn-soft: #f9eedb;
+  --bad: #b3302a; --bad-soft: #f9e3e1; --info: #2d5aa6; --info-soft: #e6edf8;
+  --code: #f1eee9; --shot-bg: #ffffff; --scrim: rgba(20, 22, 25, 0.88); --scrim-ink: #e8e6e3;
+  --font-head: "Manrope", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141619; --surface: #1c1f23; --ink: #e8e6e3; --muted: #a3a8ae; --line: #30353b;
+    --accent: #ff7f45; --accent-soft: #3a2418; --brown: #e0874a;
+    --ok: #5cc98f; --ok-soft: #173225; --warn: #f0b25a; --warn-soft: #3a2c14;
+    --bad: #ff8277; --bad-soft: #3d1c1a; --info: #8fb3f0; --info-soft: #1b2638;
+    --code: #181b1f; --scrim: rgba(8, 9, 10, 0.92); color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141619; --surface: #1c1f23; --ink: #e8e6e3; --muted: #a3a8ae; --line: #30353b;
+  --accent: #ff7f45; --accent-soft: #3a2418; --brown: #e0874a;
+  --ok: #5cc98f; --ok-soft: #173225; --warn: #f0b25a; --warn-soft: #3a2c14;
+  --bad: #ff8277; --bad-soft: #3d1c1a; --info: #8fb3f0; --info-soft: #1b2638;
+  --code: #181b1f; --scrim: rgba(8, 9, 10, 0.92); color-scheme: dark;
+}
+body { background: var(--bg); color: var(--ink); font: 15px/1.6 var(--font-body); }
+.page { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 72px; }
+h1, h2, h3, h4 { font-family: var(--font-head); text-wrap: balance; line-height: 1.25; }
+h1 { font-size: clamp(1.7rem, 4vw, 2.4rem); margin: 0 0 6px; letter-spacing: -0.01em; }
+h2 { font-size: 1.5rem; margin: 56px 0 10px; display: flex; gap: 12px; align-items: baseline; }
+h3 { font-size: 1.12rem; margin: 28px 0 8px; }
+h4 { font-size: 0.98rem; margin: 0 0 6px; }
+p { margin: 0 0 10px; }
+a { color: var(--accent); }
+code { font-family: var(--font-mono); font-size: 0.86em; background: var(--code); padding: 0.05em 0.35em; border-radius: 4px; overflow-wrap: anywhere; }
+.num { font-family: var(--font-mono); font-size: 0.9rem; color: var(--surface); background: var(--brown); border-radius: 6px; padding: 2px 9px; }
+.sub { color: var(--muted); margin: 0 0 18px; }
+.lead { color: var(--muted); max-width: 78ch; }
+.kicker { text-transform: uppercase; letter-spacing: 0.07em; font-size: 0.72rem; color: var(--muted); margin: 0 0 4px; font-weight: 600; }
+.verdict { border: 1px solid var(--line); border-left: 5px solid var(--ok); background: var(--surface); border-radius: 10px; padding: 16px 20px; }
+.verdict ul { margin: 6px 0 0; padding-left: 20px; }
+.verdict li { margin: 4px 0; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; margin: 16px 0 0; }
+.tile { background: var(--ok-soft); border-radius: 10px; padding: 10px 14px; }
+.tile b { display: block; font: 800 1.9rem/1.1 var(--font-head); color: var(--ok); font-variant-numeric: tabular-nums; }
+.tile span { font-size: 0.88rem; }
+.wait { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 14px 0 0; }
+.wait > b { font-family: var(--font-head); font-size: 0.85rem; margin-right: 4px; }
+nav.toc { margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.92rem; }
+nav.toc a { text-decoration: none; border-bottom: 1px dashed currentColor; }
+.chip { display: inline-block; font-size: 0.75rem; font-weight: 600; border-radius: 999px; padding: 1px 9px; white-space: nowrap; }
+.chip.big { font-size: 0.85rem; padding: 3px 12px; white-space: normal; }
+.chip.ok { background: var(--ok-soft); color: var(--ok); }
+.chip.warn { background: var(--warn-soft); color: var(--warn); }
+.chip.bad { background: var(--bad-soft); color: var(--bad); }
+.chip.info { background: var(--info-soft); color: var(--info); }
+.chip.off { background: var(--code); color: var(--muted); }
+.pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; align-items: stretch; margin: 14px 0; }
+.pair > * { min-width: 0; }
+.box { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; }
+.box.now { border-color: var(--ok); }
+.box.miss { border-color: var(--warn); }
+.box h4 { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.box ul { margin: 6px 0 0; padding-left: 18px; }
+.box li { margin: 3px 0; }
+.scroll { overflow-x: auto; max-width: 100%; }
+table.grid { border-collapse: collapse; width: 100%; font-size: 0.9rem; background: var(--surface); }
+table.grid th, table.grid td { border: 1px solid var(--line); padding: 7px 10px; text-align: left; vertical-align: top; }
+table.grid th { background: var(--code); font-family: var(--font-head); font-size: 0.82rem; }
+table.grid td.c { white-space: nowrap; }
+table.grid tr.first td { background: var(--warn-soft); }
+/* site map: a column per section, a node per address; new nodes green, gone ones struck */
+.maps { display: grid; gap: 14px; margin: 14px 0; }
+.map { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; min-width: 0; }
+.map > header { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; margin-bottom: 10px; }
+.map > header h4 { margin: 0; }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.col { min-width: 0; }
+.col h5 { font: 700 0.82rem var(--font-head); margin: 0 0 6px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.node { border: 1px solid var(--line); background: var(--code); border-radius: 8px; padding: 5px 9px; margin: 0 0 6px; font-size: 0.84rem; line-height: 1.35; }
+.node code { background: none; padding: 0; font-size: 0.8rem; }
+.node small { display: block; color: var(--muted); font-size: 0.76rem; }
+.node.new { border-color: var(--ok); background: var(--ok-soft); }
+.node.gone { color: var(--muted); border-style: dashed; }
+.node.gone code { text-decoration: line-through; }
+.node.lock { border-color: var(--warn); background: var(--warn-soft); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 0.8rem; color: var(--muted); margin: 10px 0 0; }
+.legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; border: 1px solid var(--line); background: var(--code); }
+.legend .l-new::before { border-color: var(--ok); background: var(--ok-soft); }
+.legend .l-lock::before { border-color: var(--warn); background: var(--warn-soft); }
+.legend .l-gone::before { border-style: dashed; }
+/* flow: a row per path, its steps as a chain of arrows */
+.flow { display: grid; grid-template-columns: 9rem 1fr; gap: 12px 16px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; margin: 14px 0; }
+.flow > * { min-width: 0; }
+.flow .who { font-family: var(--font-head); font-weight: 700; font-size: 0.92rem; }
+.flow .who small { display: block; font-family: var(--font-body); font-weight: 400; color: var(--muted); font-size: 0.78rem; }
+.flow hr { grid-column: 1 / -1; border: 0; border-top: 1px dashed var(--line); margin: 2px 0; width: 100%; }
+ol.chain { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 0; align-items: stretch; }
+ol.chain li { display: flex; align-items: center; }
+ol.chain li:not(:last-child)::after { content: "→"; color: var(--muted); font-weight: 600; padding: 0 8px; }
+.step { border: 1px solid var(--ok); background: var(--ok-soft); border-radius: 8px; padding: 5px 10px; font-size: 0.88rem; line-height: 1.3; }
+.step b { display: block; font-weight: 600; }
+.step small { color: var(--muted); font-size: 0.76rem; }
+.step.gate { border-color: var(--warn); background: var(--warn-soft); }
+.was .step { border-color: var(--line); background: var(--code); }
+/* screenshots: one per card, stacked; a click opens the full picture */
+.shots { display: grid; gap: 22px; margin: 14px 0; }
+.shot { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px 18px; min-width: 0; }
+.shot header { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; margin-bottom: 6px; }
+.shot h4 { margin: 0; font-size: 1.02rem; }
+.shot dl { margin: 0 0 10px; display: grid; grid-template-columns: 6.5rem 1fr; gap: 3px 12px; font-size: 0.9rem; }
+.shot dt { color: var(--muted); font-weight: 600; font-size: 0.82rem; padding-top: 1px; }
+.shot dd { margin: 0; min-width: 0; }
+a.zoom { display: block; cursor: zoom-in; border-radius: 8px; }
+a.zoom:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+a.zoom img { display: block; width: 100%; max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--shot-bg); }
+a.zoom.tall img { max-height: 760px; object-fit: cover; object-position: top; }
+a.zoom.mid { max-width: 760px; }
+a.zoom.phone { max-width: 300px; }
+a.zoom.tiny { max-width: 240px; display: inline-block; vertical-align: middle; }
+.phones { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; align-items: start; }
+.phones figure { margin: 0; min-width: 0; }
+.phones figcaption { font-size: 0.82rem; color: var(--muted); margin: 0 0 6px; }
+.phones a.zoom.phone img { max-height: 620px; object-fit: cover; object-position: top; }
+.cut { color: var(--muted); font-size: 0.8rem; margin: 6px 0 0; }
+.zoombox { position: fixed; inset: 0; z-index: 50; background: var(--scrim); overflow: auto; cursor: zoom-out; padding: max(12px, env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) max(12px, env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px)); }
+.zoombox img { display: block; margin: 0 auto; max-width: 100%; height: auto; background: var(--shot-bg); border-radius: 6px; }
+.zoombox p { color: var(--scrim-ink); text-align: center; font-size: 0.82rem; margin: 0 0 8px; }
+.honest { border-left: 5px solid var(--warn); }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 14px 0; }
+.cards > * { min-width: 0; }
+.rough { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; }
+.rough header { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; flex-wrap: wrap; margin-bottom: 4px; }
+.rough h4 { margin: 0; }
+.rough p { font-size: 0.88rem; margin: 0 0 6px; }
+.rough .do { color: var(--muted); font-size: 0.84rem; margin: 0; }
+ol.next { padding-left: 22px; } ol.next li { margin: 6px 0; }
+@media (max-width: 700px) {
+  .flow { grid-template-columns: 1fr; }
+  .shot dl { grid-template-columns: 1fr; } .shot dt { margin-top: 4px; }
+}
+footer { margin-top: 56px; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 12px; }
+</style>
+
+<div class="page">
+<header>
+  <p class="kicker">python-labs · T357 · сайт ods цілком</p>
+  <h1>Сайт ods #357 рев’ю</h1>
+  <p class="sub">гілка <code>ods</code> · 10 комітів T357 · без push · 19.11.2026 · вибори — тікет T361, огляд і банк ідей — T360</p>
+
+  <div class="verdict">
+    <p><b>Готово локально: у сайту ods є все, що студент читає, — лекції, лаби й пари. Ти дивишся на будь-яку сторінку очима студента одним кліком, а тексти з диска йдуть на сайт однією командою.</b></p>
+    <ul>
+      <li><b>Лаби</b> — розділ «Про лаби» з восьми спільних сторінок і лаба з частинами. Сторінки знають виноски, паспорт справи, згортки, вкладки, лайтбокс і «копіювати».</li>
+      <li><b>Лекції</b> мають пошук по всіх текстах. Номер слайда стоїть на полі тексту й відкриває слайд, а під назвою лекції видно, для якої вона лаби.</li>
+      <li><b>Старі лаби</b> лежать в архіві, який бачить лише викладач. API теж не віддає їх студентові.</li>
+      <li><b>Око в меню</b> показує ту саму сторінку очима тестового студента, а «Повернутись» вертає туди ж.</li>
+      <li><b>Пари</b> 02.10, 16.10 і 30.10 зведено зі записів і залито чернетками в дев-базу.</li>
+      <li><b>Студенти поки нічого не бачать</b>, бо ods ще не на сервері.</li>
+    </ul>
+    <div class="tiles">
+      <div class="tile"><b>47</b><span>сторінок методички в дев-базі (було 20): 15 лекцій, 27 сторінок лаб, 5 старих лаб</span></div>
+      <div class="tile"><b>377 ✓</b><span>перевірок смоуків ods, ядра й python — усі проходять</span></div>
+      <div class="tile"><b>15</b><span>сценаріїв у браузері: адмін і студент, дві теми, 1440 і 390 px</span></div>
+      <div class="tile"><b>3</b><span>пари зведено, поки чернетками</span></div>
+    </div>
+    <div class="wait"><b>Чекає тебе</b><span class="chip big warn">T361: Q1–Q3 пари, Q5, Q8</span><span class="chip big warn">13 картинок-сиріт: видалити чи лишити</span><span class="chip big warn">посилання на відео пар</span><span class="chip big warn">погляд у деві</span></div>
+  </div>
+
+  <nav class="toc" aria-label="Зміст">
+    <a href="#flow">1 Було → стало</a><a href="#pages">2 Сторінки</a><a href="#lessons">3 Пари</a><a href="#found">4 Знайдене</a>
+    <a href="#checks">5 Перевірено</a><a href="#wait">6 Чекає тебе</a><a href="#next">7 Що далі</a>
+  </nav>
+</header>
+
+<section id="flow">
+  <h2><span class="num">1</span>Було → стало</h2>
+  <p class="lead">До T357 лекції й лаби були однаковими переліками сторінок методички, а на місці лаб стояли їхні старі тексти. Тепер у кожного розділу своя сторінка, а старі тексти перейшли в архів.</p>
+
+  <div class="maps">
+    <article class="map">
+      <header><h4>Було</h4><span class="chip off">HEAD до T357</span></header>
+      <div class="cols">
+        <div class="col"><h5>Лекції</h5>
+          <div class="node gone"><code>/lectures</code><small>перелік сторінок методички</small></div>
+          <div class="node"><code>/lectures/:n</code><small>текст або слайди, без пошуку й номерів</small></div>
+        </div>
+        <div class="col"><h5>Лаби</h5>
+          <div class="node gone"><code>/labs</code><small>той самий перелік</small></div>
+          <div class="node gone"><code>/labs/:n</code><small>старий текст лаби</small></div>
+          <div class="node gone"><code>/labs/:n(\d+)/:part</code><small>затуляв «Мою лабу» й «Результати»</small></div>
+        </div>
+        <div class="col"><h5>Пари</h5>
+          <div class="node"><code>/lessons</code><small>порожньо</small></div>
+        </div>
+        <div class="col"><h5>Викладачеві</h5>
+          <div class="node"><small>«дивитись як студент» — лише зі списку студентів</small></div>
+          <div class="node"><small>тексти — <code>content_io.py</code> лише в локальну базу</small></div>
+        </div>
+      </div>
+      <div class="legend"><span class="l-gone">закреслене — замінено в T357</span><span>лишилось, але змінилось</span></div>
+    </article>
+    <article class="map">
+      <header><h4>Стало</h4><span class="chip ok">HEAD <code>7f96160</code></span></header>
+      <div class="cols">
+        <div class="col"><h5>Лекції</h5>
+          <div class="node new"><code>/lectures</code><small>15 лекцій, пошук по текстах, «Лаба N»</small></div>
+          <div class="node new"><code>/lectures/:n</code><small>номери слайдів на полі, текст ↔ слайди, «Потрібна для»</small></div>
+        </div>
+        <div class="col"><h5>Лаби</h5>
+          <div class="node new"><code>/labs</code><small>«Про лаби» пігулками + перелік лаб</small></div>
+          <div class="node new"><code>/labs/about/:part</code><small>вісім спільних сторінок</small></div>
+          <div class="node new"><code>/labs/:n</code> · <code>/labs/:n/:part</code><small>«Огляд» і частини, «← · →»</small></div>
+          <div class="node"><code>/labs/:n/my</code> · <code>/results</code><small>здача й перевірка — T354</small></div>
+        </div>
+        <div class="col"><h5>Пари</h5>
+          <div class="node new"><code>/lessons</code><small>02.10 · 16.10 · 30.10 — чернетки</small></div>
+        </div>
+        <div class="col"><h5>Лише викладачеві</h5>
+          <div class="node lock"><code>/labs/old</code> · <code>/labs/old/:n</code><small>архів п’яти старих лаб</small></div>
+          <div class="node new"><small>око в меню → очима тестового студента</small></div>
+          <div class="node lock"><code>/api/content</code><small>імпорт: лише агент із токеном і адмін</small></div>
+        </div>
+      </div>
+      <div class="legend"><span class="l-new">нове або перероблене</span><span class="l-lock">лише викладачеві й агентові</span><span>як було</span></div>
+    </article>
+  </div>
+
+  <h3>Як текст потрапляє на сторінку</h3>
+  <p class="lead">Зміст лекцій і лаб живе лише на диску й у базі, у git його нема. Сесії правлять md-файли, а на сайт іде лише змінене.</p>
+  <div class="flow">
+    <div class="who">Через API<small>ціль обов’язкова; <code>prod</code> — відмова</small></div>
+    <ol class="chain">
+      <li><div class="step"><b>md на диску</b><small><code>sites/ods/data/</code>, поза git</small></div></li>
+      <li><div class="step"><b><code>content_disk.py</code></b><small>лекції, <code>labs/site/pages.json</code>, <code>labs/new</code>, <code>labs/old</code></small></div></li>
+      <li><div class="step"><b><code>bin/content -t &lt;ціль&gt; push</code></b><small>лише те, чий sha1 інший</small></div></li>
+      <li><div class="step gate"><b><code>/api/content</code></b><small>агент із токеном або адмін</small></div></li>
+      <li><div class="step"><b>база</b><small><code>guide</code>, <code>media</code>, <code>lab_pages</code></small></div></li>
+      <li><div class="step"><b>сторінка</b><small><code>/lectures/7</code>, <code>/labs/3/case1</code></small></div></li>
+    </ol>
+    <hr>
+    <div class="who">Локально<small>своя Mongo</small></div>
+    <ol class="chain">
+      <li><div class="step"><b>md на диску</b><small>той самий <code>content_disk.py</code></small></div></li>
+      <li><div class="step"><b><code>content_io.py</code></b><small>прямо в базу</small></div></li>
+      <li><div class="step"><b>база</b><small>дев-база <code>ods</code></small></div></li>
+    </ol>
+  </div>
+</section>
+
+<section id="pages">
+  <h2><span class="num">2</span>Сторінки</h2>
+  <p class="lead">Знімки зроблено на демо-базі з вигаданими лекціями й лабами про кав’ярню «Демо»: справжній зміст курсу сюди не потрапляв. Клік по знімку відкриває його повністю.</p>
+
+  <h3>Лаби</h3>
+  <div class="shots">
+    <article class="shot">
+      <header><h4>Перелік лаб</h4><code>/labs</code></header>
+      <dl><dt>Що видно</dt><dd>Пігулки «Про лаби» з підписом, далі лаби за номером. Біля лаби з картками стоять «Моя лаба · Результати», а внизу пунктиром — «Архів: старі лаби», його бачить лише викладач.</dd>
+          <dt>Навіщо</dt><dd>Спільне для всіх лаб стоїть над ними, тож його не треба шукати в кожній лабі.</dd></dl>
+      <a class="zoom mid" href="img/labs.png"><img src="img/labs.png" alt="Перелік лаб: пігулки «Про лаби», лаби 1 і 3, кнопки «Моя лаба · Результати», посилання на архів" loading="lazy"></a>
+    </article>
+    <article class="shot">
+      <header><h4>Огляд лаби</h4><code>/labs/3</code></header>
+      <dl><dt>Що видно</dt><dd>Пігулки частин («Огляд · Справа 1 · Справа 2 · Ноутбук»), виноска-порада, картинка, згортка «З лекції», файли лаби й «← · →».</dd>
+          <dt>Навіщо</dt><dd>Лаба читається главами: одна сторінка — одна справа, а пігулки показують, де ти зараз.</dd></dl>
+      <a class="zoom mid" href="img/lab3.png"><img src="img/lab3.png" alt="Огляд лаби 3: пігулки частин, порада, картинка, згортка з лекції, файли" loading="lazy"></a>
+    </article>
+    <article class="shot">
+      <header><h4>Сторінка справи — уся розмітка</h4><code>/labs/3/case1</code></header>
+      <dl><dt>Що видно</dt><dd>Згори паспорт справи: перший рядок 🎯 стає смужкою чипів. Далі код із кнопкою «копіювати», картинка, виноска-пастка, розгорнута згортка «Демо» і вкладені підказки зі значками. Праворуч зміст.</dd>
+          <dt>Навіщо</dt><dd>Відкриту чи закриту згортку сайт пам’ятає для кожного читача, тож підказки не розгортаються самі.</dd></dl>
+      <a class="zoom tall" href="img/case1.png"><img src="img/case1.png" alt="Сторінка справи: паспорт чипами, код із кнопкою копіювати, графік, пастка, згортки демо й підказок" loading="lazy"></a>
+      <p class="cut">Сторінка довга — повністю по кліку.</p>
+    </article>
+    <article class="shot">
+      <header><h4>Вкладки</h4><code>/labs/about/start</code></header>
+      <dl><dt>Що видно</dt><dd>Кілька <code>&lt;details name="tool"&gt;</code> поспіль стають вкладками «Google Colab · Jupyter · marimo». Під текстом стоїть виноска-пастка.</dd>
+          <dt>Навіщо</dt><dd>Обрану вкладку сайт пам’ятає й на інших сторінках з тією самою групою: хто працює в Jupyter, бачить Jupyter усюди.</dd></dl>
+      <a class="zoom mid" href="img/start-tabs.png"><img src="img/start-tabs.png" alt="Спільна сторінка «З чого почати» з вкладками Colab, Jupyter і marimo" loading="lazy"></a>
+    </article>
+    <article class="shot">
+      <header><h4>Лайтбокс</h4><span class="chip info">клік по картинці</span></header>
+      <dl><dt>Що видно</dt><dd>Картинка поверх сторінки, Esc закриває.</dd></dl>
+      <a class="zoom mid" href="img/lightbox.png"><img src="img/lightbox.png" alt="Картинка справи відкрита в лайтбоксі поверх сторінки" loading="lazy"></a>
+    </article>
+  </div>
+
+  <h3>Розмітка понад Markdown</h3>
+  <p class="lead">Автори пишуть звичайний md, а сайт додає вигляд і трохи поведінки. Домовлено із сесією T355, яка пише тексти лаб.</p>
+  <div class="scroll">
+  <table class="grid">
+    <tr><th>Що в md</th><th>Як показує сайт</th><th>На знімку</th></tr>
+    <tr><td><code>&gt; 💡 …</code> · <code>&gt; ⚠️ …</code> · <code>&gt; 🎯 …</code></td><td>три види виносок: порада, пастка, відповіді</td><td>огляд лаби, справа, вкладки</td></tr>
+    <tr><td>перший <code>&gt; 🎯</code> на сторінці справи</td><td>паспорт справи: смужка чипів, поділ за « · »</td><td>справа</td></tr>
+    <tr><td><code>&lt;details class="demo · lecture · ref · hint"&gt;</code></td><td>згортка зі значком за класом; стан пам’ятається читачеві</td><td>справа, огляд лаби</td></tr>
+    <tr><td>кілька поспіль <code>&lt;details name="x"&gt;</code></td><td>вкладки; обрана пам’ятається на всіх сторінках</td><td>вкладки</td></tr>
+    <tr><td><code>## 1.1. … {#s11}</code></td><td>якір кроку ноутбука; пізніше — ⬜ / ✅ / ❌ студента</td><td>справа (якорі є, позначок ще нема)</td></tr>
+    <tr><td><code>![…](img/…)</code> · блок коду</td><td>лайтбокс · кнопка «копіювати»</td><td>лайтбокс, справа</td></tr>
+  </table>
+  </div>
+
+  <h3>Лекції</h3>
+  <div class="shots">
+    <article class="shot">
+      <header><h4>Перелік і пошук</h4><code>/lectures</code></header>
+      <dl><dt>Що видно</dt><dd>Пошук «кав» знаходить три лекції. Збіги згруповано за лекцією, і кожен рядок — це заголовок розділу з уривком тексту. Нижче — перелік лекцій із пігулками «Лаба N».</dd>
+          <dt>Навіщо</dt><dd>Клік на збіг веде одразу на потрібний розділ, тож «де було про…» знаходиться одним полем.</dd></dl>
+      <a class="zoom mid" href="img/lectures.png"><img src="img/lectures.png" alt="Перелік лекцій із пошуком: збіги за лекціями й розділами, пігулки «Лаба N»" loading="lazy"></a>
+    </article>
+    <article class="shot">
+      <header><h4>Лекція текстом</h4><code>/lectures/7</code></header>
+      <dl><dt>Що видно</dt><dd>Номери слайдів у рамочках на правому полі, формули, таблиця, картинка й зміст. Під назвою стоїть «Потрібна для: Лаба 3».</dd>
+          <dt>Навіщо</dt><dd>Номер відкриває свій слайд. «Текст» вертає до того самого місця, а «Слайди» відкривають той слайд, до якого ти дочитав.</dd></dl>
+      <a class="zoom tall" href="img/lecture7.png"><img src="img/lecture7.png" alt="Лекція текстом: номери слайдів на полі, формули, графік, таблиця, зміст" loading="lazy"></a>
+      <p class="cut">Сторінка довга — повністю по кліку.</p>
+    </article>
+    <article class="shot">
+      <header><h4>Слайд</h4><code>/lectures/7?slide=4</code></header>
+      <dl><dt>Що видно</dt><dd>Той самий текст, нарізаний за позначками <code>&lt;!-- слайд N --&gt;</code>: «4 / 7», стрілки, на весь екран.</dd></dl>
+      <a class="zoom mid" href="img/slide.png"><img src="img/slide.png" alt="Лекція в режимі слайдів: слайд 4 із графіком" loading="lazy"></a>
+    </article>
+  </div>
+
+  <h3>Очима студента</h3>
+  <div class="shots">
+    <article class="shot">
+      <header><h4>Око в меню</h4><span class="chip info">лише адмінові</span></header>
+      <dl><dt>Що видно</dt><dd>Значок ока між перемикачем теми й аватаркою. <a class="zoom tiny" href="img/eye-menu.png"><img src="img/eye-menu.png" alt="Праворуч у меню: тема, око, аватарка, вихід" loading="lazy"></a></dd>
+          <dt>Що робить</dt><dd>Один клік, і та сама сторінка відкривається очима тестового студента. Такого студента сайт заводить сам при першому кліку: «Студент Тестовий», без групи.</dd></dl>
+      <a class="zoom mid" href="img/eye-student.png"><img src="img/eye-student.png" alt="Сторінка справи очима тестового студента: жовта смужка «Ти дивишся сайт як Тестовий Студент» і «Повернутись»" loading="lazy"></a>
+      <p class="cut">Жовта смужка нагадує, чиїми очима ти дивишся, а «Повернутись» вертає тебе адміном на ту саму сторінку. У меню студента лише те, що бачить студент, і нема «Результатів».</p>
+    </article>
+    <article class="shot">
+      <header><h4>Архів очима студента</h4><code>/labs/old/3</code></header>
+      <dl><dt>Що видно</dt><dd>«Лише для викладача». API так само не віддає студентові ні сторінки, ні її картинок і файлів.</dd></dl>
+      <a class="zoom mid" href="img/old-student.png"><img src="img/old-student.png" alt="Сторінка архіву очима студента: «Лише для викладача»" loading="lazy"></a>
+    </article>
+  </div>
+
+  <h3>Архів старих лаб</h3>
+  <div class="shots">
+    <article class="shot">
+      <header><h4>Архів</h4><code>/labs/old</code> · <code>/labs/old/3</code></header>
+      <dl><dt>Що видно</dt><dd>Перелік старих лаб і сама стара лаба зі смужкою «Архів: стара версія лаби. Студенти цієї сторінки не бачать».</dd>
+          <dt>Навіщо</dt><dd>Старі тексти не губляться, а студенти бачать лише нові.</dd></dl>
+      <a class="zoom mid" href="img/old-list.png"><img src="img/old-list.png" alt="Перелік архіву старих лаб" loading="lazy"></a>
+      <p></p>
+      <a class="zoom mid" href="img/old3.png"><img src="img/old3.png" alt="Стара лаба 3 в архіві зі смужкою «Студенти цієї сторінки не бачать»" loading="lazy"></a>
+    </article>
+  </div>
+
+  <h3>Телефон і темна тема</h3>
+  <div class="box">
+    <div class="phones">
+      <figure><figcaption>Справа, 390 px</figcaption><a class="zoom phone" href="img/phone-case1.png"><img src="img/phone-case1.png" alt="Сторінка справи на телефоні" loading="lazy"></a></figure>
+      <figure><figcaption>Лаби, 390 px</figcaption><a class="zoom phone" href="img/phone-labs.png"><img src="img/phone-labs.png" alt="Перелік лаб на телефоні" loading="lazy"></a></figure>
+      <figure><figcaption>Лекція, 390 px, темна</figcaption><a class="zoom phone" href="img/phone-lecture7-dark.png"><img src="img/phone-lecture7-dark.png" alt="Лекція на телефоні в темній темі" loading="lazy"></a></figure>
+    </div>
+    <p class="cut">На телефоні нічого не ширше екрана: код гортається всередині своєї рамки, а номери слайдів стоять праворуч між блоками.</p>
+  </div>
+  <div class="shots">
+    <article class="shot">
+      <header><h4>Справа в темній темі</h4><span class="chip off">1440 px</span></header>
+      <dl><dt>Що видно</dt><dd>Виноски, чипи й згортки мають свої кольори й у темній темі. Підказки лишились розгорнутими, бо сайт запам’ятав їх з минулого відкриття.</dd></dl>
+      <a class="zoom tall" href="img/case1-dark.png"><img src="img/case1-dark.png" alt="Сторінка справи в темній темі" loading="lazy"></a>
+    </article>
+  </div>
+</section>
+
+<section id="lessons">
+  <h2><span class="num">3</span>Пари</h2>
+  <p class="lead">Три дні ods зведено субагентами Opus зі записів Zoom і Wispr Flow. Кожен день має транскрипт, конспект, звіт і нотатки, а де був чат — і чат. Усі три — чернетки (<code>published: false</code>). Знімків тут нема, бо зміст справжній.</p>
+  <div class="scroll">
+  <table class="grid">
+    <tr><th>День</th><th>Частини</th><th>Що зведено</th><th>Чого бракує</th></tr>
+    <tr><td class="c">02.10</td><td>одна</td><td>13 розділів; 6 сирих джерел</td><td>посилання на відео</td></tr>
+    <tr><td class="c">16.10</td><td>одна</td><td>27 розділів; 3 сирі джерела</td><td>транскрипту Zoom з іменами не збереглось — 16 реплік підписано «Студент» (T361 Q4); посилання на відео</td></tr>
+    <tr><td class="c">30.10</td><td>дві: ПЗ і захист</td><td>5 сирих джерел</td><td>захист поки спільний для всіх, приватним стане лише за твоїм словом (Q2); посилання на відео</td></tr>
+  </table>
+  </div>
+  <p class="cut">Відео трьох пар лежать лише в чаті потоку, посилань у частинах дня нема (Q3). Повторний <code>bin/lesson push</code> для всіх трьох каже «без змін».</p>
+</section>
+
+<section id="found">
+  <h2><span class="num">4</span>Знайдене й полагоджене</h2>
+  <div class="cards">
+    <div class="rough"><header><h4>«Моя лаба» відкривала текст лаби</h4><span class="chip ok">полагоджено</span></header><p><code>/labs/3/my</code> і <code>/labs/3/results</code> відкривали сторінку тексту: vue-router ставить <code>:n(\d+)</code> вище простого <code>:n</code>. Ця пастка була в HEAD ще до T357.</p><p class="do">Маршрут лаби тепер без шаблону · <code>27fb533</code></p></div>
+    <div class="rough"><header><h4>Кнопки під пігулками</h4><span class="chip ok">полагоджено</span></header><p>«Моя лаба · Результати» падали окремим рядком під сім пігулок.</p><p class="do">Тепер стоять біля крихт</p></div>
+    <div class="rough"><header><h4>«Текст» після слайда</h4><span class="chip ok">полагоджено</span></header><p>Сторінка недокручувала ≈ 500 px, бо свіжі картинки ще не мали висоти.</p><p class="do">Тепер чекає <code>img.decode()</code></p></div>
+    <div class="rough"><header><h4>«Моя лаба» у два рядки</h4><span class="chip ok">полагоджено</span></header><p><code>/labs</code> на 390 px ламав кнопку.</p><p class="do"><code>text-nowrap</code> на групі кнопок</p></div>
+    <div class="rough"><header><h4>Якір не туди</h4><span class="chip ok">полагоджено, і на python</span></header><p>Посилання на <code>#розділ</code> приїжджало до 903 px нижче цілі, поки вантажились картинки.</p><p class="do"><code>GuideText.vue</code> чекає картинки — заголовок щоразу на 91 px · <code>7f96160</code></p></div>
+    <div class="rough"><header><h4>«Повернутись» не туди</h4><span class="chip ok">полагоджено</span></header><p>Після ока «Повернутись» вело на <code>/students</code>.</p><p class="do">Тепер веде на сторінку, з якої дивився · <code>7f96160</code></p></div>
+    <div class="rough"><header><h4>«у тексті» зі слайда</h4><span class="chip info">T359</span></header><p>Подія <code>@text</code> від <code>Slides</code> ще не прийшла. На телефоні номери слайдів стоять щільно між блоками.</p><p class="do">Чужі файли, не правив</p></div>
+    <div class="rough"><header><h4>Рядок конвертера</h4><span class="chip info">імпорт · T355</span></header><p>У тексті старої лаби 3 лишився рядок конвертера про теку <code>orig/docx</code>.</p><p class="do">Прибрати на диску</p></div>
+  </div>
+</section>
+
+<section id="checks">
+  <h2><span class="num">5</span>Перевірено і не перевірено</h2>
+  <div class="pair">
+    <div class="box now">
+      <h4>Перевірено <span class="chip ok">✓</span></h4>
+      <ul>
+        <li>Смоуки на копії HEAD зі своїми файлами. Сайт ods: content 31 · files 49 · labs 46 · nb 39 · ods 10 · table 17. Ядро з теки ods: guide 26 · view_as 39 · agent 21. Python: guide 26 · view_as 39 · agent 21 · свій 13.</li>
+        <li><code>vite build</code> ods і python — зелено.</li>
+        <li>15 сценаріїв у headless Chrome: адміном і тестовим студентом, світла й темна теми, 1440 і 390 px. Консоль і мережа чисті, бічного переповнення нема.</li>
+        <li><code>bin/content</code> наживо: на порожній базі — 47 сторінок, 137 файлів, перелік 27. Повторний <code>push</code> каже «тих самих 47», і результат збігся з <code>content_io.py</code> без жодної розбіжності.</li>
+        <li>Студент не бачить архіву ніде: ні в переліку, ні за адресою, ні картинки чи файла. <code>/api/content</code> віддає йому 403.</li>
+      </ul>
+    </div>
+    <div class="box miss">
+      <h4>Не перевірено <span class="chip warn">!</span></h4>
+      <ul>
+        <li>Збереження правок редактором на нових сторінках. Перевірено лише «відкрити → Скасувати».</li>
+        <li>Firefox, Safari і справжній дотик.</li>
+        <li><code>bin/content</code> проти сервера: ods ще не на сервері.</li>
+        <li>Пари очима студента: їх не опубліковано.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="box honest" style="margin-top:14px">
+    <h4>Чесно про розмір</h4>
+    <p>Задача була завелика для однієї сесії: дев’ять пунктів, бекенд, ядро, дві групи сторінок і три пари. У Fable лишалось 8 % ліміту, тому робили хвилями. Контракт, інтеграцію й перевірку тримала головна сесія, а код, пари й QA писали субагенти Opus, кожен у своїх файлах.</p>
+  </div>
+</section>
+
+<section id="wait">
+  <h2><span class="num">6</span>Чекає тебе</h2>
+  <h3>Вибори — T361</h3>
+  <p class="lead">Мовчання = «a». Жовтим позначено питання, з яких варто почати.</p>
+  <div class="scroll">
+  <table class="grid">
+    <tr><th>№</th><th>Про що</th><th>«a» — так зараз або так раджу</th></tr>
+    <tr class="first"><td class="c">Q1</td><td>три пари-чернетки</td><td>лишаються чернетками, доки не переглянеш; «Пари» в меню — лише тобі</td></tr>
+    <tr class="first"><td class="c">Q2</td><td>захист 30.10</td><td>спільна частина дня для всього потоку</td></tr>
+    <tr class="first"><td class="c">Q3</td><td>відео пар</td><td>даси посилання на три пости з чату (XS)</td></tr>
+    <tr><td class="c">Q4</td><td>імена на парі 16.10</td><td>лишити як є</td></tr>
+    <tr class="first"><td class="c">Q5</td><td>вісім спільних сторінок лаб</td><td>як є: розділ «Про лаби» з пігулками й «← · →»</td></tr>
+    <tr><td class="c">Q6</td><td>архів старих лаб</td><td>досить п’яти студентських версій</td></tr>
+    <tr><td class="c">Q7</td><td>лаби 1, 2, 4, 5 у старій розкладці</td><td>як є, доки T355 не переведе</td></tr>
+    <tr class="first"><td class="c">Q8</td><td>«для якої лаби» лекція</td><td>1 ← 3, 4, 14 · 2 ← 6, 9, 12 · 3 ← 7, 11 · 4 ← 8, 10 · 5 ← 5, 13</td></tr>
+    <tr><td class="c">Q9</td><td>тестовий студент</td><td>без групи, бачить демо-варіант лаб</td></tr>
+    <tr><td class="c">Q10</td><td>дев-база на сервер</td><td>хай їде з новими текстами, архівом і чернетками пар</td></tr>
+    <tr><td class="c">Q11</td><td>що робити далі</td><td>⬜ / ✅ / ❌ біля кроків, домашня «що зараз», сторінка «Курс»</td></tr>
+  </table>
+  </div>
+
+  <h3>Ще два рішення</h3>
+  <div class="cards">
+    <div class="rough"><header><h4>13 картинок-сиріт</h4><span class="chip warn">видалити чи лишити</span></header><p>У дев-базі <code>ods.media</code> лишились картинки <code>labN/…</code> від старих текстів лаб. Нові сторінки на них не посилаються, а старі тексти тепер мають свої картинки <code>old-labN/…</code>.</p><p class="do">Вони не під <code>GUIDE_STAFF</code>, тож за прямою адресою їх бачить і студент.</p></div>
+    <div class="rough"><header><h4>Відео пар</h4><span class="chip warn">посилання</span></header><p>Відео трьох пар лежать лише в чаті потоку. У частинах дня посилань нема.</p><p class="do">Дай посилання або встав їх у частини сам (Q3).</p></div>
+  </div>
+</section>
+
+<section id="next">
+  <h2><span class="num">7</span>Що далі</h2>
+  <h3>Тобі, по порядку</h3>
+  <ol class="next">
+    <li><b>Погляд у деві</b> <code>127.0.0.1:5035</code>: <code>/lectures</code> → пошук → <code>/lectures/7</code>; <code>/labs</code> → «Про лаби» → <code>/labs/3</code> → «Справа 1»; <code>/labs/old</code>; око в меню → «Повернутись»; <code>/lessons</code>. Дев-API йде з <code>--reload</code>, а якщо нових сторінок не видно, перезапусти його.</li>
+    <li><b>Відповісти на T361</b>, насамперед на Q1–Q3, Q5 і Q8.</li>
+    <li><b>Картинки-сироти</b>: видалити чи лишити.</li>
+    <li><b>Посилання на відео</b> трьох пар.</li>
+  </ol>
+
+  <h3>Мені, за словом — перші три з банку T360</h3>
+  <div class="cards">
+    <div class="box"><h4>⬜ / ✅ / ❌ біля кроків <span class="chip off">S</span></h4><p>Студент бачить свій поступ із «Моєї лаби» там, де читає справу. Якорі кроків у текстах уже є.</p></div>
+    <div class="box"><h4>Домашня «що зараз» <span class="chip off">S</span></h4><p>Найближча лаба, строк і мій стан на першій сторінці. Студентові строки зараз не віддаються, тож потрібен маршрут.</p></div>
+    <div class="box"><h4>Сторінка «Курс» <span class="chip off">S</span></h4><p>Розклад пар, чат, як зв’язатись, строки всіх лаб і з чого складається оцінка. Це єдине організаційне, що не про лаби.</p></div>
+  </div>
+</section>
+
+<footer>python-labs · T357 «Сайт ods цілком» · звіт у <code>.dev/ods/.t/T357--ods-site/</code> · огляд — <code>T360-C--ods-site-review.md</code> · вибори — <code>T361-Q--ods-site-choices.md</code> · знімки — демо-база з вигаданим змістом · зібрано <code>build_review.py</code></footer>
+</div>
+
+<div class="zoombox" id="zoombox" hidden tabindex="-1"><p>клік або Esc — закрити</p><img id="zoomimg" alt=""></div>
+<script>
+const zoombox = document.getElementById("zoombox"), zoomimg = document.getElementById("zoomimg");
+document.querySelectorAll("a.zoom").forEach(a => a.addEventListener("click", e => {
+  e.preventDefault();
+  const img = a.querySelector("img");
+  zoomimg.src = img.src; zoomimg.alt = img.alt;
+  zoombox.hidden = false; zoombox.scrollTop = 0; zoombox.focus();
+}));
+zoombox.addEventListener("click", () => { zoombox.hidden = true; });
+document.addEventListener("keydown", e => { if (e.key === "Escape") zoombox.hidden = true; });
+</script>

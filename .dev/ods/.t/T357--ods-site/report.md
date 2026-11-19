@@ -2,28 +2,98 @@
 
 `2026-11-19` · ⚙️ задача · контракт — [plan.md](plan.md)
 
-## Стан (оновлюється на кожній чистій точці)
+Сторінка-звіт: https://claude.ai/artifact/C78x5ALuaofTPQoqo1fwqz
 
-`2026-11-19`, перша хвиля в роботі — нічого з коду ще не закомічено.
+## Вердикт
 
-| Що | Хто | Де результат | Стан |
-|:--|:--|:--|:--|
-| Пари 02.10, 16.10, 30.10: транскрипт, конспект, звіт | Opus × 3 | `sites/ods/transcripts/<дата>/` (поза git) | зводяться; чернетки днів уже є на стенді (`bin/lesson -t t357 collect`) |
-| Сторінки лаб і розмітка | Opus «лаби» | `sites/ods/vue/src/{pages/Lab*Page, pages/OldLabsPage, components/LabNav}.vue`, `rich.js`, `rich.css`, `richMd.js`; нотатка `.dev/.drafts/T357/labs.md` | пишеться |
-| Сторінки лекцій і пошук | Opus «лекції» | `pages/{LecturesPage, LecturePage}.vue`, `lectures.js`, `components/LectureFind.vue`; нотатка `.dev/.drafts/T357/lectures.md` | пишеться |
-| Імпорт через API, `GUIDE_STAFF`, `POST /api/me/as` | Opus «імпорт» | `sites/ods/api/{routes/content.py, content_disk.py, tests/smoke_content.py}`, `bin/content`, ядро; готові до перенесення `main.py`, `db.py`, `site.env`, `routes/media.py`, `content_io.py` — у скретчі `…/scratchpad/backend/handover/`; нотатка `.dev/.drafts/T357/backend.md` | пишеться |
-| Око «Очима студента» в меню | Opus «око» | `core/ui/{api.js, user.js, components/NavUser.vue}`; нотатка `.dev/.drafts/T357/eye.md` | пишеться |
+- Сайт ods має три розділи для студента. **Лекції**: пошук по текстах, номери слайдів на полі, «Потрібна для: Лаба N». **Лаби**: «Про лаби» і лаба з частинами. **Пари**: три дні, поки чернетками.
+- Викладач дивиться на будь-яку сторінку очима тестового студента одним кліком. Старі лаби лежать в архіві, який бачить лише викладач. Тексти потрапляють на сайт однією командою `bin/content`.
+- Усе закомічено, без push; ods ще не на сервері, тож студенти нічого з цього не бачать.
+- Задача була завелика для однієї сесії: девʼять пунктів, бекенд, ядро, дві групи сторінок і три пари. Fable лишалось 8 % ліміту, тому робили хвилями: контракт і перевірку тримала головна сесія, а код, пари й QA писали субагенти Opus, кожен у своїх файлах.
 
-## Що далі (порядок для того, хто продовжує)
+## Що зроблено (plan.md §2)
 
-1. Дочекатись рядка від сесії T354 з хешем її коміту (вона комітить `LabPartPage`, `LabParts`, `LabFiles`, `labPages.js`, `routes/lab_pages.py`, `models/lab_page.py`, `content_io.py`); до того її файли, `main.py` і `db.py` не чіпати.
-2. Інтеграція (після п. 1): перенести `handover/` бекенда; у `router.js` — маршрути з нотаток `labs.md` і `lectures.md` (`LabsPage`, `LabPage`, `OldLabsPage` з `access: 'admin'`, `LecturesPage`, `LecturePage`); у `main.js` — `useMd(richMd)`; прибрати з маршрутів `DocPage`, `DocsPage`, `LabPartPage`, `LabParts` (стануть зайвими — видалити разом з імпортами).
-3. Стенд: `bash .dev/.drafts/T357/stand/tree.sh` (копія `HEAD` + файли з `mine.txt`) → `up.sh` → імпорт контенту в базу стенда (`ODS_DATA` — справжня тека даних, лише локально) → перевірка сторінок у headless Chrome (`cdp.mjs`): `/labs`, `/labs/3`, `/labs/3/case1`, `/labs/about/start`, `/labs/old`, `/lectures`, `/lectures/7`, `/lessons`, око в меню — адміном і тестовим студентом, світла й темна теми, телефон.
-4. Пари: `LESSONS_DIR=sites/ods/transcripts LESSONS_COURSE=ods ~/.venvs/python-labs/bin/python bin/lesson -t t357 push <дата>` на стенд → погляд → те саме в дев-базу `ods` (ціль для неї ще треба завести: `AGENT_TOKENS` у `.env` сайту — рішення Vitalik-а) → публікація лише за його словом.
-5. Смоуки ods і ядра, збірка фронту; коміти по одному на рішення; README вузла, CHANGELOG, STATUS, Q-тікет із виборами, C-тікет «чого бракує сайту», сторінка-звіт.
+| № | Що | Стан | Де це |
+|:-:|:--|:--|:--|
+| 1 | Пари ods у базі | зроблено, чернетки | 02.10, 16.10, 30.10 у дев-базі `ods`; джерела — `sites/ods/transcripts/<дата>/` (поза git) |
+| 2 | «Очима студента» одним кліком | зроблено | ядро: `POST /api/me/as` без ніка, око в `NavUser.vue`, `lookAsTest` / `lookBack` у `user.js` |
+| 3 | Сторінки лаб | зроблено | `pages/{LabsPage, LabPage}.vue`, `components/LabNav.vue`, `labPages.js` |
+| 4 | Розмітка понад Markdown | зроблено | `richMd.js`, `rich.js`, `richTabs.js`, `rich.css`; ⬜ / ✅ / ❌ біля кроків — ні, є лише якорі |
+| 5 | Архів старих лаб | зроблено | `GUIDE_STAFF=old-` (ядро: `config.py`, `routes/guide.py`; ods: `routes/media.py`), `pages/OldLabsPage.vue` |
+| 6 | Лекції | зроблено | `pages/{LecturesPage, LecturePage}.vue`, `lectures.js`, `lectureSearch.js`, `components/LectureFind.vue` |
+| 7 | Імпорт через API | зроблено | `routes/content.py`, `content_disk.py`, `content_io.py`, `bin/content`, `tests/smoke_content.py` |
+| 8 | Домашня й звʼязки | частково | кнопки «Моя лаба · Результати» біля крихт і «→ Моя лаба» в кінці лаби є; домашньої «що зараз» нема |
+| 9 | Чого бракує сайту | зроблено | огляд — [T360](../T360-C--ods-site-review.md), вибори — [T361](../T361-Q--ods-site-choices.md) |
 
-## Домовленості із сусідами
+Код сайту — `sites/ods/vue/src/` і `sites/ods/api/`; старі `DocPage`, `DocsPage`, `LabPartPage`, `LabParts` видалено. Дев-база `ods` після імпорту має 47 сторінок методички (було 20), 150 файлів у `media` (було 123), 27 рядків переліку сторінок лаб і 3 пари.
 
-- T354 («Формочка для завантаження лабораторних ОДС»): її — «Моя лаба», «Результати», перевірка, ноутбук, `labs_*.py`, `routes/labs.py`, `lab_io.py`, `labCols.js`, `bin/nbrun`; спільні `router.js`, `api.js`, `site.js`, `main.py`, `db.py` — точково.
-- T355 («Третя лабораторна: перевірка і сайт»): тексти й `pages.json` у `sites/ods/data/labs/site/`; розмітка — plan.md §4; порядок сторінок лаби — за `order`.
-- Ліміт Fable (слово Vitalik-а 2026-11-19, лишилось 8 %): усе, що можна, — субагентам Opus; обом сесіям передано.
+## Як дивитись у деві
+
+Дев ods — `127.0.0.1:5035`. Дев-API йде з `--reload`, тож перезапуск не потрібен; якщо нових сторінок не видно, перезапусти його.
+
+1. Лекції: `/lectures` → слово в пошуку → збіг веде на розділ; `/lectures/7` → номер слайда на правому полі відкриває слайд, «Текст» вертає до того ж місця.
+2. Лаби: `/labs` → пігулки «Про лаби» → `/labs/3` → «Справа 1» (`/labs/3/case1`): паспорт справи, виноски, згортки, «копіювати» на коді.
+3. Архів: `/labs/old` — пʼять старих лаб, лише адмінові.
+4. Око в меню, ліворуч від аватарки → та сама сторінка очима тестового студента → «Повернутись» вертає туди ж.
+5. Пари: `/lessons` — три чернетки (02.10, 16.10, 30.10).
+
+## Як перевірено
+
+- Смоуки на копії `HEAD` зі своїми файлами. Сайт ods: content 31 · files 49 · labs 46 · nb 39 · ods 10 · table 17. Ядро з теки ods: guide 26 · view_as 39 · agent 21. Сайт python: guide 26 · view_as 39 · agent ядра 21 · свій agent 13. Усе проходить.
+- `vite build` ods і python — зелено (лише давнє попередження про чанк > 500 kB).
+- 15 сценаріїв у headless Chrome (`stand/qa1…qa8.mjs`): адміном і тестовим студентом, світла й темна теми, 1440 і 390 px; консоль і мережа чисті, бічного переповнення нема.
+- `bin/content` наживо: порожня скретч-база через тимчасовий API → 47 сторінок, 137 файлів, перелік 27; повторний `push` — «тих самих 47»; результат збігся з `content_io.py` без жодної розбіжності.
+- Студент не бачить архіву ніде: ні в переліку `/api/guide`, ні за адресою, ні картинки чи файла; `/api/content` для нього — 403.
+
+## Чого не перевірено
+
+- Збереження правок редактором на нових сторінках (перевірено лише «відкрити → Скасувати»).
+- Firefox, Safari, справжній дотик.
+- `bin/content` проти сервера: ods ще не на сервері.
+- Пари очима студента: їх не опубліковано.
+
+## Знайдене й полагоджене
+
+1. `/labs/3/my` і `/labs/3/results` відкривали сторінку тексту лаби: vue-router ставить `:n(\\d+)` вище простого `:n`. Маршрут лаби тепер без шаблону; та сама пастка була й у `HEAD` до T357.
+2. «Моя лаба · Результати» падали окремим рядком під сім пігулок — тепер стоять біля крихт.
+3. «Текст» після слайда недокручував ≈ 500 px: картинки ще не мали висоти. Тепер сторінка чекає `img.decode()`.
+4. `/labs` на 390 px: «Моя лаба» ламалась у два рядки → `text-nowrap`.
+5. Посилання на якір (`#…`) приїжджало не туди, поки вантажились картинки (до 903 px нижче цілі) → `GuideText.vue` чекає картинки; виправлено в ядрі, тож і на python.
+6. «Повернутись» після ока вело на `/students` — тепер на ту сторінку, з якої дивився.
+
+## Лишилось
+
+- Чужі файли, не правив. T359: «у тексті» зі слайда (подія `@text` від `Slides`) ще нема; номери слайдів на телефоні стоять щільно між блоками. T354: 404 `variants/3/my` у консолі й тестовий студент без групи — полагоджено сусідньою сесією в `cc58fc1`.
+- Домашня «що зараз» (найближча лаба, строк, мій стан) не зроблена: студентові строки не віддаються, потрібен маршрут.
+- ⬜ / ✅ / ❌ біля кроків на сторінках справ — якорі `{#s14}` у текстах є, позначок ще нема.
+- Стара лаба 3: у тексті лишився рядок конвертера про теку `orig/docx` — справа імпорту або T355.
+
+## Чекає тебе
+
+- [T361](../T361-Q--ods-site-choices.md), мовчання = «a». Насамперед: Q1–Q3 — пари (чернетки чи публікація, захист 30.10 спільний чи приватний, посилання на відео); Q5 — вісім спільних сторінок лаб розділом чи однією; Q8 — які лекції до якої лаби.
+- 13 картинок-сиріт `labN/…` у дев-базі `ods.media` від старих текстів лаб: нові сторінки на них не посилаються, вони не під `GUIDE_STAFF` і відкриваються за прямою адресою. Видалити чи лишити?
+- Посилання на відео трьох пар: зараз вони лише в чаті потоку, у частинах дня їх нема.
+- Погляд у деві за кроками вище.
+
+## Коміти
+
+| Хеш | Тема |
+|:--|:--|
+| `8d2c816` | docs(ods): contract for the whole ods site — pages, lectures, lessons, import, t357 |
+| `b8c74d9` | docs(ods): state and next steps of the ods site work, t357 |
+| `6706a80` | feat: guide pages for teachers only — GUIDE_STAFF prefixes |
+| `f78befb` | feat: look as the test student in one click — an eye in the menu |
+| `185094b` | feat(ods): import of texts and files through the API — bin/content |
+| `8049344` | feat(ods): lab pages — hub, parts, about pages, archive, rich markup |
+| `babc181` | feat(ods): lecture pages — search, slide numbers on the margin |
+| `27fb533` | feat(ods): routes to the new lab and lecture pages, old ones removed |
+| `e7f00ee` | docs(ods): the site after the first wave — review, bank of ideas, choices, t360-361 |
+| `7f96160` | fix: a link to an anchor waits for the pictures; back from the eye — to the same page |
+
+## Де що лежить
+
+- Стенд: API 8033 · Vite 5033 · Chrome 9335 · база `ods_t357_stand`; код — копія `HEAD` у скретчпаді з файлами з `mine.txt`. Скрипти — `.dev/.drafts/T357/stand/`: `tree.sh`, `up.sh` / `down.sh`, `sync.sh`, `smokes.sh`, `cdp.mjs`, `qa1…qa8.mjs`.
+- Нотатки авторів і хвиль: `.dev/.drafts/T357/{labs, lectures, backend, eye, integration, wave2}.md`.
+- Знімки QA — `.dev/.drafts/T357/shots/`, поза git, бо там справжній зміст. Знімки сторінки-звіту — `img/` поруч, на вигаданій демо-базі.
+- Пари — `sites/ods/transcripts/2026-10-{02,16,30}/`, поза git. Ціль `T357DEV` у `.site/.env` — для повторного `bin/lesson push` у дев-базу.
+- Сторінка-звіт: `review.src.html` + `build_review.py` → `review.html`, знімки — `img/`; демо-диск для знімків генерує скрипт у скретчпаді, база `ods_t357_demo` після знімків видалена.

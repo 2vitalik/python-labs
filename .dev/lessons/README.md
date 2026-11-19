@@ -29,6 +29,7 @@
 - `/lesson merge`, `/lesson summary` — skill ([SKILL.md](../../.claude/skills/lesson/SKILL.md)): карта покриття джерел, відрізання перерв і всього поза заняттям, назви частин у `meta.yml`, приватні частини в `parts/<key>.transcript.md`, конспект із «Важливо», `report.md`.
 - `bin/lesson push / publish`; `bin/lesson video <дата> [--dry]` — шматки запису на Google Drive (`rclone`) і в гілку Telegram (бот-завантажувач, `bin/tgvideo.py`), посилання — у частини; приватна частина — в окрему теку й ніколи в Telegram; налаштування — `~/.config/python-labs/video.env` ([T335](.t/T335-C--lesson-video-publish.md)).
 - Стан на 2026-11-17: чотири пари «Python Labs» (08.10, 13.10, 27.10, 10.11) зібрано в дев чернетками; 08.10 і 10.11 зведено субагентами Opus — [T332](.t/T332--lessons-day/report.md).
+- Стан на 2026-11-19: три пари ods (02.10, 16.10, 30.10 — ПЗ і захист) зведено субагентами Opus зі записів Zoom і Wispr Flow і залито чернетками в дев-базу `ods` (`LESSONS_DIR=sites/ods/transcripts`) — [T357](../ods/.t/T357--ods-site/report.md).
 
 ## Як є: відвідування · [T222](.t/T222--zoom-attendance-v1/report.md), [T336](.t/T336-C--zoom-no-admin.md)
 
