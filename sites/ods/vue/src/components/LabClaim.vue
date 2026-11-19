@@ -6,8 +6,9 @@ import LabDrop from './LabDrop.vue'
 
 // no card yet (T354 §5): the student names their number — the same in every lab — or hands in the notebook and the
 // site reads the variant out of it. Nothing to pick: the demo for the teacher and test students, else what is missing
-// (a group in the profile, the group's cards). `why` — the API's words, shown only if /free cannot be read
-const props = defineProps({ n: Number, why: String })
+// (a group in the profile, the group's cards). `why` — the API's words, shown only if /free cannot be read;
+// `drop` — the lab takes files on the site (labGates.js)
+const props = defineProps({ n: Number, why: String, drop: { type: Boolean, default: true } })
 const emit = defineEmits(['got'])
 const free = ref(null)  // {group, own, free: [n…], same, demo: vid | null}
 const pick = ref('')
@@ -61,7 +62,7 @@ async function claim(num) {
       <p v-else>Вільних номерів у потоці {{ free.group }} нема — напиши викладачеві.</p>
     </template>
     <p v-if="error" class="text-danger">{{ error }}</p>
-    <template v-if="!stuck">
+    <template v-if="!stuck && drop">
       <p class="mt-3 mb-2">…або просто завантаж свій ноутбук — сайт прочитає варіант із нього:</p>
       <LabDrop :n @got="emit('got', $event)" />
     </template>

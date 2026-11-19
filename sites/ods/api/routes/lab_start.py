@@ -5,9 +5,9 @@ from urllib.parse import quote
 from fastapi import APIRouter, Depends, HTTPException, Query, Response
 
 import labs_start
-from core.deps import active_user
 from core.models.user import User
 from lab_claim import mine
+from lab_gates import opened
 from lab_my import card_of
 from models.lab_shape import LabShape
 
@@ -16,7 +16,7 @@ FILES = {"jupyter": ("ipynb", "application/x-ipynb+json"), "marimo": ("py", "tex
 
 
 @router.get("/{lab}/my/start")
-async def start(lab: int, kind: str = Query("jupyter", alias="as"), user: User = Depends(active_user)):
+async def start(lab: int, kind: str = Query("jupyter", alias="as"), user: User = Depends(opened)):
     if kind not in FILES:
         raise HTTPException(422, "Формат — jupyter або marimo")
     v = await mine(lab, user)

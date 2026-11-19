@@ -16,7 +16,7 @@ export default {
     ['/activity', 'Актив', null, false, 'chart'], ['/polls', 'Polls', null, false, 'bars'], ['/week', 'Week', null, false, 'calendar'],
     ['/my/profile', 'Профіль', null, false, 'user']],
   guide: [...LECTURES, ...LABS],
-  colls: { variants: 'варіант лаби' },
+  colls: { variants: 'варіант лаби', lab_gates: 'доступ до лаби' },
   students: { page: 'Лаби', cols: STUDENT_COLS, facets: FACETS },
   table: { cols: TABLE_COLS },
 }

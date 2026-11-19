@@ -8,6 +8,7 @@ from core.deps import active_user
 from core.models.history import record
 from core.models.user import User
 from lab_claim import DEMO, claim, group_of, may_demo, mine
+from lab_gates import BY_TELEGRAM, gates, here, opened, teacher
 from lab_line import attempt
 from lab_my import my
 from models.lab import LabVariant
@@ -31,13 +32,14 @@ class ClaimIn(BaseModel):
 
 @router.get("")
 async def list_labs(user: User = Depends(active_user)):
-    """Which labs have cards, and whether this student already holds one."""
+    """Which labs have cards, and whether this student already holds one; a hidden lab is the teacher's."""
     held_ = {v.lab for v in await LabVariant.find(LabVariant.student == user.email).to_list()}
-    return [{"n": n, "mine": n in held_} for n in sorted(await LabVariant.distinct("lab"))]
+    states = await gates()
+    return [{"n": n, "mine": n in held_} for n in sorted(await LabVariant.distinct("lab")) if teacher(user) or states.get(n) != "hidden"]
 
 
 @router.get("/{lab}/my")
-async def get_my(lab: int, soft: bool = False, user: User = Depends(active_user)):
+async def get_my(lab: int, soft: bool = False, user: User = Depends(opened)):
     """MY; no card yet — 404 with the words why, or with `soft` 200 {vid: None, why}: «Моя лаба» asks so, an ordinary
     first visit is not an error in the browser's console."""
     try:
@@ -50,7 +52,7 @@ async def get_my(lab: int, soft: bool = False, user: User = Depends(active_user)
 
 
 @router.get("/{lab}/free")
-async def free(lab: int, user: User = Depends(active_user)):
+async def free(lab: int, user: User = Depends(opened)):
     """The numbers of the student's stream nobody holds; `own` — the group in their profile; `same` — the number they hold
     in another lab; `demo` — the demo card's vid when they may take it (n = 0), else None."""
     group = await group_of(lab, user)
@@ -61,13 +63,14 @@ async def free(lab: int, user: User = Depends(active_user)):
 
 
 @router.post("/{lab}/my/claim")
-async def claim_my(lab: int, data: ClaimIn, user: User = Depends(active_user)):
+async def claim_my(lab: int, data: ClaimIn, user: User = Depends(opened)):
     return await my(await claim(lab, user, data.n), user)
 
 
 @router.put("/{lab}/my")
-async def put_my(lab: int, data: MyIn, tasks: BackgroundTasks, user: User = Depends(active_user)):
-    """Check the answer line and keep it; an empty or absent line keeps the old one."""
+async def put_my(lab: int, data: MyIn, tasks: BackgroundTasks, user: User = Depends(opened)):
+    """Check the answer line and keep it; an empty or absent line keeps the old one. A lab handed in by Telegram takes
+    no line here — the link, the form of defence and the video it does."""
     v = await mine(lab, user)
     fields, note = {}, ""
     if data.notebook is not None:
@@ -79,6 +82,8 @@ async def put_my(lab: int, data: MyIn, tasks: BackgroundTasks, user: User = Depe
             raise HTTPException(422, "Форма захисту — none, record або live")
         fields["way"] = data.way
     if line := " ".join((data.line or "").split()):
+        if not await here(lab, user):
+            raise HTTPException(409, BY_TELEGRAM.format(lab=lab))
         more, note = attempt(v, line)
         fields |= more
     await record(v, fields, actor=user.email, note=note)

@@ -14,6 +14,7 @@ DB = os.environ["DB_NAME"]
 assert DB.endswith("_smoke"), "refuse to run on a non-smoke DB"
 mongo = MongoClient()
 mongo.drop_database(DB)
+os.environ["LAB_GATES"] = ""  # every lab takes lines and files here, whatever site.env opens to students (T368; smoke_gates.py)
 
 results = []
 TRAP = "Δy без множення на y"

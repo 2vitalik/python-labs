@@ -8,6 +8,7 @@ import GuideBody from '@core/components/GuideBody.vue'
 import Lightbox from '@core/components/Lightbox.vue'
 import Toc from '@core/components/Toc.vue'
 import { textOf } from '@core/drafts.js'
+import { loadGuide } from '@core/guide.js'
 import { tocOf } from '@core/md.js'
 import { problem } from '@core/problem.js'
 import { site } from '@core/site.js'
@@ -67,6 +68,7 @@ async function toText(n) {
   timer = setTimeout(() => blocks.forEach((el) => el.classList.remove('flash')), 2500)
 }
 
+loadGuide()  // «Потрібна для»: only the labs this reader has pages of
 async function load() {
   page.value = null
   if (!doc.value) return (problem.value = 'lost')

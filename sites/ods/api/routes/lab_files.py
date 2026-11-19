@@ -10,9 +10,10 @@ import labs_nb
 import labs_pull
 import labs_show
 from bot import lab_alerts
-from core.deps import active_user, viewer
+from core.deps import viewer
 from core.models.user import Status, User
 from lab_claim import mine
+from lab_gates import taking
 from lab_my import my
 from lab_store import hand_in, shape_of
 from models.lab_file import MAX_BYTES, LabFile, file_api
@@ -22,14 +23,14 @@ TYPES = {"ipynb": "application/x-ipynb+json", "marimo": "text/x-python"}
 
 
 @router.post("/{lab}/my/file")
-async def upload(lab: int, file: UploadFile, tasks: BackgroundTasks, user: User = Depends(active_user)):
+async def upload(lab: int, file: UploadFile, tasks: BackgroundTasks, user: User = Depends(taking)):
     v = await hand_in(lab, user, Path(file.filename or "notebook.ipynb").name, await file.read(MAX_BYTES + 1))
     tasks.add_task(lab_alerts.uploaded, user, v)
     return await my(v, user)
 
 
 @router.post("/{lab}/my/pull")
-async def pull(lab: int, tasks: BackgroundTasks, user: User = Depends(active_user)):
+async def pull(lab: int, tasks: BackgroundTasks, user: User = Depends(taking)):
     """The notebook behind the link saved on «Моя лаба»."""
     v = await mine(lab, user)
     if not v.notebook:

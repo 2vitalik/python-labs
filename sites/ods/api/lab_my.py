@@ -9,6 +9,7 @@ from core.labs import due_for, effective, utc
 from core.models.deadline import Deadline, LabMark
 from core.models.history import when
 from core.models.user import User
+from lab_gates import gate, teacher
 from models.lab import LabVariant
 from models.lab_file import FileHead, LabFile, file_api
 from models.lab_shape import LabShape
@@ -48,5 +49,5 @@ async def my(v: LabVariant, user: User) -> dict:
     handed = max((utc(at) for at in (v.checked_at, files[0].at if files else None) if at), default=None)
     late = None if not due else (handed or datetime.now(timezone.utc)) > due
     return v.api() | {"card": await card_of(v, bool(f and f.live)), "files": [file_api(x) for x in files], "due": when(due),
-                      "late": late,
+                      "late": late, "handin": "site" if teacher(user) else await gate(v.lab),  # site · telegram (lab_gates.py)
                       "formats": {"jupyter": bool(f and f.jupyter), "marimo": bool(f and f.marimo), "live": bool(f and f.live)}}

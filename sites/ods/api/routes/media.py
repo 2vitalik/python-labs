@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, Response
 
 from core.models.user import Status, User
-from core.routes.guide import reader, staff_page
+from core.routes.guide import closed, reader
 from models.media import Media
 
 router = APIRouter(prefix="/api/media")
@@ -15,8 +15,9 @@ def page_of(path: str) -> str:
 
 @router.get("/{path:path}")
 async def get_media(path: str, user: User | None = Depends(reader)):
-    """Pictures open to whoever reads the texts they stand in; a staff page's (`guide_staff`, T357) — to the admin only."""
-    if staff_page(page_of(path)) and not (user and user.status == Status.admin):
+    """Pictures open to whoever reads the texts they stand in; those of a page closed to students (`guide_staff`, T357;
+    a hidden lab, T368) — to the admin only."""
+    if not (user and user.status == Status.admin) and (await closed())(page_of(path)):
         raise HTTPException(404)
     m = await Media.find_one(Media.path == path)
     if not m:

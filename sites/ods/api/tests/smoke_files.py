@@ -22,7 +22,8 @@ DB = os.environ["DB_NAME"]
 assert DB.endswith("_smoke"), "refuse to run on a non-smoke DB"
 mongo = MongoClient()
 mongo.drop_database(DB)
-os.environ |= {"AGENT_TOKENS": "claude:tok-123", "SESSION_SECRET": os.environ.get("SESSION_SECRET", "x")}
+os.environ |= {"AGENT_TOKENS": "claude:tok-123", "SESSION_SECRET": os.environ.get("SESSION_SECRET", "x"),
+               "LAB_GATES": ""}  # every lab takes files here, whatever site.env opens to students (T368; smoke_gates.py)
 results = []
 TRAP = "забув множник"
 

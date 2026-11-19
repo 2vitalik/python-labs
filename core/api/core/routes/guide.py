@@ -45,15 +45,25 @@ async def reader(request: Request, user: User | None = Depends(current_user)) ->
     return await editor_user(request, user)
 
 
+STAFF = []  # a site's own rules on pages for the teacher only: async () → (slug → bool), asked once a request; ods — hidden labs
+
+
 def staff_page(slug: str) -> bool:
     """A page for admins and agents only (`guide_staff`): the old labs on ods."""
     return slug.startswith(settings.staff_pages)
 
 
+async def closed():
+    """slug → bool: a page not for students — by the site's prefixes or by its own rules."""
+    rules = [await make() for make in STAFF]
+    return lambda slug: staff_page(slug) or any(rule(slug) for rule in rules)
+
+
 @router.get("")
 async def list_pages(user: User | None = Depends(reader)):
     staff = user and user.status == Status.admin
-    pages = [g for g in await Guide.find(Guide.slug != DRAFT).to_list() if staff or not staff_page(g.slug)]
+    shut = await closed()
+    pages = [g for g in await Guide.find(Guide.slug != DRAFT).to_list() if staff or not shut(g.slug)]
     return [{"slug": g.slug, "title": g.title, "updated": stamp(g.updated_at)} for g in pages]
 
 
@@ -75,7 +85,7 @@ async def history(slug: str = "", user: User = Depends(editor_user)):
 async def get_page(slug: str, user: User | None = Depends(reader)):
     if user and user.status == Status.admin:
         return (await page(slug)).api()
-    if slug == DRAFT or staff_page(slug):
+    if slug == DRAFT or (await closed())(slug):
         raise HTTPException(404)
     data = (await page(slug)).api()
     return data | {"body": data["public"]}

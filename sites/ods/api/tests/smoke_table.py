@@ -10,9 +10,10 @@ DB = os.environ["DB_NAME"]
 assert DB.endswith("_smoke"), "refuse to run on a non-smoke DB"
 mongo = MongoClient()
 mongo.drop_database(DB)
+os.environ["LAB_GATES"] = ""  # every lab takes lines here, whatever site.env opens to students (T368; smoke_gates.py)
 
 results = []
-ANSWERS = {"x": {"value": 1, "step": 0, "traps": []}, "y": {"value": 2, "step": 0, "traps": []}}
+ANSWERS ={"x": {"value": 1, "step": 0, "traps": []}, "y": {"value": 2, "step": 0, "traps": []}}
 
 
 def check(name, cond, extra=""):
