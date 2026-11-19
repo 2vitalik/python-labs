@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T370** · тікетів: 369 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T372** · тікетів: 371 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -83,7 +83,7 @@
 | tasks | [T73](tasks/.t/T73-C--task-families.md) | 🔆 | task-families | Сімейства завдань: концепт і ціни | 🟢 ⬜ |
 | platform | [T74](platform/.t/T74-Q--catalog-visuals.md) | ❓ | catalog-visuals | Візуал каталогу: іконки, кольори, монетки | 🟢 🟩 |
 | platform | [T75](platform/.t/T75-C--masonry-layouts.md) | 🔆 | masonry-layouts | Розкладки стрічки: masonry і альтернативи | 🟢 🟩 |
-| tasks | [T76](tasks/.t/T76-B--zones-rethink.md) | 🧠 | zones-rethink | Зони: сутності vs логіка, варіанти розбиття | 🟢 ⬜ |
+| tasks | [T76](tasks/.t/T76-B--zones-rethink.md) | 🧠 | zones-rethink | Зони: сутності vs логіка, варіанти розбиття | 🟢 🟩 |
 | platform | [T77](platform/.t/T77-P--yaml-tree-format.md) | 💡 | yaml-tree-format | Людяний YAML: дерево зон з рядками-завданнями | 🟢 🟩 |
 | platform | [T78](platform/.t/T78-Q--catalog-ui2.md) | ❓ | catalog-ui2 | Питання UI-ітерації 2: зони, кольори, YAML, плюсик | 🟢 🟩 |
 | platform | [T79](platform/.t/T79-C--family-v2.md) | 🔆 | family-v2 | Сімʼї v2: батько-діти, міграція, YAML v2 | 🟢 🟩 |
@@ -374,6 +374,8 @@
 | games | [T364](games/.t/T364--ludopedia-wave4/plan.md) | ⚙️ | ludopedia-wave4 | Лудопедія: хвиля 4 — дописати залишок черг хвилі 3 — план | 🟢 ⬜ |
 | games | [T365](games/.t/T365--ludopedia-state/plan.md) | ⚙️ | ludopedia-state | Ігротека: підсумок хвилі 4 і стан корпусу — скільки описано, скільки лишилось, що далі — план | 🟢 ⬜ |
 | games | [T366](games/.t/T366-Q--ludopedia-next.md) | ❓ | ludopedia-next | Ігротека після хвилі 4: дописувати чи зупинитись, що робити з корпусом далі | 🔴 ⬜ |
-| ods | [T367](ods/.t/T367--ods-state/plan.md) | ⚙️ | ods-state | Стан сайту ods після ночі чотирьох сесій — зведення, що лишилось до деплою, тиждень сховано від студентів — план | 🟢 ⬜ |
+| ods | [T367](ods/.t/T367--ods-state/plan.md) | ⚙️ | ods-state | Стан сайту ods після ночі чотирьох сесій — зведення, що лишилось до деплою, тиждень сховано від студентів — план | 🟢 🟩 |
 | ods | [T368](ods/.t/T368--lab-intake/plan.md) | ⚙️ | lab-intake | Звіти лаб ods: що відкрито студентам, здача в Telegram і на сайті, перенос пересланих повідомлень — план | 🟢 ⬜ |
-| ods | [T369](ods/.t/T369-Q--ods-state-choices.md) | ❓ | ods-state-choices | Після зведення стану ods: записки сплячим сесіям і коли деплоїти python | 🟢 ⬜ |
+| ods | [T369](ods/.t/T369-Q--ods-state-choices.md) | ❓ | ods-state-choices | Після зведення стану ods: записки сплячим сесіям і коли деплоїти python | 🔴 ⬜ |
+| ods | [T370](ods/.t/T370-P--lab-reports-flow.md) | 💡 | lab-reports-flow | Звіти лаб ods: минулі з Telegram, поточні й майбутні — рішення й порядок дій | 🟢 ⬜ |
+| ods | [T371](ods/.t/T371-Q--lab-reports-choices.md) | ❓ | lab-reports-choices | ODS, звіти лаб і реєстрація: вибори | 🟢 ⬜ |

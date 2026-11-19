@@ -24,6 +24,7 @@ class LabFile(Document):
     at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     by: str = ""
     origin: str = "student"
+    via: str = ""  # telegram — the teacher brought it over from the student's message to them, `at` is that message's time (T368)
     of: str = ""
     facts: dict = {}
     line: str = ""
@@ -51,11 +52,12 @@ class FileHead(BaseModel):
     at: datetime
     by: str = ""
     origin: str = "student"
+    via: str = ""
     line: str = ""
     run: dict | None = None
 
 
 def file_api(f: LabFile | FileHead) -> dict:
-    """FILE = {id, name, kind, size, at, by, line, run}: `line` — the file carries an answer line."""
+    """FILE = {id, name, kind, size, at, by, via, line, run}: `line` — the file carries an answer line."""
     return {"id": str(f.id), "name": f.name, "kind": f.kind, "size": f.size, "at": when(f.at), "by": f.by.split("@")[0],
-            "line": bool(f.line), "run": f.run}
+            "via": f.via, "line": bool(f.line), "run": f.run}

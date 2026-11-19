@@ -11,6 +11,8 @@ from core.bot import chats, digest, due, errors, here, log, notes, notify, polls
 from core.bot.notify import bot
 from core.config import settings
 
+ROUTERS = []  # a site's own routers: they go before start, whose fallback takes every private message
+
 
 def build() -> Dispatcher:
     dp = Dispatcher()
@@ -23,6 +25,8 @@ def build() -> Dispatcher:
     dp.include_router(notes.router)
     dp.include_router(due.router)
     dp.include_router(spot.router)
+    for router in ROUTERS:
+        dp.include_router(router)
     dp.include_router(start.router)
     dp.include_router(polls.router)  # a handler is what makes aiogram ask Telegram for `poll` and `poll_answer` at all
     dp.include_router(log.router)  # edits and deletions: nobody else handles them

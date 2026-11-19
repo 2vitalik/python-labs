@@ -18,8 +18,8 @@ def judge(v: LabVariant, line: str) -> tuple[dict, dict]:
     return verdict(values, v.answers), values
 
 
-def attempt(v: LabVariant, line: str) -> tuple[dict, str]:
-    """The fields of one more attempt and the note for history: «9/13»."""
+def attempt(v: LabVariant, line: str, at: datetime | None = None) -> tuple[dict, str]:
+    """The fields of one more attempt and the note for history: «9/13»; `at` — when the line was handed in, if not now."""
     got, values = judge(v, line)
-    fields = {"line": line, "values": values, "verdict": got, "attempts": v.attempts + 1, "checked_at": datetime.now(timezone.utc)}
+    fields = {"line": line, "values": values, "verdict": got, "attempts": v.attempts + 1, "checked_at": at or datetime.now(timezone.utc)}
     return fields, f"{sum(x['ok'] for x in got.values())}/{len(v.answers)}"

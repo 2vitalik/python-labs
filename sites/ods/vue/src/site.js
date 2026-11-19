@@ -13,7 +13,7 @@ export default {
   // the platform's entries carry the same words as on the python site
   links: [['/lectures', 'Лекції', null, false, 'book'], ['/labs', 'Лаби', null, false, 'flask'], ['/lessons', 'Пари', 'admin', false, 'cap'],
     ['/students', 'Студи', null, false, 'users'], ['/deadlines', 'Строки', null, false, 'alarm'], ['/table', 'Звід', null, false, 'table'],
-    ['/activity', 'Актив', null, false, 'chart'], ['/polls', 'Polls', null, false, 'bars'], ['/week', 'Week', null, false, 'calendar'],
+    ['/intake', 'Вхідні', null, false, 'send'], ['/activity', 'Актив', null, false, 'chart'], ['/polls', 'Polls', null, false, 'bars'], ['/week', 'Week', null, false, 'calendar'],
     ['/my/profile', 'Профіль', null, false, 'user']],
   guide: [...LECTURES, ...LABS],
   colls: { variants: 'варіант лаби', lab_gates: 'доступ до лаби' },

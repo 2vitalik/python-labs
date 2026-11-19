@@ -21,3 +21,9 @@ export const getLabResults = (n) => request(`/api/variants/${n}/results`)
 export const getLabReview = (n, vid) => request(`/api/variants/${n}/results/${vid}`)
 export const putLabResult = (n, vid, data) => request(`/api/variants/${n}/results/${vid}`, 'PUT', data)
 export const getLabStats = (n) => request(`/api/variants/${n}/stats`)
+// «Вхідні» (T368): what the teacher forwarded to the bot from students' chats
+export const getIntake = () => request('/api/intake')
+export const putIntakePerson = (key, student) => request('/api/intake/person', 'PUT', { key, student })  // student — a nick; '' — nobody's again
+export const putIntakeRow = (id, data) => request(`/api/intake/${id}`, 'PUT', data)  // {lab, asks, skip} — only what is sent changes
+export const applyIntakeRow = (id) => request(`/api/intake/${id}/apply`, 'POST')  // once more: make the notebook a version of «Моя лаба»
+export const intakeRawUrl = (id) => `/api/intake/${id}/raw`

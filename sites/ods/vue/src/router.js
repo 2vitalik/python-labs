@@ -22,6 +22,7 @@ import WeekPage from '@core/pages/WeekPage.vue'
 import { makeRouter } from '@core/router.js'
 
 import HomePage from './pages/HomePage.vue'
+import IntakePage from './pages/IntakePage.vue'
 import LabPage from './pages/LabPage.vue'
 import LabResultsPage from './pages/LabResultsPage.vue'
 import LabReviewPage from './pages/LabReviewPage.vue'
@@ -51,6 +52,7 @@ export default makeRouter([
   { path: '/labs/about/:part', component: LabPage, meta: { title: 'Лаби', access: 'active', about: true } },
   { path: '/labs/:n', component: LabPage, meta: { title: 'Лаби', access: 'active' } },
   { path: '/labs/:n/:part', component: LabPage, meta: { title: 'Лаби', access: 'active' } },
+  { path: '/intake', component: IntakePage, meta: { title: 'Вхідні', access: 'admin', filters: true } },  // what the teacher forwarded to the bot (T368)
   { path: '/lessons', component: LessonsPage, meta: { title: 'Пари', access: 'active', filters: true } },
   { path: '/lessons/new', component: LessonEditPage, meta: { title: 'Нова пара', access: 'admin' } },
   { path: '/lessons/:slug', component: LessonPage, meta: { title: 'Пари', access: 'active' } },

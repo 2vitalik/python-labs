@@ -31,8 +31,11 @@ router.business_message.filter(Command(*COMMANDS), as_admin)
 
 
 async def target(message: Message, text: str) -> tuple[User | None, int | None, str]:
-    """The student: the replied-to sender, the chat's owner (Chat Automation), or the first word — nick or @username."""
+    """The student: the replied-to sender — of a forward, whoever wrote the original — the chat's owner (Chat Automation),
+    or the first word — nick or @username."""
     reply = message.reply_to_message
+    if origin := getattr(getattr(reply, "forward_origin", None), "sender_user", None):
+        return await User.find_one(User.tg_chat_id == origin.id), origin.id, text
     if reply and reply.from_user and not reply.forum_topic_created:  # a topic message «replies» to the topic itself
         return await User.find_one(User.tg_chat_id == reply.from_user.id), reply.from_user.id, text
     if message.business_connection_id:
