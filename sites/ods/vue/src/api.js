@@ -3,6 +3,7 @@ import { extra, request, upload } from '@core/http.js'
 // the site's own calls; the platform's are in @core/api.js
 export const getLabs = () => request('/api/variants')  // which labs have cards
 export const getMyLab = (n) => request(`/api/variants/${n}/my`)
+export const findMyLab = (n) => request(`/api/variants/${n}/my?soft=1`)  // no card yet — {vid: null, why} instead of a 404
 export const putMyLab = (n, data) => request(`/api/variants/${n}/my`, 'PUT', data)
 export const getLabFree = (n) => request(`/api/variants/${n}/free`)  // the numbers of the student's stream nobody holds yet
 export const claimLab = (n, num) => request(`/api/variants/${n}/my/claim`, 'POST', { n: num })

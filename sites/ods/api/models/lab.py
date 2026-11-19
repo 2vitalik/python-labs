@@ -6,6 +6,10 @@ from pymongo import IndexModel
 from core.models.history import when
 from labs_grade import grade
 
+# a card as nobody worked on it: freed by the teacher or the demo taken over (history keeps what was)
+FRESH = {"line": "", "values": {}, "verdict": {}, "notebook": "", "attempts": 0, "checked_at": None, "points": None, "note": "",
+         "way": "", "video": "", "defended": "", "stars": None, "files": 0, "file": {}, "facts": {}, "live": {}, "live_at": None}
+
 
 class LabVariant(Document):
     """A student's variant of a lab (T200, T354): the card the site hands out, the answers it checks a line against, the line,

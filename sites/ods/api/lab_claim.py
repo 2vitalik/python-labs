@@ -6,7 +6,7 @@ from fastapi import HTTPException
 
 from core.models.history import record
 from core.models.user import Status, User
-from models.lab import LabVariant
+from models.lab import FRESH, LabVariant
 
 DEMO = "ДЕМО"
 
@@ -23,7 +23,9 @@ async def group_of(lab: int, user: User) -> str:
 
 
 async def take(v: LabVariant, user: User) -> LabVariant:
-    await record(v, {"student": user.email, "assigned_at": datetime.now(timezone.utc)}, actor=user.email)
+    """The demo taken over from someone else starts afresh: their line, marks and file are not the new holder's."""
+    fresh = FRESH if v.student and v.student != user.email else {}
+    await record(v, fresh | {"student": user.email, "assigned_at": datetime.now(timezone.utc)}, actor=user.email)
     return v
 
 
@@ -44,9 +46,9 @@ async def mine(lab: int, user: User) -> LabVariant:
     if not await LabVariant.find_one(LabVariant.lab == lab):
         raise HTTPException(404, f"Карток лаби {lab} ще нема — скажи викладачеві")
     if not user.group and not may_demo(user):
-        raise HTTPException(404, "У профілі немає групи — скажи викладачеві, яка в тебе група")
+        raise HTTPException(404, "У профілі немає групи — впиши її в профілі, і тут зʼявляться номери твого потоку")
     if not await group_of(lab, user) and not may_demo(user):
-        raise HTTPException(404, f"Карток для групи {user.group} ще нема — скажи викладачеві")
+        raise HTTPException(404, f"Для групи {user.group} карток ще нема — напиши викладачеві")
     raise HTTPException(404, "Ще не знаю твого варіанта: назви свій номер у списку потоку або завантаж ноутбук зі своєю карткою")
 
 

@@ -6,7 +6,7 @@ import Crumbs from '@core/components/Crumbs.vue'
 import { fmtWhen } from '@core/labs.js'
 import { useTitle } from '@core/title.js'
 
-import { getMyLab } from '../api.js'
+import { findMyLab } from '../api.js'
 import LabCard from '../components/LabCard.vue'
 import LabClaim from '../components/LabClaim.vue'
 import LabDefence from '../components/LabDefence.vue'
@@ -31,7 +31,9 @@ async function load() {
   lab.value = null
   gone.value = ''
   try {
-    lab.value = await getMyLab(n.value)
+    const my = await findMyLab(n.value)
+    if (my.vid) lab.value = my
+    else gone.value = my.why
   } catch (e) {
     if (e.status !== 404) throw e
     gone.value = e.message

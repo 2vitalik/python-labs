@@ -7,7 +7,7 @@ from bot import lab_alerts
 from core.deps import active_user
 from core.models.history import record
 from core.models.user import User
-from lab_claim import claim, group_of, may_demo, mine
+from lab_claim import DEMO, claim, group_of, may_demo, mine
 from lab_line import attempt
 from lab_my import my
 from models.lab import LabVariant
@@ -37,17 +37,27 @@ async def list_labs(user: User = Depends(active_user)):
 
 
 @router.get("/{lab}/my")
-async def get_my(lab: int, user: User = Depends(active_user)):
-    return await my(await mine(lab, user), user)
+async def get_my(lab: int, soft: bool = False, user: User = Depends(active_user)):
+    """MY; no card yet — 404 with the words why, or with `soft` 200 {vid: None, why}: «Моя лаба» asks so, an ordinary
+    first visit is not an error in the browser's console."""
+    try:
+        v = await mine(lab, user)
+    except HTTPException as e:
+        if soft and e.status_code == 404:
+            return {"vid": None, "why": e.detail}
+        raise
+    return await my(v, user)
 
 
 @router.get("/{lab}/free")
 async def free(lab: int, user: User = Depends(active_user)):
-    """The numbers of the student's stream nobody holds; `same` — the number they hold in another lab; `demo` — may take n = 0."""
+    """The numbers of the student's stream nobody holds; `own` — the group in their profile; `same` — the number they hold
+    in another lab; `demo` — the demo card's vid when they may take it (n = 0), else None."""
     group = await group_of(lab, user)
     cards = await LabVariant.find(LabVariant.lab == lab, LabVariant.group == group, LabVariant.student == "", LabVariant.n > 0).sort("n").to_list() if group else []
     other = await LabVariant.find_one(LabVariant.student == user.email, LabVariant.lab != lab)
-    return {"group": group, "free": [v.n for v in cards], "same": other.n if other else None, "demo": may_demo(user)}
+    demo = may_demo(user) and await LabVariant.find_one(LabVariant.lab == lab, LabVariant.group == DEMO, LabVariant.n == 0)
+    return {"group": group, "own": user.group, "free": [v.n for v in cards], "same": other.n if other else None, "demo": demo.vid if demo else None}
 
 
 @router.post("/{lab}/my/claim")

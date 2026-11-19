@@ -10,7 +10,7 @@ import labs_nb
 from core.models.history import record
 from core.models.user import User
 from lab_claim import held, named, take
-from lab_line import attempt
+from lab_line import attempt, judge
 from models.lab import LabVariant
 from models.lab_file import MAX_BYTES, LabFile, file_api
 from models.lab_shape import LabShape
@@ -45,9 +45,11 @@ async def hand_in(lab: int, user: User, name: str, data: bytes) -> LabVariant:
     v = v or await named(lab, user, facts["vid"])
     if facts["vid"] and facts["vid"] != v.vid:
         raise HTTPException(422, f"У файлі картка {facts['vid']}, а твоя — {v.vid}: встав у ноутбук свою картку")
-    fields, note = attempt(v, facts["line"]) if facts["line"] else ({}, "")
+    if facts["line"]:
+        judge(v, facts["line"])  # a foreign line — 422 before the card is taken
     if fresh:
         await take(v, user)
+    fields, note = attempt(v, facts["line"]) if facts["line"] else ({}, "")
     f = version(nb, data, lab=lab, vid=v.vid, student=user.email, name=name[:120], by=user.email, facts=facts, line=facts["line"])
     await f.insert()
     files = await LabFile.find(LabFile.lab == lab, LabFile.vid == v.vid, LabFile.student == user.email, LabFile.origin == "student").count()

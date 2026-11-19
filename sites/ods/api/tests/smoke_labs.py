@@ -57,8 +57,11 @@ with TestClient(main.app) as c:
     login(c, "a@nure.ua", "student", "КН-1")
     r = c.get("/api/variants/1/my")
     check("A before naming a number: 404 asking for it", r.status_code == 404 and r.json()["detail"].startswith("Ще не знаю твого варіанта"), r.text)
-    check("A: the free numbers of the stream", c.get("/api/variants/1/free").json() == {"group": "КН-1", "free": [1, 2], "same": None, "demo": False},
-          c.get("/api/variants/1/free").text)
+    check("A: the free numbers of the stream", c.get("/api/variants/1/free").json() == {"group": "КН-1", "own": "КН-1", "free": [1, 2], "same": None,
+                                                                                        "demo": None}, c.get("/api/variants/1/free").text)
+    r = c.get("/api/variants/1/my?soft=1")
+    check("A: «my» asked softly — 200 with no card and the words", r.status_code == 200 and r.json()["vid"] is None
+          and r.json()["why"].startswith("Ще не знаю твого варіанта"), r.text)
     my = c.post("/api/variants/1/my/claim", json={"n": 1}).json()
     check("A claims number 1", my["vid"] == "КН-1-01" and 'VARIANT = "КН-1-01"' in my["card"] and len(my["ask"]) == 2, my)
     check("A: the card keeps nothing of the key", "answers" not in my and "traps" not in json.dumps(my) and my["total"] == 3 and my["ok"] == 0)
@@ -81,6 +84,7 @@ with TestClient(main.app) as c:
     login(c, "d@nure.ua", "student", "")
     r = c.get("/api/variants/1/my")
     check("D: no group → 404 saying so", r.status_code == 404 and r.json()["detail"].startswith("У профілі немає групи"), r.text)
+    check("D: free — no group, no stream, no demo", c.get("/api/variants/1/free").json() == {"group": "", "own": "", "free": [], "same": None, "demo": None})
     login(c, "e@nure.ua", "student", "ДЕМО")
     r = c.post("/api/variants/1/my/claim", json={"n": 0})
     check("a student may not take the demo card", r.status_code == 403 and "Демо" in r.json()["detail"], r.text)
@@ -128,14 +132,17 @@ with TestClient(main.app) as c:
           and r.json()["grade"]["cap"] == 16, r.text)
     check("admin: a defence not in the list → 422", c.put("/api/variants/1/results/КН-1-01", json={"defended": "zoom"}).status_code == 422)
     check("admin: free numbers are the student's word — admin has no group, may take the demo",
-          c.get("/api/variants/1/free").json() == {"group": "", "free": [], "same": None, "demo": True})
+          c.get("/api/variants/1/free").json() == {"group": "", "own": "", "free": [], "same": None, "demo": "ДЕМО-00"})
     check("admin takes the demo card", c.post("/api/variants/1/my/claim", json={"n": 0}).json()["vid"] == "ДЕМО-00")
+    c.put("/api/variants/1/my", json={"line": "LAB1 ДЕМО-00 d1=0.1"})
     check("admin: lab 2 takes the demo silently too", c.get("/api/variants/2/my").json()["vid"] == "ДЕМО-00")
     settings.fake_user_email = "t@nure.ua"
     c.get("/api/auth/dev-login")
     mongo[DB].users.update_one({"email": "t@nure.ua"}, {"$set": {"status": "student", "test": True}})
-    check("a test student takes the demo over from the admin", c.post("/api/variants/1/my/claim", json={"n": 0}).json()["vid"] == "ДЕМО-00"
-          and mongo[DB].variants.find_one({"lab": 1, "vid": "ДЕМО-00"})["student"] == "t@nure.ua")
+    check("a test student without a group is offered the demo", c.get("/api/variants/1/free").json()["demo"] == "ДЕМО-00")
+    my = c.post("/api/variants/1/my/claim", json={"n": 0}).json()
+    check("a test student takes the demo over from the admin — afresh, the admin's line is not theirs", my["vid"] == "ДЕМО-00"
+          and mongo[DB].variants.find_one({"lab": 1, "vid": "ДЕМО-00"})["student"] == "t@nure.ua" and my["attempts"] == 0 and my["line"] == "", my)
 
     login(c, "a@nure.ua", "student", "КН-1")
     my = c.get("/api/variants/1/my").json()

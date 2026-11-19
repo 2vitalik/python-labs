@@ -9,14 +9,12 @@ from core.deps import admin_user
 from core.models.history import record
 from core.models.user import User
 from lab_my import heads
-from models.lab import LabVariant
+from models.lab import FRESH, LabVariant
 from models.lab_file import LabFile, file_api
 from models.lab_shape import LabShape
 
 router = APIRouter(prefix="/api/variants")
 DEFENCES = ("", "record", "live")
-FRESH = {"line": "", "values": {}, "verdict": {}, "notebook": "", "attempts": 0, "checked_at": None, "points": None, "note": "",
-         "way": "", "video": "", "defended": "", "stars": None, "files": 0, "file": {}, "facts": {}, "live": {}, "live_at": None}
 
 
 class MarkIn(BaseModel):
