@@ -1,0 +1,155 @@
+/* «Зміни в лекціях» (T374): a colour is a thing — a group's colour wherever the group shows, a level's in its dot, red /
+   green for what was and what is; the rest is ink and greys */
+.changes {
+  --g-content: #2f6fde; --g-lang: #0e9384; --g-look: #8a94a6; --g-media: #8b5cf6; --g-set: #b7791f; --g-open: #d6336c; --g-todo: #6c757d;
+  --s3: #e03131; --s2: #f08c00; --s1: #e8b80c;
+  --del-bg: rgba(224, 49, 49, .16); --del-line: #e03131; --ins-bg: rgba(47, 158, 68, .18); --ins-line: #2f9e44;
+}
+[data-bs-theme=dark] .changes {
+  --g-content: #6ea0ff; --g-lang: #3cc8b4; --g-look: #9aa4b5; --g-media: #b195ff; --g-set: #e0a54a; --g-open: #f06595; --g-todo: #adb5bd;
+  --s3: #ff6b6b; --s2: #ffa94d; --s1: #ffd43b;
+  --del-bg: rgba(255, 107, 107, .22); --del-line: #ff6b6b; --ins-bg: rgba(105, 219, 124, .2); --ins-line: #69db7c;
+}
+.changes .quiet { color: var(--bs-secondary-color); font-size: .85rem; }
+.changes .dot { padding: 0; border: 0; background: none; color: var(--bs-secondary-color); text-decoration: underline dotted; text-underline-offset: .2em; }
+.changes .dot:hover { color: var(--bs-body-color); }
+
+/* the marks of what a thing is */
+.changes .sev-dot { display: inline-block; width: .7rem; height: .7rem; border-radius: 50%; flex-shrink: 0; vertical-align: -.05em;
+                    border: 1.5px solid var(--bs-secondary-color); }
+.changes .sev-dot.s3 { background: var(--s3); border-color: var(--s3); }
+.changes .sev-dot.s2 { background: var(--s2); border-color: var(--s2); }
+.changes .sev-dot.s1 { background: var(--s1); border-color: var(--s1); }
+.changes .g-dot { display: inline-block; width: .6rem; height: .6rem; margin-right: .3rem; border-radius: 2px; background: var(--c); vertical-align: 0; }
+.changes .chg-kind { justify-self: start; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 0 .5rem;
+                     border-radius: 1rem; font-size: .78rem; line-height: 1.35rem; background: color-mix(in srgb, var(--c) 15%, transparent);
+                     border: 1px solid color-mix(in srgb, var(--c) 40%, transparent); }
+
+/* the top: the matrix beside the filters when the page is wide enough for both, the filters under it otherwise */
+.chg-top { display: flex; flex-wrap: wrap; gap: 1rem 2.5rem; align-items: flex-start; margin-bottom: 1rem; }
+.chg-sum { flex: 0 1 auto; max-width: 100%; overflow-x: auto; }
+.chg-filters { flex: 1 1 36rem; min-width: min(36rem, 100%); }
+.chg-matrix { border-collapse: separate; border-spacing: 2px; font-size: .82rem; font-variant-numeric: tabular-nums; }
+.chg-matrix th, .chg-matrix td { padding: 0; text-align: center; font-weight: 400; }
+.chg-matrix .cell { width: 100%; min-width: 2.4rem; padding: .15rem .4rem; border: 1px solid transparent; border-radius: .3rem; background: none;
+                    color: var(--bs-body-color); white-space: nowrap; }
+.chg-matrix thead .cell, .chg-matrix tbody th .cell { color: var(--bs-secondary-color); }
+.chg-matrix .cell:hover { border-color: var(--bs-border-color); }
+.chg-matrix .cell.on { color: var(--bs-body-color); background: var(--bs-secondary-bg); }
+.chg-matrix .num { background: color-mix(in srgb, var(--c, transparent) var(--k, 0%), transparent); }
+.chg-matrix .num.zero { color: var(--bs-tertiary-color); }
+.chg-matrix .num.lit { border-color: var(--bs-secondary-color); }
+.chg-matrix .tot { color: var(--bs-secondary-color); padding: 0 .4rem; }
+.chg-matrix tfoot th { color: var(--bs-secondary-color); font-size: .78rem; }
+@media (max-width: 575.98px) { .chg-matrix .gw { display: none; } .chg-matrix .cell { min-width: 2rem; padding: .15rem .25rem; } .chg-matrix .g-dot { margin: 0; } }
+.chg-tallies { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .6rem; }
+.chg-tallies .tally { padding: .15rem .6rem; border: 1px solid var(--bs-border-color); border-radius: 1rem; background: none; color: var(--bs-secondary-color); font-size: .85rem; }
+.chg-tallies .tally b { font-weight: 650; }
+.chg-tallies .s3 b { color: var(--s3); }
+.chg-tallies .open b, .chg-tallies .lector b { color: var(--g-open); }
+.chg-tallies .tally:hover, .chg-tallies .tally.on { color: var(--bs-body-color); border-color: var(--bs-secondary-color); }
+.chg-tallies .tally.on { background: var(--bs-secondary-bg); }
+
+/* the filters: a row's word at the left, its pills wrapping beside it */
+.chg-filters { display: grid; gap: .3rem; }
+.chg-filters .frow { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); column-gap: .5rem; align-items: start; }
+.chg-filters .flabel { padding-top: .2rem; color: var(--bs-secondary-color); font-size: .82rem; margin: 0; }
+.chg-filters .fpills { display: flex; flex-wrap: wrap; gap: .25rem; }
+.chg-filters .chip { --bs-btn-padding-y: .05rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .8rem; display: inline-flex; align-items: center; gap: .25rem;
+                     white-space: nowrap; }
+.chg-filters .chip .n { opacity: .55; font-size: .9em; margin-left: .1rem; }
+.chg-filters .chip.zero { opacity: .45; }
+.chg-filters .chip .g-dot { margin-right: 0; }
+.chg-filters .fnote { line-height: 1.55rem; font-size: .8rem; }
+.chg-filters .fsearch { position: relative; max-width: 28rem; }
+.chg-filters .fsearch .icon { position: absolute; left: .55rem; top: .45rem; color: var(--bs-secondary-color); }
+.chg-filters .fsearch input { padding-left: 1.8rem; }
+@media (max-width: 575.98px) { .chg-filters .frow { grid-template-columns: 5.2rem minmax(0, 1fr); } }
+
+/* the list */
+.chg-count { margin: 0 0 .25rem; color: var(--bs-secondary-color); }
+.chg-count b { color: var(--bs-body-color); }
+.chg-lec { display: flex; align-items: baseline; gap: .6rem; margin: 1.1rem 0 .2rem; font-size: 1.05rem; font-weight: 650; }
+.chg-lec .t { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 400; color: var(--bs-secondary-color); }
+.chg-lec .n { margin-left: auto; font-weight: 400; font-size: .85rem; color: var(--bs-secondary-color); }
+.chg-row { display: grid; grid-template-columns: .7rem 2rem 11rem minmax(0, 1fr) 1rem 1rem; column-gap: .6rem; align-items: center;
+           min-height: 2rem; padding: .15rem .5rem; border-top: 1px solid var(--bs-border-color-translucent); cursor: pointer; scroll-margin-top: 4rem; }
+.chg-row.first { border-top-color: var(--bs-border-color); }
+.chg-row:hover { background: var(--bs-tertiary-bg); }
+.chg-row.cur { box-shadow: inset 3px 0 0 var(--bs-secondary-color); }
+.chg-row:focus { outline: none; }  /* the keys' row: .cur says it */
+.chg-row.open { background: var(--bs-secondary-bg); }
+.chg-row .sn { text-align: right; color: var(--bs-secondary-color); font-size: .8rem; font-variant-numeric: tabular-nums; }
+.chg-row .line { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .92rem; }
+.chg-row :is(del, ins) { text-decoration: none; padding: 0 .1em; border-radius: 2px; }
+.chg-row del { background: var(--del-bg); }
+.chg-row ins { background: var(--ins-bg); }
+.chg-row .to { margin: 0 .3rem; color: var(--bs-secondary-color); }
+.chg-row .more { margin-left: .4rem; color: var(--bs-secondary-color); font-size: .8rem; }
+.chg-row :is(.where, .state) { color: var(--bs-secondary-color); display: flex; justify-content: center; }
+.chg-row .state { color: var(--g-open); }
+@media (max-width: 575.98px) {
+  .chg-row { grid-template-columns: .7rem 1.6rem minmax(0, 1fr) 1rem 1rem; grid-template-areas: 'sev slide kind where state' '. . line line line';
+             row-gap: .15rem; padding: .3rem .25rem; }
+  .chg-row > .sev-dot { grid-area: sev; } .chg-row .sn { grid-area: slide; } .chg-row .chg-kind { grid-area: kind; }
+  .chg-row .line { grid-area: line; } .chg-row .where { grid-area: where; } .chg-row .state { grid-area: state; }
+}
+.chg-more { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin: .75rem 0; }
+
+/* an open change: a frame under its row; «Було» | «Стало» of one width whatever they hold, the blocks around quieter and
+   cut to their edge by the change (a click on «більше довкола» shows them whole); on a phone — one under the other */
+.chg-open { margin: .25rem 0 .9rem; padding: .6rem .9rem .75rem; border: 1px solid var(--bs-border-color); border-radius: .5rem; }
+.chg-bar { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1rem; margin-bottom: .5rem; }
+.chg-bar .chip { --bs-btn-padding-y: .05rem; --bs-btn-font-size: .8rem; }
+.chg-wait { min-height: 6rem; }
+.chg-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: .4rem 1.25rem; }
+.chg-cols.one { grid-template-columns: minmax(0, 1fr); }
+.chg-cols h3 { margin: 0; font-size: .78rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--bs-secondary-color); }
+.chg-cols > .blk { min-width: 0; padding: .4rem .6rem; border-radius: .35rem; background: var(--bs-tertiary-bg); }
+.chg-cols .ctx { min-width: 0; max-height: 4.6em; overflow: hidden; opacity: .55; font-size: .92em; }
+.chg-cols .ctx.prev { display: flex; flex-direction: column; justify-content: flex-end; mask-image: linear-gradient(to bottom, transparent, #000 2.2em); }
+.chg-cols .ctx.next { mask-image: linear-gradient(to top, transparent, #000 2.2em); }
+.chg-cols.wide .ctx { max-height: none; mask-image: none; }
+.chg-cols .chg-view .guide { font-size: 1rem; line-height: 1.6; overflow-wrap: anywhere; }
+.chg-cols .chg-view .guide > :last-child { margin-bottom: 0; }
+.chg-cols .ctx .guide > * { margin-bottom: 0; }
+.chg-raw { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font-size: .82rem; line-height: 1.55; color: var(--bs-body-color); }
+.chg-none { margin: 0; color: var(--bs-secondary-color); font-style: italic; }
+@media (max-width: 767.98px) {
+  .chg-cols { grid-template-columns: minmax(0, 1fr); }
+  .chg-cols .ctx.dup { display: none; }
+  .chg-cols .prev { order: 1; } .chg-cols h3.side-b { order: 2; } .chg-cols .blk.side-b { order: 3; }
+  .chg-cols h3.side-a { order: 4; margin-top: .3rem; } .chg-cols .blk.side-a { order: 5; } .chg-cols .next { order: 6; }
+}
+
+/* the edits: red — what was, green — what is, pale — the other changes of the block; an empty one is a caret where
+   words came in (in «Було») or went away (in «Стало»). Inside a formula KaTeX paints \textcolor of lectureChangeMarks.js */
+.changes mark.chg { padding: 0 .08em; font-weight: inherit; color: inherit; border-radius: 2px; }
+.changes mark.chg.del { background: var(--del-bg); box-shadow: inset 0 -2px 0 var(--del-line); }
+.changes mark.chg.ins { background: var(--ins-bg); box-shadow: inset 0 -2px 0 var(--ins-line); }
+.changes mark.chg.pale { opacity: 1; box-shadow: none; background: color-mix(in srgb, var(--bs-secondary-color) 14%, transparent); }
+.changes mark.chg:empty { display: inline-block; width: 3px; height: 1.15em; padding: 0; vertical-align: -.2em; box-shadow: none; }
+.changes mark.chg.del:empty { background: var(--ins-line); }
+.changes mark.chg.ins:empty { background: var(--del-line); }
+.changes mark.chg.pale:empty { background: var(--bs-secondary-color); opacity: .5; }
+.changes .katex [style*="color:#c10001"], .changes .katex [style*="color:#00c101"], .changes .katex [style*="color:#c10002"],
+.changes .katex [style*="color:#00c102"] { color: inherit !important; border-radius: 2px; }
+.changes .katex [style*="color:#c10001"] { background: var(--del-bg); box-shadow: inset 0 -2px 0 var(--del-line); }
+.changes .katex [style*="color:#00c101"] { background: var(--ins-bg); box-shadow: inset 0 -2px 0 var(--ins-line); }
+.changes .katex :is([style*="color:#c10002"], [style*="color:#00c102"]) { background: color-mix(in srgb, var(--bs-secondary-color) 14%, transparent); }
+.changes .katex [style*="color:#"] [style*="color:#"] { background: none; box-shadow: none; }
+
+/* under the blocks: why, what it is, where to look */
+.chg-why { margin-top: .75rem; }
+.chg-why .title { margin: 0 0 .3rem; font-weight: 600; }
+.chg-why .why { display: grid; grid-template-columns: 4rem minmax(0, 1fr); gap: .5rem; margin-bottom: .3rem; }
+.chg-why .why .guide { font-size: .95rem; }
+.chg-why .lbl, .chg-why .note { color: var(--bs-secondary-color); font-size: .85rem; }
+.chg-why .lbl { padding-top: .15rem; }
+.chg-why .facts { display: flex; flex-wrap: wrap; align-items: center; gap: .2rem .9rem; margin: .4rem 0 0; padding: 0; list-style: none; font-size: .85rem; }
+.chg-why .facts li { display: inline-flex; align-items: center; gap: .3rem; }
+.chg-why .facts .open { color: var(--g-open); }
+.chg-why .facts .quiet { font-size: .85rem; }
+.chg-links { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .6rem; }
+.chg-links .btn { display: inline-flex; align-items: center; gap: .35rem; }
+.chg-links .btn.off { opacity: .5; cursor: default; }

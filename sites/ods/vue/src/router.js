@@ -40,7 +40,7 @@ export default makeRouter([
   { path: '/', component: HomePage },
   { path: '/lectures', component: LecturesPage, meta: { title: 'Лекції', access: 'active' } },
   // what differs from the lecturer's slides (T374), the teacher's; before `:n` — that one would take «changes» for a number
-  { path: '/lectures/changes', component: LectureChangesPage, meta: { title: 'Зміни в лекціях', access: 'admin', wide: true, filters: true } },
+  { path: '/lectures/changes', component: LectureChangesPage, meta: { title: 'Зміни в лекціях', access: 'admin', wide: 'admin', filters: true } },
   // filters: a change of ?slide keeps the scroll — the text comes back to the slide's place (LecturePage)
   { path: '/lectures/:n', component: LecturePage, meta: { title: 'Лекції', access: 'active', filters: true } },
   { path: '/labs', component: LabsPage, meta: { title: 'Лаби', access: 'active' } },
