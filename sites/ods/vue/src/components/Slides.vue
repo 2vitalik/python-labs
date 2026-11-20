@@ -50,7 +50,14 @@ async function place(hide) {
 watch(text, () => place(true))
 const refit = () => place(false)
 const sized = new ResizeObserver(refit)
-onMounted(() => (place(true), sized.observe(sheet.value), document.fonts.addEventListener('loadingdone', refit)))
+// opened from deep in the text the page stays scrolled as far as it still goes: the sheet's top comes out from under the shelf
+// (--nav-h), by as little as it takes — a shelf scrolled to the very top grows, and its buttons would move
+function inSight() {
+  const shelf = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 0
+  const top = root.value.getBoundingClientRect().top
+  if (top < shelf + 8) scrollBy({ top: top - shelf - 8, behavior: 'instant' })
+}
+onMounted(() => (inSight(), place(true), sized.observe(sheet.value), document.fonts.addEventListener('loadingdone', refit)))
 onUnmounted(() => (sized.disconnect(), document.fonts.removeEventListener('loadingdone', refit)))
 
 function zoom(e) {

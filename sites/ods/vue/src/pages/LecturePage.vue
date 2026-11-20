@@ -5,6 +5,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { getGuidePage } from '@core/api.js'
 import Crumbs from '@core/components/Crumbs.vue'
 import GuideBody from '@core/components/GuideBody.vue'
+import Icon from '@core/components/Icon.vue'
 import Lightbox from '@core/components/Lightbox.vue'
 import Toc from '@core/components/Toc.vue'
 import { textOf } from '@core/drafts.js'
@@ -18,6 +19,7 @@ import '../labColors.css'
 import FoundBar from '../components/FoundBar.vue'
 import LecLook from '../components/LecLook.vue'
 import LectureAnchors from '../components/LectureAnchors.vue'
+import LectureBar from '../components/LectureBar.vue'
 import Slides from '../components/Slides.vue'
 import { author } from '../lecLook.js'
 import { labsOf, withMarks } from '../lectures.js'
@@ -25,13 +27,15 @@ import { vRich } from '../rich.js'
 import { slidesOf } from '../slides.js'
 
 // a lecture: the text with its contents and the slides' numbers on its margin, or its slides one at a time (?slide=N);
-// a number in the text opens its slide, «Текст» / «у тексті» of a slide comes back to the slide's place in the text
+// a number in the text opens its slide, «Текст» / «у тексті» of a slide comes back to the slide's place in the text.
+// Its row on the shelf (LectureBar) holds the switches in both views; the slides have no h1 — the row names the theme
 const route = useRoute()
 const router = useRouter()
 const list = computed(() => site.guide.filter((s) => s.kind === 'lectures'))
 const doc = computed(() => list.value.find((s) => String(s.n) === route.params.n))
-const prev = computed(() => list.value[list.value.indexOf(doc.value) - 1])
-const next = computed(() => list.value[list.value.indexOf(doc.value) + 1])
+// leaving the page, the route changes before the page is gone: no doc then, and no neighbours of it
+const prev = computed(() => (doc.value ? list.value[list.value.indexOf(doc.value) - 1] : undefined))
+const next = computed(() => (doc.value ? list.value[list.value.indexOf(doc.value) + 1] : undefined))
 const labs = computed(() => labsOf(doc.value?.n))
 const page = ref(null)
 const body = ref()
@@ -42,6 +46,7 @@ const slide = computed({
   get: () => (route.query.slide === undefined ? null : Number(route.query.slide)),
   set: (n) => router.replace({ query: { ...kept(), ...(n === null ? {} : { slide: n }) } }),
 })
+const onSlides = computed(() => slide.value !== null && slides.value.length > 0)
 const kept = () => (route.query.find ? { find: route.query.find } : {})  // a search stays lit in both views; its place does not
 const fmt = (d) => new Date(d).toLocaleDateString('uk-UA')
 useTitle(() => page.value?.title)
@@ -85,34 +90,38 @@ watch(doc, load, { immediate: true })
 </script>
 
 <template>
-  <Crumbs :items="[['/lectures', 'Лекції'], doc?.nav]">
-    <LecLook v-if="page" class="me-2" />
-    <div v-if="slides.length > 1" class="btn-group btn-group-sm">
+  <LectureBar :doc :prev :next head="lec-h1" :slides="onSlides">
+    <LecLook />
+    <!-- its place is kept while the text loads: nothing moves once it has -->
+    <div v-if="!page || slides.length > 1" class="btn-group btn-group-sm" :class="{ invisible: !page }">
       <button class="btn btn-outline-secondary" :class="{ active: slide === null }" @click="slide !== null && toText(slide)">Текст</button>
       <button class="btn btn-outline-secondary" :class="{ active: slide !== null }" @click="slide === null && (slide = reading())">Слайди</button>
     </div>
-  </Crumbs>
+  </LectureBar>
+  <Crumbs :items="[['/lectures', 'Лекції'], doc?.nav]" />
   <div v-if="page">
-    <h1 class="h2 mb-3">{{ page.title }}</h1>
+    <h1 v-if="!onSlides" id="lec-h1" class="h2 mb-3">{{ page.title }}</h1>
     <div v-if="labs.length" class="needs small text-body-tertiary">
       Потрібна для:
       <RouterLink v-for="lab in labs" :key="lab" :to="`/labs/${lab}`" class="lab lab-tint badge rounded-pill border fw-normal text-body-secondary"
                   :class="`lab-c${lab}`">Лаба {{ lab }}</RouterLink>
     </div>
     <FoundBar v-if="route.query.find || route.query.at" :root="body" :slides="slide !== null" />
-    <Slides v-if="slide !== null && slides.length" v-model="slide" :slides :title="page.title" :slug="doc.slug" @text="toText" />
+    <Slides v-if="onSlides" v-model="slide" :slides :title="page.title" :slug="doc?.slug" @text="toText" />
     <template v-else>
-      <div ref="body" v-rich="doc.slug" class="lecture" :class="{ 'lec-author': author }" @click="clickMark">
-        <GuideBody v-model:page="page" :view="withMarks" />
+      <div ref="body" v-rich="doc?.slug" class="lecture" :class="{ 'lec-author': author }" @click="clickMark">
+        <GuideBody v-model:page="page" :view="withMarks">
+          <template #tools> · <RouterLink :to="{ path: '/lectures/changes', query: { lec: doc?.n } }"><Icon name="compare" /> зміни</RouterLink></template>
+        </GuideBody>
       </div>
       <LectureAnchors :root="body" />
       <Toc :items="toc" />
       <Lightbox />  <!-- the text's own: the slides have theirs, and two at once would both take ← → -->
     </template>
     <nav class="docs-nav mt-4 pt-3 border-top">
-      <RouterLink v-if="prev" :to="prev.path">← {{ prev.nav }}</RouterLink><span v-else></span>
+      <RouterLink v-if="prev" :to="prev.path">← {{ prev?.nav }}</RouterLink><span v-else></span>
       <RouterLink to="/lectures" class="text-secondary">Лекції</RouterLink>
-      <RouterLink v-if="next" :to="next.path">{{ next.nav }} →</RouterLink><span v-else></span>
+      <RouterLink v-if="next" :to="next.path">{{ next?.nav }} →</RouterLink><span v-else></span>
     </nav>
     <div class="small text-body-tertiary text-end mt-3">Оновлено {{ fmt(page.updated) }}</div>
   </div>
