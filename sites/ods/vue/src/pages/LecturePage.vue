@@ -14,7 +14,9 @@ import { problem } from '@core/problem.js'
 import { site } from '@core/site.js'
 import { useTitle } from '@core/title.js'
 
+import FoundBar from '../components/FoundBar.vue'
 import LecLook from '../components/LecLook.vue'
+import LectureAnchors from '../components/LectureAnchors.vue'
 import Slides from '../components/Slides.vue'
 import { author } from '../lecLook.js'
 import { labsOf, withMarks } from '../lectures.js'
@@ -37,8 +39,9 @@ const plain = (text) => text.replace(/\$([^$]+)\$/g, (_, tex) => tex.replace(/[{
 const toc = computed(() => tocOf(textOf(page.value)).map((h) => ({ ...h, text: plain(h.text) })))
 const slide = computed({
   get: () => (route.query.slide === undefined ? null : Number(route.query.slide)),
-  set: (n) => router.replace({ query: n === null ? {} : { slide: n } }),
+  set: (n) => router.replace({ query: { ...kept(), ...(n === null ? {} : { slide: n }) } }),
 })
+const kept = () => (route.query.find ? { find: route.query.find } : {})  // a search stays lit in both views; its place does not
 const fmt = (d) => new Date(d).toLocaleDateString('uk-UA')
 useTitle(() => page.value?.title)
 
@@ -56,7 +59,7 @@ function clickMark(e) {
 // back to the text at slide n's number (or the nearest before it — a mark inside a list stays a comment); its blocks light up
 let timer
 async function toText(n) {
-  await router.replace({ query: {} })
+  await router.replace({ query: kept() })
   await nextTick()
   // the text is drawn anew: its pictures have no height until decoded, and the place would slide away under the scroll
   await Promise.all([...body.value.querySelectorAll('img')].map((img) => img.decode().catch(() => null)))
@@ -94,11 +97,13 @@ watch(doc, load, { immediate: true })
       Потрібна для:
       <RouterLink v-for="lab in labs" :key="lab" :to="`/labs/${lab}`" class="lab badge rounded-pill border fw-normal text-body-secondary">Лаба {{ lab }}</RouterLink>
     </div>
+    <FoundBar v-if="route.query.find || route.query.at" :root="body" :slides="slide !== null" />
     <Slides v-if="slide !== null && slides.length" v-model="slide" :slides :title="page.title" :slug="doc.slug" @text="toText" />
     <template v-else>
       <div ref="body" v-rich="doc.slug" class="lecture" :class="{ 'lec-author': author }" @click="clickMark">
         <GuideBody v-model:page="page" :view="withMarks" />
       </div>
+      <LectureAnchors :root="body" />
       <Toc :items="toc" />
       <Lightbox />  <!-- the text's own: the slides have theirs, and two at once would both take ← → -->
     </template>

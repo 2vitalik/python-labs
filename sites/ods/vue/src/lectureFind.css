@@ -1,0 +1,19 @@
+/* the search in the lectures (T374 §6.3): one colour per kind of match — the pill's dot, the snippet's mark, the row's edge */
+.k-exact { --k: var(--bs-yellow); }
+.k-form { --k: var(--bs-green); }
+.k-typo { --k: var(--bs-pink); }
+.k-syn { --k: var(--bs-cyan); }
+.k-sense { --k: var(--bs-purple); }
+:root { --k-mix: 30%; }
+[data-bs-theme=dark] { --k-mix: 45%; }
+[data-bs-theme=dark] .k-form { --k: #4fbf86; }  /* Bootstrap's green is too deep to be told apart on the dark page */
+[data-bs-theme=dark] .k-sense { --k: #a886e8; }
+.kdot { display: inline-block; width: .55rem; height: .55rem; flex-shrink: 0; border-radius: 50%; background: var(--k, var(--bs-secondary-color)); }
+.find mark { background: color-mix(in srgb, var(--k) var(--k-mix), transparent); }
+
+/* the terms in a lecture's text (lectureFound.js, the CSS Custom Highlight API): bright at first, then calm but there;
+   the one stood on — deeper, with a line under it. Bootstrap's yellow and orange as hex: a var() inside ::highlight is
+   dropped by older browsers, and the mark would not show at all */
+::highlight(lec-find-hot) { background-color: color-mix(in srgb, #ffc107 62%, transparent); }
+::highlight(lec-find) { background-color: color-mix(in srgb, #ffc107 26%, transparent); text-decoration: underline 2px color-mix(in srgb, #e0a800 70%, transparent); }
+::highlight(lec-find-now) { background-color: color-mix(in srgb, #fd7e14 55%, transparent); text-decoration: underline 2px #fd7e14; }
