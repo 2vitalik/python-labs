@@ -12,7 +12,7 @@ import { locate, markRaw } from '../lectureChangeSpots.js'
 const props = defineProps({ text: String, ranges: { type: Array, default: () => [] }, raw: Boolean, slug: String, empty: String })
 const IMG = /(\]\(|src=")img\//g  // a lecture's pictures are the site's media (content_disk.py)
 const spots = computed(() => locate(props.text || '', props.ranges))
-const md = computed(() => markMd(props.text, spots.value).replace(IMG, `$1/api/media/${props.slug}/img/`))
+const md = computed(() => markMd(props.text, spots.value).replace(IMG, `$1/api/media/${props.slug}/`).replace(/<!--[^>]*-->/g, ''))
 const html = computed(() => markRaw(props.text, spots.value))
 </script>
 

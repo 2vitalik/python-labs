@@ -30,8 +30,10 @@ export const STOP = new Set(fold(`в у на з із зі зо до від од 
 
 // markdown → plain words; a short formula keeps its letters ($S_{1}^{2}$ → S_1^2), a long one is «…»
 const FORMULA = /\$\$([^\n]+?)\$\$|\$([^\n$]+?)\$/g
+const GREEK = { alpha: 'α', beta: 'β', gamma: 'γ', delta: 'δ', epsilon: 'ε', varepsilon: 'ε', theta: 'θ', lambda: 'λ', mu: 'μ', nu: 'ν', xi: 'ξ',
+  pi: 'π', rho: 'ρ', sigma: 'σ', tau: 'τ', phi: 'φ', varphi: 'φ', chi: 'χ', psi: 'ψ', omega: 'ω', Delta: 'Δ', Sigma: 'Σ', Omega: 'Ω', Phi: 'Φ', Xi: 'Ξ' }
 const letters = (tex) => {
-  const s = tex.replace(/\\[a-zA-Z]+|[{}\\]/g, '').replace(/\s+/g, ' ').trim()
+  const s = tex.replace(/\\([a-zA-Z]+)/g, (_, w) => GREEK[w] || '').replace(/[{}\\]/g, '').replace(/\s+/g, ' ').trim()
   return s.length <= 15 ? s : '…'
 }
 export const inline = (md) => md

@@ -35,7 +35,7 @@ const next = computed(() => list.value[list.value.indexOf(doc.value) + 1])
 const labs = computed(() => labsOf(doc.value?.n))
 const page = ref(null)
 const body = ref()
-const slides = computed(() => slidesOf(textOf(page.value)))
+const slides = computed(() => slidesOf(page.value?.public ?? textOf(page.value)))  // no drafts on a slide: it may be on a projector
 const plain = (text) => text.replace(/\$([^$]+)\$/g, (_, tex) => tex.replace(/[{}\\]/g, ''))  // the contents are text: $R^{2}$ → R^2
 const toc = computed(() => tocOf(textOf(page.value)).map((h) => ({ ...h, text: plain(h.text) })))
 const slide = computed({

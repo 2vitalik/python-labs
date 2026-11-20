@@ -66,9 +66,10 @@ export const hunksOf = (slug) => (hunks[slug] ??= getLectureHunks(slug).then((r)
   .catch((e) => { delete hunks[slug]; throw e }))
 
 // the row's one line: the journal's title; else «було → стало» of the first edit; else the note or the why's first line
+const plain = (s) => (s || '').replace(/<\/?c-[a-z]>|\*\*|<!--[^>]*-->/g, '').replace(/\s+/g, ' ').trim()
 export function lineOf(it) {
   if (it.title) return { text: it.title }
   const e = it.edits[0]
-  if (e) return { del: e.del, ins: e.ins, more: it.edits.length - 1 }
+  if (e) return { del: plain(e.del), ins: plain(e.ins), more: it.edits.length - 1 }
   return { text: it.note || (it.why || '').split('\n').find((l) => l.trim())?.replace(/[*_`#>]/g, '') || kindWord(it) }
 }
