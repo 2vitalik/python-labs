@@ -1,0 +1,64 @@
+#!/usr/bin/env -S uv run --quiet --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["python-pptx"]
+# ///
+"""bin/pptxdump — the lecturer's slides (sites/ods/orig/pptx/*.pptx) as text an agent can read (T374).
+
+  bin/pptxdump [NN…] [--new]     every lecture by default; NN ↔ pptx — the table in sites/ods/data/lectures/README.md
+
+Writes sites/ods/orig/render/lecNN/layout.md (every shape with its frame in %, every paragraph with colours, sizes, bold,
+formulas; the notation is at the top of the file) and layout.json (the same as data; its "about" says how to read it).
+--new writes layout.new.md / layout.new.json instead, to diff against the current ones. render/lecNN/shots.json, when
+there, adds the notes on the Quick Look snapshots sKK.png lying beside it.
+
+python-pptx stays out of the project's venv: uv runs this file in its own cached environment (the header above).
+"""
+import argparse
+import json
+import re
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent / "pptxdump.d"))
+from deck import read
+from md import render
+
+ODS = Path(__file__).resolve().parent.parent / "sites/ods"
+
+
+def decks() -> dict[int, str]:
+    """NN → pptx file name, from the README's table «md | pptx»."""
+    text = (ODS / "data/lectures/README.md").read_text(encoding="utf-8")
+    return {int(n): f for n, f in re.findall(r"^\| `lec(\d+)/lec\d+\.md` \| `([^`]+\.pptx)` \|", text, re.MULTILINE)}
+
+
+def rounded(x):
+    if isinstance(x, float):
+        return round(x, 2)
+    if isinstance(x, dict):
+        return {k: rounded(v) for k, v in x.items()}
+    return [rounded(v) for v in x] if isinstance(x, list) else x
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
+    ap.add_argument("nn", nargs="*", type=int, help="lecture numbers; none — all")
+    ap.add_argument("--new", action="store_true", help="write layout.new.md / layout.new.json")
+    a = ap.parse_args()
+    files = decks()
+    for n in a.nn or sorted(files):
+        if n not in files:
+            sys.exit(f"lec{n:02d}: no pptx in the README's table")
+        lec, out = f"lec{n:02d}", ODS / f"orig/render/lec{n:02d}"
+        out.mkdir(parents=True, exist_ok=True)
+        shots = json.loads((out / "shots.json").read_text(encoding="utf-8")) if (out / "shots.json").exists() else {}
+        d = read(ODS / "orig/pptx" / files[n], lec, shots)
+        stem = "layout.new" if a.new else "layout"
+        md = render(d)
+        (out / f"{stem}.md").write_text(md, encoding="utf-8")
+        (out / f"{stem}.json").write_text(json.dumps(rounded(d), ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        print(f"{lec}  {files[n]}  slides {len(d['slides'])}  md {md.count(chr(10)) + 1} lines → {out.relative_to(ODS.parent.parent)}/{stem}.*")
+
+
+main()
