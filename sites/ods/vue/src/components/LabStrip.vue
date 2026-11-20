@@ -10,7 +10,7 @@ import LabNav from './LabNav.vue'
 
 // the lab's pages in its bar (LabBar): one row that scrolls sideways — a finger, a wheel — when it does not fit, a soft fade
 // at an edge with more behind it, the open page's pill in sight: at once on a strip just filled, gently after a click, not
-// at all when it is in sight already
+// at all when it is in sight already. `away` (LabBar: the page's own row is in sight) — faded out, its room kept
 const props = defineProps({ n: Number })
 const route = useRoute()
 const strip = ref()
@@ -57,7 +57,9 @@ function wheel(e) {
 
 <style scoped>
 .strip { display: flex; flex: 1 1 auto; align-items: center; align-self: stretch; min-width: 0; overflow-x: auto; scrollbar-width: none;
-         mask-image: linear-gradient(to right, transparent, #000 var(--fl, 0px), #000 calc(100% - var(--fr, 0px)), transparent); }
+         mask-image: linear-gradient(to right, transparent, #000 var(--fl, 0px), #000 calc(100% - var(--fr, 0px)), transparent);
+         transition: opacity .25s, visibility .25s; }
+.strip.away { opacity: 0; visibility: hidden; }
 .strip::-webkit-scrollbar { display: none; }
 .strip.l { --fl: 1.5rem; }
 .strip.r { --fr: 1.5rem; }

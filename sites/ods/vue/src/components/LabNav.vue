@@ -2,10 +2,11 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
+import '../labColors.css'
 import { lineOf, loadLabPages, pageWord, pathOf } from '../labPages.js'
 
-// a lab's pages as a row of pills (`n`), or the pages common to all labs; the page open now is marked; a lab of one page
-// has no row. In the lab's bar (LabBar) and on the list of labs
+// a lab's pages as a row of pills (`n`), or the pages common to all labs; the page open now is marked — in the lab's
+// colour; a lab of one page has no row. On a lab's page (LabRow), in its bar (LabStrip) and on the list of labs
 const props = defineProps({ n: Number })
 const route = useRoute()
 const pages = computed(() => lineOf(props.n))
@@ -13,7 +14,7 @@ loadLabPages()
 </script>
 
 <template>
-  <nav v-if="pages.length > (n ? 1 : 0)" class="lab-nav" :aria-label="n ? 'Сторінки лаби' : 'Про лаби'">
+  <nav v-if="pages.length > (n ? 1 : 0)" class="lab-nav" :class="n && `lab-c${n}`" :aria-label="n ? 'Сторінки лаби' : 'Про лаби'">
     <span v-if="!n" class="small text-secondary me-1">Про лаби</span>
     <template v-for="p in pages" :key="p.slug">
       <span v-if="route.path === pathOf(p)" class="pill here" aria-current="page">{{ pageWord(p) }}</span>
@@ -29,4 +30,6 @@ loadLabPages()
         color: var(--bs-body-color); text-decoration: none; }
 a.pill:hover { background: var(--bs-tertiary-bg); }
 .pill.here { border-color: var(--bs-primary-border-subtle); background: var(--bs-primary-bg-subtle); color: var(--bs-primary-text-emphasis); }
+.lab-nav[class*='lab-c'] .pill.here { border-color: color-mix(in srgb, var(--lab) 55%, var(--bs-border-color));
+                                      background: color-mix(in srgb, var(--lab) calc(var(--lab-pale) + 6%), var(--bs-body-bg)); color: var(--bs-body-color); }
 </style>

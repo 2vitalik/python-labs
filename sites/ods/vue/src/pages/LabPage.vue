@@ -14,13 +14,15 @@ import { useTitle } from '@core/title.js'
 
 import LabBar from '../components/LabBar.vue'
 import LabFiles from '../components/LabFiles.vue'
+import LabRow from '../components/LabRow.vue'
 import { gates, loadGates } from '../labGates.js'
 import { labsWithCards, lineOf, loadLabPages, pageWord, pathOf } from '../labPages.js'
 import { vRich } from '../rich.js'
 
 // a lab's page or a part of it (/labs/3 → lab3, /labs/3/case1 → lab3-case1), or a page common to all labs
 // (/labs/about/grading → labs-grading): the text with its contents and files, «← · →» along the lab's pages; the
-// lab's pages, «Моя лаба» and the other labs — in the bar on the shelf (LabBar)
+// lab's pages as a row under the title (LabRow) — and in the bar on the shelf (LabBar) once that row is scrolled away;
+// «Моя лаба» and the other labs — in the bar
 const route = useRoute()
 const about = computed(() => !!route.meta.about)
 const n = computed(() => (about.value ? 0 : Number(route.params.n)))
@@ -71,10 +73,11 @@ watch(slug, load, { immediate: true })
 </script>
 
 <template>
-  <LabBar />
+  <LabBar row />
   <div v-if="page">
     <Crumbs :items="crumbs" />
     <h1 class="h2 mb-3">{{ page.title }}</h1>
+    <LabRow :n class="mb-3" />
     <p v-if="note" class="small text-secondary mb-3">{{ note }}</p>
     <!-- keyed by the page shown: an editor left open on the page before must not save into this one -->
     <div :key="page.slug" v-rich="page.slug"><GuideBody v-model:page="page" /></div>

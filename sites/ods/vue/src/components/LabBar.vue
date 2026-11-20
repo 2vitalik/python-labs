@@ -12,13 +12,17 @@ import { wideOf } from '@core/wide.js'
 import '../labColors.css'
 import { gates, loadGates } from '../labGates.js'
 import { labsWithCards, loadLabPages } from '../labPages.js'
+import { rowGone } from '../labRow.js'
 import { LABS } from '../site.js'
 import LabStrip from './LabStrip.vue'
 
 // a lab's bar on the shelf under the menu (App.vue), on every page of the lab: the numbers of the labs, the lab's pages
 // (LabStrip), «Моя лаба» and the teacher's «Результати» — one row on any screen. A link to the page open now, or the
 // bar's empty space once the page is scrolled, goes to the top. Its height stands before its data: nothing under it moves.
-// Every number wears its lab's colour (labColors.css), and so does the open page's pill: the bar says which lab this is
+// `row` — the page lays the pills in a row of its own (LabRow): the bar shows them only once that row has gone under the
+// shelf, in the room kept for them all along (T381). The open lab's number is filled with its colour (labColors.css)
+const props = defineProps({ row: Boolean })
+const pills = computed(() => !props.row || rowGone.value)
 const route = useRoute()
 const about = computed(() => !!route.meta.about)
 const n = computed(() => (about.value ? 0 : Number(route.params.n)))
@@ -54,7 +58,7 @@ function click(e) {
         <template v-if="ready">
           <!-- a LabTabs a number: a lab hidden from students is pale -->
           <span class="nums" :class="{ bare: admin }"><LabTabs v-for="(l, i) in labs" :key="l.n" :labs="[l]" :n :class="[`lab-c${l.n}`, { more: i, shut: gates[l.n] === 'hidden' }]" /></span>
-          <LabStrip :n />
+          <LabStrip :n :class="{ away: !pills }" />
           <span v-if="cards(n)" class="ends btn-group btn-group-sm" :class="{ two: admin }">
             <RouterLink v-for="[k, word, pic, look] in ends" :key="k" :to="`/labs/${n}/${k}`" class="btn" :class="[look, { active: at === k }]"
                         :aria-label="word" :title="admin ? word : null"><Icon :name="pic" /><span>{{ word }}</span></RouterLink>
@@ -72,11 +76,11 @@ function click(e) {
 .nums { display: flex; flex: none; align-items: center; gap: .2rem; }
 .more :deep(.cap), .bare :deep(.cap) { display: none; }  /* the teacher's five numbers leave the caption's room to the pages */
 .shut { opacity: .45; }
-/* a number in its lab's colour: pale at rest, deeper for the lab open now (over LabTabs' own blue) */
-.nums :deep(.tab) { border-color: color-mix(in srgb, var(--lab) 45%, var(--bs-border-color)); background: color-mix(in srgb, var(--lab) 14%, var(--bs-body-bg)); }
-.nums :deep(.tab.on) { border-color: var(--lab); background: color-mix(in srgb, var(--lab) 38%, var(--bs-body-bg)); color: var(--bs-body-color) !important; }
-.lab-bar[class*='lab-c'] :deep(.pill.here) { border-color: color-mix(in srgb, var(--lab) 55%, var(--bs-border-color));
-                                             background: color-mix(in srgb, var(--lab) 20%, var(--bs-body-bg)); color: var(--bs-body-color); }
+/* only the open lab wears its colour, filled: which one is pressed reads at once. Another lab's colour shows under the
+   mouse, pale — where it leads (over LabTabs' own blue) */
+.nums :deep(.tab.on) { border-color: var(--lab); background: var(--lab); }
+.nums :deep(.tab:not(.on):hover) { border-color: color-mix(in srgb, var(--lab) 45%, var(--bs-border-color));
+                                   background: color-mix(in srgb, var(--lab) var(--lab-pale), var(--bs-body-bg)); }
 .ends { flex: none; }
 .btn { white-space: nowrap; }
 .btn .icon { display: none; }

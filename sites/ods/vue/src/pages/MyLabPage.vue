@@ -14,6 +14,7 @@ import LabCard from '../components/LabCard.vue'
 import LabDefence from '../components/LabDefence.vue'
 import LabHandIn from '../components/LabHandIn.vue'
 import LabNoCard from '../components/LabNoCard.vue'
+import LabRow from '../components/LabRow.vue'
 import LabSeen from '../components/LabSeen.vue'
 import { loadGates } from '../labGates.js'
 
@@ -53,9 +54,10 @@ watch(n, load, { immediate: true })
 
 <template>
   <div>
-    <LabBar />
+    <LabBar row />
     <Crumbs :items="[['/labs', 'Лаби'], [`/labs/${n}`, `Лаба ${n}`], 'Моя лаба']" />
     <h1 class="h2 mb-3">Моя лаба {{ n }}</h1>
+    <LabRow :n class="mb-3" />
     <LabNoCard v-if="none" :n :why="none.why" :demo="none.demo || ''" :taken="none.demo_taken" @got="got" />
     <template v-else-if="lab">
       <LabCard :n :lab />
