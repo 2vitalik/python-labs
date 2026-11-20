@@ -32,7 +32,7 @@ export function flash(id, { near = false } = {}) {
   // a target screens away is reached at once: a smooth ride over a long text takes seconds
   const far = Math.abs(block.getBoundingClientRect().top) > 2 * innerHeight
   if (near) reveal(block)
-  else block.scrollIntoView({ block: 'start', behavior: reduced() || far ? 'auto' : 'smooth' })
+  else block.scrollIntoView({ block: 'start', behavior: far ? 'instant' : reduced() ? 'auto' : 'smooth' })  // 'auto' obeys Bootstrap's smooth
   if (el.closest('.noflash')) return true  // catalog zones, the /method contents box: scroll only, the colour would cover a whole block
   clearTimeout(timer)
   document.querySelectorAll('.flash').forEach((t) => t.classList.remove('flash'))
