@@ -1,0 +1,37 @@
+/* the lecturer's look (T374 §5), on under .lec-author (lecLook.js): .lecture — the text, .slides — the slides. The tags of
+   his colours (`<c-b>…</c-b>`, T374 §1) take them; without the class they are plain inline elements. His hues as they are
+   where they read on paper; his red and orange a shade darker, and lighter ones in the dark theme — all ≥ 4.5:1 on the page
+   and on the paper */
+:root {
+  --au-b: #0000ff; --au-n: #000099; --au-r: #d90000; --au-d: #c00000;
+  --au-m: #cc0099; --au-g: #006600; --au-p: #7030a0; --au-o: #b25000;
+  --au-paper: #fff3dc;
+}
+[data-bs-theme=dark] {
+  --au-b: #8f9cff; --au-n: #a9b8ec; --au-r: #ff6b6b; --au-d: #f2858c;
+  --au-m: #f47ad6; --au-g: #72d08a; --au-p: #c4a0ff; --au-o: #ffad5c;
+  --au-paper: #2a251e;
+}
+.lec-author c-b { color: var(--au-b); }
+.lec-author c-n { color: var(--au-n); }
+.lec-author c-r { color: var(--au-r); }
+.lec-author c-d { color: var(--au-d); }
+.lec-author c-m { color: var(--au-m); }
+.lec-author c-g { color: var(--au-g); }
+.lec-author c-p { color: var(--au-p); }
+.lec-author c-o { color: var(--au-o); }
+
+/* a slide as his: the warm paper, the running head and the number dark blue and bold, the title his blue, red list marks.
+   Bold is only bold (slides.css paints it in the calm look); a role is its label and some air — his tag colours the label */
+.lec-author .slide { --lec-paper: var(--au-paper); }
+.lec-author .slide-head { color: var(--au-n); font-weight: 700; }
+.lec-author .slide-head .num { font-weight: 700; }
+.lec-author .slide .guide > :first-child:is(h2, h3, h4) { color: var(--au-b); }
+.lec-author .slide .guide li::marker { color: var(--au-r); }
+.lec-author .slide .guide .role { padding: 0; border: 0; border-radius: 0; background: none; }
+.lec-author .slide-progress { background: var(--au-m); }
+/* the cover: the course dark blue, «Тема N» red, the name blue, a magenta rule by the plan — his first slide's colours */
+.lec-author .slide.cover .eyebrow { color: var(--au-n); font-weight: 700; }
+.lec-author .slide.cover .title { color: var(--au-b); }
+.lec-author .slide.cover .title .topic { color: var(--au-r); }
+.lec-author .slide.cover .guide { border-left-color: var(--au-m); }

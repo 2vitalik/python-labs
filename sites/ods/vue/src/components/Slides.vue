@@ -6,15 +6,19 @@ import Icon from '@core/components/Icon.vue'
 import Lightbox from '@core/components/Lightbox.vue'
 import { showShot } from '@core/lightbox.js'
 
+import { author } from '../lecLook.js'
 import { fit } from '../slideFit.js'
 import { useSlideKeys } from '../slideKeys.js'
 import '../slides.css'
 import { COURSE, coverOf, headHtml } from '../slides.js'
+import SlideMore from './SlideMore.vue'
+import SlideOrig from './SlideOrig.vue'
 
 // one slide at a time on a 16:9 sheet (T359 §4); `v-model` is the slide's own number, «у тексті» sends it back (`text`).
 // A slide shows only once its type is fitted (slideFit.js). The keys, the swipe and the whole screen are slideKeys.js'.
-// The lightbox is its own: on the whole screen nothing outside this element is seen
-const props = defineProps({ slides: Array, title: String })
+// The lightbox is its own: on the whole screen nothing outside this element is seen. `slug` — the lecture's: «оригінал»
+// shows the lecturer's own slide (SlideOrig) in place of ours; the look — his colours or calm — is lecLook.js'
+const props = defineProps({ slides: Array, title: String, slug: String })
 const emit = defineEmits(['text'])
 const n = defineModel({ type: Number })
 const root = ref(), sheet = ref(), body = ref(), ready = ref(false)
@@ -27,7 +31,8 @@ function go(step) {
   const s = props.slides[at.value + step]
   if (s) n.value = s.n
 }
-const { idle, canFull, full, wake, touchDown, touchUp } = useSlideKeys(root, body, go)
+const orig = ref(false), hasOrig = ref(false)
+const { idle, canFull, full, wake, touchDown, touchUp } = useSlideKeys(root, body, go, orig)
 
 // the sheet and its bar take the window from the sheet's own top down (slides.css: --top): scrolling the page to them would
 // not hold — the router takes the page to its top at every slide. On the whole screen the sheet is the window's
@@ -55,8 +60,8 @@ function zoom(e) {
 </script>
 
 <template>
-  <div ref="root" class="slides" :class="{ idle }" @mousemove="wake">
-    <div ref="sheet" class="slide" :class="{ cover, wait: !ready }" :style="{ '--at': last ? at / last : 1 }"
+  <div ref="root" class="slides" :class="{ idle, 'lec-author': author }" @mousemove="wake">
+    <div ref="sheet" class="slide" :class="{ cover, wait: !ready, orig }" :style="{ '--at': last ? at / last : 1 }"
          @touchstart.passive="touchDown" @touchend="touchUp">
       <div v-if="!cover" class="slide-head"><span class="sec" v-html="headHtml(cur.sec)"></span><span class="num">{{ cur.n }}</span></div>
       <div ref="body" class="slide-body" @click="zoom">
@@ -66,6 +71,8 @@ function zoom(e) {
         </template>
         <GuideText v-if="text" :key="cur.n" :text />
       </div>
+      <SlideMore :body />
+      <SlideOrig v-model="orig" v-model:has="hasOrig" :slug :n="cur.n" />
       <div class="slide-progress"></div>
     </div>
     <div class="slide-bar">
@@ -73,6 +80,9 @@ function zoom(e) {
       <span class="count" title="Номер слайда / останній">{{ cur.n }} / {{ slides[last].n }}</span>
       <button class="btn btn-sm btn-outline-secondary" :disabled="at === last" title="Наступний (→)" @click="go(1)"><Icon name="right" /></button>
       <span class="grow"></span>
+      <span :title="hasOrig ? 'Слайд лектора, як на лекції (O)' : 'Знімки слайдів лектора ще не залито'">
+        <button class="btn btn-sm btn-outline-secondary" :class="{ active: orig }" :aria-pressed="orig" :disabled="!hasOrig" @click="orig = !orig"><Icon name="image" /><span class="word">оригінал</span></button>
+      </span>
       <button class="btn btn-sm btn-outline-secondary" title="Це місце в тексті" @click="emit('text', cur.n)"><Icon name="book" /><span>у тексті</span></button>
       <button class="btn btn-sm btn-outline-secondary" :disabled="!canFull" title="На весь екран (F)" @click="full"><Icon name="full" /></button>
     </div>

@@ -6,8 +6,9 @@
 .slide { position: relative; aspect-ratio: 16 / 9; container-type: size; overflow: hidden; background: var(--lec-paper);
          border: 1px solid var(--bs-border-color-translucent); border-radius: .75rem;
          box-shadow: 0 1px 2px rgb(0 0 0 / .05), 0 12px 32px -18px rgb(0 0 0 / .35); }
-.slide :is(.slide-head, .slide-body) { transition: opacity .12s; }
-.slide.wait :is(.slide-head, .slide-body) { opacity: 0; transition: none; }
+.slide :is(.slide-head, .slide-body, .slide-more) { transition: opacity .12s; }
+.slide.wait :is(.slide-head, .slide-body, .slide-more) { opacity: 0; transition: none; }
+.slide.orig :is(.slide-head, .slide-body, .slide-more) { visibility: hidden; }  /* the lecturer's own picture over it (SlideOrig) */
 
 /* the running head, as on the lecturer's slides: the section on the left, the slide's number on the right */
 .slide-head { position: absolute; top: 3.4cqh; left: 5cqw; right: 3.6cqw; display: flex; gap: 1em; justify-content: space-between;
@@ -20,7 +21,8 @@
 .slide-progress { position: absolute; left: 0; bottom: 0; height: .35cqh; min-height: 2px; width: calc(var(--at, 0) * 100%);
                   background: var(--lec-accent); opacity: .65; transition: width .2s; }
 
-/* inside: the first heading is the slide's title, bold is the accent, lists and paragraphs close together */
+/* inside: the first heading is the slide's title, bold is the accent (not in the lecturer's look: his colours are the tags),
+   lists and paragraphs close together */
 /* the title grows with the type down to the small steps, not above the base: a short slide is not to shout */
 .slide .guide > :first-child:is(h2, h3, h4) { font-size: calc(1.5em * min(1, 1 / var(--fit, 1))); font-weight: 700; letter-spacing: -.01em; line-height: 1.2;
                                                color: var(--lec-accent); margin: 0 0 .6em; }
@@ -30,7 +32,7 @@
 .slide .guide li { margin-bottom: .15em; }
 .slide .guide li > p { margin-bottom: .2em; }
 .slide .guide :is(ul, ol) { padding-left: 1.3em; }
-.slide .guide strong { color: var(--lec-accent); }
+:not(.lec-author) > .slide .guide strong { color: var(--lec-accent); }
 .slide .guide .role { padding: .3em .7em; margin-bottom: .55em; }
 .slide .guide .role strong { color: inherit; }
 .slide .guide .katex-display { margin: .4em 0; }
@@ -44,6 +46,13 @@
 .slide .guide .lec-text { display: none; }
 .slide .guide .lec-cols { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; grid-template-columns: var(--cols, none);
                           gap: 1.6em; align-items: center; margin-bottom: .5em; }
+/* denser, tried before a scroll (slideFit.js): closer lines, smaller gaps */
+.slide-body.dense { line-height: 1.27; }
+.slide-body.dense .guide :is(p:not(.fig), ul, ol, blockquote, .table-responsive, .lec-cols) { margin-bottom: .3em; }
+.slide-body.dense .guide :is(li, li > p) { margin-bottom: .05em; }
+.slide-body.dense .guide > :first-child:is(h2, h3, h4) { margin-bottom: .35em; }
+.slide-body.dense .guide .katex-display { margin: .2em 0; }
+.slide-body.dense .guide .role { margin-bottom: .3em; }
 
 /* the cover: the course, «Тема N» and the name above the slide's own text (the plan) */
 .slide.cover .slide-body { display: flex; flex-direction: column; justify-content: center; inset: 8cqh 8cqw; }
@@ -78,6 +87,7 @@
   .slides { --w: auto; width: auto; margin-inline: 0; }
   .slide { aspect-ratio: auto; height: max(20rem, calc(100dvh - var(--top, 10rem) - 3.25rem)); }
   .slide-head { top: .8rem; left: 1rem; right: 1rem; font-size: .72rem; }
+  .slide-bar .word { display: none; }  /* the bar is to fit one line: «оригінал» is its picture there */
   .slide-body { inset: 2.6rem 1rem 1.2rem; font-size: max(13px, calc(var(--fit, 1) * 16px)); }
   .slide .guide .lec-cols { display: block; }
   .slide .guide .lec-col + .lec-col { margin-top: .6em; }

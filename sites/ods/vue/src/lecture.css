@@ -1,6 +1,9 @@
 /* a lecture's text (.lecture .guide) and what slideMd.js marks in it, here and on a slide (T359 §5). Three colours, each one
    thing: accent — structure (headings, list marks, rules, bold on a slide), green — an example, amber — a note; the rest is
-   ink and greys. slideMd's classes land on the lab pages too: there, outside .lecture and .slide, nothing styles them */
+   ink and greys. slideMd's classes land on the lab pages too: there, outside .lecture and .slide, nothing styles them.
+   The lecturer's own colours, when on, are lecAuthor.css' */
+@import './lecAuthor.css';
+
 :root {
   --lec-accent: #2b47b3;
   --lec-example: #1c7c45;
@@ -28,13 +31,16 @@
 :is(.lecture, .slide) .guide li::marker { color: var(--lec-accent); }
 .lecture .guide ol > li::marker { font-weight: 650; }
 
-/* roles: a bold label at the start of a paragraph or a quote — the edge and the label take the role's colour */
+/* roles: a bold label at the start of a paragraph or a quote — the edge and the label take the role's colour. A label in the
+   lecturer's tag (`<c-g>**Наприклад**</c-g>`) too, unless his colours are on: then his tag says, and on a slide nothing else */
 :is(.lecture, .slide) .guide .role { --role: var(--lec-accent); color: inherit; border: 0; border-left: 3px solid var(--role);
                                      border-radius: 0 .5rem .5rem 0; background: color-mix(in srgb, var(--role) 7%, transparent); }
 :is(.lecture, .slide) .guide .role.example { --role: var(--lec-example); }
 :is(.lecture, .slide) .guide .role.note { --role: var(--lec-note); }
 :is(.lecture, .slide) .guide .role > :last-child { margin-bottom: 0; }
-:is(.lecture, .slide) .guide :is(p.role, .role > p:first-child) > strong:first-child { color: var(--role); }
+:is(.lecture, :not(.lec-author) > .slide) .guide :is(p.role, .role > p:first-child) > strong:first-child,
+:is(.lecture:not(.lec-author), :not(.lec-author) > .slide) .guide :is(p.role, .role > p:first-child)
+  > :first-child:is(c-b, c-n, c-r, c-d, c-m, c-g, c-p, c-o) > strong:first-child { color: var(--role); }
 .lecture .guide .role { margin: 0 0 1rem; padding: .5rem .95rem; }
 /* «Рішення.» / «Відповідь:» inside a quoted example: its label in colour, no box inside the box */
 :is(.lecture, .slide) .guide .role .role { padding: 0; border: 0; border-radius: 0; background: none; }
