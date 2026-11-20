@@ -5,21 +5,25 @@ import Crumbs from '@core/components/Crumbs.vue'
 import { loadGuide, pages } from '@core/guide.js'
 import { user } from '@core/user.js'
 
+import '../labColors.css'
 import LabGate from '../components/LabGate.vue'
+import LabMine from '../components/LabMine.vue'
 import LabNav from '../components/LabNav.vue'
 import { gates, loadGates } from '../labGates.js'
 import { commons, labsWithCards, loadLabPages } from '../labPages.js'
 import { LABS } from '../site.js'
 
 // /labs: the pages common to all labs, then the labs that have a guide page — each with «Моя лаба» once it has cards,
-// and the teacher's «Результати»; a lab hidden from students (labGates.js) is in the teacher's list only, with the
-// switch of how open it is on every row; the teacher's archive of the old labs below
+// and the teacher's «Результати»; a student's row says in a few words how their own lab stands (LabMine); a lab hidden
+// from students (labGates.js) is in the teacher's list only, with the switch of how open it is on every row; the
+// teacher's archive of the old labs below
 const ready = ref(false)
 const held = ref([])
 const admin = computed(() => user.value?.status === 'admin')
 const labs = computed(() => LABS.filter((l) => pages.value[l.slug]))
 const title = (l) => pages.value[l.slug].title.replace(/^(Лабораторна|Завдання)\s+\d+\.\s*/, '')  // the number stands beside it
 const mine = (l) => held.value.some((c) => c.n === l.n)
+const own = (l) => held.value.find((c) => c.n === l.n && c.mine)  // the reader's own card of the lab, with its BRIEF
 Promise.all([loadGuide(), loadGates(), labsWithCards().then((l) => (held.value = l)), loadLabPages().catch(() => null)])
   .then(() => (ready.value = true))
 </script>
@@ -34,12 +38,13 @@ Promise.all([loadGuide(), loadGates(), labsWithCards().then((l) => (held.value =
     </section>
     <ol class="labs list-unstyled">
       <li v-for="l in labs" :key="l.slug" class="position-relative" :class="{ shut: gates[l.n] === 'hidden' }">
-        <span class="n text-secondary">{{ l.n }}</span>
+        <span class="lab-n lab-tint" :class="`lab-c${l.n}`">{{ l.n }}</span>
         <RouterLink :to="l.path" class="stretched-link">{{ title(l) }}</RouterLink>
-        <span class="acts d-flex align-items-center gap-2 ms-auto text-nowrap">
+        <span class="acts d-flex align-items-center gap-2 ms-auto">
           <LabGate v-if="admin" :n="l.n" />
+          <LabMine v-else-if="own(l)" :m="own(l)" class="small" />
           <span v-else-if="gates[l.n] === 'telegram'" class="small text-secondary">здаємо в Telegram</span>
-          <span v-if="mine(l)" class="btn-group btn-group-sm">
+          <span v-if="mine(l)" class="btn-group btn-group-sm text-nowrap">
             <RouterLink :to="`/labs/${l.n}/my`" class="btn btn-outline-primary">Моя лаба</RouterLink>
             <RouterLink v-if="admin" :to="`/labs/${l.n}/results`" class="btn btn-outline-secondary">Результати</RouterLink>
           </span>
@@ -54,7 +59,6 @@ Promise.all([loadGuide(), loadGates(), labsWithCards().then((l) => (held.value =
 /* on a narrow screen the row's actions go under the title, to the right, and wrap among themselves */
 .labs li { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .75rem; padding: .45rem .5rem; border-bottom: 1px solid var(--bs-border-color-translucent); }
 .labs li:hover { background: var(--bs-tertiary-bg); }
-.labs .n { min-width: 1.5rem; text-align: right; font-variant-numeric: tabular-nums; }
 .labs a.stretched-link { flex: 1 1 12rem; min-width: 0; text-decoration: none; }
 .labs .shut a.stretched-link { color: var(--bs-secondary-color); }  /* students do not see this lab */
 .acts { position: relative; z-index: 2; flex-wrap: wrap; justify-content: flex-end; }  /* above the row's link, which covers the whole row */

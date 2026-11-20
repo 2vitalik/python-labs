@@ -2,10 +2,10 @@
 import { ref } from 'vue'
 
 import Reveal from '@core/components/Reveal.vue'
-import { fmtWhen } from '@core/labs.js'
 
 import { pullLabFile, putMyLab } from '../api.js'
 import LabDrop from './LabDrop.vue'
+import LabDue from './LabDue.vue'
 
 // «Здати»: the file is the way; a Colab link the site fetches the file by, or the answer line alone, wait behind
 // «інший спосіб» — open from the start for someone who has handed in a line before and no file
@@ -43,9 +43,8 @@ const check = () => run('line', async () => {
 <template>
   <section class="mb-4">
     <h2 class="h5">Здати</h2>
-    <p v-if="lab.due" class="small text-secondary mb-2">Дедлайн {{ fmtWhen(lab.due) }}<template v-if="lab.late"> ·
-      <span class="text-danger">після дедлайну</span></template></p>
-    <LabDrop :n @got="emit('got', $event)" />
+    <p v-if="lab.due" class="small text-secondary mb-2"><LabDue :lab /></p>
+    <LabDrop :n :count="lab.files?.length || 0" @got="emit('got', $event)" />
     <a href="#" class="lab-dot small d-inline-block mt-1" @click.prevent="other = !other">інший спосіб</a>
     <Reveal :show="other">
       <div class="pt-2">

@@ -1,4 +1,5 @@
-"""What a notebook file says without running it (T354 §3): FACTS = {kind, tool, cells, vid, card, line, ran, tasks, count, times}.
+"""What a notebook file says without running it (T354 §3): FACTS = {kind, tool, cells, vid, card, lab, line, ran, tasks, count, times}
+(`lab` — the lab its own last cell names: every template prints "LABn" there; None — that cell is gone).
 A step is done when its code has lines the template has not (comments aside) or its words run 20 characters past the label.
 None — the file cannot tell: marimo's .py carries no outputs, a lab without a template cannot tell code of its own."""
 import re
@@ -10,6 +11,7 @@ import labs_out
 from labs_ran import ran, times
 
 LINE = re.compile(r"^\s*(LAB\d+\s+\S+.*)$")
+SAYS_LAB = re.compile(r"""print\(\s*["']LAB(\d+)["']""")
 CHECK = re.compile(r"^\s*(✅|❌|⬜)\s+(\S+)")
 MARKS = {"✅": True, "❌": False, "⬜": None}
 COMMENT = re.compile(r"<!--.*?-->", re.S)
@@ -71,6 +73,7 @@ def facts(nb: dict, shape: dict | None) -> dict:
     code = [c for c in nb["cells"] if c["kind"] == "code"]
     vid = next((m[1].strip() for c in code if (m := labs_nb.VARIANT.search(c["source"]))), "")
     found = [m[1] for c in code for x in labs_out.lines(c["outputs"]) if (m := LINE.match(x))]
-    return {"kind": nb["kind"], "tool": nb["tool"], "cells": len(nb["cells"]), "vid": vid, "card": bool(vid),
+    lab = next((int(m[1]) for c in code if (m := SAYS_LAB.search(c["source"]))), None)
+    return {"kind": nb["kind"], "tool": nb["tool"], "cells": len(nb["cells"]), "vid": vid, "card": bool(vid), "lab": lab,
             "line": " ".join(found[-1].split()) if found else "", "ran": ran(nb), "tasks": ts,
             "count": count(ts, bool(shape), nb["kind"] != "marimo"), "times": times(nb["cells"])}

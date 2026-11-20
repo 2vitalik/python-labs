@@ -3,12 +3,13 @@ and a strip of the stream's card numbers per lab: which numbers sent a notebook 
 from beanie.operators import In
 from pydantic import BaseModel
 
-from core.labs import due_for, effective, utc
+from core.labs import due_for, utc
 from core.models.deadline import Deadline, LabMark
 from core.models.history import when
 from core.models.user import User
 from intake_match import clues, guess, who
 from lab_claim import DEMO
+from lab_my import due_at
 from models.forward import Forward, ForwardHead
 from models.lab import LabVariant
 
@@ -57,11 +58,11 @@ async def intake() -> dict:
     cards = {(c.lab, c.vid): c for c in await LabVariant.find_all().project(Card).to_list()}
     deadlines = await Deadline.find_all().sort("created_at").to_list()
     marks = {(m.user, m.lab): m for m in await LabMark.find(In(LabMark.user, list({r.student for r in rows if r.student}))).to_list()}
-    common = {lab: effective(None, due_for(deadlines, lab, "")) for lab in {r.lab for r in rows if r.lab}}
+    common = {lab: due_at(None, due_for(deadlines, lab, "")) for lab in {r.lab for r in rows if r.lab}}
 
     def due(r: ForwardHead):
         u = users.get(r.student)
-        return effective(marks.get((u.email, r.lab)), due_for(deadlines, r.lab, u.group)) if u and r.lab else common.get(r.lab)
+        return due_at(marks.get((u.email, r.lab)), due_for(deadlines, r.lab, u.group)) if u and r.lab else common.get(r.lab)
 
     files = {r.id: file(r, due(r)) for r in rows}
     talks: dict[str, list[ForwardHead]] = {}

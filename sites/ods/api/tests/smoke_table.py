@@ -33,13 +33,21 @@ def login(c, email, status, group=""):
     mongo[DB].users.update_one({"email": email}, {"$set": {"status": status, "group": group, "last_name": email[0].upper()}})
 
 
+def pin(c, lab, vid, email):
+    """The teacher pins the card on «Результати» (T375); the student is back in after it."""
+    login(c, "admin@nure.ua", "admin")
+    r = c.put(f"/api/variants/{lab}/results/{vid}", json={"student": email})
+    settings.fake_user_email = email
+    c.get("/api/auth/dev-login")
+    return r
+
+
 with TestClient(main.app) as c:
     mongo[DB].variants.insert_many([{"lab": lab, "vid": f"КН-1-{n:02d}", "group": "КН-1", "n": n, "card": "", "answers": ANSWERS, "student": ""}
                                     for lab, n in [(1, 1), (1, 2), (2, 1)]])
     login(c, "a@nure.ua", "student", "КН-1")
-    c.post("/api/variants/1/my/claim", json={"n": 1})
+    pin(c, 1, "КН-1-01", "a@nure.ua")  # the same number of lab 2 comes with it, no line there yet
     c.put("/api/variants/1/my", json={"line": "LAB1 КН-1-01 x=1 y=5", "notebook": "https://colab/a", "way": "record"})
-    c.get("/api/variants/2/my")  # the same number of lab 2 taken silently, no line yet
     login(c, "b@nure.ua", "student", "КН-1")
     login(c, "admin@nure.ua", "admin")
     c.put("/api/variants/1/results/КН-1-01", json={"points": 14, "note": "охайно"})

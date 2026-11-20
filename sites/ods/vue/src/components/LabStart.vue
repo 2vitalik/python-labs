@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 import Icon from '@core/components/Icon.vue'
 import Reveal from '@core/components/Reveal.vue'
@@ -10,10 +10,13 @@ import { marimoLink } from '../marimoLink.js'
 
 // where to start: the lab's notebook with the card in it — Jupyter / Colab, marimo, or marimo in the browser (T354 §8:
 // the code runs on the student's computer). marimo.app keeps one notebook per browser and our link opens a clean
-// template over it, so once a lab is started there the main way is back to marimo.app; a clean start asks twice
+// template over it, so once a lab is started there the main way is back to marimo.app; a clean start asks twice —
+// and so does a start over another lab's notebook: the key says which lab of ours is there now
 const props = defineProps({ n: Number, lab: Object })
-const KEY = `ods-marimo-${props.n}`
-const started = ref(load(KEY) === '1')
+const KEY = 'ods-marimo'
+const there = ref(Number(load(KEY)) || 0)
+const started = computed(() => there.value === props.n)
+const other = computed(() => (started.value ? 0 : there.value))
 const sure = ref(false)
 const error = ref('')
 let code = null  // the marimo notebook, fetched under the mouse: a window opened right in the click is not blocked
@@ -23,8 +26,8 @@ async function fresh() {
   error.value = ''
   try {
     window.open(marimoLink(await fetchCode()), '_blank', 'noopener')
-    save(KEY, '1')
-    started.value = true
+    save(KEY, String(props.n))
+    there.value = props.n
     sure.value = false
   } catch (e) {
     error.value = e.message
@@ -47,20 +50,23 @@ const warm = () => fetchCode().catch(() => {})
     <div v-if="lab.formats.marimo" class="d-flex flex-wrap align-items-center gap-2 mt-2">
       <span class="text-secondary">або одразу в браузері —</span>
       <button v-if="started" type="button" class="btn btn-sm btn-outline-primary" @click="resume"><Icon name="open" /> Продовжити в marimo</button>
-      <button v-else type="button" class="btn btn-sm btn-outline-primary" @pointerenter="warm" @focus="warm" @click="fresh">
+      <button v-else type="button" class="btn btn-sm btn-outline-primary" @pointerenter="warm" @focus="warm" @click="other ? (sure = !sure) : fresh()">
         <Icon name="open" /> Відкрити в браузері</button>
       <a v-if="started" href="#" class="lab-dot small" @pointerenter="warm" @click.prevent="sure = !sure">почати з чистого шаблону</a>
     </div>
     <Reveal :show="sure">
       <div class="d-flex flex-wrap align-items-center gap-2 pt-2 small">
-        <span>Чистий шаблон зітре роботу, яку ти вже зробив у marimo в цьому браузері.</span>
+        <span v-if="other">У marimo в цьому браузері зараз лаба {{ other }}: ноутбук цієї лаби ляже поверх неї. Спершу збережи її файл —
+          Ctrl/Cmd+S → ☰ → Export… → Python.</span>
+        <span v-else>Чистий шаблон зітре роботу, яку ти вже зробив у marimo в цьому браузері.</span>
         <button type="button" class="btn btn-sm btn-outline-secondary" @click="sure = false">Скасувати</button>
-        <button type="button" class="btn btn-sm btn-danger" @click="fresh">Почати з чистого</button>
+        <button type="button" class="btn btn-sm btn-danger" @click="fresh">{{ other ? `Відкрити лабу ${n}` : 'Почати з чистого' }}</button>
       </div>
     </Reveal>
     <p v-if="lab.formats.marimo" class="small text-secondary mt-1 mb-0">marimo у браузері: код виконується на твоєму компʼютері, перше
       відкриття — до пів хвилини, з телефона лише дивитись. Робота зберігається сама, але тільки в цьому браузері. Щоб здати:
-      Ctrl/Cmd+S → ☰ → Export… → Python → файл notebook.py (не порожній) — сюди.</p>
+      Ctrl/Cmd+S → ☰ → Export… → Python → файл notebook.py (не порожній) —
+      {{ lab.handin === 'telegram' ? 'викладачеві в Telegram, разом із рядком відповідей' : 'у «Здати» нижче' }}.</p>
     <p v-if="error" class="small text-danger mt-1 mb-0">{{ error }}</p>
   </div>
 </template>

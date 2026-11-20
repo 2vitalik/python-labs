@@ -6,24 +6,31 @@ import Icon from '@core/components/Icon.vue'
 import { sendLabFile } from '../api.js'
 
 // where a notebook file is handed in: dropped or picked. The box keeps its height — the server's words (what is wrong
-// with the file) and «прийнято» take its last line, nothing around moves; `got` — the API's MY after the upload
-const props = defineProps({ n: Number })
+// with the file) and «прийнято» take its last line, nothing around moves; `got` — the API's MY after the upload;
+// `count` — the versions there were: the same bytes again make no new one, and the box says so
+const props = defineProps({ n: Number, count: { type: Number, default: -1 } })
 const emit = defineEmits(['got'])
 const over = ref(false)
 const busy = ref(false)
 const error = ref('')
 const done = ref('')
+const MAX = 12 * 1024 * 1024  // the server's MAX_BYTES (models/lab_file.py): said here, before the file travels
+const TOO_BIG = 'Файл завеликий: ліміт 12 МБ — прибери з ноутбука великі виводи (таблиці, зайві картинки) і збережи ще раз'
+// the web server in front of the API may cut a request shorter than that, and answers without words of its own
+const CUT = 'Сервер не прийняв файл такого розміру. Здай ноутбук посиланням — «інший спосіб» нижче — і напиши викладачеві'
 
 async function send(file) {
   over.value = false
   if (!file || busy.value) return
-  busy.value = true
   error.value = done.value = ''
+  if (file.size > MAX) return (error.value = TOO_BIG)
+  busy.value = true
   try {
-    emit('got', await sendLabFile(props.n, file))
-    done.value = `Прийнято: ${file.name} — що побачив сайт, нижче`
+    const had = props.count, my = await sendLabFile(props.n, file)
+    emit('got', my)
+    done.value = my.files?.length === had ? `Такий самий файл уже тут — нової версії не додано` : `Прийнято: ${file.name} — що побачив сайт, нижче`
   } catch (e) {
-    error.value = e.message
+    error.value = e.status === 413 ? CUT : e.message
   } finally {
     busy.value = false
   }

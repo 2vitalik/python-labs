@@ -6,26 +6,25 @@ import Crumbs from '@core/components/Crumbs.vue'
 import { fmtWhen } from '@core/labs.js'
 import { problem } from '@core/problem.js'
 import { useTitle } from '@core/title.js'
-import { user } from '@core/user.js'
 
 import { findMyLab } from '../api.js'
 import LabByTelegram from '../components/LabByTelegram.vue'
 import LabCard from '../components/LabCard.vue'
-import LabClaim from '../components/LabClaim.vue'
 import LabDefence from '../components/LabDefence.vue'
 import LabHandIn from '../components/LabHandIn.vue'
+import LabNoCard from '../components/LabNoCard.vue'
 import LabSeen from '../components/LabSeen.vue'
-import { gates, loadGates } from '../labGates.js'
+import { loadGates } from '../labGates.js'
 
-// the student's own lab (T200, T354), as steps top to bottom: the card and the notebook to start from → the defence
-// questions → hand the file in → what the site sees in it → how to defend → the mark. Whatever comes back from the API
-// replaces MY whole, and only the blocks below the one in use change. A lab handed in by Telegram (labGates.js) has
-// words in place of the hand-in; a lab hidden from students is not there
+// the student's own lab (T200, T354), as steps top to bottom: the card the teacher pinned to them and the notebook to
+// start from → the defence questions → hand the file in → what the site sees in it → how to defend → the mark. Whatever
+// comes back from the API replaces MY whole, and only the blocks below the one in use change. A lab handed in by
+// Telegram (labGates.js) has words in place of the hand-in; a lab hidden from students is not there
 const route = useRoute()
 const n = computed(() => Number(route.params.n))
 const lab = ref(null)
 const gone = ref('')  // why there is no card for them: the API's own words
-const here = computed(() => user.value?.status === 'admin' || gates.value?.[n.value] === 'site')  // files go through the site
+const demo = ref('')  // the demo card's vid, for one who may open it instead
 useTitle(() => `Моя лаба ${n.value}`)
 
 const live = computed(() => {
@@ -35,15 +34,16 @@ const live = computed(() => {
 
 async function load() {
   lab.value = null
-  gone.value = ''
+  gone.value = demo.value = ''
   if (!(await loadGates())[n.value]) return (problem.value = 'lost')
   try {
     const my = await findMyLab(n.value)
-    if (my.vid) lab.value = my
-    else gone.value = my.why
+    if (my.vid) return (lab.value = my)
+    gone.value = my.why
+    demo.value = my.demo || ''
   } catch (e) {
     if (e.status !== 404) throw e
-    problem.value = 'lost'  // «no card yet» comes softly; a 404 is a lab hidden since the gates were read
+    problem.value = 'lost'  // «no card» comes softly; a 404 is a lab hidden since the gates were read
   }
 }
 function got(my) {
@@ -57,7 +57,7 @@ watch(n, load, { immediate: true })
   <div>
     <Crumbs :items="[['/labs', 'Лаби'], [`/labs/${n}`, `Лаба ${n}`], 'Моя лаба']" />
     <h1 class="h2 mb-3">Моя лаба {{ n }}</h1>
-    <LabClaim v-if="gone" :n :why="gone" :drop="here" @got="got" />
+    <LabNoCard v-if="gone" :n :why="gone" :demo @got="got" />
     <template v-else-if="lab">
       <LabCard :n :lab />
       <section v-if="lab.ask?.length" class="mb-4">

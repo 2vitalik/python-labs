@@ -3,10 +3,10 @@ import { extra, request, upload } from '@core/http.js'
 // the site's own calls; the platform's are in @core/api.js
 export const getLabs = () => request('/api/variants')  // which labs have cards
 export const getMyLab = (n) => request(`/api/variants/${n}/my`)
-export const findMyLab = (n) => request(`/api/variants/${n}/my?soft=1`)  // no card yet — {vid: null, why} instead of a 404
+export const findMyLab = (n) => request(`/api/variants/${n}/my?soft=1`)  // no card pinned — {vid: null, why, demo} instead of a 404
 export const putMyLab = (n, data) => request(`/api/variants/${n}/my`, 'PUT', data)
-export const getLabFree = (n) => request(`/api/variants/${n}/free`)  // the numbers of the student's stream nobody holds yet
-export const claimLab = (n, num) => request(`/api/variants/${n}/my/claim`, 'POST', { n: num })
+export const openLabDemo = (n) => request(`/api/variants/${n}/my/demo`, 'POST')  // the teacher's and a test student's card
+export const getLabLoose = (n) => request(`/api/variants/${n}/loose`)  // the teacher's: students without a card, the free cards
 export const sendLabFile = (n, file) => upload(`/api/variants/${n}/my/file`, file)
 export const pullLabFile = (n) => request(`/api/variants/${n}/my/pull`, 'POST')
 export const labStartUrl = (n, as) => `/api/variants/${n}/my/start?as=${as}`  // the template with the student's card in it, as a file

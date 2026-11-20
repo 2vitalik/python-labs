@@ -24,8 +24,9 @@ TYPES = {"ipynb": "application/x-ipynb+json", "marimo": "text/x-python"}
 
 @router.post("/{lab}/my/file")
 async def upload(lab: int, file: UploadFile, tasks: BackgroundTasks, user: User = Depends(taking)):
-    v = await hand_in(lab, user, Path(file.filename or "notebook.ipynb").name, await file.read(MAX_BYTES + 1))
-    tasks.add_task(lab_alerts.uploaded, user, v)
+    v, new = await hand_in(lab, user, Path(file.filename or "notebook.ipynb").name, await file.read(MAX_BYTES + 1))
+    if new:
+        tasks.add_task(lab_alerts.uploaded, user, v)
     return await my(v, user)
 
 
@@ -39,8 +40,9 @@ async def pull(lab: int, tasks: BackgroundTasks, user: User = Depends(taking)):
         data = await labs_pull.pull(v.notebook)
     except ValueError as e:
         raise HTTPException(422, str(e)) from None
-    v = await hand_in(lab, user, "colab.ipynb", data)
-    tasks.add_task(lab_alerts.uploaded, user, v)
+    v, new = await hand_in(lab, user, "colab.ipynb", data)
+    if new:
+        tasks.add_task(lab_alerts.uploaded, user, v)
     return await my(v, user)
 
 

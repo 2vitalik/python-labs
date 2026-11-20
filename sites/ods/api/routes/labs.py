@@ -1,4 +1,4 @@
-"""«Моя лаба» (T200, T354): a student's card — claimed by number or named by their notebook — the answer line, the link,
+"""«Моя лаба» (T200, T354, T375): a student's card — the one the teacher pinned to them — the answer line, the link,
 the form of defence. The teacher's side is routes/lab_review.py; variants come from lab_io.py."""
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 from pydantic import BaseModel
@@ -8,10 +8,10 @@ from core.deps import active_user
 from core.models.history import record
 from core.models.user import User
 from intake_apply import settle
-from lab_claim import DEMO, claim, group_of, may_demo, mine
+from lab_claim import demo, demo_card, may_demo, mine
 from lab_gates import BY_TELEGRAM, gates, here, opened, teacher
 from lab_line import attempt
-from lab_my import my
+from lab_my import brief, my
 from models.lab import LabVariant
 
 router = APIRouter(prefix="/api/variants")  # /api/labs is the platform's: deadlines of labs
@@ -27,63 +27,54 @@ class MyIn(BaseModel):
     video: str | None = None
 
 
-class ClaimIn(BaseModel):
-    n: int
-
-
 @router.get("")
 async def list_labs(user: User = Depends(active_user)):
-    """Which labs have cards, and whether this student already holds one; a hidden lab is the teacher's."""
-    held_ = {v.lab for v in await LabVariant.find(LabVariant.student == user.email).to_list()}
+    """Which labs have cards; `mine` — a card of the lab is pinned to this reader, and then BRIEF comes along: where the
+    lab is handed in, the deadline, what is handed in. A hidden lab is the teacher's."""
+    own = {v.lab: v for v in await LabVariant.find(LabVariant.student == user.email).to_list()}
     states = await gates()
-    return [{"n": n, "mine": n in held_} for n in sorted(await LabVariant.distinct("lab")) if teacher(user) or states.get(n) != "hidden"]
+    return [{"n": n, "mine": n in own} | (await brief(own[n], user, states.get(n, "site")) if n in own else {})
+            for n in sorted(await LabVariant.distinct("lab")) if teacher(user) or states.get(n) != "hidden"]
 
 
 @router.get("/{lab}/my")
 async def get_my(lab: int, soft: bool = False, user: User = Depends(opened)):
-    """MY; no card yet — 404 with the words why, or with `soft` 200 {vid: None, why}: «Моя лаба» asks so, an ordinary
-    first visit is not an error in the browser's console."""
+    """MY; no card pinned — 404 with the words why, or with `soft` 200 {vid: None, why, demo}: «Моя лаба» asks so, a visit
+    without a card is not an error in the browser's console; `demo` — the demo card's vid for one who may open it."""
     await settle(user)  # notebooks the teacher forwarded before the student linked the bot become theirs here (T368)
     try:
         v = await mine(lab, user)
     except HTTPException as e:
         if soft and e.status_code == 404:
-            return {"vid": None, "why": e.detail}
+            card = may_demo(user) and await demo_card(lab)
+            return {"vid": None, "why": e.detail, "demo": card.vid if card else None}
         raise
     return await my(v, user)
 
 
-@router.get("/{lab}/free")
-async def free(lab: int, user: User = Depends(opened)):
-    """The numbers of the student's stream nobody holds; `own` — the group in their profile; `same` — the number they hold
-    in another lab; `demo` — the demo card's vid when they may take it (n = 0), else None."""
-    group = await group_of(lab, user)
-    cards = await LabVariant.find(LabVariant.lab == lab, LabVariant.group == group, LabVariant.student == "", LabVariant.n > 0).sort("n").to_list() if group else []
-    other = await LabVariant.find_one(LabVariant.student == user.email, LabVariant.lab != lab)
-    demo = may_demo(user) and await LabVariant.find_one(LabVariant.lab == lab, LabVariant.group == DEMO, LabVariant.n == 0)
-    return {"group": group, "own": user.group, "free": [v.n for v in cards], "same": other.n if other else None, "demo": demo.vid if demo else None}
-
-
-@router.post("/{lab}/my/claim")
-async def claim_my(lab: int, data: ClaimIn, user: User = Depends(opened)):
-    return await my(await claim(lab, user, data.n), user)
+@router.post("/{lab}/my/demo")
+async def open_demo(lab: int, user: User = Depends(opened)):
+    """The teacher and a test student are not in the stream's list: the demo card instead."""
+    return await my(await demo(lab, user), user)
 
 
 @router.put("/{lab}/my")
 async def put_my(lab: int, data: MyIn, tasks: BackgroundTasks, user: User = Depends(opened)):
-    """Check the answer line and keep it; an empty or absent line keeps the old one. A lab handed in by Telegram takes
-    no line here — the link, the form of defence and the video it does."""
+    """Check the answer line and keep it; an empty or absent line keeps the old one, and the same line again is not one
+    more attempt (nor a later hand-in). A lab handed in by Telegram takes no line here — the link, the form of defence
+    and the video it does."""
     v = await mine(lab, user)
     fields, note = {}, ""
-    if data.notebook is not None:
-        fields["notebook"] = data.notebook.strip()[:LINK]
-    if data.video is not None:
-        fields["video"] = data.video.strip()[:LINK]
+    for name in ("notebook", "video"):  # the teacher will click them: links only
+        if (link := getattr(data, name)) is not None:
+            fields[name] = link.strip()[:LINK]
+            if fields[name] and not fields[name].startswith(("https://", "http://")):
+                raise HTTPException(422, "Посилання має починатися з https://")
     if data.way is not None:
         if data.way not in WAYS:
             raise HTTPException(422, "Форма захисту — none, record або live")
         fields["way"] = data.way
-    if line := " ".join((data.line or "").split()):
+    if (line := " ".join((data.line or "").split())) and line != v.line:
         if not await here(lab, user):
             raise HTTPException(409, BY_TELEGRAM.format(lab=lab))
         more, note = attempt(v, line)

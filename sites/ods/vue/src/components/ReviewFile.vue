@@ -6,7 +6,7 @@ import Reveal from '@core/components/Reveal.vue'
 
 import { labFileRawUrl, putLabResult } from '../api.js'
 
-// the file as it came, the Colab link, and the card itself: «звільнити» gives the number back to the stream
+// the file as it came, the Colab link, and the card itself: «звільнити» unpins it — the teacher pins cards on «Результати»
 const props = defineProps({ n: Number, doc: Object, shown: String })
 const emit = defineEmits(['freed'])
 const sure = ref(false)
@@ -32,7 +32,7 @@ async function free() {
       <a href="#" class="rv-dot text-secondary" @click.prevent="sure = !sure">звільнити картку</a>
       <Reveal :show="sure">
         <div class="d-flex flex-wrap align-items-center gap-2">
-          <span>Картка {{ doc.vid }} стане вільною, студент зможе взяти номер наново.</span>
+          <span>Картка {{ doc.vid }} стане вільною, а студент лишиться без варіанта цієї лаби, доки не закріпиш йому картку на «Результатах».</span>
           <button type="button" class="btn btn-sm btn-outline-secondary" @click="sure = false">Скасувати</button>
           <button type="button" class="btn btn-sm btn-danger" @click="free">Звільнити</button>
         </div>

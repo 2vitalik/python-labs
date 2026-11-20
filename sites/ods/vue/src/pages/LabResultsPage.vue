@@ -6,12 +6,13 @@ import Crumbs from '@core/components/Crumbs.vue'
 import { useTitle } from '@core/title.js'
 
 import { getLabResults } from '../api.js'
+import LabLoose from '../components/LabLoose.vue'
 import LabResultsRow from '../components/LabResultsRow.vue'
 import LabStats from '../components/LabStats.vue'
 import LabWide from '../components/LabWide.vue'
 
-// the teacher's table of a lab (T200, T354): who holds which card, the answers, the file and what it has, the hint by
-// the levels, the defence, the mark; a name leads to the review of that work
+// the teacher's table of a lab (T200, T354): whom which card is pinned to, the answers, the file and what it has, the
+// hint by the levels, the defence, the mark; a name leads to the review of that work; students without a card — below
 const route = useRoute()
 const n = computed(() => Number(route.params.n))
 const rows = ref([])
@@ -36,7 +37,8 @@ function choose(k) {
   picked.value = k === 'all' ? null : new Set(rows.value.filter(QUICK[k][1]).map((r) => r.vid))
 }
 
-onMounted(async () => (rows.value = await getLabResults(n.value)))
+const load = async () => (rows.value = await getLabResults(n.value))
+onMounted(load)
 </script>
 
 <template>
@@ -48,7 +50,7 @@ onMounted(async () => (rows.value = await getLabResults(n.value)))
         <option value="">усі групи</option>
         <option v-for="g in groups" :key="g" :value="g">{{ g }}</option>
       </select>
-      <span class="small text-secondary">картки взяли {{ taken.filter((r) => r.n > 0).length }} із {{ real.length }}</span>
+      <span class="small text-secondary">карток закріплено {{ taken.filter((r) => r.n > 0).length }} із {{ real.length }}</span>
     </div>
     <div v-if="taken.length" class="d-flex flex-wrap align-items-center gap-1 mb-3">
       <span class="small text-secondary me-1">показати</span>
@@ -56,7 +58,7 @@ onMounted(async () => (rows.value = await getLabResults(n.value)))
               @click="choose(k)">{{ q[0] }} <span class="opacity-75">{{ count(k) }}</span></button>
     </div>
     <LabStats v-if="taken.length" :n />
-    <p v-if="rows.length && !taken.length" class="text-secondary">Ніхто ще не відкривав свою картку.</p>
+    <p v-if="rows.length && !taken.length" class="text-secondary">Карток цієї лаби ще ні за ким не закріплено.</p>
     <div v-else-if="rows.length" class="table-responsive">
       <table class="table table-sm align-middle">
         <thead class="small">
@@ -69,5 +71,6 @@ onMounted(async () => (rows.value = await getLabResults(n.value)))
       </table>
     </div>
     <p v-else class="text-secondary">Варіантів цієї лаби на сайті ще нема: імпорт — lab_io.py в api сайту.</p>
+    <LabLoose v-if="rows.length" :key="n" :n @pinned="load" />
   </div>
 </template>

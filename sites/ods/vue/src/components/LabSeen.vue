@@ -19,11 +19,12 @@ const nb = (f) => `/labs/${props.n}/my/nb/${f.id}`
 const run = computed(() => file.value?.run)
 const steps = computed(() => props.lab.grade?.steps || [])
 const marimo = computed(() => file.value?.kind === 'marimo' && !props.lab.attempts)  // marimo keeps no outputs: no line in it
+const byTelegram = computed(() => props.lab.handin === 'telegram')  // no hand-in block above: the file and the line go to the teacher
 // what the work reaches by itself, or what 12 still lacks; without a file the levels above the answers are unknown
 const level = computed(() => {
   const work = props.lab.grade?.work
   if (work) return `Сама робота зараз тягне на рівень ${work}.`
-  if (!file.value) return 'Решту пунктів сайт побачить у файлі ноутбука — здай його вище.'
+  if (!file.value) return `Решту пунктів сайт побачить у файлі ноутбука — ${byTelegram.value ? 'коли викладач перенесе його сюди' : 'здай його вище'}.`
   const lack = steps.value.find((s) => s.level === 12)?.needs.filter((x) => x.ok === false).map((x) => x.text)
   return lack?.length ? `До рівня 12 бракує: ${lack.join(' · ')}.` : ''
 })
@@ -42,8 +43,8 @@ onMounted(() => loadLabPages().catch(() => {}))
         <span :class="sameOf(run).cls">{{ sameOf(run).short }}</span></template><template v-if="run.total"> · {{ run.right }} із {{ run.total }} ✅</template><template v-if="run.errors?.length"> · помилок {{ run.errors.length }}</template></div>
     </div>
     <p v-if="lab.attempts" class="mb-1"><b>{{ lab.ok }} із {{ lab.total }} ✅</b> · спроба {{ lab.attempts }}<template v-if="lab.checked_at"> · перевірено {{ fmtWhen(lab.checked_at) }}</template></p>
-    <p v-else-if="marimo" class="text-secondary mb-1">marimo не зберігає виводів, тож рядка відповідей у файлі нема — встав його
-      через «інший спосіб» вище.</p>
+    <p v-else-if="marimo" class="text-secondary mb-1">marimo не зберігає виводів, тож рядка відповідей у файлі нема —
+      {{ byTelegram ? 'надішли його викладачеві тим самим повідомленням, що й файл' : 'встав його через «інший спосіб» вище' }}.</p>
     <p v-else class="text-secondary mb-1">Рядка відповідей у файлі не знайшлося.</p>
     <LabVerdict :verdict="lab.verdict" class="mb-3" />
     <template v-if="steps.length">

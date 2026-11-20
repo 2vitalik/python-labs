@@ -1,5 +1,5 @@
 """The teacher's side of a lab (T200, T354 §5): the table of the stream, one student's work for review, the marks;
-a card freed or passed to another student."""
+a card freed, pinned or passed to another student (T375: the cards are the teacher's to pin)."""
 from datetime import datetime, timezone
 
 from fastapi import APIRouter, Depends, HTTPException
@@ -8,6 +8,7 @@ from pydantic import BaseModel
 from core.deps import admin_user
 from core.models.history import record
 from core.models.user import User
+from lab_claim import DEMO, may_demo, spread
 from lab_my import heads
 from models.lab import FRESH, LabVariant
 from models.lab_file import LabFile, file_api
@@ -71,6 +72,8 @@ async def mark(lab: int, vid: str, data: MarkIn, user: User = Depends(admin_user
     if "student" in sent and (email := data.student.strip()) != v.student:
         fields |= await passed(v, email)
     await record(v, fields, actor=user.email)
+    if fields.get("student") and v.group != DEMO:  # the demo is taken lab by lab
+        await spread(v, await User.find_one(User.email == v.student), user.email)
     return v.row()
 
 
@@ -78,8 +81,10 @@ async def passed(v: LabVariant, email: str) -> dict:
     """"" — the card is free and starts afresh (history keeps what was); an email — the card with its work goes to them."""
     if not email:
         return FRESH | {"student": "", "assigned_at": None}
-    if not await User.find_one(User.email == email):
+    if not (student := await User.find_one(User.email == email)):
         raise HTTPException(404, f"Студента {email} на сайті нема")
+    if v.group == DEMO and not may_demo(student):
+        raise HTTPException(409, "Демо-картка — лише для викладача й тестових студентів")
     if other := await LabVariant.find_one(LabVariant.lab == v.lab, LabVariant.student == email):
         raise HTTPException(409, f"У {email} уже є картка {other.vid} цієї лаби — спершу звільни її")
     await LabFile.find(LabFile.lab == v.lab, LabFile.vid == v.vid, LabFile.student == v.student).update({"$set": {"student": email}})

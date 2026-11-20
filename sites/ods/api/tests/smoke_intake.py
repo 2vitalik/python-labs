@@ -1,6 +1,7 @@
 """Smoke: the teacher's forwards of students' messages (T368 §2) — the bot's handler with Telegram replaced by a recorder, one
 summary per burst, the file read without running (lab by its line, template, name), whose it is (Telegram, a guess, the teacher's
-word), «Вхідні» and its changes, notebooks becoming versions of «Моя лаба» with the time of the student's message. Made-up data.
+word), «Вхідні» and its changes, notebooks becoming versions of «Моя лаба» with the time of the student's message — on the card
+the teacher pinned (T375): none pinned or another card in the file — the trouble in the teacher's words. Made-up data.
 Run from sites/ods/api: DB_NAME=ods_t368_intake_smoke SESSION_SECRET=x ~/.venvs/python-labs/bin/python tests/smoke_intake.py"""
 import asyncio
 import io
@@ -81,6 +82,7 @@ from models.lab_file import MAX_BYTES  # noqa: E402
 
 AGENT = {"Authorization": "Bearer tok-123"}
 FILES, BROKEN, seq = {}, set(), count(100)
+NO_CARD = "За студентом не закріплено картки лаби {} — закріпи її на «Результатах»"
 
 
 class FakeBot:
@@ -153,6 +155,12 @@ def login(c, email, status, group="", **fields):
     db.users.update_one({"email": email}, {"$set": {"status": status, "group": group, **fields}})
 
 
+def pin(c, lab, vid, email):
+    """The teacher pins the card on «Результати» (T375); the session stays the teacher's — «Вхідні» is theirs too."""
+    login(c, "admin@nure.ua", "admin", tg_chat_id=7, last_name="Викладач")
+    return c.put(f"/api/variants/{lab}/results/{vid}", json={"student": email})
+
+
 class Bare:
     """Calls without the session cookie — a guest, an agent."""
     def __getattr__(self, method):
@@ -206,11 +214,11 @@ with TestClient(main.app) as c:
                           ("h@nure.ua", {"last_name": "Гнатенко", "first_name": "Ганна", "tg_chat_id": 108, "group": "КН-2"}),
                           ("z@nure.ua", {"last_name": "Зінченко", "first_name": "Зоя"})):
         login(c, email, "student", **{"group": "КН-1"} | fields)
-        if email in ("b@nure.ua", "z@nure.ua"):
-            c.post("/api/variants/1/my/claim", json={"n": 2 if email == "b@nure.ua" else 3})
     db.deadlines.insert_many([{"lab": n, "at": naive(at(15, 0)), "groups": [], "created_at": datetime.now(timezone.utc)} for n in (1, 2)])
-    db.lab_marks.insert_one({"user": "a@nure.ua", "lab": 1, "until": naive(at(17, 0))})
-    login(c, "admin@nure.ua", "admin", tg_chat_id=7, last_name="Викладач")
+    db.lab_marks.insert_many([{"user": "a@nure.ua", "lab": 1, "until": naive(at(17, 0))}, {"user": "e@nure.ua", "lab": 1, "open": True}])
+    pinned = [pin(c, 1, f"КН-1-0{n}", email).status_code for n, email in ((1, "a@nure.ua"), (2, "b@nure.ua"), (3, "z@nure.ua"))]
+    check("the teacher pins A, B and Z their cards — each their number in every lab", pinned == [200] * 3
+          and all(db.variants.count_documents({"student": email, "n": n}) == 3 for n, email in ((1, "a@nure.ua"), (2, "b@nure.ua"), (3, "z@nure.ua"))), pinned)
     admin = run(admin_doc)
 
     A, D, E, G = person(101, "Анна", "Антоненко", "anna_tg"), person(104, "Дмитро", username="dmytro_tg"), person(105, "Євген"), person(106, "Гліб")
@@ -251,7 +259,7 @@ with TestClient(main.app) as c:
     v = db.variants.find_one({"lab": 1, "vid": "КН-1-01"})
     check("the notebook → a version with the message's time, via telegram, by the teacher", f and f["at"] == naive(at(16)) and f["via"] == "telegram"
           and f["by"] == "admin@nure.ua" and rows[0]["version"] == str(f["_id"]), f and {k: f[k] for k in ("at", "via", "by")})
-    check("…and the card took itself, the line an attempt at that time", v["student"] == "a@nure.ua" and v["attempts"] == 1
+    check("…on the card the teacher pinned, the line an attempt at that time", v["student"] == "a@nure.ua" and v["attempts"] == 1
           and v["checked_at"] == naive(at(16)) and v["file"]["via"] == "telegram", {k: v[k] for k in ("student", "attempts", "checked_at")})
     big, pdf = next(r for r in rows if r["file"].get("name") == "big.ipynb"), next(r for r in rows if r["file"].get("name") == "report.pdf")
     check("too big and not a notebook: words, no bytes, no kind", big["why"] == TOO_BIG and pdf["why"] == intake_read.NOT_NB
@@ -276,7 +284,7 @@ with TestClient(main.app) as c:
                       fwd(by(E, at(13, 9)), "моя", doc("lab1_e.ipynb", nb("КН-1-03"))), fwd(by(G, at(13, 9)), "демо", doc("demo.ipynb", nb("ДЕМО-00")))], admin)
     check("summary without the timer: the unknown by name and nick, the known with the reason in the teacher's words",
           "❓ Вася П. · не впізнаю" in say and "❓ Дмитро · @dmytro_tg · не впізнаю" in say and "Єременко Євген" in say
-          and "⚠️ Картку КН-1-03 тримає Зінченко Зоя" in say and "Telegram не віддав файл: file is temporarily unavailable" in say
+          and f"⚠️ {NO_CARD.format(1)}" in say and "Telegram не віддав файл: file is temporarily unavailable" in say
           and "📓 Лаба 2 · КН-1-04 · без рядка · 16.11 13:00" in say and "📓 Лаба ? · без рядка" in say and len(tg.sent) == 1, say)
     check("summary: the guess next to the unknown, and why", "не впізнаю · схоже, Пупкін Василь (за карткою)" in say
           and "@dmytro_tg · не впізнаю · схоже, Дорошенко Дмитро (за ніком)" in say and "Петро Сидоренко · не впізнаю · схоже, Сидоренко Петро (за імʼям)" in say
@@ -302,9 +310,10 @@ with TestClient(main.app) as c:
     check("no lab known, no deadline; Telegram failed — words", d[1]["file"]["lab"] is None and d[1]["file"]["due"] is None and d[1]["file"]["late"] is None
           and d[2]["file"]["why"].startswith("Telegram не віддав файл") and d[2]["file"]["kind"] == "")
     e = p["tg:105"]["rows"][0]["file"]
-    check("a card another student holds: no version, the trouble in the teacher's words", p["tg:105"]["student"]["nick"] == "e"
-          and not e["version"] and e["trouble"] == "Картку КН-1-03 тримає Зінченко Зоя", e)
-    strips = {s["lab"]: s for s in r.json()["strips"]}
+    check("no card pinned to the student (the file's card is Z's — no matter): no version, the trouble in the teacher's words",
+          p["tg:105"]["student"]["nick"] == "e" and not e["version"] and e["trouble"] == NO_CARD.format(1), e)
+    check("E extended, the date not known yet: the row has no deadline, nothing late (the common one passed)", e["due"] is None and e["late"] is None, e)
+    strips ={s["lab"]: s for s in r.json()["strips"]}
     s1 = strips[1]
     check("strips: a lab with notebooks; top — the stream's last number; the demo left out", sorted(strips) == [1, 2] and s1["top"] == 5
           and [x["n"] for x in s1["cells"]] == [1, 2, 3] and s1["due"].startswith("2026-11-15"), strips)
@@ -328,29 +337,39 @@ with TestClient(main.app) as c:
           and intake_say.pages("a\n\nb") == ["a\n\nb"])
 
     run(burst, [fwd(by(A, at(14, 8)), "стара", doc("lab1_old.ipynb", nb("КН-1-01", "x=5 y=3"))),
-                fwd(by(A, at(15, 9)), "не та", doc("lab1_b.ipynb", nb("КН-1-02")))], admin)
-    check("the student holds another card of the lab: the trouble in the teacher's words",
-          db.forwards.find_one({"text": "не та"})["trouble"] == "У файлі картка КН-1-02, а студент тримає КН-1-01")
+                fwd(by(A, at(15, 9)), "не та", doc("lab1_b.ipynb", nb("КН-1-02"))),
+                fwd(by(A, at(15, 9, 30)), "нічия", doc("lab1_d.ipynb", nb("КН-1-04")))], admin)
+    other, free = db.forwards.find_one({"text": "не та"}), db.forwards.find_one({"text": "нічия"})
+    check("another student's card in the file: the trouble in the teacher's words — whose it is and the student's own",
+          other["trouble"] == "У файлі картка КН-1-02 (Пупкін Василь), а за студентом закріплено КН-1-01" and not other["version"], other["trouble"])
+    check("…a card nobody holds: no name in brackets, no version", free["trouble"] == "У файлі картка КН-1-04, а за студентом закріплено КН-1-01"
+          and not free["version"] and db.variants.find_one({"lab": 1, "vid": "КН-1-04"})["student"] == "", free["trouble"])
     v = db.variants.find_one({"lab": 1, "vid": "КН-1-01"})
     old = db.lab_files.find_one({"student": "a@nure.ua", "at": naive(at(14, 8))})
     check("an earlier file found later: a version of its time, the card keeps the newest", old and v["files"] == 2 and v["file"]["id"] == str(f["_id"])
           and v["values"] == {"x": 2, "y": 3} and v["attempts"] == 1, {k: v[k] for k in ("files", "values", "attempts")})
 
     eid = p["tg:105"]["rows"][0]["id"]
-    c.put("/api/variants/1/results/КН-1-03", json={"student": ""})
+    c.put("/api/variants/1/results/КН-1-03", json={"student": ""})  # Z's card was the wrong one: freed…
+    pinned = pin(c, 1, "КН-1-03", "e@nure.ua")  # …and pinned to E
     e = talks(c.get("/api/intake"))["tg:105"]["rows"][0]["file"]
-    check("a page load does not try a failed row again", not e["version"] and e["trouble"].startswith("Картку КН-1-03"), e)
+    check("the card pinned on «Результатах»: a page load does not try a failed row again", pinned.status_code == 200 and not e["version"]
+          and e["trouble"] == NO_CARD.format(1), e)
     r = c.post(f"/api/intake/{eid}/apply")
     e = talks(r)["tg:105"]["rows"][0]["file"]
-    check("the trouble fixed (the card freed) → once more: a version, the trouble gone", e["version"] and e["trouble"] == ""
-          and db.variants.find_one({"lab": 1, "vid": "КН-1-03"})["student"] == "e@nure.ua", e)
+    check("the trouble fixed (the card pinned) → once more: a version, the trouble gone", e["version"] and e["trouble"] == ""
+          and db.variants.find_one({"lab": 1, "vid": "КН-1-03"})["student"] == "e@nure.ua"
+          and db.lab_files.find_one({"student": "e@nure.ua"})["vid"] == "КН-1-03", e)
 
+    pin(c, 2, "КН-1-04", "d@nure.ua")  # the link's notebook is lab 2's
     r = c.put("/api/intake/person", json={"key": "tg:104", "student": "@d"})
     d = talks(r)["tg:104"]["rows"]
-    check("the link's notebook goes over too; a row without a lab waits", d[0]["file"]["version"] and not d[1]["file"]["version"] and not d[1]["file"]["trouble"])
+    check("D's card pinned, the talk named: the link's notebook goes over too; a row without a lab waits", d[0]["file"]["version"]
+          and not d[1]["file"]["version"] and not d[1]["file"]["trouble"], d)
     r = c.put(f"/api/intake/{d[1]['id']}", json={"lab": 1})
     d = talks(r)["tg:104"]["rows"]
-    check("the teacher names the lab: it goes over", d[1]["file"]["lab"] == 1 and d[1]["file"]["version"] and d[1]["file"]["ok"] is None, d[1]["file"])
+    check("the teacher names the lab: it goes over — no card in the file, to D's card of lab 1 that came with the pin", d[1]["file"]["lab"] == 1
+          and d[1]["file"]["version"] and d[1]["file"]["ok"] is None and db.variants.find_one({"lab": 1, "vid": "КН-1-04"})["student"] == "d@nure.ua", d[1]["file"])
     check("a lab of a row already on the site — 409, out of range — 422", c.put(f"/api/intake/{d[1]['id']}", json={"lab": 2}).status_code == 409
           and c.put(f"/api/intake/{p['name:Петро Сидоренко']['rows'][0]['id']}", json={"lab": 9}).status_code == 422)
 
@@ -361,9 +380,10 @@ with TestClient(main.app) as c:
     check("set aside: not taken over", row["skip"] and not row["file"]["version"] and not row["file"]["trouble"], row)
     r = c.put(f"/api/intake/{pid}", json={"skip": False})
     row = talks(r)["name:Петро Сидоренко"]["rows"][0]
-    check("back: tried, the reason — no card in the file", not row["skip"] and "VARIANT" in row["file"]["trouble"] and row["file"]["lab"] == 3, row)
+    check("back: tried, the reason — no card of lab 3 pinned to the student", not row["skip"] and row["file"]["trouble"] == NO_CARD.format(3)
+          and row["file"]["lab"] == 3, row)
     aid = a["rows"][2]["id"]
-    check("🙋 is the teacher's switch", talks(c.put(f"/api/intake/{aid}", json={"asks": False}))["tg:101"]["rows"][2]["asks"] is False)
+    check("🙋 is the teacher's switch", next(x for x in talks(c.put(f"/api/intake/{aid}", json={"asks": False}))["tg:101"]["rows"] if x["id"] == aid)["asks"] is False)
     r = c.put("/api/intake/person", json={"key": "name:Вася П.", "student": ""})
     b = talks(r)["name:Вася П."]
     check("nobody's again: the student gone, the version stays", b["student"] is None and b["how"] == "" and b["rows"][0]["file"]["version"]
@@ -376,17 +396,22 @@ with TestClient(main.app) as c:
 
     F = person(107, "Фрося")
     run(burst, [fwd(by(F, at(15, 9)), None, doc("lab1.ipynb", nb("КН-1-05")))], admin)
+    pin(c, 1, "КН-1-05", "f@nure.ua")
     db.users.update_one({"email": "f@nure.ua"}, {"$set": {"tg_chat_id": 107}})
 
     async def mine_settled(email):
         return await intake_apply.settle(await User.find_one(User.email == email))
 
-    check("«Моя лаба» settles its student: linked the bot — the file and the card are there", run(mine_settled, "f@nure.ua") == 1
-          and db.variants.find_one({"lab": 1, "vid": "КН-1-05"})["student"] == "f@nure.ua" and db.forwards.find_one({"tg_id": 107})["how"] == "tg")
+    check("«Моя лаба» settles its student: linked the bot, the card pinned — the file is a version of it", run(mine_settled, "f@nure.ua") == 1
+          and db.variants.find_one({"lab": 1, "vid": "КН-1-05"})["student"] == "f@nure.ua" and db.lab_files.find_one({"student": "f@nure.ua"})["vid"] == "КН-1-05"
+          and db.forwards.find_one({"tg_id": 107})["how"] == "tg")
     run(burst, [fwd(by(person(108, "Ганна"), at(15, 10)), None, doc("lab2.ipynb", fx.notebook(lab2(fx.student("КН-1-03", 2)))))], admin)
-    db.users.update_one({"email": "h@nure.ua"}, {"$set": {"group": "КН-1"}})
     h = talks(c.get("/api/intake"))["tg:108"]["rows"][0]["file"]
-    check("a wrong group: the trouble; fixed in the profile — a page load leaves it", "не з твого потоку" in h["trouble"] and not h["version"], h)
+    check("H (group КН-2), no card of lab 2 pinned: the trouble", h["trouble"] == NO_CARD.format(2) and not h["version"], h)
+    passed = pin(c, 2, "КН-1-03", "h@nure.ua")  # Z's, never used: passed on
+    h = talks(c.get("/api/intake"))["tg:108"]["rows"][0]["file"]
+    check("the teacher passes lab 2's КН-1-03 from Z to H — a page load leaves the failed row", passed.json()["student"] == "h@nure.ua"
+          and h["trouble"] == NO_CARD.format(2) and not h["version"], h)
     check("…«Моя лаба» of that student tries it again: a version", run(mine_settled, "h@nure.ua") == 1
           and db.forwards.find_one({"tg_id": 108})["version"] and db.forwards.find_one({"tg_id": 108})["trouble"] == "")
 

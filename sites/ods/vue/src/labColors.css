@@ -1,0 +1,13 @@
+/* a colour of its own for every lab (T375): along the spectrum from cold to warm as the course goes on — the hue says
+   «which lab», wherever the lab is named. Not the red of «late», nor the green, amber and blue of the lectures' roles.
+   `.lab-c3` sets --lab; `.lab-tint` — a pale fill of it for a pill or a number, in either theme */
+.lab-c1 { --lab: var(--bs-indigo); }
+.lab-c2 { --lab: var(--bs-cyan); }
+.lab-c3 { --lab: var(--bs-teal); }
+.lab-c4 { --lab: var(--bs-orange); }
+.lab-c5 { --lab: var(--bs-pink); }
+.lab-tint { border-color: color-mix(in srgb, var(--lab) 45%, var(--bs-border-color)) !important;
+            background: color-mix(in srgb, var(--lab) 14%, var(--bs-body-bg)); }
+/* a lab's number as a small square of its colour: the rows of «Лаби» and of the home page */
+.lab-n { display: inline-flex; flex-shrink: 0; align-items: center; justify-content: center; min-width: 1.6rem; height: 1.6rem; border: 1px solid;
+         border-radius: .4rem; color: var(--bs-body-color); font-size: .85rem; font-variant-numeric: tabular-nums; }
