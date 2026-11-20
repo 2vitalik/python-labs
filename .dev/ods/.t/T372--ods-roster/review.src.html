@@ -1,0 +1,491 @@
+<title>Список потоку #372 рев’ю</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=Manrope:wght@600;700;800&display=swap">
+<style>
+/* Layout: one reading column; maps, flows, cards and phones stack on narrow screens. Same look as the #126, #134, #352 and #354 review pages. */
+:root {
+  --bg: #f6f4f1; --surface: #ffffff; --ink: #1c2024; --muted: #5a6068; --line: #e3ded6;
+  --accent: #c94f18; --accent-soft: #fbe8dd; --brown: #b85a18;
+  --ok: #1d7448; --ok-soft: #e2f2e8; --warn: #96580a; --warn-soft: #f9eedb;
+  --bad: #b3302a; --bad-soft: #f9e3e1; --info: #2d5aa6; --info-soft: #e6edf8;
+  --code: #f1eee9; --shot-bg: #ffffff; --scrim: rgba(20, 22, 25, 0.88); --scrim-ink: #e8e6e3;
+  --font-head: "Manrope", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141619; --surface: #1c1f23; --ink: #e8e6e3; --muted: #a3a8ae; --line: #30353b;
+    --accent: #ff7f45; --accent-soft: #3a2418; --brown: #e0874a;
+    --ok: #5cc98f; --ok-soft: #173225; --warn: #f0b25a; --warn-soft: #3a2c14;
+    --bad: #ff8277; --bad-soft: #3d1c1a; --info: #8fb3f0; --info-soft: #1b2638;
+    --code: #181b1f; --scrim: rgba(8, 9, 10, 0.92); color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141619; --surface: #1c1f23; --ink: #e8e6e3; --muted: #a3a8ae; --line: #30353b;
+  --accent: #ff7f45; --accent-soft: #3a2418; --brown: #e0874a;
+  --ok: #5cc98f; --ok-soft: #173225; --warn: #f0b25a; --warn-soft: #3a2c14;
+  --bad: #ff8277; --bad-soft: #3d1c1a; --info: #8fb3f0; --info-soft: #1b2638;
+  --code: #181b1f; --scrim: rgba(8, 9, 10, 0.92); color-scheme: dark;
+}
+body { background: var(--bg); color: var(--ink); font: 15px/1.6 var(--font-body); }
+.page { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 72px; }
+h1, h2, h3, h4 { font-family: var(--font-head); text-wrap: balance; line-height: 1.25; }
+h1 { font-size: clamp(1.7rem, 4vw, 2.4rem); margin: 0 0 6px; letter-spacing: -0.01em; }
+h2 { font-size: 1.5rem; margin: 56px 0 10px; display: flex; gap: 12px; align-items: baseline; }
+h3 { font-size: 1.12rem; margin: 28px 0 8px; }
+h4 { font-size: 0.98rem; margin: 0 0 6px; }
+p { margin: 0 0 10px; }
+a { color: var(--accent); }
+code { font-family: var(--font-mono); font-size: 0.86em; background: var(--code); padding: 0.05em 0.35em; border-radius: 4px; overflow-wrap: anywhere; }
+.num { font-family: var(--font-mono); font-size: 0.9rem; color: var(--surface); background: var(--brown); border-radius: 6px; padding: 2px 9px; }
+.sub { color: var(--muted); margin: 0 0 18px; }
+.lead { color: var(--muted); max-width: 78ch; }
+.kicker { text-transform: uppercase; letter-spacing: 0.07em; font-size: 0.72rem; color: var(--muted); margin: 0 0 4px; font-weight: 600; }
+.verdict { border: 1px solid var(--line); border-left: 5px solid var(--ok); background: var(--surface); border-radius: 10px; padding: 16px 20px; }
+.verdict ul { margin: 6px 0 0; padding-left: 20px; }
+.verdict li { margin: 4px 0; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; margin: 16px 0 0; }
+.tile { background: var(--ok-soft); border-radius: 10px; padding: 10px 14px; }
+.tile b { display: block; font: 800 1.9rem/1.1 var(--font-head); color: var(--ok); font-variant-numeric: tabular-nums; }
+.tile span { font-size: 0.88rem; }
+.wait { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 14px 0 0; }
+.wait > b { font-family: var(--font-head); font-size: 0.85rem; margin-right: 4px; }
+nav.toc { margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.92rem; }
+nav.toc a { text-decoration: none; border-bottom: 1px dashed currentColor; }
+.chip { display: inline-block; font-size: 0.75rem; font-weight: 600; border-radius: 999px; padding: 1px 9px; white-space: nowrap; }
+.chip.big { font-size: 0.85rem; padding: 3px 12px; white-space: normal; }
+.chip.ok { background: var(--ok-soft); color: var(--ok); }
+.chip.warn { background: var(--warn-soft); color: var(--warn); }
+.chip.bad { background: var(--bad-soft); color: var(--bad); }
+.chip.info { background: var(--info-soft); color: var(--info); }
+.chip.off { background: var(--code); color: var(--muted); }
+.pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; align-items: stretch; margin: 14px 0; }
+.pair > * { min-width: 0; }
+.box { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; }
+.box.now { border-color: var(--ok); }
+.box.miss { border-color: var(--warn); }
+.box h4 { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.box ul { margin: 6px 0 0; padding-left: 18px; }
+.box li { margin: 3px 0; }
+.scroll { overflow-x: auto; max-width: 100%; }
+table.grid { border-collapse: collapse; width: 100%; font-size: 0.9rem; background: var(--surface); }
+table.grid th, table.grid td { border: 1px solid var(--line); padding: 7px 10px; text-align: left; vertical-align: top; }
+table.grid th { background: var(--code); font-family: var(--font-head); font-size: 0.82rem; }
+table.grid td.c { white-space: nowrap; }
+table.grid tr.first td { background: var(--warn-soft); }
+/* site map: a column per section, a node per address; new nodes green, gone ones struck */
+.maps { display: grid; gap: 14px; margin: 14px 0; }
+.map { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; min-width: 0; }
+.map > header { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; margin-bottom: 10px; }
+.map > header h4 { margin: 0; }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.col { min-width: 0; }
+.col h5 { font: 700 0.82rem var(--font-head); margin: 0 0 6px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.node { border: 1px solid var(--line); background: var(--code); border-radius: 8px; padding: 5px 9px; margin: 0 0 6px; font-size: 0.84rem; line-height: 1.35; }
+.node code { background: none; padding: 0; font-size: 0.8rem; }
+.node small { display: block; color: var(--muted); font-size: 0.76rem; }
+.node.new { border-color: var(--ok); background: var(--ok-soft); }
+.node.gone { color: var(--muted); border-style: dashed; }
+.node.gone code { text-decoration: line-through; }
+.node.lock { border-color: var(--warn); background: var(--warn-soft); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 0.8rem; color: var(--muted); margin: 10px 0 0; }
+.legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; border: 1px solid var(--line); background: var(--code); }
+.legend .l-new::before { border-color: var(--ok); background: var(--ok-soft); }
+.legend .l-lock::before { border-color: var(--warn); background: var(--warn-soft); }
+.legend .l-gone::before { border-style: dashed; }
+/* flow: a row per path, its steps as a chain of arrows */
+.flow { display: grid; grid-template-columns: 9rem 1fr; gap: 12px 16px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; margin: 14px 0; }
+.flow > * { min-width: 0; }
+.flow .who { font-family: var(--font-head); font-weight: 700; font-size: 0.92rem; }
+.flow .who small { display: block; font-family: var(--font-body); font-weight: 400; color: var(--muted); font-size: 0.78rem; }
+.flow hr { grid-column: 1 / -1; border: 0; border-top: 1px dashed var(--line); margin: 2px 0; width: 100%; }
+ol.chain { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 0; align-items: stretch; }
+ol.chain li { display: flex; align-items: center; }
+ol.chain li:not(:last-child)::after { content: "→"; color: var(--muted); font-weight: 600; padding: 0 8px; }
+.step { border: 1px solid var(--ok); background: var(--ok-soft); border-radius: 8px; padding: 5px 10px; font-size: 0.88rem; line-height: 1.3; }
+.step b { display: block; font-weight: 600; }
+.step small { color: var(--muted); font-size: 0.76rem; }
+.step.gate { border-color: var(--warn); background: var(--warn-soft); }
+.was .step { border-color: var(--line); background: var(--code); }
+/* screenshots: one per card, stacked; a click opens the full picture */
+.shots { display: grid; gap: 22px; margin: 14px 0; }
+.shot { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px 18px; min-width: 0; }
+.shot header { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; margin-bottom: 6px; }
+.shot h4 { margin: 0; font-size: 1.02rem; }
+.shot dl { margin: 0 0 10px; display: grid; grid-template-columns: 6.5rem 1fr; gap: 3px 12px; font-size: 0.9rem; }
+.shot dt { color: var(--muted); font-weight: 600; font-size: 0.82rem; padding-top: 1px; }
+.shot dd { margin: 0; min-width: 0; }
+a.zoom { display: block; cursor: zoom-in; border-radius: 8px; }
+a.zoom:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+a.zoom img { display: block; width: 100%; max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--shot-bg); }
+a.zoom.tall img { max-height: 760px; object-fit: cover; object-position: top; }
+a.zoom.mid { max-width: 760px; }
+a.zoom.phone { max-width: 300px; }
+a.zoom.tiny { max-width: 240px; display: inline-block; vertical-align: middle; }
+.phones { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; align-items: start; }
+.phones figure { margin: 0; min-width: 0; }
+.phones figcaption { font-size: 0.82rem; color: var(--muted); margin: 0 0 6px; }
+.phones a.zoom.phone img { max-height: 620px; object-fit: cover; object-position: top; }
+.cut { color: var(--muted); font-size: 0.8rem; margin: 6px 0 0; }
+.zoombox { position: fixed; inset: 0; z-index: 50; background: var(--scrim); overflow: auto; cursor: zoom-out; padding: max(12px, env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) max(12px, env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px)); }
+.zoombox img { display: block; margin: 0 auto; max-width: 100%; height: auto; background: var(--shot-bg); border-radius: 6px; }
+.zoombox p { color: var(--scrim-ink); text-align: center; font-size: 0.82rem; margin: 0 0 8px; }
+.honest { border-left: 5px solid var(--warn); }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 14px 0; }
+.cards > * { min-width: 0; }
+.rough { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; }
+.rough header { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; flex-wrap: wrap; margin-bottom: 4px; }
+.rough h4 { margin: 0; }
+.rough p { font-size: 0.88rem; margin: 0 0 6px; }
+.rough .do { color: var(--muted); font-size: 0.84rem; margin: 0; }
+ol.next { padding-left: 22px; } ol.next li { margin: 6px 0; }
+@media (max-width: 700px) {
+  .flow { grid-template-columns: 1fr; }
+  .shot dl { grid-template-columns: 1fr; } .shot dt { margin-top: 4px; }
+}
+footer { margin-top: 56px; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 12px; }
+/* T367: the night as a timeline — one row per session, one scale for all rows (25 h from 00:00 of 19.11) */
+.tl { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; margin: 14px 0; }
+.tl-row { display: grid; grid-template-columns: 12.5rem 1fr; gap: 2px 14px; align-items: center; padding: 6px 0; }
+.tl-row > * { min-width: 0; }
+.tl-row + .tl-row { border-top: 1px dashed var(--line); }
+.tl-name { font: 700 0.88rem/1.3 var(--font-head); }
+.tl-name small { display: block; font: 400 0.76rem/1.35 var(--font-body); color: var(--muted); }
+.tl-track { position: relative; height: 22px; background: var(--code); border-radius: 5px; }
+.tl-seg { position: absolute; top: 3px; bottom: 3px; border-radius: 4px; background: var(--ok); min-width: 4px; }
+.tl-seg.cut { background: var(--bad); }
+.tl-seg.wake { background: var(--warn); }
+.tl-seg.aid { background: var(--info); }
+.tl-axis { position: relative; height: 18px; font: 0.72rem var(--font-mono); color: var(--muted); }
+.tl-axis span { position: absolute; transform: translateX(-50%); }
+.tl-axis span:first-child { transform: none; }
+.legend .l-ok::before { border-color: var(--ok); background: var(--ok); }
+.legend .l-cut::before { border-color: var(--bad); background: var(--bad); }
+.legend .l-wake::before { border-color: var(--warn); background: var(--warn); }
+.legend .l-aid::before { border-color: var(--info); background: var(--info); }
+/* a session as a card: the same five rows in the same order on each */
+.sess { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px 16px; min-width: 0; }
+.sess header { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; margin-bottom: 2px; }
+.sess h4 { margin: 0; font-size: 1.02rem; }
+.sess .when { color: var(--muted); font-size: 0.82rem; margin: 0 0 8px; }
+.sess dl { margin: 0; display: grid; grid-template-columns: 6.6rem 1fr; gap: 5px 12px; font-size: 0.9rem; }
+.sess dt { color: var(--muted); font-weight: 600; font-size: 0.8rem; padding-top: 2px; }
+.sess dd { margin: 0; min-width: 0; }
+.sess .links { margin: 10px 0 0; font-size: 0.88rem; display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.sgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 14px; margin: 14px 0; }
+/* steps of the night: a status, what to do, the command */
+ol.steps { list-style: none; margin: 14px 0; padding: 0; display: grid; gap: 8px; counter-reset: st; }
+ol.steps > li { counter-increment: st; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px 10px 46px; position: relative; min-width: 0; }
+ol.steps > li::before { content: counter(st); position: absolute; left: 12px; top: 10px; width: 24px; height: 24px; border-radius: 50%; background: var(--code); color: var(--muted); font: 600 0.8rem/24px var(--font-mono); text-align: center; }
+ol.steps > li.done { border-color: var(--ok); }
+ol.steps > li.done::before { content: "✓"; background: var(--ok-soft); color: var(--ok); }
+ol.steps > li.ask { border-color: var(--warn); }
+ol.steps > li b { font-family: var(--font-head); }
+ol.steps > li p { margin: 2px 0 0; font-size: 0.9rem; }
+ol.steps > li .src { color: var(--muted); font-size: 0.78rem; }
+pre.cmd { font: 0.82rem/1.5 var(--font-mono); background: var(--code); border-radius: 6px; padding: 8px 10px; margin: 6px 0 0; overflow-x: auto; white-space: pre; }
+/* words to say: the text itself and a copy button */
+.say { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; margin: 14px 0; }
+.say header { display: flex; justify-content: space-between; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 8px; }
+.say h4 { margin: 0; }
+.say pre { font: 0.95rem/1.6 var(--font-body); white-space: pre-wrap; margin: 0; background: var(--code); border-radius: 8px; padding: 12px 14px; }
+button.copy { font: 600 0.8rem var(--font-head); color: var(--accent); background: var(--accent-soft); border: 1px solid transparent; border-radius: 999px; padding: 4px 12px; cursor: pointer; }
+button.copy:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* what a wake-up cost: bars on one scale, the number at the end */
+.bars { display: grid; grid-template-columns: 12.5rem 1fr 4.2rem; gap: 7px 12px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; margin: 14px 0; font-size: 0.88rem; }
+.bars > * { min-width: 0; }
+.bars i { display: block; height: 14px; border-radius: 4px; background: var(--warn); }
+.bars .n { font: 600 0.86rem var(--font-mono); text-align: right; font-variant-numeric: tabular-nums; }
+.bars .sum { grid-column: 1 / -1; border-top: 1px dashed var(--line); padding-top: 8px; color: var(--muted); }
+details.more { margin: 14px 0; }
+details.more > summary { cursor: pointer; font: 700 0.95rem var(--font-head); color: var(--accent); }
+.diff { font: 0.82rem/1.55 var(--font-mono); background: var(--code); border-radius: 8px; padding: 10px 12px; overflow-x: auto; white-space: pre; margin: 8px 0 0; }
+.diff .del { color: var(--bad); } .diff .add { color: var(--ok); }
+a.zoom.strip img { aspect-ratio: 1200 / 60; object-fit: cover; object-position: top; }
+@media (max-width: 700px) {
+  .tl-row { grid-template-columns: 1fr; }
+  .sess dl { grid-template-columns: 1fr; } .sess dt { margin-top: 4px; }
+  .bars { grid-template-columns: 1fr 4.2rem; } .bars .who { grid-column: 1 / -1; margin-bottom: -4px; }
+}
+</style>
+
+<div class="page">
+<header>
+  <p class="kicker">python-labs · T372 · список потоку ODS</p>
+  <h1>Список потоку #372 рев’ю</h1>
+  <p class="sub">база <code>ods</code> на ноутбуці · кода в git не додано · 20.11.2026, ніч · імен і пошт на цій сторінці нема</p>
+
+  <div class="verdict">
+    <p><b>Усі 48 студентів уже мають профіль з ім’ям і свою картку в кожній лабі. Поки що — в базі на ноутбуці: сайту на сервері ще нема, профілі поїдуть туди разом із копією бази.</b></p>
+    <ul>
+      <li><b>Імена</b> знайшлись у локальній копії бази бота <code>nure-students</code>: знімок ЦІСТ від 04.09, увесь факультет із поштами.</li>
+      <li><b>Студент після входу</b> одразу активний, профіль заповнено, «Моя лаба» показує його картку. Називати номер йому більше не треба.</li>
+      <li><b>ЦІСТ закрито ззовні з 15.10.</b> Імена однаково є звідки брати: зняті раніше знімки й каталог Google домену nure.ua.</li>
+      <li><b>В оголошенні студентам</b> третій крок тепер інший — текст нижче.</li>
+    </ul>
+    <div class="tiles">
+      <div class="tile"><b>48 з 48</b><span>пошт зі списку знайдено з повним ПІБ</span></div>
+      <div class="tile"><b>240</b><span>карток закріплено: 48 студентів × 5 лаб</span></div>
+      <div class="tile"><b>0</b><span>розбіжностей при звірці сайту зі списком</span></div>
+      <div class="tile"><b>12</b><span>вільних номерів 49–60 у кожній лабі — для нових</span></div>
+    </div>
+    <div class="wait"><b>Чекає тебе</b><span class="chip big warn">рядок <code>users</code> у копії бази</span><span class="chip big warn">крок 3 в оголошенні</span><span class="chip big warn">чи номери ті самі, що в лабах 1–2</span></div>
+  </div>
+
+  <nav class="toc" aria-label="Зміст">
+    <a href="#done">Що зроблено</a>
+    <a href="#server">Як це доїде на сервер</a>
+    <a href="#site">Чим сайт упізнає студентів</a>
+    <a href="#names">Звідки брати імена</a>
+    <a href="#say">Оголошення</a>
+    <a href="#proof">Як перевірено</a>
+    <a href="#next">Що далі</a>
+  </nav>
+</header>
+
+<h2 id="done"><span class="num">1</span>Що зроблено</h2>
+<p class="lead">Шлях студента став коротшим на два кроки: сайт більше не тримає його в «очікує» і не питає номера.</p>
+
+<div class="flow">
+  <div class="who">Було<small>без списку в базі</small></div>
+  <ol class="chain was">
+    <li><div class="step"><b>Вхід Google</b><small>пошта @nure.ua</small></div></li>
+    <li><div class="step gate"><b>«Очікує»</b><small>доки ти не пустиш руками</small></div></li>
+    <li><div class="step"><b>Вписує ПІБ і групу</b><small>сам, у профілі</small></div></li>
+    <li><div class="step gate"><b>Називає номер</b><small>може помилитись або взяти чужий</small></div></li>
+    <li><div class="step"><b>Картка</b></div></li>
+  </ol>
+  <hr>
+  <div class="who">Стало<small>профіль і картка чекають на нього</small></div>
+  <ol class="chain">
+    <li><div class="step"><b>Вхід Google</b><small>сайт знаходить профіль за поштою</small></div></li>
+    <li><div class="step"><b>Профіль готовий</b><small>ПІБ, група, статус «студент»</small></div></li>
+    <li><div class="step"><b>«Моя лаба»</b><small>одразу його картка <code>ПЗПІ-24-NN</code></small></div></li>
+  </ol>
+  <hr>
+  <div class="who">Як зроблено<small>цієї ночі</small></div>
+  <ol class="chain">
+    <li><div class="step"><b>Твій список</b><small>48 рядків: номер, пошта, група</small></div></li>
+    <li><div class="step"><b>Знімок ЦІСТ 04.09</b><small>ПІБ за поштою: 48 з 48</small></div></li>
+    <li><div class="step"><b>Файл списку</b><small><code>sites/ods/data/students/</code>, поза git</small></div></li>
+    <li><div class="step"><b>Імпорт на <code>/students</code></b><small>48 профілів</small></div></li>
+    <li><div class="step"><b>«Передати картку»</b><small>240 разів: номер зі списку, лаби 1–5</small></div></li>
+    <li><div class="step gate"><b>Копія бази → сервер</b><small>ще попереду</small></div></li>
+  </ol>
+</div>
+
+<div class="pair">
+  <div class="box now">
+    <h4>Як саме записано</h4>
+    <ul>
+      <li>Тими самими маршрутами, якими клацаєш ти: імпорт списку й «передати картку» на «Перевірці». В історії сайту — 288 рядків «зробив викладач».</li>
+      <li>Кода в git не додано. Скрипти — <code>.dev/.drafts/T372/</code>; повторний запуск нічого не міняє.</li>
+      <li>Групи 1–3 у ЦІСТ звуться <code>ПЗПІ-24-N (анг)</code>; у профілі — <code>ПЗПІ-24-N</code>, як у твоєму списку: за цією назвою сайт знаходить потік і картки.</li>
+    </ul>
+  </div>
+  <div class="box">
+    <h4>Кого в списку нема</h4>
+    <ul>
+      <li>Студент із поштою <code>@nure.ua</code> поза списком, як і раніше, стає «очікує».</li>
+      <li>Після твого «пустити» він називає вільний номер: 49–60.</li>
+      <li>У потоці ПЗПІ-24 за ЦІСТ 101 студент у семи групах; на курсі — 48.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="shots">
+  <article class="shot">
+    <header><h4>Профіль студента до його першого входу</h4><span class="chip info">дев-сайт, студент № 20, імена замальовано</span></header>
+    <dl><dt>Що видно</dt><dd>Група й пошта під заголовком, позначка «✓ ПІБ», три поля заповнені. Лишається Telegram.</dd></dl>
+    <a class="zoom mid" href="#"><img src="img/profile.png" alt="Сторінка «Мій профіль» очима студента: група, пошта, позначка ПІБ і три заповнені поля"></a>
+  </article>
+  <article class="shot">
+    <header><h4>«Моя лаба» без запитання про номер</h4><span class="chip info">дев-сайт, студент № 20</span></header>
+    <dl><dt>Що видно</dt><dd>Заголовок «Картка варіанта ПЗПІ-24-20» одразу після відкриття. Саму картку зі знімка обрізано: зміст лаб на цю сторінку не потрапляє.</dd></dl>
+    <a class="zoom mid" href="#"><img src="img/mylab3.png" alt="Верх сторінки «Моя лаба 3» очима студента: картка варіанта ПЗПІ-24-20"></a>
+  </article>
+</div>
+
+<h2 id="server"><span class="num">2</span>Як це доїде на сервер</h2>
+<div class="verdict" style="border-left-color: var(--warn)">
+  <p><b><code>ods.labs.in.ua</code> ще не відповідає: адреса дивиться на сервер, але сайту там нема.</b> Тож «на сайті» зараз означає базу <code>ods</code> на ноутбуці — ту, з якої робиться копія для сервера.</p>
+</div>
+
+<h3>У рецепті копії бази — один новий рядок</h3>
+<p class="lead">Рецепт із T367 брав п’ять колекцій. З рядком <code>users</code> на сервер їдуть і 48 профілів; картки вже несуть, чиї вони.</p>
+<div class="diff">mongosh ods --quiet &lt;&lt;'JS'
+const seed = "ods_seed", plain = ["guide", "media", "lab_pages", "lab_shapes"];
+db.getSiblingDB(seed).dropDatabase();
+for (const c of plain) db[c].aggregate([{ $out: { db: seed, coll: c } }]);
+db.variants.aggregate([{ $match: { group: { $ne: "ТЕСТ" } } }, { $out: { db: seed, coll: "variants" } }]);
+<span class="add">+ db.users.aggregate([{ $match: { status: "student", test: { $ne: true } } }, { $out: { db: seed, coll: "users" } }]);</span>
+const s = db.getSiblingDB(seed);
+<span class="del">- print([...plain, "variants"].map((c) =&gt; c + " " + s[c].countDocuments()).join(" · "));</span>
+<span class="add">+ print([...plain, "variants", "users"].map((c) =&gt; c + " " + s[c].countDocuments()).join(" · "));</span>
+JS</div>
+<p class="cut">має надрукувати: <code>guide 47 · media 150 · lab_pages 27 · lab_shapes 5 · variants 310 · users 48</code> — перевірено на тимчасовій базі. Готовий до копіювання рецепт — у <code>report.md</code> тікета.</p>
+
+<div class="pair">
+  <div class="box now">
+    <h4>Що в копію не потрапляє</h4>
+    <ul>
+      <li>Дев-користувач і тестовий студент.</li>
+      <li>Активність та історія правок.</li>
+      <li>Ти на сервері стаєш викладачем сам — за <code>ADMIN_EMAILS</code> при першому вході.</li>
+    </ul>
+  </div>
+  <div class="box miss">
+    <h4>Якщо сервер уже піднято без цього рядка</h4>
+    <ul>
+      <li>Токен агента студентів не створює й карток не передає: це маршрути викладача.</li>
+      <li>Ті самі дві дії повторю через твій Chrome, де ти увійшов на ods. За словом.</li>
+    </ul>
+  </div>
+</div>
+
+<h2 id="site"><span class="num">3</span>Чим сайт упізнає студентів</h2>
+<p class="lead">Усе це — ядро, тож працює на обох сайтах; два останні рядки — лише ods.</p>
+<div class="scroll"><table class="grid">
+  <tr><th>Механізм</th><th>Що дає</th><th>Стан</th></tr>
+  <tr><td>Вхід Google, лише <code>@nure.ua</code></td><td>пошта, ім’я з акаунта, фото; новий користувач — «очікує»</td><td class="c"><span class="chip ok">працює</span></td></tr>
+  <tr><td>Імпорт списку на <code>/students</code></td><td>профіль зі статусом «студент», ПІБ, група</td><td><span class="chip ok">працює</span> для двох форм: список групи з ЦІСТ і учасники курсу з DL</td></tr>
+  <tr><td>Бот: посилання з профілю</td><td>Telegram студента — напевно</td><td class="c"><span class="chip ok">працює</span></td></tr>
+  <tr><td>Нік Telegram у профілі, вставка листування</td><td>Telegram — здогадом</td><td class="c"><span class="chip ok">працює</span></td></tr>
+  <tr><td>Імена в Zoom</td><td>відвідування й транскрипти пар</td><td class="c"><span class="chip ok">працює</span></td></tr>
+  <tr><td>ods: номер у списку = картка</td><td>варіант у всіх лабах</td><td class="c"><span class="chip ok">закріплено наперед</span></td></tr>
+  <tr><td>ods: переслане боту</td><td>автор за прив’язаним Telegram; інакше здогад за карткою, ніком, ім’ям</td><td><span class="chip warn">код є</span> справжнього Telegram ще не було</td></tr>
+</table></div>
+
+<div class="pair">
+  <div class="box miss">
+    <h4>Сьогоднішній список імпорт не читає</h4>
+    <ul>
+      <li>Форма «номер · пошта · код дисципліни · група» йому незнайома: такі рядки він мовчки пропускає.</li>
+      <li>Імен у цьому списку однаково нема. Тому сьогодні — файл і скрипт.</li>
+      <li>Навчити імпорт цієї форми — T373 Q4.</li>
+    </ul>
+  </div>
+  <div class="box now">
+    <h4>Закріплені картки допомагають «Вхідним»</h4>
+    <ul>
+      <li>Картка у пересланому файлі тепер одразу каже, чий він, навіть без прив’язаного бота.</li>
+      <li>Здав лабу 1 чи 2 з чужим номером — «Вхідні» скажуть: «У файлі картка X, а студент тримає Y».</li>
+    </ul>
+  </div>
+</div>
+
+<h2 id="names"><span class="num">4</span>Звідки брати імена за поштою</h2>
+<div class="cards">
+  <div class="rough"><header><h4>ЦІСТ, вхід викладача</h4><span class="chip bad">закрито з 15.10</span></header>
+    <p>Списки груп: ПІБ, залікова, контракт, пошта. Сторінка входу віддає 403 усім ззовні, серверу теж. Публічний розклад працює, але людей у ньому нема.</p>
+    <p class="do">Що робити — питання до тебе в <code>nure-students</code> T125: прохання до ЦІТ про доступ із сервера.</p></div>
+  <div class="rough"><header><h4>Знімки ЦІСТ на сервері</h4><span class="chip warn">мені недоступно</span></header>
+    <p>База бота <code>nure-students</code>: увесь факультет, перевірка двічі на день; остання вдала — 14.10. Найсвіжіше, що є.</p>
+    <p class="do">Дістатись можна лише через <code>ssh vv3</code>; ключ питає пароль.</p></div>
+  <div class="rough"><header><h4>Локальні копії знімків</h4><span class="chip ok">використано</span></header>
+    <p>04.09 у базі <code>nure_students</code> і 07.09 у <code>nure_students_dev</code>: 1341 студент факультету, усі з поштою.</p>
+    <p class="do">Старіють із відрахуваннями й переведеннями; на цей семестр вистачило.</p></div>
+  <div class="rough"><header><h4>Каталог Google nure.ua</h4><span class="chip ok">відкритий</span></header>
+    <p>People API під твоїм токеном: 10 478 акаунтів домену, ім’я й пошта, за кілька секунд. Груп у каталозі нема.</p>
+    <p class="do">Код і токен — у <code>nure-students</code>. Сьогодні не викликала: не знадобилось; стан — за записом від вересня.</p></div>
+  <div class="rough"><header><h4>Учасники курсу з DL</h4><span class="chip ok">працює</span></header>
+    <p>ПІБ, пошта й група тих, хто записався на курс у DL.</p>
+    <p class="do">Вставкою тексту на <code>/students</code>.</p></div>
+  <div class="rough"><header><h4>Ім’я з акаунта Google</h4><span class="chip ok">працює саме</span></header>
+    <p>При першому вході сайт підставляє прізвище й ім’я з акаунта, якщо профіль порожній.</p>
+    <p class="do">Без по батькові й без групи; для тих, кого нема в списку.</p></div>
+  <div class="rough"><header><h4>Бот студентських чатів</h4><span class="chip off">не для цього курсу</span></header>
+    <p><code>@nure_students_bot</code> знає, чий який Telegram, але веде потоки цього року й магістрів. ПЗПІ-24 там нема.</p>
+    <p class="do">Пошт у локальній копії цієї бази нема: лише ПІБ і Telegram.</p></div>
+</div>
+
+<h3>Що з цього я можу читати</h3>
+<div class="scroll"><table class="grid">
+  <tr><th>Де</th><th>Доступ</th></tr>
+  <tr><td>Mongo на ноутбуці: <code>nure_students</code>, <code>nure_students_dev</code>, <code>nure_timetable</code>, <code>python_labs</code>, <code>ods</code></td><td><span class="chip ok">є</span> читаю все</td></tr>
+  <tr><td>Сайт python на сервері</td><td><span class="chip ok">є</span> через API з токеном агента: списки читаю, людей не створюю</td></tr>
+  <tr><td>Сайт ods на сервері</td><td><span class="chip off">сайту ще нема</span> токен уже лежить</td></tr>
+  <tr><td>Сервер: бази, деплой</td><td><span class="chip bad">нема</span> ssh питає пароль ключа</td></tr>
+  <tr><td>ЦІСТ</td><td><span class="chip bad">нема ні в кого ззовні</span></td></tr>
+  <tr><td>Каталог Google</td><td><span class="chip warn">токен на диску є</span> без твого слова не чіпаю</td></tr>
+</table></div>
+
+<h2 id="say"><span class="num">5</span>Оголошення студентам</h2>
+<p class="lead">Текст із T370, змінено два рядки: третій крок і за що бонус. Дату дедлайну лаби 3 впишеш сам. Бонус — за T373 Q1 «a»; скажеш інакше — перепишу.</p>
+<div class="diff"><span class="del">- 3️⃣ Лаби → Лаба 3 → «Моя лаба» → назвати свій номер у списку потоку</span>
+<span class="add">+ 3️⃣ Лаби → Лаба 3 → «Моя лаба»: там уже твоя картка варіанта — перевір, що номер твій</span>
+
+<span class="del">- 🎁 Хто зробить усі три кроки до неділі 22.11, 23:59 — +1 бонусний бал</span>
+<span class="add">+ 🎁 Хто увійде й прив’яже бота до неділі 22.11, 23:59 — +1 бонусний бал</span></div>
+
+<div class="say">
+  <header><h4>У чат потоку</h4><button class="copy" type="button" data-for="say-post">Скопіювати</button></header>
+  <pre id="say-post">📢 Сайт курсу запрацював: https://ods.labs.in.ua
+
+Що зробити — 5 хвилин:
+1️⃣ Увійти з поштою @nure.ua
+2️⃣ У профілі прив’язати Telegram-бота
+3️⃣ Лаби → Лаба 3 → «Моя лаба»: там уже твоя картка варіанта — перевір, що номер твій
+
+🎁 Хто увійде й прив’яже бота до неділі 22.11, 23:59 — +1 бонусний бал
+
+📌 Лаби 1 і 2 — як і раніше: файл ноутбука мені в особисті. Вдруге на сайт нічого завантажувати не треба: я сам перенесу ваші файли, з часом вашого повідомлення
+⏰ Дедлайн лаби 2 — субота 21.11, 23:59
+🧪 Лаба 3 — уже на сайті, і здаємо її теж там: «Моя лаба» → перетягнути файл ноутбука. Дедлайн — &lt;п’ятниця 04.12, 23:59&gt;</pre>
+</div>
+<p class="cut">Чому так: студент нічого не обирає, тож крок — «перевір», а не «назви». Хто побачить не свій номер, напише тобі до першої здачі, а не після.</p>
+
+<h2 id="proof"><span class="num">6</span>Як перевірено</h2>
+<div class="scroll"><table class="grid">
+  <tr><th>Що</th><th>Як</th><th>Результат</th></tr>
+  <tr><td>Кожен із 48 на сайті</td><td>список сайту проти файла: статус, група, ПІБ, картка в кожній із п’яти лаб</td><td class="c"><span class="chip ok">0 розбіжностей</span></td></tr>
+  <tr><td>Очима студента</td><td>№ 1, 20 і 48: профіль, свої картки, «Моя лаба» 3</td><td><span class="chip ok">так</span> картки в лабах 1–3; лаби 4–5 сховано</td></tr>
+  <tr><td>Сторінки в браузері</td><td>headless Chrome на дев-сайті, студент № 20: «Профіль», «Лаби», «Моя лаба» 1 і 3</td><td class="c"><span class="chip ok">знімки вище</span></td></tr>
+  <tr><td>Повторний запуск</td><td>той самий скрипт удруге</td><td><span class="chip ok">нічого не змінив</span> 48 без змін, 240 «ті самі»</td></tr>
+  <tr><td>Копія бази</td><td>рецепт із рядком <code>users</code> на тимчасовій базі</td><td><span class="chip ok">48 і 240</span> жодної картки за тим, кого в копії нема</td></tr>
+  <tr><td>ЦІСТ і каталог Google</td><td>огляд субагентом; тікети <code>nure-students</code> T124 і T76 прочитано самою</td><td class="c"><span class="chip info">за записами</span></td></tr>
+</table></div>
+
+<div class="box honest" style="margin-top:14px">
+  <h4>Не перевірено</h4>
+  <ul>
+    <li><b>Справжній вхід студента через Google.</b> У деві його нема; за кодом сайт знаходить профіль за поштою й імен зі списку не перетирає.</li>
+    <li><b>Сервер.</b> Сайту там ще нема.</li>
+    <li><b>Чи номери 1–48 ті самі, з якими студенти робили лаби 1–2.</b> У жовтні в записах стояло «50 студентів»; старого списку локально нема. Якщо список перенумеровано — покажуть «Вхідні» після пересилання. T373 Q3.</li>
+    <li><b>Каталог Google сьогодні.</b> Спираюсь на запис від вересня.</li>
+  </ul>
+</div>
+
+<h2 id="next"><span class="num">7</span>Що далі</h2>
+<ol class="next">
+  <li><b>Ти, при деплої:</b> копія бази за рецептом із рядком <code>users</code>.</li>
+  <li><b>Ти, до оголошення:</b> T373 Q1 — крок 3 і бонус; Q3 — чи номери ті самі.</li>
+  <li><b>Ти, після першого входу студента:</b> глянути на <code>/students</code>, що він «студент», а не «очікує».</li>
+  <li><b>Я, за словом:</b> профілі на сервер через твій Chrome, якщо копія поїхала без них (XS).</li>
+  <li><b>Я, за словом:</b> імпорт на <code>/students</code> читає список курсу й бере імена з довідника «пошта → ПІБ» (S) — T373 Q4.</li>
+  <li><b>Ти, окремо:</b> <code>nure-students</code> T125 — прохання до ЦІТ про доступ до ЦІСТ із сервера.</li>
+</ol>
+
+<footer>T372 · python-labs, гілка <code>ods</code> · дані — база <code>ods</code> на ноутбуці й файл списку поза git · імен, пошт і змісту лаб на цій сторінці нема</footer>
+</div>
+
+<div id="zoombox" class="zoombox" hidden tabindex="-1" role="dialog" aria-label="Знімок на весь екран"><p>клік або Esc — закрити</p><img id="zoomimg" alt=""></div>
+<script>
+const zoombox = document.getElementById("zoombox"), zoomimg = document.getElementById("zoomimg");
+document.querySelectorAll("a.zoom").forEach(a => a.addEventListener("click", e => {
+  e.preventDefault();
+  const img = a.querySelector("img");
+  zoomimg.src = img.src; zoomimg.alt = img.alt;
+  zoombox.hidden = false; zoombox.scrollTop = 0; zoombox.focus();
+}));
+zoombox.addEventListener("click", () => { zoombox.hidden = true; });
+document.addEventListener("keydown", e => { if (e.key === "Escape") zoombox.hidden = true; });
+document.querySelectorAll("button.copy").forEach(b => b.addEventListener("click", () => {
+  const pre = document.getElementById(b.dataset.for);
+  const done = () => { const was = b.textContent; b.textContent = "Скопійовано"; setTimeout(() => { b.textContent = was; }, 1500); };
+  const pick = () => { const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+  try { navigator.clipboard.writeText(pre.textContent).then(done, pick); } catch (e) { pick(); }
+}));
+</script>
