@@ -1,0 +1,603 @@
+<title>Лаби 1–3 #375 рев’ю</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=Manrope:wght@600;700;800&display=swap">
+<style>
+/* Layout: one reading column; maps, flows, cards and phones stack on narrow screens. Same look as the #126, #134, #352 and #354 review pages. */
+:root {
+  --bg: #f6f4f1; --surface: #ffffff; --ink: #1c2024; --muted: #5a6068; --line: #e3ded6;
+  --accent: #c94f18; --accent-soft: #fbe8dd; --brown: #b85a18;
+  --ok: #1d7448; --ok-soft: #e2f2e8; --warn: #96580a; --warn-soft: #f9eedb;
+  --bad: #b3302a; --bad-soft: #f9e3e1; --info: #2d5aa6; --info-soft: #e6edf8;
+  --code: #f1eee9; --shot-bg: #ffffff; --scrim: rgba(20, 22, 25, 0.88); --scrim-ink: #e8e6e3;
+  --font-head: "Manrope", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141619; --surface: #1c1f23; --ink: #e8e6e3; --muted: #a3a8ae; --line: #30353b;
+    --accent: #ff7f45; --accent-soft: #3a2418; --brown: #e0874a;
+    --ok: #5cc98f; --ok-soft: #173225; --warn: #f0b25a; --warn-soft: #3a2c14;
+    --bad: #ff8277; --bad-soft: #3d1c1a; --info: #8fb3f0; --info-soft: #1b2638;
+    --code: #181b1f; --scrim: rgba(8, 9, 10, 0.92); color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141619; --surface: #1c1f23; --ink: #e8e6e3; --muted: #a3a8ae; --line: #30353b;
+  --accent: #ff7f45; --accent-soft: #3a2418; --brown: #e0874a;
+  --ok: #5cc98f; --ok-soft: #173225; --warn: #f0b25a; --warn-soft: #3a2c14;
+  --bad: #ff8277; --bad-soft: #3d1c1a; --info: #8fb3f0; --info-soft: #1b2638;
+  --code: #181b1f; --scrim: rgba(8, 9, 10, 0.92); color-scheme: dark;
+}
+body { background: var(--bg); color: var(--ink); font: 15px/1.6 var(--font-body); }
+.page { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 72px; }
+h1, h2, h3, h4 { font-family: var(--font-head); text-wrap: balance; line-height: 1.25; }
+h1 { font-size: clamp(1.7rem, 4vw, 2.4rem); margin: 0 0 6px; letter-spacing: -0.01em; }
+h2 { font-size: 1.5rem; margin: 56px 0 10px; display: flex; gap: 12px; align-items: baseline; }
+h3 { font-size: 1.12rem; margin: 28px 0 8px; }
+h4 { font-size: 0.98rem; margin: 0 0 6px; }
+p { margin: 0 0 10px; }
+a { color: var(--accent); }
+code { font-family: var(--font-mono); font-size: 0.86em; background: var(--code); padding: 0.05em 0.35em; border-radius: 4px; overflow-wrap: anywhere; }
+.num { font-family: var(--font-mono); font-size: 0.9rem; color: var(--surface); background: var(--brown); border-radius: 6px; padding: 2px 9px; }
+.sub { color: var(--muted); margin: 0 0 18px; }
+.lead { color: var(--muted); max-width: 78ch; }
+.kicker { text-transform: uppercase; letter-spacing: 0.07em; font-size: 0.72rem; color: var(--muted); margin: 0 0 4px; font-weight: 600; }
+.verdict { border: 1px solid var(--line); border-left: 5px solid var(--ok); background: var(--surface); border-radius: 10px; padding: 16px 20px; }
+.verdict ul { margin: 6px 0 0; padding-left: 20px; }
+.verdict li { margin: 4px 0; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; margin: 16px 0 0; }
+.tile { background: var(--ok-soft); border-radius: 10px; padding: 10px 14px; }
+.tile b { display: block; font: 800 1.9rem/1.1 var(--font-head); color: var(--ok); font-variant-numeric: tabular-nums; }
+.tile span { font-size: 0.88rem; }
+.wait { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 14px 0 0; }
+.wait > b { font-family: var(--font-head); font-size: 0.85rem; margin-right: 4px; }
+nav.toc { margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.92rem; }
+nav.toc a { text-decoration: none; border-bottom: 1px dashed currentColor; }
+.chip { display: inline-block; font-size: 0.75rem; font-weight: 600; border-radius: 999px; padding: 1px 9px; white-space: nowrap; }
+.chip.big { font-size: 0.85rem; padding: 3px 12px; white-space: normal; }
+.chip.ok { background: var(--ok-soft); color: var(--ok); }
+.chip.warn { background: var(--warn-soft); color: var(--warn); }
+.chip.bad { background: var(--bad-soft); color: var(--bad); }
+.chip.info { background: var(--info-soft); color: var(--info); }
+.chip.off { background: var(--code); color: var(--muted); }
+.pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; align-items: stretch; margin: 14px 0; }
+.pair > * { min-width: 0; }
+.box { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; }
+.box.now { border-color: var(--ok); }
+.box.miss { border-color: var(--warn); }
+.box h4 { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.box ul { margin: 6px 0 0; padding-left: 18px; }
+.box li { margin: 3px 0; }
+.scroll { overflow-x: auto; max-width: 100%; }
+table.grid { border-collapse: collapse; width: 100%; font-size: 0.9rem; background: var(--surface); }
+table.grid th, table.grid td { border: 1px solid var(--line); padding: 7px 10px; text-align: left; vertical-align: top; }
+table.grid th { background: var(--code); font-family: var(--font-head); font-size: 0.82rem; }
+table.grid td.c { white-space: nowrap; }
+table.grid tr.first td { background: var(--warn-soft); }
+/* site map: a column per section, a node per address; new nodes green, gone ones struck */
+.maps { display: grid; gap: 14px; margin: 14px 0; }
+.map { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; min-width: 0; }
+.map > header { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; margin-bottom: 10px; }
+.map > header h4 { margin: 0; }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.col { min-width: 0; }
+.col h5 { font: 700 0.82rem var(--font-head); margin: 0 0 6px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.node { border: 1px solid var(--line); background: var(--code); border-radius: 8px; padding: 5px 9px; margin: 0 0 6px; font-size: 0.84rem; line-height: 1.35; }
+.node code { background: none; padding: 0; font-size: 0.8rem; }
+.node small { display: block; color: var(--muted); font-size: 0.76rem; }
+.node.new { border-color: var(--ok); background: var(--ok-soft); }
+.node.gone { color: var(--muted); border-style: dashed; }
+.node.gone code { text-decoration: line-through; }
+.node.lock { border-color: var(--warn); background: var(--warn-soft); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 0.8rem; color: var(--muted); margin: 10px 0 0; }
+.legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; border: 1px solid var(--line); background: var(--code); }
+.legend .l-new::before { border-color: var(--ok); background: var(--ok-soft); }
+.legend .l-lock::before { border-color: var(--warn); background: var(--warn-soft); }
+.legend .l-gone::before { border-style: dashed; }
+/* flow: a row per path, its steps as a chain of arrows */
+.flow { display: grid; grid-template-columns: 9rem 1fr; gap: 12px 16px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; margin: 14px 0; }
+.flow > * { min-width: 0; }
+.flow .who { font-family: var(--font-head); font-weight: 700; font-size: 0.92rem; }
+.flow .who small { display: block; font-family: var(--font-body); font-weight: 400; color: var(--muted); font-size: 0.78rem; }
+.flow hr { grid-column: 1 / -1; border: 0; border-top: 1px dashed var(--line); margin: 2px 0; width: 100%; }
+ol.chain { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 0; align-items: stretch; }
+ol.chain li { display: flex; align-items: center; }
+ol.chain li:not(:last-child)::after { content: "→"; color: var(--muted); font-weight: 600; padding: 0 8px; }
+.step { border: 1px solid var(--ok); background: var(--ok-soft); border-radius: 8px; padding: 5px 10px; font-size: 0.88rem; line-height: 1.3; }
+.step b { display: block; font-weight: 600; }
+.step small { color: var(--muted); font-size: 0.76rem; }
+.step.gate { border-color: var(--warn); background: var(--warn-soft); }
+.was .step { border-color: var(--line); background: var(--code); }
+/* screenshots: one per card, stacked; a click opens the full picture */
+.shots { display: grid; gap: 22px; margin: 14px 0; }
+.shot { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px 18px; min-width: 0; }
+.shot header { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; margin-bottom: 6px; }
+.shot h4 { margin: 0; font-size: 1.02rem; }
+.shot dl { margin: 0 0 10px; display: grid; grid-template-columns: 6.5rem 1fr; gap: 3px 12px; font-size: 0.9rem; }
+.shot dt { color: var(--muted); font-weight: 600; font-size: 0.82rem; padding-top: 1px; }
+.shot dd { margin: 0; min-width: 0; }
+a.zoom { display: block; cursor: zoom-in; border-radius: 8px; }
+a.zoom:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+a.zoom img { display: block; width: 100%; max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--shot-bg); }
+a.zoom.tall img { max-height: 760px; object-fit: cover; object-position: top; }
+a.zoom.mid { max-width: 760px; }
+a.zoom.phone { max-width: 300px; }
+a.zoom.tiny { max-width: 240px; display: inline-block; vertical-align: middle; }
+.phones { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; align-items: start; }
+.phones figure { margin: 0; min-width: 0; }
+.phones figcaption { font-size: 0.82rem; color: var(--muted); margin: 0 0 6px; }
+.phones a.zoom.phone img { max-height: 620px; object-fit: cover; object-position: top; }
+.cut { color: var(--muted); font-size: 0.8rem; margin: 6px 0 0; }
+.zoombox { position: fixed; inset: 0; z-index: 50; background: var(--scrim); overflow: auto; cursor: zoom-out; padding: max(12px, env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) max(12px, env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px)); }
+.zoombox img { display: block; margin: 0 auto; max-width: 100%; height: auto; background: var(--shot-bg); border-radius: 6px; }
+.zoombox p { color: var(--scrim-ink); text-align: center; font-size: 0.82rem; margin: 0 0 8px; }
+.honest { border-left: 5px solid var(--warn); }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 14px 0; }
+.cards > * { min-width: 0; }
+.rough { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; }
+.rough header { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; flex-wrap: wrap; margin-bottom: 4px; }
+.rough h4 { margin: 0; }
+.rough p { font-size: 0.88rem; margin: 0 0 6px; }
+.rough .do { color: var(--muted); font-size: 0.84rem; margin: 0; }
+ol.next { padding-left: 22px; } ol.next li { margin: 6px 0; }
+@media (max-width: 700px) {
+  .flow { grid-template-columns: 1fr; }
+  .shot dl { grid-template-columns: 1fr; } .shot dt { margin-top: 4px; }
+}
+footer { margin-top: 56px; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 12px; }
+/* T367: the night as a timeline — one row per session, one scale for all rows (25 h from 00:00 of 19.11) */
+.tl { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; margin: 14px 0; }
+.tl-row { display: grid; grid-template-columns: 12.5rem 1fr; gap: 2px 14px; align-items: center; padding: 6px 0; }
+.tl-row > * { min-width: 0; }
+.tl-row + .tl-row { border-top: 1px dashed var(--line); }
+.tl-name { font: 700 0.88rem/1.3 var(--font-head); }
+.tl-name small { display: block; font: 400 0.76rem/1.35 var(--font-body); color: var(--muted); }
+.tl-track { position: relative; height: 22px; background: var(--code); border-radius: 5px; }
+.tl-seg { position: absolute; top: 3px; bottom: 3px; border-radius: 4px; background: var(--ok); min-width: 4px; }
+.tl-seg.cut { background: var(--bad); }
+.tl-seg.wake { background: var(--warn); }
+.tl-seg.aid { background: var(--info); }
+.tl-axis { position: relative; height: 18px; font: 0.72rem var(--font-mono); color: var(--muted); }
+.tl-axis span { position: absolute; transform: translateX(-50%); }
+.tl-axis span:first-child { transform: none; }
+.legend .l-ok::before { border-color: var(--ok); background: var(--ok); }
+.legend .l-cut::before { border-color: var(--bad); background: var(--bad); }
+.legend .l-wake::before { border-color: var(--warn); background: var(--warn); }
+.legend .l-aid::before { border-color: var(--info); background: var(--info); }
+/* a session as a card: the same five rows in the same order on each */
+.sess { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px 16px; min-width: 0; }
+.sess header { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; margin-bottom: 2px; }
+.sess h4 { margin: 0; font-size: 1.02rem; }
+.sess .when { color: var(--muted); font-size: 0.82rem; margin: 0 0 8px; }
+.sess dl { margin: 0; display: grid; grid-template-columns: 6.6rem 1fr; gap: 5px 12px; font-size: 0.9rem; }
+.sess dt { color: var(--muted); font-weight: 600; font-size: 0.8rem; padding-top: 2px; }
+.sess dd { margin: 0; min-width: 0; }
+.sess .links { margin: 10px 0 0; font-size: 0.88rem; display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.sgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 14px; margin: 14px 0; }
+/* steps of the night: a status, what to do, the command */
+ol.steps { list-style: none; margin: 14px 0; padding: 0; display: grid; gap: 8px; counter-reset: st; }
+ol.steps > li { counter-increment: st; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px 10px 46px; position: relative; min-width: 0; }
+ol.steps > li::before { content: counter(st); position: absolute; left: 12px; top: 10px; width: 24px; height: 24px; border-radius: 50%; background: var(--code); color: var(--muted); font: 600 0.8rem/24px var(--font-mono); text-align: center; }
+ol.steps > li.done { border-color: var(--ok); }
+ol.steps > li.done::before { content: "✓"; background: var(--ok-soft); color: var(--ok); }
+ol.steps > li.ask { border-color: var(--warn); }
+ol.steps > li b { font-family: var(--font-head); }
+ol.steps > li p { margin: 2px 0 0; font-size: 0.9rem; }
+ol.steps > li .src { color: var(--muted); font-size: 0.78rem; }
+pre.cmd { font: 0.82rem/1.5 var(--font-mono); background: var(--code); border-radius: 6px; padding: 8px 10px; margin: 6px 0 0; overflow-x: auto; white-space: pre; }
+/* words to say: the text itself and a copy button */
+.say { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; margin: 14px 0; }
+.say header { display: flex; justify-content: space-between; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 8px; }
+.say h4 { margin: 0; }
+.say pre { font: 0.95rem/1.6 var(--font-body); white-space: pre-wrap; margin: 0; background: var(--code); border-radius: 8px; padding: 12px 14px; }
+button.copy { font: 600 0.8rem var(--font-head); color: var(--accent); background: var(--accent-soft); border: 1px solid transparent; border-radius: 999px; padding: 4px 12px; cursor: pointer; }
+button.copy:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* what a wake-up cost: bars on one scale, the number at the end */
+.bars { display: grid; grid-template-columns: 12.5rem 1fr 4.2rem; gap: 7px 12px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; margin: 14px 0; font-size: 0.88rem; }
+.bars > * { min-width: 0; }
+.bars i { display: block; height: 14px; border-radius: 4px; background: var(--warn); }
+.bars .n { font: 600 0.86rem var(--font-mono); text-align: right; font-variant-numeric: tabular-nums; }
+.bars .sum { grid-column: 1 / -1; border-top: 1px dashed var(--line); padding-top: 8px; color: var(--muted); }
+details.more { margin: 14px 0; }
+details.more > summary { cursor: pointer; font: 700 0.95rem var(--font-head); color: var(--accent); }
+.diff { font: 0.82rem/1.55 var(--font-mono); background: var(--code); border-radius: 8px; padding: 10px 12px; overflow-x: auto; white-space: pre; margin: 8px 0 0; }
+.diff .del { color: var(--bad); } .diff .add { color: var(--ok); }
+a.zoom.strip img { aspect-ratio: 1200 / 60; object-fit: cover; object-position: top; }
+@media (max-width: 700px) {
+  .tl-row { grid-template-columns: 1fr; }
+  .sess dl { grid-template-columns: 1fr; } .sess dt { margin-top: 4px; }
+  .bars { grid-template-columns: 1fr 4.2rem; } .bars .who { grid-column: 1 / -1; margin-bottom: -4px; }
+}
+/* T375: a change — its two boxes, then its pictures; a phone shot beside a short text */
+.change { margin: 26px 0 34px; }
+.change > h3 { margin-top: 0; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+blockquote.old { margin: 8px 0 0; padding: 4px 12px; border-left: 3px solid var(--line); color: var(--muted); font-style: italic; font-size: 0.9rem; }
+.side { display: grid; grid-template-columns: minmax(0, 260px) 1fr; gap: 12px 18px; align-items: start; margin: 14px 0 0; }
+.side > * { min-width: 0; }
+.side p { font-size: 0.9rem; color: var(--muted); }
+.shot figure { margin: 12px 0 0; min-width: 0; }
+.shot figcaption { font-size: 0.82rem; color: var(--muted); margin: 0 0 6px; }
+/* the labs' colours */
+.swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 14px 0; }
+.sw { display: flex; gap: 10px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; min-width: 0; }
+.sw i { flex: none; width: 34px; height: 34px; border-radius: 8px; color: #fff; font: 700 0.95rem/34px var(--font-head); font-style: normal; text-align: center; }
+.sw b { display: block; font-family: var(--font-head); }
+.sw code { font-size: 0.78rem; }
+/* the questions: one line each */
+ul.qs { list-style: none; margin: 14px 0; padding: 0; display: grid; gap: 6px; }
+ul.qs li { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 7px 14px; font-size: 0.92rem; }
+ul.qs li.now { border-color: var(--warn); }
+ul.qs li > b:first-child { font-family: var(--font-mono); color: var(--brown); margin-right: 6px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 4px; }
+@media (max-width: 560px) { .side { grid-template-columns: 1fr; } }
+</style>
+
+<div class="page">
+<header>
+  <p class="kicker">python-labs · T375 · лаби 1–3 ods перед деплоєм</p>
+  <h1>Лаби 1–3 #375 рев’ю</h1>
+  <p class="sub">гілка <code>ods</code> · 20.11.2026, ніч · код — у локальних комітах без push · знімки — стенд із вигаданими людьми, зміст лаб замито</p>
+
+  <div class="verdict">
+    <p><b>Варіант студент більше ніде не обирає й не називає.</b> Картку закріплює викладач; «Моя лаба» її показує; картка у файлі лише звіряється — чужа дає відмову зі словами.</p>
+    <ul>
+      <li><b>Шлях студента по лабах 1–3 пройдено в браузері</b> на копії бази з 48 закріпленими студентами: блокерів нема. Знайдене дорогою виправлено тієї ж ночі.</li>
+      <li><b>На сервер це ще не доїхало:</b> код — у локальних комітах без push, тексти лаб — на диску.</li>
+      <li><b>Здачу лаби 3 вирішують дві речі поза кодом сайту:</b> ліміт запиту на сервері (<code>BODY_MAX</code>, зараз 1,1 МБ проти 12 МБ на сайті) і дедлайни на «Строках».</li>
+      <li><b>Відкритим лишається одне питання, і важить воно найбільше:</b> чи номери 1–48 ті самі, з якими робили лаби 1–2 (T380 Q1).</li>
+    </ul>
+    <div class="tiles">
+      <div class="tile"><b>312</b><span>перевірок у смоуках ods, усі зелені</span></div>
+      <div class="tile"><b>8</b><span>сценаріїв у браузері: ноутбук і телефон</span></div>
+      <div class="tile"><b>62</b><span>заміни в 13 сторінках текстів лаб</span></div>
+      <div class="tile"><b>9</b><span>пасток здачі закрито</span></div>
+      <div class="tile"><b>6</b><span>комітів, без push</span></div>
+    </div>
+    <div class="wait"><b>Чекає тебе</b><span class="chip big warn">push коду</span><span class="chip big warn">тексти на сервер</span><span class="chip big warn"><code>BODY_MAX</code></span><span class="chip big warn">номери (Q1)</span><span class="chip big warn">дедлайни (Q2)</span></div>
+  </div>
+
+  <nav class="toc" aria-label="Зміст">
+    <a href="#answers">Відповіді на питання</a>
+    <a href="#changes">Було / стало</a>
+    <a href="#traps">Пастки здачі</a>
+    <a href="#texts">Тексти</a>
+    <a href="#say">Оголошення</a>
+    <a href="#proof">Як перевірено</a>
+    <a href="#wait">Чекає тебе</a>
+    <a href="#commits">Коміти</a>
+  </nav>
+</header>
+
+<h2 id="answers"><span class="num">1</span>Відповіді на твої питання</h2>
+<div class="cards">
+  <article class="rough"><header><h4>«Номер варіанта закріплюється автоматично, і називати його ніколи не треба?»</h4><span class="chip ok">так</span></header>
+    <p>Рядок на домашній, форма «Який у тебе варіант?» і «завантаж ноутбук — сайт прочитає варіант» були залишками попереднього кроку (T354), написаними до списку потоку (T372).</p>
+    <p class="do">→ прибрано все: на сторінці, на сервері, в текстах.</p></article>
+  <article class="rough"><header><h4>«Студент не обирає; варіант у файлі треба лише звірити»</h4><span class="chip ok">так і зроблено</span></header>
+    <p>Файл із чужою карткою — «У файлі картка X, а за тобою закріплено Y»; файл без картки приймається з попередженням «сайт не може звірити».</p>
+    <p class="do">→ студент без картки бачить «Варіант ще не закріплено… напиши викладачеві».</p></article>
+  <article class="rough"><header><h4>«Чи все консистентно?»</h4><span class="chip ok">тепер так</span></header>
+    <p>Було: 8 місць, що вводили б студента в оману, і 16 застарілих — здебільшого в лабах 1–2 («картка у файлі карток», «шаблон за посиланням від викладача», «здаєш посилання й рядок»).</p>
+    <p class="do">→ виправлено 13 сторінок.</p></article>
+  <article class="rough"><header><h4>«Чи воно буде нормально працювати?»</h4><span class="chip warn">так, з умовами</span></header>
+    <p>Умови — у «Чекає тебе». Дорогою закрито дев’ять пасток здачі.</p>
+    <p class="do">→ <a href="#traps">пастки нижче</a></p></article>
+  <article class="rough"><header><h4>«Чи все готово для лаби 3?»</h4><span class="chip ok">сайт — так</span></header>
+    <p>Картка, ноутбук зі своєю карткою у двох форматах, здача, «Що бачить сайт», рівні, перевірка у викладача.</p>
+    <p class="do">→ не перевірено на справжньому сервері й зі справжнім Colab.</p></article>
+  <article class="rough"><header><h4>«Лаби 1–2 у старому форматі — чи там адекватно?»</h4><span class="chip ok">так</span></header>
+    <p>Картки на сайті слово в слово ті, що у виданих файлах карток (60 із 60 у кожній лабі). Сторінки кажуть правду про картку й здачу.</p>
+    <p class="do">→ шаблони ноутбуків не чіпано — T380 Q6.</p></article>
+  <article class="rough"><header><h4>«Чи переводити лаби 1–2 на новий формат?»</h4><span class="chip info">здачу — так</span></header>
+    <p>І саме в тому порядку, що ти описав: переслав усе боту → глянув «Вхідні» → клік «сайт» на «Лабах»; далі нові версії й запізнілі йдуть на сайт.</p>
+    <p class="do">→ тексти в розкладку лаби 3 — не зараз: дві лаби по сім сторінок без користі для тих, хто вже здав (Q5).</p></article>
+  <article class="rough"><header><h4>«Пересилати боту — надійніше? І дату здачі буде видно?»</h4><span class="chip ok">так</span></header>
+    <p>Версія стає в ряд із часом повідомлення студента, студент бачить її на «Моїй лабі».</p>
+    <p class="do">→ перше пересилання — одна розмова, щоб глянути, що відповість бот.</p></article>
+  <article class="rough"><header><h4>Панель із розділами лаби, «Моя лаба», перемикач лаб, нагору</h4><span class="chip ok">зроблено</span></header>
+    <p>Одним рядком під меню на всіх сторінках лаби.</p></article>
+  <article class="rough"><header><h4>Свій колір кожній лабі</h4><span class="chip ok">зроблено</span></header>
+    <p>Порядок за спектром від холодного до теплого; видно на лекціях, «Лабах», домашній і в панелі лаби.</p></article>
+</div>
+
+<h2 id="changes"><span class="num">2</span>Було / стало</h2>
+<p class="lead">П’ять змін, які студент і ти побачите першими. Знімки — стенд <code>ods_t375_stand</code>: люди вигадані, картка варіанта, питання на захист і текст лаб замито.</p>
+
+<article class="change">
+  <h3>Домашня</h3>
+  <div class="pair">
+    <div class="box"><h4>Було <span class="chip off">до цієї ночі</span></h4>
+      <blockquote class="old">«Далі — Лаби → Лаба 3 → „Моя лаба“: назви свій номер у списку потоку»</blockquote></div>
+    <div class="box now"><h4>Стало</h4>
+      <p>Блок «Мої лаби»: рядок на лабу — де здається · до коли · здано чи ні · оцінка.</p></div>
+  </div>
+  <a class="zoom" href="#"><img src="img/home-student.png" alt="Домашня студента: «Перші два кроки», картки Лекції й Лаби, блок «Мої лаби» з трьома рядками — номер лаби в її кольорі, де здається, дедлайн, здано 14 із 14"></a>
+  <div class="side">
+    <a class="zoom phone" href="#"><img src="img/home-phone.png" alt="Та сама домашня на телефоні: стан лаби під її назвою"></a>
+    <p>Телефон, 390 px: стан лаби переходить під її назву, сторінка не гортається вбік.</p>
+  </div>
+</article>
+
+<article class="change">
+  <h3>«Моя лаба», студент із карткою</h3>
+  <div class="pair">
+    <div class="box"><h4>Було</h4><p>Картка на сорок рядків, кнопки «Почати» під нею за прокруткою.</p></div>
+    <div class="box now"><h4>Стало</h4><p>Картка згорнута до перших рядків, «Скопіювати» бере її цілком; на ноутбуці «Почати» і «Здати» — на першому екрані.</p></div>
+  </div>
+  <a class="zoom" href="#"><img src="img/my3-top.png" alt="Моя лаба 3 студента на ноутбуці: панель лаби під меню, картка варіанта ПЗПІ-24-11 згорнута, кнопки Почати, питання на захист, блок Здати з полем для файла"></a>
+  <div class="side">
+    <a class="zoom phone" href="#"><img src="img/my3-phone.png" alt="Моя лаба 3 на телефоні: картка згорнута, кнопки Почати на першому екрані"></a>
+    <p>Телефон, 390 × 844: «Почати» на першому екрані, «Здати» — після «Питань на захист», за прокруткою.</p>
+  </div>
+</article>
+
+<article class="change">
+  <h3>«Моя лаба», студент без картки</h3>
+  <div class="pair">
+    <div class="box"><h4>Було</h4><p>Список вільних номерів, «Це мій варіант», поле для файла.</p>
+      <blockquote class="old">«Який у тебе варіант? … Взяти демо-варіант … або просто завантаж свій ноутбук — сайт прочитає варіант із нього»</blockquote></div>
+    <div class="box now"><h4>Стало</h4><p>«Варіант ще не закріплено… напиши викладачеві».</p></div>
+  </div>
+  <a class="zoom" href="#"><img src="img/nocard.png" alt="Моя лаба 3 студента без картки: Варіант ще не закріплено, картки закріплює викладач за списком потоку, напиши викладачеві"></a>
+</article>
+
+<article class="change">
+  <h3>«Результати» → «Без картки»</h3>
+  <div class="pair">
+    <div class="box"><h4>Було</h4><p>Закріпити картку можна було лише скриптом.</p></div>
+    <div class="box now"><h4>Стало</h4><p>Блок «Без картки»: студент, запропонована вільна картка, «Закріпити» — номер стає його в усіх лабах.</p></div>
+  </div>
+  <a class="zoom" href="#"><img src="img/results-loose.png" alt="Результати лаби 3 у викладача: внизу таблиці блок Без картки — студентка, запропонована картка ПЗПІ-24-49 і кнопка Закріпити"></a>
+  <p class="cut">стовпці таблиці після «Варіанта» замито; люди вигадані</p>
+</article>
+
+<article class="change">
+  <h3>Сторінки лаби → панель</h3>
+  <div class="pair">
+    <div class="box"><h4>Було</h4><p>Пігулки частин під заголовком, «Моя лаба» в «крихтах» — їдуть із прокруткою.</p></div>
+    <div class="box now"><h4>Стало</h4><p>Панель під меню: лаби <code>1 2 3</code> · частини лаби · «Моя лаба» (викладачеві ще «Результати»). Один рядок, на телефоні гортається вбік; клік по відкритій сторінці чи порожньому місцю — нагору.</p></div>
+  </div>
+  <article class="shot">
+    <figure style="margin-top:0"><figcaption>студент, сторінка лаби прокручена на 900 px: панель на місці, відкрита частина — у кольорі лаби</figcaption>
+      <a class="zoom" href="#"><img src="img/bar-laptop.png" alt="Верх сторінки лаби 3 після прокрутки: меню, під ним панель — номери лаб у кольорах, частини лаби, підсвічена відкрита, кнопка Моя лаба"></a></figure>
+    <figure><figcaption>викладач: лаби 4–5 бліді (сховані), «Моя лаба» й «Результати» — значками</figcaption>
+      <a class="zoom" href="#"><img src="img/bar-teacher.png" alt="Панель лаби у викладача: номери 1–5, лаби 4 і 5 бліді, праворуч два значки"></a></figure>
+  </article>
+  <div class="side">
+    <a class="zoom phone" href="#"><img src="img/bar-phone.png" alt="Панель лаби на телефоні: номери лаб, відкрита частина в кольорі, кнопка Моя лаба; рядок гортається вбік"></a>
+    <p>Телефон: рядок гортається вбік, відкрита частина тримається на виду, «Моя лаба» — праворуч завжди.</p>
+  </div>
+</article>
+
+<h3>Ще зміни</h3>
+<div class="scroll"><table class="grid">
+  <tr><th>Де</th><th>Було</th><th>Стало</th></tr>
+  <tr><td>«Моя лаба», викладач і тестовий студент</td><td>та сама форма + «Взяти демо-варіант»</td><td>пояснення й кнопка «Відкрити демо-варіант»; сказано, коли демо зараз у другого</td></tr>
+  <tr><td>«звільнити картку»</td><td>картка сама поверталась до студента з наступним його візитом</td><td>лишається вільною; старі версії файла зникають із картки, але лишаються в базі</td></tr>
+  <tr><td>«Лаби»</td><td>«здаємо в Telegram»</td><td>той самий рядок стану, що на домашній; номер лаби у її кольорі</td></tr>
+  <tr><td>лекції</td><td>пігулки «Лаба N» сірі</td><td>у кольорі лаби</td></tr>
+</table></div>
+<p class="cut">Сервер: <code>GET /api/variants/{лаба}/free</code> і <code>POST …/my/claim</code> зникли; з’явились <code>POST …/my/demo</code>, <code>GET …/loose</code>; <code>GET /api/variants</code> несе стан лаби читача; MY — <code>in_time</code>, <code>demo</code>.</p>
+
+<div class="shots">
+  <article class="shot">
+    <header><h4>Тестовий студент на «Моїй лабі 3»</h4><span class="chip info">викладач → «Очима студента» → тестовий</span></header>
+    <dl><dt>Що видно</dt><dd>Пояснення, кнопка «Відкрити демо-варіант ДЕМО-00» і рядок: демо зараз відкритий у другого — у викладача.</dd></dl>
+    <a class="zoom" href="#"><img src="img/teacher-demo.png" alt="Моя лаба 3 очима тестового студента: Студент бачить тут свою картку, кнопка Відкрити демо-варіант ДЕМО-00, рядок про те, що демо зараз відкритий у другого"></a>
+  </article>
+  <article class="shot">
+    <header><h4>«Лаби»: студент і викладач</h4><span class="chip info">стенд</span></header>
+    <dl><dt>Студент</dt><dd>Рядок стану, як на домашній: де здається, до коли, скільки здано.</dd><dt>Викладач</dt><dd>Перемикач «сховано · Telegram · сайт» у кожному рядку; номери в кольорах лаб.</dd></dl>
+    <figure><figcaption>студент</figcaption><a class="zoom" href="#"><img src="img/labs-student.png" alt="Лаби очима студента: три лаби з рядком стану й кнопкою Моя лаба"></a></figure>
+    <figure><figcaption>викладач</figcaption><a class="zoom" href="#"><img src="img/labs-teacher.png" alt="Лаби у викладача: п’ять лаб, у кожному рядку перемикач сховано, Telegram, сайт і кнопки Моя лаба та Результати"></a></figure>
+  </article>
+</div>
+
+<h3>Кольори лаб</h3>
+<p class="lead">За спектром від холодного до теплого. Видно на лекціях, «Лабах», домашній і в панелі лаби.</p>
+<div class="swatches">
+  <div class="sw"><i style="background:#6610f2">1</i><span><b>індиго</b><code>#6610f2</code></span></div>
+  <div class="sw"><i style="background:#0dcaf0">2</i><span><b>блакитний</b><code>#0dcaf0</code></span></div>
+  <div class="sw"><i style="background:#20c997">3</i><span><b>бірюзовий</b><code>#20c997</code></span></div>
+  <div class="sw"><i style="background:#fd7e14">4</i><span><b>помаранчевий</b><code>#fd7e14</code></span></div>
+  <div class="sw"><i style="background:#d63384">5</i><span><b>рожевий</b><code>#d63384</code></span></div>
+</div>
+<div class="shots">
+  <article class="shot">
+    <header><h4>Лекції: пігулки «Лаба N» у кольорі лаби</h4><span class="chip info">викладач</span></header>
+    <a class="zoom" href="#"><img src="img/lectures-colours.png" alt="Список лекцій у викладача: праворуч пігулки Лаба 1 – Лаба 5, кожна у кольорі своєї лаби"></a>
+  </article>
+</div>
+
+<h2 id="traps"><span class="num">3</span>Пастки здачі</h2>
+<p class="lead">Знайшли читач коду (Opus) і прохід у браузері; кожна має перевірку в смоуках.</p>
+
+<div class="shots">
+  <article class="shot">
+    <header><h4>Файл не той — відмова словами</h4><span class="chip ok">файл не зберігається</span></header>
+    <dl>
+      <dt>Що видно</dt><dd>Червоні слова під полем «Здати»: обидві картки названо; ноутбук іншої лаби названо номером.</dd>
+      <dt>Перевірено</dt><dd>Наново для цієї сторінки, студент <code>s11</code>: стан «Моєї лаби» до і після однаковий — 3 версії, спроба 1, 14 із 14.</dd>
+    </dl>
+    <figure><figcaption>ноутбук із карткою іншого студента</figcaption><a class="zoom mid" href="#"><img src="img/my3-refused.png" alt="Блок Здати: червоні слова — У файлі картка ПЗПІ-24-12, а за тобою закріплено ПЗПІ-24-11: встав у ноутбук свою картку"></a></figure>
+    <figure><figcaption>ноутбук лаби 1 у лабу 3</figcaption><a class="zoom mid" href="#"><img src="img/my3-otherlab.png" alt="Блок Здати: червоні слова — Це ноутбук лаби 1, а тут лаба 3 — перевір, який файл здаєш"></a></figure>
+  </article>
+</div>
+
+<div class="cards">
+  <article class="rough"><header><h4>Той самий файл «для певності» після переносу з Telegram — і вже «після дедлайну»</h4><span class="chip ok">закрито</span></header>
+    <p><b>Чому:</b> кожне завантаження було новою версією й новою спробою.</p>
+    <p class="do">→ ті самі байти, що в найновішій версії, — не версія й не спроба; сторінка каже «Такий самий файл уже тут».</p></article>
+  <article class="rough"><header><h4>Вчасна здача + виправлена версія після дедлайну = червоне «після дедлайну»</h4><span class="chip ok">закрито</span></header>
+    <p><b>Чому:</b> рахувалась лише остання версія.</p>
+    <p class="do">→ студент бачить «є версія, здана вчасно; остання — після дедлайну» без червоного (Q3).</p></article>
+  <article class="rough"><header><h4>Ноутбук лаби 2, зданий у лабу 3, приймається</h4><span class="chip ok">закрито</span></header>
+    <p><b>Чому:</b> картка однакова в усіх лабах.</p>
+    <p class="do">→ остання клітинка кожного шаблону друкує <code>LABn</code> — «Це ноутбук лаби 2, а тут лаба 3» (знімок вище).</p></article>
+  <article class="rough"><header><h4>Подовження «дата ще невідома» дає «після дедлайну»</h4><span class="chip ok">закрито</span></header>
+    <p><b>Чому:</b> враховувалась лише дата.</p>
+    <p class="do">→ таке подовження означає «дедлайну нема» — на «Моїй лабі» й на «Вхідних».</p></article>
+  <article class="rough"><header><h4>«Відкрити в браузері» для лаби 3 мовчки стирає лабу 2 в marimo</h4><span class="chip ok">закрито</span></header>
+    <p><b>Чому:</b> marimo.app тримає один ноутбук на браузер.</p>
+    <p class="do">→ сайт пам’ятає, яка лаба там зараз, і питає перед заміною.</p></article>
+  <article class="rough"><header><h4>Два перші відкриття сторінки дають два різні токени — <code>check()</code> з ноутбука мовчки не доходить</h4><span class="chip ok">закрито</span></header>
+    <p><b>Чому:</b> токен ставився без умови.</p>
+    <p class="do">→ ставиться лише в порожнє місце й перечитується.</p></article>
+  <article class="rough"><header><h4>Посилання <code>javascript:…</code> у полі ноутбука стає клікабельним у викладача</h4><span class="chip ok">закрито</span></header>
+    <p><b>Чому:</b> поле зберігалось як є.</p>
+    <p class="do">→ лише <code>https://</code>, для ноутбука — лише Colab чи Drive; відхилене не зберігається.</p></article>
+  <article class="rough"><header><h4>Викладач звільнив картку помилково й закріпив знову — старих версій не видно, а той самий файл удруге не здається</h4><span class="chip ok">закрито</span></header>
+    <p><b>Чому:</b> версії лишались прив’язані до студента, а картка їх уже не показувала.</p>
+    <p class="do">→ версії картки, що починає з чистого, відкладаються: лишаються в базі, картці не заважають. Те саме з демо, коли його перехоплює другий читач.</p></article>
+  <article class="rough"><header><h4>Ноутбук понад 1,1 МБ на сервері — «Помилка 413»</h4><span class="chip warn">ліміт — за тобою</span></header>
+    <p><b>Чому:</b> ліміт веб-сервера нижчий за 12 МБ сайту.</p>
+    <p class="do">→ сторінка каже, що робити; сам ліміт — у <a href="#wait">«Чекає тебе»</a>, крок 3.</p></article>
+</div>
+
+<h2 id="texts"><span class="num">4</span>Тексти</h2>
+<div class="tiles">
+  <div class="tile"><b>13</b><span>md-сторінок лаб виправлено, 62 заміни</span></div>
+  <div class="tile"><b>40 з 40</b><span>посилань живі; дат у текстах нема</span></div>
+  <div class="tile"><b>0</b><span>лекцій зачеплено</span></div>
+</div>
+<div class="box" style="margin-top:14px">
+  <ul>
+    <li><b>Прочитано</b> все, що бачить студент про лаби 1–3: 8 спільних сторінок, 7 сторінок лаби 3, умова · розбір · marimo лаб 1–2, текстові клітинки шести шаблонів, написи сайту й слова помилок.</li>
+    <li><b>Заміни</b> — на диску, поза git; перелік «було → стало» з рядками — <code>.dev/.drafts/T375/texts-audit.md</code>. Сторінки лаб перезалито в дев-базу <code>ods</code>.</li>
+    <li><b>Спільні сторінки не називають номерів лаб:</b> «куди здається лаба — написано під її заголовком і на „Моїй лабі“». Так само тепер і лаби 1–2 — після перемикання на «сайт» їх не треба переписувати.</li>
+    <li><b>Одна форма для marimo:</b> файл не зберігає виводу, тож рядок відповідей студент дає окремо («інший спосіб» на сайті або те саме повідомлення в Telegram); збереження — «Ctrl/Cmd+S → ☰ → Export… → Python».</li>
+    <li><b>Не чіпано:</b> шаблони ноутбуків усіх лаб (Q6), лаби 4–5 (сховані; та сама чистка перед відкриттям), усе, що вирішуєш ти (Q7, Q8).</li>
+  </ul>
+</div>
+
+<h2 id="say"><span class="num">5</span>Оголошення студентам</h2>
+<div class="say">
+  <header><h4>У чат потоку</h4><button class="copy" type="button" data-for="say-post">Скопіювати</button></header>
+  <pre id="say-post">📢 Сайт курсу запрацював: https://ods.labs.in.ua
+
+Що зробити — 3 хвилини:
+1️⃣ Увійти з поштою @nure.ua
+2️⃣ У профілі прив’язати Telegram-бота
+3️⃣ На головній глянути «Мої лаби»: твій варіант, дедлайни, що вже здано
+
+🎁 &lt;Хто зробить кроки 1–2 до неділі 22.11, 23:59 — +1 бонусний бал&gt;
+
+🎴 Варіант закріплено за кожним наперед — це твій номер у списку потоку, той самий у всіх лабах. Вибирати нічого не треба: картка чекає на сторінці «Моя лаба»
+📌 Лаби 1 і 2 — як і раніше: файл ноутбука мені в особисті. Вдруге на сайт нічого завантажувати не треба: я сам перенесу ваші файли, з часом вашого повідомлення
+⏰ Дедлайн лаби 2 — субота 21.11, 23:59
+🧪 Лаба 3 — на сайті, і здаємо її теж там: «Моя лаба» → ноутбук уже з твоєю карткою → перетягнути файл. Дедлайн — &lt;п’ятниця 04.12, 23:59&gt;</pre>
+</div>
+<p class="cut">Замість тексту з T370: третій крок і рядок про варіант інші. У кутових дужках — те, що впишеш сам.</p>
+
+<h2 id="proof"><span class="num">6</span>Як перевірено</h2>
+<div class="pair">
+  <div class="box now"><h4>Перевірено <span class="chip ok">усе зелене</span></h4>
+    <ul>
+      <li><b>Смоуки ods:</b> labs 65 · files 66 · gates 27 · table 17 · intake 57 · nb 39 · ods 10 · content 31 — 312 перевірок. Лінт <code>ruff F,E9</code> чистий. Обидва фронти збираються з копії <code>HEAD</code>.</li>
+      <li><b>Стенд:</b> копія дев-бази за рецептом сервера (T372) — рецепт спрацював, API стартує; люди замінені вигаданими.</li>
+      <li><b>Прохід у headless Chrome</b> (QA-агент Opus, ноутбук і телефон), 8 сценаріїв:
+        <div class="chips"><span class="chip ok">перший візит студента</span><span class="chip ok">здача лаби 3 дев’ятьма способами</span><span class="chip ok">слова дедлайну</span><span class="chip ok">лаби 1–2 під Telegram</span><span class="chip ok">без картки → «Закріпити» → «звільнити»</span><span class="chip ok">демо: викладач і тестовий студент</span><span class="chip ok">сховані лаби 4–5</span><span class="chip ok">неприйнятий студент</span></div>
+        Дев’ять способів: порожній шаблон, файл із рядком ключа (14 із 14 ✅), той самий файл, чужа картка, ноутбук іншої лаби, не ноутбук, 13 МБ, рядок і посилання, marimo. На телефоні 390 px горизонтальної прокрутки нема на жодній сторінці.</li>
+      <li><b>Панель лаби:</b> 360, 390, 820, 1440 px, світла й темна тема; висота 41 px до і після переходів; «де я» стоїть рівно під нею; якір лягає під панель; перемикач лаб зберігає вид сторінки.</li>
+      <li><b>Картки лаб 1–3</b> у базі звірено з виданими файлами карток: 60 із 60 у кожній.</li>
+    </ul>
+  </div>
+  <div class="box honest"><h4>Не перевірено</h4>
+    <ul>
+      <li><b>Справжній сервер:</b> вхід Google, ліміт запиту, бот, пересилання з Telegram.</li>
+      <li><b>Справжній Colab:</b> посилання на ноутбук і <code>check()</code> → сайт із ядра Colab.</li>
+      <li><b>marimo.app:</b> кнопка відкриває правильну адресу, сам сайт не відкривався; шлях «Export… → Python» узято з перевірки T354.</li>
+      <li><b>Safari, Firefox, справжній телефон</b>, перетягування файла мишкою.</li>
+      <li><b>Чи номери 1–48 ті самі</b>, що в лабах 1–2.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="shots">
+  <article class="shot">
+    <header><h4>Лаба 3 після здачі: «Що бачить сайт»</h4><span class="chip info">студент <code>s11</code></span></header>
+    <dl><dt>Що видно</dt><dd>Останній файл і версія 3 із 3; 14 із 14 ✅ за рядком ключа; рівні правила оцінювання з тим, що вже зараховано; ряд версій. Назви ключів рядка замито.</dd></dl>
+    <a class="zoom mid" href="#"><img src="img/my3-seen.png" alt="Блок Що бачить сайт: файл, 14 із 14 відповідей, рівні 12–20 з позначками, три версії"></a>
+  </article>
+  <article class="shot">
+    <header><h4>Лаба 1 під Telegram</h4><span class="chip info">студент <code>s11</code></span></header>
+    <dl><dt>Що видно</dt><dd>Картка й «Почати» є; у «Здати» — «викладачеві в особисті повідомлення Telegram», поля для файла нема.</dd></dl>
+    <a class="zoom" href="#"><img src="img/my1-telegram.png" alt="Моя лаба 1: картка варіанта згорнута, кнопки Почати, питання на захист замито, у блоці Здати — здаємо, як і раніше, викладачеві в Telegram"></a>
+  </article>
+</div>
+
+<h2 id="wait"><span class="num">7</span>Чекає тебе</h2>
+<p class="lead">По порядку, до оголошення студентам.</p>
+<ol class="steps">
+  <li class="ask"><b>Push і перезапуск API ods</b> — код цієї ночі (<a href="#commits">коміти нижче</a>). Міграцій бази нема.<pre class="cmd">git push origin ods</pre></li>
+  <li class="ask"><b>Виправлені тексти лаб — на сервер</b><pre class="cmd">~/.venvs/python-labs/bin/python bin/content -t ods push</pre></li>
+  <li class="ask"><b>Ліміт запиту</b> — vps-infra, <code>apps/ods-labs/units/ods-labs-web.conf</code>: <code>BODY_MAX=13MB</code> (чи твої 20) і <code>site apply</code>.<p>Без цього ноутбук лаби 3 з графіками не здасться.</p></li>
+  <li class="ask"><b>T380 Q1</b> — звірити номери двома файлами з Telegram.</li>
+  <li class="ask"><b>«Строки»</b> → дедлайни лаб 1–3 (Q2).</li>
+  <li><b>Оком студента</b> («Очима студента» → студент зі списку): домашня → «Мої лаби» → «Моя лаба 3».</li>
+  <li><b>Оголошення</b> — <a href="#say">текст вище</a>.</li>
+</ol>
+<div class="pair">
+  <div class="box"><h4>Після дедлайну лаби 2</h4><p>Переслати боту одну розмову, глянути відповідь, далі решту; «Вхідні»; клік «сайт» на лабах 1–2 (Q4).</p></div>
+  <div class="box"><h4>Руками, коли буде хвилина</h4><p>Відкрити лабу 3 в marimo через «Відкрити в браузері» й зберегти файл — чи шлях у меню такий, як написано.</p></div>
+</div>
+
+<h3>Питання — T380</h3>
+<p class="lead">Мовчання = «a». Q1 і Q2 потрібні до оголошення студентам.</p>
+<ul class="qs">
+  <li class="now"><b>Q1</b> Номери варіантів ті самі, з якими робили лаби 1–2? → <span class="chip ok">a</span> ті самі — нічого не міняю · перевірка: рядок <code>VARIANT</code> у файлах двох студентів групи 7 проти «Результатів»</li>
+  <li class="now"><b>Q2</b> Дедлайни лаб 1–3 на «Строках» → лаба 2 — 21.11, 23:59 (як в оголошенні) · лаба 3 — 04.12, 23:59 (здогад) · лаба 1 — твоя дата</li>
+  <li><b>Q3</b> Нова версія після дедлайну, коли є вчасна → <span class="chip ok">a</span> як зроблено: студентові — факт без тривоги</li>
+  <li><b>Q4</b> Лаби 1–2 після пересилання — на сайт → <span class="chip ok">a</span> так</li>
+  <li><b>Q5</b> Тексти лаб 1–2 у розкладку лаби 3 → <span class="chip ok">a</span> раджу не зараз</li>
+  <li><b>Q6</b> Шаблони ноутбуків: речення зі старого порядку → <span class="chip ok">a</span> лаби 1–2 як видано; лабу 3 поправити, якщо шаблон ще не роздавали (XS)</li>
+  <li><b>Q7</b> Захист записом: де студент дізнається свою зміну → <span class="chip ok">a</span> у Telegram, як зараз</li>
+  <li><b>Q8</b> Запізнення й бонус за лекції → <span class="chip ok">a</span> лишити «оголошує на занятті»</li>
+  <li><b>Q9</b> Зроблено на мій розсуд → картка згорнута · значки викладача в панелі · кольори лаб · «Мої лаби» замість «Далі — Лаби → …» · посилання лише Colab чи Drive і <code>https://</code> — скажи, якщо не так</li>
+</ul>
+
+<h3>Далі — за твоїм словом</h3>
+<ol class="next">
+  <li>таблиці викладача рахують «вчасно» за версією до дедлайну — Q3 «c» (S);</li>
+  <li>кнопка на «Вхідних» «закріпити картку з файла за цим студентом» — якщо Q1 покаже розбіжності (S);</li>
+  <li>поле «зміна на захист» на «Моїй лабі» — Q7 «b» (S);</li>
+  <li>речення в шаблоні лаби 3 — Q6 «a» (XS);</li>
+  <li>та сама чистка текстів лаб 4–5 перед відкриттям (S);</li>
+  <li>одночасні записи в картку (оцінка викладача під час здачі студента) пишуть документ цілком — рідкісне, але можливе затирання (S);</li>
+  <li>у шаблоні лаби 3 <code>check()</code> після першої не-200 відповіді перестає повідомляти сайт до кінця сеансу (XS, разом із Q6).</li>
+</ol>
+
+<h2 id="commits"><span class="num">8</span>Коміти</h2>
+<div class="scroll"><table class="grid">
+  <tr><th>Коміт</th><th>Що</th></tr>
+  <tr><td class="c"><code>05ff453</code></td><td>картку закріплює викладач; пастки здачі; «Мої лаби»; кольори лаб</td></tr>
+  <tr><td class="c"><code>7ee1f84</code></td><td>сторінка входу не каже «Ти в списку» тому, кого в списку нема (ядро, обидва сайти)</td></tr>
+  <tr><td class="c"><code>051232f</code></td><td>пігулки «Лаба N» на лекціях — у кольорі лаби</td></tr>
+  <tr><td class="c"><code>5f68ff6</code></td><td>панель лаби</td></tr>
+  <tr><td class="c"><code>92efb00</code></td><td>після проходу в браузері: старі версії звільненої картки, посилання, слова</td></tr>
+  <tr><td class="c"><code>c8ea19b</code></td><td>«Вхідні»: лабу пересланого ноутбука каже і його остання клітинка</td></tr>
+</table></div>
+<p class="cut">Без push. Поза git: тексти лаб (<code>sites/ods/data/labs/</code>), стенд і знімки QA (<code>.dev/.drafts/T375/</code>).</p>
+
+<footer>T375 · python-labs, гілка <code>ods</code> · знімки — стенд <code>ods_t375_stand</code>, люди вигадані · картки варіантів, питання на захист і текст лаб на знімках замито</footer>
+</div>
+
+<div id="zoombox" class="zoombox" hidden tabindex="-1" role="dialog" aria-label="Знімок на весь екран"><p>клік або Esc — закрити</p><img id="zoomimg" alt=""></div>
+<script>
+const zoombox = document.getElementById("zoombox"), zoomimg = document.getElementById("zoomimg");
+document.querySelectorAll("a.zoom").forEach(a => a.addEventListener("click", e => {
+  e.preventDefault();
+  const img = a.querySelector("img");
+  zoomimg.src = img.src; zoomimg.alt = img.alt;
+  zoombox.hidden = false; zoombox.scrollTop = 0; zoombox.focus();
+}));
+zoombox.addEventListener("click", () => { zoombox.hidden = true; });
+document.addEventListener("keydown", e => { if (e.key === "Escape") zoombox.hidden = true; });
+document.querySelectorAll("button.copy").forEach(b => b.addEventListener("click", () => {
+  const pre = document.getElementById(b.dataset.for);
+  const done = () => { const was = b.textContent; b.textContent = "Скопійовано"; setTimeout(() => { b.textContent = was; }, 1500); };
+  const pick = () => { const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+  try { navigator.clipboard.writeText(pre.textContent).then(done, pick); } catch (e) { pick(); }
+}));
+</script>
