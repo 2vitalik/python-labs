@@ -1,6 +1,6 @@
 """A forwarded file read without running anything (T368 §2.3): whether it is a notebook, whose card it carries, which lab
-it is — by its answer line, else by the lab template it is closest to, else by its name — and how its line fares against
-the card's key. No student is needed for any of it."""
+it is — by its answer line, else by the lab its own last cell names, else by the lab template it is closest to, else by
+its name — and how its line fares against the card's key. No student is needed for any of it."""
 import hashlib
 import re
 import zlib
@@ -79,6 +79,7 @@ async def read(name: str, data: bytes) -> dict:
         return out | {"why": NOT_NB}
     facts = labs_facts.facts(nb, None)
     line = LINE.match(facts["line"])
-    lab = int(line[1]) if line else await by_template(nb) or by_name(name)
+    said = facts["lab"] if facts["lab"] and 1 <= facts["lab"] <= settings.labs else None  # its own last cell prints "LABn"
+    lab = int(line[1]) if line else said or await by_template(nb) or by_name(name)
     ok, total = await score(lab, facts["line"])
     return out | {"kind": nb["kind"], "lab": lab, "vid": facts["vid"], "line": facts["line"], "ok": ok, "total": total}
