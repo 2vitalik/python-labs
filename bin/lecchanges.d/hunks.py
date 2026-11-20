@@ -23,7 +23,8 @@ def lecture(base_text: str, now_text: str) -> tuple[list[dict], list[dict]]:
                  "parts": [base[i]["raw"] for i in bi] or [now[k]["raw"] for k in ni],
                  "pos": pos, "first": int(pos + 0.5), "last": at + max(ni) if ni else int(pos + 0.5) - 1,
                  "refs": [r for k in ni for r in now[k]["refs"]], "fence": now[ni[0]]["fence"] if ni else "",
-                 "where": where([base[i] for i in bi] + [now[k] for k in ni]), "edits": [], "looks": [], "look": ""}
+                 "where": where([base[i] for i in bi] + [now[k] for k in ni]), "edits": [], "looks": [], "look": "",
+                 "tables": any(b["kind"] == "table" for b in now)}
             if bi and ni:
                 same = " ".join(base[i]["bare"] for i in bi) == " ".join(now[k]["bare"] for k in ni)
                 h["edits"] = [] if same else edits(h["before"], h["after"])

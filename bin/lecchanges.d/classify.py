@@ -17,7 +17,7 @@ STATUS, WHERE, ORIGIN = ("fixed", "open", "noted"), ("text", "formula", "table",
 APOS = str.maketrans("’ʼ`", "'''")
 DECIMAL = re.compile(r"(\d)(?:\{,\}|,)(\d)")
 # what a formula may change without changing what it says: spacing, braces, text wrappers, sizes of brackets
-LOOSE = re.compile(r"\s+|[{}]|\\(?:text|mathrm|operatorname|left|right|displaystyle|[,;:! ]|q?quad)(?![A-Za-z])")
+LOOSE = re.compile(r"\s+|[{}]|\\(?:text|mathrm|operatorname|left|right|displaystyle|[,;:! ]|q?quad)(?![A-Za-z])|\\(?=\s|$)")
 
 
 def words(s: str) -> list[str]:
@@ -33,10 +33,15 @@ def loose(s: str) -> str:
 
 
 def auto(e: dict) -> str | None:
-    """The same words in the same order (two words made one is not punctuation) — `punct`; inside a formula only its
-    spacing and wrapping may differ — `notation`, or the sentence's own stops around it (`… = 0,$$`) — `punct`."""
+    """A word moved within its block — `style`; the same words in the same order (two words made one is not
+    punctuation) — `punct`; inside a formula only its spacing and wrapping may differ, or a number became a formula
+    (`-2` → `$-2$`) — `notation`; the sentence's own stops around a formula (`… = 0,$$`) — `punct`."""
     d, i = e["del"], e["ins"]
+    if e.get("moved"):
+        return "style"
     if d != i and DECIMAL.sub(r"\1.\2", d) == DECIMAL.sub(r"\1.\2", i):
+        return "notation"
+    if "$" in d + i and loose(d.replace("$", "")) == loose(i.replace("$", "")):
         return "notation"
     if e["math"]:
         return "notation" if loose(d) == loose(i) else "punct" if re.fullmatch(r"[.,;:\s]*", d + i) else None

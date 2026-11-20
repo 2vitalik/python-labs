@@ -23,39 +23,48 @@ def records(lec: int, hunks: list[dict], info: dict) -> list[tuple[dict, dict]]:
     return out
 
 
-def guess(us: list[dict]) -> str:
-    """An A entry's kind when no note names it: a formula, a number, a missing word or else an error of content."""
-    if all(u.get("math") for u in us):
-        return "formula"
-    if all(re.sub(r"\d", "", u["del"]) == re.sub(r"\d", "", u["ins"]) for u in us):
-        return "number"
-    return "gap" if all(not u["del"] for u in us) else "error"
+def guess(us: list[dict], title: str) -> str:
+    """An A entry's kind when no note names it: a missing word when its title says so, else an error in a formula or
+    an error of content."""
+    if re.search(r"пропущ", title, re.IGNORECASE):
+        return "gap"
+    return "formula" if us and all(u.get("math") for u in us) else "error"
 
 
 def record(lec: int, h: dict, us: list[dict], inf: dict | None, ref: str) -> dict:
     keyed = next((u for u in us if u["how"] == "key" and u["cls"].get("kind")), None)
     cls = (keyed or us[0])["cls"] if keyed or inf is None else {}
     how = "key" if keyed else "journal" if inf is not None else us[0]["how"]
-    kind = cls.get("kind") if how != "journal" else (inf.get("kind") or guess(us))
+    kind = cls.get("kind") if how != "journal" else (inf.get("kind") or guess(us, inf.get("title", "")))
     kind = kind or "todo"
     group, sev = KINDS.get(kind, KINDS["todo"])  # a kind the catalogue does not know stays as written: `check` names it
-    edits = [e for u in us for e in (u["edits"] if "look" in u else [u])]
+    spans = [(e["a"], e["b"]) for u in us for e in (u["edits"] if "look" in u else [u])]
     return {
         "id": ref or f"{lec:02}-{us[0]['key']}", "lec": lec, "slide": h["slide"], "group": group, "kind": kind,
         "sev": cls.get("sev", sev) if how in ("key", "rule") else sev, "status": "fixed",
         "where": "formula" if all(u.get("math") for u in us) else h["where"],
         "origin": cls.get("origin") or (inf or {}).get("origin") or ("site" if kind in SITE else "slide"),
-        "size": sum(len(e["del"]) + len(e["ins"]) for e in edits), "auto": how == "auto",
+        "size": sum(len(u["del"]) + len(u["ins"]) for u in us), "auto": how == "auto",
         "verified": cls.get("verified", True) if how == "key" else how in ("auto", "journal"),
         "title": cls.get("title") or (inf or {}).get("title", ""), "note": cls.get("note", ""), "why": (inf or {}).get("why", ""),
-        "ref": ref, "hunk": "", "edits": [{k: e[k] for k in ("del", "ins", "a", "b")} for e in edits], "how": how,
+        "ref": ref, "hunk": "", "how": how,  # del / ins — the raw texts at a / b: the page marks what it shows
+        "edits": [{"del": h["before"][slice(*a)], "ins": h["after"][slice(*b)], "a": a, "b": b} for a, b in spans],
     }
 
 
 def alone(lec: int, rec: dict) -> dict:
     """A journal entry standing on its own: a doubt, a layout case, an A or G that found no edits."""
-    kind = rec["kind"]
+    kind = "gap" if rec["kind"] == "error" and re.search(r"пропущ", rec["title"], re.IGNORECASE) else rec["kind"]
     return {"id": rec["id"], "lec": lec, "slide": 0, "group": KINDS[kind][0], "kind": kind, "sev": KINDS[kind][1],
             "status": rec.get("status", "fixed"), "where": "", "origin": rec.get("origin", "slide"), "size": 0, "auto": False,
             "verified": True, "title": rec["title"], "note": "", "why": rec["why"], "ref": rec["ref"], "hunk": "", "edits": [],
             "how": "journal"}
+
+
+def override(items: list[dict], ids: dict):
+    """The notes' word on a journal entry (`ids`: kind, sev, origin, note, status) — on every item of it."""
+    for it in items:
+        if o := ids.get(it["ref"]):
+            if "kind" in o:
+                it["kind"], (it["group"], it["sev"]) = o["kind"], KINDS.get(o["kind"], KINDS["todo"])
+            it.update({k: o[k] for k in ("sev", "origin", "note", "status") if k in o})

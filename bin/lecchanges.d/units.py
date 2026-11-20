@@ -42,11 +42,13 @@ def classed(hunks: list[dict], course: list[dict], notes: dict):
                 u["cls"], u["how"] = {"kind": u["look"], "origin": "site"}, "auto"
             elif "whole" in u:  # a removed or added run is known for what it is, though not why
                 u["cls"]["kind"] = "removed" if not h["after"] else "pic2text" if "у тексті" in h["fence"] else "added"
+                if not h["after"] and u["del"].startswith("![") and h["tables"]:  # a table's picture gave way to its text
+                    u["cls"] = {"kind": "pic2text", "origin": "site"}
                 u["how"] = "set"
             elif h["where"] == "table" and set(u["del"] + u["ins"]) <= set("|:- "):  # a column's alignment `:-:` → `--:`
                 u["cls"], u["how"] = {"kind": "markup", "origin": "site"}, "auto"
             elif k := auto(u):
-                u["cls"], u["how"] = {"kind": k}, "auto"
+                u["cls"], u["how"] = {"kind": k} | ({"note": "переставлено"} if u.get("moved") else {}), "auto"
             for rules in (course, notes.get("rules", [])):
                 if "look" not in u and (r := rule(rules, u["del"], u["ins"])):
                     u["cls"], u["how"] = {k: v for k, v in r.items() if k not in ("del", "ins")}, "rule"

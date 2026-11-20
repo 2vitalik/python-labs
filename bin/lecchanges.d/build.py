@@ -6,7 +6,7 @@ import store
 from attach import attach
 from hunks import lecture
 from journal import entries
-from records import alone, records
+from records import alone, override, records
 from tok import inside, math
 from units import classed, keyed
 
@@ -30,6 +30,7 @@ def build(n: int) -> tuple[dict, dict]:
         seen[it["id"]] = seen.get(it["id"], 0) + 1
         it["id"] += f".{seen[it['id']]}" if seen[it["id"]] > 1 else ""
         items.append(it)
+    override(items, store.notes(n).get("ids", {}))
     hunks_out = {numbered[id(h)]: hunk(h, flat) for h, _ in pairs if numbered.get(id(h))}
     meta = {"hows": Counter(it.pop("how") for it in items), "keys": {u["key"] for h in hunks for u in h["units"]}}
     return {"lec": n, "slug": f"lec{n:02}", "base": "orig", "head": store.head(n), "built": "", "items": items,

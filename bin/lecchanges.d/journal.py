@@ -1,10 +1,12 @@
 """The journal fixes/lecNN.md → its entries (contract §3.2.8–9): A — fixed errors (`Було` / `Стало` / `Чому певен` /
 `Звідки помилка`), B — doubts (free text), G — restored from the slides, H — layout cases (§2). An entry is
-`### NN-Xk · слайд(и) N[, M] · title`; one «перенесено в …» is left out, so is a section «Нічого»."""
+`### NN-Xk · слайд(и) N[, M] · title`; one moved elsewhere («перенесено в …», «→ Перенесено в …» — in the title or as
+the first line) is left out, so is a section «Нічого»."""
 import re
 
 HEAD = re.compile(r"^### (\d{2}-([ABGH])\d+)\s*·\s*([^·]*?)\s*·\s*(.+?)\s*$")
 FIELD = re.compile(r"(?:(?:\A|\n)- |\s·\s)\*\*([^*\n]+?):\*\*\s*")
+MOVED = re.compile(r"[\s\-–→]*перенесено\s+в\b", re.IGNORECASE)
 LETTERS = {"A": "error", "B": "doubt", "G": "restored", "H": "layout"}
 
 
@@ -13,8 +15,7 @@ def entries(text: str) -> list[dict]:
     for line in text.splitlines():
         if line.startswith("#"):
             cur = None
-            m = HEAD.match(line)
-            if m and not m.group(4).startswith("перенесено"):
+            if m := HEAD.match(line):
                 cur = {"id": m.group(1), "letter": m.group(2), "slides": slides(m.group(3)), "title": m.group(4), "body": []}
                 out.append(cur)
         elif cur is not None:
@@ -22,7 +23,7 @@ def entries(text: str) -> list[dict]:
     for e in out:
         e["body"] = "\n".join(e["body"]).strip()
         e["fields"] = fields(e["body"])
-    return out
+    return [e for e in out if not MOVED.match(e["title"]) and not MOVED.match(e["body"])]
 
 
 def slides(text: str) -> list[int]:

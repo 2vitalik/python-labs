@@ -45,6 +45,9 @@ def check(lecs: list[int]) -> int:
         notes = store.notes(n)
         bad += [p for i, r in enumerate(notes.get("rules", [])) for p in problems(r, f"notes/lec{n:02}.json rules #{i + 1}")]
         bad += [p for k, v in notes.get("keys", {}).items() for p in problems(v, f"notes/lec{n:02}.json {k}")]
+        bad += [p for k, v in notes.get("ids", {}).items() for p in problems(v | {"ref": k}, f"notes/lec{n:02}.json ids {k}")]
+        bad += [f"notes/lec{n:02}.json ids {k}: такого запису журналу нема" for k in
+                sorted(set(notes.get("ids", {})) - {it["ref"] for it in data["items"]})]
         stale = sorted(set(notes.get("keys", {})) - meta["keys"])
         bad += [w for it in data["items"] for w in wrong(it)]
         todos += data["todo"]
