@@ -11,6 +11,7 @@ from pathlib import Path
 DATA = Path(os.environ.get("ODS_DATA") or Path(__file__).resolve().parent.parent / "data")  # ../data of this folder
 IMG = re.compile(r"(\]\(|src=\")img/([^)\"\s]+)")  # ![…](img/x.png) or <img src="img/x.png">
 NEW = (("task", "", "Умова"), ("guide", "guide", "Розбір"), ("marimo", "marimo", "marimo"))  # labN-<file>.md → the part, its word
+TEMPLATES = (("jupyter.ipynb", "Шаблон для Jupyter і Colab — без картки"), ("marimo.py", "Шаблон для marimo — без картки"))
 
 
 def found(path: Path) -> bool:
@@ -30,13 +31,16 @@ def lectures() -> list[dict]:
 
 
 def new_labs() -> list[dict]:
-    """labs/new/labN: the task is the lab's own page, the walk-through and the marimo note are its parts."""
+    """labs/new/labN: the task is the lab's own page and hands out the templates; the walk-through and the marimo note are its parts."""
     out = []
     for folder in glob("labs/new/lab[0-9]*"):
         n = int(folder.name[3:])
+        files = [{"name": f"lab{n}-{ext}", "title": title, "path": folder / f"lab{n}-{ext}"} for ext, title in TEMPLATES
+                 if (folder / f"lab{n}-{ext}").exists()]
         for order, (file, part, nav) in enumerate(NEW):
             if (path := folder / f"lab{n}-{file}.md").exists():
-                out.append({"slug": f"lab{n}-{part}".rstrip("-"), "file": path, "kind": "lab", "lab": n, "part": part, "nav": nav, "order": order})
+                out.append({"slug": f"lab{n}-{part}".rstrip("-"), "file": path, "kind": "lab", "lab": n, "part": part, "nav": nav, "order": order,
+                            "files": [] if part else files})
     return out
 
 
