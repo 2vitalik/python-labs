@@ -1,0 +1,88 @@
+#!/usr/bin/env python3
+"""bin/leclexicon — data of the lectures' search that the browser cannot compute itself (T374, CONTRACT §6).
+
+  bin/leclexicon build            lecture texts → search/lexicon.json (pymorphy3 + its Ukrainian dictionary)
+  bin/leclexicon keys             search/keys/lecNN.json → search/keys.json
+  bin/leclexicon check [-v]       search/thesaurus.json: groups whose words occur in no lecture, in any form
+  bin/leclexicon stats [--list]   groups, forms, size; words of the lectures left without a lemma
+
+Files: sites/ods/data/lectures/search/ (the lectures' own git). pymorphy3 is not in the project's venv: build reruns
+itself through `uv run --no-project --with pymorphy3 --with pymorphy3-dicts-uk`.
+
+lexicon.json — {"v": 1, "lemmas": [["стіл", "стола", "столу", …], …], "stop": ["або", "але", …]}, one group
+a line (details: .dev/.drafts/T374/lexicon-format.md):
+  - a group is one paradigm — the lemma first, then the rest of its forms sorted; every string lowercase, apostrophe
+    U+0027. The whole paradigm, also forms the lectures never use: a query in any form finds the text;
+  - only lemmas met in the lectures, only groups of 2+ forms (a one-form word is searched as itself), no service
+    words (prepositions, conjunctions, particles, pronouns);
+  - a lemma may head two groups (homonyms: "мати" the verb and the noun), a form may sit in several groups;
+  - English words: lemma = the word, its plural in -s / -es / -ies in the same group;
+  - "stop" (beyond CONTRACT §6.1): the lectures' service words, sorted — a query needs no block to hold them.
+The search: query word → lowercase, ’ ʼ → ' → every group holding it → the union of their forms."""
+import argparse
+import os
+import sys
+from pathlib import Path
+
+HERE = Path(__file__).resolve()
+sys.path.insert(0, str(HERE.parent / "leclexicon.d"))
+UV = ["uv", "run", "--no-project", "--quiet", "--with", "pymorphy3", "--with", "pymorphy3-dicts-uk", "python"]
+
+
+def with_morphology():
+    try:
+        import pymorphy3  # noqa: F401
+    except ImportError:
+        if os.environ.get("LECLEXICON_UV"):
+            raise SystemExit("pymorphy3 не підтягнувся й через uv") from None
+        os.environ["LECLEXICON_UV"] = "1"
+        os.execvp(UV[0], UV + [str(HERE), *sys.argv[1:]])
+
+
+def build() -> int:
+    with_morphology()
+    from importlib.metadata import version
+
+    import corpus
+    import latin
+    import morph
+    import pack
+
+    seen = corpus.tally(corpus.texts())
+    cyrillic = {w: looks for w, looks in seen.items() if corpus.CYRILLIC.search(w)}
+    groups, left = morph.groups(cyrillic)
+    groups.update(latin.groups({w: looks for w, looks in seen.items() if w not in cyrillic}))
+    lemmas = pack.prune(groups)
+    heads = {group[0] for group in lemmas}
+    stop = sorted(w for w, why in left.items() if why == "service" and w not in heads)  # "коло" is a noun here
+    size = pack.dump(lemmas, stop)
+    why = {k: sum(1 for v in left.values() if v == k) for k in ("caps", "unknown")}
+    print(f"pymorphy3 {version('pymorphy3')} · словник uk {version('pymorphy3-dicts-uk')}")
+    print(f"слів {len(seen)} · груп {len(lemmas)} · {size / 1024:.0f} КБ → {pack.LEXICON.relative_to(corpus.ROOT)}")
+    print(f"без леми: службових {len(stop)} (→ stop), абревіатур {why['caps']}, нерозібраних {why['unknown']};"
+          " незмінні слова (одна форма) у файл не йдуть")
+    return 0
+
+
+def main() -> int:
+    p = argparse.ArgumentParser(description=__doc__.split("\n")[0])
+    sub = p.add_subparsers(dest="cmd", required=True)
+    sub.add_parser("build")
+    sub.add_parser("keys")
+    sub.add_parser("check").add_argument("-v", "--verbose", action="store_true")
+    sub.add_parser("stats").add_argument("--list", action="store_true")
+    a = p.parse_args()
+    if a.cmd == "build":
+        return build()
+    if a.cmd == "keys":
+        import keys
+        return keys.collect()
+    if a.cmd == "check":
+        import check
+        return check.run(a.verbose)
+    import stats
+    return stats.run(a.list)
+
+
+if __name__ == "__main__":
+    sys.exit(main())
