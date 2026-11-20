@@ -1,5 +1,7 @@
 import katex from 'katex'
 
+import { TEX } from './math.js'
+
 import { pale } from './lectureChangeSpots.js'
 
 // the edits lit inside a rendered block (T374 PAGE §4): <mark>s put into the markdown before it renders; inside a formula —
@@ -43,7 +45,7 @@ const BARE = /^(\s|<\/?[a-z][^>]*>|\*+|_+)+$/i
 const seen = (text, r) => !BARE.test(text.slice(r.s, r.e)) && !(r.s === r.e && BARE.test(r.other || ''))
 export const markupOnly = (e) => BARE.test(e.del + e.ins)
 const renders = (tex, block) => {
-  try { katex.renderToString(tex, { displayMode: block, throwOnError: true, strict: false }); return true } catch { return false }
+  try { katex.renderToString(tex, { ...TEX, displayMode: block, throwOnError: true, strict: 'ignore' }); return true } catch { return false }
 }
 
 export function markMd(text, ranges) {

@@ -5,6 +5,7 @@ import Icon from '@core/components/Icon.vue'
 import { vHint } from '@core/hint.js'
 
 import { groupOf, kindWord, lineOf, SEVS, STATUSES, WHERES } from '../lectureChanges.js'
+import { headHtml } from '../slides.js'
 
 // a change in one line, in columns of fixed width: how critical (a dot), its kind in the group's colour, the slide's number
 // (on the slide's first row), the journal's title or «було → стало», where in the text, a mark of a state to decide
@@ -20,7 +21,7 @@ const where = computed(() => WHERES[props.it.where])
     <span class="sn">{{ first ? it.slide : '' }}</span>
     <span class="chg-kind" :style="{ '--c': `var(--g-${groupOf(it)})` }">{{ kindWord(it) }}</span>
     <span class="line">
-      <template v-if="line.text">{{ line.text }}</template>
+      <span v-if="line.text" v-html="headHtml(line.text)" />  <!-- the journal's words with their formulas drawn -->
       <template v-else>
         <del v-if="line.del">{{ line.del }}</del><span v-if="line.del && line.ins" class="to">→</span><ins v-if="line.ins">{{ line.ins }}</ins>
         <span v-if="line.more" class="more">+{{ line.more }}</span>

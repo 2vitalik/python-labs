@@ -12,6 +12,7 @@ import { slideLink, slidePic } from '../lectureChanges.js'
 const props = defineProps({ it: Object })
 const pic = ref('wait')  // wait · yes · no
 watch(() => slidePic(props.it), (url) => {
+  if (!props.it.slide) return (pic.value = 'no')  // a change of the whole lecture stands on no slide
   pic.value = 'wait'
   const img = new Image()
   const got = (v) => () => slidePic(props.it) === url && (pic.value = v)  // an answer for a slide left behind is no answer

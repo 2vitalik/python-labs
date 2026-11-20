@@ -70,10 +70,12 @@ loadGuide()
         <span v-if="e.old == null && e.new != null" class="badge rounded-pill border fw-normal text-body-secondary">початок</span>
         <i v-if="e.note" class="text-secondary">{{ e.note }}</i>
         <span v-if="e.old_title != null" class="small text-secondary">назва: {{ e.old_title }} → {{ e.new_title }}</span>
-        <span class="ms-auto small font-monospace"><span class="text-success">+{{ e.add }}</span> <span class="text-danger">−{{ e.del }}</span></span>
-        <a v-if="e.new != null" href="#" class="small" @click.prevent="open[e.id] = !open[e.id]">{{ open[e.id] ? 'сховати' : 'зміни' }}</a>
-        <button v-if="e.old != null" class="btn btn-outline-secondary btn-sm py-0" @click="revert(e)"
-                title="Повернути текст до стану перед цією правкою (як нова правка)"><Icon name="back" /></button>
+        <span class="ms-auto d-inline-flex align-items-center gap-2 text-nowrap">  <!-- one piece: a long note moves it whole -->
+          <span class="small font-monospace"><span class="text-success">+{{ e.add }}</span> <span class="text-danger">−{{ e.del }}</span></span>
+          <a v-if="e.new != null" href="#" class="small" @click.prevent="open[e.id] = !open[e.id]">{{ open[e.id] ? 'сховати' : 'зміни' }}</a>
+          <button v-if="e.old != null" class="btn btn-outline-secondary btn-sm py-0" @click="revert(e)"
+                  title="Повернути текст до стану перед цією правкою (як нова правка)"><Icon name="back" /></button>
+        </span>
       </div>
       <Diff v-if="open[e.id]" :old="e.old" :new="e.new" class="border-top px-3 py-2" />
     </div>
