@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 import Reveal from '@core/components/Reveal.vue'
 
@@ -12,15 +12,18 @@ import LabDue from './LabDue.vue'
 const props = defineProps({ n: Number, lab: Object })
 const emit = defineEmits(['got'])
 // open from the start for a line without a file, and for a marimo file: it keeps no outputs, the line comes here
-const other = ref((!!props.lab.line && !props.lab.file?.id) || (props.lab.file?.kind === 'marimo' && !props.lab.attempts))
+const lineless = () => props.lab.file?.kind === 'marimo' && !props.lab.attempts
+const other = ref((!!props.lab.line && !props.lab.file?.id) || lineless())
+watch(() => props.lab.file?.id, () => lineless() && (other.value = true))  // a marimo file just handed in asks for the line at once
 const link = ref(props.lab.notebook || '')
 const line = ref(props.lab.line || '')
 const busy = ref('')  // which of the two is being sent
 const error = ref({ link: '', line: '' })
+const said = ref('')  // what the check of the line came to, beside its button: the verdict itself stands lower
 
 async function run(what, job) {
   busy.value = what
-  error.value[what] = ''
+  error.value[what] = said.value = ''
   try {
     emit('got', await job())
   } catch (e) {
@@ -36,6 +39,7 @@ const pull = () => run('link', async () => {
 const check = () => run('line', async () => {
   const my = await putMyLab(props.n, { line: line.value })
   line.value = my.line
+  said.value = `перевірено: ${my.ok} із ${my.total} ✅ — подробиці нижче, у «Що бачить сайт»`
   return my
 })
 </script>
@@ -57,7 +61,7 @@ const check = () => run('line', async () => {
         <label class="form-label mb-1" for="lab-line">Рядок відповідей — те, що друкує остання клітинка ноутбука</label>
         <textarea id="lab-line" v-model="line" class="form-control font-monospace mb-2" rows="3" :placeholder="`LAB${n} ${lab.vid} d1=… r1=…`"></textarea>
         <button type="button" class="btn btn-outline-primary" :disabled="!line.trim() || !!busy" @click="check">Перевірити рядок</button>
-        <span class="small text-danger ms-2">{{ error.line }}</span>
+        <span class="small ms-2" :class="error.line ? 'text-danger' : 'text-secondary'">{{ error.line || said }}</span>
       </div>
     </Reveal>
   </section>

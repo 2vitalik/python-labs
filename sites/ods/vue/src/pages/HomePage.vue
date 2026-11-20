@@ -16,6 +16,7 @@ import { KINDS } from '../site.js'
 const active = computed(() => canAccess('active'))
 const known = ref(false)  // the guide's list is here: a number counts the pages this reader has — a hidden lab is not one
 const mine = ref([])
+const loose = ref(false)  // a student no card is pinned to: said here too, not only on «Моя лаба»
 const count = (kind) => site.guide.filter((s) => s.kind === kind && pages.value[s.slug]).length
 const firstName = computed(() => user.value.first_name || user.value.name?.split(' ')[0] || user.value.email)
 const labTitle = (n) => (pages.value[`lab${n}`]?.title || '').replace(/^(Лабораторна|Завдання)\s+\d+\.\s*/, '')
@@ -23,6 +24,7 @@ watch(active, async (a) => {
   if (!a) return
   const [, labs] = await Promise.all([loadGuide(), labsWithCards()])
   mine.value = labs.filter((l) => l.mine)
+  loose.value = labs.length > 0 && !mine.value.length && user.value.status === 'student' && !user.value.test
   known.value = true
 }, { immediate: true })
 </script>
@@ -42,6 +44,8 @@ watch(active, async (a) => {
         </RouterLink>
       </div>
     </div>
+    <p v-if="loose" class="text-secondary mt-4 mb-0">Варіанта лаб за тобою ще не закріплено: картки закріплює викладач за списком
+      потоку — напиши йому.</p>
     <section v-if="mine.length" class="mt-4">
       <h2 class="h5 mb-2">Мої лаби</h2>
       <RouterLink v-for="m in mine" :key="m.n" :to="`/labs/${m.n}/my`" class="my-lab">

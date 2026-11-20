@@ -2,8 +2,8 @@
 the teacher pinned (none pinned — refused) → the line checked as an attempt; a foreign card, line or lab, oversize files refused;
 a file without a card goes to the pinned one; the same bytes again; the viewer and the original with rights
 (owner, admin, agent); a re-run report and its executed copy; check() → the site with the card's token; the student's own
-notebook to start; the teacher's table, review and stats; a card freed and passed on; a Colab link pulled; the deadline
-against the versions (in MY and in the list of labs).
+notebook to start; the teacher's table, review and stats; a card freed (its versions shelved) and passed on (with them); a Colab
+link pulled; the deadline against the versions (in MY and in the list of labs); the demo taken over afresh.
 Run from sites/ods/api: DB_NAME=ods_t354_a1_smoke ~/.venvs/python-labs/bin/python tests/smoke_files.py"""
 import base64
 import json
@@ -140,6 +140,9 @@ with TestClient(main.app) as c:
     check("A: over 12 MB → 422 with words", r.status_code == 422 and "12 МБ" in r.json()["detail"], r.text[:200])
     r = send(c, b"hello", "lab.txt")
     check("A: not a notebook → 422 with words", r.status_code == 422 and "не ноутбук" in r.json()["detail"], r.text)
+    r = send(c, fx.notebook([]))
+    check("A: a notebook with no cells → 422 with words, nothing stored", r.status_code == 422 and r.json()["detail"].startswith("У ноутбуці нема жодної клітинки")
+          and mongo[DB].lab_files.count_documents({}) == 2, r.text)
     my = send(c, fx.marimo(fx.student("КН-1-01", 1)).encode(), "lab.py").json()
     check("A: a marimo file — a version without a line, facts without outputs", len(my["files"]) == 3 and my["attempts"] == 2
           and my["file"]["kind"] == "marimo" and my["facts"]["ran"] is None and my["grade"]["work"] is None, my["facts"]["count"])
@@ -245,11 +248,14 @@ with TestClient(main.app) as c:
           nobody.status_code == 404 and to_a.status_code == 409 and "КН-1-01" in to_a.json()["detail"]
           and c.put("/api/variants/1/results/КН-1-02", json={"student": "b@nure.ua"}).json()["student"] == "b@nure.ua", (nobody.text, to_a.text))
     r = c.put("/api/variants/1/results/КН-1-01", json={"student": ""})
-    check("free a card: the card starts afresh", r.json()["student"] == "" and r.json()["files"] == 0 and r.json()["attempts"] == 0 and r.json()["file"] is None, r.json())
+    check("free a card: the card starts afresh; A's versions stay in the base, shelved", r.json()["student"] == "" and r.json()["files"] == 0
+          and r.json()["attempts"] == 0 and r.json()["file"] is None and mongo[DB].lab_files.count_documents({"student": "a@nure.ua", "origin": "freed"}) == 3
+          and mongo[DB].lab_files.count_documents({"student": "a@nure.ua", "origin": "student"}) == 0, r.json())
     login(c, "c@nure.ua", "student", "КН-1")
     login(c, "admin@nure.ua", "admin")
     r = c.put("/api/variants/1/results/КН-1-02", json={"student": "c@nure.ua"})
-    check("pass a card on: the work goes with it", r.json()["student"] == "c@nure.ua" and r.json()["files"] == 2 and r.json()["attempts"] == 1, r.json())
+    check("pass a card on: the work goes with it, the versions still the student's own", r.json()["student"] == "c@nure.ua" and r.json()["files"] == 2
+          and r.json()["attempts"] == 1 and mongo[DB].lab_files.count_documents({"lab": 1, "vid": "КН-1-02", "student": "c@nure.ua", "origin": "student"}) == 2, r.json())
     row = next(s for s in c.get("/api/students").json() if s["nick"] == "c")["variants"]["1"]
     check("the students' row: versions, the last file's time, the hint", row["files"] == 2 and row["file_at"] and "work" in row and "hint" in row, row)
 
@@ -263,6 +269,13 @@ with TestClient(main.app) as c:
           f"{r.status_code} {r.text[:120]} · lab 1 КН-1-01 → {mongo[DB].variants.find_one({'lab': 1, 'vid': 'КН-1-01'})['student']!r}")
 
     pin(c, 1, "КН-1-01", "a@nure.ua")
+    my = c.get("/api/variants/1/my").json()
+    check("pinned again to the same student: the card starts afresh — no versions, no file, no attempts", my["files"] == [] and my["file"] is None
+          and my["attempts"] == 0, my)
+    my = send(c, nb(colab=True)).json()
+    check("…the very same bytes as a shelved version: a version again, what the site sees is back; the shelved ones stay", len(my["files"]) == 1
+          and my["file"] and my["facts"]["tool"] == "colab" and my["attempts"] == 1
+          and mongo[DB].lab_files.count_documents({"student": "a@nure.ua", "origin": "freed"}) == 3, my)
     check("pull: no link saved → 422", c.post("/api/variants/1/my/pull").status_code == 422)
     c.put("/api/variants/1/my", json={"notebook": "https://colab.research.google.com/drive/1AbC-dEf_ghIJkl"})
 
@@ -277,9 +290,9 @@ with TestClient(main.app) as c:
     check("pull: a closed file → 422 asking to open access", r.status_code == 422 and r.json()["detail"] == labs_pull.FAIL, r.text)
     labs_pull.get = notebook
     my = c.post("/api/variants/1/my/pull").json()
-    check("pull: the notebook behind the link becomes a version; A's own earlier versions are A's again, counted",
-          my["files"][0]["name"] == "colab.ipynb" and my["ok"] == 2 and my["attempts"] == 1 and len(my["files"]) == 4
-          and mongo[DB].variants.find_one({"lab": 1, "vid": "КН-1-01"})["files"] == 4, my.get("files"))
+    check("pull: the notebook behind the link becomes a version, counted with the one handed in since the pin",
+          my["files"][0]["name"] == "colab.ipynb" and my["ok"] == 2 and my["attempts"] == 2 and len(my["files"]) == 2
+          and mongo[DB].variants.find_one({"lab": 1, "vid": "КН-1-01"})["files"] == 2, my.get("files"))
 
     # lab 2, D: the deadline against the versions — out of lab 1's table and stats
     login(c, "d@nure.ua", "student", "КН-1")
@@ -312,6 +325,24 @@ with TestClient(main.app) as c:
           len(my["files"]) == 3 and my["attempts"] == 3 and (my["late"], my["in_time"]) == (True, True), (len(my["files"]), my["attempts"], my["late"], my["in_time"]))
     row = c.get("/api/variants").json()[1]
     check("BRIEF after the files: handed, 2 of 2, late and in time", row == brief | {"handed": True, "ok": 2, "due": my["due"], "late": True, "in_time": True}, row)
+
+    # lab 2's demo: the admin's file, a test student takes the demo over, the admin takes it back
+    login(c, "admin@nure.ua", "admin")
+    demo = nb("ДЕМО-00", lab=2)
+    c.post("/api/variants/2/my/demo")
+    my = send(c, demo, lab=2).json()
+    check("admin: a file on the demo — a version, MY says it is the demo", my.get("vid") == "ДЕМО-00" and my["demo"] is True and len(my["files"]) == 1, my)
+    login(c, "t@nure.ua", "student")
+    mongo[DB].users.update_one({"email": "t@nure.ua"}, {"$set": {"test": True}})
+    my = c.post("/api/variants/2/my/demo").json()
+    check("a test student takes the demo over: afresh — the admin's version is not theirs", my["vid"] == "ДЕМО-00" and my["files"] == [] and my["file"] is None
+          and my["attempts"] == 0, my)
+    login(c, "admin@nure.ua", "admin")
+    my = c.post("/api/variants/2/my/demo").json()
+    check("the admin takes it back: no versions — theirs were shelved, kept in the base", my["files"] == [] and my["file"] is None
+          and mongo[DB].lab_files.count_documents({"student": "admin@nure.ua", "origin": "freed"}) == 1, my)
+    my = send(c, demo, lab=2).json()
+    check("…the same bytes again: a version, not «the same file»", len(my["files"]) == 1 and my["file"] and my["attempts"] == 1, my)
 
 print(f"\n{sum(ok for _, ok in results)}/{len(results)} PASS")
 sys.exit(not all(ok for _, ok in results))

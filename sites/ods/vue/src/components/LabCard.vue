@@ -22,8 +22,9 @@ async function copy() {
 <template>
   <section class="mb-4">
     <h2 class="h5">Картка варіанта <code>{{ lab.vid }}</code></h2>
-    <p class="small text-secondary mb-2">Варіант закріпив за тобою викладач — той самий номер у кожній лабі. У ноутбуці з кнопок нижче
-      картка вже стоїть; у свій ноутбук встав цей блок у першу клітинку з кодом замість рядка-заглушки.</p>
+    <p class="small text-secondary mb-2"><template v-if="lab.demo">Демо-варіант — для викладача й тестового студента; у студента тут
+      його закріплена картка.</template><template v-else>Варіант закріпив за тобою викладач — той самий номер у кожній лабі.</template>
+      У ноутбуці з кнопок нижче картка вже стоїть; у свій ноутбук встав цей блок у першу клітинку з кодом замість рядка-заглушки.</p>
     <div class="position-relative mb-1">
       <button type="button" class="btn btn-sm btn-outline-secondary lab-copy" @click="copy">
         <Icon :name="copied ? 'check' : 'copy'" /> {{ copied ? 'скопійовано' : 'Скопіювати' }}

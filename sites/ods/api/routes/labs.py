@@ -3,6 +3,7 @@ the form of defence. The teacher's side is routes/lab_review.py; variants come f
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 from pydantic import BaseModel
 
+import labs_pull
 from bot import lab_alerts
 from core.deps import active_user
 from core.models.history import record
@@ -39,15 +40,16 @@ async def list_labs(user: User = Depends(active_user)):
 
 @router.get("/{lab}/my")
 async def get_my(lab: int, soft: bool = False, user: User = Depends(opened)):
-    """MY; no card pinned — 404 with the words why, or with `soft` 200 {vid: None, why, demo}: «Моя лаба» asks so, a visit
-    without a card is not an error in the browser's console; `demo` — the demo card's vid for one who may open it."""
+    """MY; no card pinned — 404 with the words why, or with `soft` 200 {vid: None, why, demo, demo_taken}: «Моя лаба» asks
+    so, a visit without a card is not an error in the browser's console; `demo` — the demo card's vid for one who may
+    open it, `demo_taken` — somebody else holds it now and their work on it ends with this reader's click."""
     await settle(user)  # notebooks the teacher forwarded before the student linked the bot become theirs here (T368)
     try:
         v = await mine(lab, user)
     except HTTPException as e:
         if soft and e.status_code == 404:
             card = may_demo(user) and await demo_card(lab)
-            return {"vid": None, "why": e.detail, "demo": card.vid if card else None}
+            return {"vid": None, "why": e.detail, "demo": card.vid if card else None, "demo_taken": bool(card and card.student)}
         raise
     return await my(v, user)
 
@@ -65,11 +67,13 @@ async def put_my(lab: int, data: MyIn, tasks: BackgroundTasks, user: User = Depe
     and the video it does."""
     v = await mine(lab, user)
     fields, note = {}, ""
-    for name in ("notebook", "video"):  # the teacher will click them: links only
+    for name in ("notebook", "video"):  # the teacher will click them: links only, and the notebook's — one a file comes by
         if (link := getattr(data, name)) is not None:
             fields[name] = link.strip()[:LINK]
-            if fields[name] and not fields[name].startswith(("https://", "http://")):
+            if fields[name] and not fields[name].startswith("https://"):
                 raise HTTPException(422, "Посилання має починатися з https://")
+            if name == "notebook" and fields[name] and not labs_pull.drive_id(fields[name]):
+                raise HTTPException(422, labs_pull.NOT_GOOGLE)
     if data.way is not None:
         if data.way not in WAYS:
             raise HTTPException(422, "Форма захисту — none, record або live")

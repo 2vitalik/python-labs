@@ -13,6 +13,7 @@ mongo.drop_database(DB)
 os.environ["LAB_GATES"] = ""  # every lab takes lines here, whatever site.env opens to students (T368; smoke_gates.py)
 
 results = []
+COLAB = "https://colab.research.google.com/drive/1AbC-dEf_ghIJkl"
 ANSWERS ={"x": {"value": 1, "step": 0, "traps": []}, "y": {"value": 2, "step": 0, "traps": []}}
 
 
@@ -47,7 +48,7 @@ with TestClient(main.app) as c:
                                     for lab, n in [(1, 1), (1, 2), (2, 1)]])
     login(c, "a@nure.ua", "student", "КН-1")
     pin(c, 1, "КН-1-01", "a@nure.ua")  # the same number of lab 2 comes with it, no line there yet
-    c.put("/api/variants/1/my", json={"line": "LAB1 КН-1-01 x=1 y=5", "notebook": "https://colab/a", "way": "record"})
+    c.put("/api/variants/1/my", json={"line": "LAB1 КН-1-01 x=1 y=5", "notebook": COLAB, "way": "record"})
     login(c, "b@nure.ua", "student", "КН-1")
     login(c, "admin@nure.ua", "admin")
     c.put("/api/variants/1/results/КН-1-01", json={"points": 14, "note": "охайно"})
@@ -57,7 +58,7 @@ with TestClient(main.app) as c:
     a, b = rows["a@nure.ua"]["variants"], rows["b@nure.ua"]["variants"]
     check("table: A's lab 1 — the card, 1 of 2 right, the attempt, the notebook, the points",
           a["1"]["vid"] == "КН-1-01" and (a["1"]["ok"], a["1"]["total"], a["1"]["attempts"]) == (1, 2, 1)
-          and a["1"]["notebook"] == "https://colab/a" and (a["1"]["points"], a["1"]["note"]) == (14, "охайно"), a)
+          and a["1"]["notebook"] == COLAB and (a["1"]["points"], a["1"]["note"]) == (14, "охайно"), a)
     check("table: A's lab 1 — dates with the zone", a["1"]["checked_at"].endswith("+00:00") and a["1"]["assigned_at"].endswith("+00:00"), a)
     check("table: A's lab 2 — a card without a line", a["2"]["vid"] == "КН-1-01" and a["2"]["attempts"] == 0 and a["2"]["checked_at"] is None
           and a["2"]["points"] is None, a)

@@ -8,7 +8,7 @@ from pydantic import BaseModel
 from core.deps import admin_user
 from core.models.history import record
 from core.models.user import User
-from lab_claim import DEMO, may_demo, spread
+from lab_claim import DEMO, may_demo, shelve, spread
 from lab_my import heads
 from models.lab import FRESH, LabVariant
 from models.lab_file import LabFile, file_api
@@ -80,6 +80,7 @@ async def mark(lab: int, vid: str, data: MarkIn, user: User = Depends(admin_user
 async def passed(v: LabVariant, email: str) -> dict:
     """"" — the card is free and starts afresh (history keeps what was); an email — the card with its work goes to them."""
     if not email:
+        await shelve(v)
         return FRESH | {"student": "", "assigned_at": None}
     if not (student := await User.find_one(User.email == email)):
         raise HTTPException(404, f"Студента {email} на сайті нема")

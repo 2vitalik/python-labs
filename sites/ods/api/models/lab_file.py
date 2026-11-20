@@ -12,7 +12,8 @@ MAX_BYTES = 12 * 2**20  # the original; zlib keeps a stored one well under Mongo
 
 class LabFile(Document):
     """One version of a student's notebook (T354 §2): every upload is a new one, nothing is overwritten.
-    origin `run` — the copy bin/nbrun executed on the teacher's machine, `of` — the student's version it ran."""
+    origin `run` — the copy bin/nbrun executed on the teacher's machine, `of` — the student's version it ran;
+    `freed` — a version of a card that has started afresh since (lab_claim.shelve): kept, out of the card's sight."""
     lab: int
     vid: str
     student: str

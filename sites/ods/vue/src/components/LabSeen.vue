@@ -45,7 +45,10 @@ onMounted(() => loadLabPages().catch(() => {}))
     <p v-if="lab.attempts" class="mb-1"><b>{{ lab.ok }} із {{ lab.total }} ✅</b> · спроба {{ lab.attempts }}<template v-if="lab.checked_at"> · перевірено {{ fmtWhen(lab.checked_at) }}</template></p>
     <p v-else-if="marimo" class="text-secondary mb-1">marimo не зберігає виводів, тож рядка відповідей у файлі нема —
       {{ byTelegram ? 'надішли його викладачеві тим самим повідомленням, що й файл' : 'встав його через «інший спосіб» вище' }}.</p>
-    <p v-else class="text-secondary mb-1">Рядка відповідей у файлі не знайшлося.</p>
+    <p v-else class="text-secondary mb-1">Рядка відповідей у файлі не знайшлося: запусти всі клітинки до останньої — вона друкує
+      рядок, — збережи ноутбук і {{ byTelegram ? 'надішли' : 'здай' }} його ще раз.</p>
+    <p v-if="file && lab.facts?.card === false" class="text-warning-emphasis mb-1">У файлі нема картки (рядка VARIANT = …) — сайт не може
+      звірити, що це твій варіант.</p>
     <LabVerdict :verdict="lab.verdict" class="mb-3" />
     <template v-if="steps.length">
       <h3 class="h6 mt-3">Рівні <RouterLink v-if="grading" to="/labs/about/grading" class="small fw-normal ms-1">правила оцінювання</RouterLink></h3>

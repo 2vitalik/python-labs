@@ -44,6 +44,8 @@ async def store(lab: int, user: User, name: str, data: bytes, at: datetime | Non
     hand-in): the newest version sent once more, or — with `at` — any version. `at` — it was handed in elsewhere then
     (a message to the teacher, T368): the version takes that time, and the card's «latest» stays with the newest version."""
     nb = parse(data)
+    if not nb["cells"]:
+        raise HTTPException(422, "У ноутбуці нема жодної клітинки — перевір, який файл здаєш")
     facts = labs_facts.facts(nb, await shape_of(lab))
     if not (v := await held(lab, user)):
         raise HTTPException(409, NO_CARD)

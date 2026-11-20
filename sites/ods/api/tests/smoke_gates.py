@@ -22,6 +22,7 @@ from core.config import settings  # noqa: E402
 results = []
 AGENT = {"Authorization": "Bearer tok-123"}
 NB = {"file": ("x.ipynb", b"{}", "application/x-ipynb+json")}
+COLAB = "https://colab.research.google.com/drive/1AbC-dEf_ghIJkl"
 BRIEF = {"mine": True, "vid": "КН-1-01", "handin": "site", "handed": False, "ok": 0, "total": 1, "points": None, "due": None, "late": None, "in_time": None}
 
 
@@ -74,8 +75,8 @@ with TestClient(main.app) as c:
     check("telegram lab: an answer line — 409 with the words", r.status_code == 409 and "Telegram" in r.json()["detail"], r.text)
     check("telegram lab: a file and a link's file — 409", c.post("/api/variants/1/my/file", files=NB).status_code == 409
           and c.post("/api/variants/1/my/pull").status_code == 409)
-    my = c.put("/api/variants/1/my", json={"way": "record", "notebook": "https://colab/x"}).json()
-    check("telegram lab: the form of defence and the link are kept; no attempt counted", my.get("way") == "record" and my.get("notebook") == "https://colab/x"
+    my = c.put("/api/variants/1/my", json={"way": "record", "notebook": COLAB}).json()
+    check("telegram lab: the form of defence and the link are kept; no attempt counted", my.get("way") == "record" and my.get("notebook") == COLAB
           and my.get("attempts") == 0 and db.lab_files.count_documents({}) == 0, my)
     my = c.put("/api/variants/2/my", json={"line": "LAB2 КН-1-01 x=2"}).json()
     check("site lab: the card of the same number, the line is checked", my.get("handin") == "site" and my.get("attempts") == 1 and my.get("ok") == 1, my)

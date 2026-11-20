@@ -9,6 +9,7 @@ from core.labs import due_for, effective, utc
 from core.models.deadline import Deadline, LabMark
 from core.models.history import when
 from core.models.user import User
+from lab_claim import DEMO
 from lab_gates import gate, teacher
 from models.lab import LabVariant
 from models.lab_file import FileHead, LabFile, file_api
@@ -61,7 +62,7 @@ async def my(v: LabVariant, user: User) -> dict:
     f = await LabShape.find_one(LabShape.lab == v.lab).project(Formats)
     files = await heads(v)
     return v.api() | await times(v, user, files) | {
-        "card": await card_of(v, bool(f and f.live)), "files": [file_api(x) for x in files],
+        "card": await card_of(v, bool(f and f.live)), "files": [file_api(x) for x in files], "demo": v.group == DEMO,
         "handin": "site" if teacher(user) else await gate(v.lab),  # site · telegram (lab_gates.py)
         "formats": {"jupyter": bool(f and f.jupyter), "marimo": bool(f and f.marimo), "live": bool(f and f.live)}}
 

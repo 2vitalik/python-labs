@@ -5,8 +5,8 @@ import { openLabDemo } from '../api.js'
 
 // no card for this reader (T375): the teacher pins the cards by the stream's list, so a student has nothing to pick
 // here — `why` are the API's words on what to do. The teacher and a test student are not in the list: `demo` — the
-// demo card they open by a click
-const props = defineProps({ n: Number, why: String, demo: String })
+// demo card they open by a click; `taken` — the other of the two holds it now, and it starts afresh with this click
+const props = defineProps({ n: Number, why: String, demo: String, taken: Boolean })
 const emit = defineEmits(['got'])
 const busy = ref(false)
 const error = ref('')
@@ -30,6 +30,8 @@ async function open() {
     <p>Варіант закріплено за кожним студентом зі списку потоку: він відкриває цю сторінку — і картка вже на ній. У викладача
       й тестового студента своєї картки нема, тож сторінку можна пройти на демо-варіанті.</p>
     <button type="button" class="btn btn-primary" :disabled="busy" @click="open">Відкрити демо-варіант {{ demo }}</button>
+    <p v-if="taken" class="small text-secondary mt-2 mb-0">Демо-варіант один на двох — на викладача й тестового студента. Зараз він
+      відкритий у другого: відкриєш тут — і здане там на ньому почнеться з чистого.</p>
     <p v-if="error" class="text-danger mt-2 mb-0">{{ error }}</p>
   </section>
   <section v-else>

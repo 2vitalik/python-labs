@@ -9,6 +9,7 @@ from fastapi import HTTPException
 from core.models.history import record
 from core.models.user import Status, User
 from models.lab import FRESH, LabVariant
+from models.lab_file import LabFile
 
 DEMO = "ДЕМО"
 NO_CARD = ("Картки варіантів закріплює викладач — за списком потоку. За тобою картки цієї лаби ще нема: "
@@ -19,9 +20,18 @@ def may_demo(user: User) -> bool:
     return user.status == Status.admin or user.test
 
 
+async def shelve(v: LabVariant) -> None:
+    """A card that starts afresh: its holder's versions stay in the base, out of the card's sight — the same file handed
+    in again is a version again."""
+    mine = (LabFile.lab == v.lab, LabFile.vid == v.vid, LabFile.student == v.student, LabFile.origin == "student")
+    await LabFile.find(*mine).update({"$set": {"origin": "freed"}})
+
+
 async def take(v: LabVariant, user: User) -> LabVariant:
     """The demo taken over from someone else starts afresh: their line, marks and file are not the new holder's."""
     fresh = FRESH if v.student and v.student != user.email else {}
+    if fresh:
+        await shelve(v)
     await record(v, fresh | {"student": user.email, "assigned_at": datetime.now(timezone.utc)}, actor=user.email)
     return v
 

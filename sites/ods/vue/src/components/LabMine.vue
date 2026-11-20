@@ -4,7 +4,8 @@ import { computed } from 'vue'
 import { fmtWhen } from '@core/labs.js'
 
 // a lab among the student's own, in a few quiet words (BRIEF of GET /api/variants): where it is handed in, the deadline,
-// what the site has, the mark. A lab handed in by Telegram says nothing of «not yet»: the site cannot know
+// what the site has, the mark. A lab handed in by Telegram says nothing of «not yet» nor of a missed deadline: the
+// site cannot know. Red — as on «Моя лаба»: past the deadline with no version in time
 const props = defineProps({ m: Object })
 const words = computed(() => {
   const m = props.m, out = []
@@ -15,9 +16,13 @@ const words = computed(() => {
   if (m.points !== null && m.points !== undefined) out.push(`оцінка ${m.points}`)
   return out
 })
-const late = computed(() => props.m.late && props.m.handed && !props.m.in_time)
+const late = computed(() => {
+  const m = props.m
+  if (!m.late || m.in_time) return ''
+  return m.handed ? 'після дедлайну' : m.handin === 'site' ? 'дедлайн минув' : ''
+})
 </script>
 
 <template>
-  <span class="text-secondary">{{ words.join(' · ') }}<span v-if="late" class="text-danger"> · після дедлайну</span></span>
+  <span class="text-secondary">{{ words.join(' · ') }}<span v-if="late" class="text-danger"> · {{ late }}</span></span>
 </template>
