@@ -12,14 +12,15 @@
   --au-m: #f47ad6; --au-g: #72d08a; --au-p: #c4a0ff; --au-o: #ffad5c;
   --au-paper: #2a251e;
 }
-.lec-author c-b { color: var(--au-b); }
-.lec-author c-n { color: var(--au-n); }
-.lec-author c-r { color: var(--au-r); }
-.lec-author c-d { color: var(--au-d); }
-.lec-author c-m { color: var(--au-m); }
-.lec-author c-g { color: var(--au-g); }
-.lec-author c-p { color: var(--au-p); }
-.lec-author c-o { color: var(--au-o); }
+/* `.c-b` — the same colour on a part of a formula: `\col{b}{…}` (math.js, T381) */
+.lec-author :is(c-b, .c-b) { color: var(--au-b); }
+.lec-author :is(c-n, .c-n) { color: var(--au-n); }
+.lec-author :is(c-r, .c-r) { color: var(--au-r); }
+.lec-author :is(c-d, .c-d) { color: var(--au-d); }
+.lec-author :is(c-m, .c-m) { color: var(--au-m); }
+.lec-author :is(c-g, .c-g) { color: var(--au-g); }
+.lec-author :is(c-p, .c-p) { color: var(--au-p); }
+.lec-author :is(c-o, .c-o) { color: var(--au-o); }
 
 /* a slide as his: the warm paper, the running head and the number dark blue and bold, the title his blue, red list marks.
    Bold is only bold (slides.css paints it in the calm look); a role is its label and some air — his tag colours the label */

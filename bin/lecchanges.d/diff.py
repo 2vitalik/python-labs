@@ -5,7 +5,7 @@ from difflib import SequenceMatcher
 from cells import moved, split
 from tok import clean, inside, math, raw_tokens, squeeze, tokens
 
-EMPH = ("**", "*", "<c-", "</c-")
+EMPH = ("**", "*", "<c-", "</c-", "\\col{", "}")  # `}` as markup is the end of a coloured part of a formula (tok.wraps)
 STOPS = (".", ",", ";", ":", "-")  # what one edit may step over, close up: `Рис.1` → `рис. 1`, `П-З` → `причинно-…`
 
 

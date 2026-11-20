@@ -10,7 +10,8 @@ MATH = re.compile(r"\$\$.+?\$\$|(?<!\\)\$(?:\\.|[^$\\])+?\$", re.DOTALL)
 SKIP = re.compile(r"<!--.*?-->|</?c-[a-z]>|\*\*?|^[ \t]*(?:(?:>|(?:[-+*]|\d+[.)]|#+)(?=[ \t]))[ \t]*)*", re.MULTILINE | re.DOTALL)
 TOKEN = re.compile(r"\\[A-Za-z]+|\\.|\d+(?:[.,]\d+)?|\w+(?:['’ʼ]\w+)*|\S")
 # the same with the markup kept as tokens: what a change of looks only (bold, colour, list marks) is made of
-RAW = re.compile(r"<!--.*?-->|</?c-[a-z]>|\*\*|\\[A-Za-z]+|\\.|\d+(?:[.,]\d+)?|\w+(?:['’ʼ]\w+)*|\S", re.DOTALL)
+RAW = re.compile(r"<!--.*?-->|</?c-[a-z]>|\*\*|\\col\{[a-z]\}\{|\\[A-Za-z]+|\\.|\d+(?:[.,]\d+)?|\w+(?:['’ʼ]\w+)*|\S", re.DOTALL)
+COL = re.compile(r"\\col\{[a-z]\}\{")  # the lecturer's colour on a part of a formula: `\col{b}{…}` (T381)
 
 
 def math(raw: str) -> list[tuple[int, int]]:
@@ -21,10 +22,26 @@ def inside(pos: int, spans: list[tuple[int, int]]) -> bool:
     return any(s <= pos < e for s, e in spans)
 
 
+def wraps(raw: str, spans: list[tuple[int, int]]) -> list[tuple[int, int]]:
+    """In the formulas: the opening `\\col{b}{` of a coloured part and the brace that closes it."""
+    out = []
+    for start, end in spans:
+        for m in COL.finditer(raw, start, end):
+            depth, i = 1, m.end()
+            while i < end and depth:
+                if raw[i - 1] != "\\":
+                    depth += (raw[i] == "{") - (raw[i] == "}")
+                i += 1
+            if not depth:
+                out += [m.span(), (i - 1, i)]
+    return out
+
+
 def skipped(raw: str) -> list[tuple[int, int]]:
-    """Spans of markup; inside formulas nothing is markup."""
+    """Spans of markup; inside formulas nothing is markup but the colour of a part."""
     spans = math(raw)
-    return [m.span() for m in SKIP.finditer(raw) if m.end() > m.start() and not inside(m.start(), spans)]
+    out = [m.span() for m in SKIP.finditer(raw) if m.end() > m.start() and not inside(m.start(), spans)]
+    return sorted(out + wraps(raw, spans))
 
 
 def clean(raw: str) -> tuple[str, list[int]]:
