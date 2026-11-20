@@ -64,7 +64,8 @@ export default makeRouter([
   // the week is the teacher's alone for now: 'active' on both routes gives it back to students, with the menu entry
   { path: '/my/week', component: MyWeekPage, meta: { title: 'Мій тиждень', access: 'admin' } },
   { path: '/week/:day(\\d)?', component: WeekPage, meta: { title: 'Тиждень', access: 'admin', filters: true, stay: true, wide: 'admin' } },
-  { path: '/method/history', component: HistoryPage, meta: { title: 'Історія правок', access: 'admin' } },
+  { path: '/history', component: HistoryPage, meta: { title: 'Історія правок', access: 'admin', filters: true } },  // ?slug= — one page's
+  { path: '/method/history', redirect: (to) => ({ path: '/history', query: to.query }) },  // the address it had (links kept)
   { path: '/login', component: LoginPage, meta: { title: 'Вхід' } },
   { path: '/my/profile', component: ProfilePage, meta: { title: 'Профіль', access: 'active' } },
   { path: '/students', component: StudentsPage, meta: { title: 'Студенти', access: 'admin' } },

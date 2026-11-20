@@ -4,6 +4,12 @@ export const site = {
   name: '',  // the tab title «<page> · name», the hint of the home link
   links: [],  // the menu: [path, text, access?, bold?, icon?]; access — when the entry is narrower than the page (a page students reach another way); icon — a name of Icon.vue: what stands for the word in a menu of icons
   guide: [],  // guide pages in the order of /method: { slug, path, nav }; `n` — a lab's number
+  history: {  // «Історія правок» of the guide's pages (HistoryPage.vue)
+    path: '/method/history',  // its address on the site
+    // a page's place on the site by its slug: (slug) => ({ path, crumbs: [[to, text], …], more?: { to, text } }) — the way to it
+    // and the site's own page on its changes; null — the guide's: site.guide under «Методичка»
+    place: null,
+  },
   colls: {},  // /activity: what an edit in the site's own collection is called — { claims: 'заявка' }
   start: {  // «Перші кроки» of a home page (StartSteps.vue): sign in and link the bot — always
     week: false,  // …and mark the week: the site has /my/week and asks its students for it

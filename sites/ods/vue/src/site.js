@@ -1,4 +1,5 @@
 import { FACETS, STUDENT_COLS, TABLE_COLS } from './labCols.js'
+import { place } from './pagePlace.js'
 
 // what this site is; the platform (core/ui) takes it through start() in main.js
 
@@ -18,6 +19,7 @@ export default {
     ['/my/profile', 'Профіль', null, false, 'user']],
   start: {},  // no line under the first steps: a student's own labs stand on the home page (HomePage.vue)
   guide: [...LECTURES, ...LABS],
+  history: { path: '/history', place },  // no «Методичка» here: a page's history hangs under the page itself
   colls: { variants: 'варіант лаби', lab_gates: 'доступ до лаби' },
   students: { page: 'Лаби', cols: STUDENT_COLS, facets: FACETS },
   table: { cols: TABLE_COLS },

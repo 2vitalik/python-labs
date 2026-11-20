@@ -17,13 +17,19 @@ const items = ref([])
 const open = ref({})
 const error = ref('')
 const slug = computed(() => route.query.slug || '')
-const options = computed(() => [{ slug: 'home' }, ...site.guide].map((s) => [s.slug, pages.value[s.slug]?.title || s.slug]))
+// a site with places of its own (site.history.place) lists every page it has; the guide — its pages in the order of /method
+const place = computed(() => site.history.place?.(slug.value))
+const crumbs = computed(() => [...(site.history.place ? place.value?.crumbs || [] : [['/method', 'Методичка']]), 'Історія'])
+const options = computed(() => (site.history.place
+  ? Object.values(pages.value).map((p) => [p.slug, p.title]).sort((a, b) => a[0].localeCompare(b[0], 'en', { numeric: true }))
+  : [{ slug: 'home' }, ...site.guide].map((s) => [s.slug, pages.value[s.slug]?.title || s.slug])))
 const rows = computed(() => items.value.map((e) => {
   const d = diffLines(e.old || '', e.new || '')
   return { ...e, add: d.filter((r) => r.t === '+').length, del: d.filter((r) => r.t === '-').length }
 }))
 const when = (iso) => new Date(iso).toLocaleString('uk-UA', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })
-const path = (s) => (s === 'home' ? '/' : s === 'changes-draft' ? '/changes' : site.guide.find((a) => a.slug === s)?.path || '/method')
+const path = (s) => site.history.place?.(s)?.path
+  || (s === 'home' ? '/' : s === 'changes-draft' ? '/changes' : site.guide.find((a) => a.slug === s)?.path || '/method')
 const pick = (s) => router.replace({ query: s ? { slug: s } : {} })
 
 async function load() {
@@ -46,7 +52,7 @@ loadGuide()
 
 <template>
   <div>
-    <Crumbs :items="[['/method', 'Методичка'], 'Історія']" />
+    <Crumbs :items="crumbs" />
     <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
       <h1 class="h2 mb-0 me-auto">Історія правок</h1>
       <select class="form-select form-select-sm w-auto" :value="slug" @change="pick($event.target.value)">
@@ -54,12 +60,14 @@ loadGuide()
         <option v-for="[s, t] in options" :key="s" :value="s">{{ t }}</option>
       </select>
     </div>
+    <p v-if="place?.more" class="small"><RouterLink :to="place.more.to">{{ place.more.text }} →</RouterLink></p>
     <div v-if="error" class="alert alert-danger">{{ error }}</div>
     <div v-for="e in rows" :key="e.id" class="border rounded mb-2">
       <div class="d-flex flex-wrap align-items-center gap-2 px-3 py-2">
         <span class="text-secondary small">{{ when(e.at) }}</span>
         <span class="small">{{ e.actor }}</span>
-        <RouterLink :to="path(e.slug)">{{ e.title }}</RouterLink>
+        <RouterLink v-if="!slug" :to="path(e.slug)">{{ e.title }}</RouterLink>  <!-- one page's history: it is named above -->
+        <span v-if="e.old == null && e.new != null" class="badge rounded-pill border fw-normal text-body-secondary">початок</span>
         <i v-if="e.note" class="text-secondary">{{ e.note }}</i>
         <span v-if="e.old_title != null" class="small text-secondary">назва: {{ e.old_title }} → {{ e.new_title }}</span>
         <span class="ms-auto small font-monospace"><span class="text-success">+{{ e.add }}</span> <span class="text-danger">−{{ e.del }}</span></span>
