@@ -17,7 +17,9 @@ export function slidesOf(text) {
     const body = parts[i].trim()
     const heads = SEC ? [...body.matchAll(SEC)] : []
     const opens = heads.length && ONLY_HEADS.test(body.slice(0, heads[0].index))
-    if (body) out.push({ n: i ? Number(parts[i - 1]) : 0, text: body, sec: opens ? '' : sec })
+    // the first slide stays even with no text of its own: it is the cover, and the next one (the lecturer and the
+    // assistant of lecture 1) is not to take its place
+    if (body || (i === 2 && !out.length)) out.push({ n: i ? Number(parts[i - 1]) : 0, text: body, sec: opens ? '' : sec })
     if (heads.length) sec = heads.at(-1)[1].replace(/\*\*/g, '')
   }
   return out
