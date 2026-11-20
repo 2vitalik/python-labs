@@ -5,10 +5,12 @@ import Crumbs from '@core/components/Crumbs.vue'
 import { loadGuide, pages } from '@core/guide.js'
 import { user } from '@core/user.js'
 
+import '../labColors.css'
 import LectureFind from '../components/LectureFind.vue'
 import { labsOf, lectures, shortTitle } from '../lectures.js'
 
-// the lectures: search over their texts above, the list stays under the results; a pill — a lab that needs the lecture
+// the lectures: search over their texts above, the list stays under the results; a pill — a lab that needs the lecture,
+// in the lab's own colour (labColors.css)
 const list = computed(lectures)
 loadGuide()
 </script>
@@ -26,7 +28,7 @@ loadGuide()
       <RouterLink :to="d.path">{{ shortTitle(pages[d.slug].title) }}</RouterLink>
       <span class="labs">
         <RouterLink v-for="lab in labsOf(d.n)" :key="lab" :to="`/labs/${lab}`" :title="`Лекція потрібна для лаби ${lab}`"
-                    class="lab badge rounded-pill border fw-normal text-body-secondary">Лаба {{ lab }}</RouterLink>
+                    class="lab lab-tint badge rounded-pill border fw-normal text-body-secondary" :class="`lab-c${lab}`">Лаба {{ lab }}</RouterLink>
       </span>
     </li>
   </ol>

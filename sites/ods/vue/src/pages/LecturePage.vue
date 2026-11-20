@@ -14,6 +14,7 @@ import { problem } from '@core/problem.js'
 import { site } from '@core/site.js'
 import { useTitle } from '@core/title.js'
 
+import '../labColors.css'
 import FoundBar from '../components/FoundBar.vue'
 import LecLook from '../components/LecLook.vue'
 import LectureAnchors from '../components/LectureAnchors.vue'
@@ -95,7 +96,8 @@ watch(doc, load, { immediate: true })
     <h1 class="h2 mb-3">{{ page.title }}</h1>
     <div v-if="labs.length" class="needs small text-body-tertiary">
       Потрібна для:
-      <RouterLink v-for="lab in labs" :key="lab" :to="`/labs/${lab}`" class="lab badge rounded-pill border fw-normal text-body-secondary">Лаба {{ lab }}</RouterLink>
+      <RouterLink v-for="lab in labs" :key="lab" :to="`/labs/${lab}`" class="lab lab-tint badge rounded-pill border fw-normal text-body-secondary"
+                  :class="`lab-c${lab}`">Лаба {{ lab }}</RouterLink>
     </div>
     <FoundBar v-if="route.query.find || route.query.at" :root="body" :slides="slide !== null" />
     <Slides v-if="slide !== null && slides.length" v-model="slide" :slides :title="page.title" :slug="doc.slug" @text="toText" />
