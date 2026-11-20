@@ -2,7 +2,7 @@
 
 <!-- автоген: `dev map` (або `dev gen`), руками не редагувати -->
 
-Наступний вільний ID: **T380** · тікетів: 379 · дерево вузлів — [TREE.md](TREE.md)
+Наступний вільний ID: **T381** · тікетів: 380 · дерево вузлів — [TREE.md](TREE.md)
 
 Типи: `Q`❓ питання · `P`💡 пропозиція · `C`🔆 clarification · `B`🧠 brainstorm · `R`✔️ readback · `S`📝 summary · `D`🗄️ digest (на пенсії) · ⚙️ задача (тека, без літери). state: 🟢/🔴 — чи чекає твоєї відповіді · 🟩/⬜ — чи інтегровано в README вузла.
 
@@ -381,9 +381,10 @@
 | ods | [T371](ods/.t/T371-Q--lab-reports-choices.md) | ❓ | lab-reports-choices | ODS, звіти лаб і реєстрація: вибори | 🔴 ⬜ |
 | ods | [T372](ods/.t/T372--ods-roster/plan.md) | ⚙️ | ods-roster | Список потоку ПЗПІ-24 на ods: профілі з іменами, закріплені картки; чим сайт упізнає студентів — план | 🟢 🟩 |
 | ods | [T373](ods/.t/T373-Q--ods-roster-choices.md) | ❓ | ods-roster-choices | ODS, список потоку: вибори | 🔴 ⬜ |
-| ods | [T374](ods/.t/T374--lectures-candy/plan.md) | ⚙️ | lectures-candy | Лекції ods: кольори лектора, каталог змін «було / стало», пошук за формами слів і змістом, перехід до абзацу — план | 🟢 ⬜ |
+| ods | [T374](ods/.t/T374--lectures-candy/plan.md) | ⚙️ | lectures-candy | Лекції ods: кольори лектора, каталог змін «було / стало», пошук за формами слів і змістом, перехід до абзацу — план | 🟢 🟩 |
 | ods | [T375](ods/.t/T375--labs-1-3-clear/plan.md) | ⚙️ | labs-1-3-clear | Лаби 1–3 ods перед деплоєм: варіант закріплено — без вибору; панель лаби, що прилипає; звірка текстів і шляху студента — план | 🟢 ⬜ |
-| ods | [T376](ods/.t/T376-C--semantic-search.md) | 🔆 | semantic-search | Пошук «за змістом»: ембединги, векторні бази, що обрати для лекцій ods | 🟢 ⬜ |
+| ods | [T376](ods/.t/T376-C--semantic-search.md) | 🔆 | semantic-search | Пошук «за змістом»: ембединги, векторні бази, що обрати для лекцій ods | 🟢 🟩 |
 | ods | [T377](ods/.t/T377-C--ods-db-push.md) | 🔆 | ods-db-push | База ods на сервер: vv db push — параметри, що замінюється, коли востаннє | 🟢 ⬜ |
-| ods | [T378](ods/.t/T378-Q--lectures-candy-choices.md) | ❓ | lectures-candy-choices | Вибори після ночі лекцій ods: заливка, кольори, історія, каталог змін, пошук | 🟢 ⬜ |
+| ods | [T378](ods/.t/T378-Q--lectures-candy-choices.md) | ❓ | lectures-candy-choices | Вибори після ночі лекцій ods: заливка, кольори, історія, каталог змін, пошук | 🔴 ⬜ |
 | ods | [T379](ods/.t/T379-C--vv-db-push-from.md) | 🔆 | vv-db-push-from | vv db push --from відновлює 0 документів: URI з базою фільтрує архів; обхід — локальна копія ods_labs | 🟢 ⬜ |
+| ods | [T380](ods/.t/T380-Q--labs-1-3-choices.md) | ❓ | labs-1-3-choices | ODS, лаби 1–3 перед оголошенням: вибори | 🟢 ⬜ |
