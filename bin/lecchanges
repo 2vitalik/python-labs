@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+"""bin/lecchanges — the catalogue of changes in the ods lectures against the lecturer's slides (T374, contract §3).
+
+  bin/lecchanges build [NN…]   changes/lecNN.json from the text then (git tag `orig`) and now, the journal, the notes
+  bin/lecchanges todo NN       the edits nothing classifies yet: key · slide · del → ins · the words around
+  bin/lecchanges check [NN…]   exit 1 when an item is `todo` or a note, a rule or an item says what the catalogue does not know
+  bin/lecchanges stats         a table: a line per lecture (built anew in memory), items by group and by what classified them
+  bin/lecchanges rules         changes/notes/rules.json from GLOSSARY.md (its pairs «was → now»; hand-made rules stay)
+
+Nothing named = every lecture. The files live in sites/ods/data/lectures (its own git, outside the project's);
+bin/content push lectures sends them to a site."""
+import argparse
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent / "lecchanges.d"))
+import report
+import store
+from build import build
+from glossary import derive
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("cmd", choices=["build", "todo", "check", "stats", "rules"])
+    parser.add_argument("lec", nargs="*", type=int)
+    a = parser.parse_args()
+    lecs = a.lec or store.numbers()
+    if a.cmd == "build":
+        for n in lecs:
+            data, meta = build(n)
+            print(report.line(data, meta["hows"], "записано" if store.save(n, data) else "без змін"))
+    elif a.cmd == "todo":
+        if len(a.lec) != 1:
+            sys.exit("todo — одна лекція: bin/lecchanges todo 5")
+        report.todo(build(a.lec[0])[0])
+    elif a.cmd == "check":
+        sys.exit(report.check(lecs))
+    elif a.cmd == "stats":
+        report.stats(lecs)
+    else:
+        print(derive())
+
+
+if __name__ == "__main__":
+    main()

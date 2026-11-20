@@ -27,7 +27,19 @@ def glob(pattern: str) -> list[Path]:
 
 
 def lectures() -> list[dict]:
-    return [{"slug": p.stem, "file": p} for p in glob("lectures/lec*/lec*.md")]
+    """A lecture with the lecturer's slides as pictures (`lecNN/orig/sKK.webp`) and its catalogue of changes
+    (`changes/lecNN.json`, bin/lecchanges, T374) — when they are there."""
+    out = []
+    for p in glob("lectures/lec*/lec*.md"):
+        changes = DATA / f"lectures/changes/{p.stem}.json"
+        out.append({"slug": p.stem, "file": p, "orig": sorted((p.parent / "orig").glob("s*.webp")),
+                    "changes": changes if changes.exists() else None})
+    return out
+
+
+def search() -> dict[str, Path]:
+    """The data of the lectures' search (`search/*.json`) → media `lecsearch/<name>.json`."""
+    return {f"lecsearch/{p.name}": p for p in glob("lectures/search/*.json")}
 
 
 def new_labs() -> list[dict]:
@@ -82,9 +94,11 @@ def parse(slug: str, path: Path) -> tuple[str, str, list[str]]:
 
 
 def media(p: dict, pics: list[str]) -> dict[str, Path]:
-    """What goes to `media` with the page: its pictures `<slug>/x.png` and the files it hands out `files/<slug>/<name>`."""
+    """What goes to `media` with the page: its pictures `<slug>/x.png`, the files it hands out `files/<slug>/<name>`,
+    a lecture's slides as the lecturer made them `<slug>/orig/sKK.webp`."""
     out = {f"{p['slug']}/{name}": p["file"].parent / "img" / name for name in pics}
     out |= {f"files/{p['slug']}/{f['name']}": f["path"] for f in p.get("files", [])}
+    out |= {f"{p['slug']}/orig/{f.name}": f for f in p.get("orig", [])}
     return {path: file for path, file in out.items() if found(file)}
 
 

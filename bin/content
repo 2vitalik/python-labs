@@ -4,7 +4,9 @@
   bin/content -t <target> ls   [lectures | labs | old | <slug>…]                 what on disk differs from the site
   bin/content -t <target> push [lectures | labs | old | <slug>…] [--dry] [-m "нотатка"]
 
-Nothing named = everything. Only what differs by sha1 goes: pages, their pictures and files; pushing a lab's page
+Nothing named = everything. Only what differs by sha1 goes: pages, their pictures and files; a lecture also takes its
+slides as the lecturer made them (lecNN/orig/sKK.webp) and its catalogue of changes (changes/lecNN.json, bin/lecchanges),
+`lectures` (or nothing named) — the search data (search/*.json → media lecsearch/) too (T374); pushing a lab's page
 ends with the list of the labs' pages. The target is a must — the scripts' default (bin/siteapi.py) is the python
 site's prod, no place for ods texts; its URL and an agent's token are in .site/.env (<TARGET>_URL, <TARGET>_TOKEN)."""
 import argparse
@@ -49,19 +51,25 @@ def pick(groups: dict[str, list], what: list[str]) -> list[dict]:
     return out
 
 
-def diff(chosen: list[dict], have: dict) -> tuple[list, list]:
-    """(pages, files) that differ, each with its sign: + new · ~ changed; the same are left out."""
+def diff(chosen: list[dict], have: dict, extra: dict) -> tuple[list, list, list]:
+    """(pages, files, catalogues of changes) that differ, each with its sign: + new · ~ changed; the same are left out.
+    extra — files of no page (the search data). A catalogue's sha1 is the site's: of its JSON with sorted keys."""
     def sign(was, now):
         return "" if was == now else "~" if was else "+"
-    texts, files = [], []
+    texts, files, changes, media = [], [], [], dict(extra)
     for p in chosen:
         title, body, pics = disk.parse(p["slug"], p["file"])
         if s := sign(have["pages"].get(p["slug"]), sha(f"{title}\n{body}".encode())):
             texts.append((s, p["slug"], title, body))
-        for path, file in disk.media(p, pics).items():
-            if s := sign(have["media"].get(path), sha(file.read_bytes())):
-                files.append((s, path, file))
-    return texts, files
+        media |= disk.media(p, pics)
+        if p.get("changes") and "changes" in have:
+            data = json.loads(p["changes"].read_text())
+            if s := sign(have["changes"].get(p["slug"]), sha(json.dumps(data, ensure_ascii=False, sort_keys=True).encode())):
+                changes.append((s, p["slug"], data))
+    for path, file in media.items():
+        if s := sign(have["media"].get(path), sha(file.read_bytes())):
+            files.append((s, path, file))
+    return texts, files, changes
 
 
 def labpages(labs: list[dict], chosen: list[dict], have: dict) -> list[dict] | None:
@@ -72,12 +80,17 @@ def labpages(labs: list[dict], chosen: list[dict], have: dict) -> list[dict] | N
     return None
 
 
-def show(chosen: list, texts: list, files: list, rows: list | None):
+def show(chosen: list, texts: list, files: list, changes: list, rows: list | None, have: dict):
     count = lambda items, s: sum(i[0] == s for i in items)  # noqa: E731
     print(f"сторінок {len(chosen)}: нових {count(texts, '+')} · змінених {count(texts, '~')} · тих самих {len(chosen) - len(texts)}")
     print("".join(f"  {s} {slug}\n" for s, slug, *_ in texts), end="")
     print(f"файлів до відправки: нових {count(files, '+')} · змінених {count(files, '~')}")
     print("".join(f"  {s} {path}\n" for s, path, _ in files), end="")
+    if "changes" not in have:
+        print("каталог змін у лекціях: сайт його ще не знає (нема /api/content/changes) — не шлемо")
+    elif any(p.get("changes") for p in chosen):
+        print(f"каталогів змін до відправки: нових {count(changes, '+')} · змінених {count(changes, '~')}")
+        print("".join(f"  {s} {slug}\n" for s, slug, _ in changes), end="")
     print(f"перелік сторінок лаб: {f'інший · рядків {len(rows)}' if rows else 'той самий або не чіпаємо'}")
 
 
@@ -94,9 +107,9 @@ def main():
     have = call(a.target, "GET", "/content")
     groups = {"lectures": disk.lectures(), "labs": disk.lab_pages(), "old": disk.old_labs()}
     chosen = pick(groups, a.what)
-    texts, files = diff(chosen, have)
+    texts, files, changes = diff(chosen, have, disk.search() if not a.what or "lectures" in a.what else {})
     rows = labpages(groups["labs"], chosen, have)
-    show(chosen, texts, files, rows)
+    show(chosen, texts, files, changes, rows, have)
     if a.cmd == "ls" or a.dry:
         return
     for _, path, file in files:  # pictures before the pages that show them
@@ -104,6 +117,8 @@ def main():
     for _, slug, title, body in texts:
         r = call(a.target, "PUT", f"/content/pages/{slug}", {"title": title, "body": body, "note": a.note})
         print(f"{slug}: {r['state']} · rev {r['rev']}")
+    for _, slug, data in changes:
+        print(f"{slug}: каталог змін · {call(a.target, 'PUT', f'/content/changes/{slug}', data)['state']}")
     if rows:
         print(f"перелік сторінок лаб записано · рядків {call(a.target, 'PUT', '/content/labpages', rows)['count']}")
 
