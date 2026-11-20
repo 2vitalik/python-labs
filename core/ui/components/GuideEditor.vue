@@ -26,7 +26,8 @@ const busy = ref(false)
 const area = ref()
 const dirty = computed(() => draft.value !== start || title.value !== props.page.title)
 const rows = computed(() => Math.min(Math.max(draft.value.split('\n').length + 1, 6), 40))
-const to = computed(() => (props.id ? `#${props.prefix ? props.prefix + '-' : ''}${props.id}-slot` : null))
+// escaped: a heading «1. Типи даних» has an id that starts with a digit — not a selector as it is
+const to = computed(() => (props.id ? `#${CSS.escape(`${props.prefix ? props.prefix + '-' : ''}${props.id}-slot`)}` : null))
 
 async function save() {
   if (!dirty.value || busy.value) return
