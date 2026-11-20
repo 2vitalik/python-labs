@@ -51,6 +51,6 @@ async function saved(p) {
 <style scoped>
 /* optically midway between the heading above and the text: the full-width line below pulls harder than the short heading */
 .tools { margin: -.75rem 0 .5rem; }
-.tools a { color: var(--bs-tertiary-color); text-decoration: none; }
-.tools a:hover { color: var(--bs-body-color); }
+.tools a, .tools :slotted(a) { color: var(--bs-tertiary-color); text-decoration: none; }  /* a page's own links look the same */
+.tools a:hover, .tools :slotted(a:hover) { color: var(--bs-body-color); }
 </style>

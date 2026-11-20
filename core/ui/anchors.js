@@ -19,8 +19,11 @@ function reveal(el) {
   scrollBy({ top: by, behavior: reduced() ? 'auto' : 'smooth' })
 }
 
+let hushed = ''  // just reached by goQuiet: the address's new hash (App.vue's watcher) neither scrolls nor flashes it
+
 // `near` — the reader is already here (they have just added it): no jump to the top, the flash says where it is
 export function flash(id, { near = false } = {}) {
+  if (id && id === hushed) return true
   const el = id && document.getElementById(id)
   if (!el) return false
   for (let d = el.closest('details'); d; d = d.parentElement?.closest('details')) d.open = true
@@ -43,6 +46,17 @@ export function flash(id, { near = false } = {}) {
 }
 
 export const toTop = () => window.scrollTo({ top: 0, behavior: reduced() ? 'auto' : 'smooth' })
+
+// a stuck row's click (TocBar): at once to the heading, its top `top` px down the window, no flash; the address takes the anchor
+export function goQuiet(id, top, router) {
+  const el = document.getElementById(id)
+  if (!el) return
+  window.scrollTo({ top: scrollY + el.getBoundingClientRect().top - top, behavior: 'instant' })
+  const { query, hash } = router.currentRoute.value
+  if (hash === `#${id}`) return
+  hushed = id
+  router.replace({ query, hash: `#${id}` }).finally(() => setTimeout(() => (hushed = '')))
+}
 
 export async function copyLink(a) {
   const url = location.origin + location.pathname + a.getAttribute('href')
