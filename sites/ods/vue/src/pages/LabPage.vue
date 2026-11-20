@@ -11,17 +11,16 @@ import { textOf } from '@core/drafts.js'
 import { tocOf } from '@core/md.js'
 import { problem } from '@core/problem.js'
 import { useTitle } from '@core/title.js'
-import { user } from '@core/user.js'
 
+import LabBar from '../components/LabBar.vue'
 import LabFiles from '../components/LabFiles.vue'
-import LabNav from '../components/LabNav.vue'
 import { gates, loadGates } from '../labGates.js'
 import { labsWithCards, lineOf, loadLabPages, pageWord, pathOf } from '../labPages.js'
 import { vRich } from '../rich.js'
 
 // a lab's page or a part of it (/labs/3 → lab3, /labs/3/case1 → lab3-case1), or a page common to all labs
-// (/labs/about/grading → labs-grading): the text with its contents and files, «← · →» along the lab's pages;
-// «Моя лаба» and the teacher's «Результати» beside the crumbs once the lab has cards
+// (/labs/about/grading → labs-grading): the text with its contents and files, «← · →» along the lab's pages; the
+// lab's pages, «Моя лаба» and the other labs — in the bar on the shelf (LabBar)
 const route = useRoute()
 const about = computed(() => !!route.meta.about)
 const n = computed(() => (about.value ? 0 : Number(route.params.n)))
@@ -31,7 +30,6 @@ const line = computed(() => lineOf(n.value))
 const i = computed(() => line.value.findIndex((p) => p.slug === slug.value))  // -1: a lab of one page, not in the list
 const page = ref(null)
 const my = ref(false)
-const admin = computed(() => user.value?.status === 'admin')
 const word = computed(() => (i.value < 0 ? page.value?.title || '' : pageWord(line.value[i.value])))
 const crumbs = computed(() => [['/labs', 'Лаби'],
   ...(about.value ? ['Про лаби', word.value] : part.value ? [[`/labs/${n.value}`, `Лаба ${n.value}`], word.value] : [`Лаба ${n.value}`])])
@@ -42,7 +40,7 @@ const middle = computed(() => (part.value && !about.value ? [`/labs/${n.value}`,
 const plain = (text) => text.replace(/\$([^$]+)\$/g, (_, tex) => tex.replace(/[{}\\]/g, ''))  // the contents are text: $R^{2}$ → R^2
 const toc = computed(() => tocOf(textOf(page.value)).map((h) => ({ ...h, text: plain(h.text) })))
 const fmt = (d) => new Date(d).toLocaleDateString('uk-UA')
-// how the lab is open (labGates.js), in words under the pills: the teacher sees a hidden lab and should know it is one
+// how the lab is open (labGates.js), in words under the title: the teacher sees a hidden lab and should know it is one
 const note = computed(() => {
   const gate = !about.value && gates.value?.[n.value]
   if (gate === 'hidden') return 'Студенти цієї лаби не бачать — стан міняється на сторінці «Лаби»'
@@ -50,7 +48,7 @@ const note = computed(() => {
 })
 useTitle(() => page.value?.title)
 
-// all at once: the crumbs, the pills and the buttons come with the text, nothing moves after it. The page before stays
+// all at once: the crumbs and «Моя лаба →» at the end come with the text, nothing moves after it. The page before stays
 // until the next one is here — no blank flash between the parts of a lab. A lab this reader has no gate of — hidden
 // from students, or none at all — is not asked for
 async function load() {
@@ -73,15 +71,10 @@ watch(slug, load, { immediate: true })
 </script>
 
 <template>
+  <LabBar />
   <div v-if="page">
-    <Crumbs :items="crumbs">
-      <div v-if="my" class="btn-group btn-group-sm">
-        <RouterLink :to="`/labs/${n}/my`" class="btn btn-outline-primary">Моя лаба</RouterLink>
-        <RouterLink v-if="admin" :to="`/labs/${n}/results`" class="btn btn-outline-secondary">Результати</RouterLink>
-      </div>
-    </Crumbs>
+    <Crumbs :items="crumbs" />
     <h1 class="h2 mb-3">{{ page.title }}</h1>
-    <LabNav :n class="mb-3" />
     <p v-if="note" class="small text-secondary mb-3">{{ note }}</p>
     <!-- keyed by the page shown: an editor left open on the page before must not save into this one -->
     <div :key="page.slug" v-rich="page.slug"><GuideBody v-model:page="page" /></div>

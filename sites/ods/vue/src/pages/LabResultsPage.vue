@@ -1,11 +1,12 @@
 <script setup>
-import { computed, onMounted, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
 import Crumbs from '@core/components/Crumbs.vue'
 import { useTitle } from '@core/title.js'
 
 import { getLabResults } from '../api.js'
+import LabBar from '../components/LabBar.vue'
 import LabLoose from '../components/LabLoose.vue'
 import LabResultsRow from '../components/LabResultsRow.vue'
 import LabStats from '../components/LabStats.vue'
@@ -29,7 +30,7 @@ const inGroup = (r) => !group.value || r.group === group.value
 const real = computed(() => rows.value.filter((r) => r.n > 0 && inGroup(r)))  // n = 0 — the demo card
 const taken = computed(() => rows.value.filter((r) => r.student && inGroup(r)))
 const shown = computed(() => taken.value.filter((r) => !picked.value || picked.value.has(r.vid)))
-const count = (k) => taken.value.filter(QUICK[k][1]).length
+const count = (k) => taken.value.filter((r) => r.n > 0 && QUICK[k][1](r)).length  // the demo's row is shown, not counted
 const runs = computed(() => rows.value.some((r) => r.file?.run))  // the rerun column only once there is a rerun
 
 function choose(k) {
@@ -38,11 +39,18 @@ function choose(k) {
 }
 
 const load = async () => (rows.value = await getLabResults(n.value))
-onMounted(load)
+// the lab's bar leads from a lab's results to another lab's: the same page, another lab's rows, the filters afresh
+watch(n, () => {
+  rows.value = []
+  group.value = ''
+  choose('all')
+  load()
+}, { immediate: true })
 </script>
 
 <template>
   <div>
+    <LabBar />
     <Crumbs :items="[['/labs', 'Лаби'], [`/labs/${n}`, `Лаба ${n}`], 'Результати']"><LabWide /></Crumbs>
     <div class="d-flex flex-wrap align-items-baseline gap-3 mb-2">
       <h1 class="h2 mb-0">Результати лаби {{ n }}</h1>
@@ -57,7 +65,7 @@ onMounted(load)
       <button v-for="(q, k) in QUICK" :key="k" type="button" class="btn btn-sm chip" :class="quick === k ? 'btn-secondary' : 'btn-outline-secondary'"
               @click="choose(k)">{{ q[0] }} <span class="opacity-75">{{ count(k) }}</span></button>
     </div>
-    <LabStats v-if="taken.length" :n />
+    <LabStats v-if="taken.length" :key="n" :n />
     <p v-if="rows.length && !taken.length" class="text-secondary">Карток цієї лаби ще ні за ким не закріплено.</p>
     <div v-else-if="rows.length" class="table-responsive">
       <table class="table table-sm align-middle">

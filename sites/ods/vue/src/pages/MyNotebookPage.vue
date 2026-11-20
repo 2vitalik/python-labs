@@ -8,6 +8,7 @@ import { fmtWhen } from '@core/labs.js'
 import { useTitle } from '@core/title.js'
 
 import { getLabFile, getMyLab, labFileRawUrl } from '../api.js'
+import LabBar from '../components/LabBar.vue'
 import LabVersions from '../components/LabVersions.vue'
 import LabWide from '../components/LabWide.vue'
 import NotebookModes from '../components/NotebookModes.vue'
@@ -38,6 +39,7 @@ onMounted(async () => (files.value = (await getMyLab(n.value).catch(() => null))
 
 <template>
   <div>
+    <LabBar />
     <Crumbs :items="[['/labs', 'Лаби'], [`/labs/${n}`, `Лаба ${n}`], [`/labs/${n}/my`, 'Моя лаба'], 'Ноутбук']"><LabWide /></Crumbs>
     <p v-if="error" class="text-danger">{{ error }}</p>
     <template v-if="nb">

@@ -6,6 +6,7 @@ import Crumbs from '@core/components/Crumbs.vue'
 import { useTitle } from '@core/title.js'
 
 import { getLabReview } from '../api.js'
+import LabBar from '../components/LabBar.vue'
 import LabWide from '../components/LabWide.vue'
 import ReviewHead from '../components/ReviewHead.vue'
 import ReviewLeft from '../components/ReviewLeft.vue'
@@ -45,6 +46,11 @@ watch([n, vid], async () => {
   await reload()
   open(doc.value?.file?.id || null)
 }, { immediate: true })
+// a freed card has no file any more: the former holder's notebook leaves the page with it
+async function freed() {
+  open(null)
+  await reload()
+}
 
 const leave = () => !panel.value?.dirty() || confirm('Бали не збережено. Піти без збереження?')
 onBeforeRouteUpdate(leave)
@@ -53,6 +59,7 @@ onBeforeRouteLeave(leave)
 
 <template>
   <div class="rv">
+    <LabBar />
     <Crumbs :items="[['/labs', 'Лаби'], [`/labs/${n}`, `Лаба ${n}`], [`/labs/${n}/results`, 'Результати'], doc?.vid || vid]"><LabWide /></Crumbs>
     <p v-if="error || nbError" class="text-danger">{{ error || nbError }}</p>
     <template v-if="doc">
@@ -60,7 +67,7 @@ onBeforeRouteLeave(leave)
       <div class="rv-grid">
         <ReviewLeft v-model:mode="nbMode" class="rv-left" :nb :tasks :other :loading :colab="doc.notebook" />
         <aside class="rv-side">
-          <ReviewPanel ref="panel" v-model:compare="compare" :n :doc :shown @show="shown = $event" @saved="reload" @freed="reload" />
+          <ReviewPanel ref="panel" v-model:compare="compare" :n :doc :shown @show="shown = $event" @saved="reload" @freed="freed" />
         </aside>
       </div>
     </template>

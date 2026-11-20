@@ -8,6 +8,7 @@ import { problem } from '@core/problem.js'
 import { useTitle } from '@core/title.js'
 
 import { findMyLab } from '../api.js'
+import LabBar from '../components/LabBar.vue'
 import LabByTelegram from '../components/LabByTelegram.vue'
 import LabCard from '../components/LabCard.vue'
 import LabDefence from '../components/LabDefence.vue'
@@ -23,8 +24,7 @@ import { loadGates } from '../labGates.js'
 const route = useRoute()
 const n = computed(() => Number(route.params.n))
 const lab = ref(null)
-const gone = ref('')  // why there is no card for them: the API's own words
-const demo = ref('')  // the demo card's vid, for one who may open it instead
+const none = ref(null)  // no card for them: {why, demo, demo_taken} — the API's words, the demo one may open instead
 useTitle(() => `Моя лаба ${n.value}`)
 
 const live = computed(() => {
@@ -33,14 +33,12 @@ const live = computed(() => {
 })
 
 async function load() {
-  lab.value = null
-  gone.value = demo.value = ''
+  lab.value = none.value = null
   if (!(await loadGates())[n.value]) return (problem.value = 'lost')
   try {
     const my = await findMyLab(n.value)
-    if (my.vid) return (lab.value = my)
-    gone.value = my.why
-    demo.value = my.demo || ''
+    if (my.vid) lab.value = my
+    else none.value = my
   } catch (e) {
     if (e.status !== 404) throw e
     problem.value = 'lost'  // «no card» comes softly; a 404 is a lab hidden since the gates were read
@@ -48,16 +46,17 @@ async function load() {
 }
 function got(my) {
   lab.value = my
-  gone.value = ''
+  none.value = null
 }
 watch(n, load, { immediate: true })
 </script>
 
 <template>
   <div>
+    <LabBar />
     <Crumbs :items="[['/labs', 'Лаби'], [`/labs/${n}`, `Лаба ${n}`], 'Моя лаба']" />
     <h1 class="h2 mb-3">Моя лаба {{ n }}</h1>
-    <LabNoCard v-if="gone" :n :why="gone" :demo @got="got" />
+    <LabNoCard v-if="none" :n :why="none.why" :demo="none.demo || ''" :taken="none.demo_taken" @got="got" />
     <template v-else-if="lab">
       <LabCard :n :lab />
       <section v-if="lab.ask?.length" class="mb-4">
