@@ -27,6 +27,7 @@ import LabPage from './pages/LabPage.vue'
 import LabResultsPage from './pages/LabResultsPage.vue'
 import LabReviewPage from './pages/LabReviewPage.vue'
 import LabsPage from './pages/LabsPage.vue'
+import LectureChangesPage from './pages/LectureChangesPage.vue'
 import LecturePage from './pages/LecturePage.vue'
 import LecturesPage from './pages/LecturesPage.vue'
 import MyLabPage from './pages/MyLabPage.vue'
@@ -38,6 +39,8 @@ import OldLabsPage from './pages/OldLabsPage.vue'
 export default makeRouter([
   { path: '/', component: HomePage },
   { path: '/lectures', component: LecturesPage, meta: { title: 'Лекції', access: 'active' } },
+  // what differs from the lecturer's slides (T374), the teacher's; before `:n` — that one would take «changes» for a number
+  { path: '/lectures/changes', component: LectureChangesPage, meta: { title: 'Зміни в лекціях', access: 'admin', wide: true, filters: true } },
   // filters: a change of ?slide keeps the scroll — the text comes back to the slide's place (LecturePage)
   { path: '/lectures/:n', component: LecturePage, meta: { title: 'Лекції', access: 'active', filters: true } },
   { path: '/labs', component: LabsPage, meta: { title: 'Лаби', access: 'active' } },

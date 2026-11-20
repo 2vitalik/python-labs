@@ -14,7 +14,9 @@ import { problem } from '@core/problem.js'
 import { site } from '@core/site.js'
 import { useTitle } from '@core/title.js'
 
+import LecLook from '../components/LecLook.vue'
 import Slides from '../components/Slides.vue'
+import { author } from '../lecLook.js'
 import { labsOf, withMarks } from '../lectures.js'
 import { vRich } from '../rich.js'
 import { slidesOf } from '../slides.js'
@@ -80,6 +82,7 @@ watch(doc, load, { immediate: true })
 
 <template>
   <Crumbs :items="[['/lectures', 'Лекції'], doc?.nav]">
+    <LecLook v-if="page" class="me-2" />
     <div v-if="slides.length > 1" class="btn-group btn-group-sm">
       <button class="btn btn-outline-secondary" :class="{ active: slide === null }" @click="slide !== null && toText(slide)">Текст</button>
       <button class="btn btn-outline-secondary" :class="{ active: slide !== null }" @click="slide === null && (slide = reading())">Слайди</button>
@@ -91,9 +94,9 @@ watch(doc, load, { immediate: true })
       Потрібна для:
       <RouterLink v-for="lab in labs" :key="lab" :to="`/labs/${lab}`" class="lab badge rounded-pill border fw-normal text-body-secondary">Лаба {{ lab }}</RouterLink>
     </div>
-    <Slides v-if="slide !== null && slides.length" v-model="slide" :slides :title="page.title" @text="toText" />
+    <Slides v-if="slide !== null && slides.length" v-model="slide" :slides :title="page.title" :slug="doc.slug" @text="toText" />
     <template v-else>
-      <div ref="body" v-rich="doc.slug" class="lecture" @click="clickMark">
+      <div ref="body" v-rich="doc.slug" class="lecture" :class="{ 'lec-author': author }" @click="clickMark">
         <GuideBody v-model:page="page" :view="withMarks" />
       </div>
       <Toc :items="toc" />

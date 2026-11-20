@@ -3,6 +3,7 @@ import { computed } from 'vue'
 
 import Crumbs from '@core/components/Crumbs.vue'
 import { loadGuide, pages } from '@core/guide.js'
+import { user } from '@core/user.js'
 
 import LectureFind from '../components/LectureFind.vue'
 import { labsOf, lectures, shortTitle } from '../lectures.js'
@@ -13,7 +14,10 @@ loadGuide()
 </script>
 
 <template>
-  <Crumbs :items="['Лекції']" />
+  <Crumbs :items="['Лекції']">
+    <RouterLink v-if="user?.status === 'admin'" to="/lectures/changes" class="btn btn-sm btn-outline-secondary"
+                title="Що змінено проти слайдів лектора">Зміни</RouterLink>
+  </Crumbs>
   <h1 class="h2 mb-3">Лекції</h1>
   <LectureFind />
   <ol class="docs list-unstyled">

@@ -46,9 +46,12 @@ function preprocess(src) {
   return out.join('\n')
 }
 
-const lead = (p) => (p?.type === 'paragraph' && p.tokens[0]?.type === 'strong' ? p.tokens[0].text : '')
+// the lecturer's colour (`<c-b>…</c-b>`, T374 §1) around a label or a caption is not content of its own
+const COLOUR = /<\/?c-[a-z]>/g
+const solid = (p) => p.tokens.filter((t) => t.type !== 'br' && !(t.type === 'text' && !t.text.trim()) && !(t.type === 'html' && !t.raw.replace(COLOUR, '').trim()))
+const first = (p) => (p?.type === 'paragraph' ? solid(p)[0] : null)
+const lead = (p) => (first(p)?.type === 'strong' ? first(p).text.replace(COLOUR, '') : '')
 const roleOf = (p) => ROLES.find(([rx]) => rx.test(lead(p)))?.[1]
-const solid = (p) => p.tokens.filter((t) => t.type !== 'br' && !(t.type === 'text' && !t.text.trim()))
 
 // a caption is told by its neighbour, which a renderer does not see: the tokens are flagged first
 function flag(list) {
@@ -58,7 +61,7 @@ function flag(list) {
     if (t.type === 'paragraph') {
       const kids = solid(t)
       if (kids.length && kids.every((k) => k.type === 'image')) t.fig = true
-      else if (kids.length === 1 && kids[0].type === 'em' && (prev?.fig || CAPTION.test(kids[0].text))) t.cap = true
+      else if (kids.length === 1 && kids[0].type === 'em' && (prev?.fig || CAPTION.test(kids[0].text.replace(COLOUR, '')))) t.cap = true
     }
     if (t.type === 'list') t.items.forEach((i) => flag(i.tokens))
     if (t.type === 'blockquote') flag(t.tokens)

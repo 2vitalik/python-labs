@@ -21,6 +21,9 @@ export const getLabResults = (n) => request(`/api/variants/${n}/results`)
 export const getLabReview = (n, vid) => request(`/api/variants/${n}/results/${vid}`)
 export const putLabResult = (n, vid, data) => request(`/api/variants/${n}/results/${vid}`, 'PUT', data)
 export const getLabStats = (n) => request(`/api/variants/${n}/stats`)
+// the lectures' changes against the lecturer's slides (T374): every lecture's items; a lecture's blocks before and after
+export const getLectureChanges = () => request('/api/lectures/changes')
+export const getLectureHunks = (slug) => request(`/api/lectures/changes/${slug}`)
 // «Вхідні» (T368): what the teacher forwarded to the bot from students' chats
 export const getIntake = () => request('/api/intake')
 export const putIntakePerson = (key, student) => request('/api/intake/person', 'PUT', { key, student })  // student — a nick; '' — nobody's again

@@ -12,6 +12,7 @@ from core.models.guide import Guide, save
 from core.models.history import record_new
 from core.models.user import User
 from models.lab_page import LabPage
+from models.lecture_change import LectureChanges
 from models.media import Media
 
 router = APIRouter(prefix="/api/content")
@@ -45,7 +46,8 @@ async def have(user: User = Depends(editor_user)):
     pages = {g.slug: sha(f"{g.title}\n{g.body}".encode()) for g in await Guide.find_all().to_list()}
     media = {m.path: sha(m.data) for m in await Media.find_all().to_list()}
     labpages = [p.model_dump(exclude={"id"}) for p in await LabPage.find_all().sort("lab", "order").to_list()]
-    return {"pages": pages, "media": media, "labpages": labpages}
+    changes = {c.slug: c.sha for c in await LectureChanges.find_all().to_list()}  # the lectures' changes (routes/lecture_changes.py)
+    return {"pages": pages, "media": media, "labpages": labpages, "changes": changes}
 
 
 @router.put("/pages/{slug}")
