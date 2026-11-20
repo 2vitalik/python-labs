@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 
+import { site } from '../site.js'
 import Avatar from './Avatar.vue'
 
 const props = defineProps({ user: { type: Object, required: true }, title: String })
@@ -9,7 +10,7 @@ const heading = computed(() => props.title
 const checks = computed(() => [
   ['ПІБ', props.user.last_name && props.user.first_name],
   ['Telegram', props.user.tg_linked],
-  ['GitHub', props.user.github],
+  ...(site.repos ? [['GitHub', props.user.github]] : []),
 ])
 </script>
 

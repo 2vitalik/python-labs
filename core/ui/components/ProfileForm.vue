@@ -52,7 +52,7 @@ const form = defineModel({ type: Object, required: true })
       </div>
     </div>
 
-    <div id="github" class="card mb-3">
+    <div v-if="site.repos" id="github" class="card mb-3">
       <div class="card-header d-flex align-items-center gap-1">GitHub <HashLink id="github" /></div>
       <div class="card-body">
         <div class="d-flex">

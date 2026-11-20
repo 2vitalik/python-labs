@@ -23,6 +23,7 @@ class Settings(BaseSettings):
     week_hours: str = "15-23"  # «Мій тиждень» (T177): the hours of the grid, from-to
     week_days: int = 6  # …and its days, counted from Monday
     labs: int = 5  # labs in the course: the columns of /deadlines, what /due and the reviews may name (T235)
+    repos: bool = True  # labs come as GitHub repositories: the morning digest asks for the link (ods: false)
     grade_scale: str = "draft"  # the estimate «coins → grade» in «Моя гра» (T284): draft — the teacher sees it · open — students too
     tz: str = "Europe/Kyiv"  # the clock the classes go by: a lesson's «18:35», a Zoom report's local times (T333)
     zoom_account_id: str = ""  # a Server-to-Server OAuth app in Zoom Marketplace (T221): attendance of a lesson from its meeting

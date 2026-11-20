@@ -19,12 +19,14 @@ const TONE = { ok: 'green', bad: 'red', meh: 'yellow' }
 const LAB = Object.fromEntries(Object.entries(STATES).map(([k, s]) => [k, { emoji: s.emoji, text: s.text, color: TONE[s.cls] }]))
 const FIELD = { bool: 'bool', select: 'enum', multi: 'multi', number: 'number', text: 'text', date: 'date' }
 
-// registered everywhere (the first deadline's bar): the site, the bot, a GitHub link — and what is missing
-const STEPS = [['🔑', (r) => r.seen], ['🤖', (r) => r.tg_linked], ['🐙', (r) => !!r.github]]
-const missing = (r) => STEPS.filter(([, f]) => !f(r)).map(([e]) => e)
+// registered everywhere (the first deadline's bar): the site, the bot, a GitHub link where labs are repositories — and what is missing
+const STEPS = () => [['🔑', (r) => r.seen], ['🤖', (r) => r.tg_linked], ...(site.repos ? [['🐙', (r) => !!r.github]] : [])]
+const missing = (r) => STEPS().filter(([, f]) => !f(r)).map(([e]) => e)
+const reg = (r) => { const n = missing(r).length; return !n ? 'full' : n === STEPS().length ? 'none' : 'part' }
+const regWhat = () => (site.repos ? 'сайт, бот, GitHub' : 'сайт, бот')
 const profile = () => [
-  col('reg', P, 'enum', 'Реєстрація: сайт, бот, GitHub', '🎫', (r) => ['full', 'part', 'part', 'none'][missing(r).length],
-      { options: REG, sub: (r) => (missing(r).length % 3 ? `без ${missing(r).join(' ')}` : '') }),
+  col('reg', P, 'enum', `Реєстрація: ${regWhat()}`, '🎫', reg,
+      { options: { ...REG, full: { ...REG.full, text: `усе: ${regWhat()}` } }, sub: (r) => (reg(r) === 'part' ? `без ${missing(r).join(' ')}` : '') }),
   col('group', P, 'text', 'Група', 'Група', (r) => r.group, { fam: 'who' }),
   col('fio', P, 'bool', 'ПІБ заповнено', '🪪', (r) => r.fio, { fam: 'who' }),
   col('email', P, 'text', 'Пошта', '📧', (r) => r.email, { fam: 'who' }),
@@ -72,7 +74,7 @@ function lab(n) {
     L('.met', 'enum', 'Слово викладача', '✍', (r) => (m(r).met === true ? (m(r).grace ? 'grace' : 'yes') : m(r).met === false ? 'no' : null),
       { fam: 'ext', options: MET, edit: 'mark', patch: (v) => ({ met: v ? v !== 'no' : null, grace: v === 'grace' }) }),
     L('.note', 'text', 'Нотатка', '📝', (r) => m(r).note, { edit: 'mark', field: 'note' }),
-  ]
+  ].filter((c) => site.repos || c.fam !== 'labc')
 }
 // what an answer claims, checked against what the site sees — by the answer's emoji (the «Перший дедлайн» poll and its kin)
 const BASE = { '🌐': (r) => r.seen, '💬': (r) => r.tg_linked, '🤖': (r) => r.tg_linked, '🐙': (r) => !!r.github, '⬇️': (r) => !!r.repo?.commits }
@@ -109,7 +111,7 @@ function fields(list, labs) {
 
 export function columns(data) {
   const labs = data.labs.map((l) => l.n)
-  return [...profile(), ...repo(), ...labs.flatMap(lab), ...polls(data.polls), ...own(), ...fields(data.fields, labs)]
+  return [...profile(), ...(site.repos ? repo() : []), ...labs.flatMap(lab), ...polls(data.polls), ...own(), ...fields(data.fields, labs)]
 }
 // the lab a view speaks of when it does not say: the one whose deadline is nearest to now
 export function nearestLab(labs) {

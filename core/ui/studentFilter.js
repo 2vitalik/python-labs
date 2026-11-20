@@ -37,7 +37,7 @@ export function byGroup(students) {
 
 export function useStudentFilter(students) {
   // the site's own go after «вхід»; the pairs are the admin's — a student's rows carry none of those fields, the group chips are all they get
-  const FACETS = user.value?.status === 'admin' ? [SEEN, ...site.students.facets, ...REST] : []
+  const FACETS = user.value?.status === 'admin' ? [SEEN, ...site.students.facets, ...REST.filter((f) => site.repos || f.key !== 'gh')] : []
   const route = useRoute()
   const router = useRouter()
   const keys = computed(() => (route.query.group ? String(route.query.group).split(',') : []))

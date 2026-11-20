@@ -3,6 +3,7 @@ import { nextTick, onMounted, ref } from 'vue'
 
 import { getStudentLabs } from '../api.js'
 import { STATES, fmtWhen, labName, labPath } from '../labs.js'
+import { site } from '../site.js'
 import HashLink from './HashLink.vue'
 import Icon from './Icon.vue'
 import LabEdit from './LabEdit.vue'
@@ -25,7 +26,7 @@ onMounted(async () => {
   <div v-if="data" id="labs" class="card">
     <div class="card-body">
       <h2 class="h5 d-flex align-items-center gap-2">Лаби <HashLink id="labs" /> <RouterLink to="/deadlines" class="small fw-normal ms-auto">усі дедлайни →</RouterLink></h2>
-      <p class="small text-secondary mb-2">
+      <p v-if="site.repos" class="small text-secondary mb-2">
         🐙 <template v-if="data.repo"><a :href="data.repo.url" target="_blank">{{ data.repo.url.replace('https://github.com/', '') }}</a>
           · <template v-if="data.repo.ok">{{ data.repo.commits }} комітів · {{ data.repo.branch }}<template v-if="data.repo.last"> · останній {{ fmtWhen(data.repo.last) }}</template></template>
           <span v-else class="text-danger">{{ data.repo.error }}</span> · pull {{ fmtWhen(data.repo.pulled_at) }}</template>
@@ -41,7 +42,7 @@ onMounted(async () => {
               <td class="text-secondary small">
                 <template v-if="c.due">до {{ fmtWhen(c.due) }}<span v-if="c.mark?.until" title="подовжено"> ⏳</span><span v-if="c.mark?.reason"> · {{ c.mark.reason }}</span></template>
               </td>
-              <td class="text-secondary small">{{ facts(c) }}</td>
+              <td v-if="site.repos" class="text-secondary small">{{ facts(c) }}</td>
               <td class="text-end"><a href="#" class="ibtn" title="Подовження, вердикт, звіт" @click.prevent="open = open === c.n ? null : c.n"><Icon :name="open === c.n ? 'up' : 'pencil'" /></a></td>
             </tr>
             <tr v-if="open === c.n">

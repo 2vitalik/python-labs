@@ -36,12 +36,12 @@ const rowClass = (s) => ({ 'table-warning': s.status === 'pending', 'table-info'
     <thead>
       <tr>
         <th>ПІБ</th><th v-for="c in cols" :key="c.title">{{ c.title }}</th>
-        <template v-if="admin"><th>GitHub</th><th>Telegram</th></template>
+        <template v-if="admin"><th v-if="site.repos">GitHub</th><th>Telegram</th></template>
       </tr>
     </thead>
     <tbody v-for="g in groups" :key="g.name">
       <tr class="table-light" role="button" @click="toggle(g.name)">
-        <th :colspan="(admin ? 3 : 1) + cols.length" class="fw-semibold">
+        <th :colspan="(admin ? (site.repos ? 3 : 2) : 1) + cols.length" class="fw-semibold">
           <span class="caret text-secondary"><IconChevron :dir="folded.has(g.name) ? 'right' : 'down'" :size="12" /></span>
           {{ g.name || 'Без групи' }} <span class="count">{{ g.list.length }}</span>
           <RouterLink v-if="g.name && !route.query.group" :to="{ query: { ...route.query, group: g.name } }" class="ibtn ms-2"
@@ -67,10 +67,12 @@ const rowClass = (s) => ({ 'table-warning': s.status === 'pending', 'table-info'
             <td v-else class="dash">—</td>
           </template>
           <template v-if="admin">
+            <template v-if="site.repos">
             <td v-if="s.github">
               <a :href="s.github" target="_blank" class="repo">{{ repo(s.github)[0] }}<span class="small">{{ repo(s.github)[1] }}</span></a>
             </td>
             <td v-else class="dash">—</td>
+            </template>
             <td v-if="s.tg_username || s.tg_linked">
               <a v-if="s.tg_username" :href="`https://t.me/${s.tg_username}`" target="_blank">@{{ s.tg_username }}</a>
               <i v-else class="text-body-tertiary">без нікнейма</i>

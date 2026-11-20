@@ -2,6 +2,7 @@
 import { computed, ref } from 'vue'
 
 import { STATES, fmtWhen, labName, labPath } from '../labs.js'
+import { site } from '../site.js'
 import { byGroup } from '../studentFilter.js'
 import Avatar from './Avatar.vue'
 import Icon from './Icon.vue'
@@ -35,7 +36,7 @@ const total = (l) => Object.entries(STATES).filter(([k]) => k !== 'nodue')
       <thead>
         <tr>
           <th class="name">Студент</th>
-          <th class="repo" title="Репозиторій">🐙</th>
+          <th v-if="site.repos" class="repo" title="Репозиторій">🐙</th>
           <th v-for="l in labs" :key="l.n" class="lab" :title="dueTitle(l)">
             <RouterLink :to="{ path: '/table', query: { view: `lab${l.n}` } }" title="Усе про дедлайн цієї лаби — таблиця">{{ labName(l.n) }}</RouterLink>
             <RouterLink v-if="labPath(l.n)" :to="labPath(l.n)" class="ibtn ms-1" title="Сторінка лаби"><Icon name="books" /></RouterLink>
@@ -47,17 +48,17 @@ const total = (l) => Object.entries(STATES).filter(([k]) => k !== 'nodue')
       <tbody v-for="g in groups" :key="g.name">
         <tr class="table-light" role="button" @click="toggle(g.name)">
           <th class="name"><IconChevron :dir="folded.has(g.name) ? 'right' : 'down'" :size="12" class="text-secondary" /> {{ g.name || 'Без групи' }} <span class="count">{{ g.list.length }}</span></th>
-          <td :colspan="labs.length + 1"></td>
+          <td :colspan="labs.length + (site.repos ? 1 : 0)"></td>
         </tr>
         <template v-if="!folded.has(g.name)">
           <template v-for="r in g.list" :key="r.nick">
             <tr>
               <th class="name fw-normal"><Avatar :user="r" :size="20" /> <RouterLink :to="`/students/${r.nick}/edit`">{{ r.name || r.nick }}</RouterLink></th>
-              <td class="repo" :title="repoTitle(r)"><a v-if="r.github" :href="r.github" target="_blank" class="text-decoration-none">{{ repoMark(r) }}</a><span v-else class="text-body-tertiary">—</span></td>
+              <td v-if="site.repos" class="repo" :title="repoTitle(r)"><a v-if="r.github" :href="r.github" target="_blank" class="text-decoration-none">{{ repoMark(r) }}</a><span v-else class="text-body-tertiary">—</span></td>
               <td v-for="l in labs" :key="l.n" class="cell"><LabCell :cell="r.cells[l.n]" :name="r.name || r.nick" :lab="l.n" :active="isPicked(r.nick, l.n)" @click="pick(r.nick, l.n)" /></td>
             </tr>
             <tr v-if="picked?.nick === r.nick">
-              <td :colspan="labs.length + 2" class="p-2 editor">
+              <td :colspan="labs.length + (site.repos ? 2 : 1)" class="p-2 editor">
                 <LabEdit :key="picked.lab" :nick="r.nick" :lab="picked.lab" :cell="r.cells[picked.lab]" @saved="emit('cell', r.nick, picked.lab, $event)" @close="picked = null" />
               </td>
             </tr>
@@ -67,7 +68,7 @@ const total = (l) => Object.entries(STATES).filter(([k]) => k !== 'nodue')
       <tfoot>
         <tr>
           <th class="name fw-normal text-secondary">Разом</th>
-          <td></td>
+          <td v-if="site.repos"></td>
           <td v-for="l in labs" :key="l.n" class="sum"><span v-for="[e, n] in total(l)" :key="e" class="me-1">{{ e }}{{ n }}</span></td>
         </tr>
       </tfoot>

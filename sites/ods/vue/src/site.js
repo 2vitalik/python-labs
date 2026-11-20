@@ -10,6 +10,7 @@ export const KINDS = { lectures: 'Лекції', labs: 'Лаби' }
 
 export default {
   name: 'ODS Labs',
+  repos: false,  // labs are notebook files here: no GitHub in the profile, filters and columns (T353 Q2)
   // the platform's entries carry the same words as on the python site
   links: [['/lectures', 'Лекції', null, false, 'book'], ['/labs', 'Лаби', null, false, 'flask'], ['/lessons', 'Пари', 'admin', false, 'cap'],
     ['/students', 'Студи', null, false, 'users'], ['/deadlines', 'Строки', null, false, 'alarm'], ['/table', 'Звід', null, false, 'table'],

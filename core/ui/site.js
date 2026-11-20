@@ -9,6 +9,7 @@ export const site = {
     week: false,  // …and mark the week: the site has /my/week and asks its students for it
     note: '',  // the site's own line under the steps
   },
+  repos: true,  // labs come as GitHub repositories: the profile's link and badge, the /students filter, the repo columns of «Звід» and «Строки»
   profile: {
     repo: '',  // the example in the GitHub field
     github: [],  // hints under it, HTML lines

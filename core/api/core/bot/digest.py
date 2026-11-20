@@ -1,4 +1,4 @@
-"""Daily onboarding digest (T113): per group, how many still lack ПІБ / GitHub / bot — kind `digest`, 09:00 Kyiv."""
+"""Daily onboarding digest (T113): per group, how many still lack ПІБ / GitHub (where labs are repositories) / bot — kind `digest`, 09:00 Kyiv."""
 import asyncio
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
@@ -6,31 +6,33 @@ from zoneinfo import ZoneInfo
 from aiogram import html
 
 from core.bot import notify
+from core.config import settings
 from core.models.user import Status, User
 
 TZ = ZoneInfo("Europe/Kyiv")
 HOUR = 9
 GAPS = (
-    ("🪪", lambda u: not (u.last_name and u.first_name)),
-    ("🐙", lambda u: not u.github),
-    ("🤖", lambda u: u.tg_chat_id is None),
+    ("🪪", "ПІБ", lambda u: not (u.last_name and u.first_name)),
+    ("🐙", "GitHub", lambda u: not u.github),
+    ("🤖", "бот", lambda u: u.tg_chat_id is None),
 )
 
 
 async def text() -> str | None:
     """None when every student is complete — then nothing is sent."""
+    asked = [g for g in GAPS if settings.repos or g[0] != "🐙"]
     students = await User.find(User.status == Status.student, User.test != True).to_list()  # noqa: E712 — `$ne`: rows from before the flag lack it
     groups: dict[str, list[User]] = {}
     for s in students:
         groups.setdefault(s.group or "без групи", []).append(s)
     rows = []
     for name, members in sorted(groups.items()):
-        gaps = [f"{mark} {n}" for mark, miss in GAPS if (n := sum(1 for u in members if miss(u)))]
+        gaps = [f"{mark} {n}" for mark, _, miss in asked if (n := sum(1 for u in members if miss(u)))]
         if gaps:
             rows.append(f"👥 {html.quote(name)} · " + " · ".join(gaps))
     if not rows:
         return None
-    return "\n".join([f"📊 Профілі не заповнені · студентів: {len(students)}", *rows, "☝️ 🪪 ПІБ · 🐙 GitHub · 🤖 бот"])
+    return "\n".join([f"📊 Профілі не заповнені · студентів: {len(students)}", *rows, "☝️ " + " · ".join(f"{mark} {word}" for mark, word, _ in asked)])
 
 
 def seconds_until(hour: int) -> float:
