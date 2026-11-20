@@ -30,7 +30,7 @@ const errorText = {
     </template>
     <template v-else-if="user.status === 'pending'">
       <h1 class="h3 mb-3">Доступ ще не відкрито</h1>
-      <p>Ти в списку. Доступ до курсу надає викладач, після цього сторінка відкриється.</p>
+      <p>Тебе ще нема в списку курсу. Доступ відкриває викладач — після цього сторінка відкриється.</p>
       <RouterLink to="/" class="btn btn-outline-secondary">На головну</RouterLink>
     </template>
     <template v-else>
