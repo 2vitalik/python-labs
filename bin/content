@@ -119,6 +119,8 @@ def main():
     show(chosen, texts, files, changes, rows, have)
     if a.cmd == "ls" or a.dry:
         return
+    if not have.get("dated") and any(v["at"] for _, _, steps in texts for v in steps):
+        sys.exit("сайт на старому коді: історію лекцій він запише сьогоднішнім часом — спершу онови код і перезапусти API, тоді повтори")
     for _, path, file in files:  # pictures before the pages that show them
         print(f"{path}: {put(a.target, f'/content/media/{path}', file.read_bytes(), disk.mime(file))['state']}")
     for _, slug, steps in texts:

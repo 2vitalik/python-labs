@@ -49,7 +49,8 @@ async def have(user: User = Depends(editor_user)):
     media = {m.path: sha(m.data) for m in await Media.find_all().to_list()}
     labpages = [p.model_dump(exclude={"id"}) for p in await LabPage.find_all().sort("lab", "order").to_list()]
     changes = {c.slug: c.sha for c in await LectureChanges.find_all().to_list()}  # the lectures' changes (routes/lecture_changes.py)
-    return {"pages": pages, "media": media, "labpages": labpages, "changes": changes}
+    # `dated` — put_page takes a version's own time: bin/content sends a lecture's history only to a site that says so
+    return {"pages": pages, "media": media, "labpages": labpages, "changes": changes, "dated": True}
 
 
 @router.put("/pages/{slug}")
