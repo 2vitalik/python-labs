@@ -27,10 +27,10 @@ class Guide(Document):
                 "updated": stamp(self.updated_at), "updated_by": self.updated_by.split("@")[0]}
 
 
-async def save(g: Guide, title: str, body: str, actor: str, note: str = "") -> bool:
-    """Record a new version; False when nothing changed."""
+async def save(g: Guide, title: str, body: str, actor: str, note: str = "", at: datetime | None = None) -> bool:
+    """Record a new version; False when nothing changed. `at` — when it was written, if not now."""
     if (g.title, g.body) == (title, body):
         return False
-    g.rev, g.updated_at, g.updated_by = g.rev + 1, datetime.now(timezone.utc), actor
-    await record(g, {"title": title, "body": body}, actor=actor, note=note)
+    g.rev, g.updated_at, g.updated_by = g.rev + 1, at or datetime.now(timezone.utc), actor
+    await record(g, {"title": title, "body": body}, actor=actor, note=note, at=at)
     return True

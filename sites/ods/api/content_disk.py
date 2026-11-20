@@ -86,8 +86,12 @@ def old_labs() -> list[dict]:
 
 
 def parse(slug: str, path: Path) -> tuple[str, str, list[str]]:
+    return read(slug, path.read_text())
+
+
+def read(slug: str, text: str) -> tuple[str, str, list[str]]:
     """(title, body, pictures); the italic line under the title is the converter's note, not the text."""
-    title, _, body = path.read_text().partition("\n")
+    title, _, body = text.partition("\n")
     body = re.sub(r"\A\s*\*[^\n]*\*\n", "", body).strip()
     pics = [p for _, p in IMG.findall(body) if ".hid." not in p]
     return title.lstrip("# ").strip(), IMG.sub(rf"\1/api/media/{slug}/\2", body), pics

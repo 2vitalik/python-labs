@@ -26,7 +26,12 @@ def when(at: datetime | None) -> str | None:
     return stamp(at) if at else None
 
 
-async def record(doc: Document, data: dict, actor: str, note: str = "") -> dict:
+def dated(at: datetime | None) -> dict:
+    """`at` of a change written earlier than it is recorded: a text that comes with its history (bin/content, T381)."""
+    return {"at": at} if at else {}
+
+
+async def record(doc: Document, data: dict, actor: str, note: str = "", at: datetime | None = None) -> dict:
     """Apply `data` to `doc`, saving a diff of what actually changed; returns that diff."""
     changes = {k: {"old": getattr(doc, k), "new": v} for k, v in data.items() if getattr(doc, k) != v}
     if not changes:
@@ -34,15 +39,15 @@ async def record(doc: Document, data: dict, actor: str, note: str = "") -> dict:
     for k, v in data.items():
         setattr(doc, k, v)
     await doc.save()
-    await Change(coll=doc.Settings.name, doc_id=doc.id, actor=actor, changes=changes, note=note).insert()
+    await Change(coll=doc.Settings.name, doc_id=doc.id, actor=actor, changes=changes, note=note, **dated(at)).insert()
     return changes
 
 
-async def record_new(doc: Document, actor: str):
+async def record_new(doc: Document, actor: str, note: str = "", at: datetime | None = None):
     """Log document creation: every non-empty field as old=None."""
     data = doc.model_dump(exclude={"id", "created_at"})
     changes = {k: {"old": None, "new": v} for k, v in data.items() if v}
-    await Change(coll=doc.Settings.name, doc_id=doc.id, actor=actor, changes=changes).insert()
+    await Change(coll=doc.Settings.name, doc_id=doc.id, actor=actor, changes=changes, note=note, **dated(at)).insert()
 
 
 async def record_delete(doc: Document, actor: str):

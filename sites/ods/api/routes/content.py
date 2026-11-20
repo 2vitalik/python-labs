@@ -9,7 +9,7 @@ from pydantic import BaseModel
 
 from core.deps import editor_user
 from core.models.guide import Guide, save
-from core.models.history import record_new
+from core.models.history import Change, record_new
 from core.models.user import User
 from models.lab_page import LabPage
 from models.lecture_change import LectureChanges
@@ -25,6 +25,8 @@ class PageIn(BaseModel):
     title: str
     body: str
     note: str = ""
+    at: datetime | None = None  # when this version was written: a lecture comes with its history (bin/lecsteps.py, T381)
+    under: str = ""  # what to call the page's first version this one is laid on, when the history has no word for it
 
 
 class LabPageIn(BaseModel):
@@ -54,13 +56,28 @@ async def have(user: User = Depends(editor_user)):
 async def put_page(slug: str, data: PageIn, user: User = Depends(editor_user)):
     if not SLUG.fullmatch(slug):
         raise HTTPException(422, "slug — малі латинські літери, цифри й дефіс")
-    title, body = data.title.strip(), data.body.strip()
+    title, body, note = data.title.strip(), data.body.strip(), data.note.strip()
     g = await Guide.find_one(Guide.slug == slug)
     if not g:
-        g = await Guide(slug=slug, title=title, body=body, updated_by=user.email).insert()
-        await record_new(g, actor=user.email)
+        g = await Guide(slug=slug, title=title, body=body, updated_by=user.email, **({"updated_at": data.at} if data.at else {})).insert()
+        await record_new(g, actor=user.email, note=note, at=data.at)
         return {"state": "new", "rev": g.rev}
-    return {"state": "updated" if await save(g, title, body, user.email, data.note.strip()) else "same", "rev": g.rev}
+    if (g.title, g.body) == (title, body):
+        return {"state": "same", "rev": g.rev}
+    await begin(g, user.email, data.under.strip())
+    await save(g, title, body, user.email, note, data.at)
+    return {"state": "updated", "rev": g.rev}
+
+
+async def begin(g: Guide, actor: str, word: str):
+    """Before a page's first change: a page laid by a copy of a database has no beginning in history — it gets one;
+    a beginning without a note takes `word`."""
+    first = await Change.find(Change.coll == "guide", Change.doc_id == g.id).sort("at").first_or_none()
+    if not first:
+        await record_new(g, actor=g.updated_by or actor, note=word, at=g.updated_at)
+    elif word and not first.note and g.rev == 0:
+        first.note = word
+        await first.save()
 
 
 @router.put("/media/{path:path}")

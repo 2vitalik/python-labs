@@ -81,6 +81,29 @@ with TestClient(main.app) as c:
     check("… the note in history", db.history.find_one({"coll": "guide", "doc_id": g["_id"], "note": "правка"}) is not None)
     check("bad slug → 422", page(c, "Lab_9", "x", "y") == page(c, "lab%209", "x", "y") == 422)
 
+    # a lecture comes with its history (bin/lecsteps.py, T381): every version at the time it was written
+    was = [("як у лектора", "2026-09-01T10:00:00+03:00"), ("вичитка", "2026-11-19T05:34:00+02:00")]
+    sent = [c.put("/api/content/pages/lec98", json={"title": "Тема 98", "body": note, "note": note, "at": at}, headers=AGENT).json()
+            for note, at in was]
+    g = db.guide.find_one({"slug": "lec98"})
+    rows = list(db.history.find({"coll": "guide", "doc_id": g["_id"]}).sort("at"))
+    check("history: versions at their own time, the first with its note", sent == [{"state": "new", "rev": 0}, {"state": "updated", "rev": 1}]
+          and [(r["note"], r["at"].isoformat()) for r in rows] == [("як у лектора", "2026-09-01T07:00:00"), ("вичитка", "2026-11-19T03:34:00")], rows)
+    check("… the page is as old as its last version", g["updated_at"].isoformat() == "2026-11-19T03:34:00", g["updated_at"])
+    seeded = db.guide.insert_one({"slug": "lec97", "title": "Тема 97", "body": "з копії бази", "rev": 0, "updated_by": "import",
+                                  "updated_at": rows[0]["at"]}).inserted_id
+    check("history: a page laid by a database copy — the same text adds nothing", page(c, "lec97", "Тема 97", "з копії бази")["state"] == "same"
+          and db.history.count_documents({"doc_id": seeded}) == 0)
+    c.put("/api/content/pages/lec97", json={"title": "Тема 97", "body": "вичитано", "note": "вичитка", "under": "як у лектора"}, headers=AGENT)
+    rows = list(db.history.find({"doc_id": seeded}).sort("at"))
+    check("… its first change gives it a beginning too, by the word sent", [(r["actor"], r["note"], r["changes"]["body"]["old"], r["changes"]["body"]["new"])
+          for r in rows] == [("import", "як у лектора", None, "з копії бази"), ("smoke@agent", "вичитка", "з копії бази", "вичитано")], rows)
+    page(c, "lec96", "Тема 96", "текст")
+    for body, word in (("текст 2", "як у лектора"), ("текст 3", "інше слово")):
+        c.put("/api/content/pages/lec96", json={"title": "Тема 96", "body": body, "under": word}, headers=AGENT)
+    notes = [r["note"] for r in db.history.find({"doc_id": db.guide.find_one({"slug": "lec96"})["_id"]}).sort("at")]
+    check("… a beginning without a note takes the word once, while the page is at its first version", notes == ["як у лектора", "", ""], notes)
+
     check("file: new · same · updated", [media(c, "lab9/x.png", PNG), media(c, "lab9/x.png", PNG), media(c, "lab9/x.png", PNG2)]
           == ["new", "same", "updated"])
     check("file: another type is a change", media(c, "lab9/x.png", PNG2, "image/webp") == "updated")
