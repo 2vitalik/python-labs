@@ -98,6 +98,8 @@ def show(chosen: list, texts: list, files: list, changes: list, rows: list | Non
         print(f"каталогів змін до відправки: нових {count(changes, '+')} · змінених {count(changes, '~')}")
         print("".join(f"  {s} {slug}\n" for s, slug, _ in changes), end="")
     print(f"перелік сторінок лаб: {f'інший · рядків {len(rows)}' if rows else 'той самий або не чіпаємо'}")
+    if not have.get("dated"):
+        print("код сайту: старий — історію лекцій ще не приймає (після оновлення коду й перезапуску API цього рядка не буде)")
 
 
 def main():
